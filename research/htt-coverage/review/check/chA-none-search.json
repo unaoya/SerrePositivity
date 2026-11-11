@@ -1,0 +1,2238 @@
+{
+  "A.1.1.3": {
+    "page": 788,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.1",
+        "A.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsCardinalPresentable|IsPresentable|IsLocallyPresentable|IsCardinalFiltered|exists_cardinal_directed",
+          "SerrePositivity"
+        ],
+        "file_count": 307,
+        "line_count": 647
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsCardinalPresentable|IsPresentable|IsLocallyPresentable|IsCardinalFiltered|exists_cardinal_directed",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 24,
+        "line_count": 375
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+        "signatures": [
+          {
+            "line": 148,
+            "head": "abbrev IsCardinalPresentable : Prop := (coyoneda.obj (op X)).IsCardinalAccessible κ"
+          },
+          {
+            "line": 152,
+            "head": "abbrev isCardinalPresentable : ObjectProperty C := fun X ↦ IsCardinalPresentable X κ"
+          },
+          {
+            "line": 169,
+            "head": "lemma preservesColimitsOfShape_of_isCardinalPresentable [IsCardinalPresentable X κ] (J : Type w) [SmallCategory.{w} J] [IsCardinalFiltered J κ] : PreservesColimitsOfShape J (coyoneda.obj (op X)) := (coyoneda.obj (op X)).preservesColimitsOfShape_of_isCardinalAccessible κ J"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean",
+        "signatures": [
+          {
+            "line": 80,
+            "head": "class IsLocallyPresentable (C : Type u) [hC : Category.{v} C] : Prop where"
+          },
+          {
+            "line": 97,
+            "head": "instance [IsLocallyPresentable.{w} C] : IsAccessibleCategory.{w} C where"
+          },
+          {
+            "line": 102,
+            "head": "instance [IsAccessibleCategory.{w} C] (X : C) : IsPresentable.{w} X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Directed.lean",
+        "signatures": [
+          {
+            "line": 370,
+            "head": "lemma isCardinalFiltered : IsCardinalFiltered (DiagramWithUniqueTerminal J κ) κ := isCardinalFiltered_preorder _ _ (fun ι D hι ↦ by rw [← hasCardinalLT_iff_cardinal_mk_lt] at hι obtain ⟨m, u, hm₀, hm⟩ := isCardinalFiltered_aux J κ hJ D hι let φ (x : (Σ (i : ι), (Subtype (D i).P))) : x.2.1 ⟶ m := (D x.1).isTerminal.lift x.2.2 ≫ u x.1 have hD {i : ι} : ¬ (D i).P m := fun hi ↦ (hm₀ i).false ((D i).isTerminal.lift hi) let he : (D₂ D hι u).IsTerminal m"
+          },
+          {
+            "line": 515,
+            "head": "The previous lemma `IsCardinalFiltered.exists_cardinal_directed.aux`"
+          },
+          {
+            "line": 526,
+            "head": "lemma exists_cardinal_directed (J : Type w) [SmallCategory J] (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalFiltered J κ] : ∃ (α : Type w) (_ : PartialOrder α) (_ : IsCardinalFiltered α κ) (F : α ⥤ J), F.Final"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def HasKappaFilteredGeneratorPresentation (κ : Cardinal.{u}) {A : SSet.{u}} {C : SSet.{u + 1}} (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (x : C _⦋0⦌) : Prop := ∃ (I : SSet.{u}) (hI : Quasicategory I), letI := hI IsKappaFiltered κ I ∧ ∃ a : I ⟶ A, ∃ c : JoinCocone ((SSet.uliftFunctor.{u + 1, u}).map a ≫ i), c.vertex = x ∧ IsColimitCone c"
+          },
+          {
+            "line": 32,
+            "head": "structure IsKappaCompactGenerating (κ : Cardinal.{u}) {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native IsPresentable は accessible と全小余極限の存在を用いるが、原典は §5.5 がこの通常圏の定義の一般化であるという参照の注意である。Mathlib IsLocallyPresentable C と native IsPresentable (nerve C) を同定する比較はなく、二つの定義の類似のみは数えない。"
+  },
+  "A.1.1.4": {
+    "page": 788,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.1",
+        "A.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsCardinalPresentable|IsPresentable|IsLocallyPresentable|IsCardinalFiltered|exists_cardinal_directed",
+          "SerrePositivity"
+        ],
+        "file_count": 307,
+        "line_count": 647
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsCardinalPresentable|IsPresentable|IsLocallyPresentable|IsCardinalFiltered|exists_cardinal_directed",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 24,
+        "line_count": 375
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+        "signatures": [
+          {
+            "line": 148,
+            "head": "abbrev IsCardinalPresentable : Prop := (coyoneda.obj (op X)).IsCardinalAccessible κ"
+          },
+          {
+            "line": 152,
+            "head": "abbrev isCardinalPresentable : ObjectProperty C := fun X ↦ IsCardinalPresentable X κ"
+          },
+          {
+            "line": 169,
+            "head": "lemma preservesColimitsOfShape_of_isCardinalPresentable [IsCardinalPresentable X κ] (J : Type w) [SmallCategory.{w} J] [IsCardinalFiltered J κ] : PreservesColimitsOfShape J (coyoneda.obj (op X)) := (coyoneda.obj (op X)).preservesColimitsOfShape_of_isCardinalAccessible κ J"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean",
+        "signatures": [
+          {
+            "line": 80,
+            "head": "class IsLocallyPresentable (C : Type u) [hC : Category.{v} C] : Prop where"
+          },
+          {
+            "line": 97,
+            "head": "instance [IsLocallyPresentable.{w} C] : IsAccessibleCategory.{w} C where"
+          },
+          {
+            "line": 102,
+            "head": "instance [IsAccessibleCategory.{w} C] (X : C) : IsPresentable.{w} X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Directed.lean",
+        "signatures": [
+          {
+            "line": 370,
+            "head": "lemma isCardinalFiltered : IsCardinalFiltered (DiagramWithUniqueTerminal J κ) κ := isCardinalFiltered_preorder _ _ (fun ι D hι ↦ by rw [← hasCardinalLT_iff_cardinal_mk_lt] at hι obtain ⟨m, u, hm₀, hm⟩ := isCardinalFiltered_aux J κ hJ D hι let φ (x : (Σ (i : ι), (Subtype (D i).P))) : x.2.1 ⟶ m := (D x.1).isTerminal.lift x.2.2 ≫ u x.1 have hD {i : ι} : ¬ (D i).P m := fun hi ↦ (hm₀ i).false ((D i).isTerminal.lift hi) let he : (D₂ D hι u).IsTerminal m"
+          },
+          {
+            "line": 515,
+            "head": "The previous lemma `IsCardinalFiltered.exists_cardinal_directed.aux`"
+          },
+          {
+            "line": 526,
+            "head": "lemma exists_cardinal_directed (J : Type w) [SmallCategory J] (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalFiltered J κ] : ∃ (α : Type w) (_ : PartialOrder α) (_ : IsCardinalFiltered α κ) (F : α ⥤ J), F.Final"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def HasKappaFilteredGeneratorPresentation (κ : Cardinal.{u}) {A : SSet.{u}} {C : SSet.{u + 1}} (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (x : C _⦋0⦌) : Prop := ∃ (I : SSet.{u}) (hI : Quasicategory I), letI := hI IsKappaFiltered κ I ∧ ∃ a : I ⟶ A, ∃ c : JoinCocone ((SSet.uliftFunctor.{u + 1, u}).map a ≫ i), c.vertex = x ∧ IsColimitCone c"
+          },
+          {
+            "line": 32,
+            "head": "structure IsKappaCompactGenerating (κ : Cardinal.{u}) {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib IsLocallyPresentable は文献 [1] の標準的用語に従うが、原典の四条件の定義との完全な同値はこの名称だけでは得られない。文献の詳説への参照自体にも対応する Lean の宣言はない。"
+  },
+  "A.1.2.4": {
+    "page": 790,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.1",
+        "A.1.2",
+        "A.1.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HasLiftingProperty|IsStableUnderTransfiniteComposition|HasSmallObjectArgument|AccessibleSmallObject|generatedLeft|[Ee]nriched|RelativeCellComplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2275,
+        "line_count": 13246
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HasLiftingProperty|IsStableUnderTransfiniteComposition|HasSmallObjectArgument|AccessibleSmallObject|generatedLeft|[Ee]nriched|RelativeCellComplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 64,
+        "line_count": 836
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/LiftingProperties/Basic.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "class HasLiftingProperty : Prop where"
+          },
+          {
+            "line": 60,
+            "head": "theorem op (h : HasLiftingProperty i p) : HasLiftingProperty p.op i.op := ⟨fun {f} {g} sq => by simp only [CommSq.HasLift.iff_unop, Quiver.Hom.unop_op] infer_instance⟩"
+          },
+          {
+            "line": 66,
+            "head": "theorem unop {A B X Y : Cᵒᵖ} {i : A ⟶ B} {p : X ⟶ Y} (h : HasLiftingProperty i p) : HasLiftingProperty p.unop i.unop := ⟨fun {f} {g} sq => by rw [CommSq.HasLift.iff_op] simp only [Quiver.Hom.op_unop] infer_instance⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+        "signatures": [
+          {
+            "line": 219,
+            "head": "class IsStableUnderTransfiniteCompositionOfShape : Prop where"
+          },
+          {
+            "line": 276,
+            "head": "lemma IsStableUnderTransfiniteCompositionOfShape.of_isStableUnderColimitsOfShape [W.IsMultiplicative] [W.RespectsIso] (hJ : ∀ (J : Type w) [LinearOrder J] [SuccOrder J] [OrderBot J] [WellFoundedLT J], W.IsStableUnderColimitsOfShape J) : W.IsStableUnderTransfiniteCompositionOfShape J where"
+          },
+          {
+            "line": 299,
+            "head": "class IsStableUnderTransfiniteComposition : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Smallness.lean",
+        "signatures": [
+          {
+            "line": 8,
+            "head": "The generating class is small in the colimit universe. No model structure is"
+          },
+          {
+            "line": 22,
+            "head": "lemma exists_common_presentability {ι : Type t} [Small.{w} ι] (a : ι → C) [∀ i, IsPresentable.{w} (a i)] : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), ∀ i, IsCardinalPresentable (a i) κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleSmallObject.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "lemma exists_factorization_at (I : MorphismProperty C) [I.HasSmallObjectArgument.{w}] (κ : Cardinal.{w}) [Fact κ.IsRegular] [∀ i : I.toSet, IsCardinalPresentable i.val.left κ] [∀ i : I.toSet, IsCardinalPresentable i.val.right κ] : ∃ d : MorphismProperty.FunctorialFactorizationData I.rlp.llp I.rlp, d.Z.IsCardinalAccessible κ ∧ (AccessibleFactorization.leftFactor d).IsCardinalAccessible κ ∧ (AccessibleFactorization.rightFactor d).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/ClosedGeneratedClass.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma generatedLeft_le_of_closed [G.HasSmallObjectArgument.{w}] [P.IsStableUnderRetracts] [P.IsStableUnderCoproducts.{w}] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] (hG : G ≤ P) : G.rlp.llp ≤ P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev stepObj (_f : A ⟶ B) (i j : J) : C := if i < j then B else A"
+          },
+          {
+            "line": 30,
+            "head": "def stepMap {j k : J} (h : j ≤ k) : stepObj f i j ⟶ stepObj f i k := if hj : i < j then eqToHom (show stepObj f i j = B by simp [stepObj, hj]) ≫ eqToHom (show B = stepObj f i k by simp [stepObj, lt_of_lt_of_le hj h]) else if hk : i < k then eqToHom (show stepObj f i j = A by simp [stepObj, hj]) ≫ f ≫ eqToHom (show B = stepObj f i k by simp [stepObj, hk]) else eqToHom (by simp [stepObj, hj, hk])"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib は IsMultiplicative を別の typeclass にし、transfinite-composition closure から instance を導く。原典の定義にこの帰結を追加してもよいというメタな定義上の選択を表す比較の宣言はなく、3 の同じ closure proof を二度数えない。"
+  },
+  "A.1.2.6": {
+    "page": 791,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.1",
+        "A.1.2",
+        "A.1.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HasLiftingProperty|IsStableUnderTransfiniteComposition|HasSmallObjectArgument|AccessibleSmallObject|generatedLeft|[Ee]nriched|RelativeCellComplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2275,
+        "line_count": 13246
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HasLiftingProperty|IsStableUnderTransfiniteComposition|HasSmallObjectArgument|AccessibleSmallObject|generatedLeft|[Ee]nriched|RelativeCellComplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 64,
+        "line_count": 836
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/LiftingProperties/Basic.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "class HasLiftingProperty : Prop where"
+          },
+          {
+            "line": 60,
+            "head": "theorem op (h : HasLiftingProperty i p) : HasLiftingProperty p.op i.op := ⟨fun {f} {g} sq => by simp only [CommSq.HasLift.iff_unop, Quiver.Hom.unop_op] infer_instance⟩"
+          },
+          {
+            "line": 66,
+            "head": "theorem unop {A B X Y : Cᵒᵖ} {i : A ⟶ B} {p : X ⟶ Y} (h : HasLiftingProperty i p) : HasLiftingProperty p.unop i.unop := ⟨fun {f} {g} sq => by rw [CommSq.HasLift.iff_op] simp only [Quiver.Hom.op_unop] infer_instance⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+        "signatures": [
+          {
+            "line": 219,
+            "head": "class IsStableUnderTransfiniteCompositionOfShape : Prop where"
+          },
+          {
+            "line": 276,
+            "head": "lemma IsStableUnderTransfiniteCompositionOfShape.of_isStableUnderColimitsOfShape [W.IsMultiplicative] [W.RespectsIso] (hJ : ∀ (J : Type w) [LinearOrder J] [SuccOrder J] [OrderBot J] [WellFoundedLT J], W.IsStableUnderColimitsOfShape J) : W.IsStableUnderTransfiniteCompositionOfShape J where"
+          },
+          {
+            "line": 299,
+            "head": "class IsStableUnderTransfiniteComposition : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Smallness.lean",
+        "signatures": [
+          {
+            "line": 8,
+            "head": "The generating class is small in the colimit universe. No model structure is"
+          },
+          {
+            "line": 22,
+            "head": "lemma exists_common_presentability {ι : Type t} [Small.{w} ι] (a : ι → C) [∀ i, IsPresentable.{w} (a i)] : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), ∀ i, IsCardinalPresentable (a i) κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleSmallObject.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "lemma exists_factorization_at (I : MorphismProperty C) [I.HasSmallObjectArgument.{w}] (κ : Cardinal.{w}) [Fact κ.IsRegular] [∀ i : I.toSet, IsCardinalPresentable i.val.left κ] [∀ i : I.toSet, IsCardinalPresentable i.val.right κ] : ∃ d : MorphismProperty.FunctorialFactorizationData I.rlp.llp I.rlp, d.Z.IsCardinalAccessible κ ∧ (AccessibleFactorization.leftFactor d).IsCardinalAccessible κ ∧ (AccessibleFactorization.rightFactor d).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/ClosedGeneratedClass.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma generatedLeft_le_of_closed [G.HasSmallObjectArgument.{w}] [P.IsStableUnderRetracts] [P.IsStableUnderCoproducts.{w}] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] (hG : G ≤ P) : G.rlp.llp ≤ P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev stepObj (_f : A ⟶ B) (i j : J) : C := if i < j then B else A"
+          },
+          {
+            "line": 30,
+            "head": "def stepMap {j k : J} (h : j ≤ k) : stepObj f i j ⟶ stepObj f i k := if hj : i < j then eqToHom (show stepObj f i j = B by simp [stepObj, hj]) ≫ eqToHom (show B = stepObj f i k by simp [stepObj, lt_of_lt_of_le hj h]) else if hk : i < k then eqToHom (show stepObj f i j = A by simp [stepObj, hj]) ≫ f ≫ eqToHom (show B = stepObj f i k by simp [stepObj, hk]) else eqToHom (by simp [stepObj, hj, hk])"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary accessible small-object factorization はあるが、任意の presentable monoidal S に enriched/tensored/cotensored された C で同じ T を S-enriched functor として作る型はない。enriched category や simplicial tensor の別構成だけは分解関手の enriched Hom map と比較されない。"
+  },
+  "A.1.2.8": {
+    "page": 792,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.1",
+        "A.1.2",
+        "A.1.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HasLiftingProperty|IsStableUnderTransfiniteComposition|HasSmallObjectArgument|AccessibleSmallObject|generatedLeft|[Ee]nriched|RelativeCellComplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2275,
+        "line_count": 13246
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HasLiftingProperty|IsStableUnderTransfiniteComposition|HasSmallObjectArgument|AccessibleSmallObject|generatedLeft|[Ee]nriched|RelativeCellComplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 64,
+        "line_count": 836
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/LiftingProperties/Basic.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "class HasLiftingProperty : Prop where"
+          },
+          {
+            "line": 60,
+            "head": "theorem op (h : HasLiftingProperty i p) : HasLiftingProperty p.op i.op := ⟨fun {f} {g} sq => by simp only [CommSq.HasLift.iff_unop, Quiver.Hom.unop_op] infer_instance⟩"
+          },
+          {
+            "line": 66,
+            "head": "theorem unop {A B X Y : Cᵒᵖ} {i : A ⟶ B} {p : X ⟶ Y} (h : HasLiftingProperty i p) : HasLiftingProperty p.unop i.unop := ⟨fun {f} {g} sq => by rw [CommSq.HasLift.iff_op] simp only [Quiver.Hom.op_unop] infer_instance⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+        "signatures": [
+          {
+            "line": 219,
+            "head": "class IsStableUnderTransfiniteCompositionOfShape : Prop where"
+          },
+          {
+            "line": 276,
+            "head": "lemma IsStableUnderTransfiniteCompositionOfShape.of_isStableUnderColimitsOfShape [W.IsMultiplicative] [W.RespectsIso] (hJ : ∀ (J : Type w) [LinearOrder J] [SuccOrder J] [OrderBot J] [WellFoundedLT J], W.IsStableUnderColimitsOfShape J) : W.IsStableUnderTransfiniteCompositionOfShape J where"
+          },
+          {
+            "line": 299,
+            "head": "class IsStableUnderTransfiniteComposition : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Smallness.lean",
+        "signatures": [
+          {
+            "line": 8,
+            "head": "The generating class is small in the colimit universe. No model structure is"
+          },
+          {
+            "line": 22,
+            "head": "lemma exists_common_presentability {ι : Type t} [Small.{w} ι] (a : ι → C) [∀ i, IsPresentable.{w} (a i)] : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), ∀ i, IsCardinalPresentable (a i) κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleSmallObject.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "lemma exists_factorization_at (I : MorphismProperty C) [I.HasSmallObjectArgument.{w}] (κ : Cardinal.{w}) [Fact κ.IsRegular] [∀ i : I.toSet, IsCardinalPresentable i.val.left κ] [∀ i : I.toSet, IsCardinalPresentable i.val.right κ] : ∃ d : MorphismProperty.FunctorialFactorizationData I.rlp.llp I.rlp, d.Z.IsCardinalAccessible κ ∧ (AccessibleFactorization.leftFactor d).IsCardinalAccessible κ ∧ (AccessibleFactorization.rightFactor d).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/ClosedGeneratedClass.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma generatedLeft_le_of_closed [G.HasSmallObjectArgument.{w}] [P.IsStableUnderRetracts] [P.IsStableUnderCoproducts.{w}] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] (hG : G ≤ P) : G.rlp.llp ≤ P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev stepObj (_f : A ⟶ B) (i j : J) : C := if i < j then B else A"
+          },
+          {
+            "line": 30,
+            "head": "def stepMap {j k : J} (h : j ≤ k) : stepObj f i j ⟶ stepObj f i k := if hj : i < j then eqToHom (show stepObj f i j = B by simp [stepObj, hj]) ≫ eqToHom (show B = stepObj f i k by simp [stepObj, lt_of_lt_of_le hj h]) else if hk : i < k then eqToHom (show stepObj f i j = A by simp [stepObj, hj]) ≫ f ≫ eqToHom (show B = stepObj f i k by simp [stepObj, hk]) else eqToHom (by simp [stepObj, hj, hk])"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib llp_rlp_of_hasSmallObjectArgument は pushouts of coproducts の transfinite composition の retract を表示する。原典は各 successor で g∈S を一つだけ使う列を要求し、任意の coproduct attachment を単射の列へ flatten する同じ construction の比較は未供給。coproduct closure は class membership だけで、この指定列の表示を直接与えない。"
+  },
+  "A.1.5.1": {
+    "page": 799,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.4",
+        "A.1.5",
+        "A.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          "SerrePositivity"
+        ],
+        "file_count": 1389,
+        "line_count": 7982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 317,
+        "line_count": 2691
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/RelativeCellComplex/Basic.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "This structure `RelativeCellComplex` is also used in the"
+          },
+          {
+            "line": 48,
+            "head": "structure RelativeCellComplex extends TransfiniteCompositionOfShape J f where"
+          },
+          {
+            "line": 114,
+            "head": "def transfiniteCompositionOfShape' (c : RelativeCellComplex.{w} basicCell f) {I : MorphismProperty C} (hc : ∀ (s : c.Cells), I (basicCell s.j s.i)) : (coproducts.{w} I).pushouts.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "a class of morphisms is stable by transfinite compositions was obtained in"
+          },
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "lemma sigma_isoColimit_naturality {ι : Type w} [HasCoproducts.{w} C] {F G : Discrete ι ⥤ C} (φ : F ⟶ G) : (Sigma.isoColimit F).hom ≫ colimMap φ = Limits.Sigma.map (fun i ↦ φ.app ⟨i⟩) ≫ (Sigma.isoColimit G).hom"
+          },
+          {
+            "line": 230,
+            "head": "lemma sigma_mem (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] {ι : Type w} {A B : ι → C} (f : ∀ i, A i ⟶ B i) (hf : ∀ i, P (f i)) : P (Limits.Sigma.map f)"
+          },
+          {
+            "line": 243,
+            "head": "lemma stableUnderCoproducts (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] : P.IsStableUnderCoproducts.{w} where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Retracts.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma Retract.isCardinalPresentable {X Y : C} (h : Retract Y X) (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalPresentable X κ] : IsCardinalPresentable Y κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/IsCardinalForSmallObjectArgument.lean",
+        "signatures": [
+          {
+            "line": 109,
+            "head": "lemma hasCoproducts : HasCoproducts.{w} C := IsCardinalForSmallObjectArgument.hasCoproducts I κ"
+          },
+          {
+            "line": 501,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          },
+          {
+            "line": 530,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib RelativeCellComplex は linear well-order J 上の continuous chain と各 successor の coproduct attachment であり、任意の well-founded partial order A の principal lower set の colimit から一胞体を付ける S-tree ではない。κ-good の各下方集合の濃度 bound もその構造に含まない。"
+  },
+  "A.1.5.2": {
+    "page": 800,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.4",
+        "A.1.5",
+        "A.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          "SerrePositivity"
+        ],
+        "file_count": 1389,
+        "line_count": 7982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 317,
+        "line_count": 2691
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/RelativeCellComplex/Basic.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "This structure `RelativeCellComplex` is also used in the"
+          },
+          {
+            "line": 48,
+            "head": "structure RelativeCellComplex extends TransfiniteCompositionOfShape J f where"
+          },
+          {
+            "line": 114,
+            "head": "def transfiniteCompositionOfShape' (c : RelativeCellComplex.{w} basicCell f) {I : MorphismProperty C} (hc : ∀ (s : c.Cells), I (basicCell s.j s.i)) : (coproducts.{w} I).pushouts.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "a class of morphisms is stable by transfinite compositions was obtained in"
+          },
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "lemma sigma_isoColimit_naturality {ι : Type w} [HasCoproducts.{w} C] {F G : Discrete ι ⥤ C} (φ : F ⟶ G) : (Sigma.isoColimit F).hom ≫ colimMap φ = Limits.Sigma.map (fun i ↦ φ.app ⟨i⟩) ≫ (Sigma.isoColimit G).hom"
+          },
+          {
+            "line": 230,
+            "head": "lemma sigma_mem (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] {ι : Type w} {A B : ι → C} (f : ∀ i, A i ⟶ B i) (hf : ∀ i, P (f i)) : P (Limits.Sigma.map f)"
+          },
+          {
+            "line": 243,
+            "head": "lemma stableUnderCoproducts (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] : P.IsStableUnderCoproducts.{w} where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Retracts.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma Retract.isCardinalPresentable {X Y : C} (h : Retract Y X) (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalPresentable X κ] : IsCardinalPresentable Y κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/IsCardinalForSmallObjectArgument.lean",
+        "signatures": [
+          {
+            "line": 109,
+            "head": "lemma hasCoproducts : HasCoproducts.{w} C := IsCardinalForSmallObjectArgument.hasCoproducts I κ"
+          },
+          {
+            "line": 501,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          },
+          {
+            "line": 530,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          }
+        ]
+      }
+    ],
+    "decision": "relative cell complex の段階部分列はあるが、原典の任意の S-tree と下方閉 B⊆A の制限、および CX/ における YB の同じ定義はない。線形列の ordinal prefix の colimit だけは partial-order tree の任意の下方集合と未比較。"
+  },
+  "A.1.5.3": {
+    "page": 800,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.4",
+        "A.1.5",
+        "A.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          "SerrePositivity"
+        ],
+        "file_count": 1389,
+        "line_count": 7982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 317,
+        "line_count": 2691
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/RelativeCellComplex/Basic.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "This structure `RelativeCellComplex` is also used in the"
+          },
+          {
+            "line": 48,
+            "head": "structure RelativeCellComplex extends TransfiniteCompositionOfShape J f where"
+          },
+          {
+            "line": 114,
+            "head": "def transfiniteCompositionOfShape' (c : RelativeCellComplex.{w} basicCell f) {I : MorphismProperty C} (hc : ∀ (s : c.Cells), I (basicCell s.j s.i)) : (coproducts.{w} I).pushouts.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "a class of morphisms is stable by transfinite compositions was obtained in"
+          },
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "lemma sigma_isoColimit_naturality {ι : Type w} [HasCoproducts.{w} C] {F G : Discrete ι ⥤ C} (φ : F ⟶ G) : (Sigma.isoColimit F).hom ≫ colimMap φ = Limits.Sigma.map (fun i ↦ φ.app ⟨i⟩) ≫ (Sigma.isoColimit G).hom"
+          },
+          {
+            "line": 230,
+            "head": "lemma sigma_mem (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] {ι : Type w} {A B : ι → C} (f : ∀ i, A i ⟶ B i) (hf : ∀ i, P (f i)) : P (Limits.Sigma.map f)"
+          },
+          {
+            "line": 243,
+            "head": "lemma stableUnderCoproducts (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] : P.IsStableUnderCoproducts.{w} where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Retracts.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma Retract.isCardinalPresentable {X Y : C} (h : Retract Y X) (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalPresentable X κ] : IsCardinalPresentable Y κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/IsCardinalForSmallObjectArgument.lean",
+        "signatures": [
+          {
+            "line": 109,
+            "head": "lemma hasCoproducts : HasCoproducts.{w} C := IsCardinalForSmallObjectArgument.hasCoproducts I κ"
+          },
+          {
+            "line": 501,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          },
+          {
+            "line": 530,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib transfinite composition の pushout 版は候補だが、原典の非線形 S-tree 全体の objectwise pushout を保つ root-change 構成はない。ordinary pushout の存在だけを同じ S-tree の全 principal-lower-set 公理としない。"
+  },
+  "A.1.5.4": {
+    "page": 800,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.4",
+        "A.1.5",
+        "A.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          "SerrePositivity"
+        ],
+        "file_count": 1389,
+        "line_count": 7982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 317,
+        "line_count": 2691
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/RelativeCellComplex/Basic.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "This structure `RelativeCellComplex` is also used in the"
+          },
+          {
+            "line": 48,
+            "head": "structure RelativeCellComplex extends TransfiniteCompositionOfShape J f where"
+          },
+          {
+            "line": 114,
+            "head": "def transfiniteCompositionOfShape' (c : RelativeCellComplex.{w} basicCell f) {I : MorphismProperty C} (hc : ∀ (s : c.Cells), I (basicCell s.j s.i)) : (coproducts.{w} I).pushouts.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "a class of morphisms is stable by transfinite compositions was obtained in"
+          },
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "lemma sigma_isoColimit_naturality {ι : Type w} [HasCoproducts.{w} C] {F G : Discrete ι ⥤ C} (φ : F ⟶ G) : (Sigma.isoColimit F).hom ≫ colimMap φ = Limits.Sigma.map (fun i ↦ φ.app ⟨i⟩) ≫ (Sigma.isoColimit G).hom"
+          },
+          {
+            "line": 230,
+            "head": "lemma sigma_mem (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] {ι : Type w} {A B : ι → C} (f : ∀ i, A i ⟶ B i) (hf : ∀ i, P (f i)) : P (Limits.Sigma.map f)"
+          },
+          {
+            "line": 243,
+            "head": "lemma stableUnderCoproducts (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] : P.IsStableUnderCoproducts.{w} where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Retracts.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma Retract.isCardinalPresentable {X Y : C} (h : Retract Y X) (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalPresentable X κ] : IsCardinalPresentable Y κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/IsCardinalForSmallObjectArgument.lean",
+        "signatures": [
+          {
+            "line": 109,
+            "head": "lemma hasCoproducts : HasCoproducts.{w} C := IsCardinalForSmallObjectArgument.hasCoproducts I κ"
+          },
+          {
+            "line": 501,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          },
+          {
+            "line": 530,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib RelativeCellComplex は初めから線形添字で coproduct attachments を持つが、原典の S-tree の linear case と、一段で単一 S を使う列との同じ比較同型はない。coproduct の class closure だけは単一胞体への表示を与えない。"
+  },
+  "A.1.5.5": {
+    "page": 800,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.4",
+        "A.1.5",
+        "A.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          "SerrePositivity"
+        ],
+        "file_count": 1389,
+        "line_count": 7982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 317,
+        "line_count": 2691
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/RelativeCellComplex/Basic.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "This structure `RelativeCellComplex` is also used in the"
+          },
+          {
+            "line": 48,
+            "head": "structure RelativeCellComplex extends TransfiniteCompositionOfShape J f where"
+          },
+          {
+            "line": 114,
+            "head": "def transfiniteCompositionOfShape' (c : RelativeCellComplex.{w} basicCell f) {I : MorphismProperty C} (hc : ∀ (s : c.Cells), I (basicCell s.j s.i)) : (coproducts.{w} I).pushouts.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "a class of morphisms is stable by transfinite compositions was obtained in"
+          },
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "lemma sigma_isoColimit_naturality {ι : Type w} [HasCoproducts.{w} C] {F G : Discrete ι ⥤ C} (φ : F ⟶ G) : (Sigma.isoColimit F).hom ≫ colimMap φ = Limits.Sigma.map (fun i ↦ φ.app ⟨i⟩) ≫ (Sigma.isoColimit G).hom"
+          },
+          {
+            "line": 230,
+            "head": "lemma sigma_mem (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] {ι : Type w} {A B : ι → C} (f : ∀ i, A i ⟶ B i) (hf : ∀ i, P (f i)) : P (Limits.Sigma.map f)"
+          },
+          {
+            "line": 243,
+            "head": "lemma stableUnderCoproducts (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] : P.IsStableUnderCoproducts.{w} where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Retracts.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma Retract.isCardinalPresentable {X Y : C} (h : Retract Y X) (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalPresentable X κ] : IsCardinalPresentable Y κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/IsCardinalForSmallObjectArgument.lean",
+        "signatures": [
+          {
+            "line": 109,
+            "head": "lemma hasCoproducts : HasCoproducts.{w} C := IsCardinalForSmallObjectArgument.hasCoproducts I κ"
+          },
+          {
+            "line": 501,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          },
+          {
+            "line": 530,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary cofinal colimit の同型はあるが、原典の各 Bα=B∪{β≤α} の YBα が A−B 上の新しい S-tree となる型はない。線形 chain の tail の比較は arbitrary 下方閉 B の principal lower sets と未比較。"
+  },
+  "A.1.5.6": {
+    "page": 800,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.4",
+        "A.1.5",
+        "A.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          "SerrePositivity"
+        ],
+        "file_count": 1389,
+        "line_count": 7982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 317,
+        "line_count": 2691
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/RelativeCellComplex/Basic.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "This structure `RelativeCellComplex` is also used in the"
+          },
+          {
+            "line": 48,
+            "head": "structure RelativeCellComplex extends TransfiniteCompositionOfShape J f where"
+          },
+          {
+            "line": 114,
+            "head": "def transfiniteCompositionOfShape' (c : RelativeCellComplex.{w} basicCell f) {I : MorphismProperty C} (hc : ∀ (s : c.Cells), I (basicCell s.j s.i)) : (coproducts.{w} I).pushouts.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "a class of morphisms is stable by transfinite compositions was obtained in"
+          },
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "lemma sigma_isoColimit_naturality {ι : Type w} [HasCoproducts.{w} C] {F G : Discrete ι ⥤ C} (φ : F ⟶ G) : (Sigma.isoColimit F).hom ≫ colimMap φ = Limits.Sigma.map (fun i ↦ φ.app ⟨i⟩) ≫ (Sigma.isoColimit G).hom"
+          },
+          {
+            "line": 230,
+            "head": "lemma sigma_mem (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] {ι : Type w} {A B : ι → C} (f : ∀ i, A i ⟶ B i) (hf : ∀ i, P (f i)) : P (Limits.Sigma.map f)"
+          },
+          {
+            "line": 243,
+            "head": "lemma stableUnderCoproducts (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] : P.IsStableUnderCoproducts.{w} where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Retracts.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma Retract.isCardinalPresentable {X Y : C} (h : Retract Y X) (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalPresentable X κ] : IsCardinalPresentable Y κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/IsCardinalForSmallObjectArgument.lean",
+        "signatures": [
+          {
+            "line": 109,
+            "head": "lemma hasCoproducts : HasCoproducts.{w} C := IsCardinalForSmallObjectArgument.hasCoproducts I κ"
+          },
+          {
+            "line": 501,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          },
+          {
+            "line": 530,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib generated left lifting class の transfinite closure はあるが、原典の非線形 S-tree を一つの well-order の relative cell complex と比較する構成はない。線形 cell complex から generated class への membership は、その未比較の YA″→YA′ の型には適用できない。"
+  },
+  "A.1.5.7": {
+    "page": 801,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.4",
+        "A.1.5",
+        "A.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          "SerrePositivity"
+        ],
+        "file_count": 1389,
+        "line_count": 7982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 317,
+        "line_count": 2691
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/RelativeCellComplex/Basic.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "This structure `RelativeCellComplex` is also used in the"
+          },
+          {
+            "line": 48,
+            "head": "structure RelativeCellComplex extends TransfiniteCompositionOfShape J f where"
+          },
+          {
+            "line": 114,
+            "head": "def transfiniteCompositionOfShape' (c : RelativeCellComplex.{w} basicCell f) {I : MorphismProperty C} (hc : ∀ (s : c.Cells), I (basicCell s.j s.i)) : (coproducts.{w} I).pushouts.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "a class of morphisms is stable by transfinite compositions was obtained in"
+          },
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "lemma sigma_isoColimit_naturality {ι : Type w} [HasCoproducts.{w} C] {F G : Discrete ι ⥤ C} (φ : F ⟶ G) : (Sigma.isoColimit F).hom ≫ colimMap φ = Limits.Sigma.map (fun i ↦ φ.app ⟨i⟩) ≫ (Sigma.isoColimit G).hom"
+          },
+          {
+            "line": 230,
+            "head": "lemma sigma_mem (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] {ι : Type w} {A B : ι → C} (f : ∀ i, A i ⟶ B i) (hf : ∀ i, P (f i)) : P (Limits.Sigma.map f)"
+          },
+          {
+            "line": 243,
+            "head": "lemma stableUnderCoproducts (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] : P.IsStableUnderCoproducts.{w} where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Retracts.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma Retract.isCardinalPresentable {X Y : C} (h : Retract Y X) (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalPresentable X κ] : IsCardinalPresentable Y κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/IsCardinalForSmallObjectArgument.lean",
+        "signatures": [
+          {
+            "line": 109,
+            "head": "lemma hasCoproducts : HasCoproducts.{w} C := IsCardinalForSmallObjectArgument.hasCoproducts I κ"
+          },
+          {
+            "line": 501,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          },
+          {
+            "line": 530,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の small-object construction の ordinal はあるが、原典の同じ集合 A に新しい partial order を入れ、全ての元の下方閉 B の colimit を不変にする κ-good replacement はない。単なる well-ordering theorem はこの partial-order/refinement と濃度制御を供給しない。"
+  },
+  "A.1.5.8": {
+    "page": 802,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.4",
+        "A.1.5",
+        "A.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          "SerrePositivity"
+        ],
+        "file_count": 1389,
+        "line_count": 7982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 317,
+        "line_count": 2691
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/RelativeCellComplex/Basic.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "This structure `RelativeCellComplex` is also used in the"
+          },
+          {
+            "line": 48,
+            "head": "structure RelativeCellComplex extends TransfiniteCompositionOfShape J f where"
+          },
+          {
+            "line": 114,
+            "head": "def transfiniteCompositionOfShape' (c : RelativeCellComplex.{w} basicCell f) {I : MorphismProperty C} (hc : ∀ (s : c.Cells), I (basicCell s.j s.i)) : (coproducts.{w} I).pushouts.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "a class of morphisms is stable by transfinite compositions was obtained in"
+          },
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "lemma sigma_isoColimit_naturality {ι : Type w} [HasCoproducts.{w} C] {F G : Discrete ι ⥤ C} (φ : F ⟶ G) : (Sigma.isoColimit F).hom ≫ colimMap φ = Limits.Sigma.map (fun i ↦ φ.app ⟨i⟩) ≫ (Sigma.isoColimit G).hom"
+          },
+          {
+            "line": 230,
+            "head": "lemma sigma_mem (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] {ι : Type w} {A B : ι → C} (f : ∀ i, A i ⟶ B i) (hf : ∀ i, P (f i)) : P (Limits.Sigma.map f)"
+          },
+          {
+            "line": 243,
+            "head": "lemma stableUnderCoproducts (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] : P.IsStableUnderCoproducts.{w} where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Retracts.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma Retract.isCardinalPresentable {X Y : C} (h : Retract Y X) (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalPresentable X κ] : IsCardinalPresentable Y κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/IsCardinalForSmallObjectArgument.lean",
+        "signatures": [
+          {
+            "line": 109,
+            "head": "lemma hasCoproducts : HasCoproducts.{w} C := IsCardinalForSmallObjectArgument.hasCoproducts I κ"
+          },
+          {
+            "line": 501,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          },
+          {
+            "line": 530,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib presentable objects の retract closure と idempotent splitting はあるが、元の κ-good S-tree の任意の B0 を含む小さい下方閉 B に TA を制限する同じ構成はない。retract の対象が compact になることだけでは、この指定 subdiagram の冪等作用を保存しない。"
+  },
+  "A.1.5.9": {
+    "page": 803,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.4",
+        "A.1.5",
+        "A.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          "SerrePositivity"
+        ],
+        "file_count": 1389,
+        "line_count": 7982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 317,
+        "line_count": 2691
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/RelativeCellComplex/Basic.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "This structure `RelativeCellComplex` is also used in the"
+          },
+          {
+            "line": 48,
+            "head": "structure RelativeCellComplex extends TransfiniteCompositionOfShape J f where"
+          },
+          {
+            "line": 114,
+            "head": "def transfiniteCompositionOfShape' (c : RelativeCellComplex.{w} basicCell f) {I : MorphismProperty C} (hc : ∀ (s : c.Cells), I (basicCell s.j s.i)) : (coproducts.{w} I).pushouts.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "a class of morphisms is stable by transfinite compositions was obtained in"
+          },
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "lemma sigma_isoColimit_naturality {ι : Type w} [HasCoproducts.{w} C] {F G : Discrete ι ⥤ C} (φ : F ⟶ G) : (Sigma.isoColimit F).hom ≫ colimMap φ = Limits.Sigma.map (fun i ↦ φ.app ⟨i⟩) ≫ (Sigma.isoColimit G).hom"
+          },
+          {
+            "line": 230,
+            "head": "lemma sigma_mem (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] {ι : Type w} {A B : ι → C} (f : ∀ i, A i ⟶ B i) (hf : ∀ i, P (f i)) : P (Limits.Sigma.map f)"
+          },
+          {
+            "line": 243,
+            "head": "lemma stableUnderCoproducts (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] : P.IsStableUnderCoproducts.{w} where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Retracts.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma Retract.isCardinalPresentable {X Y : C} (h : Retract Y X) (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalPresentable X κ] : IsCardinalPresentable Y κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/IsCardinalForSmallObjectArgument.lean",
+        "signatures": [
+          {
+            "line": 109,
+            "head": "lemma hasCoproducts : HasCoproducts.{w} C := IsCardinalForSmallObjectArgument.hasCoproducts I κ"
+          },
+          {
+            "line": 501,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          },
+          {
+            "line": 530,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib RetractArrow は指定二射の retract data だが、原典の木の YB,YA 上の二冪等写像を C と B∩C へ同時に制限する構成はない。通常の idempotent splitting の一意性は C0 を含む下方集合の κ-smallness を供給しない。"
+  },
+  "A.1.5.10": {
+    "page": 805,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.4",
+        "A.1.5",
+        "A.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          "SerrePositivity"
+        ],
+        "file_count": 1389,
+        "line_count": 7982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 317,
+        "line_count": 2691
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/RelativeCellComplex/Basic.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "This structure `RelativeCellComplex` is also used in the"
+          },
+          {
+            "line": 48,
+            "head": "structure RelativeCellComplex extends TransfiniteCompositionOfShape J f where"
+          },
+          {
+            "line": 114,
+            "head": "def transfiniteCompositionOfShape' (c : RelativeCellComplex.{w} basicCell f) {I : MorphismProperty C} (hc : ∀ (s : c.Cells), I (basicCell s.j s.i)) : (coproducts.{w} I).pushouts.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "a class of morphisms is stable by transfinite compositions was obtained in"
+          },
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "lemma sigma_isoColimit_naturality {ι : Type w} [HasCoproducts.{w} C] {F G : Discrete ι ⥤ C} (φ : F ⟶ G) : (Sigma.isoColimit F).hom ≫ colimMap φ = Limits.Sigma.map (fun i ↦ φ.app ⟨i⟩) ≫ (Sigma.isoColimit G).hom"
+          },
+          {
+            "line": 230,
+            "head": "lemma sigma_mem (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] {ι : Type w} {A B : ι → C} (f : ∀ i, A i ⟶ B i) (hf : ∀ i, P (f i)) : P (Limits.Sigma.map f)"
+          },
+          {
+            "line": 243,
+            "head": "lemma stableUnderCoproducts (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] : P.IsStableUnderCoproducts.{w} where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Retracts.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma Retract.isCardinalPresentable {X Y : C} (h : Retract Y X) (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalPresentable X κ] : IsCardinalPresentable Y κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/IsCardinalForSmallObjectArgument.lean",
+        "signatures": [
+          {
+            "line": 109,
+            "head": "lemma hasCoproducts : HasCoproducts.{w} C := IsCardinalForSmallObjectArgument.hasCoproducts I κ"
+          },
+          {
+            "line": 501,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          },
+          {
+            "line": 530,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib presentable retract は元の retract 対象の presentability を示すが、任意の pushout g の retract g′ を κ-compact な両端の f′ の pushout として表示しない。generated class の retract closure は f′ の existence とその weak saturation membership の三条件を同時には供給しない。"
+  },
+  "A.1.5.11": {
+    "page": 806,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.4",
+        "A.1.5",
+        "A.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          "SerrePositivity"
+        ],
+        "file_count": 1389,
+        "line_count": 7982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 317,
+        "line_count": 2691
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/RelativeCellComplex/Basic.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "This structure `RelativeCellComplex` is also used in the"
+          },
+          {
+            "line": 48,
+            "head": "structure RelativeCellComplex extends TransfiniteCompositionOfShape J f where"
+          },
+          {
+            "line": 114,
+            "head": "def transfiniteCompositionOfShape' (c : RelativeCellComplex.{w} basicCell f) {I : MorphismProperty C} (hc : ∀ (s : c.Cells), I (basicCell s.j s.i)) : (coproducts.{w} I).pushouts.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "a class of morphisms is stable by transfinite compositions was obtained in"
+          },
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "lemma sigma_isoColimit_naturality {ι : Type w} [HasCoproducts.{w} C] {F G : Discrete ι ⥤ C} (φ : F ⟶ G) : (Sigma.isoColimit F).hom ≫ colimMap φ = Limits.Sigma.map (fun i ↦ φ.app ⟨i⟩) ≫ (Sigma.isoColimit G).hom"
+          },
+          {
+            "line": 230,
+            "head": "lemma sigma_mem (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] {ι : Type w} {A B : ι → C} (f : ∀ i, A i ⟶ B i) (hf : ∀ i, P (f i)) : P (Limits.Sigma.map f)"
+          },
+          {
+            "line": 243,
+            "head": "lemma stableUnderCoproducts (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] : P.IsStableUnderCoproducts.{w} where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Retracts.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma Retract.isCardinalPresentable {X Y : C} (h : Retract Y X) (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalPresentable X κ] : IsCardinalPresentable Y κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/IsCardinalForSmallObjectArgument.lean",
+        "signatures": [
+          {
+            "line": 109,
+            "head": "lemma hasCoproducts : HasCoproducts.{w} C := IsCardinalForSmallObjectArgument.hasCoproducts I κ"
+          },
+          {
+            "line": 501,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          },
+          {
+            "line": 530,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          }
+        ]
+      }
+    ],
+    "decision": "accessible small-object factorization はあるが、指定した κ-small tree の全 attachment を一つの compact root X′ からの base change として表示しない。原典は (1) の文で X が κ-compact と印刷しており、X′ へ読み替えた版を補ってもいない。"
+  },
+  "A.1.5.12": {
+    "page": 808,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.4",
+        "A.1.5",
+        "A.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          "SerrePositivity"
+        ],
+        "file_count": 1389,
+        "line_count": 7982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 317,
+        "line_count": 2691
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/RelativeCellComplex/Basic.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "This structure `RelativeCellComplex` is also used in the"
+          },
+          {
+            "line": 48,
+            "head": "structure RelativeCellComplex extends TransfiniteCompositionOfShape J f where"
+          },
+          {
+            "line": 114,
+            "head": "def transfiniteCompositionOfShape' (c : RelativeCellComplex.{w} basicCell f) {I : MorphismProperty C} (hc : ∀ (s : c.Cells), I (basicCell s.j s.i)) : (coproducts.{w} I).pushouts.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "a class of morphisms is stable by transfinite compositions was obtained in"
+          },
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "lemma sigma_isoColimit_naturality {ι : Type w} [HasCoproducts.{w} C] {F G : Discrete ι ⥤ C} (φ : F ⟶ G) : (Sigma.isoColimit F).hom ≫ colimMap φ = Limits.Sigma.map (fun i ↦ φ.app ⟨i⟩) ≫ (Sigma.isoColimit G).hom"
+          },
+          {
+            "line": 230,
+            "head": "lemma sigma_mem (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] {ι : Type w} {A B : ι → C} (f : ∀ i, A i ⟶ B i) (hf : ∀ i, P (f i)) : P (Limits.Sigma.map f)"
+          },
+          {
+            "line": 243,
+            "head": "lemma stableUnderCoproducts (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] : P.IsStableUnderCoproducts.{w} where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Retracts.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma Retract.isCardinalPresentable {X Y : C} (h : Retract Y X) (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalPresentable X κ] : IsCardinalPresentable Y κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/IsCardinalForSmallObjectArgument.lean",
+        "signatures": [
+          {
+            "line": 109,
+            "head": "lemma hasCoproducts : HasCoproducts.{w} C := IsCardinalForSmallObjectArgument.hasCoproducts I κ"
+          },
+          {
+            "line": 501,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          },
+          {
+            "line": 530,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib llp_rlp_of_hasSmallObjectArgument は retracts of transfinite pushout-coproduct compositions までで、原典の κ-compact な全生成射に拡大して retract を不要とする列を与えない。stableUnderCoproducts は class membership なので retract を除いた具体的な分解とは異なる。"
+  },
+  "A.1.5.13": {
+    "page": 809,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.4",
+        "A.1.5",
+        "A.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          "SerrePositivity"
+        ],
+        "file_count": 1389,
+        "line_count": 7982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeCellComplex|S.?[Tt]ree|[Gg]ood.?[Tt]ree|[Gg]ood.?[Dd]iagram|[Kk]appa.?[Gg]ood|[Rr]etract|[Cc]oproduct",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 317,
+        "line_count": 2691
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/RelativeCellComplex/Basic.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "This structure `RelativeCellComplex` is also used in the"
+          },
+          {
+            "line": 48,
+            "head": "structure RelativeCellComplex extends TransfiniteCompositionOfShape J f where"
+          },
+          {
+            "line": 114,
+            "head": "def transfiniteCompositionOfShape' (c : RelativeCellComplex.{w} basicCell f) {I : MorphismProperty C} (hc : ∀ (s : c.Cells), I (basicCell s.j s.i)) : (coproducts.{w} I).pushouts.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "a class of morphisms is stable by transfinite compositions was obtained in"
+          },
+          {
+            "line": 88,
+            "head": "class HasSmallObjectArgument : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "lemma sigma_isoColimit_naturality {ι : Type w} [HasCoproducts.{w} C] {F G : Discrete ι ⥤ C} (φ : F ⟶ G) : (Sigma.isoColimit F).hom ≫ colimMap φ = Limits.Sigma.map (fun i ↦ φ.app ⟨i⟩) ≫ (Sigma.isoColimit G).hom"
+          },
+          {
+            "line": 230,
+            "head": "lemma sigma_mem (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] {ι : Type w} {A B : ι → C} (f : ∀ i, A i ⟶ B i) (hf : ∀ i, P (f i)) : P (Limits.Sigma.map f)"
+          },
+          {
+            "line": 243,
+            "head": "lemma stableUnderCoproducts (P : MorphismProperty C) [HasCoproducts.{w} C] [P.IsStableUnderCobaseChange] [P.IsStableUnderTransfiniteComposition.{w}] : P.IsStableUnderCoproducts.{w} where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Retracts.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma Retract.isCardinalPresentable {X Y : C} (h : Retract Y X) (κ : Cardinal.{w}) [Fact κ.IsRegular] [IsCardinalPresentable X κ] : IsCardinalPresentable Y κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SmallObject/IsCardinalForSmallObjectArgument.lean",
+        "signatures": [
+          {
+            "line": 109,
+            "head": "lemma hasCoproducts : HasCoproducts.{w} C := IsCardinalForSmallObjectArgument.hasCoproducts I κ"
+          },
+          {
+            "line": 501,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          },
+          {
+            "line": 530,
+            "head": "then the class `I.rlp.llp` is exactly the class of morphisms that are retracts"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib small-object ordinal chain はあるが、原典の全 f∈S を retract なしの κ-good S-tree の colimit YA と同定する型はない。通常の cell factorization の右写像を split epi にしても、retract を取り除いた木の構成には追加の議論を要する。"
+  }
+}

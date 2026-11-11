@@ -1,0 +1,117 @@
+{
+  "A.2.7.4": {
+    "page": 829,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.6",
+        "A.2.7",
+        "A.2.8"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "skeletalEquivalence|stdSimplex|yonedaEquiv|horn|modelCategoryQuillen|Joyal|ModelCategory",
+          "SerrePositivity"
+        ],
+        "file_count": 7750,
+        "line_count": 51205
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "skeletalEquivalence|stdSimplex|yonedaEquiv|horn|modelCategoryQuillen|Joyal|ModelCategory",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 99,
+        "line_count": 1371
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Horn.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "def horn (n : ℕ) (i : Fin (n + 1)) : (Δ[n] : SSet.{u}).Subcomplex where"
+          },
+          {
+            "line": 44,
+            "head": "lemma mem_horn_iff {n : ℕ} (i : Fin (n + 1)) {m : SimplexCategoryᵒᵖ} (x : Δ[n].obj m) : x ∈ (horn n i).obj m ↔ Set.range (stdSimplex.asOrderHom x) ∪ {i} ≠ Set.univ := Iff.rfl"
+          },
+          {
+            "line": 47,
+            "head": "lemma horn_eq_iSup (n : ℕ) (i : Fin (n + 1)) : horn.{u} n i = ⨆ (j : ({i}ᶜ : Set (Fin (n + 1)))), stdSimplex.face {j.1}ᶜ"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/StdSimplex.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def stdSimplex : CosimplicialObject SSet.{u} := uliftYoneda"
+          },
+          {
+            "line": 53,
+            "head": "abbrev fullyFaithful : stdSimplex.{u}.FullyFaithful := ULiftYoneda.fullyFaithful SimplexCategory"
+          },
+          {
+            "line": 56,
+            "head": "instance : stdSimplex.{u}.Full := fullyFaithful.full"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/CategoryWithFibrations.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma horn_ι_mem_J (n : ℕ) [NeZero n] (i : Fin (n + 1)) : J (horn.{u} n i).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 583,
+            "head": "noncomputable def skeletalEquivalence : SimplexCategory ≌ NonemptyFinLinOrd := Functor.asEquivalence skeletalFunctor"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 0 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCartesianEdge p (SSet.yonedaEquiv f)"
+          },
+          {
+            "line": 35,
+            "head": "def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 1 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCocartesianEdge p (SSet.yonedaEquiv f)"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib は horn RLP と mono による CategoryWithFibrations/Cofibrations の Kan 候補を持つが、CategoryWithFibrations の docstring は Quillen model の存在を TODO とし、本体で証明済みの具体的な ModelCategory SSet instance はない。Inputs/KanQuillen.lean の kanQuillenModel は kanQuillen_model_exists の sorryAx に依存する局所的選択であり、証明済み instance と数えない。Joyal の具体的 model instance もなく、両 model structure の比較や用語上の区別を表す同じ型は未供給。"
+  }
+}

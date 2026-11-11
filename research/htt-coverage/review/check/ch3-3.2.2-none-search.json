@@ -1,0 +1,1666 @@
+{
+  "3.2.2.1": {
+    "page": 179,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.1",
+        "3.2.2",
+        "3.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 931,
+        "line_count": 5709
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHom.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} := SerrePositivity.InfinityCategories.fiberwiseFunctor (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 33,
+            "head": "def fiberwiseHomProjection {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : fiberwiseHom p D ⟶ C := SerrePositivity.InfinityCategories.fiberwiseFunctorProjection (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 40,
+            "head": "def fiberwiseHomCurry {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶ C) (H : pullback a p ⟶ D) : A ⟶ fiberwiseHom p D := SerrePositivity.InfinityCategories.fiberwiseFunctorCurry (overPullbackUnderlying p) ⟨a, H⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomPostCartesian.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma fiberwiseHomPostcomp_inverting_of_diagram {K C D E : SSet.{u}} (p : K ⟶ C) (U : D ⟶ E) (b : (Δ[1] : SSet.{u}) ⟶ C) (H : pullback b p ⟶ D) (hH : ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))) : SerrePositivity.InfinityCategories.FiberwiseHomInvertingEdge p E (SSet.yonedaEquiv (SerrePositivity.InfinityCategories.fiberwiseHomCurry p b H ≫ SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U))"
+          },
+          {
+            "line": 45,
+            "head": "lemma fiberwiseHomPostcomp_preservesCartesianEdges {K C D E : SSet.{u}} [Quasicategory C] [Quasicategory D] [Quasicategory E] (p : K ⟶ C) [CocartesianFibration p] (U : D ⟶ E) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) (he : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p E) ((SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U).app (Opposite.op ⦋1⦌) e)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "strictDiagramMappingSimplex は二つの図式間の mapping space の単体を定める型で、反変列 A0←…←An の全空間 M(φ) ではない。native unstraightening の fiber の同値も、元のこの mapping simplex の厳密な fiber iso との比較を欠く。"
+  },
+  "3.2.2.2": {
+    "page": 179,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.1",
+        "3.2.2",
+        "3.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 931,
+        "line_count": 5709
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHom.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} := SerrePositivity.InfinityCategories.fiberwiseFunctor (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 33,
+            "head": "def fiberwiseHomProjection {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : fiberwiseHom p D ⟶ C := SerrePositivity.InfinityCategories.fiberwiseFunctorProjection (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 40,
+            "head": "def fiberwiseHomCurry {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶ C) (H : pullback a p ⟶ D) : A ⟶ fiberwiseHom p D := SerrePositivity.InfinityCategories.fiberwiseFunctorCurry (overPullbackUnderlying p) ⟨a, H⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomPostCartesian.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma fiberwiseHomPostcomp_inverting_of_diagram {K C D E : SSet.{u}} (p : K ⟶ C) (U : D ⟶ E) (b : (Δ[1] : SSet.{u}) ⟶ C) (H : pullback b p ⟶ D) (hH : ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))) : SerrePositivity.InfinityCategories.FiberwiseHomInvertingEdge p E (SSet.yonedaEquiv (SerrePositivity.InfinityCategories.fiberwiseHomCurry p b H ≫ SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U))"
+          },
+          {
+            "line": 45,
+            "head": "lemma fiberwiseHomPostcomp_preservesCartesianEdges {K C D E : SSet.{u}} [Quasicategory C] [Quasicategory D] [Quasicategory E] (p : K ⟶ C) [CocartesianFibration p] (U : D ⟶ E) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) (he : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p E) ((SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U).app (Opposite.op ⦋1⦌) e)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "native fibration の pullback はあるが、原典の M(φ) と再添字した M(φ′) を同じ strict model で同型にする宣言はない。相対 Hom の base change は別の単体集合である。"
+  },
+  "3.2.2.3": {
+    "page": 179,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.1",
+        "3.2.2",
+        "3.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 931,
+        "line_count": 5709
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHom.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} := SerrePositivity.InfinityCategories.fiberwiseFunctor (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 33,
+            "head": "def fiberwiseHomProjection {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : fiberwiseHom p D ⟶ C := SerrePositivity.InfinityCategories.fiberwiseFunctorProjection (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 40,
+            "head": "def fiberwiseHomCurry {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶ C) (H : pullback a p ⟶ D) : A ⟶ fiberwiseHom p D := SerrePositivity.InfinityCategories.fiberwiseFunctorCurry (overPullbackUnderlying p) ⟨a, H⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomPostCartesian.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma fiberwiseHomPostcomp_inverting_of_diagram {K C D E : SSet.{u}} (p : K ⟶ C) (U : D ⟶ E) (b : (Δ[1] : SSet.{u}) ⟶ C) (H : pullback b p ⟶ D) (hH : ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))) : SerrePositivity.InfinityCategories.FiberwiseHomInvertingEdge p E (SSet.yonedaEquiv (SerrePositivity.InfinityCategories.fiberwiseHomCurry p b H ≫ SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U))"
+          },
+          {
+            "line": 45,
+            "head": "lemma fiberwiseHomPostcomp_preservesCartesianEdges {K C D E : SSet.{u}} [Quasicategory C] [Quasicategory D] [Quasicategory E] (p : K ⟶ C) [CocartesianFibration p] (U : D ⟶ E) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) (he : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p E) ((SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U).app (Opposite.op ⦋1⦌) e)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "native strict diagram の total における transport はあるが、M(φ) の辺 (i≤j,e∈Aj) の表示と e の退化性により決める M♮(φ) の型はない。p-Cartesian edges に印を付ける条件と混同しない。"
+  },
+  "3.2.2.4": {
+    "page": 179,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.1",
+        "3.2.2",
+        "3.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 931,
+        "line_count": 5709
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHom.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} := SerrePositivity.InfinityCategories.fiberwiseFunctor (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 33,
+            "head": "def fiberwiseHomProjection {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : fiberwiseHom p D ⟶ C := SerrePositivity.InfinityCategories.fiberwiseFunctorProjection (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 40,
+            "head": "def fiberwiseHomCurry {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶ C) (H : pullback a p ⟶ D) : A ⟶ fiberwiseHom p D := SerrePositivity.InfinityCategories.fiberwiseFunctorCurry (overPullbackUnderlying p) ⟨a, H⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomPostCartesian.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma fiberwiseHomPostcomp_inverting_of_diagram {K C D E : SSet.{u}} (p : K ⟶ C) (U : D ⟶ E) (b : (Δ[1] : SSet.{u}) ⟶ C) (H : pullback b p ⟶ D) (hH : ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))) : SerrePositivity.InfinityCategories.FiberwiseHomInvertingEdge p E (SSet.yonedaEquiv (SerrePositivity.InfinityCategories.fiberwiseHomCurry p b H ≫ SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U))"
+          },
+          {
+            "line": 45,
+            "head": "lemma fiberwiseHomPostcomp_preservesCartesianEdges {K C D E : SSet.{u}} [Quasicategory C] [Quasicategory D] [Quasicategory E] (p : K ⟶ C) [CocartesianFibration p] (U : D ⟶ E) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) (he : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p E) ((SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U).app (Opposite.op ⦋1⦌) e)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "IsCartesianEdge は存在するが、原典の M(φ) の degenerate fiber edge による marking と全 p-Cartesian edges の marking の二つの対象を比較する型はない。類似の markedHull はこの二つの印ではない。"
+  },
+  "3.2.2.5": {
+    "page": 180,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.1",
+        "3.2.2",
+        "3.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 931,
+        "line_count": 5709
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHom.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} := SerrePositivity.InfinityCategories.fiberwiseFunctor (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 33,
+            "head": "def fiberwiseHomProjection {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : fiberwiseHom p D ⟶ C := SerrePositivity.InfinityCategories.fiberwiseFunctorProjection (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 40,
+            "head": "def fiberwiseHomCurry {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶ C) (H : pullback a p ⟶ D) : A ⟶ fiberwiseHom p D := SerrePositivity.InfinityCategories.fiberwiseFunctorCurry (overPullbackUnderlying p) ⟨a, H⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomPostCartesian.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma fiberwiseHomPostcomp_inverting_of_diagram {K C D E : SSet.{u}} (p : K ⟶ C) (U : D ⟶ E) (b : (Δ[1] : SSet.{u}) ⟶ C) (H : pullback b p ⟶ D) (hH : ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))) : SerrePositivity.InfinityCategories.FiberwiseHomInvertingEdge p E (SSet.yonedaEquiv (SerrePositivity.InfinityCategories.fiberwiseHomCurry p b H ≫ SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U))"
+          },
+          {
+            "line": 45,
+            "head": "lemma fiberwiseHomPostcomp_preservesCartesianEdges {K C D E : SSet.{u}} [Quasicategory C] [Quasicategory D] [Quasicategory E] (p : K ⟶ C) [CocartesianFibration p] (U : D ⟶ E) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) (he : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p E) ((SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U).app (Opposite.op ⦋1⦌) e)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "native strict diagrams の transformation と objectwise equivalence はあるが、原典の M(φ) の同じ total を構成し M(f) の同値を比較する宣言はない。二図式間の mappingSimplex だけでは mapping cylinder 型の total とは同定できない。"
+  },
+  "3.2.2.6": {
+    "page": 180,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.1",
+        "3.2.2",
+        "3.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 931,
+        "line_count": 5709
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHom.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} := SerrePositivity.InfinityCategories.fiberwiseFunctor (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 33,
+            "head": "def fiberwiseHomProjection {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : fiberwiseHom p D ⟶ C := SerrePositivity.InfinityCategories.fiberwiseFunctorProjection (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 40,
+            "head": "def fiberwiseHomCurry {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶ C) (H : pullback a p ⟶ D) : A ⟶ fiberwiseHom p D := SerrePositivity.InfinityCategories.fiberwiseFunctorCurry (overPullbackUnderlying p) ⟨a, H⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomPostCartesian.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma fiberwiseHomPostcomp_inverting_of_diagram {K C D E : SSet.{u}} (p : K ⟶ C) (U : D ⟶ E) (b : (Δ[1] : SSet.{u}) ⟶ C) (H : pullback b p ⟶ D) (hH : ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))) : SerrePositivity.InfinityCategories.FiberwiseHomInvertingEdge p E (SSet.yonedaEquiv (SerrePositivity.InfinityCategories.fiberwiseHomCurry p b H ≫ SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U))"
+          },
+          {
+            "line": 45,
+            "head": "lemma fiberwiseHomPostcomp_preservesCartesianEdges {K C D E : SSet.{u}} [Quasicategory C] [Quasicategory D] [Quasicategory E] (p : K ⟶ C) [CocartesianFibration p] (U : D ⟶ E) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) (he : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p E) ((SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U).app (Opposite.op ⦋1⦌) e)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "native fiberwise equivalence と Cartesian-edge preservation はあるが、M(φ)→X の commutativity・標準 marking・Ai→Xi の同値の三条件を同じ q に束縛する比較はない。dg 圏の QuasiEquivalence は別の概念である。"
+  },
+  "3.2.2.7": {
+    "page": 180,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.1",
+        "3.2.2",
+        "3.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 931,
+        "line_count": 5709
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHom.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} := SerrePositivity.InfinityCategories.fiberwiseFunctor (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 33,
+            "head": "def fiberwiseHomProjection {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : fiberwiseHom p D ⟶ C := SerrePositivity.InfinityCategories.fiberwiseFunctorProjection (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 40,
+            "head": "def fiberwiseHomCurry {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶ C) (H : pullback a p ⟶ D) : A ⟶ fiberwiseHom p D := SerrePositivity.InfinityCategories.fiberwiseFunctorCurry (overPullbackUnderlying p) ⟨a, H⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomPostCartesian.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma fiberwiseHomPostcomp_inverting_of_diagram {K C D E : SSet.{u}} (p : K ⟶ C) (U : D ⟶ E) (b : (Δ[1] : SSet.{u}) ⟶ C) (H : pullback b p ⟶ D) (hH : ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))) : SerrePositivity.InfinityCategories.FiberwiseHomInvertingEdge p E (SSet.yonedaEquiv (SerrePositivity.InfinityCategories.fiberwiseHomCurry p b H ≫ SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U))"
+          },
+          {
+            "line": 45,
+            "head": "lemma fiberwiseHomPostcomp_preservesCartesianEdges {K C D E : SSet.{u}} [Quasicategory C] [Quasicategory D] [Quasicategory E] (p : K ⟶ C) [CocartesianFibration p] (U : D ⟶ E) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) (he : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p E) ((SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U).app (Opposite.op ⦋1⦌) e)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "native straightening は準圏値図式に分類するが、単体 Δn 上の任意の Cartesian fibration を元の M(φ) の strict 列で表し、全 T→Δn 上で q の pullback が同値になる宣言はない。分類の単なる存在からこの特定模型の普遍的同値は直接得られない。"
+  },
+  "3.2.2.8": {
+    "page": 181,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.1",
+        "3.2.2",
+        "3.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 931,
+        "line_count": 5709
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHom.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} := SerrePositivity.InfinityCategories.fiberwiseFunctor (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 33,
+            "head": "def fiberwiseHomProjection {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : fiberwiseHom p D ⟶ C := SerrePositivity.InfinityCategories.fiberwiseFunctorProjection (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 40,
+            "head": "def fiberwiseHomCurry {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶ C) (H : pullback a p ⟶ D) : A ⟶ fiberwiseHom p D := SerrePositivity.InfinityCategories.fiberwiseFunctorCurry (overPullbackUnderlying p) ⟨a, H⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomPostCartesian.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma fiberwiseHomPostcomp_inverting_of_diagram {K C D E : SSet.{u}} (p : K ⟶ C) (U : D ⟶ E) (b : (Δ[1] : SSet.{u}) ⟶ C) (H : pullback b p ⟶ D) (hH : ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))) : SerrePositivity.InfinityCategories.FiberwiseHomInvertingEdge p E (SSet.yonedaEquiv (SerrePositivity.InfinityCategories.fiberwiseHomCurry p b H ≫ SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U))"
+          },
+          {
+            "line": 45,
+            "head": "lemma fiberwiseHomPostcomp_preservesCartesianEdges {K C D E : SSet.{u}} [Quasicategory C] [Quasicategory D] [Quasicategory E] (p : K ⟶ C) [CocartesianFibration p] (U : D ⟶ E) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) (he : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p E) ((SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U).app (Opposite.op ⦋1⦌) e)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "native pullback の component equivalence は準圏・fibration 条件を要求する。原典は任意の単体集合 X→Y→Z に対する iff であり、全標準単体から任意 T への gluing を与える比較はない。準圏の場合だけの fiberwise 判定とは異なる。"
+  },
+  "3.2.2.9": {
+    "page": 182,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.1",
+        "3.2.2",
+        "3.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 931,
+        "line_count": 5709
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHom.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} := SerrePositivity.InfinityCategories.fiberwiseFunctor (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 33,
+            "head": "def fiberwiseHomProjection {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : fiberwiseHom p D ⟶ C := SerrePositivity.InfinityCategories.fiberwiseFunctorProjection (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 40,
+            "head": "def fiberwiseHomCurry {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶ C) (H : pullback a p ⟶ D) : A ⟶ fiberwiseHom p D := SerrePositivity.InfinityCategories.fiberwiseFunctorCurry (overPullbackUnderlying p) ⟨a, H⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomPostCartesian.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma fiberwiseHomPostcomp_inverting_of_diagram {K C D E : SSet.{u}} (p : K ⟶ C) (U : D ⟶ E) (b : (Δ[1] : SSet.{u}) ⟶ C) (H : pullback b p ⟶ D) (hH : ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))) : SerrePositivity.InfinityCategories.FiberwiseHomInvertingEdge p E (SSet.yonedaEquiv (SerrePositivity.InfinityCategories.fiberwiseHomCurry p b H ≫ SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U))"
+          },
+          {
+            "line": 45,
+            "head": "lemma fiberwiseHomPostcomp_preservesCartesianEdges {K C D E : SSet.{u}} [Quasicategory C] [Quasicategory D] [Quasicategory E] (p : K ⟶ C) [CocartesianFibration p] (U : D ⟶ E) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) (he : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p E) ((SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U).app (Opposite.op ⦋1⦌) e)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "native coherent nerve の enriched Hom comparison は存在するが、M(φ) の最後の標準辺 e の合成を C[M(φ)] の元の Hom 上で弱同値とする型はない。任意の可逆辺による合成同値を使うにも、この e の比較が未供給である。"
+  },
+  "3.2.2.10": {
+    "page": 183,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.1",
+        "3.2.2",
+        "3.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 931,
+        "line_count": 5709
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHom.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} := SerrePositivity.InfinityCategories.fiberwiseFunctor (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 33,
+            "head": "def fiberwiseHomProjection {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : fiberwiseHom p D ⟶ C := SerrePositivity.InfinityCategories.fiberwiseFunctorProjection (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 40,
+            "head": "def fiberwiseHomCurry {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶ C) (H : pullback a p ⟶ D) : A ⟶ fiberwiseHom p D := SerrePositivity.InfinityCategories.fiberwiseFunctorCurry (overPullbackUnderlying p) ⟨a, H⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomPostCartesian.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma fiberwiseHomPostcomp_inverting_of_diagram {K C D E : SSet.{u}} (p : K ⟶ C) (U : D ⟶ E) (b : (Δ[1] : SSet.{u}) ⟶ C) (H : pullback b p ⟶ D) (hH : ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))) : SerrePositivity.InfinityCategories.FiberwiseHomInvertingEdge p E (SSet.yonedaEquiv (SerrePositivity.InfinityCategories.fiberwiseHomCurry p b H ≫ SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U))"
+          },
+          {
+            "line": 45,
+            "head": "lemma fiberwiseHomPostcomp_preservesCartesianEdges {K C D E : SSet.{u}} [Quasicategory C] [Quasicategory D] [Quasicategory E] (p : K ⟶ C) [CocartesianFibration p] (U : D ⟶ E) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) (he : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p E) ((SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U).app (Opposite.op ⦋1⦌) e)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "native categorical-equivalence detection はあるが、元の M(φ) に特有の marking と fiberwise criterion の仮定から q の同値を供給しない。既に同値な q を追加で仮定する tautological case は数えない。"
+  },
+  "3.2.2.11": {
+    "page": 184,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.1",
+        "3.2.2",
+        "3.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 931,
+        "line_count": 5709
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHom.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} := SerrePositivity.InfinityCategories.fiberwiseFunctor (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 33,
+            "head": "def fiberwiseHomProjection {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : fiberwiseHom p D ⟶ C := SerrePositivity.InfinityCategories.fiberwiseFunctorProjection (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 40,
+            "head": "def fiberwiseHomCurry {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶ C) (H : pullback a p ⟶ D) : A ⟶ fiberwiseHom p D := SerrePositivity.InfinityCategories.fiberwiseFunctorCurry (overPullbackUnderlying p) ⟨a, H⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomPostCartesian.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma fiberwiseHomPostcomp_inverting_of_diagram {K C D E : SSet.{u}} (p : K ⟶ C) (U : D ⟶ E) (b : (Δ[1] : SSet.{u}) ⟶ C) (H : pullback b p ⟶ D) (hH : ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))) : SerrePositivity.InfinityCategories.FiberwiseHomInvertingEdge p E (SSet.yonedaEquiv (SerrePositivity.InfinityCategories.fiberwiseHomCurry p b H ≫ SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U))"
+          },
+          {
+            "line": 45,
+            "head": "lemma fiberwiseHomPostcomp_preservesCartesianEdges {K C D E : SSet.{u}} [Quasicategory C] [Quasicategory D] [Quasicategory E] (p : K ⟶ C) [CocartesianFibration p] (U : D ⟶ E) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) (he : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p E) ((SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U).app (Opposite.op ⦋1⦌) e)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "native 小模型への diagram factorization はあるが、与えられた marked Aflat×Δnsharp→X♮ を A→An と元の M♮(φ) で厳密に因子化する構成はない。一般の小部分準圏の因子化はこの有限列の universal mapping simplex ではない。"
+  },
+  "3.2.2.13": {
+    "page": 187,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.1",
+        "3.2.2",
+        "3.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 931,
+        "line_count": 5709
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHom.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} := SerrePositivity.InfinityCategories.fiberwiseFunctor (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 33,
+            "head": "def fiberwiseHomProjection {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : fiberwiseHom p D ⟶ C := SerrePositivity.InfinityCategories.fiberwiseFunctorProjection (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 40,
+            "head": "def fiberwiseHomCurry {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶ C) (H : pullback a p ⟶ D) : A ⟶ fiberwiseHom p D := SerrePositivity.InfinityCategories.fiberwiseFunctorCurry (overPullbackUnderlying p) ⟨a, H⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomPostCartesian.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma fiberwiseHomPostcomp_inverting_of_diagram {K C D E : SSet.{u}} (p : K ⟶ C) (U : D ⟶ E) (b : (Δ[1] : SSet.{u}) ⟶ C) (H : pullback b p ⟶ D) (hH : ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))) : SerrePositivity.InfinityCategories.FiberwiseHomInvertingEdge p E (SSet.yonedaEquiv (SerrePositivity.InfinityCategories.fiberwiseHomCurry p b H ≫ SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U))"
+          },
+          {
+            "line": 45,
+            "head": "lemma fiberwiseHomPostcomp_preservesCartesianEdges {K C D E : SSet.{u}} [Quasicategory C] [Quasicategory D] [Quasicategory E] (p : K ⟶ C) [CocartesianFibration p] (U : D ⟶ E) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) (he : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p E) ((SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U).app (Opposite.op ⦋1⦌) e)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "native fiberwiseHom は constant target D への全ての写像をパラメータ化する。原典の可変 q:Y→S に対する同じ底上の HomS(X×SK,Y) とその cocartesian edges の iff との比較がなく、通常の relativeFunctor の固定底の section だけでは T→S を構成しない。"
+  },
+  "3.2.2.14": {
+    "page": 187,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.1",
+        "3.2.2",
+        "3.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 931,
+        "line_count": 5709
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MappingSimplex|mappingSimplex|quasiEquivalence|fiberwiseHom|relativeFunctor|CartesianFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHom.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} := SerrePositivity.InfinityCategories.fiberwiseFunctor (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 33,
+            "head": "def fiberwiseHomProjection {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : fiberwiseHom p D ⟶ C := SerrePositivity.InfinityCategories.fiberwiseFunctorProjection (overPullbackUnderlying p) D"
+          },
+          {
+            "line": 40,
+            "head": "def fiberwiseHomCurry {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶ C) (H : pullback a p ⟶ D) : A ⟶ fiberwiseHom p D := SerrePositivity.InfinityCategories.fiberwiseFunctorCurry (overPullbackUnderlying p) ⟨a, H⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomPostCartesian.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma fiberwiseHomPostcomp_inverting_of_diagram {K C D E : SSet.{u}} (p : K ⟶ C) (U : D ⟶ E) (b : (Δ[1] : SSet.{u}) ⟶ C) (H : pullback b p ⟶ D) (hH : ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))) : SerrePositivity.InfinityCategories.FiberwiseHomInvertingEdge p E (SSet.yonedaEquiv (SerrePositivity.InfinityCategories.fiberwiseHomCurry p b H ≫ SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U))"
+          },
+          {
+            "line": 45,
+            "head": "lemma fiberwiseHomPostcomp_preservesCartesianEdges {K C D E : SSet.{u}} [Quasicategory C] [Quasicategory D] [Quasicategory E] (p : K ⟶ C) [CocartesianFibration p] (U : D ⟶ E) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) (he : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p E) ((SerrePositivity.InfinityCategories.F1B.fiberwiseHomPostcomp p U).app (Opposite.op ⦋1⦌) e)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "native fiberwise equivalence は unmarked の関手の性質である。元の M♮(φ) と X♮ を marked model の同値として比較する class がなく、3.2.2.10 の underlying equivalence と取り違えて一致に数えない。"
+  }
+}

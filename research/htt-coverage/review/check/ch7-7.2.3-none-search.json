@@ -1,0 +1,710 @@
+{
+  "7.2.3.1": {
+    "page": 737,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.2",
+        "7.2.3",
+        "7.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CoveringDimension|coveringDimension|HasSmallInductiveDimension|[Pp]aracompact|[Ss]toneCech|[Tt]ietze",
+          "SerrePositivity"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CoveringDimension|coveringDimension|HasSmallInductiveDimension|[Pp]aracompact|[Ss]toneCech|[Tt]ietze",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 336
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/Paracompact.lean",
+        "signatures": [
+          {
+            "line": 59,
+            "head": "class like `ParacompactSpace.{u v}`. Due to lemma `precise_refinement` below, every open covering"
+          },
+          {
+            "line": 62,
+            "head": "class ParacompactSpace (X : Type v) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 73,
+            "head": "theorem precise_refinement [ParacompactSpace X] (u : ι → Set X) (uo : ∀ a, IsOpen (u a)) (uc : ⋃ i, u i = univ) : ∃ v : ι → Set X, (∀ a, IsOpen (v a)) ∧ ⋃ i, v i = univ ∧ LocallyFinite v ∧ ∀ a, v a ⊆ u a"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactification/StoneCech.lean",
+        "signatures": [
+          {
+            "line": 229,
+            "head": "def PreStoneCech : Type u := Quot fun F G : Ultrafilter α ↦ ∃ x, (F : Filter α) ≤ 𝓝 x ∧ (G : Filter α) ≤ 𝓝 x"
+          },
+          {
+            "line": 234,
+            "head": "instance : TopologicalSpace (PreStoneCech α) := inferInstanceAs (TopologicalSpace <| Quot _)"
+          },
+          {
+            "line": 237,
+            "head": "instance : CompactSpace (PreStoneCech α) := Quot.compactSpace"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/TietzeExtension.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "In addition we provide a class `TietzeExtension` encoding the idea that a topological space"
+          },
+          {
+            "line": 56,
+            "head": "class TietzeExtension (Y : Type v) [TopologicalSpace Y] : Prop where"
+          },
+          {
+            "line": 121,
+            "head": "instance Pi.instTietzeExtension {ι : Type*} {Y : ι → Type v} [∀ i, TopologicalSpace (Y i)] [∀ i, TietzeExtension.{u} (Y i)] : TietzeExtension.{u} (∀ i, Y i) where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib HasSmallInductiveDimensionLT は境界を使う再帰的次元であり、任意の開被覆の refinement の (n+2)-fold intersection を消す covering dimension の述語ではない。paracompact refinement は重複度の指定を供給しない。"
+  },
+  "7.2.3.2": {
+    "page": 737,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.2",
+        "7.2.3",
+        "7.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CoveringDimension|coveringDimension|HasSmallInductiveDimension|[Pp]aracompact|[Ss]toneCech|[Tt]ietze",
+          "SerrePositivity"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CoveringDimension|coveringDimension|HasSmallInductiveDimension|[Pp]aracompact|[Ss]toneCech|[Tt]ietze",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 336
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/Paracompact.lean",
+        "signatures": [
+          {
+            "line": 59,
+            "head": "class like `ParacompactSpace.{u v}`. Due to lemma `precise_refinement` below, every open covering"
+          },
+          {
+            "line": 62,
+            "head": "class ParacompactSpace (X : Type v) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 73,
+            "head": "theorem precise_refinement [ParacompactSpace X] (u : ι → Set X) (uo : ∀ a, IsOpen (u a)) (uc : ⋃ i, u i = univ) : ∃ v : ι → Set X, (∀ a, IsOpen (v a)) ∧ ⋃ i, v i = univ ∧ LocallyFinite v ∧ ∀ a, v a ⊆ u a"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactification/StoneCech.lean",
+        "signatures": [
+          {
+            "line": 229,
+            "head": "def PreStoneCech : Type u := Quot fun F G : Ultrafilter α ↦ ∃ x, (F : Filter α) ≤ 𝓝 x ∧ (G : Filter α) ≤ 𝓝 x"
+          },
+          {
+            "line": 234,
+            "head": "instance : TopologicalSpace (PreStoneCech α) := inferInstanceAs (TopologicalSpace <| Quot _)"
+          },
+          {
+            "line": 237,
+            "head": "instance : CompactSpace (PreStoneCech α) := Quot.compactSpace"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/TietzeExtension.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "In addition we provide a class `TietzeExtension` encoding the idea that a topological space"
+          },
+          {
+            "line": 56,
+            "head": "class TietzeExtension (Y : Type v) [TopologicalSpace Y] : Prop where"
+          },
+          {
+            "line": 121,
+            "head": "instance Pi.instTietzeExtension {ι : Type*} {Y : ι → Type v} [∀ i, TopologicalSpace (Y i)] [∀ i, TietzeExtension.{u} (Y i)] : TietzeExtension.{u} (∀ i, Y i) where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib Stone–Čech compactification はあるが、原典の finite-cover 次元との iff とその compactification での covering dimension の等号はない。normal space の Urysohn 分離だけでは重複度を持つ refinement に至らない。"
+  },
+  "7.2.3.3": {
+    "page": 738,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.2",
+        "7.2.3",
+        "7.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CoveringDimension|coveringDimension|HasSmallInductiveDimension|[Pp]aracompact|[Ss]toneCech|[Tt]ietze",
+          "SerrePositivity"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CoveringDimension|coveringDimension|HasSmallInductiveDimension|[Pp]aracompact|[Ss]toneCech|[Tt]ietze",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 336
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/Paracompact.lean",
+        "signatures": [
+          {
+            "line": 59,
+            "head": "class like `ParacompactSpace.{u v}`. Due to lemma `precise_refinement` below, every open covering"
+          },
+          {
+            "line": 62,
+            "head": "class ParacompactSpace (X : Type v) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 73,
+            "head": "theorem precise_refinement [ParacompactSpace X] (u : ι → Set X) (uo : ∀ a, IsOpen (u a)) (uc : ⋃ i, u i = univ) : ∃ v : ι → Set X, (∀ a, IsOpen (v a)) ∧ ⋃ i, v i = univ ∧ LocallyFinite v ∧ ∀ a, v a ⊆ u a"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactification/StoneCech.lean",
+        "signatures": [
+          {
+            "line": 229,
+            "head": "def PreStoneCech : Type u := Quot fun F G : Ultrafilter α ↦ ∃ x, (F : Filter α) ≤ 𝓝 x ∧ (G : Filter α) ≤ 𝓝 x"
+          },
+          {
+            "line": 234,
+            "head": "instance : TopologicalSpace (PreStoneCech α) := inferInstanceAs (TopologicalSpace <| Quot _)"
+          },
+          {
+            "line": 237,
+            "head": "instance : CompactSpace (PreStoneCech α) := Quot.compactSpace"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/TietzeExtension.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "In addition we provide a class `TietzeExtension` encoding the idea that a topological space"
+          },
+          {
+            "line": 56,
+            "head": "class TietzeExtension (Y : Type v) [TopologicalSpace Y] : Prop where"
+          },
+          {
+            "line": 121,
+            "head": "instance Pi.instTietzeExtension {ι : Type*} {Y : ι → Type v} [∀ i, TopologicalSpace (Y i)] [∀ i, TietzeExtension.{u} (Y i)] : TietzeExtension.{u} (∀ i, Y i) where"
+          }
+        ]
+      }
+    ],
+    "decision": "compact Hausdorff の cofiltered limits はあるが、原典の全 n 次元 compactum の有限 n-dimensional simplicial complex による inverse-limit 表示と次元の上限保存はない。位相的な単体的複体の実現だけは任意の compactum の resolution を供給しない。"
+  },
+  "7.2.3.5": {
+    "page": 738,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.2",
+        "7.2.3",
+        "7.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CoveringDimension|coveringDimension|HasSmallInductiveDimension|[Pp]aracompact|[Ss]toneCech|[Tt]ietze",
+          "SerrePositivity"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CoveringDimension|coveringDimension|HasSmallInductiveDimension|[Pp]aracompact|[Ss]toneCech|[Tt]ietze",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 336
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/Paracompact.lean",
+        "signatures": [
+          {
+            "line": 59,
+            "head": "class like `ParacompactSpace.{u v}`. Due to lemma `precise_refinement` below, every open covering"
+          },
+          {
+            "line": 62,
+            "head": "class ParacompactSpace (X : Type v) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 73,
+            "head": "theorem precise_refinement [ParacompactSpace X] (u : ι → Set X) (uo : ∀ a, IsOpen (u a)) (uc : ⋃ i, u i = univ) : ∃ v : ι → Set X, (∀ a, IsOpen (v a)) ∧ ⋃ i, v i = univ ∧ LocallyFinite v ∧ ∀ a, v a ⊆ u a"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactification/StoneCech.lean",
+        "signatures": [
+          {
+            "line": 229,
+            "head": "def PreStoneCech : Type u := Quot fun F G : Ultrafilter α ↦ ∃ x, (F : Filter α) ≤ 𝓝 x ∧ (G : Filter α) ≤ 𝓝 x"
+          },
+          {
+            "line": 234,
+            "head": "instance : TopologicalSpace (PreStoneCech α) := inferInstanceAs (TopologicalSpace <| Quot _)"
+          },
+          {
+            "line": 237,
+            "head": "instance : CompactSpace (PreStoneCech α) := Quot.compactSpace"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/TietzeExtension.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "In addition we provide a class `TietzeExtension` encoding the idea that a topological space"
+          },
+          {
+            "line": 56,
+            "head": "class TietzeExtension (Y : Type v) [TopologicalSpace Y] : Prop where"
+          },
+          {
+            "line": 121,
+            "head": "instance Pi.instTietzeExtension {ι : Type*} {Y : ι → Type v} [∀ i, TopologicalSpace (Y i)] [∀ i, TietzeExtension.{u} (Y i)] : TietzeExtension.{u} (∀ i, Y i) where"
+          }
+        ]
+      }
+    ],
+    "decision": "paracompact precise_refinement は各 W が一つの U に入ることまでで、原典の各 (k+1)-tuple の intersection が指定 Vβ に入る同時条件を持たない。partition of unity もその全有限 tuple の比較に追加の構成が要る。"
+  },
+  "7.2.3.6": {
+    "page": 739,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.2",
+        "7.2.3",
+        "7.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CoveringDimension|coveringDimension|HasSmallInductiveDimension|[Pp]aracompact|[Ss]toneCech|[Tt]ietze",
+          "SerrePositivity"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CoveringDimension|coveringDimension|HasSmallInductiveDimension|[Pp]aracompact|[Ss]toneCech|[Tt]ietze",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 336
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/Paracompact.lean",
+        "signatures": [
+          {
+            "line": 59,
+            "head": "class like `ParacompactSpace.{u v}`. Due to lemma `precise_refinement` below, every open covering"
+          },
+          {
+            "line": 62,
+            "head": "class ParacompactSpace (X : Type v) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 73,
+            "head": "theorem precise_refinement [ParacompactSpace X] (u : ι → Set X) (uo : ∀ a, IsOpen (u a)) (uc : ⋃ i, u i = univ) : ∃ v : ι → Set X, (∀ a, IsOpen (v a)) ∧ ⋃ i, v i = univ ∧ LocallyFinite v ∧ ∀ a, v a ⊆ u a"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactification/StoneCech.lean",
+        "signatures": [
+          {
+            "line": 229,
+            "head": "def PreStoneCech : Type u := Quot fun F G : Ultrafilter α ↦ ∃ x, (F : Filter α) ≤ 𝓝 x ∧ (G : Filter α) ≤ 𝓝 x"
+          },
+          {
+            "line": 234,
+            "head": "instance : TopologicalSpace (PreStoneCech α) := inferInstanceAs (TopologicalSpace <| Quot _)"
+          },
+          {
+            "line": 237,
+            "head": "instance : CompactSpace (PreStoneCech α) := Quot.compactSpace"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/TietzeExtension.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "In addition we provide a class `TietzeExtension` encoding the idea that a topological space"
+          },
+          {
+            "line": 56,
+            "head": "class TietzeExtension (Y : Type v) [TopologicalSpace Y] : Prop where"
+          },
+          {
+            "line": 121,
+            "head": "instance Pi.instTietzeExtension {ι : Type*} {Y : ι → Type v} [∀ i, TopologicalSpace (Y i)] [∀ i, TietzeExtension.{u} (Y i)] : TietzeExtension.{u} (∀ i, Y i) where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の topological inductive dimension と ordinary sheaf はあるが、原典の covering-dimension bound から n-connective space-valued sheaf の global section を構成する型はない。通常の連続 section の存在は全 higher sheaf の次元の結論ではない。"
+  },
+  "7.2.3.7": {
+    "page": 740,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.2",
+        "7.2.3",
+        "7.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CoveringDimension|coveringDimension|HasSmallInductiveDimension|[Pp]aracompact|[Ss]toneCech|[Tt]ietze",
+          "SerrePositivity"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CoveringDimension|coveringDimension|HasSmallInductiveDimension|[Pp]aracompact|[Ss]toneCech|[Tt]ietze",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 336
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/Paracompact.lean",
+        "signatures": [
+          {
+            "line": 59,
+            "head": "class like `ParacompactSpace.{u v}`. Due to lemma `precise_refinement` below, every open covering"
+          },
+          {
+            "line": 62,
+            "head": "class ParacompactSpace (X : Type v) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 73,
+            "head": "theorem precise_refinement [ParacompactSpace X] (u : ι → Set X) (uo : ∀ a, IsOpen (u a)) (uc : ⋃ i, u i = univ) : ∃ v : ι → Set X, (∀ a, IsOpen (v a)) ∧ ⋃ i, v i = univ ∧ LocallyFinite v ∧ ∀ a, v a ⊆ u a"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactification/StoneCech.lean",
+        "signatures": [
+          {
+            "line": 229,
+            "head": "def PreStoneCech : Type u := Quot fun F G : Ultrafilter α ↦ ∃ x, (F : Filter α) ≤ 𝓝 x ∧ (G : Filter α) ≤ 𝓝 x"
+          },
+          {
+            "line": 234,
+            "head": "instance : TopologicalSpace (PreStoneCech α) := inferInstanceAs (TopologicalSpace <| Quot _)"
+          },
+          {
+            "line": 237,
+            "head": "instance : CompactSpace (PreStoneCech α) := Quot.compactSpace"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/TietzeExtension.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "In addition we provide a class `TietzeExtension` encoding the idea that a topological space"
+          },
+          {
+            "line": 56,
+            "head": "class TietzeExtension (Y : Type v) [TopologicalSpace Y] : Prop where"
+          },
+          {
+            "line": 121,
+            "head": "instance Pi.instTietzeExtension {ι : Type*} {Y : ι → Type v} [∀ i, TopologicalSpace (Y i)] [∀ i, TietzeExtension.{u} (Y i)] : TietzeExtension.{u} (∀ i, Y i) where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の連続写像の extension は一般に実線値 Tietze の型であり、閉 A から全 Sm への延長と covering/homotopy dimension の三条件の iff はない。small inductive dimension の定義のみでも球面の全次数の拡張判定に至らない。"
+  }
+}

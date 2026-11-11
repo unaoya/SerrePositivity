@@ -1,0 +1,459 @@
+{
+  "rule": "codex-review.md §7 / Kerodon §8.1",
+  "checked_at": "2026-11-11T07:31:56.285117+00:00",
+  "reviewed": 49,
+  "to_none": 35,
+  "retained_partial": 14,
+  "retained_kind": {
+    "special": 3,
+    "component": 11
+  },
+  "evidence_reuse": "72宣言についてtoolchain/manifest/自前の再帰的import閉包が公開済み検査から不変。検査元とrevisionはkernel-evidenceの各宣言に記録。",
+  "items": {
+    "1.1.1.1": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "ActionCategory は一般の monoid action の圏。群準同型集合 Hom(G,H) 上の H の共役作用を実際に構成する比較がなく、射 h の式と groupoid 内の同型 iff 共役を結ぶ型もない。一般の action の受け口はこの具体例の証明の部品にとどまる。"
+    },
+    "1.1.1.2": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "Homotopy.curry はホモトピーから compact-open 写像空間への道を作り、FundamentalGroupoid は道の homotopy quotient を作る。任意 X に対する逆 currying と相対 homotopy quotient の比較を構成しておらず、原典の morphisms が homotopy classes of homotopies である同じ Map(X,Y) 圏とは同定していない。"
+    },
+    "1.1.1.4": {
+      "old_status": "partial",
+      "status": "partial",
+      "partial_kind": "special",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "仮定：位相空間 X、n を 0 または 1 に限定（Lean が強い特殊形）。結論：ZerothHomotopy は path components、FundamentalGroupoid の対象は X の点、射は端点付きの道を端点固定ホモトピーで割ったものなので、この二つの n の原典の構成に一致。n≥2 と ∞ の比較は含まない。"
+    },
+    "1.1.1.6": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "EnrichedCategory/EnrichedCat は任意の既存 monoidal V を入力する。CompactlyGenerated は弱 Hausdorff 条件を要求せず、弱 Hausdorff compactly generated 空間の Cartesian monoidal structure とその Hom への特殊化がない。異なる underlying category の受け口を CG の topological category の定義と数えない。"
+    },
+    "1.1.2.2": {
+      "old_status": "partial",
+      "status": "partial",
+      "partial_kind": "component",
+      "candidate_numbers": [
+        "1.3.4.1",
+        "1.3.4.2",
+        "1.5.7.9",
+        "4.1.5.1",
+        "4.1.5.10",
+        "4.7.7.1",
+        "4.7.9.14"
+      ],
+      "accepted": [
+        "1.3.4.1"
+      ],
+      "comparison": "仮定：K が通常圏の nerve である、すなわち原典 (1) の場合（Lean が強い特殊形）。結論：Nerve.strictSegal と StrictSegal.quasicategory から各 inner horn の filler の存在を得る。これは (2) の存在部分に一致するが、一意性と (2)⇒(1) の再構成は得ていない。",
+      "kerodon_comparison": "本文の同じ assertion（原典全体ではなく明記した component・direction・特殊形）を照合。"
+    },
+    "1.1.2.3": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "fundamentalGroupoidNerve_kanComplex は既に IsGroupoid C を仮定して外ホーンを満たす向き。原典が指摘する Λ²₂ の全ての延長の存在から C の射の逆を得る必要条件の向きはなく、逆向きの定理を原文の結論と取り違えない。"
+    },
+    "1.1.2.5": {
+      "old_status": "partial",
+      "status": "partial",
+      "partial_kind": "component",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "仮定：任意の Kan 複体 S（HTT と一致）。結論：Quasicategory S を得るので「Any Kan complex is an ∞-category」という最初の assertion に一致。一般の X の singular complex の Kan 性と π≤∞X の同定は含まない。"
+    },
+    "1.1.3.1": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "Functor.IsEquivalence は通常圏の充満忠実性・本質的全射性。位相 Hom が離散な enriched category を構成してその strong equivalence と比較する型がない。通常圏の類似条件だけを topological enriched strong equivalence の特殊形にしない。"
+    },
+    "1.1.3.2": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "nerveFunctorCompHoFunctorIso は h(N(C))≅C という通常 nerve の随伴に関する定理。位相 enriched C の Hom 空間に π0 を取り合成する同じ hC を構成しない。二つの h の記号だけでは特殊形の比較が成立しない。"
+    },
+    "1.1.3.6": {
+      "old_status": "partial",
+      "status": "partial",
+      "partial_kind": "component",
+      "candidate_numbers": [
+        "3.6.3.1"
+      ],
+      "accepted": [],
+      "comparison": "仮定：位相豊穣関手 F の各 Hom に誘導される連続写像を入力（HTT の各 Hom の条件と一致）。結論：weakHomotopyEquivalences は π0 と全基点・正次数 πn の全単射を要求するので、明記された第一条件の弱ホモトピー同値の判定を表す。F 全体の hF の本質的全射を組み合わせた定義と hC との比較はない。",
+      "kerodon_comparison": "共有する型は上記の限定した assertion 自体の対応とは限らないため転記しない。一般の lifting・Hom・弱同値の補題や異なる模型の定義を、原典の項目全体と同一視しない。"
+    },
+    "1.1.3.7": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "IsIso と nerveFunctorCompHoFunctorIso は通常圏の hN(C) 上の可逆性である。位相豊穣 hD の Hom=π0Map を構成していないので、D 内の射 f をその hD に送る同じ定義にはならず、通常圏との類似だけを残さない。"
+    },
+    "1.1.4.3": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "simplicialNerve_quasicategory は局所 Kan な C の nerve の準圏性という別の結論。原典の準圏値 Hom による ∞-bicategory の解釈や geometric realization/singular による enriched adjunction と hC の比較ではない。局所 Kan 性を仮定に使うだけでは原典の成分の証明としない。"
+    },
+    "1.1.5.2": {
+      "old_status": "partial",
+      "status": "partial",
+      "partial_kind": "component",
+      "candidate_numbers": [
+        "2.4.5.4"
+      ],
+      "accepted": [],
+      "comparison": "仮定：[n] 内の a<b（Lean が強い特殊形）。結論：pathInteriorNerveIso は原典 C[Δn] の Hom=nerve(Path a b) を内部点の冪集合の nerve と同型にするので、明記された cube の記述に一致。全ての a≤b と [n] への enriched weak equivalence、および cosimplicial cofibrant replacement は含まない。",
+      "kerodon_comparison": "共有する型は上記の限定した assertion 自体の対応とは限らないため転記しない。一般の lifting・Hom・弱同値の補題や異なる模型の定義を、原典の項目全体と同一視しない。"
+    },
+    "1.1.5.4": {
+      "old_status": "partial",
+      "status": "partial",
+      "partial_kind": "component",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "仮定：全順序間の単調写像 f,g（HTT と一致）。結論：厚化の functor(g∘f)=functor(f)∘functor(g) を得るので cosimplicial thickening の合成則の assertion に一致。先に述べられた二端点の特別な頂点 pij の像の式をこの宣言では別個に証明していない。"
+    },
+    "1.1.5.5": {
+      "old_status": "partial",
+      "status": "partial",
+      "partial_kind": "component",
+      "candidate_numbers": [
+        "2.4.3.5",
+        "5.5.4.1"
+      ],
+      "accepted": [],
+      "comparison": "仮定：単体的圏 C（HTT の最初の文と一致）。結論：SimplicialNerve C は各 n で厚化から C への enriched functors を持つ単体集合で、最初の定義に一致。位相豊穣 C の Hom に Sing を施す base change と topological nerve の定義は含まない。",
+      "kerodon_comparison": "共有する型は上記の限定した assertion 自体の対応とは限らないため転記しない。一般の lifting・Hom・弱同値の補題や異なる模型の定義を、原典の項目全体と同一視しない。"
+    },
+    "1.1.5.7": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "SimplicialNerve と homEquiv′ はそれぞれ全次数の enriched Hom と零単体の ordinary Hom を定義するが、それだけでは二つの nerve が一般に異なることを証明しない。比較の非同型の実例もなく、二つの定義をこの Warning の結論の成分に数えない。"
+    },
+    "1.1.5.8": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "nerveToCoherent は任意の既存 simplicial C の普通 nerve から coherent nerve への射を作るだけ。Hom が constant な場合にその射が同型になる宣言がなく、topological discrete enrichment との比較もない。比較射の存在を同型性の partial にしない。"
+    },
+    "1.1.5.9": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "SimplicialThickening/Path/compFunctor は全順序上の部分集合と union であり、一般 poset の C[N(A)] を rigidification から同定していない。原典の Hom を鎖の nerve とする同型の比較がなく、全順序で似た式があるだけでは特殊化と数えない。"
+    },
+    "1.1.5.11": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "simplicialNerve_quasicategory は局所 Kan C の絶対 nerve の定理であり、与えられた enriched F の同じ N(F) の InnerFibration を供給しない。終対象への場合に読み替えるにも N(terminal enriched category) と一点の比較が未供給で、絶対結果を相対結果の部品として残さない。"
+    },
+    "1.1.5.12": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "simplicialNerve_quasicategory は局所 Kan な enrichment を既に与えた場合であり、TopCat.toSSet は個別の Hom 空間の singular set。Sing を全 Hom に施した同じ topological C の enriched category とその Kan 性を構成しておらず、元の N(C) の準圏性ではない。"
+    },
+    "1.1.5.14": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "HomotopyCategory は二次切断と辺の homotopy quotient による通常圏、IsPrecompositionEquivalence は準圏への前合成による述語である。原典の C[S] を作って H-enriched hC[S] と比較する宣言がないため、その homotopy category と enriched equivalence の定義には直接対応しない。"
+    },
+    "1.1.5.16": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "幾何学的 weakEquivalences と前合成の IsPrecompositionEquivalence は別々に定義されるが、後者と HTT の H-enriched categorical equivalence の定義との比較はない。用語を別に置いたことだけを、原典の二つの元の概念の区別の成分とは数えない。"
+    },
+    "1.1.5.18": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "inner-anodyne resolution は任意の S から準圏への前合成同値を作る。原典の C[S] から定まる H-enriched equivalence とその述語の比較がなく、原典の指定した |C[S]| の topological nerve との比較もない。違う同値述語による置換だけを残さない。"
+    },
+    "1.2.2.1": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "pinchedHom_kanComplex は準圏の右 pinched Hom の Kan 性を証明するが、原典の定義は任意の S に対する [MapC[S](x,y)]∈H。C[S] の enriched Hom とその Kan 模型との比較がなく、別の写像空間模型の構成だけでは定義の特殊形にならない。"
+    },
+    "1.2.2.2": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "intervalMappingSpace は二頂点固定の path-space fiber。原典の slice S 上の二対象 X→S,Y→S の内部 Hom の fiber と、H-valued vertex mapping space の区別ではない。元の二つの意味のどちらとの比較もなく、別の mapping object を挙げた類似にとどまる。"
+    },
+    "1.2.2.4": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "pinchedHomPiZeroEquiv は右 Hom の π0 と普通 hS の Hom の全単射。原典の可縮な全選択空間にわたる composition と C[S] の Hom との H 同型を与えない。成分上の通常合成が読めることをその高次 composition の部分としない。"
+    },
+    "1.2.3.3": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "coherentUnderlyingHoFunctor は通常の underlying C から hN(C) への関手のみ。Hom に π0 を施した enriched hC を経由する比較と局所 Kan の下での equivalence はない。比較射の存在だけを比較同値の partial にしない。"
+    },
+    "1.2.4.1": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "IsInvertibleEdge.nonempty_inverse は準圏の辺の逆と二単体を返す。位相 enriched C の f と hC の同型、左右の Hom 上の weak equivalences を比較する型ではなく、この模型間の比較がない。"
+    },
+    "1.2.4.2": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "ContinuousMap.HomotopyEquiv は通常の連続写像の両側 homotopy inverse を束ねる。CW 複体の compactly generated 写像空間での enriched equivalence とその HomotopyEquiv の iff を構成しないため、片側の概念の定義だけは数えない。"
+    },
+    "1.2.5.4": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "quasicategoryCore は元の準圏から可逆辺を残す subcomplex である。位相 enriched C の対象を変えず Hom 空間を可逆成分に制限した C′ の enrichment と比較する型はなく、異なる対象の類似 core を数えない。"
+    },
+    "1.2.5.5": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "quasicategoryCore_kanComplex は絶対 core の Kan 性。族の relative core の射影と絶対 core の base-point 特殊化を同定する宣言がなく、原典が参照する Cartesian family の構成そのものの成分とはしない。"
+    },
+    "1.2.5.6": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "continuousKanReplacement とその弱同値単位は単体集合の fibrant replacement に相当する構成。具体的 Joyal ModelCategory と通常 Kan ModelCategory の恒等 Quillen adjunction、同じ cofibration 類、model localization の比較はない。置換だけを模型の局所化の partial にしない。"
+    },
+    "1.2.6.1": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "strictCoherentDiagram は通常の strict simplicial-enriched diagram を coherent nerve の図式に送る。原典は topological enrichment を入力し、特に豊穣同値 C′→C に沿う coherent lifting を述べる。topological base change とその lifting の比較がなく、別の模型の strict-to-coherent 射のみでは対応しない。"
+    },
+    "1.2.7.3": {
+      "old_status": "partial",
+      "status": "partial",
+      "partial_kind": "component",
+      "candidate_numbers": [
+        "1.5.3.7",
+        "1.5.3.8"
+      ],
+      "accepted": [
+        "1.5.3.7"
+      ],
+      "comparison": "仮定：任意の単体集合 K と準圏 C（HTT と一致）。結論：SSet.instQuasicategoryObjIhom により Fun(K,C) は準圏であり、(1) に一致。(2)(3) の HTT の H-enriched categorical equivalence と前合成同値述語の比較はこの検査には含まない。",
+      "kerodon_comparison": "本文の同じ assertion（原典全体ではなく明記した component・direction・特殊形）を照合。"
+    },
+    "1.2.9.1": {
+      "old_status": "partial",
+      "status": "partial",
+      "partial_kind": "special",
+      "candidate_numbers": [
+        "4.3.5.17"
+      ],
+      "accepted": [],
+      "comparison": "仮定：普通圏 C の nerve と c に限定（Lean が強い特殊形）。結論：nerve(Over c) と準圏 sliceOver(nervePoint c) の実際の同型を得るので、naive overcategory が正しい slice を与えるという原典の存在する場合の明示例に一致。一般の topological/enriched C の naive approximation の基準は含まない。",
+      "kerodon_comparison": "共有する型は上記の限定した assertion 自体の対応とは限らないため転記しない。一般の lifting・Hom・弱同値の補題や異なる模型の定義を、原典の項目全体と同一視しない。"
+    },
+    "1.2.9.3": {
+      "old_status": "partial",
+      "status": "partial",
+      "partial_kind": "component",
+      "candidate_numbers": [
+        "4.3.6.1",
+        "5.4.3.4"
+      ],
+      "accepted": [
+        "4.3.6.1"
+      ],
+      "comparison": "仮定：準圏 C と任意の p:K→C（HTT と一致）。結論：sliceOver p の Quasicategory を得るので最初の assertion に一致。後半の任意 categorical equivalence q に対する slice 比較は含まず、trivial Kan fibration の別の十分条件もその代用にはしない。",
+      "kerodon_comparison": "本文の同じ assertion（原典全体ではなく明記した component・direction・特殊形）を照合。"
+    },
+    "1.2.10.1": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "IsFullyFaithful は右 pinched Hom の homotopy equivalence、IsEssentiallySurjective は二次切断 hS 内の VertexIso を用いる。任意 S の H-enriched hC[S] とこの通常 hS/Hom 模型の比較がなく、topological/simplicial enriched F に対しても同じ述語を運べない。定義の類似だけは数えない。"
+    },
+    "1.2.10.2": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "isFullyFaithful_comp_iff と IsEssentiallySurjective.comp は pinched-Hom/VertexIso の native 述語の合成則。原典の異なる模型間を往復した際に H-enriched hF の充満忠実性と本質的全射を保つ同じ比較がなく、合成則だけは原典の模型不変性の成分ではない。"
+    },
+    "1.2.11.1": {
+      "old_status": "partial",
+      "status": "partial",
+      "partial_kind": "component",
+      "candidate_numbers": [
+        "4.1.2.12",
+        "4.1.2.13",
+        "4.1.2.15",
+        "4.1.2.16",
+        "4.1.2.17",
+        "4.8.1.11"
+      ],
+      "accepted": [
+        "4.1.2.17"
+      ],
+      "comparison": "仮定：準圏 C と頂点の集合（原典の full-subcategory 部分と一致）。結論：fullSubcomplexOnVertices は全頂点がその集合に属す単体を全て含む部分複体で、集合が spanned full subcategory を定める記述に一致。一般 fully faithful f の像への同値分解は含まない。",
+      "kerodon_comparison": "本文の同じ assertion（原典全体ではなく明記した component・direction・特殊形）を照合。"
+    },
+    "1.2.12.1": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "isTerminalVertex_iff_pinchedHom_isContractibleKan は slice-extension による strong terminal vertex と右 Hom の可縮性の比較。原典の H-enriched hC[S] あるいは位相 enriched hC の Hom と比較する宣言がなく、この異なる terminal 定義を同じ原典の定義としない。"
+    },
+    "1.2.12.2": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "QCatEquivalence.isTerminalVertex_iff は準圏の strong terminal vertex の native 同値に沿う不変性。原典の H-enriched hC の terminal object と模型間の比較が未供給なので、その invariant の片方だけを原典と同定しない。"
+    },
+    "1.2.12.5": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "pinched Hom の可縮性 iff strong terminal vertex は準圏内の定理。原典の任意の単体集合 C で strong-final⇒H-enriched final の向き、および準圏での H-enriched final の比較はない。単に「終対象」と呼ぶ別述語の iff を原典の主張の部分にしない。"
+    },
+    "1.2.12.7": {
+      "old_status": "partial",
+      "status": "partial",
+      "partial_kind": "component",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "仮定：通常圏 C と t（HTT と一致）。結論：IsTerminal t の存在 iff nerveVertex t が strong terminal vertex であるという終対象の部分を得る。始対象側と H-enriched hN(C) の terminal 定義との比較は含まない。"
+    },
+    "1.2.13.1": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "representableHomotopyLimitComparison_discrete_homotopyEquivalence は単体 enriched C の strict Hom-limit から weighted comparison の homotopy equivalence を得る。原典の topological Hom の全 Y についての product comparison と同じ evaluation map の比較がなく、別模型の豊穣積の十分条件を原典の定義の特殊形にしない。"
+    },
+    "1.2.13.2": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "spacePullbackCone_isLimitCone は KanObject の strict pullback から coherent-nerve cone の普遍性を得る。原典の topological C の各 Hom の二写像と path の三つ組による homotopy-pullback space と同定する比較がなく、別の limit cone の存在を部分と数えない。"
+    },
+    "1.2.13.3": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "weightedCoherentConeSectionsComparison_homotopyEquivalence は単体 enriched 図式の weighted cone と section space の比較。原典の全 Y の topological Map(Y,X) あるいは Map(X,Y) が holim Hom を表す characterization と比較する宣言がなく、証明に用いる別の comparison の同値だけを部分としない。"
+    },
+    "1.2.13.6": {
+      "old_status": "partial",
+      "status": "none",
+      "partial_kind": "",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "spaceProductCone と spacePullbackCone は KanObject の coherent nerve での限界。topological enrichment から得る nerve と classical homotopy limit の同じ錐を比較していないので、別の模型での積・引戻しを原典の特殊形として残さない。"
+    },
+    "1.2.13.7": {
+      "old_status": "partial",
+      "status": "partial",
+      "partial_kind": "component",
+      "candidate_numbers": [],
+      "accepted": [],
+      "comparison": "仮定：準圏間の fully faithful F と、像で余極限となる同じ余錐（原典の full inclusion の場合を含み、Lean が弱い）。結論：元の余錐は余極限なので、C 内の余極限が C′ に属せば C′ でも余極限という明記された帰結に一致。slice 全体の引戻し同一視は含まない。"
+    },
+    "1.2.13.8": {
+      "old_status": "partial",
+      "status": "partial",
+      "partial_kind": "special",
+      "candidate_numbers": [
+        "7.1.4.26",
+        "7.7.2.26",
+        "7.7.2.28"
+      ],
+      "accepted": [
+        "7.1.4.26"
+      ],
+      "comparison": "仮定：準圏 C と図式 p（Lean が強い：スライスを定める q の始域 T が一点）。結論：底の余極限余錐を厳密に持ち上げ、与えた余錐が余極限かを射影で検出する（Lean が弱い：任意の T のスライスは含まない）。",
+      "kerodon_comparison": "本文の同じ assertion（原典全体ではなく明記した component・direction・特殊形）を照合。"
+    }
+  }
+}

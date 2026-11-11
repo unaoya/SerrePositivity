@@ -1,0 +1,954 @@
+{
+  "7.3.3.3": {
+    "page": 764,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.2",
+        "7.3.3",
+        "7.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsSheaf|isSheaf_iff_isLimit|nerveFunctorCategoryIso|nerveCone_isLimit_iff|PreservesFiniteLimits|[Cc]opower|[Tt]ensor",
+          "SerrePositivity"
+        ],
+        "file_count": 5214,
+        "line_count": 62953
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsSheaf|isSheaf_iff_isLimit|nerveFunctorCategoryIso|nerveCone_isLimit_iff|PreservesFiniteLimits|[Cc]opower|[Tt]ensor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 675,
+        "line_count": 12426
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          },
+          {
+            "line": 92,
+            "head": "theorem isSheaf_iso_iff {F G : Presheaf C X} (α : F ≅ G) : F.IsSheaf ↔ G.IsSheaf := Presheaf.isSheaf_of_iso_iff α"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          },
+          {
+            "line": 205,
+            "head": "theorem isSheaf_iff_isLimit_pretopology [HasPullbacks C] (K : Pretopology C) : IsSheaf K.toGrothendieck P ↔ ∀ ⦃X : C⦄ (R : Presieve X), R ∈ K X → Nonempty (IsLimit (P.mapCone (generate R).arrows.cocone.op))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/Limit.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma nerveCone_isLimit_iff (c : Cone F) : IsLimitCone (SerrePositivity.InfinityCategories.F1B.nerveCone c) ↔ Nonempty (IsLimit c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "structure PresentableInfinityObject where"
+          },
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib TopCat.Sheaf の value category は通常圏であり、native SpaceInfinity を値域とする coherent sheaf の full subcomplex はない。Kan-complex-valued strict sheaf を Shv(X;SpaceInfinity) と同一視する model comparison も未供給。"
+  },
+  "7.3.3.4": {
+    "page": 764,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.2",
+        "7.3.3",
+        "7.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsSheaf|isSheaf_iff_isLimit|nerveFunctorCategoryIso|nerveCone_isLimit_iff|PreservesFiniteLimits|[Cc]opower|[Tt]ensor",
+          "SerrePositivity"
+        ],
+        "file_count": 5214,
+        "line_count": 62953
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsSheaf|isSheaf_iff_isLimit|nerveFunctorCategoryIso|nerveCone_isLimit_iff|PreservesFiniteLimits|[Cc]opower|[Tt]ensor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 675,
+        "line_count": 12426
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          },
+          {
+            "line": 92,
+            "head": "theorem isSheaf_iso_iff {F G : Presheaf C X} (α : F ≅ G) : F.IsSheaf ↔ G.IsSheaf := Presheaf.isSheaf_of_iso_iff α"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          },
+          {
+            "line": 205,
+            "head": "theorem isSheaf_iff_isLimit_pretopology [HasPullbacks C] (K : Pretopology C) : IsSheaf K.toGrothendieck P ↔ ∀ ⦃X : C⦄ (R : Presieve X), R ∈ K X → Nonempty (IsLimit (P.mapCone (generate R).arrows.cocone.op))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/Limit.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma nerveCone_isLimit_iff (c : Cone F) : IsLimitCone (SerrePositivity.InfinityCategories.F1B.nerveCone c) ↔ Nonempty (IsLimit c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "structure PresentableInfinityObject where"
+          },
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          }
+        ]
+      }
+    ],
+    "decision": "native functor の finite limit 保存と ordinary Kan extension はあるが、原典の C0,D0 上の二つの制限とその pushout からの right Kan extension の三条件の iff はない。通常の product diagram の極限を計算するだけでは同じ restriction-union の比較に至らない。"
+  },
+  "7.3.3.5": {
+    "page": 765,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.2",
+        "7.3.3",
+        "7.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsSheaf|isSheaf_iff_isLimit|nerveFunctorCategoryIso|nerveCone_isLimit_iff|PreservesFiniteLimits|[Cc]opower|[Tt]ensor",
+          "SerrePositivity"
+        ],
+        "file_count": 5214,
+        "line_count": 62953
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsSheaf|isSheaf_iff_isLimit|nerveFunctorCategoryIso|nerveCone_isLimit_iff|PreservesFiniteLimits|[Cc]opower|[Tt]ensor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 675,
+        "line_count": 12426
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          },
+          {
+            "line": 92,
+            "head": "theorem isSheaf_iso_iff {F G : Presheaf C X} (α : F ≅ G) : F.IsSheaf ↔ G.IsSheaf := Presheaf.isSheaf_of_iso_iff α"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          },
+          {
+            "line": 205,
+            "head": "theorem isSheaf_iff_isLimit_pretopology [HasPullbacks C] (K : Pretopology C) : IsSheaf K.toGrothendieck P ↔ ∀ ⦃X : C⦄ (R : Presieve X), R ∈ K X → Nonempty (IsLimit (P.mapCone (generate R).arrows.cocone.op))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/Limit.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma nerveCone_isLimit_iff (c : Cone F) : IsLimitCone (SerrePositivity.InfinityCategories.F1B.nerveCone c) ↔ Nonempty (IsLimit c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "structure PresentableInfinityObject where"
+          },
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          }
+        ]
+      }
+    ],
+    "decision": "native presheaf の coherent functor category はあるが、原典の Fun*(X,P(C×D)) の全 geometric morphism の mapping category の積同値はない。ordinary product of sites の presheaf category は RTop の product の普遍性と未比較。"
+  },
+  "7.3.3.6": {
+    "page": 766,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.2",
+        "7.3.3",
+        "7.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsSheaf|isSheaf_iff_isLimit|nerveFunctorCategoryIso|nerveCone_isLimit_iff|PreservesFiniteLimits|[Cc]opower|[Tt]ensor",
+          "SerrePositivity"
+        ],
+        "file_count": 5214,
+        "line_count": 62953
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsSheaf|isSheaf_iff_isLimit|nerveFunctorCategoryIso|nerveCone_isLimit_iff|PreservesFiniteLimits|[Cc]opower|[Tt]ensor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 675,
+        "line_count": 12426
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          },
+          {
+            "line": 92,
+            "head": "theorem isSheaf_iso_iff {F G : Presheaf C X} (α : F ≅ G) : F.IsSheaf ↔ G.IsSheaf := Presheaf.isSheaf_of_iso_iff α"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          },
+          {
+            "line": 205,
+            "head": "theorem isSheaf_iff_isLimit_pretopology [HasPullbacks C] (K : Pretopology C) : IsSheaf K.toGrothendieck P ↔ ∀ ⦃X : C⦄ (R : Presieve X), R ∈ K X → Nonempty (IsLimit (P.mapCone (generate R).arrows.cocone.op))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/Limit.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma nerveCone_isLimit_iff (c : Cone F) : IsLimitCone (SerrePositivity.InfinityCategories.F1B.nerveCone c) ↔ Nonempty (IsLimit c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "structure PresentableInfinityObject where"
+          },
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          }
+        ]
+      }
+    ],
+    "decision": "native coproduct/copower はあるが、任意の ∞-topos X の構造逆像 p* と X×p*S の product による同じ tensor functor と各変数の colimit 保存はない。Space における cartesian product の部品を一般の X の tensor としない。"
+  },
+  "7.3.3.7": {
+    "page": 766,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.2",
+        "7.3.3",
+        "7.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsSheaf|isSheaf_iff_isLimit|nerveFunctorCategoryIso|nerveCone_isLimit_iff|PreservesFiniteLimits|[Cc]opower|[Tt]ensor",
+          "SerrePositivity"
+        ],
+        "file_count": 5214,
+        "line_count": 62953
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsSheaf|isSheaf_iff_isLimit|nerveFunctorCategoryIso|nerveCone_isLimit_iff|PreservesFiniteLimits|[Cc]opower|[Tt]ensor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 675,
+        "line_count": 12426
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          },
+          {
+            "line": 92,
+            "head": "theorem isSheaf_iso_iff {F G : Presheaf C X} (α : F ≅ G) : F.IsSheaf ↔ G.IsSheaf := Presheaf.isSheaf_of_iso_iff α"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          },
+          {
+            "line": 205,
+            "head": "theorem isSheaf_iff_isLimit_pretopology [HasPullbacks C] (K : Pretopology C) : IsSheaf K.toGrothendieck P ↔ ∀ ⦃X : C⦄ (R : Presieve X), R ∈ K X → Nonempty (IsLimit (P.mapCone (generate R).arrows.cocone.op))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/Limit.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma nerveCone_isLimit_iff (c : Cone F) : IsLimitCone (SerrePositivity.InfinityCategories.F1B.nerveCone c) ↔ Nonempty (IsLimit c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "structure PresentableInfinityObject where"
+          },
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          }
+        ]
+      }
+    ],
+    "decision": "generic native adjunction や ordinary copower adjunction はあるが、原典の X⊗C idP(C) と corepresented g の後合成 G の同じ随伴の比較はない。通常の Hom-tensor adjunction はこの高次トポスの product tensor と未比較。"
+  },
+  "7.3.3.8": {
+    "page": 766,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.2",
+        "7.3.3",
+        "7.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsSheaf|isSheaf_iff_isLimit|nerveFunctorCategoryIso|nerveCone_isLimit_iff|PreservesFiniteLimits|[Cc]opower|[Tt]ensor",
+          "SerrePositivity"
+        ],
+        "file_count": 5214,
+        "line_count": 62953
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsSheaf|isSheaf_iff_isLimit|nerveFunctorCategoryIso|nerveCone_isLimit_iff|PreservesFiniteLimits|[Cc]opower|[Tt]ensor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 675,
+        "line_count": 12426
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          },
+          {
+            "line": 92,
+            "head": "theorem isSheaf_iso_iff {F G : Presheaf C X} (α : F ≅ G) : F.IsSheaf ↔ G.IsSheaf := Presheaf.isSheaf_of_iso_iff α"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          },
+          {
+            "line": 205,
+            "head": "theorem isSheaf_iff_isLimit_pretopology [HasPullbacks C] (K : Pretopology C) : IsSheaf K.toGrothendieck P ↔ ∀ ⦃X : C⦄ (R : Presieve X), R ∈ K X → Nonempty (IsLimit (P.mapCone (generate R).arrows.cocone.op))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/Limit.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma nerveCone_isLimit_iff (c : Cone F) : IsLimitCone (SerrePositivity.InfinityCategories.F1B.nerveCone c) ↔ Nonempty (IsLimit c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "structure PresentableInfinityObject where"
+          },
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          }
+        ]
+      }
+    ],
+    "decision": "native functor categories の pointwise limits はあるが、P(C;X) の global evaluation と structure p* による Fun* の二つの同値はない。ordinary category-valued presheaf の nerve の比較だけでは任意の source higher topos の geometric morphisms を制御しない。"
+  },
+  "7.3.3.9": {
+    "page": 767,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.2",
+        "7.3.3",
+        "7.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsSheaf|isSheaf_iff_isLimit|nerveFunctorCategoryIso|nerveCone_isLimit_iff|PreservesFiniteLimits|[Cc]opower|[Tt]ensor",
+          "SerrePositivity"
+        ],
+        "file_count": 5214,
+        "line_count": 62953
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsSheaf|isSheaf_iff_isLimit|nerveFunctorCategoryIso|nerveCone_isLimit_iff|PreservesFiniteLimits|[Cc]opower|[Tt]ensor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 675,
+        "line_count": 12426
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          },
+          {
+            "line": 92,
+            "head": "theorem isSheaf_iso_iff {F G : Presheaf C X} (α : F ≅ G) : F.IsSheaf ↔ G.IsSheaf := Presheaf.isSheaf_of_iso_iff α"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          },
+          {
+            "line": 205,
+            "head": "theorem isSheaf_iff_isLimit_pretopology [HasPullbacks C] (K : Pretopology C) : IsSheaf K.toGrothendieck P ↔ ∀ ⦃X : C⦄ (R : Presieve X), R ∈ K X → Nonempty (IsLimit (P.mapCone (generate R).arrows.cocone.op))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/Limit.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma nerveCone_isLimit_iff (c : Cone F) : IsLimitCone (SerrePositivity.InfinityCategories.F1B.nerveCone c) ↔ Nonempty (IsLimit c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "structure PresentableInfinityObject where"
+          },
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheaf category はあるが、任意の ∞-topos X を値域とする Shv(T;X) の higher topos 性と RTop の product の mapping-category 普遍性はない。通常の D-valued sheaves の nerve に特殊化しても、指定 geometric projection の比較が要る。"
+  }
+}

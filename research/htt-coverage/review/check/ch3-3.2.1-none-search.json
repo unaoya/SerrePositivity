@@ -1,0 +1,1842 @@
+{
+  "3.2.1.1": {
+    "page": 170,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "native coherent unstraightening の transport はあるが、原典の C[X▹] の pushout を使う Stφ の MapCopX(c,*) の τ* 作用と c̃,f̃ に同定する宣言はない。単なる enriched Hom の作用はこの特定の pushout の標準辺とは異なる。"
+  },
+  "3.2.1.2": {
+    "page": 171,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "native quasicategoryEnrichedDiagram の mappingSimplex は strict diagram の自然変換の単体であり、SetΔ+/S の Stφ+ の標的の印 G*f̃ を指定するものではない。marked object の圏と任意 φ の pushout との比較を欠く。"
+  },
+  "3.2.1.3": {
+    "page": 171,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "SmallMarkedQuasicategoryHull は指定された可逆辺を小模型に残す構成で、任意 marked (X,E) の StφX 上の最小の functorial marking ではない。unmarked straightening の自然性から同じ marking の最小性は得られない。"
+  },
+  "3.2.1.4": {
+    "page": 171,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "native strict diagram の base change と一般の左随伴の colimit 保存はあるが、原典の Stφ+、Stφ′+、π! による三つの同じ marked functor の同型を供給しない。generic 左 Kan extension は Stφ+ との比較を持たない。"
+  },
+  "3.2.1.5": {
+    "page": 172,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "native straightening equivalence はあるが、任意 φ と全 marked objects の圏での Stφ+ の右随伴 Unφ+ ではない。既存の QCatAdjunction をこの定義の marked functor に適用する入力がない。"
+  },
+  "3.2.1.6": {
+    "page": 172,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "native の rightStraightening と unstraightening は選ばれた別の準圏模型で、φ=idC[S] の原典の SetΔ+-valued adjunction の同じ functor との比較はない。単に同じ名称の suffix を標準 StS+/UnS+ の宣言に数えない。"
+  },
+  "3.2.1.7": {
+    "page": 172,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary projective model の一般論はあるが、SetΔ+/S 上の marked Stφ+ の具体的左関手と projective model instance の比較がない。underlying SSet の mono 保存だけでも標的の projective cofibration の同じ class を供給しない。"
+  },
+  "3.2.1.8": {
+    "page": 173,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "unmarked right-anodyne tensor はあるが、Δn×Δ¹ の最後の縦辺だけを marking に加えた包含の marked anodyne 性を持たない。underlying subset の形が同じでもマーキング拡大の class の比較が欠ける。"
+  },
+  "3.2.1.9": {
+    "page": 173,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "native boundary/cocartesian extension は存在するが、任意 K′⊆K と終頂点集合 A から指定する marked anodyne inclusion の一般判定ではない。通常の inner anodyne は終端での selected marking を扱わない。"
+  },
+  "3.2.1.10": {
+    "page": 173,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "native InvertsEdges と辺の localization はあるが、(X,E)→(X,E′) の marked model の trivial cofibration との iff はない。反転辺族の同じ local objects を比べるだけでは marked model class の宣言を得られない。"
+  },
+  "3.2.1.11": {
+    "page": 174,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "unmarked の horn lifting や weak equivalence の一般論は、原典の Stφ+ の projective-trivial-cofibration preservation ではない。marked source と標的の ModelCategory instance の両方が比較されていない。"
+  },
+  "3.2.1.12": {
+    "page": 176,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary functor の product は存在するが、SetΔ+ を値にする二つの simplicial functor とその marking の product の型がない。QCat の enriched tensor は別の target category の構成である。"
+  },
+  "3.2.1.13": {
+    "page": 176,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "native unstraightening の mapping comparison はあるが、任意 φ,φ′ の Stφ⊠φ′+(M×M′)→Stφ+(M)⊠Stφ′+(M′) の同じ比較写像はない。generic product の universal property はこの marked weak equivalence を供給しない。"
+  },
+  "3.2.1.14": {
+    "page": 177,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "native simplicial resolution と実現はあるが、原典の Q• による T(M) の marking と元の M の Cartesian-equivalence class を結ぶ宣言はない。unmarked の resolution weak equivalence は marked condition の比較を欠く。"
+  },
+  "3.2.1.15": {
+    "page": 178,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "generic tensor・cotensor の随伴はあるが、Stφ+(M×K) と Stφ+(M)⊠K を同じ marked functor として比較しない。原典に現れる M/X の表記も補って別の unmarked product の定理を対応させない。"
+  },
+  "3.2.1.16": {
+    "page": 178,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.5",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          "SerrePositivity"
+        ],
+        "file_count": 2562,
+        "line_count": 12622
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|markedHull|InvertsEdges|Straightening|Unstraightening|Quillen|mappingSimplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 62
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          },
+          {
+            "line": 44,
+            "head": "lemma markedHull_reflects_edge (i : ι) {x y : ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj) _⦋0⦌} (e : Truncated.Edge (X := (truncation 2).obj ((SSet.uliftFunctor.{v, u}).obj (markedHull.{u, v} A s hs).obj)) x y) (he : (markedHull.{u, v} A s hs).inclusion.app (Opposite.op ⦋1⦌) e.edge = s i) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "def QuasicategoryEnrichedDiagram.mappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) : strictDiagramMappingSimplex (D.evaluate X ⋙ quasicategoryObjectForget) (D.evaluate Y ⋙ quasicategoryObjectForget) n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      }
+    ],
+    "decision": "native straightening の準圏同値は対象が既に fibration に制限されている。任意の marked objects の Cartesian equivalence を Stφ+ が objectwise に保存するという全モデル対象上の同じ関手ではなく、比較もない。"
+  }
+}

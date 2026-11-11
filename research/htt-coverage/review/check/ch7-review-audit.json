@@ -1,0 +1,46 @@
+{
+  "checked_at": "2026-11-11T06:38:36.781438+00:00",
+  "lean_base": "9efb8a9998726502c57852514c8f1ce62cea880d",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "chapter_items": 203,
+  "status_counts": {
+    "none": 186,
+    "mathlib": 8,
+    "partial": 8,
+    "own": 1
+  },
+  "partial_kind_counts": {
+    "component": 5,
+    "direction": 1,
+    "special": 2
+  },
+  "unsure": 0,
+  "kernel_declarations": 27,
+  "new_kernel_checks": 24,
+  "unchanged_published_kernel_checks": 3,
+  "new_kernel_run": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+  "new_kernel_run_declarations": 90,
+  "new_kernel_run_exit_code": 0,
+  "evidence_reuse": "toolchain・manifest・自前の再帰的 import 閉包が元の公開済み検査から不変であることを宣言ごとに確認。",
+  "axioms": "propext・Classical.choice・Quot.sound のみ。追加公理・sorryAx なし。",
+  "none_search_items": 186,
+  "none_search_method": "各項目で自前・Mathlib と同じ／隣接 subsection の引用を検索し、近傍候補の型と本文を比較。章の docstring 引用0件だが全て個別記録。§4.3′の subsection 単位省略は使わない。",
+  "kerodon_filled_chapter": 0,
+  "kerodon_filled_all": 209,
+  "source_edition": "2017-04-09; SHA-256 は toc.md",
+  "goal_items": {},
+  "items_changed_fields": [
+    "title",
+    "kerodon"
+  ],
+  "review_sha256": "eebdce62a57bf84cf4f0c9443888b926450921b1377f099af19479bd3c1e4d51",
+  "deferred": "付録を続行後、第1・2章の旧 partial 158件の再判定と全体 summary を実施する。",
+  "source_notes": [
+    "7.3.4.10",
+    "7.3.5.1",
+    "7.3.5.2",
+    "7.3.6.1"
+  ],
+  "source_images_verified": true
+}
