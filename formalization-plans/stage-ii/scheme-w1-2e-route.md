@@ -49,7 +49,9 @@
 
 これらのモジュールを個別の対象ビルドで確認した。上の宣言のうち、制限の合成、短完全列、ホモトピー同値とコホモロジー同型、有限性の降下帰納、斉次生成元、核の次数分解を `#print axioms` で確認し、依存公理はいずれも `propext`・`Classical.choice`・`Quot.sound` のみだった。コミットは `f6015b9e1` と `faf8a15d1`。
 
-残りは、Laurent 単項式 Čech の有限性をコホモロジーの型へつなぎ、標準開の斉次局所化の図式との自然同型で捻りへ移すこと。その後、有限斉次自由表示の各項で局所化の完全性を使い、有限生成次数付き加群に上の降下帰納を適用する。射影版の有限性と Rees 加群の評価は、この段階では検証を完了していない。
+Laurent 単項式 Čech の有限性は `projectiveLaurentCechHomology_finite` でコホモロジーの型まで接続した（`cc2fbc94a`）。`projectiveLaurentGradedLocalizationLinearEquiv` は分数の指定次数と Laurent 単項式の次数成分を同一視し、`projectiveLaurentLocalizationLinearEquiv_restriction_mk` は分母を広げる式とチャートの制限を比較する。これらを含む 2e の import 閉包のうち AlgebraicGeometry の 401 宣言を再帰的に監査し、標準三公理のみを確認した。
+
+残りは、標準開の斉次局所化の図式との自然同型で Laurent の有限性を捻りへ移すこと。その後、有限斉次自由表示の各項で局所化の完全性を使い、有限生成次数付き加群に上の降下帰納を適用する。射影版の有限性と Rees 加群の評価は、この段階では検証を完了していない。
 
 ## 2g の被覆模型に渡す材料
 
@@ -79,7 +81,7 @@
 
 ## 対象ビルドの順番
 
-1. 検証は `math/scheme` で共有の `scripts/refactor/with_build_lock.sh --wait 1800` を通す。11-11 の整理券方式では昼夜の順位はスクリプトが判定する。取得後に他の `lake build` がないことを確かめ、一回の検証は 30 分以内に収める。
+1. 検証は `math/scheme` で共有の `scripts/refactor/with_build_lock.sh --wait 3600` を通す。11-11 の整理券方式では昼夜の順位はスクリプトが判定する。同じ worktree の待機は一つにまとめる。取得後に他の `lake build` がないことを確かめ、一回の検証は 30 分以内に収める。
 2. `ProjStandardOpen` の有限交叉、環同型、制限写像の自然性を先に単体で検証する。11-11 の対象ビルドで確認済み。
 3. `CechTupleContraction` の境界・先頭追加・ホモトピー方程式と、`ProjectiveCechComplex` の余境界・成分射影は対象ビルドで確認済み。`ProjectiveCechComparison` で整列写像の余境界との可換性と、全タプル版へのホモトピー同値を組む。
 4. `ProjectiveCechFiniteness` の指数有限性・降下帰納と、`ProjectiveCechGradedLocalization` の斉次分数表示・完全性は対象ビルドで確認済み。次に `ProjectiveCechGradedRestriction` の制限、`ProjectiveLaurentChart` の Laurent 単項式表示・縮約・有限性を確認する。
