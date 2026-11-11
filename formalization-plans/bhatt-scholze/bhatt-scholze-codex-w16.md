@@ -58,3 +58,7 @@ BS-W14 で作った界面 `EInfinityTheory` の実例 `barrattEcclesTheory`（dr
 5. Tot の群（§3 の 2 のとおり）
 
 停止点の区切りは §1 の段に従い、1・2 の後に一度、3・4 の後に一度報告する。
+
+## 5. 追記（2026-11-11 夕、調整役）：停止点 3 の取り込み
+
+停止点 3（22438e10b、E3 の八欄と Tot 以外の E4、無条件の `barrattEcclesBaseChange_forget`）を main に取り込んだ。新規 116 モジュールを EInfinity の入口と段階 II の監査に登録した。残りは §4 の順（E2 の余積・テンソルの比較 → sifted の保存 → Tot の群、G10 待ち）と段 4 の実例の組み立て。［一般∞］の印の 5 本（`LocalizedAdjunctionWhiskering`・`LocalizedAdjunctionTriangles`・`LocalizedAdjunctionAssembly`・`LocalizedNerveNatTrans`・`OrdinaryHoComposition`）の置き場所は、KL-W1 の取り込みの後に調整役が決める。
