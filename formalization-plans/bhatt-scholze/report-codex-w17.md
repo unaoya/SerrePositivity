@@ -147,3 +147,15 @@ H3・H4 は、指示書 §3 の⑤bの四モジュールの main への取り込
 **検証。** 全15モジュールの対象ビルドが成功。公開72宣言の `#check`・`#print axioms`・`#print sorries` が通り、sorry なし、依存公理は `propext`・`Classical.choice`・`Quot.sound` のみ。KST の直接 import、sorry、公理の新設はない。新しい鍵で整理券は常に一枚とし、鍵は対象ビルドと Lean の宣言監査の間だけ使用した。
 
 **残り。** 停止点3にはまだ達していない。⑤b の `AffineCechFrameLift`・`BigCechVertexFrame`・`AffineEnvelope*` を要する部分と H4 は、main への取り込み通知の後に進める。⑤b の枝の直接 merge はしていない。一般の包絡の存在を今回追加したという意味ではなく、一般は HasEnvelopes の下の構成、実在する族の供給は main の有限完備多項式の場合である。
+
+## 9. 段3・H3 の小さい site と既存模型の比較（2026-11-11、停止点3は未到達）
+
+main `7a3a0f965` を取り込み（merge `f47a76b45`）、H3 の先行分を続けた。新規3モジュール。既存の宣言・drafts・入口・監査登録は変更していない。
+
+- `CategoryTheory/CechNerveTransport`：標準余積を保つ関手による Čech データの移送、小さい同値模型への移送、同値による弱始性と反対圏での弱終性を示した。圏の対象・射・小さい模型の宇宙を独立に取る。
+- `CechAlexanderSmall`：drafts の古典的な `smallCechNerveOfCoproducts`・`cechNerveData`・`cechSmall_weaklyTerminal` を本体に置いた。`EssentiallySmall` は drafts と同じ明示的な仮定で、一般の site の本質的小ささをここで新しく証明したという意味ではない。値は通常の圏の `CategoryTheory.CechNerveData` で、SSet・∞ 層・Tot は用いない。
+- `CechAlexanderBigComparison`：HasEnvelopes で選んだ族と main の任意の BigCechTerm の族を、site 上の全単体射に自然な同型 `cechAlexanderBigSiteIso` で比較した。その自然同型から、通常と mod d の交代余面複体の実際の同型を得た。有限枠との擬同型や prism の底変換の比較ではなく、同じ変数の普遍性を持つ二つの大きい模型の比較である。
+
+**検証。** 対象3モジュールのビルド成功。公開12宣言の `#check`・`#print axioms`・`#print sorries` が通り、sorry なし、依存公理は標準三公理のみ。鍵は対象ビルドと宣言監査の間だけ使用し、待ちは一枚ずつとした。
+
+停止点3はまだ未到達。指定された⑤bの4モジュールが main にないことを再確認した。`AffineCechFrameLift`・`BigCechVertexFrame`・`AffineEnvelope*` を要する H3 の残りと H4 は、取り込み後に続ける。
