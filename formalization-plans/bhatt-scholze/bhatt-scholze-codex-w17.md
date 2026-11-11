@@ -49,3 +49,11 @@ Prisms の地図で「本体に部品」とされた項目のうち、∞ 圏（
 2. **HT 比較の結論**：`HodgeTateIsoStatement` の結論は今は古典的な型だが、証明は Lemma 4.20 の Δ の底変換（G10、∞ 側）を通る。W17 は報告のとおりその入力（H2 の保存性・Tor 振幅の鎖複体版）までとする。`hodgeTate_iso_*` の組み立ては G10 の後。
 3. **順序**：段 1（H1）・段 2（H2）を先に進める。H3・H4 は、⑤b の BS-D69 の次の停止点の取り込み（`AffineEnvelopeBaseChange`・`AffineEnvelopeCoefficients`・`AffineCechFrameLift`・`BigCechVertexFrame` が main に入る）の後に、main を取り込んでから始める。取り込みは調整役が知らせる。⑤b の枝を直接 merge しない。
 4. **H2 の有界性**：上に有界な既存 API だけで済ませない、という報告の注意のとおりでよい。任意の鎖複体の模型で次数を評価し、その模型が導来テンソルを計算することまで示す。
+
+## 4. 追記（2026-11-11 夕、調整役）：停止点 1・2 の取り込みと、H3 の先行部分
+
+停止点 1（H1、2f300472b）と停止点 2（H2、4b4ecb7ab）を main に取り込んだ（登録 bc4a3f561：30 モジュール、root 29,870 本、段階 II の BS 監査 9,276 宣言で標準三公理のみ）。
+
+⑤b の BS-D69 は P2 の停止点にまだ届いていない。待つ間、**H3 のうち main にある部品だけで作れる部分を先に進めてよい**：一般の `CategoryTheory/CechNerveData`、HasEnvelopes からの組み立て、`BigCechTerm`・`existsUnique_liftVariables`・`bigCechAlexander`（main）を使う弱始性・余積、交代余面複体。⑤b の枝にある `AffineCechFrameLift`・`BigCechVertexFrame`・`AffineEnvelope*` を要する部分と H4 は、⑤b の取り込みの後。
+
+重なりの注意：⑤b の枝の `HomologicalAlgebra/DerivedCompletion/CompleteCochainReduction`（完備な複体の Nakayama を冪の余核・剰余で述べる形）は、H2 の `CochainCompleteDetection` と近い。⑤b の取り込みの後に、どちらかに寄せる整理を調整役が決める。今は両方そのままでよい。
