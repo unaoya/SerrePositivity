@@ -1274,3 +1274,70 @@ A はセル対の不足が具体的で、B はその全てを除けるが実現�
 対象ビルドは `/tmp/bsw16/graded/two-color-input-components-03.log` で成功。新規五本の警告は零、依存先の既報 `ZeroArity` の警告二件は残る。登録と取り込みのビルドは調整役が行う。
 
 五本の **129 宣言**の再帰監査も成功し、標準三公理のみ（`/tmp/bsw16/graded/audit-common-inputs.log`）。本体の追加には sorry・admit・新規公理・デバッグ宣言を残していない。ビルド・監査はそれぞれ `--wait 3600` で一枚だけ整理券を出し、実行の終了ごとに鍵を返却した。未検査の Lean ソースは残していない。ここで実装を止め、調整役の判断を待つ。
+
+
+## 23. 11-12 朝：b の native な余錐の構成、普遍性の前で規模による中間停止
+
+### 23.1 指示の取り込みと停止の範囲
+
+朝の指示に従って main を `math/bs-impl` へ取り込み、§11 が入った `2fc3dc7ce` までそろえた。a の五本・902 行には変更を加えていない。今回の順序は b → c → 組み立て関数。b の余錐とその脚・頂点は作れたが、**`coprodWith_cocone` の欄に要る余極限性はまだ供給していない**。以下の再見積もりが b の約 670 行を超えそうなので、追加実装を止めた。b の完了報告ではない。c と段 4 の組み立ては未着手。
+
+### 23.2 型検査したもの
+
+新規二本、**297 行**（docstring・空行込み）。既存の公開宣言・界面・drafts・入口・共有監査は変更していない。
+
+| モジュール（`SerrePositivity.EInfinity.BarrattEccles.Theory` の下） | 行数 | 得られたもの |
+| --- | --- | --- |
+| `NativeCoproductCocone` | 113 | cofibrant な代表の厳密余積の二包含を、同じ DK 頂点の間の辺へ送る。`cAlgCoprodCocone` は二点図式の実際の `JoinCocone`。その頂点が既存の `barrattEcclesCoprodWith` の指定した値に一致し、二つの脚が指定包含の同じ一次単体であることを証明 |
+| `BinaryCoconeSpace` | 184 | 任意のパラメータからの join の族を貼り、余積図式の終点固定の余錐空間を、二枝の余錐空間の積へ同型にする。制限射そのものの `IsIso`、積の Kan 性、および指定の全 Hom の族の積比較が同値なら余極限であるという検査補題を証明 |
+| **計** | **297** | |
+
+`cAlgCofibrantArrow` は、元の `localizationArrowPoint` と同じ `exInfinityUnit` から辺を作る。局所化の source map で選ばれた頂点が標準の頂点と等しいと仮定していない（一般には頂点の同型で比較する必要がある）。`cAlgCoprodCocone_vertex`・`cAlgCoprodCocone_leg_left`・`cAlgCoprodCocone_leg_right` は指定した余錐についての等式。
+
+`binaryCocone_isColimit_of_pointHomRestriction` の仮定は、各終点 z について
+
+```lean
+IsQCatEquivalence
+  (HomotopyLimits.coconePointHomFamily d z ≫ binaryCoconeSpaceRestriction p z)
+```
+
+である。ここは実際の比較射の同値性の**還元先**であり、この仮定を `cAlgCoprodCocone` に対して閉じたという扱いにはしない。`BinaryCoconeSpace` は **［一般∞］の移動候補**。KL-W1 の取り込み前なので `InfinityCategories/` には追加していない。
+
+### 23.3 余極限性の残りと既存 API の調査
+
+既存の `rightFrameCoprodHomIso` は、同じ右 frame への厳密余積の Hom を積へ分け、二射影が指定包含による前合成であることまで与える。一方、`modelRightFramePinchedEquivalence` と `rightFrameTerminalHomIso` は固定した始域について終域全体を比較する入口である。これらを対象ごとに適用しただけでは、**二つの始域の包含が native な錐の脚による前合成に対応すること**は出ない。
+
+別の経路として、既存の `cAlgMappingSpaceComparisonIso_precompose` は実際の DK Hom と `mappingSpace` の比較に始域の前合成の自然性を与える。`sourceFrameHomComparison` とその `sourceFrameHomComparison_isIso` も再利用できる。こちらでは次が残る。
+
+1. X・Y の余単体的 cofibrant 分解の余積と、X ⨿ Y の選んだ分解の間の指定比較を作る。余積 frame の Reedy cofibrancy、augmentation と比較の弱同値性を示す。
+2. その Hom の積比較を `mappingSpace`、ULift、DK の実際の Kan Hom へ運ぶ。**同じ二つの指定射**を保ち、積に関する反転性を使って比較全体を同値にする。
+3. coslice fiber と左 pinched Hom、および coherent nerve の Hom の比較を通し、native な二脚の前合成と照合する。実際の余錐の `coconePointHomFamily` の二制限は、対応する前合成とのホモトピーまで扱う必要がある。
+4. 今回の検査補題を指定の `cAlgCoprodCocone` に適用して、界面の部分型を供給する。
+
+始域の frame の不変性は `SerrePositivity.EInfinity.FrameHom.source_weakEquivalence_isIso`（`InfinityCategories/ModelBridge/SourceInvariance.lean`）を使える。これは anodyne を反転する関手に対する結論で、`[ModelCategory SSet]` を要求しない。対して `HomotopyFunctionComplex/SourceInvariance.lean` の `cosimplicialHomMap_weakEquivalence` はその仮定を要求するため、今回の実装に使う入口にはしない。必要な模型の存在が未供給だから止めるのではなく、指定した射までの比較の実装費用による停止である。
+
+### 23.4 再見積もりと停止判断
+
+全て b の追加 Lean に計上し、補助を c や組み立て関数の枠へ移していない。残りは未実装の見込みで、既存宣言だけで閉じたとは主張しない。
+
+| b の部分 | 今回の実測 | 残りの見込み |
+| --- | --- | --- |
+| native な余錐・指定頂点・二脚 | 113 | 0 |
+| 二枝の余錐空間の積分解・普遍性の検査への還元 | 184 | 0 |
+| 余積 frame・指定比較・Reedy cofibrancy と弱同値性 | 0 | 120〜170 |
+| `mappingSpace` から実際の DK Hom の積比較までの移送 | 0 | 80〜120 |
+| 左 Hom・二つの native な脚・全 Hom の族との照合 | 0 | 150〜220 |
+| 指定余錐への適用と界面の部分型の供給 | 0 | 40〜60 |
+| **合計** | **297** | **390〜570** |
+
+従って b の見込みは **687〜867 行（約 690〜870 行）**。旧見込みの約 670 行には、厳密な Hom の積分解と既存の対象ごとの frame 比較を合成するだけで、native な二脚まで比較できると見込んでいた不足がある。今回はその照合を明示的な残作業に分けた。上限を超えそうなときに止めるという指示に従い、この時点で追加の Lean を止める。a・セル対・bar の実現・sifted の保存は進めていない。
+
+c の厳密な式自体は `barrattEcclesCoproductTensorNat` と `coprod.inl_desc`・`coprod.inr_desc` から出るが、指定 native な錐の脚の照合を b の未証明の余極限性と取り違えない。今回 c を完了と報告することはせず、組み立て関数の既証明欄として `coprodWith_cocone` を入れてもいない。
+
+### 23.5 検証・登録候補・取り込み待ち
+
+対象二本のビルドは `/tmp/bsw16/graded/native-coproduct-space-05.log` で成功。追加二本に Lean の警告は零。ビルドの wrapper が別レーンの既存 `lake build` を警告表示したが、自レーンは鍵付きで指定二本のみをビルドした。
+
+二本の **50 宣言**の再帰監査も成功し、標準三公理のみ（`/tmp/bsw16/graded/audit-native-coproduct.log`）。本体の追加に sorry・admit・新規公理・デバッグ宣言・満たせない `[ModelCategory SSet]` の仮定はない。未検査の Lean ソースは残していない。
+
+今回の登録候補は §23.2 の二本だけ。前回の §22 の五本とは別で、合わせて未取り込みは七本。調整役の指示どおり、KL-W1 の取り込みと改名表への追従の後に取り込む。旧名を先取りして改名していない。他レーンのファイルとの重複は零。鍵は一回のビルド・監査ごとに `--wait 3600` で取得し、終了時に返却した。
