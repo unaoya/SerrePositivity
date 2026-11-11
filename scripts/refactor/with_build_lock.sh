@@ -10,6 +10,7 @@
 #       --class を省くと worktree 名から推定（main の作業木は coord、kerodon-layout は bulk、*-review は research、他は impl）。
 #       coord（調整役の取り込み・登録）は昼夜とも常に先頭（11-11）。鍵の取得・返却は serre-lake-build.history.jsonl に追記。
 #       --status は持ち主と待ちの列を表示して終了する。
+#       夜（JST 23〜8 時）は鍵を二つ通す（11-11）。bulk は同時に一つまで。昼は一つ。
 #       owner.json の started は鍵を取った時刻、queued は待ち始めた時刻（11-11 に分けた）。
 # 使われ方：zsh scripts/refactor/with_build_lock.sh --wait 1800 -- lake build Module
 exec python3 - "$@" <<'PY'
@@ -42,6 +43,14 @@ if not a.status and (not a.command or (a.wait is not None and (a.wait<0 or not m
     p.error('command and non-negative --wait required')
 base=Path(os.environ.get('TMPDIR') or '/tmp').resolve()
 lock=base/'serre-lake-build.lock'
+# Night (JST 23-8) admits two holders (11-11): slot 0 is the historical path, slot 1 is new.
+# Old copies of this script only know slot 0, so they still serialize against slot 0.
+SLOTS=[lock,base/'serre-lake-build.lock.1']
+def jst_hour():
+    # SERRE_LOCK_HOUR overrides the clock for tests only.
+    h=os.environ.get('SERRE_LOCK_HOUR')
+    return int(h) if h else datetime.datetime.now(JST).hour
+def capacity(hour): return 1 if 8<=hour<23 else 2
 queue=base/'serre-lake-build.queue'
 # Serialize owner publication/reaping, ticket publication and the acquire decision.
 # The small guard file stays; kernel flock is released even on SIGKILL.
@@ -65,7 +74,7 @@ queued_at=datetime.datetime.now(datetime.timezone.utc).isoformat()
 owner={'pid':os.getpid(),'worktree':worktree,'started':None,'queued':queued_at,
        'command':a.command,'token':token,'class':klass}
 ticket=queue/f'{token}.json'
-child=None; acquired=False; interrupted=0; ticketed=False
+child=None; acquired=False; interrupted=0; ticketed=False; myslot=None
 
 def handle(signum,_frame):
     global interrupted
@@ -88,7 +97,7 @@ def read_json(path):
         return value if isinstance(value,dict) else None
     except (OSError,ValueError): return None
 
-def read_owner(): return read_json(lock/'owner.json')
+def read_owner(slot=None): return read_json((slot or lock)/'owner.json')
 
 def alive(pid):
     if not isinstance(pid,int) or pid<=0: return True
@@ -96,10 +105,11 @@ def alive(pid):
     except ProcessLookupError: return False
     except PermissionError: return True
 
-def erase():
+def erase(slot=None):
     # Never recursively delete unexpected contents or follow a symlink.
-    (lock/'owner.json').unlink(missing_ok=True)
-    lock.rmdir()
+    slot=slot or lock
+    (slot/'owner.json').unlink(missing_ok=True)
+    slot.rmdir()
 
 def class_rank(c,hour):
     day=8<=hour<23
@@ -139,25 +149,31 @@ def order_key(t,hour,now=None):
     return (0 if promoted else 1,0 if promoted else class_rank(c,hour),enq,str(t.get('token','')))
 
 def reap_lock():
-    if lock.is_symlink(): raise RuntimeError('refuse symlink lock directory')
-    if lock.exists():
-        previous=read_owner()
-        if previous and not alive(previous.get('pid')):
-            erase()
-        elif previous is None and time.time()-lock.stat().st_mtime>60:
-            # A crash between mkdir and publication leaves no live owner.
-            erase()
+    for slot in SLOTS:
+        if slot.is_symlink(): raise RuntimeError('refuse symlink lock directory')
+        if slot.exists():
+            previous=read_owner(slot)
+            if previous and not alive(previous.get('pid')):
+                erase(slot)
+            elif previous is None and time.time()-slot.stat().st_mtime>60:
+                # A crash between mkdir and publication leaves no live owner.
+                erase(slot)
+
+def holders():
+    return [(slot,read_owner(slot)) for slot in SLOTS if slot.exists()]
 
 def status():
     with protected():
         reap_lock()
-        hour=datetime.datetime.now(JST).hour
-        o=read_owner()
+        hour=jst_hour()
         now=time.time()
-        if o:
-            start=datetime.datetime.fromisoformat(o['started']).astimezone(JST)
-            print(f"holder: {Path(o.get('worktree','?')).name} [{o.get('class','?')}] since {start:%H:%M} :: {' '.join(o.get('command',[]))[:100]}")
-        else: print('holder: (free)')
+        hs=holders()
+        for slot,o in hs:
+            if o and o.get('started'):
+                start=datetime.datetime.fromisoformat(o['started']).astimezone(JST)
+                print(f"holder[{SLOTS.index(slot)}]: {Path(o.get('worktree','?')).name} [{o.get('class','?')}] since {start:%H:%M} :: {' '.join(o.get('command',[]))[:100]}")
+        if not hs: print('holder: (free)')
+        print(f'capacity: {capacity(hour)}')
         ts=sorted(live_tickets(),key=lambda t:order_key(t,hour))
         print(f"queue ({'day' if 8<=hour<23 else 'night'} order): {len(ts)}")
         for i,t in enumerate(ts,1):
@@ -172,7 +188,8 @@ def log_event(event):
         with history.open('a') as h:
             h.write(json.dumps({'event':event,'time':datetime.datetime.now(datetime.timezone.utc).isoformat(),
                                 'worktree':Path(worktree).name,'class':klass,'pid':os.getpid(),'token':token,
-                                'queued':queued_at,'command':' '.join(a.command)[:200]},ensure_ascii=False)+'\n')
+                                'queued':queued_at,'slot':(SLOTS.index(myslot) if myslot else None),
+                                'command':' '.join(a.command)[:200]},ensure_ascii=False)+'\n')
     except OSError: pass
 
 def remove_ticket():
@@ -197,25 +214,33 @@ try:
         if interrupted: sys.exit(128+interrupted)
         with protected():
             reap_lock()
-            hour=datetime.datetime.now(JST).hour
-            ts=sorted(live_tickets(),key=lambda t:order_key(t,hour))
+            hour=jst_hour()
+            hs=holders()
+            bulk_held=any(o and o.get('class')=='bulk' for _,o in hs)
+            # At most one bulk holder at a time; an ineligible bulk ticket does not block the others.
+            everyone=live_tickets()
+            ts=[t for t in sorted(everyone,key=lambda t:order_key(t,hour))
+                if not (t.get('class')=='bulk' and bulk_held)]
             tokens=[t.get('token') for t in ts]
+            free=[slot for slot in SLOTS[:capacity(hour)] if not slot.exists()]
             position=tokens.index(token)+1 if token in tokens else None
-            if position is None:
+            if token not in [t.get('token') for t in everyone]:
                 # Our ticket vanished (e.g. reaped by mistake); republish it.
                 ticket.write_text(json.dumps({'pid':os.getpid(),'worktree':worktree,'class':klass,'enqueued':enqueued,
                                               'token':token,'command':a.command},ensure_ascii=False)+'\n')
                 position=None
-            elif position==1 and not lock.exists():
+            elif position==1 and free and len(hs)<capacity(hour):
                 owner['started']=datetime.datetime.now(datetime.timezone.utc).isoformat()
-                lock.mkdir()
-                try: (lock/'owner.json').write_text(json.dumps(owner,ensure_ascii=False)+'\n')
+                myslot=free[0]
+                owner['slot']=SLOTS.index(myslot)
+                myslot.mkdir()
+                try: (myslot/'owner.json').write_text(json.dumps(owner,ensure_ascii=False)+'\n')
                 except BaseException:
-                    erase();raise
+                    erase(myslot);raise
                 acquired=True
                 remove_ticket()
                 log_event('acquire')
-            if not acquired: previous=read_owner()
+            if not acquired: previous=[o for _,o in hs]
         if acquired: break
         now=time.monotonic()
         if now-last_notice>=60:
@@ -238,7 +263,7 @@ finally:
     with protected():
         remove_ticket()
         if acquired:
-            current=read_owner()
+            current=read_owner(myslot) if myslot else None
             if current and current.get('token')==token:
-                erase();log_event('release')
+                erase(myslot);log_event('release')
 PY
