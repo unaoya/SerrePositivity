@@ -80,12 +80,32 @@ theorem eraseDifferentialTensor_eq (K L : Complex A) :
 def eraseDifferentialTensorIso (K L : Complex A) :
     (eraseDifferential A).obj K ⊗ (eraseDifferential A).obj L ≅
       (eraseDifferential A).obj (K ⊗ L) :=
-  eqToIso (eraseDifferentialTensor_eq A K L)
+  { hom :=
+      { f := fun _ => 𝟙 _
+        comm' := by
+          intro i j h
+          rw [eraseDifferential_d, tensor_d_eq_zero_of_d_eq_zero A
+            (eraseDifferential_d A K) (eraseDifferential_d A L)]
+          simp }
+    inv :=
+      { f := fun _ => 𝟙 _
+        comm' := by
+          intro i j h
+          rw [eraseDifferential_d, tensor_d_eq_zero_of_d_eq_zero A
+            (eraseDifferential_d A K) (eraseDifferential_d A L)]
+          simp }
+    hom_inv_id := by
+      apply HomologicalComplex.Hom.ext
+      funext i
+      exact Category.id_comp _
+    inv_hom_id := by
+      apply HomologicalComplex.Hom.ext
+      funext i
+      exact Category.id_comp _ }
 
 @[simp]
 lemma eraseDifferentialTensorIso_hom_f (K L : Complex A) (i : ℤ) :
     (eraseDifferentialTensorIso A K L).hom.f i = 𝟙 _ := by
-  rw [eraseDifferentialTensorIso, eqToIso.hom, eqToHom_f]
   rfl
 
 instance eraseDifferential_preservesZeroMorphisms :
