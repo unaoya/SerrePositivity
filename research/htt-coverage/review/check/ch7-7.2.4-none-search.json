@@ -1,0 +1,3215 @@
+{
+  "7.2.4.1": {
+    "page": 742,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib HeytingAlgebra と spectral space はあるが、HTT の compact opens が有限交差と相対 Heyting implication で閉じる空間の same spectrum/compact-open 双対性はない。単に Opens X が frame であることは compact opens の implication の compact 性を含まない。"
+  },
+  "7.2.4.3": {
+    "page": 742,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib prespectral の compact-open subspace は候補だが、原典の Heyting 条件の implication の compact 性を含む U と X−U の閉性はない。Noetherian space の任意部分空間は特別でも、同じ HeytingSpace 述語と未比較。"
+  },
+  "7.2.4.4": {
+    "page": 743,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib profinite と clopen basis の同値はあるが、原典の再帰的 Heyting dimension≤0 を定めておらず、その iff Hausdorff と covering dimension の一致はない。small inductive dimension 0 は異なる定義で、その比較が要る。"
+  },
+  "7.2.4.5": {
+    "page": 743,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib topologicalKrullDim_subspace_le は有限鎖の長さによる次元であり、任意の ordinal α の Heyting dimension による開閉部分空間・有限和の三つの上限ではない。Noetherian 以外の原典の対象へ適用できる比較がない。"
+  },
+  "7.2.4.6": {
+    "page": 743,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib Sierpinski space はあるが、その Heyting dimension が 1 で各点の dimension が 0 になる比較はない。二点位相空間の存在だけを原典の次元の反例としない。"
+  },
+  "7.2.4.7": {
+    "page": 743,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib topologicalKrullDim は WithBot ℕ∞ 値の鎖長上限で、HTT の Noetherian closed irreducibles の ordinal rank と Heyting dimension の等号を述べない。無限 ordinal の原典の定義も有限鎖の値と同一視しない。"
+  },
+  "7.2.4.8": {
+    "page": 744,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "native boundary filling の connectivity はあるが、原典の compact-open U ごとに低 Heyting dimension の閉 K を除いて局所的に充填する strongly k-connective sheaf の述語はない。Kan 複体の global horn filling は dimension 付きの例外集合と異なる。"
+  },
+  "7.2.4.9": {
+    "page": 744,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheaf restriction はあるが、原典の closure K を ambient X で取ることで変わる strong connectivity の比較はない。部分空間の closure の一般式だけはその次元付き条件の同じ対象を表さない。"
+  },
+  "7.2.4.10": {
+    "page": 744,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "本体の t-structure は複体の次数に関するものだが、原典の sheaf の strong connectivity や dual standard perversity と同じ比較はない。類似という原典の文献上の注意を抽象 t-structure の宣言に割り当てない。"
+  },
+  "7.2.4.11": {
+    "page": 744,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "native boundary filling はあるが、強い k-connectivity⇒k-connectivity、および dim X≤n の逆向きの k−n の bound の型はない。Heyting dimension 付き例外集合を定めない状態では Kan connectivity だけは元の含意を供給しない。"
+  },
+  "7.2.4.12": {
+    "page": 745,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "native finite cell/horn attachment はあるが、元の sheaf F の A⊆B の充填を低次元 cocompact K の外で局所的に行う型ではない。単体集合の次元の帰納法は証明の部品で、同じ K の Heyting bound を持たない。"
+  },
+  "7.2.4.13": {
+    "page": 745,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "native relative internal Hom の fibrational lifting はあるが、元の space-valued sheaf の強い k-connectivity の k−m への低下を述べない。普通の Kan homotopy fiber の connectivity では低次元例外集合の局所性を比較できない。"
+  },
+  "7.2.4.14": {
+    "page": 745,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib open covers と native boundary lifting はあるが、HTT の三つの条件の同値、指定された相対境界のホモトピーを保つ補集合 V−K への拡張はない。単独の local lifting から global K を選ぶ追加の patching が必要。"
+  },
+  "7.2.4.15": {
+    "page": 747,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheaf pushforward はあるが、原典の全 cocompact closed K の image の dimension bound を用いて strongly k-connective sheaf を保存する型はない。usual continuous map の compact image の保存だけでは strong connectivity の例外集合を制御しない。"
+  },
+  "7.2.4.16": {
+    "page": 748,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "native sections の Kan 性はあるが、任意の Heyting space の strongly k-connective sheaf F の F(X) の k-connectivity という型はない。標準 unstraightening の全切断の Kan 性は指定 sheaf とも dimension とも未比較。"
+  },
+  "7.2.4.17": {
+    "page": 748,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheaf の restriction はあるが、n-connective F の π0F(X)→π0F(U) の全射や Shv(X) の homotopy dimension bound はない。NoetherianSpace.isCompact はここでは証明に使う位相の部品に留まる。"
+  },
+  "7.2.4.18": {
+    "page": 748,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "Noetherian subspace の compact 性や native reflective localization はあるが、Heyting 次元の局所 bound と Shv(X) の hypercompletion の比較はない。ordinary sheaf category の limit 存在は hypercomplete の述語ではない。"
+  },
+  "7.2.4.19": {
+    "page": 748,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib prime spectrum と Sierpinski space はあるが、原典の DVR spectrum の Heyting dimension 1 と Shv の homotopy dimension 0 の具体的な比較はない。通常の Krull dimension の計算を homotopy dimension と同じ型として扱わない。"
+  },
+  "7.2.4.20": {
+    "page": 748,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib ordinary sheaf cohomology はあるが、任意の Noetherian topological X の Krull dimension bound から Hk(X;A)=0 を与える Grothendieck vanishing theorem の型はない。Noetherian space と Ext の別々の定義だけはこの全 abelian sheaf の消滅を供給しない。"
+  },
+  "7.2.4.21": {
+    "page": 748,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の model theory の types はあるが、原典の開 polynomial inequalities の Heyting spectrum や o-minimal complete n-types の dimension≤n の型はない。実多項式の半代数的集合の存在だけではその位相と次元を同定しない。"
+  },
+  "7.2.4.22": {
+    "page": 749,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.3",
+        "7.2.4",
+        "7.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 1176,
+        "line_count": 5562
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Heyting|Noetherian|topologicalKrullDim|Prespectral|SpectralSpace|SmallInductiveDimension|[Cc]ohomolog|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 302,
+        "line_count": 2722
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/NoetherianSpace.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev NoetherianSpace : Prop := WellFoundedGT (Opens α)"
+          },
+          {
+            "line": 54,
+            "head": "theorem noetherianSpace_iff_opens : NoetherianSpace α ↔ ∀ s : Opens α, IsCompact (s : Set α)"
+          },
+          {
+            "line": 59,
+            "head": "instance (priority := 100) NoetherianSpace.compactSpace [h : NoetherianSpace α] : CompactSpace α := ⟨(noetherianSpace_iff_opens α).mp h ⊤⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/KrullDimension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "noncomputable def topologicalKrullDim (T : Type*) [TopologicalSpace T] : WithBot ℕ∞ := krullDim (IrreducibleCloseds T)"
+          },
+          {
+            "line": 46,
+            "head": "theorem Topology.IsInducing.topologicalKrullDim_le {f : Y → X} (hf : IsInducing f) : topologicalKrullDim Y ≤ topologicalKrullDim X := krullDim_le_of_strictMono _ (map_strictMono_of_isInducing hf)"
+          },
+          {
+            "line": 51,
+            "head": "theorem IsHomeomorph.topologicalKrullDim_eq (f : X → Y) (h : IsHomeomorph f) : topologicalKrullDim X = topologicalKrullDim Y := have fwd : topologicalKrullDim X ≤ topologicalKrullDim Y := h.isInducing.topologicalKrullDim_le have bwd : topologicalKrullDim Y ≤ topologicalKrullDim X := (h.homeomorph f).symm.isInducing.topologicalKrullDim_le le_antisymm fwd bwd"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/SmallInductiveDimension.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class inductive HasSmallInductiveDimensionLT.{u} : ∀ (X : Type u) [TopologicalSpace X], ℕ → Prop where"
+          },
+          {
+            "line": 57,
+            "head": "abbrev HasSmallInductiveDimensionLE (n : ℕ) := HasSmallInductiveDimensionLT X (n + 1)"
+          },
+          {
+            "line": 61,
+            "head": "theorem hasSmallInductiveDimensionLT_zero_iff : HasSmallInductiveDimensionLT X 0 ↔ IsEmpty X := ⟨fun h ↦ by cases h; assumption, fun _ ↦ .zero⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Basic.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "class SpectralSpace (X : Type*) [TopologicalSpace X] : Prop extends T0Space X, CompactSpace X, QuasiSober X, QuasiSeparatedSpace X, PrespectralSpace X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib Nisnevich square/site は候補だが、Noetherian scheme の有限 Krull dimension から associated ∞-topos の局所有限 homotopy dimension/hypercompleteness を導く型はない。ordinary sheaf descent の定義を高次の消滅定理に置き換えない。"
+  }
+}

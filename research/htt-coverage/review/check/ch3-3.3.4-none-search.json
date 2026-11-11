@@ -1,0 +1,572 @@
+{
+  "3.3.4.1": {
+    "page": 217,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.3",
+        "3.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "coherentDiagramTotal|CartesianEquivalence|covariantEquivalence|IsColimitCone|Cofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 1312,
+        "line_count": 4178
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "coherentDiagramTotal|CartesianEquivalence|covariantEquivalence|IsColimitCone|Cofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 25,
+        "line_count": 269
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalObject.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def coherentDiagramTotalKanObject (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : KanObject.{u} := ⟨coherentDiagramTotalKan F, inferInstance⟩"
+          },
+          {
+            "line": 41,
+            "head": "def coherentDiagramTotalVertex (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex (coherentDiagramTotalKanObject F)"
+          },
+          {
+            "line": 48,
+            "head": "lemma coherentDiagramTotalVertex_object (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : (spaceInfinityObject (coherentDiagramTotalVertex F)).obj = coherentDiagramTotalKan F := congrArg (fun K : KanObject.{u} ↦ K.obj) (spaceInfinityVertexEquiv.left_inv (coherentDiagramTotalKanObject F))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalCocone.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def coherentDiagramTotalCocone (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : JoinCocone F := (coherentTotalCoconeRealization F).cocone"
+          },
+          {
+            "line": 43,
+            "head": "lemma coherentDiagramTotalCocone_vertex (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : (coherentDiagramTotalCocone F).vertex = coherentDiagramTotalVertex F := (coherentTotalCoconeRealization F).vertex_eq"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          },
+          {
+            "line": 73,
+            "head": "instance : MorphismProperty.IsWeakFactorizationSystem (trivialCofibrations C) (fibrations C) := MorphismProperty.IsWeakFactorizationSystem.mk' _ _ (fun {A B X Y} i p hi hp ↦ by obtain ⟨_, _⟩ := mem_trivialCofibrations_iff i |>.mp hi rw [← fibration_iff] at hp infer_instance)"
+          }
+        ]
+      }
+    ],
+    "decision": "native cofinality の total-space 比較はあるが、一般の Cartesian p の X′♮→X♮ を SetΔ+ の Cartesian equivalence にする型ではない。全空間の弱同値だけでは非可逆 fiber 内の射を扱う同じ marked equivalence にならない。"
+  },
+  "3.3.4.2": {
+    "page": 218,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.3",
+        "3.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "coherentDiagramTotal|CartesianEquivalence|covariantEquivalence|IsColimitCone|Cofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 1312,
+        "line_count": 4178
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "coherentDiagramTotal|CartesianEquivalence|covariantEquivalence|IsColimitCone|Cofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 25,
+        "line_count": 269
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalObject.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def coherentDiagramTotalKanObject (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : KanObject.{u} := ⟨coherentDiagramTotalKan F, inferInstance⟩"
+          },
+          {
+            "line": 41,
+            "head": "def coherentDiagramTotalVertex (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex (coherentDiagramTotalKanObject F)"
+          },
+          {
+            "line": 48,
+            "head": "lemma coherentDiagramTotalVertex_object (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : (spaceInfinityObject (coherentDiagramTotalVertex F)).obj = coherentDiagramTotalKan F := congrArg (fun K : KanObject.{u} ↦ K.obj) (spaceInfinityVertexEquiv.left_inv (coherentDiagramTotalKanObject F))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalCocone.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def coherentDiagramTotalCocone (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : JoinCocone F := (coherentTotalCoconeRealization F).cocone"
+          },
+          {
+            "line": 43,
+            "head": "lemma coherentDiagramTotalCocone_vertex (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : (coherentDiagramTotalCocone F).vertex = coherentDiagramTotalVertex F := (coherentTotalCoconeRealization F).vertex_eq"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          },
+          {
+            "line": 73,
+            "head": "instance : MorphismProperty.IsWeakFactorizationSystem (trivialCofibrations C) (fibrations C) := MorphismProperty.IsWeakFactorizationSystem.mk' _ _ (fun {A B X Y} i p hi hp ↦ by obtain ⟨_, _⟩ := mem_trivialCofibrations_iff i |>.mp hi rw [← fibration_iff] at hp infer_instance)"
+          }
+        ]
+      }
+    ],
+    "decision": "native 空間値 total cocone の余極限性はあるが、原典の Cat∞op 上の任意の図式と marked X♮ の over-base/absolute Cartesian equivalence の二条件を同定しない。Kan 置換の弱同値をこの一般の marked localization と比較する宣言もない。"
+  },
+  "3.3.4.3": {
+    "page": 219,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.3",
+        "3.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "coherentDiagramTotal|CartesianEquivalence|covariantEquivalence|IsColimitCone|Cofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 1312,
+        "line_count": 4178
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "coherentDiagramTotal|CartesianEquivalence|covariantEquivalence|IsColimitCone|Cofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 25,
+        "line_count": 269
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalObject.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def coherentDiagramTotalKanObject (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : KanObject.{u} := ⟨coherentDiagramTotalKan F, inferInstance⟩"
+          },
+          {
+            "line": 41,
+            "head": "def coherentDiagramTotalVertex (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex (coherentDiagramTotalKanObject F)"
+          },
+          {
+            "line": 48,
+            "head": "lemma coherentDiagramTotalVertex_object (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : (spaceInfinityObject (coherentDiagramTotalVertex F)).obj = coherentDiagramTotalKan F := congrArg (fun K : KanObject.{u} ↦ K.obj) (spaceInfinityVertexEquiv.left_inv (coherentDiagramTotalKanObject F))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalCocone.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def coherentDiagramTotalCocone (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : JoinCocone F := (coherentTotalCoconeRealization F).cocone"
+          },
+          {
+            "line": 43,
+            "head": "lemma coherentDiagramTotalCocone_vertex (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : (coherentDiagramTotalCocone F).vertex = coherentDiagramTotalVertex F := (coherentTotalCoconeRealization F).vertex_eq"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          },
+          {
+            "line": 73,
+            "head": "instance : MorphismProperty.IsWeakFactorizationSystem (trivialCofibrations C) (fibrations C) := MorphismProperty.IsWeakFactorizationSystem.mk' _ _ (fun {A B X Y} i p hi hp ↦ by obtain ⟨_, _⟩ := mem_trivialCofibrations_iff i |>.mp hi rw [← fibration_iff] at hp infer_instance)"
+          }
+        ]
+      }
+    ],
+    "decision": "native space-valued total の Kan 置換は余極限になるが、一般の Cat∞ 値図式の全空間に Cartesian edges を反転する局所化と、その Cat∞ の余極限との比較はない。空間の全辺を反転する構成は原典の selected marking と異なる。"
+  },
+  "3.3.4.4": {
+    "page": 219,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.3",
+        "3.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "coherentDiagramTotal|CartesianEquivalence|covariantEquivalence|IsColimitCone|Cofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 1312,
+        "line_count": 4178
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "coherentDiagramTotal|CartesianEquivalence|covariantEquivalence|IsColimitCone|Cofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 25,
+        "line_count": 269
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalObject.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def coherentDiagramTotalKanObject (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : KanObject.{u} := ⟨coherentDiagramTotalKan F, inferInstance⟩"
+          },
+          {
+            "line": 41,
+            "head": "def coherentDiagramTotalVertex (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex (coherentDiagramTotalKanObject F)"
+          },
+          {
+            "line": 48,
+            "head": "lemma coherentDiagramTotalVertex_object (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : (spaceInfinityObject (coherentDiagramTotalVertex F)).obj = coherentDiagramTotalKan F := congrArg (fun K : KanObject.{u} ↦ K.obj) (spaceInfinityVertexEquiv.left_inv (coherentDiagramTotalKanObject F))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalCocone.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def coherentDiagramTotalCocone (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : JoinCocone F := (coherentTotalCoconeRealization F).cocone"
+          },
+          {
+            "line": 43,
+            "head": "lemma coherentDiagramTotalCocone_vertex (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : (coherentDiagramTotalCocone F).vertex = coherentDiagramTotalVertex F := (coherentTotalCoconeRealization F).vertex_eq"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          },
+          {
+            "line": 73,
+            "head": "instance : MorphismProperty.IsWeakFactorizationSystem (trivialCofibrations C) (fibrations C) := MorphismProperty.IsWeakFactorizationSystem.mk' _ _ (fun {A B X Y} i p hi hp ↦ by obtain ⟨_, _⟩ := mem_trivialCofibrations_iff i |>.mp hi rw [← fibration_iff] at hp infer_instance)"
+          }
+        ]
+      }
+    ],
+    "decision": "small marked hull は既存の可逆辺に witness を追加する構成であり、任意の Cartesian total X の X♮ が marked model の fibrant object にならないという原典の注意やその例を表していない。具体的な marked model instance もない。"
+  },
+  "3.3.4.5": {
+    "page": 219,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.3",
+        "3.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "coherentDiagramTotal|CartesianEquivalence|covariantEquivalence|IsColimitCone|Cofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 1312,
+        "line_count": 4178
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "coherentDiagramTotal|CartesianEquivalence|covariantEquivalence|IsColimitCone|Cofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 25,
+        "line_count": 269
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalObject.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def coherentDiagramTotalKanObject (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : KanObject.{u} := ⟨coherentDiagramTotalKan F, inferInstance⟩"
+          },
+          {
+            "line": 41,
+            "head": "def coherentDiagramTotalVertex (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex (coherentDiagramTotalKanObject F)"
+          },
+          {
+            "line": 48,
+            "head": "lemma coherentDiagramTotalVertex_object (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : (spaceInfinityObject (coherentDiagramTotalVertex F)).obj = coherentDiagramTotalKan F := congrArg (fun K : KanObject.{u} ↦ K.obj) (spaceInfinityVertexEquiv.left_inv (coherentDiagramTotalKanObject F))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalCocone.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def coherentDiagramTotalCocone (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : JoinCocone F := (coherentTotalCoconeRealization F).cocone"
+          },
+          {
+            "line": 43,
+            "head": "lemma coherentDiagramTotalCocone_vertex (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : (coherentDiagramTotalCocone F).vertex = coherentDiagramTotalVertex F := (coherentTotalCoconeRealization F).vertex_eq"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          },
+          {
+            "line": 73,
+            "head": "instance : MorphismProperty.IsWeakFactorizationSystem (trivialCofibrations C) (fibrations C) := MorphismProperty.IsWeakFactorizationSystem.mk' _ _ (fun {A B X Y} i p hi hp ↦ by obtain ⟨_, _⟩ := mem_trivialCofibrations_iff i |>.mp hi rw [← fibration_iff] at hp infer_instance)"
+          }
+        ]
+      }
+    ],
+    "decision": "native coherent total cocone は余極限で単位は弱同値だが、任意の K▷ 上の分類束の X⊆Xbar と apex への比較を結ぶ iff はない。特に covariant equivalence という第二条件の具体的な model class との比較がなく、指定 cocone の存在だけを片方向と数えない。"
+  }
+}

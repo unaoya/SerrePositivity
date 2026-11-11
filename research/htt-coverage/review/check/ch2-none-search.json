@@ -2895,5 +2895,3193 @@
       }
     ],
     "decision": "左右のホーン持ち上げと Quillen 対応圏の区間射影を読んだが、積の片側で退化する外ホーンを左右で要求する HTT の二変数の述語は見つからなかった。"
+  },
+  "2.1.1.4": {
+    "page": 58,
+    "citations": {
+      "item": 0,
+      "subsection": 3,
+      "neighboring_subsections": [
+        "2.1.1",
+        "2.1.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryFromJoinFaces.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/IntervalBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Slice.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/SliceMap.lean": 23,
+        "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/EquivalencePathInnerFibration.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/FibrationRestriction.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/JoinCells.lean": 25,
+        "SerrePositivity/InfinityCategories/Core/RightFibration.lean": 15,
+        "SerrePositivity/InfinityCategories/Core/Join.lean": 7,
+        "SerrePositivity/InfinityCategories/Core/JoinLifting.lean": 21,
+        "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean": 5
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "leftFibration_exists_transport",
+        "file_count": 1,
+        "line_count": 1
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "leftFibration_exists_transport",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Transport/LeftTransport.lean",
+        "signatures": [
+          {
+            "line": 59,
+            "head": "lemma leftFibration_exists_transport {X B : SSet.{u}} (p : X ⟶ B) [LeftFibration p] (e : B _⦋1⦌) : ∃ (F : vertexFiber p (B.δ 1 e) ⟶ vertexFiber p (B.δ 0 e)) (H : (Δ[1] : SSet.{u}) ⊗ vertexFiber p (B.δ 1 e) ⟶ X), prismEndpoint 0 _ ≫ H = vertexFiberι p (B.δ 1 e) ∧ prismEndpoint 1 _ ≫ H = F ≫ vertexFiberι p (B.δ 0 e) ∧ H ≫ p = fst (Δ[1] : SSet.{u}) _ ≫ SSet.yonedaEquiv.symm e ∧ ∀ x : (vertexFiber p (B.δ 1 e)) _⦋0⦌, IsCocartesianEdge p (H.app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryFromJoinFaces.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/IntervalBoundary.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Slice.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SliceMap.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalencePathInnerFibration.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FibrationRestriction.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinCells.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RightFibration.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Join.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinLifting.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+        "signatures": []
+      }
+    ],
+    "decision": "leftFibration_exists_transport は各底の辺 e の両端の繊維間に実際の輸送写像とその prism を作る。hS の射の代表に依存しないこと、homotopy-class の合成・単位則、H への関手は構成しておらず、辺ごとの選択を関手性の partial に数えない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.1.2.11": {
+    "page": 65,
+    "citations": {
+      "item": 0,
+      "subsection": 108,
+      "neighboring_subsections": [
+        "2.1.1",
+        "2.1.2",
+        "2.1.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryFromJoinFaces.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/IntervalBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Slice.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/SliceMap.lean": 23,
+        "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/EquivalencePathInnerFibration.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/FibrationRestriction.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/JoinCells.lean": 25,
+        "SerrePositivity/InfinityCategories/Core/RightFibration.lean": 15,
+        "SerrePositivity/InfinityCategories/Core/Join.lean": 7,
+        "SerrePositivity/InfinityCategories/Core/JoinLifting.lean": 21,
+        "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean": 5
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "rightAnodyneExtensions_of_fixed_terminal_homotopy",
+        "file_count": 3,
+        "line_count": 3
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "rightAnodyneExtensions_of_fixed_terminal_homotopy",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/TerminalHomotopyAnodyne.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "lemma rightAnodyneExtensions_of_fixed_terminal_homotopy {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (r : B ⟶ A) (hir : i ≫ r = 𝟙 A) (J : (Δ[1] : SSet.{u}) ⊗ B ⟶ B) (h₀ : prismEndpoint 0 B ≫ J = 𝟙 B) (h₁ : prismEndpoint 1 B ≫ J = r ≫ i) (hfix : (Δ[1] ◁ i) ≫ J = snd (Δ[1] : SSet.{u}) A ≫ i) : rightAnodyneExtensions i"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryFromJoinFaces.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/IntervalBoundary.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Slice.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SliceMap.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalencePathInnerFibration.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FibrationRestriction.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinCells.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RightFibration.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Join.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinLifting.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+        "signatures": []
+      }
+    ],
+    "decision": "rightAnodyneExtensions_of_fixed_terminal_homotopy は id→r≫i の反対向きの homotopy と切断像固定を要求し、right anodyne を結論する。原典の fiberwise s≫p→id からこのデータへの opposite/endpoint の比較を指定した宣言がなく、別方向の deformation retract の類似結果だけを数えない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.1.3.1": {
+    "page": 66,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.1.2",
+        "2.1.3",
+        "2.1.4"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryFromJoinFaces.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/IntervalBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Slice.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/SliceMap.lean": 23,
+        "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/EquivalencePathInnerFibration.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/FibrationRestriction.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/JoinCells.lean": 25,
+        "SerrePositivity/InfinityCategories/Core/RightFibration.lean": 15,
+        "SerrePositivity/InfinityCategories/Core/Join.lean": 7,
+        "SerrePositivity/InfinityCategories/Core/JoinLifting.lean": 21,
+        "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean": 5
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "leftFibration_fibration_of_kanComplex",
+        "file_count": 7,
+        "line_count": 7
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "leftFibration_fibration_of_kanComplex",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftKanFibration.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "lemma leftFibration_fibration_of_kanComplex {X Y : SSet.{u}} [KanComplex X] [KanComplex Y] (q : X ⟶ Y) [LeftFibration q] : Fibration q"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryFromJoinFaces.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/IntervalBoundary.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Slice.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SliceMap.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalencePathInnerFibration.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FibrationRestriction.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinCells.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RightFibration.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Join.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinLifting.lean",
+        "signatures": []
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+        "signatures": []
+      }
+    ],
+    "decision": "leftFibration_fibration_of_kanComplex は全空間と底の Kan 性から Kan fibration を得る十分条件。原典の全輸送 f! の H 同型性はこの型に現れず、その条件の保存反映との iff やこの特殊化での輸送判定は未供給。別の十分条件を輸送 criterion の片方向としない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.1.4.2": {
+    "page": 68,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.1.3",
+        "2.1.4",
+        "2.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "join|joinInl|joinInr",
+        "file_count": 3508,
+        "line_count": 27697
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "join|joinInl|joinInr",
+        "file_count": 1648,
+        "line_count": 17881
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Join.lean",
+        "signatures": [
+          {
+            "line": 464,
+            "head": "def join (K L : SSet.{u}) : SSet.{u} where"
+          },
+          {
+            "line": 542,
+            "head": "def joinInl (K L : SSet.{u}) : K ⟶ join K L where"
+          },
+          {
+            "line": 551,
+            "head": "def joinInr (K L : SSet.{u}) : L ⟶ join K L where"
+          },
+          {
+            "line": 480,
+            "head": "def joinMap {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') : join K L ⟶ join K' L' where"
+          }
+        ]
+      }
+    ],
+    "decision": "join と joinInl/joinInr は元の X の左右の錐を構成する。一般の f:X→S に沿う実際の pushout とこれらの比較を束ねた C/(f),C.(f) はなく、f=id の pushout を join と同定する宣言も挙げた型にはない。錐を貼る前の部品のみ。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.1.4.3": {
+    "page": 68,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.1.3",
+        "2.1.4",
+        "2.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "joinMap_mono",
+        "file_count": 8,
+        "line_count": 11
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "joinMap_mono",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Join.lean",
+        "signatures": [
+          {
+            "line": 525,
+            "head": "instance joinMap_mono {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') [Mono f] [Mono g] : Mono (joinMap f g)"
+          }
+        ]
+      }
+    ],
+    "decision": "joinMap_mono は二因子の join に誘導される射の単射性。原典の pushout cone における S→C/(f) の指定射の単射性と唯一の新頂点の記述とは異なり、その pushout と join comparison の比較がない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.1.4.5": {
+    "page": 68,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.1.3",
+        "2.1.4",
+        "2.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "cofibration_iff",
+        "file_count": 36,
+        "line_count": 75
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "cofibration_iff",
+        "file_count": 12,
+        "line_count": 36
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/CategoryWithFibrations.lean",
+        "signatures": [
+          {
+            "line": 87,
+            "head": "lemma cofibration_iff : Cofibration f ↔ Mono f"
+          },
+          {
+            "line": 95,
+            "head": "instance mono_of_cofibration [Cofibration f] : Mono f"
+          }
+        ]
+      }
+    ],
+    "decision": "modelCategoryQuillen.cofibration_iff は Kan 型の scoped cofibration 類と Mono の一致であり、(Set∆)/S の covariant cofibration の射類を作らない。covariant equivalence は glued cone の categorical equivalence を要求し、その class と fibrations の定義もない。別模型で同じ Mono を使うことだけは数えない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.1.4.6": {
+    "page": 69,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.1.3",
+        "2.1.4",
+        "2.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "trivialKanFibration_relativeHom_of_leftAnodyne",
+        "file_count": 8,
+        "line_count": 9
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "trivialKanFibration_relativeHom_of_leftAnodyne",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftAnodynePushoutProduct.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "lemma trivialKanFibration_relativeHom_of_leftAnodyne {A D E B : SSet.{u}} (i : D ⟶ A) (hi : leftAnodyneExtensions i) (p : E ⟶ B) [LeftFibration p] (sq' : internalHom.PullbackObjObj i p) : TrivialKanFibration sq'.π"
+          }
+        ]
+      }
+    ],
+    "decision": "trivialKanFibration_relativeHom_of_leftAnodyne は left fibrations を試験する内部 Hom の条件。原典の glued cones の categorical equivalence で定義した covariant equivalence への比較がなく、別の試験条件での acyclicity を残さない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.1.4.11": {
+    "page": 71,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.1.3",
+        "2.1.4",
+        "2.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "leftFibrationInfinityBaseChange",
+        "file_count": 32,
+        "line_count": 80
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "leftFibrationInfinityBaseChange",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationBaseChange.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "noncomputable def leftFibrationInfinityBaseChange {B D : SSet.{u}} (k : D ⟶ B) : LeftFibrationInfinity B ⟶ LeftFibrationInfinity D"
+          },
+          {
+            "line": 53,
+            "head": "lemma leftFibrationInfinityBaseChange_vertex {B D : SSet.{u}} (k : D ⟶ B) (p : LeftFibrationObject B) : (leftFibrationInfinityBaseChange k).app (Opposite.op ⦋0⦌) (coherentNerveVertex p) = coherentNerveVertex (leftFibrationBaseChangeObject k p)"
+          }
+        ]
+      }
+    ],
+    "decision": "leftFibrationInfinityBaseChange は任意 j による left-fibration 準圏の射だけで、その同値性すらこの型からは得られない。まして同じ j の covariant ModelCategory の Quillen equivalence と比較しておらず、関手の構成を同値性の partial としない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.1.4.12": {
+    "page": 71,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.1.3",
+        "2.1.4",
+        "2.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "rightFibration_op_leftFibration",
+        "file_count": 1,
+        "line_count": 1
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "rightFibration_op_leftFibration",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RelativeOuterHornOp.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "instance rightFibration_op_leftFibration {X Y : SSet.{u}} (q : X ⟶ Y) [RightFibration q] : LeftFibration (SSet.opFunctor.map q) where"
+          }
+        ]
+      }
+    ],
+    "decision": "rightFibration_op_leftFibration は一つの右ファイブレーションの opposite の左ホーン充填を与える。covariant/contravariant の ModelCategory と全ての weak-equivalence/fibration classes の opposite による対応とは比較されていない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.0.1": {
+    "page": 72,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.0"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "coherentHomComparison_isSimplicialHomotopyEquivalence",
+        "file_count": 8,
+        "line_count": 8
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "coherentHomComparison_isSimplicialHomotopyEquivalence",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/HomEquivalence.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma coherentHomComparison_isSimplicialHomotopyEquivalence {C : Type v} [Category.{u} C] [SimplicialCategory C] [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] (X Y : C) : IsSimplicialHomotopyEquivalence (coherentHomComparison X Y)"
+          }
+        ]
+      }
+    ],
+    "decision": "coherentHomComparison_isSimplicialHomotopyEquivalence は元の enriched Hom→右 pinched Hom(N(C)) の比較射。原典の counit MapC[N(C)]→MapC の始域とその map を構成・同定していないため、別の Hom 比較を counit の同値の部分とは数えない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.1.1": {
+    "page": 74,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.1.4",
+        "2.2.1",
+        "2.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "smallRightUnstraighteningMap_projection",
+        "file_count": 1,
+        "line_count": 1
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "smallRightUnstraighteningMap_projection",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafUnstraightening.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "lemma smallRightUnstraighteningMap_projection {C D : SSet.{u}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) (G : (SSet.uliftFunctor.{u + 1, u}).obj D.op ⟶ SpaceInfinity.{u}) (f : C ⟶ D) (h : (SSet.uliftFunctor.{u + 1, u}).map (SSet.opFunctor.map f) ≫ G = F) : smallRightUnstraighteningMap F G f h ≫ smallRightUnstraighteningProjection G = smallRightUnstraighteningProjection F ≫ f"
+          }
+        ]
+      }
+    ],
+    "decision": "smallRightUnstraighteningMap_projection は space-valued 準圏前層の unstraightening の base-map compatibility。原典の Stφ の二つの自然同型、特に φ の coefficient category の変更による enriched left Kan extension とは比較されていない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.1.2": {
+    "page": 74,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.1.4",
+        "2.2.1",
+        "2.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "rightStraighteningInfinityEquivalence|rightUnstraighteningInfinityVertexIso",
+        "file_count": 2,
+        "line_count": 5
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "rightStraighteningInfinityEquivalence|rightUnstraighteningInfinityVertexIso",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def rightStraighteningInfinityEquivalence (B : SSet.{u}) [Quasicategory B] : QCatEquivalence (RightFibrationInfinity B) (PresheafInfinity B)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningUnstraightening.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "def rightUnstraighteningInfinityVertexIso {B : SSet.{u}} [Quasicategory B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B.op ⟶ SpaceInfinity.{u}) : VertexIso ((rightUnstraighteningInfinityMap B).app _ (functorVertex F)) (rightFibrationInfinityVertex (smallRightUnstraighteningProjection F))"
+          }
+        ]
+      }
+    ],
+    "decision": "rightStraighteningInfinityEquivalence とその object comparison は準圏と space-valued 前層の分類。原典の C[S] と指定 φ の projective/contravariant ModelCategory、Stφ⊣Unφ、およびその derived functors との比較がない。別の準圏同値を Quillen adjunction/equivalence の部分にしない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.2.6": {
+    "page": 76,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.1",
+        "2.2.2",
+        "2.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "coherentResolutionSimplex",
+        "file_count": 20,
+        "line_count": 44
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "coherentResolutionSimplex",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/ResolutionSimplex.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def coherentResolutionSimplex (n : ℕ) : SSet.{u} where"
+          },
+          {
+            "line": 41,
+            "head": "def coherentResolutionProjection (n : ℕ) : coherentResolutionSimplex.{u} n ⟶ Δ[n] where"
+          }
+        ]
+      }
+    ],
+    "decision": "coherentResolutionSimplex は正規化した旗による組合せ論的な Qn 候補を作るが、原典の geometric realization の cube quotient と同型にする比較がない。face-compatible な単体との同相と degeneracy の非単射性もなく、Qn の候補の構成をこの幾何的主張と数えない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.2.9": {
+    "page": 77,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.1",
+        "2.2.2",
+        "2.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "coherentResolutionAdjunction|coherentResolution_map_mono|coherentResolutionProjectionAll_isPrecompositionEquivalence",
+        "file_count": 9,
+        "line_count": 65
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "coherentResolutionAdjunction|coherentResolution_map_mono|coherentResolutionProjectionAll_isPrecompositionEquivalence",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/ResolutionExtension.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "noncomputable def coherentResolutionAdjunction : coherentResolution.{u} ⊣ coherentResolutionRightAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/ResolutionMonomorphisms.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "lemma coherentResolution_map_mono {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f] : Mono (coherentResolution.map f)"
+          },
+          {
+            "line": 92,
+            "head": "lemma coherentResolutionProjectionAll_isPrecompositionEquivalence (X : SSet.{u}) : IsPrecompositionEquivalence (coherentResolutionProjectionAll.app X)"
+          },
+          {
+            "line": 25,
+            "head": "lemma coherentResolution_map_mono_of_attachCells {α : Type v} {A B : α → SSet.{u}} (g : (i : α) → A i ⟶ B i) {X Y : SSet.{u}} {f : X ⟶ Y} (c : AttachCells.{u} g f) (hg : ∀ i, Mono (coherentResolution.map (g i))) : Mono (coherentResolution.map f)"
+          }
+        ]
+      }
+    ],
+    "decision": "coherentResolutionAdjunction と単射保存・projection の前合成同値は旗の模型での性質。HTT の C[Jn] から作る Q• との比較、具体的 Kan ModelCategory、弱ホモトピー同値 class に対する Quillen equivalence の判定がなく、通常の随伴だけをこの Quillen 同値の部分としない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.2.10": {
+    "page": 77,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.1",
+        "2.2.2",
+        "2.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "coherentResolutionComparison_counit|coherentResolutionComparison_isSimplicialHomotopyEquivalence",
+        "file_count": 2,
+        "line_count": 4
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "coherentResolutionComparison_counit|coherentResolutionComparison_isSimplicialHomotopyEquivalence",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/ResolutionRetraction.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma coherentResolutionComparison_counit (Z : SSet.{u}) : coherentResolution.map (coherentResolutionComparison Z) ≫ coherentResolutionAdjunction.counit.app Z = coherentResolutionProjectionAll.app Z"
+          },
+          {
+            "line": 86,
+            "head": "lemma coherentResolutionComparison_isSimplicialHomotopyEquivalence (Z : SSet.{u}) [KanComplex Z] : IsSimplicialHomotopyEquivalence (coherentResolutionComparison Z)"
+          }
+        ]
+      }
+    ],
+    "decision": "coherentResolutionComparison_counit は counit との合成の等式、もう一つの定理は実現前の comparison の同値性。counit そのものの弱ホモトピー同値と、原典の Q• に対する比較はなく、合成恒等式と別の射の同値をその代わりに数えない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.2.11": {
+    "page": 77,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.1",
+        "2.2.2",
+        "2.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "presheafRightFiberValueEquivalence",
+        "file_count": 3,
+        "line_count": 8
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "presheafRightFiberValueEquivalence",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafRightFiberValue.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def presheafRightFiberValueEquivalence : QCatEquivalence (vertexFiber p x).op (spaceInfinityObject z).obj"
+          },
+          {
+            "line": 39,
+            "head": "lemma presheafRightFiberValueEquivalence_lift : (SSet.uliftFunctor.{u + 1, u}).map (presheafRightFiberValueEquivalence F x).hom = (presheafRightFiberPointedIso F x).hom ≫ (pointedSpaceFiberValueEquivalence z).hom"
+          }
+        ]
+      }
+    ],
+    "decision": "presheafRightFiberValueEquivalence は native space-valued unstraightening の反転した繊維と値の同値。原典の指定 Unφ と SingQ• の同型、およびその同型で決まる F(C)→(UnφF)s との比較がなく、異なる unstraightening の類似結果にとどまる。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.2.12": {
+    "page": 78,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.1",
+        "2.2.2",
+        "2.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "rightUnstraighteningInfinityMap",
+        "file_count": 1,
+        "line_count": 5
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "rightUnstraighteningInfinityMap",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningUnstraightening.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def rightUnstraighteningInfinityMap (B : SSet.{u}) [Quasicategory B] : PresheafInfinity B ⟶ RightFibrationInfinity B"
+          },
+          {
+            "line": 46,
+            "head": "lemma rightUnstraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightUnstraighteningInfinityMap B)"
+          }
+        ]
+      }
+    ],
+    "decision": "rightUnstraighteningInfinityMap は native 準圏間の射であり、任意の simplicial-set-valued enriched F に対する外積の strict isomorphism と Hom の同じ map を構成しない。元の Unφ との model comparison がないので、functor の存在のみを成分としない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.3.1": {
+    "page": 79,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.2",
+        "2.2.3",
+        "2.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "rightStraighteningInfinityEquivalence",
+        "file_count": 2,
+        "line_count": 4
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "rightStraighteningInfinityEquivalence",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def rightStraighteningInfinityEquivalence (B : SSet.{u}) [Quasicategory B] : QCatEquivalence (RightFibrationInfinity B) (PresheafInfinity B)"
+          }
+        ]
+      }
+    ],
+    "decision": "rightStraighteningInfinityEquivalence は標準単体にも適用できるが、原典 φ:C[Δn]→[n] の Stφ/Unφ の Quillen adjunction と比較されていない。標準単体という同じ底だけでは別の分類模型の同値を Quillen equivalence に移せない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.3.2": {
+    "page": 80,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.2",
+        "2.2.3",
+        "2.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "isQCatEquivalence_of_rightFibration_fibers|isSimplicialHomotopyEquivalence_iff_isQCatEquivalence",
+        "file_count": 6,
+        "line_count": 6
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "isQCatEquivalence_of_rightFibration_fibers|isSimplicialHomotopyEquivalence_iff_isQCatEquivalence",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/Ind/RightFibrationFiberCriterion.lean",
+        "signatures": [
+          {
+            "line": 69,
+            "head": "lemma isQCatEquivalence_of_rightFibration_fibers {E E' B : SSet.{u}} [Quasicategory E] [Quasicategory E'] [Quasicategory B] (p : E ⟶ B) (q : E' ⟶ B) [RightFibration p] [RightFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)) : IsQCatEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/KanHomotopyEquivalence.lean",
+        "signatures": [
+          {
+            "line": 62,
+            "head": "lemma isSimplicialHomotopyEquivalence_iff_isQCatEquivalence {X Y : SSet.{u}} [KanComplex X] [KanComplex Y] (f : X ⟶ Y) : IsSimplicialHomotopyEquivalence f ↔ IsQCatEquivalence f"
+          }
+        ]
+      }
+    ],
+    "decision": "isQCatEquivalence_of_rightFibration_fibers は各点の同値を仮定に取る判定定理であり、任意 S 上の pointwise equivalence の独立した class を定めない。Kan の二同値述語の比較をその仮定へ適用するだけでは原典の定義の実装とは数えない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.3.5": {
+    "page": 81,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.2",
+        "2.2.3",
+        "2.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "relativeCellComplex|isPushout",
+        "file_count": 880,
+        "line_count": 2151
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "relativeCellComplex|isPushout",
+        "file_count": 77,
+        "line_count": 342
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean",
+        "signatures": [
+          {
+            "line": 453,
+            "head": "noncomputable abbrev relativeCellComplex : RelativeCellComplex.{u} (basicCell"
+          },
+          {
+            "line": 395,
+            "head": "lemma isPushout : IsPushout (t i d) (l i d) (r i d) (b i d) where"
+          },
+          {
+            "line": 384,
+            "head": "lemma isPushout_aux {n : ℕ} (y : (sigmaStdSimplex i d) _⦋n⦌) (hy : y ∉ Set.range ((l i d).app (op ⦋n⦌))) : ∃ (c : Cell i d) (f : ⦋n⦌ ⟶ ⦋d⦌) (_ : Epi f), c.ιSigmaStdSimplex.app _ (stdSimplex.objEquiv.symm f) = y"
+          }
+        ]
+      }
+    ],
+    "decision": "relativeCellComplex とその isPushout は骨格の attachment による表示という証明の部品。任意の class U の五閉性から U=全 SSet を導く型ではなく、その一般 closure-recognition を部分として返さない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.3.6": {
+    "page": 82,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.2",
+        "2.2.3",
+        "2.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "isQCatEquivalence_of_rightFibration_fibers|rightFibrationInfinityMappingEquivalence",
+        "file_count": 5,
+        "line_count": 5
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "isQCatEquivalence_of_rightFibration_fibers|rightFibrationInfinityMappingEquivalence",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/Ind/RightFibrationFiberCriterion.lean",
+        "signatures": [
+          {
+            "line": 69,
+            "head": "lemma isQCatEquivalence_of_rightFibration_fibers {E E' B : SSet.{u}} [Quasicategory E] [Quasicategory E'] [Quasicategory B] (p : E ⟶ B) (q : E' ⟶ B) [RightFibration p] [RightFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)) : IsQCatEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightFibrationMappingSpaces.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "noncomputable def rightFibrationInfinityMappingEquivalence {E F B : SSet.{u}} (p : E ⟶ B) (q : F ⟶ B) [RightFibration p] [RightFibration q] : QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj (relativeFunctorSpace q p)) (pinchedHom (rightFibrationInfinityVertex p) (rightFibrationInfinityVertex q))"
+          }
+        ]
+      }
+    ],
+    "decision": "fiber criterion は全空間の categorical equivalence、rightFibrationInfinityMappingEquivalence は相対 Hom の別の準圏での Hom への比較である。原典の底 S 上での actual homotopy inverse と全 A に対する composition の homotopy equivalence の三つの iff はなく、total-space equivalence はその代わりにならない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.3.7": {
+    "page": 83,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.2",
+        "2.2.3",
+        "2.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "presheafRightFiberValueEquivalence|rightFibration_initialFiber_isSimplicialHomotopyEquivalence",
+        "file_count": 4,
+        "line_count": 10
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "presheafRightFiberValueEquivalence|rightFibration_initialFiber_isSimplicialHomotopyEquivalence",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafRightFiberValue.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def presheafRightFiberValueEquivalence : QCatEquivalence (vertexFiber p x).op (spaceInfinityObject z).obj"
+          },
+          {
+            "line": 39,
+            "head": "lemma presheafRightFiberValueEquivalence_lift : (SSet.uliftFunctor.{u + 1, u}).map (presheafRightFiberValueEquivalence F x).hom = (presheafRightFiberPointedIso F x).hom ≫ (pointedSpaceFiberValueEquivalence z).hom"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/RightFibrationInitialFiber.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma rightFibration_initialFiber_isSimplicialHomotopyEquivalence {E B : SSet.{u}} (p : E ⟶ B) [RightFibration p] (b : B _⦋0⦌) (hb : IsInitialVertex b) : IsSimplicialHomotopyEquivalence (vertexFiberι p b)"
+          }
+        ]
+      }
+    ],
+    "decision": "native presheaf の fiber-value comparison と initial-fiber inclusion の同値は、原典の α:StφX→F の adjoint map X→UnφF ではない。その指定 map を構成しておらず、別の二比較の同値は証明の部品・類似にとどまる。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.3.10": {
+    "page": 83,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.2",
+        "2.2.3",
+        "2.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "rightUnstraighteningInfinityMap_isQCatEquivalence",
+        "file_count": 1,
+        "line_count": 1
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "rightUnstraighteningInfinityMap_isQCatEquivalence",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningUnstraightening.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "lemma rightUnstraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightUnstraighteningInfinityMap B)"
+          }
+        ]
+      }
+    ],
+    "decision": "rightUnstraighteningInfinityMap_isQCatEquivalence は space-valued 準圏前層と native RFib∞ の同値。原典の projectively fibrant C[Δn]-diagram の simplicial category と UnΔn の enriched functor との比較がなく、模型の異なる同値を partial に残さない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.3.11": {
+    "page": 83,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.2",
+        "2.2.3",
+        "2.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "rightUnstraighteningInfinityMap_isQCatEquivalence|rightUnstraighteningInfinityVertexIso",
+        "file_count": 1,
+        "line_count": 2
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "rightUnstraighteningInfinityMap_isQCatEquivalence|rightUnstraighteningInfinityVertexIso",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningUnstraightening.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "lemma rightUnstraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightUnstraighteningInfinityMap B)"
+          },
+          {
+            "line": 51,
+            "head": "def rightUnstraighteningInfinityVertexIso {B : SSet.{u}} [Quasicategory B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B.op ⟶ SpaceInfinity.{u}) : VertexIso ((rightUnstraighteningInfinityMap B).app _ (functorVertex F)) (rightFibrationInfinityVertex (smallRightUnstraighteningProjection F))"
+          }
+        ]
+      }
+    ],
+    "decision": "native の底は準圏、domain は space-valued presheaf infinity-category。原典の任意 S と C[S]op による projective enriched diagram category および同じ UnS の simplicial equivalence と比較していない。object-level VertexIso もその model comparison ではない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.3.13": {
+    "page": 86,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.2",
+        "2.2.3",
+        "2.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "isQCatEquivalence_of_rightFibration_fibers",
+        "file_count": 4,
+        "line_count": 4
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "isQCatEquivalence_of_rightFibration_fibers",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/Ind/RightFibrationFiberCriterion.lean",
+        "signatures": [
+          {
+            "line": 69,
+            "head": "lemma isQCatEquivalence_of_rightFibration_fibers {E E' B : SSet.{u}} [Quasicategory E] [Quasicategory E'] [Quasicategory B] (p : E ⟶ B) (q : E' ⟶ B) [RightFibration p] [RightFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)) : IsQCatEquivalence f"
+          }
+        ]
+      }
+    ],
+    "decision": "isQCatEquivalence_of_rightFibration_fibers は (pointwise⇒total categorical equivalence) のみ。原典は contravariant equivalence と pointwise equivalence の iff であり、その model class と native total-space equivalence の比較がない。異なる結論を部分としない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.3.15": {
+    "page": 87,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.2",
+        "2.2.3",
+        "2.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "presheafRightFiberValueEquivalence|rightUnstraighteningInfinityVertexIso",
+        "file_count": 4,
+        "line_count": 9
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "presheafRightFiberValueEquivalence|rightUnstraighteningInfinityVertexIso",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafRightFiberValue.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def presheafRightFiberValueEquivalence : QCatEquivalence (vertexFiber p x).op (spaceInfinityObject z).obj"
+          },
+          {
+            "line": 39,
+            "head": "lemma presheafRightFiberValueEquivalence_lift : (SSet.uliftFunctor.{u + 1, u}).map (presheafRightFiberValueEquivalence F x).hom = (presheafRightFiberPointedIso F x).hom ≫ (pointedSpaceFiberValueEquivalence z).hom"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningUnstraightening.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "def rightUnstraighteningInfinityVertexIso {B : SSet.{u}} [Quasicategory B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B.op ⟶ SpaceInfinity.{u}) : VertexIso ((rightUnstraighteningInfinityMap B).app _ (functorVertex F)) (rightFibrationInfinityVertex (smallRightUnstraighteningProjection F))"
+          }
+        ]
+      }
+    ],
+    "decision": "presheafRightFiberValueEquivalence と rightUnstraighteningInfinityVertexIso は native unstraightening の値の比較。原典の |Xs|Q•→(StS X)(s) の map と比較しておらず、straightening の指定評価値や元の Q• からの射を得ていない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.4.1": {
+    "page": 88,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.3",
+        "2.2.4",
+        "2.2.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "coherentPinchedFlagIso|coherentHomComparison_isSimplicialHomotopyEquivalence",
+        "file_count": 11,
+        "line_count": 15
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "coherentPinchedFlagIso|coherentHomComparison_isSimplicialHomotopyEquivalence",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/FlagIso.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def coherentPinchedFlagIso {C : Type v} [Category.{u} C] [SimplicialCategory C] (X Y : C) : pinchedHom (coherentNerveVertex X) (coherentNerveVertex Y) ≅ (SSet.uliftFunctor.{v, u}).obj (coherentResolutionRightAdjoint.obj (SimplicialCategory.sHom X Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/HomEquivalence.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma coherentHomComparison_isSimplicialHomotopyEquivalence {C : Type v} [Category.{u} C] [SimplicialCategory C] [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] (X Y : C) : IsSimplicialHomotopyEquivalence (coherentHomComparison X Y)"
+          }
+        ]
+      }
+    ],
+    "decision": "coherentPinchedFlagIso と coherentHomComparison は S=N(C) の右 Hom を元の C の Hom と比較する。原典の MapC[S] と旗の実現からの指定 f との同定がなく、異なる射の同値を特殊形の証明として数えない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.5.1": {
+    "page": 89,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.4",
+        "2.2.5",
+        "2.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "IsPrecompositionEquivalence|cofibration_iff|SimplicialNerve",
+        "file_count": 691,
+        "line_count": 1816
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "IsPrecompositionEquivalence|cofibration_iff|SimplicialNerve",
+        "file_count": 13,
+        "line_count": 42
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsPrecompositionEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop"
+          },
+          {
+            "line": 31,
+            "head": "lemma isPrecompositionEquivalence_id (A : SSet.{u}) : IsPrecompositionEquivalence (𝟙 A)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/CategoryWithFibrations.lean",
+        "signatures": [
+          {
+            "line": 87,
+            "head": "lemma cofibration_iff : Cofibration f ↔ Mono f"
+          },
+          {
+            "line": 95,
+            "head": "instance mono_of_cofibration [Cofibration f] : Mono f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialNerve.lean",
+        "signatures": [
+          {
+            "line": 190,
+            "head": "def SimplicialNerve (C : Type u) [Category.{v} C] [SimplicialCategory C] : SSet.{max u v} where"
+          }
+        ]
+      }
+    ],
+    "decision": "monomorphism を使う scoped Kan cofibration と SimplicialNerve、前合成同値述語は別々にある。具体的 Joyal/Bergner ModelCategory と rigidification C[-] の adjunction を構成せず、その W と cofibration 類を同時に指定した構造の成分にはならない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.5.2": {
+    "page": 89,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.4",
+        "2.2.5",
+        "2.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "isPrecompositionEquivalence_of_innerAnodyne",
+        "file_count": 21,
+        "line_count": 24
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "isPrecompositionEquivalence_of_innerAnodyne",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 99,
+            "head": "lemma isPrecompositionEquivalence_of_innerAnodyne {A B : SSet.{u}} (f : A ⟶ B) (hf : innerAnodyneExtensions f) : IsPrecompositionEquivalence f"
+          }
+        ]
+      }
+    ],
+    "decision": "isPrecompositionEquivalence_of_innerAnodyne は準圏への前合成による同値性。原典の任意 S の C[f] が H-enriched equivalence となることとの比較はなく、この異なる equivalence 述語をそのまま置き換えない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.5.4": {
+    "page": 92,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.4",
+        "2.2.5",
+        "2.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "whiskerRight",
+        "file_count": 1527,
+        "line_count": 3461
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "whiskerRight",
+        "file_count": 280,
+        "line_count": 1492
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionTensor.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "lemma IsPrecompositionEquivalence.whiskerRight {A B : SSet.{u}} {f : A ⟶ B} (hf : IsPrecompositionEquivalence f) (K : SSet.{u}) : IsPrecompositionEquivalence (f ▷ K)"
+          },
+          {
+            "line": 37,
+            "head": "lemma ihomCurry_pre_whiskerRight {A B : SSet.{u}} (f : A ⟶ B) (K X : SSet.{u}) : (pre (f ▷ K)).app X ≫ (ihomCurryIso A K X).hom = (ihomCurryIso B K X).hom ≫ (ihom K).map ((pre f).app X)"
+          }
+        ]
+      }
+    ],
+    "decision": "IsPrecompositionEquivalence.whiskerRight は前合成試験の述語を tensor で保つが、任意 A,B の原典の H-enriched categorical equivalence との比較はない。同じ tensor の式だけでは異なる同値述語を原典の結論に移せない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.5.5": {
+    "page": 92,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.4",
+        "2.2.5",
+        "2.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "InnerFibration|Quasicategory|isPrecompositionEquivalence_of_innerAnodyne",
+        "file_count": 4810,
+        "line_count": 13996
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "InnerFibration|Quasicategory|isPrecompositionEquivalence_of_innerAnodyne",
+        "file_count": 10,
+        "line_count": 76
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "class InnerFibration {X Y : SSet} (q : X ⟶ Y) : Prop where"
+          },
+          {
+            "line": 75,
+            "head": "lemma mem_innerFibrations {X Y : SSet} (q : X ⟶ Y) [InnerFibration q] : innerFibrations q"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/Quasicategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class Quasicategory (S : SSet) : Prop where"
+          },
+          {
+            "line": 46,
+            "head": "lemma Quasicategory.hornFilling {S : SSet} [Quasicategory S] ⦃n : ℕ⦄ ⦃i : Fin (n + 1)⦄ (h0 : 0 < i) (hn : i < Fin.last n) (σ₀ : (Λ[n, i] : SSet) ⟶ S) : ∃ σ : Δ[n] ⟶ S, σ₀ = Λ[n, i].ι ≫ σ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 99,
+            "head": "lemma isPrecompositionEquivalence_of_innerAnodyne {A B : SSet.{u}} (f : A ⟶ B) (hf : innerAnodyneExtensions f) : IsPrecompositionEquivalence f"
+          }
+        ]
+      }
+    ],
+    "decision": "InnerFibration/Quasicategory と inner-anodyne⇒precomposition-equivalence はあるが、具体的 Joyal model の fibrations/fibrant objects を比較する型はない。個々の lifting 条件はその模型存在・判定の証明の部品。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.5.7": {
+    "page": 93,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.4",
+        "2.2.5",
+        "2.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "simplicialHomotopy",
+        "file_count": 515,
+        "line_count": 1233
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "simplicialHomotopy",
+        "file_count": 1,
+        "line_count": 2
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FunctorHomotopy.lean",
+        "signatures": [
+          {
+            "line": 111,
+            "head": "noncomputable def FunctorIso.simplicialHomotopy {X Y : SSet.{u}} [Quasicategory Y] {f g : X ⟶ Y} (e : FunctorIso f g) : SSet.Homotopy f g"
+          },
+          {
+            "line": 64,
+            "head": "def simplicialHomotopyOfFunctorEdge {X Y : SSet.{u}} {f g : X ⟶ Y} (e : SSet.Truncated.Edge (X"
+          }
+        ]
+      }
+    ],
+    "decision": "FunctorIso.simplicialHomotopy は可逆な自然変換から Δ1 の ordinary simplicial homotopy を作る。Joyal の categorical cylinder による left homotopy とこの二つの同値関係の比較がなく、別の homotopy の存在を iff の片方向と数えない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.2.5.8": {
+    "page": 94,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.4",
+        "2.2.5",
+        "2.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "IsPrecompositionEquivalence|isQCatEquivalence",
+        "file_count": 1617,
+        "line_count": 4747
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "IsPrecompositionEquivalence|isQCatEquivalence",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsPrecompositionEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop"
+          },
+          {
+            "line": 118,
+            "head": "lemma IsPrecompositionEquivalence.isQCatEquivalence {A B : SSet.{u}} [Quasicategory A] [Quasicategory B] {f : A ⟶ B} (hf : IsPrecompositionEquivalence f) : IsQCatEquivalence f"
+          },
+          {
+            "line": 31,
+            "head": "lemma isPrecompositionEquivalence_id (A : SSet.{u}) : IsPrecompositionEquivalence (𝟙 A)"
+          }
+        ]
+      }
+    ],
+    "decision": "IsPrecompositionEquivalence.isQCatEquivalence は両側が準圏の場合に、全 Fun 前合成の準圏同値から native QCatEquivalence を得る。原典の全単体集合についての hFun による weak categorical equivalence と C[f] の enriched equivalence との iff はない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.3.1.2": {
+    "page": 97,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.5",
+        "2.3.1",
+        "2.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "Profunctor",
+        "file_count": 0,
+        "line_count": 0
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "Profunctor",
+        "file_count": 3,
+        "line_count": 84
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Profunctor/Basic.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "abbrev Profunctor"
+          },
+          {
+            "line": 40,
+            "head": "structure ProfunctorCore where"
+          }
+        ]
+      }
+    ],
+    "decision": "Profunctor は二変数の集合値 functor の定義だけ。対応から collage M→[1] を作り、その fiber から二圏と correspondence を回収する往復の equivalence はない。原典の両側の一方を定義したことだけは部分としない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.3.1.3": {
+    "page": 97,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.5",
+        "2.3.1",
+        "2.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "relativeArrowCollageProjection|relativeArrowCollage_inl_isPullback|relativeArrowCollage_inr_isPullback",
+        "file_count": 12,
+        "line_count": 90
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "relativeArrowCollageProjection|relativeArrowCollage_inl_isPullback|relativeArrowCollage_inr_isPullback",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/RelativeArrowCollage.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def relativeArrowCollageProjection {E F B : SSet.{u}} (f : E ⟶ F) (q : F ⟶ B) : relativeJoin f (𝟙 F) ⟶ (Δ[1] : SSet.{u}) ⊗ B"
+          },
+          {
+            "line": 85,
+            "head": "lemma relativeArrowCollage_inl_isPullback {E F B : SSet.{u}} (p : E ⟶ B) (q : F ⟶ B) (f : E ⟶ F) (hf : f ≫ q = p) : IsPullback (relativeJoinInl f (𝟙 F)) p (relativeArrowCollageProjection f q) (prismEndpoint 0 B)"
+          },
+          {
+            "line": 103,
+            "head": "lemma relativeArrowCollage_inr_isPullback {E F B : SSet.{u}} (f : E ⟶ F) (q : F ⟶ B) : IsPullback (relativeJoinInr f (𝟙 F)) q (relativeArrowCollageProjection f q) (prismEndpoint 1 B)"
+          },
+          {
+            "line": 33,
+            "head": "lemma relativeArrowCollageProjection_fst {E F B : SSet.{u}} (f : E ⟶ F) (q : F ⟶ B) : relativeArrowCollageProjection f q ≫ fst Δ[1] B = relativeJoinProjection f (𝟙 F)"
+          }
+        ]
+      }
+    ],
+    "decision": "relativeArrowCollageProjection と両端の pullback は relativeJoin f id を Δ1×B に送る別の構成。この型は relativeJoin が準圏であることを証明せず、任意の correspondence の準圏 M→Δ1 と両端の同定を束ねた型と比較していない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.3.3.4": {
+    "page": 102,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.2",
+        "2.3.3",
+        "2.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "innerFibrations",
+        "file_count": 80,
+        "line_count": 116
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "innerFibrations",
+        "file_count": 2,
+        "line_count": 11
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean",
+        "signatures": [
+          {
+            "line": 66,
+            "head": "def innerFibrations : MorphismProperty SSet.{u}"
+          },
+          {
+            "line": 75,
+            "head": "lemma mem_innerFibrations {X Y : SSet} (q : X ⟶ Y) [InnerFibration q] : innerFibrations q"
+          }
+        ]
+      }
+    ],
+    "decision": "innerFibrations は inner horn RLP の射類で、その pullback 安定性はある。しかし原典は minimal inner fibration の minimality の保存・全単体での検出であり、minimality の定義と型が未供給。inner-fibration 部分の安定性だけはこの主張の証明の部品。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.3.4.2": {
+    "page": 107,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "isContractibleKan_of_nonempty_of_degreewise_subsingleton",
+        "file_count": 2,
+        "line_count": 3
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "isContractibleKan_of_nonempty_of_degreewise_subsingleton",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/StdSimplexTerminal.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isContractibleKan_of_nonempty_of_degreewise_subsingleton (K : SSet.{u}) (hne : Nonempty (K _⦋0⦌)) (hs : ∀ n : ℕ, Subsingleton (K _⦋n⦌)) : IsContractibleKan K"
+          }
+        ]
+      }
+    ],
+    "decision": "degreewise_subsingleton と非空から IsContractibleKan を得る定理は弱い homotopy 的結論。原典の (−1)-category から degreewise 一意性を導き、空または一点への strict isomorphism を作る比較はない。可縮性を strict な分類の部分としない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.3.4.3": {
+    "page": 107,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "thinNerve_hom_ext_vertices|strictSegal",
+        "file_count": 8,
+        "line_count": 15
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "thinNerve_hom_ext_vertices|strictSegal",
+        "file_count": 2,
+        "line_count": 3
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/ThinNerveInnerFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma thinNerve_hom_ext_vertices {C : Type u} [Category.{u} C] [Quiver.IsThin C] {X : SSet.{u}} {f g : X ⟶ nerve C} (h : f.app (Opposite.op ⦋0⦌) = g.app (Opposite.op ⦋0⦌)) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/StrictSegal.lean",
+        "signatures": [
+          {
+            "line": 522,
+            "head": "def strictSegal : StrictSegal (nerve C)"
+          }
+        ]
+      }
+    ],
+    "decision": "thinNerve_hom_ext_vertices と strictSegal は薄い圏の nerve の性質で、HTT の 0-category の公理（特に可逆辺による頂点の一意性）と比較していない。任意の 0-category を poset の nerve に回収する同型、および poset の nerve がその公理を満たす型もない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.3.4.5": {
+    "page": 107,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "nerveAdjunction|nerveFunctorCompHoFunctorIso|strictSegal",
+        "file_count": 15,
+        "line_count": 54
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "nerveAdjunction|nerveFunctorCompHoFunctorIso|strictSegal",
+        "file_count": 3,
+        "line_count": 14
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+        "signatures": [
+          {
+            "line": 389,
+            "head": "noncomputable def nerveAdjunction : hoFunctor ⊣ nerveFunctor"
+          },
+          {
+            "line": 410,
+            "head": "noncomputable def nerveFunctorCompHoFunctorIso : nerveFunctor.{u, u} ⋙ hoFunctor ≅ 𝟭 Cat"
+          },
+          {
+            "line": 405,
+            "head": "instance nerveAdjunction.isIso_counit : IsIso nerveAdjunction.counit"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/StrictSegal.lean",
+        "signatures": [
+          {
+            "line": 522,
+            "head": "def strictSegal : StrictSegal (nerve C)"
+          }
+        ]
+      }
+    ],
+    "decision": "nerveAdjunction は unit の存在、nerveFunctorCompHoFunctorIso は hN≅id、strictSegal は nerve の Segal 性。任意の S について unit が iso iff S が ordinary nerve の像 iff HTT 1-category の公理、という同じ条件間の比較を与えていない。unit の存在だけは unit の isomorphism criterion の部分としない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.3.4.8": {
+    "page": 108,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "innerFibration_pullbackObjObjπ",
+        "file_count": 5,
+        "line_count": 5
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "innerFibration_pullbackObjObjπ",
+        "file_count": 1,
+        "line_count": 5
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+        "signatures": [
+          {
+            "line": 74,
+            "head": "lemma innerFibration_pullbackObjObjπ [Mono i] [InnerFibration p] (sq₁₃ : MonoidalClosed.internalHom.PullbackObjObj i p) : InnerFibration sq₁₃.π"
+          }
+        ]
+      }
+    ],
+    "decision": "innerFibration_pullbackObjObjπ は Fun(X,C) の準圏性を得るための一般 lifting 補題である。原典の n-category の高次単体の一意性をその Fun に運ぶ宣言はなく、n-category の証明に必要な inner filling の部品だけは部分としない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.3.4.9": {
+    "page": 109,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "quasicategory|isCoskeletal",
+        "file_count": 2403,
+        "line_count": 5846
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "quasicategory|isCoskeletal",
+        "file_count": 11,
+        "line_count": 50
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/Quasicategory/StrictSegal.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem quasicategory {X : SSet.{u}} (sx : StrictSegal X) : Quasicategory X"
+          },
+          {
+            "line": 103,
+            "head": "instance quasicategory' (X : SSet.{u}) [IsStrictSegal X] : Quasicategory X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 232,
+            "head": "theorem isCoskeletal (sx : StrictSegal X) : SimplicialObject.IsCoskeletal X 2 where"
+          },
+          {
+            "line": 237,
+            "head": "instance isCoskeletal' [IsStrictSegal X] : SimplicialObject.IsCoskeletal X 2"
+          }
+        ]
+      }
+    ],
+    "decision": "StrictSegal.quasicategory は充填の存在、isCoskeletal は次数>2 の境界の一意性。これらは原典の全 m>n の inner horn の一意充填の iff ではなく、とくに m=2 の inner horn uniqueness をこの組から結論するには追加の比較が要る。一般 n-category の公理との同値もない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.3.4.10": {
+    "page": 110,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "sliceOver_quasicategory",
+        "file_count": 1,
+        "line_count": 1
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "sliceOver_quasicategory",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RightFibration.lean",
+        "signatures": [
+          {
+            "line": 223,
+            "head": "instance sliceOver_quasicategory {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) : Quasicategory (sliceOver p)"
+          }
+        ]
+      }
+    ],
+    "decision": "sliceOver_quasicategory は元の C を任意の準圏として slice が準圏になることのみ。HTT の n-category の一意性を slice に運ぶ宣言がなく、その結論のための horn existence の部品だけは partial としない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.3.4.12": {
+    "page": 110,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "nerveAdjunction",
+        "file_count": 8,
+        "line_count": 37
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "nerveAdjunction",
+        "file_count": 2,
+        "line_count": 9
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+        "signatures": [
+          {
+            "line": 389,
+            "head": "noncomputable def nerveAdjunction : hoFunctor ⊣ nerveFunctor"
+          },
+          {
+            "line": 405,
+            "head": "instance nerveAdjunction.isIso_counit : IsIso nerveAdjunction.counit"
+          }
+        ]
+      }
+    ],
+    "decision": "nerveAdjunction は Hom(hK,D)≃Hom(K,N(D)) を与える。原典の [K,C]n/∼ の境界固定 homotopy relation とこの Hom を比較しておらず、n=1 でも指定 hnC の universal formula、n-category 公理、Fun 全体の isomorphism を得ていない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.3.4.13": {
+    "page": 112,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "homEquiv",
+        "file_count": 637,
+        "line_count": 2490
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "homEquiv",
+        "file_count": 224,
+        "line_count": 1661
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean",
+        "signatures": [
+          {
+            "line": 121,
+            "head": "def homEquiv : (X ⟶ discrete T) ≃ (SSet.π₀ X → T) where"
+          }
+        ]
+      }
+    ],
+    "decision": "PiZeroConstant.homEquiv は discrete set への写像を π0 からの関数に対応させる。HTT の 0-category は任意の poset の nerve を含み、discrete targets だけの reflection をその全 targets の reflection と比較していない。hnC の代替構成そのものはない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.3.4.14": {
+    "page": 112,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "nerveAdjunction|nerveFunctorCompHoFunctorIso",
+        "file_count": 13,
+        "line_count": 47
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "nerveAdjunction|nerveFunctorCompHoFunctorIso",
+        "file_count": 2,
+        "line_count": 11
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+        "signatures": [
+          {
+            "line": 389,
+            "head": "noncomputable def nerveAdjunction : hoFunctor ⊣ nerveFunctor"
+          },
+          {
+            "line": 410,
+            "head": "noncomputable def nerveFunctorCompHoFunctorIso : nerveFunctor.{u, u} ⋙ hoFunctor ≅ 𝟭 Cat"
+          },
+          {
+            "line": 405,
+            "head": "instance nerveAdjunction.isIso_counit : IsIso nerveAdjunction.counit"
+          }
+        ]
+      }
+    ],
+    "decision": "nerveAdjunction と hN≅id は通常 hC と nerve への unit の存在である。原典の骨格と n-homotopy quotient による h1C を構成せず、その h1C と N(hC) の同型を比較していないので、対象候補と unit だけをその同型の partial にしない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.3.4.17": {
+    "page": 112,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "Is0TruncatedSpace|homEquiv",
+        "file_count": 637,
+        "line_count": 2491
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "Is0TruncatedSpace|homEquiv",
+        "file_count": 224,
+        "line_count": 1661
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 120,
+            "head": "def Is0TruncatedSpace (x : SpaceInfinity.{u} _⦋0⦌) : Prop"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean",
+        "signatures": [
+          {
+            "line": 121,
+            "head": "def homEquiv : (X ⟶ discrete T) ≃ (SSet.π₀ X → T) where"
+          }
+        ]
+      }
+    ],
+    "decision": "Is0TruncatedSpace は SpaceInfinity の頂点が discrete-space inclusion の値と VertexIso で結ばれることを定め、PiZeroConstant.homEquiv は離散 target の Hom を計算する。πi の消滅という原典の 0-truncatedness との比較、X→π0X の同値の iff はなく、片側の定義だけはその characterization の証明にしない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.1.2": {
+    "page": 115,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.4",
+        "2.4.1",
+        "2.4.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "IsStronglyCartesian|IsCartesianEdge",
+        "file_count": 53,
+        "line_count": 143
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "IsStronglyCartesian|IsCartesianEdge",
+        "file_count": 4,
+        "line_count": 39
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/FiberedCategory/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "class IsStronglyCartesian : Prop where"
+          },
+          {
+            "line": 32,
+            "head": "generally recommended to use the lemma `IsStronglyCartesian.universal_property` instead. The"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop"
+          },
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          }
+        ]
+      }
+    ],
+    "decision": "IsStronglyCartesian は通常 functor の普遍性、IsCartesianEdge は単体の slice-boundary 条件。N(M) の同じ f についてその二条件が同値である比較宣言がなく、二つの定義をそれぞれ読むだけでは原典の iff の成分にならない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.1.10": {
+    "page": 119,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.4",
+        "2.4.1",
+        "2.4.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "coherentHomComparison_isSimplicialHomotopyEquivalence",
+        "file_count": 8,
+        "line_count": 8
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "coherentHomComparison_isSimplicialHomotopyEquivalence",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/HomEquivalence.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma coherentHomComparison_isSimplicialHomotopyEquivalence {C : Type v} [Category.{u} C] [SimplicialCategory C] [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] (X Y : C) : IsSimplicialHomotopyEquivalence (coherentHomComparison X Y)"
+          }
+        ]
+      }
+    ],
+    "decision": "coherentHomComparison は局所 Kan な enriched Hom と右 pinched Hom の同値で、原典の N(F) の InnerFibration も各 Hom 正方形の homotopy-Cartesian iff も結論しない。関手に対して natural な正方形との比較がなく、Hom 比較の部品を残さない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.1.12": {
+    "page": 120,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.4",
+        "2.4.1",
+        "2.4.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "isCartesianEdge_pullback",
+        "file_count": 9,
+        "line_count": 11
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "isCartesianEdge_pullback",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isCartesianEdge_pullback {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B) (e : (pullback p q) _⦋1⦌) (he : IsCartesianEdge p ((pullback.fst p q).app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (pullback.snd p q) e"
+          }
+        ]
+      }
+    ],
+    "decision": "isCartesianEdge_pullback は像の辺が大域的に Cartesian の場合の一方向。原典の local Cartesian の任意の像辺に対する保存反映の iff を表さず、二重 pullback における local 条件の比較もないので別の大域的保存結果を残さない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.2.7": {
+    "page": 123,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.1",
+        "2.4.2",
+        "2.4.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "isCartesianEdge_triangle_longEdge|isCartesianEdge_triangle_first_of_second_long",
+        "file_count": 6,
+        "line_count": 7
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "isCartesianEdge_triangle_longEdge|isCartesianEdge_triangle_first_of_second_long",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianOpposite.lean",
+        "signatures": [
+          {
+            "line": 112,
+            "head": "lemma isCartesianEdge_triangle_longEdge {X B : SSet.{u}} [Quasicategory B] (t : (Δ[2] : SSet.{u}) ⟶ X) (p : X ⟶ B) [InnerFibration p] (hfirst : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (2 : Fin 3) ≫ t))) (hsecond : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 3) ≫ t))) : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 3) ≫ t))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/CartesianCancellation.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma isCartesianEdge_triangle_first_of_second_long {X B : SSet.{u}} [Quasicategory B] (t : (Δ[2] : SSet.{u}) ⟶ X) (p : X ⟶ B) [InnerFibration p] (hsecond : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 3) ≫ t))) (hlong : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 3) ≫ t))) : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (2 : Fin 3) ≫ t))"
+          }
+        ]
+      }
+    ],
+    "decision": "global Cartesian の triangle composition/cancellation は、locally Cartesian な g,h の条件を global に移す比較を供給しない。元の三条件は local 条件を使って global f を検出するものであり、global な辺同士だけの合成則はこの検出の証明の部品。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.2.8": {
+    "page": 124,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.1",
+        "2.4.2",
+        "2.4.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "isCartesianEdge_triangle_longEdge",
+        "file_count": 4,
+        "line_count": 4
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "isCartesianEdge_triangle_longEdge",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianOpposite.lean",
+        "signatures": [
+          {
+            "line": 112,
+            "head": "lemma isCartesianEdge_triangle_longEdge {X B : SSet.{u}} [Quasicategory B] (t : (Δ[2] : SSet.{u}) ⟶ X) (p : X ⟶ B) [InnerFibration p] (hfirst : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (2 : Fin 3) ≫ t))) (hsecond : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 3) ≫ t))) : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 3) ≫ t))"
+          }
+        ]
+      }
+    ],
+    "decision": "isCartesianEdge_triangle_longEdge は global Cartesian 二辺の合成を保つ。原典は local Cartesian の合成閉性 iff global fibration、あるいは local=edgeglobal の iff である。local/global の辺を比較する宣言がなく、別の global 合成則をその方向としない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.2.9": {
+    "page": 124,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.1",
+        "2.4.2",
+        "2.4.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "homotopyTransport|isCartesianEdge_iff_isCocartesianEdge_op",
+        "file_count": 2,
+        "line_count": 28
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "homotopyTransport|isCartesianEdge_iff_isCocartesianEdge_op",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Transport/HomotopyTransport.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "noncomputable def homotopyTransport {X B : SSet.{u}} [Quasicategory B] (p : X ⟶ B) [CocartesianFibration p] : hoFunctor.obj B ⥤ HomotopyQCat.{u}"
+          },
+          {
+            "line": 23,
+            "head": "def homotopyTransportFiber {X B : SSet.{u}} (p : X ⟶ B) [CocartesianFibration p] (b : B _⦋0⦌) : HomotopyQCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianOpposite.lean",
+        "signatures": [
+          {
+            "line": 103,
+            "head": "lemma isCartesianEdge_iff_isCocartesianEdge_op {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : IsCartesianEdge p e ↔ IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)"
+          }
+        ]
+      }
+    ],
+    "decision": "homotopyTransport は大域的 cocartesian p について hS→HomotopyQCat の通常関手を作る。原典は local Cartesian p の実際の fiber 準圏間の functor と一般には非可逆な二単体の比較変換である。ordinary homotopy-category 上の関手にはこの lax coherence がなく、opposite の辺の双対性もその比較を補わない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.2.13": {
+    "page": 126,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.1",
+        "2.4.2",
+        "2.4.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "exists_kanCartesianComparisonTriangle|isCartesianEdge_triangle_longEdge",
+        "file_count": 5,
+        "line_count": 7
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "exists_kanCartesianComparisonTriangle|isCartesianEdge_triangle_longEdge",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/CartesianComparison.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma exists_kanCartesianComparisonTriangle {E B : SSet.{u}} (p : E ⟶ B) (e f : (Δ[1] : SSet.{u}) ⟶ E) (hb : e ≫ p = f ≫ p) (ht : stdSimplex.δ (0 : Fin 2) ≫ e = stdSimplex.δ (0 : Fin 2) ≫ f) (hf : IsCartesianEdge p (SSet.yonedaEquiv f)) : ∃ t : (Δ[2] : SSet.{u}) ⟶ E, stdSimplex.δ (1 : Fin 3) ≫ t = e ∧ stdSimplex.δ (0 : Fin 3) ≫ t = f ∧ t ≫ p = stdSimplex.σ (0 : Fin 2) ≫ e ≫ p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianOpposite.lean",
+        "signatures": [
+          {
+            "line": 112,
+            "head": "lemma isCartesianEdge_triangle_longEdge {X B : SSet.{u}} [Quasicategory B] (t : (Δ[2] : SSet.{u}) ⟶ X) (p : X ⟶ B) [InnerFibration p] (hfirst : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (2 : Fin 3) ≫ t))) (hsecond : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 3) ≫ t))) : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 3) ≫ t))"
+          }
+        ]
+      }
+    ],
+    "decision": "exists_kanCartesianComparisonTriangle は局所な f と global lift f̃ を比較する三角形だけを作る。比較辺が局所性から invertible となる段階と、それを用いて f が global Cartesian となる型がない。指定結論を得る前の証明の部品。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.4.2": {
+    "page": 131,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.3",
+        "2.4.4",
+        "2.4.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "intervalPostcompose_isSimplicialHomotopyEquivalence_of_cartesian|pinchedHomMap_vertexFiber_kanComplex",
+        "file_count": 3,
+        "line_count": 4
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "intervalPostcompose_isSimplicialHomotopyEquivalence_of_cartesian|pinchedHomMap_vertexFiber_kanComplex",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CartesianIntervalPostcomposition.lean",
+        "signatures": [
+          {
+            "line": 74,
+            "head": "lemma intervalPostcompose_isSimplicialHomotopyEquivalence_of_cartesian {E : SSet.{u}} [Quasicategory E] (e : (Δ[1] : SSet.{u}) ⟶ E) (x : E _⦋0⦌) (p : E ⟶ (Δ[1] : SSet.{u})) (hp : e ≫ p = 𝟙 Δ[1]) (he : IsCartesianEdge p (SSet.yonedaEquiv e)) (hx : p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (0 : Fin 2)) : IsSimplicialHomotopyEquivalence (intervalPostcompose x (SSet.Truncated.HomotopyCategory.homMk (edgeCosliceEdge e)))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/MappingSpaceFibration.lean",
+        "signatures": [
+          {
+            "line": 215,
+            "head": "lemma pinchedHomMap_vertexFiber_kanComplex {X Y : SSet.{u}} (p : X ⟶ Y) [InnerFibration p] (x y : X _⦋0⦌) (s : (pinchedHom (p.app (Opposite.op ⦋0⦌) x) (p.app (Opposite.op ⦋0⦌) y)) _⦋0⦌) : KanComplex (vertexFiber (pinchedHomMap p x y) s)"
+          }
+        ]
+      }
+    ],
+    "decision": "intervalPostcompose の同値は底が区間の場合の別の写像、pinchedHomMap_vertexFiber_kanComplex は fiber が Kan であることのみ。原典の同じ Map(X,Y) の指定 fiber と繊維内 Map(X,X′) の比較射がなく、その fiber sequence を与える定理ではない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.4.3": {
+    "page": 131,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.3",
+        "2.4.4",
+        "2.4.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "intervalPostcompose_isSimplicialHomotopyEquivalence_of_cartesian",
+        "file_count": 2,
+        "line_count": 3
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "intervalPostcompose_isSimplicialHomotopyEquivalence_of_cartesian",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CartesianIntervalPostcomposition.lean",
+        "signatures": [
+          {
+            "line": 74,
+            "head": "lemma intervalPostcompose_isSimplicialHomotopyEquivalence_of_cartesian {E : SSet.{u}} [Quasicategory E] (e : (Δ[1] : SSet.{u}) ⟶ E) (x : E _⦋0⦌) (p : E ⟶ (Δ[1] : SSet.{u})) (hp : e ≫ p = 𝟙 Δ[1]) (he : IsCartesianEdge p (SSet.yonedaEquiv e)) (hx : p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (0 : Fin 2)) : IsSimplicialHomotopyEquivalence (intervalPostcompose x (SSet.Truncated.HomotopyCategory.homMk (edgeCosliceEdge e)))"
+          }
+        ]
+      }
+    ],
+    "decision": "intervalPostcompose の homotopy equivalence は区間上の source-fiber/coslice の写像である。原典の全 X にわたる Hom 正方形を homotopy pullback と同定する比較、およびその iff はなく、異なる comparison の同値を残さない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.4.9": {
+    "page": 133,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.3",
+        "2.4.4",
+        "2.4.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "initialBoundaryLifting_of_isInitialVertex_fiber|isInitialVertex_fiber",
+        "file_count": 10,
+        "line_count": 13
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "initialBoundaryLifting_of_isInitialVertex_fiber|isInitialVertex_fiber",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/CartesianInitialBoundary.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "lemma initialBoundaryLifting_of_isInitialVertex_fiber {E B : SSet.{u}} [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [CartesianFibration p] (b : B _⦋0⦌) (x : (vertexFiber p b) _⦋0⦌) (hx : IsInitialVertex x) : InitialBoundaryLifting p x.val"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RelativeInitialBoundary.lean",
+        "signatures": [
+          {
+            "line": 68,
+            "head": "lemma InitialBoundaryLifting.isInitialVertex_fiber {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) (x : (vertexFiber p b) _⦋0⦌) (hx : InitialBoundaryLifting p x.val) : IsInitialVertex x"
+          }
+        ]
+      }
+    ],
+    "decision": "initialBoundaryLifting_of_isInitialVertex_fiber とその逆は各頂点の relative initial-boundary 条件を比較する。原典の初期頂点だけを残した full subcomplex の trivial fibration 性と、任意 section の initiality iff の二結論はなく、点ごとの lifting 条件だけはその証明の部品。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.6.1": {
+    "page": 136,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.5",
+        "2.4.6",
+        "2.4.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "quasicategory_iff_innerFibration|trivialKanFibration_pre",
+        "file_count": 32,
+        "line_count": 39
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "quasicategory_iff_innerFibration|trivialKanFibration_pre",
+        "file_count": 1,
+        "line_count": 5
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean",
+        "signatures": [
+          {
+            "line": 78,
+            "head": "lemma quasicategory_iff_innerFibration (X : SSet.{u}) : Quasicategory X ↔ InnerFibration (terminal.from X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionLifting.lean",
+        "signatures": [
+          {
+            "line": 79,
+            "head": "lemma IsPrecompositionEquivalence.trivialKanFibration_pre {A B : SSet.{u}} {i : A ⟶ B} [Mono i] (hi : IsPrecompositionEquivalence i) (X : SSet.{u}) [Quasicategory X] : TrivialKanFibration ((pre i).app X)"
+          }
+        ]
+      }
+    ],
+    "decision": "quasicategory_iff_innerFibration は C→point の inner 条件、trivialKanFibration_pre は前合成による別の lifting 条件。具体的 Joyal ModelCategory とその fibrant object の型がなく、それを C の準圏性に比較する iff の直接の成分にはならない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.6.2": {
+    "page": 136,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.5",
+        "2.4.6",
+        "2.4.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "joinUnion_lift_of_invertible_rightEdge|exists_strict_retraction",
+        "file_count": 2,
+        "line_count": 3
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "joinUnion_lift_of_invertible_rightEdge|exists_strict_retraction",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RelativeOuterHorn.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma joinUnion_lift_of_invertible_rightEdge {K X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (q : X ⟶ Y) [InnerFibration q] (K₀ : K.Subcomplex) (T : (joinUnion K₀ (horn 1 1) : SSet.{u}) ⟶ X) (W : join K (Δ[1] : SSet.{u}) ⟶ Y) (hTW : T ≫ q = (joinUnion K₀ (horn 1 1)).ι ≫ W) (he : IsInvertibleEdge (edgeOfSimplex (SSet.yonedaEquiv (joinInr (K₀ : SSet.{u}) Δ[1] ≫ joinUnionLeft K₀ (horn 1 1) ≫ T)))) : ∃ L : join K (Δ[1] : SSet.{u}) ⟶ X, (joinUnion K₀ (horn 1 1)).ι ≫ L = T ∧ L ≫ q = W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Equivalences/EquivalenceRetraction.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma IsQCatEquivalence.exists_strict_retraction {A B : SSet.{u}} [Quasicategory A] [Quasicategory B] {f : A ⟶ B} [Mono f] (hf : IsQCatEquivalence f) : ∃ r : B ⟶ A, f ≫ r = 𝟙 A"
+          }
+        ]
+      }
+    ],
+    "decision": "joinUnion_lift_of_invertible_rightEdge は元の p に InnerFibration を要求する別の相対外ホーンの extension。strict retraction は単射な同値をさらに仮定する。原典の arbitrary categorical equivalence p とその二つの指定延長を同時に作る map との比較はなく、別の extension の部品にとどまる。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.6.3": {
+    "page": 136,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.5",
+        "2.4.6",
+        "2.4.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "exists_extension_of_functorIso|exists_kanPrism_extension_of_precompositionEquivalence",
+        "file_count": 9,
+        "line_count": 10
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "exists_extension_of_functorIso|exists_kanPrism_extension_of_precompositionEquivalence",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionLifting.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma exists_extension_of_functorIso {A B X : SSet.{u}} [Quasicategory X] (i : A ⟶ B) [Mono i] (u : B ⟶ X) (v : A ⟶ X) (e : FunctorIso (i ≫ u) v) : ∃ w : B ⟶ X, i ≫ w = v"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/EquivalencePrismExtension.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma exists_kanPrism_extension_of_precompositionEquivalence {A B X : SSet.{u}} [Quasicategory X] (i : A ⟶ B) [Mono i] (hi : IsPrecompositionEquivalence i) (f g : B ⟶ X) (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ X) (h₀ : prismEndpoint 0 A ≫ H = i ≫ f) (h₁ : prismEndpoint 1 A ≫ H = i ≫ g) : ∃ G : (Δ[1] : SSet.{u}) ⊗ B ⟶ X, (Δ[1] ◁ i) ≫ G = H ∧ prismEndpoint 0 B ≫ G = f ∧ prismEndpoint 1 B ≫ G = g"
+          }
+        ]
+      }
+    ],
+    "decision": "exists_extension_of_functorIso は restriction i に沿う指定変換の endpoint diagram のみを延長する。kanPrism_extension は i 自身を前合成同値とし両端の全 B 上の functors を既に与える。原典の別射 p の同値から f と h を同時に A 上の指定に合わせて作る型ではない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.6.5": {
+    "page": 137,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.5",
+        "2.4.6",
+        "2.4.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "equivalenceLifting_iff_inner_and_invertibleTargetLifting",
+        "file_count": 1,
+        "line_count": 1
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "equivalenceLifting_iff_inner_and_invertibleTargetLifting",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/IsofibrationCriterion.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "lemma equivalenceLifting_iff_inner_and_invertibleTargetLifting {D E : SSet.{u}} [Quasicategory D] [Quasicategory E] (U : D ⟶ E) : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting U ↔ InnerFibration U ∧ SerrePositivity.InfinityCategories.F1B.InvertibleTargetLifting U"
+          }
+        ]
+      }
+    ],
+    "decision": "equivalenceLifting_iff_inner_and_invertibleTargetLifting は単射な前合成同値に対する RLP の criterion で、Joyal model の categorical fibration class と比較していない。始点/終点の同値 lifting を opposite で移す同じ指定比較もなく、異なる lifting class の iff を残さない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.7.3": {
+    "page": 140,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.6",
+        "2.4.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "rightFibration_op_leftFibration",
+        "file_count": 1,
+        "line_count": 1
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "rightFibration_op_leftFibration",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RelativeOuterHornOp.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "instance rightFibration_op_leftFibration {X Y : SSet.{u}} (q : X ⟶ Y) [RightFibration q] : LeftFibration (SSet.opFunctor.map q) where"
+          }
+        ]
+      }
+    ],
+    "decision": "rightFibration_op_leftFibration は一変数の右条件を左条件に運ぶ。二因子の product decomposition を含む bifibration の述語とその一点への特殊化の比較はなく、p:X→S×T の元の二変数 iff の部分にはならない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.7.4": {
+    "page": 140,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.6",
+        "2.4.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "LeftFibration|RightFibration",
+        "file_count": 1321,
+        "line_count": 4016
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "LeftFibration|RightFibration",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RightFibration.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "class LeftFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          },
+          {
+            "line": 41,
+            "head": "class RightFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "LeftFibration と RightFibration は二つのホーン条件の定義であり、元の bifibration 述語を定めていない。S/T が一点の場合に元の二変数条件が各定義と同値になる比較を行っておらず、対応候補二つの存在だけは成分としない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.7.5": {
+    "page": 140,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.6",
+        "2.4.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "unitCommaSource_innerFibration|exists_cartesian_unitComma_lift|isCartesianEdge_unitCommaSource_of_target",
+        "file_count": 4,
+        "line_count": 5
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "unitCommaSource_innerFibration|exists_cartesian_unitComma_lift|isCartesianEdge_unitCommaSource_of_target",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitComma.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "instance unitCommaSource_innerFibration {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (G : Y ⟶ X) : InnerFibration (unitCommaSource G)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitCommaTransport.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma exists_cartesian_unitComma_lift {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (G : Y ⟶ X) (v : (unitComma G) _⦋0⦌) (b : X _⦋0⦌) (a : SSet.Truncated.Edge (X"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitCommaCartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isCartesianEdge_unitCommaSource_of_target {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (G : Y ⟶ X) {v w : (unitComma G) _⦋0⦌} (e : SSet.Truncated.Edge (X"
+          }
+        ]
+      }
+    ],
+    "decision": "unitCommaSource の Cartesian lifting と inner 性は具体的 comma 構成の射影で、任意の bifibration p:X→S×T に対する πT の結論ではない。この comma の二因子射影が原典の bifibration を満たす比較がないので、類似の具体構成だけを特殊形と数えない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.7.8": {
+    "page": 141,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.6",
+        "2.4.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "exists_homotopy_over_trivialKanFibration",
+        "file_count": 21,
+        "line_count": 28
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "exists_homotopy_over_trivialKanFibration",
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/TrivialFibrationHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "lemma exists_homotopy_over_trivialKanFibration {A E B : SSet.{u}} (p : E ⟶ B) [TrivialKanFibration p] (f g : A ⟶ E) (h : f ≫ p = g ≫ p) : ∃ H : SSet.Homotopy f g, H.h ≫ p = fst A (Δ[1] : SSet.{u}) ≫ g ≫ p"
+          }
+        ]
+      }
+    ],
+    "decision": "exists_homotopy_over_trivialKanFibration は両端の B 上の f,g を既に与えた場合に底上の homotopy を作る。A 上の指定 h0 を保つ relative extension、f 自身の同時延長は含まない。原文の h:B×Δ1→T は端点が Y にある式と不整合だが、Y へ読み替えて判定もしない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
+  },
+  "2.4.7.10": {
+    "page": 142,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.6",
+        "2.4.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "expression": "arrowEndpointPair_innerFibration|innerFibration_pullbackObjObjπ",
+        "file_count": 6,
+        "line_count": 6
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "expression": "arrowEndpointPair_innerFibration|innerFibration_pullbackObjObjπ",
+        "file_count": 1,
+        "line_count": 5
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/CatInfinity/ArrowEndpointPair.lean",
+        "signatures": [
+          {
+            "line": 62,
+            "head": "instance arrowEndpointPair_innerFibration (C : SSet.{u}) [Quasicategory C] : InnerFibration (arrowEndpointPair C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+        "signatures": [
+          {
+            "line": 74,
+            "head": "lemma innerFibration_pullbackObjObjπ [Mono i] [InnerFibration p] (sq₁₃ : MonoidalClosed.internalHom.PullbackObjObj i p) : InnerFibration sq₁₃.π"
+          }
+        ]
+      }
+    ],
+    "decision": "arrowEndpointPair_innerFibration は Fun(Δ1,C) の端点対、generic pullback-Hom theorem は通常の内部 Hom の角射である。任意の M→Δ1 の section space から C×D への同じ射との比較と bifibration の両 outer-horn 条件を与えず、似た endpoint map の inner 性だけは部分としない。",
+    "strict_reclassification": "旧 partial を §7 の直接導出基準で再判定。"
   }
 }

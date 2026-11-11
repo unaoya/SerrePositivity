@@ -1,0 +1,297 @@
+{
+  "base": "9efb8a9998726502c57852514c8f1ce62cea880d",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "items": {
+    "7.3.1.7": {
+      "page": 753,
+      "declarations": [
+        "LocallyCompactSpace",
+        "exists_compact_subset"
+      ]
+    },
+    "7.3.1.8": {
+      "page": 753,
+      "declarations": [
+        "LocallyCompactSpace",
+        "WeaklyLocallyCompactSpace.locallyCompactSpace"
+      ]
+    },
+    "7.3.1.9": {
+      "page": 753,
+      "declarations": [
+        "LocallyCompactSpace.of_hasBasis"
+      ]
+    },
+    "7.3.1.10": {
+      "page": 753,
+      "declarations": [
+        "ContinuousMap.curry",
+        "ContinuousMap.uncurry"
+      ]
+    },
+    "7.3.1.12": {
+      "page": 754,
+      "declarations": [
+        "T35Space",
+        "completelyRegularSpace_iff"
+      ]
+    },
+    "7.3.1.13": {
+      "page": 755,
+      "declarations": [
+        "t35Space_iff_isEmbedding_stoneCechUnit"
+      ]
+    },
+    "7.3.1.14": {
+      "page": 755,
+      "declarations": [
+        "isProperMap_iff_universally_closed"
+      ]
+    },
+    "7.3.1.15": {
+      "page": 755,
+      "declarations": [
+        "isProperMap_iff_isClosedMap_and_compact_fibers"
+      ]
+    },
+    "7.3.3.1": {
+      "page": 763,
+      "declarations": [
+        "TopCat.Presheaf",
+        "TopCat.Presheaf.IsSheaf",
+        "CategoryTheory.Presheaf.isSheaf_iff_isLimit",
+        "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso",
+        "SerrePositivity.InfinityCategories.F1B.nerveCone_isLimit_iff"
+      ]
+    },
+    "7.3.3.2": {
+      "page": 764,
+      "declarations": [
+        "TopCat.Presheaf",
+        "TopCat.Presheaf.IsSheaf",
+        "CategoryTheory.Presheaf.isSheaf_iff_isLimit",
+        "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso",
+        "SerrePositivity.InfinityCategories.F1B.nerveCone_isLimit_iff"
+      ]
+    },
+    "7.3.4.4": {
+      "page": 769,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceColimitFunctor",
+        "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceFilteredColimit_map_isLimit_finite"
+      ]
+    }
+  },
+  "declarations": {
+    "CategoryTheory.Presheaf.isSheaf_iff_isLimit": {
+      "declaration": "CategoryTheory.Presheaf.isSheaf_iff_isLimit",
+      "source": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+      "type": "@CategoryTheory.Presheaf.isSheaf_iff_isLimit.{u_1, u_2, u_3,\n    u_4} : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_1, u_3} C] {A : Type u_4}\n  [inst_1 : CategoryTheory.Category.{u_2, u_4} A] (J : @CategoryTheory.GrothendieckTopology.{u_1, u_3} C inst)\n  (P :\n    @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} (Opposite.{u_3 + 1} C)\n      (@CategoryTheory.Category.opposite.{u_1, u_3} C inst) A inst_1),\n  Iff (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_2, u_3, u_4} C inst A inst_1 J P)\n    (∀ ⦃X : C⦄ (S : @CategoryTheory.Sieve.{u_1, u_3} C inst X),\n      @Membership.mem.{max u_3 u_1, max u_3 u_1} (@CategoryTheory.Sieve.{u_1, u_3} C inst X)\n          (Set.{max u_3 u_1} (@CategoryTheory.Sieve.{u_1, u_3} C inst X))\n          (@Set.instMembership.{max u_3 u_1} (@CategoryTheory.Sieve.{u_1, u_3} C inst X))\n          (@DFunLike.coe.{max (u_3 + 1) (u_1 + 1), u_3 + 1, max (u_3 + 1) (u_1 + 1)}\n            (@CategoryTheory.GrothendieckTopology.{u_1, u_3} C inst) C\n            (fun X => Set.{max u_3 u_1} (@CategoryTheory.Sieve.{u_1, u_3} C inst X))\n            (@CategoryTheory.GrothendieckTopology.instDFunLikeSetSieve.{u_1, u_3} C inst) J X)\n          S →\n        Nonempty.{max (max (u_4 + 1) ((max u_3 u_1) + 1)) (u_2 + 1)}\n          (@CategoryTheory.Limits.IsLimit.{u_1, u_2, max u_3 u_1, u_4}\n            (Opposite.{(max u_3 u_1) + 1}\n              (@CategoryTheory.Presieve.category.{u_1, u_3} C inst X\n                (@CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S)))\n            (@CategoryTheory.Category.opposite.{u_1, max u_3 u_1}\n              (@CategoryTheory.Presieve.category.{u_1, u_3} C inst X\n                (@CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S))\n              (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u_1, max u_3 u_1}\n                (@CategoryTheory.Over.{u_1, u_3} C inst X) (@CategoryTheory.instCategoryOver.{u_1, u_3} C inst X)\n                fun f =>\n                @CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S (@CategoryTheory.Over.left.{u_1, u_3} C inst X f)\n                  (@CategoryTheory.Over.hom.{u_1, u_3} C inst X f)))\n            A inst_1\n            (@CategoryTheory.Functor.comp.{u_1, u_1, u_2, max u_3 u_1, u_3, u_4}\n              (Opposite.{(max u_3 u_1) + 1}\n                (@CategoryTheory.Presieve.category.{u_1, u_3} C inst X\n                  (@CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S)))\n              (@CategoryTheory.Category.opposite.{u_1, max u_3 u_1}\n                (@CategoryTheory.Presieve.category.{u_1, u_3} C inst X\n                  (@CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S))\n                (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u_1, max u_3 u_1}\n                  (@CategoryTheory.Over.{u_1, u_3} C inst X) (@CategoryTheory.instCategoryOver.{u_1, u_3} C inst X)\n                  fun f =>\n                  @CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S (@CategoryTheory.Over.left.{u_1, u_3} C inst X f)\n                    (@CategoryTheory.Over.hom.{u_1, u_3} C inst X f)))\n              (Opposite.{u_3 + 1} C) (@CategoryTheory.Category.opposite.{u_1, u_3} C inst) A inst_1\n              (@CategoryTheory.Functor.op.{u_1, u_1, max u_3 u_1, u_3}\n                (@CategoryTheory.Presieve.category.{u_1, u_3} C inst X\n                  (@CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S))\n                (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u_1, max u_3 u_1}\n                  (@CategoryTheory.Over.{u_1, u_3} C inst X) (@CategoryTheory.instCategoryOver.{u_1, u_3} C inst X)\n                  fun f =>\n                  @CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S (@CategoryTheory.Over.left.{u_1, u_3} C inst X f)\n                    (@CategoryTheory.Over.hom.{u_1, u_3} C inst X f))\n                C inst\n                (@CategoryTheory.Presieve.diagram.{u_1, u_3} C inst X\n                  (@CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S)))\n              P)\n            (@CategoryTheory.Functor.mapCone.{u_1, u_1, u_2, max u_3 u_1, u_3, u_4}\n              (Opposite.{(max u_3 u_1) + 1}\n                (@CategoryTheory.Presieve.category.{u_1, u_3} C inst X\n                  (@CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S)))\n              (@CategoryTheory.Category.opposite.{u_1, max u_3 u_1}\n                (@CategoryTheory.Presieve.category.{u_1, u_3} C inst X\n                  (@CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S))\n                (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u_1, max u_3 u_1}\n                  (@CategoryTheory.Over.{u_1, u_3} C inst X) (@CategoryTheory.instCategoryOver.{u_1, u_3} C inst X)\n                  fun f =>\n                  @CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S (@CategoryTheory.Over.left.{u_1, u_3} C inst X f)\n                    (@CategoryTheory.Over.hom.{u_1, u_3} C inst X f)))\n              (Opposite.{u_3 + 1} C) (@CategoryTheory.Category.opposite.{u_1, u_3} C inst) A inst_1 P\n              (@CategoryTheory.Functor.op.{u_1, u_1, max u_3 u_1, u_3}\n                (@CategoryTheory.Presieve.category.{u_1, u_3} C inst X\n                  (@CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S))\n                (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u_1, max u_3 u_1}\n                  (@CategoryTheory.Over.{u_1, u_3} C inst X) (@CategoryTheory.instCategoryOver.{u_1, u_3} C inst X)\n                  fun f =>\n                  @CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S (@CategoryTheory.Over.left.{u_1, u_3} C inst X f)\n                    (@CategoryTheory.Over.hom.{u_1, u_3} C inst X f))\n                C inst\n                (@CategoryTheory.Presieve.diagram.{u_1, u_3} C inst X\n                  (@CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S)))\n              (@CategoryTheory.Limits.Cocone.op.{u_1, u_1, max u_3 u_1, u_3}\n                (@CategoryTheory.Presieve.category.{u_1, u_3} C inst X\n                  (@CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S))\n                (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u_1, max u_3 u_1}\n                  (@CategoryTheory.Over.{u_1, u_3} C inst X) (@CategoryTheory.instCategoryOver.{u_1, u_3} C inst X)\n                  fun f =>\n                  @CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S (@CategoryTheory.Over.left.{u_1, u_3} C inst X f)\n                    (@CategoryTheory.Over.hom.{u_1, u_3} C inst X f))\n                C inst\n                (@CategoryTheory.Presieve.diagram.{u_1, u_3} C inst X\n                  (@CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S))\n                (@CategoryTheory.Presieve.cocone.{u_1, u_3} C inst X\n                  (@CategoryTheory.Sieve.arrows.{u_1, u_3} C inst X S))))))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "ContinuousMap.curry": {
+      "declaration": "ContinuousMap.curry",
+      "source": "Mathlib/Topology/CompactOpen.lean",
+      "type": "@ContinuousMap.curry.{u_1, u_2,\n    u_3} : {X : Type u_1} →\n  {Y : Type u_2} →\n    {Z : Type u_3} →\n      [inst : TopologicalSpace.{u_1} X] →\n        [inst_1 : TopologicalSpace.{u_2} Y] →\n          [inst_2 : TopologicalSpace.{u_3} Z] →\n            @ContinuousMap.{max u_2 u_1, u_3} (Prod.{u_1, u_2} X Y) Z\n                (@instTopologicalSpaceProd.{u_1, u_2} X Y inst inst_1) inst_2 →\n              @ContinuousMap.{u_1, max u_3 u_2} X (@ContinuousMap.{u_2, u_3} Y Z inst_1 inst_2) inst\n                (@ContinuousMap.compactOpen.{u_2, u_3} Y Z inst_1 inst_2)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "ContinuousMap.uncurry": {
+      "declaration": "ContinuousMap.uncurry",
+      "source": "Mathlib/Topology/CompactOpen.lean",
+      "type": "@ContinuousMap.uncurry.{u_1, u_2,\n    u_3} : {X : Type u_1} →\n  {Y : Type u_2} →\n    {Z : Type u_3} →\n      [inst : TopologicalSpace.{u_1} X] →\n        [inst_1 : TopologicalSpace.{u_2} Y] →\n          [inst_2 : TopologicalSpace.{u_3} Z] →\n            [@LocallyCompactSpace.{u_2} Y inst_1] →\n              @ContinuousMap.{u_1, max u_3 u_2} X (@ContinuousMap.{u_2, u_3} Y Z inst_1 inst_2) inst\n                  (@ContinuousMap.compactOpen.{u_2, u_3} Y Z inst_1 inst_2) →\n                @ContinuousMap.{max u_2 u_1, u_3} (Prod.{u_1, u_2} X Y) Z\n                  (@instTopologicalSpaceProd.{u_1, u_2} X Y inst inst_1) inst_2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "LocallyCompactSpace": {
+      "declaration": "LocallyCompactSpace",
+      "source": "Mathlib/Topology/Defs/Filter.lean",
+      "type": "LocallyCompactSpace.{u_1} : (X : Type u_1) → [TopologicalSpace.{u_1} X] → Prop",
+      "axioms": [],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "LocallyCompactSpace.of_hasBasis": {
+      "declaration": "LocallyCompactSpace.of_hasBasis",
+      "source": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+      "type": "@LocallyCompactSpace.of_hasBasis.{u_1,\n    u_2} : ∀ {X : Type u_1} [inst : TopologicalSpace.{u_1} X] {ι : X → Type u_2} {p : (x : X) → ι x → Prop}\n  {s : (x : X) → ι x → Set.{u_1} X},\n  (∀ (x : X), @Filter.HasBasis.{u_1, u_2 + 1} X (ι x) (@nhds.{u_1} X inst x) (p x) (s x)) →\n    (∀ (x : X) (i : ι x), p x i → @IsCompact.{u_1} X inst (s x i)) → @LocallyCompactSpace.{u_1} X inst",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "SerrePositivity.InfinityCategories.F1B.nerveCone_isLimit_iff": {
+      "declaration": "SerrePositivity.InfinityCategories.F1B.nerveCone_isLimit_iff",
+      "source": "SerrePositivity/InfinityCategories/F1B/NerveComparison/Limit.lean",
+      "type": "@SerrePositivity.InfinityCategories.F1B.nerveCone_isLimit_iff.{u_1} : ∀ {I C : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} I] [inst_1 : CategoryTheory.Category.{u_1, u_1} C]\n  {F : @CategoryTheory.Functor.{u_1, u_1, u_1, u_1} I inst C inst_1}\n  (c : @CategoryTheory.Limits.Cone.{u_1, u_1, u_1, u_1} I inst C inst_1 F),\n  Iff\n    (@SerrePositivity.InfinityCategories.IsLimitCone.{u_1} (@CategoryTheory.nerve.{u_1, u_1} I inst)\n      (@CategoryTheory.nerve.{u_1, u_1} C inst_1) (@CategoryTheory.nerveMap.{u_1, u_1} I C inst inst_1 F)\n      (@SerrePositivity.InfinityCategories.F1B.nerveCone.{u_1} I C inst inst_1 F c))\n    (Nonempty.{u_1 + 1} (@CategoryTheory.Limits.IsLimit.{u_1, u_1, u_1, u_1} I inst C inst_1 F c))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso": {
+      "declaration": "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso",
+      "source": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+      "type": "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso.{u_1} : (C D : Type u_1) →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    [inst_1 : CategoryTheory.Category.{u_1, u_1} D] →\n      @CategoryTheory.Iso.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        (@CategoryTheory.nerve.{u_1, u_1} (@CategoryTheory.Functor.{u_1, u_1, u_1, u_1} C inst D inst_1)\n          (@CategoryTheory.Functor.category.{u_1, u_1, u_1, u_1} C inst D inst_1))\n        (@CategoryTheory.nerve.{u_1, u_1} C inst ⟹ @CategoryTheory.nerve.{u_1, u_1} D inst_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceColimitFunctor": {
+      "declaration": "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceColimitFunctor",
+      "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+      "type": "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceColimitFunctor.{u_1} : (B : SSet.{u_1}) →\n  @Quiver.Hom.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n    (@CategoryTheory.ReflQuiver.toQuiver.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n      (@CategoryTheory.catToReflQuiver.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n        (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type (u_1 + 1))\n          CategoryTheory.types.{u_1 + 1})))\n    (@CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        SSet.{u_1 + 1}\n        (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type (u_1 + 1))\n          CategoryTheory.types.{u_1 + 1})\n        SSet.uliftFunctor.{u_1 + 1, u_1} B ⟹\n      SerrePositivity.InfinityCategories.SpaceInfinity.{u_1})\n    SerrePositivity.InfinityCategories.SpaceInfinity.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/ch5-5.3-kernel-evidence.json",
+      "checked_at": "688345e95efb5a280d0cc612a03a5d9cb0264c63"
+    },
+    "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceFilteredColimit_map_isLimit_finite": {
+      "declaration": "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceFilteredColimit_map_isLimit_finite",
+      "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+      "type": "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceFilteredColimit_map_isLimit_finite.{u_1} : ∀ (B : SSet.{u_1})\n  [inst : SSet.Quasicategory.{u_1} B] [SerrePositivity.InfinityCategories.F2.IsFilteredInfinity.{u_1} B]\n  {K : SSet.{u_1 + 1}} [SSet.Finite.{u_1 + 1} K]\n  {p :\n    Quiver.Hom.{u_1 + 1, u_1 + 2} K\n      (CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.uliftFunctor.{u_1 + 1, u_1} B ⟹\n        SerrePositivity.InfinityCategories.SpaceInfinity.{u_1})}\n  (c : SerrePositivity.InfinityCategories.JoinCone.{u_1 + 1} p),\n  SerrePositivity.InfinityCategories.IsLimitCone.{u_1 + 1} c →\n    SerrePositivity.InfinityCategories.IsLimitCone.{u_1 + 1}\n      (SerrePositivity.InfinityCategories.mapJoinCone.{u_1 + 1}\n        (SerrePositivity.InfinityCategories.F2.Ind.smallSpaceColimitFunctor.{u_1} B) c)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "T35Space": {
+      "declaration": "T35Space",
+      "source": "Mathlib/Topology/Separation/CompletelyRegular.lean",
+      "type": "T35Space.{u_1} : (X : Type u_1) → [TopologicalSpace.{u_1} X] → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "TopCat.Presheaf": {
+      "declaration": "TopCat.Presheaf",
+      "source": "Mathlib/Topology/Sheaves/Presheaf.lean",
+      "type": "TopCat.Presheaf.{u_1, u_2,\n  u_3} : (C : Type u_3) → [CategoryTheory.Category.{u_2, u_3} C] → TopCat.{u_1} → Type (max u_3 u_2 u_1)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "TopCat.Presheaf.IsSheaf": {
+      "declaration": "TopCat.Presheaf.IsSheaf",
+      "source": "Mathlib/Topology/Sheaves/Sheaf.lean",
+      "type": "@TopCat.Presheaf.IsSheaf.{u_1, u_2,\n    u_3} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_2, u_3} C] → {X : TopCat.{u_1}} → @TopCat.Presheaf.{u_1, u_2, u_3} C inst X → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "WeaklyLocallyCompactSpace.locallyCompactSpace": {
+      "declaration": "WeaklyLocallyCompactSpace.locallyCompactSpace",
+      "source": "Mathlib/Topology/Separation/Basic.lean",
+      "type": "@WeaklyLocallyCompactSpace.locallyCompactSpace.{u_1} : ∀ {X : Type u_1} [inst : TopologicalSpace.{u_1} X]\n  [@R1Space.{u_1} X inst] [@WeaklyLocallyCompactSpace.{u_1} X inst], @LocallyCompactSpace.{u_1} X inst",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "completelyRegularSpace_iff": {
+      "declaration": "completelyRegularSpace_iff",
+      "source": "Mathlib/Topology/Separation/CompletelyRegular.lean",
+      "type": "completelyRegularSpace_iff.{u_1} : ∀ (X : Type u_1) [inst : TopologicalSpace.{u_1} X],\n  Iff (@CompletelyRegularSpace.{u_1} X inst)\n    (∀ (x : X) (K : Set.{u_1} X),\n      @IsClosed.{u_1} X inst K →\n        x ∉ K →\n          ∃ f,\n            And\n              (@Continuous.{u_1, 0} X (@Set.Elem.{0} Real unitInterval) inst\n                (@instTopologicalSpaceSubtype.{0} Real\n                  (fun x => @Membership.mem.{0, 0} Real (Set.{0} Real) (@Set.instMembership.{0} Real) unitInterval x)\n                  (@UniformSpace.toTopologicalSpace.{0} Real\n                    (@PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)))\n                f)\n              (And\n                (@Eq.{1} (@Set.Elem.{0} Real unitInterval) (f x)\n                  (@OfNat.ofNat.{0} (@Set.Elem.{0} Real unitInterval) (nat_lit 0)\n                    (@Zero.toOfNat0.{0} (@Set.Elem.{0} Real unitInterval)\n                      (@Set.Icc.instZero.{0} Real Real.semiring Real.partialOrder Real.instIsOrderedRing))))\n                (@Set.EqOn.{u_1, 0} X (@Set.Elem.{0} Real unitInterval) f\n                  (@OfNat.ofNat.{u_1} (X → @Set.Elem.{0} Real unitInterval) (nat_lit 1)\n                    (@One.toOfNat1.{u_1} (X → @Set.Elem.{0} Real unitInterval)\n                      (@Pi.instOne.{u_1, 0} X (fun a => @Set.Elem.{0} Real unitInterval) fun i =>\n                        @Set.Icc.instOne.{0} Real Real.semiring Real.partialOrder Real.instIsOrderedRing)))\n                  K)))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "exists_compact_subset": {
+      "declaration": "exists_compact_subset",
+      "source": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+      "type": "@exists_compact_subset.{u_1} : ∀ {X : Type u_1} [inst : TopologicalSpace.{u_1} X] [@LocallyCompactSpace.{u_1} X inst]\n  {x : X} {U : Set.{u_1} X},\n  @IsOpen.{u_1} X inst U →\n    @Membership.mem.{u_1, u_1} X (Set.{u_1} X) (@Set.instMembership.{u_1} X) U x →\n      ∃ K,\n        And (@IsCompact.{u_1} X inst K)\n          (And (@Membership.mem.{u_1, u_1} X (Set.{u_1} X) (@Set.instMembership.{u_1} X) (@interior.{u_1} X inst K) x)\n            (@LE.le.{u_1} (Set.{u_1} X) (@Set.instLE.{u_1} X) K U))",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "isProperMap_iff_isClosedMap_and_compact_fibers": {
+      "declaration": "isProperMap_iff_isClosedMap_and_compact_fibers",
+      "source": "Mathlib/Topology/Maps/Proper/Basic.lean",
+      "type": "@isProperMap_iff_isClosedMap_and_compact_fibers.{u_1,\n    u_2} : ∀ {X : Type u_1} {Y : Type u_2} [inst : TopologicalSpace.{u_1} X] [inst_1 : TopologicalSpace.{u_2} Y]\n  {f : X → Y},\n  Iff (@IsProperMap.{u_1, u_2} X Y inst inst_1 f)\n    (And (@Continuous.{u_1, u_2} X Y inst inst_1 f)\n      (And (@IsClosedMap.{u_1, u_2} X Y inst inst_1 f)\n        (∀ (y : Y),\n          @IsCompact.{u_1} X inst\n            (@Set.preimage.{u_1, u_2} X Y f\n              (@singleton.{u_2, u_2} Y (Set.{u_2} Y) (@Set.instSingletonSet.{u_2} Y) y)))))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "isProperMap_iff_universally_closed": {
+      "declaration": "isProperMap_iff_universally_closed",
+      "source": "Mathlib/Topology/Maps/Proper/UniversallyClosed.lean",
+      "type": "@isProperMap_iff_universally_closed.{u_1,\n    u_2} : ∀ {X : Type u_1} {Y : Type u_2} [inst : TopologicalSpace.{u_1} X] [inst_1 : TopologicalSpace.{u_2} Y]\n  {f : X → Y},\n  Iff (@IsProperMap.{u_1, u_2} X Y inst inst_1 f)\n    (And (@Continuous.{u_1, u_2} X Y inst inst_1 f)\n      (∀ (Z : Type u_1) [inst_2 : TopologicalSpace.{u_1} Z],\n        @IsClosedMap.{u_1, max u_1 u_2} (Prod.{u_1, u_1} X Z) (Prod.{u_2, u_1} Y Z)\n          (@instTopologicalSpaceProd.{u_1, u_1} X Z inst inst_2)\n          (@instTopologicalSpaceProd.{u_2, u_1} Y Z inst_1 inst_2)\n          (@Prod.map.{u_1, u_2, u_1, u_1} X Y Z Z f (@id.{u_1 + 1} Z))))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "t35Space_iff_isEmbedding_stoneCechUnit": {
+      "declaration": "t35Space_iff_isEmbedding_stoneCechUnit",
+      "source": "Mathlib/Topology/Separation/CompletelyRegular.lean",
+      "type": "@t35Space_iff_isEmbedding_stoneCechUnit.{u_1} : ∀ {X : Type u_1} [inst : TopologicalSpace.{u_1} X],\n  Iff (@T35Space.{u_1} X inst)\n    (@Topology.IsEmbedding.{u_1, u_1} X (@StoneCech.{u_1} X inst) inst (@instTopologicalSpaceStoneCech.{u_1} X inst)\n      (@stoneCechUnit.{u_1} X inst))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    }
+  }
+}

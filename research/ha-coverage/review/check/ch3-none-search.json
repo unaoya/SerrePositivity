@@ -447,84 +447,6 @@
       ],
       "reason": "dg operad の代数の通常の余極限と、加群の導来 ∞ 圏の presentability を確認した。小さい ∞ operad 上の代数の可到達性・presentability へ移す型は見つからなかった。"
     },
-    "3.2.4.7": {
-      "ha_page": 371,
-      "citation_scan": {
-        "exact": {
-          "prefix": "3.2.4.7",
-          "lean": 0,
-          "plan": 2
-        },
-        "subsection": {
-          "prefix": "3.2.4",
-          "lean": 0,
-          "plan": 2
-        },
-        "neighbors": [
-          {
-            "prefix": "3.2.3",
-            "lean": 0,
-            "plan": 9
-          },
-          {
-            "prefix": "3.3.0",
-            "lean": 0,
-            "plan": 0
-          }
-        ]
-      },
-      "search": {
-        "SerrePositivity": {
-          "pattern": "CAlg|cocartesianMonoidal|CommMon|commutativeOperad|coproduct.*tensor",
-          "files_with_matches": 241,
-          "total_matching_lines": 1548,
-          "sample_paths": [
-            "SerrePositivity/AlgebraicGeometry.lean",
-            "SerrePositivity/AlgebraicGeometry/GenericHigherMinorVanishing.lean",
-            "SerrePositivity/AlgebraicGeometry/LocalGenericComparison.lean",
-            "SerrePositivity/AlgebraicGeometry/LocalGenericDetection.lean",
-            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootPolynomial.lean",
-            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PrincipalPair.lean",
-            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/RawRegular.lean",
-            "SerrePositivity/BhattScholze/Andre/Transfinite/Colimit.lean",
-            "SerrePositivity/BhattScholze/Delta/DividedPower/PrincipalDP.lean",
-            "SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcPerfectoidBase.lean",
-            "SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralClosureCompletion.lean",
-            "SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean"
-          ]
-        },
-        "Mathlib": {
-          "pattern": "CAlg|cocartesianMonoidal|CommMon|commutativeOperad|coproduct.*tensor",
-          "files_with_matches": 1167,
-          "total_matching_lines": 8222,
-          "sample_paths": [
-            "Mathlib/Algebra/AddConstMap/Basic.lean",
-            "Mathlib/Algebra/AffineMonoid/Basic.lean",
-            "Mathlib/Algebra/AffineMonoid/Embedding.lean",
-            "Mathlib/Algebra/AffineMonoid/Irreducible.lean",
-            "Mathlib/Algebra/AffineMonoid/UniqueSums.lean",
-            "Mathlib/Algebra/Algebra/Basic.lean",
-            "Mathlib/Algebra/Algebra/Bilinear.lean",
-            "Mathlib/Algebra/Algebra/Epi.lean",
-            "Mathlib/Algebra/Algebra/Equiv.lean",
-            "Mathlib/Algebra/Algebra/Operations.lean",
-            "Mathlib/Algebra/Algebra/RestrictScalars.lean",
-            "Mathlib/Algebra/Algebra/Subalgebra/Basic.lean"
-          ]
-        }
-      },
-      "sources_read": [
-        {
-          "path": "Mathlib/CategoryTheory/Monoidal/CommMon_.lean",
-          "sha256": "377e652c1a886abd6a7ae4760b5d47054eac7a98e5e11bcd039fd2efd371e1ec"
-        },
-        {
-          "path": "SerrePositivity/EInfinity/Operad/CommutativeAlgebraFunctor.lean",
-          "sha256": "fccb1de8ad6758bbfc9af5fb2566da4edc33d76e608b9c51cc3c26d934270388"
-        }
-      ],
-      "reason": "普通圏の可換モノイド対象と dg の commutativeOperad を確認した。HA で指定される CAlg(C) の対称モノイダル ∞ 構造が余デカルトであるという判定は見つからなかった。"
-    },
     "3.2.2.1": {
       "ha_page": 357,
       "citation_scan": {
@@ -10361,6 +10283,13 @@
         }
       ],
       "reason": "通常の加群圏では A を単位として使う構造がある。K_O の終点評価と A の合成から自己加群を作り、零から各色への射が operadic 余極限になる比較は見つからなかった。"
+    }
+  },
+  "stage4_corrections": {
+    "3.2.4.7": {
+      "source_commit": "7bf1c5fbb",
+      "reason": "通常の可換 R 代数の tensor 余積の特殊例を追加",
+      "kernel_evidence": "ch5-kernel-evidence.json"
     }
   }
 }

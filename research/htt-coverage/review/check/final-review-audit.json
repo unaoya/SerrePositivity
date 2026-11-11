@@ -1,0 +1,41 @@
+{
+  "checked_at": "2026-11-11T07:41:37.429969+00:00",
+  "base": "e71f145c2af9d9d4b91de28d7a0c345be061abe1",
+  "source_edition": "2017-04-09; SHA-256 in toc.md",
+  "total_items": 1730,
+  "status_counts": {
+    "none": 1197,
+    "mathlib": 50,
+    "partial": 291,
+    "own": 192
+  },
+  "partial_kind_counts": {
+    "special": 100,
+    "component": 94,
+    "direction": 38,
+    "stronger-hyp": 59
+  },
+  "unsure": 0,
+  "empty_titles": 0,
+  "kerodon_filled": 213,
+  "goal_items": 51,
+  "goal_status_counts": {
+    "partial": 24,
+    "own": 13,
+    "none": 14
+  },
+  "goal_table_complete": true,
+  "positive_items_with_kernel_evidence": 533,
+  "unique_kernel_declarations_in_evidence": 851,
+  "none_items_with_search_evidence": 1197,
+  "all_evidence_files_under_2_MB": true,
+  "all_positive_reasons_compare_hypotheses_and_conclusions": true,
+  "all_partial_rows_have_strict_kind": true,
+  "axioms": "only propext/Classical.choice/Quot.sound; no sorryAx",
+  "changed_files_all_under": "research/htt-coverage/",
+  "stage4_new_kernel_checks": 148,
+  "early_partial_rechecked": 158,
+  "early_partial_to_none": 100,
+  "early_partial_retained": 58,
+  "summary_sha256": "a87eeda2560ce49dad1ca929b4ad65a8cdfe1a3bbf16c45f9fbcde2c91a9c672"
+}

@@ -1,0 +1,863 @@
+{
+  "3.3.2.1": {
+    "page": 211,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.1",
+        "3.3.2",
+        "3.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "PointedSpaceInfinity|pointSpaceVertex|nativeLeftTransport|Straightening.*Equivalence|smallLeftUnstraightening|classif",
+          "SerrePositivity"
+        ],
+        "file_count": 480,
+        "line_count": 2157
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "PointedSpaceInfinity|pointSpaceVertex|nativeLeftTransport|Straightening.*Equivalence|smallLeftUnstraightening|classif",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 38,
+        "line_count": 149
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "noncomputable def pointSpaceVertex : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex pointKanObject.{u}"
+          },
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityReconstruction.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def nativeLeftTransportRepresentation {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p)"
+          },
+          {
+            "line": 31,
+            "head": "def nativeLeftTransportComparison {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : E ⟶ smallLeftUnstraightening (nativeLeftTransportRepresentation p).diagram := smallLeftUnstraighteningLift _ (nativeLeftTransportRepresentation p).comparison"
+          },
+          {
+            "line": 37,
+            "head": "lemma nativeLeftTransportComparison_projection {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : nativeLeftTransportComparison p ≫ smallLeftUnstraighteningProjection (nativeLeftTransportRepresentation p).diagram = p := smallLeftUnstraighteningLift_projection _ p _ (nativeLeftTransportRepresentation p).over_base"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Cocartesian/FiniteSimplexEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cocartesianStraighteningHomInterval_finite_isQCatEquivalence (n : ℕ) : ∀ p q : CocartesianFibrationCategory (nerve (ULift.{u} (Fin (n + 1)))), IsQCatEquivalence (cocartesianStraighteningHomInterval p q)"
+          },
+          {
+            "line": 57,
+            "head": "lemma cocartesianStraighteningCoherentMap_finite_isQCatEquivalence (n : ℕ) : IsQCatEquivalence (cocartesianStraighteningCoherentMap (ULift.{u} (Fin (n + 1)))) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _ (cocartesianStraighteningCoherentMap_finite_isFullyFaithful n) (cocartesianStraighteningCoherentMap_isEssentiallySurjective_finite n)"
+          },
+          {
+            "line": 64,
+            "head": "def cocartesianFiniteSimplexStraighteningEquivalence (n : ℕ) : QCatEquivalence (CocartesianFibrationInfinity (nerve (ULift.{u} (Fin (n + 1))))) (CatInfinityFunctor ((SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin (n + 1)))))) := (cocartesianStraighteningCoherentMap_finite_isQCatEquivalence n).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/IdentityCocone.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma cosliceIdentityCone_isInitialVertex {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) : IsInitialVertex (X := sliceUnder (SSet.yonedaEquiv.symm x)) (cosliceIdentityCone x)"
+          },
+          {
+            "line": 84,
+            "head": "lemma cosliceIdentityCone_isColimit {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) : IsColimitCone (show JoinCocone (SSet.yonedaEquiv.symm x) from cosliceIdentityCone x) := cosliceIdentityCone_isInitialVertex x"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpaceTerminal.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "lemma pointSpaceVertex_isTerminalVertex : IsTerminalVertex pointSpaceVertex.{u}"
+          }
+        ]
+      }
+    ],
+    "decision": "small left-unstraightening はあるが、普遍 Cartesian q:Z→Cat∞op の元の fiber product と同じものとする比較はない。Kan-valued の小さい total の存在は任意の marked quasi-category-valued Unφ+ の小ささではない。"
+  },
+  "3.3.2.2": {
+    "page": 211,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.1",
+        "3.3.2",
+        "3.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "PointedSpaceInfinity|pointSpaceVertex|nativeLeftTransport|Straightening.*Equivalence|smallLeftUnstraightening|classif",
+          "SerrePositivity"
+        ],
+        "file_count": 480,
+        "line_count": 2157
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "PointedSpaceInfinity|pointSpaceVertex|nativeLeftTransport|Straightening.*Equivalence|smallLeftUnstraightening|classif",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 38,
+        "line_count": 149
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "noncomputable def pointSpaceVertex : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex pointKanObject.{u}"
+          },
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityReconstruction.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def nativeLeftTransportRepresentation {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p)"
+          },
+          {
+            "line": 31,
+            "head": "def nativeLeftTransportComparison {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : E ⟶ smallLeftUnstraightening (nativeLeftTransportRepresentation p).diagram := smallLeftUnstraighteningLift _ (nativeLeftTransportRepresentation p).comparison"
+          },
+          {
+            "line": 37,
+            "head": "lemma nativeLeftTransportComparison_projection {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : nativeLeftTransportComparison p ≫ smallLeftUnstraighteningProjection (nativeLeftTransportRepresentation p).diagram = p := smallLeftUnstraighteningLift_projection _ p _ (nativeLeftTransportRepresentation p).over_base"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Cocartesian/FiniteSimplexEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cocartesianStraighteningHomInterval_finite_isQCatEquivalence (n : ℕ) : ∀ p q : CocartesianFibrationCategory (nerve (ULift.{u} (Fin (n + 1)))), IsQCatEquivalence (cocartesianStraighteningHomInterval p q)"
+          },
+          {
+            "line": 57,
+            "head": "lemma cocartesianStraighteningCoherentMap_finite_isQCatEquivalence (n : ℕ) : IsQCatEquivalence (cocartesianStraighteningCoherentMap (ULift.{u} (Fin (n + 1)))) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _ (cocartesianStraighteningCoherentMap_finite_isFullyFaithful n) (cocartesianStraighteningCoherentMap_isEssentiallySurjective_finite n)"
+          },
+          {
+            "line": 64,
+            "head": "def cocartesianFiniteSimplexStraighteningEquivalence (n : ℕ) : QCatEquivalence (CocartesianFibrationInfinity (nerve (ULift.{u} (Fin (n + 1))))) (CatInfinityFunctor ((SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin (n + 1)))))) := (cocartesianStraighteningCoherentMap_finite_isQCatEquivalence n).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/IdentityCocone.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma cosliceIdentityCone_isInitialVertex {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) : IsInitialVertex (X := sliceUnder (SSet.yonedaEquiv.symm x)) (cosliceIdentityCone x)"
+          },
+          {
+            "line": 84,
+            "head": "lemma cosliceIdentityCone_isColimit {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) : IsColimitCone (show JoinCocone (SSet.yonedaEquiv.symm x) from cosliceIdentityCone x) := cosliceIdentityCone_isInitialVertex x"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpaceTerminal.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "lemma pointSpaceVertex_isTerminalVertex : IsTerminalVertex pointSpaceVertex.{u}"
+          }
+        ]
+      }
+    ],
+    "decision": "native left classification と有限単体基底の cocartesian straightening はあるが、任意の Cartesian p と普遍 q の引戻しとの equivalence を定める同じ Cat∞ 値分類の定義ではない。left の特別版を任意の Cat∞ の定義の一部とは数えない。"
+  },
+  "3.3.2.3": {
+    "page": 211,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.1",
+        "3.3.2",
+        "3.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "PointedSpaceInfinity|pointSpaceVertex|nativeLeftTransport|Straightening.*Equivalence|smallLeftUnstraightening|classif",
+          "SerrePositivity"
+        ],
+        "file_count": 480,
+        "line_count": 2157
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "PointedSpaceInfinity|pointSpaceVertex|nativeLeftTransport|Straightening.*Equivalence|smallLeftUnstraightening|classif",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 38,
+        "line_count": 149
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "noncomputable def pointSpaceVertex : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex pointKanObject.{u}"
+          },
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityReconstruction.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def nativeLeftTransportRepresentation {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p)"
+          },
+          {
+            "line": 31,
+            "head": "def nativeLeftTransportComparison {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : E ⟶ smallLeftUnstraightening (nativeLeftTransportRepresentation p).diagram := smallLeftUnstraighteningLift _ (nativeLeftTransportRepresentation p).comparison"
+          },
+          {
+            "line": 37,
+            "head": "lemma nativeLeftTransportComparison_projection {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : nativeLeftTransportComparison p ≫ smallLeftUnstraighteningProjection (nativeLeftTransportRepresentation p).diagram = p := smallLeftUnstraighteningLift_projection _ p _ (nativeLeftTransportRepresentation p).over_base"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Cocartesian/FiniteSimplexEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cocartesianStraighteningHomInterval_finite_isQCatEquivalence (n : ℕ) : ∀ p q : CocartesianFibrationCategory (nerve (ULift.{u} (Fin (n + 1)))), IsQCatEquivalence (cocartesianStraighteningHomInterval p q)"
+          },
+          {
+            "line": 57,
+            "head": "lemma cocartesianStraighteningCoherentMap_finite_isQCatEquivalence (n : ℕ) : IsQCatEquivalence (cocartesianStraighteningCoherentMap (ULift.{u} (Fin (n + 1)))) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _ (cocartesianStraighteningCoherentMap_finite_isFullyFaithful n) (cocartesianStraighteningCoherentMap_isEssentiallySurjective_finite n)"
+          },
+          {
+            "line": 64,
+            "head": "def cocartesianFiniteSimplexStraighteningEquivalence (n : ℕ) : QCatEquivalence (CocartesianFibrationInfinity (nerve (ULift.{u} (Fin (n + 1))))) (CatInfinityFunctor ((SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin (n + 1)))))) := (cocartesianStraighteningCoherentMap_finite_isQCatEquivalence n).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/IdentityCocone.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma cosliceIdentityCone_isInitialVertex {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) : IsInitialVertex (X := sliceUnder (SSet.yonedaEquiv.symm x)) (cosliceIdentityCone x)"
+          },
+          {
+            "line": 84,
+            "head": "lemma cosliceIdentityCone_isColimit {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) : IsColimitCone (show JoinCocone (SSet.yonedaEquiv.symm x) from cosliceIdentityCone x) := cosliceIdentityCone_isInitialVertex x"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpaceTerminal.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "lemma pointSpaceVertex_isTerminalVertex : IsTerminalVertex pointSpaceVertex.{u}"
+          }
+        ]
+      }
+    ],
+    "decision": "native 空間値の分類同値はあるが、任意の非可算正則 κ の Cat∞(κ) と本質的 κ-small fiber による普遍 q の分類・一意性ではない。有限単体基底の Cat∞ 分類も全基底・宇宙拡大による特徴づけに至らない。"
+  },
+  "3.3.2.4": {
+    "page": 211,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.1",
+        "3.3.2",
+        "3.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "PointedSpaceInfinity|pointSpaceVertex|nativeLeftTransport|Straightening.*Equivalence|smallLeftUnstraightening|classif",
+          "SerrePositivity"
+        ],
+        "file_count": 480,
+        "line_count": 2157
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "PointedSpaceInfinity|pointSpaceVertex|nativeLeftTransport|Straightening.*Equivalence|smallLeftUnstraightening|classif",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 38,
+        "line_count": 149
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "noncomputable def pointSpaceVertex : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex pointKanObject.{u}"
+          },
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityReconstruction.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def nativeLeftTransportRepresentation {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p)"
+          },
+          {
+            "line": 31,
+            "head": "def nativeLeftTransportComparison {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : E ⟶ smallLeftUnstraightening (nativeLeftTransportRepresentation p).diagram := smallLeftUnstraighteningLift _ (nativeLeftTransportRepresentation p).comparison"
+          },
+          {
+            "line": 37,
+            "head": "lemma nativeLeftTransportComparison_projection {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : nativeLeftTransportComparison p ≫ smallLeftUnstraighteningProjection (nativeLeftTransportRepresentation p).diagram = p := smallLeftUnstraighteningLift_projection _ p _ (nativeLeftTransportRepresentation p).over_base"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Cocartesian/FiniteSimplexEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cocartesianStraighteningHomInterval_finite_isQCatEquivalence (n : ℕ) : ∀ p q : CocartesianFibrationCategory (nerve (ULift.{u} (Fin (n + 1)))), IsQCatEquivalence (cocartesianStraighteningHomInterval p q)"
+          },
+          {
+            "line": 57,
+            "head": "lemma cocartesianStraighteningCoherentMap_finite_isQCatEquivalence (n : ℕ) : IsQCatEquivalence (cocartesianStraighteningCoherentMap (ULift.{u} (Fin (n + 1)))) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _ (cocartesianStraighteningCoherentMap_finite_isFullyFaithful n) (cocartesianStraighteningCoherentMap_isEssentiallySurjective_finite n)"
+          },
+          {
+            "line": 64,
+            "head": "def cocartesianFiniteSimplexStraighteningEquivalence (n : ℕ) : QCatEquivalence (CocartesianFibrationInfinity (nerve (ULift.{u} (Fin (n + 1))))) (CatInfinityFunctor ((SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin (n + 1)))))) := (cocartesianStraighteningCoherentMap_finite_isQCatEquivalence n).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/IdentityCocone.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma cosliceIdentityCone_isInitialVertex {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) : IsInitialVertex (X := sliceUnder (SSet.yonedaEquiv.symm x)) (cosliceIdentityCone x)"
+          },
+          {
+            "line": 84,
+            "head": "lemma cosliceIdentityCone_isColimit {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) : IsColimitCone (show JoinCocone (SSet.yonedaEquiv.symm x) from cosliceIdentityCone x) := cosliceIdentityCone_isInitialVertex x"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpaceTerminal.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "lemma pointSpaceVertex_isTerminalVertex : IsTerminalVertex pointSpaceVertex.{u}"
+          }
+        ]
+      }
+    ],
+    "decision": "PointedSpaceInfinity→SpaceInfinity の left projection はあり、反転すると right projection になるが、元の Z×Cat∞op SpaceInfinityop と同じ制限である比較はない。左右両束の Cat∞ と Cat∞op による二つの分類が異なるという元の注意も表していない。"
+  },
+  "3.3.2.5": {
+    "page": 212,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.1",
+        "3.3.2",
+        "3.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "PointedSpaceInfinity|pointSpaceVertex|nativeLeftTransport|Straightening.*Equivalence|smallLeftUnstraightening|classif",
+          "SerrePositivity"
+        ],
+        "file_count": 480,
+        "line_count": 2157
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "PointedSpaceInfinity|pointSpaceVertex|nativeLeftTransport|Straightening.*Equivalence|smallLeftUnstraightening|classif",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 38,
+        "line_count": 149
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "noncomputable def pointSpaceVertex : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex pointKanObject.{u}"
+          },
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityReconstruction.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def nativeLeftTransportRepresentation {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p)"
+          },
+          {
+            "line": 31,
+            "head": "def nativeLeftTransportComparison {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : E ⟶ smallLeftUnstraightening (nativeLeftTransportRepresentation p).diagram := smallLeftUnstraighteningLift _ (nativeLeftTransportRepresentation p).comparison"
+          },
+          {
+            "line": 37,
+            "head": "lemma nativeLeftTransportComparison_projection {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : nativeLeftTransportComparison p ≫ smallLeftUnstraighteningProjection (nativeLeftTransportRepresentation p).diagram = p := smallLeftUnstraighteningLift_projection _ p _ (nativeLeftTransportRepresentation p).over_base"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Cocartesian/FiniteSimplexEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cocartesianStraighteningHomInterval_finite_isQCatEquivalence (n : ℕ) : ∀ p q : CocartesianFibrationCategory (nerve (ULift.{u} (Fin (n + 1)))), IsQCatEquivalence (cocartesianStraighteningHomInterval p q)"
+          },
+          {
+            "line": 57,
+            "head": "lemma cocartesianStraighteningCoherentMap_finite_isQCatEquivalence (n : ℕ) : IsQCatEquivalence (cocartesianStraighteningCoherentMap (ULift.{u} (Fin (n + 1)))) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _ (cocartesianStraighteningCoherentMap_finite_isFullyFaithful n) (cocartesianStraighteningCoherentMap_isEssentiallySurjective_finite n)"
+          },
+          {
+            "line": 64,
+            "head": "def cocartesianFiniteSimplexStraighteningEquivalence (n : ℕ) : QCatEquivalence (CocartesianFibrationInfinity (nerve (ULift.{u} (Fin (n + 1))))) (CatInfinityFunctor ((SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin (n + 1)))))) := (cocartesianStraighteningCoherentMap_finite_isQCatEquivalence n).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/IdentityCocone.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma cosliceIdentityCone_isInitialVertex {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) : IsInitialVertex (X := sliceUnder (SSet.yonedaEquiv.symm x)) (cosliceIdentityCone x)"
+          },
+          {
+            "line": 84,
+            "head": "lemma cosliceIdentityCone_isColimit {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) : IsColimitCone (show JoinCocone (SSet.yonedaEquiv.symm x) from cosliceIdentityCone x) := cosliceIdentityCone_isInitialVertex x"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpaceTerminal.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "lemma pointSpaceVertex_isTerminalVertex : IsTerminalVertex pointSpaceVertex.{u}"
+          }
+        ]
+      }
+    ],
+    "decision": "right-fibration と space-valued functor の native 同値はあるが、一般の Cartesian p を分類する任意の Cat∞op 値 f の factorization との iff はない。Cat∞ 内の Kan 全部分圏と普遍 Cartesian q の制限との比較が未供給である。"
+  },
+  "3.3.2.6": {
+    "page": 212,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.1",
+        "3.3.2",
+        "3.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "PointedSpaceInfinity|pointSpaceVertex|nativeLeftTransport|Straightening.*Equivalence|smallLeftUnstraightening|classif",
+          "SerrePositivity"
+        ],
+        "file_count": 480,
+        "line_count": 2157
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "PointedSpaceInfinity|pointSpaceVertex|nativeLeftTransport|Straightening.*Equivalence|smallLeftUnstraightening|classif",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 38,
+        "line_count": 149
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "noncomputable def pointSpaceVertex : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex pointKanObject.{u}"
+          },
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityReconstruction.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def nativeLeftTransportRepresentation {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p)"
+          },
+          {
+            "line": 31,
+            "head": "def nativeLeftTransportComparison {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : E ⟶ smallLeftUnstraightening (nativeLeftTransportRepresentation p).diagram := smallLeftUnstraighteningLift _ (nativeLeftTransportRepresentation p).comparison"
+          },
+          {
+            "line": 37,
+            "head": "lemma nativeLeftTransportComparison_projection {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : nativeLeftTransportComparison p ≫ smallLeftUnstraighteningProjection (nativeLeftTransportRepresentation p).diagram = p := smallLeftUnstraighteningLift_projection _ p _ (nativeLeftTransportRepresentation p).over_base"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Cocartesian/FiniteSimplexEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cocartesianStraighteningHomInterval_finite_isQCatEquivalence (n : ℕ) : ∀ p q : CocartesianFibrationCategory (nerve (ULift.{u} (Fin (n + 1)))), IsQCatEquivalence (cocartesianStraighteningHomInterval p q)"
+          },
+          {
+            "line": 57,
+            "head": "lemma cocartesianStraighteningCoherentMap_finite_isQCatEquivalence (n : ℕ) : IsQCatEquivalence (cocartesianStraighteningCoherentMap (ULift.{u} (Fin (n + 1)))) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _ (cocartesianStraighteningCoherentMap_finite_isFullyFaithful n) (cocartesianStraighteningCoherentMap_isEssentiallySurjective_finite n)"
+          },
+          {
+            "line": 64,
+            "head": "def cocartesianFiniteSimplexStraighteningEquivalence (n : ℕ) : QCatEquivalence (CocartesianFibrationInfinity (nerve (ULift.{u} (Fin (n + 1))))) (CatInfinityFunctor ((SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin (n + 1)))))) := (cocartesianStraighteningCoherentMap_finite_isQCatEquivalence n).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/IdentityCocone.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma cosliceIdentityCone_isInitialVertex {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) : IsInitialVertex (X := sliceUnder (SSet.yonedaEquiv.symm x)) (cosliceIdentityCone x)"
+          },
+          {
+            "line": 84,
+            "head": "lemma cosliceIdentityCone_isColimit {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) : IsColimitCone (show JoinCocone (SSet.yonedaEquiv.symm x) from cosliceIdentityCone x) := cosliceIdentityCone_isInitialVertex x"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpaceTerminal.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "lemma pointSpaceVertex_isTerminalVertex : IsTerminalVertex pointSpaceVertex.{u}"
+          }
+        ]
+      }
+    ],
+    "decision": "cosliceIdentityCone の始対象性を反転すれば pointed-space coslice の反対の終対象になるが、原典の Z0 の特定の頂点 ∗Z と同定する制限普遍 q の比較がない。別の right projection の終対象性をそのまま Z0 に転記しない。"
+  },
+  "3.3.2.7": {
+    "page": 213,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.1",
+        "3.3.2",
+        "3.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "PointedSpaceInfinity|pointSpaceVertex|nativeLeftTransport|Straightening.*Equivalence|smallLeftUnstraightening|classif",
+          "SerrePositivity"
+        ],
+        "file_count": 480,
+        "line_count": 2157
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "PointedSpaceInfinity|pointSpaceVertex|nativeLeftTransport|Straightening.*Equivalence|smallLeftUnstraightening|classif",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 38,
+        "line_count": 149
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "noncomputable def pointSpaceVertex : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex pointKanObject.{u}"
+          },
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityReconstruction.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def nativeLeftTransportRepresentation {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p)"
+          },
+          {
+            "line": 31,
+            "head": "def nativeLeftTransportComparison {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : E ⟶ smallLeftUnstraightening (nativeLeftTransportRepresentation p).diagram := smallLeftUnstraighteningLift _ (nativeLeftTransportRepresentation p).comparison"
+          },
+          {
+            "line": 37,
+            "head": "lemma nativeLeftTransportComparison_projection {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] : nativeLeftTransportComparison p ≫ smallLeftUnstraighteningProjection (nativeLeftTransportRepresentation p).diagram = p := smallLeftUnstraighteningLift_projection _ p _ (nativeLeftTransportRepresentation p).over_base"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Cocartesian/FiniteSimplexEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cocartesianStraighteningHomInterval_finite_isQCatEquivalence (n : ℕ) : ∀ p q : CocartesianFibrationCategory (nerve (ULift.{u} (Fin (n + 1)))), IsQCatEquivalence (cocartesianStraighteningHomInterval p q)"
+          },
+          {
+            "line": 57,
+            "head": "lemma cocartesianStraighteningCoherentMap_finite_isQCatEquivalence (n : ℕ) : IsQCatEquivalence (cocartesianStraighteningCoherentMap (ULift.{u} (Fin (n + 1)))) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _ (cocartesianStraighteningCoherentMap_finite_isFullyFaithful n) (cocartesianStraighteningCoherentMap_isEssentiallySurjective_finite n)"
+          },
+          {
+            "line": 64,
+            "head": "def cocartesianFiniteSimplexStraighteningEquivalence (n : ℕ) : QCatEquivalence (CocartesianFibrationInfinity (nerve (ULift.{u} (Fin (n + 1))))) (CatInfinityFunctor ((SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin (n + 1)))))) := (cocartesianStraighteningCoherentMap_finite_isQCatEquivalence n).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/IdentityCocone.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma cosliceIdentityCone_isInitialVertex {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) : IsInitialVertex (X := sliceUnder (SSet.yonedaEquiv.symm x)) (cosliceIdentityCone x)"
+          },
+          {
+            "line": 84,
+            "head": "lemma cosliceIdentityCone_isColimit {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) : IsColimitCone (show JoinCocone (SSet.yonedaEquiv.symm x) from cosliceIdentityCone x) := cosliceIdentityCone_isInitialVertex x"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpaceTerminal.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "lemma pointSpaceVertex_isTerminalVertex : IsTerminalVertex pointSpaceVertex.{u}"
+          }
+        ]
+      }
+    ],
+    "decision": "pointSpaceVertex の終対象性と pointed-space coslice projection はあるが、原典の q′:Z0→SpaceInfinityop がその表現可能 right fibration と同じという比較はない。始域の模型が未比較のまま一般の representable projection だけをこの q′ の主張としない。"
+  }
+}

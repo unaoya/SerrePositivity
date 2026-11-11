@@ -1,0 +1,655 @@
+{
+  "worktree_commit": "6bb2e5a42fe5829e4bf04ba94b028d6dd5b0719a",
+  "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
+  "items": {
+    "6.1.1.1": {
+      "ha_page": 1015,
+      "declarations": [
+        "Finset.powerset",
+        "Finset.mem_powerset"
+      ]
+    },
+    "6.1.1.2": {
+      "ha_page": 1015,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.IsPullbackSquare",
+        "SerrePositivity.InfinityCategories.IsPushoutSquare"
+      ]
+    },
+    "6.1.1.3": {
+      "ha_page": 1015,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.sends_pushouts_to_pullbacks_of_suspensionSquares"
+      ]
+    },
+    "6.1.1.5": {
+      "ha_page": 1016,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.sends_pushouts_to_pullbacks_of_suspensionSquares"
+      ]
+    },
+    "6.1.1.6": {
+      "ha_page": 1016,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceColimitFunctor",
+        "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceFilteredColimit_map_isLimit_finite",
+        "SerrePositivity.InfinityCategories.excisionSpace_hasFiniteLimits"
+      ]
+    },
+    "6.1.1.7": {
+      "ha_page": 1016,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.hasFiniteLimits_of_isStable"
+      ]
+    },
+    "6.1.1.8": {
+      "ha_page": 1016,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceColimitFunctor",
+        "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceFilteredColimit_map_isLimit_finite",
+        "SerrePositivity.InfinityCategories.excisionSpace_hasFiniteLimits"
+      ]
+    },
+    "6.1.1.9": {
+      "ha_page": 1016,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.F2.Ind.ind_hasSmallKappaFilteredColimits",
+        "SerrePositivity.InfinityCategories.F2.Ind.indInclusion_preservesSmallKappaFilteredColimits"
+      ]
+    },
+    "6.1.1.16": {
+      "ha_page": 1019,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.isPushoutSquare_iff_reverseGrid",
+        "SerrePositivity.InfinityCategories.IsStable.pullback_of_pushout_square",
+        "SerrePositivity.InfinityCategories.IsStable.pushout_of_pullback_square"
+      ]
+    },
+    "6.1.1.19": {
+      "ha_page": 1019,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.suspensionFunctorOfFiniteColimits",
+        "SerrePositivity.InfinityCategories.suspensionSquare_nonempty_of_finiteColimits"
+      ]
+    },
+    "6.1.1.20": {
+      "ha_page": 1020,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.exactFunctorSuspensionIso"
+      ]
+    },
+    "6.1.4.1": {
+      "ha_page": 1045,
+      "declarations": [
+        "CategoryTheory.cechNerveTerminalFrom",
+        "CategoryTheory.CechNerveTerminalFrom.iso"
+      ]
+    },
+    "6.1.4.12": {
+      "ha_page": 1050,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.IsStable.pushout_of_pullback_square"
+      ]
+    },
+    "6.1.6.12": {
+      "ha_page": 1065,
+      "declarations": [
+        "CategoryTheory.Limits.biproduct.isoProduct",
+        "CategoryTheory.Limits.biproduct.isoCoproduct"
+      ]
+    },
+    "6.1.6.14": {
+      "ha_page": 1065,
+      "declarations": [
+        "CategoryTheory.Limits.biproduct.lift_desc"
+      ]
+    },
+    "6.1.6.16": {
+      "ha_page": 1066,
+      "declarations": [
+        "CategoryTheory.Limits.HasFiniteBiproducts.of_hasFiniteProducts"
+      ]
+    },
+    "6.1.6.17": {
+      "ha_page": 1066,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.preadditive_ho",
+        "SerrePositivity.InfinityCategories.hasFiniteBiproducts_ho"
+      ]
+    },
+    "6.1.6.23": {
+      "ha_page": 1067,
+      "declarations": [
+        "Representation.norm",
+        "Representation.norm_comp_self",
+        "Representation.self_comp_norm"
+      ]
+    },
+    "6.2.2.15": {
+      "ha_page": 1087,
+      "declarations": [
+        "CategoryTheory.Adjunction.leftAdjoint_preservesColimits",
+        "CategoryTheory.Adjunction.rightAdjoint_preservesLimits"
+      ]
+    },
+    "6.3.2.5": {
+      "ha_page": 1152,
+      "declarations": [
+        "CategoryTheory.Functor.Elements",
+        "CategoryTheory.Functor.Elements.Hom"
+      ]
+    },
+    "6.3.3.1": {
+      "ha_page": 1157,
+      "declarations": [
+        "Setoid.le_def",
+        "Setoid.completeLattice",
+        "Setoid.top_def",
+        "Setoid.bot_def"
+      ]
+    },
+    "6.3.3.8": {
+      "ha_page": 1159,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.IsExactFunctor.preservesFiber"
+      ]
+    },
+    "6.3.3.10": {
+      "ha_page": 1159,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.chosenFiberSquare"
+      ]
+    }
+  },
+  "declarations": {
+    "Finset.powerset": {
+      "name": "Finset.powerset",
+      "module": "Mathlib.Data.Finset.Powerset",
+      "path": "Mathlib/Data/Finset/Powerset.lean",
+      "line": 31,
+      "source_sha256": "cff2d246934cd2c1eb4d264985c863d6d5f1e364a65b62eceb695dadd0098be3",
+      "type": "@Finset.powerset.{u_1} : {α : Type u_1} → Finset.{u_1} α → Finset.{u_1} (Finset.{u_1} α)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "Finset.mem_powerset": {
+      "name": "Finset.mem_powerset",
+      "module": "Mathlib.Data.Finset.Powerset",
+      "path": "Mathlib/Data/Finset/Powerset.lean",
+      "line": 36,
+      "source_sha256": "cff2d246934cd2c1eb4d264985c863d6d5f1e364a65b62eceb695dadd0098be3",
+      "type": "@Finset.mem_powerset.{u_1} : ∀ {α : Type u_1} {s t : Finset.{u_1} α},\n  Iff\n    (@Membership.mem.{u_1, u_1} (Finset.{u_1} α) (Finset.{u_1} (Finset.{u_1} α))\n      (@SetLike.instMembership.{u_1, u_1} (Finset.{u_1} (Finset.{u_1} α)) (Finset.{u_1} α)\n        (@Finset.instSetLike.{u_1} (Finset.{u_1} α)))\n      (@Finset.powerset.{u_1} α t) s)\n    (@LE.le.{u_1} (Finset.{u_1} α)\n      (@Preorder.toLE.{u_1} (Finset.{u_1} α)\n        (@PartialOrder.toPreorder.{u_1} (Finset.{u_1} α) (@Finset.instPartialOrder.{u_1} α)))\n      s t)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.IsPullbackSquare": {
+      "name": "SerrePositivity.InfinityCategories.IsPullbackSquare",
+      "module": "SerrePositivity.InfinityCategories.Core.Pullback",
+      "path": "SerrePositivity/InfinityCategories/Core/Pullback.lean",
+      "line": 114,
+      "source_sha256": "ed4d9260f0b70150519af8e4f5f8ddfb671bb5227d52e3216ab6b7c752248265",
+      "type": "@SerrePositivity.InfinityCategories.IsPullbackSquare.{u_1} : {X : SSet.{u_1}} →\n  @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        (@CategoryTheory.Monoidal.functorCategoryMonoidalStruct.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1}\n          (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n            CategoryTheory.types.{u_1}\n            (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n              CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))\n        (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) })\n        (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) }))\n      X →\n    Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.IsPushoutSquare": {
+      "name": "SerrePositivity.InfinityCategories.IsPushoutSquare",
+      "module": "SerrePositivity.InfinityCategories.Core.PushoutShape",
+      "path": "SerrePositivity/InfinityCategories/Core/PushoutShape.lean",
+      "line": 115,
+      "source_sha256": "c46f2f2f866c981396e0f3942491f8d743d99e58da0c49b99a95fb7fa0065632",
+      "type": "@SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} : {X : SSet.{u_1}} →\n  @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        (@CategoryTheory.Monoidal.functorCategoryMonoidalStruct.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1}\n          (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n            CategoryTheory.types.{u_1}\n            (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n              CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))\n        (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) })\n        (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) }))\n      X →\n    Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.sends_pushouts_to_pullbacks_of_suspensionSquares": {
+      "name": "SerrePositivity.InfinityCategories.sends_pushouts_to_pullbacks_of_suspensionSquares",
+      "module": "SerrePositivity.InfinityCategories.Stable.ExcisionFunctorCriterion",
+      "path": "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+      "line": 18,
+      "source_sha256": "9ca5f38e0d1580558d740f397b98ed4d2f11575458c232acb9b0b614e3adbc72",
+      "type": "@SerrePositivity.InfinityCategories.sends_pushouts_to_pullbacks_of_suspensionSquares.{u_1} : ∀ {C D : SSet.{u_1}}\n  [C.Quasicategory] [SerrePositivity.InfinityCategories.HasZeroVertex.{u_1} C]\n  [SerrePositivity.InfinityCategories.HasFiniteColimits.{u_1} C] [D.Quasicategory]\n  [SerrePositivity.InfinityCategories.HasFiniteLimits.{u_1} D]\n  (f :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      C D),\n  (∀\n      (x :\n        @CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1} C\n          (@Opposite.op.{1} SimplexCategory { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n      (s : @SerrePositivity.InfinityCategories.SuspensionSquare.{u_1} C x),\n      @SerrePositivity.InfinityCategories.IsPullbackSquare.{u_1} D\n        (@CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1}))\n          (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            (@CategoryTheory.Monoidal.functorCategoryMonoidalStruct.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1}\n              (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n                CategoryTheory.types.{u_1}\n                (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n                  CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))\n            (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})\n              SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) })\n            (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})\n              SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) }))\n          C D\n          (@SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1} C\n            (@SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} C x s))\n          f)) →\n    ∀\n      (R :\n        @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})))\n          (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            (@CategoryTheory.Monoidal.functorCategoryMonoidalStruct.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1}\n              (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n                CategoryTheory.types.{u_1}\n                (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n                  CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))\n            (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})\n              SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) })\n            (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})\n              SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) }))\n          C),\n      @SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} C R →\n        @SerrePositivity.InfinityCategories.IsPullbackSquare.{u_1} D\n          (@CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1}))\n            (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})\n              (@CategoryTheory.Monoidal.functorCategoryMonoidalStruct.{0, u_1, 0, u_1 + 1}\n                (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1}\n                (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n                  CategoryTheory.types.{u_1}\n                  (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n                    CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))\n              (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n                (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                  (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                  CategoryTheory.types.{u_1})\n                SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) })\n              (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n                (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                  (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                  CategoryTheory.types.{u_1})\n                SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) }))\n            C D R f)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceColimitFunctor": {
+      "name": "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceColimitFunctor",
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.FilteredColimitFiniteLimitPreservation",
+      "path": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+      "line": 31,
+      "source_sha256": "ede95b3374aa0b183a46f31d7dbaa03c863f2efdece002ca744e2fcf777b757f",
+      "type": "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceColimitFunctor.{u_1} : (B : SSet.{u_1}) →\n  @Quiver.Hom.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n    (@CategoryTheory.ReflQuiver.toQuiver.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n      (@CategoryTheory.catToReflQuiver.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n        (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type (u_1 + 1))\n          CategoryTheory.types.{u_1 + 1})))\n    (@CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        SSet.{u_1 + 1}\n        (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type (u_1 + 1))\n          CategoryTheory.types.{u_1 + 1})\n        SSet.uliftFunctor.{u_1 + 1, u_1} B ⟹\n      SerrePositivity.InfinityCategories.SpaceInfinity.{u_1})\n    SerrePositivity.InfinityCategories.SpaceInfinity.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceFilteredColimit_map_isLimit_finite": {
+      "name": "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceFilteredColimit_map_isLimit_finite",
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.FilteredColimitFiniteLimitPreservation",
+      "path": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+      "line": 36,
+      "source_sha256": "ede95b3374aa0b183a46f31d7dbaa03c863f2efdece002ca744e2fcf777b757f",
+      "type": "SerrePositivity.InfinityCategories.F2.Ind.smallSpaceFilteredColimit_map_isLimit_finite.{u_1} : ∀ (B : SSet.{u_1})\n  [inst : B.Quasicategory] [@SerrePositivity.InfinityCategories.F2.IsFilteredInfinity.{u_1} B inst] {K : SSet.{u_1 + 1}}\n  [K.Finite]\n  {p :\n    @Quiver.Hom.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n        (@CategoryTheory.catToReflQuiver.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n          (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type (u_1 + 1))\n            CategoryTheory.types.{u_1 + 1})))\n      K\n      (@CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.{u_1 + 1}\n          (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type (u_1 + 1))\n            CategoryTheory.types.{u_1 + 1})\n          SSet.uliftFunctor.{u_1 + 1, u_1} B ⟹\n        SerrePositivity.InfinityCategories.SpaceInfinity.{u_1})}\n  (c :\n    @SerrePositivity.InfinityCategories.JoinCone.{u_1 + 1} K\n      (@CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.{u_1 + 1}\n          (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type (u_1 + 1))\n            CategoryTheory.types.{u_1 + 1})\n          SSet.uliftFunctor.{u_1 + 1, u_1} B ⟹\n        SerrePositivity.InfinityCategories.SpaceInfinity.{u_1})\n      p),\n  @SerrePositivity.InfinityCategories.IsLimitCone.{u_1 + 1} K\n      (@CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.{u_1 + 1}\n          (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type (u_1 + 1))\n            CategoryTheory.types.{u_1 + 1})\n          SSet.uliftFunctor.{u_1 + 1, u_1} B ⟹\n        SerrePositivity.InfinityCategories.SpaceInfinity.{u_1})\n      p c →\n    @SerrePositivity.InfinityCategories.IsLimitCone.{u_1 + 1} K SerrePositivity.InfinityCategories.SpaceInfinity.{u_1}\n      (@CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n        (@CategoryTheory.Category.toCategoryStruct.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n          (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type (u_1 + 1))\n            CategoryTheory.types.{u_1 + 1}))\n        K\n        (@CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            SSet.{u_1 + 1}\n            (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type (u_1 + 1))\n              CategoryTheory.types.{u_1 + 1})\n            SSet.uliftFunctor.{u_1 + 1, u_1} B ⟹\n          SerrePositivity.InfinityCategories.SpaceInfinity.{u_1})\n        SerrePositivity.InfinityCategories.SpaceInfinity.{u_1} p\n        (SerrePositivity.InfinityCategories.F2.Ind.smallSpaceColimitFunctor.{u_1} B))\n      (@SerrePositivity.InfinityCategories.mapJoinCone.{u_1 + 1} K\n        (@CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            SSet.{u_1 + 1}\n            (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type (u_1 + 1))\n              CategoryTheory.types.{u_1 + 1})\n            SSet.uliftFunctor.{u_1 + 1, u_1} B ⟹\n          SerrePositivity.InfinityCategories.SpaceInfinity.{u_1})\n        SerrePositivity.InfinityCategories.SpaceInfinity.{u_1}\n        (SerrePositivity.InfinityCategories.F2.Ind.smallSpaceColimitFunctor.{u_1} B) p c)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.excisionSpace_hasFiniteLimits": {
+      "name": "SerrePositivity.InfinityCategories.excisionSpace_hasFiniteLimits",
+      "module": "SerrePositivity.InfinityCategories.Stable.ExcisionRepresentableLimits",
+      "path": "SerrePositivity/InfinityCategories/Stable/ExcisionRepresentableLimits.lean",
+      "line": 26,
+      "source_sha256": "2ae940aecb72009d914f1c212a5a2932994d5852128ba8dae456f5ba6a15e9c3",
+      "type": "SerrePositivity.InfinityCategories.excisionSpace_hasFiniteLimits.{u_1} : SerrePositivity.InfinityCategories.HasFiniteLimits.{u_1 +\n      1}\n  SerrePositivity.InfinityCategories.SpaceInfinity.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.hasFiniteLimits_of_isStable": {
+      "name": "SerrePositivity.InfinityCategories.hasFiniteLimits_of_isStable",
+      "module": "SerrePositivity.InfinityCategories.Stable.StableFiniteLimitsColimits",
+      "path": "SerrePositivity/InfinityCategories/Stable/StableFiniteLimitsColimits.lean",
+      "line": 43,
+      "source_sha256": "b69ef3d21373b30e7f75e8a425711e8167db410b40587da04842ab9e56764648",
+      "type": "SerrePositivity.InfinityCategories.hasFiniteLimits_of_isStable.{u_1} : ∀ (X : SSet.{u_1}) [inst : X.Quasicategory]\n  [@SerrePositivity.InfinityCategories.IsStable.{u_1} X inst],\n  SerrePositivity.InfinityCategories.HasFiniteLimits.{u_1} X",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.F2.Ind.ind_hasSmallKappaFilteredColimits": {
+      "name": "SerrePositivity.InfinityCategories.F2.Ind.ind_hasSmallKappaFilteredColimits",
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.NativeFilteredPreservation",
+      "path": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+      "line": 41,
+      "source_sha256": "f14d12cdf39d451154cf47f24fc2fd015e7cef6e10009fb32747b90ca92ed44b",
+      "type": "SerrePositivity.InfinityCategories.F2.Ind.ind_hasSmallKappaFilteredColimits.{u_1} : ∀ (κ : Cardinal.{u_1})\n  (C : SSet.{u_1}) [inst : C.Quasicategory],\n  SerrePositivity.InfinityCategories.F2.Ind.HasSmallKappaFilteredColimits.{u_1} κ\n    (@SerrePositivity.InfinityCategories.F2.Ind.IndInfinity.{u_1} κ C inst)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.F2.Ind.indInclusion_preservesSmallKappaFilteredColimits": {
+      "name": "SerrePositivity.InfinityCategories.F2.Ind.indInclusion_preservesSmallKappaFilteredColimits",
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.NativeFilteredPreservation",
+      "path": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+      "line": 47,
+      "source_sha256": "f14d12cdf39d451154cf47f24fc2fd015e7cef6e10009fb32747b90ca92ed44b",
+      "type": "SerrePositivity.InfinityCategories.F2.Ind.indInclusion_preservesSmallKappaFilteredColimits.{u_1} : ∀\n  (κ : Cardinal.{u_1}) (C : SSet.{u_1}) [inst : C.Quasicategory],\n  @SerrePositivity.InfinityCategories.F2.Ind.PreservesSmallKappaFilteredColimits.{u_1} κ\n    (@SerrePositivity.InfinityCategories.F2.Ind.IndInfinity.{u_1} κ C inst)\n    (SerrePositivity.InfinityCategories.PresheafInfinity.{u_1} C)\n    (@SerrePositivity.InfinityCategories.F2.Ind.indInclusionPresheaf.{u_1} κ C inst)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.isPushoutSquare_iff_reverseGrid": {
+      "name": "SerrePositivity.InfinityCategories.isPushoutSquare_iff_reverseGrid",
+      "module": "SerrePositivity.InfinityCategories.F1.SquareDuality",
+      "path": "SerrePositivity/InfinityCategories/F1/SquareDuality.lean",
+      "line": 59,
+      "source_sha256": "4a81f177686533687ac01d38788f978394c1eaf51bad4be9d1d88ae7075b3b30",
+      "type": "@SerrePositivity.InfinityCategories.isPushoutSquare_iff_reverseGrid.{u_1} : ∀ {X : SSet.{u_1}}\n  (F :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        (@CategoryTheory.Monoidal.functorCategoryMonoidalStruct.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1}\n          (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n            CategoryTheory.types.{u_1}\n            (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n              CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))\n        (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) })\n        (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) }))\n      X),\n  Iff (@SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} X F)\n    (@SerrePositivity.InfinityCategories.IsPullbackSquare.{u_1} X.op\n      (@SerrePositivity.InfinityCategories.reverseGrid.{u_1} X\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) F))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.IsStable.pullback_of_pushout_square": {
+      "name": "SerrePositivity.InfinityCategories.IsStable.pullback_of_pushout_square",
+      "module": "SerrePositivity.InfinityCategories.Stable.Bicartesian",
+      "path": "SerrePositivity/InfinityCategories/Stable/Bicartesian.lean",
+      "line": 35,
+      "source_sha256": "82cc1d2b040aab42d19996d3ffbf8625726d3e9bac73ddadda591c3ac45fdb7f",
+      "type": "@SerrePositivity.InfinityCategories.IsStable.pullback_of_pushout_square.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : X.Quasicategory] [@SerrePositivity.InfinityCategories.IsStable.{u_1} X inst]\n  (R :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        (@CategoryTheory.Monoidal.functorCategoryMonoidalStruct.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1}\n          (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n            CategoryTheory.types.{u_1}\n            (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n              CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))\n        (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) })\n        (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) }))\n      X),\n  @SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} X R →\n    @SerrePositivity.InfinityCategories.IsPullbackSquare.{u_1} X R",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.IsStable.pushout_of_pullback_square": {
+      "name": "SerrePositivity.InfinityCategories.IsStable.pushout_of_pullback_square",
+      "module": "SerrePositivity.InfinityCategories.Stable.Bicartesian",
+      "path": "SerrePositivity/InfinityCategories/Stable/Bicartesian.lean",
+      "line": 64,
+      "source_sha256": "82cc1d2b040aab42d19996d3ffbf8625726d3e9bac73ddadda591c3ac45fdb7f",
+      "type": "@SerrePositivity.InfinityCategories.IsStable.pushout_of_pullback_square.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : X.Quasicategory] [@SerrePositivity.InfinityCategories.IsStable.{u_1} X inst]\n  (R :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        (@CategoryTheory.Monoidal.functorCategoryMonoidalStruct.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1}\n          (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n            CategoryTheory.types.{u_1}\n            (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n              CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))\n        (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) })\n        (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) }))\n      X),\n  @SerrePositivity.InfinityCategories.IsPullbackSquare.{u_1} X R →\n    @SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} X R",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.suspensionFunctorOfFiniteColimits": {
+      "name": "SerrePositivity.InfinityCategories.suspensionFunctorOfFiniteColimits",
+      "module": "SerrePositivity.InfinityCategories.Stable.SuspensionFiniteColimits",
+      "path": "SerrePositivity/InfinityCategories/Stable/SuspensionFiniteColimits.lean",
+      "line": 78,
+      "source_sha256": "d255c8bb0c315b1860918b75752b6b20041fbbbd9d5963a403f5e1064b5721c8",
+      "type": "SerrePositivity.InfinityCategories.suspensionFunctorOfFiniteColimits.{u_1} : (X : SSet.{u_1}) →\n  [X.Quasicategory] →\n    [SerrePositivity.InfinityCategories.HasZeroVertex.{u_1} X] →\n      [SerrePositivity.InfinityCategories.HasFiniteColimits.{u_1} X] →\n        @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})))\n          X X",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.suspensionSquare_nonempty_of_finiteColimits": {
+      "name": "SerrePositivity.InfinityCategories.suspensionSquare_nonempty_of_finiteColimits",
+      "module": "SerrePositivity.InfinityCategories.Stable.SuspensionFiniteColimits",
+      "path": "SerrePositivity/InfinityCategories/Stable/SuspensionFiniteColimits.lean",
+      "line": 19,
+      "source_sha256": "d255c8bb0c315b1860918b75752b6b20041fbbbd9d5963a403f5e1064b5721c8",
+      "type": "@SerrePositivity.InfinityCategories.suspensionSquare_nonempty_of_finiteColimits.{u_1} : ∀ {X : SSet.{u_1}}\n  [X.Quasicategory] [SerrePositivity.InfinityCategories.HasZeroVertex.{u_1} X]\n  [SerrePositivity.InfinityCategories.HasFiniteColimits.{u_1} X]\n  (x :\n    @CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n      CategoryTheory.types.{u_1} X\n      (@Opposite.op.{1} SimplexCategory { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })),\n  Nonempty.{u_1 + 1} (@SerrePositivity.InfinityCategories.SuspensionSquare.{u_1} X x)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.exactFunctorSuspensionIso": {
+      "name": "SerrePositivity.InfinityCategories.exactFunctorSuspensionIso",
+      "module": "SerrePositivity.InfinityCategories.Stable.ExactFunctorSuspension",
+      "path": "SerrePositivity/InfinityCategories/Stable/ExactFunctorSuspension.lean",
+      "line": 93,
+      "source_sha256": "553d142f635aca59c72b7394f0712298c95b883611e34cce6f885366ca4ffcb6",
+      "type": "@SerrePositivity.InfinityCategories.exactFunctorSuspensionIso.{u_1} : {X Y : SSet.{u_1}} →\n  [inst : X.Quasicategory] →\n    [inst_1 : @SerrePositivity.InfinityCategories.IsStable.{u_1} X inst] →\n      [inst_2 : Y.Quasicategory] →\n        [inst_3 : @SerrePositivity.InfinityCategories.IsStable.{u_1} Y inst_2] →\n          (F :\n              @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n                (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                  (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                    (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                      (Type u_1) CategoryTheory.types.{u_1})))\n                X Y) →\n            [@SerrePositivity.InfinityCategories.IsExactFunctor.{u_1} X Y F] →\n              @CategoryTheory.Iso.{u_1, u_1}\n                (@CategoryTheory.Functor.{u_1, u_1, u_1, u_1}\n                  (@CategoryTheory.Bundled.α.{u_1, u_1 + 1} CategoryTheory.Category.{u_1, u_1}\n                    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X))\n                  (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X).str\n                  (@CategoryTheory.Bundled.α.{u_1, u_1 + 1} CategoryTheory.Category.{u_1, u_1}\n                    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} Y))\n                  (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} Y).str)\n                (@CategoryTheory.Functor.category.{u_1, u_1, u_1, u_1}\n                  (@CategoryTheory.Bundled.α.{u_1, u_1 + 1} CategoryTheory.Category.{u_1, u_1}\n                    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X))\n                  (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X).str\n                  (@CategoryTheory.Bundled.α.{u_1, u_1 + 1} CategoryTheory.Category.{u_1, u_1}\n                    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} Y))\n                  (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} Y).str)\n                (@CategoryTheory.Functor.comp.{u_1, u_1, u_1, u_1, u_1, u_1}\n                  (@CategoryTheory.Bundled.α.{u_1, u_1 + 1} CategoryTheory.Category.{u_1, u_1}\n                    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X))\n                  (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X).str\n                  (@CategoryTheory.Bundled.α.{u_1, u_1 + 1} CategoryTheory.Category.{u_1, u_1}\n                    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X))\n                  (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X).str\n                  (@CategoryTheory.Bundled.α.{u_1, u_1 + 1} CategoryTheory.Category.{u_1, u_1}\n                    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} Y))\n                  (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} Y).str\n                  (@SerrePositivity.InfinityCategories.suspensionFunctor.{u_1} X inst inst_1)\n                  (@CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}\n                    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X)\n                    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} Y)\n                    (@CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X Y F)))\n                (@CategoryTheory.Functor.comp.{u_1, u_1, u_1, u_1, u_1, u_1}\n                  (@CategoryTheory.Bundled.α.{u_1, u_1 + 1} CategoryTheory.Category.{u_1, u_1}\n                    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X))\n                  (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X).str\n                  (@CategoryTheory.Bundled.α.{u_1, u_1 + 1} CategoryTheory.Category.{u_1, u_1}\n                    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} Y))\n                  (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} Y).str\n                  (@CategoryTheory.Bundled.α.{u_1, u_1 + 1} CategoryTheory.Category.{u_1, u_1}\n                    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} Y))\n                  (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} Y).str\n                  (@CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}\n                    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X)\n                    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} Y)\n                    (@CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X Y F))\n                  (@SerrePositivity.InfinityCategories.suspensionFunctor.{u_1} Y inst_2 inst_3))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.cechNerveTerminalFrom": {
+      "name": "CategoryTheory.cechNerveTerminalFrom",
+      "module": "Mathlib.AlgebraicTopology.CechNerve",
+      "path": "Mathlib/AlgebraicTopology/CechNerve.lean",
+      "line": 327,
+      "source_sha256": "28ef0584cf723bccba11fe786c2b1e88a74306ddcd6444a1b62a640c0b20885d",
+      "type": "@CategoryTheory.cechNerveTerminalFrom.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [@CategoryTheory.Limits.HasFiniteProducts.{u_1, u_2} C inst] →\n      C → @CategoryTheory.SimplicialObject.{u_1, u_2} C inst",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.CechNerveTerminalFrom.iso": {
+      "name": "CategoryTheory.CechNerveTerminalFrom.iso",
+      "module": "Mathlib.AlgebraicTopology.CechNerve",
+      "path": "Mathlib/AlgebraicTopology/CechNerve.lean",
+      "line": 404,
+      "source_sha256": "28ef0584cf723bccba11fe786c2b1e88a74306ddcd6444a1b62a640c0b20885d",
+      "type": "@CategoryTheory.CechNerveTerminalFrom.iso.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.Limits.HasTerminal.{u_1, u_2} C inst] →\n      [inst_2 : @CategoryTheory.Limits.HasFiniteProducts.{u_1, u_2} C inst] →\n        (X : C) →\n          @CategoryTheory.Iso.{u_1, max u_2 u_1} (@CategoryTheory.SimplicialObject.{u_1, u_2} C inst)\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_2} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) C inst)\n            (@CategoryTheory.Arrow.cechNerve.{u_1, u_2} C inst\n              (@CategoryTheory.Arrow.mk.{u_1, u_2} C inst X (@CategoryTheory.Limits.terminal.{u_1, u_2} C inst inst_1)\n                (@CategoryTheory.Limits.terminal.from.{u_1, u_2} C inst inst_1 X))\n              ⋯)\n            (@CategoryTheory.cechNerveTerminalFrom.{u_1, u_2} C inst inst_2 X)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.Limits.biproduct.isoProduct": {
+      "name": "CategoryTheory.Limits.biproduct.isoProduct",
+      "module": "Mathlib.CategoryTheory.Limits.Shapes.Biproducts",
+      "path": "Mathlib/CategoryTheory/Limits/Shapes/Biproducts.lean",
+      "line": 515,
+      "source_sha256": "a2a564401e9b66dc2ff74bccd9cb3f94bbeaca9613934c03e1da5c2adb444905",
+      "type": "@CategoryTheory.Limits.biproduct.isoProduct.{u_1, u_2,\n    u_3} : {J : Type u_1} →\n  {C : Type u_3} →\n    [inst : CategoryTheory.Category.{u_2, u_3} C] →\n      [inst_1 : @CategoryTheory.Limits.HasZeroMorphisms.{u_2, u_3} C inst] →\n        (f : J → C) →\n          [inst_2 : @CategoryTheory.Limits.HasBiproduct.{u_1, u_2, u_3} J C inst inst_1 f] →\n            @CategoryTheory.Iso.{u_2, u_3} C inst\n              (@CategoryTheory.Limits.biproduct.{u_1, u_2, u_3} J C inst inst_1 f inst_2)\n              (@CategoryTheory.Limits.piObj.{u_1, u_2, u_3} J C inst f ⋯)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.Limits.biproduct.isoCoproduct": {
+      "name": "CategoryTheory.Limits.biproduct.isoCoproduct",
+      "module": "Mathlib.CategoryTheory.Limits.Shapes.Biproducts",
+      "path": "Mathlib/CategoryTheory/Limits/Shapes/Biproducts.lean",
+      "line": 529,
+      "source_sha256": "a2a564401e9b66dc2ff74bccd9cb3f94bbeaca9613934c03e1da5c2adb444905",
+      "type": "@CategoryTheory.Limits.biproduct.isoCoproduct.{u_1, u_2,\n    u_3} : {J : Type u_1} →\n  {C : Type u_3} →\n    [inst : CategoryTheory.Category.{u_2, u_3} C] →\n      [inst_1 : @CategoryTheory.Limits.HasZeroMorphisms.{u_2, u_3} C inst] →\n        (f : J → C) →\n          [inst_2 : @CategoryTheory.Limits.HasBiproduct.{u_1, u_2, u_3} J C inst inst_1 f] →\n            @CategoryTheory.Iso.{u_2, u_3} C inst\n              (@CategoryTheory.Limits.biproduct.{u_1, u_2, u_3} J C inst inst_1 f inst_2)\n              (@CategoryTheory.Limits.sigmaObj.{u_1, u_2, u_3} J C inst f ⋯)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.Limits.biproduct.lift_desc": {
+      "name": "CategoryTheory.Limits.biproduct.lift_desc",
+      "module": "Mathlib.CategoryTheory.Preadditive.Biproducts",
+      "path": "Mathlib/CategoryTheory/Preadditive/Biproducts.lean",
+      "line": 222,
+      "source_sha256": "7876f61d11b643d832171f0c93dadbdba4f03b5cf2d02d3ca33da390bfcc7225",
+      "type": "@CategoryTheory.Limits.biproduct.lift_desc.{u_1, u_2,\n    u_3} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  [inst_1 : @CategoryTheory.Preadditive.{u_1, u_2} C inst] {J : Type u_3} [inst_2 : Fintype.{u_3} J] {f : J → C}\n  [inst_3 :\n    @CategoryTheory.Limits.HasBiproduct.{u_3, u_1, u_2} J C inst\n      (@CategoryTheory.Preadditive.preadditiveHasZeroMorphisms.{u_1, u_2} C inst inst_1) f]\n  {T U : C}\n  {g :\n    (j : J) →\n      @Quiver.Hom.{u_1, u_2} C\n        (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n          (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n        T (f j)}\n  {h :\n    (j : J) →\n      @Quiver.Hom.{u_1, u_2} C\n        (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n          (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n        (f j) U},\n  @Eq.{u_1 + 1}\n    (@Quiver.Hom.{u_1, u_2} C\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n      T U)\n    (@CategoryTheory.CategoryStruct.comp.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst) T\n      (@CategoryTheory.Limits.biproduct.{u_3, u_1, u_2} J C inst\n        (@CategoryTheory.Preadditive.preadditiveHasZeroMorphisms.{u_1, u_2} C inst inst_1) f inst_3)\n      U\n      (@CategoryTheory.Limits.biproduct.lift.{u_3, u_1, u_2} J C inst\n        (@CategoryTheory.Preadditive.preadditiveHasZeroMorphisms.{u_1, u_2} C inst inst_1) f inst_3 T g)\n      (@CategoryTheory.Limits.biproduct.desc.{u_3, u_1, u_2} J C inst\n        (@CategoryTheory.Preadditive.preadditiveHasZeroMorphisms.{u_1, u_2} C inst inst_1) f inst_3 U h))\n    (∑ j,\n      @CategoryTheory.CategoryStruct.comp.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst) T\n        (f j) U (g j) (h j))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.Limits.HasFiniteBiproducts.of_hasFiniteProducts": {
+      "name": "CategoryTheory.Limits.HasFiniteBiproducts.of_hasFiniteProducts",
+      "module": "Mathlib.CategoryTheory.Preadditive.Biproducts",
+      "path": "Mathlib/CategoryTheory/Preadditive/Biproducts.lean",
+      "line": 189,
+      "source_sha256": "7876f61d11b643d832171f0c93dadbdba4f03b5cf2d02d3ca33da390bfcc7225",
+      "type": "@CategoryTheory.Limits.HasFiniteBiproducts.of_hasFiniteProducts.{u_1,\n    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  [inst_1 : @CategoryTheory.Preadditive.{u_1, u_2} C inst] [@CategoryTheory.Limits.HasFiniteProducts.{u_1, u_2} C inst],\n  @CategoryTheory.Limits.HasFiniteBiproducts.{u_1, u_2} C inst\n    (@CategoryTheory.Preadditive.preadditiveHasZeroMorphisms.{u_1, u_2} C inst inst_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.preadditive_ho": {
+      "name": "SerrePositivity.InfinityCategories.preadditive_ho",
+      "module": "SerrePositivity.InfinityCategories.Stable.HomotopyPreadditive",
+      "path": "SerrePositivity/InfinityCategories/Stable/HomotopyPreadditive.lean",
+      "line": 35,
+      "source_sha256": "740bd80a2b46e79a5efeffd10f8e34c3458fca9b0b6321359ded62d16a895f58",
+      "type": "@SerrePositivity.InfinityCategories.preadditive_ho.{u_1} : {X : SSet.{u_1}} →\n  [inst : X.Quasicategory] →\n    [@SerrePositivity.InfinityCategories.IsStable.{u_1} X inst] →\n      @CategoryTheory.Preadditive.{u_1, u_1}\n        (@CategoryTheory.Bundled.α.{u_1, u_1 + 1} CategoryTheory.Category.{u_1, u_1}\n          (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X))\n        (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X).str",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.hasFiniteBiproducts_ho": {
+      "name": "SerrePositivity.InfinityCategories.hasFiniteBiproducts_ho",
+      "module": "SerrePositivity.InfinityCategories.Stable.HomotopyFiniteBiproduct",
+      "path": "SerrePositivity/InfinityCategories/Stable/HomotopyFiniteBiproduct.lean",
+      "line": 28,
+      "source_sha256": "7cc6efe87d5236ca816fca842cc368ba4c89fcdd99d62e82fe2109842a3652c0",
+      "type": "@SerrePositivity.InfinityCategories.hasFiniteBiproducts_ho.{u_1} : ∀ {X : SSet.{u_1}} [inst : X.Quasicategory]\n  [inst_1 : @SerrePositivity.InfinityCategories.IsStable.{u_1} X inst],\n  @CategoryTheory.Limits.HasFiniteBiproducts.{u_1, u_1}\n    (@CategoryTheory.Bundled.α.{u_1, u_1 + 1} CategoryTheory.Category.{u_1, u_1}\n      (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X))\n    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X).str\n    (@SerrePositivity.InfinityCategories.hasZeroMorphisms_ho.{u_1} X inst ⋯)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "Representation.norm": {
+      "name": "Representation.norm",
+      "module": "Mathlib.RepresentationTheory.Basic",
+      "path": "Mathlib/RepresentationTheory/Basic.lean",
+      "line": 283,
+      "source_sha256": "337032ff8584d9ec0a208cb91c45cb1ebbf77ef5748ecd0ce5a20983d2c70a21",
+      "type": "@Representation.norm.{u_1, u_2,\n    u_3} : {k : Type u_1} →\n  {G : Type u_2} →\n    {V : Type u_3} →\n      [inst : Semiring.{u_1} k] →\n        [inst_1 : Group.{u_2} G] →\n          [Fintype.{u_2} G] →\n            [inst_3 : AddCommMonoid.{u_3} V] →\n              [inst_4 : @Module.{u_1, u_3} k V inst inst_3] →\n                @Representation.{u_1, u_2, u_3} k G V inst\n                    (@DivInvMonoid.toMonoid.{u_2} G (@Group.toDivInvMonoid.{u_2} G inst_1)) inst_3 inst_4 →\n                  @Module.End.{u_1, u_3} k V inst inst_3 inst_4",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "Representation.norm_comp_self": {
+      "name": "Representation.norm_comp_self",
+      "module": "Mathlib.RepresentationTheory.Basic",
+      "path": "Mathlib/RepresentationTheory/Basic.lean",
+      "line": 286,
+      "source_sha256": "337032ff8584d9ec0a208cb91c45cb1ebbf77ef5748ecd0ce5a20983d2c70a21",
+      "type": "@Representation.norm_comp_self.{u_1, u_2,\n    u_3} : ∀ {k : Type u_1} {G : Type u_2} {V : Type u_3} [inst : Semiring.{u_1} k] [inst_1 : Group.{u_2} G]\n  [inst_2 : Fintype.{u_2} G] [inst_3 : AddCommMonoid.{u_3} V] [inst_4 : @Module.{u_1, u_3} k V inst inst_3]\n  (ρ :\n    @Representation.{u_1, u_2, u_3} k G V inst (@DivInvMonoid.toMonoid.{u_2} G (@Group.toDivInvMonoid.{u_2} G inst_1))\n      inst_3 inst_4)\n  (g : G),\n  @Eq.{u_3 + 1}\n    (@LinearMap.{u_1, u_1, u_3, u_3} k k inst inst (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst)) V V\n      inst_3 inst_3 inst_4 inst_4)\n    (@LinearMap.comp.{u_1, u_1, u_1, u_3, u_3, u_3} k k k V V V inst inst inst inst_3 inst_3 inst_3 inst_4 inst_4 inst_4\n      (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst))\n      (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst))\n      (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst)) ⋯\n      (@Representation.norm.{u_1, u_2, u_3} k G V inst inst_1 inst_2 inst_3 inst_4 ρ)\n      (@DFunLike.coe.{max (u_2 + 1) (u_3 + 1), u_2 + 1, u_3 + 1}\n        (@Representation.{u_1, u_2, u_3} k G V inst\n          (@DivInvMonoid.toMonoid.{u_2} G (@Group.toDivInvMonoid.{u_2} G inst_1)) inst_3 inst_4)\n        G\n        (fun x =>\n          @LinearMap.{u_1, u_1, u_3, u_3} k k inst inst\n            (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst)) V V inst_3 inst_3 inst_4 inst_4)\n        (@MonoidHom.instFunLike.{u_2, u_3} G\n          (@LinearMap.{u_1, u_1, u_3, u_3} k k inst inst\n            (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst)) V V inst_3 inst_3 inst_4 inst_4)\n          (@MulOneClass.toMulOne.{u_2} G\n            (@Monoid.toMulOneClass.{u_2} G (@DivInvMonoid.toMonoid.{u_2} G (@Group.toDivInvMonoid.{u_2} G inst_1))))\n          (@MulOneClass.toMulOne.{u_3}\n            (@LinearMap.{u_1, u_1, u_3, u_3} k k inst inst\n              (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst)) V V inst_3 inst_3 inst_4 inst_4)\n            (@MulZeroOneClass.toMulOneClass.{u_3}\n              (@LinearMap.{u_1, u_1, u_3, u_3} k k inst inst\n                (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst)) V V inst_3 inst_3 inst_4 inst_4)\n              (@instMulZeroOneClassOfSemiring.{u_3}\n                (@LinearMap.{u_1, u_1, u_3, u_3} k k inst inst\n                  (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst)) V V inst_3 inst_3 inst_4 inst_4)\n                (@Module.End.instSemiring.{u_1, u_3} k V inst inst_3 inst_4)))))\n        ρ g))\n    (@Representation.norm.{u_1, u_2, u_3} k G V inst inst_1 inst_2 inst_3 inst_4 ρ)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "Representation.self_comp_norm": {
+      "name": "Representation.self_comp_norm",
+      "module": "Mathlib.RepresentationTheory.Basic",
+      "path": "Mathlib/RepresentationTheory/Basic.lean",
+      "line": 295,
+      "source_sha256": "337032ff8584d9ec0a208cb91c45cb1ebbf77ef5748ecd0ce5a20983d2c70a21",
+      "type": "@Representation.self_comp_norm.{u_1, u_2,\n    u_3} : ∀ {k : Type u_1} {G : Type u_2} {V : Type u_3} [inst : Semiring.{u_1} k] [inst_1 : Group.{u_2} G]\n  [inst_2 : Fintype.{u_2} G] [inst_3 : AddCommMonoid.{u_3} V] [inst_4 : @Module.{u_1, u_3} k V inst inst_3]\n  (ρ :\n    @Representation.{u_1, u_2, u_3} k G V inst (@DivInvMonoid.toMonoid.{u_2} G (@Group.toDivInvMonoid.{u_2} G inst_1))\n      inst_3 inst_4)\n  (g : G),\n  @Eq.{u_3 + 1}\n    (@LinearMap.{u_1, u_1, u_3, u_3} k k inst inst (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst)) V V\n      inst_3 inst_3 inst_4 inst_4)\n    (@LinearMap.comp.{u_1, u_1, u_1, u_3, u_3, u_3} k k k V V V inst inst inst inst_3 inst_3 inst_3 inst_4 inst_4 inst_4\n      (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst))\n      (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst))\n      (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst)) ⋯\n      (@DFunLike.coe.{max (u_2 + 1) (u_3 + 1), u_2 + 1, u_3 + 1}\n        (@Representation.{u_1, u_2, u_3} k G V inst\n          (@DivInvMonoid.toMonoid.{u_2} G (@Group.toDivInvMonoid.{u_2} G inst_1)) inst_3 inst_4)\n        G\n        (fun x =>\n          @LinearMap.{u_1, u_1, u_3, u_3} k k inst inst\n            (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst)) V V inst_3 inst_3 inst_4 inst_4)\n        (@MonoidHom.instFunLike.{u_2, u_3} G\n          (@LinearMap.{u_1, u_1, u_3, u_3} k k inst inst\n            (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst)) V V inst_3 inst_3 inst_4 inst_4)\n          (@MulOneClass.toMulOne.{u_2} G\n            (@Monoid.toMulOneClass.{u_2} G (@DivInvMonoid.toMonoid.{u_2} G (@Group.toDivInvMonoid.{u_2} G inst_1))))\n          (@MulOneClass.toMulOne.{u_3}\n            (@LinearMap.{u_1, u_1, u_3, u_3} k k inst inst\n              (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst)) V V inst_3 inst_3 inst_4 inst_4)\n            (@MulZeroOneClass.toMulOneClass.{u_3}\n              (@LinearMap.{u_1, u_1, u_3, u_3} k k inst inst\n                (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst)) V V inst_3 inst_3 inst_4 inst_4)\n              (@instMulZeroOneClassOfSemiring.{u_3}\n                (@LinearMap.{u_1, u_1, u_3, u_3} k k inst inst\n                  (@RingHom.id.{u_1} k (@Semiring.toNonAssocSemiring.{u_1} k inst)) V V inst_3 inst_3 inst_4 inst_4)\n                (@Module.End.instSemiring.{u_1, u_3} k V inst inst_3 inst_4)))))\n        ρ g)\n      (@Representation.norm.{u_1, u_2, u_3} k G V inst inst_1 inst_2 inst_3 inst_4 ρ))\n    (@Representation.norm.{u_1, u_2, u_3} k G V inst inst_1 inst_2 inst_3 inst_4 ρ)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.Adjunction.leftAdjoint_preservesColimits": {
+      "name": "CategoryTheory.Adjunction.leftAdjoint_preservesColimits",
+      "module": "Mathlib.CategoryTheory.Adjunction.Limits",
+      "path": "Mathlib/CategoryTheory/Adjunction/Limits.lean",
+      "line": 90,
+      "source_sha256": "e389bf5fbc8201dbbf00ba24dc27173e0e7350a3446368f86a70992be99e4136",
+      "type": "@CategoryTheory.Adjunction.leftAdjoint_preservesColimits.{u_1, u_2, u_3, u_4, u_5,\n    u_6} : ∀ {C : Type u_5} [inst : CategoryTheory.Category.{u_3, u_5} C] {D : Type u_6}\n  [inst_1 : CategoryTheory.Category.{u_4, u_6} D] {F : @CategoryTheory.Functor.{u_3, u_4, u_5, u_6} C inst D inst_1}\n  {G : @CategoryTheory.Functor.{u_4, u_3, u_6, u_5} D inst_1 C inst}\n  (adj : @CategoryTheory.Adjunction.{u_3, u_4, u_5, u_6} C inst D inst_1 F G),\n  @CategoryTheory.Limits.PreservesColimitsOfSize.{u_1, u_2, u_3, u_4, u_5, u_6} C inst D inst_1 F",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.Adjunction.rightAdjoint_preservesLimits": {
+      "name": "CategoryTheory.Adjunction.rightAdjoint_preservesLimits",
+      "module": "Mathlib.CategoryTheory.Adjunction.Limits",
+      "path": "Mathlib/CategoryTheory/Adjunction/Limits.lean",
+      "line": 203,
+      "source_sha256": "e389bf5fbc8201dbbf00ba24dc27173e0e7350a3446368f86a70992be99e4136",
+      "type": "@CategoryTheory.Adjunction.rightAdjoint_preservesLimits.{u_1, u_2, u_3, u_4, u_5,\n    u_6} : ∀ {C : Type u_5} [inst : CategoryTheory.Category.{u_3, u_5} C] {D : Type u_6}\n  [inst_1 : CategoryTheory.Category.{u_4, u_6} D] {F : @CategoryTheory.Functor.{u_3, u_4, u_5, u_6} C inst D inst_1}\n  {G : @CategoryTheory.Functor.{u_4, u_3, u_6, u_5} D inst_1 C inst}\n  (adj : @CategoryTheory.Adjunction.{u_3, u_4, u_5, u_6} C inst D inst_1 F G),\n  @CategoryTheory.Limits.PreservesLimitsOfSize.{u_1, u_2, u_4, u_3, u_6, u_5} D inst_1 C inst G",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.Functor.Elements": {
+      "name": "CategoryTheory.Functor.Elements",
+      "module": "Mathlib.CategoryTheory.Elements",
+      "path": "Mathlib/CategoryTheory/Elements.lean",
+      "line": 48,
+      "source_sha256": "e09f539456d07506b1d1d7bf80d2ec07e96ad2ebf3a81440027a3a1e7b2cc84b",
+      "type": "@CategoryTheory.Functor.Elements.{u_1, u_2,\n    u_3} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_2, u_3} C] →\n    @CategoryTheory.Functor.{u_2, u_1, u_3, u_1 + 1} C inst (Type u_1) CategoryTheory.types.{u_1} → Type (max u_3 u_1)",
+      "axioms": []
+    },
+    "CategoryTheory.Functor.Elements.Hom": {
+      "name": "CategoryTheory.Functor.Elements.Hom",
+      "module": "Mathlib.CategoryTheory.Elements",
+      "path": "Mathlib/CategoryTheory/Elements.lean",
+      "line": 75,
+      "source_sha256": "e09f539456d07506b1d1d7bf80d2ec07e96ad2ebf3a81440027a3a1e7b2cc84b",
+      "type": "@CategoryTheory.Functor.Elements.Hom.{u_1, u_2,\n    u_3} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_2, u_3} C] →\n    {F : @CategoryTheory.Functor.{u_2, u_1, u_3, u_1 + 1} C inst (Type u_1) CategoryTheory.types.{u_1}} →\n      @CategoryTheory.Functor.Elements.{u_1, u_2, u_3} C inst F →\n        @CategoryTheory.Functor.Elements.{u_1, u_2, u_3} C inst F → Type u_2",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "Setoid.le_def": {
+      "name": "Setoid.le_def",
+      "module": "Mathlib.Order.Setoid.Basic",
+      "path": "Mathlib/Order/Setoid/Basic.lean",
+      "line": 54,
+      "source_sha256": "0d86157b0703d0f5447d4a54ba33c642eb2b385415fad325e4a8bfa8d464946c",
+      "type": "@Setoid.le_def.{u_1} : ∀ {α : Type u_1} {r s : Setoid.{u_1 + 1} α},\n  Iff (@LE.le.{u_1} (Setoid.{u_1 + 1} α) (@Setoid.instLE_mathlib.{u_1} α) r s)\n    (∀ {x y : α}, @Setoid.r.{u_1 + 1} α r x y → @Setoid.r.{u_1 + 1} α s x y)",
+      "axioms": []
+    },
+    "Setoid.completeLattice": {
+      "name": "Setoid.completeLattice",
+      "module": "Mathlib.Order.Setoid.Basic",
+      "path": "Mathlib/Order/Setoid/Basic.lean",
+      "line": 184,
+      "source_sha256": "0d86157b0703d0f5447d4a54ba33c642eb2b385415fad325e4a8bfa8d464946c",
+      "type": "@Setoid.completeLattice.{u_1} : {α : Type u_1} → CompleteLattice.{u_1} (Setoid.{u_1 + 1} α)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "Setoid.top_def": {
+      "name": "Setoid.top_def",
+      "module": "Mathlib.Order.Setoid.Basic",
+      "path": "Mathlib/Order/Setoid/Basic.lean",
+      "line": 197,
+      "source_sha256": "0d86157b0703d0f5447d4a54ba33c642eb2b385415fad325e4a8bfa8d464946c",
+      "type": "@Setoid.top_def.{u_1} : ∀ {α : Type u_1},\n  @Eq.{u_1 + 1} (α → α → Prop)\n    (@Setoid.r.{u_1 + 1} α\n      (@Top.top.{u_1} (Setoid.{u_1 + 1} α)\n        (@OrderTop.toTop.{u_1} (Setoid.{u_1 + 1} α)\n          (@Preorder.toLE.{u_1} (Setoid.{u_1 + 1} α)\n            (@PartialOrder.toPreorder.{u_1} (Setoid.{u_1 + 1} α)\n              (@SemilatticeSup.toPartialOrder.{u_1} (Setoid.{u_1 + 1} α)\n                (@Lattice.toSemilatticeSup.{u_1} (Setoid.{u_1 + 1} α)\n                  (@CompleteLattice.toLattice.{u_1} (Setoid.{u_1 + 1} α) (@Setoid.completeLattice.{u_1} α))))))\n          (@BoundedOrder.toOrderTop.{u_1} (Setoid.{u_1 + 1} α)\n            (@Preorder.toLE.{u_1} (Setoid.{u_1 + 1} α)\n              (@PartialOrder.toPreorder.{u_1} (Setoid.{u_1 + 1} α)\n                (@SemilatticeSup.toPartialOrder.{u_1} (Setoid.{u_1 + 1} α)\n                  (@Lattice.toSemilatticeSup.{u_1} (Setoid.{u_1 + 1} α)\n                    (@CompleteLattice.toLattice.{u_1} (Setoid.{u_1 + 1} α) (@Setoid.completeLattice.{u_1} α))))))\n            (@CompleteLattice.toBoundedOrder.{u_1} (Setoid.{u_1 + 1} α) (@Setoid.completeLattice.{u_1} α))))))\n    (@Top.top.{u_1} (α → α → Prop)\n      (@Pi.instTopForall.{u_1, u_1} α (fun a => α → Prop) fun i =>\n        @Pi.instTopForall.{u_1, 0} α (fun a => Prop) fun i => @BooleanAlgebra.toTop.{0} Prop «Prop».instBooleanAlgebra))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "Setoid.bot_def": {
+      "name": "Setoid.bot_def",
+      "module": "Mathlib.Order.Setoid.Basic",
+      "path": "Mathlib/Order/Setoid/Basic.lean",
+      "line": 201,
+      "source_sha256": "0d86157b0703d0f5447d4a54ba33c642eb2b385415fad325e4a8bfa8d464946c",
+      "type": "@Setoid.bot_def.{u_1} : ∀ {α : Type u_1},\n  @Eq.{u_1 + 1} (α → α → Prop)\n    (@Setoid.r.{u_1 + 1} α\n      (@Bot.bot.{u_1} (Setoid.{u_1 + 1} α)\n        (@OrderBot.toBot.{u_1} (Setoid.{u_1 + 1} α)\n          (@Preorder.toLE.{u_1} (Setoid.{u_1 + 1} α)\n            (@PartialOrder.toPreorder.{u_1} (Setoid.{u_1 + 1} α)\n              (@SemilatticeSup.toPartialOrder.{u_1} (Setoid.{u_1 + 1} α)\n                (@Lattice.toSemilatticeSup.{u_1} (Setoid.{u_1 + 1} α)\n                  (@CompleteLattice.toLattice.{u_1} (Setoid.{u_1 + 1} α) (@Setoid.completeLattice.{u_1} α))))))\n          (@BoundedOrder.toOrderBot.{u_1} (Setoid.{u_1 + 1} α)\n            (@Preorder.toLE.{u_1} (Setoid.{u_1 + 1} α)\n              (@PartialOrder.toPreorder.{u_1} (Setoid.{u_1 + 1} α)\n                (@SemilatticeSup.toPartialOrder.{u_1} (Setoid.{u_1 + 1} α)\n                  (@Lattice.toSemilatticeSup.{u_1} (Setoid.{u_1 + 1} α)\n                    (@CompleteLattice.toLattice.{u_1} (Setoid.{u_1 + 1} α) (@Setoid.completeLattice.{u_1} α))))))\n            (@CompleteLattice.toBoundedOrder.{u_1} (Setoid.{u_1 + 1} α) (@Setoid.completeLattice.{u_1} α))))))\n    fun x1 x2 => @Eq.{u_1 + 1} α x1 x2",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.IsExactFunctor.preservesFiber": {
+      "name": "SerrePositivity.InfinityCategories.IsExactFunctor.preservesFiber",
+      "module": "SerrePositivity.InfinityCategories.Stable.ExactFunctor",
+      "path": "SerrePositivity/InfinityCategories/Stable/ExactFunctor.lean",
+      "line": 62,
+      "source_sha256": "b5d3aab240fc05c0a18447ac4cb6505521758f4b1e80e4d0baba92c98667a8f5",
+      "type": "@SerrePositivity.InfinityCategories.IsExactFunctor.preservesFiber.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : X.Quasicategory]\n  [@SerrePositivity.InfinityCategories.IsStable.{u_1} X inst] [inst : Y.Quasicategory]\n  [@SerrePositivity.InfinityCategories.IsStable.{u_1} Y inst]\n  (F :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      X Y)\n  [inst : @SerrePositivity.InfinityCategories.IsExactFunctor.{u_1} X Y F]\n  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X),\n  @SerrePositivity.InfinityCategories.IsFiberSequence.{u_1} X t →\n    @SerrePositivity.InfinityCategories.IsFiberSequence.{u_1} Y\n      (@SerrePositivity.InfinityCategories.ZeroTriangle.map.{u_1} X Y t F ⋯)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.chosenFiberSquare": {
+      "name": "SerrePositivity.InfinityCategories.chosenFiberSquare",
+      "module": "SerrePositivity.InfinityCategories.Stable.Definition",
+      "path": "SerrePositivity/InfinityCategories/Stable/Definition.lean",
+      "line": 36,
+      "source_sha256": "b35f199a9cb02744bc865f6445384aef3415528794d40dd30ef8bde1b1d18b65",
+      "type": "@SerrePositivity.InfinityCategories.chosenFiberSquare.{u_1} : {X : SSet.{u_1}} →\n  [inst : X.Quasicategory] →\n    [@SerrePositivity.InfinityCategories.IsStable.{u_1} X inst] →\n      {x y :\n          @CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1} X\n            (@Opposite.op.{1} SimplexCategory { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })} →\n        (f :\n            @SSet.Truncated.Edge.{u_1}\n              (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n                (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                  (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                  CategoryTheory.types.{u_1})\n                (SSet.Truncated.{u_1} (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1}\n                  (Opposite.{1}\n                    (SimplexCategory.Truncated (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n                  (@CategoryTheory.Category.opposite.{0, 0}\n                    (SimplexCategory.Truncated (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                    (@CategoryTheory.ObjectProperty.FullSubcategory.category.{0, 0} SimplexCategory\n                      SimplexCategory.smallCategory fun a =>\n                      @LE.le.{0} Nat instLENat a.len (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n                  (Type u_1) CategoryTheory.types.{u_1})\n                (SSet.truncation.{u_1} (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) X)\n              x y) →\n          @SerrePositivity.InfinityCategories.FiberSquare.{u_1} X x y f",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  },
+  "kernel_commands": [
+    "#check @<declaration>",
+    "#print axioms <declaration>"
+  ]
+}

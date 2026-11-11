@@ -1,0 +1,1705 @@
+{
+  "7.3.2.1": {
+    "page": 758,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.1",
+        "7.3.2",
+        "7.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 1230,
+        "line_count": 7727
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 409,
+        "line_count": 11156
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Closed.lean",
+        "signatures": [
+          {
+            "line": 172,
+            "head": "theorem classifier_isSheaf : Presieve.IsSheaf J₁ (Functor.closedSieves J₁).toFunctor"
+          },
+          {
+            "line": 222,
+            "head": "lemma GrothendieckTopology.mem_iff_isSheafFor_closedSieves (J : GrothendieckTopology C) {X : C} (S : Sieve X) : S ∈ J X ↔ Presieve.IsSheafFor (Functor.closedSieves J).toFunctor S.arrows"
+          },
+          {
+            "line": 244,
+            "head": "theorem le_topology_of_closedSieves_isSheaf {J₁ J₂ : GrothendieckTopology C} (h : Presieve.IsSheaf J₁ (Functor.closedSieves J₂).toFunctor) : J₁ ≤ J₂"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native initial object はあるが、任意の ∞-topos の initial object が (−1)-truncated であるという intrinsic mapping-space truncation の型はない。ordinary category の subterminal は higher initial object との比較を欠く。"
+  },
+  "7.3.2.2": {
+    "page": 758,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.1",
+        "7.3.2",
+        "7.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 1230,
+        "line_count": 7727
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 409,
+        "line_count": 11156
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Closed.lean",
+        "signatures": [
+          {
+            "line": 172,
+            "head": "theorem classifier_isSheaf : Presieve.IsSheaf J₁ (Functor.closedSieves J₁).toFunctor"
+          },
+          {
+            "line": 222,
+            "head": "lemma GrothendieckTopology.mem_iff_isSheafFor_closedSieves (J : GrothendieckTopology C) {X : C} (S : Sieve X) : S ∈ J X ↔ Presieve.IsSheafFor (Functor.closedSieves J).toFunctor S.arrows"
+          },
+          {
+            "line": 244,
+            "head": "theorem le_topology_of_closedSieves_isSheaf {J₁ J₂ : GrothendieckTopology C} (h : Presieve.IsSheaf J₁ (Functor.closedSieves J₂).toFunctor) : J₁ ≤ J₂"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary extensive sheaf category の初期射の mono は候補だが、任意の ∞-topos の initial object の strictness とその高次 mono の比較はない。単体集合の empty inclusion の mono は ambient ∞-topos の対象の射とは異なる。"
+  },
+  "7.3.2.3": {
+    "page": 758,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.1",
+        "7.3.2",
+        "7.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 1230,
+        "line_count": 7727
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 409,
+        "line_count": 11156
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Closed.lean",
+        "signatures": [
+          {
+            "line": 172,
+            "head": "theorem classifier_isSheaf : Presieve.IsSheaf J₁ (Functor.closedSieves J₁).toFunctor"
+          },
+          {
+            "line": 222,
+            "head": "lemma GrothendieckTopology.mem_iff_isSheafFor_closedSieves (J : GrothendieckTopology C) {X : C} (S : Sieve X) : S ∈ J X ↔ Presieve.IsSheafFor (Functor.closedSieves J).toFunctor S.arrows"
+          },
+          {
+            "line": 244,
+            "head": "theorem le_topology_of_closedSieves_isSheaf {J₁ J₂ : GrothendieckTopology C} (h : Presieve.IsSheaf J₁ (Functor.closedSieves J₂).toFunctor) : J₁ ≤ J₂"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native reflective localization はあるが、原典の ∅→V、Map(V,U)非空から生成する strongly saturated SU の topological 性を示す型はない。ordinary sieve の closure はこの準圏の全射 class の saturation と未比較。"
+  },
+  "7.3.2.4": {
+    "page": 759,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.1",
+        "7.3.2",
+        "7.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 1230,
+        "line_count": 7727
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 409,
+        "line_count": 11156
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Closed.lean",
+        "signatures": [
+          {
+            "line": 172,
+            "head": "theorem classifier_isSheaf : Presieve.IsSheaf J₁ (Functor.closedSieves J₁).toFunctor"
+          },
+          {
+            "line": 222,
+            "head": "lemma GrothendieckTopology.mem_iff_isSheafFor_closedSieves (J : GrothendieckTopology C) {X : C} (S : Sieve X) : S ∈ J X ↔ Presieve.IsSheafFor (Functor.closedSieves J).toFunctor S.arrows"
+          },
+          {
+            "line": 244,
+            "head": "theorem le_topology_of_closedSieves_isSheaf {J₁ J₂ : GrothendieckTopology C} (h : Presieve.IsSheaf J₁ (Functor.closedSieves J₂).toFunctor) : J₁ ≤ J₂"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native local object の mapping-space 判定はあるが、原典の SU と全 U-objects からの mapping space の可縮性、および U≃U×X の三条件を結ぶ型ではない。generic localization の定義だけでは指定 SU を構成しない。"
+  },
+  "7.3.2.5": {
+    "page": 760,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.1",
+        "7.3.2",
+        "7.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 1230,
+        "line_count": 7727
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 409,
+        "line_count": 11156
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Closed.lean",
+        "signatures": [
+          {
+            "line": 172,
+            "head": "theorem classifier_isSheaf : Presieve.IsSheaf J₁ (Functor.closedSieves J₁).toFunctor"
+          },
+          {
+            "line": 222,
+            "head": "lemma GrothendieckTopology.mem_iff_isSheafFor_closedSieves (J : GrothendieckTopology C) {X : C} (S : Sieve X) : S ∈ J X ↔ Presieve.IsSheafFor (Functor.closedSieves J).toFunctor S.arrows"
+          },
+          {
+            "line": 244,
+            "head": "theorem le_topology_of_closedSieves_isSheaf {J₁ J₂ : GrothendieckTopology C} (h : Presieve.IsSheaf J₁ (Functor.closedSieves J₂).toFunctor) : J₁ ≤ J₂"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary open/closed sheaf restriction はあるが、原典の X/V⊆X/U と effective epi の場合の equality を与える higher closed-localization の型はない。通常の Over X の slice はここでいう complementary closed subtopos X/U と異なる。"
+  },
+  "7.3.2.6": {
+    "page": 760,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.1",
+        "7.3.2",
+        "7.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 1230,
+        "line_count": 7727
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 409,
+        "line_count": 11156
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Closed.lean",
+        "signatures": [
+          {
+            "line": 172,
+            "head": "theorem classifier_isSheaf : Presieve.IsSheaf J₁ (Functor.closedSieves J₁).toFunctor"
+          },
+          {
+            "line": 222,
+            "head": "lemma GrothendieckTopology.mem_iff_isSheafFor_closedSieves (J : GrothendieckTopology C) {X : C} (S : Sieve X) : S ∈ J X ↔ Presieve.IsSheafFor (Functor.closedSieves J).toFunctor S.arrows"
+          },
+          {
+            "line": 244,
+            "head": "theorem le_topology_of_closedSieves_isSheaf {J₁ J₂ : GrothendieckTopology C} (h : Presieve.IsSheaf J₁ (Functor.closedSieves J₂).toFunctor) : J₁ ≤ J₂"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native full reflective subcomplex と ordinary closed sieves はあるが、subterminal U の SU-local objects による X/U と closed geometric immersion の同じ定義はない。scheme の closed immersion は位相や環付き空間の別の対象である。"
+  },
+  "7.3.2.7": {
+    "page": 760,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.1",
+        "7.3.2",
+        "7.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 1230,
+        "line_count": 7727
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 409,
+        "line_count": 11156
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Closed.lean",
+        "signatures": [
+          {
+            "line": 172,
+            "head": "theorem classifier_isSheaf : Presieve.IsSheaf J₁ (Functor.closedSieves J₁).toFunctor"
+          },
+          {
+            "line": 222,
+            "head": "lemma GrothendieckTopology.mem_iff_isSheafFor_closedSieves (J : GrothendieckTopology C) {X : C} (S : Sieve X) : S ∈ J X ↔ Presieve.IsSheafFor (Functor.closedSieves J).toFunctor S.arrows"
+          },
+          {
+            "line": 244,
+            "head": "theorem le_topology_of_closedSieves_isSheaf {J₁ J₂ : GrothendieckTopology C} (h : Presieve.IsSheaf J₁ (Functor.closedSieves J₂).toFunctor) : J₁ ≤ J₂"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib Subobject の interval の order iso は候補だが、原典の閉局所化 X/U の terminal subobjects と {V|U≤V} の poset を結ぶ比較はない。ordinary subobject lattice の interval だけでは ∞-topos の指定射影を表さない。"
+  },
+  "7.3.2.8": {
+    "page": 761,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.1",
+        "7.3.2",
+        "7.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 1230,
+        "line_count": 7727
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 409,
+        "line_count": 11156
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Closed.lean",
+        "signatures": [
+          {
+            "line": 172,
+            "head": "theorem classifier_isSheaf : Presieve.IsSheaf J₁ (Functor.closedSieves J₁).toFunctor"
+          },
+          {
+            "line": 222,
+            "head": "lemma GrothendieckTopology.mem_iff_isSheafFor_closedSieves (J : GrothendieckTopology C) {X : C} (S : Sieve X) : S ∈ J X ↔ Presieve.IsSheafFor (Functor.closedSieves J).toFunctor S.arrows"
+          },
+          {
+            "line": 244,
+            "head": "theorem le_topology_of_closedSieves_isSheaf {J₁ J₂ : GrothendieckTopology C} (h : Presieve.IsSheaf J₁ (Functor.closedSieves J₂).toFunctor) : J₁ ≤ J₂"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib sieve saturation の inclusion はあるが、原典の SU⊆SV iff U⊆V という higher strongly-saturated classes の順序反映はない。ordinary closed-sieve closure と任意の準圏の localization class は未比較。"
+  },
+  "7.3.2.9": {
+    "page": 761,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.1",
+        "7.3.2",
+        "7.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 1230,
+        "line_count": 7727
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 409,
+        "line_count": 11156
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Closed.lean",
+        "signatures": [
+          {
+            "line": 172,
+            "head": "theorem classifier_isSheaf : Presieve.IsSheaf J₁ (Functor.closedSieves J₁).toFunctor"
+          },
+          {
+            "line": 222,
+            "head": "lemma GrothendieckTopology.mem_iff_isSheafFor_closedSieves (J : GrothendieckTopology C) {X : C} (S : Sieve X) : S ∈ J X ↔ Presieve.IsSheafFor (Functor.closedSieves J).toFunctor S.arrows"
+          },
+          {
+            "line": 244,
+            "head": "theorem le_topology_of_closedSieves_isSheaf {J₁ J₂ : GrothendieckTopology C} (h : Presieve.IsSheaf J₁ (Functor.closedSieves J₂).toFunctor) : J₁ ≤ J₂"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib frame/locale の closed-sublocale は候補だが、associated 0-localic ∞-topos の SU-localization と locale {V|U≤V} の同定はない。通常の poset interval の frame 構造はその higher sheaf topos と未比較。"
+  },
+  "7.3.2.10": {
+    "page": 761,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.1",
+        "7.3.2",
+        "7.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 1230,
+        "line_count": 7727
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 409,
+        "line_count": 11156
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Closed.lean",
+        "signatures": [
+          {
+            "line": 172,
+            "head": "theorem classifier_isSheaf : Presieve.IsSheaf J₁ (Functor.closedSieves J₁).toFunctor"
+          },
+          {
+            "line": 222,
+            "head": "lemma GrothendieckTopology.mem_iff_isSheafFor_closedSieves (J : GrothendieckTopology C) {X : C} (S : Sieve X) : S ∈ J X ↔ Presieve.IsSheafFor (Functor.closedSieves J).toFunctor S.arrows"
+          },
+          {
+            "line": 244,
+            "head": "theorem le_topology_of_closedSieves_isSheaf {J₁ J₂ : GrothendieckTopology C} (h : Presieve.IsSheaf J₁ (Functor.closedSieves J₂).toFunctor) : J₁ ≤ J₂"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheaf の closed-subspace functor はあるが、space-valued Shv(X−U) と SU-local objects X/U の同値を示す型はない。位相的 closed embedding が proper であることだけはその ∞-topos の分類を述べない。"
+  },
+  "7.3.2.11": {
+    "page": 761,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.1",
+        "7.3.2",
+        "7.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 1230,
+        "line_count": 7727
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 409,
+        "line_count": 11156
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Closed.lean",
+        "signatures": [
+          {
+            "line": 172,
+            "head": "theorem classifier_isSheaf : Presieve.IsSheaf J₁ (Functor.closedSieves J₁).toFunctor"
+          },
+          {
+            "line": 222,
+            "head": "lemma GrothendieckTopology.mem_iff_isSheafFor_closedSieves (J : GrothendieckTopology C) {X : C} (S : Sieve X) : S ∈ J X ↔ Presieve.IsSheafFor (Functor.closedSieves J).toFunctor S.arrows"
+          },
+          {
+            "line": 244,
+            "head": "theorem le_topology_of_closedSieves_isSheaf {J₁ J₂ : GrothendieckTopology C} (h : Presieve.IsSheaf J₁ (Functor.closedSieves J₂).toFunctor) : J₁ ≤ J₂"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native reflective factorization はあるが、原典の Fun*(X,Y/U) が π*U initial の morphisms の full subcategory になるという mapping ∞-category の比較はない。ordinary localization の対象ごとの因子化だけでは全幾何学射の higher morphisms を与えない。"
+  },
+  "7.3.2.12": {
+    "page": 762,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.1",
+        "7.3.2",
+        "7.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 1230,
+        "line_count": 7727
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 409,
+        "line_count": 11156
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Closed.lean",
+        "signatures": [
+          {
+            "line": 172,
+            "head": "theorem classifier_isSheaf : Presieve.IsSheaf J₁ (Functor.closedSieves J₁).toFunctor"
+          },
+          {
+            "line": 222,
+            "head": "lemma GrothendieckTopology.mem_iff_isSheafFor_closedSieves (J : GrothendieckTopology C) {X : C} (S : Sieve X) : S ∈ J X ↔ Presieve.IsSheafFor (Functor.closedSieves J).toFunctor S.arrows"
+          },
+          {
+            "line": 244,
+            "head": "theorem le_topology_of_closedSieves_isSheaf {J₁ J₂ : GrothendieckTopology C} (h : Presieve.IsSheaf J₁ (Functor.closedSieves J₂).toFunctor) : J₁ ≤ J₂"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary base-change mate と full reflective localization はあるが、原典の X/(π*U) と X×Y Y/U の RTop pullback、さらに left-adjointable square を同時に示す型はない。一般の slice pullback は complementary closed localization と別の圏である。"
+  },
+  "7.3.2.13": {
+    "page": 763,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.1",
+        "7.3.2",
+        "7.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 1230,
+        "line_count": 7727
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]losed.*[Ss]ubtopos|[Cc]losed.*[Ii]mmersion|ReflectiveSubcategory|[Ss]tronglySaturated|[Ss]ubterminal|Subobject|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 409,
+        "line_count": 11156
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Closed.lean",
+        "signatures": [
+          {
+            "line": 172,
+            "head": "theorem classifier_isSheaf : Presieve.IsSheaf J₁ (Functor.closedSieves J₁).toFunctor"
+          },
+          {
+            "line": 222,
+            "head": "lemma GrothendieckTopology.mem_iff_isSheafFor_closedSieves (J : GrothendieckTopology C) {X : C} (S : Sieve X) : S ∈ J X ↔ Presieve.IsSheafFor (Functor.closedSieves J).toFunctor S.arrows"
+          },
+          {
+            "line": 244,
+            "head": "theorem le_topology_of_closedSieves_isSheaf {J₁ J₂ : GrothendieckTopology C} (h : Presieve.IsSheaf J₁ (Functor.closedSieves J₂).toFunctor) : J₁ ≤ J₂"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "位相的 closed embedding の pullback 安定性はあるが、原典の arbitrary RTop square の closed geometric immersion の class とは比較されない。space-induced special case にも Shv の pullback 比較を要する。"
+  }
+}

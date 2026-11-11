@@ -1,0 +1,2846 @@
+{
+  "A.3.6.1": {
+    "page": 897,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の Exponentiable と binary product は通常圏の定義であり、任意の ModelCategory A の指定 span P→Z×Y,P→X をホモトピー圏へ運んだ homotopy-product と evaluation の二条件を束ねた weak exponential はない。通常閉性だけでは条件 (1) を供給しない。"
+  },
+  "A.3.6.2": {
+    "page": 898,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "generic cofibrant/fibrant replacement と homotopy-category Hom の代表はあるが、ホモトピー圏の exponential evaluation を同じ P→Z×Y,P→X へ同時に選ぶ standard diagram の存在はない。置換の存在のみを指定 evaluation の実現に数えない。"
+  },
+  "A.3.6.3": {
+    "page": 898,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "localization が弱同値を反転する一般定理はあるが、weak exponential の二条件を定めておらず、span の評価から同じホモトピー積・指数の条件を移す型はない。通常の Exponentiable の iso-invariance は対象と比較の階層が異なる。"
+  },
+  "A.3.6.4": {
+    "page": 898,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "Quillen.derived_isEquivalence_iff は通常の homotopy category の equivalence を判定するが、元の standard span の G 像を product-preservation の指定同型と結び、両 weak-exponential 条件を比較する宣言はない。derived equivalence 自体は証明の部品。"
+  },
+  "A.3.6.5": {
+    "page": 899,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "IsQuillenBifunctor は monoidal tensor の model compatibility を要求する別の仮定。原典の任意 fibrant Y と F′→F×Y の objectwise weak equivalence による指定 colimit comparison が homotopy product になる条件そのものの定義はない。"
+  },
+  "A.3.6.6": {
+    "page": 899,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "第4章の native cofinal poset は準圏の図式の colimit を比較する。任意の combinatorial ModelCategory の projective diagram とその strict colim による同じ homotopy colimit をその準圏計算へ運ぶ比較がなく、このモデル圏での添字置換としては数えない。"
+  },
+  "A.3.6.7": {
+    "page": 899,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "generic derived adjunction と equivalence は通常局所化上で、原典の F′ の強 cofibrancy と指定 strict colimit-map を右随伴の像と比較しない。homotopy product の保存と全ての diagram comparison を結ぶ型はない。"
+  },
+  "A.3.6.8": {
+    "page": 899,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "CatS の実際のモデル構造と tensor の homotopy-colimit 保存が未供給。通常 EnrichedCat の bicategory と SSet tensor の Quillen bifunctor は CatS の積ではなく、A.3.5.15 の指定比較の代用にならない。"
+  },
+  "A.3.6.9": {
+    "page": 899,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "SSet の relativeCellComplexOfMono は境界 attachment による生成であり、任意の weak-homotopy-invariant class が projectively cofibrant poset-colimits に閉じれば全 SSet という認識を直接与えない。cell attachment から原典の closure 仮定への変換が必要で、proof piece として残す。"
+  },
+  "A.3.6.10": {
+    "page": 900,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "Enriched.mapping_isFibrant と pullback-Hom の Quillen 条件はあるが、任意の standard span の指定 pullback Map(W,Z)×Map(W′,Z×Y) Map(W′,P)→Map(W′,X) が homotopy equivalence となる iff はない。π0 だけの ordinary exponential の普遍性とも比較されていない。"
+  },
+  "A.3.6.11": {
+    "page": 900,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "HasQuillenPullbackHom は cofibration/fibration の角射の保存を与えるが、原典の非 cofibrant な Z×Y と standard P の指定 pullback への同型・弱同値は構成していない。generic Kan trivial-fibration の pullback 安定性をこの指定図式の結論として直接は数えない。"
+  },
+  "A.3.6.12": {
+    "page": 901,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib Functor.Initial と通常 limit の比較はあるが、native HomotopyLimit は通常 K の SSet 値の derived constant right adjoint で、任意のモデル A と指定 poset retraction r≤id による同じ X→lim F の二つの判定を比較する宣言はない。"
+  },
+  "A.3.6.13": {
+    "page": 901,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary limitOfTerminal だけでは終対象への評価は一般に limit にならない。原典の objectwise weak equivalences を使って図式を定値と比較し、終対象を持つ添字の homotopy contractibility から指定 cone が homotopy limit と示す型は native には見つからない。"
+  },
+  "A.3.6.14": {
+    "page": 902,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "通常 pointwise right Kan formula はあるが、π:B→Aop の G(a)→F(a,b) の objectwise weak equivalence を用いた homotopy right Kan extension の指定比較はない。generic SSet-valued holim の不変性だけでは各 fiber の計算を与えない。"
+  },
+  "A.3.6.15": {
+    "page": 902,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "通常 MonoidalClosed の右 adjoint の limit 保存は、モデルの weak-exponential span と B={(a,b):a≥b} の二変数の homotopy product を介する原典の Z(∞) の homotopy limit 比較ではない。strict Hom 対象への置き換えの宣言がない。"
+  },
+  "A.3.6.16": {
+    "page": 903,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "CatS の hocolim と Ca-chunk、および各 enriched UCa_f の指定弱同値反転を構成していない。native presentable infinity-category functor spaces の limit theorem はこの model/chunk の比較を欠き、別の対象の類似結果にとどまる。"
+  },
+  "A.3.6.17": {
+    "page": 904,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib BifibrantObjectHomotopy は通常 Hom を homotopy relation で割った同値を扱う。chunk U の enriched Uf[W^-1] と U◦ の DK 弱同値とは異なり、native ModelBifibrantLocalization もこの CatS における指定反転との比較がない。"
+  },
+  "A.3.6.18": {
+    "page": 905,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.5",
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          "SerrePositivity"
+        ],
+        "file_count": 4732,
+        "line_count": 17631
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ww]eakExponential|[Ee]xponential|[Hh]omotopyProduct|[Hh]omotopyColimit|[Hh]omotopyLimit|[Qq]uillen|[Cc]hunk|[Pp]ointwise",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 855,
+        "line_count": 3834
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "instance CartesianMonoidalCategory.isLeftAdjoint_prod_functor (A : C) [Closed A] : (prod.functor.obj A).IsLeftAdjoint := Functor.isLeftAdjoint_of_iso (CartesianMonoidalCategory.tensorLeftIsoProd A)"
+          },
+          {
+            "line": 47,
+            "head": "meta def delabFunctorObjExp : Delab := whenPPOption getPPNotation <| withOverApp 6 do let e ← getExpr guard <| e.isAppOfArity' ``Functor.obj 6 let A ← withNaryArg 4 do let e ← getExpr guard <| e.isAppOfArity' ``ihom 5 withNaryArg 3 delab let B ← withNaryArg 5 delab `($A ⟹ $B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 40,
+            "head": "class HasQuillenPullbackHom (G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma isIso_iff_on_cofibrant {F G : HC ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (X : C), IsCofibrant X → IsIso (γ.app (QC.obj X))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isIso_iff_on_fibrant {F G : HD ⥤ H} (γ : F ⟶ G) : IsIso γ ↔ ∀ (Y : D), IsFibrant Y → IsIso (γ.app (QD.obj Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PointwiseRMapHomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev functor : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.pointwiseRMap K cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          },
+          {
+            "line": 32,
+            "head": "abbrev middle : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} := SmallPointwiseMappingComparison.middle K I J cof fib ⋙ (Functor.whiskeringRight C (Kᵒᵖ ⥤ SSet.{w}) SSet.{w}).obj (HomotopyLimit.functor Kᵒᵖ IS JS)"
+          }
+        ]
+      }
+    ],
+    "decision": "native の準圏 functor-space の limit/colimit 双対性はあるが、enriched diagram category ACa_f を W で反転した指定 CatS 対象と比較していない。一般の Ca のモデル側の homotopy colimit に沿うこの図式の limit は未供給。"
+  }
+}

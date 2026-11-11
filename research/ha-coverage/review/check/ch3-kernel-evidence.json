@@ -76,6 +76,14 @@
         "ModuleCat.forget₂PreservesColimitsOfShape",
         "ModuleCat.reflectsColimitsOfShape"
       ]
+    },
+    "3.2.4.7": {
+      "ha_page": 371,
+      "declarations": [
+        "CommAlgCat.binaryCofanIsColimit",
+        "CommAlgCat.coe_tensorObj",
+        "CommAlgCat.isInitialSelf"
+      ]
     }
   },
   "declarations": {
@@ -273,10 +281,56 @@
         "Classical.choice",
         "Quot.sound"
       ]
+    },
+    "CommAlgCat.binaryCofanIsColimit": {
+      "name": "CommAlgCat.binaryCofanIsColimit",
+      "module": "Mathlib.Algebra.Category.CommAlgCat.Monoidal",
+      "path": "Mathlib/Algebra/Category/CommAlgCat/Monoidal.lean",
+      "line": 40,
+      "source_sha256": "ca7162c25209e5d2041f07b08e3524bc9892f5753e17dccfe0dd1058638b4215",
+      "type": "@CommAlgCat.binaryCofanIsColimit.{u_1} : {R : Type u_1} →\n  [inst : CommRing.{u_1} R] →\n    (A B : @CommAlgCat.{u_1, u_1} R inst) →\n      @CategoryTheory.Limits.IsColimit.{0, u_1, 0, u_1 + 1}\n        (CategoryTheory.Discrete.{0} CategoryTheory.Limits.WalkingPair)\n        (CategoryTheory.discreteCategory.{0} CategoryTheory.Limits.WalkingPair) (@CommAlgCat.{u_1, u_1} R inst)\n        (@CommAlgCat.instCategory.{u_1, u_1} R inst)\n        (@CategoryTheory.Limits.pair.{u_1, u_1 + 1} (@CommAlgCat.{u_1, u_1} R inst)\n          (@CommAlgCat.instCategory.{u_1, u_1} R inst) A B)\n        (@CommAlgCat.binaryCofan.{u_1} R inst A B)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CommAlgCat.coe_tensorObj": {
+      "name": "CommAlgCat.coe_tensorObj",
+      "module": "Mathlib.Algebra.Category.CommAlgCat.Monoidal",
+      "path": "Mathlib/Algebra/Category/CommAlgCat/Monoidal.lean",
+      "line": 67,
+      "source_sha256": "ca7162c25209e5d2041f07b08e3524bc9892f5753e17dccfe0dd1058638b4215",
+      "type": "@CommAlgCat.coe_tensorObj.{u_1} : ∀ {R : Type u_1} [inst : CommRing.{u_1} R] (A B : @CommAlgCat.{u_1, u_1} R inst),\n  @Eq.{u_1 + 2} (Type u_1)\n    (@CommAlgCat.carrier.{u_1, u_1} R inst\n      (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} (@CommAlgCat.{u_1, u_1} R inst)\n        (@CommAlgCat.instCategory.{u_1, u_1} R inst)\n        (@CategoryTheory.MonoidalCategory.toMonoidalCategoryStruct.{u_1, u_1 + 1} (@CommAlgCat.{u_1, u_1} R inst)\n          (@CommAlgCat.instCategory.{u_1, u_1} R inst) (@CommAlgCat.instMonoidalCategory.{u_1} R inst))\n        A B))\n    (@TensorProduct.{u_1, u_1, u_1} R (@CommRing.toCommSemiring.{u_1} R inst) (@CommAlgCat.carrier.{u_1, u_1} R inst A)\n      (@CommAlgCat.carrier.{u_1, u_1} R inst B)\n      (@Semiring.toAddCommMonoid.{u_1} (@CommAlgCat.carrier.{u_1, u_1} R inst A)\n        (@CommSemiring.toSemiring.{u_1} (@CommAlgCat.carrier.{u_1, u_1} R inst A)\n          (@CommRing.toCommSemiring.{u_1} (@CommAlgCat.carrier.{u_1, u_1} R inst A)\n            (@CommAlgCat.instCommRingObjForgetAlgHomCarrier.{u_1, u_1} R inst A))))\n      (@Semiring.toAddCommMonoid.{u_1} (@CommAlgCat.carrier.{u_1, u_1} R inst B)\n        (@CommSemiring.toSemiring.{u_1} (@CommAlgCat.carrier.{u_1, u_1} R inst B)\n          (@CommRing.toCommSemiring.{u_1} (@CommAlgCat.carrier.{u_1, u_1} R inst B)\n            (@CommAlgCat.instCommRingObjForgetAlgHomCarrier.{u_1, u_1} R inst B))))\n      (@Algebra.toModule.{u_1, u_1} R (@CommAlgCat.carrier.{u_1, u_1} R inst A) (@CommRing.toCommSemiring.{u_1} R inst)\n        (@CommSemiring.toSemiring.{u_1} (@CommAlgCat.carrier.{u_1, u_1} R inst A)\n          (@CommRing.toCommSemiring.{u_1} (@CommAlgCat.carrier.{u_1, u_1} R inst A)\n            (@CommAlgCat.instCommRingObjForgetAlgHomCarrier.{u_1, u_1} R inst A)))\n        (@CommAlgCat.instAlgebraObjForgetAlgHomCarrier.{u_1, u_1} R inst A))\n      (@Algebra.toModule.{u_1, u_1} R (@CommAlgCat.carrier.{u_1, u_1} R inst B) (@CommRing.toCommSemiring.{u_1} R inst)\n        (@CommSemiring.toSemiring.{u_1} (@CommAlgCat.carrier.{u_1, u_1} R inst B)\n          (@CommRing.toCommSemiring.{u_1} (@CommAlgCat.carrier.{u_1, u_1} R inst B)\n            (@CommAlgCat.instCommRingObjForgetAlgHomCarrier.{u_1, u_1} R inst B)))\n        (@CommAlgCat.instAlgebraObjForgetAlgHomCarrier.{u_1, u_1} R inst B)))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CommAlgCat.isInitialSelf": {
+      "name": "CommAlgCat.isInitialSelf",
+      "module": "Mathlib.Algebra.Category.CommAlgCat.Monoidal",
+      "path": "Mathlib/Algebra/Category/CommAlgCat/Monoidal.lean",
+      "line": 51,
+      "source_sha256": "ca7162c25209e5d2041f07b08e3524bc9892f5753e17dccfe0dd1058638b4215",
+      "type": "@CommAlgCat.isInitialSelf.{u_1} : {R : Type u_1} →\n  [inst : CommRing.{u_1} R] →\n    @CategoryTheory.Limits.IsInitial.{u_1, u_1 + 1} (@CommAlgCat.{u_1, u_1} R inst)\n      (@CommAlgCat.instCategory.{u_1, u_1} R inst)\n      (@CommAlgCat.of.{u_1, u_1} R inst R inst (@Algebra.id.{u_1} R (@CommRing.toCommSemiring.{u_1} R inst)))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
     }
   },
   "kernel_commands": [
     "#check @<declaration>",
     "#print axioms <declaration>"
-  ]
+  ],
+  "stage4_corrections": {
+    "3.2.4.7": {
+      "source_commit": "7bf1c5fbb",
+      "reason": "通常の可換 R 代数の tensor 余積の特殊例を追加",
+      "kernel_evidence": "ch5-kernel-evidence.json"
+    }
+  }
 }

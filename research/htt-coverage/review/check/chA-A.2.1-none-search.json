@@ -1,0 +1,91 @@
+{
+  "A.2.1.2": {
+    "page": 811,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.1.5",
+        "A.2.1",
+        "A.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "trivialModel|[Tt]rivial.*[Mm]odel|ModelCategory|IsCofibrant|IsFibrant|isomorphisms",
+          "SerrePositivity"
+        ],
+        "file_count": 1091,
+        "line_count": 3012
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "trivialModel|[Tt]rivial.*[Mm]odel|ModelCategory|IsCofibrant|IsFibrant|isomorphisms",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 459,
+        "line_count": 1302
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/IsCofibrant.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "abbrev IsCofibrant (X : C) : Prop := Cofibration (initial.to X)"
+          },
+          {
+            "line": 57,
+            "head": "instance [hY : IsCofibrant Y] : Cofibration (coprod.inl : X ⟶ X ⨿ Y)"
+          },
+          {
+            "line": 65,
+            "head": "instance [hX : IsCofibrant X] : Cofibration (coprod.inr : Y ⟶ X ⨿ Y)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/WeakFactorizationSystem.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class IsWeakFactorizationSystem : Prop where"
+          },
+          {
+            "line": 44,
+            "head": "lemma mk' [HasFactorization W₁ W₂] [W₁.IsStableUnderRetracts] [W₂.IsStableUnderRetracts] (h : ∀ {A B X Y : C} (i : A ⟶ B) (p : X ⟶ Y), W₁ i → W₂ p → HasLiftingProperty i p) : IsWeakFactorizationSystem W₁ W₂ where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib ModelCategory.mk′ と全射の weak factorization は構造を証明する部品だが、任意の完備余完備 C に同型 W・全射 cofib/fib を指定した trivial model structure の constructor は見つからない。仮の ModelCategory C を追加してその存在結論を満たしたとはしない。"
+  }
+}
