@@ -591,6 +591,27 @@ import SerrePositivity.BhattScholze.Prismatic.CechAlexanderSmall
 import SerrePositivity.BhattScholze.Prismatic.PrismaticFrameCoproduct
 import SerrePositivity.CategoryTheory.CechNerveData
 import SerrePositivity.CategoryTheory.CechNerveTransport
+import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgCoproductFunctor
+import SerrePositivity.EInfinity.BarrattEccles.Theory.ConcentratedHomotopy
+import SerrePositivity.EInfinity.BarrattEccles.Theory.CoproductModel
+import SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorAlgebra
+import SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorFirstBlock
+import SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorFunctor
+import SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorInclusions
+import SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorInsertion
+import SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorNaturality
+import SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorOperations
+import SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorUnit
+import SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorUnitObject
+import SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorUnitPowers
+import SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorUnitors
+import SerrePositivity.EInfinity.BarrattEccles.Theory.ResolutionAugmentationComparison
+import SerrePositivity.EInfinity.BarrattEccles.Theory.RightFrameCoproduct
+import SerrePositivity.EInfinity.BarrattEccles.Theory.TensorActionAssembly
+import SerrePositivity.EInfinity.BarrattEccles.Theory.TensorFirstBlockCoherence
+import SerrePositivity.EInfinity.BarrattEccles.Theory.TensorUnitCoherence
+import SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorPermutation
+import SerrePositivity.EInfinity.BarrattEccles.Theory.ZeroArity
 import Lean.Util.CollectAxioms
 
 /-!
@@ -603,6 +624,27 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgCoproductFunctor,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.ConcentratedHomotopy,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.CoproductModel,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorAlgebra,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorFirstBlock,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorFunctor,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorInclusions,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorInsertion,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorNaturality,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorOperations,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorUnit,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorUnitObject,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorUnitPowers,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorUnitors,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.ResolutionAugmentationComparison,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.RightFrameCoproduct,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.TensorActionAssembly,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.TensorFirstBlockCoherence,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.TensorUnitCoherence,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorPermutation,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.ZeroArity,
     `SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensorRingMaps,
     `SerrePositivity.BhattScholze.Prismatic.AffineCechChosenComparison,
     `SerrePositivity.BhattScholze.Prismatic.AffineCechCoefficientComplex,
