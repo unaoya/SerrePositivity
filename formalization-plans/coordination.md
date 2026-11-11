@@ -52,6 +52,8 @@
   - **組**：`impl`（⑤a・⑤b・⑤c・⑥・調整役の取り込み）、`research`（HA・HTT・Kerodon の `#check`）、`bulk`（KL-W1 の一括の検査・ビルド）。`--class` を省くと worktree 名から推定する（`kerodon-layout` → bulk、`*-review` → research、ほか → impl）ので、**各レーンのコマンドは今までのままでよい**。
   - **昼（JST 8〜23 時）は impl → research → bulk、夜は bulk → impl → research** の順。スクリプトが守らせるので、夜に impl が鍵を取ることを禁じる必要はなくなった（bulk が並んでいなければ impl が通る）。`$TMPDIR/serre-night-klw1-done` の合図は**不要**になった。
   - 取り直しのループは害がなくなった（列の後ろに並び直すだけ）。ただし **一回の塊は 30 分以内**（bulk は昼も夜も）、research は 10 分以内のまま。
+  - **繰り上げ（11-11 追加）**：待ちが impl・research は 15 分、bulk は 30 分を超えた整理券は、組に関係なく先頭へ繰り上がる（繰り上がったものどうしは待ち始めの順）。impl の小さなビルドが続いても、research・bulk が飢えない。
+  - **`--wait` の目安**：impl は `--wait 1800`、research と bulk は `--wait 3600`（繰り上げまで最大 15〜30 分＋前の持ち主の最大 30 分）。
   - 列を見る：`zsh scripts/refactor/with_build_lock.sh --status`。
   - 切り替え中は、古い版で待っているプロセスが鍵が空いた瞬間に取ることがある（整理券を持たない）。それらが終われば列は整う。
 
