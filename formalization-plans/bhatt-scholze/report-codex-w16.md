@@ -1081,3 +1081,144 @@ main `cba436208` を `math/bs-impl` へ fast-forward で取り込み、指示書
 - `BinaryTensorNaturality`（78 行）
 
 対象ビルドは `/tmp/bsw16/graded/binary-tensor-words-08.log` で成功した（対象の新規六本の警告零）。六本の **121 宣言**の再帰監査は `/tmp/bsw16/graded/audit-binary-tensor.log` で成功し、標準三公理のみ。本体の追加には sorry・admit・新規公理・デバッグ宣言を残していない。既存の公開宣言、界面の型、drafts、共通入口、共有監査スクリプトは変更していない。他レーンとのファイルの重複も零。新規の［一般∞］移動候補は零で、既報の五本は動かしていない。ビルド・監査はそれぞれ `--wait 3600` で一枚だけ整理券を出し、実行の終了ごとに鍵を返した。未検査の Lean ファイルは残さず、監査の鍵も返却済み。
+
+## 21. 夜の紙の検討：経路 A／B、sifted 保存、A2・A7 の要求（11-11）
+
+### 21.1 今回の作業と結論
+
+調整役の指示と main の指示書 §9（読んだ時点の main `93759d8a9`）に従い、**Lean の作成・変更・ビルド・監査は行わない**。main は参照だけにし、枝への merge も行っていない。本節だけを変更する。§20 の六本の取り込み後の登録ビルドは調整役の持ち分。
+
+数学的な経路としては、B は §19.3 のセル対の七項目を全て置き換えられる。ただし、代わりに導来自由・忘却随伴の bar 分解の実現と、指定された比較をその実現に沿って延ばす証明が必要になる。通常の代数のモナド性から、この導来の主張を証明済みとはできない。現存 API の段階では **B が A より小さいとはまだ判断できない**。先に sifted の保存の橋の範囲を確かめる必要がある。
+
+以下の行数は全て**未実装・型検査前の見積もり**。docstring・補助・自然性・指定錐の照合も含める。上限を変更する提案や実装再開の承認とは扱わない。A2・A7 自身の残る prismatic な証明と G12・Tot は、E2 の比較見積もりに混ぜない。
+
+### 21.2 共通の基盤と不足
+
+`C := CAlg_R R`、`D := derivedInfinityCategory R`、`U := cAlgForgetDerived R` と書く。導来自由関手 `F := cAlgFreeDerived R` と `cAlgFreeForgetDerivedAdjunction R : F ⊣ U` は **本体で無条件に構成済み**（`BarrattEccles/FreeProbeDerivedFreeForget.lean:36–40`）。B のためにこの随伴を一から作る必要はない。`free_isLeftQuillen`・`freeProbeFunctor_cofibrant`・`freeProbeFunctor_map_quasiIso`（`FreeProbeFunctor.lean`）で厳密な自由代数と接続できる。`cAlgForgetDerived_conservative` も証明済み。
+
+共通して、次はまだ必要である。
+
+| 区分 | 再利用と不足 | 残りの見込み |
+| --- | --- | --- |
+| 自由代数の指定比較 | §20 の六本、`twoColorInducedCoefficientHomotopyEquiv`、Schur の次数表示を再利用。色の軌道・安定化群、誘導表示の複体の同型、実際の Hopf 射との照合は §20.2 の五行のまま残る | 940〜1,290 行 |
+| native な二項余積錐 | `barrattEcclesCoprodWith`・`RightFrameCoproduct` と指定包含を再利用。指定頂点・二脚を持つ `IsColimitCone` はまだない。§13.1 の未完分であり、B でも使う | 370〜555 行 |
+| 全関手の指定自然比較 | 厳密な `barrattEcclesCoproductTensorNat`、`cAlgLocalizationSource_descendIso` などを再利用。実際の `tensorWith` と比較し、各右因子について `FunctorIso` にする仕上げ。下記 B の実現に沿った可逆性の証明は別に数える | 200〜350 行 |
+| **共通の残り C** | 既存 4,306 行は再計上しない | **1,510〜2,195 行** |
+
+自由比較は**任意の cofibrant な入力複体**の自由 E∞ 代数まで届く形が要る。入力微分を零とする場合だけで終えると、B の反復 `FU` の各項へ適用するために別の移送が残る。§20.2 の「複体の同型・指定射」の照合にこの点を含める。
+
+通常の離散多項式環 `R[X]` と、D(R) の生成元に自由な E∞ 代数 `F(R[0])` を同じものとして扱わない。後者には対称群の導来余不変が現れ、一般の基礎環では離散多項式への置換はできない。A2 の `AnimatedAlgebra` は多項式環からの sifted 完成であり、その像だけで C の全対象を生成したとはまだ言えない。B の全界面の供給には、導来自由関手 F の分解を使う。
+
+### 21.3 経路 A：自由比較をセル対へ移す
+
+証明の順序は、共通の自由比較、§19.3 のセル対、任意の cofibrant 対への retract、指定自然比較の局所化への降下となる。セル対で扱う射は新しく選んだ同値ではなく、既存の Hopf テンソルへの指定射である。
+
+再利用は `CellStageGradedBasis`・`CellStageFreeNaturality`・`CellStageGeneratorDifferential`、`OperadWordEvaluation`・`PowerWordEvaluation`、`ModuleSubcomplex.quotient`・`shortExact`、cofibrant な台の K 平坦性、セル表示と retract。§19.2 のとおり、重みの「非増大」だけでは足りず、係数微分を引いた後の真の低下と、係数微分を残す層が必要になる。
+
+§19.3 の七行は全て未着手で、200〜260、210〜300、180〜240、120〜180、300〜380、200〜260、100〜150 行、計 **1,310〜1,770 行**のまま。ここを別の一般補助へ移して計上から除かない。A は `forget_preservesSifted` や bar の実現に依存せず、この欄を先に閉じられる利点がある。一方、最後に E2 全体を完成するには sifted の保存も別に必要であり、その費用を隠さない。
+
+### 21.4 経路 B：自由比較を単体的な分解で延ばす
+
+必要な主張を次の順で分ける。
+
+1. **導来 bar の図式と増大。** 随伴 F ⊣ U から、各代数 X に対し次数 n が `(FU)^(n+1) X` である増大単体的図式 B(X) を作る。図式全体・増大は X とその射について自然にする。`ComonadSimplicialResolution.diagram`・`augmentation` は通常の 1 圏の余モナドについて構成済みで、面・退化の計算を再利用できる。しかし、準圏上の随伴からこの図式への接続と全 coherence は別の仕事。
+2. **同じ増大の実現。** U B(X) の追加退化による分裂を使い、その指定増大の幾何学的実現が UX であることを示す。C 側の実現の存在、U による保存、保存的性質を組み合わせ、B(X) の指定増大自身を X を頂点とする余極限錐にする。C の実現の存在を U の「保存」だけから取り出すことはしない。具体的な模型の hocolim から native な錐を構成するか、別に存在を供給する必要がある。
+3. **比較の両辺が各変数の実現を保つ。** `x ↦ U(x ⨿ y)` は、U の実現保存と native な余積錐を使う。固定右因子との余積が通常の左随伴であるとは主張しない。sifted 形状の弱可縮性により定値 y の余極限が y となることと、二つの余極限の交換で示す。`x ↦ Ux ⊗^L Uy` は D(R) の導来テンソルの実現保存を使う。この保存は `coproduct_tensor` 自身から導かず、D の閉モノイダル構造または K 平坦な模型から独立に示す。
+4. **自由×自由から全体へ。** B(X)・B(Y) の各次数は自由な対象であるため、指定された自由比較を適用する。まず一変数、次に他変数の実現を取る。対角だけで済ませるなら、Δᵒᵖ の対角の共終性と、二重実現の比較も必要になる。別々の二回の実現ならこの追加の対角照合を省ける。指定比較の自然性により各次数の射を同じ比較の実現として結ぶ。
+5. **強い形。** 各点で逆を選ぶ方法は使わず、既存の自然比較の各成分が可逆であると示し、`FunctorIso` にする。X・Y・それらの射に関する増大の自然性も保持する。頂点ごとの同型を作るだけで終えない。
+
+この経路が通れば、**§19.3 の七行全部が不要**になる。具体的には入力重みの真の低下、係数微分を残す商、段ごとの短完全列、網羅的余極限、最後のセル対の retract を証明しない。既存の K 平坦性の証明は自由入力の模型・導来テンソルの比較に再利用するが、A の未着手の重みの層は B の前提に持ち込まない。
+
+| B に特有の仕事（共通 C・下記 S を除く） | 見込み |
+| --- | --- |
+| 導来随伴の反復と bar の全図式・指定増大・自然性 | 200〜350 行 |
+| U の下の分裂、指定増大の実現、C 側の存在と保存的性質の適用 | 350〜550 行 |
+| 各項の導来自由対象を厳密な自由比較へ接続する | 200〜350 行 |
+| 固定余積・導来テンソルの実現保存、二回の実現による指定比較の可逆性 | 350〜550 行 |
+| 全図式の射と増大の整合、関手の可逆性の判定への接続 | 200〜350 行 |
+| **B 固有の残り T** | **1,300〜2,150 行** |
+
+通常の `forget_monadic` は、相対圏の弱同値を考えない Beck のモナド性である。それを「∞ 圏で U がモナド的、bar は U により実現される」と読み替えない。B は、これらを別に閉じれば数学的に循環しない経路である。U の実現保存を余積＝テンソルから証明したり、C の実現の存在を未供給の G12 に黙って委ねたりすれば循環・未供給入力になる。
+
+### 21.5 sifted 保存の段 0：型の射程、再利用、不足
+
+目標の実際の型は `PreservesSmallSiftedColimits (cAlgForgetDerived R)`。`F2/Presentable/SiftedColimitPreservation.lean:24` の定義は、小さい **任意の sifted な単体集合形状 I**、任意の図式 D、任意の指定 native な余錐 c を量化し、c の像の余極限性を要求する。通常の小圏 J の厳密な図式、あるいは対象の同値だけではこの型に届かない。
+
+| 確認した既存の宣言 | 実際に得られるもの／残るもの |
+| --- | --- |
+| `Operad.Algebra.forget_createsSiftedColimitsOfShape`、`forget_createsFilteredColimitsOfShape`（`Operad/AlgebraSiftedColimits.lean`） | 通常の厳密な余極限の創出。図式を cofibrant に置換した後の hocolim の保存や、native な全余錐の保存までは主張しない |
+| `Operad.Algebra.forget_monadic`（`AlgebraMonadic.lean`） | 通常のモナド性。B の導来 bar の実現とは区別する |
+| `BarrattEccles.Diagram.projectiveModelCategory`・`weakEquivalence_iff`（`DiagramModel.lean`） | 厳密な図式の置換と対象ごとの擬同型の判定。U が projective cofibrant 図式を cofibrant 図式へ送るとはまだ言えない |
+| `DiagramModel.HomotopyColimit.functor`・`comparison`、`PointwiseColimitComparison`、`QuillenColimitComparison` | 具体的 hocolim と通常の colim の比較。`QuillenColimitComparison` は左 Quillen 関手用で、右 Quillen U にはそのまま適用できない |
+| `FilteredHomotopyColimit.comparison_weakEquivalence_of_filtered`・`exists_filtered_comparison` | 仮定の κ 以上に十分 filtered な場合。全ての通常の filtered 図式に使えると読み替えない。加群の filtered 余極限の完全性から擬同型の保存を別に接続する |
+| `HomotopyWeight.pointwiseRealization`・`tensorRealization`・`realization_map_frame_weakEquivalence`、`FrameRealizationLifting.map_monomorphism`・`map_anodyne` | 同じ frame の実現と射の比較の部品。代数の実現を忘却したものと、複体の実現との同じ脚を持つ比較は未供給 |
+| `CAlgUnderlyingDerivedComparison.algebraReplacementUnderlyingDerivedIso`、`algebraCAlgSource_underlyingDerivedIso` | 実際の U と厳密な台の図式を結ぶ自然同型。実現を比較するときの入口に使う |
+| `cAlgFreeForgetDerivedAdjunction`、`cAlgForgetDerived_conservative` | 実際の導来随伴と保存的性質。実現保存そのものではない |
+| `SiftedSimplexCategory`、`SiftedContractibility.isWeaklyContractible_of_sifted`、`PreservesSmallSiftedColimits.of_functorIso` | Δᵒᵖ の sifted 性、定値図式、関手の同型による保存の輸送に使う |
+| `sigmaComparison_isIso_of_filtered_geometric`（`SigmaFilteredGeometricDetection.lean`） | 始域が `SigmaPresheafInfinity C` の比較の判定。CAlg の全対象へそのまま適用できない。filtered と幾何学的実現の二つの保存から、今回の全 sifted 保存への一般の接続は別に要る |
+
+幾何学的実現の模型の候補は、実際の単体的代数の Reedy/projective 置換と frame の重み付き実現である。**任意の単体的代数の通常の colim を取るだけでは、導来実現にならない**。U の実現比較では、テンソルの Eilenberg–Zilber 型の比較または明示的な latching の議論で、同じ増大・脚・射を照合する必要がある。この比較は二項の `coproduct_tensor` を前提とせず、オペラッドの各 arity と有限テンソル冪から示すことを独立の目標にする。
+
+`ColimitMapComparison.diagramSourceComparison_weakEquivalence` は `[ModelCategory SSet]` を要求する版なので使わない。既存の frame による単体的ホモトピー同値の比較を使い、その仮定を追加しない。
+
+| sifted 保存 S の不足 | 見込み |
+| --- | --- |
+| 厳密な Δᵒᵖ 図式の hocolim と、指定脚を持つ native な実現錐の橋 | 550〜850 行 |
+| 代数の実現と台の複体の実現の比較、arity と微分・射の整合 | 500〜800 行 |
+| 任意の coherent な単体的図式を上の厳密な計算へ移す比較と、その指定錐の照合 | 450〜750 行 |
+| 全 filtered 図式の擬同型保存と、その native な錐への輸送 | 250〜400 行 |
+| 任意の sifted な単体集合形状へ延ばす生成・比較（存在・宇宙の条件も含む） | 400〜700 行 |
+| 指定した U への輸送と最終の欄の組み立て・自然性の確認 | 150〜250 行 |
+| **S の合計** | **2,300〜3,750 行** |
+
+特に三行目と五行目は型検査前の不確実性が高い。既存の厳密化・局所化の図式比較から一般の全図式版へ届くか、③ の G10 と共有すべき橋が残るかを、現時点では確定していない。**G10 が必ず不要とも、待つほかないとも断定しない**。この部分を零行として旧上限 2,700 行に合わせることはできない。旧見込み 1,600〜2,700 行を、そのまま実装の確約として維持しない。
+
+最初の確認の区切りとしては、一つの厳密な Δᵒᵖ 図式について、具体的実現と指定 native 錐の間を同じ射で結べるかを紙の型から確かめるのがよい。その次に U の実現比較、さらに任意の coherent 図式へ進む。最初から「全 sifted 保存を供給済み」として B を始めない。これは明日の経路判断への提案であり、今夜の実装再開ではない。
+
+### 21.6 A／B の全体規模の比較
+
+途中までの 4,306 行を両方に一度だけ含める。S は W16 の E2 の完了にどちらの経路でも必要な仕事で、B の比較の見積もりから外して安く見せない。native な錐も共通 C に含まれている。
+
+| 範囲 | A：セル対 | B：自由 bar と実現 |
+| --- | --- | --- |
+| 証明済み（両方に再利用） | 4,306 | 4,306 |
+| 共通 C（自由比較、native な錐、自然比較の仕上げ） | 1,510〜2,195 | 1,510〜2,195 |
+| 固有部分 | セル対 1,310〜1,770 | T 1,300〜2,150 |
+| sifted S | 2,300〜3,750 | 2,300〜3,750 |
+| **E2 の両欄と native な錐までの総計** | **9,426〜12,021** | **9,416〜12,401** |
+| sifted に依存せず余積比較を先に閉じられるか | 可 | この計画では不可。少なくとも実現の保存が先 |
+
+A の sifted を除いた総計は §20 の 7,126〜8,271 行に一致する。B はセル対を除く代わりに T を加えるので、現状の見積もりでは削減を約束できない。S の図式の橋や T の bar の coherence に既存 API の直接適用が見つかれば下がり得るが、未確認の短縮を予算には入れていない。E2 の上限を上げる提案ではなく、共通部分を全て見える形にするための比較である。
+
+### 21.7 A2・A7 の実際の使い方
+
+`drafts/A2/` と `drafts/A7/` を検索したところ、**`coprodWith`・`coprodWith_cocone`・`coproduct_tensor` の直接参照は零件**。現状は `E : EInfinityTheory` を受け取り、余錐・押し出しの普遍性を要求する型と、証明を残したコメントによる間接的な依存である。したがって「どの欄が実際に呼ばれているか」と「残る証明に何が要るか」を区別する。
+
+| drafts の宣言と場所 | 実際の要求 | 必要な比較の強さ・入力の範囲 |
+| --- | --- | --- |
+| A2 `polyTensorCocone`（`BaseChangeAndTensor.lean:131`） | 多項式環の二つの変数包含を脚とする native な錐を定義 | Poly 内の指定余積。CAlg の全関手版はこの定義自体には不要 |
+| A2 `prismaticCohomologyPoly_tensor`（同:138） | その錐を Δ で送ったものが完備 CAlg で余極限となること | Poly の n,m ごとの指定脚の Künneth で足りる。ただし Δ の値は一般に離散代数ではないため、標的を離散代数だけの比較へ縮められない。単なる頂点の同型だけでは脚を同定できない |
+| A2 `derivedPrismaticCohomology_tensor`（同:147） | 任意の animated X,Y と任意の余極限錐 c の像が余極限であること | Poly 上の指定比較を両変数で sifted 延長するため、射と二つの包含に自然な比較・余極限交換が必要。全 CAlg 上の強い `FunctorIso` は十分な道具だが、この型の結論そのものではなく、animated の Δ の像に沿う自然な比較でも原理的に足りる |
+| A7 `twoSidedBar`・`relativeTensor_eq_bar`（`AnimatedPerfectoidization.lean:83,89`） | animated な相対テンソルの bar と、その指定実現錐 | 始域の有限余積・実現の普遍性。ここでは CAlg の余積＝台のテンソルの全関手版を直接使わない。B の自由・忘却 bar とは別の二側 bar |
+| A7 `preservesRelativeTensor_of_siftedAndTensor`（同:101） | 一般の準圏の関手が、任意の二項余積錐と sifted 実現を保つとき、任意の span の押し出しを保つ | 全ての図式の射を送る自然性・指定錐が要る。対象ごとの非自然な同型だけでは、bar の面・退化を送れない。仮定自体は余錐の保存であり `FunctorIso` 欄の直接要求ではない |
+| A7 `derivedPrismaticCohomology_relativeTensor`（同:120） | animated Δ の相対版 | A2 の全 animated な指定余積保存と実現保存を使う。Poly でだけ示して終えることはできない |
+| A7 `frobeniusColimit_relativeTensor`（同:200） | 自己関手 τ と自然変換 φ を伴う塔の余極限が span を保つこと | 任意の塔の射・span・指定余錐の自然性。固定対象の同型では足りない。押し出しの余極限の交換として示せれば、台のテンソルとの全比較は別問題にできる |
+| A7 `completion_relativeTensor`・`modD_relativeTensor`（同:224,236） | 完備圏を標的とする反射と底変換の押し出し保存 | 左随伴性と指定錐の輸送が入口。`coproduct_tensor` を使わずに CAlg 内の普遍性で述べられる部分 |
+| A7 `perfectoidization_relativeTensorMap`・`perfectoidization_relativeTensor`（同:259,273） | 任意の完備 animated span について、指定比較辺が可逆 | 完全な Prop 8.13 の型では入力は任意。離散・多項式入力だけには弱められない。指定された比較辺なので、頂点が同型であるという別の主張では足りない |
+| A7 `selfTensor_perfectoidization_eq`（`UniversalProperty.lean:179`） | 特定の self span における `VertexIso` と両脚上の恒等式 | この利用だけなら対象ごとの同型＋明示的な脚の式で足り、全 CAlg 上の `FunctorIso` は型には現れない。続く `selfTensor_unit_eq_mul` ではその脚と単位の自然性が必要。E3 の一意性のための狭い利用と、Prop 8.13 の全主張は分ける |
+
+A7 の残る `AnimatedDomain.lean` は完備化と離散入力の橋、`DiscreteCore.lean` は離散性の議論が中心で、三欄の直接参照はない。`UniversalProperty.lean` の `animatedUnderlyingCAlg` や A2 `discreteRealizationIso`、A7 `perfectoidizationAnimated_discrete` は **別の関手比較の全自然同型**を要求する。それらを `coproduct_tensor` の直接の呼び出しと数えない。A2 `derivedPrismaticCohomology_baseChange` も別の底変換の `FunctorIso` である。
+
+#### 三つの欄ごとの切り分け
+
+- **`coprodWith`**：既存の指定された右因子の関手。A2・A7 はその具体的な頂点表示を固定してはいないが、これを使えば一変数の余積図式を関手として扱える。bar・sifted 延長では射までの関手性が必要。
+- **`coprodWith_cocone`**：A2・A7 の余錐としての主張への直接の入口はこの普遍性である。存在する余錐だけではなく、同じ二つの脚と頂点を保つ比較が要る。一般の錐から指定錐へ、余錐の圏での一意性により輸送する部分も残る。
+- **`coproduct_tensor`**：界面の欄は固定 y ごとの**全関手の** `FunctorIso`。この実例を完成する仕事では強い形が必須であり、BS の狭い利用だけを理由に対象ごとの版へ変更しない。一方、A2・A7 の現状の宣言型はこの欄の全射程より狭く、各所で必要なのは指定錐・その脚・比較の自然性である。
+
+さらに、**界面の `coproduct_tensor` の型自体には、選んだ `coprodWith_cocone` の二脚をテンソルの標準射へ送るという条件が書かれていない**。強い `FunctorIso` があるだけで、その同型が指定脚を保存すると自動的に結論しない。実例では元の Hopf 射を保つ追加の照合補題を示すか、A2 の証明ではその比較を別に構成する必要がある。この費用を共通 C の「指定射との照合」に含めた。今夜は界面を変更しない。
+
+従って、BS の狭い用途に限定した迂回を検討する余地はあるが、(i) A2 の Poly 上の**標的**は一般の prismatic E∞ 代数、(ii) A7 の Prop 8.13 は任意の animated span、(iii) 界面の完成は全 CAlg の強い形、という三点は残る。「離散入力だけの余積比較で W16 全体が閉じる」という結論にはならない。
+
+### 21.8 明日の判断に渡す区切り
+
+A はセル対の不足が具体的で、B はその全てを除けるが実現の橋へ仕事が移る。どちらでも自由比較の残りと native な錐は必要で、B は未供給の sifted 保存を前提に先へ進めない。明日はまず、実現の厳密図式から全 coherent 図式への橋を⑤aだけで閉じる範囲と③との共有範囲を決め、その実情を踏まえて A／B を選ぶのがよい。今夜は判断を先取りせず、Lean の実装を止めたままにする。本節は紙の報告だけで、登録すべき新規モジュールは零、ビルドの鍵の取得も零。
