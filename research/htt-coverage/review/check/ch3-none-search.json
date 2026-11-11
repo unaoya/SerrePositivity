@@ -1,0 +1,3887 @@
+{
+  "3.1.0.1": {
+    "page": 146,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.0",
+        "3.1.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|MarkedSimplicial|markedSeed|markedHull|TransportEnrichment",
+          "SerrePositivity"
+        ],
+        "file_count": 36,
+        "line_count": 108
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|MarkedSimplicial|markedSeed|markedHull|TransportEnrichment",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 3,
+        "line_count": 29
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          },
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Basic.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "def Over (X : T) := CostructuredArrow (𝟭 T) X"
+          },
+          {
+            "line": 44,
+            "head": "protected def Over.Hom {X : T} (f g : Over X) := CommaMorphism f g"
+          }
+        ]
+      }
+    ],
+    "decision": "SmallSubcomplex.markedSeed は既存の可逆辺の逆三角形を加える小部分複体で、任意の degenerate edge を含む集合 E を持つ (X,E) と全ての marking-preserving morphism の圏ではない。Hammock の marked category も通常圏内の弱同値の指定であり SetΔ+ の同じ型はない。"
+  },
+  "3.1.0.2": {
+    "page": 146,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.0",
+        "3.1.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|MarkedSimplicial|markedSeed|markedHull|TransportEnrichment",
+          "SerrePositivity"
+        ],
+        "file_count": 36,
+        "line_count": 108
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|MarkedSimplicial|markedSeed|markedHull|TransportEnrichment",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 3,
+        "line_count": 29
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          },
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/SmallMarkedFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}} [Quasicategory E] (f : (SSet.uliftFunctor.{v, u}).obj K ⟶ E) (W : Set (K _⦋1⦌)) (hf : InvertsEdges f (ULift.up.{v, u} '' W)) : ∃ (Q : SSet.{u}) (_ : Quasicategory Q) (g : K ⟶ Q) (j : (SSet.uliftFunctor.{v, u}).obj Q ⟶ E), Mono j ∧ (SSet.uliftFunctor.{v, u}).map g ≫ j = f ∧ InvertsEdges g W"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Basic.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "def Over (X : T) := CostructuredArrow (𝟭 T) X"
+          },
+          {
+            "line": 44,
+            "head": "protected def Over.Hom {X : T} (f g : Over X) := CommaMorphism f g"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Over は任意の通常圏に対して定義できるが、その基底となる SetΔ+ と S# の構成がない。SSet の Over S は marking を忘れた別の圏で、元の marked morphism の圏との比較はない。"
+  },
+  "3.1.1.1": {
+    "page": 147,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.1",
+        "3.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 169,
+        "line_count": 438
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          },
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) (Fin.last (n + 2))).ι p b, sq.HasLift"
+          },
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 0 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCartesianEdge p (SSet.yonedaEquiv f)"
+          },
+          {
+            "line": 35,
+            "head": "def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 1 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCocartesianEdge p (SSet.yonedaEquiv f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cofinalPairingCore_index_ne_last {X : SSet.{u}} {A : X.Subcomplex} (P : A.PairingCore) [P.pairing.IsRegular] (hn : ∀ s : P.ι, P.index s ≠ Fin.last (P.dim s + 1)) (s : P.pairing.II) : (P.pairing.isUniquelyCodimOneFace s).index rfl ≠ Fin.last (s.val.dim + 1)"
+          },
+          {
+            "line": 45,
+            "head": "lemma cofinalRightAnodyne_unionProd {m : ℕ} (k : Fin (m + 1)) (n : ℕ) : rightAnodyneExtensions (Subcomplex.unionProd.{u} (horn (m + 1) k.castSucc.rev) (boundary n)).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "We use this structure in order to define the class of morphisms"
+          },
+          {
+            "line": 53,
+            "head": "structure TransfiniteCompositionOfShape {X Y : C} (f : X ⟶ Y) extends CategoryTheory.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary weakly saturated closure はあるが、SetΔ+ の射・二重に印を付ける第三族・Kan K の flat→sharp の第四族が定義されていない。unmarked inner/right anodyne の生成閉包は異なる圏上の類で、この四族の定義を供給しない。"
+  },
+  "3.1.1.2": {
+    "page": 147,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.1",
+        "3.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 169,
+        "line_count": 438
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          },
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) (Fin.last (n + 2))).ι p b, sq.HasLift"
+          },
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 0 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCartesianEdge p (SSet.yonedaEquiv f)"
+          },
+          {
+            "line": 35,
+            "head": "def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 1 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCocartesianEdge p (SSet.yonedaEquiv f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cofinalPairingCore_index_ne_last {X : SSet.{u}} {A : X.Subcomplex} (P : A.PairingCore) [P.pairing.IsRegular] (hn : ∀ s : P.ι, P.index s ≠ Fin.last (P.dim s + 1)) (s : P.pairing.II) : (P.pairing.isUniquelyCodimOneFace s).index rfl ≠ Fin.last (s.val.dim + 1)"
+          },
+          {
+            "line": 45,
+            "head": "lemma cofinalRightAnodyne_unionProd {m : ℕ} (k : Fin (m + 1)) (n : ℕ) : rightAnodyneExtensions (Subcomplex.unionProd.{u} (horn (m + 1) k.castSucc.rev) (boundary n)).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "We use this structure in order to define the class of morphisms"
+          },
+          {
+            "line": 53,
+            "head": "structure TransfiniteCompositionOfShape {X Y : C} (f : X ⟶ Y) extends CategoryTheory.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      }
+    ],
+    "decision": "native CartesianOpposite は Cartesian edge を反対側の cocartesian edge に変えるが、marked anodyne class 自体とその反対射の非保存を主張しない。SmallMarkedQuasicategoryHull の指定辺の反転も同じ射類ではない。"
+  },
+  "3.1.1.3": {
+    "page": 148,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.1",
+        "3.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 169,
+        "line_count": 438
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          },
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) (Fin.last (n + 2))).ι p b, sq.HasLift"
+          },
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 0 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCartesianEdge p (SSet.yonedaEquiv f)"
+          },
+          {
+            "line": 35,
+            "head": "def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 1 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCocartesianEdge p (SSet.yonedaEquiv f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cofinalPairingCore_index_ne_last {X : SSet.{u}} {A : X.Subcomplex} (P : A.PairingCore) [P.pairing.IsRegular] (hn : ∀ s : P.ι, P.index s ≠ Fin.last (P.dim s + 1)) (s : P.pairing.II) : (P.pairing.isUniquelyCodimOneFace s).index rfl ≠ Fin.last (s.val.dim + 1)"
+          },
+          {
+            "line": 45,
+            "head": "lemma cofinalRightAnodyne_unionProd {m : ℕ} (k : Fin (m + 1)) (n : ℕ) : rightAnodyneExtensions (Subcomplex.unionProd.{u} (horn (m + 1) k.castSucc.rev) (boundary n)).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "We use this structure in order to define the class of morphisms"
+          },
+          {
+            "line": 53,
+            "head": "structure TransfiniteCompositionOfShape {X Y : C} (f : X ⟶ Y) extends CategoryTheory.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      }
+    ],
+    "decision": "small object argument と cardinal の基数増大はあるが、任意 Kan K の flat→sharp 生成族を可算単体の Kan 代表へ縮小する比較はない。通常 SSet の horn が有限という型だけは異なる marking class の小生成性ではない。"
+  },
+  "3.1.1.4": {
+    "page": 148,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.1",
+        "3.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 169,
+        "line_count": 438
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          },
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) (Fin.last (n + 2))).ι p b, sq.HasLift"
+          },
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 0 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCartesianEdge p (SSet.yonedaEquiv f)"
+          },
+          {
+            "line": 35,
+            "head": "def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 1 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCocartesianEdge p (SSet.yonedaEquiv f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cofinalPairingCore_index_ne_last {X : SSet.{u}} {A : X.Subcomplex} (P : A.PairingCore) [P.pairing.IsRegular] (hn : ∀ s : P.ι, P.index s ≠ Fin.last (P.dim s + 1)) (s : P.pairing.II) : (P.pairing.isUniquelyCodimOneFace s).index rfl ≠ Fin.last (s.val.dim + 1)"
+          },
+          {
+            "line": 45,
+            "head": "lemma cofinalRightAnodyne_unionProd {m : ℕ} (k : Fin (m + 1)) (n : ℕ) : rightAnodyneExtensions (Subcomplex.unionProd.{u} (horn (m + 1) k.castSucc.rev) (boundary n)).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "We use this structure in order to define the class of morphisms"
+          },
+          {
+            "line": 53,
+            "head": "structure TransfiniteCompositionOfShape {X Y : C} (f : X ⟶ Y) extends CategoryTheory.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      }
+    ],
+    "decision": "innerAnodyneExtensions は弱飽和生成族としてあるが、Aflat→Bflat を SetΔ+ の射とする flat functor とその weak saturation 保存がない。unmarked の閉包だけを marked class の生成族の置き換えとは数えない。"
+  },
+  "3.1.1.5": {
+    "page": 148,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.1",
+        "3.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 169,
+        "line_count": 438
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          },
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) (Fin.last (n + 2))).ι p b, sq.HasLift"
+          },
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 0 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCartesianEdge p (SSet.yonedaEquiv f)"
+          },
+          {
+            "line": 35,
+            "head": "def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 1 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCocartesianEdge p (SSet.yonedaEquiv f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cofinalPairingCore_index_ne_last {X : SSet.{u}} {A : X.Subcomplex} (P : A.PairingCore) [P.pairing.IsRegular] (hn : ∀ s : P.ι, P.index s ≠ Fin.last (P.dim s + 1)) (s : P.pairing.II) : (P.pairing.isUniquelyCodimOneFace s).index rfl ≠ Fin.last (s.val.dim + 1)"
+          },
+          {
+            "line": 45,
+            "head": "lemma cofinalRightAnodyne_unionProd {m : ℕ} (k : Fin (m + 1)) (n : ℕ) : rightAnodyneExtensions (Subcomplex.unionProd.{u} (horn (m + 1) k.castSucc.rev) (boundary n)).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "We use this structure in order to define the class of morphisms"
+          },
+          {
+            "line": 53,
+            "head": "structure TransfiniteCompositionOfShape {X Y : C} (f : X ⟶ Y) extends CategoryTheory.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      }
+    ],
+    "decision": "rightAnodyneExtensions の tensor 補題は unmarked horn を扱い、柱の Δ¹ を sharp、残りを flat とした印の pushout を持たない。基底側の包含の式が似ても、三つの SetΔ+ の弱飽和類の相互包含と同定する型はない。"
+  },
+  "3.1.1.6": {
+    "page": 149,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.1",
+        "3.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 169,
+        "line_count": 438
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          },
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) (Fin.last (n + 2))).ι p b, sq.HasLift"
+          },
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 0 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCartesianEdge p (SSet.yonedaEquiv f)"
+          },
+          {
+            "line": 35,
+            "head": "def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 1 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCocartesianEdge p (SSet.yonedaEquiv f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cofinalPairingCore_index_ne_last {X : SSet.{u}} {A : X.Subcomplex} (P : A.PairingCore) [P.pairing.IsRegular] (hn : ∀ s : P.ι, P.index s ≠ Fin.last (P.dim s + 1)) (s : P.pairing.II) : (P.pairing.isUniquelyCodimOneFace s).index rfl ≠ Fin.last (s.val.dim + 1)"
+          },
+          {
+            "line": 45,
+            "head": "lemma cofinalRightAnodyne_unionProd {m : ℕ} (k : Fin (m + 1)) (n : ℕ) : rightAnodyneExtensions (Subcomplex.unionProd.{u} (horn (m + 1) k.castSucc.rev) (boundary n)).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "We use this structure in order to define the class of morphisms"
+          },
+          {
+            "line": 53,
+            "head": "structure TransfiniteCompositionOfShape {X Y : C} (f : X ⟶ Y) extends CategoryTheory.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      }
+    ],
+    "decision": "CartesianFibration の inner lifting・終点を指定した lift、IsCartesianEdge の型はあるが、任意 marked p の印が p-cartesian ちょうど p 像の印を持つ辺であるという (B) と marked anodyne RLP の iff を結び付けない。unmarked fibration の定義だけはこの marked 条件ではない。"
+  },
+  "3.1.1.7": {
+    "page": 150,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.1",
+        "3.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 169,
+        "line_count": 438
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          },
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) (Fin.last (n + 2))).ι p b, sq.HasLift"
+          },
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 0 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCartesianEdge p (SSet.yonedaEquiv f)"
+          },
+          {
+            "line": 35,
+            "head": "def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 1 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCocartesianEdge p (SSet.yonedaEquiv f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cofinalPairingCore_index_ne_last {X : SSet.{u}} {A : X.Subcomplex} (P : A.PairingCore) [P.pairing.IsRegular] (hn : ∀ s : P.ι, P.index s ≠ Fin.last (P.dim s + 1)) (s : P.pairing.II) : (P.pairing.isUniquelyCodimOneFace s).index rfl ≠ Fin.last (s.val.dim + 1)"
+          },
+          {
+            "line": 45,
+            "head": "lemma cofinalRightAnodyne_unionProd {m : ℕ} (k : Fin (m + 1)) (n : ℕ) : rightAnodyneExtensions (Subcomplex.unionProd.{u} (horn (m + 1) k.castSucc.rev) (boundary n)).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "We use this structure in order to define the class of morphisms"
+          },
+          {
+            "line": 53,
+            "head": "structure TransfiniteCompositionOfShape {X Y : C} (f : X ⟶ Y) extends CategoryTheory.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      }
+    ],
+    "decision": "右アノダインの unmarked 包含はあるが、sharp Λ²₂ と flat Δ² を貼り合わせて sharp Δ² にする marking の拡大はない。underlying simplicial set が恒等になることだけでは marked anodyne とは言えない。"
+  },
+  "3.1.1.8": {
+    "page": 150,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.1",
+        "3.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 169,
+        "line_count": 438
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          },
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) (Fin.last (n + 2))).ι p b, sq.HasLift"
+          },
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 0 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCartesianEdge p (SSet.yonedaEquiv f)"
+          },
+          {
+            "line": 35,
+            "head": "def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 1 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCocartesianEdge p (SSet.yonedaEquiv f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cofinalPairingCore_index_ne_last {X : SSet.{u}} {A : X.Subcomplex} (P : A.PairingCore) [P.pairing.IsRegular] (hn : ∀ s : P.ι, P.index s ≠ Fin.last (P.dim s + 1)) (s : P.pairing.II) : (P.pairing.isUniquelyCodimOneFace s).index rfl ≠ Fin.last (s.val.dim + 1)"
+          },
+          {
+            "line": 45,
+            "head": "lemma cofinalRightAnodyne_unionProd {m : ℕ} (k : Fin (m + 1)) (n : ℕ) : rightAnodyneExtensions (Subcomplex.unionProd.{u} (horn (m + 1) k.castSucc.rev) (boundary n)).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "We use this structure in order to define the class of morphisms"
+          },
+          {
+            "line": 53,
+            "head": "structure TransfiniteCompositionOfShape {X Y : C} (f : X ⟶ Y) extends CategoryTheory.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      }
+    ],
+    "decision": "IsCartesianEdge は元の p と辺の集合を指定できるが、原典の X♮ という SetΔ+ 内の対象とその構造射がない。個々の辺の predicate は定義の材料であり、その marked object の構成に数えない。"
+  },
+  "3.1.1.9": {
+    "page": 150,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.1",
+        "3.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 169,
+        "line_count": 438
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          },
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) (Fin.last (n + 2))).ι p b, sq.HasLift"
+          },
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 0 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCartesianEdge p (SSet.yonedaEquiv f)"
+          },
+          {
+            "line": 35,
+            "head": "def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 1 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCocartesianEdge p (SSet.yonedaEquiv f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cofinalPairingCore_index_ne_last {X : SSet.{u}} {A : X.Subcomplex} (P : A.PairingCore) [P.pairing.IsRegular] (hn : ∀ s : P.ι, P.index s ≠ Fin.last (P.dim s + 1)) (s : P.pairing.II) : (P.pairing.isUniquelyCodimOneFace s).index rfl ≠ Fin.last (s.val.dim + 1)"
+          },
+          {
+            "line": 45,
+            "head": "lemma cofinalRightAnodyne_unionProd {m : ℕ} (k : Fin (m + 1)) (n : ℕ) : rightAnodyneExtensions (Subcomplex.unionProd.{u} (horn (m + 1) k.castSucc.rev) (boundary n)).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "We use this structure in order to define the class of morphisms"
+          },
+          {
+            "line": 53,
+            "head": "structure TransfiniteCompositionOfShape {X Y : C} (f : X ⟶ Y) extends CategoryTheory.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      }
+    ],
+    "decision": "native IsCartesianEdge p e も p に依存するが、X♮ が SetΔ+ 内の対象として定義されていない。predicate の p 依存だけは原典の marked-object notation の依存の比較ではない。"
+  },
+  "3.1.1.10": {
+    "page": 151,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.1",
+        "3.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 169,
+        "line_count": 438
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          },
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) (Fin.last (n + 2))).ι p b, sq.HasLift"
+          },
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 0 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCartesianEdge p (SSet.yonedaEquiv f)"
+          },
+          {
+            "line": 35,
+            "head": "def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 1 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCocartesianEdge p (SSet.yonedaEquiv f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cofinalPairingCore_index_ne_last {X : SSet.{u}} {A : X.Subcomplex} (P : A.PairingCore) [P.pairing.IsRegular] (hn : ∀ s : P.ι, P.index s ≠ Fin.last (P.dim s + 1)) (s : P.pairing.II) : (P.pairing.isUniquelyCodimOneFace s).index rfl ≠ Fin.last (s.val.dim + 1)"
+          },
+          {
+            "line": 45,
+            "head": "lemma cofinalRightAnodyne_unionProd {m : ℕ} (k : Fin (m + 1)) (n : ℕ) : rightAnodyneExtensions (Subcomplex.unionProd.{u} (horn (m + 1) k.castSucc.rev) (boundary n)).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "We use this structure in order to define the class of morphisms"
+          },
+          {
+            "line": 53,
+            "head": "structure TransfiniteCompositionOfShape {X Y : C} (f : X ⟶ Y) extends CategoryTheory.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      }
+    ],
+    "decision": "CartesianFibration は定義されるが、任意の E に対し (Y,E)→S# の marked-anodyne RLP iff E が全 p-cartesian edge という比較はない。右ホーンの lift のみを印付き全生成族の lift とはしない。"
+  },
+  "3.1.1.11": {
+    "page": 151,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.1",
+        "3.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 169,
+        "line_count": 438
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedAnodyne|markedAnodyne|markedSeed|IsCartesianEdge|rightAnodyneExtensions|WeaklySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          },
+          {
+            "line": 41,
+            "head": "def markedHull : Hull.{u, v} X (markedSeed A s hs) := hull (markedSeed A s hs)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) (Fin.last (n + 2))).ι p b, sq.HasLift"
+          },
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 0 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCartesianEdge p (SSet.yonedaEquiv f)"
+          },
+          {
+            "line": 35,
+            "head": "def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 1 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCocartesianEdge p (SSet.yonedaEquiv f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma cofinalPairingCore_index_ne_last {X : SSet.{u}} {A : X.Subcomplex} (P : A.PairingCore) [P.pairing.IsRegular] (hn : ∀ s : P.ι, P.index s ≠ Fin.last (P.dim s + 1)) (s : P.pairing.II) : (P.pairing.isUniquelyCodimOneFace s).index rfl ≠ Fin.last (s.val.dim + 1)"
+          },
+          {
+            "line": 45,
+            "head": "lemma cofinalRightAnodyne_unionProd {m : ℕ} (k : Fin (m + 1)) (n : ℕ) : rightAnodyneExtensions (Subcomplex.unionProd.{u} (horn (m + 1) k.castSucc.rev) (boundary n)).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "We use this structure in order to define the class of morphisms"
+          },
+          {
+            "line": 53,
+            "head": "structure TransfiniteCompositionOfShape {X Y : C} (f : X ⟶ Y) extends CategoryTheory.TransfiniteCompositionOfShape J f where"
+          }
+        ]
+      }
+    ],
+    "decision": "native slice restriction の trivial fibration の結果は inner/right anodyne など unmarked source の条件を仮定する。任意 marked anodyne f と q の印を p-cartesian に送る条件から同じ相対 slice restriction を得る比較がなく、単なる horn の特殊例をこの印付き主張の部品として数えない。"
+  },
+  "3.1.2.2": {
+    "page": 152,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.1",
+        "3.1.2",
+        "3.1.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|MarkedAnodyne|cofinalIhom_map_rightFibration|pushoutProduct|markedHull",
+          "SerrePositivity"
+        ],
+        "file_count": 119,
+        "line_count": 170
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|MarkedAnodyne|cofinalIhom_map_rightFibration|pushoutProduct|markedHull",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 2,
+        "line_count": 4
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) (Fin.last (n + 2))).ι p b, sq.HasLift"
+          },
+          {
+            "line": 34,
+            "head": "def IsCocartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) 0 : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (initialHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) 0).ι p b, sq.HasLift"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean",
+        "signatures": [
+          {
+            "line": 97,
+            "head": "instance cofinalIhom_map_rightFibration {E B : SSet.{u}} (p : E ⟶ B) [RightFibration p] (A : SSet.{u}) : RightFibration ((ihom A).map p) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma isCocartesianEdge_map_iso {X Y B : SSet.{u}} (e : X ≅ Y) (p : Y ⟶ B) (s : X _⦋1⦌) (hs : IsCocartesianEdge (e.hom ≫ p) s) : IsCocartesianEdge p (e.hom.app (Opposite.op ⦋1⦌) s)"
+          },
+          {
+            "line": 47,
+            "head": "lemma exists_kanFiberwiseHom_target_extension_inverting {K C D : SSet.{u}} [Quasicategory D] (p : K ⟶ C) [CocartesianFibration p] (b : (Δ[1] : SSet.{u}) ⟶ C) (H₀ : pullback ((stdSimplex.δ (0 : Fin 2)) ≫ b) p ⟶ D) : ∃ H : pullback b p ⟶ D, (overPullbackUnderlying p).map (Over.homMk (stdSimplex.δ (0 : Fin 2)) rfl : Over.mk ((stdSimplex.δ (0 : Fin 2)) ≫ b) ⟶ Over.mk b) ≫ H = H₀ ∧ ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+        "signatures": [
+          {
+            "line": 59,
+            "head": "lemma strongAnodyneExtensions_unionProd_ι {m : ℕ} (k : Fin (m + 2)) (n : ℕ) : strongAnodyneExtensions (Subcomplex.unionProd.{u} Λ[m + 1, k] ∂Δ[n]).ι := (pairing k n).strongAnodyneExtensions"
+          },
+          {
+            "line": 63,
+            "head": "lemma anodyneExtensions_unionProd_ι {m : ℕ} (k : Fin (m + 2)) (n : ℕ) : anodyneExtensions (Subcomplex.unionProd.{u} Λ[m + 1, k] ∂Δ[n]).ι := (pairing k n).anodyneExtensions"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の SSet の mono・cofibration はあるが、SetΔ+ の underlying-map functor がなく、原典の (X,E)→(X′,E′) の cofibration を定義する型はない。小さな markedHull の包含の mono は任意の marked map の類ではない。"
+  },
+  "3.1.2.3": {
+    "page": 152,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.1",
+        "3.1.2",
+        "3.1.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|MarkedAnodyne|cofinalIhom_map_rightFibration|pushoutProduct|markedHull",
+          "SerrePositivity"
+        ],
+        "file_count": 119,
+        "line_count": 170
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|MarkedAnodyne|cofinalIhom_map_rightFibration|pushoutProduct|markedHull",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 2,
+        "line_count": 4
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) (Fin.last (n + 2))).ι p b, sq.HasLift"
+          },
+          {
+            "line": 34,
+            "head": "def IsCocartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop := ∀ (n : ℕ) (a : (horn (n + 2) 0 : SSet.{u}) ⟶ X) (b : (Δ[n + 2] : SSet.{u}) ⟶ B), a.app (Opposite.op ⦋1⦌) (initialHornEdge n) = e → ∀ sq : CommSq a (horn (n + 2) 0).ι p b, sq.HasLift"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean",
+        "signatures": [
+          {
+            "line": 97,
+            "head": "instance cofinalIhom_map_rightFibration {E B : SSet.{u}} (p : E ⟶ B) [RightFibration p] (A : SSet.{u}) : RightFibration ((ihom A).map p) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma isCocartesianEdge_map_iso {X Y B : SSet.{u}} (e : X ≅ Y) (p : Y ⟶ B) (s : X _⦋1⦌) (hs : IsCocartesianEdge (e.hom ≫ p) s) : IsCocartesianEdge p (e.hom.app (Opposite.op ⦋1⦌) s)"
+          },
+          {
+            "line": 47,
+            "head": "lemma exists_kanFiberwiseHom_target_extension_inverting {K C D : SSet.{u}} [Quasicategory D] (p : K ⟶ C) [CocartesianFibration p] (b : (Δ[1] : SSet.{u}) ⟶ C) (H₀ : pullback ((stdSimplex.δ (0 : Fin 2)) ≫ b) p ⟶ D) : ∃ H : pullback b p ⟶ D, (overPullbackUnderlying p).map (Over.homMk (stdSimplex.δ (0 : Fin 2)) rfl : Over.mk ((stdSimplex.δ (0 : Fin 2)) ≫ b) ⟶ Over.mk b) ≫ H = H₀ ∧ ∀ s : (pullback b p) _⦋1⦌, IsCocartesianEdge (pullback.fst b p) s → IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌) s))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+        "signatures": [
+          {
+            "line": 59,
+            "head": "lemma strongAnodyneExtensions_unionProd_ι {m : ℕ} (k : Fin (m + 2)) (n : ℕ) : strongAnodyneExtensions (Subcomplex.unionProd.{u} Λ[m + 1, k] ∂Δ[n]).ι := (pairing k n).strongAnodyneExtensions"
+          },
+          {
+            "line": 63,
+            "head": "lemma anodyneExtensions_unionProd_ι {m : ℕ} (k : Fin (m + 2)) (n : ℕ) : anodyneExtensions (Subcomplex.unionProd.{u} Λ[m + 1, k] ∂Δ[n]).ι := (pairing k n).anodyneExtensions"
+          }
+        ]
+      }
+    ],
+    "decision": "unmarked right/inner anodyne の pushout-product は実在するが、sharp/flat による marking を持つ pushout と marked-anodyne class に接続しない。underlying map のホーン充填だけでは印付き class の保存を得られない。"
+  },
+  "3.1.3.1": {
+    "page": 154,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.2",
+        "3.1.3",
+        "3.1.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          "SerrePositivity"
+        ],
+        "file_count": 1499,
+        "line_count": 5646
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 77,
+        "line_count": 283
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} := Coherent.simplicialNerve_quasicategory QCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PostcompositionCoreDetection.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "lemma isQCatEquivalence_of_postcomposition_core {A B : SSet.{u}} [Quasicategory A] [Quasicategory B] (f : A ⟶ B) (h : ∀ K : SSet.{u}, IsQCatEquivalence (quasicategoryCoreMap ((ihom K).map f))) : IsQCatEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CoreEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def QCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : QCatEquivalence (quasicategoryCore X : SSet.{u}) (quasicategoryCore Y : SSet.{u}) where"
+          },
+          {
+            "line": 42,
+            "head": "lemma IsQCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsQCatEquivalence f) : IsQCatEquivalence (quasicategoryCoreMap f) := hf.choose.core.isQCatEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 80,
+            "head": "instance fiberwiseHomProjection_cartesianFibration {K C D : SSet.{u}} (p : K ⟶ C) [CocartesianFibration p] [Quasicategory D] : CartesianFibration (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) where"
+          }
+        ]
+      }
+    ],
+    "decision": "native cocartesianFunctorSpace は Cartesian 条件の双対に似るが、任意の marked X と Z♮ の間の全 mapping object Mapflat/Mapsharp の同定はない。QCat の Hom の core は基底なしの全関手圏であり、指定 marking の相対圏とは異なる。"
+  },
+  "3.1.3.3": {
+    "page": 155,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.2",
+        "3.1.3",
+        "3.1.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          "SerrePositivity"
+        ],
+        "file_count": 1499,
+        "line_count": 5646
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 77,
+        "line_count": 283
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} := Coherent.simplicialNerve_quasicategory QCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PostcompositionCoreDetection.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "lemma isQCatEquivalence_of_postcomposition_core {A B : SSet.{u}} [Quasicategory A] [Quasicategory B] (f : A ⟶ B) (h : ∀ K : SSet.{u}, IsQCatEquivalence (quasicategoryCoreMap ((ihom K).map f))) : IsQCatEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CoreEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def QCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : QCatEquivalence (quasicategoryCore X : SSet.{u}) (quasicategoryCore Y : SSet.{u}) where"
+          },
+          {
+            "line": 42,
+            "head": "lemma IsQCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsQCatEquivalence f) : IsQCatEquivalence (quasicategoryCoreMap f) := hf.choose.core.isQCatEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 80,
+            "head": "instance fiberwiseHomProjection_cartesianFibration {K C D : SSet.{u}} (p : K ⟶ C) [CocartesianFibration p] [Quasicategory D] : CartesianFibration (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) where"
+          }
+        ]
+      }
+    ],
+    "decision": "全準圏への postcomposition core detection はあるが、任意の marked X,Y による MapSflat(Y,Z♮)→MapSflat(X,Z♮) の相対 marked mapping object はない。QCat の core の同値だけでは元の marking-preserving diagrams の圏を同定しない。"
+  },
+  "3.1.3.4": {
+    "page": 155,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.2",
+        "3.1.3",
+        "3.1.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          "SerrePositivity"
+        ],
+        "file_count": 1499,
+        "line_count": 5646
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 77,
+        "line_count": 283
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} := Coherent.simplicialNerve_quasicategory QCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PostcompositionCoreDetection.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "lemma isQCatEquivalence_of_postcomposition_core {A B : SSet.{u}} [Quasicategory A] [Quasicategory B] (f : A ⟶ B) (h : ∀ K : SSet.{u}, IsQCatEquivalence (quasicategoryCoreMap ((ihom K).map f))) : IsQCatEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CoreEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def QCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : QCatEquivalence (quasicategoryCore X : SSet.{u}) (quasicategoryCore Y : SSet.{u}) where"
+          },
+          {
+            "line": 42,
+            "head": "lemma IsQCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsQCatEquivalence f) : IsQCatEquivalence (quasicategoryCoreMap f) := hf.choose.core.isQCatEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 80,
+            "head": "instance fiberwiseHomProjection_cartesianFibration {K C D : SSet.{u}} (p : K ⟶ C) [CocartesianFibration p] [Quasicategory D] : CartesianFibration (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) where"
+          }
+        ]
+      }
+    ],
+    "decision": "right/inner anodyne による unmarked restriction の trivial fibration はあるが、SetΔ+ の marked-anodyne と Cartesian equivalence をつなぐ mapping-space criterion がない。generic localization の inverted edge は別の class である。"
+  },
+  "3.1.3.5": {
+    "page": 156,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.2",
+        "3.1.3",
+        "3.1.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          "SerrePositivity"
+        ],
+        "file_count": 1499,
+        "line_count": 5646
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 77,
+        "line_count": 283
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} := Coherent.simplicialNerve_quasicategory QCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PostcompositionCoreDetection.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "lemma isQCatEquivalence_of_postcomposition_core {A B : SSet.{u}} [Quasicategory A] [Quasicategory B] (f : A ⟶ B) (h : ∀ K : SSet.{u}, IsQCatEquivalence (quasicategoryCoreMap ((ihom K).map f))) : IsQCatEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CoreEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def QCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : QCatEquivalence (quasicategoryCore X : SSet.{u}) (quasicategoryCore Y : SSet.{u}) where"
+          },
+          {
+            "line": 42,
+            "head": "lemma IsQCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsQCatEquivalence f) : IsQCatEquivalence (quasicategoryCoreMap f) := hf.choose.core.isQCatEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 80,
+            "head": "instance fiberwiseHomProjection_cartesianFibration {K C D : SSet.{u}} (p : K ⟶ C) [CocartesianFibration p] [Quasicategory D] : CartesianFibration (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) where"
+          }
+        ]
+      }
+    ],
+    "decision": "native fiberwise equivalence の判定はあるが、ここでの p が X♮→Y♮ の marked morphism である条件と relative marked mapping core の同値を結び付けない。fiber ごとの同値だけは三条件中の他の条件への比較を欠く。"
+  },
+  "3.1.3.6": {
+    "page": 157,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.2",
+        "3.1.3",
+        "3.1.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          "SerrePositivity"
+        ],
+        "file_count": 1499,
+        "line_count": 5646
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 77,
+        "line_count": 283
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} := Coherent.simplicialNerve_quasicategory QCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PostcompositionCoreDetection.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "lemma isQCatEquivalence_of_postcomposition_core {A B : SSet.{u}} [Quasicategory A] [Quasicategory B] (f : A ⟶ B) (h : ∀ K : SSet.{u}, IsQCatEquivalence (quasicategoryCoreMap ((ihom K).map f))) : IsQCatEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CoreEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def QCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : QCatEquivalence (quasicategoryCore X : SSet.{u}) (quasicategoryCore Y : SSet.{u}) where"
+          },
+          {
+            "line": 42,
+            "head": "lemma IsQCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsQCatEquivalence f) : IsQCatEquivalence (quasicategoryCoreMap f) := hf.choose.core.isQCatEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 80,
+            "head": "instance fiberwiseHomProjection_cartesianFibration {K C D : SSet.{u}} (p : K ⟶ C) [CocartesianFibration p] [Quasicategory D] : CartesianFibration (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) where"
+          }
+        ]
+      }
+    ],
+    "decision": "native functor core の restriction の Kan 性は部分的な source に対してあるが、任意の marked inclusion と p-Cartesian edges を保持する MapSsharp の同じ mapping object がない。unmarked の restriction は marked 条件への lift を保証しない。"
+  },
+  "3.1.3.7": {
+    "page": 157,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.2",
+        "3.1.3",
+        "3.1.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          "SerrePositivity"
+        ],
+        "file_count": 1499,
+        "line_count": 5646
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 77,
+        "line_count": 283
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} := Coherent.simplicialNerve_quasicategory QCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PostcompositionCoreDetection.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "lemma isQCatEquivalence_of_postcomposition_core {A B : SSet.{u}} [Quasicategory A] [Quasicategory B] (f : A ⟶ B) (h : ∀ K : SSet.{u}, IsQCatEquivalence (quasicategoryCoreMap ((ihom K).map f))) : IsQCatEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CoreEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def QCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : QCatEquivalence (quasicategoryCore X : SSet.{u}) (quasicategoryCore Y : SSet.{u}) where"
+          },
+          {
+            "line": 42,
+            "head": "lemma IsQCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsQCatEquivalence f) : IsQCatEquivalence (quasicategoryCoreMap f) := hf.choose.core.isQCatEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 80,
+            "head": "instance fiberwiseHomProjection_cartesianFibration {K C D : SSet.{u}} (p : K ⟶ C) [CocartesianFibration p] [Quasicategory D] : CartesianFibration (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) where"
+          }
+        ]
+      }
+    ],
+    "decision": "marked simplicial set 全体の圏、全 Cartesian equivalence、対応する ModelCategory instance がない。unmarked SSet 用 Kan–Quillen 入力や generic model existence criterion を仮定したまま、この具体的 marked slice の構造として数えない。"
+  },
+  "3.1.3.8": {
+    "page": 160,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.2",
+        "3.1.3",
+        "3.1.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          "SerrePositivity"
+        ],
+        "file_count": 1499,
+        "line_count": 5646
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 77,
+        "line_count": 283
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} := Coherent.simplicialNerve_quasicategory QCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PostcompositionCoreDetection.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "lemma isQCatEquivalence_of_postcomposition_core {A B : SSet.{u}} [Quasicategory A] [Quasicategory B] (f : A ⟶ B) (h : ∀ K : SSet.{u}, IsQCatEquivalence (quasicategoryCoreMap ((ihom K).map f))) : IsQCatEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CoreEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def QCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : QCatEquivalence (quasicategoryCore X : SSet.{u}) (quasicategoryCore Y : SSet.{u}) where"
+          },
+          {
+            "line": 42,
+            "head": "lemma IsQCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsQCatEquivalence f) : IsQCatEquivalence (quasicategoryCoreMap f) := hf.choose.core.isQCatEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 80,
+            "head": "instance fiberwiseHomProjection_cartesianFibration {K C D : SSet.{u}} (p : K ⟶ C) [CocartesianFibration p] [Quasicategory D] : CartesianFibration (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) where"
+          }
+        ]
+      }
+    ],
+    "decision": "native CartesianFibration p は存在するが、marked slice の Cartesian model の fibration と fibrant object の comparison はない。通常 SSet の Fibration と単に比較しても原典の二つの定義は同じ基底の圏にならない。"
+  },
+  "3.1.3.9": {
+    "page": 160,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.2",
+        "3.1.3",
+        "3.1.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          "SerrePositivity"
+        ],
+        "file_count": 1499,
+        "line_count": 5646
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|cocartesianFunctorSpace|fiberwise|quasicategoryCore|ModelCategory",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 77,
+        "line_count": 283
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} := Coherent.simplicialNerve_quasicategory QCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PostcompositionCoreDetection.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "lemma isQCatEquivalence_of_postcomposition_core {A B : SSet.{u}} [Quasicategory A] [Quasicategory B] (f : A ⟶ B) (h : ∀ K : SSet.{u}, IsQCatEquivalence (quasicategoryCoreMap ((ihom K).map f))) : IsQCatEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CoreEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def QCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : QCatEquivalence (quasicategoryCore X : SSet.{u}) (quasicategoryCore Y : SSet.{u}) where"
+          },
+          {
+            "line": 42,
+            "head": "lemma IsQCatEquivalence.core {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsQCatEquivalence f) : IsQCatEquivalence (quasicategoryCoreMap f) := hf.choose.core.isQCatEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 80,
+            "head": "instance fiberwiseHomProjection_cartesianFibration {K C D : SSet.{u}} (p : K ⟶ C) [CocartesianFibration p] [Quasicategory D] : CartesianFibration (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) where"
+          }
+        ]
+      }
+    ],
+    "decision": "CartesianOpposite は native unmarked の辺の双対性を示すが、SetΔ+ の反対 functor と cofibration/cocartesian-equivalence によるモデル圏の instance はない。双対を取れる個々の horn predicate だけは全 model structure の構成ではない。"
+  },
+  "3.1.4.1": {
+    "page": 160,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.3",
+        "3.1.4",
+        "3.1.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ModelCategory|SimplicialModel|CartesianFibration|KanComplex",
+          "SerrePositivity"
+        ],
+        "file_count": 3446,
+        "line_count": 8004
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ModelCategory|SimplicialModel|CartesianFibration|KanComplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 30,
+        "line_count": 124
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} := Coherent.simplicialNerve_quasicategory QCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianOpposite.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsCartesianEdge.op {X B : SSet.{u}} {p : X ⟶ B} {e : X _⦋1⦌} (he : IsCartesianEdge p e) : IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)"
+          },
+          {
+            "line": 70,
+            "head": "lemma isCartesianEdge_of_isCocartesianEdge_op {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) (he : IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)) : IsCartesianEdge p e"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+        "signatures": [
+          {
+            "line": 148,
+            "head": "instance {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (X : SSet.{u}) [KanComplex X] : Fibration ((MonoidalClosed.pre i).app X) := fibration_pullbackObjObjπ (Functor.PullbackObjObj.ofIsTerminal MonoidalClosed.internalHom i (terminal.from X) terminalIsTerminal)"
+          },
+          {
+            "line": 153,
+            "head": "instance (A : SSet.{u}) : KanComplex ((ihom A).obj (⊤_ _))"
+          },
+          {
+            "line": 159,
+            "head": "instance {A X : SSet.{u}} [KanComplex X] : KanComplex ((ihom A).obj X) := isFibrant_of_fibration ((ihom A).map (terminal.from X))"
+          }
+        ]
+      }
+    ],
+    "decision": "native CartesianFibration の型はあるが、marked slice の ModelCategory と fibrant objects の predicate がない。marked anodyne RLP との比較もなく、unmarked fibration の定義だけを原典の model-fibrant iff としない。"
+  },
+  "3.1.4.2": {
+    "page": 161,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.3",
+        "3.1.4",
+        "3.1.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ModelCategory|SimplicialModel|CartesianFibration|KanComplex",
+          "SerrePositivity"
+        ],
+        "file_count": 3446,
+        "line_count": 8004
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ModelCategory|SimplicialModel|CartesianFibration|KanComplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 30,
+        "line_count": 124
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} := Coherent.simplicialNerve_quasicategory QCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianOpposite.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsCartesianEdge.op {X B : SSet.{u}} {p : X ⟶ B} {e : X _⦋1⦌} (he : IsCartesianEdge p e) : IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)"
+          },
+          {
+            "line": 70,
+            "head": "lemma isCartesianEdge_of_isCocartesianEdge_op {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) (he : IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)) : IsCartesianEdge p e"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+        "signatures": [
+          {
+            "line": 148,
+            "head": "instance {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (X : SSet.{u}) [KanComplex X] : Fibration ((MonoidalClosed.pre i).app X) := fibration_pullbackObjObjπ (Functor.PullbackObjObj.ofIsTerminal MonoidalClosed.internalHom i (terminal.from X) terminalIsTerminal)"
+          },
+          {
+            "line": 153,
+            "head": "instance (A : SSet.{u}) : KanComplex ((ihom A).obj (⊤_ _))"
+          },
+          {
+            "line": 159,
+            "head": "instance {A X : SSet.{u}} [KanComplex X] : KanComplex ((ihom A).obj X) := isFibrant_of_fibration ((ihom A).map (terminal.from X))"
+          }
+        ]
+      }
+    ],
+    "decision": "native CatInfinity の積や fiberwise equivalence はあるが、任意の marked Z との product による Cartesian equivalence の保存の同じ class がない。基底なしの QCat equivalence の積の結果は marked slice の同値への比較を欠く。"
+  },
+  "3.1.4.3": {
+    "page": 161,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.3",
+        "3.1.4",
+        "3.1.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ModelCategory|SimplicialModel|CartesianFibration|KanComplex",
+          "SerrePositivity"
+        ],
+        "file_count": 3446,
+        "line_count": 8004
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ModelCategory|SimplicialModel|CartesianFibration|KanComplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 30,
+        "line_count": 124
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} := Coherent.simplicialNerve_quasicategory QCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianOpposite.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsCartesianEdge.op {X B : SSet.{u}} {p : X ⟶ B} {e : X _⦋1⦌} (he : IsCartesianEdge p e) : IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)"
+          },
+          {
+            "line": 70,
+            "head": "lemma isCartesianEdge_of_isCocartesianEdge_op {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) (he : IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)) : IsCartesianEdge p e"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+        "signatures": [
+          {
+            "line": 148,
+            "head": "instance {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (X : SSet.{u}) [KanComplex X] : Fibration ((MonoidalClosed.pre i).app X) := fibration_pullbackObjObjπ (Functor.PullbackObjObj.ofIsTerminal MonoidalClosed.internalHom i (terminal.from X) terminalIsTerminal)"
+          },
+          {
+            "line": 153,
+            "head": "instance (A : SSet.{u}) : KanComplex ((ihom A).obj (⊤_ _))"
+          },
+          {
+            "line": 159,
+            "head": "instance {A X : SSet.{u}} [KanComplex X] : KanComplex ((ihom A).obj X) := isFibrant_of_fibration ((ihom A).map (terminal.from X))"
+          }
+        ]
+      }
+    ],
+    "decision": "SSet の pushout-product の型はあるが、二つの marked slices の cofibration/Cartesian equivalence を保持する class と tensor がない。unmarked の trivial cofibration の結果だけでは原典の二つの marking 条件は得られない。"
+  },
+  "3.1.4.4": {
+    "page": 162,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.3",
+        "3.1.4",
+        "3.1.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ModelCategory|SimplicialModel|CartesianFibration|KanComplex",
+          "SerrePositivity"
+        ],
+        "file_count": 3446,
+        "line_count": 8004
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ModelCategory|SimplicialModel|CartesianFibration|KanComplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 30,
+        "line_count": 124
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} := Coherent.simplicialNerve_quasicategory QCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianOpposite.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsCartesianEdge.op {X B : SSet.{u}} {p : X ⟶ B} {e : X _⦋1⦌} (he : IsCartesianEdge p e) : IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)"
+          },
+          {
+            "line": 70,
+            "head": "lemma isCartesianEdge_of_isCocartesianEdge_op {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) (he : IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)) : IsCartesianEdge p e"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+        "signatures": [
+          {
+            "line": 148,
+            "head": "instance {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (X : SSet.{u}) [KanComplex X] : Fibration ((MonoidalClosed.pre i).app X) := fibration_pullbackObjObjπ (Functor.PullbackObjObj.ofIsTerminal MonoidalClosed.internalHom i (terminal.from X) terminalIsTerminal)"
+          },
+          {
+            "line": 153,
+            "head": "instance (A : SSet.{u}) : KanComplex ((ihom A).obj (⊤_ _))"
+          },
+          {
+            "line": 159,
+            "head": "instance {A X : SSet.{u}} [KanComplex X] : KanComplex ((ihom A).obj X) := isFibrant_of_fibration ((ihom A).map (terminal.from X))"
+          }
+        ]
+      }
+    ],
+    "decision": "QCat や KanObject の simplicialCategory は存在するが、SetΔ+/S の Mapsharp を Hom とする simplicial model category と対応する ModelCategory instance はない。別の豊穣圏の局所 Kan 性を代用しない。"
+  },
+  "3.1.4.5": {
+    "page": 162,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.3",
+        "3.1.4",
+        "3.1.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ModelCategory|SimplicialModel|CartesianFibration|KanComplex",
+          "SerrePositivity"
+        ],
+        "file_count": 3446,
+        "line_count": 8004
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ModelCategory|SimplicialModel|CartesianFibration|KanComplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 30,
+        "line_count": 124
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} := Coherent.simplicialNerve_quasicategory QCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianOpposite.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsCartesianEdge.op {X B : SSet.{u}} {p : X ⟶ B} {e : X _⦋1⦌} (he : IsCartesianEdge p e) : IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)"
+          },
+          {
+            "line": 70,
+            "head": "lemma isCartesianEdge_of_isCocartesianEdge_op {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) (he : IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)) : IsCartesianEdge p e"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+        "signatures": [
+          {
+            "line": 148,
+            "head": "instance {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (X : SSet.{u}) [KanComplex X] : Fibration ((MonoidalClosed.pre i).app X) := fibration_pullbackObjObjπ (Functor.PullbackObjObj.ofIsTerminal MonoidalClosed.internalHom i (terminal.from X) terminalIsTerminal)"
+          },
+          {
+            "line": 153,
+            "head": "instance (A : SSet.{u}) : KanComplex ((ihom A).obj (⊤_ _))"
+          },
+          {
+            "line": 159,
+            "head": "instance {A X : SSet.{u}} [KanComplex X] : KanComplex ((ihom A).obj X) := isFibrant_of_fibration ((ihom A).map (terminal.from X))"
+          }
+        ]
+      }
+    ],
+    "decision": "native QCat の core を取る前の ihom の豊穣構造はあるが、marked slice の Mapflat の tensor と Joyal-enriched model の Quillen 公理の比較はない。単なる内部 Hom と tensor の随伴だけは model compatibility の主張ではない。"
+  },
+  "3.1.4.6": {
+    "page": 162,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.3",
+        "3.1.4",
+        "3.1.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ModelCategory|SimplicialModel|CartesianFibration|KanComplex",
+          "SerrePositivity"
+        ],
+        "file_count": 3446,
+        "line_count": 8004
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ModelCategory|SimplicialModel|CartesianFibration|KanComplex",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 30,
+        "line_count": 124
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} := Coherent.simplicialNerve_quasicategory QCat.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianOpposite.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsCartesianEdge.op {X B : SSet.{u}} {p : X ⟶ B} {e : X _⦋1⦌} (he : IsCartesianEdge p e) : IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)"
+          },
+          {
+            "line": 70,
+            "head": "lemma isCartesianEdge_of_isCocartesianEdge_op {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) (he : IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)) : IsCartesianEdge p e"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+        "signatures": [
+          {
+            "line": 148,
+            "head": "instance {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (X : SSet.{u}) [KanComplex X] : Fibration ((MonoidalClosed.pre i).app X) := fibration_pullbackObjObjπ (Functor.PullbackObjObj.ofIsTerminal MonoidalClosed.internalHom i (terminal.from X) terminalIsTerminal)"
+          },
+          {
+            "line": 153,
+            "head": "instance (A : SSet.{u}) : KanComplex ((ihom A).obj (⊤_ _))"
+          },
+          {
+            "line": 159,
+            "head": "instance {A X : SSet.{u}} [KanComplex X] : KanComplex ((ihom A).obj X) := isFibrant_of_fibration ((ihom A).map (terminal.from X))"
+          }
+        ]
+      }
+    ],
+    "decision": "native cartesian/cocartesian の反対対応と right/left fibration の関係はあるが、Kan 基底上の任意の marked objects の Cartesian equivalence の反対保存はない。unmarked の Kan-base という追加仮定のみで SetΔ+ のモデル自己同値を数えない。"
+  },
+  "3.1.5.1": {
+    "page": 163,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.4",
+        "3.1.5",
+        "3.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ContravariantModel|Quillen|ModelCategory|RightFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 2316,
+        "line_count": 7045
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ContravariantModel|Quillen|ModelCategory|RightFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 40,
+        "line_count": 147
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+        "signatures": [
+          {
+            "line": 108,
+            "head": "structure Adjunction (F : C ⥤ D) (G : D ⥤ C) where"
+          },
+          {
+            "line": 133,
+            "head": "class IsLeftAdjoint (left : C ⥤ D) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native right-fibration の straightening の同値はあるが、Joyal・marked Cartesian・全印局所化・contravariant・Kan の各 slice ModelCategory instance と flat/forget/sharp による Quillen comparisons はない。準圏同値だけを Quillen equivalence と読み替えない。"
+  },
+  "3.1.5.2": {
+    "page": 164,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.4",
+        "3.1.5",
+        "3.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ContravariantModel|Quillen|ModelCategory|RightFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 2316,
+        "line_count": 7045
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ContravariantModel|Quillen|ModelCategory|RightFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 40,
+        "line_count": 147
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+        "signatures": [
+          {
+            "line": 108,
+            "head": "structure Adjunction (F : C ⥤ D) (G : D ⥤ C) where"
+          },
+          {
+            "line": 133,
+            "head": "class IsLeftAdjoint (left : C ⥤ D) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "SetΔ+ と全印への sharp functor がなく、その weak equivalence class による ModelCategory instance もない。SSet の既存モデル圏の instance は基底の通常圏が違うため適用先にならない。"
+  },
+  "3.1.5.3": {
+    "page": 165,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.4",
+        "3.1.5",
+        "3.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ContravariantModel|Quillen|ModelCategory|RightFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 2316,
+        "line_count": 7045
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ContravariantModel|Quillen|ModelCategory|RightFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 40,
+        "line_count": 147
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+        "signatures": [
+          {
+            "line": 108,
+            "head": "structure Adjunction (F : C ⥤ D) (G : D ⥤ C) where"
+          },
+          {
+            "line": 133,
+            "head": "class IsLeftAdjoint (left : C ⥤ D) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary forgetful/adjoint の一般論はあるが、Xflat と印を忘れる functor の同じ二圏がなく、Joyal slice と marked Cartesian slice の Quillen adjunction にはならない。Kan 基底でも model structure の比較は未供給である。"
+  },
+  "3.1.5.4": {
+    "page": 166,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.4",
+        "3.1.5",
+        "3.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ContravariantModel|Quillen|ModelCategory|RightFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 2316,
+        "line_count": 7045
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ContravariantModel|Quillen|ModelCategory|RightFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 40,
+        "line_count": 147
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+        "signatures": [
+          {
+            "line": 108,
+            "head": "structure Adjunction (F : C ⥤ D) (G : D ⥤ C) where"
+          },
+          {
+            "line": 133,
+            "head": "class IsLeftAdjoint (left : C ⥤ D) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "generic identity functor の adjunction はあるが、同じ SetΔ+ 上の二つの model structure C1,C2 とそれぞれの weak equivalence class がない。反射局所化の恒等に似た射はこの Quillen 条件を示さない。"
+  },
+  "3.1.5.5": {
+    "page": 167,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.4",
+        "3.1.5",
+        "3.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ContravariantModel|Quillen|ModelCategory|RightFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 2316,
+        "line_count": 7045
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ContravariantModel|Quillen|ModelCategory|RightFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 40,
+        "line_count": 147
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+        "signatures": [
+          {
+            "line": 108,
+            "head": "structure Adjunction (F : C ⥤ D) (G : D ⥤ C) where"
+          },
+          {
+            "line": 133,
+            "head": "class IsLeftAdjoint (left : C ⥤ D) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native localization は準圏の辺の反転であり、marked slice の ModelCategory C1 を C2 にする model localization と比較されていない。単に二つの弱同値の包含を仮定する一般補題も具体的な二つの構造を供給しない。"
+  },
+  "3.1.5.6": {
+    "page": 167,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.4",
+        "3.1.5",
+        "3.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ContravariantModel|Quillen|ModelCategory|RightFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 2316,
+        "line_count": 7045
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ContravariantModel|Quillen|ModelCategory|RightFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 40,
+        "line_count": 147
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+        "signatures": [
+          {
+            "line": 108,
+            "head": "structure Adjunction (F : C ⥤ D) (G : D ⥤ C) where"
+          },
+          {
+            "line": 133,
+            "head": "class IsLeftAdjoint (left : C ⥤ D) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native right fibrations と space-valued functors の準圏同値はあるが、marked C2 と unmarked contravariant C3 の forgetful/sharp Quillen pair ではない。sharp の構成と両 ModelCategory instance がなく、模型比較欠如の成分にも数えない。"
+  },
+  "3.1.5.7": {
+    "page": 168,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.1.4",
+        "3.1.5",
+        "3.2.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ContravariantModel|Quillen|ModelCategory|RightFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 2316,
+        "line_count": 7045
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|CartesianEquivalence|ContravariantModel|Quillen|ModelCategory|RightFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 40,
+        "line_count": 147
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          },
+          {
+            "line": 49,
+            "head": "lemma kanQuillenModel_cofibrations : @cofibrations SSet.{u} _ kanQuillenModel.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} := (Classical.choose_spec kanQuillen_model_exists).1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+        "signatures": [
+          {
+            "line": 108,
+            "head": "structure Adjunction (F : C ⥤ D) (G : D ⥤ C) where"
+          },
+          {
+            "line": 133,
+            "head": "class IsLeftAdjoint (left : C ⥤ D) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "SSet の Kan–Quillen model 入力はあるが、任意 S の contravariant slice model instance と恒等 functor の Quillen adjunction の比較がない。Kan 基底の right fibration の Kan 性だけはこの二つの模型の weak equivalences の一致ではない。"
+  }
+}

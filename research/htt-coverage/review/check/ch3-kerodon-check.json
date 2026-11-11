@@ -1,0 +1,173 @@
+{
+  "method": "declarations_new の完全名結合後、HTT の本文と Kerodon の主張を照合。共有する補題だけは除外。",
+  "checked_source_urls": [
+    "https://kerodon.net/tag/0208",
+    "https://kerodon.net/tag/0152",
+    "https://kerodon.net/tag/003L",
+    "https://kerodon.net/tag/032Y",
+    "https://kerodon.net/tag/05QM",
+    "https://kerodon.net/tag/05RN"
+  ],
+  "items": {
+    "3.0.0.1": {
+      "candidate_numbers": [
+        "5.5.3.1",
+        "5.5.3.11",
+        "5.5.4.2",
+        "5.5.5.1",
+        "5.5.5.2",
+        "8.6.7.4",
+        "8.6.8.17"
+      ],
+      "accepted": [
+        "5.5.3.1"
+      ],
+      "comparison": "HTT と Kerodon の本文で同じ主張（partial の場合は同じ特殊形・成分）を確認。"
+    },
+    "3.0.0.2": {
+      "candidate_numbers": [
+        "5.5.3.1",
+        "5.5.3.11",
+        "5.5.4.2",
+        "5.5.5.1",
+        "5.5.5.2",
+        "8.6.7.4",
+        "8.6.8.17"
+      ],
+      "accepted": [
+        "5.5.3.1"
+      ],
+      "comparison": "HTT と Kerodon の本文で同じ主張（partial の場合は同じ特殊形・成分）を確認。"
+    },
+    "3.0.0.3": {
+      "candidate_numbers": [
+        "5.5.3.1",
+        "5.5.3.3",
+        "5.5.5.2",
+        "8.6.7.5"
+      ],
+      "accepted": [
+        "5.5.3.3"
+      ],
+      "comparison": "HTT と Kerodon の本文で同じ主張（partial の場合は同じ特殊形・成分）を確認。"
+    },
+    "3.0.0.4": {
+      "candidate_numbers": [
+        "5.5.3.1",
+        "5.5.3.11",
+        "5.5.4.2",
+        "5.5.5.1",
+        "5.5.5.2",
+        "8.6.7.4",
+        "8.6.8.17"
+      ],
+      "accepted": [
+        "5.5.3.1"
+      ],
+      "comparison": "HTT と Kerodon の本文で同じ主張（partial の場合は同じ特殊形・成分）を確認。"
+    },
+    "3.0.0.5": {
+      "candidate_numbers": [
+        "5.5.3.1",
+        "5.5.3.11",
+        "5.5.4.2",
+        "5.5.5.1",
+        "5.5.5.2",
+        "8.6.7.4",
+        "8.6.8.17"
+      ],
+      "accepted": [],
+      "comparison": "5.5.3.11 は κ-small な全部分圏。HTT の small/large の宇宙による二つの圏の慣習そのものとは違うため転記しない。"
+    },
+    "3.1.2.1": {
+      "candidate_numbers": [
+        "4.2.5.2"
+      ],
+      "accepted": [
+        "4.2.5.2"
+      ],
+      "comparison": "HTT と Kerodon の本文で同じ主張（partial の場合は同じ特殊形・成分）を確認。"
+    },
+    "3.1.3.2": {
+      "candidate_numbers": [
+        "3.3.7.5",
+        "4.5.1.22",
+        "4.8.4.6",
+        "9.2.7.4"
+      ],
+      "accepted": [],
+      "comparison": "結合で共有する宣言は証明の部品であり、原典の同じ主張ではない。"
+    },
+    "3.2.2.12": {
+      "candidate_numbers": [
+        "4.2.5.2",
+        "5.2.1.1"
+      ],
+      "accepted": [
+        "4.2.5.2"
+      ],
+      "comparison": "HTT と Kerodon の本文で同じ主張（partial の場合は同じ特殊形・成分）を確認。"
+    },
+    "3.2.5.9": {
+      "candidate_numbers": [
+        "1.4.2.2"
+      ],
+      "accepted": [
+        "1.4.2.2"
+      ],
+      "comparison": "HTT と Kerodon の本文で同じ主張（partial の場合は同じ特殊形・成分）を確認。"
+    },
+    "3.3.1.3": {
+      "candidate_numbers": [
+        "4.5.3.22",
+        "4.5.3.33"
+      ],
+      "accepted": [
+        "4.5.3.33"
+      ],
+      "comparison": "HTT と Kerodon の本文で同じ主張（partial の場合は同じ特殊形・成分）を確認。"
+    },
+    "3.3.1.7": {
+      "candidate_numbers": [
+        "7.7.6.3"
+      ],
+      "accepted": [],
+      "comparison": "結合で共有する宣言は証明の部品であり、原典の同じ主張ではない。"
+    },
+    "3.3.2.8": {
+      "candidate_numbers": [
+        "5.5.2.1"
+      ],
+      "accepted": [],
+      "comparison": "結合で共有する宣言は証明の部品であり、原典の同じ主張ではない。"
+    },
+    "3.3.3.4": {
+      "candidate_numbers": [
+        "7.4.1.1",
+        "7.4.1.14",
+        "7.4.1.2",
+        "7.4.1.6",
+        "7.4.4.1",
+        "7.4.4.2",
+        "7.5.1.5",
+        "7.5.2.6"
+      ],
+      "accepted": [
+        "7.4.1.6"
+      ],
+      "comparison": "HTT と Kerodon の本文で同じ主張（partial の場合は同じ特殊形・成分）を確認。"
+    },
+    "3.3.4.6": {
+      "candidate_numbers": [
+        "7.4.3.1",
+        "7.4.3.6",
+        "9.1.3.3",
+        "9.1.3.4"
+      ],
+      "accepted": [
+        "7.4.3.6"
+      ],
+      "comparison": "HTT と Kerodon の本文で同じ主張（partial の場合は同じ特殊形・成分）を確認。"
+    }
+  }
+}

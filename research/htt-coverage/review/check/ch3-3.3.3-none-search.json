@@ -1,0 +1,394 @@
+{
+  "3.3.3.1": {
+    "page": 214,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.2",
+        "3.3.3",
+        "3.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "simplicialSections|coherentDiagramSectionsCone|coneSectionsMap|CartesianSections|IsLimitCone",
+          "SerrePositivity"
+        ],
+        "file_count": 512,
+        "line_count": 1454
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "simplicialSections|coherentDiagramSectionsCone|coneSectionsMap|CartesianSections|IsLimitCone",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/SpaceSmallLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "local instance : KanComplex (simplicialSections (leftUnstraighteningProjection F)) := simplicialSections_kanComplex (leftUnstraighteningProjection F)"
+          },
+          {
+            "line": 36,
+            "head": "lemma coherentDiagramSectionsCone_isLimit : IsLimitCone (coherentDiagramSectionsCone F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/SpaceSectionsObject.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def coherentSpaceSectionsObject : KanObject.{u} := ⟨HomotopyLimits.simplicialSections (smallLeftUnstraighteningProjection F), HomotopyLimits.simplicialSections_kanComplex (smallLeftUnstraighteningProjection F)⟩"
+          },
+          {
+            "line": 31,
+            "head": "def coherentSpaceSectionsVertex : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex (coherentSpaceSectionsObject F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/ConeSectionsHomAction.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma coneSectionsMapAt_isQCatEquivalence_iff {B : SSet.{u + 1}} {F : B ⟶ SpaceInfinity.{u}} (c : JoinCone F) (z : SpaceInfinity.{u} _⦋0⦌) (hv : c.vertex = z) : IsQCatEquivalence (coneSectionsMapAt c z hv) ↔ IsQCatEquivalence (coneSectionsMap c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/DiagramSectionsCone.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def coherentDiagramSectionsCone : JoinCone F := (coherentSectionsConeRealization F).cone"
+          },
+          {
+            "line": 33,
+            "head": "lemma coherentDiagramSectionsCone_vertex : (coherentDiagramSectionsCone F).vertex = coherentSpaceSectionsVertex F := (coherentSectionsConeRealization F).vertex_eq"
+          }
+        ]
+      }
+    ],
+    "decision": "native 空間値の全切断の極限錐はあるが、一般の Cat∞op 値 p と Cartesian sections の restriction θ の同値による iff を供給しない。空間値への特殊化でも、任意の元の apex と restriction θ を比較する追加の議論が必要である。"
+  },
+  "3.3.3.2": {
+    "page": 216,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.2",
+        "3.3.3",
+        "3.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "simplicialSections|coherentDiagramSectionsCone|coneSectionsMap|CartesianSections|IsLimitCone",
+          "SerrePositivity"
+        ],
+        "file_count": 512,
+        "line_count": 1454
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "simplicialSections|coherentDiagramSectionsCone|coneSectionsMap|CartesianSections|IsLimitCone",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/SpaceSmallLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "local instance : KanComplex (simplicialSections (leftUnstraighteningProjection F)) := simplicialSections_kanComplex (leftUnstraighteningProjection F)"
+          },
+          {
+            "line": 36,
+            "head": "lemma coherentDiagramSectionsCone_isLimit : IsLimitCone (coherentDiagramSectionsCone F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/SpaceSectionsObject.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def coherentSpaceSectionsObject : KanObject.{u} := ⟨HomotopyLimits.simplicialSections (smallLeftUnstraighteningProjection F), HomotopyLimits.simplicialSections_kanComplex (smallLeftUnstraighteningProjection F)⟩"
+          },
+          {
+            "line": 31,
+            "head": "def coherentSpaceSectionsVertex : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex (coherentSpaceSectionsObject F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/ConeSectionsHomAction.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma coneSectionsMapAt_isQCatEquivalence_iff {B : SSet.{u + 1}} {F : B ⟶ SpaceInfinity.{u}} (c : JoinCone F) (z : SpaceInfinity.{u} _⦋0⦌) (hv : c.vertex = z) : IsQCatEquivalence (coneSectionsMapAt c z hv) ↔ IsQCatEquivalence (coneSectionsMap c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/DiagramSectionsCone.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def coherentDiagramSectionsCone : JoinCone F := (coherentSectionsConeRealization F).cone"
+          },
+          {
+            "line": 33,
+            "head": "lemma coherentDiagramSectionsCone_vertex : (coherentDiagramSectionsCone F).vertex = coherentSpaceSectionsVertex F := (coherentSectionsConeRealization F).vertex_eq"
+          }
+        ]
+      }
+    ],
+    "decision": "coherent 空間値の全切断は SpaceInfinity の極限を与えるが、Cat∞ の一般の Cartesian sections の極限ではない。SpaceInfinity→Cat∞ の limit-preserving 比較までなく、値域が異なる極限を一般の圏値の式に転記しない。"
+  },
+  "3.3.3.3": {
+    "page": 216,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.2",
+        "3.3.3",
+        "3.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "simplicialSections|coherentDiagramSectionsCone|coneSectionsMap|CartesianSections|IsLimitCone",
+          "SerrePositivity"
+        ],
+        "file_count": 512,
+        "line_count": 1454
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "simplicialSections|coherentDiagramSectionsCone|coneSectionsMap|CartesianSections|IsLimitCone",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/SpaceSmallLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "local instance : KanComplex (simplicialSections (leftUnstraighteningProjection F)) := simplicialSections_kanComplex (leftUnstraighteningProjection F)"
+          },
+          {
+            "line": 36,
+            "head": "lemma coherentDiagramSectionsCone_isLimit : IsLimitCone (coherentDiagramSectionsCone F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/SpaceSectionsObject.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def coherentSpaceSectionsObject : KanObject.{u} := ⟨HomotopyLimits.simplicialSections (smallLeftUnstraighteningProjection F), HomotopyLimits.simplicialSections_kanComplex (smallLeftUnstraighteningProjection F)⟩"
+          },
+          {
+            "line": 31,
+            "head": "def coherentSpaceSectionsVertex : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex (coherentSpaceSectionsObject F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/ConeSectionsHomAction.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma coneSectionsMapAt_isQCatEquivalence_iff {B : SSet.{u + 1}} {F : B ⟶ SpaceInfinity.{u}} (c : JoinCone F) (z : SpaceInfinity.{u} _⦋0⦌) (hv : c.vertex = z) : IsQCatEquivalence (coneSectionsMapAt c z hv) ↔ IsQCatEquivalence (coneSectionsMap c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/DiagramSectionsCone.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def coherentDiagramSectionsCone : JoinCone F := (coherentSectionsConeRealization F).cone"
+          },
+          {
+            "line": 33,
+            "head": "lemma coherentDiagramSectionsCone_vertex : (coherentDiagramSectionsCone F).vertex = coherentSpaceSectionsVertex F := (coherentSectionsConeRealization F).vertex_eq"
+          }
+        ]
+      }
+    ],
+    "decision": "coherentDiagramSectionsCone_isLimit は指定した全切断の錐に対する極限性であり、任意の K/ 上の left fibration についての restriction map の iff ではない。任意の分類済み X と apex の fiber に対する同じ restriction の比較が未供給。"
+  },
+  "3.3.3.5": {
+    "page": 216,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.3.2",
+        "3.3.3",
+        "3.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "simplicialSections|coherentDiagramSectionsCone|coneSectionsMap|CartesianSections|IsLimitCone",
+          "SerrePositivity"
+        ],
+        "file_count": 512,
+        "line_count": 1454
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "simplicialSections|coherentDiagramSectionsCone|coneSectionsMap|CartesianSections|IsLimitCone",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/SpaceSmallLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "local instance : KanComplex (simplicialSections (leftUnstraighteningProjection F)) := simplicialSections_kanComplex (leftUnstraighteningProjection F)"
+          },
+          {
+            "line": 36,
+            "head": "lemma coherentDiagramSectionsCone_isLimit : IsLimitCone (coherentDiagramSectionsCone F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/SpaceSectionsObject.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def coherentSpaceSectionsObject : KanObject.{u} := ⟨HomotopyLimits.simplicialSections (smallLeftUnstraighteningProjection F), HomotopyLimits.simplicialSections_kanComplex (smallLeftUnstraighteningProjection F)⟩"
+          },
+          {
+            "line": 31,
+            "head": "def coherentSpaceSectionsVertex : SpaceInfinity.{u} _⦋0⦌ := spaceInfinityVertex (coherentSpaceSectionsObject F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/ConeSectionsHomAction.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma coneSectionsMapAt_isQCatEquivalence_iff {B : SSet.{u + 1}} {F : B ⟶ SpaceInfinity.{u}} (c : JoinCone F) (z : SpaceInfinity.{u} _⦋0⦌) (hv : c.vertex = z) : IsQCatEquivalence (coneSectionsMapAt c z hv) ↔ IsQCatEquivalence (coneSectionsMap c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/DiagramSectionsCone.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def coherentDiagramSectionsCone : JoinCone F := (coherentSectionsConeRealization F).cone"
+          },
+          {
+            "line": 33,
+            "head": "lemma coherentDiagramSectionsCone_vertex : (coherentDiagramSectionsCone F).vertex = coherentSpaceSectionsVertex F := (coherentSectionsConeRealization F).vertex_eq"
+          }
+        ]
+      }
+    ],
+    "decision": "原典は 3.3.3.1 の証明を移して 3.3.3.3 を直接示せるという方法の注意である。native 全切断の極限性の証明はあるが、その一般の restriction map の iff はなく、この指定の直接証明の比較にもなっていない。"
+  }
+}

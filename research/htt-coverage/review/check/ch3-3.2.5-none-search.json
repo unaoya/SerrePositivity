@@ -1,0 +1,2802 @@
+{
+  "3.2.5.1": {
+    "page": 195,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native left/right unstraightening の反対比較はあるが、原典の marked projective model における (Unφ+Fop)op と次の Nf(C) との具体的な Quillen right functor 比較ではない。相対 nerve の全 marking を忘れたものとの同定も未供給である。"
+  },
+  "3.2.5.2": {
+    "page": 195,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib Grothendieck は通常圏値 functor の total category、native Kan diagram の unstraightening は別の coherent 模型である。原典の全非空部分集合 J′ と compatible τ(J′) により全単体を定める Nf(C) の同じ construction はなく、通常の nerve の合成だけもその定義ではない。"
+  },
+  "3.2.5.3": {
+    "page": 196,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native strict diagram の total は存在するが、元の Nf([n])→Mop(φ) を作り各 fiber で同型とする比較はない。両模型を分類 functor に送って同値とすることは、この canonical strict fiber iso より弱い別の結論である。"
+  },
+  "3.2.5.4": {
+    "page": 196,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native unstraightening の fiber は元の Kan 値と比較できるが、任意の simplicial-set-valued f の Nf(C) の functoriality と pointwise な厳密な fiber の同型ではない。Grothendieck の ordinary fibers に限定しても、元の relative nerve との比較を要する。"
+  },
+  "3.2.5.5": {
+    "page": 196,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native straightening の準圏同値はあるが、任意の SSet-valued f の relative nerve の通常圏の左随伴 F•(C) ではない。left fibration の fiber との弱同値にも、この特定の left adjoint を選ぶ比較がない。"
+  },
+  "3.2.5.6": {
+    "page": 196,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Over C とその nerve はあるが、相対 nerve の左随伴を N(C)→N(C) に適用した FN(C)(C) を c↦N(C/c) と同定する宣言はない。米田の slice の表示のみは同じ左随伴の計算にはならない。"
+  },
+  "3.2.5.7": {
+    "page": 196,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native left unstraightening の base change はあるが、原典の任意 f:D→SSet と Nf∘g(C) を元の Nf(D) の strict pullback と同定する比較はない。ordinary Grothendieck pullback は target が通常圏値の場合で、Nf と未比較である。"
+  },
+  "3.2.5.8": {
+    "page": 197,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の ordinary left Kan extension と随伴の mate はあるが、原典の F•(C),F•(D) と postcomposition N(g)! の square に適用する relative nerve の比較がない。任意の既存 straightening の自然性だけはこの同じ四つの左随伴を定めない。"
+  },
+  "3.2.5.10": {
+    "page": 197,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native unstraightening の opposite comparison はあるが、Stφ(Xop)→FX(C)op の三つの自然性・poset の chain の最小元による記述を持つ同じ αC はない。ordinary left Kan extension の mate だけでは原典の具体的な chain formula に一致しない。"
+  },
+  "3.2.5.11": {
+    "page": 198,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native Kan diagram の unstraightening は left fibration を与え、ordinary Grothendieck nerve の結果もあるが、任意の SSet-valued α の relative nerve の inner/categorical fibration の保存と比較されていない。Kan-valued の別 total に関する lifting は同じ Nf(α) の成分ではない。"
+  },
+  "3.2.5.12": {
+    "page": 199,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native marked cocartesian functor は辺の保存条件であり、任意 F:C→SetΔ+ の underlying relative nerve の各辺の target-fiber marking を定める NF+ ではない。元の Nf(C) と SetΔ+ 自体が本体の別模型と未比較である。"
+  },
+  "3.2.5.13": {
+    "page": 199,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native straightening と ordinary adjunction はあるが、marked relative nerve NF+ を全 SetΔ+/N(C) 上で持つ通常圏の右随伴として構成していない。一般の随伴関手定理の型はこの具体的な right functor の existence input ではない。"
+  },
+  "3.2.5.14": {
+    "page": 199,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Kan extension の base-change mate はあるが、F•+(C) と F•+(D) の marked left adjoint がない。unmarked Grothendieck の postcomposition の四角は marking を持つ元の square と比較されない。"
+  },
+  "3.2.5.15": {
+    "page": 200,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native Kan-valued diagram への分類はあるが、原典の unmarked F•(C) と marked F•+(C) の projective cofibration 保存の二つの class を持たない。SSet の mono の保存だけを projective model の同じ cofibration の結論とはしない。"
+  },
+  "3.2.5.16": {
+    "page": 201,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native opposite straightening の mapping comparison はあるが、原典の αC を marked edges に拡張した Stφ+(•op)→F•+(C)op の同じ自然変換と比較しない。辺を反転する一般の functor は αC の指定三条件を供給しない。"
+  },
+  "3.2.5.17": {
+    "page": 201,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native coherent mapping comparison の equivalence はあるが、指定 αC(X) と αC+(X) の objectwise weak homotopy/Cartesian equivalence の型はない。比較先を任意の同値な模型に変えるだけでは、同じ写像の反転という原典の結論は得られない。"
+  },
+  "3.2.5.18": {
+    "page": 203,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native left-fibration/space-valued-functor の準圏同値はあるが、原典の F•(C)⊣N•(C) と F•+(C)⊣N•+(C) の具体的な通常圏の随伴と covariant/cocartesian/projective の model instances はない。模型比較が未供給なので component に数えない。"
+  },
+  "3.2.5.19": {
+    "page": 203,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native Kan diagram の total は left fibration を与えるが、それが原典の全部分集合データによる Nf(C) と同じである比較はない。さらに任意の objectwise Kan fibration α を covariant-model fibration にする相対 nerve の保存の型もない。"
+  },
+  "3.2.5.20": {
+    "page": 203,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native opposite unstraightening の comparison はあるが、元の αC+ の adjoint による NF(C)op→Unφ+(Fop) が同じ Cartesian model の weak equivalence になる比較はない。別の coherent diagram の同値を原典の比較写像の成分として転記しない。"
+  },
+  "3.2.5.21": {
+    "page": 204,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.4",
+        "3.2.5",
+        "3.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          "SerrePositivity"
+        ],
+        "file_count": 1695,
+        "line_count": 12373
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RelativeNerve|relativeNerve|Grothendieck|Unstraightening|Straightening|opFunctor|MarkedSSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1728
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftScaffoldFiberMap_postcomp {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) (f : E ⟶ E') (hf : f ≫ q = p) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E) (h : l ≫ p = simplicialReplacementProjection F) (h' : (l ≫ f) ≫ q = simplicialReplacementProjection F) (c : C) : leftScaffoldFiberMap q F (l ≫ f) h' c = leftScaffoldFiberMap p F l h c ≫ vertexFiberMap p q f hf (nerveVertex c)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_of_leftFibration_nerve_fibers {C : Type u} [Category.{u} C] {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q] (f : E ⟶ E') (hf : f ≫ q = p) (h : ∀ c : C, IsQCatEquivalence (vertexFiberMap p q f hf (nerveVertex c))) : IsPrecompositionEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def opFunctor : SSet.{u} ⥤ SSet.{u} := SimplicialObject.opFunctor"
+          },
+          {
+            "line": 47,
+            "head": "protected abbrev op (X : SSet.{u}) : SSet.{u} := opFunctor.obj X"
+          },
+          {
+            "line": 53,
+            "head": "lemma opFunctor_map {X Y : SSet.{u}} (f : X ⟶ Y) {n : SimplexCategoryᵒᵖ} (x : X.op.obj n) : (opFunctor.map f).app n x = opObjEquiv.symm (f.app _ (opObjEquiv x)) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedDiagram.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "structure QuasicategoryEnrichedDiagram (C : Type v) [Category.{u} C] [SimplicialCategory C] (J : Type u) [Category.{u} J] where"
+          },
+          {
+            "line": 37,
+            "head": "def QuasicategoryEnrichedDiagram.evaluate {C : Type v} [Category.{u} C] [SimplicialCategory C] {J : Type u} [Category.{u} J] (D : QuasicategoryEnrichedDiagram C J) (X : C) : J ⥤ QuasicategoryObject.{u} where"
+          }
+        ]
+      }
+    ],
+    "decision": "native cocartesian fibration の classification と strict transport はあるが、任意 f:C→SSet の元の Nf(C) とその標準辺の target component による iff に接続していない。ordinary Grothendieck の全空間や Kan 値の別の total だけは、この特定の relative nerve の三結論との比較を欠く。"
+  }
+}
