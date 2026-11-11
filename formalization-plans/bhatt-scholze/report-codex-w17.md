@@ -241,3 +241,19 @@ Lemma 7.7 は `DiscreteDelta`・`DiscretePrism`、Lemma 7.8 は `CategoryTheory.
 | 完全化と Cor 7.3 候補の一意同型 | 1〜2本、300〜600行 |
 
 合計 **9〜16本、約3,100〜6,000行**。一般 qrsp の Δ・HT 比較はこの工数に含めない。まず有限 T の実包絡と全有界標的への始性、その後 S′ の完備余極限、最後に完全化の比較の順とする。**H5 は停止点0。実装は検収を待つ。**
+
+## 12. H5 有限 T の途中：正則性・実完備化比較・実包絡
+
+main は `0ec3d99b0` まで取り込み済み（停止点3の登録 `f3ff89155` を含む）。**停止点4には未到達**。有限 T の忠実平坦性、drafts の固定 A_inf と ULift 添字までの照合が残る。
+
+- `RootFamilyBase`・`RootFamilyPerfectoid`：任意添字の根付きモノイド環の実 H⁰ p 完備化、古典的完備化との単位を保つ比較、perfectoid 性。既存 `Perfectoidization/Derived/RootAdjunction` の古典的な私有補題 `monomialAdicCompletionPerfectoid` を `import all` で再利用した（同じ証明を作らない）。この import の推移閉包には E3 interface があるが、新規宣言の型に ∞ 側の対象はない。監査も標準三公理のみ。
+- `RootFamilyFractionBasis`・`RootRelationPolynomial`・`RootRelationRawBasis`・`RootRelationRawRegular`：有限関係商の小数指数自由基底、忠実平坦性、生の Xi−fi の Koszul 正則性、係数と同じ p ねじれの指数。
+- `PointwiseProjectiveCompletion`・`PointwiseKoszulCompletion`・`KoszulCompletionRegular`：係数環上で代数と関係商が自由な場合、Koszul 分解を実各項完備化で移す。係数の p 正則性は不要。係数制限後の K-projective 模型とホモトピー同値を使い、実際の完備環上の Koszul 複体へ比較した。
+- `FiniteQuotientComplete`・`PrincipalQuotientComparison`・`RootRelationCompletion`・`RootRelationBounded`：有限関係の通常商の導来完備性、生の関係商の実完備化との単位を保つ環同型、有界ねじれ、古典的 p 完備性、通常商の再完備化との同型。drafts の定義は変更していない。
+- `PerfectoidPrismPresentation`・`PerfectEnvelopeInitial`・`KoszulRingEquiv`・`PrismRelationQuotient`・`PerfectoidRelationEnvelope`・`PrismInitialTransport`・`RootRelationCoordinates`・`RootRelationEnvelope`：完全 prism の剰余表示（零環を含む）、任意の有界標的への一意な基底持ち上げ、K5 の有界な有限 lci 包絡。公開した `exists_rootRelationEnvelope` は具体的な持ち上げ・実包絡・剰余単位・その係数射との対応式と、全有界試験 prism への始性を返す。始性を p 正則な標的へ狭めていない。
+- `RootFamilyReindex`：小さい添字とその宇宙持ち上げの基底比較（各段の根と単位を保存）。有限関係イデアル・商までの照合は続ける。
+- 承認済みの `qrsp_completelyFaithfullyFlat` の証明コメントだけを修正。一般形の Fil₀ の包含は「mod p の平坦な余核による純粋な包含」とし、drafts の型は維持した。
+
+検証：22 新規モジュール、1,803行、87個の名前付き公開宣言。有限 T の包絡まで `lake build ...RootRelationEnvelope`（4,705 jobs）と添字変更の個別ビルドが成功。全22本を import した `#check`・`#print axioms`・`#print sorries` は87件すべて成功、sorryなし・標準三公理のみ。ログ：`/tmp/serre-w17/h5/finite/build-28.log`、`audit-1.log`。入口・全体監査への登録は行っていない。
+
+次は、普遍除算の実 mod (p,d) の忠実平坦性を、関係商への底変換と実完備化へ移す。途中の一般完備テンソル H⁰ 比較は `HomologicalAlgebra/DerivedCompletion/` の新規ファイルに置く。現在の合計規模は上限内で、S′ の生の余極限と完備余極限の比較はまだ実装していない。
