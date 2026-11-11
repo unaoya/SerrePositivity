@@ -282,3 +282,7 @@
 - `main` の `c77013db6` を `74b2af07f` で取り込んだ。K4 の `VariableEnvelopeBaseChange` が参照できるようになり、共有鍵を整理券方式に切り替えた。
 - `WittFiniteBridgeNaturality` で有限枠の各次数の結晶の橋を余単体射にし、`WittFiniteBridgeSquare` で大きい Witt 枠への二つの合成を各次数で照合した。`PDDeRhamSubstitutionDegreeZero` は次数 0 の代入と微分の可換性を証明した。
 - 共通の `SerrePositivity.CommutativeAlgebra.DeRham.PolynomialDeRhamCompletionUnit` で未完備多項式 de Rham 複体の有界性と完備化単位、`SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelEquivalence` で正則なスカラーの冪商から完備化同値を判定する補題を示した。これら5本は鍵付きの対象ビルドを通った。61本の一時監査は1,781宣言で標準三公理のみ。
+
+- `PDDeRhamSubstitutionDifferential` で、多項式代入と完備分冪微分の可換性を全次数で示した。頂点変数の微分が 1 形式を生成し、外積の保存と Leibniz 則で高次数へ延ばす。`PDDeRhamRowFormsExt` で係数と微分を保つ形式の写像を次数 0 で比較し、`PDDeRhamSubstitutionCofaces` と `PDDeRhamSubstitutionFunctor` で余面・余退化、恒等射、合成の厳密な両立を示した。二つの射影も厳密に自然になった。
+- `PDDeRhamCoefficientProjection` で、D68 の既存の総複体の係数変更と実際の二射影の成分を照合した。`PDRawColumnCompletion` で標数を仮定しない未完備の分冪列と完備列への標準写像、`PDRawFormsBaseChange` で各項の自由模型の通常の底変換を作った。`SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeModel` で完備化同値と射影模型から完備導来底変換を計算する同型と可換図式を示した。
+- この追加8本は鍵付きの対象ビルドを通った。69本の一時監査は1,977宣言で標準三公理のみ。残りの Witt の二比較では、有限冪商から列の完備底変換を計算する部分と、K4 の比較を余単体構造に移して一般の結晶の橋を適用する部分を続ける。
