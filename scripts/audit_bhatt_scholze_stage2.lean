@@ -304,6 +304,34 @@ import SerrePositivity.CommutativeAlgebra.Adic.CompatibleResidues
 import SerrePositivity.CommutativeAlgebra.Adic.ModuleCompleteSup
 import SerrePositivity.CommutativeAlgebra.CompletelyFlat.FiniteIdealReduction
 import SerrePositivity.HomologicalAlgebra.Cech.InverseTower
+import SerrePositivity.BhattScholze.Semiperfectoid.DiscreteDelta
+import SerrePositivity.BhattScholze.Semiperfectoid.DiscretePrism
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelope
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeCoefficient
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeCompletedResidue
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeConormal
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeDiscrete
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeExistence
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeInitial
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeInvertP
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeInvertPGenerators
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeKoszul
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopePresentation
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeReduction
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeRegular
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeResidue
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeTensorSwap
+import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeVariables
+import SerrePositivity.BhattScholze.Semiperfectoid.PrismRetract
+import SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelope
+import SerrePositivity.CategoryTheory.InitialOfRetraction
+import SerrePositivity.CommutativeAlgebra.Adic.RingRetract
+import SerrePositivity.CommutativeAlgebra.Koszul.Generators
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletionEquivalence
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RegularQuotientH0
+import SerrePositivity.HomologicalAlgebra.DerivedScalarExtensionComposition
+import SerrePositivity.HomologicalAlgebra.KoszulRegularBaseChange
+import SerrePositivity.HomologicalAlgebra.RegularRelationCompletedBaseChange
 import Lean.Util.CollectAxioms
 
 /-!
@@ -316,6 +344,34 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.BhattScholze.Semiperfectoid.DiscreteDelta,
+    `SerrePositivity.BhattScholze.Semiperfectoid.DiscretePrism,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelope,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeCoefficient,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeCompletedResidue,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeConormal,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeDiscrete,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeExistence,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeInitial,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeInvertP,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeInvertPGenerators,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeKoszul,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopePresentation,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeReduction,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeRegular,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeResidue,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeTensorSwap,
+    `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeVariables,
+    `SerrePositivity.BhattScholze.Semiperfectoid.PrismRetract,
+    `SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelope,
+    `SerrePositivity.CategoryTheory.InitialOfRetraction,
+    `SerrePositivity.CommutativeAlgebra.Adic.RingRetract,
+    `SerrePositivity.CommutativeAlgebra.Koszul.Generators,
+    `SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletionEquivalence,
+    `SerrePositivity.HomologicalAlgebra.DerivedCompletion.RegularQuotientH0,
+    `SerrePositivity.HomologicalAlgebra.DerivedScalarExtensionComposition,
+    `SerrePositivity.HomologicalAlgebra.KoszulRegularBaseChange,
+    `SerrePositivity.HomologicalAlgebra.RegularRelationCompletedBaseChange,
     `SerrePositivity.BhattScholze.Delta.Basic.Tensor,
     `SerrePositivity.BhattScholze.Prism.Bounded.CompleteCochainPurity,
     `SerrePositivity.BhattScholze.Prism.Bounded.CompleteFlatCochain,
