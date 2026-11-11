@@ -658,3 +658,19 @@ SerrePositivity.BhattScholze.Prismatic.CrystallineResidueAlgebra
 SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineQuotient
 SerrePositivity.BhattScholze.Prismatic.PDCechResidueEquivalence
 ```
+
+
+### P3 続行 — 具体的な零次の塔の pro 弱終性
+
+- `CrystallineCechProWeakTerminal` の対象ビルドが成功（`/private/tmp/d69-p3-build-9.log`）。`pdCechTowerZero_proWeaklyTerminal` は、全射な枠の分冪包の有限冪商の塔について、任意の厚化の p 冪零指数で射を降ろして具体的に証明した。`pdCechSmallTowerZero_proWeaklyTerminal` が小さい模型での同じ宣言。基底の係数構造の両立と、零次の包の濃度が κ に入る仮定を型に持つ。
+- `CrystallinePDQuotientMap` と `PDCechResidueNaturality` の対象ビルドも成功（`/private/tmp/d69-p3-build-10.log`）。前者は任意の分冪射を同じ指数の有限冪商の厚化の射へ降ろす。後者は任意の頂点写像が剰余同型とその逆の構造射を保つことを、増強の自然性で示す。
+- 一時監査は21モジュール・376宣言、標準三公理のみ（`/private/tmp/AuditD69P3TwentyOne.lean`、`/private/tmp/d69-p3-audit-twentyone.log`）。今回の3本にも sorry・独自公理0。既存宣言・Nakayama の二ファイル・公式登録は変更していない。
+- 残りは全 Čech 項の余単体的対象と有限段の余積への接続、分冪包の濃度評価、局所化・構造環の層性など。全 Čech 項の組み立てと指定変数像の延長の存在一意性は作業木で検査中。この記録は停止点3ではない。
+
+登録候補への追加（BS 3本）：
+
+```text
+SerrePositivity.BhattScholze.Prismatic.CrystallineCechProWeakTerminal
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotientMap
+SerrePositivity.BhattScholze.Prismatic.PDCechResidueNaturality
+```
