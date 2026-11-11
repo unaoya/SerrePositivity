@@ -25,7 +25,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory HomotopicalAlgebra
-open SerrePositivity.EInfinity.FrameHom.LocalizedAdjunction
+
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 

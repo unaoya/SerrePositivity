@@ -26,7 +26,7 @@ namespace SerrePositivity.EInfinity.ComplexLimits
 
 open CategoryTheory HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.FrameHom.LocalizedAdjunction
+
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 
