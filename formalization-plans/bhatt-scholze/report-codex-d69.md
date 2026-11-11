@@ -499,3 +499,12 @@ SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarCokernelTensor
 ### P2 の残り
 
 最後の二つの比較の検収は引き続き残る。各項の完備係数拡大と実際の有限 Witt 模型の同定を余単体構造に合わせ、指定された二比較の係数変更後の交代余面複体の擬同型を閉じる。この途中取り込みの後も作業を続け、P2 全体が対象ビルド・監査を通ったところで停止点2を報告する。
+
+## P2 続行（2026-11-11 夜、途中取り込み後）
+
+- 調整役の登録 `724b03fa2` を含む main `53ff00aa1` を fast-forward で取り込んだ。既存89本の入口・監査登録は main のものをそのまま使う。
+- 共通の新規 `SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseTensor` と `SerrePositivity.HomologicalAlgebra.DerivedCompletion.TensorCompletionUnit` が対象ビルドを通った（`/private/tmp/d69-ticket-build-32.log`・`/private/tmp/d69-ticket-build-33.log`）。鍵は `--wait 3600`、各ビルドの間だけ保持した。
+- `PointwiseTensor` は各項の H⁰ 完備係数拡大を通常テンソル環の主完備化と線形に同定し、単位と代数射についての自然性を示す。`TensorCompletionUnit` はテンソルの一方の主完備化単位が、全体の主完備化後に左係数上の代数同型になることと厳密な自然性を示す。この環の同型には平坦性を仮定しない。各項が導来底変換を計算するための正則性・完全平坦性とは分けて使う。
+- 一時監査は124モジュール・3,005宣言、標準三公理のみ。`/private/tmp/AuditD69P2MorningNinetyOne.lean`、ログ `/private/tmp/d69-morning-audit-ninetyone.log`。今回の登録候補追加は上記の共通2本。入口・共通監査の登録は変更していない。
+- Nakayama の整理候補：⑤c の `HomologicalAlgebra.CochainCompleteDetection.cochain_homology_isZero_of_complete_of_scalarCone_isZero` に、⑤b の `CompleteCochainReduction` が持つ正則な通常商とスカラー錐の比較を組み合わせれば、通常商版の証明を同じ入口へ寄せられる見込み。現段階では両ファイルを変更せず、停止点2で再確認する。
+- 最後の二比較は引き続き未完了。実際の小さい分冪項の完備テンソル同型と、有限・大きい Witt の射を余面構造まで合わせる。
