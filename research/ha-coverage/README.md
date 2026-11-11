@@ -17,6 +17,8 @@
 
 ## ファイル
 
+- 一覧のページ（非公開の Artifact、調整役が照合の取り込みごとに更新）：https://claude.ai/artifact/SCyH9UhD3zoQKEKemS7WbQ
+
 - `citations.csv`：Lean の docstring の HA の引用（番号つき、2,547 件、11-07 の main で採取）。列は `file,line,kind,number,section,directory`。番号のない「HA」（「HA 成分」「`ModelBridge.HA`」などの別の略号）は含めない。
 - `plan-citations.csv`：計画（`formalization-plans/`、archive を除く）と `research/k-coverage/` の HA の引用（74 件）。どの項目が段階 II で要るかの印。
 - `toc.md`・`items.csv`：Codex が段 0 で作る（`codex-review.md` §2）。
