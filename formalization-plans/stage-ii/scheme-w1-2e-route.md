@@ -1037,3 +1037,97 @@ JM+IⁿM が G の成分射影で保たれることを、和の代表と射影�
 全ビルドと監査は `with_build_lock.sh --wait 3600` を経由し、一回ごとに鍵を返した。既存の宣言の型・本文は変えず、新規宣言に `sorry`・`admit`・追加公理・計算量上限の追加はない。宇宙の条件は従来どおりで、大きい型の入口は承認済みの `Module.Finite.small`・`Shrink.linearEquiv` による移送の方針を保つ。
 
 `fa676e429` で main `2fc3dc7ce` を取り込んだ。今回の検証済み AG のローカル import 閉包・設定・監査スクリプト **671 ファイル**の SHA-256 を前後で比較し、不一致 **0**。main 側の変更は他レーンの指示文書のみであり、上のビルドと監査は取り込み後にも対応する。
+
+## 商係数比較の自然性と I 進遷移への接続（11-12）
+
+`03e7b92c2` に新規 9 モジュールと直接 importer を保存（1,185 行）。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,291 jobs 成功**。別の共有鍵で行った公式監査は **6,704 宣言・標準三公理のみ**。
+
+登録モジュール（すべて `SerrePositivity.AlgebraicGeometry` の下）：
+
+- `ProjectiveCoefficientChartTransport`
+- `ProjectiveNatCoefficientNaturality`
+- `ReesClosedCoefficientAdicFormalFunctions`
+- `ReesClosedCoefficientModuleMap`
+- `ReesClosedCoefficientNaturality`
+- `ReesCoefficientAdicCech`
+- `ReesCoefficientAdicCechTransition`
+- `ReesCoefficientAdicQuotient`
+- `SurjectiveCoefficientQuotient`
+
+実際の次数付き加群写像 M→N を M/JM→N/JN へ降ろし、その写像が (R/J)[X] 上線形であることと、元の R[X] へ制限すると以前の商写像に戻ることを示した。この実際の写像について、商係数の標準開比較と Čech コホモロジーの比較が可換となる。
+
+次数族の等式を比較同型の型へ直接輸送すると核の計算が重くなるため、今回は次数成分上の恒等加群写像を標準開へ送る `projectiveCoefficientChartIsoOfRestrictEq` を使い、射に自然な比較 `projectiveNatCoefficientChartIso`・`projectiveNatCoefficientCechIso` を追加した。既存の `projectiveNatPolynomialCoefficientChangeChartIso`・`reesClosedCoefficientCechHomologyIso` の型・本文は変更していない。この束の自然性と I 進系には新しい比較を一貫して使う。計算量上限は増やしていない。
+
+さらに基底の全射 R→B を固定し、実際の R 上の商 M/IⁿM の型を保ったまま B と B[X] の作用を与えた。部分加群は (I B)ⁿ の拡大作用そのものに一致する。I 進遷移を B[X] 上線形に扱い、その R[X] への係数制限が以前の実際の遷移に一致することを代表上で示した。各段の標準開比較と Čech 比較はこの遷移と可換であり、互換族の線形同型へまとめられる。
+
+これを B=R/J、係数加群 M/JM に特殊化した `reesClosedCoefficientAdicCechIso_transition` は、既存の `reesAdicProjectiveClosedCechTransition` そのものと可換である。既存の互換族と、R/J 上で計算した各 (M/JM)/(I B)ⁿ(M/JM) の Čech コホモロジーの互換族との間に線形同型を作った。Noether な R と R[X] 上有限な M の下で、既存の形式関数と合成し、
+
+AdicCompletion I H_Cech^q(M/JM;d) ≃ₗ[R] {R/J 上の各 I 進閉厚化の Čech コホモロジーの互換族}
+
+を得た。この商係数表示の形式関数も、元の M→M/JM からの射影と可換である。左辺の完備化は I に関する R 加群の完備化として述べており、B 上の完備化との交換や非平坦なコホモロジーとテンソル積の交換を仮定していない。
+
+宣言と主張（ローカルな型クラス設定を除く 55 件）：
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveCoefficientChartIsoOfRestrictEq` | 指定した次数族との同定を、恒等の加群写像による標準開の同型にする。 |
+| `projectiveCoefficientChartIsoOfRestrictEq_naturality` | 次数族の同定を含む比較も、次数を保つ加群の射に自然。 |
+| `projectiveNatCoefficientChartIso` | 自然数次数の係数比較を、次数成分の恒等写像を介して構成する。 |
+| `projectiveNatCoefficientChartIso_naturality` | 自然数次数の係数比較は、次数を保つ加群の射に自然。 |
+| `projectiveNatCoefficientCechIso` | 自然な標準開比較が誘導する Čech コホモロジーの係数比較。 |
+| `projectiveNatCoefficientCechIso_naturality` | 自然数次数の Čech 係数比較は、次数を保つ加群写像に自然。 |
+| `reesClosedCoefficientAdicCechIso` | M/JM の実際の I 進閉厚化の、商係数 Čech 計算との比較。 |
+| `reesClosedCoefficientAdicCechIso_transition` | 閉厚化の商係数比較は、以前の実際の I 進 Čech 遷移と可換。 |
+| `reesClosedCoefficientAdicCechFamiliesEquiv` | 閉厚化の実際の互換族を、R/J 上の Čech 計算の互換族へ送る同型。 |
+| `reesClosedCoefficientAdicCechFamiliesMap` | 元の M の閉厚化の互換族から、商係数で表示した M/JM の互換族への写像。 |
+| `reesClosedCoefficientAdicCechFormalFunctions` | M/JM の Čech 形式関数を、R/J 上の各閉厚化の計算を用いて表す同型。 |
+| `reesClosedCoefficientAdicCechFormalFunctions_naturality` | 商係数で表した Čech 形式関数も、元の M からの閉厚化射影と可換。 |
+| `reesClosedCoefficientModuleMap` | 実際の閉厚化の商写像を、商係数多項式環上の写像として表す。 |
+| `reesClosedCoefficientModuleMap_restrictScalars` | 元の多項式環への係数制限で、既存の実際の商写像を回復する。 |
+| `reesClosedCoefficientModuleMap_preservesPiece` | 商係数の閉厚化の射も、実際の商次数成分を保つ。 |
+| `reesClosedCoefficientNaturalChartIso` | 実際の閉厚化の標準開の、射に自然な商係数比較。 |
+| `reesClosedCoefficientNaturalCechIso` | 実際の閉厚化の Čech コホモロジーの、射に自然な商係数比較。 |
+| `reesClosedCoefficientModuleChartMap` | 次数付き加群の射が誘導する、商係数の閉厚化の標準開の射。 |
+| `reesClosedCoefficientNaturalChartIso_naturality` | 商係数の標準開比較は、実際の閉厚化の加群写像と可換。 |
+| `reesClosedCoefficientModuleCechMap` | 元の次数付き加群の射から得られる、商係数の閉厚化の Čech 写像。 |
+| `reesClosedCoefficientNaturalCechIso_naturality` | 商係数の Čech 比較は、実際の閉厚化の加群写像と可換。 |
+| `reesCoefficientAdicProjection` | 変更後の基底環上で見た、実際の I 進商への射影。 |
+| `reesCoefficientAdicPiece` | I 進商の Proj 次数成分を、変更後の係数環上の部分加群として表す。 |
+| `reesCoefficientAdicPiece_restrictScalars` | I 進商の次数成分は、係数制限で元の R 上の商次数成分に戻る。 |
+| `reesCoefficientAdicPieceGradedSMul` | 変更後の多項式係数の作用は、I 進商の次数を保つ。 |
+| `reesCoefficientAdicTransition_preservesPiece` | 実際の I 進遷移は、変更後の係数環で表した次数成分も保つ。 |
+| `reesCoefficientAdicChartIso` | I 進商の標準開図式の、変更後の係数環への比較同型。 |
+| `reesCoefficientAdicChartTransition` | 変更後の係数環上での、実際の I 進遷移の標準開写像。 |
+| `reesCoefficientAdicChartIso_transition` | I 進商の係数比較は、実際の I 進遷移と可換。 |
+| `reesCoefficientAdicOriginalCechHomology` | 元の R 上で計算する、実際の I 進商の Čech コホモロジー。 |
+| `reesCoefficientAdicOriginalCechTransition` | 元の R 上で計算する、実際の I 進遷移の Čech 写像。 |
+| `reesCoefficientAdicRestrictedCechHomology` | 変更後の係数環上で計算した Čech コホモロジーの係数制限。 |
+| `reesCoefficientAdicCechIso` | I 進商の Čech コホモロジーの係数比較。 |
+| `reesCoefficientAdicRestrictedCechTransition` | 変更後の係数環上の I 進遷移が誘導する Čech 写像の係数制限。 |
+| `reesCoefficientAdicCechIso_transition` | I 進商の Čech 係数比較は、実際の I 進遷移と可換。 |
+| `reesCoefficientAdicRestrictedCechFamilies` | 変更後の係数環で計算した I 進 Čech コホモロジーの互換族。 |
+| `reesCoefficientAdicCechFamiliesEquiv` | 元の R 上の互換族と、変更後の係数環上の計算の互換族との同型。 |
+| `reesCoefficientAdicPolynomial_surjective` | 全射な基底係数変更は、多項式環の係数変更も全射にする。 |
+| `reesCoefficientAdicSubmodule` | 実際の IⁿM を、変更後の多項式環上の部分加群として表す。 |
+| `reesCoefficientAdicSubmodule_eq` | 変更後の係数環で表した IⁿM は、I の拡大冪の作用そのものである。 |
+| `reesCoefficientAdicSubmodule_eq_mappedIdeal` | 同じ部分加群は、変更後の基底のイデアル I B の冪による作用でもある。 |
+| `reesCoefficientAdicQuotientPolynomialModule` | 同じ I 進商の、変更後の多項式環上の加群構造。 |
+| `reesCoefficientAdicQuotientModule` | 同じ I 進商の、変更後の基底環上の加群構造。 |
+| `reesCoefficientAdicQuotient_base_scalarTower` | 元の基底と変更後の基底の作用の塔。 |
+| `reesCoefficientAdicQuotient_base_polynomial_scalarTower` | 元の基底と変更後の多項式環の作用の塔。 |
+| `reesCoefficientAdicQuotient_polynomial_scalarTower` | 変更後の基底と変更後の多項式環の作用の塔。 |
+| `reesCoefficientAdicQuotient_coefficient_scalarTower` | 二つの多項式環の作用の塔。 |
+| `reesCoefficientAdicQuotientTransition` | 変更後の多項式環上で見た、実際の I 進遷移。 |
+| `reesCoefficientAdicQuotientTransition_restrictScalars` | I 進遷移の係数制限は、以前の実際の遷移そのものである。 |
+| `surjectiveCoefficientSubmodule` | 全射な係数変更では、小さい環の部分加群は大きい環でも閉じている。 |
+| `surjectiveCoefficientSubmodule_restrictScalars` | 係数変更後の部分加群の制限は元の部分加群に一致する。 |
+| `surjectiveCoefficientQuotientModule` | 元の商の型を保った、変更後の係数環上の加群構造。 |
+| `surjectiveCoefficientQuotient_scalarTower` | 変更後の係数作用は、元の商の作用と両立する。 |
+| `surjectiveCoefficientQuotientProjection` | 商への射影は変更後の係数環上でも線形。 |
+| `surjectiveCoefficientQuotientProjection_apply` | 係数変更後の射影も、代表を同じ剰余類へ送る。 |
+
+コホモロジーと形式関数の主張は、引き続き Stacks 30.20.5 の原典の Hⁱ に対応する **Čech 版**である。分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、この比較は形式化していない。
+
+**停止点 2e ではない。** 今回は、商係数による比較を実際の加群の射に自然にし、実際の I 進遷移・互換族・形式関数・元の M からの射影まで接続した。I 進系全体の比較を任意の M→N に対する自然変換として一つにまとめる API はまだ作っていない（各段の一般自然性は上の `projectiveNatCoefficientCechIso_naturality` で供給）。次の主要な作業群は引き続き、共通アフィン細分、flat なテンソル底変換、実際の Čech Frobenius と p 倍の指数、filtered colimit の比較である。一般の固有射の有限性・Stein 分解・導来関手の Hⁱ との比較は範囲に加えていない。
+
+全ビルド・監査は共有鍵 `with_build_lock.sh --wait 3600` を経由し、一回ごとに鍵を返した。待ちは同じ worktree から一つだけ。ルート全体のビルドは行わず、取り込みは調整役に任せる。既存の宣言の型・本文、最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更していない。新規宣言に `sorry`・`admit`・追加公理・計算量上限の追加はない。宇宙の条件と `Module.Finite.small`・`Shrink.linearEquiv` による移送の方針も保つ。
