@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "f35ba6a0ff1ff41dc8d80030a5e5e32801de8eee",
+  "worktree_commit": "b5fecb63ffb248a753e68a3fb49ba469d8474a55",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
@@ -34,6 +34,47 @@
       "ha_page": 391,
       "declarations": [
         "SerrePositivity.InfinityCategories.fullSubcomplexOnVertices_quasicategory"
+      ]
+    },
+    "3.4.1.7": {
+      "ha_page": 402,
+      "declarations": [
+        "commAlgCatEquivUnder"
+      ]
+    },
+    "3.4.2.1": {
+      "ha_page": 417,
+      "declarations": [
+        "ModuleCat.forget₂AddCommGroupIsEquivalence"
+      ]
+    },
+    "3.4.2.3": {
+      "ha_page": 418,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.nonempty_cocartesianEdgeLift"
+      ]
+    },
+    "3.4.3.2": {
+      "ha_page": 421,
+      "declarations": [
+        "ModuleCat.hasLimits",
+        "ModuleCat.forget₂AddCommGroup_preservesLimits",
+        "ModuleCat.forget₂AddCommGroup_reflectsLimit"
+      ]
+    },
+    "3.4.3.6": {
+      "ha_page": 423,
+      "declarations": [
+        "ModuleCat.hasLimits",
+        "ModuleCat.forget₂AddCommGroup_preservesLimits",
+        "ModuleCat.forget₂AddCommGroup_reflectsLimit"
+      ]
+    },
+    "3.4.4.6": {
+      "ha_page": 437,
+      "declarations": [
+        "ModuleCat.forget₂PreservesColimitsOfShape",
+        "ModuleCat.reflectsColimitsOfShape"
       ]
     }
   },
@@ -123,6 +164,110 @@
       "line": 51,
       "source_sha256": "13971dc2a3e915fc118fdd580814211873c66d8efa8a43ec02c158077851628f",
       "type": "SerrePositivity.InfinityCategories.fullSubcomplexOnVertices_quasicategory.{u_1} : ∀ (X : SSet.{u_1}) [X.Quasicategory]\n  (P :\n    @CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n        CategoryTheory.types.{u_1} X\n        (@Opposite.op.{1} SimplexCategory { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }) →\n      Prop),\n  (@SSet.Subcomplex.toSSet.{u_1} X\n      (SerrePositivity.InfinityCategories.fullSubcomplexOnVertices.{u_1} X P)).Quasicategory",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "commAlgCatEquivUnder": {
+      "name": "commAlgCatEquivUnder",
+      "module": "Mathlib.Algebra.Category.CommAlgCat.Basic",
+      "path": "Mathlib/Algebra/Category/CommAlgCat/Basic.lean",
+      "line": 213,
+      "source_sha256": "a3a66b780d116d78883679f3b1feafe62f87aebbe57733b629b28522a0588243",
+      "type": "commAlgCatEquivUnder.{u_1} : (R : CommRingCat.{u_1}) →\n  @CategoryTheory.Equivalence.{u_1, u_1, u_1 + 1, u_1 + 1}\n    (@CommAlgCat.{u_1, u_1} (↑R) (@CommRingCat.instCommRingObjForgetRingHomCarrier.{u_1} R))\n    (@CategoryTheory.Under.{u_1, u_1 + 1} CommRingCat.{u_1} CommRingCat.instCategory.{u_1} R)\n    (@CommAlgCat.instCategory.{u_1, u_1} (↑R) (@CommRingCat.instCommRingObjForgetRingHomCarrier.{u_1} R))\n    (@CategoryTheory.instCategoryUnder.{u_1, u_1 + 1} CommRingCat.{u_1} CommRingCat.instCategory.{u_1} R)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "ModuleCat.forget₂AddCommGroupIsEquivalence": {
+      "name": "ModuleCat.forget₂AddCommGroupIsEquivalence",
+      "module": "Mathlib.Algebra.Category.Grp.ZModuleEquivalence",
+      "path": "Mathlib/Algebra/Category/Grp/ZModuleEquivalence.lean",
+      "line": 51,
+      "source_sha256": "a015c74c24a3ba79deca529ced72d872e57103144b4ce064bb6614a8af96de9e",
+      "type": "ModuleCat.forget₂AddCommGroupIsEquivalence.{u_1} : @CategoryTheory.Functor.IsEquivalence.{u_1, u_1, u_1 + 1, u_1 + 1}\n  (@ModuleCat.{u_1, 0} Int Int.instRing) (@ModuleCat.moduleCategory.{u_1, 0} Int Int.instRing) AddCommGrpCat.{u_1}\n  AddCommGrpCat.instCategory.{u_1}\n  (@CategoryTheory.forget₂.{u_1, u_1, u_1 + 1, u_1, u_1, u_1 + 1, u_1} (@ModuleCat.{u_1, 0} Int Int.instRing)\n    (@ModuleCat.moduleCategory.{u_1, 0} Int Int.instRing)\n    (fun x1 x2 =>\n      @LinearMap.{0, 0, u_1, u_1} Int Int (@Ring.toSemiring.{0} Int Int.instRing)\n        (@Ring.toSemiring.{0} Int Int.instRing)\n        (@RingHom.id.{0} Int (@Semiring.toNonAssocSemiring.{0} Int (@Ring.toSemiring.{0} Int Int.instRing)))\n        (@ModuleCat.carrier.{u_1, 0} Int Int.instRing x1) (@ModuleCat.carrier.{u_1, 0} Int Int.instRing x2)\n        (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, 0} Int Int.instRing x1)\n          (@ModuleCat.isAddCommGroup.{u_1, 0} Int Int.instRing x1))\n        (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, 0} Int Int.instRing x2)\n          (@ModuleCat.isAddCommGroup.{u_1, 0} Int Int.instRing x2))\n        (@ModuleCat.isModule.{u_1, 0} Int Int.instRing x1) (@ModuleCat.isModule.{u_1, 0} Int Int.instRing x2))\n    (@ModuleCat.carrier.{u_1, 0} Int Int.instRing)\n    (fun X Y =>\n      @LinearMap.instFunLike.{0, 0, u_1, u_1} Int Int (@ModuleCat.carrier.{u_1, 0} Int Int.instRing X)\n        (@ModuleCat.carrier.{u_1, 0} Int Int.instRing Y) (@Ring.toSemiring.{0} Int Int.instRing)\n        (@Ring.toSemiring.{0} Int Int.instRing)\n        (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, 0} Int Int.instRing X)\n          (@ModuleCat.isAddCommGroup.{u_1, 0} Int Int.instRing X))\n        (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, 0} Int Int.instRing Y)\n          (@ModuleCat.isAddCommGroup.{u_1, 0} Int Int.instRing Y))\n        (@ModuleCat.isModule.{u_1, 0} Int Int.instRing X) (@ModuleCat.isModule.{u_1, 0} Int Int.instRing Y)\n        (@RingHom.id.{0} Int (@Semiring.toNonAssocSemiring.{0} Int (@Ring.toSemiring.{0} Int Int.instRing))))\n    (@ModuleCat.instConcreteCategoryLinearMapIdCarrier.{u_1, 0} Int Int.instRing) AddCommGrpCat.{u_1}\n    AddCommGrpCat.instCategory.{u_1}\n    (fun x1 x2 =>\n      @AddMonoidHom.{u_1, u_1} (↑x1) (↑x2)\n        (@AddZeroClass.toAddZero.{u_1} (↑x1)\n          (@AddMonoid.toAddZeroClass.{u_1} (↑x1)\n            (@SubNegMonoid.toAddMonoid.{u_1} (↑x1)\n              (@AddGroup.toSubNegMonoid.{u_1} (↑x1) (@AddCommGroup.toAddGroup.{u_1} (↑x1) x1.str)))))\n        (@AddZeroClass.toAddZero.{u_1} (↑x2)\n          (@AddMonoid.toAddZeroClass.{u_1} (↑x2)\n            (@SubNegMonoid.toAddMonoid.{u_1} (↑x2)\n              (@AddGroup.toSubNegMonoid.{u_1} (↑x2) (@AddCommGroup.toAddGroup.{u_1} (↑x2) x2.str))))))\n    AddCommGrpCat.carrier.{u_1}\n    (fun X Y =>\n      @AddMonoidHom.instFunLike.{u_1, u_1} (↑X) (↑Y)\n        (@AddZeroClass.toAddZero.{u_1} (↑X)\n          ((fun X =>\n              @AddMonoid.toAddZeroClass.{u_1} (↑X)\n                (@SubNegMonoid.toAddMonoid.{u_1} (↑X)\n                  (@AddGroup.toSubNegMonoid.{u_1} (↑X) (@AddCommGroup.toAddGroup.{u_1} (↑X) X.str))))\n            X))\n        (@AddZeroClass.toAddZero.{u_1} (↑Y)\n          (@AddMonoid.toAddZeroClass.{u_1} (↑Y)\n            (@SubNegMonoid.toAddMonoid.{u_1} (↑Y)\n              (@AddGroup.toSubNegMonoid.{u_1} (↑Y) (@AddCommGroup.toAddGroup.{u_1} (↑Y) Y.str))))))\n    AddCommGrpCat.instConcreteCategoryAddMonoidHomCarrier.{u_1}\n    (@ModuleCat.hasForgetToAddCommGroup.{0, u_1} Int Int.instRing))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.nonempty_cocartesianEdgeLift": {
+      "name": "SerrePositivity.InfinityCategories.nonempty_cocartesianEdgeLift",
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.Objects",
+      "path": "SerrePositivity/InfinityCategories/F1/Transport/Objects.lean",
+      "line": 43,
+      "source_sha256": "fb2f19f0a5fb6d29c77a396449b5234e697e1437d8e890efee27ffc7fac4ead4",
+      "type": "@SerrePositivity.InfinityCategories.nonempty_cocartesianEdgeLift.{u_1} : ∀ {X B : SSet.{u_1}}\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      X B)\n  [@SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} X B p]\n  (e :\n    @CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n      CategoryTheory.types.{u_1} B\n      (@Opposite.op.{1} SimplexCategory { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) }))\n  (x :\n    @CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n      CategoryTheory.types.{u_1}\n      (@SerrePositivity.InfinityCategories.vertexFiber.{u_1} X B p\n        (@DFunLike.coe.{u_1 + 1, u_1 + 1, u_1 + 1}\n          (TypeCat.Fun.{u_1, u_1}\n            (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1} B\n              (@Opposite.op.{1} SimplexCategory\n                {\n                  len :=\n                    @HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) }))\n            (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1} B\n              (@Opposite.op.{1} SimplexCategory\n                { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })))\n          ((fun X => X)\n            (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1} B\n              (@Opposite.op.{1} SimplexCategory\n                {\n                  len :=\n                    @HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) })))\n          (fun x =>\n            (fun X => X)\n              (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1} B\n                (@Opposite.op.{1} SimplexCategory\n                  { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })))\n          (@TypeCat.instFunLikeFun.{u_1, u_1}\n            (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1} B\n              (@Opposite.op.{1} SimplexCategory\n                {\n                  len :=\n                    @HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) }))\n            (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1} B\n              (@Opposite.op.{1} SimplexCategory\n                { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })))\n          (@CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1} (Type u_1) CategoryTheory.types.{u_1}\n            TypeCat.Fun.{u_1, u_1} (fun X => X) (@TypeCat.instFunLikeFun.{u_1, u_1}) instConcreteCategoryTypeFun.{u_1}\n            (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1} B\n              (@Opposite.op.{1} SimplexCategory\n                {\n                  len :=\n                    @HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))) }))\n            (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1} B\n              (@Opposite.op.{1} SimplexCategory { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n            (@CategoryTheory.SimplicialObject.δ.{u_1, u_1 + 1} (Type u_1) CategoryTheory.types.{u_1} B\n              (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n              (@OfNat.ofNat.{0}\n                (Fin\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                    (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n                (nat_lit 1)\n                (@Fin.instOfNat\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                    (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                  ⋯ (nat_lit 1)))))\n          e))\n      (@Opposite.op.{1} SimplexCategory { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })),\n  Nonempty.{u_1 + 1} (@SerrePositivity.InfinityCategories.CocartesianEdgeLift.{u_1} X B p e x)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "ModuleCat.hasLimits": {
+      "name": "ModuleCat.hasLimits",
+      "module": "Mathlib.Algebra.Category.ModuleCat.Limits",
+      "path": "Mathlib/Algebra/Category/ModuleCat/Limits.lean",
+      "line": 140,
+      "source_sha256": "9e992d98ff07a0a0bf89e52735e64f12296372528551dddbd10a54267c56c2be",
+      "type": "@ModuleCat.hasLimits.{u_1,\n    u_2} : ∀ {R : Type u_2} [inst : Ring.{u_2} R],\n  @CategoryTheory.Limits.HasLimits.{u_1, max (u_1 + 1) u_2} (@ModuleCat.{u_1, u_2} R inst)\n    (@ModuleCat.moduleCategory.{u_1, u_2} R inst)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "ModuleCat.forget₂AddCommGroup_preservesLimits": {
+      "name": "ModuleCat.forget₂AddCommGroup_preservesLimits",
+      "module": "Mathlib.Algebra.Category.ModuleCat.Limits",
+      "path": "Mathlib/Algebra/Category/ModuleCat/Limits.lean",
+      "line": 168,
+      "source_sha256": "9e992d98ff07a0a0bf89e52735e64f12296372528551dddbd10a54267c56c2be",
+      "type": "@ModuleCat.forget₂AddCommGroup_preservesLimits.{u_1,\n    u_2} : ∀ {R : Type u_2} [inst : Ring.{u_2} R],\n  @CategoryTheory.Limits.PreservesLimits.{u_1, u_1, max u_2 (u_1 + 1), u_1 + 1} (@ModuleCat.{u_1, u_2} R inst)\n    (@ModuleCat.moduleCategory.{u_1, u_2} R inst) AddCommGrpCat.{u_1} AddCommGrpCat.instCategory.{u_1}\n    (@CategoryTheory.forget₂.{u_1, u_1, max u_2 (u_1 + 1), u_1, u_1, u_1 + 1, u_1} (@ModuleCat.{u_1, u_2} R inst)\n      (@ModuleCat.moduleCategory.{u_1, u_2} R inst)\n      (fun x1 x2 =>\n        @LinearMap.{u_2, u_2, u_1, u_1} R R (@Ring.toSemiring.{u_2} R inst) (@Ring.toSemiring.{u_2} R inst)\n          (@RingHom.id.{u_2} R (@Semiring.toNonAssocSemiring.{u_2} R (@Ring.toSemiring.{u_2} R inst)))\n          (@ModuleCat.carrier.{u_1, u_2} R inst x1) (@ModuleCat.carrier.{u_1, u_2} R inst x2)\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst x1)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst x1))\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst x2)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst x2))\n          (@ModuleCat.isModule.{u_1, u_2} R inst x1) (@ModuleCat.isModule.{u_1, u_2} R inst x2))\n      (@ModuleCat.carrier.{u_1, u_2} R inst)\n      (fun X Y =>\n        @LinearMap.instFunLike.{u_2, u_2, u_1, u_1} R R (@ModuleCat.carrier.{u_1, u_2} R inst X)\n          (@ModuleCat.carrier.{u_1, u_2} R inst Y) (@Ring.toSemiring.{u_2} R inst) (@Ring.toSemiring.{u_2} R inst)\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst X)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst X))\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst Y)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst Y))\n          (@ModuleCat.isModule.{u_1, u_2} R inst X) (@ModuleCat.isModule.{u_1, u_2} R inst Y)\n          (@RingHom.id.{u_2} R (@Semiring.toNonAssocSemiring.{u_2} R (@Ring.toSemiring.{u_2} R inst))))\n      (@ModuleCat.instConcreteCategoryLinearMapIdCarrier.{u_1, u_2} R inst) AddCommGrpCat.{u_1}\n      AddCommGrpCat.instCategory.{u_1}\n      (fun x1 x2 =>\n        @AddMonoidHom.{u_1, u_1} (↑x1) (↑x2)\n          (@AddZeroClass.toAddZero.{u_1} (↑x1)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑x1)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑x1)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑x1) (@AddCommGroup.toAddGroup.{u_1} (↑x1) x1.str)))))\n          (@AddZeroClass.toAddZero.{u_1} (↑x2)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑x2)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑x2)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑x2) (@AddCommGroup.toAddGroup.{u_1} (↑x2) x2.str))))))\n      AddCommGrpCat.carrier.{u_1}\n      (fun X Y =>\n        @AddMonoidHom.instFunLike.{u_1, u_1} (↑X) (↑Y)\n          (@AddZeroClass.toAddZero.{u_1} (↑X)\n            ((fun X =>\n                @AddMonoid.toAddZeroClass.{u_1} (↑X)\n                  (@SubNegMonoid.toAddMonoid.{u_1} (↑X)\n                    (@AddGroup.toSubNegMonoid.{u_1} (↑X) (@AddCommGroup.toAddGroup.{u_1} (↑X) X.str))))\n              X))\n          (@AddZeroClass.toAddZero.{u_1} (↑Y)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑Y)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑Y)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑Y) (@AddCommGroup.toAddGroup.{u_1} (↑Y) Y.str))))))\n      AddCommGrpCat.instConcreteCategoryAddMonoidHomCarrier.{u_1}\n      (@ModuleCat.hasForgetToAddCommGroup.{u_2, u_1} R inst))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "ModuleCat.forget₂AddCommGroup_reflectsLimit": {
+      "name": "ModuleCat.forget₂AddCommGroup_reflectsLimit",
+      "module": "Mathlib.Algebra.Category.ModuleCat.Limits",
+      "path": "Mathlib/Algebra/Category/ModuleCat/Limits.lean",
+      "line": 185,
+      "source_sha256": "9e992d98ff07a0a0bf89e52735e64f12296372528551dddbd10a54267c56c2be",
+      "type": "@ModuleCat.forget₂AddCommGroup_reflectsLimit.{u_1, u_2, u_3,\n    u_4} : ∀ {R : Type u_4} [inst : Ring.{u_4} R] {J : Type u_2} [inst_1 : CategoryTheory.Category.{u_1, u_2} J]\n  (F :\n    @CategoryTheory.Functor.{u_1, u_3, u_2, max (u_3 + 1) u_4} J inst_1 (@ModuleCat.{u_3, u_4} R inst)\n      (@ModuleCat.moduleCategory.{u_3, u_4} R inst)),\n  @CategoryTheory.Limits.ReflectsLimit.{u_1, u_2, u_3, u_3, max u_4 (u_3 + 1), u_3 + 1} (@ModuleCat.{u_3, u_4} R inst)\n    (@ModuleCat.moduleCategory.{u_3, u_4} R inst) AddCommGrpCat.{u_3} AddCommGrpCat.instCategory.{u_3} J inst_1 F\n    (@CategoryTheory.forget₂.{u_3, u_3, max (u_3 + 1) u_4, u_3, u_3, u_3 + 1, u_3} (@ModuleCat.{u_3, u_4} R inst)\n      (@ModuleCat.moduleCategory.{u_3, u_4} R inst)\n      (fun x1 x2 =>\n        @LinearMap.{u_4, u_4, u_3, u_3} R R (@Ring.toSemiring.{u_4} R inst) (@Ring.toSemiring.{u_4} R inst)\n          (@RingHom.id.{u_4} R (@Semiring.toNonAssocSemiring.{u_4} R (@Ring.toSemiring.{u_4} R inst)))\n          (@ModuleCat.carrier.{u_3, u_4} R inst x1) (@ModuleCat.carrier.{u_3, u_4} R inst x2)\n          (@AddCommGroup.toAddCommMonoid.{u_3} (@ModuleCat.carrier.{u_3, u_4} R inst x1)\n            (@ModuleCat.isAddCommGroup.{u_3, u_4} R inst x1))\n          (@AddCommGroup.toAddCommMonoid.{u_3} (@ModuleCat.carrier.{u_3, u_4} R inst x2)\n            (@ModuleCat.isAddCommGroup.{u_3, u_4} R inst x2))\n          (@ModuleCat.isModule.{u_3, u_4} R inst x1) (@ModuleCat.isModule.{u_3, u_4} R inst x2))\n      (@ModuleCat.carrier.{u_3, u_4} R inst)\n      (fun X Y =>\n        @LinearMap.instFunLike.{u_4, u_4, u_3, u_3} R R (@ModuleCat.carrier.{u_3, u_4} R inst X)\n          (@ModuleCat.carrier.{u_3, u_4} R inst Y) (@Ring.toSemiring.{u_4} R inst) (@Ring.toSemiring.{u_4} R inst)\n          (@AddCommGroup.toAddCommMonoid.{u_3} (@ModuleCat.carrier.{u_3, u_4} R inst X)\n            (@ModuleCat.isAddCommGroup.{u_3, u_4} R inst X))\n          (@AddCommGroup.toAddCommMonoid.{u_3} (@ModuleCat.carrier.{u_3, u_4} R inst Y)\n            (@ModuleCat.isAddCommGroup.{u_3, u_4} R inst Y))\n          (@ModuleCat.isModule.{u_3, u_4} R inst X) (@ModuleCat.isModule.{u_3, u_4} R inst Y)\n          (@RingHom.id.{u_4} R (@Semiring.toNonAssocSemiring.{u_4} R (@Ring.toSemiring.{u_4} R inst))))\n      (@ModuleCat.instConcreteCategoryLinearMapIdCarrier.{u_3, u_4} R inst) AddCommGrpCat.{u_3}\n      AddCommGrpCat.instCategory.{u_3}\n      (fun x1 x2 =>\n        @AddMonoidHom.{u_3, u_3} (↑x1) (↑x2)\n          (@AddZeroClass.toAddZero.{u_3} (↑x1)\n            (@AddMonoid.toAddZeroClass.{u_3} (↑x1)\n              (@SubNegMonoid.toAddMonoid.{u_3} (↑x1)\n                (@AddGroup.toSubNegMonoid.{u_3} (↑x1) (@AddCommGroup.toAddGroup.{u_3} (↑x1) x1.str)))))\n          (@AddZeroClass.toAddZero.{u_3} (↑x2)\n            (@AddMonoid.toAddZeroClass.{u_3} (↑x2)\n              (@SubNegMonoid.toAddMonoid.{u_3} (↑x2)\n                (@AddGroup.toSubNegMonoid.{u_3} (↑x2) (@AddCommGroup.toAddGroup.{u_3} (↑x2) x2.str))))))\n      AddCommGrpCat.carrier.{u_3}\n      (fun X Y =>\n        @AddMonoidHom.instFunLike.{u_3, u_3} (↑X) (↑Y)\n          (@AddZeroClass.toAddZero.{u_3} (↑X)\n            ((fun X =>\n                @AddMonoid.toAddZeroClass.{u_3} (↑X)\n                  (@SubNegMonoid.toAddMonoid.{u_3} (↑X)\n                    (@AddGroup.toSubNegMonoid.{u_3} (↑X) (@AddCommGroup.toAddGroup.{u_3} (↑X) X.str))))\n              X))\n          (@AddZeroClass.toAddZero.{u_3} (↑Y)\n            (@AddMonoid.toAddZeroClass.{u_3} (↑Y)\n              (@SubNegMonoid.toAddMonoid.{u_3} (↑Y)\n                (@AddGroup.toSubNegMonoid.{u_3} (↑Y) (@AddCommGroup.toAddGroup.{u_3} (↑Y) Y.str))))))\n      AddCommGrpCat.instConcreteCategoryAddMonoidHomCarrier.{u_3}\n      (@ModuleCat.hasForgetToAddCommGroup.{u_4, u_3} R inst))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "ModuleCat.forget₂PreservesColimitsOfShape": {
+      "name": "ModuleCat.forget₂PreservesColimitsOfShape",
+      "module": "Mathlib.Algebra.Category.ModuleCat.Colimits",
+      "path": "Mathlib/Algebra/Category/ModuleCat/Colimits.lean",
+      "line": 123,
+      "source_sha256": "7469147956c8cb18dad4285950363bb93cf3137cf3fa175a0e34bcd419ab2392",
+      "type": "ModuleCat.forget₂PreservesColimitsOfShape.{u_1, u_2, u_3,\n  u_4} : ∀ (R : Type u_2) [inst : Ring.{u_2} R] (J : Type u_3) [inst_1 : CategoryTheory.Category.{u_4, u_3} J]\n  [@CategoryTheory.Limits.HasColimitsOfShape.{u_4, u_3, u_1, u_1 + 1} J inst_1 AddCommGrpCat.{u_1}\n      AddCommGrpCat.instCategory.{u_1}],\n  @CategoryTheory.Limits.PreservesColimitsOfShape.{u_4, u_3, u_1, u_1, max u_2 (u_1 + 1), u_1 + 1}\n    (@ModuleCat.{u_1, u_2} R inst) (@ModuleCat.moduleCategory.{u_1, u_2} R inst) AddCommGrpCat.{u_1}\n    AddCommGrpCat.instCategory.{u_1} J inst_1\n    (@CategoryTheory.forget₂.{u_1, u_1, max (u_1 + 1) u_2, u_1, u_1, u_1 + 1, u_1} (@ModuleCat.{u_1, u_2} R inst)\n      (@ModuleCat.moduleCategory.{u_1, u_2} R inst)\n      (fun x1 x2 =>\n        @LinearMap.{u_2, u_2, u_1, u_1} R R (@Ring.toSemiring.{u_2} R inst) (@Ring.toSemiring.{u_2} R inst)\n          (@RingHom.id.{u_2} R (@Semiring.toNonAssocSemiring.{u_2} R (@Ring.toSemiring.{u_2} R inst)))\n          (@ModuleCat.carrier.{u_1, u_2} R inst x1) (@ModuleCat.carrier.{u_1, u_2} R inst x2)\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst x1)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst x1))\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst x2)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst x2))\n          (@ModuleCat.isModule.{u_1, u_2} R inst x1) (@ModuleCat.isModule.{u_1, u_2} R inst x2))\n      (@ModuleCat.carrier.{u_1, u_2} R inst)\n      (fun X Y =>\n        @LinearMap.instFunLike.{u_2, u_2, u_1, u_1} R R (@ModuleCat.carrier.{u_1, u_2} R inst X)\n          (@ModuleCat.carrier.{u_1, u_2} R inst Y) (@Ring.toSemiring.{u_2} R inst) (@Ring.toSemiring.{u_2} R inst)\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst X)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst X))\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst Y)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst Y))\n          (@ModuleCat.isModule.{u_1, u_2} R inst X) (@ModuleCat.isModule.{u_1, u_2} R inst Y)\n          (@RingHom.id.{u_2} R (@Semiring.toNonAssocSemiring.{u_2} R (@Ring.toSemiring.{u_2} R inst))))\n      (@ModuleCat.instConcreteCategoryLinearMapIdCarrier.{u_1, u_2} R inst) AddCommGrpCat.{u_1}\n      AddCommGrpCat.instCategory.{u_1}\n      (fun x1 x2 =>\n        @AddMonoidHom.{u_1, u_1} (↑x1) (↑x2)\n          (@AddZeroClass.toAddZero.{u_1} (↑x1)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑x1)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑x1)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑x1) (@AddCommGroup.toAddGroup.{u_1} (↑x1) x1.str)))))\n          (@AddZeroClass.toAddZero.{u_1} (↑x2)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑x2)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑x2)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑x2) (@AddCommGroup.toAddGroup.{u_1} (↑x2) x2.str))))))\n      AddCommGrpCat.carrier.{u_1}\n      (fun X Y =>\n        @AddMonoidHom.instFunLike.{u_1, u_1} (↑X) (↑Y)\n          (@AddZeroClass.toAddZero.{u_1} (↑X)\n            ((fun X =>\n                @AddMonoid.toAddZeroClass.{u_1} (↑X)\n                  (@SubNegMonoid.toAddMonoid.{u_1} (↑X)\n                    (@AddGroup.toSubNegMonoid.{u_1} (↑X) (@AddCommGroup.toAddGroup.{u_1} (↑X) X.str))))\n              X))\n          (@AddZeroClass.toAddZero.{u_1} (↑Y)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑Y)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑Y)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑Y) (@AddCommGroup.toAddGroup.{u_1} (↑Y) Y.str))))))\n      AddCommGrpCat.instConcreteCategoryAddMonoidHomCarrier.{u_1}\n      (@ModuleCat.hasForgetToAddCommGroup.{u_2, u_1} R inst))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "ModuleCat.reflectsColimitsOfShape": {
+      "name": "ModuleCat.reflectsColimitsOfShape",
+      "module": "Mathlib.Algebra.Category.ModuleCat.Colimits",
+      "path": "Mathlib/Algebra/Category/ModuleCat/Colimits.lean",
+      "line": 117,
+      "source_sha256": "7469147956c8cb18dad4285950363bb93cf3137cf3fa175a0e34bcd419ab2392",
+      "type": "ModuleCat.reflectsColimitsOfShape.{u_1, u_2, u_3,\n  u_4} : ∀ (R : Type u_2) [inst : Ring.{u_2} R] (J : Type u_3) [inst_1 : CategoryTheory.Category.{u_4, u_3} J]\n  [@CategoryTheory.Limits.HasColimitsOfShape.{u_4, u_3, u_1, u_1 + 1} J inst_1 AddCommGrpCat.{u_1}\n      AddCommGrpCat.instCategory.{u_1}],\n  @CategoryTheory.Limits.ReflectsColimitsOfShape.{u_4, u_3, u_1, u_1, max u_2 (u_1 + 1), u_1 + 1}\n    (@ModuleCat.{u_1, u_2} R inst) (@ModuleCat.moduleCategory.{u_1, u_2} R inst) AddCommGrpCat.{u_1}\n    AddCommGrpCat.instCategory.{u_1} J inst_1\n    (@CategoryTheory.forget₂.{u_1, u_1, max (u_1 + 1) u_2, u_1, u_1, u_1 + 1, u_1} (@ModuleCat.{u_1, u_2} R inst)\n      (@ModuleCat.moduleCategory.{u_1, u_2} R inst)\n      (fun x1 x2 =>\n        @LinearMap.{u_2, u_2, u_1, u_1} R R (@Ring.toSemiring.{u_2} R inst) (@Ring.toSemiring.{u_2} R inst)\n          (@RingHom.id.{u_2} R (@Semiring.toNonAssocSemiring.{u_2} R (@Ring.toSemiring.{u_2} R inst)))\n          (@ModuleCat.carrier.{u_1, u_2} R inst x1) (@ModuleCat.carrier.{u_1, u_2} R inst x2)\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst x1)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst x1))\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst x2)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst x2))\n          (@ModuleCat.isModule.{u_1, u_2} R inst x1) (@ModuleCat.isModule.{u_1, u_2} R inst x2))\n      (@ModuleCat.carrier.{u_1, u_2} R inst)\n      (fun X Y =>\n        @LinearMap.instFunLike.{u_2, u_2, u_1, u_1} R R (@ModuleCat.carrier.{u_1, u_2} R inst X)\n          (@ModuleCat.carrier.{u_1, u_2} R inst Y) (@Ring.toSemiring.{u_2} R inst) (@Ring.toSemiring.{u_2} R inst)\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst X)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst X))\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst Y)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst Y))\n          (@ModuleCat.isModule.{u_1, u_2} R inst X) (@ModuleCat.isModule.{u_1, u_2} R inst Y)\n          (@RingHom.id.{u_2} R (@Semiring.toNonAssocSemiring.{u_2} R (@Ring.toSemiring.{u_2} R inst))))\n      (@ModuleCat.instConcreteCategoryLinearMapIdCarrier.{u_1, u_2} R inst) AddCommGrpCat.{u_1}\n      AddCommGrpCat.instCategory.{u_1}\n      (fun x1 x2 =>\n        @AddMonoidHom.{u_1, u_1} (↑x1) (↑x2)\n          (@AddZeroClass.toAddZero.{u_1} (↑x1)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑x1)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑x1)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑x1) (@AddCommGroup.toAddGroup.{u_1} (↑x1) x1.str)))))\n          (@AddZeroClass.toAddZero.{u_1} (↑x2)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑x2)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑x2)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑x2) (@AddCommGroup.toAddGroup.{u_1} (↑x2) x2.str))))))\n      AddCommGrpCat.carrier.{u_1}\n      (fun X Y =>\n        @AddMonoidHom.instFunLike.{u_1, u_1} (↑X) (↑Y)\n          (@AddZeroClass.toAddZero.{u_1} (↑X)\n            ((fun X =>\n                @AddMonoid.toAddZeroClass.{u_1} (↑X)\n                  (@SubNegMonoid.toAddMonoid.{u_1} (↑X)\n                    (@AddGroup.toSubNegMonoid.{u_1} (↑X) (@AddCommGroup.toAddGroup.{u_1} (↑X) X.str))))\n              X))\n          (@AddZeroClass.toAddZero.{u_1} (↑Y)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑Y)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑Y)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑Y) (@AddCommGroup.toAddGroup.{u_1} (↑Y) Y.str))))))\n      AddCommGrpCat.instConcreteCategoryAddMonoidHomCarrier.{u_1}\n      (@ModuleCat.hasForgetToAddCommGroup.{u_2, u_1} R inst))",
       "axioms": [
         "propext",
         "Classical.choice",

@@ -134,16 +134,21 @@ number,status,declarations,reason,axioms,check,partial_kind
 3.4.1.4,none,,準圏同値と引き戻しの前合成比較を確認した。固定 A 上の加群をもう一度取る構成と、代数の忘却からなる指定のホモトピー引き戻しは見つからなかった。,,not_found,
 3.4.1.5,none,,通常の可換代数の under 圏比較と相対関手空間を確認した。A を固定しない Mod 全体の代数準圏を Alg の矢印準圏へ送る θ の同値は見つからなかった。,,not_found,
 3.4.1.6,none,,矢印の端点評価と相対関手のファイバー評価はある。θ の始点を代数の忘却と対角に分解し、固定 A 上で定値とする同定は見つからなかった。,,not_found,
+3.4.1.7,partial,commAlgCatEquivUnder @ Mathlib/Algebra/Category/CommAlgCat/Basic.lean:213,仮定：可換環 A（Lean は HA の可換オペラッドの通常の可換環・加群の場合に限る）。結論：通常の可換 A-代数の圏 CommAlgCat A と、可換環の A 下の圏 Under A の同値を与える（HA が述べる通常圏の場合に一致）。coherent O 一般の加群 ∞ 圏には及ばない。,,found,special
 3.4.1.8,none,,通常の可換代数から under 圏への同値と離散代数の像の特徴付けはある。加群の全空間を代数の under 圏で底変換する指定の同値は見つからなかった。,,not_found,
 3.4.1.9,none,,基礎環に沿うスカラー制限の合成と通常の導来加群比較を確認した。相対加群 ∞ 圏の中で B-加群を取る構成と、元の C で B-加群を取る構成の operadic 同値は見つからなかった。,,not_found,
 3.4.1.10,none,,Cartesian 写像の通常の底変換と相対余スライスの比較はある。Cartesian 辺を保つ C→D に対して D の対象の余スライスを引き戻し、底の余スライス上で Cartesian 性と辺の検出を示す型は見つからなかった。,,not_found,
 3.4.1.11,none,,Quillen A の余終性判定と反対側のファイバー比較を確認した。Cartesian 写像間で各ファイバーの左余終性から全写像の左余終性を導く宣言は見つからなかった。,,not_found,
 3.4.1.12,none,,一般の相対極限の定義と存在条件はある。Fin∗ の inert 辺と恒等辺の四角形の持ち上げで、補集合の inert 条件による相対極限判定と延長の存在を与える型は見つからなかった。,,not_found,
+3.4.2.1,partial,ModuleCat.forget₂AddCommGroupIsEquivalence @ Mathlib/Algebra/Category/Grp/ZModuleEquivalence.lean:51,仮定：通常の整数加群とアーベル群（Lean は HA が §3.4 冒頭で挙げる単位代数 ℤ の場合に限る）。結論：整数加群のアーベル群への忘却関手が圏同値となる（この場合の基礎圏で一致）。一般の coherent O の ∞ operad の同値は型に含まれない。,,found,special
 3.4.2.2,none,,固定した充満添字の相対左 Kan 延長全体からの制限が、全局所余極限の存在を仮定すれば自明 Kan となる宣言を確認した。余デカルトに変動する添字のファイバーごとの左 Kan 条件で絞り、実際に延長可能な像 B′ だけを標的にする比較は見つからなかった。,,not_found,
+3.4.2.3,partial,SerrePositivity.InfinityCategories.nonempty_cocartesianEdgeLift @ SerrePositivity/InfinityCategories/F1/Transport/Objects.lean:43,仮定：単体集合の写像 p が余デカルトファイブレーション（Lean は HA の単位を持つ operadic fibration より強く、全ての底の辺で持ち上げがある場合に限る）。結論：指定の始点から底の辺への余デカルト持ち上げがある（semi-inert 辺に適用した結論は一致）。単位から semi-inert 辺だけの持ち上げを構成する部分は型に含まれない。,,found,stronger-hyp
 3.4.3.1,none,,相対極限の定義と関手圏での点ごとの極限判定を確認した。可変の O-加群から代数と底への射影について、対角での相対極限の延長と検出を得る型は見つからなかった。,,not_found,
+3.4.3.2,partial,ModuleCat.hasLimits @ Mathlib/Algebra/Category/ModuleCat/Limits.lean:140 | ModuleCat.forget₂AddCommGroup_preservesLimits @ Mathlib/Algebra/Category/ModuleCat/Limits.lean:168 | ModuleCat.forget₂AddCommGroup_reflectsLimit @ Mathlib/Algebra/Category/ModuleCat/Limits.lean:185,仮定：環 A の通常の加群と小さい通常圏の図式（Lean は HA の通常の可換 A-加群からアーベル群への忘却の場合に限る）。結論：加群の極限が存在し、忘却が極限を保存・反映する（固定代数のファイバーでの延長と極限判定の通常圏の場合に一致）。一般の相対 q-極限は型に含まれない。,,found,special
 3.4.3.3,none,,環準同型に沿う通常の制限関手はある。可変代数上の固定色加群の射影が Cartesian であり、Cartesian 辺がその色の基礎圏の同値で検出される型は見つからなかった。,,not_found,
 3.4.3.4,none,,Cartesian ファイブレーションの定義・合成と通常のスカラー制限を確認した。全色の加群の代数上の射影について、Cartesian 持ち上げの存在と基礎の同値による判定を与える宣言は見つからなかった。,,not_found,
 3.4.3.5,none,,固定環の通常の加群極限と相対極限の比較を確認した。代数が円錐に沿って動く場合に、固定色の基礎極限から ψ_X-極限を延長し検出する型は見つからなかった。,,not_found,
+3.4.3.6,partial,ModuleCat.hasLimits @ Mathlib/Algebra/Category/ModuleCat/Limits.lean:140 | ModuleCat.forget₂AddCommGroup_preservesLimits @ Mathlib/Algebra/Category/ModuleCat/Limits.lean:168 | ModuleCat.forget₂AddCommGroup_reflectsLimit @ Mathlib/Algebra/Category/ModuleCat/Limits.lean:185,仮定：環 A の通常の加群と小さい通常圏の添字（Lean は HA の通常の可換 A-加群からアーベル群への忘却の場合に限る）。結論：加群圏に極限があり、円錐が極限であることを忘却で保存・反映する（この場合に一致）。任意の O-加群 ∞ 圏のファイバーには及ばない。,,found,special
 3.4.3.7,none,,一般の相対極限と点ごとの関手圏の極限を確認した。準圏 K の円錐から相対 Alg への写像の上で、Mod の極限円錐を対角評価によって持ち上げる型は見つからなかった。,,not_found,
 3.4.3.8,none,,相対極限の自明 Kan 比較と反射局所化を確認した。平坦な π の底変換に対し、cosieve とファイバーの局所化を使って π_* の極限と持ち上げを判定する宣言は見つからなかった。,,not_found,
 3.4.3.9,none,,有限部分集合とその補集合を確認した。二つの inert 射の非基点逆像が分割になる Fin∗ の split と、それを図式の頂点ごとに課す定義は見つからなかった。,,not_found,
@@ -158,4 +163,5 @@ number,status,declarations,reason,axioms,check,partial_kind
 3.4.4.3,none,,相対余極限の定義と終対象を持つ添字への制限を確認した。K_O による分類図式の active スライスで余極限を検査し、加群の operadic 余極限を延長する型は見つからなかった。,,not_found,
 3.4.4.4,none,,終対象を持つ添字の相対余極限の制限を確認した。h0i の加群からの射が operadic 余極限であることを K_O 上の二評価の同値で判定し、そのような射を持ち上げる型は見つからなかった。,,not_found,
 3.4.4.5,none,,通常の加群圏のモノイダル単位を確認した。coherent O における可変代数上の Mod 全体で、各色の operadic 単位を与える結果は見つからなかった。,,not_found,
+3.4.4.6,partial,ModuleCat.forget₂PreservesColimitsOfShape @ Mathlib/Algebra/Category/ModuleCat/Colimits.lean:123 | ModuleCat.reflectsColimitsOfShape @ Mathlib/Algebra/Category/ModuleCat/Colimits.lean:117,仮定：通常の環 A と、アーベル群の圏に余極限が存在する小さい通常圏の添字（Lean は HA の通常の可換 A-加群の場合に限る）。結論：アーベル群への忘却がその形の余極限を保存・反映する（この場合の (2) に一致）。射影の operadic 余デカルト性と小余極限との両立は型に含まれない。,,found,special
 3.4.4.7,none,,通常の加群圏では A を単位として使う構造がある。K_O の終点評価と A の合成から自己加群を作り、零から各色への射が operadic 余極限になる比較は見つからなかった。,,not_found,
