@@ -112,7 +112,8 @@ private theorem projectiveMonomialContraction_apply (N : Finset ι) (v : ι)
     (t : Fin k → ι) :
     (projectiveMonomialContraction N v hv k a).val t = a.val (Fin.cons v t) := rfl
 
-private theorem projectiveMonomialDifferential_apply (N : Finset ι) (k : ℕ)
+/-- 一つの単項式の余境界を、タプルの各面で評価する。 -/
+theorem projectiveMonomialDifferential_apply (N : Finset ι) (k : ℕ)
     (a : projectiveMonomialCochains (R := R) N k) (t : Fin (k + 1) → ι) :
     (projectiveMonomialDifferential N k a).val t =
       ∑ i : Fin (k + 1), (-1 : ℤ) ^ i.val • a.val (t ∘ i.succAbove) := by
@@ -220,7 +221,8 @@ def fullCechDifferential (D : Finset ι ⥤ ModuleCat R) (k : ℕ) :
       (D.map (homOfLE (cechTupleSupport_face_subset t i))).hom.comp
         (LinearMap.proj (t ∘ i.succAbove))
 
-private theorem fullCechDifferential_apply (D : Finset ι ⥤ ModuleCat R) (k : ℕ)
+/-- 全タプル版の余境界の成分は、制限した面の値の交代和。 -/
+theorem fullCechDifferential_apply (D : Finset ι ⥤ ModuleCat R) (k : ℕ)
     (a : FullCechCochains D k) (t : Fin (k + 1) → ι) :
     fullCechDifferential D k a t =
       ∑ i : Fin (k + 1), (-1 : ℤ) ^ i.val •
