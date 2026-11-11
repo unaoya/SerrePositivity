@@ -1,0 +1,133 @@
+{
+  "base": "9efb8a9998726502c57852514c8f1ce62cea880d",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "items": {
+    "7.2.2.2": {
+      "page": 725,
+      "declarations": [
+        "CategoryTheory.GrpObj",
+        "CategoryTheory.Hom.group",
+        "CategoryTheory.yonedaGrpObj",
+        "CategoryTheory.GrpObj.ofRepresentableBy"
+      ]
+    },
+    "7.2.2.7": {
+      "page": 725,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.IsZeroVertex"
+      ]
+    },
+    "7.2.3.4": {
+      "page": 738,
+      "declarations": [
+        "HasSmallInductiveDimensionLT",
+        "HasSmallInductiveDimensionLE"
+      ]
+    },
+    "7.2.4.2": {
+      "page": 742,
+      "declarations": [
+        "TopologicalSpace.NoetherianSpace.isCompact"
+      ]
+    }
+  },
+  "declarations": {
+    "CategoryTheory.GrpObj": {
+      "declaration": "CategoryTheory.GrpObj",
+      "source": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+      "type": "@CategoryTheory.GrpObj.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [@CategoryTheory.CartesianMonoidalCategory.{u_1, u_2} C inst] → C → Type u_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.GrpObj.ofRepresentableBy": {
+      "declaration": "CategoryTheory.GrpObj.ofRepresentableBy",
+      "source": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+      "type": "@CategoryTheory.GrpObj.ofRepresentableBy.{u_1, u_2,\n    u_3} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_2, u_3} C] →\n    [inst_1 : @CategoryTheory.CartesianMonoidalCategory.{u_2, u_3} C inst] →\n      (X : C) →\n        (F :\n            @CategoryTheory.Functor.{u_2, u_1, u_3, u_1 + 1} (Opposite.{u_3 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_2, u_3} C inst) GrpCat.{u_1} GrpCat.instCategory.{u_1}) →\n          @CategoryTheory.Functor.RepresentableBy.{u_1, u_2, u_3} C inst\n              (@CategoryTheory.Functor.comp.{u_2, u_1, u_1, u_3, u_1 + 1, u_1 + 1} (Opposite.{u_3 + 1} C)\n                (@CategoryTheory.Category.opposite.{u_2, u_3} C inst) GrpCat.{u_1} GrpCat.instCategory.{u_1} (Type u_1)\n                CategoryTheory.types.{u_1} F\n                (@CategoryTheory.forget.{u_1, u_1, u_1 + 1, u_1} GrpCat.{u_1} GrpCat.instCategory.{u_1}\n                  (fun x1 x2 =>\n                    @MonoidHom.{u_1, u_1} (↑x1) (↑x2)\n                      (@MulOneClass.toMulOne.{u_1} (↑x1)\n                        (@Monoid.toMulOneClass.{u_1} (↑x1)\n                          (@DivInvMonoid.toMonoid.{u_1} (↑x1) (@Group.toDivInvMonoid.{u_1} (↑x1) x1.str))))\n                      (@MulOneClass.toMulOne.{u_1} (↑x2)\n                        (@Monoid.toMulOneClass.{u_1} (↑x2)\n                          (@DivInvMonoid.toMonoid.{u_1} (↑x2) (@Group.toDivInvMonoid.{u_1} (↑x2) x2.str)))))\n                  GrpCat.carrier.{u_1}\n                  (fun X Y =>\n                    @MonoidHom.instFunLike.{u_1, u_1} (↑X) (↑Y)\n                      (@MulOneClass.toMulOne.{u_1} (↑X)\n                        ((fun X =>\n                            @Monoid.toMulOneClass.{u_1} (↑X)\n                              (@DivInvMonoid.toMonoid.{u_1} (↑X) (@Group.toDivInvMonoid.{u_1} (↑X) X.str)))\n                          X))\n                      (@MulOneClass.toMulOne.{u_1} (↑Y)\n                        (@Monoid.toMulOneClass.{u_1} (↑Y)\n                          (@DivInvMonoid.toMonoid.{u_1} (↑Y) (@Group.toDivInvMonoid.{u_1} (↑Y) Y.str)))))\n                  GrpCat.instConcreteCategoryMonoidHomCarrier.{u_1}))\n              X →\n            @CategoryTheory.GrpObj.{u_2, u_3} C inst inst_1 X",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.Hom.group": {
+      "declaration": "CategoryTheory.Hom.group",
+      "source": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+      "type": "@CategoryTheory.Hom.group.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.CartesianMonoidalCategory.{u_1, u_2} C inst] →\n      {G X : C} →\n        [@CategoryTheory.GrpObj.{u_1, u_2} C inst inst_1 G] →\n          Group.{u_1}\n            (@Quiver.Hom.{u_1, u_2} C\n              (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n                (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n              X G)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.yonedaGrpObj": {
+      "declaration": "CategoryTheory.yonedaGrpObj",
+      "source": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+      "type": "@CategoryTheory.yonedaGrpObj.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.CartesianMonoidalCategory.{u_1, u_2} C inst] →\n      (G : C) →\n        [@CategoryTheory.GrpObj.{u_1, u_2} C inst inst_1 G] →\n          @CategoryTheory.Functor.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) GrpCat.{u_1} GrpCat.instCategory.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "HasSmallInductiveDimensionLE": {
+      "declaration": "HasSmallInductiveDimensionLE",
+      "source": "Mathlib/Topology/SmallInductiveDimension.lean",
+      "type": "HasSmallInductiveDimensionLE.{u_1} : (X : Type u_1) → [TopologicalSpace.{u_1} X] → Nat → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "HasSmallInductiveDimensionLT": {
+      "declaration": "HasSmallInductiveDimensionLT",
+      "source": "Mathlib/Topology/SmallInductiveDimension.lean",
+      "type": "HasSmallInductiveDimensionLT.{u_1} : (X : Type u_1) → [TopologicalSpace.{u_1} X] → Nat → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "SerrePositivity.InfinityCategories.IsZeroVertex": {
+      "declaration": "SerrePositivity.InfinityCategories.IsZeroVertex",
+      "source": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+      "type": "@SerrePositivity.InfinityCategories.IsZeroVertex.{u_1} : {X : SSet.{u_1}} →\n  @CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n      CategoryTheory.types.{u_1} X\n      (@Opposite.op.{1} SimplexCategory { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }) →\n    Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "TopologicalSpace.NoetherianSpace.isCompact": {
+      "declaration": "TopologicalSpace.NoetherianSpace.isCompact",
+      "source": "Mathlib/Topology/NoetherianSpace.lean",
+      "type": "@TopologicalSpace.NoetherianSpace.isCompact.{u_1} : ∀ {α : Type u_1} [inst : TopologicalSpace.{u_1} α]\n  [@TopologicalSpace.NoetherianSpace.{u_1} α inst] (s : Set.{u_1} α), @IsCompact.{u_1} α inst s",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    }
+  }
+}

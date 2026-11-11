@@ -1,0 +1,442 @@
+{
+  "7.3.5.1": {
+    "page": 777,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.4",
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]oherent|[Ss]heaf|Prespectral|[Ff]iltered|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 6518,
+        "line_count": 57170
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]oherent|[Ss]heaf|Prespectral|[Ff]iltered|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 542,
+        "line_count": 14570
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/CoherentSheaves.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma isSheaf_coherent (P : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (coherentTopology C) P ↔ (∀ (B : C) (α : Type) [Finite α] (X : α → C) (π : (a : α) → (X a ⟶ B)), EffectiveEpiFamily X π → (Presieve.ofArrows X π).IsSheafFor P)"
+          },
+          {
+            "line": 48,
+            "head": "theorem isSheaf_yoneda_obj (W : C) : Presieve.IsSheaf (coherentTopology C) (yoneda.obj W)"
+          },
+          {
+            "line": 67,
+            "head": "instance subcanonical : (coherentTopology C).Subcanonical := GrothendieckTopology.Subcanonical.of_isSheaf_yoneda_obj _ isSheaf_yoneda_obj"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/SheafComparison.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "instance : F.IsCoverDense (coherentTopology _)"
+          },
+          {
+            "line": 86,
+            "head": "lemma eq_induced : haveI := F.reflects_precoherent coherentTopology C = F.inducedTopology (coherentTopology _)"
+          },
+          {
+            "line": 94,
+            "head": "instance : haveI := F.reflects_precoherent; F.IsDenseSubsite (coherentTopology C) (coherentTopology D) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary coherent-site sheaf criterion はあるが、原典の表示の pullback 条件は F(U∩V)→F(U),F(V)→F(U∪V) の向きであり、通常の反変 gluing square と逆向きである。F の右 Kan 拡張をそのまま ordinary sheaf theorem からは得ない。"
+  },
+  "7.3.5.2": {
+    "page": 778,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.4",
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]oherent|[Ss]heaf|Prespectral|[Ff]iltered|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 6518,
+        "line_count": 57170
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]oherent|[Ss]heaf|Prespectral|[Ff]iltered|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 542,
+        "line_count": 14570
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/CoherentSheaves.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma isSheaf_coherent (P : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (coherentTopology C) P ↔ (∀ (B : C) (α : Type) [Finite α] (X : α → C) (π : (a : α) → (X a ⟶ B)), EffectiveEpiFamily X π → (Presieve.ofArrows X π).IsSheafFor P)"
+          },
+          {
+            "line": 48,
+            "head": "theorem isSheaf_yoneda_obj (W : C) : Presieve.IsSheaf (coherentTopology C) (yoneda.obj W)"
+          },
+          {
+            "line": 67,
+            "head": "instance subcanonical : (coherentTopology C).Subcanonical := GrothendieckTopology.Subcanonical.of_isSheaf_yoneda_obj _ isSheaf_yoneda_obj"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/SheafComparison.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "instance : F.IsCoverDense (coherentTopology _)"
+          },
+          {
+            "line": 86,
+            "head": "lemma eq_induced : haveI := F.reflects_precoherent coherentTopology C = F.inducedTopology (coherentTopology _)"
+          },
+          {
+            "line": 94,
+            "head": "instance : haveI := F.reflects_precoherent; F.IsDenseSubsite (coherentTopology C) (coherentTopology D) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary coherent sheaf comparison はあるが、原典の図の矢印は F0(U∩V) から F0(U),F0(V) を経て F0(U∪V) に向き、反変の制限とは合わない。向きを読み替えず、通常の二項 sheaf gluing の equivalence はこの印刷された条件との対応に数えない。"
+  },
+  "7.3.5.3": {
+    "page": 780,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.4",
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]oherent|[Ss]heaf|Prespectral|[Ff]iltered|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 6518,
+        "line_count": 57170
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]oherent|[Ss]heaf|Prespectral|[Ff]iltered|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 542,
+        "line_count": 14570
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/CoherentSheaves.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma isSheaf_coherent (P : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (coherentTopology C) P ↔ (∀ (B : C) (α : Type) [Finite α] (X : α → C) (π : (a : α) → (X a ⟶ B)), EffectiveEpiFamily X π → (Presieve.ofArrows X π).IsSheafFor P)"
+          },
+          {
+            "line": 48,
+            "head": "theorem isSheaf_yoneda_obj (W : C) : Presieve.IsSheaf (coherentTopology C) (yoneda.obj W)"
+          },
+          {
+            "line": 67,
+            "head": "instance subcanonical : (coherentTopology C).Subcanonical := GrothendieckTopology.Subcanonical.of_isSheaf_yoneda_obj _ isSheaf_yoneda_obj"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/SheafComparison.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "instance : F.IsCoverDense (coherentTopology _)"
+          },
+          {
+            "line": 86,
+            "head": "lemma eq_induced : haveI := F.reflects_precoherent coherentTopology C = F.inducedTopology (coherentTopology _)"
+          },
+          {
+            "line": 94,
+            "head": "instance : haveI := F.reflects_precoherent; F.IsDenseSubsite (coherentTopology C) (coherentTopology D) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary coherentTopology の有限被覆 sheaf はあるが、space-valued Shv(X)→Space の arbitrary RTop base change の mate の可逆性を示さない。compact-open basis だけは higher properness の具体的比較を供給しない。"
+  },
+  "7.3.5.4": {
+    "page": 780,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.4",
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]oherent|[Ss]heaf|Prespectral|[Ff]iltered|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 6518,
+        "line_count": 57170
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]oherent|[Ss]heaf|Prespectral|[Ff]iltered|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 542,
+        "line_count": 14570
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/CoherentSheaves.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma isSheaf_coherent (P : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (coherentTopology C) P ↔ (∀ (B : C) (α : Type) [Finite α] (X : α → C) (π : (a : α) → (X a ⟶ B)), EffectiveEpiFamily X π → (Presieve.ofArrows X π).IsSheafFor P)"
+          },
+          {
+            "line": 48,
+            "head": "theorem isSheaf_yoneda_obj (W : C) : Presieve.IsSheaf (coherentTopology C) (yoneda.obj W)"
+          },
+          {
+            "line": 67,
+            "head": "instance subcanonical : (coherentTopology C).Subcanonical := GrothendieckTopology.Subcanonical.of_isSheaf_yoneda_obj _ isSheaf_yoneda_obj"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/SheafComparison.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "instance : F.IsCoverDense (coherentTopology _)"
+          },
+          {
+            "line": 86,
+            "head": "lemma eq_induced : haveI := F.reflects_precoherent coherentTopology C = F.inducedTopology (coherentTopology _)"
+          },
+          {
+            "line": 94,
+            "head": "instance : haveI := F.reflects_precoherent; F.IsDenseSubsite (coherentTopology C) (coherentTopology D) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Spectral/Prespectral.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "class PrespectralSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 33,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis {B : Set (Set X)} (basis : IsTopologicalBasis B) (isCompact_basis : ∀ U ∈ B, IsCompact U) : PrespectralSpace X where"
+          },
+          {
+            "line": 41,
+            "head": "lemma PrespectralSpace.of_isTopologicalBasis' {ι : Type*} {b : ι → Set X} (basis : IsTopologicalBasis (Set.range b)) (isCompact_basis : ∀ i, IsCompact (b i)) : PrespectralSpace X := .of_isTopologicalBasis basis (by simp_all)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary coherent-site sheaf と有限極限の交換は候補だが、原典の space-valued Γ の全 filtered infinity-colimits 保存はない。ordinary sheaf comparison の nerve への制限でも、元の Space-valued sheaf category と未比較。"
+  }
+}

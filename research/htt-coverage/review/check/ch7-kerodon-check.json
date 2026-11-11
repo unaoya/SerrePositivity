@@ -1,0 +1,31 @@
+{
+  "method": "declarations_new の完全名結合後、HTT の本文と Kerodon の主張を照合。共有する補題だけは除外。",
+  "checked_source_urls": [
+    "https://kerodon.net/tag/05XG"
+  ],
+  "items": {
+    "7.3.3.1": {
+      "candidate_numbers": [
+        "1.5.3.3",
+        "1.5.3.4"
+      ],
+      "accepted": [],
+      "comparison": "結合で共有する宣言は証明の部品であり、原典の同じ主張ではない。"
+    },
+    "7.3.3.2": {
+      "candidate_numbers": [
+        "1.5.3.3",
+        "1.5.3.4"
+      ],
+      "accepted": [],
+      "comparison": "結合で共有する宣言は証明の部品であり、原典の同じ主張ではない。"
+    },
+    "7.3.4.4": {
+      "candidate_numbers": [
+        "7.7.7.3"
+      ],
+      "accepted": [],
+      "comparison": "Kerodon 7.7.7.3 は交換の可縮性による iff 判定。filtered と有限の交換という HTT の主張自体ではないため、共有する型だけから番号を転記しない。"
+    }
+  }
+}
