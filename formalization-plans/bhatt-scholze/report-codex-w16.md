@@ -273,3 +273,19 @@ D75 の Barratt–Eccles 実例で進める。界面の型は §9 のまま。E2
 今回追加で登録する候補は、上記七本（すべて `SerrePositivity.EInfinity.BarrattEccles.Theory` の下）。`SchurDegreeDecomposition` は対象の型検査まで通り、公理監査とコミットは後続の基底の比較と合わせて行う。モノイダル比較・代数への持ち上げ・実際のセル段の自由表示は引き続き検証中。境界と基底の重みの照合、`hstage`、無条件の `baseChange_forget` は残っている。
 
 main `7a689544b` を `4c3faf273` で取り込んだ。以後、整理券はこの worktree で一件、待機は `--wait 3600`、鍵の占有は一回 30 分以内としている。
+
+
+### 語の基底と重み付き部分加群の検証（11-11 昼）
+
+`a7b6bb934` に `SchurDegreeDecomposition`・`SchurDegreeBasis`・`TensorPowerDegreeBasis`・`SchurWordBasis`・`SphereCoproductBasis` をコミットした。十五本を合わせた再帰監査は 358 宣言、標準三公理のみだった。
+
+さらに `TensorPowerDegreeBasis` の指定基底ベクトルの包含式、`BasisWeightSpan` と `EraseDifferentialGraded` の対象ビルドを確認した。十七本を合わせた再帰監査は 389 宣言、標準三公理のみ。`SchurWordBasis` の import は、使っている正次数消滅の供給元 `BarrattEccles.Degrees` にそろえた。
+
+- `schurWordBasis` は、係数の基点つき非退化単体と斉次入力の語から、元の Schur 複体の各次数の基底を与える。
+- `sphereCoproductDegreeBasis` は、実際の球複体の余積の指定包含を使う基底を与える。
+- `basisWeightSpan` は、重みの上限で選んだ基底の張る部分加群。基底展開の台での判定、線形写像と純粋テンソルによる保存を証明した。
+- `EraseDifferentialGraded` は、Mathlib の次数付き忘却の強モノイダル比較を保持し、微分を消す比較との可換性を証明した。
+
+追加の登録候補は、この節の七本。いずれも `SerrePositivity.EInfinity.BarrattEccles.Theory` の下に置く。
+
+セル段へ移す随伴とモノイダル構造、実際の境界からの重み選択は作業木で検証中。セル段の微分が基底の重みを増やさないことと、`hstage`、無条件の `baseChange_forget` が残る。停止点 3 前の途中記録。

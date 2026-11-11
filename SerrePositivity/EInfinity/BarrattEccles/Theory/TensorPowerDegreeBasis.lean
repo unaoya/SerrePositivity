@@ -28,6 +28,7 @@ universe u
 namespace SerrePositivity.EInfinity
 
 open CategoryTheory Limits MonoidalCategory HomologicalComplex DifferentialGraded
+open scoped TensorProduct
 
 variable {A : Type u} [CommRing A]
 
@@ -40,6 +41,18 @@ def tensorGradedBasis {K L : Complex A} {I J : ℤ → Type u}
   (moduleCoproductBasis (cochainTensorSummand K L i)
     (fun a => (b a.1.1).tensorProduct (c a.1.2))).map
       (cochainTensorXIso K L i).symm.toLinearEquiv
+
+/-- A tensor-degree basis vector is the specified inclusion of a pure tensor. -/
+lemma tensorGradedBasis_apply {K L : Complex A} {I J : ℤ → Type u}
+    (b : ∀ i, Module.Basis (I i) A (K.X i)) (c : ∀ i, Module.Basis (J i) A (L.X i))
+    (i : ℤ) (a : Σ a : {a : ℤ × ℤ // a.1 + a.2 = i}, I a.1.1 × J a.1.2) :
+    tensorGradedBasis b c i a =
+      ιTensorObj K L a.1.1.1 a.1.1.2 i a.1.2
+        (b a.1.1.1 a.2.1 ⊗ₜ[A] c a.1.1.2 a.2.2) := by
+  classical
+  rw [tensorGradedBasis, Module.Basis.map_apply, moduleCoproductBasis_apply]
+  erw [Module.Basis.tensorProduct_apply' (b a.1.1.1) (c a.1.1.2) a.2]
+  rfl
 
 /-- The index for the basis of the tensor unit in a given degree. -/
 def unitDegreeIndex (i : ℤ) : Type u :=

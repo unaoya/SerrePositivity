@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.TensorPowerDegreeBasis
-public import SerrePositivity.EInfinity.BarrattEccles.Theory.ArityKFlat
+public import SerrePositivity.EInfinity.BarrattEccles.Degrees
 
 /-!
 # Barratt–Eccles の Schur 表示の語で添字づけた基底
