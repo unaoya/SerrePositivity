@@ -526,3 +526,10 @@ SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarCokernelTensor
 - `AffineCechPointwiseCoefficients`・`CrystallineWittTransportedBridge` の対象ビルドが成功した（`/private/tmp/d69-ticket-build-40.log`・`/private/tmp/d69-ticket-build-41.log`）。登録候補に BS のこの2本を追加する。
 - 前者は、各項の比較を実際の `htRings` の台加群の余単体的同型へ組む。後者は、この affine 側の同型と分冪側の同型を通して、既存の整係数の橋を実際の Witt affine・分冪交代余面複体の間へ移し、その射が擬同型であることを示す。指定された `crystallineWittSmallBridgeAt` との各次数の照合は、次の新規ファイルで続けている。
 - 一時監査は135モジュール・3,135宣言、標準三公理のみ。`/private/tmp/AuditD69P2MorningHundredTwo.lean`、ログ `/private/tmp/d69-morning-audit-hundredtwo.log`。対象ビルド済みの追加13本はすべて新規ファイルで、入口・監査登録・既存宣言の変更はない。停止点2にはまだ達していない。
+
+- `CrystallineWittBridgeAgreement`・`WittFiniteCompletedBridge` と共通の `SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseExtension` が対象ビルドを通った（`/private/tmp/d69-ticket-build-42.log`〜`/private/tmp/d69-ticket-build-44.log`。整形後も44の束で確認済み）。登録候補に BS 2本・共通1本を追加する。
+- `crystallineWittTransportedBridge_f` は移した橋の各次数の射が、指定された `crystallineWittSmallBridgeAt` を線形に読んだ射そのものであることを示す。係数変更の既存の正方形と、完備係数拡大からの射の一意性で証明した。
+- `wittFiniteCompletedBridge_quasiIso` は一般の有界 prism から ψ で係数を変えた有限橋の擬同型。`wittFiniteCompletedBridge_unit` は純テンソルの単位上で既存の `WittFiniteBridge.finiteBridgeAt` を延長することを固定する。各項の完備テンソルが導来底変換を計算する入力は既存の `affineEnvelopeTermCompletedBaseChangeToTargetIso` を使う。単位の式一つに限り定義照合の再帰深さを1500にしており、heartbeat の全体的な変更はしていない。
+- `PointwiseExtension` は完備な標的への半線形代数射の標準線形延長・純テンソルの単位の式・可換な正方形に対する厳密な自然性を与える。大きい枠の二比較を同じ延長で扱うための共通部品。
+- 一時監査は138モジュール・3,209宣言、標準三公理のみ。`/private/tmp/AuditD69P2MorningHundredFive.lean`、ログ `/private/tmp/d69-morning-audit-hundredfive.log`。今回の追加まで本体16本（BS 10本、共通6本）は新規ファイルのみで、sorry・独自公理0。既存宣言・入口・監査登録は変更していない。
+- 残り：大きい affine／分冪枠の鎖ホモトピー同値を延長後の二比較に合わせ、β と `wittToSmall` の大きい模型での検収を閉じる。有限橋の検査が通ったことだけでは停止点2とはしない。
