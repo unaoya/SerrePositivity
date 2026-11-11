@@ -860,3 +860,45 @@ lake build SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorTensorProjecti
 ビルド・監査はそれぞれ一回の `with_build_lock.sh --wait 3600` で行い、命令の終了ごとに返却した。整理券は一枚。常駐セッション・編集中の鍵の保持・ルートビルドは行っていない。監査の鍵は返却済み。今回の九本と報告書を枝に保存し、未検査の Lean ファイルを残さず、上記の停止条件 1 の判断を待つ。
 
 今回の九本はすべて `SerrePositivity.EInfinity.BarrattEccles.Theory` の下で、15.1 の表のとおり。登録は調整役が行う。新規の［一般∞］移動候補は零。一般の表現・複体の補助も今回の実装の隣に置き、既報の［一般∞］五本は動かしていない。
+
+
+## 16. 続行後：指定された二色係数の射まで（11-11 夜）
+
+§15 の規模による中間停止の報告後、ユーザーから「続けてください」と指示を受けて再開した。main `375deaa6e` を枝に取り込み（merge `bf017ab0a`）、登録変更を含む最新の作業木で進めた。以下は承認待ちの停止ではなく、検証済みの中間保存である。作業順は §4 のままで、次は指定増大との可換性を閉じる。
+
+### 16.1 証明したもの
+
+今回の新規十本は **853 行**（module docstring と空行を含む）。内容は次のとおり。
+
+| モジュール | 内容 |
+| --- | --- |
+| `NonpositiveUnitRestriction` | 零次単一複体を q ↦ −q に沿って制限したものと、零次の鎖単一複体の同型。零次成分は元の `singleObjXSelf` を保持する。 |
+| `RepresentationChainAugmentation` | 群不変な元の増大から、表現の圏の鎖複体の指定増大を作る。`representationChainAugmentation_forget` は忘却後の射を元の制限と照合し、擬同型性を表現の圏へ反映する。 |
+| `TwoColorTensorAugmentation` | 実際の `complexAugmentation` 二つのテンソルと単位子から、`twoColorTensorChainAugmentation` と `twoColorTargetResolution` を得る。元の二つの収縮のテンソルを使い、群同変な収縮を仮定しない。 |
+| `TwoColorResolutionComparison` | 始域の制限した自明表現を終域と同定する。増大を保つ指定射から、同じ順射を持つ等変な鎖ホモトピー同値を作る。**増大の可換性は引数に明示**している。 |
+| `TensorUnitAdjacent` | テンソル単位の冪の隣接交換と、単位と同型な対象の冪の隣接交換が恒等射になる。 |
+| `NullaryFamilyAdjacent` | 実際の arity 0 の増大の同型を用い、零入力係数の有限族の隣接交換を恒等射と同定する。 |
+| `NullaryPrefixDelete` | 指定された零入力の単位を反復合成へ代入する係数射 `nullaryPrefixDelete`。消去する入力の任意の置換に対する不変性を、隣接互換による生成から証明した。 |
+| `NullaryPrefixTail` | 残した尾の任意の置換に関する、同じ係数射の等変性。空の出力ブロックを除く arity の移送も照合する。 |
+| `TwoColorCoefficientProjections` | ブロック交換と零入力への代入から、実際の両色への射影 `twoColorLeftCoefficient`・`twoColorRightCoefficient` と、そのブロック内置換に関する等変性を構成した。 |
+| `TwoColorCoefficientMap` | 実際の Hopf 対角の後に二つの射影を適用する `twoColorCoefficientComparison`。二色部分群の実際の作用との可換性を証明し、`twoColorCoefficientChainMap` として二つの解像度の鎖複体の間の射へ移した。 |
+
+任意の可換基礎環での主張であり、群の位数の可逆性・標数零・`ModelCategory SSet` は仮定していない。終域の射影解像度も、始域と同じ自明表現を値に取る。指定された係数射を解像度の任意の lift に置き換えてはいない。
+
+### 16.2 検証と未完部分
+
+`lake build SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorCoefficientMap` が成功し、依存する今回の十本を確認した。最終ログは `/tmp/bsw16/graded/two-color-map-01.log`。新規十本の警告は零。既報 `ZeroArity` の `letI` に関する提案二件は残る。
+
+十本・**129 宣言**を `/tmp/bsw16/graded/audit-two-color-map.lean` で再帰監査し、標準三公理のみだった。ログは `/tmp/bsw16/graded/audit-two-color-map.log`。sorry・admit・新規公理・デバッグ宣言は零。前回の九本・106 宣言と合わせ、今回までの未取り込みの十九本・**235 宣言**を監査済み。二十一本の取り込み済みのものを再登録候補へ重ねていない。
+
+**未完**：`twoColorCoefficientChainMap` が指定増大を保つこと、得られる等変な鎖ホモトピー同値を自由代数の指定比較へ移すこと、実際のセル対への移送、強い全関手版と native な余積錐が残る。`twoColorResolutionHomotopyEquiv` に実際の指定射と増大の可換性を供給し終えたとは扱わない。`coproduct_tensor`・sifted・Tot・段 4 は未完のまま。
+
+次は、零入力への射影と増大の可換性を、オペラッド射が反復合成を保つことへ帰着して進める。その自然性の補助 `OperadMorphismInsertion.lean` は編集中で、今回の十本の保存・監査・登録候補には含めない。実際のセル対への移送にはまだ着手しておらず、1,200 行の上限は引き続き確認する。
+
+現在までの実測は、取り込み済み二十一本 1,471 行、§15 の九本 699 行、今回の十本 853 行、計 **四十本・3,023 行**。前回報告した全体規模の見込みに対する続行指示の下で作業している。
+
+界面の型・既存の公開宣言・drafts・入口・共有監査スクリプトは変更していない。鍵は各一回のビルド・監査だけ `--wait 3600` で取り、終了ごとに返却した。監査の鍵も返却済み。常駐セッション・編集中の鍵の保持・ルートビルドは行っていない。
+
+### 16.3 取り込み時の登録候補
+
+今回の十本は 16.1 の表の一覧で、すべて `SerrePositivity.EInfinity.BarrattEccles.Theory` の下。前回 `4237883e9` の九本（§15.1）も現在の main では未登録なので、次の取り込みでは **十九本**が候補となる。入口・共有監査への登録は調整役が行う。新しい［一般∞］移動候補は零。既報の五本はそのまま。
