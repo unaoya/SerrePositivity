@@ -40,7 +40,7 @@ set_option backward.isDefEq.respectTransparency false
 open CategoryTheory
 
 namespace SerrePositivity.SimplicialModel.DiscreteKanExtension
-open PiZeroConstant
+
 variable {A B : SSet.{w}} (i : A ⟶ B) (hi : SSet.anodyneExtensions i) {T : Type w}
 
 include hi in

@@ -15,7 +15,7 @@ This is an ordinary limit theorem, not by itself a homotopy-limit theorem.
 universe w v u
 noncomputable section
 open CategoryTheory CategoryTheory.Limits ConcreteCategory
-open SerrePositivity.HomotopyFunctionComplex
+
 
 namespace SerrePositivity.DiagramModel.MappingLimit
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
