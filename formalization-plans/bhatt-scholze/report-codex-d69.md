@@ -272,3 +272,6 @@
 - `PDModelCompletionQuotient`、`PDRawBaseChangeQuotient` が通った。前者は有限冪商の平坦性と完備化単位との照合、後者は未完備項での底変換を係数のイデアルの商まで移した環同型。
 - `PDDeRhamCompletedSubstitution`、`PDCompletedSubstitutionNaturality`、`PDDeRhamSubstitutionForms` が通った。完備係数に連鎖律を移し、各余面・余退化と可換な代入の関手、および Jacobian の各外冪への延長を作った。外積と微分を保つことと、総複体の二射影との照合は検査を続けている。
 - 上の追加7本を含む49本の一時監査は1,516宣言で標準三公理のみ。Witt の二比較の導来 p 完備底変換後の擬同型と、完備 pd de Rham の厳密な自然性が残る。
+
+- `PDTermQuotientModel` と `WittFiniteBridge` が通った。前者では完備分冪模型の実際の各項の p 冪商を未完備項の商と比較した。後者では有限 prismatic 枠から小さい Witt 模型への橋を、基底を ψ、各頂点の変数像を p 乗と指定して構成した。大小の Witt 枠を結ぶ四角形は検査中。
+- 上の2本を含む51本の一時監査は1,574宣言で標準三公理のみ。
