@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory MonoidalCategory Hammock SerrePositivity.InfinityCategories
-open SerrePositivity.SimplicialModel SerrePositivity.KST.Comparison
+open SerrePositivity.SimplicialModel
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category} (f : X ⟶ Y)
   (hf : C.weakEquivalences f)
 

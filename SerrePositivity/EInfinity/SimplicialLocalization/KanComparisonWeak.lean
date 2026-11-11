@@ -21,7 +21,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
-open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
+open CategoryTheory SerrePositivity.InfinityCategories
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : KanFreeHammockObjects C)
 
 lemma kanFreeHammockAugmentationEnriched_map_weak :

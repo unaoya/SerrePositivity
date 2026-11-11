@@ -16,7 +16,7 @@ universe u v w
 namespace SerrePositivity.EInfinity.FrameHom
 open CategoryTheory HomotopicalAlgebra SSet Opposite Hammock MonoidalCategory
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison
+
 open scoped Simplicial
 
 /-- 概要：同じ逆比較で単位点の等式を逆向きへ送る。

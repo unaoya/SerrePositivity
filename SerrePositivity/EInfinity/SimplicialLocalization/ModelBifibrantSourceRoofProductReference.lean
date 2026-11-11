@@ -21,7 +21,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open scoped Simplicial
 open CategoryTheory HomotopicalAlgebra Opposite Hammock
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
-open SerrePositivity.HomotopyFunctionComplex SerrePositivity.KST.Comparison
+open SerrePositivity.HomotopyFunctionComplex
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (X Y : BifibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)
   (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)

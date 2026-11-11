@@ -37,7 +37,7 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})

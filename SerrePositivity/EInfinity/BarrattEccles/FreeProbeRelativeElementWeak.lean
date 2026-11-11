@@ -21,7 +21,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Hammock SimplicialLocalization
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.SimplicialModel SerrePositivity.KST.Comparison
+open SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 
 /-- 概要：元の全相対屋根自身は弱同値。

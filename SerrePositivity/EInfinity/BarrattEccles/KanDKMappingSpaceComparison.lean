@@ -17,7 +17,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite SimplicialLocalization SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison
+
 variable (A : Type u) [CommRing A] (X Y : CAlgSimplicialCategory A)
 def cAlgMappingSpaceComparisonIso :
     AnodyneHomotopy.anodyneQ.obj (SimplicialCategory.sHom X Y) ≅

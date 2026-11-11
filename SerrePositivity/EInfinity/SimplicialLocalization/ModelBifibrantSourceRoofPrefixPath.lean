@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory SSet SimplicialLocalization Hammock
-open SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   (X Y : HomotopicalAlgebra.BifibrantObject C)

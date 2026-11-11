@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open Hammock SerrePositivity.KST.Comparison
+open Hammock
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category} (f : X ⟶ Y) (Z : C.category)
 
 lemma kanHammockSource_precompose :

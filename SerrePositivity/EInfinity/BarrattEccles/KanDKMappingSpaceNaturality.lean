@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite SimplicialLocalization SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison
+
 variable (A : Type u) [CommRing A]
 
 lemma cAlgMappingSpaceComparisonIso_postcompose

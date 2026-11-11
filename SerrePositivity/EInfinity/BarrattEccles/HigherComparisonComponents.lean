@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite SimplicialLocalization Hammock
-open SerrePositivity.KST.Comparison
+
 variable (A : Type u) [CommRing A]
 
 def mappingSpaceReducedHammockComponentsIso (X Y : (operad A).Algebra) :

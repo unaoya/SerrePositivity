@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
-open CategoryTheory Hammock SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
+open CategoryTheory Hammock SerrePositivity.InfinityCategories
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 abbrev KanHammockCategory := ForgetEnrichment SSet.{u} (KanHammockObjects C)

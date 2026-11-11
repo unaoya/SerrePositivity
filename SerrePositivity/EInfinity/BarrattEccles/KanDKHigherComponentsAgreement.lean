@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite SimplicialLocalization
-open SerrePositivity.SimplicialModel SerrePositivity.KST.Comparison
+open SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 def cofibrantAlgebraKanDKHigherPiZeroEquiv :
