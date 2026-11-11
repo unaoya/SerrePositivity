@@ -286,3 +286,5 @@
 - `PDDeRhamSubstitutionDifferential` で、多項式代入と完備分冪微分の可換性を全次数で示した。頂点変数の微分が 1 形式を生成し、外積の保存と Leibniz 則で高次数へ延ばす。`PDDeRhamRowFormsExt` で係数と微分を保つ形式の写像を次数 0 で比較し、`PDDeRhamSubstitutionCofaces` と `PDDeRhamSubstitutionFunctor` で余面・余退化、恒等射、合成の厳密な両立を示した。二つの射影も厳密に自然になった。
 - `PDDeRhamCoefficientProjection` で、D68 の既存の総複体の係数変更と実際の二射影の成分を照合した。`PDRawColumnCompletion` で標数を仮定しない未完備の分冪列と完備列への標準写像、`PDRawFormsBaseChange` で各項の自由模型の通常の底変換を作った。`SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeModel` で完備化同値と射影模型から完備導来底変換を計算する同型と可換図式を示した。
 - この追加8本は鍵付きの対象ビルドを通った。69本の一時監査は1,977宣言で標準三公理のみ。残りの Witt の二比較では、有限冪商から列の完備底変換を計算する部分と、K4 の比較を余単体構造に移して一般の結晶の橋を適用する部分を続ける。
+
+- `WittAffineBaseChange` で、標準の有限 affine 項を ψ に沿って完備テンソルした環を、Witt 係数の完備自由 δ 環に同定した。⑤c の `exists_completedFreeDelta_baseChange_equiv` をそのまま使い、左の係数脚と自由座標上の等式を残した。余単体射と橋への移送は続けて検査する。対象ビルドは成功し、70本の一時監査は1,996宣言で標準三公理のみ。
