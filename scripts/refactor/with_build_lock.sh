@@ -1,8 +1,13 @@
 #!/bin/zsh
-# 概要：worktree 共通の mkdir 鍵でビルドを直列化する。
-# 方針：owner.json の PID を確認し、終了・中断時に自分の鍵だけを除く。
-# 規約：--wait 0 は即時保留（終了 75）。既定無期限、再確認 10 秒。
-# 使われ方：zsh scripts/refactor/with_build_lock.sh --wait 0 -- lake build Module
+# 概要：worktree 共通の mkdir 鍵でビルドを直列化する。待ち手は整理券で順に並ぶ。
+# 方針：owner.json の PID を確認し、終了・中断時に自分の鍵と整理券だけを除く。
+#       鍵が空いたとき、生きている整理券のうち順位が一番のものだけが取る。
+#       順位は（組の順位、待ち始めた時刻）。組は impl・research・bulk の三つで、
+#       昼（JST 8〜23 時）は impl → research → bulk、夜は bulk → impl → research。
+# 規約：--wait 0 は即時保留（終了 75）。既定無期限、再確認 2 秒。
+#       --class を省くと worktree 名から推定（kerodon-layout は bulk、*-review は research、他は impl）。
+#       --status は持ち主と待ちの列を表示して終了する。
+# 使われ方：zsh scripts/refactor/with_build_lock.sh --wait 1800 -- lake build Module
 exec python3 - "$@" <<'PY'
 import argparse
 import contextlib
@@ -12,26 +17,46 @@ import json
 import math
 import os
 from pathlib import Path
+import re
 import signal
 import subprocess
 import sys
 import time
 import uuid
 
-p=argparse.ArgumentParser(description='Serialize builds across worktrees; busy timeout exits 75.')
+CLASSES=('impl','research','bulk')
+JST=datetime.timezone(datetime.timedelta(hours=9))
+
+p=argparse.ArgumentParser(description='Serialize builds across worktrees with a fair ticket queue; busy timeout exits 75.')
 p.add_argument('--wait',type=float,default=None)
+p.add_argument('--class',dest='klass',choices=CLASSES,default=None)
+p.add_argument('--status',action='store_true')
 p.add_argument('command',nargs=argparse.REMAINDER)
 a=p.parse_args()
 if a.command[:1]==['--']: a.command.pop(0)
-if not a.command or (a.wait is not None and (a.wait<0 or not math.isfinite(a.wait))): p.error('command and non-negative --wait required')
+if not a.status and (not a.command or (a.wait is not None and (a.wait<0 or not math.isfinite(a.wait)))):
+    p.error('command and non-negative --wait required')
 base=Path(os.environ.get('TMPDIR') or '/tmp').resolve()
 lock=base/'serre-lake-build.lock'
-# Serialize owner publication/reaping as well as mkdir. The small guard file stays;
-# kernel flock is released even on SIGKILL. It prevents deleting a replacement lock.
+queue=base/'serre-lake-build.queue'
+# Serialize owner publication/reaping, ticket publication and the acquire decision.
+# The small guard file stays; kernel flock is released even on SIGKILL.
 guard=base/'serre-lake-build.guard'
+worktree=str(Path.cwd().resolve())
+
+def infer_class(path):
+    name=Path(path).name
+    if 'kerodon-layout' in name: return 'bulk'
+    if name.endswith('-review') or '-review-' in name: return 'research'
+    return 'impl'
+
+klass=a.klass or infer_class(worktree)
 token=uuid.uuid4().hex
-owner={'pid':os.getpid(),'worktree':str(Path.cwd().resolve()),'started':datetime.datetime.now(datetime.timezone.utc).isoformat(),'command':a.command,'token':token}
-child=None; acquired=False; interrupted=0
+enqueued=time.time()
+owner={'pid':os.getpid(),'worktree':worktree,'started':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+       'command':a.command,'token':token,'class':klass}
+ticket=queue/f'{token}.json'
+child=None; acquired=False; interrupted=0; ticketed=False
 
 def handle(signum,_frame):
     global interrupted
@@ -48,11 +73,13 @@ def protected():
         fcntl.flock(stream,fcntl.LOCK_EX)
         yield
 
-def read_owner():
+def read_json(path):
     try:
-        value=json.loads((lock/'owner.json').read_text())
+        value=json.loads(path.read_text())
         return value if isinstance(value,dict) else None
     except (OSError,ValueError): return None
+
+def read_owner(): return read_json(lock/'owner.json')
 
 def alive(pid):
     if not isinstance(pid,int) or pid<=0: return True
@@ -65,38 +92,100 @@ def erase():
     (lock/'owner.json').unlink(missing_ok=True)
     lock.rmdir()
 
+def class_rank(c,hour):
+    day=8<=hour<23
+    order=('impl','research','bulk') if day else ('bulk','impl','research')
+    return order.index(c) if c in order else len(order)
+
+def live_tickets():
+    """Live tickets, reaping those whose process is gone. Caller holds the guard."""
+    out=[]
+    if not queue.is_dir(): return out
+    for f in queue.glob('*.json'):
+        t=read_json(f)
+        if not t or not alive(t.get('pid')):
+            f.unlink(missing_ok=True);continue
+        out.append(t)
+    return out
+
+def order_key(t,hour):
+    return (class_rank(t.get('class','impl'),hour),float(t.get('enqueued',0)),str(t.get('token','')))
+
+def reap_lock():
+    if lock.is_symlink(): raise RuntimeError('refuse symlink lock directory')
+    if lock.exists():
+        previous=read_owner()
+        if previous and not alive(previous.get('pid')):
+            erase()
+        elif previous is None and time.time()-lock.stat().st_mtime>60:
+            # A crash between mkdir and publication leaves no live owner.
+            erase()
+
+def status():
+    with protected():
+        reap_lock()
+        hour=datetime.datetime.now(JST).hour
+        o=read_owner()
+        now=time.time()
+        if o:
+            start=datetime.datetime.fromisoformat(o['started']).astimezone(JST)
+            print(f"holder: {Path(o.get('worktree','?')).name} [{o.get('class','?')}] since {start:%H:%M} :: {' '.join(o.get('command',[]))[:100]}")
+        else: print('holder: (free)')
+        ts=sorted(live_tickets(),key=lambda t:order_key(t,hour))
+        print(f"queue ({'day' if 8<=hour<23 else 'night'} order): {len(ts)}")
+        for i,t in enumerate(ts,1):
+            print(f"  {i}. {Path(t.get('worktree','?')).name} [{t.get('class')}] waiting {int(now-float(t.get('enqueued',now)))//60}m :: {' '.join(t.get('command',[]))[:80]}")
+
+if a.status:
+    status();sys.exit(0)
+
+def remove_ticket():
+    global ticketed
+    if ticketed:
+        ticket.unlink(missing_ok=True);ticketed=False
+
 try:
     ps=subprocess.run(['ps','-axo','command='],capture_output=True,text=True)
     if ps.returncode: print('warning: cannot inspect unguarded lake builds: '+ps.stderr.strip(),file=sys.stderr)
     else:
-        lines=[l for l in ps.stdout.splitlines() if __import__('re').search(r'(?:^|[/\s])lake\s+build(?:\s|$)',l) and 'with_build_lock.sh' not in l]
+        lines=[l for l in ps.stdout.splitlines() if re.search(r'(?:^|[/\s])lake\s+build(?:\s|$)',l) and 'with_build_lock.sh' not in l and not re.search(r'Python - --wait|python3 - --wait',l)]
         if lines: print('warning: existing lake build (possibly unguarded):\n'+'\n'.join(lines),file=sys.stderr)
-    started=time.monotonic(); last_notice=-float('inf')
+    with protected():
+        queue.mkdir(exist_ok=True)
+        if queue.is_symlink(): raise RuntimeError('refuse symlink queue directory')
+        ticket.write_text(json.dumps({'pid':os.getpid(),'worktree':worktree,'class':klass,'enqueued':enqueued,
+                                      'token':token,'command':a.command},ensure_ascii=False)+'\n')
+        ticketed=True
+    started=time.monotonic(); last_notice=-float('inf'); previous=None; position=None
     while not acquired:
         if interrupted: sys.exit(128+interrupted)
         with protected():
-            if lock.is_symlink(): raise RuntimeError('refuse symlink lock directory')
-            if lock.exists():
-                previous=read_owner()
-                if previous and not alive(previous.get('pid')):
-                    erase()
-                elif previous is None and time.time()-lock.stat().st_mtime>60:
-                    # A crash between mkdir and publication leaves no live owner.
-                    # Only reclaim an empty/incomplete directory after a grace period.
-                    erase()
-            try:
+            reap_lock()
+            hour=datetime.datetime.now(JST).hour
+            ts=sorted(live_tickets(),key=lambda t:order_key(t,hour))
+            tokens=[t.get('token') for t in ts]
+            position=tokens.index(token)+1 if token in tokens else None
+            if position is None:
+                # Our ticket vanished (e.g. reaped by mistake); republish it.
+                ticket.write_text(json.dumps({'pid':os.getpid(),'worktree':worktree,'class':klass,'enqueued':enqueued,
+                                              'token':token,'command':a.command},ensure_ascii=False)+'\n')
+                position=None
+            elif position==1 and not lock.exists():
                 lock.mkdir()
                 try: (lock/'owner.json').write_text(json.dumps(owner,ensure_ascii=False)+'\n')
                 except BaseException:
                     erase();raise
                 acquired=True
-            except FileExistsError: previous=read_owner()
+                remove_ticket()
+            if not acquired: previous=read_owner()
         if acquired: break
         now=time.monotonic()
         if now-last_notice>=60:
-            print('waiting for build lock: '+json.dumps(previous,ensure_ascii=False),file=sys.stderr,flush=True);last_notice=now
-        if a.wait is not None and now-started>=a.wait: sys.exit(75)
-        delay=10 if a.wait is None else min(10,max(0,a.wait-(now-started)))
+            print(f'waiting for build lock [{klass}] position {position}: '+json.dumps(previous,ensure_ascii=False),file=sys.stderr,flush=True);last_notice=now
+        if a.wait is not None and now-started>=a.wait:
+            with protected(): remove_ticket()
+            sys.exit(75)
+        delay=2 if a.wait is None else min(2,max(0,a.wait-(now-started)))
         # Short sleep slices let signal cleanup run promptly.
         until=time.monotonic()+delay
         while time.monotonic()<until and not interrupted: time.sleep(min(.1,until-time.monotonic()))
@@ -108,8 +197,9 @@ try:
 except (OSError,RuntimeError) as exc:
     print('with_build_lock: '+str(exc),file=sys.stderr);sys.exit(1)
 finally:
-    if acquired:
-        with protected():
+    with protected():
+        remove_ticket()
+        if acquired:
             current=read_owner()
             if current and current.get('token')==token: erase()
 PY
