@@ -787,3 +787,72 @@ H=H_Cech^q(M;d)、Fₙ=ker πₙ とすると、H/Fₙ は range πₙ と自然
 flat な底変換ではコホモロジーの交換を使う。閉厚化には flat 性を仮定せず複体の自然な写像を扱う。Frobenius には半線形性と I 進指数の p 倍を明示する。filtered colimit では有限交叉の各次数の Čech 計算とコホモロジーの比較を扱い、完備化と任意の filtered colimit の交換同型を仮定することはしない。
 
 全ビルド・監査は共有鍵 `--wait 3600` を一回ごとに取り、終了時に返した。23 時以降の二枠と、KL-W1 が停止点 3 の報告まで鍵の外で作業する改定も main から取り込み済み。新規の追加に `sorry`・`admit`・追加公理・計算量上限の追加はなく、既存の宣言の型・本文は変えていない。**停止点 2e ではない**。最終出力と利用側の `AugmentedRingCechExact` は保つ。
+
+## 完備化比較の自然性と、実際の Čech 逆系（11-11）
+
+`93427500d`（新規 4 モジュールと直接 importer、229 行）に保存。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,261 jobs 成功**、別の共有鍵による公式監査は **6,225 宣言・標準三公理のみ**。
+
+登録モジュールは `LinearCompatibleFamiliesMap`、`AdicProjectionNaturality`、`ReesQuotientTransitionLaws`、`ReesClosedCechInverseSystem`。基底環とイデアルを固定した可換な係数写像について、完備化から互換族への標準写像の自然性を示した。完備化側は Mathlib の `AdicCompletion.map` を使う。すでに構成した Čech 形式関数の同型の順写像は標準写像と等しいため、この自然性を同型の順方向にも適用できる。
+
+実際の商 M/IⁿM の遷移の恒等・合成則を代表上で示し、標準開の図式、Čech 複体、コホモロジーへ送った。その結果 `reesAdicProjectiveClosedCechInverseSystem : ℕᵒᵖ ⥤ ModuleCat R` を構成した。形式関数の同型では、この逆系の逆極限を各遷移に互換な族の型として扱う。
+
+### 宣言と主張（ローカルな型クラス設定を除く11件）
+
+| 宣言 | 主張 |
+|---|---|
+| `compatibleLinearFamiliesMap` | 遷移と可換な成分写像が誘導する、互換族の間の線形写像。 |
+| `compatibleLinearFamiliesMap_apply` | 互換族の写像を成分で評価する。 |
+| `adicProjectionQuotientMap_naturality` | 射影の可換性は、I 進剰余類上へ降ろした射影にも成り立つ。 |
+| `adicProjectionCompletionMap_naturality_apply` | 完備化から互換族への標準写像は、成分写像と可換。 |
+| `reesAdicProjectiveQuotientTransition_self` | 閉厚化の同じ段の間の遷移は恒等写像。 |
+| `reesAdicProjectiveQuotientTransition_comp` | 閉厚化の二つの遷移の合成は、直接の遷移に等しい。 |
+| `reesAdicProjectiveClosedCechTransitionChartMap_self` | 閉厚化の標準開の図式における、同じ段の遷移は恒等写像。 |
+| `reesAdicProjectiveClosedCechTransitionChartMap_comp` | 閉厚化の標準開の図式における、遷移の合成則。 |
+| `reesAdicProjectiveClosedCechTransition_self` | 閉厚化の Čech コホモロジーの同じ段の間の遷移は恒等写像。 |
+| `reesAdicProjectiveClosedCechTransition_comp` | 閉厚化の Čech コホモロジーの遷移の合成則。 |
+| `reesAdicProjectiveClosedCechInverseSystem` | 実際の閉厚化の Čech コホモロジーの逆系。 |
+
+## 半線形な自然性と Frobenius の I 進指数の制御（11-11）
+
+`730982aa7`（新規 4 モジュールと直接 importer、231 行）に保存。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,265 jobs 成功**、別の共有鍵による公式監査は **6,261 宣言・標準三公理のみ**。
+
+登録モジュールは `SemilinearCompatibleFamiliesMap`、`AdicSemilinearMap`、`AdicProjectionSemilinearNaturality`、`FrobeniusAdicControl`。
+
+係数環の準同型 σ:R→S、I⊆R、J⊆S、半線形写像 f:H→K について、I.map σ⊆J から f(IⁿH)⊆JⁿK を示し、Mathlib の完備化の間の **σ 半線形** 写像を構成した。flat 性は仮定しない。射影 πₙ・ρₙ と半線形成分写像 gₙ の四角形が可換なら、各剰余類、互換族、完備化からの標準写像の四角形も可換になる。これは §9 の具体的な Čech 比較に使う共通補題であり、具体的な比較の存在自体は入力として残る。
+
+Frobenius には指数標数 p を使う。I.map(Frob)⊆Iᵖ を証明し、Frobenius 半線形な f に対して **f(IⁿH)⊆I^(p*n)K** を得た。Frob による完備化の写像も半線形写像として構成した。この部分は実際の基底環の Frobenius とイデアルの評価であり、構造層の標準開の Čech 図式の Frobenius との照合が次に残る。
+
+### 宣言と主張（16件）
+
+| 宣言 | 主張 |
+|---|---|
+| `compatibleSemilinearFamiliesMap` | 遷移と可換な半線形成分写像が誘導する、互換族の半線形写像。 |
+| `compatibleSemilinearFamiliesMap_apply` | 半線形な互換族の写像を、各成分で評価する。 |
+| `adicSemilinear_smul_top_le_comap` | イデアルの像の包含から、半線形写像は各イデアル冪の作用を保つ。 |
+| `adicSemilinearQuotientMap` | 各イデアル冪による剰余類の間の半線形写像。 |
+| `adicSemilinearQuotientMap_mk` | 剰余類の半線形写像は、元の代表をそのまま送る。 |
+| `adicSemilinearQuotientMap_transition` | 剰余類の半線形写像は、通常の I 進・J 進遷移と可換。 |
+| `adicSemilinearCompletionMap` | イデアル冪を保つ半線形写像が誘導する、Mathlib の完備化の間の半線形写像。 |
+| `adicSemilinearCompletionMap_apply` | 半線形な完備化写像の成分は、剰余類の半線形写像で計算できる。 |
+| `adicSemilinearCompletionMap_of_apply` | 半線形な完備化写像は、元の加群の写像と両立する。 |
+| `adicProjectionQuotientMap_semilinear_naturality` | 半線形な射影の可換式は、各イデアル冪による剰余類にも降りる。 |
+| `adicProjectionCompletionMap_semilinear_naturality_apply` | 完備化から互換族への標準写像は、係数環を変える半線形写像と可換。 |
+| `frobeniusIdeal_map_le_pow` | Frobenius による I の像は、通常のイデアル冪 Iᵖ に含まれる。 |
+| `frobeniusIdeal_map_le_self` | Frobenius による I の像は、I 自身にも含まれる。 |
+| `frobeniusSemilinear_ideal_power_control` | Frobenius 半線形写像は、Iⁿ 倍を I^(p*n) 倍に送る。 |
+| `frobeniusSemilinearCompletionMap` | Frobenius 半線形写像が誘導する、I 進完備化の間の Frobenius 半線形写像。 |
+| `frobeniusScalarSemilinearMap` | 基底環の実際の Frobenius を、Frobenius 半線形な加群写像として見る。 |
+
+### §9 の比較を具体化する次の順序
+
+以下はまだ実装の残る部分であり、今回の一般的な可換式だけで完了とは数えない。
+
+1. **共通アフィン細分**：二つの有限アフィン被覆の交叉の二重 Čech 図式を作る。各アフィン交叉上の被覆の増大 Čech の完全性を用意し、既存の `SerrePositivity.Cech.doubleCech_acyclic_iff` などを再利用して比較する。有界版と全タプル版の既存の比較だけでは、任意の共通アフィン細分の比較までは含まない。
+2. **底変換**：有限な各次数の Čech 項について、テンソル積と有限積を交換する複体の比較を作る。flat な係数拡大では、その完全性によりコホモロジーの比較を同型にする。標準開の局所化・Proj 次数の比較へ接続し、今回の半線形な自然性に渡す。既存の `ProjectiveCechRestrictScalars` は係数制限の比較であり、ここで必要なテンソル積の比較とは別の入口として再利用する。
+3. **閉厚化**：加群写像 M→M/JM と、(M/JM)/Iⁿ(M/JM) を M/(IⁿM+JM) と比較する商の可換図式を使う。次数付き加群写像に対する Čech の自然性から、実際の商で作った短完全列と完備化比較へ渡す。非 flat な底変換として、複体上の写像と長完全列を使う。
+4. **Frobenius**：構造層に使う次数付き環の Frobenius は、Proj 次数 d→p*d と局所化の分母の p 乗を伴う。標準開の faces と可換な半線形 Čech 写像を作り、今回の I 進指数 n→p*n の評価へ接続する。Iᵖ に関する完備化と I に関する完備化の共終な比較も、必要な評価式とともに扱う。
+5. **filtered colimit**：有限被覆の各 Čech 次数の有限積、局所化、次数零の成分との交換を示し、filtered colimit の完全性を使ってコホモロジーの比較へ渡す。完備化と任意の filtered colimit の交換同型は入力にしない。2g の Noether 近似で必要な有限段の図式と、今回の可換式の整合性を使う。
+
+次の具体的な係数写像の入口としては、`reesExtendedAdic_map_mem` が基底環上線形な写像による IⁿM の保存を既に与える。次数を保つ多項式加群写像に対し、IⁿM と M/IⁿM の写像を作り、`fullCechComplexFunctor.mapShortComplex` で短完全列の間の射へ送る。これで閉厚化の比較と、他の比較を射に自然な形で渡す API を共通に使える。
+
+全ビルド・全監査は共有の鍵 `--wait 3600` を一回の実行ごとに取り、終了時に返した。新規追加に `sorry`・`admit`・追加公理・計算量上限の追加はなく、既存宣言の型・本文は変更していない。数学の未コミット分はない。**停止点 2e ではない**。最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は保つ。
