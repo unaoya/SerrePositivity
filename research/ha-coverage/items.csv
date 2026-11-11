@@ -1638,7 +1638,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.6.27,Corollary,Ω∞ の保守性と sifted 余極限保存,5.2.6,,,,,0,0,,-
 5.2.6.28,Remark,Iterated Loop Spaces (p. 879),5.2.6,,,,,0,0,,-
 5.2.6.29,Remark,Iterated Loop Spaces (p. 880),5.2.6,,,,,0,0,,-
-5.3.1.1,Example,Centers and Centralizers (p. 882),5.3.1,,,,,0,0,,-
+5.3.1.1,Example,中心と自己作用の普遍性,5.3.1,,,,,0,0,,-
 5.3.1.2,Definition,Centers and Centralizers (p. 883),5.3.1,,,,,0,0,,-
 5.3.1.3,Remark,Centers and Centralizers (p. 883),5.3.1,,,,,0,0,,-
 5.3.1.4,Remark,Centers and Centralizers (p. 883),5.3.1,,,,,0,0,,-
@@ -1655,7 +1655,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.3.1.15,Corollary,Centers and Centralizers (p. 886),5.3.1,,,,,0,0,,-
 5.3.1.16,Corollary,Centers and Centralizers (p. 886),5.3.1,,,,,0,0,,-
 5.3.1.17,Corollary,Centers and Centralizers (p. 887),5.3.1,,,,,0,0,,-
-5.3.1.18,Example,The Drinfeld Center,5.3.1,,,,,0,0,,-
+5.3.1.18,Example,中心の Eₖ₊₁ 代数構造,5.3.1,,,,,0,0,,-
 5.3.1.19,Definition,Centers and Centralizers (p. 888),5.3.1,,,,,0,0,,-
 5.3.1.20,Remark,Centers and Centralizers (p. 888),5.3.1,,,,,0,0,,-
 5.3.1.21,Definition,Centers and Centralizers (p. 889),5.3.1,,,,,0,0,,-
@@ -1682,7 +1682,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.3.2.9,Lemma,The Adjoint Representation (p. 900),5.3.2,,,,,0,0,,-
 5.3.2.10,Remark,The Adjoint Representation (p. 900),5.3.2,,,,,0,0,,-
 5.3.2.11,Lemma,The Adjoint Representation (p. 901),5.3.2,,,,,0,0,,-
-5.3.2.12,Lemma,The Adjoint Representation (p. 902),5.3.2,,,,,0,0,,-
+5.3.2.12,Lemma,単位・テンソルと両立する compact 生成基数,5.3.2,,,,,0,0,,-
 5.3.2.13,Warning,The Adjoint Representation (p. 905),5.3.2,,,,,0,0,,-
 5.3.2.14,Remark,The Adjoint Representation (p. 905),5.3.2,,,,,0,0,,-
 5.3.3.1,Notation,Tensor Products of Free Algebras (p. 906),5.3.3,,,,,0,0,,-
@@ -1691,7 +1691,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.3.3.4,Remark,Tensor Products of Free Algebras (p. 907),5.3.3,,,,,0,0,,-
 5.3.3.5,Example,Tensor Products of Free Algebras (p. 908),5.3.3,,,,,0,0,,-
 5.3.3.6,Example,Tensor Products of Free Algebras (p. 908),5.3.3,,,,,0,0,,-
-5.3.3.7,Example,Tensor Products of Free Algebras (p. 908),5.3.3,,,,,0,0,,-
+5.3.3.7,Example,CAlg のテンソルと余積,5.3.3,,,,,0,0,,-
 5.3.3.8,Notation,Tensor Products of Free Algebras (p. 909),5.3.3,,,,,0,0,,-
 5.3.3.9,Notation,Tensor Products of Free Algebras (p. 910),5.3.3,,,,,0,0,,-
 5.3.3.10,Example,Tensor Products of Free Algebras (p. 910),5.3.3,,,,,0,0,,-
@@ -1719,8 +1719,8 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.3.3.32,Proposition,Tensor Products of Free Algebras (p. 920),5.3.3,,,,,0,0,,-
 5.3.3.33,Warning,Tensor Products of Free Algebras (p. 920),5.3.3,,,,,0,0,,-
 5.3.3.34,Remark,Tensor Products of Free Algebras (p. 920),5.3.3,,,,,0,0,,-
-5.4.0.1,Convention,Little Cubes and Manifold Topology (p. 922),5.4,,,,,0,0,,-
-5.4.1.1,Theorem,Brouwer,5.4.1,,,,,0,0,,-
+5.4.0.1,Convention,topological manifold の規約,5.4,,,,,0,0,,-
+5.4.1.1,Theorem,局所同相の fiber ごとの判定,5.4.1,,,,,0,0,,-
 5.4.1.2,Remark,Embeddings of Topological Manifolds (p. 923),5.4.1,,,,,0,0,,-
 5.4.1.3,Corollary,Embeddings of Topological Manifolds (p. 923),5.4.1,,,,,0,0,,-
 5.4.1.4,Remark,Embeddings of Topological Manifolds (p. 923),5.4.1,,,,,0,0,,-
@@ -1777,14 +1777,14 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.4.4.5,Theorem,Nonunital $E_{k}$-Algebras (p. 946),5.4.4,,,,,0,0,,-
 5.4.4.6,Remark,Nonunital $E_{k}$-Algebras (p. 947),5.4.4,,,,,0,0,,-
 5.4.4.7,Corollary,Nonunital $E_{k}$-Algebras (p. 947),5.4.4,,,,,0,0,,-
-5.4.4.8,Proposition,Nonunital $E_{k}$-Algebras (p. 948),5.4.4,,,,,0,0,,-
+5.4.4.8,Proposition,非単位代数の単位化,5.4.4,,,,,0,0,,-
 5.4.4.9,Definition,Nonunital $E_{k}$-Algebras (p. 948),5.4.4,,,,,0,0,,-
 5.4.4.10,Proposition,Nonunital $E_{k}$-Algebras (p. 948),5.4.4,,,,,0,0,,-
 5.4.4.11,Definition,Nonunital $E_{k}$-Algebras (p. 951),5.4.4,,,,,0,0,,-
 5.4.4.12,Remark,Nonunital $E_{k}$-Algebras (p. 952),5.4.4,,,,,0,0,,-
 5.4.4.13,Remark,Nonunital $E_{k}$-Algebras (p. 952),5.4.4,,,,,0,0,,-
 5.4.4.14,Lemma,Nonunital $E_{k}$-Algebras (p. 952),5.4.4,,,,,0,0,,-
-5.4.4.15,Lemma,Nonunital $E_{k}$-Algebras (p. 953),5.4.4,,,,,0,0,,-
+5.4.4.15,Lemma,Eₖ 代数の元の反転,5.4.4,,,,,0,0,,-
 5.4.4.16,Remark,Nonunital $E_{k}$-Algebras (p. 953),5.4.4,,,,,0,0,,-
 5.4.4.17,Example,Nonunital $E_{k}$-Algebras (p. 953),5.4.4,,,,,0,0,,-
 5.4.4.18,Lemma,Nonunital $E_{k}$-Algebras (p. 954),5.4.4,,,,,0,0,,-
@@ -1807,13 +1807,13 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.4.5.16,Definition,Little Cubes in a Manifold (p. 962),5.4.5,,,,,0,0,,-
 5.4.5.17,Remark,Little Cubes in a Manifold (p. 962),5.4.5,,,,,0,0,,-
 5.4.5.18,Proposition,Little Cubes in a Manifold (p. 963),5.4.5,,,,,0,0,,-
-5.5.0.1,Remark,Topological Chiral Homology (p. 964),5.5,,,,,0,0,,-
-5.5.1.1,Definition,The Ran Space (p. 964),5.5.1,,,,,0,0,,-
+5.5.0.1,Remark,多様体の規約と factorization homology,5.5,,,,,0,0,,-
+5.5.1.1,Definition,非空有限部分集合の Ran 空間,5.5.1,,,,,0,0,,-
 5.5.1.2,Definition,The Ran Space (p. 964),5.5.1,,,,,0,0,,-
 5.5.1.3,Remark,The Ran Space (p. 964),5.5.1,,,,,0,0,,-
 5.5.1.4,Remark,The Ran Space (p. 965),5.5.1,,,,,0,0,,-
 5.5.1.5,Remark,The Ran Space (p. 965),5.5.1,,,,,0,0,,-
-5.5.1.6,Theorem,Beilinson-Drinfeld,5.5.1,,,,,0,0,,-
+5.5.1.6,Theorem,Euclidean 空間の Ran の弱可縮性,5.5.1,,,,,0,0,,-
 5.5.1.7,Notation,The Ran Space (p. 965),5.5.1,,,,,0,0,,-
 5.5.1.8,Lemma,Beilinson-Drinfeld,5.5.1,,,,,0,0,,-
 5.5.1.9,Definition,The Ran Space (p. 966),5.5.1,,,,,0,0,,-
@@ -1822,7 +1822,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.5.1.12,Remark,The Ran Space (p. 967),5.5.1,,,,,0,0,,-
 5.5.1.13,Remark,The Ran Space (p. 967),5.5.1,,,,,0,0,,-
 5.5.1.14,Proposition,The Ran Space (p. 967),5.5.1,,,,,0,0,,-
-5.5.1.15,Proposition,The Ran Space (p. 969),5.5.1,,,,,0,0,,-
+5.5.1.15,Proposition,局所弱可縮な添字による hyperdescent,5.5.1,,,,,0,0,,-
 5.5.1.16,Lemma,The Ran Space (p. 969),5.5.1,,,,,0,0,,-
 5.5.2.1,Definition,Topological Chiral Homology (p. 971),5.5.2,,,,,0,0,,-
 5.5.2.2,Definition,Topological Chiral Homology (p. 972),5.5.2,,,,,0,0,,-
@@ -1852,10 +1852,10 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.5.3.9,Remark,Properties of Topological Chiral Homology (p. 981),5.5.3,,,,,0,0,,-
 5.5.3.10,Lemma,Properties of Topological Chiral Homology (p. 982),5.5.3,,,,,0,0,,-
 5.5.3.11,Theorem,Properties of Topological Chiral Homology (p. 982),5.5.3,,,,,0,0,,-
-5.5.3.12,Lemma,Properties of Topological Chiral Homology (p. 982),5.5.3,,,,,0,0,,-
+5.5.3.12,Lemma,sifted 圏の coslice 射影の cofinal 判定,5.5.3,,,,,0,0,9.1.4.16,-
 5.5.3.13,Remark,Properties of Topological Chiral Homology (p. 983),5.5.3,,,,,0,0,,-
 5.5.3.14,Example,Properties of Topological Chiral Homology (p. 983),5.5.3,,,,,0,0,,-
-5.5.4.1,Definition,Factorizable Cosheaves and Ran Integration (p. 983),5.5.4,,,,,0,0,,-
+5.5.4.1,Definition,余層と超余層,5.5.4,,,,,0,0,,-
 5.5.4.2,Remark,Factorizable Cosheaves and Ran Integration (p. 984),5.5.4,,,,,0,0,,-
 5.5.4.3,Definition,Factorizable Cosheaves and Ran Integration (p. 984),5.5.4,,,,,0,0,,-
 5.5.4.4,Definition,Factorizable Cosheaves and Ran Integration (p. 984),5.5.4,,,,,0,0,,-
@@ -1885,7 +1885,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.5.5.12,Corollary,Verdier Duality (p. 995),5.5.5,,,,,0,0,,-
 5.5.5.13,Corollary,Verdier Duality (p. 995),5.5.5,,,,,0,0,,-
 5.5.6.1,Remark,Nonabelian Poincare Duality (p. 999),5.5.6,,,,,0,0,,-
-5.5.6.2,Definition,Nonabelian Poincare Duality (p. 999),5.5.6,,,,,0,0,,-
+5.5.6.2,Definition,compact support を持つ section の単体集合,5.5.6,,,,,0,0,,-
 5.5.6.3,Remark,Nonabelian Poincare Duality (p. 999),5.5.6,,,,,0,0,,-
 5.5.6.4,Remark,Nonabelian Poincare Duality (p. 999),5.5.6,,,,,0,0,,-
 5.5.6.5,Remark,Nonabelian Poincare Duality (p. 999),5.5.6,,,,,0,0,,-
@@ -1893,14 +1893,14 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.5.6.7,Remark,Nonabelian Poincare Duality (p. 1000),5.5.6,,,,,0,0,,-
 5.5.6.8,Remark,Nonabelian Poincare Duality (p. 1000),5.5.6,,,,,0,0,,-
 5.5.6.9,Remark,Nonabelian Poincare Duality (p. 1000),5.5.6,,,,,0,0,,-
-5.5.6.10,Example,Nonabelian Poincare Duality (p. 1001),5.5.6,,,,,0,0,,-
+5.5.6.10,Example,Hochschild homology と自由ループ空間,5.5.6,,,,,0,0,,-
 5.5.6.11,Remark,Nonabelian Poincare Duality (p. 1001),5.5.6,,,,,0,0,,-
 5.5.6.12,Remark,Nonabelian Poincare Duality (p. 1002),5.5.6,,,,,0,0,,-
 5.5.6.13,Notation,Nonabelian Poincare Duality (p. 1003),5.5.6,,,,,0,0,,-
 5.5.6.14,Remark,Nonabelian Poincare Duality (p. 1003),5.5.6,,,,,0,0,,-
 5.5.6.15,Lemma,Nonabelian Poincare Duality (p. 1003),5.5.6,,,,,0,0,,-
 5.5.6.16,Proposition,Nonabelian Poincare Duality (p. 1006),5.5.6,,,,,0,0,,-
-5.5.6.17,Lemma,Nonabelian Poincare Duality (p. 1006),5.5.6,,,,,0,0,,-
+5.5.6.17,Lemma,∞ トポスの sifted 余極限と pullback,5.5.6,,,,,0,0,,-
 6.1.0.1,Question,The Calculus of Functors (p. 1012),6.1,,,,,0,0,,-
 6.1.0.2,Definition,The Calculus of Functors (p. 1012),6.1,,,,,0,0,,-
 6.1.0.3,Example,The Calculus of Functors (p. 1013),6.1,,,,,0,0,,-

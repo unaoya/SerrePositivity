@@ -78,7 +78,7 @@ number,status,declarations,reason,axioms,check,partial_kind
 3.2.4.4,none,,通常の可換モノイド対象を組紐付き関手で写せるが、任意の O の代数の ∞ operad を構成して点ごとのテンソルを入れ、各評価を対称モノイダルとする型は見つからなかった。,,not_found,
 3.2.4.5,none,,dg 可換 operad とその代数を確認した。Fin∗ の smash が ∞ operad の二関手であることや、これが誘導する二重可換代数との同値は見つからなかった。,,not_found,
 3.2.4.6,none,,準圏の反射的局所化はあるが、Comm⊗ とのテンソルで Op∞ を局所化し、本質像を余デカルト ∞ operad と同定する型は見つからなかった。,,not_found,
-3.2.4.7,none,,普通圏の可換モノイド対象と dg の commutativeOperad を確認した。HA で指定される CAlg(C) の対称モノイダル ∞ 構造が余デカルトであるという判定は見つからなかった。,,not_found,
+3.2.4.7,partial,CommAlgCat.binaryCofanIsColimit @ Mathlib/Algebra/Category/CommAlgCat/Monoidal.lean:40 | CommAlgCat.coe_tensorObj @ Mathlib/Algebra/Category/CommAlgCat/Monoidal.lean:67 | CommAlgCat.isInitialSelf @ Mathlib/Algebra/Category/CommAlgCat/Monoidal.lean:51,仮定：通常の可換環 R 上の可換代数の圏（Lean が強い：通常の可換代数の模型）。結論：tensor A⊗R B と二つの包含は二項余積で、単位 R は始対象となる（この模型で余Cartesian monoidal な構造を与える結論に一致）。任意の symmetric monoidal ∞ 圏 C の CAlg(C) と、この通常模型の全比較は含まれない。,,found,special
 3.2.4.8,none,,可換環の通常圏には全余極限がある。任意の対称モノイダル ∞ 圏の CAlg に有限余積を作る型や、可換環の余積を HA の operadic 構成に比較する宣言は見つからなかった。,,not_found,
 3.2.4.9,none,,通常のモノイダル関手はテンソル比較を同型とする。余デカルト operad からの写像が対称モノイダルであることと、対応する CAlg 値関手が有限余積を保つこととの同値は見つからなかった。,,not_found,
 3.2.4.10,none,,余デカルト・ファイブレーションと可換モノイド対象の通常圏を確認した。任意の ∞ operad から得る CAlg(C)⊗ が余デカルト operad になる型は見つからなかった。,,not_found,
