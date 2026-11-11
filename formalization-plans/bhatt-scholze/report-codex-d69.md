@@ -704,3 +704,28 @@ SerrePositivity.BhattScholze.Prismatic.PDEnvelopeCardinality
 SerrePositivity.CategoryTheory.ProCechNerveTransport
 SerrePositivity.CommutativeAlgebra.Adic.Cardinality
 ```
+
+
+### P3 続行 — 主開局所化・分冪・Zariski coverage
+
+- 新規9本（すべて BS）が鍵付きの対象ビルドを通過した（`/private/tmp/d69-p3-build-19.log`〜`/private/tmp/d69-p3-build-21.log`）。`--wait 3600`、一回30分未満、鍵はビルドの間のみ。
+- `PDLocalizationDpow`・`PDLocalizationLaws`・`PDLocalizationAddition`・`PDLocalizationStructure` は、分数の分子の分冪を分母の n 乗で割る公式から、任意の局所化に分冪構造を作る。代表によらないこと、和・積・反復分冪を証明し、存在一意性と、元の環からの合成で分冪射であることを判定する補題まで閉じた。
+- `CrystallineSiteLocalization` は、分冪構造・p 冪零・剰余構造射・濃度を保つ標準主開厚化と標準射。`CrystallineLocalizationLift` は任意の主開局所化模型からの延長と合成の等式、射の一意性。
+- `CrystallineZariskiRefinement` は任意の厚化の射に沿った被覆を標準主開被覆で細分する。`CrystallineZariskiCoverage` はこの細分で coverage の公理を証明し、以前の sInf による結晶 Zariski 位相と一致することを示す。一般の厚化の引き戻し対象の存在を仮定しない。
+- `CrystallineStructurePullback` は小さい模型の構造前層をサイトの引き戻しで制限したものと、元の構造前層との自然同型。同値の単位同型から構成した通常の環値の自然同型であり、∞ の辺にはしていない。
+- 一時監査は42モジュール・531宣言、標準三公理のみ（`/private/tmp/AuditD69P3FortyTwo.lean`、`/private/tmp/d69-p3-audit-fortytwo.log`）。今回の9本にも sorry・独自公理0。既存宣言・Nakayama の二ファイル・公式登録は変更していない。
+- 残り：主開被覆での環の貼り合わせを結晶構造前層の層条件に接続し、小さいサイト・引き戻し・係数制限を照合する。共通の局所化の貼り合わせ補題は個別検査済みだが、対象ビルド前なので本コミットに含めない。この記録は停止点3ではない。
+
+登録候補への追加（BS 9本）：
+
+```text
+SerrePositivity.BhattScholze.Prismatic.CrystallineLocalizationLift
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteLocalization
+SerrePositivity.BhattScholze.Prismatic.CrystallineStructurePullback
+SerrePositivity.BhattScholze.Prismatic.CrystallineZariskiCoverage
+SerrePositivity.BhattScholze.Prismatic.CrystallineZariskiRefinement
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationAddition
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationDpow
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationLaws
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationStructure
+```
