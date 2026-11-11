@@ -1,0 +1,3727 @@
+{
+  "worktree_commit": "4714973fc7f14446cb8068eae625fd9d3617f458",
+  "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
+  "items": {
+    "7.0.0.1": {
+      "ha_page": 1197,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.0.0.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.0.0",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Tor.*derived|moduleSpectrum|Eilenberg.MacLane",
+          "files_with_matches": 581,
+          "total_matching_lines": 2463,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleCompositePresentation.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleFunctorCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleNaturality.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGFunctorDerivedEquivalence.lean",
+            "SerrePositivity/Archive/WIP/DifferentialGraded/Morita/ScalarExtensionKernelOutputComponents.lean",
+            "SerrePositivity/Asymptotic/LengthSequence.lean",
+            "SerrePositivity/Asymptotic/UniformLift.lean",
+            "SerrePositivity/BhattScholze/Almost/AlmostTensorForward.lean",
+            "SerrePositivity/BhattScholze/Almost/CompletedModuleTensor.lean",
+            "SerrePositivity/BhattScholze/Almost/Lemma103.lean",
+            "SerrePositivity/BhattScholze/Almost/SupportedQuotient.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Tor.*derived|moduleSpectrum|Eilenberg.MacLane",
+          "files_with_matches": 37,
+          "total_matching_lines": 279,
+          "sample_paths": [
+            "Mathlib/Algebra/Homology/DerivedCategory/Basic.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/DerivabilityStructureInjectives.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/ExactFunctor.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Ext/ExactSequences.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Ext/Map.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/FullyFaithful.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/HomologySequence.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/KInjective.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/KProjective.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Linear.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Plus.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/HomologicalAlgebra/DerivedFlatModelTensor.lean",
+          "sha256": "1bb0ca1294a0a3ddbeaf57d2f801c3890cd28d98656b91a07b649dcd521fb22f"
+        },
+        {
+          "path": "SerrePositivity/HomologicalAlgebra/DerivedTensorMonoidal.lean",
+          "sha256": "8912a4f6c303adad72d3174013723f1dfa19b81c61756f13f7f84a994c21be17"
+        }
+      ],
+      "reason": "環スペクトルの導来テンソルの π を Tor と同定する比較は見つからない。通常環の導来テンソルと Tor の計算はあるが、スペクトルの相対テンソルとの比較を備えていない。"
+    },
+    "7.0.0.2": {
+      "ha_page": 1197,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.0.0.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.0.0",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "ringSpectrum|structured.*ring|EKMM",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "ringSpectrum|structured.*ring|EKMM",
+          "files_with_matches": 4,
+          "total_matching_lines": 15,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Functor/KanExtension/AdjunctionPreserves.lean",
+            "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+            "Mathlib/CategoryTheory/Limits/Preserves/Presheaf.lean",
+            "Mathlib/CategoryTheory/Sites/DenseSubsite/SheafEquiv.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/Spectra/ModelCategory/MonoidalLevel.lean",
+          "sha256": "5f3c0a02b0fbc704e1089d39ded105b8fa5b753507a8bbb4a1d9aa459e3ac1b3"
+        }
+      ],
+      "reason": "構造付き環スペクトルの模型による文献案内に対応する宣言は見つからない。対称スペクトルの模型はあるが、この引用の内容を定理として述べない。"
+    },
+    "7.1.0.1": {
+      "ha_page": 1197,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.0.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.0",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.0.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "ringSpectrum|little.*cube|AlgEk",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "ringSpectrum|little.*cube|AlgEk",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        },
+        {
+          "path": "SerrePositivity/Spectra/ModelCategory/MonoidalLevel.lean",
+          "sha256": "5f3c0a02b0fbc704e1089d39ded105b8fa5b753507a8bbb4a1d9aa459e3ac1b3"
+        }
+      ],
+      "reason": "スペクトルの smash 上の little k-cubes 代数を Eₖ 環とする定義は見つからない。dg オペラッド代数と通常の対称スペクトルのモノイダル構造はあるが、この ∞ オペラッド代数の圏を構成していない。"
+    },
+    "7.1.0.2": {
+      "ha_page": 1198,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.0.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.0",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.0.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "ringSpectrum|AInfinityRing|commutative.*spectr",
+          "files_with_matches": 3,
+          "total_matching_lines": 4,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/PerfectoidIdeal/Roots.lean",
+            "SerrePositivity/CLMST/PerfectoidizationIsogeny/Rank/AIC.lean",
+            "SerrePositivity/CommutativeAlgebra/RankLocus.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "ringSpectrum|AInfinityRing|commutative.*spectr",
+          "files_with_matches": 3,
+          "total_matching_lines": 4,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/Spectrum/Basic.lean",
+            "Mathlib/RingTheory/Spectrum/Prime/Topology.lean",
+            "Mathlib/Topology/Spectral/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/BarrattEccles/CAlg.lean",
+          "sha256": "54133c4d1a825f000cc8ceb51c3e0aa7e8468487b94527a91ed4ba76258b2a0d"
+        },
+        {
+          "path": "SerrePositivity/Spectra/ModelCategory/MonoidalLevel.lean",
+          "sha256": "5f3c0a02b0fbc704e1089d39ded105b8fa5b753507a8bbb4a1d9aa459e3ac1b3"
+        }
+      ],
+      "reason": "Eₖ 環・可換環スペクトル・A∞ 環の名称と、ホモトピー圏の可換代数との区別を表す定義は見つからない。実 dg E 代数は異なる模型で、環スペクトルの当該命名を備えていない。"
+    },
+    "7.1.0.4": {
+      "ha_page": 1198,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.0.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.0",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.0.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "AlgEk|little.*cube|algebraRestriction",
+          "files_with_matches": 32,
+          "total_matching_lines": 143,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Andre/Envelope/MonicSource.lean",
+            "SerrePositivity/BhattScholze/Andre/Perfection/PerfectPrismMonic.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Source.lean",
+            "SerrePositivity/BhattScholze/Andre/TorDescent.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/CompletedBaseChange.lean",
+            "SerrePositivity/BhattScholze/Prism/Tensor/PerfectPrismResidueTensor.lean",
+            "SerrePositivity/BhattScholze/Prism/Tensor/PerfectPrismTensor.lean",
+            "SerrePositivity/BhattScholze/Semiperfectoid/RootEnvelope/PerfectPrism.lean",
+            "SerrePositivity/BhattScholze/Semiperfectoid/RootEnvelope/RawCompletion.lean",
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/DiscreteAlgebra.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/HomologyCommutativeComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "AlgEk|little.*cube|algebraRestriction",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/AlgebraRestriction.lean",
+          "sha256": "29d9b7fbc385a8708f00c8788c56eb17d6624db30bf78ef965bc2b1b89f12776"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        }
+      ],
+      "reason": "全 k′≤k の little cubes の包含による環スペクトルの忘却列は見つからない。実オペラッド射に沿う代数制限はあるが、この E₀→E₁→…→Comm の模型の列は与えない。"
+    },
+    "7.1.0.5": {
+      "ha_page": 1198,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.0.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.0",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.0.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "monad.*spectr|spectr.*monad|monadMonEquiv",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "monad.*spectr|spectr.*monad|monadMonEquiv",
+          "files_with_matches": 1,
+          "total_matching_lines": 3,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Monad/EquivMon.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monad/EquivMon.lean",
+          "sha256": "f41ad9526f6adffb52841cab637eb9456a646e3fa94ffebea600591ef0c881d5"
+        },
+        {
+          "path": "SerrePositivity/Spectra/ModelCategory/MonoidalLevel.lean",
+          "sha256": "5f3c0a02b0fbc704e1089d39ded105b8fa5b753507a8bbb4a1d9aa459e3ac1b3"
+        }
+      ],
+      "reason": "環スペクトルを Sp の全余極限保存モナドとして同定する全充満な対応は見つからない。通常のモナドと自己関手モノイドの同値は、Sp の smash と自己関手の対応を備えていない。"
+    },
+    "7.1.1.1": {
+      "ha_page": 1199,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LMod.*RMod|AlgEk|little.*cube",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "LMod.*RMod|AlgEk|little.*cube",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean",
+          "sha256": "8a02e3383b78db0424497a3fa54a5667aaba262d8bc8cc0abb601df168058171"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Mod.lean",
+          "sha256": "b666f8d227279554d3131789c4940ae89ac1b97cad2684320f30cfb7adfcb45d"
+        }
+      ],
+      "reason": "E₁ オペラッドから Assoc への自明 Kan 射の切断と、E∞ 加群の左右比較は見つからない。通常の可換内部加群の左右作用は、この二つの ∞ オペラッドによる加群圏を比較していない。"
+    },
+    "7.1.1.2": {
+      "ha_page": 1199,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "moduleSpectrum|LMod.*Sp|RMod.*Sp",
+          "files_with_matches": 93,
+          "total_matching_lines": 238,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelFiberTransport.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelOuterCancellation.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelRawLastCancellation.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelRawLastTransport.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelUniversalRawRemainder.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitModelFirstUnitTransport.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitRawLastLongValueEndpoints.lean",
+            "SerrePositivity/BhattScholze/Almost/PerfectoidAlmost.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootPolynomial.lean",
+            "SerrePositivity/BhattScholze/Andre/Transfinite/Colimit.lean",
+            "SerrePositivity/BhattScholze/Prism/Residue/PrismaticResidue.lean",
+            "SerrePositivity/CLMST/AllModuleTorVanishing.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "moduleSpectrum|LMod.*Sp|RMod.*Sp",
+          "files_with_matches": 12,
+          "total_matching_lines": 25,
+          "sample_paths": [
+            "Mathlib/Analysis/CStarAlgebra/Module/Constructions.lean",
+            "Mathlib/Analysis/CStarAlgebra/Module/Defs.lean",
+            "Mathlib/Analysis/CStarAlgebra/Module/Synonym.lean",
+            "Mathlib/CategoryTheory/Sites/Equivalence.lean",
+            "Mathlib/LinearAlgebra/Span/TensorProduct.lean",
+            "Mathlib/NumberTheory/ModularForms/Basic.lean",
+            "Mathlib/RingTheory/IsTensorProduct.lean",
+            "Mathlib/RingTheory/Kaehler/TensorProduct.lean",
+            "Mathlib/RingTheory/Smooth/Fiber.lean",
+            "Mathlib/Topology/Algebra/Module/Star.lean",
+            "Mathlib/Topology/Algebra/NonUnitalStarAlgebra.lean",
+            "Mathlib/Topology/Algebra/Star/LinearMap.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/DGAlgebraDerivedInfinity.lean",
+          "sha256": "5e9219fbb4d2e2021c5543f208326f72b2203e6ac2a5fcec9960dad96476defe"
+        },
+        {
+          "path": "SerrePositivity/Spectra/ModelCategory/MonoidalLevel.lean",
+          "sha256": "5f3c0a02b0fbc704e1089d39ded105b8fa5b753507a8bbb4a1d9aa459e3ac1b3"
+        }
+      ],
+      "reason": "E₁ 環の左右加群スペクトルの ∞ 圏の定義は見つからない。非可換 dg 代数の半自由加群の dg nerve はあるが、任意の環スペクトルの作用を扱うものではない。"
+    },
+    "7.1.1.3": {
+      "ha_page": 1199,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "moduleSpectrum|LMod.*Sp|RMod.*Sp",
+          "files_with_matches": 93,
+          "total_matching_lines": 238,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelFiberTransport.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelOuterCancellation.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelRawLastCancellation.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelRawLastTransport.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelUniversalRawRemainder.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitModelFirstUnitTransport.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitRawLastLongValueEndpoints.lean",
+            "SerrePositivity/BhattScholze/Almost/PerfectoidAlmost.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootPolynomial.lean",
+            "SerrePositivity/BhattScholze/Andre/Transfinite/Colimit.lean",
+            "SerrePositivity/BhattScholze/Prism/Residue/PrismaticResidue.lean",
+            "SerrePositivity/CLMST/AllModuleTorVanishing.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "moduleSpectrum|LMod.*Sp|RMod.*Sp",
+          "files_with_matches": 12,
+          "total_matching_lines": 25,
+          "sample_paths": [
+            "Mathlib/Analysis/CStarAlgebra/Module/Constructions.lean",
+            "Mathlib/Analysis/CStarAlgebra/Module/Defs.lean",
+            "Mathlib/Analysis/CStarAlgebra/Module/Synonym.lean",
+            "Mathlib/CategoryTheory/Sites/Equivalence.lean",
+            "Mathlib/LinearAlgebra/Span/TensorProduct.lean",
+            "Mathlib/NumberTheory/ModularForms/Basic.lean",
+            "Mathlib/RingTheory/IsTensorProduct.lean",
+            "Mathlib/RingTheory/Kaehler/TensorProduct.lean",
+            "Mathlib/RingTheory/Smooth/Fiber.lean",
+            "Mathlib/Topology/Algebra/Module/Star.lean",
+            "Mathlib/Topology/Algebra/NonUnitalStarAlgebra.lean",
+            "Mathlib/Topology/Algebra/Star/LinearMap.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/DGAlgebraDerivedInfinity.lean",
+          "sha256": "5e9219fbb4d2e2021c5543f208326f72b2203e6ac2a5fcec9960dad96476defe"
+        }
+      ],
+      "reason": "加群スペクトルを単に加群と呼ぶ表記に対応する一般の構造は見つからない。構成済みの dg 加群の導来模型は、任意の E₁ 環スペクトルを入力としない。"
+    },
+    "7.1.1.7": {
+      "ha_page": 1200,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.1.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "connective.*smash|smash.*connective|Spcn",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "connective.*smash|smash.*connective|Spcn",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/Spectra/ModelCategory/MonoidalLevel.lean",
+          "sha256": "5f3c0a02b0fbc704e1089d39ded105b8fa5b753507a8bbb4a1d9aa459e3ac1b3"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/ConnectiveCover.lean",
+          "sha256": "0aa5cc6dfc43d647ace9514589ad858e647cda4c07caacc8749186a4420bdd07"
+        }
+      ],
+      "reason": "連結スペクトルが smash に閉じ球を含むことによる Spcn のモノイダル構造は見つからない。通常の複体の次数支持のテンソル性はあるが、スペクトルの ∞ t 構造と smash の比較がない。"
+    },
+    "7.1.1.8": {
+      "ha_page": 1201,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.1.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "OmegaInfinity.*monadic|monadic.*connective|forgetMonadic",
+          "files_with_matches": 2,
+          "total_matching_lines": 4,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/DGAlgebra/AllColimits.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/Monadic.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "OmegaInfinity.*monadic|monadic.*connective|forgetMonadic",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/DGAlgebra/Monadic.lean",
+          "sha256": "9058fa2fa9bac018b6ebd8184425f8f2c2f5e32b7405782d82fef35962fa7e23"
+        },
+        {
+          "path": "SerrePositivity/Spectra/ModelCategory/MonoidalLevel.lean",
+          "sha256": "5f3c0a02b0fbc704e1089d39ded105b8fa5b753507a8bbb4a1d9aa459e3ac1b3"
+        }
+      ],
+      "reason": "連結 Eₖ 環から空間への Ω∞ の保守性とモナド性は見つからない。厳密 dg 代数の複体へのモナド性は、空間への忘却を比較していない。"
+    },
+    "7.1.1.9": {
+      "ha_page": 1201,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.1.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "moduleSpectrum|connective.*module|OmegaInfinity",
+          "files_with_matches": 6,
+          "total_matching_lines": 8,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Derived/DGKappaClosedProjectiveComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKappaProjectiveComparison.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/ConnectiveHom.lean",
+            "SerrePositivity/KST/NonConnective.lean",
+            "SerrePositivity/KST/NonConnective/DGKappaSplitCofiberFamily.lean",
+            "SerrePositivity/KST/NonConnective/DGKappaSplitModuleCells.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "moduleSpectrum|connective.*module|OmegaInfinity",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/DGAlgebraDerivedInfinity.lean",
+          "sha256": "5e9219fbb4d2e2021c5543f208326f72b2203e6ac2a5fcec9960dad96476defe"
+        },
+        {
+          "path": "SerrePositivity/Spectra/ModelCategory/MonoidalLevel.lean",
+          "sha256": "5f3c0a02b0fbc704e1089d39ded105b8fa5b753507a8bbb4a1d9aa459e3ac1b3"
+        }
+      ],
+      "reason": "連結な環と加群の高次整合的な加法・作用の空間による説明に対応する比較は見つからない。通常の dg 加群の定義は、この Ω∞ の高次作用の模型を与えない。"
+    },
+    "7.1.1.10": {
+      "ha_page": 1202,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.1.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LMod.*connective|moduleSpectrum|TStructure",
+          "files_with_matches": 127,
+          "total_matching_lines": 692,
+          "sample_paths": [
+            "SerrePositivity/Asymptotic/LengthSequence.lean",
+            "SerrePositivity/Asymptotic/UniformLift.lean",
+            "SerrePositivity/BhattScholze/Almost/AlmostTensor.lean",
+            "SerrePositivity/BhattScholze/Almost/AlmostTensorForward.lean",
+            "SerrePositivity/BhattScholze/Almost/CompletedModuleTensor.lean",
+            "SerrePositivity/BhattScholze/Almost/PerfectoidAlmost.lean",
+            "SerrePositivity/BhattScholze/Andre/Envelope/MonicSource.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Source.lean",
+            "SerrePositivity/BhattScholze/Andre/Transfinite/Limit.lean",
+            "SerrePositivity/BhattScholze/Andre/Transfinite/Tower.lean",
+            "SerrePositivity/BhattScholze/Delta/Basic/DeltaColimit.lean",
+            "SerrePositivity/BhattScholze/Delta/Division/Family.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LMod.*connective|moduleSpectrum|TStructure",
+          "files_with_matches": 33,
+          "total_matching_lines": 284,
+          "sample_paths": [
+            "Mathlib/Algebra/Homology/DerivedCategory/Ext/TStructure.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Plus.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+            "Mathlib/Algebra/Homology/Factorizations/CM5a.lean",
+            "Mathlib/CategoryTheory/Abelian/Injective/Ext.lean",
+            "Mathlib/CategoryTheory/Abelian/Projective/Ext.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/ETrunc.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/Heart.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/Induced.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/SpectralObject.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+          "sha256": "f5abf749c664a3ef173ac7e2ad101f776a03904e0dd62d714bb8ab23cc7ba33c"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/InfinityCategory.lean",
+          "sha256": "6f70c4dc93ab47a28ecf96129709bc6c45e2392b9cce57d89c29194d9ac34f1d"
+        }
+      ],
+      "reason": "加群スペクトルの全 π の下限・上限で LMod≥0 と LMod≤0 を切り出す部分 ∞ 圏は見つからない。通常の導来圏の IsLE・IsGE はあるが、一般の環スペクトルの基礎 π と比較されていない。"
+    },
+    "7.1.1.12": {
+      "ha_page": 1202,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.1.12",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Yoneda.*Ext|Ext.*moduleSpectrum|derivedInfinityPiZeroExtEquiv",
+          "files_with_matches": 98,
+          "total_matching_lines": 269,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexPointedLastPrism.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexPointedLongPrism.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/SpaceSimplexSourceCone.lean",
+            "SerrePositivity/DifferentialGraded/Checks/YonedaRepresentative.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Module.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/HomComparison.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Shift.lean",
+            "SerrePositivity/DifferentialGraded/Module/Basic.lean",
+            "SerrePositivity/DifferentialGraded/Module/Graded.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+            "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Filtration.lean",
+            "SerrePositivity/DifferentialGraded/SharedFunctoriality/DGGraphCompositionInputLeft.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Yoneda.*Ext|Ext.*moduleSpectrum|derivedInfinityPiZeroExtEquiv",
+          "files_with_matches": 12,
+          "total_matching_lines": 54,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Comma/Presheaf/Basic.lean",
+            "Mathlib/CategoryTheory/Generator/Basic.lean",
+            "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+            "Mathlib/CategoryTheory/Monoidal/Braided/Reflection.lean",
+            "Mathlib/CategoryTheory/Sites/Coherent/CoherentSheaves.lean",
+            "Mathlib/CategoryTheory/Sites/Coherent/ExtensiveSheaves.lean",
+            "Mathlib/CategoryTheory/Sites/Coherent/RegularSheaves.lean",
+            "Mathlib/CategoryTheory/Sites/IsSheafFor.lean",
+            "Mathlib/CategoryTheory/Sites/LocalSite.lean",
+            "Mathlib/CategoryTheory/Sites/SubcanonicalOver.lean",
+            "Mathlib/CategoryTheory/Sites/Types.lean",
+            "Mathlib/CategoryTheory/Yoneda.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/MappingExt.lean",
+          "sha256": "c0e9383aa1b10adeb1967242edc3ff798763a34ed3f9460d553743e733925588"
+        },
+        {
+          "path": "Mathlib/Algebra/Homology/DerivedCategory/Ext/Basic.lean",
+          "sha256": "29ce1f37d45103df2925080eb5c152a0259fa24216b1cb47a8f446ed78a66d9e"
+        }
+      ],
+      "reason": "離散環の加群スペクトルの Ext と通常の Yoneda Ext の同定は見つからない。dg 導来写像空間の Ext 表示はあるが、環スペクトル加群との比較がない。"
+    },
+    "7.1.1.14": {
+      "ha_page": 1204,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.1.14",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "moduleSpectrum|moduleHeartFunctor|discrete.*spectr",
+          "files_with_matches": 7,
+          "total_matching_lines": 40,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/RelativeNoetherDimension.lean",
+            "SerrePositivity/AlgebraicGeometry/RelativeNoetherRationalResidue.lean",
+            "SerrePositivity/InfinityCategories/Derived/DiscreteCharacterization.lean",
+            "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
+            "SerrePositivity/KST/Spectra/Limits/SpectrumBinaryProduct.lean",
+            "SerrePositivity/KST/Spectra/Limits/SpectrumFiniteProducts.lean",
+            "SerrePositivity/KST/Spectra/SmallProductInfinityLimit.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "moduleSpectrum|moduleHeartFunctor|discrete.*spectr",
+          "files_with_matches": 5,
+          "total_matching_lines": 19,
+          "sample_paths": [
+            "Mathlib/AlgebraicGeometry/Artinian.lean",
+            "Mathlib/AlgebraicGeometry/EllipticCurve/Reduction.lean",
+            "Mathlib/RingTheory/QuasiFinite/Basic.lean",
+            "Mathlib/RingTheory/Spectrum/Prime/Noetherian.lean",
+            "Mathlib/RingTheory/Spectrum/Prime/Topology.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
+          "sha256": "344f78a34ff0ecf8dc670b03661142be12703832c6151dc7be4c448c359a4814"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/DGAlgebraDerivedInfinity.lean",
+          "sha256": "5e9219fbb4d2e2021c5543f208326f72b2203e6ac2a5fcec9960dad96476defe"
+        }
+      ],
+      "reason": "通常加群と離散な加群スペクトルの同定、およびその全加群圏との差を表す比較は見つからない。通常の導来圏の heart の全充満埋め込みはあるが、スペクトル加群の heart への比較がない。"
+    },
+    "7.1.1.15": {
+      "ha_page": 1204,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.1.15",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "moduleSpectrum|derived.*spectrum|DMinus",
+          "files_with_matches": 15,
+          "total_matching_lines": 28,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientNormalizedCone.lean",
+            "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientRelativeSquare.lean",
+            "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalProductCone.lean",
+            "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalProductNormalization.lean",
+            "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalProductSquare.lean",
+            "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean",
+            "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductMap.lean",
+            "SerrePositivity/InfinityCategories/Derived/SupportZero.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/TammeFiberSequence.lean",
+            "SerrePositivity/KST/DerivedGeometry/AffineCoefficientCohomology.lean",
+            "SerrePositivity/KST/DerivedGeometry/RightDerivedSectionsPresheaf.lean",
+            "SerrePositivity/KST/LocalizingInvariants/LaxQuotientDifferencePi.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "moduleSpectrum|derived.*spectrum|DMinus",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+          "sha256": "f5abf749c664a3ef173ac7e2ad101f776a03904e0dd62d714bb8ab23cc7ba33c"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/InfinityCategory.lean",
+          "sha256": "6f70c4dc93ab47a28ecf96129709bc6c45e2392b9cce57d89c29194d9ac34f1d"
+        }
+      ],
+      "reason": "D⁻(π₀R) から加群スペクトルへの θ の全充満性と R の離散性の同値は見つからない。通常の有界上導来圏から全導来圏への包含は、当該 θ の構成とスペクトルの非離散性の反映を与えない。"
+    },
+    "7.1.1.16": {
+      "ha_page": 1206,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.1.16",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Eilenberg.MacLane|moduleSpectrum|ModHR",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "Eilenberg.MacLane|moduleSpectrum|ModHR",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/InfinityCategory.lean",
+          "sha256": "6f70c4dc93ab47a28ecf96129709bc6c45e2392b9cce57d89c29194d9ac34f1d"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/DGAlgebraDerivedInfinity.lean",
+          "sha256": "5e9219fbb4d2e2021c5543f208326f72b2203e6ac2a5fcec9960dad96476defe"
+        }
+      ],
+      "reason": "離散環 R の全加群スペクトルと非有界導来 ∞ 圏の同値は見つからない。半自由 dg nerve は実在するが、HR の全加群スペクトルからの比較を構成していない。"
+    },
+    "7.1.2.2": {
+      "ha_page": 1207,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.2.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.2",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "endomorphism.*spectr|EndomorphismObject|endomorphism.*Ext",
+          "files_with_matches": 42,
+          "total_matching_lines": 795,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Checks/Endomorphism/ChecksEvaluation.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Endomorphism/ChecksModuleComparison.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Basic.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Derived/Adjunction.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Derived/Functors.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Module.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Perfect.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/EnhancementComparison.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/HomComparison.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Shift.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Perfect.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "endomorphism.*spectr|EndomorphismObject|endomorphism.*Ext",
+          "files_with_matches": 2,
+          "total_matching_lines": 2,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/ModuleCat/Ext/Basic.lean",
+            "Mathlib/LinearAlgebra/Eigenspace/Minpoly.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Endomorphism/Basic.lean",
+          "sha256": "cb333c2f4aef466bc685b4117282b5355d4a5c5790e31fa7caf4b01868978c52"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean",
+          "sha256": "e9ce9d598ec52a22e63a529293cc4e5cd851a668bca766c843786b8c432ecad6"
+        }
+      ],
+      "reason": "dg 自己準同型代数 End(E) は構成されるが、その E₁ 環スペクトル化と全 πₙ を Ext の合成積に同定する比較は見つからない。通常の dg Hom 複体だけでは指定された環スペクトルを与えない。"
+    },
+    "7.1.2.4": {
+      "ha_page": 1208,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.2.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.2",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Eilenberg.Watts|kernelDerivedTensorFunctor|LFun.*module",
+          "files_with_matches": 30,
+          "total_matching_lines": 154,
+          "sample_paths": [
+            "SerrePositivity/CommutativeAlgebra/HilbertSamuel/Basic.lean",
+            "SerrePositivity/CommutativeAlgebra/KoszulMultiplicity/AdicEuler.lean",
+            "SerrePositivity/CommutativeAlgebra/RegularLocalRing/FlatBaseChange.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Morita/CoherenceAssociatorModelsChecks.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Morita/CoherenceCompositionCanonicalChecks.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Morita/CoherenceUnitChecks.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Morita/KernelDerivedFunctorChecks.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Morita/U16aChecks.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Adjunction/Coherence.lean",
+            "SerrePositivity/DifferentialGraded/Morita/CoherenceAssociator.lean",
+            "SerrePositivity/DifferentialGraded/Morita/CoherenceCompositionKernel.lean",
+            "SerrePositivity/DifferentialGraded/Morita/CriterionPerfTriangulated.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Eilenberg.Watts|kernelDerivedTensorFunctor|LFun.*module",
+          "files_with_matches": 2,
+          "total_matching_lines": 2,
+          "sample_paths": [
+            "Mathlib/RepresentationTheory/Rep/Basic.lean",
+            "Mathlib/RepresentationTheory/Tannaka.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Kernel.lean",
+          "sha256": "557866c751b223626575bab07ca722bb5ff4eeaa62bd211013e0d56bb061679a"
+        },
+        {
+          "path": "Mathlib/RingTheory/Morita/Basic.lean",
+          "sha256": "c26ced9130449895bdd25ceaf4ae4b350519bb23191651dcf18e89bd301e2063"
+        }
+      ],
+      "reason": "任意の余極限保存関手を双加群のテンソルで分類する Eilenberg–Watts 同値は見つからない。dg 核から導来テンソル関手を作る方向はあるが、全関手の表現可能性と関手 ∞ 圏の同値は与えない。"
+    },
+    "7.1.2.5": {
+      "ha_page": 1208,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.2.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.2",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "RMod|little.*cube|Ek.*module",
+          "files_with_matches": 692,
+          "total_matching_lines": 4957,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/AdicTensorRightComparison.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryFlatBaseChange.lean",
+            "SerrePositivity/AlgebraicGeometry/ChartFreeBoundary.lean",
+            "SerrePositivity/AlgebraicGeometry/EtaleSourceBaseChangeFlat.lean",
+            "SerrePositivity/AlgebraicGeometry/EtaleSourceBoundaryFlat.lean",
+            "SerrePositivity/AlgebraicGeometry/FiberCokernelFromFreeOpen.lean",
+            "SerrePositivity/AlgebraicGeometry/FiberFreeOpenUniversalInjectivity.lean",
+            "SerrePositivity/AlgebraicGeometry/FiberSupportAnnihilator.lean",
+            "SerrePositivity/AlgebraicGeometry/FibreAlgebraAssociatedPrime.lean",
+            "SerrePositivity/AlgebraicGeometry/FlatSourceChange.lean",
+            "SerrePositivity/AlgebraicGeometry/FlatSourceDescent.lean",
+            "SerrePositivity/AlgebraicGeometry/FreeLocusLocalizationBaseChange.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "RMod|little.*cube|Ek.*module",
+          "files_with_matches": 171,
+          "total_matching_lines": 964,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/Epi.lean",
+            "Mathlib/Algebra/Algebra/Spectrum/Basic.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Unitization.lean",
+            "Mathlib/Algebra/Algebra/Unitization.lean",
+            "Mathlib/Algebra/Category/CoalgCat/ComonEquivalence.lean",
+            "Mathlib/Algebra/Category/Grp/EnoughInjectives.lean",
+            "Mathlib/Algebra/Category/Grp/LargeColimits.lean",
+            "Mathlib/Algebra/Category/Grp/Ulift.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Monoidal/Adjunction.lean",
+            "Mathlib/Algebra/Colimit/DirectLimit.lean",
+            "Mathlib/Algebra/FreeAbelianGroup/UniqueSums.lean",
+            "Mathlib/Algebra/FreeMonoid/UniqueProds.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean",
+          "sha256": "8a02e3383b78db0424497a3fa54a5667aaba262d8bc8cc0abb601df168058171"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Mod.lean",
+          "sha256": "b666f8d227279554d3131789c4940ae89ac1b97cad2684320f30cfb7adfcb45d"
+        }
+      ],
+      "reason": "E₁→Assoc の切断から RM×Eₖ₋₁→Eₖ を作り RMod に Eₖ₋₁ 構造を入れる指定の構成は見つからない。通常の内部加群の対称モノイダル構造はこの little cubes の作用を備えていない。"
+    },
+    "7.1.2.6": {
+      "ha_page": 1208,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.2.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.2",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "compact.*unit|PrL|endomorphismDerivedEquivalence",
+          "files_with_matches": 74,
+          "total_matching_lines": 389,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Checks/Compact.lean",
+            "SerrePositivity/DifferentialGraded/Checks/CompactConverse.lean",
+            "SerrePositivity/DifferentialGraded/Checks/CompactGenerators.lean",
+            "SerrePositivity/DifferentialGraded/Checks/PerfectCompact.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Perfect.lean",
+            "SerrePositivity/DifferentialGraded/Morita/QuasiEquivalenceGraph.lean",
+            "SerrePositivity/InfinityCategories/Derived.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleValueEdgeEquality.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleValueNaturality.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleValuePiChart.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UnderlyingValueRestriction.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "compact.*unit|PrL|endomorphismDerivedEquivalence",
+          "files_with_matches": 23,
+          "total_matching_lines": 51,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/NonUnitalSubalgebra.lean",
+            "Mathlib/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/Instances.lean",
+            "Mathlib/Analysis/CStarAlgebra/GelfandDuality.lean",
+            "Mathlib/Analysis/Normed/Algebra/Spectrum.lean",
+            "Mathlib/Analysis/Normed/Algebra/UnitizationL1.lean",
+            "Mathlib/Analysis/Normed/Module/FiniteDimension.lean",
+            "Mathlib/Analysis/Normed/Operator/Compact/Basic.lean",
+            "Mathlib/Condensed/TopCatAdjunction.lean",
+            "Mathlib/Geometry/Manifold/VectorBundle/LocalFrame.lean",
+            "Mathlib/Lean/Meta/KAbstractPositions.lean",
+            "Mathlib/MeasureTheory/Measure/Decomposition/Lebesgue.lean",
+            "Mathlib/Tactic/Abel.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean",
+          "sha256": "e9ce9d598ec52a22e63a529293cc4e5cd851a668bca766c843786b8c432ecad6"
+        },
+        {
+          "path": "SerrePositivity/HomologicalAlgebra/DerivedTensorMonoidal.lean",
+          "sha256": "8912a4f6c303adad72d3174013723f1dfa19b81c61756f13f7f84a994c21be17"
+        }
+      ],
+      "reason": "Eₖ 環から Eₖ₋₁ モノイダル可呈示 ∞ 圏への全充満性と compact な生成単位による本質像の判定は見つからない。dg Morita 同値は元の圏のモノイダル構造と任意 k の作用を比較していない。"
+    },
+    "7.1.2.7": {
+      "ha_page": 1208,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.2.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.2",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "CAlg.*PrL|compact.*unit|monoidal.*recognition",
+          "files_with_matches": 14,
+          "total_matching_lines": 58,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Checks/Compact.lean",
+            "SerrePositivity/DifferentialGraded/Checks/CompactConverse.lean",
+            "SerrePositivity/DifferentialGraded/Checks/CompactGenerators.lean",
+            "SerrePositivity/DifferentialGraded/Checks/PerfectCompact.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Perfect.lean",
+            "SerrePositivity/InfinityCategories/Derived.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleValueEdgeEquality.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleValueNaturality.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleValuePiChart.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UnderlyingValueRestriction.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGModuleCompactEquivalence.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "CAlg.*PrL|compact.*unit|monoidal.*recognition",
+          "files_with_matches": 16,
+          "total_matching_lines": 28,
+          "sample_paths": [
+            "Mathlib/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/Instances.lean",
+            "Mathlib/Analysis/CStarAlgebra/GelfandDuality.lean",
+            "Mathlib/Analysis/Normed/Algebra/Spectrum.lean",
+            "Mathlib/Analysis/Normed/Algebra/UnitizationL1.lean",
+            "Mathlib/Analysis/Normed/Module/FiniteDimension.lean",
+            "Mathlib/Analysis/Normed/Operator/Compact/Basic.lean",
+            "Mathlib/Condensed/TopCatAdjunction.lean",
+            "Mathlib/Topology/Algebra/Group/Units.lean",
+            "Mathlib/Topology/Category/Compactum.lean",
+            "Mathlib/Topology/Category/TopCat/Monoidal.lean",
+            "Mathlib/Topology/ContinuousMap/BoundedCompactlySupported.lean",
+            "Mathlib/Topology/ContinuousMap/StoneWeierstrass.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/HomologicalAlgebra/DerivedTensorMonoidal.lean",
+          "sha256": "8912a4f6c303adad72d3174013723f1dfa19b81c61756f13f7f84a994c21be17"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean",
+          "sha256": "e9ce9d598ec52a22e63a529293cc4e5cd851a668bca766c843786b8c432ecad6"
+        }
+      ],
+      "reason": "E∞ 環と生成単位を持つ安定可呈示対称モノイダル ∞ 圏の全充満な対応は見つからない。通常の有界上導来圏のテンソルと dg 生成元からの表示には、圏間の対称モノイダル比較がない。"
+    },
+    "7.1.2.9": {
+      "ha_page": 1211,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.2.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.2",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "projective.*injective|projectiveModelCategory_weakEquivalences|model.*derivedInfinityCategory",
+          "files_with_matches": 18,
+          "total_matching_lines": 26,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/ResidueTensorInjectivity.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Functor.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/PerfectStability.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/DiagramForget.lean",
+            "SerrePositivity/EInfinity/ProjectiveModel.lean",
+            "SerrePositivity/HomologicalAlgebra/BoundedAbove/Derived.lean",
+            "SerrePositivity/HomologicalAlgebra/DerivedCompletion/KProjectiveProduct.lean",
+            "SerrePositivity/HomologicalAlgebra/Ext/LocalCohomology.lean",
+            "SerrePositivity/HomologicalAlgebra/KProjectiveLift.lean",
+            "SerrePositivity/HomologicalAlgebra/LinearYoneda.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGModuleFunctorHomologyDetection.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "projective.*injective|projectiveModelCategory_weakEquivalences|model.*derivedInfinityCategory",
+          "files_with_matches": 8,
+          "total_matching_lines": 16,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/ModuleCat/Ulift.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Ext/Basic.lean",
+            "Mathlib/Algebra/Homology/HomotopyCategory/KProjective.lean",
+            "Mathlib/CategoryTheory/Abelian/Ext.lean",
+            "Mathlib/CategoryTheory/Abelian/Projective/Dimension.lean",
+            "Mathlib/CategoryTheory/Preadditive/Injective/Basic.lean",
+            "Mathlib/LinearAlgebra/Matrix/GeneralLinearGroup/Projective.lean",
+            "Mathlib/LinearAlgebra/Projectivization/Action.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/ProjectiveModel.lean",
+          "sha256": "38e53683688117aebf8d1c632d59a36a3134a897f60c3cf5012a1bfa8c065cef"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/InfinityCategory.lean",
+          "sha256": "6f70c4dc93ab47a28ecf96129709bc6c45e2392b9cce57d89c29194d9ac34f1d"
+        }
+      ],
+      "reason": "射影・入射の両モデル構造から得る非有界導来 ∞ 圏の同一性を述べる比較は見つからない。射影モデルの弱同値の同定と通常の導来局所化はあるが、二つの準圏模型の比較を与えない。"
+    },
+    "7.1.2.10": {
+      "ha_page": 1211,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.2.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.2",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "field.*cofibrant|divisionRing.*cofibrant|projectiveCofibrant_of_boundedAbove",
+          "files_with_matches": 5,
+          "total_matching_lines": 6,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/ComplexLimits/ProjectiveComplexCofibrant.lean",
+            "SerrePositivity/KST/Spectra/OriginalWeightEndComparison.lean",
+            "SerrePositivity/KST/Spectra/ReedyWeightCofibrancy.lean",
+            "SerrePositivity/KST/Spectra/TotalizationComparisonPi.lean",
+            "SerrePositivity/Spectra/Stable/OmegaLocalObjects.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "field.*cofibrant|divisionRing.*cofibrant|projectiveCofibrant_of_boundedAbove",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/ComplexLimits/ProjectiveComplexCofibrant.lean",
+          "sha256": "eb67e91978e0e2621f2c66b916bcd29c2f583b0dd6a12938bbfc890c877b9a6e"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/ProjectiveModel.lean",
+          "sha256": "38e53683688117aebf8d1c632d59a36a3134a897f60c3cf5012a1bfa8c065cef"
+        }
+      ],
+      "reason": "斜体上で射影と入射のモデル構造が一致し全複体が cofibrant となる結果は見つからない。有界上の項別射影複体の cofibrancy は非有界な全複体の判定と二つの構造の一致を与えない。"
+    },
+    "7.1.2.13": {
+      "ha_page": 1212,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.2.13",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.2",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Eilenberg.MacLane|moduleSpectrum|ModHR|monoidal.*derivedInfinity",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "Eilenberg.MacLane|moduleSpectrum|ModHR|monoidal.*derivedInfinity",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean",
+          "sha256": "e9ce9d598ec52a22e63a529293cc4e5cd851a668bca766c843786b8c432ecad6"
+        },
+        {
+          "path": "SerrePositivity/HomologicalAlgebra/DerivedTensorMonoidal.lean",
+          "sha256": "8912a4f6c303adad72d3174013723f1dfa19b81c61756f13f7f84a994c21be17"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/InfinityCategory.lean",
+          "sha256": "6f70c4dc93ab47a28ecf96129709bc6c45e2392b9cce57d89c29194d9ac34f1d"
+        }
+      ],
+      "reason": "通常環 R の Eilenberg–Mac Lane 環スペクトル上の加群と dg 導来 ∞ 圏の対称モノイダル同値は見つからない。dg nerve・導来テンソル・通常圏の Morita 同値は、この HR 加群の模型と比較されていない。"
+    },
+    "7.1.3.1": {
+      "ha_page": 1213,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LMod.*LMod|Mod.*equivalence|moduleOfAlgebraModule",
+          "files_with_matches": 522,
+          "total_matching_lines": 1742,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleEquivalence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleResolutionEquivalence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleUncurryPresentation.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGFunctorDerivedEquivalence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGResolutionComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonComparisons.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelFiberEquivalence.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelKanCoordinates.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelKanEquivalence.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelNativeEquivalence.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelTotalEquivalence.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LMod.*LMod|Mod.*equivalence|moduleOfAlgebraModule",
+          "files_with_matches": 78,
+          "total_matching_lines": 169,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/Equiv.lean",
+            "Mathlib/Algebra/BrauerGroup/Defs.lean",
+            "Mathlib/Algebra/Category/AlgCat/TensorAlgebra.lean",
+            "Mathlib/Algebra/Category/FGModuleCat/EssentiallySmall.lean",
+            "Mathlib/Algebra/Category/Grp/Abelian.lean",
+            "Mathlib/Algebra/Category/Grp/Injective.lean",
+            "Mathlib/Algebra/Category/Grp/Subobject.lean",
+            "Mathlib/Algebra/Category/Grp/ZModuleEquivalence.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Algebra.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Basic.lean",
+            "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Semi.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/Algebra.lean",
+          "sha256": "96f772093c422ce7b159ab1582ab373f6f2c4ea47ac54042b309e9b48e24bcc7"
+        },
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/BalancedTensor.lean",
+          "sha256": "59fcf917d0b542904016bddba5de9f4a0904dae362a68c643f85a5f1d687648b"
+        }
+      ],
+      "reason": "内部代数 A∈Alg(ModR(C)) の加群を基礎圏 C の A 加群と同定する忘却の圏同値は見つからない。通常の ModuleCat のスカラー制限と内部加群のテンソル構成は、反復した内部加群圏を比較していない。"
+    },
+    "7.1.3.2": {
+      "ha_page": 1214,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LMod.*LMod|operad.*envelope|moduleOfAlgebraModule",
+          "files_with_matches": 62,
+          "total_matching_lines": 133,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Almost/PerfectoidAlmost.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootPolynomial.lean",
+            "SerrePositivity/CLMST/AllModuleTorVanishing.lean",
+            "SerrePositivity/CLMST/CyclicLengthBound.lean",
+            "SerrePositivity/CommutativeAlgebra/KoszulRegular/Powers.lean",
+            "SerrePositivity/CommutativeAlgebra/KoszulRegular/PrincipalReduction.lean",
+            "SerrePositivity/EInfinity/FrameHom/BarPointwiseInvariance.lean",
+            "SerrePositivity/HomologicalAlgebra/KoszulModuleBounds.lean",
+            "SerrePositivity/HomologicalAlgebra/KoszulTensorConeComparison.lean",
+            "SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean",
+            "SerrePositivity/HomotopicalAlgebra/Pointed/SmashModel.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LMod.*LMod|operad.*envelope|moduleOfAlgebraModule",
+          "files_with_matches": 12,
+          "total_matching_lines": 41,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/ModuleCat/Algebra.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Simple.lean",
+            "Mathlib/Algebra/Polynomial/Module/Basic.lean",
+            "Mathlib/AlgebraicGeometry/EllipticCurve/Reduction.lean",
+            "Mathlib/CategoryTheory/EssentiallySmall.lean",
+            "Mathlib/CategoryTheory/Filtered/FinallySmall.lean",
+            "Mathlib/CategoryTheory/Limits/FinallySmall.lean",
+            "Mathlib/CategoryTheory/ObjectProperty/Ind.lean",
+            "Mathlib/CategoryTheory/Sites/Coherent/Equivalence.lean",
+            "Mathlib/CategoryTheory/Sites/Equivalence.lean",
+            "Mathlib/RingTheory/Derivation/MapCoeffs.lean",
+            "Mathlib/Tactic/Linter/DocString.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/Algebra.lean",
+          "sha256": "96f772093c422ce7b159ab1582ab373f6f2c4ea47ac54042b309e9b48e24bcc7"
+        },
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean",
+          "sha256": "8a02e3383b78db0424497a3fa54a5667aaba262d8bc8cc0abb601df168058171"
+        }
+      ],
+      "reason": "余 Cartesian 性と余極限条件を外した E₂ オペラッド上の反復加群比較は見つからない。通常の内部加群やモノイダル構造の定義は、任意オペラッド・ファイブレーションの envelope を通す同値を与えない。"
+    },
+    "7.1.3.3": {
+      "ha_page": 1215,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "relative.*tensor.*forget|LMod.*LMod|Bimodule.*tensor",
+          "files_with_matches": 366,
+          "total_matching_lines": 2934,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "relative.*tensor.*forget|LMod.*LMod|Bimodule.*tensor",
+          "files_with_matches": 10,
+          "total_matching_lines": 38,
+          "sample_paths": [
+            "Mathlib/Algebra/Polynomial/Module/Basic.lean",
+            "Mathlib/AlgebraicGeometry/EllipticCurve/Reduction.lean",
+            "Mathlib/CategoryTheory/EssentiallySmall.lean",
+            "Mathlib/CategoryTheory/Filtered/FinallySmall.lean",
+            "Mathlib/CategoryTheory/Limits/FinallySmall.lean",
+            "Mathlib/CategoryTheory/ObjectProperty/Ind.lean",
+            "Mathlib/CategoryTheory/Sites/Coherent/Equivalence.lean",
+            "Mathlib/CategoryTheory/Sites/Equivalence.lean",
+            "Mathlib/RingTheory/Derivation/MapCoeffs.lean",
+            "Mathlib/Tactic/Linter/DocString.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Tensor/Bimodule/Actions.lean",
+          "sha256": "846af9064db9af0808b24ee66c378fa955c659c6852c8bf390224e5f5240f725"
+        },
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/BalancedTensor.lean",
+          "sha256": "59fcf917d0b542904016bddba5de9f4a0904dae362a68c643f85a5f1d687648b"
+        }
+      ],
+      "reason": "反復内部加群の忘却 θ に沿う相対テンソルの標準比較が同値となる結果は見つからない。dg 双加群の通常テンソルの結合子は、この θL・θR の存在と比較を与えない。"
+    },
+    "7.1.3.4": {
+      "ha_page": 1215,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LMod.*LMod|iterated.*module|module.*monoidal.*equiv",
+          "files_with_matches": 79,
+          "total_matching_lines": 185,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Almost/PerfectoidAlmost.lean",
+            "SerrePositivity/BhattScholze/Andre/Envelope/RootSource.lean",
+            "SerrePositivity/BhattScholze/Andre/Perfection/DeltaAlgebra.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootPolynomial.lean",
+            "SerrePositivity/BhattScholze/Prism/Tensor/PerfectPrismTensor.lean",
+            "SerrePositivity/BhattScholze/Semiperfectoid/RootEnvelope/RawCompletion.lean",
+            "SerrePositivity/CLMST/AllModuleTorVanishing.lean",
+            "SerrePositivity/CLMST/CyclicLengthBound.lean",
+            "SerrePositivity/CommutativeAlgebra/KoszulRegular/Powers.lean",
+            "SerrePositivity/CommutativeAlgebra/KoszulRegular/PrincipalReduction.lean",
+            "SerrePositivity/DifferentialGraded/Derived/BimoduleMiddle/FunctorCoherence.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LMod.*LMod|iterated.*module|module.*monoidal.*equiv",
+          "files_with_matches": 12,
+          "total_matching_lines": 44,
+          "sample_paths": [
+            "Mathlib/Algebra/Polynomial/Module/Basic.lean",
+            "Mathlib/AlgebraicGeometry/EllipticCurve/Reduction.lean",
+            "Mathlib/CategoryTheory/EssentiallySmall.lean",
+            "Mathlib/CategoryTheory/Filtered/FinallySmall.lean",
+            "Mathlib/CategoryTheory/Limits/FinallySmall.lean",
+            "Mathlib/CategoryTheory/ObjectProperty/Ind.lean",
+            "Mathlib/CategoryTheory/Sites/Coherent/Equivalence.lean",
+            "Mathlib/CategoryTheory/Sites/Equivalence.lean",
+            "Mathlib/RepresentationTheory/Basic.lean",
+            "Mathlib/RepresentationTheory/Rep/Iso.lean",
+            "Mathlib/RingTheory/Derivation/MapCoeffs.lean",
+            "Mathlib/Tactic/Linter/DocString.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean",
+          "sha256": "8a02e3383b78db0424497a3fa54a5667aaba262d8bc8cc0abb601df168058171"
+        },
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/Algebra.lean",
+          "sha256": "96f772093c422ce7b159ab1582ab373f6f2c4ea47ac54042b309e9b48e24bcc7"
+        }
+      ],
+      "reason": "反復加群の忘却を Eₖ₋₁ モノイダル同値にする結果は見つからない。通常の可換内部加群圏の対称構造は、当該忘却の逆関手と高次モノイダル比較を備えていない。"
+    },
+    "7.1.3.5": {
+      "ha_page": 1215,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "AlgR|moduleSpectrum|little.*cube",
+          "files_with_matches": 8150,
+          "total_matching_lines": 18291,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "AlgR|moduleSpectrum|little.*cube",
+          "files_with_matches": 111,
+          "total_matching_lines": 844,
+          "sample_paths": [
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/Basic.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/FundamentalGroup.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/InducedMaps.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/PUnit.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/Product.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/SimplyConnected.lean",
+            "Mathlib/Analysis/Complex/BranchLogRoot.lean",
+            "Mathlib/Analysis/Complex/Circle.lean",
+            "Mathlib/Analysis/InnerProductSpace/PiL2.lean",
+            "Mathlib/Analysis/Normed/Field/UnitBall.lean",
+            "Mathlib/Analysis/Normed/Group/Quotient.lean",
+            "Mathlib/Analysis/Normed/Group/Uniform.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/BarrattEccles/CAlg.lean",
+          "sha256": "54133c4d1a825f000cc8ceb51c3e0aa7e8468487b94527a91ed4ba76258b2a0d"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        }
+      ],
+      "reason": "Eₖ₊₁ 環スペクトルの加群の Eₖ 構造とその Eₖ 代数の圏は見つからない。実 dg オペラッド代数の圏はあるが、一般 k のスペクトル上の little cubes 代数と比較されていない。"
+    },
+    "7.1.3.6": {
+      "ha_page": 1216,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "sphere.*module|module.*sphere|AlgR",
+          "files_with_matches": 8175,
+          "total_matching_lines": 18698,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "sphere.*module|module.*sphere|AlgR",
+          "files_with_matches": 117,
+          "total_matching_lines": 856,
+          "sample_paths": [
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/Basic.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/FundamentalGroup.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/InducedMaps.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/PUnit.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/Product.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/SimplyConnected.lean",
+            "Mathlib/Analysis/Complex/BranchLogRoot.lean",
+            "Mathlib/Analysis/Complex/Circle.lean",
+            "Mathlib/Analysis/InnerProductSpace/PiL2.lean",
+            "Mathlib/Analysis/Normed/Field/UnitBall.lean",
+            "Mathlib/Analysis/Normed/Group/Quotient.lean",
+            "Mathlib/Analysis/Normed/Group/Uniform.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/Spectra/ModelCategory/MonoidalLevel.lean",
+          "sha256": "5f3c0a02b0fbc704e1089d39ded105b8fa5b753507a8bbb4a1d9aa459e3ac1b3"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Mod.lean",
+          "sha256": "b666f8d227279554d3131789c4940ae89ac1b97cad2684320f30cfb7adfcb45d"
+        }
+      ],
+      "reason": "球上の加群とスペクトル、球上の Eₖ 代数と Eₖ 環の忘却同値は見つからない。通常のテンソル単位上の加群に関する単位則は、スペクトルの ∞ モノイダル圏と比較されていない。"
+    },
+    "7.1.3.7": {
+      "ha_page": 1216,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LMod.*LMod|relative.*tensor.*forget|moduleOfAlgebraModule",
+          "files_with_matches": 63,
+          "total_matching_lines": 135,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Almost/PerfectoidAlmost.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootPolynomial.lean",
+            "SerrePositivity/CLMST/AllModuleTorVanishing.lean",
+            "SerrePositivity/CLMST/CyclicLengthBound.lean",
+            "SerrePositivity/CommutativeAlgebra/KoszulRegular/Powers.lean",
+            "SerrePositivity/CommutativeAlgebra/KoszulRegular/PrincipalReduction.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Kernel.lean",
+            "SerrePositivity/EInfinity/FrameHom/BarPointwiseInvariance.lean",
+            "SerrePositivity/HomologicalAlgebra/KoszulModuleBounds.lean",
+            "SerrePositivity/HomologicalAlgebra/KoszulTensorConeComparison.lean",
+            "SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LMod.*LMod|relative.*tensor.*forget|moduleOfAlgebraModule",
+          "files_with_matches": 12,
+          "total_matching_lines": 41,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/ModuleCat/Algebra.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Simple.lean",
+            "Mathlib/Algebra/Polynomial/Module/Basic.lean",
+            "Mathlib/AlgebraicGeometry/EllipticCurve/Reduction.lean",
+            "Mathlib/CategoryTheory/EssentiallySmall.lean",
+            "Mathlib/CategoryTheory/Filtered/FinallySmall.lean",
+            "Mathlib/CategoryTheory/Limits/FinallySmall.lean",
+            "Mathlib/CategoryTheory/ObjectProperty/Ind.lean",
+            "Mathlib/CategoryTheory/Sites/Coherent/Equivalence.lean",
+            "Mathlib/CategoryTheory/Sites/Equivalence.lean",
+            "Mathlib/RingTheory/Derivation/MapCoeffs.lean",
+            "Mathlib/Tactic/Linter/DocString.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/Algebra.lean",
+          "sha256": "96f772093c422ce7b159ab1582ab373f6f2c4ea47ac54042b309e9b48e24bcc7"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Tensor/Bimodule/Actions.lean",
+          "sha256": "846af9064db9af0808b24ee66c378fa955c659c6852c8bf390224e5f5240f725"
+        }
+      ],
+      "reason": "基底 R に依存せず A 加群スペクトルとその相対テンソルを同定する比較は見つからない。通常のスカラー制限と dg テンソルの結合子は、反復内部加群の忘却を同値にしていない。"
+    },
+    "7.1.3.9": {
+      "ha_page": 1216,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Ek.*center|center.*algebra|moduleOfAlgebraModule",
+          "files_with_matches": 65,
+          "total_matching_lines": 166,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/AdmissibleRefinement.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineAdmissibleComposition.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineCenterDescentSheaf.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineEtaleBlowupRefinement.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineFlatPureComposition.lean",
+            "SerrePositivity/AlgebraicGeometry/BaseComparisonExt.lean",
+            "SerrePositivity/AlgebraicGeometry/Blowup.lean",
+            "SerrePositivity/AlgebraicGeometry/BlowupAffineOpenMap.lean",
+            "SerrePositivity/AlgebraicGeometry/BlowupAway.lean",
+            "SerrePositivity/AlgebraicGeometry/BlowupDensity.lean",
+            "SerrePositivity/AlgebraicGeometry/BlowupFunctor.lean",
+            "SerrePositivity/AlgebraicGeometry/BlowupLocalization.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Ek.*center|center.*algebra|moduleOfAlgebraModule",
+          "files_with_matches": 25,
+          "total_matching_lines": 51,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/NonUnitalSubalgebra.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Basic.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Centralizer.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Lattice.lean",
+            "Mathlib/Algebra/Azumaya/Defs.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Algebra.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Simple.lean",
+            "Mathlib/Algebra/Central/Basic.lean",
+            "Mathlib/Algebra/Central/Defs.lean",
+            "Mathlib/Algebra/Central/End.lean",
+            "Mathlib/Algebra/Central/Matrix.lean",
+            "Mathlib/Algebra/Central/TensorProduct.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/Algebra.lean",
+          "sha256": "96f772093c422ce7b159ab1582ab373f6f2c4ea47ac54042b309e9b48e24bcc7"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        }
+      ],
+      "reason": "有限 k の基底環射が中心を経由する必要性と、忘却が一般には同値でない反例は見つからない。通常の中心とスカラー塔の定義は Eₖ 中心 ZEₖ(A) と当該忘却を構成していない。"
+    },
+    "7.1.3.10": {
+      "ha_page": 1216,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "connective.*tensor|IsLE.*tensor|monoidal.*tStructure",
+          "files_with_matches": 24,
+          "total_matching_lines": 58,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/ModuleMittagLeffler.lean",
+            "SerrePositivity/BhattScholze/Almost/AlmostTensor.lean",
+            "SerrePositivity/BhattScholze/Almost/AlmostTensorForward.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ZeroDegreeAction.lean",
+            "SerrePositivity/EInfinity/ComplexLimits/CofibrantTensorQuillen.lean",
+            "SerrePositivity/EInfinity/HomotopyWeight/TensorRealization.lean",
+            "SerrePositivity/EInfinity/Operad/ConnectiveCover.lean",
+            "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+            "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+            "SerrePositivity/HomotopicalAlgebra/Enriched/UnitFrame.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/SimplicialTensorCofibrant.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/SimplicialTensorConstant.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "connective.*tensor|IsLE.*tensor|monoidal.*tStructure",
+          "files_with_matches": 6,
+          "total_matching_lines": 9,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Monoidal/Closed/Braided.lean",
+            "Mathlib/CategoryTheory/Monoidal/Closed/Cartesian.lean",
+            "Mathlib/CategoryTheory/Monoidal/Closed/FunctorCategory/Complete.lean",
+            "Mathlib/CategoryTheory/Monoidal/Closed/Types.lean",
+            "Mathlib/LinearAlgebra/TensorProduct/Basis.lean",
+            "Mathlib/RingTheory/Extension/Cotangent/Basis.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/ConnectiveCover.lean",
+          "sha256": "0aa5cc6dfc43d647ace9514589ad858e647cda4c07caacc8749186a4420bdd07"
+        },
+        {
+          "path": "SerrePositivity/HomologicalAlgebra/DerivedTensorMonoidal.lean",
+          "sha256": "8912a4f6c303adad72d3174013723f1dfa19b81c61756f13f7f84a994c21be17"
+        }
+      ],
+      "reason": "連結な環スペクトルの加群の t 構造と Eₖ テンソルの整合性は見つからない。非正 dg オペラッドの smart connective cover は構成されるが、任意 k の加群スペクトル上の t 構造のテンソル整合性を与えない。"
+    },
+    "7.1.3.11": {
+      "ha_page": 1217,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.11",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "connectiveCover|connective.*rightAdjoint|truncation.*adjunction",
+          "files_with_matches": 41,
+          "total_matching_lines": 337,
+          "sample_paths": [
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgZeroDegreeDiscrete.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ConnectiveCover.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ZeroDegreeDiscreteSpan.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ZeroTruncation.lean",
+            "SerrePositivity/EInfinity/Operad/ConnectiveCover.lean",
+            "SerrePositivity/EInfinity/Operad/TensorPowerTruncationDesc.lean",
+            "SerrePositivity/KST/LocalizingInvariants.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellFixedNonpositiveNaturality.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellFourthRefinement.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellPathNonpositive.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellPathNonpositiveFixed.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "connectiveCover|connective.*rightAdjoint|truncation.*adjunction",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/BarrattEccles/ConnectiveCover.lean",
+          "sha256": "fbaa3d8c10ac6089310c1bc471f7c96d453ee53d47325678e837a30d27319e75"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/ConnectiveCover.lean",
+          "sha256": "0aa5cc6dfc43d647ace9514589ad858e647cda4c07caacc8749186a4420bdd07"
+        }
+      ],
+      "reason": "連結代数からの写像空間の普遍性で connective cover を定義する述語は見つからない。実 E 代数の切断包含はあるが、任意の連結代数からの ∞ 写像空間の同値を記述していない。"
+    },
+    "7.1.3.12": {
+      "ha_page": 1217,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.12",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "connectiveCover|connective.*rightAdjoint",
+          "files_with_matches": 41,
+          "total_matching_lines": 337,
+          "sample_paths": [
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgZeroDegreeDiscrete.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ConnectiveCover.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ZeroDegreeDiscreteSpan.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ZeroTruncation.lean",
+            "SerrePositivity/EInfinity/Operad/ConnectiveCover.lean",
+            "SerrePositivity/EInfinity/Operad/TensorPowerTruncationDesc.lean",
+            "SerrePositivity/KST/LocalizingInvariants.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellFixedNonpositiveNaturality.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellFourthRefinement.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellPathNonpositive.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellPathNonpositiveFixed.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "connectiveCover|connective.*rightAdjoint",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/BarrattEccles/ConnectiveCover.lean",
+          "sha256": "fbaa3d8c10ac6089310c1bc471f7c96d453ee53d47325678e837a30d27319e75"
+        }
+      ],
+      "reason": "普遍性を持つ connective cover の対象名を射から省略する注意に対応する定義は見つからない。実 E 代数の connectiveCover は厳密な切断模型を指定し、この普遍性の対象としての扱いとの比較がない。"
+    },
+    "7.1.3.13": {
+      "ha_page": 1217,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.13",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "connectiveCover|connective.*adjoint|connectiveCoverInclusion",
+          "files_with_matches": 42,
+          "total_matching_lines": 338,
+          "sample_paths": [
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgZeroDegreeDiscrete.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ConnectiveCover.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ZeroDegreeDiscreteSpan.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ZeroTruncation.lean",
+            "SerrePositivity/EInfinity/Operad/ConnectiveCover.lean",
+            "SerrePositivity/EInfinity/Operad/TensorPowerTruncationDesc.lean",
+            "SerrePositivity/KST/LocalizingInvariants.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellFixedNonpositiveNaturality.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellFourthRefinement.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellPathNonpositive.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellPathNonpositiveFixed.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "connectiveCover|connective.*adjoint|connectiveCoverInclusion",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/BarrattEccles/ConnectiveCover.lean",
+          "sha256": "fbaa3d8c10ac6089310c1bc471f7c96d453ee53d47325678e837a30d27319e75"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/ConnectiveCover.lean",
+          "sha256": "0aa5cc6dfc43d647ace9514589ad858e647cda4c07caacc8749186a4420bdd07"
+        }
+      ],
+      "reason": "一般の Eₖ 代数の connective cover の存在・非負 π による判定・包含の右随伴をまとめた定理は見つからない。実 Barratt–Eccles 代数の smart 切断包含と既に連結な対象での擬同型性には、連結入力からの写像空間の普遍性の証明がない。"
+    },
+    "7.1.3.14": {
+      "ha_page": 1217,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.14",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "truncated.*algebra|cAlgUnderlyingDisc|truncated.*moduleSpectrum",
+          "files_with_matches": 12,
+          "total_matching_lines": 96,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/DividedPowerPrime.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PrincipalDP.lean",
+            "SerrePositivity/BhattScholze/Delta/DividedPower/FreeDPModPBlocks.lean",
+            "SerrePositivity/BhattScholze/Delta/DividedPower/RankOneDP.lean",
+            "SerrePositivity/BhattScholze/Delta/DividedPower/RegularSequencePDKoszul.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgDiscreteImage.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgDiscreteRecognition.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgDiscreteUnderRecognition.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgUnderlyingHomology.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/Theory.lean",
+            "SerrePositivity/EInfinity/Perfectoidization/Comparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "truncated.*algebra|cAlgUnderlyingDisc|truncated.*moduleSpectrum",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/BarrattEccles/CAlgUnderlyingHomology.lean",
+          "sha256": "87b22a18ad0984482402d756a63d4df635d7bf9d506ba3306cb723510fd544ed"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/BarrattEccles/CAlgDiscreteRecognition.lean",
+          "sha256": "07527027a2a5e854c72dba50fb5be7addec93ff2548feba54f3874f01e5196a9"
+        }
+      ],
+      "reason": "連結な Eₖ 代数の写像空間の n 切断性と基礎加群・スペクトルの π の上限を同値にする結果は見つからない。CAlg の基礎ホモロジーによる離散性はあるが、代数の全写像空間の切断性を判定しない。原典の (4)・(5) は A の箇所にも R と印字されており、証明では A の切断性を比較している。"
+    },
+    "7.1.3.16": {
+      "ha_page": 1219,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.16",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "heart.*tensor|moduleSpectrum|discrete.*monoidal",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "heart.*tensor|moduleSpectrum|discrete.*monoidal",
+          "files_with_matches": 7,
+          "total_matching_lines": 52,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Monoidal/Braided/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Closed/Functor.lean",
+            "Mathlib/CategoryTheory/Monoidal/Discrete.lean",
+            "Mathlib/CategoryTheory/Monoidal/Free/Coherence.lean",
+            "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+            "Mathlib/CategoryTheory/Shift/Basic.lean",
+            "Mathlib/CategoryTheory/Shift/Pullback.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/Monoidal/Basic.lean",
+          "sha256": "b77ea42154481b4b38f24f61e123940d6b8c117f4c34bf067723a514439e647b"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/ComplexLimits/ModuleSingleDerivedComparison.lean",
+          "sha256": "8d1974ae47cee2c014a8dcc7536707ebc3852d84b01077d17180d6656944fa77"
+        }
+      ],
+      "reason": "連結な環スペクトルの加群の heart の Eₖ テンソルを π₀R 加群の通常テンソルと同定する比較は見つからない。通常の ModuleCat の対称構造と複体の零次埋め込みはあるが、スペクトル加群の heart とのモノイダル同値がない。"
+    },
+    "7.1.3.19": {
+      "ha_page": 1219,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.3.19",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.3",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.2",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Postnikov.*algebra|algebra.*Postnikov|zeroTruncation",
+          "files_with_matches": 698,
+          "total_matching_lines": 2882,
+          "sample_paths": [
+            "SerrePositivity/Asymptotic/LengthSequence.lean",
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ZeroDegreeAction.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ZeroTruncation.lean",
+            "SerrePositivity/EInfinity/Operad/ZeroTruncation.lean",
+            "SerrePositivity/KST/LocalizingInvariants.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraBoundedMapValuePro.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraBoundedRightInverseRoof.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellFourthRefinement.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraConnectedLevelRepresentation.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraDerivationTargetProInverse.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraHomologyInverseAfter.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Postnikov.*algebra|algebra.*Postnikov|zeroTruncation",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/BarrattEccles/ZeroTruncation.lean",
+          "sha256": "6a7d46aa84edba238da8e3becf52e7a56ca2d6a8eb4b640bb114af21e8936d57"
+        },
+        {
+          "path": "SerrePositivity/HomologicalAlgebra/Complex/Truncation.lean",
+          "sha256": "f4da483e96aca529622235821629b483f5dd0e4a3e94465671436119fbe3f86b"
+        }
+      ],
+      "reason": "連結な Eₖ 代数の Postnikov 切断塔の極限が元の代数の ∞ 圏となる結果は見つからない。通常の複体の切断と零次模型の存在は、全 n の代数切断関手とその塔の ∞ 圏における極限を構成しない。"
+    },
+    "7.1.4.3": {
+      "ha_page": 1220,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "HasMonoidAxiom|projective.*monoidAxiom|tensorCells",
+          "files_with_matches": 4,
+          "total_matching_lines": 20,
+          "sample_paths": [
+            "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+            "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+            "SerrePositivity/HomotopicalAlgebra/Monoidal/ModuleTransfer.lean",
+            "SerrePositivity/HomotopicalAlgebra/Monoidal/MonoidAxiom.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "HasMonoidAxiom|projective.*monoidAxiom|tensorCells",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Monoidal/MonoidAxiom.lean",
+          "sha256": "e87aed1b503ce871b7eaed6af3025b50de1c7ecd4aac404b6d5f0a234a0a3ab5"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/ComplexLimits/CofibrantTensorQuillen.lean",
+          "sha256": "277c436e174fb4e931d2997193852c72776b35a639e7763261712aee2514b76e"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/DGAlgebra/ModelCategory.lean",
+          "sha256": "61a27b689696e5f1260e82e692b2274efaa51d807f59652291922f4e17c1cef8"
+        }
+      ],
+      "reason": "可換環上の非有界射影複体でモノイド公理を満たす instance は見つからない。固定 cofibrant 対象の左 Quillen 性と dg 代数への直接移送はあるが、任意対象でテンソルした自明 cofibration の弱飽和類全体を弱同値とする結果ではない。"
+    },
+    "7.1.4.6": {
+      "ha_page": 1221,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "AlgR|dgAlgebra.*localization|HomInfinityComparison",
+          "files_with_matches": 8156,
+          "total_matching_lines": 18312,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "AlgR|dgAlgebra.*localization|HomInfinityComparison",
+          "files_with_matches": 111,
+          "total_matching_lines": 844,
+          "sample_paths": [
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/Basic.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/FundamentalGroup.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/InducedMaps.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/PUnit.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/Product.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/SimplyConnected.lean",
+            "Mathlib/Analysis/Complex/BranchLogRoot.lean",
+            "Mathlib/Analysis/Complex/Circle.lean",
+            "Mathlib/Analysis/InnerProductSpace/PiL2.lean",
+            "Mathlib/Analysis/Normed/Field/UnitBall.lean",
+            "Mathlib/Analysis/Normed/Group/Quotient.lean",
+            "Mathlib/Analysis/Normed/Group/Uniform.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/DGAlgebra/ModelCategory.lean",
+          "sha256": "61a27b689696e5f1260e82e692b2274efaa51d807f59652291922f4e17c1cef8"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/DGAlgebra/HomInfinityComparison.lean",
+          "sha256": "102ee6136149a5095bec69d9d36b54376fdd11a98d619d5dddfcdad50ceee6b3"
+        }
+      ],
+      "reason": "厳密 dg 代数の cofibrant 局所化と HR 加群上の E₁ 代数の標準同値は見つからない。dg 代数の hammock とモデル構造はあるが、ModHR≃D(R) のモノイダル比較と HA の AlgR への写像がない。"
+    },
+    "7.1.4.7": {
+      "ha_page": 1222,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "freelyPowered|FreelyPowered|powerCofibration|coinvariant",
+          "files_with_matches": 14,
+          "total_matching_lines": 26,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/Operad/Basic.lean",
+            "SerrePositivity/EInfinity/Operad/IteratedCompositionEquivariance.lean",
+            "SerrePositivity/EInfinity/Operad/Schur.lean",
+            "SerrePositivity/EInfinity/Operad/SchurColimits.lean",
+            "SerrePositivity/EInfinity/Operad/SchurComposition.lean",
+            "SerrePositivity/EInfinity/Operad/SchurCompositionEquivariance.lean",
+            "SerrePositivity/EInfinity/Operad/SchurOperations.lean",
+            "SerrePositivity/EInfinity/Operad/SchurPartialComposition.lean",
+            "SerrePositivity/EInfinity/Operad/SchurTensorDescent.lean",
+            "SerrePositivity/EInfinity/Operad/SchurTensorMorphisms.lean",
+            "SerrePositivity/EInfinity/Operad/TensorColimit.lean",
+            "SerrePositivity/EInfinity/Operad/TensorFamilyPermutations.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "freelyPowered|FreelyPowered|powerCofibration|coinvariant",
+          "files_with_matches": 10,
+          "total_matching_lines": 386,
+          "sample_paths": [
+            "Mathlib/RepresentationTheory/Coinvariants.lean",
+            "Mathlib/RepresentationTheory/FiniteIndex.lean",
+            "Mathlib/RepresentationTheory/Homological/FiniteCyclic.lean",
+            "Mathlib/RepresentationTheory/Homological/GroupHomology/Basic.lean",
+            "Mathlib/RepresentationTheory/Homological/GroupHomology/FiniteCyclic.lean",
+            "Mathlib/RepresentationTheory/Homological/GroupHomology/Functoriality.lean",
+            "Mathlib/RepresentationTheory/Homological/GroupHomology/LowDegree.lean",
+            "Mathlib/RepresentationTheory/Homological/GroupHomology/Shapiro.lean",
+            "Mathlib/RepresentationTheory/Homological/TateCohomology/Basic.lean",
+            "Mathlib/RepresentationTheory/Induced.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/ComplexLimits/CofibrantTensorQuillen.lean",
+          "sha256": "277c436e174fb4e931d2997193852c72776b35a639e7763261712aee2514b76e"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/CommutativePowers.lean",
+          "sha256": "d0b19a88b0c7e6a363911aacae9044c123e6f29a5b2ae2ef3f80124e9a0d8927"
+        }
+      ],
+      "reason": "Q を含む環の複体が freely powered となる結果は見つからない。通常の対称群作用と底のテンソルの左 Quillen 性は、反復押し出し積の Σₙ 射影 cofibrancy と余不変量の公理を与えない。"
+    },
+    "7.1.4.9": {
+      "ha_page": 1222,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "GradedCommDGAlgebra|commutativeAlgebraOfMonoid|CAlg.*equiv",
+          "files_with_matches": 33,
+          "total_matching_lines": 67,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PrincipalPair.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/RawRegular.lean",
+            "SerrePositivity/BhattScholze/Andre/Transfinite/Colimit.lean",
+            "SerrePositivity/BhattScholze/Delta/DividedPower/PrincipalDP.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcPerfectoidBase.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralClosureCompletion.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/Derived/PerfectoidFilteredColimit.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/Derived/RootAdjunction.lean",
+            "SerrePositivity/BhattScholze/Prismatic/CrystallinePrincipalResidue.lean",
+            "SerrePositivity/BhattScholze/Prismatic/HodgeTateGradedDGAlgebra.lean",
+            "SerrePositivity/BhattScholze/Prismatic/PDPolynomialGraph.lean",
+            "SerrePositivity/BhattScholze/Prismatic/PDSmallModelComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "GradedCommDGAlgebra|commutativeAlgebraOfMonoid|CAlg.*equiv",
+          "files_with_matches": 14,
+          "total_matching_lines": 50,
+          "sample_paths": [
+            "Mathlib/Algebra/QuadraticAlgebra/AlgHom.lean",
+            "Mathlib/Algebra/QuadraticAlgebra/BaseChange.lean",
+            "Mathlib/Algebra/QuadraticAlgebra/Basic.lean",
+            "Mathlib/Algebra/QuadraticAlgebra/Defs.lean",
+            "Mathlib/Algebra/QuadraticAlgebra/Discriminant.lean",
+            "Mathlib/AlgebraicGeometry/EllipticCurve/Affine/Point.lean",
+            "Mathlib/LinearAlgebra/Matrix/ToLin.lean",
+            "Mathlib/LinearAlgebra/SymmetricAlgebra/Basic.lean",
+            "Mathlib/LinearAlgebra/SymmetricAlgebra/Basis.lean",
+            "Mathlib/RingTheory/LocalRing/ResidueField/Polynomial.lean",
+            "Mathlib/RingTheory/Polynomial/Quotient.lean",
+            "Mathlib/RingTheory/QuasiFinite/Polynomial.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/CommutativeAlgebra/DeRham/Graded.lean",
+          "sha256": "96dd8cb3bbdecada943f7aaec32aaba55439dbcfb46be82d768307993be0f385"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/CommutativeAlgebra.lean",
+          "sha256": "b6be7d13646a7080fb6f324c45bfd63728fc47c05520e285000c2aae5b06c103"
+        }
+      ],
+      "reason": "符号付き可換 dg 代数の圏と複体上の CommMon の圏の同値は見つからない。CommMon から Com オペラッド代数への構成はあるが、次数付き可換微分代数の構造との比較を与えない。"
+    },
+    "7.1.4.10": {
+      "ha_page": 1223,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "commutative.*modelCategory|CAlgdg|FreelyPowered",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "commutative.*modelCategory|CAlgdg|FreelyPowered",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/DGAlgebra/ModelCategory.lean",
+          "sha256": "61a27b689696e5f1260e82e692b2274efaa51d807f59652291922f4e17c1cef8"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/CommutativeAlgebra.lean",
+          "sha256": "b6be7d13646a7080fb6f324c45bfd63728fc47c05520e285000c2aae5b06c103"
+        }
+      ],
+      "reason": "有理係数の厳密可換 dg 代数に弱同値と次数別全射を指定するモデル構造は見つからない。結合 dg 代数と Barratt–Eccles 代数の移送は、厳密可換代数に対するこの移送を構成していない。"
+    },
+    "7.1.4.11": {
+      "ha_page": 1223,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.11",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "rectification|CAlgdg|CAlg.*localization",
+          "files_with_matches": 626,
+          "total_matching_lines": 1964,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/LocalGenericComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonCoordinates.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonLeftCorrectionImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonLeftImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonLeftImageMaps.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonLeftIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonRightCorrectionImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonRightImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonRightImageMaps.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonRightIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelLeftCorrectionHomotopy.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelLeftCorrectionImage.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "rectification|CAlgdg|CAlg.*localization",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/BarrattEccles/CAlg.lean",
+          "sha256": "54133c4d1a825f000cc8ceb51c3e0aa7e8468487b94527a91ed4ba76258b2a0d"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/CommutativeAlgebra.lean",
+          "sha256": "b6be7d13646a7080fb6f324c45bfd63728fc47c05520e285000c2aae5b06c103"
+        }
+      ],
+      "reason": "有理係数の厳密可換 dg 代数の cofibrant 局所化と HA の CAlgR の同値は見つからない。実 CAlg_R は E 代数の局所化から作るが、厳密可換 dg 代数からの rectification と ModHR の比較がない。"
+    },
+    "7.1.4.12": {
+      "ha_page": 1223,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.12",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "compact.*projective.*generator|projectivelyGenerated|IsCompactProjective",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "compact.*projective.*generator|projectivelyGenerated|IsCompactProjective",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Adjunction/AdjointFunctorTheorems.lean",
+          "sha256": "fa9a9fe9fbc2f8a2861e4c048dbd18f6b69c8717a7e3e543d5f1ef80db0ccdb1"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/DGAlgebra/Monadic.lean",
+          "sha256": "9058fa2fa9bac018b6ebd8184425f8f2c2f5e32b7405782d82fef35962fa7e23"
+        }
+      ],
+      "reason": "極限・sifted 余極限保存で保守的な可呈示 ∞ 関手の左随伴と compact projective 生成元の移送をまとめた結果は見つからない。通常の随伴関手定理や dg 代数のモナド性にはこの ∞ compact projective の生成判定がない。"
+    },
+    "7.1.4.13": {
+      "ha_page": 1224,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.13",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "connective.*projective|sphere.*generator|projectivelyGenerated",
+          "files_with_matches": 15,
+          "total_matching_lines": 19,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGCellComparison.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGCellGeneratorBoundary.lean",
+            "SerrePositivity/DifferentialGraded/Complexes/TensorShift.lean",
+            "SerrePositivity/DifferentialGraded/Resolution/Basic.lean",
+            "SerrePositivity/DifferentialGraded/Resolution/Cells/Path.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/GeneratorClosure.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKappaClosedCompactGeneratorCriterion.lean",
+            "SerrePositivity/Spectra/SymmetricSpectrum/FreeLevelAction.lean",
+            "SerrePositivity/Spectra/SymmetricSpectrum/FreeLevelPermutation.lean",
+            "SerrePositivity/Spectra/SymmetricSpectrum/FreeLevelQuotientAction.lean",
+            "SerrePositivity/Spectra/SymmetricSpectrum/FreeLevels.lean",
+            "SerrePositivity/Spectra/SymmetricSpectrum/FreeMonoidal.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "connective.*projective|sphere.*generator|projectivelyGenerated",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/Spectra/ModelCategory/MonoidalLevel.lean",
+          "sha256": "5f3c0a02b0fbc704e1089d39ded105b8fa5b753507a8bbb4a1d9aa459e3ac1b3"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/D3TailStability.lean",
+          "sha256": "98e9fb45cf9639fa49065758a19a594062b244741970b80f337e6c1d282a53be"
+        }
+      ],
+      "reason": "球が連結スペクトルの compact projective 生成元となる結果は見つからない。具体的なスペクトルの安定性と sphere 対象はあるが、連結部分 ∞ 圏の sifted 余極限での生成を備えていない。"
+    },
+    "7.1.4.14": {
+      "ha_page": 1224,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.14",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "projectivelyGenerated|compact.*projective.*free|IsCompactProjective",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "projectivelyGenerated|compact.*projective.*free|IsCompactProjective",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+          "sha256": "3bf57f7268658348fc2f72f222d05240010bfb762db79bd79ad2bdf85ea71347"
+        },
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/Projective.lean",
+          "sha256": "c015533e353e62977987042d67f424ea34afb7afa3ffc7c59e4731c41ba04436"
+        }
+      ],
+      "reason": "左テンソル圏の compact projective 生成元を自由 R 加群へ移す一般の定理は見つからない。通常の自由内部加群随伴は、∞ 写像空間の sifted 余極限保存と生成を証明しない。"
+    },
+    "7.1.4.15": {
+      "ha_page": 1224,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.15",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LMod.*projective|projectivelyGenerated|compact.*projective.*generator",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Derived/DGPerfectKernelResolution.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LMod.*projective|projectivelyGenerated|compact.*projective.*generator",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/Projective.lean",
+          "sha256": "c015533e353e62977987042d67f424ea34afb7afa3ffc7c59e4731c41ba04436"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/DGAlgebraDerivedInfinity.lean",
+          "sha256": "5e9219fbb4d2e2021c5543f208326f72b2203e6ac2a5fcec9960dad96476defe"
+        }
+      ],
+      "reason": "連結環スペクトル R が連結 R 加群圏の compact projective 生成元となる結果は見つからない。通常の加群の自由性・射影性はあるが、LModcn とその ∞ 写像空間の sifted 余極限保存の比較がない。"
+    },
+    "7.1.4.16": {
+      "ha_page": 1224,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.16",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "operad.*projectivelyGenerated|IsCompactProjective|compact.*projective.*free",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "operad.*projectivelyGenerated|IsCompactProjective|compact.*projective.*free",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/FreeAlgebraAdjunction.lean",
+          "sha256": "35e9aa858df1d75809c552bffa184f3aa09e76facf91a2f1073165630c085718"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/AlgebraSiftedColimits.lean",
+          "sha256": "9587031794877945e849fecc9304d1907398d6870cf4c4890242a3afdd1eaebe"
+        }
+      ],
+      "reason": "多色 ∞ オペラッドの各ファイバーの projective 生成を自由代数で移す定理は見つからない。厳密 dg オペラッドの自由随伴はあるが、局所化後の compact projective 性と生成を判定していない。"
+    },
+    "7.1.4.17": {
+      "ha_page": 1225,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.17",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "AlgR.*generator|projectivelyGenerated|free.*compact.*projective",
+          "files_with_matches": 29,
+          "total_matching_lines": 49,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBoundarySequence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGCellBoundaryOperator.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGCellGeneratorBoundary.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/FreeDGUniversal.lean",
+            "SerrePositivity/DifferentialGraded/Checks/ContractedFunctor.lean",
+            "SerrePositivity/DifferentialGraded/Checks/ErasureMiddle.lean",
+            "SerrePositivity/DifferentialGraded/Checks/PathEvaluation.lean",
+            "SerrePositivity/DifferentialGraded/Checks/QuotientContraction.lean",
+            "SerrePositivity/DifferentialGraded/Checks/QuotientRightIdentity.lean",
+            "SerrePositivity/DifferentialGraded/Checks/QuotientUniversal.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Triangle.lean",
+            "SerrePositivity/DifferentialGraded/Complexes/Perturbation.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "AlgR.*generator|projectivelyGenerated|free.*compact.*projective",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/DGAlgebra/Free.lean",
+          "sha256": "91d6c2388f44fe945b130c3374910910928a6bf1bf5fc911b82e2e6de33b4df1"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/DGAlgebra/Monadic.lean",
+          "sha256": "9058fa2fa9bac018b6ebd8184425f8f2c2f5e32b7405782d82fef35962fa7e23"
+        }
+      ],
+      "reason": "連結 Eₖ 代数の自由一元代数を compact projective 生成元とする結果は見つからない。通常の厳密 dg 自由代数の随伴と sifted 余極限は、連結部分 ∞ 圏での生成を与えない。"
+    },
+    "7.1.4.18": {
+      "ha_page": 1225,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.18",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "simplicial.*algebra.*modelCategory|simplicialRingNormalizedDGAlgebraFunctor|AlgR",
+          "files_with_matches": 8150,
+          "total_matching_lines": 18292,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "simplicial.*algebra.*modelCategory|simplicialRingNormalizedDGAlgebraFunctor|AlgR",
+          "files_with_matches": 111,
+          "total_matching_lines": 844,
+          "sample_paths": [
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/Basic.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/FundamentalGroup.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/InducedMaps.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/PUnit.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/Product.lean",
+            "Mathlib/AlgebraicTopology/FundamentalGroupoid/SimplyConnected.lean",
+            "Mathlib/Analysis/Complex/BranchLogRoot.lean",
+            "Mathlib/Analysis/Complex/Circle.lean",
+            "Mathlib/Analysis/InnerProductSpace/PiL2.lean",
+            "Mathlib/Analysis/Normed/Field/UnitBall.lean",
+            "Mathlib/Analysis/Normed/Group/Quotient.lean",
+            "Mathlib/Analysis/Normed/Group/Uniform.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingDGAlgebraFunctor.lean",
+          "sha256": "3f7c5df689d6aea4baf43ef254d4a2ce449e2fc9f19f1cbbfbc4d926601b0fd3"
+        },
+        {
+          "path": "SerrePositivity/KST/Comparison/SimplicialRingKan.lean",
+          "sha256": "648203a24bf235a8b2874592c370bbaa7d688682cbc8da72ca243af1d50236b4"
+        }
+      ],
+      "reason": "単体的結合 R 代数の simplicial モデル構造と連結 E₁ 代数の同値は見つからない。単体環の正規化から厳密 dg 代数への関手はあるが、同値な ∞ 圏を与える逆と当該モデル構造を備えていない。"
+    },
+    "7.1.4.19": {
+      "ha_page": 1226,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.19",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "topological.*algebra|realization.*ring|simplicialRingNormalized",
+          "files_with_matches": 58,
+          "total_matching_lines": 320,
+          "sample_paths": [
+            "SerrePositivity/CommutativeAlgebra/RankLocus.lean",
+            "SerrePositivity/DifferentialGraded/Perfect/Ring/FiniteProjectiveComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramFrame.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramFrame.lean",
+            "SerrePositivity/InfinityCategories/Derived.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingCochainAssociativity.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingCochainBidegree.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingCochainBidegreeDifferential.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingCochainMultiplication.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingCochainNormalization.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingCochainProductComponents.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingCochainTensorDifferential.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "topological.*algebra|realization.*ring|simplicialRingNormalized",
+          "files_with_matches": 57,
+          "total_matching_lines": 218,
+          "sample_paths": [
+            "Mathlib/AlgebraicGeometry/Cover/QuasiCompact.lean",
+            "Mathlib/AlgebraicGeometry/Morphisms/RingHomProperties.lean",
+            "Mathlib/AlgebraicGeometry/Morphisms/UniversallyClosed.lean",
+            "Mathlib/AlgebraicGeometry/Morphisms/UniversallyOpen.lean",
+            "Mathlib/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/Commute.lean",
+            "Mathlib/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/Continuity.lean",
+            "Mathlib/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/Instances.lean",
+            "Mathlib/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/NonUnital.lean",
+            "Mathlib/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/Note.lean",
+            "Mathlib/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/Pi.lean",
+            "Mathlib/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/Transfer.lean",
+            "Mathlib/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/Unique.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingDGAlgebraFunctor.lean",
+          "sha256": "3f7c5df689d6aea4baf43ef254d4a2ce449e2fc9f19f1cbbfbc4d926601b0fd3"
+        },
+        {
+          "path": "SerrePositivity/KST/Comparison/SimplicialRingKan.lean",
+          "sha256": "648203a24bf235a8b2874592c370bbaa7d688682cbc8da72ca243af1d50236b4"
+        }
+      ],
+      "reason": "連結 E₁ 代数を単体環の位相的実現で回復する同値は見つからない。単体環の dg 正規化はあるが、位相的代数の実現関手と元の E₁ 代数を回復する比較を作っていない。"
+    },
+    "7.1.4.20": {
+      "ha_page": 1226,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.20",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "simplicial.*commutative.*modelCategory|CAlgcn|rectification",
+          "files_with_matches": 606,
+          "total_matching_lines": 1881,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonCoordinates.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonLeftCorrectionImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonLeftImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonLeftImageMaps.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonLeftIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonRightCorrectionImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonRightImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonRightImageMaps.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonRightIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelLeftCorrectionHomotopy.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelLeftCorrectionImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CospanLeftInverseImage.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "simplicial.*commutative.*modelCategory|CAlgcn|rectification",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingDGAlgebraFunctor.lean",
+          "sha256": "3f7c5df689d6aea4baf43ef254d4a2ce449e2fc9f19f1cbbfbc4d926601b0fd3"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/BarrattEccles/CAlg.lean",
+          "sha256": "54133c4d1a825f000cc8ceb51c3e0aa7e8468487b94527a91ed4ba76258b2a0d"
+        }
+      ],
+      "reason": "Q を含む環上の単体的可換代数の simplicial モデル構造と連結 E∞ 代数の同値は見つからない。単体環の非可換正規化と実 E 代数の構成は、その可換有理 rectification を与えない。"
+    },
+    "7.1.4.21": {
+      "ha_page": 1227,
+      "citation_scan": {
+        "exact": {
+          "prefix": "7.1.4.21",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "7.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "7.1.3",
+            "lean": 0,
+            "plan": 2
+          },
+          {
+            "prefix": "7.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "animated.*EInfinity|simplicial.*commutative.*equivalence|CAlgcn",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "animated.*EInfinity|simplicial.*commutative.*equivalence|CAlgcn",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/BarrattEccles/CAlg.lean",
+          "sha256": "54133c4d1a825f000cc8ceb51c3e0aa7e8468487b94527a91ed4ba76258b2a0d"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingDGAlgebraFunctor.lean",
+          "sha256": "3f7c5df689d6aea4baf43ef254d4a2ce449e2fc9f19f1cbbfbc4d926601b0fd3"
+        }
+      ],
+      "reason": "単体的可換環から連結 E∞ 代数への sifted 余極限保存延長と、非有理係数で一般に同値でないことの宣言は見つからない。実 E 代数と単体環の正規化はあるが、この延長関手と不一致の反例を構成していない。"
+    }
+  }
+}
