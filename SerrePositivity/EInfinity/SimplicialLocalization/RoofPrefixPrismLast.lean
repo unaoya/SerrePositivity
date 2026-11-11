@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix
 open CategoryTheory SSet MonoidalCategory
 open Hammock SerrePositivity.InfinityCategories
-open FrameHom.CoherentRightCone
+
 open scoped Simplicial
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {I : Type u} [Category.{u} I]
   (U : I ⥤ C.category) {X Y : C.category} (p : U ⟶ (Functor.const I).obj X)
