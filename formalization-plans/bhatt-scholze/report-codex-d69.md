@@ -261,3 +261,241 @@
    ```
 
 5. 対象ビルドの後、`/private/tmp/AuditD69P2Night.lean` を `lake env lean` で一時監査する。夜前の33本と上の10本を対象に、非公開宣言も含めて標準三公理のみであることを確認する。続けて追加する証明はこの監査の対象に足す。
+
+## 段 2（P2）途中（11 月 11 日朝）
+
+- `main` の取り込みと登録を含む `6e6a3f9a7` へ早送りした。夜間の枠の持ち上げ、混合頂点、prism 上の余鎖ホモトピー、有限 affine 枠への適用の対象ビルドが通った。大小の枠の比較の二つの合成と、標準比較への移送は引き続き検査中。
+- Witt の結晶の橋を有限枠に制限した座標計算、未完備分冪模型の代入、Jacobian と分冪偏微分の連鎖律、双複体の第 0 行・第 0 列への射影の自然性が対象ビルドを通った。連鎖律は自由分冪の生成元に階乗を掛けて通常の冪に直し、標的の p 正則性と p 完備性で階乗を消去して示した。
+- 今回ビルドと監査が通った追加は `AffineCechFrameLift`、`CechVertexHomotopy`、`PrismaticFrameHomotopy`、`AffineCechVertexFrame`、`WittBigBridgeAffineFrame`、`PDRawPolynomialSubstitution`、`PDDeRhamSubstitutionJacobian`、`PDDeRhamSubstitutionChainRule`、`SerrePositivity.HomologicalAlgebra.BicomplexProjectionNaturality` の9本。一時監査は夜前の33本を合わせた42本、1,352宣言で標準三公理のみ。
+
+- `BigCechVertexFrame` と `BigCechAffineFrameQuasiIso` が通った。共通の濃度上限に大小の標準枠を置けることを示し、二つの合成の余鎖ホモトピーを `affineCechAlexanderFrame_quasiIso` に移した。
+- `PDModelCompletionQuotient`、`PDRawBaseChangeQuotient` が通った。前者は有限冪商の平坦性と完備化単位との照合、後者は未完備項での底変換を係数のイデアルの商まで移した環同型。
+- `PDDeRhamCompletedSubstitution`、`PDCompletedSubstitutionNaturality`、`PDDeRhamSubstitutionForms` が通った。完備係数に連鎖律を移し、各余面・余退化と可換な代入の関手、および Jacobian の各外冪への延長を作った。外積と微分を保つことと、総複体の二射影との照合は検査を続けている。
+- 上の追加7本を含む49本の一時監査は1,516宣言で標準三公理のみ。Witt の二比較の導来 p 完備底変換後の擬同型と、完備 pd de Rham の厳密な自然性が残る。
+
+- `PDTermQuotientModel` と `WittFiniteBridge` が通った。前者では完備分冪模型の実際の各項の p 冪商を未完備項の商と比較した。後者では有限 prismatic 枠から小さい Witt 模型への橋を、基底を ψ、各頂点の変数像を p 乗と指定して構成した。大小の Witt 枠を結ぶ四角形は検査中。
+- 上の2本を含む51本の一時監査は1,574宣言で標準三公理のみ。
+
+- `PDDeRhamSubstitutionWedge` と `PDDeRhamSubstitutionGenerators` で、完備形式の代入が外積を保ち、1 形式では完備 Jacobian になることを示した。`PDDeRhamBicomplexCoefficients` では完備形式の係数変更を双複体の射にし、係数制限で読んだ二つの射影と可換であることを示した。
+- `PDDeRhamColumnBounded` で第 0 列の有界性と各列の導来 p 完備性、`SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeEquivalence` で完備化同値が導来底変換後にも完備化同値になることを示した。これら5本の対象ビルドが通り、56本の一時監査は1,653宣言で標準三公理のみ。
+
+- `main` の `c77013db6` を `74b2af07f` で取り込んだ。K4 の `VariableEnvelopeBaseChange` が参照できるようになり、共有鍵を整理券方式に切り替えた。
+- `WittFiniteBridgeNaturality` で有限枠の各次数の結晶の橋を余単体射にし、`WittFiniteBridgeSquare` で大きい Witt 枠への二つの合成を各次数で照合した。`PDDeRhamSubstitutionDegreeZero` は次数 0 の代入と微分の可換性を証明した。
+- 共通の `SerrePositivity.CommutativeAlgebra.DeRham.PolynomialDeRhamCompletionUnit` で未完備多項式 de Rham 複体の有界性と完備化単位、`SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelEquivalence` で正則なスカラーの冪商から完備化同値を判定する補題を示した。これら5本は鍵付きの対象ビルドを通った。61本の一時監査は1,781宣言で標準三公理のみ。
+
+- `PDDeRhamSubstitutionDifferential` で、多項式代入と完備分冪微分の可換性を全次数で示した。頂点変数の微分が 1 形式を生成し、外積の保存と Leibniz 則で高次数へ延ばす。`PDDeRhamRowFormsExt` で係数と微分を保つ形式の写像を次数 0 で比較し、`PDDeRhamSubstitutionCofaces` と `PDDeRhamSubstitutionFunctor` で余面・余退化、恒等射、合成の厳密な両立を示した。二つの射影も厳密に自然になった。
+- `PDDeRhamCoefficientProjection` で、D68 の既存の総複体の係数変更と実際の二射影の成分を照合した。`PDRawColumnCompletion` で標数を仮定しない未完備の分冪列と完備列への標準写像、`PDRawFormsBaseChange` で各項の自由模型の通常の底変換を作った。`SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeModel` で完備化同値と射影模型から完備導来底変換を計算する同型と可換図式を示した。
+- この追加8本は鍵付きの対象ビルドを通った。69本の一時監査は1,977宣言で標準三公理のみ。残りの Witt の二比較では、有限冪商から列の完備底変換を計算する部分と、K4 の比較を余単体構造に移して一般の結晶の橋を適用する部分を続ける。
+
+- `WittAffineBaseChange` で、標準の有限 affine 項を ψ に沿って完備テンソルした環を、Witt 係数の完備自由 δ 環に同定した。⑤c の `exists_completedFreeDelta_baseChange_equiv` をそのまま使い、左の係数脚と自由座標上の等式を残した。余単体射と橋への移送は続けて検査する。対象ビルドは成功し、70本の一時監査は1,996宣言で標準三公理のみ。
+
+
+## 段 2（P2）途中（11 月 11 日昼）
+
+- `main` の `7a689544b` を `5b9030cd3` で取り込んだ。共有鍵の待ちは以後 `--wait 3600` とし、この作業木から並べる整理券は一つにまとめる。昼の bulk を繰り上げない版のスクリプトを使っている。
+- `PDTermReductionLinear` と `PDTermCompletionEquivalence` で、実際の完備化単位が有限冪商で誘導する線形同型を示した。共通の `ScalarCokernelTensor` でスカラー作用の余核の同型を任意の加群とのテンソルに移す。`PDColumnCompletionEquivalence` でこれを列の各項に適用し、自由な未完備列の単位が導来 p 完備化後で擬同型になることを示した。
+- `PDRawColumnBaseChange` と `PDRawColumnBoundedModel` で、第 0 列の有界自由模型と通常の底変換同型を作った。`PDColumnCompletedBaseChange` で、両基底が p 正則であれば、完備第 0 列の導来 p 完備底変換を標的の完備第 0 列で計算できる。係数の環射の平坦性を追加する必要はない。自由模型からの実際の射は `pdColumnZeroBaseChangeFreeMap` で指定し、完備化単位との照合には共通の `completedBaseChangeModelIso_hom_comm` を使う。
+- `PDColumnCoefficientUnit` で、実際の半線形な係数変更と自由模型の完備化単位の可換性を示した。`PDDeRhamDerivedSpan` と `PDDeRhamCompletedBaseChange` で、総複体から出る二射影を使って第 0 列の底変換同型を総複体と第 0 行へ移した。Witt の指定された比較射への適用は続けて検査する。
+- `CompletedFreeDeltaScale`、`AffineEnvelopeBaseChange`、`AffineEnvelopeCoefficients`、`AffineEnvelopeBaseChangeCoefficients` で、K4 の項ごとの自由 δ 環の同型を affine 包の頂点座標を保つ形に直した。prism の生成元の像の単元倍を、差の分母座標の逆単元倍で補正する。右脚との合成は δ 射になり、包の一意性で指定された係数変更に一致する。この係数変更は余単体射と厳密に可換。
+
+### 検収と残り
+
+今回の追加15本は `with_build_lock.sh --wait 3600` を通した対象ビルドが成功した。追加を含む85本の一時監査は2,302宣言で標準三公理のみ。新規ソース中の `sorry` と独自公理は0で、既存宣言の変更もない。検査ログは `/private/tmp/d69-ticket-build-14.log` と `/private/tmp/d69-morning-audit-fiftytwo.log`、一時監査は `/private/tmp/AuditD69P2MorningFiftyTwo.lean`。Witt の二比較の擬同型の最終宣言は引き続き残る。第 0 列の計算と二射影の自然性を第 0 Witt 成分による係数変更へ適用し、もう一方では affine 底変換の比較と一般の結晶の橋を合わせる。
+
+今回の登録候補は次のとおり。共通の一本を除き `SerrePositivity.BhattScholze.Prismatic` の下に置いた。
+
+- `PDTermReductionLinear`
+- `PDTermCompletionEquivalence`
+- `PDColumnCompletionEquivalence`
+- `PDRawColumnBaseChange`
+- `PDRawColumnBoundedModel`
+- `PDColumnCompletedBaseChange`
+- `PDColumnCoefficientUnit`
+- `PDDeRhamDerivedSpan`
+- `PDDeRhamCompletedBaseChange`
+- `CompletedFreeDeltaScale`
+- `AffineEnvelopeBaseChange`
+- `AffineEnvelopeCoefficients`
+- `AffineEnvelopeBaseChangeCoefficients`
+- `SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarCokernelTensor`
+- `PDEnvelopeCrystalline`
+
+- `PDEnvelopeCrystalline` は既存の `exists_deltaStructure_of_pdPolynomial` を一般の結晶基底に適用する。Frobenius が基底の分冪イデアルを (p) に送ることを仮定し、包の生成元、基底の δ 両立、各枠変数の δ が零であることを残した。Witt に限らない小さい結晶模型への適用を続ける。
+
+
+- 続く追加6本の対象ビルドが通った。`PDEnvelopeCrystallineMaps` で基底を固定する変数の改名が一般の小さい分冪包の δ 構造を保つこと、`PDDeltaFrobeniusEvaluation` で Frobenius 差の δ 除算模型から小さい分冪包へ送る評価とその基底脚・変数像、`CrystallinePDRetraction` で既存の ℤ_p の結晶模型への適用を示した。
+- `PDRawRingHomExt` と `PDTermRingHomExt` で、p 正則・p 局所な標的への代数射を頂点の変数で比較できることを示した。未完備の模型では階乗を消去し、完備項では主完備化の一意延長を使う。`SerrePositivity.BhattScholze.Delta.Division.HomExt` で、p 正則な完備標的への δ 射を標準脚で比較する共通補題を追加した。
+- 上の6本を含む91本の一時監査は2,405宣言で標準三公理のみ。新規ソースの `sorry`・独自公理は0で、既存宣言の変更もない。対象ビルドは `/private/tmp/d69-ticket-build-18.log`、一時監査は `/private/tmp/AuditD69P2MorningFiftyEight.lean` と `/private/tmp/d69-morning-audit-fiftyeight.log`。
+- この6本も登録候補に加える。自然性と分冪包含の切断を記す `CrystallinePDRetractionNaturality` と `CrystallinePDRetractionSplit` は作業木で検査中。次は切断を使って既存の mod p の包含と結晶の橋のコホモロジー同型を、小さい分冪模型への橋へ移す。
+
+- `CrystallinePDRetractionNaturality` で、結晶の δ 除算模型から小さい分冪模型への評価を厳密な余単体射にまとめた。`CrystallinePDRetractionSplit` で、既存の分冪包含にこの評価を続けると整係数で恒等射になることを示した。各次数の包の改名は既存の `CrystallinePDRetraction` 内に私的な補題として足した。以前の宣言の型と証明は変更していない。
+- `CrystallineSmallBridgeModP` で、この切断を mod p に降ろした。既存の包含のコホモロジー同型を消去すると評価もコホモロジー同型になり、既存の結晶の橋との合成も同様になる。型照合では、次数を自然数で固定してから余単体の対象に組み立て、完備模型の内部での `m` と `⦋m.len⦌` の照合を避けた。
+- この追加3本の鍵付き対象ビルドは `/private/tmp/d69-ticket-build-20.log` と `/private/tmp/d69-ticket-build-21.log` で成功した。94本の一時監査は2,496宣言で標準三公理のみ。一時監査とログは `/private/tmp/AuditD69P2MorningSixtyOne.lean` と `/private/tmp/d69-morning-audit-sixtyone.log`。新規ソース中の `sorry`・独自公理は0。
+- 登録候補に `CrystallinePDRetractionNaturality`、`CrystallinePDRetractionSplit`、`CrystallineSmallBridgeModP` を加える。P2 は継続中で、整係数の橋との還元の照合と、完備化後の Witt の指定された二比較への適用を続ける。
+
+- `CrystallineSmallBridge` で整係数の小さい結晶の橋を固定し、prism の生成元を p に送ることと、前項の mod p の射がこの厳密な射の還元であることを示した。鍵付き対象ビルドは `/private/tmp/d69-ticket-build-22.log` で成功した。95本の一時監査は2,499宣言、標準三公理のみ。監査は `/private/tmp/AuditD69P2MorningSixtyTwo.lean` と `/private/tmp/d69-morning-audit-sixtytwo.log`。
+- 登録候補に `CrystallineSmallBridge` を加える。完備化後の擬同型へ進むため、共通の `CompleteCochainReduction` を作業木で検査している。これは二つの導来完備な複体の間の射を通常のスカラー商で判定する補題で、各項の正則性を仮定する。短完全列と写像錐の比較、既存の `DerivedPurity` の完備ホモロジーの零性判定を使う。
+
+- 共通の `SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteCochainReduction` の対象ビルドが `/private/tmp/d69-ticket-build-23.log` で成功した。項ごとにスカラーが正則な二つの導来完備複体の射について、通常のスカラー商の擬同型から元の射の擬同型を導く。通常商を元の環の加群のまま束ね、短完全列、写像錐の関手との比較、既存の `cochain_quasiIso_iff_cone_acyclic` と `DerivedPurity` を使った。環上の平坦性は仮定しない。
+- この共通モジュールも登録候補に加える。96本の一時監査は2,520宣言で標準三公理のみ。一時監査とログは `/private/tmp/AuditD69P2MorningSixtyThree.lean` と `/private/tmp/d69-morning-audit-sixtythree.log`。
+- 作業木では `CrystallineSmallBridgeCoordinates`（各頂点変数の p 乗の式）と `CrystallineBridgeAlgebra`（既存の橋の ℤ_p 上の線形性）が個別検査を通った。`CrystallineWittCoefficients` は、既存の `arcPadicIntMap` とその一意性を使って Witt 基底への係数射を作る。これら3本は一つの整理券で対象ビルドを待っている。
+- 次の適用では、既存の `toModules` と `cohomologyEquivModuleHomology` で環のコホモロジーと基底線形な複体を合わせ、小さい橋の通常商の擬同型に完備複体の判定を適用する。その後、affine 包の完備底変換の比較と分冪側の係数変更を使い、Witt の有限枠の指定された橋との可換図式を閉じる。Witt 側から C 側の比較には既存の第 0 列の自由模型と二射影の係数変更の可換性を使う。P2 の停止点には引き続き未到達。
+
+- `CrystallineSmallBridgeCoordinates` の各頂点変数の p 乗の式と、`CrystallineBridgeAlgebra` の ℤ_p 上の厳密な線形性が鍵付きの対象ビルドを通った（`/private/tmp/d69-ticket-build-24.log`）。同じビルドの `CrystallineWittCoefficients` は証明だけに使う section 変数の明記で失敗したため、修正して個別検査を通した。基底の係数射は既存の `arcPadicIntMap` を使い、その一意性から Witt Frobenius と δ の両立を得る。Witt 係数射の再対象ビルドは次の束で行う。
+- ビルド済みの追加2本を含む98本の一時監査は2,554宣言、標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningSixtyFive.lean` と `/private/tmp/d69-morning-audit-sixtyfive.log`。登録候補に `CrystallineSmallBridgeCoordinates` と `CrystallineBridgeAlgebra` を加える。
+- 次の7本の対象ビルドを、一つの整理券、`--wait 3600`、鍵の使用1700秒以内で流している（`/private/tmp/d69-ticket-build-25.log`）。上の2本、`CrystallineWittCoefficients`、`CrystallineSmallBridgeComplex`、共通の `SerrePositivity.HomologicalAlgebra.Cosimplicial.ModuleMap`・`ScalarQuotient`、`SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarQuotient`。いずれも個別検査済み。
+- `ModuleMap` は既存の `toModules` を射に移し、環のコホモロジー同型から線形な交代余面複体の擬同型を得る。`ScalarQuotient` は実際の環の商射に対応する線形複体の短完全列。`CompleteScalarQuotient` は、商複体を短完全列で指定した形の完備複体の判定と、整数添字への零延長の両立を示す。`CrystallineSmallBridgeComplex` で小さい橋の始域・終域・線形な余鎖射を固定し、両複体の零延長の導来 p 完備性を示した。
+
+- 上記7本の対象ビルドは `/private/tmp/d69-ticket-build-25.log` で成功した。追加5本を含む103本の一時監査は2,619宣言で標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningSeventy.lean` と `/private/tmp/d69-morning-audit-seventy.log`。新規ソース中の `sorry`・独自公理は0で、以前の宣言の型や証明の変更はない。
+- 登録候補に `CrystallineWittCoefficients`、`CrystallineSmallBridgeComplex`、共通の `SerrePositivity.HomologicalAlgebra.Cosimplicial.ModuleMap`・`ScalarQuotient`、`SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarQuotient` を加える。
+- `CrystallineWittCoefficients` は、係数射の δ 両立と prism 射に加え、(p) の分冪構造から Witt 基底の分冪構造への両立も示した。ここでは既存の `PDFrobeniusLift` の階乗消去の補題を直接使った。
+- `CompleteScalarQuotient` には自然数添字の入口も加えた。実際の通常商を短完全列で指定すれば、整数添字への零延長が導来完備な二つの複体の間の射について、商の射の擬同型から元の射の擬同型が従う。これを適用する `CrystallineSmallBridgeQuasiIso`（整係数の小さい結晶の橋の擬同型）は新規部品と合わせた個別検査を通り、通常の import で再検査中。
+- 作業木の `PDEnvelopeCrystallineCoefficientMaps` は、係数環が異なる場合に分冪包の標準 δ 構造を保つことを示し、個別検査を通った。既存の基底固定の宣言はそのまま使える。次は、実際の小さい分冪模型の係数変更にこの補題を適用する。Witt 環の p 正則性から、標準 ℤ_p 作用の平坦性を示す `CrystallineWittFlat` も検査している。
+
+- `CrystallineSmallBridgeQuasiIso`、`PDEnvelopeCrystallineCoefficientMaps`、`CrystallineWittFlat` の対象ビルドが `/private/tmp/d69-ticket-build-26.log` で成功した。小さい結晶の橋の実際の ℤ_p 線形余鎖射は擬同型となった。証明は通常商での既存の擬同型、両辺の導来 p 完備性、項ごとの p 正則性を使う。Witt 係数射の平坦性は、既存の p 進整数の単元と p の冪への分解と Witt 環の p 正則性から示した。
+- 追加3本を含む106本の一時監査は2,645宣言で標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningSeventyThree.lean` と `/private/tmp/d69-morning-audit-seventythree.log`。登録候補に上記3本を加える。既存宣言は変更していない。Witt の指定された比較射との係数変更の照合は引き続き残り、停止点2には未到達。
+
+- `PDSmallCoefficientComparison` の対象ビルドが `/private/tmp/d69-ticket-build-27.log` で成功した。実際の小さい完備分冪模型の係数変更を一般の分冪基底上の完備分冪枠に移し、基底脚・頂点変数・分冪・標準 δ 構造との両立を示した。係数作用は η⁰ に対応する実際の環射に沿う作用として固定した。登録候補にこの一本を加える。
+- 追加を含む107本の一時監査は2,690宣言で標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningSeventyFour.lean` と `/private/tmp/d69-morning-audit-seventyfour.log`。新規ソースの `sorry`・独自公理は0、既存宣言の変更はない。
+- 作業木では、`PDEnvelopeAffineBridge`（有限分冪枠への橋と係数変更の厳密な自然性）、`CrystallineSmallBridgeFrame`（既存の整係数の橋の有限枠での仕様）、`CrystallineWittSmallFrame`（Witt 結晶基底上の小さい橋）、`CrystallineWittSmallCoefficients`（整係数から Witt 係数への厳密な可換図式）、`WittFiniteBridgeCrystallineFactor`（既存の `finiteBridgeAt` の ψ に沿う係数変更を通る分解）が一時ファイルによる個別検査を通った。これらと、既存の `CompletedFlatRegularModule` を使う `CrystallineWittCompletedModules` を次の一件の整理券で対象ビルド中。対象ビルド前の新規ファイルはコミットしていない。
+- 係数変更の順序は、まず整係数から Witt 結晶基底への標準 prism 射で小さい橋を移し、その後、一般の基底 P から ψ に沿って Witt 結晶基底へ移す。一般の P に対して結晶基底の生成元 p が P のイデアルに入るとは限らないため、整係数の affine 枠から P の affine 枠へ直接 prism 射を作る手順は使わない。Witt Frobenius 全体と、係数を固定して頂点を p 乗へ送る射も区別している。
+
+- 上記の厳密な比較の5本（`PDEnvelopeAffineBridge`、`CrystallineSmallBridgeFrame`、`CrystallineWittSmallFrame`、`CrystallineWittSmallCoefficients`、`WittFiniteBridgeCrystallineFactor`）は `/private/tmp/d69-ticket-build-28.log` で対象ビルドを通った。112本の一時監査は2,850宣言で標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningSeventyNine.lean` と `/private/tmp/d69-morning-audit-seventynine.log`。登録候補にこれら5本を加える。
+- `crystallineWittSmallBridgeAt_coefficients` は整係数の実際の小さい橋と Witt 結晶基底上の橋の厳密な可換図式。`wittFiniteBridgeAt_eq_crystalline_comp` は既存の指定された有限 Witt 比較を、ψ による affine 係数変更と Witt 結晶基底の小さい橋の合成に同定する。両方とも有限 affine 包の一意性による等式で、元の比較射の定義は変更していない。
+- 同じ束の `CrystallineWittCompletedModules` は p の像の型合わせで失敗したため、係数射による p の像の等式を直接書き換えて個別検査を通した。次の対象ビルドで再確認する。ほかに、`PDTermCompletelyFlat`、`CrystallineWittFlatCochain`、共通の `PointwiseBaseChange`・`PointwiseRegular` は個別検査済み。`AffineEnvelopeDerivedBaseChange` では、既存の完備自由 δ 環の完全平坦性と有界 prism 上の離散性から、実際の完備テンソルの single 対象が各 affine 項の完備導来底変換を計算する型を準備した。これら6本を `/private/tmp/d69-ticket-build-29.log` の一件の整理券で対象ビルドしている。
+- P2 の残りは、これらの項の比較を余単体構造と合わせ、Witt の指定された二比較について、係数変更後の交代余面複体の擬同型を閉じること。各項への完備係数拡大と、複体全体への導来完備化は別に指定し、両者を同定する証明を省略しない。停止点2には引き続き未到達。
+
+- `CrystallineWittCompletedModules` の修正と、`PDTermCompletelyFlat`、`CrystallineWittFlatCochain`、共通の `SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseBaseChange` は `/private/tmp/d69-ticket-build-29.log` で対象ビルドを通った。追加を含む116本の一時監査は2,887宣言で標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningEightyThree.lean` と `/private/tmp/d69-morning-audit-eightythree.log`。登録候補にこの4本を加える。
+- `pdTerm_completelyFlat` は基底の p 正則性を仮定し、未完備模型の自由な基底と既存の主完備化の完全忠実平坦性から (p) 完全平坦性を示す。`crystallineWittCompletedBridge_isIso` は、実際の整係数の小さい橋を通常の Witt 係数拡大と複体全体の導来完備化に移した射の可逆性。この段では各項の完備化との同定は使っていない。
+- 共通の `PointwiseBaseChange` は、single・導来完備化・実際の H⁰ を合成した加法的な加群関手と、その通常の係数拡大との合成を固定する。元の鎖ホモトピーは既存の `Functor.mapHomotopy` で移る。
+- 同じ対象ビルドで `AffineEnvelopeDerivedBaseChange` と共通の `PointwiseRegular` に残った、存在から同型を選ぶ書き方と import の問題は修正している。`PointwiseRegular` は通常の import での個別検査を通った。さらに `PointwiseExact`（両端が正則な短完全列を H⁰ 完備化が保つ）は一時ファイルによる個別検査を通った。これらは対象ビルドが通るまでコミットしない。
+
+- `AffineEnvelopeDerivedBaseChange`、共通の `PointwiseRegular`・`PointwiseExact` の対象ビルドは `/private/tmp/d69-ticket-build-30.log` で成功した。追加を含む119本の一時監査は2,920宣言で標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningEightySix.lean` と `/private/tmp/d69-morning-audit-eightysix.log`。登録候補にこの3本を加える。
+- `affineEnvelopeTermCompletedBaseChangeIso` は、両基底が有界 prism という仮定の下で、有限 affine 項の実際の完備テンソル積の single 対象が二座標完備導来底変換を計算する。係数射そのものの通常の平坦性は仮定せず、既存の完備自由 δ 環の完全平坦性、有界 prism 上の離散性、H⁰ の係数線形な比較を使う。`affineEnvelopeTermCompletedBaseChangeToTargetIso` は既存の係数脚を保つ完備テンソルの同型を通して、標準の係数変更先の項へ移す。
+- `PointwiseRegular` は加群上だけのスカラーの正則性から、主導来完備化の純性と H⁰ の正則性を示す。`PointwiseExact` は、両端でスカラーが正則な短完全列が H⁰ 完備化後も短完全であることを、標準導来三角形と長完全列で示す。
+- 作業木の `PointwiseCochain` では、非輪状な正則複体のサイクルの短完全列を使い、各項の H⁰ 完備化が正則な複体の擬同型を保つことを個別検査で確認した。さらに平坦な通常の係数拡大と合成し、整数・自然数の両添字に対する入口を用意した。実際の整係数の小さい橋に適用する `CrystallineWittPointwiseBridge` も検査中。対象ビルド前なので、この2本はまだコミットしない。
+
+- 共通の `PointwiseCochain`・`PointwiseAlgebra` と BS の `CrystallineWittPointwiseBridge` の対象ビルドは `/private/tmp/d69-ticket-build-31.log` で成功した。追加を含む122本の一時監査は2,948宣言で標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningEightyNine.lean` と `/private/tmp/d69-morning-audit-eightynine.log`。登録候補にこの3本を加える。
+- `PointwiseCochain` は、指定スカラーが各項で正則な非輪状複体をサイクルの短完全列に分け、各項の H⁰ 完備化後も非輪状であることを示す。写像錐の比較から擬同型の保存を得て、平坦な通常の係数拡大と合成した整数・自然数両添字の宣言を閉じた。`crystallineWittPointwiseBridge_quasiIso` は、実際の整係数の小さい橋にこの自然数添字の宣言を適用する。
+- `PointwiseAlgebra` は各項の H⁰ 完備化を既存の主完備環の係数加群に同定する。標準の完備化単位を保ち、任意の係数線形写像について厳密に自然である。自然性の証明には既存の `principalCompletionLinearMap_ext` を使う。
+- 次はこの同定と通常テンソルの係数を保つ比較を合わせ、各項の完備係数拡大を実際の有限 Witt 模型と照合する。作業木の `PointwiseTensor` でこの比較と単位の式を準備している。P2 の最終の二比較は引き続き残り、停止点2には未到達。
+
+## P2 途中の取り込み点（2026-11-11 夕）
+
+調整役の途中取り込みの依頼に対する記録。**停止点2の検収とは別の取り込み点**。
+
+- **本体の取り込み点：`e79fa8e7c589288e5f523b5341723f36ca1e205d`（`e79fa8e7c`）**。
+- 登録一覧の差分の基準は、この記録時点の main `7a3a0f965544bde84ff8e9d62359536d6d836430`（`7a3a0f965`）。追加は **89モジュール（BS 74本、共通15本）**。全89本が取り込み点にコミット済みで、対象ビルド済み。
+- ⑤c の H3・H4 が待つ `AffineEnvelopeBaseChange`・`AffineEnvelopeCoefficients`・`AffineCechFrameLift`・`BigCechVertexFrame` は、4本ともこの取り込み点に含む。
+- 本体の変更は新規ファイルのみ。枝と main の共通祖先 `7a689544b` から取り込み点まで、既存の本体ファイルの差分は0。入口・共通監査スクリプトへの登録は、この枝では変更していない。
+- **未コミットの `SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseTensor` は対象外**。下の登録一覧にも監査対象にも含めない。
+
+### ビルドと監査
+
+- 対象ビルドは既記録の小さな束で検査済み。最新の束は `/private/tmp/d69-ticket-build-31.log` で成功。鍵はビルドの間だけ取り、`--wait 3600`、同じ worktree の整理券は常に一つにしている。
+- **今回登録する追加89本だけの一時監査：1,802宣言、標準三公理 `propext`・`Classical.choice`・`Quot.sound` のみ**。一時監査 `/private/tmp/AuditD69P2IntermediateE79.lean`、ログ `/private/tmp/d69-intermediate-e79-audit.log`。
+- 既取り込みの依存33本も含めた累計の一時監査は122モジュール・2,948宣言で、同じ標準三公理のみ。一時監査 `/private/tmp/AuditD69P2MorningEightyNine.lean`、ログ `/private/tmp/d69-morning-audit-eightynine.log`。
+- 追加89本のソースを再走査し、`sorry`・独自の `axiom` 宣言は0。監査でも `sorryAx` と独自公理は検出されていない。
+
+### BhattScholze.lean への登録（74本）
+
+```text
+SerrePositivity.BhattScholze.Delta.Division.HomExt
+SerrePositivity.BhattScholze.Prismatic.AffineCechFrameLift
+SerrePositivity.BhattScholze.Prismatic.AffineCechVertexFrame
+SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeBaseChange
+SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeBaseChangeCoefficients
+SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeCoefficients
+SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeDerivedBaseChange
+SerrePositivity.BhattScholze.Prismatic.BigCechAffineFrameQuasiIso
+SerrePositivity.BhattScholze.Prismatic.BigCechVertexFrame
+SerrePositivity.BhattScholze.Prismatic.CechVertexHomotopy
+SerrePositivity.BhattScholze.Prismatic.CompletedFreeDeltaScale
+SerrePositivity.BhattScholze.Prismatic.CrystallineBridgeAlgebra
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDRetraction
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDRetractionNaturality
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDRetractionSplit
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallBridge
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallBridgeComplex
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallBridgeCoordinates
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallBridgeFrame
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallBridgeModP
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallBridgeQuasiIso
+SerrePositivity.BhattScholze.Prismatic.CrystallineWittCoefficients
+SerrePositivity.BhattScholze.Prismatic.CrystallineWittCompletedModules
+SerrePositivity.BhattScholze.Prismatic.CrystallineWittFlat
+SerrePositivity.BhattScholze.Prismatic.CrystallineWittFlatCochain
+SerrePositivity.BhattScholze.Prismatic.CrystallineWittPointwiseBridge
+SerrePositivity.BhattScholze.Prismatic.CrystallineWittSmallCoefficients
+SerrePositivity.BhattScholze.Prismatic.CrystallineWittSmallFrame
+SerrePositivity.BhattScholze.Prismatic.PDColumnCoefficientUnit
+SerrePositivity.BhattScholze.Prismatic.PDColumnCompletedBaseChange
+SerrePositivity.BhattScholze.Prismatic.PDColumnCompletionEquivalence
+SerrePositivity.BhattScholze.Prismatic.PDCompletedSubstitutionNaturality
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamBicomplexCoefficients
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamCoefficientProjection
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamColumnBounded
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamCompletedBaseChange
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamCompletedSubstitution
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamDerivedSpan
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamRowFormsExt
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionChainRule
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionCofaces
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionDegreeZero
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionDifferential
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionForms
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionFunctor
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionGenerators
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionJacobian
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionWedge
+SerrePositivity.BhattScholze.Prismatic.PDDeltaFrobeniusEvaluation
+SerrePositivity.BhattScholze.Prismatic.PDEnvelopeAffineBridge
+SerrePositivity.BhattScholze.Prismatic.PDEnvelopeCrystalline
+SerrePositivity.BhattScholze.Prismatic.PDEnvelopeCrystallineCoefficientMaps
+SerrePositivity.BhattScholze.Prismatic.PDEnvelopeCrystallineMaps
+SerrePositivity.BhattScholze.Prismatic.PDModelCompletionQuotient
+SerrePositivity.BhattScholze.Prismatic.PDRawBaseChangeQuotient
+SerrePositivity.BhattScholze.Prismatic.PDRawColumnBaseChange
+SerrePositivity.BhattScholze.Prismatic.PDRawColumnBoundedModel
+SerrePositivity.BhattScholze.Prismatic.PDRawColumnCompletion
+SerrePositivity.BhattScholze.Prismatic.PDRawFormsBaseChange
+SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution
+SerrePositivity.BhattScholze.Prismatic.PDRawRingHomExt
+SerrePositivity.BhattScholze.Prismatic.PDSmallCoefficientComparison
+SerrePositivity.BhattScholze.Prismatic.PDTermCompletelyFlat
+SerrePositivity.BhattScholze.Prismatic.PDTermCompletionEquivalence
+SerrePositivity.BhattScholze.Prismatic.PDTermQuotientModel
+SerrePositivity.BhattScholze.Prismatic.PDTermReductionLinear
+SerrePositivity.BhattScholze.Prismatic.PDTermRingHomExt
+SerrePositivity.BhattScholze.Prismatic.PrismaticFrameHomotopy
+SerrePositivity.BhattScholze.Prismatic.WittAffineBaseChange
+SerrePositivity.BhattScholze.Prismatic.WittBigBridgeAffineFrame
+SerrePositivity.BhattScholze.Prismatic.WittFiniteBridge
+SerrePositivity.BhattScholze.Prismatic.WittFiniteBridgeCrystallineFactor
+SerrePositivity.BhattScholze.Prismatic.WittFiniteBridgeNaturality
+SerrePositivity.BhattScholze.Prismatic.WittFiniteBridgeSquare
+```
+
+### root への登録（共通15本）
+
+```text
+SerrePositivity.CommutativeAlgebra.DeRham.PolynomialDeRhamCompletionUnit
+SerrePositivity.HomologicalAlgebra.BicomplexProjectionNaturality
+SerrePositivity.HomologicalAlgebra.Cosimplicial.ModuleMap
+SerrePositivity.HomologicalAlgebra.Cosimplicial.ScalarQuotient
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteCochainReduction
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarQuotient
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeEquivalence
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeModel
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseAlgebra
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseBaseChange
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseCochain
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseExact
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseRegular
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelEquivalence
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarCokernelTensor
+```
+
+### P2 の残り
+
+最後の二つの比較の検収は引き続き残る。各項の完備係数拡大と実際の有限 Witt 模型の同定を余単体構造に合わせ、指定された二比較の係数変更後の交代余面複体の擬同型を閉じる。この途中取り込みの後も作業を続け、P2 全体が対象ビルド・監査を通ったところで停止点2を報告する。
