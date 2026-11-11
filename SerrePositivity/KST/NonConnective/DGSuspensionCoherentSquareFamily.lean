@@ -54,12 +54,12 @@ variable (a : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategorie
 
 /-- 同じ全四角形族を、B1 の同じ全作用で反復する。 -/
 def dgSuspensionCoherentSquareIterationFamily (n : ℕ) :=
-  a.iteration R s n ≫ dgSuspensionNativeSquareDiagramFamily R F
+  (_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s a) n ≫ dgSuspensionNativeSquareDiagramFamily R F
 
 /-- 反復後の全単体も、元の同じ全四角形族を厳密回収する。 -/
 theorem dgSuspensionCoherentSquareIterationFamily_recovery (n : ℕ) :
     uncurry (dgSuspensionCoherentSquareIterationFamily R F s a n) =
-      (Δ[1] ⊗ Δ[1]) ◁ a.iteration R s n ≫ F := by
+      (Δ[1] ⊗ Δ[1]) ◁ (_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s a) n ≫ F := by
   rw [dgSuspensionCoherentSquareIterationFamily, uncurry_natural_left,
     dgSuspensionNativeSquareDiagramFamily_recovery]
 
@@ -71,7 +71,7 @@ theorem dgSuspensionCoherentSquareIterationFamily_at
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (dgKappaResolvedConnectiveSquare R
         (dgSuspensionIteration R s A n) (dgSuspensionIterationStage R s A n).cone) := by
   change (dgSuspensionNativeSquareDiagramFamily R F).app (Opposite.op ⦋0⦌)
-    ((a.iteration R s n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
+    (((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s a) n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
   rw [DGSuspensionCoherentActionInput.iteration_vertex]
   have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (dgSuspensionNativeSquareAt R F (dgSuspensionIteration R s A n)) =
       (dgSuspensionNativeSquareDiagramFamily R F).app (Opposite.op ⦋0⦌)
@@ -84,12 +84,12 @@ include hF in
 /-- 元の全反復四角形の固定 K 像も、従来の厳密 hF による照合を保持する。 -/
 theorem dgSuspensionCoherentKSquareIterationFamily_at
     (A : PerfDGInput.{u, max (u + 1) v} R) (n : ℕ) :
-    (a.iteration R s n ≫ dgSuspensionNativeKSquareFamily R F).app (Opposite.op ⦋0⦌)
+    ((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s a) n ≫ dgSuspensionNativeKSquareFamily R F).app (Opposite.op ⦋0⦌)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (dgKappaResolvedConnectiveSquare R
         (dgSuspensionIteration R s A n) (dgSuspensionIterationStage R s A n).cone ≫
           dgKInputK R) := by
   change (dgSuspensionNativeKSquareFamily R F).app (Opposite.op ⦋0⦌)
-    ((a.iteration R s n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
+    (((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s a) n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
   rw [DGSuspensionCoherentActionInput.iteration_vertex]
   exact dgSuspensionNativeKSquareFamily_at R F s hF (dgSuspensionIteration R s A n)
 

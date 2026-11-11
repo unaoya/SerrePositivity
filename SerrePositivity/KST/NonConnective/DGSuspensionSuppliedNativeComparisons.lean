@@ -55,18 +55,18 @@ def dgSuspensionCoherentIterationMoritaIso
     (p : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentSquareInput R s)
     (hkernel : dgSuspensionNativeSquareCornerFamily R p.square 0 0 ≫ dgKInputNu R =
       _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativeKernelStableFamily R s) (n : ℕ) :=
-  (dgSuspensionCoherentKernelMoritaIso R s p hkernel).precomp (p.action.iteration R s n)
+  (dgSuspensionCoherentKernelMoritaIso R s p hkernel).precomp ((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s p.action) n)
 
 /-- 元の P 比較も同じ採用済み反復作用へ制限し、各段で比較を選び直さない。 -/
 def dgSuspensionCoherentIterationPIso
     (p : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentSquareInput R s) (n : ℕ) :=
-  dgSuspensionSuppliedPParameterIso R s (p.action.iteration R s n)
+  dgSuspensionSuppliedPParameterIso R s ((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s p.action) n)
 
 /-- 反復した Morita path は、元の実懸垂段の指定評価辺を厳密回収する。 -/
 theorem dgSuspensionCoherentIterationMorita_at
     (p : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentSquareInput R s)
     (A : PerfDGInput.{u, max (u + 1) v} R) (n : ℕ) :
-    (p.action.iteration R s n ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativeMoritaFamily R s).app (Opposite.op ⦋0⦌)
+    ((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s p.action) n ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativeMoritaFamily R s).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathVertex
         (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativeMoritaExactMap R (dgSuspensionIteration R s A n)
@@ -76,20 +76,20 @@ theorem dgSuspensionCoherentIterationMorita_at
           (s (dgSuspensionIteration R s A n)).cone
           (s (dgSuspensionIteration R s A n)).perfect) := by
   change (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativeMoritaFamily R s).app (Opposite.op ⦋0⦌)
-    ((p.action.iteration R s n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
-  rw [p.action.iteration_vertex, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativeMoritaFamily_at]
+    (((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s p.action) n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
+  rw [(_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration_vertex R s p.action), _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativeMoritaFamily_at]
 
 /-- P 比較 path も同じ実反復段の元の指定比較である。 -/
 theorem dgSuspensionCoherentIterationP_at
     (p : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentSquareInput R s)
     (A : PerfDGInput.{u, max (u + 1) v} R) (n : ℕ) :
-    (p.action.iteration R s n ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativePComparisonFamily R s).app (Opposite.op ⦋0⦌)
+    ((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s p.action) n ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativePComparisonFamily R s).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) =
       _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativePComparisonPath R (dgSuspensionIteration R s A n)
         (s (dgSuspensionIteration R s A n)).cone
         (s (dgSuspensionIteration R s A n)).perfect := by
   change (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativePComparisonFamily R s).app (Opposite.op ⦋0⦌)
-    ((p.action.iteration R s n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
-  rw [p.action.iteration_vertex, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativePComparisonFamily_at]
+    (((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s p.action) n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
+  rw [(_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration_vertex R s p.action), _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativePComparisonFamily_at]
 
 end SerrePositivity.KST.NonConnective

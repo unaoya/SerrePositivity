@@ -31,13 +31,13 @@ def DGSuspensionCoherentActionInput.iteration (n : ℕ) :
 /-- B1 でも元の各段の頂点回収は、従来どおりの厳密等号。 -/
 theorem DGSuspensionCoherentActionInput.iteration_vertex
     (A : PerfDGInput.{u, max (u + 1) v} R) (n : ℕ) :
-    (a.iteration R s n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) =
+    ((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s a) n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgSuspensionIteration R s A n) := by
   induction n with
   | zero => rfl
   | succ n ih =>
     change a.map.app (Opposite.op ⦋0⦌)
-      ((a.iteration R s n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
+      (((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s a) n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
     rw [ih, a.vertex]
     rfl
 
@@ -55,19 +55,19 @@ def DGSuspensionCoherentActionInput.iterationMappedEdge
 /-- 再帰的な端点正規化は、同じ全単体反復の辺成分そのものを保持する。 -/
 theorem DGSuspensionCoherentActionInput.iterationMappedEdge_edge
     {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B) (n : ℕ) :
-    (a.iterationMappedEdge R s f n).edge =
-      (a.iteration R s n).app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge := by
+    ((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iterationMappedEdge R s a) f n).edge =
+      ((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s a) n).app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge := by
   induction n with
   | zero => rfl
   | succ n ih =>
-    change a.map.app (Opposite.op ⦋1⦌) (a.iterationMappedEdge R s f n).edge = _
+    change a.map.app (Opposite.op ⦋1⦌) ((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iterationMappedEdge R s a) f n).edge = _
     rw [ih]
     rfl
 
 /-- 同じ全反復像は、元の実反復入力射へ端点固定の指定可逆比較を持つ。 -/
 def DGSuspensionCoherentActionInput.iteration_edgeIso
     {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (a.iterationMappedEdge R s f n))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge ((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iterationMappedEdge R s a) f n))
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge
         (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgSuspensionIterationMap R s a.data f n))) := by
   induction n with

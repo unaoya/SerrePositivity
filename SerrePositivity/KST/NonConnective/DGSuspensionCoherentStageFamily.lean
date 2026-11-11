@@ -26,7 +26,7 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
 /-- 同じ全反復・固定 K・同じ native loop による全入力段族。 -/
 def dgSuspensionCoherentStageFamily (n : ℕ) :
     dgKInputInfinity.{u, max (u + 1) v} R ⟶ Sp.{max (u + 1) v} :=
-  a.iteration R s n ≫ dgKInputK R ≫ (End.of OmegaSpectrum.nativeLoop ^ n).asHom
+  (_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s a) n ≫ dgKInputK R ≫ (End.of OmegaSpectrum.nativeLoop ^ n).asHom
 
 /-- 各段の頂点は、従来どおり元の同じ実 BF 列の頂点に厳密一致する。 -/
 theorem dgSuspensionCoherentStageFamily_vertex
@@ -35,7 +35,7 @@ theorem dgSuspensionCoherentStageFamily_vertex
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) = dgSuspensionNativeSequenceVertex R s A n := by
   change ((End.of OmegaSpectrum.nativeLoop ^ n).asHom).app (Opposite.op ⦋0⦌)
     ((dgKInputK R).app (Opposite.op ⦋0⦌)
-      ((a.iteration R s n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A))) = _
+      (((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration R s a) n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A))) = _
   rw [DGSuspensionCoherentActionInput.iteration_vertex, dgKInputK_vertex]
   rfl
 
@@ -59,8 +59,8 @@ def dgSuspensionCoherentStageFamily_edgeIso
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (dgSuspensionCoherentStageMappedEdge R s a f n))
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (dgSuspensionCoherentStageInputEdge R s a f n)) := by
   let fₙ := dgSuspensionIterationMap R s a.data f n
-  let eₙ := a.iterationMappedEdge R s f n
-  have eK := suspensionEdgeIso_post (a.iteration_edgeIso R s f n) (dgKInputK R)
+  let eₙ := (_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iterationMappedEdge R s a) f n
+  have eK := suspensionEdgeIso_post ((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration_edgeIso R s a) f n) (dgKInputK R)
     (dgKInputK_vertex R (dgSuspensionIteration R s A n))
     (dgKInputK_vertex R (dgSuspensionIteration R s B n))
   have eK' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
@@ -76,7 +76,7 @@ def dgSuspensionCoherentStageFamily_edgeIso
         (dgKInputK_vertex R (dgSuspensionIteration R s B n))).map L).ofEq rfl rfl).edge =
       (dgSuspensionCoherentStageMappedEdge R s a f n).edge :=
     congrArg (fun x => L.app (Opposite.op ⦋1⦌) ((dgKInputK R).app (Opposite.op ⦋1⦌) x))
-      (a.iterationMappedEdge_edge R s f n)
+      ((_root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iterationMappedEdge_edge R s a) f n)
   exact suspensionEdgeIso_ofEdgeComponents eL h₀ rfl
 
 /-- 旧厳密作用の段族を、新しい比較入口でも同じ全単体の射として保持する。 -/
