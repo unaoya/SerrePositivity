@@ -300,3 +300,12 @@ main `7a689544b` を `4c3faf273` で取り込んだ。以後、整理券はこ�
 - `Operad.erase` をこの構成の実例にした。自由代数の比較に必要な右随伴への持ち上げは作業木で検証中。
 
 セル段の微分が重みを増やさないこと、`hstage` と無条件の `baseChange_forget` は引き続き残る。停止点 3 前の途中記録。
+
+
+### 自由代数とセル付加の比較（11-11 昼）
+
+`EraseAlgebraAdjunction` と `EraseCellAttachment` も対象ビルドと再帰監査を通った。二十三本の監査は計 497 宣言、標準三公理のみ。登録候補にこの二本を追加する。
+
+`Operad.eraseAlgebraAdjunction` は、既存のモノイダル随伴の随伴対応で単位と部分合成を照合した代数上の随伴。`eraseFreeAlgebraIso` は自由・忘却随伴との合成を比較し、自由代数の自然同型を与える。`eraseAttachmentCofanIsColimit` はこの随伴と disk の指定分裂から、実際の付加の余積表示を与える。
+
+超限合成への移行、実際のセル段への語の基底の移送、微分と重みの照合は作業木に置いている。`hstage` と無条件の `baseChange_forget` の証明を続ける。
