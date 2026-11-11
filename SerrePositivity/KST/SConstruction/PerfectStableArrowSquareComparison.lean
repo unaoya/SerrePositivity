@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Arrow
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory MonoidalCategory SSet InfinityCategories LocalizingInvariants F2.Idempotent
+open CategoryTheory MonoidalCategory SSet InfinityCategories LocalizingInvariants
 open scoped Simplicial
 variable {A B C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
   (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (g : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C D) (a : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A C) (b : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B D)

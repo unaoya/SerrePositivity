@@ -13,7 +13,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "U" => DGOdotMilnorRightAxisBase R d
 local notation "KIn" => dgOdotMilnorFlatKernelInput R d

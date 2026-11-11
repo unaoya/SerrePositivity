@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve.HomotopyComparison
+open CategoryTheory DifferentialGraded InfinityCategories
 variable {R : Type u} [CommRing R] {C : Type v} [DGCategory R C]
   {E : Type w} [DGCategory R E] (F : DGFunctor R C E)
   {X Y Z : ClosedCategory R C} (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z)

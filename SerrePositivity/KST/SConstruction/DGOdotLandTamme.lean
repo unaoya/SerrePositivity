@@ -13,7 +13,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet Spectra InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 open scoped Simplicial
 local instance landTammeSpectrum_simplicialCategory : SimplicialCategory OmegaSpectrum.{u + 1} :=
   OmegaSpectrum.simplicialCategory

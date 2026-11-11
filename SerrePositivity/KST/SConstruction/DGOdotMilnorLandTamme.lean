@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet Spectra DifferentialGraded InfinityCategories
   LocalizingInvariants
-open F2.Idempotent
+
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local instance : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (DGOdotGluing R d) :=

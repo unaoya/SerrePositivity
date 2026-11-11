@@ -36,7 +36,7 @@ lemma strength_evaluation (W : SSet.{u}) (K B Y : PointedSimplicialSet.{u}) (f :
   have hn := productToSmash_naturality (𝟙 K)
     ((ihom.ev (PointedObject.adjoin W)).app B)
   simp only [Under.id_right, id_tensorHom] at hn
-  erw [← reassoc_of% hn, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_left_assoc]
+  erw [← reassoc_of% hn, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.exchange_natural_left_assoc]
   rw [FreePointedHomRestriction.restrict_evaluation]
   simp only [whiskerLeft_comp, Category.assoc]
   rfl
@@ -59,7 +59,7 @@ lemma strength_evaluation_parameter (W : SSet.{u})
   change uncurry (productToSmash K (PointedObject.basedHom (PointedObject.adjoin W) B) ≫
     (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.map K (PointedObject.adjoin W) B).right ≫
       ((ihom (PointedObject.adjoin W)).map f).right ≫ restrict W Y) = _ at h
-  rw [h, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc]
+  rw [h, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.exchange_natural_right_assoc]
   simp only [uncurry_natural_left, whiskerLeft_comp, Category.assoc]
 
 end SerrePositivity.KST.Spectra.FreePointedHomRestriction

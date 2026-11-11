@@ -13,7 +13,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 variable (F : perfectStableInfinity.{u} ⟶ Sp.{u})
   (Q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) (hQ : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete Q.obj)
 

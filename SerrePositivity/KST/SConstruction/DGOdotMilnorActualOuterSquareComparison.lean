@@ -15,7 +15,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "O" => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 1 ≫ dgOdotMilnorActualRectangleDiagram R d
 local notation "F" => (O) ≫ dgKInputPerfectNu R

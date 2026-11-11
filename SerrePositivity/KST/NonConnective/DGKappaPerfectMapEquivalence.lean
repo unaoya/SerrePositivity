@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.KST.SConstruction F2.Idempotent
+open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
 
 private theorem completionAfterEquivalence {X Y Z : SSet.{v}}

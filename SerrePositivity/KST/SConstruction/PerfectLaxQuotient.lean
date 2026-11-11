@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 
 /-- 元の lax pullback の実商と、その実冪等完備化を保持する入力。 -/
 structure PerfectLaxQuotient {C D B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}

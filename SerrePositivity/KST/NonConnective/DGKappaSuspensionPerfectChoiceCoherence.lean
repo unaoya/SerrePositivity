@@ -16,7 +16,7 @@ open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
-open F2.Idempotent
+
 variable (R : Type u) [CommRing R] (A : PerfDGInput.{u, max (u + 1) v} R)
   {κ : Cardinal.{u}} (I J K : DGKappaConeInput R A κ)
   (P : DGKappaPerfectInput R A I) (Q : DGKappaPerfectInput R A J)

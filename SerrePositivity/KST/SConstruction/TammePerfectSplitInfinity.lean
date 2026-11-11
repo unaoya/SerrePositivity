@@ -12,7 +12,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 open scoped Simplicial
 
 /-- 同じ BF スペクトルの単体的圏を使用する。 -/

@@ -14,7 +14,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "A" => DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d))
 local notation "T" => DGCategoryCellResolution.Source R (A)

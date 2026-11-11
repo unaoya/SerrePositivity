@@ -18,7 +18,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open DifferentialGraded InfinityCategories LocalizingInvariants F2.Idempotent
+open DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "Z" => dgKInputStableValue R

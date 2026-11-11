@@ -13,7 +13,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPer
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories F2.Idempotent
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   (J : Type w) [Small.{u} J] (X : J → PerfectDGModule R D)
 

@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 private lemma tammeFactorLeftAxis {A B X Y : OmegaSpectrum.{u}}
     (e : SpectrumHo.obj A ≅ SpectrumHo.obj X) (d : SpectrumHo.obj B ≅ SpectrumHo.obj Y) :
     SpectrumHo.hom (Binary.inl A B) ≫ (Binary.mapIso e d ≪≫ Binary.swapIso X Y).hom =

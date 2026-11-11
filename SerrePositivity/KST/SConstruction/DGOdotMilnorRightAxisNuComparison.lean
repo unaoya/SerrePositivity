@@ -19,7 +19,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "B" => DGOdotGluing R d
 local notation "P" => DGCategoryCellResolution.Source R (B)

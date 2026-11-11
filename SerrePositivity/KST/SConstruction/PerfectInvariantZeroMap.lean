@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Limits SSet Spectra
 open SerrePositivity.InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 open scoped Simplicial
 private lemma perfectTransportedZero {K : Type*} [Category K] [HasZeroMorphisms K]
     {X Y A B : K} (e : X ≅ A) (d : Y ≅ B) :

@@ -14,7 +14,7 @@ public import SerrePositivity.KST.SConstruction.PerfectStableArrowSquareComparis
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants F2.Idempotent
+open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "C" => dgKInputStableValue R (dgOdotMilnorIdentityBaseInput R d)

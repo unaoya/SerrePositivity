@@ -13,7 +13,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 open scoped Simplicial
 variable (F : perfectStableInfinity.{u} ⟶ Sp.{u})
 

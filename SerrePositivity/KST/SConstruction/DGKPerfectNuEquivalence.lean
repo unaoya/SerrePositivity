@@ -16,7 +16,7 @@ noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 open scoped Simplicial
 
 /-- 概要：同じ完全射の指定零次合成同型は Cat^perf の射の逆律を与える。
