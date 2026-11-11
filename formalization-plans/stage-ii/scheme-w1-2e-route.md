@@ -220,3 +220,40 @@ C⁽q⁾ₙ = Hᵠ_Čech(IⁿM) とする。これらの直和が B 上有限で
 4. `ProjectiveCechFiniteness` の指数有限性・降下帰納と、`ProjectiveCechGradedLocalization` の斉次分数表示・完全性は対象ビルドで確認済み。次に `ProjectiveCechGradedRestriction` の制限、`ProjectiveLaurentChart` の Laurent 単項式表示・縮約・有限性を確認する。
 5. `ProjectiveCechFunctor` の項ごとの完全性、`ProjectiveGradedPresentation` の斉次生成と核の次数分解、`ProjectiveCechDevissage` の長完全列による有限性の順に確認する。
 6. 検証済みの下書きから `SerrePositivity/AlgebraicGeometry/` のモジュールに移し、各モジュールと直接の importer を確認する。コミットは検証が通った範囲に限る。
+
+### 完備化への写像を作る具体的な手順（案 (b)）
+
+最後の極限比較では、`Mathlib/RingTheory/AdicCompletion/Basic` の `AdicCompletion.eval` と `AdicCompletion.transitionMap_comp_eval` を使う。一般の導来極限の完全性を新しく作る必要はない。H を固定の Čech コホモロジー、Qₙ を厚化の Čech コホモロジー、uₙ : H → Qₙ とする。IⁿH ⊆ ker uₙ により H/IⁿH → Qₙ ができ、互換な族を評価ごとに写す線形写像を作る。
+
+一様な定数 c で ker uₙ₊꜀ ⊆ IⁿH を得たとき、この極限写像は単射になる。実際、像が零の元の第 n+c 成分の代表は ker uₙ₊꜀ に入り、その第 n 成分が零になる。代表への依存は、Iⁿ⁺ᶜH ⊆ IⁿH で消える。
+
+全射性には像の安定化を使う。互換な族 bₙ ∈ Qₙ は十分先の bₗ の像なので、各 n で im uₙ に入る。uₙ(hₙ)=bₙ となる hₙ を選ぶ。第 n 成分を hₙ₊꜀ mod IⁿH として定めると、互換性は hₘ₊꜀−hₙ₊꜀ ∈ ker uₙ₊꜀ ⊆ IⁿH（m ≥ n）から従う。これは選択した代表によらず、元の族 bₙ を写像の像に持つ。線形性を逆写像の選択から証明せず、先に作った線形写像の全単射性から `LinearEquiv.ofBijective` を適用する。
+
+この段も Čech 版の形式関数であり、原典 Stacks Theorem 30.20.5 の導来関手の Hⁱ との比較は含めない。共通細分等の五つの整合性については、各段の uₙ と厚化の遷移に対する可換性を先に示す。完備化の比較の自然性は、極限の各評価への合成が一致することから得る。現時点ではこの極限比較の実装と、上記二評価を実際の Čech コホモロジーで満たす証明は未完了。
+
+## 包含・次数移動と局所化の対象検証（11-11）
+
+実装 `3ba4d621e`。5 モジュールと直接 importer、461 行。各モジュールと `SerrePositivity.AlgebraicGeometry` の対象ビルドは成功。公式監査 `scripts/audit_kst_scheme_lemmas.lean` は **5,353 宣言・標準三公理のみ**。共有鍵 `--wait 3600` の待機は一つにまとめ、取得後の検証は一回の 30 分以内で行った。
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveColimitInclusion` | 離散図式の一つの成分の評価から、余極限への自然変換。 |
+| `projectiveDirectSumShortComplexInclusion` | 各短複体から、項ごとの直和の短複体への包含。 |
+| `projectiveShortComplexColimitInclusion_eq` | 余極限への包含と、外部直和への包含が比較同型で一致する。 |
+| `projectiveDirectSumShortComplexHomologyIso_inclusion` | Čech 版の直和コホモロジー比較は、各成分の包含を保つ。 |
+| `projectiveDirectSumShortComplexHomologyIso_naturality_component` | 成分 n を別の成分 m へ送る短複体の写像にも、比較は自然。Rees 単項式の n→n+i に使える。 |
+| `projectiveCechDirectSumComplexInclusion`・`projectiveCechDirectSumInclusion` | 各 Čech 複体から、項ごとの直和と係数の直和の Čech 複体への包含。 |
+| `projectiveCechDirectSumHomologyIso_inclusion` | Čech 複体の包含が誘導するコホモロジー写像は、比較の下で直和の包含となる。 |
+| `projectiveLocalizationToDirectSum_component` | 直和と局所化の比較は各成分への射影と可換。 |
+| `projectiveLocalizedDirectSumLinearEquiv_mk_component` | 任意の分母の分数の第 n 成分は、分子の第 n 成分を同じ分母で割ったもの。 |
+| `projectiveLocalizedModuleCongr`・`projectiveLocalizedModuleCongr_mk` | 加群の線形同値を局所化へ移し、一般の分数での値を計算する。 |
+| `reesAdicDirectSumPolynomialLinearEquiv` | 各 IⁿM の直和と全 Rees 加群の、元の多項式環上の線形同値。 |
+| `reesAdicTotalBaseModule`・`reesAdicTotalBaseModule_scalarTower` | 全 Rees 加群の基底環の作用を多項式環経由で選び、基底 Rees 環の作用との両立性を示す。 |
+| `reesAdicDirectSumLinearEquiv`・`reesAdicDirectSumLinearEquiv_coeff` | 基底環上の同値と、直和の第 n 成分を Rees の第 n 係数に送る式。 |
+| `reesAdicDirectSumProjectivePiece`・`reesAdicDirectSumLinearEquiv_mem_iff` | 直和上の Proj 次数を成分ごとに指定し、比較がその次数を保つことを示す。 |
+| `reesAdicLocalizedDirectSumLinearEquiv` | 元の多項式環の任意の元の冪で局所化した Rees 加群を、各 IⁿM の同じ局所化の直和と比較する。 |
+| `reesAdicLocalizedDirectSumLinearEquiv_mk_component` | この局所化同値は分母を保ち、分子を Rees 次数成分に分ける。 |
+
+これはまだ停止点 2e ではない。今回の局所化同値は元の多項式環 P 上の周囲の加群の比較である。次に、基底環上に係数を制限して Proj 次数零に制限し、既存の P→B[X] の局所化の係数変更とつなぐ。局所化の比較は、各成分の射影に対する式と斉次分数表示で次数を保つ。逆方向は有限台の直和を各成分の包含に分け、各斉次分数を全 Rees 加群の同じ次数の分数に持ち上げる。
+
+その後、標準開の制限と可換な比較を Čech 複体へ移す。次数を移す作用の自然性を使ってコホモロジー同型の B 線形性を得てから、核の評価と像の安定化に適用する。実際の Čech コホモロジーでの二評価、完備化の同型、および §9 の五つの整合性は残っている。条件付きフィルトレーションの評価を、これらの完成とは扱わない。
