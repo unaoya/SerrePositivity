@@ -321,3 +321,40 @@ main `7a689544b` を `4c3faf273` で取り込んだ。以後、整理券はこ�
 - `schurDegreeBasis_apply` と `arityDegreeCoinvariantsTensorBasis_apply` は、基底ベクトルを指定包含と余不変の比較同型で記述する。
 
 残る作業は、語の基底を実際の演算と付加生成元の式で照合し、演算の合成・対称群の正規化・微分によって語の総重みが増えないことを証明する部分。これを `complexKFlat_of_weightedBasis` の微分の条件へ入れ、`hstage` と無条件の `baseChange_forget` を閉じる。停止点 3 前の途中記録。
+
+
+### 正規化・対称群・演算の合成の重み保存（11-11 夕方、停止点 3 の前）
+
+追加四十三本を合わせた対象ビルドと再帰的な公理監査が成功した。監査は計 812 宣言、標準三公理のみ。
+界面の型と既存の main の公開宣言は変更していない。
+
+- `SchurBasisImages` の指定包含の式を、正規化された係数と入力の語の式まで拡張した。
+- `TensorWordSymmetry`・`TensorPowerWordWeights` は Koszul 組紐・結合子・全対称群の作用による総重みの保存を与える。
+- `SchurGeneratorWeights` は対角置換不変性から、正規化された係数の評価を任意の係数へ広げた。正次数の係数は零である。
+- `EraseFreeGenerators` は自由代数の比較が指定された単位と随伴対応を保つことを示す。`ErasePowerComparison` は微分を消すテンソル冪の比較が各語の基底を保つことを示す。
+- `PowerWordEvaluation` と `OperadWordEvaluation` は指定入力とその微分の重みの上限から、評価された語の微分を評価する。後者は演算自体の重み保存を明示的に仮定するので、この二本だけではセル代数の微分の条件は閉じていない。
+- `WeightedTensorFamily` は有限入力族の係数と入力の分離・テンソル冪の連結を、指定された基底と添字の移送まで含めて比較する。
+- `SchurOperationWeights.preserves_schurOperationGenerator` は、自由代数の演算の合成生成射が、任意の係数について入力の総重みを増やさないことを示す。
+
+今回追加の登録候補（すべて `SerrePositivity.EInfinity.BarrattEccles.Theory` の下）:
+
+1. `SchurDegreeInclusions`
+2. `TensorWordWeights`
+3. `TensorWordSymmetry`
+4. `TensorPowerWordWeights`
+5. `SchurWordNormalForm`
+6. `EraseFreeGenerators`
+7. `ErasePowerComparison`
+8. `SchurGeneratorWeights`
+9. `PowerWordEvaluation`
+10. `OperadWordEvaluation`
+11. `TensorFamilyWeights`
+12. `UnitWordWeights`
+13. `BasedWeightMaps`
+14. `WeightedTensorFamily`
+15. `SchurWeightedBasis`
+16. `SchurOperationWeights`
+
+`SchurPowerWordLift` と `SchurActionWeights` は未検証なのでコミットに含めず、作業木で検査を続ける。
+残りは自由代数の作用全体の重み保存、実際のセル段の作用・付加生成元・後続段への指定射との照合、微分の重み評価である。
+`hstage` と無条件の `baseChange_forget` は未完了で、停止点 3 には達していない。
