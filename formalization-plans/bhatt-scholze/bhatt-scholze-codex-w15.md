@@ -65,3 +65,9 @@ Prisms の地図で「本体に部品」の項目のうち、∞ 圏を待たず
 3. **Rem 4.19 の底変換との両立**。
 
 `A1/HodgeTateComparison.lean` は、そのとき ⑤c の持ち分にする（⑤a の A1 の二本の書き換えは `CrystallineInput`・`HodgeTateMap` だけ）。
+
+## 6. 追記（2026-11-11、調整役）：Ex 7.9 の存在補題に原典どおり有界性を足す（D76）
+
+drafts `A3/LciAndQuasiregular.lean` の `exists_lciEnvelope (hf : IsKoszulRegularModGenerator P f)` は有界性を仮定していないが、原典 Ex 7.9 は冒頭で「R の p 冪ねじれが有界」と仮定している。原典で envelope B = A{f/d}^∧ が離散になるのは Δ_R/A との同一視による（その同一視に有界性を使う）。有界性なしで古典的な envelope が存在するという主張は原典になく、成り立つかも自明でない（普遍の場合からの底変換で離散性を保つには、普遍の envelope が底の上で完全平坦である必要があるが、Prop 3.13 (1) が与えるのは A₀ の上の平坦性だけ）。この補題の利用者は drafts にも本体にもない。E3 の経路で要るのは T の場合と普遍の場合で、どちらも有界（a3-design §2.2）。
+
+**決定（D76）**：`exists_lciEnvelope` の型に、原典どおり `(hR : BoundedPTorsion p (lciQuotient P f))` を足す。⑤c は A3 の drafts の持ち分なので、この型の変更を行ってよい（指示書 §1 の「型を drafts から変える必要があれば止める」の例外として、調整役が承認した）。証明は原典の筋（有界性を使い、`completedBaseChange_bounded_torsion_pure` へつなぐ）でよい。
