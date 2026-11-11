@@ -57,7 +57,15 @@ Laurent 単項式 Čech の有限性は `projectiveLaurentCechHomology_finite` �
 
 `projectiveOrderedCech_shortExact` は、次数を保つ短完全列から標準開の狭義増加 Čech 複体の短完全列を作る。`projectiveGradedModuleChartMap_comp`・`projectiveGradedModuleChartMap_sum` は、加群の写像の合成・有限和を標準開の図式へ移す。対象ビルドと 472 宣言の監査を通した（`85e5a1626`、標準三公理のみ）。
 
+`projectiveGradedChartShiftIso` は整数次数のずらしを標準開の図式の自然同型にし、`projectiveShiftedPolynomialOrderedCechHomology_finite` はその Čech コホモロジーの有限性を与える。対象ビルドと 479 宣言の監査を通した（`e49220b97`、標準三公理のみ）。
+
 残りは、有限斉次自由表示の各項で局所化の完全性を使い、有限生成次数付き加群に上の降下帰納を適用する。`ProjectiveFreeCechFiniteness` と `ProjectiveGradedFiniteness` の下書きは scheme-drafts に置いている。加群は多項式環と同じ宇宙にそろえている。射影版の有限性全体と Rees 加群の評価は、この段階では検証を完了していない。
+
+### Proj の切断への最後の比較
+
+自然数次数の加群を、負の成分が零である整数次数の加群へ延ばす。多項式加群としての局所化は、商代数中の分母の像による環局所化と、局所化の普遍性で比較する。次数零の斉次局所化から通常の局所化への単射と、分子を斉次成分へ戻す表示で、この比較を次数零へ制限する。分母に追加因子を掛ける制限写像との可換性も確認する。
+
+次数 q ≥ 0 の Čech 項は長さ q+1 のタプルを使い、その台は非空になる。したがって、Proj の切断との比較に使う有限交叉の自然同型は、非空の交叉で与えればよい。`scheme-drafts/ProjectiveCechNonemptyComparison.lean` に、この入力から通常の全タプル複体の同型を作る補題の下書きを置いた。空集合に対応する係数を Proj 全体の切断と同一視する必要はない。この段落の比較と、自然数次数の有限性への接続は検証待ち。
 
 ## 2g の被覆模型に渡す材料
 
