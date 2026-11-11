@@ -266,6 +266,9 @@ structure Box where
 def destruct (b : Box) : Nat := by
   cases b with
   | mk value => exact value
+def destructExplicit (b : Box) : Nat := by
+  cases b with
+  | @mk value => exact value
 def rebuild (b : Box) : Box where
   value := b.value
 def updateBox (b : Box) : Box := { b with value := 4 }
@@ -297,7 +300,7 @@ def withNotation := kRef
             owner = module_name(path)
             subprocess.run([lean, "--run", str(helper), owner, path, capture.name], cwd=root, check=True)
             data = checked_capture(root, path, capture)
-            symbols = ["Old.f", "Old.Box", "Old.Box.mk", "Old.Box.value", "Old.destruct", "Old.rebuild", "Old.updateBox", "Old.Nested.result"]
+            symbols = ["Old.f", "Old.Box", "Old.Box.mk", "Old.Box.value", "Old.destruct", "Old.destructExplicit", "Old.rebuild", "Old.updateBox", "Old.Nested.result"]
             plan = Migration({"rows": [{"module": owner, "old": n, "new": n.replace("Old.", "New.Home.", 1)} for n in symbols],
                               "namespaces": {owner: {"Old": "New.Home"}}, "opens": {"Old": "New.Home"}})
             result, issues = rewrite(data, plan)

@@ -155,7 +155,7 @@ lemma modelBifibrantSourceRoofSliceProductMap_rightFibration :
   mem := by
     intro K L i hi
     cases hi with
-    | @_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightHornInclusions.intro n i _hi =>
+    | @intro n i _hi =>
       exact ((SSet.modelCategoryQuillen.fibration_iff _).1
         (modelBifibrantSourceRoofSliceProductMap_fibration X Y q b)) _
         (SSet.modelCategoryQuillen.horn_ι_mem_J _ i)
