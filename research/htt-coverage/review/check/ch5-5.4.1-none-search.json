@@ -1,0 +1,1254 @@
+{
+  "5.4.1.1": {
+    "page": 419,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.6",
+        "5.4.1",
+        "5.4.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/CardinalChangeBound.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleIndRepresentation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndAccessible.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SmallFilteredPieces.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndComparisonSurjective.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(essentiallySmall|IsLocallySmall|SmallFixedVertex|smallFullModel|smallKanObject|compact.*[Ss]pace|minimal.*[Ss]mall|coherent.*[Bb]oundary|[Rr]elative.*[Hh]omotop)",
+          "SerrePositivity"
+        ],
+        "file_count": 705,
+        "line_count": 2209
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(essentiallySmall|IsLocallySmall|SmallFixedVertex|smallFullModel|smallKanObject|compact.*[Ss]pace|minimal.*[Ss]mall|coherent.*[Bb]oundary|[Rr]elative.*[Hh]omotop)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 412,
+        "line_count": 2879
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/LocallySmall.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLocallySmall (C : SSet.{u + 1}) [Quasicategory C] : Prop := ∀ x y : C _⦋0⦌, ∃ (K : SSet.{u}) (hK : KanComplex K), letI := hK Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj K) (pinchedHom x y))"
+          },
+          {
+            "line": 35,
+            "head": "lemma isLocallySmall_of_smallFixedVertexMaps {C : SSet.{u + 1}} [Quasicategory C] (hC : Ind.HasSmallFixedVertexMaps C) : IsLocallySmall C"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsLocallySmall.of_fullyFaithful {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hE : IsLocallySmall E) (F : C ⟶ E) (hF : IsFullyFaithful F) : IsLocallySmall C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallRightFibrationModels.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma smallKanModel_op {X : SSet.{u + 1}} [Quasicategory X] (hX : HasSmallKanModel X) : HasSmallKanModel X.op"
+          },
+          {
+            "line": 39,
+            "head": "lemma exists_smallRightFibrationModel_of_small_base {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B] [∀ n, Small.{u} (B.obj n)] (p : E ⟶ B) [RightFibration p] (hp : ∀ b, HasSmallKanModel (vertexFiber p b)) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj A) E)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FixedVertexMapSmallness.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def HasSmallFixedVertexMaps (Y : SSet.{u + 1}) : Prop := ∀ (A : SSet.{u + 1}) (_ : ∀ n, Small.{u} (A.obj n)) (v : A _⦋0⦌ → Y _⦋0⦌), Small.{u} {f : A ⟶ Y // ∀ a, f.app (Opposite.op ⦋0⦌) a = v a}"
+          },
+          {
+            "line": 28,
+            "head": "lemma space_hasSmallFixedVertexMaps : HasSmallFixedVertexMaps SpaceInfinity.{u}"
+          },
+          {
+            "line": 41,
+            "head": "lemma HasSmallFixedVertexMaps.functorSpace {Y : SSet.{u + 1}} (hY : HasSmallFixedVertexMaps Y) (L : SSet.{u + 1}) [∀ n, Small.{u} (L.obj n)] : HasSmallFixedVertexMaps ((ihom L).obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallHullCardinal.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "theorem hasCardinalLT_model {μ : Cardinal.{u}} (hμ : μ.IsRegular) (hω : Cardinal.aleph0 < μ) (X : SSet.{v}) [∀ d, Small.{w} (X.obj d)] (hX : HasCardinalLT X.N μ) : HasCardinalLT (model.{w, v} X).N μ"
+          },
+          {
+            "line": 37,
+            "head": "theorem hasCardinalLT_hull_obj {μ : Cardinal.{w}} (hμ : μ.IsRegular) (hω : Cardinal.aleph0 < μ) {X : SSet.{max u v}} [Quasicategory X] (A : X.Subcomplex) [∀ d, Small.{u} (A.obj d)] (hA : HasCardinalLT A.toSSet.N μ) : HasCardinalLT (hull.{u, v} A).obj.N μ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/AnodyneRelativeHomotopy.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma anodyne_relative_homotopy {A K X : SSet.{u}} [KanComplex X] (i : A ⟶ K) (hi : anodyneExtensions i) (f g : K ⟶ X) (h : i ≫ f = i ≫ g) : ∃ H : SSet.Homotopy f g, (i ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst A (Δ[1] : SSet.{u}) ≫ i ≫ f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EssentiallySmall.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class EssentiallySmall (C : Type u) [Category.{v} C] : Prop where"
+          },
+          {
+            "line": 49,
+            "head": "theorem EssentiallySmall.mk' {C : Type u} [Category.{v} C] {S : Type w} [SmallCategory S] (e : C ≌ S) : EssentiallySmall.{w} C := ⟨⟨S, _, ⟨e⟩⟩⟩"
+          },
+          {
+            "line": 56,
+            "head": "def SmallModel (C : Type u) [Category.{v} C] [EssentiallySmall.{w} C] : Type w := Classical.choose (@EssentiallySmall.equiv_smallCategory C _ _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Nerve.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def nerve (C : Type u) [Category.{v} C] : SSet.{max u v} where"
+          },
+          {
+            "line": 46,
+            "head": "instance {C : Type*} [Category* C] {Δ : SimplexCategoryᵒᵖ} : Category ((nerve C).obj Δ) := inferInstanceAs <| Category (ComposableArrows C (Δ.unop.len))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def HasKappaFilteredGeneratorPresentation (κ : Cardinal.{u}) {A : SSet.{u}} {C : SSet.{u + 1}} (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (x : C _⦋0⦌) : Prop := ∃ (I : SSet.{u}) (hI : Quasicategory I), letI := hI IsKappaFiltered κ I ∧ ∃ a : I ⟶ A, ∃ c : JoinCocone ((SSet.uliftFunctor.{u + 1, u}).map a ≫ i), c.vertex = x ∧ IsColimitCone c"
+          },
+          {
+            "line": 32,
+            "head": "structure IsKappaCompactGenerating (κ : Cardinal.{u}) {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleEquivalence.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma IsKappaAccessible.of_equivalence {κ : Cardinal.{u}} {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (h : IsKappaAccessible κ C) (e : QCatEquivalence C E) : IsKappaAccessible κ E"
+          },
+          {
+            "line": 29,
+            "head": "lemma isKappaAccessible_iff_equivalence {κ : Cardinal.{u}} {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (e : QCatEquivalence C E) : IsKappaAccessible κ C ↔ IsKappaAccessible κ E := ⟨fun h ↦ h.of_equivalence e, fun h ↦ h.of_equivalence e.symm⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "abbrev IsKappaAccessibleFunctor (κ : Cardinal.{u}) {C D : SSet.{u + 1}} (F : C ⟶ D) : Prop := Ind.PreservesSmallKappaFilteredColimits κ F"
+          },
+          {
+            "line": 25,
+            "head": "def IsAccessibleFunctor {C D : SSet.{u + 1}} (F : C ⟶ D) : Prop := ∃ κ : Cardinal.{u}, κ.IsRegular ∧ IsKappaAccessibleFunctor κ F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleIndRepresentation.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "lemma IsKappaAccessible.exists_indRepresentation {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (e : QCatEquivalence (Ind.IndInfinity κ A) C), IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ e.hom ∧ Nonempty (FunctorIso (Ind.indYoneda κ A ≫ e.hom) i)"
+          },
+          {
+            "line": 33,
+            "head": "lemma IsKappaAccessible.exists_indEquivalence {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence (Ind.IndInfinity κ A) C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/CardinalChangeBound.lean",
+        "signatures": [
+          {
+            "line": 18,
+            "head": "def IsCardinalChangeBound (κ μ : Cardinal.{u}) : Prop := κ < μ ∧ ∀ α β : Cardinal.{u}, α < κ → β < μ → β ^ α < μ"
+          },
+          {
+            "line": 21,
+            "head": "lemma IsCardinalChangeBound.le {κ μ : Cardinal.{u}} (h : IsCardinalChangeBound κ μ) : κ ≤ μ := h.1.le"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma IsKappaCompactGenerating.retract_generator (h : IsKappaCompactGenerating κ i) {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) : ∃ a : A _⦋0⦌, Idempotent.IsVertexRetractOf x (i.app (Opposite.op ⦋0⦌) (ULift.up a))"
+          },
+          {
+            "line": 45,
+            "head": "lemma IsKappaCompactGenerating.compact_iff_retract (h : IsKappaCompactGenerating κ i) (x : C _⦋0⦌) : Compact.IsKappaCompact.{u, u + 1} κ x ↔ ∃ a : A _⦋0⦌, Idempotent.IsVertexRetractOf x (i.app (Opposite.op ⦋0⦌) (ULift.up a))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndAccessible.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma indYoneda_generatorPresentation (x : IndInfinity κ A _⦋0⦌) : HasKappaFilteredGeneratorPresentation κ (indYoneda κ A) x"
+          },
+          {
+            "line": 48,
+            "head": "lemma indYoneda_isKappaCompactGenerating : IsKappaCompactGenerating κ (indYoneda κ A) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma indInfinity_isMuAccessible {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) (A : SSet.{u}) [Quasicategory A] : IsKappaAccessible μ (Ind.IndInfinity κ A)"
+          },
+          {
+            "line": 46,
+            "head": "lemma IsKappaAccessible.of_cardinalChangeBound {κ μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible κ C) [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) : IsKappaAccessible μ C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndComparison.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_indComparison {κ : Cardinal.{u}} [Fact κ.IsRegular] {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] (hC : Ind.HasSmallKappaFilteredColimits κ C) (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) : ∃ G : Ind.IndInfinity κ A ⟶ C, IsKappaAccessibleFunctor κ G ∧ Nonempty (FunctorIso (Ind.indYoneda κ A ≫ G) i)"
+          },
+          {
+            "line": 31,
+            "head": "lemma IsKappaAccessible.exists_indComparison {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (G : Ind.IndInfinity κ A ⟶ C), IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ G ∧ Nonempty (FunctorIso (Ind.indYoneda κ A ≫ G) i)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndComparisonSurjective.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma indComparison_isEssentiallySurjective {κ : Cardinal.{u}} {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] {i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C} (hp : ∀ x, HasKappaFilteredGeneratorPresentation κ i x) {G : IndInfinity κ A ⟶ C} (hG : IsKappaAccessibleFunctor κ G) (e : FunctorIso (indYoneda κ A ≫ G) i) : IsEssentiallySurjective G"
+          },
+          {
+            "line": 47,
+            "head": "lemma IsKappaAccessible.exists_surjective_indComparison {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (G : IndInfinity κ A ⟶ C), IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ G ∧ Nonempty (FunctorIso (indYoneda κ A ≫ G) i) ∧ IsEssentiallySurjective G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallFilteredPieces.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def SmallFilteredPieces (κ μ : Cardinal.{u}) [Fact κ.IsRegular] (I : Type u) [PartialOrder I] := {A : Set I // IsCardinalFiltered A κ ∧ HasCardinalLT A μ}"
+          },
+          {
+            "line": 24,
+            "head": "instance smallFilteredPieces_partialOrder (κ μ : Cardinal.{u}) [Fact κ.IsRegular] (I : Type u) [PartialOrder I] : PartialOrder (SmallFilteredPieces κ μ I) := inferInstanceAs (PartialOrder {A : Set I // IsCardinalFiltered A κ ∧ HasCardinalLT A μ})"
+          }
+        ]
+      }
+    ],
+    "decision": "豊穣神経の Δⁿ の二延長の境界相対ホモトピーと、端点 Hom の立方体の相対ホモトピーを往復する同値。boundaryCoherentRealization の比較や Kan への anodyne_relative_homotopy は個別の延長の部品であり、この指定 f,f′ と g,g′ の二つの相対関係の iff を与えない。"
+  },
+  "5.4.1.2": {
+    "page": 419,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.6",
+        "5.4.1",
+        "5.4.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/CardinalChangeBound.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleIndRepresentation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndAccessible.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SmallFilteredPieces.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndComparisonSurjective.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(essentiallySmall|IsLocallySmall|SmallFixedVertex|smallFullModel|smallKanObject|compact.*[Ss]pace|minimal.*[Ss]mall|coherent.*[Bb]oundary|[Rr]elative.*[Hh]omotop)",
+          "SerrePositivity"
+        ],
+        "file_count": 705,
+        "line_count": 2209
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(essentiallySmall|IsLocallySmall|SmallFixedVertex|smallFullModel|smallKanObject|compact.*[Ss]pace|minimal.*[Ss]mall|coherent.*[Bb]oundary|[Rr]elative.*[Hh]omotop)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 412,
+        "line_count": 2879
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/LocallySmall.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLocallySmall (C : SSet.{u + 1}) [Quasicategory C] : Prop := ∀ x y : C _⦋0⦌, ∃ (K : SSet.{u}) (hK : KanComplex K), letI := hK Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj K) (pinchedHom x y))"
+          },
+          {
+            "line": 35,
+            "head": "lemma isLocallySmall_of_smallFixedVertexMaps {C : SSet.{u + 1}} [Quasicategory C] (hC : Ind.HasSmallFixedVertexMaps C) : IsLocallySmall C"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsLocallySmall.of_fullyFaithful {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hE : IsLocallySmall E) (F : C ⟶ E) (hF : IsFullyFaithful F) : IsLocallySmall C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallRightFibrationModels.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma smallKanModel_op {X : SSet.{u + 1}} [Quasicategory X] (hX : HasSmallKanModel X) : HasSmallKanModel X.op"
+          },
+          {
+            "line": 39,
+            "head": "lemma exists_smallRightFibrationModel_of_small_base {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B] [∀ n, Small.{u} (B.obj n)] (p : E ⟶ B) [RightFibration p] (hp : ∀ b, HasSmallKanModel (vertexFiber p b)) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj A) E)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FixedVertexMapSmallness.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def HasSmallFixedVertexMaps (Y : SSet.{u + 1}) : Prop := ∀ (A : SSet.{u + 1}) (_ : ∀ n, Small.{u} (A.obj n)) (v : A _⦋0⦌ → Y _⦋0⦌), Small.{u} {f : A ⟶ Y // ∀ a, f.app (Opposite.op ⦋0⦌) a = v a}"
+          },
+          {
+            "line": 28,
+            "head": "lemma space_hasSmallFixedVertexMaps : HasSmallFixedVertexMaps SpaceInfinity.{u}"
+          },
+          {
+            "line": 41,
+            "head": "lemma HasSmallFixedVertexMaps.functorSpace {Y : SSet.{u + 1}} (hY : HasSmallFixedVertexMaps Y) (L : SSet.{u + 1}) [∀ n, Small.{u} (L.obj n)] : HasSmallFixedVertexMaps ((ihom L).obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallHullCardinal.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "theorem hasCardinalLT_model {μ : Cardinal.{u}} (hμ : μ.IsRegular) (hω : Cardinal.aleph0 < μ) (X : SSet.{v}) [∀ d, Small.{w} (X.obj d)] (hX : HasCardinalLT X.N μ) : HasCardinalLT (model.{w, v} X).N μ"
+          },
+          {
+            "line": 37,
+            "head": "theorem hasCardinalLT_hull_obj {μ : Cardinal.{w}} (hμ : μ.IsRegular) (hω : Cardinal.aleph0 < μ) {X : SSet.{max u v}} [Quasicategory X] (A : X.Subcomplex) [∀ d, Small.{u} (A.obj d)] (hA : HasCardinalLT A.toSSet.N μ) : HasCardinalLT (hull.{u, v} A).obj.N μ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/AnodyneRelativeHomotopy.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma anodyne_relative_homotopy {A K X : SSet.{u}} [KanComplex X] (i : A ⟶ K) (hi : anodyneExtensions i) (f g : K ⟶ X) (h : i ≫ f = i ≫ g) : ∃ H : SSet.Homotopy f g, (i ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst A (Δ[1] : SSet.{u}) ≫ i ≫ f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EssentiallySmall.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class EssentiallySmall (C : Type u) [Category.{v} C] : Prop where"
+          },
+          {
+            "line": 49,
+            "head": "theorem EssentiallySmall.mk' {C : Type u} [Category.{v} C] {S : Type w} [SmallCategory S] (e : C ≌ S) : EssentiallySmall.{w} C := ⟨⟨S, _, ⟨e⟩⟩⟩"
+          },
+          {
+            "line": 56,
+            "head": "def SmallModel (C : Type u) [Category.{v} C] [EssentiallySmall.{w} C] : Type w := Classical.choose (@EssentiallySmall.equiv_smallCategory C _ _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Nerve.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def nerve (C : Type u) [Category.{v} C] : SSet.{max u v} where"
+          },
+          {
+            "line": 46,
+            "head": "instance {C : Type*} [Category* C] {Δ : SimplexCategoryᵒᵖ} : Category ((nerve C).obj Δ) := inferInstanceAs <| Category (ComposableArrows C (Δ.unop.len))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def HasKappaFilteredGeneratorPresentation (κ : Cardinal.{u}) {A : SSet.{u}} {C : SSet.{u + 1}} (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (x : C _⦋0⦌) : Prop := ∃ (I : SSet.{u}) (hI : Quasicategory I), letI := hI IsKappaFiltered κ I ∧ ∃ a : I ⟶ A, ∃ c : JoinCocone ((SSet.uliftFunctor.{u + 1, u}).map a ≫ i), c.vertex = x ∧ IsColimitCone c"
+          },
+          {
+            "line": 32,
+            "head": "structure IsKappaCompactGenerating (κ : Cardinal.{u}) {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleEquivalence.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma IsKappaAccessible.of_equivalence {κ : Cardinal.{u}} {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (h : IsKappaAccessible κ C) (e : QCatEquivalence C E) : IsKappaAccessible κ E"
+          },
+          {
+            "line": 29,
+            "head": "lemma isKappaAccessible_iff_equivalence {κ : Cardinal.{u}} {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (e : QCatEquivalence C E) : IsKappaAccessible κ C ↔ IsKappaAccessible κ E := ⟨fun h ↦ h.of_equivalence e, fun h ↦ h.of_equivalence e.symm⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "abbrev IsKappaAccessibleFunctor (κ : Cardinal.{u}) {C D : SSet.{u + 1}} (F : C ⟶ D) : Prop := Ind.PreservesSmallKappaFilteredColimits κ F"
+          },
+          {
+            "line": 25,
+            "head": "def IsAccessibleFunctor {C D : SSet.{u + 1}} (F : C ⟶ D) : Prop := ∃ κ : Cardinal.{u}, κ.IsRegular ∧ IsKappaAccessibleFunctor κ F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleIndRepresentation.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "lemma IsKappaAccessible.exists_indRepresentation {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (e : QCatEquivalence (Ind.IndInfinity κ A) C), IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ e.hom ∧ Nonempty (FunctorIso (Ind.indYoneda κ A ≫ e.hom) i)"
+          },
+          {
+            "line": 33,
+            "head": "lemma IsKappaAccessible.exists_indEquivalence {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence (Ind.IndInfinity κ A) C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/CardinalChangeBound.lean",
+        "signatures": [
+          {
+            "line": 18,
+            "head": "def IsCardinalChangeBound (κ μ : Cardinal.{u}) : Prop := κ < μ ∧ ∀ α β : Cardinal.{u}, α < κ → β < μ → β ^ α < μ"
+          },
+          {
+            "line": 21,
+            "head": "lemma IsCardinalChangeBound.le {κ μ : Cardinal.{u}} (h : IsCardinalChangeBound κ μ) : κ ≤ μ := h.1.le"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma IsKappaCompactGenerating.retract_generator (h : IsKappaCompactGenerating κ i) {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) : ∃ a : A _⦋0⦌, Idempotent.IsVertexRetractOf x (i.app (Opposite.op ⦋0⦌) (ULift.up a))"
+          },
+          {
+            "line": 45,
+            "head": "lemma IsKappaCompactGenerating.compact_iff_retract (h : IsKappaCompactGenerating κ i) (x : C _⦋0⦌) : Compact.IsKappaCompact.{u, u + 1} κ x ↔ ∃ a : A _⦋0⦌, Idempotent.IsVertexRetractOf x (i.app (Opposite.op ⦋0⦌) (ULift.up a))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndAccessible.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma indYoneda_generatorPresentation (x : IndInfinity κ A _⦋0⦌) : HasKappaFilteredGeneratorPresentation κ (indYoneda κ A) x"
+          },
+          {
+            "line": 48,
+            "head": "lemma indYoneda_isKappaCompactGenerating : IsKappaCompactGenerating κ (indYoneda κ A) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma indInfinity_isMuAccessible {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) (A : SSet.{u}) [Quasicategory A] : IsKappaAccessible μ (Ind.IndInfinity κ A)"
+          },
+          {
+            "line": 46,
+            "head": "lemma IsKappaAccessible.of_cardinalChangeBound {κ μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible κ C) [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) : IsKappaAccessible μ C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndComparison.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_indComparison {κ : Cardinal.{u}} [Fact κ.IsRegular] {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] (hC : Ind.HasSmallKappaFilteredColimits κ C) (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) : ∃ G : Ind.IndInfinity κ A ⟶ C, IsKappaAccessibleFunctor κ G ∧ Nonempty (FunctorIso (Ind.indYoneda κ A ≫ G) i)"
+          },
+          {
+            "line": 31,
+            "head": "lemma IsKappaAccessible.exists_indComparison {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (G : Ind.IndInfinity κ A ⟶ C), IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ G ∧ Nonempty (FunctorIso (Ind.indYoneda κ A ≫ G) i)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndComparisonSurjective.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma indComparison_isEssentiallySurjective {κ : Cardinal.{u}} {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] {i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C} (hp : ∀ x, HasKappaFilteredGeneratorPresentation κ i x) {G : IndInfinity κ A ⟶ C} (hG : IsKappaAccessibleFunctor κ G) (e : FunctorIso (indYoneda κ A ≫ G) i) : IsEssentiallySurjective G"
+          },
+          {
+            "line": 47,
+            "head": "lemma IsKappaAccessible.exists_surjective_indComparison {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (G : IndInfinity κ A ⟶ C), IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ G ∧ Nonempty (FunctorIso (indYoneda κ A ≫ G) i) ∧ IsEssentiallySurjective G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallFilteredPieces.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def SmallFilteredPieces (κ μ : Cardinal.{u}) [Fact κ.IsRegular] (I : Type u) [PartialOrder I] := {A : Set I // IsCardinalFiltered A κ ∧ HasCardinalLT A μ}"
+          },
+          {
+            "line": 24,
+            "head": "instance smallFilteredPieces_partialOrder (κ μ : Cardinal.{u}) [Fact κ.IsRegular] (I : Type u) [PartialOrder I] : PartialOrder (SmallFilteredPieces κ μ I) := inferInstanceAs (PartialOrder {A : Set I // IsCardinalFiltered A κ ∧ HasCardinalLT A μ})"
+          }
+        ]
+      }
+    ],
+    "decision": "非可算正則 κ での同値類・全 Hom のホモトピー群、minimal 模型、κ-small 模型、κ-small 単体集合、Cat∞ 内の compact 性の五条件。SmallSubcomplex の有界 hull は既に小さな部分からの因子化であり、C 全体の κ-small 同値模型や Cat∞ の compact 性を結論しない。smallFullModel は全次数の小ささを別の仮定として要求し、この五条件のどの一般方向も比較していない。"
+  },
+  "5.4.1.3": {
+    "page": 421,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.6",
+        "5.4.1",
+        "5.4.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/CardinalChangeBound.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleIndRepresentation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndAccessible.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SmallFilteredPieces.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndComparisonSurjective.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(essentiallySmall|IsLocallySmall|SmallFixedVertex|smallFullModel|smallKanObject|compact.*[Ss]pace|minimal.*[Ss]mall|coherent.*[Bb]oundary|[Rr]elative.*[Hh]omotop)",
+          "SerrePositivity"
+        ],
+        "file_count": 705,
+        "line_count": 2209
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(essentiallySmall|IsLocallySmall|SmallFixedVertex|smallFullModel|smallKanObject|compact.*[Ss]pace|minimal.*[Ss]mall|coherent.*[Bb]oundary|[Rr]elative.*[Hh]omotop)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 412,
+        "line_count": 2879
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/LocallySmall.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLocallySmall (C : SSet.{u + 1}) [Quasicategory C] : Prop := ∀ x y : C _⦋0⦌, ∃ (K : SSet.{u}) (hK : KanComplex K), letI := hK Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj K) (pinchedHom x y))"
+          },
+          {
+            "line": 35,
+            "head": "lemma isLocallySmall_of_smallFixedVertexMaps {C : SSet.{u + 1}} [Quasicategory C] (hC : Ind.HasSmallFixedVertexMaps C) : IsLocallySmall C"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsLocallySmall.of_fullyFaithful {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hE : IsLocallySmall E) (F : C ⟶ E) (hF : IsFullyFaithful F) : IsLocallySmall C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallRightFibrationModels.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma smallKanModel_op {X : SSet.{u + 1}} [Quasicategory X] (hX : HasSmallKanModel X) : HasSmallKanModel X.op"
+          },
+          {
+            "line": 39,
+            "head": "lemma exists_smallRightFibrationModel_of_small_base {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B] [∀ n, Small.{u} (B.obj n)] (p : E ⟶ B) [RightFibration p] (hp : ∀ b, HasSmallKanModel (vertexFiber p b)) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj A) E)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FixedVertexMapSmallness.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def HasSmallFixedVertexMaps (Y : SSet.{u + 1}) : Prop := ∀ (A : SSet.{u + 1}) (_ : ∀ n, Small.{u} (A.obj n)) (v : A _⦋0⦌ → Y _⦋0⦌), Small.{u} {f : A ⟶ Y // ∀ a, f.app (Opposite.op ⦋0⦌) a = v a}"
+          },
+          {
+            "line": 28,
+            "head": "lemma space_hasSmallFixedVertexMaps : HasSmallFixedVertexMaps SpaceInfinity.{u}"
+          },
+          {
+            "line": 41,
+            "head": "lemma HasSmallFixedVertexMaps.functorSpace {Y : SSet.{u + 1}} (hY : HasSmallFixedVertexMaps Y) (L : SSet.{u + 1}) [∀ n, Small.{u} (L.obj n)] : HasSmallFixedVertexMaps ((ihom L).obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallHullCardinal.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "theorem hasCardinalLT_model {μ : Cardinal.{u}} (hμ : μ.IsRegular) (hω : Cardinal.aleph0 < μ) (X : SSet.{v}) [∀ d, Small.{w} (X.obj d)] (hX : HasCardinalLT X.N μ) : HasCardinalLT (model.{w, v} X).N μ"
+          },
+          {
+            "line": 37,
+            "head": "theorem hasCardinalLT_hull_obj {μ : Cardinal.{w}} (hμ : μ.IsRegular) (hω : Cardinal.aleph0 < μ) {X : SSet.{max u v}} [Quasicategory X] (A : X.Subcomplex) [∀ d, Small.{u} (A.obj d)] (hA : HasCardinalLT A.toSSet.N μ) : HasCardinalLT (hull.{u, v} A).obj.N μ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/AnodyneRelativeHomotopy.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma anodyne_relative_homotopy {A K X : SSet.{u}} [KanComplex X] (i : A ⟶ K) (hi : anodyneExtensions i) (f g : K ⟶ X) (h : i ≫ f = i ≫ g) : ∃ H : SSet.Homotopy f g, (i ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst A (Δ[1] : SSet.{u}) ≫ i ≫ f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EssentiallySmall.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class EssentiallySmall (C : Type u) [Category.{v} C] : Prop where"
+          },
+          {
+            "line": 49,
+            "head": "theorem EssentiallySmall.mk' {C : Type u} [Category.{v} C] {S : Type w} [SmallCategory S] (e : C ≌ S) : EssentiallySmall.{w} C := ⟨⟨S, _, ⟨e⟩⟩⟩"
+          },
+          {
+            "line": 56,
+            "head": "def SmallModel (C : Type u) [Category.{v} C] [EssentiallySmall.{w} C] : Type w := Classical.choose (@EssentiallySmall.equiv_smallCategory C _ _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Nerve.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def nerve (C : Type u) [Category.{v} C] : SSet.{max u v} where"
+          },
+          {
+            "line": 46,
+            "head": "instance {C : Type*} [Category* C] {Δ : SimplexCategoryᵒᵖ} : Category ((nerve C).obj Δ) := inferInstanceAs <| Category (ComposableArrows C (Δ.unop.len))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def HasKappaFilteredGeneratorPresentation (κ : Cardinal.{u}) {A : SSet.{u}} {C : SSet.{u + 1}} (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (x : C _⦋0⦌) : Prop := ∃ (I : SSet.{u}) (hI : Quasicategory I), letI := hI IsKappaFiltered κ I ∧ ∃ a : I ⟶ A, ∃ c : JoinCocone ((SSet.uliftFunctor.{u + 1, u}).map a ≫ i), c.vertex = x ∧ IsColimitCone c"
+          },
+          {
+            "line": 32,
+            "head": "structure IsKappaCompactGenerating (κ : Cardinal.{u}) {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleEquivalence.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma IsKappaAccessible.of_equivalence {κ : Cardinal.{u}} {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (h : IsKappaAccessible κ C) (e : QCatEquivalence C E) : IsKappaAccessible κ E"
+          },
+          {
+            "line": 29,
+            "head": "lemma isKappaAccessible_iff_equivalence {κ : Cardinal.{u}} {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (e : QCatEquivalence C E) : IsKappaAccessible κ C ↔ IsKappaAccessible κ E := ⟨fun h ↦ h.of_equivalence e, fun h ↦ h.of_equivalence e.symm⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "abbrev IsKappaAccessibleFunctor (κ : Cardinal.{u}) {C D : SSet.{u + 1}} (F : C ⟶ D) : Prop := Ind.PreservesSmallKappaFilteredColimits κ F"
+          },
+          {
+            "line": 25,
+            "head": "def IsAccessibleFunctor {C D : SSet.{u + 1}} (F : C ⟶ D) : Prop := ∃ κ : Cardinal.{u}, κ.IsRegular ∧ IsKappaAccessibleFunctor κ F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleIndRepresentation.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "lemma IsKappaAccessible.exists_indRepresentation {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (e : QCatEquivalence (Ind.IndInfinity κ A) C), IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ e.hom ∧ Nonempty (FunctorIso (Ind.indYoneda κ A ≫ e.hom) i)"
+          },
+          {
+            "line": 33,
+            "head": "lemma IsKappaAccessible.exists_indEquivalence {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence (Ind.IndInfinity κ A) C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/CardinalChangeBound.lean",
+        "signatures": [
+          {
+            "line": 18,
+            "head": "def IsCardinalChangeBound (κ μ : Cardinal.{u}) : Prop := κ < μ ∧ ∀ α β : Cardinal.{u}, α < κ → β < μ → β ^ α < μ"
+          },
+          {
+            "line": 21,
+            "head": "lemma IsCardinalChangeBound.le {κ μ : Cardinal.{u}} (h : IsCardinalChangeBound κ μ) : κ ≤ μ := h.1.le"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma IsKappaCompactGenerating.retract_generator (h : IsKappaCompactGenerating κ i) {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) : ∃ a : A _⦋0⦌, Idempotent.IsVertexRetractOf x (i.app (Opposite.op ⦋0⦌) (ULift.up a))"
+          },
+          {
+            "line": 45,
+            "head": "lemma IsKappaCompactGenerating.compact_iff_retract (h : IsKappaCompactGenerating κ i) (x : C _⦋0⦌) : Compact.IsKappaCompact.{u, u + 1} κ x ↔ ∃ a : A _⦋0⦌, Idempotent.IsVertexRetractOf x (i.app (Opposite.op ⦋0⦌) (ULift.up a))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndAccessible.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma indYoneda_generatorPresentation (x : IndInfinity κ A _⦋0⦌) : HasKappaFilteredGeneratorPresentation κ (indYoneda κ A) x"
+          },
+          {
+            "line": 48,
+            "head": "lemma indYoneda_isKappaCompactGenerating : IsKappaCompactGenerating κ (indYoneda κ A) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma indInfinity_isMuAccessible {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) (A : SSet.{u}) [Quasicategory A] : IsKappaAccessible μ (Ind.IndInfinity κ A)"
+          },
+          {
+            "line": 46,
+            "head": "lemma IsKappaAccessible.of_cardinalChangeBound {κ μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible κ C) [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) : IsKappaAccessible μ C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndComparison.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_indComparison {κ : Cardinal.{u}} [Fact κ.IsRegular] {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] (hC : Ind.HasSmallKappaFilteredColimits κ C) (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) : ∃ G : Ind.IndInfinity κ A ⟶ C, IsKappaAccessibleFunctor κ G ∧ Nonempty (FunctorIso (Ind.indYoneda κ A ≫ G) i)"
+          },
+          {
+            "line": 31,
+            "head": "lemma IsKappaAccessible.exists_indComparison {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (G : Ind.IndInfinity κ A ⟶ C), IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ G ∧ Nonempty (FunctorIso (Ind.indYoneda κ A ≫ G) i)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndComparisonSurjective.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma indComparison_isEssentiallySurjective {κ : Cardinal.{u}} {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] {i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C} (hp : ∀ x, HasKappaFilteredGeneratorPresentation κ i x) {G : IndInfinity κ A ⟶ C} (hG : IsKappaAccessibleFunctor κ G) (e : FunctorIso (indYoneda κ A ≫ G) i) : IsEssentiallySurjective G"
+          },
+          {
+            "line": 47,
+            "head": "lemma IsKappaAccessible.exists_surjective_indComparison {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (G : IndInfinity κ A ⟶ C), IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ G ∧ Nonempty (FunctorIso (indYoneda κ A ≫ G) i) ∧ IsEssentiallySurjective G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallFilteredPieces.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def SmallFilteredPieces (κ μ : Cardinal.{u}) [Fact κ.IsRegular] (I : Type u) [PartialOrder I] := {A : Set I // IsCardinalFiltered A κ ∧ HasCardinalLT A μ}"
+          },
+          {
+            "line": 24,
+            "head": "instance smallFilteredPieces_partialOrder (κ μ : Cardinal.{u}) [Fact κ.IsRegular] (I : Type u) [PartialOrder I] : PartialOrder (SmallFilteredPieces κ μ I) := inferInstanceAs (PartialOrder {A : Set I // IsCardinalFiltered A κ ∧ HasCardinalLT A μ})"
+          }
+        ]
+      }
+    ],
+    "decision": "準圏全体の essentially κ-small を同値な κ-small 模型の存在で定める。IsKappaSmall は台の非退化単体の実際の濃度であり、同値を除いた本質的小ささではない。Mathlib の EssentiallySmall は通常圏の骨格と対象集合の小ささを扱い、準圏の全 Hom の小ささは表さない。"
+  },
+  "5.4.1.4": {
+    "page": 421,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.6",
+        "5.4.1",
+        "5.4.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/CardinalChangeBound.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleIndRepresentation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndAccessible.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SmallFilteredPieces.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/IndComparisonSurjective.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(essentiallySmall|IsLocallySmall|SmallFixedVertex|smallFullModel|smallKanObject|compact.*[Ss]pace|minimal.*[Ss]mall|coherent.*[Bb]oundary|[Rr]elative.*[Hh]omotop)",
+          "SerrePositivity"
+        ],
+        "file_count": 705,
+        "line_count": 2209
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(essentiallySmall|IsLocallySmall|SmallFixedVertex|smallFullModel|smallKanObject|compact.*[Ss]pace|minimal.*[Ss]mall|coherent.*[Bb]oundary|[Rr]elative.*[Hh]omotop)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 412,
+        "line_count": 2879
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/LocallySmall.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLocallySmall (C : SSet.{u + 1}) [Quasicategory C] : Prop := ∀ x y : C _⦋0⦌, ∃ (K : SSet.{u}) (hK : KanComplex K), letI := hK Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj K) (pinchedHom x y))"
+          },
+          {
+            "line": 35,
+            "head": "lemma isLocallySmall_of_smallFixedVertexMaps {C : SSet.{u + 1}} [Quasicategory C] (hC : Ind.HasSmallFixedVertexMaps C) : IsLocallySmall C"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsLocallySmall.of_fullyFaithful {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hE : IsLocallySmall E) (F : C ⟶ E) (hF : IsFullyFaithful F) : IsLocallySmall C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallRightFibrationModels.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma smallKanModel_op {X : SSet.{u + 1}} [Quasicategory X] (hX : HasSmallKanModel X) : HasSmallKanModel X.op"
+          },
+          {
+            "line": 39,
+            "head": "lemma exists_smallRightFibrationModel_of_small_base {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B] [∀ n, Small.{u} (B.obj n)] (p : E ⟶ B) [RightFibration p] (hp : ∀ b, HasSmallKanModel (vertexFiber p b)) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj A) E)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FixedVertexMapSmallness.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def HasSmallFixedVertexMaps (Y : SSet.{u + 1}) : Prop := ∀ (A : SSet.{u + 1}) (_ : ∀ n, Small.{u} (A.obj n)) (v : A _⦋0⦌ → Y _⦋0⦌), Small.{u} {f : A ⟶ Y // ∀ a, f.app (Opposite.op ⦋0⦌) a = v a}"
+          },
+          {
+            "line": 28,
+            "head": "lemma space_hasSmallFixedVertexMaps : HasSmallFixedVertexMaps SpaceInfinity.{u}"
+          },
+          {
+            "line": 41,
+            "head": "lemma HasSmallFixedVertexMaps.functorSpace {Y : SSet.{u + 1}} (hY : HasSmallFixedVertexMaps Y) (L : SSet.{u + 1}) [∀ n, Small.{u} (L.obj n)] : HasSmallFixedVertexMaps ((ihom L).obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallHullCardinal.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "theorem hasCardinalLT_model {μ : Cardinal.{u}} (hμ : μ.IsRegular) (hω : Cardinal.aleph0 < μ) (X : SSet.{v}) [∀ d, Small.{w} (X.obj d)] (hX : HasCardinalLT X.N μ) : HasCardinalLT (model.{w, v} X).N μ"
+          },
+          {
+            "line": 37,
+            "head": "theorem hasCardinalLT_hull_obj {μ : Cardinal.{w}} (hμ : μ.IsRegular) (hω : Cardinal.aleph0 < μ) {X : SSet.{max u v}} [Quasicategory X] (A : X.Subcomplex) [∀ d, Small.{u} (A.obj d)] (hA : HasCardinalLT A.toSSet.N μ) : HasCardinalLT (hull.{u, v} A).obj.N μ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/AnodyneRelativeHomotopy.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma anodyne_relative_homotopy {A K X : SSet.{u}} [KanComplex X] (i : A ⟶ K) (hi : anodyneExtensions i) (f g : K ⟶ X) (h : i ≫ f = i ≫ g) : ∃ H : SSet.Homotopy f g, (i ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst A (Δ[1] : SSet.{u}) ≫ i ≫ f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EssentiallySmall.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class EssentiallySmall (C : Type u) [Category.{v} C] : Prop where"
+          },
+          {
+            "line": 49,
+            "head": "theorem EssentiallySmall.mk' {C : Type u} [Category.{v} C] {S : Type w} [SmallCategory S] (e : C ≌ S) : EssentiallySmall.{w} C := ⟨⟨S, _, ⟨e⟩⟩⟩"
+          },
+          {
+            "line": 56,
+            "head": "def SmallModel (C : Type u) [Category.{v} C] [EssentiallySmall.{w} C] : Type w := Classical.choose (@EssentiallySmall.equiv_smallCategory C _ _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Nerve.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def nerve (C : Type u) [Category.{v} C] : SSet.{max u v} where"
+          },
+          {
+            "line": 46,
+            "head": "instance {C : Type*} [Category* C] {Δ : SimplexCategoryᵒᵖ} : Category ((nerve C).obj Δ) := inferInstanceAs <| Category (ComposableArrows C (Δ.unop.len))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def HasKappaFilteredGeneratorPresentation (κ : Cardinal.{u}) {A : SSet.{u}} {C : SSet.{u + 1}} (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (x : C _⦋0⦌) : Prop := ∃ (I : SSet.{u}) (hI : Quasicategory I), letI := hI IsKappaFiltered κ I ∧ ∃ a : I ⟶ A, ∃ c : JoinCocone ((SSet.uliftFunctor.{u + 1, u}).map a ≫ i), c.vertex = x ∧ IsColimitCone c"
+          },
+          {
+            "line": 32,
+            "head": "structure IsKappaCompactGenerating (κ : Cardinal.{u}) {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleEquivalence.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma IsKappaAccessible.of_equivalence {κ : Cardinal.{u}} {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (h : IsKappaAccessible κ C) (e : QCatEquivalence C E) : IsKappaAccessible κ E"
+          },
+          {
+            "line": 29,
+            "head": "lemma isKappaAccessible_iff_equivalence {κ : Cardinal.{u}} {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (e : QCatEquivalence C E) : IsKappaAccessible κ C ↔ IsKappaAccessible κ E := ⟨fun h ↦ h.of_equivalence e, fun h ↦ h.of_equivalence e.symm⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "abbrev IsKappaAccessibleFunctor (κ : Cardinal.{u}) {C D : SSet.{u + 1}} (F : C ⟶ D) : Prop := Ind.PreservesSmallKappaFilteredColimits κ F"
+          },
+          {
+            "line": 25,
+            "head": "def IsAccessibleFunctor {C D : SSet.{u + 1}} (F : C ⟶ D) : Prop := ∃ κ : Cardinal.{u}, κ.IsRegular ∧ IsKappaAccessibleFunctor κ F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleIndRepresentation.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "lemma IsKappaAccessible.exists_indRepresentation {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (e : QCatEquivalence (Ind.IndInfinity κ A) C), IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ e.hom ∧ Nonempty (FunctorIso (Ind.indYoneda κ A ≫ e.hom) i)"
+          },
+          {
+            "line": 33,
+            "head": "lemma IsKappaAccessible.exists_indEquivalence {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence (Ind.IndInfinity κ A) C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/CardinalChangeBound.lean",
+        "signatures": [
+          {
+            "line": 18,
+            "head": "def IsCardinalChangeBound (κ μ : Cardinal.{u}) : Prop := κ < μ ∧ ∀ α β : Cardinal.{u}, α < κ → β < μ → β ^ α < μ"
+          },
+          {
+            "line": 21,
+            "head": "lemma IsCardinalChangeBound.le {κ μ : Cardinal.{u}} (h : IsCardinalChangeBound κ μ) : κ ≤ μ := h.1.le"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma IsKappaCompactGenerating.retract_generator (h : IsKappaCompactGenerating κ i) {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) : ∃ a : A _⦋0⦌, Idempotent.IsVertexRetractOf x (i.app (Opposite.op ⦋0⦌) (ULift.up a))"
+          },
+          {
+            "line": 45,
+            "head": "lemma IsKappaCompactGenerating.compact_iff_retract (h : IsKappaCompactGenerating κ i) (x : C _⦋0⦌) : Compact.IsKappaCompact.{u, u + 1} κ x ↔ ∃ a : A _⦋0⦌, Idempotent.IsVertexRetractOf x (i.app (Opposite.op ⦋0⦌) (ULift.up a))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndAccessible.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma indYoneda_generatorPresentation (x : IndInfinity κ A _⦋0⦌) : HasKappaFilteredGeneratorPresentation κ (indYoneda κ A) x"
+          },
+          {
+            "line": 48,
+            "head": "lemma indYoneda_isKappaCompactGenerating : IsKappaCompactGenerating κ (indYoneda κ A) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma indInfinity_isMuAccessible {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) (A : SSet.{u}) [Quasicategory A] : IsKappaAccessible μ (Ind.IndInfinity κ A)"
+          },
+          {
+            "line": 46,
+            "head": "lemma IsKappaAccessible.of_cardinalChangeBound {κ μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible κ C) [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) : IsKappaAccessible μ C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndComparison.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_indComparison {κ : Cardinal.{u}} [Fact κ.IsRegular] {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] (hC : Ind.HasSmallKappaFilteredColimits κ C) (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) : ∃ G : Ind.IndInfinity κ A ⟶ C, IsKappaAccessibleFunctor κ G ∧ Nonempty (FunctorIso (Ind.indYoneda κ A ≫ G) i)"
+          },
+          {
+            "line": 31,
+            "head": "lemma IsKappaAccessible.exists_indComparison {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (G : Ind.IndInfinity κ A ⟶ C), IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ G ∧ Nonempty (FunctorIso (Ind.indYoneda κ A ≫ G) i)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndComparisonSurjective.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma indComparison_isEssentiallySurjective {κ : Cardinal.{u}} {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] {i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C} (hp : ∀ x, HasKappaFilteredGeneratorPresentation κ i x) {G : IndInfinity κ A ⟶ C} (hG : IsKappaAccessibleFunctor κ G) (e : FunctorIso (indYoneda κ A ≫ G) i) : IsEssentiallySurjective G"
+          },
+          {
+            "line": 47,
+            "head": "lemma IsKappaAccessible.exists_surjective_indComparison {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (h : IsKappaAccessible κ C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (G : IndInfinity κ A ⟶ C), IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ G ∧ Nonempty (FunctorIso (indYoneda κ A ≫ G) i) ∧ IsEssentiallySurjective G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallFilteredPieces.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def SmallFilteredPieces (κ μ : Cardinal.{u}) [Fact κ.IsRegular] (I : Type u) [PartialOrder I] := {A : Set I // IsCardinalFiltered A κ ∧ HasCardinalLT A μ}"
+          },
+          {
+            "line": 24,
+            "head": "instance smallFilteredPieces_partialOrder (κ μ : Cardinal.{u}) [Fact κ.IsRegular] (I : Type u) [PartialOrder I] : PartialOrder (SmallFilteredPieces κ μ I) := inferInstanceAs (PartialOrder {A : Set I // IsCardinalFiltered A κ ∧ HasCardinalLT A μ})"
+          }
+        ]
+      }
+    ],
+    "decision": "基底と全ファイバーが essentially κ-small なら全空間もそうなる。SmallRightFibrationModels は右ファイブレーションの宇宙を小模型へ下げるが、明示の κ の上界と任意の Cartesian fibration の全 Hom の濃度評価を持たない。Grothendieck の通常圏の small インスタンスも本質的小性のこの判定ではない。"
+  }
+}

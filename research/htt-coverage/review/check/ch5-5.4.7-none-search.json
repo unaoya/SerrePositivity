@@ -1,0 +1,2774 @@
+{
+  "5.4.7.1": {
+    "page": 449,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.6",
+        "5.4.7",
+        "5.5.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          "SerrePositivity"
+        ],
+        "file_count": 864,
+        "line_count": 4001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 450,
+        "line_count": 1449
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests_native (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          },
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 77,
+            "head": "lemma accessible_limitPreservingHomModels {X Y : SSet.{u + 1}} [Quasicategory X] (hX : IsAccessible X) (G : Y ⟶ X) (hGa : IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) : ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u}, IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧ Nonempty (FunctorIso ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x) ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def kanHom_covariantModelIso (K : KanObject.{u}) : FunctorIso (covariantRepresentableInfinity (C := SpaceInfinity.{u}) (coherentNerveVertex K)) ((SSet.uliftFunctor.{u + 2, u + 1}).map (kanInternalHomInfinity K) ≫ Compact.spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallLimitFunctorContinuity.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma constantFunctorMap_preservesSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] : PreservesSmallColimits (constantFunctorMap A C)"
+          },
+          {
+            "line": 44,
+            "head": "lemma exists_spaceLimitFunctor (B : SSet.{u}) [Quasicategory B] : ∃ R : (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u} ⟶ SpaceInfinity.{u}, Nonempty (QCatAdjunction (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj B) SpaceInfinity.{u}) R) := (exists_rightAdjoint_iff_preservesSmallColimits space_isPresentable (functor_isPresentable B space_isPresentable) _).mpr (constantFunctorMap_preservesSmallColimits _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/ColimitCoconeFamilies.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def colimitCocones (K X : SSet.{u}) : SSet.{u} := (relativeInitialVertices (coconeRestriction K X) : SSet.{u})"
+          },
+          {
+            "line": 41,
+            "head": "instance colimitCocones_quasicategory (K X : SSet.{u}) [Quasicategory X] : Quasicategory (colimitCocones K X) := fullSubcomplexOnVertices_quasicategory _ _"
+          },
+          {
+            "line": 49,
+            "head": "lemma colimitCocones_vertex_iff {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCocone p) : InitialBoundaryLifting (coconeRestriction K X) (functorVertex c.val) ↔ IsColimitCone c := (isColimitCone_iff_initialBoundaryLifting c).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def laxPullbackDiagram (p : A ⟶ C) (q : B ⟶ C) : AsSmall.{u} WalkingCospan ⥤ QCat.{u} := qCatPullbackDiagram (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          },
+          {
+            "line": 36,
+            "head": "def laxPullbackOrdinaryCone (p : A ⟶ C) (q : B ⟶ C) : Cone (laxPullbackDiagram p q) := qCatPullbackCone (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pullback_isAccessible {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B) (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) : letI := hp.innerFibration IsAccessible (pullback p q)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Products.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "abbrev Fan (f : β → C) := Cone (Discrete.functor f)"
+          },
+          {
+            "line": 60,
+            "head": "def Fan.mk {f : β → C} (P : C) (p : ∀ b, P ⟶ f b) : Fan f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Discrete/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "structure Discrete (α : Type u₁) where"
+          },
+          {
+            "line": 61,
+            "head": "theorem Discrete.mk_as {α : Type u₁} (X : Discrete α) : Discrete.mk X.as = X := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : IsAccessible C := h.1"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "lemma space_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 SpaceInfinity.{u} := ⟨Cardinal.isRegular_aleph0, space_hasSmallColimits.hasSmallKappaFilteredColimits _, spaceCompactGeneratorCategory, inferInstance, spaceCompactGeneratorInclusion, spaceCompactGeneratorInclusion_isCompactGenerating⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "小族の準圏の coproduct が accessible であることと各成分の accessibility の iff。piSSet_isPresentable は積の結果であり直和とは別。Sigma の空間値図式や通常圏の DisjointUnion の存在は、元の準圏の直和の filtered 生成性と各成分への回収を与えない。"
+  },
+  "5.4.7.3": {
+    "page": 449,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.6",
+        "5.4.7",
+        "5.5.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          "SerrePositivity"
+        ],
+        "file_count": 864,
+        "line_count": 4001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 450,
+        "line_count": 1449
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests_native (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          },
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 77,
+            "head": "lemma accessible_limitPreservingHomModels {X Y : SSet.{u + 1}} [Quasicategory X] (hX : IsAccessible X) (G : Y ⟶ X) (hGa : IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) : ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u}, IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧ Nonempty (FunctorIso ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x) ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def kanHom_covariantModelIso (K : KanObject.{u}) : FunctorIso (covariantRepresentableInfinity (C := SpaceInfinity.{u}) (coherentNerveVertex K)) ((SSet.uliftFunctor.{u + 2, u + 1}).map (kanInternalHomInfinity K) ≫ Compact.spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallLimitFunctorContinuity.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma constantFunctorMap_preservesSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] : PreservesSmallColimits (constantFunctorMap A C)"
+          },
+          {
+            "line": 44,
+            "head": "lemma exists_spaceLimitFunctor (B : SSet.{u}) [Quasicategory B] : ∃ R : (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u} ⟶ SpaceInfinity.{u}, Nonempty (QCatAdjunction (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj B) SpaceInfinity.{u}) R) := (exists_rightAdjoint_iff_preservesSmallColimits space_isPresentable (functor_isPresentable B space_isPresentable) _).mpr (constantFunctorMap_preservesSmallColimits _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/ColimitCoconeFamilies.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def colimitCocones (K X : SSet.{u}) : SSet.{u} := (relativeInitialVertices (coconeRestriction K X) : SSet.{u})"
+          },
+          {
+            "line": 41,
+            "head": "instance colimitCocones_quasicategory (K X : SSet.{u}) [Quasicategory X] : Quasicategory (colimitCocones K X) := fullSubcomplexOnVertices_quasicategory _ _"
+          },
+          {
+            "line": 49,
+            "head": "lemma colimitCocones_vertex_iff {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCocone p) : InitialBoundaryLifting (coconeRestriction K X) (functorVertex c.val) ↔ IsColimitCone c := (isColimitCone_iff_initialBoundaryLifting c).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def laxPullbackDiagram (p : A ⟶ C) (q : B ⟶ C) : AsSmall.{u} WalkingCospan ⥤ QCat.{u} := qCatPullbackDiagram (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          },
+          {
+            "line": 36,
+            "head": "def laxPullbackOrdinaryCone (p : A ⟶ C) (q : B ⟶ C) : Cone (laxPullbackDiagram p q) := qCatPullbackCone (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pullback_isAccessible {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B) (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) : letI := hp.innerFibration IsAccessible (pullback p q)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Products.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "abbrev Fan (f : β → C) := Cone (Discrete.functor f)"
+          },
+          {
+            "line": 60,
+            "head": "def Fan.mk {f : β → C} (P : C) (p : ∀ b, P ⟶ f b) : Fan f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Discrete/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "structure Discrete (α : Type u₁) where"
+          },
+          {
+            "line": 61,
+            "head": "theorem Discrete.mk_as {α : Type u₁} (X : Discrete α) : Discrete.mk X.as = X := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : IsAccessible C := h.1"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "lemma space_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 SpaceInfinity.{u} := ⟨Cardinal.isRegular_aleph0, space_hasSmallColimits.hasSmallKappaFilteredColimits _, spaceCompactGeneratorCategory, inferInstance, spaceCompactGeneratorInclusion, spaceCompactGeneratorInclusion_isCompactGenerating⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "Acc の高次圏が小極限を持ち、その Cat∞ への包含が保存する。個別の accessible pullback や presentable な積はあるが、Acc の全 Hom を持つ高次圏とその指定包含を構成していない。PrL の極限は射が全小余極限保存であり Acc と異なる。"
+  },
+  "5.4.7.4": {
+    "page": 450,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.6",
+        "5.4.7",
+        "5.5.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          "SerrePositivity"
+        ],
+        "file_count": 864,
+        "line_count": 4001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 450,
+        "line_count": 1449
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests_native (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          },
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 77,
+            "head": "lemma accessible_limitPreservingHomModels {X Y : SSet.{u + 1}} [Quasicategory X] (hX : IsAccessible X) (G : Y ⟶ X) (hGa : IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) : ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u}, IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧ Nonempty (FunctorIso ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x) ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def kanHom_covariantModelIso (K : KanObject.{u}) : FunctorIso (covariantRepresentableInfinity (C := SpaceInfinity.{u}) (coherentNerveVertex K)) ((SSet.uliftFunctor.{u + 2, u + 1}).map (kanInternalHomInfinity K) ≫ Compact.spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallLimitFunctorContinuity.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma constantFunctorMap_preservesSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] : PreservesSmallColimits (constantFunctorMap A C)"
+          },
+          {
+            "line": 44,
+            "head": "lemma exists_spaceLimitFunctor (B : SSet.{u}) [Quasicategory B] : ∃ R : (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u} ⟶ SpaceInfinity.{u}, Nonempty (QCatAdjunction (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj B) SpaceInfinity.{u}) R) := (exists_rightAdjoint_iff_preservesSmallColimits space_isPresentable (functor_isPresentable B space_isPresentable) _).mpr (constantFunctorMap_preservesSmallColimits _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/ColimitCoconeFamilies.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def colimitCocones (K X : SSet.{u}) : SSet.{u} := (relativeInitialVertices (coconeRestriction K X) : SSet.{u})"
+          },
+          {
+            "line": 41,
+            "head": "instance colimitCocones_quasicategory (K X : SSet.{u}) [Quasicategory X] : Quasicategory (colimitCocones K X) := fullSubcomplexOnVertices_quasicategory _ _"
+          },
+          {
+            "line": 49,
+            "head": "lemma colimitCocones_vertex_iff {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCocone p) : InitialBoundaryLifting (coconeRestriction K X) (functorVertex c.val) ↔ IsColimitCone c := (isColimitCone_iff_initialBoundaryLifting c).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def laxPullbackDiagram (p : A ⟶ C) (q : B ⟶ C) : AsSmall.{u} WalkingCospan ⥤ QCat.{u} := qCatPullbackDiagram (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          },
+          {
+            "line": 36,
+            "head": "def laxPullbackOrdinaryCone (p : A ⟶ C) (q : B ⟶ C) : Cone (laxPullbackDiagram p q) := qCatPullbackCone (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pullback_isAccessible {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B) (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) : letI := hp.innerFibration IsAccessible (pullback p q)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Products.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "abbrev Fan (f : β → C) := Cone (Discrete.functor f)"
+          },
+          {
+            "line": 60,
+            "head": "def Fan.mk {f : β → C} (P : C) (p : ∀ b, P ⟶ f b) : Fan f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Discrete/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "structure Discrete (α : Type u₁) where"
+          },
+          {
+            "line": 61,
+            "head": "theorem Discrete.mk_as {α : Type u₁} (X : Discrete α) : Discrete.mk X.as = X := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : IsAccessible C := h.1"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "lemma space_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 SpaceInfinity.{u} := ⟨Cardinal.isRegular_aleph0, space_hasSmallColimits.hasSmallKappaFilteredColimits _, spaceCompactGeneratorCategory, inferInstance, spaceCompactGeneratorInclusion, spaceCompactGeneratorInclusion_isCompactGenerating⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "Cκ の essentially τ-small 性と κ≪τ から Cτ の κ-small 極限閉性を得る。isKappaCompact_smallQuasicategoryColimit_universe は余極限閉性であり向きが違う。コンパクト対象からの Hom の極限保存だけでは、元の極限頂点の τ-compact 性を反映するこの判定を与えない。"
+  },
+  "5.4.7.5": {
+    "page": 450,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.6",
+        "5.4.7",
+        "5.5.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          "SerrePositivity"
+        ],
+        "file_count": 864,
+        "line_count": 4001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 450,
+        "line_count": 1449
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests_native (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          },
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 77,
+            "head": "lemma accessible_limitPreservingHomModels {X Y : SSet.{u + 1}} [Quasicategory X] (hX : IsAccessible X) (G : Y ⟶ X) (hGa : IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) : ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u}, IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧ Nonempty (FunctorIso ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x) ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def kanHom_covariantModelIso (K : KanObject.{u}) : FunctorIso (covariantRepresentableInfinity (C := SpaceInfinity.{u}) (coherentNerveVertex K)) ((SSet.uliftFunctor.{u + 2, u + 1}).map (kanInternalHomInfinity K) ≫ Compact.spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallLimitFunctorContinuity.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma constantFunctorMap_preservesSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] : PreservesSmallColimits (constantFunctorMap A C)"
+          },
+          {
+            "line": 44,
+            "head": "lemma exists_spaceLimitFunctor (B : SSet.{u}) [Quasicategory B] : ∃ R : (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u} ⟶ SpaceInfinity.{u}, Nonempty (QCatAdjunction (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj B) SpaceInfinity.{u}) R) := (exists_rightAdjoint_iff_preservesSmallColimits space_isPresentable (functor_isPresentable B space_isPresentable) _).mpr (constantFunctorMap_preservesSmallColimits _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/ColimitCoconeFamilies.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def colimitCocones (K X : SSet.{u}) : SSet.{u} := (relativeInitialVertices (coconeRestriction K X) : SSet.{u})"
+          },
+          {
+            "line": 41,
+            "head": "instance colimitCocones_quasicategory (K X : SSet.{u}) [Quasicategory X] : Quasicategory (colimitCocones K X) := fullSubcomplexOnVertices_quasicategory _ _"
+          },
+          {
+            "line": 49,
+            "head": "lemma colimitCocones_vertex_iff {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCocone p) : InitialBoundaryLifting (coconeRestriction K X) (functorVertex c.val) ↔ IsColimitCone c := (isColimitCone_iff_initialBoundaryLifting c).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def laxPullbackDiagram (p : A ⟶ C) (q : B ⟶ C) : AsSmall.{u} WalkingCospan ⥤ QCat.{u} := qCatPullbackDiagram (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          },
+          {
+            "line": 36,
+            "head": "def laxPullbackOrdinaryCone (p : A ⟶ C) (q : B ⟶ C) : Cone (laxPullbackDiagram p q) := qCatPullbackCone (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pullback_isAccessible {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B) (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) : letI := hp.innerFibration IsAccessible (pullback p q)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Products.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "abbrev Fan (f : β → C) := Cone (Discrete.functor f)"
+          },
+          {
+            "line": 60,
+            "head": "def Fan.mk {f : β → C} (P : C) (p : ∀ b, P ⟶ f b) : Fan f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Discrete/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "structure Discrete (α : Type u₁) where"
+          },
+          {
+            "line": 61,
+            "head": "theorem Discrete.mk_as {α : Type u₁} (X : Discrete α) : Discrete.mk X.as = X := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : IsAccessible C := h.1"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "lemma space_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 SpaceInfinity.{u} := ⟨Cardinal.isRegular_aleph0, space_hasSmallColimits.hasSmallKappaFilteredColimits _, spaceCompactGeneratorCategory, inferInstance, spaceCompactGeneratorInclusion, spaceCompactGeneratorInclusion_isCompactGenerating⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "τ-small C の Indκ 対象 D が τ-compact であることと、全 Map(jC,D) の essentially τ-small 性の同値。compactInd_retract_yoneda は同じ κ の compact 性からの retract であって、τ>κ の点ごとの小性から τ-compact 性を得ない。presheaf の評価 Hom 同型はこの濃度付き iff の証明部品にとどまる。"
+  },
+  "5.4.7.6": {
+    "page": 450,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.6",
+        "5.4.7",
+        "5.5.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          "SerrePositivity"
+        ],
+        "file_count": 864,
+        "line_count": 4001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 450,
+        "line_count": 1449
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests_native (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          },
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 77,
+            "head": "lemma accessible_limitPreservingHomModels {X Y : SSet.{u + 1}} [Quasicategory X] (hX : IsAccessible X) (G : Y ⟶ X) (hGa : IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) : ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u}, IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧ Nonempty (FunctorIso ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x) ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def kanHom_covariantModelIso (K : KanObject.{u}) : FunctorIso (covariantRepresentableInfinity (C := SpaceInfinity.{u}) (coherentNerveVertex K)) ((SSet.uliftFunctor.{u + 2, u + 1}).map (kanInternalHomInfinity K) ≫ Compact.spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallLimitFunctorContinuity.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma constantFunctorMap_preservesSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] : PreservesSmallColimits (constantFunctorMap A C)"
+          },
+          {
+            "line": 44,
+            "head": "lemma exists_spaceLimitFunctor (B : SSet.{u}) [Quasicategory B] : ∃ R : (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u} ⟶ SpaceInfinity.{u}, Nonempty (QCatAdjunction (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj B) SpaceInfinity.{u}) R) := (exists_rightAdjoint_iff_preservesSmallColimits space_isPresentable (functor_isPresentable B space_isPresentable) _).mpr (constantFunctorMap_preservesSmallColimits _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/ColimitCoconeFamilies.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def colimitCocones (K X : SSet.{u}) : SSet.{u} := (relativeInitialVertices (coconeRestriction K X) : SSet.{u})"
+          },
+          {
+            "line": 41,
+            "head": "instance colimitCocones_quasicategory (K X : SSet.{u}) [Quasicategory X] : Quasicategory (colimitCocones K X) := fullSubcomplexOnVertices_quasicategory _ _"
+          },
+          {
+            "line": 49,
+            "head": "lemma colimitCocones_vertex_iff {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCocone p) : InitialBoundaryLifting (coconeRestriction K X) (functorVertex c.val) ↔ IsColimitCone c := (isColimitCone_iff_initialBoundaryLifting c).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def laxPullbackDiagram (p : A ⟶ C) (q : B ⟶ C) : AsSmall.{u} WalkingCospan ⥤ QCat.{u} := qCatPullbackDiagram (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          },
+          {
+            "line": 36,
+            "head": "def laxPullbackOrdinaryCone (p : A ⟶ C) (q : B ⟶ C) : Cone (laxPullbackDiagram p q) := qCatPullbackCone (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pullback_isAccessible {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B) (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) : letI := hp.innerFibration IsAccessible (pullback p q)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Products.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "abbrev Fan (f : β → C) := Cone (Discrete.functor f)"
+          },
+          {
+            "line": 60,
+            "head": "def Fan.mk {f : β → C} (P : C) (p : ∀ b, P ⟶ f b) : Fan f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Discrete/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "structure Discrete (α : Type u₁) where"
+          },
+          {
+            "line": 61,
+            "head": "theorem Discrete.mk_as {α : Type u₁} (X : Discrete α) : Discrete.mk X.as = X := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : IsAccessible C := h.1"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "lemma space_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 SpaceInfinity.{u} := ⟨Cardinal.isRegular_aleph0, space_hasSmallColimits.hasSmallKappaFilteredColimits _, spaceCompactGeneratorCategory, inferInstance, spaceCompactGeneratorInclusion, spaceCompactGeneratorInclusion_isCompactGenerating⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "κ≪τ の下で essentially τ-small な空間全体が κ-small 極限で閉じる。SmallLimitFunctorContinuity は空間値の極限関手の κ-filtered 余極限保存であり、元の各空間の本質的 τ-small 性から極限の同じ小性を結論しない。Mathlib の濃度の積評価は Kan ホモトピー極限のこの比較を含まない。"
+  },
+  "5.4.7.10": {
+    "page": 452,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.6",
+        "5.4.7",
+        "5.5.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          "SerrePositivity"
+        ],
+        "file_count": 864,
+        "line_count": 4001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 450,
+        "line_count": 1449
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests_native (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          },
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 77,
+            "head": "lemma accessible_limitPreservingHomModels {X Y : SSet.{u + 1}} [Quasicategory X] (hX : IsAccessible X) (G : Y ⟶ X) (hGa : IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) : ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u}, IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧ Nonempty (FunctorIso ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x) ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def kanHom_covariantModelIso (K : KanObject.{u}) : FunctorIso (covariantRepresentableInfinity (C := SpaceInfinity.{u}) (coherentNerveVertex K)) ((SSet.uliftFunctor.{u + 2, u + 1}).map (kanInternalHomInfinity K) ≫ Compact.spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallLimitFunctorContinuity.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma constantFunctorMap_preservesSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] : PreservesSmallColimits (constantFunctorMap A C)"
+          },
+          {
+            "line": 44,
+            "head": "lemma exists_spaceLimitFunctor (B : SSet.{u}) [Quasicategory B] : ∃ R : (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u} ⟶ SpaceInfinity.{u}, Nonempty (QCatAdjunction (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj B) SpaceInfinity.{u}) R) := (exists_rightAdjoint_iff_preservesSmallColimits space_isPresentable (functor_isPresentable B space_isPresentable) _).mpr (constantFunctorMap_preservesSmallColimits _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/ColimitCoconeFamilies.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def colimitCocones (K X : SSet.{u}) : SSet.{u} := (relativeInitialVertices (coconeRestriction K X) : SSet.{u})"
+          },
+          {
+            "line": 41,
+            "head": "instance colimitCocones_quasicategory (K X : SSet.{u}) [Quasicategory X] : Quasicategory (colimitCocones K X) := fullSubcomplexOnVertices_quasicategory _ _"
+          },
+          {
+            "line": 49,
+            "head": "lemma colimitCocones_vertex_iff {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCocone p) : InitialBoundaryLifting (coconeRestriction K X) (functorVertex c.val) ↔ IsColimitCone c := (isColimitCone_iff_initialBoundaryLifting c).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def laxPullbackDiagram (p : A ⟶ C) (q : B ⟶ C) : AsSmall.{u} WalkingCospan ⥤ QCat.{u} := qCatPullbackDiagram (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          },
+          {
+            "line": 36,
+            "head": "def laxPullbackOrdinaryCone (p : A ⟶ C) (q : B ⟶ C) : Cone (laxPullbackDiagram p q) := qCatPullbackCone (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pullback_isAccessible {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B) (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) : letI := hp.innerFibration IsAccessible (pullback p q)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Products.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "abbrev Fan (f : β → C) := Cone (Discrete.functor f)"
+          },
+          {
+            "line": 60,
+            "head": "def Fan.mk {f : β → C} (P : C) (p : ∀ b, P ⟶ f b) : Fan f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Discrete/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "structure Discrete (α : Type u₁) where"
+          },
+          {
+            "line": 61,
+            "head": "theorem Discrete.mk_as {α : Type u₁} (X : Discrete α) : Discrete.mk X.as = X := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : IsAccessible C := h.1"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "lemma space_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 SpaceInfinity.{u} := ⟨Cardinal.isRegular_aleph0, space_hasSmallColimits.hasSmallKappaFilteredColimits _, spaceCompactGeneratorCategory, inferInstance, spaceCompactGeneratorInclusion, spaceCompactGeneratorInclusion_isCompactGenerating⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "accessible C の accessible な全部分準圏の小族の共通部分が、包含と共に accessible。Subcomplex の交叉は構成できるが、その共通部分を accessible pullback と比較する全族の指定図式およびその包含の保存性はない。個別の pullback accessibility だけをこの交叉の定理とはしない。"
+  },
+  "5.4.7.11": {
+    "page": 452,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.6",
+        "5.4.7",
+        "5.5.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          "SerrePositivity"
+        ],
+        "file_count": 864,
+        "line_count": 4001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 450,
+        "line_count": 1449
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests_native (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          },
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 77,
+            "head": "lemma accessible_limitPreservingHomModels {X Y : SSet.{u + 1}} [Quasicategory X] (hX : IsAccessible X) (G : Y ⟶ X) (hGa : IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) : ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u}, IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧ Nonempty (FunctorIso ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x) ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def kanHom_covariantModelIso (K : KanObject.{u}) : FunctorIso (covariantRepresentableInfinity (C := SpaceInfinity.{u}) (coherentNerveVertex K)) ((SSet.uliftFunctor.{u + 2, u + 1}).map (kanInternalHomInfinity K) ≫ Compact.spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallLimitFunctorContinuity.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma constantFunctorMap_preservesSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] : PreservesSmallColimits (constantFunctorMap A C)"
+          },
+          {
+            "line": 44,
+            "head": "lemma exists_spaceLimitFunctor (B : SSet.{u}) [Quasicategory B] : ∃ R : (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u} ⟶ SpaceInfinity.{u}, Nonempty (QCatAdjunction (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj B) SpaceInfinity.{u}) R) := (exists_rightAdjoint_iff_preservesSmallColimits space_isPresentable (functor_isPresentable B space_isPresentable) _).mpr (constantFunctorMap_preservesSmallColimits _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/ColimitCoconeFamilies.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def colimitCocones (K X : SSet.{u}) : SSet.{u} := (relativeInitialVertices (coconeRestriction K X) : SSet.{u})"
+          },
+          {
+            "line": 41,
+            "head": "instance colimitCocones_quasicategory (K X : SSet.{u}) [Quasicategory X] : Quasicategory (colimitCocones K X) := fullSubcomplexOnVertices_quasicategory _ _"
+          },
+          {
+            "line": 49,
+            "head": "lemma colimitCocones_vertex_iff {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCocone p) : InitialBoundaryLifting (coconeRestriction K X) (functorVertex c.val) ↔ IsColimitCone c := (isColimitCone_iff_initialBoundaryLifting c).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def laxPullbackDiagram (p : A ⟶ C) (q : B ⟶ C) : AsSmall.{u} WalkingCospan ⥤ QCat.{u} := qCatPullbackDiagram (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          },
+          {
+            "line": 36,
+            "head": "def laxPullbackOrdinaryCone (p : A ⟶ C) (q : B ⟶ C) : Cone (laxPullbackDiagram p q) := qCatPullbackCone (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pullback_isAccessible {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B) (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) : letI := hp.innerFibration IsAccessible (pullback p q)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Products.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "abbrev Fan (f : β → C) := Cone (Discrete.functor f)"
+          },
+          {
+            "line": 60,
+            "head": "def Fan.mk {f : β → C} (P : C) (p : ∀ b, P ⟶ f b) : Fan f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Discrete/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "structure Discrete (α : Type u₁) where"
+          },
+          {
+            "line": 61,
+            "head": "theorem Discrete.mk_as {α : Type u₁} (X : Discrete α) : Discrete.mk X.as = X := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : IsAccessible C := h.1"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "lemma space_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 SpaceInfinity.{u} := ⟨Cardinal.isRegular_aleph0, space_hasSmallColimits.hasSmallKappaFilteredColimits _, spaceCompactGeneratorCategory, inferInstance, spaceCompactGeneratorInclusion, spaceCompactGeneratorInclusion_isCompactGenerating⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "小極限で閉じる Cat∞ の部分高次圏と、辺の集合 E に対する局所 coCartesian 条件を課した全切断の閉性。cocartesianSectionsEvaluate は始対象での全 coCartesian 切断の評価の同値であり、任意の E・部分高次圏・局所のみ coCartesian な q を扱わない。全切断への accessibility の結論もない。"
+  },
+  "5.4.7.12": {
+    "page": 453,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.6",
+        "5.4.7",
+        "5.5.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          "SerrePositivity"
+        ],
+        "file_count": 864,
+        "line_count": 4001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 450,
+        "line_count": 1449
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests_native (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          },
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 77,
+            "head": "lemma accessible_limitPreservingHomModels {X Y : SSet.{u + 1}} [Quasicategory X] (hX : IsAccessible X) (G : Y ⟶ X) (hGa : IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) : ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u}, IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧ Nonempty (FunctorIso ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x) ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def kanHom_covariantModelIso (K : KanObject.{u}) : FunctorIso (covariantRepresentableInfinity (C := SpaceInfinity.{u}) (coherentNerveVertex K)) ((SSet.uliftFunctor.{u + 2, u + 1}).map (kanInternalHomInfinity K) ≫ Compact.spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallLimitFunctorContinuity.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma constantFunctorMap_preservesSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] : PreservesSmallColimits (constantFunctorMap A C)"
+          },
+          {
+            "line": 44,
+            "head": "lemma exists_spaceLimitFunctor (B : SSet.{u}) [Quasicategory B] : ∃ R : (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u} ⟶ SpaceInfinity.{u}, Nonempty (QCatAdjunction (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj B) SpaceInfinity.{u}) R) := (exists_rightAdjoint_iff_preservesSmallColimits space_isPresentable (functor_isPresentable B space_isPresentable) _).mpr (constantFunctorMap_preservesSmallColimits _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/ColimitCoconeFamilies.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def colimitCocones (K X : SSet.{u}) : SSet.{u} := (relativeInitialVertices (coconeRestriction K X) : SSet.{u})"
+          },
+          {
+            "line": 41,
+            "head": "instance colimitCocones_quasicategory (K X : SSet.{u}) [Quasicategory X] : Quasicategory (colimitCocones K X) := fullSubcomplexOnVertices_quasicategory _ _"
+          },
+          {
+            "line": 49,
+            "head": "lemma colimitCocones_vertex_iff {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCocone p) : InitialBoundaryLifting (coconeRestriction K X) (functorVertex c.val) ↔ IsColimitCone c := (isColimitCone_iff_initialBoundaryLifting c).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def laxPullbackDiagram (p : A ⟶ C) (q : B ⟶ C) : AsSmall.{u} WalkingCospan ⥤ QCat.{u} := qCatPullbackDiagram (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          },
+          {
+            "line": 36,
+            "head": "def laxPullbackOrdinaryCone (p : A ⟶ C) (q : B ⟶ C) : Cone (laxPullbackDiagram p q) := qCatPullbackCone (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pullback_isAccessible {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B) (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) : letI := hp.innerFibration IsAccessible (pullback p q)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Products.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "abbrev Fan (f : β → C) := Cone (Discrete.functor f)"
+          },
+          {
+            "line": 60,
+            "head": "def Fan.mk {f : β → C} (P : C) (p : ∀ b, P ⟶ f b) : Fan f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Discrete/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "structure Discrete (α : Type u₁) where"
+          },
+          {
+            "line": 61,
+            "head": "theorem Discrete.mk_as {α : Type u₁} (X : Discrete α) : Discrete.mk X.as = X := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : IsAccessible C := h.1"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "lemma space_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 SpaceInfinity.{u} := ⟨Cardinal.isRegular_aleph0, space_hasSmallColimits.hasSmallKappaFilteredColimits _, spaceCompactGeneratorCategory, inferInstance, spaceCompactGeneratorInclusion, spaceCompactGeneratorInclusion_isCompactGenerating⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "一般の部分高次圏 C 値の分類関手による coCartesian fibration が前項の局所性・ファイバー・輸送条件を満たす注意。空間値の straightening はあるが、任意の C とその射のクラスの定義に対してこの分類の三条件をまとめる比較はない。"
+  },
+  "5.4.7.13": {
+    "page": 453,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.6",
+        "5.4.7",
+        "5.5.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          "SerrePositivity"
+        ],
+        "file_count": 864,
+        "line_count": 4001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 450,
+        "line_count": 1449
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests_native (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          },
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 77,
+            "head": "lemma accessible_limitPreservingHomModels {X Y : SSet.{u + 1}} [Quasicategory X] (hX : IsAccessible X) (G : Y ⟶ X) (hGa : IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) : ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u}, IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧ Nonempty (FunctorIso ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x) ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def kanHom_covariantModelIso (K : KanObject.{u}) : FunctorIso (covariantRepresentableInfinity (C := SpaceInfinity.{u}) (coherentNerveVertex K)) ((SSet.uliftFunctor.{u + 2, u + 1}).map (kanInternalHomInfinity K) ≫ Compact.spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallLimitFunctorContinuity.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma constantFunctorMap_preservesSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] : PreservesSmallColimits (constantFunctorMap A C)"
+          },
+          {
+            "line": 44,
+            "head": "lemma exists_spaceLimitFunctor (B : SSet.{u}) [Quasicategory B] : ∃ R : (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u} ⟶ SpaceInfinity.{u}, Nonempty (QCatAdjunction (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj B) SpaceInfinity.{u}) R) := (exists_rightAdjoint_iff_preservesSmallColimits space_isPresentable (functor_isPresentable B space_isPresentable) _).mpr (constantFunctorMap_preservesSmallColimits _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/ColimitCoconeFamilies.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def colimitCocones (K X : SSet.{u}) : SSet.{u} := (relativeInitialVertices (coconeRestriction K X) : SSet.{u})"
+          },
+          {
+            "line": 41,
+            "head": "instance colimitCocones_quasicategory (K X : SSet.{u}) [Quasicategory X] : Quasicategory (colimitCocones K X) := fullSubcomplexOnVertices_quasicategory _ _"
+          },
+          {
+            "line": 49,
+            "head": "lemma colimitCocones_vertex_iff {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCocone p) : InitialBoundaryLifting (coconeRestriction K X) (functorVertex c.val) ↔ IsColimitCone c := (isColimitCone_iff_initialBoundaryLifting c).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def laxPullbackDiagram (p : A ⟶ C) (q : B ⟶ C) : AsSmall.{u} WalkingCospan ⥤ QCat.{u} := qCatPullbackDiagram (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          },
+          {
+            "line": 36,
+            "head": "def laxPullbackOrdinaryCone (p : A ⟶ C) (q : B ⟶ C) : Cone (laxPullbackDiagram p q) := qCatPullbackCone (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pullback_isAccessible {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B) (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) : letI := hp.innerFibration IsAccessible (pullback p q)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Products.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "abbrev Fan (f : β → C) := Cone (Discrete.functor f)"
+          },
+          {
+            "line": 60,
+            "head": "def Fan.mk {f : β → C} (P : C) (p : ∀ b, P ⟶ f b) : Fan f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Discrete/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "structure Discrete (α : Type u₁) where"
+          },
+          {
+            "line": 61,
+            "head": "theorem Discrete.mk_as {α : Type u₁} (X : Discrete α) : Discrete.mk X.as = X := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : IsAccessible C := h.1"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "lemma space_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 SpaceInfinity.{u} := ⟨Cardinal.isRegular_aleph0, space_hasSmallColimits.hasSmallKappaFilteredColimits _, spaceCompactGeneratorCategory, inferInstance, spaceCompactGeneratorInclusion, spaceCompactGeneratorInclusion_isCompactGenerating⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "指定した形状族の余極限を持つ全圏と保存関手の高次圏、および Acc が前項 (a)(b)(c) を満たす。PrLFunctorSpace は presentable な対象の保存関手であり、ここでの任意の形状族の全余完備圏や Acc を構成しない。functor_isPresentable は個別の内部 Hom の性質にとどまる。"
+  },
+  "5.4.7.14": {
+    "page": 453,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.6",
+        "5.4.7",
+        "5.5.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          "SerrePositivity"
+        ],
+        "file_count": 864,
+        "line_count": 4001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 450,
+        "line_count": 1449
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests_native (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          },
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 77,
+            "head": "lemma accessible_limitPreservingHomModels {X Y : SSet.{u + 1}} [Quasicategory X] (hX : IsAccessible X) (G : Y ⟶ X) (hGa : IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) : ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u}, IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧ Nonempty (FunctorIso ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x) ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def kanHom_covariantModelIso (K : KanObject.{u}) : FunctorIso (covariantRepresentableInfinity (C := SpaceInfinity.{u}) (coherentNerveVertex K)) ((SSet.uliftFunctor.{u + 2, u + 1}).map (kanInternalHomInfinity K) ≫ Compact.spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallLimitFunctorContinuity.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma constantFunctorMap_preservesSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] : PreservesSmallColimits (constantFunctorMap A C)"
+          },
+          {
+            "line": 44,
+            "head": "lemma exists_spaceLimitFunctor (B : SSet.{u}) [Quasicategory B] : ∃ R : (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u} ⟶ SpaceInfinity.{u}, Nonempty (QCatAdjunction (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj B) SpaceInfinity.{u}) R) := (exists_rightAdjoint_iff_preservesSmallColimits space_isPresentable (functor_isPresentable B space_isPresentable) _).mpr (constantFunctorMap_preservesSmallColimits _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/ColimitCoconeFamilies.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def colimitCocones (K X : SSet.{u}) : SSet.{u} := (relativeInitialVertices (coconeRestriction K X) : SSet.{u})"
+          },
+          {
+            "line": 41,
+            "head": "instance colimitCocones_quasicategory (K X : SSet.{u}) [Quasicategory X] : Quasicategory (colimitCocones K X) := fullSubcomplexOnVertices_quasicategory _ _"
+          },
+          {
+            "line": 49,
+            "head": "lemma colimitCocones_vertex_iff {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCocone p) : InitialBoundaryLifting (coconeRestriction K X) (functorVertex c.val) ↔ IsColimitCone c := (isColimitCone_iff_initialBoundaryLifting c).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def laxPullbackDiagram (p : A ⟶ C) (q : B ⟶ C) : AsSmall.{u} WalkingCospan ⥤ QCat.{u} := qCatPullbackDiagram (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          },
+          {
+            "line": 36,
+            "head": "def laxPullbackOrdinaryCone (p : A ⟶ C) (q : B ⟶ C) : Cone (laxPullbackDiagram p q) := qCatPullbackCone (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pullback_isAccessible {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B) (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) : letI := hp.innerFibration IsAccessible (pullback p q)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Products.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "abbrev Fan (f : β → C) := Cone (Discrete.functor f)"
+          },
+          {
+            "line": 60,
+            "head": "def Fan.mk {f : β → C} (P : C) (p : ∀ b, P ⟶ f b) : Fan f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Discrete/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "structure Discrete (α : Type u₁) where"
+          },
+          {
+            "line": 61,
+            "head": "theorem Discrete.mk_as {α : Type u₁} (X : Discrete α) : Discrete.mk X.as = X := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : IsAccessible C := h.1"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "lemma space_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 SpaceInfinity.{u} := ⟨Cardinal.isRegular_aleph0, space_hasSmallColimits.hasSmallKappaFilteredColimits _, spaceCompactGeneratorCategory, inferInstance, spaceCompactGeneratorInclusion, spaceCompactGeneratorInclusion_isCompactGenerating⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "前項の任意の部分高次圏の切断閉性を全て Cartesian に替えて双対化する。oppositeQuasicategory と cartesian/cocartesian の対応は個々の模型の双対性であり、元の任意の部分高次圏に対する全切断の閉性・射の判定を述べない。"
+  },
+  "5.4.7.15": {
+    "page": 453,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.6",
+        "5.4.7",
+        "5.5.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          "SerrePositivity"
+        ],
+        "file_count": 864,
+        "line_count": 4001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 450,
+        "line_count": 1449
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests_native (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          },
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 77,
+            "head": "lemma accessible_limitPreservingHomModels {X Y : SSet.{u + 1}} [Quasicategory X] (hX : IsAccessible X) (G : Y ⟶ X) (hGa : IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) : ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u}, IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧ Nonempty (FunctorIso ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x) ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def kanHom_covariantModelIso (K : KanObject.{u}) : FunctorIso (covariantRepresentableInfinity (C := SpaceInfinity.{u}) (coherentNerveVertex K)) ((SSet.uliftFunctor.{u + 2, u + 1}).map (kanInternalHomInfinity K) ≫ Compact.spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallLimitFunctorContinuity.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma constantFunctorMap_preservesSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] : PreservesSmallColimits (constantFunctorMap A C)"
+          },
+          {
+            "line": 44,
+            "head": "lemma exists_spaceLimitFunctor (B : SSet.{u}) [Quasicategory B] : ∃ R : (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u} ⟶ SpaceInfinity.{u}, Nonempty (QCatAdjunction (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj B) SpaceInfinity.{u}) R) := (exists_rightAdjoint_iff_preservesSmallColimits space_isPresentable (functor_isPresentable B space_isPresentable) _).mpr (constantFunctorMap_preservesSmallColimits _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/ColimitCoconeFamilies.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def colimitCocones (K X : SSet.{u}) : SSet.{u} := (relativeInitialVertices (coconeRestriction K X) : SSet.{u})"
+          },
+          {
+            "line": 41,
+            "head": "instance colimitCocones_quasicategory (K X : SSet.{u}) [Quasicategory X] : Quasicategory (colimitCocones K X) := fullSubcomplexOnVertices_quasicategory _ _"
+          },
+          {
+            "line": 49,
+            "head": "lemma colimitCocones_vertex_iff {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCocone p) : InitialBoundaryLifting (coconeRestriction K X) (functorVertex c.val) ↔ IsColimitCone c := (isColimitCone_iff_initialBoundaryLifting c).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def laxPullbackDiagram (p : A ⟶ C) (q : B ⟶ C) : AsSmall.{u} WalkingCospan ⥤ QCat.{u} := qCatPullbackDiagram (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          },
+          {
+            "line": 36,
+            "head": "def laxPullbackOrdinaryCone (p : A ⟶ C) (q : B ⟶ C) : Cone (laxPullbackDiagram p q) := qCatPullbackCone (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pullback_isAccessible {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B) (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) : letI := hp.innerFibration IsAccessible (pullback p q)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Products.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "abbrev Fan (f : β → C) := Cone (Discrete.functor f)"
+          },
+          {
+            "line": 60,
+            "head": "def Fan.mk {f : β → C} (P : C) (p : ∀ b, P ⟶ f b) : Fan f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Discrete/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "structure Discrete (α : Type u₁) where"
+          },
+          {
+            "line": 61,
+            "head": "theorem Discrete.mk_as {α : Type u₁} (X : Discrete α) : Discrete.mk X.as = X := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : IsAccessible C := h.1"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "lemma space_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 SpaceInfinity.{u} := ⟨Cardinal.isRegular_aleph0, space_hasSmallColimits.hasSmallKappaFilteredColimits _, spaceCompactGeneratorCategory, inferInstance, spaceCompactGeneratorInclusion, spaceCompactGeneratorInclusion_isCompactGenerating⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "Δ¹ 上で F:C→D を分類する coCartesian M の全切断を C→D←Fun(Δ¹,D) の homotopy pullback と比較する。cocartesianSectionsEvaluate の同値は coCartesian な切断だけを対象にし、全切断ではない。laxPullback の一般の極限表示とこの M の切断準圏を結ぶ比較は見つからない。"
+  },
+  "5.4.7.17": {
+    "page": 456,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.6",
+        "5.4.7",
+        "5.5.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          "SerrePositivity"
+        ],
+        "file_count": 864,
+        "line_count": 4001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Aa]ccessible|[Cc]ompact.*[Ll]imit|[Ll]imit.*[Cc]ompact|[Ss]ection.*[Pp]ullback|[Pp]ullback.*[Ss]ection|cocartesianSectionsEvaluate|[Ss]igma.*[Cc]ategory|[Ii]ntersection|[Cc]olimitCocones)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 450,
+        "line_count": 1449
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests_native (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          },
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 77,
+            "head": "lemma accessible_limitPreservingHomModels {X Y : SSet.{u + 1}} [Quasicategory X] (hX : IsAccessible X) (G : Y ⟶ X) (hGa : IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) : ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u}, IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧ Nonempty (FunctorIso ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x) ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def kanHom_covariantModelIso (K : KanObject.{u}) : FunctorIso (covariantRepresentableInfinity (C := SpaceInfinity.{u}) (coherentNerveVertex K)) ((SSet.uliftFunctor.{u + 2, u + 1}).map (kanInternalHomInfinity K) ≫ Compact.spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 45,
+            "head": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallLimitFunctorContinuity.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma constantFunctorMap_preservesSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] : PreservesSmallColimits (constantFunctorMap A C)"
+          },
+          {
+            "line": 44,
+            "head": "lemma exists_spaceLimitFunctor (B : SSet.{u}) [Quasicategory B] : ∃ R : (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u} ⟶ SpaceInfinity.{u}, Nonempty (QCatAdjunction (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj B) SpaceInfinity.{u}) R) := (exists_rightAdjoint_iff_preservesSmallColimits space_isPresentable (functor_isPresentable B space_isPresentable) _).mpr (constantFunctorMap_preservesSmallColimits _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/ColimitCoconeFamilies.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def colimitCocones (K X : SSet.{u}) : SSet.{u} := (relativeInitialVertices (coconeRestriction K X) : SSet.{u})"
+          },
+          {
+            "line": 41,
+            "head": "instance colimitCocones_quasicategory (K X : SSet.{u}) [Quasicategory X] : Quasicategory (colimitCocones K X) := fullSubcomplexOnVertices_quasicategory _ _"
+          },
+          {
+            "line": 49,
+            "head": "lemma colimitCocones_vertex_iff {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCocone p) : InitialBoundaryLifting (coconeRestriction K X) (functorVertex c.val) ↔ IsColimitCone c := (isColimitCone_iff_initialBoundaryLifting c).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackLimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def laxPullbackDiagram (p : A ⟶ C) (q : B ⟶ C) : AsSmall.{u} WalkingCospan ⥤ QCat.{u} := qCatPullbackDiagram (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          },
+          {
+            "line": 36,
+            "head": "def laxPullbackOrdinaryCone (p : A ⟶ C) (q : B ⟶ C) : Cone (laxPullbackDiagram p q) := qCatPullbackCone (show qCatArrowObject C ⟶ qCatTensorObject C C from arrowEndpointPair C) (show qCatTensorObject A B ⟶ qCatTensorObject C C from p ⊗ₘ q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pullback_isAccessible {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B) (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) : letI := hp.innerFibration IsAccessible (pullback p q)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Products.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "abbrev Fan (f : β → C) := Cone (Discrete.functor f)"
+          },
+          {
+            "line": 60,
+            "head": "def Fan.mk {f : β → C} (P : C) (p : ∀ b, P ⟶ f b) : Fan f where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Discrete/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "structure Discrete (α : Type u₁) where"
+          },
+          {
+            "line": 61,
+            "head": "theorem Discrete.mk_as {α : Type u₁} (X : Discrete α) : Discrete.mk X.as = X := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : IsAccessible C := h.1"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "lemma space_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 SpaceInfinity.{u} := ⟨Cardinal.isRegular_aleph0, space_hasSmallColimits.hasSmallKappaFilteredColimits _, spaceCompactGeneratorCategory, inferInstance, spaceCompactGeneratorInclusion, spaceCompactGeneratorInclusion_isCompactGenerating⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "小基底上で accessible なファイバーと輸送を持つ Cartesian/coCartesian fibration の全切断の accessibility と全評価による関手の判定。functor_isPresentable は一定族の関手準圏の特別な構成だが、一般の p の全切断との比較を持たない。cocartesianSectionsEvaluate は coCartesian な切断の部分だけであり、ここでの全切断とは対象が違う。"
+  }
+}

@@ -1,0 +1,2610 @@
+{
+  "5.5.7.4": {
+    "page": 502,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.5.6",
+        "5.5.7",
+        "5.5.8"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          "SerrePositivity"
+        ],
+        "file_count": 852,
+        "line_count": 4536
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 159,
+        "line_count": 947
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleReflectiveImage.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma adjunction_isKappaCompact_image {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (hR : IsKappaAccessibleFunctor κ R) {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) : Compact.IsKappaCompact.{u, u + 1} κ (L.app (Opposite.op ⦋0⦌) x) := (adjunction_hom_preservesKappaFilteredColimits_iff a κ x).mp (hR.comp_universe hx)"
+          },
+          {
+            "line": 42,
+            "head": "lemma reflectiveImage_isKappaAccessible {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (e : FunctorIso (R ≫ L) (𝟙 D)) (hC : IsKappaAccessible κ C) (hD : HasSmallColimits D) (hsD : Ind.HasSmallFixedVertexMaps D) (hR : IsKappaAccessibleFunctor κ R) : IsKappaAccessible κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "def PrL : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} true)"
+          },
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 57,
+            "head": "instance prL_quasicategory : Quasicategory PrL.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} true)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndHomContinuityDetection.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallCompactModels.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma familySaturation_eq_kappaCompact {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {T : Type u} (v : T → C _⦋0⦌) (hv : ∀ t, Compact.IsKappaCompact.{u, u + 1} κ (v t)) (hcover : ∀ x : C _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} κ x → ∃ t, Nonempty (VertexIso x (v t))) : FamilySaturation v = Compact.IsKappaCompact.{u, u + 1} κ"
+          },
+          {
+            "line": 45,
+            "head": "lemma IsKappaAccessible.exists_smallCompactModel_of_smallFixedVertexMaps {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible κ C) (hX : Ind.HasSmallFixedVertexMaps C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj A) (Compact.kappaCompactObjects.{u, u + 1} κ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma isIdempotentComplete_iff_hasLimits (X : SSet.{u}) [Quasicategory X] : IsIdempotentComplete X ↔ ∀ d : CoherentIdempotent X, HasLimit d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalLocallyPresentable : Prop extends HasCardinalFilteredGenerator C κ, HasColimitsOfSize.{w, w} C where"
+          },
+          {
+            "line": 50,
+            "head": "class IsCardinalAccessibleCategory : Prop extends HasCardinalFilteredGenerator C κ, HasCardinalFilteredColimits.{w} C κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FilteredColimitCommutesFiniteLimit.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem colimitLimitToLimitColimit_injective : Function.Injective (colimitLimitToLimitColimit F)"
+          },
+          {
+            "line": 162,
+            "head": "theorem colimitLimitToLimitColimit_surjective : Function.Surjective (colimitLimitToLimitColimit F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma homotopy_const_of_weakDiagonal {K Z : SSet.{u}} [KanComplex Z] (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) (k : K _⦋0⦌) (f : K ⟶ Z) : Nonempty (SSet.Homotopy f (SSet.const (f.app (Opposite.op ⦋0⦌) k)))"
+          },
+          {
+            "line": 42,
+            "head": "lemma isWeaklyContractible_of_nonempty_of_weakDiagonal {K : SSet.{u}} (hk : Nonempty (K _⦋0⦌)) (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) : IsWeaklyContractible K"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma nonemptyFiniteDiagonal_isRightCofinal (B : SSet.{u}) [IsSiftedInfinity B] (n : ℕ) : IsRightCofinal (nonemptyFiniteDiagonal B n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "class IsSiftedInfinity (K : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 25,
+            "head": "instance isSiftedInfinity_of_filtered (K : SSet.{u}) [Quasicategory K] [F2.IsFilteredInfinity K] : IsSiftedInfinity K where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma fiberProductToProduct_isRightCofinal_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsRightCofinal (lift (pullback.fst p q) (pullback.snd p q))"
+          },
+          {
+            "line": 34,
+            "head": "lemma totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsWeakHomotopyEquivalence (F2.totalKanProductComparison p q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sigmaPresheaf_simplicialIndPresentation (C : SSet.{u}) [Quasicategory C] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (v : (SigmaPresheafInfinity C) _⦋0⦌) : ∃ (G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve SmallSimplexOpposite.{u}) ⟶ SigmaPresheafInfinity C) (d : JoinCocone G), IsColimitCone d ∧ Nonempty (VertexIso d.vertex v) ∧ ∀ n : SmallSimplexOpposite.{u}, Ind.IsIndVertex Cardinal.aleph0 C ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) (G.app (Opposite.op ⦋0⦌) (ULift.up (nerveVertex n))))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀"
+          },
+          {
+            "line": 44,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀ := sigmaLeftKanExtension_preservesSmallColimits_iff hC (fun I _ ↦ hD (nerve (Discrete I))) β hβ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def IsSigmaPresheaf {C : SSet.{u}} (F : (PresheafInfinity C) _⦋0⦌) : Prop := PreservesFiniteProductsFromSmallSource ((presheafInfinityObjectEquiv C).symm F)"
+          },
+          {
+            "line": 29,
+            "head": "lemma isSigmaPresheaf_object_iff {C : SSet.{u}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) : IsSigmaPresheaf (presheafInfinityObjectEquiv C F) ↔ PreservesFiniteProductsFromSmallSource F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def sigmaPresheafSiftedColimitCone : JoinCocone r := fullSubcomplexCoconeLift (IsSigmaPresheaf (C := C)) r (presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C)) (sigmaPresheafAmbientColimit_isSigmaPresheaf r)"
+          },
+          {
+            "line": 32,
+            "head": "lemma sigmaPresheafSiftedColimitCone_inclusion : F1B.kanPostcomposeCocone (sigmaPresheafInfinityInclusion C) (sigmaPresheafSiftedColimitCone r) = presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C) := fullSubcomplexCoconeLift_inclusion _ _ _ _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G"
+          },
+          {
+            "line": 47,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G := sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted hC (fun I _ ↦ hD (nerve (Discrete I))) G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def sigmaPresheafVertexFunctor {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u} := (presheafInfinityObjectEquiv C).symm ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F)"
+          },
+          {
+            "line": 30,
+            "head": "lemma sigmaPresheafVertexFunctor_vertex {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : functorVertex (sigmaPresheafVertexFunctor F) = (sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F := (presheafInfinityObjectEquiv C).apply_symm_apply _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma representablePresheafInfinity_preservesFiniteProducts {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : PreservesFiniteProductsFromSmallSource (representablePresheafInfinity y)"
+          },
+          {
+            "line": 35,
+            "head": "lemma representablePresheafInfinity_isSigmaPresheaf {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : IsSigmaPresheaf (functorVertex (representablePresheafInfinity y)) := (isSigmaPresheaf_object_iff _).mpr (representablePresheafInfinity_preservesFiniteProducts y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def PreservesFiniteProductsFromSmallSource {C : SSet.{u}} {X : SSet.{u + 1}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X) : Prop := ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C) (c : JoinCone p), IsLimitCone c → IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c))"
+          },
+          {
+            "line": 28,
+            "head": "lemma PreservesFiniteProductsFromSmallSource.map_isLimit {C : SSet.{u}} {X : SSet.{u + 1}} {F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X} (hF : PreservesFiniteProductsFromSmallSource F) {J : Type u} [Finite J] {p : nerve (Discrete J) ⟶ C} {c : JoinCone p} (hc : IsLimitCone c) : IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c)) := hF J p c hc"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def nonemptyFiniteDiagonal (B : SSet.{u}) : (n : ℕ) → B ⟶ nonemptyFiniteSSetProduct n (fun _ ↦ B) | 0 => 𝟙 B | n + 1 => lift (𝟙 B) (nonemptyFiniteDiagonal B n)"
+          },
+          {
+            "line": 28,
+            "head": "lemma nonemptyFiniteDiagonal_projection (B : SSet.{u}) (n : ℕ) (i : Fin (n + 1)) : nonemptyFiniteDiagonal B n ≫ nonemptyFiniteSSetProjection n (fun _ ↦ B) i = 𝟙 B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma relativeFunctorComposition_pointFiberEvaluation {B : SSet.{u}} (a b c : Over B) (x : B _⦋0⦌) (v : (vertexFiber a.hom x) _⦋0⦌) : relativeFunctorComposition a b c ≫ relativeFunctorFiberHom a.hom c.hom x ≫ evaluateFunctorAt v = ((relativeFunctorFiberHom a.hom b.hom x ≫ evaluateFunctorAt v) ▷ relativeFunctorSpace c.hom b.hom) ≫ relativeFunctorFiberEvaluation b.hom c.hom x"
+          },
+          {
+            "line": 38,
+            "head": "lemma canonicalYonedaRelativeComposition_evaluation {E D C : SSet.{u}} [Quasicategory C] (p : E ⟶ C.op) [LeftFibration p] (q : D ⟶ C.op) [LeftFibration q] (y : C _⦋0⦌) : relativeFunctorComposition (Over.mk (smallLeftUnstraighteningProjection (representablePresheafInfinity y))) (Over.mk q) (Over.mk p) ≫ canonicalYonedaUnstraighteningEvaluation p y = (canonicalYonedaUnstraighteningEvaluation q y ▷ relativeFunctorSpace p q) ≫ relativeFunctorFiberEvaluation q p (SSet.opObjEquiv.symm y)"
+          }
+        ]
+      }
+    ],
+    "decision": "τ≤n C の κ-filtered 閉性・反射の κ-continuity・compact 保存・κ-compact generation と retract 判定の五項目。反映像の compact 生成性は一般定理としてあるが、元の τ≤n と inclusion の κ-continuity との比較がなく、切断への適用の入力は供給されない。"
+  },
+  "5.5.7.5": {
+    "page": 503,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.5.6",
+        "5.5.7",
+        "5.5.8"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          "SerrePositivity"
+        ],
+        "file_count": 852,
+        "line_count": 4536
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 159,
+        "line_count": 947
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleReflectiveImage.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma adjunction_isKappaCompact_image {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (hR : IsKappaAccessibleFunctor κ R) {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) : Compact.IsKappaCompact.{u, u + 1} κ (L.app (Opposite.op ⦋0⦌) x) := (adjunction_hom_preservesKappaFilteredColimits_iff a κ x).mp (hR.comp_universe hx)"
+          },
+          {
+            "line": 42,
+            "head": "lemma reflectiveImage_isKappaAccessible {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (e : FunctorIso (R ≫ L) (𝟙 D)) (hC : IsKappaAccessible κ C) (hD : HasSmallColimits D) (hsD : Ind.HasSmallFixedVertexMaps D) (hR : IsKappaAccessibleFunctor κ R) : IsKappaAccessible κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "def PrL : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} true)"
+          },
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 57,
+            "head": "instance prL_quasicategory : Quasicategory PrL.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} true)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndHomContinuityDetection.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallCompactModels.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma familySaturation_eq_kappaCompact {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {T : Type u} (v : T → C _⦋0⦌) (hv : ∀ t, Compact.IsKappaCompact.{u, u + 1} κ (v t)) (hcover : ∀ x : C _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} κ x → ∃ t, Nonempty (VertexIso x (v t))) : FamilySaturation v = Compact.IsKappaCompact.{u, u + 1} κ"
+          },
+          {
+            "line": 45,
+            "head": "lemma IsKappaAccessible.exists_smallCompactModel_of_smallFixedVertexMaps {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible κ C) (hX : Ind.HasSmallFixedVertexMaps C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj A) (Compact.kappaCompactObjects.{u, u + 1} κ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma isIdempotentComplete_iff_hasLimits (X : SSet.{u}) [Quasicategory X] : IsIdempotentComplete X ↔ ∀ d : CoherentIdempotent X, HasLimit d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalLocallyPresentable : Prop extends HasCardinalFilteredGenerator C κ, HasColimitsOfSize.{w, w} C where"
+          },
+          {
+            "line": 50,
+            "head": "class IsCardinalAccessibleCategory : Prop extends HasCardinalFilteredGenerator C κ, HasCardinalFilteredColimits.{w} C κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FilteredColimitCommutesFiniteLimit.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem colimitLimitToLimitColimit_injective : Function.Injective (colimitLimitToLimitColimit F)"
+          },
+          {
+            "line": 162,
+            "head": "theorem colimitLimitToLimitColimit_surjective : Function.Surjective (colimitLimitToLimitColimit F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma homotopy_const_of_weakDiagonal {K Z : SSet.{u}} [KanComplex Z] (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) (k : K _⦋0⦌) (f : K ⟶ Z) : Nonempty (SSet.Homotopy f (SSet.const (f.app (Opposite.op ⦋0⦌) k)))"
+          },
+          {
+            "line": 42,
+            "head": "lemma isWeaklyContractible_of_nonempty_of_weakDiagonal {K : SSet.{u}} (hk : Nonempty (K _⦋0⦌)) (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) : IsWeaklyContractible K"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma nonemptyFiniteDiagonal_isRightCofinal (B : SSet.{u}) [IsSiftedInfinity B] (n : ℕ) : IsRightCofinal (nonemptyFiniteDiagonal B n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "class IsSiftedInfinity (K : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 25,
+            "head": "instance isSiftedInfinity_of_filtered (K : SSet.{u}) [Quasicategory K] [F2.IsFilteredInfinity K] : IsSiftedInfinity K where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma fiberProductToProduct_isRightCofinal_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsRightCofinal (lift (pullback.fst p q) (pullback.snd p q))"
+          },
+          {
+            "line": 34,
+            "head": "lemma totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsWeakHomotopyEquivalence (F2.totalKanProductComparison p q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sigmaPresheaf_simplicialIndPresentation (C : SSet.{u}) [Quasicategory C] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (v : (SigmaPresheafInfinity C) _⦋0⦌) : ∃ (G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve SmallSimplexOpposite.{u}) ⟶ SigmaPresheafInfinity C) (d : JoinCocone G), IsColimitCone d ∧ Nonempty (VertexIso d.vertex v) ∧ ∀ n : SmallSimplexOpposite.{u}, Ind.IsIndVertex Cardinal.aleph0 C ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) (G.app (Opposite.op ⦋0⦌) (ULift.up (nerveVertex n))))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀"
+          },
+          {
+            "line": 44,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀ := sigmaLeftKanExtension_preservesSmallColimits_iff hC (fun I _ ↦ hD (nerve (Discrete I))) β hβ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def IsSigmaPresheaf {C : SSet.{u}} (F : (PresheafInfinity C) _⦋0⦌) : Prop := PreservesFiniteProductsFromSmallSource ((presheafInfinityObjectEquiv C).symm F)"
+          },
+          {
+            "line": 29,
+            "head": "lemma isSigmaPresheaf_object_iff {C : SSet.{u}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) : IsSigmaPresheaf (presheafInfinityObjectEquiv C F) ↔ PreservesFiniteProductsFromSmallSource F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def sigmaPresheafSiftedColimitCone : JoinCocone r := fullSubcomplexCoconeLift (IsSigmaPresheaf (C := C)) r (presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C)) (sigmaPresheafAmbientColimit_isSigmaPresheaf r)"
+          },
+          {
+            "line": 32,
+            "head": "lemma sigmaPresheafSiftedColimitCone_inclusion : F1B.kanPostcomposeCocone (sigmaPresheafInfinityInclusion C) (sigmaPresheafSiftedColimitCone r) = presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C) := fullSubcomplexCoconeLift_inclusion _ _ _ _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G"
+          },
+          {
+            "line": 47,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G := sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted hC (fun I _ ↦ hD (nerve (Discrete I))) G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def sigmaPresheafVertexFunctor {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u} := (presheafInfinityObjectEquiv C).symm ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F)"
+          },
+          {
+            "line": 30,
+            "head": "lemma sigmaPresheafVertexFunctor_vertex {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : functorVertex (sigmaPresheafVertexFunctor F) = (sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F := (presheafInfinityObjectEquiv C).apply_symm_apply _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma representablePresheafInfinity_preservesFiniteProducts {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : PreservesFiniteProductsFromSmallSource (representablePresheafInfinity y)"
+          },
+          {
+            "line": 35,
+            "head": "lemma representablePresheafInfinity_isSigmaPresheaf {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : IsSigmaPresheaf (functorVertex (representablePresheafInfinity y)) := (isSigmaPresheaf_object_iff _).mpr (representablePresheafInfinity_preservesFiniteProducts y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def PreservesFiniteProductsFromSmallSource {C : SSet.{u}} {X : SSet.{u + 1}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X) : Prop := ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C) (c : JoinCone p), IsLimitCone c → IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c))"
+          },
+          {
+            "line": 28,
+            "head": "lemma PreservesFiniteProductsFromSmallSource.map_isLimit {C : SSet.{u}} {X : SSet.{u + 1}} {F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X} (hF : PreservesFiniteProductsFromSmallSource F) {J : Type u} [Finite J] {p : nerve (Discrete J) ⟶ C} {c : JoinCone p} (hc : IsLimitCone c) : IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c)) := hF J p c hc"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def nonemptyFiniteDiagonal (B : SSet.{u}) : (n : ℕ) → B ⟶ nonemptyFiniteSSetProduct n (fun _ ↦ B) | 0 => 𝟙 B | n + 1 => lift (𝟙 B) (nonemptyFiniteDiagonal B n)"
+          },
+          {
+            "line": 28,
+            "head": "lemma nonemptyFiniteDiagonal_projection (B : SSet.{u}) (n : ℕ) (i : Fin (n + 1)) : nonemptyFiniteDiagonal B n ≫ nonemptyFiniteSSetProjection n (fun _ ↦ B) i = 𝟙 B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma relativeFunctorComposition_pointFiberEvaluation {B : SSet.{u}} (a b c : Over B) (x : B _⦋0⦌) (v : (vertexFiber a.hom x) _⦋0⦌) : relativeFunctorComposition a b c ≫ relativeFunctorFiberHom a.hom c.hom x ≫ evaluateFunctorAt v = ((relativeFunctorFiberHom a.hom b.hom x ≫ evaluateFunctorAt v) ▷ relativeFunctorSpace c.hom b.hom) ≫ relativeFunctorFiberEvaluation b.hom c.hom x"
+          },
+          {
+            "line": 38,
+            "head": "lemma canonicalYonedaRelativeComposition_evaluation {E D C : SSet.{u}} [Quasicategory C] (p : E ⟶ C.op) [LeftFibration p] (q : D ⟶ C.op) [LeftFibration q] (y : C _⦋0⦌) : relativeFunctorComposition (Over.mk (smallLeftUnstraighteningProjection (representablePresheafInfinity y))) (Over.mk q) (Over.mk p) ≫ canonicalYonedaUnstraighteningEvaluation p y = (canonicalYonedaUnstraighteningEvaluation q y ▷ relativeFunctorSpace p q) ≫ relativeFunctorFiberEvaluation q p (SSet.opObjEquiv.symm y)"
+          }
+        ]
+      }
+    ],
+    "decision": "PrRκ の対象・射・全高次単体を備える部分高次圏の定義。PrR はあるが、κ-compactly generated 対象と指定 κ-continuous 射に制限した coherent nerve は定義されない。二つの対象述語と保存述語だけをこの全高次圏の構成と数えない。"
+  },
+  "5.5.7.6": {
+    "page": 503,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.5.6",
+        "5.5.7",
+        "5.5.8"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          "SerrePositivity"
+        ],
+        "file_count": 852,
+        "line_count": 4536
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 159,
+        "line_count": 947
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleReflectiveImage.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma adjunction_isKappaCompact_image {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (hR : IsKappaAccessibleFunctor κ R) {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) : Compact.IsKappaCompact.{u, u + 1} κ (L.app (Opposite.op ⦋0⦌) x) := (adjunction_hom_preservesKappaFilteredColimits_iff a κ x).mp (hR.comp_universe hx)"
+          },
+          {
+            "line": 42,
+            "head": "lemma reflectiveImage_isKappaAccessible {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (e : FunctorIso (R ≫ L) (𝟙 D)) (hC : IsKappaAccessible κ C) (hD : HasSmallColimits D) (hsD : Ind.HasSmallFixedVertexMaps D) (hR : IsKappaAccessibleFunctor κ R) : IsKappaAccessible κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "def PrL : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} true)"
+          },
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 57,
+            "head": "instance prL_quasicategory : Quasicategory PrL.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} true)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndHomContinuityDetection.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallCompactModels.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma familySaturation_eq_kappaCompact {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {T : Type u} (v : T → C _⦋0⦌) (hv : ∀ t, Compact.IsKappaCompact.{u, u + 1} κ (v t)) (hcover : ∀ x : C _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} κ x → ∃ t, Nonempty (VertexIso x (v t))) : FamilySaturation v = Compact.IsKappaCompact.{u, u + 1} κ"
+          },
+          {
+            "line": 45,
+            "head": "lemma IsKappaAccessible.exists_smallCompactModel_of_smallFixedVertexMaps {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible κ C) (hX : Ind.HasSmallFixedVertexMaps C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj A) (Compact.kappaCompactObjects.{u, u + 1} κ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma isIdempotentComplete_iff_hasLimits (X : SSet.{u}) [Quasicategory X] : IsIdempotentComplete X ↔ ∀ d : CoherentIdempotent X, HasLimit d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalLocallyPresentable : Prop extends HasCardinalFilteredGenerator C κ, HasColimitsOfSize.{w, w} C where"
+          },
+          {
+            "line": 50,
+            "head": "class IsCardinalAccessibleCategory : Prop extends HasCardinalFilteredGenerator C κ, HasCardinalFilteredColimits.{w} C κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FilteredColimitCommutesFiniteLimit.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem colimitLimitToLimitColimit_injective : Function.Injective (colimitLimitToLimitColimit F)"
+          },
+          {
+            "line": 162,
+            "head": "theorem colimitLimitToLimitColimit_surjective : Function.Surjective (colimitLimitToLimitColimit F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma homotopy_const_of_weakDiagonal {K Z : SSet.{u}} [KanComplex Z] (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) (k : K _⦋0⦌) (f : K ⟶ Z) : Nonempty (SSet.Homotopy f (SSet.const (f.app (Opposite.op ⦋0⦌) k)))"
+          },
+          {
+            "line": 42,
+            "head": "lemma isWeaklyContractible_of_nonempty_of_weakDiagonal {K : SSet.{u}} (hk : Nonempty (K _⦋0⦌)) (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) : IsWeaklyContractible K"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma nonemptyFiniteDiagonal_isRightCofinal (B : SSet.{u}) [IsSiftedInfinity B] (n : ℕ) : IsRightCofinal (nonemptyFiniteDiagonal B n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "class IsSiftedInfinity (K : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 25,
+            "head": "instance isSiftedInfinity_of_filtered (K : SSet.{u}) [Quasicategory K] [F2.IsFilteredInfinity K] : IsSiftedInfinity K where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma fiberProductToProduct_isRightCofinal_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsRightCofinal (lift (pullback.fst p q) (pullback.snd p q))"
+          },
+          {
+            "line": 34,
+            "head": "lemma totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsWeakHomotopyEquivalence (F2.totalKanProductComparison p q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sigmaPresheaf_simplicialIndPresentation (C : SSet.{u}) [Quasicategory C] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (v : (SigmaPresheafInfinity C) _⦋0⦌) : ∃ (G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve SmallSimplexOpposite.{u}) ⟶ SigmaPresheafInfinity C) (d : JoinCocone G), IsColimitCone d ∧ Nonempty (VertexIso d.vertex v) ∧ ∀ n : SmallSimplexOpposite.{u}, Ind.IsIndVertex Cardinal.aleph0 C ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) (G.app (Opposite.op ⦋0⦌) (ULift.up (nerveVertex n))))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀"
+          },
+          {
+            "line": 44,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀ := sigmaLeftKanExtension_preservesSmallColimits_iff hC (fun I _ ↦ hD (nerve (Discrete I))) β hβ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def IsSigmaPresheaf {C : SSet.{u}} (F : (PresheafInfinity C) _⦋0⦌) : Prop := PreservesFiniteProductsFromSmallSource ((presheafInfinityObjectEquiv C).symm F)"
+          },
+          {
+            "line": 29,
+            "head": "lemma isSigmaPresheaf_object_iff {C : SSet.{u}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) : IsSigmaPresheaf (presheafInfinityObjectEquiv C F) ↔ PreservesFiniteProductsFromSmallSource F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def sigmaPresheafSiftedColimitCone : JoinCocone r := fullSubcomplexCoconeLift (IsSigmaPresheaf (C := C)) r (presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C)) (sigmaPresheafAmbientColimit_isSigmaPresheaf r)"
+          },
+          {
+            "line": 32,
+            "head": "lemma sigmaPresheafSiftedColimitCone_inclusion : F1B.kanPostcomposeCocone (sigmaPresheafInfinityInclusion C) (sigmaPresheafSiftedColimitCone r) = presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C) := fullSubcomplexCoconeLift_inclusion _ _ _ _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G"
+          },
+          {
+            "line": 47,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G := sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted hC (fun I _ ↦ hD (nerve (Discrete I))) G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def sigmaPresheafVertexFunctor {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u} := (presheafInfinityObjectEquiv C).symm ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F)"
+          },
+          {
+            "line": 30,
+            "head": "lemma sigmaPresheafVertexFunctor_vertex {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : functorVertex (sigmaPresheafVertexFunctor F) = (sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F := (presheafInfinityObjectEquiv C).apply_symm_apply _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma representablePresheafInfinity_preservesFiniteProducts {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : PreservesFiniteProductsFromSmallSource (representablePresheafInfinity y)"
+          },
+          {
+            "line": 35,
+            "head": "lemma representablePresheafInfinity_isSigmaPresheaf {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : IsSigmaPresheaf (functorVertex (representablePresheafInfinity y)) := (isSigmaPresheaf_object_iff _).mpr (representablePresheafInfinity_preservesFiniteProducts y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def PreservesFiniteProductsFromSmallSource {C : SSet.{u}} {X : SSet.{u + 1}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X) : Prop := ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C) (c : JoinCone p), IsLimitCone c → IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c))"
+          },
+          {
+            "line": 28,
+            "head": "lemma PreservesFiniteProductsFromSmallSource.map_isLimit {C : SSet.{u}} {X : SSet.{u + 1}} {F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X} (hF : PreservesFiniteProductsFromSmallSource F) {J : Type u} [Finite J] {p : nerve (Discrete J) ⟶ C} {c : JoinCone p} (hc : IsLimitCone c) : IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c)) := hF J p c hc"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def nonemptyFiniteDiagonal (B : SSet.{u}) : (n : ℕ) → B ⟶ nonemptyFiniteSSetProduct n (fun _ ↦ B) | 0 => 𝟙 B | n + 1 => lift (𝟙 B) (nonemptyFiniteDiagonal B n)"
+          },
+          {
+            "line": 28,
+            "head": "lemma nonemptyFiniteDiagonal_projection (B : SSet.{u}) (n : ℕ) (i : Fin (n + 1)) : nonemptyFiniteDiagonal B n ≫ nonemptyFiniteSSetProjection n (fun _ ↦ B) i = 𝟙 B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma relativeFunctorComposition_pointFiberEvaluation {B : SSet.{u}} (a b c : Over B) (x : B _⦋0⦌) (v : (vertexFiber a.hom x) _⦋0⦌) : relativeFunctorComposition a b c ≫ relativeFunctorFiberHom a.hom c.hom x ≫ evaluateFunctorAt v = ((relativeFunctorFiberHom a.hom b.hom x ≫ evaluateFunctorAt v) ▷ relativeFunctorSpace c.hom b.hom) ≫ relativeFunctorFiberEvaluation b.hom c.hom x"
+          },
+          {
+            "line": 38,
+            "head": "lemma canonicalYonedaRelativeComposition_evaluation {E D C : SSet.{u}} [Quasicategory C] (p : E ⟶ C.op) [LeftFibration p] (q : D ⟶ C.op) [LeftFibration q] (y : C _⦋0⦌) : relativeFunctorComposition (Over.mk (smallLeftUnstraighteningProjection (representablePresheafInfinity y))) (Over.mk q) (Over.mk p) ≫ canonicalYonedaUnstraighteningEvaluation p y = (canonicalYonedaUnstraighteningEvaluation q y ▷ relativeFunctorSpace p q) ≫ relativeFunctorFiberEvaluation q p (SSet.opObjEquiv.symm y)"
+          }
+        ]
+      }
+    ],
+    "decision": "PrRκ の全小極限存在と Cat∞ 包含の保存性。個別の積・accessible pullback はあるが、PrRκ は未構成であり、任意の指定図式の極限の κ-compact 生成対象の構成と包含の比較はない。"
+  },
+  "5.5.7.7": {
+    "page": 503,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.5.6",
+        "5.5.7",
+        "5.5.8"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          "SerrePositivity"
+        ],
+        "file_count": 852,
+        "line_count": 4536
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 159,
+        "line_count": 947
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleReflectiveImage.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma adjunction_isKappaCompact_image {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (hR : IsKappaAccessibleFunctor κ R) {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) : Compact.IsKappaCompact.{u, u + 1} κ (L.app (Opposite.op ⦋0⦌) x) := (adjunction_hom_preservesKappaFilteredColimits_iff a κ x).mp (hR.comp_universe hx)"
+          },
+          {
+            "line": 42,
+            "head": "lemma reflectiveImage_isKappaAccessible {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (e : FunctorIso (R ≫ L) (𝟙 D)) (hC : IsKappaAccessible κ C) (hD : HasSmallColimits D) (hsD : Ind.HasSmallFixedVertexMaps D) (hR : IsKappaAccessibleFunctor κ R) : IsKappaAccessible κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "def PrL : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} true)"
+          },
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 57,
+            "head": "instance prL_quasicategory : Quasicategory PrL.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} true)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndHomContinuityDetection.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallCompactModels.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma familySaturation_eq_kappaCompact {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {T : Type u} (v : T → C _⦋0⦌) (hv : ∀ t, Compact.IsKappaCompact.{u, u + 1} κ (v t)) (hcover : ∀ x : C _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} κ x → ∃ t, Nonempty (VertexIso x (v t))) : FamilySaturation v = Compact.IsKappaCompact.{u, u + 1} κ"
+          },
+          {
+            "line": 45,
+            "head": "lemma IsKappaAccessible.exists_smallCompactModel_of_smallFixedVertexMaps {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible κ C) (hX : Ind.HasSmallFixedVertexMaps C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj A) (Compact.kappaCompactObjects.{u, u + 1} κ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma isIdempotentComplete_iff_hasLimits (X : SSet.{u}) [Quasicategory X] : IsIdempotentComplete X ↔ ∀ d : CoherentIdempotent X, HasLimit d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalLocallyPresentable : Prop extends HasCardinalFilteredGenerator C κ, HasColimitsOfSize.{w, w} C where"
+          },
+          {
+            "line": 50,
+            "head": "class IsCardinalAccessibleCategory : Prop extends HasCardinalFilteredGenerator C κ, HasCardinalFilteredColimits.{w} C κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FilteredColimitCommutesFiniteLimit.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem colimitLimitToLimitColimit_injective : Function.Injective (colimitLimitToLimitColimit F)"
+          },
+          {
+            "line": 162,
+            "head": "theorem colimitLimitToLimitColimit_surjective : Function.Surjective (colimitLimitToLimitColimit F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma homotopy_const_of_weakDiagonal {K Z : SSet.{u}} [KanComplex Z] (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) (k : K _⦋0⦌) (f : K ⟶ Z) : Nonempty (SSet.Homotopy f (SSet.const (f.app (Opposite.op ⦋0⦌) k)))"
+          },
+          {
+            "line": 42,
+            "head": "lemma isWeaklyContractible_of_nonempty_of_weakDiagonal {K : SSet.{u}} (hk : Nonempty (K _⦋0⦌)) (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) : IsWeaklyContractible K"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma nonemptyFiniteDiagonal_isRightCofinal (B : SSet.{u}) [IsSiftedInfinity B] (n : ℕ) : IsRightCofinal (nonemptyFiniteDiagonal B n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "class IsSiftedInfinity (K : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 25,
+            "head": "instance isSiftedInfinity_of_filtered (K : SSet.{u}) [Quasicategory K] [F2.IsFilteredInfinity K] : IsSiftedInfinity K where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma fiberProductToProduct_isRightCofinal_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsRightCofinal (lift (pullback.fst p q) (pullback.snd p q))"
+          },
+          {
+            "line": 34,
+            "head": "lemma totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsWeakHomotopyEquivalence (F2.totalKanProductComparison p q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sigmaPresheaf_simplicialIndPresentation (C : SSet.{u}) [Quasicategory C] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (v : (SigmaPresheafInfinity C) _⦋0⦌) : ∃ (G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve SmallSimplexOpposite.{u}) ⟶ SigmaPresheafInfinity C) (d : JoinCocone G), IsColimitCone d ∧ Nonempty (VertexIso d.vertex v) ∧ ∀ n : SmallSimplexOpposite.{u}, Ind.IsIndVertex Cardinal.aleph0 C ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) (G.app (Opposite.op ⦋0⦌) (ULift.up (nerveVertex n))))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀"
+          },
+          {
+            "line": 44,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀ := sigmaLeftKanExtension_preservesSmallColimits_iff hC (fun I _ ↦ hD (nerve (Discrete I))) β hβ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def IsSigmaPresheaf {C : SSet.{u}} (F : (PresheafInfinity C) _⦋0⦌) : Prop := PreservesFiniteProductsFromSmallSource ((presheafInfinityObjectEquiv C).symm F)"
+          },
+          {
+            "line": 29,
+            "head": "lemma isSigmaPresheaf_object_iff {C : SSet.{u}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) : IsSigmaPresheaf (presheafInfinityObjectEquiv C F) ↔ PreservesFiniteProductsFromSmallSource F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def sigmaPresheafSiftedColimitCone : JoinCocone r := fullSubcomplexCoconeLift (IsSigmaPresheaf (C := C)) r (presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C)) (sigmaPresheafAmbientColimit_isSigmaPresheaf r)"
+          },
+          {
+            "line": 32,
+            "head": "lemma sigmaPresheafSiftedColimitCone_inclusion : F1B.kanPostcomposeCocone (sigmaPresheafInfinityInclusion C) (sigmaPresheafSiftedColimitCone r) = presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C) := fullSubcomplexCoconeLift_inclusion _ _ _ _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G"
+          },
+          {
+            "line": 47,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G := sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted hC (fun I _ ↦ hD (nerve (Discrete I))) G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def sigmaPresheafVertexFunctor {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u} := (presheafInfinityObjectEquiv C).symm ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F)"
+          },
+          {
+            "line": 30,
+            "head": "lemma sigmaPresheafVertexFunctor_vertex {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : functorVertex (sigmaPresheafVertexFunctor F) = (sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F := (presheafInfinityObjectEquiv C).apply_symm_apply _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma representablePresheafInfinity_preservesFiniteProducts {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : PreservesFiniteProductsFromSmallSource (representablePresheafInfinity y)"
+          },
+          {
+            "line": 35,
+            "head": "lemma representablePresheafInfinity_isSigmaPresheaf {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : IsSigmaPresheaf (functorVertex (representablePresheafInfinity y)) := (isSigmaPresheaf_object_iff _).mpr (representablePresheafInfinity_preservesFiniteProducts y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def PreservesFiniteProductsFromSmallSource {C : SSet.{u}} {X : SSet.{u + 1}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X) : Prop := ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C) (c : JoinCone p), IsLimitCone c → IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c))"
+          },
+          {
+            "line": 28,
+            "head": "lemma PreservesFiniteProductsFromSmallSource.map_isLimit {C : SSet.{u}} {X : SSet.{u + 1}} {F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X} (hF : PreservesFiniteProductsFromSmallSource F) {J : Type u} [Finite J] {p : nerve (Discrete J) ⟶ C} {c : JoinCone p} (hc : IsLimitCone c) : IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c)) := hF J p c hc"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def nonemptyFiniteDiagonal (B : SSet.{u}) : (n : ℕ) → B ⟶ nonemptyFiniteSSetProduct n (fun _ ↦ B) | 0 => 𝟙 B | n + 1 => lift (𝟙 B) (nonemptyFiniteDiagonal B n)"
+          },
+          {
+            "line": 28,
+            "head": "lemma nonemptyFiniteDiagonal_projection (B : SSet.{u}) (n : ℕ) (i : Fin (n + 1)) : nonemptyFiniteDiagonal B n ≫ nonemptyFiniteSSetProjection n (fun _ ↦ B) i = 𝟙 B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma relativeFunctorComposition_pointFiberEvaluation {B : SSet.{u}} (a b c : Over B) (x : B _⦋0⦌) (v : (vertexFiber a.hom x) _⦋0⦌) : relativeFunctorComposition a b c ≫ relativeFunctorFiberHom a.hom c.hom x ≫ evaluateFunctorAt v = ((relativeFunctorFiberHom a.hom b.hom x ≫ evaluateFunctorAt v) ▷ relativeFunctorSpace c.hom b.hom) ≫ relativeFunctorFiberEvaluation b.hom c.hom x"
+          },
+          {
+            "line": 38,
+            "head": "lemma canonicalYonedaRelativeComposition_evaluation {E D C : SSet.{u}} [Quasicategory C] (p : E ⟶ C.op) [LeftFibration p] (q : D ⟶ C.op) [LeftFibration q] (y : C _⦋0⦌) : relativeFunctorComposition (Over.mk (smallLeftUnstraighteningProjection (representablePresheafInfinity y))) (Over.mk q) (Over.mk p) ≫ canonicalYonedaUnstraighteningEvaluation p y = (canonicalYonedaUnstraighteningEvaluation q y ▷ relativeFunctorSpace p q) ≫ relativeFunctorFiberEvaluation q p (SSet.opObjEquiv.symm y)"
+          }
+        ]
+      }
+    ],
+    "decision": "PrLκ と Rex(κ) 圏、および PrLκ≃(PrRκ)op の定義と同値。固定 C,D の随伴関手圏の反同値はあるが、κ-compact 保存と κ-continuity に制限した全対象の高次圏やその同値はない。局所的な随伴対応の部品を数えない。"
+  },
+  "5.5.7.8": {
+    "page": 503,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.5.6",
+        "5.5.7",
+        "5.5.8"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          "SerrePositivity"
+        ],
+        "file_count": 852,
+        "line_count": 4536
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 159,
+        "line_count": 947
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleReflectiveImage.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma adjunction_isKappaCompact_image {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (hR : IsKappaAccessibleFunctor κ R) {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) : Compact.IsKappaCompact.{u, u + 1} κ (L.app (Opposite.op ⦋0⦌) x) := (adjunction_hom_preservesKappaFilteredColimits_iff a κ x).mp (hR.comp_universe hx)"
+          },
+          {
+            "line": 42,
+            "head": "lemma reflectiveImage_isKappaAccessible {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (e : FunctorIso (R ≫ L) (𝟙 D)) (hC : IsKappaAccessible κ C) (hD : HasSmallColimits D) (hsD : Ind.HasSmallFixedVertexMaps D) (hR : IsKappaAccessibleFunctor κ R) : IsKappaAccessible κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "def PrL : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} true)"
+          },
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 57,
+            "head": "instance prL_quasicategory : Quasicategory PrL.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} true)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndHomContinuityDetection.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallCompactModels.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma familySaturation_eq_kappaCompact {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {T : Type u} (v : T → C _⦋0⦌) (hv : ∀ t, Compact.IsKappaCompact.{u, u + 1} κ (v t)) (hcover : ∀ x : C _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} κ x → ∃ t, Nonempty (VertexIso x (v t))) : FamilySaturation v = Compact.IsKappaCompact.{u, u + 1} κ"
+          },
+          {
+            "line": 45,
+            "head": "lemma IsKappaAccessible.exists_smallCompactModel_of_smallFixedVertexMaps {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible κ C) (hX : Ind.HasSmallFixedVertexMaps C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj A) (Compact.kappaCompactObjects.{u, u + 1} κ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma isIdempotentComplete_iff_hasLimits (X : SSet.{u}) [Quasicategory X] : IsIdempotentComplete X ↔ ∀ d : CoherentIdempotent X, HasLimit d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalLocallyPresentable : Prop extends HasCardinalFilteredGenerator C κ, HasColimitsOfSize.{w, w} C where"
+          },
+          {
+            "line": 50,
+            "head": "class IsCardinalAccessibleCategory : Prop extends HasCardinalFilteredGenerator C κ, HasCardinalFilteredColimits.{w} C κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FilteredColimitCommutesFiniteLimit.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem colimitLimitToLimitColimit_injective : Function.Injective (colimitLimitToLimitColimit F)"
+          },
+          {
+            "line": 162,
+            "head": "theorem colimitLimitToLimitColimit_surjective : Function.Surjective (colimitLimitToLimitColimit F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma homotopy_const_of_weakDiagonal {K Z : SSet.{u}} [KanComplex Z] (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) (k : K _⦋0⦌) (f : K ⟶ Z) : Nonempty (SSet.Homotopy f (SSet.const (f.app (Opposite.op ⦋0⦌) k)))"
+          },
+          {
+            "line": 42,
+            "head": "lemma isWeaklyContractible_of_nonempty_of_weakDiagonal {K : SSet.{u}} (hk : Nonempty (K _⦋0⦌)) (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) : IsWeaklyContractible K"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma nonemptyFiniteDiagonal_isRightCofinal (B : SSet.{u}) [IsSiftedInfinity B] (n : ℕ) : IsRightCofinal (nonemptyFiniteDiagonal B n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "class IsSiftedInfinity (K : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 25,
+            "head": "instance isSiftedInfinity_of_filtered (K : SSet.{u}) [Quasicategory K] [F2.IsFilteredInfinity K] : IsSiftedInfinity K where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma fiberProductToProduct_isRightCofinal_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsRightCofinal (lift (pullback.fst p q) (pullback.snd p q))"
+          },
+          {
+            "line": 34,
+            "head": "lemma totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsWeakHomotopyEquivalence (F2.totalKanProductComparison p q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sigmaPresheaf_simplicialIndPresentation (C : SSet.{u}) [Quasicategory C] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (v : (SigmaPresheafInfinity C) _⦋0⦌) : ∃ (G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve SmallSimplexOpposite.{u}) ⟶ SigmaPresheafInfinity C) (d : JoinCocone G), IsColimitCone d ∧ Nonempty (VertexIso d.vertex v) ∧ ∀ n : SmallSimplexOpposite.{u}, Ind.IsIndVertex Cardinal.aleph0 C ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) (G.app (Opposite.op ⦋0⦌) (ULift.up (nerveVertex n))))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀"
+          },
+          {
+            "line": 44,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀ := sigmaLeftKanExtension_preservesSmallColimits_iff hC (fun I _ ↦ hD (nerve (Discrete I))) β hβ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def IsSigmaPresheaf {C : SSet.{u}} (F : (PresheafInfinity C) _⦋0⦌) : Prop := PreservesFiniteProductsFromSmallSource ((presheafInfinityObjectEquiv C).symm F)"
+          },
+          {
+            "line": 29,
+            "head": "lemma isSigmaPresheaf_object_iff {C : SSet.{u}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) : IsSigmaPresheaf (presheafInfinityObjectEquiv C F) ↔ PreservesFiniteProductsFromSmallSource F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def sigmaPresheafSiftedColimitCone : JoinCocone r := fullSubcomplexCoconeLift (IsSigmaPresheaf (C := C)) r (presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C)) (sigmaPresheafAmbientColimit_isSigmaPresheaf r)"
+          },
+          {
+            "line": 32,
+            "head": "lemma sigmaPresheafSiftedColimitCone_inclusion : F1B.kanPostcomposeCocone (sigmaPresheafInfinityInclusion C) (sigmaPresheafSiftedColimitCone r) = presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C) := fullSubcomplexCoconeLift_inclusion _ _ _ _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G"
+          },
+          {
+            "line": 47,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G := sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted hC (fun I _ ↦ hD (nerve (Discrete I))) G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def sigmaPresheafVertexFunctor {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u} := (presheafInfinityObjectEquiv C).symm ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F)"
+          },
+          {
+            "line": 30,
+            "head": "lemma sigmaPresheafVertexFunctor_vertex {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : functorVertex (sigmaPresheafVertexFunctor F) = (sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F := (presheafInfinityObjectEquiv C).apply_symm_apply _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma representablePresheafInfinity_preservesFiniteProducts {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : PreservesFiniteProductsFromSmallSource (representablePresheafInfinity y)"
+          },
+          {
+            "line": 35,
+            "head": "lemma representablePresheafInfinity_isSigmaPresheaf {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : IsSigmaPresheaf (functorVertex (representablePresheafInfinity y)) := (isSigmaPresheaf_object_iff _).mpr (representablePresheafInfinity_preservesFiniteProducts y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def PreservesFiniteProductsFromSmallSource {C : SSet.{u}} {X : SSet.{u + 1}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X) : Prop := ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C) (c : JoinCone p), IsLimitCone c → IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c))"
+          },
+          {
+            "line": 28,
+            "head": "lemma PreservesFiniteProductsFromSmallSource.map_isLimit {C : SSet.{u}} {X : SSet.{u + 1}} {F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X} (hF : PreservesFiniteProductsFromSmallSource F) {J : Type u} [Finite J] {p : nerve (Discrete J) ⟶ C} {c : JoinCone p} (hc : IsLimitCone c) : IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c)) := hF J p c hc"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def nonemptyFiniteDiagonal (B : SSet.{u}) : (n : ℕ) → B ⟶ nonemptyFiniteSSetProduct n (fun _ ↦ B) | 0 => 𝟙 B | n + 1 => lift (𝟙 B) (nonemptyFiniteDiagonal B n)"
+          },
+          {
+            "line": 28,
+            "head": "lemma nonemptyFiniteDiagonal_projection (B : SSet.{u}) (n : ℕ) (i : Fin (n + 1)) : nonemptyFiniteDiagonal B n ≫ nonemptyFiniteSSetProjection n (fun _ ↦ B) i = 𝟙 B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma relativeFunctorComposition_pointFiberEvaluation {B : SSet.{u}} (a b c : Over B) (x : B _⦋0⦌) (v : (vertexFiber a.hom x) _⦋0⦌) : relativeFunctorComposition a b c ≫ relativeFunctorFiberHom a.hom c.hom x ≫ evaluateFunctorAt v = ((relativeFunctorFiberHom a.hom b.hom x ≫ evaluateFunctorAt v) ▷ relativeFunctorSpace c.hom b.hom) ≫ relativeFunctorFiberEvaluation b.hom c.hom x"
+          },
+          {
+            "line": 38,
+            "head": "lemma canonicalYonedaRelativeComposition_evaluation {E D C : SSet.{u}} [Quasicategory C] (p : E ⟶ C.op) [LeftFibration p] (q : D ⟶ C.op) [LeftFibration q] (y : C _⦋0⦌) : relativeFunctorComposition (Over.mk (smallLeftUnstraighteningProjection (representablePresheafInfinity y))) (Over.mk q) (Over.mk p) ≫ canonicalYonedaUnstraighteningEvaluation p y = (canonicalYonedaUnstraighteningEvaluation q y ▷ relativeFunctorSpace p q) ≫ relativeFunctorFiberEvaluation q p (SSet.opObjEquiv.symm y)"
+          }
+        ]
+      }
+    ],
+    "decision": "PrLκ から全 κ-small-colimit 圏への θ の全忠実性と、本質像＝essentially small かつ idempotent complete の判定。kappaCompactSubcategory の小模型と個別の Ind 再構成はあるが、PrLκ を始域とする全関手 θ とその mapping space の比較はない。"
+  },
+  "5.5.7.9": {
+    "page": 504,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.5.6",
+        "5.5.7",
+        "5.5.8"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          "SerrePositivity"
+        ],
+        "file_count": 852,
+        "line_count": 4536
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 159,
+        "line_count": 947
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleReflectiveImage.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma adjunction_isKappaCompact_image {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (hR : IsKappaAccessibleFunctor κ R) {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) : Compact.IsKappaCompact.{u, u + 1} κ (L.app (Opposite.op ⦋0⦌) x) := (adjunction_hom_preservesKappaFilteredColimits_iff a κ x).mp (hR.comp_universe hx)"
+          },
+          {
+            "line": 42,
+            "head": "lemma reflectiveImage_isKappaAccessible {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (e : FunctorIso (R ≫ L) (𝟙 D)) (hC : IsKappaAccessible κ C) (hD : HasSmallColimits D) (hsD : Ind.HasSmallFixedVertexMaps D) (hR : IsKappaAccessibleFunctor κ R) : IsKappaAccessible κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "def PrL : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} true)"
+          },
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 57,
+            "head": "instance prL_quasicategory : Quasicategory PrL.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} true)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndHomContinuityDetection.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallCompactModels.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma familySaturation_eq_kappaCompact {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {T : Type u} (v : T → C _⦋0⦌) (hv : ∀ t, Compact.IsKappaCompact.{u, u + 1} κ (v t)) (hcover : ∀ x : C _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} κ x → ∃ t, Nonempty (VertexIso x (v t))) : FamilySaturation v = Compact.IsKappaCompact.{u, u + 1} κ"
+          },
+          {
+            "line": 45,
+            "head": "lemma IsKappaAccessible.exists_smallCompactModel_of_smallFixedVertexMaps {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible κ C) (hX : Ind.HasSmallFixedVertexMaps C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj A) (Compact.kappaCompactObjects.{u, u + 1} κ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma isIdempotentComplete_iff_hasLimits (X : SSet.{u}) [Quasicategory X] : IsIdempotentComplete X ↔ ∀ d : CoherentIdempotent X, HasLimit d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalLocallyPresentable : Prop extends HasCardinalFilteredGenerator C κ, HasColimitsOfSize.{w, w} C where"
+          },
+          {
+            "line": 50,
+            "head": "class IsCardinalAccessibleCategory : Prop extends HasCardinalFilteredGenerator C κ, HasCardinalFilteredColimits.{w} C κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FilteredColimitCommutesFiniteLimit.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem colimitLimitToLimitColimit_injective : Function.Injective (colimitLimitToLimitColimit F)"
+          },
+          {
+            "line": 162,
+            "head": "theorem colimitLimitToLimitColimit_surjective : Function.Surjective (colimitLimitToLimitColimit F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma homotopy_const_of_weakDiagonal {K Z : SSet.{u}} [KanComplex Z] (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) (k : K _⦋0⦌) (f : K ⟶ Z) : Nonempty (SSet.Homotopy f (SSet.const (f.app (Opposite.op ⦋0⦌) k)))"
+          },
+          {
+            "line": 42,
+            "head": "lemma isWeaklyContractible_of_nonempty_of_weakDiagonal {K : SSet.{u}} (hk : Nonempty (K _⦋0⦌)) (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) : IsWeaklyContractible K"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma nonemptyFiniteDiagonal_isRightCofinal (B : SSet.{u}) [IsSiftedInfinity B] (n : ℕ) : IsRightCofinal (nonemptyFiniteDiagonal B n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "class IsSiftedInfinity (K : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 25,
+            "head": "instance isSiftedInfinity_of_filtered (K : SSet.{u}) [Quasicategory K] [F2.IsFilteredInfinity K] : IsSiftedInfinity K where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma fiberProductToProduct_isRightCofinal_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsRightCofinal (lift (pullback.fst p q) (pullback.snd p q))"
+          },
+          {
+            "line": 34,
+            "head": "lemma totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsWeakHomotopyEquivalence (F2.totalKanProductComparison p q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sigmaPresheaf_simplicialIndPresentation (C : SSet.{u}) [Quasicategory C] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (v : (SigmaPresheafInfinity C) _⦋0⦌) : ∃ (G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve SmallSimplexOpposite.{u}) ⟶ SigmaPresheafInfinity C) (d : JoinCocone G), IsColimitCone d ∧ Nonempty (VertexIso d.vertex v) ∧ ∀ n : SmallSimplexOpposite.{u}, Ind.IsIndVertex Cardinal.aleph0 C ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) (G.app (Opposite.op ⦋0⦌) (ULift.up (nerveVertex n))))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀"
+          },
+          {
+            "line": 44,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀ := sigmaLeftKanExtension_preservesSmallColimits_iff hC (fun I _ ↦ hD (nerve (Discrete I))) β hβ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def IsSigmaPresheaf {C : SSet.{u}} (F : (PresheafInfinity C) _⦋0⦌) : Prop := PreservesFiniteProductsFromSmallSource ((presheafInfinityObjectEquiv C).symm F)"
+          },
+          {
+            "line": 29,
+            "head": "lemma isSigmaPresheaf_object_iff {C : SSet.{u}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) : IsSigmaPresheaf (presheafInfinityObjectEquiv C F) ↔ PreservesFiniteProductsFromSmallSource F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def sigmaPresheafSiftedColimitCone : JoinCocone r := fullSubcomplexCoconeLift (IsSigmaPresheaf (C := C)) r (presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C)) (sigmaPresheafAmbientColimit_isSigmaPresheaf r)"
+          },
+          {
+            "line": 32,
+            "head": "lemma sigmaPresheafSiftedColimitCone_inclusion : F1B.kanPostcomposeCocone (sigmaPresheafInfinityInclusion C) (sigmaPresheafSiftedColimitCone r) = presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C) := fullSubcomplexCoconeLift_inclusion _ _ _ _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G"
+          },
+          {
+            "line": 47,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G := sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted hC (fun I _ ↦ hD (nerve (Discrete I))) G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def sigmaPresheafVertexFunctor {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u} := (presheafInfinityObjectEquiv C).symm ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F)"
+          },
+          {
+            "line": 30,
+            "head": "lemma sigmaPresheafVertexFunctor_vertex {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : functorVertex (sigmaPresheafVertexFunctor F) = (sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F := (presheafInfinityObjectEquiv C).apply_symm_apply _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma representablePresheafInfinity_preservesFiniteProducts {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : PreservesFiniteProductsFromSmallSource (representablePresheafInfinity y)"
+          },
+          {
+            "line": 35,
+            "head": "lemma representablePresheafInfinity_isSigmaPresheaf {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : IsSigmaPresheaf (functorVertex (representablePresheafInfinity y)) := (isSigmaPresheaf_object_iff _).mpr (representablePresheafInfinity_preservesFiniteProducts y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def PreservesFiniteProductsFromSmallSource {C : SSet.{u}} {X : SSet.{u + 1}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X) : Prop := ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C) (c : JoinCone p), IsLimitCone c → IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c))"
+          },
+          {
+            "line": 28,
+            "head": "lemma PreservesFiniteProductsFromSmallSource.map_isLimit {C : SSet.{u}} {X : SSet.{u + 1}} {F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X} (hF : PreservesFiniteProductsFromSmallSource F) {J : Type u} [Finite J] {p : nerve (Discrete J) ⟶ C} {c : JoinCone p} (hc : IsLimitCone c) : IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c)) := hF J p c hc"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def nonemptyFiniteDiagonal (B : SSet.{u}) : (n : ℕ) → B ⟶ nonemptyFiniteSSetProduct n (fun _ ↦ B) | 0 => 𝟙 B | n + 1 => lift (𝟙 B) (nonemptyFiniteDiagonal B n)"
+          },
+          {
+            "line": 28,
+            "head": "lemma nonemptyFiniteDiagonal_projection (B : SSet.{u}) (n : ℕ) (i : Fin (n + 1)) : nonemptyFiniteDiagonal B n ≫ nonemptyFiniteSSetProjection n (fun _ ↦ B) i = 𝟙 B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma relativeFunctorComposition_pointFiberEvaluation {B : SSet.{u}} (a b c : Over B) (x : B _⦋0⦌) (v : (vertexFiber a.hom x) _⦋0⦌) : relativeFunctorComposition a b c ≫ relativeFunctorFiberHom a.hom c.hom x ≫ evaluateFunctorAt v = ((relativeFunctorFiberHom a.hom b.hom x ≫ evaluateFunctorAt v) ▷ relativeFunctorSpace c.hom b.hom) ≫ relativeFunctorFiberEvaluation b.hom c.hom x"
+          },
+          {
+            "line": 38,
+            "head": "lemma canonicalYonedaRelativeComposition_evaluation {E D C : SSet.{u}} [Quasicategory C] (p : E ⟶ C.op) [LeftFibration p] (q : D ⟶ C.op) [LeftFibration q] (y : C _⦋0⦌) : relativeFunctorComposition (Over.mk (smallLeftUnstraighteningProjection (representablePresheafInfinity y))) (Over.mk q) (Over.mk p) ≫ canonicalYonedaUnstraighteningEvaluation p y = (canonicalYonedaUnstraighteningEvaluation q y ▷ relativeFunctorSpace p q) ≫ relativeFunctorFiberEvaluation q p (SSet.opObjEquiv.symm y)"
+          }
+        ]
+      }
+    ],
+    "decision": "κ>ω の Rex(κ) 圏では θ の本質像条件の idempotent completeness が自動となる注意。isIdempotentComplete_iff_hasLimits は全指定 IdemShape の極限条件であり、κ-small 余極限から双対の条件へ結ぶ濃度評価・比較を結論しない。全小余極限を持つ場合だけの十分条件を任意 Rex(κ) への主張に数えない。"
+  },
+  "5.5.7.10": {
+    "page": 504,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.5.6",
+        "5.5.7",
+        "5.5.8"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          "SerrePositivity"
+        ],
+        "file_count": 852,
+        "line_count": 4536
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 159,
+        "line_count": 947
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleReflectiveImage.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma adjunction_isKappaCompact_image {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (hR : IsKappaAccessibleFunctor κ R) {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) : Compact.IsKappaCompact.{u, u + 1} κ (L.app (Opposite.op ⦋0⦌) x) := (adjunction_hom_preservesKappaFilteredColimits_iff a κ x).mp (hR.comp_universe hx)"
+          },
+          {
+            "line": 42,
+            "head": "lemma reflectiveImage_isKappaAccessible {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (e : FunctorIso (R ≫ L) (𝟙 D)) (hC : IsKappaAccessible κ C) (hD : HasSmallColimits D) (hsD : Ind.HasSmallFixedVertexMaps D) (hR : IsKappaAccessibleFunctor κ R) : IsKappaAccessible κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "def PrL : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} true)"
+          },
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 57,
+            "head": "instance prL_quasicategory : Quasicategory PrL.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} true)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndHomContinuityDetection.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallCompactModels.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma familySaturation_eq_kappaCompact {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {T : Type u} (v : T → C _⦋0⦌) (hv : ∀ t, Compact.IsKappaCompact.{u, u + 1} κ (v t)) (hcover : ∀ x : C _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} κ x → ∃ t, Nonempty (VertexIso x (v t))) : FamilySaturation v = Compact.IsKappaCompact.{u, u + 1} κ"
+          },
+          {
+            "line": 45,
+            "head": "lemma IsKappaAccessible.exists_smallCompactModel_of_smallFixedVertexMaps {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible κ C) (hX : Ind.HasSmallFixedVertexMaps C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj A) (Compact.kappaCompactObjects.{u, u + 1} κ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma isIdempotentComplete_iff_hasLimits (X : SSet.{u}) [Quasicategory X] : IsIdempotentComplete X ↔ ∀ d : CoherentIdempotent X, HasLimit d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalLocallyPresentable : Prop extends HasCardinalFilteredGenerator C κ, HasColimitsOfSize.{w, w} C where"
+          },
+          {
+            "line": 50,
+            "head": "class IsCardinalAccessibleCategory : Prop extends HasCardinalFilteredGenerator C κ, HasCardinalFilteredColimits.{w} C κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FilteredColimitCommutesFiniteLimit.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem colimitLimitToLimitColimit_injective : Function.Injective (colimitLimitToLimitColimit F)"
+          },
+          {
+            "line": 162,
+            "head": "theorem colimitLimitToLimitColimit_surjective : Function.Surjective (colimitLimitToLimitColimit F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma homotopy_const_of_weakDiagonal {K Z : SSet.{u}} [KanComplex Z] (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) (k : K _⦋0⦌) (f : K ⟶ Z) : Nonempty (SSet.Homotopy f (SSet.const (f.app (Opposite.op ⦋0⦌) k)))"
+          },
+          {
+            "line": 42,
+            "head": "lemma isWeaklyContractible_of_nonempty_of_weakDiagonal {K : SSet.{u}} (hk : Nonempty (K _⦋0⦌)) (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) : IsWeaklyContractible K"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma nonemptyFiniteDiagonal_isRightCofinal (B : SSet.{u}) [IsSiftedInfinity B] (n : ℕ) : IsRightCofinal (nonemptyFiniteDiagonal B n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "class IsSiftedInfinity (K : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 25,
+            "head": "instance isSiftedInfinity_of_filtered (K : SSet.{u}) [Quasicategory K] [F2.IsFilteredInfinity K] : IsSiftedInfinity K where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma fiberProductToProduct_isRightCofinal_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsRightCofinal (lift (pullback.fst p q) (pullback.snd p q))"
+          },
+          {
+            "line": 34,
+            "head": "lemma totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsWeakHomotopyEquivalence (F2.totalKanProductComparison p q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sigmaPresheaf_simplicialIndPresentation (C : SSet.{u}) [Quasicategory C] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (v : (SigmaPresheafInfinity C) _⦋0⦌) : ∃ (G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve SmallSimplexOpposite.{u}) ⟶ SigmaPresheafInfinity C) (d : JoinCocone G), IsColimitCone d ∧ Nonempty (VertexIso d.vertex v) ∧ ∀ n : SmallSimplexOpposite.{u}, Ind.IsIndVertex Cardinal.aleph0 C ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) (G.app (Opposite.op ⦋0⦌) (ULift.up (nerveVertex n))))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀"
+          },
+          {
+            "line": 44,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀ := sigmaLeftKanExtension_preservesSmallColimits_iff hC (fun I _ ↦ hD (nerve (Discrete I))) β hβ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def IsSigmaPresheaf {C : SSet.{u}} (F : (PresheafInfinity C) _⦋0⦌) : Prop := PreservesFiniteProductsFromSmallSource ((presheafInfinityObjectEquiv C).symm F)"
+          },
+          {
+            "line": 29,
+            "head": "lemma isSigmaPresheaf_object_iff {C : SSet.{u}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) : IsSigmaPresheaf (presheafInfinityObjectEquiv C F) ↔ PreservesFiniteProductsFromSmallSource F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def sigmaPresheafSiftedColimitCone : JoinCocone r := fullSubcomplexCoconeLift (IsSigmaPresheaf (C := C)) r (presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C)) (sigmaPresheafAmbientColimit_isSigmaPresheaf r)"
+          },
+          {
+            "line": 32,
+            "head": "lemma sigmaPresheafSiftedColimitCone_inclusion : F1B.kanPostcomposeCocone (sigmaPresheafInfinityInclusion C) (sigmaPresheafSiftedColimitCone r) = presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C) := fullSubcomplexCoconeLift_inclusion _ _ _ _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G"
+          },
+          {
+            "line": 47,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G := sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted hC (fun I _ ↦ hD (nerve (Discrete I))) G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def sigmaPresheafVertexFunctor {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u} := (presheafInfinityObjectEquiv C).symm ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F)"
+          },
+          {
+            "line": 30,
+            "head": "lemma sigmaPresheafVertexFunctor_vertex {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : functorVertex (sigmaPresheafVertexFunctor F) = (sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F := (presheafInfinityObjectEquiv C).apply_symm_apply _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma representablePresheafInfinity_preservesFiniteProducts {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : PreservesFiniteProductsFromSmallSource (representablePresheafInfinity y)"
+          },
+          {
+            "line": 35,
+            "head": "lemma representablePresheafInfinity_isSigmaPresheaf {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : IsSigmaPresheaf (functorVertex (representablePresheafInfinity y)) := (isSigmaPresheaf_object_iff _).mpr (representablePresheafInfinity_preservesFiniteProducts y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def PreservesFiniteProductsFromSmallSource {C : SSet.{u}} {X : SSet.{u + 1}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X) : Prop := ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C) (c : JoinCone p), IsLimitCone c → IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c))"
+          },
+          {
+            "line": 28,
+            "head": "lemma PreservesFiniteProductsFromSmallSource.map_isLimit {C : SSet.{u}} {X : SSet.{u + 1}} {F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X} (hF : PreservesFiniteProductsFromSmallSource F) {J : Type u} [Finite J] {p : nerve (Discrete J) ⟶ C} {c : JoinCone p} (hc : IsLimitCone c) : IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c)) := hF J p c hc"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def nonemptyFiniteDiagonal (B : SSet.{u}) : (n : ℕ) → B ⟶ nonemptyFiniteSSetProduct n (fun _ ↦ B) | 0 => 𝟙 B | n + 1 => lift (𝟙 B) (nonemptyFiniteDiagonal B n)"
+          },
+          {
+            "line": 28,
+            "head": "lemma nonemptyFiniteDiagonal_projection (B : SSet.{u}) (n : ℕ) (i : Fin (n + 1)) : nonemptyFiniteDiagonal B n ≫ nonemptyFiniteSSetProjection n (fun _ ↦ B) i = 𝟙 B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma relativeFunctorComposition_pointFiberEvaluation {B : SSet.{u}} (a b c : Over B) (x : B _⦋0⦌) (v : (vertexFiber a.hom x) _⦋0⦌) : relativeFunctorComposition a b c ≫ relativeFunctorFiberHom a.hom c.hom x ≫ evaluateFunctorAt v = ((relativeFunctorFiberHom a.hom b.hom x ≫ evaluateFunctorAt v) ▷ relativeFunctorSpace c.hom b.hom) ≫ relativeFunctorFiberEvaluation b.hom c.hom x"
+          },
+          {
+            "line": 38,
+            "head": "lemma canonicalYonedaRelativeComposition_evaluation {E D C : SSet.{u}} [Quasicategory C] (p : E ⟶ C.op) [LeftFibration p] (q : D ⟶ C.op) [LeftFibration q] (y : C _⦋0⦌) : relativeFunctorComposition (Over.mk (smallLeftUnstraighteningProjection (representablePresheafInfinity y))) (Over.mk q) (Over.mk p) ≫ canonicalYonedaUnstraighteningEvaluation p y = (canonicalYonedaUnstraighteningEvaluation q y ▷ relativeFunctorSpace p q) ≫ relativeFunctorFiberEvaluation q p (SSet.opObjEquiv.symm y)"
+          }
+        ]
+      }
+    ],
+    "decision": "Indκ が Cat∞^Rex(κ) の PrLκ への局所化であり、κ>ω なら同値という全高次圏の普遍性。個別の Ind κ-small 余極限存在や関手の Kan 拡張はあるが、元の二つの全高次圏の指定関手と全標的への局所化普遍性は構成しない。"
+  },
+  "5.5.7.11": {
+    "page": 504,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.5.6",
+        "5.5.7",
+        "5.5.8"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          "SerrePositivity"
+        ],
+        "file_count": 852,
+        "line_count": 4536
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]ompactly[Gg]enerated|PrL|PrR|[Aa]djunction.*[Kk]appa[Cc]ompact|[Rr]eflectiveImage|Rex|[Ii]dempotentComplete|[Ii]ndHomTests)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 159,
+        "line_count": 947
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleReflectiveImage.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma adjunction_isKappaCompact_image {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (hR : IsKappaAccessibleFunctor κ R) {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) : Compact.IsKappaCompact.{u, u + 1} κ (L.app (Opposite.op ⦋0⦌) x) := (adjunction_hom_preservesKappaFilteredColimits_iff a κ x).mp (hR.comp_universe hx)"
+          },
+          {
+            "line": 42,
+            "head": "lemma reflectiveImage_isKappaAccessible {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (e : FunctorIso (R ≫ L) (𝟙 D)) (hC : IsKappaAccessible κ C) (hD : HasSmallColimits D) (hsD : Ind.HasSmallFixedVertexMaps D) (hR : IsKappaAccessibleFunctor κ R) : IsKappaAccessible κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "def PrL : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} true)"
+          },
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 57,
+            "head": "instance prL_quasicategory : Quasicategory PrL.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} true)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndHomContinuityDetection.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isKappaAccessibleFunctor_of_indHomTests (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (κ μ : Cardinal.{u}) (A : SSet.{u}) [Quasicategory A] {D : SSet.{u + 1}} (G : D ⟶ Ind.IndInfinity κ A) (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) : IsKappaAccessibleFunctor μ G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallCompactModels.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma familySaturation_eq_kappaCompact {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {T : Type u} (v : T → C _⦋0⦌) (hv : ∀ t, Compact.IsKappaCompact.{u, u + 1} κ (v t)) (hcover : ∀ x : C _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} κ x → ∃ t, Nonempty (VertexIso x (v t))) : FamilySaturation v = Compact.IsKappaCompact.{u, u + 1} κ"
+          },
+          {
+            "line": 45,
+            "head": "lemma IsKappaAccessible.exists_smallCompactModel_of_smallFixedVertexMaps {κ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible κ C) (hX : Ind.HasSmallFixedVertexMaps C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj A) (Compact.kappaCompactObjects.{u, u + 1} κ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma isIdempotentComplete_iff_hasLimits (X : SSet.{u}) [Quasicategory X] : IsIdempotentComplete X ↔ ∀ d : CoherentIdempotent X, HasLimit d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalLocallyPresentable : Prop extends HasCardinalFilteredGenerator C κ, HasColimitsOfSize.{w, w} C where"
+          },
+          {
+            "line": 50,
+            "head": "class IsCardinalAccessibleCategory : Prop extends HasCardinalFilteredGenerator C κ, HasCardinalFilteredColimits.{w} C κ where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FilteredColimitCommutesFiniteLimit.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem colimitLimitToLimitColimit_injective : Function.Injective (colimitLimitToLimitColimit F)"
+          },
+          {
+            "line": 162,
+            "head": "theorem colimitLimitToLimitColimit_surjective : Function.Surjective (colimitLimitToLimitColimit F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma homotopy_const_of_weakDiagonal {K Z : SSet.{u}} [KanComplex Z] (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) (k : K _⦋0⦌) (f : K ⟶ Z) : Nonempty (SSet.Homotopy f (SSet.const (f.app (Opposite.op ⦋0⦌) k)))"
+          },
+          {
+            "line": 42,
+            "head": "lemma isWeaklyContractible_of_nonempty_of_weakDiagonal {K : SSet.{u}} (hk : Nonempty (K _⦋0⦌)) (hδ : IsWeakHomotopyEquivalence (lift (𝟙 K) (𝟙 K))) : IsWeaklyContractible K"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma nonemptyFiniteDiagonal_isRightCofinal (B : SSet.{u}) [IsSiftedInfinity B] (n : ℕ) : IsRightCofinal (nonemptyFiniteDiagonal B n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "class IsSiftedInfinity (K : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 25,
+            "head": "instance isSiftedInfinity_of_filtered (K : SSet.{u}) [Quasicategory K] [F2.IsFilteredInfinity K] : IsSiftedInfinity K where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma fiberProductToProduct_isRightCofinal_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsRightCofinal (lift (pullback.fst p q) (pullback.snd p q))"
+          },
+          {
+            "line": 34,
+            "head": "lemma totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted {E D B : SSet.{u}} [IsSiftedInfinity B] (p : E ⟶ B) [LeftFibration p] (q : D ⟶ B) [LeftFibration q] : IsWeakHomotopyEquivalence (F2.totalKanProductComparison p q)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricIndGeneration.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sigmaPresheaf_simplicialIndPresentation (C : SSet.{u}) [Quasicategory C] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (v : (SigmaPresheafInfinity C) _⦋0⦌) : ∃ (G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve SmallSimplexOpposite.{u}) ⟶ SigmaPresheafInfinity C) (d : JoinCocone G), IsColimitCone d ∧ Nonempty (VertexIso d.vertex v) ∧ ∀ n : SmallSimplexOpposite.{u}, Ind.IsIndVertex Cardinal.aleph0 C ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) (G.app (Opposite.op ⦋0⦌) (ULift.up (nerveVertex n))))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀"
+          },
+          {
+            "line": 44,
+            "head": "lemma sigmaLeftKanExtension_preservesSmallColimits_iff_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D} (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G)) (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀ := sigmaLeftKanExtension_preservesSmallColimits_iff hC (fun I _ ↦ hD (nerve (Discrete I))) β hβ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def IsSigmaPresheaf {C : SSet.{u}} (F : (PresheafInfinity C) _⦋0⦌) : Prop := PreservesFiniteProductsFromSmallSource ((presheafInfinityObjectEquiv C).symm F)"
+          },
+          {
+            "line": 29,
+            "head": "lemma isSigmaPresheaf_object_iff {C : SSet.{u}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) : IsSigmaPresheaf (presheafInfinityObjectEquiv C F) ↔ PreservesFiniteProductsFromSmallSource F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def sigmaPresheafSiftedColimitCone : JoinCocone r := fullSubcomplexCoconeLift (IsSigmaPresheaf (C := C)) r (presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C)) (sigmaPresheafAmbientColimit_isSigmaPresheaf r)"
+          },
+          {
+            "line": 32,
+            "head": "lemma sigmaPresheafSiftedColimitCone_inclusion : F1B.kanPostcomposeCocone (sigmaPresheafInfinityInclusion C) (sigmaPresheafSiftedColimitCone r) = presheafCoherentColimitCone (r ≫ sigmaPresheafInfinityInclusion C) := fullSubcomplexCoconeLift_inclusion _ _ _ _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : ∀ (I : Type u) [Finite I] (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G"
+          },
+          {
+            "line": 47,
+            "head": "lemma sigma_preservesSmallColimits_iff_yoneda_of_cocomplete {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D] (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) (hD : HasSmallColimits D) (G : SigmaPresheafInfinity C ⟶ D) : PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧ PreservesSmallSiftedColimits G := sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted hC (fun I _ ↦ hD (nerve (Discrete I))) G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaEvaluation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def sigmaPresheafVertexFunctor {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u} := (presheafInfinityObjectEquiv C).symm ((sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F)"
+          },
+          {
+            "line": 30,
+            "head": "lemma sigmaPresheafVertexFunctor_vertex {C : SSet.{u}} (F : (SigmaPresheafInfinity C) _⦋0⦌) : functorVertex (sigmaPresheafVertexFunctor F) = (sigmaPresheafInfinityInclusion C).app (Opposite.op ⦋0⦌) F := (presheafInfinityObjectEquiv C).apply_symm_apply _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma representablePresheafInfinity_preservesFiniteProducts {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : PreservesFiniteProductsFromSmallSource (representablePresheafInfinity y)"
+          },
+          {
+            "line": 35,
+            "head": "lemma representablePresheafInfinity_isSigmaPresheaf {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : IsSigmaPresheaf (functorVertex (representablePresheafInfinity y)) := (isSigmaPresheaf_object_iff _).mpr (representablePresheafInfinity_preservesFiniteProducts y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def PreservesFiniteProductsFromSmallSource {C : SSet.{u}} {X : SSet.{u + 1}} (F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X) : Prop := ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C) (c : JoinCone p), IsLimitCone c → IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c))"
+          },
+          {
+            "line": 28,
+            "head": "lemma PreservesFiniteProductsFromSmallSource.map_isLimit {C : SSet.{u}} {X : SSet.{u + 1}} {F : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ X} (hF : PreservesFiniteProductsFromSmallSource F) {J : Type u} [Finite J] {p : nerve (Discrete J) ⟶ C} {c : JoinCone p} (hc : IsLimitCone c) : IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} c)) := hF J p c hc"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/SiftedFiniteDiagonal.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def nonemptyFiniteDiagonal (B : SSet.{u}) : (n : ℕ) → B ⟶ nonemptyFiniteSSetProduct n (fun _ ↦ B) | 0 => 𝟙 B | n + 1 => lift (𝟙 B) (nonemptyFiniteDiagonal B n)"
+          },
+          {
+            "line": 28,
+            "head": "lemma nonemptyFiniteDiagonal_projection (B : SSet.{u}) (n : ℕ) (i : Fin (n + 1)) : nonemptyFiniteDiagonal B n ≫ nonemptyFiniteSSetProjection n (fun _ ↦ B) i = 𝟙 B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaRelativeCompositionEvaluation.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma relativeFunctorComposition_pointFiberEvaluation {B : SSet.{u}} (a b c : Over B) (x : B _⦋0⦌) (v : (vertexFiber a.hom x) _⦋0⦌) : relativeFunctorComposition a b c ≫ relativeFunctorFiberHom a.hom c.hom x ≫ evaluateFunctorAt v = ((relativeFunctorFiberHom a.hom b.hom x ≫ evaluateFunctorAt v) ▷ relativeFunctorSpace c.hom b.hom) ≫ relativeFunctorFiberEvaluation b.hom c.hom x"
+          },
+          {
+            "line": 38,
+            "head": "lemma canonicalYonedaRelativeComposition_evaluation {E D C : SSet.{u}} [Quasicategory C] (p : E ⟶ C.op) [LeftFibration p] (q : D ⟶ C.op) [LeftFibration q] (y : C _⦋0⦌) : relativeFunctorComposition (Over.mk (smallLeftUnstraighteningProjection (representablePresheafInfinity y))) (Over.mk q) (Over.mk p) ≫ canonicalYonedaUnstraighteningEvaluation p y = (canonicalYonedaUnstraighteningEvaluation q y ▷ relativeFunctorSpace p q) ≫ relativeFunctorFiberEvaluation q p (SSet.opObjEquiv.symm y)"
+          }
+        ]
+      }
+    ],
+    "decision": "Cat∞^Rex(κ) の κ-filtered 余極限と Cat∞ 包含の保存性。準圏の filtered-colimit 閉性、compact な小図式の因子化は証明の部品だが、全高次圏 Rex(κ) 内の元の余極限錐と全標的への関手保存判定を結論しない。"
+  }
+}
