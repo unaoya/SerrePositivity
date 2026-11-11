@@ -631,8 +631,8 @@
           "[Rr]ight[Aa]nodyne.*([Pp]ushout|[Cc]obase|[Gg]luing)|[Pp]ushout.*[Rr]ight[Aa]nodyne|of_isPushout",
           "SerrePositivity"
         ],
-        "file_count": 131,
-        "line_count": 215
+        "file_count": 134,
+        "line_count": 219
       },
       {
         "root": ".lake/packages/mathlib/Mathlib",
@@ -1101,8 +1101,8 @@
           "[Ss]mooth.*([Bb]aseChange|[Dd]erived)|[Cc]ontravariant.{0,35}([Mm]odel|[Ee]quivalence)|[Pp]ullback_isLeftAdjoint|[Pp]ullback.*[Aa]nodyne",
           "SerrePositivity"
         ],
-        "file_count": 41,
-        "line_count": 87
+        "file_count": 42,
+        "line_count": 88
       },
       {
         "root": ".lake/packages/mathlib/Mathlib",
@@ -1208,8 +1208,8 @@
           "([Ee]tale|[Éé]tale).{0,40}([Bb]aseChange|[Cc]ohomology)|[Ee]tale.*[Ss]mooth|[Ss]mooth.*[Bb]aseChange|[Ii]sStableUnderBaseChange",
           "SerrePositivity"
         ],
-        "file_count": 18,
-        "line_count": 38
+        "file_count": 21,
+        "line_count": 41
       },
       {
         "root": ".lake/packages/mathlib/Mathlib",
@@ -1811,8 +1811,8 @@
           "[Cc]ovariant.{0,35}([Mm]odel|[Ee]quivalence)|leftFibration_isQCatEquivalence_iff_fibers|[Ss]mooth.*[Ff]iber",
           "SerrePositivity"
         ],
-        "file_count": 25,
-        "line_count": 32
+        "file_count": 28,
+        "line_count": 36
       },
       {
         "root": ".lake/packages/mathlib/Mathlib",
@@ -6390,8 +6390,8 @@
           "[Pp]rojective.{0,45}[Ii]njective|[Ii]njective.{0,45}[Pp]rojective|[Cc][ -][Cc]hunk",
           "SerrePositivity"
         ],
-        "file_count": 14,
-        "line_count": 23
+        "file_count": 18,
+        "line_count": 30
       },
       {
         "root": ".lake/packages/mathlib/Mathlib",
@@ -10241,5 +10241,784 @@
       }
     ],
     "decision": "相対左 Kan 関手の制限の始点境界充填と、自明 Kan ファイブレーションからの切断を調べた。固定底上の二つの関手準圏間で、指定した切断と制限を左・右随伴として結ぶ宣言は見つからなかった。"
+  },
+  "4.3.3.4": {
+    "page": 286,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.3.2",
+        "4.3.3",
+        "4.4.1"
+      ],
+      "files": {
+        "SerrePositivity/KST/SConstruction/LimitBaseTransport.lean": 1,
+        "SerrePositivity/KST/SConstruction/FirstRowPositiveBoundary.lean": 1,
+        "SerrePositivity/KST/SConstruction/ColimitDiagramTransport.lean": 1,
+        "SerrePositivity/KST/SConstruction/FrameCofiberCompatibility.lean": 1,
+        "SerrePositivity/KST/SConstruction/FramePreservingCompletion.lean": 1,
+        "SerrePositivity/KST/SConstruction/ColimitBaseTransport.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ll]eftKan.*([Ss]trictification|[Cc]ylinder)|[Cc]ylinder.*([Ee]xtension|[Ll]eftKan)|relativeJoinCylinderComparison_intervalProjection",
+          "SerrePositivity"
+        ],
+        "file_count": 66,
+        "line_count": 220
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ll]eftKan.*([Ss]trictification|[Cc]ylinder)|[Cc]ylinder.*([Ee]xtension|[Ll]eftKan)|relativeJoinCylinderComparison_intervalProjection",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinLeftCriterion.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "lemma LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits {K C D : SSet.{u}} [Quasicategory D] {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D} {β : SSet.Homotopy F₀ (δ ≫ F)} {s : LeftKanRelativeJoinRealization δ F₀ F β} (r : s.Strictification) : IsLeftKanExtension δ F₀ F β ↔ ∀ c : C _⦋0⦌, IsColimitCone (kanRelativeJoinDiagramCocone δ c r.diagram)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinStrictification.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "abbrev LeftKanRelativeJoinRealization.Strictification {K C D : SSet.{u}} [Quasicategory D] {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D} {β : SSet.Homotopy F₀ (δ ≫ F)} (s : LeftKanRelativeJoinRealization δ F₀ F β) := SerrePositivity.InfinityCategories.FunctorIsoExtension (kanRelativeJoinEndpointInclusion δ) s.diagram (joinEndpointDesc F₀ F) s.endpointsIso"
+          },
+          {
+            "line": 36,
+            "head": "lemma LeftKanRelativeJoinRealization.strictification_nonempty {K C D : SSet.{u}} [Quasicategory D] {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D} {β : SSet.Homotopy F₀ (δ ≫ F)} (s : LeftKanRelativeJoinRealization δ F₀ F β) : Nonempty s.Strictification := SerrePositivity.InfinityCategories.functorIsoExtension_nonempty (kanRelativeJoinEndpointInclusion δ) s.diagram (joinEndpointDesc F₀ F) s.endpointsIso"
+          },
+          {
+            "line": 47,
+            "head": "lemma LeftKanRelativeJoinRealization.Strictification.left_eq {K C D : SSet.{u}} [Quasicategory D] {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D} {β : SSet.Homotopy F₀ (δ ≫ F)} {s : LeftKanRelativeJoinRealization δ F₀ F β} (r : s.Strictification) : relativeJoinInl δ (𝟙 C) ≫ r.diagram = F₀"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinderIntervalExtension.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "lemma relativeJoinCylinderComparison_intervalProjection {X Y : SSet.{u}} (f : X ⟶ Y) : relativeJoinCylinderComparison f ≫ relativeJoinProjection f (𝟙 Y) = mappingCylinderIntervalProjection f"
+          },
+          {
+            "line": 62,
+            "head": "lemma relativeJoinCylinder_extension_intervalProjection {X Y E : SSet.{u}} (f : X ⟶ Y) (p : E ⟶ (Δ[1] : SSet.{u})) (u : pushout (prismEndpoint 1 X) f ⟶ E) (hu : u ≫ p = mappingCylinderIntervalProjection f) (G : relativeJoin f (𝟙 Y) ⟶ E) (hG : relativeJoinCylinderComparison f ≫ G = u) : G ≫ p = relativeJoinProjection f (𝟙 Y)"
+          },
+          {
+            "line": 74,
+            "head": "lemma relativeJoinCylinder_extension_over_interval_exists {X Y E : SSet.{u}} (f : X ⟶ Y) [Mono f] [Quasicategory E] (p : E ⟶ (Δ[1] : SSet.{u})) (u : pushout (prismEndpoint 1 X) f ⟶ E) (hu : u ≫ p = mappingCylinderIntervalProjection f) : ∃ G : relativeJoin f (𝟙 Y) ⟶ E, relativeJoinCylinderComparison f ≫ G = u ∧ G ≫ p = relativeJoinProjection f (𝟙 Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/KST/SConstruction/ColimitBaseTransport.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma exists_initialCoconeVertex_over_invertible_edge (K X : SSet.{u}) [Quasicategory X] (v : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌) (hv : InitialBoundaryLifting (coconeRestriction K X) v) (b : ((ihom K).obj X) _⦋0⦌) (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X)) b ((coconeRestriction K X).app (Opposite.op ⦋0⦌) v)) (he : IsInvertibleEdge e) : ∃ w : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌, (coconeRestriction K X).app (Opposite.op ⦋0⦌) w = b ∧ InitialBoundaryLifting (coconeRestriction K X) w"
+          },
+          {
+            "line": 48,
+            "head": "lemma HasColimit.of_functorIso {K X : SSet.{u}} [Quasicategory X] {p q : K ⟶ X} (hq : HasColimit q) (e : FunctorIso p q) : HasColimit p"
+          }
+        ]
+      }
+    ],
+    "decision": "標準の相対結合への比較と、指定した変換の類を保つ厳密化はある。任意の区間上の単射な圏同値で円筒を広げ、元の図式を等式で回収する左 Kan 延長を得る宣言は見つからなかった。"
+  },
+  "4.3.3.6": {
+    "page": 288,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.3.2",
+        "4.3.3",
+        "4.4.1"
+      ],
+      "files": {
+        "SerrePositivity/KST/SConstruction/LimitBaseTransport.lean": 1,
+        "SerrePositivity/KST/SConstruction/FirstRowPositiveBoundary.lean": 1,
+        "SerrePositivity/KST/SConstruction/ColimitDiagramTransport.lean": 1,
+        "SerrePositivity/KST/SConstruction/FrameCofiberCompatibility.lean": 1,
+        "SerrePositivity/KST/SConstruction/FramePreservingCompletion.lean": 1,
+        "SerrePositivity/KST/SConstruction/ColimitBaseTransport.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ll]eftKan.*([Ss]ection|[Ff]unctor)|trivialKanFibration_exists_section|kanLeftKanExtension_refl_of_canonicalColimits",
+          "SerrePositivity"
+        ],
+        "file_count": 175,
+        "line_count": 322
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ll]eftKan.*([Ss]ection|[Ff]unctor)|trivialKanFibration_exists_section|kanLeftKanExtension_refl_of_canonicalColimits",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 8,
+        "line_count": 31
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalRestrictionHom.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma kanLeftKanExtension_refl_of_canonicalColimits {K C D : SSet.{u}} (δ : K ⟶ C) (F : C ⟶ D) (hF : ∀ c : C _⦋0⦌, IsColimitCone (leftKanCanonicalCocone δ F c)) : IsLeftKanExtension δ (δ ≫ F) F (functorHomotopyRefl (δ ≫ F))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftRestrictionTheorem.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma kanRelativeLeftKanRestriction_isFullyFaithful {K C D E : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] [Quasicategory E] (U : D ⟶ E) (hU : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting U) (δ : K ⟶ C) [Mono δ] [InnerFibration δ] (hδ : IsFullyFaithful δ) (s : internalHom.PullbackObjObj δ U) : IsFullyFaithful (kanRelativeLeftKanRestriction U δ s)"
+          },
+          {
+            "line": 55,
+            "head": "lemma kanRelativeLeftKanRestriction_trivialKanFibration {K C D E : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] [Quasicategory E] (U : D ⟶ E) (hU : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting U) (δ : K ⟶ C) [Mono δ] [InnerFibration δ] (hδ : IsFullyFaithful δ) (s : internalHom.PullbackObjObj δ U) (hlocal : ∀ (F₀ : K ⟶ D) (H₀ : C ⟶ E), F₀ ≫ U = δ ≫ H₀ → ∀ c : C _⦋0⦌, ∃ z : JoinCocone (leftKanDiagram δ F₀ c), IsRelativeColimitCone U z ∧ z.val ≫ U = (leftKanCanonicalCocone δ H₀ c).val) : TrivialKanFibration (kanRelativeLeftKanRestriction U δ s)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/TrivialFibrationEquivalence.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "lemma trivialKanFibration_exists_section {E B : SSet.{u}} (p : E ⟶ B) [TrivialKanFibration p] : ∃ s : B ⟶ E, s ≫ p = 𝟙 B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/KST/SConstruction/ColimitBaseTransport.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma exists_initialCoconeVertex_over_invertible_edge (K X : SSet.{u}) [Quasicategory X] (v : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌) (hv : InitialBoundaryLifting (coconeRestriction K X) v) (b : ((ihom K).obj X) _⦋0⦌) (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X)) b ((coconeRestriction K X).app (Opposite.op ⦋0⦌) v)) (he : IsInvertibleEdge e) : ∃ w : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌, (coconeRestriction K X).app (Opposite.op ⦋0⦌) w = b ∧ InitialBoundaryLifting (coconeRestriction K X) w"
+          },
+          {
+            "line": 48,
+            "head": "lemma HasColimit.of_functorIso {K X : SSet.{u}} [Quasicategory X] {p q : K ⟶ X} (hq : HasColimit q) (e : FunctorIso p q) : HasColimit p"
+          }
+        ]
+      }
+    ],
+    "decision": "恒等単位を持つ個々の関手の点ごとの判定と、自明 Kan ファイブレーションの切断を調べた。指定切断全体を、随伴する変換を含む一般の左 Kan 拡張関手として同定する宣言は見つからなかった。"
+  },
+  "4.3.3.7": {
+    "page": 288,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.3.2",
+        "4.3.3",
+        "4.4.1"
+      ],
+      "files": {
+        "SerrePositivity/KST/SConstruction/LimitBaseTransport.lean": 1,
+        "SerrePositivity/KST/SConstruction/FirstRowPositiveBoundary.lean": 1,
+        "SerrePositivity/KST/SConstruction/ColimitDiagramTransport.lean": 1,
+        "SerrePositivity/KST/SConstruction/FrameCofiberCompatibility.lean": 1,
+        "SerrePositivity/KST/SConstruction/FramePreservingCompletion.lean": 1,
+        "SerrePositivity/KST/SConstruction/ColimitBaseTransport.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ll]eftKan.*([Aa]djunction|[Aa]djoint|[Hh]omUniversal)|[Aa]djunction.*[Ll]eftKan",
+          "SerrePositivity"
+        ],
+        "file_count": 21,
+        "line_count": 80
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ll]eftKan.*([Aa]djunction|[Aa]djoint|[Hh]omUniversal)|[Aa]djunction.*[Ll]eftKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 4,
+        "line_count": 10
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftHomUniversal.lean",
+        "signatures": [
+          {
+            "line": 82,
+            "head": "lemma kanLeftKanExtension_homUniversal {K C D : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] (δ : K ⟶ C) {F₀ : K ⟶ D} {F : C ⟶ D} (β : SSet.Homotopy F₀ (δ ≫ F)) (hβ : IsLeftKanExtension δ F₀ F β) : LeftKanHomUniversal δ (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy β))"
+          },
+          {
+            "line": 101,
+            "head": "lemma kanLeftKanExtensionHom_homUniversal {K C D : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D) (β : FunctorHom F₀ (δ ≫ F)) (hβ : IsLeftKanExtensionHom δ F₀ F β) : LeftKanHomUniversal δ β"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/UniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "def LeftKanHomUniversal {K C D : SSet.{u}} (δ : K ⟶ C) {F₀ : K ⟶ D} {F : C ⟶ D} (β : FunctorHom F₀ (δ ≫ F)) : Prop := ∀ G : C ⟶ D, Function.Bijective (leftKanHomMap δ β G)"
+          },
+          {
+            "line": 92,
+            "head": "def leftKanHomUniversalIso {K C D : SSet.{u}} (δ : K ⟶ C) {F₀ : K ⟶ D} {F G : C ⟶ D} (α : FunctorHom F₀ (δ ≫ F)) (β : FunctorHom F₀ (δ ≫ G)) (hF : LeftKanHomUniversal δ α) (hG : LeftKanHomUniversal δ β) : FunctorIso F G"
+          },
+          {
+            "line": 118,
+            "head": "lemma leftKanHomUniversalIso_hom_fac {K C D : SSet.{u}} (δ : K ⟶ C) {F₀ : K ⟶ D} {F G : C ⟶ D} (α : FunctorHom F₀ (δ ≫ F)) (β : FunctorHom F₀ (δ ≫ G)) (hF : LeftKanHomUniversal δ α) (hG : LeftKanHomUniversal δ β) : leftKanHomMap δ α G (leftKanHomUniversalIso δ α β hF hG).hom = β := Classical.choose_spec ((hF G).2 β)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftRestrictionTheorem.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma kanRelativeLeftKanRestriction_isFullyFaithful {K C D E : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] [Quasicategory E] (U : D ⟶ E) (hU : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting U) (δ : K ⟶ C) [Mono δ] [InnerFibration δ] (hδ : IsFullyFaithful δ) (s : internalHom.PullbackObjObj δ U) : IsFullyFaithful (kanRelativeLeftKanRestriction U δ s)"
+          },
+          {
+            "line": 55,
+            "head": "lemma kanRelativeLeftKanRestriction_trivialKanFibration {K C D E : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] [Quasicategory E] (U : D ⟶ E) (hU : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting U) (δ : K ⟶ C) [Mono δ] [InnerFibration δ] (hδ : IsFullyFaithful δ) (s : internalHom.PullbackObjObj δ U) (hlocal : ∀ (F₀ : K ⟶ D) (H₀ : C ⟶ E), F₀ ≫ U = δ ≫ H₀ → ∀ c : C _⦋0⦌, ∃ z : JoinCocone (leftKanDiagram δ F₀ c), IsRelativeColimitCone U z ∧ z.val ≫ U = (leftKanCanonicalCocone δ H₀ c).val) : TrivialKanFibration (kanRelativeLeftKanRestriction U δ s)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/KST/SConstruction/ColimitBaseTransport.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma exists_initialCoconeVertex_over_invertible_edge (K X : SSet.{u}) [Quasicategory X] (v : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌) (hv : InitialBoundaryLifting (coconeRestriction K X) v) (b : ((ihom K).obj X) _⦋0⦌) (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X)) b ((coconeRestriction K X).app (Opposite.op ⦋0⦌) v)) (he : IsInvertibleEdge e) : ∃ w : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌, (coconeRestriction K X).app (Opposite.op ⦋0⦌) w = b ∧ InitialBoundaryLifting (coconeRestriction K X) w"
+          },
+          {
+            "line": 48,
+            "head": "lemma HasColimit.of_functorIso {K X : SSet.{u}} [Quasicategory X] {p q : K ⟶ X} (hq : HasColimit q) (e : FunctorIso p q) : HasColimit p"
+          }
+        ]
+      }
+    ],
+    "decision": "各拡張の単位で合成する写像は関手準圏のホモトピー圏で Hom の全単射を与える。一般の左 Kan 拡張関手と前合成の間で、全写像空間に自然な準圏の随伴を与える宣言は見つからなかった。"
+  },
+  "4.3.3.9": {
+    "page": 289,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.3.2",
+        "4.3.3",
+        "4.4.1"
+      ],
+      "files": {
+        "SerrePositivity/KST/SConstruction/LimitBaseTransport.lean": 1,
+        "SerrePositivity/KST/SConstruction/FirstRowPositiveBoundary.lean": 1,
+        "SerrePositivity/KST/SConstruction/ColimitDiagramTransport.lean": 1,
+        "SerrePositivity/KST/SConstruction/FrameCofiberCompatibility.lean": 1,
+        "SerrePositivity/KST/SConstruction/FramePreservingCompletion.lean": 1,
+        "SerrePositivity/KST/SConstruction/ColimitBaseTransport.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ll]eftKan.*([Cc]ocartesian|[Ff]iber|[Bb]aseChange)|[Cc]ocartesian.*[Ll]eftKan|[Ll]eftFibration.*[Cc]ofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 39,
+        "line_count": 98
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ll]eftKan.*([Cc]ocartesian|[Ff]iber|[Bb]aseChange)|[Cc]ocartesian.*[Ll]eftKan|[Ll]eftFibration.*[Cc]ofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1,
+        "line_count": 3
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinLeftCriterion.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma isLeftKanExtension_iff_of_diagram_eq_of_h_eq {K C D : SSet.{u}} (δ : K ⟶ C) {F₀ F₀' : K ⟶ D} {F F' : C ⟶ D} (h₀ : F₀ = F₀') (hF : F = F') (α : SSet.Homotopy F₀ (δ ≫ F)) (β : SSet.Homotopy F₀' (δ ≫ F')) (h : α.h = β.h) : IsLeftKanExtension δ F₀ F α ↔ IsLeftKanExtension δ F₀' F' β"
+          },
+          {
+            "line": 43,
+            "head": "lemma LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits {K C D : SSet.{u}} [Quasicategory D] {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D} {β : SSet.Homotopy F₀ (δ ≫ F)} {s : LeftKanRelativeJoinRealization δ F₀ F β} (r : s.Strictification) : IsLeftKanExtension δ F₀ F β ↔ ∀ c : C _⦋0⦌, IsColimitCone (kanRelativeJoinDiagramCocone δ c r.diagram)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/LeftFibrationCofinalPullback.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftFibration_pullback_isRightCofinal {E A B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (f : A ⟶ B) (hf : IsRightCofinal f) : IsRightCofinal (pullback.fst p f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinPullbackCocartesian.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma kanRelativeJoinInl_overPullbackMap {K C A : SSet.{u}} (p : K ⟶ C) (b : A ⟶ C) : (pullbackSymmetry b p).hom ≫ relativeJoinInl (pullback.snd p b) (𝟙 A) ≫ relativeJoinPullbackLift p b = overPullbackMap (kanRelativeJoinInlOver p) (Over.mk b)"
+          },
+          {
+            "line": 43,
+            "head": "lemma kanRelativeJoinInl_overPullback_preservesCocartesian {K C A : SSet.{u}} (p : K ⟶ C) (b : A ⟶ C) (s : (pullback b p) _⦋1⦌) (hs : IsCocartesianEdge (pullback.fst b p) s) : IsCocartesianEdge (pullback.fst b (relativeJoinBaseProjection p (𝟙 C))) ((overPullbackMap (kanRelativeJoinInlOver p) (Over.mk b)).app (Opposite.op ⦋1⦌) s)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/KST/SConstruction/ColimitBaseTransport.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma exists_initialCoconeVertex_over_invertible_edge (K X : SSet.{u}) [Quasicategory X] (v : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌) (hv : InitialBoundaryLifting (coconeRestriction K X) v) (b : ((ihom K).obj X) _⦋0⦌) (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X)) b ((coconeRestriction K X).app (Opposite.op ⦋0⦌) v)) (he : IsInvertibleEdge e) : ∃ w : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌, (coconeRestriction K X).app (Opposite.op ⦋0⦌) w = b ∧ InitialBoundaryLifting (coconeRestriction K X) w"
+          },
+          {
+            "line": 48,
+            "head": "lemma HasColimit.of_functorIso {K X : SSet.{u}} [Quasicategory X] {p q : K ⟶ X} (hq : HasColimit q) (e : FunctorIso p q) : HasColimit p"
+          }
+        ]
+      }
+    ],
+    "decision": "相対結合の繊維の局所余錐の判定と左ファイブレーションに沿う共終性を調べた。余デカルト辺を保つ充満部分圏の包含について、全空間の左 Kan 条件と各底頂点の繊維の左 Kan 条件を同値にする宣言は見つからなかった。"
+  },
+  "4.3.3.10": {
+    "page": 290,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.3.2",
+        "4.3.3",
+        "4.4.1"
+      ],
+      "files": {
+        "SerrePositivity/KST/SConstruction/LimitBaseTransport.lean": 1,
+        "SerrePositivity/KST/SConstruction/FirstRowPositiveBoundary.lean": 1,
+        "SerrePositivity/KST/SConstruction/ColimitDiagramTransport.lean": 1,
+        "SerrePositivity/KST/SConstruction/FrameCofiberCompatibility.lean": 1,
+        "SerrePositivity/KST/SConstruction/FramePreservingCompletion.lean": 1,
+        "SerrePositivity/KST/SConstruction/ColimitBaseTransport.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ll]eftKan.*([Cc]ocartesian|[Ff]iber|[Bb]aseChange)|[Cc]ocartesian.*[Ll]eftKan|[Rr]elativeJoin.*[Cc]ocartesian",
+          "SerrePositivity"
+        ],
+        "file_count": 28,
+        "line_count": 90
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ll]eftKan.*([Cc]ocartesian|[Ff]iber|[Bb]aseChange)|[Cc]ocartesian.*[Ll]eftKan|[Rr]elativeJoin.*[Cc]ocartesian",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1,
+        "line_count": 3
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinLeftCriterion.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma isLeftKanExtension_iff_of_diagram_eq_of_h_eq {K C D : SSet.{u}} (δ : K ⟶ C) {F₀ F₀' : K ⟶ D} {F F' : C ⟶ D} (h₀ : F₀ = F₀') (hF : F = F') (α : SSet.Homotopy F₀ (δ ≫ F)) (β : SSet.Homotopy F₀' (δ ≫ F')) (h : α.h = β.h) : IsLeftKanExtension δ F₀ F α ↔ IsLeftKanExtension δ F₀' F' β"
+          },
+          {
+            "line": 43,
+            "head": "lemma LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits {K C D : SSet.{u}} [Quasicategory D] {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D} {β : SSet.Homotopy F₀ (δ ≫ F)} {s : LeftKanRelativeJoinRealization δ F₀ F β} (r : s.Strictification) : IsLeftKanExtension δ F₀ F β ↔ ∀ c : C _⦋0⦌, IsColimitCone (kanRelativeJoinDiagramCocone δ c r.diagram)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinPullbackCocartesian.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "lemma kanRelativeJoinInl_overPullback_preservesCocartesian {K C A : SSet.{u}} (p : K ⟶ C) (b : A ⟶ C) (s : (pullback b p) _⦋1⦌) (hs : IsCocartesianEdge (pullback.fst b p) s) : IsCocartesianEdge (pullback.fst b (relativeJoinBaseProjection p (𝟙 C))) ((overPullbackMap (kanRelativeJoinInlOver p) (Over.mk b)).app (Opposite.op ⦋1⦌) s)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinBaseCocartesianEdges.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma kanRelativeJoinInl_base_isCocartesianEdge {K C : SSet.{u}} (p : K ⟶ C) (e : K _⦋1⦌) (he : IsCocartesianEdge p e) : IsCocartesianEdge (relativeJoinBaseProjection p (𝟙 C)) ((relativeJoinInl p (𝟙 C)).app (Opposite.op ⦋1⦌) e)"
+          },
+          {
+            "line": 53,
+            "head": "lemma kanRelativeJoinInr_base_isCocartesianEdge {K C : SSet.{u}} (p : K ⟶ C) (e : C _⦋1⦌) : IsCocartesianEdge (relativeJoinBaseProjection p (𝟙 C)) ((relativeJoinInr p (𝟙 C)).app (Opposite.op ⦋1⦌) e)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/KST/SConstruction/ColimitBaseTransport.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma exists_initialCoconeVertex_over_invertible_edge (K X : SSet.{u}) [Quasicategory X] (v : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌) (hv : InitialBoundaryLifting (coconeRestriction K X) v) (b : ((ihom K).obj X) _⦋0⦌) (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X)) b ((coconeRestriction K X).app (Opposite.op ⦋0⦌) v)) (he : IsInvertibleEdge e) : ∃ w : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌, (coconeRestriction K X).app (Opposite.op ⦋0⦌) w = b ∧ InitialBoundaryLifting (coconeRestriction K X) w"
+          },
+          {
+            "line": 48,
+            "head": "lemma HasColimit.of_functorIso {K X : SSet.{u}} [Quasicategory X] {p q : K ⟶ X} (hq : HasColimit q) (e : FunctorIso p q) : HasColimit p"
+          }
+        ]
+      }
+    ],
+    "decision": "相対結合を用いた局所余錐の判定と、指定した余デカルト辺を保つ写像を読んだ。二つの余デカルトファイブレーション間の任意の添字写像について、同じ単位の全空間と繊維での左 Kan 条件を比較する宣言は見つからなかった。"
+  },
+  "4.4.1.1": {
+    "page": 294,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.3.3",
+        "4.4.1",
+        "4.4.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/SequentialColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Supply/SequentialPreservedColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/PastingShapes.lean": 1,
+        "SerrePositivity/KST/SConstruction/GappedDegenerateSquares.lean": 1,
+        "SerrePositivity/InfinityCategories/Stable/Pasting.lean": 2,
+        "SerrePositivity/InfinityCategories/Stable/PullbackPasting.lean": 2,
+        "SerrePositivity/KST/SConstruction/PushoutTranspose.lean": 1,
+        "SerrePositivity/KST/SConstruction/GappedTriples.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)colimit.*(disjoint|sigma|sum|amalgamat|coproduct)|(disjoint|sigma|sum|amalgamat|coproduct).*colimit",
+          "SerrePositivity"
+        ],
+        "file_count": 182,
+        "line_count": 616
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)colimit.*(disjoint|sigma|sum|amalgamat|coproduct)|(disjoint|sigma|sum|amalgamat|coproduct).*colimit",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 85,
+        "line_count": 371
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SimplicialCoproducts.lean",
+        "signatures": [
+          {
+            "line": 86,
+            "head": "def simplicialCoproduct_isColimit (F : J → SSet.{u}) : IsColimit (Cofan.mk (simplicialCoproduct F) (simplicialCoproductι F)) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpaceCoproducts.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "def kanCoproductCocone_forget_isColimit (F : Discrete J ⥤ KanObject.{u}) : IsColimit (kanObjectForget.mapCocone (kanCoproductCocone F)) where"
+          },
+          {
+            "line": 51,
+            "head": "noncomputable def kanCoproductCocone_isColimit (F : Discrete J ⥤ KanObject.{u}) : IsColimit (kanCoproductCocone F) := kanObjectCocone_isColimit_of_forget _ (kanCoproductCocone_forget_isColimit F)"
+          },
+          {
+            "line": 78,
+            "head": "lemma spaceCoproductCocone_isColimitCone (F : Discrete J ⥤ KanObject.{u}) : IsColimitCone (spaceCoproductCocone F)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/MonoCoprod.lean",
+        "signatures": [
+          {
+            "line": 130,
+            "head": "def isColimitBinaryCofanSum : IsColimit (binaryCofanSum c c₁ c₂ hc₁ hc₂) := BinaryCofan.IsColimit.mk _ (fun f₁ f₂ => Cofan.IsColimit.desc hc (fun i => match i with | Sum.inl i₁ => c₁.inj i₁ ≫ f₁ | Sum.inr i₂ => c₂.inj i₂ ≫ f₂)) (fun f₁ f₂ => Cofan.IsColimit.hom_ext hc₁ _ _ (by simp)) (fun f₁ f₂ => Cofan.IsColimit.hom_ext hc₂ _ _ (by simp)) (fun f₁ f₂ m hm₁ hm₂ => by apply Cofan.IsColimit.hom_ext hc rintro (i₁ | i₂) <;> cat_disch)"
+          }
+        ]
+      }
+    ],
+    "decision": "単体集合の非交和そのものの余積、空間の離散図式の余極限、通常の圏で二組の余積を一つにまとめる型を読んだ。任意の部分図式の余極限を一つずつ指定し、全図式の余極限とその頂点の余積を比較する宣言は見つからなかった。"
+  },
+  "4.4.2.8": {
+    "page": 297,
+    "citations": {
+      "item": 0,
+      "subsection": 12,
+      "neighboring_subsections": [
+        "4.4.1",
+        "4.4.2",
+        "4.4.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/SequentialColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Supply/SequentialPreservedColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/PastingShapes.lean": 1,
+        "SerrePositivity/KST/SConstruction/GappedDegenerateSquares.lean": 1,
+        "SerrePositivity/InfinityCategories/Stable/Pasting.lean": 2,
+        "SerrePositivity/InfinityCategories/Stable/PullbackPasting.lean": 2,
+        "SerrePositivity/KST/SConstruction/PushoutTranspose.lean": 1,
+        "SerrePositivity/KST/SConstruction/GappedTriples.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(leftfibration|leftanodyne|weakly.?contractible).*(cocone|colimit|prism|join)|(cocone|colimit|prism|join).*(leftfibration|leftanodyne|weakly.?contractible)",
+          "SerrePositivity"
+        ],
+        "file_count": 167,
+        "line_count": 387
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(leftfibration|leftanodyne|weakly.?contractible).*(cocone|colimit|prism|join)|(cocone|colimit|prism|join).*(leftfibration|leftanodyne|weakly.?contractible)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationTransport.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma leftFibration_transport_to_cocone_fiber {K E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (f : K ⟶ E) (c : JoinCocone (f ≫ p)) : ∃ g : K ⟶ vertexFiber p c.vertex, ∃ H : SSet.Homotopy f (g ≫ vertexFiberι p c.vertex), H.h ≫ p = (coconeNullHomotopy c).h"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "lemma joinPoint_boundary_leftAnodyne (n : ℕ) : leftAnodyneExtensions (joinMap (𝟙 (Δ[0] : SSet.{u})) (boundary n).ι)"
+          },
+          {
+            "line": 113,
+            "head": "lemma joinPoint_mono_leftAnodyne {A B : SSet.{u}} (f : A ⟶ B) [Mono f] : leftAnodyneExtensions (joinMap (𝟙 (Δ[0] : SSet.{u})) f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeInitialColimitFamily.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma KanRelativeInitialVertex.cancel_right {X Y Z : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory Z] {U : X ⟶ Y} {V : Y ⟶ Z} {x : X _⦋0⦌} (hUV : KanRelativeInitialVertex (U ≫ V) x) (hV : KanRelativeInitialVertex V (U.app (Opposite.op ⦋0⦌) x)) : KanRelativeInitialVertex U x"
+          },
+          {
+            "line": 39,
+            "head": "lemma relativeInitial_colimitCoconeFamily {I X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (U : X ⟶ Y) (p : I ⟶ X) (hp : ∀ i, InitialBoundaryLifting U (p.app (Opposite.op ⦋0⦌) i)) (c : JoinCocone p) (hc : IsColimitCone c) (hUc : IsColimitCone (mapJoinCocone U c)) : KanRelativeInitialVertex ((ihom (join I (Δ[0] : SSet.{u}))).map U) (functorVertex c.val)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ColimitAttachmentDiagram.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def colimitAttachedShape (i : A ⟶ C) : SSet.{u} := pushout (joinInl A (Δ[0] : SSet.{u})) i"
+          },
+          {
+            "line": 27,
+            "head": "def colimitAttachedDiagram (c : JoinCocone p) (i : A ⟶ C) (F : C ⟶ X) (hi : i ≫ F = p) : colimitAttachedShape i ⟶ X := pushout.desc c.val F (c.property.trans hi.symm)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Pasting.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma isPushoutSquare_pasting_iff {X : SSet.{u}} [Quasicategory X] (F : (Δ[2] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hleft : IsPushoutSquare (pastingSquare F 2)) : IsPushoutSquare (pastingSquare F 0) ↔ IsPushoutSquare (pastingSquare F 1) := (pastingCocone_isColimitCone_iff_right F).symm.trans ((pastingCocone_isColimitCone_iff_outerCocone F hleft).trans (pastingOuterCocone_isColimitCone_iff_outer F))"
+          },
+          {
+            "line": 32,
+            "head": "lemma isPushoutSquare_pasting {X : SSet.{u}} [Quasicategory X] (F : (Δ[2] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hleft : IsPushoutSquare (pastingSquare F 2)) (hright : IsPushoutSquare (pastingSquare F 0)) : IsPushoutSquare (pastingSquare F 1) := (isPushoutSquare_pasting_iff F hleft).mp hright"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma hasPreservedColimit_countable_op_of_finite_sequential {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y] (U : X ⟶ Y) (hfin : ∀ (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ X), Ind.HasPreservedColimit U D) (hseq : ∀ G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} ℕ)) ⟶ X, Ind.HasPreservedColimit U G) (B : SSet.{u}) [Countable B.S] (F : (SSet.uliftFunctor.{u + 1, u}).obj B.op ⟶ X) : Ind.HasPreservedColimit U F"
+          },
+          {
+            "line": 48,
+            "head": "lemma hasPreservedColimit_countable_of_coproducts_finite {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y] (U : X ⟶ Y) (hX : HasSmallCoproducts X) (hU : PreservesSmallCoproducts U) (hfin : ∀ (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ X), Ind.HasPreservedColimit U D) (K : SSet.{u}) [Countable K.S] (F : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ X) : Ind.HasPreservedColimit U F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/Quasicategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class Quasicategory (S : SSet) : Prop where"
+          },
+          {
+            "line": 46,
+            "head": "lemma Quasicategory.hornFilling {S : SSet} [Quasicategory S] ⦃n : ℕ⦄ ⦃i : Fin (n + 1)⦄ (h0 : 0 < i) (hn : i < Fin.last n) (σ₀ : (Λ[n, i] : SSet) ⟶ S) : ∃ σ : Δ[n] ⟶ S, σ₀ = Λ[n, i].ι ≫ σ"
+          }
+        ]
+      }
+    ],
+    "decision": "左ファイブレーションに沿う円筒の持ち上げと、単点を結合する場合の左アノダイン性を調べた。弱可縮な任意の形状について、指定余錐が相対余極限となるコスライスの自明 Kan ファイブレーションを与える宣言は見つからなかった。"
   }
 }

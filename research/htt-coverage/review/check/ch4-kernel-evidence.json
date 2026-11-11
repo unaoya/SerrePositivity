@@ -1,5 +1,5 @@
 {
-  "base": "bdf178e556f087d6ca6c25f3a445c2a3710cc168",
+  "base": "70fe3ef71b57bf6a5330e2030d9a6a50d1710dbd",
   "toolchain": "leanprover/lean4:v4.35.0-rc4",
   "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
   "items": {
@@ -304,6 +304,19 @@
       "declarations": [
         "SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_trivialKanFibration",
         "SerrePositivity.InfinityCategories.trivialKanFibration_exists_section"
+      ]
+    },
+    "4.3.3.1": {
+      "page": 285,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy",
+        "SerrePositivity.InfinityCategories.simplicialHomotopyOfFunctorEdge"
+      ]
+    },
+    "4.4.2.2": {
+      "page": 296,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.hasColimit_pushout_shape_of_pointSpan"
       ]
     }
   },
@@ -688,6 +701,30 @@
       "evidence": "research/htt-coverage/review/check/runs/ch4-fat-join",
       "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
     },
+    "SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy": {
+      "declaration": "SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy",
+      "source": "SerrePositivity/InfinityCategories/Core/KanHomotopyEquivalence.lean",
+      "type": "@SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u_1} : {X Y : SSet.{u_1}} →\n  {f g : Quiver.Hom.{u_1, u_1 + 1} X Y} →\n    SSet.Homotopy.{u_1} f g →\n      SSet.Truncated.Edge.{u_1} (SerrePositivity.InfinityCategories.functorVertex.{u_1} f)\n        (SerrePositivity.InfinityCategories.functorVertex.{u_1} g)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/ch3-kernel-evidence.json",
+      "checked_at": "245e5b1ccc977677ac7798719aa2571a7830588b"
+    },
+    "SerrePositivity.InfinityCategories.hasColimit_pushout_shape_of_pointSpan": {
+      "declaration": "SerrePositivity.InfinityCategories.hasColimit_pushout_shape_of_pointSpan",
+      "source": "SerrePositivity/InfinityCategories/F1/Joins/PushoutShapeColimit.lean",
+      "type": "@SerrePositivity.InfinityCategories.hasColimit_pushout_shape_of_pointSpan.{u_1} : ∀ {A B C X : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] (f : Quiver.Hom.{u_1, u_1 + 1} A B) (g : Quiver.Hom.{u_1, u_1 + 1} A C)\n  [CategoryTheory.Mono.{u_1, u_1 + 1} g]\n  (F : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Limits.pushout.{u_1, u_1 + 1} f g) X),\n  SerrePositivity.InfinityCategories.HasColimit.{u_1}\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (CategoryTheory.Limits.pushout.inl.{u_1, u_1 + 1} f g) F)) →\n    SerrePositivity.InfinityCategories.HasColimit.{u_1}\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (CategoryTheory.Limits.pushout.inl.{u_1, u_1 + 1} f g) F) →\n      SerrePositivity.InfinityCategories.HasColimit.{u_1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (CategoryTheory.Limits.pushout.inr.{u_1, u_1 + 1} f g) F) →\n        (∀ (s : Quiver.Hom.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.pointConeSpan.{u_1} X),\n            SerrePositivity.InfinityCategories.HasColimit.{u_1} s) →\n          SerrePositivity.InfinityCategories.HasColimit.{u_1} F",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
     "SerrePositivity.InfinityCategories.intervalMappingSpace_kanComplex": {
       "declaration": "SerrePositivity.InfinityCategories.intervalMappingSpace_kanComplex",
       "source": "SerrePositivity/InfinityCategories/F1/MappingSpaces/PreFiberKan.lean",
@@ -999,6 +1036,18 @@
       ],
       "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
       "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
+    },
+    "SerrePositivity.InfinityCategories.simplicialHomotopyOfFunctorEdge": {
+      "declaration": "SerrePositivity.InfinityCategories.simplicialHomotopyOfFunctorEdge",
+      "source": "SerrePositivity/InfinityCategories/Core/FunctorHomotopy.lean",
+      "type": "@SerrePositivity.InfinityCategories.simplicialHomotopyOfFunctorEdge.{u_1} : {X Y : SSet.{u_1}} →\n  {f g : Quiver.Hom.{u_1, u_1 + 1} X Y} →\n    SSet.Truncated.Edge.{u_1} (SerrePositivity.InfinityCategories.functorVertex.{u_1} f)\n        (SerrePositivity.InfinityCategories.functorVertex.{u_1} g) →\n      SSet.Homotopy.{u_1} f g",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/ch3-kernel-evidence.json",
+      "checked_at": "245e5b1ccc977677ac7798719aa2571a7830588b"
     },
     "SerrePositivity.InfinityCategories.sliceUnderRestrict_projection": {
       "declaration": "SerrePositivity.InfinityCategories.sliceUnderRestrict_projection",
