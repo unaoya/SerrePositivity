@@ -19,7 +19,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.FixedObjectDiagram
-open CategoryTheory CategoryTheory.Limits SimplicialLocalization
+open CategoryTheory CategoryTheory.Limits
 
 variable {I : Type uI} [Category.{vI} I]
 

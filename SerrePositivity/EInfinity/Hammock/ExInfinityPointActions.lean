@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory MonoidalCategory SSet
-open SerrePositivity.KST.Comparison
+
 
 /-- 概要：元の点に Ex∞ 単位を合成した射は lax monoidal 単位からの像。
 方針：同じ Ex∞ 単位の自然性と monoidal 単位則を使う。

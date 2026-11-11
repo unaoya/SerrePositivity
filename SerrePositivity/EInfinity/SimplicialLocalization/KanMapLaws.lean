@@ -24,7 +24,7 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 
 open CategoryTheory
-open SerrePositivity.KST.Comparison
+
 
 /-- 概要：恒等相対関手は Kan 化後も恒等豊穣関手を誘導する（Dwyer–Kan）。
 方針：元の Hom の恒等則と Ex∞ の恒等則を使う。

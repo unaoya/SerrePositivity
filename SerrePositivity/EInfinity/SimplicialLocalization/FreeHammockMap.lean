@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
-open CategoryTheory CategoryTheory.Limits Hammock.DoubleSimplicial
+open CategoryTheory CategoryTheory.Limits
 variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D)
 
 def freeHammockWordMap (X Y : C.category) : freeHammockWordDiagram C X Y ⟶

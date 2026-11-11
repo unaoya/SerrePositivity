@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.Hammock.AsSmallComparison
 open CategoryTheory SSet MonoidalCategory
-open SerrePositivity.KST.Comparison
+
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
   {X Y : C}
 
