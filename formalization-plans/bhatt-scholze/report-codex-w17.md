@@ -176,3 +176,68 @@ main `7a3a0f965` を取り込み（merge `f47a76b45`）、H3 の先行分を続�
 **検証。** 段3の全24対象モジュールのビルドが成功。公開105宣言の `#check`・`#print axioms`・`#print sorries` が通り、sorry なし、依存公理は `propext`・`Classical.choice`・`Quot.sound` のみ。新規ファイルに KST の直接 import・sorry・新しい公理はない。鍵は `--wait 3600`、整理券は一枚ずつ、対象ビルド・Lean の監査の間だけ使用した。検証ログは `/tmp/serre-w17/h34/build-all.log`・`audit.log`。
 
 **停止点3に到達。** 登録対象は §8 の15本、§9 の3本、今回の6本（計24本）。入口・監査の登録と取り込みは調整役へ渡す。続いて指示書 §5 の H5 は段0の洗い出しだけを報告し、実装の前で止める。
+
+## 11. H5 段0：Prop 7.10 の古典的な部分（停止点0）
+
+指示書 §5 に従い、H3・H4 の停止点3（`22bd55917`）の後に行う紙の洗い出し。対象は drafts `A3/LciAndQuasiregular.lean` の qrsp 節（261–486行）、a3-design §1・W9-I-32〜45、原典 Notation 7.1・Lemma 4.8・Lemma 7.7–7.8・Example 7.9・Proposition 7.10。H5 の Lean の編集・ビルドはまだ行っていない。
+
+### 宣言ごとの切り分け
+
+「古典」は実際の環・prism・通常の導来圏で作るもの、「境界」は結論の一部が古典でも現在の型が Δ に依存するものを指す。境界の宣言を弱い型へ置き換えて完了とはしない。
+
+| drafts の宣言 | 分類と今回の切り出し |
+| --- | --- |
+| `PadicBase`・`padicBaseAlgebra` | 古典。実主元完備化と ℤ_p の比較による作用 |
+| `CotangentPCompletelyFlat`・`IsQuasiregularSemiperfectoid` | 現行は ∞ 側。cotangentWedgeAtAlgebra・loop・VertexIso を含む。弱い古典的な定義には置換しない |
+| `ainfCoefficients`・`ainfPrismRing`・`ainfTheta`・`ainfDelta` | 古典。Witt 環と零環の分岐 |
+| `AinfData`・`ainfData`・`ainfPrism`・`ainfResidueAlgebra`（local instance を含む） | 古典。θ・核の生成元・剰余同型を、固定した Witt 環上で照合 |
+| `InitialDelta` | 境界。指定 Δ の台環と Frobenius を参照する。模型の始性はその台環と同定する前に直接証明する |
+| `QrspDiscrete`・`qrsp_isDiscretePrismatic` | ∞ 側。指定された Δ の離散性。今回は実包絡模型 B の正則性・完備性まで |
+| `qrspHTMap` | 境界。模型では明示した単位 `η : S → B/(d)` を作る。Δ の HT 単位との同定は残す |
+| `qrsp_completelyFaithfullyFlat` | 境界。模型の η による **S 上**の p 完全忠実平坦性は古典。一般 qrsp の HT filtration と指定 Δ への移送は残す |
+| `rootPolynomials`・`rootBase`・`rootX`（R 作用を含む） | 古典。根付きモノイド環と実 p 完備化の模型 |
+| `rootBase_perfectoid`・`rootBasePrismMap` | 古典。根付きモノイド環の perfectoid 性、完全基底からの一意な持ち上げ |
+| `rootRelations`・`rootQuotient`・`rootQuotientMap`（R 作用を含む）・`regularSemiperfectoid` | 古典。有限 T と任意添字の S′ の具体環。実 H⁰ 完備化との比較が必要 |
+| `regularSemiperfectoid_prismatic` | 混合。Xi−fi の正則性、有界な包絡 B_T、全有界試験 prism への始性を切り出す。perfectBaseComparison の同型と Δ の離散性・InitialDelta は ∞ 側 |
+| `qrsp_initial` | ∞ 側かつ一般形は別単位 W9-I-43。T・S′ の始性から一般 qrsp の始性を主張しない |
+| `perfectedCoefficients`・`perfectedPrism`・`perfectedPrism_isPerfect`・`toPerfectedPrism` | 古典。δ 完全化の後の (p,d) 完備化と標準射 |
+| `IsCor73Comparison` | 古典。S′ 上の単位を保つ唯一の prism 同型 |
+| `rootQuotient_initial` | 境界。模型 B_S′ の全有界試験 prism への始性は古典。QrspDiscrete・InitialDelta との同定は残す |
+| `rootQuotient_prismatic_perfection_eq` | 混合。模型の完全化、perfectoidization、Cor 7.3 候補との S′ 上の唯一の同型を切り出す。指定 Δ からの同定は G10 後 |
+
+lci 節の前提では `exists_lciEnvelope` の古典的な存在は W15 の `exists_bounded_lciRelationEnvelope` で供給済み。`lciTensorDelta` とその射の判定は古典的な再利用候補。一方 `lciDerivedEnvelope_isEnvelope_of_discrete`・`universalModDComparison`・`lci_envelope_surjective_invert_p_universal`・`prismaticCohomology_lci_eq_envelope` は指定された導来包・Δ との比較を含み、今回の実包絡の構成とは分ける。`lciCompletionH0Comparison` は実完備化の比較の入力を再利用するが、drafts の ∞ 側との接続は残す。
+
+### 証明の筋・再利用と不足
+
+1. **根付き基底と A_inf。** `PowerRootPolynomial` の多項式上の自由性・分数指数基底、既存の Witt δ 環・`exists_distinguished_fontaine_kernel_generator` と perfect prism の構成を使う。多変数モノイド表示の比較、p 完備化の perfectoid 性、固定 θ の核の照合が不足。`rootBasePrismMap` は `existsUnique_perfectPrismHomLift_to_bounded` を直接使う。非零の Fact を全体に追加せず、零環の枝を残す。
+2. **有限 T。** Xi−fi の monic な正則列と quotient の一様な p 冪ねじれの有界性を証明し、任意の持ち上げ wi に移す。`exists_bounded_lciRelationEnvelope`、`IsFiniteLciRelationEnvelope`、`IsPrismaticEnvelope.exists_initial_of_base_quotient` を使って実際の有界な B_T と単位を返す。D76 の有界性は `completedBaseChange_bounded_torsion_pure` へ渡す。Lemma 4.8 の既存の有界標的への一意な基底持ち上げにより、基底 A′ を忘れても全有界試験 prism に対する始性を得る。
+3. **忠実平坦性。** K5 の `LciEnvelopeReduction`・`LciEnvelopeResidue`・`LciEnvelopeCompletedResidue`・`LciEnvelopeDiscrete` は正則性・完全平坦性を供給する。忠実性はまだ別途必要で、`exists_deltaDivision_freeVariable_residue_faithfullyFlat` の実際の mod(p,d) の忠実平坦性を、特殊化・完備化へ移す。主張の底は T（または S′）で、単位 η による `IsCompletelyFaithfullyFlat (Ideal.span {p}) (B/(d))` とする。
+4. **任意添字 S′。** 有限部分集合の B_T 間の δ 射を包絡の一意性から構成し、固定した基底 A 上で生成元と単位を揃える。`deltaAdjoinDivisionFiniteColimitEquiv` とその δ 保存を再利用する。その生の余極限を実 (p,d) 完備化へ移し、正則性・一様なねじれの指数・忠実平坦性・S′ 単位・始性を証明する部分が主な不足。生の余極限と完備余極限は同一視しない。
+5. **完全化と Cor 7.3。** 非完全な源からの延長には `existsUnique_deltaPerfectionPDCompletionHom` を使い、既存の完全化比較と generator・quotient・unit の式を接続する。`exists_perfectoidization_of_perfectPrism_quotient` へ r の全射性と r(d′)=0 を渡し、両普遍性で S′ 上の唯一の δ-prism 同型を得る。零環の枝は別に閉じる。既存の `CompatibleRootPerfectoid` の比較は候補に使えるが、全ての根を殺すイデアルと、Xi(0) のみを殺す S′ のイデアルを混同しない。
+
+本体の型案は、入力を perfectoid R と有限 r・fi（または任意 J の零関係）だけとし、実環 B、有界 prism Q、単位 `η : T →+* B ⧸ Q.ideal`（S′ でも同様）を存在として返す。結論に **任意の有界 prism Y と任意の `z : T →+* Y/Y.ideal` に対する `∃! g : OrientedPrism.Hom Q Y, g.quotientMap.comp η = z`** を置く。有限の場合は任意に持ち上げた wi に関する `IsFiniteLciRelationEnvelope` と、η による p 完全忠実平坦性も返す。S′ の完全化比較は、同じ S′ 単位を保つ唯一の δ-prism 同型として述べる。包絡や持ち上げの存在を新しい仮定束へ移す型にはしない。
+
+Lemma 7.7 は `DiscreteDelta`・`DiscretePrism`、Lemma 7.8 は `CategoryTheory.initial_of_retraction_idempotent`・`PrismRetract.exists_split_idempotent` を再利用する。T・S′ は包絡の直接の普遍性を優先する。K2 の Frobenius は D77 の **d 完全平坦性**の入力、K4 は `exists_boundedPrism_of_completelyFlat_deltaAlgebra` を使う。普通の Frobenius 平坦性を追加要求しない。D36 の Frobenius による δ 射の判定は標的の p 正則性が要るので、全有界標的への包絡の普遍性をその判定だけで置き換えない。
+
+### 型と原典の強弱の確認
+
+- `IsQuasiregularSemiperfectoid` は有界ねじれを既に含み、原典 Notation 7.1 と整合する。D76 の `exists_lciEnvelope` の hR も残っている。T・S′ では有界性の仮定を新設する前に、monic な具体表示と perfectoid R の p ねじれ（既存の `p_mul_eq_zero_of_pow_mul_eq_zero`）から供給する。任意の perfectoid 商の有界性は主張しない。
+- `rootBase`・`rootQuotient` の `completionRing` は **PrincipalCompletionH0（実 H⁰ LΛ_p）**であり、古典的 AdicCompletion と定義的には違う。原典の p 完備環、および有限 T の未完備商との一致は証明すべき比較である。新本体は一般の実完備化 API を直接使い、E3 の ∞ interface を import しない。drafts の定義を勝手に古典的完備化へ変更しない。
+- `qrsp_completelyFaithfullyFlat` の型の底 S と HT 単位は正しい。一方、証明コメントの一般 qrsp の「分裂 filtration」は平坦性だけからは出ない。一般形では mod p の平坦な余核による Fil₀ の純粋な包含を用いる必要がある。有限 lci の自由な場合と分ける。一般形のこの証明と Δ 比較は G10 後に残す。
+- `regularSemiperfectoid_prismatic` の最初の同型は **G-A2-10 の完全基底比較**で、単なる A2(4) の底変換だけとは扱わない。
+- 原典 Lemma 4.8 は任意の prism を対象とするが、再利用する本体は有界標的版。今回の公開始性の範囲は drafts・E3 が用いる **全有界試験 prism**とする（完全標的は有界）。相対 A′ 上の包絡そのものの普遍性は任意の prism 上のまま。p 正則な標的だけには狭めない。
+- 現時点で D76 のように「本体化のため直ちに修正すべき偽の強い型」は確定していない。上の未証明の完備化比較と filtration のコメントは区別して記録する。Δ の離散性を模型の離散性に読み替えて既存宣言を完了とはしない。
+
+### 置き場所・規模・順序
+
+新数学はすべて新規ファイル。`BhattScholze/Semiperfectoid/` に `RootFamilyBase`・`RootFamilyPerfectoid`・`RootRelationRegular`・`RootRelationEnvelope`・`RootRelationFaithful`・`RootRelationColimit`・`RootRelationCompletion`・`RootRelationInitial`・`RootRelationPerfection` の族を置く案。一般の有限部分族の完備化補題は `CommutativeAlgebra/` または `HomologicalAlgebra/DerivedCompletion/` に切り出す。
+
+| 束 | 不足する新規モジュールと行数の見込み |
+| --- | --- |
+| 根付き基底・A_inf と θ | 2〜3本、500〜1,000行 |
+| 有限正則列・有界ねじれ・実完備化比較 | 2〜4本、700〜1,400行 |
+| B_T・単位上の忠実平坦性・始性 | 2〜3本、600〜1,200行 |
+| 完備有限部分族の余極限と B_S′ | 2〜4本、1,000〜1,800行 |
+| 完全化と Cor 7.3 候補の一意同型 | 1〜2本、300〜600行 |
+
+合計 **9〜16本、約3,100〜6,000行**。一般 qrsp の Δ・HT 比較はこの工数に含めない。まず有限 T の実包絡と全有界標的への始性、その後 S′ の完備余極限、最後に完全化の比較の順とする。**H5 は停止点0。実装は検収を待つ。**
