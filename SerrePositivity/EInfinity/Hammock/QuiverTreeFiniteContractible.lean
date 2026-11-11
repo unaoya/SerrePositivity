@@ -36,7 +36,7 @@ lemma finite_colimit_isWeaklyContractible (S : Finset Q) (hS : _root_.SerrePosit
   by_cases hne : ∃ x ∈ S, (show T from x) ≠ Quiver.root T
   · let D := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.chooseLeafDeletion T hS hne
     have hrem := ih (S.erase D.leaf) (Finset.erase_ssubset D.leaf_mem) D.remaining_closed
-    exact D.contractible_of_remaining hrem
+    exact (_root_.SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.contractible_of_remaining D) hrem
   · have hroot : ∀ x ∈ S, (show T from x) = Quiver.root T := by
       intro x hx
       by_contra he

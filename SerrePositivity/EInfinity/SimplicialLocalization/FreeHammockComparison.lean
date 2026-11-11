@@ -18,7 +18,7 @@ public import SerrePositivity.EInfinity.Hammock.FixedObjectLocalizationEvaluatio
 universe u
 noncomputable section
 namespace SerrePositivity.EInfinity.SimplicialLocalization
-open CategoryTheory Hammock.DoubleSimplicial
+open CategoryTheory
 
 def freeHammockHomComparison (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
     freeHammockResolution C X Y ⟶ localizationHom C X Y ⋙ Functor.const SimplexCategoryᵒᵖ :=

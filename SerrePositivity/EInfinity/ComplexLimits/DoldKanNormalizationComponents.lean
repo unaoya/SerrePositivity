@@ -19,7 +19,7 @@ universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory AlgebraicTopology
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve.PinchedHom
+
 variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
 
 lemma standardNormalizationIso_zero_eval (x y : D)

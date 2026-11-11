@@ -336,6 +336,18 @@ def rewrite(data, migration):
                      if r["kind"] == "record-label" and "start" in r]
     for (a, b), candidates in refs.items():
         old_text = source[a:b].decode()
+        # A cases/induction alternative names a constructor by its leaf. Lean
+        # rejects a fully qualified name there, even when it names that same
+        # constructor. Preserve an unchanged short label; term occurrences below
+        # still receive their canonical name.
+        line_start = source.rfind(b"\n", 0, a) + 1
+        short_alternative = ("." not in old_text and
+                             re.fullmatch(rb"[ \t]*\|[ \t]+@?", source[line_start:a]) is not None)
+        if short_alternative and all(
+                (target := migration.target(ref)) is None or
+                target["new"].rsplit(".", 1)[-1] == old_text
+                for ref in candidates):
+            continue
         record_label = any(lo <= a and b <= hi for lo, hi in record_labels)
         replacements = set()
         other_resolution = False
