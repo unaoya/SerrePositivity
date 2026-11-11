@@ -1,0 +1,1971 @@
+{
+  "5.3.2.1": {
+    "page": 389,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.1",
+        "5.3.2",
+        "5.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          "SerrePositivity"
+        ],
+        "file_count": 443,
+        "line_count": 1228
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 120,
+        "line_count": 613
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma continuousKanLeftFibration_isContractibleKan {E B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (p : E ⟶ B) [LeftFibration p] (hf : ∀ b, IsContractibleKan (vertexFiber p b)) : IsContractibleKan (continuousKanReplacement.obj E)"
+          },
+          {
+            "line": 58,
+            "head": "lemma coherentFilteredTotalKan_isContractibleKan {B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (hf : ∀ b : B _⦋0⦌, IsContractibleKan (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up b))).obj) : IsContractibleKan (coherentDiagramTotalKan F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/TerminalRightFibrationRepresentation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightFibrationTerminalSliceMap {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : sliceOver (SSet.yonedaEquiv.symm t) ⟶ sliceOver (SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) t)) := sliceOverPostcomp _ p ≫ (eqToIso (congrArg sliceOver (SSet.yonedaEquiv_symm_comp t p))).hom"
+          },
+          {
+            "line": 31,
+            "head": "lemma rightFibrationTerminalSliceMap_projection {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : rightFibrationTerminalSliceMap p t ≫ sliceOverProjection _ = sliceOverProjection _ ≫ p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/KappaFilteredCoslices.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma nonempty_cocone_in_kappaFiltered_coslice {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K L C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (hL : IsKappaSmall κ L) (p : K ⟶ C) (f : L ⟶ sliceUnder p) : Nonempty (JoinCocone f)"
+          },
+          {
+            "line": 46,
+            "head": "lemma isKappaFiltered_sliceUnder {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (p : K ⟶ C) : IsKappaFiltered κ (sliceUnder p) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "def PreservesSmallColimits {C E : SSet.{u + 1}} (F : C ⟶ E) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) (c : JoinCocone D), IsColimitCone c → IsColimitCone (mapJoinCocone F c)"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/Flat.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "class RepresentablyFlat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 72,
+            "head": "class RepresentablyCoflat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 79,
+            "head": "instance RepresentablyFlat.of_isRightAdjoint [F.IsRightAdjoint] : RepresentablyFlat F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 196,
+            "head": "class PreservesFiniteColimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 207,
+            "head": "instance (priority := 100) preservesColimitsOfShapeOfPreservesFiniteColimits (F : C ⥤ D) [PreservesFiniteColimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesColimitsOfShape J F"
+          },
+          {
+            "line": 214,
+            "head": "lemma PreservesColimitsOfSize.preservesFiniteColimits (F : C ⥤ D) [PreservesColimitsOfSize.{w, w₂} F] : PreservesFiniteColimits F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/ExactFunctor.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def leftExactFunctor : ObjectProperty (C ⥤ D) := fun F ↦ PreservesFiniteLimits F"
+          },
+          {
+            "line": 42,
+            "head": "lemma leftExactFunctor_iff (F : C ⥤ D) : leftExactFunctor C D F ↔ PreservesFiniteLimits F := Iff.rfl"
+          },
+          {
+            "line": 45,
+            "head": "instance : (leftExactFunctor C D).IsClosedUnderIsomorphisms where"
+          }
+        ]
+      }
+    ],
+    "decision": "原典の κ-right exact は、κ-filtered な全空間を持つ任意の right fibration の引き戻しが κ-filtered になる条件。Mathlib RepresentablyCoflat は通常の CostructuredArrow の IsFiltered、有限余極限保存の型は通常圏のものに限る。任意の空間値 right fibration を試験する準圏のこの述語、または通常の述語とそれとの比較はない。"
+  },
+  "5.3.2.2": {
+    "page": 389,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.1",
+        "5.3.2",
+        "5.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          "SerrePositivity"
+        ],
+        "file_count": 443,
+        "line_count": 1228
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 120,
+        "line_count": 613
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma continuousKanLeftFibration_isContractibleKan {E B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (p : E ⟶ B) [LeftFibration p] (hf : ∀ b, IsContractibleKan (vertexFiber p b)) : IsContractibleKan (continuousKanReplacement.obj E)"
+          },
+          {
+            "line": 58,
+            "head": "lemma coherentFilteredTotalKan_isContractibleKan {B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (hf : ∀ b : B _⦋0⦌, IsContractibleKan (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up b))).obj) : IsContractibleKan (coherentDiagramTotalKan F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/TerminalRightFibrationRepresentation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightFibrationTerminalSliceMap {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : sliceOver (SSet.yonedaEquiv.symm t) ⟶ sliceOver (SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) t)) := sliceOverPostcomp _ p ≫ (eqToIso (congrArg sliceOver (SSet.yonedaEquiv_symm_comp t p))).hom"
+          },
+          {
+            "line": 31,
+            "head": "lemma rightFibrationTerminalSliceMap_projection {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : rightFibrationTerminalSliceMap p t ≫ sliceOverProjection _ = sliceOverProjection _ ≫ p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/KappaFilteredCoslices.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma nonempty_cocone_in_kappaFiltered_coslice {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K L C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (hL : IsKappaSmall κ L) (p : K ⟶ C) (f : L ⟶ sliceUnder p) : Nonempty (JoinCocone f)"
+          },
+          {
+            "line": 46,
+            "head": "lemma isKappaFiltered_sliceUnder {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (p : K ⟶ C) : IsKappaFiltered κ (sliceUnder p) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "def PreservesSmallColimits {C E : SSet.{u + 1}} (F : C ⟶ E) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) (c : JoinCocone D), IsColimitCone c → IsColimitCone (mapJoinCocone F c)"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/Flat.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "class RepresentablyFlat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 72,
+            "head": "class RepresentablyCoflat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 79,
+            "head": "instance RepresentablyFlat.of_isRightAdjoint [F.IsRightAdjoint] : RepresentablyFlat F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 196,
+            "head": "class PreservesFiniteColimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 207,
+            "head": "instance (priority := 100) preservesColimitsOfShapeOfPreservesFiniteColimits (F : C ⥤ D) [PreservesFiniteColimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesColimitsOfShape J F"
+          },
+          {
+            "line": 214,
+            "head": "lemma PreservesColimitsOfSize.preservesFiniteColimits (F : C ⥤ D) [PreservesColimitsOfSize.{w, w₂} F] : PreservesFiniteColimits F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/ExactFunctor.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def leftExactFunctor : ObjectProperty (C ⥤ D) := fun F ↦ PreservesFiniteLimits F"
+          },
+          {
+            "line": 42,
+            "head": "lemma leftExactFunctor_iff (F : C ⥤ D) : leftExactFunctor C D F ↔ PreservesFiniteLimits F := Iff.rfl"
+          },
+          {
+            "line": 45,
+            "head": "instance : (leftExactFunctor C D).IsClosedUnderIsomorphisms where"
+          }
+        ]
+      }
+    ],
+    "decision": "左完全性は反対関手の κ-right exact 性による双対概念。反対圏の right/left fibration の比較と通常の RepresentablyFlat/Coflat はあるが、準圏の κ-right exact 述語自体がなく、その反転により κ-left exact 述語を得る宣言もない。通常の有限極限保存だけは一般のこの定義ではない。"
+  },
+  "5.3.2.3": {
+    "page": 389,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.1",
+        "5.3.2",
+        "5.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          "SerrePositivity"
+        ],
+        "file_count": 443,
+        "line_count": 1228
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 120,
+        "line_count": 613
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma continuousKanLeftFibration_isContractibleKan {E B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (p : E ⟶ B) [LeftFibration p] (hf : ∀ b, IsContractibleKan (vertexFiber p b)) : IsContractibleKan (continuousKanReplacement.obj E)"
+          },
+          {
+            "line": 58,
+            "head": "lemma coherentFilteredTotalKan_isContractibleKan {B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (hf : ∀ b : B _⦋0⦌, IsContractibleKan (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up b))).obj) : IsContractibleKan (coherentDiagramTotalKan F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/TerminalRightFibrationRepresentation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightFibrationTerminalSliceMap {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : sliceOver (SSet.yonedaEquiv.symm t) ⟶ sliceOver (SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) t)) := sliceOverPostcomp _ p ≫ (eqToIso (congrArg sliceOver (SSet.yonedaEquiv_symm_comp t p))).hom"
+          },
+          {
+            "line": 31,
+            "head": "lemma rightFibrationTerminalSliceMap_projection {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : rightFibrationTerminalSliceMap p t ≫ sliceOverProjection _ = sliceOverProjection _ ≫ p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/KappaFilteredCoslices.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma nonempty_cocone_in_kappaFiltered_coslice {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K L C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (hL : IsKappaSmall κ L) (p : K ⟶ C) (f : L ⟶ sliceUnder p) : Nonempty (JoinCocone f)"
+          },
+          {
+            "line": 46,
+            "head": "lemma isKappaFiltered_sliceUnder {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (p : K ⟶ C) : IsKappaFiltered κ (sliceUnder p) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "def PreservesSmallColimits {C E : SSet.{u + 1}} (F : C ⟶ E) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) (c : JoinCocone D), IsColimitCone c → IsColimitCone (mapJoinCocone F c)"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/Flat.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "class RepresentablyFlat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 72,
+            "head": "class RepresentablyCoflat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 79,
+            "head": "instance RepresentablyFlat.of_isRightAdjoint [F.IsRightAdjoint] : RepresentablyFlat F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 196,
+            "head": "class PreservesFiniteColimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 207,
+            "head": "instance (priority := 100) preservesColimitsOfShapeOfPreservesFiniteColimits (F : C ⥤ D) [PreservesFiniteColimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesColimitsOfShape J F"
+          },
+          {
+            "line": 214,
+            "head": "lemma PreservesColimitsOfSize.preservesFiniteColimits (F : C ⥤ D) [PreservesColimitsOfSize.{w, w₂} F] : PreservesFiniteColimits F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/ExactFunctor.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def leftExactFunctor : ObjectProperty (C ⥤ D) := fun F ↦ PreservesFiniteLimits F"
+          },
+          {
+            "line": 42,
+            "head": "lemma leftExactFunctor_iff (F : C ⥤ D) : leftExactFunctor C D F ↔ PreservesFiniteLimits F := Iff.rfl"
+          },
+          {
+            "line": 45,
+            "head": "instance : (leftExactFunctor C D).IsClosedUnderIsomorphisms where"
+          }
+        ]
+      }
+    ],
+    "decision": "有限余極限を持つ始域について、right exact と全有限余極限保存の同値。Mathlib の RepresentablyCoflat と finite-colimit preserving の同値の類似を読んだが、通常の filtered な comma の神経を native IsFilteredInfinity に比較する一般定理と、任意の right fibration に対する引き戻し条件との比較がない。通常圏の述語の同名性だけで特別な場合と判定しない。"
+  },
+  "5.3.2.4": {
+    "page": 389,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.1",
+        "5.3.2",
+        "5.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          "SerrePositivity"
+        ],
+        "file_count": 443,
+        "line_count": 1228
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 120,
+        "line_count": 613
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma continuousKanLeftFibration_isContractibleKan {E B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (p : E ⟶ B) [LeftFibration p] (hf : ∀ b, IsContractibleKan (vertexFiber p b)) : IsContractibleKan (continuousKanReplacement.obj E)"
+          },
+          {
+            "line": 58,
+            "head": "lemma coherentFilteredTotalKan_isContractibleKan {B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (hf : ∀ b : B _⦋0⦌, IsContractibleKan (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up b))).obj) : IsContractibleKan (coherentDiagramTotalKan F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/TerminalRightFibrationRepresentation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightFibrationTerminalSliceMap {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : sliceOver (SSet.yonedaEquiv.symm t) ⟶ sliceOver (SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) t)) := sliceOverPostcomp _ p ≫ (eqToIso (congrArg sliceOver (SSet.yonedaEquiv_symm_comp t p))).hom"
+          },
+          {
+            "line": 31,
+            "head": "lemma rightFibrationTerminalSliceMap_projection {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : rightFibrationTerminalSliceMap p t ≫ sliceOverProjection _ = sliceOverProjection _ ≫ p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/KappaFilteredCoslices.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma nonempty_cocone_in_kappaFiltered_coslice {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K L C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (hL : IsKappaSmall κ L) (p : K ⟶ C) (f : L ⟶ sliceUnder p) : Nonempty (JoinCocone f)"
+          },
+          {
+            "line": 46,
+            "head": "lemma isKappaFiltered_sliceUnder {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (p : K ⟶ C) : IsKappaFiltered κ (sliceUnder p) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "def PreservesSmallColimits {C E : SSet.{u + 1}} (F : C ⟶ E) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) (c : JoinCocone D), IsColimitCone c → IsColimitCone (mapJoinCocone F c)"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/Flat.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "class RepresentablyFlat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 72,
+            "head": "class RepresentablyCoflat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 79,
+            "head": "instance RepresentablyFlat.of_isRightAdjoint [F.IsRightAdjoint] : RepresentablyFlat F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 196,
+            "head": "class PreservesFiniteColimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 207,
+            "head": "instance (priority := 100) preservesColimitsOfShapeOfPreservesFiniteColimits (F : C ⥤ D) [PreservesFiniteColimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesColimitsOfShape J F"
+          },
+          {
+            "line": 214,
+            "head": "lemma PreservesColimitsOfSize.preservesFiniteColimits (F : C ⥤ D) [PreservesColimitsOfSize.{w, w₂} F] : PreservesFiniteColimits F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/ExactFunctor.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def leftExactFunctor : ObjectProperty (C ⥤ D) := fun F ↦ PreservesFiniteLimits F"
+          },
+          {
+            "line": 42,
+            "head": "lemma leftExactFunctor_iff (F : C ⥤ D) : leftExactFunctor C D F ↔ PreservesFiniteLimits F := Iff.rfl"
+          },
+          {
+            "line": 45,
+            "head": "instance : (leftExactFunctor C D).IsClosedUnderIsomorphisms where"
+          }
+        ]
+      }
+    ],
+    "decision": "κ-right exact 性の合成、圏同値、および関手のホモトピーへの不変性という三条件。Mathlib の RepresentablyCoflat.comp や id は通常の comma の filtered 性に対する型で、元の κ-filtered な全 right fibration による条件を保つ型ではない。IsKappaFiltered の標的圏同値での不変性も、関手 F 自体のこの保存条件の不変性とは別。"
+  },
+  "5.3.2.5": {
+    "page": 390,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.1",
+        "5.3.2",
+        "5.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          "SerrePositivity"
+        ],
+        "file_count": 443,
+        "line_count": 1228
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 120,
+        "line_count": 613
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma continuousKanLeftFibration_isContractibleKan {E B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (p : E ⟶ B) [LeftFibration p] (hf : ∀ b, IsContractibleKan (vertexFiber p b)) : IsContractibleKan (continuousKanReplacement.obj E)"
+          },
+          {
+            "line": 58,
+            "head": "lemma coherentFilteredTotalKan_isContractibleKan {B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (hf : ∀ b : B _⦋0⦌, IsContractibleKan (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up b))).obj) : IsContractibleKan (coherentDiagramTotalKan F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/TerminalRightFibrationRepresentation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightFibrationTerminalSliceMap {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : sliceOver (SSet.yonedaEquiv.symm t) ⟶ sliceOver (SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) t)) := sliceOverPostcomp _ p ≫ (eqToIso (congrArg sliceOver (SSet.yonedaEquiv_symm_comp t p))).hom"
+          },
+          {
+            "line": 31,
+            "head": "lemma rightFibrationTerminalSliceMap_projection {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : rightFibrationTerminalSliceMap p t ≫ sliceOverProjection _ = sliceOverProjection _ ≫ p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/KappaFilteredCoslices.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma nonempty_cocone_in_kappaFiltered_coslice {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K L C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (hL : IsKappaSmall κ L) (p : K ⟶ C) (f : L ⟶ sliceUnder p) : Nonempty (JoinCocone f)"
+          },
+          {
+            "line": 46,
+            "head": "lemma isKappaFiltered_sliceUnder {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (p : K ⟶ C) : IsKappaFiltered κ (sliceUnder p) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "def PreservesSmallColimits {C E : SSet.{u + 1}} (F : C ⟶ E) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) (c : JoinCocone D), IsColimitCone c → IsColimitCone (mapJoinCocone F c)"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/Flat.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "class RepresentablyFlat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 72,
+            "head": "class RepresentablyCoflat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 79,
+            "head": "instance RepresentablyFlat.of_isRightAdjoint [F.IsRightAdjoint] : RepresentablyFlat F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 196,
+            "head": "class PreservesFiniteColimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 207,
+            "head": "instance (priority := 100) preservesColimitsOfShapeOfPreservesFiniteColimits (F : C ⥤ D) [PreservesFiniteColimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesColimitsOfShape J F"
+          },
+          {
+            "line": 214,
+            "head": "lemma PreservesColimitsOfSize.preservesFiniteColimits (F : C ⥤ D) [PreservesColimitsOfSize.{w, w₂} F] : PreservesFiniteColimits F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/ExactFunctor.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def leftExactFunctor : ObjectProperty (C ⥤ D) := fun F ↦ PreservesFiniteLimits F"
+          },
+          {
+            "line": 42,
+            "head": "lemma leftExactFunctor_iff (F : C ⥤ D) : leftExactFunctor C D F ↔ PreservesFiniteLimits F := Iff.rfl"
+          },
+          {
+            "line": 45,
+            "head": "instance : (leftExactFunctor C D).IsClosedUnderIsomorphisms where"
+          }
+        ]
+      }
+    ],
+    "decision": "任意の right fibration による κ-right exact 性と、各 b の A×B B/b が κ-filtered であることの同値。Mathlib RepresentablyCoflat の CostructuredArrow 判定と native な TerminalRightFibrationRepresentation はあるが、通常の comma から任意空間値 fibration の全 filtered 引き戻しへの比較はない。表現可能な点上の slice のみの型を、全 right fibration の同値判定としない。"
+  },
+  "5.3.2.6": {
+    "page": 392,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.1",
+        "5.3.2",
+        "5.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          "SerrePositivity"
+        ],
+        "file_count": 443,
+        "line_count": 1228
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 120,
+        "line_count": 613
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma continuousKanLeftFibration_isContractibleKan {E B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (p : E ⟶ B) [LeftFibration p] (hf : ∀ b, IsContractibleKan (vertexFiber p b)) : IsContractibleKan (continuousKanReplacement.obj E)"
+          },
+          {
+            "line": 58,
+            "head": "lemma coherentFilteredTotalKan_isContractibleKan {B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (hf : ∀ b : B _⦋0⦌, IsContractibleKan (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up b))).obj) : IsContractibleKan (coherentDiagramTotalKan F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/TerminalRightFibrationRepresentation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightFibrationTerminalSliceMap {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : sliceOver (SSet.yonedaEquiv.symm t) ⟶ sliceOver (SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) t)) := sliceOverPostcomp _ p ≫ (eqToIso (congrArg sliceOver (SSet.yonedaEquiv_symm_comp t p))).hom"
+          },
+          {
+            "line": 31,
+            "head": "lemma rightFibrationTerminalSliceMap_projection {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : rightFibrationTerminalSliceMap p t ≫ sliceOverProjection _ = sliceOverProjection _ ≫ p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/KappaFilteredCoslices.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma nonempty_cocone_in_kappaFiltered_coslice {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K L C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (hL : IsKappaSmall κ L) (p : K ⟶ C) (f : L ⟶ sliceUnder p) : Nonempty (JoinCocone f)"
+          },
+          {
+            "line": 46,
+            "head": "lemma isKappaFiltered_sliceUnder {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (p : K ⟶ C) : IsKappaFiltered κ (sliceUnder p) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "def PreservesSmallColimits {C E : SSet.{u + 1}} (F : C ⟶ E) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) (c : JoinCocone D), IsColimitCone c → IsColimitCone (mapJoinCocone F c)"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/Flat.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "class RepresentablyFlat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 72,
+            "head": "class RepresentablyCoflat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 79,
+            "head": "instance RepresentablyFlat.of_isRightAdjoint [F.IsRightAdjoint] : RepresentablyFlat F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 196,
+            "head": "class PreservesFiniteColimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 207,
+            "head": "instance (priority := 100) preservesColimitsOfShapeOfPreservesFiniteColimits (F : C ⥤ D) [PreservesFiniteColimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesColimitsOfShape J F"
+          },
+          {
+            "line": 214,
+            "head": "lemma PreservesColimitsOfSize.preservesFiniteColimits (F : C ⥤ D) [PreservesColimitsOfSize.{w, w₂} F] : PreservesFiniteColimits F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/ExactFunctor.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def leftExactFunctor : ObjectProperty (C ⥤ D) := fun F ↦ PreservesFiniteLimits F"
+          },
+          {
+            "line": 42,
+            "head": "lemma leftExactFunctor_iff (F : C ⥤ D) : leftExactFunctor C D F ↔ PreservesFiniteLimits F := Iff.rfl"
+          },
+          {
+            "line": 45,
+            "head": "instance : (leftExactFunctor C D).IsClosedUnderIsomorphisms where"
+          }
+        ]
+      }
+    ],
+    "decision": "2017-04-09 版 p.392 の仮定は Cartesian fibration で、結論にファイバーの Kan 性も書かれる。しかし N(ℕ)→Δ⁰ は Cartesian、底は始対象を持ち、全空間は filtered でも、ファイバー N(ℕ) は Kan でない。原典のこの字面はそのままでは成立しない。continuousKanLeftFibration_isContractibleKan は各ファイバーの可縮性から全空間の Kan 置換の可縮性を得る逆向きの主張であり、この行には対応させない。"
+  },
+  "5.3.2.7": {
+    "page": 392,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.1",
+        "5.3.2",
+        "5.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          "SerrePositivity"
+        ],
+        "file_count": 443,
+        "line_count": 1228
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 120,
+        "line_count": 613
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma continuousKanLeftFibration_isContractibleKan {E B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (p : E ⟶ B) [LeftFibration p] (hf : ∀ b, IsContractibleKan (vertexFiber p b)) : IsContractibleKan (continuousKanReplacement.obj E)"
+          },
+          {
+            "line": 58,
+            "head": "lemma coherentFilteredTotalKan_isContractibleKan {B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (hf : ∀ b : B _⦋0⦌, IsContractibleKan (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up b))).obj) : IsContractibleKan (coherentDiagramTotalKan F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/TerminalRightFibrationRepresentation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightFibrationTerminalSliceMap {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : sliceOver (SSet.yonedaEquiv.symm t) ⟶ sliceOver (SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) t)) := sliceOverPostcomp _ p ≫ (eqToIso (congrArg sliceOver (SSet.yonedaEquiv_symm_comp t p))).hom"
+          },
+          {
+            "line": 31,
+            "head": "lemma rightFibrationTerminalSliceMap_projection {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : rightFibrationTerminalSliceMap p t ≫ sliceOverProjection _ = sliceOverProjection _ ≫ p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/KappaFilteredCoslices.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma nonempty_cocone_in_kappaFiltered_coslice {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K L C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (hL : IsKappaSmall κ L) (p : K ⟶ C) (f : L ⟶ sliceUnder p) : Nonempty (JoinCocone f)"
+          },
+          {
+            "line": 46,
+            "head": "lemma isKappaFiltered_sliceUnder {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (p : K ⟶ C) : IsKappaFiltered κ (sliceUnder p) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "def PreservesSmallColimits {C E : SSet.{u + 1}} (F : C ⟶ E) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) (c : JoinCocone D), IsColimitCone c → IsColimitCone (mapJoinCocone F c)"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/Flat.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "class RepresentablyFlat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 72,
+            "head": "class RepresentablyCoflat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 79,
+            "head": "instance RepresentablyFlat.of_isRightAdjoint [F.IsRightAdjoint] : RepresentablyFlat F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 196,
+            "head": "class PreservesFiniteColimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 207,
+            "head": "instance (priority := 100) preservesColimitsOfShapeOfPreservesFiniteColimits (F : C ⥤ D) [PreservesFiniteColimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesColimitsOfShape J F"
+          },
+          {
+            "line": 214,
+            "head": "lemma PreservesColimitsOfSize.preservesFiniteColimits (F : C ⥤ D) [PreservesColimitsOfSize.{w, w₂} F] : PreservesFiniteColimits F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/ExactFunctor.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def leftExactFunctor : ObjectProperty (C ⥤ D) := fun F ↦ PreservesFiniteLimits F"
+          },
+          {
+            "line": 42,
+            "head": "lemma leftExactFunctor_iff (F : C ⥤ D) : leftExactFunctor C D F ↔ PreservesFiniteLimits F := Iff.rfl"
+          },
+          {
+            "line": 45,
+            "head": "instance : (leftExactFunctor C D).IsClosedUnderIsomorphisms where"
+          }
+        ]
+      }
+    ],
+    "decision": "right exact な F が始対象を保存するという主張。Mathlib RepresentablyCoflat の有限余極限保存は通常圏の comma の filtered 性から得る型で、HTT の right fibration による right exact 性との比較がない。左随伴が始対象を保存する補題も、任意の right exact 関手に左随伴の存在を要求できず、直接のこの結論を返さない。"
+  },
+  "5.3.2.8": {
+    "page": 392,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.1",
+        "5.3.2",
+        "5.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          "SerrePositivity"
+        ],
+        "file_count": 443,
+        "line_count": 1228
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 120,
+        "line_count": 613
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma continuousKanLeftFibration_isContractibleKan {E B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (p : E ⟶ B) [LeftFibration p] (hf : ∀ b, IsContractibleKan (vertexFiber p b)) : IsContractibleKan (continuousKanReplacement.obj E)"
+          },
+          {
+            "line": 58,
+            "head": "lemma coherentFilteredTotalKan_isContractibleKan {B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (hf : ∀ b : B _⦋0⦌, IsContractibleKan (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up b))).obj) : IsContractibleKan (coherentDiagramTotalKan F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/TerminalRightFibrationRepresentation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightFibrationTerminalSliceMap {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : sliceOver (SSet.yonedaEquiv.symm t) ⟶ sliceOver (SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) t)) := sliceOverPostcomp _ p ≫ (eqToIso (congrArg sliceOver (SSet.yonedaEquiv_symm_comp t p))).hom"
+          },
+          {
+            "line": 31,
+            "head": "lemma rightFibrationTerminalSliceMap_projection {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : rightFibrationTerminalSliceMap p t ≫ sliceOverProjection _ = sliceOverProjection _ ≫ p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/KappaFilteredCoslices.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma nonempty_cocone_in_kappaFiltered_coslice {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K L C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (hL : IsKappaSmall κ L) (p : K ⟶ C) (f : L ⟶ sliceUnder p) : Nonempty (JoinCocone f)"
+          },
+          {
+            "line": 46,
+            "head": "lemma isKappaFiltered_sliceUnder {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (p : K ⟶ C) : IsKappaFiltered κ (sliceUnder p) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "def PreservesSmallColimits {C E : SSet.{u + 1}} (F : C ⟶ E) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) (c : JoinCocone D), IsColimitCone c → IsColimitCone (mapJoinCocone F c)"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/Flat.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "class RepresentablyFlat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 72,
+            "head": "class RepresentablyCoflat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 79,
+            "head": "instance RepresentablyFlat.of_isRightAdjoint [F.IsRightAdjoint] : RepresentablyFlat F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 196,
+            "head": "class PreservesFiniteColimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 207,
+            "head": "instance (priority := 100) preservesColimitsOfShapeOfPreservesFiniteColimits (F : C ⥤ D) [PreservesFiniteColimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesColimitsOfShape J F"
+          },
+          {
+            "line": 214,
+            "head": "lemma PreservesColimitsOfSize.preservesFiniteColimits (F : C ⥤ D) [PreservesColimitsOfSize.{w, w₂} F] : PreservesFiniteColimits F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/ExactFunctor.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def leftExactFunctor : ObjectProperty (C ⥤ D) := fun F ↦ PreservesFiniteLimits F"
+          },
+          {
+            "line": 42,
+            "head": "lemma leftExactFunctor_iff (F : C ⥤ D) : leftExactFunctor C D F ↔ PreservesFiniteLimits F := Iff.rfl"
+          },
+          {
+            "line": 45,
+            "head": "instance : (leftExactFunctor C D).IsClosedUnderIsomorphisms where"
+          }
+        ]
+      }
+    ],
+    "decision": "κ-right exact な f と κ-small な図式 p に対し、Ap/→Bfp/ も κ-right exact となる。isKappaFiltered_sliceUnder は C 自身が κ-filtered の場合の余スライスの性質であり、ここでは A,B は filtered と仮定されていない。余スライスの後合成と反対模型の型だけでは、この関手による全 right fibration の引き戻しの保存性を与えない。"
+  },
+  "5.3.2.9": {
+    "page": 392,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.1",
+        "5.3.2",
+        "5.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          "SerrePositivity"
+        ],
+        "file_count": 443,
+        "line_count": 1228
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 120,
+        "line_count": 613
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma continuousKanLeftFibration_isContractibleKan {E B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (p : E ⟶ B) [LeftFibration p] (hf : ∀ b, IsContractibleKan (vertexFiber p b)) : IsContractibleKan (continuousKanReplacement.obj E)"
+          },
+          {
+            "line": 58,
+            "head": "lemma coherentFilteredTotalKan_isContractibleKan {B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (hf : ∀ b : B _⦋0⦌, IsContractibleKan (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up b))).obj) : IsContractibleKan (coherentDiagramTotalKan F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/TerminalRightFibrationRepresentation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightFibrationTerminalSliceMap {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : sliceOver (SSet.yonedaEquiv.symm t) ⟶ sliceOver (SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) t)) := sliceOverPostcomp _ p ≫ (eqToIso (congrArg sliceOver (SSet.yonedaEquiv_symm_comp t p))).hom"
+          },
+          {
+            "line": 31,
+            "head": "lemma rightFibrationTerminalSliceMap_projection {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : rightFibrationTerminalSliceMap p t ≫ sliceOverProjection _ = sliceOverProjection _ ≫ p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/KappaFilteredCoslices.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma nonempty_cocone_in_kappaFiltered_coslice {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K L C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (hL : IsKappaSmall κ L) (p : K ⟶ C) (f : L ⟶ sliceUnder p) : Nonempty (JoinCocone f)"
+          },
+          {
+            "line": 46,
+            "head": "lemma isKappaFiltered_sliceUnder {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (p : K ⟶ C) : IsKappaFiltered κ (sliceUnder p) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "def PreservesSmallColimits {C E : SSet.{u + 1}} (F : C ⟶ E) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) (c : JoinCocone D), IsColimitCone c → IsColimitCone (mapJoinCocone F c)"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/Flat.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "class RepresentablyFlat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 72,
+            "head": "class RepresentablyCoflat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 79,
+            "head": "instance RepresentablyFlat.of_isRightAdjoint [F.IsRightAdjoint] : RepresentablyFlat F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 196,
+            "head": "class PreservesFiniteColimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 207,
+            "head": "instance (priority := 100) preservesColimitsOfShapeOfPreservesFiniteColimits (F : C ⥤ D) [PreservesFiniteColimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesColimitsOfShape J F"
+          },
+          {
+            "line": 214,
+            "head": "lemma PreservesColimitsOfSize.preservesFiniteColimits (F : C ⥤ D) [PreservesColimitsOfSize.{w, w₂} F] : PreservesFiniteColimits F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/ExactFunctor.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def leftExactFunctor : ObjectProperty (C ⥤ D) := fun F ↦ PreservesFiniteLimits F"
+          },
+          {
+            "line": 42,
+            "head": "lemma leftExactFunctor_iff (F : C ⥤ D) : leftExactFunctor C D F ↔ PreservesFiniteLimits F := Iff.rfl"
+          },
+          {
+            "line": 45,
+            "head": "instance : (leftExactFunctor C D).IsClosedUnderIsomorphisms where"
+          }
+        ]
+      }
+    ],
+    "decision": "κ-right exact なら既存の κ-small 余極限を保存し、κ-small 余完備な始域でその逆も成り立つ二つの主張。通常圏の RepresentablyCoflat の有限余極限保存判定、native な全小余極限保存と filtered-余極限保存を調べたが、準圏の全 right fibration による κ-right exact 条件と結びつく型はない。filtered 余極限の保存は、小さい形状の余極限の保存と別の条件。"
+  },
+  "5.3.2.10": {
+    "page": 393,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.1",
+        "5.3.2",
+        "5.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          "SerrePositivity"
+        ],
+        "file_count": 443,
+        "line_count": 1228
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 120,
+        "line_count": 613
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma continuousKanLeftFibration_isContractibleKan {E B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (p : E ⟶ B) [LeftFibration p] (hf : ∀ b, IsContractibleKan (vertexFiber p b)) : IsContractibleKan (continuousKanReplacement.obj E)"
+          },
+          {
+            "line": 58,
+            "head": "lemma coherentFilteredTotalKan_isContractibleKan {B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (hf : ∀ b : B _⦋0⦌, IsContractibleKan (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up b))).obj) : IsContractibleKan (coherentDiagramTotalKan F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/TerminalRightFibrationRepresentation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightFibrationTerminalSliceMap {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : sliceOver (SSet.yonedaEquiv.symm t) ⟶ sliceOver (SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) t)) := sliceOverPostcomp _ p ≫ (eqToIso (congrArg sliceOver (SSet.yonedaEquiv_symm_comp t p))).hom"
+          },
+          {
+            "line": 31,
+            "head": "lemma rightFibrationTerminalSliceMap_projection {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : rightFibrationTerminalSliceMap p t ≫ sliceOverProjection _ = sliceOverProjection _ ≫ p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/KappaFilteredCoslices.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma nonempty_cocone_in_kappaFiltered_coslice {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K L C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (hL : IsKappaSmall κ L) (p : K ⟶ C) (f : L ⟶ sliceUnder p) : Nonempty (JoinCocone f)"
+          },
+          {
+            "line": 46,
+            "head": "lemma isKappaFiltered_sliceUnder {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (p : K ⟶ C) : IsKappaFiltered κ (sliceUnder p) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "def PreservesSmallColimits {C E : SSet.{u + 1}} (F : C ⟶ E) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) (c : JoinCocone D), IsColimitCone c → IsColimitCone (mapJoinCocone F c)"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/Flat.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "class RepresentablyFlat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 72,
+            "head": "class RepresentablyCoflat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 79,
+            "head": "instance RepresentablyFlat.of_isRightAdjoint [F.IsRightAdjoint] : RepresentablyFlat F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 196,
+            "head": "class PreservesFiniteColimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 207,
+            "head": "instance (priority := 100) preservesColimitsOfShapeOfPreservesFiniteColimits (F : C ⥤ D) [PreservesFiniteColimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesColimitsOfShape J F"
+          },
+          {
+            "line": 214,
+            "head": "lemma PreservesColimitsOfSize.preservesFiniteColimits (F : C ⥤ D) [PreservesColimitsOfSize.{w, w₂} F] : PreservesFiniteColimits F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/ExactFunctor.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def leftExactFunctor : ObjectProperty (C ⥤ D) := fun F ↦ PreservesFiniteLimits F"
+          },
+          {
+            "line": 42,
+            "head": "lemma leftExactFunctor_iff (F : C ⥤ D) : leftExactFunctor C D F ↔ PreservesFiniteLimits F := Iff.rfl"
+          },
+          {
+            "line": 45,
+            "head": "instance : (leftExactFunctor C D).IsClosedUnderIsomorphisms where"
+          }
+        ]
+      }
+    ],
+    "decision": "Gop の κ-right exact 性による κ-left exact 性が、κ-small 極限の存在下でその保存と同値になる。通常圏の RepresentablyFlat、native な PreservesSmallLimits、および right/left fibration の反転はあるが、元の準圏の任意の right fibration を用いる条件の比較がない。通常圏の有限極限だけの類似は全 κ と準圏の条件を実装しない。"
+  },
+  "5.3.2.11": {
+    "page": 393,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.1",
+        "5.3.2",
+        "5.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          "SerrePositivity"
+        ],
+        "file_count": 443,
+        "line_count": 1228
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(right.?exact|left.?exact|Representably(Coflat|Flat)|filtered.*(fibration|slice|pullback)|kappaFiltered.*(elements|slice)|preserv.*(finite.*colimit|small.*colimit))",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 120,
+        "line_count": 613
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma continuousKanLeftFibration_isContractibleKan {E B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (p : E ⟶ B) [LeftFibration p] (hf : ∀ b, IsContractibleKan (vertexFiber p b)) : IsContractibleKan (continuousKanReplacement.obj E)"
+          },
+          {
+            "line": 58,
+            "head": "lemma coherentFilteredTotalKan_isContractibleKan {B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (hf : ∀ b : B _⦋0⦌, IsContractibleKan (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up b))).obj) : IsContractibleKan (coherentDiagramTotalKan F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/TerminalRightFibrationRepresentation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightFibrationTerminalSliceMap {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : sliceOver (SSet.yonedaEquiv.symm t) ⟶ sliceOver (SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) t)) := sliceOverPostcomp _ p ≫ (eqToIso (congrArg sliceOver (SSet.yonedaEquiv_symm_comp t p))).hom"
+          },
+          {
+            "line": 31,
+            "head": "lemma rightFibrationTerminalSliceMap_projection {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : rightFibrationTerminalSliceMap p t ≫ sliceOverProjection _ = sliceOverProjection _ ≫ p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/KappaFilteredCoslices.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma nonempty_cocone_in_kappaFiltered_coslice {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K L C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (hL : IsKappaSmall κ L) (p : K ⟶ C) (f : L ⟶ sliceUnder p) : Nonempty (JoinCocone f)"
+          },
+          {
+            "line": 46,
+            "head": "lemma isKappaFiltered_sliceUnder {κ : Cardinal.{u}} (hκ : κ.IsRegular) {K C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] (hK : IsKappaSmall κ K) (p : K ⟶ C) : IsKappaFiltered κ (sliceUnder p) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "def PreservesSmallColimits {C E : SSet.{u + 1}} (F : C ⟶ E) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) (c : JoinCocone D), IsColimitCone c → IsColimitCone (mapJoinCocone F c)"
+          },
+          {
+            "line": 50,
+            "head": "lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) : IsKappaAccessibleFunctor κ F"
+          },
+          {
+            "line": 57,
+            "head": "lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}} {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/Flat.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "class RepresentablyFlat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 72,
+            "head": "class RepresentablyCoflat (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 79,
+            "head": "instance RepresentablyFlat.of_isRightAdjoint [F.IsRightAdjoint] : RepresentablyFlat F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 196,
+            "head": "class PreservesFiniteColimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 207,
+            "head": "instance (priority := 100) preservesColimitsOfShapeOfPreservesFiniteColimits (F : C ⥤ D) [PreservesFiniteColimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesColimitsOfShape J F"
+          },
+          {
+            "line": 214,
+            "head": "lemma PreservesColimitsOfSize.preservesFiniteColimits (F : C ⥤ D) [PreservesColimitsOfSize.{w, w₂} F] : PreservesFiniteColimits F where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/ExactFunctor.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def leftExactFunctor : ObjectProperty (C ⥤ D) := fun F ↦ PreservesFiniteLimits F"
+          },
+          {
+            "line": 42,
+            "head": "lemma leftExactFunctor_iff (F : C ⥤ D) : leftExactFunctor C D F ↔ PreservesFiniteLimits F := Iff.rfl"
+          },
+          {
+            "line": 45,
+            "head": "instance : (leftExactFunctor C D).IsClosedUnderIsomorphisms where"
+          }
+        ]
+      }
+    ],
+    "decision": "F:C→Spaceop の κ-right exact 性から分類 right fibration の全空間の κ-filtered 性を得て、C の κ-small 余完備性の下では逆も成り立つ。isIndVertex_of_kappaFiltered_elements は全空間から Indκ の所属を得る型で、F の right exact 性は出力しない。前層の小余極限から極限への保存性も、この一般の定義の同値判定や、余完備性を外した反例を含まない。"
+  }
+}

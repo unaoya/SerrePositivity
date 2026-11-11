@@ -1,0 +1,2306 @@
+{
+  "5.3.1.1": {
+    "page": 381,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.2.8",
+        "5.3.1",
+        "5.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          "SerrePositivity"
+        ],
+        "file_count": 1588,
+        "line_count": 7828
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 222,
+        "line_count": 2942
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 32,
+            "head": "class IsKappaFiltered (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 39,
+            "head": "lemma isKappaFiltered_of_le {κ μ : Cardinal.{u}} {C : SSet.{u}} [Quasicategory C] (hκμ : κ ≤ μ) [IsKappaFiltered μ C] : IsKappaFiltered κ C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          },
+          {
+            "line": 48,
+            "head": "lemma isFilteredInfinity_iff_of_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsFilteredInfinity C ↔ IsFilteredInfinity D := isFilteredInfinity_iff_of_equivalence hf.choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma isKappaFiltered_nerve_of_cardinalFiltered {κ : Cardinal.{u}} [Fact κ.IsRegular] (I : Type u) [Preorder I] [IsCardinalFiltered I κ] : IsKappaFiltered κ (nerve I) where"
+          },
+          {
+            "line": 31,
+            "head": "lemma exists_cofinal_kappaFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsKappaFiltered κ (nerve I) ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/CofinalFilteredPoset.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_cofinal_cardinalFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def terminalSubcomplexPredicate (X : SSet.{u}) (A : X.Subcomplex) : Prop := ∃ x : A.toSSet _⦋0⦌, IsTerminalVertex x"
+          },
+          {
+            "line": 30,
+            "head": "lemma terminalSubcomplexFamily_isCardinalFiltered : IsCardinalFiltered (SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _)) κ := smallSubcomplexFamily_isCardinalFiltered (exists_small_terminalSubcomplex Fact.out hT)"
+          },
+          {
+            "line": 36,
+            "head": "lemma iSup_terminalSubcomplexFamily : ⨆ A : SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _), A.val = ⊤ := iSup_smallSubcomplexFamily (exists_small_terminalSubcomplex Fact.out hT)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexEnlargement.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma exists_small_terminalSubcomplex {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] {T : Type u} (hT : κ ≤ Cardinal.mk T) (A : (C ⊗ nerve (Codiscrete T)).Subcomplex) (hA : IsKappaSmall κ A.toSSet) : ∃ B : (C ⊗ nerve (Codiscrete T)).Subcomplex, IsKappaSmall κ B.toSSet ∧ (∃ x : B.toSSet _⦋0⦌, IsTerminalVertex x) ∧ A ≤ B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredDiagonalCofinality.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isRightCofinal_constantDiagram_of_filtered (K C : SSet.{u}) [K.Finite] [Quasicategory C] [IsFilteredInfinity C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 isWeaklyContractible_sliceUnder_of_filtered"
+          },
+          {
+            "line": 58,
+            "head": "lemma isRightCofinal_constantDiagram_of_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) (K C : SSet.{u}) (hK : IsKappaSmall κ K) [Quasicategory C] [IsKappaFiltered κ C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 (isWeaklyContractible_sliceUnder_of_kappaFiltered hκ hK)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/JoinQuasicategory.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "instance join_quasicategory (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] : Quasicategory (join X Y) where"
+          },
+          {
+            "line": 58,
+            "head": "instance relativeJoin_quasicategory {X Y S : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) : Quasicategory (relativeJoin f g) := quasicategory_of_innerFibration (pullback.fst (joinMap f g) (joinDiagonal S))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+        "signatures": [
+          {
+            "line": 82,
+            "head": "class IsFilteredOrEmpty : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "class IsFiltered : Prop extends IsFilteredOrEmpty C where"
+          },
+          {
+            "line": 100,
+            "head": "instance (priority := 100) isFilteredOrEmpty_of_semilatticeSup (α : Type u) [SemilatticeSup α] : IsFilteredOrEmpty α where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [Fact κ.IsRegular] : Prop where"
+          },
+          {
+            "line": 153,
+            "head": "lemma isFiltered_of_isCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : IsFiltered J"
+          },
+          {
+            "line": 164,
+            "head": "lemma IsCardinalFiltered.nonempty (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : Nonempty J := have := isFiltered_of_isCardinalFiltered J κ IsFiltered.nonempty"
+          }
+        ]
+      }
+    ],
+    "decision": "有限対象の共通標的と、各球面からの Hom 空間への写像を後合成で零ホモトピックにするという位相豊穣圏の定義。IsFilteredInfinity は準圏の全有限図式への余錐の存在で、通常の IsFiltered は Hom 集合の二射の等化だけを要求する。位相豊穣圏の球面条件そのものの述語や、それら二定義との比較はない。"
+  },
+  "5.3.1.2": {
+    "page": 382,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.2.8",
+        "5.3.1",
+        "5.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          "SerrePositivity"
+        ],
+        "file_count": 1588,
+        "line_count": 7828
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 222,
+        "line_count": 2942
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 32,
+            "head": "class IsKappaFiltered (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 39,
+            "head": "lemma isKappaFiltered_of_le {κ μ : Cardinal.{u}} {C : SSet.{u}} [Quasicategory C] (hκμ : κ ≤ μ) [IsKappaFiltered μ C] : IsKappaFiltered κ C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          },
+          {
+            "line": 48,
+            "head": "lemma isFilteredInfinity_iff_of_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsFilteredInfinity C ↔ IsFilteredInfinity D := isFilteredInfinity_iff_of_equivalence hf.choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma isKappaFiltered_nerve_of_cardinalFiltered {κ : Cardinal.{u}} [Fact κ.IsRegular] (I : Type u) [Preorder I] [IsCardinalFiltered I κ] : IsKappaFiltered κ (nerve I) where"
+          },
+          {
+            "line": 31,
+            "head": "lemma exists_cofinal_kappaFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsKappaFiltered κ (nerve I) ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/CofinalFilteredPoset.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_cofinal_cardinalFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def terminalSubcomplexPredicate (X : SSet.{u}) (A : X.Subcomplex) : Prop := ∃ x : A.toSSet _⦋0⦌, IsTerminalVertex x"
+          },
+          {
+            "line": 30,
+            "head": "lemma terminalSubcomplexFamily_isCardinalFiltered : IsCardinalFiltered (SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _)) κ := smallSubcomplexFamily_isCardinalFiltered (exists_small_terminalSubcomplex Fact.out hT)"
+          },
+          {
+            "line": 36,
+            "head": "lemma iSup_terminalSubcomplexFamily : ⨆ A : SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _), A.val = ⊤ := iSup_smallSubcomplexFamily (exists_small_terminalSubcomplex Fact.out hT)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexEnlargement.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma exists_small_terminalSubcomplex {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] {T : Type u} (hT : κ ≤ Cardinal.mk T) (A : (C ⊗ nerve (Codiscrete T)).Subcomplex) (hA : IsKappaSmall κ A.toSSet) : ∃ B : (C ⊗ nerve (Codiscrete T)).Subcomplex, IsKappaSmall κ B.toSSet ∧ (∃ x : B.toSSet _⦋0⦌, IsTerminalVertex x) ∧ A ≤ B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredDiagonalCofinality.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isRightCofinal_constantDiagram_of_filtered (K C : SSet.{u}) [K.Finite] [Quasicategory C] [IsFilteredInfinity C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 isWeaklyContractible_sliceUnder_of_filtered"
+          },
+          {
+            "line": 58,
+            "head": "lemma isRightCofinal_constantDiagram_of_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) (K C : SSet.{u}) (hK : IsKappaSmall κ K) [Quasicategory C] [IsKappaFiltered κ C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 (isWeaklyContractible_sliceUnder_of_kappaFiltered hκ hK)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/JoinQuasicategory.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "instance join_quasicategory (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] : Quasicategory (join X Y) where"
+          },
+          {
+            "line": 58,
+            "head": "instance relativeJoin_quasicategory {X Y S : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) : Quasicategory (relativeJoin f g) := quasicategory_of_innerFibration (pullback.fst (joinMap f g) (joinDiagonal S))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+        "signatures": [
+          {
+            "line": 82,
+            "head": "class IsFilteredOrEmpty : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "class IsFiltered : Prop extends IsFilteredOrEmpty C where"
+          },
+          {
+            "line": 100,
+            "head": "instance (priority := 100) isFilteredOrEmpty_of_semilatticeSup (α : Type u) [SemilatticeSup α] : IsFilteredOrEmpty α where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [Fact κ.IsRegular] : Prop where"
+          },
+          {
+            "line": 153,
+            "head": "lemma isFiltered_of_isCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : IsFiltered J"
+          },
+          {
+            "line": 164,
+            "head": "lemma IsCardinalFiltered.nonempty (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : Nonempty J := have := isFiltered_of_isCardinalFiltered J κ IsFiltered.nonempty"
+          }
+        ]
+      }
+    ],
+    "decision": "通常圏の離散 Hom 位相でのフィルター性との同値、および位相豊穣圏のフィルター性から hC の通常のフィルター性への含意。通常の IsFiltered と準圏の IsFilteredInfinity はあるが、球面条件を持つ位相豊穣圏の filtered 性を入力する型がない。準圏の nerve のフィルター性だけはこの位相豊穣模型との同値ではない。"
+  },
+  "5.3.1.3": {
+    "page": 382,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.2.8",
+        "5.3.1",
+        "5.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          "SerrePositivity"
+        ],
+        "file_count": 1588,
+        "line_count": 7828
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 222,
+        "line_count": 2942
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 32,
+            "head": "class IsKappaFiltered (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 39,
+            "head": "lemma isKappaFiltered_of_le {κ μ : Cardinal.{u}} {C : SSet.{u}} [Quasicategory C] (hκμ : κ ≤ μ) [IsKappaFiltered μ C] : IsKappaFiltered κ C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          },
+          {
+            "line": 48,
+            "head": "lemma isFilteredInfinity_iff_of_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsFilteredInfinity C ↔ IsFilteredInfinity D := isFilteredInfinity_iff_of_equivalence hf.choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma isKappaFiltered_nerve_of_cardinalFiltered {κ : Cardinal.{u}} [Fact κ.IsRegular] (I : Type u) [Preorder I] [IsCardinalFiltered I κ] : IsKappaFiltered κ (nerve I) where"
+          },
+          {
+            "line": 31,
+            "head": "lemma exists_cofinal_kappaFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsKappaFiltered κ (nerve I) ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/CofinalFilteredPoset.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_cofinal_cardinalFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def terminalSubcomplexPredicate (X : SSet.{u}) (A : X.Subcomplex) : Prop := ∃ x : A.toSSet _⦋0⦌, IsTerminalVertex x"
+          },
+          {
+            "line": 30,
+            "head": "lemma terminalSubcomplexFamily_isCardinalFiltered : IsCardinalFiltered (SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _)) κ := smallSubcomplexFamily_isCardinalFiltered (exists_small_terminalSubcomplex Fact.out hT)"
+          },
+          {
+            "line": 36,
+            "head": "lemma iSup_terminalSubcomplexFamily : ⨆ A : SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _), A.val = ⊤ := iSup_smallSubcomplexFamily (exists_small_terminalSubcomplex Fact.out hT)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexEnlargement.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma exists_small_terminalSubcomplex {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] {T : Type u} (hT : κ ≤ Cardinal.mk T) (A : (C ⊗ nerve (Codiscrete T)).Subcomplex) (hA : IsKappaSmall κ A.toSSet) : ∃ B : (C ⊗ nerve (Codiscrete T)).Subcomplex, IsKappaSmall κ B.toSSet ∧ (∃ x : B.toSSet _⦋0⦌, IsTerminalVertex x) ∧ A ≤ B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredDiagonalCofinality.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isRightCofinal_constantDiagram_of_filtered (K C : SSet.{u}) [K.Finite] [Quasicategory C] [IsFilteredInfinity C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 isWeaklyContractible_sliceUnder_of_filtered"
+          },
+          {
+            "line": 58,
+            "head": "lemma isRightCofinal_constantDiagram_of_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) (K C : SSet.{u}) (hK : IsKappaSmall κ K) [Quasicategory C] [IsKappaFiltered κ C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 (isWeaklyContractible_sliceUnder_of_kappaFiltered hκ hK)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/JoinQuasicategory.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "instance join_quasicategory (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] : Quasicategory (join X Y) where"
+          },
+          {
+            "line": 58,
+            "head": "instance relativeJoin_quasicategory {X Y S : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) : Quasicategory (relativeJoin f g) := quasicategory_of_innerFibration (pullback.fst (joinMap f g) (joinDiagonal S))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+        "signatures": [
+          {
+            "line": 82,
+            "head": "class IsFilteredOrEmpty : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "class IsFiltered : Prop extends IsFilteredOrEmpty C where"
+          },
+          {
+            "line": 100,
+            "head": "instance (priority := 100) isFilteredOrEmpty_of_semilatticeSup (α : Type u) [SemilatticeSup α] : IsFilteredOrEmpty α where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [Fact κ.IsRegular] : Prop where"
+          },
+          {
+            "line": 153,
+            "head": "lemma isFiltered_of_isCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : IsFiltered J"
+          },
+          {
+            "line": 164,
+            "head": "lemma IsCardinalFiltered.nonempty (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : Nonempty J := have := isFiltered_of_isCardinalFiltered J κ IsFiltered.nonempty"
+          }
+        ]
+      }
+    ],
+    "decision": "球面条件の n=0 が任意二射を後合成でホモトピックにする条件であるという注意。IsFiltered.cocone や図式の JoinCocone は通常圏の等式または準圏の余錐であり、位相 Hom 空間の S⁰ の写像と零ホモトピーをこの二射に同定する型はない。"
+  },
+  "5.3.1.4": {
+    "page": 382,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.2.8",
+        "5.3.1",
+        "5.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          "SerrePositivity"
+        ],
+        "file_count": 1588,
+        "line_count": 7828
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 222,
+        "line_count": 2942
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 32,
+            "head": "class IsKappaFiltered (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 39,
+            "head": "lemma isKappaFiltered_of_le {κ μ : Cardinal.{u}} {C : SSet.{u}} [Quasicategory C] (hκμ : κ ≤ μ) [IsKappaFiltered μ C] : IsKappaFiltered κ C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          },
+          {
+            "line": 48,
+            "head": "lemma isFilteredInfinity_iff_of_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsFilteredInfinity C ↔ IsFilteredInfinity D := isFilteredInfinity_iff_of_equivalence hf.choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma isKappaFiltered_nerve_of_cardinalFiltered {κ : Cardinal.{u}} [Fact κ.IsRegular] (I : Type u) [Preorder I] [IsCardinalFiltered I κ] : IsKappaFiltered κ (nerve I) where"
+          },
+          {
+            "line": 31,
+            "head": "lemma exists_cofinal_kappaFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsKappaFiltered κ (nerve I) ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/CofinalFilteredPoset.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_cofinal_cardinalFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def terminalSubcomplexPredicate (X : SSet.{u}) (A : X.Subcomplex) : Prop := ∃ x : A.toSSet _⦋0⦌, IsTerminalVertex x"
+          },
+          {
+            "line": 30,
+            "head": "lemma terminalSubcomplexFamily_isCardinalFiltered : IsCardinalFiltered (SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _)) κ := smallSubcomplexFamily_isCardinalFiltered (exists_small_terminalSubcomplex Fact.out hT)"
+          },
+          {
+            "line": 36,
+            "head": "lemma iSup_terminalSubcomplexFamily : ⨆ A : SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _), A.val = ⊤ := iSup_smallSubcomplexFamily (exists_small_terminalSubcomplex Fact.out hT)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexEnlargement.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma exists_small_terminalSubcomplex {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] {T : Type u} (hT : κ ≤ Cardinal.mk T) (A : (C ⊗ nerve (Codiscrete T)).Subcomplex) (hA : IsKappaSmall κ A.toSSet) : ∃ B : (C ⊗ nerve (Codiscrete T)).Subcomplex, IsKappaSmall κ B.toSSet ∧ (∃ x : B.toSSet _⦋0⦌, IsTerminalVertex x) ∧ A ≤ B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredDiagonalCofinality.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isRightCofinal_constantDiagram_of_filtered (K C : SSet.{u}) [K.Finite] [Quasicategory C] [IsFilteredInfinity C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 isWeaklyContractible_sliceUnder_of_filtered"
+          },
+          {
+            "line": 58,
+            "head": "lemma isRightCofinal_constantDiagram_of_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) (K C : SSet.{u}) (hK : IsKappaSmall κ K) [Quasicategory C] [IsKappaFiltered κ C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 (isWeaklyContractible_sliceUnder_of_kappaFiltered hκ hK)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/JoinQuasicategory.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "instance join_quasicategory (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] : Quasicategory (join X Y) where"
+          },
+          {
+            "line": 58,
+            "head": "instance relativeJoin_quasicategory {X Y S : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) : Quasicategory (relativeJoin f g) := quasicategory_of_innerFibration (pullback.fst (joinMap f g) (joinDiagonal S))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+        "signatures": [
+          {
+            "line": 82,
+            "head": "class IsFilteredOrEmpty : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "class IsFiltered : Prop extends IsFilteredOrEmpty C where"
+          },
+          {
+            "line": 100,
+            "head": "instance (priority := 100) isFilteredOrEmpty_of_semilatticeSup (α : Type u) [SemilatticeSup α] : IsFilteredOrEmpty α where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [Fact κ.IsRegular] : Prop where"
+          },
+          {
+            "line": 153,
+            "head": "lemma isFiltered_of_isCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : IsFiltered J"
+          },
+          {
+            "line": 164,
+            "head": "lemma IsCardinalFiltered.nonempty (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : Nonempty J := have := isFiltered_of_isCardinalFiltered J κ IsFiltered.nonempty"
+          }
+        ]
+      }
+    ],
+    "decision": "位相 Hom 空間の球面に対する条件を任意の有限 CW 複体の写像に対する条件へ強めても同値という主張。有限単体集合上の coherent な図式の cone は調べたが、位相豊穣圏の各 Hom で有限胞体ごとの零ホモトピーを後合成で作る判定や CW 帰納の宣言はない。"
+  },
+  "5.3.1.5": {
+    "page": 382,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.2.8",
+        "5.3.1",
+        "5.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          "SerrePositivity"
+        ],
+        "file_count": 1588,
+        "line_count": 7828
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 222,
+        "line_count": 2942
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 32,
+            "head": "class IsKappaFiltered (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 39,
+            "head": "lemma isKappaFiltered_of_le {κ μ : Cardinal.{u}} {C : SSet.{u}} [Quasicategory C] (hκμ : κ ≤ μ) [IsKappaFiltered μ C] : IsKappaFiltered κ C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          },
+          {
+            "line": 48,
+            "head": "lemma isFilteredInfinity_iff_of_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsFilteredInfinity C ↔ IsFilteredInfinity D := isFilteredInfinity_iff_of_equivalence hf.choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma isKappaFiltered_nerve_of_cardinalFiltered {κ : Cardinal.{u}} [Fact κ.IsRegular] (I : Type u) [Preorder I] [IsCardinalFiltered I κ] : IsKappaFiltered κ (nerve I) where"
+          },
+          {
+            "line": 31,
+            "head": "lemma exists_cofinal_kappaFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsKappaFiltered κ (nerve I) ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/CofinalFilteredPoset.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_cofinal_cardinalFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def terminalSubcomplexPredicate (X : SSet.{u}) (A : X.Subcomplex) : Prop := ∃ x : A.toSSet _⦋0⦌, IsTerminalVertex x"
+          },
+          {
+            "line": 30,
+            "head": "lemma terminalSubcomplexFamily_isCardinalFiltered : IsCardinalFiltered (SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _)) κ := smallSubcomplexFamily_isCardinalFiltered (exists_small_terminalSubcomplex Fact.out hT)"
+          },
+          {
+            "line": 36,
+            "head": "lemma iSup_terminalSubcomplexFamily : ⨆ A : SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _), A.val = ⊤ := iSup_smallSubcomplexFamily (exists_small_terminalSubcomplex Fact.out hT)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexEnlargement.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma exists_small_terminalSubcomplex {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] {T : Type u} (hT : κ ≤ Cardinal.mk T) (A : (C ⊗ nerve (Codiscrete T)).Subcomplex) (hA : IsKappaSmall κ A.toSSet) : ∃ B : (C ⊗ nerve (Codiscrete T)).Subcomplex, IsKappaSmall κ B.toSSet ∧ (∃ x : B.toSSet _⦋0⦌, IsTerminalVertex x) ∧ A ≤ B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredDiagonalCofinality.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isRightCofinal_constantDiagram_of_filtered (K C : SSet.{u}) [K.Finite] [Quasicategory C] [IsFilteredInfinity C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 isWeaklyContractible_sliceUnder_of_filtered"
+          },
+          {
+            "line": 58,
+            "head": "lemma isRightCofinal_constantDiagram_of_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) (K C : SSet.{u}) (hK : IsKappaSmall κ K) [Quasicategory C] [IsKappaFiltered κ C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 (isWeaklyContractible_sliceUnder_of_kappaFiltered hκ hK)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/JoinQuasicategory.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "instance join_quasicategory (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] : Quasicategory (join X Y) where"
+          },
+          {
+            "line": 58,
+            "head": "instance relativeJoin_quasicategory {X Y S : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) : Quasicategory (relativeJoin f g) := quasicategory_of_innerFibration (pullback.fst (joinMap f g) (joinDiagonal S))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+        "signatures": [
+          {
+            "line": 82,
+            "head": "class IsFilteredOrEmpty : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "class IsFiltered : Prop extends IsFilteredOrEmpty C where"
+          },
+          {
+            "line": 100,
+            "head": "instance (priority := 100) isFilteredOrEmpty_of_semilatticeSup (α : Type u) [SemilatticeSup α] : IsFilteredOrEmpty α where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [Fact κ.IsRegular] : Prop where"
+          },
+          {
+            "line": 153,
+            "head": "lemma isFiltered_of_isCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : IsFiltered J"
+          },
+          {
+            "line": 164,
+            "head": "lemma IsCardinalFiltered.nonempty (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : Nonempty J := have := isFiltered_of_isCardinalFiltered J κ IsFiltered.nonempty"
+          }
+        ]
+      }
+    ],
+    "decision": "H 豊穣ホモトピー圏だけで位相豊穣圏の filtered 性が決まり、位相豊穣同値で不変という主張。isFilteredInfinity_iff_of_equivalence は準圏間の QCatEquivalence に対する型で、位相豊穣 Hom の球面条件からその準圏の filtered 性への比較はない。模型の異なる不変性の類似だけを対応させない。"
+  },
+  "5.3.1.6": {
+    "page": 382,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.2.8",
+        "5.3.1",
+        "5.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          "SerrePositivity"
+        ],
+        "file_count": 1588,
+        "line_count": 7828
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 222,
+        "line_count": 2942
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 32,
+            "head": "class IsKappaFiltered (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 39,
+            "head": "lemma isKappaFiltered_of_le {κ μ : Cardinal.{u}} {C : SSet.{u}} [Quasicategory C] (hκμ : κ ≤ μ) [IsKappaFiltered μ C] : IsKappaFiltered κ C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          },
+          {
+            "line": 48,
+            "head": "lemma isFilteredInfinity_iff_of_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsFilteredInfinity C ↔ IsFilteredInfinity D := isFilteredInfinity_iff_of_equivalence hf.choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma isKappaFiltered_nerve_of_cardinalFiltered {κ : Cardinal.{u}} [Fact κ.IsRegular] (I : Type u) [Preorder I] [IsCardinalFiltered I κ] : IsKappaFiltered κ (nerve I) where"
+          },
+          {
+            "line": 31,
+            "head": "lemma exists_cofinal_kappaFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsKappaFiltered κ (nerve I) ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/CofinalFilteredPoset.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_cofinal_cardinalFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def terminalSubcomplexPredicate (X : SSet.{u}) (A : X.Subcomplex) : Prop := ∃ x : A.toSSet _⦋0⦌, IsTerminalVertex x"
+          },
+          {
+            "line": 30,
+            "head": "lemma terminalSubcomplexFamily_isCardinalFiltered : IsCardinalFiltered (SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _)) κ := smallSubcomplexFamily_isCardinalFiltered (exists_small_terminalSubcomplex Fact.out hT)"
+          },
+          {
+            "line": 36,
+            "head": "lemma iSup_terminalSubcomplexFamily : ⨆ A : SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _), A.val = ⊤ := iSup_smallSubcomplexFamily (exists_small_terminalSubcomplex Fact.out hT)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexEnlargement.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma exists_small_terminalSubcomplex {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] {T : Type u} (hT : κ ≤ Cardinal.mk T) (A : (C ⊗ nerve (Codiscrete T)).Subcomplex) (hA : IsKappaSmall κ A.toSSet) : ∃ B : (C ⊗ nerve (Codiscrete T)).Subcomplex, IsKappaSmall κ B.toSSet ∧ (∃ x : B.toSSet _⦋0⦌, IsTerminalVertex x) ∧ A ≤ B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredDiagonalCofinality.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isRightCofinal_constantDiagram_of_filtered (K C : SSet.{u}) [K.Finite] [Quasicategory C] [IsFilteredInfinity C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 isWeaklyContractible_sliceUnder_of_filtered"
+          },
+          {
+            "line": 58,
+            "head": "lemma isRightCofinal_constantDiagram_of_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) (K C : SSet.{u}) (hK : IsKappaSmall κ K) [Quasicategory C] [IsKappaFiltered κ C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 (isWeaklyContractible_sliceUnder_of_kappaFiltered hκ hK)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/JoinQuasicategory.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "instance join_quasicategory (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] : Quasicategory (join X Y) where"
+          },
+          {
+            "line": 58,
+            "head": "instance relativeJoin_quasicategory {X Y S : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) : Quasicategory (relativeJoin f g) := quasicategory_of_innerFibration (pullback.fst (joinMap f g) (joinDiagonal S))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+        "signatures": [
+          {
+            "line": 82,
+            "head": "class IsFilteredOrEmpty : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "class IsFiltered : Prop extends IsFilteredOrEmpty C where"
+          },
+          {
+            "line": 100,
+            "head": "instance (priority := 100) isFilteredOrEmpty_of_semilatticeSup (α : Type u) [SemilatticeSup α] : IsFilteredOrEmpty α where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [Fact κ.IsRegular] : Prop where"
+          },
+          {
+            "line": 153,
+            "head": "lemma isFiltered_of_isCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : IsFiltered J"
+          },
+          {
+            "line": 164,
+            "head": "lemma IsCardinalFiltered.nonempty (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : Nonempty J := have := isFiltered_of_isCardinalFiltered J κ IsFiltered.nonempty"
+          }
+        ]
+      }
+    ],
+    "decision": "位相豊穣圏と Sing、fibrant 単体豊穣圏と幾何学的実現の filtered 性の同値。Coherent の全 Hom 比較はあるが、豊穣圏の球面・単体境界の零ホモトピー条件を持つ filtered 性の型、Sing と実現に沿うこの条件の双方向の比較はない。通常圏の nerve や準圏の同値不変性では代用しない。"
+  },
+  "5.3.1.12": {
+    "page": 383,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.2.8",
+        "5.3.1",
+        "5.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          "SerrePositivity"
+        ],
+        "file_count": 1588,
+        "line_count": 7828
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 222,
+        "line_count": 2942
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 32,
+            "head": "class IsKappaFiltered (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 39,
+            "head": "lemma isKappaFiltered_of_le {κ μ : Cardinal.{u}} {C : SSet.{u}} [Quasicategory C] (hκμ : κ ≤ μ) [IsKappaFiltered μ C] : IsKappaFiltered κ C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          },
+          {
+            "line": 48,
+            "head": "lemma isFilteredInfinity_iff_of_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsFilteredInfinity C ↔ IsFilteredInfinity D := isFilteredInfinity_iff_of_equivalence hf.choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma isKappaFiltered_nerve_of_cardinalFiltered {κ : Cardinal.{u}} [Fact κ.IsRegular] (I : Type u) [Preorder I] [IsCardinalFiltered I κ] : IsKappaFiltered κ (nerve I) where"
+          },
+          {
+            "line": 31,
+            "head": "lemma exists_cofinal_kappaFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsKappaFiltered κ (nerve I) ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/CofinalFilteredPoset.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_cofinal_cardinalFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def terminalSubcomplexPredicate (X : SSet.{u}) (A : X.Subcomplex) : Prop := ∃ x : A.toSSet _⦋0⦌, IsTerminalVertex x"
+          },
+          {
+            "line": 30,
+            "head": "lemma terminalSubcomplexFamily_isCardinalFiltered : IsCardinalFiltered (SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _)) κ := smallSubcomplexFamily_isCardinalFiltered (exists_small_terminalSubcomplex Fact.out hT)"
+          },
+          {
+            "line": 36,
+            "head": "lemma iSup_terminalSubcomplexFamily : ⨆ A : SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _), A.val = ⊤ := iSup_smallSubcomplexFamily (exists_small_terminalSubcomplex Fact.out hT)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexEnlargement.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma exists_small_terminalSubcomplex {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] {T : Type u} (hT : κ ≤ Cardinal.mk T) (A : (C ⊗ nerve (Codiscrete T)).Subcomplex) (hA : IsKappaSmall κ A.toSSet) : ∃ B : (C ⊗ nerve (Codiscrete T)).Subcomplex, IsKappaSmall κ B.toSSet ∧ (∃ x : B.toSSet _⦋0⦌, IsTerminalVertex x) ∧ A ≤ B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredDiagonalCofinality.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isRightCofinal_constantDiagram_of_filtered (K C : SSet.{u}) [K.Finite] [Quasicategory C] [IsFilteredInfinity C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 isWeaklyContractible_sliceUnder_of_filtered"
+          },
+          {
+            "line": 58,
+            "head": "lemma isRightCofinal_constantDiagram_of_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) (K C : SSet.{u}) (hK : IsKappaSmall κ K) [Quasicategory C] [IsKappaFiltered κ C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 (isWeaklyContractible_sliceUnder_of_kappaFiltered hκ hK)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/JoinQuasicategory.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "instance join_quasicategory (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] : Quasicategory (join X Y) where"
+          },
+          {
+            "line": 58,
+            "head": "instance relativeJoin_quasicategory {X Y S : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) : Quasicategory (relativeJoin f g) := quasicategory_of_innerFibration (pullback.fst (joinMap f g) (joinDiagonal S))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+        "signatures": [
+          {
+            "line": 82,
+            "head": "class IsFilteredOrEmpty : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "class IsFiltered : Prop extends IsFilteredOrEmpty C where"
+          },
+          {
+            "line": 100,
+            "head": "instance (priority := 100) isFilteredOrEmpty_of_semilatticeSup (α : Type u) [SemilatticeSup α] : IsFilteredOrEmpty α where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [Fact κ.IsRegular] : Prop where"
+          },
+          {
+            "line": 153,
+            "head": "lemma isFiltered_of_isCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : IsFiltered J"
+          },
+          {
+            "line": 164,
+            "head": "lemma IsCardinalFiltered.nonempty (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : Nonempty J := have := isFiltered_of_isCardinalFiltered J κ IsFiltered.nonempty"
+          }
+        ]
+      }
+    ],
+    "decision": "κ-small な半順序の神経 N(A) だけの余錐延長から、全 κ-small 単体集合形状の延長を得る同値。exists_cofinal_kappaFiltered_poset は既に κ-filtered な準圏自体を標的とする cofinal 表示であり、filtered と仮定していない任意の形状 K の κ-small な半順序による cofinal 表示を与えない。小ささを保つこの形状の比較がなく、全形状の定義だけはこの判定の一方向として数えない。"
+  },
+  "5.3.1.13": {
+    "page": 383,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.2.8",
+        "5.3.1",
+        "5.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          "SerrePositivity"
+        ],
+        "file_count": 1588,
+        "line_count": 7828
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 222,
+        "line_count": 2942
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 32,
+            "head": "class IsKappaFiltered (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 39,
+            "head": "lemma isKappaFiltered_of_le {κ μ : Cardinal.{u}} {C : SSet.{u}} [Quasicategory C] (hκμ : κ ≤ μ) [IsKappaFiltered μ C] : IsKappaFiltered κ C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          },
+          {
+            "line": 48,
+            "head": "lemma isFilteredInfinity_iff_of_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsFilteredInfinity C ↔ IsFilteredInfinity D := isFilteredInfinity_iff_of_equivalence hf.choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma isKappaFiltered_nerve_of_cardinalFiltered {κ : Cardinal.{u}} [Fact κ.IsRegular] (I : Type u) [Preorder I] [IsCardinalFiltered I κ] : IsKappaFiltered κ (nerve I) where"
+          },
+          {
+            "line": 31,
+            "head": "lemma exists_cofinal_kappaFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsKappaFiltered κ (nerve I) ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/CofinalFilteredPoset.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_cofinal_cardinalFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def terminalSubcomplexPredicate (X : SSet.{u}) (A : X.Subcomplex) : Prop := ∃ x : A.toSSet _⦋0⦌, IsTerminalVertex x"
+          },
+          {
+            "line": 30,
+            "head": "lemma terminalSubcomplexFamily_isCardinalFiltered : IsCardinalFiltered (SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _)) κ := smallSubcomplexFamily_isCardinalFiltered (exists_small_terminalSubcomplex Fact.out hT)"
+          },
+          {
+            "line": 36,
+            "head": "lemma iSup_terminalSubcomplexFamily : ⨆ A : SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _), A.val = ⊤ := iSup_smallSubcomplexFamily (exists_small_terminalSubcomplex Fact.out hT)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexEnlargement.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma exists_small_terminalSubcomplex {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] {T : Type u} (hT : κ ≤ Cardinal.mk T) (A : (C ⊗ nerve (Codiscrete T)).Subcomplex) (hA : IsKappaSmall κ A.toSSet) : ∃ B : (C ⊗ nerve (Codiscrete T)).Subcomplex, IsKappaSmall κ B.toSSet ∧ (∃ x : B.toSSet _⦋0⦌, IsTerminalVertex x) ∧ A ≤ B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredDiagonalCofinality.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isRightCofinal_constantDiagram_of_filtered (K C : SSet.{u}) [K.Finite] [Quasicategory C] [IsFilteredInfinity C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 isWeaklyContractible_sliceUnder_of_filtered"
+          },
+          {
+            "line": 58,
+            "head": "lemma isRightCofinal_constantDiagram_of_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) (K C : SSet.{u}) (hK : IsKappaSmall κ K) [Quasicategory C] [IsKappaFiltered κ C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 (isWeaklyContractible_sliceUnder_of_kappaFiltered hκ hK)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/JoinQuasicategory.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "instance join_quasicategory (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] : Quasicategory (join X Y) where"
+          },
+          {
+            "line": 58,
+            "head": "instance relativeJoin_quasicategory {X Y S : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) : Quasicategory (relativeJoin f g) := quasicategory_of_innerFibration (pullback.fst (joinMap f g) (joinDiagonal S))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+        "signatures": [
+          {
+            "line": 82,
+            "head": "class IsFilteredOrEmpty : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "class IsFiltered : Prop extends IsFilteredOrEmpty C where"
+          },
+          {
+            "line": 100,
+            "head": "instance (priority := 100) isFilteredOrEmpty_of_semilatticeSup (α : Type u) [SemilatticeSup α] : IsFilteredOrEmpty α where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [Fact κ.IsRegular] : Prop where"
+          },
+          {
+            "line": 153,
+            "head": "lemma isFiltered_of_isCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : IsFiltered J"
+          },
+          {
+            "line": 164,
+            "head": "lemma IsCardinalFiltered.nonempty (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : Nonempty J := have := isFiltered_of_isCardinalFiltered J κ IsFiltered.nonempty"
+          }
+        ]
+      }
+    ],
+    "decision": "任意の S から κ-filtered な準圏への圏同値の存在で κ-filtered 性を定め、その選択からの独立性を述べる。IsKappaFiltered は Quasicategory S を要求し、同値不変性の型も両端を準圏に限る。非準圏 S の一般の fibrant replacement に沿うこの述語と、その選択の独立性の宣言はない。"
+  },
+  "5.3.1.14": {
+    "page": 383,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.2.8",
+        "5.3.1",
+        "5.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          "SerrePositivity"
+        ],
+        "file_count": 1588,
+        "line_count": 7828
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 222,
+        "line_count": 2942
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 32,
+            "head": "class IsKappaFiltered (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 39,
+            "head": "lemma isKappaFiltered_of_le {κ μ : Cardinal.{u}} {C : SSet.{u}} [Quasicategory C] (hκμ : κ ≤ μ) [IsKappaFiltered μ C] : IsKappaFiltered κ C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          },
+          {
+            "line": 48,
+            "head": "lemma isFilteredInfinity_iff_of_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsFilteredInfinity C ↔ IsFilteredInfinity D := isFilteredInfinity_iff_of_equivalence hf.choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma isKappaFiltered_nerve_of_cardinalFiltered {κ : Cardinal.{u}} [Fact κ.IsRegular] (I : Type u) [Preorder I] [IsCardinalFiltered I κ] : IsKappaFiltered κ (nerve I) where"
+          },
+          {
+            "line": 31,
+            "head": "lemma exists_cofinal_kappaFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsKappaFiltered κ (nerve I) ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/CofinalFilteredPoset.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_cofinal_cardinalFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def terminalSubcomplexPredicate (X : SSet.{u}) (A : X.Subcomplex) : Prop := ∃ x : A.toSSet _⦋0⦌, IsTerminalVertex x"
+          },
+          {
+            "line": 30,
+            "head": "lemma terminalSubcomplexFamily_isCardinalFiltered : IsCardinalFiltered (SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _)) κ := smallSubcomplexFamily_isCardinalFiltered (exists_small_terminalSubcomplex Fact.out hT)"
+          },
+          {
+            "line": 36,
+            "head": "lemma iSup_terminalSubcomplexFamily : ⨆ A : SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _), A.val = ⊤ := iSup_smallSubcomplexFamily (exists_small_terminalSubcomplex Fact.out hT)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexEnlargement.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma exists_small_terminalSubcomplex {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] {T : Type u} (hT : κ ≤ Cardinal.mk T) (A : (C ⊗ nerve (Codiscrete T)).Subcomplex) (hA : IsKappaSmall κ A.toSSet) : ∃ B : (C ⊗ nerve (Codiscrete T)).Subcomplex, IsKappaSmall κ B.toSSet ∧ (∃ x : B.toSSet _⦋0⦌, IsTerminalVertex x) ∧ A ≤ B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredDiagonalCofinality.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isRightCofinal_constantDiagram_of_filtered (K C : SSet.{u}) [K.Finite] [Quasicategory C] [IsFilteredInfinity C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 isWeaklyContractible_sliceUnder_of_filtered"
+          },
+          {
+            "line": 58,
+            "head": "lemma isRightCofinal_constantDiagram_of_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) (K C : SSet.{u}) (hK : IsKappaSmall κ K) [Quasicategory C] [IsKappaFiltered κ C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 (isWeaklyContractible_sliceUnder_of_kappaFiltered hκ hK)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/JoinQuasicategory.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "instance join_quasicategory (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] : Quasicategory (join X Y) where"
+          },
+          {
+            "line": 58,
+            "head": "instance relativeJoin_quasicategory {X Y S : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) : Quasicategory (relativeJoin f g) := quasicategory_of_innerFibration (pullback.fst (joinMap f g) (joinDiagonal S))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+        "signatures": [
+          {
+            "line": 82,
+            "head": "class IsFilteredOrEmpty : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "class IsFiltered : Prop extends IsFilteredOrEmpty C where"
+          },
+          {
+            "line": 100,
+            "head": "instance (priority := 100) isFilteredOrEmpty_of_semilatticeSup (α : Type u) [SemilatticeSup α] : IsFilteredOrEmpty α where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [Fact κ.IsRegular] : Prop where"
+          },
+          {
+            "line": 153,
+            "head": "lemma isFiltered_of_isCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : IsFiltered J"
+          },
+          {
+            "line": 164,
+            "head": "lemma IsCardinalFiltered.nonempty (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : Nonempty J := have := isFiltered_of_isCardinalFiltered J κ IsFiltered.nonempty"
+          }
+        ]
+      }
+    ],
+    "decision": "全 n の ∂Δⁿ→Λⁿ⁺¹ₙ₊₁ に対する右延長性と準圏の filtered 性の同値。IsFilteredInfinity は全有限 K の右錐に対する余錐を要求し、join の horn filling の補題もあるが、原典のこの指定包含との比較および境界形状の試験だけから全有限形状へ戻す判定はない。一般の horn filling は既に図式が horn にある問題で入力が異なる。"
+  },
+  "5.3.1.15": {
+    "page": 384,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.2.8",
+        "5.3.1",
+        "5.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          "SerrePositivity"
+        ],
+        "file_count": 1588,
+        "line_count": 7828
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 222,
+        "line_count": 2942
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 32,
+            "head": "class IsKappaFiltered (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 39,
+            "head": "lemma isKappaFiltered_of_le {κ μ : Cardinal.{u}} {C : SSet.{u}} [Quasicategory C] (hκμ : κ ≤ μ) [IsKappaFiltered μ C] : IsKappaFiltered κ C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          },
+          {
+            "line": 48,
+            "head": "lemma isFilteredInfinity_iff_of_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsFilteredInfinity C ↔ IsFilteredInfinity D := isFilteredInfinity_iff_of_equivalence hf.choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma isKappaFiltered_nerve_of_cardinalFiltered {κ : Cardinal.{u}} [Fact κ.IsRegular] (I : Type u) [Preorder I] [IsCardinalFiltered I κ] : IsKappaFiltered κ (nerve I) where"
+          },
+          {
+            "line": 31,
+            "head": "lemma exists_cofinal_kappaFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsKappaFiltered κ (nerve I) ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/CofinalFilteredPoset.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_cofinal_cardinalFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def terminalSubcomplexPredicate (X : SSet.{u}) (A : X.Subcomplex) : Prop := ∃ x : A.toSSet _⦋0⦌, IsTerminalVertex x"
+          },
+          {
+            "line": 30,
+            "head": "lemma terminalSubcomplexFamily_isCardinalFiltered : IsCardinalFiltered (SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _)) κ := smallSubcomplexFamily_isCardinalFiltered (exists_small_terminalSubcomplex Fact.out hT)"
+          },
+          {
+            "line": 36,
+            "head": "lemma iSup_terminalSubcomplexFamily : ⨆ A : SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _), A.val = ⊤ := iSup_smallSubcomplexFamily (exists_small_terminalSubcomplex Fact.out hT)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexEnlargement.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma exists_small_terminalSubcomplex {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] {T : Type u} (hT : κ ≤ Cardinal.mk T) (A : (C ⊗ nerve (Codiscrete T)).Subcomplex) (hA : IsKappaSmall κ A.toSSet) : ∃ B : (C ⊗ nerve (Codiscrete T)).Subcomplex, IsKappaSmall κ B.toSSet ∧ (∃ x : B.toSSet _⦋0⦌, IsTerminalVertex x) ∧ A ≤ B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredDiagonalCofinality.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isRightCofinal_constantDiagram_of_filtered (K C : SSet.{u}) [K.Finite] [Quasicategory C] [IsFilteredInfinity C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 isWeaklyContractible_sliceUnder_of_filtered"
+          },
+          {
+            "line": 58,
+            "head": "lemma isRightCofinal_constantDiagram_of_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) (K C : SSet.{u}) (hK : IsKappaSmall κ K) [Quasicategory C] [IsKappaFiltered κ C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 (isWeaklyContractible_sliceUnder_of_kappaFiltered hκ hK)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/JoinQuasicategory.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "instance join_quasicategory (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] : Quasicategory (join X Y) where"
+          },
+          {
+            "line": 58,
+            "head": "instance relativeJoin_quasicategory {X Y S : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) : Quasicategory (relativeJoin f g) := quasicategory_of_innerFibration (pullback.fst (joinMap f g) (joinDiagonal S))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+        "signatures": [
+          {
+            "line": 82,
+            "head": "class IsFilteredOrEmpty : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "class IsFiltered : Prop extends IsFilteredOrEmpty C where"
+          },
+          {
+            "line": 100,
+            "head": "instance (priority := 100) isFilteredOrEmpty_of_semilatticeSup (α : Type u) [SemilatticeSup α] : IsFilteredOrEmpty α where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [Fact κ.IsRegular] : Prop where"
+          },
+          {
+            "line": 153,
+            "head": "lemma isFiltered_of_isCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : IsFiltered J"
+          },
+          {
+            "line": 164,
+            "head": "lemma IsCardinalFiltered.nonempty (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : Nonempty J := have := isFiltered_of_isCardinalFiltered J κ IsFiltered.nonempty"
+          }
+        ]
+      }
+    ],
+    "decision": "位相豊穣圏 C の球面零ホモトピー条件による filtered 性と N(C) の filtered 性の同値。準圏の有限余錐と coherent nerve の Hom 比較はあるが、元の位相豊穣圏の条件を入力・出力する型はない。普通の圏の nerve のフィルター性は球面条件を扱わず、この二模型の比較の特別な場合としては確認できない。"
+  },
+  "5.3.1.16": {
+    "page": 386,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.2.8",
+        "5.3.1",
+        "5.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          "SerrePositivity"
+        ],
+        "file_count": 1588,
+        "line_count": 7828
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 222,
+        "line_count": 2942
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 32,
+            "head": "class IsKappaFiltered (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 39,
+            "head": "lemma isKappaFiltered_of_le {κ μ : Cardinal.{u}} {C : SSet.{u}} [Quasicategory C] (hκμ : κ ≤ μ) [IsKappaFiltered μ C] : IsKappaFiltered κ C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          },
+          {
+            "line": 48,
+            "head": "lemma isFilteredInfinity_iff_of_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsFilteredInfinity C ↔ IsFilteredInfinity D := isFilteredInfinity_iff_of_equivalence hf.choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma isKappaFiltered_nerve_of_cardinalFiltered {κ : Cardinal.{u}} [Fact κ.IsRegular] (I : Type u) [Preorder I] [IsCardinalFiltered I κ] : IsKappaFiltered κ (nerve I) where"
+          },
+          {
+            "line": 31,
+            "head": "lemma exists_cofinal_kappaFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsKappaFiltered κ (nerve I) ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/CofinalFilteredPoset.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_cofinal_cardinalFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def terminalSubcomplexPredicate (X : SSet.{u}) (A : X.Subcomplex) : Prop := ∃ x : A.toSSet _⦋0⦌, IsTerminalVertex x"
+          },
+          {
+            "line": 30,
+            "head": "lemma terminalSubcomplexFamily_isCardinalFiltered : IsCardinalFiltered (SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _)) κ := smallSubcomplexFamily_isCardinalFiltered (exists_small_terminalSubcomplex Fact.out hT)"
+          },
+          {
+            "line": 36,
+            "head": "lemma iSup_terminalSubcomplexFamily : ⨆ A : SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _), A.val = ⊤ := iSup_smallSubcomplexFamily (exists_small_terminalSubcomplex Fact.out hT)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexEnlargement.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma exists_small_terminalSubcomplex {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] {T : Type u} (hT : κ ≤ Cardinal.mk T) (A : (C ⊗ nerve (Codiscrete T)).Subcomplex) (hA : IsKappaSmall κ A.toSSet) : ∃ B : (C ⊗ nerve (Codiscrete T)).Subcomplex, IsKappaSmall κ B.toSSet ∧ (∃ x : B.toSSet _⦋0⦌, IsTerminalVertex x) ∧ A ≤ B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredDiagonalCofinality.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isRightCofinal_constantDiagram_of_filtered (K C : SSet.{u}) [K.Finite] [Quasicategory C] [IsFilteredInfinity C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 isWeaklyContractible_sliceUnder_of_filtered"
+          },
+          {
+            "line": 58,
+            "head": "lemma isRightCofinal_constantDiagram_of_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) (K C : SSet.{u}) (hK : IsKappaSmall κ K) [Quasicategory C] [IsKappaFiltered κ C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 (isWeaklyContractible_sliceUnder_of_kappaFiltered hκ hK)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/JoinQuasicategory.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "instance join_quasicategory (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] : Quasicategory (join X Y) where"
+          },
+          {
+            "line": 58,
+            "head": "instance relativeJoin_quasicategory {X Y S : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) : Quasicategory (relativeJoin f g) := quasicategory_of_innerFibration (pullback.fst (joinMap f g) (joinDiagonal S))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+        "signatures": [
+          {
+            "line": 82,
+            "head": "class IsFilteredOrEmpty : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "class IsFiltered : Prop extends IsFilteredOrEmpty C where"
+          },
+          {
+            "line": 100,
+            "head": "instance (priority := 100) isFilteredOrEmpty_of_semilatticeSup (α : Type u) [SemilatticeSup α] : IsFilteredOrEmpty α where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [Fact κ.IsRegular] : Prop where"
+          },
+          {
+            "line": 153,
+            "head": "lemma isFiltered_of_isCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : IsFiltered J"
+          },
+          {
+            "line": 164,
+            "head": "lemma IsCardinalFiltered.nonempty (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : Nonempty J := have := isFiltered_of_isCardinalFiltered J κ IsFiltered.nonempty"
+          }
+        ]
+      }
+    ],
+    "decision": "C が κ-filtered なら、κ-small な単体集合と圏同値な任意の K の図式も同じ K の右錐に延長できる。filtered 性を標的の同値で移す宣言はあるが、添字 K の圏同値で元の余錐を厳密に戻すと同時に κ-small 性だけを存在仮定にする型はない。有限形状の同型に沿う制限や cofinal 表示は、任意の圏同値からのこの延長性と異なる。"
+  },
+  "5.3.1.19": {
+    "page": 387,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.2.8",
+        "5.3.1",
+        "5.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          "SerrePositivity"
+        ],
+        "file_count": 1588,
+        "line_count": 7828
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(filtered|filterable|cofinal.*poset|terminalSubcomplex|nullHomotopy|topological.*category|singular.*category)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 222,
+        "line_count": 2942
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 32,
+            "head": "class IsKappaFiltered (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Prop where"
+          },
+          {
+            "line": 39,
+            "head": "lemma isKappaFiltered_of_le {κ μ : Cardinal.{u}} {C : SSet.{u}} [Quasicategory C] (hκμ : κ ≤ μ) [IsKappaFiltered μ C] : IsKappaFiltered κ C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isFilteredInfinity_iff_of_equivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsFilteredInfinity C ↔ IsFilteredInfinity D"
+          },
+          {
+            "line": 36,
+            "head": "lemma isKappaFiltered_iff_of_equivalence {κ : Cardinal.{u}} {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (e : QCatEquivalence C D) : IsKappaFiltered κ C ↔ IsKappaFiltered κ D"
+          },
+          {
+            "line": 48,
+            "head": "lemma isFilteredInfinity_iff_of_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsFilteredInfinity C ↔ IsFilteredInfinity D := isFilteredInfinity_iff_of_equivalence hf.choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma isKappaFiltered_nerve_of_cardinalFiltered {κ : Cardinal.{u}} [Fact κ.IsRegular] (I : Type u) [Preorder I] [IsCardinalFiltered I κ] : IsKappaFiltered κ (nerve I) where"
+          },
+          {
+            "line": 31,
+            "head": "lemma exists_cofinal_kappaFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsKappaFiltered κ (nerve I) ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/CofinalFilteredPoset.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma exists_cofinal_cardinalFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular] (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : ∃ (I : Type u) (o : PartialOrder I), letI := o ∃ f : nerve I ⟶ C, IsCardinalFiltered I κ ∧ IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def terminalSubcomplexPredicate (X : SSet.{u}) (A : X.Subcomplex) : Prop := ∃ x : A.toSSet _⦋0⦌, IsTerminalVertex x"
+          },
+          {
+            "line": 30,
+            "head": "lemma terminalSubcomplexFamily_isCardinalFiltered : IsCardinalFiltered (SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _)) κ := smallSubcomplexFamily_isCardinalFiltered (exists_small_terminalSubcomplex Fact.out hT)"
+          },
+          {
+            "line": 36,
+            "head": "lemma iSup_terminalSubcomplexFamily : ⨆ A : SmallSubcomplexFamily κ (C ⊗ nerve (Codiscrete T)) (terminalSubcomplexPredicate _), A.val = ⊤ := iSup_smallSubcomplexFamily (exists_small_terminalSubcomplex Fact.out hT)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexEnlargement.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma exists_small_terminalSubcomplex {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u}} [Quasicategory C] [IsKappaFiltered κ C] {T : Type u} (hT : κ ≤ Cardinal.mk T) (A : (C ⊗ nerve (Codiscrete T)).Subcomplex) (hA : IsKappaSmall κ A.toSSet) : ∃ B : (C ⊗ nerve (Codiscrete T)).Subcomplex, IsKappaSmall κ B.toSSet ∧ (∃ x : B.toSSet _⦋0⦌, IsTerminalVertex x) ∧ A ≤ B"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredDiagonalCofinality.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isRightCofinal_constantDiagram_of_filtered (K C : SSet.{u}) [K.Finite] [Quasicategory C] [IsFilteredInfinity C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 isWeaklyContractible_sliceUnder_of_filtered"
+          },
+          {
+            "line": 58,
+            "head": "lemma isRightCofinal_constantDiagram_of_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) (K C : SSet.{u}) (hK : IsKappaSmall κ K) [Quasicategory C] [IsKappaFiltered κ C] : IsRightCofinal (constantDiagram K C) := (isRightCofinal_constantDiagram_iff K C).2 (isWeaklyContractible_sliceUnder_of_kappaFiltered hκ hK)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/JoinQuasicategory.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "instance join_quasicategory (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] : Quasicategory (join X Y) where"
+          },
+          {
+            "line": 58,
+            "head": "instance relativeJoin_quasicategory {X Y S : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) : Quasicategory (relativeJoin f g) := quasicategory_of_innerFibration (pullback.fst (joinMap f g) (joinDiagonal S))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+        "signatures": [
+          {
+            "line": 82,
+            "head": "class IsFilteredOrEmpty : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "class IsFiltered : Prop extends IsFilteredOrEmpty C where"
+          },
+          {
+            "line": 100,
+            "head": "instance (priority := 100) isFilteredOrEmpty_of_semilatticeSup (α : Type u) [SemilatticeSup α] : IsFilteredOrEmpty α where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class IsCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [Fact κ.IsRegular] : Prop where"
+          },
+          {
+            "line": 153,
+            "head": "lemma isFiltered_of_isCardinalFiltered (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : IsFiltered J"
+          },
+          {
+            "line": 164,
+            "head": "lemma IsCardinalFiltered.nonempty (J : Type u) [Category.{v} J] (κ : Cardinal.{w}) [hκ : Fact κ.IsRegular] [IsCardinalFiltered J κ] : Nonempty J := have := isFiltered_of_isCardinalFiltered J κ IsFiltered.nonempty"
+          }
+        ]
+      }
+    ],
+    "decision": "一般の S の κ-filtered 性と、κ-filtered 図式の余極限および終対象を持つ部分準圏の κ-filtered 合併による同値な表示の三条件。TerminalSubcomplexCover は C×N(Codiscrete T) を終頂点付き部分複体で被覆するが、それらの部分複体の Quasicategory 性を述べない。cone の像は一般には準圏でなく、各像を終対象を保って fibrant replacement する図式の比較もないため、(3) の構成や三条件の一方向には数えない。"
+  }
+}
