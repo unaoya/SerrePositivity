@@ -332,3 +332,6 @@
 - `CrystallineSmallBridgeModP` で、この切断を mod p に降ろした。既存の包含のコホモロジー同型を消去すると評価もコホモロジー同型になり、既存の結晶の橋との合成も同様になる。型照合では、次数を自然数で固定してから余単体の対象に組み立て、完備模型の内部での `m` と `⦋m.len⦌` の照合を避けた。
 - この追加3本の鍵付き対象ビルドは `/private/tmp/d69-ticket-build-20.log` と `/private/tmp/d69-ticket-build-21.log` で成功した。94本の一時監査は2,496宣言で標準三公理のみ。一時監査とログは `/private/tmp/AuditD69P2MorningSixtyOne.lean` と `/private/tmp/d69-morning-audit-sixtyone.log`。新規ソース中の `sorry`・独自公理は0。
 - 登録候補に `CrystallinePDRetractionNaturality`、`CrystallinePDRetractionSplit`、`CrystallineSmallBridgeModP` を加える。P2 は継続中で、整係数の橋との還元の照合と、完備化後の Witt の指定された二比較への適用を続ける。
+
+- `CrystallineSmallBridge` で整係数の小さい結晶の橋を固定し、prism の生成元を p に送ることと、前項の mod p の射がこの厳密な射の還元であることを示した。鍵付き対象ビルドは `/private/tmp/d69-ticket-build-22.log` で成功した。95本の一時監査は2,499宣言、標準三公理のみ。監査は `/private/tmp/AuditD69P2MorningSixtyTwo.lean` と `/private/tmp/d69-morning-audit-sixtytwo.log`。
+- 登録候補に `CrystallineSmallBridge` を加える。完備化後の擬同型へ進むため、共通の `CompleteCochainReduction` を作業木で検査している。これは二つの導来完備な複体の間の射を通常のスカラー商で判定する補題で、各項の正則性を仮定する。短完全列と写像錐の比較、既存の `DerivedPurity` の完備ホモロジーの零性判定を使う。
