@@ -369,3 +369,8 @@
 - `pdTerm_completelyFlat` は基底の p 正則性を仮定し、未完備模型の自由な基底と既存の主完備化の完全忠実平坦性から (p) 完全平坦性を示す。`crystallineWittCompletedBridge_isIso` は、実際の整係数の小さい橋を通常の Witt 係数拡大と複体全体の導来完備化に移した射の可逆性。この段では各項の完備化との同定は使っていない。
 - 共通の `PointwiseBaseChange` は、single・導来完備化・実際の H⁰ を合成した加法的な加群関手と、その通常の係数拡大との合成を固定する。元の鎖ホモトピーは既存の `Functor.mapHomotopy` で移る。
 - 同じ対象ビルドで `AffineEnvelopeDerivedBaseChange` と共通の `PointwiseRegular` に残った、存在から同型を選ぶ書き方と import の問題は修正している。`PointwiseRegular` は通常の import での個別検査を通った。さらに `PointwiseExact`（両端が正則な短完全列を H⁰ 完備化が保つ）は一時ファイルによる個別検査を通った。これらは対象ビルドが通るまでコミットしない。
+
+- `AffineEnvelopeDerivedBaseChange`、共通の `PointwiseRegular`・`PointwiseExact` の対象ビルドは `/private/tmp/d69-ticket-build-30.log` で成功した。追加を含む119本の一時監査は2,920宣言で標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningEightySix.lean` と `/private/tmp/d69-morning-audit-eightysix.log`。登録候補にこの3本を加える。
+- `affineEnvelopeTermCompletedBaseChangeIso` は、両基底が有界 prism という仮定の下で、有限 affine 項の実際の完備テンソル積の single 対象が二座標完備導来底変換を計算する。係数射そのものの通常の平坦性は仮定せず、既存の完備自由 δ 環の完全平坦性、有界 prism 上の離散性、H⁰ の係数線形な比較を使う。`affineEnvelopeTermCompletedBaseChangeToTargetIso` は既存の係数脚を保つ完備テンソルの同型を通して、標準の係数変更先の項へ移す。
+- `PointwiseRegular` は加群上だけのスカラーの正則性から、主導来完備化の純性と H⁰ の正則性を示す。`PointwiseExact` は、両端でスカラーが正則な短完全列が H⁰ 完備化後も短完全であることを、標準導来三角形と長完全列で示す。
+- 作業木の `PointwiseCochain` では、非輪状な正則複体のサイクルの短完全列を使い、各項の H⁰ 完備化が正則な複体の擬同型を保つことを個別検査で確認した。さらに平坦な通常の係数拡大と合成し、整数・自然数の両添字に対する入口を用意した。実際の整係数の小さい橋に適用する `CrystallineWittPointwiseBridge` も検査中。対象ビルド前なので、この2本はまだコミットしない。
