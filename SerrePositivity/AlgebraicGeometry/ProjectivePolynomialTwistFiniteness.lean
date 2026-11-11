@@ -21,7 +21,10 @@ open CategoryTheory
 
 variable {ι R : Type*} [LinearOrder ι] [Fintype ι] [CommRing R] [IsNoetherianRing R]
 
-/-- 多項式環の捻りの全タプル Čech コホモロジーは有限生成。 -/
+/-- 多項式環の捻りの全タプル Čech コホモロジーは有限生成。
+これは Stacks 30.19.2 の Hⁱ の有限性に対応する射影 Čech 版の補題。
+分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、
+この比較は形式化しない。 -/
 theorem projectivePolynomialTwistFullCechHomology_finite (d : ℤ) (q : ℕ) :
     Module.Finite R
       ((fullCechComplex (projectiveGradedModuleChartDiagram (ι := ι)
@@ -38,7 +41,10 @@ theorem projectivePolynomialTwistFullCechHomology_finite (d : ℤ) (q : ℕ) :
   exact Module.Finite.of_surjective e.inv.hom
     ((ModuleCat.epi_iff_surjective e.inv).mp inferInstance)
 
-/-- 多項式環の捻りの狭義増加 Čech コホモロジーは有限生成。 -/
+/-- 多項式環の捻りの狭義増加 Čech コホモロジーは有限生成。
+これは Stacks 30.19.2 の Hⁱ の有限性に対応する射影 Čech 版の補題。
+分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、
+この比較は形式化しない。 -/
 theorem projectivePolynomialTwistOrderedCechHomology_finite (d : ℤ) (q : ℕ) :
     Module.Finite R
       ((orderedCechComplex (projectiveGradedModuleChartDiagram (ι := ι)

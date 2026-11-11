@@ -100,7 +100,10 @@ def projectiveHomogeneousChartDiagramIso :
               (projectiveHomogeneousChartLinearEquiv (ι := ι) G U).toModuleIso.hom
       rw [Iso.hom_inv_id_assoc])
 
-/-- 有限生成斉次代数の次数零の標準開 Čech コホモロジーは有限生成。 -/
+/-- 有限生成斉次代数の次数零の標準開 Čech コホモロジーは有限生成。
+これは Stacks 30.19.2 の Hⁱ の有限性に対応する射影 Čech 版の補題。
+分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、
+この比較は形式化しない。 -/
 theorem projectiveHomogeneousChartFullCechHomology_finite
     [IsNoetherianRing R] [Module.Finite (MvPolynomial ι R) S] (q : ℕ) :
     Module.Finite R ((fullCechComplex (projectiveHomogeneousChartDiagram (ι := ι) G)).homology q) := by

@@ -878,7 +878,10 @@ theorem projectiveLaurentSurvivorSubmodule_finite (R : Type*) [CommRing R]
 方針：コサイクルを有限個の生き残る指数に移し、その部分加群からコホモロジーへ全射を作る。
 規約：係数環は Noether。通常の非増大 Čech 複体を用いる。
 使われ方：射影空間の捻りの有限性を与え、有限自由表示による降下帰納につなぐ。
--/
+
+これは Stacks 30.19.2 の Hⁱ の有限性に対応する射影 Čech 版の補題。
+分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、
+この比較は形式化しない。 -/
 theorem projectiveLaurentCechHomology_finite (R : Type*) [CommRing R] [IsNoetherianRing R]
     (d : ℤ) (q : ℕ) :
     Module.Finite R ((fullCechComplex (projectiveLaurentGradedChartDiagram (ι := ι) R d)).homology q) := by

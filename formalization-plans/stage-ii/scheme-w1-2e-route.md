@@ -82,7 +82,7 @@ Laurent 単項式 Čech の有限性は `projectiveLaurentCechHomology_finite` �
 
 これで、有限生成次数付き加群の Čech 有限性と、構造層の標準開の各項・余境界の比較を接続した。新しい 32 モジュールを `SerrePositivity/AlgebraicGeometry.lean` に登録し、同モジュールの対象ビルドを通した。2e の 627 宣言の import 閉包の監査と、既存の `scripts/audit_kst_scheme_lemmas.lean` による AlgebraicGeometry 全体の 5,044 宣言の監査は、いずれも標準三公理のみだった。
 
-全タプル版と狭義増加版の比較は、係数の自然変換に対する自然性まで確認した。添字の任意の写像に対する整列写像の自然性は、2g で使う比較に合わせて扱う。層コホモロジーの導来関手による定義との比較は未実装。Čech モデルから BS17 へ渡す方法は、下の二案について調整役が決める。Rees 加群の有限性・評価・安定化と形式関数は、引き続き 2e で作る。
+全タプル版と狭義増加版の比較は、係数の自然変換に対する自然性まで確認した。添字の任意の写像に対する整列写像の自然性は、2g で使う比較に合わせて扱う。層コホモロジーの導来関手による定義との比較は未実装。Čech モデルから BS17 へ渡す方法は、scheme-w1.md §9 で案 (b) に決まった。Rees 加群の有限性・評価・安定化と形式関数は、引き続き 2e で作る。
 
 Rees 側の通常の Artin–Rees の入力には、Mathlib の `Ideal.Filtration.submodule`、`Ideal.Filtration.submodule_fg_iff_stable`、`Ideal.exists_pow_inf_eq_pow_smul` を使う。次は、基底の Rees 環上の多項式環から、拡大イデアルの Rees 環への写像と、Rees 加群の Proj 次数分解を作る。次数ごとの局所化と有限積の交換を先に示し、その後でコホモロジーとの直和の交換をつなぐ。
 
@@ -137,7 +137,22 @@ C⁽q⁾ₙ = Hᵠ_Čech(IⁿM) とする。これらの直和が B 上有限で
 | `ProjectiveDirectSumCech` | `projectiveCechDirectSumComplexIso`：係数の直和の Čech 複体と、各 Čech 複体の項ごとの直和の同型。 |
 | `ProjectiveFormalFunctionsBounds` | `formalFunctions_range_eq_of_kernel_killed`・`formalFunctions_eventually_injective_of_kernel_bound`：核の評価を入力にした、像の安定化の図式追跡と十分厚い商への単射性。 |
 
-`reesProjectiveFullCechHomology_finite` の複体は、B[X] 加群としての Rees 加群から作る Proj 標準開の Čech 複体。次数ごとの Hᵠ_Čech(IⁿM) の直和との比較は、次に証明する接続である。核の評価、像の安定化、逆極限による形式関数の完成も残っている。`ProjectiveFormalFunctionsFiltration` は、この先の安定性からの評価の下書きとして作業木に置き、未検証のためコミットしていない。
+`reesProjectiveFullCechHomology_finite` の複体は、B[X] 加群としての Rees 加群から作る Proj 標準開の Čech 複体。次数ごとの Hᵠ_Čech(IⁿM) の直和との比較は、次に証明する接続である。核の評価、像の安定化、逆極限による形式関数の完成も残っている。`ProjectiveFormalFunctionsFiltration` の条件付きの像の評価は、その後の案 (b) 決定後の検証で通した（下記）。実際の Čech コホモロジーの核との同定は残っている。
+
+## 案 (b) 決定後の直和比較（11-11）
+
+実装 `e29f8cc3d`、4 モジュールと直接 importer、357 行。対象ビルドと `SerrePositivity.AlgebraicGeometry` のビルドが成功し、AG 全体の監査は 5,285 宣言・標準三公理のみ。
+
+- `projectiveDirectSumShortComplexHomologyIso`：ModuleCat の AB4 と `ShortComplex.mapHomologyIso` により、短複体の直和のコホモロジーを各コホモロジーの直和と比較する。
+- `projectiveDirectSumColimitIso_naturality`：外部直和と離散余極限の比較は、各成分の写像に自然。
+- `projectiveCechDirectSumHomologyIso`：上の比較を、既存の Čech 複体の項ごとの直和同型へ接続する。係数の直和の Čech コホモロジーと、各コホモロジーの直和の同型。
+- `reesAdicProjectiveSubmodule_isHomogeneous`・`reesAdicProjectivePieceDecomposition`：各 IⁿM に元の Proj 次数を制限し、次数分解を得る。
+- `reesAdicProjectivePolynomialModule_scalarTower`・`reesAdicProjectivePieceGradedSMul`・`reesAdicProjectivePolynomialModule_finite`：この制限と、多項式環の作用・次数・有限生成性の両立。
+- `cechFormalFunctions_filtration_bound_of_finiteReesImage`：有限な Rees 加群から像のフィルトレーションの Rees 加群への全射を入力として、一様な I 進評価を得る。実際のコホモロジーの核の評価へ渡す全射の構成は残る。
+
+次は直和の各成分の包含とコホモロジー同型の対応の式。Rees の局所化・Proj 次数を各 IⁿM のチャートと比較し、次数を動かす作用に対する B 線形性を示す。これらの接続、実際の核の評価、像の安定化、逆極限による形式関数は未完了。停止点 2e ではない。
+
+§9 の条件に合わせ、既存の有限性の docstring に原典 Stacks 30.19.2/30.20.1、形式関数の図式補題に 30.20.4(1),(3) を明記した。いずれも Čech 版とし、Stacks 30.2.6 の層コホモロジーとの比較は形式化しない旨を記した。既存の 9 ファイルの変更はコメントのみで、コメントを除く宣言テキストが一致することを確認した。
 
 ## 原典の Hⁱ と Čech 版の接続（11-11、停止点報告へ引き継ぐ）
 
@@ -147,13 +162,27 @@ C⁽q⁾ₙ = Hᵠ_Čech(IⁿM) とする。これらの直和が B 上有限で
 | BST13 Lemma 3.9、pp. 12–14 | Nisnevich の RΓ の完全三角。証明の正次数部分で Hⁱ_Nis(Y,O_Y/Iⁿ) の核の評価と像の安定化を使い、Frobenius 極限へ移る。 |
 | Stacks 02O7、Lemma 30.20.4 と Theorem 30.20.5 | 準連接・連接層の Hⁱ と、その長完全列・完備化・逆極限で述べる。現在の版の Lemma 30.20.4(1),(3) が BST13 の引用する二式に対応する。 |
 
-最初の行は [BS17 pp. 5–7, 16](https://arxiv.org/pdf/1507.06490#page=5)、二行目は [BST13 pp. 12–14](https://arxiv.org/pdf/1307.3763#page=12)、三行目は [Stacks 02O7](https://stacks.math.columbia.edu/tag/02O7) を照合した。原典の Hⁱ と本体の Čech 複体のコホモロジーを同定する部分は、調整役が次の二案から選ぶ。
+最初の行は [BS17 pp. 5–7, 16](https://arxiv.org/pdf/1507.06490#page=5)、二行目は [BST13 pp. 12–14](https://arxiv.org/pdf/1307.3763#page=12)、三行目は [Stacks 02O7](https://stacks.math.columbia.edu/tag/02O7) を照合した。以下は比較した二案の記録。11-11 の調整役の決定（scheme-w1.md §9）により案 (b) を採用し、案 (a) は実装しない。
 
-**案 (a)**。分離的なスキーム上の準連接層について、アフィン上の導来コホモロジーの消滅と、アフィン有限交叉を持つ被覆の Čech 比較を作る。準同型と短完全列に自然な比較にして、Iⁿ、商、Frobenius の図式を移す。さらに BST13 の Nisnevich、BS17 Lemma 4.6(i) の fppf に渡す際の位相の比較を確認する。Zariski の比較の原典は [Stacks 30.2.2, 30.2.6](https://stacks.math.columbia.edu/tag/01X8)、fppf などの比較は [Stacks 35.9.3](https://stacks.math.columbia.edu/tag/0GN8)。Nisnevich の段も、準連接層のアフィン消滅と被覆の比較で接続する。
+**案 (a)、不採用**。分離的なスキーム上の準連接層について、アフィン上の導来コホモロジーの消滅と、アフィン有限交叉を持つ被覆の Čech 比較を作る。準同型と短完全列に自然な比較にして、Iⁿ、商、Frobenius の図式を移す。さらに BST13 の Nisnevich、BS17 Lemma 4.6(i) の fppf に渡す際の位相の比較を確認する。Zariski の比較の原典は [Stacks 30.2.2, 30.2.6](https://stacks.math.columbia.edu/tag/01X8)、fppf などの比較は [Stacks 35.9.3](https://stacks.math.columbia.edu/tag/0GN8)。Nisnevich の段も、準連接層のアフィン消滅と被覆の比較で接続する。
 
-**案 (b)**。本体の主張を「射影標準開の Čech 版の形式関数・核の評価・像の安定化」と明記し、2g の最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` まで直接証明する。共通アフィン細分との比較、底変換、閉厚化、Frobenius、filtered colimit との整合性を証明し、ブローアップと fppf の細分から得る二重 Čech の完全性へ渡す。この接続を実装して初めて BS17 の使用に足りると判定する。原典の導来 RΓ の主張の形式化範囲は、調整役の決定に合わせて記す。
+**案 (b)、採用**。本体の主張を「射影標準開の Čech 版の形式関数・核の評価・像の安定化」と明記し、2g の最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` まで直接証明する。共通アフィン細分との比較、底変換、閉厚化、Frobenius、filtered colimit との整合性を証明し、ブローアップと fppf の細分から得る二重 Čech の完全性へ渡す。この接続を実装して初めて BS17 の使用に足りると判定する。原典の導来 RΓ との比較を作らず、上記の最終出力への接続を証明する。
 
-両案で共通して使う Rees 加群・局所化・Čech 複体の代数的な補題を先に進める。現時点の宣言は `CechHomology` として明記した型を持ち、両案の選択は保留している。
+案 (b) として、Rees 加群・局所化・Čech 複体から最終出力まで直接接続する。途中の主張は名前と docstring で Čech 版と明記する。原典の Hⁱ の番号と、Stacks 30.2.6 の比較は形式化しないことを記す。`AugmentedRingCechExact` と利用側の型は変更しない。
+
+2g への受け渡し条件は、共通アフィン細分との比較、底変換、閉厚化、Frobenius、filtered colimit との整合性を、射に自然な形で実装すること。この五つの整合性を、単に各対象上の同型があるという主張で代用しない。
+
+五つの整合性は次の範囲を区別して実装する。
+
+| 整合性 | 必要な形と実装上の境界 |
+|---|---|
+| 共通アフィン細分 | 全タプルの Čech 複体の細分写像と合成を作る。既存の固定被覆での係数自然性だけでは、被覆の変更の比較を完了したことにはならない。 |
+| 底変換 | 項・制限写像の形成を比較する。コホモロジーとの交換では平坦性など必要な仮定を明示し、一般の非平坦な底変換で Hⁱ が交換するとは述べない。平坦な底変換の増大 Čech 完全性には既存の `SerrePositivity.Cech` の API を使う。 |
+| 閉厚化 | 分子の Iⁿ 倍、商の局所化、短完全列と連結写像の自然性を示す。閉厚化を平坦な底変換として処理しない。 |
+| Frobenius | 分母の p 乗と同じ標準開を比較し、Iⁿ → Iᵖⁿ と Proj 次数 d → pd を追う。次数零の構造層の複体へ渡し、Fₚ 線形（基底環上では半線形）の写像とする。一般の Frobenius の平坦性は仮定しない。 |
+| filtered colimit | 有限な各 Čech 項と局所化の比較、filtered 余極限の完全性を使う。最終出力の増大 Čech 完全性には既存の `isCechExact_colimit` を使い、同じ判定法を再実装しない。 |
+
+直和のコホモロジー同型の包含の公式には、評価関手から `colim` への自然変換（各図式の `colimit.ι`）と Mathlib の `NatTrans.app_homology` が使える。これは Rees 単項式が次数を動かす作用との比較をつなぐための式になる。
 
 宇宙の条件について、BS17 で使う有限変数多項式商・有限生成加群は多項式環と同じ宇宙に実現できる。一般の大きい型の有限生成加群も、有限変数多項式環の `Algebra.FiniteType.small` と加群の `Module.Finite.small`、`Shrink.linearEquiv` で移せるため、数学的な使い方は制限されない。添字と加群の宇宙がそれぞれ異なる場合にも、加群が基底環の宇宙で small になることを監査時の Lean の例で確認した。大きい型をそのまま渡す入口には、この同値に沿う次数分解・局所化・Čech 図式の移送を接続する作業が残る。
 

@@ -8,6 +8,9 @@ public import Mathlib.RingTheory.Ideal.Operations
 方針：連結写像の自然性と、Rees 側の核を消す遷移写像を使う。
 規約：コホモロジーの構成から独立な、線形写像の入力として述べる。
 使われ方：射影 Čech 版の像の安定化と、BST13 Lemma 3.9 の正次数の単射性。
+原典 Stacks 30.20.4(1),(3) の Hⁱ の主張に渡す、線形図式の補題である。
+分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、
+この比較は形式化しない。
 -/
 
 @[expose] public noncomputable section

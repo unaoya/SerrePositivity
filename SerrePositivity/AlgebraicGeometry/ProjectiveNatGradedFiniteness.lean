@@ -26,7 +26,10 @@ variable (G : ℕ → Submodule R M) [DirectSum.Decomposition G]
 variable [SetLike.GradedSMul (MvPolynomial.homogeneousSubmodule ι R) G]
 variable [Module.Finite (MvPolynomial ι R) M]
 
-/-- 自然数次数の有限生成多項式加群の狭義増加 Čech コホモロジーは有限生成。 -/
+/-- 自然数次数の有限生成多項式加群の狭義増加 Čech コホモロジーは有限生成。
+これは Stacks 30.19.2 の Hⁱ の有限性に対応する射影 Čech 版の補題。
+分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、
+この比較は形式化しない。 -/
 theorem projectiveNatGradedOrderedCechHomology_finite (d : ℤ) (q : ℕ) :
     Module.Finite R
       ((orderedCechComplex (projectiveNatGradedModuleChartDiagram (ι := ι) G d)).homology q) := by
@@ -34,7 +37,10 @@ theorem projectiveNatGradedOrderedCechHomology_finite (d : ℤ) (q : ℕ) :
   letI := projectiveNatGradingIntSMul (ι := ι) G
   exact projectiveGradedOrderedCechHomology_finite (ι := ι) (projectiveNatGradingInt G) d q
 
-/-- 自然数次数の有限生成多項式加群の全タプル Čech コホモロジーは有限生成。 -/
+/-- 自然数次数の有限生成多項式加群の全タプル Čech コホモロジーは有限生成。
+これは Stacks 30.19.2 の Hⁱ の有限性に対応する射影 Čech 版の補題。
+分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、
+この比較は形式化しない。 -/
 theorem projectiveNatGradedFullCechHomology_finite (d : ℤ) (q : ℕ) :
     Module.Finite R
       ((fullCechComplex (projectiveNatGradedModuleChartDiagram (ι := ι) G d)).homology q) := by

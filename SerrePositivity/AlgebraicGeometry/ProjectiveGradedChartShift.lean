@@ -66,7 +66,10 @@ section Polynomial
 
 variable {ι R : Type*} [LinearOrder ι] [Fintype ι] [CommRing R] [IsNoetherianRing R]
 
-/-- 多項式環の次数をずらして得る標準開 Čech コホモロジーも有限生成。 -/
+/-- 多項式環の次数をずらして得る標準開 Čech コホモロジーも有限生成。
+これは Stacks 30.19.2 の Hⁱ の有限性に対応する射影 Čech 版の補題。
+分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、
+この比較は形式化しない。 -/
 theorem projectiveShiftedPolynomialOrderedCechHomology_finite
     (e d : ℤ)
     [SetLike.GradedSMul (AddMonoidAlgebra.gradeBy R (projectivePolynomialDegree (ι := ι)))

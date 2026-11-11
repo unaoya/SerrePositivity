@@ -50,7 +50,10 @@ variable {R : Type u} {ι : Type v} [CommRing R] [IsNoetherianRing R]
 variable [LinearOrder ι] [Fintype ι]
 variable {κ : Type (max u v)} [Fintype κ] [DecidableEq κ]
 
-/-- 有限個の多項式環の捻りからなる自由加群の狭義増加 Čech コホモロジーは有限生成。 -/
+/-- 有限個の多項式環の捻りからなる自由加群の狭義増加 Čech コホモロジーは有限生成。
+これは Stacks 30.19.2 の Hⁱ の有限性に対応する射影 Čech 版の補題。
+分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、
+この比較は形式化しない。 -/
 theorem projectiveFreeOrderedCechHomology_finite (degree : κ → ℤ) (d : ℤ) (q : ℕ) :
     Module.Finite R
       ((orderedCechComplex (projectiveGradedModuleChartDiagram (ι := ι)

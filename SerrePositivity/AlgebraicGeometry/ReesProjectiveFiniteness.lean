@@ -75,7 +75,10 @@ theorem reesProjectivePolynomialGradedSMul :
 
 -- Rees 環の部分環構造と、移した加群作用の同一視に多くの展開を要するため。
 set_option maxHeartbeats 800000 in
-/-- Rees 加群の Proj 標準開の全タプル Čech コホモロジーは、基底 Rees 環上有限生成。 -/
+/-- Rees 加群の Proj 標準開の全タプル Čech コホモロジーは、基底 Rees 環上有限生成。
+これは Stacks 30.20.1 の Hⁱ の有限性に対応する射影 Čech 版の補題。
+分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、
+この比較は形式化しない。 -/
 theorem reesProjectiveFullCechHomology_finite [IsNoetherianRing R]
     [LinearOrder ι] [Fintype ι] [Module.Finite (MvPolynomial ι R) M] (d : ℤ) (q : ℕ) :
     letI := reesProjectivePolynomialGradedSMul (ι := ι) I G

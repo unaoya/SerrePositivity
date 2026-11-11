@@ -120,7 +120,10 @@ private theorem FiniteGradedPolynomialModule.cechFinite
   intro j
   exact projectiveFreeOrderedCechHomology_finite (R := R) (ι := ι) degree d j
 
-/-- 有限生成次数付き多項式加群の各標準開 Čech コホモロジーは係数環上有限生成。 -/
+/-- 有限生成次数付き多項式加群の各標準開 Čech コホモロジーは係数環上有限生成。
+これは Stacks 30.19.2 の Hⁱ の有限性に対応する射影 Čech 版の補題。
+分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、
+この比較は形式化しない。 -/
 theorem projectiveGradedOrderedCechHomology_finite
     {M : Type (max u v)} [AddCommGroup M] [Module R M] [Module (MvPolynomial ι R) M]
     [IsScalarTower R (MvPolynomial ι R) M]
@@ -139,7 +142,10 @@ theorem projectiveGradedOrderedCechHomology_finite
       finite := inferInstance }
   exact N.cechFinite d q
 
-/-- 有限生成次数付き多項式加群の全タプル Čech コホモロジーも係数環上有限生成。 -/
+/-- 有限生成次数付き多項式加群の全タプル Čech コホモロジーも係数環上有限生成。
+これは Stacks 30.19.2 の Hⁱ の有限性に対応する射影 Čech 版の補題。
+分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、
+この比較は形式化しない。 -/
 theorem projectiveGradedFullCechHomology_finite
     {M : Type (max u v)} [AddCommGroup M] [Module R M] [Module (MvPolynomial ι R) M]
     [IsScalarTower R (MvPolynomial ι R) M]
