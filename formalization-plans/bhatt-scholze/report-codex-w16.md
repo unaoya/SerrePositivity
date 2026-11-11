@@ -309,3 +309,15 @@ main `7a689544b` を `4c3faf273` で取り込んだ。以後、整理券はこ�
 `Operad.eraseAlgebraAdjunction` は、既存のモノイダル随伴の随伴対応で単位と部分合成を照合した代数上の随伴。`eraseFreeAlgebraIso` は自由・忘却随伴との合成を比較し、自由代数の自然同型を与える。`eraseAttachmentCofanIsColimit` はこの随伴と disk の指定分裂から、実際の付加の余積表示を与える。
 
 超限合成への移行、実際のセル段への語の基底の移送、微分と重みの照合は作業木に置いている。`hstage` と無条件の `baseChange_forget` の証明を続ける。
+
+
+### 実際のセル段の自由基底と境界の重み（11-11 昼）
+
+`ErasedCellularAlgebra`・`CellStageGradedBasis`・`CellStageWeights`・`SchurBasisImages` の対象ビルドと再帰監査が成功した。追加二十七本を合わせた監査は計 572 宣言、標準三公理のみ。登録候補にこの四本を加える。いずれも `SerrePositivity.EInfinity.BarrattEccles.Theory` の下。
+
+- `erasedCellStageCofanIsColimit` は、元の連続な相対セル複体の各段を先行セルの自由代数の指定余積で表す。再添字の前後の図式を自然同型で比較した。`erasedCellStageFreeIso_generator` と `_naturality` は、生成元の包含と後の段への指定射を保つ。
+- `cellStageSchurDegreeIso` と `cellStageWordBasis` は、元のセル段の各次数の加群を、元の Barratt–Eccles の Schur 表示とその語の基底へ移す。次数評価には、微分を消した複体を明示している。
+- `cellBoundaryNormalForm` は付加する実際の境界の基底展開。`cellStageWeight` はその有限の台から整礎再帰で選ぶ重み。`cellBoundaryWord_weight_lt` と `cellBoundary_mem_lowerSpan` により、各境界の語はそのセルより真に小さい重みを持つ。各セルと各基底語の余鎖次数を重みが支配することも証明した。
+- `schurDegreeBasis_apply` と `arityDegreeCoinvariantsTensorBasis_apply` は、基底ベクトルを指定包含と余不変の比較同型で記述する。
+
+残る作業は、語の基底を実際の演算と付加生成元の式で照合し、演算の合成・対称群の正規化・微分によって語の総重みが増えないことを証明する部分。これを `complexKFlat_of_weightedBasis` の微分の条件へ入れ、`hstage` と無条件の `baseChange_forget` を閉じる。停止点 3 前の途中記録。
