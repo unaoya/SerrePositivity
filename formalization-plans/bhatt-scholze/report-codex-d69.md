@@ -517,3 +517,8 @@ SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarCokernelTensor
 - `CrystallineCompletedTensor`・`AffineEnvelopePointwiseCoefficients` の対象ビルドも成功した（`/private/tmp/d69-ticket-build-36.log`・`/private/tmp/d69-ticket-build-37.log`）。登録候補に BS のこの2本を追加する。
 - 前者は生成元が p である終域で二座標完備テンソルを通常テンソルの p 完備化に、左右の脚を保って同定する。後者は両基底を有界 prism と仮定し、既存の affine 包の係数底変換同型を通して、実際の有限 affine 項を各項の完備係数拡大と同定する。右脚が指定済みの `affineEnvelopeCoefficientMap` となる式も含む。
 - 一時監査は129モジュール・3,067宣言、標準三公理のみ。`/private/tmp/AuditD69P2MorningNinetySix.lean`、ログ `/private/tmp/d69-morning-audit-ninetysix.log`。入口・監査登録と既存宣言は変更していない。
+
+- `PDTermPointwiseNaturality`・`PDCompletedCoefficientComplex` と、共通の `SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseTensorExt`・`SerrePositivity.HomologicalAlgebra.Cosimplicial.MapComplex` の対象ビルドが成功した（`/private/tmp/d69-ticket-build-38.log`・`/private/tmp/d69-ticket-build-39.log`）。登録候補に BS 2本・共通2本を追加する。
+- `pdTermPointwiseCoefficientIso_naturality` はすべての単体の構造射について厳密な自然性を示す。`pdCechPointwiseCoefficientIso` は実際の `pdCechRings` の台加群の余単体的同型、`pdCompletedCoefficientComplexIso` は小さい分冪交代余面複体へ各項の H⁰ 完備係数拡大を適用した標準の比較同型。複体全体の完備導来テンソルとの同定を暗黙に使っていない。
+- 共通の `PointwiseTensorExt` は完備な標的への線形射を純テンソルの単位上で判定し、係数拡大した任意の加群射について単位の自然性を示す。`MapComplex` は加法的関手を各項に適用する操作と交代余面複体との交換同型を固定する。
+- 一時監査は133モジュール・3,098宣言、標準三公理のみ。`/private/tmp/AuditD69P2MorningHundred.lean`、ログ `/private/tmp/d69-morning-audit-hundred.log`。対象ビルド済みの追加11本に sorry・独自公理はなく、既存宣言の変更も0。Witt の指定された二比較の最終的な検収は残っており、この記録を停止点2の報告とはしない。
