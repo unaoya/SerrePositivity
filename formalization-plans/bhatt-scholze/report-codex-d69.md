@@ -379,3 +379,123 @@
 - `PointwiseCochain` は、指定スカラーが各項で正則な非輪状複体をサイクルの短完全列に分け、各項の H⁰ 完備化後も非輪状であることを示す。写像錐の比較から擬同型の保存を得て、平坦な通常の係数拡大と合成した整数・自然数両添字の宣言を閉じた。`crystallineWittPointwiseBridge_quasiIso` は、実際の整係数の小さい橋にこの自然数添字の宣言を適用する。
 - `PointwiseAlgebra` は各項の H⁰ 完備化を既存の主完備環の係数加群に同定する。標準の完備化単位を保ち、任意の係数線形写像について厳密に自然である。自然性の証明には既存の `principalCompletionLinearMap_ext` を使う。
 - 次はこの同定と通常テンソルの係数を保つ比較を合わせ、各項の完備係数拡大を実際の有限 Witt 模型と照合する。作業木の `PointwiseTensor` でこの比較と単位の式を準備している。P2 の最終の二比較は引き続き残り、停止点2には未到達。
+
+## P2 途中の取り込み点（2026-11-11 夕）
+
+調整役の途中取り込みの依頼に対する記録。**停止点2の検収とは別の取り込み点**。
+
+- **本体の取り込み点：`e79fa8e7c589288e5f523b5341723f36ca1e205d`（`e79fa8e7c`）**。
+- 登録一覧の差分の基準は、この記録時点の main `7a3a0f965544bde84ff8e9d62359536d6d836430`（`7a3a0f965`）。追加は **89モジュール（BS 74本、共通15本）**。全89本が取り込み点にコミット済みで、対象ビルド済み。
+- ⑤c の H3・H4 が待つ `AffineEnvelopeBaseChange`・`AffineEnvelopeCoefficients`・`AffineCechFrameLift`・`BigCechVertexFrame` は、4本ともこの取り込み点に含む。
+- 本体の変更は新規ファイルのみ。枝と main の共通祖先 `7a689544b` から取り込み点まで、既存の本体ファイルの差分は0。入口・共通監査スクリプトへの登録は、この枝では変更していない。
+- **未コミットの `SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseTensor` は対象外**。下の登録一覧にも監査対象にも含めない。
+
+### ビルドと監査
+
+- 対象ビルドは既記録の小さな束で検査済み。最新の束は `/private/tmp/d69-ticket-build-31.log` で成功。鍵はビルドの間だけ取り、`--wait 3600`、同じ worktree の整理券は常に一つにしている。
+- **今回登録する追加89本だけの一時監査：1,802宣言、標準三公理 `propext`・`Classical.choice`・`Quot.sound` のみ**。一時監査 `/private/tmp/AuditD69P2IntermediateE79.lean`、ログ `/private/tmp/d69-intermediate-e79-audit.log`。
+- 既取り込みの依存33本も含めた累計の一時監査は122モジュール・2,948宣言で、同じ標準三公理のみ。一時監査 `/private/tmp/AuditD69P2MorningEightyNine.lean`、ログ `/private/tmp/d69-morning-audit-eightynine.log`。
+- 追加89本のソースを再走査し、`sorry`・独自の `axiom` 宣言は0。監査でも `sorryAx` と独自公理は検出されていない。
+
+### BhattScholze.lean への登録（74本）
+
+```text
+SerrePositivity.BhattScholze.Delta.Division.HomExt
+SerrePositivity.BhattScholze.Prismatic.AffineCechFrameLift
+SerrePositivity.BhattScholze.Prismatic.AffineCechVertexFrame
+SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeBaseChange
+SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeBaseChangeCoefficients
+SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeCoefficients
+SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeDerivedBaseChange
+SerrePositivity.BhattScholze.Prismatic.BigCechAffineFrameQuasiIso
+SerrePositivity.BhattScholze.Prismatic.BigCechVertexFrame
+SerrePositivity.BhattScholze.Prismatic.CechVertexHomotopy
+SerrePositivity.BhattScholze.Prismatic.CompletedFreeDeltaScale
+SerrePositivity.BhattScholze.Prismatic.CrystallineBridgeAlgebra
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDRetraction
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDRetractionNaturality
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDRetractionSplit
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallBridge
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallBridgeComplex
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallBridgeCoordinates
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallBridgeFrame
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallBridgeModP
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallBridgeQuasiIso
+SerrePositivity.BhattScholze.Prismatic.CrystallineWittCoefficients
+SerrePositivity.BhattScholze.Prismatic.CrystallineWittCompletedModules
+SerrePositivity.BhattScholze.Prismatic.CrystallineWittFlat
+SerrePositivity.BhattScholze.Prismatic.CrystallineWittFlatCochain
+SerrePositivity.BhattScholze.Prismatic.CrystallineWittPointwiseBridge
+SerrePositivity.BhattScholze.Prismatic.CrystallineWittSmallCoefficients
+SerrePositivity.BhattScholze.Prismatic.CrystallineWittSmallFrame
+SerrePositivity.BhattScholze.Prismatic.PDColumnCoefficientUnit
+SerrePositivity.BhattScholze.Prismatic.PDColumnCompletedBaseChange
+SerrePositivity.BhattScholze.Prismatic.PDColumnCompletionEquivalence
+SerrePositivity.BhattScholze.Prismatic.PDCompletedSubstitutionNaturality
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamBicomplexCoefficients
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamCoefficientProjection
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamColumnBounded
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamCompletedBaseChange
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamCompletedSubstitution
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamDerivedSpan
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamRowFormsExt
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionChainRule
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionCofaces
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionDegreeZero
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionDifferential
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionForms
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionFunctor
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionGenerators
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionJacobian
+SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionWedge
+SerrePositivity.BhattScholze.Prismatic.PDDeltaFrobeniusEvaluation
+SerrePositivity.BhattScholze.Prismatic.PDEnvelopeAffineBridge
+SerrePositivity.BhattScholze.Prismatic.PDEnvelopeCrystalline
+SerrePositivity.BhattScholze.Prismatic.PDEnvelopeCrystallineCoefficientMaps
+SerrePositivity.BhattScholze.Prismatic.PDEnvelopeCrystallineMaps
+SerrePositivity.BhattScholze.Prismatic.PDModelCompletionQuotient
+SerrePositivity.BhattScholze.Prismatic.PDRawBaseChangeQuotient
+SerrePositivity.BhattScholze.Prismatic.PDRawColumnBaseChange
+SerrePositivity.BhattScholze.Prismatic.PDRawColumnBoundedModel
+SerrePositivity.BhattScholze.Prismatic.PDRawColumnCompletion
+SerrePositivity.BhattScholze.Prismatic.PDRawFormsBaseChange
+SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution
+SerrePositivity.BhattScholze.Prismatic.PDRawRingHomExt
+SerrePositivity.BhattScholze.Prismatic.PDSmallCoefficientComparison
+SerrePositivity.BhattScholze.Prismatic.PDTermCompletelyFlat
+SerrePositivity.BhattScholze.Prismatic.PDTermCompletionEquivalence
+SerrePositivity.BhattScholze.Prismatic.PDTermQuotientModel
+SerrePositivity.BhattScholze.Prismatic.PDTermReductionLinear
+SerrePositivity.BhattScholze.Prismatic.PDTermRingHomExt
+SerrePositivity.BhattScholze.Prismatic.PrismaticFrameHomotopy
+SerrePositivity.BhattScholze.Prismatic.WittAffineBaseChange
+SerrePositivity.BhattScholze.Prismatic.WittBigBridgeAffineFrame
+SerrePositivity.BhattScholze.Prismatic.WittFiniteBridge
+SerrePositivity.BhattScholze.Prismatic.WittFiniteBridgeCrystallineFactor
+SerrePositivity.BhattScholze.Prismatic.WittFiniteBridgeNaturality
+SerrePositivity.BhattScholze.Prismatic.WittFiniteBridgeSquare
+```
+
+### root への登録（共通15本）
+
+```text
+SerrePositivity.CommutativeAlgebra.DeRham.PolynomialDeRhamCompletionUnit
+SerrePositivity.HomologicalAlgebra.BicomplexProjectionNaturality
+SerrePositivity.HomologicalAlgebra.Cosimplicial.ModuleMap
+SerrePositivity.HomologicalAlgebra.Cosimplicial.ScalarQuotient
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteCochainReduction
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarQuotient
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeEquivalence
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeModel
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseAlgebra
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseBaseChange
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseCochain
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseExact
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseRegular
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelEquivalence
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarCokernelTensor
+```
+
+### P2 の残り
+
+最後の二つの比較の検収は引き続き残る。各項の完備係数拡大と実際の有限 Witt 模型の同定を余単体構造に合わせ、指定された二比較の係数変更後の交代余面複体の擬同型を閉じる。この途中取り込みの後も作業を続け、P2 全体が対象ビルド・監査を通ったところで停止点2を報告する。
