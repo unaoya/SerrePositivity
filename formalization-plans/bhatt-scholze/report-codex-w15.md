@@ -137,3 +137,12 @@
 - `isPushout_flatResidueRing` と `flatResidueCoconeIsColimit` は、基底の p と向きの冪を含むイデアルによる剰余で、二項と有限広押し出しを保つ。 `flatResidueCechIso` で通常の環の増大 Čech 余脈体に比較し、増大・余面・余退化と剰余の遷移に対する自然性を示した。
 - `degreewiseTowerIsoOfBijective` で次数ごとの逆極限同定を余鎖複体の同型にし、全射的な逆塔から完全性を移した。構造環では (p,d) の冪、prism イデアルによる剰余では (d,pⁿ) を使う。 `structureRing_flatCechExact`・`quotientStructureRing_flatCechExact` が全次数の完全性、`structureRing_isSheaf`・`quotientStructureRing_isSheaf` が通常の環値の層条件。
 - この束の新規 11 モジュールの対象ビルドと公開 44 宣言の監査を通過した。標準三公理のみ、`sorry` 0。推移的 import の閉包 345 モジュールに ∞ 圏・E3 はなく、KST への直接 import はない。Lean の差分は新規ファイル 11 本。
+
+## 段 4 の途中（K5、2026-11-11 午前）
+
+- main `cac43df5c` を取り込んだ。新規 12 モジュール・公開 33 宣言の対象ビルドと監査に通過。標準三公理のみ、`sorry` 0。推移的な本体 import は 315 モジュール、∞ 圏・E3 の import と KST への直接 import はない。
+- `DiscreteDelta`・`DiscretePrism` に Lemma 7.7 の古典環の部分を実装。Frobenius 持ち上げ、既知の δ 環との同型による移送、prism 構造と有界性、D36 の p 正則な終域への評価射を得た。`InitialOfRetraction`・`PrismRetract` は Lemma 7.8 と site の冪等完備性を証明する。環の retract の導来完備性は新規 `CommutativeAlgebra/Adic/RingRetract` に置いた。
+- `LciEnvelope`・`LciEnvelopeVariables` は、承認済みの完備通常テンソル環の生成元が正則なら、関係イデアルの包絡の普遍性を付ける。`LciEnvelopeInitial` は有界性と濃度を加えて site の始性を得る。`LciEnvelopeRegular` は、同じ通常環の d 錐を p 完備化した後の負一次消滅へ正則性を帰着する。
+- `LciEnvelopePresentation` は未完備の自由変数の δ 除算包を別の自由 δ 環に同定する。既存の `deltaAdjoinDivisionResidue_moduleFaithfullyFlat` を再利用して、置換の mod (p,d) の忠実平坦性を得た。`LciEnvelopeCoefficient` は初期変数と d の商を後続座標の多項式環に同定し、係数の正則性を移す。
+- `LciEnvelopeInvertP` は、連続な分裂と稠密性からの全射性、有限フィルトレーションの持ち上げ、有理代数での分冪の持ち上げ、指定した関係の類による余法加群の生成を証明する。自由分解の `D t̃ = f_i - d z_i` と一次の類の同定は残る。
+- 残りは、普遍置換の d 剰余での p 完全平坦性、正則列の Koszul 分解に沿う完備底変換との比較、一般の候補の正則性・有界性。原典 Ex 7.9 の R の有界 p 冪ねじれを使い、既存の `completedBaseChange_bounded_torsion_pure` へつなぐ。草稿 `exists_lciEnvelope` は有界性を仮定しないため、型を保ち、無有界の存在には追加の構成が必要なことを記録する。停止点 4 は未達。
