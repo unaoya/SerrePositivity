@@ -751,3 +751,93 @@ SerrePositivity.BhattScholze.Prismatic.CrystallineZariskiIso
 SerrePositivity.CommutativeAlgebra.Localization.AwayEquivalence
 SerrePositivity.CommutativeAlgebra.Localization.AwayGluing
 ```
+
+
+## P3 検収前の整理（2026-11-12、実装 347ec8a29）
+
+### 検証した範囲
+
+- main `d9e596898` を `6cdce754c` で取り込んだ。衝突なし。main の作業木で編集・ビルドはしていない。
+- `PDCechTowerStructure` は分冪 Čech 脈体から有限段の厚化の構造環への標準自然変換、塔の遷移との両立、小さいサイトの構造前層を有限 Čech 段に制限したものと台環模型との自然同型。
+- `PDCechFrameSiteMap` は、二つの全射な枠の厳密な比較を有限 p 冪商の実際の厚化の射へ降ろす。分冪・剰余構造射を保つこと、代表元の式、余単体的自然性、標準自然変換との可換正方形を証明した。
+- `PDExtraCoordinatesRetraction` は既存の `withExtraCoords p k r` に対する零評価の厳密な余単体的射。`insertPdFactor_retraction` は環の段階での左逆、`pdExtraCoordinatesCochainEquiv` は係数加群の交代余面複体のホモトピー同値、`pdExtraCoordinatesRetraction_quasiIso` はその逆向きの擬同型。係数環は任意で、p 完備性や p 正則性を追加仮定していない。ただし、これは自由な高次座標の因子の収縮であり、草稿の一般 I の `pdDeltaCechNerve` 自体をその因子模型と同定した宣言ではない。
+- main 取り込み後、P3 の50本をまとめた対象ビルドが成功（`/private/tmp/d69-p3-build-24.log`、3751 jobs）。その後の残り2本も対象ビルドが成功（`/private/tmp/d69-p3-build-26.log`、3913 jobs）。どちらも `--wait 3600`、一回30分未満、鍵はビルドの間のみ。これは各モジュールとその依存だけの対象ビルドで、root ビルドではない。
+- 一時監査は **52モジュール・588宣言、標準三公理のみ**（`/private/tmp/AuditD69P3FiftyTwo.lean`、`/private/tmp/d69-p3-audit-fiftytwo.log`）。sorry・独自公理0。main との差分で、本体は52本すべて新規ファイル。既存宣言、Nakayama の二ファイル、公式の入口・監査は変更していない。
+
+指示書 §0 の P3 の対応：
+
+| 指示書の部品 | 本体の入口・到達点 |
+| --- | --- |
+| big affine site と小さい模型 | `CrystallineSiteBasic`、`CrystallineSiteSmall`、`CrystallineSmallSiteTopology` |
+| 分冪の局所化・Zariski 位相 | `PDLocalizationStructure`、`CrystallineSiteLocalization`、`CrystallineZariskiCoverage` |
+| O_crys が通常の環値の層 | `CrystallineSmallStructureSheaf.crystallineStructure_isSheaf` |
+| 全 Čech の塔と有限段の余積 | `PDCechCrystallineTower.pdCechTower`、`pdCechTowerProCechData` |
+| 濃度と pro 弱終性 | `CrystallineCechCutoff.pdCechSmallTowerOfCutoff_proWeaklyTerminal`。変数数の条件は `#S ≤ #k + #R + ℵ₀`。標準の枠 S=R はこの条件を満たす。 |
+| 剰余代数の引き戻し・基底の制限 | `CrystallineStructurePullback`、`CrystallineBaseStructureRestriction`、`CrystallineSmallCoverMaps` |
+| 多項式 Poincaré の複体の段 | `CrystallinePolynomialSpan.crystallinePolynomialTotalToCech_quasiIso` と既存の `pdDeRhamTotalToCompletedForms_quasiIso` による二脚。型には基底の p 完備性・p 正則性・分冪の p 上の条件がある。 |
+| 塔の構造環・枠の射との照合 | `PDCechTowerStructure`、`PDCechFrameSiteMap` |
+
+### 範囲の確認中の事項（停止点3の完了とはまだ報告しない）
+
+指示書 §0 の P3 の列挙は上表のサイト・層・塔・引き戻し・Poincaré の複体比較まで。一方、段0報告の「多項式の Poincaré、Thm 5.2 の模型」の行には、一般 I の `pdDeltaCechNerve`・`etaBridge`・`crystallineBridge_eq_eta` まで追加一般化する案を含めていた。この二つの範囲の差を調整役へ確認した。
+
+一般 I の δ 座標つき相対分冪包と `withExtraCoords` の同定、およびその包への η の厳密な射・D68 の η との特殊化の等式は、今回の52本には含まれない。D68 の ℤ_p の η と P2 の Witt の橋を、その一般 I の宣言が閉じたこととして数えてはいない。追加一般化も停止点3に含める決定なら、その残りを続ける。RΓ・Tot の E∞ 構造・関手 ∞ 圏への組み立ては指示書どおり草稿に残す。
+
+### 登録候補（P3 全52本、BS 47本・共通5本）
+
+入口・公式監査には未登録。調整役の取り込みのための統合一覧：
+
+```text
+SerrePositivity.BhattScholze.Prismatic.CompletedPDEnvelopeCardinality
+SerrePositivity.BhattScholze.Prismatic.CrystallineBaseRestriction
+SerrePositivity.BhattScholze.Prismatic.CrystallineBaseStructureRestriction
+SerrePositivity.BhattScholze.Prismatic.CrystallineCechCutoff
+SerrePositivity.BhattScholze.Prismatic.CrystallineCechProWeakTerminal
+SerrePositivity.BhattScholze.Prismatic.CrystallineFrameLift
+SerrePositivity.BhattScholze.Prismatic.CrystallineFrameLiftResidue
+SerrePositivity.BhattScholze.Prismatic.CrystallineFrameVariablesLift
+SerrePositivity.BhattScholze.Prismatic.CrystallineLocalizationLift
+SerrePositivity.BhattScholze.Prismatic.CrystallineNilpotentComplete
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotient
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotientLift
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotientMap
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotientTower
+SerrePositivity.BhattScholze.Prismatic.CrystallinePolynomialSpan
+SerrePositivity.BhattScholze.Prismatic.CrystallineResidue
+SerrePositivity.BhattScholze.Prismatic.CrystallineResidueAlgebra
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteBasic
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteLocalization
+SerrePositivity.BhattScholze.Prismatic.CrystallineSitePullback
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteSmall
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteZariski
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallCoverMaps
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallSiteTopology
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallStructureSheaf
+SerrePositivity.BhattScholze.Prismatic.CrystallineStructureGluing
+SerrePositivity.BhattScholze.Prismatic.CrystallineStructurePullback
+SerrePositivity.BhattScholze.Prismatic.CrystallineTransport
+SerrePositivity.BhattScholze.Prismatic.CrystallineZariskiCoverage
+SerrePositivity.BhattScholze.Prismatic.CrystallineZariskiIso
+SerrePositivity.BhattScholze.Prismatic.CrystallineZariskiRefinement
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineCoproduct
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineCosimplicial
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineQuotient
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineTower
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineVertices
+SerrePositivity.BhattScholze.Prismatic.PDCechFrameSiteMap
+SerrePositivity.BhattScholze.Prismatic.PDCechQuotientVariablesLift
+SerrePositivity.BhattScholze.Prismatic.PDCechResidueEquivalence
+SerrePositivity.BhattScholze.Prismatic.PDCechResidueNaturality
+SerrePositivity.BhattScholze.Prismatic.PDCechTowerStructure
+SerrePositivity.BhattScholze.Prismatic.PDEnvelopeCardinality
+SerrePositivity.BhattScholze.Prismatic.PDExtraCoordinatesRetraction
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationAddition
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationDpow
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationLaws
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationStructure
+SerrePositivity.CategoryTheory.ProCechNerveData
+SerrePositivity.CategoryTheory.ProCechNerveTransport
+SerrePositivity.CommutativeAlgebra.Adic.Cardinality
+SerrePositivity.CommutativeAlgebra.Localization.AwayEquivalence
+SerrePositivity.CommutativeAlgebra.Localization.AwayGluing
+```
