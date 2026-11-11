@@ -108,3 +108,7 @@ BS-W14 で作った界面 `EInfinityTheory` の実例 `barrattEcclesTheory`（dr
 1. 共通部分（§21.2）：(a) 自由代数の比較の残り（§20.2 の五行、任意の cofibrant な入力の複体まで、上限 約 1,550 行、終わったら報告して止まらずに b へ）、(b) native な二項の余積錐 `coprodWith_cocone`（上限 約 670 行、終わったら報告）、(c) 比較が `coprodWith_cocone` の二脚をテンソルの標準射へ送る照合補題（界面の型は変えない）。
 2. 段 4 の組み立て関数：証明済みの欄を集め、残りの欄（`coproduct_tensor`・sifted・Tot の群・`presentable`・`powerOp0`）を引数に取る `barrattEcclesTheory` の組み立て（§3 の 3）。
 - 入れないもの：セル対（A）、bar の実現（B）、sifted の保存。上限を超えそうなときは報告して止める。
+
+## 11. 追記（2026-11-12 朝、調整役）：a の上限は昼に決める、b・c・組み立てを先に
+
+§22 の停止（ef2169d87、a の見込み 1,742〜2,112 行、上限 1,550 行）を受けて。a の上限は上げず、11-12 の昼の E2 の経路の判断と一緒に決める。それまで a に依らない b（native な余積錐、上限 約 670 行）→ c（既存の厳密な比較 `barrattEcclesCoproductTensorNat` の脚の照合）→ 段 4 の組み立て関数を進める。§22 の五本は、KL-W1 の取り込みの後に改名に追従してから取り込む。
