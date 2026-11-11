@@ -7,7 +7,7 @@
 ## 0. 要約
 
 - K の実装は ∞ 圏の基盤（KL-W1 → ③ → ①）が整ってから。それまでは本書の紙の作業。
-- 照合で分かった計画の穴は三つ（§1）。どれも ∞ の基盤が整っても自動的には埋まらない。
+- 照合で分かった計画の穴は三つ（§1）。11-11 に紙で確かめて経路を確定：§1.1 は 4.8 を LT 2.31（Lean 既存）に置き換え、§1.2・§1.3 は L2 の部分解凍（plus 構成・Serre SS・Prop 2.15、240〜640 時間）に収束。どれも ∞ の基盤とは別の、K 基盤 1 の仕事。
 - `[ModelCategory SSet]` を仮定する降下の 54 ファイルは、すでに主経路から外れている（決定 15、`Descent.Auxiliary`）。主定理の閉包（1,142 モジュール）に `KST/Descent` は入っていない。作り直しの設計は §2。
 - K が ∞ 側に求める部品の一覧は §3。③・① の範囲に入れる。
 
@@ -25,7 +25,20 @@
 | (b) 4.13 を「Zariski 降下＋4.8」で出す | KST の原証明そのもの（Thm 4.11 ＋ Thm 2.12） | 新しい議論がない | 4.11 の代わりに (a) の 4.8 を使う形に書き換える必要 |
 | (c) Lemma 5.5 の使い方を変えて 4.8・4.13 の必要を減らす | 5.5 (i)(iii) は「導来の厚み Y(n)・D(n) と古典の Y(n)・E(n) の K の pro 比較」。導来 blowup の模型（決定 D3、Koszul cdga の有限 Zariski 図式）では、これを Koszul の塔の pro 同型（4.9・4.10、凍結側にある）から直接出せる可能性がある | 4.8 の一般形が要らなくなる | 紙で確かめていない。L5b の対象（導来 blowup）が確定していない |
 
-**推奨**：(a)＋(c) を紙で確かめる。(a) は §1.2 の結論と一緒に決める。
+**結論（確定、11-11、読み取りのエージェントが KST pp.21–24・32–36、LT pp.24–28、Lean の型を照合。鍵の宣言の型は調整役が確認）**：
+
+1. **(c) は「4.8 を不要にする」案としては不成立**。Ko(A; a(n)) → A/a(n) はレベルごとの擬同型ではない（a(n) が正則列でなければ H₁ ≠ 0）。Koszul cdga の模型でも D(n)∩U_i ≅ (E(n)∩U_i) ⊗_A Λ_A(e_1..e_r)（微分 0 の外積代数）で、π_* が余分に出る。遷移が m ≥ 2n で e_j を殺すので pro 同値にはなるが、レベルでは同値でない。したがって「π_* の塔が pro 同値 ⇒ K の塔が pro 同値」という **4.8 の強さは 5.5 (i)(iii) の両方で本質的に要る**。
+2. **ただし 4.8 は LT Cor 2.31 に置き換えられ、Lean に既にある**：`IsKConnective.invariantLevelMap_piProEquivalence_of_piProEquivalence`（`KST/LocalizingInvariants/DGAlgebraInvariantPiProEquivalence.lean:36`、`IsPiProEquivalence R (f.map (nonpositiveInclusion R)) → ProSpectrum.IsPiProEquivalence (invariantLevelMap R Φ …)`、前提 `IsKConnective R Φ k`）。これは LT Lemma 2.28 (ii) の Postnikov 帰納 ＋ 2.30 で、決定 16（群ホモロジーを使わない）と整合する。前提の `IsKConnective` は §1.2 で供給する。
+3. **Lemma 4.1 と 4.10 のスペクトル系列の証明は不要**：`koszul_comparison_isProIso`（`KST/ProExcision/KoszulComparison.lean:38`）は任意の複体 K（ホモロジー有限生成）に対する 4.10 なので、K ＝ 導来チャートの複体 B_i に a(n) と (a_iⁿ) の二通りで当て、H⁰ で (a(n)) = (a_iⁿ) だから商塔がレベル同型、で (iii) のチャート版が出る。(i) は K = A。
+4. **下書き (a) の「非 connective な場合」の難点は誤り**：単体環は常に連結で、A → π₀A も連結環同士。非連結なのは K の側だけで、それは `IsKConnective` で処理される。
+5. **5.5 (ii) は置き換え不可**：K(X̃)（導来 blowup）と K(tX̃) を結ぶ唯一の箇所で、Thm A の最後で Prop 5.2 に渡すために必須。要るのは、pro 切除 2.32/2.35（⊙、決定 16）を各チャート B_L → π₀B_L に当てる形（仮定「{a(μ)π_iB_L} = 0 (i > 0)」は π_i が有限生成で a 冪で消えることから自明）、fiber の同定（Lemma 4.6 ＝ `IsProCartesian`）、2.31（上の補題）、有限 Čech 図式での pro 版 Zariski 降下（`FiveTermHom.isProIso` の反復）。
+
+**再定式化（新しい数学はない、接続補題だけ）**：Koszul cdga の塔を `Tower (NonpositiveAlgebra R)` に、比較射を `LevelHom` に；`groups R j` の塔と `koszulConeTower` のホモロジー塔のレベル同型（`of_levelwiseIso`、Pro.lean:205）；j ≠ 0 で「始域 pro 零 → 零塔への射は IsProIso」；有限 Zariski 図式ごとの結果を貼る pro 版 Čech；二重添字 (m,n) は `reindexHom_isProIso`・`diagonal_cofinal` で対角に（決定 D5）。
+
+**K 側の最小の入力（§1.1〜1.3 を合わせて）**：
+1. `IsKConnective R Φ 1` を K について証明（§1.2 → L2 部分解凍）。
+2. pro 切除 2.32/2.35（⊙）を B_L → π₀B_L に当てられる形（決定 16 の B-4 の範囲）。
+3. 有限アフィン被覆の Zariski/Čech 降下（Thm 2.12）の pro 版。
 
 ### 1.2 K の 1 連結性（要約の問題 2）
 
