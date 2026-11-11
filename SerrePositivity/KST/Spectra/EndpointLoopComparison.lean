@@ -22,17 +22,17 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum.BasedLoop
 def comparison (Y : OmegaSpectrum.{u}) : cotensor endpointCircle Y ⟶ obj Y := by
   let L := cotensor endpointCircle Y
   let a := endpointLoopToPath Y
-  let b : L ⟶ spectrumPoint := 0
+  let b : L ⟶ _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint := 0
   have h : a ≫ basedPathProjection Y = b ≫ fromPoint Y := by
     rw [endpointLoopToPath_projection_zero]
     exact (zero_comp (f := fromPoint Y)).symm
   let f : KanSequence.Hom (basedPath Y).toKanSequence Y.toKanSequence :=
     ⟨(basedPathProjection Y).app, (basedPathProjection Y).comm⟩
-  let g : KanSequence.Hom spectrumPoint.toKanSequence Y.toKanSequence :=
+  let g : KanSequence.Hom _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.toKanSequence Y.toKanSequence :=
     ⟨(fromPoint Y).app, (fromPoint Y).comm⟩
   let q := KanSequence.pullbackLift f g
     (⟨a.app, a.comm⟩ : KanSequence.Hom L.toKanSequence (basedPath Y).toKanSequence)
-    (⟨b.app, b.comm⟩ : KanSequence.Hom L.toKanSequence spectrumPoint.toKanSequence)
+    (⟨b.app, b.comm⟩ : KanSequence.Hom L.toKanSequence _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.toKanSequence)
     (fun n ↦ congrArg (fun t : L ⟶ Y ↦ t.app n) h)
   exact ⟨q.app, q.comm⟩
 

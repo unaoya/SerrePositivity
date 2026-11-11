@@ -36,8 +36,8 @@ lemma basedPathSpace_toPoint_rlp (Y : PointedSimplicialSet.{u}) [KanComplex Y.ri
 namespace OmegaSpectrum
 
 /-- BF path 模型から一点スペクトルへの実際の射。 -/
-def basedPathToPoint (Y : OmegaSpectrum.{u}) : basedPath Y ⟶ spectrumPoint :=
-  spectrumPoint_isTerminal.from _
+def basedPathToPoint (Y : OmegaSpectrum.{u}) : basedPath Y ⟶ _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint :=
+  _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint_isTerminal.from _
 
 /-- 各段は元の path の BF 射影の後に一点へ進む。 -/
 lemma basedPathToPoint_app (Y : OmegaSpectrum.{u}) (n : ℕ) :
@@ -70,7 +70,7 @@ lemma basedPathToPoint_isInvertible (Y : OmegaSpectrum.{u}) :
 
 /-- BF path 模型と一点スペクトルの具体的な頂点同型。 -/
 def basedPathPointIso (Y : OmegaSpectrum.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (basedPath Y)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex spectrumPoint) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (basedPath Y)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint) := by
   haveI := basedPathToPoint_isInvertible Y
   exact asIso (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (basedPathToPoint Y)))
 

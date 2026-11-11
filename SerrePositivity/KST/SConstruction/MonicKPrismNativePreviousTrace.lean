@@ -33,7 +33,7 @@ lemma monicKPrismCompatibilityInterchangeTrace_one_step (n : ℕ) :
   congr 1
   funext h
   dsimp only [RawSpectrumMapping.step]
-  have hs := suspensionHom_post ((kOmegaSpectrum (F.obj x)).level n).space
+  have hs := _root_.SerrePositivity.InfinityCategories.HomotopyLimits.suspensionHom_post ((kOmegaSpectrum (F.obj x)).level n).space
     (kKanSequenceLevelMap (F.map g) n)
   change (PointedObject.basedHomMap ((kOmegaSpectrum (F.obj x)).level n).space
       (kKanSequenceLevelMap (F.map g) n)).right ≫

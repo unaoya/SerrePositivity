@@ -24,7 +24,7 @@ local instance d3EndpointZeroSpectrumCategory : SimplicialCategory OmegaSpectrum
   OmegaSpectrum.simplicialCategory
 
 /-- 元の点つき Kan 一点。元の一点スペクトルの段と同じ対象。 -/
-abbrev d3PointedKanPoint : PointedKanObject.{u} := (d3StageKanEnriched 0).obj spectrumPoint
+abbrev d3PointedKanPoint : PointedKanObject.{u} := (d3StageKanEnriched 0).obj _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint
 
 /-- 同じ実一点は点つき Kan ∞ 圏の零頂点。 -/
 lemma d3PointedKanPoint_isZero :

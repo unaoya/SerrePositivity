@@ -21,9 +21,9 @@ local instance circleSquareCospanSpectrumSimplicialCategory :
 
 /-- 一点スペクトルから指定した BF 対象への coherent な辺は一意。 -/
 lemma fromPoint_coherentEdge_unique (Y : OmegaSpectrum.{u})
-    (e : Sp.{u}.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex spectrumPoint) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y)) :
+    (e : Sp.{u}.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y)) :
     e = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (fromPoint Y) := by
-  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeEquiv spectrumPoint Y).injective
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeEquiv _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint Y).injective
   exact point_isInitial.hom_ext _ _
 
 /-- 始点・終点を指定した区間図式も、一点からの元の射の coherent な表示へ厳密一致。 -/
@@ -31,7 +31,7 @@ lemma fromPoint_interval_unique (Y : OmegaSpectrum.{u}) (f : (Δ[1] : SSet.{u + 
     (hs : Sp.{u}.δ 1 (SSet.yonedaEquiv f) = pointZeroVertex.vertex)
     (ht : Sp.{u}.δ 0 (SSet.yonedaEquiv f) = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y) :
     f = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (fromPoint Y)).edge := by
-  let e : Sp.{u}.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex spectrumPoint) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y) :=
+  let e : Sp.{u}.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y) :=
     SSet.Edge.mk (SSet.yonedaEquiv f) hs ht
   apply SSet.yonedaEquiv.injective
   erw [Equiv.apply_symm_apply]

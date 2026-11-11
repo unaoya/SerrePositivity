@@ -31,7 +31,7 @@ private lemma closedEvaluationPost_exchange {C : Type*} [Category C]
   rw [uncurry_natural_left, uncurry_natural_left,
     _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.uncurry_uncurry_hom]
   simp only [uncurry_curry]
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.exchange_natural_right_assoc]
   rw [← whiskerLeft_comp_assoc,
     ← uncurry_eq (curry (curry ((β_ U K).hom ≫ uncurry q) ▷ (ihom E).obj V ≫ comp U E V)),
     uncurry_curry]

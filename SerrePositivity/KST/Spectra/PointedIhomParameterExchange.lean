@@ -25,7 +25,7 @@ private lemma closedParameterAction {C : Type*} [Category C] [MonoidalCategory C
   apply uncurry_injective
   apply uncurry_injective
   simp only [uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.uncurry_uncurry_hom, uncurry_curry]
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.exchange_natural_right_assoc]
   have hev := congrArg (fun f => A ◁ f)
     ((ihom.ev K).naturality (curry ((β_ A E).hom ≫ uncurry a)))
   change A ◁ (K ◁ (ihom K).map (curry ((β_ A E).hom ≫ uncurry a)) ≫

@@ -37,8 +37,8 @@ lemma d3Stage_edge {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : ℕ) :
 
 /-- 元の一点スペクトルの段頂点は、点つき Kan ∞ 圏の実零頂点。 -/
 lemma d3StagePoint_isZero (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((d3StageKanEnriched.{u} n).obj spectrumPoint)) := by
-  let Z := (d3StageKanEnriched.{u} n).obj spectrumPoint
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((d3StageKanEnriched.{u} n).obj _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint)) := by
+  let Z := (d3StageKanEnriched.{u} n).obj _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint
   have hZ : IsIso Z.obj.hom := by
     change IsIso (𝟙 (𝟙_ SSet.{u}))
     infer_instance
@@ -57,9 +57,9 @@ lemma d3StagePoint_isZero (n : ℕ) :
 /-- 元の BF path から一点への同じ段射を成分とする頂点同型。 -/
 def d3StageBasedPathPointIso (Y : OmegaSpectrum.{u}) (n : ℕ) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((d3StageKanEnriched n).obj (basedPath Y)))
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((d3StageKanEnriched n).obj spectrumPoint)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((d3StageKanEnriched n).obj _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint)) := by
   let f : (d3StageKanEnriched n).obj (basedPath Y) ⟶
-      (d3StageKanEnriched n).obj spectrumPoint :=
+      (d3StageKanEnriched n).obj _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint :=
     ObjectProperty.homMk ((basedPathToPoint Y).app n)
   haveI := pointedKanObject_edge_isInvertible_of_piIsomorphism f
     (basedPathToPoint_levelwise Y n)
@@ -74,7 +74,7 @@ lemma d3StageBasedPath_isZero (Y : OmegaSpectrum.{u}) (n : ℕ) :
 def commonLoopSquare_stage (X : OmegaSpectrum.{u}) (n : ℕ) :
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.LoopSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((d3StageKanEnriched n).obj (tail X))) := by
   let F := (commonLoopSquare X).square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3StageKanEnriched n)
-  have hp : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (commonLoopSquare X).square 0 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex spectrumPoint := by
+  have hp : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (commonLoopSquare X).square 0 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint := by
     rw [← _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopEdge_source, commonLoopSquare_top, Equiv.apply_symm_apply]
     exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (fromPoint (tail X))).src_eq
   have hb : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (commonLoopSquare X).square 1 0 =
@@ -121,7 +121,7 @@ lemma commonLoopSquare_stage_top (X : OmegaSpectrum.{u}) (n : ℕ) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ (commonLoopSquare_stage X n).square =
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
         (ObjectProperty.homMk ((fromPoint (tail X)).app n) :
-          (d3StageKanEnriched n).obj spectrumPoint ⟶
+          (d3StageKanEnriched n).obj _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint ⟶
             (d3StageKanEnriched n).obj (tail X))).edge := by
   change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ ((commonLoopSquare X).square ≫ _) = _
   rw [← Category.assoc, commonLoopSquare_top]

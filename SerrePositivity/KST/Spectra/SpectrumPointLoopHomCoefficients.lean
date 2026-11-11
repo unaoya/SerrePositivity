@@ -27,16 +27,16 @@ lemma pointLoopHomLeg_eq_const (X Y : OmegaSpectrum.{u}) :
     ((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op X)).map
         (fromPoint Y) =
       SSet.const (RawSpectrumMapping.pointedSpace X Y.toKanSequence).basepoint := by
-  let p : KanSequence.Hom spectrumPoint.toKanSequence Y.toKanSequence :=
+  let p : KanSequence.Hom _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.toKanSequence Y.toKanSequence :=
     ⟨(fromPoint Y).app, (fromPoint Y).comm⟩
-  have baseIso : IsIso (RawSpectrumMapping.pointedSpace X spectrumPoint.toKanSequence).hom :=
+  have baseIso : IsIso (RawSpectrumMapping.pointedSpace X _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.toKanSequence).hom :=
     isIso_of_isTerminal isTerminalTensorUnit (mappingPoint_isTerminal X) _
   rw [← RawSpectrumMapping.post_spectrum]
   calc
     RawSpectrumMapping.post X p =
         toUnit _ ≫ (RawSpectrumMapping.pointedSpace X Y.toKanSequence).hom := by
-      apply (cancel_epi (RawSpectrumMapping.pointedSpace X spectrumPoint.toKanSequence).hom).mp
-      have hu : (RawSpectrumMapping.pointedSpace X spectrumPoint.toKanSequence).hom ≫
+      apply (cancel_epi (RawSpectrumMapping.pointedSpace X _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.toKanSequence).hom).mp
+      have hu : (RawSpectrumMapping.pointedSpace X _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.toKanSequence).hom ≫
           toUnit _ = 𝟙 (𝟙_ SSet.{u}) := isTerminalTensorUnit.hom_ext _ _
       rw [← Category.assoc]
       erw [hu, Category.id_comp]
@@ -45,7 +45,7 @@ lemma pointLoopHomLeg_eq_const (X Y : OmegaSpectrum.{u}) :
 
 /-- 一点への Hom は、標準零単体と厳密に同型。 -/
 def pointLoopHomEndpointIso (X : OmegaSpectrum.{u}) :
-    mappingSpace X spectrumPoint ≅ (Δ[0] : SSet.{u}) :=
+    mappingSpace X _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint ≅ (Δ[0] : SSet.{u}) :=
   (mappingPoint_isTerminal X).uniqueUpToIso stdSimplex.isTerminalObj₀
 
 /-- 実際の Hom cospan の各成分を、両端は一点、中央は元の Hom として表示する。 -/

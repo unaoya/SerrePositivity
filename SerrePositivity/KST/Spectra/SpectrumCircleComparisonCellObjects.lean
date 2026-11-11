@@ -65,7 +65,7 @@ lemma circleCompanionComparisonTetrahedron_obj_one (z : Sp.{u} _⦋0⦌)
 /-- 元の三単体の三番目の頂点は、元の一点 BF スペクトル。 -/
 lemma circleCompanionComparisonTetrahedron_obj_two (z : Sp.{u} _⦋0⦌)
     (k : Limits.WalkingPair) :
-    (circleCompanionComparisonTetrahedron z k).obj ⟨ULift.up 2⟩ = spectrumPoint := by
+    (circleCompanionComparisonTetrahedron z k).obj ⟨ULift.up 2⟩ = _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint := by
   have h := congrArg SSet.yonedaEquiv
     (circleCompanionComparisonTetrahedron_base_fromPoint z k)
   simp only [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] at h

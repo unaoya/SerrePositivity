@@ -43,7 +43,7 @@ lemma replacedTransformation_invertible (i : AsSmall.{u} WalkingCospan) :
   · change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (FibrationReplacementComparison.map p q a b h)).toTruncated
     exact FibrationReplacementComparison.map_isInvertible p q a b h ha
-  · change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 spectrumPoint.{u})).toTruncated
+  · change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.{u})).toTruncated
     apply isInvertible_of_piIsomorphism
     intro j
     rw [homotopyMap_id]

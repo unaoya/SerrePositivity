@@ -44,7 +44,7 @@ lemma zeroEnrichedInfinityMap_eq (A : PointedSimplicialSet.{u}) :
   intro F
   apply EnrichedFunctor.ext SSet (fun _ ↦ rfl)
   intro X Y
-  exact (mappingPoint_isTerminal spectrumPoint).hom_ext _ _
+  exact (mappingPoint_isTerminal _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint).hom_ext _ _
 
 /-- 因子分解の三角形の最初の頂点図式は元の cotensor 射影。 -/
 lemma zeroEvaluationTriangleFamily_zero (A : PointedSimplicialSet.{u}) :
