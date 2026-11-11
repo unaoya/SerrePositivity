@@ -513,3 +513,7 @@ SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarCokernelTensor
 - `pdTermCompletedTensorAlgEquiv` は、任意の係数代数について、小さい完備分冪項の通常テンソルの主完備化を係数変更後の項に同定する。`pdTermCompletedTensorAlgEquiv_coefficient` は右脚が既存の `pdModelBaseChange` そのものであることを示す。公開型で関手の内部の定義展開を要求しないよう、新規の型付き入口 `pdTermCoefficientRingHom` を使った。
 - `pdTermPointwiseCoefficientIso` とその単位の式は、加群の各項の完備係数拡大関手から実際の分冪項への線形同型と右脚を固定する。`repeatedPrincipalAlgEquiv` は二座標 (p,p) の H⁰ を主完備環に、元の環上で単位を保って同定する。いずれの環の同型にも正則性や平坦性を追加していない。
 - 追加を含む一時監査は127モジュール・3,040宣言、標準三公理のみ。`/private/tmp/AuditD69P2MorningNinetyFour.lean`、ログ `/private/tmp/d69-morning-audit-ninetyfour.log`。ここまでの新規5本に `sorry`・独自の公理はなく、既存宣言の変更もない。停止点2の二比較の検収は引き続き残る。
+
+- `CrystallineCompletedTensor`・`AffineEnvelopePointwiseCoefficients` の対象ビルドも成功した（`/private/tmp/d69-ticket-build-36.log`・`/private/tmp/d69-ticket-build-37.log`）。登録候補に BS のこの2本を追加する。
+- 前者は生成元が p である終域で二座標完備テンソルを通常テンソルの p 完備化に、左右の脚を保って同定する。後者は両基底を有界 prism と仮定し、既存の affine 包の係数底変換同型を通して、実際の有限 affine 項を各項の完備係数拡大と同定する。右脚が指定済みの `affineEnvelopeCoefficientMap` となる式も含む。
+- 一時監査は129モジュール・3,067宣言、標準三公理のみ。`/private/tmp/AuditD69P2MorningNinetySix.lean`、ログ `/private/tmp/d69-morning-audit-ninetysix.log`。入口・監査登録と既存宣言は変更していない。
