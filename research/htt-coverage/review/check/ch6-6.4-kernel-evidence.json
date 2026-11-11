@@ -1,0 +1,113 @@
+{
+  "base": "0bf6fa239864f47fb62372d0d59624502efda45a",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "items": {
+    "6.4.2.3": {
+      "page": 643,
+      "declarations": [
+        "Order.Frame",
+        "Order.Frame.ofMinimalAxioms",
+        "inf_sSup_eq",
+        "Locale.of"
+      ]
+    },
+    "6.4.2.4": {
+      "page": 643,
+      "declarations": [
+        "TopologicalSpace.Opens.instFrame",
+        "topToLocale",
+        "Locale.pt",
+        "Locale.adjunctionTopToLocalePT"
+      ]
+    }
+  },
+  "declarations": {
+    "Locale.adjunctionTopToLocalePT": {
+      "declaration": "Locale.adjunctionTopToLocalePT",
+      "source": "Mathlib/Topology/Order/Category/FrameAdjunction.lean",
+      "type": "Locale.adjunctionTopToLocalePT.{u_1} : @CategoryTheory.Adjunction.{u_1, u_1, u_1 + 1, u_1 + 1} TopCat.{u_1}\n  TopCat.instCategory.{u_1} Locale.{u_1} instLargeCategoryLocale.{u_1} topToLocale.{u_1} Locale.pt.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "Locale.of": {
+      "declaration": "Locale.of",
+      "source": "Mathlib/Topology/Category/Locale.lean",
+      "type": "Locale.of.{u_1} : (α : Type u_1) → [Order.Frame.{u_1} α] → Locale.{u_1}",
+      "axioms": [],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "Locale.pt": {
+      "declaration": "Locale.pt",
+      "source": "Mathlib/Topology/Order/Category/FrameAdjunction.lean",
+      "type": "Locale.pt.{u_1} : @CategoryTheory.Functor.{u_1, u_1, u_1 + 1, u_1 + 1} Locale.{u_1} instLargeCategoryLocale.{u_1}\n  TopCat.{u_1} TopCat.instCategory.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "Order.Frame": {
+      "declaration": "Order.Frame",
+      "source": "Mathlib/Order/CompleteBooleanAlgebra.lean",
+      "type": "Order.Frame.{u_1} : Type u_1 → Type u_1",
+      "axioms": [],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "Order.Frame.ofMinimalAxioms": {
+      "declaration": "Order.Frame.ofMinimalAxioms",
+      "source": "Mathlib/Order/CompleteBooleanAlgebra.lean",
+      "type": "@Order.Frame.ofMinimalAxioms.{u_1} : {α : Type u_1} →\n  [inst : CompleteLattice.{u_1} α] → @Order.Frame.MinimalAxioms.{u_1} α inst → Order.Frame.{u_1} α",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "TopologicalSpace.Opens.instFrame": {
+      "declaration": "TopologicalSpace.Opens.instFrame",
+      "source": "Mathlib/Topology/Sets/Opens.lean",
+      "type": "@TopologicalSpace.Opens.instFrame.{u_1} : {α : Type u_1} →\n  [inst : TopologicalSpace.{u_1} α] → Order.Frame.{u_1} (@TopologicalSpace.Opens.{u_1} α inst)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "inf_sSup_eq": {
+      "declaration": "inf_sSup_eq",
+      "source": "Mathlib/Order/CompleteBooleanAlgebra.lean",
+      "type": "@inf_sSup_eq.{u_1} : ∀ {α : Type u_1} [inst : Order.Frame.{u_1} α] {s : Set.{u_1} α} {a : α},\n  @Eq.{u_1 + 1} α\n    (@min.{u_1} α\n      (@SemilatticeInf.toMin.{u_1} α\n        (@Lattice.toSemilatticeInf.{u_1} α\n          (@CompleteLattice.toLattice.{u_1} α (@Order.Frame.toCompleteLattice.{u_1} α inst))))\n      a\n      (@sSup.{u_1} α\n        (@CompleteSemilatticeSup.toSupSet.{u_1} α\n          (@CompleteLattice.toCompleteSemilatticeSup.{u_1} α (@Order.Frame.toCompleteLattice.{u_1} α inst)))\n        s))\n    (⨆ b,\n      ⨆ (_ : @Membership.mem.{u_1, u_1} α (Set.{u_1} α) (@Set.instMembership.{u_1} α) s b),\n        @min.{u_1} α\n          (@SemilatticeInf.toMin.{u_1} α\n            (@Lattice.toSemilatticeInf.{u_1} α\n              (@CompleteLattice.toLattice.{u_1} α (@Order.Frame.toCompleteLattice.{u_1} α inst))))\n          a b)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "topToLocale": {
+      "declaration": "topToLocale",
+      "source": "Mathlib/Topology/Category/Locale.lean",
+      "type": "topToLocale.{u_1} : @CategoryTheory.Functor.{u_1, u_1, u_1 + 1, u_1 + 1} TopCat.{u_1} TopCat.instCategory.{u_1}\n  Locale.{u_1} instLargeCategoryLocale.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    }
+  }
+}

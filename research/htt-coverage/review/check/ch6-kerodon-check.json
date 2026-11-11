@@ -1,0 +1,229 @@
+{
+  "method": "declarations_new と完全名で結合してから採用 PDF の本文と Kerodon 本文を比較。候補の共有だけでは採用しない。",
+  "items": {
+    "6.1.1.2": {
+      "candidates": [
+        "7.7.0.1",
+        "7.7.1.15",
+        "7.7.1.19",
+        "7.7.1.21"
+      ],
+      "accepted": [
+        "7.7.1.15"
+      ],
+      "rejected": [
+        "7.7.0.1",
+        "7.7.1.19",
+        "7.7.1.21"
+      ],
+      "comparison": "同じ普遍性を通常圏の場合で比較。HTT は全小余極限の基底変換安定性、Kerodon は個別の普遍的余極限図式。全図式について条件を課す意味で対応する。",
+      "rejection_reason": "同じ宣言は使うが、一般の Elements・全関手圏・随伴合成などの証明部品、次数の評価だけ、または部分対象の定義だけで、HTT 当該項目の主張とは異なるため除外。",
+      "source_url": "https://kerodon.net/tag/05SL"
+    },
+    "6.1.1.5": {
+      "candidates": [
+        "10.2.0.2"
+      ],
+      "accepted": [
+        "10.2.0.2"
+      ],
+      "rejected": [],
+      "comparison": "HTT が effective epi と呼ぶ通常の核対の余等化子は Kerodon の regular epi の定義と一致する。",
+      "rejection_reason": "",
+      "source_url": "https://kerodon.net/tag/04TM"
+    },
+    "6.1.1.6": {
+      "candidates": [
+        "10.2.2.9",
+        "10.2.4.9"
+      ],
+      "accepted": [],
+      "rejected": [
+        "10.2.2.9",
+        "10.2.4.9"
+      ],
+      "comparison": "Kerodon の候補は universal quotient または生成篩の quotient の性質。HTT は Set の equivalence relations と effective epis の記述であり、この主張に別の普遍性を付加した番号は転記しない。",
+      "rejection_reason": "Kerodon の候補は universal quotient または生成篩の quotient の性質。HTT は Set の equivalence relations と effective epis の記述であり、この主張に別の普遍性を付加した番号は転記しない。",
+      "source_url": ""
+    },
+    "6.1.2.2": {
+      "candidates": [
+        "1.1.0.4",
+        "1.1.0.5",
+        "1.5.3.3",
+        "1.5.3.4",
+        "10.1.0.1",
+        "10.1.0.2",
+        "10.1.1.12",
+        "10.1.1.13"
+      ],
+      "accepted": [
+        "10.1.0.1",
+        "10.1.1.12"
+      ],
+      "rejected": [
+        "1.1.0.4",
+        "1.1.0.5",
+        "1.5.3.3",
+        "1.5.3.4",
+        "10.1.0.2",
+        "10.1.1.13"
+      ],
+      "comparison": "同じ Δop と Δ+op からの単体・増大単体対象の定義を比較。",
+      "rejection_reason": "同じ宣言は使うが、一般の Elements・全関手圏・随伴合成などの証明部品、次数の評価だけ、または部分対象の定義だけで、HTT 当該項目の主張とは異なるため除外。",
+      "source_url": "https://kerodon.net/tag/04QJ",
+      "additional_source_url": "https://kerodon.net/tag/04QQ"
+    },
+    "6.1.2.3": {
+      "candidates": [
+        "1.5.3.3",
+        "1.5.3.4"
+      ],
+      "accepted": [
+        "1.5.3.3"
+      ],
+      "rejected": [
+        "1.5.3.4"
+      ],
+      "comparison": "一般の通常関手圏の nerve の自然同型を Δop に適用した同じ主張。hFun のみの比較は除外。",
+      "rejection_reason": "同じ宣言は使うが、一般の Elements・全関手圏・随伴合成などの証明部品、次数の評価だけ、または部分対象の定義だけで、HTT 当該項目の主張とは異なるため除外。",
+      "source_url": "https://kerodon.net/tag/005Z"
+    },
+    "6.1.2.5": {
+      "candidates": [
+        "1.1.3.9",
+        "5.2.6.1",
+        "5.2.6.2",
+        "8.1.0.1"
+      ],
+      "accepted": [
+        "1.1.3.9"
+      ],
+      "rejected": [
+        "5.2.6.1",
+        "5.2.6.2",
+        "8.1.0.1"
+      ],
+      "comparison": "同じ category of simplices。Elements の反対圏で射の向きを確認した。",
+      "rejection_reason": "同じ宣言は使うが、一般の Elements・全関手圏・随伴合成などの証明部品、次数の評価だけ、または部分対象の定義だけで、HTT 当該項目の主張とは異なるため除外。",
+      "source_url": "https://kerodon.net/tag/04ZS"
+    },
+    "6.1.3.1": {
+      "candidates": [
+        "7.7.1.1",
+        "7.7.1.13"
+      ],
+      "accepted": [
+        "7.7.1.1"
+      ],
+      "rejected": [
+        "7.7.1.13"
+      ],
+      "comparison": "各辺の自然性四角が pullback という同じ Cartesian transformation の定義。",
+      "rejection_reason": "同じ宣言は使うが、一般の Elements・全関手圏・随伴合成などの証明部品、次数の評価だけ、または部分対象の定義だけで、HTT 当該項目の主張とは異なるため除外。",
+      "source_url": "https://kerodon.net/tag/05SL"
+    },
+    "6.5.3.1": {
+      "candidates": [
+        "1.5.3.3",
+        "1.5.3.4",
+        "10.1.4.9",
+        "10.1.4.17",
+        "10.1.4.21"
+      ],
+      "accepted": [
+        "10.1.4.17",
+        "10.1.4.21"
+      ],
+      "rejected": [
+        "1.5.3.3",
+        "1.5.3.4",
+        "10.1.4.9"
+      ],
+      "comparison": "coskeleton を有限切断からの右 Kan 拡張による反射とし、必要な極限を持つ場合に存在させる同じ構成。",
+      "rejection_reason": "同じ宣言は使うが、一般の Elements・全関手圏・随伴合成などの証明部品、次数の評価だけ、または部分対象の定義だけで、HTT 当該項目の主張とは異なるため除外。",
+      "source_url": "https://kerodon.net/tag/05GU"
+    },
+    "6.5.3.6": {
+      "candidates": [
+        "1.1.1.1",
+        "1.1.1.2",
+        "10.1.2.1"
+      ],
+      "accepted": [
+        "10.1.2.1"
+      ],
+      "rejected": [
+        "1.1.1.1",
+        "1.1.1.2"
+      ],
+      "comparison": "同じ Δinj とそこからの反変図式の記法。Lean が持つのは添字圏の部分に限る。",
+      "rejection_reason": "同じ宣言は使うが、一般の Elements・全関手圏・随伴合成などの証明部品、次数の評価だけ、または部分対象の定義だけで、HTT 当該項目の主張とは異なるため除外。",
+      "source_url": "https://kerodon.net/tag/04R8"
+    },
+    "6.2.2.1": {
+      "candidates": [
+        "10.2.1.18",
+        "10.2.1.24"
+      ],
+      "accepted": [
+        "10.2.1.18",
+        "10.2.1.24"
+      ],
+      "rejected": [],
+      "comparison": "篩を slice の前合成閉な全部分圏とし、その引き戻しを定義する部分が同じ。Grothendieck 位相全体の公理の対応まで Kerodon 番号に帰属させない。",
+      "rejection_reason": "",
+      "source_url": "https://kerodon.net/tag/04TZ"
+    },
+    "6.2.2.3": {
+      "candidates": [
+        "10.2.1.18"
+      ],
+      "accepted": [],
+      "rejected": [
+        "10.2.1.18"
+      ],
+      "comparison": "篩そのものの定義は 6.2.2.1 に対応する。ここでの hC への位相の降下の主張とは異なる。",
+      "rejection_reason": "篩そのものの定義は 6.2.2.1 に対応する。ここでの hC への位相の降下の主張とは異なる。",
+      "source_url": ""
+    },
+    "6.2.1.3": {
+      "candidates": [
+        "4.7.4.9",
+        "4.7.5.20"
+      ],
+      "accepted": [],
+      "rejected": [
+        "4.7.4.9",
+        "4.7.5.20"
+      ],
+      "comparison": "同じ宣言は使うが、一般の Elements・全関手圏・随伴合成などの証明部品、次数の評価だけ、または部分対象の定義だけで、HTT 当該項目の主張とは異なるため除外。",
+      "rejection_reason": "同じ宣言は使うが、一般の Elements・全関手圏・随伴合成などの証明部品、次数の評価だけ、または部分対象の定義だけで、HTT 当該項目の主張とは異なるため除外。",
+      "source_url": ""
+    },
+    "6.3.1.2": {
+      "candidates": [
+        "6.2.1.19"
+      ],
+      "accepted": [
+        "6.2.1.19"
+      ],
+      "rejected": [],
+      "comparison": "同じ一方の関手から他方の随伴が関手圏内の同型で定まる部分。可縮な全選択空間の主張までを帰属させない。",
+      "rejection_reason": "",
+      "source_url": "https://kerodon.net/tag/02EJ"
+    },
+    "6.3.1.4": {
+      "candidates": [
+        "6.2.1.8"
+      ],
+      "accepted": [],
+      "rejected": [
+        "6.2.1.8"
+      ],
+      "comparison": "候補は一般の随伴の合成だけで、幾何学的射の有限極限保存まで述べない。",
+      "rejection_reason": "候補は一般の随伴の合成だけで、幾何学的射の有限極限保存まで述べない。",
+      "source_url": ""
+    }
+  }
+}

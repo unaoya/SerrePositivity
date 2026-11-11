@@ -1,0 +1,1028 @@
+{
+  "6.5.4.1": {
+    "page": 681,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          "SerrePositivity"
+        ],
+        "file_count": 2746,
+        "line_count": 21671
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 127,
+        "line_count": 1651
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/CoherentSheaves.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma isSheaf_coherent (P : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (coherentTopology C) P ↔ (∀ (B : C) (α : Type) [Finite α] (X : α → C) (π : (a : α) → (X a ⟶ B)), EffectiveEpiFamily X π → (Presieve.ofArrows X π).IsSheafFor P)"
+          },
+          {
+            "line": 48,
+            "head": "theorem isSheaf_yoneda_obj (W : C) : Presieve.IsSheaf (coherentTopology C) (yoneda.obj W)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          },
+          {
+            "line": 46,
+            "head": "lemma isWeakHomotopyEquivalence_iff_isQCatEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] (f : A ⟶ B) : IsWeakHomotopyEquivalence f ↔ IsQCatEquivalence f := ⟨fun h ↦ h.isSimplicialHomotopyEquivalence.isQCatEquivalence, IsQCatEquivalence.isWeakHomotopyEquivalence⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Sheaf の記法は存在するが、原典の Shv(X) は空間値層である。native Shv と hypercompletion の比較、locale に対する随伴の普遍性や proper base change の高次 functor がなく、通常集合値 Sheaf を一致として扱わない。"
+  },
+  "6.5.4.2": {
+    "page": 682,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          "SerrePositivity"
+        ],
+        "file_count": 2746,
+        "line_count": 21671
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 127,
+        "line_count": 1651
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/CoherentSheaves.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma isSheaf_coherent (P : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (coherentTopology C) P ↔ (∀ (B : C) (α : Type) [Finite α] (X : α → C) (π : (a : α) → (X a ⟶ B)), EffectiveEpiFamily X π → (Presieve.ofArrows X π).IsSheafFor P)"
+          },
+          {
+            "line": 48,
+            "head": "theorem isSheaf_yoneda_obj (W : C) : Presieve.IsSheaf (coherentTopology C) (yoneda.obj W)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          },
+          {
+            "line": 46,
+            "head": "lemma isWeakHomotopyEquivalence_iff_isQCatEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] (f : A ⟶ B) : IsWeakHomotopyEquivalence f ↔ IsQCatEquivalence f := ⟨fun h ↦ h.isSimplicialHomotopyEquivalence.isQCatEquivalence, IsQCatEquivalence.isWeakHomotopyEquivalence⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "Hilbert cube の通常の位相と compactness はあっても、指定した二 section と高次 homotopy を順次加える空間値層 F の構成・その hypercompletion の近傍での section の非存在はない。ordinary sheaf stalk の結果だけは proper base change のこの反例を与えない。"
+  },
+  "6.5.4.3": {
+    "page": 682,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          "SerrePositivity"
+        ],
+        "file_count": 2746,
+        "line_count": 21671
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 127,
+        "line_count": 1651
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/CoherentSheaves.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma isSheaf_coherent (P : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (coherentTopology C) P ↔ (∀ (B : C) (α : Type) [Finite α] (X : α → C) (π : (a : α) → (X a ⟶ B)), EffectiveEpiFamily X π → (Presieve.ofArrows X π).IsSheafFor P)"
+          },
+          {
+            "line": 48,
+            "head": "theorem isSheaf_yoneda_obj (W : C) : Presieve.IsSheaf (coherentTopology C) (yoneda.obj W)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          },
+          {
+            "line": 46,
+            "head": "lemma isWeakHomotopyEquivalence_iff_isQCatEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] (f : A ⟶ B) : IsWeakHomotopyEquivalence f ↔ IsQCatEquivalence f := ⟨fun h ↦ h.isSimplicialHomotopyEquivalence.isQCatEquivalence, IsQCatEquivalence.isWeakHomotopyEquivalence⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "native dg/derived category は実在するが、Hilbert cube 上の非有界 abelian sheaf complex に対する Spaltenstein 的な proper base change の失敗を構成しない。一般の derived localization と tensor 比較の型はこの特定の反例の結論ではない。"
+  },
+  "6.5.4.4": {
+    "page": 683,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          "SerrePositivity"
+        ],
+        "file_count": 2746,
+        "line_count": 21671
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 127,
+        "line_count": 1651
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/CoherentSheaves.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma isSheaf_coherent (P : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (coherentTopology C) P ↔ (∀ (B : C) (α : Type) [Finite α] (X : α → C) (π : (a : α) → (X a ⟶ B)), EffectiveEpiFamily X π → (Presieve.ofArrows X π).IsSheafFor P)"
+          },
+          {
+            "line": 48,
+            "head": "theorem isSheaf_yoneda_obj (W : C) : Presieve.IsSheaf (coherentTopology C) (yoneda.obj W)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          },
+          {
+            "line": 46,
+            "head": "lemma isWeakHomotopyEquivalence_iff_isQCatEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] (f : A ⟶ B) : IsWeakHomotopyEquivalence f ↔ IsQCatEquivalence f := ⟨fun h ↦ h.isSimplicialHomotopyEquivalence.isQCatEquivalence, IsQCatEquivalence.isWeakHomotopyEquivalence⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary coherent site の Type-valued sheaf と native compact-generation predicate はあるが、coherent topological X の空間値 Shv(X) を同じ filtered compact closure と同定する型はない。native presheaf の presentability だけでは sheafification 後の compactness を保証しない。"
+  },
+  "6.5.4.5": {
+    "page": 684,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          "SerrePositivity"
+        ],
+        "file_count": 2746,
+        "line_count": 21671
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 127,
+        "line_count": 1651
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/CoherentSheaves.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma isSheaf_coherent (P : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (coherentTopology C) P ↔ (∀ (B : C) (α : Type) [Finite α] (X : α → C) (π : (a : α) → (X a ⟶ B)), EffectiveEpiFamily X π → (Presieve.ofArrows X π).IsSheafFor P)"
+          },
+          {
+            "line": 48,
+            "head": "theorem isSheaf_yoneda_obj (W : C) : Presieve.IsSheaf (coherentTopology C) (yoneda.obj W)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          },
+          {
+            "line": 46,
+            "head": "lemma isWeakHomotopyEquivalence_iff_isQCatEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] (f : A ⟶ B) : IsWeakHomotopyEquivalence f ↔ IsQCatEquivalence f := ⟨fun h ↦ h.isSimplicialHomotopyEquivalence.isQCatEquivalence, IsQCatEquivalence.isWeakHomotopyEquivalence⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "通常の三点空間の可算積は定義できるが、指定した sheaves Fn を高次 homotopy で作り Γ の filtered-colimit 保存の失敗や初対象以外の compact object の非存在を示す型はない。compact topological space と compact object の取り違えを避ける。"
+  },
+  "6.5.4.6": {
+    "page": 684,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          "SerrePositivity"
+        ],
+        "file_count": 2746,
+        "line_count": 21671
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 127,
+        "line_count": 1651
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/CoherentSheaves.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma isSheaf_coherent (P : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (coherentTopology C) P ↔ (∀ (B : C) (α : Type) [Finite α] (X : α → C) (π : (a : α) → (X a ⟶ B)), EffectiveEpiFamily X π → (Presieve.ofArrows X π).IsSheafFor P)"
+          },
+          {
+            "line": 48,
+            "head": "theorem isSheaf_yoneda_obj (W : C) : Presieve.IsSheaf (coherentTopology C) (yoneda.obj W)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          },
+          {
+            "line": 46,
+            "head": "lemma isWeakHomotopyEquivalence_iff_isQCatEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] (f : A ⟶ B) : IsWeakHomotopyEquivalence f ↔ IsQCatEquivalence f := ⟨fun h ↦ h.isSimplicialHomotopyEquivalence.isQCatEquivalence, IsQCatEquivalence.isWeakHomotopyEquivalence⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Nisnevich/étale site はあっても、空間値層圏の compact generation の成功・失敗を比較する native 宣言はない。通常の coherent site 上の集合値層の貼合はこの high-dimensional compactness の主張ではない。"
+  },
+  "6.5.4.7": {
+    "page": 685,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          "SerrePositivity"
+        ],
+        "file_count": 2746,
+        "line_count": 21671
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 127,
+        "line_count": 1651
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/CoherentSheaves.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma isSheaf_coherent (P : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (coherentTopology C) P ↔ (∀ (B : C) (α : Type) [Finite α] (X : α → C) (π : (a : α) → (X a ⟶ B)), EffectiveEpiFamily X π → (Presieve.ofArrows X π).IsSheafFor P)"
+          },
+          {
+            "line": 48,
+            "head": "theorem isSheaf_yoneda_obj (W : C) : Presieve.IsSheaf (coherentTopology C) (yoneda.obj W)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          },
+          {
+            "line": 46,
+            "head": "lemma isWeakHomotopyEquivalence_iff_isQCatEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] (f : A ⟶ B) : IsWeakHomotopyEquivalence f ↔ IsQCatEquivalence f := ⟨fun h ↦ h.isSimplicialHomotopyEquivalence.isQCatEquivalence, IsQCatEquivalence.isWeakHomotopyEquivalence⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary site の point と stalk による iso 検出はあるが、native geometric morphism S→X の conservative family と hypercompletion を接続しない。Kan Whitehead と enough ordinary points は別々に存在しても、coherent X の非超完備性という反例にはならない。"
+  },
+  "6.5.4.8": {
+    "page": 686,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          "SerrePositivity"
+        ],
+        "file_count": 2746,
+        "line_count": 21671
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 127,
+        "line_count": 1651
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/CoherentSheaves.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma isSheaf_coherent (P : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (coherentTopology C) P ↔ (∀ (B : C) (α : Type) [Finite α] (X : α → C) (π : (a : α) → (X a ⟶ B)), EffectiveEpiFamily X π → (Presieve.ofArrows X π).IsSheafFor P)"
+          },
+          {
+            "line": 48,
+            "head": "theorem isSheaf_yoneda_obj (W : C) : Presieve.IsSheaf (coherentTopology C) (yoneda.obj W)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          },
+          {
+            "line": 46,
+            "head": "lemma isWeakHomotopyEquivalence_iff_isQCatEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] (f : A ⟶ B) : IsWeakHomotopyEquivalence f ↔ IsQCatEquivalence f := ⟨fun h ↦ h.isSimplicialHomotopyEquivalence.isQCatEquivalence, IsQCatEquivalence.isWeakHomotopyEquivalence⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "native spectra/dg modules の層に近い構成はあっても、Hilbert cube の全 hypercover に対する HBM の消滅と非零な HBM(X) を同じ functor で示す型はない。一般の cohomology の exact sequence はこの空間・この hypercover の反例を与えない。"
+  },
+  "6.5.4.9": {
+    "page": 687,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          "SerrePositivity"
+        ],
+        "file_count": 2746,
+        "line_count": 21671
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|BorelMoore|HBM|Nisnevich|properBaseChange|stalk|CompactlyGenerated|Coherent",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 127,
+        "line_count": 1651
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/CoherentSheaves.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma isSheaf_coherent (P : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (coherentTopology C) P ↔ (∀ (B : C) (α : Type) [Finite α] (X : α → C) (π : (a : α) → (X a ⟶ B)), EffectiveEpiFamily X π → (Presieve.ofArrows X π).IsSheafFor P)"
+          },
+          {
+            "line": 48,
+            "head": "theorem isSheaf_yoneda_obj (W : C) : Presieve.IsSheaf (coherentTopology C) (yoneda.obj W)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          },
+          {
+            "line": 46,
+            "head": "lemma isWeakHomotopyEquivalence_iff_isQCatEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] (f : A ⟶ B) : IsWeakHomotopyEquivalence f ↔ IsQCatEquivalence f := ⟨fun h ↦ h.isSimplicialHomotopyEquivalence.isQCatEquivalence, IsQCatEquivalence.isWeakHomotopyEquivalence⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary stalk や proper な位相写像はあっても、hypercomplete X,Y で (p*p*F)y が fiber の global sections と比較できないという高次 proper-base-change の問題はない。全体の weak equivalence の判定だけはセル状写像の stalkwise 単位との比較ではない。"
+  }
+}
