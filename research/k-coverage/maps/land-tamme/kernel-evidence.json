@@ -1,0 +1,308 @@
+{
+  "revision": "86fb5ab0c",
+  "toolchain": "Lean 4.35.0-rc4",
+  "source": "同じソースの既存 olean を読んで #check / #print axioms",
+  "declarations": {
+    "SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedPerfectSequence": {
+      "file": "SerrePositivity/KST/SConstruction/DGOdotMilnorCompletedLandTamme.lean",
+      "line": 27,
+      "kind": "def",
+      "type": "SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedPerfectSequence : (R : Type u_1) →\n  [inst : CommRing R] →\n    (d : SerrePositivity.KST.SConstruction.DGOdotInput R) →\n      SerrePositivity.InfinityCategories.DGGluingMilnorSquare R d →\n        SerrePositivity.KST.SConstruction.PerfectVerdierSequence",
+      "axioms": "'SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedPerfectSequence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.Descent.Nilinvariant": {
+      "file": "SerrePositivity/KST/Descent/Axioms.lean",
+      "line": 134,
+      "kind": "class",
+      "type": "SerrePositivity.KST.Descent.Nilinvariant : (S : AlgebraicGeometry.Scheme) →\n  {Coefficient : Type u_2} →\n    SerrePositivity.KST.Descent.GradedPresheaf (SerrePositivity.KST.Descent.FiniteTypeSchemes S) Coefficient → Prop",
+      "axioms": "'SerrePositivity.KST.Descent.Nilinvariant' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.KST.Descent.NaturalBlowupSequences": {
+      "file": "SerrePositivity/KST/Descent/BlowupSequenceData.lean",
+      "line": 39,
+      "kind": "structure",
+      "type": "@SerrePositivity.KST.Descent.NaturalBlowupSequences : {S : AlgebraicGeometry.Scheme} →\n  {Coefficient : Type u_2} →\n    SerrePositivity.KST.Descent.GradedPresheaf (SerrePositivity.KST.Descent.FiniteTypeSchemes S) Coefficient →\n      Type (max (max u_3 (u_1 + 1)) u_2)",
+      "axioms": "'SerrePositivity.KST.Descent.NaturalBlowupSequences' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.KST.SConstruction.perfectStableInfinity": {
+      "file": "SerrePositivity/KST/SConstruction/PerfectStableInfinity.lean",
+      "line": 27,
+      "kind": "def",
+      "type": "SerrePositivity.KST.SConstruction.perfectStableInfinity : SSet",
+      "axioms": "'SerrePositivity.KST.SConstruction.perfectStableInfinity' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.KST.SConstruction.PerfectVerdierSequence": {
+      "file": "SerrePositivity/KST/SConstruction/PerfectVerdierSequence.lean",
+      "line": 21,
+      "kind": "structure",
+      "type": "SerrePositivity.KST.SConstruction.PerfectVerdierSequence : Type (u_1 + 1)",
+      "axioms": "'SerrePositivity.KST.SConstruction.PerfectVerdierSequence' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant": {
+      "file": "SerrePositivity/KST/SConstruction/PerfectLocalizingInvariant.lean",
+      "line": 34,
+      "kind": "structure",
+      "type": "SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant : (SerrePositivity.KST.SConstruction.perfectStableInfinity ⟶\n    SerrePositivity.KST.Spectra.Sp) →\n  Prop",
+      "axioms": "'SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.endObject": {
+      "file": "SerrePositivity/KST/SConstruction/DGLaxQuotientEnd.lean",
+      "line": 67,
+      "kind": "abbrev",
+      "type": "@SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.endObject : {R : Type u_1} →\n  [inst : CommRing R] →\n    {C : Type u_2} →\n      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory R C] →\n        [inst_2 : Small.{u_1, u_2} C] →\n          {D : Type u_3} →\n            [inst_3 : SerrePositivity.DifferentialGraded.DGCategory R D] →\n              [Small.{u_1, u_3} D] →\n                {M : SerrePositivity.DifferentialGraded.Bimodule R C D} →\n                  {P : Type u_4} →\n                    [inst_5 : SerrePositivity.DifferentialGraded.DGCategory R P] →\n                      SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput R C D M P → Type",
+      "axioms": "'SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.endObject' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.SConstruction.dgOdotAlgebra": {
+      "file": "SerrePositivity/KST/SConstruction/DGOdotAlgebra.lean",
+      "line": 21,
+      "kind": "def",
+      "type": "SerrePositivity.KST.SConstruction.dgOdotAlgebra : (R : Type u_1) →\n  [inst : CommRing R] →\n    SerrePositivity.KST.SConstruction.DGOdotInput R → CategoryTheory.Mon (SerrePositivity.DifferentialGraded.Complex R)",
+      "axioms": "'SerrePositivity.KST.SConstruction.dgOdotAlgebra' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.KST.SConstruction.dgOdotAlgebraToEnd_quasiEquivalence": {
+      "file": "SerrePositivity/KST/SConstruction/DGOdotAlgebraRealization.lean",
+      "line": 40,
+      "kind": "lemma",
+      "type": "SerrePositivity.KST.SConstruction.dgOdotAlgebraToEnd_quasiEquivalence : ∀ (R : Type u_1) [inst : CommRing R]\n  (d : SerrePositivity.KST.SConstruction.DGOdotInput R),\n  SerrePositivity.DifferentialGraded.QuasiEquivalence (SerrePositivity.KST.SConstruction.dgOdotAlgebraToEnd R d)",
+      "axioms": "'SerrePositivity.KST.SConstruction.dgOdotAlgebraToEnd_quasiEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedLandTamme_isPullback": {
+      "file": "SerrePositivity/KST/SConstruction/DGOdotMilnorCompletedLandTamme.lean",
+      "line": 67,
+      "kind": "theorem",
+      "type": "SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedLandTamme_isPullback : ∀ (R : Type u_1) [inst : CommRing R]\n  (d : SerrePositivity.KST.SConstruction.DGOdotInput R)\n  (h : SerrePositivity.InfinityCategories.DGGluingMilnorSquare R d)\n  {F : SerrePositivity.KST.SConstruction.perfectStableInfinity ⟶ SerrePositivity.KST.Spectra.Sp}\n  (hF : SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant F),\n  SerrePositivity.InfinityCategories.IsPullbackSquare\n    (SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedLandTammeSquare R d h hF)",
+      "axioms": "'SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedLandTamme_isPullback' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_isMorita": {
+      "file": "SerrePositivity/KST/SConstruction/DGOdotPerfectComparison.lean",
+      "line": 45,
+      "kind": "lemma",
+      "type": "SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_isMorita : ∀ (R : Type u_1) [inst : CommRing R]\n  (d : SerrePositivity.KST.SConstruction.DGOdotInput R),\n  SerrePositivity.KST.SConstruction.DGOdotGeneratorConditions R d →\n    (SerrePositivity.DifferentialGraded.quasiEquivalencePerfectExtension R\n        (SerrePositivity.InfinityCategories.dgAlgebraCategory R (SerrePositivity.KST.SConstruction.dgOdotAlgebra R d))\n        (SerrePositivity.KST.SConstruction.dgOdotQuotientInput R d).quotientObject\n        (SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient R d)).IsEquivalence",
+      "axioms": "'SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_isMorita' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLaxEquivalence": {
+      "file": "SerrePositivity/KST/SConstruction/DGOdotMilnorLaxModel.lean",
+      "line": 89,
+      "kind": "def",
+      "type": "SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLaxEquivalence : (R : Type u_1) →\n  [inst : CommRing R] →\n    (d : SerrePositivity.KST.SConstruction.DGOdotInput R) →\n      SerrePositivity.InfinityCategories.QCatEquivalence\n        (SerrePositivity.InfinityCategories.dgGluingMilnorNativeMiddle R d).obj\n        (SerrePositivity.KST.SConstruction.dgOdotMilnorLaxCategory R d).obj",
+      "axioms": "'SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLaxEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.dgGluingCanonicalLaxPullback_isStable": {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/CanonicalStableStructure.lean",
+      "line": 22,
+      "kind": "lemma",
+      "type": "SerrePositivity.InfinityCategories.dgGluingCanonicalLaxPullback_isStable : ∀ (R : Type u_1) [inst : CommRing R]\n  (C : Type u_2) [inst_1 : SerrePositivity.DifferentialGraded.DGCategory R C] [inst_2 : Small.{u_1, u_2} C]\n  (D : Type u_3) [inst_3 : SerrePositivity.DifferentialGraded.DGCategory R D] [inst_4 : Small.{u_1, u_3} D]\n  (M : SerrePositivity.DifferentialGraded.Bimodule R C D),\n  SerrePositivity.InfinityCategories.IsDGPretriangulated R C →\n    SerrePositivity.InfinityCategories.IsDGPretriangulated R D →\n      SerrePositivity.InfinityCategories.IsStable\n        (SerrePositivity.InfinityCategories.F2.laxPullback\n          (SerrePositivity.InfinityCategories.dgGluingUniverseDerivedYoneda R C)\n          (SerrePositivity.InfinityCategories.dgGluingUniverseDerivedCoefficient R C D M))",
+      "axioms": "'SerrePositivity.InfinityCategories.dgGluingCanonicalLaxPullback_isStable' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.dgGluingNativeSemiorthogonal_isVerdier": {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeSemiorthogonal.lean",
+      "line": 144,
+      "kind": "lemma",
+      "type": "SerrePositivity.InfinityCategories.dgGluingNativeSemiorthogonal_isVerdier : ∀ (R : Type u_1) [inst : CommRing R]\n  (C : Type u_2) [inst_1 : SerrePositivity.DifferentialGraded.DGCategory R C] [inst_2 : Small.{u_1, u_2} C]\n  (D : Type u_3) [inst_3 : SerrePositivity.DifferentialGraded.DGCategory R D] [inst_4 : Small.{u_1, u_3} D]\n  (M : SerrePositivity.DifferentialGraded.Bimodule R C D)\n  (hC : SerrePositivity.InfinityCategories.IsDGPretriangulated R C)\n  (hD : SerrePositivity.InfinityCategories.IsDGPretriangulated R D)\n  (hY :\n    SerrePositivity.InfinityCategories.IsExactFunctor\n      (SerrePositivity.InfinityCategories.dgGluingUniverseDerivedYoneda R C))\n  (hM :\n    SerrePositivity.InfinityCategories.IsExactFunctor\n      (SerrePositivity.InfinityCategories.dgGluingUniverseDerivedCoefficient R C D M)),\n  SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence\n    (SerrePositivity.InfinityCategories.dgGluingNativeDInclusion R C D M hC hD hY hM)\n    (SerrePositivity.InfinityCategories.dgGluingStableLeftProjection R C D M hC hD)",
+      "axioms": "'SerrePositivity.InfinityCategories.dgGluingNativeSemiorthogonal_isVerdier' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.SConstruction.dgOdotMilnorLaxInclusion_fullyFaithful": {
+      "file": "SerrePositivity/KST/SConstruction/DGOdotMilnorLaxVerdier.lean",
+      "line": 62,
+      "kind": "lemma",
+      "type": "SerrePositivity.KST.SConstruction.dgOdotMilnorLaxInclusion_fullyFaithful : ∀ (R : Type u_1) [inst : CommRing R]\n  (d : SerrePositivity.KST.SConstruction.DGOdotInput R),\n  SerrePositivity.InfinityCategories.DGGluingMilnorSquare R d →\n    SerrePositivity.InfinityCategories.IsFullyFaithful\n      (SerrePositivity.KST.SConstruction.dgOdotMilnorLaxInclusion R d).hom",
+      "axioms": "'SerrePositivity.KST.SConstruction.dgOdotMilnorLaxInclusion_fullyFaithful' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.SConstruction.dgOdotGeneratorConditions": {
+      "file": "SerrePositivity/KST/SConstruction/DGOdotGenerators.lean",
+      "line": 23,
+      "kind": "lemma",
+      "type": "SerrePositivity.KST.SConstruction.dgOdotGeneratorConditions : ∀ (R : Type u_1) [inst : CommRing R]\n  (d : SerrePositivity.KST.SConstruction.DGOdotInput R), SerrePositivity.KST.SConstruction.DGOdotGeneratorConditions R d",
+      "axioms": "'SerrePositivity.KST.SConstruction.dgOdotGeneratorConditions' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.dgAlgebraPerfectExtensionInfinity_isQCatEquivalence_of_morita": {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGAlgebraPerfectMoritaInfinity.lean",
+      "line": 27,
+      "kind": "theorem",
+      "type": "SerrePositivity.InfinityCategories.dgAlgebraPerfectExtensionInfinity_isQCatEquivalence_of_morita : ∀ (R : Type u_1)\n  [inst : CommRing R] {B C : CategoryTheory.Mon (SerrePositivity.DifferentialGraded.Complex R)} (f : B ⟶ C)\n  [(SerrePositivity.DifferentialGraded.dgDerivedExtension R (SerrePositivity.InfinityCategories.dgAlgebraCategory R B)\n        (SerrePositivity.InfinityCategories.dgAlgebraCategory R C)\n        (SerrePositivity.InfinityCategories.dgAlgebraMap R f)).IsEquivalence],\n  SerrePositivity.InfinityCategories.IsQCatEquivalence\n    (SerrePositivity.InfinityCategories.dgAlgebraPerfectExtensionInfinity R f)",
+      "axioms": "'SerrePositivity.InfinityCategories.dgAlgebraPerfectExtensionInfinity_isQCatEquivalence_of_morita' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.SConstruction.dgOdotMilnorLax_isVerdier": {
+      "file": "SerrePositivity/KST/SConstruction/DGOdotMilnorLaxVerdier.lean",
+      "line": 128,
+      "kind": "theorem",
+      "type": "SerrePositivity.KST.SConstruction.dgOdotMilnorLax_isVerdier : ∀ (R : Type u_1) [inst : CommRing R]\n  (d : SerrePositivity.KST.SConstruction.DGOdotInput R),\n  SerrePositivity.InfinityCategories.DGGluingMilnorSquare R d →\n    SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence\n      (SerrePositivity.KST.SConstruction.dgOdotMilnorLaxInclusion R d)\n      (SerrePositivity.KST.SConstruction.dgOdotMilnorLaxProjection R d)",
+      "axioms": "'SerrePositivity.KST.SConstruction.dgOdotMilnorLax_isVerdier' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedPerfect_isFiber": {
+      "file": "SerrePositivity/KST/SConstruction/DGOdotMilnorCompletedLandTamme.lean",
+      "line": 53,
+      "kind": "theorem",
+      "type": "SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedPerfect_isFiber : ∀ (R : Type u_1) [inst : CommRing R]\n  (d : SerrePositivity.KST.SConstruction.DGOdotInput R)\n  (h : SerrePositivity.InfinityCategories.DGGluingMilnorSquare R d)\n  {F : SerrePositivity.KST.SConstruction.perfectStableInfinity ⟶ SerrePositivity.KST.Spectra.Sp}\n  (hF : SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant F),\n  SerrePositivity.InfinityCategories.IsFiberSequence\n    (hF.fiberTriangle (SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedPerfectDiagram R d h))",
+      "axioms": "'SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedPerfect_isFiber' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.laxDifference_isLocalization": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean",
+      "line": 41,
+      "kind": "lemma",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.laxDifference_isLocalization : ∀\n  {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) (v : E.obj ⟶ D.obj)\n  (a : SerrePositivity.InfinityCategories.QCatAdjunction q.hom v),\n  SerrePositivity.InfinityCategories.IsFullyFaithful v →\n    SerrePositivity.InfinityCategories.IsLocalization (SerrePositivity.KST.LocalizingInvariants.laxDifference p q)\n      (SerrePositivity.InfinityCategories.invertedEdges (SerrePositivity.KST.LocalizingInvariants.laxDifference p q))",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.laxDifference_isLocalization' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.SpectrumHo.IsPiConnective": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/SpectrumPiConnectivity.lean",
+      "line": 19,
+      "kind": "def",
+      "type": "SerrePositivity.KST.LocalizingInvariants.SpectrumHo.IsPiConnective : ↑(SSet.hoFunctor.obj\n      SerrePositivity.KST.Spectra.Sp) →\n  ℤ → Prop",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.SpectrumHo.IsPiConnective' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.SpectrumHo.IsPiConnected": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/SpectrumPiConnectivity.lean",
+      "line": 22,
+      "kind": "def",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.SpectrumHo.IsPiConnected : {X Y :\n    ↑(SSet.hoFunctor.obj SerrePositivity.KST.Spectra.Sp)} →\n  (X ⟶ Y) → ℤ → Prop",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.SpectrumHo.IsPiConnected' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.ProFiberSequence.piConnective_iff_projection_connected": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/ProFiberPiConnectivity.lean",
+      "line": 49,
+      "kind": "lemma",
+      "type": "SerrePositivity.KST.LocalizingInvariants.ProFiberSequence.piConnective_iff_projection_connected : ∀\n  (D : SerrePositivity.KST.LocalizingInvariants.ProFiberSequence) (n : ℤ),\n  SerrePositivity.KST.LocalizingInvariants.ProSpectrum.IsPiProConnective (D.vertex 0 0) n ↔\n    SerrePositivity.KST.LocalizingInvariants.ProSpectrum.IsPiProConnected D.projection n",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.ProFiberSequence.piConnective_iff_projection_connected' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraInvariantConnectivity.lean",
+      "line": 22,
+      "kind": "def",
+      "type": "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective : (R : Type u_1) →\n  [CommRing R] →\n    (SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp) → ℤ → Prop",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.IsKConnectiveOn": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/InvariantConnectivity.lean",
+      "line": 25,
+      "kind": "def",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.IsKConnectiveOn : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_3, u_2} C] →\n    (SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp) →\n      CategoryTheory.Functor C ↑(SSet.hoFunctor.obj SerrePositivity.KST.Spectra.Sp) →\n        CategoryTheory.Functor C SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory → ℤ → Prop",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.IsKConnectiveOn' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.ProSpectrum.IsPiProConnected": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/ProSpectrumPiConnectivity.lean",
+      "line": 19,
+      "kind": "def",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.ProSpectrum.IsPiProConnected : {X Y :\n    SerrePositivity.KST.LocalizingInvariants.ProSpectrum.Tower} →\n  SerrePositivity.KST.LocalizingInvariants.ProSpectrum.LevelHom X Y → ℤ → Prop",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.ProSpectrum.IsPiProConnected' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.ProSpectrum.IsPiProEquivalence": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/ProSpectrumValues.lean",
+      "line": 36,
+      "kind": "def",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.ProSpectrum.IsPiProEquivalence : {X Y :\n    SerrePositivity.KST.LocalizingInvariants.ProSpectrum.Tower} →\n  SerrePositivity.KST.LocalizingInvariants.ProSpectrum.LevelHom X Y → Prop",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.ProSpectrum.IsPiProEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovFiniteMap_isProIso_of_connective": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovFiniteMapValuePro.lean",
+      "line": 33,
+      "kind": "lemma",
+      "type": "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovFiniteMap_isProIso_of_connective : ∀ (R : Type u_1)\n  [inst : CommRing R] (cutoff : ℤ),\n  0 ≤ cutoff →\n    ∀\n      {A B :\n        SerrePositivity.KST.ProExcision.Tower (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.NonpositiveAlgebra R)}\n      (f : SerrePositivity.KST.ProExcision.LevelHom A B) {D : Type u_2} [inst_1 : CategoryTheory.Category.{u_3, u_2} D]\n      (L : CategoryTheory.Functor (CategoryTheory.Mon (SerrePositivity.DifferentialGraded.Complex R)) D),\n      (∀ (j : ℤ),\n          0 ≤ j →\n            j ≤ cutoff →\n              SerrePositivity.KST.ProExcision.IsProIso\n                ((f.map (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.nonpositiveInclusion R)).map\n                  (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.groups R j))) →\n        SerrePositivity.KST.LocalizingInvariants.DGAlgebra.InvertsConnectiveQuasiIsos R L →\n          SerrePositivity.KST.ProExcision.IsProIso\n            ((f.map (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovFunctor R cutoff)).map L)",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovFiniteMap_isProIso_of_connective' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.ProExcision.tensor_proIso": {
+      "file": "SerrePositivity/KST/ProExcision/FlatBaseChange.lean",
+      "line": 62,
+      "kind": "theorem",
+      "type": "@SerrePositivity.KST.ProExcision.tensor_proIso : ∀ {R : Type u_1} [inst : CommRing R]\n  {X Y : SerrePositivity.KST.ProExcision.Tower (ModuleCat R)} {f : SerrePositivity.KST.ProExcision.LevelHom X Y},\n  SerrePositivity.KST.ProExcision.IsProIso f →\n    ∀ (H : ModuleCat R),\n      SerrePositivity.KST.ProExcision.IsProIso (f.map (CategoryTheory.MonoidalCategory.tensorRight H))",
+      "axioms": "'SerrePositivity.KST.ProExcision.tensor_proIso' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.connectedLevelRepresentation": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraConnectedLevelRepresentation.lean",
+      "line": 31,
+      "kind": "def",
+      "type": "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.connectedLevelRepresentation : (R : Type u_1) →\n  [inst : CommRing R] →\n    {A B :\n        SerrePositivity.KST.ProExcision.Tower\n          (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.NonpositiveAlgebra R)} →\n      (f : SerrePositivity.KST.ProExcision.LevelHom A B) →\n        (n : ℤ) →\n          1 ≤ n →\n            SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsPiProConnected R\n                (f.map (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.nonpositiveInclusion R)) n →\n              SerrePositivity.KST.LocalizingInvariants.DGAlgebra.ConnectedLevelRepresentation R f n",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.DGAlgebra.connectedLevelRepresentation' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovImageFactorisationSource_connected": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovImageFactorisationConnectivity.lean",
+      "line": 44,
+      "kind": "lemma",
+      "type": "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovImageFactorisationSource_connected : ∀ (R : Type u_1)\n  [inst : CommRing R] {B C : CategoryTheory.Mon (SerrePositivity.DifferentialGraded.Complex R)}\n  [inst_1 : CochainComplex.IsStrictlyLE B.X 0] [inst_2 : CochainComplex.IsStrictlyLE C.X 0] (f : B ⟶ C) (n : ℤ)\n  (hn : 0 ≤ n),\n  SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsConnected R\n    (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovImageFactorisationSource R f n hn) n",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovImageFactorisationSource_connected' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovImageFactorisationComparison_quasiIso": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovImageFactorisation.lean",
+      "line": 32,
+      "kind": "lemma",
+      "type": "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovImageFactorisationComparison_quasiIso : ∀ (R : Type u_1)\n  [inst : CommRing R] {B C : CategoryTheory.Mon (SerrePositivity.DifferentialGraded.Complex R)}\n  [inst_1 : CochainComplex.IsStrictlyLE B.X 0] [inst_2 : CochainComplex.IsStrictlyLE C.X 0] (f : B ⟶ C) (n : ℤ)\n  (hn : 0 ≤ n),\n  QuasiIso (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovImageFactorisationComparison R f n hn).hom",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovImageFactorisationComparison_quasiIso' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProConnected": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraInvariantProConnectivity.lean",
+      "line": 28,
+      "kind": "lemma",
+      "type": "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProConnected : ∀ (R : Type u_1)\n  [inst : CommRing R]\n  {A B :\n    SerrePositivity.KST.ProExcision.Tower (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.NonpositiveAlgebra R)}\n  (f : SerrePositivity.KST.ProExcision.LevelHom A B)\n  (Φ : SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp) {k : ℤ},\n  SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective R Φ k →\n    ∀ (n : ℤ),\n      1 ≤ n →\n        SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsPiProConnected R\n            (f.map (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.nonpositiveInclusion R)) n →\n          SerrePositivity.KST.LocalizingInvariants.ProSpectrum.IsPiProConnected\n            (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.invariantLevelMap R Φ\n              (f.map (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.nonpositiveInclusion R)))\n            (n + k)",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProConnected' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProEquivalence_of_piProEquivalence": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraInvariantPiProEquivalence.lean",
+      "line": 36,
+      "kind": "lemma",
+      "type": "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProEquivalence_of_piProEquivalence : ∀\n  (R : Type u_1) [inst : CommRing R]\n  {A B :\n    SerrePositivity.KST.ProExcision.Tower (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.NonpositiveAlgebra R)}\n  (f : SerrePositivity.KST.ProExcision.LevelHom A B)\n  (Φ : SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp) {k : ℤ},\n  SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective R Φ k →\n    SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsPiProEquivalence R\n        (f.map (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.nonpositiveInclusion R)) →\n      SerrePositivity.KST.LocalizingInvariants.ProSpectrum.IsPiProEquivalence\n        (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.invariantLevelMap R Φ\n          (f.map (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.nonpositiveInclusion R)))",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProEquivalence_of_piProEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProEquivalence_of_positiveTorModel": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraProTorCriterion.lean",
+      "line": 96,
+      "kind": "lemma",
+      "type": "SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProEquivalence_of_positiveTorModel : ∀\n  (R : Type u_1) [inst : CommRing R]\n  {A B :\n    SerrePositivity.KST.ProExcision.Tower (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.NonpositiveAlgebra R)}\n  (f : SerrePositivity.KST.ProExcision.LevelHom A B)\n  (Φ : SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp) {k : ℤ},\n  SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective R Φ k →\n    (∀ (i : ℕ), CochainComplex.IsGE (B.obj i).obj.X 0) →\n      SerrePositivity.KST.ProExcision.IsProIso\n          ((f.map (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.nonpositiveInclusion R)).map\n            (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.groups R 0)) →\n        ∀ (T : ℕ → SerrePositivity.KST.ProExcision.Tower CommGrpCat)\n          (e :\n            (j : ℕ) →\n              0 < j →\n                SerrePositivity.KST.ProExcision.LevelHom (T j)\n                  ((A.map (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.nonpositiveInclusion R)).map\n                    (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.groups R ↑j))),\n          (∀ (j : ℕ) (hj : 0 < j) (i : ℕ), CategoryTheory.IsIso ((e j hj).app i)) →\n            (∀ (j : ℕ), 0 < j → SerrePositivity.KST.ProExcision.IsProZero (T j)) →\n              SerrePositivity.KST.LocalizingInvariants.ProSpectrum.IsPiProEquivalence\n                (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.invariantLevelMap R Φ\n                  (f.map (SerrePositivity.KST.LocalizingInvariants.DGAlgebra.nonpositiveInclusion R)))",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProEquivalence_of_positiveTorModel' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.ProExcision.koszulTensorHomologyTower_isProZero": {
+      "file": "SerrePositivity/KST/ProExcision/KoszulPro.lean",
+      "line": 106,
+      "kind": "theorem",
+      "type": "@SerrePositivity.KST.ProExcision.koszulTensorHomologyTower_isProZero : ∀ {R : Type u_1} [inst : CommRing R]\n  [IsNoetherianRing R] {e : ℕ} (z : Fin e → R) (M : ModuleCat R) [Module.Finite R ↑M],\n  ∀ q < 0, SerrePositivity.KST.ProExcision.IsProZero (SerrePositivity.KST.ProExcision.koszulTensorHomologyTower z M q)",
+      "axioms": "'SerrePositivity.KST.ProExcision.koszulTensorHomologyTower_isProZero' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.ProExcision.koszul_comparison_isProIso": {
+      "file": "SerrePositivity/KST/ProExcision/KoszulComparison.lean",
+      "line": 38,
+      "kind": "theorem",
+      "type": "@SerrePositivity.KST.ProExcision.koszul_comparison_isProIso : ∀ {R : Type u_1} [inst : CommRing R] [IsNoetherianRing R]\n  {e : ℕ} (z : Fin e → R) (K : CochainComplex (ModuleCat R) ℤ),\n  (∀ (i : ℤ), Module.Finite R ↑(HomologicalComplex.homology K i)) →\n    ∀ (i : ℤ), SerrePositivity.KST.ProExcision.IsProIso (SerrePositivity.KST.ProExcision.koszul_comparison z K i)",
+      "axioms": "'SerrePositivity.KST.ProExcision.koszul_comparison_isProIso' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.KST.Descent.AbstractBlowupSquare": {
+      "file": "SerrePositivity/KST/Descent/BlowupGeometry.lean",
+      "line": 45,
+      "kind": "structure",
+      "type": "SerrePositivity.KST.Descent.AbstractBlowupSquare : AlgebraicGeometry.Scheme → Type (u_1 + 1)",
+      "axioms": "'SerrePositivity.KST.Descent.AbstractBlowupSquare' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.KST.DerivedBlowup.polynomialKoszulDerivedBaseChangeIso": {
+      "file": "SerrePositivity/KST/DerivedBlowup/PolynomialDerivedBaseChange.lean",
+      "line": 52,
+      "kind": "def",
+      "type": "@SerrePositivity.KST.DerivedBlowup.polynomialKoszulDerivedBaseChangeIso : {A B : Type u_1} →\n  [inst : CommRing A] →\n    [inst_1 : CommRing B] →\n      [inst_2 : Algebra A B] →\n        {I : Type} →\n          {n : ℕ} →\n            (x : Fin n → MvPolynomial I A) →\n              [inst_3 : HasDerivedCategory (ModuleCat A)] →\n                [inst_4 : HasDerivedCategory (ModuleCat B)] →\n                  (SerrePositivity.DifferentialGraded.ScalarExtension.complexDerivedExtension (algebraMap A B)).obj\n                      (DerivedCategory.Q.obj\n                        (((ModuleCat.restrictScalars (algebraMap A (MvPolynomial I A))).mapHomologicalComplex\n                              (ComplexShape.up ℤ)).obj\n                          (SerrePositivity.KST.DerivedBlowup.sequenceExteriorCochain x))) ≅\n                    DerivedCategory.Q.obj\n                      (((ModuleCat.restrictScalars (algebraMap B (MvPolynomial I B))).mapHomologicalComplex\n                            (ComplexShape.up ℤ)).obj\n                        (((ModuleCat.extendScalars\n                                  (algebraMap (MvPolynomial I A) (MvPolynomial I B))).mapHomologicalComplex\n                              (ComplexShape.up ℤ)).obj\n                          (SerrePositivity.KST.DerivedBlowup.sequenceExteriorCochain x)))",
+      "axioms": "'SerrePositivity.KST.DerivedBlowup.polynomialKoszulDerivedBaseChangeIso' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.DerivedBlowup.universalClassicalChartEquiv": {
+      "file": "SerrePositivity/KST/DerivedBlowup/UniversalClassicalChartEquiv.lean",
+      "line": 123,
+      "kind": "def",
+      "type": "@SerrePositivity.KST.DerivedBlowup.universalClassicalChartEquiv : {I : Type u_1} →\n  [DecidableEq I] →\n    (i : I) →\n      SerrePositivity.KST.DerivedBlowup.UniversalClassicalChart i ≃+* SerrePositivity.KST.DerivedBlowup.UniversalChart i",
+      "axioms": "'SerrePositivity.KST.DerivedBlowup.universalClassicalChartEquiv' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.Descent.NaturalBlowupSequences.closedCover_piDescent": {
+      "file": "SerrePositivity/KST/Descent/ClosedCoverDescent.lean",
+      "line": 71,
+      "kind": "theorem",
+      "type": "@SerrePositivity.KST.Descent.NaturalBlowupSequences.closedCover_piDescent : ∀ {S : AlgebraicGeometry.Scheme}\n  {B V Y Z : SerrePositivity.KST.Descent.FiniteTypeSchemes S} (f : V ⟶ B) (i : Y ⟶ B) (j : Z ⟶ B)\n  [inst : AlgebraicGeometry.IsClosedImmersion (CategoryTheory.Over.Hom.left i.hom)]\n  [inst_1 : AlgebraicGeometry.IsClosedImmersion (CategoryTheory.Over.Hom.left j.hom)] {G : Type u_1} [inst_2 : Group G]\n  (action : G →* CategoryTheory.Aut V)\n  (over_base : ∀ (g : G), CategoryTheory.CategoryStruct.comp (action g).asIso.hom f = f) {Coefficient : Type u_2}\n  {L : SerrePositivity.KST.Descent.GradedPresheaf (SerrePositivity.KST.Descent.FiniteTypeSchemes S) Coefficient}\n  (data : SerrePositivity.KST.Descent.NaturalBlowupSequences L) [AlgebraicGeometry.IsReduced B.obj.left]\n  [AlgebraicGeometry.IsReduced V.obj.left] [Finite G],\n  Set.range ⇑(CategoryTheory.Over.Hom.left i.hom) ∪ Set.range ⇑(CategoryTheory.Over.Hom.left j.hom) = Set.univ →\n    L.PiDescent (SerrePositivity.KST.Descent.closedImmersionSquare f i).f₁₃\n        (SerrePositivity.KST.Descent.closedBaseChangeAction f i action over_base) ⋯ →\n      L.PiDescent (SerrePositivity.KST.Descent.closedImmersionSquare f j).f₁₃\n          (SerrePositivity.KST.Descent.closedBaseChangeAction f j action over_base) ⋯ →\n        L.PiDescent (SerrePositivity.KST.Descent.closedCoverPullbackCube f i j).τ₁\n            (SerrePositivity.KST.Descent.closedCoverPullbackSquareAction f i j action over_base).on1 ⋯ →\n          L.PiDescent f action over_base",
+      "axioms": "'SerrePositivity.KST.Descent.NaturalBlowupSequences.closedCover_piDescent' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.AlgebraicGeometry.exists_proper_fppf_blowup_refinement_of_finite": {
+      "file": "SerrePositivity/AlgebraicGeometry/FiniteStrictTransformFlattening.lean",
+      "line": 71,
+      "kind": "theorem",
+      "type": "SerrePositivity.AlgebraicGeometry.exists_proper_fppf_blowup_refinement_of_finite : ∀ (R B : CommRingCat)\n  [IsNoetherianRing ↑R] [inst : Algebra ↑R ↑B] [Module.Finite ↑R ↑B]\n  [AlgebraicGeometry.Surjective (AlgebraicGeometry.Spec.map (CommRingCat.ofHom (algebraMap ↑R ↑B)))],\n  ∀ t ∈ nonZeroDivisors ↑R,\n    AlgebraicGeometry.Flat\n        (AlgebraicGeometry.Spec.map (CommRingCat.ofHom (algebraMap ↑R ↑B)) ∣_ PrimeSpectrum.basicOpen t) →\n      ∃ J,\n        SerrePositivity.AlgebraicGeometry.IsUAdmissibleCenter (PrimeSpectrum.basicOpen t) J ∧\n          AlgebraicGeometry.IsProper (SerrePositivity.AlgebraicGeometry.blowupπ J) ∧\n            AlgebraicGeometry.Surjective (SerrePositivity.AlgebraicGeometry.blowupπ J) ∧\n              CategoryTheory.IsIso (SerrePositivity.AlgebraicGeometry.blowupπ J ∣_ PrimeSpectrum.basicOpen t) ∧\n                ∃ X' g k,\n                  AlgebraicGeometry.IsProper g ∧\n                    AlgebraicGeometry.Flat g ∧\n                      AlgebraicGeometry.Surjective g ∧\n                        AlgebraicGeometry.LocallyOfFinitePresentation g ∧\n                          CategoryTheory.CategoryStruct.comp k\n                              (AlgebraicGeometry.Spec.map (CommRingCat.ofHom (algebraMap ↑R ↑B))) =\n                            CategoryTheory.CategoryStruct.comp g (SerrePositivity.AlgebraicGeometry.blowupπ J)",
+      "axioms": "'SerrePositivity.AlgebraicGeometry.exists_proper_fppf_blowup_refinement_of_finite' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.AlgebraicGeometry.exists_admissible_composition_domination": {
+      "file": "SerrePositivity/AlgebraicGeometry/SchemeCompositionDomination.lean",
+      "line": 29,
+      "kind": "theorem",
+      "type": "@SerrePositivity.AlgebraicGeometry.exists_admissible_composition_domination : ∀ {S : AlgebraicGeometry.Scheme}\n  [AlgebraicGeometry.IsNoetherian S] (I : S.IdealSheafData)\n  (K : (SerrePositivity.AlgebraicGeometry.blowup I).IdealSheafData) (U : S.Opens),\n  SerrePositivity.AlgebraicGeometry.IsUAdmissibleCenter U I →\n    SerrePositivity.AlgebraicGeometry.IsUAdmissibleCenter\n        ((TopologicalSpace.Opens.map (SerrePositivity.AlgebraicGeometry.blowupπ I).base).obj U) K →\n      ∃ M,\n        (∀ (V : ↑S.affineOpens), (M.ideal V).FG) ∧\n          SerrePositivity.AlgebraicGeometry.IsUAdmissibleCenter U M ∧\n            ∃ g,\n              CategoryTheory.CategoryStruct.comp g\n                  (CategoryTheory.CategoryStruct.comp (SerrePositivity.AlgebraicGeometry.blowupπ K)\n                    (SerrePositivity.AlgebraicGeometry.blowupπ I)) =\n                SerrePositivity.AlgebraicGeometry.blowupπ M",
+      "axioms": "'SerrePositivity.AlgebraicGeometry.exists_admissible_composition_domination' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    }
+  }
+}

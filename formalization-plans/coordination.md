@@ -13,7 +13,7 @@
 | Kerodon の確認 | Codex | 対応表の全項目の確認 | `SerrePositivity-kerodon-review-a`（枝 `research/kerodon-review-a2`）・`-b`・`-c` | `research/kerodon-coverage/codex-review.md` | 全 10 章のやり直しと抜き取りは main（11-10）。-a2・-b は閉じた（11-10）。-c が KL-W1 の段 3 の後に partial・none の一括見直し（§8.2 の 4） |
 | HA の確認 | Codex | HA の全項目の対応表（本全体、HA の形式化の検討の材料） | `SerrePositivity-ha-review`・`research/ha-review` | `research/ha-coverage/codex-review.md` | 開始（11-07 夜）、段 0 |
 | HTT の確認 | Codex | HTT の全項目の対応表（本全体、Kerodon の行を参照） | `SerrePositivity-htt-review`・`research/htt-review` | `research/htt-coverage/codex-review.md` | 開始（11-07 夜）、段 0 |
-| K の地図 | Codex | K の文献ごとの全項目の対応表（本論文 §3・§4、KST、Land–Tamme、Tamme、BGT） | `SerrePositivity-k-maps`・`research/k-maps` | `research/k-coverage/codex-maps.md` | 開始（11-07 夜）、段 0 |
+| K の地図 | Codex | K の文献ごとの全項目の対応表（本論文 §3・§4、KST、Land–Tamme、Tamme、BGT） | （閉じた） | `research/k-coverage/codex-maps.md` | 完了・閉じた（11-11、f15ad120b）。全 17 文献 688 項目、要約 research/k-coverage/maps/summary.md。K の再開時に新しく開く |
 | KL-W1 | Codex | ∞ の配置を Kerodon に合わせる | `SerrePositivity-kerodon-layout`・`refactor/kerodon-layout` | `stage-ii/kerodon-layout-w1.md` | 段 1.5 は main。段 1.6（割り当ての見直し）→ 段 2・3（§8、11-10） |
 | ③ ∞ 供給 | Codex | G8 の四角形 → G14・G9・G10 | `SerrePositivity-inf-supply`・`math/inf-supply` | `stage-ii/inf-supply-w1.md` | KL-W1 の後 |
 | ⑤a BS 実装 | Codex | BS-DOC1 → BS-W11 → BS-W12（BM18 の経路 B） | `SerrePositivity-bs-impl`・`math/bs-impl` | `bhatt-scholze/bhatt-scholze-codex-w16.md` | BS-W14 は main（A1 の二本は ⑤b の停止点 3 の後）。BS-W16（実例の欄、G12・P⁰ を除く）段 0（11-10） |
@@ -23,6 +23,8 @@
 | ① ∞ 中核 | Codex | Verdier 商（K の入口） | — | `stage-ii/inf-core-w1.md` | **止める**（K と一緒に後回し、11-07） |
 
 後から足すもの（②④⑦、K 理論）と開く条件は計画の §5.1。
+
+**11-11 の変更（ユーザー決定、`k-restart-draft.md` §4）**：① ∞ 中核の再開時期を「③ の後」から「③ の G8 の後、④ と並行」に早める案を検討対象にする。実際に動かすのは E∞ の作り方（HA の方向か）の決定の後。K の実装は ∞ の基盤（KL-W1 → ③ → ①）の後。それまでの紙の作業は `k-restart-draft.md`。
 
 ## 2. ビルドの規則
 
@@ -45,6 +47,13 @@
   - **夜（23 時〜翌 8 時）**：KL-W1 の一括の検査・保存比較・ビルドの束と、段 4（下流ビルドと verify）。この時間帯は KL-W1 が鍵を続けて持ってよい。ほかのレーン（実装・調査）は夜に鍵を取らない（紙の作業や編集は続けてよい。ビルドが要るところで止めて朝に回す）。
   - **夜の目印（11-10 夜に追加）**：KL-W1 は、夜の作業が終わったら（朝 8 時より前でも）`$TMPDIR/serre-night-klw1-done`（中身は終わった時刻と枝の HEAD）を置く。ほかのレーンは、夜でもこのファイルがあればふだんどおり鍵を取ってよい（一回 30 分以内、取り直しのループは使わない）。ファイルは翌朝 8 時に KL-W1 が消す。
   - **昼（8 時〜23 時）**：⑤a・⑤b・⑤c・⑥ と調査のレーンの小さなビルドを優先する。KL-W1 は鍵を使わない作業（改名表の修正、逆向きの import の整理、層の設定、報告）に充て、ビルドが要るときは 10 分以内の小さな対象ビルドだけにする。鍵を取り直すループ（`while rc==75`）は使わない。
+
+- **整理券の鍵（11-11、ユーザー承認）**：`with_build_lock.sh` を書き換えた（main）。待ち手は整理券で並び、鍵が空いたら**順位が一番の整理券だけ**が取る（早い者勝ちをやめた）。順位は（組の順位、待ち始めた時刻）。
+  - **組**：`impl`（⑤a・⑤b・⑤c・⑥・調整役の取り込み）、`research`（HA・HTT・Kerodon の `#check`）、`bulk`（KL-W1 の一括の検査・ビルド）。`--class` を省くと worktree 名から推定する（`kerodon-layout` → bulk、`*-review` → research、ほか → impl）ので、**各レーンのコマンドは今までのままでよい**。
+  - **昼（JST 8〜23 時）は impl → research → bulk、夜は bulk → impl → research** の順。スクリプトが守らせるので、夜に impl が鍵を取ることを禁じる必要はなくなった（bulk が並んでいなければ impl が通る）。`$TMPDIR/serre-night-klw1-done` の合図は**不要**になった。
+  - 取り直しのループは害がなくなった（列の後ろに並び直すだけ）。ただし **一回の塊は 30 分以内**（bulk は昼も夜も）、research は 10 分以内のまま。
+  - 列を見る：`zsh scripts/refactor/with_build_lock.sh --status`。
+  - 切り替え中は、古い版で待っているプロセスが鍵が空いた瞬間に取ることがある（整理券を持たない）。それらが終われば列は整う。
 
 ## 3. 暦
 
