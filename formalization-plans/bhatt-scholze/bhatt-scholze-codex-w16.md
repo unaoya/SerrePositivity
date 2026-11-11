@@ -100,3 +100,11 @@ BS-W14 で作った界面 `EInfinityTheory` の実例 `barrattEcclesTheory`（dr
   2. sifted の保存の段 0：既存の宣言（`Operad/AlgebraSiftedColimits` ほか）からの筋、不足、規模。
   3. A2（`BaseChangeAndTensor`）・A7 の drafts が `coprodWith`・`coprodWith_cocone`・`coproduct_tensor` をどの形で使うかの洗い出し。強い形（関手全体の自然同型）が要る箇所と、対象ごとの同型や特別な入力（多項式代数・離散な代数など）で足りる箇所を分ける。
 - 報告は `report-codex-w16.md` の新しい節。明日の昼に、調整役とユーザーで経路を決める。
+
+## 10. 追記（2026-11-11 夜、調整役）：経路によらない共通部分を今夜進める（ユーザー承認）
+
+§21 の紙の検討（b79fd6aee）を受けて。経路 A／B と sifted の分担は 11-12 の昼に決める（design-status の「未決」）。その間、どちらの経路でも要る部分を進める。
+
+1. 共通部分（§21.2）：(a) 自由代数の比較の残り（§20.2 の五行、任意の cofibrant な入力の複体まで、上限 約 1,550 行、終わったら報告して止まらずに b へ）、(b) native な二項の余積錐 `coprodWith_cocone`（上限 約 670 行、終わったら報告）、(c) 比較が `coprodWith_cocone` の二脚をテンソルの標準射へ送る照合補題（界面の型は変えない）。
+2. 段 4 の組み立て関数：証明済みの欄を集め、残りの欄（`coproduct_tensor`・sifted・Tot の群・`presentable`・`powerOp0`）を引数に取る `barrattEcclesTheory` の組み立て（§3 の 3）。
+- 入れないもの：セル対（A）、bar の実現（B）、sifted の保存。上限を超えそうなときは報告して止める。
