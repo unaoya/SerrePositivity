@@ -726,3 +726,64 @@ H=H_Cech^q(M;d)、Fₙ=ker πₙ とすると、H/Fₙ は range πₙ と自然
 残りの主要な群は **完備化の同型と、§9 の五つの整合性の二群**。核の一様評価と像の安定化は、実際の閉厚化について今回までに証明した。一般の固有射のコホモロジー有限性や、導来関手の Hⁱ との比較へは広げない。加群の宇宙と有限な座標の順序は前節の扱いを保ち、BS17 での利用を制限しない。
 
 両コミットの追加に `sorry`・`admit`・追加公理・計算量上限の追加はなく、既存宣言の型・本文は変更していない。全ビルド・全監査は共有の鍵 `--wait 3600` を一回の実行ごとに取り、終了時に返した。ルート全体のビルドは行っていない。**停止点 2e ではない**。最終出力と利用側の `AugmentedRingCechExact`、選定済みの途中取り込み点 `a0c59bc4e` は変更しない。
+
+## 途中取り込み点の更新と、実際の Čech 形式関数の完備化同型（11-11）
+
+調整役の 22:15 の連絡により、**途中取り込み点は `9e78e7dc0` に更新され、main `f654cdc11` に取り込まれた**。上の各節の `a0c59bc4e` は、更新前に選定した点の歴史的な記録である。今回 `math/scheme` も main `f654cdc11` まで fast-forward し、検証済み AG の閉包・Lean/Lake 設定・監査スクリプトの **640 ファイルの SHA-256 の不一致 0** を確認した。調整役のルート全体の検証結果を、こちらの検証としては数えていない。
+
+### 完備化の同型
+
+`b65e5c6bc`（新規 6 モジュールと直接 importer、425 行）に保存。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,257 jobs 成功**、別の共有鍵による公式監査は **6,198 宣言・標準三公理のみ**。登録モジュールは `LinearCompatibleFamilies`、`LinearRangeDescent`、`AdicProjectionFactor`、`AdicProjectionInverseComponents`、`AdicProjectionCompletionInverse`、`ReesClosedCechCompletion`。
+
+実際の Čech 射影 πₙ:H→Qₙ（ここで H=H_Cech^q(M;d)、Qₙ=H_Cech^q(M/IⁿM;d)）を使い、次の線形同型を構成した。
+
+`reesAdicProjectiveClosedCechCompletionLinearEquiv : AdicCompletion I H ≃ₗ[R] {x : ∀ n, Qₙ // ∀ i j (h:j≤i), tᵢⱼ(xᵢ)=xⱼ}`。
+
+これは Stacks 30.20.5 の Hⁱ の形式関数の **Čech 版**。導来関手の Hⁱ との比較は形式化していない。基底の Noether 性、M の多項式環上の有限生成性、有限な座標と次数分解という、これまでと同じ仮定を使う。大きい型の入口は従来の `Module.Finite.small`・`Shrink.linearEquiv` の方針を保ち、BS17 での利用を制限しない。
+
+順写像は πₙ を H/IⁿH 上へ降ろし、Mathlib の完備化を第 n 成分で評価する。逆写像は、ker π_(n+c)⊆IⁿH によって range π_(n+c)→H/IⁿH を作り、互換族の n+c 成分へ適用する。各成分が射影の像に入ることは、証明済みの像の安定化から得た。代表によらない降下には核による商と像の標準同型を使い、逆写像の互換性と両方の合成の恒等性は、同じ代表を遷移で移して示した。
+
+同型の順写像は、核の評価で選ぶ c によらない **標準写像そのもの** として等しい。加群の元 m を完備化に送って第 n 成分で評価すると、πₙ(m) になる。この評価式も証明済み。新しい完備化を定義せず、Mathlib の `AdicCompletion` をそのまま使っている。
+
+### 宣言と主張（30件）
+
+| 宣言 | 主張 |
+|---|---|
+| `compatibleLinearFamilies` | 線形な遷移写像に関する互換族の部分加群。 |
+| `compatibleLinearFamiliesEval` | 互換族を第 n 成分で評価する線形写像。 |
+| `linearRangeDescent` | ker f⊆ker g なら、g を f の像から降ろせる。 |
+| `linearRangeDescent_rangeRestrict` | 像から降ろした写像を元の代表で計算する。 |
+| `adicProjectionQuotientMap` | IⁿH を殺す射影を、通常の I 進剰余類上へ降ろす。 |
+| `adicProjectionQuotientMap_mk` | I 進剰余類上の射影は、代表上で元の射影と一致。 |
+| `adicProjectionQuotientMap_transition` | 射影の互換性は、I 進剰余類からの写像にも降りる。 |
+| `adicProjectionCompletionMap` | I 進完備化から、射影先の互換族への標準線形写像。 |
+| `adicProjectionCompletionMap_of_apply` | 標準写像を加群の元に評価すると、元の射影の族になる。 |
+| `adicProjectionImageToQuotient` | 十分先の射影の像から、元の加群の Iⁿ による商への線形写像。 |
+| `adicProjectionImageToQuotient_rangeRestrict` | 像から I 進剰余類への写像は、元の代表をそのまま剰余類に送る。 |
+| `compatibleLinearFamiliesEvalToRange` | 互換族を、その成分が属する射影の像へ評価する線形写像。 |
+| `adicProjectionCompatibleComponent` | 射影先の互換族を、第 n 番目の I 進剰余類へ戻す線形写像。 |
+| `adicProjectionCompatibleComponent_eq_mk` | 互換族の十分先の成分を代表で書けば、戻した成分は同じ代表の剰余類。 |
+| `adicProjectionCompatibleComponent_transition` | 戻した各 I 進剰余類は、通常の I 進遷移について互換。 |
+| `compatibleLinearFamilies_mem_range_of_stable` | 遷移の像が十分先で射影の像に入れば、互換族の各成分も射影の像に入る。 |
+| `adicProjectionCompletionInverse` | 射影先の互換族から、元の加群の I 進完備化への線形写像。 |
+| `adicProjectionCompletionInverse_left_inverse` | 互換族から戻す写像は、完備化からの標準写像の左逆。 |
+| `adicProjectionCompletionInverse_right_inverse` | 互換族から戻す写像は、完備化からの標準写像の右逆。 |
+| `adicProjectionCompletionLinearEquiv` | 核の一様評価と像への所属から得られる、I 進完備化と互換族の線形同型。 |
+| `adicProjectionCompletionLinearEquiv_apply` | 完備化同型の順写像は、標準写像そのもの。 |
+| `reesAdicProjectiveClosedCechCompatibleFamilies` | 実際の閉厚化の Čech コホモロジーの互換族の加群。 |
+| `reesAdicProjectiveClosedCechProjection_pow_le_ker` | Iⁿ 倍は、実際の閉厚化への Čech 写像の核に入る。 |
+| `reesAdicProjectiveClosedCechProjection_linear_compat` | 閉厚化への Čech 射影の互換性を、線形写像の合成として述べる。 |
+| `reesAdicProjectiveClosedCechCompletionMap` | 元の Čech コホモロジーの完備化から、実際の閉厚化の互換族への標準写像。 |
+| `reesAdicProjectiveClosedCechProjection_shifted_kernel_bound` | 核の評価を、n+c 段の核が Iⁿ 倍に入るという形にする。 |
+| `reesAdicProjectiveClosedCechCompatibleFamilies_mem_range` | 閉厚化の Čech 互換族の各成分は、元のコホモロジーからの像に入る。 |
+| `reesAdicProjectiveClosedCechCompletionLinearEquiv` | 実際の射影 Čech コホモロジーの形式関数の線形同型。 |
+| `reesAdicProjectiveClosedCechCompletionLinearEquiv_toLinearMap` | 形式関数の Čech 同型の順写像は、標準写像そのもの。 |
+| `reesAdicProjectiveClosedCechCompletionLinearEquiv_of_apply` | 形式関数の Čech 同型を加群の元で評価すると、元の閉厚化への射影になる。 |
+
+### §9 への接続
+
+残りは、共通アフィン細分・底変換・閉厚化・Frobenius・filtered colimit の五つについて、必要な比較を実際の図式へ接続し、完備化の同型と射に自然な形で合わせること。基底環とイデアルを固定した可換な係数写像に対する標準写像の自然性と、閉厚化の遷移の恒等・合成則を、次の新規ファイルで検証中である。一般の係数写像の可換式だけを、五つの比較の完成とは数えない。
+
+flat な底変換ではコホモロジーの交換を使う。閉厚化には flat 性を仮定せず複体の自然な写像を扱う。Frobenius には半線形性と I 進指数の p 倍を明示する。filtered colimit では有限交叉の各次数の Čech 計算とコホモロジーの比較を扱い、完備化と任意の filtered colimit の交換同型を仮定することはしない。
+
+全ビルド・監査は共有鍵 `--wait 3600` を一回ごとに取り、終了時に返した。23 時以降の二枠と、KL-W1 が停止点 3 の報告まで鍵の外で作業する改定も main から取り込み済み。新規の追加に `sorry`・`admit`・追加公理・計算量上限の追加はなく、既存の宣言の型・本文は変えていない。**停止点 2e ではない**。最終出力と利用側の `AugmentedRingCechExact` は保つ。
