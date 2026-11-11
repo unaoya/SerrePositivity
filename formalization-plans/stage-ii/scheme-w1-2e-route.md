@@ -305,3 +305,72 @@ C⁽q⁾ₙ = Hᵠ_Čech(IⁿM) とする。これらの直和が B 上有限で
 - `projectiveCechRestrictScalarsHomologyIso`：上の複体の同型と Mathlib の係数制限の完全性・`ShortComplex.mapHomologyIso` により、Čech コホモロジーと係数制限の交換を得る。原典 Stacks 30.20.1 の Hⁱ に対応する Rees–Čech 比較の途中の入力であり、層コホモロジーの導来関手との比較は含めない。
 
 この係数制限もテンソル積による底変換ではない。係数図式の自然変換に対するコホモロジー同型の可換式と、Rees のチャートの図式・作用への適用を次に接続する。最終出力の `AugmentedRingCechExact` の型や、その利用側の型は変更していない。
+
+## 実際の Rees 加群の P 上の Čech 直和比較（11-11）
+
+`1a174f6af`（6 モジュールと直接 importer、537 行）を保存。対象モジュールと直接 importer のビルドは成功し、別の鍵による公式 AG 監査は **5,498 宣言・標準三公理のみ**。監査待ちも一つにまとめた。
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveCechRestrictScalarsComplexIso_naturality` | Čech 複体と係数制限の比較は、係数図式の自然変換に自然。 |
+| `projectiveCechRestrictScalarsHomologyIso_naturality` | Čech コホモロジーの係数制限の比較も、係数図式の自然変換に自然。 |
+| `projectiveLocalizedModuleMap_restriction` | 局所化した加群写像は、分母を広げる制限と可換。 |
+| `projectiveLocalizedModuleCongr_restriction` | 加群同値の局所化も、同じ制限に自然。 |
+| `projectiveGradedAwayMap_restriction` | 分子を保つ加群写像の斉次局所化は、標準開の制限に自然。 |
+| `projectiveGradedAwayCongr_restriction` | 分子を対応させる加群同値の斉次局所化も、標準開の制限に自然。 |
+| `projectiveGradedTransport_restriction_mem` | 各直和成分の分子が追加因子で移るなら、同値で対応する全体の加群の分子も移る。 |
+| `projectiveGradedLocalizedDirectSumTransport_restriction` | 加群同値を経由した斉次局所化の直和比較全体が、標準開の制限と可換。 |
+| `projectiveGradedModuleChartDirectSumIso` | 次数を対応させる直和の加群同値は、各標準開の比較を係数図式の同型にまとめる。 |
+| `projectiveGradedModuleChartDirectSumCechHomologyIso` | 上の図式の同型と直和・Čech 比較により、各次数の Čech コホモロジーの直和との同型を得る。 |
+| `projectiveNatGradingInt_directSum_mem_iff` | 自然数次数の直和の分子の対応は、負の次数を零に延ばしても成り立つ。 |
+| `projectiveNatGradedSMul_of_directSumLinearEquiv` | 各成分の多項式の次数付き作用を、分子の次数を保つ同値で全体の加群へ移す。 |
+| `projectiveNatGradedModuleChartDirectSumIso` | 自然数次数の版の、標準開の係数図式の直和との同型。 |
+| `projectiveNatGradedModuleChartDirectSumCechHomologyIso` | 自然数次数の版の、Čech コホモロジーの直和との同型。 |
+| `reesAdicProjectiveBaseGrade` | Rees 加群の Proj 次数の部分加群を R に係数制限したもの。 |
+| `reesAdicProjectiveBaseGradedSMul` | 元の多項式環 P の作用は、この R 上の Proj 次数と両立する。 |
+| `reesAdicProjectiveBaseChartDirectSumIso` | Rees 加群の P 上の標準開係数図式は、各 IⁿM の同じ図式の直和と同型。 |
+| `reesAdicProjectiveBaseCechHomologyDirectSumIso` | Rees 加群の P 上の Čech コホモロジーを、各 IⁿM の同じ Čech コホモロジーの直和と R 線形に比較する。 |
+
+これで、Rees 加群と各 IⁿM の比較を実際の標準開の係数図式と Čech コホモロジーに接続した。ただし、有限性を既に確認した B[X] 上の Čech 複体との比較、Rees 作用と直和の次数の移動との一致はまだ別の接続である。R 線形の比較だけを B 線形の比較とは呼ばない。
+
+### Rees 作用の接続で使う既存の線形性
+
+Mathlib の `Algebra/Homology/ShortComplex/Linear` に `ShortComplex.homologyMap_smul` と `homologyFunctor_linear` がある。複体の三項を取る関手へ戻すことで、Čech 版のコホモロジー写像のスカラー倍を追える。一般の複体の `homologyMap_smul` は `Algebra/Homology/Linear` では TODO なので、それがあるとは仮定せず、短複体の API を使う。
+
+次の接続は、(1) P→B[X] で分母の変数の積を同定し、係数制限と可換な標準開の比較を得る、(2) その比較の係数写像に対する自然性と、Čech コホモロジーの係数制限の自然性を合成する、(3) 各次数からの包含と Rees 単項式の作用を追い、直和上の作用が n→n+i を保つことを示す、の順。この作用の確認後に、有限 Rees 加群の斉次生成元を用いる核の評価・像の安定化へ進む。
+
+## 多項式の係数変更とスカラー作用の入力（11-11）
+
+`fd2d691f1`（4 モジュールと直接 importer、374 行）を保存した。対象モジュールと直接 importer のビルドは成功し、別の鍵による公式 AG 監査は **5,544 宣言・標準三公理のみ**。
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveModuleScalarLocalizationLinearEquiv_mk_pow` | 局所化の係数環変更は、分母の第 k 冪を像の第 k 冪へ写す。 |
+| `projectiveModuleScalarLocalizationLinearEquiv_restriction` | 局所化する環の変更は、分母を広げる制限と可換。 |
+| `projectiveModuleScalarGradedRestriction_mem` | 分子を追加因子で移す条件は、係数環へ写した因子でも成り立つ。 |
+| `projectiveModuleScalarGradedAwayLinearEquiv_restriction` | 斉次局所化の係数環変更も、標準開の制限に自然。 |
+| `projectiveModuleScalarGradedAwayLinearEquivOfEq` | 分母の像を指定した分母と同定して、斉次局所化を比較する。 |
+| `projectiveModuleScalarGradedAwayLinearEquivOfEq_fraction` | 分母の同定を含む比較でも、分子と分母の冪の分数表示を保つ。 |
+| `projectiveModuleScalarGradedAwayLinearEquivOfEq_restriction` | 標準分母との同定を含む比較も、標準開の制限に自然。 |
+| `projectiveModuleScalarRestrictionLinearEquiv` | 互換な R 作用と B から係数制限した R 作用を、恒等写像で同一視する。 |
+| `projectiveGradedFraction_restrictScalars` | 斉次分数の線形写像は係数制限と交換する。 |
+| `projectiveGradedAway_restrictScalars` | 斉次局所化の部分加群は係数制限と交換する。 |
+| `projectiveGradedAwayScalarRestrictionLinearEquiv` | 斉次局所化の係数制限を、R 加群としての線形同値にまとめる。 |
+| `projectiveGradedAwayScalarRestrictionLinearEquiv_val` | この比較は、周囲の局所化の元を変えない。 |
+| `projectivePolynomialCoefficientDenominator` | R[X]→B[X] の係数変更は、標準開の変数の積を同じ変数の積へ写す。 |
+| `projectiveGradedPolynomialCoefficientChangeLinearEquiv` | 局所化する環の変更と B→R の係数制限を、各標準開で合成する。 |
+| `projectiveGradedPolynomialCoefficientChangeChartIso` | 上の各標準開の比較は、制限と可換な係数図式の同型になる。 |
+| `projectiveGradedPolynomialCoefficientChangeCechHomologyIso` | R[X] 上の Čech コホモロジーと、B[X] 上の Čech コホモロジーを R に係数制限したものを比較する。 |
+| `projectiveCechComplexMap_smul` | 係数の自然変換のスカラー倍は、Čech 複体の写像のスカラー倍に移る。 |
+| `projectiveCechHomologyMap_smul` | Čech コホモロジー写像も、係数写像のスカラー倍を保つ。 |
+| `projectiveCechHomologyMap_smul_id` | 恒等係数写像のスカラー倍は、Čech コホモロジー上の元のスカラー作用を誘導する。 |
+
+### 次の Rees への特殊化と次数移動
+
+係数変更の一般補題は整数次数の B 部分加群 H を入力する。Rees では、H に自然数次数の `reesProjectiveGrade` を負の次数で零に延ばしたものを入れる。R への係数制限と負の次数への延長を交換する等式を、次数が非負かどうかに分けて示せば、`reesAdicProjectiveBaseCechHomologyDirectSumIso` の R 側の次数分解と同じ型になる。
+
+P→B[X] の代数構造は、既存の `reesPolynomialCoefficientAlgebra` と今回の多項式の係数写像の代数構造が同じ定義である。加群の作用の両立性には `reesPolynomialBaseChange_source_scalarTower`・`reesPolynomialBaseChange_base_scalarTower`・`reesPolynomialBaseChange_module_scalarTower` を使う。この特殊化で、有限性を確認済みの B[X] 上の Čech コホモロジーを R に制限したものと、各 IⁿM の Čech コホモロジーの直和との R 線形な比較を合成できる。
+
+その後、比較によって B の作用を直和へ移す。作用を移しただけでは、直和の Rees 次数に対する次数付き作用を証明したことにはならない。斉次 Rees 単項式 a·tⁱ の作用を第 n 成分の包含と合成し、第 n+i 成分への写像と一致させる。元の加群の上の入力は `reesFiltration_monomial_smul_single` と `reesMap` の単項式の公式、コホモロジーへの入力は各成分の包含の比較と、今回の `projectiveCechHomologyMap_smul_id` である。
+
+係数変更の比較の、次数を保つ加群写像に対する自然性も合わせて接続する。これは各チャートで斉次分数を代表に取り、両辺が同じ分子の写像を持つ分数になることから示せる。こうして得た実際の次数付き B 作用と有限生成性を、像・核の Rees 加群の構成へ渡す。現時点では、この特殊化と作用の次数移動、実際の核の評価・像の安定化・完備化の同型は未完了である。
