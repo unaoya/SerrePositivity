@@ -278,3 +278,7 @@
 
 - `PDDeRhamSubstitutionWedge` と `PDDeRhamSubstitutionGenerators` で、完備形式の代入が外積を保ち、1 形式では完備 Jacobian になることを示した。`PDDeRhamBicomplexCoefficients` では完備形式の係数変更を双複体の射にし、係数制限で読んだ二つの射影と可換であることを示した。
 - `PDDeRhamColumnBounded` で第 0 列の有界性と各列の導来 p 完備性、`SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeEquivalence` で完備化同値が導来底変換後にも完備化同値になることを示した。これら5本の対象ビルドが通り、56本の一時監査は1,653宣言で標準三公理のみ。
+
+- `main` の `c77013db6` を `74b2af07f` で取り込んだ。K4 の `VariableEnvelopeBaseChange` が参照できるようになり、共有鍵を整理券方式に切り替えた。
+- `WittFiniteBridgeNaturality` で有限枠の各次数の結晶の橋を余単体射にし、`WittFiniteBridgeSquare` で大きい Witt 枠への二つの合成を各次数で照合した。`PDDeRhamSubstitutionDegreeZero` は次数 0 の代入と微分の可換性を証明した。
+- 共通の `SerrePositivity.CommutativeAlgebra.DeRham.PolynomialDeRhamCompletionUnit` で未完備多項式 de Rham 複体の有界性と完備化単位、`SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelEquivalence` で正則なスカラーの冪商から完備化同値を判定する補題を示した。これら5本は鍵付きの対象ビルドを通った。61本の一時監査は1,781宣言で標準三公理のみ。
