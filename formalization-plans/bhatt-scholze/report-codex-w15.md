@@ -129,3 +129,11 @@
 3. `FlatCechSheaf` の低次数の計算を検証する。続けて完備構造環と d 剰余の増大 Čech 完全性を検証し、層条件に適用する。新規対象と公開宣言の監査を回し、停止点 3 の条件を確認する。
 
 各束は `source ~/.zshenv` の後、共有ロックの `--wait 1800` を使う。夜間は `$TMPDIR/serre-night-klw1-done` が出た場合に限り開始し、保持は一回 30 分以内。合図がなければ 8 時以降（日本時間）。
+
+## 停止点 3（K4、2026-11-11）
+
+- 朝の main `6e6a3f9a7` を `4d5da8107` で作業枝に取り込んだ。この束の実装は `bc17b4664`。
+- Corollary 3.12 の平坦な被覆に対して `flatCoverage` と `flatAugmentedCechConerve` を構成した。 `exists_completedTensor_pushoutEquiv` は任意の底変換脚に沿う site の押し出しを完備テンソル積と同定し、両脚を追う。
+- `isPushout_flatResidueRing` と `flatResidueCoconeIsColimit` は、基底の p と向きの冪を含むイデアルによる剰余で、二項と有限広押し出しを保つ。 `flatResidueCechIso` で通常の環の増大 Čech 余脈体に比較し、増大・余面・余退化と剰余の遷移に対する自然性を示した。
+- `degreewiseTowerIsoOfBijective` で次数ごとの逆極限同定を余鎖複体の同型にし、全射的な逆塔から完全性を移した。構造環では (p,d) の冪、prism イデアルによる剰余では (d,pⁿ) を使う。 `structureRing_flatCechExact`・`quotientStructureRing_flatCechExact` が全次数の完全性、`structureRing_isSheaf`・`quotientStructureRing_isSheaf` が通常の環値の層条件。
+- この束の新規 11 モジュールの対象ビルドと公開 44 宣言の監査を通過した。標準三公理のみ、`sorry` 0。推移的 import の閉包 345 モジュールに ∞ 圏・E3 はなく、KST への直接 import はない。Lean の差分は新規ファイル 11 本。
