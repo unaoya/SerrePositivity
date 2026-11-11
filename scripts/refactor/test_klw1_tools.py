@@ -120,6 +120,16 @@ class NamespaceTests(unittest.TestCase):
         self.assertEqual(issues, [])
         self.assertEqual(rendered, b"x.step")
 
+    def test_unmoved_extension_on_a_renamed_type_requires_review(self):
+        text = "r.collapseRelative"
+        ref = occurrence(text, "collapseRelative", "Old.Record.collapseRelative", "Consumer", kind="field")
+        plan = Migration({"rows": [
+            {"module": "TypeOwner", "old": "Old.Record", "new": "New.Record"},
+        ]})
+        rendered, issues = rewrite({"module": "Uses", "source": text, "refs": [ref], "commands": []}, plan)
+        self.assertIsNone(rendered)
+        self.assertIn("unmoved extension on renamed receiver", issues[0]["reason"])
+
     def test_detached_method_adds_a_name_resolution_export(self):
         text = "def Old.Record.step (n : Nat) := n + 1\n"
         ref = occurrence(text, "Old.Record.step", "Old.Record.step", "Old", kind="binder")

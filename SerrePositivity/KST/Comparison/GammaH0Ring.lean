@@ -21,7 +21,7 @@ universe u
 namespace SerrePositivity.KST.Comparison
 
 open CategoryTheory DifferentialGraded
-open InfinityCategories.DoldKanComparison
+
 open scoped Simplicial
 
 variable {R : Type u} [CommRing R] {D : Type u} [DGCategory R D]

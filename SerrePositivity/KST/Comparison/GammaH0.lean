@@ -23,7 +23,7 @@ universe u
 namespace SerrePositivity.KST.Comparison
 
 open CategoryTheory DifferentialGraded SSet
-open InfinityCategories.DoldKanComparison
+
 
 /--
 概要：同一宇宙内の ULift は元の単体集合と同型である。

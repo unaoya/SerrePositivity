@@ -377,6 +377,13 @@ def rewrite(data, migration):
                 parts = PARTS.findall(curr)
                 parents = [".".join(parts[:i]) for i in range(1, len(parts) + 1)]
             loses_relative_scope = any(old == prefix + "." + old_text for prefix in (*parents, *changed_opens))
+            if row is None and ref["kind"] == "field":
+                parent_name = old.rpartition(".")[0]
+                receiver = (migration.symbols.get((ref["module"], parent_name))
+                            or migration.public_symbols.get(parent_name))
+                if receiver and receiver["new"] != parent_name:
+                    block(ref, f"unmoved extension on renamed receiver requires an explicit call or export for {old}")
+                    continue
             if row is None and not loses_relative_scope:
                 if ref["kind"] in ("local", "term", "field"):
                     other_resolution = True
