@@ -31,7 +31,7 @@ lemma mcCarthyRhoFiberObjectMap_zero (X : StableModel.{u}) {m : ℕ}
   intro e
   apply gappedDiagram_injective
   change gappedDiagram (mcCarthyRhoFiberObjectVertex X a e
-    (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) n)) = mcCarthyFiberDiagram X a e
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) n)) = mcCarthyFiberDiagram X a e
   rw [mcCarthyRhoFiberObjectVertex_diagram]
   exact mcCarthyRho_timeZero _ _ _ _ _
 
@@ -43,7 +43,7 @@ lemma mcCarthyRhoFiberParameterMap_endpoint (X : StableModel.{u}) {m : ℕ}
     lift (𝟙 (cofiberSubobjectLeftFiber X a)) (SSet.const (stdSimplex.obj₀Equiv.symm i)) ≫
       mcCarthyRhoFiberParameterMap X a =
         simplexLeftFiberParameter (objectSConstructionFunctor.map (cofiberStableSubobject X)) a ≫
-          prismEndpoint i Δ[m] ≫ prismLastContraction m := by
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint i Δ[m] ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.prismLastContraction m := by
   unfold mcCarthyRhoFiberParameterMap
   simp only [← Category.assoc]
   congr 1
@@ -59,7 +59,7 @@ lemma mcCarthyRhoFiberMap_zero (X : StableModel.{u}) {m : ℕ}
   · rw [Category.assoc, mcCarthyRhoFiberMap_projection, mcCarthyRhoFiberObjectMap_zero,
       Category.id_comp]
   · rw [Category.assoc, mcCarthyRhoFiberMap_parameter, mcCarthyRhoFiberParameterMap_endpoint,
-      prismLastContraction_zero, Category.comp_id, Category.id_comp]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.prismLastContraction_zero, Category.comp_id, Category.id_comp]
 
 /-- 概要：ρ の一時刻で得られる同じ左 fiber の自己射。
 方針：構成した族を時刻一で制限する。
@@ -117,7 +117,7 @@ lemma mcCarthyRhoTerminal_parameter (X : StableModel.{u}) {m : ℕ}
       (objectSConstructionFunctor.map (cofiberStableSubobject X)) a =
         SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last m)) := by
   rw [mcCarthyRhoTerminal, Category.assoc, mcCarthyRhoFiberMap_parameter,
-    mcCarthyRhoFiberParameterMap_endpoint, prismLastContraction_one, SSet.comp_const]
+    mcCarthyRhoFiberParameterMap_endpoint, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.prismLastContraction_one, SSet.comp_const]
 
 /-- 概要：ρ の終端の quotient 射は元の quotient 射。
 方針：全時刻での quotient の固定を時刻一に制限する。
@@ -134,19 +134,19 @@ lemma mcCarthyRhoTerminal_quotient (X : StableModel.{u}) {m : ℕ}
 lemma mcCarthyRhoTerminal_source (X : StableModel.{u}) {m n : ℕ}
     (a : (objectSConstruction X.carrier) _⦋m⦌) (e : (cofiberSubobjectLeftFiber X a) _⦋n⦌) :
     mcCarthyFiberDiagram X a ((mcCarthyRhoTerminal X a).app (Opposite.op ⦋n⦌) e) ≫
-      cofiberProjection X.carrier ≫ evaluateFunctorAt
+      cofiberProjection X.carrier ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
         (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
           SSet.const (objectSLastDiagonalZeroVertex a).vertex := by
   have hp := ConcreteCategory.congr_hom (NatTrans.congr_app
     (mcCarthyRhoTerminal_parameter X a) (Opposite.op ⦋n⦌)) e
   change mcCarthyFiberParameter X a
     ((mcCarthyRhoTerminal X a).app (Opposite.op ⦋n⦌) e) =
-      PinchedHom.constant (stdSimplex.obj₀Equiv.symm (Fin.last m)) n at hp
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (Fin.last m)) n at hp
   have hs := mcCarthyFiberDiagram_source X a
     ((mcCarthyRhoTerminal X a).app (Opposite.op ⦋n⦌) e)
   rw [hp] at hs
   have hi : (stdSimplex.objEquiv
-      (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (Fin.last m)) n)).toOrderHom =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (Fin.last m)) n)).toOrderHom =
       OrderHom.const (Fin (n + 1)) (Fin.last m) := by
     ext j
     rfl

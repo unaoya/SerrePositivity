@@ -31,7 +31,7 @@ lemma kanAdjointBoundaryStructure_component (n : ℕ) :
   have hl := PointedMapping.componentOf_comp_right (s n).component
     (pointedStep X (KanSequence.signedLoopTail Y.toKanSequence) n)
   have hr := PointedMapping.componentOf_comp_right (s (n + 1)).component
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)
   have hm := PointedMapping.componentOf_comp_left (kanAdjointParameterLeft_condition X Y n) φ
   have hc := PointedMapping.componentOf_transpose (hl.trans (hm.trans hr.symm))
@@ -79,7 +79,7 @@ structure KanAdjointBoundaryStructureContraction (n : ℕ)
     (P : KanAdjointBoundaryStructurePath X Y φ j c H s n) where
   homotopy : SSet.Homotopy
     (P.path ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right)
     (SSet.const (PointedMapping.familyVertex ((X.sigma n ≫ (s (n + 1)).stage) ≫
@@ -87,7 +87,7 @@ structure KanAdjointBoundaryStructureContraction (n : ℕ)
   boundary : (boundary 1).ι ▷ (Δ[1] : SSet.{u}) ≫ homotopy.h =
     fst (∂Δ[1] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ (boundary 1).ι ≫
       P.path ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right
 

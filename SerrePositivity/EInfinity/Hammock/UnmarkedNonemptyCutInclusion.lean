@@ -20,16 +20,16 @@ namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor
 open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
-  {w : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
-  (τ : (graph W.paths w X Y).obj n) (h : ∃ j, column W (τ.obj 0) j ≠ [])
+  {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+  (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths w X Y).obj n) (h : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W (τ.obj 0) j ≠ [])
 
 lemma nonemptyCut_graphInclusion
-    (hi : (colimitValue W X Y).app n ((graphInclusion W.paths X Y w).app n τ) ≠ []) :
-    (nonemptyCut W X Y).app n ⟨(graphInclusion W.paths X Y w).app n τ, hi⟩ = point W τ h := by
+    (hi : (colimitValue W X Y).app n ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths X Y w).app n τ) ≠ []) :
+    (nonemptyCut W X Y).app n ⟨(_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths X Y w).app n τ, hi⟩ = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.point W τ h := by
   have he := inclusion_nonemptyIso_val W X Y w
-    (⟨τ, h⟩ : (NonemptyGraph.simplicialSet W w X Y).obj n)
-  have hy : ((inclusion W X Y w ≫ (nonemptyIso W X Y).hom).app n ⟨τ, h⟩) =
-      (⟨(graphInclusion W.paths X Y w).app n τ, hi⟩ : (NonemptyValue.space W X Y).obj n) :=
+    (⟨τ, h⟩ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedNonemptyGraph.simplicialSet W w X Y).obj n)
+  have hy : ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.inclusion W X Y w ≫ (nonemptyIso W X Y).hom).app n ⟨τ, h⟩) =
+      (⟨(_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths X Y w).app n τ, hi⟩ : (NonemptyValue.space W X Y).obj n) :=
     Subtype.ext he
   have hc := congrArg (fun k => k.app n ⟨τ, h⟩) (inclusion_nonemptyCut W X Y w)
   exact (congrArg ((nonemptyCut W X Y).app n) hy).symm.trans hc

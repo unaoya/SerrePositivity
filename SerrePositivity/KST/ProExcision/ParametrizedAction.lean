@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.ProExcision.ActionTranslations
-public import SerrePositivity.InfinityCategories.Simplicial.SimplexContraction
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexContraction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneLocalizedTensor
 
 @[expose] public noncomputable section
@@ -136,7 +136,7 @@ theorem actionFamily_simplex_localized_isIso (A : SimplicialMonoidAction G H)
     (a.app (op ⦋0⦌) (SSet.stdSimplex.obj₀Equiv.symm 0))
   have he := AnodyneHomotopy.map_homotopy_eq AnodyneHomotopy.anodyneQ
     (Localization.inverts AnodyneHomotopy.anodyneQ SSet.anodyneExtensions)
-    (actionFamilyHomotopy A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexMapContraction a))
+    (actionFamilyHomotopy A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexMapContraction a))
   rw [← he]
   exact hc
 

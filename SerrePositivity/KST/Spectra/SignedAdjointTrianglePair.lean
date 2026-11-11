@@ -20,7 +20,7 @@ open scoped Simplicial
 namespace SerrePositivity.KST.Spectra.SignedAdjointPaths
 variable {A A' Y Z Z' W : PointedSimplicialSet.{u}} [KanComplex Z.right] [KanComplex W.right]
   (a : Z ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W)
-  (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+  (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
   (f : A ⟶ PointedObject.basedHom CirclePower.space.{u} Y)
   (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z)
 
@@ -38,7 +38,7 @@ def postTrianglePair (v : Z ⟶ Z') :
 /-- 保存済みの同じ二単体への入力制限。 -/
 def preTrianglePair (j : A' ⟶ A) :
     SquareAdjustment.TrianglePair (PointedObject.basedHom A' (target Z)).right :=
-  (trianglePair a ha f g).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (target Z)).right
+  (trianglePair a ha f g).map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (target Z)).right
 
 /-- 後合成した合成三角形の第一辺は、元の第一辺の同じ後合成。 -/
 lemma postTrianglePair_two (v : Z ⟶ Z') :

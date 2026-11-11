@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.RightFrames
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CosimplicialHom.ResolutionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom
 public import Mathlib.CategoryTheory.Limits.Yoneda
 public import Mathlib.CategoryTheory.Limits.Preserves.FunctorCategory
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.BinaryProducts
@@ -29,7 +29,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity
 open CategoryTheory Limits Opposite
-open SerrePositivity.HomotopyFunctionComplex
+open _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
 variable {C : Type u} [Category.{v} C] [HasBinaryCoproducts C]
 
 /-- The opposite of the specified coproduct is the product with the specified projections. -/
@@ -58,16 +58,16 @@ def coprodOppositeProductIso (X Y : C) : op (X ⨿ Y) ≅ op X ⨯ op Y where
 
 /-- The simplicial Hom of a coproduct into a single right frame is the product of the two Homs. -/
 def rightFrameCoprodHomIso (F : SimplexCategory ⥤ Cᵒᵖ) (X Y : C) :
-    (cosimplicialHom F).obj (op (X ⨿ Y)) ≅
-      (cosimplicialHom F).obj (op X) ⨯ (cosimplicialHom F).obj (op Y) :=
-  (cosimplicialHom F).mapIso (coprodOppositeProductIso X Y) ≪≫
-    asIso (prodComparison (cosimplicialHom F) (op X) (op Y))
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom F).obj (op (X ⨿ Y)) ≅
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom F).obj (op X) ⨯ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom F).obj (op Y) :=
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom F).mapIso (coprodOppositeProductIso X Y) ≪≫
+    asIso (prodComparison (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom F) (op X) (op Y))
 
 /-- The first projection of the comparison is exactly restriction along the first inclusion. -/
 @[reassoc]
 lemma rightFrameCoprodHomIso_fst (F : SimplexCategory ⥤ Cᵒᵖ) (X Y : C) :
     (rightFrameCoprodHomIso F X Y).hom ≫ prod.fst =
-      (cosimplicialHom F).map coprod.inl.op := by
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom F).map coprod.inl.op := by
   simp only [rightFrameCoprodHomIso, Iso.trans_hom, Functor.mapIso_hom, asIso_hom,
     Category.assoc, prodComparison_fst, ← Functor.map_comp]
   rw [coprodOppositeProductIso, prod.lift_fst]
@@ -76,7 +76,7 @@ lemma rightFrameCoprodHomIso_fst (F : SimplexCategory ⥤ Cᵒᵖ) (X Y : C) :
 @[reassoc]
 lemma rightFrameCoprodHomIso_snd (F : SimplexCategory ⥤ Cᵒᵖ) (X Y : C) :
     (rightFrameCoprodHomIso F X Y).hom ≫ prod.snd =
-      (cosimplicialHom F).map coprod.inr.op := by
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom F).map coprod.inr.op := by
   simp only [rightFrameCoprodHomIso, Iso.trans_hom, Functor.mapIso_hom, asIso_hom,
     Category.assoc, prodComparison_snd, ← Functor.map_comp]
   rw [coprodOppositeProductIso, prod.lift_snd]

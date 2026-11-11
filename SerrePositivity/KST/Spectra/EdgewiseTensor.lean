@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.KanModels.KanEdgewiseFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanEdgewiseFunctor
 
 /-!
 概要：edgewise 共通解像のテンソル比較と左右射影の整合性。
@@ -18,19 +18,19 @@ namespace SerrePositivity.KST.Spectra.EdgewiseTensor
 
 /-- join からの二つの射を対にして作る edgewise のテンソル比較。 -/
 def map (A B : SSet.{u}) :
-    edgewiseSubdivision A ⊗ edgewiseSubdivision B ⟶ edgewiseSubdivision (A ⊗ B) where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision A ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision B ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision (A ⊗ B) where
   app _ := ↾fun fg ↦ lift fg.1 fg.2
   naturality {n m} α := by
     apply ConcreteCategory.hom_ext
     intro fg
-    change lift (edgewiseWeight.map α.unop ≫ fg.1) (edgewiseWeight.map α.unop ≫ fg.2) =
-      edgewiseWeight.map α.unop ≫ lift fg.1 fg.2
+    change lift (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseWeight.map α.unop ≫ fg.1) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseWeight.map α.unop ≫ fg.2) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseWeight.map α.unop ≫ lift fg.1 fg.2
     exact (comp_lift _ _ _).symm
 
 /-- テンソル比較の右射影は二つの元の右射影の直積。 -/
 @[reassoc]
-lemma right (A B : SSet.{u}) : map A B ≫ edgewiseRight (A ⊗ B) =
-    edgewiseRight A ⊗ₘ edgewiseRight B := by
+lemma right (A B : SSet.{u}) : map A B ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight (A ⊗ B) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight A ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight B := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -39,8 +39,8 @@ lemma right (A B : SSet.{u}) : map A B ≫ edgewiseRight (A ⊗ B) =
 
 /-- テンソル比較の左射影は反転のモノイダル比較を通した二つの左射影。 -/
 @[reassoc]
-lemma left (A B : SSet.{u}) : map A B ≫ edgewiseLeft (A ⊗ B) =
-    (edgewiseLeft A ⊗ₘ edgewiseLeft B) ≫
+lemma left (A B : SSet.{u}) : map A B ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft (A ⊗ B) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft A ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft B) ≫
       (Functor.Monoidal.μIso SSet.opFunctor A B).hom := by
   apply SSet.hom_ext
   intro n
@@ -51,8 +51,8 @@ lemma left (A B : SSet.{u}) : map A B ≫ edgewiseLeft (A ⊗ B) =
 /-- テンソル比較は二つの単体集合の射に自然。 -/
 @[reassoc]
 lemma natural {A A' B B' : SSet.{u}} (f : A ⟶ A') (g : B ⟶ B') :
-    (edgewiseSubdivisionMap f ⊗ₘ edgewiseSubdivisionMap g) ≫ map A' B' =
-      map A B ≫ edgewiseSubdivisionMap (f ⊗ₘ g) := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap f ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap g) ≫ map A' B' =
+      map A B ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap (f ⊗ₘ g) := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext

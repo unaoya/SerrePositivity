@@ -57,8 +57,8 @@ abbrev space := RelativeChoiceSpace.obj (vertexInclusion Y W g) (boundary X Y W 
 abbrev familyA := postLeft hcof Y W V g h ≫ preTail X Y W V f g h φ
 abbrev familyB := preRight hcof X Y W f g ≫ postTail X Y W V f g h
 abbrev familyC := postRight hcof Y W V g h ≫ preTail X Y W V f g h φ
-abbrev tuplePost := VertexTuples.map (postStrict Y W V g h)
-abbrev vertexPost := VertexTuples.verticesMap (postStrict Y W V g h)
+abbrev tuplePost := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (postStrict Y W V g h)
+abbrev vertexPost := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.verticesMap (postStrict Y W V g h)
 abbrev familyD := tuplePost Y W V g h ≫ preRight hcof X Y V f (g ≫ h.base)
 
 lemma familyA_vertices : vertexInclusion Y W g ≫ familyA hcof X Y W V f g h φ =
@@ -98,7 +98,7 @@ lemma familyB_vertices : vertexInclusion Y W g ≫ familyB hcof X Y W V f g h =
 
 omit [ModelCategory SSet.{v}] in
 lemma post_vertex_square : vertexInclusion Y W g ≫ tuplePost Y W V g h =
-    vertexPost Y W V g h ≫ vertexInclusion Y V (g ≫ h.base) := VertexTuples.inclusion_map _
+    vertexPost Y W V g h ≫ vertexInclusion Y V (g ≫ h.base) := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.inclusion_map _
 
 lemma familyC_as_pre : tuplePost Y W V g h ≫ preLeft hcof X Y V f (g ≫ h.base) φ =
     familyC hcof X Y W V f g h φ := by
@@ -132,12 +132,12 @@ lemma familyD_vertices : vertexInclusion Y W g ≫ familyD hcof X Y W V f g h =
             (preRight_vertices hcof X Y V f (g ≫ h.base))).trans
               (post_boundary_transport hcof X Y W V f g h φ)))
 
-abbrev tuplePre := VertexTuples.map (preStrict X Y W f g)
-abbrev vertexPre := VertexTuples.verticesMap (preStrict X Y W f g)
+abbrev tuplePre := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (preStrict X Y W f g)
+abbrev vertexPre := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.verticesMap (preStrict X Y W f g)
 
 omit [ModelCategory SSet.{v}] in
 lemma pre_vertex_square : vertexInclusion Y W g ≫ tuplePre X Y W f g =
-    vertexPre X Y W f g ≫ vertexInclusion X W (f.base ≫ g) := VertexTuples.inclusion_map _
+    vertexPre X Y W f g ≫ vertexInclusion X W (f.base ≫ g) := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.inclusion_map _
 
 lemma familyB_as_post : tuplePre X Y W f g ≫ postLeft hcof X W V (f.base ≫ g) h ≫
     castMap X Y W V f g h = familyB hcof X Y W V f g h := by
@@ -162,9 +162,9 @@ lemma mixed_boundary_transport : vertexPre X Y W f g ≫
 
 omit [ModelCategory SSet.{v}] in
 lemma tuple_interchange : tuplePre X Y W f g ≫
-    VertexTuples.map (postStrict X W V (f.base ≫ g) h) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (postStrict X W V (f.base ≫ g) h) ≫
       CoherentLiftBaseChange.tuples (Category.assoc f.base g h.base) =
-        tuplePost Y W V g h ≫ VertexTuples.map (preStrict X Y V f (g ≫ h.base)) := by
+        tuplePost Y W V g h ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (preStrict X Y V f (g ≫ h.base)) := by
   ext n a
   funext i
   apply Subtype.ext
@@ -173,12 +173,12 @@ lemma tuple_interchange : tuplePre X Y W f g ≫
 lemma final_interchange : tuplePre X Y W f g ≫ postRight hcof X W V (f.base ≫ g) h ≫
     castMap X Y W V f g h = familyD hcof X Y W V f g h := by
   have hi := congrArg (fun k => tuplePre X Y W f g ≫
-    VertexTuples.map (postStrict X W V (f.base ≫ g) h) ≫ k)
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (postStrict X W V (f.base ≫ g) h) ≫ k)
       (CoherentLiftBaseChange.interpolation hcof (Category.assoc f.base g h.base))
   have ht := congrArg (fun k => k ≫ CoherentLiftTuples.interpolation hcof X V (f.base ≫ g ≫ h.base))
     (tuple_interchange X Y W V f g h)
   calc
-    _ = tuplePre X Y W f g ≫ VertexTuples.map (postStrict X W V (f.base ≫ g) h) ≫
+    _ = tuplePre X Y W f g ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (postStrict X W V (f.base ≫ g) h) ≫
         CoherentLiftBaseChange.tuples (Category.assoc f.base g h.base) ≫
           CoherentLiftTuples.interpolation hcof X V (f.base ≫ g ≫ h.base) := by
       simpa only [postRight, Category.assoc] using hi

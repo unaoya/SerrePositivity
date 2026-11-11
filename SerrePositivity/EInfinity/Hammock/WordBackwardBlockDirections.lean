@@ -16,7 +16,7 @@ noncomputable section
 namespace SerrePositivity.EInfinity.Hammock.Word.BackwardBounds
 open MiddleBackward
 
-variable {w : Word} {p : Fin w.length} (h : BackwardBounds w p)
+variable {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {p : Fin w.length} (h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardBounds w p)
 
 lemma core_direction (i : Fin h.coreWord.length) :
     h.coreWord.direction i = w.direction (h.coreIndex i) := by
@@ -46,3 +46,6 @@ lemma core_direction (i : Fin h.coreWord.length) :
   · rw [Positions.last_direction, h.lastIndex, h.right_backward]
 
 end SerrePositivity.EInfinity.Hammock.Word.BackwardBounds
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardBounds
+  export _root_.SerrePositivity.EInfinity.Hammock.Word.BackwardBounds (core_direction)

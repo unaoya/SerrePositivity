@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceTriangleIsoFaces
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorTriangleSquare
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorTriangleSquare
 
 /-!
 概要：指定した上下辺を持つ空間の正方形の元の対角を、同じ Kan 対象間で回収する。

@@ -27,7 +27,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 include hcof hA in
 lemma cosimplicialHom_trivialFibration {Y Z : C} (p : Y ⟶ Z)
     [Fibration p] [WeakEquivalence p] :
-    trivialFibrations SSet.{v} ((cosimplicialHom A).map p) := by
+    trivialFibrations SSet.{v} ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p) := by
   rw [← MorphismProperty.rlp_eq_of_wfs (cofibrations SSet.{v})
     (trivialFibrations SSet.{v}), hcof, SSet.rlp_monomorphisms]
   intro X Y i hi
@@ -37,8 +37,8 @@ lemma cosimplicialHom_trivialFibration {Y Z : C} (p : Y ⟶ Z)
 include hcof hA in
 lemma cosimplicialHom_weakEquivalence_of_fibrant {Y Z : C}
     [IsFibrant Y] [IsFibrant Z] (f : Y ⟶ Z) [WeakEquivalence f] :
-    weakEquivalences SSet.{v} ((cosimplicialHom A).map f) := by
-  let F := cosimplicialHom A
+    weakEquivalences SSet.{v} ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map f) := by
+  let F := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A
   let h := Classical.choice (inferInstance : Nonempty (FibrantBrownFactorization f))
   have : Fibration h.p := (fibration_iff _).mpr h.hp
   have : WeakEquivalence (F.map h.p) :=
@@ -57,7 +57,7 @@ include hcof hA in
 lemma cosimplicialHom_geometricWeakEquivalence_of_fibrant
     (hw : weakEquivalences SSet.{v} = SimplicialHomotopy.weakEquivalences)
     {Y Z : C} [IsFibrant Y] [IsFibrant Z] (f : Y ⟶ Z) [WeakEquivalence f] :
-    SimplicialHomotopy.weakEquivalences ((cosimplicialHom A).map f) :=
+    SimplicialHomotopy.weakEquivalences ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map f) :=
   hw ▸ cosimplicialHom_weakEquivalence_of_fibrant hcof A hA f
 
 include hcof in

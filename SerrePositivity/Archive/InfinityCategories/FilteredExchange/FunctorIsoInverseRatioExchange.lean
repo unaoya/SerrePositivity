@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransportAlgebra
 
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerComposition
 /-!
 概要：元の中間同型に沿って、同じ比の逆を交換する。
 方針：実三端点と指定値を保持して前後合成の交換則を適用する。

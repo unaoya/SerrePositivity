@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3CurryEvaluationProjection
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPastingTransport
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorIsoPastingTransport
 
 /-!
 概要：共同模型の指定始点比較を角へ制限し、以前の同じ実面始点比較を回収する。
@@ -21,14 +21,14 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 
 section
-variable {A B : SSet.{u + 1}} (F : A ⟶ loopDiagrams PointedKanInfinity.{u})
+variable {A B : SSet.{u + 1}} (F : A ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams PointedKanInfinity.{u})
   (g : A ⟶ PointedKanInfinity.{u})
-  (e : FunctorIso g (F ≫ loopDiagramEvaluation PointedKanInfinity 1 1))
-  (r : B ⟶ A) (F' : B ⟶ loopDiagrams PointedKanInfinity.{u})
+  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso g (F ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1))
+  (r : B ⟶ A) (F' : B ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams PointedKanInfinity.{u})
   (g' : B ⟶ PointedKanInfinity.{u})
-  (e' : FunctorIso g' (F' ≫ loopDiagramEvaluation PointedKanInfinity 1 1))
+  (e' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso g' (F' ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1))
   (hg : r ≫ g = g') (hF : r ≫ F = F')
-  (hmodel : F2.functorIsoOfEq ((d3KanLoopDiagramIsoOverTarget F g e).precomp r)
+  (hmodel : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((d3KanLoopDiagramIsoOverTarget F g e).precomp r)
     (by rw [← Category.assoc, hg]) hF = d3KanLoopDiagramIsoOverTarget F' g' e')
 
 include hg hF hmodel in
@@ -36,20 +36,20 @@ include hg hF hmodel in
 lemma d3KanLoopDiagramSourceIsoOverTarget_precomp_heq :
     HEq ((d3KanLoopDiagramSourceIsoOverTarget F g e).precomp r)
       (d3KanLoopDiagramSourceIsoOverTarget F' g' e') := by
-  have he := (F2.functorIso_precomp_precomp_heq d3PointedKanLoopSection_sourceIso g r).trans
-    (F2.functorIso_precomp_heq_of_map_eq d3PointedKanLoopSection_sourceIso hg)
-  have hm := (functorIsoOfEq_postcomp_heq_of_eq _ _ _ _ hmodel
-    (loopDiagramEvaluation PointedKanInfinity 0 0)).symm
-  have hd := (functorIsoOfEq_postcomp_precomp_heq
+  have he := (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.functorIso_precomp_precomp_heq d3PointedKanLoopSection_sourceIso g r).trans
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_heq_of_map_eq d3PointedKanLoopSection_sourceIso hg)
+  have hm := (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.functorIsoOfEq_postcomp_heq_of_eq _ _ _ _ hmodel
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0)).symm
+  have hd := (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.functorIsoOfEq_postcomp_precomp_heq
     (d3KanLoopDiagramIsoOverTarget F g e)
-    (loopDiagramEvaluation PointedKanInfinity 0 0) (Category.assoc _ _ _) rfl r).trans
-      (hm.trans (F2.functorIsoOfEq_heq _ (Category.assoc _ _ _) rfl).symm)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) (Category.assoc _ _ _) rfl r).trans
+      (hm.trans (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ (Category.assoc _ _ _) rfl).symm)
   unfold d3KanLoopDiagramSourceIsoOverTarget
-  rw [F2.functorIso_precomp_trans]
-  exact functorIso_trans_heq_of_heq
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_trans]
+  exact _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.functorIso_trans_heq_of_heq
     (by rw [← Category.assoc, hg])
     (by simpa only [Category.assoc] using (congrArg
-          (fun m ↦ (m ≫ d3PointedKanLoopSection) ≫ loopDiagramEvaluation PointedKanInfinity 0 0)
+          (fun m ↦ (m ≫ d3PointedKanLoopSection) ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0)
           hg.symm))
     (by rw [← Category.assoc, hF]) _ _ _ _ he hd
 end
@@ -67,7 +67,7 @@ lemma d3DoubleEndpointJointLeftSourceIso_face (k l : Fin 2) :
     (d3DoubleEndpointLeftLoopFamily k l) _ (d3DoubleEndpointLeftTargetIso k l)
     (d3EndpointParameterJoint_stage k l) (d3DoubleEndpointJointLeftLoopFamily_face k l)
     (d3DoubleEndpointJointLeftUnitModelIso_face k l)
-  exact h.trans (F2.functorIsoOfEq_heq _ rfl
+  exact h.trans (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ rfl
     (d3DoubleEndpointLeftLoopFamily_corner k l 0 0)).symm
 
 /-- 共同右始点比較も、以前の同じ右実面始点比較の指定値を保持する。 -/
@@ -83,7 +83,7 @@ lemma d3DoubleEndpointJointRightSourceIso_face (k l : Fin 2) :
     (d3DoubleEndpointRightLoopFamily k l) _ (d3DoubleEndpointRightTargetIso k l)
     (d3EndpointParameterJoint_stage k l) (d3DoubleEndpointJointRightLoopFamily_face k l)
     (d3DoubleEndpointJointRightUnitModelIso_face k l)
-  exact h.trans (F2.functorIsoOfEq_heq _ rfl
+  exact h.trans (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ rfl
     (d3DoubleEndpointRightLoopFamily_corner k l 0 0)).symm
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

@@ -13,6 +13,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 方針：細分された horn の anodyne 性で有限反復の保存を示し、horn の有限表示可能性で余極限へ移す。
 規約：Moss arXiv:1506.04887v2 Proposition 3.12。基底の Kan 性は仮定しない。
 使われ方：非 Kan 基底の引き戻し比較を、Kan な基底の既証の結果へ移す。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

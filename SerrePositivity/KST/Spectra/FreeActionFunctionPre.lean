@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom
 public import SerrePositivity.KST.Spectra.FreeActionEndNaturality
 
 /-!
@@ -32,7 +32,7 @@ variable {G S T : Type u} [Group G]
 def functionPre
     (θ : (Action.leftRegular G ⊗ Action.trivial G T) ⟶
       (Action.leftRegular G ⊗ Action.trivial G S)) (B : Action SSet.{u} G) :
-    _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S B.V ⟶ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj T B.V where
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.obj S B.V ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.obj T B.V where
   app n := ↾fun x t ↦
     let p := θ.hom ((1 : G), t)
     (B.ρ p.1).asHom.app n (x p.2)
@@ -50,8 +50,8 @@ def functionPre
 lemma functionPre_eval
     (θ : (Action.leftRegular G ⊗ Action.trivial G T) ⟶
       (Action.leftRegular G ⊗ Action.trivial G S)) (B : Action SSet.{u} G) (t : T) :
-    functionPre θ B ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval T B.V t =
-      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S B.V (θ.hom ((1 : G), t)).2 ≫
+    functionPre θ B ≫ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval T B.V t =
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval S B.V (θ.hom ((1 : G), t)).2 ≫
         (B.ρ (θ.hom ((1 : G), t)).1).asHom := rfl
 
 end

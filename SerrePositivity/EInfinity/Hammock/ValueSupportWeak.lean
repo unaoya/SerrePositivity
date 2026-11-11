@@ -26,19 +26,19 @@ variable {B : Type u} {X Y : SSet.{u}}
   (μ : Y ⟶ (Functor.const SimplexCategoryᵒᵖ).obj B) (f : X ⟶ Y) (h : f ≫ μ = ℓ)
 
 lemma weak_of_singleton_restrictions
-    (hw : ∀ β, IsWeakHomotopyEquivalence (restriction ℓ μ f h {β})) :
-    IsWeakHomotopyEquivalence f := by
-  have hc : IsWeakHomotopyEquivalence (colim.map (diagramMap ℓ μ f h)) :=
+    (hw : ∀ β, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (restriction ℓ μ f h {β})) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f := by
+  have hc : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (colim.map (diagramMap ℓ μ f h)) :=
     weakFiniteSubsetColimitMap _ (finite_restriction_weak ℓ μ f h hw)
-  have heX := (isPrecompositionEquivalence_of_iso (colimitIso ℓ)).isWeakHomotopyEquivalence
-  have heY := (isPrecompositionEquivalence_of_iso (colimitIso μ)).isWeakHomotopyEquivalence
+  have heX := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (colimitIso ℓ)).isWeakHomotopyEquivalence
+  have heY := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (colimitIso μ)).isWeakHomotopyEquivalence
   apply heX.cancel_left
   rw [← colimitIso_naturality ℓ μ f h]
   exact hc.comp heY
 
 lemma weak_of_contractible_fibers
-    (hc : ∀ β, IsWeaklyContractible (SimplicialValueFiber.space ℓ β)) :
-    IsWeakHomotopyEquivalence ℓ :=
+    (hc : ∀ β, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SimplicialValueFiber.space ℓ β)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ℓ :=
   weak_of_singleton_restrictions ℓ (𝟙 _) ℓ (Category.comp_id ℓ)
     (fun β => singleton_restriction_weak ℓ β (hc β))
 

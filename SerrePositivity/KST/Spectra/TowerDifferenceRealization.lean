@@ -21,7 +21,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 variable (X : ℕ → PointedSimplicialSet.{u}) (p : ∀ n, X (n + 1) ⟶ X n)
   [∀ n, KanComplex (X n).right] [∀ n, Fibration (p n).right] (r : ℕ)
-  (a : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint)
+  (a : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint)
 
 /-- 指定した隣接差を実現する球面と零ホモトピーを逐次選ぶ。 -/
 def differenceRealizationStage : ∀ n, NullSphereStage (X n) r
@@ -31,7 +31,7 @@ def differenceRealizationStage : ∀ n, NullSphereStage (X n) r
 
 /-- 選んだ球面は、ホモトピー類だけでなく単体として厳密に整合する。 -/
 lemma differenceRealizationStage_comp (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n))
       (differenceRealizationStage X p r a (n + 1)).1 =
     (differenceRealizationStage X p r a n).1 :=
   Classical.choose (Classical.choose_spec
@@ -41,7 +41,7 @@ lemma differenceRealizationStage_comp (n : ℕ) :
 lemma differenceRealizationStage_difference (n : ℕ) :
     NullHomotopyDifference.difference (differenceRealizationStage X p r a n).2
       (NullHomotopyDifference.mapNullTo (p n).right
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n)) (differenceRealizationStage_comp X p r a n)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n)) (differenceRealizationStage_comp X p r a n)
         (differenceRealizationStage X p r a (n + 1)).2) = a n :=
   Classical.choose_spec (Classical.choose_spec
     (exists_difference_step (p n) (differenceRealizationStage X p r a n) (a n)))
@@ -49,7 +49,7 @@ lemma differenceRealizationStage_difference (n : ℕ) :
 /-- 任意の族は、厳密に整合する球面の零ホモトピーの隣接差の族として実現できる。 -/
 theorem exists_nullHomotopyDifferenceFamily :
     ∃ s : ∀ n, (X n).right.PtSimplex (r + 1) (X n).basepoint,
-      ∃ hs : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n))
+      ∃ hs : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n))
         (s (n + 1)) = s n,
       ∃ R : ∀ n, PtSimplex.RelStruct .const (s n) (Fin.last (r + 1)),
         nullHomotopyDifferenceFamily X p r s hs R = a := by

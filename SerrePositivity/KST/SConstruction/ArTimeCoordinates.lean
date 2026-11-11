@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.Gapped
-public import SerrePositivity.InfinityCategories.Core.MappingSpaceMap
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.MappingSpaceMap
 
 /-! # object S のホモトピーの時刻座標
 概要：区間の単体の時刻を Ar[n] の区間の左端で読む。
@@ -56,7 +56,7 @@ lemma arTimeCoordinate_naturality {n m : SimplexCategoryᵒᵖ} (α : n ⟶ m)
 方針：各鎖の全頂点で一定性を計算する。
 規約：両端の時刻に共通。使われ方：object S のホモトピーの両端。 -/
 lemma arTimeCoordinate_constant (n : ℕ) (i : Fin 2) :
-    arTimeCoordinate (PinchedHom.constant (stdSimplex.obj₀Equiv.symm i) n) =
+    arTimeCoordinate (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm i) n) =
       (SSet.const (stdSimplex.obj₀Equiv.symm i) : arNerve.{u} n ⟶ Δ[1]) := by
   apply SSet.hom_ext
   intro d

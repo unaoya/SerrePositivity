@@ -30,14 +30,14 @@ open SerrePositivity.SimplicialModel
 -/
 def monoidBarFundamentalEquiv (M : SimplicialObject MonCat.{u})
     (hM : SimplicialMonoid.IsGrouplike M) :
-    π₀ (monoidSpace M) ≃ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (monoidBarKanPointed M).right 0
+    π₀ (monoidSpace M) ≃ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (monoidBarKanPointed M).right 0
       (monoidBarKanPointed M).basepoint := by
   let R := Spectra.PointedKanReplacement.obj (monoidPointed M)
   let i := AnodyneKanReplacement.unit.app (monoidSpace M)
   have hi : IsIso (AnodyneHomotopy.anodyneQ.map i) :=
     Localization.inverts _ anodyneExtensions i (AnodyneKanReplacement.unit_anodyne _)
   exact (Equiv.ofBijective (mapπ₀ i) (PiZeroLocalization.piZero_bijective i hi)).trans
-    ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := R.right) (x := R.basepoint)).symm.trans
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero (X := R.right) (x := R.basepoint)).symm.trans
       (monoidBarHomotopyEquiv M hM 0))
 
 /--
@@ -48,7 +48,7 @@ def monoidBarFundamentalEquiv (M : SimplicialObject MonCat.{u})
 -/
 def stableHatGLBarFundamentalEquiv (A : SimplicialObject RingCat.{u}) :
     stableGeneralLinear (π₀ (ringSpace A)) ≃
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (monoidBarKanPointed (stableHatGL A)).right 0
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (monoidBarKanPointed (stableHatGL A)).right 0
         (monoidBarKanPointed (stableHatGL A)).basepoint :=
   (Iso.monCatIsoToMulEquiv (stableHatGLComponentsIso A)).symm.toEquiv.trans
     (monoidBarFundamentalEquiv (stableHatGL A) (stableHatGL_isGrouplike A))

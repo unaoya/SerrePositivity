@@ -13,7 +13,7 @@ public import SerrePositivity.KST.Spectra.LastVertexWeightHomotopy
 @[expose] public section
 universe u
 open CategoryTheory MonoidalCategory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
 namespace SerrePositivity.KST.Spectra.CosimplicialLastVertex
@@ -30,23 +30,23 @@ def smallCylinder {F G : CosimplicialObject SSet.{u}}
 
 /-- 置換後の終頂点射への前合成は全係数で実際の単体的ホモトピー同値。 -/
 lemma kanWeightPre_homotopyEquivalence (X : AsSmall.{u} SimplexCategory ⥤ SSet.{u}) :
-    IsSimplicialHomotopyEquivalence
-      (weightedSectionsPre (Functor.whiskerLeft AsSmall.down kanWeightMap.{u}) X) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (Functor.whiskerLeft AsSmall.down kanWeightMap.{u}) X) := by
   obtain ⟨H, h₀, h₁, K, k₀, k₁⟩ := kanWeightMap_homotopyInverse.{u}
   let θ := Functor.whiskerLeft AsSmall.down kanWeightMap.{u}
   let η := Functor.whiskerLeft AsSmall.down kanWeightInverse.{u}
-  refine ⟨weightedSectionsPre η X, ?_, ?_⟩
-  · have h : SSet.Homotopy (weightedSectionsPre (η ≫ θ) X)
-        (weightedSectionsPre (𝟙 _) X) :=
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre η X, ?_, ?_⟩
+  · have h : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (η ≫ θ) X)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (𝟙 _) X) :=
       WeightedPreHomotopy.homotopy (θ := η ≫ θ) (η := 𝟙 _) (smallCylinder K)
         (fun i ↦ k₀ (AsSmall.down.obj i)) (fun i ↦ k₁ (AsSmall.down.obj i)) X
-    rw [weightedSectionsPre_comp, weightedSectionsPre_id] at h
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_id] at h
     exact ⟨h⟩
-  · have h : SSet.Homotopy (weightedSectionsPre (θ ≫ η) X)
-        (weightedSectionsPre (𝟙 _) X) :=
+  · have h : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (θ ≫ η) X)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (𝟙 _) X) :=
       WeightedPreHomotopy.homotopy (θ := θ ≫ η) (η := 𝟙 _) (smallCylinder H)
         (fun i ↦ h₀ (AsSmall.down.obj i)) (fun i ↦ h₁ (AsSmall.down.obj i)) X
-    rw [weightedSectionsPre_comp, weightedSectionsPre_id] at h
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_id] at h
     exact ⟨h⟩
 
 end

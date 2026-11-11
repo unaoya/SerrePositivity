@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyRepresentativeLift
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.HomotopyRepresentativeLift
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCoconeUnit
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTotalCoconeUnit
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentHomotopyVertex
 
 /-!

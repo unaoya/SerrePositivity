@@ -18,19 +18,19 @@ open SerrePositivity.InfinityCategories LocalizingInvariants
 
 /-- 同じ元の S₁ 比較を、全高次完全関手族に自然な比較として保持する。 -/
 def sOneQuasicategoryEnrichedComparison :
-    QuasicategoryEnrichedComparison (sExactQuasicategoryEnrichedFunctor.{u} 1)
+    _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedComparison (sExactQuasicategoryEnrichedFunctor.{u} 1)
       stableQuasicategoryEnrichedInclusion := by
   refine ⟨fun C => sOneComparison C.obj, ?_⟩
   intro C D
-  change (sOneComparison C.obj ▷ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C D : SSet.{u})) ≫
-    uncurry (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C D).ι =
+  change (sOneComparison C.obj ▷ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors C D : SSet.{u})) ≫
+    uncurry (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors C D).ι =
       uncurry (sExactFamilyMap 1 C D) ≫ sOneComparison D.obj
   rw [sExactFamilyMap, uncurry_curry]
   exact sOneComparison_family_action C D
 
 /-- 有限反復の元の先頭 S₁ 比較は、全高次入力族に厳密に自然である。 -/
 def multiSOneQuasicategoryEnrichedComparison (r : ℕ) (d : Fin r → SimplexCategoryᵒᵖ) :
-    QuasicategoryEnrichedComparison
+    _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedComparison
       (multiSQuasicategoryEnrichedFunctor.{u} (r + 1) ((oneDirectionIndex r).obj d))
       (multiSQuasicategoryEnrichedFunctor r d) := by
   refine ⟨fun C => sOneComparison (multiSExactCategory r d C).obj, ?_⟩

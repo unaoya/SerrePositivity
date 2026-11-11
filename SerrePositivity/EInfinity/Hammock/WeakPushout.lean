@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.WeakHomotopyPrecomposition
-public import SerrePositivity.InfinityCategories.Core.KanFibrationEquivalence
-public import SerrePositivity.InfinityCategories.Core.PrecompositionMonoCobaseChange
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.WeakHomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.KanFibrationEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.PrecompositionMonoCobaseChange
 
 /-!
 # 元の弱ホモトピー同値の pushout による保存
@@ -23,39 +23,39 @@ open CategoryTheory CategoryTheory.Limits MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
 
 lemma trivialKanFibration_pre_of_mono_weak {A B : SSet.{u}} (f : A ⟶ B) [Mono f]
-    (hf : IsWeakHomotopyEquivalence f) (Z : SSet.{u}) [KanComplex Z] :
-    TrivialKanFibration ((pre f).app Z) :=
-  trivialKanFibration_of_fibration_of_simplicialHomotopyEquivalence _
-    (F2.pre_isSimplicialHomotopyEquivalence_of_weakHomotopyEquivalence f hf Z)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f) (Z : SSet.{u}) [KanComplex Z] :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration ((pre f).app Z) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.trivialKanFibration_of_fibration_of_simplicialHomotopyEquivalence _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.pre_isSimplicialHomotopyEquivalence_of_weakHomotopyEquivalence f hf Z)
 
 /-- 元の弱同値が単射なら、任意の相手側への元の pushout で保存される。 -/
 lemma weakPushout_mono {A B C D : SSet.{u}} {i : A ⟶ B} [Mono i]
     {g : A ⟶ C} {k : B ⟶ D} {j : C ⟶ D}
-    (hi : IsWeakHomotopyEquivalence i) (h : IsPushout i g k j) :
-    IsWeakHomotopyEquivalence j := by
+    (hi : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence i) (h : IsPushout i g k j) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence j := by
   intro Z hZ
   have := trivialKanFibration_pre_of_mono_weak i hi Z
-  have : TrivialKanFibration ((pre j).app Z) :=
-    ⟨trivialKanFibrations.of_isPullback (isPullback_pre_of_isPushout h Z).flip
-      (TrivialKanFibration.mem (p := (pre i).app Z))⟩
-  have he := isQCatEquivalence_of_trivialKanFibration ((pre j).app Z)
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration ((pre j).app Z) :=
+    ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.of_isPullback (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isPullback_pre_of_isPushout h Z).flip
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := (pre i).app Z))⟩
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isQCatEquivalence_of_trivialKanFibration ((pre j).app Z)
   exact he.isSimplicialHomotopyEquivalence.mapPiZero_bijective
 
 /-- 相手側が単射なら、単射とは限らない元の弱同値も元の pushout で保存される。 -/
 lemma weakPushout_other_mono {A B C D : SSet.{u}} {i : A ⟶ B} {g : A ⟶ C} [Mono g]
-    {k : B ⟶ D} {j : C ⟶ D} (hi : IsWeakHomotopyEquivalence i)
-    (h : IsPushout i g k j) : IsWeakHomotopyEquivalence j := by
+    {k : B ⟶ D} {j : C ⟶ D} (hi : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence i)
+    (h : IsPushout i g k j) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence j := by
   intro Z hZ
-  have : TrivialKanFibration (relativeEquivalencePathMapAt ((pre g).app Z) 1) :=
-    trivialKanFibration_relativeEquivalencePathMapAt_pre g Z 1
-  have hi' := (F2.pre_isSimplicialHomotopyEquivalence_of_weakHomotopyEquivalence i hi Z)
-    |> IsSimplicialHomotopyEquivalence.isQCatEquivalence
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.relativeEquivalencePathMapAt ((pre g).app Z) 1) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_relativeEquivalencePathMapAt_pre g Z 1
+  have hi' := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.pre_isSimplicialHomotopyEquivalence_of_weakHomotopyEquivalence i hi Z)
+    |> _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence.isQCatEquivalence
   have hp := hi'.pullback_snd_of_relativePath ((pre g).app Z)
-  have hpb := (isPullback_pre_of_isPushout h Z).flip
+  have hpb := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isPullback_pre_of_isPushout h Z).flip
   have he := hpb.isoPullback_hom_snd
-  have hq : IsQCatEquivalence ((pre j).app Z) := by
+  have hq : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence ((pre j).app Z) := by
     rw [← he]
-    exact (qCatEquivalenceOfIso hpb.isoPullback).isQCatEquivalence.comp hp
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso hpb.isoPullback).isQCatEquivalence.comp hp
   exact hq.isSimplicialHomotopyEquivalence.mapPiZero_bijective
 
 end SerrePositivity.EInfinity.Hammock

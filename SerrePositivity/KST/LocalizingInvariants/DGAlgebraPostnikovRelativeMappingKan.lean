@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A B : Mon (Complex R)) [B.X.IsStrictlyLE 0]
   (n : ℤ) (hn : 0 ≤ n) (b : cellResolution R A ⟶ postnikov R B n)
@@ -38,7 +38,7 @@ lemma postnikovRelativeMultiplicativeCellMapping_kanComplex :
     SSet.KanComplex (relativeMultiplicativeMappingSimplices R
       (postnikovTransition R B (n + 1) n (by omega)) b) := by
   have := postnikovClassRelativeMultiplicativeCellMapping_kanComplex R A B n hn b
-  exact kanComplex_of_iso
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanComplex_of_iso
     (postnikovRelativeMultiplicativeMappingIso R (cellResolution R A) B n hn b).symm
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.SequentialResizedDiagramIso
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentOppositeEdge
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentOppositeEdge
 
 /-!
 概要：厳密な BF 錐全体の比較を、指定された coherent 錐全体の関手同型へ写す。
@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory Limits SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.NonConnective
 variable {I : Type u} [SmallCategory I]
   {C : Type v} [Category.{u} C] [SimplicialCategory C]
@@ -25,7 +25,7 @@ variable {I : Type u} [SmallCategory I]
   (hm : ∀ i, m ≫ d.π.app i = c.π.app i ≫ η.app i)
 
 /-- 元の頂点射と元の比較成分を全て保持した、追加始対象上の自然変換。 -/
-def sequentialConeFunctorComparison : strictConeFunctor c ⟶ strictConeFunctor d where
+def sequentialConeFunctorComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictConeFunctor c ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictConeFunctor d where
   app x := match x with
     | .star => m
     | .of a => η.app (AsSmall.down.obj a)
@@ -42,18 +42,18 @@ def sequentialConeFunctorComparison : strictConeFunctor c ⟶ strictConeFunctor 
 
 /-- 同じ元の錐の全成分が可逆なら、coherent 錐全体の関手同型が得られる。 -/
 def sequentialConeFunctorIso [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)]
-    (hη : ∀ i, IsInvertibleEdge (coherentNerveEdge (η.app i)))
-    (hm' : IsInvertibleEdge (coherentNerveEdge m)) :
-    FunctorIso (strictCoherentCone c).val (strictCoherentCone d).val := by
-  let e : FunctorIso (resizedNerveMap (strictConeFunctor c) ≫ nerveToCoherent C)
-      (resizedNerveMap (strictConeFunctor d) ≫ nerveToCoherent C) :=
+    (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (η.app i)))
+    (hm' : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge m)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone c).val (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone d).val := by
+  let e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictConeFunctor c) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictConeFunctor d) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C) :=
     sequentialResizedFunctorIso (sequentialConeFunctorComparison c d η m hm) (by
     intro x
     cases x with
     | star => exact hm'
     | of a => exact hη (AsSmall.down.obj a))
   exact e.precomp
-    (joinMap (𝟙 Δ[0]) ((nerveAsSmallIso I).hom ≫ nerveMap WithInitial.incl) ≫
-      nerveInitialCone (WithInitial.starInitial (C := AsSmall.{v} I)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.nerveAsSmallIso I).hom ≫ nerveMap WithInitial.incl) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveInitialCone (WithInitial.starInitial (C := AsSmall.{v} I)))
 
 end SerrePositivity.KST.NonConnective

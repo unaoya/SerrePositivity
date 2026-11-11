@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：加法準同型の標的として使う群。 -/
 def completionWideGroup (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) : AddCommGrpCat.{u} := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) : AddCommGrpCat.{u} := by
   let : AddCommGroup (SSet.π₀ (LocalizingInvariants.completionCofiberWide
     (((multiSEndofunctor r).obj ι).map f).val : SSet.{u})) := completionWideAddCommGroup r ι f hf
   exact AddCommGrpCat.of (SSet.π₀ (LocalizingInvariants.completionCofiberWide
@@ -34,7 +34,7 @@ def completionWideGroup (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
 使われ方：余核から障害群への逆写像の前段。 -/
 def completionKZeroToWide (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     TriangulatedK0 (hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier) →+
       completionWideGroup r ι f hf :=
   TriangulatedK0.lift (completionWideObjectClass r ι f hf)
@@ -47,7 +47,7 @@ def completionKZeroToWide (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
 使われ方：余核の逆写像の合成の計算。 -/
 lemma completionKZeroToWide_mk (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (a : hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier) :
     completionKZeroToWide r ι f hf (TriangulatedK0.mk a) =
       completionWideObjectClass r ι f hf a :=
@@ -59,7 +59,7 @@ lemma completionKZeroToWide_mk (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
 使われ方：成分評価を元の K₀ 余核へ降ろす核条件。 -/
 lemma completionKZeroToWide_comp_source (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     (completionKZeroToWide r ι f hf).comp
       (triangulatedKZeroSourceMap (((multiSEndofunctor r).obj ι).map f)) = 0 := by
   apply TriangulatedK0.hom_ext
@@ -77,7 +77,7 @@ lemma completionKZeroToWide_comp_source (r : ℕ) (ι : Fin r → SimplexCategor
 使われ方：離散的障害と K₀ 余核の同定。 -/
 def completionKZeroCokernelToWide (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionKZeroCokernel r ι f →+ completionWideGroup r ι f hf :=
   QuotientAddGroup.lift (triangulatedKZeroSourceMap (((multiSEndofunctor r).obj ι).map f)).range
     (completionKZeroToWide r ι f hf) (by

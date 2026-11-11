@@ -11,6 +11,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：Moss Lemma 26 (2)・(3) を細分からの射への前合成に適用する。
 規約：Moss 2020 Lemma 29 の前後の面の計算。
 使われ方：pairing の指定面の一意性と先行関係の正則性。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

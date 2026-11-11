@@ -22,7 +22,7 @@ namespace SerrePositivity.DiagramModel.FrameWeightedLimit
 variable (K : Type w) [SmallCategory K]
   {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
   [ModelCategory SSet.{w}]
-  (I J : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 abbrev functor (A : K ⥤ SimplexCategory ⥤ C) : C ⥤ SSet.{w} :=
   SmallHomFrameWeights.hom K A ⋙ HomotopyLimit.functor Kᵒᵖ I J

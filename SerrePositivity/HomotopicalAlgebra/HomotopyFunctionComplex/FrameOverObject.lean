@@ -34,11 +34,11 @@ abbrev middle : C ⥤ SSet.{v} :=
   (FrameOverFunctor.hom (FrameOverFunctor.commonObj cof q (target X) (family A)
     (familyAugmentation X A a))).obj (Opposite.op point)
 
-abbrev left : cosimplicialHom (q.obj.obj X) ⟶ middle cof q X A a :=
+abbrev left : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (q.obj.obj X) ⟶ middle cof q X A a :=
   (FrameOverFunctor.homLeft cof q (target X) (family A)
     (familyAugmentation X A a)).app (Opposite.op point)
 
-abbrev right : cosimplicialHom A ⟶ middle cof q X A a :=
+abbrev right : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A ⟶ middle cof q X A a :=
   (FrameOverFunctor.homRight cof q (target X) (family A)
     (familyAugmentation X A a)).app (Opposite.op point)
 

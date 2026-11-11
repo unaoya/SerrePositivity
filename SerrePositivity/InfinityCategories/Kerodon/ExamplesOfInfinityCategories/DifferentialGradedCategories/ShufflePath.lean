@@ -9,6 +9,8 @@ public import Mathlib.Order.Interval.Finset.Fin
 方針：各頂点以前のステップを部分集合と補集合に分ける。
 規約：KST Construction A.5 の標準 shuffle。
 使われ方：shuffle の面と退化の計算および AW との比較。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

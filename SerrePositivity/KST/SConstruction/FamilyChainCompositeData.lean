@@ -29,13 +29,13 @@ structure FamilyChainCompositeData {U E : SSet.{u}} {f g : U ⟶ E}
 def familyChainCompositeData {U E : SSet.{u}} [KanComplex E] {f g : U ⟶ E}
     (c : FamilyHomotopyChain f g) : FamilyChainCompositeData c := by
   induction c with
-  | nil f => exact ⟨functorHomotopyRefl f, .nil f⟩
+  | nil f => exact ⟨_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl f, .nil f⟩
   | cons a tail T =>
-      let d := _root_.SerrePositivity.InfinityCategories.Kan.kanMappingComposition
-        (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a))
-        (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy T.homotopy))
-      let H := simplicialHomotopyOfFunctorEdge d.edge.toTruncated
-      have he : (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy H)).edge = d.edge.edge := by
+      let d := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.kanMappingComposition
+        (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a))
+        (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy T.homotopy))
+      let H := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge d.edge.toTruncated
+      have he : (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)).edge = d.edge.edge := by
         change SSet.yonedaEquiv (curry (uncurry (SSet.yonedaEquiv.symm d.edge.edge))) = _
         rw [curry_uncurry, Equiv.apply_symm_apply]
       exact ⟨H, .cons a tail T.witness (d.triangle.ofEq rfl rfl he.symm)⟩

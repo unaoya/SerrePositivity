@@ -1,0 +1,473 @@
+module
+
+public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag.KanPullbackCofinality
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.KanPointSurjectivity
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.StraighteningBaseChangeVertex
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.ScaffoldWeightedResolutionPoint
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.SmallSpaceDiagram
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.StrictTransportOppositeEvaluation
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.TransportSimplexConstantEdge
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LocalizationUlift
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWConstant
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWUnit
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWUnitMap
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NormalizedChain
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NormalizedDifferential
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardModule
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.HomIntervalNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.KanCosliceComparison
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Vertices
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianSectionsPrecomposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PointedClassificationReconstruction
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PointedFamilyPointHom
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PointedSpaceHomPoint
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.RelativeFunctorInverse
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SimplexFirstVertexNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SimplexSectionBaseChange
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SimplexUnderBaseChange
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SimplexUnderDomains
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SpaceDiagramImage
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexEdgeCover
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.HomInfinityBifunctor
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftCoherentTransportReconstruction
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningBaseChange
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningCandidate
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningOppositeComparison
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningRepresentation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftUnstraighteningFiberIso
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PointedReverseCompositionTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PointedSpaceLeftResolution
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorOverPrecomposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorVertices
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionCoreLift
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexDeformationIso
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SmallLeftUnstraightening
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SmallUnstraighteningFunctorHom
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.LeftFibrationInitialEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveConstantNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveConstantProduct
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.RelativeFunctorEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.RelativeFunctorPostcomposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementFiber
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoreProduct
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PointedSpaceFiberVertices
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.ContractibleTotalSequence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FiberComponents
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FibrationBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FibrationComparison
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FibrationMultiplication
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FibrationNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramCoherentNerve
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramValueIso
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.RelativeFunctorSpace
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.HomCovariantComparison
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FullyFaithfulHomComparison
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.BousfieldKanSectionsIso
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.KanConeLimits
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentEncoder
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleFamilySpaces
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.RelativeSectionJointComparison
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.PullbackSections
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.RelativeFunctorOverEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.QuasicategoryCore
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.CompositionCorrespondenceDiagonal
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.CompositionCorrespondenceFaces
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.F1MappingSpacesCompositionCorrespondence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHomComposition
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RepresentableHomInfinity
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RepresentableLimitCharacterization
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.AWClosedComposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedHomClosedComposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.FractionKanCosliceClassification
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.FractionKanDescent
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.FractionSimplexKanComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.MarkedSpanFamilyInnerFibration
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakIdentitySpanPoint
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.CoreEquivalence
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedDiagramRestriction
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreTrivialFibration
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.RelativeFunctorActionEvaluation
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.RelativeFunctorBaseChangeNaturality
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceEdgeValue
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentFullSubcategoryRestriction
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberSimplexLifting
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SphericalFiberLift
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy01
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy02
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy03
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy04
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy05
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy06
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy07
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy10
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy11
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy13
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy15
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy17
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy18
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy19
+public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy20
+
+@[expose] public section
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexFiberPoint := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pointedVertexFiberPoint
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pointedVertexPointHom
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedSpaceFiberPointOfHom := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pointedSpaceFiberPointOfHom
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.kanDiagramCoherentNerve_vertex := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve_vertex
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.spaceInfinityVertex_eq_coherent := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.spaceInfinityVertex_eq_coherent
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramValueIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.pointedReverseKanFiberComparison := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.pointedReverseKanFiberComparison
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.pointedSpaceFiberVertexEquiv := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceFiberVertexEquiv
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.pointedSpaceLeftResolutionComparison := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.pointedSpaceLeftResolutionComparison
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanPointFiberComparison := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanPointFiberComparison
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportOppositeComponentIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.F2.spaceInfinityEdgeValue := _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.spaceInfinityEdgeValue
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.controlledTriangleCoherentEncoder := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleCoherentEncoder
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.controlledTriangleFamilySpace_isContractibleKan := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleFamilySpace_isContractibleKan
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.controlledTriangleFamilyValue := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleFamilyValue
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.leftCoherentTransportComparison := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransportComparison
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.representableHomCoherentIso := _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representableHomCoherentIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.coyonedaInfinityMap_vertex := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coyonedaInfinityMap_vertex
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.leftStraighteningCandidate_vertex := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningCandidate_vertex
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.leftStraighteningCoherentMap_oppositeVertexIso := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningCoherentMap_oppositeVertexIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSpaceDiagram_classificationIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fractionKanSpaceDiagram_classificationIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram_baseChangeIso := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_baseChangeIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.KanCosliceComparison.fiberIso := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.KanCosliceComparison.fiberIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.KanCosliceComparison.start := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.KanCosliceComparison.start
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.leftUnstraighteningFiberIso := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftUnstraighteningFiberIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallUnstraighteningFunctorHom
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.smallLeftUnstraighteningProjection := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallLeftUnstraighteningProjection
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedLeftStraighteningReconstruction := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pointedLeftStraighteningReconstruction
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageInclusion_isFullyFaithful := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImageInclusion_isFullyFaithful
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.F2.Compact.homInfinityCovariant_covariantIso := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.homInfinityCovariant_covariantIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.covariantRepresentableInfinity_isLimit := _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.covariantRepresentableInfinity_isLimit
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.isLimitCone_of_covariantRepresentableInfinity := _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.isLimitCone_of_covariantRepresentableInfinity
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.F2.Presentable.covariantHomComparisonIso := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.covariantHomComparisonIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.smallSpaceDiagram
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramInclusion := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.smallSpaceDiagramInclusion
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSpaceDiagram_classificationRestrictionIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fractionKanSpaceDiagram_classificationRestrictionIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSpaceDiagram_restrictionIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fractionKanSpaceDiagram_restrictionIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram_firstVertexIso := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_firstVertexIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram_firstVertexTransportIso := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_firstVertexTransportIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_ulift_isLocalization := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.transportSimplexFirstVertexMap_ulift_isLocalization
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_vertex := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFirstVertexMap_vertex
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.F1.Transport.transportSimplexFirstVertexMap_ulift_edge_image := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFirstVertexMap_ulift_edge_image
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.Straightening.firstVertex_zeroSimplex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.firstVertex_zeroSimplex
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_ulift_naturality := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.transportSimplexFirstVertexMap_ulift_naturality
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_naturality := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFirstVertexMap_naturality
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.transportSimplexDomainFunctor_baseChange := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexDomainFunctor_baseChange
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.Transport.transportSimplexFirstVertexMap_interval_constant := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.transportSimplexFirstVertexMap_interval_constant
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.transportSimplexUnderDomainMap_initial := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexUnderDomainMap_initial
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.strictTransportDomains_firstVertex := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.strictTransportDomains_firstVertex
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.transportSimplexUnderDomainTransformation := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexUnderDomainTransformation
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanComparison := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fractionSimplexKanComparison
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanComparisonEdge := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fractionSimplexKanComparisonEdge
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily_boundary := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamily_boundary
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.quasicategoryCoreLift_ι := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreLift_ι
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.IsQCatEquivalence.core := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.IsQCatEquivalence.core
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.quasicategoryCoreUnitHomEquiv_eq := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.quasicategoryCoreUnitHomEquiv_eq
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.quasicategoryCoreMap_ι := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap_ι
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.F2.coreMap_trivialKanFibration := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.coreMap_trivialKanFibration
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.relativeFunctorBaseChangeForward_apply := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.relativeFunctorBaseChangeForward_apply
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.relativeFunctorEvaluate_ι := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.relativeFunctorEvaluate_ι
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.relativeSectionJointComparisonIso := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.relativeSectionJointComparisonIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.relativeFunctorOverPre_apply := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.relativeFunctorOverPre_apply
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.relativeFunctorOverPre_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.relativeFunctorOverPre_isQCatEquivalence
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.relativeFunctorOverPre_ι := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.relativeFunctorOverPre_ι
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.relativeFunctorUncurry_injective := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorUncurry_injective
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.HomotopyLimits.relativeFunctorUncurry_parameter := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.relativeFunctorUncurry_parameter
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.exists_relativeFunctorInverse_of_precompositionEquivalence := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.exists_relativeFunctorInverse_of_precompositionEquivalence
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.exists_relativeFunctorVertex := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.exists_relativeFunctorVertex
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.relativeFunctorOverPre_vertex := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.relativeFunctorOverPre_vertex
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.HomotopyLimits.relativeFunctorPost_ι := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.relativeFunctorPost_ι
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.awData_closed_post_component := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.awData_closed_post_component
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.awData_closed_pre_component := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.awData_closed_pre_component
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.pinchedClosedStandardSimplex_coordinates := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedClosedStandardSimplex_coordinates
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant_component_zero := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardConstant_component_zero
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant_singleton := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardConstant_singleton
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.DoldKanComparison.awData_unit_left := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awData_unit_left
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.DoldKanComparison.awData_unit_right := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awData_unit_right
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.pinchedHomComposition_standard := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomComposition_standard
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant_pullback := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardConstant_pullback
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.DoldKanComparison.standardPullback_comp := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardPullback_comp
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.DoldKanComparison.standardPullback_id := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardPullback_id
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.DoldKanComparison.standardPullback_val := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardPullback_val
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex_zeroCyclesIso_hom_subtype := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_zeroCyclesIso_hom_subtype
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.DoldKanComparison.standardMooreTermIso_hom_subtype := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardMooreTermIso_hom_subtype
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.HomotopyLimits.bousfieldKanSectionsIso := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsIso
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.HomotopyLimits.bousfieldKanSectionsMap := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsMap
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.weightedNerveConstantProduct_projection := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveConstantProduct_projection
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.simplicialReplacementConstantLift_tautScaffold := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementConstantLift_tautScaffold
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.weightedNerveConstantLift_map := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveConstantLift_map
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.weightedNerveMap_projection := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveMap_projection
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.HomotopyLimits.kanObjectHomCone_isLimit_of_forget := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanObjectHomCone_isLimit_of_forget
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.QuasicategoryEnrichedComparison.precompose := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedComparison.precompose
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.kanCocartesianSectionsι_isIso_of_leftFibration := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.kanCocartesianSectionsι_isIso_of_leftFibration
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.cocartesianSectionEvaluate_overPre := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.cocartesianSectionEvaluate_overPre
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.cocartesianSectionsPre_ι := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianSectionsPre_ι
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.compositionCorrespondenceEvaluation_last := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.compositionCorrespondenceEvaluation_last
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.compositionCorrespondenceFirst_trivialKanFibration := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.compositionCorrespondenceFirst_trivialKanFibration
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.compositionCorrespondenceEvaluation_first := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.compositionCorrespondenceEvaluation_first
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.compositionCorrespondenceDiagonal_uncurry := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.compositionCorrespondenceDiagonal_uncurry
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.coherentHomIntervalComparison_enriched_naturality := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison_enriched_naturality
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.HomotopyLimits.coherentFullSubcategoryLift_inclusion := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coherentFullSubcategoryLift_inclusion
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.coherentSimplexDeformation_vertex := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexDeformation_vertex
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.coherentSimplexDeformation_vertex_isInvertible := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexDeformation_vertex_isInvertible
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Kan.connectingHomEquivOfTotalSubsingleton := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connectingHomEquivOfTotalSubsingleton
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftSimplex
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.boundary := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift.boundary
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Kan.connecting := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connecting
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Kan.connectingHom := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connectingHom
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SphericalFiberLift
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.pullback_positive_fiber_subsingleton := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag.pullback_positive_fiber_subsingleton
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Kan.fiber_vertex_base := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiber_vertex_base
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberLift_ι
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiber_hom_ext
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι_comp
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι_point
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMapOver_piIsomorphism := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberMapOver_piIsomorphism
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Kan.fiber_vertex_ext := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiber_vertex_ext
+
+@[deprecated (since := "2026-11-10")]
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_piIsomorphism := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberMap_piIsomorphism

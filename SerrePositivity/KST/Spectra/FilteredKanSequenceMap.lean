@@ -50,7 +50,7 @@ def filteredLevelComparison (D : J ⥤ KanSequence.{u})
 使われ方：BF 1978 §2、Goerss–Jardine I §7。比較射の打ち消し。 -/
 theorem filteredLevelComparison_piIsomorphism (D : J ⥤ KanSequence.{u})
     (hD : ∀ a, (D.obj a).OmegaCondition) (k : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (filteredLevelComparison D hD k).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (filteredLevelComparison D hD k).right :=
   replacementProjection_piIsomorphism (filteredKanSequence D) k
 
 /-- 概要：図式の自然変換が各段の点つき図式に誘導する自然変換。
@@ -133,12 +133,12 @@ theorem filteredSpectrumMap_comparison (τ : D ⟶ E) (k : ℕ) :
 規約：零次数を含み、全ての基点で述べる。
 使われ方：BF 1978 §2、Goerss–Jardine I §7。telescope の置換不変性。 -/
 theorem filteredSpectrumMap_levelwise (τ : D ⟶ E)
-    (hτ : ∀ a k, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((τ.app a).app k).right) (k : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((filteredSpectrumMap hD hE τ).app k).right := by
-  have hc : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (colimMap (levelTransformation τ k)).right :=
+    (hτ : ∀ a k, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((τ.app a).app k).right) (k : ℕ) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((filteredSpectrumMap hD hE τ).app k).right := by
+  have hc : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (colimMap (levelTransformation τ k)).right :=
     pointedColimMap_kanPiIsomorphism _ (fun a ↦ hτ a k)
   have hcomp := (filteredLevelComparison_piIsomorphism D hD k).comp hc
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := (filteredLevelComparison E hE k).right) _
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := (filteredLevelComparison E hE k).right) _
     (filteredLevelComparison_piIsomorphism E hE k)
   have h := congrArg Under.Hom.right (filteredSpectrumMap_comparison hD hE τ k)
   change ((filteredSpectrumMap hD hE τ).app k).right ≫ (filteredLevelComparison E hE k).right =
@@ -151,7 +151,7 @@ theorem filteredSpectrumMap_levelwise (τ : D ⟶ E)
 規約：coherent nerve の同値との同定は別工程。
 使われ方：BF 1978 §2、HA §1.4.2。telescope の整数次数での置換不変性。 -/
 theorem filteredSpectrumMap_piIsomorphism (τ : D ⟶ E)
-    (hτ : ∀ a k, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((τ.app a).app k).right) :
+    (hτ : ∀ a k, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((τ.app a).app k).right) :
     OmegaSpectrum.PiIsomorphism (filteredSpectrumMap hD hE τ) :=
   OmegaSpectrum.piIsomorphism_of_levelwise _ (filteredSpectrumMap_levelwise hD hE τ hτ)
 

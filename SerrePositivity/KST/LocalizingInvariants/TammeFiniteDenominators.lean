@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeDenominatorClosure
-public import SerrePositivity.InfinityCategories.Stable.FiniteCofiberDenominators
-public import SerrePositivity.InfinityCategories.Stable.FiniteCofiberEqualization
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiniteCofiberDenominators
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiniteCofiberEqualization
 
 /-!
 概要：元の Tamme 分母の有限族に実共通分母と共有合成二単体を構成する。
@@ -20,15 +20,15 @@ open CategoryTheory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
 lemma tammeLocalizingEdges_iff_trW {x y : (laxCategory p q).obj _⦋0⦌}
     (f : Truncated.Edge (X := (truncation 2).obj (laxCategory p q).obj) x y) :
     f.edge ∈ tammeLocalizingEdges p q ↔
-      (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q))).trW
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoClosure (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (pullbackInclusion p q))).trW
         (SSet.Truncated.HomotopyCategory.homMk f) := by
   rw [← tammeLocalizingEdges_stableClosure]
-  exact cofiberStableEdges_iff_trW _ f
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_iff_trW _ f
 
 lemma tammeLocalizingEdges_commonDenominator {n : ℕ} {x : (laxCategory p q).obj _⦋0⦌}
     (y : Fin n → (laxCategory p q).obj _⦋0⦌)
@@ -40,11 +40,11 @@ lemma tammeLocalizingEdges_commonDenominator {n : ℕ} {x : (laxCategory p q).ob
       ∃ r : ∀ i, Truncated.Edge (X := (truncation 2).obj (laxCategory p q).obj) a (y i),
         ∀ i, (r i).edge ∈ tammeLocalizingEdges p q ∧
           Nonempty (Truncated.Edge.CompStruct (r i) (s i) t) := by
-  have hs' : ∀ i, (s i).edge ∈ cofiberLocalizingEdges
-      {z | StableVertexClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q)) z} := by
+  have hs' : ∀ i, (s i).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
+      {z | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (pullbackInclusion p q)) z} := by
     simpa only [tammeLocalizingEdges_stableClosure] using hs
   simpa only [tammeLocalizingEdges_stableClosure] using
-    cofiberStableEdges_commonDenominator (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q)) y s hs'
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_commonDenominator (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (pullbackInclusion p q)) y s hs'
 
 lemma tammeLocalizingEdges_equalizeFinite {n : ℕ} {x : (laxCategory p q).obj _⦋0⦌}
     {y z : Fin n → (laxCategory p q).obj _⦋0⦌}
@@ -61,10 +61,10 @@ lemma tammeLocalizingEdges_equalizeFinite {n : ℕ} {x : (laxCategory p q).obj _
       ∃ k : ∀ i, Truncated.Edge (X := (truncation 2).obj (laxCategory p q).obj) a (y i),
         ∀ i, Nonempty (Truncated.Edge.CompStruct t (f i) (k i)) ∧
           Nonempty (Truncated.Edge.CompStruct t (g i) (k i)) := by
-  have hs' : ∀ i, (s i).edge ∈ cofiberLocalizingEdges
-      {a | StableVertexClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q)) a} := by
+  have hs' : ∀ i, (s i).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
+      {a | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (pullbackInclusion p q)) a} := by
     simpa only [tammeLocalizingEdges_stableClosure] using hs
   simpa only [tammeLocalizingEdges_stableClosure] using
-    cofiberStableEdges_equalizeFinite (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q)) f g s hs' h
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_equalizeFinite (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (pullbackInclusion p q)) f g s hs' h
 
 end SerrePositivity.KST.LocalizingInvariants

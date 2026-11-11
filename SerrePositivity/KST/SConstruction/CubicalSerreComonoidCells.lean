@@ -16,18 +16,18 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 元の各 cell の鎖射を持つ余モノイド射。 -/
-def cubicalSerreComonoidCell {K : CubicalSet.{u}} (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) :
+def cubicalSerreComonoidCell {K : CubicalSet.{u}} (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)) :
     (serreConcreteCubeFunctor A).obj c ⟶ (cubicalSerreComonoidFunctor A).obj K :=
   (cubicalSerreComonoidCubeUnit A).app c ≫
     (cubicalSerreComonoidFunctor A).map (cubicalCell c x)
 
 /-- 元の余モノイド cell の underlying 鎖射は同じ cell 射。 -/
-lemma cubicalSerreComonoidCell_hom {K : CubicalSet.{u}} (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube)
+lemma cubicalSerreComonoidCell_hom {K : CubicalSet.{u}} (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube)
     (x : K.obj (op c)) :
     (cubicalSerreComonoidCell A c x).hom = cubicalSerreCell A c x := rfl
 
 /-- 元の二つの cell の連結鎖比較を持つ余モノイド射。 -/
-def cubicalSerreComonoidDayPair {K L : CubicalSet.{u}} (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube)
+def cubicalSerreComonoidDayPair {K L : CubicalSet.{u}} (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube)
     (x : K.obj (op c)) (y : L.obj (op d)) :
     (serreConcreteCubeFunctor A).obj (concreteCubeTensorObj c d) ⟶
       (cubicalSerreComonoidFunctor A).obj K ⊗ (cubicalSerreComonoidFunctor A).obj L :=
@@ -38,7 +38,7 @@ def cubicalSerreComonoidDayPair {K L : CubicalSet.{u}} (c d : _root_.SerrePositi
       (cubicalSerreComonoidCell A c x) (cubicalSerreComonoidCell A d y)
 
 /-- 元の鎖 cotensorator は、元の余モノイド cotensorator の underlying 射。 -/
-lemma serreConcreteCubeComplex_cotensorator_hom (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
+lemma serreConcreteCubeComplex_cotensorator_hom (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) :
     Functor.OplaxMonoidal.δ (serreConcreteCubeComplexFunctor A) c d =
       (Functor.OplaxMonoidal.δ (serreConcreteCubeFunctor A) c d).hom := by
   change (Functor.OplaxMonoidal.δ (serreConcreteCubeFunctor A) c d).hom ≫
@@ -47,7 +47,7 @@ lemma serreConcreteCubeComplex_cotensorator_hom (c d : _root_.SerrePositivity.In
   exact Category.comp_id _
 
 /-- 元の両 cell の余モノイド比較の underlying 鎖射は同じ Day 比較。 -/
-lemma cubicalSerreComonoidDayPair_hom {K L : CubicalSet.{u}} (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube)
+lemma cubicalSerreComonoidDayPair_hom {K L : CubicalSet.{u}} (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube)
     (x : K.obj (op c)) (y : L.obj (op d)) :
     (cubicalSerreComonoidDayPair A c d x y).hom = cubicalSerreDayPair A c d x y := by
   dsimp only [cubicalSerreComonoidDayPair, cubicalSerreDayPair]

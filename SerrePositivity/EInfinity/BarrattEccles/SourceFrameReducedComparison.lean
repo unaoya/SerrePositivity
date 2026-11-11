@@ -25,8 +25,8 @@ def algebraSpecialHammockReducedMap (X Y : (operad A).Algebra) :
     nerve (algebraSpecialHammock A X Y) ⟶ algebraReducedHammock A X Y := by
   let := modelCategory A
   exact algebraSpecialThreeArrowInclusionNerveMap A X Y ≫
-    nerveMap Hammock.ThreeArrow.functor ≫
-      algebraHammockGraphInclusion A Hammock.Word.threeArrow X Y ≫
+    nerveMap _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrow.functor ≫
+      algebraHammockGraphInclusion A _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow X Y ≫
         (algebraHammockReductionIso A X Y).hom
 
 lemma mappingSpaceSpecialHammockReducedMap_fac (X Y : (operad A).Algebra) :
@@ -109,7 +109,7 @@ lemma sourceFrameReducedHammockComparison_isIso (X Y : (operad A).Algebra) :
   infer_instance
 
 lemma sourceFrameReducedHammockNerveMap_weak (X Y : (operad A).Algebra) :
-    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (sourceFrameReducedHammockNerveMap A X Y) := by
   apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
   rw [← sourceFrameReducedHammockComparison_fac]

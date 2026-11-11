@@ -2,10 +2,10 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.BinarySecondProjection
 public import SerrePositivity.KST.LocalizingInvariants.HorizontalEquivalencePullback
-public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.SquarePastingRectangle
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumHomClass
-public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
-public import SerrePositivity.InfinityCategories.Stable.PullbackPasting
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CommutativeSquareRealization
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PullbackPasting
 
 /-!
 概要：元の BF graph と対角を四辺に持つ正方形を構成する。
@@ -34,50 +34,50 @@ lemma condition : graph g ≫ Binary.map (𝟙 Z) g = g ≫ diagonal Z := by
   apply Binary.lift_ext <;> simp [graph, diagonal, Category.assoc]
 
 lemma exists_square : ∃ s : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u},
-    squareBottomEdge ≫ s = SSet.yonedaEquiv.symm (coherentNerveEdge (graph g)).edge ∧
-    squareTopEdge ≫ s = SSet.yonedaEquiv.symm (coherentNerveEdge (diagonal Z)).edge ∧
-    squareLeftEdge ≫ s = SSet.yonedaEquiv.symm (coherentNerveEdge g).edge ∧
-    squareRightEdge ≫ s =
-      SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.map (𝟙 Z) g)).edge := by
-  apply exists_stableSquare_of_homMk_comm (X := Sp.{u}) (coherentNerveEdge (graph g)).toTruncated
-    (coherentNerveEdge (diagonal Z)).toTruncated (coherentNerveEdge g).toTruncated
-    (coherentNerveEdge (Binary.map (𝟙 Z) g)).toTruncated
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ s = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (graph g)).edge ∧
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ s = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (diagonal Z)).edge ∧
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ s = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).edge ∧
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ s =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.map (𝟙 Z) g)).edge := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.exists_stableSquare_of_homMk_comm (X := Sp.{u}) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (graph g)).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (diagonal Z)).toTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.map (𝟙 Z) g)).toTruncated
   change SpectrumHo.hom (graph g) ≫ SpectrumHo.hom (Binary.map (𝟙 Z) g) =
     SpectrumHo.hom g ≫ SpectrumHo.hom (diagonal Z)
   rw [← SpectrumHo.hom_comp, ← SpectrumHo.hom_comp, condition]
 
 def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} := (exists_square g).choose
 
-lemma square_bottom : squareBottomEdge ≫ square g =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (graph g)).edge := (exists_square g).choose_spec.1
+lemma square_bottom : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ square g =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (graph g)).edge := (exists_square g).choose_spec.1
 
-lemma square_top : squareTopEdge ≫ square g =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (diagonal Z)).edge :=
+lemma square_top : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ square g =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (diagonal Z)).edge :=
   (exists_square g).choose_spec.2.1
 
-lemma square_left : squareLeftEdge ≫ square g =
-    SSet.yonedaEquiv.symm (coherentNerveEdge g).edge := (exists_square g).choose_spec.2.2.1
+lemma square_left : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ square g =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).edge := (exists_square g).choose_spec.2.2.1
 
-lemma square_right : squareRightEdge ≫ square g =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.map (𝟙 Z) g)).edge :=
+lemma square_right : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ square g =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.map (𝟙 Z) g)).edge :=
   (exists_square g).choose_spec.2.2.2
 
-def bottomComposition : SSet.Edge.CompStruct (coherentNerveEdge (graph g))
-    (coherentNerveEdge (Binary.snd Z Y)) (coherentNerveEdge (𝟙 Y)) :=
-  (coherentNerveCompStruct (graph g) (Binary.snd Z Y)).ofEq rfl rfl
+def bottomComposition : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (graph g))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.snd Z Y)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 Y)) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (graph g) (Binary.snd Z Y)).ofEq rfl rfl
     (by rw [graph, Binary.lift_snd])
 
 def topComposition (Z : OmegaSpectrum.{u}) : SSet.Edge.CompStruct
-    (coherentNerveEdge (diagonal Z)) (coherentNerveEdge (Binary.snd Z Z))
-    (coherentNerveEdge (𝟙 Z)) :=
-  (coherentNerveCompStruct (diagonal Z) (Binary.snd Z Z)).ofEq rfl rfl
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (diagonal Z)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.snd Z Z))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 Z)) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (diagonal Z) (Binary.snd Z Z)).ofEq rfl rfl
     (by rw [diagonal, Binary.lift_snd])
 
-def rectangle : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle (square g) (BinarySecondProjection.square g Z)
+def rectangle : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.SquarePastingRectangle (square g) (BinarySecondProjection.square g Z)
     (SSet.yonedaEquiv.symm (bottomComposition g).simplex)
     (SSet.yonedaEquiv.symm (topComposition Z).simplex) := by
   apply Classical.choice
-  apply _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.nonempty_squarePastingRectangle
+  apply _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.nonempty_squarePastingRectangle
   · rw [square_right, BinarySecondProjection.square_left]
   · rw [square_bottom, stdSimplex.δ_comp_yonedaEquiv_symm]
     exact congrArg SSet.yonedaEquiv.symm (bottomComposition g).d₂.symm

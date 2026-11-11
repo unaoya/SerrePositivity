@@ -23,7 +23,7 @@ def relativeAnodyneFamilyExtension {A B E T U : SSet.{u}} [KanComplex E]
     (Q : A ⊗ U ⟶ E) (R : B ⊗ T ⟶ E)
     (h : (i ▷ T) ≫ R = (A ◁ j) ≫ Q) :
     {L : B ⊗ U ⟶ E // (i ▷ U) ≫ L = Q ∧ (B ◁ j) ≫ L = R} := by
-  let : HasLiftingProperty j ((pre i).app E) := _root_.SerrePositivity.InfinityCategories.Kan.anodyne_pre_rlp_monomorphisms i hi E j
+  let : HasLiftingProperty j ((pre i).app E) := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.anodyne_pre_rlp_monomorphisms i hi E j
     inferInstance
   let sq : CommSq (curry R) j ((pre i).app E) (curry Q) := ⟨by
     apply uncurry_injective

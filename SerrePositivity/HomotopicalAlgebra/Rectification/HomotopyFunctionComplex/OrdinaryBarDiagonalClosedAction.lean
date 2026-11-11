@@ -51,7 +51,7 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   (P : SSet.{max u v})
 
 def mapping (X Y : D C) : P ⊗ OrdinaryBarFixedWordResolution.hom C X Y ⟶
-    UniverseLift.obj.{max u v} ((ihom (small hcof hfib X)).obj (small hcof hfib Y)) :=
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} ((ihom (small hcof hfib X)).obj (small hcof hfib Y)) :=
   curry (action hcof hfib P X Y) ≫
     (UniverseLiftParameterHom.closedIso (small hcof hfib X) (small hcof hfib Y)).inv
 
@@ -69,21 +69,21 @@ lemma mapping_family {T : SSet.{max u v}} {X Y : D C} (j : T ⟶ P)
   rw [mapping, ← Category.assoc, ← curry_natural_left]
   rfl
 
-def nativeFamily {T : SSet.{v}} {X Y : D C} (j : UniverseLift.obj.{max u v} T ⟶ P)
-    (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) :
+def nativeFamily {T : SSet.{v}} {X Y : D C} (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) :
     T ⟶ (ihom (small hcof hfib X)).obj (small hcof hfib Y) :=
   curry (OrdinaryBarDiagonalEvaluation.family hcof hfib P j f)
 
 lemma nativeFamily_substitute {T U : SSet.{v}} {X Y : D C}
-    (j : UniverseLift.obj.{max u v} T ⟶ P)
-    (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) (i : U ⟶ T) :
-    nativeFamily hcof hfib P (UniverseLift.map i ≫ j) (UniverseLift.map i ≫ f) =
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) (i : U ⟶ T) :
+    nativeFamily hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ f) =
       i ≫ nativeFamily hcof hfib P j f := by
   rw [nativeFamily, OrdinaryBarDiagonalEvaluation.family_substitute]
   exact curry_natural_left _ _
 
 lemma nativeFamily_identity {T : SSet.{v}} (X : D C)
-    (j : UniverseLift.obj.{max u v} T ⟶ P) :
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P) :
     nativeFamily hcof hfib P j
       (SSet.stdSimplex.isTerminalObj₀.from _ ≫ OrdinaryBarFixedWordResolution.identity C X) =
       toUnit T ≫ MonoidalClosed.id (small hcof hfib X) := by
@@ -91,9 +91,9 @@ lemma nativeFamily_identity {T : SSet.{v}} (X : D C)
     ClosedParameterComposition.curry_fst]
 
 lemma nativeFamily_comp {T : SSet.{v}} {X Y Z : D C}
-    (j : UniverseLift.obj.{max u v} T ⟶ P)
-    (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
-    (g : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C Y Z) :
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
+    (g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C Y Z) :
     nativeFamily hcof hfib P j (lift f g ≫ OrdinaryBarFixedWordResolution.composition C X Y Z) =
       lift (nativeFamily hcof hfib P j f) (nativeFamily hcof hfib P j g) ≫
         MonoidalClosed.comp (small hcof hfib X) (small hcof hfib Y) (small hcof hfib Z) := by

@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：面写像の単射性と、除いた頂点以外の逆像を使う。
 規約：Moss 2020 Lemma 26 (3) の生成元上の計算。
 使われ方：後ろの面と拡張退化の交換則。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

@@ -44,7 +44,7 @@ def coreFlagInclusion {B : StableModel.{u}} (P : ClosedStablePredicate B)
 lemma coreFlagInclusion_ι {B : StableModel.{u}} (P : ClosedStablePredicate B)
     (n : SimplexCategory) : (coreFlagInclusion P n).val ≫
       (closedStableInclusion (closedFlagStablePredicate P n)).val =
-        (fullSubcomplexOnVertices _ (weakStringPredicate (𝟙 (flagAmbient B)) n)).ι := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (weakStringPredicate (𝟙 (flagAmbient B)) n)).ι := by
   exact (congrArg Subtype.val (closedStableMap_inclusion _ _ _ _)).trans (Category.comp_id _)
 
 /-- 概要：元の B からの同じ定数旗。方針：既存定数旗と全同値旗包含の合成。

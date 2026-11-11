@@ -44,15 +44,15 @@ namespace SerrePositivity.SimplicialModel.NerveMovingBoundary
 variable {D : Type uD} [Category.{vD} D] (K F : D ⥤ SSet.{w}) {n : ℕ}
 
 abbrev Compatible (faces : Fin (n + 3) → NerveBiparameter.System
-    (product K (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))) F) : Prop :=
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))) F) : Prop :=
   ∀ (j k : Fin (n + 3)) (hjk : j < k),
-    faces j ≫ restriction _ _ F (vertical (SSet.stdSimplex.δ
+    faces j ≫ restriction _ _ F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.stdSimplex.δ
       (k.pred (Fin.ne_zero_of_lt hjk))) K) =
-    faces k ≫ restriction _ _ F (vertical (SSet.stdSimplex.δ
+    faces k ≫ restriction _ _ F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.stdSimplex.δ
       (j.castPred (Fin.ne_last_of_lt hjk))) K)
 
 variable (faces : Fin (n + 3) → NerveBiparameter.System
-    (product K (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))) F)
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))) F)
   (hf : Compatible K F faces)
 
 include hf in
@@ -62,35 +62,35 @@ lemma component_compatible (s : Index D) :
   exact congr_app (hf j k hjk) s
 
 /-- Glue the actual boundary product, keeping all whole facets in every external degree. -/
-def boundary : NerveBiparameter.System (product K (SSet.boundary (n + 2)).toSSet) F where
+def boundary : NerveBiparameter.System (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K (SSet.boundary (n + 2)).toSSet) F where
   app s := ProductBoundaryCotensor.standardDesc (fun k => (faces k).app s)
     (component_compatible K F faces hf s)
   naturality {s t} f := by
     apply ProductBoundaryCotensor.hom_ext
     intro k
     simp only [Category.assoc, ProductBoundaryCotensor.standardDesc_fac]
-    have hn := (restriction (product K (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1))))
-      (product K (SSet.boundary (n + 2)).toSSet) F (vertical (SSet.boundary.ι k) K)).naturality f
+    have hn := (restriction (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1))))
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K (SSet.boundary (n + 2)).toSSet) F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.boundary.ι k) K)).naturality f
     rw [restriction_app, restriction_app] at hn
     have hg := ProductBoundaryCotensor.standardDesc_fac (fun k => (faces k).app s)
       (component_compatible K F faces hf s) k
     exact ((faces k).naturality f).trans
       ((congrArg (fun a => a ≫ (NerveBiparameter.values
-        (product K (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))) F).map f) hg.symm).trans
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))) F).map f) hg.symm).trans
         ((Category.assoc _ _ _).trans (congrArg (fun a => ProductBoundaryCotensor.standardDesc
           (fun k => (faces k).app s) (component_compatible K F faces hf s) ≫ a) hn.symm)))
 
 lemma boundary_face (k : Fin (n + 3)) : boundary K F faces hf ≫ restriction _ _ F
-    (vertical (SSet.boundary.ι k) K) = faces k := by
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.boundary.ι k) K) = faces k := by
   apply NatTrans.ext
   funext s
   exact ProductBoundaryCotensor.standardDesc_fac (fun k => (faces k).app s)
     (component_compatible K F faces hf s) k
 
 lemma hom_ext {m : ℕ}
-    {a b : NerveBiparameter.System (product K (SSet.boundary (m + 1)).toSSet) F}
-    (h : ∀ k : Fin (m + 2), a ≫ restriction _ _ F (vertical (SSet.boundary.ι k) K) =
-      b ≫ restriction _ _ F (vertical (SSet.boundary.ι k) K)) : a = b := by
+    {a b : NerveBiparameter.System (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K (SSet.boundary (m + 1)).toSSet) F}
+    (h : ∀ k : Fin (m + 2), a ≫ restriction _ _ F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.boundary.ι k) K) =
+      b ≫ restriction _ _ F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.boundary.ι k) K)) : a = b := by
   apply NatTrans.ext
   funext s
   apply ProductBoundaryCotensor.hom_ext
@@ -100,17 +100,17 @@ lemma hom_ext {m : ℕ}
 /-- A common whole natural vertex boundary survives the actual facet gluing. -/
 lemma boundary_vertices (V : D ⥤ SSet.{w}) (i : V ⟶ K) (b : V ⟶ F)
     (hv : ∀ k : Fin (n + 3), faces k ≫ restriction _ _ F
-      (horizontal V K i (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))) =
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal V K i (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))) =
       NerveNaturalBoundary.ofNatTrans _ _
         (NerveProductParameter.projection V
           (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1))) ≫ b)) :
     boundary K F faces hf ≫ restriction _ _ F
-      (horizontal V K i (SSet.boundary (n + 2)).toSSet) =
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal V K i (SSet.boundary (n + 2)).toSSet) =
       NerveNaturalBoundary.ofNatTrans _ _
         (NerveProductParameter.projection V (SSet.boundary (n + 2)).toSSet ≫ b) := by
   apply hom_ext V F
   intro k
-  rw [Category.assoc, restriction_comp, ← commute V K i (SSet.boundary.ι k),
+  rw [Category.assoc, restriction_comp, ← _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.commute V K i (SSet.boundary.ι k),
     ← restriction_comp, ← Category.assoc, boundary_face, hv k, restrict_natural]
   apply congrArg (NerveNaturalBoundary.ofNatTrans _ _)
   rw [← Category.assoc, NerveProductParameter.projection_vertical]

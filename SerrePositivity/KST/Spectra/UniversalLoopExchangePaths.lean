@@ -28,14 +28,14 @@ namespace SerrePositivity.KST.Spectra.LoopExchangePaths
 /-- 一つの普遍区間から Ω 条件へ移した、交換と符号反転の基点固定区間族。 -/
 def exchange {Y Z : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Z.right]
     (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
-    (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right) :
+    (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right) :
     PointedMapping.VerticalPath (PointedObject.toPoint (doubleLoop Y)) (swap Y) (reversal Y) :=
   LoopExchangeFamily.exchange OrdinaryLoopSource.family.{u} a ha
 
 /-- 既存の交換区間の辺全体は、同じ写像 path 持ち上げの源射影そのもの。 -/
 lemma exchange_path {Y Z : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Z.right]
     (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
-    (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right) :
+    (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right) :
     (exchange a ha).path =
       (LoopExchangeFamily.trace OrdinaryLoopSource.family.{u} a ha).path.path := rfl
 
@@ -62,7 +62,7 @@ lemma reversalTwice_natural {Y Z : PointedSimplicialSet.{u}}
 def cancellationFirst {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right]
     (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
-    (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right) :
+    (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right) :
     PointedMapping.VerticalPath (PointedObject.toPoint (doubleLoop Y))
       (swap Y ≫ reversal Y) (reversal Y ≫ reversal Y) := (exchange a ha).basedPost (reversal Y)
 
@@ -70,7 +70,7 @@ def cancellationFirst {Y Z : PointedSimplicialSet.{u}}
 lemma cancellationChain {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right]
     (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
-    (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right) :
+    (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right) :
     PointedMapping.VerticalChain (PointedObject.toPoint (doubleLoop Y))
       (swap Y ≫ reversal Y) (𝟙 (doubleLoop Y)) :=
   (Relation.ReflTransGen.single ⟨cancellationFirst a ha⟩).trans
@@ -80,7 +80,7 @@ lemma cancellationChain {Y Z : PointedSimplicialSet.{u}}
 def exchangeAt {A Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right]
     (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
-    (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right) (f : A ⟶ doubleLoop Y) :
+    (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right) (f : A ⟶ doubleLoop Y) :
     PointedMapping.VerticalPath (PointedObject.toPoint (doubleLoop Y))
       (f ≫ swap Y) (f ≫ reversal Y) := (exchange a ha).pre f
 
@@ -88,7 +88,7 @@ def exchangeAt {A Y Z : PointedSimplicialSet.{u}}
 lemma exchangeAt_restriction {A B Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right]
     (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
-    (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right) (f : A ⟶ doubleLoop Y) (j : B ⟶ A) :
+    (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right) (f : A ⟶ doubleLoop Y) (j : B ⟶ A) :
     (exchangeAt a ha (j ≫ f)).homotopy.h =
       j.right ▷ (Δ[1] : SSet.{u}) ≫ (exchangeAt a ha f).homotopy.h := by
   simp only [exchangeAt, PointedMapping.VerticalPath.pre_homotopy_h,

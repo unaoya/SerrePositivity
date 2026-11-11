@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativeTriangle
-public import SerrePositivity.InfinityCategories.Derived.RelativeRoofComparisonCofinality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.RelativeRoofComparisonCofinality
 
 /-!
 # 元の source frame 次数比較の実右 Kan cofinal 性
@@ -33,11 +33,11 @@ include r
 方針：相対 roof 判定と実 coslice の始対象性を使う。
 規約：第一分解と指定 right frame。使われ方：hammock の局所化普遍性。 -/
 lemma modelBifibrantSourceFrameRawRoofMap_isLeftCofinal (Y : HomotopicalAlgebra.BifibrantObject C) :
-    IsLeftCofinal (rawRoofFunctorMap
-      (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
-      (nerveMap (modelBifibrantDKFrame X q))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.rawRoofFunctorMap
+      (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+      (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q))
       (SSet.yonedaEquiv.symm
-        (nerveVertex (modelBifibrantObject C Y)))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)))) :=
   (modelBifibrantSourceFrameRoofMap_isLeftCofinal_iff_raw X Y q).mp
     (modelBifibrantSourceRoofMap_isLeftCofinal X Y q r)
 
@@ -45,26 +45,26 @@ lemma modelBifibrantSourceFrameRawRoofMap_isLeftCofinal (Y : HomotopicalAlgebra.
 方針：相対 roof 判定と実 coslice の始対象性を使う。
 規約：第一分解と指定 right frame。使われ方：hammock の局所化普遍性。 -/
 lemma modelBifibrantFrameRightKanMap_isLeftCofinal :
-    IsLeftCofinal (modelBifibrantFrameRightKanMap X q) := by
-  apply isLeftCofinal_of_relativeRoofComparisons
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (modelBifibrantFrameRightKanMap X q) := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.isLeftCofinal_of_relativeRoofComparisons
   · intro c
-    apply (relativeRoofComparison_isLeftCofinal_iff_raw _ _ _ _).mpr
-    change IsLeftCofinal (rawRoofFunctorMap
-      (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
-      (modelBifibrantFrameRightKanMap X q ≫ rightKanProjection
-        (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+    apply (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.relativeRoofComparison_isLeftCofinal_iff_raw _ _ _ _).mpr
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.rawRoofFunctorMap
+      (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+      (modelBifibrantFrameRightKanMap X q ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection
+        (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
         (modelBifibrantHammockVertex X))
-      (SSet.yonedaEquiv.symm c ≫ rightKanProjection
-        (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+      (SSet.yonedaEquiv.symm c ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection
+        (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
         (modelBifibrantHammockVertex X)))
     rw [modelBifibrantFrameRightKanMap_projection]
-    let Y : HomotopicalAlgebra.BifibrantObject C := AsSmall.down.obj (((rightKanProjection
-      (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+    let Y : HomotopicalAlgebra.BifibrantObject C := AsSmall.down.obj (((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection
+      (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
       (modelBifibrantHammockVertex X)).app (Opposite.op ⦋0⦌) c).obj 0)
-    have hp : SSet.yonedaEquiv.symm c ≫ rightKanProjection
-        (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+    have hp : SSet.yonedaEquiv.symm c ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection
+        (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
         (modelBifibrantHammockVertex X) = SSet.yonedaEquiv.symm
-          (nerveVertex (modelBifibrantObject C Y)) := by
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)) := by
       apply SSet.yonedaEquiv.injective
       rw [SSet.yonedaEquiv_comp, SSet.yonedaEquiv.apply_symm_apply,
         SSet.yonedaEquiv.apply_symm_apply]

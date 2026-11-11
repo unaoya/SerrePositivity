@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport
-public import SerrePositivity.InfinityCategories.Core.InnerFiber
-public import SerrePositivity.InfinityCategories.Stable.InitialTransport
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalBoundaryTransport
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.InnerFiber
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.InitialTransport
 
 /-! # 相対普遍性の合成と比較
 概要：相対始点・終点境界充填を合成し、固定された基底上の普遍頂点を比較する。
@@ -21,11 +21,11 @@ open scoped Simplicial
 方針：先に中間の境界を充填し、その充填を基底として元で充填する。
 規約：追加の存在・fibration 仮定なし。使われ方：反復余極限の普遍性。 -/
 lemma InitialBoundaryLifting.comp {E B D : SSet.{u}} (p : E ⟶ B) (q : B ⟶ D)
-    {x : E _⦋0⦌} (hp : InitialBoundaryLifting p x)
-    (hq : InitialBoundaryLifting q (p.app (Opposite.op ⦋0⦌) x)) :
-    InitialBoundaryLifting (p ≫ q) x := by
+    {x : E _⦋0⦌} (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryLifting p x)
+    (hq : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryLifting q (p.app (Opposite.op ⦋0⦌) x)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryLifting (p ≫ q) x := by
   intro n a b ha sq
-  have hfirst : boundaryVertex n 0 ≫ (a ≫ p) =
+  have hfirst : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.boundaryVertex n 0 ≫ (a ≫ p) =
       SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) := by
     rw [← Category.assoc, ha, SSet.yonedaEquiv_symm_comp]
   obtain ⟨M, hM, hMq⟩ := hq n (a ≫ p) b hfirst ⟨by simpa only [Category.assoc] using sq.w⟩
@@ -36,11 +36,11 @@ lemma InitialBoundaryLifting.comp {E B D : SSet.{u}} (p : E ⟶ B) (q : B ⟶ D)
 方針：中間と元の順で指定した終点を保って境界を充填する。
 規約：追加の存在・fibration 仮定なし。使われ方：双対の反復極限。 -/
 lemma TerminalBoundaryLifting.comp {E B D : SSet.{u}} (p : E ⟶ B) (q : B ⟶ D)
-    {x : E _⦋0⦌} (hp : TerminalBoundaryLifting p x)
-    (hq : TerminalBoundaryLifting q (p.app (Opposite.op ⦋0⦌) x)) :
-    TerminalBoundaryLifting (p ≫ q) x := by
+    {x : E _⦋0⦌} (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalBoundaryLifting p x)
+    (hq : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalBoundaryLifting q (p.app (Opposite.op ⦋0⦌) x)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalBoundaryLifting (p ≫ q) x := by
   intro n a b ha sq
-  have hlast : boundaryVertex n (Fin.last (n + 1)) ≫ (a ≫ p) =
+  have hlast : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.boundaryVertex n (Fin.last (n + 1)) ≫ (a ≫ p) =
       SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) := by
     rw [← Category.assoc, ha, SSet.yonedaEquiv_symm_comp]
   obtain ⟨M, hM, hMq⟩ := hq n (a ≫ p) b hlast ⟨by simpa only [Category.assoc] using sq.w⟩
@@ -52,13 +52,13 @@ lemma TerminalBoundaryLifting.comp {E B D : SSet.{u}} (p : E ⟶ B) (q : B ⟶ D
 規約：p は inner fibration。使われ方：二通りの普遍補完の比較。 -/
 def relativeInitialVertexIso {E B : SSet.{u}} [Quasicategory E]
     (p : E ⟶ B) [InnerFibration p] {x y : E _⦋0⦌}
-    (hx : InitialBoundaryLifting p x) (hy : InitialBoundaryLifting p y)
-    (hxy : p.app (Opposite.op ⦋0⦌) x = p.app (Opposite.op ⦋0⦌) y) : VertexIso x y := by
+    (hx : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryLifting p x) (hy : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryLifting p y)
+    (hxy : p.app (Opposite.op ⦋0⦌) x = p.app (Opposite.op ⦋0⦌) y) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x y := by
   let b := p.app (Opposite.op ⦋0⦌) x
-  let a : (vertexFiber p b) _⦋0⦌ := ⟨x, (pinchedConstant_zero b).symm⟩
-  let c : (vertexFiber p b) _⦋0⦌ := ⟨y, hxy.symm.trans (pinchedConstant_zero b).symm⟩
-  exact VertexIso.map (initialVertexIso
-    (InitialBoundaryLifting.isInitialVertex_fiber p b a hx)
-    (InitialBoundaryLifting.isInitialVertex_fiber p b c hy)) (vertexFiberι p b)
+  let a : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p b) _⦋0⦌ := ⟨x, (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero b).symm⟩
+  let c : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p b) _⦋0⦌ := ⟨y, hxy.symm.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero b).symm⟩
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.initialVertexIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryLifting.isInitialVertex_fiber p b a hx)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryLifting.isInitialVertex_fiber p b c hy)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p b)
 
 end SerrePositivity.KST.SConstruction

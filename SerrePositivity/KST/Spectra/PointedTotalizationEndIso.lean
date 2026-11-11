@@ -13,7 +13,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedEndUnderlyingWeight
 @[expose] public section
 universe u
 open CategoryTheory CategoryTheory.Limits MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.PointedTotalization
 noncomputable section
@@ -33,14 +33,14 @@ def standardEndIso (X : CosimplicialObject PointedSimplicialSet.{u}) :
     rw [Category.assoc, Category.assoc]
     erw [Iso.inv_hom_id]
     rw [Category.comp_id, PointedWeightedEnd.underlyingIso_basepoint]
-    apply weightedSections_hom_ext
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_hom_ext
     intro j
     change ((obj X).hom ≫ CosimplicialTotalization.toSmallEnd _) ≫ _ = _
     rw [Category.assoc]
     erw [CosimplicialTotalization.toSmallEnd_π (X ⋙ PointedSimplicialSet.forget) j]
     change CosimplicialTotalization.lift (basepointFamily X) ≫
       CosimplicialTotalization.π _ (AsSmall.down.obj j) = _
-    rw [CosimplicialTotalization.lift_π, weightedConeComparison_π]
+    rw [CosimplicialTotalization.lift_π, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison_π]
     rfl)
 
 /-- 同型の基礎射は構成済みの二つの end の同型の合成。 -/
@@ -61,7 +61,7 @@ lemma weightedEndComparison_eq_preMap (X : CosimplicialObject PointedSimplicialS
       PointedWeightedEnd.preMap CosimplicialLastVertex.weightMap (AsSmall.down ⋙ X) := by
   apply Under.UnderMorphism.ext
   apply (cancel_mono (PointedWeightedEnd.underlyingIso
-    (bousfieldKanWeight _) (AsSmall.down ⋙ X)).hom).mp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _) (AsSmall.down ⋙ X)).hom).mp
   change (weightedEndComparison X).right ≫ _ =
     ((standardEndIso X).hom.right ≫
       (PointedWeightedEnd.preMap _ _).right) ≫ _

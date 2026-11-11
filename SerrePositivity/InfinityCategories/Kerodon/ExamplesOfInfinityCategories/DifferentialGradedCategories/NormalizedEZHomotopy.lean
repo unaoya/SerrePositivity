@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：普遍模型の比較を包含・射影で挟み、両因子の Moore 収縮をテンソルして合成する。
 規約：KST Construction A.5、非被約 C(H) を保ち追加の比較仮定を置かない。
 使われ方：正規化した二つの差のテンソルの低次消滅を対角へ移す。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

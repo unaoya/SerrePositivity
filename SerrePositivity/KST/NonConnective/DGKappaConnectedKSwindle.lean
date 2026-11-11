@@ -51,8 +51,8 @@ theorem dgKappaConnectedK_eq_one (j : ℤ)
       (DGFunctor.id (A := R) (DGKappaCone R D I)) =
       𝟙 (presentedPerfectDGStableModel R (DGKappaCone R D I)) := by
     apply Subtype.ext
-    change dgNerve.map (presentedPerfectDGAction R _ _ _) = 𝟙 _
-    rw [presentedPerfectDGAction_id, dgNerve.map_id]
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGAction R _ _ _) = 𝟙 _
+    rw [presentedPerfectDGAction_id, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_id]
   rw [hi, kHomotopyMap_id, MonoidHom.id_apply] at h
   apply mul_right_cancel
   simpa only [one_mul] using h.symm

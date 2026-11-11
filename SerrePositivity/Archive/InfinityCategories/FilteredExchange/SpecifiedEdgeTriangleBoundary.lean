@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleSpace
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.TriangleBoundaryGluing
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.CompositionTriangleSpace
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.TriangleBoundaryGluing
 
 /-!
 概要：指定した三辺を、そのまま三角形の境界へ貼る。

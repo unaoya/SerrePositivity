@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeWordAction
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitGraph
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeWordAction
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitGraph
 public import SerrePositivity.EInfinity.Hammock.ReducedColimit
 public import Mathlib.CategoryTheory.Category.ULift
 
@@ -31,17 +31,17 @@ def down : LocalizerMorphism (liftedWeak W) W :=
   ⟨ULiftHom.down.{u, u + 1, u + 1}, fun _ _ _ hf => hf⟩
 def up : LocalizerMorphism W (liftedWeak W) :=
   ⟨ULiftHom.up.{u, u + 1, u + 1}, fun _ _ _ hf => hf⟩
-variable (w : Word) (X Y : C)
-def downFunctor : Zigzag (liftedWeak W) w (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHom.objUp.{u + 1,
+variable (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C)
+def downFunctor : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (liftedWeak W) w (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHom.objUp.{u + 1,
   u + 1} Y) ⥤
-    Zigzag W w X Y := Zigzag.Relative.functor (down W)
-def upFunctor : Zigzag W w X Y ⥤
-    Zigzag (liftedWeak W) w (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHom.objUp.{u + 1, u + 1} Y) :=
-  Zigzag.Relative.functor (up W)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W w X Y := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (down W)
+def upFunctor : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W w X Y ⥤
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (liftedWeak W) w (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHom.objUp.{u + 1, u + 1} Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (up W)
 lemma down_up : downFunctor W w X Y ⋙ upFunctor W w X Y = 𝟭 _ := rfl
 lemma up_down : upFunctor W w X Y ⋙ downFunctor W w X Y = 𝟭 _ := rfl
-def graphIso : graph (liftedWeak W) w (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHom.objUp.{u + 1, u +
-  1} Y) ≅ graph W w X Y where
+def graphIso : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (liftedWeak W) w (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHom.objUp.{u + 1, u +
+  1} Y) ≅ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W w X Y where
   hom := { app _ := ↾fun σ => σ ⋙ downFunctor W w X Y
            naturality _ _ _ := rfl }
   inv := { app _ := ↾fun σ => σ ⋙ upFunctor W w X Y
@@ -61,15 +61,15 @@ def graphIso : graph (liftedWeak W) w (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHo
     change (σ ⋙ upFunctor W w X Y) ⋙ downFunctor W w X Y = σ
     rw [CategoryTheory.Functor.assoc, up_down, CategoryTheory.Functor.comp_id]
 def graphDiagramIso :
-    graphDiagram (liftedWeak W) (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHom.objUp.{u + 1, u + 1} Y)
-      ≅ graphDiagram W X Y :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (liftedWeak W) (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHom.objUp.{u + 1, u + 1} Y)
+      ≅ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y :=
   NatIso.ofComponents (fun w => graphIso W w X Y) (by
     intro a b f
     apply NatTrans.ext
     funext n
     apply ConcreteCategory.hom_ext
     intro σ
-    change σ ⋙ (WordAction.functor f ⋙ downFunctor W b X Y) =
-      σ ⋙ (downFunctor W a X Y ⋙ WordAction.functor f)
-    exact congrArg (fun H => σ ⋙ H) (Zigzag.Relative.wordAction_functor_eq (down W) f).symm)
+    change σ ⋙ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f ⋙ downFunctor W b X Y) =
+      σ ⋙ (downFunctor W a X Y ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f)
+    exact congrArg (fun H => σ ⋙ H) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeWordAction.wordAction_functor_eq (down W) f).symm)
 end SerrePositivity.EInfinity.Hammock.HomLift

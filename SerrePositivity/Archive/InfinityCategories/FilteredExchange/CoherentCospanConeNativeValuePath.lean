@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanConeValuePath
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTotalMapNativeComposite
-public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.QCatEquivalence
 
 /-!
 概要：元の cospan 錐の指定可換性と四つの native 余極限写像の値比較を同時に結ぶ。

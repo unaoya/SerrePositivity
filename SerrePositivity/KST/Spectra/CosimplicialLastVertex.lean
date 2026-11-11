@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKan
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.BousfieldKan
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 
 /-!
@@ -13,7 +13,7 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 @[expose] public section
 universe u
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped Simplicial
 
 namespace SerrePositivity.KST.Spectra.CosimplicialLastVertex
@@ -61,7 +61,7 @@ lemma naturality {i j : AsSmall.{u} SimplexCategory} (f : i ⟶ j) :
   rfl
 
 /-- Bousfield–Kan 重みから標準単体の重みへの実際の自然変換。 -/
-def weightMap : bousfieldKanWeight (AsSmall.{u} SimplexCategory) ⟶
+def weightMap : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} SimplexCategory) ⟶
     AsSmall.down ⋙ SSet.stdSimplex where
   app j := component j
   naturality _ _ f := naturality f

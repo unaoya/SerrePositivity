@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerCancellation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoPrecompFaithful
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoSelfUnitExchange
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoSelfUnitExchange
 
 /-!
 概要：指定単位から作る逆比較の余単位を、同じ指定単位の三角恒等式で検証する。

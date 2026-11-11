@@ -11,7 +11,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の連結積の結合同型は、全ての三つの具体的射について自然。 -/
-lemma concreteCubeAssociator_naturality {X X' Y Y' Z Z' : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma concreteCubeAssociator_naturality {X X' Y Y' Z Z' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (f : X ⟶ X') (g : Y ⟶ Y') (h : Z ⟶ Z') :
     concreteCubeTensorMap (concreteCubeTensorMap f g) h ≫
         (concreteCubeAssociator X' Y' Z').hom =
@@ -30,15 +30,15 @@ lemma concreteCubeAssociator_naturality {X X' Y Y' Z Z' : _root_.SerrePositivity
   rfl
 
 /-- 左単位同型は元の全ての具体的射について自然。 -/
-lemma concreteCubeLeftUnitor_naturality {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
-    concreteCubeTensorMap (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0)) f ≫ (concreteCubeLeftUnitor Y).hom =
+lemma concreteCubeLeftUnitor_naturality {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube} (f : X ⟶ Y) :
+    concreteCubeTensorMap (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0)) f ≫ (concreteCubeLeftUnitor Y).hom =
       (concreteCubeLeftUnitor X).hom ≫ f := by
   apply Subtype.ext
   funext v
   have hv := cubeVertexJoin_parts (n := 0) (m := X.dimension) v
   rw [← hv]
   change (concreteCubeLeftUnitor Y).hom.val
-      ((concreteCubeTensorMap (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0)) f).val
+      ((concreteCubeTensorMap (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0)) f).val
         (cubeVertexJoin (cubeVertexLeftPart X.dimension v)
           (cubeVertexRightPart 0 X.dimension v))) =
     f.val ((concreteCubeLeftUnitor X).hom.val
@@ -47,8 +47,8 @@ lemma concreteCubeLeftUnitor_naturality {X Y : _root_.SerrePositivity.InfinityCa
   erw [concreteCubeTensorMap_join, concreteCubeLeftUnitor_join, concreteCubeLeftUnitor_join]
 
 /-- 右単位同型は元の全ての具体的射について自然。 -/
-lemma concreteCubeRightUnitor_naturality {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
-    concreteCubeTensorMap f (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0)) ≫ (concreteCubeRightUnitor Y).hom =
+lemma concreteCubeRightUnitor_naturality {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube} (f : X ⟶ Y) :
+    concreteCubeTensorMap f (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0)) ≫ (concreteCubeRightUnitor Y).hom =
       (concreteCubeRightUnitor X).hom ≫ f := by
   rfl
 

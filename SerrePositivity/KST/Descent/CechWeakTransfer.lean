@@ -59,7 +59,7 @@ theorem naturalComparison_isIso_of_isoComposite
   exact (MorphismProperty.isomorphisms H).of_retract h (by infer_instance)
 
 variable (K : Type u) [SmallCategory K] [ModelCategory SSet.{u}]
-  (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  (I J : MorphismProperty SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
   [IsQuillenBifunctor (CategoryTheory.MonoidalCategory.curriedTensor SSet.{u})]
 
 /-- 概要：合成が各点で弱同値な transfer は実際の指定 Čech 降下を戻す（補題 3.2）。

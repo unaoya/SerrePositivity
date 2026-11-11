@@ -20,7 +20,7 @@ local instance nativeConeZeroSpectrumCategory : SimplicialCategory OmegaSpectrum
 variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
   (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-    F2.Idempotent.IsIdempotentCompletion f.val →
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
       (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
         Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
 
@@ -30,7 +30,7 @@ include hcofinal in
 規約：元の cell 増大・cone・K 値を保持し、存在仮定や Sp 引き戻し性を追加しない。
 使われ方：完備化前の実 fiber を同じ実商の loop と比較する中央零性。 -/
 theorem dgKappaNativeResolvedConeK_isZeroVertex (Z : DGKappaZeroInput R D I) :
-    IsZeroVertex (coherentNerveVertex (kOmegaSpectrum (dgKappaNativeResolvedCone R D I))) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum (dgKappaNativeResolvedCone R D I))) :=
   Fibration.spectrum_isZeroVertex_of_homotopyGroup_subsingleton _
     (dgKappaNativeResolvedConeK_subsingleton R D I hcofinal Z)
 

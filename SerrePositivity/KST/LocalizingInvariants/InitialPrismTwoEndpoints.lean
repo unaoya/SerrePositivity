@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.InitialPrismBoundary
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorRelativeInitial
-public import SerrePositivity.InfinityCategories.Core.IntervalBoundary
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.InitialPrismBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorRelativeInitial
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IntervalBoundary
 
 /-!
 概要：最初の頂点が始対象である prism の、境界と両端を固定した延長。
@@ -23,47 +23,47 @@ namespace SerrePositivity.KST.LocalizingInvariants
 lemma initial_prism_extend_two_endpoints {X : SSet.{u}} (n : ℕ)
     (H : (Δ[1] : SSet.{u}) ⊗ (boundary (n + 1) : SSet.{u}) ⟶ X)
     (F₀ F₁ : (Δ[n + 1] : SSet.{u}) ⟶ X)
-    (h₀ : (boundary (n + 1)).ι ≫ F₀ = prismEndpoint 0 _ ≫ H)
-    (h₁ : (boundary (n + 1)).ι ≫ F₁ = prismEndpoint 1 _ ≫ H)
-    (ht : IsInitialVertex (F₀.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 0))) :
+    (h₀ : (boundary (n + 1)).ι ≫ F₀ = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ H)
+    (h₁ : (boundary (n + 1)).ι ≫ F₁ = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 _ ≫ H)
+    (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (F₀.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 0))) :
     ∃ F : (Δ[1] : SSet.{u}) ⊗ Δ[n + 1] ⟶ X,
       (Δ[1] ◁ (boundary (n + 1)).ι) ≫ F = H ∧
-      prismEndpoint 0 _ ≫ F = F₀ ∧ prismEndpoint 1 _ ≫ F = F₁ := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ F = F₀ ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 _ ≫ F = F₁ := by
   let S := boundary.{u} 1
   let T := boundary.{u} (n + 1)
   let q := Subcomplex.unionProd.isPushout S T
   have hw : (S.ι ▷ (T : SSet.{u})) ≫ H =
-      ((S : SSet.{u}) ◁ T.ι) ≫ intervalBoundaryDiagram F₀ F₁ := by
-    rw [intervalBoundaryDiagram_restrict, intervalBoundaryDiagram_naturality, h₀, h₁]
-  let a := q.desc H (intervalBoundaryDiagram F₀ F₁) hw
+      ((S : SSet.{u}) ◁ T.ι) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram F₀ F₁ := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_restrict, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_naturality, h₀, h₁]
+  let a := q.desc H (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram F₀ F₁) hw
   have ha₁ : Subcomplex.unionProd.ι₁ S T ≫ a = H := q.inl_desc _ _ _
-  have ha₂ : Subcomplex.unionProd.ι₂ S T ≫ a = intervalBoundaryDiagram F₀ F₁ :=
+  have ha₂ : Subcomplex.unionProd.ι₂ S T ≫ a = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram F₀ F₁ :=
     q.inr_desc _ _ _
   let A := Subcomplex.unionProd S T
   have hA : ∀ v : ((Δ[1] : SSet.{u}) ⊗ Δ[n + 1]) _⦋0⦌,
       v ∈ A.obj (Opposite.op ⦋0⦌) := by
     intro v
     refine Or.inl ⟨by trivial, ?_⟩
-    have h := vertex_mem_boundary.{u} n (stdSimplex.obj₀Equiv.{u} v.2)
+    have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.vertex_mem_boundary.{u} n (stdSimplex.obj₀Equiv.{u} v.2)
     rw [Equiv.symm_apply_apply] at h
     exact h
   have hterm : ∀ (m : ℕ) (s : ((Δ[1] : SSet.{u}) ⊗ Δ[n + 1]) _⦋m + 1⦌),
       s ∉ A.obj (Opposite.op ⦋m + 1⦌) →
-      IsInitialVertex (a.app (Opposite.op ⦋0⦌) ⟨simplexFirstVertex s, hA _⟩) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (a.app (Opposite.op ⦋0⦌) ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplexFirstVertex s, hA _⟩) := by
     intro m s hs
     have hs₁ : s.1 ∉ S.obj (Opposite.op ⦋m + 1⦌) :=
       fun h => hs (Or.inr ⟨h, by trivial⟩)
     have hs₂ : s.2 ∉ T.obj (Opposite.op ⦋m + 1⦌) :=
       fun h => hs (Or.inl ⟨by trivial, h⟩)
-    have hv₁ := simplexFirstVertex_stdSimplex_of_notMem_boundary s.1 hs₁
-    have hv₂ := simplexFirstVertex_stdSimplex_of_notMem_boundary s.2 hs₂
+    have hv₁ := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorRelativeInitial.simplexFirstVertex_stdSimplex_of_notMem_boundary s.1 hs₁
+    have hv₂ := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorRelativeInitial.simplexFirstVertex_stdSimplex_of_notMem_boundary s.2 hs₂
     let w : ((S : SSet.{u}) ⊗ Δ[n + 1]) _⦋0⦌ :=
-      (⟨stdSimplex.obj₀Equiv.symm 0, vertex_mem_boundary 0 0⟩,
+      (⟨stdSimplex.obj₀Equiv.symm 0, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.vertex_mem_boundary 0 0⟩,
         stdSimplex.obj₀Equiv.symm 0)
     have hh := ConcreteCategory.congr_hom (NatTrans.congr_app ha₂ (Opposite.op ⦋0⦌)) w
-    have he : a.app (Opposite.op ⦋0⦌) ⟨simplexFirstVertex s, hA _⟩ =
+    have he : a.app (Opposite.op ⦋0⦌) ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplexFirstVertex s, hA _⟩ =
         F₀.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 0) := by
-      rw [stable_simplexFirstVertex_prod, hv₁, hv₂]
+      rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_simplexFirstVertex_prod, hv₁, hv₂]
       change a.app (Opposite.op ⦋0⦌)
         ⟨(stdSimplex.obj₀Equiv.symm 0, stdSimplex.obj₀Equiv.symm 0), _⟩ = _
       change a.app (Opposite.op ⦋0⦌)
@@ -73,17 +73,17 @@ lemma initial_prism_extend_two_endpoints {X : SSet.{u}} (n : ℕ)
       simpa using hh
     rw [he]
     exact ht
-  obtain ⟨F, hF⟩ := stable_exists_extension_of_initial_first_vertices A hA a hterm
+  obtain ⟨F, hF⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.stable_exists_extension_of_initial_first_vertices A hA a hterm
   have he : ((boundary 1).ι ▷ (Δ[n + 1] : SSet.{u})) ≫ F =
-      intervalBoundaryDiagram F₀ F₁ := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram F₀ F₁ := by
     rw [← Subcomplex.unionProd.ι₂_ι S T, Category.assoc, hF, ha₂]
   refine ⟨F, ?_, ?_, ?_⟩
   · rw [← Subcomplex.unionProd.ι₁_ι S T, Category.assoc, hF, ha₁]
-  · have h := congrArg (fun g => intervalBoundaryEndpoint 0 Δ[n + 1] ≫ g) he
-    simpa only [← Category.assoc, intervalBoundaryEndpoint_ι,
-      intervalBoundaryDiagram_zero] using h
-  · have h := congrArg (fun g => intervalBoundaryEndpoint 1 Δ[n + 1] ≫ g) he
-    simpa only [← Category.assoc, intervalBoundaryEndpoint_ι,
-      intervalBoundaryDiagram_one] using h
+  · have h := congrArg (fun g => _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint 0 Δ[n + 1] ≫ g) he
+    simpa only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint_ι,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_zero] using h
+  · have h := congrArg (fun g => _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint 1 Δ[n + 1] ≫ g) he
+    simpa only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint_ι,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_one] using h
 
 end SerrePositivity.KST.LocalizingInvariants

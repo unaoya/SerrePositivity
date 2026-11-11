@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.AppendConeReassociation
-public import SerrePositivity.InfinityCategories.Core.PinchedSlice
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedSlice
 
 /-!
 概要：追加錐の二終点を元の実区間として読む座標。

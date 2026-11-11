@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.TracedBFTripleMappingSpace
-public import SerrePositivity.InfinityCategories.Kan.TriangleDiamondTransport
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleDiamondTransport
 
 /-! # 全四辺と同じ対角辺を保つ元の三入力 BF 比較の二単体
 概要：元の二つの全 Path 二単体を、同じ元の BF 写像空間の実二単体へ束ねる。
@@ -23,7 +23,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 
 /-- 同じ BF 写像空間の実二単体と、元の二つの全二単体の像そのものの等号。 -/
 def monicKTracedCoherentTripleDiamondData :=
-  _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondTransportData (monicKTracedCoherentTripleMappingSpace_eq F f g h)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.triangleDiamondTransportData (monicKTracedCoherentTripleMappingSpace_eq F f g h)
     (monicKTracedCoherentTripleFirstPathTriangle F f g h).simplex
     (monicKTracedCoherentTripleSecondPathTriangle F f g h).simplex _ _ _ _
     (monicKTracedCoherentTripleFirstLower_heq F f g h)

@@ -21,12 +21,12 @@ local notation "Dν" => dgKInputStableValue R (dgOdotMilnorIdentityDifferenceInp
 方針：対角と同じ実 cone 差を同時に保持する。規約：存在は仮定しない。
 使われ方：実右面の指定境界を構成するための D2 供給型。 -/
 structure DGOdotMilnorIdentityLaxComparisonInput where
-  gluing : QCatEquivalence (Lν).obj (laxCategory (𝟙 (Cν)) (𝟙 (Cν))).obj
-  difference : QCatEquivalence (Dν).obj (Cν).obj
-  diagonal : FunctorIso
+  gluing : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (Lν).obj (laxCategory (𝟙 (Cν)) (𝟙 (Cν))).obj
+  difference : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (Dν).obj (Cν).obj
+  diagonal : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((dgKInputNuMap R (dgOdotMilnorIdentityDiagonalInputMap R d)).hom ≫ gluing.hom)
     (IdentityLax.exactDiagonal (Cν)).hom
-  cone : FunctorIso
+  cone : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (gluing.hom ≫ (exactLaxDifference (𝟙 (Cν)) (𝟙 (Cν))).hom)
     ((dgKInputNuMap R (dgOdotMilnorIdentityDifferenceInputMap R d)).hom ≫ difference.hom)
 
@@ -35,12 +35,12 @@ structure DGOdotMilnorIdentityLaxComparisonInput where
 規約：上下二胞体や零化面の全比較の完成を主張しない。
 使われ方：元二脚の LT 結論へ接続する D2 供給型。 -/
 structure DGOdotMilnorOriginalLaxComparisonInput where
-  gluing : QCatEquivalence (dgOdotMilnorLaxCategory R d).obj (dgOdotPerfLaxCategory R d).obj
-  fst : FunctorIso
+  gluing : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (dgOdotMilnorLaxCategory R d).obj (dgOdotPerfLaxCategory R d).obj
+  fst : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (gluing.hom ≫ (laxFst (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)).hom)
     ((laxFst (dgOdotMilnorLaxYoneda R d) (dgOdotMilnorLaxCoefficient R d)).hom ≫
       (dgOdotMilnorLaxLeftInputEquivalence R d).inv)
-  snd : FunctorIso
+  snd : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (gluing.hom ≫ (laxSnd (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)).hom)
     ((laxSnd (dgOdotMilnorLaxYoneda R d) (dgOdotMilnorLaxCoefficient R d)).hom ≫
       (dgOdotMilnorLaxRightInputEquivalence R d).inv)

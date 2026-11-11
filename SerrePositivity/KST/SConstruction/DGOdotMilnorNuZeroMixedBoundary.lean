@@ -23,16 +23,16 @@ local notation "B" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 lemma dgOdotMilnorNuZeroMixedStart_eq :
     dgOdotMilnorNuZeroMixedStart R d =
       (dgOdotMilnorNuNullTriangleFactor R d 0).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) := by
   apply Subtype.ext
   have hs : (dgOdotMilnorNuZeroMixedStart R d).val =
-      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (K) (B) (dgOdotMilnorNuNullTopComposite R d) := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctorVertexEquiv (K) (B) (dgOdotMilnorNuNullTopComposite R d) := by
     rfl
   exact hs.trans (congrArg (fun x =>
-    (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι.app (Opposite.op ⦋0⦌) x)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι.app (Opposite.op ⦋0⦌) x)
       (dgOdotMilnorNuNullUpperHom_maximal R d)).symm
 
-variable (h : DGGluingMilnorSquare R d)
+variable (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 
 /-- 概要：元零角混合合成の終点は同じ絶対上三角形の元最大 path の像。
 方針：同じ標準零角経由の頂点評価と元絶対二短辺の回収を照合する。
@@ -40,11 +40,11 @@ variable (h : DGGluingMilnorSquare R d)
 lemma dgOdotMilnorNuZeroMixedTarget_eq :
     dgOdotMilnorNuZeroMixedTarget R d =
       (dgOdotMilnorNuAbsoluteTriangleFactor R d h 0).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) := by
   apply Subtype.ext
   exact (dgOdotMilnorNuStandardZeroNullHom_vertex R d (fromZeroCategory (B))).trans
     (congrArg (fun x =>
-      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι.app (Opposite.op ⦋0⦌) x)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι.app (Opposite.op ⦋0⦌) x)
         (dgOdotMilnorNuAbsoluteUpperHom_maximal R d h)).symm
 
 /-- 概要：指定零角の元混合合成辺を元実／絶対上三角形の合成端に置く。
@@ -53,9 +53,9 @@ lemma dgOdotMilnorNuZeroMixedTarget_eq :
 def dgOdotMilnorNuZeroMixedBoundaryEdge :
     (DGOdotMilnorNuNullCoherenceSpace R d).Edge
       ((dgOdotMilnorNuNullTriangleFactor R d 0).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}))
       ((dgOdotMilnorNuAbsoluteTriangleFactor R d h 0).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u})) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u})) :=
   (dgOdotMilnorNuZeroMixedCompositeEdge R d h).ofEq
     (dgOdotMilnorNuZeroMixedStart_eq R d) (dgOdotMilnorNuZeroMixedTarget_eq R d h)
 
@@ -65,7 +65,7 @@ def dgOdotMilnorNuZeroMixedBoundaryEdge :
 def dgOdotMilnorNuZeroMixedBoundaryFirstEdge :
     (DGOdotMilnorNuNullCoherenceSpace R d).Edge
       ((dgOdotMilnorNuNullTriangleFactor R d 0).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}))
       (dgOdotMilnorNuZeroMixedMiddle R d) :=
   (dgOdotMilnorNuZeroMixedLeftEdge R d).ofEq (dgOdotMilnorNuZeroMixedStart_eq R d) rfl
 
@@ -75,7 +75,7 @@ def dgOdotMilnorNuZeroMixedBoundaryFirstEdge :
 def dgOdotMilnorNuZeroMixedBoundarySecondEdge :
     (DGOdotMilnorNuNullCoherenceSpace R d).Edge (dgOdotMilnorNuZeroMixedMiddle R d)
       ((dgOdotMilnorNuAbsoluteTriangleFactor R d h 0).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u})) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u})) :=
   (dgOdotMilnorNuZeroMixedTopEdge R d).ofEq rfl (dgOdotMilnorNuZeroMixedTarget_eq R d h)
 
 /-- 概要：元上二胞体の端点へ輸送した同じ指定零角混合三角形。

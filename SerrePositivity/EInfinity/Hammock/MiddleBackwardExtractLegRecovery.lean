@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.ModelBridge.MiddleBackwardExtractFamily
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardExtractFamily
 
 /-!
 # 抽出した三つの脚の元の列への回収
@@ -22,22 +22,22 @@ open CategoryTheory
 variable {C : Type u} [Category.{v} C] {W : MorphismProperty C} [W.IsMultiplicative]
   {n m : ℕ} {X Y : C}
 
-lemma leftLeg_heq (S : Zigzag W (word n m) X Y) :
-    HEq (leftLeg.app S) (S.arrow (Positions.firstColumn n m)) := by
+lemma leftLeg_heq (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y) :
+    HEq (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardExtractFamily.leftLeg.app S) (S.arrow (Positions.firstColumn n m)) := by
   change HEq ((eqToHom _ ≫ S.arrow (Positions.firstColumn n m) ≫ eqToHom _) ≫
     eqToHom S.first) (S.arrow (Positions.firstColumn n m))
   simp only [comp_eqToHom_heq_iff, eqToHom_comp_heq_iff]
   rfl
 
-lemma middleLeg_heq (S : Zigzag W (word n m) X Y) :
-    HEq (middleLeg.app S) (S.arrow (Positions.middleColumn n m)) := by
+lemma middleLeg_heq (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y) :
+    HEq (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardExtractFamily.middleLeg.app S) (S.arrow (Positions.middleColumn n m)) := by
   change HEq (eqToHom _ ≫ S.arrow (Positions.middleColumn n m) ≫ eqToHom _)
     (S.arrow (Positions.middleColumn n m))
   simp only [comp_eqToHom_heq_iff, eqToHom_comp_heq_iff]
   rfl
 
-lemma rightLeg_heq (S : Zigzag W (word n m) X Y) :
-    HEq (rightLeg.app S) (S.arrow (Positions.lastColumn n m)) := by
+lemma rightLeg_heq (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y) :
+    HEq (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardExtractFamily.rightLeg.app S) (S.arrow (Positions.lastColumn n m)) := by
   change HEq (eqToHom S.last.symm ≫
     (eqToHom _ ≫ S.arrow (Positions.lastColumn n m) ≫ eqToHom _))
     (S.arrow (Positions.lastColumn n m))

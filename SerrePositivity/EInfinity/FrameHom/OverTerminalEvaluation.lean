@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.TerminalFiberBaseHomotopy
-public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveCoconePrism
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransHomotopyNaturality
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.OverCanonicalCocone
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.ConeFamilyUnderlying
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveCoconePrism
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.NatTransHomotopyNaturality
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.OverCanonicalCocone
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeFamilyUnderlying
 
 /-!
 # 元の Over 図式から恒等射への標準全ホモトピー
@@ -31,33 +31,33 @@ def overTerminalTransformation : T ⟶ (Functor.const I).obj (Over.mk (𝟙 n)) 
   naturality {_ _} _ := Over.mkIdTerminal.hom_ext _ _
 
 def overTerminalHomotopy : SSet.Homotopy (nerveMap T)
-    (SSet.const (X := nerve I) (nerveVertex (Over.mk (𝟙 n)))) :=
-  stableHomotopyRetarget (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (overTerminalTransformation n T))
-    rfl (SerrePositivity.InfinityCategories.F1B.nerveMap_const I (Over.mk (𝟙 n)))
+    (SSet.const (X := nerve I) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Over.mk (𝟙 n)))) :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (overTerminalTransformation n T))
+    rfl (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveMap_const I (Over.mk (𝟙 n)))
 
 lemma overTerminalTransformation_forget :
     Functor.whiskerRight (overTerminalTransformation n T) (Over.forget n) =
-      ((SerrePositivity.InfinityCategories.F1B.overForgetCocone n).whisker T).ι := by
+      ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.overForgetCocone n).whisker T).ι := by
   apply NatTrans.ext
   funext s
   exact Over.mkIdTerminal_from_left (T.obj s)
 
 lemma overTerminalHomotopy_forget_h : (overTerminalHomotopy n T).h ≫
     nerveMap (Over.forget n) =
-      (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy ((SerrePositivity.InfinityCategories.F1B.overForgetCocone n).whisker T).ι).h := by
-  change (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (overTerminalTransformation n T)).h ≫ _ = _
-  rw [SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy_whiskerRight, overTerminalTransformation_forget]
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.overForgetCocone n).whisker T).ι).h := by
+  change (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (overTerminalTransformation n T)).h ≫ _ = _
+  rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy_whiskerRight, overTerminalTransformation_forget]
 
 lemma overTerminalHomotopy_map_forget_h {D : Type u} [Category.{u} D] (G : C ⥤ D) :
     (overTerminalHomotopy n T).h ≫ nerveMap (Over.forget n) ≫ nerveMap G =
-      (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy
-        (G.mapCocone ((SerrePositivity.InfinityCategories.F1B.overForgetCocone n).whisker T)).ι).h := by
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy
+        (G.mapCocone ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.overForgetCocone n).whisker T)).ι).h := by
   rw [← Category.assoc, overTerminalHomotopy_forget_h]
-  rw [← nerveCoconePrism_eq_natTrans (T ⋙ Over.forget n)
-    ((SerrePositivity.InfinityCategories.F1B.overForgetCocone n).whisker T),
-    ← nerveCoconePrism_eq_natTrans ((T ⋙ Over.forget n) ⋙ G)
-      (G.mapCocone ((SerrePositivity.InfinityCategories.F1B.overForgetCocone n).whisker T))]
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nerveCoconePrism_eq_natTrans (T ⋙ Over.forget n)
+    ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.overForgetCocone n).whisker T),
+    ← _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nerveCoconePrism_eq_natTrans ((T ⋙ Over.forget n) ⋙ G)
+      (G.mapCocone ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.overForgetCocone n).whisker T))]
   simp only [Category.assoc]
-  rw [SerrePositivity.InfinityCategories.F1B.nerveCocone_mapCocone]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCocone_mapCocone]
 
 end SerrePositivity.EInfinity.FrameHom

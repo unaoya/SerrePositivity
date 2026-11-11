@@ -16,7 +16,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 同じ次元・頂点列・終点を保つ表示変更は、元の HA 実鎖射を異種等号で保つ。 -/
-lemma simplexHAChainLift_heq {N n m : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHAChainLift_heq {N n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (h : n = m) (v : Fin (n + 1) ↪o Fin (N + 1)) (w : Fin (m + 1) ↪o Fin (N + 1))
     (hv : HEq v w) (b c : Fin (N + 1)) (hbc : b = c)
     (hb : v (Fin.last n) < b) (hc : w (Fin.last m) < c) :
@@ -27,7 +27,7 @@ lemma simplexHAChainLift_heq {N n m : ℕ} (s : DGNerve.Simplex A D N)
   rfl
 
 /-- 元の列の次元移送は、同じ cube の前合成と始点表示の後移送を回収する。 -/
-lemma simplexHAChainLift_dimension {N n m : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHAChainLift_dimension {N n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (h : n = m) (v : Fin (n + 1) ↪o Fin (N + 1)) (b : Fin (N + 1))
     (hb : v (Fin.last n) < b)
     (hc : simplexHAOrderDimensionCast h v (Fin.last m) < b) :

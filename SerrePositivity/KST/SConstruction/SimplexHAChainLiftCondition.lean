@@ -15,13 +15,13 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 全頂点列の元の HA 線形復元を、全次数で回収する実 Hom 鎖射の存在。 -/
-def SimplexHAChainLiftExists {N : ℕ} (s : DGNerve.SimplexData A D N) (m : ℕ) : Prop :=
+def SimplexHAChainLiftExists {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D N) (m : ℕ) : Prop :=
   ∀ (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1)) (hb : v (Fin.last m) < b),
     ∃ F : serreCubeComplex A m ⟶ homObject A D (s.obj (v 0)) (s.obj b),
       ∀ k, F.f k = simplexHADegreeLift A s m v b hb k
 
 /-- 元の全次数の微分合成の差が零なら、同じ次数線形復元を持つ実 Hom 鎖射を作る。 -/
-def simplexHAChainLiftOfDefect {N : ℕ} (s : DGNerve.SimplexData A D N) (m : ℕ)
+def simplexHAChainLiftOfDefect {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D N) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1)) (hb : v (Fin.last m) < b)
     (hd : ∀ k, simplexHADegreeDefect A s m v b hb k = 0) :
     serreCubeComplex A m ⟶ homObject A D (s.obj (v 0)) (s.obj b) where
@@ -32,7 +32,7 @@ def simplexHAChainLiftOfDefect {N : ℕ} (s : DGNerve.SimplexData A D N) (m : �
     exact sub_eq_zero.mp (hd k)
 
 /-- 元の実鎖射が全次数の線形復元を回収すれば、元の微分合成の差は零。 -/
-lemma simplexHADegreeDefect_zero_of_chain {N : ℕ} (s : DGNerve.SimplexData A D N) (m : ℕ)
+lemma simplexHADegreeDefect_zero_of_chain {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D N) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1)) (hb : v (Fin.last m) < b)
     (F : serreCubeComplex A m ⟶ homObject A D (s.obj (v 0)) (s.obj b))
     (hF : ∀ k, F.f k = simplexHADegreeLift A s m v b hb k) (k : ℤ) :

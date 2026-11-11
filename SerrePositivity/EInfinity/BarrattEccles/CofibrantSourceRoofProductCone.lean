@@ -28,7 +28,7 @@ abbrev cofibrantSourceRoofProductComma := CostructuredArrow (sourceFrameElementD
   (cofibrantSourceRoofDegree A X Y b)
 
 def cofibrantSourceRoofProductCommaIso : nerve (cofibrantSourceRoofProductElements A X Y b) ≅
-    nerve (cofibrantSourceRoofProductComma A X Y b) := ProductSimplexLiftedOver.nerveIso _ _
+    nerve (cofibrantSourceRoofProductComma A X Y b) := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver.nerveIso _ _
 
 def cofibrantSourceRoofProductCommaFirstNerve : nerve (cofibrantSourceRoofProductComma A X Y b) ⟶
     nerve (sourceFrameElementCategory A X Y) where

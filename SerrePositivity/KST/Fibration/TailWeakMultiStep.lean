@@ -16,13 +16,13 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 貼り合わせから元の最後の辺の核値 cofiber を取る完全関手。 -/
-def tailWeakCofiberExact {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ) :
+def tailWeakCofiberExact {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n : ℕ) :
     tailWeakModel q n ⟶ closedStableModel (kernelClosedPredicate q) :=
   tailWeakEdgeExact q n ≫ (weakArrowCofiberEquivalence q).inv ≫
     relativeCofiberQuotient (ClosedStablePredicate.top (sInputModel B)) (kernelClosedPredicate q)
 
 /-- 元の先行列と最後の核値 cofiber の、順序を固定した反復実現の射対。 -/
-def tailWeakMultiStep {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
+def tailWeakMultiStep {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) :
     (multiRealizationFunctor r).obj (tailWeakModel q n) ⟶
       (multiRealizationFunctor r).obj (weakStringModel q ⦋n + 1⦌) ⊗
         (multiRealizationFunctor r).obj (closedStableModel (kernelClosedPredicate q)) :=
@@ -30,7 +30,7 @@ def tailWeakMultiStep {B C : _root_.SerrePositivity.InfinityCategories.Stable.Ve
     ((multiRealizationFunctor r).map (tailWeakCofiberExact q n))
 
 /-- 同じ補完切断を通る比較は、元の先行列と既存の最後の cofiber 選択を厳密に回収する。 -/
-lemma tailCompletionSection_pair {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ)
+lemma tailCompletionSection_pair {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n : ℕ)
     (F : StableModel.{u} ⥤ SSet.{u}) :
     F.map (weakCofiberCompletionSection q (tailWeakEdgeExact q n)) ≫
       (tailRelativePullback q n).pair F =
@@ -49,8 +49,8 @@ lemma tailCompletionSection_pair {B C : _root_.SerrePositivity.InfinityCategorie
     rfl
 
 /-- 元の先行列と最後の核値 cofiber の射対は、全正有限反復で局所化同型。 -/
-theorem tailWeakMultiStep_localized_isIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
+theorem tailWeakMultiStep_localized_isIso {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) :
     IsIso (AnodyneHomotopy.anodyneQ.map (tailWeakMultiStep q n (r + 1))) := by
   have : IsIso (AnodyneHomotopy.anodyneQ.map ((multiRealizationFunctor (r + 1)).map
       (weakCofiberCompletionSection q (tailWeakEdgeExact q n)))) :=

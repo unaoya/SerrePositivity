@@ -27,17 +27,17 @@ local instance nativeTriangleNerve : Quasicategory (SimplicialNerve OmegaSpectru
   sp_quasicategory
 
 variable {X Y Z : OmegaSpectrum.{u}} (a : X ⟶ Y) (q : Y ⟶ Z) (s : Sp.{u} _⦋2⦌)
-  (h₂ : Sp.δ 2 s = (coherentNerveEdge a).edge)
-  (h₀ : Sp.δ 0 s = (coherentNerveEdge q).edge)
+  (h₂ : Sp.δ 2 s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge)
+  (h₀ : Sp.δ 0 s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q).edge)
 
-def canonical := (coherentNerveCompStruct a q).simplex
+def canonical := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).simplex
 
-def comparison := TriangleComparison.comparison (coherentNerveEdge a) (coherentNerveEdge q)
-  s (canonical a q) h₂ h₀ (coherentNerveCompStruct a q).d₂ (coherentNerveCompStruct a q).d₀
+def comparison := TriangleComparison.comparison (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q)
+  s (canonical a q) h₂ h₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₂ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₀
 
 def prism : (Δ[2] : SSet.{u + 1}) ⊗ Δ[1] ⟶ Sp.{u} :=
-  TriangleComparison.prism (coherentNerveEdge a) (coherentNerveEdge q)
-    s (canonical a q) h₂ h₀ (coherentNerveCompStruct a q).d₂ (coherentNerveCompStruct a q).d₀
+  TriangleComparison.prism (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q)
+    s (canonical a q) h₂ h₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₂ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₀
 
 lemma prism_zero : (Δ[2] ◁ stdSimplex.δ (1 : Fin 2)) ≫ prism a q s h₂ h₀ =
     TriangleVertex.family s := TriangleComparison.prism_zero _ _ _ _ _ _ _ _
@@ -47,26 +47,26 @@ lemma prism_one : (Δ[2] ◁ stdSimplex.δ (0 : Fin 2)) ≫ prism a q s h₂ h�
 
 lemma prism_first : (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) ≫
     prism a q s h₂ h₀ = fst (Δ[1] : SSet.{u + 1}) Δ[1] ≫
-      SSet.yonedaEquiv.symm (coherentNerveEdge a).edge :=
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge :=
   TriangleComparison.prism_first _ _ _ _ _ _ _ _
 
 lemma prism_last : (stdSimplex.δ (0 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) ≫
     prism a q s h₂ h₀ = fst (Δ[1] : SSet.{u + 1}) Δ[1] ≫
-      SSet.yonedaEquiv.symm (coherentNerveEdge q).edge :=
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q).edge :=
   TriangleComparison.prism_last _ _ _ _ _ _ _ _
 
-variable (d : X ⟶ Z) (h₁ : Sp.δ 1 s = (coherentNerveEdge d).edge)
+variable (d : X ⟶ Z) (h₁ : Sp.δ 1 s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d).edge)
 
-def diagonalEdge : (intervalMappingSpace (coherentNerveVertex X) (coherentNerveVertex Z)).Edge
-    (intervalMappingVertexOfEdge (coherentNerveEdge d))
-    (intervalMappingVertexOfEdge (coherentNerveEdge (a ≫ q))) :=
-  TriangleComparison.diagonalEdge (coherentNerveEdge a) (coherentNerveEdge q)
-    s (canonical a q) h₂ h₀ (coherentNerveCompStruct a q).d₂ (coherentNerveCompStruct a q).d₀
-    (coherentNerveEdge d) (coherentNerveEdge (a ≫ q)) h₁ (coherentNerveCompStruct a q).d₁
+def diagonalEdge : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Z)).Edge
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (a ≫ q))) :=
+  TriangleComparison.diagonalEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q)
+    s (canonical a q) h₂ h₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₂ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₀
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (a ≫ q)) h₁ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₁
 
 lemma prism_diagonal : (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) ≫
     prism a q s h₂ h₀ =
-      intervalMappingUncurry (SSet.yonedaEquiv.symm (diagonalEdge a q s h₂ h₀ d h₁).edge) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (SSet.yonedaEquiv.symm (diagonalEdge a q s h₂ h₀ d h₁).edge) :=
   TriangleComparison.prism_diagonal _ _ _ _ _ _ _ _ _ _ _ _
 
 end SerrePositivity.KST.LocalizingInvariants.SpectrumTriangleNormalization

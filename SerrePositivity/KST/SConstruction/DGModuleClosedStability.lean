@@ -13,35 +13,35 @@ set_option backward.isDefEq.respectTransparency false
 universe u v
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SerrePositivity.DifferentialGraded
-open SerrePositivity.InfinityCategories DGNerve
-variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
-variable (P : RightModule A D → Prop) (hP : DGModuleClosedOperations A D P)
+open SerrePositivity.InfinityCategories
+variable (A : Type u) [CommRing A] (D : Type v) [_root_.SerrePositivity.DifferentialGraded.DGCategory A D] [Small.{u} D]
+variable (P : _root_.SerrePositivity.DifferentialGraded.RightModule A D → Prop) (hP : DGModuleClosedOperations A D P)
 include hP
 
 /-- 実零加群を部分圏内に保持した零頂点の存在。 -/
 lemma dgModuleClosedNerve_hasZeroVertex :
-    HasZeroVertex (dgNerve A (DGFullSubcategory (RightModule A D) P)) where
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (DGFullSubcategory (RightModule A D) P)) where
   exists_zero := by
-    let Z : DGFullSubcategory (RightModule A D) P := ⟨zeroModule A D, hP.zero_mem⟩
-    refine ⟨Simplex.vertex Z, ?_, ?_⟩
-    · apply isInitialVertex_of_fullInclusion A (RightModule A D) P
-      rw [dgFunctorNerve_vertex]
-      exact (dgModuleNerveZeroVertex_isZero A D).1
-    · apply isTerminalVertex_of_fullInclusion A (RightModule A D) P
-      rw [dgFunctorNerve_vertex]
-      exact (dgModuleNerveZeroVertex_isZero A D).2
+    let Z : _root_.SerrePositivity.DifferentialGraded.DGFullSubcategory (_root_.SerrePositivity.DifferentialGraded.RightModule A D) P := ⟨_root_.SerrePositivity.DifferentialGraded.zeroModule A D, hP.zero_mem⟩
+    refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Z, ?_, ?_⟩
+    · apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.isInitialVertex_of_fullInclusion A (RightModule A D) P
+      rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex]
+      exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleNerveZeroVertex_isZero A D).1
+    · apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.isTerminalVertex_of_fullInclusion A (RightModule A D) P
+      rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex]
+      exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleNerveZeroVertex_isZero A D).2
 
 /-- 実有限操作の閉性から得る全 dg 加群部分圏の安定性。 -/
 lemma dgModuleClosedNerve_isStable :
-    IsStable (dgNerve A (DGFullSubcategory (RightModule A D) P)) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (DGFullSubcategory (RightModule A D) P)) := by
   let := dgModuleClosedNerve_hasZeroVertex A D P hP
-  exact isStable_of_bicartesian_choices
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isStable_of_bicartesian_choices
     (dgModuleClosed_bicartesian_fiber_exists A D P hP)
     (dgModuleClosed_bicartesian_cofiber_exists A D P hP)
 
 /-- 全 dg 部分圏の native nerve を既存の S 構成の安定入力に束ねる。 -/
 def dgModuleClosedStableModel : StableModel.{max (u + 1) v} where
-  carrier := dgNerve A (DGFullSubcategory (RightModule A D) P)
+  carrier := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (DGFullSubcategory (RightModule A D) P)
   quasicategory := inferInstance
   stable := dgModuleClosedNerve_isStable A D P hP
 

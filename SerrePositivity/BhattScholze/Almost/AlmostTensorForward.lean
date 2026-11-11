@@ -366,46 +366,46 @@ private theorem completedKernelTensorRight_isZero_of_almostZero
     (hX : ∀ i : ℤ, SerrePositivity.Almost.IsAlmostZero
       (perfectoidKernel p R hR J) (X.homology i)) :
     IsZero (completedTensorRight (p : R)
-      ((moduleFreeCochainResolution R).obj (ModuleCat.of R (perfectoidKernel p R hR J))) X) := by
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj (ModuleCat.of R (perfectoidKernel p R hR J))) X) := by
   let K := perfectoidKernel p R hR J
-  let P := (moduleFreeCochainResolution R).obj (ModuleCat.of R K)
+  let P := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj (ModuleCat.of R K)
   let F := derivedComplexCompletionFunctor R (p : R)
   have hP : P.IsStrictlyLE 0 := (CochainComplex.isStrictlyLE_iff _ _).mpr
-    (moduleFreeCochainResolution_isZero R (ModuleCat.of R K))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution_isZero R (ModuleCat.of R K))
   have hk : complexKFlat R P := complexKFlat_of_flat_boundedAbove R P 0
-    (moduleFreeCochainResolution_isZero R (ModuleCat.of R K)) (fun n ↦ by
-      let := moduleFreeCochainResolution_free R (ModuleCat.of R K) n
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution_isZero R (ModuleCat.of R K)) (fun n ↦ by
+      let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution_free R (ModuleCat.of R K) n
       infer_instance)
   apply completedTensorRight_isZero_of_homology (p : R) P X hk hP
   intro i
   let N := X.homology i
   have h := perfectoidKernel_completedTensor_isZero_of_isAlmostZero p R hR J N (hX i)
   have h' : IsZero (F.obj (DerivedCategory.Q.obj
-      (cochainTensor P ((moduleFreeCochainResolution R).obj N)))) :=
+      (cochainTensor P ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj N)))) :=
     h.of_iso (completedTensorResolutionIso R (p : R) (ModuleCat.of R K) N).symm
-  have := moduleFreeCochainAugmentation_quasiIso R N
-  have := complexKFlat_quasiIso_right R hk (moduleFreeCochainAugmentation R N)
+  have := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainAugmentation_quasiIso R N
+  have := complexKFlat_quasiIso_right R hk (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainAugmentation R N)
   exact h'.of_iso (F.mapIso (DerivedCategory.Q.mapIso (β_ (cochainSingleZero N) P) ≪≫
     (asIso (DerivedCategory.Q.map
-      (cochainTensorMap (𝟙 P) (moduleFreeCochainAugmentation R N)))).symm))
+      (cochainTensorMap (𝟙 P) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainAugmentation R N)))).symm))
 
 set_option linter.unusedVariables false in
 /-- BS 著者版 Proposition 10.4 の完備複体の almost 零性を、核とのテンソルで判定する。 -/
 theorem isAlmostZero_iff_completedTensor_isZero
     (hJ : IsModuleComplete R (p : R) (ModuleCat.of R J))
     (M : DVertex R) (hM : isPCompleteVertex p R M) :
-    IsJAlmostZero p R hR J M ↔ IsZero ((derivedInfinityHomotopyEquivalence R).functor.obj
+    IsJAlmostZero p R hR J M ↔ IsZero ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
       ⟨kernelTensor p R hR J M⟩) := by
   refine ⟨fun h ↦ ?_, fun h ↦ isAlmostZero_of_completedTensor_isZero p hR J M hM h⟩
   let X := (M.obj 0).val
-  let P := (moduleFreeCochainResolution R).obj (ModuleCat.of R (perfectoidKernel p R hR J))
+  let P := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj (ModuleCat.of R (perfectoidKernel p R hR J))
   let F := derivedComplexCompletionFunctor R (p : R)
   have hX (i : ℤ) : SerrePositivity.Almost.IsAlmostZero
       (perfectoidKernel p R hR J) (X.homology i) :=
     SerrePositivity.Almost.IsAlmostZero.of_equiv
-      (derivedInfinityHomologyIso R i M).toLinearEquiv (h i)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyIso R i M).toLinearEquiv (h i)
   have hz := completedKernelTensorRight_isZero_of_almostZero p hR J X hX
-  exact hz.of_iso ((derivedInfinityHomotopyEquivalence R).counitIso.app _ ≪≫
+  exact hz.of_iso ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).counitIso.app _ ≪≫
     F.mapIso (DerivedCategory.Q.mapIso (β_ P X)))
 
 
@@ -413,9 +413,9 @@ theorem isAlmostZero_iff_completedTensor_isZero
 /-- almost 連結性から、核との完備テンソルの連結性を得る。 -/
 theorem kernelTensor_isLE_of_almostConnective (M : DVertex R)
     (hM : IsAlmostConnective p R hR J M) :
-    ((derivedInfinityHomotopyEquivalence R).functor.obj ⟨kernelTensor p R hR J M⟩).IsLE 0 := by
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj ⟨kernelTensor p R hR J M⟩).IsLE 0 := by
   let X := (M.obj 0).val
-  let P := (moduleFreeCochainResolution R).obj (ModuleCat.of R (perfectoidKernel p R hR J))
+  let P := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj (ModuleCat.of R (perfectoidKernel p R hR J))
   let F := derivedComplexCompletionFunctor R (p : R)
   let C := X.truncGE 1
   have hC (i : ℤ) : SerrePositivity.Almost.IsAlmostZero
@@ -424,7 +424,7 @@ theorem kernelTensor_isLE_of_almostConnective (M : DVertex R)
     · have he : IsIso ((HomologicalComplex.homologyFunctor (ModuleCat R) (.up ℤ) i).map
           (X.πTruncGE 1)) := (quasiIsoAt_iff_isIso_homologyMap _ _).mp
         (X.quasiIsoAt_πTruncGE 1 i (by omega))
-      let iso := derivedInfinityHomologyIso R i M ≪≫
+      let iso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyIso R i M ≪≫
         asIso ((HomologicalComplex.homologyFunctor (ModuleCat R) (.up ℤ) i).map
           (X.πTruncGE 1))
       exact SerrePositivity.Almost.IsAlmostZero.of_equiv iso.toLinearEquiv (hM i hi)
@@ -434,10 +434,10 @@ theorem kernelTensor_isLE_of_almostConnective (M : DVertex R)
         (fun _ _ _ ↦ (ModuleCat.isZero_iff_subsingleton.mp hz).elim _ _)
   have hz := completedKernelTensorRight_isZero_of_almostZero p hR J C hC
   have hp0 : P.IsStrictlyLE 0 := (CochainComplex.isStrictlyLE_iff _ _).mpr
-    (moduleFreeCochainResolution_isZero R _)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution_isZero R _)
   have hp : complexKFlat R P := complexKFlat_of_flat_boundedAbove R P 0
-    (moduleFreeCochainResolution_isZero R _) (fun n ↦ by
-      let := moduleFreeCochainResolution_free R (ModuleCat.of R (perfectoidKernel p R hR J)) n
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution_isZero R _) (fun n ↦ by
+      let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution_free R (ModuleCat.of R (perfectoidKernel p R hR J)) n
       infer_instance)
   let S := X.shortComplexTruncLE 0
   let f := X.ιTruncLE 0
@@ -464,7 +464,7 @@ theorem kernelTensor_isLE_of_almostConnective (M : DVertex R)
   have : T.obj₁.IsLE 0 := derivedComplexCompletionFunctor_isLE R (p : R) _ _ hc
   exact DerivedCategory.TStructure.t.isLE_of_iso
     (asIso T.mor₁ ≪≫ F.mapIso (DerivedCategory.Q.mapIso (β_ X P)) ≪≫
-      ((derivedInfinityHomotopyEquivalence R).counitIso.app _).symm) 0
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).counitIso.app _).symm) 0
 
 set_option linter.unusedVariables false in
 /-- BS 著者版 Lemma 10.5 の比較に使う almost 連結性の判定。 -/

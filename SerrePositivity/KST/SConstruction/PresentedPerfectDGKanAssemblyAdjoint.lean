@@ -24,8 +24,8 @@ instance presentedPerfectDGKanAssemblyTarget_kanComplex (r : ℕ) (C : PerfDGInp
 /-- 同じ元の右脚の随伴を、同じ元の Ex∞ Kan 対象上に保持する。 -/
 def presentedPerfectDGKanAssemblyRightAdjoint (r : ℕ) (C : PerfDGInput.{u, v} A) :
     ((presentedPerfectDGOneDirectionKanEnrichedFunctor A r).obj C).obj ⟶
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((presentedPerfectDGKanAssemblyTargetFunctor A r).obj C).obj :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _)
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((presentedPerfectDGKanAssemblyTargetFunctor A r).obj C).obj :=
+  (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _)
     (show ((presentedPerfectDGKanAssemblySourceFunctor A r).obj C).obj ⟶
       ((presentedPerfectDGKanAssemblyTargetFunctor A r).obj C).obj from
         presentedPerfectDGKanAssemblyRightMap A r C)
@@ -48,7 +48,7 @@ lemma presentedPerfectDGKanAssemblyRightAdjoint_unit (r : ℕ) (C : PerfDGInput.
   let f : ((presentedPerfectDGKanAssemblySourceFunctor A r).obj C).obj ⟶
       ((presentedPerfectDGKanAssemblyTargetFunctor A r).obj C).obj :=
     presentedPerfectDGKanAssemblyRightMap A r C
-  let a : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).obj C).obj) ⟶
+  let a : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).obj C).obj) ⟶
       ((presentedPerfectDGBoundaryPointedEnrichedFunctor A (r + 1)).obj C).obj :=
     presentedPerfectDGAssemblyMap A r C
   have h := congrArg (adj.homEquiv _ _)
@@ -60,7 +60,7 @@ lemma presentedPerfectDGKanAssemblyRightAdjoint_unit (r : ℕ) (C : PerfDGInput.
 /-- 同じ元の Ex∞ 右脚の随伴は全基点・全次数で π 同型。 -/
 lemma presentedPerfectDGKanAssemblyRightAdjoint_piIsomorphism (r : ℕ)
     (C : PerfDGInput.{u, v} A) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (presentedPerfectDGKanAssemblyRightAdjoint A r C).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (presentedPerfectDGKanAssemblyRightAdjoint A r C).right :=
   assemblyAdjoint_piIsomorphism_of_anodyne_units r
     (stableCategoryModel (presentedPerfectDGStableCategory A C))
     (exInfinityPointedUnit ((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).obj C))

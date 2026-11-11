@@ -23,7 +23,7 @@ def simplexHAGeneratorStandardCell {k : ℕ} (m : ℕ) (i : SerreCubeGeneratorIn
     (hb : ∀ t ∈ T, v (Fin.last m) < t) :
     serreCubeComplex A (serreCubeGeneratorFreeDimension m i + T.card - 1) ⟶
       homObject A (CubicalLambda A (Δ[k] : SSet.{u}))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (T.max' hT)) :=
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (T.max' hT)) :=
   serreCubeGeneratorDecodeFace A m i T hT ≫ simplexHADecodeSubsetCell A m v T hT hb
 
 /-- 元の左生成元が零次元なら、同じ右側 bead の実鎖射に戻る。 -/
@@ -31,7 +31,7 @@ lemma simplexHAGeneratorStandardCell_zero {k : ℕ} (i : SerreCubeGeneratorIndex
     (v : Fin 1 ↪o Fin (k + 1)) (T : Finset (Fin (k + 1))) (hT : T.Nonempty)
     (hb : ∀ t ∈ T, v (Fin.last 0) < t) :
     HEq (simplexHAGeneratorStandardCell A 0 i v T hT hb)
-      (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v 0) hb)) := by
+      (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v 0) hb)) := by
   have h : simplexHAGeneratorStandardCell A 0 i v T hT hb =
       simplexHADecodeSubsetCell A 0 v T hT hb := by
     unfold simplexHAGeneratorStandardCell
@@ -62,11 +62,11 @@ lemma simplexHAGeneratorStandardCell_point_one {k : ℕ} (m : ℕ)
       (serreCubeChainComposition A (serreCubeGeneratorFreeDimension m i) (T.card - 1)
         (simplexHAGeneratorStandardCell A m i (Fin.castSuccOrderEmb.trans v)
           {v (Fin.last (m + 1))} (Finset.singleton_nonempty _) (simplexHADecodePrefix_cut m v))
-        (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb))) := by
+        (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb))) := by
   let r := v (Fin.last (m + 1))
   let left := simplexHADecodeSubsetCell A m (Fin.castSuccOrderEmb.trans v)
     {r} (Finset.singleton_nonempty r) (simplexHADecodePrefix_cut m v)
-  let right := simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT r hb)
+  let right := simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT r hb)
   let face := serreCubeChainFace A true (m + T.card - 1) ((m + 1) + T.card - 1)
     (simplexHADecodeSubset_face_codimension m T hT) (simplexHADecodeFaceCoordinate m T hT)
   have he : simplexHAGeneratorStandardCell A (m + 1) (i, 1) v T hT hb =
@@ -100,7 +100,7 @@ lemma simplexHAGeneratorStandardCell_edge {k : ℕ} (m : ℕ)
         (insert (v (Fin.last (m + 1))) T) (Finset.insert_nonempty _ T)
         (simplexHADecodePrefix_insert m v T hb)) := by
   let r := v (Fin.last (m + 1))
-  have hn := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T r hb
+  have hn := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail_not_mem T r hb
   have hc := Finset.card_insert_of_notMem hn
   have hp : serreCubeGeneratorFreeDimension (m + 1) (i, 2) + T.card - 1 =
       serreCubeGeneratorFreeDimension m i + (insert r T).card - 1 := by
@@ -108,13 +108,13 @@ lemma simplexHAGeneratorStandardCell_edge {k : ℕ} (m : ℕ)
     omega
   have hq : (m + 1) + T.card - 1 = m + (insert r T).card - 1 := by omega
   have hK : homObject A (CubicalLambda A (Δ[k] : SSet.{u}))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (T.max' hT)) =
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (T.max' hT)) =
       homObject A (CubicalLambda A (Δ[k] : SSet.{u}))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex ((Fin.castSuccOrderEmb.trans v) 0))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex ((insert r T).max' (Finset.insert_nonempty r T))) := by
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex ((Fin.castSuccOrderEmb.trans v) 0))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex ((insert r T).max' (Finset.insert_nonempty r T))) := by
     exact congrArg (fun b => homObject A (CubicalLambda A (Δ[k] : SSet.{u}))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_max T hT r hb).symm
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail_max T hT r hb).symm
   exact serreCubeChain_comp_heq A hp hq hK
     (serreCubeGeneratorDecodeFace A (m + 1) (i, 2) T hT)
     (serreCubeGeneratorDecodeFace A m i (insert r T) (Finset.insert_nonempty r T))

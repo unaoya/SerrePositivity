@@ -20,10 +20,10 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
   [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)]
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   {Q : SSet.{max u v}} [Quasicategory Q]
-  (G : nerve (modelBifibrantRelativeCategory C).category ⟶ Q)
-  (hG : IsLocalization G (weakNerveEdges (modelBifibrantRelativeCategory C)))
-  (K : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ Q)
-  (e : FunctorIso (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ K) G)
+  (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).category ⟶ Q)
+  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)))
+  (K : kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C) ⟶ Q)
+  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C) ≫ K) G)
 
 /-- 概要：実 bifibrant hammock と指定局所化の全比較を同じ二胞体で束ねる。
 方針：余終性条件を放電済みの実局所化普遍性を既存の一意性へ渡す。
@@ -31,7 +31,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 使われ方：全 Hom 族と局所化像の零単体の比較。 -/
 def modelBifibrantSpecifiedLocalizationComparison :
     FrameHom.CoherentLocalizationComparison
-      (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) G :=
+      (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) G :=
   FrameHom.localizationComparisonData _ G _ (modelBifibrantHammock_isLocalization r) hG K e
 
 /-- 概要：公開比較の全二胞体は元の指定二胞体そのもの。
@@ -44,10 +44,10 @@ lemma modelBifibrantSpecifiedLocalizationComparison_triangle :
 方針：同じ全比較 K の Hom 作用と両端の指定成分の共役を使う。
 規約：元の局所化像の頂点を保持。使われ方：実 frame 比較の指定局所化への輸送。 -/
 def modelBifibrantSpecifiedPinchedEquivalence (X Y : BifibrantObject C) :
-    QCatEquivalence (pinchedHom (modelBifibrantHammockVertex X) (modelBifibrantHammockVertex Y))
-      (pinchedHom (G.app (Opposite.op ⦋0⦌) (nerveVertex (modelBifibrantObject C X)))
-        (G.app (Opposite.op ⦋0⦌) (nerveVertex (modelBifibrantObject C Y)))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (modelBifibrantHammockVertex X) (modelBifibrantHammockVertex Y))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (G.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C X)))
+        (G.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)))) :=
   (modelBifibrantSpecifiedLocalizationComparison r G hG K e).pinchedEquivalence
-    (nerveVertex (modelBifibrantObject C X)) (nerveVertex (modelBifibrantObject C Y))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y))
 
 end SerrePositivity.EInfinity.SimplicialLocalization

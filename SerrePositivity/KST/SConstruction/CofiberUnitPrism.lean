@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.FramePreservingSpanCompletion
 public import SerrePositivity.KST.SConstruction.GappedOriginSquares
-public import SerrePositivity.InfinityCategories.Core.EquivalencePathIso
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePathIso
 
 /-! # cofiber の単位と標準抽出を比較する prism
 概要：各区間の標準四角形に沿う cofiber の単位を右上角へ動かす。
@@ -35,7 +35,7 @@ def intervalMax : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[1] :=
 /-- 概要：時刻零で max は第二座標に等しい。
 方針：鎖の頂点で有限区間の最小元を計算する。
 規約：厳密等号。使われ方：prism の始点。 -/
-lemma intervalMax_zero : prismEndpoint 0 (Δ[1] : SSet.{u}) ≫ intervalMax = 𝟙 _ := by
+lemma intervalMax_zero : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (Δ[1] : SSet.{u}) ≫ intervalMax = 𝟙 _ := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -50,7 +50,7 @@ lemma intervalMax_zero : prismEndpoint 0 (Δ[1] : SSet.{u}) ≫ intervalMax = �
 /-- 概要：時刻一で max は一に等しい。
 方針：鎖の頂点で有限区間の最大元を計算する。
 規約：厳密等号。使われ方：prism の終点。 -/
-lemma intervalMax_one : prismEndpoint 1 (Δ[1] : SSet.{u}) ≫ intervalMax =
+lemma intervalMax_one : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (Δ[1] : SSet.{u}) ≫ intervalMax =
     SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
   apply SSet.hom_ext
   intro d
@@ -88,7 +88,7 @@ def cofiberUnitCorner : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[1] ⊗ Δ[1] :=
 方針：鎖の頂点で max 0 y = y を使う。
 規約：厳密等号。使われ方：ホモトピーの始点。 -/
 lemma cofiberUnitCornerPrism_zero :
-    prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ cofiberUnitCornerPrism = cofiberUnitCorner := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ cofiberUnitCornerPrism = cofiberUnitCorner := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -106,7 +106,7 @@ lemma cofiberUnitCornerPrism_zero :
 方針：鎖の頂点で max 1 y = 1 を使う。
 規約：厳密等号。使われ方：ホモトピーの終点。 -/
 lemma cofiberUnitCornerPrism_one :
-    prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ cofiberUnitCornerPrism =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ cofiberUnitCornerPrism =
       SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
   apply SSet.hom_ext
   intro d
@@ -133,7 +133,7 @@ def arCofiberUnitSquare {n : ℕ} (a : Ar.{u} n) :
 方針：prism の始点と積の座標を計算する。
 規約：全次数の厳密等号。使われ方：単位比較の始点の同定。 -/
 lemma arCofiberUnitPrism_zero {n : ℕ} (a : Ar.{u} n) :
-    prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberUnitPrism a =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberUnitPrism a =
       arCofiberUnitSquare a := by
   apply SSet.hom_ext
   intro d
@@ -154,7 +154,7 @@ lemma arCofiberUnitPrism_zero {n : ℕ} (a : Ar.{u} n) :
 方針：prism の終点と積の座標を計算する。
 規約：全次数の厳密等号。使われ方：右上角の図式の標準抽出。 -/
 lemma arCofiberUnitPrism_one {n : ℕ} (a : Ar.{u} n) :
-    prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberUnitPrism a =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberUnitPrism a =
       arSquare 0 a.down.val.1 a.down.val.1 a.down.val.2 (Fin.zero_le _) le_rfl a.down.property ≫
         lift (𝟙 (arNerve n)) (SSet.const
           (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by

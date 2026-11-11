@@ -1,2 +1,2 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Diagrams.TriangleNativeExt
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativeExt

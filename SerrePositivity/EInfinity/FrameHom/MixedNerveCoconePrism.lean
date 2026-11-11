@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.FrameHom.MixedNerveNatTrans
-public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveCoconePrism
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveCoconePrism
 
 /-!
 概要：混合宇宙の通常余錐の全 join prism は、元の自然変換円柱そのものと一致する。
@@ -22,28 +22,28 @@ def liftedCocone (c : Cocone F) : Cocone (lifted F) where
   pt := ULiftHom.objUp c.pt
   ι := liftedNatTrans c.ι
 
-def coconeJoin (c : Cocone F) : join (nerve I) (Δ[0] : SSet.{u + 1}) ⟶ nerve C :=
-  joinMap (up I) (𝟙 Δ[0]) ≫ (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (liftedCocone c)).val ≫ down C
+def coconeJoin (c : Cocone F) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (nerve I) (Δ[0] : SSet.{u + 1}) ⟶ nerve C :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (up I) (𝟙 Δ[0]) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCoconeEquiv (liftedCocone c)).val ≫ down C
 
 lemma coconePrism_eq_homotopy (c : Cocone F) :
-    (β_ (nerve I) (Δ[1] : SSet.{u + 1})).hom ≫ rightMappingSpacePrism (nerve I) ≫
+    (β_ (nerve I) (Δ[1] : SSet.{u + 1})).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism (nerve I) ≫
       coconeJoin c = (homotopy c.ι).h := by
-  have hn := rightMappingSpacePrism_naturality (up I)
+  have hn := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism_naturality (up I)
   have hb : (up I ▷ (Δ[1] : SSet.{u + 1})) ≫
       (β_ (nerve (ULiftHom.{u + 1} I)) (Δ[1] : SSet.{u + 1})).hom =
       (β_ (nerve I) (Δ[1] : SSet.{u + 1})).hom ≫ (Δ[1] ◁ up I) := rfl
-  change (β_ (nerve I) (Δ[1] : SSet.{u + 1})).hom ≫ rightMappingSpacePrism (nerve I) ≫
-      (joinMap (up I) (𝟙 Δ[0]) ≫ (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (liftedCocone c)).val ≫ down C) =
+  change (β_ (nerve I) (Δ[1] : SSet.{u + 1})).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism (nerve I) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (up I) (𝟙 Δ[0]) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCoconeEquiv (liftedCocone c)).val ≫ down C) =
       (up I ▷ (Δ[1] : SSet.{u + 1})) ≫
-        (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (liftedNatTrans c.ι)).h ≫ down C
-  have hc : (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (liftedNatTrans c.ι)).h =
+        (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (liftedNatTrans c.ι)).h ≫ down C
+  have hc : (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (liftedNatTrans c.ι)).h =
       (β_ (nerve (ULiftHom.{u + 1} I)) (Δ[1] : SSet.{u + 1})).hom ≫
-        rightMappingSpacePrism _ ≫ (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (liftedCocone c)).val := by
-    exact (FrameHom.nerveCoconePrism_eq_natTrans (lifted F) (liftedCocone c)).symm
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCoconeEquiv (liftedCocone c)).val := by
+    exact (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nerveCoconePrism_eq_natTrans (lifted F) (liftedCocone c)).symm
   rw [hc]
   simp only [← Category.assoc]
   rw [hb]
   simp only [Category.assoc]
-  rw [← Category.assoc (rightMappingSpacePrism _), ← hn]
+  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _), ← hn]
   simp only [Category.assoc]
 end SerrePositivity.EInfinity.FrameHom.MixedNerve

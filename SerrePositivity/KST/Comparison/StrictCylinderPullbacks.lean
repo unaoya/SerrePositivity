@@ -33,12 +33,12 @@ theorem doubleMappingCylinderMap_isPullback {C A B C' A' B' : SSet.{u}}
     {f : C ⟶ A} {g : C ⟶ B} {f' : C' ⟶ A'} {g' : C' ⟶ B'}
     {c : C ⟶ C'} {a : A ⟶ A'} {b : B ⟶ B'}
     (hf : IsPullback f c a f') (hg : IsPullback g c b g') :
-    IsPullback (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g) (c ▷ Δ[1])
-        (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm)
-        (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f' g') ∧
-    IsPullback (pushout.inr (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g)) (coprod.map a b)
-        (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm)
-        (pushout.inr (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C') (coprod.map f' g')) :=
+    IsPullback (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle f g) (c ▷ Δ[1])
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle f' g') ∧
+    IsPullback (pushout.inr (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints C) (coprod.map f g)) (coprod.map a b)
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm)
+        (pushout.inr (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints C') (coprod.map f' g')) :=
   doubleMappingCylinderMap_strictCube f g f' g' c a b hf.w.symm hg.w.symm
     (cylinderEndpoints_isPullback c) (coproductSquare_isPullback hf hg)
 
@@ -52,9 +52,9 @@ theorem doubleMappingCylinder_left_isPullback {C A B C' A' B' : SSet.{u}}
     {f : C ⟶ A} {g : C ⟶ B} {f' : C' ⟶ A'} {g' : C' ⟶ B'}
     {c : C ⟶ C'} {a : A ⟶ A'} {b : B ⟶ B'}
     (hf : IsPullback f c a f') (hg : IsPullback g c b g') :
-    IsPullback (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f g) a
-      (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm)
-      (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f' g') :=
+    IsPullback (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left f g) a
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left f' g') :=
   (coproductInclusions_isPullback a b).1.paste_horiz
     (doubleMappingCylinderMap_isPullback hf hg).2
 
@@ -68,9 +68,9 @@ theorem doubleMappingCylinder_right_isPullback {C A B C' A' B' : SSet.{u}}
     {f : C ⟶ A} {g : C ⟶ B} {f' : C' ⟶ A'} {g' : C' ⟶ B'}
     {c : C ⟶ C'} {a : A ⟶ A'} {b : B ⟶ B'}
     (hf : IsPullback f c a f') (hg : IsPullback g c b g') :
-    IsPullback (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f g) b
-      (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm)
-      (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f' g') :=
+    IsPullback (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right f g) b
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right f' g') :=
   (coproductInclusions_isPullback a b).2.paste_horiz
     (doubleMappingCylinderMap_isPullback hf hg).2
 
@@ -82,7 +82,7 @@ theorem doubleMappingCylinder_right_isPullback {C A B C' A' B' : SSet.{u}}
 -/
 theorem cylinderZero_isPullback {C C' : SSet.{u}} (c : C ⟶ C') :
     IsPullback SSet.ι₀ c (c ▷ Δ[1]) SSet.ι₀ := by
-  simpa only [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inl_desc] using
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints, coprod.inl_desc] using
     (coproductInclusions_isPullback c c).1.paste_horiz (cylinderEndpoints_isPullback c)
 
 /--
@@ -95,10 +95,10 @@ theorem doubleMappingCylinder_center_isPullback {C A B C' A' B' : SSet.{u}}
     {f : C ⟶ A} {g : C ⟶ B} {f' : C' ⟶ A'} {g' : C' ⟶ B'}
     {c : C ⟶ C'} {a : A ⟶ A'} {b : B ⟶ B'}
     (hf : IsPullback f c a f') (hg : IsPullback g c b g') :
-    IsPullback (f ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f g) c
-      (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm)
-      (f' ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f' g') := by
-  simpa only [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_zero] using
+    IsPullback (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left f g) c
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm)
+      (f' ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left f' g') := by
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_zero] using
     (cylinderZero_isPullback c).paste_horiz (doubleMappingCylinderMap_isPullback hf hg).1
 
 end SerrePositivity.KST.Comparison

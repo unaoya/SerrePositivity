@@ -21,7 +21,7 @@ open scoped Simplicial
 規約：標準辺と第一行の同型を明示する。使われ方：cofiber の入力の回収。 -/
 lemma firstRow_two_middle_bottom :
     (firstRowSimplexIso 1).hom ≫ firstRowInclusion.{u} 2 =
-      squareBottomEdge ≫ arTwoMiddleSquare := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ arTwoMiddleSquare := by
   apply SSet.yonedaEquiv.injective
   refine CategoryTheory.Functor.ext (fun r => ?_) (fun _ _ _ => Subsingleton.elim _ _)
   fin_cases r <;> rfl
@@ -30,12 +30,12 @@ lemma firstRow_two_middle_bottom :
 方針：与えられた射の cofiber 正方形を中央に配置する。
 規約：安定性の cofiber 存在から実際の正方形を選ぶ。
 使われ方：第一行制限の零次元の境界 RLP。 -/
-lemma exists_gapped_arTwo_with_firstRow (C : SSet.{u}) [Quasicategory C] [IsStable C]
+lemma exists_gapped_arTwo_with_firstRow (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     (p : firstRowNerve 2 ⟶ C) :
     ∃ F : arNerve 2 ⟶ C, IsGapped F ∧ firstRowInclusion 2 ≫ F = p := by
   let e := (firstRowSimplexIso 1).hom ≫ p
-  let t := chosenCofiberSquare (edgeOfSimplex (SSet.yonedaEquiv e))
-  have ht : squareBottomEdge ≫ t.square = e := by
+  let t := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (SSet.yonedaEquiv e))
+  have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ t.square = e := by
     rw [t.bottom_edge]
     exact SSet.yonedaEquiv.symm_apply_apply e
   obtain ⟨F, hF, hmid⟩ := exists_gapped_arTwo_of_cofiber t.toZeroTriangle t.isPushout
@@ -48,28 +48,28 @@ lemma exists_gapped_arTwo_with_firstRow (C : SSet.{u}) [Quasicategory C] [IsStab
 方針：構成した実際の gapped 図式を全部分複体の頂点にする。
 規約：条件を追加仮定せず構成した証明を使用する。
 使われ方：次数2の trivial Kan fibration の零次元。 -/
-lemma firstRowRestriction_two_vertex_surjective (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+lemma firstRowRestriction_two_vertex_surjective (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     Function.Surjective ((firstRowRestriction 2 C).app (Opposite.op ⦋0⦌)) := by
   intro d
-  let p := (functorVertexEquiv (firstRowNerve 2) C).symm d
+  let p := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (firstRowNerve 2) C).symm d
   obtain ⟨F, hF, hp⟩ := exists_gapped_arTwo_with_firstRow C p
-  let v : (sConstruction 2 C) _⦋0⦌ := ⟨functorVertex F, by
+  let v : (sConstruction 2 C) _⦋0⦌ := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F, by
     intro α
     have hα : α = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
     rw [hα, op_id, CategoryTheory.Functor.map_id_apply]
-    change IsGapped ((functorVertexEquiv (arNerve 2) C).symm (functorVertexEquiv _ C F))
+    change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve 2) C).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C F))
     rw [Equiv.symm_apply_apply]
     exact hF⟩
   refine ⟨v, ?_⟩
-  change functorVertex (firstRowInclusion 2 ≫ F) = d
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (firstRowInclusion 2 ≫ F) = d
   rw [hp]
-  exact (functorVertexEquiv _ C).apply_symm_apply d
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).apply_symm_apply d
 
 /-- 概要：次数2の第一行制限は trivial Kan fibration。
 方針：実際の頂点の構成と全正次元の相対境界持ち上げを合わせる。
 規約：C は安定な quasicategory。使われ方：S_2 の完全な第一行比較。 -/
 instance firstRowRestriction_two_trivialKanFibration (C : SSet.{u}) [Quasicategory C]
-    [IsStable C] : TrivialKanFibration (firstRowRestriction 2 C) :=
+    [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (firstRowRestriction 2 C) :=
   firstRowRestriction_trivialKanFibration_of_vertexSurjective 2 C
     (firstRowRestriction_two_vertex_surjective C)
 

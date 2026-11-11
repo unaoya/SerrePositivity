@@ -50,12 +50,12 @@ theorem tailHomotopyEquiv_natural {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
   calc
     _ = positiveStageEquiv (tail Y) j k n (boundaryStage_admissible j)
         (boundaryStage_degree j) (homotopyMap (tailMap f) j a) := hY
-    _ = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (f.app (k + 1)).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
+    _ = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (f.app (k + 1)).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)
         (positiveStageEquiv (tail X) j k n (boundaryStage_admissible j)
           (boundaryStage_degree j) a) :=
       positiveStageEquiv_natural (tailMap f) j k n
         (boundaryStage_admissible j) (boundaryStage_degree j) a
-    _ = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (f.app (k + 1)).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
+    _ = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (f.app (k + 1)).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)
         (eX (tailHomotopyEquiv X j a)) := congrArg _ hX.symm
     _ = _ := (positiveStageEquiv_natural f (j - 1) (k + 1) n hk hd
       (tailHomotopyEquiv X j a)).symm

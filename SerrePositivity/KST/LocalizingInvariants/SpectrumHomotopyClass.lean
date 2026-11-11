@@ -1,11 +1,11 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomOrdinary
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.HomOrdinary
 
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumHomClass
 public import SerrePositivity.KST.Spectra.SpectrumMappingComponents
 public import SerrePositivity.KST.Spectra.ComponentHomotopyMaps
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
-public import SerrePositivity.InfinityCategories.F1.CatInfinity.CatFunctorCoreIso
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.HomEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatFunctorCoreIso
 
 /-!
 概要：Sp のホモトピー圏で同じ射は、全整数次数で同じ準同型を誘導する。
@@ -34,30 +34,30 @@ variable {X Y : OmegaSpectrum.{u}} (f g : X ⟶ Y)
 /-- 元の二つの BF 射の辺の類の等式は、実写像空間の成分の等式を与える。 -/
 lemma component_eq_of_hom_eq (h : hom f = hom g) :
     SpectrumMappingAcyclic.component f = SpectrumMappingAcyclic.component g := by
-  let c := coherentHomComparison X Y
-  have hf : pinchedHomVertexEquiv _ _
+  let c := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison X Y
+  have hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomVertexEquiv _ _
       (c.app _ (ULift.up (SimplicialCategory.homEquiv' X Y f))) =
-      (coherentNerveEdge f).toTruncated :=
-    SSet.Truncated.Edge.ext (coherentHomComparison_ordinary f)
-  have hg : pinchedHomVertexEquiv _ _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).toTruncated :=
+    SSet.Truncated.Edge.ext (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison_ordinary f)
+  have hg : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomVertexEquiv _ _
       (c.app _ (ULift.up (SimplicialCategory.homEquiv' X Y g))) =
-      (coherentNerveEdge g).toTruncated :=
-    SSet.Truncated.Edge.ext (coherentHomComparison_ordinary g)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).toTruncated :=
+    SSet.Truncated.Edge.ext (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison_ordinary g)
   have hp : mapπ₀ c (π₀.mk (ULift.up (SimplicialCategory.homEquiv' X Y f))) =
       mapπ₀ c (π₀.mk (ULift.up (SimplicialCategory.homEquiv' X Y g))) := by
-    apply pinchedHomPiZeroToHom_injective (coherentNerveVertex X) (coherentNerveVertex Y)
-    change SSet.Truncated.HomotopyCategory.homMk (pinchedHomVertexEquiv _ _ _) =
-      SSet.Truncated.HomotopyCategory.homMk (pinchedHomVertexEquiv _ _ _)
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomPiZeroToHom_injective (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y)
+    change SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomVertexEquiv _ _ _) =
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomVertexEquiv _ _ _)
     rw [hf, hg]
     exact h
-  have hb := (coherentHomComparison_isSimplicialHomotopyEquivalence X Y).mapPiZero_bijective
+  have hb := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison_isSimplicialHomotopyEquivalence X Y).mapPiZero_bijective
   have hc := hb.injective hp
-  have hd := congrArg (F2.coherentUliftPiZeroDown (SimplicialCategory.sHom X Y)) hc
+  have hd := congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coherentUliftPiZeroDown (SimplicialCategory.sHom X Y)) hc
   have hv (a : X ⟶ Y) : SimplicialCategory.homEquiv' X Y a = vertexOfHom a := by
     change (SSet.unitHomEquiv _)
       ((SSet.unitHomEquiv _).symm (vertexOfHom a)) = vertexOfHom a
     exact Equiv.apply_symm_apply _ _
-  simpa only [F2.coherentUliftPiZeroDown, π₀.lift_mk, SpectrumMappingAcyclic.component,
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coherentUliftPiZeroDown, π₀.lift_mk, SpectrumMappingAcyclic.component,
     hv] using hd
 
 /-- 整数 π の作用は、Sp のホモトピー圏の射のみに依存する。 -/

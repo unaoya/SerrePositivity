@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedStructureProjection
-public import SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransportRelabel
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransportRelabel
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTraceContraction
 
 /-!
@@ -64,7 +64,7 @@ variable [Mono j.right]
 /-- 次段比較の射影の一次単体を、境界の同じ制限区間へ照合する。 -/
 lemma kanAdjointCanonicalLeft_projection_edge (n : ℕ) :
     (((kanAdjointTracedAdjustedStageInterval X Y φ j (n + 1)).pre (X.sigma n)).edge.map
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right).edge = (kanAdjointCanonicalBoundaryLeft X Y φ j n).edge.edge := by
   rw [kanAdjointCanonicalBoundaryLeft_edge]
@@ -78,7 +78,7 @@ omit [Mono j.right] in
 /-- 元の構造比較の射影の一次単体を、境界の同じ構造区間へ照合する。 -/
 lemma kanAdjointCanonicalMiddle_projection_edge (n : ℕ) :
     ((kanAdjointTracedStructureInterval X Y φ n).edge.map
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right).edge =
       (kanAdjointTracedStructureInterval X Y (j ≫ φ) n).edge.edge :=
@@ -92,7 +92,7 @@ lemma kanAdjointCanonicalMiddle_projection_edge (n : ℕ) :
 lemma kanAdjointCanonicalRight_projection_edge (n : ℕ) :
     (((kanAdjointTracedAdjustedStageInterval X Y φ j n).suspension.forgetProjection.basedPost
       ((KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).sigma n)).edge.map
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right).edge = (kanAdjointCanonicalBoundaryRight X Y φ j n).edge.edge :=
   PointedMapping.VerticalPath.projection_edge_value
@@ -105,15 +105,15 @@ lemma kanAdjointCanonicalRight_projection_edge (n : ℕ) :
 
 /-- 調整済み段射の構造比較を、元の三辺と二つの実三角形で構成する。 -/
 def kanAdjointCanonicalStageTransport (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransport
       ((kanAdjointTracedAdjustedStageInterval X Y φ j (n + 1)).pre (X.sigma n)).edge
       (kanAdjointTracedStructureInterval X Y φ n).edge
       ((kanAdjointTracedAdjustedStageInterval X Y φ j n).suspension.forgetProjection.basedPost
         ((KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).sigma n)).edge := by
-  let homKan : KanComplex (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+  let homKan : KanComplex (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
     ((KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).level
-      (n + 1)).space).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
-  exact _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.choose _ _ _
+      (n + 1)).space).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransport.choose _ _ _
 
 /-- 同じ輸送辺を、そのまま実際の調整済み構造区間へ戻す。 -/
 def kanAdjointCanonicalStageStructurePath (n : ℕ) :
@@ -124,10 +124,10 @@ def kanAdjointCanonicalStageStructurePath (n : ℕ) :
 
 /-- 輸送三角形を境界へ写し、その三辺を保存済み帰納三角形の同じ一次単体へ直す。 -/
 def kanAdjointCanonicalBoundaryTransport (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport (kanAdjointCanonicalBoundaryLeft X Y φ j n).edge
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransport (kanAdjointCanonicalBoundaryLeft X Y φ j n).edge
       (kanAdjointTracedStructureInterval X Y (j ≫ φ) n).edge
       (kanAdjointCanonicalBoundaryRight X Y φ j n).edge := by
-  let q := (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+  let q := (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
     ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app (n + 1))).right
   let D := (kanAdjointCanonicalStageTransport X Y φ j n).map q
   exact D.relabel _ _ _ (kanAdjointCanonicalLeft_projection_edge X Y φ j n)
@@ -141,9 +141,9 @@ lemma kanAdjointCanonicalBoundaryTransport_identity (n : ℕ) :
       𝟙 (SSet.HomotopyCategory.mk (PointedMapping.familyVertex
         (PointedSimplicialSet.circle.{u} ◁ (kanAdjointTracedParameterHom X Y (j ≫ φ)).app n ≫
           (KanSequence.mapping B (KanSequence.signedLoopTail Y.toKanSequence)).sigma n))) := by
-  let homKan : KanComplex (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+  let homKan : KanComplex (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
     ((KanSequence.mapping B (KanSequence.signedLoopTail Y.toKanSequence)).level
-      (n + 1)).space).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+      (n + 1)).space).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact (kanAdjointCanonicalBoundaryTransport X Y φ j n).transported_homMk_eq_id
     (kanAdjointCanonicalBoundaryTriangle X Y φ j n)
 

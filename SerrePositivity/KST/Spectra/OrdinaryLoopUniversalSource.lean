@@ -40,8 +40,8 @@ abbrev loopPost {Z Z' : PointedSimplicialSet.{u}} (v : Z ⟶ Z') :=
 
 /-- 通常円を含む元の源でも、交換・反転の前合成は全 Kan 標的で成分作用が一致する。 -/
 lemma pre_swap_eq_reversal (Z : PointedSimplicialSet.{u}) [KanComplex Z.right] :
-    mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed swap.{u} Z).right =
-      mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed reversal.{u} Z).right := by
+    mapπ₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed swap.{u} Z).right =
+      mapπ₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed reversal.{u} Z).right := by
   have hinj : Function.Injective (mapπ₀ (mappingIso Z).hom.right) := by
     intro b c h
     have hi := congrArg Under.Hom.right (mappingIso Z).hom_inv_id

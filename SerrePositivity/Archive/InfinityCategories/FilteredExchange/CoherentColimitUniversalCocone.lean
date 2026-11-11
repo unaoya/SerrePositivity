@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitFunctor
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorPointwiseColimitCriterion
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
-public import SerrePositivity.InfinityCategories.Core.InternalHomFlipVertices
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentColimitFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.FunctorPointwiseColimitCriterion
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InternalHomFlipVertices
 
 /-!
 概要：余極限関手を頂点とする、全小 coherent 図式の元の普遍余錐を構成する。

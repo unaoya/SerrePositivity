@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesComplex
 public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
-public import SerrePositivity.InfinityCategories.Derived.Gluing.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
 
 /-! # 元の二軸短複体の Yoneda 円錐比較
 概要：元の右軸射の代表加群円錐から、同じ左軸の代表加群への比較射を作る。
@@ -21,59 +21,59 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (zd : D) (hd : IsZero (ForgetEnrichment.of (Complex R) zd))
 
 /-- 元の同じ右軸射を代表加群の閉射へ送る。 -/
-def dgGluingAxesYonedaRightMap (X : DGGluingObject R C D M) :
+def dgGluingAxesYonedaRightMap (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
     ForgetEnrichment.of (Complex R)
       (representable R (dgGluingRightAxisObject R C D M zc X.right)) ⟶
     ForgetEnrichment.of (Complex R) (representable R X) :=
-  (dgYoneda R (DGGluingObject R C D M)).onClosed.map
+  (dgYoneda R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)).onClosed.map
     (dgGluingAxisRightInclusion R C D M zc hc X)
 
 /-- 元の同じ左軸射を代表加群の閉射へ送る。 -/
-def dgGluingAxesYonedaLeftMap (X : DGGluingObject R C D M) :
+def dgGluingAxesYonedaLeftMap (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
     ForgetEnrichment.of (Complex R) (representable R X) ⟶
     ForgetEnrichment.of (Complex R)
       (representable R (dgGluingLeftAxisObject R C D M zd X.left)) :=
-  (dgYoneda R (DGGluingObject R C D M)).onClosed.map
+  (dgYoneda R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)).onClosed.map
     (dgGluingAxisLeftProjection R C D M zd hd X)
 
 /-- 同じ二つの Yoneda 像の合成は、元の合成零を保って厳密に零。 -/
-lemma dgGluingAxesYoneda_comp_zero (X : DGGluingObject R C D M) :
+lemma dgGluingAxesYoneda_comp_zero (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
     dgGluingAxesYonedaRightMap R C D M zc hc X ≫
       dgGluingAxesYonedaLeftMap R C D M zd hd X = 0 :=
-  ((dgYoneda R (DGGluingObject R C D M)).onClosed.map_comp
+  ((dgYoneda R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)).onClosed.map_comp
     (dgGluingAxisRightInclusion R C D M zc hc X)
     (dgGluingAxisLeftProjection R C D M zd hd X)).symm.trans
-      ((congrArg ((dgYoneda R (DGGluingObject R C D M)).onClosed.map)
+      ((congrArg ((dgYoneda R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)).onClosed.map)
         (dgGluingAxes_comp_zero R C D M zc hc zd hd X)).trans
-          ((dgYoneda R (DGGluingObject R C D M)).onClosed.map_zero _ _))
+          ((dgYoneda R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)).onClosed.map_zero _ _))
 
 /-- 元の右軸射の同じ代表円錐から、同じ左軸代表への実 dg 自然な比較射。 -/
-def dgGluingAxesYonedaConeComparison (X : DGGluingObject R C D M) :
-    moduleCone R (DGGluingObject R C D M) (dgGluingAxesYonedaRightMap R C D M zc hc X) ⟶
+def dgGluingAxesYonedaConeComparison (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
+    moduleCone R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) (dgGluingAxesYonedaRightMap R C D M zc hc X) ⟶
     ForgetEnrichment.of (Complex R)
       (representable R (dgGluingLeftAxisObject R C D M zd X.left)) :=
-  moduleConeDesc R (DGGluingObject R C D M)
+  moduleConeDesc R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)
     (dgGluingAxesYonedaRightMap R C D M zc hc X) (dgGluingAxesYonedaLeftMap R C D M zd hd X)
     (dgGluingAxesYoneda_comp_zero R C D M zc hc zd hd X)
 
 /-- 同じ代表円錐比較は、元の左軸射の Yoneda 像を厳密に回収する。 -/
-lemma dgGluingAxesYonedaConeComparison_inr (X : DGGluingObject R C D M) :
-    moduleConeInr R (DGGluingObject R C D M) (dgGluingAxesYonedaRightMap R C D M zc hc X) ≫
+lemma dgGluingAxesYonedaConeComparison_inr (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
+    moduleConeInr R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) (dgGluingAxesYonedaRightMap R C D M zc hc X) ≫
       dgGluingAxesYonedaConeComparison R C D M zc hc zd hd X =
     dgGluingAxesYonedaLeftMap R C D M zd hd X :=
-  moduleConeDesc_inr R (DGGluingObject R C D M) _ _ _
+  moduleConeDesc_inr R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) _ _ _
 
 /-- 同じ実代表円錐比較の各評価は、元の二つの評価鎖写像からの円錐比較。 -/
-lemma dgGluingAxesYonedaConeComparison_eval (X T : DGGluingObject R C D M) :
-    (moduleEvaluation R (DGGluingObject R C D M) T).map
+lemma dgGluingAxesYonedaConeComparison_eval (X T : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
+    (moduleEvaluation R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) T).map
       (dgGluingAxesYonedaConeComparison R C D M zc hc zd hd X) =
     complexConeDesc
-      ((moduleEvaluation R (DGGluingObject R C D M) T).map
+      ((moduleEvaluation R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) T).map
         (dgGluingAxesYonedaRightMap R C D M zc hc X))
-      ((moduleEvaluation R (DGGluingObject R C D M) T).map
+      ((moduleEvaluation R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) T).map
         (dgGluingAxesYonedaLeftMap R C D M zd hd X))
-      (moduleCompZero_eval R (DGGluingObject R C D M) _ _
+      (moduleCompZero_eval R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) _ _
         (dgGluingAxesYoneda_comp_zero R C D M zc hc zd hd X) (Opposite.op T)) :=
-  moduleConeDesc_eval R (DGGluingObject R C D M) _ _ _ T
+  moduleConeDesc_eval R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) _ _ _ T
 
 end SerrePositivity.KST.SConstruction

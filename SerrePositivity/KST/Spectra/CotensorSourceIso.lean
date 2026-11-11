@@ -21,19 +21,19 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 /-- 源の同型による BF cotensor の制限は各段で全基点 π 同型。 -/
 lemma cotensorPre_levelwise_of_isIso {A B : PointedSimplicialSet.{u}} (i : A ⟶ B) [IsIso i]
     (Y : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((cotensorPre i Y).app n).right := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((cotensorProjection A Y).app n).right) _
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((cotensorPre i Y).app n).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := ((cotensorProjection A Y).app n).right) _
     (cotensorProjection_piIsomorphism A Y n)
   have h := congrArg Under.Hom.right (cotensorPre_comparison i Y n)
   simp only [Under.comp_right] at h
   rw [h]
-  have hi : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (Y.level n).space).right := by
+  have hi : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (Y.level n).space).right := by
     let e := (internalHom.flip.obj (Y.level n).space).mapIso (asIso i).op
-    have he : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (Y.level n).space = e.hom := by
-      rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+    have he : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (Y.level n).space = e.hom := by
+      rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
       rfl
     rw [he]
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso
       (X := (PointedObject.basedHom B (Y.level n).space).right)
       (Y := (PointedObject.basedHom A (Y.level n).space).right)
       (PointedSimplicialSet.forget.mapIso e)
@@ -47,7 +47,7 @@ local instance sourceIsoHomKan (X Y : OmegaSpectrum.{u}) :
 /-- 元の源の同型が与える BF cotensor の指定された比較辺は Sp の同値。 -/
 lemma cotensorPre_isInvertible_of_isIso {A B : PointedSimplicialSet.{u}}
     (i : A ⟶ B) [IsIso i] (Y : OmegaSpectrum.{u}) :
-    IsInvertibleEdge (coherentNerveEdge (cotensorPre i Y)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (cotensorPre i Y)) :=
   SpectrumMappingAcyclic.isInvertible_of_levelwise _ (cotensorPre_levelwise_of_isIso i Y)
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

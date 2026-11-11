@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentNativeUnitRepresentation
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentConstantRepresentationLarge
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentConstantRepresentationLarge
 
 /-!
 概要：元の native 単位表現の全空間作用を、元の値と具体的な単位射の間の比較として保持する。

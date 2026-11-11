@@ -35,14 +35,14 @@ def singleton_isTerminal (β : B) :
   exact (f.app n x).property
 
 lemma singleton_restriction_weak (β : B)
-    (hβ : IsWeaklyContractible (SimplicialValueFiber.space ℓ β)) :
-    IsWeakHomotopyEquivalence (restriction ℓ (𝟙 _) ℓ (Category.comp_id ℓ) {β}) := by
+    (hβ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SimplicialValueFiber.space ℓ β)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (restriction ℓ (𝟙 _) ℓ (Category.comp_id ℓ) {β}) := by
   let e := singletonFiberIso ℓ β
   let j := (singleton_isTerminal β).uniqueUpToIso terminalIsTerminal
-  have hw := (isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence.comp hβ
+  have hw := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence.comp hβ
   have ht : restriction ℓ (𝟙 _) ℓ (Category.comp_id ℓ) {β} ≫ j.hom =
       e.hom ≫ terminal.from _ := terminal.hom_ext _ _
-  apply (isPrecompositionEquivalence_of_iso j).isWeakHomotopyEquivalence.cancel_right
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso j).isWeakHomotopyEquivalence.cancel_right
   rw [ht]
   exact hw
 

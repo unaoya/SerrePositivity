@@ -21,7 +21,7 @@ variable (X : KanSequence.{u}) (hX : X.OmegaCondition)
 /-- 元の交換符号の実辺を、同じ評価で uncurry した構造区間。 -/
 def signedLoopStructureFirstInterval (n : ℕ) :=
   (SignedAdjointPaths.firstPath
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma (n + 2))) (hX (n + 2))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma (n + 2))) (hX (n + 2))
     (kanAdjoint X n) (kanAdjoint X (n + 1))).basedUncurry
 
 /-- 同じ自然な二重反転の実辺を、元の評価で uncurry した構造区間。 -/
@@ -35,7 +35,7 @@ lemma signedLoopStructureCompositeTriangle_two (n : ℕ) :
   rw [signedLoopStructureCompositeTriangle, signedLoopStructureComposite, ← Category.assoc,
     SignedAdjointPaths.forwardComposite_two]
   exact (SignedAdjointPaths.firstPath
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma (n + 2))) (hX (n + 2))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma (n + 2))) (hX (n + 2))
     (kanAdjoint X n) (kanAdjoint X (n + 1))).basedUncurry_path.symm
 
 /-- 合成三角形の第二辺は、同じ自然な二重反転区間の評価像。 -/

@@ -29,15 +29,15 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：π_(n+1)(X_k) と π_(n+2)(X_(k+1)) を比較する。
 使われ方：BF 1978 §2、HA §1.4.2。安定ホモトピー群の定義。 -/
 def positiveTransition (X : OmegaSpectrum.{u}) (k n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X.level k).space.right n (X.level k).space.basepoint ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X.level (k + 1)).space.right (n + 1)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X.level k).space.right n (X.level k).space.basepoint ≃*
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X.level (k + 1)).space.right (n + 1)
         (X.level (k + 1)).space.basepoint := by
-  let a := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (X.level k).space (X.level (k + 1)).space) (X.sigma k)
+  let a := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (X.level k).space (X.level (k + 1)).space) (X.sigma k)
   have ha : a.right.app _ (X.level k).space.basepoint =
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X.level (k + 1)).space).basepoint :=
-    congrArg (fun g : 𝟙_ SSet.{u} ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X.level (k + 1)).space).right ↦
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (X.level (k + 1)).space).basepoint :=
+    congrArg (fun g : 𝟙_ SSet.{u} ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (X.level (k + 1)).space).right ↦
       g.app _ PUnit.unit) (Under.w a)
-  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n a.right (X.omega_condition k) ha).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfPiIsomorphism n a.right (X.omega_condition k) ha).trans
     (loopPositiveHomotopyEquiv (X.level (k + 1)).space n)
 
 /-- 概要：Ω スペクトルの各段の全ての正次数のホモトピー群は可換。
@@ -45,7 +45,7 @@ def positiveTransition (X : OmegaSpectrum.{u}) (k n : ℕ) :
 規約：一次の群も含む。元の群演算を保つ。
 使われ方：BF 1978 §2、HA §1.4.2。整数次数の可換群の構成。 -/
 theorem levelHomotopy_mul_comm (X : OmegaSpectrum.{u}) (k n : ℕ)
-    (a b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X.level k).space.right n (X.level k).space.basepoint) :
+    (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X.level k).space.right n (X.level k).space.basepoint) :
     a * b = b * a := by
   let e := positiveTransition X k n
   apply e.injective
@@ -56,9 +56,9 @@ theorem levelHomotopy_mul_comm (X : OmegaSpectrum.{u}) (k n : ℕ)
 規約：零次数の集合にはまだ群を付けない。
 使われ方：BF 1978 §2、HA §1.4.2。整数次数の安定ホモトピー群。 -/
 instance levelHomotopyCommGroup (X : OmegaSpectrum.{u}) (k n : ℕ) :
-    CommGroup (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X.level k).space.right n (X.level k).space.basepoint) where
+    CommGroup (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X.level k).space.right n (X.level k).space.basepoint) where
   __ := (inferInstance :
-    Group (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X.level k).space.right n (X.level k).space.basepoint))
+    Group (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X.level k).space.right n (X.level k).space.basepoint))
   mul_comm := levelHomotopy_mul_comm X k n
 
 end

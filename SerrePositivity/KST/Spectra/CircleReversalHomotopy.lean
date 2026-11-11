@@ -28,7 +28,7 @@ lemma reversal_twice_component :
   rw [componentEquiv_familyVertex, componentEquiv_familyVertex,
     evaluateGenerator_integerPower, evaluateGenerator_integerPowerMap]
   simp only [zpow_neg_one, inv_inv, evaluateGenerator, Under.id_right]
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_id]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_id]
   rfl
 
 /-- 全ての標的への作用に共通に使う、円自身の同じ二重反転区間。 -/
@@ -40,13 +40,13 @@ def reversalTwicePath :
 /-- 同じ円区間を移した、一重 loop の二重反転を恒等へ戻す実区間。 -/
 def reversalTwicePre (Y : PointedSimplicialSet.{u}) :
     PointedMapping.VerticalPath (PointedObject.toPoint (PointedObject.basedHom space Y))
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (integerPowerMap (-1)) Y ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (integerPowerMap (-1)) Y)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (integerPowerMap (-1)) Y ≫
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (integerPowerMap (-1)) Y)
       (𝟙 (PointedObject.basedHom space Y)) := by
-  have hs := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp (integerPowerMap.{u} (-1))
+  have hs := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp (integerPowerMap.{u} (-1))
     (integerPowerMap (-1)) Y
-  have ht : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (𝟙 space.{u}) Y = 𝟙 _ := by
-    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  have ht : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (𝟙 space.{u}) Y = 𝟙 _ := by
+    rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
     exact congrArg (fun t => t.app Y) (MonoidalClosed.pre_id space.{u})
   exact (reversalTwicePath.basedPre Y).changeEndpoints hs ht.symm
 
@@ -61,7 +61,7 @@ lemma reversalTwicePre_natural {Y Z : PointedSimplicialSet.{u}} (v : Y ⟶ Z) :
         (Y := PointedObject.basedHom space.{u} Y) (Z := PointedObject.basedHom space.{u} Z)
         (PointedObject.basedHomMap space.{u} (Y := Y) (Z := Z) v)).right =
     (reversalTwicePre Z).path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed
         (PointedObject.basedHomMap space.{u} (Y := Y) (Z := Z) v)
         (PointedObject.basedHom space.{u} Z)).right := by
   rw [reversalTwicePre_path, reversalTwicePre_path]

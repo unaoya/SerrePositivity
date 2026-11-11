@@ -17,15 +17,15 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] (E : Type z) [DGCategory R E] [Small.{u} E]
   (p : DGFunctor R C E) (q : DGFunctor R D E)
-  (X Y Z : DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
+  (X Y Z : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
 
 private lemma map_units {U V : ModuleCat R} (f : U ⟶ V) (r : ℤˣ) (z : U) :
     f (r • z) = r • f z := map_zsmul f.hom (r : ℤ) z
 
 /-- 同じ全 Hom 鎖写像は、元の通常順の全次数合成を保存する。 -/
 lemma dgHomGluingConeHomMap_comp {r s : ℤ}
-    (a : (dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y).X r)
-    (b : (dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) Y Z).X s) :
+    (a : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y).X r)
+    (b : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) Y Z).X s) :
     (dgHomGluingConeHomMap R C D E p q X Z).f (r + s)
         (compose R (x := X) (y := Y) (z := Z) b a rfl) =
       compose R (x := dgHomGluingTargetCone R C D E p q X)
@@ -62,8 +62,8 @@ lemma dgHomGluingConeHomMap_comp {r s : ℤ}
 
 /-- 同じ全 Hom 鎖写像は、元の豊穣順合成も全次数で保存する。 -/
 lemma dgHomGluingConeHomMap_forward {r s n : ℤ} (hn : r + s = n)
-    (a : (dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y).X r)
-    (b : (dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) Y Z).X s) :
+    (a : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y).X r)
+    (b : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) Y Z).X s) :
     (dgHomGluingConeHomMap R C D E p q X Z).f n
         (forward R (x := X) (y := Y) (z := Z) a b hn) =
       forward R (x := dgHomGluingTargetCone R C D E p q X)

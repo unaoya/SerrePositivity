@@ -3,7 +3,7 @@ public import SerrePositivity.KST.LocalizingInvariants.PullbackFinalHornExtensio
 
 public import SerrePositivity.KST.LocalizingInvariants.FinalArrowCospanFamily
 public import SerrePositivity.KST.LocalizingInvariants.IdentityArrowPullback
-public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianEdge
 
 /-!
 概要：矢印圏の辺の実正方形が pullback なら、終点評価に対して cartesian。
@@ -23,53 +23,53 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma arrowTarget_isCartesianEdge_of_pullback {X : SSet.{u}} [Quasicategory X]
     (e : ((ihom (Δ[1] : SSet.{u})).obj X) _⦋1⦌)
-    (he : IsPullbackSquare (uncurry (SSet.yonedaEquiv.symm e))) :
-    IsCartesianEdge (evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) e := by
+    (he : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (uncurry (SSet.yonedaEquiv.symm e))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IsCartesianEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) e := by
   intro m σ β hσ sq
   let a := finalHornArrowSquares m σ
   let v := σ.app (Opposite.op ⦋0⦌) (finalHornLastVertex m)
   let d := finalArrowCospanFamily (m + 2) β v (finalHorn_lastArrow_target m σ β sq.w)
-  have ha : a ≫ (pre cospanSquareBoundary).app X =
+  have ha : a ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary).app X =
       (horn (m + 2) (Fin.last (m + 2))).ι ≫ d := finalHornArrowSquares_cospan m σ β sq.w
-  have hprev : IsPullbackSquare ((functorVertexEquiv (Δ[1] ⊗ Δ[1] : SSet.{u}) X).symm
+  have hprev : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (Δ[1] ⊗ Δ[1] : SSet.{u}) X).symm
       (a.app (Opposite.op ⦋0⦌) (finalHornPenultimateVertex m))) := by
     dsimp only [a]
-    rw [finalHornArrowSquares_penultimate, ← functorVertexEquiv_apply, Equiv.symm_apply_apply, hσ]
+    rw [finalHornArrowSquares_penultimate, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv_apply, Equiv.symm_apply_apply, hσ]
     exact he
-  have hlast : IsPullbackSquare ((functorVertexEquiv (Δ[1] ⊗ Δ[1] : SSet.{u}) X).symm
+  have hlast : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (Δ[1] ⊗ Δ[1] : SSet.{u}) X).symm
       (a.app (Opposite.op ⦋0⦌) (finalHornLastVertex m))) := by
     dsimp only [a]
-    rw [finalHornArrowSquares_last, ← functorVertexEquiv_apply, Equiv.symm_apply_apply]
+    rw [finalHornArrowSquares_last, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv_apply, Equiv.symm_apply_apply]
     exact constantArrowFamily_isPullback _
   obtain ⟨F, hF, hFc⟩ := exists_finalHorn_squareFamily_extension m a d ha hprev hlast
-  let G := F ≫ (pre squareBottomEdge).app X
+  let G := F ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge).app X
   have hG : (horn (m + 2) (Fin.last (m + 2))).ι ≫ G = σ := by
     dsimp only [G]
     rw [← Category.assoc, hF]
     exact finalHornArrowSquares_bottom m σ
-  have hp : (pre cospanSquareBoundary).app X ≫ (pre horn₂₂.ι₀₂).app X =
-      (pre squareRightEdge).app X := by
-    rw [← NatTrans.comp_app, ← pre_map, cospanSquareBoundary_rightEdge]
-  have hv : (pre squareBottomEdge).app X ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-      (pre squareRightEdge).app X ≫
-        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
-    rw [stable_pre_evaluateFunctorAt, stable_pre_evaluateFunctorAt]
+  have hp : (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary).app X ≫ (pre horn₂₂.ι₀₂).app X =
+      (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge).app X := by
+    rw [← NatTrans.comp_app, ← pre_map, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary_rightEdge]
+  have hv : (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge).app X ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+      (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge).app X ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt]
     rfl
-  have hGp : G ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = β := by
+  have hGp : G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = β := by
     calc
-      G ≫ evaluateFunctorAt _ = F ≫ (pre squareRightEdge).app X ≫
-          evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
+      G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _ = F ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge).app X ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
         dsimp only [G]
         rw [Category.assoc, hv]
-      _ = (F ≫ (pre cospanSquareBoundary).app X) ≫ (pre horn₂₂.ι₀₂).app X ≫
-          evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
+      _ = (F ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary).app X) ≫ (pre horn₂₂.ι₀₂).app X ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
         simpa only [Category.assoc] using
           (congrArg (fun k : (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X ⟶
               (ihom (Δ[1] : SSet.{u})).obj X =>
-            F ≫ k ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) hp).symm
+            F ≫ k ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) hp).symm
       _ = d ≫ (pre horn₂₂.ι₀₂).app X ≫
-          evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by rw [hFc]
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by rw [hFc]
       _ = β := by
         simpa only [Category.assoc] using finalArrowCospanFamily_base (m + 2) β v
           (finalHorn_lastArrow_target m σ β sq.w)

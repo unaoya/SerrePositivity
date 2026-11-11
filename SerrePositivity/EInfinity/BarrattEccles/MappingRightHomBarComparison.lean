@@ -40,7 +40,7 @@ lemma mappingRightHomFromIdentity_app (X Y : (operad A).Algebra)
     (t : algebraRightSpanBase A Y) :
     let := modelCategory A
     (mappingRightHomFromIdentity A X Y).app t =
-      (SerrePositivity.HomotopyFunctionComplex.cosimplicialHom
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom
         ((SerrePositivity.Reedy.cosimplicialResolutionFamily
           (mappingCofibrantFactorization A)).obj.obj X)).map t.hom := rfl
 

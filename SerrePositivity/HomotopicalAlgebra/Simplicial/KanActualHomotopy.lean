@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.KanTwoHornLift
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanTwoHornLift
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.CurriedHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
 
@@ -82,18 +82,18 @@ lemma right_difference (Hfg : SSet.Homotopy f g) (Hhg : SSet.Homotopy h g) :
     (SSet.modelCategoryQuillen.fibration_iff _).mp inferInstance
   have hc : SSet.stdSimplex.δ (0 : Fin 2) ≫ curry Hhg.h =
       SSet.stdSimplex.δ (0 : Fin 2) ≫ curry Hfg.h :=
-    (LargeParameterSquare.edge_one Hhg).trans (LargeParameterSquare.edge_one Hfg).symm
-  obtain ⟨t, ht₀, ht₁, _⟩ := KanTwoHornLift.exists_triangle _ hp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_one Hhg).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_one Hfg).symm
+  obtain ⟨t, ht₀, ht₁, _⟩ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exists_triangle _ hp
     (curry Hhg.h) (curry Hfg.h) (terminal.from _) hc
     (terminal.hom_ext _ _) (terminal.hom_ext _ _)
   have hz : SSet.stdSimplex.δ (1 : Fin 2) ≫ (SSet.stdSimplex.δ (2 : Fin 3) ≫ t) =
-      LargeParameterSquare.point f := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point f := by
     rw [← Category.assoc, vertex_zero, Category.assoc, ht₁]
-    exact LargeParameterSquare.edge_zero Hfg
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_zero Hfg
   have ho : SSet.stdSimplex.δ (0 : Fin 2) ≫ (SSet.stdSimplex.δ (2 : Fin 3) ≫ t) =
-      LargeParameterSquare.point h := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point h := by
     rw [← Category.assoc, vertex_one, Category.assoc, ht₀]
-    exact LargeParameterSquare.edge_zero Hhg
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_zero Hhg
   exact ⟨CurriedHomotopy.ofEdge _ hz ho⟩
 
 include hK in

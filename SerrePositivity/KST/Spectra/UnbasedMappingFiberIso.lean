@@ -39,9 +39,9 @@ def restrictionFiberIso {K L : SSet.{u}} (f : K ⟶ L) (X : PointedSimplicialSet
     PointedObject.basedHom (relativeSource f) X ≅ pointedFiber (pre f X) :=
   pointedCofiberMappingFiberIso (PointedObject.adjoinFunctor.map f) X ≪≫
     PointedFiberComparison.iso
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.adjoinFunctor.map f) X) (pre f X)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.adjoinFunctor.map f) X) (pre f X)
       (freeHomIso L X) (freeHomIso K X) (by
-        rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+        rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
         exact freeHomIso_pre f X)
 
 end

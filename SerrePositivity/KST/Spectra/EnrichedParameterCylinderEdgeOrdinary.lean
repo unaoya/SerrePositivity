@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderEdge
-public import SerrePositivity.InfinityCategories.F1.Coherent.ArrowData
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.ArrowData
 
 /-!
 概要：パラメータ辺を通常の射の coherent な辺と同定し、両端を固定する。
@@ -22,15 +22,15 @@ variable {A : SSet.{u}} (i : 𝟙_ SSet.{u} ⟶ A)
 
 /-- 二対象の円柱の、指定した単位パラメータによる通常の射。 -/
 def parameterHom :
-    (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}) ⟶ ⟨true, ⟨PUnit.unit⟩⟩ :=
+    (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v}) ⟶ ⟨true, ⟨PUnit.unit⟩⟩ :=
   ForgetEnrichment.homOf SSet (lift i (𝟙 _))
 
 /-- パラメータ辺の標準一単体から取り出す射は、元のパラメータ射そのもの。 -/
 lemma parameterEdge_arrowData :
-    coherentNerveArrowData (SSet.yonedaEquiv (parameterEdge.{u, v} i)) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData (SSet.yonedaEquiv (parameterEdge.{u, v} i)) =
       ⟨⟨false, ⟨PUnit.unit⟩⟩, ⟨true, ⟨PUnit.unit⟩⟩, parameterHom i⟩ := by
   change (⟨_, _, (SimplicialCategory.homEquiv' _ _).symm _⟩ :
-    Σ X Y : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}, X ⟶ Y) = _
+    Σ X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v}, X ⟶ Y) = _
   congr 2
   apply (SimplicialCategory.homEquiv' _ _).injective
   rw [Equiv.apply_symm_apply]
@@ -38,12 +38,12 @@ lemma parameterEdge_arrowData :
 
 /-- パラメータ辺は、通常のパラメータ射から作る coherent な辺に厳密一致。 -/
 lemma parameterEdge_eq :
-    parameterEdge.{u, v} i = SSet.yonedaEquiv.symm (coherentNerveEdge (parameterHom i)).edge := by
+    parameterEdge.{u, v} i = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (parameterHom i)).edge := by
   apply SSet.yonedaEquiv.injective
   rw [Equiv.apply_symm_apply]
-  apply (coherentNerveArrowDataEquiv (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v})).injective
-  change coherentNerveArrowData _ = coherentNerveArrowData _
-  rw [parameterEdge_arrowData, coherentNerveEdge_edge, coherentNerveArrowData_of_arrow]
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowDataEquiv (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v})).injective
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData _ = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData _
+  rw [parameterEdge_arrowData, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_edge, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData_of_arrow]
 
 /-- パラメータ辺の始点は二対象の円柱の左端。 -/
 lemma parameterEdge_source :

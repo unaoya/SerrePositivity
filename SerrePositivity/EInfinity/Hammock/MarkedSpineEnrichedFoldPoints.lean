@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.MarkedSpineEnrichedFoldData
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EnrichedDegreePointNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedDegreePointNaturality
 
 /-!
 # 元の豊穣目標への因子列の評価の点ごとの回収
@@ -28,7 +28,7 @@ variable {C : Type u} [Category.{u} C] {W : MorphismProperty C}
 lemma foldPoint_nil (p : (AllMarked.nativeSpace W X Y).obj n) :
     F.foldPoint n (nil X p) = (F.marked X Y).app n p := rfl
 
-lemma foldPoint_cons (g : FactorTarget.Index W) (p : (FactorTarget.left W X g.val).obj n)
+lemma foldPoint_cons (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).obj n)
     (t : MarkedSpine W Y n g.val.right) :
     F.foldPoint n (cons X g p t) = (eComp SSet.{u} (F.obj X) (F.obj g.val.left) (F.obj Y)).app n
       ((F.marked X g.val.left).app n p,
@@ -37,13 +37,13 @@ lemma foldPoint_cons (g : FactorTarget.Index W) (p : (FactorTarget.left W X g.va
 
 lemma foldPoint_unit :
     F.foldPoint n (unitPoint W X n) = (eId SSet.{u} (F.obj X)).app n PUnit.unit := by
-  let := EnrichedDegree.category (D := D) n
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedDegreeCategory.category (D := D) n
   exact (F.degreeData n).fold_unit X
 
 lemma foldPoint_append (s : MarkedSpine W Y n X) (t : MarkedSpine W Z n Y) :
     F.foldPoint n (append s t) = (eComp SSet.{u} (F.obj X) (F.obj Y) (F.obj Z)).app n
       (F.foldPoint n s, F.foldPoint n t) := by
-  let := EnrichedDegree.category (D := D) n
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedDegreeCategory.category (D := D) n
   exact (F.degreeData n).fold_append s t
 
 lemma marked_simplex (θ : n ⟶ m) (p : (AllMarked.nativeSpace W X Y).obj n) :
@@ -51,7 +51,7 @@ lemma marked_simplex (θ : n ⟶ m) (p : (AllMarked.nativeSpace W X Y).obj n) :
       (F.marked X Y).app m ((AllMarked.nativeSpace W X Y).map θ p) :=
   (congrArg (fun k => k p) ((F.marked X Y).naturality θ)).symm
 
-lemma generator_simplex (θ : n ⟶ m) (g : FactorTarget.Index W) :
+lemma generator_simplex (θ : n ⟶ m) (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) :
     (F.obj g.val.left ⟶[SSet.{u}] F.obj g.val.right).map θ ((F.generator g).app n PUnit.unit) =
       (F.generator g).app m PUnit.unit :=
   (congrArg (fun k => k PUnit.unit) ((F.generator g).naturality θ)).symm
@@ -61,7 +61,7 @@ lemma foldPoint_simplex (θ : n ⟶ m) (t : MarkedSpine W Y n X) :
   induction t with
   | nil X p => exact F.marked_simplex θ p
   | cons X g p t ih =>
-    rw [foldPoint_cons, EnrichedDegree.comp_simplex, EnrichedDegree.comp_simplex,
+    rw [foldPoint_cons, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.comp_simplex, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.comp_simplex,
       marked_simplex, generator_simplex, ih]
     rfl
 

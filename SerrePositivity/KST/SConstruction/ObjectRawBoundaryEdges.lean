@@ -48,7 +48,7 @@ lemma objectRawBoundaryComparison_vertex (X : StableModel.{u})
     (objectRawBoundaryComparison X).app _ z = (boundaryReducedRealization 0 X).basepoint := by
   have h := ConcreteCategory.congr_hom
     (NatTrans.congr_app (iteratedZeroColumn_boundary_zero 0 X) (Opposite.op ⦋0⦌))
-      (⟨z, SerrePositivity.InfinityCategories.quasicategoryCore_vertex
+      (⟨z, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_vertex
         (X := sConstruction 0 X.carrier) z⟩ : (coreSConstruction 0 X.carrier) _⦋0⦌)
   rw [NatTrans.comp_app, ConcreteCategory.comp_apply, diagonalZeroColumn_zero] at h
   change ((iteratedSRealizationCoordinateIso 0 X).hom ≫ boundaryReductionQuotient 0 X).app
@@ -77,7 +77,7 @@ def objectRawBoundaryEdge (X : StableModel.{u})
 /-- 元の辺を Kan 単位で写すと既存の Kan 境界商の辺を厳密に回収する。 -/
 lemma objectRawBoundaryEdge_kan (X : StableModel.{u})
     (e : (objectSConstruction X.carrier) _⦋1⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (PointedKanReplacement.unit.app (boundaryReducedRealization 0 X)).right rfl
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (PointedKanReplacement.unit.app (boundaryReducedRealization 0 X)).right rfl
       (objectRawBoundaryEdge X e) = objectBoundaryEdge X e := by
   apply RelativeMorphism.ext
   change (SSet.yonedaEquiv.symm e ≫ objectRawBoundaryComparison X) ≫ _ = _

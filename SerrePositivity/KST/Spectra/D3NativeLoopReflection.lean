@@ -20,21 +20,21 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 
 /-- 元の nativeLoop の実全図式に由来する coherent な反転候補。 -/
-def d3NativeLoopReflection : FunctorIso nativeLoop.{u} nativeLoop :=
+def d3NativeLoopReflection : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso nativeLoop.{u} nativeLoop :=
   (d3LoopDiagramReflection nativeLoopTargetEquivalence.inv
     nativeLoopTargetEquivalence_inv_target).precomp nativeLoopTargetEquivalence.inv
 
 /-- 同じ nativeLoop 上の反転候補は、全関手空間で二回の合成が恒等。 -/
 lemma d3NativeLoopReflection_involution :
     d3NativeLoopReflection.{u} ≪≫ d3NativeLoopReflection = Iso.refl _ := by
-  have h := congrArg (fun e ↦ FunctorIso.precomp e nativeLoopTargetEquivalence.{u}.inv)
+  have h := congrArg (fun e ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp e nativeLoopTargetEquivalence.{u}.inv)
     (d3LoopDiagramReflection_involution nativeLoopTargetEquivalence.inv
       nativeLoopTargetEquivalence_inv_target)
-  rw [F2.functorIso_precomp_trans] at h
-  have hr : (show FunctorIso (loopDiagramEvaluation Sp.{u} 0 0)
-      (loopDiagramEvaluation Sp.{u} 0 0) from Iso.refl _).precomp
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_trans] at h
+  have hr : (show _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 0 0)
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 0 0) from Iso.refl _).precomp
         nativeLoopTargetEquivalence.inv = Iso.refl _ := by
-    rw [F2.functorIso_precomp_eq_mapIso]
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_eq_mapIso]
     exact Functor.mapIso_refl _ _
   rw [hr] at h
   exact h
@@ -42,18 +42,18 @@ lemma d3NativeLoopReflection_involution :
 namespace AdjointLoopRelativeBF
 
 /-- 選択済み共通実全図式の始点作用にある同じ coherent な反転候補。 -/
-def commonChosenLoopReflection : FunctorIso commonChosenLoopSource.{u} commonChosenLoopSource :=
+def commonChosenLoopReflection : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso commonChosenLoopSource.{u} commonChosenLoopSource :=
   (d3LoopDiagramReflection nativeLoopTargetEquivalence.inv
     nativeLoopTargetEquivalence_inv_target).precomp commonChosenLoopDiagramFamily
 
 /-- 元の nativeLoop への指定全図式比較は、同じ全図式反転と自然に交換する。 -/
 lemma commonChosenLoopReflection_native_square :
-    (commonChosenLoopDiagramNativeIso.{u}).postcomp (loopDiagramEvaluation Sp.{u} 0 0) ≪≫
+    (commonChosenLoopDiagramNativeIso.{u}).postcomp (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 0 0) ≪≫
       (d3LoopDiagramReflection nativeLoopTargetEquivalence.inv
         nativeLoopTargetEquivalence_inv_target).precomp
           (commonNativeLoopEndpoint ≫ nativeLoopTargetEquivalence.inv) =
     commonChosenLoopReflection ≪≫
-      commonChosenLoopDiagramNativeIso.postcomp (loopDiagramEvaluation Sp.{u} 0 0) :=
+      commonChosenLoopDiagramNativeIso.postcomp (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 0 0) :=
   d3LoopDiagramReflection_naturality nativeLoopTargetEquivalence.inv
     nativeLoopTargetEquivalence_inv_target commonChosenLoopDiagramNativeIso
 

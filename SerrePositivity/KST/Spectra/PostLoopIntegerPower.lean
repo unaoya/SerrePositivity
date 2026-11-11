@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.LoopIntegerPower
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeSecondSource
 
 /-!
 概要：loop の整数冪の射の後合成は、パラメータ付き写像空間の正次数群に整数冪で作用する。
@@ -29,33 +29,33 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7、HA §1.4.2。loop 値の写像空間の基本群での逆元の計算。 -/
 theorem groupMap_post_integer (A Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
     (z : ℤ) (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom A
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom A
       (PointedObject.basedHom CirclePower.space.{u} Y)).right n
         (PointedSimplicialSet.basepoint (PointedObject.basedHom A
           (PointedObject.basedHom CirclePower.space Y)))) :
     pointedGroupMap n (PointedObject.basedHomMap A
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap z) Y)) a = a ^ z := by
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap z) Y)) a = a ^ z := by
   have : KanComplex (PointedSimplicialSet.forget.obj
       (PointedObject.basedHom A (PointedObject.basedHom CirclePower.space.{u} Y))) :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex A (PointedObject.basedHom CirclePower.space Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex A (PointedObject.basedHom CirclePower.space Y)
   have : KanComplex (PointedSimplicialSet.forget.obj
       (PointedObject.basedHom CirclePower.space.{u} (PointedObject.basedHom A Y))) :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex CirclePower.space (PointedObject.basedHom A Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex CirclePower.space (PointedObject.basedHom A Y)
   let e : PointedObject.basedHom A (PointedObject.basedHom CirclePower.space.{u} Y) ≅
       PointedObject.basedHom CirclePower.space (PointedObject.basedHom A Y) :=
-    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A CirclePower.space Y
+    _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A CirclePower.space Y
   have hinj : Function.Injective (pointedGroupMap n e.hom) :=
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism n e.hom.right
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso (PointedSimplicialSet.forget.mapIso e))
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint e.hom)).injective
-  have hs := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_right
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_bijective_of_piIsomorphism n e.hom.right
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso (PointedSimplicialSet.forget.mapIso e))
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint e.hom)).injective
+  have hs := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeSecondSource.natural_pre_right
     (C := PointedSimplicialSet.{u}) A (CirclePower.integerPowerMap.{u} z) Y
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hs
   change PointedObject.basedHomMap A
       (Y := PointedObject.basedHom CirclePower.space Y)
       (Z := PointedObject.basedHom CirclePower.space Y)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap z) Y) ≫ e.hom =
-    e.hom ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap z)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap z) Y) ≫ e.hom =
+    e.hom ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap z)
       (PointedObject.basedHom A Y) at hs
   apply hinj
   rw [map_zpow, ← pointedGroupMap_comp, hs, pointedGroupMap_comp]

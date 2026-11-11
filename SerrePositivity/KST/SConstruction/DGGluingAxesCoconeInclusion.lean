@@ -18,23 +18,23 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] (M : Bimodule R C D)
   (z : C) (hz : IsZero (ForgetEnrichment.of (Complex R) z))
-  (T X : DGGluingObject R C D M)
+  (T X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)
 local notation "Y" => dgGluingRightAxisObject R C D M z X.right
-local notation "p" => dgGluingPostcomposition R C D M T Y X
+local notation "p" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingPostcomposition R C D M T Y X
   (dgGluingAxisRightInclusion R C D M z hz X)
-local notation "a" => -dgGluingLeftAction R C D M T X
-local notation "b" => dgGluingRightAction R C D M T X
+local notation "a" => -_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeftAction R C D M T X
+local notation "b" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightAction R C D M T X
 
 /-- 同じ右軸射の全 Hom 第一成分は、元の右射影と標準右包含の合成。 -/
 lemma dgGluingAxisRightInclusion_post_fst :
-    p ≫ mappingCocone.fst (dgGluingDifference R C D M T X) =
-      dgGluingRightHomMap R C D M T Y ≫ biprod.inr := by
+    p ≫ mappingCocone.fst (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingDifference R C D M T X) =
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightHomMap R C D M T Y ≫ biprod.inr := by
   apply biprod.hom_ext
-  · change p ≫ dgGluingLeftHomMap R C D M T X =
-      (dgGluingRightHomMap R C D M T Y ≫ biprod.inr) ≫ biprod.fst
+  · change p ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeftHomMap R C D M T X =
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightHomMap R C D M T Y ≫ biprod.inr) ≫ biprod.fst
     rw [dgGluingAxisRightInclusion_post_left, Category.assoc, biprod.inr_fst, comp_zero]
-  · change p ≫ dgGluingRightHomMap R C D M T X =
-      (dgGluingRightHomMap R C D M T Y ≫ biprod.inr) ≫ biprod.snd
+  · change p ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightHomMap R C D M T X =
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightHomMap R C D M T Y ≫ biprod.inr) ≫ biprod.snd
     rw [dgGluingAxisRightInclusion_post_right, Category.assoc, biprod.inr_snd,
       Category.comp_id]
 
@@ -42,27 +42,27 @@ lemma dgGluingAxisRightInclusion_post_fst :
 lemma dgGluingAxesCoconeInclusion_square :
     p ≫ (dgGluingHomBiprodCoconeIso R C D M T X).hom =
       (dgGluingRightAxisHomCoconeIso R C D M z hz T X).hom ≫
-        complexMappingCoconeBiprodInclusion a b := by
-  apply dgMappingCocone_hom_ext (biprod.desc a b)
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion a b := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgMappingCocone_hom_ext (biprod.desc a b)
   · have hl : (p ≫ (dgGluingHomBiprodCoconeIso R C D M T X).hom) ≫
         mappingCocone.fst (biprod.desc a b) =
-        p ≫ mappingCocone.fst (dgGluingDifference R C D M T X) :=
+        p ≫ mappingCocone.fst (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingDifference R C D M T X) :=
       (Category.assoc _ _ _).trans
         (congrArg (fun k => p ≫ k) (dgGluingHomBiprodCoconeIso_fst R C D M T X))
     have hr : ((dgGluingRightAxisHomCoconeIso R C D M z hz T X).hom ≫
-        complexMappingCoconeBiprodInclusion a b) ≫ mappingCocone.fst (biprod.desc a b) =
-        dgGluingRightHomMap R C D M T Y ≫ biprod.inr := by
-      rw [Category.assoc, complexMappingCoconeBiprodInclusion,
-        complexMappingCoconeMap_fst, ← Category.assoc,
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion a b) ≫ mappingCocone.fst (biprod.desc a b) =
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightHomMap R C D M T Y ≫ biprod.inr := by
+      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion,
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_fst, ← Category.assoc,
         dgGluingRightAxisHomCoconeIso_fst]
       rfl
     exact hl.trans ((dgGluingAxisRightInclusion_post_fst R C D M z hz T X).trans hr.symm)
   · rw [Cochain.ofHom_comp, Cochain.comp_assoc_of_first_is_zero_cochain,
       dgGluingHomBiprodCoconeIso_snd, dgGluingAxisRightInclusion_post_primitive,
       Cochain.ofHom_comp, Cochain.comp_assoc_of_first_is_zero_cochain]
-    have hi : (Cochain.ofHom (complexMappingCoconeBiprodInclusion a b)).comp
+    have hi : (Cochain.ofHom (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion a b)).comp
         (mappingCocone.snd (biprod.desc a b)) (zero_add (-1)) = mappingCocone.snd b :=
-      (complexMappingCoconeMap_snd b (biprod.desc a b) biprod.inr (𝟙 _) (by simp)).trans
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_snd b (biprod.desc a b) biprod.inr (𝟙 _) (by simp)).trans
         (Cochain.comp_id _)
     rw [hi]
     exact (dgGluingRightAxisHomCoconeIso_snd R C D M z hz T X).symm

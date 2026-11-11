@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeSourceFrame
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeRightFrame
-public import SerrePositivity.InfinityCategories.ModelBridge.MixedFrameComparison
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameComparison
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
 
 /-!
@@ -31,7 +31,7 @@ def nativeCellMixedMappingFunctor : Mon (Complex R) ⥤ SSet.{u} :=
     EInfinity.FrameHom.MixedFrame.mixedFunctor (nativeCellSourceFrame R A)
 
 def nativeCellMixedLeft :
-    cosimplicialHom (nativeCellSourceFrame R A) ⟶ nativeCellMixedMappingFunctor R A where
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (nativeCellSourceFrame R A) ⟶ nativeCellMixedMappingFunctor R A where
   app B := EInfinity.FrameHom.MixedFrame.leftComparison (nativeCellSourceFrame R A)
     (multiplicativeSimplicesAugmentation R B)
   naturality B C f := by
@@ -66,7 +66,7 @@ def nativeCellMixedRight : multiplicativeMappingFunctor R (cellResolution R A) �
 lemma nativeCellMixedLeft_anodyneImage_isIso (B : Mon (Complex R)) :
     IsIso (AnodyneHomotopy.anodyneQ.map ((nativeCellMixedLeft R A).app B)) := by
   have : IsFibrant B := EInfinity.DGAlgebra.allFibrant R B
-  exact EInfinity.FrameHom.MixedFrame.leftComparison_isIso (nativeCellSourceFrame R A)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftComparison_isIso (nativeCellSourceFrame R A)
     ((nativeModelSourceResolutionFamily R).cofibrant (cellResolution R A))
     (multiplicativeSimplicesAugmentation R B)
     (fun n => EInfinity.DGAlgebra.allFibrant R ((multiplicativeSimplices R B).obj n))
@@ -75,7 +75,7 @@ lemma nativeCellMixedLeft_anodyneImage_isIso (B : Mon (Complex R)) :
 lemma nativeCellMixedRight_anodyneImage_isIso (B : Mon (Complex R)) :
     IsIso (AnodyneHomotopy.anodyneQ.map ((nativeCellMixedRight R A).app B)) := by
   have := cellResolution_isCofibrant R A
-  exact EInfinity.FrameHom.MixedFrame.rightComparison_isIso (nativeCellSourceFrame R A)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightComparison_isIso (nativeCellSourceFrame R A)
     ((nativeModelSourceResolutionFamily R).cofibrant (cellResolution R A))
     (nativeCellSourceFrameAugmentation R A)
     (fun n => ((nativeModelSourceResolutionFamily R).atObject
@@ -83,12 +83,12 @@ lemma nativeCellMixedRight_anodyneImage_isIso (B : Mon (Complex R)) :
     (multiplicativeSimplices R B) (multiplicativeSimplices_reedyFibrant R B)
 
 lemma nativeCellMixedLeft_weakEquivalence (B : Mon (Complex R)) :
-    InfinityCategories.IsWeakHomotopyEquivalence ((nativeCellMixedLeft R A).app B) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((nativeCellMixedLeft R A).app B) :=
   EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (nativeCellMixedLeft_anodyneImage_isIso R A B)
 
 lemma nativeCellMixedRight_weakEquivalence (B : Mon (Complex R)) :
-    InfinityCategories.IsWeakHomotopyEquivalence ((nativeCellMixedRight R A).app B) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((nativeCellMixedRight R A).app B) :=
   EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (nativeCellMixedRight_anodyneImage_isIso R A B)
 

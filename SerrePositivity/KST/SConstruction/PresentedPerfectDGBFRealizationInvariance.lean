@@ -28,7 +28,7 @@ lemma presentedPerfectDGBoundaryKanMap_piIsomorphism_of_realization
     {X Y : PerfDGInput.{u, v} A} (f : X ⟶ Y) (r : ℕ)
     (hf : IsIso (AnodyneHomotopy.anodyneQ.map
       ((multiRealizationFunctor (r + 1)).map (presentedPerfectDGBFInputStableMap A f)))) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (presentedPerfectDGBoundaryKanMap A r f).hom.right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (presentedPerfectDGBoundaryKanMap A r f).hom.right :=
   exInfinityPointedKanMap_piIsomorphism_of_localized _
     (boundaryReducedRealizationMap_localized_isIso (presentedPerfectDGBFInputStableMap A f) r hf)
 
@@ -37,7 +37,7 @@ lemma presentedPerfectDGBFMap_levelwise_of_realization
     {X Y : PerfDGInput.{u, v} A} (f : X ⟶ Y)
     (hf : ∀ r, IsIso (AnodyneHomotopy.anodyneQ.map
       ((multiRealizationFunctor (r + 1)).map (presentedPerfectDGBFInputStableMap A f)))) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((presentedPerfectDGBFMap A f).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((presentedPerfectDGBFMap A f).app n).right :=
   presentedPerfectDGBFMap_levelwise_of_boundary A f
     (fun r => presentedPerfectDGBoundaryKanMap_piIsomorphism_of_realization A f r (hf r)) n
 

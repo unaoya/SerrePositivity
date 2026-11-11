@@ -29,7 +29,7 @@ structure BasedPathCodifference {T E : PointedSimplicialSet.{u}} {f g h : T ⟶ 
 def BasedPathCodifference.choose {T E : PointedSimplicialSet.{u}} [KanComplex E.right]
     {f g h : T ⟶ E} (P : VerticalPath (PointedObject.toPoint E) f h)
     (Q : VerticalPath (PointedObject.toPoint E) g h) : BasedPathCodifference P Q := by
-  let homKan : KanComplex (PointedObject.basedHom T E).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  let homKan : KanComplex (PointedObject.basedHom T E).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   let p := Limits.terminal.from (PointedObject.basedHom T E).right
   have hp : SSet.modelCategoryQuillen.J.rlp p :=
     (SSet.modelCategoryQuillen.fibration_iff _).1 inferInstance

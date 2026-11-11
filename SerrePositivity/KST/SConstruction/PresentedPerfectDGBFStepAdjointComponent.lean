@@ -21,7 +21,7 @@ lemma presentedPerfectDGBFStepAdjoint_component (r : ℕ)
         (((presentedPerfectDGOneDirectionKanComparisonMap A r C).hom ≫
             (show ((presentedPerfectDGBFBoundaryFunctor A r).obj C).obj ⟶
               (S.functor.obj C).obj from S.comparison C)) ≫
-          curry (show _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (S.functor.obj C).obj ⟶
+          curry (show _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (S.functor.obj C).obj ⟶
             ((presentedPerfectDGBFStepFunctor A r S.functor S.comparison S.naturality).obj C).obj
             from presentedPerfectDGBFStepStructureMap A r S.functor S.comparison
               S.naturality C)) =
@@ -43,7 +43,7 @@ lemma presentedPerfectDGBFStepAdjoint_component (r : ℕ)
   let l := (presentedPerfectDGOneDirectionKanComparisonMap A r C).hom ≫
     (show ((presentedPerfectDGBFBoundaryFunctor A r).obj C).obj ⟶
       (S.functor.obj C).obj from S.comparison C)
-  let σ : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (S.functor.obj C).obj ⟶
+  let σ : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (S.functor.obj C).obj ⟶
       ((presentedPerfectDGBFStepFunctor A r S.functor S.comparison S.naturality).obj C).obj :=
     presentedPerfectDGBFStepStructureMap A r S.functor S.comparison S.naturality C
   let a : ((presentedPerfectDGKanAssemblySourceFunctor A r).obj C).obj ⟶

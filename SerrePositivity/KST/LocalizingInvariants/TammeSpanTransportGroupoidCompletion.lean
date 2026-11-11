@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeDenominatorGroupoidComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.TammeDenominatorGroupoidComparison
 public import SerrePositivity.KST.LocalizingInvariants.FiberTransportGroupoidCompletion
 
 /-!
@@ -18,24 +18,24 @@ open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
 lemma tammeSpanTransport_groupoidCompletion_isEquivalence
     (x : (laxCategory p q).obj _⦋0⦌) (b : (Δ[1] : SSet.{u}) ⟶ (laxCategory p q).obj)
     (hW : ∀ e : (Δ[1] : SSet.{u}) _⦋1⦌,
       b.app (Opposite.op ⦋1⦌) e ∈ tammeLocalizingEdges p q) :
-    let π := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x
-    ∀ (f : vertexFiber π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ⟶
-      vertexFiber π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))))
+    let π := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x
+    ∀ (f : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))))
       (H : (Δ[1] : SSet.{u}) ⊗
-        vertexFiber π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ⟶
-        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily (laxCategory p q).obj (tammeLocalizingEdges p q) x),
-      prismEndpoint 0 _ ≫ H =
-        vertexFiberι π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) →
-      prismEndpoint 1 _ ≫ H = f ≫
-        vertexFiberι π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) →
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ⟶
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamily (laxCategory p q).obj (tammeLocalizingEdges p q) x),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ H =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) →
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 _ ≫ H = f ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) →
       H ≫ π = fst (Δ[1] : SSet.{u}) _ ≫ b →
-      IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf f) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.groupoidCompletionMapOf f) := by
   dsimp only
   have := tammeSpanDenominatorBaseChange_cartesianFibration p q x b hW
   have := tammeSpanBaseChange_cocartesianFibration p q x b
@@ -44,19 +44,19 @@ lemma tammeSpanTransport_groupoidCompletion_isEquivalence
 lemma tammeDenominatorSpanTransport_groupoidCompletion_isEquivalence
     (x : (laxCategory p q).obj _⦋0⦌)
     (s : (laxCategory p q).obj _⦋1⦌) (hs : s ∈ tammeLocalizingEdges p q) :
-    let π := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x
-    ∀ (f : vertexFiber π ((laxCategory p q).obj.δ 1 s) ⟶
-        vertexFiber π ((laxCategory p q).obj.δ 0 s))
-      (H : (Δ[1] : SSet.{u}) ⊗ vertexFiber π ((laxCategory p q).obj.δ 1 s) ⟶
-        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily (laxCategory p q).obj (tammeLocalizingEdges p q) x),
-      prismEndpoint 0 _ ≫ H = vertexFiberι π ((laxCategory p q).obj.δ 1 s) →
-      prismEndpoint 1 _ ≫ H = f ≫ vertexFiberι π ((laxCategory p q).obj.δ 0 s) →
+    let π := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x
+    ∀ (f : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber π ((laxCategory p q).obj.δ 1 s) ⟶
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber π ((laxCategory p q).obj.δ 0 s))
+      (H : (Δ[1] : SSet.{u}) ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber π ((laxCategory p q).obj.δ 1 s) ⟶
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamily (laxCategory p q).obj (tammeLocalizingEdges p q) x),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ H = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι π ((laxCategory p q).obj.δ 1 s) →
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 _ ≫ H = f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι π ((laxCategory p q).obj.δ 0 s) →
       H ≫ π = fst (Δ[1] : SSet.{u}) _ ≫ SSet.yonedaEquiv.symm s →
-      IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf f) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.groupoidCompletionMapOf f) := by
   have h₀ := intervalMap_source (SSet.yonedaEquiv.symm s)
   have h₁ := intervalMap_target (SSet.yonedaEquiv.symm s)
   rw [Equiv.apply_symm_apply] at h₀ h₁
   exact h₀.symm ▸ h₁.symm ▸ tammeSpanTransport_groupoidCompletion_isEquivalence p q x
-    (SSet.yonedaEquiv.symm s) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeDenominatorInterval_edges_mem p q s hs)
+    (SSet.yonedaEquiv.symm s) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeDenominatorInterval_edges_mem p q s hs)
 
 end SerrePositivity.KST.LocalizingInvariants

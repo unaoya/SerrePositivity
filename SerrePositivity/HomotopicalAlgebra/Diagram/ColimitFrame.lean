@@ -21,7 +21,7 @@ open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 namespace SerrePositivity.DiagramModel.ColimitFrame
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 local instance : HasColimitsOfSize.{w,w} C := Smith.locallyPresentable_hasColimits (C := C)
 
@@ -95,25 +95,25 @@ lemma augmentation_weakEquivalence (F : K ⥤ C) (n : SimplexCategory) :
     q.obj q.cofibrant q.augmentation q.augmentation_weakEquivalence n
 
 lemma hom_kanComplex (F : K ⥤ C) (Y : C) [IsFibrant Y] :
-    SSet.KanComplex ((cosimplicialHom ((frame K I J).obj F)).obj Y) :=
+    SSet.KanComplex ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((frame K I J).obj F)).obj Y) :=
   cosimplicialHom_kanComplex _ (reedyCofibrant K I J F) (homotopicallyConstant K I J F) Y
 
 /-- The actual colimit/constant adjunction identifies all simplices, in the
 common universe of diagram morphisms and source morphisms. -/
 def homIso (F : K ⥤ C) :
-    cosimplicialHom ((frame K I J).obj F) ⋙ SSet.uliftFunctor.{max w v,v} ≅
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((frame K I J).obj F) ⋙ SSet.uliftFunctor.{max w v,v} ≅
       (Functor.const K : C ⥤ K ⥤ C) ⋙
-        cosimplicialHom ((diagramResolution K I J).obj F) ⋙ SSet.uliftFunctor.{v,max w v} :=
-  adjunctionHomIso (colimConstAdj (J := K) (C := C)) ((diagramResolution K I J).obj F)
+        _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((diagramResolution K I J).obj F) ⋙ SSet.uliftFunctor.{v,max w v} :=
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.adjunctionHomIso (colimConstAdj (J := K) (C := C)) ((diagramResolution K I J).obj F)
 
 @[reassoc]
 lemma homIso_source_naturality {F G : K ⥤ C} (f : F ⟶ G) :
-    Functor.whiskerRight (cosimplicialHomMap ((frame K I J).map f))
+    Functor.whiskerRight (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((frame K I J).map f))
         SSet.uliftFunctor.{max w v,v} ≫ (homIso K I J F).hom =
       (homIso K I J G).hom ≫ Functor.whiskerLeft (Functor.const K : C ⥤ K ⥤ C)
-        (Functor.whiskerRight (cosimplicialHomMap ((diagramResolution K I J).map f))
+        (Functor.whiskerRight (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((diagramResolution K I J).map f))
           SSet.uliftFunctor.{v,max w v}) :=
-  adjunctionHomIso_source_naturality (colimConstAdj (J := K) (C := C))
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.adjunctionHomIso_source_naturality (colimConstAdj (J := K) (C := C))
     ((diagramResolution K I J).map f)
 
 end SerrePositivity.DiagramModel.ColimitFrame

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletonDiagramSubfunctor
 public import SerrePositivity.KST.Spectra.BousfieldKanWeightLatching
 
 /-!
@@ -44,17 +44,17 @@ lemma diagram_map_mono (j : SimplexCategory) {a b : LatchingIndex simplex j} (f 
 /-- 有限骨格の標準単体の各 latching 射は単射。 -/
 lemma mono (n : ℕ) (j : SimplexCategory) :
     Mono ((latchingComparison simplex j).app
-      (stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor n)) := by
+      (stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.functor n)) := by
   suffices ∀ k, Mono (((latchingComparison simplex j).app
-      (stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor n)).app k) from
+      (stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.functor n)).app k) from
     NatTrans.mono_of_mono_app _
   intro k
   let E := (evaluation SimplexCategoryᵒᵖ (Type u)).obj k
-  let σ : (stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor n) ⋙ E ⟶ stdSimplex.{u} ⋙ E :=
+  let σ : (stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.functor n) ⋙ E ⟶ stdSimplex.{u} ⋙ E :=
     Functor.whiskerRight
-    (Functor.whiskerLeft stdSimplex.{u} (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.inclusion n)) E
+    (Functor.whiskerLeft stdSimplex.{u} (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.inclusion n)) E
   let : Mono ((latchingEvaluation simplex j).map σ) :=
-    _root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.colimit_mono (latchingSource simplex j ⋙ stdSimplex.{u}) n k
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.colimit_mono (latchingSource simplex j ⋙ stdSimplex.{u}) n k
       (fun f ↦ diagram_map_mono j f)
   let : Mono ((latchingComparison simplex j).app stdSimplex.{u}) :=
     StandardSimplexLatching.mono j
@@ -63,19 +63,19 @@ lemma mono (n : ℕ) (j : SimplexCategory) :
       (BousfieldKanWeightLatching.evaluationArrowIso stdSimplex.{u} k j)).mpr
         (inferInstanceAs (Mono (((latchingComparison simplex j).app stdSimplex.{u}).app k)))
   have hc : Mono (((latchingComparison simplex j).app
-      ((stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor n) ⋙ E)) ≫ σ.app j) := by
+      ((stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.functor n) ⋙ E)) ≫ σ.app j) := by
     erw [← (latchingComparison simplex j).naturality σ]
     infer_instance
   have hm := mono_of_mono ((latchingComparison simplex j).app
-    ((stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor n) ⋙ E)) (σ.app j)
+    ((stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.functor n) ⋙ E)) (σ.app j)
   exact ((MorphismProperty.monomorphisms (Type u)).arrow_iso_iff
     (BousfieldKanWeightLatching.evaluationArrowIso
-      (stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor n) k j)).mp hm
+      (stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.functor n) k j)).mp hm
 
 /-- 標準単体の有限骨格の重みは実際の Reedy cofibrant な図式。 -/
 lemma reedyCofibrant (n : ℕ) :
     reedyLeft simplex (MorphismProperty.monomorphisms SSet.{u})
-      (initial.to (stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor n)) := by
+      (initial.to (stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.functor n)) := by
   intro j
   exact ((MorphismProperty.monomorphisms SSet.{u}).arrow_iso_iff
     (BousfieldKanWeightLatching.initialArrowIso _ j)).mp (mono n j)

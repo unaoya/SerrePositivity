@@ -10,6 +10,8 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.IsUnique
 方針：前側の面の複雑度の減少と、後ろの面の型 I または退化という二択を使う。
 規約：Moss 2020 Lemma 29 の指定面の一意性。
 使われ方：Mathlib の proper pairing の条件。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

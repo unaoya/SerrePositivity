@@ -22,33 +22,33 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory CategoryTheory.Limits
 open SerrePositivity.InfinityCategories
 
-variable {F G : Word ⥤ SSet.{w}} (η : F ⟶ G)
+variable {F G : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SSet.{w}} (η : F ⟶ G)
   (hF : ProperDiagram F) (hG : ProperDiagram G)
-  (hη : ∀ a, IsWeakHomotopyEquivalence (η.app a))
+  (hη : ∀ a, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (η.app a))
 
 include hF hG hη in
 lemma weakStageBoundarySumMap (n : ℕ) :
-    IsWeakHomotopyEquivalence (stageBoundarySumMap η n) :=
-  weakTwoIndexCoproduct (Word.maximalAlternatingEquiv n) _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (stageBoundarySumMap η n) :=
+  weakTwoIndexCoproduct (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.maximalAlternatingEquiv n) _
     (fun a => lengthBoundaryMap η n a.val) (fun a => weakLengthBoundaryMap η hF hG hη n a.val)
 
 include hη in
 lemma weakStageTopSumMap (n : ℕ) :
-    IsWeakHomotopyEquivalence (stageTopSumMap η n) :=
-  weakTwoIndexCoproduct (Word.maximalAlternatingEquiv n) _ (fun a => η.app a.val)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (stageTopSumMap η n) :=
+  weakTwoIndexCoproduct (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.maximalAlternatingEquiv n) _ (fun a => η.app a.val)
     (fun a => hη a.val)
 
 include hF hG hη in
 lemma weakLengthStageMap_succ (n : ℕ)
-    (hn : IsWeakHomotopyEquivalence (lengthStageMap η n)) :
-    IsWeakHomotopyEquivalence (lengthStageMap η (n + 1)) := by
+    (hn : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageMap η n)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageMap η (n + 1)) := by
   have := stageBoundarySumInclusion_mono (F := F) n
   have := stageBoundarySumInclusion_mono (F := G) n
   exact weakPushout_gluing (lengthStage_isPushout n hF).flip
     (lengthStage_isPushout n hG).flip (stageBoundarySumMap η n) (stageTopSumMap η n)
-    (lengthStageMap η n) (lengthStageMap η (n + 1))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageMap η n) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageMap η (n + 1))
     (stageBoundarySumMap_inclusion η n) (stageBoundarySumMap_attach η n hF hG)
-    (stageTopSumMap_inclusion η n) (lengthStageMap_transition η (Nat.le_succ n)).symm
+    (stageTopSumMap_inclusion η n) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageMap_transition η (Nat.le_succ n)).symm
     (weakStageBoundarySumMap η hF hG hη n) (weakStageTopSumMap η hη n) hn
 
 end SerrePositivity.EInfinity.Hammock

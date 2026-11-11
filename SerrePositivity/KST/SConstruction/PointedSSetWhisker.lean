@@ -22,7 +22,7 @@ lemma pointedSSetObject_whiskerLeft (X : PointedSSetObject.{u})
 /-- 標準点つき豊穣の前合成は、同じ元の basedHom の前合成。 -/
 lemma pointedSSetObject_whiskerRight {X Y : PointedSSetObject.{u}} (f : X ⟶ Y)
     (Z : PointedSSetObject.{u}) :
-    eHomWhiskerRight SSet f Z = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre f Z.obj :=
+    eHomWhiskerRight SSet f Z = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre f Z.obj :=
   Spectra.PointedEnrichment.whiskerRight_eq f Z.obj
 
 end SerrePositivity.KST.SConstruction

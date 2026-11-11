@@ -26,7 +26,7 @@ variable (X : OmegaSpectrum.{u})
 def comparison : X ⟶ CotensorClasses.target (tail X) :=
   originalLoopModelMap X ≫ tailCotensorComparison CirclePower.space X
 
-lemma comparison_levelwise (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((comparison X).app n).right :=
+lemma comparison_levelwise (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((comparison X).app n).right :=
   (originalLoopModelMap_levelwise X n).comp
     (tailCotensorComparison_levelwise CirclePower.space X n)
 

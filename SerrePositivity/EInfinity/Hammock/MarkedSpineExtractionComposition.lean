@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.MarkedSpineEnrichedFoldMap
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitArrowMap
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitArrowMap
 
 /-!
 # 元の hammock の抽出の単位・合成保存と生成矢の回収
@@ -22,7 +22,7 @@ open CategoryTheory MonoidalCategory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
 
-lemma extraction_unitMap (X : Paths C) : colimitUnit W.paths X ≫ extraction W X X =
+lemma extraction_unitMap (X : Paths C) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit W.paths X ≫ extraction W X X =
     MarkedSpine.unitMap W X := by
   ext n p
   have hu := AllMarked.inclusion_unitPoint W X n
@@ -30,14 +30,14 @@ lemma extraction_unitMap (X : Paths C) : colimitUnit W.paths X ≫ extraction W 
     (markedSpine_native W X X (AllMarked.nativeUnitPoint W X n))
 
 lemma extraction_composition (X Y Z : Paths C) :
-    colimitComposition W.paths X Y Z ≫ extraction W Z X =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition W.paths X Y Z ≫ extraction W Z X =
       (extraction W Y X ⊗ₘ extraction W Z Y) ≫ MarkedSpine.composition W X Y Z := by
   ext n p
   exact MarkedSpine.extraction_composePoint p.1 p.2
 
-lemma generatorMap_gluing (g : FactorTarget.Index W) :
+lemma generatorMap_gluing (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) :
     MarkedSpine.generatorMap W g ≫ MarkedSpine.gluing W g.val.right g.val.left =
-      arrowMap W.paths g.val.hom.toPath := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W.paths g.val.hom.toPath := by
   ext n p
   exact MarkedSpine.glue_generatorPoint g
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentHomotopyParameterizedPrism
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.UnstraighteningConstantFamilyMap
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.UnstraighteningMappingTrianglePrism
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.UnstraighteningMappingTrianglePrism
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PrismExtensionRestriction
 
 /-!

@@ -29,7 +29,7 @@ open CategoryTheory HomotopicalAlgebra AlgebraicGeometry
 namespace SerrePositivity.KST.Descent
 
 variable {S : Scheme.{u}} [IsNoetherian S] [ModelCategory SSet.{0}]
-  (I J : MorphismProperty SSet.{0}) [ModelGeneration.CofibrantlyGenerated.{0} I J]
+  (I J : MorphismProperty SSet.{0}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} I J]
 
 /-- 概要：元の空間値前層の有限 Zariski 被覆族での実際の指定 Čech 降下（公理 (1)）。
 方針：各添字の列の実際の引き戻しの値を積にした指定比較の弱同値を要求する。

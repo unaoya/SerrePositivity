@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 lemma suspensionHom_post_pointed (A : PointedSimplicialSet.{u})
     {B D : PointedSimplicialSet.{u}} (f : B ⟶ D) :
     (ihom A).map f ≫ suspensionHom A D =
-      suspensionHom A B ≫ (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A)).map
+      suspensionHom A B ≫ (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension A)).map
         (PointedSimplicialSet.circle.{u} ◁ f) := by
   apply Under.UnderMorphism.ext
   exact SerrePositivity.InfinityCategories.HomotopyLimits.suspensionHom_post A f
@@ -33,16 +33,16 @@ lemma kanAdjointParameterLeft_step (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     pointedStep X (KanSequence.signedLoopTail Y.toKanSequence) n =
     (pointedEvaluation X Y.toKanSequence n ≫
       suspensionHom (X.level n).space (Y.level n).space) ≫
-    (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map
+    (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map
       (PointedSimplicialSet.circle.{u} ◁ KanSequence.kanAdjoint Y.toKanSequence n ≫
         (KanSequence.signedLoopTail Y.toKanSequence).sigma n) := by
   change (pointedEvaluation X Y.toKanSequence n ≫
     (ihom (X.level n).space).map _) ≫ (suspensionHom _ _ ≫
-      (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map _) = _
+      (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map _) = _
   rw [Functor.map_comp]
   have he := congrArg
     (fun p ↦ pointedEvaluation X Y.toKanSequence n ≫ p ≫
-      (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map
+      (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map
         ((KanSequence.signedLoopTail Y.toKanSequence).sigma n))
     (suspensionHom_post_pointed (X.level n).space
       (KanSequence.kanAdjoint Y.toKanSequence n))
@@ -52,32 +52,32 @@ lemma kanAdjointParameterLeft_step (X Y : OmegaSpectrum.{u}) (n : ℕ) :
 /-- 源の構造射への制限も、同じ懸垂 Hom からの後合成として厳密に計算する。 -/
 lemma kanAdjointParameterLeft_source_restriction (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     kanAdjointParameterLeft X Y (n + 1) ≫
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space =
     (pointedEvaluation X Y.toKanSequence n ≫
       suspensionHom (X.level n).space (Y.level n).space) ≫
-    (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map
+    (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map
       (Y.sigma n ≫ KanSequence.kanAdjoint Y.toKanSequence (n + 1)) := by
   have he := (pre (X.sigma n)).naturality
     (KanSequence.kanAdjoint Y.toKanSequence (n + 1))
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at he
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at he
   have he' := congrArg (pointedEvaluation X Y.toKanSequence (n + 1) ≫ ·) he
   have he'' : kanAdjointParameterLeft X Y (n + 1) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space =
       (pointedEvaluation X Y.toKanSequence (n + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space) ≫
-        (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space) ≫
+        (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map
           (KanSequence.kanAdjoint Y.toKanSequence (n + 1)) := by
     simp only [kanAdjointParameterLeft, Category.assoc]
     exact he'
   have hc : pointedEvaluation X Y.toKanSequence (n + 1) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space =
       pointedEvaluation X Y.toKanSequence n ≫ pointedStep X Y.toKanSequence n :=
     pointedEvaluation_condition X Y.toKanSequence n
   rw [he'', hc]
   change (pointedEvaluation X Y.toKanSequence n ≫
-    (suspensionHom _ _ ≫ (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map _)) ≫ _ = _
+    (suspensionHom _ _ ≫ (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map _)) ≫ _ = _
   rw [Functor.map_comp]
   simp only [Category.assoc]
   rfl
@@ -87,10 +87,10 @@ lemma kanAdjointParameterLeft_condition (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     PointedMapping.componentOf (kanAdjointParameterLeft X Y n ≫
       pointedStep X (KanSequence.signedLoopTail Y.toKanSequence) n) =
     PointedMapping.componentOf (kanAdjointParameterLeft X Y (n + 1) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space) := by
   have h := PointedMapping.componentOf_comp_left
-    (PointedMapping.componentOf_ihom_map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    (PointedMapping.componentOf_ihom_map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       (KanSequence.kanAdjoint_signedLoopTail_comm Y.toKanSequence_omega n))
     (pointedEvaluation X Y.toKanSequence n ≫
       suspensionHom (X.level n).space (Y.level n).space)

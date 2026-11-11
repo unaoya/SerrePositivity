@@ -31,19 +31,19 @@ def tracedSourceUnitStructureInput (n : ℕ) :
 
 /-- 同じ源の構造 Hom を、同じ全パラメータの構造 Hom へ送る単一の前合成射。 -/
 def tracedSourceUnitStructureAction (n : ℕ) :
-    PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.signedLoopTail X.toKanSequence).level (n + 1)).space ⟶
-    PointedObject.basedHom A (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    PointedObject.basedHom A (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space) :=
   PointedMapping.preParameterAction (tracedSourceUnitStructureInput X Y φ n) (𝟙 A)
 
 /-- 同じ構造作用は、元のパラメータ付き列射への後合成と転置そのもの。 -/
 lemma tracedSourceUnitStructureAction_post (n : ℕ) :
     tracedSourceUnitStructureAction X Y φ n =
-      PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.signedLoopParameterHom
           (homOfParameterFamily X Y.toKanSequence A φ)).app (n + 1)) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) A
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) A
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom := by
   rw [tracedSourceUnitStructureAction, PointedMapping.preParameterAction_id,
     tracedSourceUnitStructureInput, PointedMapping.transpose_transpose]

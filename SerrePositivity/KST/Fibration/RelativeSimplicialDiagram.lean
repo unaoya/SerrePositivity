@@ -41,7 +41,7 @@ def relativeSimplicialDiagramInclusion : relativeSimplicialDiagram q F J ev he �
 
 /-- 各段の core からの包含も全ての面・退化と可換。 -/
 def relativeSimplicialDiagramCoreInclusion :
-    F ⋙ quasicategoryCoreFunctor ⟶ relativeSimplicialDiagram q F J ev he where
+    F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor ⟶ relativeSimplicialDiagram q F J ev he where
   app n := relativeDiagramCoreInclusion q (ev n)
   naturality {_n _m} α := (relativeDiagramCoreInclusion_naturality q _ _ _ _ (he α)).symm
 

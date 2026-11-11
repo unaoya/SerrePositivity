@@ -1,2 +1,2 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.KappaPerfect.Input
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.Input

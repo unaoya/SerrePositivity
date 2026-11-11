@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedEndBasepoint
 universe u
 
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped Simplicial
 
 namespace SerrePositivity.KST.Spectra.PointedActionCochains
@@ -33,24 +33,24 @@ set_option backward.isDefEq.respectTransparency.types false
 lemma functionIso_basepoint {G : Type u} [Group G]
     (B : Action PointedSimplicialSet.{u} G) (n : ℕ) :
     ((obj B).obj (SimplexCategory.mk n)).hom ≫ (functionIso B n).hom =
-      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift (fun (_ : Fin n → G) ↦ B.V.hom) := by
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.lift (fun (_ : Fin n → G) ↦ B.V.hom) := by
   let S := Fin n → G
   let C := (PointedSimplicialSet.forget.mapAction G).obj B
   let D := FreeActionFamily.pointedCoefficients B
   let W := FreeActionFamily.weight (G := G) S
   change ((obj B).obj (SimplexCategory.mk n)).hom ≫
       ((freeIso B n).hom.right ≫ (PointedWeightedEnd.underlyingIso W D).hom ≫
-        (FreeActionFamily.endIso S C).hom ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.iso S B.V.right).hom) = _
+        (FreeActionFamily.endIso S C).hom ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.iso S B.V.right).hom) = _
   rw [← Category.assoc, Under.w, ← Category.assoc,
     PointedWeightedEnd.underlyingIso_basepoint, ← Category.assoc]
-  let t : (𝟙_ SSet.{u}) ⟶ weightedSections (FreeActionFamily.weight (G := G) S)
+  let t : (𝟙_ SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (FreeActionFamily.weight (G := G) S)
       (FreeActionFamily.coefficients C) :=
-    weightedConeComparison W (PointedWeightedEnd.basepointCone D)
-  change (t ≫ (FreeActionFamily.endIso S C).hom) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.iso S C.V).hom = _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison W (PointedWeightedEnd.basepointCone D)
+  change (t ≫ (FreeActionFamily.endIso S C).hom) ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.iso S C.V).hom = _
   rw [FreeActionFamily.comp_endIso, FreeActionFamily.homEquiv_apply,
     DiscreteInternalHom.comp_iso, uncurry_curry]
   dsimp only [t]
-  rw [weightedConeComparison, weightedSectionsUncurry_lift]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_lift]
   apply NatTrans.ext
   funext k
   apply ConcreteCategory.hom_ext
@@ -71,11 +71,11 @@ lemma functionIso_basepoint_vertex {G : Type u} [Group G]
 使われ方：Goerss–Jardine I §7、VIII §2。有理群 cohomology の係数を固定する同定。 -/
 def basedHomotopyFunctionEquiv {G : Type u} [Group G]
     (B : Action PointedSimplicialSet.{u} G) [KanComplex B.V.right] (n k : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((obj B).obj (SimplexCategory.mk n)).right k
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup ((obj B).obj (SimplexCategory.mk n)).right k
         (PointedSimplicialSet.basepoint ((obj B).obj (SimplexCategory.mk n))) ≃*
-      ((Fin n → G) → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B.V.right k (PointedSimplicialSet.basepoint B.V)) :=
-  (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso k (functionIso B n) (functionIso_basepoint_vertex B n)).trans
-    (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyEquiv (Fin n → G) B.V.right k
+      ((Fin n → G) → _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup B.V.right k (PointedSimplicialSet.basepoint B.V)) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso k (functionIso B n) (functionIso_basepoint_vertex B n)).trans
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.homotopyEquiv (Fin n → G) B.V.right k
       (fun _ ↦ PointedSimplicialSet.basepoint B.V))
 
 end

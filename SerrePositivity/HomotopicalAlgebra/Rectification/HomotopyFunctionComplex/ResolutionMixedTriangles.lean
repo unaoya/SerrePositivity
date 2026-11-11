@@ -58,17 +58,17 @@ abbrev oldDiagonal := CoherentLiftMixedComparison.diagonal hcof hfib p.source.in
 abbrev oldInclusion := CoherentLiftRelative.vertexInclusion p.middle.inner p.target p.center
 
 include hcof in
-lemma vertexBoundary_lifted : (vertexBoundary C).app p = UniverseLift.map.{u} (oldBoundary C p)
+lemma vertexBoundary_lifted : (vertexBoundary C).app p = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (oldBoundary C p)
   := by
   have hp := CoherentLiftRelative.postLeft_vertices hcof p.middle.inner p.target p.final
     p.center p.post
   change oldInclusion C p ≫ (CoherentLiftTuples.interpolation hcof p.middle.inner p.target
     p.center ≫ _) = _ at hp
   rw [← Category.assoc, CoherentLiftTuples.interpolation_vertices] at hp
-  change UniverseLift.map.{u} ((ResolutionArrowTuples.vertexData C).app (a C p)) ≫
-    UniverseLift.map.{u} ((ResolutionArrowDiagram.fibers C).map (ab C p ≫ bd C p)) = _
-  rw [← UniverseLift.map_comp, commutes, CategoryTheory.Functor.map_comp]
-  apply congrArg (fun k => UniverseLift.map.{u} k)
+  change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} ((ResolutionArrowTuples.vertexData C).app (a C p)) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} ((ResolutionArrowDiagram.fibers C).map (ab C p ≫ bd C p)) = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map_comp, commutes, CategoryTheory.Functor.map_comp]
+  apply congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} k)
   exact ((Category.assoc _ _ _).symm.trans
     (congrArg (fun k => k ≫ (ResolutionArrowDiagram.fibers C).map (cd C p))
       ((congrArg (fun k => (ResolutionArrowTuples.vertexData C).app (a C p) ≫ k)
@@ -80,27 +80,27 @@ lemma vertexBoundary_lifted : (vertexBoundary C).app p = UniverseLift.map.{u} (o
 
 abbrev triangle (side : Bool) : (parameters C).obj p ⊗
     SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 2) ⟶
-      UniverseLift.obj.{u} ((smallValues C).obj p) :=
-  UniverseLift.simplexTensorMap.{u}
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((smallValues C).obj p) :=
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u}
     (RelativeChoiceSpace.family (oldInclusion C p) (oldBoundary C p) (oldTriangle C hcof hfib p
       side))
 
 abbrev face (side : Bool) (k : Fin 3) : (parameters C).obj p ⊗
     SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 1) ⟶
-      UniverseLift.obj.{u} ((smallValues C).obj p) :=
-  UniverseLift.simplexTensorMap.{u}
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((smallValues C).obj p) :=
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u}
     (RelativeChoiceSpace.family (oldInclusion C p) (oldBoundary C p) (oldFace C hcof hfib p side k))
 
 abbrev diagonal : (parameters C).obj p ⊗ SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 1) ⟶
-    UniverseLift.obj.{u} ((smallValues C).obj p) :=
-  UniverseLift.simplexTensorMap.{u}
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((smallValues C).obj p) :=
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u}
     (RelativeChoiceSpace.family (oldInclusion C p) (oldBoundary C p) (oldDiagonal C hcof hfib p))
 
 lemma triangle_face (side : Bool) (k : Fin 3) :
     (parameters C).obj p ◁ SSet.stdSimplex.δ k ≫ triangle C hcof hfib p side =
       face C hcof hfib p side k := by
-  apply (UniverseLift.simplexTensorMap_operator.{u} (SimplexCategory.δ k) _).trans
-  apply congrArg (fun k => UniverseLift.simplexTensorMap.{u} k)
+  apply (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_operator.{u} (SimplexCategory.δ k) _).trans
+  apply congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u} k)
   exact (RelativeChoiceSpace.family_naturality (oldInclusion C p) (oldBoundary C p)
     (oldTriangle C hcof hfib p side) (SSet.stdSimplex.δ k)).symm.trans
       (congrArg (RelativeChoiceSpace.family (oldInclusion C p) (oldBoundary C p))
@@ -110,8 +110,8 @@ lemma triangle_face (side : Bool) (k : Fin 3) :
 lemma triangle_diagonal (side : Bool) :
     (parameters C).obj p ◁ SSet.stdSimplex.δ (1 : Fin 3) ≫ triangle C hcof hfib p side =
       diagonal C hcof hfib p := by
-  apply (UniverseLift.simplexTensorMap_operator.{u} (SimplexCategory.δ (1 : Fin 3)) _).trans
-  apply congrArg (fun k => UniverseLift.simplexTensorMap.{u} k)
+  apply (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_operator.{u} (SimplexCategory.δ (1 : Fin 3)) _).trans
+  apply congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u} k)
   exact (RelativeChoiceSpace.family_naturality (oldInclusion C p) (oldBoundary C p)
     (oldTriangle C hcof hfib p side) (SSet.stdSimplex.δ (1 : Fin 3))).symm.trans
       (congrArg (RelativeChoiceSpace.family (oldInclusion C p) (oldBoundary C p))
@@ -128,7 +128,7 @@ lemma triangle_vertices (side : Bool) :
       triangle C hcof hfib p side =
     fst ((vertexParameters C).obj p) (SSet.stdSimplex.obj (SimplexCategory.mk 2)) ≫
       (vertexBoundary C).app p := by
-  apply (UniverseLift.simplexTensorMap_source.{u} (oldInclusion C p) _).trans
+  apply (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_source.{u} (oldInclusion C p) _).trans
   apply Eq.trans ?_ (congrArg (fun k => fst _ _ ≫ k) (vertexBoundary_lifted C hcof p).symm)
   have ht := CoherentLiftMixedComparison.triangle_fixed_boundary hcof hfib
     p.source.inner p.middle.inner p.target p.final p.pre.map p.center p.post
@@ -137,22 +137,22 @@ lemma triangle_vertices (side : Bool) :
     (congrArg (fun k => k ≫ oldBoundary C p)
       (UniverseLift.whole_projection (CoherentLiftRelative.vertices p.middle.inner p.target
         p.center) (SSet.stdSimplex.obj (SimplexCategory.mk 2))))
-  exact (congrArg (fun k => UniverseLift.simplexTensorMap.{u} k) (ht.trans hp)).trans
-    (UniverseLift.simplexTensorMap_constant (oldBoundary C p) 2)
+  exact (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u} k) (ht.trans hp)).trans
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_constant (oldBoundary C p) 2)
 
-lemma triangle_recover (side : Bool) : UniverseLift.lowerSimplexTensor
+lemma triangle_recover (side : Bool) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor
     (triangle C hcof hfib p side) = RelativeChoiceSpace.family (oldInclusion C p)
       (oldBoundary C p) (oldTriangle C hcof hfib p side) :=
-  UniverseLift.lowerSimplexTensor_simplexTensorMap _
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor_simplexTensorMap _
 
-lemma face_recover (side : Bool) (k : Fin 3) : UniverseLift.lowerSimplexTensor
+lemma face_recover (side : Bool) (k : Fin 3) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor
     (face C hcof hfib p side k) = RelativeChoiceSpace.family (oldInclusion C p)
       (oldBoundary C p) (oldFace C hcof hfib p side k) :=
-  UniverseLift.lowerSimplexTensor_simplexTensorMap _
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor_simplexTensorMap _
 
-lemma diagonal_recover : UniverseLift.lowerSimplexTensor
+lemma diagonal_recover : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor
     (diagonal C hcof hfib p) = RelativeChoiceSpace.family (oldInclusion C p)
       (oldBoundary C p) (oldDiagonal C hcof hfib p) :=
-  UniverseLift.lowerSimplexTensor_simplexTensorMap _
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor_simplexTensorMap _
 
 end SerrePositivity.HomotopyFunctionComplex.ResolutionMixedTriangles

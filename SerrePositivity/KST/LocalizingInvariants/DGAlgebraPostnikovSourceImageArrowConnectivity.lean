@@ -44,7 +44,7 @@ lemma postnikovSourceImageArrowSource_connected (a : Arrow (NonpositiveAlgebra R
   postnikovSourceImageFactor_connected_succ R a.hom.hom n hn
 
 lemma IsKConnective.postnikovSourceImageFactor_connected_succ
-    (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (h : IsKConnective R Φ k) :
+    (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (h : IsKConnective R Φ k) :
     (∀ j : ℤ, j < n + 1 + k →
       Function.Injective (invariantGroupMap R Φ (postnikovSourceImageFactor R f n hn) j)) ∧
     ∀ j : ℤ, j ≤ n + 1 + k →

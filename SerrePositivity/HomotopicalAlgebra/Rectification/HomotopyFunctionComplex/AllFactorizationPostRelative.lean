@@ -51,7 +51,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
 
 abbrev vertexMap : NerveVertices.vertices.{v, max u v} (ArrowFactorization g) ⟶
     NerveVertices.vertices.{v, max u v} (ArrowFactorization (g ≫ b)) :=
-  VertexTuples.verticesMap (fun p : ULift.{v} (ArrowFactorization g) =>
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.verticesMap (fun p : ULift.{v} (ArrowFactorization g) =>
     (⟨(ArrowFactorization.postTo g b (g ≫ b) rfl).obj p.down⟩ :
       ULift.{v} (ArrowFactorization (g ≫ b))))
 
@@ -71,17 +71,17 @@ lemma vertex_square : NerveVertices.inclusion (ArrowFactorization g) ≫
 lemma liftedPoint_post (p : ArrowFactorization g) :
     AllFactorizationComparison.liftedPoint hcof f (g ≫ b)
         ((ArrowFactorization.postTo g b (g ≫ b) rfl).obj p) =
-      AllFactorizationComparison.liftedPoint hcof f g p ≫ UniverseLift.map
+      AllFactorizationComparison.liftedPoint hcof f g p ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map
         (CoherentLiftPostComposition.firstMap hcof X Y V W f g b) := by
-  change (UniverseLift.stdIso.{u, v} 0).inv ≫ UniverseLift.map _ = _
-  rw [AllFactorizationPostPoints.point_post, UniverseLift.map_comp, Category.assoc]
+  change (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.stdIso.{u, v} 0).inv ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map _ = _
+  rw [AllFactorizationPostPoints.point_post, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map_comp, Category.assoc]
 
 lemma vertexData_post : vertexMap g b ≫ AllFactorizationComparison.vertexData hcof f (g ≫ b) =
-    AllFactorizationComparison.vertexData hcof f g ≫ UniverseLift.map
+    AllFactorizationComparison.vertexData hcof f g ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map
       (CoherentLiftPostComposition.firstMap hcof X Y V W f g b) := by
-  change VertexTuples.verticesMap _ ≫ VertexTuples.pointsMap _ = VertexTuples.pointsMap _ ≫ _
-  rw [VertexTuples.verticesMap_pointsMap, VertexTuples.pointsMap_postcomp]
-  apply congrArg VertexTuples.pointsMap
+  change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.verticesMap _ ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap _ = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap _ ≫ _
+  rw [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.verticesMap_pointsMap, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap_postcomp]
+  apply congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap
   funext p
   exact liftedPoint_post hcof f g b p.down
 
@@ -91,7 +91,7 @@ abbrev vertexInclusion : NerveVertices.vertices.{v, max u v} (ArrowFactorization
 
 instance : Mono (vertexInclusion g) := inferInstanceAs (Mono (_ ≫ _))
 
-abbrev vertexBoundary := AllFactorizationComparison.vertexData hcof f g ≫ UniverseLift.map
+abbrev vertexBoundary := AllFactorizationComparison.vertexData hcof f g ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map
   (CoherentLiftPostComposition.firstMap hcof X Y V W f g b)
 
 lemma direct_vertices : vertexInclusion g ≫ AllFactorizationPost.direct hcof hfib f g b =

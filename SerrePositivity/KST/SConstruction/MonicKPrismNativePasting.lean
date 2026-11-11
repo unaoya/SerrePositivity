@@ -33,7 +33,7 @@ def monicKPrismNativePastingTriangle (n : ℕ) :
 
 /-- 貼り合わせ全体から、元の単射源の suspension Hom への実写像。 -/
 def monicKPrismNativePastingMap (n : ℕ) : monicKPrismNativePastingDomain F f g n ⟶
-    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
+    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
       ((kKanSequence (F.obj z)).level (n + 1)).space).right :=
   triangleCylinderPastingMap _ (monicKPrismNativeSecondCompatibilityTransport F f g n)
 
@@ -72,7 +72,7 @@ lemma monicKPrismNativePastingMap_cells (n : ℕ) :
       (monicKPrismCompatibilityInterchangeSquares F f g n).map (fun q =>
         ((compositionStringPair f g ▷ (Δ[1] : SSet.{u})) ▷ (Δ[1] : SSet.{u})) ≫
           familySquareClockSwap
-            (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⊗ nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) ≫ q) :=
+            (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) ⊗ nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)) ≫ q) :=
   (triangleCylinderPastingMap_cells _ _).trans
     (monicKPrismNativeSecondCompatibilityTransport_square_cells F f g n)
 

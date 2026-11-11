@@ -18,7 +18,7 @@ variable (A : Type u) [CommRing A]
 /-- 各段の元の全 Hom 作用は、同じ BF 構造射と厳密に整合する。 -/
 lemma presentedPerfectDGBFMapping_condition (X Y : PerfDGInput.{u, v} A) (n : ℕ) :
     (presentedPerfectDGBFLevelFunctor A (n + 1)).map X Y ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((presentedPerfectDGBFOmegaSpectrum A X).sigma n)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((presentedPerfectDGBFOmegaSpectrum A X).sigma n)
           ((presentedPerfectDGBFOmegaSpectrum A Y).level (n + 1)).space =
       (presentedPerfectDGBFLevelFunctor A n).map X Y ≫
         OmegaSpectrum.mappingStep (presentedPerfectDGBFOmegaSpectrum A X)
@@ -30,7 +30,7 @@ lemma presentedPerfectDGBFMapping_condition (X Y : PerfDGInput.{u, v} A) (n : �
     (suspensionHom ((presentedPerfectDGBFOmegaSpectrum A X).level n).space
       ((presentedPerfectDGBFOmegaSpectrum A Y).level n).space).right) ≫
       eHomWhiskerLeft SSet
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((presentedPerfectDGBFOmegaSpectrum A X).level n).space)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((presentedPerfectDGBFOmegaSpectrum A X).level n).space)
         ((presentedPerfectDGBFOmegaSpectrum A Y).sigma n) =
     (presentedPerfectDGBFLevelFunctor A (n + 1)).map X Y ≫
       eHomWhiskerRight SSet ((presentedPerfectDGBFOmegaSpectrum A X).sigma n)
@@ -46,7 +46,7 @@ def presentedPerfectDGBFMapping (X Y : PerfDGInput.{u, v} A) :
   TruncatedMapping.familyLift
     (fun n => ((presentedPerfectDGBFOmegaSpectrum A X).level n).space)
     (fun n => ((presentedPerfectDGBFOmegaSpectrum A Y).level n).space)
-    (fun n => _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((presentedPerfectDGBFOmegaSpectrum A X).level n).space)
+    (fun n => _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((presentedPerfectDGBFOmegaSpectrum A X).level n).space)
     (presentedPerfectDGBFOmegaSpectrum A X).sigma
     (OmegaSpectrum.mappingStep (presentedPerfectDGBFOmegaSpectrum A X)
       (presentedPerfectDGBFOmegaSpectrum A Y))

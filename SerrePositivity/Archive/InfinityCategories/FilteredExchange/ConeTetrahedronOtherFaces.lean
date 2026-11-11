@@ -4,7 +4,7 @@ public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConeTe
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SimplexConeIndexNaturality
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.TriangleRightConeEdges
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.AppendEdgeConeMiddle
-public import SerrePositivity.InfinityCategories.Core.MappingSpaceRightKan
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceRightKan
 
 /-!
 概要：元の実四面体の残る三面を、元の三角形の三辺への終点追加として計算する。

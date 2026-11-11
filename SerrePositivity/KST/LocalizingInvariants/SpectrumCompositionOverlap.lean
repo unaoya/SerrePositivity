@@ -31,10 +31,10 @@ local instance overlapNerve : Quasicategory (SimplicialNerve OmegaSpectrum.{u}) 
 variable {A B C D : OmegaSpectrum.{u}} (a : A ⟶ B) (b : B ⟶ C) (c : C ⟶ D)
 
 def associatedPre : SSet.Homotopy
-    (SSet.yonedaEquiv.symm (coherentNerveEdge ((a ≫ b) ≫ c)).edge)
-    (SSet.yonedaEquiv.symm (coherentNerveEdge (b ≫ c)).edge) :=
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((a ≫ b) ≫ c)).edge)
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (b ≫ c)).edge) :=
   HomotopyArrow.rebase (canonicalPre a (b ≫ c))
-    (congrArg (fun f ↦ SSet.yonedaEquiv.symm (coherentNerveEdge f).edge)
+    (congrArg (fun f ↦ SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge)
       (Category.assoc a b c).symm) rfl
 
 lemma canonicalPre_tetrahedron : (canonicalPre a b).h =
@@ -55,20 +55,20 @@ def overlapLong := CompositionOverlap.longHomotopy
   (canonicalPre_tetrahedron a b c) (canonicalPost_tetrahedron a b c)
 
 lemma overlapLong_afterBottom :
-    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (SquareDiagonal.afterBottom (overlapLong a b c)))) =
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (canonicalPost (a ≫ b) c))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (canonicalPost (a ≫ b) c))) := by
   apply HomotopyArrow.congr
   rw [overlapLong, CompositionOverlap.afterBottom_map,
     CoherentComposition.face_map a b c (CoherentComposition.face_lower a b c)]
   rfl
 
 lemma overlapLong_beforeTop :
-    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (SquareDiagonal.beforeTop (overlapLong a b c)))) =
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (associatedPre a b c))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (associatedPre a b c))) := by
   apply HomotopyArrow.congr
   rw [associatedPre, HomotopyArrow.rebase_map, overlapLong,
     CompositionOverlap.beforeTop_map,
@@ -77,13 +77,13 @@ lemma overlapLong_beforeTop :
 
 lemma canonical_overlap :
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (canonicalPre a b)) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (canonicalPre a b)) ≫
         Truncated.HomotopyCategory.homMk
-          (functorEdgeOfSimplicialHomotopy (canonicalPost b c)) =
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (canonicalPost b c)) =
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (canonicalPost (a ≫ b) c)) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (canonicalPost (a ≫ b) c)) ≫
         Truncated.HomotopyCategory.homMk
-          (functorEdgeOfSimplicialHomotopy (associatedPre a b c)) := by
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (associatedPre a b c)) := by
   have he := CompositionOverlap.homMk_overlap
     (SSet.yonedaEquiv.symm (CoherentComposition.tetrahedron a b c))
     (canonicalPre a b) (canonicalPost b c)

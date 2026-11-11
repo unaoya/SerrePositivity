@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeWordAction
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitGraph
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeWordAction
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitGraph
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
 public import Mathlib.CategoryTheory.Category.ULift
 
@@ -40,11 +40,11 @@ variable (X Y : C)
 /-- 概要：元の固定語の全 hammock 単体と同じ AsSmall 表示は実同型。
 方針：全射列の同じ各成分を up・down する。
 規約：元の語・全作用素。使われ方：全語図式の実同型。 -/
-def graphIso (w : Word) : graph W w X Y ≅
-    graph (weak W) w (AsSmall.up.obj X) (AsSmall.up.obj Y) where
-  hom := { app _ := ↾fun σ => σ ⋙ Zigzag.Relative.functor (up W)
+def graphIso (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W w X Y ≅
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (weak W) w (AsSmall.up.obj X) (AsSmall.up.obj Y) where
+  hom := { app _ := ↾fun σ => σ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (up W)
            naturality _ _ _ := rfl }
-  inv := { app _ := ↾fun σ => σ ⋙ Zigzag.Relative.functor (down W)
+  inv := { app _ := ↾fun σ => σ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (down W)
            naturality _ _ _ := rfl }
   hom_inv_id := by
     apply NatTrans.ext
@@ -62,38 +62,38 @@ def graphIso (w : Word) : graph W w X Y ≅
 /-- 概要：同じ元の全語の hammock 図式は AsSmall 図式と実同型。
 方針：同じ各語の実同型と元の相対関手の全語自然性を使う。
 規約：全語の射を保持。使われ方：同じ余極限の比較。 -/
-def diagramIso : graphDiagram W X Y ≅
-    graphDiagram (weak W) (AsSmall.up.obj X) (AsSmall.up.obj Y) :=
+def diagramIso : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y ≅
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weak W) (AsSmall.up.obj X) (AsSmall.up.obj Y) :=
   NatIso.ofComponents (graphIso W X Y) (by
     intro a b f
     apply NatTrans.ext
     funext n
     apply ConcreteCategory.hom_ext
     intro σ
-    change σ ⋙ (WordAction.functor f ⋙ Zigzag.Relative.functor (up W)) =
-      σ ⋙ (Zigzag.Relative.functor (up W) ⋙ WordAction.functor f)
-    exact congrArg (fun H => σ ⋙ H) (Zigzag.Relative.wordAction_functor_eq (up W) f).symm)
+    change σ ⋙ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (up W)) =
+      σ ⋙ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (up W) ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f)
+    exact congrArg (fun H => σ ⋙ H) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeWordAction.wordAction_functor_eq (up W) f).symm)
 
 /-- 概要：元の hammock Hom と AsSmall の同じ hammock Hom の実同型。
 方針：元の全語図式の実同型を同じ余極限関手へ送る。
 規約：元の全標準射を保持。使われ方：balanced DK 模型への frame 比較。 -/
-def colimitIso : colimitGraph W X Y ≅
-    colimitGraph (weak W) (AsSmall.up.obj X) (AsSmall.up.obj Y) :=
+def colimitIso : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y ≅
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (weak W) (AsSmall.up.obj X) (AsSmall.up.obj Y) :=
   colim.mapIso (diagramIso W X Y)
 
 /-- 概要：同じ宇宙比較は元の各語の余極限標準射と可換。
 方針：同じ余極限関手の自然性を読む。
 規約：元の実標準射の等式。使われ方：元の frame roof の回収。 -/
-lemma graphInclusion_colimitIso (w : Word) :
-    graphInclusion W X Y w ≫ (colimitIso W X Y).hom =
+lemma graphInclusion_colimitIso (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y w ≫ (colimitIso W X Y).hom =
       (graphIso W X Y w).hom ≫
-        graphInclusion (weak W) (AsSmall.up.obj X) (AsSmall.up.obj Y) w :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (weak W) (AsSmall.up.obj X) (AsSmall.up.obj Y) w :=
   colimit.ι_map (diagramIso W X Y).hom w
 
 /-- 概要：元の AsSmall hammock 比較の順射自身は弱ホモトピー同値。
 方針：同じ実同型を anodyne 局所化へ送る。
 規約：単体集合モデルの仮定なし。使われ方：実 frame roof の弱比較の輸送。 -/
-lemma colimitIso_weak : SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence
+lemma colimitIso_weak : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
     (colimitIso W X Y).hom :=
   FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
 

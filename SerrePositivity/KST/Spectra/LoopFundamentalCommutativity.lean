@@ -21,8 +21,8 @@ set_option backward.isDefEq.respectTransparency.types false
 
 /-- loop 空間の基本群は既存の積について可換群。 -/
 instance loopFundamentalCommGroup (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
-    CommGroup (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right 0 (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint) where
-  __ := (inferInstance : Group (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right 0 (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint))
+    CommGroup (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right 0 (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint) where
+  __ := (inferInstance : Group (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right 0 (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint))
   mul_comm a b := by
     apply (loopPositiveHomotopyEquiv Y 0).injective
     rw [map_mul, map_mul, mul_comm]

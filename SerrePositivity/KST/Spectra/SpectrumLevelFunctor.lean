@@ -28,10 +28,10 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：BF 1978 §2、HA §1.4.2。全自然数次数の段の関手性。 -/
 def levelMap {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (k n : ℕ) :
     levelHomotopy X k n →* levelHomotopy Y k n where
-  toFun := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (f.app k).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
+  toFun := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n (f.app k).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)
   map_one' := by
     rw [← levelPoint_eq_one X k n, ← levelPoint_eq_one Y k n]
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_point n (f.app k).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_point n (f.app k).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)
   map_mul' := by
     intro a b
     cases n with
@@ -39,10 +39,10 @@ def levelMap {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (k n : ℕ) :
       apply (transition Y k 0).injective
       rw [transition_natural f k 0, (transition Y k 0).map_mul,
         transition_natural f k 0, transition_natural f k 0, (transition X k 0).map_mul]
-      exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := 0) (f.app (k + 1)).right
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)).map_mul _ _
+      exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := 0) (f.app (k + 1)).right
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)).map_mul _ _
     | succ n =>
-      exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (f.app k).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)).map_mul a b
+      exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := n) (f.app k).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)).map_mul a b
 
 /-- 概要：段の準同型の順写像は通常のホモトピー類の誘導写像。
 方針：構成の定義を読む。
@@ -51,7 +51,7 @@ def levelMap {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (k n : ℕ) :
 @[simp]
 theorem levelMap_apply {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (k n : ℕ)
     (a : levelHomotopy X k n) :
-    levelMap f k n a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (f.app k).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) a := rfl
+    levelMap f k n a = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n (f.app k).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _) a := rfl
 
 /-- 概要：各段の誘導準同型は恒等射を保つ。
 方針：ホモトピー類の恒等法則を使う。
@@ -61,7 +61,7 @@ theorem levelMap_apply {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (k n : ℕ)
 theorem levelMap_id (X : OmegaSpectrum.{u}) (k n : ℕ) : levelMap (𝟙 X) k n = MonoidHom.id _ := by
   apply MonoidHom.ext
   intro a
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_id n a
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_id n a
 
 /-- 概要：各段の誘導準同型は合成を保つ。
 方針：ホモトピー類の合成法則を使う。
@@ -71,8 +71,8 @@ theorem levelMap_comp {X Y Z : OmegaSpectrum.{u}} (f : X ⟶ Y) (g : Y ⟶ Z) (k
     levelMap (f ≫ g) k n = (levelMap g k n).comp (levelMap f k n) := by
   apply MonoidHom.ext
   intro a
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n (f.app k).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
-    (g.app k).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (f.app k ≫ g.app k)) a
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_comp n (f.app k).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)
+    (g.app k).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (f.app k ≫ g.app k)) a
 
 /-- 概要：指定段・指定次数の可換群への関手。
 方針：全次数の誘導準同型と恒等・合成法則を束ねる。

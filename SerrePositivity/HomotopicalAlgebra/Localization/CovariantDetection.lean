@@ -57,7 +57,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{
 def targetArrowIso (Q : C ⥤ SimplexCategory ⥤ C) (R : C ⥤ C)
     (X : Cᵒᵖ) {Y Z : C} (f : Y ⟶ Z) :
     Arrow.mk (SSet.uliftFunctor.{v,w}.map (((hom Q R).obj X).map f)) ≅
-      Arrow.mk (SSet.uliftFunctor.{w,v}.map (((resolutionHom Q R).obj X).map f)) :=
+      Arrow.mk (SSet.uliftFunctor.{w,v}.map (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom Q R).obj X).map f)) :=
   Arrow.isoMk (((resolutionLiftIso Q R).app X).app Y) (((resolutionLiftIso Q R).app X).app Z)
     (((resolutionLiftIso Q R).app X).hom.naturality f).symm
 

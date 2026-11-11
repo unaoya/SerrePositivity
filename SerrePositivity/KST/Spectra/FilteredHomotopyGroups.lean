@@ -31,9 +31,9 @@ variable {J : Type u} [SmallCategory J] [IsFiltered J]
 規約：n は実際の次数 n+1。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。π_* の filtered colimit の群の図式。 -/
 def pointedHomotopyGroupDiagram (n : ℕ) : J ⥤ GrpCat.{u} where
-  obj j := GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (D.obj j).right n (D.obj j).basepoint)
-  map f := GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (D.map f).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _))
+  obj j := GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (D.obj j).right n (D.obj j).basepoint)
+  map f := GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := n) (D.map f).right
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _))
   map_id j := by
     ext a
     change pointedHomotopyMap (n + 1) (D.map (𝟙 j)) a = a
@@ -61,10 +61,10 @@ variable {D} (c : Cocone D) [KanComplex c.pt.right]
 規約：可換群とは限らない群の圏を使う。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。正次数の余極限比較。 -/
 def pointedHomotopyGroupCocone (n : ℕ) : Cocone (pointedHomotopyGroupDiagram D n) where
-  pt := GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup c.pt.right n c.pt.basepoint)
+  pt := GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup c.pt.right n c.pt.basepoint)
   ι := {
-    app j := GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (X := (D.obj j).right) (Y := c.pt.right)
-      (n := n) (c.ι.app j).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _))
+    app j := GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (X := (D.obj j).right) (Y := c.pt.right)
+      (n := n) (c.ι.app j).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _))
     naturality j k f := by
       ext a
       change pointedHomotopyMap (Y := c.pt) (n + 1) (c.ι.app k)
@@ -92,7 +92,7 @@ def pointedHomotopyGroupIsColimit
 def pointedHomotopyGroupColimitIso
     (hc : IsColimit (PointedSimplicialSet.forget.mapCocone c)) (n : ℕ) :
     colimit (pointedHomotopyGroupDiagram D n) ≅
-      GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup c.pt.right n c.pt.basepoint) :=
+      GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup c.pt.right n c.pt.basepoint) :=
   (colimit.isColimit (pointedHomotopyGroupDiagram D n)).coconePointUniqueUpToIso
     (pointedHomotopyGroupIsColimit c hc n)
 
@@ -105,8 +105,8 @@ theorem pointedHomotopyGroupColimitIso_ι
     (hc : IsColimit (PointedSimplicialSet.forget.mapCocone c)) (n : ℕ) (j : J) :
     colimit.ι (pointedHomotopyGroupDiagram D n) j ≫
       (pointedHomotopyGroupColimitIso c hc n).hom =
-        GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (X := (D.obj j).right) (Y := c.pt.right)
-          (n := n) (c.ι.app j).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)) :=
+        GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (X := (D.obj j).right) (Y := c.pt.right)
+          (n := n) (c.ι.app j).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)) :=
   IsColimit.comp_coconePointUniqueUpToIso_hom _ _ j
 
 /-- 概要：選ばれた点つき Kan 余極限の正次数群と段の群の余極限との標準同型。
@@ -116,7 +116,7 @@ theorem pointedHomotopyGroupColimitIso_ι
 def filteredPointedHomotopyGroupIso (D : J ⥤ PointedSimplicialSet.{u})
     [∀ j, KanComplex (D.obj j).right] (n : ℕ) :
     colimit (pointedHomotopyGroupDiagram D n) ≅
-      GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (colimit D).right n (colimit D).basepoint) :=
+      GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (colimit D).right n (colimit D).basepoint) :=
   by
     let : KanComplex (colimit.cocone D).pt.right :=
       inferInstanceAs (KanComplex (colimit D).right)
@@ -131,8 +131,8 @@ def filteredPointedHomotopyGroupIso (D : J ⥤ PointedSimplicialSet.{u})
 theorem filteredPointedHomotopyGroupIso_ι (D : J ⥤ PointedSimplicialSet.{u})
     [∀ j, KanComplex (D.obj j).right] (n : ℕ) (j : J) :
     colimit.ι (pointedHomotopyGroupDiagram D n) j ≫ (filteredPointedHomotopyGroupIso D n).hom =
-      GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (colimit.ι D j).right
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)) := by
+      GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := n) (colimit.ι D j).right
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)) := by
   let : KanComplex (colimit.cocone D).pt.right := inferInstanceAs (KanComplex (colimit D).right)
   exact pointedHomotopyGroupColimitIso_ι (colimit.cocone D)
     (isColimitOfPreserves PointedSimplicialSet.forget (colimit.isColimit D)) n j

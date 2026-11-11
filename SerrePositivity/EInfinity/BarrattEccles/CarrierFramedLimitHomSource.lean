@@ -50,7 +50,7 @@ lemma carrierFramedLimitHomPiZeroEquiv_source {Y Z : Complex A} (f : Y ⟶ Z)
   let P := carrierFramedLimitProbeFunctor A
   have hp (X : Complex A) : IsCofibrant (P.obj X) := carrierFramedLimitProbe_cofibrant A X
   have hpf (X : Complex A) : IsFibrant (op (P.obj X)) :=
-    FrameHom.MixedFrame.fibrantOp_of_cofibrant _
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
   let e (X : Complex A) :=
     HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
       (carrierRightFrameDiagram A K F) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K)

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.LoopMappingClasses
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeSecondSource
 public import SerrePositivity.KST.Spectra.PathContractibility
 
 /-!
@@ -40,7 +40,7 @@ theorem familyVertex_zero (X Y : PointedSimplicialSet.{u}) :
     rw [PointedObject.zero_right, comp_toUnit_assoc]
   dsimp only [familyVertex, pointFamily]
   simp only [h]
-  rw [paramCurry_constant, _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const, yonedaEquiv_const]
+  rw [paramCurry_constant, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const, yonedaEquiv_const]
 
 end PointedMapping
 
@@ -57,18 +57,18 @@ theorem classOf_zero (A Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
   rw [map_one, groupEquiv_apply]
   let e : PointedObject.basedHom A (PointedObject.basedHom CirclePower.space.{u} Y) ≅
       PointedObject.basedHom CirclePower.space (PointedObject.basedHom A Y) :=
-    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A CirclePower.space Y
+    _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A CirclePower.space Y
   change CirclePower.componentEquiv (PointedObject.basedHom A Y)
     (mapπ₀ e.hom.right (π₀.mk (PointedMapping.familyVertex 0))) = 1
   rw [mapπ₀_mk, PointedMapping.familyVertex_zero,
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint e.hom,
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint e.hom,
     ← PointedMapping.familyVertex_zero CirclePower.space (PointedObject.basedHom A Y),
     CirclePower.componentEquiv_familyVertex]
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map
     (0 : CirclePower.space.{u} ⟶ PointedObject.basedHom A Y).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) CirclePower.generator = 1
-  simp only [PointedObject.zero_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const]
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_const 1 _ CirclePower.generator
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _) CirclePower.generator = 1
+  simp only [PointedObject.zero_right, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const]
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.map_const 1 _ CirclePower.generator
 
 /-- 概要：円の次数射の後合成は任意のパラメータを持つ loop の類に m 乗で作用する。
 方針：第二の源の制限自然性で円の成分比較へ移し、その冪作用を使う。
@@ -77,22 +77,22 @@ theorem classOf_zero (A Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
 theorem post_power (A Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
     (m : ℕ) (a : LoopMappingClasses A Y) :
     mapπ₀ (PointedObject.basedHomMap A
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.powerMap m) Y)).right a = a ^ m := by
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.powerMap m) Y)).right a = a ^ m := by
   apply (groupEquiv A Y).injective
   rw [map_pow, groupEquiv_apply, groupEquiv_apply]
-  have hs := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_right
+  have hs := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeSecondSource.natural_pre_right
     (C := PointedSimplicialSet.{u}) A (CirclePower.powerMap.{u} m) Y
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hs
   let e : PointedObject.basedHom A (PointedObject.basedHom CirclePower.space.{u} Y) ≅
       PointedObject.basedHom CirclePower.space (PointedObject.basedHom A Y) :=
-    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A CirclePower.space Y
+    _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A CirclePower.space Y
   change PointedObject.basedHomMap A
       (Y := PointedObject.basedHom CirclePower.space Y)
       (Z := PointedObject.basedHom CirclePower.space Y)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.powerMap m) Y) ≫ e.hom =
-    e.hom ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.powerMap m)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.powerMap m) Y) ≫ e.hom =
+    e.hom ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.powerMap m)
       (PointedObject.basedHom A Y) at hs
-  have hπ := _root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_square _ _ e.hom.right e.hom.right
+  have hπ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.mapPiZero_square _ _ e.hom.right e.hom.right
     (congrArg Under.Hom.right hs) a
   change CirclePower.componentEquiv (PointedObject.basedHom A Y)
     (mapπ₀ e.hom.right (mapπ₀ _ a)) = _

@@ -20,7 +20,7 @@ open scoped Simplicial
 /-- 元の loop 辺の後合成は、元の境界定数一次単体の後合成と一致する。 -/
 lemma fundamentalLoopEdge_mapSimplex {A B : SSet.{u}} (i : A ⟶ B) {x : A _⦋0⦌}
     (s : A.PtSimplex 1 x) :
-    fundamentalLoopEdge (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex i rfl s) =
+    fundamentalLoopEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex i rfl s) =
       (fundamentalLoopEdge s).map ((truncation 2).map i) := by
   apply SSet.Truncated.Edge.ext
   exact SSet.yonedaEquiv_comp s.map i
@@ -28,7 +28,7 @@ lemma fundamentalLoopEdge_mapSimplex {A B : SSet.{u}} (i : A ⟶ B) {x : A _⦋0
 /-- Kan 値 anodyne 射の後の実際の基本群を、元の辺と二単体の基本亜群で表示する。 -/
 def kanAnodyneLoopPresentation {A B : SSet.{u}} [KanComplex B] (i : A ⟶ B)
     (hi : anodyneExtensions i) (x : A _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (i.app _ x) ≃
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup B 0 (i.app _ x) ≃
       (FreeGroupoid.mk (SSet.HomotopyCategory.mk (X := A) x) ⟶
         FreeGroupoid.mk (SSet.HomotopyCategory.mk x)) :=
   (fundamentalLoopHomEquiv B (i.app _ x)).trans
@@ -38,8 +38,8 @@ def kanAnodyneLoopPresentation {A B : SSet.{u}} [KanComplex B] (i : A ⟶ B)
 
 /-- 表示を元の比較関手で写すと、同じ基本群のホモトピー圏の loop 射を回収する。 -/
 lemma kanAnodyneLoopPresentation_apply {A B : SSet.{u}} [KanComplex B] (i : A ⟶ B)
-    (hi : anodyneExtensions i) (x : A _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (i.app _ x)) :
-    (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison i).map (kanAnodyneLoopPresentation i hi x a) =
+    (hi : anodyneExtensions i) (x : A _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup B 0 (i.app _ x)) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fundamentalGroupoidComparison i).map (kanAnodyneLoopPresentation i hi x a) =
       fundamentalLoopHomEquiv B (i.app _ x) a :=
   (fundamentalGroupoidComparison_fullyFaithful i hi).homEquiv.apply_symm_apply _
 
@@ -49,18 +49,18 @@ lemma kanAnodyneLoopPresentation_symm_apply {A B : SSet.{u}} [KanComplex B] (i :
     (a : FreeGroupoid.mk (SSet.HomotopyCategory.mk (X := A) x) ⟶
       FreeGroupoid.mk (SSet.HomotopyCategory.mk x)) :
     fundamentalLoopHomEquiv B (i.app _ x) ((kanAnodyneLoopPresentation i hi x).symm a) =
-      (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison i).map a :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fundamentalGroupoidComparison i).map a :=
   (fundamentalLoopHomEquiv B (i.app _ x)).apply_symm_apply _
 
 /-- 元の境界定数単体の類は、同じ元の loop 辺の形式的な類に対応する。 -/
 lemma kanAnodyneLoopPresentation_mk {A B : SSet.{u}} [KanComplex B] (i : A ⟶ B)
     (hi : anodyneExtensions i) (x : A _⦋0⦌) (s : A.PtSimplex 1 x) :
-    kanAnodyneLoopPresentation i hi x (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex i rfl s)) =
+    kanAnodyneLoopPresentation i hi x (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex i rfl s)) =
       FreeGroupoid.homMk (SSet.Truncated.HomotopyCategory.homMk (fundamentalLoopEdge s)) := by
   apply fundamentalGroupoidComparison_map_injective i hi _ _
   rw [kanAnodyneLoopPresentation_apply, fundamentalLoopHomEquiv_mk,
     fundamentalLoopEdge_mapSimplex]
-  have he := CategoryTheory.Functor.congr_hom (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison_fac i)
+  have he := CategoryTheory.Functor.congr_hom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fundamentalGroupoidComparison_fac i)
     (SSet.Truncated.HomotopyCategory.homMk (fundamentalLoopEdge s))
   exact he.symm
 
@@ -75,7 +75,7 @@ lemma kanAnodyneLoopPresentation_one {A B : SSet.{u}} [KanComplex B] (i : A ⟶ 
 
 /-- 基本群の積は元の形式的な道を辿る順の合成で表示される。 -/
 lemma kanAnodyneLoopPresentation_mul {A B : SSet.{u}} [KanComplex B] (i : A ⟶ B)
-    (hi : anodyneExtensions i) (x : A _⦋0⦌) (a b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (i.app _ x)) :
+    (hi : anodyneExtensions i) (x : A _⦋0⦌) (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup B 0 (i.app _ x)) :
     kanAnodyneLoopPresentation i hi x (a * b) =
       kanAnodyneLoopPresentation i hi x a ≫ kanAnodyneLoopPresentation i hi x b := by
   apply fundamentalGroupoidComparison_map_injective i hi _ _
@@ -85,7 +85,7 @@ lemma kanAnodyneLoopPresentation_mul {A B : SSet.{u}} [KanComplex B] (i : A ⟶ 
 
 /-- 基本群の逆元は元の形式的な道の逆で表示される。 -/
 lemma kanAnodyneLoopPresentation_inv {A B : SSet.{u}} [KanComplex B] (i : A ⟶ B)
-    (hi : anodyneExtensions i) (x : A _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (i.app _ x)) :
+    (hi : anodyneExtensions i) (x : A _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup B 0 (i.app _ x)) :
     kanAnodyneLoopPresentation i hi x a⁻¹ = inv (kanAnodyneLoopPresentation i hi x a) := by
   apply (cancel_epi (kanAnodyneLoopPresentation i hi x a)).mp
   rw [← kanAnodyneLoopPresentation_mul, mul_inv_cancel, kanAnodyneLoopPresentation_one,

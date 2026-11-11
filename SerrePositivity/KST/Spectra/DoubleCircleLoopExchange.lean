@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CircleSmashLoopSwap
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor
 public import SerrePositivity.KST.Spectra.DoubleCircleRestrictionNaturality
 
 /-!
@@ -29,24 +29,24 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：標的の loop は Kan 円からの内部 Hom。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。通常の二重円での交換の計算。 -/
 theorem ordinaryDoubleCircleLoop_exchange (Z : PointedSimplicialSet.{u}) [KanComplex Z.right] :
-    mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u}
+    mapπ₀ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u}
       PointedSimplicialSet.circle.{u} (PointedObject.basedHom CirclePower.space.{u} Z)).hom.right =
     mapπ₀ (PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
       (PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z))).right := by
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z))).right := by
   let L : PointedSimplicialSet.{u} := PointedObject.basedHom CirclePower.space.{u} Z
-  let v : L ⟶ L := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z
-  let i := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso PointedSimplicialSet.circle.{u}
+  let v : L ⟶ L := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z
+  let i := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso PointedSimplicialSet.circle.{u}
     PointedSimplicialSet.circle.{u} L
-  have hs := congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_swap
+  have hs := congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.natural_swap
     (C := PointedSimplicialSet.{u}) PointedSimplicialSet.circle.{u}
       PointedSimplicialSet.circle.{u} L)
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Under.comp_right] at hs
-  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedObject.smashSwap PointedSimplicialSet.circle.{u}
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, Under.comp_right] at hs
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedObject.smashSwap PointedSimplicialSet.circle.{u}
     PointedSimplicialSet.circle.{u}) L ≫ i.hom.right =
-      i.hom.right ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u}
+      i.hom.right ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u}
         PointedSimplicialSet.circle.{u} L).hom.right at hs
-  have hv := congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_post
+  have hv := congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.natural_post
     (C := PointedSimplicialSet.{u}) PointedSimplicialSet.circle.{u}
       PointedSimplicialSet.circle.{u} v)
   change (PointedObject.basedHomMap circleSmashSquare.{u} v).right ≫ i.hom.right =
@@ -69,13 +69,13 @@ theorem ordinaryDoubleCircleLoop_exchange (Z : PointedSimplicialSet.{u}) [KanCom
 規約：源の制限は実証済みの全基点 π_* 同型。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。スペクトルの段で用いる Kan 円の交換の符号。 -/
 theorem kanDoubleCircleLoop_exchange (Z : PointedSimplicialSet.{u}) [KanComplex Z.right] :
-    mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u}
+    mapπ₀ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u}
       (PointedObject.basedHom CirclePower.space.{u} Z)).hom.right =
     mapπ₀ (PointedObject.basedHomMap CirclePower.space.{u}
       (PointedObject.basedHomMap CirclePower.space.{u}
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z))).right := by
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z))).right := by
   let L : PointedSimplicialSet.{u} := PointedObject.basedHom CirclePower.space.{u} Z
-  let v : L ⟶ L := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z
+  let v : L ⟶ L := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z
   let A := PointedObject.basedHom CirclePower.space.{u}
     (PointedObject.basedHom CirclePower.space.{u} L)
   let r := doubleCircleRestriction L

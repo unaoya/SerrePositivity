@@ -43,14 +43,14 @@ lemma exists_prescribed_pointed_family_adjustment
     (i : A ⟶ B) [Mono i.right] {T U : SSet.{u}} (j : T ⟶ U) [Mono j]
     (f : U ⟶ (PointedObject.basedHom B Y).right)
     {a : U ⟶ (PointedObject.basedHom A Y).right}
-    (H : SSet.Homotopy (f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y) a)
+    (H : SSet.Homotopy (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y) a)
     {g : T ⟶ (PointedObject.basedHom B Y).right}
     (V : SSet.Homotopy (j ≫ f) g)
-    (hV : V.h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y = (j ▷ (Δ[1] : SSet.{u})) ≫ H.h) :
+    (hV : V.h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y = (j ▷ (Δ[1] : SSet.{u})) ≫ H.h) :
     ∃ k : U ⟶ (PointedObject.basedHom B Y).right,
-      k ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y = a ∧ j ≫ k = g ∧ ∃ W : SSet.Homotopy f k,
-        (j ▷ (Δ[1] : SSet.{u})) ≫ W.h = V.h ∧ W.h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y = H.h := by
-  let : Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y) := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration i Y
+      k ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y = a ∧ j ≫ k = g ∧ ∃ W : SSet.Homotopy f k,
+        (j ▷ (Δ[1] : SSet.{u})) ≫ W.h = V.h ∧ W.h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y = H.h := by
+  let : Fibration (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y) := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_fibration i Y
   exact exists_prescribed_fibration_family_transport _ j f H V hV
 
 end SerrePositivity.KST.SConstruction

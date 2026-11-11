@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgCoefficientRestriction
 public import SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts
-public import SerrePositivity.InfinityCategories.F1B.Localization.UniversalConsequences
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniversalConsequences
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalDiagramRestriction
 
 /-!
 # 代数の係数変更に使う局所化源の比較
@@ -31,7 +31,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory SSet MonoidalClosed
-open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
+open SerrePositivity.InfinityCategories _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison
 open scoped Simplicial
 
 variable (A : Type u) [CommRing A]
@@ -52,26 +52,26 @@ set_option maxHeartbeats 800000 in
 -- DK 入力の再置換と、その辺の全単体表示を同時に照合する。
 /-- cofibrant 入力で再置換して局所化しても、元の局所化源と自然同型。 -/
 def cAlgLocalizationSource_algebraIso :
-    FunctorIso (cofibrantAlgebraInclusionNerve A ≫ algebraCAlgSource A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cofibrantAlgebraInclusionNerve A ≫ algebraCAlgSource A)
       (cAlgLocalizationSource A) := by
   let D := (cofibrantAlgebraRelativeCategory A).category
   let η := cofibrantAlgebraDKReplacementAugmentation A
-  let H := F1B.nerveNatTransHomotopy η
-  let P := HomotopyClasses.postHomotopy (cAlgLocalizationSource A) H
+  let H := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy η
+  let P := _root_.SerrePositivity.SimplicialModel.HomotopyClasses.postHomotopy (cAlgLocalizationSource A) H
   have hp (z : (nerve D) _⦋0⦌) :
-      IsInvertibleEdge (simplicialHomotopyVertexEdge P z).toTruncated := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge P z).toTruncated := by
     obtain ⟨X, rfl⟩ := ComposableArrows.mk₀_surjective z
     have hq : (cofibrantAlgebraRelativeCategory A).weakEquivalences (η.app X) := by
       apply (cofibrantAlgebraRelativeCategory_weakEquivalences_iff A _).mpr
       exact framedLimitProbeComparison_quasiIso A ((cofibrantAlgebraDKInclusion A).obj X)
-    exact (isInvertibleEdge_congr
-      (e := (simplicialHomotopyVertexEdge P (nerveVertex X)).toTruncated)
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+      (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge P (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)).toTruncated)
       (f := ((nerve.edgeMk (η.app X)).map (cAlgLocalizationSource A)).toTruncated)
       (congrArg ((cAlgLocalizationSource A).app (Opposite.op ⦋1⦌))
-        (F1B.nerveNatTransHomotopy_component η X))).mpr
+        (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy_component η X))).mpr
       (SimplicialLocalization.weakNerveEdges_inverts_arrows
         (cofibrantAlgebraRelativeCategory A) _ (cAlgLocalizationSource_inverts A) _ hq)
-  apply F2.functorIsoOfEq (functorIsoOfPointwiseInvertibleHomotopy P hp)
+  apply _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy P hp)
   · rw [algebraCAlgSource, ← Category.assoc]
     congr 1
   · rw [show nerveMap (𝟭 D) = 𝟙 (nerve D) from nerveFunctor.map_id (Cat.of D),
@@ -80,22 +80,22 @@ def cAlgLocalizationSource_algebraIso :
 /-- 局所化源上で検証した自然同型を、既存の CAlg 上へ降ろす。 -/
 def cAlgLocalizationSource_descendIso {Y : SSet.{u + 1}} [Quasicategory Y]
     {F G : CAlg_R A ⟶ Y}
-    (e : FunctorIso (cAlgLocalizationSource A ≫ F) (cAlgLocalizationSource A ≫ G)) :
-    FunctorIso F G := by
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cAlgLocalizationSource A ≫ F) (cAlgLocalizationSource A ≫ G)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G := by
   let q := cAlgLocalizationSource A
-  let ff := ((cAlgLocalizationSource_isLocalization A).precomposition_isFullyFaithful Y)
+  let ff := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniversalConsequences.IsLocalization.precomposition_isFullyFaithful (cAlgLocalizationSource_isLocalization A) Y)
     |>.toHoFullyFaithful
   apply ff.preimageIso
-  change VertexIso (((pre q).app Y).app (Opposite.op ⦋0⦌) (functorVertex F))
-    (((pre q).app Y).app (Opposite.op ⦋0⦌) (functorVertex G))
-  rw [functorVertex_precomposition, functorVertex_precomposition]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (((pre q).app Y).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F))
+    (((pre q).app Y).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex G))
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.functorVertex_precomposition, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.functorVertex_precomposition]
   exact e
 
 /-- 全代数上で検証した比較は、cofibrant 入力を介して降ろせる。 -/
 def algebraCAlgSource_descendIso {Y : SSet.{u + 1}} [Quasicategory Y]
     {F G : CAlg_R A ⟶ Y}
-    (e : FunctorIso (algebraCAlgSource A ≫ F) (algebraCAlgSource A ≫ G)) :
-    FunctorIso F G := by
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (algebraCAlgSource A ≫ F) (algebraCAlgSource A ≫ G)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G := by
   apply cAlgLocalizationSource_descendIso A
   let c := cAlgLocalizationSource_algebraIso A
   exact (c.postcomp F).symm ≪≫

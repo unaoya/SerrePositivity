@@ -81,12 +81,12 @@ lemma dgSmallPerfectEnvelopeSmallInclusion_quasiEquivalence :
 
 /-- 同じ実 dg 包含から得る、元の全 Perf nerve との全写像空間の同値。 -/
 def dgSmallPerfectEnvelopeNerveEquivalence :
-    QCatEquivalence (dgNerve R (C)) (dgNerve R (PerfectDGModule R D)) :=
-  dgQuasiEquivalenceNerveEquivalence (I)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (C)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R D)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgQuasiEquivalenceNerveEquivalence (I)
     (dgSmallPerfectEnvelopeInclusion_quasiEquivalence R D J X)
 
 /-- 元の全 Perf の安定性を、指定延長像を保持する模型へ戻す。 -/
-lemma dgSmallPerfectEnvelopeNerve_isStable : IsStable (dgNerve R (C)) :=
+lemma dgSmallPerfectEnvelopeNerve_isStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (C)) :=
   (dgSmallPerfectEnvelopeNerveEquivalence R D J X).isStable_iff.mpr
     (perfectDGStableModel R D Set.univ).stable
 

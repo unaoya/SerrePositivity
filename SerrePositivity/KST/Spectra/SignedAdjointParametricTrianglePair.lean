@@ -22,7 +22,7 @@ open scoped Simplicial
 namespace SerrePositivity.KST.Spectra.SignedAdjointPaths
 variable {P A A' Y Z Z' W : PointedSimplicialSet.{u}} [KanComplex Z.right] [KanComplex W.right]
   (a : Z ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W)
-  (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+  (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
   (f : A ⟶ PointedObject.basedHom CirclePower.space.{u} Y)
   (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z)
 
@@ -38,7 +38,7 @@ def parametricPreTrianglePair (j : A' ⟶ PointedObject.basedHom P A) :
       Z))).right :=
   (trianglePair a ha f g).map
     (PointedMapping.ihomAction P A (target Z) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (PointedObject.basedHom P (target Z))).right
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (PointedObject.basedHom P (target Z))).right
 
 /-- 後合成した合成三角形の第一辺は、元の第一辺の同じ後合成。 -/
 lemma parametricPostTrianglePair_two (v : P ⟶ PointedObject.basedHom Z Z') :
@@ -82,9 +82,9 @@ lemma parametricPreTrianglePair_two (j : A' ⟶ PointedObject.basedHom P A) :
   change stdSimplex.δ (2 : Fin 3) ≫
       (((trianglePair a ha f g).forward ≫
         (PointedMapping.ihomAction P A (target Z)).right) ≫
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (PointedObject.basedHom P (target Z))).right) =
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (PointedObject.basedHom P (target Z))).right) =
     ((firstPath a ha f g).basedIhomMap P).path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (PointedObject.basedHom P (target Z))).right
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (PointedObject.basedHom P (target Z))).right
   dsimp only [trianglePair]
   rw [← Category.assoc, ← Category.assoc, forwardComposite_two,
     PointedMapping.VerticalPath.basedIhomMap_path]
@@ -96,9 +96,9 @@ lemma parametricPreTrianglePair_zero (j : A' ⟶ PointedObject.basedHom P A) :
   change stdSimplex.δ (0 : Fin 3) ≫
       (((trianglePair a ha f g).forward ≫
         (PointedMapping.ihomAction P A (target Z)).right) ≫
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (PointedObject.basedHom P (target Z))).right) =
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (PointedObject.basedHom P (target Z))).right) =
     ((secondPath f g).basedIhomMap P).path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (PointedObject.basedHom P (target Z))).right
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (PointedObject.basedHom P (target Z))).right
   dsimp only [trianglePair]
   rw [← Category.assoc, ← Category.assoc, forwardComposite_zero,
     PointedMapping.VerticalPath.basedIhomMap_path]
@@ -110,7 +110,7 @@ lemma parametricPreTrianglePair_inverse_one (j : A' ⟶ PointedObject.basedHom P
   change stdSimplex.δ (1 : Fin 3) ≫
       (((trianglePair a ha f g).inverse ≫
         (PointedMapping.ihomAction P A (target Z)).right) ≫
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (PointedObject.basedHom P (target Z))).right) = _
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (PointedObject.basedHom P (target Z))).right) = _
   dsimp only [trianglePair]
   rw [← Category.assoc, ← Category.assoc, reverseComposite_one, SSet.const_comp,
     PointedMapping.familyVertex_ihomAction, SSet.const_comp, PointedMapping.familyVertex_pre]
@@ -122,9 +122,9 @@ lemma parametricPreTrianglePair_inverse_zero (j : A' ⟶ PointedObject.basedHom 
   change stdSimplex.δ (0 : Fin 3) ≫
       (((trianglePair a ha f g).inverse ≫
         (PointedMapping.ihomAction P A (target Z)).right) ≫
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (PointedObject.basedHom P (target Z))).right) =
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (PointedObject.basedHom P (target Z))).right) =
     (((reverseComposite a ha f g).path).basedIhomMap P).path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (PointedObject.basedHom P (target Z))).right
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (PointedObject.basedHom P (target Z))).right
   dsimp only [trianglePair]
   rw [← Category.assoc, ← Category.assoc, reverseComposite_zero,
     PointedMapping.VerticalPath.basedIhomMap_path]

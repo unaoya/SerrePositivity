@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SkeletalCellGluing
-public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftFillers
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers
 
 /-!
 # 小さい比較空間の宇宙liftを値として大きいパラメータ上の指定族を相対延長する
@@ -42,23 +42,23 @@ set_option backward.isDefEq.respectTransparency false
 open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 
 namespace SerrePositivity.SimplicialModel.LargeParameterExtension
-variable {P : SSet.{v}} (hp : UniverseLift.BoundaryFillers P)
+variable {P : SSet.{v}} (hp : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers P)
   {A K : SSet.{max w v}} (j : A ⟶ K) [Mono j]
 
-def rule : SkeletalCellGluing.Rule (Q := UniverseLift.obj.{w} P) j := by
+def rule : SkeletalCellGluing.Rule (Q := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P) j := by
   intro n a c
-  let ex := UniverseLift.boundaryFillers hp n (SkeletalCellGluing.boundary j c ≫ a)
+  let ex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.boundaryFillers hp n (SkeletalCellGluing.boundary j c ≫ a)
   exact ⟨ex.choose, ex.choose_spec⟩
 
-def extend (a : A ⟶ UniverseLift.obj.{w} P) : K ⟶ UniverseLift.obj.{w} P :=
+def extend (a : A ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P) : K ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P :=
   SkeletalCellGluing.assemble j (rule hp j) a
 
 @[reassoc]
-lemma extend_initial (a : A ⟶ UniverseLift.obj.{w} P) : j ≫ extend hp j a = a :=
+lemma extend_initial (a : A ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P) : j ≫ extend hp j a = a :=
   SkeletalCellGluing.assemble_initial _ _ _
 
 @[reassoc]
-lemma extend_prescribed (a : A ⟶ UniverseLift.obj.{w} P) {L : SSet.{max w v}} (s : L ⟶ A) :
+lemma extend_prescribed (a : A ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P) {L : SSet.{max w v}} (s : L ⟶ A) :
     (s ≫ j) ≫ extend hp j a = s ≫ a := by rw [Category.assoc, extend_initial]
 
 end SerrePositivity.SimplicialModel.LargeParameterExtension

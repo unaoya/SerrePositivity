@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashProductMono
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SmashProductMono
 public import SerrePositivity.KST.Spectra.Limits.SpectrumHomLimitFamilies
 
 /-!
@@ -25,18 +25,18 @@ noncomputable section
 規約：点つき射の厳密な等式。
 使われ方：構造射の単射性を比較射と二構造射へ分解する。 -/
 lemma binaryProductSigma_factor {A B A' B' : PointedSimplicialSet.{u}}
-    (s : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A ⟶ A') (t : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B ⟶ B') :
+    (s : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension A ⟶ A') (t : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension B ⟶ B') :
     binaryProductSigma s t =
-      smashProductComparison PointedSimplicialSet.circle.{u} A B ≫ PointedObject.prodMap s t := by
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.smashProductComparison PointedSimplicialSet.circle.{u} A B ≫ PointedObject.prodMap s t := by
   apply PointedObject.prod_hom_ext <;>
-    simp [binaryProductSigma, smashProductComparison, PointedObject.prodMap, Category.assoc] <;> rfl
+    simp [binaryProductSigma, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.smashProductComparison, PointedObject.prodMap, Category.assoc] <;> rfl
 
 /-- 概要：単射な二つの構造射から作る積の懸垂構造射も単射。
 方針：smash と二項積の単射な比較と二つの単射の積を合成する。
 規約：二構造射の基礎単体写像のモノ射性だけを要求する。
 使われ方：L9 の OmegaSpectrum の sigma_mono 条件の検証。 -/
 instance binaryProductSigma_mono {A B A' B' : PointedSimplicialSet.{u}}
-    (s : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A ⟶ A') (t : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B ⟶ B') [Mono s.right] [Mono t.right] :
+    (s : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension A ⟶ A') (t : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension B ⟶ B') [Mono s.right] [Mono t.right] :
     Mono (binaryProductSigma s t).right := by
   rw [binaryProductSigma_factor, Under.comp_right, PointedObject.prodMap_right]
   have : Mono (s.right ⊗ₘ t.right) := ⟨by
@@ -125,7 +125,7 @@ local instance (X Y : OmegaSpectrum.{u}) : KanComplex (SimplicialCategory.sHom X
 規約：L9 の塔の極限による写像空間を使う。
 使われ方：HTT 4.2.4.1 の Sp の二項積の Hom 条件。 -/
 def spectrumBinaryProductCone_hom_isLimit (X Y Z : OmegaSpectrum.{u}) :
-    IsLimit (simplicialHomCone (spectrumBinaryProductCone X Y) Z) :=
+    IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone (spectrumBinaryProductCone X Y) Z) :=
   spectrumHomCone_isLimit_of_levelwise (spectrumBinaryProductCone X Y)
     (spectrumBinaryProductCone_level_isLimit X Y) Z
 
@@ -134,16 +134,16 @@ def spectrumBinaryProductCone_hom_isLimit (X Y Z : OmegaSpectrum.{u}) :
 規約：底は持ち上げた二対象の離散図式の nerve。
 使われ方：BF 1978 §2、HTT 4.2.4.1 の Sp の二項積。 -/
 def spectrumBinaryProductInfinityCone (X Y : OmegaSpectrum.{u}) :
-    JoinCone (strictCoherentDiagram (spectrumBinaryProductDiagram X Y)) :=
-  strictCoherentCone (spectrumBinaryProductCone X Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (spectrumBinaryProductDiagram X Y)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (spectrumBinaryProductCone X Y)
 
 /-- 概要：L9 の二つの Ω スペクトルの段ごとの積は Sp の二項積となる。
 方針：全ての豊穣 Hom の極限性と離散図式の比較定理から極限錐性を得る。
 規約：構造射の単射性と全基点の Ω 条件は構成時に検証済みで追加仮定はない。
 使われ方：HTT 4.2.4.1 の双対、HA §1.4.2、γ3c の Sp の二項積の公開結果。 -/
 lemma spectrumBinaryProductInfinityCone_isLimit (X Y : OmegaSpectrum.{u}) :
-    IsLimitCone (spectrumBinaryProductInfinityCone X Y) :=
-  strictCoherentCone_isLimit_of_discrete_homLimit (spectrumBinaryProductCone X Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (spectrumBinaryProductInfinityCone X Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_discrete_homLimit (spectrumBinaryProductCone X Y)
     (spectrumBinaryProductCone_hom_isLimit X Y)
 
 end

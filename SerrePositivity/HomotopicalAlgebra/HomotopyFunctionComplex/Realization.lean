@@ -32,7 +32,7 @@ abbrev unit (A : SimplexCategory ⥤ C) : A ⟶ uliftYoneda.{v,0,0} ⋙ functor 
 
 /-- Remove the internal Type-level lift in Mathlib's restricted Yoneda. -/
 def restrictedIso (A : SimplexCategory ⥤ C) :
-    Presheaf.restrictedULiftYoneda.{0} A ≅ cosimplicialHom A :=
+    Presheaf.restrictedULiftYoneda.{0} A ≅ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A :=
   NatIso.ofComponents (fun Y => NatIso.ofComponents (fun _ => Equiv.toIso Equiv.ulift) (by
     intro n m f
     ext h
@@ -42,7 +42,7 @@ def restrictedIso (A : SimplexCategory ⥤ C) :
       rfl)
 
 /-- The ordinary adjunction uses actual maps of the existing cosimplicial Hom. -/
-def adjunction (A : SimplexCategory ⥤ C) : functor A ⊣ cosimplicialHom A := by
+def adjunction (A : SimplexCategory ⥤ C) : functor A ⊣ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A := by
   let adj := Presheaf.uliftYonedaAdjunction.{0,0,v} (A := A) (functor A) (unit A)
   exact adj.ofNatIsoRight (restrictedIso A)
 

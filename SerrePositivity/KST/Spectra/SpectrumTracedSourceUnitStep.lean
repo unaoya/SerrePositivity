@@ -35,7 +35,7 @@ lemma tracedSourceUnitParameterTriangle_zero_stage (n : ℕ) :
   let p := KanSequence.signedLoopParameterHom
     (homOfParameterFamily X Y.toKanSequence A φ)
   have hs := PointedMapping.VerticalPath.basedPost_sequence_step_path p n H
-  have ht := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) A
+  have ht := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) A
     ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right) hs.symm
   change ((H.suspension.forgetProjection.basedPost
     ((KanSequence.signedLoopTail X.toKanSequence).sigma n)).basedPost

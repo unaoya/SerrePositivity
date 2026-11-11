@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientFlatKernel
-public import SerrePositivity.InfinityCategories.Derived.DGQuotientZeroingExtension
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ResolvedDGQuotientFlatKernel
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGQuotientZeroingExtension
 public import SerrePositivity.KST.LocalizingInvariants.DGKappaRelativeRoofTransport
 
 /-!
@@ -26,34 +26,34 @@ variable (R : Type u) [CommRing R] (D : Type (max (u + 1) v))
 
 /-- 同じ分解 cone 内の D-9 の実小核を、固定 dg 入力として保持する。 -/
 def dgKappaResolvedKernelKInput : PerfDGInput.{u, max (u + 1) v} R :=
-  perfDGInputOf R (resolvedDGQuotientFlatKernel R (DGKappaCone R D I)
+  perfDGInputOf R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientFlatKernel R (DGKappaCone R D I)
     (dgKappaConePerfectObjects R D I))
 
 /-- 核の包含は、D-9 の同じ実包含そのもの。 -/
 def dgKappaResolvedKernelInputMap :
     dgKappaResolvedKernelKInput R D I ⟶ dgKappaResolvedConeKInput R D I :=
-  ULift.up (resolvedDGQuotientFlatKernelInclusion R (DGKappaCone R D I)
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientFlatKernelInclusion R (DGKappaCone R D I)
     (dgKappaConePerfectObjects R D I))
 
 /-- D-9 の局所 Hom K-平坦性は、同じ包装された実核にも成り立つ。 -/
 theorem dgKappaResolvedKernel_homKFlat : localHomKFlat R (dgKappaResolvedKernelKInput R D I) :=
-  resolvedDGQuotientFlatKernel_homKFlat R (DGKappaCone R D I)
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientFlatKernel_homKFlat R (DGKappaCone R D I)
     (dgKappaConePerfectObjects R D I)
 
 /-- 同じ実核の全頂点は、元の分解 cone の商包含との合成で零化される。 -/
 theorem dgKappaResolvedKernel_quotient_kills
-    (z : (dgNerve R (dgKappaResolvedKernelKInput R D I)) _⦋0⦌) :
-    IsZeroVertex ((dgNerve.map ((dgKappaResolvedKernelInputMap R D I).down.comp
+    (z : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (dgKappaResolvedKernelKInput R D I)) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((dgKappaResolvedKernelInputMap R D I).down.comp
       (dgKappaResolvedSuspensionInputMap R D I).down)).app (Opposite.op ⦋0⦌) z) := by
-  let := resolvedDGQuotientFlatKernel_isStable R (DGKappaCone R D I)
+  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientFlatKernel_isStable R (DGKappaCone R D I)
     (dgKappaConePerfectObjects R D I)
-  let := dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R D I)
-  let := dgNerve_isStable_of_pretriangulated R
+  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R D I)
+  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R
     (DGCategoryCellResolution.Source R (DGKappaCone R D I))
   let := dgKappaSuspensionInfinity_isStable R D I
-  have h := (resolvedDGQuotientFlatKernel_isStableVerdierSequence R
+  have h := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientFlatKernel_isStableVerdierSequence R
     (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)).kills z
-  simpa only [dgNerve.map_comp] using! h
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp] using! h
 
 /-- 指定収縮は D 正本の零化判定から得る。新しい収縮・商 API は追加しない。 -/
 theorem dgKappaResolvedKernel_exists_contracted :
@@ -61,29 +61,29 @@ theorem dgKappaResolvedKernel_exists_contracted :
       (dgKappaSuspensionKInput R D I),
       C.toDGFunctor = (dgKappaResolvedKernelInputMap R D I).down.comp
         (dgKappaResolvedSuspensionInputMap R D I).down := by
-  apply dgFunctor_exists_contracted_of_zeroing
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctor_exists_contracted_of_zeroing
   intro b
-  have h := dgKappaResolvedKernel_quotient_kills R D I (DGNerve.Simplex.vertex b.val)
-  simpa only [dgFunctorNerve_vertex] using h
+  have h := dgKappaResolvedKernel_quotient_kills R D I (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex b.val)
+  simpa only [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex] using h
 
 /-- 固定 ν の Verdier 証拠と零角の Perf 零性に条件付きで、同じ核・商辺の実屋根を得る。 -/
 theorem exists_dgKappaResolvedRelativeRoof
-    (hV : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgKInputNuMap R (dgKappaResolvedKernelInputMap R D I))
+    (hV : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence (dgKInputNuMap R (dgKappaResolvedKernelInputMap R D I))
       (dgKInputNuMap R (dgKappaResolvedSuspensionInputMap R D I)))
-    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (dgKInputStableValue R
       (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I)))) :
     ∃ t : DGKappaSuspensionRelativeRoofInput R D I,
       t.kernel = dgKappaResolvedKernelKInput R D I ∧
-      squareBottomEdge ≫ t.diagram.square =
-        SSet.yonedaEquiv.symm (coherentNerveEdge (dgKappaResolvedKernelInputMap R D I)).edge := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ t.diagram.square =
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaResolvedKernelInputMap R D I)).edge := by
   obtain ⟨C, hC⟩ := dgKappaResolvedKernel_exists_contracted R D I
   exact exists_dgKappaRelativeRoof_of_fixedNull R D I
     (dgKappaResolvedKernelKInput R D I) (dgKappaResolvedKernelInputMap R D I) C hC hV hz
 
 variable
-  (hV : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgKInputNuMap R (dgKappaResolvedKernelInputMap R D I))
+  (hV : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence (dgKInputNuMap R (dgKappaResolvedKernelInputMap R D I))
     (dgKInputNuMap R (dgKappaResolvedSuspensionInputMap R D I)))
-  (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R
+  (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (dgKInputStableValue R
     (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I))))
 
 /-- 固定 ν の Verdier 証拠・零角の Perf 零性に条件付きで選ぶ、元の実核の相対屋根。 -/
@@ -97,14 +97,14 @@ theorem dgKappaResolvedRelativeRoof_kernel :
 
 /-- 条件付き屋根の包含は、同じ実核の元の包含の全一単体。 -/
 theorem dgKappaResolvedRelativeRoof_inclusion :
-    squareBottomEdge ≫ (dgKappaResolvedRelativeRoof R D I hV hz).diagram.square =
-      SSet.yonedaEquiv.symm (coherentNerveEdge (dgKappaResolvedKernelInputMap R D I)).edge :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ (dgKappaResolvedRelativeRoof R D I hV hz).diagram.square =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaResolvedKernelInputMap R D I)).edge :=
   (exists_dgKappaResolvedRelativeRoof R D I hV hz).choose_spec.2
 
 /-- 条件付き屋根の商辺は、元の平坦懸垂の同じ商包含の全一単体。 -/
 theorem dgKappaResolvedRelativeRoof_quotient :
-    squareRightEdge ≫ (dgKappaResolvedRelativeRoof R D I hV hz).diagram.square =
-      SSet.yonedaEquiv.symm (coherentNerveEdge (dgKappaResolvedSuspensionInputMap R D I)).edge :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (dgKappaResolvedRelativeRoof R D I hV hz).diagram.square =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaResolvedSuspensionInputMap R D I)).edge :=
   (dgKappaResolvedRelativeRoof R D I hV hz).quotient
 
 end SerrePositivity.KST.NonConnective

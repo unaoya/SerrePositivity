@@ -43,7 +43,7 @@ variable (C : Type u) [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
   (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
 
-abbrev input (p : Index C) (Z : C) := (cosimplicialHom p.final.resolution.obj).obj Z
+abbrev input (p : Index C) (Z : C) := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom p.final.resolution.obj).obj Z
 abbrev output (p : Index C) (Z : C) := KanLiftAction.target hcof hfib p.source.inner Z
 abbrev total (p : Index C) := p.pre.map.base ≫ p.center ≫ p.post.base
 abbrev chainParameter {n : ℕ} (c : ComposableArrows (Index C) n) :=
@@ -77,7 +77,7 @@ lemma action_face (side : Bool) (k : Fin 3) {n : ℕ} (c : ComposableArrows (Ind
 
 lemma action_target_naturality (side : Bool) {n : ℕ} (c : ComposableArrows (Index C) n)
     {Z Z' : C} (h : Z ⟶ Z') (t : chainParameter C c ⟶ input C (c.obj (Fin.last n)) Z) :
-    action C hcof hfib side c Z' (t ≫ (cosimplicialHom
+    action C hcof hfib side c Z' (t ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom
       (c.obj (Fin.last n)).final.resolution.obj).map h) =
     action C hcof hfib side c Z t ≫
       (KanLiftAction.targetFunctor hcof hfib (c.obj (Fin.last n)).source.inner).map h :=

@@ -42,7 +42,7 @@ def spanFunctor : C ⥤ (Shape.{w} ⥤ C) :=
   zeroSpanFunctor ⋙ (Functor.whiskeringLeft _ _ _).obj shapeEquivalence.functor
 
 variable [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)
 

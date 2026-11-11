@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.NativeRepresentationPoint
-public import SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PointedCosliceReconstruction
 
 /-! # 同じ coslice 恒等点の native 表現と、指定復元点の射との比較 -/
 
@@ -16,35 +16,35 @@ variable {B : SSet.{u}} [Quasicategory B] (b : B _⦋0⦌)
 
 /-- 元の coslice 恒等点を同じ native 表現の pointedMap で送った実 fiber 点。 -/
 def nativeCosliceIdentityPoint :
-    (vertexFiber pointedSpaceProjection
-      ((nativeLeftTransportRepresentation (sliceUnderProjection (yonedaEquiv.symm b))).diagram.app
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceProjection
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.nativeLeftTransportRepresentation (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection (yonedaEquiv.symm b))).diagram.app
         (Opposite.op ⦋0⦌) (ULift.up b))) _⦋0⦌ :=
-  (nativeTransportPointedFiberMap (sliceUnderProjection (yonedaEquiv.symm b)) b).app
-    (Opposite.op ⦋0⦌) (ULift.up (edgeToCosliceFiberVertex (SSet.Edge.id b)))
+  (nativeTransportPointedFiberMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection (yonedaEquiv.symm b)) b).app
+    (Opposite.op ⦋0⦌) (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edgeToCosliceFiberVertex (SSet.Edge.id b)))
 
 /-- 元の native 比較の恒等点像は、同じ pointedMap による指定点そのもの。 -/
 theorem nativeCosliceIdentityPoint_eq_comparison :
-    _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
-      (nativeLeftTransportRepresentation (sliceUnderProjection (yonedaEquiv.symm b))).diagram b
-      ((vertexFiberMap (sliceUnderProjection (yonedaEquiv.symm b))
-        (smallLeftUnstraighteningProjection
-          (nativeLeftTransportRepresentation (sliceUnderProjection (yonedaEquiv.symm b))).diagram)
-        (nativeLeftTransportComparison (sliceUnderProjection (yonedaEquiv.symm b)))
-        (nativeLeftTransportComparison_projection _) b).app (Opposite.op ⦋0⦌)
-          (edgeToCosliceFiberVertex (SSet.Edge.id b))) = nativeCosliceIdentityPoint b :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallUnstraighteningPointedImage
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.nativeLeftTransportRepresentation (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection (yonedaEquiv.symm b))).diagram b
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.vertexFiberMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection (yonedaEquiv.symm b))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallLeftUnstraighteningProjection
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.nativeLeftTransportRepresentation (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection (yonedaEquiv.symm b))).diagram)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.nativeLeftTransportComparison (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection (yonedaEquiv.symm b)))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.nativeLeftTransportComparison_projection _) b).app (Opposite.op ⦋0⦌)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edgeToCosliceFiberVertex (SSet.Edge.id b))) = nativeCosliceIdentityPoint b :=
   nativeLeftTransportComparison_pointedImage _ b _
 
 /-- 指定復元点の射は、元の native 恒等点と同じ分類成分の逆射で厳密に計算できる。 -/
 theorem pointedCosliceReconstructionPoint_native_pointHom :
-    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (nativeCosliceIdentityPoint b) ≫
-      functorHomEvaluate (leftStraighteningInfinityDiagram_representationIso
-        (sliceUnderProjection (yonedaEquiv.symm b))
-        (nativeLeftTransportRepresentation (sliceUnderProjection (yonedaEquiv.symm b)))).inv
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cosliceFiberPointHom (nativeCosliceIdentityPoint b) ≫
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_representationIso
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection (yonedaEquiv.symm b))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.nativeLeftTransportRepresentation (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection (yonedaEquiv.symm b)))).inv
           (ULift.up b) =
-      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
-        (leftStraighteningInfinityDiagram (sliceUnderProjection (yonedaEquiv.symm b))) b
-        (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedCosliceReconstructionPoint b)) := by
-  have he := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedCosliceReconstructionPoint_pointHom b
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallUnstraighteningPointedImage
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection (yonedaEquiv.symm b))) b
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pointedCosliceReconstructionPoint b)) := by
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pointedCosliceReconstructionPoint_pointHom b
   rw [nativeCosliceIdentityPoint_eq_comparison b] at he
   exact he
 

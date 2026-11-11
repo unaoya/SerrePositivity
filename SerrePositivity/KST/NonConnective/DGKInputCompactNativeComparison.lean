@@ -24,7 +24,7 @@ variable (R : Type u) [CommRing R] (A B : PerfDGInput.{u, v} R)
 規約：全 native Hom を一度に比較し、各 dg 射で同型を独立に選ばない。
 使われ方：K-7 d4 の元の固定 ν 作用と生成元作用の照合。 -/
 def dgKInputCompactNativeFamilyMap_generationIso :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (dgKInputCompactNativeFamilyMap R A B ≫
         (pre (dgKInputCompactGenerationEquivalence R A).hom).app _)
       (dgKInputCompactNativeLiftedFamilyMap R A B ≫
@@ -59,16 +59,16 @@ def dgKInputCompactNativeFamilyMap_generationIso :
 規約：比較自体も同じ単位から作り、点別の Yoneda 比較を選び直さない。
 使われ方：K-7 d4 の全 native Hom と元の全 Yoneda の照合。 -/
 def dgKInputCompactNativeFamilyMap_yonedaIso :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (dgKInputCompactNativeFamilyMap R A B ≫
         (pre (dgKInputCompactGenerationEquivalence R A).hom).app _ ≫
-        (ihom _).map (F2.Compact.kappaCompactInclusion.{max (u + 1) v, max (u + 1) v + 1}
+        (ihom _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactInclusion.{max (u + 1) v, max (u + 1) v + 1}
           Cardinal.aleph0 (dgKInputIndCompletion R B)))
       (dgKInputCompactNativeLiftedFamilyMap R A B ≫
-        (ihom _).map (F2.Ind.indYoneda.{max (u + 1) v}
+        (ihom _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda.{max (u + 1) v}
           Cardinal.aleph0 (dgKInputStableValue R B).obj)) := by
   have e := (dgKInputCompactNativeFamilyMap_generationIso R A B).postcomp
-    ((ihom _).map (F2.Compact.kappaCompactInclusion.{max (u + 1) v, max (u + 1) v + 1}
+    ((ihom _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactInclusion.{max (u + 1) v, max (u + 1) v + 1}
       Cardinal.aleph0 (dgKInputIndCompletion R B)))
   simpa only [Category.assoc, ← CategoryTheory.Functor.map_comp,
     dgKInputCompactGenerationEquivalence_inclusion] using! e
@@ -81,7 +81,7 @@ def dgKInputCompactNativeFamilyMap_generationParameterIso
     {T : SSet.{max (u + 1) v + 1}}
     (a : T ⟶ (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
       (presentedPerfectDGNativeParameter R A B)) :=
-  FunctorIso.precomp (dgKInputCompactNativeFamilyMap_generationIso R A B) a
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (dgKInputCompactNativeFamilyMap_generationIso R A B) a
 
 /-- 概要：同じ任意族の作用比較は、再制限しても元の再制限族の比較そのもの。
 方針：正本の関手同型の前合成合成則を使う。
@@ -91,29 +91,29 @@ theorem dgKInputCompactNativeFamilyMap_generationParameterIso_precomp
     {S T : SSet.{max (u + 1) v + 1}}
     (a : T ⟶ (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
       (presentedPerfectDGNativeParameter R A B)) (r : S ⟶ T) :
-    FunctorIso.precomp (dgKInputCompactNativeFamilyMap_generationParameterIso R A B a) r =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (dgKInputCompactNativeFamilyMap_generationParameterIso R A B a) r =
       dgKInputCompactNativeFamilyMap_generationParameterIso R A B (r ≫ a) := by
   unfold dgKInputCompactNativeFamilyMap_generationParameterIso
-  exact F2.functorIso_precomp_precomp _ _ _
+  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_precomp _ _ _
 
 /-- 概要：同じ compact Yoneda を順射とする任意の生成逆射でも、元の全 native 作用と比較できる。
 方針：Ind 正本の逆射選択比較を全前合成関手へ写し、同じ元の全族を前合成する。
 規約：順射は元の compact Yoneda に厳密固定し、逆射の存在を追加入力にしない。
 使われ方：K-7 d4 の生成逆射選択比較を、全 native 入力作用へ拡張する。 -/
 def dgKInputCompactNativeFamilyMap_choiceIso
-    (e : QCatEquivalence ((SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence ((SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
       (dgKInputStableValue R A).obj)
-      (F2.Compact.kappaCompactObjects Cardinal.aleph0 (dgKInputIndCompletion R A)))
-    (he : e.hom = F2.Compact.compactIndYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj) :
-    FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactObjects Cardinal.aleph0 (dgKInputIndCompletion R A)))
+    (he : e.hom = _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.compactIndYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (dgKInputCompactNativeLiftedFamilyMap R A B ≫ (pre e.inv).app _ ≫
         (ihom _).map (dgKInputCompactGenerationEquivalence R B).hom)
       (dgKInputCompactNativeFamilyMap R A B) := by
   letI : Fact (Cardinal.aleph0.{max (u + 1) v}).IsRegular :=
     Cardinal.fact_isRegular_aleph0
-  have hc := F2.Ind.compactGenerationInverse_choiceIso Cardinal.aleph0
+  have hc := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactGenerationInverse_choiceIso Cardinal.aleph0
     (dgKInputStableValue_isIdempotentComplete R A) e he
-  exact (FunctorIso.precomp (hc.map_pre _) (dgKInputCompactNativeLiftedFamilyMap R A B)).postcomp
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (hc.map_pre _) (dgKInputCompactNativeLiftedFamilyMap R A B)).postcomp
     ((ihom _).map (dgKInputCompactGenerationEquivalence R B).hom)
 
 end SerrePositivity.KST.NonConnective

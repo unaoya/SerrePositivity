@@ -20,44 +20,44 @@ namespace SerrePositivity.KST.LocalizingInvariants
 variable {A B K X : SSet.{u}} {F G : A ⟶ X} {F' G' : B ⟶ X}
 
 lemma ofHomotopy_component_edge (H : SSet.Homotopy F G) (x : A _⦋0⦌) :
-    intervalFunctorVertexEdge ((ZeroArrowFamily.ofHomotopy H).app (Opposite.op ⦋0⦌) x) =
-      (simplicialHomotopyVertexEdge H x).edge := by
-  rw [ZeroArrowFamily.ofHomotopy, intervalFunctorVertexEdge_curry]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge ((ZeroArrowFamily.ofHomotopy H).app (Opposite.op ⦋0⦌) x) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H x).edge := by
+  rw [ZeroArrowFamily.ofHomotopy, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge_curry]
   change H.h.app (Opposite.op ⦋1⦌)
-    (PinchedHom.constant x 1, SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u}))) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 1, SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u}))) =
       H.h.app (Opposite.op ⦋1⦌)
-        ((Truncated.Edge.id (X := (truncation 2).obj A) x).edge, homotopyIntervalEdge.edge)
-  have hi : SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) = homotopyIntervalEdge.edge := by
+        ((Truncated.Edge.id (X := (truncation 2).obj A) x).edge, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge)
+  have hi : SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge := by
     apply SSet.stdSimplex.ext
     intro i
     fin_cases i <;> rfl
-  rw [pinchedConstant_one, hi]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one, hi]
 
 def homotopyPathFamily (H : SSet.Homotopy F G)
-    (hi : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge H x).toTruncated) :
-    A ⟶ equivalencePath X :=
-  fullSubcomplexLift IsEquivalencePathVertex (ZeroArrowFamily.ofHomotopy H) (by
+    (hi : ∀ x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H x).toTruncated) :
+    A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePath X :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsEquivalencePathVertex (ZeroArrowFamily.ofHomotopy H) (by
     intro x
-    apply (isInvertibleEdge_congr
-      (f := (simplicialHomotopyVertexEdge H x).toTruncated)
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+      (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H x).toTruncated)
       (ofHomotopy_component_edge H x)).mpr
     exact hi x)
 
 lemma homotopyPathFamily_inclusion (H : SSet.Homotopy F G)
-    (hi : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge H x).toTruncated) :
-    homotopyPathFamily H hi ≫ equivalencePathι X = ZeroArrowFamily.ofHomotopy H :=
-  fullSubcomplexLift_ι _ _ _
+    (hi : ∀ x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H x).toTruncated) :
+    homotopyPathFamily H hi ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathι X = ZeroArrowFamily.ofHomotopy H :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 lemma homotopyPathFamily_source (H : SSet.Homotopy F G)
-    (hi : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge H x).toTruncated) :
-    homotopyPathFamily H hi ≫ equivalencePathEndpoint X 0 = F := by
-  rw [equivalencePathEndpoint, ← Category.assoc, homotopyPathFamily_inclusion]
+    (hi : ∀ x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H x).toTruncated) :
+    homotopyPathFamily H hi ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint X 0 = F := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint, ← Category.assoc, homotopyPathFamily_inclusion]
   exact ZeroArrowFamily.ofHomotopy_source H
 
 lemma homotopyPathFamily_target (H : SSet.Homotopy F G)
-    (hi : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge H x).toTruncated) :
-    homotopyPathFamily H hi ≫ equivalencePathEndpoint X 1 = G := by
-  rw [equivalencePathEndpoint, ← Category.assoc, homotopyPathFamily_inclusion]
+    (hi : ∀ x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H x).toTruncated) :
+    homotopyPathFamily H hi ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint X 1 = G := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint, ← Category.assoc, homotopyPathFamily_inclusion]
   exact ZeroArrowFamily.ofHomotopy_target H
 
 lemma ofHomotopy_restriction_eq (H : SSet.Homotopy F G) (J : SSet.Homotopy F' G')

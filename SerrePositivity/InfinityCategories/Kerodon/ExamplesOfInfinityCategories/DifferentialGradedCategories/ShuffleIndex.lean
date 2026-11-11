@@ -9,6 +9,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 方針：各頂点以前の水平ステップ数と垂直ステップ数を数える。
 規約：KST Construction A.5 の標準 shuffle。符号は垂直ステップが水平ステップに先行する対の数。
 使われ方：正規化全テンソルから次数ごとの単体的テンソルへの実成分写像。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

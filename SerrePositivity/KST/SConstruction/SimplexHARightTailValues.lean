@@ -15,9 +15,9 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の両端点・自由次元と語が一致すれば、元の生の HA 値も同じ元。 -/
-lemma simplexHABeadWordRawValue_heq {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHABeadWordRawValue_heq {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     {a b a' b' : Fin (n + 1)} {d d' : ℕ} (ha : a = a') (hb : b = b') (hd : d = d')
-    (w : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d) (w' : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a' b' d') (hw : HEq w w') :
+    (w : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b d) (w' : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a' b' d') (hw : HEq w w') :
     HEq (simplexHABeadWordRawValue A s w) (simplexHABeadWordRawValue A s w') := by
   cases ha
   cases hb
@@ -26,9 +26,9 @@ lemma simplexHABeadWordRawValue_heq {n : ℕ} (s : DGNerve.SimplexData A D n)
   rfl
 
 /-- 元の両端点・自由次元と語が一致すれば、元の独立な HA 境界値も同じ元。 -/
-lemma simplexHABeadWordBoundaryValue_heq {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHABeadWordBoundaryValue_heq {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     {a b a' b' : Fin (n + 1)} {d d' : ℕ} (ha : a = a') (hb : b = b') (hd : d = d')
-    (w : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d) (w' : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a' b' d') (hw : HEq w w') :
+    (w : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b d) (w' : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a' b' d') (hw : HEq w w') :
     HEq (simplexHABeadWordBoundaryValue A s w)
       (simplexHABeadWordBoundaryValue A s w') := by
   cases ha
@@ -38,7 +38,7 @@ lemma simplexHABeadWordBoundaryValue_heq {n : ℕ} (s : DGNerve.SimplexData A D 
   rfl
 
 /-- 全辺付加した元の生成元語の生の値は、元の右側集合を保つ語の同じ値。 -/
-lemma simplexHARightTailPrefix_rawValue {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHARightTailPrefix_rawValue {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (v : Fin (m + 1) ↪o Fin (n + 1))
     (T : Finset (Fin (n + 1))) (hT : T.Nonempty) (hb : ∀ r ∈ T, v (Fin.last m) < r) :
     HEq (simplexHABeadWordRawValue A s
@@ -52,7 +52,7 @@ lemma simplexHARightTailPrefix_rawValue {n : ℕ} (s : DGNerve.SimplexData A D n
     (simplexHARightTailPrefix_word m i v T hT hb)
 
 /-- 全辺付加した元の生成元語の境界値は、元の右側集合を保つ語の同じ境界値。 -/
-lemma simplexHARightTailPrefix_boundaryValue {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHARightTailPrefix_boundaryValue {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (v : Fin (m + 1) ↪o Fin (n + 1))
     (T : Finset (Fin (n + 1))) (hT : T.Nonempty) (hb : ∀ r ∈ T, v (Fin.last m) < r) :
     HEq (simplexHABeadWordBoundaryValue A s

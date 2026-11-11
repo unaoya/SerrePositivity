@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CoherentNerve
-public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Edges
 
 /-!
 概要：元の BF 射を Sp のホモトピー圏の射として扱う界面。
@@ -21,20 +21,20 @@ local instance spectrumClassSimplicialCategory : SimplicialCategory OmegaSpectru
   OmegaSpectrum.simplicialCategory
 
 abbrev obj (X : OmegaSpectrum.{u}) : hoFunctor.obj Sp.{u} :=
-  SSet.HomotopyCategory.mk (coherentNerveVertex X)
+  SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X)
 
 /-- 元の BF 射の、Sp の実際のホモトピー圏における類。 -/
 def hom {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) : obj X ⟶ obj Y :=
-  SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge f).toTruncated
+  SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).toTruncated
 
 lemma hom_id (X : OmegaSpectrum.{u}) : hom (𝟙 X) = 𝟙 (obj X) := by
-  change SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge (𝟙 X)).toTruncated = _
-  rw [coherentNerveEdge_id, SSet.Edge.toTruncated_id]
+  change SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 X)).toTruncated = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_id, SSet.Edge.toTruncated_id]
   exact SSet.Truncated.HomotopyCategory.homMk_id _
 
 lemma hom_comp {X Y Z : OmegaSpectrum.{u}} (f : X ⟶ Y) (g : Y ⟶ Z) :
     hom (f ≫ g) = hom f ≫ hom g :=
   (SSet.Truncated.HomotopyCategory.homMk_comp_homMk
-    (coherentNerveCompStruct f g).toTruncated).symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct f g).toTruncated).symm
 
 end SerrePositivity.KST.LocalizingInvariants.SpectrumHo

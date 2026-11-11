@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoChainTransport
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoTransportAlgebra
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanIntervalConeStrictFaces
 
 /-!

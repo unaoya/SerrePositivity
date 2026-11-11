@@ -22,36 +22,36 @@ open CategoryTheory SerrePositivity.InfinityCategories
 attribute [local instance] Classical.propDecidable
 
 variable {Q : Type u} [Quiver.{v} Q] {T : WideSubquiver (Quiver.Symmetrify Q)}
-  [Quiver.Arborescence T] {S : Finset Q} (D : LeafDeletion T S)
+  [Quiver.Arborescence T] {S : Finset Q} (D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeafDeletion T S)
 
 lemma LeafDeletion.collapseRelative_eq_comp :
-    letI := FiniteQuiver.quiver S
-    letI := FiniteQuiver.quiver (S.erase D.leaf)
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (S.erase D.leaf)
     D.collapseRelative = D.retractionRelative.comp D.inclusionRelative := rfl
 
 lemma LeafDeletion.collapse_colimitMap_factor :
-    letI := FiniteQuiver.quiver S
-    letI := FiniteQuiver.quiver (S.erase D.leaf)
-    ∀ x y : Paths (FiniteQuiver.Vertex S), Relative.colimitMap D.collapseRelative x y =
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (S.erase D.leaf)
+    ∀ x y : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S), Relative.colimitMap D.collapseRelative x y =
       Relative.colimitMap D.retractionRelative x y ≫
         Relative.colimitMap D.inclusionRelative
           (D.retractionRelative.functor.obj x) (D.retractionRelative.functor.obj y) := by
-  let := FiniteQuiver.quiver S
-  let := FiniteQuiver.quiver (S.erase D.leaf)
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (S.erase D.leaf)
   intro x y
   exact Relative.colimitMap_comp D.retractionRelative D.inclusionRelative x y
 
 lemma LeafDeletion.contractible_of_remaining
-    (hrem : letI := FiniteQuiver.quiver (S.erase D.leaf)
-      ∀ x y : Paths (FiniteQuiver.Vertex (S.erase D.leaf)),
-        IsWeaklyContractible (colimitGraph
-          (⊤ : MorphismProperty (Paths (FiniteQuiver.Vertex (S.erase D.leaf)))) x y)) :
-    letI := FiniteQuiver.quiver S
-    ∀ x y : Paths (FiniteQuiver.Vertex S),
-      IsWeaklyContractible (colimitGraph
-        (⊤ : MorphismProperty (Paths (FiniteQuiver.Vertex S))) x y) := by
-  let := FiniteQuiver.quiver S
-  let := FiniteQuiver.quiver (S.erase D.leaf)
+    (hrem : letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (S.erase D.leaf)
+      ∀ x y : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex (S.erase D.leaf)),
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
+          (⊤ : MorphismProperty (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex (S.erase D.leaf)))) x y)) :
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+    ∀ x y : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
+        (⊤ : MorphismProperty (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S))) x y) := by
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (S.erase D.leaf)
   intro x y
   apply contractible_of_weak_factor (Relative.colimitMap D.retractionRelative x y)
     (Relative.colimitMap D.inclusionRelative

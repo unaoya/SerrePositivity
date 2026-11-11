@@ -36,7 +36,7 @@ variable {R S : Type u} [CommRing R] [CommRing S]
 使われ方：∞ 側の有限振幅への接続の古典的な入力。 -/
 @[expose] def HasCochainCompleteTorAmplitude (f : R →+* S) {r : ℕ} (x : Fin r → R) (c : ℕ) : Prop :=
   ∀ (L K : CochainComplex (ModuleCat.{u} R) ℤ) (q : L ⟶ K), QuasiIso q →
-    complexSemifree R L → ∀ (m : ℤ),
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree R L → ∀ (m : ℤ),
       (∀ i : ℤ, i < m → IsZero (K.homology i)) →
         ∀ i : ℤ, i < m - (c : ℤ) →
           IsZero ((koszulComplexOn (f ∘ x) (baseChange f L)).homology i)
@@ -50,7 +50,7 @@ theorem exists_cochainCompleteTor_model (f : R →+* S) {r : ℕ} (x : Fin r →
     (K : CochainComplex (ModuleCat.{u} R) ℤ) (m : ℤ)
     (hK : ∀ i : ℤ, i < m → IsZero (K.homology i)) :
     ∃ (L : CochainComplex (ModuleCat.{u} R) ℤ) (q : L ⟶ K), QuasiIso q ∧
-      complexSemifree R L ∧ complexKFlat R L ∧ complexKFlat S (baseChange f L) ∧
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree R L ∧ complexKFlat R L ∧ complexKFlat S (baseChange f L) ∧
         ∀ i : ℤ, i < m - (c : ℤ) →
           IsZero ((koszulComplexOn (f ∘ x) (baseChange f L)).homology i) := by
   obtain ⟨L, q, hL, hq, _, hFlat, hBase⟩ := exists_unbounded_baseChange_model f K

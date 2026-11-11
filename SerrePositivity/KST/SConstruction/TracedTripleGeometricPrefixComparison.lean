@@ -52,7 +52,7 @@ lemma monicKTracedTripleGeometricPrefixComparison_relative :
 
 /-- 元の全消去四面体比較の残面を、同じ全出力円柱比較の上面へ厳密に保持する。 -/
 lemma monicKTracedTripleGeometricPrefixComparison_upper :
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ▷ (Δ[1] : SSet.{u})) ≫
         (monicKTracedTripleGeometricPrefixComparison F f g h n v).h =
       (triangleLeftCancellationTriangleComparison
         (monicKTracedTripleGeometricStagePasting F f g h n).transported

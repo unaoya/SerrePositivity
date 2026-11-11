@@ -28,7 +28,7 @@ variable (X Y A : ℕ → PointedSimplicialSet.{u}) (i : ∀ n, A n ⟶ X (n + 1
 
 variable {B : SSet.{u}}
   (f : ∀ n, B ⟶ (PointedObject.basedHom (X n) (Y n)).right)
-  (hf : ∀ n, f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i n) (Y (n + 1)) = f n ≫ step n)
+  (hf : ∀ n, f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i n) (Y (n + 1)) = f n ≫ step n)
 
 /-- 概要：各段の整合する写像を切断写像空間へ持ち上げる。
 方針：最終段への評価を記録しながら引き戻しへ帰納的に持ち上げる。
@@ -57,7 +57,7 @@ theorem familyStage_restriction (n : ℕ) :
 規約：Kan 性は不要。
 使われ方：BF 1978 §2、HTT A.3.3。スペクトルの写像空間の普遍性。 -/
 def familyLift : B ⟶ total X Y A i step :=
-  _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift _ _ (fun n ↦ (familyStage X Y A i step f hf n).val)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.lift _ _ (fun n ↦ (familyStage X Y A i step f hf n).val)
     (familyStage_restriction X Y A i step f hf)
 
 /-- 概要：全切断の極限への持ち上げを評価すると指定の写像に戻る。
@@ -68,7 +68,7 @@ def familyLift : B ⟶ total X Y A i step :=
 theorem familyLift_evaluation (n : ℕ) :
     familyLift X Y A i step f hf ≫ totalEvaluation X Y A i step n = f n := by
   dsimp only [familyLift, totalEvaluation]
-  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.lift_projection]
   exact (familyStage X Y A i step f hf n).property
 
 /-- 概要：切断写像空間への射は全ての下位段への評価で決まる。
@@ -78,20 +78,20 @@ theorem familyLift_evaluation (n : ℕ) :
 theorem projection_eq_of_evaluations {g h : B ⟶ total X Y A i step}
     (he : ∀ n, g ≫ totalEvaluation X Y A i step n = h ≫ totalEvaluation X Y A i step n)
     (n : ℕ) :
-    g ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection (space X Y A i step) (restriction X Y A i step) n =
-      h ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection (space X Y A i step) (restriction X Y A i step) n := by
+    g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection (space X Y A i step) (restriction X Y A i step) n =
+      h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection (space X Y A i step) (restriction X Y A i step) n := by
   induction n with
   | zero =>
     have hz := he 0
-    change g ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection _ _ 0 ≫ 𝟙 _ =
-      h ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection _ _ 0 ≫ 𝟙 _ at hz
+    change g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection _ _ 0 ≫ 𝟙 _ =
+      h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection _ _ 0 ≫ 𝟙 _ at hz
     simpa only [Category.comp_id] using hz
   | succ n ih =>
     apply pullback.hom_ext
     · exact he (n + 1)
-    · change (g ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection _ _ (n + 1)) ≫ restriction X Y A i step n =
-        (h ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection _ _ (n + 1)) ≫ restriction X Y A i step n
-      rw [Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp]
+    · change (g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection _ _ (n + 1)) ≫ restriction X Y A i step n =
+        (h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection _ _ (n + 1)) ≫ restriction X Y A i step n
+      rw [Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection_comp]
       exact ih
 
 /-- 概要：整合写像空間への射は各段への評価で決まる。
@@ -101,7 +101,7 @@ theorem projection_eq_of_evaluations {g h : B ⟶ total X Y A i step}
 theorem total_hom_ext {g h : B ⟶ total X Y A i step}
     (he : ∀ n, g ≫ totalEvaluation X Y A i step n = h ≫ totalEvaluation X Y A i step n) :
     g = h := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.hom_ext
   exact projection_eq_of_evaluations X Y A i step he
 
 end

@@ -31,7 +31,7 @@ def tracedActualRightDifferenceStageSquare (n : ℕ) :
         ((KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).sigma n)).path)
     where
   h := (tracedActualRightDifferenceSquare X Y φ n).h ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right
   h₀ := by
     rw [← Category.assoc, (tracedActualRightDifferenceSquare X Y φ n).h₀]
@@ -46,7 +46,7 @@ def tracedActualRightDifferenceStageSquare (n : ℕ) :
 /-- 同じ段射正方形の左辺は、元の厳密実評価の構造頂点で全区間が一定。 -/
 lemma tracedActualRightDifferenceStageSquare_start (n : ℕ) :
     SquareAdjustment.leftSide ≫ (tracedActualRightDifferenceStageSquare X Y φ n).h =
-      SSet.const ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      SSet.const ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right.app _
           (PointedMapping.familyVertex
             ((φ ≫ (signedEvaluationAt X Y (tracedOriginalLoopModelMap X) ≫

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.MonicAnchoredFiniteApproximation
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.CylinderBoundaryMono
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.MonicAnchoredFiniteApproximation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CylinderBoundaryMono
 
 /-!
 概要：指定された有限ホモトピーを、単射な両端境界を持つ有限模型で近似する。

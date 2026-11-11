@@ -49,7 +49,7 @@ variable {C : Type u} [Category.{v} C]
 
 include hφ in
 lemma point {B : C} (fX : X ⟶ B) (fY : Y ⟶ B) (hf : k ≫ fY = fX) :
-    LiftSpace.point A' a' fY ≫ (cosimplicialHomMap φ).app B = LiftSpace.point A a fX := by
+    LiftSpace.point A' a' fY ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap φ).app B = LiftSpace.point A a fX := by
   ext n x
   change φ.app n.unop ≫ (a'.app n.unop ≫ fY) = a.app n.unop ≫ fX
   have h := congr_app hφ n.unop
@@ -58,15 +58,15 @@ lemma point {B : C} (fX : X ⟶ B) (fY : Y ⟶ B) (hf : k ≫ fY = fX) :
 
 def map {E B : C} (p : E ⟶ B) (fX : X ⟶ B) (fY : Y ⟶ B) (hf : k ≫ fY = fX) :
     LiftSpace.obj A' a' p fY ⟶ LiftSpace.obj A a p fX :=
-  pullback.lift (LiftSpace.inclusion A' a' p fY ≫ (cosimplicialHomMap φ).app E)
+  pullback.lift (LiftSpace.inclusion A' a' p fY ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap φ).app E)
     (LiftSpace.projection A' a' p fY) (by
-      rw [Category.assoc, ← (cosimplicialHomMap φ).naturality p, ← Category.assoc,
+      rw [Category.assoc, ← (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap φ).naturality p, ← Category.assoc,
         LiftSpace.over, Category.assoc, point A A' a a' k φ hφ fX fY hf])
 
 @[reassoc (attr := simp)]
 lemma map_inclusion {E B : C} (p : E ⟶ B) (fX : X ⟶ B) (fY : Y ⟶ B) (hf : k ≫ fY = fX) :
     map A A' a a' k φ hφ p fX fY hf ≫ LiftSpace.inclusion A a p fX =
-      LiftSpace.inclusion A' a' p fY ≫ (cosimplicialHomMap φ).app E :=
+      LiftSpace.inclusion A' a' p fY ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap φ).app E :=
   pullback.lift_fst _ _ _
 
 @[reassoc (attr := simp)]

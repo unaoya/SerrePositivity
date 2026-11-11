@@ -20,20 +20,20 @@ open Spectra
 /-- 逆随伴の写像空間の作用は、suspension と元の余単位への後合成に分解する。 -/
 lemma suspensionLoopPointedMappingIso_inv_factor (X Y : PointedSimplicialSet.{u}) :
     (suspensionLoopPointedMappingIso X Y).inv =
-      suspensionHom X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) ≫
-        (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)).map ((ihom.ev PointedSimplicialSet.circle.{u}).app Y) := by
+      suspensionHom X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) ≫
+        (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)).map ((ihom.ev PointedSimplicialSet.circle.{u}).app Y) := by
   change ihomUncurry PointedSimplicialSet.circle.{u} X Y =
-    _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map PointedSimplicialSet.circle.{u} X
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorMapping.map PointedSimplicialSet.circle.{u} X
         ((ihom PointedSimplicialSet.circle.{u}).obj Y) ≫
       (ihom (PointedSimplicialSet.circle.{u} ⊗ X)).map
         ((ihom.ev PointedSimplicialSet.circle.{u}).app Y)
   apply uncurry_injective
-  rw [uncurry_ihomUncurry, uncurry_natural_right, _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map, uncurry_curry]
+  rw [uncurry_ihomUncurry, uncurry_natural_right, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorMapping.map, uncurry_curry]
   exact (Category.assoc _ _ _).symm
 
 /-- Loop の写像空間の作用を逆随伴で戻すと、元の余単位による前合成になる。 -/
 lemma pointedLoopHom_uncurry (Y Z : PointedSimplicialSet.{u}) :
-    pointedLoopHom Y Z ≫ (suspensionLoopPointedMappingIso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) Z).inv =
+    pointedLoopHom Y Z ≫ (suspensionLoopPointedMappingIso (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) Z).inv =
       (MonoidalClosed.pre ((ihom.ev PointedSimplicialSet.circle.{u}).app Y)).app Z := by
   change curry (MonoidalClosed.comp PointedSimplicialSet.circle.{u} Y Z) ≫
       ihomUncurry PointedSimplicialSet.circle.{u}
@@ -57,22 +57,22 @@ lemma pointedLoopHom_uncurry (Y Z : PointedSimplicialSet.{u}) :
 /-- 逆随伴は、標的の射を写像空間全体で動かす後合成と厳密に整合する。 -/
 lemma suspensionLoopPointedMappingIso_inv_enriched_post
     (X Y Z : PointedSimplicialSet.{u}) :
-    (𝟙 (PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)) ⊗ₘ pointedLoopHom Y Z) ≫
-        MonoidalClosed.comp X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z) ≫
+    (𝟙 (PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)) ⊗ₘ pointedLoopHom Y Z) ≫
+        MonoidalClosed.comp X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z) ≫
           (suspensionLoopPointedMappingIso X Z).inv =
       ((suspensionLoopPointedMappingIso X Y).inv ⊗ₘ
-        𝟙 (PointedObject.basedHom Y Z)) ≫ MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) Y Z := by
+        𝟙 (PointedObject.basedHom Y Z)) ≫ MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) Y Z := by
   let : EnrichedOrdinaryCategory PointedSimplicialSet.{u} PointedSimplicialSet.{u} :=
     enrichedOrdinaryCategorySelf PointedSimplicialSet.{u}
-  have hm := _root_.SerrePositivity.InfinityCategories.Kan.enriched_comp_middle PointedSimplicialSet.{u} (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)
+  have hm := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_comp_middle PointedSimplicialSet.{u} (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)
     ((ihom.ev PointedSimplicialSet.circle.{u}).app Y) Z
   simp only [enrichedOrdinaryCategorySelf_eHomWhiskerLeft,
     enrichedOrdinaryCategorySelf_eHomWhiskerRight, enrichedCategorySelf_comp] at hm
-  change ((ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)).map ((ihom.ev PointedSimplicialSet.circle.{u}).app Y) ▷
-      PointedObject.basedHom Y Z) ≫ MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) Y Z =
-    PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)) ◁
+  change ((ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)).map ((ihom.ev PointedSimplicialSet.circle.{u}).app Y) ▷
+      PointedObject.basedHom Y Z) ≫ MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) Y Z =
+    PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)) ◁
         (MonoidalClosed.pre ((ihom.ev PointedSimplicialSet.circle.{u}).app Y)).app Z ≫
-      MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)) Z at hm
+      MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)) Z at hm
   rw [suspensionLoopPointedMappingIso_inv_enriched_pre,
     ← Category.assoc, tensorHom_comp_tensorHom]
   simp only [Category.id_comp]
@@ -84,9 +84,9 @@ lemma suspensionLoopPointedMappingIso_inv_enriched_post
 /-- 順随伴も標的射の豊穣後合成を保つ。 -/
 lemma suspensionLoopPointedMappingIso_enriched_post
     (X Y Z : PointedSimplicialSet.{u}) :
-    MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) Y Z ≫ (suspensionLoopPointedMappingIso X Z).hom =
+    MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) Y Z ≫ (suspensionLoopPointedMappingIso X Z).hom =
       ((suspensionLoopPointedMappingIso X Y).hom ⊗ₘ pointedLoopHom Y Z) ≫
-        MonoidalClosed.comp X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z) := by
+        MonoidalClosed.comp X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z) := by
   apply (cancel_epi ((suspensionLoopPointedMappingIso X Y).inv ⊗ₘ
     𝟙 (PointedObject.basedHom Y Z))).mp
   rw [← Category.assoc, ← suspensionLoopPointedMappingIso_inv_enriched_post]
@@ -104,34 +104,34 @@ private lemma pointedSmashForget_composite {A A' B B' C : PointedSimplicialSet.{
 /-- 基点固定写像空間の全単体の後合成は、逆随伴による移送と厳密に可換。 -/
 lemma suspensionLoopMappingIso_inv_enriched_post
     (X Y Z : PointedSimplicialSet.{u}) :
-    (𝟙 (PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right ⊗ₘ (pointedLoopHom Y Z).right) ≫
-        pointedMappingComposition X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z) ≫
+    (𝟙 (PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right ⊗ₘ (pointedLoopHom Y Z).right) ≫
+        pointedMappingComposition X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z) ≫
           (suspensionLoopMappingIso X Z).inv =
       ((suspensionLoopMappingIso X Y).inv ⊗ₘ
         𝟙 (PointedObject.basedHom Y Z).right) ≫
-          pointedMappingComposition (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) Y Z := by
-  change ((show PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) ⟶
-      PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) from 𝟙 _).right ⊗ₘ
+          pointedMappingComposition (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) Y Z := by
+  change ((show PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) ⟶
+      PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) from 𝟙 _).right ⊗ₘ
       (pointedLoopHom Y Z).right) ≫ PointedSimplicialSet.productToSmash _ _ ≫
-        (MonoidalClosed.comp X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z)).right ≫
+        (MonoidalClosed.comp X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z)).right ≫
           (suspensionLoopPointedMappingIso X Z).inv.right =
     ((suspensionLoopPointedMappingIso X Y).inv.right ⊗ₘ
       (show PointedObject.basedHom Y Z ⟶ PointedObject.basedHom Y Z from 𝟙 _).right) ≫
         PointedSimplicialSet.productToSmash _ _ ≫
-          (MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) Y Z).right
+          (MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) Y Z).right
   rw [← Under.comp_right, pointedSmashForget_composite, pointedSmashForget_composite,
     suspensionLoopPointedMappingIso_inv_enriched_post]
 
 /-- 独立な二つの単体パラメータを持つ後合成の族を、同時に suspension 側へ移す。 -/
 lemma suspensionLoopMappingFamilies_inv_post {P Q : SSet.{u}}
     {X Y Z : PointedSimplicialSet.{u}}
-    (a : P ⟶ (PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right)
+    (a : P ⟶ (PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right)
     (b : Q ⟶ (PointedObject.basedHom Y Z).right) :
     (a ⊗ₘ (b ≫ (pointedLoopHom Y Z).right)) ≫
-        pointedMappingComposition X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z) ≫
+        pointedMappingComposition X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z) ≫
           (suspensionLoopMappingIso X Z).inv =
       ((a ≫ (suspensionLoopMappingIso X Y).inv) ⊗ₘ b) ≫
-        pointedMappingComposition (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) Y Z := by
+        pointedMappingComposition (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) Y Z := by
   have h := congrArg (fun k => (a ⊗ₘ b) ≫ k)
     (suspensionLoopMappingIso_inv_enriched_post X Y Z)
   simpa only [← Category.assoc, tensorHom_comp_tensorHom, Category.comp_id] using h

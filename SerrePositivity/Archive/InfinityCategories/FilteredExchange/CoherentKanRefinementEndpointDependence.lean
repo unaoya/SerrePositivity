@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentKanRefinementEndpointComparisons
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoComponentPre
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentPre
 
 /-!
 概要：左右区間の指定両端比較は、精密化の元の両端だけで決まる。

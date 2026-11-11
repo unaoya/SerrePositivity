@@ -9,6 +9,8 @@ public import Mathlib.Logic.Equiv.Fin.Basic
 方針：指定位置以外の有限順序集合と Fin n の標準同値を使う。
 規約：KST Construction A.5 の標準 shuffle。水平削除では所属、垂直削除では非所属を要求する。
 使われ方：境界項と各因子の通常境界の有限な添字の対応。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

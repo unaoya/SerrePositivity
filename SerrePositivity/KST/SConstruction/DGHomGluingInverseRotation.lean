@@ -20,7 +20,7 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D]
   (E : Type z) [DGCategory R E] [Small.{u} E]
   (p : DGFunctor R C E) (q : DGFunctor R D E)
-local notation "L" => DGGluingObject R C D (dgHomGluingBimodule R C D E p q)
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q)
 local notation "T" => DGHomGluingLoopConeBase R C D E p q
 
 /-- 概要：元実 cone の逆 shift から元左対象の二重 shift への同じ加群閉射。
@@ -95,7 +95,7 @@ lemma dgHomGluingInverseRotationMap_hom_naturality (X Y : L) :
 方針：構成済み二成分と全 Hom 自然な元閉比較を厳密 Hom gluing 関手へ束ねる。
 規約：元全対象・全 Hom を保持。使われ方：LT 実長方形の中央比較の構成部品。 -/
 def dgHomGluingInverseRotationFunctor : DGFunctor R (L)
-    (DGGluingObject R (T) (T)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R (T) (T)
       (dgHomGluingBimodule R (T) (T) (T) (DGFunctor.id (T)) (DGFunctor.id (T)))) :=
   dgIdentityHomGluingFunctor R (T)
     (dgHomGluingLoopConeSmall R C D E p q) (dgHomGluingLoopConeShiftedTarget R C D E p q)

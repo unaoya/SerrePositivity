@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：射列の最後の面に欠けた頂点を選び、その余面の分裂で全ての面を戻す。
 規約：Moss arXiv:1506.04887v2 Proposition 2.19 の細分の像の同定への補助。
 使われ方：実際の horn の細分から面の nerve への比較の全射性。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

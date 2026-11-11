@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.Fibrations.EdgeRepresentativeLift
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.EdgeRepresentativeLift
 public import SerrePositivity.KST.SConstruction.SpecifiedTwoTrianglePrism
 
 /-!
@@ -27,19 +27,19 @@ lemma exists_specifiedTriangleDiagonalRepresentative {X : SSet.{u}} [Quasicatego
     (T : SSet.Homotopy (stdSimplex.δ (1 : Fin 3) ≫ f)
       (stdSimplex.δ (1 : Fin 3) ≫ g))
     (hc₀ : SSet.Truncated.HomotopyCategory.homMk
-        ((functorEdgeOfSimplicialHomotopy H₀).map
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H₀).map
           ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app X))) =
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy T)) :
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy T)) :
     ∃ H : SSet.Homotopy f g,
       (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u})) ≫ H.h = T.h ∧
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
-        SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H₀) := by
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) =
+        SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H₀) := by
   let p := (pre (stdSimplex.δ (1 : Fin 3))).app X
-  let e := functorEdgeOfSimplicialHomotopy H₀
-  let t := functorEdgeOfSimplicialHomotopy T
-  obtain ⟨e', he', hc⟩ := F1B.exists_kanEdgeRepresentative_lift p e t hc₀
-  let H := simplicialHomotopyOfFunctorEdge e'
-  have hH : functorEdgeOfSimplicialHomotopy H = e' := by
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H₀
+  let t := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy T
+  obtain ⟨e', he', hc⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.exists_kanEdgeRepresentative_lift p e t hc₀
+  let H := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge e'
+  have hH : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H = e' := by
     apply SSet.Truncated.Edge.ext
     change SSet.yonedaEquiv (curry (uncurry (SSet.yonedaEquiv.symm e'.edge))) = e'.edge
     rw [curry_uncurry]

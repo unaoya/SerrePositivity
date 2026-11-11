@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.CompletionImageClosed
-public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
-public import SerrePositivity.InfinityCategories.Stable.EquivalenceStability
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulEquivalence
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.EquivalenceStability
 public import SerrePositivity.KST.SConstruction.StableModelEquivalences
 
 /-!
@@ -25,10 +25,10 @@ open scoped Simplicial
 使われ方：元の始域と本質像の圏同値の順射。 -/
 def completionSourceToImage (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     (((multiSEndofunctor r).obj ι).obj X).carrier ⟶
       closedSubcategory (completionImageClosedPredicate r ι f hf) :=
-  fullSubcomplexLift _ (((multiSEndofunctor r).obj ι).map f).val
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (((multiSEndofunctor r).obj ι).map f).val
     (fun x => ⟨x, ⟨Iso.refl _⟩⟩)
 
 /-- 概要：本質像への制限は包含後に元の反復 S 射を厳密に回収する。
@@ -37,7 +37,7 @@ def completionSourceToImage (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
 使われ方：fiber 比較の左射を元の K 射へ接続する。 -/
 lemma completionSourceToImage_inclusion (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionSourceToImage r ι f hf ≫
       (closedStableInclusion (completionImageClosedPredicate r ι f hf)).val =
       (((multiSEndofunctor r).obj ι).map f).val := rfl
@@ -48,9 +48,9 @@ lemma completionSourceToImage_inclusion (r : ℕ) (ι : Fin r → SimplexCategor
 使われ方：本質像比較の局所条件。 -/
 lemma completionSourceToImage_isFullyFaithful (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
-    IsFullyFaithful (completionSourceToImage r ι f hf) := by
-  apply (isFullyFaithful_fullSubcomplexOnVertices_ι _ _).cancel_right
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (completionSourceToImage r ι f hf) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι _ _).cancel_right
   exact (multiSEndofunctor_map_isIdempotentCompletion r ι f hf).2.1
 
 /-- 概要：閉じた本質像の全頂点を元の始域から同型で回収できる。
@@ -59,12 +59,12 @@ lemma completionSourceToImage_isFullyFaithful (r : ℕ)
 使われ方：本質像比較の大域条件。 -/
 lemma completionSourceToImage_isEssentiallySurjective (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
-    IsEssentiallySurjective (completionSourceToImage r ι f hf) := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective (completionSourceToImage r ι f hf) := by
   intro v
   obtain ⟨x, ⟨e⟩⟩ := closedSubcategory_vertex (completionImageClosedPredicate r ι f hf) v
   let I := (closedStableInclusion (completionImageClosedPredicate r ι f hf)).val
-  have hI : IsFullyFaithful I := isFullyFaithful_fullSubcomplexOnVertices_ι _ _
+  have hI : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful I := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι _ _
   exact ⟨x, ⟨hI.preimageVertexIso e⟩⟩
 
 /-- 概要：元の始域と閉じた本質像の全高次圏は同値。
@@ -73,10 +73,10 @@ lemma completionSourceToImage_isEssentiallySurjective (r : ℕ)
 使われ方：相対 fiber 供給の左項を元の始域へ戻す。 -/
 def completionSourceImageEquivalence (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
-    QCatEquivalence (((multiSEndofunctor r).obj ι).obj X).carrier
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (((multiSEndofunctor r).obj ι).obj X).carrier
       (closedSubcategory (completionImageClosedPredicate r ι f hf)) :=
-  qCatEquivalenceOfFullyFaithfulEssentiallySurjective (completionSourceToImage r ι f hf)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.qCatEquivalenceOfFullyFaithfulEssentiallySurjective (completionSourceToImage r ι f hf)
     (completionSourceToImage_isFullyFaithful r ι f hf)
     (completionSourceToImage_isEssentiallySurjective r ι f hf)
 
@@ -86,13 +86,13 @@ def completionSourceImageEquivalence (r : ℕ) (ι : Fin r → SimplexCategory�
 使われ方：K-B2-S1 の左項と元の始域の間の K 比較。 -/
 def completionSourceImageStableMap (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     ((multiSEndofunctor r).obj ι).obj X ⟶
       closedStableModel (completionImageClosedPredicate r ι f hf) := by
   let e := completionSourceImageEquivalence r ι f hf
-  have hE : IsExactFunctor e.hom := isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
-  exact ⟨e.hom, @IsExactFunctor.preservesZero _ _ e.hom hE,
-    fun t ht => @IsExactFunctor.preservesCofiber _ _ e.hom hE t ht⟩
+  have hE : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.hom := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
+  exact ⟨e.hom, @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero _ _ e.hom hE,
+    fun t ht => @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesCofiber _ _ e.hom hE t ht⟩
 
 /-- 概要：元の始域と閉じた本質像は、元の制限射を順射とする安定模型の同値。
 方針：逆射の完全性を圏同値から得て、元の二つの関手同型を保持する。
@@ -100,15 +100,15 @@ def completionSourceImageStableMap (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
 使われ方：既存の S• 同値不変性への代入。 -/
 def completionSourceImageStableEquivalence (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     StableModelEquivalence (((multiSEndofunctor r).obj ι).obj X)
       (closedStableModel (completionImageClosedPredicate r ι f hf)) := by
   let e := completionSourceImageEquivalence r ι f hf
-  have hE : IsExactFunctor e.inv :=
-    isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
+  have hE : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.inv :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
   exact ⟨completionSourceImageStableMap r ι f hf,
-    ⟨e.inv, @IsExactFunctor.preservesZero _ _ e.inv hE,
-      fun t ht => @IsExactFunctor.preservesCofiber _ _ e.inv hE t ht⟩,
+    ⟨e.inv, @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero _ _ e.inv hE,
+      fun t ht => @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesCofiber _ _ e.inv hE t ht⟩,
     e.homInvIso, e.invHomIso⟩
 
 /-- 概要：本質像への制限と閉じた部分圏の包含の合成は元の反復 S 射。
@@ -117,7 +117,7 @@ def completionSourceImageStableEquivalence (r : ℕ) (ι : Fin r → SimplexCate
 使われ方：実現後に元の指定 K 射へ戻す照合。 -/
 lemma completionSourceImageStableMap_inclusion (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionSourceImageStableMap r ι f hf ≫
       closedStableInclusion (completionImageClosedPredicate r ι f hf) =
       ((multiSEndofunctor r).obj ι).map f := by

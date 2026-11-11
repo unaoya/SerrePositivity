@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGAssemblyTransformation
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGSuspensionComparison
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryKanFunctor
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformationReassociate
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationReassociate
 
 /-! # 元の suspension 組み立ての同じ Ex∞ 像
 概要：元の組み立てを同じ Ex∞ で写し、比較と合成できる厳密豊穣自然変換へ束ねる。
@@ -50,10 +50,10 @@ def presentedPerfectDGAssemblyExInfinityTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGKanAssemblyMiddleFunctor A r)
       (presentedPerfectDGKanAssemblyTargetFunctor A r) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationReassociateSource
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationReassociateSource
     (presentedPerfectDGOneDirectionPointedEnrichedFunctor A r)
     pointedSSetSuspensionEnrichedFunctor exInfinityPointedEnrichedFunctor _
-    (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose _ _ exInfinityPointedEnrichedFunctor
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationPostcompose _ _ exInfinityPointedEnrichedFunctor
       (presentedPerfectDGAssemblyTransformation A r))
 
 /-- 厳密自然変換の成分は、元の同じ組み立ての Ex∞ 像そのもの。 -/

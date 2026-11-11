@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.ContravariantThomasonSimplex
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedMixedLabel
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel
 
 /-!
 # 右ラベル次数を固定した元の重み付き左比較
@@ -23,11 +23,11 @@ open CategoryTheory Opposite
 variable {W : Type u} [Category.{u} W] (F : Wᵒᵖ ⥤ Cat.{u, u}) (S : W ⥤ Type u)
 
 abbrev space : SSet.{u} :=
-  TwoSidedBar.space (F ⋙ nerveFunctor) (S ⋙ Functor.const SimplexCategoryᵒᵖ)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.space (F ⋙ nerveFunctor) (S ⋙ Functor.const SimplexCategoryᵒᵖ)
 
 def simplex {n : ℕ} (e : ComposableArrows (ContravariantThomason.labels F S n) n) :
-    ComposableArrows (TwoSidedMixedLabel.mixed F S) n where
-  obj i := (TwoSidedGrothendieck.contravariantProjection F ⋙ S).elementsMk
+    ComposableArrows (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.mixed F S) n where
+  obj i := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F ⋙ S).elementsMk
     ((ContravariantThomason.simplex F S e).obj i) (e.obj i).right
   map h := Functor.Elements.homMk ((ContravariantThomason.simplex F S e).map h) (e.map h).right
   map_id i := Functor.Elements.hom_ext ((ContravariantThomason.simplex F S e).map_id i)
@@ -36,22 +36,22 @@ def simplex {n : ℕ} (e : ComposableArrows (ContravariantThomason.labels F S n)
 lemma simplex_operator {n m : ℕ} (e : ComposableArrows (ContravariantThomason.labels F S n) n)
     (θ : SimplexCategory.mk m ⟶ SimplexCategory.mk n) :
     simplex F S ((SimplexCategory.toCat.map θ).toFunctor ⋙ e ⋙
-        TwoSidedElements.map ((F ⋙ nerveFunctor).flip.map θ.op) (𝟙 S)) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.map ((F ⋙ nerveFunctor).flip.map θ.op) (𝟙 S)) =
       (SimplexCategory.toCat.map θ).toFunctor ⋙ simplex F S e := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro i j h
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
   rfl
 
-def map : space F S ⟶ nerve (TwoSidedMixedLabel.mixed F S) where
+def map : space F S ⟶ nerve (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.mixed F S) where
   app _ := ↾fun e => simplex F S e
   naturality {n m} θ := by ext e; exact simplex_operator F S e θ.unop
 
 lemma simplex_labels {T : W ⥤ Type u} (β : S ⟶ T) {n : ℕ}
     (e : ComposableArrows (ContravariantThomason.labels F S n) n) :
     simplex F S e ⋙
-      (Functor.whiskerLeft (TwoSidedGrothendieck.contravariantProjection F) β).mapElements =
-      simplex F T (e ⋙ TwoSidedElements.map (𝟙 _) β) := by
+      (Functor.whiskerLeft (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F) β).mapElements =
+      simplex F T (e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.map (𝟙 _) β) := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro i j h
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
@@ -59,8 +59,8 @@ lemma simplex_labels {T : W ⥤ Type u} (β : S ⟶ T) {n : ℕ}
 
 lemma map_labels {T : W ⥤ Type u} (β : S ⟶ T) :
     map F S ≫ nerveMap
-      (Functor.whiskerLeft (TwoSidedGrothendieck.contravariantProjection F) β).mapElements =
-        TwoSidedBar.map (𝟙 (F ⋙ nerveFunctor))
+      (Functor.whiskerLeft (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F) β).mapElements =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.map (𝟙 (F ⋙ nerveFunctor))
           (Functor.whiskerRight β (Functor.const SimplexCategoryᵒᵖ)) ≫ map F T := by
   ext n e
   exact simplex_labels F S β e

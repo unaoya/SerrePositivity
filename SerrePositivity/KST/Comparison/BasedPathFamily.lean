@@ -31,7 +31,7 @@ open scoped Simplicial
 theorem basedPathFamily_basepoint {X : SSet.{u}} (Y : PointedSimplicialSet.{u})
     (f : X ⊗ (Δ[1] : SSet.{u}) ⟶ Y.right)
     (h₀ : SSet.ι₀ ≫ f = SSet.const (PointedSimplicialSet.basepoint Y)) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.hom ▷ X ≫ (β_ (Δ[1] : SSet.{u}) X).hom ≫ f =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval.hom ▷ X ≫ (β_ (Δ[1] : SSet.{u}) X).hom ≫ f =
       toUnit ((𝟙_ SSet.{u}) ⊗ X) ≫ Y.hom := by
   apply NatTrans.ext
   funext d
@@ -50,7 +50,7 @@ def basedPathFamilyMap {X : SSet.{u}} (Y : PointedSimplicialSet.{u})
     (f : X ⊗ (Δ[1] : SSet.{u}) ⟶ Y.right)
     (h₀ : SSet.ι₀ ≫ f = SSet.const (PointedSimplicialSet.basepoint Y)) :
     X ⟶ (Spectra.basedPathSpace Y).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y
     ((β_ (Δ[1] : SSet.{u}) X).hom ≫ f) (basedPathFamily_basepoint Y f h₀)
 
 /--
@@ -62,8 +62,8 @@ def basedPathFamilyMap {X : SSet.{u}} (Y : PointedSimplicialSet.{u})
 @[reassoc] theorem basedPathFamilyMap_ι {X : SSet.{u}} (Y : PointedSimplicialSet.{u})
     (f : X ⊗ (Δ[1] : SSet.{u}) ⟶ Y.right)
     (h₀ : SSet.ι₀ ≫ f = SSet.const (PointedSimplicialSet.basepoint Y)) :
-    basedPathFamilyMap Y f h₀ ≫ PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y =
+    basedPathFamilyMap Y f h₀ ≫ PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y =
       curry ((β_ (Δ[1] : SSet.{u}) X).hom ≫ f) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι ..
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι ..
 
 end SerrePositivity.KST.Comparison

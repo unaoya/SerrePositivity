@@ -17,21 +17,21 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-    (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
+    (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)
-  (hfull : L ≫ evaluateFunctorAt
-    (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+  (hfull : L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+    (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
       verdierLowerReconstructionCompositeFamily d Δ[1])
 
 section CompositionData
 variable
   (H : SSet.Homotopy
     ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0))
-    (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))
+    (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))
       (verdierNativeCompositePoint d 1)))
-  (T : FunctorCompositionTriangle (verdierReadoutUpperComparison d)
+  (T : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle (verdierReadoutUpperComparison d)
     (verdierLowerNativeReadoutHomotopy d L hL) H)
   (hT : T.diagram ≫ (pre verdierReadoutPathBoundary.{u}).app _ =
     curry (verdierReadoutBoundaryDiagram d L hL hfull))
@@ -54,13 +54,13 @@ theorem verdierReadoutComposition_boundary :
 使われ方：直接端を固定し動く第二短辺を保持する実長 Hom 入力。 -/
 theorem verdierReadoutComposition_longBoundary :
     (verdierReadoutPathBoundary.{u} ▷ (Δ[1] : SSet.{u + 1})) ≫ H.h =
-      intervalBoundaryDiagram
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram
         (SSet.yonedaEquiv.symm
-          (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
             (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}))).edge)
         (SSet.yonedaEquiv.symm
-          (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
-            (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u}))).edge) :=
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
+            (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u}))).edge) :=
   (verdierReadoutComposition_boundary d L hL hfull H T hT).trans
     (verdierReadoutBoundaryDiagram_long d L hL hfull)
 
@@ -72,27 +72,27 @@ theorem verdierReadoutComposition_direct :
     lift (SSet.const (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u})))
       (𝟙 (Δ[1] : SSet.{u + 1})) ≫ H.h =
       SSet.yonedaEquiv.symm
-        (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
           (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}))).edge := by
-  have h := congrArg (fun f => intervalBoundaryEndpoint 0 (Δ[1] : SSet.{u + 1}) ≫ f)
+  have h := congrArg (fun f => _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint 0 (Δ[1] : SSet.{u + 1}) ≫ f)
     (verdierReadoutComposition_longBoundary d L hL hfull H T hT)
   simpa only [← Category.assoc, verdierReadoutPathBoundary_zero,
-    intervalBoundaryDiagram_zero] using h
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_zero] using h
 
 /-- 概要：同じ合成の全 path 端は元の全 S• 比較の実合成端成分そのもの。
 方針：全境界を一端で評価し、同じ全合成 path を回収する。
 規約：動く合成端の非退化一単体を含む厳密等式。
 使われ方：動く上側第二短辺と同じ全長 Hom 合成端を照合する。 -/
 theorem verdierReadoutComposition_full :
-    lift (SSet.const (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})))
+    lift (SSet.const (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})))
       (𝟙 (Δ[1] : SSet.{u + 1})) ≫ H.h =
       SSet.yonedaEquiv.symm
-        (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
-          (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u}))).edge := by
-  have h := congrArg (fun f => intervalBoundaryEndpoint 1 (Δ[1] : SSet.{u + 1}) ≫ f)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
+          (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u}))).edge := by
+  have h := congrArg (fun f => _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint 1 (Δ[1] : SSet.{u + 1}) ≫ f)
     (verdierReadoutComposition_longBoundary d L hL hfull H T hT)
   simpa only [← Category.assoc, verdierReadoutPathBoundary_one,
-    intervalBoundaryDiagram_one] using h
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_one] using h
 end CompositionData
 
 end SerrePositivity.KST.Fibration

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SliceShapePushout
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConeMappingRestriction
-public import SerrePositivity.InfinityCategories.HomotopyLimits.VertexFiberPullbackSquare
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.VertexFiberPullbackSquare
 
 /-!
 概要：形状の pushout 上の固定頂点の錐空間を、元の二部分の錐空間の引き戻しへ表示する。

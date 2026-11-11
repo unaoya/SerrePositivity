@@ -59,12 +59,12 @@ theorem vertexEquiv_eq (X Y : PointedSimplicialSet.{u}) :
 規約：任意の点つき射 i。
 使われ方：BF 1978 §2、HTT A.3.3。スペクトルの合成の境界整合性。 -/
 theorem whiskerRight_eq {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
-    (Z : PointedSimplicialSet.{u}) : eHomWhiskerRight SSet i Z = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z := by
+    (Z : PointedSimplicialSet.{u}) : eHomWhiskerRight SSet i Z = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Z := by
   have h := TransportOrdinaryEnrichment.whiskerRight_map PointedSimplicialSet.forget.{u}
     PointedSimplicialSet.{u} PointedSimplicialSet.forgetUnitHomEquiv.{u}
     PointedSimplicialSet.forgetUnitHomEquiv_formula.{u} i Z
   rw [MonoidalClosed.enrichedOrdinaryCategorySelf_eHomWhiskerRight] at h
-  exact h.trans (congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre i Z)).symm
+  exact h.trans (congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre i Z)).symm
 
 /-- 概要：単体的豊穣の標的の作用は点つき内部 Hom の後合成。
 方針：移送した豊穣の自然性と閉構造の後合成の式を使う。

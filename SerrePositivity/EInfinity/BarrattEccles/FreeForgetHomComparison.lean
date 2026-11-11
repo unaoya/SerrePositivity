@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeForgetHomFrames
-public import SerrePositivity.InfinityCategories.ModelBridge.ResolutionHomSourceRestriction
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ResolutionHomSourceRestriction
 
 /-!
 # 実自由忘却随伴の全二変数の Hom 比較射
@@ -21,7 +21,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.HomotopyFunctionComplex
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 variable (A : Type u) [CommRing A]
 
 def freeHomFromLeft : (freeProbeFunctor A).op ⋙ sourceFrameHom A ⟶ freeHomMiddle A := by
@@ -38,9 +38,9 @@ def freeHomFromRight : complexSourceFrameHom A ⋙
   let qC := cosimplicialResolutionFamily (carrierProbeFactorization A)
   let Q := ComplexLimits.framedLimitProbeFunctor A
   let ε := ComplexLimits.framedLimitProbeComparisonNatTrans A
-  let e := adjunctionFrameHomBifunctorIso (operad A).freeAlgebraAdjunction
+  let e := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.adjunctionFrameHomBifunctorIso (operad A).freeAlgebraAdjunction
     (Q ⋙ qC.obj) (𝟭 (operad A).Algebra)
-  exact resolutionHomSourceRestriction qC Q ε (Operad.Algebra.forget (operad A)) ≫
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionHomSourceRestriction qC Q ε (Operad.Algebra.forget (operad A)) ≫
     e.inv ≫ FrameOverFunctor.homRight (mappingCofibrantFactorization A)
       (cosimplicialResolutionFamily (mappingCofibrantFactorization A))
       (freeProbeFunctor A) (freeHomImageFrame A) (freeHomImageAugmentation A)

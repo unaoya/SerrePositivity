@@ -20,7 +20,7 @@ open scoped Simplicial
 方針：定数図式を逆射とし、内部 Hom の自然性と一点の一意性で逆律を示す。
 規約：標的の quasicategory 性は不要。使われ方：任意の頂点評価の前合成への分解。 -/
 def pointFunctorEvaluationIso (C : SSet.{u}) : (ihom (Δ[0] : SSet.{u})).obj C ≅ C where
-  hom := evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 1))
+  hom := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 1))
   inv := curry (snd (Δ[0] : SSet.{u}) C)
   hom_inv_id := by
     apply SSet.hom_ext
@@ -32,21 +32,21 @@ def pointFunctorEvaluationIso (C : SSet.{u}) : (ihom (Δ[0] : SSet.{u})).obj C �
     apply ConcreteCategory.hom_ext
     intro x
     have hn := ConcreteCategory.congr_hom (F.naturality α (𝟙 d))
-      (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) d.unop.len)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) d.unop.len)
     have hx : (Δ[0] : SSet.{u}).map α
-        (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) d.unop.len) = x :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) d.unop.len) = x :=
       by
         apply stdSimplex.ext
         intro r
         apply Fin.ext
         omega
     change C.map α (F.app d (𝟙 d)
-      (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) d.unop.len)) = F.app e α x
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) d.unop.len)) = F.app e α x
     change F.app e ((𝟙 d) ≫ α)
         ((Δ[0] : SSet.{u}).map α
-          (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) d.unop.len)) =
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) d.unop.len)) =
       C.map α (F.app d (𝟙 d)
-        (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) d.unop.len)) at hn
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) d.unop.len)) at hn
     rw [Category.id_comp, hx] at hn
     exact hn.symm
   inv_hom_id := by
@@ -62,10 +62,10 @@ def pointFunctorEvaluationIso (C : SSet.{u}) : (ihom (Δ[0] : SSet.{u})).obj C �
 規約：標的の quasicategory 性は不要。使われ方：評価の inner fibration 性。 -/
 lemma evaluateFunctorAt_factor {K C : SSet.{u}} (k : K _⦋0⦌) :
     (pre (SSet.yonedaEquiv.symm k)).app C ≫ (pointFunctorEvaluationIso C).hom =
-      evaluateFunctorAt k := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k := by
   change (pre (SSet.yonedaEquiv.symm k)).app C ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) = _
-  rw [stable_pre_evaluateFunctorAt]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt]
   have hk : (SSet.yonedaEquiv.symm k).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) = k := by
     have h : stdSimplex.obj₀Equiv.symm (0 : Fin 1) =
@@ -78,7 +78,7 @@ lemma evaluateFunctorAt_factor {K C : SSet.{u}} (k : K _⦋0⦌) :
 方針：頂点の包含は単射であり、その前合成と一点評価の同型を合成する。
 規約：添字に quasicategory 性は不要。使われ方：全同値図式の評価の相対充填。 -/
 instance evaluateFunctorAt_innerFibration {K C : SSet.{u}} [Quasicategory C] (k : K _⦋0⦌) :
-    InnerFibration (evaluateFunctorAt (Y := C) k) := by
+    InnerFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := C) k) := by
   let i : (Δ[0] : SSet.{u}) ⟶ K := SSet.yonedaEquiv.symm k
   let : Mono i := stdSimplex.isTerminalObj₀.mono_from i
   constructor
@@ -93,8 +93,8 @@ instance equivalenceDiagramEvaluation_innerFibration (K C : SSet.{u}) [Quasicate
     (k : K _⦋0⦌) : InnerFibration (equivalenceDiagramEvaluation K C k) := by
   constructor
   exact innerFibrations.comp_mem _ _
-    (mem_innerFibrations (fullSubcomplexOnVertices _ IsEquivalenceDiagramVertex).ι)
-    (mem_innerFibrations (evaluateFunctorAt (Y := C) k))
+    (mem_innerFibrations (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsEquivalenceDiagramVertex).ι)
+    (mem_innerFibrations (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := C) k))
 
 /-- 概要：D(0,w) の唯一の頂点での評価は元の単体集合との同型。
 方針：定数図式を逆とし、一点からの内部 Hom の同型の逆律を包含後で使う。

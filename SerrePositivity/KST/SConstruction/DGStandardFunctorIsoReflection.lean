@@ -13,15 +13,15 @@ universe u v
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory
 open SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded
-open DoldKanComparison
+
 variable {A : Type u} [CommRing A] {D E : Type v} [DGCategory A D] [DGCategory A E]
 
 /-- 同じ標準 DK 同型は、元の二つの native dg nerve 射の関手同型を与える。 -/
 def dgStandardFunctorIso_to_native {F G : DGFunctor A D E}
-    (h : FunctorIso (dgStandardCoherentMap F) (dgStandardCoherentMap G)) :
-    FunctorIso (dgNerve.map F) (dgNerve.map G) := by
-  have he := h.postcomp (coherentComparison (R := A) (D := E))
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgStandardCoherentMap F) (dgStandardCoherentMap G)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map F) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map G) := by
+  have he := h.postcomp (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.coherentComparison (R := A) (D := E))
   rw [dgCoherentComparison_naturality F, dgCoherentComparison_naturality G] at he
-  exact functorIsoReflectPreEquivalence (coherentComparisonEquivalence (R := A) (D := D)) he
+  exact functorIsoReflectPreEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.coherentComparisonEquivalence (R := A) (D := D)) he
 
 end SerrePositivity.KST.SConstruction

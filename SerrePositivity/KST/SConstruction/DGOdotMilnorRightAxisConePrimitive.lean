@@ -18,7 +18,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "B" => DGOdotGluing R d
 local notation "P" => DGCategoryCellResolution.Source R (B)
 local notation "Q" => DGQuotient.QuotientObject (P)
-  (resolvedDGNullObjects R (B)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (B)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))))
 local notation "F" => dgOdotMilnorRightAxisQuotientSource R d
 local notation "G" => dgOdotMilnorRightAxisQuotientTarget R d

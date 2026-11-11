@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：余面の分裂を細分し、有限鎖の各対象で頂点の復元を使う。
 規約：Moss arXiv:1506.04887v2 Proposition 2.19 の細分比較の単射性への補助。
 使われ方：異なる余面から来る細分の元を共通の面から比較する。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

@@ -36,9 +36,9 @@ def homotopyAction {G : Type u} [Group G] (B : Action PointedSimplicialSet.{u} G
 
 lemma homotopyAction_ρ_apply {G : Type u} [Group G]
     (B : Action PointedSimplicialSet.{u} G) [KanComplex B.V.right] (k : ℕ) (g : G)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B.V.right k B.V.basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup B.V.right k B.V.basepoint) :
     ((homotopyAction B k).ρ g).asHom a =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (B.ρ g).asHom.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) a := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (B.ρ g).asHom.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _) a := rfl
 
 end
 

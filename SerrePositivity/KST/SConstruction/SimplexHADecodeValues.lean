@@ -13,7 +13,7 @@ universe u v
 namespace SerrePositivity.KST.SConstruction
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
-variable {n : ℕ} (s : DGNerve.SimplexData A D n) (m : ℕ) (i : SerreCubeGeneratorIndex m)
+variable {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n) (m : ℕ) (i : SerreCubeGeneratorIndex m)
   (v : Fin (m + 1 + 1) ↪o Fin (n + 1)) (T : Finset (Fin (n + 1))) (hT : T.Nonempty)
   (hb : ∀ t ∈ T, v (Fin.last (m + 1)) < t)
 
@@ -30,26 +30,26 @@ lemma simplexHABeadWordDecode_one_value :
     HEq (simplexHABeadWordValue A s (simplexHABeadWordDecode (m + 1) (i, 1) v T hT hb))
       (compose A (n := -((serreCubeGeneratorFreeDimension m i + (T.card - 1) : ℕ) : ℤ))
         (simplexHABeadWordValue A s
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb))
         (simplexHABeadWordValue A s
           (simplexHABeadWordDecode m i (Fin.castSuccOrderEmb.trans v)
             {v (Fin.last (m + 1))} (Finset.singleton_nonempty _)
             (simplexHADecodePrefix_cut m v))) (by
               simp only [Finset.card_singleton, Nat.add_sub_cancel, Nat.cast_add]
               omega)) := by
-  let left : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n (v 0) (v (Fin.last (m + 1)))
+  let left : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n (v 0) (v (Fin.last (m + 1)))
       (serreCubeGeneratorFreeDimension m i) := by
-    change _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n ((Fin.castSuccOrderEmb.trans v) 0)
+    change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n ((Fin.castSuccOrderEmb.trans v) 0)
       (v (Fin.last (m + 1))) (serreCubeGeneratorFreeDimension m i)
     simpa only [Finset.card_singleton, Nat.add_sub_cancel, Finset.max'_singleton] using
       simplexHABeadWordDecode m i (Fin.castSuccOrderEmb.trans v)
         {v (Fin.last (m + 1))} (Finset.singleton_nonempty _) (simplexHADecodePrefix_cut m v)
-  let right := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb
+  let right := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb
   have hp := Finset.card_pos.mpr hT
   have he : serreCubeGeneratorFreeDimension m i + (T.card - 1) =
       serreCubeGeneratorFreeDimension m i + T.card - 1 := by omega
   change HEq (simplexHABeadWordValue A s
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex rfl he (left.join right)))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadWordReindex rfl he (left.join right)))
       (simplexHABeadWordValue A s (left.join right))
   exact simplexHABeadWordValue_reindex A s rfl he (left.join right)
 
@@ -60,9 +60,9 @@ lemma simplexHABeadWordDecode_edge_value :
         (simplexHABeadWordDecode m i (Fin.castSuccOrderEmb.trans v)
           (insert (v (Fin.last (m + 1))) T) (Finset.insert_nonempty _ T)
           (simplexHADecodePrefix_insert m v T hb))) := by
-  have hn := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T (v (Fin.last (m + 1))) hb
+  have hn := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail_not_mem T (v (Fin.last (m + 1))) hb
   have hc := Finset.card_insert_of_notMem hn
-  exact simplexHABeadWordValue_reindex A s (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_max T hT _ hb)
+  exact simplexHABeadWordValue_reindex A s (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail_max T hT _ hb)
     (show serreCubeGeneratorFreeDimension m i + (insert (v (Fin.last (m + 1))) T).card - 1 =
       serreCubeGeneratorFreeDimension m i + 1 + T.card - 1 by omega) _
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalPrismRestrictedWitness
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionFiberEndpointDataEquality
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeHomCosliceKanAction
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.RelativeHomCosliceKanAction
 
 /-!
 概要：元の対角比較の全係数制限を、同じ制限後の実 prism の元の対角比較へ戻す。

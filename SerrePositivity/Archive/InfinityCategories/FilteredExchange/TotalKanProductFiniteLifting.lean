@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.TotalKanProductComparison
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.TotalKanProductComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SimultaneousTotalDetection
 
 /-!

@@ -18,12 +18,12 @@ open scoped Simplicial
 規約：全単体の厳密等号。使われ方：元実四角形の四境界表示。 -/
 lemma dgKInputPerfectNu_edge_diagram (R : Type u) [CommRing R]
     {A B : PerfDGInput.{u, v} R} (f : A ⟶ B) :
-    SSet.yonedaEquiv.symm (coherentNerveEdge f).edge ≫ dgKInputPerfectNu R =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge ≫ dgKInputPerfectNu R =
       SSet.yonedaEquiv.symm (perfectStableArrow (dgKInputNuMap R f)
         (dgKInputStableValue_isIdempotentComplete R A)
         (dgKInputStableValue_isIdempotentComplete R B)).edge := by
   apply SSet.yonedaEquiv.injective
-  let e : (dgKInputInfinity.{u, v} R) _⦋1⦌ := (coherentNerveEdge f).edge
+  let e : (dgKInputInfinity.{u, v} R) _⦋1⦌ := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge
   let a : (Δ[1] : SSet) ⟶ dgKInputInfinity.{u, v} R := SSet.yonedaEquiv.symm e
   have h₁ := SSet.yonedaEquiv_comp a (dgKInputPerfectNu R)
   have h₂ := congrArg ((dgKInputPerfectNu R).app (Opposite.op ⦋1⦌))

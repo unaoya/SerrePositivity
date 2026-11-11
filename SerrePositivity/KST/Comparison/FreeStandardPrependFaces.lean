@@ -34,19 +34,19 @@ theorem freeStandardPrependNormalForm_δ_zero {n d : ℕ}
   let : Epi p.epi := p.epi_property
   rw [freeDegeneraciesNormalForm_action]
   change fatNormalize (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋d⦌)
-    (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (SSet.stdSimplex.objEquiv p.simplex)))
-    (SimplexCategory.δ 0 ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend p.epi) = p
-  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_δ_zero]
+    (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero (SSet.stdSimplex.objEquiv p.simplex)))
+    (SimplexCategory.δ 0 ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend p.epi) = p
+  rw [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_δ_zero]
   rw [fatNormalize_eq_of_factorization _ _ _ _ p.epi (SimplexCategory.δ 0) rfl]
   have hv : (Δ[n] : SSet.{u}).map (SimplexCategory.δ 0).op
-      (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (SSet.stdSimplex.objEquiv p.simplex))) =
+      (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero (SSet.stdSimplex.objEquiv p.simplex))) =
       p.simplex := by
     rw [SSet.stdSimplex.map_objEquiv_symm]
     change SSet.stdSimplex.objEquiv.{u}.symm
-      (SimplexCategory.δ 0 ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (SSet.stdSimplex.objEquiv p.simplex)) = _
-    rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_δ_zero, Equiv.symm_apply_apply]
+      (SimplexCategory.δ 0 ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero (SSet.stdSimplex.objEquiv p.simplex)) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_δ_zero, Equiv.symm_apply_apply]
   change (⟨p.degree, p.epi, _, (Δ[n] : SSet.{u}).map (SimplexCategory.δ 0).op
-    (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (SSet.stdSimplex.objEquiv p.simplex)))⟩ :
+    (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero (SSet.stdSimplex.objEquiv p.simplex)))⟩ :
     FatNormalForm (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋d⦌)) = p
   rw [hv]
 
@@ -72,13 +72,13 @@ theorem freeStandardPrepend_δ_zero (n d : ℕ) :
 -/
 theorem freeStandardPrepend_naturality {n d r : ℕ} (θ : ⦋r⦌ ⟶ ⦋d⦌) :
     freeStandardPrepend.{u} n d ≫
-      (freeDegeneracies.obj (Δ[n] : SSet.{u})).map (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ).op =
+      (freeDegeneracies.obj (Δ[n] : SSet.{u})).map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend θ).op =
     (freeDegeneracies.obj (Δ[n] : SSet.{u})).map θ.op ≫ freeStandardPrepend n r := by
   apply ConcreteCategory.hom_ext
   intro x
   apply (freeDegeneraciesNormalForm (Δ[n] : SSet.{u}) (op ⦋r + 1⦌)).injective
   change freeDegeneraciesNormalForm (Δ[n] : SSet.{u}) (op ⦋r + 1⦌)
-      ((freeDegeneracies.obj (Δ[n] : SSet.{u})).map (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ).op
+      ((freeDegeneracies.obj (Δ[n] : SSet.{u})).map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend θ).op
         (fatNormalFormRealize _ _
           (freeStandardPrependNormalForm (freeDegeneraciesNormalForm _ _ x)))) =
     fatDegreeNormalize (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋r + 1⦌)

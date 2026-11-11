@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitRawInterval
-public import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleFaces
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CompositionTriangleFaces
 
 /-!
 概要：元の指定余極限辺の区間頂点への定値族は、同じ元の実一次単体の係数引き戻し。

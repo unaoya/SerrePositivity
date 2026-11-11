@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.UniverseHomotopyDown
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.UniverseHomotopyDown
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.VertexIsoTerminalEquality
 
 /-!
 概要：射の合成・宇宙下降・後合成の一つの関手の作用を、順次の指定像と照合する。

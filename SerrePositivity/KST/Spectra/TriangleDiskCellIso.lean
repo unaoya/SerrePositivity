@@ -106,8 +106,8 @@ instance triangleDiskDiagonal_mono : Mono triangleDiskDiagonal.{u}.right := by
 規約：標的 Y だけに Kan 性を要求する。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。正方形の二つの三角形の差を計算する。 -/
 instance triangleDisk_restriction_fibration (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
-    Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed triangleDiskDiagonal.{u} Y).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration _ Y
+    Fibration (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed triangleDiskDiagonal.{u} Y).right :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_fibration _ Y
 
 end
 

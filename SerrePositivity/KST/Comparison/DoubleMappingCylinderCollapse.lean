@@ -29,8 +29,8 @@ open SerrePositivity.SimplicialModel
 使われ方：片方の脚が単射のときの局所化同型。
 -/
 def doubleMappingCylinderCollapse {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g ⟶ pushout f g :=
-  _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc f g (fst C (Δ[1] : SSet.{u}) ≫ f ≫ pushout.inl f g)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder f g ⟶ pushout f g :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderDesc f g (fst C (Δ[1] : SSet.{u}) ≫ f ≫ pushout.inl f g)
     (pushout.inl f g) (pushout.inr f g) (by simp)
     (by rw [← Category.assoc, ← Category.assoc, SSet.ι₁_fst, Category.id_comp, pushout.condition])
 
@@ -42,9 +42,9 @@ def doubleMappingCylinderCollapse {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B)
 -/
 @[reassoc] theorem doubleMappingCylinder_middle_collapse {C A B : SSet.{u}}
     (f : C ⟶ A) (g : C ⟶ B) :
-    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g ≫ doubleMappingCylinderCollapse f g =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle f g ≫ doubleMappingCylinderCollapse f g =
       fst C (Δ[1] : SSet.{u}) ≫ f ≫ pushout.inl f g :=
-  _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_desc ..
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_middle_desc ..
 
 /--
 概要：円筒を潰す比較は左の対象の包含を保つ。
@@ -54,8 +54,8 @@ def doubleMappingCylinderCollapse {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B)
 -/
 @[reassoc] theorem doubleMappingCylinder_left_collapse {C A B : SSet.{u}}
     (f : C ⟶ A) (g : C ⟶ B) :
-    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f g ≫ doubleMappingCylinderCollapse f g = pushout.inl f g :=
-  _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_desc ..
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left f g ≫ doubleMappingCylinderCollapse f g = pushout.inl f g :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_left_desc ..
 
 /--
 概要：円筒を潰す比較は右の対象の包含を保つ。
@@ -65,8 +65,8 @@ def doubleMappingCylinderCollapse {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B)
 -/
 @[reassoc] theorem doubleMappingCylinder_right_collapse {C A B : SSet.{u}}
     (f : C ⟶ A) (g : C ⟶ B) :
-    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f g ≫ doubleMappingCylinderCollapse f g = pushout.inr f g :=
-  _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_desc ..
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right f g ≫ doubleMappingCylinderCollapse f g = pushout.inr f g :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_right_desc ..
 
 /--
 概要：片端の mapping cylinder からの比較と収縮は通常の pushout 上で一致する。
@@ -116,7 +116,7 @@ theorem doubleMappingCylinderCollapse_localized_isIso {C A B : SSet.{u}}
     pushout.inr_desc ..
   have hPB : pushout.inr f g ≫ eP.hom = pushout.inl g f := hP.inl_isoPushout_hom
   have hPA : pushout.inl f g ≫ eP.hom = pushout.inr g f := hP.inr_isoPushout_hom
-  have hDB : _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f g ≫ eD.hom =
+  have hDB : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right f g ≫ eD.hom =
       pushout.inl g (mappingCylinderEndpoint f) := hD.inl_isoPushout_hom
   have hDC : mappingCylinderToDouble f g ≫ eD.hom =
       pushout.inr g (mappingCylinderEndpoint f) := hD.inr_isoPushout_hom

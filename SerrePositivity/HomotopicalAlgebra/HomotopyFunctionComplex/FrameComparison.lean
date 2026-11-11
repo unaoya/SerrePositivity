@@ -62,14 +62,14 @@ def common : CosimplicialFrameFamily (C := C) where
   cofibrant := commonObj_cofibrant cof q p
   weak X n := (weakEquivalences C).comp_mem _ _ (right_weakEquivalence cof q p X n) (p.weak X n)
 
-abbrev homLeft (R : C ⥤ C) : resolutionHom q.obj R ⟶ resolutionHom (commonObj cof q p) R :=
+abbrev homLeft (R : C ⥤ C) : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom q.obj R ⟶ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom (commonObj cof q p) R :=
   resolutionHomMapSource (left cof q p) R
 
-abbrev homRight (R : C ⥤ C) : resolutionHom p.obj R ⟶ resolutionHom (commonObj cof q p) R :=
+abbrev homRight (R : C ⥤ C) : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom p.obj R ⟶ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom (commonObj cof q p) R :=
   resolutionHomMapSource (right cof q p) R
 
 lemma commonHom_kanComplex (R : C ⥤ C) (hR : ∀ Y, IsFibrant (R.obj Y)) (X : Cᵒᵖ) (Y : C) :
-    SSet.KanComplex (((resolutionHom (commonObj cof q p) R).obj X).obj Y) := by
+    SSet.KanComplex (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom (commonObj cof q p) R).obj X).obj Y) := by
   have := hR Y
   exact cosimplicialHom_kanComplex _ (commonObj_cofibrant cof q p X.unop)
     ((common cof q p).homotopicallyConstant X.unop) _

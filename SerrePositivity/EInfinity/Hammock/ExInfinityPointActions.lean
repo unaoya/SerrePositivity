@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.ExInfinityEnrichedUnit
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.PointActions
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.PointActions
 
 /-!
 概要：同じ Ex∞ の lax monoidal 移送は元の指定点による後合成を保持する。

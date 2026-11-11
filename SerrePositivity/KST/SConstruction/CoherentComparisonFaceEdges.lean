@@ -22,7 +22,7 @@ variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
 /-- 同じ三角形の一般の比較辺と三辺を指定した復号辺は、全一単体で一致する。 -/
 lemma coherentTriangleCompositionEdge_heq {X Y Z : C}
     (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z)
-    (T : SSet.Edge.CompStruct (coherentNerveEdge f) (coherentNerveEdge g) (coherentNerveEdge h)) :
+    (T : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge h)) :
     HEq (coherentSimplexCompositionEdge T.simplex 0 1 2 (by decide) (by decide)).edge
       (coherentTriangleMappingEdge f g h T).edge :=
   (coherentTriangleMappingEdge_raw_heq f g h T).symm
@@ -39,13 +39,13 @@ lemma coherentSimplexCompositionEdge_heq {n : ℕ}
 /-- 元の指定辺の全単体から、その通常射を対象表示に依存せず回収する。 -/
 lemma coherentSimplexArrow_specified_heq {n : ℕ}
     (s : (SimplicialNerve C) _⦋n⦌) (θ : ⦋1⦌ ⟶ ⦋n⦌) {X Y : C} (f : X ⟶ Y)
-    (hf : (SimplicialNerve C).map θ.op s = (coherentNerveEdge f).edge) :
+    (hf : (SimplicialNerve C).map θ.op s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge) :
     HEq (coherentSimplexArrow s (θ.toOrderHom 0) (θ.toOrderHom 1)
       (θ.toOrderHom.monotone (by decide))) f := by
   have hx : s.obj (.mk (ULift.up (θ.toOrderHom 0))) = X :=
-    congrArg (fun e => (coherentNerveArrowData e).1) hf
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).1) hf
   have hy : s.obj (.mk (ULift.up (θ.toOrderHom 1))) = Y :=
-    congrArg (fun e => (coherentNerveArrowData e).2.1) hf
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).2.1) hf
   subst X
   subst Y
   exact heq_of_eq (coherentSimplexArrow_of_edge_face s θ f hf)
@@ -54,7 +54,7 @@ lemma coherentSimplexArrow_specified_heq {n : ℕ}
 lemma coherentTetrahedronFaceComparison_heq
     (s : (SimplicialNerve C) _⦋3⦌) (j : Fin 4) {X Y Z : C}
     (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z)
-    (T : SSet.Edge.CompStruct (coherentNerveEdge f) (coherentNerveEdge g) (coherentNerveEdge h))
+    (T : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge h))
     (ht : (SimplicialNerve C).δ j s = T.simplex) :
     HEq (coherentSimplexCompositionEdge s ((SimplexCategory.δ j).toOrderHom 0)
       ((SimplexCategory.δ j).toOrderHom 1) ((SimplexCategory.δ j).toOrderHom 2)

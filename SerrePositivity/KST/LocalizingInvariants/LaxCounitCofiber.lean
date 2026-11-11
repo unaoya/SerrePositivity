@@ -19,55 +19,55 @@ open CategoryTheory MonoidalClosed SSet
 open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxCounit
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
 def arrow : (laxCategory p q).obj ⟶ (ihom (Δ[1] : SSet.{u})).obj (laxCategory p q).obj :=
   ZeroArrowFamily.ofHomotopy
-    (functorHomHomotopy (LaxInclusion.fromDAdjunction p q).counitHom)
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy (LaxInclusion.fromDAdjunction p q).counitHom)
 
 lemma arrow_source : arrow p q ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       (laxSnd p q).hom ≫ LaxInclusion.fromD p q :=
   ZeroArrowFamily.ofHomotopy_source _
 
 lemma arrow_target : arrow p q ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = 𝟙 (laxCategory p q).obj :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = 𝟙 (laxCategory p q).obj :=
   ZeroArrowFamily.ofHomotopy_target _
 
-instance arrow_isExact : IsExactFunctor (arrow p q) := by
-  have : IsExactFunctor (arrow p q ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
+instance arrow_isExact : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (arrow p q) := by
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (arrow p q ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
     rw [arrow_source]; infer_instance
-  have : IsExactFunctor (arrow p q ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (arrow p q ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
     rw [arrow_target]; infer_instance
   exact arrow_exact_of_endpoints (laxCategory p q).obj _
 
 def cofiber : (laxCategory p q).obj ⟶ (laxCategory p q).obj :=
-  _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (laxCategory p q).obj (arrow p q)
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber (laxCategory p q).obj (arrow p q)
 
-instance cofiber_isExact : IsExactFunctor (cofiber p q) :=
+instance cofiber_isExact : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (cofiber p q) :=
   CofiberFamily.cofiber_isExact _ _
 
-lemma fst_arrow_source_zero (x : (laxCategory p q).obj _⦋0⦌) : IsZeroSourceArrow
+lemma fst_arrow_source_zero (x : (laxCategory p q).obj _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow
     ((arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom).app
       (Opposite.op ⦋0⦌) x) := by
-  change IsZeroVertex (((arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom) ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) x)
-  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc, arrow_source,
+  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) x)
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.arrowMap_evaluation, ← Category.assoc, arrow_source,
     Category.assoc, LaxInclusion.fromD_fst]
-  change IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC : D.obj ⟶ C.obj).app _ ((laxSnd p q).hom.app _ x))
-  rw [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex]
-  exact (chosenZeroVertex C.obj).isZero
+  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC : D.obj ⟶ C.obj).app _ ((laxSnd p q).hom.app _ x))
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex]
+  exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C.obj).isZero
 
 lemma fst_arrow_target :
     (arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom) ≫
-      _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target C.obj = (laxFst p q).hom := by
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.target C.obj = (laxFst p q).hom := by
   change (arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom) ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = _
-  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc, arrow_target, Category.id_comp]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = _
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.arrowMap_evaluation, ← Category.assoc, arrow_target, Category.id_comp]
 
-def cofiber_fstIso : FunctorIso (cofiber p q ≫ (laxFst p q).hom) (laxFst p q).hom := by
+def cofiber_fstIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cofiber p q ≫ (laxFst p q).hom) (laxFst p q).hom := by
   have e := cofiberZeroSourceIso C.obj
     (arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom)
     (fst_arrow_source_zero p q)

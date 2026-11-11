@@ -24,9 +24,9 @@ open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
 private lemma uncurry_point_ext {S E : SSet.{u}} {p q : (Δ[0] : SSet.{u}) ⟶ E}
-    (h : p = q) (f : S ⟶ sliceOver p) (g : S ⟶ sliceOver q)
+    (h : p = q) (f : S ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver p) (g : S ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver q)
     (hv : ∀ (n : ℕ) (a : S _⦋n⦌), (f.app (Opposite.op ⦋n⦌) a).val =
-      (g.app (Opposite.op ⦋n⦌) a).val) : sliceOverUncurry f = sliceOverUncurry g := by
+      (g.app (Opposite.op ⦋n⦌) a).val) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry f = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry g := by
   subst q
   have he : f = g := by
     apply SSet.hom_ext
@@ -40,8 +40,8 @@ variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
   (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
 
 lemma cofibrantSourceRoofProductCommaNativePrism_zero_uncurry :
-    sliceOverUncurry (prismEndpoint 0 _ ≫ cofibrantSourceRoofProductCommaNativePrism A X Y b) =
-      (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (Cocone.mk
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ cofibrantSourceRoofProductCommaNativePrism A X Y b) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCoconeEquiv (Cocone.mk
         (show (cofibrantAlgebraRelativeCategory A).category from Y)
         (cofibrantSourceRoofProductCommaRightLeg A X Y b))).val ≫
       hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) := by
@@ -56,8 +56,8 @@ lemma cofibrantSourceRoofProductCommaNativePrism_zero_uncurry :
     (hammockLocalizationNerveMap_vertex (cofibrantAlgebraRelativeCategory A)
       (show (cofibrantAlgebraRelativeCategory A).category from Y))
   refine (uncurry_point_ext hq
-    (prismEndpoint 0 _ ≫ cofibrantSourceRoofProductCommaNativePrism A X Y b)
-    (prismEndpoint 0 _ ≫ P) (fun _ _ => rfl)).trans ?_
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ cofibrantSourceRoofProductCommaNativePrism A X Y b)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ P) (fun _ _ => rfl)).trans ?_
   exact RoofPrefix.prism_zero_uncurry (cofibrantAlgebraRelativeCategory A)
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)
@@ -67,11 +67,11 @@ lemma cofibrantSourceRoofProductCommaNativePrism_zero_uncurry :
 
 lemma cofibrantSourceRoofProductCommaNativePrism_zero_evaluation :
     (β_ (nerve (cofibrantSourceRoofProductComma A X Y b)) (Δ[1] : SSet.{u + 1})).hom ≫
-      rightMappingSpacePrism _ ≫ sliceOverUncurry
-        (prismEndpoint 0 _ ≫ cofibrantSourceRoofProductCommaNativePrism A X Y b) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ cofibrantSourceRoofProductCommaNativePrism A X Y b) =
     (cofibrantSourceRoofProductCommaRightHomotopy A X Y b).h := by
   rw [cofibrantSourceRoofProductCommaNativePrism_zero_uncurry A X Y b]
-  have h := FrameHom.nerveCoconePrism_eq_natTrans
+  have h := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nerveCoconePrism_eq_natTrans
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (Cocone.mk (show (cofibrantAlgebraRelativeCategory A).category from Y)
       (cofibrantSourceRoofProductCommaRightLeg A X Y b))

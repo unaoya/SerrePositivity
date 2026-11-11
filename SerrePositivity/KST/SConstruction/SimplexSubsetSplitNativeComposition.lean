@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.DGComposeDegreeTransport
 public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitDegrees
 public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitMappedTop
 public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaGeneratorNecklace
-public import SerrePositivity.InfinityCategories.DGNerve.BoundaryDecomposition
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.BoundaryDecomposition
 
 /-! # 元の実分割最高生成元像と native HA 合成項
 概要：元の実分割射の最高生成元像を、元の native HA 合成項そのものとして回収する。
@@ -24,12 +24,12 @@ def simplexSubsetSplitMappedTopImage {n : ℕ}
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
     (hL : 2 ≤ (I.filter (· ≤ j)).card) (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
     (homObject A D
-      (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))
-      (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))).X
+      (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))))
+      (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))))).X
         ((2 - (I.card : ℤ)) + 1) :=
   eqToHom (congrArg (fun k => (homObject A D
-    (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))
-    (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))).X k)
+    (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))))
+    (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))))).X k)
       (simplexSubsetSplit_degree.{u} I hI j hj hL hR))
     (serreCubeTopCellImage A _
       ((necklaceInSimplexSubsetSplitLeft.{u} I hI j hj hL).necklace.down.dimension +
@@ -40,8 +40,8 @@ def simplexSubsetSplitMappedTopImage {n : ℕ}
         (serreConcreteCubeComplexFunctor A).map
           (necklaceConcreteCubeMap (simplexSubsetSplitRefinement I j hj hL hR)) ≫
             necklaceLambdaCell A (necklaceInSimplexSubset I hI)) ≫
-        F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))))
+        F.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))))
 
 /-- 元の native HA 合成項は、元の実分割射の同じ最高生成元像そのもの。 -/
 lemma cubicalLambdaNativeSimplexData_cutCompose {n : ℕ}
@@ -49,28 +49,28 @@ lemma cubicalLambdaNativeSimplexData_cutCompose {n : ℕ}
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
     (hL : 2 ≤ (I.filter (· ≤ j)).card) (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
     (cubicalLambdaNativeSimplexData A F).cutCompose I
-        (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+        (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
         (2 - (I.card : ℤ)) j = simplexSubsetSplitMappedTopImage A F I hI j hj hL hR := by
   have hl := necklaceInSimplexSubsetSplitLeft_dimension.{u} I hI j hj hL
   have hr := necklaceInSimplexSubsetSplitRight_dimension.{u} I hI j hj hR
-  have hc := DGNerve.Index.split_card hj
+  have hc := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.split_card hj
   have hs : (2 - ((I.filter (· ≤ j)).card : ℤ)) +
       (2 - ((I.filter (j ≤ ·)).card : ℤ)) = (2 - (I.card : ℤ)) + 1 := by omega
-  have hla := DGNerve.Index.left_min (I.isLeast_min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (I.min'_le j hj) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hL)
-  have hlb := DGNerve.Index.left_max hj (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hL)
-  have hra := DGNerve.Index.right_min hj (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hR)
-  have hrb := DGNerve.Index.right_max (I.isGreatest_max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (I.le_max' j hj) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hR)
-  unfold DGNerve.SimplexData.cutCompose
+  have hla := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_min (I.isLeast_min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (I.min'_le j hj) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hL)
+  have hlb := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_max hj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hL)
+  have hra := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_min hj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hR)
+  have hrb := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_max (I.isGreatest_max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (I.le_max' j hj) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hR)
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cutCompose
   rw [dite_eq_left hs]
-  rw [DGNerve.SimplexData.homOrZero_eq _ _ _ _ _ hR hra hrb rfl,
-    DGNerve.SimplexData.homOrZero_eq _ _ _ _ _ hL hla hlb rfl]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.homOrZero_eq _ _ _ _ _ hR hra hrb rfl,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.homOrZero_eq _ _ _ _ _ hL hla hlb rfl]
   rw [cubicalLambdaNativeSimplexData_hom_necklace,
     cubicalLambdaNativeSimplexData_hom_necklace]
   exact ((congrArg (fun w => eqToHom (congrArg (fun k => (homObject A D
-      (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))
-      (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))).X k)
+      (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))))
+      (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))))).X k)
       (simplexSubsetSplit_degree.{u} I hI j hj hL hR)) w)
     (simplexSubsetSplit_top_composition_post A F I hI j hj hL hR)).trans
       (dgCompose_degree_transport A (by omega) (by omega)

@@ -36,7 +36,7 @@ def rightFrameFamily :
     letI _modelInst := modelCategory R
     CofibrantResolutionFamily (C := (Mon (Complex R))ᵒᵖ) simplex := by
   letI _modelInst := modelCategory R
-  exact FrameHom.rightFrameFamilyOfFactorization (fibrantFactorization R)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameFamilyOfFactorization (fibrantFactorization R)
 
 /-- 概要：実 dg 代数の bifibrant hammock は擬同型による ∞ 局所化。
 方針：第一分解を実自由 I の小対象論法から放電し、同じ right frame を代入する。
@@ -44,9 +44,9 @@ def rightFrameFamily :
 使われ方：cofibrant 部分圏と全 dg 代数への源移送の出発点。 -/
 lemma bifibrantHammock_isLocalization :
     letI _modelInst := modelCategory R
-    IsLocalization
-      (hammockLocalizationNerveMap (modelBifibrantRelativeCategory (Mon (Complex R))))
-      (weakNerveEdges (modelBifibrantRelativeCategory (Mon (Complex R)))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization
+      (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory (Mon (Complex R))))
+      (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory (Mon (Complex R)))) := by
   letI _modelInst := modelCategory R
   have := modelCategory_hasFunctorialFactorization_cofibration_trivialFibration R
   exact modelBifibrantHammock_isLocalization (rightFrameFamily R)
@@ -58,7 +58,7 @@ lemma bifibrantHammock_isLocalization :
 def rightFrameHammockFamilyIso (X : Mon (Complex R)) :
     letI _modelInst := modelCategory R
     IsCofibrant X →
-      (FrameHom.rightFrameHom (rightFrameFamily R) X ⋙
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom (rightFrameFamily R) X ⋙
         SSet.uliftFunctor.{u + 1, u} ⋙ AnodyneHomotopy.anodyneQ ≅
       FrameHom.hammockHomFamily (weakEquivalences (Mon (Complex R))) X ⋙
         AnodyneHomotopy.anodyneQ) := by

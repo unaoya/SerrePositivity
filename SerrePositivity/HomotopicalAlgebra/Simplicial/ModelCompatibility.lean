@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.Basic
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Basic
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.ModelCategory
@@ -55,7 +55,7 @@ lemma simplicial_anodyne_eq_trivialCofibrations :
 include hCof hFib in
 /-- The actual boundary/horn maps generate any model with the specified classes. -/
 lemma simplicial_cofibrantlyGenerated :
-    SerrePositivity.ModelGeneration.CofibrantlyGenerated.{u}
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
       SSet.modelCategoryQuillen.I.{u} SSet.modelCategoryQuillen.J.{u} where
   smallObjectI := boundaryGenerators_smallObjectArgument
   smallObjectJ := hornGenerators_smallObjectArgument

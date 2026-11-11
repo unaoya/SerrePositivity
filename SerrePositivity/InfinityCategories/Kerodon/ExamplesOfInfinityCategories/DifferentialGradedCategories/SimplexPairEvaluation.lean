@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：各基底の値を純テンソルで定め、整数線形に拡張する。
 規約：KST Construction A.5 の標準比較。群の可換性に依存しない。
 使われ方：普遍模型で充填した鎖を任意の二つの入力へ移す。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

@@ -26,8 +26,8 @@ namespace CotensorCompatible
 /-- パラメータの辺の三角形を一対象で評価すると、元の普遍評価の Hom 比較単体になる。 -/
 lemma evaluationFiber_parameterTriangle (A : PointedSimplicialSet.{u}) (X : Object A)
     {x y : A.right _⦋0⦌} (e : A.right.Edge x y) :
-    EnrichedParameterCylinder.parameterTriangle e ≫ coherentNerveMap (evaluationFiberEnriched A X) =
-      SSet.yonedaEquiv.symm (coherentHomComparisonSimplex
+    EnrichedParameterCylinder.parameterTriangle e ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (evaluationFiberEnriched A X) =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex
         ((cotensorEvaluation A X.val).right.app (Opposite.op ⦋1⦌) e.edge)) := by
   apply SSet.yonedaEquiv.injective
   rw [SSet.yonedaEquiv_comp, EnrichedParameterCylinder.parameterTriangle,
@@ -40,17 +40,17 @@ lemma evaluationFiber_parameterTriangle (A : PointedSimplicialSet.{u}) (X : Obje
 lemma evaluationNerveFamily_parameterTriangle_fiber (A : PointedSimplicialSet.{u}) (X : Object A)
     {x y : A.right _⦋0⦌} (e : A.right.Edge x y) :
     EnrichedParameterCylinder.parameterTriangle e ≫
-      lift (SSet.const (coherentNerveVertex X)) (𝟙 _) ≫ evaluationNerveFamily A =
-        SSet.yonedaEquiv.symm (coherentHomComparisonSimplex
+      lift (SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X)) (𝟙 _) ≫ evaluationNerveFamily A =
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex
           ((cotensorEvaluation A X.val).right.app (Opposite.op ⦋1⦌) e.edge)) := by
   rw [evaluationNerveFamily_fiber, evaluationFiber_parameterTriangle]
 
 /-- 円の生成辺の評価三角形は、元の普遍評価の生成 loop の coherent な単体そのもの。 -/
 lemma circleEvaluationNerveFamily_fiber (X : Object PointedSimplicialSet.circle.{u}) :
     circleParameterTriangle.{u, u + 1} ≫
-      lift (SSet.const (coherentNerveVertex X)) (𝟙 _) ≫
+      lift (SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X)) (𝟙 _) ≫
         evaluationNerveFamily PointedSimplicialSet.circle =
-          SSet.yonedaEquiv.symm (coherentHomComparisonSimplex
+          SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex
             ((cotensorEvaluation PointedSimplicialSet.circle X.val).right.app
               (Opposite.op ⦋1⦌) circleGeneratingEdge.edge)) :=
   evaluationNerveFamily_parameterTriangle_fiber _ X circleGeneratingEdge

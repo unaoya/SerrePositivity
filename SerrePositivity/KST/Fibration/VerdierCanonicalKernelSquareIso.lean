@@ -20,8 +20,8 @@ namespace SerrePositivity.KST.Fibration
 方針：供給済みの実読出しと実相対合成を選び、S-1 (a) の消費側へ渡す。
 規約：指定二胞体・四辺を含む全四角形を保ち、商実現比較は要求しない。
 使われ方：c5 の標準単体商比較だけを残す SingleRelativeComparison の構成。 -/
-def verdierCanonicalKernelSquareIso (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
-    FunctorIso (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0))
+def verdierCanonicalKernelSquareIso (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0))
       (quotientSKernelInfinitySquare d.inclusion d.projection) := by
   let L := Classical.choose (verdierLowerNativeReadoutRecovery_exists d)
   have hL := Classical.choose_spec (verdierLowerNativeReadoutRecovery_exists d)

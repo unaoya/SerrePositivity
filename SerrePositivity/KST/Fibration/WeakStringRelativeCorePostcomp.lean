@@ -13,8 +13,8 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の各 W 列の object/core 比較は、元の包含側の完全関手に関して自然。 -/
-lemma weakStringObjectCoreComparison_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+lemma weakStringObjectCoreComparison_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     Functor.whiskerRight (weakStringStablePostcomp f q) objectSConstructionFunctor ≫
       weakStringObjectCoreComparison q =
         weakStringObjectCoreComparison (f ≫ q : A ⟶ C) ≫
@@ -24,8 +24,8 @@ lemma weakStringObjectCoreComparison_postcomp {A B C : _root_.SerrePositivity.In
   exact objectCoreRealizationComparison.naturality (weakStringPostExact f q n.unop)
 
 /-- 元の相対 S の対角からの実比較射は、元の包含側の完全関手に関して厳密に自然。 -/
-theorem relativeSWeakStringCoreComparison_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+theorem relativeSWeakStringCoreComparison_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     simplicialDiagonalFunctor.map (relativeSimplicialFunctorMap f q.hom) ≫
       relativeSWeakStringCoreComparison q =
         relativeSWeakStringCoreComparison (f ≫ q : A ⟶ C) ≫
@@ -46,8 +46,8 @@ theorem relativeSWeakStringCoreComparison_postcomp {A B C : _root_.SerrePositivi
   rw [← Category.assoc, hi, Category.assoc, hc, ← Category.assoc]
 
 /-- 元の相対 S の核側の写像を、同じ W 列の core S 実現の写像へ運ぶ可換四角形。 -/
-theorem relativeSWeakStringCoreComparison_square {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+theorem relativeSWeakStringCoreComparison_square {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     CommSq (relativeSWeakStringCoreComparison (f ≫ q : A ⟶ C))
       (simplicialDiagonalFunctor.map (relativeSimplicialFunctorMap f q.hom))
       (simplicialDiagonalFunctor.map

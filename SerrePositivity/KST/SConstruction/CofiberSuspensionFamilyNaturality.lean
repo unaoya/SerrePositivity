@@ -18,8 +18,8 @@ open scoped Simplicial
 /-- 元の商射で回収される区間組み立ての自然性は、suspension の全族自然性を与える。 -/
 lemma cofiberSuspensionFamily_naturality {B X B' Y P : SSet.{u}}
     (g : B ⟶ X) (g' : B' ⟶ Y) (Z W : PointedSimplicialSet.{u})
-    (σ : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (PointedObject.cofiber g) ⟶ Z)
-    (σ' : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (PointedObject.cofiber g') ⟶ W)
+    (σ : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (PointedObject.cofiber g) ⟶ Z)
+    (σ' : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (PointedObject.cofiber g') ⟶ W)
     (a : P ⟶ (PointedObject.basedHom (PointedObject.cofiber g)
       (PointedObject.cofiber g')).right)
     (b : P ⟶ (PointedObject.basedHom Z W).right)
@@ -36,13 +36,13 @@ lemma cofiberSuspensionFamily_naturality {B X B' Y P : SSet.{u}}
     (hab : (h ▷ P) ≫ uncurry (b ≫ PointedObject.basedHomι Z W) =
       (α_ (Δ[1] : SSet.{u}) X P).hom ≫ ((Δ[1] : SSet.{u}) ◁ s) ≫ h') :
     a ≫ (suspensionHom (PointedObject.cofiber g) (PointedObject.cofiber g')).right ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (PointedObject.cofiber g)) σ').right =
-    b ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre σ W := by
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (PointedObject.cofiber g)) σ').right =
+    b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre σ W := by
   apply cofiberTensorFamily_hom_ext (boundary.{u} 1).ι g W
   rw [← Category.assoc a
     (suspensionHom (PointedObject.cofiber g) (PointedObject.cofiber g')).right
-    (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (PointedObject.cofiber g)) σ').right]
-  erw [Category.assoc, pointedFamily_post_evaluation (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (PointedObject.cofiber g))
+    (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (PointedObject.cofiber g)) σ').right]
+  erw [Category.assoc, pointedFamily_post_evaluation (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (PointedObject.cofiber g))
     (a ≫ (suspensionHom (PointedObject.cofiber g) (PointedObject.cofiber g')).right) σ',
     pointedFamily_pre_evaluation σ W b]
   ext n z

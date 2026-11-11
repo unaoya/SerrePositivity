@@ -29,7 +29,7 @@ structure BasedPathDifference {T E : PointedSimplicialSet.{u}} {f g h : T ⟶ E}
 def BasedPathDifference.choose {T E : PointedSimplicialSet.{u}} [KanComplex E.right]
     {f g h : T ⟶ E} (P : VerticalPath (PointedObject.toPoint E) f g)
     (Q : VerticalPath (PointedObject.toPoint E) f h) : BasedPathDifference P Q := by
-  let homKan : KanComplex (PointedObject.basedHom T E).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  let homKan : KanComplex (PointedObject.basedHom T E).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   let p := Limits.terminal.from (PointedObject.basedHom T E).right
   have hp : SSet.modelCategoryQuillen.J.rlp p :=
     (SSet.modelCategoryQuillen.fibration_iff _).1 inferInstance
@@ -42,11 +42,11 @@ def BasedPathDifference.choose {T E : PointedSimplicialSet.{u}} [KanComplex E.ri
 /-- 同じ実区間の懸垂・後合成は、対応する全 Hom の一つの射への後合成。 -/
 lemma VerticalPath.suspension_basedPost_path {T E V : PointedSimplicialSet.{u}}
     {f g : T ⟶ E} (P : VerticalPath (PointedObject.toPoint E) f g)
-    (s : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension E ⟶ V) :
+    (s : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension E ⟶ V) :
     (P.suspension.forgetProjection.basedPost s).path =
-      P.path ≫ (suspensionHom T E ≫ (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension T)).map s).right := by
+      P.path ≫ (suspensionHom T E ≫ (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension T)).map s).right := by
   change (P.path ≫ (suspensionHom T E).right) ≫
-    ((ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension T)).map s).right = _
+    ((ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension T)).map s).right = _
   rw [Under.comp_right, Category.assoc]
 
 variable {T E : PointedSimplicialSet.{u}} {f g h : T ⟶ E}

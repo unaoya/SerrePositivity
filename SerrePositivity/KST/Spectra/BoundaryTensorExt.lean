@@ -6,7 +6,7 @@ public import SerrePositivity.KST.Spectra.SphereProductDesc
 概要：境界との積からの射は各面との積上で判定できる。
 方針：境界の各単体をいずれかの面から持ち上げる。
 規約：パラメータに有限性も Kan 性も要求しない。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。正方形の四辺の条件の検査。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.3（Tag 00W3）。正方形の四辺の条件の検査。
 -/
 
 @[expose] public section

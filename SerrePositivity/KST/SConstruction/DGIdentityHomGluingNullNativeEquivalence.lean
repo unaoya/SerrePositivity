@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullNativeComparison
-public import SerrePositivity.InfinityCategories.Derived.DGFunctorFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorFullyFaithful
 
 /-!
 概要：元恒等対角の始域と V の native nerve の指定同値を作る。
@@ -34,25 +34,25 @@ lemma dgIdentityHomGluingDiagonalNullFactor_projection : (f).comp (p) = DGFuncto
 方針：片側は元厳密等号、他側は元全比較を同じ充満包含で反映する。
 規約：同じ二 dg 関手を順逆に保持。使われ方：元 V 頂点の native 回収。 -/
 def dgIdentityHomGluingNullNativeEquivalence :
-    QCatEquivalence (dgNerve R C) (dgNerve R (V)) := by
-  let F := dgNerve.map (f)
-  let P := dgNerve.map (p)
-  let J := dgNerve.map (j)
-  have hj : F ≫ J = dgNerve.map (dgIdentityHomGluingDiagonal R C) :=
-    (dgNerve.map_comp _ _).symm.trans
-      (congrArg dgNerve.map (dgIdentityHomGluingDiagonalNullFactor_inclusion R C))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R C) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (V)) := by
+  let F := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (f)
+  let P := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (p)
+  let J := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (j)
+  have hj : F ≫ J = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgIdentityHomGluingDiagonal R C) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp _ _).symm.trans
+      (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgIdentityHomGluingDiagonalNullFactor_inclusion R C))
   have hf : F ≫ P = 𝟙 _ :=
-    (dgNerve.map_comp _ _).symm.trans
-      ((congrArg dgNerve.map (dgIdentityHomGluingDiagonalNullFactor_projection R C)).trans
-        dgNerve.map_id)
-  have e : FunctorIso ((𝟙 (dgNerve R (V))) ≫ J) ((P ≫ F) ≫ J) := by
-    exact F2.functorIsoOfEq (dgIdentityHomGluingNullNativeComparison R C)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp _ _).symm.trans
+      ((congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgIdentityHomGluingDiagonalNullFactor_projection R C)).trans
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_id)
+  have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (V))) ≫ J) ((P ≫ F) ≫ J) := by
+    exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (dgIdentityHomGluingNullNativeComparison R C)
       (Category.id_comp J).symm
       (by rw [Category.assoc, hj])
-  have hJ : IsFullyFaithful J :=
-    dgFullSubcategoryInclusionNerve_isFullyFaithful R (L) (dgIdentityHomGluingNullProperty R C)
-  exact ⟨F, P, F2.functorIsoOfEq
-    (Iso.refl (SSet.HomotopyCategory.mk (functorVertex (𝟙 (dgNerve R C))))) hf.symm rfl,
+  have hJ : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful J :=
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFullSubcategoryInclusionNerve_isFullyFaithful R (L) (dgIdentityHomGluingNullProperty R C)
+  exact ⟨F, P, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
+    (Iso.refl (SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R C))))) hf.symm rfl,
     (hJ.preimageFunctorIso e).symm⟩
 
 end SerrePositivity.KST.SConstruction

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedColumn
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedSingletonGenerator
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedSingletonGenerator
 public import SerrePositivity.EInfinity.Hammock.UnmarkedFactorPasteValue
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedFactorPoint
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint
 
 /-!
 # 任意の三因子の元の単体による貼り戻しと同じ生成矢
@@ -23,28 +23,28 @@ namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted
 open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
-  {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : FactorTarget.Index W)
+  {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)
   (σ : (AllMarked.nativeGraph W X g.val.left a).obj n)
-  (τ : (graph W.paths b g.val.right Y).obj n)
+  (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths b g.val.right Y).obj n)
 
-def simplex : (graph W.paths (Word.append (Word.append a (Word.single .forward)) b) X Y).obj n :=
+def simplex : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b) X Y).obj n :=
   (((AllMarked.graphMap W X g.val.left a).app n σ).prod'
-    (arrowSimplex W.paths g.val.hom.toPath n) ⋙ ZigzagAppend.functor).prod' τ ⋙ ZigzagAppend.functor
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W.paths g.val.hom.toPath n) ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendFunctor.functor).prod' τ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendFunctor.functor
 
-lemma simplex_nonempty : ∃ j, column W ((simplex W g σ τ).obj 0) j ≠ [] :=
+lemma simplex_nonempty : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W ((simplex W g σ τ).obj 0) j ≠ [] :=
   ⟨columnIndex a b, fun he => List.cons_ne_nil _ _
     ((column_generator W g (((AllMarked.graphMap W X g.val.left a).app n σ).obj 0)
       (τ.obj 0)).symm.trans he)⟩
 
-lemma simplex_firstColumn (h : ∃ j, column W ((simplex W g σ τ).obj 0) j ≠ []) :
-    AttachedPrefix.index W (simplex W g σ τ) h = columnIndex a b :=
+lemma simplex_firstColumn (h : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W ((simplex W g σ τ).obj 0) j ≠ []) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W (simplex W g σ τ) h = columnIndex a b :=
   firstColumn_eq W g (((AllMarked.graphMap W X g.val.left a).app n σ).obj 0) (τ.obj 0)
     (AllMarked.graphMap_holds W σ 0) h
 
-lemma simplex_generator (h : ∃ j, column W ((simplex W g σ τ).obj 0) j ≠ []) :
-    (FirstFactor.generator W (simplex W g σ τ) h).val = g.val := by
-  apply rowGenerator_of_singleton W (simplex W g σ τ) _ _ g.val
-  exact (congrArg (column W ((simplex W g σ τ).obj 0)) (simplex_firstColumn W g σ τ h)).trans
+lemma simplex_generator (h : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W ((simplex W g σ τ).obj 0) j ≠ []) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.generator W (simplex W g σ τ) h).val = g.val := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowGenerator_of_singleton W (simplex W g σ τ) _ _ g.val
+  exact (congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W ((simplex W g σ τ).obj 0)) (simplex_firstColumn W g σ τ h)).trans
     (column_generator W g (((AllMarked.graphMap W X g.val.left a).app n σ).obj 0) (τ.obj 0))
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted

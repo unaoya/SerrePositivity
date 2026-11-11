@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyRecoveredEdge
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.ArrowFamilyRecoveredEdge
 
 public import SerrePositivity.KST.LocalizingInvariants.IntervalMappingFamilyTranspose
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceIntervalComparison
 
 /-!
 概要：両端点を固定した元の全辺族を、パラメータ関手圏の同じ実辺へ戻す。
@@ -22,24 +22,24 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 variable {K X : SSet.{u}} {x y : X _⦋0⦌}
   (f : K ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
-  (h₀ : f ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = SSet.const x)
-  (h₁ : f ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = SSet.const y)
+  (h₀ : f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = SSet.const x)
+  (h₁ : f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = SSet.const y)
 
 /-- 元の全辺族から、同じ固定両端点を持つパラメータ関手圏の実辺を回収する。 -/
-def spanArrowFamilyEdge : SSet.Edge (functorVertex (SSet.const x : K ⟶ X))
-    (functorVertex (SSet.const y : K ⟶ X)) :=
-  intervalMappingFamilyEdge (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping f h₀ h₁)
+def spanArrowFamilyEdge : SSet.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.const x : K ⟶ X))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.const y : K ⟶ X)) :=
+  intervalMappingFamilyEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanArrowFamilyMapping f h₀ h₁)
 
 lemma spanArrowFamilyEdge_edge : (spanArrowFamilyEdge f h₀ h₁).edge =
-    SSet.yonedaEquiv (internalHomFlipHomEquiv K Δ[1] X f) := by
-  rw [spanArrowFamilyEdge, intervalMappingFamilyEdge_edge, _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping_inclusion]
+    SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv K Δ[1] X f) := by
+  rw [spanArrowFamilyEdge, intervalMappingFamilyEdge_edge, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanArrowFamilyMapping_inclusion]
 
 /-- 固定端点 Hom 内の比較は、元の二辺族から回収した同じ実辺の Hom 類を一致させる。 -/
 lemma spanArrowFamilyEdge_homMk_eq [Quasicategory X]
     (g : K ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
-    (hg₀ : g ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = SSet.const x)
-    (hg₁ : g ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = SSet.const y)
-    (e : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping f h₀ h₁) (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping g hg₀ hg₁)) :
+    (hg₀ : g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = SSet.const x)
+    (hg₁ : g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = SSet.const y)
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanArrowFamilyMapping f h₀ h₁) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanArrowFamilyMapping g hg₀ hg₁)) :
     Truncated.HomotopyCategory.homMk (spanArrowFamilyEdge f h₀ h₁).toTruncated =
       Truncated.HomotopyCategory.homMk (spanArrowFamilyEdge g hg₀ hg₁).toTruncated :=
   intervalMappingFamilyEdge_homMk_eq e

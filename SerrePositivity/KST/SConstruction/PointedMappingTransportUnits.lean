@@ -19,14 +19,14 @@ open Spectra.PointedMapping
 /-- 源を固定した移送は標的の後合成。 -/
 lemma pointedMappingTransport_source_id {B Z Z' : PointedSimplicialSet.{u}} (z : Z ⟶ Z') :
     pointedMappingTransport (𝟙 B) z = (PointedObject.basedHomMap B z).right := by
-  have hp : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (𝟙 B) Z' = 𝟙 _ := by
-    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, pre_id]
+  have hp : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (𝟙 B) Z' = 𝟙 _ := by
+    rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, pre_id]
     rfl
   simp only [pointedMappingTransport, hp, Category.comp_id]
 
 /-- 標的を固定した移送は源の前合成。 -/
 lemma pointedMappingTransport_target_id {B B' Z : PointedSimplicialSet.{u}} (b : B' ⟶ B) :
-    pointedMappingTransport b (𝟙 Z) = (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed b Z).right := by
+    pointedMappingTransport b (𝟙 Z) = (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed b Z).right := by
   have hz : PointedObject.basedHomMap B (𝟙 Z) = 𝟙 _ :=
     (PointedObject.basedHomFunctor B).map_id Z
   simp only [pointedMappingTransport, hz, Category.id_comp]

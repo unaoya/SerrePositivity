@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedKanDiagramEquivalences
-public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.EdgeEquiv
 
 /-! # 点つき coherent な図式の変換から実際の成分を回収する
 概要：入力図式全体の円柱の各対象で、元の Kan 模型間の実際の点つき射を取り出す。
@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
 open Spectra
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
 /-- 全体の円柱の対象 i での辺を、元の Kan 対象を両端に持つ辺として読む。 -/
@@ -25,11 +25,11 @@ def pointedKanDiagramHomotopyEdgeAt {I : Type u} [SmallCategory I]
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
     (H : SSet.Homotopy (pointedKanCoherentDiagram F hF) (pointedKanCoherentDiagram G hG))
     (i : I) : PointedKanInfinity.{u}.Edge
-      (coherentNerveVertex ((pointedKanDiagram F hF).obj i))
-      (coherentNerveVertex ((pointedKanDiagram G hG).obj i)) :=
-  (simplicialHomotopyVertexEdge H (ULift.up (nerveVertex i))).ofEq
-    (strictCoherentDiagram_vertex (pointedKanDiagram F hF) i)
-    (strictCoherentDiagram_vertex (pointedKanDiagram G hG) i)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((pointedKanDiagram F hF).obj i))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((pointedKanDiagram G hG).obj i)) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))).ofEq
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram_vertex (pointedKanDiagram F hF) i)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram_vertex (pointedKanDiagram G hG) i)
 
 /-- 全体の円柱の対象ごとの辺が表す、元の模型間の実際の点つき射。 -/
 def pointedKanDiagramHomotopyMapAt {I : Type u} [SmallCategory I]
@@ -37,7 +37,7 @@ def pointedKanDiagramHomotopyMapAt {I : Type u} [SmallCategory I]
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
     (H : SSet.Homotopy (pointedKanCoherentDiagram F hF) (pointedKanCoherentDiagram G hG))
     (i : I) : F.obj i ⟶ G.obj i :=
-  (coherentNerveEdgeToHom (pointedKanDiagramHomotopyEdgeAt hF hG H i)).hom
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom (pointedKanDiagramHomotopyEdgeAt hF hG H i)).hom
 
 /-- 回収した点つき射の辺は、全体の円柱を対象で評価した辺と同じ一単体。 -/
 lemma pointedKanDiagramHomotopyMapAt_edge {I : Type u} [SmallCategory I]
@@ -45,12 +45,12 @@ lemma pointedKanDiagramHomotopyMapAt_edge {I : Type u} [SmallCategory I]
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
     (H : SSet.Homotopy (pointedKanCoherentDiagram F hF) (pointedKanCoherentDiagram G hG))
     (i : I) :
-    (coherentNerveEdge (show (pointedKanDiagram F hF).obj i ⟶
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (show (pointedKanDiagram F hF).obj i ⟶
       (pointedKanDiagram G hG).obj i from
         ObjectProperty.homMk (pointedKanDiagramHomotopyMapAt hF hG H i))).edge =
-      (simplicialHomotopyVertexEdge H (ULift.up (nerveVertex i))).edge := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))).edge := by
   have he := congrArg SSet.Edge.edge
-    (coherentNerveEdge_hom (pointedKanDiagramHomotopyEdgeAt hF hG H i))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_hom (pointedKanDiagramHomotopyEdgeAt hF hG H i))
   exact he
 
 /-- strict な元の変換を円柱にして成分を戻すと、元の射そのもの。 -/
@@ -60,11 +60,11 @@ lemma pointedKanDiagramHomotopyMapAt_natTrans {I : Type u} [SmallCategory I]
     (η : F ⟶ G) (i : I) :
     pointedKanDiagramHomotopyMapAt hF hG (pointedKanDiagramHomotopy hF hG η) i = η.app i := by
   let e := pointedKanDiagramHomotopyEdgeAt hF hG (pointedKanDiagramHomotopy hF hG η) i
-  have he : e = coherentNerveEdge ((pointedKanDiagramNatTrans hF hG η).app i) := by
+  have he : e = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((pointedKanDiagramNatTrans hF hG η).app i) := by
     apply SSet.Edge.ext
     exact StrictDiagramTransformation.component_edge (pointedKanDiagramNatTrans hF hG η) i
-  change (coherentNerveEdgeToHom e).hom = η.app i
-  rw [he, coherentNerveEdgeToHom_edge]
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom e).hom = η.app i
+  rw [he, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom_edge]
   rfl
 
 end SerrePositivity.KST.SConstruction

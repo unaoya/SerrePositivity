@@ -26,15 +26,15 @@ lemma basedTranspose_mapped_step_path (X : OmegaSpectrum.{u}) (Y : KanSequence.{
       ((KanSequence.mapping A Y).sigma n)).basedTranspose.path =
     (H.basedTranspose.basedPost (pointedStep X Y n)).path := by
   change (H.path ≫ (pointedStep X (KanSequence.mapping A Y) n).right) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) A
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) A
         (Y.level (n + 1)).space).hom.right =
-    (H.path ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (X.level n).space A (Y.level n).space).hom.right) ≫
+    (H.path ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (X.level n).space A (Y.level n).space).hom.right) ≫
       (PointedObject.basedHomMap A (pointedStep X Y n)).right
   have h := step_exchange X Y A n
   change pointedStep X (KanSequence.mapping A Y) n ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) A
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) A
         (Y.level (n + 1)).space).hom =
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (X.level n).space A (Y.level n).space).hom ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (X.level n).space A (Y.level n).space).hom ≫
       PointedObject.basedHomMap A (pointedStep X Y n) at h
   simpa only [Under.comp_right, Category.assoc] using
     congrArg (fun k => H.path ≫ k.right) h

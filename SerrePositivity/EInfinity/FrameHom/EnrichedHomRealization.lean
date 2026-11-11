@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.EnrichedHomFunctor
-public import SerrePositivity.InfinityCategories.F1.Coherent.OrderPostcomposition
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomInfinityBifunctor
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.OrderPostcomposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.HomInfinityBifunctor
 
 /-!
 概要：元の豊穣 Hom 関手を小さい coherent nerve 全体で空間値に実現する。
@@ -28,7 +28,7 @@ variable {D : Type u} [Category.{u} D] [SimplicialCategory D]
 使われ方：Yoneda 側との全図式同型の始域。
 -/
 def enrichedHomCoherent : SSet.uliftFunctor.{u + 1, u}.obj (SimplicialNerve D) ⟶
-    SpaceInfinity.{u} where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} where
   app _ := ↾fun s => s.down.comp SSet (enrichedHomFunctor X)
   naturality _ _ _ := rfl
 
@@ -37,8 +37,8 @@ def enrichedHomCoherent : SSet.uliftFunctor.{u + 1, u}.obj (SimplicialNerve D) �
 規約：対象・元の射を選び直さない。
 使われ方：strict な hammock Hom 図式の同定。
 -/
-def enrichedHomOrdinaryFamily : D ⥤ KanObject.{u} :=
-  coherentEnrichedUnderlyingFunctor (enrichedHomFunctor X)
+def enrichedHomOrdinaryFamily : D ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (enrichedHomFunctor X)
 
 /-- 概要：同じ通常の Hom 図式の射は元の豊穣後合成そのもの。
 方針：豊穣単位からの射の同値と curry の自然性を使う。
@@ -49,7 +49,7 @@ lemma enrichedHomOrdinaryFamily_map {Y Z : D} (f : Y ⟶ Z) :
   have h : eHomEquiv SSet ((enrichedHomOrdinaryFamily X).map f) =
       eHomEquiv SSet f ≫ curry (eComp SSet X Y Z) := by
     apply (SSet.unitHomEquiv _).injective
-    exact coherentEnrichedUnderlyingFunctor_vertex (enrichedHomFunctor X) f
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor_vertex (enrichedHomFunctor X) f
   apply (eHomEquiv SSet).injective
   rw [h]
   change (eHomEquiv SSet f) ≫ curry (eComp SSet X Y Z) =
@@ -66,12 +66,12 @@ lemma enrichedHomOrdinaryFamily_map {Y Z : D} (f : Y ⟶ Z) :
 使われ方：点ごとの比較を用いない全図式の始端の照合。
 -/
 lemma enrichedHomCoherent_ordinary :
-    SSet.uliftFunctor.{u + 1, u}.map (nerveToCoherent D) ≫ enrichedHomCoherent X =
-      kanDiagramCoherentNerve (enrichedHomOrdinaryFamily X) := by
+    SSet.uliftFunctor.{u + 1, u}.map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent D) ≫ enrichedHomCoherent X =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (enrichedHomOrdinaryFamily X) := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
   intro s
-  exact enrichedFunctorOfOrderDiagram_postcomp _ (enrichedHomFunctor X)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.enrichedFunctorOfOrderDiagram_postcomp _ (enrichedHomFunctor X)
 
 end SerrePositivity.EInfinity.FrameHom

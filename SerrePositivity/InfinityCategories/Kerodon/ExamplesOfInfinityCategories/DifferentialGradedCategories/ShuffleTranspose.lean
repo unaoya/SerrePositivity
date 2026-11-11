@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：水平・垂直の座標と挿入を交換する厳密な等式を使う。
 規約：KST Construction A.5 の標準 shuffle。係数の二因子の順序自体は変えない。
 使われ方：垂直境界項の有限な添字の対応と実単体写像の同定。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

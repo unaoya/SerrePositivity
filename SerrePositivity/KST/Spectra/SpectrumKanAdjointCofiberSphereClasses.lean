@@ -22,13 +22,13 @@ variable (X Y : OmegaSpectrum.{u}) {A B : PointedSimplicialSet.{u}}
 /-- 同じ cofiber への球面を用いると、元の二つの座標は同じ正次数の類を表す。 -/
 lemma kanAdjointCofiberComparison_sphereClass (n r : ℕ)
     (s : PointedSimplicialSet.sphere.{u} (r + 1) ⟶ pointedCofiber j) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv (kanAdjointParameterTarget X Y n) (r + 1)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (SphereSimplex.equiv (kanAdjointParameterTarget X Y n) (r + 1)
       (s ≫ kanAdjointCofiberComparison X Y φ j hzero ≫
         pointedEvaluation X (KanSequence.signedLoopTail Y.toKanSequence) n)) =
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv (kanAdjointParameterTarget X Y n) (r + 1)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (SphereSimplex.equiv (kanAdjointParameterTarget X Y n) (r + 1)
       (s ≫ kanAdjointCofiberInput X Y φ j hzero ≫ kanAdjointParameterLeft X Y n)) := by
   let parameterTargetKan : KanComplex (kanAdjointParameterTarget X Y n).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   apply (SphereSimplex.class_eq_iff_components (kanAdjointParameterTarget X Y n) r _ _).2
   exact PointedMapping.componentOf_comp_left
     (kanAdjointCofiberComparison_evaluation_component X Y φ j hzero n) s
@@ -36,14 +36,14 @@ lemma kanAdjointCofiberComparison_sphereClass (n r : ℕ)
 /-- BF 模型の元の射影座標でも、同じ球面代表が同じ正次数の類を与える。 -/
 lemma kanAdjointCofiberBFComparison_projected_sphereClass (n r : ℕ)
     (s : PointedSimplicialSet.sphere.{u} (r + 1) ⟶ pointedCofiber j) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv (kanAdjointParameterTarget X Y n) (r + 1)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (SphereSimplex.equiv (kanAdjointParameterTarget X Y n) (r + 1)
       (s ≫ (kanAdjointCofiberBFComparison X Y φ j hzero ≫
         pointedEvaluation X (OmegaSpectrum.signedLoopModel Y).toKanSequence n) ≫
         PointedObject.basedHomMap (X.level n).space
           ((OmegaSpectrum.signedLoopProjection Y).app n))) =
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv (kanAdjointParameterTarget X Y n) (r + 1)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (SphereSimplex.equiv (kanAdjointParameterTarget X Y n) (r + 1)
       (s ≫ kanAdjointCofiberInput X Y φ j hzero ≫ kanAdjointParameterLeft X Y n)) := by
-  have h := congrArg (fun f ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
+  have h := congrArg (fun f ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk
     (SphereSimplex.equiv (kanAdjointParameterTarget X Y n) (r + 1) (s ≫ f)))
       (kanAdjointCofiberBFComparison_projected_evaluation X Y φ j hzero n)
   simp only [Category.assoc] at h ⊢

@@ -1,13 +1,13 @@
 module
 
 public import SerrePositivity.KST.Spectra.RelativeTriangleContraction
-public import SerrePositivity.InfinityCategories.Kan.HomotopyInvariance
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyInvariance
 
 /-!
 概要：相対三角形から Kan 複体への点つき写像空間の成分は一つである。
 方針：基点固定の実際の収縮を π₀ に適用する。
 規約：選択した基点は零写像。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。二つの三角形の交換の式を全成分で計算する。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.3（Tag 00W3）。二つの三角形の交換の式を全成分で計算する。
 -/
 
 @[expose] public section
@@ -36,8 +36,8 @@ instance triangleDiskHom_piZero_subsingleton (Y : PointedSimplicialSet.{u})
   intro a b
   obtain ⟨v, rfl⟩ := π₀.mk_surjective a
   obtain ⟨w, rfl⟩ := π₀.mk_surjective b
-  have hv := _root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_eq_of_homotopy H (π₀.mk v)
-  have hw := _root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_eq_of_homotopy H (π₀.mk w)
+  have hv := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapPiZero_eq_of_homotopy H (π₀.mk v)
+  have hw := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapPiZero_eq_of_homotopy H (π₀.mk w)
   simp only [mapπ₀_mk] at hv hw
   exact hv.trans hw.symm
 

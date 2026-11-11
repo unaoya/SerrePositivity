@@ -44,7 +44,7 @@ open FreeGeneratorDegeneracies
 variable (C : Type u) [Category.{v} C] (X Y : D C)
 
 def augmented : SimplicialObject.Augmented (Type (max u v)) where
-  left := SimplexCategory.rev.op ⋙ UniverseLift.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y)
+  left := SimplexCategory.rev.op ⋙ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y)
   right := ULift.{max u v} (X ⟶ Y)
   hom := Functor.whiskerLeft SimplexCategory.rev.op (OrdinaryBarSourceHom.augmentation C X Y)
 

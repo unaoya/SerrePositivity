@@ -21,8 +21,8 @@ lemma simplexSubsetLambdaGenerator_necklace {n : ℕ} (I : Finset (Fin (n + 1)))
     (hI : 2 ≤ I.card) :
     simplexSubsetLambdaGenerator A I hI =
       eqToHom (congrArg (fun k => (homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))).X k)
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))).X k)
         (show -((necklaceInSimplexSubset.{u} I hI).necklace.down.dimension : ℤ) =
           2 - (I.card : ℤ) from by
             have hd := necklaceInSimplexSubset_dimension.{u} I hI
@@ -39,11 +39,11 @@ lemma simplexSubsetLambdaGenerator_necklace {n : ℕ} (I : Finset (Fin (n + 1)))
 lemma cubicalLambdaNativeSimplexData_hom_necklace {D : Type v} [DGCategory A D] {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D)
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ)) :
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ)) :
     (cubicalLambdaNativeSimplexData A F).hom I a b k hI ha hb hk =
       eqToHom (congrArg (fun d => (homObject A D
-        (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a)) (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))).X d)
+        (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a)) (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))).X d)
         (show -((necklaceInSimplexSubsetAt.{u} I a b hI ha hb).necklace.down.dimension : ℤ) = k
           from by
             have hd := necklaceInSimplexSubset_dimension.{u} I hI
@@ -52,7 +52,7 @@ lemma cubicalLambdaNativeSimplexData_hom_necklace {D : Type v} [DGCategory A D] 
         (serreCubeTopCellImage A _
           (necklaceInSimplexSubsetAt.{u} I a b hI ha hb).necklace.down.dimension
           (necklaceLambdaCell A (necklaceInSimplexSubsetAt I a b hI ha hb) ≫
-            F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))) := by
+            F.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))) := by
   subst a
   subst b
   subst k

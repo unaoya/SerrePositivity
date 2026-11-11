@@ -11,6 +11,8 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Degenerate
 方針：複雑度の保存と二重の拡張退化の式を組み合わせる。
 規約：Moss 2020 Lemma 28 と Lemma 26 (7)。
 使われ方：非退化な対応先の元は型 II であること。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

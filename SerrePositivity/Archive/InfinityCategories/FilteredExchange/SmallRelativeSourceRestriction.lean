@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningMappingSpace
-public import SerrePositivity.InfinityCategories.F1.Universe.RelativeFunctorNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SmallLeftUnstraighteningMappingSpace
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorNaturality
 
 /-!
 概要：相対関手空間の縮小と任意の小さい始域への制限が厳密に可換。

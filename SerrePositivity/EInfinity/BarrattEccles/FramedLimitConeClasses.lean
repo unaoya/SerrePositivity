@@ -56,7 +56,7 @@ lemma framedLimitHomPiZeroEquiv_coneClass (F : K ⥤ (operad A).Algebra) (c : Co
     infer_instance
   have := framedLimitProbe_cofibrant A c.pt
   have : IsFibrant (op (framedLimitProbe A c.pt)) :=
-    FrameHom.MixedFrame.fibrantOp_of_cofibrant _
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
   let p := framedLimitProbeComparison A c.pt
   let f := p ≫ coneToFramedLimit A K F c
   let e := HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)

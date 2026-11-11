@@ -52,7 +52,7 @@ lemma relativeTracedComparison_homotopy_start (n : ℕ) :
 /-- 正方形全体も、元の指定された列の同じ構造射へ定数で射影される。 -/
 lemma relativeTracedComparison_homotopy_over (n : ℕ) :
     (relativeTracedComparison_homotopy hX q hq b f hb h n).h ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (q.app (n + 1))).right =
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (q.app (n + 1))).right =
         SSet.const (PointedMapping.familyVertex (X.sigma n ≫ b.app (n + 1))) :=
   compositionTriangleSquare_post_const _ _ _
     (relativeTracedComparison_triangle_over hX q hq b f hb h n)

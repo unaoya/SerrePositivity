@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedOppositeHomActionVertex
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceTriangleHomotopy
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceTriangleHomotopy
 
 /-!
 概要：固定 Kan 射での反転 Hom 作用の実頂点を、同じ関手頂点と値へ戻す。

@@ -18,10 +18,10 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の厳密二区間の逆 Hom 鎖射は、元の同じ豊穣合成を厳密に保つ。 -/
-lemma simplexHAIntervalHomMap_comp {N : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHAIntervalHomMap_comp {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (a b c : Fin (N + 1)) (hab : a < b) (hbc : b < c) :
     eComp (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A)
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex c) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex c) ≫
       simplexHAIntervalHomMap A s a c (hab.trans hbc) =
       (simplexHAIntervalHomMap A s a b hab ⊗ₘ simplexHAIntervalHomMap A s b c hbc) ≫
         eComp (Complex A) (s.obj a) (s.obj b) (s.obj c) := by
@@ -56,15 +56,15 @@ lemma simplexHAIntervalHomMap_comp {N : ℕ} (s : DGNerve.Simplex A D N)
         (simplexHAIntervalHomMap_restrict A s b c hbc).symm
   exact enrichedHom_composition_of_tensor_comparison
     (V := Complex A) (C := CubicalLambda A (Δ[N] : SSet.{u})) (D := D)
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a : CubicalLambda A (Δ[N] : SSet.{u}))
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex c) (s.obj a) (s.obj b) (s.obj c)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a : CubicalLambda A (Δ[N] : SSet.{u}))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex c) (s.obj a) (s.obj b) (s.obj c)
     e f ((Comon.forget (Complex A)).mapIso (serreCubeTensorIso A n m)) F G H h
 
 /-- 元の厳密三頂点の全 HA Hom 族は、元の同じ豊穣合成を厳密に保つ。 -/
-lemma simplexHAHomMap_comp_strict {N : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHAHomMap_comp_strict {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (a b c : Fin (N + 1)) (hab : a < b) (hbc : b < c) :
     eComp (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A)
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex c) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex c) ≫
       simplexHAHomMap A s a c =
       (simplexHAHomMap A s a b ⊗ₘ simplexHAHomMap A s b c) ≫
         eComp (Complex A) (s.obj a) (s.obj b) (s.obj c) := by
@@ -73,10 +73,10 @@ lemma simplexHAHomMap_comp_strict {N : ℕ} (s : DGNerve.Simplex A D N)
       simplexHAIntervalHomMap_comp A s a b c hab hbc
 
 /-- 元の対角・逆向きも含む全三頂点で、元の全 HA Hom 族は実合成を厳密に保つ。 -/
-lemma simplexHAHomMap_comp {N : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHAHomMap_comp {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (a b c : Fin (N + 1)) :
     eComp (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A)
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex c) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex c) ≫
       simplexHAHomMap A s a c =
       (simplexHAHomMap A s a b ⊗ₘ simplexHAHomMap A s b c) ≫
         eComp (Complex A) (s.obj a) (s.obj b) (s.obj c) :=

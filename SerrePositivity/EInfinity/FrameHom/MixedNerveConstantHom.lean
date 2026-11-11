@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.FrameHom.MixedNerveNatTransFunctor
-public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveNatTransCylinder
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyClasses
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveNatTransCylinder
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomotopyClasses
 /-!
 概要：元の定値自然変換の全円柱を同じ成分辺の定値族へ同定する。
 方針：全次数の通常円柱を計算し、元の成分辺の定値写像と照合する。
@@ -46,10 +46,10 @@ lemma homotopy_const_h {I C : Type (u + 1)} [Category.{u} I] [Category.{u} C]
   intro n
   apply ConcreteCategory.hom_ext
   intro z
-  change (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy
+  change (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy
     (liftedNatTrans ((Functor.const I).map f))).h.app n
       ((up I).app n z.1, z.2) ⋙ ULiftHom.down = _
-  rw [nerveNatTransHomotopy_app, Functor.assoc, he]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nerveNatTransHomotopy_app, Functor.assoc, he]
   rfl
 
 end SerrePositivity.EInfinity.FrameHom.MixedNerve
@@ -67,33 +67,33 @@ lemma constantFamilyHom_arrow_of_h_eq {K X : SSet.{v}} {U V : K ⟶ X}
     {x y : X.obj (Opposite.op (SimplexCategory.mk 0))}
     (H : SSet.Homotopy U V) (e : Truncated.Edge (X := (truncation 2).obj X) x y)
     (h : H.h = snd K (Δ[1] : SSet.{v}) ≫ SSet.yonedaEquiv.symm e.edge) :
-    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H)) =
-      Arrow.mk (constantFunctorHomMap K (Truncated.HomotopyCategory.homMk e)) := by
+    Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)) =
+      Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (Truncated.HomotopyCategory.homMk e)) := by
   let e' : Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X))
-      (functorVertex (SSet.const x : K ⟶ X)) (functorVertex (SSet.const y : K ⟶ X)) :=
-    { edge := (e.map ((truncation 2).map (constantFunctorMap K X))).edge
-      src_eq := (e.map ((truncation 2).map (constantFunctorMap K X))).src_eq.trans
-        (constantFunctorMap_vertex K x)
-      tgt_eq := (e.map ((truncation 2).map (constantFunctorMap K X))).tgt_eq.trans
-        (constantFunctorMap_vertex K y) }
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.const x : K ⟶ X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.const y : K ⟶ X)) :=
+    { edge := (e.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap K X))).edge
+      src_eq := (e.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap K X))).src_eq.trans
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap_vertex K x)
+      tgt_eq := (e.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap K X))).tgt_eq.trans
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap_vertex K y) }
   have hc : Truncated.HomotopyCategory.homMk e' =
-      constantFunctorHomMap K (Truncated.HomotopyCategory.homMk e) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (Truncated.HomotopyCategory.homMk e) := by
     symm
-    simpa only [constantFunctorHomMap, hoFunctor_map, Functor.toCatHom_toFunctor,
+    simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap, hoFunctor_map, Functor.toCatHom_toFunctor,
       mapHomotopyCategory, Truncated.mapHomotopyCategory_homMk] using
-      (homMk_transport (constantFunctorMap_vertex K x) (constantFunctorMap_vertex K y)
-        (e.map ((truncation 2).map (constantFunctorMap K X))) e' rfl)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homMk_transport (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap_vertex K x) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap_vertex K y)
+        (e.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap K X))) e' rfl)
   have hh : H.h = uncurry (SSet.yonedaEquiv.symm e'.edge) := by
     change H.h = uncurry (SSet.yonedaEquiv.symm
-      ((constantFunctorMap K X).app (Opposite.op ⦋1⦌) e.edge))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap K X).app (Opposite.op ⦋1⦌) e.edge))
     rw [h, ← SSet.yonedaEquiv_symm_comp, uncurry_natural_left]
-    simp only [constantFunctorMap, uncurry_curry]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap, uncurry_curry]
     apply SSet.hom_ext
     intro n
     apply ConcreteCategory.hom_ext
     intro z
     rfl
-  have he : (functorEdgeOfSimplicialHomotopy H).edge = e'.edge := by
+  have he : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H).edge = e'.edge := by
     change SSet.yonedaEquiv (curry H.h) = _
     rw [hh, curry_uncurry]
     exact SSet.yonedaEquiv.apply_symm_apply _
@@ -106,9 +106,9 @@ lemma constantFamilyHom_arrow_of_h_eq {K X : SSet.{v}} {U V : K ⟶ X}
 lemma mixedNerve_const_postcomp_arrow {I C : Type (u + 1)}
     [Category.{u} I] [Category.{u} C] {x y : C} (f : x ⟶ y)
     {D : SSet.{u + 1}} (q : nerve C ⟶ D) :
-    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-      (functorHomotopyPostcomp (MixedNerve.homotopy ((Functor.const I).map f)) q))) =
-    Arrow.mk (constantFunctorHomMap (nerve I)
+    Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (MixedNerve.homotopy ((Functor.const I).map f)) q))) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap (nerve I)
       (Truncated.HomotopyCategory.homMk ((nerve.edgeMk f).map q).toTruncated)) := by
   apply constantFamilyHom_arrow_of_h_eq
   change (MixedNerve.homotopy ((Functor.const I).map f)).h ≫ q = _

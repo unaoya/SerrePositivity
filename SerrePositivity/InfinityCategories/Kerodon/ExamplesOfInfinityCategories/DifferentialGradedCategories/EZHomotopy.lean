@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：充填の境界公式を普遍作用素で評価して全次数のホモトピー等式を得る。
 規約：KST Construction A.5、実 AW と実 shuffle を用い追加の比較仮定を置かない。
 使われ方：正規化した差のテンソルの消滅を対角の低次ホモトピーへ移す。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

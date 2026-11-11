@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKInputCompactNativeComparison
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：Ind I-2 e の同じ生成順射に対する逆射選択を全 native 入力で整合的に比較する。
@@ -20,10 +20,10 @@ variable (R : Type u) [CommRing R] (A B : PerfDGInput.{u, v} R)
 
 /-- 同じ compact Yoneda を順射とする生成同値の選択。存在は公開 I-2 e が供給する。 -/
 abbrev DGKInputCompactGenerationChoice :=
-  {e : QCatEquivalence ((SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
+  {e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence ((SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
     (dgKInputStableValue R A).obj)
-    (F2.Compact.kappaCompactObjects Cardinal.aleph0 (dgKInputIndCompletion R A)) //
-      e.hom = F2.Compact.compactIndYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj}
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactObjects Cardinal.aleph0 (dgKInputIndCompletion R A)) //
+      e.hom = _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.compactIndYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj}
 
 /-- 無条件 Ind 正本の同じ生成同値は、元の compact Yoneda を順射に持つ。 -/
 def dgKInputStableCompactGenerationChoice : DGKInputCompactGenerationChoice R A :=
@@ -37,13 +37,13 @@ def dgKInputCompactNativeChoiceFamilyMap (e : DGKInputCompactGenerationChoice R 
 
 /-- 同じ全族を公開生成逆射の全族へ比較する固定同型。 -/
 def dgKInputCompactNativeChoiceToFixed (e : DGKInputCompactGenerationChoice R A) :
-    FunctorIso (dgKInputCompactNativeChoiceFamilyMap R A B e)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKInputCompactNativeChoiceFamilyMap R A B e)
       (dgKInputCompactNativeFamilyMap R A B) :=
   dgKInputCompactNativeFamilyMap_choiceIso R A B e.val e.property
 
 /-- 元の全入力族上で、任意二つの生成逆射を比較する。 -/
 def dgKInputCompactNativeChoiceIso (e e' : DGKInputCompactGenerationChoice R A) :
-    FunctorIso (dgKInputCompactNativeChoiceFamilyMap R A B e)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKInputCompactNativeChoiceFamilyMap R A B e)
       (dgKInputCompactNativeChoiceFamilyMap R A B e') :=
   dgKInputCompactNativeChoiceToFixed R A B e ≪≫ (dgKInputCompactNativeChoiceToFixed R A B e').symm
 
@@ -72,7 +72,7 @@ theorem dgKInputCompactNativeChoiceParameterIso_precomp
       (presentedPerfectDGNativeParameter R A B)) (r : S ⟶ T) :
     (dgKInputCompactNativeChoiceParameterIso R A B e e' a).precomp r =
       dgKInputCompactNativeChoiceParameterIso R A B e e' (r ≫ a) :=
-  F2.functorIso_precomp_precomp _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_precomp _ _ _
 
 /-- 任意族に制限した三選択比較も、同じ合成則を厳密に保持する。 -/
 theorem dgKInputCompactNativeChoiceParameterIso_trans
@@ -83,11 +83,11 @@ theorem dgKInputCompactNativeChoiceParameterIso_trans
         dgKInputCompactNativeChoiceParameterIso R A B e' e'' a =
       dgKInputCompactNativeChoiceParameterIso R A B e e'' a := by
   unfold dgKInputCompactNativeChoiceParameterIso
-  rw [← F2.functorIso_precomp_trans, dgKInputCompactNativeChoiceIso_trans]
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_trans, dgKInputCompactNativeChoiceIso_trans]
 
 /-- 任意の生成逆射の全作用も、同じ元の ν 全族へ生成順射で比較できる。 -/
 def dgKInputCompactNativeChoice_generationIso (e : DGKInputCompactGenerationChoice R A) :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (dgKInputCompactNativeChoiceFamilyMap R A B e ≫
         (pre (dgKInputCompactGenerationEquivalence R A).hom).app _)
       (dgKInputCompactNativeLiftedFamilyMap R A B ≫
@@ -104,21 +104,21 @@ theorem dgKInputCompactNativeChoice_generationIso_naturality
         dgKInputCompactNativeChoice_generationIso R A B e' =
       dgKInputCompactNativeChoice_generationIso R A B e := by
   simp only [dgKInputCompactNativeChoiceIso, dgKInputCompactNativeChoice_generationIso,
-    F2.functorIso_postcomp_trans, F2.functorIso_postcomp_symm,
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_trans, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_symm,
     Iso.trans_assoc, Iso.symm_self_id_assoc]
 
 /-- 同じ任意逆射の全 native 作用を、元の全 Yoneda への包含後にも比較する。 -/
 def dgKInputCompactNativeChoice_yonedaIso (e : DGKInputCompactGenerationChoice R A) :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (dgKInputCompactNativeChoiceFamilyMap R A B e ≫
         (pre (dgKInputCompactGenerationEquivalence R A).hom).app _ ≫
-        (ihom _).map (F2.Compact.kappaCompactInclusion.{max (u + 1) v, max (u + 1) v + 1}
+        (ihom _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactInclusion.{max (u + 1) v, max (u + 1) v + 1}
           Cardinal.aleph0 (dgKInputIndCompletion R B)))
       (dgKInputCompactNativeLiftedFamilyMap R A B ≫
-        (ihom _).map (F2.Ind.indYoneda.{max (u + 1) v}
+        (ihom _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda.{max (u + 1) v}
           Cardinal.aleph0 (dgKInputStableValue R B).obj)) := by
   have e' := (dgKInputCompactNativeChoice_generationIso R A B e).postcomp
-    ((ihom _).map (F2.Compact.kappaCompactInclusion.{max (u + 1) v, max (u + 1) v + 1}
+    ((ihom _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactInclusion.{max (u + 1) v, max (u + 1) v + 1}
       Cardinal.aleph0 (dgKInputIndCompletion R B)))
   simpa only [Category.assoc, ← CategoryTheory.Functor.map_comp,
     dgKInputCompactGenerationEquivalence_inclusion] using! e'

@@ -45,7 +45,7 @@ lemma postnikovTowerQuotient_cofinal_connected (n : ℤ) (hn : 1 ≤ n) (i : ℕ
     exact hc.2 j (by omega)
 
 lemma IsKConnective.postnikovTowerQuotient_piProEquivalence
-    (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (h : IsKConnective R Φ k) :
+    (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (h : IsKConnective R Φ k) :
     ProSpectrum.IsPiProEquivalence (invariantLevelMap R Φ (postnikovTowerQuotient R B)) :=
   IsKConnective.invariantLevelMap_cofinal_piProEquivalence R Φ h (postnikovTowerQuotient R B)
     (fun _ => nonpositive_isConnective R B) (fun i => postnikov_isConnective R B i)

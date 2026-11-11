@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionMixedCoherentTriangles
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveSmallFamilies
-public import SerrePositivity.InfinityCategories.Kan.UniverseLiftProductParameter
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.UniverseLiftProductParameter
 
 /-!
 # 中断した任意モデル源への一般化：ResolutionMixedSmallFamilies
@@ -46,14 +46,14 @@ variable (C : Type u) [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
   (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
 
 abbrev tuples := cornerA C ⋙ ResolutionArrowTuples.tuples C
-abbrev smallParameter := NerveCylinderBoundary.product (tuples C)
+abbrev smallParameter := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (tuples C)
   (SSet.stdSimplex.{v}.obj (SimplexCategory.mk 2))
-abbrev parameterIso : NerveMovingParameter.lifted.{u} (smallParameter C) ≅
-    ResolutionMixedBoundary.fullParameter C := UniverseLiftProductParameter.iso (tuples C) 2
+abbrev parameterIso : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{u} (smallParameter C) ≅
+    ResolutionMixedBoundary.fullParameter C := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.iso (tuples C) 2
 
 /-- Change coordinates on the same whole coherent triangle system. -/
 def system (side : Bool) : NerveMovingParameter.System.{u, v}
-    (NerveMovingParameter.lifted.{u} (smallParameter C)) (smallValues C) :=
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{u} (smallParameter C)) (smallValues C) :=
   restrict _ _ _ (parameterIso C).hom (ResolutionMixedCoherentTriangles.coherent C hcof hfib side)
 
 /-- Every external chain carries an entire small tuple-and-triangle family. -/
@@ -76,37 +76,37 @@ lemma point_recover (side : Bool) (p : Index C) :
     RelativeChoiceSpace.family (ResolutionMixedTriangles.oldInclusion C p)
       (ResolutionMixedTriangles.oldBoundary C p)
       (ResolutionMixedTriangles.oldTriangle C hcof hfib p side) := by
-  apply (congrArg UniverseLift.lower
+  apply (congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower
     ((evaluate_restrict (ResolutionMixedBoundary.fullParameter C) (smallValues C)
       (ResolutionMixedCoherentTriangles.coherent C hcof hfib side)
-      (NerveMovingParameter.lifted.{u} (smallParameter C)) (parameterIso C).hom p).trans
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{u} (smallParameter C)) (parameterIso C).hom p).trans
       (congrArg (fun k => (parameterIso C).hom.app p ≫ k)
         (ResolutionMixedCoherentTriangles.coherent_evaluate C hcof hfib side p)))).trans
-  change UniverseLift.lower ((UniverseLiftProductParameter.iso (tuples C) 2).hom.app p ≫
-    UniverseLift.simplexTensorMap _) = _
-  rw [UniverseLiftProductParameter.hom_family, UniverseLift.lower_map]
+  change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.iso (tuples C) 2).hom.app p ≫
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap _) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.hom_family, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower_map]
   rfl
 
-abbrev smallIntervalParameter := NerveCylinderBoundary.product (tuples C)
+abbrev smallIntervalParameter := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (tuples C)
   (SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1))
 abbrev smallFaceMap (k : Fin 3) : smallIntervalParameter C ⟶ smallParameter C :=
-  NerveCylinderBoundary.vertical (SSet.stdSimplex.δ k) (tuples C)
-abbrev intervalParameterIso : NerveMovingParameter.lifted.{u} (smallIntervalParameter C) ≅
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.stdSimplex.δ k) (tuples C)
+abbrev intervalParameterIso : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{u} (smallIntervalParameter C) ≅
     ResolutionMixedIntervalRestrictions.intervalParameters C :=
-  UniverseLiftProductParameter.iso (tuples C) 1
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.iso (tuples C) 1
 
 def faceSystem (side : Bool) (k : Fin 3) : NerveMovingParameter.System.{u, v}
-    (NerveMovingParameter.lifted.{u} (smallIntervalParameter C)) (smallValues C) :=
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{u} (smallIntervalParameter C)) (smallValues C) :=
   restrict _ _ _ (intervalParameterIso C).hom (ResolutionMixedFaceSystems.faces C hcof hfib side k)
 
 lemma system_face (side : Bool) (k : Fin 3) : system C hcof hfib side ≫ restriction _ _
-    (NerveMovingParameter.lifted (smallValues C))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
     (Functor.whiskerRight (smallFaceMap C k) SSet.uliftFunctor.{u, v}) =
     faceSystem C hcof hfib side k := by
   have hc : Functor.whiskerRight (smallFaceMap C k) SSet.uliftFunctor.{u, v} ≫
       (parameterIso C).hom = (intervalParameterIso C).hom ≫
-      NerveCylinderBoundary.vertical (SSet.stdSimplex.δ k) (parameters C) :=
-    UniverseLiftProductParameter.operator (tuples C) (SimplexCategory.δ k)
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.stdSimplex.δ k) (parameters C) :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.operator (tuples C) (SimplexCategory.δ k)
   change (ResolutionMixedCoherentTriangles.coherent C hcof hfib side ≫
     restriction _ _ _ (parameterIso C).hom) ≫ _ = _
   rw [Category.assoc, restriction_comp, hc, ← restriction_comp, ← Category.assoc,

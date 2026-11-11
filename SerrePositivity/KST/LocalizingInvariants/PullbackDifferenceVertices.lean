@@ -1,11 +1,11 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxStableCategory
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackEquivalenceIso
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackVertexData
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
-public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
-public import SerrePositivity.InfinityCategories.Stable.IsomorphismCofiberZero
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.LaxPullbackEquivalenceIso
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.LaxPullbackVertexData
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.EquivalenceFullyFaithful
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsomorphismCofiberZero
 
 /-!
 概要：通常 pullback の lax pullback への包含と、指定矢印の cofiber の消滅条件。
@@ -23,31 +23,31 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
 /-- 元の通常 pullback の包含は全写像空間で充満忠実。 -/
 lemma pullbackComparison_fullyFaithful :
-    IsFullyFaithful (F2.catPullbackToLax p.hom q.hom) := by
-  rw [← F2.catPullbackToEquivalenceSubcomplex_ι]
-  exact ((qCatEquivalenceOfIso
-    (F2.catPullbackEquivalenceSubcomplexIso p.hom q.hom)).isQCatEquivalence.isFullyFaithful).comp
-      (isFullyFaithful_fullSubcomplexOnVertices_ι _ _)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackToLax p.hom q.hom) := by
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackToEquivalenceSubcomplex_ι]
+  exact ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackEquivalenceSubcomplexIso p.hom q.hom)).isQCatEquivalence.isFullyFaithful).comp
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι _ _)
 
 /-- 指定矢印が同値であることは元の通常 pullback の頂点から来ることと同値。 -/
 lemma exists_pullbackVertex_iff (x : (laxCategory p q).obj _⦋0⦌) :
-    (∃ y, (F2.catPullbackToLax p.hom q.hom).app (Opposite.op ⦋0⦌) y = x) ↔
-      F2.IsLaxEquivalenceVertex p.hom q.hom x := by
+    (∃ y, (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackToLax p.hom q.hom).app (Opposite.op ⦋0⦌) y = x) ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.IsLaxEquivalenceVertex p.hom q.hom x := by
   constructor
   · rintro ⟨y, rfl⟩
-    exact F2.catPullbackToLax_vertex p.hom q.hom y
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackToLax_vertex p.hom q.hom y
   · intro hx
-    let z : (F2.laxPullbackEquivalenceSubcomplex p.hom q.hom : SSet.{u}) _⦋0⦌ :=
+    let z : (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackEquivalenceSubcomplex p.hom q.hom : SSet.{u}) _⦋0⦌ :=
       ⟨x, by
         intro v
         have hv : v = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
         subst v
         simpa only [op_id, CategoryTheory.Functor.map_id_apply] using hx⟩
-    let e := F2.catPullbackEquivalenceSubcomplexIso p.hom q.hom
+    let e := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackEquivalenceSubcomplexIso p.hom q.hom
     refine ⟨e.inv.app (Opposite.op ⦋0⦌) z, ?_⟩
     have he := ConcreteCategory.congr_hom
       (NatTrans.congr_app e.inv_hom_id (Opposite.op ⦋0⦌)) z
@@ -55,7 +55,7 @@ lemma exists_pullbackVertex_iff (x : (laxCategory p q).obj _⦋0⦌) :
 
 /-- 各頂点の元の指定矢印の実 cofiber 四角形。 -/
 def laxDifferenceSquare (x : (laxCategory p q).obj _⦋0⦌) :=
-  chosenCofiberSquare (edgeOfSimplex (F2.laxPullbackVertexData p.hom q.hom x).arrow)
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackVertexData p.hom q.hom x).arrow)
 
 /-- 差の対象の頂点での値。全単体上の関手への組み立ては後続工程。 -/
 def laxDifferenceVertex (x : (laxCategory p q).obj _⦋0⦌) : E.obj _⦋0⦌ :=
@@ -63,14 +63,14 @@ def laxDifferenceVertex (x : (laxCategory p q).obj _⦋0⦌) : E.obj _⦋0⦌ :=
 
 /-- 差の頂点の消滅は、指定矢印の同値性と同値。 -/
 lemma laxDifferenceVertex_zero_iff (x : (laxCategory p q).obj _⦋0⦌) :
-    IsZeroVertex (laxDifferenceVertex p q x) ↔
-      F2.IsLaxEquivalenceVertex p.hom q.hom x :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (laxDifferenceVertex p q x) ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.IsLaxEquivalenceVertex p.hom q.hom x :=
   (laxDifferenceSquare p q x).homMk_isIso_iff_zero.symm
 
 /-- 通常 pullback は、差の cofiber が零である頂点をちょうど尽くす。 -/
 lemma exists_pullbackVertex_iff_difference_zero (x : (laxCategory p q).obj _⦋0⦌) :
-    (∃ y, (F2.catPullbackToLax p.hom q.hom).app (Opposite.op ⦋0⦌) y = x) ↔
-      IsZeroVertex (laxDifferenceVertex p q x) :=
+    (∃ y, (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackToLax p.hom q.hom).app (Opposite.op ⦋0⦌) y = x) ↔
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (laxDifferenceVertex p q x) :=
   (exists_pullbackVertex_iff p q x).trans (laxDifferenceVertex_zero_iff p q x).symm
 
 end SerrePositivity.KST.LocalizingInvariants

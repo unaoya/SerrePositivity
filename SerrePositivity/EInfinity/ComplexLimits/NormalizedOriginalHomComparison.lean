@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeHomKan
 public import SerrePositivity.EInfinity.BarrattEccles.FreeForgetHomFrames
-public import SerrePositivity.InfinityCategories.ModelBridge.ResolutionHomSourceRestriction
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ResolutionHomSourceRestriction
 
 /-!
 # 元の始域を持つ標準 Hom から正規化共通 Hom への比較
@@ -22,13 +22,13 @@ namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory HomotopicalAlgebra SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.HomotopyFunctionComplex SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 variable (A : Type u) [CommRing A]
 
 def normalizedOriginalHomRestriction :
     BarrattEccles.complexSourceFrameHom A ⟶ normalizedProbeStandardHom A := by
   let := projectiveModelCategory A
-  exact resolutionHomSourceRestriction
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionHomSourceRestriction
     (cosimplicialResolutionFamily (mappingCofibrantFactorization A))
     (framedLimitProbeFunctor A) (framedLimitProbeComparisonNatTrans A) (𝟭 (Complex A))
 
@@ -46,19 +46,19 @@ lemma normalizedOriginalHom_kanComplex (X : (Complex A)ᵒᵖ) (Y : Complex A) :
 
 lemma normalizedOriginalHomRestriction_homotopyEquivalence
     (X : (Complex A)ᵒᵖ) (Y : Complex A) :
-    IsSimplicialHomotopyEquivalence (((normalizedOriginalHomRestriction A).app X).app Y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (((normalizedOriginalHomRestriction A).app X).app Y) := by
   let := projectiveModelCategory A
   letI : CategoryTheory.Limits.HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
   have : IsFibrant ((𝟭 (Complex A)).obj Y) :=
     BarrattEccles.CarrierDiagram.complex_isFibrant A Y
-  exact resolutionHomSourceRestriction_homotopyEquivalence
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionHomSourceRestriction_homotopyEquivalence
     (cosimplicialResolutionFamily (mappingCofibrantFactorization A))
     (framedLimitProbeFunctor A) (framedLimitProbeComparisonNatTrans A) (𝟭 (Complex A))
     (framedLimitProbeComparison_quasiIso A) X Y
 
 lemma normalizedOriginalHomComparison_homotopyEquivalence
     (X : (Complex A)ᵒᵖ) (Y : Complex A) :
-    IsSimplicialHomotopyEquivalence (((normalizedOriginalHomComparison A).app X).app Y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (((normalizedOriginalHomComparison A).app X).app Y) := by
   have := normalizedOriginalHom_kanComplex A X Y
   have := normalizedProbeStandardHom_kanComplex A X Y
   have := normalizedProbeHomMiddle_kanComplex A X Y

@@ -17,7 +17,7 @@ variable {I : Type u} [SmallCategory I] {x y z : I} (f : x ⟶ y) (g : y ⟶ z)
 
 /-- 三つの全精密化から、元の二入力の全精密化の積への実射影。 -/
 def compositionStringPair : nerve (CompositionStringParameters f g) ⟶
-    nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⊗ nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g) :=
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) ⊗ nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g) :=
   lift (nerveMap (compositionStringFirst f g)) (nerveMap (compositionStringSecond f g))
 
 /-- 第一射影は、元の前の射の全精密化への射影。 -/

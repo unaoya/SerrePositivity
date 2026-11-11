@@ -24,7 +24,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 
 /-- 元の直通列点を固定して元の全比較区間だけを動かす同じ実パラメータ。 -/
 def monicKTracedCompositionIntervalPoint :=
-  intervalParameterPoint (SSet.yonedaEquiv (nervePoint (compositionStringDirect f g)))
+  intervalParameterPoint (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g)))
 
 /-- 元の BF 比較辺の全段評価は、同じ元の全 raw 円柱の直通列制限そのもの。 -/
 lemma monicKTracedSpectrumCompositionEdge_raw_evaluation (n : ℕ) :

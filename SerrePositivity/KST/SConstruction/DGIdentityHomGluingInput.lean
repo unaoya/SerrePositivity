@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.DGKUniverseInput
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectFunctorImage
 public import SerrePositivity.KST.SConstruction.DGHomGluingStrictSquare
 public import SerrePositivity.KST.SConstruction.DGHomGluingConeFunctor
-public import SerrePositivity.InfinityCategories.Derived.Gluing.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
 
 /-!
 概要：恒等 lax 差の対角・実 cone を、小さい厳密 dg 入力と実 S 二辺で表す。
@@ -24,7 +24,7 @@ local notation "M" => dgHomGluingBimodule R (C) (C) (C) (I) (I)
 /-- 概要：指定された小 dg 基底の恒等二脚の実 Hom gluing。
 方針：元の閉比較辺と全次数の第三 Hom 成分を使用する。
 規約：小模型の対象と元の比較辺を保持する。使われ方：恒等 lax 圏の dg 候補。 -/
-abbrev DGIdentityHomGluing := DGGluingObject R (C) (C) (M)
+abbrev DGIdentityHomGluing := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R (C) (C) (M)
 local notation "L" => DGIdentityHomGluing R C
 local notation "F" => dgHomGluingConeFunctor R (C) (C) (C) (I) (I)
 
@@ -68,7 +68,7 @@ def dgIdentityHomGluingDifferenceInput : PerfDGInput.{u, u + 1} R :=
 規約：同じ閉比較を保持する。使われ方：右零化面の下辺。 -/
 def dgIdentityHomGluingDiagonalInputMap :
     dgIdentityHomGluingBaseInput R C ⟶ dgIdentityHomGluingGluingInput R C :=
-  ULift.up (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
     (dgIdentityHomGluingDiagonal R C))
 
 /-- 概要：同じ実 cone 差を固定 S の実辺にする。
@@ -76,7 +76,7 @@ def dgIdentityHomGluingDiagonalInputMap :
 規約：元の差の実対象像を保つ。使われ方：右零化面の右辺。 -/
 def dgIdentityHomGluingDifferenceInputMap :
     dgIdentityHomGluingGluingInput R C ⟶ dgIdentityHomGluingDifferenceInput R C :=
-  ULift.up (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
     (dgIdentityHomGluingDifference R C))
 
 end SerrePositivity.KST.SConstruction

@@ -18,7 +18,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) {n : ℕ}
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) {n : ℕ}
   (a : ULift.{u} (Fin (n + 1)) →o ULift.{u} (Fin 3))
   (t : ULift.{u} (Fin (n + 1)) →o Fin 2)
   (j k : ULift.{u} (Fin (n + 1))) (hj : a j = ULift.up 0) (hk : a k = ULift.up 2)
@@ -44,7 +44,7 @@ theorem verdierLowerDeformationFullSLongHom_core :
       (pre (C := SSet.{u}) (fullSNativeCoreInclusion
         ((verdierLowerTriangle d).obj ⟨a j⟩))).app
           ((stableMultiKanEnrichedFunctor 0).obj ((verdierLowerTriangle d).obj ⟨a k⟩)).obj =
-      (((coherentPathDeformationEnriched a t).comp SSet (verdierLowerTriangle d)).comp
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPathDeformationEnriched a t).comp SSet (verdierLowerTriangle d)).comp
         SSet (stableMultiKanEnrichedFunctor 0)).map ⟨j⟩ ⟨k⟩ := by
   rw [verdierLowerDeformationFullSLongHom, Category.assoc,
     zeroFunctorFullSNativeKanFamily_core, ← Category.assoc,
@@ -64,7 +64,7 @@ theorem verdierLowerDeformationFullSLongHom_triangle
         ((verdierLowerTriangle d).obj ⟨a (ULift.up 0)⟩))).app
           ((stableMultiKanEnrichedFunctor 0).obj
             ((verdierLowerTriangle d).obj ⟨a (ULift.up 2)⟩)).obj =
-      coherentTriangleLongHom (((coherentPathDeformationEnriched a t).comp SSet
+      coherentTriangleLongHom (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPathDeformationEnriched a t).comp SSet
         (verdierLowerTriangle d)).comp SSet (stableMultiKanEnrichedFunctor 0)) :=
   verdierLowerDeformationFullSLongHom_core d a t (ULift.up 0) (ULift.up 2) hj hk
 

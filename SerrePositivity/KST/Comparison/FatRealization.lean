@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Simplicial.SimplicialSum
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplicialSum
 public import SerrePositivity.KST.Comparison.DiagonalRowEvaluation
 public import Mathlib.CategoryTheory.Limits.Shapes.Equalizers
 
@@ -42,7 +42,7 @@ structure SimplexFace where
 使われ方：余等化子の終域。
 -/
 def fatRowObject (F : SimplexCategoryᵒᵖ ⥤ SSet.{u}) : SSet.{u} :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum (fun n : ℕ => F.obj (op ⦋n⦌) ⊗ Δ[n])
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSum (fun n : ℕ => F.obj (op ⦋n⦌) ⊗ Δ[n])
 
 /--
 概要：fat realization の面の関係式の余積。
@@ -51,7 +51,7 @@ def fatRowObject (F : SimplexCategoryᵒᵖ ⥤ SSet.{u}) : SSet.{u} :=
 使われ方：余等化子の二射の始域。
 -/
 def fatRelationObject (F : SimplexCategoryᵒᵖ ⥤ SSet.{u}) : SSet.{u} :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum (fun θ : SimplexFace => F.obj (op ⦋θ.target⦌) ⊗ Δ[θ.source])
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSum (fun θ : SimplexFace => F.obj (op ⦋θ.target⦌) ⊗ Δ[θ.source])
 
 /--
 概要：面の関係式を行の単体作用へ送る射。
@@ -61,8 +61,8 @@ def fatRelationObject (F : SimplexCategoryᵒᵖ ⥤ SSet.{u}) : SSet.{u} :=
 -/
 def fatRelationLeft (F : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
     fatRelationObject F ⟶ fatRowObject F :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc (fun θ => (F.map θ.hom.op ▷ Δ[θ.source]) ≫
-    _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) θ.source)
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumDesc (fun θ => (F.map θ.hom.op ▷ Δ[θ.source]) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) θ.source)
 
 /--
 概要：面の関係式を標準単体の面写像へ送る射。
@@ -72,8 +72,8 @@ def fatRelationLeft (F : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
 -/
 def fatRelationRight (F : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
     fatRelationObject F ⟶ fatRowObject F :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc (fun θ => (F.obj (op ⦋θ.target⦌) ◁ SSet.stdSimplex.map θ.hom) ≫
-    _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) θ.target)
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumDesc (fun θ => (F.obj (op ⦋θ.target⦌) ◁ SSet.stdSimplex.map θ.hom) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) θ.target)
 
 /--
 概要：二重単体集合の fat realization の実対象。
@@ -92,7 +92,7 @@ def fatRealization (F : SimplexCategoryᵒᵖ ⥤ SSet.{u}) : SSet.{u} :=
 -/
 def fatRealizationInclusion (F : SimplexCategoryᵒᵖ ⥤ SSet.{u}) (n : ℕ) :
     F.obj (op ⦋n⦌) ⊗ Δ[n] ⟶ fatRealization F :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) n ≫ coequalizer.π _ _
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) n ≫ coequalizer.π _ _
 
 /--
 概要：各行の包含は単射の面の関係式を満たす。
@@ -104,17 +104,17 @@ theorem fatRealizationInclusion_face (F : SimplexCategoryᵒᵖ ⥤ SSet.{u}) (�
     (F.map θ.hom.op ▷ Δ[θ.source]) ≫ fatRealizationInclusion F θ.source =
       (F.obj (op ⦋θ.target⦌) ◁ SSet.stdSimplex.map θ.hom) ≫
         fatRealizationInclusion F θ.target := by
-  have h := congrArg (fun t => _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion
+  have h := congrArg (fun t => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion
     (fun θ : SimplexFace => F.obj (op ⦋θ.target⦌) ⊗ Δ[θ.source]) θ ≫ t)
       (coequalizer.condition (fatRelationLeft F) (fatRelationRight F))
-  have hL : _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion
+  have hL : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion
       (fun θ : SimplexFace => F.obj (op ⦋θ.target⦌) ⊗ Δ[θ.source]) θ ≫ fatRelationLeft F =
         (F.map θ.hom.op ▷ Δ[θ.source]) ≫
-          _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) θ.source := rfl
-  have hR : _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion
+          _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) θ.source := rfl
+  have hR : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion
       (fun θ : SimplexFace => F.obj (op ⦋θ.target⦌) ⊗ Δ[θ.source]) θ ≫ fatRelationRight F =
         (F.obj (op ⦋θ.target⦌) ◁ SSet.stdSimplex.map θ.hom) ≫
-          _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) θ.target := rfl
+          _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) θ.target := rfl
   rw [← Category.assoc, ← Category.assoc, hL, hR] at h
   exact h
 

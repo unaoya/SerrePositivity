@@ -20,18 +20,18 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 lemma cubicalLambdaNativeSimplexData_cutCompose_one_face {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D)
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-    (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
-    (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) :
+    (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j)
+    (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) :
     (cubicalLambdaNativeSimplexData A F).cutCompose I
-        (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+        (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
         (2 - (I.card : ℤ)) j =
       simplexSubsetMappedFaceTopImage A true F I hI j hj hjm hjM := by
   let hL := simplexSubsetSplitLeft_two I hI j hj hjm
   let hR := simplexSubsetSplitRight_two I hI j hj hjM
   let T := necklaceInSimplexSubsetSplitLeft.{u} I hI j hj hL
   let U := necklaceInSimplexSubsetSplitRight.{u} I hI j hj hR
-  let a := _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-  let b := _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+  let a := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+  let b := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
   let H := homObject A D (F.obj a) (F.obj b)
   let d := T.necklace.down.dimension + U.necklace.down.dimension
   have hd : (I.erase j).card - 2 = d :=
@@ -48,7 +48,7 @@ lemma cubicalLambdaNativeSimplexData_cutCompose_one_face {n : ℕ}
   let g := F.map a b
   let r := eqToHom (congrArg H.X hn) (serreCubeTopCellImage A H d (f ≫ g))
   have hN : (cubicalLambdaNativeSimplexData A F).cutCompose I
-      (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+      (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
       (2 - (I.card : ℤ)) j = r := by
     exact (cubicalLambdaNativeSimplexData_cutCompose A F I hI j hj hL hR).trans
       (congrArg (fun l => eqToHom (congrArg H.X hn)

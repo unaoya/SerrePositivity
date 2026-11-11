@@ -35,7 +35,7 @@ lemma ordinaryStructureAdjoint_natural {X Y : KanSequence.{u}} (f : X ⟶ Y) (n 
 使われ方：一段移動からの厳密な構造随伴単位。 -/
 def adjointLoop (X : KanSequence.{u}) : KanSequence.{u} where
   level n := (mapping PointedSimplicialSet.circle X).level n
-  sigma n := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _).symm
+  sigma n := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _).symm
     ((ihom PointedSimplicialSet.circle.{u}).map (ordinaryStructureAdjoint X n))
 
 /-- 概要：補助列の随伴構造射は元の随伴構造射の通常 loop。
@@ -54,7 +54,7 @@ def adjointLoop (X : KanSequence.{u}) : KanSequence.{u} where
 lemma adjointLoop_omegaCondition {X : KanSequence.{u}} (hX : X.OmegaCondition) :
     (adjointLoop X).OmegaCondition := by
   intro n
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (ordinaryStructureAdjoint (adjointLoop X) n).right
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (ordinaryStructureAdjoint (adjointLoop X) n).right
   rw [adjointLoop_ordinaryStructureAdjoint]
   exact PointedMapping.post_piIsomorphism PointedSimplicialSet.circle _ (hX n)
 
@@ -118,6 +118,6 @@ lemma adjointLoopTailUnit_natural {X Y : KanSequence.{u}} (f : X ⟶ Y) :
 規約：元の射の定義を変えず、BF 置換の入力として使う。
 使われ方：補助列との比較の同値性を放電する。 -/
 lemma adjointLoopTailUnit_levelwise {X : KanSequence.{u}} (hX : X.OmegaCondition) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((adjointLoopTailUnit X).app n).right := hX n
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((adjointLoopTailUnit X).app n).right := hX n
 
 end SerrePositivity.KST.Spectra.KanSequence

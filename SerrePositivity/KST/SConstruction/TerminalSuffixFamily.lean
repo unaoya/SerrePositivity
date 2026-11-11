@@ -30,7 +30,7 @@ def terminalSuffixFamily {A : SSet.{u}} (B : PointedSimplicialSet.{u})
     (h : A ⊗ (Δ[1] : SSet.{u}) ⟶ B.right)
     (h₁ : SSet.ι₁ ≫ h = toUnit A ≫ B.hom) :
     A ⊗ (Δ[1] : SSet.{u}) ⟶ (terminalPathSpace B).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry terminalPointedInterval B
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry terminalPointedInterval B
     (terminalSuffixReparametrization A ≫ h) (terminalSuffixFamily_basepoint B h h₁)
 
 /-- suffix の各始点は元の区間族を厳密に回収する。 -/
@@ -38,7 +38,7 @@ lemma terminalSuffixFamily_start {A : SSet.{u}} (B : PointedSimplicialSet.{u})
     (h : A ⊗ (Δ[1] : SSet.{u}) ⟶ B.right) (h₁) :
     terminalSuffixFamily B h h₁ ≫ (terminalPathStart B).right = h := by
   rw [terminalPathStart_evaluation, ← Category.assoc, terminalSuffixFamily,
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, Spectra.KanPath.evaluation,
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, Spectra.KanPath.evaluation,
     ← Category.assoc, curry_pre_app, Spectra.KanPath.curry_unit_evaluation]
   have he := congrArg (fun f => f ≫ h) (terminalSuffixReparametrization_start A)
   simpa only [Category.assoc, Category.id_comp] using he
@@ -51,7 +51,7 @@ lemma terminalSuffixFamily_zero {A : SSet.{u}} (B : PointedSimplicialSet.{u})
   have hs : terminalPointedInterval.right ◁ (SSet.ι₀ : A ⟶ _) ≫
       terminalSuffixReparametrization A = (β_ (Δ[1] : SSet.{u}) A).hom :=
     terminalSuffixReparametrization_zero A
-  rw [Category.assoc, terminalSuffixFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
+  rw [Category.assoc, terminalSuffixFamily, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι,
     ← curry_natural_left, ← Category.assoc, hs,
     terminalPathFamily_ι]
 
@@ -63,7 +63,7 @@ lemma terminalSuffixFamily_one {A : SSet.{u}} (B : PointedSimplicialSet.{u})
   have hs : terminalPointedInterval.right ◁ (SSet.ι₁ : A ⟶ _) ≫
       terminalSuffixReparametrization A = snd (Δ[1] : SSet.{u}) A ≫ SSet.ι₁ :=
     terminalSuffixReparametrization_one A
-  rw [Category.assoc, terminalSuffixFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
+  rw [Category.assoc, terminalSuffixFamily, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι,
     ← curry_natural_left, ← Category.assoc, hs,
     Category.assoc, h₁, comp_toUnit_assoc, Category.assoc,
     PointedObject.basedHom_basepoint_ι, PointedObject.curry_constant]

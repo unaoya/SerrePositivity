@@ -64,7 +64,7 @@ lemma exists_retraction : ∃ s : E ⟶ P, j ≫ s = 𝟙 P ∧
       V.h ≫ q = q ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫ H.h := by
   have : Mono i := mono_of_mono_fac hi
   have : Mono j := sq.mono_fst_of_mono
-  let HA := LargeParameterSquare.changeEndpoints (KanActualHomotopy.refl j)
+  let HA := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints (KanActualHomotopy.refl j)
     (Category.comp_id j).symm rfl
   let base := q ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫ H.h
   have hb : (𝟙 E) ≫ q = SSet.ι₀ ≫ base := by
@@ -73,7 +73,7 @@ lemma exists_retraction : ∃ s : E ⟶ P, j ≫ s = 𝟙 P ∧
       Category.id_comp]
   have hA : HA.h ≫ q = j ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫ base := by
     dsimp only [HA, base]
-    rw [LargeParameterSquare.changeEndpoints_h]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
     change (fst P (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ j) ≫ q = _
     rw [← Category.assoc (j ▷ _) (q ▷ _) H.h, ← comp_whiskerRight, sq.w,
       comp_whiskerRight, Category.assoc (k ▷ _) (i ▷ _) H.h, hfix,
@@ -95,11 +95,11 @@ lemma exists_retraction : ∃ s : E ⟶ P, j ≫ s = 𝟙 P ∧
     · rw [Category.assoc, sq.lift_snd, ← Category.assoc, sq.w,
         Category.assoc, hi, Category.comp_id, Category.id_comp]
   have he : t = s ≫ j := (sq.lift_fst _ _ _).symm
-  refine ⟨s, hs, LargeParameterSquare.changeEndpoints V rfl he, ?_, ?_⟩
-  · rw [LargeParameterSquare.changeEndpoints_h, hV]
-    rw [LargeParameterSquare.changeEndpoints_h]
+  refine ⟨s, hs, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints V rfl he, ?_, ?_⟩
+  · rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h, hV]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
     rfl
-  · rw [LargeParameterSquare.changeEndpoints_h]
+  · rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
     exact hVp
 
 include hi H hfix hq sq in

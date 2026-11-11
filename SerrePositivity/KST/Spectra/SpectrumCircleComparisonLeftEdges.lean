@@ -60,7 +60,7 @@ lemma circleCompanionComparisonRawHomSquare_corner_common (z : Sp.{u} _⦋0⦌) 
     (circleCompanionComparisonRawHomSquare z .right).app _
       (stdSimplex.obj₀Equiv.symm 0, (SSet.const (X := (Δ[1] : SSet.{u}))
         (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app _ (stdSimplex.obj₀Equiv.symm 0)) at h
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.const_vertex] at h
   exact h
 
 /-- 元の参照側の左辺は、同じ元の零 Hom に厳密に定値。 -/
@@ -68,7 +68,7 @@ lemma circleCompanionComparisonRawHomSquare_skipFirst_right (z : Sp.{u} _⦋0⦌
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) ≫
       circleCompanionComparisonRawHomSquare z .right =
       SSet.const (circleEvaluationPointedHom z).basepoint := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.constant_of_vertex
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.constant_of_vertex
     (circleCompanionComparisonRawHomSquare_skipFirst_right_constant z)
   have h := congrArg (fun f : (Δ[1] : SSet.{u}) ⟶ (circleEvaluationPointedHom z).right ↦
     f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
@@ -76,14 +76,14 @@ lemma circleCompanionComparisonRawHomSquare_skipFirst_right (z : Sp.{u} _⦋0⦌
   change (circleCompanionComparisonRawHomSquare z .left).app _
     ((SSet.const (X := (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app _
       (stdSimplex.obj₀Equiv.symm 0), stdSimplex.obj₀Equiv.symm 0) = _ at h
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.const_vertex] at h
   have hv := circleEvaluationCompanion_vertex z (0 : Fin 2)
   change _ = (circleEvaluationPointedHom z).basepoint at hv
   have hh := h.trans hv
   change (circleCompanionComparisonRawHomSquare z .right).app _
     ((SSet.const (X := (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app _
       (stdSimplex.obj₀Equiv.symm 0), stdSimplex.obj₀Equiv.symm 0) = _
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.const_vertex]
   exact (circleCompanionComparisonRawHomSquare_corner_common z).symm.trans hh
 
 /-- 元の左右の左辺の両端は、同じ元の零 Hom 頂点。 -/
@@ -95,7 +95,7 @@ lemma circleCompanionComparisonRawHomSquare_left_vertex (z : Sp.{u} _⦋0⦌)
   cases k
   · rw [circleCompanionComparisonRawHomSquare_skipFirst_left]
     exact circleEvaluationCompanion_vertex z i
-  · rw [circleCompanionComparisonRawHomSquare_skipFirst_right, _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex]
+  · rw [circleCompanionComparisonRawHomSquare_skipFirst_right, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.const_vertex]
 
 /-- 元の比較正方形の上辺も、同じ元の零 Hom に厳密に定値。 -/
 lemma circleCompanionComparisonRawHomSquare_includeSecond (z : Sp.{u} _⦋0⦌)
@@ -103,17 +103,17 @@ lemma circleCompanionComparisonRawHomSquare_includeSecond (z : Sp.{u} _⦋0⦌)
     lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫
       circleCompanionComparisonRawHomSquare z k =
       SSet.const (circleEvaluationPointedHom z).basepoint := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.constant_of_vertex
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.constant_of_vertex
     (circleCompanionComparisonRawHomSquare_includeSecond_constant z k)
   have h := circleCompanionComparisonRawHomSquare_left_vertex z k (1 : Fin 2)
   change (circleCompanionComparisonRawHomSquare z k).app _
     ((SSet.const (X := (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app _
       (stdSimplex.obj₀Equiv.symm 1), stdSimplex.obj₀Equiv.symm 1) = _ at h
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.const_vertex] at h
   change (circleCompanionComparisonRawHomSquare z k).app _
     (stdSimplex.obj₀Equiv.symm 0, (SSet.const (X := (Δ[1] : SSet.{u}))
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app _ (stdSimplex.obj₀Equiv.symm 0)) = _
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.const_vertex]
   exact h
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

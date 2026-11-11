@@ -32,7 +32,7 @@ lemma valueDescent_marked : letI := valueCategory W
     valueMarkedFunctor W ⋙ valueDescent W F hF = markedValueDescent W F hF :=
   valueFoldFunctor_marked W _ _
 
-lemma valueDescent_generator (g : FactorTarget.Index W) : letI := valueCategory W
+lemma valueDescent_generator (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) : letI := valueCategory W
     (valueDescent W F hF).map (ValueSpine.generator W g) = F.map g.val.hom.toPath :=
   valueFoldFunctor_generator W _ _ g
 

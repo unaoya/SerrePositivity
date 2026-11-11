@@ -66,7 +66,7 @@ lemma cochainKernelCoconeLift_quasiIso [Epi d] {W : Complex R}
     hlim.conePointUniqueUpToIso_hom_comp (kernelIsKernel d) WalkingParallelPair.zero
   have h : e.hom ≫ cochainKernelToCocone d =
       mappingCocone.lift d a 0 (by simp [ha]) := by
-    apply dgMappingCocone_hom_ext d
+    apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgMappingCocone_hom_ext d
     · rw [Category.assoc, cochainKernelToCocone_fst, mappingCocone.lift_fst, he]
     · rw [Cochain.ofHom_comp, Cochain.comp_assoc_of_first_is_zero_cochain,
         cochainKernelToCocone_snd, Cochain.comp_zero]

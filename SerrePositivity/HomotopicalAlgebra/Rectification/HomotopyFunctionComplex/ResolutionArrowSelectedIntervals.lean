@@ -50,8 +50,8 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
 
 omit [ModelCategory SSet.{v}] in
 lemma vertex_lifted (e : Arrow (Index C)) : (vertexBoundary C).app e =
-    UniverseLift.map.{u} ((ResolutionArrowTuples.vertexData C).app e.left ≫
-      (fibers C).map e.hom) := (UniverseLift.map_comp _ _).symm
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} ((ResolutionArrowTuples.vertexData C).app e.left ≫
+      (fibers C).map e.hom) := (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map_comp _ _).symm
 
 abbrev postHomotopy (X : FramedResolution C) (Y W : ResolutionObject C)
     (f : X.inner.base ⟶ Y.base) (g : Y ⟶ W) :=
@@ -68,36 +68,36 @@ abbrev postHomotopy (X : FramedResolution C) (Y W : ResolutionObject C)
 abbrev postFamily (X : FramedResolution C) (Y W : ResolutionObject C)
     (f : X.inner.base ⟶ Y.base) (g : Y ⟶ W) :
     (fullParameter C).obj (Arrow.mk (post X Y W f g)) ⟶
-      UniverseLift.obj.{u} ((values C).obj (Arrow.mk (post X Y W f g))) :=
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((values C).obj (Arrow.mk (post X Y W f g))) :=
   UniverseLift.fixedHomotopyMap.{u} (postHomotopy hcof hfib X Y W f g)
 
 lemma post_left_lifted (X : FramedResolution C) (Y W : ResolutionObject C)
     (f : X.inner.base ⟶ Y.base) (g : Y ⟶ W) :
     NerveMovingParameter.evaluate (parameter C) (values C) (left C hcof)
-      (Arrow.mk (post X Y W f g)) = UniverseLift.map.{u} (CoherentLiftRelative.postLeft hcof
+      (Arrow.mk (post X Y W f g)) = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (CoherentLiftRelative.postLeft hcof
         X.inner Y W f g) :=
-  (UniverseLift.map_lower _).symm.trans
-    (congrArg (fun k => UniverseLift.map.{u} k) (post_left hcof X Y W f g))
+  (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map_lower _).symm.trans
+    (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} k) (post_left hcof X Y W f g))
 
 lemma post_right_lifted (X : FramedResolution C) (Y W : ResolutionObject C)
     (f : X.inner.base ⟶ Y.base) (g : Y ⟶ W) :
     NerveMovingParameter.evaluate (parameter C) (values C) (right C hcof)
-      (Arrow.mk (post X Y W f g)) = UniverseLift.map.{u} (CoherentLiftRelative.postRight hcof
+      (Arrow.mk (post X Y W f g)) = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (CoherentLiftRelative.postRight hcof
         X.inner Y W f g) :=
-  (UniverseLift.map_lower _).symm.trans
-    (congrArg (fun k => UniverseLift.map.{u} k) (post_right hcof X Y W f g))
+  (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map_lower _).symm.trans
+    (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} k) (post_right hcof X Y W f g))
 
 include hcof in
 lemma post_boundary_lifted (X : FramedResolution C) (Y W : ResolutionObject C)
     (f : X.inner.base ⟶ Y.base) (g : Y ⟶ W) :
-    (vertexBoundary C).app (Arrow.mk (post X Y W f g)) = UniverseLift.map.{u}
+    (vertexBoundary C).app (Arrow.mk (post X Y W f g)) = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u}
       (CoherentLiftRelative.postBoundary X.inner Y W f g) := by
   have hp := CoherentLiftRelative.postLeft_vertices hcof X.inner Y W f g
   change CoherentLiftRelative.vertexInclusion X.inner Y f ≫
     (CoherentLiftTuples.interpolation hcof X.inner Y f ≫ _) = _ at hp
   rw [← Category.assoc, CoherentLiftTuples.interpolation_vertices] at hp
   exact (vertex_lifted (Arrow.mk (post X Y W f g))).trans
-    (congrArg (fun k => UniverseLift.map.{u} k)
+    (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} k)
       ((congrArg (fun k => CoherentLiftRelative.vertexData X.inner Y f ≫ k)
         (post_fibers X Y W f g)).trans hp))
 
@@ -127,7 +127,7 @@ lemma post_one (X : FramedResolution C) (Y W : ResolutionObject C)
 
 lemma post_vertices (X : FramedResolution C) (Y W : ResolutionObject C)
     (f : X.inner.base ⟶ Y.base) (g : Y ⟶ W) :
-    (NerveCylinderBoundary.horizontal (vertexParameter C) (parameter C) (vertexInclusion C)
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal (vertexParameter C) (parameter C) (vertexInclusion C)
       interval.{max u v}).app (Arrow.mk (post X Y W f g)) ≫ postFamily hcof hfib X Y W f g =
     (NerveProductParameter.projection (vertexParameter C) interval.{max u v}).app
       (Arrow.mk (post X Y W f g)) ≫ (vertexBoundary C).app (Arrow.mk (post X Y W f g)) :=
@@ -146,7 +146,7 @@ lemma post_fit (X : FramedResolution C) (Y W : ResolutionObject C)
 /-- Recover the actual previously selected small edge family in its original coordinates. -/
 lemma post_recover (X : FramedResolution C) (Y W : ResolutionObject C)
     (f : X.inner.base ⟶ Y.base) (g : Y ⟶ W) :
-    UniverseLift.lowerSimplexTensor (postFamily hcof hfib X Y W f g) =
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor (postFamily hcof hfib X Y W f g) =
     RelativeChoiceSpace.family (CoherentLiftRelative.vertexInclusion X.inner Y f)
       (CoherentLiftRelative.postBoundary X.inner Y W f g)
       (CoherentLiftRelative.postEdge hcof hfib X.inner Y W f g) :=
@@ -171,29 +171,29 @@ abbrev preHomotopy (X Y : FramedResolution C) (W : ResolutionObject C) (f : X �
 abbrev preFamily (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ Y)
     (g : Y.inner.base ⟶ W.base) :
     (fullParameter C).obj (Arrow.mk (pre X Y W f g)) ⟶
-      UniverseLift.obj.{u} ((values C).obj (Arrow.mk (pre X Y W f g))) :=
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((values C).obj (Arrow.mk (pre X Y W f g))) :=
   UniverseLift.fixedHomotopyMap.{u} (preHomotopy hcof hfib X Y W f g)
 
 lemma pre_left_lifted (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ Y)
     (g : Y.inner.base ⟶ W.base) :
     NerveMovingParameter.evaluate (parameter C) (values C) (left C hcof)
-      (Arrow.mk (pre X Y W f g)) = UniverseLift.map.{u} (CoherentLiftRelative.preLeft hcof
+      (Arrow.mk (pre X Y W f g)) = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (CoherentLiftRelative.preLeft hcof
         X.inner Y.inner W f.map g (FramedResolution.frameMap f)) :=
-  (UniverseLift.map_lower _).symm.trans
-    (congrArg (fun k => UniverseLift.map.{u} k) (pre_left hcof X Y W f g))
+  (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map_lower _).symm.trans
+    (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} k) (pre_left hcof X Y W f g))
 
 lemma pre_right_lifted (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ Y)
     (g : Y.inner.base ⟶ W.base) :
     NerveMovingParameter.evaluate (parameter C) (values C) (right C hcof)
-      (Arrow.mk (pre X Y W f g)) = UniverseLift.map.{u} (CoherentLiftRelative.preRight hcof
+      (Arrow.mk (pre X Y W f g)) = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (CoherentLiftRelative.preRight hcof
         X.inner Y.inner W f.map g) :=
-  (UniverseLift.map_lower _).symm.trans
-    (congrArg (fun k => UniverseLift.map.{u} k) (pre_right hcof X Y W f g))
+  (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map_lower _).symm.trans
+    (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} k) (pre_right hcof X Y W f g))
 
 include hcof in
 lemma pre_boundary_lifted (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ Y)
     (g : Y.inner.base ⟶ W.base) :
-    (vertexBoundary C).app (Arrow.mk (pre X Y W f g)) = UniverseLift.map.{u}
+    (vertexBoundary C).app (Arrow.mk (pre X Y W f g)) = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u}
       (CoherentLiftRelative.preBoundary X.inner Y.inner W f.map g) := by
   have hp := CoherentLiftRelative.preLeft_vertices hcof X.inner Y.inner W f.map g
     (FramedResolution.frameMap f)
@@ -201,7 +201,7 @@ lemma pre_boundary_lifted (X Y : FramedResolution C) (W : ResolutionObject C) (f
     (CoherentLiftTuples.interpolation hcof Y.inner W g ≫ _) = _ at hp
   rw [← Category.assoc, CoherentLiftTuples.interpolation_vertices] at hp
   exact (vertex_lifted (Arrow.mk (pre X Y W f g))).trans
-    (congrArg (fun k => UniverseLift.map.{u} k)
+    (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} k)
       ((congrArg (fun k => CoherentLiftRelative.vertexData Y.inner W g ≫ k)
         (pre_fibers X Y W f g)).trans hp))
 
@@ -231,7 +231,7 @@ lemma pre_one (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ Y)
 
 lemma pre_vertices (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ Y)
     (g : Y.inner.base ⟶ W.base) :
-    (NerveCylinderBoundary.horizontal (vertexParameter C) (parameter C) (vertexInclusion C)
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal (vertexParameter C) (parameter C) (vertexInclusion C)
       interval.{max u v}).app (Arrow.mk (pre X Y W f g)) ≫ preFamily hcof hfib X Y W f g =
     (NerveProductParameter.projection (vertexParameter C) interval.{max u v}).app
       (Arrow.mk (pre X Y W f g)) ≫ (vertexBoundary C).app (Arrow.mk (pre X Y W f g)) :=
@@ -250,7 +250,7 @@ lemma pre_fit (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ Y)
 /-- Recover the actual previously selected small edge family in its original coordinates. -/
 lemma pre_recover (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ Y)
     (g : Y.inner.base ⟶ W.base) :
-    UniverseLift.lowerSimplexTensor (preFamily hcof hfib X Y W f g) =
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor (preFamily hcof hfib X Y W f g) =
     RelativeChoiceSpace.family (CoherentLiftRelative.vertexInclusion Y.inner W g)
       (CoherentLiftRelative.preBoundary X.inner Y.inner W f.map g)
       (CoherentLiftRelative.preEdge hcof hfib X.inner Y.inner W f.map g

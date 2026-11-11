@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.FreeHammockEnrichedFoldUnique
 public import SerrePositivity.EInfinity.Hammock.AllMarkedEnrichedInclusion
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EnrichedCategory
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory
 
 /-!
 # 元の自由圏の hammock の豊穣拡張と二つの生成部分への制限
@@ -25,9 +25,9 @@ variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
   {D : Type uD} [EnrichedCategory SSet.{u} D]
 
 def EnrichedFoldData.hammockEnrichedFunctor (F : EnrichedFoldData W D) :
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     EnrichedFunctor SSet.{u} (Paths C) D := by
-  letI := Hammock.enrichedCategory W.paths
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   exact
     { obj := F.obj
       map := F.hammockFoldMap
@@ -35,19 +35,19 @@ def EnrichedFoldData.hammockEnrichedFunctor (F : EnrichedFoldData W D) :
       map_comp := F.hammockFoldMap_comp }
 
 def restrictHammockEnrichedFunctor :
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     EnrichedFunctor SSet.{u} (Paths C) D → EnrichedFoldData W D := by
-  letI := Hammock.enrichedCategory W.paths
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   intro G
   exact
     { obj := G.obj
       marked := fun X Y => AllMarked.inclusion W X Y ≫ G.map X Y
-      generator := fun g => arrowMap W.paths g.val.hom.toPath ≫ G.map g.val.left g.val.right
+      generator := fun g => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W.paths g.val.hom.toPath ≫ G.map g.val.left g.val.right
       marked_unit := fun X => by
         rw [← Category.assoc, AllMarked.inclusion_unit]
         exact G.map_id X
       marked_comp := fun X Y Z => by
-        have hc : colimitComposition W.paths X Y Z ≫ G.map X Z =
+        have hc : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition W.paths X Y Z ≫ G.map X Z =
             (G.map X Y ⊗ₘ G.map Y Z) ≫ eComp SSet.{u} (G.obj X) (G.obj Y) (G.obj Z) :=
           G.map_comp X Y Z
         rw [← Category.assoc, AllMarked.inclusion_composition, Category.assoc, hc,

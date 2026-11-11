@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：全射の逆像を選び、必要なら区間の右端の頂点へ移す。
 規約：Moss 2020 Lemma 26 の細分作用素の計算の補助。
 使われ方：通常の退化と拡張退化の初期区間上の式。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

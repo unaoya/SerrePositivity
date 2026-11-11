@@ -24,10 +24,10 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
   {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
 
 lemma roofCornerSourceSliceMap_projection : roofCornerSourceSliceMap A Y q b ≫
-    sliceOverProjection (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (nerveVertex Y))) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))) =
       pullback.snd _ _ ≫ roofTargetProjection A Y q ≫ (nerveMap A ≫ q) := by
   have h := pullback.condition
-    (f := sliceOverProjection (SSet.yonedaEquiv.symm (nerveVertex Y) ≫ q))
+    (f := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y) ≫ q))
     (g := nerveMap A ≫ q)
   simp only [roofCornerSourceSliceMap, Category.assoc, roofTargetSlicePointIso_projection, h]
 
@@ -41,7 +41,7 @@ lemma roofQuillenDegreeNormalizationMap_inv_source :
 
 lemma roofQuillenDegreeCornerMap_source : roofQuillenDegreeCornerMap A Y q b f ≫
     pullback.snd _ _ = pullback.fst _ _ ≫ f := by
-  rw [roofQuillenDegreeCornerMap, Category.assoc, sliceRoofCornerBase_snd,
+  rw [roofQuillenDegreeCornerMap, Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceRoofCornerBase_snd,
     ← Category.assoc, roofQuillenDegreeNormalizationMap_inv_source]
 
 end SerrePositivity.EInfinity.FrameHom.FrameArrows

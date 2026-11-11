@@ -10,6 +10,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 方針：sd⊣Ex の自然な Hom 同値を使う。
 規約：Moss 2020 §3 の最終頂点写像の全対象への拡張。
 使われ方：二重細分の horn の境界条件を関手の射として記述する。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

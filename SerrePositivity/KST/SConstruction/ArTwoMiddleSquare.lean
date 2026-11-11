@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.GappedDegenerateSquares
-public import SerrePositivity.InfinityCategories.Core.VertexPrescribedExtension
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexPrescribedExtension
 
 /-! # Ar[2] の中央の正方形
 概要：Ar[2] から最初と最後の零対角を除いた四頂点は標準正方形をなす。

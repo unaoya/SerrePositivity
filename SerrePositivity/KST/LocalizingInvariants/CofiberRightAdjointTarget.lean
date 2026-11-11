@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberRightAdjointTarget
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberRightAdjointTarget
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberAdjunction
 
@@ -20,13 +20,13 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の入力対象は右随伴の矢印の終域に全単体上で厳密に残る。 -/
-lemma cofiberRightAdjoint_target (X : SSet.{u}) [Quasicategory X] [IsStable X] :
-    cofiberRightAdjoint X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+lemma cofiberRightAdjoint_target (X : SSet.{u}) [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] :
+    cofiberRightAdjoint X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       𝟙 X := by
   simp only [cofiberRightAdjoint, CofiberRotation.inverseRotation, Category.assoc]
-  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiber_bottom_target_eq_right_source]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.cofiber_bottom_target_eq_right_source]
   rw [← Category.assoc (CofiberRotation.rightSection X), CofiberRotation.rightSection_right,
     Category.id_comp]
-  exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.identityArrow_source X
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.identityArrow_source X
 
 end SerrePositivity.KST.LocalizingInvariants

@@ -52,7 +52,7 @@ def splitCechAugmentedSpaceRestrictionIso (s : SplitEpi f) :
         (splitCechAugmentedSpaceExtension f s F) ≅ cechAugmentedPresheafSpace f F := Iso.refl _
 
 variable [ModelCategory SSet.{0}]
-  (I J : MorphismProperty SSet.{0}) [ModelGeneration.CofibrantlyGenerated.{0} I J]
+  (I J : MorphismProperty SSet.{0}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{0})]
 
 /-- 概要：切断を持つ射の元の指定 Čech 比較は実際に弱同値（補題 3.2）。

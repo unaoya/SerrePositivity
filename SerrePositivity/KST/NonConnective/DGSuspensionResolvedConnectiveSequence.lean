@@ -54,7 +54,7 @@ def dgSuspensionResolvedConnectiveCandidateCocone :=
 
 /-- 明示段別供給に条件付きで、元の同じ余錐は全写像空間で余極限。 -/
 theorem dgSuspensionResolvedConnectiveCandidateCocone_isColimit :
-    IsColimitCone (dgSuspensionResolvedConnectiveCandidateCocone R s A Z e) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (dgSuspensionResolvedConnectiveCandidateCocone R s A Z e) :=
   sequentialCandidateColimitCocone_isColimit (dgSuspensionResolvedConnectiveSequence R s A Z e)
 
 /-- 明示段別供給に条件付きで、元の K(A) から同じ実余極限への零段の脚。 -/
@@ -64,7 +64,7 @@ def dgSuspensionResolvedConnectedComparison :
 
 /-- 明示段別供給に条件付きで、元の実比較射の全一単体は同じ余極限余錐の零段の脚そのもの。 -/
 theorem dgSuspensionResolvedConnectedComparison_edge :
-    (coherentNerveEdge (dgSuspensionResolvedConnectedComparison R s A Z e)).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgSuspensionResolvedConnectedComparison R s A Z e)).edge =
       (sequentialCandidateColimitLeg (dgSuspensionResolvedConnectiveSequence R s A Z e) ⟨0⟩).edge :=
   dgSuspensionConnectedComparison_edge R s A _
 

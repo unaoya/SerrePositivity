@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：閾値より先の頂点は前側の面によって一つ増えることを使う。
 規約：Moss 2020 Lemma 28 の退化単体の計算に用いる補助。
 使われ方：通常の退化の元の単体の複雑度の上界。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

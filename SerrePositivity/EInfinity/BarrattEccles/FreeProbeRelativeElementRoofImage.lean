@@ -25,7 +25,7 @@ lemma freeProbeRelativeElementRoof_graph_image :
     LeftRoof.Precompose.SameUniverse.diagramGraphMap
       (cofibrantAlgebraRelativeCategory A).weakEquivalences (freeProbeRelativeElementRoof A X B) ≫
       cofibrantAlgebraHammockGraphInclusionMap A (freeProbeRelativeElementSource A X)
-        (ULiftHom.objUp.{u + 1, u + 1} B) LeftRoof.word =
+        (ULiftHom.objUp.{u + 1, u + 1} B) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word =
     freeProbeRelativeElementNormalizedIndexNerveMap A X B ≫
       FrameHom.frameLeftRoofNerveMap (Y := B.obj) (weakEquivalences (operad A).Algebra)
         ((freeNormalizedProbeFrame A).obj X) ((freeNormalizedProbeAugmentation A).app X)
@@ -39,14 +39,14 @@ lemma freeProbeRelativeElementRoof_graph_image :
   let F := ((LeftRoof.Precompose.SameUniverse.diagramGraphMap
     (cofibrantAlgebraRelativeCategory A).weakEquivalences (freeProbeRelativeElementRoof A X B) ≫
     cofibrantAlgebraHammockGraphInclusionMap A (freeProbeRelativeElementSource A X)
-      (ULiftHom.objUp.{u + 1, u + 1} B) LeftRoof.word).app n) σ
+      (ULiftHom.objUp.{u + 1, u + 1} B) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word).app n) σ
   let G := ((freeProbeRelativeElementNormalizedIndexNerveMap A X B ≫
     FrameHom.frameLeftRoofNerveMap (Y := B.obj) (weakEquivalences (operad A).Algebra)
       ((freeNormalizedProbeFrame A).obj X) ((freeNormalizedProbeAugmentation A).app X)
       (freeNormalizedProbeAugmentation_weak A X)
       (fun f => freeNormalizedProbeFrame_homotopicallyConstant A X f)).app n) σ
   have ho (i : Fin (n.unop.len + 1)) : F.obj i = G.obj i := by
-    apply Zigzag.object_ext
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagExt.object_ext
     · intro j
       change Fin 3 at j
       fin_cases j <;> rfl
@@ -55,7 +55,7 @@ lemma freeProbeRelativeElementRoof_graph_image :
       fin_cases j <;> rfl
   apply CategoryTheory.Functor.hext ho
   intro i j f
-  apply Zigzag.hom_hext (ho i) (ho j)
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagExt.hom_hext (ho i) (ho j)
   intro k
   change Fin 3 at k
   fin_cases k <;> rfl
@@ -69,18 +69,18 @@ lemma freeProbeRelativeElementRoofMap_image :
     freeProbeRelativeElementNormalizedIndexNerveMap A X B ≫
       freeNormalizedTensorReducedRoof A X B.obj := by
   let := modelCategory A
-  have hg : graphInclusion (cofibrantAlgebraRelativeCategory A).weakEquivalences
-      (freeProbeRelativeElementSource A X) (ULiftHom.objUp.{u + 1, u + 1} B) LeftRoof.word ≫
+  have hg : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (cofibrantAlgebraRelativeCategory A).weakEquivalences
+      (freeProbeRelativeElementSource A X) (ULiftHom.objUp.{u + 1, u + 1} B) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word ≫
       cofibrantAlgebraHammockColimitInclusionMap A (freeProbeElementCofibrantSource A X) B =
       cofibrantAlgebraHammockGraphInclusionMap A (freeProbeRelativeElementSource A X)
-        (ULiftHom.objUp.{u + 1, u + 1} B) LeftRoof.word ≫
-      algebraHammockGraphInclusion A LeftRoof.word ((freeProbeFunctor A).obj X) B.obj ≫
+        (ULiftHom.objUp.{u + 1, u + 1} B) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word ≫
+      algebraHammockGraphInclusion A _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word ((freeProbeFunctor A).obj X) B.obj ≫
         (algebraHammockReductionIso A ((freeProbeFunctor A).obj X) B.obj).hom :=
     cofibrantAlgebraHammockColimitInclusionMap_graph A
-      (freeProbeElementCofibrantSource A X) B LeftRoof.word
+      (freeProbeElementCofibrantSource A X) B _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word
   change (LeftRoof.Precompose.SameUniverse.diagramGraphMap
     (cofibrantAlgebraRelativeCategory A).weakEquivalences (freeProbeRelativeElementRoof A X B) ≫
-    graphInclusion _ _ _ LeftRoof.word) ≫ _ = _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion _ _ _ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word) ≫ _ = _
   rw [Category.assoc, hg,
     ← Category.assoc, ← Category.assoc, freeProbeRelativeElementRoof_graph_image]
   simp only [freeNormalizedTensorReducedRoof, FrameHom.frameLeftRoofColimitMap,

@@ -20,7 +20,7 @@ open scoped Simplicial
 /-- 一点上の元の二円柱を結ぶ全区間を、同じ元の写像空間の実辺として読む。 -/
 def pointFamilyHomotopyEdge {E : SSet.{u}} {a b : (Δ[0] : SSet.{u}) ⟶ E}
     (H : SSet.Homotopy a b) : E.Edge (SSet.yonedaEquiv a) (SSet.yonedaEquiv b) :=
-  simplicialHomotopyVertexEdge H (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})))
 
 /-- 同じ元の全区間は、唯一の零頂点をパラメータとする元の円柱の実射そのもの。 -/
 lemma pointFamilyHomotopyEdge_map {E : SSet.{u}} {a b : (Δ[0] : SSet.{u}) ⟶ E}
@@ -29,16 +29,16 @@ lemma pointFamilyHomotopyEdge_map {E : SSet.{u}} {a b : (Δ[0] : SSet.{u}) ⟶ E
       lift (SSet.const (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})))) (𝟙 (Δ[1] : SSet.{u})) ≫ H.h := by
   apply SSet.yonedaEquiv.injective
   rw [Equiv.apply_symm_apply]
-  have hi : SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) = homotopyIntervalEdge.edge := by
+  have hi : SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge := by
     apply stdSimplex.ext
     intro i
     fin_cases i <;> rfl
   change H.h.app (Opposite.op ⦋1⦌)
       ((SSet.Truncated.Edge.id (X := (truncation 2).obj (Δ[0] : SSet.{u}))
-        (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})))).edge, homotopyIntervalEdge.edge) =
+        (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})))).edge, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge) =
     H.h.app (Opposite.op ⦋1⦌)
-      (PinchedHom.constant (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u}))) 1,
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u}))) 1,
         SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})))
-  rw [pinchedConstant_one, hi]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one, hi]
 
 end SerrePositivity.KST.SConstruction

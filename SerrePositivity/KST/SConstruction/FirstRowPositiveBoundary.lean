@@ -21,7 +21,7 @@ open scoped Simplicial
 規約：未証明の条件を仮定する構造体は追加しない。
 使われ方：第一行制限の厳密な境界持ち上げ。 -/
 lemma exists_firstRowCofiberData_preserving_frame {A B C : SSet.{u}}
-    [Quasicategory C] [IsStable C] (n : ℕ) (i : A ⟶ B) [Mono i]
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (n : ℕ) (i : A ⟶ B) [Mono i]
     (a : A ⟶ sConstruction n C) (d : B ⟶ (ihom (firstRowNerve n)).obj C)
     (h : a ≫ firstRowRestriction n C = i ≫ d) :
     ∃ c : FirstRowCofiberData n i a d,
@@ -69,7 +69,7 @@ lemma FirstRowCofiberData.toGapped_frame {A B C : SSet.{u}} [Quasicategory C]
     (hc : c.cofibers.family ≫ (pre (frameInclusion n)).app (cofiberDiagrams C) =
       c.frame ≫ zeroFrameCofiberFamiliesMap n C) :
     c.toGapped hi ≫ gappedFrameRestriction n C = c.frame := by
-  apply (cancel_mono (fullSubcomplexOnVertices _ IsZeroFrameVertex).ι).1
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsZeroFrameVertex).ι).1
   rw [Category.assoc, gappedFrameRestriction_ι, ← Category.assoc, c.toGapped_ι]
   exact c.cofibers.diagram_frame hc
 
@@ -89,7 +89,7 @@ lemma FirstRowCofiberData.toGapped_firstRow {A B C : SSet.{u}} [Quasicategory C]
 方針：枠を保つ cofiber データを実際に構成し、gapped 性と両側の等号を確認する。
 規約：C は安定な quasicategory。使われ方：正次元の全境界での充填。 -/
 lemma firstRowRestriction_hasLiftingProperty_of_vertexSurjective {A B C : SSet.{u}}
-    [Quasicategory C] [IsStable C] (n : ℕ) (i : A ⟶ B) [Mono i]
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (n : ℕ) (i : A ⟶ B) [Mono i]
     (hi : Function.Surjective (i.app (Opposite.op ⦋0⦌))) :
     HasLiftingProperty i (firstRowRestriction n C) := by
   constructor
@@ -105,7 +105,7 @@ lemma firstRowRestriction_hasLiftingProperty_of_vertexSurjective {A B C : SSet.{
 規約：零次元の持ち上げはこの定理には含めない。
 使われ方：第一行制限の trivial Kan fibration の正次元部分。 -/
 lemma firstRowRestriction_hasLiftingProperty_boundary (n r : ℕ) (C : SSet.{u})
-    [Quasicategory C] [IsStable C] :
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     HasLiftingProperty (boundary (r + 1)).ι (firstRowRestriction n C) :=
   firstRowRestriction_hasLiftingProperty_of_vertexSurjective n _ (boundary_vertex_surjective r)
 
@@ -114,28 +114,28 @@ lemma firstRowRestriction_hasLiftingProperty_boundary (n r : ℕ) (C : SSet.{u})
 規約：三つ組の押し出し性はこの結論には含めない。
 使われ方：零次元の境界 RLP のうち構成・第一行・零対角の部分。 -/
 lemma exists_firstRowDiagramWithZeroDiagonal (n : ℕ) (C : SSet.{u})
-    [Quasicategory C] [IsStable C] (p : firstRowNerve n ⟶ C) :
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (p : firstRowNerve n ⟶ C) :
     ∃ F : arNerve n ⟶ C, firstRowInclusion n ≫ F = p ∧
-      ∀ j : Fin (n + 1), IsZeroVertex (F.app (Opposite.op ⦋0⦌)
+      ∀ j : Fin (n + 1), _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ (arObj j j le_rfl))) := by
   let i : (⊥_ SSet.{u}) ⟶ (Δ[0] : SSet.{u}) := initial.to _
   let a : (⊥_ SSet.{u}) ⟶ sConstruction n C := initial.to _
   let d : (Δ[0] : SSet.{u}) ⟶ (ihom (firstRowNerve n)).obj C :=
-    SSet.yonedaEquiv.symm (functorVertex p)
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex p)
   have h : a ≫ firstRowRestriction n C = i ≫ d := initial.hom_ext _ _
   obtain ⟨c, hc⟩ := exists_firstRowCofiberData_preserving_frame n i a d h
   let v : (Δ[0] : SSet.{u}) _⦋0⦌ := SSet.yonedaEquiv (𝟙 _)
-  let F := (functorVertexEquiv (arNerve n) C).symm (c.diagram.app (Opposite.op ⦋0⦌) v)
-  have hF : functorVertex F = c.diagram.app (Opposite.op ⦋0⦌) v :=
-    (functorVertexEquiv _ C).apply_symm_apply _
+  let F := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).symm (c.diagram.app (Opposite.op ⦋0⦌) v)
+  have hF : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F = c.diagram.app (Opposite.op ⦋0⦌) v :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).apply_symm_apply _
   refine ⟨F, ?_, fun j => c.cofibers.diagram_zero_diagonal hc v j⟩
   have hr := ConcreteCategory.congr_hom
     (NatTrans.congr_app (c.diagram_firstRow hc) (Opposite.op ⦋0⦌)) v
   change ((pre (firstRowInclusion n)).app C).app (Opposite.op ⦋0⦌)
     (c.diagram.app (Opposite.op ⦋0⦌) v) = d.app (Opposite.op ⦋0⦌) v at hr
-  have hd : d.app (Opposite.op ⦋0⦌) v = functorVertex p :=
+  have hd : d.app (Opposite.op ⦋0⦌) v = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex p :=
     SSet.yonedaEquiv_symm_app_id _
   rw [← hF, hd] at hr
-  exact functorVertex_injective hr
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex_injective hr
 
 end SerrePositivity.KST.SConstruction

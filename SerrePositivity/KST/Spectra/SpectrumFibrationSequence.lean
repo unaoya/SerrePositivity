@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumBoundary
-public import SerrePositivity.InfinityCategories.Kan.GroupExactTransfer
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.GroupExactTransfer
 
 /-!
 概要：段ごとの Kan fibration のスペクトルの fiber 列の整数次数長完全列。
@@ -33,17 +33,17 @@ variable {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y) [hp : ∀ k, Fibration (p.app k
 theorem stable_exact_connecting_fiber (j : ℤ) (a : homotopyGroup (fiber p hp) j) :
     homotopyMap (fiberInclusion p hp) j a = 1 ↔
       ∃ b : homotopyGroup Y (j + 1), stableConnectingHom p j b = a :=
-  _root_.SerrePositivity.InfinityCategories.Kan.group_exact_of_equivalences (stableConnectingHom p j) (homotopyMap (fiberInclusion p hp) j)
-    (_root_.SerrePositivity.InfinityCategories.Kan.connectingHom (p.app (boundaryStage j)).right
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.group_exact_of_equivalences (stableConnectingHom p j) (homotopyMap (fiberInclusion p hp) j)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connectingHom (p.app (boundaryStage j)).right
       (X.level (boundaryStage j)).space.basepoint (boundaryIndex j))
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι (p.app (boundaryStage j)).right
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι (p.app (boundaryStage j)).right
       ((p.app (boundaryStage j)).right.app _ (X.level (boundaryStage j)).space.basepoint))
-      (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point (p.app (boundaryStage j)).right (X.level (boundaryStage j)).space.basepoint))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι_point (p.app (boundaryStage j)).right (X.level (boundaryStage j)).space.basepoint))
     (boundaryBaseEquiv p j) (boundaryFiberEquiv p j)
     (positiveStageEquiv X j (boundaryStage j) (boundaryIndex j)
       (boundaryStage_admissible j) (boundaryStage_degree j))
     (stableConnectingHom_compute p j) (boundaryFiberEquiv_inclusion p j)
-    (_root_.SerrePositivity.InfinityCategories.Kan.exact_connecting_fiber (p.app (boundaryStage j)).right
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.exact_connecting_fiber (p.app (boundaryStage j)).right
       (X.level (boundaryStage j)).space.basepoint (boundaryIndex j)) a
 
 /-- 概要：整数次数の連結準同型の核は全空間から底への準同型の像。
@@ -53,15 +53,15 @@ theorem stable_exact_connecting_fiber (j : ℤ) (a : homotopyGroup (fiber p hp) 
 theorem stable_exact_total_base (j : ℤ) (a : homotopyGroup Y (j + 1)) :
     stableConnectingHom p j a = 1 ↔
       ∃ b : homotopyGroup X (j + 1), homotopyMap p (j + 1) b = a :=
-  _root_.SerrePositivity.InfinityCategories.Kan.group_exact_of_equivalences (homotopyMap p (j + 1)) (stableConnectingHom p j)
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := boundaryIndex j + 1) (p.app (boundaryStage j)).right rfl)
-    (_root_.SerrePositivity.InfinityCategories.Kan.connectingHom (p.app (boundaryStage j)).right
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.group_exact_of_equivalences (homotopyMap p (j + 1)) (stableConnectingHom p j)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := boundaryIndex j + 1) (p.app (boundaryStage j)).right rfl)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connectingHom (p.app (boundaryStage j)).right
       (X.level (boundaryStage j)).space.basepoint (boundaryIndex j))
     (positiveStageEquiv X (j + 1) (boundaryStage j) (boundaryIndex j + 1)
       (boundaryStage_succ_admissible j) (boundaryStage_succ_degree j))
     (boundaryBaseEquiv p j) (boundaryFiberEquiv p j)
     (boundaryBaseEquiv_projection p j) (stableConnectingHom_compute p j)
-    (_root_.SerrePositivity.InfinityCategories.Kan.exact_total_base (p.app (boundaryStage j)).right
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.exact_total_base (p.app (boundaryStage j)).right
       (X.level (boundaryStage j)).space.basepoint (boundaryIndex j)) a
 
 /-- 概要：整数次数の全空間から底への準同型の核は fiber 包含の像。
@@ -73,19 +73,19 @@ theorem stable_exact_fiber_total (j : ℤ) (a : homotopyGroup X j) :
       ∃ b : homotopyGroup (fiber p hp) j, homotopyMap (fiberInclusion p hp) j b = a := by
   let eY := (positiveStageEquiv Y j (boundaryStage j) (boundaryIndex j)
     (boundaryStage_admissible j) (boundaryStage_degree j)).trans
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (boundaryIndex j)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso (boundaryIndex j)
         (Iso.refl (Y.level (boundaryStage j)).space.right)
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p.app (boundaryStage j)))).symm
-  exact _root_.SerrePositivity.InfinityCategories.Kan.group_exact_of_equivalences (homotopyMap (fiberInclusion p hp) j) (homotopyMap p j)
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι (p.app (boundaryStage j)).right
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p.app (boundaryStage j)))).symm
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.group_exact_of_equivalences (homotopyMap (fiberInclusion p hp) j) (homotopyMap p j)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι (p.app (boundaryStage j)).right
       ((p.app (boundaryStage j)).right.app _ (X.level (boundaryStage j)).space.basepoint))
-      (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point (p.app (boundaryStage j)).right (X.level (boundaryStage j)).space.basepoint))
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := boundaryIndex j) (p.app (boundaryStage j)).right rfl)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι_point (p.app (boundaryStage j)).right (X.level (boundaryStage j)).space.basepoint))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := boundaryIndex j) (p.app (boundaryStage j)).right rfl)
     (boundaryFiberEquiv p j)
     (positiveStageEquiv X j (boundaryStage j) (boundaryIndex j)
       (boundaryStage_admissible j) (boundaryStage_degree j)) eY
     (boundaryFiberEquiv_inclusion p j) (positiveStageEquiv_projection p j _ _ _ _)
-    (_root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total (p.app (boundaryStage j)).right
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.exact_fiber_total (p.app (boundaryStage j)).right
       (X.level (boundaryStage j)).space.basepoint (boundaryIndex j)) a
 
 /-- 概要：スペクトルの fiber 列のホモトピー群の長完全列は全整数次数で完全。

@@ -20,16 +20,16 @@ open scoped Simplicial
 
 /-- 元の S₁ core 比較の π₀ の逆は完全関手について自然。 -/
 lemma coreSOnePiZeroEquiv_symm_naturality {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (a : SSet.π₀ (quasicategoryCore X.carrier : SSet.{u})) :
-    SSet.mapπ₀ (quasicategoryCoreMap (sPostcompCofiber 1 f.val f.property))
+    (a : SSet.π₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore X.carrier : SSet.{u})) :
+    SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (sPostcompCofiber 1 f.val f.property))
       ((coreSOnePiZeroEquiv X).symm a) =
-      (coreSOnePiZeroEquiv Y).symm (SSet.mapπ₀ (quasicategoryCoreMap f.val) a) := by
+      (coreSOnePiZeroEquiv Y).symm (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap f.val) a) := by
   apply (coreSOnePiZeroEquiv Y).injective
   change SSet.mapπ₀ (coreSOneComparison Y.carrier)
-    (SSet.mapπ₀ (quasicategoryCoreMap (sPostcompCofiber 1 f.val f.property))
+    (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (sPostcompCofiber 1 f.val f.property))
       ((coreSOnePiZeroEquiv X).symm a)) = _
   rw [← SSet.mapπ₀_comp_apply, coreSOneComparison_naturality, SSet.mapπ₀_comp_apply]
-  change SSet.mapπ₀ (quasicategoryCoreMap f.val)
+  change SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap f.val)
     ((coreSOnePiZeroEquiv X) ((coreSOnePiZeroEquiv X).symm a)) =
       (coreSOnePiZeroEquiv Y) ((coreSOnePiZeroEquiv Y).symm _)
   rw [Equiv.apply_symm_apply, Equiv.apply_symm_apply]
@@ -38,7 +38,7 @@ lemma coreSOnePiZeroEquiv_symm_naturality {X Y : StableModel.{u}} (f : X ⟶ Y)
 lemma objectKPiZeroClass_naturality {X Y : StableModel.{u}} (f : X ⟶ Y) (x : X.carrier _⦋0⦌) :
     SSet.mapπ₀ (boundaryKSpaceFunctor.map f).right (objectKPiZeroClass X x) =
       objectKPiZeroClass Y (f.val.app _ x) := by
-  have hn : quasicategoryCoreMap (sPostcompCofiber 1 f.val f.property) ≫
+  have hn : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (sPostcompCofiber 1 f.val f.property) ≫
       zeroRowLoopComparison 0 Y =
       zeroRowLoopComparison 0 X ≫ (boundaryKSpaceFunctor.map f).right :=
     zeroRowLoopComparison_naturality 0 f

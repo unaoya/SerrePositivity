@@ -11,6 +11,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：horn の細分比較の包含との可換性、nerve の比較の自然性、有限鎖上の境界条件を合成する。
 規約：Moss 2020 Proposition 21 の有限段階の充填に使う境界の等式。
 使われ方：Ex の二回の適用後の horn の写像の充填。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

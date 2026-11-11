@@ -15,25 +15,25 @@ namespace SerrePositivity.KST.Fibration
 /-- curry の二重評価写像は、元の同じ直積頂点での評価。 -/
 theorem doubleFunctorEvaluation_curry {A K Y : SSet.{u}}
     (a : A _⦋0⦌) (x : K _⦋0⦌) :
-    functorSpaceCurryMap A K Y ≫ _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) x a =
-      evaluateFunctorAt (a, x) := by
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation, ← Category.assoc, F2.functorSpaceCurryMap_evaluate,
-    evaluateFunctorAt_pre]
-  apply congrArg (fun z => evaluateFunctorAt (Y := Y) z)
-  change (a, PinchedHom.constant x 0) = (a, x)
-  rw [pinchedConstant_zero]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorSpaceCurryMap A K Y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.doubleFunctorEvaluation (Y := Y) x a =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (a, x) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.doubleFunctorEvaluation, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.functorSpaceCurryMap_evaluate,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.evaluateFunctorAt_pre]
+  apply congrArg (fun z => _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := Y) z)
+  change (a, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 0) = (a, x)
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero]
 
 /-- 指定同型を curry 後に二重評価しても、元の同じ直積成分を保持する。 -/
 theorem functorIso_curry_doubleMap {A K Y : SSet.{u}} [Quasicategory Y]
-    {F G : A ⊗ K ⟶ Y} (e : FunctorIso F G) (a : A _⦋0⦌) (x : K _⦋0⦌) :
-    HEq (VertexIso.map e.curry (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) x a))
-      (VertexIso.map e (evaluateFunctorAt (a, x))) := by
-  have hm := F2.vertexIso_map_heq_of_heq e.curry
-    (VertexIso.map e (functorSpaceCurryMap A K Y))
-    (functorSpaceCurryMap_vertex F).symm (functorSpaceCurryMap_vertex G).symm
-    (F2.functorIso_curry_heq_map e) (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) x a)
-  exact hm.trans ((heq_of_eq (F2.vertexIso_map_comp e (functorSpaceCurryMap A K Y)
-    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) x a))).trans
-      (F2.vertexIso_map_heq e (doubleFunctorEvaluation_curry a x)))
+    {F G : A ⊗ K ⟶ Y} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G) (a : A _⦋0⦌) (x : K _⦋0⦌) :
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e.curry (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.doubleFunctorEvaluation (Y := Y) x a))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (a, x))) := by
+  have hm := _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.vertexIso_map_heq_of_heq e.curry
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorSpaceCurryMap A K Y))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorSpaceCurryMap_vertex F).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorSpaceCurryMap_vertex G).symm
+    (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.functorIso_curry_heq_map e) (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.doubleFunctorEvaluation (Y := Y) x a)
+  exact hm.trans ((heq_of_eq (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.vertexIso_map_comp e (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorSpaceCurryMap A K Y)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.doubleFunctorEvaluation (Y := Y) x a))).trans
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.vertexIso_map_heq e (doubleFunctorEvaluation_curry a x)))
 
 end SerrePositivity.KST.Fibration

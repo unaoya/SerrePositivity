@@ -19,7 +19,7 @@ open scoped Simplicial
 /-- 概要：ι 型の標準零 cofiber の subobject は指定零対象への定値完全関手。
 方針：底の射の評価式と部分型の外延性。
 規約：保存条件の証明の選択によらない。使われ方：左 fiber への切断の持ち上げ。 -/
-lemma zeroCofiberStableFunctor_subobject_true (X : StableModel.{u}) (z : ZeroVertex X.carrier) :
+lemma zeroCofiberStableFunctor_subobject_true (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex X.carrier) :
     zeroCofiberStableFunctor X z true ≫ cofiberStableSubobject X = stableConstantZero X z :=
   Subtype.ext (zeroCofiberStableFunctor_subobject X z true)
 

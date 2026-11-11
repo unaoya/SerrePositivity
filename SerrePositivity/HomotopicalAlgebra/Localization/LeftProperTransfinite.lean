@@ -19,9 +19,9 @@ namespace SerrePositivity.Bousfield
 variable {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [ModelCategory SSet.{w}]
-  (IS JS : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  (IS JS : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
   (hw : weakEquivalences SSet.{w} = SimplicialHomotopy.weakEquivalences)
@@ -82,7 +82,7 @@ lemma localEquivalences_smithClosure (S : MorphismProperty C) :
   have he : I.rlp.llp ⊓ localEquivalences.{v, u} (C := C) cof fib S =
       cofibrations C ⊓ localEquivalences.{v, u} (C := C) cof fib S :=
     congrArg (fun P => P ⊓ localEquivalences.{v, u} (C := C) cof fib S)
-      (ModelGeneration.cofibrations_eq_generated I J).symm
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I J).symm
   exact he.symm ▸ localEquivalences_leftProperClosure cof fib I J IS JS hcof hfib hw
     hcofV hfibV hcofB hfibB S
 

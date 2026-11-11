@@ -22,8 +22,8 @@ lemma simplexSubsetSplit_top_composition {n : ℕ} (I : Finset (Fin (n + 1)))
     let T := necklaceInSimplexSubsetSplitLeft.{u} I hI j hj hL
     let U := necklaceInSimplexSubsetSplitRight.{u} I hI j hj hR
     serreCubeTopCellImage A (homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))))
       (T.necklace.down.dimension + U.necklace.down.dimension)
       ((serreConcreteCubeComplexFunctor A).map
           (necklaceCubeTensorIso T.necklace U.necklace).hom ≫
@@ -32,12 +32,12 @@ lemma simplexSubsetSplit_top_composition {n : ℕ} (I : Finset (Fin (n + 1)))
             necklaceLambdaCell A (necklaceInSimplexSubset I hI)) =
       compose A
         (serreCubeTopCellImage A (homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex j)
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex j)
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))))
           U.necklace.down.dimension (necklaceLambdaCell A U))
         (serreCubeTopCellImage A (homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex j)) T.necklace.down.dimension (necklaceLambdaCell A T))
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex j)) T.necklace.down.dimension (necklaceLambdaCell A T))
         (by omega) := by
   exact (congrArg
     (fun f => serreCubeTopCellImage A _

@@ -24,7 +24,7 @@ variable (R : Type u) [CommRing R]
 def rightFrameHammockCoherentComparison (X : Mon (Complex R)) :
     letI _modelInst := modelCategory R
     IsCofibrant X →
-      FunctorIso
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
         (FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
           (rightFrameFamily R) 0)
         (FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
@@ -44,7 +44,7 @@ def rightFrameHammockCoherentComparison_precomp (X : Mon (Complex R)) :
       ∀ {K : SSet.{u + 2}}
         (f : K ⟶ SSet.uliftFunctor.{u + 2, u + 1}.obj
           (nerve (AsSmall.{u + 1} (Mon (Complex R))))),
-        FunctorIso
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
           (f ≫ FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
             (rightFrameFamily R) 0)
           (f ≫ FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)

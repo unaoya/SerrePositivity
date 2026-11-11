@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedFiberValueTo
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FullyFaithfulVertexIsoImage
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 
 /-!
 概要：指定頂点等式で固定した値への射影は、全関手空間で同値となり指定同型を反映する。

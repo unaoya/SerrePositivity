@@ -546,7 +546,7 @@ public import SerrePositivity.HomologicalAlgebra.UnitHomologyNaturality
 public import SerrePositivity.HomologicalAlgebra.UnitHomologyNormalization
 public import SerrePositivity.HomologicalAlgebra.UnitLinearHomComplex
 public import SerrePositivity.InfinityCategories.Project.Entrypoints.Core
-public import SerrePositivity.InfinityCategories.DGNerve
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.DGNerve
 public import SerrePositivity.InfinityCategories.Project.Entrypoints.Derived
 public import SerrePositivity.InfinityCategories.Project.Entrypoints.F1
 public import SerrePositivity.InfinityCategories.Project.Entrypoints.F1B

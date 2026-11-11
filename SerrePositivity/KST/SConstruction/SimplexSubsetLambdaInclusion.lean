@@ -17,43 +17,43 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の指定端点の Hom に入る、元の部分集合の同じ Serre 生成射。 -/
 def simplexSubsetLambdaCellAt {n : ℕ} (I : Finset (Fin (n + 1))) (a b : Fin (n + 1))
-    (hI : 2 ≤ I.card) (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) :
+    (hI : 2 ≤ I.card) (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) :
     serreCubeComplex A (I.card - 2) ⟶
-      homObject A (CubicalLambda A (Δ[n] : SSet.{u})) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a)
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) :=
-  (cubicalSerreChainsCubeIso A).hom.app (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2)) ≫
+      homObject A (CubicalLambda A (Δ[n] : SSet.{u})) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a)
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) :=
+  (cubicalSerreChainsCubeIso A).hom.app (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2)) ≫
     (cubicalSerreChains A).map (simplexSubsetCubicalCellAt I a b hI ha hb)
 
 /-- 元の最小・最大端点では、元の同じ Serre 生成射を厳密に回収する。 -/
 lemma simplexSubsetLambdaCellAt_canonical {n : ℕ} (I : Finset (Fin (n + 1)))
     (hI : 2 ≤ I.card) :
-    simplexSubsetLambdaCellAt A I (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-      (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) hI rfl rfl = simplexSubsetLambdaCell A I hI := rfl
+    simplexSubsetLambdaCellAt A I (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+      (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) hI rfl rfl = simplexSubsetLambdaCell A I hI := rfl
 
 /-- 元の指定端点の同じ Serre 生成射を、元の Hom 余モノイドへの射に束ねる。 -/
 def simplexSubsetLambdaCellComonoidAt {n : ℕ} (I : Finset (Fin (n + 1))) (a b : Fin (n + 1))
-    (hI : 2 ≤ I.card) (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) :
+    (hI : 2 ≤ I.card) (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) :
     serreCubeComonoid A (I.card - 2) ⟶
       cubicalLambdaHomComonoid A (Δ[n] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) :=
-  (cubicalSerreComonoidCubeIso A).hom.app (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) :=
+  (cubicalSerreComonoidCubeIso A).hom.app (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2)) ≫
     (cubicalSerreComonoidFunctor A).map (simplexSubsetCubicalCellAt I a b hI ha hb)
 
 /-- 元の余モノイド値の生成射は、元の同じ鎖射を基礎の射に持つ。 -/
 lemma simplexSubsetLambdaCellComonoidAt_hom {n : ℕ} (I : Finset (Fin (n + 1)))
-    (a b : Fin (n + 1)) (hI : 2 ≤ I.card) (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) :
+    (a b : Fin (n + 1)) (hI : 2 ≤ I.card) (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) :
     (simplexSubsetLambdaCellComonoidAt A I a b hI ha hb).hom =
       simplexSubsetLambdaCellAt A I a b hI ha hb := rfl
 
 variable {n : ℕ} (I J : Finset (Fin (n + 1))) (a b : Fin (n + 1))
   (hI : 2 ≤ I.card) (hJ : 2 ≤ J.card) (hIJ : I ⊆ J)
-  (haI : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-  (hbI : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-  (haJ : a = J.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty J hJ))
-  (hbJ : b = J.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty J hJ))
+  (haI : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+  (hbI : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+  (haJ : a = J.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty J hJ))
+  (hbJ : b = J.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty J hJ))
 
 /-- 元の部分集合包含の Serre 鎖は、元の同端点の同じ生成射と厳密に可換。 -/
 lemma simplexSubsetLambdaCellAt_inclusion :

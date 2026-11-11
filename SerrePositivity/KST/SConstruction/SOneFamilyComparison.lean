@@ -29,13 +29,13 @@ lemma sOneComparison_eq_unitEvaluation (C : SSet.{u}) :
   erw [Category.assoc, Category.assoc]
 
 /-- 元の S₁ 比較は、全完全関手族の実作用と厳密に可換する。 -/
-lemma sOneComparison_family_action (C D : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
-    (sOneComparison C.obj ▷ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C D : SSet.{u})) ≫
-      uncurry (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C D).ι = sExactFamilyAction 1 C D ≫ sOneComparison D.obj := by
+lemma sOneComparison_family_action (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
+    (sOneComparison C.obj ▷ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors C D : SSet.{u})) ≫
+      uncurry (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors C D).ι = sExactFamilyAction 1 C D ≫ sOneComparison D.obj := by
   rw [sOneComparison_eq_unitEvaluation, sOneComparison_eq_unitEvaluation]
   erw [← Category.assoc (sExactFamilyAction 1 C D), sExactFamilyAction_inclusion,
     Category.assoc]
   exact closedEvaluationFamily_action firstRowOnePoint (gappedSubcomplex 1 C.obj).ι
-    (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C D).ι
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors C D).ι
 
 end SerrePositivity.KST.SConstruction

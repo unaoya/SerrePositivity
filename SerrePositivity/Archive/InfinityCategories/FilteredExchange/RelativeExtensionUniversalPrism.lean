@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionUniversalInitial
-public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
-public import SerrePositivity.InfinityCategories.F1.Coherent.TransformationFamilyDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PrismLiftSpace
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.TransformationFamilyDiagram
 
 /-!
 概要：同じ底と初期値を保つ全 prism の普遍評価を、元の全係数上の実 prism にする。

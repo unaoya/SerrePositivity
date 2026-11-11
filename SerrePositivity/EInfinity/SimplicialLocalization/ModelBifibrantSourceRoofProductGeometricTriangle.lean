@@ -30,13 +30,13 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductGeometricLeftHomotopy : SSet.Homotopy
     (nerveMap (modelBifibrantSourceRoofProductCommaDiagram X Y q b) ≫
-      SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+      SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
     (SSet.const (X := nerve (modelBifibrantSourceRoofProductComma X Y q b))
       (modelBifibrantHammockVertex (modelBifibrantSourceRoofDegreeObject X Y q b))) := by
   have := modelBifibrantSourceRoofProjection_leftFibration X Y q
-  exact stableHomotopyRetarget (roofCornerEvaluationLeftHomotopy (modelBifibrantDKFrame X q)
-    (modelBifibrantObject C Y)
-    (SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) b
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget (roofCornerEvaluationLeftHomotopy (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+    (SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) b
     (modelBifibrantSourceRoofProductCommaCornerMap X Y q b))
     (modelBifibrantSourceRoofProductCommaCornerMap_diagram X Y q b) rfl
 
@@ -45,13 +45,13 @@ def modelBifibrantSourceRoofProductGeometricLeftHomotopy : SSet.Homotopy
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductGeometricRightHomotopy : SSet.Homotopy
     (nerveMap (modelBifibrantSourceRoofProductCommaDiagram X Y q b) ≫
-      SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+      SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
     (SSet.const (X := nerve (modelBifibrantSourceRoofProductComma X Y q b))
       (modelBifibrantHammockVertex Y)) := by
   have := modelBifibrantSourceRoofProjection_leftFibration X Y q
-  exact stableHomotopyRetarget (roofCornerEvaluationRightHomotopy (modelBifibrantDKFrame X q)
-    (modelBifibrantObject C Y)
-    (SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) b
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget (roofCornerEvaluationRightHomotopy (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+    (SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) b
     (modelBifibrantSourceRoofProductCommaCornerMap X Y q b))
     (modelBifibrantSourceRoofProductCommaCornerMap_diagram X Y q b) rfl
 
@@ -59,14 +59,14 @@ def modelBifibrantSourceRoofProductGeometricRightHomotopy : SSet.Homotopy
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductGeometricLeftCell :=
-  SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+  SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
     (modelBifibrantSourceRoofProductGeometricLeftHomotopy X Y q b))
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductGeometricRightCell :=
-  SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+  SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
     (modelBifibrantSourceRoofProductGeometricRightHomotopy X Y q b))
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
@@ -84,14 +84,14 @@ lemma modelBifibrantSourceRoofProductGeometric_triangle :
       modelBifibrantSourceRoofProductActualIntervalCell,
     modelBifibrantSourceRoofProductCommaHomMap, modelBifibrantSourceRoofProductHomMap,
     modelBifibrantSourceRoofProductCommaCornerMap, modelBifibrantSourceRoofCornerEvaluation,
-    Category.assoc, modelBifibrantObject, modelBifibrantHammockVertex,
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject, modelBifibrantHammockVertex,
       modelBifibrantSourceRoofDegreeObject,
-    modelBifibrantDKFrame, modelBifibrantSourceRoofDegree, Functor.comp_obj,
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame, modelBifibrantSourceRoofDegree, Functor.comp_obj,
     ULiftHom.up, ULiftHom.objUp, AsSmall.down, AsSmall.up,
-    modelBifibrantRelativeCategory] using
-    roofCornerEvaluation_triangle_retarget (modelBifibrantDKFrame X q)
-      (modelBifibrantObject C Y)
-      (SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) b
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory] using
+    roofCornerEvaluation_triangle_retarget (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+      (SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) b
       (modelBifibrantSourceRoofProductCommaCornerMap X Y q b) _
       (modelBifibrantSourceRoofProductCommaCornerMap_diagram X Y q b)
 

@@ -10,6 +10,8 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Rank
 方針：同次元の先行元を余次元一の面として表し、型 II の面の複雑度の減少を使う。
 規約：Moss 2020 Theorem 22 の正則性。Mathlib WeakRankFunction に接続する。
 使われ方：単位 X→Ex(X) の anodyne 性。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

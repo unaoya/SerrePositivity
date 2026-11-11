@@ -22,16 +22,16 @@ def inverseExchangeFamily (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
     (ihom A).obj (pointedSpace X Y) ⟶
       PointedObject.basedHom (X.level n).space (PointedObject.basedHom A (Y.level n).space) :=
   (ihom A).map (pointedEvaluation X Y n) ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (X.level n).space A (Y.level n).space).inv
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (X.level n).space A (Y.level n).space).inv
 
 /-- 逆交換した族は cotensor 値の構造条件を満たす。 -/
 lemma inverseExchangeFamily_condition (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
     (A : PointedSimplicialSet.{u}) (n : ℕ) :
-    inverseExchangeFamily X Y A (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+    inverseExchangeFamily X Y A (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
         (PointedObject.basedHom A (Y.level (n + 1)).space) =
       inverseExchangeFamily X Y A n ≫ pointedStep X (KanSequence.mapping A Y) n := by
   apply (cancel_mono
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) A (Y.level (n + 1)).space).hom).mp
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) A (Y.level (n + 1)).space).hom).mp
   dsimp only [inverseExchangeFamily]
   rw [Category.assoc, Category.assoc, restriction_exchange, Iso.inv_hom_id_assoc,
     Category.assoc, Category.assoc, step_exchange, Iso.inv_hom_id_assoc,

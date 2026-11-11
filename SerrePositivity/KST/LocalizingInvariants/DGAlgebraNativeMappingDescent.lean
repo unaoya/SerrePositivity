@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeChosenFrameCoherent
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationFactorization
-public import SerrePositivity.InfinityCategories.F1B.Localization.UniverseAscent
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.InvertingFunctorIsoInvariance
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseAscent
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.InvertingFunctorIsoInvariance
 
 /-!
 概要：実 cell 写像の全標的図式を、指定した dg 擬同型局所化上へ降ろす。
@@ -23,36 +23,36 @@ namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R))
 
 def multiplicativeCellMappingLocalizationFunctor :
-    (SSet.uliftFunctor.{u + 2, u + 1}).obj (quasiIsoInfinity R) ⟶ SpaceInfinity.{u + 1} :=
+    (SSet.uliftFunctor.{u + 2, u + 1}).obj (quasiIsoInfinity R) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u + 1} :=
   localizationDescend
     ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R))
     (ULift.up.{u + 2, u + 1} '' quasiIsoInfinityEdges R)
-    (IsLocalization.ulift.{u + 1, u + 2} (quasiIsoInfinity_isLocalization R))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization.ulift.{u + 1, u + 2} (quasiIsoInfinity_isLocalization R))
     (multiplicativeCellMappingInfinityCoherent R A)
     (multiplicativeCellMappingInfinityCoherent_inverts R A)
 
 def multiplicativeCellMappingLocalizationTriangleIso :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R) ≫
         multiplicativeCellMappingLocalizationFunctor R A)
       (multiplicativeCellMappingInfinityCoherent R A) :=
   localizationDescendIso
     ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R))
     (ULift.up.{u + 2, u + 1} '' quasiIsoInfinityEdges R)
-    (IsLocalization.ulift.{u + 1, u + 2} (quasiIsoInfinity_isLocalization R))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization.ulift.{u + 1, u + 2} (quasiIsoInfinity_isLocalization R))
     (multiplicativeCellMappingInfinityCoherent R A)
     (multiplicativeCellMappingInfinityCoherent_inverts R A)
 
 def multiplicativeCellMappingLocalizationChosenTriangleIso :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R) ≫
         multiplicativeCellMappingLocalizationFunctor R A)
-      (kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A)) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A)) :=
   multiplicativeCellMappingLocalizationTriangleIso R A ≪≫
     multiplicativeCellMappingChosenRightCoherentIso R A
 
 lemma nativeCellChosenRightInfinityCoherent_inverts :
-    InvertsEdges (kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
       (ULift.up.{u + 2, u + 1} '' quasiIsoInfinityEdges R) :=
   ((multiplicativeCellMappingChosenRightCoherentIso R A).invertsEdges_iff _).mp
     (multiplicativeCellMappingInfinityCoherent_inverts R A)

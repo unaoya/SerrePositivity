@@ -39,14 +39,14 @@ def kanAdjointParameterStage (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet
 /-- 逆向きの構造比較を係数空間で一度選ぶ。パラメータの部分対象には依存しない。 -/
 def kanAdjointCoefficientReversePath (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     PointedMapping.VerticalPath (PointedObject.toPoint
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space))
-      ((ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map
+      ((ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map
         (Y.sigma n ≫ KanSequence.kanAdjoint Y.toKanSequence (n + 1)))
-      ((ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map
+      ((ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map
         (PointedSimplicialSet.circle.{u} ◁ KanSequence.kanAdjoint Y.toKanSequence n ≫
           (KanSequence.signedLoopTail Y.toKanSequence).sigma n)) :=
-  PointedMapping.VerticalPath.basedIhomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+  PointedMapping.VerticalPath.basedIhomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
     (OmegaSpectrum.signedLoopUnitStructurePath Y n)
 
 /-- 零境界を持つ元の族の転置した段射は、同じ指定部分への制限でも厳密に零。 -/
@@ -78,16 +78,16 @@ def kanAdjointParameter_zero_boundary_structurePath (X Y : OmegaSpectrum.{u})
     rw [← Category.assoc, hzero, zero_comp]
   let P := (kanAdjointCoefficientReversePath X Y n).preTransposeOverZero e j hz
   have hr : (φ ≫ kanAdjointParameterLeft X Y (n + 1)) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space =
-      e ≫ (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map
+      e ≫ (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map
         (Y.sigma n ≫ KanSequence.kanAdjoint Y.toKanSequence (n + 1)) := by
     have h := congrArg (φ ≫ ·) (kanAdjointParameterLeft_source_restriction X Y n)
     simp only [e, Category.assoc] at h ⊢
     exact h
   have hl : (φ ≫ kanAdjointParameterLeft X Y n) ≫
       pointedStep X (KanSequence.signedLoopTail Y.toKanSequence) n =
-      e ≫ (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map
+      e ≫ (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map
         (PointedSimplicialSet.circle.{u} ◁ KanSequence.kanAdjoint Y.toKanSequence n ≫
           (KanSequence.signedLoopTail Y.toKanSequence).sigma n) := by
     have h := congrArg (φ ≫ ·) (kanAdjointParameterLeft_step X Y n)

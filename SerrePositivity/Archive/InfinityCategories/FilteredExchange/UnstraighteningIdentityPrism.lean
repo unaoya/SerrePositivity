@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.UnstraighteningMappingTrianglePrism
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.UnstraighteningMappingTrianglePrism
 
 /-!
 概要：恒等始域での始域付き比較が、全三角形の辺に使う同じ普遍 prism を持つ。

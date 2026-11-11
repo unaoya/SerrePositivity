@@ -22,10 +22,10 @@ local instance graphLeftSimplicialCategory : SimplicialCategory OmegaSpectrum.{u
   OmegaSpectrum.simplicialCategory
 variable {T X Y Z : OmegaSpectrum.{u}} (a : T ⟶ X) (b : T ⟶ Y) (f : X ⟶ Z) (g : Y ⟶ Z)
   (S : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u})
-  (hb : squareBottomEdge ≫ S = SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.lift a b)).edge)
-  (ht : squareTopEdge ≫ S = SSet.yonedaEquiv.symm (coherentNerveEdge (graph g)).edge)
-  (hr : squareRightEdge ≫ S =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.map f (𝟙 Y))).edge)
+  (hb : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ S = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.lift a b)).edge)
+  (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ S = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (graph g)).edge)
+  (hr : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ S =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.map f (𝟙 Y))).edge)
 
 include hr in
 lemma left_class : Truncated.HomotopyCategory.homMk

@@ -21,29 +21,29 @@ namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R))
 
 def nativeCellChosenMixedLeftCoherentIso :
-    FunctorIso (kanDiagramCoherentNerve (nativeCellSourceFrameInfinityKanFunctor R A))
-      (kanDiagramCoherentNerve (nativeCellChosenMixedReplacementInfinityKanFunctor R A)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellSourceFrameInfinityKanFunctor R A))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellChosenMixedReplacementInfinityKanFunctor R A)) :=
   nativeMixedPresentationIso R
     (nativeCellSourceFrameLargeKanFunctor R A)
     (nativeCellChosenMixedReplacementLargeKanFunctor R A)
     (nativeCellChosenMixedLeftLarge R A) (nativeCellChosenMixedLeftLarge_isQCatEquivalence R A)
 
 def nativeCellChosenMixedRightCoherentIso :
-    FunctorIso (kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
-      (kanDiagramCoherentNerve (nativeCellChosenMixedReplacementInfinityKanFunctor R A)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellChosenMixedReplacementInfinityKanFunctor R A)) :=
   nativeMixedPresentationIso R
     (nativeCellChosenRightLargeKanFunctor R A)
     (nativeCellChosenMixedReplacementLargeKanFunctor R A)
     (nativeCellChosenMixedRightLarge R A) (nativeCellChosenMixedRightLarge_isQCatEquivalence R A)
 
 def nativeCellChosenMappingSourceFrameCoherentIso :
-    FunctorIso (kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
-      (kanDiagramCoherentNerve (nativeCellSourceFrameInfinityKanFunctor R A)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellSourceFrameInfinityKanFunctor R A)) :=
   nativeCellChosenMixedRightCoherentIso R A ≪≫ (nativeCellChosenMixedLeftCoherentIso R A).symm
 
 def multiplicativeCellMappingChosenRightCoherentIso :
-    FunctorIso (multiplicativeCellMappingInfinityCoherent R A)
-      (kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (multiplicativeCellMappingInfinityCoherent R A)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A)) :=
   multiplicativeCellMappingSourceFrameCoherentIso R A ≪≫
     (nativeCellChosenMappingSourceFrameCoherentIso R A).symm
 

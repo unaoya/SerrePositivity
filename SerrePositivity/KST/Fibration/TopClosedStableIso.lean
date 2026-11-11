@@ -16,19 +16,19 @@ namespace SerrePositivity.KST.Fibration
 def topClosedStableIso (X : StableModel.{u}) : closedStableModel (ClosedStablePredicate.top X) ≅ X
     where
   hom := closedStableInclusion (ClosedStablePredicate.top X)
-  inv := ⟨fullSubcomplexLift _ (𝟙 X.carrier) (fun _ => trivial), by
+  inv := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (𝟙 X.carrier) (fun _ => trivial), by
     apply preservesCofiberData_fullSubcomplex_of_comp (ClosedStablePredicate.top X).predicate
-    rw [fullSubcomplexLift_ι]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
     exact preservesCofiberData_id X.carrier⟩
   hom_inv_id := by
     apply Subtype.ext
     have : Mono (closedStableInclusion (ClosedStablePredicate.top X)).val :=
-      inferInstanceAs (Mono (fullSubcomplexOnVertices X.carrier
+      inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X.carrier
         (ClosedStablePredicate.top X).predicate).ι)
     apply (cancel_mono (closedStableInclusion (ClosedStablePredicate.top X)).val).1
     change ((closedStableInclusion (ClosedStablePredicate.top X)).val ≫
-      fullSubcomplexLift _ (𝟙 X.carrier) (fun _ => trivial)) ≫ _ = _
-    have he : fullSubcomplexLift (ClosedStablePredicate.top X).predicate (𝟙 X.carrier)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (𝟙 X.carrier) (fun _ => trivial)) ≫ _ = _
+    have he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (ClosedStablePredicate.top X).predicate (𝟙 X.carrier)
         (fun _ => trivial) ≫ (closedStableInclusion (ClosedStablePredicate.top X)).val =
           𝟙 X.carrier := rfl
     rw [Category.assoc, he, Category.comp_id]

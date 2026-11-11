@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitUnitTetrahedra
-public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ScaffoldFirstVertex
 
 /-!
 概要：元の三つの単位三単体は、全図式として同じ初期対象 F を厳密に持つ。

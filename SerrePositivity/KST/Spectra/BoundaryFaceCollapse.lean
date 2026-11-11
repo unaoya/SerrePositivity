@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Simplicial.HornBoundaryDecomposition
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.HornBoundaryDecomposition
 public import SerrePositivity.KST.Spectra.SphereSimplex
 
 /-!
@@ -29,12 +29,12 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：球面の次数は n。
 使われ方：Goerss–Jardine I §7。境界上の付着写像の貼り合わせ条件。 -/
 theorem boundaryFaceCollapse_compatibility (n : ℕ) (i : Fin (n + 2)) :
-    Subcomplex.homOfLE (show _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlap.{u} n i ≤ horn (n + 1) i from inf_le_left) ≫
+    Subcomplex.homOfLE (show _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.hornFaceOverlap.{u} n i ≤ horn (n + 1) i from inf_le_left) ≫
       (toUnit (horn.{u} (n + 1) i : SSet.{u}) ≫ (PointedSimplicialSet.sphere.{u} n).hom) =
-    Subcomplex.homOfLE (show _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlap.{u} n i ≤ stdSimplex.face {i}ᶜ from inf_le_right) ≫
+    Subcomplex.homOfLE (show _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.hornFaceOverlap.{u} n i ≤ stdSimplex.face {i}ᶜ from inf_le_right) ≫
       ((stdSimplex.faceSingletonComplIso i).inv ≫
         PointedObject.cofiberQuotient (boundary.{u} n).ι) := by
-  rw [comp_toUnit_assoc, ← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary_ι,
+  rw [comp_toUnit_assoc, ← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.hornFaceOverlapToBoundary_ι,
     Category.assoc, PointedObject.cofiberQuotient_condition, comp_toUnit_assoc]
   rfl
 
@@ -44,7 +44,7 @@ theorem boundaryFaceCollapse_compatibility (n : ℕ) (i : Fin (n + 2)) :
 使われ方：Goerss–Jardine I §7、BF 1978 §2。相対 cell の付着写像。 -/
 def boundaryFaceCollapse (n : ℕ) (i : Fin (n + 2)) :
     (boundary.{u} (n + 1) : SSet.{u}) ⟶ (PointedSimplicialSet.sphere.{u} n).right :=
-  (_root_.SerrePositivity.InfinityCategories.Simplicial.hornBoundaryPushout n i).desc
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.hornBoundaryPushout n i).desc
     (toUnit (horn.{u} (n + 1) i : SSet.{u}) ≫ (PointedSimplicialSet.sphere.{u} n).hom)
     ((stdSimplex.faceSingletonComplIso i).inv ≫ PointedObject.cofiberQuotient (boundary.{u} n).ι)
     (boundaryFaceCollapse_compatibility n i)
@@ -55,9 +55,9 @@ def boundaryFaceCollapse (n : ℕ) (i : Fin (n + 2)) :
 使われ方：Goerss–Jardine I §7。ホーンの cofiber への降下の条件。 -/
 @[reassoc (attr := simp)]
 theorem boundaryFaceCollapse_horn (n : ℕ) (i : Fin (n + 2)) :
-    Subcomplex.homOfLE (_root_.SerrePositivity.InfinityCategories.Simplicial.horn_le_simplexBoundary n i) ≫ boundaryFaceCollapse.{u} n i =
+    Subcomplex.homOfLE (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.horn_le_simplexBoundary n i) ≫ boundaryFaceCollapse.{u} n i =
       toUnit (horn.{u} (n + 1) i : SSet.{u}) ≫ (PointedSimplicialSet.sphere.{u} n).hom :=
-  (_root_.SerrePositivity.InfinityCategories.Simplicial.hornBoundaryPushout n i).inl_desc _ _ _
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.hornBoundaryPushout n i).inl_desc _ _ _
 
 /-- 概要：付着写像は残る面で標準の球面への商写像に一致する。
 方針：面の標準単体との同型を通して pushout の面側の式を使う。
@@ -73,7 +73,7 @@ theorem boundaryFaceCollapse_face (n : ℕ) (i : Fin (n + 2)) :
     rw [← boundary.faceSingletonComplIso_inv_ι, ← Category.assoc,
       Iso.hom_inv_id, Category.id_comp]
   rw [hi, Category.assoc, boundaryFaceCollapse]
-  rw [(_root_.SerrePositivity.InfinityCategories.Simplicial.hornBoundaryPushout n i).inr_desc]
+  rw [(_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.hornBoundaryPushout n i).inr_desc]
   exact Iso.hom_inv_id_assoc _ _
 
 /-- 概要：付着写像は残る面以外の各面を基点へ送る。
@@ -85,7 +85,7 @@ theorem boundaryFaceCollapse_other_face (n : ℕ) (i j : Fin (n + 2)) (hji : j �
     boundary.ι j ≫ boundaryFaceCollapse.{u} n i =
       toUnit (Δ[n] : SSet.{u}) ≫ (PointedSimplicialSet.sphere.{u} n).hom := by
   have hj : boundary.ι j = horn.ι i j hji ≫
-      Subcomplex.homOfLE (_root_.SerrePositivity.InfinityCategories.Simplicial.horn_le_simplexBoundary n i) := by
+      Subcomplex.homOfLE (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.horn_le_simplexBoundary n i) := by
     apply (cancel_mono (boundary.{u} (n + 1)).ι).mp
     simp only [boundary.ι_ι, Category.assoc, Subcomplex.homOfLE_ι, horn.ι_ι]
   rw [hj, Category.assoc, boundaryFaceCollapse_horn, comp_toUnit_assoc]

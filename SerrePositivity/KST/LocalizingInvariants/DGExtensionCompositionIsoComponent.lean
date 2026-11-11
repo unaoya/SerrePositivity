@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.DGNerve
+
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma adjointComparison_hom_app {C E : Type*} [Category* C] [Category* E]

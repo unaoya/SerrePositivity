@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Coherent
+import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Coherent
 /-!
 # Coherent nerve の公理監査
 
@@ -12,471 +12,471 @@ import SerrePositivity.InfinityCategories.Coherent
 set_option pp.universes true
 set_option pp.explicit true
 
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_composition_overlap
-#check @SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_composition_overlap
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornInnerCompositionHom_overlap
-#check @SerrePositivity.InfinityCategories.Coherent.hornInnerCompositionHom_overlap
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathThrough
-#check @SerrePositivity.InfinityCategories.Coherent.pathThrough
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathCompMap
-#check @SerrePositivity.InfinityCategories.Coherent.pathCompMap
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathPrefix_of_comp
-#check @SerrePositivity.InfinityCategories.Coherent.pathPrefix_of_comp
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathSuffix_of_comp
-#check @SerrePositivity.InfinityCategories.Coherent.pathSuffix_of_comp
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathThroughPrefix
-#check @SerrePositivity.InfinityCategories.Coherent.pathThroughPrefix
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathThroughSuffix
-#check @SerrePositivity.InfinityCategories.Coherent.pathThroughSuffix
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathCompToThrough
-#check @SerrePositivity.InfinityCategories.Coherent.pathCompToThrough
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathThroughSplit
-#check @SerrePositivity.InfinityCategories.Coherent.pathThroughSplit
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathThroughIso
-#check @SerrePositivity.InfinityCategories.Coherent.pathThroughIso
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathThroughIso_hom_ι
-#check @SerrePositivity.InfinityCategories.Coherent.pathThroughIso_hom_ι
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathCompMap_mono
-#check @SerrePositivity.InfinityCategories.Coherent.pathCompMap_mono
-#print axioms SerrePositivity.InfinityCategories.Coherent.range_pathCompMap
-#check @SerrePositivity.InfinityCategories.Coherent.range_pathCompMap
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathAvoids_preimage_pathCompMap
-#check @SerrePositivity.InfinityCategories.Coherent.pathAvoids_preimage_pathCompMap
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathThrough_preimage_pathCompMap_of_le
-#check @SerrePositivity.InfinityCategories.Coherent.pathThrough_preimage_pathCompMap_of_le
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathThrough_preimage_pathCompMap_of_ge
-#check @SerrePositivity.InfinityCategories.Coherent.pathThrough_preimage_pathCompMap_of_ge
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornCompositionHom
-#check @SerrePositivity.InfinityCategories.Coherent.hornCompositionHom
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_on_product
-#check @SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_on_product
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_eq_proper
-#check @SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_eq_proper
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornInnerCompositionHom
-#check @SerrePositivity.InfinityCategories.Coherent.hornInnerCompositionHom
-#print axioms SerrePositivity.InfinityCategories.Coherent.cube
-#check @SerrePositivity.InfinityCategories.Coherent.cube
-#print axioms SerrePositivity.InfinityCategories.Coherent.cubeCoordinate
-#check @SerrePositivity.InfinityCategories.Coherent.cubeCoordinate
-#print axioms SerrePositivity.InfinityCategories.Coherent.cubeCoordinateFunctor
-#check @SerrePositivity.InfinityCategories.Coherent.cubeCoordinateFunctor
-#print axioms SerrePositivity.InfinityCategories.Coherent.cubeCoordinateMap
-#check @SerrePositivity.InfinityCategories.Coherent.cubeCoordinateMap
-#print axioms SerrePositivity.InfinityCategories.Coherent.cubeRestFunctor
-#check @SerrePositivity.InfinityCategories.Coherent.cubeRestFunctor
-#print axioms SerrePositivity.InfinityCategories.Coherent.cubeCoordinateMap_apply
-#check @SerrePositivity.InfinityCategories.Coherent.cubeCoordinateMap_apply
-#print axioms SerrePositivity.InfinityCategories.Coherent.cubeCombineSimplex
-#check @SerrePositivity.InfinityCategories.Coherent.cubeCombineSimplex
-#print axioms SerrePositivity.InfinityCategories.Coherent.cubeSplit
-#check @SerrePositivity.InfinityCategories.Coherent.cubeSplit
-#print axioms SerrePositivity.InfinityCategories.Coherent.cubeUnsplit
-#check @SerrePositivity.InfinityCategories.Coherent.cubeUnsplit
-#print axioms SerrePositivity.InfinityCategories.Coherent.cubeSplit_comp_cubeUnsplit
-#check @SerrePositivity.InfinityCategories.Coherent.cubeSplit_comp_cubeUnsplit
-#print axioms SerrePositivity.InfinityCategories.Coherent.cubeUnsplit_comp_cubeSplit
-#check @SerrePositivity.InfinityCategories.Coherent.cubeUnsplit_comp_cubeSplit
-#print axioms SerrePositivity.InfinityCategories.Coherent.cubeSplitIso
-#check @SerrePositivity.InfinityCategories.Coherent.cubeSplitIso
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathTripleCompMap
-#check @SerrePositivity.InfinityCategories.Coherent.pathTripleCompMap
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathTripleCompMap_mem
-#check @SerrePositivity.InfinityCategories.Coherent.pathTripleCompMap_mem
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathTripleToIntersection
-#check @SerrePositivity.InfinityCategories.Coherent.pathTripleToIntersection
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathTripleToIntersection_ι
-#check @SerrePositivity.InfinityCategories.Coherent.pathTripleToIntersection_ι
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathTripleToIntersection_epi
-#check @SerrePositivity.InfinityCategories.Coherent.pathTripleToIntersection_epi
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathTripleToIntersection_toSecond
-#check @SerrePositivity.InfinityCategories.Coherent.pathTripleToIntersection_toSecond
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathTripleToIntersection_toFirst
-#check @SerrePositivity.InfinityCategories.Coherent.pathTripleToIntersection_toFirst
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_cell
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_cell
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_common_cell
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_common_cell
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_zero_overlap_general
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_zero_overlap_general
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_zero_overlap_general
-#check @SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_zero_overlap_general
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_heq
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_heq
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_face
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_face
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_congr
-#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_congr
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_on_face
-#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_on_face
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_face_interval_eq
-#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_face_interval_eq
-#print axioms SerrePositivity.InfinityCategories.Coherent.outsideInterval_ne_ends
-#check @SerrePositivity.InfinityCategories.Coherent.outsideInterval_ne_ends
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_face_of_outside
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_face_of_outside
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_on_face
-#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_on_face
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornZeroFaceHom
-#check @SerrePositivity.InfinityCategories.Coherent.hornZeroFaceHom
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_restrict
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_restrict
-#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction
-#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction
-#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction_factor
-#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_factor
-#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction_point
-#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_point
-#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction_succAbove
-#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_succAbove
-#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction_section
-#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_section
-#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction_spec
-#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_spec
-#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction_image
-#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_image
-#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction_ulift_image
-#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_ulift_image
-#print axioms SerrePositivity.InfinityCategories.Coherent.thickening_faceRetraction_section
-#check @SerrePositivity.InfinityCategories.Coherent.thickening_faceRetraction_section
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom_comp
-#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom_comp
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFilledFunctor
-#check @SerrePositivity.InfinityCategories.Coherent.hornFilledFunctor
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom
-#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom_proper
-#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom_proper
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom_full
-#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom_full
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom_id
-#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom_id
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom_comp_inner
-#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom_comp_inner
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom_on_zero
-#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom_on_zero
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom_on_face
-#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom_on_face
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFilledFunctor_face
-#check @SerrePositivity.InfinityCategories.Coherent.hornFilledFunctor_face
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom
-#check @SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom_overlap
-#check @SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom_overlap
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom_composition_overlap
-#check @SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom_composition_overlap
-#print axioms SerrePositivity.InfinityCategories.Coherent.reobjectFunctor_congr
-#check @SerrePositivity.InfinityCategories.Coherent.reobjectFunctor_congr
-#print axioms SerrePositivity.InfinityCategories.Coherent.thickeningFunctor_comp_map
-#check @SerrePositivity.InfinityCategories.Coherent.thickeningFunctor_comp_map
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_comp
-#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_comp
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_simplex_eq
-#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_simplex_eq
-#print axioms SerrePositivity.InfinityCategories.Coherent.mem_pathThrough_iff_first
-#check @SerrePositivity.InfinityCategories.Coherent.mem_pathThrough_iff_first
-#print axioms SerrePositivity.InfinityCategories.Coherent.mem_pathAvoids_iff_last
-#check @SerrePositivity.InfinityCategories.Coherent.mem_pathAvoids_iff_last
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollowFace
-#check @SerrePositivity.InfinityCategories.Coherent.pathHollowFace
-#print axioms SerrePositivity.InfinityCategories.Coherent.iSup_pathHollowFace
-#check @SerrePositivity.InfinityCategories.Coherent.iSup_pathHollowFace
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollowCover
-#check @SerrePositivity.InfinityCategories.Coherent.pathHollowCover
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollowFace_le
-#check @SerrePositivity.InfinityCategories.Coherent.pathHollowFace_le
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollowGlue
-#check @SerrePositivity.InfinityCategories.Coherent.pathHollowGlue
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollowGlue_on_face
-#check @SerrePositivity.InfinityCategories.Coherent.pathHollowGlue_on_face
-#print axioms SerrePositivity.InfinityCategories.Coherent.mem_upperEndpoint_iff
-#check @SerrePositivity.InfinityCategories.Coherent.mem_upperEndpoint_iff
-#print axioms SerrePositivity.InfinityCategories.Coherent.cubeBoundary
-#check @SerrePositivity.InfinityCategories.Coherent.cubeBoundary
-#print axioms SerrePositivity.InfinityCategories.Coherent.hollowCube
-#check @SerrePositivity.InfinityCategories.Coherent.hollowCube
-#print axioms SerrePositivity.InfinityCategories.Coherent.mem_hollowCube_iff
-#check @SerrePositivity.InfinityCategories.Coherent.mem_hollowCube_iff
-#print axioms SerrePositivity.InfinityCategories.Coherent.hollowCubeIso
-#check @SerrePositivity.InfinityCategories.Coherent.hollowCubeIso
-#print axioms SerrePositivity.InfinityCategories.Coherent.hollowCube_anodyne
-#check @SerrePositivity.InfinityCategories.Coherent.hollowCube_anodyne
-#print axioms SerrePositivity.InfinityCategories.Coherent.mem_hollowCube_endpoints_iff
-#check @SerrePositivity.InfinityCategories.Coherent.mem_hollowCube_endpoints_iff
-#print axioms SerrePositivity.InfinityCategories.Coherent.hollowCube_extension
-#check @SerrePositivity.InfinityCategories.Coherent.hollowCube_extension
-#print axioms SerrePositivity.InfinityCategories.Coherent.hollowCylinder
-#check @SerrePositivity.InfinityCategories.Coherent.hollowCylinder
-#print axioms SerrePositivity.InfinityCategories.Coherent.hollowCylinder_anodyne
-#check @SerrePositivity.InfinityCategories.Coherent.hollowCylinder_anodyne
-#print axioms SerrePositivity.InfinityCategories.Coherent.hollowCylinder_extension
-#check @SerrePositivity.InfinityCategories.Coherent.hollowCylinder_extension
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornCell
-#check @SerrePositivity.InfinityCategories.Coherent.hornCell
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornCell_eq
-#check @SerrePositivity.InfinityCategories.Coherent.hornCell_eq
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornCell_map
-#check @SerrePositivity.InfinityCategories.Coherent.hornCell_map
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornCell_from_face
-#check @SerrePositivity.InfinityCategories.Coherent.hornCell_from_face
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornRestriction_from_face
-#check @SerrePositivity.InfinityCategories.Coherent.hornRestriction_from_face
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornRestriction_independent
-#check @SerrePositivity.InfinityCategories.Coherent.hornRestriction_independent
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornCellHom
-#check @SerrePositivity.InfinityCategories.Coherent.hornCellHom
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornCellHom_independent
-#check @SerrePositivity.InfinityCategories.Coherent.hornCellHom_independent
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornCellHom_from_face_heq
-#check @SerrePositivity.InfinityCategories.Coherent.hornCellHom_from_face_heq
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornVertex
-#check @SerrePositivity.InfinityCategories.Coherent.hornVertex
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornObj
-#check @SerrePositivity.InfinityCategories.Coherent.hornObj
-#print axioms SerrePositivity.InfinityCategories.Coherent.horn_map_const
-#check @SerrePositivity.InfinityCategories.Coherent.horn_map_const
-#print axioms SerrePositivity.InfinityCategories.Coherent.simplex_map_obj
-#check @SerrePositivity.InfinityCategories.Coherent.simplex_map_obj
-#print axioms SerrePositivity.InfinityCategories.Coherent.horn_simplex_obj
-#check @SerrePositivity.InfinityCategories.Coherent.horn_simplex_obj
-#print axioms SerrePositivity.InfinityCategories.Coherent.horn_face_obj
-#check @SerrePositivity.InfinityCategories.Coherent.horn_face_obj
-#print axioms SerrePositivity.InfinityCategories.Coherent.simplex_map_hom
-#check @SerrePositivity.InfinityCategories.Coherent.simplex_map_hom
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomOnCell
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomOnCell
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_transport_back
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_transport_back
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_heq
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_heq
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_naturality
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_naturality
-#print axioms SerrePositivity.InfinityCategories.Coherent.reobjectFunctor
-#check @SerrePositivity.InfinityCategories.Coherent.reobjectFunctor
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorOnCell
-#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorOnCell
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorOnCell_map
-#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorOnCell_map
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_comp
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_comp
-#print axioms SerrePositivity.InfinityCategories.Coherent.reobjectFunctor_map_heq
-#check @SerrePositivity.InfinityCategories.Coherent.reobjectFunctor_map_heq
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_id
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_id
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHollowPoint
-#check @SerrePositivity.InfinityCategories.Coherent.hornHollowPoint
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHollowFaceHom
-#check @SerrePositivity.InfinityCategories.Coherent.hornHollowFaceHom
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHollowFaceHom_compatible
-#check @SerrePositivity.InfinityCategories.Coherent.hornHollowFaceHom_compatible
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHollowHom
-#check @SerrePositivity.InfinityCategories.Coherent.hornHollowHom
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHollowHom_on_face
-#check @SerrePositivity.InfinityCategories.Coherent.hornHollowHom_on_face
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHollowHom_extension
-#check @SerrePositivity.InfinityCategories.Coherent.hornHollowHom_extension
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalViaFace_independent
-#check @SerrePositivity.InfinityCategories.Coherent.hornIntervalViaFace_independent
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_independent
-#check @SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_independent
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalFunctor_eq_viaFace
-#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalFunctor_eq_viaFace
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_eq_interval
-#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_eq_interval
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_eq_viaFace
-#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_eq_viaFace
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_on_subinterval
-#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_on_subinterval
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_id
-#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_id
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_comp
-#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_comp
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalClamp
-#check @SerrePositivity.InfinityCategories.Coherent.intervalClamp
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalClamp_mem
-#check @SerrePositivity.InfinityCategories.Coherent.intervalClamp_mem
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalClamp_fixed
-#check @SerrePositivity.InfinityCategories.Coherent.intervalClamp_fixed
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalClamp_comp_inclusion
-#check @SerrePositivity.InfinityCategories.Coherent.intervalClamp_comp_inclusion
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalClampSimplex
-#check @SerrePositivity.InfinityCategories.Coherent.intervalClampSimplex
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalClampSimplex_avoids
-#check @SerrePositivity.InfinityCategories.Coherent.intervalClampSimplex_avoids
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalClampSimplex_ulift_inclusion
-#check @SerrePositivity.InfinityCategories.Coherent.intervalClampSimplex_ulift_inclusion
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace
-#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_map
-#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_map
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_obj
-#check @SerrePositivity.InfinityCategories.Coherent.hornFunctorViaFace_obj
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalViaFace
-#check @SerrePositivity.InfinityCategories.Coherent.hornIntervalViaFace
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalViaFace_obj
-#check @SerrePositivity.InfinityCategories.Coherent.hornIntervalViaFace_obj
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalFunctor
-#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalFunctor
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalFunctor_obj
-#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalFunctor_obj
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathLift
-#check @SerrePositivity.InfinityCategories.Coherent.intervalPathLift
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathInclusionFunctor
-#check @SerrePositivity.InfinityCategories.Coherent.intervalPathInclusionFunctor
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathLiftFunctor
-#check @SerrePositivity.InfinityCategories.Coherent.intervalPathLiftFunctor
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathInclusion_lift
-#check @SerrePositivity.InfinityCategories.Coherent.intervalPathInclusion_lift
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathLift_inclusion
-#check @SerrePositivity.InfinityCategories.Coherent.intervalPathLift_inclusion
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathInclusion_comp_lift
-#check @SerrePositivity.InfinityCategories.Coherent.intervalPathInclusion_comp_lift
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathLift_comp_inclusion
-#check @SerrePositivity.InfinityCategories.Coherent.intervalPathLift_comp_inclusion
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso
-#check @SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso_hom
-#check @SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso_hom
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso_comp
-#check @SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso_comp
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso_id
-#check @SerrePositivity.InfinityCategories.Coherent.intervalPathHomIso_id
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalHomMap
-#check @SerrePositivity.InfinityCategories.Coherent.intervalHomMap
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalHomMap_on_interval
-#check @SerrePositivity.InfinityCategories.Coherent.intervalHomMap_on_interval
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalHomMap_comp
-#check @SerrePositivity.InfinityCategories.Coherent.intervalHomMap_comp
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalHomMap_id
-#check @SerrePositivity.InfinityCategories.Coherent.intervalHomMap_id
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalHom
-#check @SerrePositivity.InfinityCategories.Coherent.hornIntervalHom
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom
-#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_on_interval
-#check @SerrePositivity.InfinityCategories.Coherent.hornProperIntervalHom_on_interval
-#print axioms SerrePositivity.InfinityCategories.Coherent.intervalVertex_ne_outside
-#check @SerrePositivity.InfinityCategories.Coherent.intervalVertex_ne_outside
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_eq_viaFace
-#check @SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_eq_viaFace
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_comp
-#check @SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_comp
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_id
-#check @SerrePositivity.InfinityCategories.Coherent.hornIntervalHom_id
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_zero_overlap
-#check @SerrePositivity.InfinityCategories.Coherent.hornCompositionHom_zero_overlap
-#print axioms SerrePositivity.InfinityCategories.Coherent.path_hom_iff
-#check @SerrePositivity.InfinityCategories.Coherent.path_hom_iff
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathInterior
-#check @SerrePositivity.InfinityCategories.Coherent.pathInterior
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathOfInterior
-#check @SerrePositivity.InfinityCategories.Coherent.pathOfInterior
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathInterior_pathOfInterior
-#check @SerrePositivity.InfinityCategories.Coherent.pathInterior_pathOfInterior
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathOfInterior_pathInterior
-#check @SerrePositivity.InfinityCategories.Coherent.pathOfInterior_pathInterior
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathInteriorEquiv
-#check @SerrePositivity.InfinityCategories.Coherent.pathInteriorEquiv
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathInterior_subset_iff
-#check @SerrePositivity.InfinityCategories.Coherent.pathInterior_subset_iff
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathPrefix
-#check @SerrePositivity.InfinityCategories.Coherent.pathPrefix
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathSuffix
-#check @SerrePositivity.InfinityCategories.Coherent.pathSuffix
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathPrefix_comp_pathSuffix
-#check @SerrePositivity.InfinityCategories.Coherent.pathPrefix_comp_pathSuffix
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathLoop_eq_id
-#check @SerrePositivity.InfinityCategories.Coherent.pathLoop_eq_id
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathUnitIso
-#check @SerrePositivity.InfinityCategories.Coherent.pathUnitIso
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathUnit_isIso
-#check @SerrePositivity.InfinityCategories.Coherent.pathUnit_isIso
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathEmptyHom
-#check @SerrePositivity.InfinityCategories.Coherent.pathEmptyHom
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathEmpty_hom_ext
-#check @SerrePositivity.InfinityCategories.Coherent.pathEmpty_hom_ext
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathProduct_empty_hom_ext
-#check @SerrePositivity.InfinityCategories.Coherent.pathProduct_empty_hom_ext
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathAvoids_preimage_pathFaceMap
-#check @SerrePositivity.InfinityCategories.Coherent.pathAvoids_preimage_pathFaceMap
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathDoubleFaceMap
-#check @SerrePositivity.InfinityCategories.Coherent.pathDoubleFaceMap
-#print axioms SerrePositivity.InfinityCategories.Coherent.range_pathDoubleFaceMap
-#check @SerrePositivity.InfinityCategories.Coherent.range_pathDoubleFaceMap
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathDoubleFaceMap_eq_native
-#check @SerrePositivity.InfinityCategories.Coherent.pathDoubleFaceMap_eq_native
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathDoubleFaceMap_mono
-#check @SerrePositivity.InfinityCategories.Coherent.pathDoubleFaceMap_mono
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathDoubleFaceIso
-#check @SerrePositivity.InfinityCategories.Coherent.pathDoubleFaceIso
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathDoubleFaceIso_hom_ι
-#check @SerrePositivity.InfinityCategories.Coherent.pathDoubleFaceIso_hom_ι
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathAvoids
-#check @SerrePositivity.InfinityCategories.Coherent.pathAvoids
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathFaceMap
-#check @SerrePositivity.InfinityCategories.Coherent.pathFaceMap
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathFacePreimage
-#check @SerrePositivity.InfinityCategories.Coherent.pathFacePreimage
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathFacePreimageFunctor
-#check @SerrePositivity.InfinityCategories.Coherent.pathFacePreimageFunctor
-#print axioms SerrePositivity.InfinityCategories.Coherent.range_pathFaceMap
-#check @SerrePositivity.InfinityCategories.Coherent.range_pathFaceMap
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathFaceMap_mono
-#check @SerrePositivity.InfinityCategories.Coherent.pathFaceMap_mono
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathFaceIso
-#check @SerrePositivity.InfinityCategories.Coherent.pathFaceIso
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathFaceIso_hom_ι
-#check @SerrePositivity.InfinityCategories.Coherent.pathFaceIso_hom_ι
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollow
-#check @SerrePositivity.InfinityCategories.Coherent.pathHollow
-#print axioms SerrePositivity.InfinityCategories.Coherent.mem_pathHollow_iff
-#check @SerrePositivity.InfinityCategories.Coherent.mem_pathHollow_iff
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollow_anodyne
-#check @SerrePositivity.InfinityCategories.Coherent.pathHollow_anodyne
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollow_extension
-#check @SerrePositivity.InfinityCategories.Coherent.pathHollow_extension
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathFaceCompositionMap
-#check @SerrePositivity.InfinityCategories.Coherent.pathFaceCompositionMap
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathFaceCompositionMap_eq_native
-#check @SerrePositivity.InfinityCategories.Coherent.pathFaceCompositionMap_eq_native
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathThrough_preimage_pathFaceMap
-#check @SerrePositivity.InfinityCategories.Coherent.pathThrough_preimage_pathFaceMap
-#print axioms SerrePositivity.InfinityCategories.Coherent.range_pathFaceCompositionMap
-#check @SerrePositivity.InfinityCategories.Coherent.range_pathFaceCompositionMap
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathFaceCompositionMap_mono
-#check @SerrePositivity.InfinityCategories.Coherent.pathFaceCompositionMap_mono
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathMixedFaceIso
-#check @SerrePositivity.InfinityCategories.Coherent.pathMixedFaceIso
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathMixedFaceIso_hom_ι
-#check @SerrePositivity.InfinityCategories.Coherent.pathMixedFaceIso_hom_ι
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathMixedFaceIso_hom_toThrough
-#check @SerrePositivity.InfinityCategories.Coherent.pathMixedFaceIso_hom_toThrough
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathMixed_self_eq_bot
-#check @SerrePositivity.InfinityCategories.Coherent.pathMixed_self_eq_bot
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathMixed_self_hom_ext
-#check @SerrePositivity.InfinityCategories.Coherent.pathMixed_self_hom_ext
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathInteriorFunctor
-#check @SerrePositivity.InfinityCategories.Coherent.pathInteriorFunctor
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathOfInteriorFunctor
-#check @SerrePositivity.InfinityCategories.Coherent.pathOfInteriorFunctor
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathInteriorFunctor_comp_pathOfInteriorFunctor
-#check @SerrePositivity.InfinityCategories.Coherent.pathInteriorFunctor_comp_pathOfInteriorFunctor
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathOfInteriorFunctor_comp_pathInteriorFunctor
-#check @SerrePositivity.InfinityCategories.Coherent.pathOfInteriorFunctor_comp_pathInteriorFunctor
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathInteriorNerveIso
-#check @SerrePositivity.InfinityCategories.Coherent.pathInteriorNerveIso
-#print axioms SerrePositivity.InfinityCategories.Coherent.simplicialNerve_quasicategory
-#check @SerrePositivity.InfinityCategories.Coherent.simplicialNerve_quasicategory
-#print axioms SerrePositivity.InfinityCategories.Coherent.subcomplexPreimageIso
-#check @SerrePositivity.InfinityCategories.Coherent.subcomplexPreimageIso
-#print axioms SerrePositivity.InfinityCategories.Coherent.subcomplexPreimageArrowIso
-#check @SerrePositivity.InfinityCategories.Coherent.subcomplexPreimageArrowIso
-#print axioms SerrePositivity.InfinityCategories.Coherent.anodyne_subcomplexPreimage
-#check @SerrePositivity.InfinityCategories.Coherent.anodyne_subcomplexPreimage
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathHom_comp_left_unit
-#check @SerrePositivity.InfinityCategories.Coherent.pathHom_comp_left_unit
-#print axioms SerrePositivity.InfinityCategories.Coherent.pathHom_comp_right_unit
-#check @SerrePositivity.InfinityCategories.Coherent.pathHom_comp_right_unit
-#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_zero_overlap
-#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_zero_overlap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCompositionHom_composition_overlap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCompositionHom_composition_overlap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornInnerCompositionHom_overlap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornInnerCompositionHom_overlap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathCompMap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathCompMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathPrefix_of_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathPrefix_of_comp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathSuffix_of_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathSuffix_of_comp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThroughPrefix
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThroughPrefix
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThroughSuffix
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThroughSuffix
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathCompToThrough
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathCompToThrough
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThroughSplit
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThroughSplit
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThroughIso
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThroughIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThroughIso_hom_ι
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThroughIso_hom_ι
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathCompMap_mono
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathCompMap_mono
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.range_pathCompMap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.range_pathCompMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathAvoids_preimage_pathCompMap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathAvoids_preimage_pathCompMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough_preimage_pathCompMap_of_le
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough_preimage_pathCompMap_of_le
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough_preimage_pathCompMap_of_ge
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough_preimage_pathCompMap_of_ge
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCompositionHom
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCompositionHom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCompositionHom_on_product
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCompositionHom_on_product
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCompositionHom_eq_proper
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCompositionHom_eq_proper
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornInnerCompositionHom
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornInnerCompositionHom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cube
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cube
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeCoordinate
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeCoordinate
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeCoordinateFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeCoordinateFunctor
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeCoordinateMap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeCoordinateMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeRestFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeRestFunctor
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeCoordinateMap_apply
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeCoordinateMap_apply
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeCombineSimplex
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeCombineSimplex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeSplit
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeSplit
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeUnsplit
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeUnsplit
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeSplit_comp_cubeUnsplit
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeSplit_comp_cubeUnsplit
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeUnsplit_comp_cubeSplit
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeUnsplit_comp_cubeSplit
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeSplitIso
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeSplitIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathTripleCompMap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathTripleCompMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathTripleCompMap_mem
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathTripleCompMap_mem
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathTripleToIntersection
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathTripleToIntersection
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathTripleToIntersection_ι
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathTripleToIntersection_ι
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathTripleToIntersection_epi
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathTripleToIntersection_epi
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathTripleToIntersection_toSecond
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathTripleToIntersection_toSecond
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathTripleToIntersection_toFirst
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathTripleToIntersection_toFirst
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_on_cell
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_on_cell
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_common_cell
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_common_cell
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_zero_overlap_general
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_zero_overlap_general
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCompositionHom_zero_overlap_general
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCompositionHom_zero_overlap_general
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_heq
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_heq
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_on_face
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_on_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace_congr
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace_congr
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace_on_face
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace_on_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace_face_interval_eq
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace_face_interval_eq
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.outsideInterval_ne_ends
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.outsideInterval_ne_ends
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_on_face_of_outside
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_on_face_of_outside
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom_on_face
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom_on_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornZeroFaceHom
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornZeroFaceHom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_restrict
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_restrict
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction_factor
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction_factor
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction_point
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction_point
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction_succAbove
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction_succAbove
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction_section
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction_section
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction_spec
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction_spec
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction_image
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction_image
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction_ulift_image
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.faceRetraction_ulift_image
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.thickening_faceRetraction_section
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.thickening_faceRetraction_section
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_comp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFilledFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFilledFunctor
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_proper
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_proper
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_full
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_full
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_id
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_id
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_comp_inner
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_comp_inner
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_on_zero
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_on_zero
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_on_face
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_on_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFilledFunctor_face
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFilledFunctor_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornInnerZeroHom
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornInnerZeroHom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornInnerZeroHom_overlap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornInnerZeroHom_overlap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornInnerZeroHom_composition_overlap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornInnerZeroHom_composition_overlap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.reobjectFunctor_congr
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.reobjectFunctor_congr
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.thickeningFunctor_comp_map
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.thickeningFunctor_comp_map
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace_comp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace_simplex_eq
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace_simplex_eq
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.mem_pathThrough_iff_first
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.mem_pathThrough_iff_first
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.mem_pathAvoids_iff_last
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.mem_pathAvoids_iff_last
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollowFace
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollowFace
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.iSup_pathHollowFace
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.iSup_pathHollowFace
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollowCover
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollowCover
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollowFace_le
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollowFace_le
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollowGlue
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollowGlue
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollowGlue_on_face
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollowGlue_on_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.mem_upperEndpoint_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.mem_upperEndpoint_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeBoundary
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeBoundary
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCube
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCube
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.mem_hollowCube_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.mem_hollowCube_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCubeIso
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCubeIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCube_anodyne
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCube_anodyne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.mem_hollowCube_endpoints_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.mem_hollowCube_endpoints_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCube_extension
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCube_extension
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCylinder
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCylinder
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCylinder_anodyne
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCylinder_anodyne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCylinder_extension
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCylinder_extension
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCell
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCell
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCell_eq
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCell_eq
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCell_map
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCell_map
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCell_from_face
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCell_from_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornRestriction_from_face
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornRestriction_from_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornRestriction_independent
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornRestriction_independent
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCellHom
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCellHom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCellHom_independent
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCellHom_independent
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCellHom_from_face_heq
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCellHom_from_face_heq
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornVertex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornObj
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornObj
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.horn_map_const
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.horn_map_const
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplex_map_obj
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplex_map_obj
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.horn_simplex_obj
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.horn_simplex_obj
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.horn_face_obj
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.horn_face_obj
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplex_map_hom
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplex_map_hom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomOnCell
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomOnCell
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomOnCell_transport_back
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomOnCell_transport_back
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomOnCell_heq
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomOnCell_heq
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomOnCell_naturality
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomOnCell_naturality
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.reobjectFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.reobjectFunctor
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorOnCell
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorOnCell
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorOnCell_map
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorOnCell_map
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomOnCell_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomOnCell_comp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.reobjectFunctor_map_heq
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.reobjectFunctor_map_heq
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomOnCell_id
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomOnCell_id
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHollowPoint
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHollowPoint
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHollowFaceHom
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHollowFaceHom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHollowFaceHom_compatible
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHollowFaceHom_compatible
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHollowHom
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHollowHom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHollowHom_on_face
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHollowHom_on_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHollowHom_extension
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHollowHom_extension
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalViaFace_independent
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalViaFace_independent
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalHom_independent
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalHom_independent
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalFunctor_eq_viaFace
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalFunctor_eq_viaFace
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom_eq_interval
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom_eq_interval
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom_eq_viaFace
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom_eq_viaFace
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom_on_subinterval
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom_on_subinterval
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom_id
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom_id
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom_comp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalClamp
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalClamp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalClamp_mem
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalClamp_mem
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalClamp_fixed
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalClamp_fixed
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalClamp_comp_inclusion
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalClamp_comp_inclusion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalClampSimplex
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalClampSimplex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalClampSimplex_avoids
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalClampSimplex_avoids
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalClampSimplex_ulift_inclusion
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalClampSimplex_ulift_inclusion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace_map
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace_map
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace_obj
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFunctorViaFace_obj
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalViaFace
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalViaFace
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalViaFace_obj
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalViaFace_obj
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalFunctor
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalFunctor_obj
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalFunctor_obj
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathLift
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathLift
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathInclusionFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathInclusionFunctor
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathLiftFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathLiftFunctor
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathInclusion_lift
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathInclusion_lift
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathLift_inclusion
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathLift_inclusion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathInclusion_comp_lift
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathInclusion_comp_lift
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathLift_comp_inclusion
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathLift_comp_inclusion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathHomIso
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathHomIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathHomIso_hom
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathHomIso_hom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathHomIso_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathHomIso_comp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathHomIso_id
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathHomIso_id
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalHomMap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalHomMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalHomMap_on_interval
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalHomMap_on_interval
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalHomMap_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalHomMap_comp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalHomMap_id
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalHomMap_id
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalHom
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalHom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom_on_interval
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornProperIntervalHom_on_interval
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalVertex_ne_outside
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalVertex_ne_outside
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalHom_eq_viaFace
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalHom_eq_viaFace
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalHom_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalHom_comp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalHom_id
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornIntervalHom_id
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCompositionHom_zero_overlap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornCompositionHom_zero_overlap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.path_hom_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.path_hom_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInterior
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInterior
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathOfInterior
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathOfInterior
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInterior_pathOfInterior
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInterior_pathOfInterior
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathOfInterior_pathInterior
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathOfInterior_pathInterior
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInteriorEquiv
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInteriorEquiv
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInterior_subset_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInterior_subset_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathPrefix
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathPrefix
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathSuffix
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathSuffix
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathPrefix_comp_pathSuffix
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathPrefix_comp_pathSuffix
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathLoop_eq_id
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathLoop_eq_id
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathUnitIso
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathUnitIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathUnit_isIso
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathUnit_isIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathEmptyHom
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathEmptyHom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathEmpty_hom_ext
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathEmpty_hom_ext
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathProduct_empty_hom_ext
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathProduct_empty_hom_ext
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathAvoids_preimage_pathFaceMap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathAvoids_preimage_pathFaceMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathDoubleFaceMap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathDoubleFaceMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.range_pathDoubleFaceMap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.range_pathDoubleFaceMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathDoubleFaceMap_eq_native
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathDoubleFaceMap_eq_native
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathDoubleFaceMap_mono
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathDoubleFaceMap_mono
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathDoubleFaceIso
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathDoubleFaceIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathDoubleFaceIso_hom_ι
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathDoubleFaceIso_hom_ι
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathAvoids
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathAvoids
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceMap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFacePreimage
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFacePreimage
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFacePreimageFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFacePreimageFunctor
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.range_pathFaceMap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.range_pathFaceMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceMap_mono
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceMap_mono
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceIso
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceIso_hom_ι
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceIso_hom_ι
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollow
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollow
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.mem_pathHollow_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.mem_pathHollow_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollow_anodyne
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollow_anodyne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollow_extension
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollow_extension
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceCompositionMap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceCompositionMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceCompositionMap_eq_native
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceCompositionMap_eq_native
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough_preimage_pathFaceMap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough_preimage_pathFaceMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.range_pathFaceCompositionMap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.range_pathFaceCompositionMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceCompositionMap_mono
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceCompositionMap_mono
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathMixedFaceIso
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathMixedFaceIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathMixedFaceIso_hom_ι
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathMixedFaceIso_hom_ι
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathMixedFaceIso_hom_toThrough
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathMixedFaceIso_hom_toThrough
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathMixed_self_eq_bot
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathMixed_self_eq_bot
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathMixed_self_hom_ext
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathMixed_self_hom_ext
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInteriorFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInteriorFunctor
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathOfInteriorFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathOfInteriorFunctor
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInteriorFunctor_comp_pathOfInteriorFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInteriorFunctor_comp_pathOfInteriorFunctor
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathOfInteriorFunctor_comp_pathInteriorFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathOfInteriorFunctor_comp_pathInteriorFunctor
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInteriorNerveIso
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInteriorNerveIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialNerve_quasicategory
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialNerve_quasicategory
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.subcomplexPreimageIso
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.subcomplexPreimageIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.subcomplexPreimageArrowIso
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.subcomplexPreimageArrowIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.anodyne_subcomplexPreimage
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.anodyne_subcomplexPreimage
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHom_comp_left_unit
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHom_comp_left_unit
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHom_comp_right_unit
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHom_comp_right_unit
+#print axioms SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_zero_overlap
+#check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace_zero_overlap

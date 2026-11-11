@@ -17,10 +17,10 @@ open CategoryTheory Simplicial SSet
 /-- 元の全単体作用素の全区間 cubical Hom への作用そのもの。 -/
 def simplexIntervalCubicalMap {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (a b : Fin (m + 1)) :
-    necklaceCubicalMapping (Δ[m] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) ⟶
+    necklaceCubicalMapping (Δ[m] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) ⟶
       necklaceCubicalMapping (Δ[n] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (θ.toOrderHom a)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (θ.toOrderHom b)) :=
-  necklaceCubicalMap (stdSimplex.map θ) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (θ.toOrderHom a)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (θ.toOrderHom b)) :=
+  necklaceCubicalMap (stdSimplex.map θ) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b)
 
 /-- 元の区間の生成射と実単体作用素の後合成は、同じ像 necklace の生成射を回収する。 -/
 lemma simplexIntervalCubicalCoreIso_map {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
@@ -36,17 +36,17 @@ lemma simplexIntervalCubicalCoreIso_map {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
 
 /-- 元の区間の数値次元を、同じ区間 bead の元の次元へ移す同型。 -/
 def simplexIntervalCubeDimensionIso {m : ℕ} (a b : Fin (m + 1)) :
-    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1) ≅
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1) ≅
       (necklaceConcreteCube.{u}).obj (necklaceBead (b.val - a.val)) :=
-  @concreteCubeDimensionIso (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1))
-    (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (necklaceBead.{u} (b.val - a.val)).down.dimension)
+  @concreteCubeDimensionIso (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1))
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (necklaceBead.{u} (b.val - a.val)).down.dimension)
     (necklaceBead_dimension.{u} (b.val - a.val)).symm
 
 /-- 元の全単体作用素の具体的 cube 射。端点の潰れる退化も同じ元の関手で扱う。 -/
 def simplexIntervalCubeMap {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (a b : Fin (m + 1)) (hab : a ≤ b) :
-    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1) ⟶
-      _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk ((θ.toOrderHom b).val - (θ.toOrderHom a).val - 1) :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1) ⟶
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk ((θ.toOrderHom b).val - (θ.toOrderHom a).val - 1) :=
   (simplexIntervalCubeDimensionIso.{u} a b).hom ≫
     necklaceConcreteCube.map (simplexIntervalBeadMap.{u} θ a b hab) ≫
       (simplexIntervalCubeDimensionIso.{u} (θ.toOrderHom a) (θ.toOrderHom b)).inv

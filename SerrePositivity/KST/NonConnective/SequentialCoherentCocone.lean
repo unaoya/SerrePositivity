@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.KST.NonConnective.SequentialCoherentLift
-public import SerrePositivity.InfinityCategories.HomotopyLimits.GeneralHomHolimComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNativeCocones
-public import SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.GeneralHomHolimComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.StrictNativeCocones
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ColimitExistenceTransfer
 
 /-!
 概要：元の逐次 BF 図式上の実際の coherent Sp 余錐。
@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.NonConnective
 local instance sequentialCoconeSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
@@ -31,7 +31,7 @@ local instance sequentialCoconeOppositeHomKan (X Y : OmegaSpectrum.{u}ᵒᵖ) :
 /-- BF 標的の Raw Hom 図式を、反対の単体的圏の元の Hom 図式と比較する。 -/
 def sequentialBFHomDiagramIso (D : SpectrumSequence.{u}) :
     sequentialRawHomDiagram D (sequentialSpectrum D).toKanSequence ≅
-      simplicialHomDiagram D.op (Opposite.op (sequentialSpectrum D)) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D.op (Opposite.op (sequentialSpectrum D)) :=
   NatIso.ofComponents (fun _ ↦ Iso.refl _) (fun {i j} f ↦ by
     change RawSpectrumMapping.pre (D.map f.unop) (sequentialSpectrum D).toKanSequence ≫ 𝟙 _ =
       𝟙 _ ≫ eHomWhiskerRight SSet (D.map f.unop) (sequentialSpectrum D)
@@ -40,44 +40,44 @@ def sequentialBFHomDiagramIso (D : SpectrumSequence.{u}) :
 
 /-- 元の反対図式と BF 候補を固定した coherent 錐の切断点。 -/
 def sequentialCoherentOppositeConePoint (D : SpectrumSequence.{u}) :
-    (coherentConeSectionSpace (strictCoherentDiagram D.op)
-      (coherentNerveVertex (Opposite.op (sequentialSpectrum D)))) _⦋0⦌ :=
-  (reflectedHomHolimConeComparison D.op (Opposite.op (sequentialSpectrum D))).app _
-    (ULift.up ((weightedSectionsMap (bousfieldKanWeight SequentialIndexᵒᵖ)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentConeSectionSpace (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram D.op)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Opposite.op (sequentialSpectrum D)))) _⦋0⦌ :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.reflectedHomHolimConeComparison D.op (Opposite.op (sequentialSpectrum D))).app _
+    (ULift.up ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight SequentialIndexᵒᵖ)
       (Functor.whiskerRight (sequentialBFHomDiagramIso D).hom SSet.opFunctor)).app _
         (sequentialReflectedBFInjectionPoint D)))
 
 /-- 全高次の整合を持つ、元の反対の BF 図式上の実錐。 -/
 def sequentialCoherentOppositeCone (D : SpectrumSequence.{u}) :
-    JoinCone (strictCoherentDiagram D.op) :=
-  ((fixedVertexConeSpaceEquiv (strictCoherentDiagram D.op)
-    (coherentNerveVertex (Opposite.op (sequentialSpectrum D)))).symm
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram D.op) :=
+  ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.fixedVertexConeSpaceEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram D.op)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Opposite.op (sequentialSpectrum D)))).symm
       (sequentialCoherentOppositeConePoint D)).val
 
 /-- 実反対錐の頂点は、元の BF 候補の反対対象。 -/
 lemma sequentialCoherentOppositeCone_vertex (D : SpectrumSequence.{u}) :
     (sequentialCoherentOppositeCone D).vertex =
-      coherentNerveVertex (Opposite.op (sequentialSpectrum D)) := by
-  have h := ((fixedVertexConeSpaceEquiv (strictCoherentDiagram D.op)
-    (coherentNerveVertex (Opposite.op (sequentialSpectrum D)))).symm
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Opposite.op (sequentialSpectrum D)) := by
+  have h := ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.fixedVertexConeSpaceEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram D.op)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Opposite.op (sequentialSpectrum D)))).symm
       (sequentialCoherentOppositeConePoint D)).property
-  rw [JoinCone.vertex_eq]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone.vertex_eq]
   exact (congrArg SSet.yonedaEquiv h).trans (Equiv.apply_symm_apply _ _)
 
 /-- 元の逐次 BF 図式を厳密に底に持つ実 Sp 余錐。 -/
 def sequentialCoherentCocone (D : SpectrumSequence.{u}) :
-    JoinCocone (strictCoherentDiagram D) :=
-  coherentCoconeOfDiagramEq (strictCoherentCoconeDiagram_eq D)
-    (coherentCoconePost ((sequentialCoherentOppositeCone D).reverseCocone.restrict
-      (strictCoconeIndexIso.{u, u + 1} SequentialIndex).hom)
-      (coherentOppositeReturnIso OmegaSpectrum.{u}).hom)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram D) :=
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coherentCoconeOfDiagramEq (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictCoherentCoconeDiagram_eq D)
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coherentCoconePost ((sequentialCoherentOppositeCone D).reverseCocone.restrict
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictCoconeIndexIso.{u, u + 1} SequentialIndex).hom)
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coherentOppositeReturnIso OmegaSpectrum.{u}).hom)
 
 /-- 元の Sp 余錐の頂点は、既存の filtered BF 置換そのもの。 -/
 lemma sequentialCoherentCocone_vertex (D : SpectrumSequence.{u}) :
-    (sequentialCoherentCocone D).vertex = coherentNerveVertex (sequentialSpectrum D) := by
-  rw [sequentialCoherentCocone, coherentCoconeOfDiagramEq_vertex,
-    coherentCoconePost_vertex, JoinCocone.vertex_restrict, JoinCone.reverseCocone_vertex,
+    (sequentialCoherentCocone D).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (sequentialSpectrum D) := by
+  rw [sequentialCoherentCocone, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coherentCoconeOfDiagramEq_vertex,
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coherentCoconePost_vertex, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone.vertex_restrict, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone.reverseCocone_vertex,
     sequentialCoherentOppositeCone_vertex]
-  exact coherentOppositeReturnIso_hom_vertex _
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coherentOppositeReturnIso_hom_vertex _
 
 end SerrePositivity.KST.NonConnective

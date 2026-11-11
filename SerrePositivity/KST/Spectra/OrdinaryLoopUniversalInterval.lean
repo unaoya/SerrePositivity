@@ -28,10 +28,10 @@ def loopExchangeInterval (Z : PointedSimplicialSet.{u}) [KanComplex Z.right] :
       (LoopExchangePaths.swap (PointedObject.basedHom PointedSimplicialSet.circle.{u} Z))
       (LoopExchangePaths.reversal (PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)) := by
   have hs : LoopExchangePaths.swap (PointedObject.basedHom PointedSimplicialSet.circle.{u} Z) =
-      (mappingIso Z).inv ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed swap.{u} Z ≫ (mappingIso Z).hom) := by
+      (mappingIso Z).inv ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed swap.{u} Z ≫ (mappingIso Z).hom) := by
     rw [TwoLoopSource.mappingIso_pre_swap, Iso.inv_hom_id_assoc]
   have hr : LoopExchangePaths.reversal (PointedObject.basedHom PointedSimplicialSet.circle.{u} Z) =
-      (mappingIso Z).inv ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed reversal.{u} Z ≫ (mappingIso Z).hom) := by
+      (mappingIso Z).inv ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed reversal.{u} Z ≫ (mappingIso Z).hom) := by
     rw [TwoLoopSource.mappingIso_pre_reversal, Iso.inv_hom_id_assoc]
   exact (((sourceInterval Z).basedPost (mappingIso Z).hom).pre
     (mappingIso Z).inv).changeEndpoints hs hr

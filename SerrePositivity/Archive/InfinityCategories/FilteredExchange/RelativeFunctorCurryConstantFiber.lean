@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryEvaluation
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantUnstraighteningRelativeProjection
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeFunctorCurryEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ConstantUnstraighteningRelativeProjection
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorSpaceCurrying
 
 /-!
 概要：相対 curry と定値標的の fiber 表示は全係数で厳密に可換する。

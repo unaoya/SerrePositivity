@@ -79,8 +79,8 @@ lemma pre_id (X : OmegaSpectrum.{u}) (Z : KanSequence.{u}) : pre (𝟙 X) Z = �
 
 /-- BF の段ごとの π 同型は、任意の Kan 列への元の全 Hom の前合成でホモトピー同値。 -/
 lemma pre_homotopyEquivalence_of_levelwise {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
-    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n).right) (Z : KanSequence.{u}) :
-    IsSimplicialHomotopyEquivalence (pre f Z) := by
+    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app n).right) (Z : KanSequence.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (pre f Z) := by
   obtain ⟨g, hg, hh⟩ := SpectrumMappingAcyclic.exists_componentInverse f hf
   refine ⟨pre g Z, ?_, ?_⟩
   · rw [← pre_comp, ← pre_id Y Z]
@@ -90,8 +90,8 @@ lemma pre_homotopyEquivalence_of_levelwise {X Y : OmegaSpectrum.{u}} (f : X ⟶ 
 
 /-- 同じ元の点つき全 Hom の前合成の、全基点 π 同型性。 -/
 lemma pointedPre_piIsomorphism_of_levelwise {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
-    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n).right) (Z : KanSequence.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pointedPre f Z).right :=
+    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app n).right) (Z : KanSequence.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (pointedPre f Z).right :=
   kanPiIsomorphism_of_qCatEquivalence _
     (pre_homotopyEquivalence_of_levelwise f hf Z).isQCatEquivalence
 

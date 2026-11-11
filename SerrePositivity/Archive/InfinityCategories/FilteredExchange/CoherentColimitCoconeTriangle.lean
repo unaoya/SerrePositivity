@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitCoconeHomotopy
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorCompositionTriangle
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentColimitCoconeHomotopy
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle
 
 /-!
 概要：元の指定三角形を、元の全空間余錐間の三角形へ持ち上げる。

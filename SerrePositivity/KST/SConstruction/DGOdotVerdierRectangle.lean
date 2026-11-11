@@ -23,8 +23,8 @@ structure DGOdotVerdierRectangleInput (h : DGOdotLaxVerdierInput R d) where
   image_eq : diagram ≫ dgKInputNu R =
     (LaxUniversalDifference.rectangle (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
       h.inclusion h.projection h.isVerdier).diagram
-  source_vertex : squareVertex ((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫
-    pastingSquare diagram 2) 0 0 = coherentNerveVertex (dgOdotDiagonalSourceInput R d)
+  source_vertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 2) 0 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d)
 
 namespace DGOdotVerdierRectangleInput
 variable {h : DGOdotLaxVerdierInput R d} (t : DGOdotVerdierRectangleInput h)
@@ -32,8 +32,8 @@ variable {h : DGOdotLaxVerdierInput R d} (t : DGOdotVerdierRectangleInput h)
 /-- 概要：同じ長方形の右面と外周を相対 Verdier 提示にする。
 方針：Sp 正本の構成を適用する。規約：長方形を選び直さない。
 使われ方：二つの fiber 四角形の消去。 -/
-def relativeRectangle : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle (dgKInputNu.{u, u + 1} R) :=
-  _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle (dgKInputNu R)
+def relativeRectangle : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierRectangle (dgKInputNu.{u, u + 1} R) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.relativeRectangle (dgKInputNu R)
     (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
     h.inclusion h.projection h.isVerdier t.diagram t.image_eq
 
@@ -46,7 +46,7 @@ def comparisonSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ dgKInputInfinity.{u,
 /-- 概要：同じ全比較四角形の ν 像。方針：既存の相対 Tamme 照合を使う。
 規約：四辺だけの照合で代用しない。使われ方：元の d8 の回収。 -/
 lemma comparison_image : t.comparisonSquare ≫ dgKInputNu R =
-    _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare (dgOdotLowerExactMap R d)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalDifferenceSquare.comparisonSquare (dgOdotLowerExactMap R d)
       (dgOdotUpperExactMap R d) h.inclusion h.projection h.isVerdier :=
   dgKRelativeTammeComparison_image R _ _ h.inclusion h.projection h.isVerdier
     t.diagram t.image_eq
@@ -54,22 +54,22 @@ lemma comparison_image : t.comparisonSquare ≫ dgKInputNu R =
 /-- 概要：比較四角形の左下頂点は元の dg 対角始域。
 方針：入力した同じ頂点等式を保持する。規約：ν 像での一致だけではない。
 使われ方：元の不変量値を極限錐の頂点にする。 -/
-lemma comparison_source : squareVertex t.comparisonSquare 0 0 =
-    coherentNerveVertex (dgOdotDiagonalSourceInput R d) := t.source_vertex
+lemma comparison_source : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.comparisonSquare 0 0 =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d) := t.source_vertex
 
 /-- 概要：同じ包含辺の ν 像を保持する。方針：全四角形の像から制限する。
 規約：S 内で未供給の包含 lift は主張しない。使われ方：元の左射の照合。 -/
-lemma comparison_bottom_image : squareBottomEdge ≫ t.comparisonSquare ≫ dgKInputNu R =
-    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow h.inclusion).edge := by
+lemma comparison_bottom_image : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ t.comparisonSquare ≫ dgKInputNu R =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow h.inclusion).edge := by
   rw [t.comparison_image]
-  exact _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_bottom _ _ _ _ _
+  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalDifferenceSquare.comparisonSquare_bottom _ _ _ _ _
 
 /-- 概要：相対不変量は同じ四角形を pullback に送る。
 方針：二つの相対 Verdier 面を Sp 正本で消去する。
 規約：K の局所化性や E の絶対延長は仮定しない。使われ方：K-10 d の形式的結論。 -/
 lemma comparison_isPullback {E : dgKInputInfinity.{u, u + 1} R ⟶ Sp.{u + 1}}
     (hE : IsDGKRelativeLocalizingInvariant R E) :
-    IsPullbackSquare (t.comparisonSquare ≫ E) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (t.comparisonSquare ≫ E) :=
   (_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonSquare_isPullback t.relativeRectangle) hE
 
 /-- 概要：同じ E 値の右面を fiber 三角形にする。
@@ -77,7 +77,7 @@ lemma comparison_isPullback {E : dgKInputInfinity.{u, u + 1} R ⟶ Sp.{u + 1}}
 使われ方：長方形の二つの fiber 列との接続。 -/
 lemma right_isFiber {E : dgKInputInfinity.{u, u + 1} R ⟶ Sp.{u + 1}}
     (hE : IsDGKRelativeLocalizingInvariant R E) :
-    IsFiberSequence (hE.fiberTriangle t.relativeRectangle.right) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence (hE.fiberTriangle t.relativeRectangle.right) :=
   hE.fiberTriangle_isFiber t.relativeRectangle.right
 
 /-- 概要：同じ比較四角形の実極限錐。方針：Sp 正本の pullback 錐を使う。
@@ -89,7 +89,7 @@ def comparisonCone (E : dgKInputInfinity.{u, u + 1} R ⟶ Sp.{u + 1}) :=
 方針：相対局所化条件を既存定理へ渡す。規約：未供給入力を省略しない。
 使われ方：Cat^perf 版の次工程への形式的出力。 -/
 lemma comparisonCone_isLimit {E : dgKInputInfinity.{u, u + 1} R ⟶ Sp.{u + 1}}
-    (hE : IsDGKRelativeLocalizingInvariant R E) : IsLimitCone (t.comparisonCone E) :=
+    (hE : IsDGKRelativeLocalizingInvariant R E) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (t.comparisonCone E) :=
   (_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonCone_isLimit t.relativeRectangle) hE
 
 end DGOdotVerdierRectangleInput

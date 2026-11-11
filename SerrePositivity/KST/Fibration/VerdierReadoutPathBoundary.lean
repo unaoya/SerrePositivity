@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.CoherentTriangleIntervalEndpoints
-public import SerrePositivity.InfinityCategories.Core.IntervalBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IntervalBoundary
 
 /-!
 概要：長 Hom の native path 空間に、元の直接端・合成端の境界を厳密に指定する。
@@ -24,8 +24,8 @@ namespace SerrePositivity.KST.Fibration
 使われ方：指定合成二単体の部分図式の包含。 -/
 def verdierReadoutPathBoundary :
     (boundary 1 : SSet.{u + 1}) ⟶
-      (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}) :=
-  (boundary 1).ι ≫ uliftTriangleNativePathIntervalIso.inv
+      (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}) :=
+  (boundary 1).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.inv
 
 instance : Mono verdierReadoutPathBoundary.{u} := by
   dsimp [verdierReadoutPathBoundary]
@@ -36,13 +36,13 @@ instance : Mono verdierReadoutPathBoundary.{u} := by
 規約：全次数の写像の厳密等式。
 使われ方：相対持ち上げで元の直接端成分を固定する。 -/
 theorem verdierReadoutPathBoundary_zero (A : SSet.{u + 1}) :
-    intervalBoundaryEndpoint 0 A ≫ (verdierReadoutPathBoundary.{u} ▷ A) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint 0 A ≫ (verdierReadoutPathBoundary.{u} ▷ A) =
       lift (SSet.const (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u})))
         (𝟙 A) := by
-  rw [intervalBoundaryEndpoint, lift_whiskerRight, SSet.const_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint, lift_whiskerRight, SSet.const_comp]
   congr 1
   apply congrArg (SSet.const (X := A))
-  change uliftTriangleNativePathIntervalIso.inv.app (Opposite.op ⦋0⦌)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.inv.app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = _
   exact coherentTriangleInterval_up_first
 
@@ -51,13 +51,13 @@ theorem verdierReadoutPathBoundary_zero (A : SSet.{u + 1}) :
 規約：別の合成 path に置き換えない。全次数の厳密等式。
 使われ方：相対持ち上げで元の合成端成分を固定する。 -/
 theorem verdierReadoutPathBoundary_one (A : SSet.{u + 1}) :
-    intervalBoundaryEndpoint 1 A ≫ (verdierReadoutPathBoundary.{u} ▷ A) =
-      lift (SSet.const (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u}))) (𝟙 A) := by
-  rw [intervalBoundaryEndpoint, lift_whiskerRight, SSet.const_comp]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint 1 A ≫ (verdierReadoutPathBoundary.{u} ▷ A) =
+      lift (SSet.const (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u}))) (𝟙 A) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint, lift_whiskerRight, SSet.const_comp]
   congr 1
   apply congrArg (SSet.const (X := A))
-  change uliftTriangleNativePathIntervalIso.inv.app (Opposite.op ⦋0⦌)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.inv.app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = _
-  exact uliftTriangleNativePathIntervalIso_inv_last
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso_inv_last
 
 end SerrePositivity.KST.Fibration

@@ -25,7 +25,7 @@ def oneDirectionKanInverseChoices (r : ℕ) (X : StableModel.{u}) : SSet.{u} :=
 
 /-- 一方向比較の逆射の選択空間は可縮 Kan。 -/
 lemma oneDirectionKanInverseChoices_isContractibleKan (r : ℕ) (X : StableModel.{u}) :
-    IsContractibleKan (oneDirectionKanInverseChoices r X) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (oneDirectionKanInverseChoices r X) :=
   pointedMappingPathSectionSpace_isContractibleKan _
     (oneDirectionReducedComparison_kan_piIsomorphism r X)
 

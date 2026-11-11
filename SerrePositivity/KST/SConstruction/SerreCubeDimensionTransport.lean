@@ -34,7 +34,7 @@ lemma serreCubeDimensionMap_succ {n m : ℕ} (h : n = m) :
 /-- 元の具体的な次元同型の評価は、同じ鎖立方体の次元移送。 -/
 lemma serreConcreteCubeMap_dimension {n m : ℕ} (h : n = m) :
     serreConcreteCubeMap A (concreteCubeDimensionIso
-      (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n) (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m) h).hom = serreCubeDimensionMap A h := by
+      (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n) (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m) h).hom = serreCubeDimensionMap A h := by
   cases h
   exact serreConcreteCubeMap_id A n
 

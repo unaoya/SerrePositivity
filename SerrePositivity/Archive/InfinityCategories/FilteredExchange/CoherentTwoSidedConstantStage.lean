@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.TwoSidedHomSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.TwoSidedHomSimplex
 
 /-!
 概要：元の定値 Hom 係数では、二側 Hom 補間は補間段階に依存しない。

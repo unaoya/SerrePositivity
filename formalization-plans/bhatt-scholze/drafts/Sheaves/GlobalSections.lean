@@ -3,14 +3,14 @@
 -- 基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableSmallLimits
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresentableSmallLimits
 public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
-public import SerrePositivity.InfinityCategories.Core.EquivalencePath
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
-public import SerrePositivity.InfinityCategories.F1B.Localization.Reflective
-public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalObjects
-public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorPresentable
-public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldReflection
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePath
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Reflective
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LocalObjects
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorPresentable
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.BousfieldReflection
 -- 本ファイルは drafts/Sheaves/SheafCondition.lean（将来 …Sheaves.SheafCondition）を import する。
 
 /-!

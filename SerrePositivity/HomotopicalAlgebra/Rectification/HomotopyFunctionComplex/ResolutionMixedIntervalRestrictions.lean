@@ -62,16 +62,16 @@ def preCD : Index C ⥤ SelectedIntervalDiagram.Index C where
   map_id _ := rfl
   map_comp _ _ := rfl
 
-abbrev intervalParameters := NerveCylinderBoundary.product (parameters C)
+abbrev intervalParameters := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (parameters C)
   (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 1))
 abbrev cParameters := cornerC C ⋙ ResolutionArrowTupleCoherence.bigTuples C
-abbrev cIntervalParameters := NerveCylinderBoundary.product (cParameters C)
+abbrev cIntervalParameters := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (cParameters C)
   (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 1))
 abbrev bValues := cornerB C ⋙ ResolutionArrowDiagram.fibers C
 abbrev cValues := cornerC C ⋙ ResolutionArrowDiagram.fibers C
 
 abbrev bParameters := cornerB C ⋙ ResolutionArrowTupleCoherence.bigTuples C
-abbrev bIntervalParameters := NerveCylinderBoundary.product (bParameters C)
+abbrev bIntervalParameters := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (bParameters C)
   (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 1))
 abbrev leftFinalValues := finalLeft C ⋙ ResolutionArrowDiagram.fibers C
 
@@ -101,7 +101,7 @@ def intervalAC : NerveMovingParameter.System.{u, v} (intervalParameters C) (smal
 /-- Use the same chosen whole preinterval system, with actual tuple transport from corner A. -/
 def intervalCD : NerveMovingParameter.System.{u, v} (intervalParameters C) (smallValues C) :=
   NerveBiparameterMaps.restrict _ _ _
-    (NerveCylinderBoundary.horizontal (parameters C) (cParameters C)
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal (parameters C) (cParameters C)
       (Functor.whiskerRight (edgeAC C) (ResolutionArrowTupleCoherence.bigTuples C))
         (SSet.stdSimplex.obj (SimplexCategory.mk 1))) (preCDSystem C hcof hfib)
 
@@ -117,7 +117,7 @@ abbrev castBDSystem : NerveMovingParameter.System.{u, v} (bIntervalParameters C)
 /-- The fourth original whole interval uses the actual natural reassociation and tuple transport. -/
 def intervalBD : NerveMovingParameter.System.{u, v} (intervalParameters C) (smallValues C) :=
   NerveBiparameterMaps.restrict _ _ _
-    (NerveCylinderBoundary.horizontal (parameters C) (bParameters C)
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal (parameters C) (bParameters C)
       (Functor.whiskerRight (edgeAB C) (ResolutionArrowTupleCoherence.bigTuples C))
         (SSet.stdSimplex.obj (SimplexCategory.mk 1))) (castBDSystem C hcof hfib)
 
@@ -148,7 +148,7 @@ lemma preCD_evaluate (p : Index C) : NerveMovingParameter.evaluate (cIntervalPar
 lemma intervalAB_evaluate (p : Index C) : NerveMovingParameter.evaluate (intervalParameters C)
     (smallValues C) (intervalAB C hcof hfib) p =
     ResolutionArrowSelectedIntervals.preFamily hcof hfib p.source p.middle p.target p.pre p.center ≫
-      UniverseLift.map.{u} ((ResolutionArrowDiagram.fibers C).map (bd C p)) := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} ((ResolutionArrowDiagram.fibers C).map (bd C p)) := by
   change NerveMovingParameter.evaluate (intervalParameters C) (smallValues C)
     (NerveBiparameterMaps.mapTarget _ _ _ _ (preABSystem C hcof hfib)) p = _
   rw [NerveBiparameterMaps.evaluate_mapTarget, preAB_evaluate]
@@ -158,7 +158,7 @@ lemma intervalAC_evaluate (p : Index C) : NerveMovingParameter.evaluate (interva
     (smallValues C) (intervalAC C hcof hfib) p =
     ResolutionArrowSelectedIntervals.postFamily hcof hfib p.middle p.target p.final p.center
       p.post ≫
-      UniverseLift.map.{u} ((ResolutionArrowDiagram.fibers C).map (cd C p)) := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} ((ResolutionArrowDiagram.fibers C).map (cd C p)) := by
   change NerveMovingParameter.evaluate (intervalParameters C) (smallValues C)
     (NerveBiparameterMaps.mapTarget _ _ _ _ (postACSystem C hcof hfib)) p = _
   rw [NerveBiparameterMaps.evaluate_mapTarget, postAC_evaluate]
@@ -187,7 +187,7 @@ lemma castBD_evaluate (p : Index C) : NerveMovingParameter.evaluate (bIntervalPa
     (smallValues C) (castBDSystem C hcof hfib) p =
     ResolutionArrowSelectedIntervals.postFamily hcof hfib p.source p.target p.final
       (p.pre.map.base ≫ p.center) p.post ≫
-        UniverseLift.map.{u} ((ResolutionArrowDiagram.fibers C).map (finalIso C p).hom) := by
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} ((ResolutionArrowDiagram.fibers C).map (finalIso C p).hom) := by
   change NerveMovingParameter.evaluate (bIntervalParameters C) (smallValues C)
     (NerveBiparameterMaps.mapTarget _ _ _ _ (postBDSystem C hcof hfib)) p = _
   rw [NerveBiparameterMaps.evaluate_mapTarget, postBD_evaluate]
@@ -198,7 +198,7 @@ lemma intervalBD_evaluate (p : Index C) : NerveMovingParameter.evaluate (interva
     ((ResolutionArrowTupleCoherence.bigTuples C).map (ab C p) ▷
       SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫
         ResolutionArrowSelectedIntervals.postFamily hcof hfib p.source p.target p.final
-          (p.pre.map.base ≫ p.center) p.post ≫ UniverseLift.map.{u}
+          (p.pre.map.base ≫ p.center) p.post ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u}
             (CoherentLiftMixedComparison.castMap p.source.inner p.middle.inner p.target p.final
               p.pre.map p.center p.post) := by
   change NerveMovingParameter.evaluate (intervalParameters C) (smallValues C)
@@ -208,6 +208,6 @@ lemma intervalBD_evaluate (p : Index C) : NerveMovingParameter.evaluate (interva
     ((ResolutionArrowTupleCoherence.bigTuples C).map (ab C p) ▷
       SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫
         ResolutionArrowSelectedIntervals.postFamily hcof hfib p.source p.target p.final
-          (p.pre.map.base ≫ p.center) p.post ≫ UniverseLift.map.{u} k) (fiber_cast C p)
+          (p.pre.map.base ≫ p.center) p.post ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} k) (fiber_cast C p)
 
 end SerrePositivity.HomotopyFunctionComplex.ResolutionMixedIntervalRestrictions

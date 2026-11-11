@@ -37,11 +37,11 @@ def pointedMapAtVertex {X Y : SSet.{u}} (f : X ⟶ Y) (x : X _⦋0⦌) :
 /-- 概要：参照頂点を持つ Kan 複体の全基点 π_* 同型は実際の単体的ホモトピー同値。
 方針：基点を頂点の像へ送り、本レーンの点つき Whitehead の逆を使う。
 規約：逆射の存在は Lean 内で構成済みの Whitehead による。
-使われ方：Goerss–Jardine I §7、Kerodon 4.8.4.1。合成の前側の消去。 -/
+使われ方：Goerss–Jardine I §7、Kerodon 4.8.4.1（Tag 01JX）。合成の前側の消去。 -/
 lemma kanPiIsomorphism_homotopyEquivalence_atVertex
     {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
-    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) (x : X _⦋0⦌) :
-    IsSimplicialHomotopyEquivalence f := by
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f) (x : X _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence f := by
   let : KanComplex (PointedSimplicialSet.ofVertex X x).right :=
     inferInstanceAs (KanComplex X)
   let : KanComplex (PointedSimplicialSet.ofVertex Y (f.app _ x)).right :=
@@ -55,8 +55,8 @@ lemma kanPiIsomorphism_homotopyEquivalence_atVertex
 lemma KanPiIsomorphism.cancel_left_atVertex
     {X Y Z : SSet.{u}} [KanComplex X] [KanComplex Y] [KanComplex Z]
     {f : X ⟶ Y} {g : Y ⟶ Z}
-    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) (hfg : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f ≫ g)) (x : X _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g :=
+    (hf : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f) (hfg : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f ≫ g)) (x : X _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism g :=
   kanPiIsomorphism_of_qCatEquivalence g
     ((kanPiIsomorphism_homotopyEquivalence_atVertex f hf x).isQCatEquivalence.cancel_left
       (kanPiIsomorphism_homotopyEquivalence_atVertex (f ≫ g) hfg x).isQCatEquivalence)

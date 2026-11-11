@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.AppendEdgeConeInverse
-public import SerrePositivity.InfinityCategories.Core.JoinAssociatorMiddle
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinAssociatorMiddle
 
 /-!
 概要：追加錐の中間終点を除く面は、元の実終辺の終点に沿う全面。

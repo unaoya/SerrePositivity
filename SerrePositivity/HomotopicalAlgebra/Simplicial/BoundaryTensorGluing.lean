@@ -48,7 +48,7 @@ abbrev Compatible {n : ℕ}
 
 lemma curry_compatible {n : ℕ}
     (faces : Fin (n + 3) → (T ⊗ SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)) ⟶ P))
-    (hf : Compatible faces) : BoundaryGluing.StandardCompatible (fun k => curry (faces k)) := by
+    (hf : Compatible faces) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.StandardCompatible (fun k => curry (faces k)) := by
   intro j k hjk
   apply uncurry_injective
   rw [uncurry_natural_left, uncurry_natural_left, uncurry_curry, uncurry_curry]
@@ -63,14 +63,14 @@ lemma curry_compatible {n : ℕ}
 def desc {n : ℕ}
     (faces : Fin (n + 3) → (T ⊗ SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)) ⟶ P))
     (hf : Compatible faces) : T ⊗ (SSet.boundary (n + 2)).toSSet ⟶ P :=
-  uncurry (BoundaryGluing.standardDesc (fun k => curry (faces k)) (curry_compatible faces hf))
+  uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.standardDesc (fun k => curry (faces k)) (curry_compatible faces hf))
 
 @[reassoc]
 lemma desc_fac {n : ℕ}
     (faces : Fin (n + 3) → (T ⊗ SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)) ⟶ P))
     (hf : Compatible faces) (k : Fin (n + 3)) :
     T ◁ SSet.boundary.ι k ≫ desc faces hf = faces k := by
-  rw [desc, ← uncurry_natural_left, BoundaryGluing.standardDesc_fac, uncurry_curry]
+  rw [desc, ← uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.standardDesc_fac, uncurry_curry]
 
 lemma hom_ext {n : ℕ} {f g : T ⊗ (SSet.boundary (n + 1)).toSSet ⟶ P}
     (h : ∀ k : Fin (n + 2), T ◁ SSet.boundary.ι k ≫ f = T ◁ SSet.boundary.ι k ≫ g) :

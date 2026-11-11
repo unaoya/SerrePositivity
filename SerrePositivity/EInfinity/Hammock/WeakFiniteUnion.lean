@@ -36,13 +36,13 @@ lemma weakMapSubcomplex_of_eq {A C : X.Subcomplex} {B D : Y.Subcomplex}
     (hAC : A = C) (hBD : B = D)
     (hAB : ∀ k, Set.MapsTo (f.app k) (A.obj k) (B.obj k))
     (hCD : ∀ k, Set.MapsTo (f.app k) (C.obj k) (D.obj k))
-    (h : IsWeakHomotopyEquivalence (mapSubcomplex f hAB)) :
-    IsWeakHomotopyEquivalence (mapSubcomplex f hCD) := by
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (mapSubcomplex f hAB)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (mapSubcomplex f hCD) := by
   cases hAC
   cases hBD
   exact h
 
-lemma weakMapSubcomplex_bottom : IsWeakHomotopyEquivalence
+lemma weakMapSubcomplex_bottom : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
     (mapSubcomplex f (A := ⊥) (B := ⊥) (fun _ _ hx => False.elim hx)) := by
   have : IsIso (mapSubcomplex f (A := ⊥) (B := ⊥) (fun _ _ hx => False.elim hx)) := by
     rw [NatTrans.isIso_iff_isIso_app]
@@ -53,7 +53,7 @@ lemma weakMapSubcomplex_bottom : IsWeakHomotopyEquivalence
       exact False.elim x.property
     · intro x
       exact False.elim x.property
-  exact (isPrecompositionEquivalence_of_iso (asIso
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (asIso
     (mapSubcomplex f (A := ⊥) (B := ⊥) (fun _ _ hx => False.elim hx)))).isWeakHomotopyEquivalence
 
 lemma subcomplex_inf_finsetSup {I : Type v} (A : I → X.Subcomplex) (s : Finset I)
@@ -71,8 +71,8 @@ lemma weakFiniteUnion {I : Type v} [SemilatticeInf I] (s : Finset I) :
     ∀ (A : I → X.Subcomplex) (B : I → Y.Subcomplex)
       (_hA : ∀ i j, A (i ⊓ j) = A i ⊓ A j) (_hB : ∀ i j, B (i ⊓ j) = B i ⊓ B j)
       (hm : ∀ i k, Set.MapsTo (f.app k) ((A i).obj k) ((B i).obj k)),
-      (∀ i, IsWeakHomotopyEquivalence (mapSubcomplex f (hm i))) →
-        IsWeakHomotopyEquivalence (mapSubcomplex f (mapsToSubcomplexFinsetSup f s hm)) := by
+      (∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (mapSubcomplex f (hm i))) →
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (mapSubcomplex f (mapsToSubcomplexFinsetSup f s hm)) := by
   classical
   induction s using Finset.induction_on with
   | empty =>
@@ -86,7 +86,7 @@ lemma weakFiniteUnion {I : Type v} [SemilatticeInf I] (s : Finset I) :
       (fun j k => by rw [hB]; simp only [inf_assoc, inf_left_comm, inf_left_idem])
       (fun j => mapsToSubcomplexInf f (hm i) (hm j))
       (fun j => weakMapSubcomplex_of_eq f (hA i j) (hB i j) _ _ (hw (i ⊓ j)))
-    have hInt : IsWeakHomotopyEquivalence
+    have hInt : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
         (mapSubcomplex f (mapsToSubcomplexInf f (hm i) (mapsToSubcomplexFinsetSup f s hm))) := by
       exact weakMapSubcomplex_of_eq f (subcomplex_inf_finsetSup A s (A i)).symm
         (subcomplex_inf_finsetSup B s (B i)).symm _ _ hsi

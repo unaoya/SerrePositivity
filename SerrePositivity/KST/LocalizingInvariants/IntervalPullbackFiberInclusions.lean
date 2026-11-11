@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.IntervalFiberGroupoidCompletion
-public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionIso
-public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.GroupoidCompletionIso
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.VertexFiberNervePullback
 
 /-!
 概要：区間の引き戻し全体への元の両端 fiber の包含と、亜群化後の同値性。
@@ -22,42 +22,42 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 def intervalPullbackFiberInclusion {E B : SSet.{u}} (p : E ⟶ B)
     (b : (Δ[1] : SSet.{u}) ⟶ B) (i : Fin 2) :
-    vertexFiber p (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i)) ⟶ pullback p b :=
-  (SerrePositivity.InfinityCategories.vertexFiberPullbackIso p b (stdSimplex.obj₀Equiv.symm i)).inv ≫
-    vertexFiberι (pullback.snd p b) (stdSimplex.obj₀Equiv.symm i)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i)) ⟶ pullback p b :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.vertexFiberPullbackIso p b (stdSimplex.obj₀Equiv.symm i)).inv ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (pullback.snd p b) (stdSimplex.obj₀Equiv.symm i)
 
 lemma intervalPullbackFiberInclusion_fst {E B : SSet.{u}} (p : E ⟶ B)
     (b : (Δ[1] : SSet.{u}) ⟶ B) (i : Fin 2) :
     intervalPullbackFiberInclusion p b i ≫ pullback.fst p b =
-      vertexFiberι p (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i)) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i)) := by
   dsimp only [intervalPullbackFiberInclusion]
-  rw [Category.assoc, ← SerrePositivity.InfinityCategories.vertexFiberPullbackIso_hom_ι, Iso.inv_hom_id_assoc]
+  rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.vertexFiberPullbackIso_hom_ι, Iso.inv_hom_id_assoc]
 
 lemma intervalPullbackFiberInclusion_snd {E B : SSet.{u}} (p : E ⟶ B)
     (b : (Δ[1] : SSet.{u}) ⟶ B) (i : Fin 2) :
     intervalPullbackFiberInclusion p b i ≫ pullback.snd p b =
       SSet.const (stdSimplex.obj₀Equiv.symm i) := by
   dsimp only [intervalPullbackFiberInclusion]
-  rw [Category.assoc, vertexFiberι_comp, SSet.comp_const]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι_comp, SSet.comp_const]
 
 lemma intervalPullbackFiberInclusion_zero_groupoidCompletion_isEquivalence
     {E B : SSet.{u}} (p : E ⟶ B) (b : (Δ[1] : SSet.{u}) ⟶ B)
-    [CartesianFibration (pullback.snd p b)] :
-    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf (intervalPullbackFiberInclusion p b 0)) := by
-  let e := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfIso
-    (SerrePositivity.InfinityCategories.vertexFiberPullbackIso p b (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).symm
+    [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration (pullback.snd p b)] :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.groupoidCompletionMapOf (intervalPullbackFiberInclusion p b 0)) := by
+  let e := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.groupoidCompletionEquivalenceOfIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.vertexFiberPullbackIso p b (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).symm
   have h := e.isQCatEquivalence.comp
     (initialFiberGroupoidCompletionEquivalence 1 (pullback.snd p b)).isQCatEquivalence
-  exact h.ofFunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_compIso _ _)
+  exact h.ofFunctorIso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.groupoidCompletionMapOf_compIso _ _)
 
 lemma intervalPullbackFiberInclusion_one_groupoidCompletion_isEquivalence
     {E B : SSet.{u}} (p : E ⟶ B) (b : (Δ[1] : SSet.{u}) ⟶ B)
-    [CocartesianFibration (pullback.snd p b)] :
-    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf (intervalPullbackFiberInclusion p b 1)) := by
-  let e := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfIso
-    (SerrePositivity.InfinityCategories.vertexFiberPullbackIso p b (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).symm
+    [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianFibration (pullback.snd p b)] :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.groupoidCompletionMapOf (intervalPullbackFiberInclusion p b 1)) := by
+  let e := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.groupoidCompletionEquivalenceOfIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.vertexFiberPullbackIso p b (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).symm
   have h := e.isQCatEquivalence.comp
     (finalFiberGroupoidCompletionEquivalence 1 (pullback.snd p b)).isQCatEquivalence
-  exact h.ofFunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_compIso _ _)
+  exact h.ofFunctorIso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.groupoidCompletionMapOf_compIso _ _)
 
 end SerrePositivity.KST.LocalizingInvariants

@@ -22,26 +22,26 @@ local notation "hZ" => dgKInputStableValue_isIdempotentComplete R (dgFixedNullIn
 /-- 概要：同じ全対象商の ν 値と標準零圏は Cat^perf 内で指定同型を持つ。
 方針：元の零圏往復射と全零関手同型で逆律を示す。
 規約：任意の固定厳密 dg 入力に適用する。使われ方：実零角の全図式比較。 -/
-def dgKFixedNullPerfectZeroIso : VertexIso
-    (perfectStableVertex _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{max (u + 1) v} perfectZeroCategory_isIdempotentComplete)
+def dgKFixedNullPerfectZeroIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
+    (perfectStableVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{max (u + 1) v} perfectZeroCategory_isIdempotentComplete)
     (perfectStableVertex (Z) (hZ)) where
   hom := perfectStableHoArrow (fromZeroCategory (Z))
     perfectZeroCategory_isIdempotentComplete (hZ)
-  inv := perfectStableHoArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (Z))
+  inv := perfectStableHoArrow (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (Z))
     (hZ) perfectZeroCategory_isIdempotentComplete
   hom_inv_id := by
     rw [← perfectStableHoArrow_comp]
-    trans perfectStableHoArrow (show _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{max (u + 1) v} ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory from 𝟙 _)
+    trans perfectStableHoArrow (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{max (u + 1) v} ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory from 𝟙 _)
       perfectZeroCategory_isIdempotentComplete perfectZeroCategory_isIdempotentComplete
     · apply perfectStableHoArrow_eq_of_functorIso
-      exact zeroDiagramFunctorIso _ _ (fun _ => _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _)
-        (fun _ => _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _)
+      exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagramFunctorIso _ _ (fun _ => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory_isZero _)
+        (fun _ => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory_isZero _)
     · exact perfectStableHoArrow_id _ _
   inv_hom_id := by
     rw [← perfectStableHoArrow_comp]
     trans perfectStableHoArrow (show (Z) ⟶ (Z) from 𝟙 _) (hZ) (hZ)
     · apply perfectStableHoArrow_eq_of_functorIso
-      exact zeroDiagramFunctorIso _ _
+      exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagramFunctorIso _ _
         (fun _ => dgFixedNullInput_isZeroCategory R _ _)
         (fun _ => dgFixedNullInput_isZeroCategory R _ _)
     · exact perfectStableHoArrow_id _ _

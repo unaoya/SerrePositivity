@@ -51,10 +51,10 @@ variable [ModelCategory SSet.{v}]
 /-- The actual value-model factorization, supplied by its proved generators. -/
 def factorization : MorphismProperty.FunctorialFactorizationData
     (trivialCofibrations SSet.{v}) (fibrations SSet.{v}) := by
-  have : CofibrantlyGenerated.{v} SSet.modelCategoryQuillen.I SSet.modelCategoryQuillen.J :=
+  have : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{v} SSet.modelCategoryQuillen.I SSet.modelCategoryQuillen.J :=
     simplicial_cofibrantlyGenerated hcof hfib
   have : (trivialCofibrations SSet.{v}).HasFunctorialFactorization (fibrations SSet.{v}) :=
-    hasFunctorialFactorization_trivialCofibration_fibration
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_trivialCofibration_fibration
       SSet.modelCategoryQuillen.I SSet.modelCategoryQuillen.J
   exact MorphismProperty.functorialFactorizationData _ _
 

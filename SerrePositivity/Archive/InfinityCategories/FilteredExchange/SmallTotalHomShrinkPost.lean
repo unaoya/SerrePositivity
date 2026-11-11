@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SmallTotalHomShrink
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.UliftPostcomposition
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.LargeTotalCoconeUnit
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.LargeTotalCoconeUnit
 
 /-!
 概要：全 Hom の縮小後の後合成・再持ち上げを、元の全空間の同じ後合成へ戻す。

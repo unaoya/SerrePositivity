@@ -35,7 +35,7 @@ def monicKPrismCompositeSecondCompatibility (n : ℕ) :=
 /-- 後半補正の射影は、元の後続適合区間と前段の後半補正の段の境界比較に分解する。 -/
 lemma monicKPrismCompositeSecondTrace_projection (n : ℕ) :
     (monicKPrismCompositeSecondTrace F f g (n + 1)).map
-      (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+      (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
         ((kKanSequence (F.obj z)).level (n + 1)).space) =
       monicKPrismCompositeSecondCompatibility F f g n ::
         (monicKPrismCompositeSecondTrace F f g n).map
@@ -44,12 +44,12 @@ lemma monicKPrismCompositeSecondTrace_projection (n : ℕ) :
   let Y := kOmegaSpectrum (F.obj y)
   let Z := kKanSequence (F.obj z)
   let a := monicKPrismTracedBFFamily F f
-  let S := spectrumSuspendedCylinderComposite X Y (Q := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g))
+  let S := spectrumSuspendedCylinderComposite X Y (Q := nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g))
     (Z.level (n + 1)).space n a
   rw [monicKPrismCompositeSecondTrace_cylinders]
   calc
     _ = ((familyHomotopyChainTrace (monicKPrismTracedStage F g (n + 1)).chain).map
-        (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (Y.sigma n) (Z.level (n + 1)).space)).map S := by
+        (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (Y.sigma n) (Z.level (n + 1)).space)).map S := by
       simp only [List.map_map, Function.comp_def]
       congr 1
       funext h

@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanFibrationEndpointExtension
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-! # 指定した境界と適合円柱を保持する族の厳密化
 概要：点つき写像族の源への制限を、境界を固定したまま指定した族へ厳密に一致させる。
@@ -33,11 +33,11 @@ lemma exists_relative_fibration_family_transport {E B T U : SSet.{u}}
         V.h ≫ p = H.h := by
   have hp : SSet.modelCategoryQuillen.J.rlp p :=
     (SSet.modelCategoryQuillen.fibration_iff p).mp inferInstance
-  have hc : (functorHomotopyRefl (j ≫ f)).h ≫ p =
+  have hc : (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl (j ≫ f)).h ≫ p =
       (j ▷ (Δ[1] : SSet.{u})) ≫ H.h := hrel.symm
   obtain ⟨g, hg, V, hV, hbase⟩ :=
     SerrePositivity.SimplicialModel.KanFibrationEndpointExtension.exists_from_zero
-      p hp j f (j ≫ f) (functorHomotopyRefl (j ≫ f)) H.h H.h₀.symm hc
+      p hp j f (j ≫ f) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl (j ≫ f)) H.h H.h₀.symm hc
   refine ⟨g, ?_, hg, V, hV, hbase⟩
   calc
     g ≫ p = (SSet.ι₁ ≫ V.h) ≫ p := by rw [V.h₁]
@@ -50,15 +50,15 @@ lemma exists_relative_pointed_family_adjustment
     (i : A ⟶ B) [Mono i.right] {T U : SSet.{u}} (j : T ⟶ U) [Mono j]
     (f : U ⟶ (PointedObject.basedHom B Y).right)
     (a : U ⟶ (PointedObject.basedHom A Y).right)
-    (H : SSet.Homotopy (f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y) a)
+    (H : SSet.Homotopy (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y) a)
     (hrel : (j ▷ (Δ[1] : SSet.{u})) ≫ H.h =
-      fst T (Δ[1] : SSet.{u}) ≫ j ≫ f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y) :
+      fst T (Δ[1] : SSet.{u}) ≫ j ≫ f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y) :
     ∃ g : U ⟶ (PointedObject.basedHom B Y).right,
-      g ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y = a ∧ j ≫ g = j ≫ f ∧
+      g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y = a ∧ j ≫ g = j ≫ f ∧
       ∃ V : SSet.Homotopy f g,
         (j ▷ (Δ[1] : SSet.{u})) ≫ V.h = fst T (Δ[1] : SSet.{u}) ≫ j ≫ f ∧
-        V.h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y = H.h := by
-  let : Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y) := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration i Y
-  exact exists_relative_fibration_family_transport (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y) j f H hrel
+        V.h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y = H.h := by
+  let : Fibration (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y) := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_fibration i Y
+  exact exists_relative_fibration_family_transport (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y) j f H hrel
 
 end SerrePositivity.KST.SConstruction

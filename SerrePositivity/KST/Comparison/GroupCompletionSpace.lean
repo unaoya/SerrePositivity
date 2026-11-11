@@ -55,7 +55,7 @@ instance monoidBarKanPointed_kan (M : SimplicialObject MonCat.{u}) :
 使われ方：KST Lemma 2.13 の delooping 比較。
 -/
 def monoidGroupCompletionSpace (M : SimplicialObject MonCat.{u}) : PointedSimplicialSet.{u} :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (monoidBarKanPointed M)
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (monoidBarKanPointed M)
 
 /--
 概要：群完備化の比較先は Kan 複体である。

@@ -36,7 +36,7 @@ lemma unitRightIso_hom_triangle : (unitRightIso q).hom =
     (HomotopySquareGroups.unitSquare q) = _
   rw [HomotopyFiberConeComparison.rightPresentation_canonical]
   apply Arrow.mk_injective
-  exact (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_of_any_identity _ _
+  exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.arrow_mk_comp_of_any_identity _ _
     (SpectrumTriangleNormalization.canonicalPost_identity_arrow q)).trans
       ((SpectrumArrow.preAt_arrow _ _ _).trans
         (SpectrumArrow.preAt_arrow _ _ (fibrationReplacement_fac q)).symm)

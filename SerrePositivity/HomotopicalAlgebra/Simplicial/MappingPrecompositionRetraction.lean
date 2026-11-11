@@ -56,7 +56,7 @@ lemma retraction (K : SSet.{v}) :
 def homotopy (K : SSet.{v}) :
     SSet.Homotopy (𝟙 ((ihom E).obj K))
       ((MonoidalClosed.pre s).app K ≫ (MonoidalClosed.pre p).app K) :=
-  LargeParameterSquare.changeEndpoints (PrecompositionHomotopy.homotopy H K)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints (PrecompositionHomotopy.homotopy H K)
     (by rw [MonoidalClosed.pre_id]; rfl)
     (by rw [MonoidalClosed.pre_map]; rfl)
 
@@ -66,7 +66,7 @@ lemma fixed (K : SSet.{v}) :
       (homotopy p s H K).h =
     fst ((ihom B).obj K) (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫
       (MonoidalClosed.pre p).app K := by
-  rw [homotopy, LargeParameterSquare.changeEndpoints_h]
+  rw [homotopy, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
   change _ ≫ PrecompositionHomotopy.interval H K = _
   rw [PrecompositionHomotopy.interval_post]
   exact PrecompositionHomotopy.interval_constant (HomotopyClasses.postHomotopy p H) K p hH

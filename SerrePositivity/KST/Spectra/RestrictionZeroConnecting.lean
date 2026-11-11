@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.RestrictionConnectingNullhomotopy
 public import SerrePositivity.KST.Spectra.PointedZeroConnectingNaturality
-public import SerrePositivity.InfinityCategories.Kan.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyComponents
 
 /-!
 概要：制限の零次数接続写像を相対商からの実際の射の成分で表す。
@@ -31,9 +31,9 @@ theorem restrictionSourceFiberMap_connectingZero {A B C D : SSet.{u}}
     (i : A ⟶ B) (j : C ⟶ D) [Mono i] [Mono j]
     (a : C ⟶ A) (b : D ⟶ B) (h : a ≫ i = j ≫ b)
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    (x : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (obj A Y).right 0 (obj A Y).basepoint) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 (restrictionSourceFiberMap i j a b h Y).right
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (restrictionSourceFiberMap i j a b h Y))
+    (x : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (obj A Y).right 0 (obj A Y).basepoint) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map 0 (restrictionSourceFiberMap i j a b h Y).right
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (restrictionSourceFiberMap i j a b h Y))
         (pointedConnectingZero (pre i Y) x) =
       pointedConnectingZero (pre j Y) (pointedGroupMap 0 (pre a Y) x) :=
   pointedConnectingZero_natural (pre i Y) (pre j Y) (pre b Y) (pre a Y)
@@ -44,18 +44,18 @@ theorem restrictionSourceFiberMap_componentConnecting {A B C D : SSet.{u}}
     (i : A ⟶ B) (j : C ⟶ D) [Mono i] [Mono j]
     (a : C ⟶ A) (b : D ⟶ B) (h : a ≫ i = j ≫ b)
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    (x : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (obj A Y).right 0 (obj A Y).basepoint) :
+    (x : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (obj A Y).right 0 (obj A Y).basepoint) :
     mapπ₀ (restrictionSourceFiberMap i j a b h Y).right
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (pointedConnectingZero (pre i Y) x)) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero (pointedConnectingZero (pre i Y) x)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero
         (pointedConnectingZero (pre j Y) (pointedGroupMap 0 (pre a Y) x)) := by
-  have hn := congrArg _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+  have hn := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero
     (restrictionSourceFiberMap_connectingZero i j a b h Y x)
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.map
     (restrictionSourceFiberMap i j a b h Y).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (restrictionSourceFiberMap i j a b h Y))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (restrictionSourceFiberMap i j a b h Y))
     (pointedConnectingZero (pre i Y) x)) = _ at hn
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map] at hn
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero_map] at hn
   exact hn
 
 /-- 概要：零次数接続写像の相対商表示は任意の充填からの実際の射の成分。
@@ -65,19 +65,19 @@ theorem restrictionSourceFiberMap_componentConnecting {A B C D : SSet.{u}}
 theorem connectingZero_cofiberBoundaryMap {A B : SSet.{u}} (i : A ⟶ B)
     [Mono i] (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
     {s : (obj A Y).right.PtSimplex 1 ((pre i Y).right.app _ (obj B Y).basepoint)}
-    (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift (pre i Y).right (obj B Y).basepoint s) :
+    (L : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift (pre i Y).right (obj B Y).basepoint s) :
     mapπ₀ (restrictionFiberIso i Y).inv.right
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (pointedConnectingZero (pre i Y)
-          (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl (obj A Y).right)
-            (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (pre i Y)) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)))) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero (pointedConnectingZero (pre i Y)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 0 (Iso.refl (obj A Y).right)
+            (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (pre i Y)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s)))) =
       π₀.mk (PointedMapping.familyVertex (cofiberBoundaryMap i Y L)) := by
   erw [pointedConnectingZero_boundaryLift (pre i Y) L]
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map (restrictionFiberIso i Y).inv.right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (restrictionFiberIso i Y).inv)
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L))
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero_map (restrictionFiberIso i Y).inv.right
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (restrictionFiberIso i Y).inv)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.mk 0 (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L))
   rw [← h]
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk (cofiberBoundarySimplex i Y L)) = _
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_mk, cofiberBoundaryMap, PointedMapping.familyVertex_familyMap]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.mk (cofiberBoundarySimplex i Y L)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero_mk, cofiberBoundaryMap, PointedMapping.familyVertex_familyMap]
   rfl
 
 /-- 概要：任意の基本群入力の成分接続写像を相対商の射で代表できる。
@@ -86,20 +86,20 @@ theorem connectingZero_cofiberBoundaryMap {A B : SSet.{u}} (i : A ⟶ B)
 使われ方：Goerss–Jardine VIII §1。全ての係数を局所の代表計算へ渡す。 -/
 theorem exists_connectingZero_boundaryRepresentative {A B : SSet.{u}}
     (i : A ⟶ B) [Mono i] (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (obj A Y).right 0 (obj A Y).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (obj A Y).right 0 (obj A Y).basepoint) :
     ∃ (s : (obj A Y).right.PtSimplex 1 ((pre i Y).right.app _ (obj B Y).basepoint))
-      (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift (pre i Y).right (obj B Y).basepoint s),
-      a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl (obj A Y).right)
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (pre i Y)) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) ∧
+      (L : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift (pre i Y).right (obj B Y).basepoint s),
+      a = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 0 (Iso.refl (obj A Y).right)
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (pre i Y)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s) ∧
         mapπ₀ (restrictionFiberIso i Y).inv.right
-            (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (pointedConnectingZero (pre i Y) a)) =
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero (pointedConnectingZero (pre i Y) a)) =
           π₀.mk (PointedMapping.familyVertex (cofiberBoundaryMap i Y L)) := by
-  let e := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl (obj A Y).right)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (pre i Y))
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 0 (Iso.refl (obj A Y).right)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (pre i Y))
   obtain ⟨s, hs⟩ := Quotient.mk_surjective (e.symm a)
-  have ha : a = e (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) := by
-    rw [show _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s = e.symm a from hs, MulEquiv.apply_symm_apply]
-  let L := _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift (pre i Y).right (obj B Y).basepoint s
+  have ha : a = e (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s) := by
+    rw [show _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s = e.symm a from hs, MulEquiv.apply_symm_apply]
+  let L := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.chooseBoundaryLift (pre i Y).right (obj B Y).basepoint s
   refine ⟨s, L, ha, ?_⟩
   rw [ha]
   exact connectingZero_cofiberBoundaryMap i Y L

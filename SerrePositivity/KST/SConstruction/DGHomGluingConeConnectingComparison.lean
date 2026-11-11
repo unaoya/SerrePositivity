@@ -17,7 +17,7 @@ open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] (E : Type z) [DGCategory R E] [Small.{u} E]
   (p : DGFunctor R C E) (q : DGFunctor R D E)
-local notation "L" => DGGluingObject R C D (dgHomGluingBimodule R C D E p q)
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q)
 
 /-- 概要：元実 perfect cone 関手を同じ全加群圏へ含める。
 方針：元全 Hom を保つ包含を合成する。
@@ -29,7 +29,7 @@ def dgHomGluingModuleConeFunctor : DGFunctor R (L) (RightModule R E) :=
 方針：左射影・元 p・Yoneda・dg shift を合成する。
 規約：同じ元左対象を保持。使われ方：connecting 比較の終域。 -/
 def dgHomGluingShiftedLeftModuleFunctor : DGFunctor R (L) (RightModule R E) :=
-  (((dgGluingLeft R C D (dgHomGluingBimodule R C D E p q)).comp p).comp
+  (((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D (dgHomGluingBimodule R C D E p q)).comp p).comp
     (dgYoneda R E)).comp (moduleShiftDG R E 1)
 
 /-- 概要：元 connecting 射は同じ全 cone dg 関手の全 Hom に関して自然。

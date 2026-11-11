@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.FiberMappingFibration
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumComponentClass
-public import SerrePositivity.InfinityCategories.Core.KanFibrationTools
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.KanFibrationTools
 
 /-!
 概要：指定した BF 写像空間の辺を、段ごとの fibration の後合成へ持ち上げる。
@@ -37,7 +37,7 @@ def pathLift (hp : ∀ n, Fibration (p.app n).right) : PathLift p a b γ := by
   let q := SpectrumMappingAcyclic.post X p
   let : Fibration q := spectrumPost_fibration X p hp
   let e := (γ.ofEq (SpectrumMappingAcyclic.post_vertex a p).symm rfl).toTruncated
-  obtain ⟨F, hF₀, hFq⟩ := leftFibration_liftEdge_source q (vertexOfHom a) e
+  obtain ⟨F, hF₀, hFq⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.leftFibration_liftEdge_source q (vertexOfHom a) e
   let v := (mappingSpace X Y).δ 0 (SSet.yonedaEquiv F)
   let r := homOfVertex v
   have hr : vertexOfHom r = v := vertexOfHom_homOfVertex v

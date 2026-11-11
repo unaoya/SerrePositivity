@@ -9,7 +9,7 @@ public import SerrePositivity.KST.Spectra.KanSequenceForgetful
 概要：Kan Ω 列の図式の段ごとの homotopy end と BF 置換。
 方針：各段で点つき Bousfield–Kan end を取り、随伴構造射の end と loop の交換で Ω 条件を移す。
 規約：段の構造射の単射性は最後に置換で回復する。Sp の ∞ 極限性を主張しない。
-使われ方：HA §1.4.2、BF 1978 §2、Kerodon 7.5.4.6。hG・Tot の実際のスペクトルの対象。
+使われ方：HA §1.4.2、BF 1978 §2、Kerodon 7.5.4.6（Tag 03BB）。hG・Tot の実際のスペクトルの対象。
 -/
 
 @[expose] public section
@@ -17,7 +17,7 @@ public import SerrePositivity.KST.Spectra.KanSequenceForgetful
 universe u
 
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra
 
@@ -35,11 +35,11 @@ variable {I : Type u} [SmallCategory I]
 規約：構造射の単射性はまだ要求しない。
 使われ方：HA §1.4.2、BF 1978 §2。hG・Tot の Ω 条件の計算。 -/
 def homotopyLimitAdjoint (D : I ⥤ KanSequence.{u}) (n : ℕ) :
-    PointedWeightedEnd.obj (bousfieldKanWeight I) (levelDiagram D n) ⟶
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedWeightedEnd.obj (bousfieldKanWeight I) (levelDiagram D (n + 1))) :=
-  PointedWeightedEnd.map (bousfieldKanWeight I) (adjointTransformation D n) ≫
+    PointedWeightedEnd.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (levelDiagram D n) ⟶
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedWeightedEnd.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (levelDiagram D (n + 1))) :=
+  PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (adjointTransformation D n) ≫
     (PointedWeightedEnd.cotensorIso PointedSimplicialSet.circle.{u}
-      (bousfieldKanWeight I) (levelDiagram D (n + 1))).inv
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (levelDiagram D (n + 1))).inv
 
 /-- 概要：Kan 列の図式の各段で end を取った Kan 列。
 方針：各段の Kan 性を end のホーン充填で示し、構造射は随伴射を uncurry する。
@@ -47,7 +47,7 @@ def homotopyLimitAdjoint (D : I ⥤ KanSequence.{u}) (n : ℕ) :
 使われ方：HA §1.4.2、BF 1978 §2。hG・Tot の置換前の模型。 -/
 def homotopyLimit (D : I ⥤ KanSequence.{u}) : KanSequence.{u} where
   level n := {
-    space := PointedWeightedEnd.obj (bousfieldKanWeight I) (levelDiagram D n)
+    space := PointedWeightedEnd.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (levelDiagram D n)
     kan := inferInstance }
   sigma n := uncurry (homotopyLimitAdjoint D n)
 
@@ -56,7 +56,7 @@ def homotopyLimit (D : I ⥤ KanSequence.{u}) : KanSequence.{u} where
 規約：点つき射の厳密な等式。
 使われ方：HA §1.4.2。Ω 条件を全基点の π_* 同型へ還元する。 -/
 theorem homotopyLimit_adjoint (D : I ⥤ KanSequence.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((homotopyLimit D).level n).space
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((homotopyLimit D).level n).space
       ((homotopyLimit D).level (n + 1)).space ((homotopyLimit D).sigma n) =
         homotopyLimitAdjoint D n :=
   curry_uncurry _
@@ -71,16 +71,16 @@ theorem homotopyLimit_omegaCondition (D : I ⥤ KanSequence.{u})
   let E := levelDiagram D (n + 1) ⋙ ihom PointedSimplicialSet.circle.{u}
   let : ∀ i, KanComplex (E.obj i).right :=
     fun i ↦ loopSpace_kanComplex ((D.obj i).level (n + 1)).space
-  have hm : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
-      (PointedWeightedEnd.map (bousfieldKanWeight I) (adjointTransformation D n)).right :=
+  have hm : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
+      (PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (adjointTransformation D n)).right :=
     PointedWeightedEnd.map_piIsomorphism (adjointTransformation D n) (fun i ↦ hD i n)
   let e := PointedWeightedEnd.cotensorIso PointedSimplicialSet.circle.{u}
-    (bousfieldKanWeight I) (levelDiagram D (n + 1))
-  let e' : (PointedWeightedEnd.obj (bousfieldKanWeight I) E).right ≅
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedWeightedEnd.obj (bousfieldKanWeight I)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (levelDiagram D (n + 1))
+  let e' : (PointedWeightedEnd.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) E).right ≅
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedWeightedEnd.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
         (levelDiagram D (n + 1)))).right := PointedSimplicialSet.forget.mapIso e.symm
-  have hc := hm.comp (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e')
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((homotopyLimit D).level n).space
+  have hc := hm.comp (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso e')
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((homotopyLimit D).level n).space
     ((homotopyLimit D).level (n + 1)).space ((homotopyLimit D).sigma n)).right
   rw [homotopyLimit_adjoint]
   exact hc
@@ -107,7 +107,7 @@ def homotopyLimitProjection (D : I ⥤ KanSequence.{u}) (hD : ∀ i, (D.obj i).O
 使われ方：Goerss–Jardine I §7、BF 1978 §2。hG・Tot の置換不変性。 -/
 theorem homotopyLimitProjection_levelwise (D : I ⥤ KanSequence.{u})
     (hD : ∀ i, (D.obj i).OmegaCondition) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((homotopyLimitProjection D hD).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((homotopyLimitProjection D hD).app n).right :=
   replacementProjection_piIsomorphism (homotopyLimit D) n
 
 end KanSequence

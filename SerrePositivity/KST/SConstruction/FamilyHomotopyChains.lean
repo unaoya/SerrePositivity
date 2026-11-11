@@ -77,7 +77,7 @@ def familyHomotopyChainMap {U E B : SSet.{u}} {f g : U ⟶ E}
     (c : FamilyHomotopyChain f g) (p : E ⟶ B) : FamilyHomotopyChain (f ≫ p) (g ≫ p) := by
   induction c with
   | nil => exact .nil _
-  | cons H tail ih => exact .cons (functorHomotopyPostcomp H p) ih
+  | cons H tail ih => exact .cons (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H p) ih
 
 /-- 後合成した有限列の trace は、元の全区間の射影そのもの。 -/
 lemma familyHomotopyChainMap_trace {U E B : SSet.{u}} {f g : U ⟶ E}
@@ -96,7 +96,7 @@ def familyHomotopyChainPrecomp {T U E : SSet.{u}} (j : T ⟶ U) {f g : U ⟶ E}
     (c : FamilyHomotopyChain f g) : FamilyHomotopyChain (j ≫ f) (j ≫ g) := by
   induction c with
   | nil => exact .nil _
-  | cons H tail ih => exact .cons (functorHomotopyPrecomp H j) ih
+  | cons H tail ih => exact .cons (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H j) ih
 
 /-- 制限した有限列の trace は、元の各区間の制限そのもの。 -/
 lemma familyHomotopyChainPrecomp_trace {T U E : SSet.{u}} (j : T ⟶ U) {f g : U ⟶ E}

@@ -53,7 +53,7 @@ lemma cubicalLambdaFunctorPair_point_left {K : SSet.{u}} (b : B)
   rfl
 
 /-- 左因子を同じ対象に固定した全 native tensor 単体は、元の dg 包含の像。 -/
-lemma dgNerveTensorSimplex_point_left {N : ℕ} (b : B) (t : DGNerve.Simplex R C N) :
+lemma dgNerveTensorSimplex_point_left {N : ℕ} (b : B) (t : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R C N) :
     dgNerveTensorSimplex R (dgNativePointSimplex R B b N) t =
       t.map (dgTensorIncludeSecond R B C b) := by
   unfold dgNerveTensorSimplex dgNativePointSimplex

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConeMappingRestriction
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ConeRestrictionTransport
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeRestrictionTransport
 
 /-!
 概要：頂点固定の錐空間と元の制限を Kan 対象と射に束ねる。

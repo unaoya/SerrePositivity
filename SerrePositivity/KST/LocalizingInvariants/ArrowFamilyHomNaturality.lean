@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomNaturality
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.ArrowFamilyHomNaturality
 
 public import SerrePositivity.KST.LocalizingInvariants.ArrowFamilyHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomExchange
@@ -22,28 +22,28 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma arrowFamilyHom_precomp {A B X : SSet.{u}}
     (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) (i : B ⟶ A) :
-    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom (i ≫ a) = homPre i (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom a) := by
-  unfold _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom homPre
-  rw [← functorHomotopyPrecomp_hom]
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.arrowFamilyHom (i ≫ a) = homPre i (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.arrowFamilyHom a) := by
+  unfold _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.arrowFamilyHom homPre
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp_hom]
   congr 1
 
 lemma arrowFamilyHom_postcomp {A X Y : SSet.{u}}
     (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) (F : X ⟶ Y) :
-    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom (a ≫ (ihom (Δ[1] : SSet.{u})).map F) =
-      homPost F (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom a) := by
-  unfold _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom homPost
-  rw [← functorHomotopyPostcomp_hom]
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.arrowFamilyHom (a ≫ (ihom (Δ[1] : SSet.{u})).map F) =
+      homPost F (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.arrowFamilyHom a) := by
+  unfold _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.arrowFamilyHom homPost
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom]
   congr 1
 
 lemma arrowFamilyHom_naturality {A X : SSet.{u}}
     [Quasicategory A] [Quasicategory X]
-    (f g : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) (α : FunctorHom f g) :
-    homPost (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) α ≫
-        _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom g =
-      _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom f ≫
-        homPost (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) α := by
+    (f g : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) (α : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom f g) :
+    homPost (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) α ≫
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.arrowFamilyHom g =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.arrowFamilyHom f ≫
+        homPost (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) α := by
   have h := homPost_homPre_exchange α
-    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom (𝟙 ((ihom (Δ[1] : SSet.{u})).obj X)))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.arrowFamilyHom (𝟙 ((ihom (Δ[1] : SSet.{u})).obj X)))
   rw [← arrowFamilyHom_precomp, ← arrowFamilyHom_precomp] at h
   exact h
 

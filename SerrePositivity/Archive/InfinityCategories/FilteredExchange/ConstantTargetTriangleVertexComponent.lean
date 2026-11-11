@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeTriangleVertexPresentation
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantUnstraighteningRelativeProjection
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FunctorIsoComponentPost
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.UnstraighteningTriangleVertex
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ConstantUnstraighteningRelativeProjection
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentPost
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.UnstraighteningTriangleVertex
 
 /-!
 概要：定値標的の元の全空間三角形比較の fiber 像を、同じ全族比較の一点成分へ戻す。

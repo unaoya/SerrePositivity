@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：挿入点を飛ばす標準包含で既存ステップを移し、水平挿入の場合だけ挿入点を加える。
 規約：KST Construction A.5 の標準 shuffle。
 使われ方：同種ステップの内部の面と、端点の面を各因子の通常境界へ対応させる。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

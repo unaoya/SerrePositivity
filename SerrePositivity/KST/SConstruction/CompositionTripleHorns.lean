@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron
 public import SerrePositivity.KST.SConstruction.HornHomExt
 
 /-! # 元の全三合成面を保持する二向きの結合替えホーン
@@ -71,7 +71,7 @@ lemma compositionTripleRightHorn_three (left : SSet.Edge.CompStruct ab c abc) :
 
 /-- 指定三面を持つ元の全四面体は同じ全第一内ホーンを厳密に回収する。 -/
 lemma compositionTripleHorn_fac {right : SSet.Edge.CompStruct a bc abc}
-    (R : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron first second right) :
+    (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron first second right) :
     (horn 3 (1 : Fin 4)).ι ≫ SSet.yonedaEquiv.symm R.simplex =
       compositionTripleHorn first second right := by
   apply hornHomExt
@@ -86,7 +86,7 @@ lemma compositionTripleHorn_fac {right : SSet.Edge.CompStruct a bc abc}
 
 /-- 指定三面を持つ元の全四面体は同じ全第二内ホーンを厳密に回収する。 -/
 lemma compositionTripleRightHorn_fac {left : SSet.Edge.CompStruct ab c abc}
-    (R : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron first second left) :
+    (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron first second left) :
     (horn 3 (2 : Fin 4)).ι ≫ SSet.yonedaEquiv.symm R.simplex =
       compositionTripleRightHorn first second left := by
   apply hornHomExt

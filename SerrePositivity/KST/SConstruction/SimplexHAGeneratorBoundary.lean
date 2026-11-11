@@ -17,7 +17,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の生成元読み替え語の HA 境界値を、元の生成元の微分次数へ移す。 -/
-def simplexHAGeneratorBoundaryValue {n : ℕ} (s : DGNerve.SimplexData A D n)
+def simplexHAGeneratorBoundaryValue {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (v : Fin (m + 1) ↪o Fin (n + 1))
     (b : Fin (n + 1)) (hb : v (Fin.last m) < b) :
     GradedHom A (s.obj (v 0)) (s.obj b) (serreCubeGeneratorDegree m i + 1) :=
@@ -26,7 +26,7 @@ def simplexHAGeneratorBoundaryValue {n : ℕ} (s : DGNerve.SimplexData A D n)
       (simplexHABeadWordBoundaryValue A s (simplexHAGeneratorWord m i v b hb))
 
 /-- 任意の元の native HA 単体について、全生成元値の微分は同じ読み替え語の境界評価。 -/
-lemma simplexHAGeneratorValue_differential {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHAGeneratorValue_differential {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (v : Fin (m + 1) ↪o Fin (n + 1))
     (b : Fin (n + 1)) (hb : v (Fin.last m) < b) :
     differential A (simplexHAGeneratorValue A s.toSimplexData m i v b hb) =
@@ -39,7 +39,7 @@ lemma simplexHAGeneratorValue_differential {n : ℕ} (s : DGNerve.Simplex A D n)
           (simplexHABeadWordRawValue_differential A s (simplexHAGeneratorWord m i v b hb)))
 
 /-- 元の任意次数の生成元上で、線形復元値の微分は元の境界評価の指定次数への移送。 -/
-lemma simplexHADegreeLift_generator_differential {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeLift_generator_differential {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last m) < b) (k : ℤ) (i : SerreCubeGeneratorIndex m)
     (hi : serreCubeGeneratorDegree m i = k) :

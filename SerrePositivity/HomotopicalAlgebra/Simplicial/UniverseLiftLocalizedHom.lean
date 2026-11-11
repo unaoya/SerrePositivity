@@ -46,24 +46,24 @@ variable {D : Type uD} [Category.{vD} D] (L : SSet.{max w v} ⥤ D)
 
 /-- The small source of the equivalence is the original homotopy-class type. -/
 def smallLocalizedHomEquiv : HomotopyClasses.obj X K ≃
-    (L.obj (obj.{w} X) ⟶ L.obj (obj.{w} K)) :=
+    (L.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} X) ⟶ L.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K)) :=
   (homotopyClassEquiv.{w} X K).trans
-    (KanLocalizedRepresentatives.homEquiv L (horn_terminal_map hK) (obj X))
+    (KanLocalizedRepresentatives.homEquiv L (horn_terminal_map hK) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj X))
 
 @[simp] lemma smallLocalizedHomEquiv_mk (f : X ⟶ K) :
-    smallLocalizedHomEquiv L X K hK (HomotopyClasses.mk f) = L.map (map.{w} f) := rfl
+    smallLocalizedHomEquiv L X K hK (HomotopyClasses.mk f) = L.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} f) := rfl
 
 include hK in
-lemma small_localizedHom : Small.{v} (L.obj (obj.{w} X) ⟶ L.obj (obj.{w} K)) :=
+lemma small_localizedHom : Small.{v} (L.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} X) ⟶ L.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K)) :=
   small_map (smallLocalizedHomEquiv L X K hK).symm
 
 /-- Every localized arrow between lifted small values has an original small
 map as representative. The target is Kan in the original small universe. -/
-def localizedRepresentative (φ : L.obj (obj.{w} X) ⟶ L.obj (obj.{w} K)) : X ⟶ K :=
+def localizedRepresentative (φ : L.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} X) ⟶ L.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K)) : X ⟶ K :=
   (Quot.exists_rep ((smallLocalizedHomEquiv L X K hK).symm φ)).choose
 
-lemma localizedRepresentative_map (φ : L.obj (obj.{w} X) ⟶ L.obj (obj.{w} K)) :
-    L.map (map.{w} (localizedRepresentative L X K hK φ)) = φ := by
+lemma localizedRepresentative_map (φ : L.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} X) ⟶ L.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K)) :
+    L.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} (localizedRepresentative L X K hK φ)) = φ := by
   change smallLocalizedHomEquiv L X K hK
     (HomotopyClasses.mk (localizedRepresentative L X K hK φ)) = φ
   exact (congrArg (smallLocalizedHomEquiv L X K hK)
@@ -78,9 +78,9 @@ Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲�
 写像・充填またはホモトピーを同じ全パラメータのまま移送する。
 -/
 lemma localized_map_eq_iff_homotopy (f g : X ⟶ K) :
-    L.map (map.{w} f) = L.map (map.{w} g) ↔ Nonempty (SSet.Homotopy f g) :=
+    L.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} f) = L.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} g) ↔ Nonempty (SSet.Homotopy f g) :=
   ⟨fun he => KanActualHomotopy.of_class_eq hK
       ((smallLocalizedHomEquiv L X K hK).injective he),
-    fun ⟨H⟩ => AnodyneHomotopy.map_homotopy_eq L (Localization.inverts L _) (homotopy H)⟩
+    fun ⟨H⟩ => AnodyneHomotopy.map_homotopy_eq L (Localization.inverts L _) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.homotopy H)⟩
 
 end SerrePositivity.SimplicialModel.UniverseLift

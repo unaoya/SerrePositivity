@@ -19,11 +19,11 @@ open scoped Simplicial
 方針：cofiber の射影の単射に対する持ち上げを使う。
 規約：パラメーターに quasicategory 性・有限性は要求しない。
 使われ方：第一行からの cofiber 補完の相対段階。 -/
-lemma exists_relative_cofiberFamily {A B C : SSet.{u}} [Quasicategory C] [IsStable C]
+lemma exists_relative_cofiberFamily {A B C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     (i : A ⟶ B) [Mono i] (d : B ⟶ (ihom (Δ[1] : SSet.{u})).obj C)
     (a : A ⟶ cofiberDiagrams C) (ha : a ≫ cofiberProjection C = i ≫ d) :
     ∃ F : B ⟶ cofiberDiagrams C, i ≫ F = a ∧ F ≫ cofiberProjection C = d := by
-  have := TrivialKanFibration.mem (p := cofiberProjection C) i inferInstance
+  have := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := cofiberProjection C) i inferInstance
   have sq : CommSq a i (cofiberProjection C) d := ⟨ha⟩
   exact ⟨sq.lift, sq.fac_left, sq.fac_right⟩
 
@@ -32,43 +32,43 @@ lemma exists_relative_cofiberFamily {A B C : SSet.{u}} [Quasicategory C] [IsStab
 規約：単なる選択の集合ではなく高次比較を含む単体集合。
 使われ方：cofiber の選択の可縮性。 -/
 def cofiberFamilySpace {A C : SSet.{u}} (d : A ⟶ (ihom (Δ[1] : SSet.{u})).obj C) : SSet.{u} :=
-  vertexFiber ((ihom A).map (cofiberProjection C)) (functorVertex d)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber ((ihom A).map (cofiberProjection C)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex d)
 
 /-- 概要：cofiber の族の全選択空間は可縮な Kan 複体。
 方針：trivial Kan fibration は内部 Hom で保たれ、その fiber は可縮。
 規約：A は任意の単体集合。使われ方：第一行復元のパラメーター付きの一意性。 -/
-lemma cofiberFamilySpace_isContractibleKan {A C : SSet.{u}} [Quasicategory C] [IsStable C]
-    (d : A ⟶ (ihom (Δ[1] : SSet.{u})).obj C) : IsContractibleKan (cofiberFamilySpace d) :=
-  vertexFiber_isContractibleKan ((ihom A).map (cofiberProjection C)) (functorVertex d)
+lemma cofiberFamilySpace_isContractibleKan {A C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
+    (d : A ⟶ (ihom (Δ[1] : SSet.{u})).obj C) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (cofiberFamilySpace d) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_isContractibleKan ((ihom A).map (cofiberProjection C)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex d)
 
 /-- 概要：同じ入力の族の二つの cofiber の選択は関手として同型。
 方針：同じ基底へ写る二つの持ち上げを可縮な fiber 内で比較する。
 規約：全パラメーターに自然な比較。使われ方：cofiber の選択によらない構成。 -/
-def cofiberFamiliesIso {A C : SSet.{u}} [Quasicategory C] [IsStable C]
+def cofiberFamiliesIso {A C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     (d : A ⟶ (ihom (Δ[1] : SSet.{u})).obj C) (F G : A ⟶ cofiberDiagrams C)
-    (hF : F ≫ cofiberProjection C = d) (hG : G ≫ cofiberProjection C = d) : FunctorIso F G :=
-  functorIsoOfTrivialKanFibration (cofiberProjection C) F G (hF.trans hG.symm)
+    (hF : F ≫ cofiberProjection C = d) (hG : G ≫ cofiberProjection C = d) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorIsoOfTrivialKanFibration (cofiberProjection C) F G (hF.trans hG.symm)
 
 /-- 概要：全ての射に cofiber 四角形を関手的に選ぶ切断。
 方針：入力への trivial Kan fibration の厳密な切断を取る。
 規約：この一つの選択に証明は依存しない。使われ方：cofiber 関手の具体的な表示。 -/
-def cofiberSection (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+def cofiberSection (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     (ihom (Δ[1] : SSet.{u})).obj C ⟶ cofiberDiagrams C :=
-  Classical.choose (trivialKanFibration_exists_section (cofiberProjection C))
+  Classical.choose (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section (cofiberProjection C))
 
 /-- 概要：選んだ cofiber の入力は厳密に元の射。
 方針：切断の選択の仕様を使う。
 規約：ホモトピー等号に弱めない。使われ方：cofiber の境界の回収。 -/
-lemma cofiberSection_projection (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+lemma cofiberSection_projection (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     cofiberSection C ≫ cofiberProjection C = 𝟙 _ :=
-  Classical.choose_spec (trivialKanFibration_exists_section (cofiberProjection C))
+  Classical.choose_spec (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section (cofiberProjection C))
 
 /-- 概要：射の cofiber 頂点を取る関手。
 方針：選んだ普遍四角形を (1,1) の角で評価する。
 規約：実際の単体集合の射。使われ方：S• の復元と反復構成。 -/
-def cofiberFunctor (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+def cofiberFunctor (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     (ihom (Δ[1] : SSet.{u})).obj C ⟶ C :=
-  cofiberSection C ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+  cofiberSection C ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2))
 
 end SerrePositivity.KST.SConstruction

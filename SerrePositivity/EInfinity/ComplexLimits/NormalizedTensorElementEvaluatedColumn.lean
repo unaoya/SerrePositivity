@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.FrameHom.MixedNerveCoconePrism
-public import SerrePositivity.InfinityCategories.HomotopyLimits.TerminalCoconeSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalCoconeSimplex
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementDiagram
 
 /-!
@@ -30,26 +30,26 @@ def normalizedTensorElementLiftedEvaluationCocone :
 def normalizedTensorElementEvaluatedColumn {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
     ComposableArrows (Complex A) (n + 1) :=
-  FrameHom.TerminalCoconeSimplex.diagram (normalizedTensorElementLiftedEvaluationCocone A X Y)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram (normalizedTensorElementLiftedEvaluationCocone A X Y)
     (c ⋙ ULiftHom.up.{u, u + 1, u + 1}) ⋙ ULiftHom.down.{u, u + 1, u + 1}
 
 lemma normalizedTensorElementEvaluatedColumn_obj_castSucc {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (i : Fin (n + 1)) :
     (normalizedTensorElementEvaluatedColumn A X Y c).obj i.castSucc =
       (normalizedTensorElementDiagram A X Y).obj (c.obj i) := by
-  change ULiftHom.objDown ((FrameHom.TerminalCoconeSimplex.diagram
+  change ULiftHom.objDown ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram
     (normalizedTensorElementLiftedEvaluationCocone A X Y)
     (c ⋙ ULiftHom.up.{u, u + 1, u + 1})).obj i.castSucc) = _
-  rw [FrameHom.TerminalCoconeSimplex.diagram_obj_cast]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_cast]
   rfl
 
 lemma normalizedTensorElementEvaluatedColumn_obj_last {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
     (normalizedTensorElementEvaluatedColumn A X Y c).obj (Fin.last (n + 1)) = Y := by
-  change ULiftHom.objDown ((FrameHom.TerminalCoconeSimplex.diagram
+  change ULiftHom.objDown ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram
     (normalizedTensorElementLiftedEvaluationCocone A X Y)
     (c ⋙ ULiftHom.up.{u, u + 1, u + 1})).obj (Fin.last (n + 1))) = _
-  rw [FrameHom.TerminalCoconeSimplex.diagram_obj_last]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_last]
   rfl
 
 
@@ -71,9 +71,9 @@ lemma normalizedTensorElementEvaluatedColumn_map_cast_cast {n : ℕ}
       ((normalizedTensorElementDiagram A X Y).map (c.map (homOfLE hij))) := by
   let L := normalizedTensorElementLiftedEvaluationCocone A X Y
   let Γ := c ⋙ ULiftHom.up.{u, u + 1, u + 1}
-  have he := FrameHom.TerminalCoconeSimplex.diagram_map_cast_cast L Γ i j hij
-  have hx := FrameHom.TerminalCoconeSimplex.diagram_obj_cast L Γ i
-  have hy := FrameHom.TerminalCoconeSimplex.diagram_obj_cast L Γ j
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_map_cast_cast L Γ i j hij
+  have hx := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_cast L Γ i
+  have hy := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_cast L Γ j
   exact downMap_heq hx hy _ _ he
 
 lemma normalizedTensorElementEvaluatedColumn_map_cast_last {n : ℕ}
@@ -83,9 +83,9 @@ lemma normalizedTensorElementEvaluatedColumn_map_cast_last {n : ℕ}
       ((normalizedTensorElementEvaluation A X Y).app (c.obj i)) := by
   let L := normalizedTensorElementLiftedEvaluationCocone A X Y
   let Γ := c ⋙ ULiftHom.up.{u, u + 1, u + 1}
-  have he := FrameHom.TerminalCoconeSimplex.diagram_map_cast_last L Γ i
-  have hx := FrameHom.TerminalCoconeSimplex.diagram_obj_cast L Γ i
-  have hy := FrameHom.TerminalCoconeSimplex.diagram_obj_last L Γ
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_map_cast_last L Γ i
+  have hx := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_cast L Γ i
+  have hy := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_last L Γ
   exact downMap_heq hx hy _ _ he
 
 end SerrePositivity.EInfinity.ComplexLimits

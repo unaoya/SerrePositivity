@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeDerivedHom
-public import SerrePositivity.InfinityCategories.Core.UniverseHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.UniverseHomotopy
 
 /-!
 # 実正規化 probe Hom 比較 span の左射
@@ -29,8 +29,8 @@ def normalizedProbeDerivedSpanLeft (X Y : Complex A) :
   SSet.uliftFunctor.{u + 1, u}.map (normalizedProbeTargetReplacementMap A X Y)
 
 lemma normalizedProbeDerivedSpanLeft_homotopyEquivalence (X Y : Complex A) :
-    IsSimplicialHomotopyEquivalence (normalizedProbeDerivedSpanLeft A X Y) :=
-  DoldKanComparison.ulift_homotopyEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (normalizedProbeDerivedSpanLeft A X Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.ulift_homotopyEquivalence
     (normalizedProbeTargetReplacementMap_homotopyEquivalence A X Y)
 
 end SerrePositivity.EInfinity.ComplexLimits

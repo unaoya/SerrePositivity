@@ -19,28 +19,28 @@ variable (A : Type u) [CommRing A] (D E : Type v)
 
 /-- 元の評価の後に同じ実 Perf 延長を行う native 関手は完全。 -/
 lemma presentedPerfectDGExtensionAfterEvaluation_isExactFunctor :
-    IsExactFunctor (dgNerve.map
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
       ((presentedPerfectDGEvaluation A D).comp (perfectDGExtension A D E F))) := by
-  rw [dgNerve.map_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp]
   have := presentedPerfectDGEvaluationNerve_isExactFunctor A D
   have := perfectDGExtensionNerve_isExactFunctor A D E F
   infer_instance
 
 /-- 元の評価と実延長の合成は、同じ標準 DK coherent nerve 上でも完全。 -/
 lemma presentedPerfectDGStandardExtensionAfterEvaluation_isExactFunctor :
-    IsExactFunctor (dgStandardCoherentMap
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (dgStandardCoherentMap
       ((presentedPerfectDGEvaluation A D).comp (perfectDGExtension A D E F))) :=
   (dgNerve_map_isExactFunctor_iff_standard _).mp
     (presentedPerfectDGExtensionAfterEvaluation_isExactFunctor A D E F)
 
 /-- 元のラベル作用の完全性は、評価後の同じ標準 DK 関手の完全性と同値。 -/
 lemma presentedPerfectDGAction_isExactFunctor_iff_standardEvaluation :
-    IsExactFunctor (dgNerve.map (presentedPerfectDGAction A D E F)) ↔
-      IsExactFunctor (dgStandardCoherentMap
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGAction A D E F)) ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (dgStandardCoherentMap
         ((presentedPerfectDGAction A D E F).comp (presentedPerfectDGEvaluation A E))) := by
   have h := (presentedPerfectDGEvaluationNerve_comp_isExactFunctor_iff A E
-    (dgNerve.map (presentedPerfectDGAction A D E F))).symm
-  rw [← dgNerve.map_comp] at h
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGAction A D E F))).symm
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp] at h
   exact h.trans (dgNerve_map_isExactFunctor_iff_standard _)
 
 end SerrePositivity.KST.SConstruction

@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.PointedCochainDensityNaturality
 universe u
 
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.GroupActionCochains
 
@@ -33,7 +33,7 @@ lemma totalizationEndIso_natural (G : Type u) [Group G]
     PointedTotalization.map (weightedCochainsMap (universalCoverWeight G) τ) ≫
         (totalizationEndIso G E).hom =
       (totalizationEndIso G D).hom ≫
-        PointedWeightedEnd.map (bousfieldKanWeight (AsSmall.{u} (SingleObj G))) τ :=
+        PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} (SingleObj G))) τ :=
   (totalizationEndNatIso G).hom.naturality τ
 
 end

@@ -23,7 +23,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 /-- loop 値の射が定める、通常の写像空間の基点付き辺。 -/
 def loopFamilySimplex {A : SSet.{u}} (Y : PointedSimplicialSet.{u})
-    (f : A ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right) : (obj A Y).right.PtSimplex 1 (obj A Y).basepoint where
+    (f : A ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right) : (obj A Y).right.PtSimplex 1 (obj A Y).basepoint where
   map := pathFamilyEdge Y (f ≫ (PointedMapping.loopToPath Y).right)
   comm := by
     ext j : 1
@@ -37,8 +37,8 @@ def loopFamilySimplex {A : SSet.{u}} (Y : PointedSimplicialSet.{u})
 
 /-- loop の辺の族は源への制限と可換。 -/
 lemma loopFamilySimplex_pre {A B : SSet.{u}} (i : A ⟶ B)
-    (Y : PointedSimplicialSet.{u}) (f : B ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (pre i Y).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (pre i Y))
+    (Y : PointedSimplicialSet.{u}) (f : B ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (pre i Y).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (pre i Y))
         (loopFamilySimplex Y f) = loopFamilySimplex Y (i ≫ f) := by
   ext : 1
   change pathFamilyEdge Y (f ≫ (PointedMapping.loopToPath Y).right) ≫ (pre i Y).right = _

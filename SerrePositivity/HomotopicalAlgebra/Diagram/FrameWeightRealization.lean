@@ -35,7 +35,7 @@ abbrev functor (A : K ⥤ SimplexCategory ⥤ C) : (Kᵒᵖ ⥤ SSet.{w}) ⥤ C 
   (weightsEquivalence K).functor ⋙ presheafRealization K A
 
 abbrev hom (A : K ⥤ SimplexCategory ⥤ C) : C ⥤ Kᵒᵖ ⥤ SSet.{w} :=
-  (A.op ⋙ cosimplicialHomBifunctor).flip
+  (A.op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor).flip
 
 /-- The internal Type-level lift disappears by an actual natural isomorphism. -/
 def restrictedIso (A : K ⥤ SimplexCategory ⥤ C) :
@@ -45,12 +45,12 @@ def restrictedIso (A : K ⥤ SimplexCategory ⥤ C) :
       intro n m f
       ext h
       simp [weightsEquivalence, source, hom, Presheaf.restrictedULiftYoneda,
-        cosimplicialHomBifunctor, cosimplicialHom, cosimplicialHomMap]
+        _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap]
       rfl)) (by
       intro k l f
       ext n h
       simp [weightsEquivalence, source, hom, Presheaf.restrictedULiftYoneda,
-        cosimplicialHomBifunctor, cosimplicialHom, cosimplicialHomMap]
+        _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap]
       rfl)) (by
     intro Y Z f
     ext k n h

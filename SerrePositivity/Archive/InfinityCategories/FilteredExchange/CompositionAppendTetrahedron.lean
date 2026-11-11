@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CompositionAppendDiagram
-public import SerrePositivity.InfinityCategories.Core.JoinTensor
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.JoinTensor
 
 /-!
 概要：元の二 Hom の全係数と同じ追加射を、一つの実四面体族へ移す。

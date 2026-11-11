@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoMapPostPresentation
-public import SerrePositivity.InfinityCategories.F1B.FunctorIsoPointEvaluation
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorIsoPointEvaluation
 
 /-!
 概要：元の後合成同型を関手族上で制限した成分は、元の同型の係数制限。

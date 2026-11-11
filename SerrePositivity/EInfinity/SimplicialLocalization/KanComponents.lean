@@ -27,7 +27,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory
 open SerrePositivity.KST.Comparison
 
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 /-- 概要：同じ Kan 化の単位は元の Hom の π₀ の同値を誘導する（Dwyer–Kan）。
 方針：元の anodyne 単位の実際の連結成分の全単射を使う。

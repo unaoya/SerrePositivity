@@ -7,7 +7,7 @@ public import SerrePositivity.KST.Spectra.TrianglePairDesc
 概要：正方形の三角形への制限と相対三角形の貼り合わせの往復。
 方針：正方形と相対三角形の二つの pushout の普遍性で判定する。
 規約：往復はホモトピーでなく厳密な等式。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。貼り合わせによる写像の普遍性。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.3（Tag 00W3）。貼り合わせによる写像の普遍性。
 -/
 
 @[expose] public section
@@ -32,12 +32,12 @@ theorem trianglePairSquare_restrictions (Y : PointedSimplicialSet.{u})
     (f : (Δ[1] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ Y.right) (hl hr) :
     trianglePairSquare (squareUpperRestriction Y f hl hr) (squareLowerRestriction Y f hl hr)
       (squareRestrictions_diagonal Y f hl hr) = f := by
-  apply _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.hom_ext <;> simp
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.isPushout.hom_ext <;> simp
 
 /-- 概要：貼った正方形を上側の相対三角形へ制限すると第一の写像に戻る。
 方針：相対三角形の cofiber の商射上で検査する。
 規約：四辺の定数性は貼り合わせから得た標準の証明を使う。
-使われ方：Kerodon §3.2.3。三角形分割の普遍性のもう一方の往復。 -/
+使われ方：Kerodon §3.2.3（Tag 00W3）。三角形分割の普遍性のもう一方の往復。 -/
 theorem squareUpperRestriction_pair {Y : PointedSimplicialSet.{u}}
     (a b : triangleDisk.{u} ⟶ Y) (h : triangleDiskDiagonal ≫ a = triangleDiskDiagonal ≫ b) :
     squareUpperRestriction Y (trianglePairSquare a b h)
@@ -48,7 +48,7 @@ theorem squareUpperRestriction_pair {Y : PointedSimplicialSet.{u}}
 /-- 概要：貼った正方形を下側の相対三角形へ制限すると第二の写像に戻る。
 方針：cofiber の商射上の制限の式を使う。
 規約：上側と同じ境界条件の証明を使う。
-使われ方：Kerodon §3.2.3。相対三角形の貼り合わせの一意性。 -/
+使われ方：Kerodon §3.2.3（Tag 00W3）。相対三角形の貼り合わせの一意性。 -/
 theorem squareLowerRestriction_pair {Y : PointedSimplicialSet.{u}}
     (a b : triangleDisk.{u} ⟶ Y) (h : triangleDiskDiagonal ≫ a = triangleDiskDiagonal ≫ b) :
     squareLowerRestriction Y (trianglePairSquare a b h)

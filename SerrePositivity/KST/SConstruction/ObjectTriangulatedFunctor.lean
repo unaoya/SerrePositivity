@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.ObjectTriangulatedKZeroRelations
-public import SerrePositivity.InfinityCategories.Kan.FundamentalGroupoidComparison
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FundamentalGroupoidComparison
 public import Mathlib.CategoryTheory.SingleObj
 public import Mathlib.CategoryTheory.Category.ULift
 
@@ -60,13 +60,13 @@ lemma objectTriangulatedFunctor_map_edge (X : StableModel.{u})
 
 /-- 元の辺の負の対象類を、元の object S の基本亜群からの関手へ延長する。 -/
 def objectTriangulatedGroupoidFunctor (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid (objectSConstruction X.carrier) ⥤
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.simplicialFundamentalGroupoid (objectSConstruction X.carrier) ⥤
       triangulatedKZeroDelooping X := FreeGroupoid.lift (objectTriangulatedFunctor X)
 
 /-- 元の object S から三角圏 K₀ の一対象亜群の nerve への実際の写像。 -/
 def objectTriangulatedNerveMap (X : StableModel.{u}) :
     objectSConstruction X.carrier ⟶ nerve (AsSmall.{u} (triangulatedKZeroDelooping X)) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveTranspose (objectTriangulatedFunctor X ⋙ AsSmall.up)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TruncationsAndPostnikovTowers.fundamentalNerveTranspose (objectTriangulatedFunctor X ⋙ AsSmall.up)
 
 /-- 宇宙を揃えた三角圏 K₀ の一対象圏も亜群である。 -/
 instance objectTriangulatedNerveTarget_isGroupoid (X : StableModel.{u}) :
@@ -77,8 +77,8 @@ instance objectTriangulatedNerveTarget_isGroupoid (X : StableModel.{u}) :
 
 /-- 元の nerve 値写像を戻すと、元の辺の対象類の関手を厳密に回収する。 -/
 lemma objectTriangulatedNerveMap_untranspose (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose (objectTriangulatedNerveMap X) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TruncationsAndPostnikovTowers.fundamentalNerveUntranspose (objectTriangulatedNerveMap X) =
       objectTriangulatedFunctor X ⋙ AsSmall.up :=
-  _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose_transpose _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TruncationsAndPostnikovTowers.fundamentalNerveUntranspose_transpose _
 
 end SerrePositivity.KST.SConstruction

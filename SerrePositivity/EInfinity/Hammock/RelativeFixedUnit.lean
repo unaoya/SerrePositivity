@@ -24,8 +24,8 @@ variable {C D : Type u} [Category.{v} C] [Category.{v} D]
   (F : LocalizerMorphism W V) {X : C} {Y : D}
 
 lemma fixedColimitMap_unit_point (h : F.functor.obj X = Y) (n : SimplexCategoryᵒᵖ) :
-    (fixedColimitMap F h h).app n ((colimitUnit W X).app n PUnit.unit) =
-      (colimitUnit V Y).app n PUnit.unit := by
+    (fixedColimitMap F h h).app n ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit W X).app n PUnit.unit) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit V Y).app n PUnit.unit := by
   cases h
   simpa only [fixedColimitMap, fixedGraphDiagramMap, eqToHom_refl,
     Category.comp_id, colimitMap] using colimitUnit_point F X n

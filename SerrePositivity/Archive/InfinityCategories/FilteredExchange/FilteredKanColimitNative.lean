@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FilteredKanColimitComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FilteredKanColimitCanonical
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.ColimitVertexTransport
-public import SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKanCoherentColimit
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FilteredKanColimitComparison
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FilteredKanColimitCanonical
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ColimitVertexTransport
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.BousfieldKanCoherentColimit
 
 /-!
 概要：通常の filtered Kan colimit は SpaceInfinity の実際の余極限頂点となる。

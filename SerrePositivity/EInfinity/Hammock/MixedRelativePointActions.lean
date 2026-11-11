@@ -25,9 +25,9 @@ variable {C D : Type (u + 1)} [Category.{u + 1} C] [Category.{u} D]
 
 omit [W.IsMultiplicative] [V.IsMultiplicative] in
 lemma forward_obj (p : X ⟶ Y) :
-    Zigzag.Relative.obj F (ForwardZigzag.obj (W := W) p) =
-      ForwardZigzag.obj (W := V) (F.functor.map p) := by
-  apply Zigzag.object_ext
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.obj F (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.obj (W := W) p) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.obj (W := V) (F.functor.map p) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagExt.object_ext
   · intro j
     change Fin 2 at j
     cases j using Fin.cases with
@@ -40,10 +40,10 @@ lemma forward_obj (p : X ⟶ Y) :
     rfl
 
 lemma arrowSimplex_map (p : X ⟶ Y) (n : SimplexCategoryᵒᵖ) :
-    arrowSimplex W p n ⋙ Zigzag.Relative.functor F = arrowSimplex V (F.functor.map p) n := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W p n ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor F = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex V (F.functor.map p) n := by
   apply CategoryTheory.Functor.hext (fun _ => forward_obj F p)
   intro d e f
-  apply Zigzag.hom_hext (forward_obj F p) (forward_obj F p)
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagExt.hom_hext (forward_obj F p) (forward_obj F p)
   intro j
   change Fin 2 at j
   cases j using Fin.cases with
@@ -51,30 +51,30 @@ lemma arrowSimplex_map (p : X ⟶ Y) (n : SimplexCategoryᵒᵖ) :
   | succ j => exact heq_of_eq (F.functor.map_id _)
 
 lemma arrowPoint_map (p : X ⟶ Y) (n : SimplexCategoryᵒᵖ) :
-    (colimitMap F X Y).app n (arrowPoint W p n) = arrowPoint V (F.functor.map p) n :=
-  (graphInclusion_point F (arrowSimplex W p n)).trans
-    (congrArg (fun H => (graphInclusion V (F.functor.obj X) (F.functor.obj Y)
-      (Word.single .forward)).app n H) (arrowSimplex_map F p n))
+    (colimitMap F X Y).app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W p n) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint V (F.functor.map p) n :=
+  (graphInclusion_point F (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W p n)).trans
+    (congrArg (fun H => (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion V (F.functor.obj X) (F.functor.obj Y)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)).app n H) (arrowSimplex_map F p n))
 
 lemma colimitMap_postcompose (X : C) (g : Y ⟶ Z) :
-    postcomposePointMap X (arrowMap W g) ≫ colimitMap F X Z =
-      colimitMap F X Y ≫ postcomposePointMap (F.functor.obj X) (arrowMap V (F.functor.map g)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W g) ≫ colimitMap F X Z =
+      colimitMap F X Y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap (F.functor.obj X) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap V (F.functor.map g)) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
   intro p
-  change (colimitMap F X Z).app n (composePoint W X Y Z p (arrowPoint W g n)) = _
+  change (colimitMap F X Z).app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W X Y Z p (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W g n)) = _
   rw [composePoint_map, arrowPoint_map]
   rfl
 
 lemma colimitMap_precompose (Z : C) (f : X ⟶ Y) :
-    precomposePointMap (arrowMap W f) Z ≫ colimitMap F X Z =
-      colimitMap F Y Z ≫ precomposePointMap (arrowMap V (F.functor.map f)) (F.functor.obj Z) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f) Z ≫ colimitMap F X Z =
+      colimitMap F Y Z ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap V (F.functor.map f)) (F.functor.obj Z) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
   intro p
-  change (colimitMap F X Z).app n (composePoint W X Y Z (arrowPoint W f n) p) = _
+  change (colimitMap F X Z).app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W X Y Z (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W f n) p) = _
   rw [composePoint_map, arrowPoint_map]
   rfl
 

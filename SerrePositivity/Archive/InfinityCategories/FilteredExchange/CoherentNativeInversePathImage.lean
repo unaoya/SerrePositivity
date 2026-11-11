@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentNativeFirstPathMaps
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.IntervalInversePathIsoImage
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerHEq
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerHEq
 
 /-!
 概要：左厳密化の逆 path 成分の像を元の native 可換同型の逆へ同定する。

@@ -22,9 +22,9 @@ variable {C : Type u} [Category.{v} C] {I : Type w} [Category.{t} I]
   (c : Cocone D) {Y Z : C} (p : Y ⟶ Z)
 
 lemma sourceSquare
-    {a : s.pt ⟶ (cosimplicialHom A).obj Y}
-    {b : SSet.stdSimplex.obj c.pt ⟶ (cosimplicialHom A).obj Z}
-    (sq : CommSq a (presentationMap D s hs c) ((cosimplicialHom A).map p) b) :
+    {a : s.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y}
+    {b : SSet.stdSimplex.obj c.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z}
+    (sq : CommSq a (presentationMap D s hs c) ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p) b) :
     CommSq (homEquiv D s hs A a) (tensorMap D A c) p (SSet.yonedaEquiv b) := by
   constructor
   have h := congrArg (homEquiv D s hs A) sq.w
@@ -36,9 +36,9 @@ lemma sourceSquare
 variable [HasLiftingProperty (tensorMap D A c) p]
 
 def liftStruct
-    {a : s.pt ⟶ (cosimplicialHom A).obj Y}
-    {b : SSet.stdSimplex.obj c.pt ⟶ (cosimplicialHom A).obj Z}
-    (sq : CommSq a (presentationMap D s hs c) ((cosimplicialHom A).map p) b) :
+    {a : s.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y}
+    {b : SSet.stdSimplex.obj c.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z}
+    (sq : CommSq a (presentationMap D s hs c) ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p) b) :
     sq.LiftStruct where
   l := SSet.yonedaEquiv.symm (sourceSquare D s hs A c p sq).lift
   fac_left := by
@@ -51,7 +51,7 @@ def liftStruct
     exact (sourceSquare D s hs A c p sq).fac_right
 
 lemma hasLiftingProperty :
-    HasLiftingProperty (presentationMap D s hs c) ((cosimplicialHom A).map p) where
+    HasLiftingProperty (presentationMap D s hs c) ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p) where
   sq_hasLift sq := CommSq.HasLift.mk' (liftStruct D s hs A c p sq)
 
 end SerrePositivity.HomotopyFunctionComplex.HomPresentation

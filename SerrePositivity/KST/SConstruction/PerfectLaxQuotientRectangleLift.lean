@@ -14,7 +14,7 @@ open CategoryTheory MonoidalCategory SSet
 open SerrePositivity.InfinityCategories LocalizingInvariants
 open scoped Simplicial
 namespace PerfectLaxQuotient
-variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B}
+variable {C D B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D B}
   (d : PerfectLaxQuotient p q)
 
 /-- 元の長方形の六頂点は、左右の同じ完備正方形の頂点である。 -/
@@ -25,15 +25,15 @@ lemma rawRectangle_vertex_complete
   obtain ⟨i, rfl⟩ := stdSimplex.obj₀Equiv.symm.surjective x
   obtain ⟨j, rfl⟩ := stdSimplex.obj₀Equiv.symm.surjective y
   fin_cases i
-  · change perfectStableVertexPredicate ((pastingSquare d.rawRectangle.diagram 2).app _
+  · change perfectStableVertexPredicate ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.rawRectangle.diagram 2).app _
       (stdSimplex.obj₀Equiv.symm 0, stdSimplex.obj₀Equiv.symm j))
     rw [d.rawRectangle.left_eq]
     exact d.universalRawSquare_vertex_complete _
-  · change perfectStableVertexPredicate ((pastingSquare d.rawRectangle.diagram 2).app _
+  · change perfectStableVertexPredicate ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.rawRectangle.diagram 2).app _
       (stdSimplex.obj₀Equiv.symm 1, stdSimplex.obj₀Equiv.symm j))
     rw [d.rawRectangle.left_eq]
     exact d.universalRawSquare_vertex_complete _
-  · change perfectStableVertexPredicate ((pastingSquare d.rawRectangle.diagram 0).app _
+  · change perfectStableVertexPredicate ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.rawRectangle.diagram 0).app _
       (stdSimplex.obj₀Equiv.symm 1, stdSimplex.obj₀Equiv.symm j))
     rw [d.rawRectangle.right_eq]
     exact perfectVerdierRawSquare_vertex_complete
@@ -41,16 +41,16 @@ lemma rawRectangle_vertex_complete
 
 /-- 元の二面・両合成三角形を全て保持する Cat^perf の実長方形。 -/
 def rectangleDiagram : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ perfectStableInfinity.{u} :=
-  fullSubcomplexLift perfectStableVertexPredicate d.rawRectangle.diagram
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift perfectStableVertexPredicate d.rawRectangle.diagram
     d.rawRectangle_vertex_complete
 
 /-- 持ち上げた長方形の包含後は、元の全長方形を厳密に回収する。 -/
 lemma rectangleDiagram_inclusion :
     d.rectangleDiagram ≫ perfectStableInfinityInclusion = d.rawRectangle.diagram :=
-  fullSubcomplexLift_ι _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 /-- 同じ Cat^perf 長方形の左面は、元の指定比較正方形そのもの。 -/
-lemma rectangleDiagram_left : pastingSquare d.rectangleDiagram 2 =
+lemma rectangleDiagram_left : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.rectangleDiagram 2 =
     (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ d.universalSquare := by
   apply (cancel_mono perfectStableInfinityInclusion).mp
   change _ ≫ (d.rectangleDiagram ≫ perfectStableInfinityInclusion) =
@@ -60,7 +60,7 @@ lemma rectangleDiagram_left : pastingSquare d.rectangleDiagram 2 =
   exact d.rawRectangle.left_eq
 
 /-- 同じ Cat^perf 長方形の右面は、元の恒等 lax 差の提示正方形。 -/
-lemma rectangleDiagram_right : pastingSquare d.rectangleDiagram 0 =
+lemma rectangleDiagram_right : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.rectangleDiagram 0 =
     (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
       (perfectIdentityLaxSequence d.sequence.right
         d.sequence.right_complete).presentation.square := by

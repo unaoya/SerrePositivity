@@ -43,7 +43,7 @@ lemma cubeThreeNormalId_vertex (n : ℕ) :
 lemma cubeThreeNormalPoint_vertex {n m : ℕ} (r : CubeThreeNormal n m)
     (b : Bool) (i : Fin (m + 1)) :
     cubeThreeNormalVertex (cubeThreeNormalPoint r b i) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b m i ∘ cubeThreeNormalVertex r := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b m i ∘ cubeThreeNormalVertex r := by
   dsimp only [cubeThreeNormalPoint]
   rw [cubeThreeNormalWithFace_vertex, cubeFaceNormalInsert_vertex]
   rfl
@@ -52,7 +52,7 @@ lemma cubeThreeNormalPoint_vertex {n m : ℕ} (r : CubeThreeNormal n m)
 lemma cubeThreeNormalDelete_vertex {n m : ℕ} (r : CubeThreeNormal n (m + 1))
     (i : Fin (m + 1)) :
     cubeThreeNormalVertex (cubeThreeNormalDelete r i) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy m i ∘ cubeThreeNormalVertex r := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy m i ∘ cubeThreeNormalVertex r := by
   dsimp only [cubeThreeNormalDelete]
   rw [cubeThreeNormalAfterDeletion_vertex, cubeFaceNormalDelete_vertex]
   rfl
@@ -61,7 +61,7 @@ lemma cubeThreeNormalDelete_vertex {n m : ℕ} (r : CubeThreeNormal n (m + 1))
 lemma cubeThreeNormalConnect_vertex {n m : ℕ} (r : CubeThreeNormal n (m + 2))
     (i : Fin (m + 1)) :
     cubeThreeNormalVertex (cubeThreeNormalConnect r i) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection m i ∘ cubeThreeNormalVertex r := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection m i ∘ cubeThreeNormalVertex r := by
   dsimp only [cubeThreeNormalConnect]
   rw [cubeThreeNormalAfterConnection_vertex, cubeFaceNormalConnect_vertex]
   rfl

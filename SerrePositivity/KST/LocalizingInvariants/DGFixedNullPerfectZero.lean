@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGFixedNullSquare
-public import SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectZero
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGTotalQuotientPerfectZero
 
 /-!
 概要：固定 dg 提示源の全対象商の実 ν 値が零圏であることを認証する。
@@ -20,8 +20,8 @@ namespace SerrePositivity.KST.LocalizingInvariants
 variable (R : Type u) [CommRing R]
 
 lemma dgFixedNullInput_isZeroCategory (A : PerfDGInput.{u, v} R) :
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R (dgFixedNullInput R A)) :=
-  dgTotalQuotientPerfect_isZero_of_equivalence R A
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (dgKInputStableValue R (dgFixedNullInput R A)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgTotalQuotientPerfect_isZero_of_equivalence R A
     (dgKInputStableValue R (dgFixedNullInput R A))
     (presentedPerfectDGQCatEvaluationEquivalence R (dgFixedNullInput R A))
 

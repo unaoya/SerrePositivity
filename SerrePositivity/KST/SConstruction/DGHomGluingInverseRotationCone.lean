@@ -17,7 +17,7 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D]
   (E : Type z) [DGCategory R E] [Small.{u} E]
   (p : DGFunctor R C E) (q : DGFunctor R D E)
-local notation "L" => DGGluingObject R C D (dgHomGluingBimodule R C D E p q)
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q)
 
 /-- 概要：元実逆回転比較は同じ connecting 射の実加群逆 shift。
 方針：元 dg shift の閉射回収を使用する。

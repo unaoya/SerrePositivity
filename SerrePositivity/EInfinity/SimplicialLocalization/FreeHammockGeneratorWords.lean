@@ -21,7 +21,7 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory
 
-def freeHammockGeneratorWordValue (C : RelativeCategory.{u}) (X Y : C.category)
+def freeHammockGeneratorWordValue (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
     (n : SimplexCategoryᵒᵖ) :
     (freeHammockResolution C X Y).obj n ⟶
       (Functor.const SimplexCategoryᵒᵖ).obj
@@ -29,9 +29,9 @@ def freeHammockGeneratorWordValue (C : RelativeCategory.{u}) (X Y : C.category)
   Hammock.UnmarkedGenerators.colimitValue (freeResolutionGeneratorBase C n).weakEquivalences
     (freeResolutionObject C n X) (freeResolutionObject C n Y)
 
-lemma freeHammockGeneratorWordValue_fac (C : RelativeCategory.{u}) (X Y : C.category)
-    (n : SimplexCategoryᵒᵖ) (w : Hammock.Word) :
-    Hammock.graphInclusion ((freeResolution C).obj n).weakEquivalences
+lemma freeHammockGeneratorWordValue_fac (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
+    (n : SimplexCategoryᵒᵖ) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion ((freeResolution C).obj n).weakEquivalences
       (freeResolutionObject C n X) (freeResolutionObject C n Y) w ≫
         freeHammockGeneratorWordValue C X Y n =
           Hammock.UnmarkedGenerators.graphValue

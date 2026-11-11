@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlags
 public import SerrePositivity.KST.SConstruction.Cofinality.StageDetection
-public import SerrePositivity.InfinityCategories.Stable.CofiberLocalizingEdges
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanFilling
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberLocalizingEdges
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ContinuousKanFilling
 
 /-!
 概要：Sp-7 の一般供給を仮定引数として元の全多次数の相対旗へ代入する。
@@ -27,12 +27,12 @@ structure WideStageData {X Y : StableModel.{u}} (f : X ⟶ Y) where
   subcomplex : Y.carrier.Subcomplex
   simplex_spec : ∀ (n : ℕ) (s : Y.carrier _⦋n⦌),
     s ∈ subcomplex.obj (Opposite.op ⦋n⦌) ↔ ∀ θ : ⦋1⦌ ⟶ ⦋n⦌,
-      Y.carrier.map θ.op s ∈ cofiberLocalizingEdges
-        {y | ∃ x : X.carrier _⦋0⦌, Nonempty (VertexIso (f.val.app (Opposite.op ⦋0⦌) x) y)}
+      Y.carrier.map θ.op s ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
+        {y | ∃ x : X.carrier _⦋0⦌, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (f.val.app (Opposite.op ⦋0⦌) x) y)}
   quasicategory : Quasicategory (subcomplex : SSet.{u})
-  discrete : ∀ (x : (F2.continuousKanReplacement.obj (subcomplex : SSet.{u})) _⦋0⦌)
+  discrete : ∀ (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (subcomplex : SSet.{u})) _⦋0⦌)
     (n : ℕ), 0 < n →
-      Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj (subcomplex : SSet.{u})) n x)
+      Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (subcomplex : SSet.{u})) n x)
 
 /-- 概要：Sp-7 の供給を標準模型の指定完備化射で消費する仮定型。
 方針：一般 API の安定単体集合の引数へ各標準模型の carrier を渡せる形にする。
@@ -40,7 +40,7 @@ structure WideStageData {X Y : StableModel.{u}} (f : X ⟶ Y) where
 使われ方：到着前の相対図式の組立と到着後の代入。 -/
 def StableWideCofinalitySupply : Prop :=
   ∀ (X Y : StableModel.{u}) (f : X ⟶ Y),
-    F2.Idempotent.IsIdempotentCompletion f.val → Nonempty (WideStageData f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val → Nonempty (WideStageData f)
 
 /-- 概要：一般の Sp-7 の結論を標準模型の供給引数へ変換する。
 方針：安定 carrier と完全射の instance を渡し、存在証明を構造に束ねる。
@@ -48,19 +48,19 @@ def StableWideCofinalitySupply : Prop :=
 使われ方：Sp-7 の公開名の到着時の一回の代入。 -/
 theorem stableWideCofinalitySupply_of_api
     (api : ∀ (C D : SSet.{u}) [Quasicategory C] [Quasicategory D]
-      [IsStable C] [IsStable D] (f : C ⟶ D) [IsExactFunctor f],
-      F2.Idempotent.IsIdempotentCompletion f →
+      [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable D] (f : C ⟶ D) [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f],
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f →
       ∃ M : D.Subcomplex,
         (∀ (n : ℕ) (s : D _⦋n⦌), s ∈ M.obj (Opposite.op ⦋n⦌) ↔
-          ∀ θ : ⦋1⦌ ⟶ ⦋n⦌, D.map θ.op s ∈ cofiberLocalizingEdges
-            {y | ∃ x : C _⦋0⦌, Nonempty (VertexIso (f.app (Opposite.op ⦋0⦌) x) y)}) ∧
+          ∀ θ : ⦋1⦌ ⟶ ⦋n⦌, D.map θ.op s ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
+            {y | ∃ x : C _⦋0⦌, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (f.app (Opposite.op ⦋0⦌) x) y)}) ∧
         Quasicategory (M : SSet.{u}) ∧
-        ∀ (x : (F2.continuousKanReplacement.obj (M : SSet.{u})) _⦋0⦌) (n : ℕ),
-          0 < n → Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
-            (F2.continuousKanReplacement.obj (M : SSet.{u})) n x)) :
+        ∀ (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (M : SSet.{u})) _⦋0⦌) (n : ℕ),
+          0 < n → Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (M : SSet.{u})) n x)) :
     StableWideCofinalitySupply.{u} := by
   intro X Y f hf
-  let : IsExactFunctor f.val := stableModelHom_exact f
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f.val := stableModelHom_exact f
   obtain ⟨M, hs, hq, hd⟩ := api X.carrier Y.carrier f.val hf
   exact ⟨⟨M, hs, hq, hd⟩⟩
 
@@ -70,7 +70,7 @@ theorem stableWideCofinalitySupply_of_api
 使われ方：相対旗の各多次数の wide 部分複体。 -/
 def multiWideStageData (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     WideStageData (((multiSEndofunctor r).obj ι).map f) :=
   Classical.choice (supply _ _ _ (multiSEndofunctor_map_isIdempotentCompletion r ι f hf))
 
@@ -80,7 +80,7 @@ def multiWideStageData (supply : StableWideCofinalitySupply.{u})
 使われ方：相対 S• の実現前の各段。 -/
 def suppliedMultiRelativeFlags (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) (K : SSet.{u}) :
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (K : SSet.{u}) :
     SSet.{u} :=
   multiRelativeFlags r ι Y (multiWideStageData supply r ι f hf).subcomplex K
 
@@ -90,7 +90,7 @@ def suppliedMultiRelativeFlags (supply : StableWideCofinalitySupply.{u})
 使われ方：相対旗内の頂点同型の反映と全部分圏の構成。 -/
 instance suppliedMultiRelativeFlags_quasicategory (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) (K : SSet.{u}) :
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (K : SSet.{u}) :
     Quasicategory (suppliedMultiRelativeFlags supply r ι f hf K) :=
   multiRelativeFlags_quasicategory r ι Y (multiWideStageData supply r ι f hf).subcomplex K
 
@@ -100,11 +100,11 @@ instance suppliedMultiRelativeFlags_quasicategory (supply : StableWideCofinality
 使われ方：相対実現比較へ渡す離散性の証拠。 -/
 theorem multiWideStageData_discrete (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val)
-    (x : (F2.continuousKanReplacement.obj
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
+    (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj
       ((multiWideStageData supply r ι f hf).subcomplex : SSet.{u})) _⦋0⦌)
     (n : ℕ) (hn : 0 < n) :
-    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj
       ((multiWideStageData supply r ι f hf).subcomplex : SSet.{u})) n x) :=
   (multiWideStageData supply r ι f hf).discrete x n hn
 

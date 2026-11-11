@@ -31,12 +31,12 @@ local instance postNaturalityNerve : Quasicategory (SimplicialNerve OmegaSpectru
 variable {X Y Z : OmegaSpectrum.{u}} (p : Y ⟶ Z) {f g : X ⟶ Y}
   (e : (mappingSpace X Y).Edge (vertexOfHom f) (vertexOfHom g))
 
-def prismHomotopy := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal (SpectrumMappingPath.postTrianglePrism p e)
+def prismHomotopy := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.horizontal (SpectrumMappingPath.postTrianglePrism p e)
 
-def sourceTriangle := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap (A := (Δ[2] : SSet.{u + 1}))
+def sourceTriangle := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.sliceMap (A := (Δ[2] : SSet.{u + 1}))
   (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≫ SpectrumMappingPath.postTrianglePrism p e
 
-def targetTriangle := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap (A := (Δ[2] : SSet.{u + 1}))
+def targetTriangle := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.sliceMap (A := (Δ[2] : SSet.{u + 1}))
   (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) ≫ SpectrumMappingPath.postTrianglePrism p e
 
 lemma first_map : (TrianglePrism.firstFace (prismHomotopy p e)).h =
@@ -47,7 +47,7 @@ lemma diagonal_map : (TrianglePrism.diagonalFace (prismHomotopy p e)).h =
   SpectrumMappingPath.postTrianglePrism_diagonal p e
 
 lemma last_map : (TrianglePrism.lastFace (prismHomotopy p e)).h =
-    (functorHomotopyRefl (SSet.yonedaEquiv.symm (coherentNerveEdge p).edge)).h :=
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge p).edge)).h :=
   SpectrumMappingPath.postTrianglePrism_last p e
 
 def sourcePost := HomotopyArrow.rebase (TriangleEdge.post (sourceTriangle p e))
@@ -68,7 +68,7 @@ def targetPre := HomotopyArrow.rebase (TriangleEdge.pre (targetTriangle p e))
 
 lemma path_arrow :
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (SpectrumMappingPath.homotopy e))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (SpectrumMappingPath.homotopy e))) =
       Arrow.mk (SpectrumMappingPath.arrowHom e) := by
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
   change SSet.yonedaEquiv (curry (uncurry
@@ -77,21 +77,21 @@ lemma path_arrow :
   rfl
 
 lemma first_arrow : Arrow.mk (Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (TrianglePrism.firstFace (prismHomotopy p e)))) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (TrianglePrism.firstFace (prismHomotopy p e)))) =
       Arrow.mk (SpectrumMappingPath.arrowHom e) :=
   (HomotopyArrow.congr _ _ (first_map p e)).trans (path_arrow e)
 
 lemma diagonal_arrow : Arrow.mk (Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (TrianglePrism.diagonalFace (prismHomotopy p e)))) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (TrianglePrism.diagonalFace (prismHomotopy p e)))) =
       Arrow.mk (SpectrumMappingPath.arrowHom (SpectrumMappingPath.postEdge p e)) :=
   (HomotopyArrow.congr _ _ (diagonal_map p e)).trans (path_arrow _)
 
 lemma post_naturality :
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (sourcePost p e)) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (sourcePost p e)) ≫
         SpectrumMappingPath.arrowHom (SpectrumMappingPath.postEdge p e) =
     SpectrumMappingPath.arrowHom e ≫ Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (targetPost p e)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (targetPost p e)) := by
   have hn := TrianglePrism.post_naturality (prismHomotopy p e)
   have hs := HomotopyArrow.rebase_arrow (TriangleEdge.post (sourceTriangle p e))
     (HomotopyArrow.source_eq_of_map_eq _ _ (first_map p e))
@@ -105,11 +105,11 @@ lemma post_naturality :
 
 lemma pre_naturality :
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (sourcePre p e)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (sourcePre p e)) =
     SpectrumMappingPath.arrowHom (SpectrumMappingPath.postEdge p e) ≫
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (targetPre p e)) := by
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (targetPre p e)) := by
   have hn := TrianglePrism.pre_commutation (prismHomotopy p e)
-    (SSet.yonedaEquiv.symm (coherentNerveEdge p).edge) (last_map p e)
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge p).edge) (last_map p e)
   have hs := HomotopyArrow.rebase_arrow (TriangleEdge.pre (sourceTriangle p e))
     (HomotopyArrow.source_eq_of_map_eq _ _ (diagonal_map p e))
     (HomotopyArrow.source_eq_of_map_eq _ _ (last_map p e))

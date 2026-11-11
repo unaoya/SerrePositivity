@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RootedFiniteDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram
 public import SerrePositivity.EInfinity.Hammock.FiniteGridRootHull
 
 /-!
@@ -22,25 +22,25 @@ open CategoryTheory
 attribute [local instance] Classical.propDecidable
 
 variable {Q : Type u} [Quiver.{v} Q] (T : WideSubquiver (Quiver.Symmetrify Q))
-  [Quiver.Arborescence T] (X Y : Q) (a : Word) (n : SimplexCategoryᵒᵖ)
+  [Quiver.Arborescence T] (X Y : Q) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n : SimplexCategoryᵒᵖ)
 
-def liftSimplex (σ : (graph (⊤ : MorphismProperty (Paths Q)) a
+def liftSimplex (σ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (⊤ : MorphismProperty (Paths Q)) a
     ((Paths.of Q).obj X) ((Paths.of Q).obj Y)).obj n) :
-    ((graphDiagram T X Y a).obj (gridPathSupport σ)).obj n := by
-  letI := FiniteQuiver.quiver (hull T X Y (gridPathSupport σ))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphDiagram T X Y a).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport σ)).obj n := by
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteCategory.hull T X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport σ))
   exact FiniteGrid.rootedFunctor T σ
 
-lemma liftSimplex_projection (σ : (graph (⊤ : MorphismProperty (Paths Q)) a
+lemma liftSimplex_projection (σ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (⊤ : MorphismProperty (Paths Q)) a
     ((Paths.of Q).obj X) ((Paths.of Q).obj Y)).obj n) :
-    ((graphCocone T X Y a).ι.app (gridPathSupport σ)).app n (liftSimplex T X Y a n σ) = σ := by
-  let := FiniteQuiver.quiver (hull T X Y (gridPathSupport σ))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphCocone T X Y a).ι.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport σ)).app n (liftSimplex T X Y a n σ) = σ := by
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteCategory.hull T X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport σ))
   exact FiniteGrid.rootedFunctor_projection T σ
 
 lemma graphMap_projection {S R : Finset Q} (h : S ⊆ R) :
-    (graphDiagram T X Y a).map (homOfLE h) ≫ nerveMap (projectionFunctor T X Y a R) =
-      nerveMap (projectionFunctor T X Y a S) := by
-  change nerveMap (mapFunctor T X Y a h) ≫ nerveMap (projectionFunctor T X Y a R) = _
-  change nerveMap (mapFunctor T X Y a h ⋙ projectionFunctor T X Y a R) = _
-  exact congrArg nerveMap (mapFunctor_projection T X Y a h)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphDiagram T X Y a).map (homOfLE h) ≫ nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.projectionFunctor T X Y a R) =
+      nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.projectionFunctor T X Y a S) := by
+  change nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteCategory.mapFunctor T X Y a h) ≫ nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.projectionFunctor T X Y a R) = _
+  change nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteCategory.mapFunctor T X Y a h ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.projectionFunctor T X Y a R) = _
+  exact congrArg nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mapFunctor_projection T X Y a h)
 
 end SerrePositivity.EInfinity.Hammock.RootedFinite

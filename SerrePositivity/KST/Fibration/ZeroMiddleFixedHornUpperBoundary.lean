@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.ZeroMiddleFixedHornFamilyComparison
-public import SerrePositivity.InfinityCategories.Simplicial.HornBoundaryPushout
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.RelativeHomotopyInvertible
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.HornBoundaryPushout
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.RelativeHomotopyInvertible
 
 /-!
 概要：同じ三面を固定する実全族比較を、上側二胞体の全境界を固定した比較へ制限する。
@@ -19,8 +19,8 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
-  (K : SSet.{u + 1}) (F : (Δ[3] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u})
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+  (K : SSet.{u + 1}) (F : (Δ[3] : SSet.{u + 1}) ⊗ K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
   (hF : ((horn 3 (2 : Fin 4)).ι ▷ K) ≫ F =
     fst (horn 3 (2 : Fin 4) : SSet.{u + 1}) K ≫ zeroMiddleFullSKanHorn s hZ)
 
@@ -73,22 +73,22 @@ theorem zeroMiddleFixedHornRelativeUpperFamilyHomotopy_boundary :
           fst (Δ[3] : SSet.{u + 1}) K ≫ zeroMiddleFullSKanTetrahedron s hZ := by
   change _ ≫ (((stdSimplex.δ (2 : Fin 4) ▷ K) ▷ (Δ[1] : SSet.{u + 1})) ≫ _) = _
   rw [← Category.assoc, ← MonoidalCategory.comp_whiskerRight,
-    ← MonoidalCategory.comp_whiskerRight, ← hornMissingFaceBoundaryToHorn_ι,
+    ← MonoidalCategory.comp_whiskerRight, ← _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.hornMissingFaceBoundaryToHorn_ι,
     MonoidalCategory.comp_whiskerRight, MonoidalCategory.comp_whiskerRight, Category.assoc,
     zeroMiddleFixedHornRelativeFamilyHomotopy_horn]
   rw [← zeroMiddleFixedHornOriginalFamily_horn s hZ K]
   simp only [whiskerRight_fst_assoc]
-  rw [← Category.assoc (hornMissingFaceBoundaryToHorn 2 (2 : Fin 4))
-    (horn 3 (2 : Fin 4)).ι, hornMissingFaceBoundaryToHorn_ι, Category.assoc]
+  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.hornMissingFaceBoundaryToHorn 2 (2 : Fin 4))
+    (horn 3 (2 : Fin 4)).ι, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.hornMissingFaceBoundaryToHorn_ι, Category.assoc]
 
 /-- 概要：同じ全境界固定の上側比較は、全パラメータ頂点で可逆。
 方針：境界が全頂点を含むことと F1B 正本の相対ホモトピー判定を使う。
 規約：同じ実ホモトピーを保ち、可逆性のために別の比較へ選び直さない。
 使われ方：指定短辺・共有対角を固定したまま上側全族を関手同型にする。 -/
 theorem zeroMiddleFixedHornRelativeUpperFamilyHomotopy_pointwise :
-    ∀ v, IsInvertibleEdge (simplicialHomotopyVertexEdge
+    ∀ v, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
       (zeroMiddleFixedHornRelativeUpperFamilyHomotopy s hZ K F hF) v).toTruncated := by
-  apply relativeHomotopy_pointwise_isInvertible ((boundary 2).ι ▷ K) _ _
+  apply _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.relativeHomotopy_pointwise_isInvertible ((boundary 2).ι ▷ K) _ _
     (zeroMiddleFixedHornRelativeUpperFamilyHomotopy s hZ K F hF)
     (zeroMiddleFixedHornRelativeUpperFamilyHomotopy_boundary s hZ K F hF)
   rintro ⟨x, k⟩
@@ -100,11 +100,11 @@ theorem zeroMiddleFixedHornRelativeUpperFamilyHomotopy_pointwise :
 方針：同じホモトピーの点ごとの可逆性を使う。
 規約：制御充填の存在と指定全長 Hom の回収は別工程のまま保持する。
 使われ方：K-6 c4 の制御された上側と既存上側の全パラメータ比較。 -/
-def zeroMiddleFixedHornRelativeUpperFamilyIso : FunctorIso
+def zeroMiddleFixedHornRelativeUpperFamilyIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((stdSimplex.δ (2 : Fin 4) ▷ K) ≫
       fst (Δ[3] : SSet.{u + 1}) K ≫ zeroMiddleFullSKanTetrahedron s hZ)
     ((stdSimplex.δ (2 : Fin 4) ▷ K) ≫ F) :=
-  functorIsoOfPointwiseInvertibleHomotopy _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy _
     (zeroMiddleFixedHornRelativeUpperFamilyHomotopy_pointwise s hZ K F hF)
 
 end SerrePositivity.KST.Fibration

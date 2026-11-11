@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullRawSquareDiagramIso
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulNormalizedIsoRecovery
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FullyFaithfulNormalizedIsoRecovery
 /-!
 概要：元全核四角形の Cat^perf 比較は、包含後に元実 ν 全比較とその全制限を回収する。
 方針：同じ充満忠実な完備包含の正規化付き逆像の厳密回収を使う。
@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 /-- 概要：元全核面の Cat^perf 比較は包含後に元 ν 全比較そのものを回収する。
 方針：同じ完備包含の逆像の全関手同型の回収を使う。
 規約：元の二四角形と全同型。使われ方：元指定三境界の比較の反映。 -/
@@ -29,7 +29,7 @@ lemma dgOdotMilnorNuNullPerfectSquareComparison_postcomp_heq :
       (dgOdotMilnorNuPerfectSequence R d h).presentation.square ≫
         perfectStableInfinityInclusion :=
     (perfectVerdierSquare_inclusion (dgOdotMilnorNuPerfectSequence R d h)).symm
-  exact IsFullyFaithful.preimageNormalizedFunctorIso_postcomp_heq
+  exact _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.IsFullyFaithful.preimageNormalizedFunctorIso_postcomp_heq
     perfectStableInfinityInclusion_isFullyFaithful
       (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R)
       (dgOdotMilnorNuPerfectSequence R d h).presentation.square
@@ -49,7 +49,7 @@ lemma dgOdotMilnorNuNullPerfectSquareComparison_precomp_postcomp_heq
       (dgOdotMilnorNuPerfectSequence R d h).presentation.square ≫
         perfectStableInfinityInclusion :=
     (perfectVerdierSquare_inclusion (dgOdotMilnorNuPerfectSequence R d h)).symm
-  exact IsFullyFaithful.preimageNormalizedFunctorIso_precomp_postcomp_heq
+  exact _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.IsFullyFaithful.preimageNormalizedFunctorIso_precomp_postcomp_heq
     perfectStableInfinityInclusion_isFullyFaithful
       (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R)
       (dgOdotMilnorNuPerfectSequence R d h).presentation.square

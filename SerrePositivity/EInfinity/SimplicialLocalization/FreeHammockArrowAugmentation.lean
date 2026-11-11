@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite Hammock
 open scoped Simplicial
-variable (C : RelativeCategory.{u}) {X Y : C.category}
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
 
 lemma freeResolutionArrowZero_augmentation (f : X ⟶ Y) :
     eqToHom (freeResolutionObject_augmentation C (op ⦋0⦌) X).symm ≫
@@ -37,9 +37,9 @@ lemma freeResolutionArrowZero_augmentation (f : X ⟶ Y) :
 
 lemma freeHammockArrowZero_augmentation (f : X ⟶ Y) :
     (freeHammockDiagonalAugmentation C X Y).app (op ⦋0⦌) (freeHammockArrowZero C f) =
-      arrowPoint C.weakEquivalences f (op ⦋0⦌) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint C.weakEquivalences f (op ⦋0⦌) := by
   change ((freeHammockAugmentation C X Y).app (op ⦋0⦌)).app (op ⦋0⦌)
-    (arrowPoint _ (freeResolutionArrowZero C f) (op ⦋0⦌)) = _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint _ (freeResolutionArrowZero C f) (op ⦋0⦌)) = _
   have h := Relative.fixedColimitMap_arrowPoint
     ((freeResolutionAugmentationNatTrans C).app (op ⦋0⦌))
     (freeResolutionObject_augmentation C (op ⦋0⦌) X)
@@ -47,7 +47,7 @@ lemma freeHammockArrowZero_augmentation (f : X ⟶ Y) :
     (freeResolutionArrowZero C f) (op ⦋0⦌)
   rw [freeResolutionArrowZero_augmentation] at h
   exact (congrArg (fun k => k.app (op ⦋0⦌)
-    (arrowPoint ((freeResolution C).obj (op ⦋0⦌)).weakEquivalences
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint ((freeResolution C).obj (op ⦋0⦌)).weakEquivalences
       (freeResolutionArrowZero C f) (op ⦋0⦌)))
         (freeHammockAugmentation_fixedColimitMap C X Y (op ⦋0⦌))).trans h
 

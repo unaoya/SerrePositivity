@@ -40,8 +40,8 @@ lemma dgKFixedNullPerfectHoMap_isIso
 規約：選んだ代表へ置換しない。使われ方：実始域比較長方形の零頂点成分。 -/
 lemma dgKFixedNullPerfectNuMap_isInvertible
     (f : dgFixedNullInput R A ⟶ dgFixedNullInput R B) :
-    IsInvertibleEdge ((coherentNerveEdge f).map (dgKInputPerfectNu R)).toTruncated := by
-  apply (isInvertibleEdge_congr (e := ((coherentNerveEdge f).map
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).map (dgKInputPerfectNu R)).toTruncated := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).map
     (dgKInputPerfectNu R)).toTruncated) (f := (perfectStableArrow (dgKInputNuMap R f)
       (dgKInputStableValue_isIdempotentComplete R (dgFixedNullInput R A))
       (dgKInputStableValue_isIdempotentComplete R (dgFixedNullInput R B))).toTruncated)

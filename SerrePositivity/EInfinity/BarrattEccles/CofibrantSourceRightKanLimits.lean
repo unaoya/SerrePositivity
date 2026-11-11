@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceFrameRightKanCofinality
-public import SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer
-public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightExistence
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalLimitTransfer
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RightExistence
 
 /-!
 # 元の Kan hammock の実右 Kan 局所極限
@@ -26,35 +26,35 @@ variable (A : Type u) [CommRing A]
 
 def cofibrantHammockObject
     (z : (kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌) : CofibrantAlgebra A :=
-  coherentNerveObject (C := KanHammockCategory (cofibrantAlgebraRelativeCategory A)) z
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (C := KanHammockCategory (cofibrantAlgebraRelativeCategory A)) z
 
 lemma cofibrantHammockVertex_object
     (z : (kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌) :
     cofibrantHammockVertex A (cofibrantHammockObject A z) = z :=
   (hammockLocalizationNerveMap_vertex (cofibrantAlgebraRelativeCategory A)
     (show (cofibrantAlgebraRelativeCategory A).category from cofibrantHammockObject A z)).trans
-      (coherentNerveVertex_object
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object
         (C := KanHammockCategory (cofibrantAlgebraRelativeCategory A)) z)
 
 lemma cofibrantSourceRightKanDiagram_hasLimit (X : CofibrantAlgebra A)
     {E : SSet.{u + 1}} [Quasicategory E]
     (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)
-    (hF : InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A))) :
-    HasLimit (rightKanDiagram (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       F (cofibrantHammockVertex A X)) := by
-  apply hasLimit_of_leftCofinal (cofibrantSourceFrameRightKanMap A X)
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.hasLimit_of_leftCofinal (cofibrantSourceFrameRightKanMap A X)
     (cofibrantSourceFrameRightKanMap_isLeftCofinal A X)
-  exact (congrArg HasLimit (cofibrantSourceFrameRightKanMap_diagram A X F)).mpr
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (cofibrantSourceFrameRightKanMap_diagram A X F)).mpr
     (cofibrantSourceFrame_hasLimit A X F hF)
 
 lemma cofibrantSourceRightKanDiagram_hasLimit_all
     {E : SSet.{u + 1}} [Quasicategory E]
     (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)
-    (hF : InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
     (z : (kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌) :
-    HasLimit (rightKanDiagram (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       F z) :=
-  (congrArg (fun t => HasLimit (rightKanDiagram
+  (congrArg (fun t => _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram
     (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) F t))
       (cofibrantHammockVertex_object A z)).mp
     (cofibrantSourceRightKanDiagram_hasLimit A (cofibrantHammockObject A z) F hF)
@@ -62,13 +62,13 @@ lemma cofibrantSourceRightKanDiagram_hasLimit_all
 lemma cofibrantInvertingFunctor_rightKanExtension_exists
     {E : SSet.{u + 1}} [Quasicategory E]
     (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)
-    (hF : InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A))) :
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A))) :
     ∃ (G : kanHammockNerve (cofibrantAlgebraRelativeCategory A) ⟶ E)
       (α : SSet.Homotopy
         (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G) F),
-        IsRightKanExtension (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRightKanExtension (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
           F G α :=
-  F1B.exists_kanRightExtension_of_local_limits
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRightExtension_of_local_limits
     (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) F
     (cofibrantSourceRightKanDiagram_hasLimit_all A F hF)
 

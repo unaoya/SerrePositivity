@@ -54,7 +54,7 @@ abbrev point (n : SimplexCategoryᵒᵖ) (x : ((ResolutionBarEvaluation.raw (C :
   CostructuredArrow.mk
     (Y := ((ResolutionBarEvaluation.raw (C := C)).flip.obj n).elementsMk R x) (𝟙 _)
 
-def sectionMap : UniverseLift.obj.{u} ((ResolutionBarEvaluation.raw (C := C)).obj R) ⟶
+def sectionMap : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((ResolutionBarEvaluation.raw (C := C)).obj R) ⟶
     ResolutionBarEvaluation.bar R where
   app n := ↾fun x => (Functor.const (Fin (n.unop.len + 1))).obj (point R n x.down)
   naturality {_ _} _ := rfl
@@ -70,7 +70,7 @@ abbrev smallAction : ((ResolutionBarEvaluation.raw (C := C)).obj R) ⟶
     (𝟙 _)
 
 lemma section_evaluation : sectionMap R ≫ ResolutionBarEvaluation.evaluation R a b =
-    UniverseLift.map.{u} (smallAction R a b) := by
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (smallAction R a b) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext

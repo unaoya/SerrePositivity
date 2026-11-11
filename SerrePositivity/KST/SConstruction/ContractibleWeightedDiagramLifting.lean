@@ -14,12 +14,12 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Limits SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
 /-- 一点係数の weighted nerve は元の底の nerve と同型。 -/
 lemma selectionTerminalWeightedProjection_isIso (I : Type u) [SmallCategory I] :
-    IsIso (weightedNerveProjection (selectionTerminalDiagram I)) := by
+    IsIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection (selectionTerminalDiagram I)) := by
   rw [NatTrans.isIso_iff_isIso_app]
   rintro ⟨⟨n⟩⟩
   rw [isIso_iff_bijective]
@@ -41,35 +41,35 @@ lemma selectionTerminalWeightedProjection_isIso (I : Type u) [SmallCategory I] :
 /-- 可縮な全係数の weighted nerve の射影は任意の単射に対する持ち上げ性を持つ。 -/
 lemma contractibleWeightedDiagramProjection_trivialKanFibration
     {I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})
-    (hF : ∀ i, IsContractibleKan (F.obj i)) :
-    TrivialKanFibration (weightedNerveProjection F) := by
+    (hF : ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (F.obj i)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection F) := by
   let t := selectionTerminalMap F
-  let (i : I) : TrivialKanFibration (t.app i) :=
-    (isContractibleKan_iff_trivialKanFibration (F.obj i)).mp (hF i)
-  have hq : TrivialKanFibration (weightedNerveMap t) := inferInstance
-  let : IsIso (weightedNerveProjection (selectionTerminalDiagram I)) :=
+  let (i : I) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (t.app i) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_iff_trivialKanFibration (F.obj i)).mp (hF i)
+  have hq : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveMap t) := inferInstance
+  let : IsIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection (selectionTerminalDiagram I)) :=
     selectionTerminalWeightedProjection_isIso I
-  rw [← weightedNerveMap_projection t]
-  exact ⟨trivialKanFibrations.comp_mem _ _ hq.mem (MorphismProperty.rlp_of_isIso _ _)⟩
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveMap_projection t]
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.comp_mem _ _ hq.mem (MorphismProperty.rlp_of_isIso _ _)⟩
 
 /-- 任意の単射上の coherent な部分図式は、指定した底の図式の上へ厳密に延長できる。 -/
 lemma contractibleWeightedDiagram_relative_lifting {I : Type u} [SmallCategory I]
-    (F : I ⥤ SSet.{u}) (hF : ∀ i, IsContractibleKan (F.obj i))
+    (F : I ⥤ SSet.{u}) (hF : ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (F.obj i))
     {A B : SSet.{u}} (j : A ⟶ B) [Mono j]
-    (a : A ⟶ weightedNerve F) (b : B ⟶ nerve I)
-    (h : a ≫ weightedNerveProjection F = j ≫ b) :
-    ∃ s : B ⟶ weightedNerve F, j ≫ s = a ∧ s ≫ weightedNerveProjection F = b := by
+    (a : A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerve F) (b : B ⟶ nerve I)
+    (h : a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection F = j ≫ b) :
+    ∃ s : B ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerve F, j ≫ s = a ∧ s ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection F = b := by
   have hp := contractibleWeightedDiagramProjection_trivialKanFibration F hF
   have := hp.mem j inferInstance
-  let sq : CommSq a j (weightedNerveProjection F) b := ⟨h⟩
+  let sq : CommSq a j (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection F) b := ⟨h⟩
   exact ⟨sq.lift, sq.fac_left, sq.fac_right⟩
 
 /-- 底の単射上で指定した coherent な選択は、底全体の切断へ延長できる。 -/
 lemma contractibleWeightedDiagram_section_extension {I : Type u} [SmallCategory I]
-    (F : I ⥤ SSet.{u}) (hF : ∀ i, IsContractibleKan (F.obj i))
+    (F : I ⥤ SSet.{u}) (hF : ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (F.obj i))
     {A : SSet.{u}} (j : A ⟶ nerve I) [Mono j]
-    (a : A ⟶ weightedNerve F) (h : a ≫ weightedNerveProjection F = j) :
-    ∃ s : nerve I ⟶ weightedNerve F, j ≫ s = a ∧ s ≫ weightedNerveProjection F = 𝟙 _ := by
+    (a : A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerve F) (h : a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection F = j) :
+    ∃ s : nerve I ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerve F, j ≫ s = a ∧ s ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection F = 𝟙 _ := by
   exact contractibleWeightedDiagram_relative_lifting F hF j a (𝟙 _) (by simpa using h)
 
 end SerrePositivity.KST.SConstruction

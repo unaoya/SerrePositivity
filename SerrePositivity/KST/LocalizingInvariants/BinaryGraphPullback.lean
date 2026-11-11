@@ -21,37 +21,37 @@ local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicia
 variable {Y Z : OmegaSpectrum.{u}} (g : Y ⟶ Z)
 
 lemma rectangle_outer_bottom :
-    (squareBottomArrow (pastingSquare (rectangle g).diagram 1)).edge =
-      (Truncated.Edge.id (X := (truncation 2).obj Sp.{u}) (coherentNerveVertex Y)).edge := by
-  rw [squareBottomArrow_edge, pastingSquare_bottomEdge, (rectangle g).bottom_eq,
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (rectangle g).diagram 1)).edge =
+      (Truncated.Edge.id (X := (truncation 2).obj Sp.{u}) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y)).edge := by
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare_bottomEdge, (rectangle g).bottom_eq,
     stdSimplex.δ_comp_yonedaEquiv_symm]
   exact (SSet.yonedaEquiv.apply_symm_apply _).trans
-    ((bottomComposition g).d₁.trans (congrArg SSet.Edge.edge (coherentNerveEdge_id Y)))
+    ((bottomComposition g).d₁.trans (congrArg SSet.Edge.edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_id Y)))
 
 lemma rectangle_outer_top :
-    (squareTopArrow (pastingSquare (rectangle g).diagram 1)).edge =
-      (Truncated.Edge.id (X := (truncation 2).obj Sp.{u}) (coherentNerveVertex Z)).edge := by
-  rw [squareTopArrow_edge, pastingSquare_topEdge, (rectangle g).top_eq,
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (rectangle g).diagram 1)).edge =
+      (Truncated.Edge.id (X := (truncation 2).obj Sp.{u}) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Z)).edge := by
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareTopArrow_edge, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare_topEdge, (rectangle g).top_eq,
     stdSimplex.δ_comp_yonedaEquiv_symm]
   exact (SSet.yonedaEquiv.apply_symm_apply _).trans
-    ((topComposition Z).d₁.trans (congrArg SSet.Edge.edge (coherentNerveEdge_id Z)))
+    ((topComposition Z).d₁.trans (congrArg SSet.Edge.edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_id Z)))
 
-lemma rectangle_outer_isPullback : IsPullbackSquare (pastingSquare (rectangle g).diagram 1) := by
+lemma rectangle_outer_isPullback : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (rectangle g).diagram 1) := by
   apply isPullbackSquare_of_horizontal_invertible
-  · apply (isInvertibleEdge_congr (rectangle_outer_bottom g)).mpr
+  · apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (rectangle_outer_bottom g)).mpr
     change IsIso (Truncated.HomotopyCategory.homMk _)
     rw [Truncated.HomotopyCategory.homMk_id]
     infer_instance
-  · apply (isInvertibleEdge_congr (rectangle_outer_top g)).mpr
+  · apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (rectangle_outer_top g)).mpr
     change IsIso (Truncated.HomotopyCategory.homMk _)
     rw [Truncated.HomotopyCategory.homMk_id]
     infer_instance
 
-lemma square_isPullback : IsPullbackSquare (square g) := by
-  have hr : IsPullbackSquare (pastingSquare (rectangle g).diagram 0) := by
+lemma square_isPullback : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (square g) := by
+  have hr : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (rectangle g).diagram 0) := by
     rw [(rectangle g).right_eq]
     exact BinarySecondProjection.square_isPullback g Z
-  have hl := isPullbackSquare_pasting_cancel_right (rectangle g).diagram hr
+  have hl := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isPullbackSquare_pasting_cancel_right (rectangle g).diagram hr
     (rectangle_outer_isPullback g)
   rwa [(rectangle g).left_eq] at hl
 

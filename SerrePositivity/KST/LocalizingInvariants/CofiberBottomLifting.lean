@@ -18,9 +18,9 @@ namespace SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
 
 /- 底辺を固定したまま全境界を持ち上げる。 -/
 instance bottom_trivialKanFibration (X : SSet.{u})
-    [Quasicategory X] [IsStable X] :
-    TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X) := by
-  apply (trivialKanFibration_iff_boundary _).2
+    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.bottom X) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).2
   intro n
   constructor
   intro a b sq
@@ -34,85 +34,85 @@ instance bottom_trivialKanFibration (X : SSet.{u})
     apply SSet.yonedaEquiv.injective
     rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply, hv]
   | succ n =>
-    let ι := (fullSubcomplexOnVertices ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X)
-      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate).ι
-    let j := (fullSubcomplexOnVertices ((ihom (Δ[1] : SSet.{u})).obj X) IsZeroTargetArrow).ι
-    have hBR : CommSq (a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left X) (boundary (n + 1)).ι
-        (zeroTargetArrowSource X)
-        (b ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
+    let ι := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X)
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.Predicate).ι
+    let j := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices ((ihom (Δ[1] : SSet.{u})).obj X) _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroTargetArrow).ι
+    have hBR : CommSq (a ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.left X) (boundary (n + 1)).ι
+        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.zeroTargetArrowSource X)
+        (b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
       constructor
       rw [Category.assoc, ← bottom_source, ← Category.assoc, sq.w, Category.assoc]
-    have := TrivialKanFibration.mem (p := zeroTargetArrowSource X)
+    have := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.zeroTargetArrowSource X)
       (boundary (n + 1)).ι inferInstance
     let R := hBR.lift
-    have hLR : b ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-        (R ≫ j) ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) :=
+    have hLR : b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+        (R ≫ j) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) :=
       hBR.fac_right.symm
-    let d := stable_spanFamilyOfArrows b (R ≫ j) hLR
-    have hd : (boundary (n + 1)).ι ≫ d = a ≫ ι ≫ (pre spanSquareBoundary).app X := by
-      apply stable_spanFamily_hom_ext
-      · rw [Category.assoc, stable_spanFamilyOfArrows_left]
+    let d := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_spanFamilyOfArrows b (R ≫ j) hLR
+    have hd : (boundary (n + 1)).ι ≫ d = a ≫ ι ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary).app X := by
+      apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_spanFamily_hom_ext
+      · rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_spanFamilyOfArrows_left]
         simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map,
-          spanSquareBoundary_bottomEdge]
-        change (boundary (n + 1)).ι ≫ b = a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X
+          _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary_bottomEdge]
+        change (boundary (n + 1)).ι ≫ b = a ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.bottom X
         exact sq.w.symm
-      · rw [Category.assoc, stable_spanFamilyOfArrows_right]
+      · rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_spanFamilyOfArrows_right]
         rw [← Category.assoc, hBR.fac_left, Category.assoc]
-        rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left, fullSubcomplexLift_ι]
-        simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map, spanSquareBoundary_leftEdge]
+        rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.left, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
+        simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary_leftEdge]
         rfl
-    let c := a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones X
+    let c := a ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.cocones X
     have hcd : CommSq c (boundary (n + 1)).ι
-        (colimitCoconeProjection (horn 2 0 : SSet.{u}) X) d := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitCoconeProjection (horn 2 0 : SSet.{u}) X) d := by
       constructor
-      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones_projection]
+      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.cocones_projection]
       exact hd.symm
     have : HasLiftingProperty (boundary (n + 1)).ι
-        (colimitCoconeProjection (horn 2 0 : SSet.{u}) X) :=
-      relativeInitialProjection_hasLiftingProperty_boundary
-        (coconeRestriction (horn 2 0 : SSet.{u}) X) n
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitCoconeProjection (horn 2 0 : SSet.{u}) X) :=
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.relativeInitialProjection_hasLiftingProperty_boundary
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeRestriction (horn 2 0 : SSet.{u}) X) n
     let U := hcd.lift
-    let k := (relativeInitialVertices (coconeRestriction (horn 2 0 : SSet.{u}) X)).ι
-    let F := U ≫ k ≫ (pre spanCoconeSquareIso.inv).app X
+    let k := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.relativeInitialVertices (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeRestriction (horn 2 0 : SSet.{u}) X)).ι
+    let F := U ≫ k ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeSquareIso.inv).app X
     have hFa : (boundary (n + 1)).ι ≫ F = a ≫ ι := by
       dsimp only [F]
       rw [← Category.assoc, ← Category.assoc, hcd.fac_left, Category.assoc]
-      change a ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones X ≫ k) ≫
-        (pre spanCoconeSquareIso.inv).app X = _
-      rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones_inclusion]
+      change a ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.cocones X ≫ k) ≫
+        (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeSquareIso.inv).app X = _
+      rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.cocones_inclusion]
       simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map, Iso.inv_hom_id,
         pre_id, NatTrans.id_app, Category.comp_id]
       rfl
     have hv (v : (Δ[n + 1] : SSet.{u}) _⦋0⦌) :
-        _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate (F.app (Opposite.op ⦋0⦌) v) := by
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.Predicate (F.app (Opposite.op ⦋0⦌) v) := by
       let w : (boundary (n + 1) : SSet.{u}) _⦋0⦌ := ⟨v, by
-        have h := vertex_mem_boundary.{u} n (stdSimplex.obj₀Equiv.{u} v)
+        have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.vertex_mem_boundary.{u} n (stdSimplex.obj₀Equiv.{u} v)
         rw [Equiv.symm_apply_apply] at h
         exact h⟩
       have he := ConcreteCategory.congr_hom (NatTrans.congr_app hFa (Opposite.op ⦋0⦌)) w
       change F.app (Opposite.op ⦋0⦌) v = (a.app (Opposite.op ⦋0⦌) w).val at he
       rw [he]
-      exact fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) w)
-    let g := fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate F hv
-    have hg : g ≫ ι = F := fullSubcomplexLift_ι _ _ _
+      exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) w)
+    let g := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.Predicate F hv
+    have hg : g ≫ ι = F := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
     refine CommSq.HasLift.mk' { l := g, fac_left := ?_, fac_right := ?_ }
     · apply (cancel_mono ι).1
       rw [Category.assoc, hg, hFa]
-    · change g ≫ ι ≫ (pre squareBottomEdge).app X = b
+    · change g ≫ ι ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge).app X = b
       rw [← Category.assoc, hg]
-      have hFd : F ≫ (pre spanSquareBoundary).app X = d := by
+      have hFd : F ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary).app X = d := by
         dsimp only [F]
         simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map]
-        have hi : spanSquareBoundary ≫ spanCoconeSquareIso.inv =
-            joinInl (horn 2 0 : SSet.{u}) Δ[0] := by
-          simp only [spanSquareBoundary, Category.assoc, Iso.hom_inv_id, Category.comp_id]
+        have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeSquareIso.inv =
+            _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (horn 2 0 : SSet.{u}) Δ[0] := by
+          simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary, Category.assoc, Iso.hom_inv_id, Category.comp_id]
         rw [hi]
         exact hcd.fac_right
-      have hFL : F ≫ (pre squareBottomEdge).app X = b := by
+      have hFL : F ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge).app X = b := by
         have hh := congrArg (fun t ↦ t ≫ (pre horn₂₀.ι₀₁).app X) hFd
-        rw [Category.assoc, stable_spanFamilyOfArrows_left] at hh
+        rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_spanFamilyOfArrows_left] at hh
         simpa only [Category.assoc, ← NatTrans.comp_app, ← pre_map,
-          spanSquareBoundary_bottomEdge] using hh
+          _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary_bottomEdge] using hh
       exact hFL
 
 end SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams

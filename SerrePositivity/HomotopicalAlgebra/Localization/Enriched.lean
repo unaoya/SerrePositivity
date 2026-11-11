@@ -30,8 +30,8 @@ variable {V : Type uV} [Category.{vV} V] [MonoidalCategory V] [base : ModelCateg
   (hfib : simplicial.categoryWithFibrations.fibrations = SSet.modelCategoryQuillen.J.{vC}.rlp)
   (P : SerrePositivity.Enriched.TensorCotensor V C)
   (hP : @Quillen.IsQuillenBifunctor V _ base C _ original C _ original P.tensor)
-  (IV JV : MorphismProperty V) [ModelGeneration.CofibrantlyGenerated.{wV} IV JV]
-  (IC JC : MorphismProperty C) [@ModelGeneration.CofibrantlyGenerated.{wC} C _ m IC JC]
+  (IV JV : MorphismProperty V) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{wV} IV JV]
+  (IC JC : MorphismProperty C) [@_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{wC} C _ m IC JC]
 
 include h hcof hfib P hP IV JV IC JC in
 lemma enriched_model_of_tensor_compatible

@@ -17,17 +17,17 @@ open scoped MonoidalCategory.ExternalProduct
 
 /-- 元の左因子を固定した cubical 外積。 -/
 def cubicalExternalLeft (K : CubicalSet.{u}) :
-    CubicalSet.{u} ⥤ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ × _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ ⥤ Type u where
+    CubicalSet.{u} ⥤ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ × _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ ⥤ Type u where
   obj L := K ⊠ L
-  map f := (externalProductBifunctor _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ (Type u)).map (𝟙 K, f)
+  map f := (externalProductBifunctor _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ (Type u)).map (𝟙 K, f)
   map_id L := by ext p z; rfl
   map_comp f g := by ext p z; rfl
 
 /-- 元の右因子を固定した cubical 外積。 -/
 def cubicalExternalRight (L : CubicalSet.{u}) :
-    CubicalSet.{u} ⥤ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ × _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ ⥤ Type u where
+    CubicalSet.{u} ⥤ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ × _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ ⥤ Type u where
   obj K := K ⊠ L
-  map f := (externalProductBifunctor _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ (Type u)).map (f, 𝟙 L)
+  map f := (externalProductBifunctor _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ (Type u)).map (f, 𝟙 L)
   map_id K := by ext p z; rfl
   map_comp f g := by ext p z; rfl
 
@@ -37,7 +37,7 @@ instance cubicalExternalLeft_preservesColimits (K : CubicalSet.{u}) :
   apply preservesColimits_of_evaluation
   intro p
   change PreservesColimitsOfSize.{u, u}
-    ((evaluation _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ (Type u)).obj p.2 ⋙ tensorLeft (K.obj p.1))
+    ((evaluation _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ (Type u)).obj p.2 ⋙ tensorLeft (K.obj p.1))
   infer_instance
 
 /-- 右因子を固定した元の外積は、同じ前層圏の余極限を保つ。 -/
@@ -46,7 +46,7 @@ instance cubicalExternalRight_preservesColimits (L : CubicalSet.{u}) :
   apply preservesColimits_of_evaluation
   intro p
   change PreservesColimitsOfSize.{u, u}
-    ((evaluation _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ (Type u)).obj p.1 ⋙ tensorRight (L.obj p.2))
+    ((evaluation _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ (Type u)).obj p.1 ⋙ tensorRight (L.obj p.2))
   infer_instance
 
 end SerrePositivity.KST.SConstruction

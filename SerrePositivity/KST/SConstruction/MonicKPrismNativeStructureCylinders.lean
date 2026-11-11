@@ -24,7 +24,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 lemma monicKPrismNativeRawComposition_condition (n : ℕ) :
     (compositionStringPair f g ≫ monicKPrismTracedRawComposition F f g ≫
       RawSpectrumMapping.evaluation (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj z))
-        (n + 1)) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+        (n + 1)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
           ((kKanSequence (F.obj z)).level (n + 1)).space =
     (compositionStringPair f g ≫ monicKPrismTracedRawComposition F f g ≫
       RawSpectrumMapping.evaluation (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj z)) n) ≫
@@ -38,19 +38,19 @@ lemma monicKPrismNativeRawComposition_condition (n : ℕ) :
 def monicKPrismNativeOriginalCompatibility (n : ℕ) : SSet.Homotopy
     (SSet.const (X := nerve (CompositionStringParameters f g))
       (familyVertex (monicKToRawLevelMap (F.map (f ≫ g)) (n + 1))) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
           ((kKanSequence (F.obj z)).level (n + 1)).space)
     (SSet.const (familyVertex (monicKToRawLevelMap (F.map (f ≫ g)) n)) ≫
       RawSpectrumMapping.step (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj z)) n) := by
-  let H := functorHomotopyPrecomp (monicKPrismRawSequenceCompatibility n F (f ≫ g))
+  let H := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (monicKPrismRawSequenceCompatibility n F (f ≫ g))
     (nerveMap (compositionStringComposite f g))
   have hs : SSet.const (X := nerve (CompositionStringParameters f g))
       (familyVertex (monicKToRawLevelMap (F.map (f ≫ g)) (n + 1))) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
           ((kKanSequence (F.obj z)).level (n + 1)).space =
       nerveMap (compositionStringComposite f g) ≫
         (monicKPrismRawLevelFamily (n + 1) F (f ≫ g) ≫
-          _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
             ((kKanSequence (F.obj z)).level (n + 1)).space) := by
     rw [monicKPrismRawLevelFamily, ← Category.assoc, SSet.comp_const]
   have ht : nerveMap (compositionStringComposite f g) ≫
@@ -78,14 +78,14 @@ def monicKPrismNativePreviousStructureChain (n : ℕ) :=
 /-- 保存済みの前段比較円柱の、同じ構造射像そのもの。 -/
 def monicKPrismNativePreviousStructureCylinder (n : ℕ) :=
   familyHomotopyEndpointTransport
-    (functorHomotopyPostcomp (monicKPrismNativeCompositeCorrectionData F f g n).homotopy
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (monicKPrismNativeCompositeCorrectionData F f g n).homotopy
       (RawSpectrumMapping.step (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj z)) n)) rfl
     (monicKPrismNativeRawComposition_condition F f g n).symm
 
 /-- 保存済みの次段比較円柱を、元の単射な源構造射へ制限する。 -/
 def monicKPrismNativeProjectedStructureCylinder (n : ℕ) :=
-  functorHomotopyPostcomp (monicKPrismNativeCompositeCorrectionData F f g (n + 1)).homotopy
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (monicKPrismNativeCompositeCorrectionData F f g (n + 1)).homotopy
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
       ((kKanSequence (F.obj z)).level (n + 1)).space)
 
 end SerrePositivity.KST.SConstruction

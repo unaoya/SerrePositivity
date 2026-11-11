@@ -15,7 +15,7 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 元の二つの cell の鎖の tensor を元の連結 cell の鎖へ組み立てる。 -/
-def cubicalSerreDayAssembly {K L : CubicalSet.{u}} (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube)
+def cubicalSerreDayAssembly {K L : CubicalSet.{u}} (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube)
     (x : K.obj (op c)) (y : L.obj (op d)) :
     (serreConcreteCubeComplexFunctor A).obj c ⊗
         (serreConcreteCubeComplexFunctor A).obj d ⟶
@@ -24,7 +24,7 @@ def cubicalSerreDayAssembly {K L : CubicalSet.{u}} (c d : _root_.SerrePositivity
     cubicalSerreCell A (concreteCubeTensorObj c d) (cubicalDayTensorCell c d x y)
 
 /-- 元の両 cell の制限は同じ組み立てと可換。 -/
-lemma cubicalSerreDayAssembly_restrict {K L : CubicalSet.{u}} {c c' d d' : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma cubicalSerreDayAssembly_restrict {K L : CubicalSet.{u}} {c c' d d' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (f : c ⟶ c') (g : d ⟶ d') (x : K.obj (op c')) (y : L.obj (op d')) :
     ((serreConcreteCubeComplexFunctor A).map f ⊗ₘ
         (serreConcreteCubeComplexFunctor A).map g) ≫
@@ -37,7 +37,7 @@ lemma cubicalSerreDayAssembly_restrict {K L : CubicalSet.{u}} {c c' d d' : _root
 
 /-- 元の組み立ての後の比較は、元の両 cell の鎖射の tensor。 -/
 lemma cubicalSerreDayAssembly_comparison {K L : CubicalSet.{u}}
-    (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
+    (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
     cubicalSerreDayAssembly A c d x y ≫ cubicalSerreDayComparison A K L =
       cubicalSerreCell A c x ⊗ₘ cubicalSerreCell A d y := by
   dsimp only [cubicalSerreDayAssembly]
@@ -47,7 +47,7 @@ lemma cubicalSerreDayAssembly_comparison {K L : CubicalSet.{u}}
 
 /-- 元の cotensorator の後の組み立ては、同じ連結 cell の鎖射。 -/
 lemma cubicalSerreDayAssembly_cotensorator {K L : CubicalSet.{u}}
-    (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
+    (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
     Functor.OplaxMonoidal.δ (serreConcreteCubeComplexFunctor A) c d ≫
         cubicalSerreDayAssembly A c d x y =
       cubicalSerreCell A (concreteCubeTensorObj c d) (cubicalDayTensorCell c d x y) := by

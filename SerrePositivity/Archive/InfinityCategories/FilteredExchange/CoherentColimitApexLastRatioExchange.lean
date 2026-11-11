@@ -1,11 +1,11 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitApexLastRawRatio
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoSquareIdentity
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorIsoSquareIdentity
 public import
   SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitRawPointDiagonalRatio
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoInverseRatioExchange
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
 /-!
 概要：元の native 中間像の値と最後辺の比の逆を、同じ中間比較に沿って交換する。
 方針：同じ native 終点を比の終点射で読み、一般の前後合成交換則へ代入する。

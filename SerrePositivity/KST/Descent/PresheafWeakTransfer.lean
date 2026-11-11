@@ -34,7 +34,7 @@ namespace SerrePositivity.KST.Descent
 variable {C : Type u} [Category.{v} C] [HasFiniteLimits C]
   {X Y : C} (g : X ⟶ Y)
   [ModelCategory SSet.{0}]
-  (I J : MorphismProperty SSet.{0}) [ModelGeneration.CofibrantlyGenerated.{0} I J]
+  (I J : MorphismProperty SSet.{0}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{0})]
 
 /-- 概要：各対象で弱同値な合成を持つ元の前層の射は指定降下を戻す（補題 3.2）。

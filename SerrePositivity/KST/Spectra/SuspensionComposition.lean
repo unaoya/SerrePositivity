@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedEnrichment
-public import SerrePositivity.InfinityCategories.Kan.TensorMapping
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorMapping
 
 /-!
 概要：suspension の写像空間への作用の単位と合成。
@@ -28,7 +28,7 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：点つき内部 Hom の射の等式。
 使われ方：BF 1978 §2。写像空間の単位律。 -/
 theorem suspensionHom_id (X : PointedSimplicialSet.{u}) :
-    MonoidalClosed.id X ≫ suspensionHom X X = MonoidalClosed.id (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) := by
+    MonoidalClosed.id X ≫ suspensionHom X X = MonoidalClosed.id (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) := by
   simpa only [MonoidalClosed.curry'_id, MonoidalCategory.whiskerLeft_id] using
     suspensionHom_curry' (𝟙 X)
 
@@ -39,8 +39,8 @@ theorem suspensionHom_id (X : PointedSimplicialSet.{u}) :
 theorem suspensionHom_comp (X Y Z : PointedSimplicialSet.{u}) :
     MonoidalClosed.comp X Y Z ≫ suspensionHom X Z =
       (suspensionHom X Y ⊗ₘ suspensionHom Y Z) ≫
-        MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Z) := by
-  exact _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.comp PointedSimplicialSet.circle.{u} X Y Z
+        MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Z) := by
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorMapping.comp PointedSimplicialSet.circle.{u} X Y Z
 
 local instance : SimplicialCategory PointedSimplicialSet.{u} := PointedEnrichment.simplicialCategory
 
@@ -51,12 +51,12 @@ local instance : SimplicialCategory PointedSimplicialSet.{u} := PointedEnrichmen
 theorem suspensionHom_simplicial_comp (X Y Z : PointedSimplicialSet.{u}) :
     eComp SSet X Y Z ≫ (suspensionHom X Z).right =
       ((suspensionHom X Y).right ⊗ₘ (suspensionHom Y Z).right) ≫
-        eComp SSet (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Z) := by
+        eComp SSet (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Z) := by
   change PointedSimplicialSet.productToSmash _ _ ≫
       (MonoidalClosed.comp X Y Z).right ≫ (suspensionHom X Z).right =
     ((suspensionHom X Y).right ⊗ₘ (suspensionHom Y Z).right) ≫
       PointedSimplicialSet.productToSmash _ _ ≫
-        (MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Z)).right
+        (MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Z)).right
   rw [← Under.comp_right, suspensionHom_comp, Under.comp_right, ← Category.assoc,
     ← PointedSimplicialSet.productToSmash_naturality, Category.assoc]
 
@@ -65,10 +65,10 @@ theorem suspensionHom_simplicial_comp (X Y Z : PointedSimplicialSet.{u}) :
 規約：単位は終対象パラメータの射。
 使われ方：HTT A.3.3、BF 1978 §2。スペクトルの写像空間の単位。 -/
 theorem suspensionHom_simplicial_id (X : PointedSimplicialSet.{u}) :
-    eId SSet X ≫ (suspensionHom X X).right = eId SSet (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) := by
+    eId SSet X ≫ (suspensionHom X X).right = eId SSet (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) := by
   change (PointedSimplicialSet.forgetUnit ≫ (MonoidalClosed.id X).right) ≫
       (suspensionHom X X).right =
-    PointedSimplicialSet.forgetUnit ≫ (MonoidalClosed.id (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)).right
+    PointedSimplicialSet.forgetUnit ≫ (MonoidalClosed.id (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)).right
   rw [Category.assoc, ← Under.comp_right, suspensionHom_id]
 
 /-- 概要：suspension は点つき単体集合の単体的豊穣関手。
@@ -77,7 +77,7 @@ theorem suspensionHom_simplicial_id (X : PointedSimplicialSet.{u}) :
 使われ方：BF 1978 §2、HTT A.3.3。スペクトルの Hom の単体的合成。 -/
 def suspensionEnrichedFunctor :
     EnrichedFunctor SSet.{u} PointedSimplicialSet.{u} PointedSimplicialSet.{u} where
-  obj := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension
+  obj := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension
   map X Y := (suspensionHom X Y).right
   map_id := suspensionHom_simplicial_id
   map_comp := suspensionHom_simplicial_comp

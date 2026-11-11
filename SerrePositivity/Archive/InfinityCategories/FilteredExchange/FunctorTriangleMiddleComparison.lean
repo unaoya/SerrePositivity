@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTriangleMiddleEvaluation
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostLaws
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryIsoPresentation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorPostLaws
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeFunctorCurryIsoPresentation
 
 /-!
 概要：元の全三角形比較の中間像と、同じ第二 native 作用の後合成を元の実頂点で表す。

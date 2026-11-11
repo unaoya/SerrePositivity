@@ -21,17 +21,17 @@ variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 方針：既存の全族等式を同じ区間前合成公式で書き直す。
 規約：全パラメータの射の等式。使われ方：標準単位の全族判定への輸送。 -/
 lemma freeProbeRelativeUnit_forget_family_triangle :
-    constantFunctorHomMap (nerve (freeProbeRelativeElementIndex A X B))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap (nerve (freeProbeRelativeElementIndex A X B))
         (freeProbeRelativeUnitHom A X) ≫
-      intervalFamilyHom (freeProbeRelativeElementPinchedMap A X B ≫
-        pinchedHomMap (cAlgForgetDerived A) _ _ ≫ pinchedHomToIntervalMappingSpace _ _) =
-    intervalFamilyHom (freeProbeRelativeUnitReference A X B ≫
-      pinchedHomToIntervalMappingSpace _ _) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (freeProbeRelativeElementPinchedMap A X B ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap (cAlgForgetDerived A) _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (freeProbeRelativeUnitReference A X B ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _) := by
   have h := freeProbeRelativeUnitIntervalMap_family A X B
   rw [freeProbeRelativeUnitIntervalMap, Category.assoc, ← Category.assoc
-    (pinchedHomToIntervalMappingSpace _ _) (intervalFunctorMap (cAlgForgetDerived A) _ _),
-    ← pinchedHomToIntervalMappingSpace_naturality, ← Category.assoc,
-    intervalPrecompose_family] at h
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap (cAlgForgetDerived A) _ _),
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pinchedHomToIntervalMappingSpace_naturality, ← Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPrecompose_family] at h
   exact h
 
 end SerrePositivity.EInfinity.BarrattEccles

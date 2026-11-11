@@ -42,8 +42,8 @@ lemma weakEquivalence_of_small_covariant_mappingTests
     (SmallHomComparison.targetArrowIso (cosimplicialResolutionFamily cof).obj
       (fibrantTarget fib) (Opposite.op X) f)).mp (hf X)
 
-variable (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
-  (IS JS : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+variable (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
+  (IS JS : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (hw : weakEquivalences SSet.{w} = SimplicialHomotopy.weakEquivalences)
 
 include I J IS JS hcofW hfibW hcofV hfibV hcofM hfibM hw in
@@ -95,7 +95,7 @@ lemma exists_small_presentable_cofibrant_generators :
           (trivialCofibrations C) (fibrations C)) {Y Z : C} (f : Y ⟶ Z),
         weakEquivalences C f ↔ ∀ i, weakEquivalences SSet.{w}
           (((SmallHomComparison.chosenHom cof fib).obj (Opposite.op (G i))).map f) := by
-  have := ModelGeneration.hasFunctorialFactorization_cofibration_trivialFibration I J
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration I J
   obtain ⟨ι, G, hcofG, hdetect⟩ := exists_small_cofibrant_generators
     hcofW hfibW hcofV hfibV hcofM hfibM I J IS JS hw
     (MorphismProperty.functorialFactorizationData (cofibrations C) (trivialFibrations C))

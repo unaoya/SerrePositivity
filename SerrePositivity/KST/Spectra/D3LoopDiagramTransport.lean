@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3PointedKanEndpointLoopDiagram
-public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorEvaluationLifting
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullSubcomplexEquivalenceLifting
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PathCorrectedFunctorSquare
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorEvaluationLifting
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FullSubcomplexEquivalenceLifting
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.PathCorrectedFunctorSquare
 
 /-!
 概要：実 loop 全図式の終点の指定同型を、全図式を保持したまま厳密化するための持ち上げ。
@@ -26,18 +26,18 @@ namespace SerrePositivity.KST.Spectra
 /-- 同じ実全四角形の同型は、両零角と引き戻し性を同時に保つ。 -/
 lemma d3IsLoopDiagramVertex_iso {X : SSet.{u}} [Quasicategory X]
     {v w : ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X) _⦋0⦌}
-    (e : VertexIso v w) : IsLoopDiagramVertex v ↔ IsLoopDiagramVertex w := by
-  obtain ⟨F, rfl⟩ := (functorVertexEquiv ((Δ[1] : SSet.{u}) ⊗ Δ[1]) X).surjective v
-  obtain ⟨G, rfl⟩ := (functorVertexEquiv ((Δ[1] : SSet.{u}) ⊗ Δ[1]) X).surjective w
-  change FunctorIso F G at e
-  have ev (i j : Fin 2) : VertexIso (squareVertex F i j) (squareVertex G i j) := by
-    have h := VertexIso.map e (evaluateFunctorAt
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso v w) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex v ↔ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex w := by
+  obtain ⟨F, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv ((Δ[1] : SSet.{u}) ⊗ Δ[1]) X).surjective v
+  obtain ⟨G, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv ((Δ[1] : SSet.{u}) ⊗ Δ[1]) X).surjective w
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G at e
+  have ev (i j : Fin 2) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F i j) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex G i j) := by
+    have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j))
-    change VertexIso ((evaluateFunctorAt _).app _ (functorVertex F))
-      ((evaluateFunctorAt _).app _ (functorVertex G)) at h
-    rw [evaluateFunctorAt_functorVertex, evaluateFunctorAt_functorVertex] at h
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex G)) at h
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex] at h
     exact h
-  simp only [IsLoopDiagramVertex]
+  simp only [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex]
   constructor
   · rintro ⟨h₀, h₁, hp⟩
     exact ⟨h₀.of_vertexIso (ev 0 1), h₁.of_vertexIso (ev 1 0), hp.of_functorIso e⟩
@@ -47,18 +47,18 @@ lemma d3IsLoopDiagramVertex_iso {X : SSet.{u}} [Quasicategory X]
 
 /-- 実 loop 図式の終点評価は、指定された同値を全パラメータで持ち上げる。 -/
 lemma d3LoopDiagramEvaluation_equivalenceLifting (X : SSet.{u}) [Quasicategory X] :
-    F1B.EquivalenceLifting (loopDiagramEvaluation X 1 1) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.EquivalenceLifting (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation X 1 1) := by
   intro A B i hi hE
   have : HasLiftingProperty i
-      (fullSubcomplexOnVertices ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X)
-        IsLoopDiagramVertex).ι := kanEquivalenceLifting_fullSubcomplexOnVertices_ι
-    IsLoopDiagramVertex (fun e ↦ d3IsLoopDiagramVertex_iso e) i hi hE
-  have : HasLiftingProperty i (evaluateFunctorAt (X := ((Δ[1] : SSet.{u}) ⊗ Δ[1])) (Y := X)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X)
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.kanEquivalenceLifting_fullSubcomplexOnVertices_ι
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex (fun e ↦ d3IsLoopDiagramVertex_iso e) i hi hE
+  have : HasLiftingProperty i (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (X := ((Δ[1] : SSet.{u}) ⊗ Δ[1])) (Y := X)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :=
-    kanEquivalenceLifting_evaluateFunctorAt (B := ((Δ[1] : SSet.{u}) ⊗ Δ[1])) (X := X)
+    _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.kanEquivalenceLifting_evaluateFunctorAt (B := ((Δ[1] : SSet.{u}) ⊗ Δ[1])) (X := X)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2)) i hi hE
-  change HasLiftingProperty i ((fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι ≫
-    evaluateFunctorAt _)
+  change HasLiftingProperty i ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _)
   infer_instance
 
 end SerrePositivity.KST.Spectra

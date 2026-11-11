@@ -92,7 +92,7 @@ lemma transferCompositionHomotopy_right_id {b c : Cᵒᵖ × C}
 
 def smallTransferArrow {b c : Cᵒᵖ × C}
     (a : ambient hcof hfib b ⟶ ambient hcof hfib c) : small hcof hfib b ⟶ small hcof hfib c :=
-  UniverseLift.lower (transferArrow hcof hfib a)
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower (transferArrow hcof hfib a)
 
 lemma smallTransferArrow_id (b : Cᵒᵖ × C) :
     smallTransferArrow hcof hfib (𝟙 (ambient hcof hfib b)) = 𝟙 (small hcof hfib b) := by
@@ -111,25 +111,25 @@ lemma smallTransferCompositionHomotopy_left_id {b c : Cᵒᵖ × C}
     (smallTransferCompositionHomotopy hcof hfib (𝟙 _) a).h =
       fst (small hcof hfib b) (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫
         smallTransferArrow hcof hfib a := by
-  change UniverseLift.lowerSimplexTensor
+  change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor
     (transferCompositionHomotopy hcof hfib (𝟙 _) a).h = _
   rw [transferCompositionHomotopy_left_id]
-  change UniverseLift.lowerSimplexTensor
-    (fst _ _ ≫ UniverseLift.map (smallTransferArrow hcof hfib a)) = _
-  rw [← UniverseLift.simplexTensorMap_constant,
-    UniverseLift.lowerSimplexTensor_simplexTensorMap]
+  change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor
+    (fst _ _ ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map (smallTransferArrow hcof hfib a)) = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_constant,
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor_simplexTensorMap]
 
 lemma smallTransferCompositionHomotopy_right_id {b c : Cᵒᵖ × C}
     (a : ambient hcof hfib b ⟶ ambient hcof hfib c) :
     (smallTransferCompositionHomotopy hcof hfib a (𝟙 _)).h =
       fst (small hcof hfib b) (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫
         smallTransferArrow hcof hfib a := by
-  change UniverseLift.lowerSimplexTensor
+  change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor
     (transferCompositionHomotopy hcof hfib a (𝟙 _)).h = _
   rw [transferCompositionHomotopy_right_id]
-  change UniverseLift.lowerSimplexTensor
-    (fst _ _ ≫ UniverseLift.map (smallTransferArrow hcof hfib a)) = _
-  rw [← UniverseLift.simplexTensorMap_constant,
-    UniverseLift.lowerSimplexTensor_simplexTensorMap]
+  change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor
+    (fst _ _ ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map (smallTransferArrow hcof hfib a)) = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_constant,
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor_simplexTensorMap]
 
 end SerrePositivity.HomotopyFunctionComplex.OrdinaryBarRetractSystem

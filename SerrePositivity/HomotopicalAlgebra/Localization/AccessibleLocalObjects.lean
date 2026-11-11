@@ -22,7 +22,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
 
 lemma exists_accessible_localObjects
-    (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+    (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
     (hcofW : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
     (hfibW : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
     (hcofV : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)

@@ -17,7 +17,7 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 namespace SerrePositivity.DiagramModel.HomotopyColimit
 variable {K : Type w} [LinearOrder K] [OrderBot K] [SuccOrder K] [WellFoundedLT K]
   {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 lemma comparison_weakEquivalence_of_continuous (D : K ⥤ C) [D.IsWellOrderContinuous]
     (hbot : IsCofibrant (D.obj ⊥))

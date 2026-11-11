@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.AdjointRightDerived
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AdjointRightDerived
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimitAdjunctionNormalization
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimitNaturality
 
@@ -49,7 +49,7 @@ lemma framedLimitDerivedComparison_eq :
     let := BarrattEccles.CarrierDiagram.projectiveModelCategory A K
     let Q := (weakEquivalences (Complex A)).Q
     let QD := (weakEquivalences (K ⥤ (Complex A))).Q
-    FrameHom.AdjointRightDerived.comparison (constLimAdj (J := K)) Q
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AdjointRightDerived.comparison (constLimAdj (J := K)) Q
       (weakEquivalences (Complex A)) QD (framedLimitAdjunction A K)
         (localizedConstantDiagramComparison A K) = framedLimitDerivedComparison A K := by
   let := projectiveModelCategory A
@@ -58,7 +58,7 @@ lemma framedLimitDerivedComparison_eq :
   let QD := (weakEquivalences (K ⥤ (Complex A))).Q
   apply NatTrans.ext
   funext F
-  rw [FrameHom.AdjointRightDerived.comparison_app]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AdjointRightDerived.comparison_app]
   change (framedLimitAdjunction A K).homEquiv (Q.obj (limit F)) (QD.obj F)
       ((localizedConstantDiagramComparison A K).hom.app (limit F) ≫ QD.map (limit.cone F).π) =
     Q.map (limitComparison A K F) ≫ (localizedFramedLimitComparison A K).inv.app F
@@ -79,7 +79,7 @@ lemma localizedFramedLimit_isRightDerivedFunctor :
   let := projectiveModelCategory A
   let := BarrattEccles.CarrierDiagram.projectiveModelCategory A K
   rw [← framedLimitDerivedComparison_eq A K]
-  exact FrameHom.AdjointRightDerived.isRightDerivedFunctor _ _ _ _ _ _ _
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AdjointRightDerived.isRightDerivedFunctor _ _ _ _ _ _ _
 
 /-- 概要：通常の小極限の右導来関手が存在する（Hovey §5.4）。
 方針：実際の局所化計算関手と元の比較の普遍性を使う。

@@ -22,7 +22,7 @@ variable {J : Type u} [LinearOrder J] {a b c d : J}
 
 /-- 両方の指定切断点を通る、元の全 Path 族の共通合成面。 -/
 def coherentDoubleCutBoundary (a b c d : J) : (nerve (Path a c)).Subcomplex :=
-  Coherent.pathThrough b ⊓ Coherent.pathThrough d
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough b ⊓ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough d
 
 /-- 共通合成面では、第一の切断円柱は全時刻で元の豊穣作用を保つ。 -/
 lemma coherentDoubleCutHomotopy_left_relative
@@ -34,7 +34,7 @@ lemma coherentDoubleCutHomotopy_left_relative
         (coherentDoubleCutBoundary a b c d).ι ≫ s.map (.mk a) (.mk c) := by
   have h := fixedHomotopySpanBoundary_precomp
     (SSet.Subcomplex.homOfLE (show coherentDoubleCutBoundary a b c d ≤
-      Coherent.pathThrough b from inf_le_left)) (Coherent.pathThrough b).ι
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough b from inf_le_left)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough b).ι
     (coherentPathMappingCutHomotopy s hab hbc)
     (coherentPathMappingCutHomotopy_relative s hab hbc)
   simpa only [SSet.Subcomplex.homOfLE_ι] using h
@@ -49,7 +49,7 @@ lemma coherentDoubleCutHomotopy_right_relative
         (coherentDoubleCutBoundary a b c d).ι ≫ s.map (.mk a) (.mk c) := by
   have h := fixedHomotopySpanBoundary_precomp
     (SSet.Subcomplex.homOfLE (show coherentDoubleCutBoundary a b c d ≤
-      Coherent.pathThrough d from inf_le_right)) (Coherent.pathThrough d).ι
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough d from inf_le_right)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough d).ι
     (coherentPathMappingCutHomotopy s had hdc)
     (coherentPathMappingCutHomotopy_relative s had hdc)
   simpa only [SSet.Subcomplex.homOfLE_ι] using h

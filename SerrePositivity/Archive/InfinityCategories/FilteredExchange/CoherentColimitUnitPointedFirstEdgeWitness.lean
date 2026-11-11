@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitUnitPointedFirstEdge
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.UnstraighteningFamilyOfPrism
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitUnitPointedZeroFaceComparison
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.HomotopyTriangleEdges
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.HomotopyTriangleEdges
 
 /-!
 概要：第零面の可変初期値を、第一辺の元の指定変換に対する実現証拠へ接続する。

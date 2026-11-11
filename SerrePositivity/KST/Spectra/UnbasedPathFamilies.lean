@@ -30,7 +30,7 @@ def mapVertex {A : SSet.{u}} (Y : PointedSimplicialSet.{u}) (f : A ⟶ Y.right) 
 def pathFamilyEdge {A : SSet.{u}} (Y : PointedSimplicialSet.{u})
     (H : A ⟶ (basedPathSpace Y).right) : (Δ[1] : SSet.{u}) ⟶ (obj A Y).right :=
   curry ((β_ A (Δ[1] : SSet.{u})).hom ≫
-    uncurry (H ≫ PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y))
+    uncurry (H ≫ PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y))
 
 /-- path の族の辺の頂点一は終点の族。 -/
 lemma pathFamilyEdge_face_zero {A : SSet.{u}} (Y : PointedSimplicialSet.{u})
@@ -39,10 +39,10 @@ lemma pathFamilyEdge_face_zero {A : SSet.{u}} (Y : PointedSimplicialSet.{u})
       yonedaEquiv.symm (mapVertex Y (H ≫ (pathEndpoint Y).right)) := by
   have he : H ≫ (pathEndpoint Y).right =
       (λ_ A).inv ≫ KanPath.endpoint 1 ▷ A ≫
-        uncurry (H ≫ PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y) := by
+        uncurry (H ≫ PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y) := by
     rw [Comparison.basedPathEndpoint_evaluation, ← Category.assoc]
     have hh := KanPath.curry_evaluation
-      (uncurry (H ≫ PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y)) (1 : Fin 2)
+      (uncurry (H ≫ PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y)) (1 : Fin 2)
     rw [curry_uncurry] at hh
     exact hh
   have hp : A ◁ stdSimplex.δ (0 : Fin 2) ≫ (β_ A (Δ[1] : SSet.{u})).hom =
@@ -51,7 +51,7 @@ lemma pathFamilyEdge_face_zero {A : SSet.{u}} (Y : PointedSimplicialSet.{u})
     rfl
   rw [pathFamilyEdge, mapVertex, Equiv.symm_apply_apply, ← curry_natural_left, he]
   have hh := congrArg (fun t ↦ curry
-    (t ≫ uncurry (H ≫ PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y))) hp
+    (t ≫ uncurry (H ≫ PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y))) hp
   simp only [Category.assoc] at hh ⊢
   exact hh
 
@@ -60,7 +60,7 @@ lemma pathFamilyEdge_face_one {A : SSet.{u}} (Y : PointedSimplicialSet.{u})
     (H : A ⟶ (basedPathSpace Y).right) :
     stdSimplex.δ (1 : Fin 2) ≫ pathFamilyEdge Y H = SSet.const (obj A Y).basepoint := by
   have hp : A ◁ stdSimplex.δ (1 : Fin 2) ≫ (β_ A (Δ[1] : SSet.{u})).hom =
-      fst A (Δ[0] : SSet.{u}) ≫ (λ_ A).inv ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.hom ▷ A := by
+      fst A (Δ[0] : SSet.{u}) ≫ (λ_ A).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval.hom ▷ A := by
     rw [stdSimplex.δ_one_eq_const]
     rfl
   rw [pathFamilyEdge, ← curry_natural_left]
@@ -68,7 +68,7 @@ lemma pathFamilyEdge_face_one {A : SSet.{u}} (Y : PointedSimplicialSet.{u})
   rw [uncurry_curry, uncurry_constant_basepoint]
   rw [← Category.assoc, hp]
   simp only [Category.assoc]
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint]
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.uncurry_basepoint]
   simp only [comp_toUnit_assoc]
 
 /-- path の族の転置は源への制限と可換。 -/
@@ -82,7 +82,7 @@ lemma pathFamilyEdge_pre {A B : SSet.{u}} (i : A ⟶ B) (Y : PointedSimplicialSe
   rw [← Category.assoc, BraidedCategory.braiding_naturality_left]
   simp only [Category.assoc]
   exact congrArg (fun t ↦ (β_ A (Δ[1] : SSet.{u})).hom ≫ t)
-    (uncurry_natural_left i (H ≫ PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y)).symm
+    (uncurry_natural_left i (H ≫ PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y)).symm
 
 end
 end SerrePositivity.KST.Spectra.UnbasedPointedMapping

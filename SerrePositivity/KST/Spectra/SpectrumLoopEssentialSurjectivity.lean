@@ -24,14 +24,14 @@ local instance loopSurjHomKan (X Y : OmegaSpectrum.{u}) :
 
 /-- 関手として選んだ一段先の loop の値と元のスペクトルの具体的な同型。 -/
 def nativeLoopTailVertexIso (X : OmegaSpectrum.{u}) :
-    VertexIso (nativeLoop.app (Opposite.op ⦋0⦌) (coherentNerveVertex (tail X)))
-      (coherentNerveVertex X) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (nativeLoop.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (tail X)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) :=
   nativeLoopVertexIso (BasedLoop.square (tail X)) ≪≫ (deloopingVertexIso X).symm
 
 /-- 元の Sp の native loop 関手は本質的全射。 -/
-lemma nativeLoop_essentiallySurjective : IsEssentiallySurjective nativeLoop.{u} := by
+lemma nativeLoop_essentiallySurjective : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective nativeLoop.{u} := by
   intro x
-  obtain ⟨X, rfl⟩ := (coherentNerveVertexEquiv OmegaSpectrum.{u}).surjective x
-  exact ⟨coherentNerveVertex (tail X), ⟨nativeLoopTailVertexIso X⟩⟩
+  obtain ⟨X, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertexEquiv OmegaSpectrum.{u}).surjective x
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (tail X), ⟨nativeLoopTailVertexIso X⟩⟩
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

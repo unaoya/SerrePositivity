@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTransportNaturality
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.ArrowTransportNaturality
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport
 
 /-!

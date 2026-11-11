@@ -16,7 +16,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の右ブロックの恒等射について連結比較は自然。 -/
 lemma serreCubeRightBlockNatural_id (n m : ℕ) :
-    SerreCubeRightBlockNatural A n (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m)) := by
+    SerreCubeRightBlockNatural A n (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m)) := by
   dsimp only [SerreCubeRightBlockNatural]
   erw [concreteCubeRightBlockHom_id, serreConcreteCubeMap_id A,
     serreConcreteCubeMap_id A, serreCubeTensorHom_id]
@@ -24,7 +24,7 @@ lemma serreCubeRightBlockNatural_id (n m : ℕ) :
 
 /-- 元の二つの右ブロックの自然性は、その元の合成でも成り立つ。 -/
 lemma serreCubeRightBlockNatural_comp (n : ℕ) {m k l : ℕ}
-    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k) (g : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk l)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk k) (g : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk k ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk l)
     (hf : SerreCubeRightBlockNatural A n f) (hg : SerreCubeRightBlockNatural A n g) :
     SerreCubeRightBlockNatural A n (f ≫ g) := by
   dsimp only [SerreCubeRightBlockNatural] at hf hg ⊢
@@ -37,7 +37,7 @@ lemma serreCubeRightBlockNatural_comp (n : ℕ) {m k l : ℕ}
 
 /-- 元の右ブロックの零面について連結比較は自然。 -/
 lemma serreCubeRightBlockNatural_face_zero (n m : ℕ) (b : Bool) :
-    SerreCubeRightBlockNatural A n (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b m 0) := by
+    SerreCubeRightBlockNatural A n (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace b m 0) := by
   dsimp only [SerreCubeRightBlockNatural]
   erw [concreteCubeRightBlockHom_face_zero, serreConcreteCubeMap_face A b (n + m) 0,
     serreConcreteCubeMap_face A b m 0]
@@ -45,7 +45,7 @@ lemma serreCubeRightBlockNatural_face_zero (n m : ℕ) (b : Bool) :
 
 /-- 元の右ブロックの零削除について連結比較は自然。 -/
 lemma serreCubeRightBlockNatural_degeneracy_zero (n m : ℕ) :
-    SerreCubeRightBlockNatural A n (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy m 0) := by
+    SerreCubeRightBlockNatural A n (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeDegeneracy m 0) := by
   dsimp only [SerreCubeRightBlockNatural]
   erw [concreteCubeRightBlockHom_degeneracy_zero, serreConcreteCubeMap_degeneracy A (n + m) 0,
     serreConcreteCubeMap_degeneracy A m 0]
@@ -53,14 +53,14 @@ lemma serreCubeRightBlockNatural_degeneracy_zero (n m : ℕ) :
 
 /-- 元の右ブロックの零 max について連結比較は自然。 -/
 lemma serreCubeRightBlockNatural_connection_zero (n m : ℕ) :
-    SerreCubeRightBlockNatural A n (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection m 0) := by
+    SerreCubeRightBlockNatural A n (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeConnection m 0) := by
   have hb : serreConcreteCubeMap A
-      (concreteCubeRightBlockHom n (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection m 0)) =
+      (concreteCubeRightBlockHom n (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeConnection m 0)) =
         serreCubeConnection A (n + m) 0 := by
     rw [concreteCubeRightBlockHom_connection_zero n m]
     exact serreConcreteCubeMap_connection A (n + m) 0
   exact serreCubeRightBlockNatural_of_evaluations A n (m := m + 2) (k := m + 1)
-    (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection m 0) (serreCubeConnection A (n + m) 0) (serreCubeConnection A m 0)
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeConnection m 0) (serreCubeConnection A (n + m) 0) (serreCubeConnection A m 0)
     hb (serreConcreteCubeMap_connection A m 0) (serreCubeTensor_rightConnection_zero A n m)
 
 end SerrePositivity.KST.SConstruction

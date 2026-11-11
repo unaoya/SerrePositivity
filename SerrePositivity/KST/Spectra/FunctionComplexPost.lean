@@ -27,12 +27,12 @@ set_option backward.isDefEq.respectTransparency.types false
 方針：各座標の評価と係数射の合成を関数複体へ持ち上げる。
 規約：添字集合は任意。
 使われ方：Goerss–Jardine VIII §1。セルごとの係数の射。 -/
-def post (S : Type u) {X Y : SSet.{u}} (f : X ⟶ Y) : _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X ⟶ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S Y :=
-  _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift (fun s ↦ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S X s ≫ f)
+def post (S : Type u) {X Y : SSet.{u}} (f : X ⟶ Y) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.obj S X ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.obj S Y :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.lift (fun s ↦ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval S X s ≫ f)
 
 @[reassoc (attr := simp)]
 lemma post_eval (S : Type u) {X Y : SSet.{u}} (f : X ⟶ Y) (s : S) :
-    post S f ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S Y s = _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S X s ≫ f := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval _ _
+    post S f ≫ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval S Y s = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval S X s ≫ f := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.lift_eval _ _
 
 /-- 概要：係数の後合成は定数の基点の関数を保つ。
 方針：各評価で元の点つき射の基点保存を使う。
@@ -41,10 +41,10 @@ lemma post_eval (S : Type u) {X Y : SSet.{u}} (f : X ⟶ Y) (s : S) :
 def pointedPost (S : Type u) {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
     pointedObj S X ⟶ pointedObj S Y :=
   Under.homMk (post S f.right) (by
-    change _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift (fun (_ : S) ↦ X.hom) ≫ post S f.right = _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift (fun (_ : S) ↦ Y.hom)
-    apply _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext
+    change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.lift (fun (_ : S) ↦ X.hom) ≫ post S f.right = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.lift (fun (_ : S) ↦ Y.hom)
+    apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.hom_ext
     intro s
-    rw [Category.assoc, post_eval, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval]
+    rw [Category.assoc, post_eval, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.lift_eval, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.lift_eval]
     exact Under.w f)
 
 /-- 概要：関数複体の各座標の評価は点つき射。
@@ -52,7 +52,7 @@ def pointedPost (S : Type u) {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
 規約：源と係数の Kan 性は不要。
 使われ方：Goerss–Jardine VIII §1。群の座標表示の比較。 -/
 def pointedEval (S : Type u) (X : PointedSimplicialSet.{u}) (s : S) :
-    pointedObj S X ⟶ X := Under.homMk (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S X.right s) (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval _ s)
+    pointedObj S X ⟶ X := Under.homMk (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval S X.right s) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.lift_eval _ s)
 
 @[reassoc (attr := simp)]
 lemma pointedPost_eval (S : Type u) {X Y : PointedSimplicialSet.{u}}
@@ -63,7 +63,7 @@ lemma pointedPost_eval (S : Type u) {X Y : PointedSimplicialSet.{u}}
 
 lemma pointedHomotopyEquiv_eval (S : Type u) (X : PointedSimplicialSet.{u})
     [KanComplex X.right] (r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedObj S X).right r (pointedObj S X).basepoint) (s : S) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedObj S X).right r (pointedObj S X).basepoint) (s : S) :
     pointedHomotopyEquiv S X r a s = pointedGroupMap r (pointedEval S X s) a := rfl
 
 /-- 概要：関数複体の群の座標表示は係数射に自然。
@@ -72,7 +72,7 @@ lemma pointedHomotopyEquiv_eval (S : Type u) (X : PointedSimplicialSet.{u})
 使われ方：Goerss–Jardine VIII §1。セルの群の係数表示の自然性。 -/
 theorem pointedHomotopyEquiv_natural (S : Type u) {X Y : PointedSimplicialSet.{u}}
     [KanComplex X.right] [KanComplex Y.right] (f : X ⟶ Y) (r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedObj S X).right r (pointedObj S X).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedObj S X).right r (pointedObj S X).basepoint) :
     pointedHomotopyEquiv S Y r (pointedGroupMap r (pointedPost S f) a) =
       fun s ↦ pointedGroupMap r f (pointedHomotopyEquiv S X r a s) := by
   funext s

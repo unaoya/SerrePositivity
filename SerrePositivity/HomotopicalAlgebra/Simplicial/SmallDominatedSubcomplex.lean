@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.SmallActionClosure
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 
 /-!
@@ -45,14 +45,14 @@ variable {X K : SSet.{w}} (s : K ⟶ X) (q : X ⟶ K)
   (H : SSet.Homotopy (𝟙 X) (q ≫ s)) (A : X.Subcomplex)
 
 abbrev complex : X.Subcomplex :=
-  SmallParameterClosure.closure H.h (A ⊔ Subfunctor.range s)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure.closure H.h (A ⊔ Subfunctor.range s)
 
 lemma seed_le : A ≤ complex s q H A :=
-  le_sup_left.trans (SmallParameterClosure.le_closure H.h _)
+  le_sup_left.trans (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure.le_closure H.h _)
 
 def inside : K ⟶ (complex s q H A).toSSet :=
   Subfunctor.lift s (le_sup_right.trans
-    (SmallParameterClosure.le_closure H.h (A ⊔ Subfunctor.range s)))
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure.le_closure H.h (A ⊔ Subfunctor.range s)))
 
 lemma inside_inclusion : inside s q H A ≫ (complex s q H A).ι = s := rfl
 
@@ -63,9 +63,9 @@ lemma retraction_inclusion : retraction s q H A ≫ (complex s q H A).ι = q ≫
 
 include H in
 lemma small (hK : ∀ n, Small.{v} (K.obj n))
-    (hA : SmallParameterClosure.IsSmall.{v} A) :
-    SmallParameterClosure.IsSmall.{v} (complex s q H A) := by
-  apply SmallParameterClosure.closure_small
+    (hA : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure.IsSmall.{v} A) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure.IsSmall.{v} (complex s q H A) := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure.closure_small
   · intro n
     infer_instance
   · intro n
@@ -78,7 +78,7 @@ lemma small (hK : ∀ n, Small.{v} (K.obj n))
 def restrictedHomotopy : SSet.Homotopy (𝟙 (complex s q H A).toSSet)
     ((complex s q H A).ι ≫ retraction s q H A) where
   h := Subfunctor.lift ((complex s q H A).ι ▷ _ ≫ H.h)
-    (SmallParameterClosure.closed H.h (A ⊔ Subfunctor.range s))
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure.closed H.h (A ⊔ Subfunctor.range s))
   h₀ := by
     apply NatTrans.ext
     funext n

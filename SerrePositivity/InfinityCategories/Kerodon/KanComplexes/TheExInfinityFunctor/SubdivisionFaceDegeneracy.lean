@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：和を保つ写像を singleton 上で比較し、追加する初期区間の像を照合する。
 規約：Moss 2020 Lemma 26 (3)。
 使われ方：pairing の対応先の後ろの面が再び拡張の像となること。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

@@ -20,7 +20,7 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (zd : D) (hd : IsZero (ForgetEnrichment.of (Complex R) zd))
 
 /-- 元の対象に、その同じ右成分の実右軸から入る閉射。 -/
-def dgGluingAxisRightInclusion (X : DGGluingObject R C D M) :
+def dgGluingAxisRightInclusion (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
     ForgetEnrichment.of (Complex R) (dgGluingRightAxisObject R C D M zc X.right) ⟶
       ForgetEnrichment.of (Complex R) X :=
   ForgetEnrichment.homOf (Complex R)
@@ -29,7 +29,7 @@ def dgGluingAxisRightInclusion (X : DGGluingObject R C D M) :
       (𝟙_ (Complex R)) 0 (eId (Complex R) X.right))
 
 /-- 元の対象から、その同じ左成分の実左軸へ出る閉射。 -/
-def dgGluingAxisLeftProjection (X : DGGluingObject R C D M) :
+def dgGluingAxisLeftProjection (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
     ForgetEnrichment.of (Complex R) X ⟶
       ForgetEnrichment.of (Complex R) (dgGluingLeftAxisObject R C D M zd X.left) :=
   ForgetEnrichment.homOf (Complex R)
@@ -38,23 +38,23 @@ def dgGluingAxisLeftProjection (X : DGGluingObject R C D M) :
       (𝟙_ (Complex R)) (eId (Complex R) X.left) 0)
 
 /-- 同じ右軸からの射の右成分は、元の恒等射。 -/
-lemma dgGluingAxisRightInclusion_right (X : DGGluingObject R C D M) :
-    (dgGluingRight R C D M).onClosed.map
+lemma dgGluingAxisRightInclusion_right (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D M).onClosed.map
       (dgGluingAxisRightInclusion R C D M zc hc X) = 𝟙 (ForgetEnrichment.of (Complex R) X.right) :=
   (congrArg (ForgetEnrichment.homOf (Complex R))
     ((congrArg (fun k => dgGluingZeroComparisonLift R C D M
       (dgGluingRightAxisObject R C D M zc X.right) X
         (dgBimoduleClosedZeroLeft_value R C D M zc hc X.right)
       (𝟙_ (Complex R)) 0 (eId (Complex R) X.right) ≫ k)
-      (dgGluingRight_map R C D M (dgGluingRightAxisObject R C D M zc X.right) X)).trans
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight_map R C D M (dgGluingRightAxisObject R C D M zc X.right) X)).trans
         (dgGluingZeroComparisonLift_right R C D M
       (dgGluingRightAxisObject R C D M zc X.right) X
         (dgBimoduleClosedZeroLeft_value R C D M zc hc X.right)
       (𝟙_ (Complex R)) 0 (eId (Complex R) X.right)))).trans (by rfl)
 
 /-- 同じ右軸からの射の左成分は、元の零射。 -/
-lemma dgGluingAxisRightInclusion_left (X : DGGluingObject R C D M) :
-    (dgGluingLeft R C D M).onClosed.map
+lemma dgGluingAxisRightInclusion_left (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D M).onClosed.map
       (dgGluingAxisRightInclusion R C D M zc hc X) = 0 :=
   (congrArg (ForgetEnrichment.homOf (Complex R))
     (dgGluingZeroComparisonLift_left R C D M
@@ -63,8 +63,8 @@ lemma dgGluingAxisRightInclusion_left (X : DGGluingObject R C D M) :
       (𝟙_ (Complex R)) 0 (eId (Complex R) X.right))).trans (by rfl)
 
 /-- 同じ左軸への射の左成分は、元の恒等射。 -/
-lemma dgGluingAxisLeftProjection_left (X : DGGluingObject R C D M) :
-    (dgGluingLeft R C D M).onClosed.map
+lemma dgGluingAxisLeftProjection_left (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D M).onClosed.map
       (dgGluingAxisLeftProjection R C D M zd hd X) = 𝟙 (ForgetEnrichment.of (Complex R) X.left) :=
   (congrArg (ForgetEnrichment.homOf (Complex R))
     (dgGluingZeroComparisonLift_left R C D M
@@ -73,15 +73,15 @@ lemma dgGluingAxisLeftProjection_left (X : DGGluingObject R C D M) :
       (𝟙_ (Complex R)) (eId (Complex R) X.left) 0)).trans (by rfl)
 
 /-- 同じ左軸への射の右成分は、元の零射。 -/
-lemma dgGluingAxisLeftProjection_right (X : DGGluingObject R C D M) :
-    (dgGluingRight R C D M).onClosed.map
+lemma dgGluingAxisLeftProjection_right (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D M).onClosed.map
       (dgGluingAxisLeftProjection R C D M zd hd X) = 0 :=
   (congrArg (ForgetEnrichment.homOf (Complex R))
     ((congrArg (fun k => dgGluingZeroComparisonLift R C D M
       X (dgGluingLeftAxisObject R C D M zd X.left)
         (dgBimoduleClosedZeroRight_value R C D M zd hd X.left)
       (𝟙_ (Complex R)) (eId (Complex R) X.left) 0 ≫ k)
-      (dgGluingRight_map R C D M X (dgGluingLeftAxisObject R C D M zd X.left))).trans
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight_map R C D M X (dgGluingLeftAxisObject R C D M zd X.left))).trans
         (dgGluingZeroComparisonLift_right R C D M
       X (dgGluingLeftAxisObject R C D M zd X.left)
         (dgBimoduleClosedZeroRight_value R C D M zd hd X.left)

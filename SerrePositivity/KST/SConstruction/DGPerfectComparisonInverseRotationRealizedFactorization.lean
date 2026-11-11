@@ -53,10 +53,10 @@ lemma dgPerfectComparisonInverseRotationPerfectRealizedFamily_factorization :
 方針：元 dg 関手等号と native nerve の厳密合成則を使用する。
 規約：元全関手の等号。使われ方：元実合成の評価と二段全比較の正規化。 -/
 lemma dgPerfectComparisonInverseRotationPerfectRealizedFamily_native_factorization :
-    dgNerve.map (dgPerfectComparisonInverseRotationPerfectRealizedFamily R E F G τ) =
-      (((dgNerve.map (dgPerfectComparisonInverseRotationFunctor R E F G τ) ≫
-        dgNerve.map (δ)) ≫ dgNerve.map (iD)) ≫ dgNerve.map (VP1)) ≫ dgNerve.map (VP2) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectComparisonInverseRotationPerfectRealizedFamily R E F G τ) =
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectComparisonInverseRotationFunctor R E F G τ) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (δ)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (iD)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (VP1)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (VP2) := by
   rw [dgPerfectComparisonInverseRotationPerfectRealizedFamily_factorization,
-    dgNerve.map_comp, dgNerve.map_comp, dgNerve.map_comp, dgNerve.map_comp]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp]
 
 end SerrePositivity.KST.SConstruction

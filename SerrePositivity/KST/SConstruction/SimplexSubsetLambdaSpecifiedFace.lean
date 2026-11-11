@@ -16,18 +16,18 @@ open CategoryTheory
 open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 variable {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-  (hmin : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
-  (hmax : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+  (hmin : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j)
+  (hmax : j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
 
 /-- 元の同端点の部分集合生成射の零面は、濃度次元で同じ削除生成射を回収する。 -/
 lemma simplexSubsetLambdaCellAt_zero_face :
     serreCubeChainFace A false ((I.erase j).card - 2) (I.card - 2)
         (simplexSubsetErase_normalized_codimension I hI j hj hmin hmax).symm
         (simplexSubsetEraseNormalizedCoordinate I hI j hj hmin hmax) ≫
-      simplexSubsetLambdaCellAt A I (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-        (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) hI rfl rfl =
-    simplexSubsetLambdaCellAt A (I.erase j) (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-      (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (simplexSubsetErase_two I hI j hmin hmax)
+      simplexSubsetLambdaCellAt A I (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+        (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) hI rfl rfl =
+    simplexSubsetLambdaCellAt A (I.erase j) (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+      (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (simplexSubsetErase_two I hI j hmin hmax)
       (simplexSubsetErase_min I hI j hmin hmax).symm
       (simplexSubsetErase_max I hI j hmin hmax).symm := by
   have h := simplexSubsetLambdaErase_zero_face I hI j hj hmin hmax A
@@ -46,10 +46,10 @@ lemma simplexSubsetLambdaCellAtDimension_zero_face (p q : ℕ)
     (hp : p = (I.erase j).card - 2) (hq : q = I.card - 2) (hc : p + 1 = q) :
     serreCubeChainFace A false p q hc
         (Fin.cast hq.symm (simplexSubsetEraseNormalizedCoordinate I hI j hj hmin hmax)) ≫
-      simplexSubsetLambdaCellAtDimension A I (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-        (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) hI rfl rfl q hq =
-    simplexSubsetLambdaCellAtDimension A (I.erase j) (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-      (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (simplexSubsetErase_two I hI j hmin hmax)
+      simplexSubsetLambdaCellAtDimension A I (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+        (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) hI rfl rfl q hq =
+    simplexSubsetLambdaCellAtDimension A (I.erase j) (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+      (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (simplexSubsetErase_two I hI j hmin hmax)
       (simplexSubsetErase_min I hI j hmin hmax).symm
       (simplexSubsetErase_max I hI j hmin hmax).symm p hp := by
   unfold simplexSubsetLambdaCellAtDimension
@@ -59,8 +59,8 @@ lemma simplexSubsetLambdaCellAtDimension_zero_face (p q : ℕ)
 
 /-- 元の零面の式は、元の同じ端点を明示した指定次元の生成射でも厳密に成り立つ。 -/
 lemma simplexSubsetLambdaCellAtDimension_zero_face_at (a b : Fin (n + 1))
-    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
     (p q : ℕ) (hp : p = (I.erase j).card - 2) (hq : q = I.card - 2) (hc : p + 1 = q) :
     serreCubeChainFace A false p q hc
         (Fin.cast hq.symm (simplexSubsetEraseNormalizedCoordinate I hI j hj hmin hmax)) ≫

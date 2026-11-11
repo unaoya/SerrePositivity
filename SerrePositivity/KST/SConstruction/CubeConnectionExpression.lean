@@ -21,9 +21,9 @@ inductive CubeConnectionExpression : ℕ → ℕ → Type
 
 /-- 元の max の式を具体的な頂点関数へ評価する。 -/
 def cubeConnectionExpressionVertex {n : ℕ} : {m : ℕ} → CubeConnectionExpression n m →
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m)
   | _, .id _ => _root_.id
-  | _, .connect p i => _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection _ i ∘ cubeConnectionExpressionVertex p
+  | _, .connect p i => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection _ i ∘ cubeConnectionExpressionVertex p
 termination_by structural _m p => p
 
 /-- 元の max の式をブロック標準表示へ移す。 -/
@@ -42,7 +42,7 @@ lemma cubeConnectionExpressionNormal_vertex {n m : ℕ} (p : CubeConnectionExpre
   | connect p i ih =>
     change cubeConnectionNormalVertex
       (cubeConnectionNormalConnect (cubeConnectionExpressionNormal p) i) =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection _ i ∘ cubeConnectionExpressionVertex p
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection _ i ∘ cubeConnectionExpressionVertex p
     rw [cubeConnectionNormalVertex_connect, ih]
 
 open SerrePositivity.DifferentialGraded

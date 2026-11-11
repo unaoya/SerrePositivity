@@ -48,7 +48,7 @@ lemma pointedKanStrictExtension_fac {A B : PointedSimplicialSet.{u}} [KanComplex
 /-- 元の点つき射が局所化同型なら、Kan 標的への厳密な延長は全基点 π_* 同型。 -/
 lemma pointedKanStrictExtension_piIsomorphism {A B : PointedSimplicialSet.{u}} [KanComplex B.right]
     (f : A ⟶ B) (hf : IsIso (AnodyneHomotopy.anodyneQ.map f.right)) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pointedKanStrictExtension f).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (pointedKanStrictExtension f).right := by
   let Q := AnodyneHomotopy.anodyneQ
   have hi : IsIso (Q.map (Spectra.PointedKanReplacement.unit.app A).right) :=
     (Localization.inverts Q anodyneExtensions) _ (Spectra.PointedKanReplacement.unit_anodyne A)

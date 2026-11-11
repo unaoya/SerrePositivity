@@ -12,6 +12,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：各頂点で単調写像の像と有限鎖の最大元の交換を使う。
 規約：Moss 2020 Proposition 21 の反復最終頂点の整合。
 使われ方：horn 上で細分比較が所要の単位に一致すること。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

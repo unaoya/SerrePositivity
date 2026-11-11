@@ -40,7 +40,7 @@ def dgKappaResolvedConeAugmentationInputMap :
 def dgKappaResolvedSuspensionInputMap :
     dgKappaResolvedConeKInput R D I ⟶ dgKappaSuspensionKInput R D I :=
   ULift.up (DGQuotient.inclusion R (DGCategoryCellResolution.Source R (DGKappaCone R D I))
-    (resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)))
 
 /-- 左脚の同じ固定 K 像は、全整数群で同型を誘導する。 -/
 theorem dgKappaResolvedConeAugmentation_piIsomorphism :
@@ -51,25 +51,25 @@ theorem dgKappaResolvedConeAugmentation_piIsomorphism :
 
 /-- 元の増大の固定 K 像の実辺そのものが Sp 内で可逆。 -/
 theorem dgKappaResolvedConeAugmentation_isInvertible :
-    IsInvertibleEdge (coherentNerveEdge
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
       (dgKInputSpectrumMap R (dgKappaResolvedConeAugmentationInputMap R D I))) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (dgKappaResolvedConeAugmentation_piIsomorphism R D I)
 
 /-- 同じ実増大による、平坦 cone と元の cone の固定 K 頂点間の実同型。 -/
 def dgKappaResolvedConeKVertexIso :
-    VertexIso (coherentNerveVertex (dgKInputSpectrum R (dgKappaResolvedConeKInput R D I)))
-      (coherentNerveVertex (dgKInputSpectrum R (dgKappaConeKInput R D I))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaResolvedConeKInput R D I)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaConeKInput R D I))) := by
   have : IsIso (Truncated.HomotopyCategory.homMk
-      (coherentNerveEdge (dgKInputSpectrumMap R
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKInputSpectrumMap R
         (dgKappaResolvedConeAugmentationInputMap R D I))).toTruncated) :=
     dgKappaResolvedConeAugmentation_isInvertible R D I
   exact asIso (Truncated.HomotopyCategory.homMk
-    (coherentNerveEdge (dgKInputSpectrumMap R (dgKappaResolvedConeAugmentationInputMap R D I))).toTruncated)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKInputSpectrumMap R (dgKappaResolvedConeAugmentationInputMap R D I))).toTruncated)
 
 /-- 元の同じ平坦 cone の固定 K も、同じ増大を介して実 Sp の零頂点。 -/
 theorem dgKappaResolvedConeK_isZeroVertex (Z : DGKappaZeroInput R D I) :
-    IsZeroVertex (coherentNerveVertex (dgKInputSpectrum R (dgKappaResolvedConeKInput R D I))) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaResolvedConeKInput R D I))) :=
   (dgKappaFixedK_isZeroVertex R D I Z).of_vertexIso (dgKappaResolvedConeKVertexIso R D I).symm
 
 end SerrePositivity.KST.NonConnective

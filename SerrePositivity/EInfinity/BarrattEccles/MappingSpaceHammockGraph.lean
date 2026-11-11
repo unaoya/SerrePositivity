@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceWeakThreeArrow
-public import SerrePositivity.InfinityCategories.ModelBridge.ThreeArrowEquivalence
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrowEquivalence
 
 /-!
 # 元の Map^h と三列の hammock graph の比較
@@ -25,23 +25,23 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 variable (A : Type u) [CommRing A]
 
 /-- 実際の同じ E 代数の弱同値を使う固定語の hammock graph。 -/
-abbrev algebraHammockGraph (w : Hammock.Word) (X Y : (operad A).Algebra) : SSet.{u + 1} :=
+abbrev algebraHammockGraph (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : (operad A).Algebra) : SSet.{u + 1} :=
   let := modelCategory A
-  Hammock.graph (weakEquivalences (operad A).Algebra) w X Y
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (weakEquivalences (operad A).Algebra) w X Y
 
 /-- 同じ元の全単体の共通始域から三列の graph へ入れる比較。 -/
 def mappingSpaceHammockGraphNerveMap (X Y : (operad A).Algebra) :
     nerve (ULiftHom.{u + 1} (((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ)) ⟶
-      algebraHammockGraph A Hammock.Word.threeArrow X Y := by
+      algebraHammockGraph A _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow X Y := by
   let := modelCategory A
-  exact mappingSpaceWeakThreeArrowNerveMap A X Y ≫ nerveMap Hammock.ThreeArrow.functor
+  exact mappingSpaceWeakThreeArrowNerveMap A X Y ≫ nerveMap _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrow.functor
 
 /-- 元の三列の graph への比較そのものも anodyne 局所化で可逆。 -/
 lemma mappingSpaceHammockGraphNerveMap_localized_isIso (X Y : (operad A).Algebra) :
     IsIso (AnodyneHomotopy.anodyneQ.map (mappingSpaceHammockGraphNerveMap A X Y)) := by
   let := modelCategory A
   have := mappingSpaceWeakThreeArrowNerveMap_localized_isIso A X Y
-  have := Hammock.ThreeArrow.nerveMap_localized_isIso X Y
+  have := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.nerveMap_localized_isIso X Y
   dsimp only [mappingSpaceHammockGraphNerveMap]
   rw [CategoryTheory.Functor.map_comp]
   infer_instance
@@ -49,7 +49,7 @@ lemma mappingSpaceHammockGraphNerveMap_localized_isIso (X Y : (operad A).Algebra
 /-- 同じ元の比較は、graph の Kan 性を追加仮定せず弱ホモトピー同値。 -/
 lemma mappingSpaceHammockGraphNerveMap_isWeakHomotopyEquivalence
     (X Y : (operad A).Algebra) :
-    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (mappingSpaceHammockGraphNerveMap A X Y) :=
   FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (mappingSpaceHammockGraphNerveMap_localized_isIso A X Y)
@@ -58,11 +58,11 @@ lemma mappingSpaceHammockGraphNerveMap_isWeakHomotopyEquivalence
 def mappingSpaceHammockGraphComparisonIso (X Y : (operad A).Algebra) :
     AnodyneHomotopy.anodyneQ.obj
         (SSet.uliftFunctor.{u + 1, u}.obj (((mappingSpace A).obj (op X)).obj Y)) ≅
-      AnodyneHomotopy.anodyneQ.obj (algebraHammockGraph A Hammock.Word.threeArrow X Y) := by
+      AnodyneHomotopy.anodyneQ.obj (algebraHammockGraph A _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow X Y) := by
   let := modelCategory A
-  have := Hammock.ThreeArrow.nerveMap_localized_isIso X Y
+  have := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.nerveMap_localized_isIso X Y
   exact mappingSpaceWeakThreeArrowComparisonIso A X Y ≪≫
-    asIso (AnodyneHomotopy.anodyneQ.map (nerveMap Hammock.ThreeArrow.functor))
+    asIso (AnodyneHomotopy.anodyneQ.map (nerveMap _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrow.functor))
 
 /-- 同じ元の左射の後の同型は、同じ graph への右射を回収する。 -/
 lemma mappingSpaceHammockGraphComparisonIso_fac (X Y : (operad A).Algebra) :
@@ -72,7 +72,7 @@ lemma mappingSpaceHammockGraphComparisonIso_fac (X Y : (operad A).Algebra) :
   let := modelCategory A
   change AnodyneHomotopy.anodyneQ.map (mappingSpaceIndexAugmentation A X Y) ≫
     ((mappingSpaceWeakThreeArrowComparisonIso A X Y).hom ≫
-      AnodyneHomotopy.anodyneQ.map (nerveMap Hammock.ThreeArrow.functor)) = _
+      AnodyneHomotopy.anodyneQ.map (nerveMap _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrow.functor)) = _
   rw [← Category.assoc, mappingSpaceWeakThreeArrowComparisonIso_fac,
     ← CategoryTheory.Functor.map_comp]
   rfl

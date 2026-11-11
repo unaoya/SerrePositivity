@@ -60,8 +60,8 @@ def dgKappaSuspensionStableChoiceEquivalence :
       (stableCategoryModel (dgKInputStableValue R (dgKappaSuspensionKInput R A I)))
       (stableCategoryModel (dgKInputStableValue R (dgKappaSuspensionKInput R A J))) := by
   let e := dgKappaSuspensionNuChoiceEquivalence R A I J P Q
-  let : IsExactFunctor e.hom := isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
-  let : IsExactFunctor e.inv := isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.hom := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.inv := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
   exact ⟨⟨e.hom, preservesCofiberData_of_isExactFunctor e.hom⟩,
     ⟨e.inv, preservesCofiberData_of_isExactFunctor e.inv⟩, e.homInvIso, e.invHomIso⟩
 
@@ -80,7 +80,7 @@ theorem dgKappaSuspensionKChoiceMap_piIsomorphism :
 
 /-- 同じ固定 K 比較の実 Sp 辺は可逆。 -/
 theorem dgKappaSuspensionKChoiceMap_isInvertible :
-    IsInvertibleEdge (coherentNerveEdge (dgKappaSuspensionKChoiceMap R A I J P Q)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaSuspensionKChoiceMap R A I J P Q)) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (dgKappaSuspensionKChoiceMap_piIsomorphism R A I J P Q)
 

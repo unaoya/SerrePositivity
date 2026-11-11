@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCoconeIntervalTransportAction
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FunctorIsoComponentPost
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentPost
 
 /-!
 概要：全 Hom の普遍作用比較の成分は、元の普遍輸送成分の同じ像。

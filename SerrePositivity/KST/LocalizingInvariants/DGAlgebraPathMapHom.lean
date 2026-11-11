@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathEndpoints
-public import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeMap
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeMap
 
 /-!
 概要：代数射に沿う経路複体の実射と、両評価・比較 cochain の厳密な自然性。
@@ -25,12 +25,12 @@ lemma difference_naturality : difference R A ≫ f.hom =
   simp only [Preadditive.sub_comp, Preadditive.comp_sub, biprod.map_fst, biprod.map_snd]
 
 def mapHom : (algebra R A).X ⟶ (algebra R B).X :=
-  complexMappingCoconeMap (difference R A) (difference R B)
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap (difference R A) (difference R B)
     (biprod.map f.hom f.hom) f.hom (difference_naturality R f)
 
 lemma mapHom_endpoints : mapHom R f ≫ endpointsHom R B =
     endpointsHom R A ≫ biprod.map f.hom f.hom :=
-  complexMappingCoconeMap_fst _ _ _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_fst _ _ _ _ _
 
 @[reassoc]
 lemma mapHom_source : mapHom R f ≫ (source R B).hom = (source R A).hom ≫ f.hom := by
@@ -45,10 +45,10 @@ lemma mapHom_target : mapHom R f ≫ (target R B).hom = (target R A).hom ≫ f.h
   rfl
 
 lemma mapHom_comparison :
-    dgFunctorCommaHomComparison R _ _ (identityFunctor R B) (identityPoint R B)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComparison R _ _ (identityFunctor R B) (identityPoint R B)
       (identityPoint R B) (algebra R A).X (mapHom R f) =
-        (dgFunctorCommaPrimitive R _ _ (identityFunctor R A)
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaPrimitive R _ _ (identityFunctor R A)
           (identityPoint R A) (identityPoint R A)).comp (Cochain.ofHom f.hom) (add_zero (-1)) :=
-  complexMappingCoconeMap_snd _ _ _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_snd _ _ _ _ _
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.Path

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderEdgeOrdinary
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomOrdinary
-public import SerrePositivity.InfinityCategories.PinchedHom.Paths
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.HomOrdinary
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Paths
 
 /-!
 概要：パラメータ空間の辺から、二対象の円柱の coherent な三角形を作る。
@@ -24,14 +24,14 @@ variable {A : SSet.{u}}
 /-- パラメータ射の豊穣 Hom の頂点は、そのパラメータと単位の対。 -/
 lemma parameterHom_vertex (i : 𝟙_ SSet.{u} ⟶ A) :
     SimplicialCategory.homEquiv'
-        (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}) ⟨true, ⟨PUnit.unit⟩⟩
+        (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v}) ⟨true, ⟨PUnit.unit⟩⟩
         (parameterHom i) = (A.unitHomEquiv i, PUnit.unit) := rfl
 
 /-- パラメータ辺を、宇宙を持ち上げた豊穣 Hom の辺として保持する。 -/
 def parameterHomEdge {x y : A _⦋0⦌} (e : A.Edge x y) :
     ((SSet.uliftFunctor.{v, u}).obj
       (SimplicialCategory.sHom
-        (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}) ⟨true, ⟨PUnit.unit⟩⟩)).Edge
+        (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v}) ⟨true, ⟨PUnit.unit⟩⟩)).Edge
       (ULift.up (x, PUnit.unit)) (ULift.up (y, PUnit.unit)) :=
   SSet.Edge.mk (ULift.up (e.edge, PUnit.unit))
     (by change ULift.up (A.δ 1 e.edge, PUnit.unit) = _; rw [e.src_eq])
@@ -39,13 +39,13 @@ def parameterHomEdge {x y : A _⦋0⦌} (e : A.Edge x y) :
 
 /-- Hom 比較のパラメータ頂点は、元のパラメータ射の coherent な辺へ移る。 -/
 lemma parameterComparisonVertex (x : A _⦋0⦌) :
-    PinchedHom.vertexEquiv (leftVertex.{u, v} A) (rightVertex.{u, v} A)
-      ((coherentHomComparison
-        (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}) ⟨true, ⟨PUnit.unit⟩⟩).app
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.vertexEquiv (leftVertex.{u, v} A) (rightVertex.{u, v} A)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison
+        (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v}) ⟨true, ⟨PUnit.unit⟩⟩).app
           (Opposite.op ⦋0⦌) (ULift.up (x, PUnit.unit))) =
-        coherentNerveEdge (parameterHom (A.unitHomEquiv.symm x)) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (parameterHom (A.unitHomEquiv.symm x)) := by
   apply SSet.Edge.ext
-  have h := coherentHomComparison_ordinary
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison_ordinary
     (parameterHom.{u, v} (A.unitHomEquiv.symm x))
   rw [parameterHom_vertex, Equiv.apply_symm_apply] at h
   exact h
@@ -53,25 +53,25 @@ lemma parameterComparisonVertex (x : A _⦋0⦌) :
 /-- パラメータの辺は、先頭辺が恒等で、残りが両端の評価である実際の三角形を与える。 -/
 def parameterCompStruct {x y : A _⦋0⦌} (e : A.Edge x y) :
     SSet.Edge.CompStruct (SSet.Edge.id (leftVertex.{u, v} A))
-      (coherentNerveEdge (parameterHom (A.unitHomEquiv.symm y)))
-      (coherentNerveEdge (parameterHom (A.unitHomEquiv.symm x))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (parameterHom (A.unitHomEquiv.symm y)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (parameterHom (A.unitHomEquiv.symm x))) := by
   let e' := (parameterHomEdge.{u, v} e).map
-    (coherentHomComparison
-      (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}) ⟨true, ⟨PUnit.unit⟩⟩)
-  have h := PinchedHom.pathCompStruct e'
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison
+      (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v}) ⟨true, ⟨PUnit.unit⟩⟩)
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathCompStruct e'
   refine SSet.Edge.CompStruct.mk h.simplex h.d₂ ?_ ?_
   · exact h.d₀.trans (congrArg (fun z ↦ z.edge) (parameterComparisonVertex.{u, v} y))
   · exact h.d₁.trans (congrArg (fun z ↦ z.edge) (parameterComparisonVertex.{u, v} x))
 
 /-- パラメータ三角形の単体は、元の Hom 比較の単体そのもの。 -/
 lemma parameterCompStruct_simplex {x y : A _⦋0⦌} (e : A.Edge x y) :
-    (parameterCompStruct.{u, v} e).simplex = coherentHomComparisonSimplex
-      (X := (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}))
+    (parameterCompStruct.{u, v} e).simplex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex
+      (X := (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v}))
       (Y := ⟨true, ⟨PUnit.unit⟩⟩) (e.edge, PUnit.unit) := rfl
 
 /-- パラメータの辺が与える、二対象の円柱内の標準二単体の図式。 -/
 def parameterTriangle {x y : A _⦋0⦌} (e : A.Edge x y) :
-    (Δ[2] : SSet.{max u v}) ⟶ SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}) :=
+    (Δ[2] : SSet.{max u v}) ⟶ SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v}) :=
   SSet.yonedaEquiv.symm (parameterCompStruct.{u, v} e).simplex
 
 /-- パラメータ三角形の 1–2 辺は終点パラメータでの辺。 -/
@@ -92,8 +92,8 @@ lemma parameterTriangle_identity {x y : A _⦋0⦌} (e : A.Edge x y) :
   rw [parameterTriangle, SSet.Edge.CompStruct.δ_two_yonedaEquiv_symm]
   apply SSet.yonedaEquiv.injective
   rw [Equiv.apply_symm_apply]
-  change (SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v})).σ 0 (leftVertex A) =
-    PinchedHom.constant (leftVertex A) 1
-  exact (PinchedHom.constant_one _).symm
+  change (SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v})).σ 0 (leftVertex A) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (leftVertex A) 1
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.constant_one _).symm
 
 end SerrePositivity.KST.Spectra.EnrichedParameterCylinder

@@ -22,7 +22,7 @@ open CategoryTheory MonoidalCategory
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 open RawSpectrumMapping
 variable (A : OmegaSpectrum.{u}) {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
-  (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n).right)
+  (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app n).right)
 
 /-- 選択済み逆射の右逆区間の元になる、mapping path の源射影上の同じ実垂直区間。 -/
 def levelwiseInverse_post_right_lift_interval :

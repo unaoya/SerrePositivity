@@ -20,11 +20,11 @@ open scoped Simplicial
 方針：対角の評価と正方形の制限で同型を写す。
 規約：C は quasicategory。使われ方：普遍補完の選択の変更。 -/
 lemma IsGapped.of_functorIso {n : ℕ} {C : SSet.{u}} [Quasicategory C]
-    {F G : arNerve n ⟶ C} (hF : IsGapped F) (e : FunctorIso F G) : IsGapped G := by
+    {F G : arNerve n ⟶ C} (hF : IsGapped F) (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G) : IsGapped G := by
   constructor
   · intro i
-    have ei := VertexIso.map e (evaluateFunctorAt (ComposableArrows.mk₀ (arObj i i le_rfl)))
-    rw [evaluateFunctorAt_functorVertex, evaluateFunctorAt_functorVertex] at ei
+    have ei := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ComposableArrows.mk₀ (arObj i i le_rfl)))
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex] at ei
     exact (hF.1 i).of_vertexIso ei
   · intro i j k l hij hjk hkl
     exact IsPushoutSquare.of_functorIso (hF.2 i j k l hij hjk hkl)
@@ -34,18 +34,18 @@ lemma IsGapped.of_functorIso {n : ℕ} {C : SSet.{u}} [Quasicategory C]
 方針：同型と逆同型を使う。
 規約：C は quasicategory。使われ方：完成した図式の gapped 性の比較。 -/
 lemma isGapped_iff_of_functorIso {n : ℕ} {C : SSet.{u}} [Quasicategory C]
-    {F G : arNerve n ⟶ C} (e : FunctorIso F G) : IsGapped F ↔ IsGapped G :=
+    {F G : arNerve n ⟶ C} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G) : IsGapped F ↔ IsGapped G :=
   ⟨fun h => IsGapped.of_functorIso h e, fun h => IsGapped.of_functorIso h e.symm⟩
 
 /-- 概要：Ar 図式の関手圏の任意の零対象は gapped。
 方針：定値零関手との同型を使って gapped 条件を移す。
 規約：chosen zero への等号を仮定しない。使われ方：cofiber の零角の gapped 性。 -/
-lemma isGapped_of_functorVertex_isZero {n : ℕ} {C : SSet.{u}} [Quasicategory C] [HasZeroVertex C]
-    (F : arNerve n ⟶ C) (hF : IsZeroVertex (functorVertex F)) : IsGapped F := by
-  let z := chosenZeroVertex C
+lemma isGapped_of_functorVertex_isZero {n : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C]
+    (F : arNerve n ⟶ C) (hF : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) : IsGapped F := by
+  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C
   let Z : arNerve n ⟶ C := SSet.const z.vertex
   have hZ := functor_const_isZeroVertex (A := arNerve n) z.vertex z.isZero
-  let e : FunctorIso Z F := zeroVertexIso ⟨_, hZ.1, hZ.2⟩ ⟨_, hF.1, hF.2⟩
+  let e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso Z F := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.zeroVertexIso ⟨_, hZ.1, hZ.2⟩ ⟨_, hF.1, hF.2⟩
   exact IsGapped.of_functorIso (isGapped_const n z.vertex z.isZero) e
 
 end SerrePositivity.KST.SConstruction

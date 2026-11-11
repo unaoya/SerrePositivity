@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPair
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoPair
 
 /-!
 概要：第二成分を固定した関手空間の組と、二つの実射の直積作用は厳密に可換する。

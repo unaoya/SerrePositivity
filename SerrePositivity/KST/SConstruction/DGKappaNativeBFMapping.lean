@@ -20,7 +20,7 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 lemma dgKappaNativeBFMapping_condition (X Y : DGKappaNativeBFFiniteInput.{u, v} R D I)
     (n : ℕ) :
     (dgKappaNativeBFFiniteLevelFunctor.{u, v} R D I (n + 1)).map X Y ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I X).sigma n)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I X).sigma n)
           ((dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I Y).level (n + 1)).space =
       (dgKappaNativeBFFiniteLevelFunctor.{u, v} R D I n).map X Y ≫
         OmegaSpectrum.mappingStep (dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I X)
@@ -32,7 +32,7 @@ lemma dgKappaNativeBFMapping_condition (X Y : DGKappaNativeBFFiniteInput.{u, v} 
     (suspensionHom ((dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I X).level n).space
       ((dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I Y).level n).space).right) ≫
       eHomWhiskerLeft SSet
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I X).level n).space)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I X).level n).space)
         ((dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I Y).sigma n) =
     (dgKappaNativeBFFiniteLevelFunctor.{u, v} R D I (n + 1)).map X Y ≫
       eHomWhiskerRight SSet ((dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I X).sigma n)
@@ -48,7 +48,7 @@ def dgKappaNativeBFMapping (X Y : DGKappaNativeBFFiniteInput.{u, v} R D I) :
   TruncatedMapping.familyLift
     (fun n => ((dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I X).level n).space)
     (fun n => ((dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I Y).level n).space)
-    (fun n => _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I X).level n).space)
+    (fun n => _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I X).level n).space)
     (dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I X).sigma
     (OmegaSpectrum.mappingStep (dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I X)
       (dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I Y))

@@ -36,7 +36,7 @@ variable {C : Type u} [Category.{v} C] [HasFiniteLimits C]
   {V : Type w} [Category.{t} V] [Preadditive V] [Linear ℚ V]
   {X Y : C} (f : X ⟶ Y) (U : V ⥤ SSet.{0})
   [ModelCategory SSet.{0}]
-  (I J : MorphismProperty SSet.{0}) [ModelGeneration.CofibrantlyGenerated.{0} I J]
+  (I J : MorphismProperty SSet.{0}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{0})]
 
 /-- 概要：自然な正 rank transfer を持つ射の任意の基底変更は実際に Čech 降下（補題 3.2）。

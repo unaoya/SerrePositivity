@@ -32,7 +32,7 @@ lemma secondPath_parametric_post_path {P A Y Z Z' : PointedSimplicialSet.{u}}
   change (secondPath f g).path ≫
       (PointedObject.basedHomMap A (targetParametricPost v)).right =
     ((((reversalTwice Z').basedIhomMap P).path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (input f g ≫ doubleParametricPost v)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (input f g ≫ doubleParametricPost v)
         (PointedObject.basedHom P (doubleLoop Z'))).right) ≫
           (PointedObject.basedHomMap A (PointedObject.basedHomMap P (projection Z'))).right)
   rw [secondPath_path]
@@ -53,7 +53,7 @@ lemma secondPath_ihom_pre_path {P A A' Y Z : PointedSimplicialSet.{u}}
           (j ≫ PointedObject.basedHomMap P (input f g))).path) := by
   have he := PointedMapping.VerticalPath.basedIhomMap_path_congr
     (secondPath f g) (((reversalTwice Z).pre (input f g)).basedPost (projection Z)) P rfl
-  exact (congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j _).right) he).trans
+  exact (congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j _).right) he).trans
     (PointedMapping.VerticalPath.projectedIhomPre_path
       (reversalTwice Z) (input f g) (projection Z) P j)
 

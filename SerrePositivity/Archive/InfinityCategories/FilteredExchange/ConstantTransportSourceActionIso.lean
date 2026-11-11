@@ -4,7 +4,7 @@ public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConstantTransportUniversalSource
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalUniversalSourceAction
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoMapPostComponent
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoComponentTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentTransport
 
 /-!
 概要：元の定値輸送比較を、全始点作用から恒等作用への一つの指定同型で保持する。

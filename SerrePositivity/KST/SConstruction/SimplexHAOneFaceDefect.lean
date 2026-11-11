@@ -28,7 +28,7 @@ private lemma differential_difference_postrestrict {V : Type*} [Category V] [Pre
     ← Category.assoc f₀ dY, hf, Category.assoc dX f₁, h₁, ← Category.assoc dX U₁]
 
 /-- 元の右端一面への制限の微分可換性の差は、前段の差と元の閉零辺との実右合成。 -/
-lemma simplexHADegreeDefect_one_face {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeDefect_one_face {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (k : ℤ) :
     (serreCubeFace A true m 0).hom.f k ≫
@@ -55,7 +55,7 @@ lemma simplexHADegreeDefect_one_face {n : ℕ} (s : DGNerve.Simplex A D n)
     (simplexHADegreeLift_one_face_restriction A s m v b hb (k + 1))
 
 /-- 元の一端点追加生成元の微分可換性の差は、前段の同じ差と元の閉零辺との右合成。 -/
-lemma simplexHADegreeDefect_point_one {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeDefect_point_one {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (v : Fin (m + 2) ↪o Fin (n + 1))
     (b : Fin (n + 1)) (hb : v (Fin.last (m + 1)) < b) (k : ℤ)
     (hi : serreCubeGeneratorDegree m i = k) :

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordPresentationNaturality
-public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftFillers
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers
 
 /-!
 # 中断した任意モデル源への一般化：WordPresentationAction
@@ -50,9 +50,9 @@ variable {C : Type u} [Category.{w} C] {T : SSet.{v}}
   (hP : ∀ X, (H X).h ≫ p X = fst (F.obj X).value WordSegment.interval ≫ p X)
   (hS : ∀ X, s X ▷ WordSegment.interval ≫ (H X).h = fst (K X) WordSegment.interval ≫ s X)
 
-def action (X Y : C) : UniverseLift.obj.{max u w v} (K X) ⊗
-    (UniverseLift.obj.{max u w v} T ⊗ WordPresentationDiagram.smallHom.{u, w, v} C X Y) ⟶
-      UniverseLift.obj.{max u w v} (K Y) where
+def action (X Y : C) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u w v} (K X) ⊗
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u w v} T ⊗ WordPresentationDiagram.smallHom.{u, w, v} C X Y) ⟶
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u w v} (K Y) where
   app n := ↾fun x => ULift.up ((R F K s p hs H hP hS n x.2.1.down).functor.map x.2.2 x.1.down)
   naturality {_ _} θ := by
     apply ConcreteCategory.hom_ext
@@ -61,13 +61,13 @@ def action (X Y : C) : UniverseLift.obj.{max u w v} (K X) ⊗
       (small_naturality F K s p hs H hP hS θ x.2.1.down X Y x.2.2 x.1.down).symm
 
 def family {U : SSet.{max u w v}} (X Y : C)
-    (t : U ⟶ UniverseLift.obj.{max u w v} T)
+    (t : U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u w v} T)
     (f : U ⟶ WordPresentationDiagram.smallHom.{u, w, v} C X Y) :
-    UniverseLift.obj.{max u w v} (K X) ⊗ U ⟶ UniverseLift.obj.{max u w v} (K Y) :=
-  UniverseLift.obj (K X) ◁ lift t f ≫ action F K s p hs H hP hS X Y
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u w v} (K X) ⊗ U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u w v} (K Y) :=
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj (K X) ◁ lift t f ≫ action F K s p hs H hP hS X Y
 
 lemma family_substitute {U V : SSet.{max u w v}} (X Y : C)
-    (t : U ⟶ UniverseLift.obj.{max u w v} T)
+    (t : U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u w v} T)
     (f : U ⟶ WordPresentationDiagram.smallHom.{u, w, v} C X Y) (j : V ⟶ U) :
     family F K s p hs H hP hS X Y (j ≫ t) (j ≫ f) =
       ParameterComposition.substitute j (family F K s p hs H hP hS X Y t f) := by
@@ -75,10 +75,10 @@ lemma family_substitute {U V : SSet.{max u w v}} (X Y : C)
   rfl
 
 lemma family_identity {U : SSet.{max u w v}} (X : C)
-    (t : U ⟶ UniverseLift.obj.{max u w v} T) :
+    (t : U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u w v} T) :
     family F K s p hs H hP hS X X t
       (SSet.stdSimplex.isTerminalObj₀.from U ≫ WordPresentationDiagram.identity C X) =
-      fst (UniverseLift.obj (K X)) U := by
+      fst (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj (K X)) U := by
   ext n x
   change ULift.up ((R F K s p hs H hP hS n (t.app n x.2).down).functor.map
     (𝟙 ((RetractWords.quotient C (WordSegment.degree.{v} n)).obj (.small X))) x.1.down) = x.1
@@ -86,7 +86,7 @@ lemma family_identity {U : SSet.{max u w v}} (X : C)
   rfl
 
 lemma family_comp {U : SSet.{max u w v}} (X Y Z : C)
-    (t : U ⟶ UniverseLift.obj.{max u w v} T)
+    (t : U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u w v} T)
     (f : U ⟶ WordPresentationDiagram.smallHom.{u, w, v} C X Y)
     (g : U ⟶ WordPresentationDiagram.smallHom.{u, w, v} C Y Z) :
     ParameterComposition.comp (family F K s p hs H hP hS X Y t f)

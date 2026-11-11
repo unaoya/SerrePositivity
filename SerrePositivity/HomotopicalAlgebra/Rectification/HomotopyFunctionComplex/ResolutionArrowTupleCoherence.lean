@@ -53,21 +53,21 @@ abbrev bigTuples := tuples C ⋙ SSet.uliftFunctor.{u, v}
 abbrev bigVertices := vertices C ⋙ SSet.uliftFunctor.{u, v}
 abbrev bigInclusion : bigVertices C ⟶ bigTuples C :=
   Functor.whiskerRight (inclusion C) SSet.uliftFunctor.{u, v}
-abbrev bigBoundary : bigVertices C ⟶ NerveMovingParameter.lifted.{u} (fibers C) :=
+abbrev bigBoundary : bigVertices C ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{u} (fibers C) :=
   Functor.whiskerRight (vertexData C) SSet.uliftFunctor.{u, v}
 
 abbrev oldFamily (q : Index C) : (bigTuples C).obj q ⟶
-    UniverseLift.obj.{u} ((fibers C).obj q) :=
-  UniverseLift.map.{u} (CoherentLiftTuples.interpolation hcof (source C q).inner
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((fibers C).obj q) :=
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (CoherentLiftTuples.interpolation hcof (source C q).inner
     (target C q) (arrow C q))
 
 lemma oldFamily_boundary (q : Index C) : (bigInclusion C).app q ≫ oldFamily C hcof q =
     (bigBoundary C).app q := by
-  change UniverseLift.map.{u} (VertexTuples.inclusion (StrictLift C q)) ≫
-    UniverseLift.map.{u} (CoherentLiftTuples.interpolation hcof (source C q).inner
-      (target C q) (arrow C q)) = UniverseLift.map.{u} _
-  rw [← UniverseLift.map_comp]
-  exact congrArg (fun e => UniverseLift.map.{u} e)
+  change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.inclusion (StrictLift C q)) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (CoherentLiftTuples.interpolation hcof (source C q).inner
+      (target C q) (arrow C q)) = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} _
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map_comp]
+  exact congrArg (fun e => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} e)
     (CoherentLiftTuples.interpolation_vertices hcof (source C q).inner (target C q) (arrow C q))
 
 omit [ModelCategory SSet.{v}] in
@@ -85,30 +85,30 @@ lemma system_evaluate (q : Index C) : NerveMovingParameter.evaluate.{u, v}
   NerveRelativeNaturalBoundary.extend_evaluate _ _ _ _ _ _ _ _ _ q
 
 /-- Recover the actual original small tuple interpolation, as a full map. -/
-lemma interpolation_recover (q : Index C) : UniverseLift.lower
+lemma interpolation_recover (q : Index C) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower
     (NerveMovingParameter.evaluate.{u, v} (bigTuples C) (fibers C) (system C hcof) q) =
     CoherentLiftTuples.interpolation hcof (source C q).inner (target C q) (arrow C q) := by
   rw [system_evaluate]
-  exact UniverseLift.lower_map _
+  exact _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower_map _
 
 lemma vertices_fixed : system C hcof ≫ NerveMovingParameterRelative.restriction
     (bigVertices C) (bigTuples C) (bigInclusion C) (fibers C) =
     NerveNaturalBoundary.ofNatTrans (bigVertices C)
-      (NerveMovingParameter.lifted (fibers C)) (bigBoundary C) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (fibers C)) (bigBoundary C) :=
   NerveRelativeNaturalBoundary.extend_boundary _ _ _ _ _ _ _ _ _
 
 lemma vertex_component (s : NerveSimplexEndpoint.Index (Index C)) : (system C hcof).app s ≫
     (CategoryTheory.MonoidalClosed.pre
       ((bigInclusion C).app (NerveSimplexStart.start s))).app
-        (UniverseLift.obj.{u} ((fibers C).obj (NerveSimplexEndpoint.endpoint s))) =
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((fibers C).obj (NerveSimplexEndpoint.endpoint s))) =
     SSet.stdSimplex.isTerminalObj₀.from _ ≫ RelativeChoiceSpace.name
       ((bigBoundary C).app (NerveSimplexStart.start s) ≫
-        (NerveMovingParameter.lifted (fibers C)).map (NerveNaturalBoundary.whole s)) := by
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (fibers C)).map (NerveNaturalBoundary.whole s)) := by
   have h := congr_app (vertices_fixed C hcof) s
   exact h
 
 lemma simplex_recover (q : Index C) {n : ℕ} (a : Fin (n + 1) → StrictLift C q) :
-    VertexTuples.simplex a ≫ UniverseLift.lower
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.simplex a ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower
       (NerveMovingParameter.evaluate.{u, v} (bigTuples C) (fibers C) (system C hcof) q) =
     CoherentLiftTuples.simplex hcof (source C q).inner (target C q) (arrow C q) a := by
   rw [interpolation_recover]

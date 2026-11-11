@@ -38,7 +38,7 @@ lemma fold_simplex (θ : n ⟶ m) {X Y : Paths C} (t : MarkedSpine W Y n X) :
   induction t with
   | nil X p => rfl
   | cons X g p t ih =>
-    exact congrArg (fun r => F.marked ((FactorTarget.left W X g.val).map θ p) ≫
+    exact congrArg (fun r => F.marked ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).map θ p) ≫
       F.generator g ≫ r) ih
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.FoldData

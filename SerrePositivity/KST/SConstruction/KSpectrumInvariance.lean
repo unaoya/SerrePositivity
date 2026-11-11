@@ -23,7 +23,7 @@ include hf
 
 /-- 元の K 候補列の全段の元の射は、全基点の π_* 同型。 -/
 lemma kKanSequenceLevelMap_piIsomorphism (r : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (kKanSequenceLevelMap f r).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (kKanSequenceLevelMap f r).right := by
   cases r with
   | zero => exact boundaryKSpaceMap_piIsomorphism f (hf 0)
   | succ r => exact boundaryKanRealizationMap_piIsomorphism f r (hf r)
@@ -32,13 +32,13 @@ lemma kKanSequenceLevelMap_piIsomorphism (r : ℕ) :
 lemma rawKStageHomotopy_map_isIso (r n : ℕ) :
     IsIso ((rawKStageHomotopyFunctor r n).map f) := by
   let g := kKanSequenceLevelMap f r
-  let e := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism n g.right
-    (kKanSequenceLevelMap_piIsomorphism f hf r) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint g)
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.equivOfPiIsomorphism n g.right
+    (kKanSequenceLevelMap_piIsomorphism f hf r) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint g)
   have he : (rawKStageHomotopyFunctor r n).map f = e.toIso.hom := by
     apply ConcreteCategory.hom_ext
     intro a
-    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism_apply n g.right
-      (kKanSequenceLevelMap_piIsomorphism f hf r) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint g) a).symm
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.equivOfPiIsomorphism_apply n g.right
+      (kKanSequenceLevelMap_piIsomorphism f hf r) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint g) a).symm
   rw [he]
   infer_instance
 

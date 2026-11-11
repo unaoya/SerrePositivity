@@ -21,7 +21,7 @@ variable (X Y : StableModel.{u}) {T U V : SSet.{u}}
   (f : ∀ n, V ⟶ (PointedObject.basedHom ((kOmegaSpectrum X).level n).space
     ((kKanSequence Y).level n).space).right)
   (H : ∀ n, SSet.Homotopy
-    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum X).sigma n)
+    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum X).sigma n)
       ((kKanSequence Y).level (n + 1)).space)
     (f n ≫ RawSpectrumMapping.step (kOmegaSpectrum X) (kKanSequence Y) n))
   (B : TracedSequenceBoundaryData (kOmegaSpectrum X) (kKanSequence Y) j

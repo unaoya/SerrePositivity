@@ -29,16 +29,16 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductCommaPrefixHomotopy : SSet.Homotopy
-    (toUnit (nerve (Under s)) ≫ Hammock.arrowMap
-      (modelBifibrantRelativeCategory C).weakEquivalences
+    (toUnit (nerve (Under s)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
       ((modelBifibrantSourceRoofProductCommaRightLeg X Y q b).app s))
     (nerveMap (Under.forget s) ≫ modelBifibrantSourceRoofProductCommaEvaluationRoofMap X Y q b ≫
-      Hammock.precomposePointMap (Hammock.arrowMap
-        (modelBifibrantRelativeCategory C).weakEquivalences
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
         ((modelBifibrantSourceRoofProductCommaEvaluation X Y q b).app s))
-        (modelBifibrantObject C Y)) := by
-  apply stableHomotopyRetarget (Hammock.LeftRoof.Prefix.arrowHomotopy
-    (modelBifibrantRelativeCategory C).weakEquivalences
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)) := by
+  apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget (Hammock.LeftRoof.Prefix.arrowHomotopy
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
     (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation_weak X Y q b)
@@ -53,16 +53,16 @@ def modelBifibrantSourceRoofProductCommaPrefixHomotopy : SSet.Homotopy
 lemma modelBifibrantSourceRoofProductCommaPrefixHomotopy_h :
     (modelBifibrantSourceRoofProductCommaPrefixHomotopy X Y q b s).h =
     (Hammock.LeftRoof.Prefix.graphHomotopy
-      (modelBifibrantRelativeCategory C).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
       (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
       (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
       (modelBifibrantSourceRoofProductCommaEvaluation_weak X Y q b)
       (modelBifibrantSourceRoofProductCommaRightLeg X Y q b)
       (fun f => modelBifibrantSourceRoofProductCommaDiagram_map_weak X Y q b f) s).h ≫
-    Hammock.graphInclusion (modelBifibrantRelativeCategory C).weakEquivalences
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
       ((modelBifibrantSourceRoofProductCommaDiagram X Y q b).obj s)
-      (modelBifibrantObject C Y)
-      Hammock.LeftRoof.Precompose.word :=
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoofPrecomposeWords.word :=
   rfl
 
 end SerrePositivity.EInfinity.SimplicialLocalization

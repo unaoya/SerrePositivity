@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramVertexProducts
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHomFunctoriality
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality
 /-!
 # 元の比較射の固定頂点列の Hom 因子への作用
 
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices
 open CategoryTheory SerrePositivity.InfinityCategories
-variable {D E : SimplicialObject Data.{u}} {O : Type u}
+variable {D E : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u}} {O : Type u}
   (p : (n : SimplexCategoryᵒᵖ) → O ≃ (D.obj n).base)
   (q : (n : SimplexCategoryᵒᵖ) → O ≃ (E.obj n).base)
   (hp : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (o : O),
@@ -28,8 +28,8 @@ variable {D E : SimplicialObject Data.{u}} {O : Type u}
   (τ : D ⟶ E) (hτ : ∀ n o, (τ.app n).base.obj (p n o) = q n o)
 
 def homSpaceMap (X Y : O) : homSpace D p hp X Y ⟶ homSpace E q hq X Y :=
-  SimplicialLocalization.FixedObjectHom.coefficientNatTrans (D ⋙ baseFunctor) (E ⋙ baseFunctor)
-    (fun n o => p n o) (fun n o => q n o) hp hq (Functor.whiskerRight τ baseFunctor)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans (D ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagramTransfunctor.baseFunctor) (E ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagramTransfunctor.baseFunctor)
+    (fun n o => p n o) (fun n o => q n o) hp hq (Functor.whiskerRight τ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagramTransfunctor.baseFunctor)
     _root_.id hτ X Y
 
 lemma homSpaceMap_app (X Y : O) (n : SimplexCategoryᵒᵖ) (f : p n X ⟶ p n Y) :
@@ -42,8 +42,8 @@ def homProductMap (k : SimplexCategoryᵒᵖ) (x : Fin (k.unop.len + 1) → O) :
   FiniteProduct.map (fun i => homSpaceMap p q hp hq τ hτ (x i.castSucc) (x i.succ))
 
 lemma homProductMap_weak
-    (h : ∀ X Y, IsWeakHomotopyEquivalence (homSpaceMap p q hp hq τ hτ X Y))
+    (h : ∀ X Y, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (homSpaceMap p q hp hq τ hτ X Y))
     (k : SimplexCategoryᵒᵖ) (x : Fin (k.unop.len + 1) → O) :
-    IsWeakHomotopyEquivalence (homProductMap p q hp hq τ hτ k x) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (homProductMap p q hp hq τ hτ k x) :=
   FiniteProduct.map_weak _ (fun i => h (x i.castSucc) (x i.succ))
 end SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices

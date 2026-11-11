@@ -37,7 +37,7 @@ def dgSuspensionThomasonCandidateCocone :=
 
 /-- 共終性の明示仮定なしで、同じ実余錐は全写像空間の余極限。 -/
 theorem dgSuspensionThomasonCandidateCocone_isColimit :
-    IsColimitCone (dgSuspensionThomasonCandidateCocone R κ hκ A) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (dgSuspensionThomasonCandidateCocone R κ hκ A) :=
   dgSuspensionUnconditionalBFCandidateCocone_isColimit R κ hκ A dgKThomasonCofinality
 
 /-- 元の固定 K から同じ実余錐の零段の脚による比較射。 -/

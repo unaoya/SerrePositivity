@@ -24,26 +24,26 @@ lemma sInterchangeStableIso_evaluate_left (m n : ℕ) (X : StableModel.{u})
       sStableEvaluation m (sStableModel n X) a := by
   have hp : ((sEndofunctor n).map (sStableEvaluation m X a)).val ≫
       (gappedSubcomplex n X.carrier).ι = sDoubleInclusion n m X.carrier ≫
-    (ihom (arNerve n)).map (evaluateFunctorAt (Y := X.carrier) a) := by
+    (ihom (arNerve n)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X.carrier) a) := by
     calc
       _ = (gappedSubcomplex n (sConstruction m X.carrier)).ι ≫
           (ihom (arNerve n)).map
-            ((gappedSubcomplex m X.carrier).ι ≫ evaluateFunctorAt a) :=
+            ((gappedSubcomplex m X.carrier).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a) :=
         sPostcompCofiber_ι n (sStableEvaluation m X a).val (sStableEvaluation m X a).property
       _ = _ := by rw [CategoryTheory.Functor.map_comp, ← Category.assoc]; rfl
   have hr : (sStableEvaluation m (sStableModel n X) a).val ≫
       (gappedSubcomplex n X.carrier).ι = sDoubleInclusion m n X.carrier ≫
-    evaluateFunctorAt (Y := (ihom (arNerve n)).obj X.carrier) a := by
-    change ((gappedSubcomplex m (sConstruction n X.carrier)).ι ≫ evaluateFunctorAt a) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := (ihom (arNerve n)).obj X.carrier) a := by
+    change ((gappedSubcomplex m (sConstruction n X.carrier)).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a) ≫
       (gappedSubcomplex n X.carrier).ι =
       ((gappedSubcomplex m (sConstruction n X.carrier)).ι ≫
-        (ihom (arNerve m)).map (gappedSubcomplex n X.carrier).ι) ≫ evaluateFunctorAt a
+        (ihom (arNerve m)).map (gappedSubcomplex n X.carrier).ι) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a
     simp only [Category.assoc, ihom_postcomp_evaluate]
   apply Subtype.ext
   change sInterchange m n X.carrier ≫ ((sEndofunctor n).map (sStableEvaluation m X a)).val = _
   apply (cancel_mono (gappedSubcomplex n X.carrier).ι).mp
   rw [Category.assoc, hp, ← Category.assoc, sInterchange_doubleInclusion,
-    Category.assoc, internalHomSwapIso_evaluate]
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso_evaluate]
   exact hr.symm
 
 /-- 交換後の外側の元の Ar 評価は交換前の内側の評価への後合成そのもの。 -/
@@ -58,7 +58,7 @@ lemma sInterchangeStableIso_evaluate_right (m n : ℕ) (X : StableModel.{u})
 /-- 元の S₁ 比較は唯一の非対角の Ar[1] 成分への評価に厳密に一致する。 -/
 lemma sOneComparison_eq_evaluation (C : SSet.{u}) :
     sOneComparison C = (gappedSubcomplex 1 C).ι ≫
-      evaluateFunctorAt (Y := C) (ComposableArrows.mk₀ (arObj (0 : Fin 2) 1 (by decide))) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := C) (ComposableArrows.mk₀ (arObj (0 : Fin 2) 1 (by decide))) := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext

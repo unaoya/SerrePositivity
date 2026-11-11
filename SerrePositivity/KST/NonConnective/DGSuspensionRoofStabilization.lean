@@ -34,7 +34,7 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
   (e : ∀ n, StableModelEquivalence
     (stableCategoryModel (dgKInputStableValue R (dgSuspensionIteration R s A n)))
     (stableCategoryModel (dgKInputStableValue R (ρ n).kernel)))
-  (h : ∀ n, IsPullbackSquare ((ρ n).diagram.square ≫ dgKInputK R))
+  (h : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare ((ρ n).diagram.square ≫ dgKInputK R))
 
 include h in
 /-- 全段の明示屋根・Perf 同値・Sp 引き戻し性に条件付きで、同じ隣接 BF 遷移は全整数 π 同型。 -/
@@ -45,20 +45,20 @@ theorem dgSuspensionRoofTransition_piIsomorphism (n : ℕ) :
   have hi := (dgKappaSuspensionOriginalStructureMap_isInvertible_iff R
     (dgSuspensionIteration R s A n) (dgSuspensionIterationStage R s A n).cone
       (ρ n) (e n) (Z n)).mpr (h n)
-  have hb : IsInvertibleEdge
+  have hb : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
       (dgSuspensionRelativeRoofStructureEdge R s A ρ Z e n).toTruncated :=
-    (isInvertibleEdge_congr
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
       (e := (dgSuspensionRelativeRoofStructureEdge R s A ρ Z e n).toTruncated)
-      (f := (coherentNerveEdge (dgKappaSuspensionOriginalStructureMap R
+      (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaSuspensionOriginalStructureMap R
         (dgSuspensionIteration R s A n) (dgSuspensionIterationStage R s A n).cone
           (ρ n) (e n) (Z n))).toTruncated) rfl).mpr hi
   have hl := hb.map (End.of OmegaSpectrum.nativeLoop ^ n).asHom
-  apply (isInvertibleEdge_congr (dgSuspensionNativeSequenceMap_edge R s A _ n)).mpr
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (dgSuspensionNativeSequenceMap_edge R s A _ n)).mpr
   have he : (dgSuspensionNativeSequenceEdge R s A
       (dgSuspensionRelativeRoofStructureEdge R s A ρ Z e) n).edge =
         ((dgSuspensionRelativeRoofStructureEdge R s A ρ Z e n).map
           (End.of OmegaSpectrum.nativeLoop ^ n).asHom).edge := rfl
-  exact (isInvertibleEdge_congr he).mpr hl
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr he).mpr hl
 
 include h in
 /-- 全段の明示屋根・Perf 同値・Sp 引き戻し性に条件付きで、元の連結 K 比較は全整数 π 同型。 -/
@@ -73,7 +73,7 @@ theorem dgSuspensionRoofConnectedComparison_piIsomorphism :
 include h in
 /-- 全段の明示屋根・Perf 同値・Sp 引き戻し性に条件付きで、元の連結 K からの実比較辺は可逆。 -/
 theorem dgSuspensionRoofConnectedComparison_isInvertible :
-    IsInvertibleEdge (coherentNerveEdge (dgSuspensionConnectedComparison R s A
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgSuspensionConnectedComparison R s A
       (dgSuspensionRelativeRoofStructureEdge R s A ρ Z e))) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (dgSuspensionRoofConnectedComparison_piIsomorphism R s A ρ Z e h)

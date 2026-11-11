@@ -23,7 +23,7 @@ open scoped Simplicial
 規約：各単体で選択を加えない。使われ方：object S のホモトピーの単体。 -/
 def objectSHomotopyVertex {X Y : StableModel.{u}} {f g : X ⟶ Y}
     (H : SSet.Homotopy f.val g.val)
-    (hH : ∀ c, IsInvertibleEdge (simplicialHomotopyVertexEdge H c).toTruncated)
+    (hH : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H c).toTruncated)
     {n : ℕ} (v : (sConstruction n X.carrier) _⦋0⦌) (s : (Δ[1] : SSet.{u}) _⦋n⦌) :
     (sConstruction n Y.carrier) _⦋0⦌ :=
   gappedObjectVertex (variableTimeImage H (gappedDiagram v) (arTimeCoordinate s))
@@ -34,7 +34,7 @@ def objectSHomotopyVertex {X Y : StableModel.{u}} {f g : X ⟶ Y}
 規約：厳密な射の等号。使われ方：自然性と両端の回収。 -/
 lemma objectSHomotopyVertex_diagram {X Y : StableModel.{u}} {f g : X ⟶ Y}
     (H : SSet.Homotopy f.val g.val)
-    (hH : ∀ c, IsInvertibleEdge (simplicialHomotopyVertexEdge H c).toTruncated)
+    (hH : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H c).toTruncated)
     {n : ℕ} (v : (sConstruction n X.carrier) _⦋0⦌) (s : (Δ[1] : SSet.{u}) _⦋n⦌) :
     gappedDiagram (objectSHomotopyVertex H hH v s) =
       variableTimeImage H (gappedDiagram v) (arTimeCoordinate s) :=
@@ -45,7 +45,7 @@ lemma objectSHomotopyVertex_diagram {X Y : StableModel.{u}} {f g : X ⟶ Y}
 規約：元の全 gapped 図式を使う。使われ方：単体ホモトピーの実際の prism。 -/
 def objectSHomotopyMap {X Y : StableModel.{u}} {f g : X ⟶ Y}
     (H : SSet.Homotopy f.val g.val)
-    (hH : ∀ c, IsInvertibleEdge (simplicialHomotopyVertexEdge H c).toTruncated) :
+    (hH : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H c).toTruncated) :
     objectSConstruction X.carrier ⊗ Δ[1] ⟶ objectSConstruction Y.carrier where
   app n := ↾fun p => objectSHomotopyVertex H hH p.1 p.2
   naturality {n m} α := by
@@ -64,7 +64,7 @@ def objectSHomotopyMap {X Y : StableModel.{u}} {f g : X ⟶ Y}
 使われ方：自然同値による object S のホモトピー不変性。 -/
 def objectSHomotopy {X Y : StableModel.{u}} {f g : X ⟶ Y}
     (H : SSet.Homotopy f.val g.val)
-    (hH : ∀ c, IsInvertibleEdge (simplicialHomotopyVertexEdge H c).toTruncated) :
+    (hH : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H c).toTruncated) :
     SSet.Homotopy (objectSConstructionFunctor.map f) (objectSConstructionFunctor.map g) where
   h := objectSHomotopyMap H hH
   h₀ := by
@@ -74,7 +74,7 @@ def objectSHomotopy {X Y : StableModel.{u}} {f g : X ⟶ Y}
     intro v
     apply gappedDiagram_injective
     change gappedDiagram (objectSHomotopyVertex H hH v
-        (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) n.unop.len)) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) n.unop.len)) =
       gappedDiagram ((objectSConstructionFunctor.map f).app n v)
     rw [objectSHomotopyVertex_diagram, arTimeCoordinate_constant, variableTimeImage_zero,
       gappedDiagram_objectSFunctor_map]
@@ -85,7 +85,7 @@ def objectSHomotopy {X Y : StableModel.{u}} {f g : X ⟶ Y}
     intro v
     apply gappedDiagram_injective
     change gappedDiagram (objectSHomotopyVertex H hH v
-        (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n.unop.len)) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n.unop.len)) =
       gappedDiagram ((objectSConstructionFunctor.map g).app n v)
     rw [objectSHomotopyVertex_diagram, arTimeCoordinate_constant, variableTimeImage_one,
       gappedDiagram_objectSFunctor_map]
@@ -101,9 +101,9 @@ def objectSHomotopy {X Y : StableModel.{u}} {f g : X ⟶ Y}
 規約：同型の高次の情報を保持した元の object S 関手。
 使われ方：object/core 比較と自明ファイブレーションによる模型の比較。 -/
 def objectSHomotopyOfFunctorIso {X Y : StableModel.{u}} {f g : X ⟶ Y}
-    (e : FunctorIso f.val g.val) :
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f.val g.val) :
     SSet.Homotopy (objectSConstructionFunctor.map f) (objectSConstructionFunctor.map g) :=
   objectSHomotopy e.simplicialHomotopy
-    (simplicialHomotopyOfFunctorEdge_vertex_isInvertible e.edge e.edge_isInvertible)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.simplicialHomotopyOfFunctorEdge_vertex_isInvertible e.edge e.edge_isInvertible)
 
 end SerrePositivity.KST.SConstruction

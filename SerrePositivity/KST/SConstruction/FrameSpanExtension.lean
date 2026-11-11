@@ -20,9 +20,9 @@ open scoped Simplicial
 方針：uncurry で二変数を開き、span の形状の等号を使う。
 規約：quasicategory 性は不要。使われ方：相対 cofiber 補完の境界条件。 -/
 lemma frameCofiberFamily_span {n : ℕ} {C : SSet.{u}} (F : frameNerve n ⟶ C) :
-    frameCofiberFamily F ≫ (pre spanSquareBoundary).app C =
+    frameCofiberFamily F ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary).app C =
       frameInclusion n ≫ frameCofiberSpanFamily F := by
-  have he : (spanSquareBoundary ▷ frameNerve n) ≫
+  have he : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary ▷ frameNerve n) ≫
       (β_ (Δ[1] ⊗ Δ[1] : SSet.{u}) (frameNerve n)).hom ≫ frameCofiberSquareMap n =
       ((horn 2 0 : SSet.{u}) ◁ frameInclusion n) ≫
         (β_ (horn 2 0 : SSet.{u}) (arNerve n)).hom ≫ arCofiberSpanMap n := by
@@ -36,12 +36,12 @@ lemma frameCofiberFamily_span {n : ℕ} {C : SSet.{u}} (F : frameNerve n ⟶ C) 
 /-- 概要：零対角の枠を、全 span を固定した cofiber の族へ厳密に延長できる。
 方針：枠包含を指定単射として相対 cofiber 補完を適用する。
 規約：C は安定な quasicategory。使われ方：零次元における gapped 図式の存在。 -/
-lemma exists_cofiberFamily_of_zeroFrame {n : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
-    (F : frameNerve n ⟶ C) (hF : IsZeroFrameVertex (functorVertex F)) :
+lemma exists_cofiberFamily_of_zeroFrame {n : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
+    (F : frameNerve n ⟶ C) (hF : IsZeroFrameVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) :
     ∃ H : arNerve n ⟶ cofiberDiagrams C,
       frameInclusion n ≫ H = zeroFrameCofiberFamily F hF ∧
       H ≫ cofiberSpan C = frameCofiberSpanFamily F := by
-  have hd : ∀ v : (arNerve n) _⦋0⦌, IsZeroTargetArrow
+  have hd : ∀ v : (arNerve n) _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroTargetArrow
       (((pre horn₂₀.ι₀₂).app C).app (Opposite.op ⦋0⦌)
         ((frameCofiberSpanFamily F).app (Opposite.op ⦋0⦌) v)) := by
     intro v
@@ -57,8 +57,8 @@ lemma exists_cofiberFamily_of_zeroFrame {n : ℕ} {C : SSet.{u}} [Quasicategory 
 規約：C は安定な quasicategory。出力の普遍性を仮定しない。
 使われ方：第一行制限の零次元の持ち上げ。 -/
 lemma exists_gapped_extension_of_zeroFrame {n : ℕ} {C : SSet.{u}}
-    [Quasicategory C] [IsStable C]
-    (F : frameNerve n ⟶ C) (hF : IsZeroFrameVertex (functorVertex F)) :
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
+    (F : frameNerve n ⟶ C) (hF : IsZeroFrameVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) :
     ∃ G : arNerve n ⟶ C, IsGapped G ∧ frameInclusion n ≫ G = F := by
   obtain ⟨H, hframe, hspan⟩ := exists_cofiberFamily_of_zeroFrame F hF
   refine ⟨H ≫ cofiberApex C, isGapped_cofiberFamily_of_fixed_span H F hF hframe hspan, ?_⟩

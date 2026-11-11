@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.PrismContraction
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.PrismContraction
 
 /-!
 概要：path の形状変数を始点へ収縮し、族のパラメータを保持する。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.FunctorIsoPointEvaluation
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorIsoPointEvaluation
 
 /-!
 概要：指定された単体的関手同型の合成標的を、ホモトピー圏上の通常の合成関手へ移す。

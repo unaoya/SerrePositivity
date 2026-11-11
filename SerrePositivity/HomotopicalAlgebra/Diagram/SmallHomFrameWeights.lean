@@ -40,7 +40,7 @@ def adjunction (A : K ⥤ SimplexCategory ⥤ C) : functor K A ⊣ hom K A :=
     (SmallHomModel.equivalence.{w} C).toAdjunction
 
 variable [ModelCategory SSet.{w}]
-  (I J : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
   (A : K ⥤ SimplexCategory ⥤ C)

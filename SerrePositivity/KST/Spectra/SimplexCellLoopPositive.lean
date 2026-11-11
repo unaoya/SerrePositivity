@@ -28,18 +28,18 @@ namespace SphereSimplex
 使われ方：Goerss–Jardine I §7。球面の次数移動の帰納段の検査。 -/
 theorem positiveHomotopyEquiv_loopPositive (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
-      (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right r
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup
+      (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right r
       (PointedSimplicialSet.basepoint
-        (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)))) :
+        (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)))) :
     positiveHomotopyEquiv Y n (r + 1)
       (PointedMapping.loopPositiveEquiv (PointedSimplicialSet.sphere.{u} (n + 1)) Y r a) =
         loopPositiveHomotopyEquiv Y (n + 1 + r)
-          (positiveHomotopyEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n r a) := by
+          (positiveHomotopyEquiv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n r a) := by
   rw [PointedMapping.loopPositiveEquiv_apply, positiveHomotopyEquiv_succ,
     MulEquiv.symm_apply_apply]
   change loopPositiveHomotopyEquiv Y (n + 1 + r)
-    (positiveHomotopyEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n r
+    (positiveHomotopyEquiv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n r
       (pointedGroupMap r
         (PointedMapping.loopSwap (PointedSimplicialSet.sphere.{u} (n + 1)) Y).hom
         (pointedGroupMap r
@@ -56,13 +56,13 @@ namespace SimplexCell
 使われ方：Goerss–Jardine VIII §1。塔の連結準同型を比較するための次数帰納。 -/
 theorem positiveHomotopyEquiv_loopPositive (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom (sphere.{u} (n + 1)) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right r
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom (sphere.{u} (n + 1)) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right r
       (PointedSimplicialSet.basepoint
-        (PointedObject.basedHom (sphere.{u} (n + 1)) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)))) :
+        (PointedObject.basedHom (sphere.{u} (n + 1)) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)))) :
     positiveHomotopyEquiv Y n (r + 1)
       (PointedMapping.loopPositiveEquiv (sphere.{u} (n + 1)) Y r a) =
         loopPositiveHomotopyEquiv Y (n + 1 + r)
-          (positiveHomotopyEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n r a) := by
+          (positiveHomotopyEquiv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n r a) := by
   rw [positiveHomotopyEquiv_formula, ← PointedMapping.loopPositiveEquiv_pre,
     SphereSimplex.positiveHomotopyEquiv_loopPositive, positiveHomotopyEquiv_formula]
 

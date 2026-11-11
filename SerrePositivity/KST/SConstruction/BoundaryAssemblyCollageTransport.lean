@@ -38,7 +38,7 @@ def boundaryAssemblyCollageHomotopy {I : Type u} [SmallCategory I]
 /-- 元の Ω 円柱の下段像・交差恒等射の比較・合成した円柱を保持する実三角形。 -/
 def boundaryAssemblyCollageTriangle {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) :
-    FunctorCompositionTriangle
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle
       (enrichedFunctorCollageInputHomotopy pointedKanLoopEnrichedFunctor
         (boundaryAssemblyNativeOmegaHomotopy r F))
       (enrichedFunctorCollageComparisonHomotopy pointedKanLoopEnrichedFunctor
@@ -53,11 +53,11 @@ def boundaryAssemblySuspensionTransportHomotopy {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) : SSet.Homotopy
       (pointedKanCoherentDiagram (F ⋙ boundaryKanRealizationFunctor r)
         (fun i => boundaryKanRealization_kanComplex r (F.obj i)) ≫
-          coherentNerveMap pointedKanInclusionEnriched ≫ coherentNerveMap suspensionEnrichedFunctor)
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanInclusionEnriched ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap suspensionEnrichedFunctor)
       (pointedKanCoherentDiagram (F ⋙ boundaryKanRealizationFunctor (r + 1))
         (fun i => boundaryKanRealization_kanComplex (r + 1) (F.obj i)) ≫
-          coherentNerveMap pointedKanInclusionEnriched) := by
-  let H := functorHomotopyPostcomp (boundaryAssemblyCollageHomotopy r F)
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanInclusionEnriched) := by
+  let H := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (boundaryAssemblyCollageHomotopy r F)
     loopCollageEvaluationNerve
   refine { h := H.h, h₀ := H.h₀.trans ?_, h₁ := H.h₁.trans ?_, rel := ?_ }
   · rw [Category.assoc, loopCollageEvaluationNerve_bottom]

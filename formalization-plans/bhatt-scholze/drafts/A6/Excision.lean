@@ -3,8 +3,8 @@
 module
 
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
-public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
-public import SerrePositivity.InfinityCategories.F1B.KanExtension.Definition
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.Definition
 -- 本ファイルは drafts/A6/{SheafOfSetsExcision,ArcSheafProperty}.lean、drafts/Sheaves/SpaceValued.lean（S8）、drafts/A4/InterfaceFields.lean、
 -- drafts/A5/PerfectSiteComparison.lean を import する。
 
@@ -206,7 +206,7 @@ theorem sections_homPushout_invertible (κ : Cardinal.{u}) [Fact ((κ + Cardinal
     (hφ : Sheaves.IsLocalEquivSet (arcTopologyPerfd p κ) (homPushoutComparison p R κ f I))
     (hP : HasLimit (Sheaves.sectionsOfDiagram (homPushoutPresheaf p R κ f I) (structurePresheaf (E := E) p κ)))
     (hS : HasLimit (Sheaves.sectionsOfDiagram (homPresheaf p κ S.right) (structurePresheaf (E := E) p κ))) :
-    SerrePositivity.InfinityCategories.IsInvertibleEdge
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
       (Sheaves.sectionsOf_map (homPushoutComparison p R κ f I) (structurePresheaf (E := E) p κ) hP hS).toTruncated := by
   exact Sheaves.sections_localEquiv_iso (arcTopologyPerfd p κ) _ hφ _ (structurePresheaf_isArcSheaf (E := E) p κ) hP hS
 

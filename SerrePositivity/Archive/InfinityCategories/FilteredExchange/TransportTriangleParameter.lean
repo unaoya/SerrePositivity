@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Fibrations.RightHomotopySquare
-public import SerrePositivity.InfinityCategories.F1.Coherent.TransformationFamilyDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.RightHomotopySquare
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.TransformationFamilyDiagram
 
 /-!
 概要：実二単体の三辺を、終辺が定値である同じ係数四角形で読む。

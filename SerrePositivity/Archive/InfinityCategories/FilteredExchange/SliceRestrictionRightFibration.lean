@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.SliceRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SliceRestriction
 
 /-!
 概要：任意の部分形状への slice の制限は right fibration である。

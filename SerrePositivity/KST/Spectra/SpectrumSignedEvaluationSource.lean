@@ -56,10 +56,10 @@ lemma signedEvaluationCompatibleSource_projection (X Y : OmegaSpectrum.{u}) :
 lemma signedEvaluationCompatibleTracedComparison_piIsomorphism (X Y : OmegaSpectrum.{u})
     {B : PointedSimplicialSet.{u}} (j : B ⟶ pointedSpace CirclePower.space.{u} X Y)
     [Mono j.right] :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (kanAdjointRelativeTracedBFComparison X Y
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (kanAdjointRelativeTracedBFComparison X Y
       (sourceMap CirclePower.space.{u} X Y) j).right :=
   kanAdjointRelativeTracedBFComparison_piIsomorphism X Y
     (sourceMap CirclePower.space.{u} X Y) j
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (sourceMap_trivialKanFibration CirclePower.space.{u} X Y).mem)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (sourceMap_trivialKanFibration CirclePower.space.{u} X Y).mem)
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.CotensorCompatible

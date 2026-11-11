@@ -31,7 +31,7 @@ lemma cocone_boundary : δ (-1) 0 (mappingCocone.snd (difference R f g)) +
     simp only [difference, coconeLeft, coconeRight, biprod.desc_eq, Preadditive.comp_add,
       Preadditive.comp_neg, Category.assoc, sub_eq_add_neg]
   rw [← hd]
-  exact complexMappingCocone_snd_boundary _
+  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCocone_snd_boundary _
 
 def fromMappingCocone : mappingCocone (difference R f g) ⟶ (algebra R f g).X :=
   complexLift R f g (coconeLeft R f g) (coconeRight R f g)
@@ -50,7 +50,7 @@ lemma fromMappingCocone_primitive :
 
 lemma fromMappingCocone_toMappingCocone :
     fromMappingCocone R f g ≫ toMappingCocone R f g = 𝟙 _ := by
-  apply dgMappingCocone_hom_ext (difference R f g)
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgMappingCocone_hom_ext (difference R f g)
   · apply biprod.hom_ext
     · simp only [Category.assoc, Category.id_comp, toMappingCocone_left]
       exact fromMappingCocone_left R f g

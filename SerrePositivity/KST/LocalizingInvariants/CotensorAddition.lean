@@ -37,7 +37,7 @@ lemma zero_vertex (A B : OmegaSpectrum.{u}) :
   intro n
   rw [vertexOfHom_evaluation, zero_app, ← PointedMapping.familyVertex_eq_pointedHomVertex,
     PointedMapping.familyVertex_zero]
-  exact (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (RawSpectrumMapping.pointedEvaluation A B.toKanSequence n)).symm
+  exact (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (RawSpectrumMapping.pointedEvaluation A B.toKanSequence n)).symm
 
 lemma circle_basepoint (M : PointedSimplicialSet.{u}) [KanComplex M.right] :
     CirclePower.componentEquiv M
@@ -45,16 +45,16 @@ lemma circle_basepoint (M : PointedSimplicialSet.{u}) [KanComplex M.right] :
         (PointedObject.basedHom CirclePower.space.{u} M))) = 1 := by
   rw [← PointedMapping.familyVertex_zero CirclePower.space M,
     CirclePower.componentEquiv_familyVertex]
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (0 : CirclePower.space.{u} ⟶ M).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) CirclePower.generator = 1
-  simp only [PointedObject.zero_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const]
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_const 1 _ CirclePower.generator
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (0 : CirclePower.space.{u} ⟶ M).right
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _) CirclePower.generator = 1
+  simp only [PointedObject.zero_right, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const]
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.map_const 1 _ CirclePower.generator
 
 lemma equiv_zero (A Z : OmegaSpectrum.{u}) : equiv A Z (component (0 : A ⟶ target Z)) = 1 := by
   change CirclePower.componentEquiv (RawSpectrumMapping.pointedSpace A Z.toKanSequence)
     (mapπ₀ (comparison A Z).right (π₀.mk (vertexOfHom (0 : A ⟶ target Z)))) = 1
   rw [mapπ₀_mk, zero_vertex]
-  have hb := _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (comparison A Z)
+  have hb := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (comparison A Z)
   exact (congrArg (fun v ↦ CirclePower.componentEquiv
     (RawSpectrumMapping.pointedSpace A Z.toKanSequence) (π₀.mk v)) hb).trans (circle_basepoint _)
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.UnstraighteningTriangleComparisonPresentation
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoComponentTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentTransport
 
 /-!
 概要：指定三角形の長辺の unstraightening 比較は、二辺の実際の相対合成と同型。

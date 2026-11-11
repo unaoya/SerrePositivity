@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentHomotopyVertex
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTransformationPointEvaluation
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorCompositionTriangle
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle
 
 /-!
 概要：元の関手三角形を同じ三辺・全二単体を持つ coherent な変換三角形にする。

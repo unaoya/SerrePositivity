@@ -35,7 +35,7 @@ lemma multiSConstructionFunctor_obj (r : ℕ) (X : StableModel.{u}) :
 規約：core は α2 の既存の関手。使われ方：実現前の自然性。 -/
 def multiCoreSConstructionFunctor (r : ℕ) :
     StableModel.{u} ⥤ ((Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) :=
-  multiSConstructionFunctor r ⋙ (Functor.whiskeringRight _ _ _).obj quasicategoryCoreFunctor
+  multiSConstructionFunctor r ⋙ (Functor.whiskeringRight _ _ _).obj _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
 
 /-- 概要：多単体的 core の関手の各入力での値は既存の多単体的 core。
 方針：後合成の定義を使う。

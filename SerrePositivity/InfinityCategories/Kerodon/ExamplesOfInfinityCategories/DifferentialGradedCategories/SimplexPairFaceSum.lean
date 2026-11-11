@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：二つの単体射へ同じ面を後合成する写像を自由化する。
 規約：KST Construction A.5、標的次数と鎖次数は独立。
 使われ方：標準比較ホモトピーの再帰の既構成部分と二重面の相殺。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

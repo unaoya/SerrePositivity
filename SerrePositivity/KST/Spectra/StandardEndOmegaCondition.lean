@@ -25,18 +25,18 @@ lemma ordinaryTotalization_omegaCondition (D : CosimplicialObject KanSequence.{u
     (ordinaryTotalization D hD).OmegaCondition := by
   intro n
   let f := totalizationComparison D hD
-  have hf : ∀ k, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app k).right := totalizationComparison_levelwise D hD
+  have hf : ∀ k, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app k).right := totalizationComparison_levelwise D hD
   have hY := homotopyLimit_omegaCondition (AsSmall.down ⋙ D)
     (fun j ↦ hΩ (AsSmall.down.obj j))
   have hpost := PointedMapping.post_piIsomorphism PointedSimplicialSet.circle.{u}
     (f.app (n + 1)) (hf (n + 1))
   have h := (hf n).comp (hY n)
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app n ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv
     ((homotopyLimit (AsSmall.down ⋙ D)).level n).space
     ((homotopyLimit (AsSmall.down ⋙ D)).level (n + 1)).space
     ((homotopyLimit (AsSmall.down ⋙ D)).sigma n)).right at h
   rw [f.adjoint_comm n] at h
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp h hpost
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp h hpost
 
 end
 end SerrePositivity.KST.Spectra.KanSequence

@@ -47,7 +47,7 @@ def loopExchangeNaturalitySquare :
   h₁ := by
     change SSet.ι₁ ≫ (loopExchangeNaturalityData v).h =
       (loopExchangeInterval Z').path ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (loopPost v)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (loopPost v)
           (LoopExchangePaths.doubleLoop
             (PointedObject.basedHom PointedSimplicialSet.circle.{u} Z'))).right
     rw [loopExchangeInterval_path]
@@ -59,9 +59,9 @@ omit [KanComplex Z.right] [KanComplex Z'.right] in
 lemma mappingIso_conjugate_pre (a : source.{u} ⟶ source.{u})
     (t : LoopExchangePaths.doubleLoop (PointedObject.basedHom PointedSimplicialSet.circle.{u} Z') ⟶
       LoopExchangePaths.doubleLoop (PointedObject.basedHom PointedSimplicialSet.circle.{u} Z'))
-    (ht : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Z' ≫ (mappingIso Z').hom = (mappingIso Z').hom ≫ t) :
+    (ht : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Z' ≫ (mappingIso Z').hom = (mappingIso Z').hom ≫ t) :
     (mappingIso Z).inv ≫
-        ((PointedObject.basedHomMap source.{u} v ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Z') ≫
+        ((PointedObject.basedHomMap source.{u} v ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Z') ≫
           (mappingIso Z').hom) = loopPost v ≫ t := by
   simp only [Category.assoc]
   rw [ht, ← Category.assoc (PointedObject.basedHomMap source.{u} v),
@@ -79,7 +79,7 @@ lemma loopExchangeNaturalitySquare_start :
   rw [← Category.assoc, UniversalSourceInterval.naturalitySquare_start,
     SSet.const_comp]
   have hv := PointedMapping.coordinateMap_vertex (mappingIso Z).inv (mappingIso Z').hom
-    (PointedObject.basedHomMap source.{u} v ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed swap.{u} Z')
+    (PointedObject.basedHomMap source.{u} v ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed swap.{u} Z')
   have he := mappingIso_conjugate_pre v swap.{u} _
     (TwoLoopSource.mappingIso_pre_swap PointedSimplicialSet.circle.{u} Z')
   exact (congrArg (fun x => SSet.const (X := (Δ[1] : SSet.{u})) x) hv).trans
@@ -97,7 +97,7 @@ lemma loopExchangeNaturalitySquare_finish :
   rw [← Category.assoc, UniversalSourceInterval.naturalitySquare_finish,
     SSet.const_comp]
   have hv := PointedMapping.coordinateMap_vertex (mappingIso Z).inv (mappingIso Z').hom
-    (PointedObject.basedHomMap source.{u} v ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed reversal.{u} Z')
+    (PointedObject.basedHomMap source.{u} v ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed reversal.{u} Z')
   have he := mappingIso_conjugate_pre v reversal.{u} _
     (TwoLoopSource.mappingIso_pre_reversal PointedSimplicialSet.circle.{u} Z')
   exact (congrArg (fun x => SSet.const (X := (Δ[1] : SSet.{u})) x) hv).trans

@@ -7,7 +7,7 @@ public import SerrePositivity.KST.Spectra.SphereHomotopy
 概要：点つき内部 Hom の頂点を通常のパラメータ付き curry で表示する。
 方針：零次標準単体との積の射影とその切断を用いて、等化子の普遍性で同値を作る。
 規約：標的の Kan 性を仮定しない。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。球面の写像族の端点の計算。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.2（Tag 00VJ）。球面の写像族の端点の計算。
 -/
 
 @[expose] public section
@@ -69,7 +69,7 @@ theorem zeroSection_natural {X Y : SSet.{u}} (f : X ⟶ Y) :
 使われ方：Goerss–Jardine I §7。写像空間の端点の表示。 -/
 def pointFamily {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
     (Δ[0] : SSet.{u}) ⟶ (PointedObject.basedHom X Y).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry X Y (fst X.right (Δ[0] : SSet.{u}) ≫ f.right) (by
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry X Y (fst X.right (Δ[0] : SSet.{u}) ≫ f.right) (by
     rw [whiskerRight_fst_assoc, Under.w f]
     rfl)
 
@@ -88,7 +88,7 @@ def familyMap (X Y : PointedSimplicialSet.{u})
     (v : (PointedObject.basedHom X Y).right _⦋0⦌) : X ⟶ Y :=
   Under.homMk (zeroSection X.right ≫
     MonoidalClosed.uncurry (SSet.yonedaEquiv.symm v ≫ PointedObject.basedHomι X Y)) (by
-      rw [← Category.assoc, zeroSection_natural, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint,
+      rw [← Category.assoc, zeroSection_natural, Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.uncurry_basepoint,
         comp_toUnit_assoc]
       rfl)
 
@@ -104,8 +104,8 @@ theorem familyMap_familyVertex {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
     (SSet.yonedaEquiv.symm (SSet.yonedaEquiv (pointFamily f)) ≫ PointedObject.basedHomι X Y) = _
   rw [Equiv.symm_apply_apply]
   change zeroSection X.right ≫ MonoidalClosed.uncurry
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry X Y (fst X.right (Δ[0] : SSet.{u}) ≫ f.right) _ ≫ PointedObject.basedHomι X Y) = _
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, MonoidalClosed.uncurry_curry, ← Category.assoc, zeroSection_fst,
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry X Y (fst X.right (Δ[0] : SSet.{u}) ≫ f.right) _ ≫ PointedObject.basedHomι X Y) = _
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, MonoidalClosed.uncurry_curry, ← Category.assoc, zeroSection_fst,
     Category.id_comp]
 
 /-- 概要：内部 Hom の頂点を射へ戻してから頂点へ移すと元の頂点。
@@ -119,8 +119,8 @@ theorem familyVertex_familyMap (X Y : PointedSimplicialSet.{u})
   change SSet.yonedaEquiv.symm (SSet.yonedaEquiv (pointFamily (familyMap X Y v))) = _
   rw [Equiv.symm_apply_apply]
   apply (cancel_mono (PointedObject.basedHomι X Y)).1
-  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry X Y _ _ ≫ PointedObject.basedHomι X Y = _
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι]
+  change _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry X Y _ _ ≫ PointedObject.basedHomι X Y = _
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι]
   change MonoidalClosed.curry (fst X.right (Δ[0] : SSet.{u}) ≫
     (zeroSection X.right ≫ MonoidalClosed.uncurry
       (SSet.yonedaEquiv.symm v ≫ PointedObject.basedHomι X Y))) = _
@@ -129,7 +129,7 @@ theorem familyVertex_familyMap (X Y : PointedSimplicialSet.{u})
 /-- 概要：パラメータ付き curry による点つき射と内部 Hom の頂点の同値。
 方針：評価と定数な零次パラメータ族が互いに逆であることを使う。
 規約：通常の単体集合の指数と等化子の定義だけを用いる。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。球面の写像空間の π₀ の比較。 -/
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.2（Tag 00VJ）。球面の写像空間の π₀ の比較。 -/
 def familyVertexEquiv (X Y : PointedSimplicialSet.{u}) :
     (X ⟶ Y) ≃ (PointedObject.basedHom X Y).right _⦋0⦌ where
   toFun := familyVertex
@@ -146,7 +146,7 @@ theorem familyVertex_post {A X Y : PointedSimplicialSet.{u}} (f : A ⟶ X) (p : 
   have hm : pointFamily f ≫ (PointedObject.basedHomMap A p).right = pointFamily (f ≫ p) := by
     apply (cancel_mono (PointedObject.basedHomι A Y)).1
     rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc]
-    simp only [pointFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι]
+    simp only [pointFamily, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι]
     rw [← MonoidalClosed.curry_natural_right]
     rfl
   change (PointedObject.basedHomMap A p).right.app _ (SSet.yonedaEquiv (pointFamily f)) = _
@@ -158,16 +158,16 @@ theorem familyVertex_post {A X Y : PointedSimplicialSet.{u}} (f : A ⟶ X) (p : 
 規約：源の射に単射性を仮定しない。
 使われ方：Goerss–Jardine I §7。円の自己射による前合成の成分計算。 -/
 theorem familyVertex_pre {A B Y : PointedSimplicialSet.{u}} (i : A ⟶ B) (f : B ⟶ Y) :
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y).right.app _ (familyVertex f) = familyVertex (i ≫ f) := by
-  have hm : pointFamily f ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y).right = pointFamily (i ≫ f) := by
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y).right.app _ (familyVertex f) = familyVertex (i ≫ f) := by
+  have hm : pointFamily f ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y).right = pointFamily (i ≫ f) := by
     apply (cancel_mono (PointedObject.basedHomι A Y)).1
     rw [Category.assoc]
-    change pointFamily f ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y ≫ PointedObject.basedHomι A Y) = _
-    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc]
-    simp only [pointFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι]
+    change pointFamily f ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y ≫ PointedObject.basedHomι A Y) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_ι, ← Category.assoc]
+    simp only [pointFamily, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι]
     rw [MonoidalClosed.curry_pre_app, whiskerRight_fst_assoc]
     rfl
-  change (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y).right.app _ (SSet.yonedaEquiv (pointFamily f)) = _
+  change (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y).right.app _ (SSet.yonedaEquiv (pointFamily f)) = _
   rw [← SSet.yonedaEquiv_comp]
   exact congrArg SSet.yonedaEquiv hm
 

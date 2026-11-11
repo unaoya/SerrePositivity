@@ -33,13 +33,13 @@ lemma cubicalLambdaNerveTensor_app {N : ℕ}
       cubicalLambdaFunctorPair A F G := rfl
 
 /-- native dg nerve の直積から実 tensor dg 圏の native nerve への実単体的比較。 -/
-def dgNerveTensor : dgNerve A D ⊗ dgNerve A E ⟶ dgNerve A (DGTensorCategory A D E) :=
+def dgNerveTensor : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A D ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A E ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (DGTensorCategory A D E) :=
   ((cubicalLambdaNerveNativeIso A D).inv ⊗ₘ (cubicalLambdaNerveNativeIso A E).inv) ≫
     cubicalLambdaNerveTensor A D E ≫
       (cubicalLambdaNerveNativeIso A (DGTensorCategory A D E)).hom
 
 /-- native 比較は、両方の実逆 dg 関手を対角で組にして native 単体へ戻す。 -/
-lemma dgNerveTensor_app {N : ℕ} (s : DGNerve.Simplex A D N) (t : DGNerve.Simplex A E N) :
+lemma dgNerveTensor_app {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) (t : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A E N) :
     (dgNerveTensor A D E).app (op ⦋N⦌) (s, t) =
       cubicalLambdaNativeSimplex A
         (cubicalLambdaFunctorPair A (simplexHAInverseFunctor A s) (simplexHAInverseFunctor A t)) :=

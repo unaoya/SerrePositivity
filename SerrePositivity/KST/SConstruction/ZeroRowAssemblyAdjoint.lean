@@ -76,7 +76,7 @@ lemma zeroRowLoopComparison_reducedAssemblyAdjoint (r : ℕ) (X : StableModel.{u
 /-- 元の全零境界商に降りた具体的 loop 比較。 -/
 def zeroRowReducedLoopComparison (r : ℕ) (X : StableModel.{u}) :
     boundaryReducedRealization r (sStableModel 1 X) ⟶
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((boundaryKanRealizationFunctor (r + 1)).obj X) :=
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((boundaryKanRealizationFunctor (r + 1)).obj X) :=
   (sOneInnerOuterReducedIso r X).hom ≫ (kanTargetAssemblyAdjointNat r).app X ≫
     (PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u}).map
       (Spectra.PointedKanReplacement.functor.map (cyclicBoundaryIso (r + 1) X).inv)
@@ -106,7 +106,7 @@ lemma zeroRowLoopComparison_fatBoundary (r : ℕ) (X : StableModel.{u}) :
       zeroRowLoopComparison (r + 1) X =
       SemiCartesianMonoidalCategory.toUnit
         (zeroDirectionsFatBoundary (r + 1) (sStableModel 1 X)).toSSet ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((boundaryKanRealizationFunctor (r + 1)).obj X)).hom := by
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((boundaryKanRealizationFunctor (r + 1)).obj X)).hom := by
   rw [← zeroRowReducedLoopComparison_quotient, ← Category.assoc]
   change ((zeroDirectionsFatBoundary (r + 1) (sStableModel 1 X)).ι ≫
     PointedObject.cofiberQuotient

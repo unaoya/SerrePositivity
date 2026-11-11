@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingPreNaturality
 public import SerrePositivity.KST.Spectra.RawSpectrumCotensorIso
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeNaturality
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeNaturality
 
 /-!
 概要：元の cotensor 交換は、BF 源の射による前合成と厳密に可換。
@@ -31,11 +31,11 @@ lemma cotensorComparison_pre_source {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
   dsimp only [exchangeFamily]
   rw [← Category.assoc, pointedPre_evaluation, Category.assoc]
   change pointedEvaluation Y (KanSequence.mapping A Z) n ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (f.app n) ((ihom A).obj (Z.level n).space) ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (X.level n).space A (Z.level n).space).hom) = _
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_left (f.app n) A (Z.level n).space
-  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc]
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (f.app n) ((ihom A).obj (Z.level n).space) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (X.level n).space A (Z.level n).space).hom) = _
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
+  have h := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeNaturality.natural_pre_left (f.app n) A (Z.level n).space
+  simp only [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, Category.assoc]
   exact congrArg (pointedEvaluation Y (KanSequence.mapping A Z) n ≫ ·) h
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

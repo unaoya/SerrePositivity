@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitConeFamilyFunctor
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeTerminalFamilyHomotopy
 
 /-!

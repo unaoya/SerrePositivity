@@ -46,10 +46,10 @@ variable (C : Type u) [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
 
 abbrev baseParameters := SelectedIntervalDiagram.forget C ⋙
   ResolutionArrowComparisonEndpoints.parameter C
-abbrev pointParameters := NerveCylinderBoundary.product (baseParameters C)
+abbrev pointParameters := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (baseParameters C)
   (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 0))
 abbrev faceMap (ε : Fin 2) : pointParameters C ⟶ SelectedIntervalDiagram.parameters C :=
-  Functor.whiskerLeft (SelectedIntervalDiagram.forget C) (NerveCylinderBoundary.vertical
+  Functor.whiskerLeft (SelectedIntervalDiagram.forget C) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical
     (SSet.stdSimplex.δ ε) (ResolutionArrowComparisonEndpoints.parameter C))
 
 abbrev left : NerveMovingParameter.System.{u, v} (baseParameters C)
@@ -61,19 +61,19 @@ abbrev right : NerveMovingParameter.System.{u, v} (baseParameters C)
 
 lemma coherent_zero : SelectedIntervalDiagram.coherent C hcof hfib ≫ restriction
     (pointParameters C) (SelectedIntervalDiagram.parameters C)
-      (NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) (faceMap C 1) =
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) (faceMap C 1) =
     NerveProductParameter.expand (baseParameters C)
-      (NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C))
         (SSet.stdSimplex.obj (SimplexCategory.mk 0)) (left C hcof) := by
   have hb : SelectedIntervalDiagram.coherent C hcof hfib ≫ restriction
       (SelectedIntervalDiagram.boundaries C) (SelectedIntervalDiagram.parameters C)
-        (NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C))
           (SelectedIntervalDiagram.boundaryInclusion C) =
       SelectedIntervalDiagram.fixedBoundary C hcof :=
     SelectedIntervalDiagram.coherent_boundary C hcof hfib
   change SelectedIntervalDiagram.coherent C hcof hfib ≫ restriction _ _ _
     (Functor.whiskerLeft (SelectedIntervalDiagram.forget C)
-      (NerveCylinderBoundary.vertical (SSet.stdSimplex.δ (1 : Fin 2))
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.stdSimplex.δ (1 : Fin 2))
         (ResolutionArrowComparisonEndpoints.parameter C))) = _
   rw [← ResolutionArrowCylinderFaces.zero]
   change SelectedIntervalDiagram.coherent C hcof hfib ≫ restriction _ _ _
@@ -90,19 +90,19 @@ lemma coherent_zero : SelectedIntervalDiagram.coherent C hcof hfib ≫ restricti
 
 lemma coherent_one : SelectedIntervalDiagram.coherent C hcof hfib ≫ restriction
     (pointParameters C) (SelectedIntervalDiagram.parameters C)
-      (NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) (faceMap C 0) =
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) (faceMap C 0) =
     NerveProductParameter.expand (baseParameters C)
-      (NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C))
         (SSet.stdSimplex.obj (SimplexCategory.mk 0)) (right C hcof) := by
   have hb : SelectedIntervalDiagram.coherent C hcof hfib ≫ restriction
       (SelectedIntervalDiagram.boundaries C) (SelectedIntervalDiagram.parameters C)
-        (NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C))
           (SelectedIntervalDiagram.boundaryInclusion C) =
       SelectedIntervalDiagram.fixedBoundary C hcof :=
     SelectedIntervalDiagram.coherent_boundary C hcof hfib
   change SelectedIntervalDiagram.coherent C hcof hfib ≫ restriction _ _ _
     (Functor.whiskerLeft (SelectedIntervalDiagram.forget C)
-      (NerveCylinderBoundary.vertical (SSet.stdSimplex.δ (0 : Fin 2))
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.stdSimplex.δ (0 : Fin 2))
         (ResolutionArrowComparisonEndpoints.parameter C))) = _
   rw [← ResolutionArrowCylinderFaces.one]
   change SelectedIntervalDiagram.coherent C hcof hfib ≫ restriction _ _ _
@@ -120,9 +120,9 @@ lemma coherent_one : SelectedIntervalDiagram.coherent C hcof hfib ≫ restrictio
 variable {E : Type uE} [Category.{vE} E] (B : E ⥤ SelectedIntervalDiagram.Index C)
 
 lemma reindex_left : reindex (baseParameters C)
-    (NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) B (left C hcof) =
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) B (left C hcof) =
     NerveArrowComparisonComposition.leftAlong (ResolutionArrowTupleCoherence.bigTuples C)
-      (NerveMovingParameter.lifted (ResolutionArrowDiagram.fibers C))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (ResolutionArrowDiagram.fibers C))
       (ResolutionArrowTupleCoherence.system C hcof)
       ((B ⋙ SelectedIntervalDiagram.forget C) ⋙ Arrow.leftFunc)
       ((B ⋙ SelectedIntervalDiagram.forget C) ⋙ Arrow.rightFunc)
@@ -132,9 +132,9 @@ lemma reindex_left : reindex (baseParameters C)
   rw [reindex_reindex, NerveArrowComparisonComposition.left_reindex]
 
 lemma reindex_right : reindex (baseParameters C)
-    (NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) B (right C hcof) =
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) B (right C hcof) =
     NerveArrowComparisonComposition.rightAlong (ResolutionArrowTupleCoherence.bigTuples C)
-      (NerveMovingParameter.lifted (ResolutionArrowDiagram.fibers C))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (ResolutionArrowDiagram.fibers C))
       (ResolutionArrowTupleCoherence.system C hcof)
       ((B ⋙ SelectedIntervalDiagram.forget C) ⋙ Arrow.leftFunc)
       ((B ⋙ SelectedIntervalDiagram.forget C) ⋙ Arrow.rightFunc)
@@ -144,26 +144,26 @@ lemma reindex_right : reindex (baseParameters C)
   rw [reindex_reindex, NerveArrowComparisonComposition.right_reindex]
 
 lemma reindexed_zero : reindex (SelectedIntervalDiagram.parameters C)
-    (NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) B
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) B
       (SelectedIntervalDiagram.coherent C hcof hfib) ≫ restriction _ _ _
         (Functor.whiskerLeft B (faceMap C 1)) =
     NerveProductParameter.expand (B ⋙ baseParameters C)
-      (B ⋙ NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C))
+      (B ⋙ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C))
         (SSet.stdSimplex.obj (SimplexCategory.mk 0))
           (reindex (baseParameters C)
-            (NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) B
+            (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) B
               (left C hcof)) := by
   rw [← reindex_restriction, coherent_zero, reindex_expand]
 
 lemma reindexed_one : reindex (SelectedIntervalDiagram.parameters C)
-    (NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) B
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) B
       (SelectedIntervalDiagram.coherent C hcof hfib) ≫ restriction _ _ _
         (Functor.whiskerLeft B (faceMap C 0)) =
     NerveProductParameter.expand (B ⋙ baseParameters C)
-      (B ⋙ NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C))
+      (B ⋙ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C))
         (SSet.stdSimplex.obj (SimplexCategory.mk 0))
           (reindex (baseParameters C)
-            (NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) B
+            (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (SelectedIntervalDiagram.smallValues C)) B
               (right C hcof)) := by
   rw [← reindex_restriction, coherent_one, reindex_expand]
 

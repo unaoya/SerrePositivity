@@ -16,7 +16,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の native HA 単体から、元の全生成元値を持つ実 Hom 鎖射を無条件に復元する。 -/
-def simplexHAChainLift {N : ℕ} (s : DGNerve.Simplex A D N) (m : ℕ)
+def simplexHAChainLift {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1)) (hb : v (Fin.last m) < b) :
     serreCubeComplex A m ⟶ homObject A D (s.obj (v 0)) (s.obj b) :=
   serreCubeChainLift A m (homObject A D (s.obj (v 0)) (s.obj b))
@@ -27,12 +27,12 @@ def simplexHAChainLift {N : ℕ} (s : DGNerve.Simplex A D N) (m : ℕ)
         (simplexHADegreeLift_generator_comm A s m i v b hb k hi))
 
 /-- 元の実 Hom 鎖射の全整数次数成分は、元の同じ次数線形復元そのもの。 -/
-lemma simplexHAChainLift_f {N : ℕ} (s : DGNerve.Simplex A D N) (m : ℕ)
+lemma simplexHAChainLift_f {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1)) (hb : v (Fin.last m) < b) (k : ℤ) :
     (simplexHAChainLift A s m v b hb).f k = simplexHADegreeLift A s.toSimplexData m v b hb k := rfl
 
 /-- 元の実 Hom 鎖射は、元の全生成元の指定次数移送の HA 値を回収する。 -/
-lemma simplexHAChainLift_generator {N : ℕ} (s : DGNerve.Simplex A D N) (m : ℕ)
+lemma simplexHAChainLift_generator {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1)) (hb : v (Fin.last m) < b)
     (k : ℤ) (i : SerreCubeGeneratorIndex m) (hi : serreCubeGeneratorDegree m i = k) :
     (simplexHAChainLift A s m v b hb).f k

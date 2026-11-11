@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FilteredIntervalColimit
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredFiniteLimits
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FilteredFiniteLimits
 
 /-!
 概要：path 置換は通常の filtered 余極限と標準同型を介して交換する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGStrictCommaComposition
-public import SerrePositivity.InfinityCategories.Derived.DGFunctorCommaProjections
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaProjections
 
 /-! # 全 Hom 上の閉比較から作る厳密 dg comma 関手
 概要：元の二関手と全 Hom 自然な閉比較を、実 comma 値 dg 関手へ束ねる。
@@ -20,7 +20,7 @@ namespace DGStrictCommaFamily
 variable (d : DGStrictCommaFamily R C E F P)
 
 /-- 元の二関手と同じ閉比較を持ち、全 Hom 作用を保つ実 dg 関手。 -/
-def toDGFunctor : DGFunctor R P (DGFunctorCommaObject R C E F) where
+def toDGFunctor : DGFunctor R P (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject R C E F) where
   obj := d.obj
   map := d.homMap
   map_id := d.homMap_id
@@ -28,24 +28,24 @@ def toDGFunctor : DGFunctor R P (DGFunctorCommaObject R C E F) where
 
 /-- 同じ実 dg 関手の入力射影は、元の第一関手そのもの。 -/
 lemma toDGFunctor_source :
-    d.toDGFunctor.comp (dgFunctorCommaSource R C E F) = d.source := by
+    d.toDGFunctor.comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaSource R C E F) = d.source := by
   apply EnrichedFunctor.ext (Complex R)
-    (F := d.toDGFunctor.comp (dgFunctorCommaSource R C E F)) (G := d.source)
+    (F := d.toDGFunctor.comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaSource R C E F)) (G := d.source)
     (fun _ => rfl)
   intro x y
-  change (d.homMap x y ≫ dgFunctorCommaSourceHomMap R C E F (d.obj x) (d.obj y)) ≫
+  change (d.homMap x y ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaSourceHomMap R C E F (d.obj x) (d.obj y)) ≫
     𝟙 _ = d.source.map x y
   exact (Category.comp_id _).trans (d.homMap_source x y)
 
 /-- 同じ実 dg 関手の比較対象射影は、元の第二関手そのもの。 -/
 lemma toDGFunctor_replacement :
-    d.toDGFunctor.comp (dgFunctorCommaReplacement R C E F) = d.replacement := by
+    d.toDGFunctor.comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaReplacement R C E F) = d.replacement := by
   apply EnrichedFunctor.ext (Complex R)
-    (F := d.toDGFunctor.comp (dgFunctorCommaReplacement R C E F)) (G := d.replacement)
+    (F := d.toDGFunctor.comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaReplacement R C E F)) (G := d.replacement)
     (fun _ => rfl)
   intro x y
   change (d.homMap x y ≫
-    dgFunctorCommaReplacementHomMap R C E F (d.obj x) (d.obj y)) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaReplacementHomMap R C E F (d.obj x) (d.obj y)) ≫
       𝟙 _ = d.replacement.map x y
   exact (Category.comp_id _).trans (d.homMap_replacement x y)
 

@@ -17,7 +17,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "B" => DGOdotGluing R d
 local notation "P" => DGCategoryCellResolution.Source R (B)
 local notation "Q" => DGQuotient.QuotientObject (P)
-  (resolvedDGNullObjects R (B)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (B)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))))
 local notation "F" => dgOdotMilnorRightAxisEndofunctor R d
 local notation "τ" => dgOdotMilnorRightAxisComparison R d
@@ -26,7 +26,7 @@ local notation "q" => dgOdotMilnorResolvedInclusion R d
 方針：同じ実延長作用を特殊化する。規約：元二 graph を保持。
 使われ方：中央比較と増大 square の共通作用。 -/
 abbrev dgOdotMilnorRightAxisPerfNativeFunctor : BimoduleCategory R (P) (P) ⥤
-    hoFunctor.obj ((ihom (dgNerve R (P))).obj (dgNerve R (RightModule R (Q)))) :=
+    hoFunctor.obj ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (P))).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R (Q)))) :=
   dgCellGraphExtendedNativeFunctor.{u, u} R (B) (Q) (q)
 local notation "N" => dgOdotMilnorRightAxisPerfNativeFunctor R d
 
@@ -57,9 +57,9 @@ lemma dgOdotMilnorRightAxisPerfNativeAugmentationSquare :
       (N).map (dgCellResolvedGraphResolution R (B) (DGFunctor.id (B))).π =
     (N).map (dgCellResolvedGraphResolution R (B) (F)).π ≫
       (N).map (dgCellRestrictedGraphMap R (B) (F) (DGFunctor.id (B)) (τ)) := by
-  let I := dgFullSubcategoryInclusion R (RightModule R (Q)) (dgModuleSemifreeProperty R (Q))
-  let H := SSet.mapHomotopyCategory ((ihom (dgNerve R (P))).map
-    (dgModuleExtensionInfinity R (P) (Q) (q) ≫ dgNerve.map I))
+  let I := dgFullSubcategoryInclusion R (RightModule R (Q)) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleSemifreeProperty R (Q))
+  let H := SSet.mapHomotopyCategory ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (P))).map
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleExtensionInfinity R (P) (Q) (q) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map I))
   exact (H.map_comp _ _).symm.trans
     ((congrArg H.map (dgCellResolvedGraphNativeSquare.{u, u} R (B) (F) (DGFunctor.id (B)) (τ))).trans
       (H.map_comp _ _))

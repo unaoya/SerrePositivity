@@ -8,7 +8,7 @@ public import SerrePositivity.KST.Spectra.SquareReducedDesc
 概要：対角辺で一致する相対三角形の二つの写像を正方形に貼る。
 方針：正方形の pushout と外側の四辺の消滅を使う。
 規約：二つの相対三角形は同じ向きの対角辺を共有する。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。二つの円の交換の幾何的な模型。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.3（Tag 00W3）。二つの円の交換の幾何的な模型。
 -/
 
 @[expose] public section
@@ -33,7 +33,7 @@ variable {Y : PointedSimplicialSet.{u}} (a b : triangleDisk.{u} ⟶ Y)
 規約：上側が a、下側が b。
 使われ方：Goerss–Jardine I §7。相対三角形の貼り合わせからの写像。 -/
 def trianglePairSquare : (Δ[1] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ Y.right :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.desc (triangleDiskQuotient ≫ a.right)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.isPushout.desc (triangleDiskQuotient ≫ a.right)
     (triangleDiskQuotient ≫ b.right) (by
       rw [← triangleDiskDiagonal_quotient_assoc, ← triangleDiskDiagonal_quotient_assoc]
       exact congrArg (fun k : PointedSimplicialSet.circle.{u} ⟶ Y =>
@@ -42,20 +42,20 @@ def trianglePairSquare : (Δ[1] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ Y.right :
 /-- 概要：貼った写像の上側への制限は元の第一の写像。
 方針：pushout の第一の脚で計算する。
 規約：相対三角形の商射を含む。
-使われ方：Kerodon §3.2.3。貼り合わせの復元。 -/
+使われ方：Kerodon §3.2.3（Tag 00W3）。貼り合わせの復元。 -/
 @[reassoc (attr := simp)]
 theorem upper_trianglePairSquare :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ trianglePairSquare a b h = triangleDiskQuotient ≫ a.right :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.inl_desc _ _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ≫ trianglePairSquare a b h = triangleDiskQuotient ≫ a.right :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.isPushout.inl_desc _ _ _
 
 /-- 概要：貼った写像の下側への制限は元の第二の写像。
 方針：pushout の第二の脚で計算する。
 規約：上側と同じ相対三角形の商射を使う。
-使われ方：Kerodon §3.2.3。貼り合わせの復元。 -/
+使われ方：Kerodon §3.2.3（Tag 00W3）。貼り合わせの復元。 -/
 @[reassoc (attr := simp)]
 theorem lower_trianglePairSquare :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ trianglePairSquare a b h = triangleDiskQuotient ≫ b.right :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.inr_desc _ _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ trianglePairSquare a b h = triangleDiskQuotient ≫ b.right :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.isPushout.inr_desc _ _ _
 
 /-- 概要：貼った正方形の縦の二辺は基点へ写る。
 方針：境界との積を各端点で検査し、相対三角形の外側の辺を潰す。
@@ -113,16 +113,16 @@ def trianglePairSmash : PointedObject.smash PointedSimplicialSet.circle.{u}
 theorem trianglePairSquare_swap :
     (β_ (Δ[1] : SSet.{u}) (Δ[1] : SSet.{u})).hom ≫ trianglePairSquare a b h =
       trianglePairSquare b a h.symm := by
-  apply _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.hom_ext
-  · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_swap]
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.isPushout.hom_ext
+  · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper_swap]
     simp
-  · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_swap]
+  · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower_swap]
     simp
 
 /-- 概要：相対三角形から貼った smash の写像を正方形へ戻すと元の貼り合わせ。
 方針：四辺を潰す降下の復元の式を使う。
 規約：正方形から二つの円の smash 積への標準射を前合成する。
-使われ方：Kerodon §3.2.3。貼り合わせの普遍性の復元の計算。 -/
+使われ方：Kerodon §3.2.3（Tag 00W3）。貼り合わせの普遍性の復元の計算。 -/
 @[reassoc]
 theorem trianglePairSmash_quotient :
     (PointedObject.cofiberQuotient (boundary.{u} 1).ι ⊗ₘ

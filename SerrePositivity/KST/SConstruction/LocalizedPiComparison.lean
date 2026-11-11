@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Spectra.PointedKanReplacement
-public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.MonoRightHomotopyEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanFibrationLocalizedLifting
 
 /-! # anodyne 局所化の比較から L9 の全基点 π_* への接続
@@ -22,7 +22,7 @@ open SerrePositivity.SimplicialModel
 方針：anodyne・Kan fibration 分解の右因子を HA の局所化検出で単射 RLP にし、L9 の π_* 比較を使う。
 規約：全自然数次数と全基点を含む。使われ方：Kan 模型の実際の π_* の比較。 -/
 lemma kanPiIsomorphism_of_localized_isIso {A B : SSet.{u}} [KanComplex A] [KanComplex B]
-    (f : A ⟶ B) (hf : IsIso (AnodyneHomotopy.anodyneQ.map f)) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f := by
+    (f : A ⟶ B) (hf : IsIso (AnodyneHomotopy.anodyneQ.map f)) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f := by
   let F := AnodyneKanReplacement.factorization
   let i : A ⟶ F.Z.obj (Arrow.mk f) := F.i.app (Arrow.mk f)
   let p : F.Z.obj (Arrow.mk f) ⟶ B := F.p.app (Arrow.mk f)
@@ -43,7 +43,7 @@ lemma kanPiIsomorphism_of_localized_isIso {A B : SSet.{u}} [KanComplex A] [KanCo
   have hr := KanFibrationLocalizedLifting.of_localized_isIso p hp
     ((SSet.modelCategoryQuillen.fibration_iff _).1 (inferInstance : Fibration (terminal.from B))) hQp
   have hπi := Spectra.kanPiIsomorphism_of_anodyne i hi
-  have hπp := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight p hr
+  have hπp := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight p hr
   exact fac ▸ hπi.comp hπp
 
 /-- 概要：局所化可逆な点つき射の Kan 置換は全基点 π_* 同型。
@@ -52,7 +52,7 @@ lemma kanPiIsomorphism_of_localized_isIso {A B : SSet.{u}} [KanComplex A] [KanCo
 lemma pointedKanReplacement_map_piIsomorphism_of_localized_isIso
     {A B : PointedSimplicialSet.{u}} (f : A ⟶ B)
     (hf : IsIso (AnodyneHomotopy.anodyneQ.map f.right)) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (Spectra.PointedKanReplacement.map f).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (Spectra.PointedKanReplacement.map f).right := by
   apply kanPiIsomorphism_of_localized_isIso
   exact (KanTestDetection.anodyneQ_isIso_iff_tests _).2
     (KanTestDetection.replacement_tests f.right (KanTestDetection.tests_of_anodyneQ_isIso f.right hf))

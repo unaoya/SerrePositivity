@@ -25,7 +25,7 @@ variable {Y Y' Z Z' : PointedSimplicialSet.{u}} [KanComplex Y'.right]
   [KanComplex Z'.right]
   (h : Y ⟶ PointedObject.basedHom S Z)
   (h' : Y' ⟶ PointedObject.basedHom S Z')
-  (hh' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism h'.right) (v : Y ⟶ Y') (w : Z ⟶ Z')
+  (hh' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism h'.right) (v : Y ⟶ Y') (w : Z ⟶ Z')
   (hc : h ≫ PointedObject.basedHomMap S w = v ≫ h')
 
 include hc
@@ -41,9 +41,9 @@ def exchangeAlignedPreSquare :
   h₁ := by
     rw [(exchangePreProjectionSquare I h' hh' (doublePost v)).h₁]
     change (I.interval Z').path ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (doublePost v ≫ doublePost h') _).right =
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (doublePost v ≫ doublePost h') _).right =
       (I.interval Z').path ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (doublePost h ≫ TwoLoopSource.loopPost S w) _).right
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (doublePost h ≫ TwoLoopSource.loopPost S w) _).right
     rw [doublePost_square h h' v w hc]
   rel := by ext m ⟨⟨s, hs⟩, t⟩; exact hs.elim
 

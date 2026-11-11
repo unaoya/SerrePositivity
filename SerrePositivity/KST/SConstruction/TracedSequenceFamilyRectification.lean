@@ -29,20 +29,20 @@ structure TracedSequenceFamilyStage (n : ℕ) where
   chain : FamilyHomotopyChain (f n) val
 
 variable (H : ∀ n, SSet.Homotopy
-  (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+  (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
   (f n ≫ RawSpectrumMapping.step X Y n))
 
 /-- 元の適合区間と前段の補正を全て用い、次段を同じ射影 trace と共に構成する。 -/
 def tracedSequenceFamilyNext (n : ℕ) (s : TracedSequenceFamilyStage X Y f n) :
     {t : TracedSequenceFamilyStage X Y f (n + 1) //
-      t.val ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+      t.val ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
         s.val ≫ RawSpectrumMapping.step X Y n ∧
       (familyHomotopyChainTrace t.chain).map
-        (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) =
+        (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) =
         familyHomotopyChainTrace (familyHomotopyChainAppend (familyHomotopyChainSingle (H n))
           (familyHomotopyChainMap s.chain (RawSpectrumMapping.step X Y n)))} := by
-  let p := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space
-  let : Fibration p := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration (X.sigma n) (Y.level (n + 1)).space
+  let p := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space
+  let : Fibration p := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_fibration (X.sigma n) (Y.level (n + 1)).space
   let c := familyHomotopyChainAppend (familyHomotopyChainSingle (H n))
     (familyHomotopyChainMap s.chain (RawSpectrumMapping.step X Y n))
   let L := familyHomotopyChainLiftData p c (f (n + 1)) rfl
@@ -56,12 +56,12 @@ def tracedSequenceFamilyStage : (n : ℕ) → TracedSequenceFamilyStage X Y f n
 /-- 選んだ全段の射影 trace は、元の適合区間と前段の全補正の像そのもの。 -/
 lemma tracedSequenceFamilyStage_trace (n : ℕ) :
     (familyHomotopyChainTrace (tracedSequenceFamilyStage X Y f H (n + 1)).chain).map
-      (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) =
+      (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) =
       (H n).h :: (familyHomotopyChainTrace (tracedSequenceFamilyStage X Y f H n).chain).map
         (· ≫ RawSpectrumMapping.step X Y n) := by
   change (familyHomotopyChainTrace
     (tracedSequenceFamilyNext X Y f H n (tracedSequenceFamilyStage X Y f H n)).val.chain).map
-      (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) = _
+      (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) = _
   have h := (tracedSequenceFamilyNext X Y f H n (tracedSequenceFamilyStage X Y f H n)).property.2
   simpa only [familyHomotopyChainAppend_trace, familyHomotopyChainSingle_trace,
     familyHomotopyChainMap_trace, List.cons_append, List.nil_append] using h

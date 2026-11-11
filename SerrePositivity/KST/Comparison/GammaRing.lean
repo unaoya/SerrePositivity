@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.DoldKanComparison.AWPreservation
-public import SerrePositivity.InfinityCategories.DoldKanComparison.AWAssociativity
-public import SerrePositivity.InfinityCategories.DoldKanComparison.AWPullback
-public import SerrePositivity.InfinityCategories.DoldKanComparison.AWUnitMap
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWPreservation
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWAssociativity
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWPullback
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWUnitMap
 public import Mathlib.Algebra.Category.Ring.Basic
 
 /-!
@@ -25,7 +25,7 @@ universe u v
 namespace SerrePositivity.KST.Comparison
 
 open CategoryTheory DifferentialGraded
-open InfinityCategories.DoldKanComparison
+
 
 variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
 
@@ -35,7 +35,7 @@ variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
 規約：零次項は閉零元。SS03 §2.1、(2.2) の chain map 模型。
 使われ方：SS03 (2.9) の AW 環と Mathlib Γ の同定。
 -/
-abbrev GammaEnd (x : D) (n : ℕ) := StandardSimplex R x x n
+abbrev GammaEnd (x : D) (n : ℕ) := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardSimplex R x x n
 
 /--
 概要：Γ の各次数の自己 Hom に AW 積の環構造を与える。
@@ -44,20 +44,20 @@ abbrev GammaEnd (x : D) (n : ℕ) := StandardSimplex R x x n
 使われ方：KST 式 (2.2) の行列環の係数。
 -/
 instance gammaEndRing (x : D) (n : ℕ) : Ring (GammaEnd (R := R) x n) where
-  toAddCommGroup := inferInstanceAs (AddCommGroup (StandardSimplex R x x n))
-  mul := standardAW
-  one := standardUnit x n
-  mul_assoc a b c := Subtype.ext (awData_assoc a.val b.val c.val).symm
-  one_mul a := Subtype.ext (awData_unit_left a.val)
-  mul_one a := Subtype.ext (awData_unit_right a.val)
-  left_distrib a b c := Subtype.ext (awData_add_right a.val b.val c.val)
-  right_distrib a b c := Subtype.ext (awData_add_left a.val b.val c.val)
+  toAddCommGroup := inferInstanceAs (AddCommGroup (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardSimplex R x x n))
+  mul := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardAW
+  one := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardUnit x n
+  mul_assoc a b c := Subtype.ext (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awData_assoc a.val b.val c.val).symm
+  one_mul a := Subtype.ext (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awData_unit_left a.val)
+  mul_one a := Subtype.ext (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awData_unit_right a.val)
+  left_distrib a b c := Subtype.ext (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awData_add_right a.val b.val c.val)
+  right_distrib a b c := Subtype.ext (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awData_add_left a.val b.val c.val)
   zero_mul a := by
     apply Subtype.ext
-    exact congrArg (fun f => f a.val) (awDataBilinear x x x n).map_zero
+    exact congrArg (fun f => f a.val) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awDataBilinear x x x n).map_zero
   mul_zero a := by
     apply Subtype.ext
-    exact (awDataBilinear x x x n a.val).map_zero
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awDataBilinear x x x n a.val).map_zero
 
 /--
 概要：全ての面・退化を環準同型として与える。
@@ -68,17 +68,17 @@ instance gammaEndRing (x : D) (n : ℕ) : Ring (GammaEnd (R := R) x n) where
 def gammaEndPullback (x : D) {m n : ℕ}
     (α : Fin (m + 1) →o Fin (n + 1)) :
     GammaEnd (R := R) x n →+* GammaEnd (R := R) x m where
-  __ := (standardPullback α).toAddMonoidHom
-  map_one' := standardConstant_pullback (unitElement R x) α
+  __ := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardPullback α).toAddMonoidHom
+  map_one' := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardConstant_pullback (unitElement R x) α
   map_mul' a b := by
     apply Subtype.ext
-    change (standardPullback α (standardAW a b)).val =
-      (standardAW (standardPullback α a) (standardPullback α b)).val
-    rw [standardPullback_val]
-    change InfinityCategories.DGNerve.PinchedHom.LinearData.pullback α (awData a.val b.val) =
-      awData (standardPullback α a).val (standardPullback α b).val
-    rw [standardPullback_val, standardPullback_val]
-    exact awData_pullback α a.val b.val
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardPullback α (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardAW a b)).val =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardAW (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardPullback α a) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardPullback α b)).val
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardPullback_val]
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pullback α (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awData a.val b.val) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awData (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardPullback α a).val (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardPullback α b).val
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardPullback_val, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardPullback_val]
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awData_pullback α a.val b.val
 
 /--
 概要：自己 Hom の Dold–Kan 標準模型を単体的環として構成する。
@@ -93,12 +93,12 @@ def gammaEndRingObject (x : D) : SimplicialObject RingCat.{u} where
     apply RingCat.hom_ext
     apply RingHom.ext
     intro a
-    exact standardPullback_id a
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardPullback_id a
   map_comp f g := by
     apply RingCat.hom_ext
     apply RingHom.ext
     intro a
-    exact (standardPullback_comp g.unop.toOrderHom f.unop.toOrderHom a).symm
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardPullback_comp g.unop.toOrderHom f.unop.toOrderHom a).symm
 
 /--
 概要：Γ 環の加法的単体集合は既存の標準 Hom 空間である。
@@ -107,7 +107,7 @@ def gammaEndRingObject (x : D) : SimplicialObject RingCat.{u} where
 使われ方：KST Lemma 2.13 のための Kan 性と π₀ の計算。
 -/
 theorem gammaEnd_underlying (x : D) :
-    gammaEndRingObject (R := R) x ⋙ forget RingCat = standardHomSpace (R := R) x x := rfl
+    gammaEndRingObject (R := R) x ⋙ forget RingCat = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardHomSpace (R := R) x x := rfl
 
 /--
 概要：AW 環の台単体集合は実際の Mathlib Γ と自然同型である。
@@ -116,7 +116,7 @@ theorem gammaEnd_underlying (x : D) :
 使われ方：KST §2.2 に用いる Γ の定義と smart truncation の接続。
 -/
 def gammaEndDoldKanIso (x : D) :
-    gammaEndRingObject (R := R) x ⋙ forget RingCat ≅ doldKanHomSpace (R := R) x x :=
-  Functor.isoWhiskerRight (standardDoldKanModuleIso (R := R) x x) (forget (ModuleCat.{u} R))
+    gammaEndRingObject (R := R) x ⋙ forget RingCat ≅ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomSpace (R := R) x x :=
+  Functor.isoWhiskerRight (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardDoldKanModuleIso (R := R) x x) (forget (ModuleCat.{u} R))
 
 end SerrePositivity.KST.Comparison

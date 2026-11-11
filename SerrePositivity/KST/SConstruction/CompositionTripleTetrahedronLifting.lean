@@ -24,8 +24,8 @@ variable {E B : SSet.{u}} {w x y z : E _⦋0⦌}
 /-- 元の全三面を保ち、指定全基底四面体と出力全面を同時に持ち上げる。 -/
 def compositionTripleTetrahedronLiftData (right : SSet.Edge.CompStruct a bc abc)
     (p : E ⟶ B) [Fibration p]
-    (R : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron (first.map p) (second.map p) (right.map p)) :
-    {V : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron first second right //
+    (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron (first.map p) (second.map p) (right.map p)) :
+    {V : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron first second right //
       SSet.yonedaEquiv.symm V.simplex ≫ p = SSet.yonedaEquiv.symm R.simplex ∧
       SSet.yonedaEquiv.symm V.left.simplex ≫ p = SSet.yonedaEquiv.symm R.left.simplex} := by
   let : HasLiftingProperty (horn 3 (1 : Fin 4)).ι p :=
@@ -34,7 +34,7 @@ def compositionTripleTetrahedronLiftData (right : SSet.Edge.CompStruct a bc abc)
       (SSet.yonedaEquiv.symm R.simplex) :=
     ⟨(compositionTripleHorn_post first second p right).trans
       (compositionTripleHorn_fac _ _ R).symm⟩
-  let V := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleTetrahedronOfMap first second right sq.lift
+  let V := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.compositionTripleTetrahedronOfMap first second right sq.lift
     (by rw [← horn.ι_ι_assoc (1 : Fin 4) 0 (by decide), sq.fac_left,
       compositionTripleHorn_zero])
     (by rw [← horn.ι_ι_assoc (1 : Fin 4) 2 (by decide), sq.fac_left,
@@ -52,7 +52,7 @@ def compositionTripleTetrahedronLiftData (right : SSet.Edge.CompStruct a bc abc)
 /-- 持ち上げた全四面体の射影は、指定した元の全基底四面体そのもの。 -/
 lemma compositionTripleTetrahedronLiftData_projection
     (right : SSet.Edge.CompStruct a bc abc) (p : E ⟶ B) [Fibration p]
-    (R : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron (first.map p) (second.map p) (right.map p)) :
+    (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron (first.map p) (second.map p) (right.map p)) :
     SSet.yonedaEquiv.symm
         (compositionTripleTetrahedronLiftData first second right p R).val.simplex ≫ p =
       SSet.yonedaEquiv.symm R.simplex :=
@@ -61,7 +61,7 @@ lemma compositionTripleTetrahedronLiftData_projection
 /-- 出力した全面の射影も、同じ全基底四面体の残面そのもの。 -/
 lemma compositionTripleTetrahedronLiftData_left
     (right : SSet.Edge.CompStruct a bc abc) (p : E ⟶ B) [Fibration p]
-    (R : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron (first.map p) (second.map p) (right.map p)) :
+    (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron (first.map p) (second.map p) (right.map p)) :
     SSet.yonedaEquiv.symm
         (compositionTripleTetrahedronLiftData first second right p R).val.left.simplex ≫ p =
       SSet.yonedaEquiv.symm R.left.simplex :=
@@ -70,8 +70,8 @@ lemma compositionTripleTetrahedronLiftData_left
 /-- 元の全三面を保ち、指定全基底四面体と出力全面を同時に持ち上げる。 -/
 def compositionTripleRightTetrahedronLiftData (left : SSet.Edge.CompStruct ab c abc)
     (p : E ⟶ B) [Fibration p]
-    (R : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron (first.map p) (second.map p) (left.map p)) :
-    {V : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron first second left //
+    (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron (first.map p) (second.map p) (left.map p)) :
+    {V : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron first second left //
       SSet.yonedaEquiv.symm V.simplex ≫ p = SSet.yonedaEquiv.symm R.simplex ∧
       SSet.yonedaEquiv.symm V.right.simplex ≫ p = SSet.yonedaEquiv.symm R.right.simplex} := by
   let : HasLiftingProperty (horn 3 (2 : Fin 4)).ι p :=
@@ -80,7 +80,7 @@ def compositionTripleRightTetrahedronLiftData (left : SSet.Edge.CompStruct ab c 
       (SSet.yonedaEquiv.symm R.simplex) :=
     ⟨(compositionTripleRightHorn_post first second p left).trans
       (compositionTripleRightHorn_fac _ _ R).symm⟩
-  let V := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap first second left sq.lift
+  let V := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.compositionTripleRightTetrahedronOfMap first second left sq.lift
     (by rw [← horn.ι_ι_assoc (2 : Fin 4) 0 (by decide), sq.fac_left,
       compositionTripleRightHorn_zero])
     (by rw [← horn.ι_ι_assoc (2 : Fin 4) 1 (by decide), sq.fac_left,
@@ -98,7 +98,7 @@ def compositionTripleRightTetrahedronLiftData (left : SSet.Edge.CompStruct ab c 
 /-- 持ち上げた全四面体の射影は、指定した元の全基底四面体そのもの。 -/
 lemma compositionTripleRightTetrahedronLiftData_projection
     (left : SSet.Edge.CompStruct ab c abc) (p : E ⟶ B) [Fibration p]
-    (R : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron (first.map p) (second.map p) (left.map p)) :
+    (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron (first.map p) (second.map p) (left.map p)) :
     SSet.yonedaEquiv.symm
         (compositionTripleRightTetrahedronLiftData first second left p R).val.simplex ≫ p =
       SSet.yonedaEquiv.symm R.simplex :=
@@ -107,7 +107,7 @@ lemma compositionTripleRightTetrahedronLiftData_projection
 /-- 出力した全面の射影も、同じ全基底四面体の残面そのもの。 -/
 lemma compositionTripleRightTetrahedronLiftData_right
     (left : SSet.Edge.CompStruct ab c abc) (p : E ⟶ B) [Fibration p]
-    (R : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron (first.map p) (second.map p) (left.map p)) :
+    (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron (first.map p) (second.map p) (left.map p)) :
     SSet.yonedaEquiv.symm
         (compositionTripleRightTetrahedronLiftData first second left p R).val.right.simplex ≫ p =
       SSet.yonedaEquiv.symm R.right.simplex :=
@@ -116,7 +116,7 @@ lemma compositionTripleRightTetrahedronLiftData_right
 /-- 出力した実合成面の全後合成像を、同じ元の基底合成面へ厳密に同定する。 -/
 lemma compositionTripleTetrahedronLiftData_left_eq
     (right : SSet.Edge.CompStruct a bc abc) (p : E ⟶ B) [Fibration p]
-    (R : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron (first.map p) (second.map p) (right.map p)) :
+    (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron (first.map p) (second.map p) (right.map p)) :
     ((compositionTripleTetrahedronLiftData first second right p R).val.left).map p = R.left := by
   apply SSet.Edge.CompStruct.ext
   apply SSet.yonedaEquiv.symm.injective
@@ -126,7 +126,7 @@ lemma compositionTripleTetrahedronLiftData_left_eq
 /-- 出力した実合成面の全後合成像を、同じ元の基底合成面へ厳密に同定する。 -/
 lemma compositionTripleRightTetrahedronLiftData_right_eq
     (left : SSet.Edge.CompStruct ab c abc) (p : E ⟶ B) [Fibration p]
-    (R : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron (first.map p) (second.map p) (left.map p)) :
+    (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron (first.map p) (second.map p) (left.map p)) :
     ((compositionTripleRightTetrahedronLiftData first second left p R).val.right).map p =
       R.right := by
   apply SSet.Edge.CompStruct.ext

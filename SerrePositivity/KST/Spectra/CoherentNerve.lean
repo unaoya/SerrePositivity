@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumSimplicialCategory
-public import SerrePositivity.InfinityCategories.Coherent.Quasicategory
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Quasicategory
 
 /-!
 概要：BF の cofibrant–fibrant な Ω スペクトルの coherent nerve。
@@ -34,7 +34,7 @@ def Sp := SimplicialNerve OmegaSpectrum.{u}
 /-- 概要：Ω スペクトルの coherent nerve は quasicategory。
 方針：写像空間の塔の相対充填から局所 Kan 性を得て γ1 を適用する。
 規約：HT-KQ や安定モデル構造の存在は引用しない。
-使われ方：HTT 1.1.5.10、Kerodon 2.4.5.1。KST の γ-B。 -/
+使われ方：HTT 1.1.5.10、Kerodon 2.4.5.1（Tag 00LJ）。KST の γ-B。 -/
 instance sp_quasicategory : SSet.Quasicategory Sp.{u} := by
   dsimp only [Sp]
   infer_instance

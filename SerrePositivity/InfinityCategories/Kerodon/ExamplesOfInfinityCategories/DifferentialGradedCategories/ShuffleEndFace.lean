@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：先頭の前半ステップ数を直接計算し、末尾では一般の挿入公式を使う。
 規約：KST Construction A.5 の標準 shuffle。
 使われ方：shuffle の鎖写像性の境界の端点の項。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

@@ -92,7 +92,7 @@ lemma dgKappaNativeBFFiniteFirstComparison_anodyne
 規約：全次数を保持。使われ方：最初の実 Ω 条件。 -/
 lemma dgKappaNativeBFFiniteFirstComparison_piIsomorphism
     (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       (show ((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I 0).obj C).obj ⟶
         ((dgKappaNativeBFFiniteFirstFunctor.{u, v} R D I).obj C).obj from
           dgKappaNativeBFFiniteFirstComparison.{u, v} R D I C).right :=

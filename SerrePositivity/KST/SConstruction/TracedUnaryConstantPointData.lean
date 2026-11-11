@@ -22,13 +22,13 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u}) {x y : I} (f
 
 /-- 元の単一射の始点を直通列点へ制限しても、元の段射の同じ定数族。 -/
 lemma monicKPrismRawLevel_point (n : ℕ) :
-    nervePoint (coherentArrowStringDirect f) ≫ monicKPrismRawLevelFamily n F f =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) ≫ monicKPrismRawLevelFamily n F f =
       SSet.const (familyVertex (monicKToRawLevelMap (F.map f) n)) := by
   rw [monicKPrismRawLevelFamily, SSet.comp_const]
 
 /-- 元の補正済み段の一点制限は、同じ raw 段頂点の定数族。 -/
 lemma monicKPrismTracedStage_point_const (n : ℕ) :
-    nervePoint (coherentArrowStringDirect f) ≫ (monicKPrismTracedStage F f n).val =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) ≫ (monicKPrismTracedStage F f n).val =
       SSet.const (monicKTracedRawStageVertex F f n) := by
   rw [← SSet.yonedaEquiv_symm_zero]
   apply SSet.yonedaEquiv.injective
@@ -37,13 +37,13 @@ lemma monicKPrismTracedStage_point_const (n : ℕ) :
 /-- 元の単一射の全木を一点へ写し、同じ両端を定数頂点族で表示したデータ。 -/
 def monicKPrismUnaryConstantPointData (n : ℕ) :=
   ((monicKPrismUnaryCorrectionData F f n).precomp
-    (nervePoint (coherentArrowStringDirect f))).endpointTransport
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f))).endpointTransport
       (monicKPrismRawLevel_point F f n).symm (monicKPrismTracedStage_point_const F f n)
 
 /-- 同じ全円柱の直通列制限を、表示移送後も厳密に保持する。 -/
 lemma monicKPrismUnaryConstantPointData_h (n : ℕ) :
     (monicKPrismUnaryConstantPointData F f n).homotopy.h =
-      (nervePoint (coherentArrowStringDirect f) ▷ (Δ[1] : SSet.{u})) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) ▷ (Δ[1] : SSet.{u})) ≫
         (monicKPrismUnaryCorrectionData F f n).homotopy.h := by
   rw [monicKPrismUnaryConstantPointData, FamilyChainCompositeData.endpointTransport_h,
     FamilyChainCompositeData.precomp_h]
@@ -60,7 +60,7 @@ lemma monicKPrismUnaryConstantPointData_trace (n : ℕ) :
 lemma monicKPrismUnaryConstantPointData_triangles (n : ℕ) :
     familyChainCompositionTriangles (monicKPrismUnaryConstantPointData F f n).witness =
       (familyChainCompositionTriangles (monicKPrismUnaryCorrectionData F f n).witness).map
-        ((nervePoint (coherentArrowStringDirect f) ▷ (Δ[2] : SSet.{u})) ≫ ·) := by
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) ▷ (Δ[2] : SSet.{u})) ≫ ·) := by
   rw [monicKPrismUnaryConstantPointData, FamilyChainCompositeData.endpointTransport_triangles,
     FamilyChainCompositeData.precomp_triangles]
 

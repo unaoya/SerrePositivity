@@ -32,9 +32,9 @@ theorem stage_exists_lift_preserving_projection (n r : ℕ)
     (hH : IsZero ((NormalizedValueCochains.complex K
       (AddCommGrpCat.of
         (SkeletalCellAttachment.positiveAdditiveCoefficient Y n (r + 1)))).homology (n + 2)))
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((tower K Y).obj (op (n + 1))).right (r + 2)
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup ((tower K Y).obj (op (n + 1))).right (r + 2)
       ((tower K Y).obj (op (n + 1))).basepoint) :
-    ∃ b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((tower K Y).obj (op (n + 2))).right (r + 2)
+    ∃ b : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup ((tower K Y).obj (op (n + 2))).right (r + 2)
         ((tower K Y).obj (op (n + 2))).basepoint,
       pointedGroupMap (r + 2) ((tower K Y).map (homOfLE (Nat.le_succ n)).op)
         (pointedGroupMap (r + 2) ((tower K Y).map (homOfLE (Nat.le_succ (n + 1))).op) b) =
@@ -51,8 +51,8 @@ theorem groupTower_isMittagLeffler_of_isZero (r : ℕ)
     (hH : ∀ n, IsZero ((NormalizedValueCochains.complex K
       (AddCommGrpCat.of
         (SkeletalCellAttachment.positiveAdditiveCoefficient Y n (r + 1)))).homology (n + 2))) :
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.IsMittagLeffler
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((tower K Y).obj (op n)).right (r + 2)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.IsMittagLeffler
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup ((tower K Y).obj (op n)).right (r + 2)
         ((tower K Y).obj (op n)).basepoint)
       (fun n ↦ pointedGroupMap (r + 2) ((tower K Y).map (homOfLE (Nat.le_succ n)).op)) :=
   TowerLimOne.isMittagLeffler_of_two_step_lifting _ _
@@ -63,7 +63,7 @@ def limitGroupEquivOfCohomologyIsZero (r : ℕ)
     (hH : ∀ n, IsZero ((NormalizedValueCochains.complex K
       (AddCommGrpCat.of
         (SkeletalCellAttachment.positiveAdditiveCoefficient Y n (r + 1)))).homology (n + 2))) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ ((tower K Y).obj (op n)).right)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.limit (fun n ↦ ((tower K Y).obj (op n)).right)
       (fun n ↦ ((tower K Y).map (homOfLE (Nat.le_succ n)).op).right)) (r + 1)
       (PointedFibrationTower.limitBasepoint (fun n ↦ (tower K Y).obj (op n))
         (fun n ↦ (tower K Y).map (homOfLE (Nat.le_succ n)).op)) ≃*

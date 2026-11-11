@@ -17,26 +17,26 @@ noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
 open CategoryTheory SimplicialLocalization
-variable (C : RelativeCategory.{u})
-def freeBackwardForwardDiagram (w : Word) (X Y : C.category) :
-    SimplicialObject TwoSidedDiagram.Data.{u} :=
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
+def freeBackwardForwardDiagram (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category) :
+    SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u} :=
   backwardForwardDiagram (freeResolution C) (freeResolutionObject C)
     (fun θ X => freeResolutionObject_naturality C θ X) w X Y
 
-def freeBackwardForwardAugmentation (w : Word) (X Y : C.category) :
+def freeBackwardForwardAugmentation (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category) :
     freeBackwardForwardDiagram C w X Y ⟶
       (Functor.const SimplexCategoryᵒᵖ).obj (backwardForwardData C w X Y) :=
   backwardForwardAugmentation (freeResolution C) C (freeResolutionObject C)
     (fun θ X => freeResolutionObject_naturality C θ X) (freeResolutionAugmentationNatTrans C)
     (freeResolutionObject_augmentation C) w X Y
 
-lemma freeReverseFirstMarkedObjectEquiv_naturality (w : Word) (X Y : C.category)
+lemma freeReverseFirstMarkedObjectEquiv_naturality (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category)
     {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (Z : C.category) :
     ((freeBackwardForwardDiagram C w X Y).map θ).base.obj
       (freeFirstMarkedObjectEquiv C n Z) = freeFirstMarkedObjectEquiv C m Z :=
   freeFirstMarkedObjectEquiv_naturality C w X Y θ Z
 
-lemma freeReverseFirstMarkedObjectEquiv_augmentation (w : Word) (X Y : C.category)
+lemma freeReverseFirstMarkedObjectEquiv_augmentation (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category)
     (n : SimplexCategoryᵒᵖ) (Z : C.category) :
     ((freeBackwardForwardAugmentation C w X Y).app n).base.obj
       (freeFirstMarkedObjectEquiv C n Z) = markedObjectEquiv C Z :=

@@ -4,7 +4,7 @@ public import SerrePositivity.KST.Spectra.AdjointLoopRelativeBF
 public import SerrePositivity.KST.Spectra.RawSpectrumPreWhitehead
 public import SerrePositivity.KST.Spectra.PullbackKanSequence
 public import SerrePositivity.KST.NonConnective.SequentialRelativeHomFibration
-public import SerrePositivity.InfinityCategories.Core.KanFibrationEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.KanFibrationEquivalence
 
 /-!
 概要：補助単位の相対 BF 左因子と厳密可換な、全 Hom の組を構成する。
@@ -28,11 +28,11 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 規約：一般 Kan 列を標的とする元の制限射そのもの。
 使われ方：全 Hom の自然な組の源射影の充填。 -/
 lemma inclusionPre_trivialKanFibration (X : OmegaSpectrum.{u}) (Z : KanSequence.{u}) :
-    TrivialKanFibration (RawSpectrumMapping.pointedPre (inclusion X) Z).right := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (RawSpectrumMapping.pointedPre (inclusion X) Z).right := by
   let : Fibration (RawSpectrumMapping.pre (inclusion X) Z) :=
     SerrePositivity.KST.NonConnective.sequentialRawHomPre_fibration
       (inclusion X) (inclusion_relative X) Z
-  exact trivialKanFibration_of_fibration_of_simplicialHomotopyEquivalence
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.trivialKanFibration_of_fibration_of_simplicialHomotopyEquivalence
     (RawSpectrumMapping.pre (inclusion X) Z)
     (RawSpectrumMapping.pre_homotopyEquivalence_of_levelwise
       (inclusion X) (inclusion_levelwise X) Z)
@@ -87,8 +87,8 @@ def originalMap (X Y : OmegaSpectrum.{u}) : compatibleSpace X Y ⟶
 規約：比較の存在や充填を明示入力に残さない。
 使われ方：元の射と可換な置換射の全族回収。 -/
 lemma originalMap_trivialKanFibration (X Y : OmegaSpectrum.{u}) :
-    TrivialKanFibration (originalMap X Y).right :=
-  ⟨_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_snd_rlp _ _ (inclusionPre_trivialKanFibration X _).mem⟩
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (originalMap X Y).right :=
+  ⟨_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_snd_rlp _ _ (inclusionPre_trivialKanFibration X _).mem⟩
 
 /-- 概要：可換な組の元の全空間は Kan。
 方針：実射影の自明 Kan fibration と元の Hom の Kan 性を使う。
@@ -101,16 +101,16 @@ instance compatibleSpace_kanComplex (X Y : OmegaSpectrum.{u}) :
       (RawSpectrumMapping.pointedPre (inclusion X) (middle Y).toKanSequence).right :=
     (modelCategoryQuillen.fibration_iff _).2
       (fun _ _ j hj ↦ t.mem j (modelCategoryQuillen.J_le_monomorphisms j hj))
-  exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_kanComplex _ _
+  exact _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_kanComplex _ _
 
 /-- 概要：可換な組と元の BF Hom は実際に同値。
 方針：元の射への自明 Kan fibration を順射とする同値を使う。
 規約：選択した置換射を関手にするとは主張しない。
 使われ方：全図式比較に必要な Hom の回収。 -/
 def originalEquivalence (X Y : OmegaSpectrum.{u}) :
-    QCatEquivalence (compatibleSpace X Y).right (mappingSpace X Y) := by
-  let : TrivialKanFibration (originalMap X Y).right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (compatibleSpace X Y).right (mappingSpace X Y) := by
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (originalMap X Y).right :=
     originalMap_trivialKanFibration X Y
-  exact qCatEquivalenceOfTrivialKanFibration (originalMap X Y).right
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.qCatEquivalenceOfTrivialKanFibration (originalMap X Y).right
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

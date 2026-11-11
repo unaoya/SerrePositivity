@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHom
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom
 public import SerrePositivity.EInfinity.SimplicialLocalization.ResolutionObjects
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 
@@ -23,14 +23,14 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 
 open CategoryTheory MonoidalCategory
 
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 /-- 概要：元の両対象の局所化した自由解像の Hom の単体集合（Dwyer–Kan）。
 方針：同じ対象表示と全作用素による保存を固定 Hom 関手へ代入する。
 規約：全次数の局所化圏の実際の Hom を使う。
 使われ方：単体的局所化の豊穣 Hom。 -/
 def localizationHom (X Y : C.category) : SSet.{u} :=
-  FixedObjectHom.functor (localizedFreeResolution C) (localizedFreeResolutionObject C)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.functor (localizedFreeResolution C) (localizedFreeResolutionObject C)
     (fun θ X => localizedFreeResolutionObject_naturality C θ X) X Y
 
 /-- 概要：同じ次数の恒等射は Hom の自然な単体的単位（Dwyer–Kan）。
@@ -42,7 +42,7 @@ def localizationIdentity (X : C.category) : 𝟙_ SSet.{u} ⟶ localizationHom C
   naturality {n m} θ := by
     apply ConcreteCategory.hom_ext
     intro x
-    exact (FixedObjectHom.map_identity (localizedFreeResolution C)
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map_identity (localizedFreeResolution C)
       (localizedFreeResolutionObject C)
       (fun θ X => localizedFreeResolutionObject_naturality C θ X) θ X).symm
 
@@ -56,9 +56,9 @@ def localizationComposition (X Y Z : C.category) :
   naturality {n m} θ := by
     apply ConcreteCategory.hom_ext
     intro q
-    change FixedObjectHom.map _ _ _ θ q.1 ≫ FixedObjectHom.map _ _ _ θ q.2 =
-      FixedObjectHom.map _ _ _ θ (q.1 ≫ q.2)
-    exact (FixedObjectHom.map_composition (localizedFreeResolution C)
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map _ _ _ θ q.1 ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map _ _ _ θ q.2 =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map _ _ _ θ (q.1 ≫ q.2)
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map_composition (localizedFreeResolution C)
       (localizedFreeResolutionObject C)
       (fun θ X => localizedFreeResolutionObject_naturality C θ X) θ q.1 q.2).symm
 

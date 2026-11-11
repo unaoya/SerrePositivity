@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderMap
 public import SerrePositivity.KST.Comparison.CylinderBoundary
 public import Mathlib.CategoryTheory.Adhesive.Basic
 
@@ -49,24 +49,24 @@ theorem doubleMappingCylinderMap_strictCube {C A B C' A' B' : SSet.{u}}
     (f : C ⟶ A) (g : C ⟶ B) (f' : C' ⟶ A') (g' : C' ⟶ B')
     (c : C ⟶ C') (a : A ⟶ A') (b : B ⟶ B')
     (hf : c ≫ f' = f ≫ a) (hg : c ≫ g' = g ≫ b)
-    (h₁ : IsPullback (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map c c) (c ▷ Δ[1]) (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C'))
+    (h₁ : IsPullback (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints C) (coprod.map c c) (c ▷ Δ[1]) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints C'))
     (h₂ : IsPullback (coprod.map f g) (coprod.map c c) (coprod.map a b) (coprod.map f' g')) :
-    IsPullback (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g) (c ▷ Δ[1])
-        (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf hg) (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f' g') ∧
-    IsPullback (pushout.inr (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g)) (coprod.map a b)
-        (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf hg)
-        (pushout.inr (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C') (coprod.map f' g')) := by
+    IsPullback (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle f g) (c ▷ Δ[1])
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap f g f' g' c a b hf hg) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle f' g') ∧
+    IsPullback (pushout.inr (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints C) (coprod.map f g)) (coprod.map a b)
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap f g f' g' c a b hf hg)
+        (pushout.inr (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints C') (coprod.map f' g')) := by
   apply strictPushoutCube
-    (IsPushout.of_hasPushout (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C') (coprod.map f' g'))
-    (IsPushout.of_hasPushout (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g))
+    (IsPushout.of_hasPushout (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints C') (coprod.map f' g'))
+    (IsPushout.of_hasPushout (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints C) (coprod.map f g))
     (coprod.map c c) (c ▷ Δ[1]) (coprod.map a b)
-    (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf hg) h₁ h₂
-  · exact ⟨_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_map f g f' g' c a b hf hg⟩
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap f g f' g' c a b hf hg) h₁ h₂
+  · exact ⟨_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_middle_map f g f' g' c a b hf hg⟩
   · refine ⟨?_⟩
     apply coprod.hom_ext
-    · simpa only [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left, Category.assoc, coprod.inl_map_assoc] using
-        _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_map f g f' g' c a b hf hg
-    · simpa only [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right, Category.assoc, coprod.inr_map_assoc] using
-        _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map f g f' g' c a b hf hg
+    · simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left, Category.assoc, coprod.inl_map_assoc] using
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_left_map f g f' g' c a b hf hg
+    · simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right, Category.assoc, coprod.inr_map_assoc] using
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_right_map f g f' g' c a b hf hg
 
 end SerrePositivity.KST.Comparison

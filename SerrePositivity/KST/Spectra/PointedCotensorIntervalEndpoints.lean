@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedCotensorFamilyDescription
 public import SerrePositivity.KST.Spectra.PointedCotensorFamilyNaturality
-public import SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary
+public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.FreeIntervalBoundary
 public import SerrePositivity.KST.Spectra.RawSpectrumParameterRestriction
 public import SerrePositivity.KST.Spectra.PointedRelativeTransposePaths
 
@@ -25,7 +25,7 @@ namespace PointedCotensorCoordinates
 /-- 零次単位族を移して単位で評価すると、同じ点つき射に戻る。 -/
 lemma family_pointFamily_unit {T E : PointedSimplicialSet.{u}} (f : T ⟶ E) :
     family (PointedMapping.pointFamily f) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed PointedSimplicialSet.adjoinBasepointDeltaZeroIso.inv E ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed PointedSimplicialSet.adjoinBasepointDeltaZeroIso.inv E ≫
       (unitIsoSelf (X := E)).hom = f := by
   let z := (PointedObject.adjoinHomEquiv (Δ[0] : SSet.{u})
     (PointedObject.basedHom T E)).symm (PointedMapping.pointFamily f)
@@ -56,16 +56,16 @@ namespace PointedMapping.VerticalPath
 /-- 元の同じ実区間を、自由区間の cotensor を値とする点つき射へ表示する。 -/
 def freeMap {T E : PointedSimplicialSet.{u}} {f g : T ⟶ E}
     (P : PointedMapping.VerticalPath (PointedObject.toPoint E) f g) :
-    T ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace E := PointedCotensorCoordinates.family P.path
+    T ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathSpace E := PointedCotensorCoordinates.family P.path
 
 /-- 自由区間の任意の端点評価は、元の区間の同じ面の単位評価。 -/
 lemma freeMap_endpoint {T E : PointedSimplicialSet.{u}} {f g : T ⟶ E}
     (P : PointedMapping.VerticalPath (PointedObject.toPoint E) f g) (i : Fin 2) :
-    P.freeMap ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint E i =
+    P.freeMap ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathEndpoint E i =
     PointedCotensorCoordinates.family (stdSimplex.δ i ≫ P.path) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed PointedSimplicialSet.adjoinBasepointDeltaZeroIso.inv E ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed PointedSimplicialSet.adjoinBasepointDeltaZeroIso.inv E ≫
         (unitIsoSelf (X := E)).hom := by
-  rw [freeMap, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
+  rw [freeMap, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathEndpoint, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.freeIntervalEndpoint, ← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp]
   rw [← Category.assoc, ← Category.assoc]
   erw [PointedCotensorCoordinates.family_parameter (stdSimplex.δ i) P.path]
   exact Category.assoc _ _ _
@@ -73,13 +73,13 @@ lemma freeMap_endpoint {T E : PointedSimplicialSet.{u}} {f g : T ⟶ E}
 /-- 始点評価は、元の始点の点つき射そのもの。 -/
 lemma freeMap_start {T E : PointedSimplicialSet.{u}} {f g : T ⟶ E}
     (P : PointedMapping.VerticalPath (PointedObject.toPoint E) f g) :
-    P.freeMap ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint E 1 = f := by
+    P.freeMap ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathEndpoint E 1 = f := by
   rw [freeMap_endpoint, P.zero, PointedCotensorCoordinates.family_pointFamily_unit]
 
 /-- 終点評価も、元の終点の点つき射そのもの。 -/
 lemma freeMap_finish {T E : PointedSimplicialSet.{u}} {f g : T ⟶ E}
     (P : PointedMapping.VerticalPath (PointedObject.toPoint E) f g) :
-    P.freeMap ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint E 0 = g := by
+    P.freeMap ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathEndpoint E 0 = g := by
   rw [freeMap_endpoint, P.one, PointedCotensorCoordinates.family_pointFamily_unit]
 
 end PointedMapping.VerticalPath

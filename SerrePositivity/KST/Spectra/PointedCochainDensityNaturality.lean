@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.CochainDensityCoefficient
 universe u
 
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.SimplexDensity
 
@@ -51,7 +51,7 @@ lemma pointedTotalizationEndIso_natural {I : Type u} [SmallCategory I] (W : I �
   have hδ := totalizationEndIso_natural W t
   have hε := PointedWeightedEnd.underlyingIso_natural W τ
   change (PointedWeightedEnd.map W τ).right ≫ εE.hom =
-    εD.hom ≫ weightedSectionsMap W t at hε
+    εD.hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap W t at hε
   apply Under.UnderMorphism.ext
   apply (cancel_mono εE.hom).mp
   change (CosimplicialTotalization.map c ≫

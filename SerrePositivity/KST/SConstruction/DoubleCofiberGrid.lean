@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Kan.InternalUncurryEdgeEvaluation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.InternalUncurryEdgeEvaluation
 public import SerrePositivity.KST.SConstruction.CofiberEndofunctor
 
 /-! # 二重 cofiber 図式の下辺の格子
@@ -19,14 +19,14 @@ open scoped _root_.Simplicial
 
 /-- cofiber 四角形の下辺の指定端点での評価。 -/
 def cofiberBottomEvaluationMap (C : SSet.{u}) (j : Fin 2) : cofiberDiagrams C ⟶ C :=
-  (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ evaluateFunctorAt
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
     (stdSimplex.obj₀Equiv.symm j, stdSimplex.obj₀Equiv.symm (0 : Fin 2))
 
 /-- 入力射影の端点評価は元の下辺の角の評価。 -/
 lemma cofiberProjection_evaluation (C : SSet.{u}) (j : Fin 2) :
-    cofiberProjection C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm j) =
+    cofiberProjection C ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm j) =
       cofiberBottomEvaluationMap C j := by
-  rw [cofiberProjection, Category.assoc, stable_pre_evaluateFunctorAt]
+  rw [cofiberProjection, Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt]
   rfl
 
 /-- cofiber 後合成は元の入力の辺への射影と厳密に可換。 -/
@@ -34,7 +34,7 @@ lemma cofiberPostcomp_projection {C D : SSet.{u}} (f : C ⟶ D) (hf : PreservesC
     cofiberPostcomp f hf ≫ cofiberProjection D =
       cofiberProjection C ≫ (ihom (Δ[1] : SSet.{u})).map f := by
   rw [cofiberProjection, ← Category.assoc, cofiberPostcomp_ι, Category.assoc,
-    (pre squareBottomEdge).naturality]
+    (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge).naturality]
   rfl
 
 /-- 二重 cofiber 族の二つの入力の辺を四角形に並べる。 -/
@@ -49,7 +49,7 @@ def doubleCofiberRow {E C : SSet.{u}} (J : E ⟶ cofiberDiagrams (cofiberDiagram
     E ⟶ cofiberDiagrams C := J ≫ cofiberBottomEvaluationMap (cofiberDiagrams C) j
 
 /-- 格子の列を与える元の内側 cofiber の下辺の端点への完全な後合成。 -/
-def doubleCofiberColumn {E C : SSet.{u}} [Quasicategory C] [IsStable C]
+def doubleCofiberColumn {E C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     (J : E ⟶ cofiberDiagrams (cofiberDiagrams C)) (j : Fin 2) : E ⟶ cofiberDiagrams C :=
   J ≫ cofiberPostcomp (cofiberBottomEvaluationMap C j)
     (cofiberEvaluation_preservesSConstructionData C _).toCofiberData
@@ -61,19 +61,19 @@ lemma doubleCofiberGrid_row {E C : SSet.{u}}
         (SSet.const (stdSimplex.obj₀Equiv.symm j)))).app C =
       doubleCofiberRow J j ≫ cofiberProjection C := by
   simp only [doubleCofiberGrid, Category.assoc]
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.ihomUncurry_pre_row, ihom_postcomp_evaluate]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ihomUncurry_pre_row, ihom_postcomp_evaluate]
   simpa only [doubleCofiberRow, Category.assoc] using
     congrArg (fun f => J ≫ f ≫ cofiberProjection C)
       (cofiberProjection_evaluation (cofiberDiagrams C) j)
 
 /-- 格子の各列の全単体は元の内側端点への cofiber 後合成の入力そのもの。 -/
-lemma doubleCofiberGrid_column {E C : SSet.{u}} [Quasicategory C] [IsStable C]
+lemma doubleCofiberGrid_column {E C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     (J : E ⟶ cofiberDiagrams (cofiberDiagrams C)) (j : Fin 2) :
     doubleCofiberGrid J ≫ (pre (lift (SSet.const (stdSimplex.obj₀Equiv.symm j))
         (𝟙 (Δ[1] : SSet.{u})))).app C =
       doubleCofiberColumn J j ≫ cofiberProjection C := by
   simp only [doubleCofiberGrid, Category.assoc]
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.ihomUncurry_pre_column, ← CategoryTheory.Functor.map_comp, cofiberProjection_evaluation]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ihomUncurry_pre_column, ← CategoryTheory.Functor.map_comp, cofiberProjection_evaluation]
   simpa only [doubleCofiberColumn, Category.assoc] using
     congrArg (fun f => J ≫ f)
       (cofiberPostcomp_projection (cofiberBottomEvaluationMap C j)

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedRightFamilyComposition
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedRightFamilyEvaluationActionFactor
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedValueFamilyTransport
-public import SerrePositivity.InfinityCategories.F1.Coherent.KanRightCompositionMoving
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.KanRightCompositionMoving
 
 /-!
 概要：動く始点と二射の元の値比較を、同じ合成輸送の終点まで貼り合わせる。

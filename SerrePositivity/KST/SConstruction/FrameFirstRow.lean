@@ -26,7 +26,7 @@ def firstRowFrameOrder (n : ℕ) : ULift.{u} (Fin n) →o FrameAr.{u} n where
 方針：順序包含の nerve を全部分複体へ持ち上げる。
 規約：対角は含めない。使われ方：第一行の二つの表示の比較。 -/
 def firstRowFrameMap (n : ℕ) : firstRowNerve.{u} n ⟶ (framePositiveRow n : SSet.{u}) :=
-  fullSubcomplexLift _ (nerveMap (firstRowFrameOrder n).toFunctor) (by
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (nerveMap (firstRowFrameOrder n).toFunctor) (by
     intro v
     constructor
     · rfl

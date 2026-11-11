@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentKanLeftHomInterval
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.EdgewiseRefinementNaturality
-public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseRightFilling
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.EdgewiseRightFilling
 
 /-!
 概要：元の実精密化の二つの共通解像に、F1 の指定左右区間比較の自然性を適用する。

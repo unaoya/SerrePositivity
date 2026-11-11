@@ -59,7 +59,7 @@ lemma nativeZeroEvaluationTriangleFamily_one (A : PointedSimplicialSet.{u}) :
 
 /-- 三角形の中間の頂点は、関手単体集合でも実際の零対象。 -/
 lemma nativeZeroEvaluationTriangleFamily_middle_isZero (A : PointedSimplicialSet.{u}) :
-    IsZeroVertex (functorVertex
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
       (lift (𝟙 Sp.{u}) (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 3))) ≫
         nativeZeroEvaluationTriangleFamily A)) := by
   rw [nativeZeroEvaluationTriangleFamily_one]
@@ -67,7 +67,7 @@ lemma nativeZeroEvaluationTriangleFamily_middle_isZero (A : PointedSimplicialSet
 
 /-- 三角形の最後の頂点図式は恒等関手と実際に関手同型。 -/
 def nativeZeroEvaluationTriangleFamily_targetIso (A : PointedSimplicialSet.{u}) :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (lift (𝟙 Sp.{u}) (SSet.const (stdSimplex.obj₀Equiv.symm (2 : Fin 3))) ≫
         nativeZeroEvaluationTriangleFamily A) (𝟙 Sp.{u}) := by
   rw [nativeZeroEvaluationTriangleFamily_vertex,

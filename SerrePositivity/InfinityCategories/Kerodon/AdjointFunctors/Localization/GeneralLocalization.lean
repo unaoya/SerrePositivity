@@ -7,6 +7,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localiz
 方針：証明済みの同宇宙の存在定理から選び、全関手 ∞ 圏の普遍性を保持する。
 規約：安定圏の商の安定性・完全性は仮定も結論もしていない。
 使われ方：一般の Verdier 商の候補への後続の幾何的な証明。
+
+対応節は Kerodon 6.3（Tag 01M4）。
 -/
 
 @[expose] public section
@@ -28,14 +30,14 @@ def edgeLocalizationMap : X ⟶ edgeLocalization X W :=
 instance edgeLocalization_quasicategory : Quasicategory (edgeLocalization X W) :=
   (Classical.choose_spec (Classical.choose_spec (exists_quasicategory_localization X W))).1
 
-lemma edgeLocalization_isLocalization : IsLocalization (edgeLocalizationMap X W) W :=
+lemma edgeLocalization_isLocalization : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (edgeLocalizationMap X W) W :=
   (Classical.choose_spec (Classical.choose_spec (exists_quasicategory_localization X W))).2
 
-lemma edgeLocalization_inverts : InvertsEdges (edgeLocalizationMap X W) W :=
+lemma edgeLocalization_inverts : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (edgeLocalizationMap X W) W :=
   (edgeLocalization_isLocalization X W).choose
 
 lemma edgeLocalization_universal (Y : SSet.{u}) [Quasicategory Y] :
-    IsQCatEquivalence (localizationPrecomposition (edgeLocalizationMap X W) W
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition (edgeLocalizationMap X W) W
       (edgeLocalization_inverts X W) Y) :=
   (edgeLocalization_isLocalization X W).choose_spec Y
 

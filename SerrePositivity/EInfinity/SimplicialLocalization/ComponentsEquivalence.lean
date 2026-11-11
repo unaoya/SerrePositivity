@@ -25,7 +25,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite
 open scoped Simplicial
 
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 /-- 概要：零次の全射の比較は元の余単位の局所化像（Dwyer–Kan）。
 方針：同じ標準対象表示と augmentation の移送を相殺する。
@@ -35,9 +35,9 @@ lemma localizationZeroHom_augmentation {X Y : C.category}
     (f : C.weakEquivalences.paths.Q.obj ((Paths.of C.category).obj X) ⟶
       C.weakEquivalences.paths.Q.obj ((Paths.of C.category).obj Y)) :
     (localizationHomAugmentation C X Y).app (op ⦋0⦌) (localizationZeroHom C f) =
-      (strictLocalizationMap (freeCounit C.weakEquivalences)).map f := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit C.weakEquivalences)).map f := by
   change eqToHom (localizedFreeResolutionAugmentation_object C (op ⦋0⦌) X).symm ≫
-      (strictLocalizationMap (freeCounit C.weakEquivalences)).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit C.weakEquivalences)).map
         (localizationZeroHom C f) ≫
       eqToHom (localizedFreeResolutionAugmentation_object C (op ⦋0⦌) Y) = _
   unfold localizationZeroHom
@@ -60,7 +60,7 @@ lemma localizationComponentsLift_augmentation_zero {X Y : C.category}
   have h := Functor.congr_hom (strictLocalizationCounit_comp_componentsLift C) f
   simp only [Functor.comp_map, eqToHom_refl, Category.id_comp, Category.comp_id] at h
   change (localizationComponentsLift C).map
-    ((strictLocalizationMap (freeCounit C.weakEquivalences)).map f) =
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit C.weakEquivalences)).map f) =
       SSet.π₀.mk (localizationZeroHom C f) at h
   exact h
 

@@ -18,8 +18,8 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
-  (K : SSet.{u + 1}) (F : (Δ[3] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u})
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+  (K : SSet.{u + 1}) (F : (Δ[3] : SSet.{u + 1}) ⊗ K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
   (hF : ((horn 3 (2 : Fin 4)).ι ▷ K) ≫ F =
     fst (horn 3 (2 : Fin 4) : SSet.{u + 1}) K ≫ zeroMiddleFullSKanHorn s hZ)
 
@@ -39,7 +39,7 @@ def zeroMiddleControlledPrismShuffle : ((Δ[2] : SSet.{u + 1}) ⊗ K) ⊗ Δ[1] 
 def zeroMiddleControlledPrismHomotopy : SSet.Homotopy
     ((stdSimplex.δ (2 : Fin 4) ▷ K) ≫ F)
     (fst (Δ[2] : SSet.{u + 1}) K ≫
-      SSet.yonedaEquiv.symm ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+      SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
         (Opposite.op ⦋2⦌) s)) where
   h := zeroMiddleControlledPrismShuffle K ≫ zeroMiddleControlledPrismFamily K F
   h₀ := by
@@ -58,8 +58,8 @@ include hF in
 規約：ホモトピー類や端点だけの一致に弱めない。
 使われ方：元の全 S• 比較の可逆性を同じ実制御三角柱へ移す。 -/
 theorem zeroMiddleControlledPrismHomotopy_vertex_edge (v : (Δ[2] ⊗ K) _⦋0⦌) :
-    (simplicialHomotopyVertexEdge (zeroMiddleControlledPrismHomotopy s hZ K F hF) v).edge =
-      (simplicialHomotopyVertexEdge (zeroMiddleFullSKanPrism s hZ) v.1).edge := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (zeroMiddleControlledPrismHomotopy s hZ K F hF) v).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (zeroMiddleFullSKanPrism s hZ) v.1).edge := by
   exact zeroMiddleControlledFillerFamily_one s hZ K F hF _
 
 /-- 概要：同じ制御三角柱の全族比較は全パラメータ頂点で可逆。
@@ -67,10 +67,10 @@ theorem zeroMiddleControlledPrismHomotopy_vertex_edge (v : (Δ[2] ⊗ K) _⦋0�
 規約：同じ実ホモトピー自体を保持する。
 使われ方：指定上側の全族を元の二胞体へ関手同型で戻す。 -/
 theorem zeroMiddleControlledPrismHomotopy_pointwise :
-    ∀ v, IsInvertibleEdge (simplicialHomotopyVertexEdge
+    ∀ v, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
       (zeroMiddleControlledPrismHomotopy s hZ K F hF) v).toTruncated := by
   intro v
-  exact (isInvertibleEdge_congr
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
     (zeroMiddleControlledPrismHomotopy_vertex_edge s hZ K F hF v)).mpr
       (zeroMiddleFullSKanPrism_pointwise s hZ v.1)
 
@@ -78,12 +78,12 @@ theorem zeroMiddleControlledPrismHomotopy_pointwise :
 方針：同じ実三角柱の点ごとの可逆性を使う。
 規約：制御充填の存在と指定全長 Hom の回収は未供給の別工程。
 使われ方：K-6 c4 の再構成後の上側全族比較。 -/
-def zeroMiddleControlledPrismFamilyIso : FunctorIso
+def zeroMiddleControlledPrismFamilyIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((stdSimplex.δ (2 : Fin 4) ▷ K) ≫ F)
     (fst (Δ[2] : SSet.{u + 1}) K ≫
-      SSet.yonedaEquiv.symm ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+      SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
         (Opposite.op ⦋2⦌) s)) :=
-  functorIsoOfPointwiseInvertibleHomotopy _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy _
     (zeroMiddleControlledPrismHomotopy_pointwise s hZ K F hF)
 
 /-- 概要：同じ実全族ホモトピーは制御上側の共有対角を全時刻固定する。
@@ -97,10 +97,10 @@ theorem zeroMiddleControlledPrismHomotopy_diagonal :
         (stdSimplex.δ (1 : Fin 3) ▷ K) ≫ (stdSimplex.δ (2 : Fin 4) ▷ K) ≫ F := by
   ext n x
   have he := congrArg (fun G : ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]) ⟶ Δ[3] =>
-    G.app n (x.1.1, x.2)) triangleMiddlePrism_diagonal
-  change triangleMiddlePrism.app n ((stdSimplex.δ (1 : Fin 3)).app n x.1.1, x.2) =
+    G.app n (x.1.1, x.2)) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.triangleMiddlePrism_diagonal
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.triangleMiddlePrism.app n ((stdSimplex.δ (1 : Fin 3)).app n x.1.1, x.2) =
     (stdSimplex.δ (2 : Fin 4)).app n ((stdSimplex.δ (1 : Fin 3)).app n x.1.1) at he
-  change F.app n (triangleMiddlePrism.app n ((stdSimplex.δ (1 : Fin 3)).app n x.1.1, x.2),
+  change F.app n (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.triangleMiddlePrism.app n ((stdSimplex.δ (1 : Fin 3)).app n x.1.1, x.2),
     x.1.2) = _
   rw [he]
   rfl

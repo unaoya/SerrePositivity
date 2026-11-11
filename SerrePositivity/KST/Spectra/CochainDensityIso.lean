@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.TotalizationFunctor
 universe u
 
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.SimplexDensity
 
@@ -32,7 +32,7 @@ variable {I : Type u} [SmallCategory I]
 使われ方：Goerss–Jardine VIII §1、式 (1.1)。通常の Tot の end としての計算。 -/
 def totalizationEndIso (W H : I ⥤ SSet.{u}) :
     CosimplicialTotalization.obj (UnderlyingWeightedCochains.obj (discreteLevels W) H) ≅
-      weightedSections W H :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections W H :=
   Yoneda.fullyFaithful.preimageIso
     (NatIso.ofComponents (fun A ↦ (totalizationEndHomEquiv W H A.unop).toIso)
       (fun f ↦ by

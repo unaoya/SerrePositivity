@@ -55,10 +55,10 @@ lemma assemblyAdjoint_piIsomorphism_of_anodyne_units (r : ℕ) (X : StableModel.
     {U B : PointedSimplicialSet.{u}} [KanComplex U.right] [KanComplex B.right]
     (i : oneDirectionReducedRealization r X ⟶ U) (hi : anodyneExtensions i.right)
     (j : boundaryReducedRealization (r + 1) X ⟶ B) (hj : anodyneExtensions j.right)
-    (a : U ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B)
+    (a : U ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B)
     (ha : i ≫ a = (oneDirectionAssemblyAdjointNat r).app X ≫
       (PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u}).map j) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right := by
   let Q := AnodyneHomotopy.anodyneQ
   let _ : IsIso (Q.map i.right) := (Localization.inverts Q anodyneExtensions) _ hi
   have hs := assemblyTargetAdjoint_localized_isIso_of_anodyne r X j hj

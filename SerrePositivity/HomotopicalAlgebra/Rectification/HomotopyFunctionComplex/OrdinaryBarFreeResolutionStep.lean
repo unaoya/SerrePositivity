@@ -59,7 +59,7 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
     OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ SSet.stdSimplex.δ i) =
       FreeGeneratorFaces.fixedFace D (n + 1) i ⋙ G)
   (degeneracyLaw : ∀ i : Fin (n + 1), degeneracyFunctor D n i ⋙ F =
-    G ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ sigma n i))
+    G ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i))
 
 abbrev boundaryDiagram := OrdinaryBarFreeResolutionBoundary.boundary hcof hfib D n P F G faceLaw
 
@@ -104,7 +104,7 @@ lemma filler_face (k : Fin (n + 3)) : filler hcof hfib D n P F G faceLaw degener
 
 lemma filler_degeneracy (i : Fin (n + 2)) : degeneracyFunctor D (n + 1) i ⋙
     filler hcof hfib D n P F G faceLaw degeneracyLaw =
-      F ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ sigma (n + 1) i) := by
+      F ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma (n + 1) i) := by
   rw [filler, OrdinaryBarFreeDegeneracyExtension.filler_degeneracy hcof hfib D n _ _ _
     (values_compatible hcof hfib D n P F G degeneracyLaw) _ i]
   exact diagram_from_generators hcof hfib D n P F i

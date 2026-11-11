@@ -18,12 +18,12 @@ open scoped Simplicial
 variable {I C : Type (u + 1)} [Category.{u} I] [Category.{u} C] {F : I ⥤ C}
 
 lemma coconeJoin_inr (c : Cocone F) :
-    joinInr (nerve I) (Δ[0] : SSet.{u + 1}) ≫ coconeJoin c = nervePoint c.pt := by
-  rw [coconeJoin, ← Category.assoc, joinInr_joinMap, Category.id_comp, ← Category.assoc,
-    SerrePositivity.InfinityCategories.F1B.nerveCocone_point]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (nerve I) (Δ[0] : SSet.{u + 1}) ≫ coconeJoin c = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint c.pt := by
+  rw [coconeJoin, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr_joinMap, Category.id_comp, ← Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCocone_point]
   apply SSet.yonedaEquiv.injective
   rw [SSet.yonedaEquiv_comp]
-  change (down C).app (Opposite.op ⦋0⦌) (nerveVertex (ULiftHom.objUp c.pt)) = nerveVertex c.pt
+  change (down C).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp c.pt)) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c.pt
   apply ComposableArrows.ext₀
   rfl
 

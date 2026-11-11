@@ -12,7 +12,7 @@ public import SerrePositivity.KST.Spectra.ReedyWeightCornerLifting
 @[expose] public section
 universe u
 open CategoryTheory CategoryTheory.Limits MonoidalCategory SSet HomotopicalAlgebra
-open SerrePositivity.Reedy SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.Reedy
 
 namespace SerrePositivity.KST.Spectra.ReedyWeightRestrictionLifting
 noncomputable section
@@ -25,7 +25,7 @@ lemma hasLiftingProperty (θ : F ⟶ G) (hθ : reedyLeft simplex anodyneExtensio
     (X : CosimplicialObject SSet.{u})
     (hX : reedyRight simplex modelCategoryQuillen.J.rlp (terminal.from X))
     {A B : SSet.{u}} (i : A ⟶ B) [Mono i] :
-    HasLiftingProperty i (weightedSectionsPre (Functor.whiskerLeft AsSmall.down θ)
+    HasLiftingProperty i (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (Functor.whiskerLeft AsSmall.down θ)
       (AsSmall.down ⋙ X)) := by
   exact ReedyWeightCornerLifting.hasLiftingProperty θ X hX i
     (WeightCornerPushout.corner_reedy_anodyne θ i hθ)
@@ -35,7 +35,7 @@ lemma rlp_monomorphisms (θ : F ⟶ G) (hθ : reedyLeft simplex anodyneExtension
     (X : CosimplicialObject SSet.{u})
     (hX : reedyRight simplex modelCategoryQuillen.J.rlp (terminal.from X)) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp
-      (weightedSectionsPre (Functor.whiskerLeft AsSmall.down θ) (AsSmall.down ⋙ X)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (Functor.whiskerLeft AsSmall.down θ) (AsSmall.down ⋙ X)) := by
   intro A B i hi
   let : Mono i := hi
   exact hasLiftingProperty θ hθ X hX i

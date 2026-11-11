@@ -16,13 +16,13 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の全 native dg 入力を持つ、安定 ∞ 圏と完全関手への実 Perf ∞ 関手。 -/
 def presentedPerfectDGExactInfinityFunctor :
-    perfDGInputInfinity.{u, v} A ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} :=
-  coherentNerveMap (presentedPerfectDGEnrichedExactFunctor A)
+    perfDGInputInfinity.{u, v} A ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{max (u + 1) v} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (presentedPerfectDGEnrichedExactFunctor A)
 
 /-- 元の各 dg 圏での ∞ 関手の値は、同じラベル付き実安定 Perf 模型。 -/
 lemma presentedPerfectDGExactInfinityFunctor_vertex (C : PerfDGInput.{u, v} A) :
     (presentedPerfectDGExactInfinityFunctor A).app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex C) = coherentNerveVertex (presentedPerfectDGStableQCat A C) :=
-  coherentNerveMap_vertex _ C
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex C) = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (presentedPerfectDGStableQCat A C) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex _ C
 
 end SerrePositivity.KST.SConstruction

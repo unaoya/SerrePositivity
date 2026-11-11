@@ -20,7 +20,7 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 
 lemma homotopy_weak_iff {A B : SSet.{u}} {f g : A ⟶ B} (H : SSet.Homotopy f g) :
-    IsWeakHomotopyEquivalence f ↔ IsWeakHomotopyEquivalence g := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f ↔ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence g := by
   have he (Z : SSet.{u}) [SSet.KanComplex Z] :
       (FrameHom.AnodyneWeakDetection.homComponents Z).map f.op =
         (FrameHom.AnodyneWeakDetection.homComponents Z).map g.op := by

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.StandardJoinTailFace
 public import SerrePositivity.KST.Fibration.WeakStringFiniteComparison
-public import SerrePositivity.InfinityCategories.Core.OuterHornJoin
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.OuterHornJoin
 
 /-! # 元の貼り合わせの先行包含・最後の辺と標準的な添字の厳密照合 -/
 
@@ -21,13 +21,13 @@ lemma standardTailPrefix_inclusion (n : ℕ) :
   apply (cancel_epi (tailPrefixStdIso n).hom).1
   change (tailPrefixStdIso n).hom ≫
     (((tailPrefixStdIso n).inv ≫ tailAttachmentPrefix Δ[n]) ≫
-      ((tailAttachment (Δ[n] : SSet.{u})).ι ≫ (joinStdSimplexIso n 1).hom)) = _
+      ((tailAttachment (Δ[n] : SSet.{u})).ι ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 1).hom)) = _
   simp only [Category.assoc, Iso.hom_inv_id_assoc]
-  change joinUnionRight (⊥ : (Δ[n] : SSet.{u}).Subcomplex) (horn 1 0) ≫
-    (joinUnion (⊥ : (Δ[n] : SSet.{u}).Subcomplex) (horn 1 0)).ι ≫ _ = _
-  rw [← Category.assoc, joinUnionRight_ι]
-  change _ = (joinMap (𝟙 _) initialHornPointIso.inv ≫ (joinStdSimplexIso n 0).hom) ≫ _
-  rw [Category.assoc, ← standardJoin_right_initial_face, ← Category.assoc, ← joinMap_comp]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinUnionRight (⊥ : (Δ[n] : SSet.{u}).Subcomplex) (horn 1 0) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinUnion (⊥ : (Δ[n] : SSet.{u}).Subcomplex) (horn 1 0)).ι ≫ _ = _
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinUnionRight_ι]
+  change _ = (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 _) initialHornPointIso.inv ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom) ≫ _
+  rw [Category.assoc, ← standardJoin_right_initial_face, ← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap_comp]
   have he : initialHornPointIso.{u}.inv ≫ stdSimplex.δ (1 : Fin 2) = (horn 1 0).ι := by
     rw [← initialHornPointIso_ι, Iso.inv_hom_id_assoc]
   rw [Category.id_comp, he]
@@ -38,7 +38,7 @@ lemma standardTailEdge_eq_consecutive (n : ℕ) :
       stdSimplex.map (consecutiveWeakStringEdge (n + 2) (Fin.last (n + 1))) := by
   rw [standardTailEdge_inclusion]
   apply SSet.yonedaEquiv.injective
-  rw [InfinityCategories.joinStdSimplexIso_inr_edge]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.joinStdSimplexIso_inr_edge]
   apply stdSimplex.ext
   intro a
   fin_cases a <;> rfl

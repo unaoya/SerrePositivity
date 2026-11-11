@@ -86,10 +86,10 @@ lemma right_weakEquivalence (X : C) (n : SimplexCategory) :
     (diagramCofFactorization cof) q.augmentation q'.augmentation
     (augmentation_trivialFibration q) X).2 n
 
-abbrev homLeft (R : C ⥤ C) : resolutionHom q.obj R ⟶ resolutionHom (common cof q q').obj R :=
+abbrev homLeft (R : C ⥤ C) : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom q.obj R ⟶ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom (common cof q q').obj R :=
   resolutionHomMapSource (left cof q q') R
 
-abbrev homRight (R : C ⥤ C) : resolutionHom q'.obj R ⟶ resolutionHom (common cof q q').obj R :=
+abbrev homRight (R : C ⥤ C) : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom q'.obj R ⟶ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom (common cof q q').obj R :=
   resolutionHomMapSource (right cof q q') R
 
 variable [ModelCategory SSet.{v}]

@@ -19,7 +19,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の右ブロック射に関する、元の連結比較の可換性そのもの。 -/
 def SerreCubeRightBlockNatural (n : ℕ) {m k : ℕ}
-    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k) : Prop :=
+    (f : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk k) : Prop :=
   serreConcreteCubeMap A (concreteCubeRightBlockHom n f) ≫
       (serreCubeTensorIso A n k).hom =
     (serreCubeTensorIso A n m).hom ≫
@@ -28,7 +28,7 @@ def SerreCubeRightBlockNatural (n : ℕ) {m k : ℕ}
 
 /-- 元の二つの射の評価を固定した可換四角形から、元の右ブロック自然性を回収する。 -/
 lemma serreCubeRightBlockNatural_of_evaluations (n : ℕ) {m k : ℕ}
-    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk k)
     (b : serreCubeComonoid A (n + m) ⟶ serreCubeComonoid A (n + k))
     (a : serreCubeComonoid A m ⟶ serreCubeComonoid A k)
     (hb : serreConcreteCubeMap A (concreteCubeRightBlockHom n f) = b)
@@ -42,7 +42,7 @@ lemma serreCubeRightBlockNatural_of_evaluations (n : ℕ) {m k : ℕ}
 
 /-- 右ブロックの自然性は、元の右端保持で保存される。 -/
 lemma serreCubeRightBlockNatural_keep (n : ℕ) {m k : ℕ}
-    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k) (hf : SerreCubeRightBlockNatural A n f) :
+    (f : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk k) (hf : SerreCubeRightBlockNatural A n f) :
     SerreCubeRightBlockNatural A n (concreteCubeRightKeepHom f) := by
   dsimp only [SerreCubeRightBlockNatural] at hf ⊢
   erw [serreCubeRightBlock_keep_evaluation A n f, serreConcreteCubeMap_keep A f]

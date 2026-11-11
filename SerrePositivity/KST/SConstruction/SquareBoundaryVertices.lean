@@ -21,7 +21,7 @@ lemma yonedaEdge_source {X : SSet.{u}} {x y : X _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) :
     (SSet.yonedaEquiv.symm f.edge).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = x := by
-  have h := congrArg SSet.yonedaEquiv (edgeSimplex_source f)
+  have h := congrArg SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeSimplex_source f)
   rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] at h
   have hδ : SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2) :
       (Δ[0] : SSet.{u}) ⟶ Δ[1]) = stdSimplex.obj₀Equiv.symm (0 : Fin 2) := by decide
@@ -33,7 +33,7 @@ lemma yonedaEdge_target {X : SSet.{u}} {x y : X _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) :
     (SSet.yonedaEquiv.symm f.edge).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = y := by
-  have h := congrArg SSet.yonedaEquiv (edgeSimplex_target f)
+  have h := congrArg SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeSimplex_target f)
   rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] at h
   have hδ : SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) :
       (Δ[0] : SSet.{u}) ⟶ Δ[1]) = stdSimplex.obj₀Equiv.symm (1 : Fin 2) := by decide
@@ -44,8 +44,8 @@ lemma yonedaEdge_target {X : SSet.{u}} {x y : X _⦋0⦌}
 lemma square_bottom_vertices {X : SSet.{u}} {x y : X _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y)
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
-    (h : squareBottomEdge ≫ F = SSet.yonedaEquiv.symm f.edge) :
-    squareVertex F 0 0 = x ∧ squareVertex F 1 0 = y := by
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ F = SSet.yonedaEquiv.symm f.edge) :
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 0 = x ∧ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 0 = y := by
   exact ⟨(ConcreteCategory.congr_hom (NatTrans.congr_app h (Opposite.op ⦋0⦌))
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).trans (yonedaEdge_source f),
     (ConcreteCategory.congr_hom (NatTrans.congr_app h (Opposite.op ⦋0⦌))
@@ -55,8 +55,8 @@ lemma square_bottom_vertices {X : SSet.{u}} {x y : X _⦋0⦌}
 lemma square_right_vertices {X : SSet.{u}} {x y : X _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y)
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
-    (h : squareRightEdge ≫ F = SSet.yonedaEquiv.symm f.edge) :
-    squareVertex F 1 0 = x ∧ squareVertex F 1 1 = y := by
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ F = SSet.yonedaEquiv.symm f.edge) :
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 0 = x ∧ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 1 = y := by
   exact ⟨(ConcreteCategory.congr_hom (NatTrans.congr_app h (Opposite.op ⦋0⦌))
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).trans (yonedaEdge_source f),
     (ConcreteCategory.congr_hom (NatTrans.congr_app h (Opposite.op ⦋0⦌))

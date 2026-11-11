@@ -21,7 +21,7 @@ lemma cubicalLambdaNativeSimplexData_rhs_faces {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D)
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
     (cubicalLambdaNativeSimplexData A F).rhs I
-        (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+        (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
         (2 - (I.card : ℤ)) hI rfl rfl rfl =
       ∑ i : Fin (I.card - 2),
         let j := simplexSubsetInteriorCoordinateEquiv I hI i
@@ -32,11 +32,11 @@ lemma cubicalLambdaNativeSimplexData_rhs_faces {n : ℕ}
               j.property.2.1 j.property.2.2) := by
   have hs := simplexSubset_sum_interior I hI
     (fun j hj hjm hjM => (cubicalLambdaNativeSimplexData A F).term I
-      (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+      (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
       (2 - (I.card : ℤ)) hI rfl rfl rfl j hj hjm hjM)
   have he := (simplexSubsetInteriorCoordinateEquiv I hI).sum_comp
     (fun j : SimplexSubsetInterior I hI => (cubicalLambdaNativeSimplexData A F).term I
-      (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+      (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
       (2 - (I.card : ℤ)) hI rfl rfl rfl j.val j.property.1 j.property.2.1 j.property.2.2)
   exact hs.trans (he.symm.trans (Finset.sum_congr rfl (fun i _ =>
     (cubicalLambdaNativeSimplexData_term_faces A F I hI _ _ _ _).trans

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackStable
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategories
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.LaxPullbackStable
 
 /-!
 概要：F2 の元の lax pullback と完全射影を K-5 の安定圏の界面へ束ねる。
@@ -18,22 +18,22 @@ open CategoryTheory
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
 /-- F2 の lax pullback そのものを対象とする小さい安定 ∞ 圏。 -/
-def laxCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} where
-  obj := F2.laxPullback p.hom q.hom
+def laxCategory : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u} where
+  obj := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullback p.hom q.hom
   isQuasicategory := inferInstance
   isStable := inferInstance
 
 /-- 元の第一射影。完全性の証明は F2 から読み取り専用で使う。 -/
-def laxFst : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) C where
-  hom := F2.laxPullbackFst p.hom q.hom
-  isExact := F2.laxPullbackFst_isExactFunctor p.hom q.hom
+def laxFst : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (laxCategory p q) C where
+  hom := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackFst p.hom q.hom
+  isExact := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackFst_isExactFunctor p.hom q.hom
 
 /-- 元の第二射影。 -/
-def laxSnd : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) D where
-  hom := F2.laxPullbackSnd p.hom q.hom
-  isExact := F2.laxPullbackSnd_isExactFunctor p.hom q.hom
+def laxSnd : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (laxCategory p q) D where
+  hom := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackSnd p.hom q.hom
+  isExact := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackSnd_isExactFunctor p.hom q.hom
 
 end SerrePositivity.KST.LocalizingInvariants

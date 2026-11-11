@@ -52,9 +52,9 @@ lemma cofibrantSourceRoofProductNormalizedMap_over :
 def cofibrantSourceRoofProductBaseHomotopy : SSet.Homotopy
     (nerveMap (cofibrantSourceRoofProductCommaOver A X Y b))
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
-      (nerveVertex (Over.mk (𝟙 (cofibrantSourceRoofDegree A X Y b))))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Over.mk (𝟙 (cofibrantSourceRoofDegree A X Y b))))) := by
   have := cofibrantSourceRoofProjection_leftFibration A X Y
-  exact stableHomotopyRetarget (terminalFiberBaseHomotopy
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget (terminalFiberBaseHomotopy
     (roofCornerNormalizedProjection (cofibrantDKSourceFrame A X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y)
       (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) b)
@@ -65,9 +65,9 @@ def cofibrantSourceRoofProductBaseHomotopy : SSet.Homotopy
     (cofibrantSourceRoofProductNormalizedMap_over A X Y b) rfl
 
 lemma cofibrantSourceRoofProductBaseHomotopy_hom_eq :
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (cofibrantSourceRoofProductBaseHomotopy A X Y b)) =
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (overTerminalHomotopy (cofibrantSourceRoofDegree A X Y b)
         (cofibrantSourceRoofProductCommaOver A X Y b))) := by
   have := cofibrantSourceRoofProjection_leftFibration A X Y

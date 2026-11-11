@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Simplicial.SimplicialSumPullbacks
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplicialSumPullbacks
 public import SerrePositivity.KST.Comparison.SpanCylinderFunctor
 public import Mathlib.CategoryTheory.Category.Preorder
 
@@ -79,9 +79,9 @@ theorem telescopeEdgeDegree_le_odd (i : ℕ ⊕ ℕ) :
 -/
 def telescopeSpan (F : ℕ ⥤ SSet.{u}) : WalkingSpan ⥤ SSet.{u} :=
   span
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex (B := fun n => F.obj (2 * n)) telescopeEvenIndex
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex (B := fun n => F.obj (2 * n)) telescopeEvenIndex
       (fun i => F.map (homOfLE (telescopeEdgeDegree_le_even i))))
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex (B := fun n => F.obj (2 * n + 1)) telescopeOddIndex
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex (B := fun n => F.obj (2 * n + 1)) telescopeOddIndex
       (fun i => F.map (homOfLE (telescopeEdgeDegree_le_odd i))))
 
 /--
@@ -92,17 +92,17 @@ def telescopeSpan (F : ℕ ⥤ SSet.{u}) : WalkingSpan ⥤ SSet.{u} :=
 -/
 def telescopeSpanMap {F G : ℕ ⥤ SSet.{u}} (α : F ⟶ G) : telescopeSpan F ⟶ telescopeSpan G :=
   spanHomMk
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap (fun i => α.app (telescopeEdgeDegree i)))
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap (fun n => α.app (2 * n)))
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap (fun n => α.app (2 * n + 1)))
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_commSq
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumMap (fun i => α.app (telescopeEdgeDegree i)))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumMap (fun n => α.app (2 * n)))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumMap (fun n => α.app (2 * n + 1)))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_commSq
       (B := fun n => F.obj (2 * n)) (D := fun n => G.obj (2 * n)) telescopeEvenIndex
       (fun i => F.map (homOfLE (telescopeEdgeDegree_le_even i)))
       (fun i => α.app (telescopeEdgeDegree i))
       (fun n => α.app (2 * n))
       (fun i => G.map (homOfLE (telescopeEdgeDegree_le_even i)))
       (fun _ => ⟨α.naturality _⟩)).w
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_commSq
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_commSq
       (B := fun n => F.obj (2 * n + 1)) (D := fun n => G.obj (2 * n + 1)) telescopeOddIndex
       (fun i => F.map (homOfLE (telescopeEdgeDegree_le_odd i)))
       (fun i => α.app (telescopeEdgeDegree i))

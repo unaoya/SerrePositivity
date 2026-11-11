@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedRestriction
 public import SerrePositivity.KST.Spectra.WeightCylinderFunctor
 
 /-!
@@ -13,7 +13,7 @@ public import SerrePositivity.KST.Spectra.WeightCylinderFunctor
 @[expose] public section
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped MonoidalClosed Simplicial
 
 namespace SerrePositivity.KST.Spectra.WeightedPreHomotopy
@@ -30,27 +30,27 @@ def rearrange (A E T : SSet.{u}) : A ⊗ (E ⊗ T) ⟶ (A ⊗ T) ⊗ E :=
 /-- 重みの cylinder を普遍的な end の評価へ前合成した三変数の族。 -/
 def family {W V : I ⥤ SSet.{u}}
     (C : W ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ V) (H : I ⥤ SSet.{u}) :
-    W ⊗ (Functor.const I).obj (weightedSections V H ⊗ (Δ[1] : SSet.{u})) ⟶ H where
-  app i := rearrange (W.obj i) (weightedSections V H) (Δ[1] : SSet.{u}) ≫
-    (C.app i ▷ weightedSections V H) ≫ MonoidalClosed.uncurry (weightedSectionsπ V H i)
+    W ⊗ (Functor.const I).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections V H ⊗ (Δ[1] : SSet.{u})) ⟶ H where
+  app i := rearrange (W.obj i) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections V H) (Δ[1] : SSet.{u}) ≫
+    (C.app i ▷ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections V H) ≫ MonoidalClosed.uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ V H i)
   naturality i j f := by
     apply NatTrans.ext
     funext n
     apply ConcreteCategory.hom_ext
     intro x
-    change (W.obj i).obj n × ((weightedSections V H).obj n × (Δ[1] : SSet.{u}).obj n) at x
+    change (W.obj i).obj n × ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections V H).obj n × (Δ[1] : SSet.{u}).obj n) at x
     have hC := C.naturality f
     change (W.map f ▷ (Δ[1] : SSet.{u})) ≫ C.app j = C.app i ≫ V.map f at hC
     have hc := congrArg (fun k : W.obj i ⊗ (Δ[1] : SSet.{u}) ⟶ V.obj j ↦
       k.app n (x.1, x.2.2)) hC
     change (C.app j).app n ((W.map f).app n x.1, x.2.2) =
       (V.map f).app n ((C.app i).app n (x.1, x.2.2)) at hc
-    have he := congrArg (fun k : V.obj i ⊗ weightedSections V H ⟶ H.obj j ↦
+    have he := congrArg (fun k : V.obj i ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections V H ⟶ H.obj j ↦
       k.app n ((C.app i).app n (x.1, x.2.2), x.2.1))
-      ((weightedSectionsUncurry (𝟙 (weightedSections V H))).naturality f)
-    change (MonoidalClosed.uncurry (weightedSectionsπ V H j)).app n
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections V H))).naturality f)
+    change (MonoidalClosed.uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ V H j)).app n
       ((C.app j).app n ((W.map f).app n x.1, x.2.2), x.2.1) =
-      (H.map f).app n ((MonoidalClosed.uncurry (weightedSectionsπ V H i)).app n
+      (H.map f).app n ((MonoidalClosed.uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ V H i)).app n
         ((C.app i).app n (x.1, x.2.2), x.2.1))
     rw [hc]
     exact he
@@ -59,54 +59,54 @@ def family {W V : I ⥤ SSet.{u}}
 lemma family_zero {W V : I ⥤ SSet.{u}}
     (C : W ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ V)
     (θ : W ⟶ V) (hC : ∀ i, SSet.ι₀ ≫ C.app i = θ.app i) (H : I ⥤ SSet.{u}) (i : I) :
-    (W.obj i ◁ (SSet.ι₀ : weightedSections V H ⟶ _)) ≫ (family C H).app i =
-      (θ.app i ▷ weightedSections V H) ≫ MonoidalClosed.uncurry (weightedSectionsπ V H i) := by
+    (W.obj i ◁ (SSet.ι₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections V H ⟶ _)) ≫ (family C H).app i =
+      (θ.app i ▷ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections V H) ≫ MonoidalClosed.uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ V H i) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
   intro x
   have h := ConcreteCategory.congr_hom (NatTrans.congr_app (hC i) n) x.1
-  change (MonoidalClosed.uncurry (weightedSectionsπ V H i)).app n
+  change (MonoidalClosed.uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ V H i)).app n
       ((C.app i).app n (SSet.ι₀.app n x.1), x.2) =
-    (MonoidalClosed.uncurry (weightedSectionsπ V H i)).app n ((θ.app i).app n x.1, x.2)
+    (MonoidalClosed.uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ V H i)).app n ((θ.app i).app n x.1, x.2)
   change (C.app i).app n (SSet.ι₀.app n x.1) = (θ.app i).app n x.1 at h
-  exact congrArg (fun z ↦ (MonoidalClosed.uncurry (weightedSectionsπ V H i)).app n (z, x.2)) h
+  exact congrArg (fun z ↦ (MonoidalClosed.uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ V H i)).app n (z, x.2)) h
 
 /-- 一端での同じ計算。 -/
 lemma family_one {W V : I ⥤ SSet.{u}}
     (C : W ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ V)
     (θ : W ⟶ V) (hC : ∀ i, SSet.ι₁ ≫ C.app i = θ.app i) (H : I ⥤ SSet.{u}) (i : I) :
-    (W.obj i ◁ (SSet.ι₁ : weightedSections V H ⟶ _)) ≫ (family C H).app i =
-      (θ.app i ▷ weightedSections V H) ≫ MonoidalClosed.uncurry (weightedSectionsπ V H i) := by
+    (W.obj i ◁ (SSet.ι₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections V H ⟶ _)) ≫ (family C H).app i =
+      (θ.app i ▷ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections V H) ≫ MonoidalClosed.uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ V H i) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
   intro x
   have h := ConcreteCategory.congr_hom (NatTrans.congr_app (hC i) n) x.1
-  change (MonoidalClosed.uncurry (weightedSectionsπ V H i)).app n
+  change (MonoidalClosed.uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ V H i)).app n
       ((C.app i).app n (SSet.ι₁.app n x.1), x.2) =
-    (MonoidalClosed.uncurry (weightedSectionsπ V H i)).app n ((θ.app i).app n x.1, x.2)
+    (MonoidalClosed.uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ V H i)).app n ((θ.app i).app n x.1, x.2)
   change (C.app i).app n (SSet.ι₁.app n x.1) = (θ.app i).app n x.1 at h
-  exact congrArg (fun z ↦ (MonoidalClosed.uncurry (weightedSectionsπ V H i)).app n (z, x.2)) h
+  exact congrArg (fun z ↦ (MonoidalClosed.uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ V H i)).app n (z, x.2)) h
 
 /-- 重みの自然な図式 cylinder は end の前合成の実際の単体的ホモトピーを与える。 -/
 def homotopy {W V : I ⥤ SSet.{u}} {θ η : W ⟶ V}
     (C : W ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ V)
     (h₀ : ∀ i, SSet.ι₀ ≫ C.app i = θ.app i)
     (h₁ : ∀ i, SSet.ι₁ ≫ C.app i = η.app i) (H : I ⥤ SSet.{u}) :
-    SSet.Homotopy (weightedSectionsPre θ H) (weightedSectionsPre η H) where
-  h := weightedSectionsLift (family C H)
+    SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre θ H) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre η H) where
+  h := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (family C H)
   h₀ := by
-    change SSet.ι₀ ≫ weightedSectionsLift (family C H) = weightedSectionsPre θ H
-    apply weightedSections_hom_ext
+    change SSet.ι₀ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (family C H) = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre θ H
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_hom_ext
     intro i
-    rw [Category.assoc, weightedSectionsLift_π, weightedSectionsPre_π,
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift_π, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_π,
       ← curry_natural_left, family_zero C θ h₀ H i, ← curry_pre_app, curry_uncurry]
   h₁ := by
-    change SSet.ι₁ ≫ weightedSectionsLift (family C H) = weightedSectionsPre η H
-    apply weightedSections_hom_ext
+    change SSet.ι₁ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (family C H) = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre η H
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_hom_ext
     intro i
-    rw [Category.assoc, weightedSectionsLift_π, weightedSectionsPre_π,
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift_π, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_π,
       ← curry_natural_left, family_one C η h₁ H i, ← curry_pre_app, curry_uncurry]
   rel := by
     apply NatTrans.ext

@@ -23,7 +23,7 @@ lemma mappingPre_level_horn_rlp {A B : PointedSimplicialSet.{u}} (j : B ⟶ A) [
     (Y : KanSequence.{u}) (n : ℕ) :
     SSet.modelCategoryQuillen.J.rlp ((KanSequence.mappingPre j Y).app n).right :=
   (SSet.modelCategoryQuillen.fibration_iff _).1
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration j (Y.level n).space)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_fibration j (Y.level n).space)
 
 variable (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) {A B : PointedSimplicialSet.{u}}
   (j : B ⟶ A) [Mono j.right] (c : B ⟶ pointedSpace X Y)
@@ -94,7 +94,7 @@ lemma rectifyParameterRelative_evaluation_homotopy (n : ℕ) :
           (PointedObject.basedHom (X.level n).space (Y.level n).space).hom := by
   let coordinateKan :
       KanComplex (PointedObject.basedHom (X.level n).space (Y.level n).space).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact (PointedMapping.piZero_eq_iff_pointedHomotopy _ _).1
     (rectifyParameterRelative_evaluation_component X Y j c f hb hf n)
 

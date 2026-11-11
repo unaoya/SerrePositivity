@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberTransportRestrictedPrismComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionFiberDataEquality
-public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamilyNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FiberTransportFamilyNaturality
 
 /-!
 概要：元の輸送族の比較を初期係数で制限すると、同じ二輸送の初期値制限の比較となる。

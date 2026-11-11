@@ -22,7 +22,7 @@ lemma presentedPerfectDGBFBaseFunctor_obj (C : PerfDGInput.{u, v} A) :
 /-- 元の零段は、同じ零次全境界 Kan 商の loop 対象そのもの。 -/
 lemma presentedPerfectDGBFZeroFunctor_obj (C : PerfDGInput.{u, v} A) :
     ((presentedPerfectDGBFZeroFunctor A).obj C).obj =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((presentedPerfectDGBoundaryKanEnrichedFunctor A 0).obj C).obj := rfl
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((presentedPerfectDGBoundaryKanEnrichedFunctor A 0).obj C).obj := rfl
 
 /-- 同じ元の零段 ΩB₀ と全 Hom を、Kan 対象へ束ねる。 -/
 def presentedPerfectDGBFZeroKanFunctor :
@@ -87,7 +87,7 @@ lemma presentedPerfectDGBFFirstComparisonTransformation_app (C : PerfDGInput.{u,
 
 /-- 同じ元の B₀ 比較は、全基点・全次数の実際の π 同型。 -/
 lemma presentedPerfectDGBFFirstComparison_piIsomorphism (C : PerfDGInput.{u, v} A) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       (show ((presentedPerfectDGBFBaseFunctor A).obj C).obj ⟶
         ((presentedPerfectDGBFFirstFunctor A).obj C).obj from
           presentedPerfectDGBFFirstComparison A C).right := by

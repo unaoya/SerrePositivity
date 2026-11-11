@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.WideComponentBar
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopyInverse
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakHomotopyInverse
 
 /-!
 概要：元の全辺 wide 模型から元の離散成分への射影を保持する。
@@ -36,12 +36,12 @@ def completionCanonicalComponentProjection (r : ℕ) (ι : Fin r → SimplexCate
 使われ方：離散化の次数ごとの弱同値性。 -/
 lemma completionCanonicalComponentProjection_isWeak (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
-    IsWeakHomotopyEquivalence (completionCanonicalComponentProjection r ι f) := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (completionCanonicalComponentProjection r ι f) := by
   let F := ((multiSEndofunctor r).obj ι).map f
-  let : IsExactFunctor F.val := stableModelHom_exact F
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F.val := stableModelHom_exact F
   have hF := multiSEndofunctor_map_isIdempotentCompletion r ι f hf
-  apply IsSimplicialHomotopyEquivalence.isWeakHomotopyEquivalence
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence.isWeakHomotopyEquivalence
   refine ⟨LocalizingInvariants.completionComponentSection F.val hF,
     ⟨LocalizingInvariants.completionWideContraction F.val hF⟩, ?_⟩
   change Nonempty (SSet.Homotopy
@@ -56,10 +56,10 @@ lemma completionCanonicalComponentProjection_isWeak (r : ℕ)
 使われ方：元の全多次数の離散成分図式への自然変換。 -/
 lemma completionCanonicalComponentProjection_naturality (r : ℕ)
     {ι κ : Fin r → SimplexCategoryᵒᵖ} (α : ι ⟶ κ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionCanonicalWideStructureMap r α f hf ≫ completionCanonicalComponentProjection r κ f =
       completionCanonicalComponentProjection r ι f ≫ (Functor.const SimplexCategoryᵒᵖ).map
         (↾(SSet.mapπ₀ (completionCanonicalWideStructureMap r α f hf))) := by
-  exact F2.Compact.componentLabelMap_pre (completionCanonicalWideStructureMap r α f hf) id
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.componentLabelMap_pre (completionCanonicalWideStructureMap r α f hf) id
 
 end SerrePositivity.KST.SConstruction.Cofinality

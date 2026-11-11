@@ -31,11 +31,11 @@ set_option backward.isDefEq.respectTransparency.types false
 def cotensorStageEquiv (A : PointedSimplicialSet.{u}) (X : OmegaSpectrum.{u})
     (j : ℤ) (k n : ℕ) (hk : -j ≤ (k : ℤ)) (hd : degree j k = n + 1) :
     homotopyGroup (cotensor A X) j ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom A (X.level k).space).right n
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom A (X.level k).space).right n
         (PointedSimplicialSet.basepoint (PointedObject.basedHom A (X.level k).space)) :=
   (positiveStageEquiv (cotensor A X) j k n hk hd).trans
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n ((cotensorProjection A X).app k).right
-      (cotensorProjection_piIsomorphism A X k) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfPiIsomorphism n ((cotensorProjection A X).app k).right
+      (cotensorProjection_piIsomorphism A X k) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _))
 
 /-- 概要：円を源とする cotensor は整数次数群を一つ上げる。
 方針：同じ許容段で BF 比較と loop の群同型を使い、元のスペクトルの整数次数へ戻す。

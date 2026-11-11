@@ -21,37 +21,37 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 使われ方：元 cell 始域を持つ完備化付き実面。 -/
 def dgOdotMilnorSourceNullOuterSquare :
     (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ dgKInputInfinity.{u, u + 1} R :=
-  pastingSquare (dgOdotMilnorSourceNullRectangle R d).diagram 1
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (dgOdotMilnorSourceNullRectangle R d).diagram 1
 
 /-- 概要：実外面の四辺は元の合成辺・cell 商辺・全対象商辺・合成延長。
 方針：元の指定上下二単体と実貼合せの両端を読む。
 規約：全一単体の厳密等号。使われ方：Sp の外面境界照合。 -/
 lemma dgOdotMilnorSourceNullOuterSquare_edges :
-    squareBottomEdge ≫ dgOdotMilnorSourceNullOuterSquare R d = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgOdotMilnorSourceKernelInputMap R d ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ dgOdotMilnorSourceNullOuterSquare R d = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorSourceKernelInputMap R d ≫
           dgOdotMilnorFlatKernelInputMap R d)).edge ∧
-      squareRightEdge ≫ dgOdotMilnorSourceNullOuterSquare R d = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgOdotMilnorCellProjectionInputMap R d)).edge ∧
-      squareLeftEdge ≫ dgOdotMilnorSourceNullOuterSquare R d = SSet.yonedaEquiv.symm
-        (coherentNerveEdge
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ dgOdotMilnorSourceNullOuterSquare R d = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorCellProjectionInputMap R d)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ dgOdotMilnorSourceNullOuterSquare R d = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
           (dgFixedNullLeft R (A := dgOdotMilnorSourceCellInput R d))).edge ∧
-      squareTopEdge ≫ dgOdotMilnorSourceNullOuterSquare R d = SSet.yonedaEquiv.symm
-        (coherentNerveEdge
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ dgOdotMilnorSourceNullOuterSquare R d = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
           (dgFixedNullTop R (dgOdotMilnorSourceKernelNullContracted R d) ≫
             dgFixedNullTop R (dgOdotMilnorFlatKernelContracted R d))).edge := by
   refine ⟨?_, ?_, ?_, ?_⟩
-  · change squareBottomEdge ≫ pastingSquare _ 1 = _
-    rw [pastingSquare_bottomEdge, (dgOdotMilnorSourceNullRectangle R d).bottom_eq,
+  · change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare _ 1 = _
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare_bottomEdge, (dgOdotMilnorSourceNullRectangle R d).bottom_eq,
       stdSimplex.δ_comp_yonedaEquiv_symm, (dgOdotMilnorSourceNullBottomTriangle R d).d₁]
     rfl
-  · change squareRightEdge ≫ pastingSquare _ 1 = _
-    rw [pastingSquare_outer_rightEdge, (dgOdotMilnorSourceNullRectangle R d).right_eq]
+  · change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare _ 1 = _
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare_outer_rightEdge, (dgOdotMilnorSourceNullRectangle R d).right_eq]
     exact (dgOdotMilnorPerfectNullSquare_edges R d).2.1
-  · change squareLeftEdge ≫ pastingSquare _ 1 = _
-    rw [pastingSquare_outer_leftEdge, (dgOdotMilnorSourceNullRectangle R d).left_eq]
+  · change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare _ 1 = _
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare_outer_leftEdge, (dgOdotMilnorSourceNullRectangle R d).left_eq]
     exact (dgOdotMilnorSourceKernelNullSquare_edges R d).2.2.1
-  · change squareTopEdge ≫ pastingSquare _ 1 = _
-    rw [pastingSquare_topEdge, (dgOdotMilnorSourceNullRectangle R d).top_eq,
+  · change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare _ 1 = _
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare_topEdge, (dgOdotMilnorSourceNullRectangle R d).top_eq,
       stdSimplex.δ_comp_yonedaEquiv_symm, (dgOdotMilnorSourceNullTopTriangle R d).d₁]
     rfl
 
@@ -59,14 +59,14 @@ lemma dgOdotMilnorSourceNullOuterSquare_edges :
 方針：同じ実左辺の終点から回収する。規約：頂点を選び直さない。
 使われ方：Sp の完備化付き実面の零角認証。 -/
 lemma dgOdotMilnorSourceNullOuterSquare_zero_vertex :
-    squareVertex (dgOdotMilnorSourceNullOuterSquare R d) 0 1 =
-      coherentNerveVertex (dgFixedNullInput R (dgOdotMilnorSourceCellInput R d)) := by
-  have h := squareLeftEdge_target (dgOdotMilnorSourceNullOuterSquare R d)
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorSourceNullOuterSquare R d) 0 1 =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgFixedNullInput R (dgOdotMilnorSourceCellInput R d)) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftEdge_target (dgOdotMilnorSourceNullOuterSquare R d)
   let e : (dgKInputInfinity.{u, u + 1} R).Edge
-      (coherentNerveVertex (dgOdotMilnorSourceCellInput R d))
-      (coherentNerveVertex (dgFixedNullInput R (dgOdotMilnorSourceCellInput R d))) :=
-    coherentNerveEdge (dgFixedNullLeft R (A := dgOdotMilnorSourceCellInput R d))
-  have he : squareLeftEdge ≫ dgOdotMilnorSourceNullOuterSquare R d =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotMilnorSourceCellInput R d))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgFixedNullInput R (dgOdotMilnorSourceCellInput R d))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgFixedNullLeft R (A := dgOdotMilnorSourceCellInput R d))
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ dgOdotMilnorSourceNullOuterSquare R d =
       SSet.yonedaEquiv.symm e.edge := (dgOdotMilnorSourceNullOuterSquare_edges R d).2.2.1
   rw [he, Equiv.apply_symm_apply, e.tgt_eq] at h
   exact h.symm
@@ -75,10 +75,10 @@ lemma dgOdotMilnorSourceNullOuterSquare_zero_vertex :
 方針：元の全対象商の実 Perf 零性を適用する。
 規約：外周の指定完備化を変更しない。使われ方：Sp の外面零角条件。 -/
 lemma dgOdotMilnorSourceNullOuterSquare_perfect_zero :
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex
       (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R) 0 1)) := by
-  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject ((dgKInputPerfectNu R).app _
-    (squareVertex (dgOdotMilnorSourceNullOuterSquare R d) 0 1)))
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject ((dgKInputPerfectNu R).app _
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorSourceNullOuterSquare R d) 0 1)))
   rw [dgOdotMilnorSourceNullOuterSquare_zero_vertex, dgKInputPerfectNu_vertex]
   exact dgFixedNullInput_isZeroCategory R _
 
@@ -86,12 +86,12 @@ lemma dgOdotMilnorSourceNullOuterSquare_perfect_zero :
 方針：元 S の合成辺と固定 ν の全一単体回収を使う。
 規約：全関手の同型類でなく全一単体を保持する。使われ方：Sp の包含境界。 -/
 lemma dgOdotMilnorSourceNullOuterSquare_nu_inclusion :
-    squareBottomEdge ≫ dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputNu R =
-      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuSourceInclusion R d)).edge := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputNu R =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgOdotMilnorNuSourceInclusion R d)).edge := by
   rw [← Category.assoc, (dgOdotMilnorSourceNullOuterSquare_edges R d).1]
-  change SSet.yonedaEquiv.symm ((dgKInputNu R).app _ (coherentNerveEdge
+  change SSet.yonedaEquiv.symm ((dgKInputNu R).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
     (dgOdotMilnorSourceKernelInputMap R d ≫ dgOdotMilnorFlatKernelInputMap R d)).edge) = _
-  exact congrArg (fun x : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
+  exact congrArg (fun x : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
     (dgKInputNu_edge R (dgOdotMilnorSourceKernelInputMap R d ≫
       dgOdotMilnorFlatKernelInputMap R d))
 
@@ -99,12 +99,12 @@ lemma dgOdotMilnorSourceNullOuterSquare_nu_inclusion :
 方針：右面と共有する実右辺の全一単体を回収する。
 規約：完備化後射影へは指定全関手同型を併用する。使われ方：Sp の商境界。 -/
 lemma dgOdotMilnorSourceNullOuterSquare_nu_projection :
-    squareRightEdge ≫ dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputNu R =
-      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorCellProjectionExactMap R d)).edge := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputNu R =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgOdotMilnorCellProjectionExactMap R d)).edge := by
   rw [← Category.assoc, (dgOdotMilnorSourceNullOuterSquare_edges R d).2.1]
   change SSet.yonedaEquiv.symm ((dgKInputNu R).app _
-    (coherentNerveEdge (dgOdotMilnorCellProjectionInputMap R d)).edge) = _
-  exact congrArg (fun x : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorCellProjectionInputMap R d)).edge) = _
+  exact congrArg (fun x : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
     (dgKInputNu_edge R (dgOdotMilnorCellProjectionInputMap R d))
 
 end SerrePositivity.KST.SConstruction

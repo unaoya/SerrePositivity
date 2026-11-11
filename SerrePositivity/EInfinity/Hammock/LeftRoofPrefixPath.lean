@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PathMaximumCylinderEndpoints
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PathMaximumCylinderEndpoints
 public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixNaturality
 
 /-!
@@ -28,16 +28,16 @@ variable {C I : Type u} [Category.{u} C] [Category.{u} I]
   (hU : ∀ {i j} (a : i ⟶ j), W (U.map a))
 
 def pathMap {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
-    (i : Fin (n + 1)) : nerve (FrameHom.PathMaximum.LastPath.{u} n i) ⟶
-      colimitGraph W (U.obj (Γ.obj i)) Y :=
-  FrameHom.PathMaximum.coordinates Γ t i ≫ (arrowHomotopy W U p hp σ hU (Γ.obj i)).h
+    (i : Fin (n + 1)) : nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LastPath.{u} n i) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W (U.obj (Γ.obj i)) Y :=
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coordinates Γ t i ≫ (arrowHomotopy W U p hp σ hU (Γ.obj i)).h
 
 lemma pathMap_reindex {m n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
     (α : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 1)) :
-    nerveMap (pathLastReindexFunctor.{u} α i) ≫ pathMap W U p hp σ hU Γ t (α.toOrderHom i) =
+    nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastReindexFunctor.{u} α i) ≫ pathMap W U p hp σ hU Γ t (α.toOrderHom i) =
       pathMap W U p hp σ hU (α.toOrderHom.monotone.functor ⋙ Γ) (t.comp α.toOrderHom) i := by
   dsimp only [pathMap]
-  rw [← Category.assoc, FrameHom.PathMaximum.coordinates_reindex]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coordinates_reindex]
   rfl
 
 lemma pathMap_comp {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
@@ -45,30 +45,30 @@ lemma pathMap_comp {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 
     eComp SSet (⟨ULift.up i.castSucc⟩ : SimplicialThickening (ULift.{u} (Fin (n + 2))))
       ⟨ULift.up j.castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩ ≫ pathMap W U p hp σ hU Γ t i =
     snd _ _ ≫ pathMap W U p hp σ hU Γ t j ≫
-      precomposePointMap (arrowMap W (U.map (Γ.map (homOfLE hij)))) Y := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W (U.map (Γ.map (homOfLE hij)))) Y := by
   dsimp only [pathMap]
-  rw [← Category.assoc, FrameHom.PathMaximum.coordinates_comp Γ t i j hij]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coordinates_comp Γ t i j hij]
   simp only [Category.assoc]
   rw [arrowHomotopy_underMap W U p hp σ hU (Γ.obj i) (Γ.map (homOfLE hij))]
 
 lemma pathMap_zero {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (i : Fin (n + 1)) :
     pathMap W U p hp σ hU Γ (OrderHom.const _ 0) i =
-      toUnit _ ≫ arrowMap W (σ.app (Γ.obj i)) := by
+      toUnit _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W (σ.app (Γ.obj i)) := by
   dsimp only [pathMap]
-  rw [FrameHom.PathMaximum.coordinates_zero, Category.assoc,
+  rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coordinates_zero, Category.assoc,
     (arrowHomotopy W U p hp σ hU (Γ.obj i)).h₀, ← Category.assoc, comp_toUnit]
 
 lemma pathMap_one_of_source {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
     (i : Fin (n + 1)) (hi : t i = 1) :
-    pathMap W U p hp σ hU Γ t i = pathLastMaximumMap i ≫ SSet.yonedaEquiv.symm Γ ≫
-      Precompose.SameUniverse.diagramColimitMap W (LeftRoof.diagram W U p hp σ hU) ≫
-        precomposePointMap (arrowMap W (p.app (Γ.obj i))) Y := by
+    pathMap W U p hp σ hU Γ t i = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastMaximumMap i ≫ SSet.yonedaEquiv.symm Γ ≫
+      Precompose.SameUniverse.diagramColimitMap W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram W U p hp σ hU) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W (p.app (Γ.obj i))) Y := by
   dsimp only [pathMap]
-  rw [FrameHom.PathMaximum.coordinates_one_of_source Γ t i hi, Category.assoc,
+  rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coordinates_one_of_source Γ t i hi, Category.assoc,
     (arrowHomotopy W U p hp σ hU (Γ.obj i)).h₁, restrictedRoofMap_eq_precomp]
   simp only [Category.assoc]
-  rw [← Category.assoc (nerveMap (FrameHom.PathMaximum.underFunctor Γ i))
-    (nerveMap (Under.forget (Γ.obj i))), FrameHom.PathMaximum.underFunctor_nerve_forget]
+  rw [← Category.assoc (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.underFunctor Γ i))
+    (nerveMap (Under.forget (Γ.obj i))), _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.underFunctor_nerve_forget]
   simp only [Category.assoc]
 
 end SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix

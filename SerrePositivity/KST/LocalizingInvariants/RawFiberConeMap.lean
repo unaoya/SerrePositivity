@@ -18,7 +18,7 @@ universe u
 open CategoryTheory Limits MonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open SerrePositivity.KST.Spectra SerrePositivity.KST.Spectra.OmegaSpectrum
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.LocalizingInvariants.RawFiberComparison
 
 variable {X Y X' Y' : OmegaSpectrum.{u}} (p : X ⟶ Y) (q : X' ⟶ Y')
@@ -57,8 +57,8 @@ lemma cone_condition (i : AsSmall.{u} WalkingCospan) :
   · exact (map_inclusion p q a b h).symm
   · exact spectrumPoint_isTerminal.hom_ext _ _
 
-def coneTransformation : strictConeFunctor (FiberModel.smallCone p) ⟶
-    strictConeFunctor (FiberModel.smallCone q) :=
+def coneTransformation : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictConeFunctor (FiberModel.smallCone p) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictConeFunctor (FiberModel.smallCone q) :=
   StrictConeMap.transformation (diagramMap p q a b h) _ _ (map p q a b h)
     (cone_condition p q a b h)
 

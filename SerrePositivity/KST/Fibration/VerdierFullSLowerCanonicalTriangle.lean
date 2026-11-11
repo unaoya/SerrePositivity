@@ -18,10 +18,10 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
 
 /-- 同じ最大 path 図式の、元の三頂点を順に持つ実二射列。 -/
-def verdierFullSLowerStrictChain : ComposableArrows KanObject.{u} 2 :=
+def verdierFullSLowerStrictChain : ComposableArrows _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u} 2 :=
   (⟨ULift.up, fun _ _ h => h⟩ : Fin 3 →o ULift.{u} (Fin 3)).toFunctor ⋙
     verdierFullSLowerStrictDiagram d
 
@@ -37,8 +37,8 @@ theorem verdierFullSLowerStrictChain_eq :
 
 /-- 同じ最大化の全二胞体は、同じ実二射列の coherent 表示そのもの。 -/
 theorem verdierFullSLowerMaximalization_eq_strictChain :
-    coherentSimplexMaximalization (verdierFullSLowerSimplex d) =
-      (nerveToCoherent KanObject.{u}).app (Opposite.op ⦋2⦌)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexMaximalization (verdierFullSLowerSimplex d) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u}).app (Opposite.op ⦋2⦌)
         (verdierFullSLowerStrictChain d) := by
   have hF : verdierFullSLowerStrictDiagram d =
       (⟨ULift.down, fun _ _ h => h⟩ : ULift.{u} (Fin 3) →o Fin 3).toFunctor ⋙
@@ -48,19 +48,19 @@ theorem verdierFullSLowerMaximalization_eq_strictChain :
     simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
     rfl
   calc
-    _ = enrichedFunctorOfOrderDiagram (verdierFullSLowerStrictDiagram d) :=
-      coherentSimplexMaximalization_eq_strictDiagram _
-    _ = _ := congrArg enrichedFunctorOfOrderDiagram hF
+    _ = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.enrichedFunctorOfOrderDiagram (verdierFullSLowerStrictDiagram d) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexMaximalization_eq_strictDiagram _
+    _ = _ := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.enrichedFunctorOfOrderDiagram hF
 
 /-- 同じ最大化の全下側二胞体は、同じ二短辺の標準 coherent 合成二胞体に厳密一致。 -/
 theorem verdierFullSLowerMaximalization_eq_compStruct :
-    coherentSimplexMaximalization (verdierFullSLowerSimplex d) =
-      (coherentNerveCompStruct
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexMaximalization (verdierFullSLowerSimplex d) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct
         ((verdierFullSLowerStrictDiagram d).map (homOfLE
           (show (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 1 from by decide)))
         ((verdierFullSLowerStrictDiagram d).map (homOfLE
           (show (ULift.up (1 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 2 from by decide)))).simplex := by
-  have h := congrArg ((nerveToCoherent KanObject.{u}).app (Opposite.op ⦋2⦌))
+  have h := congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u}).app (Opposite.op ⦋2⦌))
     (verdierFullSLowerStrictChain_eq d)
   exact (verdierFullSLowerMaximalization_eq_strictChain d).trans h
 

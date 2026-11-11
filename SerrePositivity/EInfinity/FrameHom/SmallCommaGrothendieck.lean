@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaGrothendieck
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck
 public import SerrePositivity.EInfinity.FrameHom.NerveAsSmall
 public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage
 
@@ -31,7 +31,7 @@ abbrev smallFunctor (F : K ⥤ C) : AsSmall.{w} K ⥤ AsSmall.{w} C :=
   AsSmall.down ⋙ F ⋙ AsSmall.up
 
 /-- 元の右対象・左対象・中間射を持ち上げた全図式。 -/
-abbrev diagram := CommaGrothendieck.diagram (smallFunctor.{u, v, w} Q) (smallFunctor R)
+abbrev diagram := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.diagram (smallFunctor.{u, v, w} Q) (smallFunctor R)
 
 /-- 同じ小さい comma のデータを down し、元の comma の小圏へ送る。 -/
 def commaDown : Comma (smallFunctor.{u, v, w} Q) (smallFunctor R) ⥤
@@ -66,7 +66,7 @@ def commaEquivalence : Comma (smallFunctor.{u, v, w} Q) (smallFunctor R) ≌
 
 /-- 同じ小さい全図式から、元の comma の小圏への回収の同値。 -/
 def equivalence : Grothendieck (diagram.{u, v, w} Q R) ≌ AsSmall.{w} (Comma Q R) :=
-  (CommaGrothendieck.equivalence (smallFunctor Q) (smallFunctor R)).trans (commaEquivalence Q R)
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.equivalence (smallFunctor Q) (smallFunctor R)).trans (commaEquivalence Q R)
 
 /-- 元の全図式の nerve から元の comma の nerve の宇宙拡大への同じ回収。 -/
 def recoveryNerveMap : nerve (Grothendieck (diagram.{u, v, w} Q R)) ⟶

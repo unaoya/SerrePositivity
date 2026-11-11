@@ -20,7 +20,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 open ProExcision
-variable (R : Type u) [CommRing R] (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+variable (R : Type u) [CommRing R] (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
   (A : Tower (NonpositiveAlgebra R))
 
 def postnikovValueTransition (a b : ℤ) (hab : b ≤ a) :

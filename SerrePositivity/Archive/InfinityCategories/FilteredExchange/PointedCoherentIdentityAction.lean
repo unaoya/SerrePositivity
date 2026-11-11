@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedCoherentCosliceFiber
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceSourceIdentity
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceSourceIdentity
 
 /-!
 概要：恒等 coslice 点での全係数前合成は元の標準 pointed fiber 比較。

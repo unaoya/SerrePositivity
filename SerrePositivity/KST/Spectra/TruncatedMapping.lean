@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
-public import SerrePositivity.InfinityCategories.Kan.FibrationTower
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.FibrationTower
 
 /-!
 概要：点つき写像空間の制限を引き戻して得る切断写像空間の塔。
@@ -34,7 +34,7 @@ def stage : (n : ℕ) → Σ T : SSet.{u}, T ⟶ (PointedObject.basedHom (X n) (
   | 0 => ⟨(PointedObject.basedHom (X 0) (Y 0)).right, 𝟙 _⟩
   | n + 1 =>
     let prev := stage n
-    ⟨pullback (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i n) (Y (n + 1))) (prev.2 ≫ step n), pullback.fst _ _⟩
+    ⟨pullback (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i n) (Y (n + 1))) (prev.2 ≫ step n), pullback.fst _ _⟩
 
 /-- 概要：切断写像空間の基礎単体集合。
 方針：stage の第一成分を取る。
@@ -62,7 +62,7 @@ def restriction (n : ℕ) : space X Y A i step (n + 1) ⟶ space X Y A i step n 
 使われ方：BF 1978 §2。スペクトルの射の可換条件との照合。 -/
 @[reassoc]
 theorem evaluation_condition (n : ℕ) :
-    evaluation X Y A i step (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i n) (Y (n + 1)) =
+    evaluation X Y A i step (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i n) (Y (n + 1)) =
       restriction X Y A i step n ≫ evaluation X Y A i step n ≫ step n :=
   pullback.condition
 
@@ -72,27 +72,27 @@ theorem evaluation_condition (n : ℕ) :
 使われ方：BF 1978 §2、HTT A.3.3。Hom の局所 Kan 性の中核。 -/
 theorem restriction_fibration (n : ℕ) [Mono (i n).right]
     [KanComplex (Y (n + 1)).right] : Fibration (restriction X Y A i step n) := by
-  let : Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i n) (Y (n + 1))) :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration (i n) (Y (n + 1))
-  exact _root_.SerrePositivity.InfinityCategories.Kan.fibration_pullback_snd _ _
+  let : Fibration (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i n) (Y (n + 1))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_fibration (i n) (Y (n + 1))
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fibration_pullback_snd _ _
 
 /-- 概要：全切断に整合する写像の単体集合。
 方針：切断写像空間の塔の極限を取る。
 規約：実際のスペクトルへの適用には step の構成と可換条件の照合が必要。
 使われ方：BF 1978 §2、HTT A.3.3。スペクトルの Hom を与える極限。 -/
 abbrev total : SSet.{u} :=
-  _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (space X Y A i step) (restriction X Y A i step)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.limit (space X Y A i step) (restriction X Y A i step)
 
 /-- 概要：初段への写像空間の射影は Kan fibration。
 方針：単射に沿う点つき Hom の制限と塔の相対充填を組み合わせる。
 規約：Ω 条件は不要。
 使われ方：BF 1978 §2、HTT A.3.3。局所 Kan 性の証明。 -/
 theorem total_projection_fibration [∀ n, Mono (i n).right] [∀ n, KanComplex (Y n).right] :
-    Fibration (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection (space X Y A i step)
+    Fibration (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection (space X Y A i step)
       (restriction X Y A i step) 0) := by
   let : ∀ n, Fibration (restriction X Y A i step n) := fun n ↦
     restriction_fibration X Y A i step n
-  exact _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_zero_fibration _ _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection_zero_fibration _ _
 
 /-- 概要：整合写像の指定段での評価。
 方針：切断への射影とその最終段の評価を合成する。
@@ -100,7 +100,7 @@ theorem total_projection_fibration [∀ n, Mono (i n).right] [∀ n, KanComplex 
 使われ方：BF 1978 §2。整合写像と段ごとの可換条件との比較。 -/
 def totalEvaluation (n : ℕ) : total X Y A i step ⟶
     (PointedObject.basedHom (X n) (Y n)).right :=
-  _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection _ _ n ≫ evaluation X Y A i step n
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection _ _ n ≫ evaluation X Y A i step n
 
 /-- 概要：整合写像の各段への評価は境界条件を満たす。
 方針：引き戻しの可換条件と塔の整合条件を合成する。
@@ -108,11 +108,11 @@ def totalEvaluation (n : ℕ) : total X Y A i step ⟶
 使われ方：BF 1978 §2、HTT A.3.3。スペクトルの射との照合。 -/
 @[reassoc]
 theorem totalEvaluation_condition (n : ℕ) :
-    totalEvaluation X Y A i step (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i n) (Y (n + 1)) =
+    totalEvaluation X Y A i step (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i n) (Y (n + 1)) =
       totalEvaluation X Y A i step n ≫ step n := by
   dsimp only [totalEvaluation]
   rw [Category.assoc, evaluation_condition, ← Category.assoc,
-    _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection_comp]
   rfl
 
 /-- 概要：単射構造を持つ源と段ごとに Kan な標的の整合写像空間は Kan。
@@ -123,8 +123,8 @@ instance total_kanComplex [∀ n, Mono (i n).right] [∀ n, KanComplex (Y n).rig
     KanComplex (total X Y A i step) := by
   let : ∀ n, Fibration (restriction X Y A i step n) := fun n ↦
     restriction_fibration X Y A i step n
-  let : KanComplex (space X Y A i step 0) := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
-  exact _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit_kanComplex _ _
+  let : KanComplex (space X Y A i step 0) := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.limit_kanComplex _ _
 
 end
 

@@ -52,9 +52,9 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   (P : SSet.{max u v})
 
 def nativeRestrictionComparison {T : SSet.{v}} {X Y : D C}
-    (j : UniverseLift.obj.{max u v} T ⟶ P)
-    (g : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
-    (c : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X Y) :
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+    (g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
+    (c : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X Y) :
     SSet.Homotopy (nativeFamily hcof hfib P j (g ≫ smallAugmentation C X Y) c)
       (OrdinaryBarDiagonalClosedAction.nativeFamily hcof hfib P j g) := by
   let H := RestrictionDescentChoices.fixedFamilyComparison (parameterAugmentation P X Y)
@@ -62,7 +62,7 @@ def nativeRestrictionComparison {T : SSet.{v}} {X Y : D C}
     (OrdinaryBarDiagonalClosedAction.mapping hcof hfib P X Y) c
   let W := HomotopyClasses.preHomotopy (lift (lift j g) (𝟙 _)) H
   apply UniverseLift.lowerHomotopy
-  refine LargeParameterSquare.changeEndpoints W ?_ ?_
+  refine _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints W ?_ ?_
   · change lift (lift j g) (𝟙 _) ≫ parameterAugmentation P X Y ▷ _ ≫
         family hcof hfib P c = _
     rw [← Category.assoc, lift_whiskerRight, lift_whiskerLeft]
@@ -73,34 +73,34 @@ def nativeRestrictionComparison {T : SSet.{v}} {X Y : D C}
       OrdinaryBarDiagonalClosedCompatibility.mapping_nativeFamily]
 
 lemma nativeRestrictionComparison_substitute {T U : SSet.{v}} {X Y : D C}
-    (j : UniverseLift.obj.{max u v} T ⟶ P)
-    (g : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
-    (c : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X Y) (i : U ⟶ T) :
-    (nativeRestrictionComparison hcof hfib P (UniverseLift.map i ≫ j)
-      (UniverseLift.map i ≫ g) (UniverseLift.map i ≫ c)).h =
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+    (g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
+    (c : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X Y) (i : U ⟶ T) :
+    (nativeRestrictionComparison hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ g) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ c)).h =
         i ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫
           (nativeRestrictionComparison hcof hfib P j g c).h := by
   ext n x
   simp only [nativeRestrictionComparison, UniverseLift.lowerHomotopy,
-    LargeParameterSquare.changeEndpoints_h, RestrictionDescentChoices.fixedFamilyComparison,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h, RestrictionDescentChoices.fixedFamilyComparison,
     RestrictionDescentChoices.familyComparison, RestrictionDescentChoices.parameterComparison,
     HomotopyClassesClosed.uncurryHomotopy, HomotopyClasses.preHomotopy,
-    UniverseLift.lowerSimplexTensor]
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor]
   rfl
 
 lemma native_relative_comparison_extension {U V : SSet.{v}} {X Y : D C} (i : U ⟶ V) [Mono i]
-    (j : UniverseLift.obj.{max u v} V ⟶ P)
-    (g : UniverseLift.obj.{max u v} V ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
-    (c : UniverseLift.obj.{max u v} U ⟶ choices hcof hfib P X Y) :
-    ∃ e : UniverseLift.obj.{max u v} V ⟶ choices hcof hfib P X Y,
-      UniverseLift.map i ≫ e = c ∧
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} V ⟶ P)
+    (g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} V ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
+    (c : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} U ⟶ choices hcof hfib P X Y) :
+    ∃ e : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} V ⟶ choices hcof hfib P X Y,
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ e = c ∧
         i ≫ nativeFamily hcof hfib P j (g ≫ smallAugmentation C X Y) e =
-          nativeFamily hcof hfib P (UniverseLift.map i ≫ j)
-            ((UniverseLift.map i ≫ g) ≫ smallAugmentation C X Y) c ∧
+          nativeFamily hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j)
+            ((_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ g) ≫ smallAugmentation C X Y) c ∧
         i ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫
           (nativeRestrictionComparison hcof hfib P j g e).h =
-            (nativeRestrictionComparison hcof hfib P (UniverseLift.map i ≫ j)
-              (UniverseLift.map i ≫ g) c).h := by
+            (nativeRestrictionComparison hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j)
+              (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ g) c).h := by
   obtain ⟨e, he, hf⟩ := native_relative_extension hcof hfib P i j
     (g ≫ smallAugmentation C X Y) c
   refine ⟨e, he, ?_, ?_⟩

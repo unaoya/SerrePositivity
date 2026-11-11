@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：二つの単体射の対のテンソルから、第一の前半と第二の後半を選んで元の対へ戻す。
 規約：KST Construction A.5 の普遍模型、追加の射影性や可縮性の仮定を置かない。
 使われ方：普遍鎖のサイクル性を実作用素の微分の等式で検証する。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

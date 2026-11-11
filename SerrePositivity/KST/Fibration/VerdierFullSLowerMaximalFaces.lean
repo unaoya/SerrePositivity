@@ -18,12 +18,12 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
 
 /-- 同じ最大化の第一全短辺は、元の下側二胞体の同じ第一辺。 -/
 theorem verdierFullSLowerMaximalization_first :
     stdSimplex.δ (2 : Fin 3) ≫ SSet.yonedaEquiv.symm
-        (coherentSimplexMaximalization (verdierFullSLowerSimplex d)) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexMaximalization (verdierFullSLowerSimplex d)) =
       stdSimplex.δ (2 : Fin 3) ≫ SSet.yonedaEquiv.symm (verdierFullSLowerSimplex d) := by
   have he : stdSimplex.δ (2 : Fin 3) ≫ SSet.ι₁ =
       SSet.ι₁ ≫ (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) := rfl
@@ -40,7 +40,7 @@ theorem verdierFullSLowerMaximalization_first :
 /-- 同じ最大化の第二全短辺は、元の下側二胞体の同じ第二辺。 -/
 theorem verdierFullSLowerMaximalization_last :
     stdSimplex.δ (0 : Fin 3) ≫ SSet.yonedaEquiv.symm
-        (coherentSimplexMaximalization (verdierFullSLowerSimplex d)) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexMaximalization (verdierFullSLowerSimplex d)) =
       stdSimplex.δ (0 : Fin 3) ≫ SSet.yonedaEquiv.symm (verdierFullSLowerSimplex d) := by
   have he : stdSimplex.δ (0 : Fin 3) ≫ SSet.ι₁ =
       SSet.ι₁ ≫ (stdSimplex.δ (0 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) := rfl
@@ -57,25 +57,25 @@ theorem verdierFullSLowerMaximalization_last :
 /-- 同じ最大化の第一辺は、元の指定包含の同じ全 S• Kan 像の全一単体。 -/
 theorem verdierFullSLowerMaximalization_inclusion :
     stdSimplex.δ (2 : Fin 3) ≫ SSet.yonedaEquiv.symm
-        (coherentSimplexMaximalization (verdierFullSLowerSimplex d)) =
-      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge ≫
-        coherentNerveMap (stableMultiKanEnrichedFunctor 0) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexMaximalization (verdierFullSLowerSimplex d)) =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow d.inclusion).edge ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0) := by
   rw [verdierFullSLowerMaximalization_first, verdierFullSLowerSimplex_original,
-    ← Category.assoc, ← Category.assoc, stableSquareTriangle_bottomEdge,
+    ← Category.assoc, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableSquareTriangle_bottomEdge,
     Category.assoc]
   simpa only [Category.assoc] using! congrArg
-    (· ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0)) d.bottom_edge
+    (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0)) d.bottom_edge
 
 /-- 同じ最大化の第二辺は、元の指定商の同じ全 S• Kan 像の全一単体。 -/
 theorem verdierFullSLowerMaximalization_projection :
     stdSimplex.δ (0 : Fin 3) ≫ SSet.yonedaEquiv.symm
-        (coherentSimplexMaximalization (verdierFullSLowerSimplex d)) =
-      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge ≫
-        coherentNerveMap (stableMultiKanEnrichedFunctor 0) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexMaximalization (verdierFullSLowerSimplex d)) =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow d.projection).edge ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0) := by
   rw [verdierFullSLowerMaximalization_last, verdierFullSLowerSimplex_original,
-    ← Category.assoc, ← Category.assoc, squareTriangle_rightEdge,
+    ← Category.assoc, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTriangle_rightEdge,
     Category.assoc]
   simpa only [Category.assoc] using! congrArg
-    (· ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0)) d.right_edge
+    (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0)) d.right_edge
 
 end SerrePositivity.KST.Fibration

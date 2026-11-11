@@ -54,11 +54,11 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   (hcof : HomotopicalAlgebra.cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
   (hfib : HomotopicalAlgebra.fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
   (P : SSet.{max u v}) {T : SSet.{v}} {X Y : D C}
-  (j : UniverseLift.obj.{max u v} T ⟶ P)
-  (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
-  (cX : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X X)
-  (cY : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P Y Y)
-  (c : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X Y)
+  (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+  (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
+  (cX : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X X)
+  (cY : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P Y Y)
+  (c : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X Y)
 
 local notation "F" => root hcof hfib P j f c
 local notation "L" => leftIntermediate hcof hfib P j f cX c

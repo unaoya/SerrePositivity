@@ -2,7 +2,7 @@ module
 
 public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.TransportSquareLiftComparisonIndependence
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeHomPointedShortEdges
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.RelativeHomPointedShortEdges
 
 /-!
 概要：四つの実頂点を指定した、任意の底辺を持つ輸送四角形の持ち上げ。

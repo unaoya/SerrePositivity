@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Spectra.PointedVertexComparison
 universe u
 
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.PointedWeightedEnd
 
@@ -30,7 +30,7 @@ lemma unit_inverse_restrict (Y : PointedSimplicialSet.{u}) :
         FreePointedHomRestriction.restrict (𝟙_ SSet.{u}) Y =
       curry (snd (𝟙_ SSet.{u}) Y.right) := by
   rw [FreePointedHomRestriction.restrict, ← Category.assoc,
-    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.unit_inv_eq_curry, PointedMapping.curry_eq_smashCurry]
+    _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.unit_inv_eq_curry, PointedMapping.curry_eq_smashCurry]
   erw [PointedObject.smashCurry_ι]
   rw [curry_pre_app]
   congr 1
@@ -51,7 +51,7 @@ lemma constantFamily_restrict (A : SSet.{u}) (Y : PointedSimplicialSet.{u}) :
   change (unitIsoSelf (X := Y)).inv.right ≫
       ((pre (PointedObject.adjoinFunctor.map (toUnit A))).app Y).right ≫
         FreePointedHomRestriction.restrict A Y = _
-  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
+  rw [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre,
     FreePointedHomRestriction.natural_pre, ← Category.assoc,
     unit_inverse_restrict, curry_pre_app, whiskerRight_snd]
 
@@ -62,12 +62,12 @@ lemma constantFamily_restrict (A : SSet.{u}) (Y : PointedSimplicialSet.{u}) :
 lemma underlyingIso_coneComparison {I : Type u} [SmallCategory I]
     (W : I ⥤ SSet.{u}) {D : I ⥤ PointedSimplicialSet.{u}} (c : Cone D) :
     (coneComparison W c).right ≫ (underlyingIso W D).hom =
-      weightedConeComparison W (PointedSimplicialSet.forget.mapCone c) := by
-  apply weightedSections_hom_ext
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison W (PointedSimplicialSet.forget.mapCone c) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_hom_ext
   intro i
   rw [Category.assoc, underlyingIso_π, ← Category.assoc, ← Under.comp_right,
     coneComparison_π, Under.comp_right, Category.assoc, constantFamily_restrict,
-    weightedConeComparison_π, ← curry_natural_left]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison_π, ← curry_natural_left]
   congr 1
 
 end

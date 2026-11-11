@@ -49,8 +49,8 @@ variable {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T)
 
 /-- HA §3.2.2: algebra base change and underlying derived base change commute naturally. -/
 def barrattEcclesBaseChange_forget :
-    FunctorIso (barrattEcclesBaseChange f ≫ cAlgForgetDerived T)
-      (cAlgForgetDerived S ≫ derivedInfinityBaseChange f) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (barrattEcclesBaseChange f ≫ cAlgForgetDerived T)
+      (cAlgForgetDerived S ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityBaseChange f) :=
   barrattEcclesBaseChange_forget_of_cofibrantCarrierKFlat f (cofibrantAlgebraDKCarrierKFlat S)
 
 end SerrePositivity.EInfinity.BarrattEccles

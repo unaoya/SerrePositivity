@@ -21,7 +21,7 @@ open scoped Simplicial
 /-- 概要：同じ商射の像で元の全基点固定族を回収する。
 方針：同じ basedHom 包含の評価式と元の商射回収式を合成する。
 規約：全パラメータの等式。使われ方：組み立て自然性の商条件。 -/
-lemma stableOneDirectionReducedFamilyMap_quotient (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableOneDirectionReducedFamilyMap_quotient (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (oneDirectionReductionQuotient r (stableCategoryModel C) ▷ (C ⟶[SSet.{u}] D)) ≫
         uncurry (stableOneDirectionReducedFamilyMap r C D ≫ PointedObject.basedHomι
           (oneDirectionReducedRealization r (stableCategoryModel C))
@@ -37,7 +37,7 @@ lemma stableOneDirectionReducedFamilyMap_quotient (r : ℕ) (C D : _root_.SerreP
 /-- 概要：元の区間組み立ては全自然同値入力族に厳密に自然。
 方針：全 core 図式の対角組み立ての自然性を同じ添字に適用する。
 規約：全単体を保持する。使われ方：同じ標的商への自然性。 -/
-lemma stableMultiDiagonalAssembly_action (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableMultiDiagonalAssembly_action (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (multiDiagonalAssembly r (stableCategoryModel C) ▷ (C ⟶[SSet.{u}] D)) ≫
         stableMultiRealizationAction (r + 1) C D =
       (α_ (Δ[1] : SSet.{u})
@@ -50,7 +50,7 @@ lemma stableMultiDiagonalAssembly_action (r : ℕ) (C D : _root_.SerrePositivity
 /-- 概要：同じ元の標的商を取った区間組み立ても全族に自然。
 方針：元の区間自然性と同じ商射の全族可換式を合成する。
 規約：元の商射を保つ。使われ方：suspension への自然性の降下。 -/
-lemma stableAssemblyQuotient_action (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableAssemblyQuotient_action (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     ((multiDiagonalAssembly (r + 1) (stableCategoryModel C) ≫
         boundaryReductionQuotient (r + 1) (stableCategoryModel C)) ▷
           (C ⟶[SSet.{u}] D)) ≫ stableBoundaryReducedAction (r + 1) C D =
@@ -67,14 +67,14 @@ lemma stableAssemblyQuotient_action (r : ℕ) (C D : _root_.SerrePositivity.Infi
 /-- 概要：同じ元の suspension 組み立ては全基点固定族と可換。
 方針：元の二商射を回収する一般の降下定理へ同じ実区間自然性を渡す。
 規約：元の全高次入力を保つ。使われ方：有限 BF 隣接段 span の右脚の厳密自然性。 -/
-lemma stableSuspensionAssembly_action (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableSuspensionAssembly_action (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     stableOneDirectionReducedFamilyMap r C D ≫
       (suspensionHom (oneDirectionReducedRealization r (stableCategoryModel C))
         (oneDirectionReducedRealization r (stableCategoryModel D))).right ≫
       (PointedObject.basedHomMap
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (oneDirectionReducedRealization r (stableCategoryModel C)))
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (oneDirectionReducedRealization r (stableCategoryModel C)))
         (oneDirectionSuspensionAssembly r (stableCategoryModel D))).right =
-      stableBoundaryReducedFamilyMap (r + 1) C D ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+      stableBoundaryReducedFamilyMap (r + 1) C D ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
         (oneDirectionSuspensionAssembly r (stableCategoryModel C))
         (boundaryReducedRealization (r + 1) (stableCategoryModel D)) := by
   have he := (congrArg (uncurry (C := SSet.{u}))

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderPairFunctor
-public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderPairFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.NervePostcomposition
 
 /-!
 概要：元の coherent nerve と二対象の円柱の nerve の積から、一般の円柱の nerve への写像。
@@ -22,25 +22,25 @@ variable (A : SSet.{u}) {C : Type v} [Category.{u} C] [SimplicialCategory C]
 
 /-- 二つの coherent な図式を実際の豊穣円柱へ組み合わせる。 -/
 def nervePair :
-    SimplicialNerve C ⊗ SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}) ⟶ SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) where
-  app _ := ↾fun ⟨F, G⟩ ↦ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairFunctor A F G
+    SimplicialNerve C ⊗ SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v}) ⟶ SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A C) where
+  app _ := ↾fun ⟨F, G⟩ ↦ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.pairFunctor A F G
   naturality {d e} α := by
     apply ConcreteCategory.hom_ext
     rintro ⟨F, G⟩
-    exact _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairFunctor_precomp A F G (SimplicialThickening.functor α.unop.toOrderHom.uliftMap)
+    exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.pairFunctor_precomp A F G (SimplicialThickening.functor α.unop.toOrderHom.uliftMap)
 
 /-- 二対象の円柱の左端の標準頂点。 -/
-def leftVertex : (SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v})) _⦋0⦌ :=
-  coherentNerveVertex ⟨false, ⟨PUnit.unit⟩⟩
+def leftVertex : (SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v})) _⦋0⦌ :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ⟨false, ⟨PUnit.unit⟩⟩
 
 /-- 二対象の円柱の右端の標準頂点。 -/
-def rightVertex : (SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v})) _⦋0⦌ :=
-  coherentNerveVertex ⟨true, ⟨PUnit.unit⟩⟩
+def rightVertex : (SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v})) _⦋0⦌ :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ⟨true, ⟨PUnit.unit⟩⟩
 
 /-- pairing の左端は元の圏の左端包含そのもの。 -/
 lemma nervePair_left :
     lift (𝟙 (SimplicialNerve C)) (SSet.const (leftVertex.{u, v} A)) ≫ nervePair A =
-      coherentNerveMap (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.leftInclusion (C := C) A) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.leftInclusion (C := C) A) := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -53,7 +53,7 @@ lemma nervePair_left :
 /-- pairing の右端は元の圏の右端包含そのもの。 -/
 lemma nervePair_right :
     lift (𝟙 (SimplicialNerve C)) (SSet.const (rightVertex.{u, v} A)) ≫ nervePair A =
-      coherentNerveMap (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.rightInclusion (C := C) A) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.rightInclusion (C := C) A) := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext

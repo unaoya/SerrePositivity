@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal
-public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductMap
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxVerdierProductMap
 public import SerrePositivity.KST.LocalizingInvariants.InvariantZeroMap
 
 /-!
@@ -18,13 +18,13 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
-variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}) (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
+variable (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⟶ Sp.{u}) (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u})
 
 lemma valueDiagonal_fst :
     SpectrumHo.hom (valueMap Φ (exactDiagonal A)) ≫
       SpectrumHo.hom (valueMap Φ (laxFst (𝟙 A) (𝟙 A))) = 𝟙 _ := by
   have h : (exactDiagonal A : A ⟶ laxCategory (𝟙 A) (𝟙 A)) ≫
-      laxFst (𝟙 A) (𝟙 A) = 𝟙 A := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (diagonal_fst A)
+      laxFst (𝟙 A) (𝟙 A) = 𝟙 A := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.ext (diagonal_fst A)
   change (stableValueFunctor Φ).map (exactDiagonal A) ≫
     (stableValueFunctor Φ).map (laxFst (𝟙 A) (𝟙 A)) = _
   rw [← CategoryTheory.Functor.map_comp, h, CategoryTheory.Functor.map_id]
@@ -34,7 +34,7 @@ lemma valueDiagonal_snd :
     SpectrumHo.hom (valueMap Φ (exactDiagonal A)) ≫
       SpectrumHo.hom (valueMap Φ (laxSnd (𝟙 A) (𝟙 A))) = 𝟙 _ := by
   have h : (exactDiagonal A : A ⟶ laxCategory (𝟙 A) (𝟙 A)) ≫
-      laxSnd (𝟙 A) (𝟙 A) = 𝟙 A := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (diagonal_snd A)
+      laxSnd (𝟙 A) (𝟙 A) = 𝟙 A := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.ext (diagonal_snd A)
   change (stableValueFunctor Φ).map (exactDiagonal A) ≫
     (stableValueFunctor Φ).map (laxSnd (𝟙 A) (𝟙 A)) = _
   rw [← CategoryTheory.Functor.map_comp, h, CategoryTheory.Functor.map_id]
@@ -65,9 +65,9 @@ lemma valueDiagonal_difference_zero :
 
 lemma productDiagonal_difference_zero :
     SpectrumHo.hom (Binary.lift (𝟙 (value Φ A)) (𝟙 (value Φ A))) ≫
-      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom hΦ) (𝟙 A) (𝟙 A)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProjectionDifferenceHom hΦ) (𝟙 A) (𝟙 A)
         (exactLaxDifference (𝟙 A) (𝟙 A)) = 0 := by
-  rw [← valueDiagonal_product A hΦ, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom,
+  rw [← valueDiagonal_product A hΦ, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProjectionDifferenceHom,
     Category.assoc, Iso.hom_inv_id_assoc]
   exact valueDiagonal_difference_zero A hΦ
 

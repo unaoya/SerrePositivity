@@ -17,22 +17,22 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.DGNerve
+
 namespace SerrePositivity.KST.LocalizingInvariants
 variable (R : Type u) [CommRing R] (D E T : Type v)
   [DGCategory R D] [Small.{u} D] [DGCategory R E] [Small.{u} E]
   [DGCategory R T] [Small.{u} T] (F : DGFunctor R D E) (G : DGFunctor R E T)
 
 /-- 元の合成延長の単位を、二つの制限の合成へ輸送した厳密変換。 -/
-def dgExtensionCompositionUnit : StrictNatTrans (DGFunctor.id (RightModule R D))
+def dgExtensionCompositionUnit : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (DGFunctor.id (RightModule R D))
     ((dgModuleExtension R D T (F.comp G)).comp
       ((dgModuleRestriction R E T G.op).comp (dgModuleRestriction R D E F.op))) :=
-  dgStrictNatTransComp (dgExtensionUnitStrict R D T (F.comp G))
-    (dgStrictNatTransPrecomp (dgModuleExtension R D T (F.comp G))
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (dgExtensionUnitStrict R D T (F.comp G))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPrecomp (dgModuleExtension R D T (F.comp G))
       (dgRestrictionCompositionInvStrict R D E T F G))
 
 /-- 二つの元の余単位から得る、二重延長・二重制限の余単位。 -/
-def dgExtensionCompositionCounit : StrictNatTrans
+def dgExtensionCompositionCounit : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans
     (((dgModuleRestriction R E T G.op).comp (dgModuleRestriction R D E F.op)).comp
       ((dgModuleExtension R D E F).comp (dgModuleExtension R E T G)))
     (DGFunctor.id (RightModule R T)) :=
@@ -41,7 +41,7 @@ def dgExtensionCompositionCounit : StrictNatTrans
     (dgExtensionCounitStrict R D E F) (dgExtensionCounitStrict R E T G)
 
 /-- 二重 graph 延長から、元の合成 dg 関手に沿う延長への全斉次自然な比較。 -/
-def dgExtensionCompositionStrict : StrictNatTrans
+def dgExtensionCompositionStrict : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans
     ((dgModuleExtension R D E F).comp (dgModuleExtension R E T G))
     (dgModuleExtension R D T (F.comp G)) :=
   dgStrictAdjointComparison _ _ _ (dgExtensionCompositionUnit R D E T F G)

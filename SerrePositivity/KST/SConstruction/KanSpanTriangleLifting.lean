@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.KanFibrationTriangleLifting
-public import SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition
 
 /-! # 境界で指定した逆・合成三角形を保つ span の相対充填
 概要：span の第一辺の逆三角形と合成三角形を、指定した基底二単体のまま持ち上げる。
@@ -32,7 +32,7 @@ structure KanSpanTriangleData {E : SSet.{u}} {z x y : E _⦋0⦌}
 
 /-- 点ごとの両逆三角形付きのデータから、相対充填に必要な二つの三角形を保持する。 -/
 def kanSpanTriangleDataOfComposition {E : SSet.{u}} {z x y : E _⦋0⦌}
-    {a : E.Edge z x} {b : E.Edge z y} (t : _root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition a b) :
+    {a : E.Edge z x} {b : E.Edge z y} (t : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition a b) :
     KanSpanTriangleData a b :=
   ⟨t.inverse, t.inverseLeft, t.edge, t.triangle⟩
 

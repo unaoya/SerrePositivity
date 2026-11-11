@@ -37,12 +37,12 @@ def cofibrantSourceRoofProductCommaEvaluationHomotopy : SSet.Homotopy
 
 lemma cofibrantSourceRoofProductCommaEvaluationHomotopy_h :
     (cofibrantSourceRoofProductCommaEvaluationHomotopy A X Y b).h =
-      (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (cofibrantSourceRoofProductCommaEvaluation A X Y b)).h ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (cofibrantSourceRoofProductCommaEvaluation A X Y b)).h ≫
         SimplicialLocalization.hammockLocalizationNerveMap
           (cofibrantAlgebraRelativeCategory A) := rfl
 
 lemma cofibrantSourceRoofProductCommaEvaluationHomotopy_hom :
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (cofibrantSourceRoofProductCommaEvaluationHomotopy A X Y b)) =
         (cofibrantSourceRoofProductCommaEvaluationIso A X Y b).hom := by
   rfl
@@ -56,7 +56,7 @@ lemma cofibrantSourceRoofProductOverTerminalHomotopy_evaluation_h :
             (cofibrantAlgebraRelativeCategory A) =
     (cofibrantSourceRoofProductCommaEvaluationHomotopy A X Y b).h := by
   have h : ((cofibrantDKSourceFrame A X).mapCocone
-      ((SerrePositivity.InfinityCategories.F1B.overForgetCocone (cofibrantSourceRoofDegree A X Y b)).whisker
+      ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.overForgetCocone (cofibrantSourceRoofDegree A X Y b)).whisker
         (cofibrantSourceRoofProductCommaOver A X Y b))).ι =
       cofibrantSourceRoofProductCommaEvaluation A X Y b := by
     apply NatTrans.ext

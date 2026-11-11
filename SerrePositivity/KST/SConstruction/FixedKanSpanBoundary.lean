@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.RelativeKanSpanFamilies
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-! # 定数な二円柱の境界からの指定逆・合成三角形
 概要：境界で定数な二円柱に、恒等合成辺を持つ実際の span 三角形を供給する。
@@ -22,8 +22,8 @@ open scoped Simplicial
 lemma fixedHomotopySpanEdge {T U E : SSet.{u}} (j : T ⟶ U) {D F : U ⟶ E}
     (a : SSet.Homotopy D F)
     (ha : (j ▷ (Δ[1] : SSet.{u})) ≫ a.h = fst T Δ[1] ≫ j ≫ D) :
-    ((pre j).app E).app (Opposite.op ⦋1⦌) (functorEdgeOfSimplicialHomotopy a).edge =
-      (SSet.Edge.id (functorVertex (j ≫ D))).edge := by
+    ((pre j).app E).app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a).edge =
+      (SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (j ≫ D))).edge := by
   apply SSet.yonedaEquiv.symm.injective
   apply uncurry_injective
   rw [← SSet.yonedaEquiv_symm_comp, uncurry_pre_app]
@@ -59,9 +59,9 @@ def fixedKanHomotopySpanBoundary {T U E : SSet.{u}} (j : T ⟶ U)
     (ha : (j ▷ (Δ[1] : SSet.{u})) ≫ a.h = fst T Δ[1] ≫ j ≫ D)
     (hb : (j ▷ (Δ[1] : SSet.{u})) ≫ b.h = fst T Δ[1] ≫ j ≫ D) :
     {t : KanSpanTriangleData
-      ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
-      ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E)) //
-      t.edge.edge = (SSet.Edge.id (functorVertex (j ≫ F))).edge} :=
+      ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
+      ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E)) //
+      t.edge.edge = (SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (j ≫ F))).edge} :=
   fixedKanSpanTriangleData _ _ (fixedHomotopySpanEdge j a ha) (fixedHomotopySpanEdge j b hb)
 
 /-- 定数境界の実円柱を更に制限しても、同じ元の始点の像で全時刻固定する。 -/

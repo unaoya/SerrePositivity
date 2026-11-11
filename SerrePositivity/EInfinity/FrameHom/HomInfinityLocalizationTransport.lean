@@ -26,15 +26,15 @@ variable {A B D : SSet.{u}} [Quasicategory A] [Quasicategory B] [Quasicategory D
 規約：元の K・全二胞体を保持。
 使われ方：指定局所化への全 coherent 比較の最後の段階。 -/
 def CoherentLocalizationComparison.homInfinityTransport (x : A _⦋0⦌) :
-    FunctorIso
-      (SSet.uliftFunctor.{u + 1, u}.map F ≫ homInfinityCovariant (F.app (op ⦋0⦌) x))
-      (SSet.uliftFunctor.{u + 1, u}.map G ≫ homInfinityCovariant (G.app (op ⦋0⦌) x)) := by
-  have h : FunctorIso
-      (SSet.uliftFunctor.{u + 1, u}.map F ≫ homInfinityCovariant (F.app (op ⦋0⦌) x))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (SSet.uliftFunctor.{u + 1, u}.map F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (F.app (op ⦋0⦌) x))
+      (SSet.uliftFunctor.{u + 1, u}.map G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (G.app (op ⦋0⦌) x)) := by
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (SSet.uliftFunctor.{u + 1, u}.map F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (F.app (op ⦋0⦌) x))
       (SSet.uliftFunctor.{u + 1, u}.map (F ≫ c.equivalence.hom) ≫
-        homInfinityCovariant ((F ≫ c.equivalence.hom).app (op ⦋0⦌) x)) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant ((F ≫ c.equivalence.hom).app (op ⦋0⦌) x)) := by
     simpa only [Functor.map_comp, Category.assoc, NatTrans.comp_app_apply] using
-      FunctorIso.precomp (homInfinityEquivalenceTransport c.equivalence (F.app (op ⦋0⦌) x))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (homInfinityEquivalenceTransport c.equivalence (F.app (op ⦋0⦌) x))
         (SSet.uliftFunctor.{u + 1, u}.map F)
   exact h ≪≫ homInfinityTriangleDiagramIso c.triangle x
 

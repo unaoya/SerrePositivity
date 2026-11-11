@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConeMappingShapePushout
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConeMappingKanObjects
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpaceSquareLimits
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceSquareLimits
 
 /-!
 概要：形状の接着で得た元の固定頂点の錐空間を、𝒮 の native な極限錐の頂点にする。

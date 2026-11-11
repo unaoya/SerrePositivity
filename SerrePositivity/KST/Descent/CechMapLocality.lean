@@ -34,7 +34,7 @@ namespace SerrePositivity.KST.Descent
 section Comparison
 
 variable (K : Type u) [SmallCategory K] [ModelCategory SSet.{u}]
-  (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  (I J : MorphismProperty SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{u})]
 
 /-- 概要：両側の実降下と各点の弱同値から増強元の射も弱同値（補題 3.2・3.3）。
@@ -58,7 +58,7 @@ end Comparison
 variable {C : Type u} [Category.{v} C] [HasFiniteLimits C]
   {X Y : C} (g : X ⟶ Y) {F G : Cᵒᵖ ⥤ SSet.{0}} (a : F ⟶ G)
   [ModelCategory SSet.{0}]
-  (I J : MorphismProperty SSet.{0}) [ModelGeneration.CofibrantlyGenerated.{0} I J]
+  (I J : MorphismProperty SSet.{0}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{0})]
 
 /-- 概要：元の前層の射の Čech 各段の弱同値は基底の弱同値を反映（補題 3.2）。

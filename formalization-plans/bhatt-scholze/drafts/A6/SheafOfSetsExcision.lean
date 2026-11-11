@@ -5,7 +5,7 @@ module
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import Mathlib.CategoryTheory.Sites.DenseSubsite.InducedTopology
-public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoproductCocone
 -- 本ファイルは drafts/A6/{ArcSite,ArcSheafProperty}.lean、drafts/A5/PerfectSiteComparison.lean を import する。
 
 /-!

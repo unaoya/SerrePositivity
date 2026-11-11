@@ -17,8 +17,8 @@ open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 
-variable {E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hE : IsLocalizingInvariant E)
-  (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
+variable {E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hE : IsLocalizingInvariant E)
+  (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.VerdierSequence.{u})
 include hE
 
 def leftGroupEquiv (j : ℤ) : NativeFiber.group (hE.abstractFiberTriangle d) 0 0 j ≃*
@@ -68,7 +68,7 @@ lemma connecting_inverse (j : ℤ) (a : valueHomotopyGroup E d.right (j + 1)) :
 lemma exact_left (j : ℤ) (a : valueHomotopyGroup E d.left j) :
     valueHomotopyMap E d.inclusion j a = 1 ↔
       ∃ b : valueHomotopyGroup E d.right (j + 1), hE.connecting d j b = a :=
-  _root_.SerrePositivity.InfinityCategories.Kan.group_exact_of_equivalences (hE.connecting d j) (valueHomotopyMap E d.inclusion j)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.group_exact_of_equivalences (hE.connecting d j) (valueHomotopyMap E d.inclusion j)
     (NativeFiber.boundary (hE.abstractFiberTriangle d) (hE.abstractFiberTriangle_isFiber d) j)
     (NativeFiber.bottom (hE.abstractFiberTriangle d) j)
     (hE.rightGroupEquiv d (j + 1)).symm (hE.leftGroupEquiv d j).symm
@@ -78,7 +78,7 @@ lemma exact_left (j : ℤ) (a : valueHomotopyGroup E d.left j) :
 lemma exact_middle (j : ℤ) (a : valueHomotopyGroup E d.middle j) :
     valueHomotopyMap E d.projection j a = 1 ↔
       ∃ b : valueHomotopyGroup E d.left j, valueHomotopyMap E d.inclusion j b = a :=
-  _root_.SerrePositivity.InfinityCategories.Kan.group_exact_of_equivalences (valueHomotopyMap E d.inclusion j)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.group_exact_of_equivalences (valueHomotopyMap E d.inclusion j)
     (valueHomotopyMap E d.projection j)
     (NativeFiber.bottom (hE.abstractFiberTriangle d) j)
     (NativeFiber.right (hE.abstractFiberTriangle d) j)
@@ -89,7 +89,7 @@ lemma exact_middle (j : ℤ) (a : valueHomotopyGroup E d.middle j) :
 lemma exact_right (j : ℤ) (a : valueHomotopyGroup E d.right (j + 1)) :
     hE.connecting d j a = 1 ↔ ∃ b : valueHomotopyGroup E d.middle (j + 1),
       valueHomotopyMap E d.projection (j + 1) b = a :=
-  _root_.SerrePositivity.InfinityCategories.Kan.group_exact_of_equivalences (valueHomotopyMap E d.projection (j + 1)) (hE.connecting d j)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.group_exact_of_equivalences (valueHomotopyMap E d.projection (j + 1)) (hE.connecting d j)
     (NativeFiber.right (hE.abstractFiberTriangle d) (j + 1))
     (NativeFiber.boundary (hE.abstractFiberTriangle d) (hE.abstractFiberTriangle_isFiber d) j)
     (hE.middleGroupEquiv d (j + 1)).symm (hE.rightGroupEquiv d (j + 1)).symm

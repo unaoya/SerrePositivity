@@ -10,6 +10,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 方針：全複体の標準包含ごとに水平・垂直微分を評価し、混合境界の消滅を使う。
 規約：KST Construction A.5 の標準 shuffle、非被約な零次を含む。
 使われ方：AW との標準比較と正規化複体への移送。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

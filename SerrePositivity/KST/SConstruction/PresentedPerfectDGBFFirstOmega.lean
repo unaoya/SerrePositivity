@@ -30,8 +30,8 @@ local instance presentedPerfectDGBFFirstOmegaLoop_kanComplex (C : PerfDGInput.{u
 /-- 元の零段と同じ評価から作った最初の実構造射は Ω 条件を満たす。 -/
 lemma presentedPerfectDGBFFirstStructureAdjoint_piIsomorphism
     (C : PerfDGInput.{u, v} A) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (curry
-      (show _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (((presentedPerfectDGBFZeroFunctor A).obj C).obj) ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (curry
+      (show _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (((presentedPerfectDGBFZeroFunctor A).obj C).obj) ⟶
         ((presentedPerfectDGBFFirstFunctor A).obj C).obj from
           presentedPerfectDGBFFirstStructureMap A C)).right := by
   apply evaluationCylinderAdjoint_piIsomorphism

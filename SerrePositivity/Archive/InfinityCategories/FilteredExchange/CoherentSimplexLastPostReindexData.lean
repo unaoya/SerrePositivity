@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentSimplexLastPost
-public import SerrePositivity.InfinityCategories.F1.Coherent.PinchedReindex
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.PinchedReindex
 
 /-!
 概要：最後を固定する添字制限と指定後合成の、同じ全対象の照合。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCochainZeroTarget
-public import SerrePositivity.InfinityCategories.Derived.DGFunctorCommaHomExt
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaHomExt
 
 /-! # 比較側が実零である comma Hom の入力射影同型
 概要：比較側 Hom と比較標的が実零なら、元の入力 Hom 射影は鎖同型となる。
@@ -15,7 +15,7 @@ open CategoryTheory Limits CochainComplex HomComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C]
   (E : Type w) [DGCategory R E] (F : DGFunctor R C E)
-  (X Y : DGFunctorCommaObject R C E F)
+  (X Y : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject R C E F)
   (hB : IsZero (homObject R E X.replacement Y.replacement))
   (hT : IsZero (homObject R E X.replacement (F.obj Y.source)))
 
@@ -26,29 +26,29 @@ lemma dgCommaZeroSource_boundary :
       (homObject R E X.replacement (F.obj Y.source)) (-1)) +
     Cochain.ofHom (biprod.lift (𝟙 (homObject R C X.source Y.source))
       (0 : homObject R C X.source Y.source ⟶ homObject R E X.replacement Y.replacement) ≫
-      dgFunctorCommaDifference R C E F X Y) = 0 := by
-  rw [hT.eq_of_tgt (biprod.lift (𝟙 _) 0 ≫ dgFunctorCommaDifference R C E F X Y) 0]
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaDifference R C E F X Y) = 0 := by
+  rw [hT.eq_of_tgt (biprod.lift (𝟙 _) 0 ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaDifference R C E F X Y) 0]
   simp
 
 /-- 元の入力恒等射と実比較零射を持つ、同じ全 Hom への逆候補。 -/
 def dgCommaZeroSourceInverse : homObject R C X.source Y.source ⟶
-    dgFunctorCommaHomComplex R C E F X Y :=
-  dgFunctorCommaHomLift R C E F X Y _ (𝟙 _) 0 0
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComplex R C E F X Y :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomLift R C E F X Y _ (𝟙 _) 0 0
     (dgCommaZeroSource_boundary R C E F X Y hT)
 
 /-- 比較側が実零のとき、元の入力射影を順射に持つ実鎖同型。 -/
 def dgCommaZeroSourceIso :
-    dgFunctorCommaHomComplex R C E F X Y ≅ homObject R C X.source Y.source where
-  hom := dgFunctorCommaSourceHomMap R C E F X Y
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComplex R C E F X Y ≅ homObject R C X.source Y.source where
+  hom := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaSourceHomMap R C E F X Y
   inv := dgCommaZeroSourceInverse R C E F X Y hT
   hom_inv_id := by
-    apply dgFunctorCommaHom_ext R C E F X Y
+    apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHom_ext R C E F X Y
     · dsimp only [dgCommaZeroSourceInverse]
-      rw [Category.assoc, dgFunctorCommaHomLift_source]
+      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomLift_source]
       simp only [Category.comp_id, Category.id_comp]
     · exact hB.eq_of_tgt _ _
     · exact (dgCochain_eq_zero_of_isZero_target hT (-1) _).trans
         (dgCochain_eq_zero_of_isZero_target hT (-1) _).symm
-  inv_hom_id := dgFunctorCommaHomLift_source R C E F X Y _ _ _ _ _
+  inv_hom_id := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomLift_source R C E F X Y _ _ _ _ _
 
 end SerrePositivity.KST.SConstruction

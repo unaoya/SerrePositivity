@@ -26,15 +26,15 @@ open CategoryTheory Limits MonoidalCategory MonoidalClosed
 使われ方：厳密な引き戻しの四角形の包含の同定。
 -/
 theorem loopPathFiberIso_hom_restriction (Y : PointedSimplicialSet.{u}) :
-    (Spectra.loopPathFiberIso Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι (Spectra.pathEndpoint Y).right Y.basepoint =
+    (Spectra.loopPathFiberIso Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι (Spectra.pathEndpoint Y).right Y.basepoint =
       loopPathRestriction Y := by
   rw [Spectra.loopPathFiberIso_hom_ι]
   change (((MonoidalClosed.pre Spectra.endpointCircleIso.{u}.hom).app Y) ≫
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
-      (Spectra.pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint) Y).right =
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed intervalCircleProjection Y).right
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, ← NatTrans.comp_app, ← MonoidalClosed.pre_map]
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed
+      (Spectra.pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint) Y).right =
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed intervalCircleProjection Y).right
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre,
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, ← NatTrans.comp_app, ← MonoidalClosed.pre_map]
   rfl
 
 /--
@@ -44,7 +44,7 @@ theorem loopPathFiberIso_hom_restriction (Y : PointedSimplicialSet.{u}) :
 使われ方：標準群完備化写像を厳密なファイバーへの比較として判定する。
 -/
 theorem loopPathRestriction_isPullback (Y : PointedSimplicialSet.{u}) :
-    IsPullback (loopPathRestriction Y) (terminal.from (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right)
+    IsPullback (loopPathRestriction Y) (terminal.from (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right)
       (Spectra.pathEndpoint Y).right (SSet.const (X := ⊤_ SSet.{u}) Y.basepoint) := by
   let p := (Spectra.pathEndpoint Y).right
   let b := SSet.const (X := ⊤_ SSet.{u}) Y.basepoint

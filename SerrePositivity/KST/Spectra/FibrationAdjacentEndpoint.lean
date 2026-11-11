@@ -22,7 +22,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 variable {E B Y : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
   {s : B.PtSimplex (n + 1) (p.app _ e)}
-  (U : E.PtSimplex (n + 1) e) (V : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s)
+  (U : E.PtSimplex (n + 1) e) (V : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift p e s)
   {y : Y _⦋0⦌} (h : E ⟶ Y) (hpoint : h.app _ e = y)
   (hV : V.map ≫ h = SSet.const y)
   (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
@@ -32,7 +32,7 @@ variable {E B Y : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
 方針：各境界を既知の面へ移し、U の境界定数性と V の終点定数性を使う。
 規約：基点の移送だけを明示する。
 使われ方：Goerss–Jardine I §8。fiber 内の path の終点の群の代表。 -/
-def endpointSimplex (U : E.PtSimplex (n + 1) e) (V : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s)
+def endpointSimplex (U : E.PtSimplex (n + 1) e) (V : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift p e s)
     (h : E ⟶ Y) (hpoint : h.app _ e = y) (hV : V.map ≫ h = SSet.const y)
     (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
     (hface : ∀ j, j ≠ Fin.last (n + 2) → stdSimplex.δ j ≫ φ = face U V j) :
@@ -54,7 +54,7 @@ def endpointSimplex (U : E.PtSimplex (n + 1) e) (V : _root_.SerrePositivity.Infi
 方針：最後の隣接二面を明示し、それより前の面を定数として計算する。
 規約：元の U の終点から出力の終点への向き。
 使われ方：Goerss–Jardine I §8。終点のホモトピー類の一致。 -/
-def endpointRel : PtSimplex.RelStruct (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex h hpoint U)
+def endpointRel : PtSimplex.RelStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex h hpoint U)
     (endpointSimplex U V h hpoint hV φ hface) (Fin.last (n + 1)) where
   map := φ ≫ h
   δ_castSucc_map := by
@@ -80,10 +80,10 @@ def endpointRel : PtSimplex.RelStruct (_root_.SerrePositivity.InfinityCategories
 規約：任意の Kan な終点空間 Y。
 使われ方：Goerss–Jardine I §8。逆符号で現れる連結射の値を同定する。 -/
 lemma endpoint_class [KanComplex E] [KanComplex Y] :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (endpointSimplex U V h hpoint hV φ hface) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map h hpoint (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk U) := by
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
-  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.sound (endpointRel U V h hpoint hV φ hface)).symm
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (endpointSimplex U V h hpoint hV φ hface) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map h hpoint (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk U) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_mk]
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.sound (endpointRel U V h hpoint hV φ hface)).symm
 
 end
 end SerrePositivity.KST.Spectra.AdjacentLiftComparison

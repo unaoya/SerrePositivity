@@ -15,7 +15,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の HA 線形復元と、元の始域・終域微分の二つの合成の差。 -/
-def simplexHADegreeDefect {n : ℕ} (s : DGNerve.SimplexData A D n) (m : ℕ)
+def simplexHADegreeDefect {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1)) (hb : v (Fin.last m) < b) (k : ℤ) :
     (serreCubeComplex A m).X k ⟶ (homObject A D (s.obj (v 0)) (s.obj b)).X (k + 1) :=
   simplexHADegreeLift A s m v b hb k ≫ (homObject A D (s.obj (v 0)) (s.obj b)).d k (k + 1) -
@@ -31,7 +31,7 @@ private lemma differential_difference_restrict {V : Type*} [Category V] [Preaddi
     ← Category.assoc f₀ dY, hf, Category.assoc dX f₁, h₁]
 
 /-- 元の右端零面へ制限した微分可換性の差は、削除頂点列の前段の同じ差。 -/
-lemma simplexHADegreeDefect_zero_face {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADegreeDefect_zero_face {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (k : ℤ) :
     (serreCubeFace A false m 0).hom.f k ≫ simplexHADegreeDefect A s (m + 1) v b hb k =
@@ -52,7 +52,7 @@ lemma simplexHADegreeDefect_zero_face {n : ℕ} (s : DGNerve.SimplexData A D n)
     (simplexHADegreeLift_zero_face_restriction A s m v b hb (k + 1))
 
 /-- 元の零端点追加生成元の微分可換性の差は、同じ前段の生成元の差を回収する。 -/
-lemma simplexHADegreeDefect_point_zero {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADegreeDefect_point_zero {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (v : Fin (m + 2) ↪o Fin (n + 1))
     (b : Fin (n + 1)) (hb : v (Fin.last (m + 1)) < b) (k : ℤ)
     (hi : serreCubeGeneratorDegree m i = k) :

@@ -19,13 +19,13 @@ variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorElementAugmentedColumn_join {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
-    (joinStdSimplexIso n 0).hom ≫ (SSet.yonedaEquiv (X := nerve (Complex A))).symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom ≫ (SSet.yonedaEquiv (X := nerve (Complex A))).symm
       (normalizedTensorElementAugmentedColumn A X Y c) =
-      joinMap (SSet.yonedaEquiv.symm c) (𝟙 (Δ[0] : SSet.{u + 1})) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (SSet.yonedaEquiv.symm c) (𝟙 (Δ[0] : SSet.{u + 1})) ≫
         FrameHom.MixedNerve.coconeJoin (normalizedTensorElementAugmentationCocone A X Y) := by
   let Γ := c ⋙ ULiftHom.up.{u, u + 1, u + 1}
   let L := normalizedTensorElementLiftedAugmentationCocone A X Y
-  have h := FrameHom.TerminalCoconeSimplex.diagram_join L Γ
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_join L Γ
   have hd := congrArg (fun f => f ≫ FrameHom.MixedNerve.down (Complex A)) h
   simp only [Category.assoc, SSet.yonedaEquiv_symm_comp] at hd
   have hu : (SSet.yonedaEquiv (X := nerve (normalizedTensorElementIndex A X Y))).symm c ≫
@@ -34,13 +34,13 @@ lemma normalizedTensorElementAugmentedColumn_join {n : ℕ}
         (normalizedTensorElementIndex A X Y)))).symm Γ := by
     rw [SSet.yonedaEquiv_symm_comp]
     rfl
-  have hm : joinMap (SSet.yonedaEquiv.symm c) (𝟙 (Δ[0] : SSet.{u + 1})) ≫
-      joinMap (FrameHom.MixedNerve.up (normalizedTensorElementIndex A X Y)) (𝟙 Δ[0]) =
-      joinMap (SSet.yonedaEquiv.symm Γ) (𝟙 Δ[0]) := by
-    rw [← joinMap_comp, hu, Category.id_comp]
-  change _ = joinMap (SSet.yonedaEquiv.symm c) (𝟙 Δ[0]) ≫
-    (joinMap (FrameHom.MixedNerve.up (normalizedTensorElementIndex A X Y)) (𝟙 Δ[0]) ≫
-      (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv L).val ≫ FrameHom.MixedNerve.down (Complex A))
+  have hm : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (SSet.yonedaEquiv.symm c) (𝟙 (Δ[0] : SSet.{u + 1})) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (FrameHom.MixedNerve.up (normalizedTensorElementIndex A X Y)) (𝟙 Δ[0]) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (SSet.yonedaEquiv.symm Γ) (𝟙 Δ[0]) := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap_comp, hu, Category.id_comp]
+  change _ = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (SSet.yonedaEquiv.symm c) (𝟙 Δ[0]) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (FrameHom.MixedNerve.up (normalizedTensorElementIndex A X Y)) (𝟙 Δ[0]) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCoconeEquiv L).val ≫ FrameHom.MixedNerve.down (Complex A))
   rw [← Category.assoc, hm]
   exact hd
 

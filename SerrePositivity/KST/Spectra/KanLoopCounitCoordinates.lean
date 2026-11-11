@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorSource
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensorSource
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParameterNaturality
 
 /-!
@@ -20,28 +20,28 @@ namespace SerrePositivity.KST.Spectra
 /-- Kan 円への二重 Hom を、通常の円で評価した懸垂源の Hom へ戻す元の射。 -/
 def kanLoopCounit (T V : PointedSimplicialSet.{u}) :
     PointedObject.basedHom T (PointedObject.basedHom CirclePower.space.{u} V) ⟶
-      PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension T) V :=
-  PointedObject.basedHomMap T (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} V) ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso PointedSimplicialSet.circle.{u} T V).inv
+      PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension T) V :=
+  PointedObject.basedHomMap T (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} V) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso PointedSimplicialSet.circle.{u} T V).inv
 
 /-- counit の後に元の同型を戻すと、通常の円への同じ制限そのもの。 -/
 @[reassoc]
 lemma kanLoopCounit_comparison (T V : PointedSimplicialSet.{u}) :
-    kanLoopCounit T V ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso PointedSimplicialSet.circle.{u} T V).hom =
-      PointedObject.basedHomMap T (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} V) := by
+    kanLoopCounit T V ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso PointedSimplicialSet.circle.{u} T V).hom =
+      PointedObject.basedHomMap T (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} V) := by
   rw [kanLoopCounit, Category.assoc, Iso.inv_hom_id, Category.comp_id]
 
 /-- 源への制限を counit で評価すると、同じ源の懸垂による制限となる。 -/
 lemma kanLoopCounit_pre {T U : PointedSimplicialSet.{u}} (i : T ⟶ U)
     (V : PointedSimplicialSet.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (PointedObject.basedHom CirclePower.space V) ≫ kanLoopCounit T V =
-      kanLoopCounit U V ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedSimplicialSet.circle.{u} ◁ i) V := by
-  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso PointedSimplicialSet.circle.{u} T V).hom).1
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (PointedObject.basedHom CirclePower.space V) ≫ kanLoopCounit T V =
+      kanLoopCounit U V ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedSimplicialSet.circle.{u} ◁ i) V := by
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso PointedSimplicialSet.circle.{u} T V).hom).1
   rw [Category.assoc, kanLoopCounit_comparison]
-  have hn := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_right PointedSimplicialSet.circle.{u} i V
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
+  have hn := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensorSource.natural_pre_right PointedSimplicialSet.circle.{u} i V
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hn
   rw [Category.assoc, hn, ← Category.assoc, kanLoopCounit_comparison]
-  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  simp only [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
   change (MonoidalClosed.pre i).app ((ihom CirclePower.space.{u}).obj V) ≫
       (ihom T).map ((MonoidalClosed.pre CirclePower.unit.{u}).app V) =
     (ihom U).map ((MonoidalClosed.pre CirclePower.unit.{u}).app V) ≫

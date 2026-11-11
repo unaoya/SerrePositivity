@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordBackwardBounds
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordBackwardBounds
 public import SerrePositivity.EInfinity.Hammock.MiddleBackwardPositionCases
 
 /-!
@@ -17,53 +17,53 @@ noncomputable section
 namespace SerrePositivity.EInfinity.Hammock.Word.BackwardBounds
 open MiddleBackward
 
-variable {w : Word} {p : Fin w.length} (h : BackwardBounds w p)
+variable {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {p : Fin w.length} (h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardBounds w p)
 
 abbrev leftLength : ℕ := p.val - h.left.val - 1
 abbrev rightLength : ℕ := h.right.val - p.val - 1
 
-def prefixWord : Word where
+def prefixWord : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word where
   length := h.left.val
   direction i := w.direction ⟨i.val, lt_trans i.isLt h.left.isLt⟩
 
-def suffixWord : Word where
+def suffixWord : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word where
   length := w.length - h.right.val - 1
   direction i := w.direction ⟨h.right.val + 1 + i.val, by
     have hi := i.isLt
     have hr := h.right.isLt
     omega⟩
 
-abbrev coreWord : Word := word h.leftLength h.rightLength
+abbrev coreWord : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word (leftLength h) (rightLength h)
 
-lemma core_length : h.coreWord.length = h.right.val - h.left.val + 1 := by
+lemma core_length : (coreWord h).length = h.right.val - h.left.val + 1 := by
   rw [Positions.length_eq]
   have hl := h.left_lt
   have hr := h.lt_right
   dsimp only [leftLength, rightLength]
   omega
 
-def coreIndex (i : Fin h.coreWord.length) : Fin w.length :=
+def coreIndex (i : Fin (coreWord h).length) : Fin w.length :=
   ⟨h.left.val + i.val, by
     have hi := i.isLt
-    have hlen := h.core_length
+    have hlen := (core_length h)
     have hl := h.left_lt
     have hr := h.lt_right
     have hlast := h.right.isLt
     omega⟩
 
-lemma coreIndex_val (i : Fin h.coreWord.length) : (h.coreIndex i).val = h.left.val + i.val := rfl
+lemma coreIndex_val (i : Fin (coreWord h).length) : ((coreIndex h i)).val = h.left.val + i.val := rfl
 
-lemma firstIndex : h.coreIndex (Positions.firstColumn h.leftLength h.rightLength) = h.left :=
+lemma firstIndex : (coreIndex h (Positions.firstColumn (leftLength h) (rightLength h))) = h.left :=
   Fin.ext (by rw [coreIndex_val, Positions.firstColumn_val]; omega)
 
-lemma middleIndex : h.coreIndex (Positions.middleColumn h.leftLength h.rightLength) = p := by
+lemma middleIndex : (coreIndex h (Positions.middleColumn (leftLength h) (rightLength h))) = p := by
   apply Fin.ext
   rw [coreIndex_val, Positions.middleColumn_val]
   have hl := h.left_lt
   dsimp only [leftLength]
   omega
 
-lemma lastIndex : h.coreIndex (Positions.lastColumn h.leftLength h.rightLength) = h.right := by
+lemma lastIndex : (coreIndex h (Positions.lastColumn (leftLength h) (rightLength h))) = h.right := by
   apply Fin.ext
   rw [coreIndex_val, Positions.lastColumn_val]
   have hl := h.left_lt
@@ -71,14 +71,19 @@ lemma lastIndex : h.coreIndex (Positions.lastColumn h.leftLength h.rightLength) 
   dsimp only [leftLength, rightLength]
   omega
 
-abbrev wholeWord : Word := append (append h.prefixWord h.coreWord) h.suffixWord
+abbrev wholeWord : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (prefixWord h) (coreWord h)) (suffixWord h)
 
-lemma whole_length : h.wholeWord.length = w.length := by
-  change h.left.val + h.coreWord.length + (w.length - h.right.val - 1) = _
-  rw [h.core_length]
+lemma whole_length : (wholeWord h).length = w.length := by
+  change h.left.val + (coreWord h).length + (w.length - h.right.val - 1) = _
+  rw [(core_length h)]
   have hl := h.left_lt
   have hr := h.lt_right
   have hlast := h.right.isLt
   omega
 
 end SerrePositivity.EInfinity.Hammock.Word.BackwardBounds
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardBounds
+  export _root_.SerrePositivity.EInfinity.Hammock.Word.BackwardBounds
+    (leftLength rightLength prefixWord suffixWord coreWord core_length coreIndex coreIndex_val
+      firstIndex middleIndex lastIndex wholeWord whole_length)

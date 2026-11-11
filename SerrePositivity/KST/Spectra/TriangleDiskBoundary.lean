@@ -51,7 +51,7 @@ theorem triangleDiskQuotient_vertex (v : (Δ[2] : SSet.{u}) _⦋0⦌) :
 theorem triangleDisk_diagonal_boundary :
     (boundary.{u} 1).ι ≫ stdSimplex.δ (1 : Fin 3) ≫ triangleDiskQuotient =
       toUnit (boundary.{u} 1 : SSet.{u}) ≫ triangleDisk.{u}.hom := by
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const]
   apply boundary.hom_ext
   intro j
   simp only [boundary.ι_ι_assoc, SSet.comp_const]

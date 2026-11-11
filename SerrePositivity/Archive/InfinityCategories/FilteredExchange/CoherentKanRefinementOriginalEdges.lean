@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentKanRefinementIntervalEdges
-public import SerrePositivity.InfinityCategories.Core.Opposite
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.Opposite
 
 /-!
 概要：元の精密化とその反転を、同じ左右区間族の両端付き実辺として保持する。

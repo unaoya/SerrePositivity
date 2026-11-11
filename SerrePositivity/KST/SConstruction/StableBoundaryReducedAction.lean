@@ -16,7 +16,7 @@ open SerrePositivity.InfinityCategories LocalizingInvariants Spectra
 
 /-- 元の全零境界は、標的の同じ商の基点へ全パラメータで厳密に送られる。 -/
 lemma stableBoundaryReducedAction_collapse (r : ℕ)
-    (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+    (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     ((zeroDirectionsFatBoundary (r + 1)
       (stableCategoryModel C)).ι ▷
         (C ⟶[SSet.{u}] D)) ≫
@@ -29,7 +29,7 @@ lemma stableBoundaryReducedAction_collapse (r : ℕ)
     (stableZeroBoundaryAction_inclusion (r + 1) C D)
 
 /-- 同じ元の全零境界商への、完全関手の全自然同値入力族による実作用。 -/
-def stableBoundaryReducedAction (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+def stableBoundaryReducedAction (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (boundaryReducedRealization r
       (stableCategoryModel C)).right ⊗
         (C ⟶[SSet.{u}] D) ⟶
@@ -46,7 +46,7 @@ def stableBoundaryReducedAction (r : ℕ) (C D : _root_.SerrePositivity.Infinity
 
 /-- 同じ元の商射に沿って、同じ完全関手の全実現作用を厳密に回収する。 -/
 lemma stableBoundaryReducedAction_quotient (r : ℕ)
-    (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+    (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (boundaryReductionQuotient r
       (stableCategoryModel C) ▷
         (C ⟶[SSet.{u}] D)) ≫ stableBoundaryReducedAction r C D =
@@ -57,7 +57,7 @@ lemma stableBoundaryReducedAction_quotient (r : ℕ)
 
 /-- 完全関手の全入力族は、同じ元の商の基点を全パラメータで厳密に保つ。 -/
 lemma stableBoundaryReducedAction_basepoint (r : ℕ)
-    (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+    (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     ((boundaryReducedRealization r
       (stableCategoryModel C)).hom ▷
         (C ⟶[SSet.{u}] D)) ≫ stableBoundaryReducedAction r C D =
@@ -66,7 +66,7 @@ lemma stableBoundaryReducedAction_basepoint (r : ℕ)
   cofiberFamilyDescRaw_basepoint _ _ _ _
 
 /-- 同じ元の境界商の、全パラメータを保持する実基点固定写像族。 -/
-def stableBoundaryReducedFamilyMap (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+def stableBoundaryReducedFamilyMap (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (C ⟶[SSet.{u}] D) ⟶
       (PointedObject.basedHom
         (boundaryReducedRealization r
@@ -84,7 +84,7 @@ def stableBoundaryReducedFamilyMap (r : ℕ) (C D : _root_.SerrePositivity.Infin
 
 /-- 基点固定写像族の包含後には、同じ元の商作用の curry を回収する。 -/
 lemma stableBoundaryReducedFamilyMap_inclusion (r : ℕ)
-    (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+    (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     stableBoundaryReducedFamilyMap r C D ≫
       PointedObject.basedHomι
         (boundaryReducedRealization r

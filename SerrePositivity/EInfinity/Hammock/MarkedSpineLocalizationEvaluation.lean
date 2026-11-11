@@ -40,10 +40,10 @@ lemma glue_localizationValue {X : Paths C} (t : MarkedSpine W Y n X) :
           ((AllMarked.nativeValue W X g.val.left).app n p) :=
       congrArg (fun k => k.app n p) (nativeValue_localizationValue W X g.val.left)
     change (Zigzag.Value.colimitValue W.paths.Q W.paths.Q_inverts X Y).app n
-      (composePoint W.paths X g.val.right Y
-        (composePoint W.paths X g.val.left g.val.right
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X g.val.right Y
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X g.val.left g.val.right
           ((AllMarked.inclusion W X g.val.left).app n p)
-          (arrowPoint W.paths g.val.hom.toPath n)) (glue t)) = _
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W.paths g.val.hom.toPath n)) (glue t)) = _
     rw [Zigzag.Value.colimitValue_composePoint, Zigzag.Value.colimitValue_composePoint,
       Zigzag.Value.colimitValue_arrowPoint, hp]
     change (_ ≫ _) ≫ (localizationValue W.paths g.val.right Y).app n (glue t) = _

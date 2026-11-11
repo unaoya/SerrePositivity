@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumMappingWhitehead
 public import SerrePositivity.KST.Spectra.SpectrumLevelwiseInverse
-public import SerrePositivity.InfinityCategories.Kan.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyComponents
 
 /-!
 概要：BF 射の段ごとの π 同型から、実際のスペクトル写像空間での両側の逆条件を構成する。
@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyComponents
 universe u
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.SpectrumMappingAcyclic
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -36,7 +36,7 @@ lemma post_vertex {A X Y : OmegaSpectrum.{u}} (f : A ⟶ X) (p : X ⟶ Y) :
   intro n
   have h := congrArg (fun q : mappingSpace A X ⟶
       (PointedObject.basedHom (A.level n).space (Y.level n).space).right ↦
-        q.app _ (vertexOfHom f)) (spectrumHomMap_evaluation A p n)
+        q.app _ (vertexOfHom f)) (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomMap_evaluation A p n)
   change (evaluation A Y n).app _ ((post A p).app _ (vertexOfHom f)) = _ at h
   change (evaluation A Y n).app _ ((post A p).app _ (vertexOfHom f)) =
     (PointedObject.basedHomMap (A.level n).space (p.app n)).right.app _
@@ -70,13 +70,13 @@ lemma pre_component {A X Z : OmegaSpectrum.{u}} (f : A ⟶ X) (g : X ⟶ Z) :
 
 /-- 元の源への参照射があれば、π 同型の後合成は全連結成分で全単射。 -/
 lemma post_piZero_bijective (A : OmegaSpectrum.{u}) {X Y : OmegaSpectrum.{u}}
-    (p : X ⟶ Y) (hp : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (p.app n).right) (a : A ⟶ X) :
+    (p : X ⟶ Y) (hp : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (p.app n).right) (a : A ⟶ X) :
     Function.Bijective (mapπ₀ (post A p)) :=
   (post_piIsomorphism_of_levelwise A p hp).piZero_bijective_at (vertexOfHom a)
 
 /-- 段ごとの π 同型は実際の豊穣 Hom の π₀ で両側の逆を持つ。 -/
 theorem exists_componentInverse {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
-    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n).right) :
+    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app n).right) :
     ∃ g : Y ⟶ X, component (f ≫ g) = component (𝟙 X) ∧
       component (g ≫ f) = component (𝟙 Y) := by
   obtain ⟨a, ha⟩ := (post_piZero_bijective Y f hf (levelwiseInverse f hf)).surjective

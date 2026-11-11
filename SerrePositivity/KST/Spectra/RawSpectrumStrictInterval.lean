@@ -20,11 +20,11 @@ open scoped Simplicial
 namespace SerrePositivity.KST.Spectra
 
 /-- 自由な点つき区間を忘れた族の面は、指定した同じ端点の族。 -/
-lemma freeIntervalFamily_face {E : PointedSimplicialSet.{u}} (F : _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} ⟶ E)
+lemma freeIntervalFamily_face {E : PointedSimplicialSet.{u}} (F : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.freeInterval.{u} ⟶ E)
     (i : Fin 2) :
     stdSimplex.δ i ≫ PointedObject.adjoinHomEquiv (Δ[1] : SSet.{u}) E F =
       PointedSimplicialSet.deltaZeroUnitIso.{u}.hom ≫
-        PointedSimplicialSet.unitUnderlyingHom E (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint i ≫ F) := by
+        PointedSimplicialSet.unitUnderlyingHom E (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.freeIntervalEndpoint i ≫ F) := by
   change stdSimplex.δ.{u} i ≫ coprod.inl ≫ F.right =
     PointedSimplicialSet.deltaZeroUnitIso.{u}.hom ≫ coprod.inl ≫
       (coprod.map PointedSimplicialSet.deltaZeroUnitIso.{u}.inv (𝟙 (𝟙_ SSet.{u})) ≫
@@ -36,12 +36,12 @@ variable (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
   {f g : KanSequence.Hom X.toKanSequence Y} (H : KanSequence.StrictInterval f g)
 
 /-- 同じ全列区間を、元の全 Hom の自由区間パラメータ族として回収する。 -/
-def strictIntervalFamily : _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} ⟶ pointedSpace X Y :=
-  parameterFamily X Y _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval H.hom
+def strictIntervalFamily : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.freeInterval.{u} ⟶ pointedSpace X Y :=
+  parameterFamily X Y _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.freeInterval H.hom
 
 /-- 元の全 Hom 内の始点は、指定した厳密な列射の点そのもの。 -/
 lemma strictIntervalFamily_start :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint 1 ≫ strictIntervalFamily X Y H = homPoint X Y f := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.freeIntervalEndpoint 1 ≫ strictIntervalFamily X Y H = homPoint X Y f := by
   rw [strictIntervalFamily, parameterFamily_endpoint]
   congr 1
   apply KanSequence.Hom.ext_app
@@ -49,7 +49,7 @@ lemma strictIntervalFamily_start :
 
 /-- 元の全 Hom 内の終点も、指定した厳密な列射の点そのもの。 -/
 lemma strictIntervalFamily_finish :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint 0 ≫ strictIntervalFamily X Y H = homPoint X Y g := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.freeIntervalEndpoint 0 ≫ strictIntervalFamily X Y H = homPoint X Y g := by
   rw [strictIntervalFamily, parameterFamily_endpoint]
   congr 1
   apply KanSequence.Hom.ext_app

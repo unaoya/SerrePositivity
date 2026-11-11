@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.CochainKernelHomology
 public import SerrePositivity.KST.LocalizingInvariants.CochainMappingCoconeZeroLift
-public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionHomExt
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleFunctorResolutionHomExt
 
 /-!
 概要：実 kernel の零比較による持ち上げは、cocone 間の標準射の実 kernel である。
@@ -36,21 +36,21 @@ lemma cochainKernelToCocone_snd :
   exact mappingCocone.lift_f_snd_v d (kernel.ι d) 0 (by simp) p q hpq
 
 def cochainCoconeToIdentity : mappingCocone d ⟶ mappingCocone (𝟙 L) :=
-  complexMappingCoconeMap d (𝟙 L) d (𝟙 L) (by simp)
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap d (𝟙 L) d (𝟙 L) (by simp)
 
 @[reassoc] lemma cochainCoconeToIdentity_fst :
     cochainCoconeToIdentity d ≫ mappingCocone.fst (𝟙 L) = mappingCocone.fst d ≫ d :=
-  complexMappingCoconeMap_fst _ _ _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_fst _ _ _ _ _
 
 lemma cochainCoconeToIdentity_snd :
     (Cochain.ofHom (cochainCoconeToIdentity d)).comp (mappingCocone.snd (𝟙 L))
       (zero_add (-1)) = mappingCocone.snd d := by
-  rw [cochainCoconeToIdentity, complexMappingCoconeMap_snd]
+  rw [cochainCoconeToIdentity, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_snd]
   simp
 
 lemma cochainKernelToCocone_condition :
     cochainKernelToCocone d ≫ cochainCoconeToIdentity d = 0 := by
-  apply dgMappingCocone_hom_ext (𝟙 L)
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgMappingCocone_hom_ext (𝟙 L)
   · rw [Category.assoc, cochainCoconeToIdentity_fst, ← Category.assoc,
       cochainKernelToCocone_fst, kernel.condition, zero_comp]
   · rw [Cochain.ofHom_comp, Cochain.comp_assoc_of_first_is_zero_cochain,
@@ -77,7 +77,7 @@ def cochainKernelToCocone_isKernel : IsLimit
   refine KernelFork.IsLimit.ofι _ _ (fun a ha =>
     kernel.lift d (a ≫ mappingCocone.fst d) (cochainCoconeToIdentity_zero_fst d a ha)) ?_ ?_
   · intro W a ha
-    apply dgMappingCocone_hom_ext d
+    apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgMappingCocone_hom_ext d
     · rw [Category.assoc, cochainKernelToCocone_fst, kernel.lift_ι]
     · rw [Cochain.ofHom_comp, Cochain.comp_assoc_of_first_is_zero_cochain,
         cochainKernelToCocone_snd, Cochain.comp_zero]

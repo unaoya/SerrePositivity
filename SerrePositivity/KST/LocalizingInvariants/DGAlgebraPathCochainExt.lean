@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathPrimitiveBoundary
-public import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBoundary
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeBoundary
 
 /-!
 概要：経路代数への任意整数次数の cochain は両評価と比較成分で一意に決まる。
@@ -28,7 +28,7 @@ lemma cochain_ext {K : Complex R} {n : ℤ} (f g : Cochain K (algebra R B).X n)
       g.comp (primitive R B) (by omega : n + -1 = n - 1)) : f = g := by
   apply Cochain.ext
   intro p q hpq
-  apply complexMappingCocone_X_ext (difference R B) q
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCocone_X_ext (difference R B) q
   · have total := congrArg (fun k => k.f q)
       (biprod.total (X := B.X) (Y := B.X))
     have hsource := Cochain.congr_v hs p q hpq
@@ -44,13 +44,13 @@ lemma cochain_ext {K : Complex R} {n : ℤ} (f g : Cochain K (algebra R B).X n)
         (biprod.fst : B.X ⊞ B.X ⟶ B.X).f q =
         g.v p q hpq ≫ (mappingCocone.fst (difference R B)).f q ≫
           (biprod.fst : B.X ⊞ B.X ⟶ B.X).f q := by
-      simpa only [source, dgFunctorCommaSourceHomMap, difference,
+      simpa only [source, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaSourceHomMap, difference,
         HomologicalComplex.comp_f, Category.assoc] using! hsource
     have ht' : f.v p q hpq ≫ (mappingCocone.fst (difference R B)).f q ≫
         (biprod.snd : B.X ⊞ B.X ⟶ B.X).f q =
         g.v p q hpq ≫ (mappingCocone.fst (difference R B)).f q ≫
           (biprod.snd : B.X ⊞ B.X ⟶ B.X).f q := by
-      simpa only [target, dgFunctorCommaReplacementHomMap, difference,
+      simpa only [target, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaReplacementHomMap, difference,
         HomologicalComplex.comp_f, Category.assoc] using! htarget
     calc
       _ = _ := decomp (f.v p q hpq ≫ (mappingCocone.fst (difference R B)).f q)

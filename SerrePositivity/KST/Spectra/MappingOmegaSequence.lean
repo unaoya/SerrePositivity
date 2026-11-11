@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.MappingKanSequence
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange
 public import SerrePositivity.KST.Spectra.PostMappingIsomorphism
 public import SerrePositivity.KST.Spectra.CofibrantOmegaSequence
 
@@ -32,11 +32,11 @@ namespace KanSequence
 規約：構造射の厳密な等式。
 使われ方：BF 1978 §2、HA §1.4.2。Ω 条件を写像空間へ移す。 -/
 theorem mapping_adjoint (A : PointedSimplicialSet.{u}) (X : KanSequence.{u}) (n : ℕ) :
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((mapping A X).level n).space ((mapping A X).level (n + 1)).space)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((mapping A X).level n).space ((mapping A X).level (n + 1)).space)
       ((mapping A X).sigma n) =
-    (ihom A).map ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space) (X.sigma n)) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A PointedSimplicialSet.circle.{u} (X.level (n + 1)).space).hom :=
-  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry_strength PointedSimplicialSet.circle.{u} A
+    (ihom A).map ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space) (X.sigma n)) ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A PointedSimplicialSet.circle.{u} (X.level (n + 1)).space).hom :=
+  _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.curry_strength PointedSimplicialSet.circle.{u} A
     (X.level n).space (X.level (n + 1)).space (X.sigma n)
 
 /-- 概要：Ω 条件は任意の点つき源からの内部 Hom の列で保存される。
@@ -46,14 +46,14 @@ theorem mapping_adjoint (A : PointedSimplicialSet.{u}) (X : KanSequence.{u}) (n 
 theorem mapping_omegaCondition (A : PointedSimplicialSet.{u}) (X : KanSequence.{u})
     (hX : X.OmegaCondition) : (mapping A X).OmegaCondition := by
   intro n
-  let f := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space) (X.sigma n)
-  have hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (PointedObject.basedHomMap A f).right :=
+  let f := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space) (X.sigma n)
+  have hf : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (PointedObject.basedHomMap A f).right :=
     PointedMapping.post_piIsomorphism A f (hX n)
-  let e := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A PointedSimplicialSet.circle.{u} (X.level (n + 1)).space
-  let e' : (PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X.level (n + 1)).space)).right ≅
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedObject.basedHom A (X.level (n + 1)).space)).right :=
+  let e := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A PointedSimplicialSet.circle.{u} (X.level (n + 1)).space
+  let e' : (PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (X.level (n + 1)).space)).right ≅
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedObject.basedHom A (X.level (n + 1)).space)).right :=
     PointedSimplicialSet.forget.mapIso e
-  have he : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism e'.hom := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e'
+  have he : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism e'.hom := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso e'
   have h := hf.comp he
   have hformula := congrArg Under.Hom.right (mapping_adjoint A X n)
   change _ = (PointedObject.basedHomMap A f).right ≫ e'.hom at hformula
@@ -95,8 +95,8 @@ theorem cotensorProjection_rlp (A : PointedSimplicialSet.{u}) (X : OmegaSpectrum
 使われ方：BF 1978 §2、HA §1.4.2。cotensor の整数次数群の計算。 -/
 theorem cotensorProjection_piIsomorphism (A : PointedSimplicialSet.{u})
     (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((cotensorProjection A X).app n).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (cotensorProjection_rlp A X n)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((cotensorProjection A X).app n).right :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (cotensorProjection_rlp A X n)
 
 end OmegaSpectrum
 

@@ -73,7 +73,7 @@ def fullGradedProjection (n : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (fullMiddleStageEnriched n) (fullTargetStageEnriched n) where
   app X := eHomEquiv SSet ((projection X.val).app n)
-  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff SSet
+  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_whiskered_square_iff SSet
     ((projection X.val).app n) ((projection Y.val).app n)
     (fullOriginalLoopStage X.val Y.val n) (fullReplacedStage X.val Y.val n)).mp
       (full_right_whiskered X.val Y.val n)).symm

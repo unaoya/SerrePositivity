@@ -30,28 +30,28 @@ variable {X Y : OmegaSpectrum.{u}} {h f g : X ⟶ Y}
 
 def intervalComposition : SSet.Edge.CompStruct (intervalEdge H) (intervalEdge e)
     (intervalEdge V) := by
-  let T := (uliftTruncatedCompStruct.{u, u + 1} t.toTruncated).map
-    ((truncation 2).map (coherentHomIntervalComparison X Y))
+  let T := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.uliftTruncatedCompStruct.{u, u + 1} t.toTruncated).map
+    ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison X Y))
   let liftEdge (k l : X ⟶ Y)
       (P : (mappingSpace X Y).Edge (vertexOfHom k) (vertexOfHom l)) :=
     (SSet.Edge.ofTruncated (X := (SSet.uliftFunctor.{u + 1, u}).obj (mappingSpace X Y))
-      (uliftTruncatedEdge P.toTruncated)).map (coherentHomIntervalComparison X Y)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.uliftTruncatedEdge P.toTruncated)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison X Y)
   let U : SSet.Edge.CompStruct (liftEdge h f H) (liftEdge f g e) (liftEdge h g V) :=
     SSet.Edge.CompStruct.ofTruncated T
   exact U.ofEq rfl rfl rfl
 
 def arrowComposition : SSet.Edge.CompStruct (arrowEdge H) (arrowEdge e) (arrowEdge V) :=
-  (intervalComposition t).map (vertexFiberι _ _)
+  (intervalComposition t).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι _ _)
 
 lemma arrowComposition_simplex : (arrowComposition t).simplex =
-    (vertexFiberι _ _).app (Opposite.op ⦋2⦌)
-      ((coherentHomIntervalComparison X Y).app (Opposite.op ⦋2⦌)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι _ _).app (Opposite.op ⦋2⦌)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison X Y).app (Opposite.op ⦋2⦌)
         (ULift.up t.simplex)) := rfl
 
 def arrowHom {k l : X ⟶ Y}
     (P : (mappingSpace X Y).Edge (vertexOfHom k) (vertexOfHom l)) :
-    FunctorHom (SSet.yonedaEquiv.symm (coherentNerveEdge k).edge)
-      (SSet.yonedaEquiv.symm (coherentNerveEdge l).edge) :=
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge k).edge)
+      (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge l).edge) :=
   Truncated.HomotopyCategory.homMk (arrowEdge P).toTruncated
 
 include t in

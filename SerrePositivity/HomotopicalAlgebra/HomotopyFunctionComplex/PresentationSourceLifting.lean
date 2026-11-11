@@ -31,9 +31,9 @@ lemma ι_tensorSourceMap (i : I) :
       α.app (D.obj i) ≫ colimit.ι (D ⋙ B) i :=
   ι_colimMap _ _
 
-lemma homEquiv_source_naturality {Y : C} (f : s.pt ⟶ (cosimplicialHom B).obj Y) :
+lemma homEquiv_source_naturality {Y : C} (f : s.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Y) :
     tensorSourceMap D α ≫ homEquiv D s hs B f =
-      homEquiv D s hs A (f ≫ (cosimplicialHomMap α).app Y) := by
+      homEquiv D s hs A (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app Y) := by
   apply colimit.hom_ext
   intro i
   rw [ι_homEquiv]
@@ -67,9 +67,9 @@ lemma inr_relativeTensorMap :
 
 omit [HasPushouts C] in
 lemma source_compatibility {Y : C}
-    {a : s.pt ⟶ (cosimplicialHom B).obj Y}
-    {b : SSet.stdSimplex.obj c.pt ⟶ (cosimplicialHom A).obj Y}
-    (sq : CommSq a (presentationMap D s hs c) ((cosimplicialHomMap α).app Y) b) :
+    {a : s.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Y}
+    {b : SSet.stdSimplex.obj c.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y}
+    (sq : CommSq a (presentationMap D s hs c) ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app Y) b) :
     tensorSourceMap D α ≫ homEquiv D s hs B a =
       tensorMap D A c ≫ SSet.yonedaEquiv b := by
   have h := congrArg (homEquiv D s hs A) sq.w
@@ -81,9 +81,9 @@ variable [HasTerminal C] {Y : C}
   [HasLiftingProperty (relativeTensorMap D α c) (terminal.from Y)]
 
 def sourceLiftStruct
-    {a : s.pt ⟶ (cosimplicialHom B).obj Y}
-    {b : SSet.stdSimplex.obj c.pt ⟶ (cosimplicialHom A).obj Y}
-    (sq : CommSq a (presentationMap D s hs c) ((cosimplicialHomMap α).app Y) b) :
+    {a : s.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Y}
+    {b : SSet.stdSimplex.obj c.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y}
+    (sq : CommSq a (presentationMap D s hs c) ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app Y) b) :
     sq.LiftStruct := by
   let d := pushout.desc (homEquiv D s hs B a) (SSet.yonedaEquiv b)
     (source_compatibility D s hs α c sq)
@@ -97,8 +97,8 @@ def sourceLiftStruct
         pushout.inl (tensorSourceMap D α) (tensorMap D A c) ≫ k) q.fac_left).trans
           (pushout.inl_desc _ _ _))
   · apply SSet.yonedaEquiv.injective
-    change α.app c.pt ≫ (SSet.yonedaEquiv (X := (cosimplicialHom B).obj Y))
-      ((SSet.yonedaEquiv (X := (cosimplicialHom B).obj Y)).symm q.lift) = _
+    change α.app c.pt ≫ (SSet.yonedaEquiv (X := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Y))
+      ((SSet.yonedaEquiv (X := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Y)).symm q.lift) = _
     rw [Equiv.apply_symm_apply]
     exact (inr_relativeTensorMap_assoc D α c q.lift).symm.trans
       ((congrArg (fun k ↦
@@ -106,7 +106,7 @@ def sourceLiftStruct
           (pushout.inr_desc _ _ _))
 
 lemma source_hasLiftingProperty :
-    HasLiftingProperty (presentationMap D s hs c) ((cosimplicialHomMap α).app Y) where
+    HasLiftingProperty (presentationMap D s hs c) ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app Y) where
   sq_hasLift sq := CommSq.HasLift.mk' (sourceLiftStruct D s hs α c sq)
 
 end SerrePositivity.HomotopyFunctionComplex.HomPresentation

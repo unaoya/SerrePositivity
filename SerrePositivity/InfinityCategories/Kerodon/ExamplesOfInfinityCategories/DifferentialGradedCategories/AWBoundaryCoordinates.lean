@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：水平側は切断点を一つ増やし、垂直側は局所削除点を一つ増やす。
 規約：KST Construction A.5 の標準 AW。全次数 n+1 の境界を扱う。
 使われ方：実際の水平・垂直微分の展開へ awBoundaryIndex_sum を適用する。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 namespace SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories

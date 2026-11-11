@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderFiber
 public import SerrePositivity.KST.Spectra.SpectrumCotensorEvaluationNerveFamily
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomEnrichedNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.HomEnrichedNaturality
 
 /-!
 概要：cotensor の評価の族を元の BF 対象へ制限し、全 Hom の普遍評価と照合する。
@@ -24,22 +24,22 @@ local instance evaluationFiberSpectrumSimplicialCategory : SimplicialCategory Om
 
 /-- 元の一対象上の、二対象のパラメータ円柱から Sp の BF 圏への豊穣評価。 -/
 def evaluationFiberEnriched (A : PointedSimplicialSet.{u}) (X : Object A) :
-    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A.right
-      _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{u + 1}) OmegaSpectrum.{u} :=
+    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A.right
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{u + 1}) OmegaSpectrum.{u} :=
   (EnrichedParameterCylinder.fiberEnriched A.right X).comp SSet (evaluationCylinderEnriched A)
 
 /-- 一対象での評価の cross Hom は、元の cotensor の普遍評価そのもの。 -/
 lemma evaluationFiber_cross (A : PointedSimplicialSet.{u}) (X : Object A) :
     (ρ_ A.right).inv ≫ (evaluationFiberEnriched A X).map
-        (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A.right
-          _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{u + 1}) ⟨true, ⟨PUnit.unit⟩⟩ =
+        (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A.right
+          _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{u + 1}) ⟨true, ⟨PUnit.unit⟩⟩ =
       (cotensorEvaluation A X.val).right := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
   intro a
   change ((evaluationCylinderEnriched A).map
-    (⟨false, X⟩ : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A.right (Object A)) ⟨true, X⟩).app d
+    (⟨false, X⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A.right (Object A)) ⟨true, X⟩).app d
       (a, (eId SSet X).app d PUnit.unit) = _
   have h := ConcreteCategory.congr_hom (NatTrans.congr_app (evaluationCylinder_cross A X) d) a
   exact h
@@ -48,8 +48,8 @@ lemma evaluationFiber_cross (A : PointedSimplicialSet.{u}) (X : Object A) :
 lemma evaluationFiber_cross_app (A : PointedSimplicialSet.{u}) (X : Object A)
     (n : ℕ) (a : A.right _⦋n⦌) :
     ((evaluationFiberEnriched A X).map
-      (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A.right
-        _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{u + 1}) ⟨true, ⟨PUnit.unit⟩⟩).app
+      (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A.right
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{u + 1}) ⟨true, ⟨PUnit.unit⟩⟩).app
           (Opposite.op ⦋n⦌) (a, PUnit.unit) =
       (cotensorEvaluation A X.val).right.app (Opposite.op ⦋n⦌) a := by
   have h := ConcreteCategory.congr_hom (NatTrans.congr_app (evaluationFiber_cross A X)
@@ -58,24 +58,24 @@ lemma evaluationFiber_cross_app (A : PointedSimplicialSet.{u}) (X : Object A)
 
 /-- 共通解像上の評価の族を元の対象へ制限すると、実際の豊穣評価の nerve。 -/
 lemma evaluationNerveFamily_fiber (A : PointedSimplicialSet.{u}) (X : Object A) :
-    lift (SSet.const (coherentNerveVertex X))
-        (𝟙 (SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A.right
-          _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{u + 1}))) ≫ evaluationNerveFamily A =
-      coherentNerveMap (evaluationFiberEnriched A X) := by
+    lift (SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X))
+        (𝟙 (SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A.right
+          _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{u + 1}))) ≫ evaluationNerveFamily A =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (evaluationFiberEnriched A X) := by
   rw [evaluationNerveFamily, ← Category.assoc, EnrichedParameterCylinder.nervePair_fiber,
-    evaluationCylinderInfinityMap, ← coherentNerveMap_comp]
+    evaluationCylinderInfinityMap, ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp]
   rfl
 
 /-- 一対象での coherent Hom 比較単体は、元の普遍評価の単体を保持する。 -/
 lemma evaluationFiber_comparison (A : PointedSimplicialSet.{u}) (X : Object A)
     (n : ℕ) (a : A.right _⦋n⦌) :
-    (coherentHomComparisonSimplex
-        (X := (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A.right
-          _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{u + 1}))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex
+        (X := (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A.right
+          _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{u + 1}))
         (Y := ⟨true, ⟨PUnit.unit⟩⟩) (a, PUnit.unit)).comp SSet
           (evaluationFiberEnriched A X) =
-      coherentHomComparisonSimplex
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex
         ((cotensorEvaluation A X.val).right.app (Opposite.op ⦋n⦌) a) := by
-  rw [coherentHomComparisonSimplex_postcomp, evaluationFiber_cross_app]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparisonSimplex_postcomp, evaluationFiber_cross_app]
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.CotensorCompatible

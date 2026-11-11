@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.SpanConeShape
 public import SerrePositivity.KST.LocalizingInvariants.FullSubcomplexFiber
-public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedMarkedSpanQuasicategory
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeIteratedSliceIso
-public import SerrePositivity.InfinityCategories.Core.FullSubcomplexIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.FixedMarkedSpanQuasicategory
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.ConeIteratedSliceIso
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FullSubcomplexIso
 
 /-!
 概要：元の固定端点 marked span を、同じ二終点上の全錐族の全部分複体と同定する。
@@ -20,20 +20,20 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalClosed SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 分母条件を課す前の、元の二端点を厳密に固定した span。 -/
 def fixedSpanFamily (X : SSet.{u}) (x y : X _⦋0⦌) : SSet.{u} :=
-  vertexFiber ((pre spanEndpointInclusion).app X) (functorVertex (intervalMappingBoundary x y))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber ((pre spanEndpointInclusion).app X) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingBoundary x y))
 
 lemma fixedSpanConeRestriction (X : SSet.{u}) :
-    (pre spanBoundaryConeIso.hom).app X ≫ coneRestriction (boundary 1 : SSet.{u}) X =
+    (pre spanBoundaryConeIso.hom).app X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneRestriction (boundary 1 : SSet.{u}) X =
       (pre spanEndpointInclusion).app X := by
-  rw [coneRestriction, ← NatTrans.comp_app, ← pre_map, spanBoundaryConeIso_endpoints]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneRestriction, ← NatTrans.comp_app, ← pre_map, spanBoundaryConeIso_endpoints]
 
 def spanConePreIso (X : SSet.{u}) : (ihom (horn 2 0 : SSet.{u})).obj X ≅
-    (ihom (join (Δ[0] : SSet.{u}) (boundary 1 : SSet.{u}))).obj X where
+    (ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) (boundary 1 : SSet.{u}))).obj X where
   hom := (pre spanBoundaryConeIso.hom).app X
   inv := (pre spanBoundaryConeIso.inv).app X
   hom_inv_id := by
@@ -43,21 +43,21 @@ def spanConePreIso (X : SSet.{u}) : (ihom (horn 2 0 : SSet.{u})).obj X ≅
 
 /-- 元の固定端点 span と、同じ二端点の固定図式上の全錐族の厳密同型。 -/
 def fixedSpanConeFamilyIso (X : SSet.{u}) (x y : X _⦋0⦌) :
-    fixedSpanFamily X x y ≅ coneFamily (intervalMappingBoundary x y) :=
-  vertexFiberIsoOfOverIso _ _ (spanConePreIso X)
+    fixedSpanFamily X x y ≅ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneFamily (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingBoundary x y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.vertexFiberIsoOfOverIso _ _ (spanConePreIso X)
     (fixedSpanConeRestriction X) _
 
 lemma fixedSpanConeFamilyIso_ι (X : SSet.{u}) (x y : X _⦋0⦌) :
-    (fixedSpanConeFamilyIso X x y).hom ≫ vertexFiberι
-      (coneRestriction (boundary 1 : SSet.{u}) X) (functorVertex (intervalMappingBoundary x y)) =
-      vertexFiberι ((pre spanEndpointInclusion).app X)
-        (functorVertex (intervalMappingBoundary x y)) ≫ (pre spanBoundaryConeIso.hom).app X :=
-  vertexFiberIsoOfOverIso_hom_ι _ _ _ _ _
+    (fixedSpanConeFamilyIso X x y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneRestriction (boundary 1 : SSet.{u}) X) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingBoundary x y)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι ((pre spanEndpointInclusion).app X)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingBoundary x y)) ≫ (pre spanBoundaryConeIso.hom).app X :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.vertexFiberIsoOfOverIso_hom_ι _ _ _ _ _
 
 /-- 二終点上の錐の形状内の、元の分母に当たる実辺。 -/
 def spanConeDenominatorInclusion : (Δ[1] : SSet.{u}) ⟶
-    join (Δ[0] : SSet.{u}) (boundary 1 : SSet.{u}) :=
-  (joinStdSimplexIso 0 0).inv ≫ joinMap (𝟙 Δ[0]) (boundary.ι (1 : Fin 2))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) (boundary 1 : SSet.{u}) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) (boundary.ι (1 : Fin 2))
 
 lemma spanConeDenominatorInclusion_shape :
     spanConeDenominatorInclusion.{u} ≫ spanBoundaryConeIso.hom = horn₂₀.ι₀₁ := by
@@ -66,22 +66,22 @@ lemma spanConeDenominatorInclusion_shape :
 
 /-- 同じ固定二終点の全錐族から、元の左脚の全族を回収する。 -/
 def spanConeDenominatorFamily {X : SSet.{u}} (x y : X _⦋0⦌) :
-    coneFamily (intervalMappingBoundary x y) ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
-  vertexFiberι (coneRestriction (boundary 1 : SSet.{u}) X)
-    (functorVertex (intervalMappingBoundary x y)) ≫ (pre spanConeDenominatorInclusion).app X
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneFamily (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingBoundary x y) ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneRestriction (boundary 1 : SSet.{u}) X)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingBoundary x y)) ≫ (pre spanConeDenominatorInclusion).app X
 
 lemma fixedSpanConeFamilyIso_denominator (X : SSet.{u}) (x y : X _⦋0⦌) :
     (fixedSpanConeFamilyIso X x y).hom ≫ spanConeDenominatorFamily x y =
-      vertexFiberι ((pre spanEndpointInclusion).app X)
-        (functorVertex (intervalMappingBoundary x y)) ≫ (pre horn₂₀.ι₀₁).app X := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι ((pre spanEndpointInclusion).app X)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingBoundary x y)) ≫ (pre horn₂₀.ι₀₁).app X := by
   change _ ≫ (_ ≫ (pre spanConeDenominatorInclusion).app X) = _
   rw [← Category.assoc, fixedSpanConeFamilyIso_ι, Category.assoc,
     ← NatTrans.comp_app, ← pre_map, spanConeDenominatorInclusion_shape]
 
 /-- 全錐族に元の左脚の実分母条件を課した全部分複体。 -/
 def markedSpanConeFamily {X : SSet.{u}} (W : Set (X _⦋1⦌)) (x y : X _⦋0⦌) :
-    (coneFamily (intervalMappingBoundary x y)).Subcomplex :=
-  fullSubcomplexOnVertices _ (fun v => intervalFunctorVertexEdge
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneFamily (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingBoundary x y)).Subcomplex :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (fun v => _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge
     ((spanConeDenominatorFamily x y).app (Opposite.op ⦋0⦌) v) ∈ W)
 
 instance markedSpanConeFamily_quasicategory {X : SSet.{u}} [Quasicategory X]
@@ -96,15 +96,15 @@ def fixedMarkedSpanConeFamilyIso (X : SSet.{u}) (W : Set (X _⦋1⦌))
   let P := fun v : ((ihom (horn 2 0 : SSet.{u})).obj X) _⦋0⦌ => spanLeftEdge v ∈ W
   let f := (pre spanEndpointInclusion).app X
   let fp := markedSpanBoundary X W
-  have hf : fp = (fullSubcomplexOnVertices _ P).ι ≫ f := markedSpanBoundary_restriction X W
-  let e := fullSubcomplexFiberIso P f fp hf (functorVertex (intervalMappingBoundary x y))
-  refine e ≪≫ fullSubcomplexIso (fixedSpanConeFamilyIso X x y) _ _ ?_
+  have hf : fp = (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ P).ι ≫ f := markedSpanBoundary_restriction X W
+  let e := fullSubcomplexFiberIso P f fp hf (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingBoundary x y))
+  refine e ≪≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fullSubcomplexIso (fixedSpanConeFamilyIso X x y) _ _ ?_
   intro v
-  have he := congrArg (fun k => intervalFunctorVertexEdge (k.app (Opposite.op ⦋0⦌) v))
+  have he := congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge (k.app (Opposite.op ⦋0⦌) v))
     (fixedSpanConeFamilyIso_denominator X x y)
-  change intervalFunctorVertexEdge ((spanConeDenominatorFamily x y).app (Opposite.op ⦋0⦌)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge ((spanConeDenominatorFamily x y).app (Opposite.op ⦋0⦌)
     ((fixedSpanConeFamilyIso X x y).hom.app (Opposite.op ⦋0⦌) v)) = spanLeftEdge v.val at he
-  change spanLeftEdge v.val ∈ W ↔ intervalFunctorVertexEdge
+  change spanLeftEdge v.val ∈ W ↔ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge
     ((spanConeDenominatorFamily x y).app (Opposite.op ⦋0⦌)
       ((fixedSpanConeFamilyIso X x y).hom.app (Opposite.op ⦋0⦌) v)) ∈ W
   rw [he]

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofSliceFibration
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.Terminal
-public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Terminal
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.VertexFiberNervePullback
 
 /-!
 # 実屋根 corner の元の Over 次数による正規化
@@ -31,7 +31,7 @@ abbrev roofCornerNormalizedProjection : roofCornerNormalized A Y q b ⟶
     nerve (Over (roofTargetDegree A Y q b)) := pullback.snd _ _
 
 def roofCornerNormalizationMap :
-    sliceOverCorner (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q) ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q) ⟶
       roofCornerNormalized A Y q b :=
   pullback.map _ _ _ _ (roofTargetDegreeSliceIso A Y q b).hom (𝟙 _) (𝟙 _)
     (by simpa only [Category.comp_id] using (roofTargetDegreeSliceIso_projection A Y q b).symm)
@@ -52,25 +52,25 @@ lemma roofCornerNormalizationMap_over : roofCornerNormalizationMap A Y q b ≫
   simp only [roofCornerNormalizationMap, roofCornerNormalizedProjection, Category.assoc,
     pullbackSymmetry_hom_comp_snd, pullback.map, pullback.lift_fst]
 
-lemma roofCornerNormalizedProjection_leftFibration [LeftFibration (roofTargetProjection A Y q)] :
-    LeftFibration (roofCornerNormalizedProjection A Y q b) :=
-  ⟨leftFibrations.pullback_snd _ _ (LeftFibration.mem (p := roofTargetProjection A Y q))⟩
+lemma roofCornerNormalizedProjection_leftFibration [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (roofTargetProjection A Y q)] :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (roofCornerNormalizedProjection A Y q b) :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibrations.pullback_snd _ _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration.mem (p := roofTargetProjection A Y q))⟩
 
 def roofCornerTerminal : (nerve (Over (roofTargetDegree A Y q b))) _⦋0⦌ :=
-  nerveVertex (Over.mk (𝟙 (roofTargetDegree A Y q b)))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Over.mk (𝟙 (roofTargetDegree A Y q b)))
 
-lemma roofCornerTerminal_isTerminal : IsTerminalVertex (roofCornerTerminal A Y q b) :=
-  SerrePositivity.InfinityCategories.F1B.nerveVertex_isTerminal Over.mkIdTerminal
+lemma roofCornerTerminal_isTerminal : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (roofCornerTerminal A Y q b) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveVertex_isTerminal Over.mkIdTerminal
 
 def roofCornerTerminalFiberIso :
-    vertexFiber (roofCornerNormalizedProjection A Y q b) (roofCornerTerminal A Y q b) ≅
-      vertexFiber (roofTargetProjection A Y q) (nerveVertex (roofTargetDegree A Y q b)) :=
-  SerrePositivity.InfinityCategories.vertexFiberNervePullbackIso (roofTargetProjection A Y q)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (roofCornerNormalizedProjection A Y q b) (roofCornerTerminal A Y q b) ≅
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (roofTargetProjection A Y q) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (roofTargetDegree A Y q b)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.vertexFiberNervePullbackIso (roofTargetProjection A Y q)
     (Over.forget (roofTargetDegree A Y q b)) (Over.mk (𝟙 (roofTargetDegree A Y q b)))
 
 lemma roofCornerTerminalFiberIso_source : (roofCornerTerminalFiberIso A Y q b).hom ≫
-    vertexFiberι (roofTargetProjection A Y q) (nerveVertex (roofTargetDegree A Y q b)) =
-      vertexFiberι (roofCornerNormalizedProjection A Y q b) (roofCornerTerminal A Y q b) ≫
-        pullback.fst _ _ := SerrePositivity.InfinityCategories.vertexFiberNervePullbackIso_hom_ι _ _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (roofTargetProjection A Y q) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (roofTargetDegree A Y q b)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (roofCornerNormalizedProjection A Y q b) (roofCornerTerminal A Y q b) ≫
+        pullback.fst _ _ := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.vertexFiberNervePullbackIso_hom_ι _ _ _
 
 end SerrePositivity.EInfinity.FrameHom.FrameArrows

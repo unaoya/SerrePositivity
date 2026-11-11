@@ -56,7 +56,7 @@ variable {A B K : SSet.{v}} (a : A ⟶ B)
 
 def fixedFamilyComparison {T : SSet.{v}} (h : A ⟶ K) (c : T ⟶ obj a h) :
     SSet.Homotopy (a ▷ T ≫ family a ha hK h c) (fst A T ≫ h) :=
-  LargeParameterSquare.changeEndpoints (familyComparison a ha hK h c) rfl
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints (familyComparison a ha hK h c) rfl
     (by rw [← Category.assoc]; exact constant_name_family h (c ≫ toPoint a h))
 
 end SerrePositivity.SimplicialModel.RestrictionDescentChoices

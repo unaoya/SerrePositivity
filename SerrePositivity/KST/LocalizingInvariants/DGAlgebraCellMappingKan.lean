@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingHorn
-public import SerrePositivity.InfinityCategories.Core.UniverseHorns
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseHorns
 public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
 
 /-!
@@ -19,7 +19,7 @@ universe u
 open CategoryTheory Limits MonoidalCategory Opposite
 open scoped Simplicial
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A B : Mon (Complex R))
 
@@ -29,10 +29,10 @@ lemma multiplicativeCellMapping_horn_extension (n : ℕ) (i : Fin (n + 2))
     ∃ b : (Δ[n + 1] : SSet.{u}) ⟶ multiplicativeMappingSimplices R (cellResolution R A) B,
       (SSet.horn (n + 1) i).ι ≫ b = a := by
   obtain ⟨b, hb⟩ := multiplicativeCellMapping_smallHorn_extension R A B n i
-    ((uliftHornIso.{0, u} (n + 1) i).hom ≫ a)
-  refine ⟨(uliftStdSimplexIso.{0, u} (n + 1)).inv ≫ b, ?_⟩
-  apply (cancel_epi (uliftHornIso.{0, u} (n + 1) i).hom).mp
-  rw [← Category.assoc, uliftHornIso_ι, Category.assoc,
+    ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftHornIso.{0, u} (n + 1) i).hom ≫ a)
+  refine ⟨(_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftStdSimplexIso.{0, u} (n + 1)).inv ≫ b, ?_⟩
+  apply (cancel_epi (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftHornIso.{0, u} (n + 1) i).hom).mp
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftHornIso_ι, Category.assoc,
     Iso.hom_inv_id_assoc, hb]
 
 instance multiplicativeCellMapping_kanComplex :

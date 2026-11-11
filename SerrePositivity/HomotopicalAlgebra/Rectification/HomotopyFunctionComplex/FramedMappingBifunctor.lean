@@ -47,7 +47,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
   (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
 
 abbrev raw : (FramedResolution C)ᵒᵖ ⥤ C ⥤ SSet.{v} :=
-  innerDiagrams.op ⋙ cosimplicialHomBifunctor
+  innerDiagrams.op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 /-- Source change is the actual previously constructed Kan source map. -/
 def hom : (FramedResolution C)ᵒᵖ ⥤ C ⥤ SSet.{v} where
@@ -127,7 +127,7 @@ lemma piZero_naturality_target (X : (FramedResolution C)ᵒᵖ) {Z Z' : FibrantO
     (Opposite.op X.unop.inner) f x
   have hZ := ResolutionLiftPrecomposition.piZero_comparison hcof hfib Q X.unop.inner Z.obj x
   have hZ' := ResolutionLiftPrecomposition.piZero_comparison hcof hfib Q X.unop.inner Z'.obj
-    (SSet.mapπ₀ ((cosimplicialHom X.unop.inner.resolution.obj).map f.hom) x)
+    (SSet.mapπ₀ ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom X.unop.inner.resolution.obj).map f.hom) x)
   simp only [SSet.mapπ₀_comp_apply] at hc
   exact (congrArg (piZeroEquiv hcof hfib Q X Z'.obj) hc.symm).trans
     (hZ'.trans (h.trans (congrArg (fun q => q ≫ Q.map f.hom) hZ.symm)))

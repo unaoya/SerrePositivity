@@ -18,19 +18,19 @@ namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 
 /-- 元の単位パラメータの厳密な段条件を、同じ射の構造正方形へ戻す。 -/
 lemma uncurry'_step {U V U' V' : PointedSimplicialSet.{u}}
-    (s : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension U ⟶ U') (t : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension V ⟶ V')
+    (s : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension U ⟶ U') (t : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension V ⟶ V')
     (a : 𝟙_ PointedSimplicialSet.{u} ⟶ (ihom U).obj V)
     (b : 𝟙_ PointedSimplicialSet.{u} ⟶ (ihom U').obj V')
-    (h : b ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s V' =
-      a ≫ suspensionHom U V ≫ PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension U) t) :
+    (h : b ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed s V' =
+      a ≫ suspensionHom U V ≫ PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension U) t) :
     PointedSimplicialSet.circle.{u} ◁ uncurry' a ≫ t = s ≫ uncurry' b := by
   apply curry'_injective
   have ha : curry' (PointedSimplicialSet.circle.{u} ◁ uncurry' a ≫ t) =
-      a ≫ suspensionHom U V ≫ PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension U) t := by
+      a ≫ suspensionHom U V ≫ PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension U) t := by
     rw [← curry'_ihom_map, ← suspensionHom_curry', curry'_uncurry']
     rw [Category.assoc]
     rfl
-  have hb : curry' (s ≫ uncurry' b) = b ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s V' := by
+  have hb : curry' (s ≫ uncurry' b) = b ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed s V' := by
     rw [← PointedMapping.curry'_pre, curry'_uncurry']
   exact ha.trans (h.symm.trans hb.symm)
 

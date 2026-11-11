@@ -27,9 +27,9 @@ namespace PointedMapping
 
 @[reassoc]
 lemma prePointed_post {A B Y Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (p : Y ⟶ Z) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y ≫ PointedObject.basedHomMap A (Y := Y) (Z := Z) p =
-      PointedObject.basedHomMap B (Y := Y) (Z := Z) p ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z := by
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y ≫ PointedObject.basedHomMap A (Y := Y) (Z := Z) p =
+      PointedObject.basedHomMap B (Y := Y) (Z := Z) p ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z := by
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
   exact ((MonoidalClosed.pre i).naturality p).symm
 
 end PointedMapping
@@ -41,14 +41,14 @@ end PointedMapping
 @[reassoc]
 lemma pointedCofiberMappingFiberIso_hom_ι {A B : PointedSimplicialSet.{u}}
     (i : A ⟶ B) (Y : PointedSimplicialSet.{u}) :
-    (pointedCofiberMappingFiberIso i Y).hom ≫ pointedFiberι (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y) =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection i) Y := by
+    (pointedCofiberMappingFiberIso i Y).hom ≫ pointedFiberι (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y) =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection i) Y := by
   apply Under.UnderMorphism.ext
   change ((cofiberMappingFiberIso i Y).hom ≫
-      (fiberIsoOfEq (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y).right
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y)).symm).hom) ≫
-      _root_.SerrePositivity.InfinityCategories.Kan.fiberι (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y).right
-        ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y).right.app _
+      (fiberIsoOfEq (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y).right
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y)).symm).hom) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y).right
+        ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y).right.app _
           (PointedSimplicialSet.basepoint (PointedObject.basedHom B Y))) = _
   rw [Category.assoc, fiberIsoOfEq_hom_ι]
   exact cofiberMappingFiberIso_hom_ι i Y
@@ -59,8 +59,8 @@ lemma pointedCofiberMappingFiberIso_hom_ι {A B : PointedSimplicialSet.{u}}
 使われ方：Goerss–Jardine VIII §1。相対写像空間の係数射。 -/
 def pointedRestrictionFiberMap {A B Y Z : PointedSimplicialSet.{u}}
     (i : A ⟶ B) (p : Y ⟶ Z) :
-    pointedFiber (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y) ⟶
-      pointedFiber (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z) :=
+    pointedFiber (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y) ⟶
+      pointedFiber (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z) :=
   PointedFiberComparison.map _ _
     (PointedObject.basedHomMap B (Y := Y) (Z := Z) p)
     (PointedObject.basedHomMap A (Y := Y) (Z := Z) p) (PointedMapping.prePointed_post i p)
@@ -75,7 +75,7 @@ lemma pointedCofiberMappingFiberIso_natural {A B Y Z : PointedSimplicialSet.{u}}
     PointedObject.basedHomMap (pointedCofiber i) (Y := Y) (Z := Z) p ≫
         (pointedCofiberMappingFiberIso i Z).hom =
       (pointedCofiberMappingFiberIso i Y).hom ≫ pointedRestrictionFiberMap i p := by
-  apply pointedFiber_hom_ext (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z)
+  apply pointedFiber_hom_ext (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z)
   rw [Category.assoc, pointedCofiberMappingFiberIso_hom_ι]
   dsimp only [pointedRestrictionFiberMap]
   rw [Category.assoc, PointedFiberComparison.map_ι, ← Category.assoc,

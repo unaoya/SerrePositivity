@@ -24,7 +24,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u}) {x y : I} (f
 
 /-- 元の単一射の全補正円柱を、その同じ直通列点へ制限した全区間。 -/
 def monicKTracedUnaryCorrectionAtPoint (n : ℕ) :=
-  intervalParameterPoint (SSet.yonedaEquiv (nervePoint (coherentArrowStringDirect f))) ≫
+  intervalParameterPoint (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f))) ≫
     (monicKPrismUnaryCorrectionData F f n).homotopy.h
 
 variable {z : I} (g : y ⟶ z)
@@ -40,7 +40,7 @@ lemma monicKPrismNativeCanonicalDirectData_point (n : ℕ) :
         (monicKPrismNativeCanonicalDirectData F f g n).homotopy.h =
       monicKTracedUnaryCorrectionAtPoint F (f ≫ g) n := by
   rw [monicKPrismNativeCanonicalDirectData_h, ← Category.assoc]
-  change (pointParameterMap (SSet.yonedaEquiv (nervePoint (compositionStringDirect f g)))
+  change (pointParameterMap (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g)))
     (Δ[1] : SSet.{u}) ≫ (nerveMap (compositionStringComposite f g) ▷ (Δ[1] : SSet.{u}))) ≫ _ = _
   rw [pointParameterMap_post_point, compositionStringComposite_direct]
   rfl
@@ -48,7 +48,7 @@ lemma monicKPrismNativeCanonicalDirectData_point (n : ℕ) :
 /-- 元の直接補正から、同じ元の単一合成射の円柱への全端点固定実比較。 -/
 def monicKTracedDirectCorrectionNormalization (n : ℕ) :=
   familyHomotopyEndpointTransport
-    (functorHomotopyPrecomp (monicKPrismNativeDirectCanonicalComparison F f g n)
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (monicKPrismNativeDirectCanonicalComparison F f g n)
       (monicKTracedCompositionIntervalPoint f g)) rfl
     (monicKPrismNativeCanonicalDirectData_point F f g n)
 

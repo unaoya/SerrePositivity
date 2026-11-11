@@ -41,14 +41,14 @@ lemma boundaryAssemblyCoherentDiagramMapAt_original_homotopy {I : Type u} [Small
 /-- 全体変換から回収した元の境界 Kan 模型間の成分は全基点 π_* 同型。 -/
 lemma boundaryAssemblyCoherentDiagramMapAt_piIsomorphism {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (i : I) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (boundaryAssemblyCoherentDiagramMapAt r F i).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (boundaryAssemblyCoherentDiagramMapAt r F i).right := by
   obtain ⟨H, _⟩ := boundaryAssemblyCoherentDiagramMapAt_original_homotopy r F i
   exact (kanPiIsomorphism_iff_of_homotopy H).mp (boundaryKanAssemblyAdjoint_piIsomorphism r (F.obj i))
 
 /-- 元の構造射を回収する指定した全体変換は、図式全体での Ω 比較同型。 -/
 def boundaryAssemblyCoherentDiagramIso {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (pointedKanCoherentDiagram (F ⋙ boundaryKanRealizationFunctor r)
         (fun i => boundaryKanRealization_kanComplex r (F.obj i)))
       (pointedKanCoherentDiagram (F ⋙ loopBoundaryKanFunctor (r + 1))

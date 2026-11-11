@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.FrameHom.ResolutionAsphericity
 public import SerrePositivity.EInfinity.FrameHom.SmallCommaContraction
 public import SerrePositivity.EInfinity.FrameHom.NerveQuillenA
-public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalWeakEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalWeakEquivalence
 
 /-!
 # 同じ分解の自明 fibration の slice への nerve の余終性
@@ -37,7 +37,7 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C] {X :
 使われ方：F1b の同じ宇宙の小圏の判定の具体的な関手。 -/
 def smallResolutionOverFunctor (q : CofibrantResolution (C := C) simplex X) :
     AsSmall.{max w u v} SimplexCategory ⥤ AsSmall.{w} (TrivialFibrationOver X) :=
-  AsSmallComma.smallFunctor.{0, 0, max u v, v, w} (resolutionOverFunctor q)
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AsSmallComma.smallFunctor.{0, 0, max u v, v, w} (resolutionOverFunctor q)
 
 /-- 概要：元の分解図式の nerve は left cofinal（Low 命題 3.6、Quillen A）。
 方針：全自明 fibration を終点とする元の comma の可縮性を同じ宇宙で検査する。
@@ -45,7 +45,7 @@ def smallResolutionOverFunctor (q : CofibrantResolution (C := C) simplex X) :
 使われ方：三本矢への右射の分解側のホモトピー余終性。 -/
 lemma smallResolutionOverFunctor_isLeftCofinal
     (q : CofibrantResolution (C := C) simplex X) :
-    IsLeftCofinal (nerveMap (smallResolutionOverFunctor.{u, v, w} q)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (nerveMap (smallResolutionOverFunctor.{u, v, w} q)) := by
   apply NerveQuillenA.nerveMap_isLeftCofinal
   intro t
   exact AsSmallComma.terminal_localized_isIso (resolutionOverFunctor q)
@@ -58,7 +58,7 @@ lemma smallResolutionOverFunctor_isLeftCofinal
 使われ方：分解側の同じ nerve の比較のホモトピー型。 -/
 lemma smallResolutionOverFunctor_isWeakHomotopyEquivalence
     (q : CofibrantResolution (C := C) simplex X) :
-    IsWeakHomotopyEquivalence (nerveMap (smallResolutionOverFunctor.{u, v, w} q)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (smallResolutionOverFunctor.{u, v, w} q)) :=
   (smallResolutionOverFunctor_isLeftCofinal q).isWeakHomotopyEquivalence
 
 end SerrePositivity.EInfinity.FrameHom

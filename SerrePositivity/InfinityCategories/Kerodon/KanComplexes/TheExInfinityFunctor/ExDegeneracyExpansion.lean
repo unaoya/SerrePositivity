@@ -12,6 +12,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：元の単体と退化後の固定点の式を、Moss の切断した交換則へ代入する。
 規約：Moss 2020 Lemma 28、Lemma 26 (8)・(9) を使う部分。
 使われ方：pairing の対応先が非退化なら元も非退化であること。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

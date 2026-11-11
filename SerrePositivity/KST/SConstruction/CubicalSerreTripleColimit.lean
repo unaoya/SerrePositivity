@@ -15,7 +15,7 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 元の三つの cell の左結合した鎖射の tensor。 -/
-def cubicalSerreCellTriple {K L M : CubicalSet.{u}} (a b c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube)
+def cubicalSerreCellTriple {K L M : CubicalSet.{u}} (a b c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube)
     (x : K.obj (op a)) (y : L.obj (op b)) (z : M.obj (op c)) :
     ((serreConcreteCubeComplexFunctor A).obj a ⊗
         (serreConcreteCubeComplexFunctor A).obj b) ⊗
@@ -51,7 +51,7 @@ lemma cubicalSerreTripleCocone_leg (K L M : CubicalSet.{u})
 lemma cubicalSerreTriple_hom_ext {K L M : CubicalSet.{u}} {T : Complex A}
     {f g : ((cubicalSerreChains A).obj K ⊗ (cubicalSerreChains A).obj L) ⊗
       (cubicalSerreChains A).obj M ⟶ T}
-    (h : ∀ (a b c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op a)) (y : L.obj (op b))
+    (h : ∀ (a b c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op a)) (y : L.obj (op b))
       (z : M.obj (op c)), cubicalSerreCellTriple A a b c x y z ≫ f =
         cubicalSerreCellTriple A a b c x y z ≫ g) : f = g := by
   apply (cubicalSerreTripleIsColimit A K L M).hom_ext

@@ -44,30 +44,30 @@ variable (C : Type u) [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
   (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
 
-abbrev boundaryParameter := product (parameters C) (SSet.boundary.{max u v} 2).toSSet
-abbrev fullParameter := product (parameters C)
+abbrev boundaryParameter := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (parameters C) (SSet.boundary.{max u v} 2).toSSet
+abbrev fullParameter := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (parameters C)
   (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 2))
 abbrev inclusion : boundaryParameter C ⟶ fullParameter C :=
-  vertical (SSet.boundary 2).ι (parameters C)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.boundary 2).ι (parameters C)
 abbrev faceInclusion (k : Fin 3) : ResolutionMixedIntervalRestrictions.intervalParameters C ⟶
-    boundaryParameter C := vertical (SSet.boundary.ι k) (parameters C)
+    boundaryParameter C := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.boundary.ι k) (parameters C)
 
 /-- Both genuine boundary systems retain the same original four edges and shared diagonal. -/
 def system (side : Bool) : NerveMovingParameter.System.{u, v}
     (boundaryParameter C) (smallValues C) :=
-  NerveMovingBoundary.boundary (parameters C) (NerveMovingParameter.lifted (smallValues C))
+  NerveMovingBoundary.boundary (parameters C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
     (ResolutionMixedFaceSystems.faces C hcof hfib side)
     (ResolutionMixedFaceSystems.compatible C hcof hfib side)
 
 lemma system_face (side : Bool) (k : Fin 3) : system C hcof hfib side ≫
-    restriction _ _ (NerveMovingParameter.lifted (smallValues C)) (faceInclusion C k) =
+    restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (faceInclusion C k) =
     ResolutionMixedFaceSystems.faces C hcof hfib side k :=
   NerveMovingBoundary.boundary_face _ _ _ _ k
 
 lemma shared_diagonal : system C hcof hfib true ≫
-    restriction _ _ (NerveMovingParameter.lifted (smallValues C)) (faceInclusion C 1) =
+    restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (faceInclusion C 1) =
     system C hcof hfib false ≫
-      restriction _ _ (NerveMovingParameter.lifted (smallValues C)) (faceInclusion C 1) :=
+      restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (faceInclusion C 1) :=
   (system_face C hcof hfib true 1).trans
     ((ResolutionMixedFaceSystems.shared_diagonal C hcof hfib).trans
       (system_face C hcof hfib false 1).symm)

@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：入力の区間写像の実両端を a₀,a₁ とし、f−a₀+a₁ を作る。
 規約：KST Construction A.5 の右辺の augmentation 補正。非被約な単体的整数加群の加減法。
 使われ方：正規化後に (f−e)⊗(g−e) の二つの低次数消滅を使う前の準備。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

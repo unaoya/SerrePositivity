@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.SquareDiagonalShape
 public import SerrePositivity.KST.LocalizingInvariants.CurryIntervalNaturality
-public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowInverseControl
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.ArrowInverseControl
 
 /-!
 概要：三角形の前半・後半を辺の比較とし、全ホモトピーの等式を Arrow の等式へ移す。
@@ -22,17 +22,17 @@ namespace SerrePositivity.KST.LocalizingInvariants.HomotopyArrow
 
 lemma congr {A X : SSet.{u}} {F G F' G' : A ⟶ X}
     (H : SSet.Homotopy F G) (J : SSet.Homotopy F' G') (h : H.h = J.h) :
-    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H)) =
-      Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy J)) :=
+    Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)) =
+      Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy J)) :=
   Truncated.HomotopyCategory.congr_arrowMk_homMk _ _
     (congrArg (fun k ↦ SSet.yonedaEquiv (curry k)) h)
 
 lemma identity {A X : SSet.{u}} {F G : A ⟶ X} (H : SSet.Homotopy F G) (V : A ⟶ X)
     (h : H.h = fst A (Δ[1] : SSet.{u}) ≫ V) :
-    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H)) =
-      Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex V))) := by
-  exact (congr H (functorHomotopyRefl V) h).trans
-    (congrArg Arrow.mk (functorHomotopyRefl_hom V))
+    Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex V))) := by
+  exact (congr H (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl V) h).trans
+    (congrArg Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl_hom V))
 
 end HomotopyArrow
 namespace TriangleEdge
@@ -65,9 +65,9 @@ end TriangleEdge
 namespace CurryHomotopy
 
 lemma slice_precomp_map {A B C X : SSet.{u}} {F G : C ⟶ X} (H : SSet.Homotopy F G)
-    (r : A ⊗ B ⟶ C) (b : B _⦋0⦌) (k : A ⟶ C) (h : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap (A := A) b ≫ r = k) :
-    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.slice (stableHomotopyPrecomp r H) b).h = (stableHomotopyPrecomp k H).h := by
-  change (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap b ▷ (Δ[1] : SSet.{u})) ≫ (r ▷ Δ[1]) ≫ H.h = (k ▷ Δ[1]) ≫ H.h
+    (r : A ⊗ B ⟶ C) (b : B _⦋0⦌) (k : A ⟶ C) (h : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.sliceMap (A := A) b ≫ r = k) :
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.slice (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp r H) b).h = (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp k H).h := by
+  change (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.sliceMap b ▷ (Δ[1] : SSet.{u})) ≫ (r ▷ Δ[1]) ≫ H.h = (k ▷ Δ[1]) ≫ H.h
   rw [← Category.assoc, ← comp_whiskerRight, h]
 
 end CurryHomotopy

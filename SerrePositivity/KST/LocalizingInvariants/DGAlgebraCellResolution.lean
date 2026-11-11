@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGEndAlgebra
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomology
 public import SerrePositivity.DifferentialGraded.Resolution.Cell
-public import SerrePositivity.InfinityCategories.Derived.DGAlgebraDerivedInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraDerivedInfinity
 
 /-!
 概要：一対象 dg 圏の固定対象 cell 分解から、実 dg 代数の分解と augmentation を構成する。
@@ -21,24 +21,24 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (B : Mon (Complex R))
 
-abbrev CellSource := DGCategoryCellResolution.Source R (DGAlgebraPoint R B)
+abbrev CellSource := DGCategoryCellResolution.Source R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)
 
-def cellSourcePoint : CellSource R B := ⟨DGAlgebraPoint.star⟩
+def cellSourcePoint : CellSource R B := ⟨_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star⟩
 
 def cellResolution : Mon (Complex R) := dgEndAlgebra R (CellSource R B) (cellSourcePoint R B)
 
 def cellAugmentation : cellResolution R B ⟶ B := by
-  let F := DGCategoryCellResolution.augmentation R (DGAlgebraPoint R B)
+  let F := DGCategoryCellResolution.augmentation R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)
   exact Mon.Hom.mk' (F.map (cellSourcePoint R B) (cellSourcePoint R B))
     (F.map_id (cellSourcePoint R B))
     (F.map_comp (cellSourcePoint R B) (cellSourcePoint R B) (cellSourcePoint R B))
 
 lemma cellAugmentation_quasiIso : QuasiIso (cellAugmentation R B).hom :=
-  DGCategoryCellResolution.augmentation_homQuasiIso R (DGAlgebraPoint R B)
+  DGCategoryCellResolution.augmentation_homQuasiIso R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)
     (cellSourcePoint R B) (cellSourcePoint R B)
 
 lemma cellResolution_kFlat : complexKFlat R (cellResolution R B).X :=
-  DGCategoryCellResolution.source_homKFlat R (DGAlgebraPoint R B)
+  DGCategoryCellResolution.source_homKFlat R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)
     (cellSourcePoint R B) (cellSourcePoint R B)
 
 lemma cellResolution_isConnective (hB : IsConnective R B) :

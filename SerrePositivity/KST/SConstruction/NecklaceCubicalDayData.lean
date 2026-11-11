@@ -19,7 +19,7 @@ abbrev necklaceCubicalDayMapping (K : SSet.{u}) (x y : K _⦋0⦌) : CubicalDayS
   DayFunctor.mk (necklaceCubicalMapping K x y)
 
 /-- 元の全 necklace の生成射を同じ Day 圏で読む。 -/
-def necklaceCubicalDayCell {K : SSet.{u}} {x y : K _⦋0⦌} (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) :
+def necklaceCubicalDayCell {K : SSet.{u}} {x y : K _⦋0⦌} (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) :
     necklaceCubicalDay.obj T.necklace ⟶ necklaceCubicalDayMapping K x y :=
   .mk (necklaceCubicalCell T)
 
@@ -36,7 +36,7 @@ def necklaceCubicalDayCompose (K : SSet.{u}) (x y z : K _⦋0⦌) :
 
 /-- Day 圏での生成射は元の生成射そのもの。 -/
 lemma necklaceCubicalDayCell_natTrans {K : SSet.{u}} {x y : K _⦋0⦌}
-    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) : (necklaceCubicalDayCell T).natTrans = necklaceCubicalCell T := rfl
+    (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) : (necklaceCubicalDayCell T).natTrans = necklaceCubicalCell T := rfl
 
 /-- Day 圏での単位は元の単位射そのもの。 -/
 lemma necklaceCubicalDayIdentity_natTrans (K : SSet.{u}) (x : K _⦋0⦌) :
@@ -49,28 +49,28 @@ lemma necklaceCubicalDayCompose_natTrans (K : SSet.{u}) (x y z : K _⦋0⦌) :
 /-- 元の一点の生成射と強モノイダル単位は、同じ Day 圏の単位射を回収する。 -/
 lemma necklaceCubicalDayIdentity_unit (K : SSet.{u}) (x : K _⦋0⦌) :
     necklaceCubicalDayIdentity K x =
-      Functor.LaxMonoidal.ε necklaceCubicalDay.{u} ≫ necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K x) :=
+      Functor.LaxMonoidal.ε necklaceCubicalDay.{u} ≫ necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint K x) :=
   DayFunctor.hom_ext (necklaceCubicalIdentity_unit K x)
 
 /-- 元の両生成射の tensor と実合成は、元の強モノイダル比較と wedge を回収する。 -/
 lemma necklaceCubicalDayCompose_cell {K : SSet.{u}} {x y z : K _⦋0⦌}
-    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z) :
+    (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K y z) :
     (necklaceCubicalDayCell T ⊗ₘ necklaceCubicalDayCell U) ≫
         necklaceCubicalDayCompose K x y z =
       Functor.LaxMonoidal.μ necklaceCubicalDay T.necklace U.necklace ≫
-        necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U) :=
+        necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T U) :=
   DayFunctor.hom_ext (necklaceCubicalCompose_cell K x y z T U)
 
 /-- 元の全可換三角形による生成射の関係式を、同じ Day 圏で読む。 -/
 lemma necklaceCubicalDayCell_relation {K : SSet.{u}} {x y : K _⦋0⦌}
-    {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y} (f : T ⟶ U) :
+    {T U : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y} (f : T ⟶ U) :
     necklaceCubicalDay.map f.necklaceHom ≫ necklaceCubicalDayCell U =
       necklaceCubicalDayCell T :=
   DayFunctor.hom_ext (necklaceCubicalCell_relation f)
 
 /-- 元の全 necklace 図式を同じ Day 圏で読む。 -/
 def necklaceCubicalDayDiagram (K : SSet.{u}) (x y : K _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y ⥤ CubicalDaySet.{u} :=
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y ⥤ CubicalDaySet.{u} :=
   necklaceCubicalDiagram K x y ⋙ cubicalDayEquivalence.inverse
 
 /-- 元の mapping object と全生成射の余錐を、同じ Day 圏で読む。 -/

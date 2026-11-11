@@ -21,15 +21,15 @@ variable (A : Type u) [CommRing A]
 /-- 概要：元の標準単位が使う同じ半自由表示の底の複体。
 方針：既存の頂点表示の同じ値を取る。
 規約：新しい置換を選ばない。使われ方：標準単位の全要素パラメータ。 -/
-abbrev freeProbeUnitComplex (x : (derivedInfinityCategory A) _⦋0⦌) : Complex A :=
-  (derivedInfinityCategoryVertexEquiv A x).val
+abbrev freeProbeUnitComplex (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) : Complex A :=
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv A x).val
 
 /-- 概要：同じ元の probe 頂点と標準単位の実始域頂点との同型。
 方針：既存の probe 比較と既存の半自由頂点表示を合成する。
 規約：元の両比較を保持。使われ方：標準単位基準族の始域輸送。 -/
-def freeProbeUnitSourceIso (x : (derivedInfinityCategory A) _⦋0⦌) :
-    VertexIso ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-      (nerveVertex ((ComplexLimits.framedLimitProbeFunctor A).obj (freeProbeUnitComplex A x)))) x :=
+def freeProbeUnitSourceIso (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((ComplexLimits.framedLimitProbeFunctor A).obj (freeProbeUnitComplex A x)))) x :=
   complexProbeDerivedSourceVertexIso A (freeProbeUnitComplex A x) ≪≫
     derivedFreeProbeSourceIso A x
 
@@ -43,8 +43,8 @@ def freeProbeUnitCofibrantTarget (y : (CAlg_R A) _⦋0⦌) : CofibrantAlgebra A 
 方針：既存の局所化源比較と同じ頂点表示の逆則を使う。
 規約：元の標的を保持。使われ方：標準単位の全族の標的輸送。 -/
 def freeProbeUnitTargetIso (y : (CAlg_R A) _⦋0⦌) :
-    VertexIso ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
-      (nerveVertex (ULiftHom.objUp.{u + 1, u + 1} (freeProbeUnitCofibrantTarget A y)))) y :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} (freeProbeUnitCofibrantTarget A y)))) y :=
   cAlgLocalizationSource_vertexIso A
     (ULiftHom.objUp.{u + 1, u + 1} (freeProbeUnitCofibrantTarget A y)) ≪≫
       eqToIso (congrArg HomotopyCategory.mk ((cAlgVertexEquiv A).apply_symm_apply y))
@@ -57,12 +57,12 @@ private lemma standardUnitTriangleOfData {C : Type*} [Category* C]
   rw [hs, hη]
   simpa only [Iso.trans_hom, Category.assoc, Iso.hom_inv_id_assoc] using h
 
-private lemma unitSourceIso_def (x : (derivedInfinityCategory A) _⦋0⦌) :
+private lemma unitSourceIso_def (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     freeProbeUnitSourceIso A x =
       complexProbeDerivedSourceVertexIso A (freeProbeUnitComplex A x) ≪≫
         derivedFreeProbeSourceIso A x := rfl
 
-private lemma standardUnitHom_def (x : (derivedInfinityCategory A) _⦋0⦌) :
+private lemma standardUnitHom_def (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     derivedFreeProbeUnitHom A x =
       (derivedFreeProbeSourceIso A x).inv ≫
         freeProbeDerivedUnitComponent A (freeProbeUnitComplex A x) := rfl
@@ -70,7 +70,7 @@ private lemma standardUnitHom_def (x : (derivedInfinityCategory A) _⦋0⦌) :
 /-- 概要：標準単位は同じ両端同型による元の局所化源単位の輸送と整合する。
 方針：既存の標準単位の定義と元の単位成分の端点三角形を接続する。
 規約：同じ標準単位自身。使われ方：標準単位比較の全族三角形。 -/
-lemma freeProbeUnitStandard_triangle (x : (derivedInfinityCategory A) _⦋0⦌) :
+lemma freeProbeUnitStandard_triangle (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     (freeProbeUnitSourceIso A x).hom ≫ derivedFreeProbeUnitHom A x ≫
       (hoFunctor.map (cAlgForgetDerived A)).toFunctor.map
         (freeProbeRelativeChosenSourceIso A (freeProbeUnitComplex A x)).hom =

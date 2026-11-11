@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockEnriched
 public import SerrePositivity.EInfinity.SimplicialLocalization.HammockInvertsEdges
 public import SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts
-public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulEquivalence
 
 /-!
 概要：同じ相対変形による hammock 比較を全 coherent nerve の同値へ上げる。
@@ -19,7 +19,7 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
-variable {C D : RelativeCategory.{u}}
+variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}}
   (F : LocalizerMorphism C.weakEquivalences D.weakEquivalences)
   (G : LocalizerMorphism D.weakEquivalences C.weakEquivalences)
   (η : 𝟭 D.category ⟶ G.functor ⋙ F.functor)
@@ -30,30 +30,30 @@ include G η hη in
 方針：同じ逆候補の対象像を取り、単位の局所化像を反転する。
 規約：元の弱単位と同じ代表頂点。使われ方：全比較の QCat 同値判定。 -/
 lemma relativeKanHammockNerve_essentiallySurjective :
-    IsEssentiallySurjective (relativeKanHammockNerve F) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective (relativeKanHammockNerve F) := by
   intro y
-  let Y : D.category := coherentNerveObject (C := KanHammockCategory D) y
+  let Y : D.category := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (C := KanHammockCategory D) y
   let X : KanHammockCategory C := G.functor.obj Y
   have hi := weakNerveEdges_inverts_arrows D _ (hammockLocalizationNerveMap_inverts D)
     (η.app Y) (hη Y)
   let e := asIso (Truncated.HomotopyCategory.homMk
     ((nerve.edgeMk (η.app Y)).map (hammockLocalizationNerveMap D)).toTruncated)
-  refine ⟨coherentNerveVertex X, ⟨?_⟩⟩
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X, ⟨?_⟩⟩
   refine eqToIso (congrArg HomotopyCategory.mk ?_) ≪≫ e.symm ≪≫
     eqToIso (congrArg HomotopyCategory.mk ?_)
-  · exact (coherentNerveMap_vertex (relativeKanHammockFunctor F) X).trans
+  · exact (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex (relativeKanHammockFunctor F) X).trans
       (hammockLocalizationNerveMap_vertex D (F.functor.obj X)).symm
   · exact (hammockLocalizationNerveMap_vertex D Y).trans
-      (coherentNerveVertex_object (C := KanHammockCategory D) y)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object (C := KanHammockCategory D) y)
 
 include G η hη in
 /-- 概要：同じ全 Hom の弱比較と元の弱単位から全 coherent nerve の同値を得る。
 方針：元の充満忠実性と本質的全射性を一般判定へ渡す。
 規約：点ごとの Hom 同値へ結論を弱めない。使われ方：局所化普遍性の全族輸送。 -/
 lemma relativeKanHammockNerve_isQCatEquivalence
-    (hF : ∀ X Y, IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap F X Y)) :
-    IsQCatEquivalence (relativeKanHammockNerve F) :=
-  isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _
+    (hF : ∀ X Y, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap F X Y)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (relativeKanHammockNerve F) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _
     (relativeKanHammockNerve_fullyFaithful F hF)
     (relativeKanHammockNerve_essentiallySurjective F G η hη)
 
@@ -64,21 +64,21 @@ omit η hη in
 lemma relativeKanHammockNerve_essentiallySurjective_of_counit
     (ε : G.functor ⋙ F.functor ⟶ 𝟭 D.category)
     (hε : ∀ Y, D.weakEquivalences (ε.app Y)) :
-    IsEssentiallySurjective (relativeKanHammockNerve F) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective (relativeKanHammockNerve F) := by
   intro y
-  let Y : D.category := coherentNerveObject (C := KanHammockCategory D) y
+  let Y : D.category := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (C := KanHammockCategory D) y
   let X : KanHammockCategory C := G.functor.obj Y
   have hi := weakNerveEdges_inverts_arrows D _ (hammockLocalizationNerveMap_inverts D)
     (ε.app Y) (hε Y)
   let e := asIso (Truncated.HomotopyCategory.homMk
     ((nerve.edgeMk (ε.app Y)).map (hammockLocalizationNerveMap D)).toTruncated)
-  refine ⟨coherentNerveVertex X, ⟨?_⟩⟩
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X, ⟨?_⟩⟩
   refine eqToIso (congrArg HomotopyCategory.mk ?_) ≪≫ e ≪≫
     eqToIso (congrArg HomotopyCategory.mk ?_)
-  · exact (coherentNerveMap_vertex (relativeKanHammockFunctor F) X).trans
+  · exact (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex (relativeKanHammockFunctor F) X).trans
       (hammockLocalizationNerveMap_vertex D (F.functor.obj X)).symm
   · exact (hammockLocalizationNerveMap_vertex D Y).trans
-      (coherentNerveVertex_object (C := KanHammockCategory D) y)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object (C := KanHammockCategory D) y)
 
 omit η hη in
 /-- 概要：同じ全 Hom 比較と元の弱余単位から全 coherent nerve の同値を得る。
@@ -87,9 +87,9 @@ omit η hη in
 lemma relativeKanHammockNerve_isQCatEquivalence_of_counit
     (ε : G.functor ⋙ F.functor ⟶ 𝟭 D.category)
     (hε : ∀ Y, D.weakEquivalences (ε.app Y))
-    (hF : ∀ X Y, IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap F X Y)) :
-    IsQCatEquivalence (relativeKanHammockNerve F) :=
-  isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _
+    (hF : ∀ X Y, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap F X Y)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (relativeKanHammockNerve F) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _
     (relativeKanHammockNerve_fullyFaithful F hF)
     (relativeKanHammockNerve_essentiallySurjective_of_counit F G ε hε)
 

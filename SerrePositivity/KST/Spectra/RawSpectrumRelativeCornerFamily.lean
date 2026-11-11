@@ -35,18 +35,18 @@ lemma relativeCornerFamily {X R : OmegaSpectrum.{u}} (i : X ⟶ R)
       (∀ n, j ≫ l n = a ≫ evaluation R E n) ∧
       (∀ n, l n ≫ (PointedObject.basedHomMap (R.level n).space (q.app n)).right =
         b ≫ evaluation R Z n) ∧
-      (∀ n, l n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i.app n) (E.level n).space =
+      (∀ n, l n ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i.app n) (E.level n).space =
         c ≫ evaluation X E n) ∧
-      (∀ n, l (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (R.sigma n) (E.level (n + 1)).space =
+      (∀ n, l (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (R.sigma n) (E.level (n + 1)).space =
         l n ≫ step R E n) := by
   let LiftAt (n : ℕ) := {l : U ⟶
       (PointedObject.basedHom (R.level n).space (E.level n).space).right //
     j ≫ l = a ≫ evaluation R E n ∧
       l ≫ (PointedObject.basedHomMap (R.level n).space (q.app n)).right =
         b ≫ evaluation R Z n ∧
-      l ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i.app n) (E.level n).space = c ≫ evaluation X E n}
+      l ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i.app n) (E.level n).space = c ≫ evaluation X E n}
   have hbase (n : ℕ) : (b ≫ evaluation R Z n) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i.app n) (Z.level n).space =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i.app n) (Z.level n).space =
     (c ≫ evaluation X E n) ≫
       (PointedObject.basedHomMap (X.level n).space (q.app n)).right := by
     rw [Category.assoc, ← pre_evaluation, ← Category.assoc, hbc,
@@ -56,7 +56,7 @@ lemma relativeCornerFamily {X R : OmegaSpectrum.{u}} (i : X ⟶ R)
     j ≫ (b ≫ evaluation R Z n) := by
     rw [Category.assoc, ← post_evaluation, ← Category.assoc, ha, Category.assoc]
   have hsource (n : ℕ) : (a ≫ evaluation R E n) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i.app n) (E.level n).space = j ≫ (c ≫ evaluation X E n) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i.app n) (E.level n).space = j ≫ (c ≫ evaluation X E n) := by
     rw [Category.assoc, ← pre_evaluation, ← Category.assoc, hc, Category.assoc]
   have hzero : Nonempty (LiftAt 0) := by
     let : Mono (i.app 0).right := hi.1
@@ -66,27 +66,27 @@ lemma relativeCornerFamily {X R : OmegaSpectrum.{u}} (i : X ⟶ R)
       (hbase 0) (hboundary 0) (hsource 0)
     exact ⟨⟨l, hl, hb, hs⟩⟩
   have hnext (n : ℕ) (prev : LiftAt n) : ∃ next : LiftAt (n + 1),
-      next.val ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (R.sigma n) (E.level (n + 1)).space =
+      next.val ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (R.sigma n) (E.level (n + 1)).space =
         prev.val ≫ step R E n := by
     have huv : (prev.val ≫ step R E n) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ i.app n)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ i.app n)
           (E.level (n + 1)).space =
       (c ≫ evaluation X E (n + 1)) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (E.level (n + 1)).space := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (E.level (n + 1)).space := by
       rw [Category.assoc, sequentialRawStep_pre, ← Category.assoc, prev.property.2.2,
         Category.assoc, ← evaluation_condition, ← Category.assoc]
     have hu : j ≫ (prev.val ≫ step R E n) =
       (a ≫ evaluation R E (n + 1)) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (R.sigma n) (E.level (n + 1)).space := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (R.sigma n) (E.level (n + 1)).space := by
       rw [← Category.assoc, prev.property.1, Category.assoc,
         ← evaluation_condition, ← Category.assoc]
     have hub : (prev.val ≫ step R E n) ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (R.level n).space) (q.app (n + 1))).right =
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (R.level n).space) (q.app (n + 1))).right =
       (b ≫ evaluation R Z (n + 1)) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (R.sigma n) (Z.level (n + 1)).space := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (R.sigma n) (Z.level (n + 1)).space := by
       have hstep := step_post R q n
       change step R E n ≫
-          (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (R.level n).space) (q.app (n + 1))).right =
+          (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (R.level n).space) (q.app (n + 1))).right =
         (PointedObject.basedHomMap (R.level n).space (q.app n)).right ≫ step R Z n at hstep
       rw [Category.assoc, hstep, ← Category.assoc, prev.property.2.1,
         Category.assoc, ← evaluation_condition, ← Category.assoc]

@@ -50,7 +50,7 @@ lemma exists_endpoint_preserving_cylinder_adjustment {U E B : SSet.{u}}
         ((U ◁ (SSet.boundary 1).ι) ▷ (Δ[1] : SSet.{u})) ≫ V.h =
           fst (U ⊗ (SSet.boundary 1).toSSet) Δ[1] ≫ (U ◁ (SSet.boundary 1).ι) ≫ H.h ∧
         V.h ≫ p = L.h := by
-  have hr := familyCylinder_fixed_boundary (functorHomotopyPostcomp H p) h₀ h₁
+  have hr := familyCylinder_fixed_boundary (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H p) h₀ h₁
   obtain ⟨k, hk, hj, V, hV, hp⟩ := exists_relative_fibration_family_transport
     p (U ◁ (SSet.boundary 1).ι) H.h L hr
   have he := familyCylinder_endpoints_of_boundary hj

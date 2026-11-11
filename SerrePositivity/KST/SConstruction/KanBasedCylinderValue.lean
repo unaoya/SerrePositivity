@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.KanBasedEdgeValue
-public import SerrePositivity.InfinityCategories.Simplicial.SquareTriangleOuterFaces
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.SquareTriangleOuterFaces
 
 /-! # 全端点固定円柱による基点表示の不変性
 概要：元の円柱の全境界固定式から、入口と出口の辺の同じ群値を回収する。
@@ -25,7 +25,7 @@ variable (c : hoFunctor.obj E)
 lemma kanBasedEdgeValue_const (x : E _⦋0⦌) :
     kanBasedEdgeValue c (SSet.const x) = 1 := by
   rw [← mappingIdentityEdge_map x, kanBasedEdgeValue_edge,
-    SSet.HomotopyCategory.homMk_id, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow_id]
+    SSet.HomotopyCategory.homMk_id, _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.groupoidBasedArrow_id]
 
 /-- 元の全正方形は、その同じ四辺の二通りの積の等号を与える。 -/
 lemma kanBasedEdgeValue_square (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E) :
@@ -33,12 +33,12 @@ lemma kanBasedEdgeValue_square (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E) :
         kanBasedEdgeValue c (SSet.ι₀ ≫ Q) =
       kanBasedEdgeValue c (SSet.ι₁ ≫ Q) *
         kanBasedEdgeValue c (pastingSquareVertical 0 ≫ Q) := by
-  have hl := kanBasedEdgeValue_triangle c (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ Q)
-  have hu := kanBasedEdgeValue_triangle c (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ Q)
-  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_diagonal,
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_zero, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_last] at hl
-  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_diagonal,
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_zero, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_last] at hu
+  have hl := kanBasedEdgeValue_triangle c (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ Q)
+  have hu := kanBasedEdgeValue_triangle c (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ≫ Q)
+  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower_diagonal,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower_face_zero, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower_face_last] at hl
+  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper_diagonal,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper_face_zero, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper_face_last] at hu
   exact hl.symm.trans hu
 
 /-- 両縦辺が元の同じ定数辺なら、正方形の全横辺の値は等しい。 -/

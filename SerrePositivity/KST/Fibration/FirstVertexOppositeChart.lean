@@ -15,10 +15,10 @@ namespace SerrePositivity.KST.Fibration
 private lemma normalizeComposition {C : Type v} [Category.{w} C]
     {a b c a' b' c' : C} (l : a ≅ b) (e : b ≅ c)
     (ha : a = a') (hb : b = b') (hc : c = c') :
-    F2.isoNormalizeEndpoints (l ≪≫ e) ha hc =
-      F2.isoNormalizeEndpoints l ha hb ≪≫ F2.isoNormalizeEndpoints e hb hc := by
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.isoNormalizeEndpoints (l ≪≫ e) ha hc =
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.isoNormalizeEndpoints l ha hb ≪≫ _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.isoNormalizeEndpoints e hb hc := by
   subst a' b' c'
-  simp only [F2.isoNormalizeEndpoints, eqToIso_refl, Iso.refl_symm, Iso.refl_trans,
+  simp only [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.isoNormalizeEndpoints, eqToIso_refl, Iso.refl_symm, Iso.refl_trans,
     Iso.trans_refl]
 
 private lemma firstVertexOppositeChart_mapNormalizeCompositionWithEq {C : Type v} [Category.{w} C]
@@ -27,55 +27,55 @@ private lemma firstVertexOppositeChart_mapNormalizeCompositionWithEq {C : Type v
     (hd : d = l ≪≫ eqToIso h ≪≫ e)
     (ha : F.obj a = a') (hb : F.obj b = b') (hb₀ : F.obj b₀ = b')
     (hc : F.obj c = c') :
-    F2.isoNormalizeEndpoints (F.mapIso d) ha hc =
-      F2.isoNormalizeEndpoints (F.mapIso l) ha hb ≪≫
-        F2.isoNormalizeEndpoints (F.mapIso e) hb₀ hc := by
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.isoNormalizeEndpoints (F.mapIso d) ha hc =
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.isoNormalizeEndpoints (F.mapIso l) ha hb ≪≫
+        _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.isoNormalizeEndpoints (F.mapIso e) hb₀ hc := by
   subst d b₀
   simp only [eqToIso_refl, Iso.refl_trans, Functor.mapIso_trans]
   exact normalizeComposition _ _ ha hb hc
 
-variable {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
+variable {E B : SSet.{u}} (p : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration p]
 
-local instance : LeftFibration (pullback.snd p (transportSimplexFirstVertexMap B)) :=
-  ⟨leftFibrations.pullback_snd p _ (LeftFibration.mem (p := p))⟩
+local instance : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (pullback.snd p (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFirstVertexMap B)) :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibrations.pullback_snd p _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration.mem (p := p))⟩
 
 /-- 元の初頂点反転同型の指定成分を、同じ分類値と元の反転 strict Kan 値で表示する。 -/
-def firstVertexOppositeChart (c : TransportSimplexCategory B) :=
-  F2.isoNormalizeEndpoints
-    (VertexIso.map (leftStraighteningInfinityMap_firstVertexOppositeIso B)
-      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c))
+def firstVertexOppositeChart (c : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexCategory B) :=
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.isoNormalizeEndpoints
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityMap_firstVertexOppositeIso B)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c))
     (congrArg HomotopyCategory.mk (firstVertexEdgewiseRestriction_source_vertex p c))
     (congrArg HomotopyCategory.mk (firstVertexOppositePre_target_vertex p c))
 
 /-- 元の反転同型そのものの指定二重成分を、端点表示だけを除いて保持する。 -/
-theorem firstVertexOppositeChart_heq_doubleMap (c : TransportSimplexCategory B) :
+theorem firstVertexOppositeChart_heq_doubleMap (c : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexCategory B) :
     HEq (firstVertexOppositeChart p c)
-      (VertexIso.map (leftStraighteningInfinityMap_firstVertexOppositeIso B)
-        (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c)) := by
-  unfold firstVertexOppositeChart F2.isoNormalizeEndpoints
-  exact F2.iso_endpoints_heq _ _ _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityMap_firstVertexOppositeIso B)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c)) := by
+  unfold firstVertexOppositeChart _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.isoNormalizeEndpoints
+  exact _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.iso_endpoints_heq _ _ _
 
 /-- 元の指定成分全体は、元の制限成分と同じ pullback strict 切断の反転成分の合成。 -/
-theorem firstVertexOppositeChart_factor (c : TransportSimplexCategory B) :
-    firstVertexOppositeChart p c = firstVertexRestrictionChart (leftFibrationObjectOf p) c ≪≫
-      _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso
-        (pullback.snd p (transportSimplexFirstVertexMap B)) c := by
-  let T := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c
-  have h : edgewiseEnrichedInfinityMap (LeftFibrationObject B) ≫
-      (leftFibrationInfinityBaseChange (transportSimplexFirstVertexMap B) ≫
-        leftStraighteningCoherentMap (TransportSimplexCategory B)) =
-      leftFibrationEdgewiseFirstVertexBaseChange B ≫
-        (edgewiseEnrichedInfinityMap
-          (LeftFibrationObject (nerve (TransportSimplexCategory B))) ≫
-            leftStraighteningCoherentMap (TransportSimplexCategory B)) := by
-    rw [← Category.assoc, ← leftFibrationEdgewiseFirstVertexBaseChange_projection, Category.assoc]
+theorem firstVertexOppositeChart_factor (c : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexCategory B) :
+    firstVertexOppositeChart p c = firstVertexRestrictionChart (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObjectOf p) c ≪≫
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportOppositeComponentIso
+        (pullback.snd p (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFirstVertexMap B)) c := by
+  let T := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.edgewiseEnrichedInfinityMap (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftFibrationObject B) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.leftFibrationInfinityBaseChange (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFirstVertexMap B) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningCoherentMap (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexCategory B)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationEdgewiseFirstVertexBaseChange B ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.edgewiseEnrichedInfinityMap
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftFibrationObject (nerve (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexCategory B))) ≫
+            _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningCoherentMap (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexCategory B)) := by
+    rw [← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationEdgewiseFirstVertexBaseChange_projection, Category.assoc]
   have hf := firstVertexOppositeChart_mapNormalizeCompositionWithEq (hoFunctor.map T).toFunctor
-    ((leftStraighteningInfinityMap_firstVertexRestrictionIso B).precomp
-      (edgewiseEnrichedInfinityMap (LeftFibrationObject B)))
-    ((leftStraighteningCoherentMap_oppositeIso (TransportSimplexCategory B)).precomp
-      (leftFibrationEdgewiseFirstVertexBaseChange B))
-    (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) h)
-    (leftStraighteningInfinityMap_firstVertexOppositeIso B) rfl
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftStraighteningInfinityMap_firstVertexRestrictionIso B).precomp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.edgewiseEnrichedInfinityMap (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftFibrationObject B)))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningCoherentMap_oppositeIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexCategory B)).precomp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationEdgewiseFirstVertexBaseChange B))
+    (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)) h)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityMap_firstVertexOppositeIso B) rfl
     (congrArg HomotopyCategory.mk (firstVertexEdgewiseRestriction_source_vertex p c))
     (congrArg HomotopyCategory.mk (firstVertexEdgewiseRestriction_target_vertex p c))
     (congrArg HomotopyCategory.mk (firstVertexOppositePre_source_vertex p c))
@@ -84,25 +84,25 @@ theorem firstVertexOppositeChart_factor (c : TransportSimplexCategory B) :
     (firstVertexEdgewiseRestrictionChart_eq p c) (firstVertexOppositePreChart_eq p c))
 
 /-- 元の同じ指定成分は、同じ厳密 pullback 切断点の反転点を回収する。 -/
-theorem firstVertexOppositeChart_pointHom (c : TransportSimplexCategory B)
-    (v : (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
-      (leftFibrationObjectOf p)).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
-      (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
-        (leftFibrationObjectOf p))).symm v) ≫
-      (straighteningFirstVertexSectionChart (leftFibrationObjectOf p) c).inv ≫
+theorem firstVertexOppositeChart_pointHom (c : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexCategory B)
+    (v : (((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.relativeSectionEnrichedDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexDomainFunctor B)).obj c).obj
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObjectOf p)).obj _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cosliceFiberPointHom ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceFiberVertexEquiv
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.relativeSectionEnrichedDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexDomainFunctor B)).obj c).obj
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObjectOf p))).symm v) ≫
+      (straighteningFirstVertexSectionChart (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObjectOf p) c).inv ≫
         (firstVertexOppositeChart p c).hom =
-    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
-      (kanObjectOpFunctor.obj ((leftStrictTransportFunctor
-        (pullback.snd p (transportSimplexFirstVertexMap B))).obj c))).symm
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cosliceFiberPointHom ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceFiberVertexEquiv
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanObjectOpFunctor.obj ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.leftStrictTransportFunctor
+        (pullback.snd p (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFirstVertexMap B))).obj c))).symm
           (SSet.opObjEquiv.symm ((firstVertexStrictSectionMap p c).app (Opposite.op ⦋0⦌) v))) := by
-  have hp := firstVertexRestrictionChart_pointHom_strictSection (leftFibrationObjectOf p) c v
+  have hp := firstVertexRestrictionChart_pointHom_strictSection (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObjectOf p) c v
   have he := congrArg (fun m => m ≫
-    (_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso
-      (pullback.snd p (transportSimplexFirstVertexMap B)) c).hom) hp
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportOppositeComponentIso
+      (pullback.snd p (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFirstVertexMap B)) c).hom) hp
   simp only [Category.assoc] at he
   have ho := strictTransportOppositeComponentIso_pointHom
-    (pullback.snd p (transportSimplexFirstVertexMap B)) c
+    (pullback.snd p (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFirstVertexMap B)) c
     ((firstVertexStrictSectionMap p c).app (Opposite.op ⦋0⦌) v)
   rw [firstVertexOppositeChart_factor]
   simp only [Iso.trans_hom]

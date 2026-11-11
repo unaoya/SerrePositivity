@@ -52,7 +52,7 @@ def kanSpanPastingChoices {K : SSet.{u}} {z x y : K _⦋0⦌}
 /-- Kan 標的では全三角形の選択は可縮 Kan。 -/
 lemma kanSpanPastingChoices_isContractibleKan {K : SSet.{u}} [KanComplex K]
     {z x y : K _⦋0⦌} (a : K.Edge z x) (b : K.Edge z y) :
-    IsContractibleKan (kanSpanPastingChoices a b) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (kanSpanPastingChoices a b) :=
   anodyneExtensionChoices_isContractibleKan _ (anodyneExtensions.horn_ι (0 : Fin 3)) _
 
 /-- 既存の任意の高次パラメータ部分を厳密に保って貼り合わせの選択を延ばす。 -/

@@ -32,15 +32,15 @@ private lemma closedAction_eq_curry_comp {C : Type*} [Category C]
 /-- 内部 Hom の標的への作用は豊穣合成を curry した射そのもの。 -/
 lemma ihomAction_eq_curry_comp (A E V : PointedSimplicialSet.{u}) :
     ihomAction A E V = curry (MonoidalClosed.comp A E V) := by
-  rw [ihomAction, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso_eq_ihomCurryIso]
+  rw [ihomAction, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso_eq_ihomCurryIso]
   exact closedAction_eq_curry_comp A E V
 
 /-- パラメータ評価と内部 Hom の作用を一つの豊穣合成として表示する。 -/
 lemma ihomParameterAction_eq_curry {A E V T : PointedSimplicialSet.{u}}
     (e : T ⟶ PointedObject.basedHom A E) :
-    ihomAction A E V ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e (PointedObject.basedHom A V) =
+    ihomAction A E V ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e (PointedObject.basedHom A V) =
       curry (e ▷ PointedObject.basedHom E V ≫ MonoidalClosed.comp A E V) := by
-  rw [ihomAction_eq_curry_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  rw [ihomAction_eq_curry_comp, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
   exact curry_pre_app e (MonoidalClosed.comp A E V)
 
 end SerrePositivity.KST.Spectra.PointedMapping

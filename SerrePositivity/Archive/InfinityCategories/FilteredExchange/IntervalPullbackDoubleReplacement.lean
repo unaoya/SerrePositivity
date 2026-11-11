@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.StrictKanPullbackMapEquivalence
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementSection
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackCoordinates
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.StrictKanPullbackMapEquivalence
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalReplacementSection
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalPullbackCoordinates
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
 
 /-!
 概要：元の interval 引き戻しを、両脚を置換した同じ cospan の引き戻しへ比較する。

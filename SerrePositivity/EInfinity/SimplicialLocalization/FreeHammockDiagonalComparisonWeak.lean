@@ -20,12 +20,12 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory SerrePositivity.InfinityCategories Hammock.DoubleSimplicial
 
-lemma freeHammockDiagonalComparison_isWeakHomotopyEquivalence (C : RelativeCategory.{u})
-    (X Y : C.category) : IsWeakHomotopyEquivalence (freeHammockDiagonalComparison C X Y) := by
+lemma freeHammockDiagonalComparison_isWeakHomotopyEquivalence (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
+    (X Y : C.category) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeHammockDiagonalComparison C X Y) := by
   have hd := diagonalFunctor_map_weak (freeHammockHomComparison C X Y)
     (freeHammockHomComparison_app_isWeakHomotopyEquivalence C X Y)
-  have hi := (isPrecompositionEquivalence_of_iso
-    (diagonalDiscreteIso (localizationHom C X Y))).isWeakHomotopyEquivalence
+  have hi := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalDiscreteIso (localizationHom C X Y))).isWeakHomotopyEquivalence
   exact hd.comp hi
 
 end SerrePositivity.EInfinity.SimplicialLocalization

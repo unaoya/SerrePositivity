@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：低次の交代面移送を差し引いたサイクルを先頭頂点の extra degeneracy で埋める。
 規約：KST Construction A.5、比較の存在を追加の仮定にしない。
 使われ方：任意の二つの入力へ評価して標準比較の実鎖ホモトピーを得る。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

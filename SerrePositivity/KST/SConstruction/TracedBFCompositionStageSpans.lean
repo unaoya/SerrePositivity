@@ -22,7 +22,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 
 /-- 元の全各段 span 三角形の同じ直通列点での全実像。 -/
 def monicKTracedCompositionOriginalSpan (n : ℕ) :=
-  pointParameterMap (SSet.yonedaEquiv (nervePoint (compositionStringDirect f g)))
+  pointParameterMap (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g)))
     (Δ[2] : SSet.{u}) ≫ monicKPrismNativeLevelComparisonMap F f g n
 
 /-- 第一面は、元の直接厳密化補正円柱の同じ直通列制限全体。 -/

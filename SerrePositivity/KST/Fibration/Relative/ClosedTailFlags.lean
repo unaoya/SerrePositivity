@@ -59,12 +59,12 @@ def closedTailEdge {B : StableModel.{u}} (P : ClosedStablePredicate B) (n : ℕ)
 規約：全退化も保持。使われ方：貼り合わせ上の所属判定。 -/
 lemma closedArrow_factor_iff {B : StableModel.{u}} (P : ClosedStablePredicate B)
     (f : (Δ[1] : SSet.{u}) ⟶ B.carrier) :
-    (closedArrowPredicate P).predicate (functorVertex f) ↔
+    (closedArrowPredicate P).predicate (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f) ↔
       ∃ g : (Δ[1] : SSet.{u}) ⟶ (closedStableWide P : SSet.{u}),
         g ≫ (closedStableWide P).ι = f := by
   have h := closedFlag_factor_iff P 1 f
   change SSet.yonedaEquiv f ∈ (closedStableWide P).obj _ ↔ _ at h
-  have ha := closedArrowPredicate_iff P (functorVertex f)
+  have ha := closedArrowPredicate_iff P (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)
   change _ ↔ SSet.yonedaEquiv f ∈ closedStableEdges P at ha
   exact ha.trans ((closedStableWide_edge_iff P _).symm.trans h)
 
@@ -73,13 +73,13 @@ lemma closedArrow_factor_iff {B : StableModel.{u}} (P : ClosedStablePredicate B)
 規約：元の関手を厳密に回収。使われ方：元の全旗条件の反映。 -/
 lemma closedTail_factor_iff {B : StableModel.{u}} (P : ClosedStablePredicate B) (n : ℕ)
     (f : (tailAttachment (Δ[n] : SSet.{u}) : SSet.{u}) ⟶ B.carrier) :
-    (closedTailPredicate P n).predicate (functorVertex f) ↔
+    (closedTailPredicate P n).predicate (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f) ↔
       ∃ g : (tailAttachment (Δ[n] : SSet.{u}) : SSet.{u}) ⟶
         (closedStableWide P : SSet.{u}), g ≫ (closedStableWide P).ι = f := by
   change (closedFlagStablePredicate P ⦋n + 1⦌).predicate
-    (functorVertex (standardTailPrefix n ≫ f)) ∧
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (standardTailPrefix n ≫ f)) ∧
       (closedArrowPredicate P).predicate
-        (functorVertex (tailAttachmentEdge (Δ[n] : SSet.{u}) ≫ f)) ↔ _
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (tailAttachmentEdge (Δ[n] : SSet.{u}) ≫ f)) ↔ _
   rw [closedFlagStablePredicate_iff, closedFlag_factor_iff, closedArrow_factor_iff]
   constructor
   · rintro ⟨⟨a, ha⟩, ⟨b, hb⟩⟩
@@ -104,9 +104,9 @@ lemma closedFlag_tail_iff {B : StableModel.{u}} (P : ClosedStablePredicate B) (n
     (closedFlagStablePredicate P ⦋n + 2⦌).predicate v ↔
       (closedTailPredicate P n).predicate
         (((pre (standardTailInclusion n)).app B.carrier).app _ v) := by
-  obtain ⟨f, rfl⟩ := (functorVertexEquiv (Δ[n + 2] : SSet.{u}) B.carrier).surjective v
-  change (closedFlagStablePredicate P ⦋n + 2⦌).predicate (functorVertex f) ↔
-    (closedTailPredicate P n).predicate (functorVertex (standardTailInclusion n ≫ f))
+  obtain ⟨f, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (Δ[n + 2] : SSet.{u}) B.carrier).surjective v
+  change (closedFlagStablePredicate P ⦋n + 2⦌).predicate (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f) ↔
+    (closedTailPredicate P n).predicate (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (standardTailInclusion n ≫ f))
   rw [closedFlagStablePredicate_iff, closedFlag_factor_iff, closedTail_factor_iff]
   constructor
   · rintro ⟨g, hg⟩

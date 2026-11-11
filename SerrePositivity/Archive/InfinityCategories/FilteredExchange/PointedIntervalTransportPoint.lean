@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.PointedIntervalTransport
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCurryPointVertex
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PointedIntervalTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorCurryPointVertex
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedFiberValueTo
 
 /-!

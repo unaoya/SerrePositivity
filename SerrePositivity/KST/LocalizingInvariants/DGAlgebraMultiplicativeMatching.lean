@@ -37,7 +37,7 @@ lemma multiplicativeSimplices_matching_fibration (B : Mon (Complex R)) (n : Simp
     preservesColimitsOfShape_rightOp _ (simplicialConvolution R B)
   have hmono : Mono ((latchingComparison simplex n).app SSet.stdSimplex.{0}) := by
     induction n using SimplexCategory.rec with | _ n =>
-    rw [← BisimplicialModel.standardBoundaryIso_fac n]
+    rw [← _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.standardBoundaryIso_fac n]
     infer_instance
   have hf : P (F.map ((latchingComparison simplex n).app SSet.stdSimplex)) := by
     change EInfinity.projectiveFibrations R

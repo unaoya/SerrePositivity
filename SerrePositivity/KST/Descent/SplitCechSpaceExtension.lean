@@ -44,7 +44,7 @@ def splitCechAugmentedSpaceExtension : AugmentedCechDiagram BottomSimplex where
   hom := splitCechPresheafExtensionAugmentation f s F
 
 variable [ModelCategory SSet.{0}]
-  (I J : MorphismProperty SSet.{0}) [ModelGeneration.CofibrantlyGenerated.{0} I J]
+  (I J : MorphismProperty SSet.{0}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{0})]
 
 /-- 概要：分裂 Čech の拡張図式は実際の指定ホモトピー比較で降下（補題 3.2）。

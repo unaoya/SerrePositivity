@@ -22,27 +22,27 @@ open CategoryTheory
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) (X Y : Paths C)
 
 lemma value_simplex {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m)
-    (x : (colimitGraph W.paths X Y).obj n) :
-    (colimitValue W X Y).app m ((colimitGraph W.paths X Y).map θ x) =
+    (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n) :
+    (colimitValue W X Y).app m ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).map θ x) =
       (colimitValue W X Y).app n x :=
   congrArg (fun k => k x) ((colimitValue W X Y).naturality θ)
 
 def space : SSet.{u} where
-  obj n := {x : (colimitGraph W.paths X Y).obj n // (colimitValue W X Y).app n x = []}
-  map θ := ↾fun x => ⟨(colimitGraph W.paths X Y).map θ x.val,
+  obj n := {x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n // (colimitValue W X Y).app n x = []}
+  map θ := ↾fun x => ⟨(_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).map θ x.val,
     (value_simplex W X Y θ x.val).trans x.property⟩
   map_id n := by
     apply ConcreteCategory.hom_ext
     intro x
     apply Subtype.ext
-    exact (colimitGraph W.paths X Y).map_id_apply n x.val
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).map_id_apply n x.val
   map_comp θ φ := by
     apply ConcreteCategory.hom_ext
     intro x
     apply Subtype.ext
-    exact (colimitGraph W.paths X Y).map_comp_apply θ φ x.val
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).map_comp_apply θ φ x.val
 
-def inclusion : space W X Y ⟶ colimitGraph W.paths X Y where
+def inclusion : space W X Y ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y where
   app _ := ↾fun x => x.val
   naturality _ _ _ := rfl
 

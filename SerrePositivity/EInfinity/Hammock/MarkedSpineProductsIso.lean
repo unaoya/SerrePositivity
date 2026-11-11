@@ -27,7 +27,7 @@ def pack {X : Paths C} : MarkedSpine W Y n X →
   | .nil _ p => ⟨[], p⟩
   | .cons _ g p t => let s := pack t; ⟨g :: s.1, (p, s.2)⟩
 
-def unpack (X : Paths C) : ∀ gs : List (FactorTarget.Index W),
+def unpack (X : Paths C) : ∀ gs : List (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W),
     (products W (AllMarked.nativeSpace W) Y X gs).obj n → MarkedSpine W Y n X
   | [], p => .nil X p
   | g :: gs, p => .cons X g p.1 (unpack g.val.right gs p.2)
@@ -38,7 +38,7 @@ lemma unpack_pack {X : Paths C} (t : MarkedSpine W Y n X) :
   | nil => rfl
   | cons X g p t ih => exact congrArg (cons X g p) ih
 
-lemma pack_unpack (X : Paths C) (gs : List (FactorTarget.Index W))
+lemma pack_unpack (X : Paths C) (gs : List (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W))
     (p : (products W (AllMarked.nativeSpace W) Y X gs).obj n) :
     pack (unpack X gs p) = ⟨gs, p⟩ := by
   induction gs generalizing X with
@@ -50,7 +50,7 @@ lemma pack_unpack (X : Paths C) (gs : List (FactorTarget.Index W))
     cases p
     rfl
 
-lemma unpack_simplex (θ : n ⟶ m) (X : Paths C) (gs : List (FactorTarget.Index W))
+lemma unpack_simplex (θ : n ⟶ m) (X : Paths C) (gs : List (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W))
     (p : (products W (AllMarked.nativeSpace W) Y X gs).obj n) :
     unpack X gs ((products W (AllMarked.nativeSpace W) Y X gs).map θ p) =
       map θ (unpack X gs p) := by
@@ -75,8 +75,8 @@ def productsIso (X : Paths C) : sumProducts W (AllMarked.nativeSpace W) Y X ≅ 
 lemma productsIso_hom_nil (X : Paths C) (p : (AllMarked.nativeSpace W X Y).obj n) :
     (productsIso W Y X).hom.app n ⟨[], p⟩ = nil X p := rfl
 
-lemma productsIso_hom_cons (X : Paths C) (g : FactorTarget.Index W)
-    (gs : List (FactorTarget.Index W)) (p : (FactorTarget.left W X g.val).obj n)
+lemma productsIso_hom_cons (X : Paths C) (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)
+    (gs : List (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)) (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).obj n)
     (q : (products W (AllMarked.nativeSpace W) Y g.val.right gs).obj n) :
     (productsIso W Y X).hom.app n ⟨g :: gs, (p, q)⟩ =
       cons X g p ((productsIso W Y g.val.right).hom.app n ⟨gs, q⟩) := rfl

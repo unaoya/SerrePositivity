@@ -82,9 +82,9 @@ lemma augmentation_unique
 
 def piZeroLabel (b : Cᵒᵖ × C) :
     SSet.π₀ (functor.obj b) → LocalizedHomDiagram.value Q b :=
-  fun z => (PiZeroConstant.toComponents
+  fun z => (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.toComponents
     (show functor.obj b ⟶
-      PiZeroConstant.discrete (ULift.{max u v, v} (LocalizedHomDiagram.value Q b)) from
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete (ULift.{max u v, v} (LocalizedHomDiagram.value Q b)) from
         (augmentation Q).app b) z).down
 
 lemma piZeroLabel_unit (b : Cᵒᵖ × C)
@@ -103,15 +103,15 @@ lemma piZeroLabel_base {b c : Cᵒᵖ × C} (f : b ⟶ c) (z : SSet.π₀ (funct
   exact congrArg ULift.down (types_congr_hom
     (congr_app ((augmentation Q).naturality f) (Opposite.op (SimplexCategory.mk 0))) x)
 
-def kernel : DiagramQuotient.Congruence (functor (C := C)) :=
-  DiagramQuotient.kernel (augmentation Q)
+def kernel : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.Congruence (functor (C := C)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.kernel (augmentation Q)
 
 lemma kernel_small (b : Cᵒᵖ × C) (n : SimplexCategoryᵒᵖ) :
     Small.{v} (Quotient ((kernel Q).rel b n)) := by
   have : Small.{v} (((LocalizedHomDiagram.spaces Q ⋙
       SSet.uliftFunctor.{max u v, v}).obj b).obj n) :=
     small_of_injective (f := ULift.down) ULift.down_injective
-  exact DiagramQuotient.kernel_small (augmentation Q) b n
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.kernel_small (augmentation Q) b n
 
 variable [ModelCategory SSet.{v}]
   (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)

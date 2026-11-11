@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.FixedObjectLocalizationEvaluation
 public import SerrePositivity.EInfinity.Hammock.LocalizationValue
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
-public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PrecompositionTensor
 
 /-!
 # 元の固定対象の局所化 Hom の移送同型
@@ -22,7 +22,7 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects
 open CategoryTheory SerrePositivity.InfinityCategories
 
-variable {I : Type uI} [Category.{vI} I] {D : I ⥤ SimplicialLocalization.RelativeCategory.{u}}
+variable {I : Type uI} [Category.{vI} I] {D : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}}
   {O : Type uO} (T : LocalizationObjects D O)
 
 def homTransportEquiv (i : I) (X Y : O) :
@@ -51,9 +51,9 @@ def homTransportIso (i : I) (X Y : O) :
   (Functor.const SimplexCategoryᵒᵖ).mapIso (Equiv.toIso (T.homTransportEquiv i X Y))
 
 lemma colimitValue_weak_of_localizationValue (i : I) (X Y : O)
-    (h : IsWeakHomotopyEquivalence (localizationValue (D.obj i).weakEquivalences
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (localizationValue (D.obj i).weakEquivalences
       (T.original i X) (T.original i Y))) :
-    IsWeakHomotopyEquivalence (T.colimitValue i X Y) :=
-  h.comp (isPrecompositionEquivalence_of_iso (T.homTransportIso i X Y)).isWeakHomotopyEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (T.colimitValue i X Y) :=
+  h.comp (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (T.homTransportIso i X Y)).isWeakHomotopyEquivalence
 
 end SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects

@@ -13,6 +13,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 方針：証明済みの単位の anodyne 性と自然性を使う。
 規約：Moss 2020 Proposition 31 の弱同値に関する性質を、このリポジトリの anodyneQ で述べる。
 使われ方：非 Kan 基底の引き戻し比較を Kan 置換へ移す。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.UnstraighteningTriangleVertex
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.UnstraighteningTriangleVertex
 
 /-!
 概要：元の三角形の第二変換の頂点表示だけの変更は、指定全空間比較の値を保持する。

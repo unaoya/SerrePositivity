@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：逆転数を水平ステップ直前の垂直座標の和とし、新旧の集合の像を比較する。
 規約：KST Construction A.5 の標準 shuffle。
 使われ方：同種ステップの面の符号と各因子の交代境界の符号を同定する。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

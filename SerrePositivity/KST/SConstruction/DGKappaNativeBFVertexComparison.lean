@@ -44,7 +44,7 @@ lemma dgKappaNativeBFSOASpectrumComparison_homotopyMap_eq
 規約：抽象群同型だけから推論しない。使われ方：実頂点同型。 -/
 lemma dgKappaNativeBFSOASpectrumComparison_isInvertible
     (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
-    IsInvertibleEdge (coherentNerveEdge
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
       (dgKappaNativeBFSOASpectrumComparison.{u, v} R D I C)).toTruncated :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (dgKappaNativeBFSOASpectrumComparison_piIsomorphism.{u, v} R D I C)
@@ -53,10 +53,10 @@ lemma dgKappaNativeBFSOASpectrumComparison_isInvertible
 方針：同じ実比較スペクトル射の可逆辺をホモトピー圏の同型へ束ねる。
 規約：対象と辺を選び直さない。使われ方：同じ実核・実商の接続。 -/
 def dgKappaNativeBFSOAVertexIso (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
-    VertexIso (coherentNerveVertex (kOmegaSpectrum (sInputModel C.obj)))
-      (coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I C)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum (sInputModel C.obj)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I C)) :=
   @asIso _ _ _ _ (SSet.Truncated.HomotopyCategory.homMk
-    (coherentNerveEdge (dgKappaNativeBFSOASpectrumComparison.{u, v} R D I C)).toTruncated)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeBFSOASpectrumComparison.{u, v} R D I C)).toTruncated)
     (dgKappaNativeBFSOASpectrumComparison_isInvertible.{u, v} R D I C)
 
 /-- 概要：同じ I の実核 c=0 と実商 c=3 の旧 K と新 BF は Sp 内で実際に同型。
@@ -64,8 +64,8 @@ def dgKappaNativeBFSOAVertexIso (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
 規約：四辺の Sp 写像空間比較は要求しない。使われ方：K-B の S3 補足入力。 -/
 theorem dgKappaNativeBFKernelQuotientVertexIso (c : Fin 4) (_ : c = 0 ∨ c = 3) :
     let C := dgKappaNativeBFFiniteNativeObject.{u, v} R D I c
-    Nonempty (VertexIso (coherentNerveVertex (kOmegaSpectrum (sInputModel C.obj)))
-      (coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I C))) :=
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum (sInputModel C.obj)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I C))) :=
   ⟨dgKappaNativeBFSOAVertexIso.{u, v} R D I
     (dgKappaNativeBFFiniteNativeObject.{u, v} R D I c)⟩
 

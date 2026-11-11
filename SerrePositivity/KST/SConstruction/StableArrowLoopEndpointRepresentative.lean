@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectStableProductHomClass
-public import SerrePositivity.InfinityCategories.F1B.Fibrations.EdgeRepresentativeLift
-public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ArrowEndpointPair
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.QCatTensorAndArrowObjects
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.EdgeRepresentativeLift
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.ArrowEndpointPair
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCatTensorAndArrowObjects
 
 /-!
 概要：安定圏の ∞ 圏の区間図式の自己比較を、両端で厳密に恒等な代表へ直す。
@@ -22,34 +22,34 @@ open scoped Simplicial
 方針：直積両射影の類を検出し、元両端評価の inner fibration で代表を修正する。
 規約：全自己比較の類を保持。使われ方：共有対角の全比較の一意性への還元。 -/
 lemma stableArrowLoop_endpointRepresentative_exists
-    (f : (Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u})
+    (f : (Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u})
     (e : SSet.Truncated.Edge
-      (X := (truncation 2).obj ((ihom (Δ[1] : SSet.{u + 1})).obj _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}))
-      (functorVertex f) (functorVertex f))
+      (X := (truncation 2).obj ((ihom (Δ[1] : SSet.{u + 1})).obj _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
     (h₀ : SSet.Truncated.HomotopyCategory.homMk (e.map ((truncation 2).map
-      (evaluateFunctorAt (Y := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))) =
         SSet.Truncated.HomotopyCategory.homMk (SSet.Truncated.Edge.id _))
     (h₁ : SSet.Truncated.HomotopyCategory.homMk (e.map ((truncation 2).map
-      (evaluateFunctorAt (Y := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))))) =
         SSet.Truncated.HomotopyCategory.homMk (SSet.Truncated.Edge.id _)) :
     ∃ e' : SSet.Truncated.Edge
-        (X := (truncation 2).obj ((ihom (Δ[1] : SSet.{u + 1})).obj _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}))
-        (functorVertex f) (functorVertex f),
-      (e'.map ((truncation 2).map (F2.arrowEndpointPair _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}))).edge =
+        (X := (truncation 2).obj ((ihom (Δ[1] : SSet.{u + 1})).obj _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f),
+      (e'.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.arrowEndpointPair _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}))).edge =
         (SSet.Truncated.Edge.id
-          ((F2.arrowEndpointPair _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}).app _ (functorVertex f))).edge ∧
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.arrowEndpointPair _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))).edge ∧
       SSet.Truncated.HomotopyCategory.homMk e' = SSet.Truncated.HomotopyCategory.homMk e := by
-  letI : Quasicategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⊗ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) :=
-    F2.quasicategory_tensor _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}
-  apply F1B.exists_kanEdgeRepresentative_lift (F2.arrowEndpointPair _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) e
+  letI : Quasicategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⊗ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.quasicategory_tensor _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.exists_kanEdgeRepresentative_lift (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.arrowEndpointPair _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}) e
     (SSet.Truncated.Edge.id _)
   apply stableInfinityProduct_homMk_eq_of_projections
   · change SSet.Truncated.HomotopyCategory.homMk (e.map ((truncation 2).map
-      (evaluateFunctorAt (Y := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))) =
         SSet.Truncated.HomotopyCategory.homMk (SSet.Truncated.Edge.id _)
     exact h₀
   · change SSet.Truncated.HomotopyCategory.homMk (e.map ((truncation 2).map
-      (evaluateFunctorAt (Y := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))))) =
         SSet.Truncated.HomotopyCategory.homMk (SSet.Truncated.Edge.id _)
     exact h₁
 end SerrePositivity.KST.SConstruction

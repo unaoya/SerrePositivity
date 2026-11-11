@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedLoopEnrichment
 public import SerrePositivity.KST.SConstruction.PointedKanEnrichedObjects
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeFunctorImage
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.StrictConeFunctorImage
 
 /-! # 点つき Kan 複体の coherent nerve 上の loop
 概要：元の loop 模型の豊穣関手から、coherent nerve 上の実際の loop 関手を構成する。
@@ -17,12 +17,12 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open Spectra
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
 /-- 元の loop 対象を Kan 性とともに束ねる。 -/
 def pointedKanLoopObject (X : PointedKanObject.{u}) : PointedKanObject.{u} :=
-  ⟨_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X.obj, loopSpace_kanComplex X.obj⟩
+  ⟨_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X.obj, loopSpace_kanComplex X.obj⟩
 
 /-- 元の基点固定写像空間の作用を持つ、Kan 対象間の loop 豊穣関手。 -/
 def pointedKanLoopEnrichedFunctor :
@@ -34,28 +34,28 @@ def pointedKanLoopEnrichedFunctor :
 
 /-- 豊穣 loop 関手の通常の作用。 -/
 def pointedKanLoopFunctor : PointedKanObject.{u} ⥤ PointedKanObject.{u} :=
-  coherentEnrichedUnderlyingFunctor pointedKanLoopEnrichedFunctor
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor pointedKanLoopEnrichedFunctor
 
 /-- 通常の作用は、元の点つき射に元の loop を適用した射そのもの。 -/
 lemma pointedKanLoopFunctor_map_hom {X Y : PointedKanObject.{u}} (f : X ⟶ Y) :
-    ((pointedKanLoopFunctor.map f).hom : _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) =
+    ((pointedKanLoopFunctor.map f).hom : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X.obj ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj) =
       (PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u}).map f.hom := by
-  apply (pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X.obj) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj)).injective
-  have h := coherentEnrichedUnderlyingFunctor_vertex pointedKanLoopEnrichedFunctor f
-  change pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X.obj) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj)
+  apply (pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X.obj) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj)).injective
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor_vertex pointedKanLoopEnrichedFunctor f
+  change pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X.obj) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj)
       ((pointedKanLoopFunctor.map f).hom) =
     (pointedLoopHom X.obj Y.obj).right.app _ (pointedHomVertexEquiv X.obj Y.obj f.hom) at h
   exact h.trans (pointedLoopHom_vertex f.hom)
 
 /-- 点つき Kan 複体の coherent nerve 上の、実際の loop ∞ 関手。 -/
 def pointedKanLoopInfinity : PointedKanInfinity.{u} ⟶ PointedKanInfinity.{u} :=
-  coherentNerveMap pointedKanLoopEnrichedFunctor
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanLoopEnrichedFunctor
 
 /-- Loop ∞ 関手は対象の頂点で元の loop 模型を返す。 -/
 lemma pointedKanLoopInfinity_vertex (X : PointedKanObject.{u}) :
-    pointedKanLoopInfinity.app (Opposite.op ⦋0⦌) (coherentNerveVertex X) =
-      coherentNerveVertex (pointedKanLoopObject X) :=
-  coherentNerveMap_vertex pointedKanLoopEnrichedFunctor X
+    pointedKanLoopInfinity.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (pointedKanLoopObject X) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex pointedKanLoopEnrichedFunctor X
 
 /-- Kan 値の strict な図式に対し、loop の通常の作用を元の点つき図式として回収する。 -/
 lemma pointedKanLoopDiagram_eq {I : Type u} [SmallCategory I]
@@ -78,10 +78,10 @@ lemma pointedKanLoopInfinity_diagram {I : Type u} [SmallCategory I]
       pointedKanCoherentDiagram
         (F ⋙ PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u})
         (fun i => @loopSpace_kanComplex (F.obj i) (hF i)) := by
-  change strictCoherentDiagram (pointedKanDiagram F hF) ≫
-    coherentNerveMap pointedKanLoopEnrichedFunctor = _
-  rw [strictCoherentDiagram_postcomp]
-  change strictCoherentDiagram (pointedKanDiagram F hF ⋙ pointedKanLoopFunctor) = _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (pointedKanDiagram F hF) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanLoopEnrichedFunctor = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.strictCoherentDiagram_postcomp]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (pointedKanDiagram F hF ⋙ pointedKanLoopFunctor) = _
   rw [pointedKanLoopDiagram_eq]
   rfl
 

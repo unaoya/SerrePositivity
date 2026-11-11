@@ -37,7 +37,7 @@ lemma loopPointedFiberIso_inv_ι {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) 
 使われ方：Goerss–Jardine VIII §1。塔の微分の源の次数移動。 -/
 lemma loopFiberPositive_inclusion {E B : PointedSimplicialSet.{u}} (p : E ⟶ B)
     [Fibration p.right] [KanComplex E.right] [KanComplex B.right] (r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup
       (pointedFiber (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p)).right r
       (pointedFiber (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p)).basepoint) :
     loopPositiveHomotopyEquiv E r
@@ -61,13 +61,13 @@ variable (X : ℕ → PointedSimplicialSet.{u}) (p : ∀ n, X (n + 1) ⟶ X n)
 規約：通常の厳密な loop–fiber 同型を使用する。
 使われ方：Goerss–Jardine VIII §1。骨格係数の交代微分への移送。 -/
 theorem differential_loopPositive (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup
       (pointedFiber (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (p n))).right
       (r + 1)
       (pointedFiber (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (p n))).basepoint) :
     loopPositiveHomotopyEquiv (pointedFiber (p (n + 1))) r
       (pointedGroupMap r (loopPointedFiberIso (p (n + 1))).inv
-        (differential (fun k ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X k))
+        (differential (fun k ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (X k))
           (fun k ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (p k)) n r a)) =
     (differential X p n (r + 1)
       (loopPositiveHomotopyEquiv (pointedFiber (p n)) (r + 1)
@@ -80,12 +80,12 @@ theorem differential_loopPositive (n r : ℕ)
 規約：左辺の接続写像の出力は成分集合、比較の出力は元の fiber の基本群。
 使われ方：Goerss–Jardine VIII §1。成分から始める反復 loop 比較の基本段。 -/
 theorem differential_loopZero (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup
       (pointedFiber (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (p n))).right 0
       (pointedFiber (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (p n))).basepoint) :
     loopZeroHomotopyEquiv (pointedFiber (p (n + 1)))
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 (loopPointedFiberIso (p (n + 1))).inv.right
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (loopPointedFiberIso (p (n + 1))).inv)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map 0 (loopPointedFiberIso (p (n + 1))).inv.right
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (loopPointedFiberIso (p (n + 1))).inv)
         (pointedConnectingZero
           (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (p (n + 1)))
           (pointedGroupMap 0

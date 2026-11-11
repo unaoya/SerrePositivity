@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullDiagonalHomotopyClass
-public import SerrePositivity.InfinityCategories.F1B.Fibrations.EdgeRepresentativeLift
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.EdgeRepresentativeLift
 /-!
 概要：元下三角形の対角に、元上全比較と同じ実対角ホモトピーを指定する。
 方針：元二胞体の対角の厳密回収で端点を移し、同じ零 Hom の射の類を使う。
@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 /-- 概要：元下二胞体の両対角辺に、元上全比較と同じ全ホモトピーを置く。
 方針：同じ元共有対角の面回収で端点の表示だけを合わせる。
 規約：元上比較の全射。使われ方：元下全比較への指定実対角代表。 -/
@@ -39,31 +39,31 @@ def dgOdotMilnorNuNullLowerAlignedDiagonalHomotopy : SSet.Homotopy
 使われ方：前合成の inner fibration による辺の代表修正。 -/
 lemma dgOdotMilnorNuNullLowerAlignedDiagonalHomotopy_class :
     SSet.Truncated.HomotopyCategory.homMk
-        ((functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuNullLowerTriangleHomotopy R d h)).map
-          ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}))) =
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuNullLowerTriangleHomotopy R d h)).map
+          ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1}))) =
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (dgOdotMilnorNuNullLowerAlignedDiagonalHomotopy R d h)) := by
-  let e := (functorEdgeOfSimplicialHomotopy
+  let e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
     (dgOdotMilnorNuNullLowerTriangleHomotopy R d h)).map
-      ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}))
-  have hx := congrArg functorVertex (dgOdotMilnorNuNullPrismTriangle_diagonal_actual R d 1)
-  have hy := congrArg functorVertex (dgOdotMilnorNuNullPrismTriangle_diagonal_absolute R d h 1)
-  have he : e.edge = (functorEdgeOfSimplicialHomotopy
+      ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1}))
+  have hx := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (dgOdotMilnorNuNullPrismTriangle_diagonal_actual R d 1)
+  have hy := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (dgOdotMilnorNuNullPrismTriangle_diagonal_absolute R d h 1)
+  have he : e.edge = (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (dgOdotMilnorNuNullLowerDiagonalHomotopy R d h)).edge := by
-    change ((pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}).app
+    change ((pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1}).app
       (Opposite.op ⦋1⦌) (SSet.yonedaEquiv (curry
         (dgOdotMilnorNuNullLowerTriangleHomotopy R d h).h)) = _
     rw [← SSet.yonedaEquiv_comp]
     change SSet.yonedaEquiv (curry
       (dgOdotMilnorNuNullLowerTriangleHomotopy R d h).h ≫
-        (pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}) = _
+        (pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1}) = _
     rw [curry_pre_app]
     rfl
-  have hl := homMk_transport hx hy e
-    (functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuNullLowerDiagonalHomotopy R d h)) he
-  have hu := homMk_transport hx hy
-    (functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuNullLowerAlignedDiagonalHomotopy R d h))
-    (functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuNullUpperDiagonalHomotopy R d h)) rfl
+  have hl := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homMk_transport hx hy e
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuNullLowerDiagonalHomotopy R d h)) he
+  have hu := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homMk_transport hx hy
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuNullLowerAlignedDiagonalHomotopy R d h))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuNullUpperDiagonalHomotopy R d h)) rfl
   apply (cancel_epi (eqToHom (congrArg SSet.HomotopyCategory.mk hx).symm)).1
   apply (cancel_mono (eqToHom (congrArg SSet.HomotopyCategory.mk hy))).1
   exact (Category.assoc _ _ _).trans ((hl.trans

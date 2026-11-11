@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorNaturalityTriangles
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrisms
-public import SerrePositivity.InfinityCategories.Core.PinchedSlice
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorNaturalityTriangles
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpacePrisms
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedSlice
 
 /-!
 概要：元の標準三角形の右 prism は、同じ標準 join 座標の逆そのもの。

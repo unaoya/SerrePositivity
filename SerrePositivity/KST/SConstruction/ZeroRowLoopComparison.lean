@@ -42,7 +42,7 @@ lemma zeroRowBoundaryCylinder_one (r : ℕ) (X : StableModel.{u}) :
 /-- 元の零行から既存の Kan 実現の loop 空間への具体的な比較。 -/
 def zeroRowLoopComparison (r : ℕ) (X : StableModel.{u}) :
     (iteratedPathRealizationDiagram r X).obj (Opposite.op ⦋0⦌) ⟶
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((boundaryKanRealizationFunctor r).obj X)).right :=
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((boundaryKanRealizationFunctor r).obj X)).right :=
   loopOfCylinder ((boundaryKanRealizationFunctor r).obj X) (zeroRowBoundaryCylinder r X)
     (zeroRowBoundaryCylinder_zero r X) (zeroRowBoundaryCylinder_one r X)
 
@@ -60,7 +60,7 @@ lemma zeroRowLoopComparison_degeneracy (r : ℕ) (X : StableModel.{u}) :
     (iteratedSRealizationDiagram r X).map (SimplexCategory.σ (0 : Fin 1)).op ≫
         zeroRowLoopComparison r X =
       toUnit ((iteratedSRealizationDiagram r X).obj (Opposite.op ⦋0⦌)) ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((boundaryKanRealizationFunctor r).obj X)).hom :=
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((boundaryKanRealizationFunctor r).obj X)).hom :=
   loopOfCylinder_constant_parameter _ _ _ _ _ (zeroRowBoundaryCylinder_degeneracy r X)
 
 /-- 円の商射と通常の評価は、元の向きの零行収縮の境界像を回収する。 -/

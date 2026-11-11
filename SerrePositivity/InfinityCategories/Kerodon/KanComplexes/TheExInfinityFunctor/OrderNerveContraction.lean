@@ -10,6 +10,8 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 方針：比較可能な単調写像を区間で結び、向きを指定した二段階の収縮の補題を使う。
 規約：Moss arXiv:1506.04887v2 Proposition 2.19 の細分された horn への補助。
 使われ方：頂点を加える操作による面の部分順序集合の収縮。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

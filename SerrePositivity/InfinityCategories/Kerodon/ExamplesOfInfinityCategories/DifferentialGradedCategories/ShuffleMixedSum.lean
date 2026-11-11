@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：交換を固定点のない対合とし、既に検証した実混合境界項の相殺を使う。
 規約：KST Construction A.5。係数の加法群に二倍写像の単射性を仮定しない。
 使われ方：shuffle の鎖写像性の混合境界和。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

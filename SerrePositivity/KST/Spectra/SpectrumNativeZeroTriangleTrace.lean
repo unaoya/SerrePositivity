@@ -27,17 +27,17 @@ lemma nativeZeroEvaluationTriangleFamily_fiber (A : PointedSimplicialSet.{u})
     (z : Sp.{u} _⦋0⦌) :
     lift (SSet.const z) (𝟙 (Δ[2] : SSet.{u + 1})) ≫
         nativeZeroEvaluationTriangleFamily A =
-      lift (SSet.const (coherentNerveVertex (nativeCotensorInput A z))) (𝟙 _) ≫
+      lift (SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (nativeCotensorInput A z))) (𝟙 _) ≫
         CotensorCompatible.zeroEvaluationTriangleFamily A := by
   rw [nativeZeroEvaluationTriangleFamily, ← Category.assoc, lift_map,
     SSet.const_comp, Category.id_comp, nativeCotensorInput_vertex]
 
 /-- 元の参照零三角形の頂点評価は、元の整合入力の参照二単体そのもの。 -/
 lemma circleZeroFunctorTriangleAt (z : Sp.{u} _⦋0⦌) :
-    SSet.yonedaEquiv (circleZeroFunctorTriangle ≫ evaluateFunctorAt z) =
+    SSet.yonedaEquiv (circleZeroFunctorTriangle ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z) =
       CotensorCompatible.zeroEvaluationTriangleAt PointedSimplicialSet.circle
         (nativeCotensorInput PointedSimplicialSet.circle z) := by
-  rw [circleZeroFunctorTriangle, curry_evaluateFunctorAt_vertex,
+  rw [circleZeroFunctorTriangle, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.curry_evaluateFunctorAt_vertex,
     nativeZeroEvaluationTriangleFamily_fiber]
   rfl
 

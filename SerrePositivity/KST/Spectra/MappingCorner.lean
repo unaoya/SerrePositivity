@@ -28,14 +28,14 @@ variable {A X E B : PointedSimplicialSet.{u}} (i : A ⟶ X) (p : E ⟶ B)
 方針：源の制限と標的の後合成の二射を使う。
 規約：二つの射影はそれぞれ X から B、A から E への写像空間。
 使われ方：Goerss–Jardine I §7。相対写像空間の持ち上げ先。 -/
-abbrev cornerTarget : SSet.{u} := pullback (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i B) (PointedObject.basedHomMap A p).right
+abbrev cornerTarget : SSet.{u} := pullback (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i B) (PointedObject.basedHomMap A p).right
 
 /-- 概要：一つの写像族を、底への族と指定部分上の族へ制限する射。
 方針：前合成と後合成の可換性から pullback へ持ち上げる。
 規約：pointed Hom の基礎単体集合の射。
 使われ方：Goerss–Jardine I §7–8。二種類の境界を同時に指定する。 -/
 def corner : (PointedObject.basedHom X E).right ⟶ cornerTarget i p :=
-  pullback.lift (PointedObject.basedHomMap X p).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i E)
+  pullback.lift (PointedObject.basedHomMap X p).right (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i E)
     (congrArg Under.Hom.right (prePointed_post i p)).symm
 
 @[reassoc (attr := simp)]
@@ -43,7 +43,7 @@ lemma corner_fst : corner i p ≫ pullback.fst _ _ = (PointedObject.basedHomMap 
   pullback.lift_fst ..
 
 @[reassoc (attr := simp)]
-lemma corner_snd : corner i p ≫ pullback.snd _ _ = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i E := pullback.lift_snd ..
+lemma corner_snd : corner i p ≫ pullback.snd _ _ = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i E := pullback.lift_snd ..
 
 /-- 概要：corner のパラメータの持ち上げ性を積の相対持ち上げ性から得る。
 方針：pullback の二射影を uncurry し、指定部分・既存部分・底を同時に保つ。
@@ -58,7 +58,7 @@ theorem corner_hasLiftingProperty {T U : SSet.{u}} (j : T ⟶ U)
   let earlier := uncurry (a ≫ PointedObject.basedHomι X E)
   let prescribed := uncurry (b ≫ pullback.snd _ _ ≫ PointedObject.basedHomι A E)
   let base := uncurry (b ≫ pullback.fst _ _ ≫ PointedObject.basedHomι X B)
-  have hs : a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i E = j ≫ b ≫ pullback.snd _ _ := by
+  have hs : a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i E = j ≫ b ≫ pullback.snd _ _ := by
     have hs := congrArg (fun f ↦ f ≫ pullback.snd _ _) sq.w
     simpa only [Category.assoc, corner_snd] using hs
   have hf : a ≫ (PointedObject.basedHomMap X p).right = j ≫ b ≫ pullback.fst _ _ := by
@@ -66,7 +66,7 @@ theorem corner_hasLiftingProperty {T U : SSet.{u}} (j : T ⟶ U)
     simpa only [Category.assoc, corner_fst] using hf
   have hc : i.right ▷ T ≫ earlier = A.right ◁ j ≫ prescribed := by
     dsimp only [earlier, prescribed]
-    rw [← uncurry_natural_left, ← uncurry_pre_app, Category.assoc, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι,
+    rw [← uncurry_natural_left, ← uncurry_pre_app, Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_ι,
       ← Category.assoc, hs]
     rfl
   have he : earlier ≫ p.right = X.right ◁ j ≫ base := by
@@ -78,27 +78,27 @@ theorem corner_hasLiftingProperty {T U : SSet.{u}} (j : T ⟶ U)
     dsimp only [prescribed, base]
     rw [← uncurry_natural_right]
     simp only [Category.assoc]
-    rw [← PointedObject.basedHomMap_ι, ← pullback.condition_assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι,
+    rw [← PointedObject.basedHomMap_ι, ← pullback.condition_assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_ι,
       ← Category.assoc, ← Category.assoc, uncurry_pre_app]
     rfl
   obtain ⟨f, hearlier, hprescribed, hbase⟩ := relative_product_lift p.right i.right j h
     earlier prescribed base hc he ha
   have hfixed : X.hom ▷ U ≫ f = toUnit (𝟙_ SSet.{u} ⊗ U) ≫ E.hom := by
     rw [← Under.w i, comp_whiskerRight_assoc, hprescribed]
-    exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint A E (b ≫ pullback.snd _ _)
-  let l := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry X E f hfixed
+    exact _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.uncurry_basepoint A E (b ≫ pullback.snd _ _)
+  let l := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry X E f hfixed
   refine ⟨⟨{ l := l, fac_left := ?_, fac_right := ?_ }⟩⟩
   · apply (cancel_mono (PointedObject.basedHomι X E)).mp
-    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, ← curry_natural_left, hearlier, curry_uncurry]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, ← curry_natural_left, hearlier, curry_uncurry]
   · apply pullback.hom_ext
     · apply (cancel_mono (PointedObject.basedHomι X B)).mp
       simp only [Category.assoc, corner_fst_assoc]
       rw [PointedObject.basedHomMap_ι,
-        ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, ← curry_natural_right, hbase, curry_uncurry]
+        ← Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, ← curry_natural_right, hbase, curry_uncurry]
     · apply (cancel_mono (PointedObject.basedHomι A E)).mp
       simp only [Category.assoc, corner_snd_assoc]
-      rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι,
-        ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, curry_pre_app, hprescribed, curry_uncurry]
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_ι,
+        ← Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, curry_pre_app, hprescribed, curry_uncurry]
 
 /-- 概要：源の単射と標的の Kan fibration から corner の Kan fibration を得る。
 方針：ホーンと単射の pushout-product の anodyne 性を相対族の持ち上げに適用する。

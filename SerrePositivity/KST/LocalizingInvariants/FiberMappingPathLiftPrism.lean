@@ -43,7 +43,7 @@ lemma trianglePrism_first :
 
 lemma trianglePrism_last :
     (stdSimplex.δ (0 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) ≫ L.trianglePrism =
-      fst (Δ[1] : SSet.{u + 1}) Δ[1] ≫ SSet.yonedaEquiv.symm (coherentNerveEdge p).edge :=
+      fst (Δ[1] : SSet.{u + 1}) Δ[1] ≫ SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge p).edge :=
   SpectrumMappingPath.postTrianglePrism_last _ _
 
 lemma trianglePrism_diagonal :

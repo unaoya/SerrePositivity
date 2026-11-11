@@ -39,7 +39,7 @@ lemma mappingSpaceSmallSpanGrothendieckNerveMap_fac (X Y : (operad A).Algebra) :
       left_mem := by simpa only [Category.comp_id] using s.left_mem}) = s
     simp only [Category.comp_id]
   · intro i j h
-    apply FrameHom.ArrowSpan.hom_ext
+    apply _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.hom_ext
     · simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
       let q := (SerrePositivity.Reedy.cosimplicialResolutionFamily
         (mappingCofibrantFactorization A)).obj.obj X
@@ -60,7 +60,7 @@ lemma mappingSpaceSpecialHammockNerveMap_localized_isIso (X Y : (operad A).Algeb
 /-- 同じ元の右射は、元の三本矢の nerve の Kan 性なしで弱ホモトピー同値。 -/
 lemma mappingSpaceSpecialHammockNerveMap_isWeakHomotopyEquivalence
     (X Y : (operad A).Algebra) :
-    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (mappingSpaceSpecialHammockNerveMap A X Y) :=
   FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (mappingSpaceSpecialHammockNerveMap_localized_isIso A X Y)

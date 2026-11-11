@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentTriangleMappingEdge
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.SquareComposition
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.SquareComposition
 
 /-! # 自然性 square の元の対角辺と二つの実三角形
 概要：四辺を指定した square から共通の通常の対角射と二つの指定三角形を回収する。
@@ -26,11 +26,11 @@ structure CoherentSquareMappingTriangles
   /-- 元の square の対角辺から復号した通常の射。 -/
   diagonal : X₀ ⟶ Y₁
   /-- 下辺・右辺・元の対角辺の実三角形。 -/
-  bottomRight : SSet.Edge.CompStruct (coherentNerveEdge f) (coherentNerveEdge r)
-    (coherentNerveEdge diagonal)
+  bottomRight : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge r)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge diagonal)
   /-- 左辺・上辺・同じ対角辺の実三角形。 -/
-  leftTop : SSet.Edge.CompStruct (coherentNerveEdge l) (coherentNerveEdge g)
-    (coherentNerveEdge diagonal)
+  leftTop : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge l) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge diagonal)
 
 /-- 元の二つの三角形の第一のものから、対角射から下・右合成への写像空間の辺。 -/
 def coherentSquareMappingBottomRight {f : X₀ ⟶ X₁} {g : Y₀ ⟶ Y₁}
@@ -50,49 +50,49 @@ def coherentSquareMappingLeftTop {f : X₀ ⟶ X₁} {g : Y₀ ⟶ Y₁}
 def coherentSquareMappingTrianglesOfEdges
     (f : X₀ ⟶ X₁) (g : Y₀ ⟶ Y₁) (l : X₀ ⟶ Y₀) (r : X₁ ⟶ Y₁)
     (Q : (Δ[1] : SSet.{max u v}) ⊗ Δ[1] ⟶ SimplicialNerve C)
-    (hb : ((homotopyIntervalEdge.tensor (SSet.Truncated.Edge.id
+    (hb : ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.tensor (SSet.Truncated.Edge.id
       (X := (truncation 2).obj (Δ[1] : SSet.{max u v}))
       (SSet.stdSimplex.obj₀Equiv.symm 0))).map ((truncation 2).map Q)).edge =
-        (coherentNerveEdge f).edge)
-    (ht : ((homotopyIntervalEdge.tensor (SSet.Truncated.Edge.id
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge)
+    (ht : ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.tensor (SSet.Truncated.Edge.id
       (X := (truncation 2).obj (Δ[1] : SSet.{max u v}))
       (SSet.stdSimplex.obj₀Equiv.symm 1))).map ((truncation 2).map Q)).edge =
-        (coherentNerveEdge g).edge)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).edge)
     (hl : (((SSet.Truncated.Edge.id
       (X := (truncation 2).obj (Δ[1] : SSet.{max u v}))
-      (SSet.stdSimplex.obj₀Equiv.symm 0)).tensor homotopyIntervalEdge).map
-        ((truncation 2).map Q)).edge = (coherentNerveEdge l).edge)
+      (SSet.stdSimplex.obj₀Equiv.symm 0)).tensor _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge).map
+        ((truncation 2).map Q)).edge = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge l).edge)
     (hr : (((SSet.Truncated.Edge.id
       (X := (truncation 2).obj (Δ[1] : SSet.{max u v}))
-      (SSet.stdSimplex.obj₀Equiv.symm 1)).tensor homotopyIntervalEdge).map
-        ((truncation 2).map Q)).edge = (coherentNerveEdge r).edge) :
+      (SSet.stdSimplex.obj₀Equiv.symm 1)).tensor _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge).map
+        ((truncation 2).map Q)).edge = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge r).edge) :
     CoherentSquareMappingTriangles f g l r := by
-  let b := (homotopyIntervalEdge.tensor (SSet.Truncated.Edge.id
+  let b := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.tensor (SSet.Truncated.Edge.id
     (X := (truncation 2).obj (Δ[1] : SSet.{max u v}))
     (SSet.stdSimplex.obj₀Equiv.symm 0))).map ((truncation 2).map Q)
   let er := ((SSet.Truncated.Edge.id
     (X := (truncation 2).obj (Δ[1] : SSet.{max u v}))
-    (SSet.stdSimplex.obj₀Equiv.symm 1)).tensor homotopyIntervalEdge).map ((truncation 2).map Q)
-  let ed := (homotopyIntervalEdge.tensor homotopyIntervalEdge).map ((truncation 2).map Q)
+    (SSet.stdSimplex.obj₀Equiv.symm 1)).tensor _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge).map ((truncation 2).map Q)
+  let ed := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.tensor _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge).map ((truncation 2).map Q)
   have hx : Q.app (Opposite.op ⦋0⦌)
       (SSet.stdSimplex.obj₀Equiv.symm 0, SSet.stdSimplex.obj₀Equiv.symm 0) =
-      coherentNerveVertex X₀ :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X₀ :=
     b.src_eq.symm.trans ((congrArg ((SimplicialNerve C).map
-      (SimplexCategory.δ (1 : Fin 2)).op) hb).trans (coherentNerveEdge f).src_eq)
+      (SimplexCategory.δ (1 : Fin 2)).op) hb).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).src_eq)
   have hy : Q.app (Opposite.op ⦋0⦌)
       (SSet.stdSimplex.obj₀Equiv.symm 1, SSet.stdSimplex.obj₀Equiv.symm 1) =
-      coherentNerveVertex Y₁ :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y₁ :=
     er.tgt_eq.symm.trans ((congrArg ((SimplicialNerve C).map
-      (SimplexCategory.δ (0 : Fin 2)).op) hr).trans (coherentNerveEdge r).tgt_eq)
-  let diag : (SimplicialNerve C).Edge (coherentNerveVertex X₀) (coherentNerveVertex Y₁) :=
+      (SimplexCategory.δ (0 : Fin 2)).op) hr).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge r).tgt_eq)
+  let diag : (SimplicialNerve C).Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X₀) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y₁) :=
     SSet.Edge.ofTruncated ⟨ed.edge, ed.src_eq.trans hx, ed.tgt_eq.trans hy⟩
-  let d := coherentNerveEdgeToHom diag
-  have hd : (coherentNerveEdge d).edge = ed.edge :=
-    congrArg SSet.Edge.edge (coherentNerveEdge_hom diag)
-  let t₀ := ((SSet.Truncated.Edge.CompStruct.compId homotopyIntervalEdge).tensor
-    (SSet.Truncated.Edge.CompStruct.idComp homotopyIntervalEdge)).map ((truncation 2).map Q)
-  let t₁ := ((SSet.Truncated.Edge.CompStruct.idComp homotopyIntervalEdge).tensor
-    (SSet.Truncated.Edge.CompStruct.compId homotopyIntervalEdge)).map ((truncation 2).map Q)
+  let d := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom diag
+  have hd : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d).edge = ed.edge :=
+    congrArg SSet.Edge.edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_hom diag)
+  let t₀ := ((SSet.Truncated.Edge.CompStruct.compId _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge).tensor
+    (SSet.Truncated.Edge.CompStruct.idComp _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge)).map ((truncation 2).map Q)
+  let t₁ := ((SSet.Truncated.Edge.CompStruct.idComp _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge).tensor
+    (SSet.Truncated.Edge.CompStruct.compId _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge)).map ((truncation 2).map Q)
   refine ⟨d, ?_, ?_⟩
   · exact SSet.Edge.CompStruct.ofTruncated
       ⟨t₀.simplex, t₀.d₂.trans hb, t₀.d₀.trans hr, t₀.d₁.trans hd.symm⟩

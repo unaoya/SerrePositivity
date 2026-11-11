@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetRecursion
-public import SerrePositivity.InfinityCategories.DGNerve.PinchedTerms
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedTerms
 
 /-! # 元の標準面座標と読み替え内部頂点
 概要：右端からの面座標 i を、元の昇順列の内部頂点 m+1−i に対応させる。

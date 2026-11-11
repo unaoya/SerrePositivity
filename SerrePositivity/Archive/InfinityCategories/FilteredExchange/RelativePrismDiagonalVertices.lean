@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativePrismDiagonalComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativePrismEvaluationVertex
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCurryPointVertex
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorCurryPointVertex
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalPrismComparisonPrecomp
 
 /-!

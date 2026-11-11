@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.PinchedSlice
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedSlice
 
 /-!
 概要：二つの終点を追加した join を、同じ二重終点固定単体へ移す。

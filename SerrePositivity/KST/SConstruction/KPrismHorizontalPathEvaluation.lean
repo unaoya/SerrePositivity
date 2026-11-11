@@ -25,19 +25,19 @@ local instance kPrismHorizontalPathEvaluation_pointed_simplicialCategory :
 /-- 下側の元の水平 Hom 作用の値は、全次数で入力 Path に依存しない。 -/
 lemma kKanOriginalPrismLowerHorizontalValues_eq {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} {f : x ⟶ y}
-    (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) (d : ℕ)
+    (s : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) (d : ℕ)
     (P Q : (nerve (SimplicialThickening.Path (ULift.up (0 : Fin (s.length + 1)).castSucc : ULift.{u} (Fin (s.length + 2)))
       (ULift.up (Fin.last s.length).castSucc))) _⦋d⦌) :
     let R : EnrichedFunctor SSet.{u}
       (SimplicialThickening (ULift.{u} (Fin (s.length + 2)))) PointedSimplicialSet.{u} :=
-    (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s).chain)
+    (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentLowerPrismString s).chain)
     (R.map (.mk (ULift.up (0 : Fin (s.length + 1)).castSucc)) (.mk (ULift.up (Fin.last s.length).castSucc))).app
       (Opposite.op ⦋d⦌) P =
       (R.map (.mk (ULift.up (0 : Fin (s.length + 1)).castSucc)) (.mk (ULift.up (Fin.last s.length).castSucc))).app
         (Opposite.op ⦋d⦌) Q := by
   let R : EnrichedFunctor SSet.{u}
       (SimplicialThickening (ULift.{u} (Fin (s.length + 2)))) PointedSimplicialSet.{u} :=
-    (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s).chain)
+    (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentLowerPrismString s).chain)
   have hc : coherentPathActionsConstant
       ((SimplicialThickening.functor (SimplexCategory.δ (Fin.last (s.length + 1))).toOrderHom.uliftMap).comp
         SSet R) := by
@@ -47,7 +47,7 @@ lemma kKanOriginalPrismLowerHorizontalValues_eq {I : Type u} [SmallCategory I]
     exact (congrArg coherentPathActionsConstant (hr.trans hs)).mpr
       (coherentStrictDiagramPathActionsConstant _ _)
   have h := coherentPathValues_eq_of_epi
-    (Coherent.pathFaceMap.{u} (Fin.last (s.length + 1)) 0 (Fin.last s.length))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceMap.{u} (Fin.last (s.length + 1)) 0 (Fin.last s.length))
     (R.map (.mk (ULift.up ((Fin.last (s.length + 1)).succAbove 0)))
       (.mk (ULift.up ((Fin.last (s.length + 1)).succAbove (Fin.last s.length)))))
     (fun n p q => hc (.mk (ULift.up 0)) (.mk (ULift.up (Fin.last s.length))) n p q)
@@ -69,19 +69,19 @@ lemma kKanOriginalPrismLowerHorizontalValues_eq {I : Type u} [SmallCategory I]
 /-- 上側の元の水平 Hom 作用の値は、全次数で入力 Path に依存しない。 -/
 lemma kKanOriginalPrismUpperHorizontalValues_eq {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} {f : x ⟶ y}
-    (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) (d : ℕ)
+    (s : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) (d : ℕ)
     (P Q : (nerve (SimplicialThickening.Path (ULift.up (0 : Fin (s.length + 1)).succ : ULift.{u} (Fin (s.length + 2)))
       (ULift.up (Fin.last s.length).succ))) _⦋d⦌) :
     let R : EnrichedFunctor SSet.{u}
       (SimplicialThickening (ULift.{u} (Fin (s.length + 2)))) PointedSimplicialSet.{u} :=
-    (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s).chain)
+    (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentUpperPrismString s).chain)
     (R.map (.mk (ULift.up (0 : Fin (s.length + 1)).succ)) (.mk (ULift.up (Fin.last s.length).succ))).app
       (Opposite.op ⦋d⦌) P =
       (R.map (.mk (ULift.up (0 : Fin (s.length + 1)).succ)) (.mk (ULift.up (Fin.last s.length).succ))).app
         (Opposite.op ⦋d⦌) Q := by
   let R : EnrichedFunctor SSet.{u}
       (SimplicialThickening (ULift.{u} (Fin (s.length + 2)))) PointedSimplicialSet.{u} :=
-    (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s).chain)
+    (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentUpperPrismString s).chain)
   have hc : coherentPathActionsConstant
       ((SimplicialThickening.functor (SimplexCategory.δ (0 : Fin (s.length + 2))).toOrderHom.uliftMap).comp
         SSet R) := by
@@ -91,7 +91,7 @@ lemma kKanOriginalPrismUpperHorizontalValues_eq {I : Type u} [SmallCategory I]
     exact (congrArg coherentPathActionsConstant (hr.trans hs)).mpr
       (coherentStrictDiagramPathActionsConstant _ _)
   have h := coherentPathValues_eq_of_epi
-    (Coherent.pathFaceMap.{u} (0 : Fin (s.length + 2)) 0 (Fin.last s.length))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceMap.{u} (0 : Fin (s.length + 2)) 0 (Fin.last s.length))
     (R.map (.mk (ULift.up ((0 : Fin (s.length + 2)).succAbove 0)))
       (.mk (ULift.up ((0 : Fin (s.length + 2)).succAbove (Fin.last s.length)))))
     (fun n p q => hc (.mk (ULift.up 0)) (.mk (ULift.up (Fin.last s.length))) n p q)

@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 local notation "K" => dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)
 local notation "A" => dgKInputStableValue R (dgOdotMilnorCellInput R d)
 local notation "B" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
@@ -29,15 +29,15 @@ lemma dgOdotMilnorNuNullLowerTriangleHomotopy_paths :
     ((stdSimplex.δ (1 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3)) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullLowerTriangleHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (K : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (𝟙 (K : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}))).edge ∧
       ((stdSimplex.δ (0 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3)) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullLowerTriangleHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (A : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (𝟙 (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}))).edge ∧
       ((stdSimplex.δ (0 : Fin 2) ≫ stdSimplex.δ (0 : Fin 3)) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullLowerTriangleHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge := by
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}))).edge := by
   constructor
   · rw [comp_whiskerRight, Category.assoc,
       dgOdotMilnorNuNullLowerTriangleHomotopy_face R d h 2 (by decide)]
@@ -57,15 +57,15 @@ lemma dgOdotMilnorNuNullUpperTriangleHomotopy_paths :
     ((stdSimplex.δ (1 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3)) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullUpperTriangleHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (K : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (𝟙 (K : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}))).edge ∧
       ((stdSimplex.δ (0 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3)) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullUpperTriangleHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (Z))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (Z))).edge ∧
       ((stdSimplex.δ (0 : Fin 2) ≫ stdSimplex.δ (0 : Fin 3)) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullUpperTriangleHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge := by
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}))).edge := by
   constructor
   · rw [comp_whiskerRight, Category.assoc,
       dgOdotMilnorNuNullUpperTriangleHomotopy_face R d h 2 (by decide)]

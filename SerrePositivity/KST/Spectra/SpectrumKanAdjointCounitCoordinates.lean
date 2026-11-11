@@ -22,8 +22,8 @@ variable (X Y : OmegaSpectrum.{u})
 lemma kanAdjointParameterLeft_counit (n : ℕ) :
     kanAdjointParameterLeft X Y n ≫ kanLoopCounit (X.level n).space (Y.level (n + 1)).space =
       pointedEvaluation X Y.toKanSequence (n + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space := by
-  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso PointedSimplicialSet.circle
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space := by
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso PointedSimplicialSet.circle
     (X.level n).space (Y.level (n + 1)).space).hom).1
   rw [Category.assoc, kanLoopCounit_comparison]
   change kanAdjointParameterLeft X Y n ≫ kanAdjointParameterRestriction X Y n = _
@@ -34,8 +34,8 @@ lemma kanAdjointParameterLeft_counit (n : ℕ) :
 lemma kanAdjointParameterRight_counit (n : ℕ) :
     kanAdjointParameterRight X Y n ≫ kanLoopCounit (X.level n).space (Y.level (n + 1)).space =
       pointedEvaluation X Y.toKanSequence (n + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space := by
-  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso PointedSimplicialSet.circle
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space := by
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso PointedSimplicialSet.circle
     (X.level n).space (Y.level (n + 1)).space).hom).1
   rw [Category.assoc, kanLoopCounit_comparison]
   change kanAdjointParameterRight X Y n ≫ kanAdjointParameterRestriction X Y n = _
@@ -48,15 +48,15 @@ lemma kanAdjointParameterHomotopy_counit (n : ℕ) :
         (kanLoopCounit (X.level n).space (Y.level (n + 1)).space).right =
       fst (pointedSpace X Y.toKanSequence).right (Δ[1] : SSet.{u}) ≫
         (pointedEvaluation X Y.toKanSequence (n + 1) ≫
-          _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space).right := by
+          _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space).right := by
   have hc := congrArg Under.Hom.right (kanAdjointParameterLeft_counit X Y n)
   change (kanAdjointParameterLeft X Y n).right ≫
     (kanLoopCounit (X.level n).space (Y.level (n + 1)).space).right = _ at hc
   have hf : (kanAdjointParameterRestriction X Y n).right ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso PointedSimplicialSet.circle.{u}
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso PointedSimplicialSet.circle.{u}
         (X.level n).space (Y.level (n + 1)).space).inv.right =
       (kanLoopCounit (X.level n).space (Y.level (n + 1)).space).right := rfl
-  have h := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso PointedSimplicialSet.circle.{u}
+  have h := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso PointedSimplicialSet.circle.{u}
     (X.level n).space (Y.level (n + 1)).space).inv.right)
     (kanAdjointParameterHomotopy_restriction X Y n)
   simp only [Category.assoc, hf] at h

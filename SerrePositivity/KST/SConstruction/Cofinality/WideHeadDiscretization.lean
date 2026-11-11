@@ -23,7 +23,7 @@ open SerrePositivity.EInfinity.Hammock.DoubleSimplicial
 規約：選択した切断を自然変換に使わない。
 使われ方：元の対角の離散化射。 -/
 def completionCanonicalComponentProjectionNat (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionCanonicalWideDiagram r f hf ⟶
       completionWideComponentDiagram r f hf ⋙ Functor.const SimplexCategoryᵒᵖ where
   app ι := completionCanonicalComponentProjection r ι f
@@ -35,8 +35,8 @@ def completionCanonicalComponentProjectionNat (r : ℕ) {X Y : StableModel.{u}} 
 使われ方：相対旗の評価が比較する元の wide 実現。 -/
 def completionWideHeadRealization (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) : SSet.{u} :=
-  diagonalFunctor.obj
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) : SSet.{u} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj
     (completionCokernelHeadIndex r ι ⋙ completionCanonicalWideDiagram (r + 1) f hf)
 
 /-- 概要：元の wide の先頭対角実現から元の成分障害図式への射。
@@ -45,12 +45,12 @@ def completionWideHeadRealization (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
 使われ方：元の wide 実現の障害の高次消滅。 -/
 def completionWideHeadDiscretization (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionWideHeadRealization r ι f hf ⟶
       (completionCokernelHeadIndex r ι ⋙ completionWideComponentDiagram (r + 1) f hf) :=
-  diagonalFunctor.map (Functor.whiskerLeft (completionCokernelHeadIndex r ι)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (Functor.whiskerLeft (completionCokernelHeadIndex r ι)
     (completionCanonicalComponentProjectionNat (r + 1) f hf)) ≫
-      (diagonalDiscreteIso (completionCokernelHeadIndex r ι ⋙
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalDiscreteIso (completionCokernelHeadIndex r ι ⋙
         completionWideComponentDiagram (r + 1) f hf)).hom
 
 /-- 概要：元の wide の先頭対角実現の離散化は弱ホモトピー同値。
@@ -59,15 +59,15 @@ def completionWideHeadDiscretization (r : ℕ) (ι : Fin r → SimplexCategory�
 使われ方：bar 障害から元の wide 実現への移送。 -/
 lemma completionWideHeadDiscretization_isWeak (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
-    IsWeakHomotopyEquivalence (completionWideHeadDiscretization r ι f hf) := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (completionWideHeadDiscretization r ι f hf) := by
   let τ := Functor.whiskerLeft (completionCokernelHeadIndex r ι)
     (completionCanonicalComponentProjectionNat (r + 1) f hf)
-  have hτ (n : SimplexCategoryᵒᵖ) : IsWeakHomotopyEquivalence (τ.app n) :=
+  have hτ (n : SimplexCategoryᵒᵖ) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (τ.app n) :=
     completionCanonicalComponentProjection_isWeak (r + 1)
       ((completionCokernelHeadIndex r ι).obj n) f hf
   have hd := diagonalFunctor_map_weak τ hτ
-  exact hd.comp (isPrecompositionEquivalence_of_iso (diagonalDiscreteIso
+  exact hd.comp (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalDiscreteIso
     (completionCokernelHeadIndex r ι ⋙
       completionWideComponentDiagram (r + 1) f hf))).isWeakHomotopyEquivalence
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionSurjective
-public import SerrePositivity.InfinityCategories.Simplicial.SubdivisionSimplexCover
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SubdivisionSimplexCover
 
 /-!
 # horn の単体と細分の余面による表示
@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Simplicial.SubdivisionSimplexCo
 方針：頂点写像の像に欠けた頂点を選び、その余面の分裂で因子化する。
 規約：Moss arXiv:1506.04887v2 Proposition 2.19 の細分の像の同定への補助。
 使われ方：細分の元の余面による表示と表示の比較。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section
@@ -63,7 +65,7 @@ theorem hornSubdivisionFaceCover (n : ℕ) (k : Fin (n + 2))
     ∃ (j : Fin (n + 2)) (hj : j ≠ k)
       (t : (SSet.sd.obj (Δ[n] : SSet.{u})).obj d),
       (SSet.sd.map (SSet.horn.ι k j hj)).app d t = s := by
-  obtain ⟨m, f, t, ht⟩ := _root_.SerrePositivity.InfinityCategories.Simplicial.subdivisionSimplexCover (SSet.horn (n + 1) k) d s
+  obtain ⟨m, f, t, ht⟩ := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.subdivisionSimplexCover (SSet.horn (n + 1) k) d s
   obtain ⟨j, hj, g, hg⟩ := hornSimplexFaceFactorization n k m f
   refine ⟨j, hj, (SSet.sd.map g).app d t, ?_⟩
   rw [← hg, SSet.sd.map_comp] at ht

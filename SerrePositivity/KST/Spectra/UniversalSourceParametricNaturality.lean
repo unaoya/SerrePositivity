@@ -33,28 +33,28 @@ lemma parametricInput_zero :
   change (interval I Z).path ≫
       (PointedObject.basedHomMap (PointedObject.basedHom I.source Z) t).right =
     (parametricFactoredInterval I P Z').path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (s ≫ e)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (s ≫ e)
         (PointedObject.basedHom P (PointedObject.basedHom I.source Z'))).right
   rw [interval_path, parametricFactoredInterval_path]
-  change (R.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s (PointedObject.basedHom I.source Z)).right) ≫
+  change (R.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed s (PointedObject.basedHom I.source Z)).right) ≫
       (PointedObject.basedHomMap (PointedObject.basedHom I.source Z) t).right =
-    R'.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (s ≫ e)
+    R'.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (s ≫ e)
       (PointedObject.basedHom P (PointedObject.basedHom I.source Z'))).right
   have hs := (MonoidalClosed.pre s).naturality t
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hs
   change PointedObject.basedHomMap (PointedObject.basedHom I.target Z) t ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s (PointedObject.basedHom P (PointedObject.basedHom I.source Z')) =
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s (PointedObject.basedHom I.source Z) ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed s (PointedObject.basedHom P (PointedObject.basedHom I.source Z')) =
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed s (PointedObject.basedHom I.source Z) ≫
       PointedObject.basedHomMap (PointedObject.basedHom I.source Z) t at hs
   have h₀ := congrArg (fun q => R.path ≫ q.right) hs.symm
   have hn := I.path.basedPre_parametricPost_path v
   change R.path ≫ (PointedObject.basedHomMap (PointedObject.basedHom I.target Z) t).right =
-    R'.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e
+    R'.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e
       (PointedObject.basedHom P (PointedObject.basedHom I.source Z'))).right at hn
-  have h₁ := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s
+  have h₁ := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed s
     (PointedObject.basedHom P (PointedObject.basedHom I.source Z'))).right) hn
   have h₂ := congrArg (fun q => R'.path ≫ q.right)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp s e
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp s e
       (PointedObject.basedHom P (PointedObject.basedHom I.source Z')))
   simpa only [Under.comp_right, Category.assoc] using h₀.trans (h₁.trans h₂)
 
@@ -71,14 +71,14 @@ def parametricNaturalitySquare :
 lemma parametricNaturalitySquare_start :
     SquareAdjustment.leftSide ≫ (parametricNaturalitySquare I v).h =
       SSet.const (PointedMapping.familyVertex (PointedMapping.parametricPost I.source v ≫
-        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.first Z'))) :=
+        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.first Z'))) :=
   parametricInputSquare_start I v
 
 /-- 右境界全体も、同じ射の全族と第二源作用の頂点で一定。 -/
 lemma parametricNaturalitySquare_finish :
     SquareAdjustment.rightSide ≫ (parametricNaturalitySquare I v).h =
       SSet.const (PointedMapping.familyVertex (PointedMapping.parametricPost I.source v ≫
-        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.second Z'))) :=
+        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.second Z'))) :=
   parametricInputSquare_finish I v
 
 end SerrePositivity.KST.Spectra.UniversalSourceInterval

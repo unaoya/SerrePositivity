@@ -18,15 +18,15 @@ variable (A : Type u) [CommRing A] (D E : Type v)
 
 /-- 元の固定入力の全定数単体による作用は、元の Perf dg 関手の全単体作用。 -/
 lemma presentedPerfectDGNativeActionSimplex_fixed {N : ℕ}
-    (x : DGNerve.Simplex A (PresentedPerfectDGObject A D) N) (F : DGFunctor A D E) :
+    (x : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (PresentedPerfectDGObject A D) N) (F : DGFunctor A D E) :
     presentedPerfectDGNativeActionSimplex A D E x
         (dgNativePointSimplex A (DGFunctor A D E) F N) =
       x.map (presentedPerfectDGAction A D E F) := by
   unfold presentedPerfectDGNativeActionSimplex
   rw [dgNerveTensorSimplex_point_right]
-  apply DGNerve.Simplex.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
   change (x.toSimplexData.map _).map _ = x.toSimplexData.map _
-  rw [← DGNerve.SimplexData.map_comp, presentedPerfectDGRightTensorAction_fixed]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.SimplexData.map_comp, presentedPerfectDGRightTensorAction_fixed]
 
 /-- 元の厳密 dg 関手を、出力宇宙へ移した Kan 入力写像空間の単位射として保持。 -/
 def presentedPerfectDGNativeParameterPoint (F : DGFunctor A D E) :
@@ -40,18 +40,18 @@ lemma presentedPerfectDGNativeParameterPoint_app (F : DGFunctor A D E)
     (n : SimplexCategoryᵒᵖ) (x : (𝟙_ SSet.{max (u + 1) v}).obj n) :
     (((presentedPerfectDGNativeParameterPoint A D E F).app n x).down).val =
       dgNativePointSimplex A (DGFunctor A D E) F n.unop.len := by
-  change (DGNerve.Simplex.vertex F).pullback
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex F).pullback
     (SimplexCategory.const n.unop ⦋0⦌ 0).toOrderHom = _
   rw [← dgNativePointSimplex_zero]
   exact dgNativePointSimplex_pullback A (DGFunctor A D E) F _
 
 /-- 元の入力関手に固定した実右作用は、元の Perf 作用の単体的写像を厳密に回収。 -/
 lemma presentedPerfectDGNativeCoreAction_fixed (F : DGFunctor A D E) :
-    (𝟙 (dgNerve A (PresentedPerfectDGObject A D)) ⊗ₘ
+    (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D)) ⊗ₘ
         presentedPerfectDGNativeParameterPoint A D E F) ≫
         presentedPerfectDGNativeCoreAction A D E =
-      (ρ_ (dgNerve A (PresentedPerfectDGObject A D))).hom ≫
-        dgNerve.map (presentedPerfectDGAction A D E F) := by
+      (ρ_ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D))).hom ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGAction A D E F) := by
   ext n p
   rcases p with ⟨x, a⟩
   change presentedPerfectDGNativeActionSimplex A D E x
@@ -63,7 +63,7 @@ lemma presentedPerfectDGNativeCoreAction_fixed (F : DGFunctor A D E) :
 /-- 関手空間への実射を元の入力に固定すると、元の Perf 関手の curry を回収する。 -/
 lemma presentedPerfectDGNativeFamilyMap_fixed (F : DGFunctor A D E) :
     presentedPerfectDGNativeParameterPoint A D E F ≫ presentedPerfectDGNativeFamilyMap A D E =
-      curry' (dgNerve.map (presentedPerfectDGAction A D E F)) := by
+      curry' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGAction A D E F)) := by
   rw [presentedPerfectDGNativeFamilyMap, ← curry_natural_left, curry', ← id_tensorHom,
     presentedPerfectDGNativeCoreAction_fixed]
 

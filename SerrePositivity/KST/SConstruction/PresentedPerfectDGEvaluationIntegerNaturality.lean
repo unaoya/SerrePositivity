@@ -28,12 +28,12 @@ lemma presentedPerfectDGBFEvaluation_integer_naturality
     perfectDGStableMap A X Y f.down
   let r := presentedPerfectDGBFInputStableMap A f ≫
     (presentedPerfectDGBFEvaluationEquivalence A Y).hom
-  have hl : IsExactFunctor l.val :=
-    @isExactFunctor_comp _ _ _ _ _
+  have hl : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor l.val :=
+    @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _ _ _ _
       (presentedPerfectDGEvaluationNerve_isExactFunctor A X)
       (perfectDGExtensionNerve_isExactFunctor A X Y f.down)
-  have hr : IsExactFunctor r.val :=
-    @isExactFunctor_comp _ _ _ _ _
+  have hr : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor r.val :=
+    @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _ _ _ _
       (presentedPerfectDGActionNerve_isExactFunctor A X Y f.down)
       (presentedPerfectDGEvaluationNerve_isExactFunctor A Y)
   have h := kHomotopyMap_eq_of_exact_functorIso l r hl hr

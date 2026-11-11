@@ -33,7 +33,7 @@ lemma dgSmallPerfectBaseZero_isZero :
   dgSmallPerfectEnvelopeZero_isZero R D Empty (dgSmallPerfectBaseFamily R D)
 
 /-- 同じ小さい実 Perf 始域の native nerve は安定。 -/
-lemma dgSmallPerfectBaseNerve_isStable : IsStable (dgNerve R (DGSmallPerfectBase R D)) :=
+lemma dgSmallPerfectBaseNerve_isStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGSmallPerfectBase R D)) :=
   dgSmallPerfectEnvelopeNerve_isStable R D Empty (dgSmallPerfectBaseFamily R D)
 
 end SerrePositivity.KST.SConstruction

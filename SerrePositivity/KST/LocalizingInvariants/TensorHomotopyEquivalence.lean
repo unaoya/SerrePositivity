@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-!
 概要：二つの単体的ホモトピー同値の積は、元の積射のホモトピー同値。
@@ -70,9 +70,9 @@ def tensor {A B X Y : SSet.{u}} {f₀ f₁ : A ⟶ X} {g₀ g₁ : B ⟶ Y}
 end TensorHomotopy
 
 lemma tensor_simplicialHomotopyEquivalence {A B X Y : SSet.{u}}
-    {f : A ⟶ X} {g : B ⟶ Y} (hf : IsSimplicialHomotopyEquivalence f)
-    (hg : IsSimplicialHomotopyEquivalence g) :
-    IsSimplicialHomotopyEquivalence (f ⊗ₘ g) := by
+    {f : A ⟶ X} {g : B ⟶ Y} (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence f)
+    (hg : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence g) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (f ⊗ₘ g) := by
   obtain ⟨f', ⟨H₀⟩, ⟨H₁⟩⟩ := hf
   obtain ⟨g', ⟨K₀⟩, ⟨K₁⟩⟩ := hg
   refine ⟨f' ⊗ₘ g', ?_, ?_⟩

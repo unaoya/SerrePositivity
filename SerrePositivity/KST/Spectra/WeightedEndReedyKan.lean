@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.WeightTensorCofibrancy
 public import SerrePositivity.KST.Spectra.CosimplicialHornFactorization
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedFunctor
 
 /-!
 概要：Reedy cofibrant な重みと Reedy fibrant な係数の weighted end は Kan。
@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedFunctor
 universe u
 open CategoryTheory CategoryTheory.Limits MonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open SerrePositivity.Reedy SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.Reedy
 open scoped Simplicial
 
 namespace SerrePositivity.KST.Spectra.WeightedEndReedyKan
@@ -41,7 +41,7 @@ def ordinaryFamily {W X : CosimplicialObject SSet.{u}} {A : SSet.{u}}
 lemma kanComplex (W X : CosimplicialObject SSet.{u})
     (hW : reedyLeft simplex (MorphismProperty.monomorphisms SSet.{u}) (initial.to W))
     (hX : reedyRight simplex modelCategoryQuillen.J.rlp (terminal.from X)) :
-    KanComplex (weightedSections (AsSmall.down ⋙ W) (AsSmall.down ⋙ X)) := by
+    KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (AsSmall.down ⋙ W) (AsSmall.down ⋙ X)) := by
   let := CosimplicialHornFactorization.hornWeakFactorization.{u}
   apply (isFibrant_iff _).mpr
   apply (modelCategoryQuillen.fibration_iff _).mpr
@@ -57,16 +57,16 @@ lemma kanComplex (W X : CosimplicialObject SSet.{u})
     Lifting.hasLiftingProperty simplex
   constructor
   intro a b sq
-  let q : CommSq (ordinaryFamily (weightedSectionsUncurry a))
+  let q : CommSq (ordinaryFamily (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry a))
       (WeightTensorLatching.map W i) (terminal.from X) (terminal.from _) :=
     ⟨terminal.hom_ext _ _⟩
   refine CommSq.HasLift.mk' {
-    l := weightedSectionsLift (smallFamily q.lift)
+    l := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (smallFamily q.lift)
     fac_left := ?_
     fac_right := terminal.hom_ext _ _ }
-  apply (weightedSectionsHomEquiv (AsSmall.down ⋙ W) (AsSmall.down ⋙ X) A).injective
-  change weightedSectionsUncurry (i ≫ weightedSectionsLift (smallFamily q.lift)) = _
-  rw [weightedSectionsUncurry_precomp, weightedSectionsUncurry_lift]
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsHomEquiv (AsSmall.down ⋙ W) (AsSmall.down ⋙ X) A).injective
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (i ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (smallFamily q.lift)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_precomp, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_lift]
   apply NatTrans.ext
   funext j
   exact NatTrans.congr_app q.fac_left (AsSmall.down.obj j)

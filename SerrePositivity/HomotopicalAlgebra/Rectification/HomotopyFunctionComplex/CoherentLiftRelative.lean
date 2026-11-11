@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.FixedBoundaryExtensions
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceSpace
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionLiftPrecomposition
@@ -50,15 +50,15 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
   (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
 
 abbrev vertices (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) : SSet.{v} :=
-  SimplicialModel.VertexTuples.vertices (CoherentLiftTuples.StrictLift X Y f)
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.vertices (CoherentLiftTuples.StrictLift X Y f)
 
 abbrev vertexInclusion (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) :
     vertices X Y f ⟶ CoherentLiftTuples.obj X Y f :=
-  SimplicialModel.VertexTuples.inclusion _
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.inclusion _
 
 abbrev vertexData (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) :
     vertices X Y f ⟶ ResolutionLiftSpace.obj X Y f :=
-  SimplicialModel.VertexTuples.pointsMap (CoherentLiftTuples.point X Y f)
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap (CoherentLiftTuples.point X Y f)
 
 /-- The actual space of all interpolations retaining all strict lift vertices. -/
 abbrev obj (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) : SSet.{v} :=
@@ -73,7 +73,7 @@ include hcof hfib in
 lemma projection_trivialFibration (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) :
     trivialFibrations SSet.{v}
       (SimplicialModel.RelativeChoiceSpace.projection (vertexInclusion X Y f) (vertexData X Y f)) :=
-  SimplicialModel.RelativeChoiceSpace.projection_trivialFibration hcof hfib _ _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.projection_trivialFibration hcof hfib _ _
     (ResolutionLiftSpace.projection X Y f)
     (ResolutionLiftSpace.projection_trivialFibration hcof X Y f)
 
@@ -91,7 +91,7 @@ lemma point_post (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶
 
 abbrev postBoundary (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ W) :
     vertices X Y f ⟶ ResolutionLiftSpace.obj X W (f ≫ g.base) :=
-  SimplicialModel.VertexTuples.pointsMap
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap
     (fun k => CoherentLiftTuples.point X W (f ≫ g.base) (postStrict X Y W f g k))
 
 abbrev postLeft (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ W) :
@@ -100,19 +100,19 @@ abbrev postLeft (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ 
 
 abbrev postRight (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ W) :
     CoherentLiftTuples.obj X Y f ⟶ ResolutionLiftSpace.obj X W (f ≫ g.base) :=
-  SimplicialModel.VertexTuples.map (postStrict X Y W f g) ≫
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (postStrict X Y W f g) ≫
     CoherentLiftTuples.interpolation hcof X W (f ≫ g.base)
 
 lemma postLeft_vertices (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ W) :
     vertexInclusion X Y f ≫ postLeft hcof X Y W f g = postBoundary X Y W f g := by
   rw [postLeft, ← Category.assoc, CoherentLiftTuples.interpolation_vertices,
-    SimplicialModel.VertexTuples.pointsMap_postcomp]
-  exact congrArg SimplicialModel.VertexTuples.pointsMap (funext (point_post X Y W f g))
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap_postcomp]
+  exact congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap (funext (point_post X Y W f g))
 
 lemma postRight_vertices (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ W) :
     vertexInclusion X Y f ≫ postRight hcof X Y W f g = postBoundary X Y W f g := by
-  rw [postRight, ← Category.assoc, SimplicialModel.VertexTuples.inclusion_map, Category.assoc,
-    CoherentLiftTuples.interpolation_vertices, SimplicialModel.VertexTuples.verticesMap_pointsMap]
+  rw [postRight, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.inclusion_map, Category.assoc,
+    CoherentLiftTuples.interpolation_vertices, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.verticesMap_pointsMap]
 
 /-- Relative comparison choices for postcomposition form another actual simplicial set. -/
 abbrev postChoiceSpace (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ W) : SSet.{v} :=
@@ -122,7 +122,7 @@ include hcof hfib in
 lemma postChoiceSpace_extension (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ W)
     {K L : SSet.{v}} (j : K ⟶ L) [Mono j] (a : K ⟶ postChoiceSpace X Y W f g) :
     ∃ e : L ⟶ postChoiceSpace X Y W f g, j ≫ e = a :=
-  SimplicialModel.RelativeChoiceSpace.extension hcof hfib _ _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.extension hcof hfib _ _
     (ResolutionLiftSpace.projection X W (f ≫ g.base))
     (ResolutionLiftSpace.projection_trivialFibration hcof X W (f ≫ g.base)) j a
 
@@ -142,7 +142,7 @@ lemma post_relative_homotopy (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base
         vertices X Y f ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫
           SimplicialModel.RelativeChoiceSpace.pointUnitIso.hom) ≫ (ρ_ _).hom ≫
             postBoundary X Y W f g :=
-  SimplicialModel.RelativeChoiceSpace.relative_homotopy hcof hfib _ _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.relative_homotopy hcof hfib _ _
     (ResolutionLiftSpace.projection X W (f ≫ g.base))
     (ResolutionLiftSpace.projection_trivialFibration hcof X W (f ≫ g.base)) _ _
     (postLeft_vertices hcof X Y W f g) (postRight_vertices hcof X Y W f g)
@@ -161,7 +161,7 @@ lemma point_pre (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W.bas
 
 abbrev preBoundary (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W.base) :
     vertices Y W g ⟶ ResolutionLiftSpace.obj X W (f.base ≫ g) :=
-  SimplicialModel.VertexTuples.pointsMap
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap
     (fun k => CoherentLiftTuples.point X W (f.base ≫ g) (preStrict X Y W f g k))
 
 abbrev preLeft (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W.base)
@@ -171,20 +171,20 @@ abbrev preLeft (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W.base
 
 abbrev preRight (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W.base) :
     CoherentLiftTuples.obj Y W g ⟶ ResolutionLiftSpace.obj X W (f.base ≫ g) :=
-  SimplicialModel.VertexTuples.map (preStrict X Y W f g) ≫
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (preStrict X Y W f g) ≫
     CoherentLiftTuples.interpolation hcof X W (f.base ≫ g)
 
 lemma preLeft_vertices (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W.base)
     (φ : ResolutionLiftPrecomposition.FrameMap f) :
     vertexInclusion Y W g ≫ preLeft hcof X Y W f g φ = preBoundary X Y W f g := by
   rw [preLeft, ← Category.assoc, CoherentLiftTuples.interpolation_vertices,
-    SimplicialModel.VertexTuples.pointsMap_postcomp]
-  exact congrArg SimplicialModel.VertexTuples.pointsMap (funext (point_pre X Y W f g φ))
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap_postcomp]
+  exact congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap (funext (point_pre X Y W f g φ))
 
 lemma preRight_vertices (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W.base) :
     vertexInclusion Y W g ≫ preRight hcof X Y W f g = preBoundary X Y W f g := by
-  rw [preRight, ← Category.assoc, SimplicialModel.VertexTuples.inclusion_map, Category.assoc,
-    CoherentLiftTuples.interpolation_vertices, SimplicialModel.VertexTuples.verticesMap_pointsMap]
+  rw [preRight, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.inclusion_map, Category.assoc,
+    CoherentLiftTuples.interpolation_vertices, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.verticesMap_pointsMap]
 
 abbrev preChoiceSpace (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W.base) : SSet.{v} :=
   SimplicialModel.RelativeChoiceSpace.obj (vertexInclusion Y W g) (preBoundary X Y W f g)
@@ -193,7 +193,7 @@ include hcof hfib in
 lemma preChoiceSpace_extension (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W.base)
     {K L : SSet.{v}} (j : K ⟶ L) [Mono j] (a : K ⟶ preChoiceSpace X Y W f g) :
     ∃ e : L ⟶ preChoiceSpace X Y W f g, j ≫ e = a :=
-  SimplicialModel.RelativeChoiceSpace.extension hcof hfib _ _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.extension hcof hfib _ _
     (ResolutionLiftSpace.projection X W (f.base ≫ g))
     (ResolutionLiftSpace.projection_trivialFibration hcof X W (f.base ≫ g)) j a
 
@@ -203,7 +203,7 @@ lemma pre_relative_homotopy (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.ba
     Nonempty (SimplicialModel.RelativeChoiceSpace.FixedBoundaryHomotopy
       (vertexInclusion Y W g) (preBoundary X Y W f g)
       (preLeft hcof X Y W f g φ) (preRight hcof X Y W f g)) :=
-  SimplicialModel.RelativeChoiceSpace.nonempty_fixedBoundaryHomotopy hcof hfib _ _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.nonempty_fixedBoundaryHomotopy hcof hfib _ _
     (ResolutionLiftSpace.projection X W (f.base ≫ g))
     (ResolutionLiftSpace.projection_trivialFibration hcof X W (f.base ≫ g)) _ _
     (preLeft_vertices hcof X Y W f g φ) (preRight_vertices hcof X Y W f g)

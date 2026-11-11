@@ -43,9 +43,9 @@ theorem constant_groupMap_bijective (X : OmegaSpectrum.{u}) (k : ℕ)
 /-- 実際の定数写像の誘導準同型を順写像とする、有理化各段の高次群の同型。 -/
 def constantGroupEquiv (X : OmegaSpectrum.{u}) (k : ℕ)
     (G : Type u) [Group G] [Finite G] (r : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((OmegaSpectrum.rationalization X).level k).space.right (r + 1)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup ((OmegaSpectrum.rationalization X).level k).space.right (r + 1)
       ((OmegaSpectrum.rationalization X).level k).space.basepoint ≃*
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup
       (UnbasedPointedMapping.obj (nerve (AsSmall.{u} (SingleObj G)))
         ((OmegaSpectrum.rationalization X).level k).space).right (r + 1)
       (UnbasedPointedMapping.obj (nerve (AsSmall.{u} (SingleObj G)))

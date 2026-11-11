@@ -23,7 +23,7 @@ variable {S : PointedSimplicialSet.{u}} (I : LoopExchangeFamily S)
 variable {Y Z Z' : PointedSimplicialSet.{u}} [KanComplex Y.right]
   [KanComplex Z.right] [KanComplex Z'.right]
   (h : Y ⟶ PointedObject.basedHom S Z)
-  (hh : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism h.right) (v : Z ⟶ Z')
+  (hh : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism h.right) (v : Z ⟶ Z')
 
 /-- 同じ射影比較の二次元射を、同じ内部 Hom の二重 loop の後合成へ写す。 -/
 def exchangePostProjectionSquare :
@@ -66,7 +66,7 @@ def exchangeRestrictedNaturalitySquare :
       (((I.interval Z').pre
         (doublePost h ≫ TwoLoopSource.loopPost S v)).path) where
   h := (I.naturality v).h ≫
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (doublePost h)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (doublePost h)
       (doubleLoop (PointedObject.basedHom S Z'))).right
   h₀ := by
     rw [← Category.assoc, (I.naturality v).h₀]
@@ -108,7 +108,7 @@ lemma exchangeRestrictedNaturalitySquare_start :
         ((swap Y ≫ doublePost h) ≫ TwoLoopSource.loopPost S v)) := by
   change SquareAdjustment.leftSide ≫ ((I.naturality v).h ≫ _) = _
   rw [← Category.assoc, I.start, SSet.const_comp]
-  have hv : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (doublePost h)
+  have hv : (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (doublePost h)
       (doubleLoop (PointedObject.basedHom S Z'))).right.app _
         (PointedMapping.familyVertex (TwoLoopSource.loopPost S v ≫
           swap (PointedObject.basedHom S Z'))) =
@@ -125,7 +125,7 @@ lemma exchangeRestrictedNaturalitySquare_finish :
         ((reversal Y ≫ doublePost h) ≫ TwoLoopSource.loopPost S v)) := by
   change SquareAdjustment.rightSide ≫ ((I.naturality v).h ≫ _) = _
   rw [← Category.assoc, I.finish, SSet.const_comp]
-  have hv : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (doublePost h)
+  have hv : (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (doublePost h)
       (doubleLoop (PointedObject.basedHom S Z'))).right.app _
         (PointedMapping.familyVertex (TwoLoopSource.loopPost S v ≫
           reversal (PointedObject.basedHom S Z'))) =

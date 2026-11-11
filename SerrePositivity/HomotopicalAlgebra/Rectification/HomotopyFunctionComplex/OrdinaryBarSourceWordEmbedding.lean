@@ -46,7 +46,7 @@ open FreeGeneratorCategories OrdinaryBarFreeResolutionSeed OrdinaryBarFixedWordR
 open OrdinaryBarDiagonalAmbientHom OrdinaryBarDiagonalHomAugmentation
 variable (C : Type u) [Category.{v} C] (X Y : D C)
 
-def ambient : UniverseLift.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) ⟶
+def ambient : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) ⟶
     ambientHom C X Y where
   app n := ↾fun f => (RetractWords.sourceFunctor (degree (D C) (n.unop.len + 1))
     (WordSegment.degree.{max u v} n)).map f.down
@@ -81,7 +81,7 @@ lemma ambient_augmentation : ambient C X Y ≫ ambientAugmentation C X Y =
   rw [RetractWords.augmentation_source]
   rfl
 
-def small : UniverseLift.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) ⟶ hom C X Y :=
+def small : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) ⟶ hom C X Y :=
   ambient C X Y ≫ transfer C X Y
 
 lemma small_augmentation : small C X Y ≫ smallAugmentation C X Y =

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DGModulePropertyChoices
-public import SerrePositivity.InfinityCategories.Stable.BicartesianCriterion
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModulePropertyChoices
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BicartesianCriterion
 
 /-! # dg 加群の実有限操作に閉じた対象条件
 概要：実零加群・cone・fiber に閉じた対象条件を束ねる。
@@ -22,6 +22,6 @@ structure DGModuleClosedOperations (P : RightModule A D → Prop) : Prop where
       P (ForgetEnrichment.to (Complex A) (moduleCone A D f))
   fiber_mem {M N : ModuleCategory A D} (f : M ⟶ N) :
     P (ForgetEnrichment.to (Complex A) M) → P (ForgetEnrichment.to (Complex A) N) →
-      P (dgModuleFiber A D f)
+      P (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleFiber A D f)
 
 end SerrePositivity.KST.SConstruction

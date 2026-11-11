@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FunctorIsoCurryPresentation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoCurryPresentation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.VertexIsoIdentityFactor
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.HomotopyConstantComponent
 

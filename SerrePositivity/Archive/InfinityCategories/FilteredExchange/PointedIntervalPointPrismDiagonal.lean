@@ -1,12 +1,12 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransportAlgebra
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedIntervalUniversalSourceEndpoint
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.TransportPointDiagonalComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedIntervalTransportPointPrism
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalPrismBoundaryEquality
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalTransportConstantInterval
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoTransportAlgebra
 /-!
 概要：元の全初期値上の一点普遍比較を、同じ実 pointed prism の指定対角比較へ戻す。
 方針：初期係数制限後の同じ二輸送の比較と実 prism の一致を合成する。
@@ -17,7 +17,7 @@ public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransp
 @[expose] public section
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 noncomputable section
 namespace SerrePositivity.InfinityCategories.F2
 set_option backward.isDefEq.respectTransparency false

@@ -29,15 +29,15 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u}) {x y : I} (f
 
 /-- 元の単一射の同じ全補正円柱を、同じ直通列点の実辺として読む。 -/
 def monicKTracedUnaryCorrectionPointEdge (n : ℕ) :=
-  pointFamilyHomotopyEdge (functorHomotopyPrecomp (monicKPrismUnaryCorrectionData F f n).homotopy
-    (nervePoint (coherentArrowStringDirect f)))
+  pointFamilyHomotopyEdge (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (monicKPrismUnaryCorrectionData F f n).homotopy
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f)))
 
 /-- 同じ実辺の全区間は、元の同じ単一射補正の直通列制限そのもの。 -/
 lemma monicKTracedUnaryCorrectionPointEdge_map (n : ℕ) :
     SSet.yonedaEquiv.symm (monicKTracedUnaryCorrectionPointEdge F f n).edge =
       monicKTracedUnaryCorrectionAtPoint F f n := by
   rw [monicKTracedUnaryCorrectionPointEdge, pointFamilyHomotopyEdge_map]
-  change _ ≫ (nervePoint (coherentArrowStringDirect f) ▷ (Δ[1] : SSet.{u})) ≫ _ = _
+  change _ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) ▷ (Δ[1] : SSet.{u})) ≫ _ = _
   rw [← Category.assoc, intervalParameterPoint_of_map]
   rfl
 

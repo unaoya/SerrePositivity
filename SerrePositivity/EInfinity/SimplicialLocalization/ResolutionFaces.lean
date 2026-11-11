@@ -26,7 +26,7 @@ open CategoryTheory Opposite
 open SerrePositivity.HomotopyFunctionComplex.ComonadResolutionOperators
 open scoped Simplicial
 
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 /-- 概要：一次の外側の面は同じ列の外側合成を与える（Dwyer–Kan）。
 方針：外側の余単位の局所化の因子化で対象移送を相殺する。
@@ -40,9 +40,9 @@ lemma localizationResolutionHom_delta_zero {X Y : C.category}
       ((localizedFreeResolution C).δ (0 : Fin 2)).toFunctor =
     pathComposition (Paths C.category) ⋙ C.weakEquivalences.paths.Q := by
     change C.weakEquivalences.paths.paths.Q ⋙
-      strictLocalizationMap ((freeResolution C).δ (0 : Fin 2)) = _
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap ((freeResolution C).δ (0 : Fin 2)) = _
     rw [freeResolution_face]
-    exact strictLocalizationMap_fac (freeCounit C.weakEquivalences.paths)
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap_fac (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit C.weakEquivalences.paths)
   have h := Functor.congr_hom hF f
   simp only [Functor.comp_map] at h
   change eqToHom _ ≫ ((localizedFreeResolution C).δ (0 : Fin 2)).toFunctor.map
@@ -68,9 +68,9 @@ lemma localizationResolutionHom_delta_one {X Y : C.category}
       ((localizedFreeResolution C).δ (1 : Fin 2)).toFunctor =
     Cat.freeMap (pathComposition C.category).toPrefunctor ⋙ C.weakEquivalences.paths.Q := by
     change C.weakEquivalences.paths.paths.Q ⋙
-      strictLocalizationMap ((freeResolution C).δ (1 : Fin 2)) = _
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap ((freeResolution C).δ (1 : Fin 2)) = _
     rw [freeResolution_face]
-    exact strictLocalizationMap_fac (freeRelativeMap (freeCounit C.weakEquivalences))
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap_fac (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit C.weakEquivalences))
   have h := Functor.congr_hom hF f
   simp only [Functor.comp_map] at h
   change eqToHom _ ≫ ((localizedFreeResolution C).δ (1 : Fin 2)).toFunctor.map

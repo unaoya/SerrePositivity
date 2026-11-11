@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference
 public import SerrePositivity.KST.Spectra.HornMissingFaceComparison
 
 /-!
@@ -28,33 +28,33 @@ variable {X : SSet.{u}} [KanComplex X] {x : X _⦋0⦌} {n : ℕ}
 def ofFiller (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
     (φ : (Δ[n + 3] : SSet.{u}) ⟶ X)
     (hφ : ∀ j, j ≠ (Fin.last (n + 1)).castSucc.castSucc →
-      stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face R S j) : X.PtSimplex (n + 2) x where
+      stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.face R S j) : X.PtSimplex (n + 2) x where
   map := stdSimplex.δ (Fin.last (n + 1)).castSucc.castSucc ≫ φ
   comm := by
     ext j : 1
     simp only [boundary.ι_ι_assoc, Subcomplex.ofSimplex_ι, comp_const]
-    exact _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.output_face R S φ hφ j
+    exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.output_face R S φ hφ j
 
 /-- 二つの零ホモトピーの差の高次ホモトピー類。 -/
 def difference (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1))) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex R S)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup X (n + 1) x := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.simplex R S)
 
 /-- 任意の充填は、同じ差のホモトピー類を与える。 -/
 lemma difference_eq_ofFiller (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
     (φ : (Δ[n + 3] : SSet.{u}) ⟶ X)
     (hφ : ∀ j, j ≠ (Fin.last (n + 1)).castSucc.castSucc →
-      stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face R S j) :
-    difference R S = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (ofFiller R S φ hφ) := by
+      stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.face R S j) :
+    difference R S = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (ofFiller R S φ hφ) := by
   apply missingFace_class_eq (Fin.last (n + 1)).castSucc.castSucc
-    (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex R S) (ofFiller R S φ hφ) (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible R S).liftOfKanComplex φ rfl rfl
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.simplex R S) (ofFiller R S φ hφ) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.compatible R S).liftOfKanComplex φ rfl rfl
   apply horn.hom_ext
   intro j hj
   have he : horn.ι (Fin.last (n + 1)).castSucc.castSucc j hj ≫
       ((horn (n + 3) (Fin.last (n + 1)).castSucc.castSucc).ι ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible R S).liftOfKanComplex) =
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.compatible R S).liftOfKanComplex) =
     horn.ι (Fin.last (n + 1)).castSucc.castSucc j hj ≫
       ((horn (n + 3) (Fin.last (n + 1)).castSucc.castSucc).ι ≫ φ) := by
-    rw [horn.ι_ι_assoc, horn.ι_ι_assoc, (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible R S).δ_liftOfKanComplex j hj, hφ j hj]
+    rw [horn.ι_ι_assoc, horn.ι_ι_assoc, (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.compatible R S).δ_liftOfKanComplex j hj, hφ j hj]
   have hv := congrArg SSet.yonedaEquiv he
   simpa only [SSet.yonedaEquiv_comp, horn.yonedaEquiv_ι] using hv
 

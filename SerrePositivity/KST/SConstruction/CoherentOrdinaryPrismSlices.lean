@@ -74,10 +74,10 @@ lemma coherentStringVertexObject_precomp {I J : Type u} [SmallCategory I] [Small
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve I) ⟶ SimplicialNerve C) (j : J) :
     coherentStringVertexObject ((SSet.uliftFunctor.{v, u}).map (nerveMap G) ≫ Q) j =
       coherentStringVertexObject Q (G.obj j) := by
-  have hv : (nerveMap G).app (Opposite.op ⦋0⦌) (nerveVertex j) =
-      nerveVertex (G.obj j) := ComposableArrows.ext₀ rfl
-  change coherentNerveObject (Q.app _ (ULift.up
-    ((nerveMap G).app (Opposite.op ⦋0⦌) (nerveVertex j)))) = _
+  have hv : (nerveMap G).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex j) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (G.obj j) := ComposableArrows.ext₀ rfl
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (Q.app _ (ULift.up
+    ((nerveMap G).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex j)))) = _
   rw [hv]
   rfl
 

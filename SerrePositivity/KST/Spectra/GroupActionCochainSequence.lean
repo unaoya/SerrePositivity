@@ -41,7 +41,7 @@ def sequence {G : Type u} [Group G] (A : GroupAction.{u} G) (j : SimplexCategory
 使われ方：HA §1.4.2。cochain の Ω 条件の照合。 -/
 lemma sequence_adjoint {G : Type u} [Group G] (A : GroupAction.{u} G)
     (j : SimplexCategory) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((sequence A j).level n).space ((sequence A j).level (n + 1)).space
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((sequence A j).level n).space ((sequence A j).level (n + 1)).space
       ((sequence A j).sigma n) = (adjointTransformation A n).app j :=
   curry_uncurry _
 

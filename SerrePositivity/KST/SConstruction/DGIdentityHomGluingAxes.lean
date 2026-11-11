@@ -28,10 +28,10 @@ local notation "H" => dgIdentityHomGluingFunctor R C F G a h
 方針：元左射影の厳密関手等号を評価する。
 規約：全次数鎖写像の等号。使われ方：同じ実 cone 左成分の照合。 -/
 lemma dgIdentityHomGluingFunctor_left_map (x y : P) :
-    (H).map x y ≫ dgGluingLeftHomMap R C C (M) ((H).obj x) ((H).obj y) = F.map x y := by
-  have he : HEq (((H).comp (dgGluingLeft R C C (M))).map x y) (F.map x y) := by
+    (H).map x y ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeftHomMap R C C (M) ((H).obj x) ((H).obj y) = F.map x y := by
+  have he : HEq (((H).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C C (M))).map x y) (F.map x y) := by
     have hp := dgIdentityHomGluingFunctor_left R C F G a h
-    generalize (H).comp (dgGluingLeft R C C (M)) = K at hp ⊢
+    generalize (H).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C C (M)) = K at hp ⊢
     cases hp
     rfl
   exact eq_of_heq he
@@ -40,12 +40,12 @@ lemma dgIdentityHomGluingFunctor_left_map (x y : P) :
 方針：元右射影の厳密関手等号と元 Hom 射影の回収を使う。
 規約：全次数鎖写像の等号。使われ方：同じ実 cone 右成分の照合。 -/
 lemma dgIdentityHomGluingFunctor_right_map (x y : P) :
-    (H).map x y ≫ dgGluingRightHomMap R C C (M) ((H).obj x) ((H).obj y) = G.map x y := by
-  have he : HEq (((H).comp (dgGluingRight R C C (M))).map x y) (G.map x y) := by
+    (H).map x y ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightHomMap R C C (M) ((H).obj x) ((H).obj y) = G.map x y := by
+  have he : HEq (((H).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C C (M))).map x y) (G.map x y) := by
     have hp := dgIdentityHomGluingFunctor_right R C F G a h
-    generalize (H).comp (dgGluingRight R C C (M)) = K at hp ⊢
+    generalize (H).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C C (M)) = K at hp ⊢
     cases hp
     rfl
   exact (congrArg (fun t => (H).map x y ≫ t)
-    (dgGluingRight_map R C C (M) ((H).obj x) ((H).obj y)).symm).trans (eq_of_heq he)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight_map R C C (M) ((H).obj x) ((H).obj y)).symm).trans (eq_of_heq he)
 end SerrePositivity.KST.SConstruction

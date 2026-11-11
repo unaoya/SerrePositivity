@@ -46,8 +46,8 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
   (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
 
 def transported {X Y : Cᵒᵖ × C} (f : X ⟶ Y) :
-    AnodyneHomotopy.anodyneQ.obj (UniverseLift.obj.{max u v} (value hcof hfib X)) ⟶
-      AnodyneHomotopy.anodyneQ.obj (UniverseLift.obj.{max u v} (value hcof hfib Y)) :=
+    AnodyneHomotopy.anodyneQ.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (value hcof hfib X)) ⟶
+      AnodyneHomotopy.anodyneQ.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (value hcof hfib Y)) :=
   (comparisonIso hcof hfib X).hom ≫
     AnodyneHomotopy.anodyneQ.map (OrdinaryResolutionBar.functor.map f) ≫
       (comparisonIso hcof hfib Y).inv
@@ -68,7 +68,7 @@ def arrow {X Y : Cᵒᵖ × C} (f : X ⟶ Y) : value hcof hfib X ⟶ value hcof 
     (value_kan hcof hfib Y) (transported hcof hfib f)
 
 lemma arrow_map {X Y : Cᵒᵖ × C} (f : X ⟶ Y) :
-    AnodyneHomotopy.anodyneQ.map (UniverseLift.map.{max u v} (arrow hcof hfib f)) =
+    AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{max u v} (arrow hcof hfib f)) =
       transported hcof hfib f :=
   UniverseLift.localizedRepresentative_map _ _ _ _ _
 
@@ -95,7 +95,7 @@ one actual interval, retaining both original composite maps as endpoints. -/
 lemma square_homotopy {X Y : Cᵒᵖ × C} (f : X ⟶ Y) :
     Nonempty (SSet.Homotopy
       (OrdinaryResolutionBar.functor.map f ≫ toReference hcof hfib Y)
-      (toReference hcof hfib X ≫ UniverseLift.map.{max u v} (arrow hcof hfib f))) := by
+      (toReference hcof hfib X ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{max u v} (arrow hcof hfib f))) := by
   apply (KanLocalizedRepresentatives.map_eq_iff_homotopy AnodyneHomotopy.anodyneQ
     (UniverseLift.horn_terminal_map (value_kan hcof hfib Y)) _ _).mp
   rw [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_comp,

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.SpanCompatibleTransportRepresentation
-public import SerrePositivity.InfinityCategories.F1.Transport.PointedFamilyPointHom
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PointedFamilyPointHom
 
 /-! # 指定復元 span の同じ三角を元の全空間の点と pointed space で評価する -/
 
@@ -14,19 +14,19 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 namespace StrictTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.StrictTransportComparisonSpan p)
 
 /-- 相対三角の元の全空間への像。元の二脚と同じ比較射を使う。 -/
 def representationTriangle :
-    FunctorIso (s.coherentSource ≫ (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s).hom) s.coherentTarget :=
-  VertexIso.map (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s).triangle
-    (vertexFiberι
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (s.coherentSource ≫ (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s).hom) s.coherentTarget :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s).triangle
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι
       ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj s.total)).map
-        (leftUnstraighteningProjection (leftCoherentTransport p)))
-      (functorVertex s.coherentBase))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransport p)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex s.coherentBase))
 
 /-- 元の指定点で同じ三角を評価した全空間の比較。 -/
-def representationTotalPointIso (z : s.total _⦋0⦌) : VertexIso
+def representationTotalPointIso (z : s.total _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
     ((s.coherentSource ≫ (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s).hom).app (Opposite.op ⦋0⦌) (ULift.up z))
     (s.coherentTarget.app (Opposite.op ⦋0⦌) (ULift.up z)) := by
   have : InnerFibration s.projection := s.inner
@@ -34,36 +34,36 @@ def representationTotalPointIso (z : s.total _⦋0⦌) : VertexIso
   exact (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representationTriangle s).app (ULift.up z)
 
 /-- 表現の同じ pointed map と weighted 脚の同じ指定点を結ぶ実比較。 -/
-def representationPointedPointIso (z : s.total _⦋0⦌) : VertexIso
+def representationPointedPointIso (z : s.total _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
     ((s.coherentSource ≫ (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representation s).pointedMap).app
       (Opposite.op ⦋0⦌) (ULift.up z))
-    ((s.coherentTarget ≫ pullback.fst pointedSpaceProjection (leftCoherentTransport p)).app
+    ((s.coherentTarget ≫ pullback.fst _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransport p)).app
       (Opposite.op ⦋0⦌) (ULift.up z)) :=
-  VertexIso.map ((_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representationTotalPointIso s) z)
-    (pullback.fst pointedSpaceProjection (leftCoherentTransport p))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map ((_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representationTotalPointIso s) z)
+    (pullback.fst _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransport p))
 
 /-- 同じ指定点比較の底への作用は、元の点の射を保持する。 -/
 theorem representationPointedPointIso_pointHom (z : s.total _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom ((s.coherentSource ≫ (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representation s).pointedMap).app
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pointedVertexPointHom ((s.coherentSource ≫ (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representation s).pointedMap).app
       (Opposite.op ⦋0⦌) (ULift.up z)) ≫
-      (hoFunctor.map pointedSpaceProjection).toFunctor.map
+      (hoFunctor.map _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceProjection).toFunctor.map
         ((_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representationPointedPointIso s) z).hom =
-    _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom
-      ((s.coherentTarget ≫ pullback.fst pointedSpaceProjection (leftCoherentTransport p)).app
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pointedVertexPointHom
+      ((s.coherentTarget ≫ pullback.fst _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransport p)).app
         (Opposite.op ⦋0⦌) (ULift.up z)) := by
-  have h := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom_comp_projection
-    (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexFiberPoint ((s.coherentSource ≫ (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representation s).pointedMap).app
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cosliceFiberPointHom_comp_projection
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pointedVertexFiberPoint ((s.coherentSource ≫ (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representation s).pointedMap).app
       (Opposite.op ⦋0⦌) (ULift.up z)))
-    (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexFiberPoint
-      ((s.coherentTarget ≫ pullback.fst pointedSpaceProjection (leftCoherentTransport p)).app
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pointedVertexFiberPoint
+      ((s.coherentTarget ≫ pullback.fst _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransport p)).app
         (Opposite.op ⦋0⦌) (ULift.up z)))
     ((_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representationPointedPointIso s) z).hom
-  change _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom ((s.coherentSource ≫ (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representation s).pointedMap).app
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pointedVertexPointHom ((s.coherentSource ≫ (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representation s).pointedMap).app
     (Opposite.op ⦋0⦌) (ULift.up z)) ≫
-      (𝟙 _ ≫ (hoFunctor.map pointedSpaceProjection).toFunctor.map
+      (𝟙 _ ≫ (hoFunctor.map _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceProjection).toFunctor.map
         ((_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representationPointedPointIso s) z).hom ≫ 𝟙 _) =
-    _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom
-      ((s.coherentTarget ≫ pullback.fst pointedSpaceProjection (leftCoherentTransport p)).app
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pointedVertexPointHom
+      ((s.coherentTarget ≫ pullback.fst _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransport p)).app
         (Opposite.op ⦋0⦌) (ULift.up z)) at h
   simpa only [Category.id_comp, Category.comp_id] using h
 

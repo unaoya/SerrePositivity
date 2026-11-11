@@ -19,9 +19,9 @@ variable (A : Type u) [CommRing A] (D E B T : Type v)
 
 /-- 元の native 関手族の各単体を、Serre 対角と元の全次数横合成で合成する。 -/
 def dgFunctorNativeComposeSimplex {N : ℕ}
-    (s : DGNerve.Simplex A (DGFunctor A D E) N)
-    (t : DGNerve.Simplex A (DGFunctor A E B) N) :
-    DGNerve.Simplex A (DGFunctor A D B) N :=
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (DGFunctor A D E) N)
+    (t : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (DGFunctor A E B) N) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (DGFunctor A D B) N :=
   (cubicalLambdaNativeSimplex A
     (cubicalLambdaFunctorPair A (simplexHAInverseFunctor A s) (simplexHAInverseFunctor A t))).map
     (dgFunctorHorizontalDG A D E B)
@@ -36,9 +36,9 @@ lemma dgFunctorNativeComposition_app (n : SimplexCategoryᵒᵖ)
 
 /-- 元の native 関手族の実横合成は、全単体で厳密に結合的。 -/
 lemma dgFunctorNativeComposeSimplex_associativity {N : ℕ}
-    (s : DGNerve.Simplex A (DGFunctor A D E) N)
-    (t : DGNerve.Simplex A (DGFunctor A E B) N)
-    (r : DGNerve.Simplex A (DGFunctor A B T) N) :
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (DGFunctor A D E) N)
+    (t : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (DGFunctor A E B) N)
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (DGFunctor A B T) N) :
     dgFunctorNativeComposeSimplex A D B T (dgFunctorNativeComposeSimplex A D E B s t) r =
       dgFunctorNativeComposeSimplex A D E T s (dgFunctorNativeComposeSimplex A E B T t r) := by
   unfold dgFunctorNativeComposeSimplex
@@ -49,7 +49,7 @@ lemma dgFunctorNativeComposeSimplex_associativity {N : ℕ}
 
 omit [DGCategory A E] [DGCategory A B] [DGCategory A T] [Small.{u} E] [Small.{u} B] in
 /-- 元の増大から元の恒等関手を選ぶ、全次数の native 単位単体。 -/
-def dgFunctorNativeIdentitySimplex (N : ℕ) : DGNerve.Simplex A (DGFunctor A D D) N :=
+def dgFunctorNativeIdentitySimplex (N : ℕ) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (DGFunctor A D D) N :=
   cubicalLambdaNativeSimplex A
     (DGFunctor.comp (cubicalLambdaCounit A (Δ[N] : SSet.{u})) (dgFunctorIdentityPoint A D))
 
@@ -64,14 +64,14 @@ lemma dgFunctorNativeIdentitySimplex_pullback {M N : ℕ} (α : Fin (M + 1) →o
 omit [DGCategory A E] [DGCategory A B] [DGCategory A T] [Small.{u} E] [Small.{u} B] in
 /-- 元の native 単位零単体は、元の恒等 dg 関手の頂点。 -/
 lemma dgFunctorNativeIdentitySimplex_zero :
-    dgFunctorNativeIdentitySimplex A D 0 = DGNerve.Simplex.vertex (DGFunctor.id D) := by
-  apply DGNerve.Simplex.vertexEquiv.injective
+    dgFunctorNativeIdentitySimplex A D 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (DGFunctor.id D) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.injective
   rfl
 
 omit [DGCategory A B] [DGCategory A T] [Small.{u} B] [Small.{u} E] in
 /-- 元の native 単位単体との左横合成は、元の全 native 単体を回収する。 -/
 lemma dgFunctorNativeComposeSimplex_left_unit {N : ℕ}
-    (s : DGNerve.Simplex A (DGFunctor A D E) N) :
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (DGFunctor A D E) N) :
     dgFunctorNativeComposeSimplex A D D E (dgFunctorNativeIdentitySimplex A D N) s = s := by
   unfold dgFunctorNativeComposeSimplex dgFunctorNativeIdentitySimplex
   rw [simplexHAInverseFunctor_native, ← cubicalLambdaNativeSimplex_post,
@@ -80,7 +80,7 @@ lemma dgFunctorNativeComposeSimplex_left_unit {N : ℕ}
 omit [DGCategory A B] [DGCategory A T] [Small.{u} B] in
 /-- 元の native 単位単体との右横合成は、元の全 native 単体を回収する。 -/
 lemma dgFunctorNativeComposeSimplex_right_unit {N : ℕ}
-    (s : DGNerve.Simplex A (DGFunctor A D E) N) :
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (DGFunctor A D E) N) :
     dgFunctorNativeComposeSimplex A D E E s (dgFunctorNativeIdentitySimplex A E N) = s := by
   unfold dgFunctorNativeComposeSimplex dgFunctorNativeIdentitySimplex
   rw [simplexHAInverseFunctor_native, ← cubicalLambdaNativeSimplex_post,

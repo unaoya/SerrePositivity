@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanConeNativePathDown
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackHomotopyPoint
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalPullbackHomotopyPoint
 
 /-!
 概要：元の coherent cospan 錐から、native 余極限写像の値の引き戻しへの比較射を作る。

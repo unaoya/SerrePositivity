@@ -24,8 +24,8 @@ lemma reversalTwice_conjugate_path (Z : PointedSimplicialSet.{u}) [KanComplex Z.
     (reversalTwice Z).path =
       (((CirclePower.reversalTwicePath.{u}.basedPre
         (PointedObject.basedHom CirclePower.space.{u} Z)).basedPost
-          (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Z).hom).pre
-            (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Z).inv).path := by
+          (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Z).hom).pre
+            (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Z).inv).path := by
   change (CirclePower.nestedReversalTwicePath Z).path = _
   rw [CirclePower.nestedReversalTwicePath_path]
   have he := PointedMapping.VerticalPath.basedIhomMap_path_congr
@@ -41,12 +41,12 @@ lemma reversalTwice_ihom_conjugate_path (P Z : PointedSimplicialSet.{u})
       ((((CirclePower.reversalTwicePath.{u}.basedPre
         (PointedObject.basedHom CirclePower.space.{u} Z)).basedIhomMap P).basedPost
           (PointedObject.basedHomMap P
-            (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Z).hom)).pre
+            (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Z).hom)).pre
           (PointedObject.basedHomMap P
-            (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Z).inv)).path := by
+            (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Z).inv)).path := by
   let O := CirclePower.reversalTwicePath.{u}.basedPre
     (PointedObject.basedHom CirclePower.space.{u} Z)
-  let e := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Z
+  let e := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Z
   have he := PointedMapping.VerticalPath.basedIhomMap_path_congr
     (reversalTwice Z) ((O.basedPost e.hom).pre e.inv) P (reversalTwice_conjugate_path Z)
   exact he.trans (O.basedIhomMap_conjugate_path P e)
@@ -60,8 +60,8 @@ lemma reversalTwice_parametric {P Z Z' : PointedSimplicialSet.{u}}
     (PointedObject.basedHom CirclePower.space.{u} Z)
   let O' := CirclePower.reversalTwicePath.{u}.basedPre
     (PointedObject.basedHom CirclePower.space.{u} Z')
-  let e := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Z
-  let e' := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Z'
+  let e := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Z
+  let e' := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Z'
   have hn := CirclePower.reversalTwicePath.{u}.basedPre_parametricPost_path
     (v ≫ PointedMapping.ihomAction CirclePower.space.{u} Z Z')
   have he := PointedMapping.VerticalPath.conjugate_natural_path O (O'.basedIhomMap P)
@@ -70,7 +70,7 @@ lemma reversalTwice_parametric {P Z Z' : PointedSimplicialSet.{u}}
   change (reversalTwice Z).path ≫
       (PointedObject.basedHomMap (doubleLoop Z) (doubleParametricPost v)).right =
     ((reversalTwice Z').basedIhomMap P).path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (doubleParametricPost v)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (doubleParametricPost v)
         (PointedObject.basedHom P (doubleLoop Z'))).right
   rw [reversalTwice_conjugate_path Z, reversalTwice_ihom_conjugate_path P Z']
   exact he

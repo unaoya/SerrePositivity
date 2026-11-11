@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.MorphismInitialHeadCoordinates
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedRepresentableCoefficients
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedRepresentableCoefficients
 /-!
 概要：反転した全 Hom 係数の後合成と head の二射合成を整合させる。
 方針：反転の自然性と豊穣合成の結合則を全次数で評価する。

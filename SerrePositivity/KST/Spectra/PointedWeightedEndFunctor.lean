@@ -76,7 +76,7 @@ theorem cotensorIso_natural (A : PointedSimplicialSet.{u}) (W : I ⥤ SSet.{u})
   apply end_.hom_ext
   intro i
   rw [Category.assoc, cotensorIso_π, ← Category.assoc, ← CategoryTheory.Functor.map_comp,
-    map_π, CategoryTheory.Functor.map_comp, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post]
+    map_π, CategoryTheory.Functor.map_comp, Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeTarget.natural_post]
   conv_rhs => rw [Category.assoc, map_π, ← Category.assoc, cotensorIso_π]
   simp only [Category.assoc]
   rfl

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramRows
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramDiagonalMap
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TripleSimplicialDiagonal
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TripleSimplicialDiagonal
 public import SerrePositivity.EInfinity.Hammock.DoubleSimplicialColumnWeak
 
 /-!
@@ -22,39 +22,39 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedDiagram
 open CategoryTheory SerrePositivity.InfinityCategories
 
-variable (D : SimplicialObject Data.{u})
+variable (D : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u})
 
 def partialRows : SimplicialObject SSet.{u} :=
-  TripleSimplicial.partialDiagonalFunctor.obj (D ⋙ rowsFunctor)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.partialDiagonalFunctor.obj (D ⋙ rowsFunctor)
 
-def partialRowsIso : DoubleSimplicial.diagonalFunctor.obj (partialRows D) ≅ diagonalBar D :=
-  TripleSimplicial.fullDiagonalIso (D ⋙ rowsFunctor)
+def partialRowsIso : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (partialRows D) ≅ diagonalBar D :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.fullDiagonalIso (D ⋙ rowsFunctor)
 
 def chainRow (n : SimplexCategoryᵒᵖ) : SSet.{u} := (partialRows D).flip.obj n
 
-variable {D} {E : SimplicialObject Data.{u}} (τ : D ⟶ E)
+variable {D} {E : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u}} (τ : D ⟶ E)
 
 def partialRowsMap : partialRows D ⟶ partialRows E :=
-  TripleSimplicial.partialDiagonalFunctor.map (Functor.whiskerRight τ rowsFunctor)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.partialDiagonalFunctor.map (Functor.whiskerRight τ rowsFunctor)
 
 def chainRowMap (n : SimplexCategoryᵒᵖ) : chainRow D n ⟶ chainRow E n :=
   ((flipFunctor _ _ _).map (partialRowsMap τ)).app n
 
 lemma partialRowsIso_naturality :
-    DoubleSimplicial.diagonalFunctor.map (partialRowsMap τ) ≫ (partialRowsIso E).hom =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (partialRowsMap τ) ≫ (partialRowsIso E).hom =
       (partialRowsIso D).hom ≫ diagonalBarMap τ := by
   ext n e
   rfl
 
 lemma diagonalTotalMap_weak_of_chainRows
-    (h : ∀ n, IsWeakHomotopyEquivalence (chainRowMap τ n)) :
-    IsWeakHomotopyEquivalence (diagonalTotalMap τ) := by
+    (h : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (chainRowMap τ n)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (diagonalTotalMap τ) := by
   apply (diagonalMap_weak_iff τ).mpr
   have hc := (DoubleSimplicial.diagonalFunctor_map_weak_of_columns
     (partialRowsMap τ) h).comp
-      (isPrecompositionEquivalence_of_iso (partialRowsIso E)).isWeakHomotopyEquivalence
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (partialRowsIso E)).isWeakHomotopyEquivalence
   rw [partialRowsIso_naturality τ] at hc
-  have hd := (isPrecompositionEquivalence_of_iso (partialRowsIso D)).isWeakHomotopyEquivalence
+  have hd := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (partialRowsIso D)).isWeakHomotopyEquivalence
   exact hd.cancel_left hc
 
 end SerrePositivity.EInfinity.Hammock.TwoSidedDiagram

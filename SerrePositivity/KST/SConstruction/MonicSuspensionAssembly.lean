@@ -71,14 +71,14 @@ instance monicSuspensionAssembly_mono (r : ℕ) (X : StableModel.{u}) :
 方針：右因子の全単射への右持ち上げ性。
 規約：全次数の充填性。使われ方：元の反復との Kan 比較。 -/
 instance monicSuspensionComparison_trivialKanFibration (r : ℕ) (X : StableModel.{u}) :
-    TrivialKanFibration ((monicSuspensionComparisonNat r).app X).right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration ((monicSuspensionComparisonNat r).app X).right :=
   pointedTransformationRight_trivialKanFibration (kanTargetSuspensionAssemblyNat r) X
 
 /-- 概要：元の次段への比較は全基点・全次数で π_* 同型。
 方針：Kan 標的への右因子の比較。
 規約：零次数も含む。使われ方：単射な構造射の標的模型の同値性。 -/
 lemma monicSuspensionComparison_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((monicSuspensionComparisonNat r).app X).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((monicSuspensionComparisonNat r).app X).right :=
   pointedTransformationRight_piIsomorphism (kanTargetSuspensionAssemblyNat r) X
 
 end SerrePositivity.KST.SConstruction

@@ -24,23 +24,23 @@ variable (R : Type u) [CommRing R]
 
 def quasiIsoInfinityVertex (A : Mon (Complex R)) : (quasiIsoInfinity R) _⦋0⦌ :=
   (quasiIsoInfinityMap R).app (op ⦋0⦌)
-    (nerveVertex ((infinityPresentationFunctor R).obj A))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((infinityPresentationFunctor R).obj A))
 
 lemma quasiIsoInfinityMap_isEssentiallySurjective :
-    IsEssentiallySurjective (quasiIsoInfinityMap R) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective (quasiIsoInfinityMap R) :=
   localization_isEssentiallySurjective _ _ (quasiIsoInfinity_isLocalization R)
 
 lemma exists_quasiIsoInfinityVertexIso (v : (quasiIsoInfinity R) _⦋0⦌) :
-    ∃ A : Mon (Complex R), Nonempty (VertexIso (quasiIsoInfinityVertex R A) v) := by
+    ∃ A : Mon (Complex R), Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (quasiIsoInfinityVertex R A) v) := by
   obtain ⟨s, ⟨e⟩⟩ := quasiIsoInfinityMap_isEssentiallySurjective R v
   refine ⟨(s.obj 0).objDown, ?_⟩
-  have hs : nerveVertex ((infinityPresentationFunctor R).obj (s.obj 0).objDown) = s :=
+  have hs : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((infinityPresentationFunctor R).obj (s.obj 0).objDown) = s :=
     ComposableArrows.ext₀ rfl
-  simpa only [quasiIsoInfinityVertex, hs] using (show Nonempty (VertexIso _ _) from ⟨e⟩)
+  simpa only [quasiIsoInfinityVertex, hs] using (show Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso _ _) from ⟨e⟩)
 
 def quasiIsoInfinityIsoOfQuasiIso {A B : Mon (Complex R)} (f : A ⟶ B)
     (hf : QuasiIso f.hom) :
-    VertexIso (quasiIsoInfinityVertex R A) (quasiIsoInfinityVertex R B) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (quasiIsoInfinityVertex R A) (quasiIsoInfinityVertex R B) := by
   have := quasiIsoInfinityMap_inverts R f hf
   exact asIso (Truncated.HomotopyCategory.homMk
     (((nerve.edgeMk ((infinityPresentationFunctor R).map f)).map
@@ -48,7 +48,7 @@ def quasiIsoInfinityIsoOfQuasiIso {A B : Mon (Complex R)} (f : A ⟶ B)
 
 lemma exists_cellResolutionInfinityVertexIso (v : (quasiIsoInfinity R) _⦋0⦌) :
     ∃ A : Mon (Complex R),
-      Nonempty (VertexIso (quasiIsoInfinityVertex R (cellResolution R A)) v) := by
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (quasiIsoInfinityVertex R (cellResolution R A)) v) := by
   obtain ⟨A, ⟨e⟩⟩ := exists_quasiIsoInfinityVertexIso R v
   exact ⟨A, ⟨quasiIsoInfinityIsoOfQuasiIso R (cellAugmentation R A)
     (cellAugmentation_quasiIso R A) ≪≫ e⟩⟩

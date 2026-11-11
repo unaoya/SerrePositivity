@@ -86,9 +86,9 @@ lemma kanAction_weakEquivalence (q : MixedResolutionCenters.Index C)
 
 variable {D : Type uD} [Category.{vD} D] (H : D ⥤ MixedResolutionCenters.Index C)
   (K : D ⥤ SSet.{v})
-  (a : NerveMovingParameter.System.{w, v} (NerveMovingParameter.lifted.{w} K)
+  (a : NerveMovingParameter.System.{w, v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K)
     (H ⋙ MixedResolutionCenters.leftChoices C))
-  (b : NerveMovingParameter.System.{w, v} (NerveMovingParameter.lifted.{w} K)
+  (b : NerveMovingParameter.System.{w, v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K)
     (H ⋙ MixedResolutionCenters.rightChoices C))
 
 include a b in

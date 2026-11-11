@@ -23,16 +23,16 @@ set_option backward.isDefEq.respectTransparency.types false
 /-- 零 cohomology 次数の cocycle は通常の正規化微分の像。 -/
 theorem exists_primitive_of_isZero (K : SSet.{u}) (M : AddCommGrpCat.{u}) (n : ℕ)
     (hH : IsZero ((complex K M).homology (n + 1)))
-    (z : K.nonDegenerate (n + 1) → M) (hz : _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K M (n + 1) z = 0) :
-    ∃ a : K.nonDegenerate n → M, _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K M n a = z := by
+    (z : K.nonDegenerate (n + 1) → M) (hz : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K M (n + 1) z = 0) :
+    ∃ a : K.nonDegenerate n → M, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K M n a = z := by
   have he := ((complex K M).exactAt_iff_isZero_homology (n + 1)).2 hH
   have he' := ((complex K M).exactAt_iff' (i := n) (j := n + 1) (k := n + 2)
     (by simp) (by simp)).1 he
   have hs := (ShortComplex.ab_exact_iff ((complex K M).sc' n (n + 1) (n + 2))).1 he'
   have hd (i : ℕ) : (complex K M).d i (i + 1) =
-      AddCommGrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K M i) :=
+      AddCommGrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K M i) :=
     CochainComplex.of_d (fun n ↦ AddCommGrpCat.of (K.nonDegenerate n → M))
-      (fun n ↦ AddCommGrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K M n)) i
+      (fun n ↦ AddCommGrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K M n)) i
   have hz' : (complex K M).d (n + 1) (n + 2) z = 0 := by
     rw [hd (n + 1)]
     exact hz

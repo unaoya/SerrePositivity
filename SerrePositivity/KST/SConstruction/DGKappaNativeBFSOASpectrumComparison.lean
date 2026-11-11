@@ -53,7 +53,7 @@ lemma dgKappaNativeBFSOASpectrumComparison_component
 規約：同じ有限 native 入力に限定。使われ方：二頂点の実スペクトル比較。 -/
 lemma dgKappaNativeBFSOASpectrumComparison_levelwise
     (C : DGKappaNativeBFFiniteInput.{u, v} R D I) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((dgKappaNativeBFSOASpectrumComparison.{u, v} R D I C).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((dgKappaNativeBFSOASpectrumComparison.{u, v} R D I C).app n).right :=
   KanSequence.rectify_levelwise _ _ _ (dgKappaNativeBFSOAComparison_piIsomorphism.{u, v} R D I C) n
 
 /-- 概要：同じ実 BF 比較射は全整数次数で π 同型。

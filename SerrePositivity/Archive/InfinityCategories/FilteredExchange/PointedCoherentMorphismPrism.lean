@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceSimplexPointedFamilyFaces
-public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentEdges
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentEdges
 
 /-!
 概要：元の固定 Kan 射に沿う、元の全反転 Hom 係数の実 pointed prism を保持する。

@@ -10,6 +10,8 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Horn
 方針：候補頂点写像の nerve を標準単体へ送り、各単体が共通に避ける頂点で horn に制限する。
 規約：Moss 2020 Proposition 21 の二重細分の horn の充填に向けた具体的な写像。
 使われ方：細分比較と合成する horn への充填候補。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

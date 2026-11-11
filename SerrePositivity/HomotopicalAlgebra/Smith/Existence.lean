@@ -111,7 +111,7 @@ end Model
 lemma cofibrantlyGeneratedOfSmith [ModelCategory C]
     (hF : fibrations C = (I.rlp.llp ⊓ W).rlp) (hW : weakEquivalences C = W)
     (hIW : I.rlp ≤ W) :
-    ModelGeneration.CofibrantlyGenerated.{w} I (smithGenerators I W hIW) := by
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I (smithGenerators I W hIW) := by
   have := hasSmallObjectArgument I
   have := hasSmallObjectArgument (smithGenerators I W hIW)
   exact cofibrantlyGeneratedOfSquareFactor I _ W

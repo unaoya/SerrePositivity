@@ -28,17 +28,17 @@ variable {x y : Sp.{u} _⦋0⦌} (e : Sp.{u}.Edge x y)
 /-- 元の両端を BF 対象へ復号し、同じ一単体を BF 射として読む。 -/
 def edgeMap : spectrum (SSet.HomotopyCategory.mk x) ⟶
     spectrum (SSet.HomotopyCategory.mk y) :=
-  coherentNerveEdgeToHom (e.ofEq (coherentNerveVertex_object x).symm
-    (coherentNerveVertex_object y).symm)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom (e.ofEq (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object x).symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object y).symm)
 
-lemma edgeMap_edge : (coherentNerveEdge (edgeMap e)).edge = e.edge :=
-  congrArg SSet.Edge.edge (coherentNerveEdge_hom (e.ofEq
-    (coherentNerveVertex_object x).symm (coherentNerveVertex_object y).symm))
+lemma edgeMap_edge : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (edgeMap e)).edge = e.edge :=
+  congrArg SSet.Edge.edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_hom (e.ofEq
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object x).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object y).symm))
 
 lemma edgeMap_hom : hom (edgeMap e) =
     normalize (SSet.Truncated.HomotopyCategory.homMk e.toTruncated) := by
-  have h := FiberModel.homMk_transport (coherentNerveEdge (edgeMap e)).toTruncated
-    e.toTruncated (coherentNerveVertex_object x) (coherentNerveVertex_object y) (edgeMap_edge e)
+  have h := FiberModel.homMk_transport (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (edgeMap e)).toTruncated
+    e.toTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object x) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object y) (edgeMap_edge e)
   change hom (edgeMap e) ≫ (spectrumIso (SSet.HomotopyCategory.mk y)).hom =
     (spectrumIso (SSet.HomotopyCategory.mk x)).hom ≫
       SSet.Truncated.HomotopyCategory.homMk e.toTruncated at h

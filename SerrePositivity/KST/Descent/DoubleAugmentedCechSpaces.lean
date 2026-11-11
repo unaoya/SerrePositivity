@@ -90,7 +90,7 @@ def rowComparison (k : K) : (augmentedCechRows K L (flatten K L A)).obj k ⟶ A.
     exact (Category.comp_id _).symm
 
 variable [ModelCategory SSet.{u}] (I J : MorphismProperty SSet.{u})
-  [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
 
 /-- 概要：積添字の各行の実際の比較は外側増強と元の各行の比較へ因子化（補題 3.2）。
 方針：各行への指定 comma 射に既存のホモトピー比較の自然性を適用する。

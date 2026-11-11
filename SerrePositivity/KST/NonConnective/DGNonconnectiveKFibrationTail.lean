@@ -32,18 +32,18 @@ theorem dgNonconnectiveKFibrationConclusions (n : ℕ) :
 
 /-- 元の実 BF 極限錐の頂点そのものを復号した、各段の同じ実 fiber 対象。 -/
 def dgNonconnectiveKFibrationFiber (n : ℕ) : OmegaSpectrum.{max (u + 1) v} :=
-  coherentNerveObject (dgKappaSuppliedBFKLimitCone R
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (dgKappaSuppliedBFKLimitCone R
     (dgSuspensionUnconditionalIteration R κ hκ A n)
     (dgSuspensionIterationStage R
       (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone).vertex
 
 /-- 同じ段の実 fiber の右辺は、元の指定 BF 商射の全一単体と厳密一致する。 -/
 theorem dgNonconnectiveKFibration_quotientEdge (n : ℕ) :
-    squareRightEdge ≫ (dgKappaSuppliedBFCanonicalFiberSquare R
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (dgKappaSuppliedBFCanonicalFiberSquare R
       (dgSuspensionUnconditionalIteration R κ hκ A n)
       (dgSuspensionIterationStage R
         (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone).square =
-      SSet.yonedaEquiv.symm (coherentNerveEdge (dgKappaNativeCoherentBFArrow R
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeCoherentBFArrow R
         (dgSuspensionUnconditionalIteration R κ hκ A n)
         (dgSuspensionIterationStage R
           (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone 1).hom).edge :=

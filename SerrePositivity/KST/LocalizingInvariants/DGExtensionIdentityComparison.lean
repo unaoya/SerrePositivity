@@ -17,12 +17,12 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.DGNerve
+
 namespace SerrePositivity.KST.LocalizingInvariants
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 元の恒等 graph 延長から恒等関手への、全斉次射に自然な比較。 -/
-def dgExtensionIdentityStrict : StrictNatTrans (dgModuleExtension R D D (DGFunctor.id D))
+def dgExtensionIdentityStrict : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (dgModuleExtension R D D (DGFunctor.id D))
     (DGFunctor.id (RightModule R D)) :=
   dgStrictAdjointComparison _ _ _ (dgRestrictionIdentityUnitStrict R D)
     (dgExtensionCounitStrict R D D (DGFunctor.id D))

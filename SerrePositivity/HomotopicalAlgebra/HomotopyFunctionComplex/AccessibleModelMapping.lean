@@ -35,7 +35,7 @@ lemma hom_isCardinalAccessible (X : C)
 end AccessibleModelMapping
 
 variable [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 include I J in
 /-- The actual two source resolutions and target replacement used by all

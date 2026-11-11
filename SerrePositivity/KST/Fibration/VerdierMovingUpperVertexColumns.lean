@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.VerdierMovingUpperShortFaces
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingFaceEndpoints
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMappingFaceEndpoints
 
 /-!
 概要：動く実上側族の三頂点の全区間列を、同じ元の定値対象へ厳密回収する。
@@ -18,7 +18,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌)
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌)
 
 /-- 概要：同じ上側全族の始点列は元の実核の core Kan 対象に定値。
 方針：元の第一短辺を区間 Hom の始点面へ制限する。
@@ -27,9 +27,9 @@ theorem verdierMovingUpperFamily_source_column :
     ((stdSimplex.δ (1 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3)) ▷
       (Δ[1] : SSet.{u + 1})) ≫ verdierMovingUpperFamily d ℓ =
     fst (Δ[0] : SSet.{u + 1}) Δ[1] ≫ SSet.yonedaEquiv.symm
-      (coherentNerveVertex (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.left))) := by
   rw [comp_whiskerRight, Category.assoc, verdierMovingUpperFamily_first,
-    ← intervalMappingUncurry_precomp, intervalMappingUncurry_face_source]
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry_precomp, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry_face_source]
   rfl
 
 /-- 概要：同じ上側全族の中点列は元の実核の全 S• Kan 対象に定値。
@@ -39,9 +39,9 @@ theorem verdierMovingUpperFamily_middle_column :
     ((stdSimplex.δ (0 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3)) ▷
       (Δ[1] : SSet.{u + 1})) ≫ verdierMovingUpperFamily d ℓ =
     fst (Δ[0] : SSet.{u + 1}) Δ[1] ≫ SSet.yonedaEquiv.symm
-      (coherentNerveVertex (fullSRealizationKanObject d.left)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (fullSRealizationKanObject d.left)) := by
   rw [comp_whiskerRight, Category.assoc, verdierMovingUpperFamily_first,
-    ← intervalMappingUncurry_precomp, intervalMappingUncurry_face_target]
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry_precomp, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry_face_target]
   rfl
 
 /-- 概要：動く第二短辺の終点列は元の実商の core Kan 対象に定値。
@@ -51,9 +51,9 @@ theorem verdierMovingUpperFamily_target_column :
     ((stdSimplex.δ (0 : Fin 2) ≫ stdSimplex.δ (0 : Fin 3)) ▷
       (Δ[1] : SSet.{u + 1})) ≫ verdierMovingUpperFamily d ℓ =
     fst (Δ[0] : SSet.{u + 1}) Δ[1] ≫ SSet.yonedaEquiv.symm
-      (coherentNerveVertex (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.right))) := by
   rw [comp_whiskerRight, Category.assoc, verdierMovingUpperFamily_last,
-    ← intervalMappingUncurry_precomp, intervalMappingUncurry_face_target]
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry_precomp, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry_face_target]
   rfl
 
 end SerrePositivity.KST.Fibration

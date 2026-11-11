@@ -17,22 +17,22 @@ open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
 /-- 順方向の転置の二重包含による厳密な式。 -/
-lemma sCofiberComparison_double_ι (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
-    (sCofiberComparison n C ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) ≫
+lemma sCofiberComparison_double_ι (n : ℕ) (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
+    (sCofiberComparison n C ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) ≫
       (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).map (gappedSubcomplex n C).ι =
     ((gappedSubcomplex n (cofiberDiagrams C)).ι ≫
-      (ihom (arNerve n)).map (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) ≫
-      (internalHomSwapIso (arNerve n) (Δ[1] ⊗ Δ[1] : SSet.{u}) C).hom := by
+      (ihom (arNerve n)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve n) (Δ[1] ⊗ Δ[1] : SSet.{u}) C).hom := by
   rw [sCofiberComparison_ι, sCofiberTransposeSquare_ι]
   rfl
 
 /-- 逆方向の転置の二重包含による厳密な式。 -/
-lemma sCofiberInverse_double_ι (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+lemma sCofiberInverse_double_ι (n : ℕ) (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     (sCofiberInverse n C ≫ (gappedSubcomplex n (cofiberDiagrams C)).ι) ≫
-      (ihom (arNerve n)).map (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι =
-    ((fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫
+      (ihom (arNerve n)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι =
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫
       (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).map (gappedSubcomplex n C).ι) ≫
-      (internalHomSwapIso (Δ[1] ⊗ Δ[1] : SSet.{u}) (arNerve n) C).hom := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (Δ[1] ⊗ Δ[1] : SSet.{u}) (arNerve n) C).hom := by
   rw [sCofiberInverse_ι, sCofiberInverseDiagram_ι]
   rfl
 
@@ -52,43 +52,43 @@ lemma inverse_comp_of_commuting_mono {A B R S : SSet.{u}}
     _ = 𝟙 A ≫ a := (Category.comp_id a).trans (Category.id_comp a).symm
 
 /-- cofiber 値の全 gapped 図式は二回の転置で厳密に回収される。 -/
-lemma sCofiberComparison_inverse (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+lemma sCofiberComparison_inverse (n : ℕ) (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     sCofiberComparison n C ≫ sCofiberInverse n C = 𝟙 _ := by
   let i := (gappedSubcomplex n (cofiberDiagrams C)).ι
   let j := (ihom (arNerve n)).map
-    (fullSubcomplexOnVertices _ (IsCofiberDiagramVertex (C := C))).ι
-  let k := (fullSubcomplexOnVertices _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (IsCofiberDiagramVertex (C := C))).ι
+  let k := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _
     (IsCofiberDiagramVertex (C := sConstruction n C))).ι
   let l := (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).map (gappedSubcomplex n C).ι
   have : Mono j := (ihom (arNerve n)).map_mono _
   apply inverse_comp_of_commuting_mono (i ≫ j) (k ≫ l)
     (sCofiberComparison n C) (sCofiberInverse n C)
-    (internalHomSwapIso (arNerve n) (Δ[1] ⊗ Δ[1] : SSet.{u}) C).hom
-    (internalHomSwapIso (Δ[1] ⊗ Δ[1] : SSet.{u}) (arNerve n) C).hom
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve n) (Δ[1] ⊗ Δ[1] : SSet.{u}) C).hom
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (Δ[1] ⊗ Δ[1] : SSet.{u}) (arNerve n) C).hom
   · exact (Category.assoc _ _ _).symm.trans (sCofiberComparison_double_ι n C)
   · exact (Category.assoc _ _ _).symm.trans (sCofiberInverse_double_ι n C)
-  · exact _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_twice _ _ _
+  · exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.internalHomSwap_twice _ _ _
 
 /-- S_n 内の全 cofiber 四角形も二回の転置で厳密に回収される。 -/
-lemma sCofiberInverse_comparison (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+lemma sCofiberInverse_comparison (n : ℕ) (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     sCofiberInverse n C ≫ sCofiberComparison n C = 𝟙 _ := by
-  let i := (fullSubcomplexOnVertices _
+  let i := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _
     (IsCofiberDiagramVertex (C := sConstruction n C))).ι
   let j := (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).map (gappedSubcomplex n C).ι
   let k := (gappedSubcomplex n (cofiberDiagrams C)).ι
   let l := (ihom (arNerve n)).map
-    (fullSubcomplexOnVertices _ (IsCofiberDiagramVertex (C := C))).ι
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (IsCofiberDiagramVertex (C := C))).ι
   have : Mono j := (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).map_mono _
   apply inverse_comp_of_commuting_mono (i ≫ j) (k ≫ l)
     (sCofiberInverse n C) (sCofiberComparison n C)
-    (internalHomSwapIso (Δ[1] ⊗ Δ[1] : SSet.{u}) (arNerve n) C).hom
-    (internalHomSwapIso (arNerve n) (Δ[1] ⊗ Δ[1] : SSet.{u}) C).hom
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (Δ[1] ⊗ Δ[1] : SSet.{u}) (arNerve n) C).hom
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve n) (Δ[1] ⊗ Δ[1] : SSet.{u}) C).hom
   · exact (Category.assoc _ _ _).symm.trans (sCofiberInverse_double_ι n C)
   · exact (Category.assoc _ _ _).symm.trans (sCofiberComparison_double_ι n C)
-  · exact _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_twice _ _ _
+  · exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.internalHomSwap_twice _ _ _
 
 /-- 全 gapped 図式の S_n は全 cofiber 四角形の構成と厳密に交換する。 -/
-def sCofiberIso (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+def sCofiberIso (n : ℕ) (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     sConstruction n (cofiberDiagrams C) ≅ cofiberDiagrams (sConstruction n C) where
   hom := sCofiberComparison n C
   inv := sCofiberInverse n C

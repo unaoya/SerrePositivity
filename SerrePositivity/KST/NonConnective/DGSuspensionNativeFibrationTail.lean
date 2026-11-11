@@ -25,16 +25,16 @@ local instance nativeFibrationTailSpectrumCategory : SimplicialCategory OmegaSpe
 variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
   (s : DGSuspensionStageProvider.{u, v} R κ) (A : PerfDGInput.{u, max (u + 1) v} R)
   (ρ : ∀ n : ℕ, Sp.{max (u + 1) v}.Edge
-    (coherentNerveVertex (kOmegaSpectrum (stableCategoryModel
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum (stableCategoryModel
       (dgKappaNativeKernelCategory R (dgSuspensionIteration R s A n)
         (dgSuspensionIterationStage R s A n).cone))))
     ((OmegaSpectrum.nativeLoop.{max (u + 1) v}).app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex (kOmegaSpectrum (stableCategoryModel
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum (stableCategoryModel
         (dgKappaNativeSuspensionCategory R (dgSuspensionIteration R s A n)
           (dgSuspensionIterationStage R s A n).cone))))))
 
 variable (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-  F2.Idempotent.IsIdempotentCompletion f.val →
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
     (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
       Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
   (hρ : ∀ (n : ℕ) (j : ℤ), 0 ≤ j → Function.Bijective

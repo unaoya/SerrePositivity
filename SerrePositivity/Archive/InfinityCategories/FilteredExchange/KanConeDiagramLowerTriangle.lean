@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeDiagramUpperTriangle
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeDiagramLowerTriangle
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.ConeDiagramLowerTriangle
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeTetrahedronSides
 
 /-!

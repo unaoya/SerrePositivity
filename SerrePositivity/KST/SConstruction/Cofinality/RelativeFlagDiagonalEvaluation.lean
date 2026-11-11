@@ -22,8 +22,8 @@ open scoped Simplicial
 使われ方：相対旗の対角実現の入力。 -/
 def completionRelativeCoreFlagDiagram (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) : SimplexCategoryᵒᵖ ⥤ SSet.{u} :=
-  ((completionRelativeFlagDiagram r f hf).obj ι) ⋙ quasicategoryCoreFunctor
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) : SimplexCategoryᵒᵖ ⥤ SSet.{u} :=
+  ((completionRelativeFlagDiagram r f hf).obj ι) ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
 
 /-- 概要：同じ S 多次数の相対 core 旗の未置換対角実現。
 方針：旗方向と core 方向に既存の対角関手を適用する。
@@ -31,7 +31,7 @@ def completionRelativeCoreFlagDiagram (r : ℕ) (ι : Fin r → SimplexCategory�
 使われ方：相対実現の亜群化との比較の始域。 -/
 def completionRelativeFlagRealization (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) : SSet.{u} :=
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) : SSet.{u} :=
   simplicialDiagonalFunctor.obj (completionRelativeCoreFlagDiagram r ι f hf)
 
 /-- 概要：相対旗の対角実現を同じ元の S 対象へ評価する。
@@ -40,7 +40,7 @@ def completionRelativeFlagRealization (r : ℕ) (ι : Fin r → SimplexCategory�
 使われ方：wide 比較の包含後の元の射。 -/
 def completionRelativeFlagEvaluation (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionRelativeFlagRealization r ι f hf ⟶
       (((multiSEndofunctor r).obj ι).obj Y).carrier where
   app n := ↾fun v => v.val.val.app n (𝟙 n) (ULift.up (𝟙 n.unop))
@@ -59,7 +59,7 @@ def completionRelativeFlagEvaluation (r : ℕ) (ι : Fin r → SimplexCategory�
 使われ方：相対実現の離散性を検査する具体的な射。 -/
 def completionRelativeFlagWideEvaluation (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionRelativeFlagRealization r ι f hf ⟶
       (LocalizingInvariants.completionCofiberWide
         (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) where
@@ -82,7 +82,7 @@ def completionRelativeFlagWideEvaluation (r : ℕ) (ι : Fin r → SimplexCatego
 使われ方：元の相対 S• 図式との射の照合。 -/
 lemma completionRelativeFlagWideEvaluation_inclusion (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionRelativeFlagWideEvaluation r ι f hf ≫
       (LocalizingInvariants.completionCofiberWide
         (((multiSEndofunctor r).obj ι).map f).val).ι =
@@ -94,15 +94,15 @@ lemma completionRelativeFlagWideEvaluation_inclusion (r : ℕ)
 使われ方：元の K 射を含む零段比較と対角評価の接続。 -/
 lemma completionRelativeFlagEvaluation_zero (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (v : (completionRelativeFlagRealization r ι f hf) _⦋0⦌) :
     (completionRelativeFlagEvaluation r ι f hf).app (Opposite.op ⦋0⦌) v =
       (completionRelativeFlagZeroIso r ι f hf).hom.app (Opposite.op ⦋0⦌) v.val := by
   change v.val.val.app (Opposite.op ⦋0⦌) (𝟙 _) (ULift.up (𝟙 ⦋0⦌)) =
     v.val.val.app (Opposite.op ⦋0⦌) (𝟙 _)
-      (PinchedHom.constant (SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 1)) 0)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 1)) 0)
   have hs : (ULift.up (𝟙 ⦋0⦌) : (Δ[0] : SSet.{u}) _⦋0⦌) =
-      PinchedHom.constant (SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 1)) 0 := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 1)) 0 := by
     apply SSet.stdSimplex.objEquiv.injective
     exact Subsingleton.elim _ _
   exact congrArg (fun k => v.val.val.app (Opposite.op ⦋0⦌) (𝟙 _) k) hs
@@ -113,7 +113,7 @@ lemma completionRelativeFlagEvaluation_zero (r : ℕ)
 使われ方：Sp-8 の対角制限との厳密な照合。 -/
 lemma completionRelativeFlagEvaluation_eq_diagonalRestriction (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : ℕ)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : ℕ)
     (v : (completionRelativeFlagRealization r ι f hf) _⦋n⦌) :
     (completionRelativeFlagEvaluation r ι f hf).app (Opposite.op ⦋n⦌) v =
       SSet.yonedaEquiv (CartesianMonoidalCategory.lift (𝟙 (Δ[n] : SSet.{u})) (𝟙 _) ≫

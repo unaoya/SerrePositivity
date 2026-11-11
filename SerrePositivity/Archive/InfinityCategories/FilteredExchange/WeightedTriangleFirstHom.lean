@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConstantFiber
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.WeightedConstantFiber
 
 /-!
 概要：反転した一単体の標準 weighted cone の最初の Hom は元の係数の終点。

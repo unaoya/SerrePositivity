@@ -77,7 +77,7 @@ lemma spectrumCompositeCorner_trivialKanFibration {A L N E Z : OmegaSpectrum.{u}
     (a : A ⟶ L) (b : L ⟶ N) (ha : IsSequentialRelativeCofibration a)
     (hb : IsSequentialRelativeCofibration b) (q : E ⟶ Z)
     (hq : ∀ n, (MorphismProperty.monomorphisms SSet.{u}).rlp (q.app n).right) :
-    TrivialKanFibration (spectrumCorner (a ≫ b) q) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (spectrumCorner (a ≫ b) q) := by
   constructor
   intro V U j hj
   let : Mono j := hj

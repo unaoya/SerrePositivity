@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Transport.ParametrizedFiberTransportNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ParametrizedFiberTransportNaturality
 
 /-!
 概要：元の全区間輸送族を変数として、同じ直接比較と実標的比較の値を照合する。

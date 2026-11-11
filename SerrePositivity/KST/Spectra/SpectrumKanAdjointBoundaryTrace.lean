@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointStructureIntervals
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointBoundaryStructure
-public import SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransport
 
 /-!
 概要：元の構造比較と段調整の三つの区間から、調整済み構造区間を二つの三角形つきで作る。
@@ -26,13 +26,13 @@ variable (X Y : OmegaSpectrum.{u}) {A B : PointedSimplicialSet.{u}}
 
 /-- 三つの元の区間を置く、懸垂源からの構造 Hom。 -/
 abbrev kanAdjointBoundaryTraceTarget (n : ℕ) : PointedSimplicialSet.{u} :=
-  PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+  PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
     ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space
 
 /-- 一段先の段調整区間を、元の構造射への制限で移す。 -/
 def kanAdjointBoundaryTraceLeft (n : ℕ) :=
   (s (n + 1)).interval.basedPost
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)
 
 /-- 当段の段調整区間を、元の構造 Hom の step で移す。 -/
@@ -41,15 +41,15 @@ def kanAdjointBoundaryTraceRight (n : ℕ) :=
 
 /-- 元の三つの区間からの輸送辺と、その境界へ写す二つの実三角形。 -/
 def kanAdjointBoundaryTransport (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport (kanAdjointBoundaryTraceLeft X Y φ j c H s n).edge
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransport (kanAdjointBoundaryTraceLeft X Y φ j c H s n).edge
       (kanAdjointParameterStructureInterval X Y φ n).edge
       (kanAdjointBoundaryTraceRight X Y φ j c H s n).edge := by
   let targetKan : KanComplex (kanAdjointBoundaryTraceTarget X Y n).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   let pathSpaceKan :
       KanComplex (PointedObject.basedHom A (kanAdjointBoundaryTraceTarget X Y n)).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
-  exact _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.choose _ _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransport.choose _ _ _
 
 /-- 同じ輸送辺を転置して得る、調整済み段射の実際の構造区間。 -/
 def kanAdjointBoundaryTracedStructurePath (n : ℕ) :
@@ -66,30 +66,30 @@ def kanAdjointBoundaryTracedStructurePath (n : ℕ) :
 lemma kanAdjointBoundaryTracedStructurePath_path (n : ℕ) :
     (kanAdjointBoundaryTracedStructurePath X Y φ j c H s n).path =
       SSet.yonedaEquiv.symm (kanAdjointBoundaryTransport X Y φ j c H s n).transported.edge ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right := rfl
 
 /-- 構造区間の射影は、同じ輸送辺を境界へ制限してから交換した区間に厳密に一致する。 -/
 lemma kanAdjointBoundaryTracedStructurePath_projection (n : ℕ) :
     (kanAdjointBoundaryTracedStructurePath X Y φ j c H s n).path ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right =
     (SSet.yonedaEquiv.symm (kanAdjointBoundaryTransport X Y φ j c H s n).transported.edge ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre j (kanAdjointBoundaryTraceTarget X Y n)) ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso B (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre j (kanAdjointBoundaryTraceTarget X Y n)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso B (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right := by
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_left j (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+  have h := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeNaturality.natural_pre_left j (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
     ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at h
   have he := congrArg Under.Hom.right h.symm
-  change (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+  change (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right =
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre j (kanAdjointBoundaryTraceTarget X Y n) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso B (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre j (kanAdjointBoundaryTraceTarget X Y n) ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso B (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right at he
   rw [kanAdjointBoundaryTracedStructurePath_path, Category.assoc]
   simpa only [Category.assoc] using congrArg (SSet.yonedaEquiv.symm
@@ -99,16 +99,16 @@ lemma kanAdjointBoundaryTracedStructurePath_projection (n : ℕ) :
 lemma kanAdjointBoundaryTransport_boundary_trace (n : ℕ) :
     SSet.HomotopyCategory.homMk
         ((kanAdjointBoundaryTraceLeft X Y φ j c H s n).edge.map
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre j (kanAdjointBoundaryTraceTarget X Y n))) ≫
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre j (kanAdjointBoundaryTraceTarget X Y n))) ≫
       SSet.HomotopyCategory.homMk
         ((kanAdjointBoundaryTransport X Y φ j c H s n).transported.map
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre j (kanAdjointBoundaryTraceTarget X Y n))) =
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre j (kanAdjointBoundaryTraceTarget X Y n))) =
     SSet.HomotopyCategory.homMk
         ((kanAdjointParameterStructureInterval X Y φ n).edge.map
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre j (kanAdjointBoundaryTraceTarget X Y n))) ≫
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre j (kanAdjointBoundaryTraceTarget X Y n))) ≫
       SSet.HomotopyCategory.homMk
         ((kanAdjointBoundaryTraceRight X Y φ j c H s n).edge.map
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre j (kanAdjointBoundaryTraceTarget X Y n))) :=
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre j (kanAdjointBoundaryTraceTarget X Y n))) :=
   (kanAdjointBoundaryTransport X Y φ j c H s n).map_trace _
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

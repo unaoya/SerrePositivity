@@ -52,7 +52,7 @@ def kanCospanPastingChoices {K : SSet.{u}} {x y z : K _⦋0⦌}
 /-- 二脚の貼り合わせの全選択は可縮 Kan。標的自体の可縮性は不要。 -/
 lemma kanCospanPastingChoices_isContractibleKan {K : SSet.{u}} [KanComplex K]
     {x y z : K _⦋0⦌} (a : K.Edge x z) (b : K.Edge y z) :
-    IsContractibleKan (kanCospanPastingChoices a b) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (kanCospanPastingChoices a b) :=
   anodyneExtensionChoices_isContractibleKan _ (anodyneExtensions.horn_ι (2 : Fin 3)) _
 
 /-- 既存の任意の高次パラメーター部分を保って貼り合わせの選択を延ばせる。 -/

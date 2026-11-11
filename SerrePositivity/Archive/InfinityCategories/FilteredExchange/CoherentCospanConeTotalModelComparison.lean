@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanConeRelativeForget
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberwiseHomotopyPoint
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseIntervalPullbackLift
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseIntervalProjection
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberwiseIntervalPullbackLift
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberwiseIntervalProjection
 
 /-!
 概要：元の coherent cospan 錐から元の底上の interval 引き戻し全空間へ比較する。

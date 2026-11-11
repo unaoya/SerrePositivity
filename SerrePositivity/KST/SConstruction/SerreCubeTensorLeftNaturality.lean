@@ -18,7 +18,7 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 連結比較は、左因子の元の全具体的射について自然。 -/
-lemma serreCubeTensorIso_naturality_left (k : ℕ) {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
+lemma serreCubeTensorIso_naturality_left (k : ℕ) {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube} (f : X ⟶ Y) :
     (serreConcreteCubeFunctor A).map ((concreteCubeRightWhisker k).map f) ≫
         (serreCubeTensorIso A Y.dimension k).hom =
       (serreCubeTensorIso A X.dimension k).hom ≫
@@ -55,9 +55,9 @@ lemma serreCubeTensorIso_naturality_left (k : ℕ) {X Y : _root_.SerrePositivity
     exact ht
 
 /-- 元の連結積の右恒等因子について、鎖の tensor 比較は自然。 -/
-lemma serreCubeTensorIso_tensorMap_naturality_left (k : ℕ) {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma serreCubeTensorIso_tensorMap_naturality_left (k : ℕ) {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (f : X ⟶ Y) :
-    (serreConcreteCubeFunctor A).map (concreteCubeTensorMap f (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k))) ≫
+    (serreConcreteCubeFunctor A).map (concreteCubeTensorMap f (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk k))) ≫
         (serreCubeTensorIso A Y.dimension k).hom =
       (serreCubeTensorIso A X.dimension k).hom ≫
         serreCubeTensorHom A (n := X.dimension) (p := Y.dimension) (m := k) (q := k)

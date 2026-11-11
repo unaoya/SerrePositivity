@@ -4,7 +4,7 @@ public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.Cohere
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitApexRawLongCanonical
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedUniversalEdgeTargetValue
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedValueMorphismUniversalAction
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalDiagramRestriction
 
 /-!
 概要：元の長辺比較と元の右評価成分の三頂点の値を、元の実射の等式で揃える。

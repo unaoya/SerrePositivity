@@ -16,14 +16,14 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 元の相対 S の単体作用素は、包含の後に元の gapped 制限を回収する。 -/
 @[reassoc]
-lemma relativeSMap_inclusion {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+lemma relativeSMap_inclusion {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     {l n : ℕ} (θ : ⦋l⦌ ⟶ ⦋n⦌) :
     (relativeSimplicialSConstruction q.hom).map θ.op ≫ (relativeSConstruction q.hom l).ι =
       (relativeSConstruction q.hom n).ι ≫ sMap B.obj θ.toOrderHom :=
   (relativeSimplicialSConstructionInclusion q.hom).naturality θ.op
 
 /-- 元の交換は、全ての Ar の面・退化の制限と厳密に可換。 -/
-lemma weakStringGappedRelativeMap_sMap {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+lemma weakStringGappedRelativeMap_sMap {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     {l n m : ℕ} (θ : ⦋l⦌ ⟶ ⦋n⦌)
     (v : (sConstruction n (weakStringCategory q ⦋m⦌)) _⦋0⦌) :
     weakStringGappedRelativeMap q
@@ -34,14 +34,14 @@ lemma weakStringGappedRelativeMap_sMap {B C : _root_.SerrePositivity.InfinityCat
   simp only [Category.assoc, weakStringGappedRelativeMap_inclusion_assoc,
     relativeSMap_inclusion_assoc, sMap_ι, weakStringGappedRelativeMap_inclusion,
     weakStringGappedTranspose_ι]
-  change internalHomFlipHomEquiv (arNerve l) (Δ[m] : SSet.{u}) B.obj
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (arNerve l) (Δ[m] : SSet.{u}) B.obj
     (gappedDiagram ((sMap _ θ.toOrderHom).app _ v) ≫ _) = _
-  rw [gappedDiagram_sMap, Category.assoc, internalHomFlipHomEquiv_pre,
+  rw [gappedDiagram_sMap, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv_pre,
     weakStringGappedTranspose_ι_assoc]
   rfl
 
 /-- 元の交換は、W 列の全ての面・退化の制限とも厳密に可換。 -/
-lemma weakStringGappedRelativeMap_reindex {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+lemma weakStringGappedRelativeMap_reindex {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     {n l m : ℕ} (θ : ⦋l⦌ ⟶ ⦋m⦌)
     (v : (sConstruction n (weakStringCategory q ⦋m⦌)) _⦋0⦌) :
     weakStringGappedRelativeMap q
@@ -51,11 +51,11 @@ lemma weakStringGappedRelativeMap_reindex {B C : _root_.SerrePositivity.Infinity
   apply (cancel_mono (gappedSubcomplex n B.obj).ι).1
   simp only [Category.assoc, weakStringGappedRelativeMap_inclusion,
     weakStringGappedTranspose_ι]
-  change internalHomFlipHomEquiv (arNerve n) (Δ[l] : SSet.{u}) B.obj
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (arNerve n) (Δ[l] : SSet.{u}) B.obj
     (gappedDiagram ((sPostcompCofiber n (weakStringMap q θ)
       (weakStringMap_preservesCofiberData q θ)).app _ v) ≫ _) = _
   rw [gappedDiagram_sPostcompCofiber, Category.assoc, weakStringMap_ι,
-    ← Category.assoc, internalHomFlipHomEquiv_pre_app]
+    ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv_pre_app]
   rfl
 
 end SerrePositivity.KST.Fibration

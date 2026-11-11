@@ -74,7 +74,7 @@ abbrev Compatible {n : ℕ} (faces : Fin (n + 3) →
 
 lemma rotate_compatible {n : ℕ} (faces : Fin (n + 3) →
     (T ⟶ (ihom (K ⊗ SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))).obj P))
-    (hf : Compatible faces) : BoundaryGluing.StandardCompatible (fun k => rotate (faces k)) := by
+    (hf : Compatible faces) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.StandardCompatible (fun k => rotate (faces k)) := by
   intro j k hjk
   rw [← rotate_restriction, ← rotate_restriction, hf j k hjk]
 
@@ -90,7 +90,7 @@ Glue every prescribed whole facet, with no model structure or tensor colimit hyp
 def standardDesc {n : ℕ} (faces : Fin (n + 3) →
     (T ⟶ (ihom (K ⊗ SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))).obj P))
     (hf : Compatible faces) : T ⟶ (ihom (K ⊗ (SSet.boundary (n + 2)).toSSet)).obj P :=
-  unrotate (BoundaryGluing.standardDesc (fun k => rotate (faces k)) (rotate_compatible faces hf))
+  unrotate (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.standardDesc (fun k => rotate (faces k)) (rotate_compatible faces hf))
 
 @[reassoc]
 lemma standardDesc_fac {n : ℕ} (faces : Fin (n + 3) →
@@ -98,7 +98,7 @@ lemma standardDesc_fac {n : ℕ} (faces : Fin (n + 3) →
     (hf : Compatible faces) (k : Fin (n + 3)) :
     standardDesc faces hf ≫ (pre (K ◁ SSet.boundary.ι k)).app P = faces k := by
   apply rotate_injective
-  rw [rotate_restriction, standardDesc, rotate_unrotate, BoundaryGluing.standardDesc_fac]
+  rw [rotate_restriction, standardDesc, rotate_unrotate, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.standardDesc_fac]
 
 lemma hom_ext {n : ℕ}
     {f g : T ⟶ (ihom (K ⊗ (SSet.boundary (n + 1)).toSSet)).obj P}

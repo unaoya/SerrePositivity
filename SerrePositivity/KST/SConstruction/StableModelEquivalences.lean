@@ -22,13 +22,13 @@ structure StableModelEquivalence (X Y : StableModel.{u}) where
   /-- 完全な逆方向の射。 -/
   inv : Y ⟶ X
   /-- 始域上の合成と恒等関手の coherent な同型。 -/
-  homInvIso : FunctorIso (hom.val ≫ inv.val) (𝟙 X.carrier)
+  homInvIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (hom.val ≫ inv.val) (𝟙 X.carrier)
   /-- 終域上の合成と恒等関手の coherent な同型。 -/
-  invHomIso : FunctorIso (inv.val ≫ hom.val) (𝟙 Y.carrier)
+  invHomIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (inv.val ≫ hom.val) (𝟙 Y.carrier)
 
 /-- 完全な同値は元の底の quasicategory の実際の同値を与える。 -/
 def StableModelEquivalence.toQCatEquivalence {X Y : StableModel.{u}}
-    (e : StableModelEquivalence X Y) : QCatEquivalence X.carrier Y.carrier where
+    (e : StableModelEquivalence X Y) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence X.carrier Y.carrier where
   hom := e.hom.val
   inv := e.inv.val
   homInvIso := e.homInvIso

@@ -29,8 +29,8 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine VIII §2、HA §1.4.2。作用スペクトルの余単体模型の係数比較。 -/
 lemma levelMap_piIsomorphism {G : Type u} [Group G]
     {A B : GroupAction.{u} G} (f : A ⟶ B) (k : ℕ)
-    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.hom.app k).right) (j : SimplexCategory) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (X := ((level A k).obj j).right) (Y := ((level B k).obj j).right)
+    (hf : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.hom.app k).right) (j : SimplexCategory) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (X := ((level A k).obj j).right) (Y := ((level B k).obj j).right)
       ((levelMap f k).app j).right := by
   let A₀ := (GroupAction.levelFunctor G k).obj A
   let B₀ := (GroupAction.levelFunctor G k).obj B

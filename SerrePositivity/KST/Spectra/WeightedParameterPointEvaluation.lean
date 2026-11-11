@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedSectionsParameters
-public import SerrePositivity.InfinityCategories.Kan.ParameterPoint
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedSectionsParameters
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ParameterPoint
 
 /-!
 概要：重み付き end の作用を切断点で固定すると、元の切断への係数の作用になる。
@@ -15,24 +15,24 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra
 variable {I : Type u} [SmallCategory I]
 
 /-- 切断点で固定した作用の評価は、その切断の元の成分への係数の作用そのもの。 -/
 lemma weightedSectionsParameterMap_point_evaluation (W : I ⥤ SSet.{u})
     {H H' : I ⥤ SSet.{u}} {A : SSet.{u}} (η : H ⋙ tensorRight A ⟶ H')
-    (p : 𝟙_ SSet.{u} ⟶ weightedSections W H) (i : I) :
-    uncurry ((_root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family p A ≫ weightedSectionsParameterMap W η) ≫
-      weightedSectionsπ W H' i) =
-      (((ρ_ (W.obj i)).inv ≫ uncurry (p ≫ weightedSectionsπ W H i)) ▷ A) ≫ η.app i := by
+    (p : 𝟙_ SSet.{u} ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections W H) (i : I) :
+    uncurry ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.family p A ≫ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.weightedSectionsParameterMap W η) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ W H' i) =
+      (((ρ_ (W.obj i)).inv ≫ uncurry (p ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ W H i)) ▷ A) ≫ η.app i := by
   rw [uncurry_natural_left, whiskerLeft_comp, Category.assoc,
-    weightedSectionsParameterMap_evaluation, uncurry_natural_left]
-  have h : (W.obj i ◁ _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family p A) ≫
-      (α_ (W.obj i) (weightedSections W H) A).inv ≫
-      (uncurry (weightedSectionsπ W H i) ▷ A) =
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.weightedSectionsParameterMap_evaluation, uncurry_natural_left]
+  have h : (W.obj i ◁ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.family p A) ≫
+      (α_ (W.obj i) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections W H) A).inv ≫
+      (uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ W H i) ▷ A) =
       (((ρ_ (W.obj i)).inv ≫ (W.obj i ◁ p) ≫
-        uncurry (weightedSectionsπ W H i)) ▷ A) := by
+        uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ W H i)) ▷ A) := by
     apply SSet.hom_ext
     intro d
     apply ConcreteCategory.hom_ext

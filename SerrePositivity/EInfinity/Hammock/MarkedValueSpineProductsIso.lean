@@ -27,7 +27,7 @@ def packValue {X : Paths C} : ValueSpine W Y X →
   | .nil _ p => ⟨[], p⟩
   | .cons _ g p t => let s := packValue t; ⟨g :: s.1, (p, s.2)⟩
 
-def unpackValue (X : Paths C) : ∀ gs : List (FactorTarget.Index W),
+def unpackValue (X : Paths C) : ∀ gs : List (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W),
     (products W (valueHom W) Y X gs).obj n → ValueSpine W Y X
   | [], p => .nil X p
   | g :: gs, p => .cons X g p.1 (unpackValue g.val.right gs p.2)
@@ -38,7 +38,7 @@ lemma unpackValue_packValue {X : Paths C} (t : ValueSpine W Y X) :
   | nil => rfl
   | cons X g p t ih => exact congrArg (ValueSpine.cons X g p) ih
 
-lemma packValue_unpackValue (X : Paths C) (gs : List (FactorTarget.Index W))
+lemma packValue_unpackValue (X : Paths C) (gs : List (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W))
     (p : (products W (valueHom W) Y X gs).obj n) :
     packValue (unpackValue X gs p) = ⟨gs, p⟩ := by
   induction gs generalizing X with
@@ -50,7 +50,7 @@ lemma packValue_unpackValue (X : Paths C) (gs : List (FactorTarget.Index W))
     cases p
     rfl
 
-lemma unpackValue_simplex (θ : n ⟶ m) (X : Paths C) (gs : List (FactorTarget.Index W))
+lemma unpackValue_simplex (θ : n ⟶ m) (X : Paths C) (gs : List (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W))
     (p : (products W (valueHom W) Y X gs).obj n) :
     unpackValue X gs ((products W (valueHom W) Y X gs).map θ p) = unpackValue X gs p := by
   induction gs generalizing X with

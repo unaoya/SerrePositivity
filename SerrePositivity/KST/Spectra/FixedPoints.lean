@@ -1,21 +1,21 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletalSphericalRealization
 
-public import SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain
-public import SerrePositivity.InfinityCategories.Kan.SkeletalCellCharacteristic
-public import SerrePositivity.InfinityCategories.Kan.SkeletalCochainExtension
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletalSphericalCochain
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletalCellCharacteristic
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletalCochainExtension
 
-public import SerrePositivity.InfinityCategories.Kan.SphericalCochain
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SphericalCochain
 
-public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace
-public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryFilling
-public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryMap
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.SphericalBoundaryLastFace
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SphericalBoundaryFilling
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SphericalBoundaryMap
 
-public import SerrePositivity.InfinityCategories.Kan.HomotopyProductIndex
-public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction
-public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryAlternating
-public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryRelation
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyProductIndex
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.SphericalBoundaryReduction
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.SphericalBoundaryAlternating
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.SphericalBoundaryRelation
 
 public import SerrePositivity.KST.Spectra.GroupNerveCoordinates
 public import SerrePositivity.KST.Spectra.GroupNerveFaces
@@ -28,16 +28,16 @@ public import SerrePositivity.KST.Spectra.SimplicialHomCochains
 public import SerrePositivity.KST.Spectra.SimplicialCochainNormalization
 public import SerrePositivity.KST.Spectra.SimplicialValueCochains
 
-public import SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains
 public import SerrePositivity.KST.Spectra.ContravariantChainHom
 public import SerrePositivity.KST.Spectra.NormalizedCochainHomComparison
 public import SerrePositivity.KST.Spectra.NormalizedValueCochainComplex
 
-public import SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains
-public import SerrePositivity.InfinityCategories.Kan.NormalizedCochainComplex
-public import SerrePositivity.InfinityCategories.Kan.NormalizedCochainCoefficientMaps
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedSimplicialCochains
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedCochainComplex
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedCochainCoefficientMaps
 
-public import SerrePositivity.InfinityCategories.Kan.FibrationBoundaryOverNaturality
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FibrationBoundaryOverNaturality
 public import SerrePositivity.KST.Spectra.PointedFibrationNaturality
 public import SerrePositivity.KST.Spectra.PointedTowerDifferentialNaturality
 public import SerrePositivity.KST.Spectra.UnbasedMappingPost
@@ -85,7 +85,7 @@ public import SerrePositivity.KST.Spectra.PointedCofiberUniversal
 public import SerrePositivity.KST.Spectra.PointedCofiberComparison
 public import SerrePositivity.KST.Spectra.PointedCofiberCoproduct
 public import SerrePositivity.KST.Spectra.AdjoinCofiberCoproduct
-public import SerrePositivity.InfinityCategories.Kan.FunctionComplexProduct
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FunctionComplexProduct
 public import SerrePositivity.KST.Spectra.PointedCoproductHom
 public import SerrePositivity.KST.Spectra.SimplexCellCofiber
 public import SerrePositivity.KST.Spectra.SkeletalFiberFunctions
@@ -96,8 +96,8 @@ public import SerrePositivity.KST.Spectra.FreeMappingPointedIso
 public import SerrePositivity.KST.Spectra.PointedFiberComparison
 public import SerrePositivity.KST.Spectra.UnbasedMappingFiberIso
 public import SerrePositivity.KST.Spectra.SkeletalMappingFiber
-public import SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment
-public import SerrePositivity.InfinityCategories.Kan.SkeletalAttachmentPushout
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletalCellAttachment
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletalAttachmentPushout
 public import SerrePositivity.KST.Spectra.PointedCofiberPushout
 public import SerrePositivity.KST.Spectra.SkeletalCellCofiber
 
@@ -112,7 +112,7 @@ public import SerrePositivity.KST.Spectra.SkeletalMappingTower
 public import SerrePositivity.KST.Spectra.PointedSkeletalMappingTower
 public import SerrePositivity.KST.Spectra.TrivialFixedPointTower
 
-public import SerrePositivity.InfinityCategories.Kan.SkeletonFiltration
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletonFiltration
 public import SerrePositivity.KST.Spectra.SkeletalWeightedEndTower
 public import SerrePositivity.KST.Spectra.SkeletalWeightColimit
 public import SerrePositivity.KST.Spectra.EndLimitPreservation
@@ -156,10 +156,10 @@ public import SerrePositivity.KST.Spectra.WeightedCochainsWeightIso
 public import SerrePositivity.KST.Spectra.PointedGroupFunctionCochains
 public import SerrePositivity.KST.Spectra.FreeUniversalCoverCoordinates
 
-public import SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex
-public import SerrePositivity.InfinityCategories.Kan.Pointed.FunctionComplexPointedSimplex
-public import SerrePositivity.InfinityCategories.Kan.FunctionComplexHomotopyGroups
-public import SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexHomotopyGroups
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom
 public import SerrePositivity.KST.Spectra.PointedActionCochainHomotopy
 public import SerrePositivity.KST.Spectra.FunctionComplexIsoFormula
 public import SerrePositivity.KST.Spectra.PointedActionCochainBasepoint
@@ -262,7 +262,7 @@ public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitMap
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitNaturality
 public import SerrePositivity.KST.Spectra.FixedPointNaturality
 
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeUnit
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeUnit
 public import SerrePositivity.KST.Spectra.PointedWeightedCone
 public import SerrePositivity.KST.Spectra.PointedWeightedConeCompatibility
 public import SerrePositivity.KST.Spectra.KanSequenceHomotopyLimitCone

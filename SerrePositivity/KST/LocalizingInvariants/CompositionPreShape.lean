@@ -29,7 +29,7 @@ lemma first : (Δ[1] ◁ stdSimplex.δ (2 : Fin 3)) ≫ shape.{u} =
   apply SSet.stdSimplex.ext
   intro i
   change index (s i, (2 : Fin 3).succAbove (t i)) =
-    (2 : Fin 4).succAbove (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.preIndex (s i, t i))
+    (2 : Fin 4).succAbove (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.preIndex (s i, t i))
   generalize hs : s i = a
   generalize ht : t i = b
   fin_cases a <;> fin_cases b <;> rfl
@@ -43,7 +43,7 @@ lemma last : (Δ[1] ◁ stdSimplex.δ (0 : Fin 3)) ≫ shape.{u} =
   apply SSet.stdSimplex.ext
   intro i
   change index (s i, (0 : Fin 3).succAbove (t i)) =
-    (0 : Fin 4).succAbove (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.preIndex (s i, t i))
+    (0 : Fin 4).succAbove (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.preIndex (s i, t i))
   generalize hs : s i = a
   generalize ht : t i = b
   fin_cases a <;> fin_cases b <;> rfl
@@ -57,7 +57,7 @@ lemma long : (Δ[1] ◁ stdSimplex.δ (1 : Fin 3)) ≫ shape.{u} =
   apply SSet.stdSimplex.ext
   intro i
   change index (s i, (1 : Fin 3).succAbove (t i)) =
-    (1 : Fin 4).succAbove (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.preIndex (s i, t i))
+    (1 : Fin 4).succAbove (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.preIndex (s i, t i))
   generalize hs : s i = a
   generalize ht : t i = b
   fin_cases a <;> fin_cases b <;> rfl

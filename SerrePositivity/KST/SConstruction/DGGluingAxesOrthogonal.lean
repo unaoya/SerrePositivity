@@ -22,15 +22,15 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
 include hc hd in
 /-- 指定した同じ実右軸から実左軸への全 Hom 複体は実零対象。 -/
 lemma dgGluingAxes_right_left_hom_isZero (d : D) (c : C) :
-    IsZero (homObject R (DGGluingObject R C D M)
+    IsZero (homObject R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)
       (dgGluingRightAxisObject R C D M zc d) (dgGluingLeftAxisObject R C D M zd c)) :=
   (dgCommaHom_isZero R D (RightModule R C) M.toFunctor
-    (dgGluingCommaObject R C D M (dgGluingRightAxisObject R C D M zc d))
-    (dgGluingCommaObject R C D M (dgGluingLeftAxisObject R C D M zd c))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingCommaObject R C D M (dgGluingRightAxisObject R C D M zc d))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingCommaObject R C D M (dgGluingLeftAxisObject R C D M zd c))
     (dgHom_isZero_of_closed_zero_target R zd hd d)
     (dgRepresentableClosedZeroHom R zc hc (representable R c))
     (dgRepresentableClosedZeroHom R zc hc (M.rightAt zd))).of_iso
-      (dgGluingHomRepresentableIso R C D M
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomRepresentableIso R C D M
         (dgGluingRightAxisObject R C D M zc d) (dgGluingLeftAxisObject R C D M zd c))
 
 end SerrePositivity.KST.SConstruction

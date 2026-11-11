@@ -38,7 +38,7 @@ lemma pointedInterval_mappedStage_condition (n : ℕ) :
   have hstep := PointedMapping.VerticalPath.basedPost_sequence_step_path p n
     (P.basedPost (pointedEvaluation X Y n)).basedTranspose
   have h := pointedInterval_transposed_condition X Y P n
-  have ht := congrArg (· ≫ ((ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map (p.app (n + 1))).right) h
+  have ht := congrArg (· ≫ ((ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map (p.app (n + 1))).right) h
   exact hpre.trans (ht.trans hstep.symm)
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

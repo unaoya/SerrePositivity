@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPathIso
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalReplacementPathIso
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanHomotopyRectificationImage
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyRepresentative
 
 /-!
 概要：同型で可換な Kan cospan 比較を厳密化するための、底の指定同型を構成する。

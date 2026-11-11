@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：各作用素の像に頂点が属する条件を存在量化で書き、和集合と交換する。
 規約：Moss 2020 Lemma 26 の singleton 上の計算への帰着。
 使われ方：面・退化との交換則の証明。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

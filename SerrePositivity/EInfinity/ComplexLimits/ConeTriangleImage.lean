@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.ConeTriangleIndex
 public import SerrePositivity.EInfinity.ComplexLimits.ConeWithoutFirst
-public import SerrePositivity.InfinityCategories.DGNerve.PinchedRecoverIndex
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedRecoverIndex
 
 /-!
 概要：始点／終点を除いた三角形添字像を、元の非零相／非二相の部分集合へ回収する。
@@ -32,10 +32,10 @@ lemma withoutFirst_image_coneTriangleFrontIndex {n : ℕ} (τ : Fin (n + 1) →o
 
 lemma withoutLast_image_coneTriangleBackIndex {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) :
-    InfinityCategories.DGNerve.PinchedHom.withoutLast (I.image (coneTriangleBackIndex τ)) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.withoutLast (I.image (coneTriangleBackIndex τ)) =
       I.filter (fun i => τ i ≠ 2) := by
   ext x
-  simp only [InfinityCategories.DGNerve.PinchedHom.withoutLast, Finset.mem_filter,
+  simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.withoutLast, Finset.mem_filter,
     Finset.mem_univ, true_and, Finset.mem_image]
   constructor
   · rintro ⟨i, hi, he⟩

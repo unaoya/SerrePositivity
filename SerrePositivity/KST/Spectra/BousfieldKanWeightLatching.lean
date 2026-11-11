@@ -15,7 +15,7 @@ public import Mathlib.CategoryTheory.Limits.Preserves.FunctorCategory
 @[expose] public section
 universe u
 open CategoryTheory CategoryTheory.Limits SSet
-open SerrePositivity.Reedy SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.Reedy
 open scoped Simplicial
 
 namespace SerrePositivity.KST.Spectra.BousfieldKanWeightLatching
@@ -75,7 +75,7 @@ lemma coordinates_mono (n : ℕ) (j : SimplexCategory) :
 
 /-- 元の余単体圏へ制限した実際の BK 重み。 -/
 abbrev weight : CosimplicialObject SSet.{u} :=
-  AsSmall.up ⋙ bousfieldKanWeight (AsSmall.{u} SimplexCategory)
+  AsSmall.up ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} SimplexCategory)
 
 /-- 各単体次数の BK 重みの latching は単射。 -/
 lemma degree_mono (n : ℕ) (j : SimplexCategory) :

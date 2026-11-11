@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentReverseSlicePost
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCompositionPrismPost
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionReverse
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionReverse
 
 /-!
 概要：元の反転合成 prism 全体は、同じ指定終域射の後合成に厳密に自然。

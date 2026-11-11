@@ -25,7 +25,7 @@ set_option backward.isDefEq.respectTransparency.types false
 open UnbasedPointedMapping SkeletalCellAttachment
 
 variable (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
-  (f : (K.skeleton 2 : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right)
+  (f : (K.skeleton 2 : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right)
 
 /-- 次数一の loop 族の path 表示は、二単体の骨格へ必ず延長できる。 -/
 theorem exists_extension [KanComplex Y.right] :
@@ -62,10 +62,10 @@ lemma cellPath_endpoint (s : K _⦋2⦌) :
 
 include hH in
 /-- セルの各辺の path は元の loop の辺の path 表示。 -/
-lemma cellPath_face (hf : skeletalInclusion K 0 ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)
+lemma cellPath_face (hf : skeletalInclusion K 0 ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint)
     (s : K _⦋2⦌) (j : Fin 3) :
     stdSimplex.δ j ≫ cellPath K Y H s =
-      (SkeletalMapSimplex.simplex K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) 0 f hf (K.δ j s)).map ≫
+      (SkeletalMapSimplex.simplex K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) 0 f hf (K.δ j s)).map ≫
         (PointedMapping.loopToPath Y).right := by
   have he : stdSimplex.δ j ≫ SSet.yonedaEquiv.symm
       (⟨s, K.mem_skeleton _⟩ : (K.skeleton 3 : SSet.{u}) _⦋2⦌) =
@@ -85,32 +85,32 @@ def endpointFiberVertex : (stageFiber K Y 1).right _⦋0⦌ :=
 /-- 終点の fiber 成分の係数は、指定した二単体の類。 -/
 lemma endpointFiberVertex_coefficient [KanComplex Y.right] (s : K.nonDegenerate 2) :
     stageFiberComponentEquiv K Y 1 (π₀.mk (endpointFiberVertex K Y f H hH)) s =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (endpointSimplex K Y f H hH s.val) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (endpointSimplex K Y f H hH s.val) :=
   SkeletalMapSimplex.fiberVertex_coefficient K Y 1 _ _ s
 
 /-- 次数一の正規化微分を loop 群同型で送ると、path 延長の終点の類になる。 -/
 theorem normalizedDifferential_endpoint [KanComplex Y.right]
-    (hf : skeletalInclusion K 0 ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)
+    (hf : skeletalInclusion K 0 ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint)
     (s : K.nonDegenerate 2) :
     (loopPositiveHomotopyEquiv Y 0).toAdditive
-      (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K
         (AddCommGrpCat.of (Additive
-          (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right 0 (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint))) 1
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right 0 (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint))) 1
         (SkeletalEdgeCochain.cochain K Y f hf) s) =
-      Additive.ofMul (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (endpointSimplex K Y f H hH s.val)) := by
+      Additive.ofMul (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (endpointSimplex K Y f H hH s.val)) := by
   let b := SimplexBasepoint.rebase (pathEndpoint_basepoint Y).symm
     (endpointSimplex K Y f H hH s.val)
-  let a := fun j : Fin 3 ↦ SkeletalMapSimplex.simplex K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) 0 f hf (K.δ j s.val)
+  let a := fun j : Fin 3 ↦ SkeletalMapSimplex.simplex K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) 0 f hf (K.δ j s.val)
   have hface : ∀ j, stdSimplex.δ j ≫ cellPath K Y H s.val =
-      (a j).map ≫ (loopBasedPathFiberIso Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι (pathEndpoint Y).right
+      (a j).map ≫ (loopBasedPathFiberIso Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι (pathEndpoint Y).right
         ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint) := by
     intro j
     rw [PointedMapping.loopToPath_fiber]
     exact cellPath_face K Y f H hH hf s.val j
   have h := PathTriangleBoundary.alternating_loopPositive Y b a (cellPath K Y H s.val)
     (cellPath_endpoint K Y f H hH s.val) hface
-  have hb : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 1 (Iso.refl Y.right) (pathEndpoint_basepoint Y)
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (endpointSimplex K Y f H hH s.val) := by
+  have hb : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 1 (Iso.refl Y.right) (pathEndpoint_basepoint Y)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk b) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (endpointSimplex K Y f H hH s.val) := by
     rw [SimplexBasepoint.group_mk]
     congr 1
   rw [hb] at h

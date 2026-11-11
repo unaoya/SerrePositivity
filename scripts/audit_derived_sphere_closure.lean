@@ -1,23 +1,23 @@
-import SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureInput
-import SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureSemifreeCovers
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.SphereClosureInput
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureSemifreeCovers
 import Lean
 /-! sphere-only 模型の D-1 telescope 被覆の全宣言を監査する。 -/
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosurePerfectCovers,
-    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureComparison,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureConeInput,
-    `SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureInput,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosurePerfectCovers,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureComparison,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SphereClosureConeInput,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.SphereClosureInput,
 
-    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureFamily,
-    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureOperations,
-    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosurePretriangulated,
-    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureImage,
-    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureRetract,
-    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureGradedExtension,
-    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureSemifreeCovers]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureFamily,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureOperations,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosurePretriangulated,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureImage,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureRetract,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureGradedExtension,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureSemifreeCovers]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
@@ -35,11 +35,11 @@ run_cmd do
   let total := counts.foldl (· + ·) (0 : Nat)
   logInfo m!"D sphere closure audit passed: {total} declarations in {modules.size} modules."
 
-#check SerrePositivity.InfinityCategories.dgKappaSphereClosureObjects_smallSemifreeRetractCovers
-#check SerrePositivity.InfinityCategories.dgKappaSphereClosureObjects_homotopyRetractCovers
-#check SerrePositivity.InfinityCategories.dgKappaSphereClosureObjects_smallSemifreeCovers
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaSphereClosureObjects_smallSemifreeRetractCovers
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaSphereClosureObjects_homotopyRetractCovers
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaSphereClosureObjects_smallSemifreeCovers
 
-#check SerrePositivity.InfinityCategories.dgKappaSphereClosureObjects_perfectCovers
-#check SerrePositivity.InfinityCategories.dgKappaSphereClosure_covers_unconditional
-#check SerrePositivity.InfinityCategories.dgKappaConeInput_unconditional'
-#check SerrePositivity.InfinityCategories.dgKappaPerfectInput_unconditional'
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaSphereClosureObjects_perfectCovers
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaSphereClosure_covers_unconditional
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaConeInput_unconditional'
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectInput_unconditional'

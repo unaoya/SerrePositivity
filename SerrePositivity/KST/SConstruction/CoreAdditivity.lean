@@ -20,7 +20,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 def coreSRealizationFunctor : StableModel.{u} ⥤ SSet.{u} :=
   simplicialStableEndofunctor.flip ⋙
     (Functor.whiskeringRight SimplexCategoryᵒᵖ StableModel.{u} SSet.{u}).obj
-      (stableModelForget ⋙ quasicategoryCoreFunctor) ⋙ simplicialDiagonalFunctor
+      (stableModelForget ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor) ⋙ simplicialDiagonalFunctor
 
 /-- object S• から core S• 実現への元の比較は完全関手について自然。 -/
 def objectCoreRealizationComparison : objectSConstructionFunctor.{u} ⟶ coreSRealizationFunctor where

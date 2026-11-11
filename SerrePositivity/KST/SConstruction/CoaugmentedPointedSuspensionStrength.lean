@@ -32,9 +32,9 @@ lemma coaugmentedPointedSuspensionStrength_family {P : SSet.{u}}
     (X Y : PointedSSetObject.{u}) (a : P ⟶ (X ⟶[SSet.{u}] Y)) :
     ((coaugmentedTensorLeftStrength F η PointedSimplicialSet.circle.{u}.right X.obj.right ≫
       F.map (PointedSimplicialSet.productToSmash PointedSimplicialSet.circle.{u} X.obj)) ▷ P) ≫
-      coaugmentedTensorRightStrength F η (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj).right P ≫
+      coaugmentedTensorRightStrength F η (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X.obj).right P ≫
       F.map (uncurry (a ≫ (Spectra.suspensionHom X.obj Y.obj).right ≫
-        PointedObject.basedHomι (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y.obj))) =
+        PointedObject.basedHomι (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X.obj) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y.obj))) =
     (α_ PointedSimplicialSet.circle.{u}.right (F.obj X.obj.right) P).hom ≫
       (PointedSimplicialSet.circle.{u}.right ◁
         (coaugmentedTensorRightStrength F η X.obj.right P ≫

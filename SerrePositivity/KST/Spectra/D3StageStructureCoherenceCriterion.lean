@@ -79,14 +79,14 @@ local instance d3CriterionSpectrumCategory : SimplicialCategory OmegaSpectrum.{u
 
 /-- 同じ次段始点表示の loop 像と保持した模型比較を、実次段像の始点表示と照合する補正。 -/
 def commonChosenStageLoopModelCorrection (n : ℕ) :
-    FunctorIso (coherentNerveMap (((commonOriginalEnriched.comp SSet
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (((commonOriginalEnriched.comp SSet
       (d3StageKanEnriched.{u} (n + 2))).comp SSet pointedKanLoopEnrichedFunctor).comp
         SSet pointedKanLoopEnrichedFunctor))
-      (coherentNerveMap (((commonOriginalEnriched.comp SSet (d3StageKanEnriched (n + 2))).comp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (((commonOriginalEnriched.comp SSet (d3StageKanEnriched (n + 2))).comp
         SSet pointedKanLoopEnrichedFunctor).comp SSet pointedKanLoopEnrichedFunctor)) :=
   (commonChosenStageLoopedCanonicalUnitIso n ≪≫
     (commonChosenStageLoopImageComparison n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0)) ≪≫
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0)) ≪≫
         (commonChosenStageCanonicalImageUnitIso n).symm
 
 /-- 同じ既存段比較が BF 構造を保つことは、保持した模型比較の補正の恒等性と同値。
@@ -94,19 +94,19 @@ def commonChosenStageLoopModelCorrection (n : ℕ) :
 lemma commonChosenStageRefinedSource_structure_iff (n : ℕ) :
     (commonChosenStageRefinedSourceNormalizedIso.{u} n ≪≫
       (commonChosenStageStructureDiagramIso n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0) =
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) =
     commonProjectionStructureRefinedIso n ≪≫ commonChosenStageLoopedRefinedSourceIso n) ↔
       commonChosenStageLoopModelCorrection.{u} n = Iso.refl _ := by
   exact d3Iso_pasting_correction_iff
     (commonChosenStageRefinedSourceNormalizedIso n)
     ((commonChosenStageStructureDiagramIso n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0))
     (commonProjectionStructureRefinedIso n) (commonChosenStageLoopedRefinedSourceIso n)
     (commonProjectionStructureLoopQIso n) (commonChosenStageLoopedCanonicalUnitIso n)
     ((commonChosenStageLoopedCanonicalDiagramIso n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0))
     ((commonChosenStageLoopImageComparison n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0))
     (commonChosenStageCanonicalImageUnitIso n)
     (commonChosenStageRefinedSourceNormalized_pasting n)
     (commonChosenStageLoopedRefinedSource_triangle n)

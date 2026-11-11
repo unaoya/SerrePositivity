@@ -36,11 +36,11 @@ lemma zeroEvaluationTriangleFamily_outer (A : PointedSimplicialSet.{u}) :
   change (𝟙 (SimplicialNerve (Object A)) ⊗ₘ stdSimplex.δ (1 : Fin 3)) ≫
       EnrichedOrderedCylinder.nerveSimplexFamily 2 = _ at hn
   rw [zeroEvaluationTriangleFamily, ← Category.assoc, hn,
-    Category.assoc, ← coherentNerveMap_comp, zeroEvaluationTriangleEnriched,
+    Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, zeroEvaluationTriangleEnriched,
     EnrichedTransformationTriangle.functor_outer]
   rw [evaluationNerveFamily, ← Category.assoc,
     EnrichedParameterCylinder.nervePair_parameterEdge,
-    Category.assoc, evaluationCylinderInfinityMap, ← coherentNerveMap_comp,
+    Category.assoc, evaluationCylinderInfinityMap, ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp,
     evaluationCylinderEnriched]
   rw [EnrichedOrderedCylinder.bridge_evaluation A.hom]
   rfl

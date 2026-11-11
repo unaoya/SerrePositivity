@@ -35,9 +35,9 @@ lemma objectSClosedInclusion_mem {X : StableModel.{u}} (P : ClosedStablePredicat
 def objectSClosedVertexLift {X : StableModel.{u}} (P : ClosedStablePredicate X)
     {n : SimplexCategoryᵒᵖ} (v : (objectSConstruction X.carrier).obj n) (hv : ObjectSInClosed P v) :
     (objectSConstruction (closedSubcategory P)).obj n :=
-  gappedObjectVertex (fullSubcomplexLift P.predicate (gappedDiagram v) hv) (by
+  gappedObjectVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift P.predicate (gappedDiagram v) hv) (by
     apply IsGapped.of_fullSubcomplex P.predicate
-    rw [fullSubcomplexLift_ι]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
     exact gappedDiagram_isGapped v)
 
 /-- 持ち上げた object S 単体の実図式は元の実図式を厳密に回収する。 -/
@@ -46,7 +46,7 @@ lemma objectSClosedVertexLift_diagram {X : StableModel.{u}} (P : ClosedStablePre
     gappedDiagram (objectSClosedVertexLift P v hv) ≫ (closedStableInclusion P).val =
       gappedDiagram v := by
   rw [objectSClosedVertexLift, gappedDiagram_gappedObjectVertex]
-  exact fullSubcomplexLift_ι _ _ _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 /-- 持ち上げを元の包含で戻すと object S の単体を厳密に回収する。 -/
 lemma objectSClosedVertexLift_inclusion {X : StableModel.{u}} (P : ClosedStablePredicate X)

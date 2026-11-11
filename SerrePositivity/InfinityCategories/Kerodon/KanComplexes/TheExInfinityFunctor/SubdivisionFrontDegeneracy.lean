@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：和集合保存で singleton に帰着し、初期区間の全射像を計算する。
 規約：Moss 2020 Lemma 26 (8)。原典と同じ生成元による証明。
 使われ方：Ex の pairing が退化単体を退化単体へ送ること。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

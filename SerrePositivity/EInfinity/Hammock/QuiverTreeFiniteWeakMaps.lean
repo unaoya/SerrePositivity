@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.QuiverTreeFiniteContractible
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FiniteQuiverRelative
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiverRelative
 public import SerrePositivity.EInfinity.Hammock.ContractibleMaps
 
 /-!
@@ -26,38 +26,38 @@ variable {Q : Type u} [Quiver.{v} Q] (T : WideSubquiver (Quiver.Symmetrify Q))
   [Quiver.Arborescence T] [Quiver.IsThin (Quiver.FreeGroupoid Q)]
   {S R : Finset Q}
 
-lemma subset_colimitMap_isWeakHomotopyEquivalence (hS : RootClosed T S) (hR : RootClosed T R)
+lemma subset_colimitMap_isWeakHomotopyEquivalence (hS : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootClosed T S) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootClosed T R)
     (h : S ⊆ R) :
-    letI := FiniteQuiver.quiver S
-    letI := FiniteQuiver.quiver R
-    ∀ x y : Paths (FiniteQuiver.Vertex S),
-      IsWeakHomotopyEquivalence (Relative.colimitMap (FiniteQuiver.subsetRelative h) x y) := by
-  let := FiniteQuiver.quiver S
-  let := FiniteQuiver.quiver R
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver R
+    ∀ x y : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subsetRelative h) x y) := by
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver R
   intro x y
   exact weak_of_contractible _ (finite_colimit_isWeaklyContractible T S hS x y)
     (finite_colimit_isWeaklyContractible T R hR _ _)
 
 lemma LeafDeletion.retraction_colimitMap_isWeakHomotopyEquivalence
-    (D : LeafDeletion T S) (hS : RootClosed T S) :
-    letI := FiniteQuiver.quiver S
-    letI := FiniteQuiver.quiver (S.erase D.leaf)
-    ∀ x y : Paths (FiniteQuiver.Vertex S),
-      IsWeakHomotopyEquivalence (Relative.colimitMap D.retractionRelative x y) := by
-  let := FiniteQuiver.quiver S
-  let := FiniteQuiver.quiver (S.erase D.leaf)
+    (D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeafDeletion T S) (hS : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootClosed T S) :
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (S.erase D.leaf)
+    ∀ x y : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap D.retractionRelative x y) := by
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (S.erase D.leaf)
   intro x y
   exact weak_of_contractible _ (finite_colimit_isWeaklyContractible T S hS x y)
     (finite_colimit_isWeaklyContractible T (S.erase D.leaf) D.remaining_closed _ _)
 
 lemma LeafDeletion.inclusion_colimitMap_isWeakHomotopyEquivalence
-    (D : LeafDeletion T S) (hS : RootClosed T S) :
-    letI := FiniteQuiver.quiver S
-    letI := FiniteQuiver.quiver (S.erase D.leaf)
-    ∀ x y : Paths (FiniteQuiver.Vertex (S.erase D.leaf)),
-      IsWeakHomotopyEquivalence (Relative.colimitMap D.inclusionRelative x y) := by
-  let := FiniteQuiver.quiver S
-  let := FiniteQuiver.quiver (S.erase D.leaf)
+    (D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeafDeletion T S) (hS : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootClosed T S) :
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (S.erase D.leaf)
+    ∀ x y : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex (S.erase D.leaf)),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap D.inclusionRelative x y) := by
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (S.erase D.leaf)
   intro x y
   exact weak_of_contractible _
     (finite_colimit_isWeaklyContractible T (S.erase D.leaf) D.remaining_closed x y)

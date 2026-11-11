@@ -23,7 +23,7 @@ open LoopExchangePaths
 lemma firstPath_ihom_pre_path {P A A' Y Z W : PointedSimplicialSet.{u}}
     [KanComplex Z.right] [KanComplex W.right]
     (a : Z ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W)
-    (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+    (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
     (f : A' ⟶ PointedObject.basedHom CirclePower.space.{u} Y)
     (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z)
     (j : A ⟶ PointedObject.basedHom P A') :
@@ -34,7 +34,7 @@ lemma firstPath_ihom_pre_path {P A A' Y Z W : PointedSimplicialSet.{u}}
   have he := PointedMapping.VerticalPath.basedIhomMap_path_congr
     (firstPath a ha f g) (((cancellationFirst a ha).pre (input f g)).basedPost (projection Z))
     P rfl
-  exact (congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j _).right) he).trans
+  exact (congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j _).right) he).trans
     (PointedMapping.VerticalPath.projectedIhomPre_path
       (cancellationFirst a ha) (input f g) (projection Z) P j)
 

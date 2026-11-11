@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Core.ContractibleKan
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.ContractibleKan
 public import SerrePositivity.KST.SConstruction.LocalizedPiComparison
 public import SerrePositivity.KST.Spectra.AcyclicFibrationLifting
 
@@ -25,7 +25,7 @@ open scoped Simplicial
 lemma pointedIsContractibleKan_of_localized_toPoint (Z : PointedSimplicialSet.{u})
     [KanComplex Z.right]
     (hZ : IsIso (AnodyneHomotopy.anodyneQ.map (toUnit Z.right))) :
-    IsContractibleKan Z.right := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan Z.right := by
   let e : terminal SSet.{u} ≅ 𝟙_ SSet.{u} :=
     terminalIsTerminal.uniqueUpToIso isTerminalTensorUnit
   let : KanComplex (𝟙_ SSet.{u}) := by
@@ -38,7 +38,7 @@ lemma pointedIsContractibleKan_of_localized_toPoint (Z : PointedSimplicialSet.{u
     rw [he]
     infer_instance
   have hp := kanPiIsomorphism_of_localized_isIso (toUnit Z.right) hZ
-  have hr := _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_rlp_of_piIsomorphism (toUnit Z.right) hp Z.basepoint
+  have hr := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fibration_rlp_of_piIsomorphism (toUnit Z.right) hp Z.basepoint
   intro n a
   let : HasLiftingProperty (boundary n).ι (toUnit Z.right) := hr (boundary n).ι inferInstance
   let sq : CommSq a (boundary n).ι (toUnit Z.right) (toUnit (Δ[n] : SSet.{u})) :=

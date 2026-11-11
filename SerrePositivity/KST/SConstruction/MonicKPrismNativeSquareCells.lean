@@ -24,7 +24,7 @@ lemma monicKPrismCompositeSecondCompatibilityTransport_square_cells (n : ℕ) :
     familyHomotopyChainTrace (monicKPrismCompositeSecondCompatibilityTransport F f g n) =
       (monicKPrismCompatibilityInterchangeSquares F f g n).map
         (familySquareClockSwap
-          (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⊗ nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) ≫ ·) := by
+          (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) ⊗ nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)) ≫ ·) := by
   simp only [monicKPrismCompositeSecondCompatibilityTransport,
     monicKPrismCompositeCompatibilityTransportChain, familyHomotopyChainTargetTransport_trace,
     familyHomotopyChainSourceTransport_trace, familyInterchangeCylinderChain_trace_clockSwap,
@@ -37,7 +37,7 @@ lemma monicKPrismNativeSecondCompatibilityTransport_square_cells (n : ℕ) :
       (monicKPrismCompatibilityInterchangeSquares F f g n).map (fun q =>
         ((compositionStringPair f g ▷ (Δ[1] : SSet.{u})) ▷ (Δ[1] : SSet.{u})) ≫
           familySquareClockSwap
-            (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⊗ nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) ≫ q) := by
+            (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) ⊗ nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)) ≫ q) := by
   rw [monicKPrismNativeSecondCompatibilityTransport_trace,
     monicKPrismCompositeSecondCompatibilityTransport_square_cells]
   simp only [List.map_map, Function.comp_def]

@@ -25,15 +25,15 @@ lemma cubicalLambdaNativeSimplexData_two_closed {n : ℕ}
   have hgen := serreCubeTopCellImage_cast_zero_d A _ (I.card - 2) (by omega)
     (simplexSubsetLambdaCell A I hI) (2 - (I.card : ℤ)) (by omega)
   change differential A (simplexSubsetLambdaGenerator A I hI) = 0 at hgen
-  exact (DGNerve.map_differential F (simplexSubsetLambdaGenerator A I hI)).symm.trans
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.map_differential F (simplexSubsetLambdaGenerator A I hI)).symm.trans
     ((congrArg (fun x => (F.map _ _).f (2 - (I.card : ℤ) + 1) x) hgen).trans (map_zero _))
 
 /-- 元の実 dg 関手の native HA 成分データは、元の全二点集合で同じ HA 方程式を満たす。 -/
 lemma cubicalLambdaNativeSimplexData_equation_two {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D)
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (DGNerve.Index.nonempty hI))
-    (hb : b = I.max' (DGNerve.Index.nonempty hI)) (hk : k = 2 - (I.card : ℤ))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hk : k = 2 - (I.card : ℤ))
     (hcard : I.card = 2) :
     differential A ((cubicalLambdaNativeSimplexData A F).hom I a b k hI ha hb hk) =
       (cubicalLambdaNativeSimplexData A F).rhs I a b k hI ha hb hk := by
@@ -41,15 +41,15 @@ lemma cubicalLambdaNativeSimplexData_equation_two {n : ℕ}
   subst b
   subst k
   have hz : (cubicalLambdaNativeSimplexData A F).rhs I
-      (I.min' (DGNerve.Index.nonempty hI)) (I.max' (DGNerve.Index.nonempty hI))
+      (I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
       (2 - (I.card : ℤ)) hI rfl rfl rfl = 0 := by
-    unfold DGNerve.SimplexData.rhs
+    unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.rhs
     apply Finset.sum_eq_zero
     intro j _
     split_ifs with h
     · exfalso
-      let a := I.min' (DGNerve.Index.nonempty hI)
-      let b := I.max' (DGNerve.Index.nonempty hI)
+      let a := I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)
+      let b := I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)
       change a < j.val ∧ j.val < b at h
       have hsub : ({a, j.val, b} : Finset (Fin (n + 1))) ⊆ I := by
         intro t ht

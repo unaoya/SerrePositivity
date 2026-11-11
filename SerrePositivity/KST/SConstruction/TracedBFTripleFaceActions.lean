@@ -24,7 +24,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 
 /-- 前二射の元の面の全 Path 作用は、同じ四面体の全作用の面制限。 -/
 lemma monicKTracedCoherentTriple_first_face_mapping (a b : Fin 3) :
-    HEq (Coherent.pathFaceMap.{u} 3 a b ≫
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceMap.{u} 3 a b ≫
       (monicKTracedCoherentTripleData F f g h).simplex.map
         (.mk (ULift.up ((3 : Fin 4).succAbove a)))
         (.mk (ULift.up ((3 : Fin 4).succAbove b))))
@@ -34,7 +34,7 @@ lemma monicKTracedCoherentTriple_first_face_mapping (a b : Fin 3) :
 
 /-- 後二射の元の面の全 Path 作用も、同じ四面体の全作用の面制限。 -/
 lemma monicKTracedCoherentTriple_second_face_mapping (a b : Fin 3) :
-    HEq (Coherent.pathFaceMap.{u} 0 a b ≫
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceMap.{u} 0 a b ≫
       (monicKTracedCoherentTripleData F f g h).simplex.map
         (.mk (ULift.up ((0 : Fin 4).succAbove a)))
         (.mk (ULift.up ((0 : Fin 4).succAbove b))))
@@ -44,7 +44,7 @@ lemma monicKTracedCoherentTriple_second_face_mapping (a b : Fin 3) :
 
 /-- 右結合の元の面の全 Path 作用も、同じ四面体の全作用の面制限。 -/
 lemma monicKTracedCoherentTriple_right_face_mapping (a b : Fin 3) :
-    HEq (Coherent.pathFaceMap.{u} 2 a b ≫
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceMap.{u} 2 a b ≫
       (monicKTracedCoherentTripleData F f g h).simplex.map
         (.mk (ULift.up ((2 : Fin 4).succAbove a)))
         (.mk (ULift.up ((2 : Fin 4).succAbove b))))
@@ -54,7 +54,7 @@ lemma monicKTracedCoherentTriple_right_face_mapping (a b : Fin 3) :
 
 /-- 生成された第四面の全作用も同じ四面体の面制限であり、独立に選び直さない。 -/
 lemma monicKTracedCoherentTriple_generated_face_mapping (a b : Fin 3) :
-    HEq (Coherent.pathFaceMap.{u} 1 a b ≫
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceMap.{u} 1 a b ≫
       (monicKTracedCoherentTripleData F f g h).simplex.map
         (.mk (ULift.up ((1 : Fin 4).succAbove a)))
         (.mk (ULift.up ((1 : Fin 4).succAbove b))))

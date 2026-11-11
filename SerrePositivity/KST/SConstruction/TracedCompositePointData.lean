@@ -23,12 +23,12 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 /-- 元の全合成補正円柱と全木の同じ直通列制限。 -/
 def monicKPrismCompositePointData (n : ℕ) :=
   (monicKPrismNativeCompositeCorrectionData F f g n).precomp
-    (nervePoint (compositionStringDirect f g))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g))
 
 /-- 元の同じ全円柱を、同じ指定直通列点へ制限した写像を厳密に保持する。 -/
 lemma monicKPrismCompositePointData_h (n : ℕ) :
     (monicKPrismCompositePointData F f g n).homotopy.h =
-      (nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
         (monicKPrismNativeCompositeCorrectionData F f g n).homotopy.h := rfl
 
 /-- 合成木の全三角形は、元の同じ全二単体の直通列制限を同じ順序で保持する。 -/
@@ -36,7 +36,7 @@ lemma monicKPrismCompositePointData_triangles (n : ℕ) :
     familyChainCompositionTriangles (monicKPrismCompositePointData F f g n).witness =
       (familyChainCompositionTriangles
         (monicKPrismNativeCompositeCorrectionData F f g n).witness).map
-          ((nervePoint (compositionStringDirect f g) ▷ (Δ[2] : SSet.{u})) ≫ ·) :=
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[2] : SSet.{u})) ≫ ·) :=
   FamilyChainCompositeData.precomp_triangles _ _
 
 /-- 元の合成木に記録した全区間は、元の前後二本の補正全区間の像の順序付き連結。 -/

@@ -50,7 +50,7 @@ variable {C : Type u} [Category.{v} C]
 
 /-- A genuine constant simplex of the actual Hom, from an augmentation. -/
 def point {B : C} (f : X ⟶ B) :
-    SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0) ⟶ (cosimplicialHom A).obj B where
+    SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0) ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj B where
   app n := ↾fun _ => a.app n.unop ≫ f
   naturality {n m} g := by
     ext s
@@ -62,16 +62,16 @@ def point {B : C} (f : X ⟶ B) :
 
 @[reassoc]
 lemma point_postcomp {E B : C} (e : X ⟶ E) (p : E ⟶ B) :
-    point A a e ≫ (cosimplicialHom A).map p = point A a (e ≫ p) := by
+    point A a e ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p = point A a (e ≫ p) := by
   ext n s
   exact Category.assoc _ _ _
 
 /-- The actual fiber of Hom(A,p) over the constant simplex a followed by f. -/
 abbrev obj {E B : C} (p : E ⟶ B) (f : X ⟶ B) : SSet.{v} :=
-  pullback ((cosimplicialHom A).map p) (point A a f)
+  pullback ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p) (point A a f)
 
 abbrev inclusion {E B : C} (p : E ⟶ B) (f : X ⟶ B) :
-    obj A a p f ⟶ (cosimplicialHom A).obj E :=
+    obj A a p f ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj E :=
   pullback.fst _ _
 
 abbrev projection {E B : C} (p : E ⟶ B) (f : X ⟶ B) :
@@ -80,7 +80,7 @@ abbrev projection {E B : C} (p : E ⟶ B) (f : X ⟶ B) :
 
 @[reassoc]
 lemma over {E B : C} (p : E ⟶ B) (f : X ⟶ B) :
-    inclusion A a p f ≫ (cosimplicialHom A).map p =
+    inclusion A a p f ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p =
       projection A a p f ≫ point A a f := pullback.condition
 
 /-- Any strict lift gives an actual point of the lift space. -/
@@ -107,7 +107,7 @@ lemma projection_trivialFibration {E B : C} (p : E ⟶ B)
     [Fibration p] [WeakEquivalence p] (f : X ⟶ B) :
     trivialFibrations SSet.{v} (projection A a p f) :=
   (trivialFibrations SSet.{v}).of_isPullback
-    (IsPullback.of_hasPullback ((cosimplicialHom A).map p) (point A a f))
+    (IsPullback.of_hasPullback ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p) (point A a f))
     (cosimplicialHom_trivialFibration hcof A hA p)
 
 include hcof hA in

@@ -1,11 +1,13 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.Equivalence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
 public import Mathlib.CategoryTheory.Retract
 public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 頂点の retract とその基本性質。Kerodon 8.5.1.1（Tag 03YJ）。
+
+対応節は Kerodon 8.5（Tag 03Y9）。
 -/
 
 @[expose] public section
@@ -29,7 +31,7 @@ lemma VertexRetraction.idempotent {X : SSet.{u}} {x y : X _⦋0⦌}
 /-- 同じ元の冪等射を分裂する二つの retract の、指定射を使う頂点同型。 -/
 def VertexRetraction.isoOfSameIdempotent {X : SSet.{u}} {x y z : X _⦋0⦌}
     (s : VertexRetraction x z) (t : VertexRetraction y z)
-    (h : s.r ≫ s.i = t.r ≫ t.i) : VertexIso x y where
+    (h : s.r ≫ s.i = t.r ≫ t.i) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x y where
   hom := s.i ≫ t.r
   inv := t.i ≫ s.r
   hom_inv_id := by
@@ -62,7 +64,7 @@ lemma IsVertexRetractOf.trans {X : SSet.{u}} {x y z : X _⦋0⦌}
 
 /-- 頂点同型は同じ二頂点の retract を与える。 -/
 lemma IsVertexRetractOf.of_iso {X : SSet.{u}} {x y : X _⦋0⦌}
-    (e : VertexIso x y) : IsVertexRetractOf x y := ⟨Retract.ofIso e⟩
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x y) : IsVertexRetractOf x y := ⟨Retract.ofIso e⟩
 
 /-- 元の単体的関手は、同じ頂点と射の類を持つ retract を保存する。 -/
 lemma IsVertexRetractOf.map {X Y : SSet.{u}} {x y : X _⦋0⦌}

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.SimplexHADeleteVertexOrder
 public import SerrePositivity.KST.SConstruction.SerreCubeInsertGeneratorIndex
 public import SerrePositivity.KST.SConstruction.SimplexHADecodeRightTail
-public import SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWordJoinEquality
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWordJoinEquality
 
 /-! # 元の全生成元への任意座標の零端点挿入の読み替え
 概要：任意位置の零端点を挿入した語を、同じ内部頂点を削除した語として回収する。
@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.SConstruction
 private lemma tail_start_heq {n : ℕ} (T : Finset (Fin (n + 1))) (hT : T.Nonempty)
     {a a' : Fin (n + 1)} (ha : a = a') (hb : ∀ r ∈ T, a < r)
     (hb' : ∀ r ∈ T, a' < r) :
-    HEq (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT a hb) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT a' hb') := by
+    HEq (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT a hb) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT a' hb') := by
   cases ha
   rfl
 
@@ -83,7 +83,7 @@ lemma simplexHABeadWordDecode_insert_zero {n : ℕ} (m : ℕ) (q : Fin (m + 1))
         (simplexHADeleteVertexOrder_bound m q (Fin.castSuccOrderEmb.trans v) {r}
           (simplexHADecodePrefix_cut (m + 1) v)) (simplexHADecodePrefix_cut m u)
       have htail := tail_start_heq T hT hr.symm hb hu
-      have hj := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordJoin_heq hf.symm hr.symm rfl
+      have hj := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadWordJoin_heq hf.symm hr.symm rfl
         (serreCubeInsertGeneratorIndex_freeDimension false m q i) rfl _ _ _ _
         (h₁.trans h₂) htail
       have h₃ := simplexHABeadWordDecode_one m i u T hT hu

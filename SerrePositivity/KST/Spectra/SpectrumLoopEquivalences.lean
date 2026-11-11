@@ -22,23 +22,23 @@ local instance loopHomKan (X Y : OmegaSpectrum.{u}) : KanComplex (SimplicialCate
 
 /-- 符号を調整した loop の BF 模型への単位は実際の Sp の同値。 -/
 lemma signedLoopUnit_isInvertible (X : OmegaSpectrum.{u}) :
-    IsInvertibleEdge (coherentNerveEdge (signedLoopUnit X)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (signedLoopUnit X)) :=
   SpectrumMappingAcyclic.isInvertible_of_levelwise _ (signedLoopUnit_levelwise X)
 
 /-- 通常と符号付きの loop の BF 模型の比較辺は実際の Sp の同値。 -/
 lemma signedLoopComparison_isInvertible (X : OmegaSpectrum.{u}) :
-    IsInvertibleEdge (coherentNerveEdge (signedLoopComparison X)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (signedLoopComparison X)) :=
   SpectrumMappingAcyclic.isInvertible_of_levelwise _ (signedLoopComparison_levelwise X)
 
 /-- 元のスペクトルから通常の loop の BF 模型への比較辺は実際の Sp の同値。 -/
 lemma originalLoopModelMap_isInvertible (X : OmegaSpectrum.{u}) :
-    IsInvertibleEdge (coherentNerveEdge (originalLoopModelMap X)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (originalLoopModelMap X)) :=
   SpectrumMappingAcyclic.isInvertible_of_levelwise _ (originalLoopModelMap_levelwise X)
 
 /-- 元の対象と一段先の loop の BF 模型の具体的な頂点同型。 -/
 def originalLoopModelVertexIso (X : OmegaSpectrum.{u}) :
-    VertexIso (coherentNerveVertex X) (coherentNerveVertex (rationalizationModel X)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (rationalizationModel X)) := by
   haveI := originalLoopModelMap_isInvertible X
-  exact asIso (SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge (originalLoopModelMap X)))
+  exact asIso (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (originalLoopModelMap X)))
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

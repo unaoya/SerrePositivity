@@ -28,32 +28,32 @@ local instance triangleCommutationNerve : Quasicategory (SimplicialNerve OmegaSp
   sp_quasicategory
 
 variable {X Y Z : OmegaSpectrum.{u}} (a : X ⟶ Y) (q : Y ⟶ Z) (s : Sp.{u} _⦋2⦌)
-  (h₂ : Sp.δ 2 s = (coherentNerveEdge a).edge)
-  (h₀ : Sp.δ 0 s = (coherentNerveEdge q).edge)
-  (d : X ⟶ Z) (h₁ : Sp.δ 1 s = (coherentNerveEdge d).edge)
+  (h₂ : Sp.δ 2 s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge)
+  (h₀ : Sp.δ 0 s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q).edge)
+  (d : X ⟶ Z) (h₁ : Sp.δ 1 s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d).edge)
 
-def sourcePost := TriangleEdge.normalizedPost s (coherentNerveEdge a).edge
-  (coherentNerveEdge d).edge h₂ h₁
+def sourcePost := TriangleEdge.normalizedPost s (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d).edge h₂ h₁
 
-def sourcePre := TriangleEdge.normalizedPre s (coherentNerveEdge d).edge
-  (coherentNerveEdge q).edge h₁ h₀
+def sourcePre := TriangleEdge.normalizedPre s (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d).edge
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q).edge h₁ h₀
 
-def canonicalPost := TriangleEdge.normalizedPost (canonical a q) (coherentNerveEdge a).edge
-  (coherentNerveEdge (a ≫ q)).edge (coherentNerveCompStruct a q).d₂
-    (coherentNerveCompStruct a q).d₁
+def canonicalPost := TriangleEdge.normalizedPost (canonical a q) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (a ≫ q)).edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₂
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₁
 
 def canonicalPre := TriangleEdge.normalizedPre (canonical a q)
-  (coherentNerveEdge (a ≫ q)).edge (coherentNerveEdge q).edge
-    (coherentNerveCompStruct a q).d₁ (coherentNerveCompStruct a q).d₀
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (a ≫ q)).edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q).edge
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₁ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₀
 
-def triangleHomotopy := TriangleComparison.homotopy (coherentNerveEdge a) (coherentNerveEdge q)
-  s (canonical a q) h₂ h₀ (coherentNerveCompStruct a q).d₂ (coherentNerveCompStruct a q).d₀
+def triangleHomotopy := TriangleComparison.homotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q)
+  s (canonical a q) h₂ h₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₂ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₀
 
 lemma triangleHomotopy_map : (triangleHomotopy a q s h₂ h₀).h = prism a q s h₂ h₀ :=
   TriangleComparison.homotopy_map _ _ _ _ _ _ _ _
 
 lemma diagonalFace_arrow :
-    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (TrianglePrism.diagonalFace (triangleHomotopy a q s h₂ h₀)))) =
     Arrow.mk (SpectrumMappingPath.arrowHom (path a q s h₂ h₀ d h₁)) := by
   have hc := HomotopyArrow.congr
@@ -66,33 +66,33 @@ lemma diagonalFace_arrow :
 
 lemma post_commutation :
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (sourcePost a s h₂ d h₁)) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (sourcePost a s h₂ d h₁)) ≫
         SpectrumMappingPath.arrowHom (path a q s h₂ h₀ d h₁) =
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (canonicalPost a q)) := by
-  have hn := TriangleComparison.post_commutation (coherentNerveEdge a) (coherentNerveEdge q)
-    s (canonical a q) h₂ h₀ (coherentNerveCompStruct a q).d₂ (coherentNerveCompStruct a q).d₀
-  have hs := TriangleEdge.normalizedPost_arrow s (coherentNerveEdge a).edge
-    (coherentNerveEdge d).edge h₂ h₁
-  have ht := TriangleEdge.normalizedPost_arrow (canonical a q) (coherentNerveEdge a).edge
-    (coherentNerveEdge (a ≫ q)).edge (coherentNerveCompStruct a q).d₂
-      (coherentNerveCompStruct a q).d₁
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (canonicalPost a q)) := by
+  have hn := TriangleComparison.post_commutation (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q)
+    s (canonical a q) h₂ h₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₂ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₀
+  have hs := TriangleEdge.normalizedPost_arrow s (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d).edge h₂ h₁
+  have ht := TriangleEdge.normalizedPost_arrow (canonical a q) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (a ≫ q)).edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₂
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₁
   apply Arrow.mk_injective
   exact (arrow_mk_comp_congr hs
     (diagonalFace_arrow a q s h₂ h₀ d h₁)).symm.trans (hn.trans ht)
 
 lemma pre_commutation :
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (sourcePre q s h₀ d h₁)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (sourcePre q s h₀ d h₁)) =
     SpectrumMappingPath.arrowHom (path a q s h₂ h₀ d h₁) ≫
       Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (canonicalPre a q)) := by
-  have hn := TriangleComparison.pre_commutation (coherentNerveEdge a) (coherentNerveEdge q)
-    s (canonical a q) h₂ h₀ (coherentNerveCompStruct a q).d₂ (coherentNerveCompStruct a q).d₀
-  have hs := TriangleEdge.normalizedPre_arrow s (coherentNerveEdge d).edge
-    (coherentNerveEdge q).edge h₁ h₀
-  have ht := TriangleEdge.normalizedPre_arrow (canonical a q) (coherentNerveEdge (a ≫ q)).edge
-    (coherentNerveEdge q).edge (coherentNerveCompStruct a q).d₁ (coherentNerveCompStruct a q).d₀
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (canonicalPre a q)) := by
+  have hn := TriangleComparison.pre_commutation (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q)
+    s (canonical a q) h₂ h₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₂ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₀
+  have hs := TriangleEdge.normalizedPre_arrow s (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d).edge
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q).edge h₁ h₀
+  have ht := TriangleEdge.normalizedPre_arrow (canonical a q) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (a ≫ q)).edge
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q).edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₁ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a q).d₀
   apply Arrow.mk_injective
   exact hs.symm.trans (hn.trans
     (arrow_mk_comp_congr (diagonalFace_arrow a q s h₂ h₀ d h₁) ht))

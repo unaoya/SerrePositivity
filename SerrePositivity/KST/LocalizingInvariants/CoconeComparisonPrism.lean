@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeComparisonPrism
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.CoconeComparisonPrism
 
 public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreComparison
 public import SerrePositivity.KST.LocalizingInvariants.SpanFamilyTransposeNaturality
@@ -23,9 +23,9 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma spanComparisonPrism_pre_diagram {K L L' X : SSet.{u}} (j : L' ⟶ L)
     (s : ((ihom L).obj ((ihom K).obj X)) _⦋1⦌) :
-    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism s ≫ (pre j).app X =
-      _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism (((pre j).app ((ihom K).obj X)).app (Opposite.op ⦋1⦌) s) := by
-  simp only [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism]
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanComparisonPrism s ≫ (pre j).app X =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanComparisonPrism (((pre j).app ((ihom K).obj X)).app (Opposite.op ⦋1⦌) s) := by
+  simp only [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanComparisonPrism]
   rw [← uncurry_natural_right, Category.assoc,
     ← spanInternalHomSwap_pre_first, ← SSet.yonedaEquiv_symm_comp]
   rfl

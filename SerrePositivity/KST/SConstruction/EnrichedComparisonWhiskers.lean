@@ -27,8 +27,8 @@ def enrichedComparisonLeftWhisker {W X Y Z : C} (f : W ⟶ X)
       (SimplicialCategory.homEquiv' _ _ ((f ≫ g) ≫ h)) :=
   ((SSet.Edge.ofTruncated ((SSet.Edge.id (SimplicialCategory.homEquiv' W X f)).toTruncated.tensor
     e.toTruncated)).map (SimplicialCategory.sHomComp W X Z)).ofEq
-    (simplicialHom_vertex_comp f gh).symm
-    ((simplicialHom_vertex_comp f (g ≫ h)).symm.trans
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialHom_vertex_comp f gh).symm
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialHom_vertex_comp f (g ≫ h)).symm.trans
       (congrArg (SimplicialCategory.homEquiv' W Z) (Category.assoc f g h).symm))
 
 /-- 左合成は元の比較辺全体と固定した恒等辺を同じ豊穣合成で写した全一単体。 -/
@@ -50,7 +50,7 @@ def enrichedComparisonRightWhisker {W X Y Z : C} (f : W ⟶ X)
   ((SSet.Edge.ofTruncated (e.toTruncated.tensor
     (SSet.Edge.id (SimplicialCategory.homEquiv' Y Z h)).toTruncated)).map
       (SimplicialCategory.sHomComp W Y Z)).ofEq
-    (simplicialHom_vertex_comp fg h).symm (simplicialHom_vertex_comp (f ≫ g) h).symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialHom_vertex_comp fg h).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialHom_vertex_comp (f ≫ g) h).symm
 
 /-- 右合成も元の比較辺全体と固定した恒等辺を同じ豊穣合成で写した全一単体。 -/
 lemma enrichedComparisonRightWhisker_edge {W X Y Z : C} (f : W ⟶ X)

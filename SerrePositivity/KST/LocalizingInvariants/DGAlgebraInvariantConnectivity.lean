@@ -17,7 +17,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 
-variable (R : Type u) [CommRing R] (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+variable (R : Type u) [CommRing R] (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
 
 def IsKConnective (k : ℤ) : Prop :=
   IsLocalizingInvariant Φ ∧ ∀ {B C : Mon (Complex R)},
@@ -41,7 +41,7 @@ lemma IsKConnective.quasiIso_bijective {k : ℤ} (h : IsKConnective R Φ k)
 lemma IsKConnective.quasiIso_value_isInvertible {k : ℤ} (h : IsKConnective R Φ k)
     {B C : Mon (Complex R)} (hB : IsConnective R B) (hC : IsConnective R C)
     (f : B ⟶ C) (hf : QuasiIso f.hom) :
-    IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (perfectMap R f)).map Φ).toTruncated :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (perfectMap R f)).map Φ).toTruncated :=
   value_isInvertible_of_piIsomorphism Φ (perfectMap R f)
     (fun j ↦ h.quasiIso_bijective R Φ hB hC f hf j)
 

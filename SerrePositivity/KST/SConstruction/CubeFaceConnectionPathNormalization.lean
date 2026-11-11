@@ -15,22 +15,22 @@ open SerrePositivity.DifferentialGraded
 
 /-- 元の面の語の後の一 connection を、元の両評価を保った三段表示へ移す。 -/
 lemma cubeFacePath_connection_normalization (A : Type u) [CommRing A]
-    {X : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} {m : ℕ} (p : Quiver.Path X (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (m + 2)))
+    {X : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject} {m : ℕ} (p : Quiver.Path X (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (m + 2)))
     (hp : CubeFacePath p) (i : Fin (m + 1)) :
     ∃ r : CubeThreeNormal X.dimension (m + 1),
       cubeThreeNormalVertex r =
-        (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map
-          (p.cons (show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (m + 2) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (m + 1) from
-            _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection m i))).val ∧
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map
+          (p.cons (show _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (m + 2) ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (m + 1) from
+            _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.connection m i))).val ∧
       serreCubeThreeNormal A r = (serreCubeWordFunctor A).map
-        (p.cons (show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (m + 2) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (m + 1) from
-          _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection m i)) := by
+        (p.cons (show _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (m + 2) ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (m + 1) from
+          _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.connection m i)) := by
   obtain ⟨e, he⟩ := cubeFacePath_exists_expression hp
   have hvertex := cubeFaceExpressionPath_concrete e
   have hserre := cubeFaceExpressionPath_serre A e
   erw [he] at hvertex hserre
   have hv : cubeFaceNormalVertex (cubeFaceExpressionNormal e) =
-      (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map p).val :=
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map p).val :=
     (cubeFaceExpressionNormal_vertex e).trans hvertex.symm
   have hs : serreCubeFaceNormal A (cubeFaceExpressionNormal e) =
       (serreCubeWordFunctor A).map p :=
@@ -38,7 +38,7 @@ lemma cubeFacePath_connection_normalization (A : Type u) [CommRing A]
   obtain ⟨r, hr, hsr⟩ := cubeFaceNormal_connection_three A (cubeFaceExpressionNormal e) i
   refine ⟨r, ?_, ?_⟩
   · change cubeThreeNormalVertex r =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection m i ∘ (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map p).val
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection m i ∘ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map p).val
     rw [hv] at hr
     exact hr
   · change serreCubeThreeNormal A r =

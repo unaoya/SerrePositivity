@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumTail
 public import SerrePositivity.KST.Spectra.CoherentNerve
-public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.NervePostcomposition
 
 /-!
 概要：一段の添字移動を Sp の全単体上の関手にする。
@@ -25,7 +25,7 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 def tailMapping (X Y : OmegaSpectrum.{u}) : mappingSpace X Y ⟶ mappingSpace (tail X) (tail Y) :=
   TruncatedMapping.familyLift
     (fun n ↦ ((tail X).level n).space) (fun n ↦ ((tail Y).level n).space)
-    (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((tail X).level n).space) (tail X).sigma
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((tail X).level n).space) (tail X).sigma
     (mappingStep (tail X) (tail Y)) (fun n ↦ evaluation X Y (n + 1))
     (fun n ↦ evaluation_condition X Y (n + 1))
 
@@ -64,11 +64,11 @@ def tailEnriched : EnrichedFunctor SSet.{u} OmegaSpectrum.{u} OmegaSpectrum.{u} 
     rfl
 
 /-- 元の Sp の全単体上の一段移動関手。 -/
-def nativeTail : Sp.{u} ⟶ Sp.{u} := coherentNerveMap tailEnriched
+def nativeTail : Sp.{u} ⟶ Sp.{u} := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap tailEnriched
 
 /-- 関手としての一段移動は元の BF 対象を一段ずらす。 -/
 lemma nativeTail_vertex (X : OmegaSpectrum.{u}) :
-    nativeTail.app (Opposite.op ⦋0⦌) (coherentNerveVertex X) = coherentNerveVertex (tail X) :=
-  coherentNerveMap_vertex tailEnriched X
+    nativeTail.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (tail X) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex tailEnriched X
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

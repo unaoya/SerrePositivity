@@ -32,7 +32,7 @@ lemma coherentDoubleInsertFirstUpper_edge (hab : a ≤ b) (hbd : b ≤ d) (hdc :
     (nerve.edgeMk ((coherentPathInsertTransformation (hab.trans hbd) hdc).app
       (coherentPathInsert hab (hbd.trans hdc)
         (coherentEndpointPath ((hab.trans hbd).trans hdc))))).edge =
-      (Coherent.pathCompMap a b c).app (Opposite.op ⦋1⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathCompMap a b c).app (Opposite.op ⦋1⦌)
         ((nerve.edgeMk (𝟙 (coherentEndpointPath hab))).edge,
           (nerve.edgeMk (coherentEndpointPathToComposite hbd hdc)).edge) := by
   refine ComposableArrows.ext₁ ?_ ?_ ?_
@@ -52,7 +52,7 @@ lemma coherentDoubleInsertFirstUpper_edge (hab : a ≤ b) (hbd : b ≤ d) (hdc :
 lemma coherentDoubleInsertSecondUpper_edge (hab : a ≤ b) (hbd : b ≤ d) (hdc : d ≤ c) :
     (nerve.edgeMk (coherentDoubleInsertSecondInclusion hab (hbd.trans hdc)
       (hab.trans hbd) hdc (coherentEndpointPath ((hab.trans hbd).trans hdc)))).edge =
-      (Coherent.pathCompMap a d c).app (Opposite.op ⦋1⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathCompMap a d c).app (Opposite.op ⦋1⦌)
         ((nerve.edgeMk (coherentEndpointPathToComposite hab hbd)).edge,
           (nerve.edgeMk (𝟙 (coherentEndpointPath hdc))).edge) := by
   refine ComposableArrows.ext₁ ?_ ?_ ?_

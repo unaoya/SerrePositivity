@@ -9,7 +9,7 @@ public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuatio
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
-public import SerrePositivity.InfinityCategories.F2.Ind.NativeFilteredPreservation
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.NativeFilteredPreservation
 public import Mathlib.AlgebraicTopology.CechNerve
 public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 public import Mathlib.Algebra.Category.Ring.Colimits
@@ -383,7 +383,7 @@ theorem cech_exact_of_arcCover_perfectoid {R S : Type u} [CommRing R] [CommRing 
   sorry -- 相対テンソル冪の tilt は completedTensor_tilt。一点族 R♭ → S♭ × R♭[1/a] に
         -- cech_exact_of_arcCover_perfect、G-A6-7、G-A6-5。零の積環は別扱いで、完備な R,S は単位で戻す
 
-open SerrePositivity.InfinityCategories.Sheaves SerrePositivity.EInfinity
+open SerrePositivity.EInfinity
 
 /-- site の opposite を戻し、包含に沿って環とその射を読む。 -/
 def arcPerfdRingFunctor : ((AffPerfd p κ)ᵒᵖ)ᵒᵖ ⥤ CommRingCat.{u} :=

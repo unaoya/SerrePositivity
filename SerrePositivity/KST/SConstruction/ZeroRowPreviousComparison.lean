@@ -28,8 +28,8 @@ def zeroRowPreviousComparison (r : ℕ) (X : StableModel.{u}) :
 /-- 元の零行の S₁ 比較は全ての有限反復で局所化同型。 -/
 lemma zeroRowPreviousComparison_localized_isIso (r : ℕ) (X : StableModel.{u}) :
     IsIso (AnodyneHomotopy.anodyneQ.map (zeroRowPreviousComparison r X)) := by
-  let : TrivialKanFibration (stableSOneComparison X).val :=
-    inferInstanceAs (TrivialKanFibration (sOneComparison X.carrier))
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (stableSOneComparison X).val :=
+    inferInstanceAs (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (sOneComparison X.carrier))
   exact multiRealizationFunctor_map_localized_isIso r (stableSOneComparison X)
 
 /-- 元の点つき経路零行から前段の全零境界商の Kan 模型への射。 -/
@@ -69,7 +69,7 @@ def zeroRowKanPreviousComparison (r : ℕ) (X : StableModel.{u})
 /-- 共通 Kan 模型から前段の既存の Kan 実現への比較は全基点 π_* 同型。 -/
 lemma zeroRowKanPreviousComparison_piIsomorphism (r : ℕ) (X : StableModel.{u})
     (b : ((iteratedSRealizationDiagram (r + 1) X).obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (zeroRowKanPreviousComparison r X b).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (zeroRowKanPreviousComparison r X b).right :=
   pointedKanStrictExtension_piIsomorphism (zeroRowPointedPreviousComparison r X b)
     (zeroRowPointedPreviousComparison_localized_isIso r X b)
 

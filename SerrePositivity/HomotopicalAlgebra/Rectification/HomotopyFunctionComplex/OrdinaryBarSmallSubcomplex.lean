@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarSmallReference
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SmallDominatedSubcomplex
-public import SerrePositivity.InfinityCategories.Kan.SmallSimplicialValue
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallSimplicialValue
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarSmallSubcomplex
@@ -52,7 +52,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
 abbrev ambient : SSet.{max u v} :=
   AnodyneKanReplacement.functor.obj (OrdinaryResolutionBar.functor.obj X)
 
-def toSmall : ambient X ⟶ UniverseLift.obj.{max u v} (value hcof hfib X) :=
+def toSmall : ambient X ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (value hcof hfib X) :=
   KanHomotopyClasses.extension
     (AnodyneKanReplacement.unit.app (OrdinaryResolutionBar.functor.obj X))
     (AnodyneKanReplacement.unit_anodyne _)
@@ -74,7 +74,7 @@ lemma toSmall_isIso : IsIso (AnodyneHomotopy.anodyneQ.map (toSmall hcof hfib X))
         AnodyneHomotopy.anodyneQ.map (toSmall hcof hfib X)) := hc.symm ▸ inferInstance
   exact (isIso_comp_left_iff _ _).mp hi
 
-def fromSmall : UniverseLift.obj.{max u v} (value hcof hfib X) ⟶ ambient X := by
+def fromSmall : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (value hcof hfib X) ⟶ ambient X := by
   have := toSmall_isIso hcof hfib X
   exact KanLocalizedRepresentatives.representative AnodyneHomotopy.anodyneQ
     (AnodyneKanReplacement.terminal_rlp _) (inv (AnodyneHomotopy.anodyneQ.map
@@ -102,8 +102,8 @@ abbrev complex (A : (ambient X).Subcomplex) : (ambient X).Subcomplex :=
 lemma seed_le (A : (ambient X).Subcomplex) : A ≤ complex hcof hfib X A :=
   SmallDominatedSubcomplex.seed_le _ _ _ _
 
-lemma small (A : (ambient X).Subcomplex) (hA : SmallParameterClosure.IsSmall.{v} A) :
-    SmallParameterClosure.IsSmall.{v} (complex hcof hfib X A) := by
+lemma small (A : (ambient X).Subcomplex) (hA : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure.IsSmall.{v} A) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure.IsSmall.{v} (complex hcof hfib X A) := by
   apply SmallDominatedSubcomplex.small
   · intro n
     change Small.{v} (ULift.{max u v, v} ((value hcof hfib X).obj n))
@@ -117,17 +117,17 @@ def inclusionIso (A : (ambient X).Subcomplex) :
     (Localization.inverts AnodyneHomotopy.anodyneQ SSet.anodyneExtensions)
 
 /-- An actual object in the original small universe, after proving degreewise smallness. -/
-def smallValue (A : (ambient X).Subcomplex) (hA : SmallParameterClosure.IsSmall.{v} A) :
+def smallValue (A : (ambient X).Subcomplex) (hA : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure.IsSmall.{v} A) :
     SSet.{v} :=
-  SmallSimplicialValue.shrink (complex hcof hfib X A).toSSet (small hcof hfib X A hA)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.shrink (complex hcof hfib X A).toSSet (small hcof hfib X A hA)
 
-def smallInclusion (A : (ambient X).Subcomplex) (hA : SmallParameterClosure.IsSmall.{v} A) :
-    UniverseLift.obj.{max u v} (smallValue hcof hfib X A hA) ⟶ ambient X :=
-  (SmallSimplicialValue.liftIso (complex hcof hfib X A).toSSet
+def smallInclusion (A : (ambient X).Subcomplex) (hA : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure.IsSmall.{v} A) :
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (smallValue hcof hfib X A hA) ⟶ ambient X :=
+  (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftIso (complex hcof hfib X A).toSSet
     (small hcof hfib X A hA)).hom ≫ (complex hcof hfib X A).ι
 
 lemma smallInclusion_isIso (A : (ambient X).Subcomplex)
-    (hA : SmallParameterClosure.IsSmall.{v} A) :
+    (hA : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure.IsSmall.{v} A) :
     IsIso (AnodyneHomotopy.anodyneQ.map (smallInclusion hcof hfib X A hA)) := by
   have : IsIso (AnodyneHomotopy.anodyneQ.map (complex hcof hfib X A).ι) :=
     (inclusionIso hcof hfib X A).isIso_hom

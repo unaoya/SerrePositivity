@@ -17,14 +17,14 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ)
+variable {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n : ℕ)
 
 /-- 概要：同じ商関手で像が core に入る標準単体図式の全相対部分複体。
 方針：同じ後合成の下で core の厳密な逆像を取る。
 規約：商比較の可逆性は定義に含めない。
 使われ方：正段の元の相対第一行を標準単体座標で読む。 -/
 def relativeFirstRowSimplex : ((ihom (Δ[n] : SSet.{u})).obj B.obj).Subcomplex :=
-  (quasicategoryCore ((ihom (Δ[n] : SSet.{u})).obj C.obj)).preimage
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom (Δ[n] : SSet.{u})).obj C.obj)).preimage
     ((ihom (Δ[n] : SSet.{u})).map q.hom)
 
 /-- 概要：元の相対第一行から標準単体座標への実制限写像。
@@ -36,7 +36,7 @@ def relativeFirstRowToSimplex : (relativeFirstRow q (n + 1) : SSet.{u}) ⟶
   Subcomplex.lift ((relativeFirstRow q (n + 1)).ι ≫
     (relativeFirstRowSimplexIso n B.obj).hom) (by
       rintro m _ ⟨x, rfl⟩
-      have hx := ((quasicategoryCoreMap (relativeFirstRowSimplexIso n C.obj).hom).app m
+      have hx := ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (relativeFirstRowSimplexIso n C.obj).hom).app m
         ⟨((ihom (firstRowNerve (n + 1))).map q.hom).app m x.val, x.property⟩).property
       have he := ConcreteCategory.congr_hom
         (NatTrans.congr_app (relativeFirstRowSimplexIso_postcomp q n) m) x.val
@@ -46,7 +46,7 @@ def relativeFirstRowToSimplex : (relativeFirstRow q (n + 1) : SSet.{u}) ⟶
             ((relativeFirstRowSimplexIso n B.obj).hom.app m x.val) at he
       change ((ihom (Δ[n] : SSet.{u})).map q.hom).app m
         ((relativeFirstRowSimplexIso n B.obj).hom.app m x.val) ∈
-          (quasicategoryCore ((ihom (Δ[n] : SSet.{u})).obj C.obj)).obj m
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom (Δ[n] : SSet.{u})).obj C.obj)).obj m
       rw [← he]
       exact hx)
 
@@ -59,7 +59,7 @@ def relativeFirstRowFromSimplex : (relativeFirstRowSimplex q n : SSet.{u}) ⟶
   Subcomplex.lift ((relativeFirstRowSimplex q n).ι ≫
     (relativeFirstRowSimplexIso n B.obj).inv) (by
       rintro m _ ⟨x, rfl⟩
-      have hx := ((quasicategoryCoreMap (relativeFirstRowSimplexIso n C.obj).inv).app m
+      have hx := ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (relativeFirstRowSimplexIso n C.obj).inv).app m
         ⟨((ihom (Δ[n] : SSet.{u})).map q.hom).app m x.val, x.property⟩).property
       have he := ConcreteCategory.congr_hom (NatTrans.congr_app
         ((internalHom.mapIso (firstRowSimplexIso n).op).inv.naturality q.hom) m) x.val
@@ -69,7 +69,7 @@ def relativeFirstRowFromSimplex : (relativeFirstRowSimplex q n : SSet.{u}) ⟶
             ((relativeFirstRowSimplexIso n B.obj).inv.app m x.val) at he
       change ((ihom (firstRowNerve (n + 1))).map q.hom).app m
         ((relativeFirstRowSimplexIso n B.obj).inv.app m x.val) ∈
-          (quasicategoryCore ((ihom (firstRowNerve (n + 1))).obj C.obj)).obj m
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom (firstRowNerve (n + 1))).obj C.obj)).obj m
       rw [← he]
       exact hx)
 

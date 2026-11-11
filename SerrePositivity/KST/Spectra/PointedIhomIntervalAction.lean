@@ -20,16 +20,16 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 def ihomAction (A E V : PointedSimplicialSet.{u}) :
     PointedObject.basedHom E V ⟶
       PointedObject.basedHom (PointedObject.basedHom A E) (PointedObject.basedHom A V) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((ihom.ev A).app E) V ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A (PointedObject.basedHom A E) V).hom
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((ihom.ev A).app E) V ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso A (PointedObject.basedHom A E) V).hom
 
 /-- 元の実区間への内部 Hom の作用は、同じ ihomAction 射への後合成そのもの。 -/
 lemma VerticalPath.basedIhomMap_path (A : PointedSimplicialSet.{u})
     {E V : PointedSimplicialSet.{u}} {f g : E ⟶ V}
     (H : VerticalPath (PointedObject.toPoint V) f g) :
     (H.basedIhomMap A).path = H.path ≫ (ihomAction A E V).right := by
-  change (H.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((ihom.ev A).app E) V).right) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A (PointedObject.basedHom A E) V).hom.right = _
+  change (H.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((ihom.ev A).app E) V).right) ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso A (PointedObject.basedHom A E) V).hom.right = _
   exact Category.assoc _ _ _
 
 /-- 同じ実区間へ作用してからパラメータで評価しても、同じ二つの射への後合成。 -/
@@ -38,8 +38,8 @@ lemma VerticalPath.basedIhomMap_pre_path (A : PointedSimplicialSet.{u})
     (H : VerticalPath (PointedObject.toPoint V) f g)
     (e : T ⟶ PointedObject.basedHom A E) :
     ((H.basedIhomMap A).pre e).path =
-      H.path ≫ (ihomAction A E V ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e (PointedObject.basedHom A V)).right := by
-  change (H.basedIhomMap A).path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e (PointedObject.basedHom A V)).right = _
+      H.path ≫ (ihomAction A E V ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e (PointedObject.basedHom A V)).right := by
+  change (H.basedIhomMap A).path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e (PointedObject.basedHom A V)).right = _
   rw [basedIhomMap_path, Category.assoc]
   rfl
 

@@ -19,7 +19,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
 
 /-- 概要：元の下側三角柱の各全単体の長い Hom は全頂点で同じ零値条件を満たす。
 方針：同じ path 変形の像を元の長い Hom に代入する。
@@ -31,7 +31,7 @@ theorem verdierLowerDeformation_longHom_zero {n : ℕ}
     (j k : ULift.{u} (Fin (n + 1))) (hj : a j = ULift.up 0) (hk : a k = ULift.up 2) :
     ∀ v, StableHomZeroVertex ((verdierLowerTriangle d).obj ⟨a j⟩)
       ((verdierLowerTriangle d).obj ⟨a k⟩)
-      ((((coherentPathDeformationEnriched a t).comp SSet (verdierLowerTriangle d)).map
+      ((((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPathDeformationEnriched a t).comp SSet (verdierLowerTriangle d)).map
         ⟨j⟩ ⟨k⟩).app (Opposite.op ⦋0⦌) v) := by
   have hz : ∀ (b c : ULift.{u} (Fin 3)), b = ULift.up 0 → c = ULift.up 2 →
       ∀ w, StableHomZeroVertex ((verdierLowerTriangle d).obj ⟨b⟩)
@@ -43,7 +43,7 @@ theorem verdierLowerDeformation_longHom_zero {n : ℕ}
     exact verdierLowerTriangleLongHom_zero d
   intro v
   exact hz (a j) (a k) hj hk
-    (((coherentPathDeformationEnriched a t).map ⟨j⟩ ⟨k⟩).app (Opposite.op ⦋0⦌) v)
+    (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPathDeformationEnriched a t).map ⟨j⟩ ⟨k⟩).app (Opposite.op ⦋0⦌) v)
 
 variable {n : ℕ}
   (a : ULift.{u} (Fin (n + 1)) →o ULift.{u} (Fin 3))
@@ -59,7 +59,7 @@ def verdierLowerDeformationZeroHomLift :
       zeroFunctorLocus ((verdierLowerTriangle d).obj ⟨a j⟩)
         ((verdierLowerTriangle d).obj ⟨a k⟩) :=
   zeroStableHomFamilyLift
-    (((coherentPathDeformationEnriched a t).comp SSet (verdierLowerTriangle d)).map ⟨j⟩ ⟨k⟩)
+    (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPathDeformationEnriched a t).comp SSet (verdierLowerTriangle d)).map ⟨j⟩ ⟨k⟩)
     (verdierLowerDeformation_longHom_zero d a t j k hj hk)
 
 /-- 概要：零値部分空間から戻すと元の同じ三角柱の全長 Hom を厳密回収する。
@@ -70,7 +70,7 @@ theorem verdierLowerDeformationZeroHomLift_recovery :
     verdierLowerDeformationZeroHomLift d a t j k hj hk ≫
       zeroFunctorLocusToStableHom ((verdierLowerTriangle d).obj ⟨a j⟩)
         ((verdierLowerTriangle d).obj ⟨a k⟩) =
-      ((coherentPathDeformationEnriched a t).comp SSet (verdierLowerTriangle d)).map ⟨j⟩ ⟨k⟩ :=
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPathDeformationEnriched a t).comp SSet (verdierLowerTriangle d)).map ⟨j⟩ ⟨k⟩ :=
   zeroStableHomFamilyLift_recovery _ _
 
 /-- 概要：同じ全長 Hom の持ち上げは全正反復 S• Kan 作用後も同じ三角柱の値を回収する。
@@ -83,7 +83,7 @@ theorem verdierLowerDeformationZeroHomLift_multi_recovery (r : ℕ) :
         ((verdierLowerTriangle d).obj ⟨a k⟩)) ≫
       (stableMultiKanEnrichedFunctor r).map ((verdierLowerTriangle d).obj ⟨a j⟩)
         ((verdierLowerTriangle d).obj ⟨a k⟩) =
-      (((coherentPathDeformationEnriched a t).comp SSet (verdierLowerTriangle d)).comp
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPathDeformationEnriched a t).comp SSet (verdierLowerTriangle d)).comp
         SSet (stableMultiKanEnrichedFunctor r)).map ⟨j⟩ ⟨k⟩ := by
   rw [verdierLowerDeformationZeroHomLift_recovery]
   rfl

@@ -28,14 +28,14 @@ def shape (A : SSet.{u}) :
 variable {A X : SSet.{u}} {U₀ U₁ V₀ V₁ : A ⟶ X}
   {b : SSet.Homotopy U₀ U₁} {t : SSet.Homotopy V₀ V₁}
   {l : SSet.Homotopy U₀ V₀} {r : SSet.Homotopy U₁ V₁}
-  (s : SerrePositivity.InfinityCategories.FunctorHomSquare b t l r)
+  (s : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomSquare b t l r)
 
 /-- 四辺を持つ元の関手正方形の、時間付きの矢印族。 -/
 def family : A ⊗ (Δ[1] : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
   curry (shape A ≫ uncurry s.diagram)
 
-lemma source : family s ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = l.h := by
-  rw [family, curry_evaluateFunctorAt_interval]
+lemma source : family s ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = l.h := by
+  rw [family, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.curry_evaluateFunctorAt_interval]
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -44,11 +44,11 @@ lemma source : family s ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : 
     (uncurry f).app n (a, z)) s.left
   rw [uncurry_natural_left, uncurry_curry] at h
   change (uncurry s.diagram).app n (a,
-    (prismEndpoint 0 (Δ[1] : SSet.{u})).app n z) = l.h.app n (a, z) at h
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (Δ[1] : SSet.{u})).app n z) = l.h.app n (a, z) at h
   exact h
 
-lemma target : family s ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = r.h := by
-  rw [family, curry_evaluateFunctorAt_interval]
+lemma target : family s ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = r.h := by
+  rw [family, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.curry_evaluateFunctorAt_interval]
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -57,7 +57,7 @@ lemma target : family s ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : 
     (uncurry f).app n (a, z)) s.right
   rw [uncurry_natural_left, uncurry_curry] at h
   change (uncurry s.diagram).app n (a,
-    (prismEndpoint 1 (Δ[1] : SSet.{u})).app n z) = r.h.app n (a, z) at h
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (Δ[1] : SSet.{u})).app n z) = r.h.app n (a, z) at h
   exact h
 
 lemma zero : (SSet.ι₀ : A ⟶ A ⊗ (Δ[1] : SSet.{u})) ≫ family s =

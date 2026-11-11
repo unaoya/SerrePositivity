@@ -27,8 +27,8 @@ variable {C D : Type u} [Category.{v} C] [Category.{v} D]
   (hη : ∀ X, V (η.app X)) (X Y : C)
 
 include hη in
-lemma weak_iff : IsWeakHomotopyEquivalence (Relative.colimitMap F X Y) ↔
-    IsWeakHomotopyEquivalence (Relative.colimitMap G X Y) := by
+lemma weak_iff : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap F X Y) ↔
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap G X Y) := by
   have hp := WeakArrow.postcompose_forward_isWeakHomotopyEquivalence
     (η.app Y) (hη Y) (F.functor.obj X)
   have hq := WeakArrow.precompose_forward_isWeakHomotopyEquivalence

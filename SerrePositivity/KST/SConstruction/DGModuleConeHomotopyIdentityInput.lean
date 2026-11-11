@@ -31,5 +31,5 @@ lemma dgModuleConeHomotopyIdentityInput {M N Q : ModuleCategory R D}
   dsimp only [moduleConeHomotopyInput]
   rw [eHomWhiskerRight_id]
   exact congrArg (fun t => moduleConeInlElement R D g + t)
-    (dgModuleHomPostcompose_apply R D (moduleConeInr R D g) h.val)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleHomPostcompose_apply R D (moduleConeInr R D g) h.val)
 end SerrePositivity.KST.SConstruction

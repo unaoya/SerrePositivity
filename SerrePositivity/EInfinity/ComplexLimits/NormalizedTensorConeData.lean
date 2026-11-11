@@ -20,7 +20,7 @@ variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 def normalizedTensorConeData {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
-    SimplexData A (Complex A) (n + 1) where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A (Complex A) (n + 1) where
   obj := normalizedTensorConeObj A X Y c
   hom I a b k hI ha hb hk := by
     have hab : a < b := by

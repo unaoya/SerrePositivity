@@ -17,8 +17,8 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 中央の群が自明なら、左群の消滅は同じ接続射の自明性から従う。 -/
-lemma fiberGroup_zero_of_boundary_trivial (t : ZeroTriangle Sp.{u})
-    (ht : IsFiberSequence t) (j : ℤ)
+lemma fiberGroup_zero_of_boundary_trivial (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{u})
+    (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t) (j : ℤ)
     (hz : Subsingleton (NativeFiber.group t 1 0 j))
     (hb : ∀ a, NativeFiber.boundary t ht j a = 1) :
     Subsingleton (NativeFiber.group t 0 0 j) := by
@@ -29,8 +29,8 @@ lemma fiberGroup_zero_of_boundary_trivial (t : ZeroTriangle Sp.{u})
   exact ⟨fun a b => (h a).trans (h b).symm⟩
 
 /-- 中央・右群の同じ下界の下で、fiber の下界と端の射影の全射性を同定する。 -/
-theorem fiberGroup_lowerBound_iff_projection_surjective (t : ZeroTriangle Sp.{u})
-    (ht : IsFiberSequence t) (k : ℤ)
+theorem fiberGroup_lowerBound_iff_projection_surjective (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{u})
+    (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t) (k : ℤ)
     (hmid : ∀ j : ℤ, j < k → Subsingleton (NativeFiber.group t 1 0 j))
     (hbase : ∀ j : ℤ, j < k → Subsingleton (NativeFiber.group t 1 1 j)) :
     (∀ j : ℤ, j < k → Subsingleton (NativeFiber.group t 0 0 j)) ↔
@@ -53,8 +53,8 @@ theorem fiberGroup_lowerBound_iff_projection_surjective (t : ZeroTriangle Sp.{u}
       rw [hz.elim a 1, map_one]
 
 /-- 連結な中央項・右項を持つ実 fiber の連結性は、零次 cofinality と同値。 -/
-theorem connectiveFiber_iff_projection_piZero_surjective (t : ZeroTriangle Sp.{u})
-    (ht : IsFiberSequence t)
+theorem connectiveFiber_iff_projection_piZero_surjective (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{u})
+    (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t)
     (hmid : ∀ j : ℤ, j < 0 → Subsingleton (NativeFiber.group t 1 0 j))
     (hbase : ∀ j : ℤ, j < 0 → Subsingleton (NativeFiber.group t 1 1 j)) :
     (∀ j : ℤ, j < 0 → Subsingleton (NativeFiber.group t 0 0 j)) ↔

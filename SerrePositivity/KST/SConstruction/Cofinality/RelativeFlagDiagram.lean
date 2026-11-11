@@ -59,6 +59,6 @@ def multiRelativeCoreFlagDiagram (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ
     (Y : StableModel.{u})
     (M : (((multiSEndofunctor r).obj ι).obj Y).carrier.Subcomplex) :
     SimplexCategoryᵒᵖ ⥤ SSet.{u} :=
-  multiRelativeFlagDiagram r ι Y M ⋙ quasicategoryCoreFunctor
+  multiRelativeFlagDiagram r ι Y M ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
 
 end SerrePositivity.KST.SConstruction.Cofinality

@@ -48,35 +48,35 @@ variable {C : Type u} [Category.{v} C]
 
 /-- All lift parameters act on actual simplices, naturally in the parameter. -/
 abbrev parameterized {T : SSet.{v}} (s : T ⟶ LiftSpace.obj A a p f)
-    (t : T ⟶ (cosimplicialHom B).obj Z) :
-    T ⟶ (cosimplicialHom (DiagonalFrame.obj A)).obj Z :=
+    (t : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z) :
+    T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (DiagonalFrame.obj A)).obj Z :=
   DiagonalHom.pairing A B Z (s ≫ LiftSpace.inclusion A a p f) t
 
 @[simp]
 lemma parameterized_app {T : SSet.{v}} (s : T ⟶ LiftSpace.obj A a p f)
-    (t : T ⟶ (cosimplicialHom B).obj Z) (n : SimplexCategoryᵒᵖ) (x : T.obj n) :
+    (t : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z) (n : SimplexCategoryᵒᵖ) (x : T.obj n) :
     (parameterized A a p f Z s t).app n x =
       ((LiftSpace.inclusion A a p f).app n (s.app n x)).app n.unop ≫ t.app n x :=
   DiagonalHom.pairing_app A B Z _ _ n x
 
 @[reassoc]
 lemma parameterized_naturality {T U : SSet.{v}} (u : U ⟶ T)
-    (s : T ⟶ LiftSpace.obj A a p f) (t : T ⟶ (cosimplicialHom B).obj Z) :
+    (s : T ⟶ LiftSpace.obj A a p f) (t : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z) :
     u ≫ parameterized A a p f Z s t = parameterized A a p f Z (u ≫ s) (u ≫ t) := by
   exact (DiagonalHom.pairing_naturality A B Z u _ _).trans
     (congrArg (fun k => DiagonalHom.pairing A B Z k (u ≫ t)) (Category.assoc _ _ _).symm)
 
 /-- The universal action; its restriction along a parameter recovers the above map. -/
-abbrev action : LiftSpace.obj A a p f ⨯ (cosimplicialHom B).obj Z ⟶
-    (cosimplicialHom (DiagonalFrame.obj A)).obj Z :=
+abbrev action : LiftSpace.obj A a p f ⨯ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z ⟶
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (DiagonalFrame.obj A)).obj Z :=
   parameterized A a p f Z prod.fst prod.snd
 
 /-- A strict lift point acts by actual precomposition, after diagonal augmentation. -/
 lemma ofLift {T : SSet.{v}}
     (d : T ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
-    (e : F ⟶ B) (he : e ≫ p = f) (t : T ⟶ (cosimplicialHom B).obj Z) :
+    (e : F ⟶ B) (he : e ≫ p = f) (t : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z) :
     parameterized A a p f Z (d ≫ LiftSpace.ofLift A a p f e he) t =
-      t ≫ (cosimplicialHomMap (DiagonalFrame.augmentation a ≫ e)).app Z := by
+      t ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (DiagonalFrame.augmentation a ≫ e)).app Z := by
   change DiagonalHom.pairing A B Z
     ((d ≫ LiftSpace.ofLift A a p f e he) ≫ LiftSpace.inclusion A a p f) t = _
   rw [Category.assoc, LiftSpace.ofLift_inclusion]

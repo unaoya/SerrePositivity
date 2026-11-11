@@ -33,6 +33,6 @@ def signedLoopParameterHom {A : PointedSimplicialSet.{u}} {X Y : KanSequence.{u}
 lemma signedLoopParameterHom_app {A : PointedSimplicialSet.{u}} {X Y : KanSequence.{u}}
     (f : Hom X (mapping A Y)) (n : ℕ) :
     (signedLoopParameterHom f).app n = (ihom CirclePower.space.{u}).map (f.app (n + 1)) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} A (Y.level (n + 1)).space).hom := rfl
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} A (Y.level (n + 1)).space).hom := rfl
 
 end SerrePositivity.KST.Spectra.KanSequence

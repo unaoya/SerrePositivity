@@ -24,17 +24,17 @@ lemma multiS_map_cofiberImageEdge (r : ℕ)
     {ι κ : Fin r → SimplexCategoryᵒᵖ} (α : ι ⟶ κ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
     (a : (((multiSEndofunctor r).obj ι).obj Y).carrier _⦋1⦌)
-    (ha : a ∈ cofiberLocalizingEdges
-      {y | ∃ x, Nonempty (VertexIso
+    (ha : a ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
+      {y | ∃ x, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
         ((((multiSEndofunctor r).obj ι).map f).val.app (Opposite.op ⦋0⦌) x) y)}) :
     (((multiSEndofunctor r).map α).app Y).val.app (Opposite.op ⦋1⦌) a ∈
-      cofiberLocalizingEdges {y | ∃ x, Nonempty (VertexIso
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges {y | ∃ x, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
         ((((multiSEndofunctor r).obj κ).map f).val.app (Opposite.op ⦋0⦌) x) y)} := by
   let gX := ((multiSEndofunctor r).map α).app X
   let gY := ((multiSEndofunctor r).map α).app Y
-  let : IsExactFunctor gY.val := stableModelHom_exact gY
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor gY.val := stableModelHom_exact gY
   obtain ⟨s, z, ⟨x, ⟨e⟩⟩, ⟨ez⟩⟩ := ha
-  let t : CofiberSquare (edgeOfSimplex (gY.val.app (Opposite.op ⦋1⦌) a)) := {
+  let t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (gY.val.app (Opposite.op ⦋1⦌) a)) := {
     toZeroTriangle := (s.map gY.val).toZeroTriangle
     bottom_edge := (s.map gY.val).bottom_edge
     isPushout := (s.map gY.val).isPushout }
@@ -52,7 +52,7 @@ lemma multiS_map_cofiberImageEdge (r : ℕ)
 lemma multiWideStageData_map_mem (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) {ι κ : Fin r → SimplexCategoryᵒᵖ} (α : ι ⟶ κ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (n : ℕ) (s : (((multiSEndofunctor r).obj ι).obj Y).carrier _⦋n⦌)
     (hs : s ∈ (multiWideStageData supply r ι f hf).subcomplex.obj (Opposite.op ⦋n⦌)) :
     (((multiSEndofunctor r).map α).app Y).val.app (Opposite.op ⦋n⦌) s ∈
@@ -71,7 +71,7 @@ lemma multiWideStageData_map_mem (supply : StableWideCofinalitySupply.{u})
 def multiWideStageMap (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) {ι κ : Fin r → SimplexCategoryᵒᵖ} (α : ι ⟶ κ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     ((multiWideStageData supply r ι f hf).subcomplex : SSet.{u}) ⟶
       ((multiWideStageData supply r κ f hf).subcomplex : SSet.{u}) where
   app d := ↾fun s => ⟨(((multiSEndofunctor r).map α).app Y).val.app d s.val,
@@ -89,7 +89,7 @@ def multiWideStageMap (supply : StableWideCofinalitySupply.{u})
 使われ方：相対実現の wide 側の多単体図式。 -/
 def multiWideStageDiagram (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u} where
   obj ι := (multiWideStageData supply r ι f hf).subcomplex
   map α := multiWideStageMap supply r α f hf
@@ -118,7 +118,7 @@ def multiWideStageDiagram (supply : StableWideCofinalitySupply.{u})
 使われ方：相対旗と元の K 構成の間の自然比較。 -/
 def multiWideStageInclusion (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     multiWideStageDiagram supply r f hf ⟶ multiSConstruction r Y where
   app ι := (multiWideStageData supply r ι f hf).subcomplex.ι
   naturality _ _ _ := rfl

@@ -38,7 +38,7 @@ variable {A A' Y Y' Z Z' W' B : PointedSimplicialSet.{u}}
   (j : A ⟶ A') (v : Z ⟶ Z') {p : doubleLoop Z' ⟶ B}
   (H : PointedMapping.VerticalPath p (input f g ≫ doublePost v) (j ≫ input f' g'))
   (a' : Z' ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W')
-  (ha' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a'.right)
+  (ha' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a'.right)
 
 /-- 交換符号辺の入力正方形と元の第二辺の自然性正方形の中間境界は同じ実区間。 -/
 lemma firstSecondInputSquare_shared :

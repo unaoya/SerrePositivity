@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：交換した二つのステップの両方が前半にあるか、両方が後半にある場合の計数を使う。
 規約：KST Construction A.5 の標準 shuffle。符号の相殺は別に検証する。
 使われ方：水平・垂直の混合境界項の対による相殺。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

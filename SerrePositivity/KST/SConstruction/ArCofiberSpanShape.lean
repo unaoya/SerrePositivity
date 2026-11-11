@@ -108,7 +108,7 @@ lemma arCofiberSpanMap_right (n : ℕ) :
 方針：横座標を零とした鎖の頂点を計算する。
 規約：全次数での厳密等号。使われ方：自然な四角形と span の接続。 -/
 lemma arCofiberSquareMap_left (n : ℕ) :
-    (arNerve n ◁ squareLeftEdge) ≫ arCofiberSquareMap.{u} n =
+    (arNerve n ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge) ≫ arCofiberSquareMap.{u} n =
       arCofiberZeroInputMap n ≫ frameInclusion n := by
   apply SSet.hom_ext
   intro d
@@ -121,14 +121,14 @@ lemma arCofiberSquareMap_left (n : ℕ) :
 方針：二辺へ制限し、pushout の一意性を使う。
 規約：gapped 条件なしの形状の等号。使われ方：既存境界の相対補完との厳密な一致。 -/
 lemma arCofiberSquareMap_span (n : ℕ) :
-    (arNerve n ◁ spanSquareBoundary) ≫ arCofiberSquareMap.{u} n =
+    (arNerve n ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary) ≫ arCofiberSquareMap.{u} n =
       arCofiberSpanMap n ≫ frameInclusion n := by
   apply (arCofiberSpan_isPushout n).hom_ext
   · simp only [← Category.assoc, ← whiskerLeft_comp]
-    rw [spanSquareBoundary_bottomEdge, arCofiberSquareMap_bottom,
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary_bottomEdge, arCofiberSquareMap_bottom,
       arCofiberSpanMap_left]
   · simp only [← Category.assoc, ← whiskerLeft_comp]
-    rw [spanSquareBoundary_leftEdge, arCofiberSquareMap_left,
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary_leftEdge, arCofiberSquareMap_left,
       arCofiberSpanMap_right]
 
 end SerrePositivity.KST.SConstruction

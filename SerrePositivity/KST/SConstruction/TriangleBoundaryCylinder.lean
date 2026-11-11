@@ -28,7 +28,7 @@ def triangleBoundaryCylinderFaces : Fin 3 →
 
 /-- 全端点固定の式から、元の三円柱は共有頂点区間上で厳密に一致する。 -/
 lemma triangleBoundaryCylinderFaces_compatible :
-    _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.IsCompatible (triangleBoundaryCylinderFaces Hf Hg Hh) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.IsCompatible (triangleBoundaryCylinderFaces Hf Hg Hh) := by
   intro j k hjk
   fin_cases j
   · fin_cases k
@@ -56,7 +56,7 @@ lemma triangleBoundaryCylinderFaces_compatible :
 /-- 元の三円柱を一つに貼った、同じ全三角形境界円柱の実写像。 -/
 def triangleBoundaryCylinderMap : (∂Δ[2] : SSet.{u}) ⊗ Δ[1] ⟶ E :=
   (β_ (Δ[1] : SSet.{u}) (∂Δ[2] : SSet.{u})).inv ≫
-    uncurry (_root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.desc (triangleBoundaryCylinderFaces_compatible Hf Hg Hh))
+    uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.desc (triangleBoundaryCylinderFaces_compatible Hf Hg Hh))
 
 /-- 元の三つの全円柱の実写像を、面番号順に保存する。 -/
 def triangleBoundaryCylinderRawFaces : Fin 3 → ((Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E) :=
@@ -68,7 +68,7 @@ lemma triangleBoundaryCylinderMap_face (i : Fin 3) :
       triangleBoundaryCylinderRawFaces Hf Hg Hh i := by
   rw [triangleBoundaryCylinderMap, ← Category.assoc,
     BraidedCategory.braiding_inv_naturality_left, Category.assoc,
-    ← uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.ι_desc]
+    ← uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.ι_desc]
   fin_cases i <;> simp [triangleBoundaryCylinderFaces, triangleBoundaryCylinderRawFaces,
     EndpointFixedEdgeCylinder.curry]
 

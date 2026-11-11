@@ -13,8 +13,8 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory
 variable {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-  (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
-  (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+  (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j)
+  (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
 
 /-- 元の濃度次元の分割 cube の、元の実分割 refinement への可換三角形。 -/
 lemma simplexSubsetSplitNormalizedCube_comparison :
@@ -30,7 +30,7 @@ lemma simplexSubsetSplitNormalizedCube_comparison :
   have ht := concreteCubeDimensionIso_inv_comp_hom
     (simplexSubsetSplit_whole_dimension I hI j hj hL hR).symm
     (necklaceInSimplexSubset_dimension.{u} I hI).symm
-    (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single k).dimension)
+    (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single k).dimension)
       (simplexSubsetSplit_length I j hj hL hR))
   erw [simplexSubsetSplitRefinement_cube_eq]
   change (_ ≫ _ ≫ _) ≫ (concreteCubeDimensionIso

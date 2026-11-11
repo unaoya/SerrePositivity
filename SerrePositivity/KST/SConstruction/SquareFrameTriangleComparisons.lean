@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SquareFrameTrianglePrisms
-public import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyInvertibility
 
 /-!
 概要：元四境界比較から作った上下二単体比較の可逆性を証明する。
@@ -19,52 +19,52 @@ private lemma restrictionVertexInvertible {A B X : SSet.{u}} [Quasicategory X]
     {f g : B ⟶ X} {f' g' : A ⟶ X} (k : A ⟶ B)
     (H : SSet.Homotopy f g) (G : SSet.Homotopy f' g')
     (h : (k ▷ (Δ[1] : SSet.{u})) ≫ H.h = G.h) (x : A _⦋0⦌)
-    (hi : IsInvertibleEdge (simplicialHomotopyVertexEdge G x).toTruncated) :
-    IsInvertibleEdge (simplicialHomotopyVertexEdge H (k.app _ x)).toTruncated := by
+    (hi : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge G x).toTruncated) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H (k.app _ x)).toTruncated := by
   let z : (A ⊗ Δ[1] : SSet.{u}) _⦋1⦌ :=
-    ((SSet.Truncated.Edge.id (X := (truncation 2).obj A) x).edge, homotopyIntervalEdge.edge)
+    ((SSet.Truncated.Edge.id (X := (truncation 2).obj A) x).edge, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge)
   have he := congrArg (fun q : A ⊗ Δ[1] ⟶ X => q.app (Opposite.op ⦋1⦌) z) h
   have hid : k.app (Opposite.op ⦋1⦌) (SSet.Truncated.Edge.id (X := (truncation 2).obj A) x).edge =
       (SSet.Truncated.Edge.id (X := (truncation 2).obj B) (k.app _ x)).edge := by
-    rw [← pinchedConstant_one, ← pinchedConstant_one]
-    exact pinchedConstant_map k x 1
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one]
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedConstant_map k x 1
   change H.h.app (Opposite.op ⦋1⦌)
     (k.app (Opposite.op ⦋1⦌) (SSet.Truncated.Edge.id (X := (truncation 2).obj A) x).edge,
-      homotopyIntervalEdge.edge) = _ at he
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge) = _ at he
   rw [hid] at he
-  exact (isInvertibleEdge_congr (e := (simplicialHomotopyVertexEdge H (k.app _ x)).toTruncated)
-    (f := (simplicialHomotopyVertexEdge G x).toTruncated) he).mpr hi
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H (k.app _ x)).toTruncated)
+    (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge G x).toTruncated) he).mpr hi
 
 variable {X : SSet.{u}} [Quasicategory X]
   {f g : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
-  (H : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare f) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare g))
+  (H : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ofSquare f) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ofSquare g))
 
 private lemma firstVertexInvertible (j : Fin 2) (x : (Δ[1] : SSet.{u}) _⦋0⦌) :
-    IsInvertibleEdge (simplicialHomotopyVertexEdge (squareFrameTriangleFirst H j) x).toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (squareFrameTriangleFirst H j) x).toTruncated := by
   fin_cases j
-  · exact (isInvertibleEdge_congr (e := (simplicialHomotopyVertexEdge
+  · exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
       (squareFrameTriangleFirst H 0) x).toTruncated)
-      (f := (simplicialHomotopyVertexEdge H.left x).toTruncated) rfl).mpr (H.left_invertible x)
-  · exact (isInvertibleEdge_congr (e := (simplicialHomotopyVertexEdge
+      (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H.left x).toTruncated) rfl).mpr (H.left_invertible x)
+  · exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
       (squareFrameTriangleFirst H 1) x).toTruncated)
-      (f := (simplicialHomotopyVertexEdge H.bottom x).toTruncated) rfl).mpr (H.bottom_invertible x)
+      (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H.bottom x).toTruncated) rfl).mpr (H.bottom_invertible x)
 
 private lemma lastVertexInvertible (j : Fin 2) (x : (Δ[1] : SSet.{u}) _⦋0⦌) :
-    IsInvertibleEdge (simplicialHomotopyVertexEdge (squareFrameTriangleLast H j) x).toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (squareFrameTriangleLast H j) x).toTruncated := by
   fin_cases j
-  · exact (isInvertibleEdge_congr (e := (simplicialHomotopyVertexEdge
+  · exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
       (squareFrameTriangleLast H 0) x).toTruncated)
-      (f := (simplicialHomotopyVertexEdge H.top x).toTruncated) rfl).mpr (H.top_invertible x)
-  · exact (isInvertibleEdge_congr (e := (simplicialHomotopyVertexEdge
+      (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H.top x).toTruncated) rfl).mpr (H.top_invertible x)
+  · exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
       (squareFrameTriangleLast H 1) x).toTruncated)
-      (f := (simplicialHomotopyVertexEdge H.right x).toTruncated) rfl).mpr (H.right_invertible x)
+      (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H.right x).toTruncated) rfl).mpr (H.right_invertible x)
 
 /-- 概要：元の上下二胞体を保つ同じ比較ホモトピーは可逆。
 方針：元二短辺の三頂点被覆と元側面経路の可逆性を使う。
 規約：比較写像を選び直さない。使われ方：元二胞体の全関手同型。 -/
 lemma squareFrameTriangleHomotopy_isInvertible (j : Fin 2) :
-    IsInvertibleEdge (functorEdgeOfSimplicialHomotopy (squareFrameTriangleHomotopy H j)) := by
-  apply functorEdgeOfSimplicialHomotopy_isInvertible_of_pointwise
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (squareFrameTriangleHomotopy H j)) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorEdgeOfSimplicialHomotopy_isInvertible_of_pointwise
   intro x
   have cover : ∃ (i : Fin 3) (hi : i = 2 ∨ i = 0)
       (y : (Δ[1] : SSet.{u}) _⦋0⦌), (stdSimplex.δ i).app _ y = x := by
@@ -86,8 +86,8 @@ lemma squareFrameTriangleHomotopy_isInvertible (j : Fin 2) :
 方針：元比較ホモトピーの可逆な辺の類を使う。
 規約：元二単体・指定二短辺を保持。使われ方：実右面の二胞体比較。 -/
 def squareFrameTriangleComparison (j : Fin 2) :
-    FunctorIso (squareTriangle j ≫ f) (squareTriangle j ≫ g) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle j ≫ f) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle j ≫ g) :=
   @asIso _ _ _ _ (SSet.Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (squareFrameTriangleHomotopy H j)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (squareFrameTriangleHomotopy H j)))
     (squareFrameTriangleHomotopy_isInvertible H j)
 end SerrePositivity.KST.SConstruction

@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "B" => dgAlgebraCategory R (dgOdotAlgebra R d)
+local notation "B" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d)
 local notation "I" => dgOdotQuotientInput R d
 local notation "Q" => DGOdotQuotientEnd R d
 local notation "T" => DGLaxQuotientEndInput.quotientObject (I)

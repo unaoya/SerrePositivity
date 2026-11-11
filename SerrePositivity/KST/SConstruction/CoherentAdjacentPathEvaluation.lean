@@ -69,7 +69,7 @@ lemma coherentAdjacentPathValues_eq {n : ℕ} (i : Fin (n + 1)) {X : SSet.{u}}
 /-- 隣接区間の任意の全 Path 評価は、元の二端点 Path の値の定数族そのもの。 -/
 lemma coherentAdjacentPathMap_eq_const {n : ℕ} (i : Fin (n + 1)) {X : SSet.{u}}
     (m : nerve (Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2))) (ULift.up i.succ)) ⟶ X) :
-    m = SSet.const (m.app (Opposite.op ⦋0⦌) (nerveVertex (coherentEndpointPath
+    m = SSet.const (m.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (coherentEndpointPath
       (show (ULift.up i.castSucc : ULift.{u} (Fin (n + 2))) ≤ ULift.up i.succ from
         Fin.castSucc_le_succ i)))) := by
   apply coherentPathMap_eq_const

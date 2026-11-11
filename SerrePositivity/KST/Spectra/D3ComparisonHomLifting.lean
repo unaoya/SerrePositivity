@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3LoopSourceComparison
-public import SerrePositivity.InfinityCategories.Core.RelativeInternalHomTrivialFibration
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.RelativeInternalHomTrivialFibration
 
 /-!
 概要：異なる X,Y の比較 Hom に、指定左右境界と区間の全端点を保つ相対充填を与える。
@@ -26,7 +26,7 @@ abbrev loopComparisonHomCorner (X Y : OmegaSpectrum.{u}) :=
 
 /-- 異なる二対象の比較 Hom corner は実際に全単射 RLP を持つ。 -/
 instance loopComparisonHomCorner_trivialKanFibration (X Y : OmegaSpectrum.{u}) :
-    TrivialKanFibration (loopComparisonHomCorner X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (loopComparisonHomCorner X Y) :=
   comparisonCorner_trivialKanFibration Y (loopSourceInclusion X) (loopSourceInclusion_relative X)
 
 /-- 全 n 次元の比較境界と、同じ全左右境界を同時に記憶する相対内部 Hom。 -/
@@ -44,8 +44,8 @@ def loopComparisonBoundaryCorner (X Y : OmegaSpectrum.{u}) (n : ℕ) :
 /-- 比較 Hom の全単体境界を固定しても、全パラメータの単射に対する RLP がある。 -/
 instance loopComparisonBoundaryCorner_trivialKanFibration
     (X Y : OmegaSpectrum.{u}) (n : ℕ) :
-    TrivialKanFibration (loopComparisonBoundaryCorner X Y n) :=
-  trivialKanFibration_pullbackObjObjπ (boundary n).ι (loopComparisonHomCorner X Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (loopComparisonBoundaryCorner X Y n) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.trivialKanFibration_pullbackObjObjπ (boundary n).ι (loopComparisonHomCorner X Y)
     (loopComparisonBoundaryCornerSquare X Y n)
 
 /-- 元の部分パラメータを保つ比較 n 単体の延長。n=1 は全 Hom の自然性の相対比較。 -/
@@ -61,7 +61,7 @@ lemma exists_relative_loopComparisonBoundary (X Y : OmegaSpectrum.{u}) (n : ℕ)
       d ≫ (pre (boundary n).ι).app _ = b ≫ (loopComparisonBoundaryCornerSquare X Y n).fst ∧
       d ≫ (ihom (Δ[n] : SSet.{u})).map (loopComparisonHomCorner X Y) =
         b ≫ (loopComparisonBoundaryCornerSquare X Y n).snd := by
-  have := TrivialKanFibration.mem (p := loopComparisonBoundaryCorner X Y n) j inferInstance
+  have := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := loopComparisonBoundaryCorner X Y n) j inferInstance
   let sq : CommSq a j (loopComparisonBoundaryCorner X Y n) b := ⟨h⟩
   refine ⟨sq.lift, sq.fac_left, ?_, ?_⟩
   · have hf := congrArg (· ≫ (loopComparisonBoundaryCornerSquare X Y n).fst) sq.fac_right
@@ -74,7 +74,7 @@ lemma exists_relative_loopComparisonBoundary (X Y : OmegaSpectrum.{u}) (n : ℕ)
 /-- 同じ全指定境界に属する比較 n 単体の選択空間の可縮性。 -/
 lemma loopComparisonBoundaryFiber_isContractibleKan (X Y : OmegaSpectrum.{u}) (n : ℕ)
     (b : ((loopComparisonBoundaryCornerSquare X Y n).pt) _⦋0⦌) :
-    IsContractibleKan (vertexFiber (loopComparisonBoundaryCorner X Y n) b) :=
-  vertexFiber_isContractibleKan (loopComparisonBoundaryCorner X Y n) b
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (loopComparisonBoundaryCorner X Y n) b) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_isContractibleKan (loopComparisonBoundaryCorner X Y n) b
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

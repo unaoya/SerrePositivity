@@ -47,7 +47,7 @@ instance enrichedFunctorCollageInfinity_quasicategory (R : EnrichedFunctor SSet.
     [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)]
     [∀ X Y : D, KanComplex (SimplicialCategory.sHom X Y)] :
     Quasicategory (EnrichedFunctorCollageInfinity R) :=
-  Coherent.simplicialNerve_quasicategory (EnrichedFunctorCollageCategory R)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialNerve_quasicategory (EnrichedFunctorCollageCategory R)
 
 /-- 下段からの、元の全写像空間を保持する豊穣包含。 -/
 def enrichedFunctorCollageBottom (R : EnrichedFunctor SSet.{u} C D) :
@@ -160,32 +160,32 @@ lemma enrichedFunctorCollageTop_projection (R : EnrichedFunctor SSet.{u} C D) :
 /-- 下段包含が全単体次数で誘導する coherent nerve の射。 -/
 def enrichedFunctorCollageBottomInfinity (R : EnrichedFunctor SSet.{u} C D) :
     SimplicialNerve D ⟶ EnrichedFunctorCollageInfinity R :=
-  coherentNerveMap (enrichedFunctorCollageBottom R)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (enrichedFunctorCollageBottom R)
 
 /-- 上段包含が全単体次数で誘導する coherent nerve の射。 -/
 def enrichedFunctorCollageTopInfinity (R : EnrichedFunctor SSet.{u} C D) :
     SimplicialNerve C ⟶ EnrichedFunctorCollageInfinity R :=
-  coherentNerveMap (enrichedFunctorCollageTop R)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (enrichedFunctorCollageTop R)
 
 /-- 交差 Hom を保持する、元の値域への coherent nerve の射影。 -/
 def enrichedFunctorCollageProjectionInfinity (R : EnrichedFunctor SSet.{u} C D) :
     EnrichedFunctorCollageInfinity R ⟶ SimplicialNerve D :=
-  coherentNerveMap (enrichedFunctorCollageProjection R)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (enrichedFunctorCollageProjection R)
 
 /-- 下段から戻る射影は全単体次数で恒等。 -/
 lemma enrichedFunctorCollageBottomInfinity_projection (R : EnrichedFunctor SSet.{u} C D) :
     enrichedFunctorCollageBottomInfinity R ≫ enrichedFunctorCollageProjectionInfinity R =
       𝟙 (SimplicialNerve D) := by
-  change coherentNerveMap (enrichedFunctorCollageBottom R) ≫
-    coherentNerveMap (enrichedFunctorCollageProjection R) = _
-  rw [← coherentNerveMap_comp, enrichedFunctorCollageBottom_projection, coherentNerveMap_id]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (enrichedFunctorCollageBottom R) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (enrichedFunctorCollageProjection R) = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, enrichedFunctorCollageBottom_projection, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_id]
 
 /-- 上段から戻る射影は全単体次数で元の R の coherent nerve の作用。 -/
 lemma enrichedFunctorCollageTopInfinity_projection (R : EnrichedFunctor SSet.{u} C D) :
     enrichedFunctorCollageTopInfinity R ≫ enrichedFunctorCollageProjectionInfinity R =
-      coherentNerveMap R := by
-  change coherentNerveMap (enrichedFunctorCollageTop R) ≫
-    coherentNerveMap (enrichedFunctorCollageProjection R) = _
-  rw [← coherentNerveMap_comp, enrichedFunctorCollageTop_projection]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap R := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (enrichedFunctorCollageTop R) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (enrichedFunctorCollageProjection R) = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, enrichedFunctorCollageTop_projection]
 
 end SerrePositivity.KST.SConstruction

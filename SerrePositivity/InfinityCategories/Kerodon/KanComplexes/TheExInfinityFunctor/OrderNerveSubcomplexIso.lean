@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：各単体の対象写像を部分型へ制限し、射は順序から作る。
 規約：Moss arXiv:1506.04887v2 Proposition 2.19 の horn の面の順序集合への補助。
 使われ方：部分単体集合の anodyne 性を、実際の nerve の包含へ移す。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

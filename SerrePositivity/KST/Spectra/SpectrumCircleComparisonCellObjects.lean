@@ -15,7 +15,7 @@ noncomputable section
 universe u
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance circleComparisonCellObjectsSimplicialCategory :
     SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
@@ -26,16 +26,16 @@ lemma circleCompanionComparisonTetrahedron_base_fromPoint (z : Sp.{u} _⦋0⦌)
     SSet.yonedaEquiv.symm (stdSimplex.edge 3 2 3 (by decide)) ≫
       SSet.yonedaEquiv.symm (circleCompanionComparisonTetrahedron z k) =
     SSet.yonedaEquiv.symm
-      (coherentNerveEdge
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
         (fromPoint (nativeCotensorInput PointedSimplicialSet.circle z).val)).edge := by
   rw [circleCompanionComparisonTetrahedron_base]
   apply SSet.yonedaEquiv.injective
   rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply,
     circleConeComparisonParameter, Equiv.apply_symm_apply]
-  change (nerveToCoherent OmegaSpectrum.{u}).app (Opposite.op ⦋1⦌) _ =
-    (nerveToCoherent OmegaSpectrum.{u}).app (Opposite.op ⦋1⦌)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent OmegaSpectrum.{u}).app (Opposite.op ⦋1⦌) _ =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent OmegaSpectrum.{u}).app (Opposite.op ⦋1⦌)
       (ComposableArrows.mk₁ (fromPoint (nativeCotensorInput PointedSimplicialSet.circle z).val))
-  apply congrArg ((nerveToCoherent OmegaSpectrum.{u}).app (Opposite.op ⦋1⦌))
+  apply congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent OmegaSpectrum.{u}).app (Opposite.op ⦋1⦌))
   cases k
   all_goals
     refine ComposableArrows.ext₁ rfl rfl ?_

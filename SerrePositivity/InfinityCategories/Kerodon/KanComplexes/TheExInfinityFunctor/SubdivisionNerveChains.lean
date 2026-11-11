@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：各単体の有限鎖の像を取り、sd⊣Ex の随伴で転置する。
 規約：Moss 2020 Proposition 21 の Kan 性の準備。一般の B 関手の構成は仮定しない。
 使われ方：二重細分された horn の頂点を有限鎖で計算する。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

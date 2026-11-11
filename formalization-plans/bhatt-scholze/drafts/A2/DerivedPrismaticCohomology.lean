@@ -6,10 +6,10 @@ public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeConstruction
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
-public import SerrePositivity.InfinityCategories.Core.UniverseSquareHom
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseSquareHom
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Basic
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.NativeConeLeg
 public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 
 -- 本ファイルは drafts/A2/AnimatedAlgebra.lean、drafts/A0/{PrismaticSite,CechAlexander}.lean、drafts/Sheaves/CAlgValued.lean、
@@ -47,7 +47,7 @@ variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 namespace SerrePositivity.BhattScholze.Prismatic
 
 open SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-open SerrePositivity.DerivedCompletion SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.DerivedCompletion
 open SerrePositivity.EInfinity.Perfectoidization
 open SerrePositivity.BhattScholze.PerfectoidizationInterface
 attribute [local instance] HasDerivedCategory.standard

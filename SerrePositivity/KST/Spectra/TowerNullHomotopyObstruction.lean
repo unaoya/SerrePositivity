@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceChange
 public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceNaturality
 public import SerrePositivity.KST.Spectra.PointedGroupProduct
-public import SerrePositivity.InfinityCategories.Kan.TowerLimOne
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne
 
 /-!
 概要：整合する球面の段ごとの零ホモトピーから lim¹ の障害を作る。
@@ -29,14 +29,14 @@ namespace NullHomotopyDifference
 def mapNullTo {X Y : SSet.{u}} {x : X _⦋0⦌} {y : Y _⦋0⦌} {r : ℕ}
     (f : X ⟶ Y) (hf : f.app _ x = y)
     {s : X.PtSimplex (r + 1) x} {t : Y.PtSimplex (r + 1) y}
-    (ht : _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex f hf s = t) (R : PtSimplex.RelStruct .const s (Fin.last (r + 1))) :
+    (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex f hf s = t) (R : PtSimplex.RelStruct .const s (Fin.last (r + 1))) :
     PtSimplex.RelStruct .const t (Fin.last (r + 1)) := ht ▸ mapNull f hf R
 
 /-- 球面の同定は零ホモトピーの underlying な単体を変えない。 -/
 lemma mapNullTo_map {X Y : SSet.{u}} {x : X _⦋0⦌} {y : Y _⦋0⦌} {r : ℕ}
     (f : X ⟶ Y) (hf : f.app _ x = y)
     {s : X.PtSimplex (r + 1) x} {t : Y.PtSimplex (r + 1) y}
-    (ht : _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex f hf s = t) (R : PtSimplex.RelStruct .const s (Fin.last (r + 1))) :
+    (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex f hf s = t) (R : PtSimplex.RelStruct .const s (Fin.last (r + 1))) :
     (mapNullTo f hf ht R).map = R.map ≫ f := by
   subst t
   rfl
@@ -45,8 +45,8 @@ lemma mapNullTo_map {X Y : SSet.{u}} {x : X _⦋0⦌} {y : Y _⦋0⦌} {r : ℕ}
 lemma difference_map_to {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
     {x : X _⦋0⦌} {y : Y _⦋0⦌} {r : ℕ} (f : X ⟶ Y) (hf : f.app _ x = y)
     {s : X.PtSimplex (r + 1) x} {t : Y.PtSimplex (r + 1) y}
-    (ht : _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex f hf s = t) (R S : PtSimplex.RelStruct .const s (Fin.last (r + 1))) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f hf (difference R S) =
+    (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex f hf s = t) (R S : PtSimplex.RelStruct .const s (Fin.last (r + 1))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map f hf (difference R S) =
       difference (mapNullTo f hf ht R) (mapNullTo f hf ht S) := by
   subst t
   exact difference_map f hf R S
@@ -59,38 +59,38 @@ open NullHomotopyDifference
 variable (X : ℕ → PointedSimplicialSet.{u}) (p : ∀ n, X (n + 1) ⟶ X n)
   [∀ n, KanComplex (X n).right] (r : ℕ)
   (s : ∀ n, (X n).right.PtSimplex (r + 1) (X n).basepoint)
-  (hs : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n))
+  (hs : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n))
     (s (n + 1)) = s n)
 
 /-- 隣接する零ホモトピーの差の族。 -/
 def nullHomotopyDifferenceFamily
     (R : ∀ n, PtSimplex.RelStruct .const (s n) (Fin.last (r + 1)))
-    (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint :=
-  difference (R n) (mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n))
+    (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint :=
+  difference (R n) (mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n))
     (hs n) (R (n + 1)))
 
 /-- 零ホモトピーの選択変更は差の族への twisted 作用になる。 -/
 lemma nullHomotopyDifferenceFamily_change
     (R R' : ∀ n, PtSimplex.RelStruct .const (s n) (Fin.last (r + 1))) :
     nullHomotopyDifferenceFamily X p r s hs R' =
-      _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint)
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.twist (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint)
         (fun n ↦ pointedGroupMap (r + 1) (p n))
         (fun n ↦ difference (R' n) (R n)) (nullHomotopyDifferenceFamily X p r s hs R) := by
   funext n
-  dsimp only [nullHomotopyDifferenceFamily, _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist]
+  dsimp only [nullHomotopyDifferenceFamily, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.twist]
   rw [difference_change (R n)
-    (mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n)) (hs n) (R (n + 1)))
+    (mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n)) (hs n) (R (n + 1)))
     (R' n)
-    (mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n)) (hs n) (R' (n + 1))),
+    (mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n)) (hs n) (R' (n + 1))),
     ← difference_map_to]
   rfl
 
 /-- 段ごとの零ホモトピーから得られる lim¹ の障害。 -/
 def nullHomotopyObstruction
     (R : ∀ n, PtSimplex.RelStruct .const (s n) (Fin.last (r + 1))) :
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (p n)) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk _ _ (nullHomotopyDifferenceFamily X p r s hs R)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.mk _ _ (nullHomotopyDifferenceFamily X p r s hs R)
 
 /-- 固定した球面の族の lim¹ の障害は零ホモトピーの選択に依存しない。 -/
 theorem nullHomotopyObstruction_eq
@@ -98,21 +98,21 @@ theorem nullHomotopyObstruction_eq
     nullHomotopyObstruction X p r s hs R = nullHomotopyObstruction X p r s hs R' := by
   unfold nullHomotopyObstruction
   rw [nullHomotopyDifferenceFamily_change X p r s hs R R']
-  exact _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk_twist _ _ _ _
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.mk_twist _ _ _ _
 
 include hs in
 /-- 厳密に整合する零ホモトピーがあれば、障害は lim¹ の基点。 -/
 theorem nullHomotopyObstruction_eq_point_of_compatible
     (R : ∀ n, PtSimplex.RelStruct .const (s n) (Fin.last (r + 1)))
     (hc : ∀ n, (R (n + 1)).map ≫ (p n).right = (R n).map) :
-    nullHomotopyObstruction X p r s hs R = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _ := by
+    nullHomotopyObstruction X p r s hs R = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _ := by
   have he : nullHomotopyDifferenceFamily X p r s hs R = 1 := by
     funext n
-    have hn : mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n))
+    have hn : mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n))
         (hs n) (R (n + 1)) = R n := by
       have he := (mapNullTo_map (p n).right
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n)) (hs n) (R (n + 1))).trans (hc n)
-      generalize mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n))
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n)) (hs n) (R (n + 1))).trans (hc n)
+      generalize mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n))
         (hs n) (R (n + 1)) = a at he ⊢
       generalize R n = b at he ⊢
       cases a
@@ -122,7 +122,7 @@ theorem nullHomotopyObstruction_eq_point_of_compatible
     dsimp only [nullHomotopyDifferenceFamily]
     rw [hn, difference_self]
     rfl
-  exact congrArg (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk _ _) he
+  exact congrArg (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.mk _ _) he
 
 end PointedFibrationTower
 end

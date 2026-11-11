@@ -9,6 +9,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 方針：二重次数 p,q ごとの和を全テンソルの余積の降下写像で束ねる。
 規約：KST Construction A.5 の標準 shuffle、次数 p+q=n。
 使われ方：正規化 AW の逆方向の比較。成分構成だけで鎖写像性や標準ホモトピーの完成とはしない。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

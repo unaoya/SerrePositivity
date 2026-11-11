@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：削除点が切断点以前なら前半、その後なら後半に戻す明示的な同値を作る。
 規約：KST Construction A.5 の標準 AW。切断点自体の二つの境界項は別に相殺する。
 使われ方：AW の鎖写像性における二重境界和の添字変換。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 namespace SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories

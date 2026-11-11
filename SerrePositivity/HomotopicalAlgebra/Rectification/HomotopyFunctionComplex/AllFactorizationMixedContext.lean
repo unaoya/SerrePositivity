@@ -63,27 +63,27 @@ abbrev valueIso : choiceSpace hcof a f g b ≅
 /-- One global square, retaining the original choice on the entire large chain parameter. -/
 abbrev triangle (left : Bool) :=
   AllFactorizationMixed.triangle hcof hfib a.map f g b (FramedResolution.frameMap a) left ≫
-    UniverseLift.map.{u} (valueIso hcof a f g b).inv
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (valueIso hcof a f g b).inv
 
 lemma triangle_recover (left : Bool) :
-    triangle hcof hfib a f g b left ≫ UniverseLift.map.{u} (valueIso hcof a f g b).hom =
+    triangle hcof hfib a f g b left ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (valueIso hcof a f g b).hom =
       AllFactorizationMixed.triangle hcof hfib a.map f g b (FramedResolution.frameMap a) left := by
-  simp only [triangle, Category.assoc, ← UniverseLift.map_comp, Iso.inv_hom_id]
+  simp only [triangle, Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map_comp, Iso.inv_hom_id]
   exact Category.comp_id _
 
 lemma triangle_AB : AnchoredChain.simplicial g ◁ SSet.stdSimplex.δ (2 : Fin 3) ≫
     triangle hcof hfib a f g b true =
       ((AllFactorizationPost.homotopy hcof hfib (a.map.base ≫ f) g b).h ≫
-        UniverseLift.map (CoherentLiftMixedComparison.mapBD hcof X'.inner X.inner Y W
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map (CoherentLiftMixedComparison.mapBD hcof X'.inner X.inner Y W
           a.map f (g ≫ b) (FramedResolution.frameMap a))) ≫
-        UniverseLift.map.{u} (valueIso hcof a f g b).inv := by
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (valueIso hcof a f g b).inv := by
   rw [triangle, ← Category.assoc, AllFactorizationMixed.triangle_AB]
 
 lemma triangle_BD : AnchoredChain.simplicial g ◁ SSet.stdSimplex.δ (0 : Fin 3) ≫
     triangle hcof hfib a f g b true =
       ((AllFactorizationPre.homotopy hcof hfib a.map f g (FramedResolution.frameMap a)).h ≫
         AllFactorizationMixed.valueMap hcof a.map f g b (FramedResolution.frameMap a)) ≫
-        UniverseLift.map.{u} (valueIso hcof a f g b).inv := by
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (valueIso hcof a f g b).inv := by
   rw [triangle, ← Category.assoc, AllFactorizationMixed.triangle_BD]
 
 lemma triangle_AC : AnchoredChain.simplicial g ◁ SSet.stdSimplex.δ (2 : Fin 3) ≫
@@ -92,15 +92,15 @@ lemma triangle_AC : AnchoredChain.simplicial g ◁ SSet.stdSimplex.δ (2 : Fin 3
         SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 1) ≫
           (AllFactorizationPre.homotopy hcof hfib a.map f (g ≫ b)
             (FramedResolution.frameMap a)).h) ≫
-        UniverseLift.map.{u} (valueIso hcof a f g b).inv := by
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (valueIso hcof a f g b).inv := by
   rw [triangle, ← Category.assoc, AllFactorizationMixed.triangle_AC]
 
 lemma triangle_CD : AnchoredChain.simplicial g ◁ SSet.stdSimplex.δ (0 : Fin 3) ≫
     triangle hcof hfib a f g b false =
       ((AllFactorizationPost.homotopy hcof hfib f g b).h ≫
-        UniverseLift.map (CoherentLiftMixedComparison.mapAC X'.inner X.inner Y W
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map (CoherentLiftMixedComparison.mapAC X'.inner X.inner Y W
           a.map f (g ≫ b) (FramedResolution.frameMap a))) ≫
-        UniverseLift.map.{u} (valueIso hcof a f g b).inv := by
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (valueIso hcof a f g b).inv := by
   rw [triangle, ← Category.assoc, AllFactorizationMixed.triangle_CD]
 
 lemma common_diagonal :

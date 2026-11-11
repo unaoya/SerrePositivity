@@ -28,17 +28,17 @@ lemma boundaryAssemblyExtensionParameterEdge_evaluation (r : ℕ)
       ((kanAssemblyMixedFromTarget r f).app (Opposite.op ⦋0⦌) w.2)) :
     ((boundaryAssemblyExtensionParameterEdge r f v w e).map
       (boundaryAssemblyNaturalityFamilyAt r f u)).edge =
-      ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionKanInverseChoices r X)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionKanInverseChoices r X)
         (L := kanAssemblyMixedChoices r f) (SSet.Edge.id v.1) e).map (boundaryAssemblyExtensionFamily r f)).edge := by
-  have h : _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left (boundaryAssemblyExtensionMiddle r f)
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left (boundaryAssemblyExtensionMiddle r f)
       (boundaryAssemblyInverseMiddle r f) ≫
         (boundaryAssemblyNaturalityParameterUnit r f ≫ boundaryAssemblyNaturalityFamilyAt r f u) =
       boundaryAssemblyExtensionFamily r f := by
     rw [boundaryAssemblyNaturalityFamilyAt_unit]
     exact boundaryAssemblyNaturalityCylinderFamily_left r f
-  exact _root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftParameterEdge_evaluation
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianLeftParameterEdge_evaluation
     (kanAssemblyMixedFromSource r f) (kanAssemblyMixedFromTarget r f)
-    (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f))
     (boundaryAssemblyNaturalityParameterUnit r f) (boundaryAssemblyNaturalityFamilyAt r f u)
     (boundaryAssemblyExtensionFamily r f) h v w.2 e
 
@@ -53,17 +53,17 @@ lemma boundaryAssemblyInverseParameterEdge_evaluation (r : ℕ)
       ((oneDirectionInverseMixedFromTarget r f).app (Opposite.op ⦋0⦌) w.1)) :
     ((boundaryAssemblyInverseParameterEdge r f v w e).map
       (boundaryAssemblyNaturalityFamilyAt r f u)).edge =
-      ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
         (L := kanAssemblyAdjointChoices r Y) e (SSet.Edge.id w.2)).map (boundaryAssemblyInverseFamily r f)).edge := by
-  have h : _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right (boundaryAssemblyExtensionMiddle r f)
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right (boundaryAssemblyExtensionMiddle r f)
       (boundaryAssemblyInverseMiddle r f) ≫
         (boundaryAssemblyNaturalityParameterUnit r f ≫ boundaryAssemblyNaturalityFamilyAt r f u) =
       boundaryAssemblyInverseFamily r f := by
     rw [boundaryAssemblyNaturalityFamilyAt_unit]
     exact boundaryAssemblyNaturalityCylinderFamily_right r f
-  exact _root_.SerrePositivity.InfinityCategories.Kan.cartesianRightParameterEdge_evaluation
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianRightParameterEdge_evaluation
     (oneDirectionInverseMixedFromSource r f) (oneDirectionInverseMixedFromTarget r f)
-    (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f))
     (boundaryAssemblyNaturalityParameterUnit r f) (boundaryAssemblyNaturalityFamilyAt r f u)
     (boundaryAssemblyInverseFamily r f) h v.1 w e
 

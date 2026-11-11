@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransportAlgebra
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberTransportDiagonalPrismCoordinates
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoTransportAlgebra
 
 /-!
 概要：元の全対角輸送比較を、元の実 prism による同じ指定比較として表示する。

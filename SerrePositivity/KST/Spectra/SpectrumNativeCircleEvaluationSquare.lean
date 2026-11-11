@@ -18,18 +18,18 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 
 /-- 円の生成辺を保持する、Sp の自己関手の quasicategory 内の四角形。 -/
 def circleEvaluationFunctorSquare : (Δ[1] : SSet.{u + 1}) ⊗ Δ[1] ⟶ (ihom Sp.{u}).obj Sp.{u} :=
-  square_isPushout.desc circleZeroFunctorTriangle circleZeroCompanionTriangle
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.square_isPushout.desc circleZeroFunctorTriangle circleZeroCompanionTriangle
     circleZeroCompanionTriangle_diagonal.symm
 
 /-- 四角形の上側の三角形は元の参照零三角形。 -/
 lemma circleEvaluationFunctorSquare_upper :
-    squareTriangle 0 ≫ circleEvaluationFunctorSquare.{u} = circleZeroFunctorTriangle :=
-  square_isPushout.inl_desc ..
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ circleEvaluationFunctorSquare.{u} = circleZeroFunctorTriangle :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.square_isPushout.inl_desc ..
 
 /-- 四角形の下側の三角形は、ホーン充填で構成したもう一方の零三角形。 -/
 lemma circleEvaluationFunctorSquare_lower :
-    squareTriangle 1 ≫ circleEvaluationFunctorSquare.{u} = circleZeroCompanionTriangle :=
-  square_isPushout.inr_desc ..
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ circleEvaluationFunctorSquare.{u} = circleZeroCompanionTriangle :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.square_isPushout.inr_desc ..
 
 /-- 元の Sp 上の、円の評価から作った実際の coherent な四角形の族。 -/
 def nativeCircleEvaluationSquareFamily :
@@ -38,17 +38,17 @@ def nativeCircleEvaluationSquareFamily :
 
 /-- 四角形の族の上側の三角形は、元の零三角形の族そのもの。 -/
 lemma nativeCircleEvaluationSquareFamily_upper :
-    (𝟙 Sp.{u} ⊗ₘ squareTriangle 0) ≫ nativeCircleEvaluationSquareFamily =
+    (𝟙 Sp.{u} ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0) ≫ nativeCircleEvaluationSquareFamily =
       nativeZeroEvaluationTriangleFamily PointedSimplicialSet.circle := by
-  change Sp.{u} ◁ squareTriangle 0 ≫ uncurry circleEvaluationFunctorSquare = _
+  change Sp.{u} ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ uncurry circleEvaluationFunctorSquare = _
   rw [← uncurry_natural_left, circleEvaluationFunctorSquare_upper,
     circleZeroFunctorTriangle, uncurry_curry]
 
 /-- 四角形の族の下側も、選んだもう一方の零三角形の族を厳密に保持。 -/
 lemma nativeCircleEvaluationSquareFamily_lower :
-    (𝟙 Sp.{u} ⊗ₘ squareTriangle 1) ≫ nativeCircleEvaluationSquareFamily =
+    (𝟙 Sp.{u} ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1) ≫ nativeCircleEvaluationSquareFamily =
       uncurry circleZeroCompanionTriangle := by
-  change Sp.{u} ◁ squareTriangle 1 ≫ uncurry circleEvaluationFunctorSquare = _
+  change Sp.{u} ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ uncurry circleEvaluationFunctorSquare = _
   rw [← uncurry_natural_left, circleEvaluationFunctorSquare_lower]
 
 /-- もう一方の零三角形の中間の図式は、参照三角形と厳密に同じ図式。 -/
@@ -66,10 +66,10 @@ lemma circleZeroCompanionTriangle_middle :
 /-- 参照三角形の中間の自己関手は、元の定値零関手そのもの。 -/
 lemma circleZeroFunctorTriangle_middle :
     (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 3)) : (Δ[0] : SSet.{u + 1}) ⟶ Δ[2]) ≫
-        circleZeroFunctorTriangle = SSet.const (functorVertex (constantZeroDiagram Sp.{u})) := by
+        circleZeroFunctorTriangle = SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (constantZeroDiagram Sp.{u})) := by
   apply uncurry_injective
   rw [uncurry_natural_left, circleZeroFunctorTriangle, uncurry_curry,
-    uncurry_const_functorVertex]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.uncurry_const_functorVertex]
   change (fst Sp.{u} (Δ[0] : SSet.{u + 1}) ≫
     lift (𝟙 Sp.{u}) (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 3)))) ≫ _ = _
   rw [Category.assoc, nativeZeroEvaluationTriangleFamily_one]
@@ -78,10 +78,10 @@ lemma circleZeroFunctorTriangle_middle :
 lemma circleEvaluationFunctorSquare_zeroCorner (i : Fin 2) :
     (SSet.const (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm i.rev) :
       (Δ[0] : SSet.{u + 1}) ⟶ Δ[1] ⊗ Δ[1]) ≫ circleEvaluationFunctorSquare =
-        SSet.const (functorVertex (constantZeroDiagram Sp.{u})) := by
+        SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (constantZeroDiagram Sp.{u})) := by
   have hs : (SSet.const (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm i.rev) :
       (Δ[0] : SSet.{u + 1}) ⟶ Δ[1] ⊗ Δ[1]) =
-        SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 3)) ≫ squareTriangle i := by
+        SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 3)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle i := by
     apply SSet.yonedaEquiv.injective
     apply Prod.ext <;> apply SSet.stdSimplex.ext
     all_goals
@@ -95,12 +95,12 @@ lemma circleEvaluationFunctorSquare_zeroCorner (i : Fin 2) :
 
 /-- 四角形の非対角の二つの自己関手は、関手 quasicategory の実際の零対象。 -/
 lemma circleEvaluationFunctorSquare_zeroCorner_isZero (i : Fin 2) :
-    IsZeroVertex (circleEvaluationFunctorSquare.{u}.app (Opposite.op ⦋0⦌)
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (circleEvaluationFunctorSquare.{u}.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm i.rev)) := by
   have h := congrArg SSet.yonedaEquiv (circleEvaluationFunctorSquare_zeroCorner.{u} i)
   change circleEvaluationFunctorSquare.{u}.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm i.rev) =
-        functorVertex (constantZeroDiagram Sp.{u}) at h
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (constantZeroDiagram Sp.{u}) at h
   rw [h]
   exact (functorZeroVertex Sp.{u}).isZero
 

@@ -82,7 +82,7 @@ lemma terminal_localized_isIso
     UniverseLift.anodyneQ_map_isIso_of_small _ hC
   have h : (iso C).hom ≫ SSet.uliftFunctor.map
       (SSet.stdSimplex.isTerminalObj₀.from (nerve C)) ≫
-        (UniverseLift.simplexIso (SimplexCategory.mk 0)).hom =
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexIso (SimplexCategory.mk 0)).hom =
       SSet.stdSimplex.isTerminalObj₀.from (nerve (AsSmall.{w} C)) :=
     SSet.stdSimplex.isTerminalObj₀.hom_ext _ _
   rw [← h, CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_comp]

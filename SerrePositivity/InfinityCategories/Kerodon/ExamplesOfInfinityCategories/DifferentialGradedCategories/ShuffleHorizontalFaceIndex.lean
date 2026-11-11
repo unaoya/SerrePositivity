@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：最初・最後の面を区別し、内部では第 i−1 水平ステップの直前へ挿入する。
 規約：KST Construction A.5、非被約複体の両端も含む。
 使われ方：水平の境界和と shuffle の純粋水平境界項の有限な添字の対応。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

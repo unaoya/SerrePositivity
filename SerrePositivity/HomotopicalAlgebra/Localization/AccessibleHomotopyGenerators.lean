@@ -20,9 +20,9 @@ open SerrePositivity.HomotopyFunctionComplex
 
 namespace SerrePositivity.Bousfield
 variable {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [ModelCategory SSet.{w}] [ModelCategory SSet.{v}] [ModelCategory SSet.{max v w}]
-  (IS JS : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  (IS JS : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (hcofW : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfibW : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
   (hcofV : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)

@@ -23,17 +23,17 @@ variable {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
 
 /-- 元の基本群の誘導写像は、元のホモトピー圏の関手と基点の移送に厳密一致する。 -/
 lemma toHom_map (f : X ⟶ Y) (hf : f.app (Opposite.op ⦋0⦌) x = y)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X 0 x) :
-    toHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f hf a) =
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup X 0 x) :
+    toHom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map f hf a) =
       eqToHom (congrArg (SSet.HomotopyCategory.mk (X := Y)) hf).symm ≫
         (hoFunctor.map f).toFunctor.map (toHom a) ≫
         eqToHom (congrArg (SSet.HomotopyCategory.mk (X := Y)) hf) := by
   subst y
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
   induction a using Quotient.inductionOn with | h s => ?_
-  change SSet.HomotopyCategory.homMk (edge (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex f rfl s)) =
+  change SSet.HomotopyCategory.homMk (edge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex f rfl s)) =
     (hoFunctor.map f).toFunctor.map (SSet.HomotopyCategory.homMk (edge s))
-  have he : edge (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex f rfl s) = (edge s).map f :=
+  have he : edge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex f rfl s) = (edge s).map f :=
     SSet.Edge.ext (SSet.yonedaEquiv_comp s.map f)
   rw [he]
   rfl
@@ -50,8 +50,8 @@ def pointedHomMap {P Q : PointedSimplicialSet.{u}} (p : P ⟶ Q)
 
 /-- 元の点つき射に関する基本群の自然性は、基点を移送した同じ自己射の作用。 -/
 lemma toHom_pointed_map {P Q : PointedSimplicialSet.{u}} [KanComplex P.right]
-    [KanComplex Q.right] (p : P ⟶ Q) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup P.right 0 P.basepoint) :
-    toHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p.right
+    [KanComplex Q.right] (p : P ⟶ Q) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup P.right 0 P.basepoint) :
+    toHom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map p.right
       (PointedSimplicialSet.hom_basepointAt p (Opposite.op ⦋0⦌)) a) =
       pointedHomMap p (toHom a) :=
   toHom_map p.right (PointedSimplicialSet.hom_basepointAt p (Opposite.op ⦋0⦌)) a

@@ -30,28 +30,28 @@ variable {E B : PointedSimplicialSet.{u}} (p : E ⟶ B)
 theorem pointedConnecting_zero_loop_representative [Fibration p.right]
     [KanComplex E.right] [KanComplex B.right]
     (t : B.right.PtSimplex 2 (p.right.app _ E.basepoint))
-    (N : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift (pathEndpoint B).right (basedPathSpace B).basepoint (pathBaseSimplex p t))
-    (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p.right E.basepoint t)
-    (V : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace E).basepoint (sourceLoop p t N)) :
+    (N : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift (pathEndpoint B).right (basedPathSpace B).basepoint (pathBaseSimplex p t))
+    (L : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift p.right E.basepoint t)
+    (V : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace E).basepoint (sourceLoop p t N)) :
     loopZeroHomotopyEquiv (pointedFiber p)
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 (loopPointedFiberIso p).inv.right
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (loopPointedFiberIso p).inv)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map 0 (loopPointedFiberIso p).inv.right
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (loopPointedFiberIso p).inv)
         (pointedConnectingZero (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p)
-          (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B).right)
-            (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 0 (Iso.refl (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B).right)
+            (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint
               (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p))
-            (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (sourceLoop p t N))))) =
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (sourceLoop p t N))))) =
       (pointedConnectingHom p 0
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 1 (Iso.refl B.right)
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t)))⁻¹ := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 1 (Iso.refl B.right)
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk t)))⁻¹ := by
   have : Fibration (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right := by
     infer_instance
   apply (pointedFiberGroupEquiv p 0).injective
   rw [map_inv, pointedConnectingHom_boundaryLift p 0 L,
     BoundaryLift.pointedFiberGroupEquiv_mk, pointedConnectingZero_boundaryLift _ V]
   change pointedFiberGroupEquiv p 0
-    (loopZeroHomotopyEquiv (pointedFiber p) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 (boundaryLoop p V))) = _
+    (loopZeroHomotopyEquiv (pointedFiber p) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.mk 0 (boundaryLoop p V))) = _
   obtain ⟨U, hU, hend⟩ := exists_standard_common p t N L
   have he := boundaryLoop_zero_inverse_common p V U hU
   rw [hend] at he
@@ -72,32 +72,32 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §8、VIII §1。係数微分の loop との交換の符号。 -/
 theorem pointedConnectingZero_loopZero {E B : PointedSimplicialSet.{u}}
     (p : E ⟶ B) [Fibration p.right] [KanComplex E.right] [KanComplex B.right]
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B).right 0 (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B).right 0 (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B).basepoint) :
     loopZeroHomotopyEquiv (pointedFiber p)
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 (loopPointedFiberIso p).inv.right
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (loopPointedFiberIso p).inv)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map 0 (loopPointedFiberIso p).inv.right
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (loopPointedFiberIso p).inv)
         (pointedConnectingZero (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p) a)) =
       (pointedConnectingHom p 0 (loopPositiveHomotopyEquiv B 0 a))⁻¹ := by
-  let eb := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 1 (Iso.refl B.right)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p)
+  let eb := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 1 (Iso.refl B.right)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p)
   let b := eb.symm (loopPositiveHomotopyEquiv B 0 a)
   obtain ⟨s, hs⟩ := Quotient.mk_surjective b
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s = b at hs
-  let L := _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift p.right E.basepoint s
-  let M := _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift (pathEndpoint B).right (basedPathSpace B).basepoint
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s = b at hs
+  let L := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.chooseBoundaryLift p.right E.basepoint s
+  let M := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.chooseBoundaryLift (pathEndpoint B).right (basedPathSpace B).basepoint
     (LoopConnectingComparison.pathBaseSimplex p s)
-  let V := _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift
+  let V := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.chooseBoundaryLift
     (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace E).basepoint (LoopConnectingComparison.sourceLoop p s M)
-  have hb : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 1 (Iso.refl B.right)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) =
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace E).basepoint (LoopConnectingComparison.sourceLoop p s M)
+  have hb : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 1 (Iso.refl B.right)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s) =
       loopPositiveHomotopyEquiv B 0 a := by
     rw [hs]
     exact eb.apply_symm_apply _
-  have ha : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B).right)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint
+  have ha : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 0 (Iso.refl (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B).right)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint
         (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p))
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (LoopConnectingComparison.sourceLoop p s M)) = a := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (LoopConnectingComparison.sourceLoop p s M)) = a := by
     apply (loopPositiveHomotopyEquiv B 0).injective
     rw [LoopConnectingComparison.sourceLoop_positive, hb]
   have he := LoopConnectingComparison.pointedConnecting_zero_loop_representative p s M L V

@@ -27,10 +27,10 @@ def normalizedProbeStandardFrame : Complex A ⥤ (SimplexCategory ⥤ Complex A)
     (cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj
 
 def normalizedProbeStandardHom : (Complex A)ᵒᵖ ⥤ Complex A ⥤ SSet.{u} :=
-  (normalizedProbeStandardFrame A).op ⋙ cosimplicialHomBifunctor
+  (normalizedProbeStandardFrame A).op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 def normalizedProbeTensorHom : (Complex A)ᵒᵖ ⥤ Complex A ⥤ SSet.{u} :=
-  (normalizedProbeTensorFrame A).op ⋙ cosimplicialHomBifunctor
+  (normalizedProbeTensorFrame A).op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 def normalizedProbeCommonFrame : Complex A ⥤ (SimplexCategory ⥤ Complex A) := by
   let := projectiveModelCategory A
@@ -39,7 +39,7 @@ def normalizedProbeCommonFrame : Complex A ⥤ (SimplexCategory ⥤ Complex A) :
     (normalizedProbeTensorFrame A) (normalizedProbeTensorAugmentation A)
 
 def normalizedProbeHomMiddle : (Complex A)ᵒᵖ ⥤ Complex A ⥤ SSet.{u} :=
-  (normalizedProbeCommonFrame A).op ⋙ cosimplicialHomBifunctor
+  (normalizedProbeCommonFrame A).op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 def normalizedProbeHomFromStandard : normalizedProbeStandardHom A ⟶ normalizedProbeHomMiddle A := by
   let := projectiveModelCategory A

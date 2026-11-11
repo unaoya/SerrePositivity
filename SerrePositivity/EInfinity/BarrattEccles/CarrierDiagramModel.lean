@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.EvaluationFamily
 
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierDiagramSmallness
 public import SerrePositivity.HomotopicalAlgebra.Transfer.CellMap
@@ -52,7 +52,7 @@ lemma freeCells_acyclic :
     | @map X Y f hf =>
       have ht : trivialCofibrations (Complex A) f :=
         ((projectiveGeneratingTrivialCofibrations A).le_llp_rlp.trans
-          (ModelGeneration.trivialCofibrations_eq_generated (projectiveGeneratingCofibrations A)
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated (projectiveGeneratingCofibrations A)
             (projectiveGeneratingTrivialCofibrations A)).symm.le) _ hf
       have : Cofibration f := ⟨ht.1⟩
       have : WeakEquivalence f := ⟨ht.2⟩
@@ -77,7 +77,7 @@ lemma freeCells_acyclic :
 def projectiveModelCategory : ModelCategory (K ⥤ Complex A) := by
   let := SerrePositivity.EInfinity.projectiveModelCategory A
   have := projectiveModelCategory_cofibrantlyGenerated A
-  exact ModelGeneration.EvaluationFamily.modelCategory (free A K) (evaluation A K)
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCategory (free A K) (evaluation A K)
     (adjunction A K) (projectiveGeneratingCofibrations A)
       (projectiveGeneratingTrivialCofibrations A) (freeCells_acyclic A K)
 /-- 概要：図式の弱同値は頂点ごとの擬同型（Hovey §2.1・§2.3）。
@@ -108,12 +108,12 @@ lemma fibration_iff {F G : K ⥤ Complex A} (f : F ⟶ G) :
 使われ方：図式の関手的置換と写像空間。 -/
 lemma cofibrantlyGenerated :
     let := projectiveModelCategory A K
-    ModelGeneration.CofibrantlyGenerated.{u}
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
       (generators A K (projectiveGeneratingCofibrations A))
       (generators A K (projectiveGeneratingTrivialCofibrations A)) := by
   let := SerrePositivity.EInfinity.projectiveModelCategory A
   have := projectiveModelCategory_cofibrantlyGenerated A
-  exact ModelGeneration.EvaluationFamily.modelCategory_generated (free A K) (evaluation A K)
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCategory_generated (free A K) (evaluation A K)
     (adjunction A K) (projectiveGeneratingCofibrations A)
       (projectiveGeneratingTrivialCofibrations A) (freeCells_acyclic A K)
 /-- 概要：すべての複体図式は具体的な射影モデルで fibrant（Hovey §2.1・§2.3）。

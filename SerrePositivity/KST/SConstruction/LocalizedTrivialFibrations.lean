@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.TrivialFibrationEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction
 
 /-! # trivial Kan fibration の anodyne 局所化での可逆性
@@ -21,8 +21,8 @@ open scoped Simplicial
 規約：値域は任意の圏。使われ方：零段の射を一点への同値として使う。 -/
 lemma map_isIso_of_trivialKanFibration {D : Type v} [Category.{w} D]
     (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L)
-    {E B : SSet.{u}} (p : E ⟶ B) [TrivialKanFibration p] : IsIso (L.map p) :=
+    {E B : SSet.{u}} (p : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration p] : IsIso (L.map p) :=
   MonoRightLiftingContraction.image_isIso p
-    (fun _ _ i hi => TrivialKanFibration.mem (p := p) i hi) L hL
+    (fun _ _ i hi => _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := p) i hi) L hL
 
 end SerrePositivity.KST.SConstruction

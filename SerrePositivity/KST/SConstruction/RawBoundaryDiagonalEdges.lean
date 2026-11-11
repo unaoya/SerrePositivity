@@ -53,7 +53,7 @@ def rawBoundaryDiagonalTriangle (X : StableModel.{u})
     (iteratedSRealizationCoordinateIso 0 X).hom ≫ boundaryReductionQuotient 0 X
   δ_castSucc_castSucc_map := by
     have hq := (iteratedZeroColumn_boundary_zero 0 X).trans
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const (boundaryReducedRealization 0 X)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const (boundaryReducedRealization 0 X)
         ((iteratedSRealizationDiagram 0 X).obj (Opposite.op ⦋0⦌)))
     exact assemblyEdgeTriangle_face_zero (iteratedSRealizationDiagram 0 X)
       ((iteratedSRealizationCoordinateIso 0 X).hom ≫ boundaryReductionQuotient 0 X)

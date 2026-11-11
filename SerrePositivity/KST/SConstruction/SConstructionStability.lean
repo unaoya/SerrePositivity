@@ -20,19 +20,19 @@ open scoped Simplicial
 /-- 概要：S_n は安定な quasicategory を安定な quasicategory へ送る。
 方針：第一行制限で関手圏の安定性を源へ反映する。
 規約：n = 0 も含む。使われ方：S 構成の反復。 -/
-instance sConstruction_isStable (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
-    IsStable (sConstruction n C) :=
+instance sConstruction_isStable (n : ℕ) (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (sConstruction n C) :=
   isStable_of_trivialKanFibration (firstRowRestriction n C)
 
 /-- 概要：S 構成の任意の有限反復は安定な quasicategory。
 方針：反復の長さについて帰納する。
 規約：空リストは元の C。使われ方：多単体的 K 理論の各対象。 -/
 instance iteratedSConstruction_isStable (ns : List ℕ) (C : SSet.{u})
-    [Quasicategory C] [IsStable C] : IsStable (iteratedSConstruction ns C) := by
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (iteratedSConstruction ns C) := by
   induction ns with
-  | nil => exact inferInstanceAs (IsStable C)
+  | nil => exact inferInstanceAs (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C)
   | cons n ns ih =>
     let := ih
-    exact inferInstanceAs (IsStable (sConstruction n (iteratedSConstruction ns C)))
+    exact inferInstanceAs (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (sConstruction n (iteratedSConstruction ns C)))
 
 end SerrePositivity.KST.SConstruction

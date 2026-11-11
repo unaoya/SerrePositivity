@@ -50,12 +50,12 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   (hcof : HomotopicalAlgebra.cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
   (hfib : HomotopicalAlgebra.fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
   (P : SSet.{max u v}) {T : SSet.{v}} {X Y Z : D C}
-  (j : UniverseLift.obj.{max u v} T ⟶ P)
-  (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
-  (g : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C Y Z)
-  (c : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X Y)
-  (d : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P Y Z)
-  (e : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X Z)
+  (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+  (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
+  (g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C Y Z)
+  (c : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X Y)
+  (d : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P Y Z)
+  (e : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X Z)
 
 abbrev compositionParameterDiagram : (Over T)ᵒᵖ ⥤ SSet.{v} :=
   ComparisonTriangleParameterDiagram.diagram
@@ -88,10 +88,10 @@ lemma compositionParameterPoint_naturality {σ τ : (Over T)ᵒᵖ} (φ : σ ⟶
 
 def compositionParameterObjectIso (σ : (Over T)ᵒᵖ) :
     (compositionParameterDiagram hcof hfib P j f g c d e).obj σ ≅
-    compositionChoices hcof hfib P (UniverseLift.map σ.unop.hom ≫ j)
-      (UniverseLift.map σ.unop.hom ≫ f) (UniverseLift.map σ.unop.hom ≫ g)
-      (UniverseLift.map σ.unop.hom ≫ c) (UniverseLift.map σ.unop.hom ≫ d)
-      (UniverseLift.map σ.unop.hom ≫ e) :=
+    compositionChoices hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map σ.unop.hom ≫ j)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map σ.unop.hom ≫ f) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map σ.unop.hom ≫ g)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map σ.unop.hom ≫ c) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map σ.unop.hom ≫ d)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map σ.unop.hom ≫ e) :=
   eqToIso (congrArg (fun b => RelativeChoiceSpace.obj (SSet.horn 2 2).ι b)
     (ComparisonTriangleTransport.hornMap_post _ _ _ _ ((pre σ.unop.hom).app _)
       (compositeComparison_reindex hcof hfib P j f g e σ.unop.hom)

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentPathInsertion
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-! # 元の豊穣 Path 作用の全パラメータの合成円柱
 概要：元の豊穣関手の全 Path 作用を、切断点での実合成に結ぶ円柱を復号する。
@@ -23,13 +23,13 @@ variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
 /-- 切断点を挿入した全 Path を、前半と後半の全パラメータへ分割する。 -/
 def coherentPathCutSplit (hab : a ≤ b) (hbc : b ≤ c) :
     nerve (Path a c) ⟶ nerve (Path a b) ⊗ nerve (Path b c) :=
-  coherentPathInsertThrough hab hbc ≫ (Coherent.pathThroughIso a b c).inv
+  coherentPathInsertThrough hab hbc ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThroughIso a b c).inv
 
 /-- 分割後の元の Path 合成は、同じ切断点挿入を厳密に回収する。 -/
 lemma coherentPathCutSplit_comp (hab : a ≤ b) (hbc : b ≤ c) :
-    coherentPathCutSplit hab hbc ≫ Coherent.pathCompMap a b c =
+    coherentPathCutSplit hab hbc ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathCompMap a b c =
       nerveMap (coherentPathInsertFunctor hab hbc) := by
-  rw [← Coherent.pathThroughIso_hom_ι, coherentPathCutSplit,
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThroughIso_hom_ι, coherentPathCutSplit,
     Category.assoc, Iso.inv_hom_id_assoc, coherentPathInsertThrough_ι]
 
 /-- 挿入された Path の豊穣作用は、元の前半・後半の豊穣作用の実合成。 -/
@@ -51,7 +51,7 @@ def coherentPathMappingCutHomotopy
       (coherentPathCutSplit hab hbc ≫
         (s.map (.mk a) (.mk b) ⊗ₘ s.map (.mk b) (.mk c)) ≫
           eComp SSet (s.obj (.mk a)) (s.obj (.mk b)) (s.obj (.mk c))) := by
-  let H := functorHomotopyPostcomp (coherentPathInsertionHomotopy hab hbc)
+  let H := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (coherentPathInsertionHomotopy hab hbc)
     (s.map (.mk a) (.mk c))
   exact
     { h := H.h
@@ -63,10 +63,10 @@ def coherentPathMappingCutHomotopy
 lemma coherentPathMappingCutHomotopy_relative
     (s : EnrichedFunctor SSet.{u} (SimplicialThickening J) C)
     (hab : a ≤ b) (hbc : b ≤ c) :
-    ((Coherent.pathThrough (a := a) (c := c) b).ι ▷ (Δ[1] : SSet.{u})) ≫
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (a := a) (c := c) b).ι ▷ (Δ[1] : SSet.{u})) ≫
         (coherentPathMappingCutHomotopy s hab hbc).h =
-      fst (Coherent.pathThrough (a := a) (c := c) b : SSet.{u}) Δ[1] ≫
-        (Coherent.pathThrough b).ι ≫ s.map (.mk a) (.mk c) := by
+      fst (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (a := a) (c := c) b : SSet.{u}) Δ[1] ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough b).ι ≫ s.map (.mk a) (.mk c) := by
   change _ ≫ ((coherentPathInsertionHomotopy hab hbc).h ≫ s.map (.mk a) (.mk c)) = _
   rw [← Category.assoc, coherentPathInsertionHomotopy_relative, Category.assoc]
 
@@ -89,19 +89,19 @@ lemma coherentPathMappingCutHomotopy_reindex {K : Type u} [LinearOrder K]
 lemma coherentPathMappingCutHomotopy_vertex
     (s : EnrichedFunctor SSet.{u} (SimplicialThickening J) C)
     (hab : a ≤ b) (hbc : b ≤ c) (p : Path a c) :
-    (simplicialHomotopyVertexEdge (coherentPathMappingCutHomotopy s hab hbc)
-      (nerveVertex p)).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (coherentPathMappingCutHomotopy s hab hbc)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex p)).edge =
     ((nerve.edgeMk ((coherentPathInsertTransformation hab hbc).app p)).map
       (s.map (.mk a) (.mk c))).edge := by
   exact congrArg ((s.map (.mk a) (.mk c)).app (Opposite.op ⦋1⦌))
-    (ordinaryComparisonHomotopy_vertex (coherentPathInsertTransformation hab hbc) p)
+    (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.ordinaryComparisonHomotopy_vertex (coherentPathInsertTransformation hab hbc) p)
 
 /-- 元の端点 Path 上で全パラメータの円柱が返す辺は、指定した元の三角形の辺。 -/
 lemma coherentPathMappingCutHomotopy_endpoint_edge
     (s : EnrichedFunctor SSet.{u} (SimplicialThickening J) C)
     (hab : a ≤ b) (hbc : b ≤ c) :
-    (simplicialHomotopyVertexEdge (coherentPathMappingCutHomotopy s hab hbc)
-      (nerveVertex (coherentEndpointPath (hab.trans hbc)))).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (coherentPathMappingCutHomotopy s hab hbc)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (coherentEndpointPath (hab.trans hbc)))).edge =
     ((nerve.edgeMk (coherentEndpointPathToComposite hab hbc)).map
       (s.map (.mk a) (.mk c))).edge := by
   exact congrArg ((s.map (.mk a) (.mk c)).app (Opposite.op ⦋1⦌))

@@ -20,10 +20,10 @@ namespace SerrePositivity.EInfinity.Hammock.FreeQuiverCover
 open CategoryTheory
 
 variable {Q : Type u} [Quiver.{v} Q] (A : Q) (Y : Paths Q)
-  (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ positiveEvaluation.obj Y)
+  (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj Y)
 
-def fiberValueDiagramIso : fiberGraphDiagram A Y β ≅
-    SimplicialLabelledColimit.fiberDiagram (graphValueLabels A Y) β :=
+def fiberValueDiagramIso : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.fiberGraphDiagram A Y β ≅
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SimplicialLabelledDiagram.fiberDiagram (graphValueLabels A Y) β :=
   NatIso.ofComponents (fiberGraphIso A Y β) (by
     intro a b f
     apply NatTrans.ext
@@ -33,9 +33,9 @@ def fiberValueDiagramIso : fiberGraphDiagram A Y β ≅
     apply Subtype.ext
     rfl)
 
-lemma fiberValueDiagramIso_hom_inclusion (w : Word) :
+lemma fiberValueDiagramIso_hom_inclusion (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     (fiberValueDiagramIso A Y β).hom.app w ≫
-      SimplicialValueFiber.inclusion (graphValue A Y w) β =
-        nerveMap (zigzagValueProperty A w Y β).ι := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SimplicialValueFiber.inclusion (graphValue A Y w) β =
+        nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.zigzagValueProperty A w Y β).ι := rfl
 
 end SerrePositivity.EInfinity.Hammock.FreeQuiverCover

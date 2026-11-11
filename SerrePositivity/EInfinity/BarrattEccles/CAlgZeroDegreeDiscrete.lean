@@ -26,9 +26,9 @@ variable (A : Type u) [CommRing A]
 
 def cAlgZeroDegreeDiscreteIso (B : (operad A).Algebra)
     [B.carrier.IsLE 0] [B.carrier.IsGE 0] :
-    VertexIso (cAlgVertex A B)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (cAlgVertex A B)
       ((discreteCAlgEmbedding A).app (Opposite.op ⦋0⦌)
-        (nerveVertex (zeroDegreeDiscreteAlgebra A B))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (zeroDegreeDiscreteAlgebra A B))) :=
   (cAlgVertexIsoOfQuasiIso A (connectiveCoverInclusion A B)
     (connectiveCoverInclusion_quasiIso A B)).symm ≪≫
       cAlgVertexIsoOfQuasiIso A (zeroDegreeDiscreteComparison A B)

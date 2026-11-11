@@ -15,8 +15,8 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 同じ相対 S との比較により、包含側の元の W 列対角の一点射は局所化同型。 -/
 theorem weakStringKernelDiagonal_toPoint_localized_isIso
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
     IsIso (AnodyneHomotopy.anodyneQ.map (terminal.from
       (simplicialDiagonalFunctor.obj (weakStringMultiRealization (i ≫ q : A ⟶ C) 1)))) := by
   have hc := relativeSWeakStringMultiComparison_localized_isIso (i ≫ q : A ⟶ C)

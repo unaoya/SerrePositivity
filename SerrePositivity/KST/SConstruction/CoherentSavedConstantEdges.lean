@@ -21,21 +21,21 @@ variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
 
 /-- 元の同じ恒等合成三角形を、元の通常の恒等射の辺を用いる表示へ移す。 -/
 def coherentNerveUnitCompStruct {X Y : C} (f : X ⟶ Y) :
-    SSet.Edge.CompStruct (coherentNerveEdge (𝟙 X)) (coherentNerveEdge f) (coherentNerveEdge f) :=
-  (SSet.Edge.CompStruct.idComp (coherentNerveEdge f)).ofEq
-    (congrArg SSet.Edge.edge (coherentNerveEdge_id X).symm) rfl rfl
+    SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) :=
+  (SSet.Edge.CompStruct.idComp (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f)).ofEq
+    (congrArg SSet.Edge.edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_id X).symm) rfl rfl
 
 /-- 表示を移しても元の恒等面の全二単体を変更しない。 -/
 lemma coherentNerveUnitCompStruct_simplex {X Y : C} (f : X ⟶ Y) :
     (coherentNerveUnitCompStruct f).simplex =
-      (SSet.Edge.CompStruct.idComp (coherentNerveEdge f)).simplex := rfl
+      (SSet.Edge.CompStruct.idComp (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f)).simplex := rfl
 
 /-- 元の標準合成面から復号した比較辺全体は、元の合成射の頂点の恒等辺。 -/
 lemma coherentNerveCompStruct_decoded_edge {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) :
-    (coherentTriangleMappingEdge f g (f ≫ g) (coherentNerveCompStruct f g)).edge =
+    (coherentTriangleMappingEdge f g (f ≫ g) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct f g)).edge =
       (SSet.Edge.id (SimplicialCategory.homEquiv' X Z (f ≫ g))).edge :=
   eq_of_heq ((coherentTriangleCompositionEdge_heq f g (f ≫ g)
-    (coherentNerveCompStruct f g)).symm.trans (coherentNerveCompStruct_comparison_edge_heq f g))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct f g)).symm.trans (coherentNerveCompStruct_comparison_edge_heq f g))
 
 /-- 元の恒等合成面の復号辺全体も、元の同じ通常射の頂点の恒等辺。 -/
 lemma coherentNerveUnitCompStruct_decoded_edge {X Y : C} (f : X ⟶ Y) :
@@ -52,13 +52,13 @@ lemma simplicialHom_identityEdges_comp {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) :
       ((SSet.Edge.id (SimplicialCategory.homEquiv' X Y f)).edge,
         (SSet.Edge.id (SimplicialCategory.homEquiv' Y Z g)).edge) =
       (SSet.Edge.id (SimplicialCategory.homEquiv' X Z (f ≫ g))).edge := by
-  have hf : PinchedHom.constant (SimplicialCategory.homEquiv' X Y f) 1 =
-      (SSet.Edge.id (SimplicialCategory.homEquiv' X Y f)).edge := pinchedConstant_one _
-  have hg : PinchedHom.constant (SimplicialCategory.homEquiv' Y Z g) 1 =
-      (SSet.Edge.id (SimplicialCategory.homEquiv' Y Z g)).edge := pinchedConstant_one _
-  have hfg : PinchedHom.constant (SimplicialCategory.homEquiv' X Z (f ≫ g)) 1 =
-      (SSet.Edge.id (SimplicialCategory.homEquiv' X Z (f ≫ g))).edge := pinchedConstant_one _
-  have ht := simplicialHom_constant_comp f g 1
+  have hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' X Y f) 1 =
+      (SSet.Edge.id (SimplicialCategory.homEquiv' X Y f)).edge := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one _
+  have hg : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' Y Z g) 1 =
+      (SSet.Edge.id (SimplicialCategory.homEquiv' Y Z g)).edge := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one _
+  have hfg : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' X Z (f ≫ g)) 1 =
+      (SSet.Edge.id (SimplicialCategory.homEquiv' X Z (f ≫ g))).edge := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one _
+  have ht := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialHom_constant_comp f g 1
   rw [hf, hg, hfg] at ht
   exact ht
 

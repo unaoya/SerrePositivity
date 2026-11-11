@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：sd⊣Ex の Hom 同値を合成し、単位の自然性を使う。
 規約：Moss 2020 Proposition 21 の有限段階の充填の随伴による表示。
 使われ方：二重細分の horn の境界条件を二回の Ex の単位へ移す。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Spectra.PointedEnrichment
-public import SerrePositivity.InfinityCategories.Coherent.Quasicategory
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNerveMaps
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Quasicategory
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictNerveMaps
 public import SerrePositivity.KST.Spectra.PointedKanReplacement
 
 /-! # 点つき Kan 複体の豊穣圏と coherent な図式
@@ -45,14 +45,14 @@ lemma pointedKanObject_hom_eq (X Y : PointedKanObject.{u}) :
 /-- 豊穣 Hom は基点固定写像空間の Kan 性によって Kan。 -/
 instance pointedKanObject_sHom_kanComplex (X Y : PointedKanObject.{u}) :
     KanComplex (SimplicialCategory.sHom X Y) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex X.obj Y.obj
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex X.obj Y.obj
 
 /-- 点つき Kan 複体の coherent nerve。 -/
 def PointedKanInfinity : SSet.{u + 1} := SimplicialNerve PointedKanObject.{u}
 
 /-- 点つき Kan 複体の coherent nerve は追加仮定なしに ∞ 圏。 -/
 instance pointedKanInfinity_quasicategory : Quasicategory PointedKanInfinity.{u} :=
-  Coherent.simplicialNerve_quasicategory PointedKanObject.{u}
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialNerve_quasicategory PointedKanObject.{u}
 
 /-- Kan 値の点つき図式を、同じ対象・射のまま全部分圏へ束ねる。 -/
 def pointedKanDiagram {I : Type u} [SmallCategory I] (F : I ⥤ PointedSimplicialSet.{u})
@@ -68,7 +68,7 @@ lemma pointedKanDiagram_forget {I : Type u} [SmallCategory I]
 def pointedKanCoherentDiagram {I : Type u} [SmallCategory I]
     (F : I ⥤ PointedSimplicialSet.{u}) (hF : ∀ i, KanComplex (F.obj i).right) :
     (SSet.uliftFunctor.{u + 1, u}).obj (nerve I) ⟶ PointedKanInfinity.{u} :=
-  HomotopyLimits.strictCoherentDiagram (pointedKanDiagram F hF)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (pointedKanDiagram F hF)
 
 /-- 点つき Kan 置換は全部分圏に値を持つ通常の関手。 -/
 def pointedKanReplacementObjectFunctor : PointedSimplicialSet.{u} ⥤ PointedKanObject.{u} :=

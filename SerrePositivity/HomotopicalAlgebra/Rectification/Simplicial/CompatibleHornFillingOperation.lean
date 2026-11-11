@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.CompatibleInputUnion
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeHornFillingOperation
 
 /-!
@@ -48,14 +48,14 @@ variable (K : SSet.{v}) {n : ℕ} (i : Fin (n + 2))
   {J : Type u} (S : J → SSet.{v})
   (b : ∀ j, S j ⟶ (ihom (SSet.horn (n + 1) i).toSSet).obj K)
   (a : ∀ j, S j ⟶ (ihom (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))).obj K)
-  (h : CompatibleInputUnion.Compatible S b a)
+  (h : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.Compatible S b a)
   (ha : ∀ j, a j ≫ KanHornFamilyLifting.restriction K i = b j)
 
-abbrev inputs := CompatibleInputUnion.inputs S b
+abbrev inputs := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.inputs S b
 
 abbrev section_ := RelativeHornFillingOperation.section_ K i hK (inputs K i S b).ι
-  (CompatibleInputUnion.lift S b a h)
-  (CompatibleInputUnion.lift_over S b a h (KanHornFamilyLifting.restriction K i) ha)
+  (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.lift S b a h)
+  (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.lift_over S b a h (KanHornFamilyLifting.restriction K i) ha)
 
 lemma section_restriction : section_ K i hK S b a h ha ≫
     KanHornFamilyLifting.restriction K i = 𝟙 _ :=
@@ -63,11 +63,11 @@ lemma section_restriction : section_ K i hK S b a h ha ≫
 
 lemma section_prescribed (j : J) : b j ≫ section_ K i hK S b a h ha = a j := by
   calc
-    _ = (CompatibleInputUnion.toInputs S b j ≫ (inputs K i S b).ι) ≫
-        section_ K i hK S b a h ha := by rw [CompatibleInputUnion.toInputs_inclusion]
-    _ = CompatibleInputUnion.toInputs S b j ≫ CompatibleInputUnion.lift S b a h := by
+    _ = (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.toInputs S b j ≫ (inputs K i S b).ι) ≫
+        section_ K i hK S b a h ha := by rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.toInputs_inclusion]
+    _ = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.toInputs S b j ≫ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.lift S b a h := by
       rw [Category.assoc, RelativeHornFillingOperation.section_prescribed]
-    _ = _ := CompatibleInputUnion.toInputs_lift S b a h j
+    _ = _ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.toInputs_lift S b a h j
 
 variable {L : SSet.{v}} (boundary : L ⟶ (ihom (SSet.horn (n + 1) i).toSSet).obj K)
 

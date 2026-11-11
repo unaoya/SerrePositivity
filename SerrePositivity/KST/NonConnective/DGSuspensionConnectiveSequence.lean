@@ -32,18 +32,18 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
     (stableCategoryModel (dgKInputStableValue R (dgSuspensionIteration R s A n)))
     (stableCategoryModel (dgKInputStableValue R (dgKappaResolvedKernelKInput R
       (dgSuspensionIteration R s A n) (dgSuspensionIterationStage R s A n).cone))))
-  (hz : ∀ n, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R
+  (hz : ∀ n, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (dgKInputStableValue R
     (LocalizingInvariants.dgFixedNullInput R (dgKappaResolvedKernelKInput R
       (dgSuspensionIteration R s A n) (dgSuspensionIterationStage R s A n).cone))))
 
 /-- 各段の指定 Perf 同値・零所属・実零角に条件付きの、元の固定 K からの同じ実構造辺。 -/
 def dgSuspensionConnectiveStructureEdge (n : ℕ) :
-    SSet.Edge (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
+    SSet.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
       (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1))))) :=
-  (coherentNerveEdge (dgKappaResolvedConnectiveStructureMap R (dgSuspensionIteration R s A n)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1))))) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaResolvedConnectiveStructureMap R (dgSuspensionIteration R s A n)
     (dgSuspensionIterationStage R s A n).cone (e n) (Z n) (hz n))).ofEq rfl
-      (coherentNerveVertex_object _)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object _)
 
 /-- 各段の指定 Perf 同値・零所属・実零角に条件付きの、同じ実構造射を持つ厳密 BF 列。 -/
 def dgSuspensionConnectiveSequence : SpectrumSequence.{max (u + 1) v} :=
@@ -51,7 +51,7 @@ def dgSuspensionConnectiveSequence : SpectrumSequence.{max (u + 1) v} :=
 
 /-- 各段の指定 Perf 同値・零所属・実零角に条件付きで、同じ列の隣接辺は元の loop 反復辺。 -/
 theorem dgSuspensionConnectiveSequence_map_succ_edge (n : ℕ) :
-    (coherentNerveEdge ((dgSuspensionConnectiveSequence R s A Z e hz).map
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((dgSuspensionConnectiveSequence R s A Z e hz).map
       (homOfLE (X := SequentialIndex.{max (u + 1) v}) (Nat.le_succ n)))).edge =
         (dgSuspensionNativeSequenceEdge R s A
           (dgSuspensionConnectiveStructureEdge R s A Z e hz) n).edge := by
@@ -68,13 +68,13 @@ def dgSuspensionConnectiveCandidateCocone :=
 
 /-- 各段の指定 Perf 同値・零所属・実零角に条件付きで、元の実 Sp 余錐は全写像空間で余極限。 -/
 theorem dgSuspensionConnectiveCandidateCocone_isColimit :
-    IsColimitCone (dgSuspensionConnectiveCandidateCocone R s A Z e hz) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (dgSuspensionConnectiveCandidateCocone R s A Z e hz) :=
   sequentialCandidateColimitCocone_isColimit (dgSuspensionConnectiveSequence R s A Z e hz)
 
 /-- 各段の指定 Perf 同値・零所属・実零角に条件付きで、同じ余錐の頂点は元の BF 候補。 -/
 theorem dgSuspensionConnectiveCandidateCocone_vertex :
     (dgSuspensionConnectiveCandidateCocone R s A Z e hz).vertex =
-      coherentNerveVertex (dgSuspensionConnectiveCandidate R s A Z e hz) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgSuspensionConnectiveCandidate R s A Z e hz) :=
   sequentialCandidateColimitCocone_vertex (dgSuspensionConnectiveSequence R s A Z e hz)
 
 end SerrePositivity.KST.NonConnective

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamilyNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FiberTransportFamilyNaturality
 
 /-!
 概要：元の輸送の初期値制限後の実一点 prism を、元の全初期値の同じ実制限へ戻す。

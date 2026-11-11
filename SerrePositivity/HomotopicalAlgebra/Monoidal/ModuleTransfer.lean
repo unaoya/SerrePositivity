@@ -22,7 +22,7 @@ open SerrePositivity.Quillen SerrePositivity.ModelGeneration
 namespace SerrePositivity.MonoidalModelTransfer
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [BraidedCategory C]
   [MonoidalClosed C] [HasColimitsOfSize.{w, w} C] [ModelCategory C] [HasMonoidAxiom.{w} C]
-  (M : C) [MonObj M] (I J : MorphismProperty C) [CofibrantlyGenerated.{w} I J]
+  (M : C) [MonObj M] (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 include I in
 /-- Free-module relative J-cells are weak equivalences after forgetting.
@@ -32,7 +32,7 @@ lemma freeModule_cells_acyclic :
       (weakEquivalences C).inverseImage (Mod.forget M) := by
   let : PreservesColimitsOfSize.{w, w} (Mod.forget (D := C) M) := {}
   have hgen : J ≤ trivialCofibrations C :=
-    J.le_llp_rlp.trans (trivialCofibrations_eq_generated I J).symm.le
+    J.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated I J).symm.le
   have hmap : J.strictMap (MonoidalFreeModule.freeFunctor M) ≤
       (tensorRightImages J).inverseImage (Mod.forget M) := by
     intro A B f hf

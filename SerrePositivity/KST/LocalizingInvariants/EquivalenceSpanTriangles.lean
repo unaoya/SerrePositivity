@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.InitialHornProductBoundary
-public import SerrePositivity.InfinityCategories.Core.EquivalencePathReplacement
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.InitialHornProductBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePathReplacement
 
 /-!
 概要：左脚が同値である span の除算三角形を、全境界を固定して補完できる。
@@ -22,14 +22,14 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 def IsEquivalenceSpanVertex {X : SSet.{u}}
     (v : ((ihom (horn 2 0 : SSet.{u})).obj X) _⦋0⦌) : Prop :=
-  IsEquivalencePathVertex (((pre horn₂₀.ι₀₁).app X).app (Opposite.op ⦋0⦌) v)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsEquivalencePathVertex (((pre horn₂₀.ι₀₁).app X).app (Opposite.op ⦋0⦌) v)
 
 def equivalenceSpans (X : SSet.{u}) : SSet.{u} :=
-  (fullSubcomplexOnVertices _ (IsEquivalenceSpanVertex (X := X)) : SSet.{u})
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (IsEquivalenceSpanVertex (X := X)) : SSet.{u})
 
 def equivalenceSpanInclusion (X : SSet.{u}) :
     equivalenceSpans X ⟶ (ihom (horn 2 0 : SSet.{u})).obj X :=
-  (fullSubcomplexOnVertices _ IsEquivalenceSpanVertex).ι
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsEquivalenceSpanVertex).ι
 
 def equivalenceSpanTriangles (X : SSet.{u}) : SSet.{u} :=
   pullback ((pre (horn 2 0).ι).app X) (equivalenceSpanInclusion X)
@@ -39,31 +39,31 @@ def equivalenceSpanTriangleProjection (X : SSet.{u}) :
 
 lemma equivalenceSpan_firstEdge {X : SSet.{u}} [Quasicategory X] {A : SSet.{u}}
     (b : A ⟶ equivalenceSpans X) (x : A _⦋0⦌) :
-    IsInvertibleEdge (edgeOfSimplex
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex
       ((uncurry (b ≫ equivalenceSpanInclusion X)).app (Opposite.op ⦋1⦌)
-        (initialHornEdge 0, PinchedHom.constant x 1))) := by
-  have h := fullSubcomplexOnVertices_vertex (b.app (Opposite.op ⦋0⦌) x)
-  change IsEquivalencePathVertex
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.initialHornEdge 0, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 1))) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (b.app (Opposite.op ⦋0⦌) x)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsEquivalencePathVertex
     (((b ≫ equivalenceSpanInclusion X) ≫ (pre horn₂₀.ι₀₁).app X).app (Opposite.op ⦋0⦌) x) at h
   rw [← curry_uncurry (b ≫ equivalenceSpanInclusion X), curry_pre_app] at h
-  change IsInvertibleEdge (edgeOfSimplex (intervalFunctorVertexEdge _)) at h
-  rw [intervalFunctorVertexEdge_curry] at h
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge _)) at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge_curry] at h
   have he : horn₂₀.ι₀₁.app (Opposite.op ⦋1⦌)
-      (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u}))) = initialHornEdge 0 := by
+      (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u}))) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.initialHornEdge 0 := by
     apply Subtype.ext
     apply stdSimplex.ext
     intro i
     fin_cases i <;> rfl
-  change IsInvertibleEdge (edgeOfSimplex
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex
     ((uncurry (b ≫ equivalenceSpanInclusion X)).app (Opposite.op ⦋1⦌)
       (horn₂₀.ι₀₁.app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u}))),
-        PinchedHom.constant x 1))) at h
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 1))) at h
   rw [he] at h
   exact h
 
 instance equivalenceSpanTriangleProjection_trivialKanFibration (X : SSet.{u})
-    [Quasicategory X] : TrivialKanFibration (equivalenceSpanTriangleProjection X) := by
-  apply (trivialKanFibration_iff_boundary _).mpr
+    [Quasicategory X] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (equivalenceSpanTriangleProjection X) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).mpr
   intro n
   constructor
   intro a b sq
@@ -80,7 +80,7 @@ instance equivalenceSpanTriangleProjection_trivialKanFibration (X : SSet.{u})
     have h := congrArg uncurry hc
     rw [uncurry_pre_app, uncurry_natural_left] at h
     exact h
-  obtain ⟨F, hFb, hFh⟩ := initialHornProduct_fill_boundary 0 n (uncurry A) (uncurry B) hw
+  obtain ⟨F, hFb, hFh⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.initialHornProduct_fill_boundary 0 n (uncurry A) (uncurry B) hw
     (equivalenceSpan_firstEdge b (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))))
   have hf : curry F ≫ r = B := by
     apply uncurry_injective

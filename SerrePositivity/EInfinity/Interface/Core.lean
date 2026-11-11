@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.DiscreteEmbedding
-public import SerrePositivity.InfinityCategories.Derived.Homology
-public import SerrePositivity.InfinityCategories.Core.EquivalenceLimits
-public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteEmbedding
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.EquivalenceLimits
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorHomotopy
 
 /-!
 # E∞ 代数の準圏と忘却の中核
@@ -44,16 +44,16 @@ abbrev atVertex {X Y : SSet.{u}} (F : X ⟶ Y) (x : X _⦋0⦌) : Y _⦋0⦌ :=
 structure EInfinityCore where
   CAlg (S : Type u) [CommRing S] : SSet.{u+1}
   quasicategory (S : Type u) [CommRing S] : Quasicategory (CAlg S)
-  forget (S : Type u) [CommRing S] : CAlg S ⟶ derivedInfinityCategory S
+  forget (S : Type u) [CommRing S] : CAlg S ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S
   forget_preservesLimits (S : Type u) [CommRing S]
-      {K : SSet.{u+1}} {F : K ⟶ CAlg S} (c : JoinCone F) :
-      IsLimitCone c → IsLimitCone (mapJoinCone (forget S) c)
+      {K : SSet.{u+1}} {F : K ⟶ CAlg S} (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone F) :
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone (forget S) c)
   discrete (S : Type u) [CommRing S] : nerve (RingAlgebra S) ⟶ CAlg S
   discrete_forget (S : Type u) [CommRing S] :
-    FunctorIso (discrete S ≫ forget S) (discreteEmbedding S)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (discrete S ≫ forget S) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbedding S)
   discrete_recognition (S : Type u) [CommRing S] (x : (CAlg S) _⦋0⦌) :
-    (∀ i : ℤ, i ≠ 0 → IsZero (derivedInfinityHomology S i (atVertex (forget S) x))) ↔
-    ∃ B : RingAlgebra S, Nonempty (VertexIso x (atVertex (discrete S) (nerveVertex B)))
+    (∀ i : ℤ, i ≠ 0 → IsZero (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology S i (atVertex (forget S) x))) ↔
+    ∃ B : RingAlgebra S, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x (atVertex (discrete S) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)))
 
 attribute [instance] EInfinityCore.quasicategory
 

@@ -48,7 +48,7 @@ lemma simplexSubsetSplitLambdaCell_one_face {n : ℕ} (I : Finset (Fin (n + 1)))
         (necklaceWedgeBeadRefinementFace.{u} ((I.filter (· ≤ j)).card - 1)
           ((I.filter (j ≤ ·)).card - 1) (by omega) (by omega)) ≫
       (serreConcreteCubeComplexFunctor A).map
-        (concreteCubeDimensionIso (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single k).dimension)
+        (concreteCubeDimensionIso (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single k).dimension)
           (simplexSubsetSplit_length I j hj hL hR))).hom ≫
         necklaceLambdaCell A (necklaceInSimplexSubset I hI) =
       necklaceLambdaCell A (necklaceInSimplexSubsetSplit I hI j hj hL hR) := by

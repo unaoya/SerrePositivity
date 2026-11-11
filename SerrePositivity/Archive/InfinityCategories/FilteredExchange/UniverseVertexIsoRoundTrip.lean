@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.UniverseHomotopyFaithful
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerUnit
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.UniverseHomotopyFaithful
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerUnit
 
 /-!
 概要：指定頂点同型を宇宙下降して持ち上げ直すと、元の指定値を回収する。

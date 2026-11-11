@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitLowerCompositeVertices
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitLowerTransportVertices
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTriangleConstantTargetValue
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryIsoPresentation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeFunctorCurryIsoPresentation
 
 /-!
 概要：下面の指定族比較の値への像を、同じ下面の全空間作用の比較へ移す。

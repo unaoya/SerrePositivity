@@ -20,20 +20,20 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-    (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
+    (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)
-  (hfull : L ≫ evaluateFunctorAt
-    (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+  (hfull : L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+    (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
       verdierLowerReconstructionCompositeFamily d Δ[1])
 
 variable
   (H : SSet.Homotopy
     ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0))
-    (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))
+    (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))
       (verdierNativeCompositePoint d 1)))
-  (T : FunctorCompositionTriangle (verdierReadoutUpperComparison d)
+  (T : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle (verdierReadoutUpperComparison d)
     (verdierLowerNativeReadoutHomotopy d L hL) H)
   (hT : T.diagram ≫ (pre verdierReadoutPathBoundary.{u}).app _ =
     curry (verdierReadoutBoundaryDiagram d L hL hfull))
@@ -41,14 +41,14 @@ include hT
 
 
 variable
-  (hUpper : familyAtVertex
+  (hUpper : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex
     (verdierMovingUpperFamily d (verdierReadoutMovingLongInput d L hL hfull H T hT))
     (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       SSet.yonedaEquiv.symm (verdierMovingUpperLastTriangle d).simplex)
-  (hLower : familyAtVertex
+  (hLower : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex
     (verdierLowerCanonicalFamily d (verdierLowerCanonicalReadout d L hfull))
     (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-      SSet.yonedaEquiv.symm (coherentSimplexMaximalization (verdierFullSLowerSimplex d)))
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexMaximalization (verdierFullSLowerSimplex d)))
 
 include hUpper hLower
 
@@ -57,13 +57,13 @@ include hUpper hLower
 規約：hUpper・hLower に条件付き。境界の一致だけで二胞体を代用しない。
 使われ方：有限二胞体の実照合供給後の全四角形回収。 -/
 theorem verdierMovingCanonicalSquareFamily_last_kernel :
-    familyAtVertex (verdierMovingCanonicalSquareFamily d L hL hfull H T hT)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingCanonicalSquareFamily d L hL hfull H T hT)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       quotientSKernelFullInfinitySquare d.isVerdier := by
-  apply square_isPushout.hom_ext
-  · rw [← familyAtVertex_precomp, verdierMovingCanonicalSquareFamily_upper]
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.square_isPushout.hom_ext
+  · rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex_precomp, verdierMovingCanonicalSquareFamily_upper]
     exact hUpper.trans (verdierMovingUpperLastTriangle_kernel d)
-  · rw [← familyAtVertex_precomp, verdierMovingCanonicalSquareFamily_lower]
+  · rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex_precomp, verdierMovingCanonicalSquareFamily_lower]
     exact hLower.trans (quotientSKernelFullInfinitySquare_lower_maximalization d).symm
 
 /-- 概要：指定終端照合と元の商の正段比較から、同じ四角柱の始端が引き戻し。
@@ -73,13 +73,13 @@ theorem verdierMovingCanonicalSquareFamily_last_kernel :
 theorem verdierMovingCanonicalSquareFamily_first_isPullback_of_positive_stages
     (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
       (relativeSQuotientMap d.projection (n + 1)))) :
-    IsPullbackSquare (familyAtVertex (verdierMovingCanonicalSquareFamily d L hL hfull H T hT)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingCanonicalSquareFamily d L hL hfull H T hT)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
   have hp := (quotientSKernelFullInfinitySquare_isPullback_iff d.isVerdier).mp
     (quotientSKernelInfinitySquare_isPullback_of_positive_stages
       d.inclusion d.projection d.isVerdier hq)
   have he := verdierMovingCanonicalSquareFamily_last_kernel d L hL hfull H T hT hUpper hLower
-  have hp' : IsPullbackSquare (familyAtVertex
+  have hp' : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex
       (verdierMovingCanonicalSquareFamily d L hL hfull H T hT)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := he.symm ▸ hp
   exact hp'.of_functorIso (verdierMovingCanonicalSquareEndpointIso d L hL hfull H T hT).symm

@@ -22,7 +22,7 @@ open scoped Simplicial
 /-- 元の prism の辺を元の射影で前合成した、単射な源からの指定適合辺。 -/
 def monicKPrismCompatibilityEdge {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {i j : I} (f : i ⟶ j) :
-    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((monicKKanSequence (F.obj i)).level r).space)
+    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((monicKKanSequence (F.obj i)).level r).space)
       ((kKanSequence (F.obj j)).level (r + 1)).space).right.Edge
       (familyVertex ((monicKKanSequence (F.obj i)).sigma r ≫
         monicKToRawLevelMap (F.map f) (r + 1)))
@@ -43,7 +43,7 @@ def monicKPrismCompatibilityHomotopy {I : Type u} [SmallCategory I]
 /-- 源を元の単射置換へ移しても、全時刻で元の基点を固定する。 -/
 lemma monicKPrismCompatibilityHomotopy_base {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {i j : I} (f : i ⟶ j) :
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((monicKKanSequence (F.obj i)).level r).space).hom ▷ (Δ[1] : SSet.{u}) ≫
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((monicKKanSequence (F.obj i)).level r).space).hom ▷ (Δ[1] : SSet.{u}) ≫
       (monicKPrismCompatibilityHomotopy r F f).h =
         toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫
           ((kKanSequence (F.obj j)).level (r + 1)).space.hom :=

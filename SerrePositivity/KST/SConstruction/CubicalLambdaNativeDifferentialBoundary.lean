@@ -21,13 +21,13 @@ lemma cubicalLambdaNativeSimplexData_differential_uniform_faces {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D)
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (h3 : 3 ≤ I.card) :
     differential A ((cubicalLambdaNativeSimplexData A F).hom I
-        (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+        (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
         (2 - (I.card : ℤ)) hI rfl rfl rfl) =
       ∑ i : Fin (I.card - 2), ((i.val : ℤ) + 1).negOnePow •
         (simplexSubsetUniformFaceTopImage A false F I hI h3 i -
           simplexSubsetUniformFaceTopImage A true F I hI h3 i) := by
-  let a := _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-  let b := _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+  let a := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+  let b := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
   let H := homObject A D (F.obj a) (F.obj b)
   let N := I.card - 3
   let k : ℤ := 2 - (I.card : ℤ)
@@ -36,13 +36,13 @@ lemma cubicalLambdaNativeSimplexData_differential_uniform_faces {n : ℕ}
   have ht : -(N : ℤ) = k + 1 := by dsimp [N, k]; omega
   have hc : -((I.card - 2 : ℕ) : ℤ) = k := by dsimp [k]; omega
   let s := (serreConcreteCubeComplexFunctor A).map
-    (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2))
-      (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (N + 1)) hd).inv
+    (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2))
+      (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (N + 1)) hd).inv
   let f := simplexSubsetLambdaCell A I hI
   let g := F.map a b
   let t := (s ≫ f) ≫ g
   have hC : (cubicalLambdaNativeSimplexData A F).hom I
-      (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+      (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
       k hI rfl rfl rfl =
       eqToHom (congrArg H.X hk) (serreCubeTopCellImage A H (N + 1) t) :=
     (cubicalLambdaNativeSimplexData_hom_normalized A F I _ _ k hI rfl rfl rfl).trans
@@ -53,7 +53,7 @@ lemma cubicalLambdaNativeSimplexData_differential_uniform_faces {n : ℕ}
       eqToHom (congrArg H.X ht)
         (serreCubeTopCellImage A H N ((serreCubeFace A true N i).hom ≫ t)))
   have hD : differential A ((cubicalLambdaNativeSimplexData A F).hom I
-      (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+      (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
       k hI rfl rfl rfl) = ∑ i, B i :=
     (congrArg (fun w => H.d k (k + 1) w) hC).trans
       (serreCubeTopCellImage_cast_d A H N k hk ht t)

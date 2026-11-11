@@ -41,14 +41,14 @@ theorem coefficientDifferential_exists_preimage_of_isZero
       (Additive.ofMul (coefficientDifferential K Y (n + 1) r z s)) = 0
     rw [hz]
     exact map_zero _
-  have hδ : _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K N (n + 2) za = 0 := by
+  have hδ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K N (n + 2) za = 0 := by
     have hm : za ∈ (positiveAdditiveCoefficientDifferential K Y (n + 1) r).ker := hzpos
     rw [positiveAdditiveCoefficientDifferential_ker] at hm
     exact hm
   let zz : K.nonDegenerate (n + 2) → M := fun s ↦ e (za s)
-  have hδ' : _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K M (n + 2) zz = 0 := by
+  have hδ' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K M (n + 2) zz = 0 := by
     funext s
-    change _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K M (n + 2) (fun t ↦ e (za t)) s = 0
+    change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K M (n + 2) (fun t ↦ e (za t)) s = 0
     exact (NormalizedValueCochains.differential_map K (M := N) (N := M)
       e.toAddMonoidHom (n + 2) za s).trans (by
         rw [congrFun hδ s]

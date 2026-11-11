@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LengthZero
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LengthZero
 public import SerrePositivity.EInfinity.Hammock.WeakStageSuccessor
 
 /-!
@@ -21,23 +21,23 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory
 open SerrePositivity.InfinityCategories
 
-variable {F G : Word ⥤ SSet.{w}} (η : F ⟶ G)
+variable {F G : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SSet.{w}} (η : F ⟶ G)
 
-lemma weakLengthStageMap_zero (hη : IsWeakHomotopyEquivalence (η.app Word.empty)) :
-    IsWeakHomotopyEquivalence (lengthStageMap η 0) := by
-  have hF := (isPrecompositionEquivalence_of_iso (lengthZeroIso F).symm)
-  have hG := (isPrecompositionEquivalence_of_iso (lengthZeroIso G).symm)
+lemma weakLengthStageMap_zero (hη : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (η.app _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageMap η 0) := by
+  have hF := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthZeroIso F).symm)
+  have hG := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthZeroIso G).symm)
   apply hF.isWeakHomotopyEquivalence.cancel_left
-  change IsWeakHomotopyEquivalence
-    (lengthStageInclusion F 0 Word.empty (le_refl 0) ≫ lengthStageMap η 0)
-  rw [lengthStageInclusion_map]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageInclusion F 0 _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty (le_refl 0) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageMap η 0)
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageInclusion_map]
   exact hη.comp hG.isWeakHomotopyEquivalence
 
 lemma weakLengthStageMap (hF : ProperDiagram F) (hG : ProperDiagram G)
-    (hη : ∀ a, IsWeakHomotopyEquivalence (η.app a)) (n : ℕ) :
-    IsWeakHomotopyEquivalence (lengthStageMap η n) := by
+    (hη : ∀ a, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (η.app a)) (n : ℕ) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageMap η n) := by
   induction n with
-  | zero => exact weakLengthStageMap_zero η (hη Word.empty)
+  | zero => exact weakLengthStageMap_zero η (hη _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty)
   | succ n ih => exact weakLengthStageMap_succ η hF hG hη n ih
 
 end SerrePositivity.EInfinity.Hammock

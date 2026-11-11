@@ -24,7 +24,7 @@ local instance suppliedBFSequenceSpectrumCategory : SimplicialCategory OmegaSpec
 variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
   (s : DGSuspensionStageProvider.{u, v} R κ) (A : PerfDGInput.{u, max (u + 1) v} R)
   (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-    F2.Idempotent.IsIdempotentCompletion f.val →
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
       (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
         Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
   (Z : ∀ n : ℕ, DGKappaZeroInput R (dgSuspensionIteration R s A n)
@@ -66,7 +66,7 @@ def dgSuspensionSuppliedBFCandidateCocone :=
 規約：共終性・一回の未完備 S• fibration に条件付き。
 使われ方：K-7 c5 の実余極限性。 -/
 theorem dgSuspensionSuppliedBFCandidateCocone_isColimit :
-    IsColimitCone (dgSuspensionSuppliedBFCandidateCocone R s A hcofinal Z) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (dgSuspensionSuppliedBFCandidateCocone R s A hcofinal Z) :=
   dgSuspensionNativeCandidateCocone_isColimit R s A _
 
 /-- 概要：元の連結固定 K から同じ実候補への実比較射。
@@ -77,10 +77,10 @@ def dgSuspensionSuppliedBFConnectedComparison :=
   dgSuspensionConnectedComparison R s A
     (dgSuspensionSuppliedBFStructureEdge R s A hcofinal Z)
 
-variable (hS : ∀ n : ℕ, IsPullbackSquare
+variable (hS : ∀ n : ℕ, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare
   ((dgKappaNativeVerdierDiagram R (dgSuspensionIteration R s A n)
     (dgSuspensionIterationStage R s A n).cone).square ≫
-      coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)))
 
 include hS in
 /-- 概要：実供給 BF 四角形からの連結比較は非負次数 π 同型。

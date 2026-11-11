@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：正次元では前後の面の一意性を使い、零次元では単位の像が全体であることを使う。
 規約：Moss 2020 Lemmas 28・29。Mathlib の IsUniquelyCodimOneFace へ接続する。
 使われ方：X→Ex(X) の pairing を構成する入力。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

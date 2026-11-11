@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open SerrePositivity.KST.Spectra SerrePositivity.KST.Spectra.OmegaSpectrum
 namespace SerrePositivity.KST.LocalizingInvariants.MappingPathComparison
 
@@ -24,7 +24,7 @@ variable {X Y X' Y' : OmegaSpectrum.{u}} (p : X ⟶ Y) (q : X' ⟶ Y')
 lemma map_unit (n : ℕ) : (KanSequence.mappingPathComparison (sequenceHom p)).app n ≫
     (map p q a b h).app n =
       a.app n ≫ (KanSequence.mappingPathComparison (sequenceHom q)).app n := by
-  exact mappingPathMap_unit (p.app n) (q.app n) (a.app n) (b.app n)
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.mappingPathMap_unit (p.app n) (q.app n) (a.app n) (b.app n)
     (congrArg (fun f ↦ f.app n) h)
 
 end MappingPathComparison

@@ -28,7 +28,7 @@ public import Mathlib.Combinatorics.Quiver.Basic
 public import Mathlib.Logic.Equiv.Defs
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalRepresentables
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CosimplicialHom.AdjunctionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.AdjunctionHom
 
 
 /-!
@@ -78,7 +78,7 @@ abbrev tensorFrame (n : SimplexCategory) : SimplexCategory ⥤ SSet.{v} :=
 /-- Identify an entire row, with both inner-simplex and target naturality. -/
 def rightAdjointRowTensorIso (n : SimplexCategory) :
     rightAdjoint.{v} ⋙ (CategoryTheory.evaluation SimplexCategoryᵒᵖ SSet.{v}).obj
-      (Opposite.op n) ≅ cosimplicialHom (tensorFrame n) :=
+      (Opposite.op n) ≅ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (tensorFrame n) :=
   NatIso.ofComponents (fun Z => NatIso.ofComponents
     (fun m => Equiv.toIso (rightAdjointValueEquiv Z n m.unop)) (by
       intro m l g
@@ -93,7 +93,7 @@ def rightAdjointRowInternalHomIso (n : SimplexCategory) :
     rightAdjoint.{v} ⋙ (CategoryTheory.evaluation SimplexCategoryᵒᵖ SSet.{v}).obj
       (Opposite.op n) ≅ ihom (SSet.stdSimplex.obj n) :=
   rightAdjointRowTensorIso n ≪≫
-    adjunctionHomIsoSameUniverse (ihom.adjunction (SSet.stdSimplex.obj n)) SSet.stdSimplex ≪≫
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.adjunctionHomIsoSameUniverse (ihom.adjunction (SSet.stdSimplex.obj n)) SSet.stdSimplex ≪≫
     Functor.isoWhiskerLeft _ QuillenStandardFrame.homIso ≪≫ Functor.rightUnitor _
 
 @[simp]

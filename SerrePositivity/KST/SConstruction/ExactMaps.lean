@@ -20,9 +20,9 @@ open scoped Simplicial
 方針：頂点と実際の正方形の普遍性をそれぞれ量化する。
 規約：h 圏の押し出しに置き換えない。使われ方：gapped 図式の後合成。 -/
 def PreservesSConstructionData {C D : SSet.{u}} (f : C ⟶ D) : Prop :=
-  (∀ z : C _⦋0⦌, IsZeroVertex z → IsZeroVertex (f.app (Opposite.op ⦋0⦌) z)) ∧
+  (∀ z : C _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z → _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (f.app (Opposite.op ⦋0⦌) z)) ∧
     (∀ F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ C,
-      IsPushoutSquare F → IsPushoutSquare (F ≫ f))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare F → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (F ≫ f))
 
 /-- 概要：恒等射は S 構成の保存条件を満たす。
 方針：零頂点と正方形を変えないことを使う。

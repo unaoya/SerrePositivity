@@ -28,7 +28,7 @@ def circleEvaluationReferenceTrace (z : Sp.{u} _⦋0⦌) :
     (Δ[1] : SSet.{u}) ⟶
       SimplicialCategory.sHom ((circleEvaluationTetrahedronAt z).obj ⟨ULift.up 1⟩)
         ((circleEvaluationTetrahedronAt z).obj ⟨ULift.up 3⟩) :=
-  triangleTrace (SSet.yonedaEquiv (circleZeroFunctorTriangle ≫ evaluateFunctorAt z)) ≫
+  triangleTrace (SSet.yonedaEquiv (circleZeroFunctorTriangle ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z)) ≫
     eqToHom (congrArg (fun s : Sp.{u} _⦋2⦌ ↦
       SimplicialCategory.sHom (s.obj ⟨ULift.up 0⟩) (s.obj ⟨ULift.up 2⟩))
         (circleEvaluationTetrahedronAt_zero z).symm)
@@ -38,7 +38,7 @@ def circleEvaluationDegenerateTrace (z : Sp.{u} _⦋0⦌) :
     (Δ[1] : SSet.{u}) ⟶
       SimplicialCategory.sHom ((circleEvaluationTetrahedronAt z).obj ⟨ULift.up 0⟩)
         ((circleEvaluationTetrahedronAt z).obj ⟨ULift.up 2⟩) :=
-  triangleTrace (SSet.yonedaEquiv (circleZeroDegenerateTriangle ≫ evaluateFunctorAt z)) ≫
+  triangleTrace (SSet.yonedaEquiv (circleZeroDegenerateTriangle ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z)) ≫
     eqToHom (congrArg (fun s : Sp.{u} _⦋2⦌ ↦
       SimplicialCategory.sHom (s.obj ⟨ULift.up 0⟩) (s.obj ⟨ULift.up 2⟩))
         (circleEvaluationTetrahedronAt_three z).symm)

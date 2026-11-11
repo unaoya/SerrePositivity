@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
-public import SerrePositivity.InfinityCategories.Kan.UniverseLiftHomotopy
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.UniverseLiftHomotopy
 
 /-!
 # 全ての区間ホモトピー類によるテストから局所化像の可逆性を判定する

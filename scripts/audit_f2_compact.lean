@@ -1,7 +1,7 @@
 import SerrePositivity.InfinityCategories.Project.Entrypoints.Compact
 import Lean.Util.CollectAxioms
 
-open SerrePositivity.InfinityCategories.F2.Compact
+
 
 #check @PreservesKappaFilteredColimits
 #print axioms PreservesKappaFilteredColimits
@@ -9,8 +9,8 @@ open SerrePositivity.InfinityCategories.F2.Compact
 #check @IsKappaCompact
 #print axioms IsKappaCompact
 
-#check @SerrePositivity.InfinityCategories.F2.Compact.IsCompact
-#print axioms SerrePositivity.InfinityCategories.F2.Compact.IsCompact
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsCompact
+#print axioms SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsCompact
 
 #check @PreservesKappaFilteredColimits.of_le
 #print axioms PreservesKappaFilteredColimits.of_le
@@ -822,17 +822,17 @@ open SerrePositivity.InfinityCategories.F2.Compact
 #check @hasFiniteColimits_kappaCompactObjects_of_exchange
 #print axioms hasFiniteColimits_kappaCompactObjects_of_exchange
 
-#check SerrePositivity.InfinityCategories.F2.Compact.spaceUniverseDiagram_reflects_invertibleEdge
-#print axioms SerrePositivity.InfinityCategories.F2.Compact.spaceUniverseDiagram_reflects_invertibleEdge
+#check SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.spaceUniverseDiagram_reflects_invertibleEdge
+#print axioms SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.spaceUniverseDiagram_reflects_invertibleEdge
 
-#check SerrePositivity.InfinityCategories.F2.Compact.spaceUniverseDiagram_reflects_invertibleEdge_native
-#print axioms SerrePositivity.InfinityCategories.F2.Compact.spaceUniverseDiagram_reflects_invertibleEdge_native
+#check SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.spaceUniverseDiagram_reflects_invertibleEdge_native
+#print axioms SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.spaceUniverseDiagram_reflects_invertibleEdge_native
 
-#check SerrePositivity.InfinityCategories.F2.Compact.isColimitCone_of_conservative_image
-#print axioms SerrePositivity.InfinityCategories.F2.Compact.isColimitCone_of_conservative_image
+#check SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isColimitCone_of_conservative_image
+#print axioms SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isColimitCone_of_conservative_image
 
-#check SerrePositivity.InfinityCategories.F2.Compact.spaceUniverseDiagram_reflects_small_isColimit
-#print axioms SerrePositivity.InfinityCategories.F2.Compact.spaceUniverseDiagram_reflects_small_isColimit
+#check SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.spaceUniverseDiagram_reflects_small_isColimit
+#print axioms SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.spaceUniverseDiagram_reflects_small_isColimit
 
 /-!
 概要：Compact の所有モジュールの全宣言を、生成宣言も含めて公理監査する。
@@ -842,12 +842,17 @@ open SerrePositivity.InfinityCategories.F2.Compact
 -/
 open Lean in
 run_cmd do
+  let oldAuditPrefix1 := `SerrePositivity.InfinityCategories.F2.Compact
+  let klw1AuditLayout1 ← IO.ofExcept <| Lean.Json.parse (← IO.FS.readFile "scripts/refactor/targets/kl-module-map.json")
+  let klw1AuditLayout1 ← IO.ofExcept klw1AuditLayout1.getObj?
+  let klw1AuditOwners1 := Std.HashSet.ofList (klw1AuditLayout1.toList.filterMap fun (source, dest) =>
+    if oldAuditPrefix1.isPrefixOf source.toName then dest.getStr?.toOption.map String.toName else none)
   let env ← getEnv
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    unless `SerrePositivity.InfinityCategories.F2.Compact |>.isPrefixOf mod do continue
+    unless (oldAuditPrefix1.isPrefixOf mod || klw1AuditOwners1.contains mod) do continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "F2 Compact: unexpected axioms in {name}: {axioms}"
@@ -855,11 +860,11 @@ run_cmd do
   if count == 0 then throwError "F2 Compact: no declarations audited"
   logInfo m!"F2 Compact audit passed: {count} declarations, standard three axioms only."
 
-#check SerrePositivity.InfinityCategories.F2.Compact.limitComparisonApexEdge
-#print axioms SerrePositivity.InfinityCategories.F2.Compact.limitComparisonApexEdge
+#check SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.limitComparisonApexEdge
+#print axioms SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.limitComparisonApexEdge
 
-#check SerrePositivity.InfinityCategories.F2.Compact.limitComparisonApex_map_isInvertible
-#print axioms SerrePositivity.InfinityCategories.F2.Compact.limitComparisonApex_map_isInvertible
+#check SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.limitComparisonApex_map_isInvertible
+#print axioms SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.limitComparisonApex_map_isInvertible
 
-#check SerrePositivity.InfinityCategories.F2.Compact.isLimitCone_of_conservative_image
-#print axioms SerrePositivity.InfinityCategories.F2.Compact.isLimitCone_of_conservative_image
+#check SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_of_conservative_image
+#print axioms SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_of_conservative_image

@@ -32,36 +32,36 @@ lemma exists_markedSpanPostcomposition {X : SSet.{u}} [Quasicategory X]
       G ≫ markedSpanApex X W = SSet.const ((markedSpanApex X W).app (Opposite.op ⦋0⦌) v) ∧
       G ≫ markedSpanInclusion X W ≫ (pre horn₂₀.ι₀₁).app X =
         SSet.const (((pre horn₂₀.ι₀₁).app X).app (Opposite.op ⦋0⦌) v.val) := by
-  let p := (functorVertexEquiv (horn 2 0 : SSet.{u}) X).symm v.val
-  have hp : functorVertex p = v.val := (functorVertexEquiv _ _).apply_symm_apply v.val
+  let p := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (horn 2 0 : SSet.{u}) X).symm v.val
+  have hp : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex p = v.val := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).apply_symm_apply v.val
   have hbt : stdSimplex.δ (1 : Fin 2) ≫ b =
       stdSimplex.δ (0 : Fin 2) ≫ horn₂₀.ι₀₂ ≫ p := by
     apply SSet.yonedaEquiv.injective
     have hh := congrArg SSet.yonedaEquiv hb
     rw [Equiv.apply_symm_apply] at hh
     rw [hh]
-    change ((pre horn₂₀.ι₀₂).app X ≫ evaluateFunctorAt
+    change ((pre horn₂₀.ι₀₂).app X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app (Opposite.op ⦋0⦌) v.val = _
     rw [← hp]
-    change (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app
-      (Opposite.op ⦋0⦌) (functorVertex (horn₂₀.ι₀₂ ≫ p)) = _
-    rw [evaluateFunctorAt_functorVertex]
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app
+      (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (horn₂₀.ι₀₂ ≫ p)) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex]
     exact (intervalMap_target (horn₂₀.ι₀₂ ≫ p)).symm.trans
       (SSet.yonedaEquiv_naturality (SimplexCategory.δ (0 : Fin 2)) (horn₂₀.ι₀₂ ≫ p))
   obtain ⟨F, hF₀, hFl, hFt⟩ := exists_spanPostcompositionFamily p b hbt
   have hl : ((pre horn₂₀.ι₀₁).app X).app (Opposite.op ⦋0⦌) v.val =
-      functorVertex (horn₂₀.ι₀₁ ≫ p) := by rw [← hp]; rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (horn₂₀.ι₀₁ ≫ p) := by rw [← hp]; rfl
   have hv : ∀ w : (Δ[1] : SSet.{u}) _⦋0⦌, spanLeftEdge (F.app (Opposite.op ⦋0⦌) w) ∈ W := by
     intro w
     have hh := congrArg (fun k => k.app (Opposite.op ⦋0⦌) w) hFl
     change ((pre horn₂₀.ι₀₁).app X).app (Opposite.op ⦋0⦌)
-      (F.app (Opposite.op ⦋0⦌) w) = PinchedHom.constant (functorVertex (horn₂₀.ι₀₁ ≫ p)) 0 at hh
-    rw [pinchedConstant_zero] at hh
+      (F.app (Opposite.op ⦋0⦌) w) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (horn₂₀.ι₀₁ ≫ p)) 0 at hh
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero] at hh
     unfold spanLeftEdge
     rw [hh, ← hl]
-    exact fullSubcomplexOnVertices_vertex v
-  let G := fullSubcomplexLift (fun z => spanLeftEdge z ∈ W) F hv
-  have hG : G ≫ markedSpanInclusion X W = F := fullSubcomplexLift_ι _ _ _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v
+  let G := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (fun z => spanLeftEdge z ∈ W) F hv
+  have hG : G ≫ markedSpanInclusion X W = F := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
   have hGl : G ≫ markedSpanInclusion X W ≫ (pre horn₂₀.ι₀₁).app X =
       SSet.const (((pre horn₂₀.ι₀₁).app X).app (Opposite.op ⦋0⦌) v.val) := by
     rw [← Category.assoc, hG, hFl, hl]
@@ -70,15 +70,15 @@ lemma exists_markedSpanPostcomposition {X : SSet.{u}} [Quasicategory X]
     apply (cancel_mono (markedSpanInclusion X W)).mp
     rw [Category.assoc, hG, hF₀, SSet.const_comp, hp]
     rfl
-  · change (G ≫ markedSpanInclusion X W) ≫ (pre horn₂₀.ι₀₂).app X ≫ evaluateFunctorAt _ = b
+  · change (G ≫ markedSpanInclusion X W) ≫ (pre horn₂₀.ι₀₂).app X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _ = b
     rw [hG]
     exact hFt
   · change (G ≫ markedSpanInclusion X W ≫ (pre horn₂₀.ι₀₁).app X) ≫
-      evaluateFunctorAt _ = _
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _ = _
     rw [hGl, SSet.const_comp]
     rfl
   · change (G ≫ markedSpanInclusion X W ≫ (pre horn₂₀.ι₀₁).app X) ≫
-      evaluateFunctorAt _ = _
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _ = _
     rw [hGl, SSet.const_comp]
     rfl
 

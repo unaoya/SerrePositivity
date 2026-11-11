@@ -16,8 +16,8 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の共通 cofiber 射は、元の包含側の完全関手と核への後合成に全正反復で整合する。 -/
-theorem weakStringCofiberMultiMap_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {n : SimplexCategory}
+theorem weakStringCofiberMultiMap_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) {n : SimplexCategory}
     (α : ⦋1⦌ ⟶ n) (r : ℕ) :
     AnodyneHomotopy.anodyneQ.map
       ((multiRealizationFunctor (r + 1)).map (weakStringPostExact f q n)) ≫

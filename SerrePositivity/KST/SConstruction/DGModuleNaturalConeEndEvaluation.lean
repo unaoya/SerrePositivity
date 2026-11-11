@@ -10,7 +10,7 @@ public import SerrePositivity.KST.SConstruction.DGFunctorNativeEvaluationPoint
 -/
 @[expose] public section
 open CategoryTheory SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.DGNerve
+
 open SerrePositivity.KST.SConstruction
 open scoped Simplicial
 noncomputable section
@@ -21,15 +21,15 @@ universe u
 規約：全二単体の厳密等号。使われ方：元 cone 全四角形の点評価。 -/
 lemma dgModuleNaturalConeEndTriangle_evaluation (R : Type u) [CommRing R] (D P : Type (u + 1))
     [DGCategory R D] [Small.{u} D] [DGCategory R P] [Small.{u} P]
-    (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G) (x : P) :
+    (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G) (x : P) :
     (dgModuleNaturalConeEndTriangle R D F G η).map
       (dgFunctorEvaluationDG R P (RightModule R D) x) =
-    (dgModuleConeLowerTriangle R D (dgModuleNaturalConeArrow R D F G η x)).simplex := by
-  apply (Simplex.triangleEquiv).injective
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeLowerTriangle R D (dgModuleNaturalConeArrow R D F G η x)).simplex := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.triangleEquiv).injective
   change ((dgModuleNaturalConeEndTriangle R D F G η).map
       (dgFunctorEvaluationDG R P (RightModule R D) x)).toTriangle =
-    (dgModuleConeLowerTriangle R D (dgModuleNaturalConeArrow R D F G η x)).simplex.toTriangle
-  unfold Simplex.toTriangle
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeLowerTriangle R D (dgModuleNaturalConeArrow R D F G η x)).simplex.toTriangle
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.toTriangle
   congr 1
   · funext i
     fin_cases i <;> rfl
@@ -58,15 +58,15 @@ lemma dgModuleNaturalConeEndTriangle_evaluation (R : Type u) [CommRing R] (D P :
 規約：全二単体の厳密等号。使われ方：元全 cone 四角形の点評価。 -/
 lemma dgModuleNaturalConeEndZeroTriangle_evaluation (R : Type u) [CommRing R]
     (D P : Type (u + 1)) [DGCategory R D] [Small.{u} D] [DGCategory R P] [Small.{u} P]
-    (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G) (x : P) :
-    (Simplex.ofTriangle (dgModuleNaturalConeEndZeroTriangleData R D F G η)).map
+    (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G) (x : P) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ofTriangle (dgModuleNaturalConeEndZeroTriangleData R D F G η)).map
       (dgFunctorEvaluationDG R P (RightModule R D) x) =
-    (dgModuleConeUpperTriangle R D (dgModuleNaturalConeArrow R D F G η x)).simplex := by
-  apply (Simplex.triangleEquiv).injective
-  change ((Simplex.ofTriangle (dgModuleNaturalConeEndZeroTriangleData R D F G η)).map
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeUpperTriangle R D (dgModuleNaturalConeArrow R D F G η x)).simplex := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.triangleEquiv).injective
+  change ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ofTriangle (dgModuleNaturalConeEndZeroTriangleData R D F G η)).map
       (dgFunctorEvaluationDG R P (RightModule R D) x)).toTriangle =
-    (dgModuleConeUpperTriangle R D (dgModuleNaturalConeArrow R D F G η x)).simplex.toTriangle
-  unfold Simplex.toTriangle
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeUpperTriangle R D (dgModuleNaturalConeArrow R D F G η x)).simplex.toTriangle
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.toTriangle
   congr 1
   · funext i
     fin_cases i <;> rfl
@@ -93,31 +93,31 @@ lemma dgModuleNaturalConeEndZeroTriangle_evaluation (R : Type u) [CommRing R]
 規約：四辺と両二胞体を同時に保持。使われ方：元全族の押し出し性。 -/
 lemma dgModuleNaturalConeEndSquare_evaluation (R : Type u) [CommRing R]
     (D P : Type (u + 1)) [DGCategory R D] [Small.{u} D] [DGCategory R P] [Small.{u} P]
-    (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G) (x : P) :
+    (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G) (x : P) :
     dgModuleNaturalConeEndSquare R D F G η ≫
-      dgNerve.map (dgFunctorEvaluationDG R P (RightModule R D) x) =
-    dgModuleConeSquare R D (dgModuleNaturalConeArrow R D F G η x) := by
-  apply square_isPushout.hom_ext
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFunctorEvaluationDG R P (RightModule R D) x) =
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeSquare R D (dgModuleNaturalConeArrow R D F G η x) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.square_isPushout.hom_ext
   · rw [← Category.assoc, dgModuleNaturalConeEndSquare_upper,
-      dgModuleConeSquare_upper]
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeSquare_upper]
     have ht := SSet.yonedaEquiv_symm_comp
-      (X := dgNerve R (DGFunctor R P (RightModule R D)))
-      (Y := dgNerve R (RightModule R D)) (n := SimplexCategory.mk 2)
-      (Simplex.ofTriangle (dgModuleNaturalConeEndZeroTriangleData R D F G η))
-      (dgNerve.map (dgFunctorEvaluationDG R P (RightModule R D) x))
-    exact ht.trans (congrArg (fun s : (dgNerve R (RightModule R D)) _⦋2⦌ =>
-      (SSet.yonedaEquiv (X := dgNerve R (RightModule R D))
+      (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGFunctor R P (RightModule R D)))
+      (Y := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R D)) (n := SimplexCategory.mk 2)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ofTriangle (dgModuleNaturalConeEndZeroTriangleData R D F G η))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFunctorEvaluationDG R P (RightModule R D) x))
+    exact ht.trans (congrArg (fun s : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R D)) _⦋2⦌ =>
+      (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R D))
         (n := SimplexCategory.mk 2)).symm s)
       (dgModuleNaturalConeEndZeroTriangle_evaluation R D P F G η x))
   · rw [← Category.assoc, dgModuleNaturalConeEndSquare_lower,
-      dgModuleConeSquare_lower]
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeSquare_lower]
     have ht := SSet.yonedaEquiv_symm_comp
-      (X := dgNerve R (DGFunctor R P (RightModule R D)))
-      (Y := dgNerve R (RightModule R D)) (n := SimplexCategory.mk 2)
+      (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGFunctor R P (RightModule R D)))
+      (Y := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R D)) (n := SimplexCategory.mk 2)
       (dgModuleNaturalConeEndTriangle R D F G η)
-      (dgNerve.map (dgFunctorEvaluationDG R P (RightModule R D) x))
-    exact ht.trans (congrArg (fun s : (dgNerve R (RightModule R D)) _⦋2⦌ =>
-      (SSet.yonedaEquiv (X := dgNerve R (RightModule R D))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFunctorEvaluationDG R P (RightModule R D) x))
+    exact ht.trans (congrArg (fun s : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R D)) _⦋2⦌ =>
+      (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R D))
         (n := SimplexCategory.mk 2)).symm s)
       (dgModuleNaturalConeEndTriangle_evaluation R D P F G η x))
 

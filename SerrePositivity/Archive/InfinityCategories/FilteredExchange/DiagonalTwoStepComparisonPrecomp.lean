@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalFiberSourceIsoInput
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.VertexIsoCompositionTransport
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeHomCosliceKanAction
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.RelativeHomCosliceKanAction
 
 /-!
 概要：実二辺の指定比較を貼った値は、元の全係数制限を保つ。

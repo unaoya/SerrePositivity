@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeCAlgSource
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgUnderlyingDerivedComparison
 public import SerrePositivity.EInfinity.ComplexLimits.ProbeDerivedComparison
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyRepresentative
 
 /-!
 # 元の全複体源における実自由 probe の導来単位
@@ -40,7 +40,7 @@ lemma freeProbeUnderlyingNerve_eq :
   change (Γ ⋙ freeProbeFunctor A) ⋙ Operad.Algebra.forget (operad A) = _
   exact Functor.assoc _ _ _
 
-def freeProbeUnderlyingDerivedSourceIso : FunctorIso
+def freeProbeUnderlyingDerivedSourceIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (freeProbeCAlgSource A ≫ cAlgForgetDerived A)
     (nerveMap (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) ≫
       ComplexLimits.complexOrdinaryDerivedSource A) := by
@@ -49,7 +49,7 @@ def freeProbeUnderlyingDerivedSourceIso : FunctorIso
       nerveMap (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) ≫
         ComplexLimits.complexOrdinaryDerivedSource A := by
     rw [algebraUnderlyingDerivedSource, ← Category.assoc, freeProbeUnderlyingNerve_eq]
-  exact e ≪≫ eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) h)
+  exact e ≪≫ eqToIso (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)) h)
 
 def freeProbeUnitHomotopy : SSet.Homotopy
     (nerveMap (ComplexLimits.framedLimitProbeFunctor A) ≫
@@ -59,19 +59,19 @@ def freeProbeUnitHomotopy : SSet.Homotopy
   ComplexLimits.complexOrdinaryDerivedNatTransHomotopy A (freeProbeUnitNatTrans A)
 
 lemma freeProbeUnitHomotopy_component (X : Complex A) :
-    (simplicialHomotopyVertexEdge (freeProbeUnitHomotopy A) (nerveVertex X)).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (freeProbeUnitHomotopy A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)).edge =
       ((nerve.edgeMk ((freeProbeUnitNatTrans A).app X)).map
         (ComplexLimits.complexOrdinaryDerivedSource A)).edge :=
   ComplexLimits.complexOrdinaryDerivedNatTransHomotopy_component A (freeProbeUnitNatTrans A) X
 
-def freeProbeUnitHom : FunctorHom
+def freeProbeUnitHom : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom
     (nerveMap (ComplexLimits.framedLimitProbeFunctor A) ≫
       ComplexLimits.complexOrdinaryDerivedSource A)
     (nerveMap (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) ≫
       ComplexLimits.complexOrdinaryDerivedSource A) :=
-  Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (freeProbeUnitHomotopy A))
+  Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (freeProbeUnitHomotopy A))
 
-def freeProbeDerivedUnit : FunctorHom (ComplexLimits.complexOrdinaryDerivedSource A)
+def freeProbeDerivedUnit : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (ComplexLimits.complexOrdinaryDerivedSource A)
     (freeProbeCAlgSource A ≫ cAlgForgetDerived A) :=
   (ComplexLimits.complexProbeDerivedSourceIso A).inv ≫ freeProbeUnitHom A ≫
     (freeProbeUnderlyingDerivedSourceIso A).inv

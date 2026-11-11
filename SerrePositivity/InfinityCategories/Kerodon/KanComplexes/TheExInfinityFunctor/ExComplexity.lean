@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：閾値の合成則から包含を示し、零段階を X の像と同定する。
 規約：Moss 2020 Notation 24。Theorem 22 の regular pairing の前段。
 使われ方：X→Ex(X) の anodyne 性の組合せ的帰納。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

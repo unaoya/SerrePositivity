@@ -46,22 +46,22 @@ theorem dgKPositiveKanEnrichedFunctor_eq_evaluation (r : ℕ) :
 
 /-- 元の正段 ∞ 関手は、同じ固定 K の後合成である。 -/
 theorem dgKPositiveKanInfinity_eq_evaluation (r : ℕ) :
-    dgKInputK A ≫ coherentNerveMap (spectrumKanEvaluation (r + 1)) =
-      coherentNerveMap (dgKPositiveKanEnrichedFunctor A r) := by
-  change coherentNerveMap (presentedPerfectDGBFEnrichedFunctor A) ≫ _ = _
-  rw [← coherentNerveMap_comp, dgKPositiveKanEnrichedFunctor_eq_evaluation]
+    dgKInputK A ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumKanEvaluation (r + 1)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (dgKPositiveKanEnrichedFunctor A r) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (presentedPerfectDGBFEnrichedFunctor A) ≫ _ = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, dgKPositiveKanEnrichedFunctor_eq_evaluation]
 
 /-- 元の固定 K を実正段で評価した全図式と、元の S• 境界商の全図式との自然同型。 -/
 def dgKSBoundaryFixedKPositiveIso (r : ℕ) :
-    FunctorIso (presentedPerfectDGBoundaryKanInfinityFunctor A r)
-      (dgKInputK A ≫ coherentNerveMap (spectrumKanEvaluation (r + 1))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (presentedPerfectDGBoundaryKanInfinityFunctor A r)
+      (dgKInputK A ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumKanEvaluation (r + 1))) :=
   (dgKPositiveKanInfinity_eq_evaluation A r).symm ▸ dgKSBoundaryPositiveIso A r
 
 /-- 元の相対 K 四角形の評価と、元の相対 S• 境界商四角形の全 coherent 比較。 -/
 def dgRelativeSBoundaryFixedKSquareIso (r : ℕ)
-    (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
-    FunctorIso (d.square ≫ presentedPerfectDGBoundaryKanInfinityFunctor A r)
-      (d.square ≫ dgKInputK A ≫ coherentNerveMap (spectrumKanEvaluation (r + 1))) :=
+    (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d.square ≫ presentedPerfectDGBoundaryKanInfinityFunctor A r)
+      (d.square ≫ dgKInputK A ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumKanEvaluation (r + 1))) :=
   (dgKSBoundaryFixedKPositiveIso A r).precomp d.square
 
 end SerrePositivity.KST.Fibration

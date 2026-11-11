@@ -47,7 +47,7 @@ variable {C : Type u} [Category.{v} C]
 /-- Both sides have n-simplices A[n][n] to Z. -/
 def iso (A : SimplexCategory ⥤ SimplexCategory ⥤ C) (Z : C) :
     DiagonalFrame.obj (DiagonalMappingRows.obj A Z) ≅
-      (cosimplicialHom (DiagonalFrame.obj A)).obj Z :=
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (DiagonalFrame.obj A)).obj Z :=
   NatIso.ofComponents (fun _ => Iso.refl _) (by
     intro n m f
     ext h
@@ -58,14 +58,14 @@ def iso (A : SimplexCategory ⥤ SimplexCategory ⥤ C) (Z : C) :
 /-- Diagonalize the actual augmented row map. -/
 def comparison {A : SimplexCategory ⥤ SimplexCategory ⥤ C} {B : SimplexCategory ⥤ C}
     (a : A ⟶ (Functor.const SimplexCategory).obj B) (Z : C) :
-    (cosimplicialHom B).obj Z ⟶ (cosimplicialHom (DiagonalFrame.obj A)).obj Z :=
-  (DiagonalFrame.constantIso ((cosimplicialHom B).obj Z)).inv ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (DiagonalFrame.obj A)).obj Z :=
+  (DiagonalFrame.constantIso ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z)).inv ≫
     DiagonalFrame.map (DiagonalMappingRows.comparison a Z) ≫ (iso A Z).hom
 
 @[simp]
 lemma comparison_eq {A : SimplexCategory ⥤ SimplexCategory ⥤ C} {B : SimplexCategory ⥤ C}
     (a : A ⟶ (Functor.const SimplexCategory).obj B) (Z : C) :
-    comparison a Z = (cosimplicialHomMap (DiagonalFrame.augmentation a)).app Z := by
+    comparison a Z = (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (DiagonalFrame.augmentation a)).app Z := by
   ext n h
   rfl
 

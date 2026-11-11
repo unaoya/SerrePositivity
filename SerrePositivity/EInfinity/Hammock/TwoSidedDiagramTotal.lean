@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram
 public import SerrePositivity.EInfinity.Hammock.TwoSidedThomasonTransition
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedGrothendieckCoefficientComponents
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckCoefficientComponents
 
 /-!
 # 元の二方向図式から元の全圏への関手
@@ -35,33 +35,33 @@ lemma map_unop_catEqToHom_app_comp_heq {C : Cat.{u, u}} {D : Type u} [Category.{
   cases h
   simp
 
-def totalFunctor : Data.{u} ⥤ Cat.{u, u} where
-  obj A := Cat.of (TwoSidedGrothendieck.total A.left A.right)
+def totalFunctor : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u} ⥤ Cat.{u, u} where
+  obj A := Cat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.total A.left A.right)
   map f := (TwoSidedThomason.transitionTotal f.base f.left f.right).toCatHom
   map_id A := by
     apply Cat.Hom.ext
     refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
     intro X Y f
     simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
-    refine TwoSidedGrothendieck.hom_ext_heq _ _ rfl ?_ ?_
-    · exact (TwoSidedGrothendieck.coefficientMap_leftMap_heq (𝟙 A.left) (𝟙 A.right) f)
-    · exact (TwoSidedGrothendieck.coefficientMap_rightMap_heq (𝟙 A.left) (𝟙 A.right) f)
+    refine _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckHomComponents.hom_ext_heq _ _ rfl ?_ ?_
+    · exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coefficientMap_leftMap_heq (𝟙 A.left) (𝟙 A.right) f)
+    · exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coefficientMap_rightMap_heq (𝟙 A.left) (𝟙 A.right) f)
   map_comp f g := by
     apply Cat.Hom.ext
     refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
     intro X Y h
     simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
-    refine TwoSidedGrothendieck.hom_ext_heq _ _ rfl ?_ ?_
-    · exact (TwoSidedGrothendieck.coefficientMap_leftMap_heq
+    refine _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckHomComponents.hom_ext_heq _ _ rfl ?_ ?_
+    · exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coefficientMap_leftMap_heq
         (f.left ≫ Functor.whiskerLeft f.base.op g.left)
         (f.right ≫ Functor.whiskerLeft f.base g.right) h).trans
-          ((TwoSidedGrothendieck.coefficientMap_leftMap_heq g.left g.right
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coefficientMap_leftMap_heq g.left g.right
             ((TwoSidedThomason.transitionTotal f.base f.left f.right).map h)).trans
               (map_unop_catEqToHom_app_comp_heq _ _ _ _)).symm
-    · exact (TwoSidedGrothendieck.coefficientMap_rightMap_heq
+    · exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coefficientMap_rightMap_heq
         (f.left ≫ Functor.whiskerLeft f.base.op g.left)
         (f.right ≫ Functor.whiskerLeft f.base g.right) h).trans
-          ((TwoSidedGrothendieck.coefficientMap_rightMap_heq g.left g.right
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coefficientMap_rightMap_heq g.left g.right
             ((TwoSidedThomason.transitionTotal f.base f.left f.right).map h)).trans
               (map_catEqToHom_app_comp_heq _ _ _ _)).symm
 

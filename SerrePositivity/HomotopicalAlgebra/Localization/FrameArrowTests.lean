@@ -46,7 +46,7 @@ lemma mappingTest_iff {X Z : C} (f : X ⟶ Z)
     (ha : ∀ n, weakEquivalences C (a.app n))
     (hb : ∀ n, weakEquivalences C (b.app n)) (Y : C) :
     mappingTest cof fib Y f ↔ weakEquivalences SSet.{v}
-      ((cosimplicialHomMap t).app ((fibrantTarget fib).obj Y)) := by
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap t).app ((fibrantTarget fib).obj Y)) := by
   let H : WalkingParallelPair ⥤ C := parallelPair f f
   let P : WalkingParallelPair ⥤ (SimplexCategory ⥤ C) := parallelPair t t
   let aug : P ⟶ H ⋙ Functor.const SimplexCategory := parallelPairHomMk a b h h

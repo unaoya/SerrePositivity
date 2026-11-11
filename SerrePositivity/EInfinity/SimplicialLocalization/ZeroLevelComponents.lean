@@ -25,7 +25,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite
 open scoped Simplicial
 
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 /-- 概要：零次の局所化の元の射を固定 Hom の零単体へ送る（Dwyer–Kan）。
 方針：元の射を同じ標準対象表示で前後から移す。

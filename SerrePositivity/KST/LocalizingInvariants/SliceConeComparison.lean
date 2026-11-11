@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
-public import SerrePositivity.InfinityCategories.Stable.FunctorHoEvaluation
-public import SerrePositivity.InfinityCategories.HomotopyLimits.NativeConeFamilyEvaluation
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluationNaturality
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FunctorHoEvaluation
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NativeConeFamilyEvaluation
 
 /-!
 概要：同じ図式上の slice の比較辺を、頂点射と底の恒等性を保つ全錐の比較にする。
@@ -18,49 +18,49 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SliceConeComparison
 
 lemma evaluate_arrow {A X : SSet.{u}} [Quasicategory X] {F G : A ⟶ X}
-    (α : FunctorHom F G) (x : A _⦋0⦌) :
-    Arrow.mk (functorHomEvaluate α x) =
-      Arrow.mk ((hoFunctor.map (evaluateFunctorAt (Y := X) x)).toFunctor.map α) := by
-  rw [← functorCellToNatTrans_app_eq_evaluate]
-  simp only [functorCellToNatTrans, NatTrans.comp_app, eqToHom_app, eqToHom_refl,
+    (α : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom F G) (x : A _⦋0⦌) :
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate α x) =
+      Arrow.mk ((hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X) x)).toFunctor.map α) := by
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorCellToNatTrans_app_eq_evaluate]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.functorCellToNatTrans, NatTrans.comp_app, eqToHom_app, eqToHom_refl,
     Category.id_comp, Category.comp_id]
-  exact functorHomotopyEvaluation_map_app_arrow α x
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorHomotopyEvaluation_map_app_arrow α x
 
-variable {K X : SSet.{u}} {p : K ⟶ X} {c d : JoinCone p} (e : (sliceOver p).Edge c d)
+variable {K X : SSet.{u}} {p : K ⟶ X} {c d : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone p} (e : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver p).Edge c d)
 
-def hom : FunctorHom c.val d.val :=
-  Truncated.HomotopyCategory.homMk (nativeConeFunctorEdge e).toTruncated
+def hom : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom c.val d.val :=
+  Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nativeConeFunctorEdge e).toTruncated
 
 lemma apex_arrow [Quasicategory X] :
-    Arrow.mk (functorHomEvaluate (hom e) (joinApexVertex K)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (hom e) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.joinApexVertex K)) =
       Arrow.mk (Truncated.HomotopyCategory.homMk
-        (e.map (sliceOverProjection p)).toTruncated) := by
+        (e.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection p)).toTruncated) := by
   rw [evaluate_arrow]
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
-  exact nativeConeFunctorEdge_apex e
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nativeConeFunctorEdge_apex e
 
-lemma base_arrow : Arrow.mk (homPre (joinInr Δ[0] K) (hom e)) =
-    Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex p))) := by
-  have he : ((nativeConeFunctorEdge e).map (coneRestriction K X)).edge =
-      (SSet.Edge.id (functorVertex p)).edge :=
+lemma base_arrow : Arrow.mk (homPre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr Δ[0] K) (hom e)) =
+    Arrow.mk (𝟙 (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex p))) := by
+  have he : ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nativeConeFunctorEdge e).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneRestriction K X)).edge =
+      (SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex p)).edge :=
     congrArg (fun f ↦ f.app (Opposite.op ⦋1⦌) e.edge)
-      (nativeConeFunctorFamily_restriction p)
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nativeConeFunctorFamily_restriction p)
   have hh := Truncated.HomotopyCategory.congr_arrowMk_homMk
-    (((nativeConeFunctorEdge e).map (coneRestriction K X)).toTruncated)
-    (SSet.Edge.id (functorVertex p)).toTruncated he
+    (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nativeConeFunctorEdge e).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneRestriction K X)).toTruncated)
+    (SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex p)).toTruncated he
   rw [SSet.Edge.toTruncated_id, Truncated.HomotopyCategory.homMk_id] at hh
   exact hh
 
-lemma hom_isIso (he : IsInvertibleEdge (X := sliceOver p) e.toTruncated) : IsIso (hom e) := by
-  have h := he.map (nativeConeFunctorFamily p)
-  exact (isInvertibleEdge_congr (e := (e.map (nativeConeFunctorFamily p)).toTruncated)
-    (f := (nativeConeFunctorEdge e).toTruncated) rfl).mp h
+lemma hom_isIso (he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver p) e.toTruncated) : IsIso (hom e) := by
+  have h := he.map (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nativeConeFunctorFamily p)
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := (e.map (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nativeConeFunctorFamily p)).toTruncated)
+    (f := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nativeConeFunctorEdge e).toTruncated) rfl).mp h
 
-def iso (he : IsInvertibleEdge (X := sliceOver p) e.toTruncated) : FunctorIso c.val d.val := by
+def iso (he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver p) e.toTruncated) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso c.val d.val := by
   let : IsIso (hom e) := hom_isIso e he
   exact asIso (hom e)
 

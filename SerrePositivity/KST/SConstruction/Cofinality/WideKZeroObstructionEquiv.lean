@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：障害写像の加法性と合成の計算。 -/
 lemma completionWideKZeroObstruction_objectClass (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (a : hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier) :
     completionWideKZeroObstruction r ι f (completionWideObjectClass r ι f hf a) =
       (QuotientAddGroup.mk' (triangulatedKZeroSourceMap
@@ -36,7 +36,7 @@ lemma completionWideKZeroObstruction_objectClass (r : ℕ)
 使われ方：障害写像の単射性。 -/
 lemma completionKZeroCokernelToWide_leftInverse (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     Function.LeftInverse (completionKZeroCokernelToWide r ι f hf)
       (completionWideKZeroObstruction r ι f) := by
   intro a
@@ -49,7 +49,7 @@ lemma completionKZeroCokernelToWide_leftInverse (r : ℕ)
 使われ方：離散的障害の集合としての同定。 -/
 theorem completionWideKZeroObstruction_bijective (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     Function.Bijective (completionWideKZeroObstruction r ι f) :=
   ⟨(completionKZeroCokernelToWide_leftInverse r ι f hf).injective,
     completionWideKZeroObstruction_surjective r ι f hf⟩
@@ -60,12 +60,12 @@ theorem completionWideKZeroObstruction_bijective (r : ℕ)
 使われ方：障害の可換群としての同定。 -/
 def completionWideKZeroObstructionHom (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionWideGroup r ι f hf →+ completionKZeroCokernel r ι f where
   toFun := completionWideKZeroObstruction r ι f
   map_zero' := completionKZeroVertexClass_zero_of_image r ι f _
     ((completionImageClosedPredicate r ι f hf).zero_mem
-      (chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier).isZero)
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier).isZero)
   map_add' a b := by
     obtain ⟨a, rfl⟩ := SSet.π₀.mk_surjective a
     obtain ⟨b, rfl⟩ := SSet.π₀.mk_surjective b
@@ -87,7 +87,7 @@ def completionWideKZeroObstructionHom (r : ℕ) (ι : Fin r → SimplexCategory�
 使われ方：相対 fiber 列の離散的障害の商群同定。 -/
 def completionWideKZeroObstructionEquiv (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionWideGroup r ι f hf ≃+ completionKZeroCokernel r ι f :=
   AddEquiv.ofBijective (completionWideKZeroObstructionHom r ι f hf)
     (completionWideKZeroObstruction_bijective r ι f hf)

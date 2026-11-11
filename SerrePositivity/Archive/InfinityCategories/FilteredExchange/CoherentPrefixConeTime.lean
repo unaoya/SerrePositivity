@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.NerveCone
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone
 
 /-!
 概要：固定した cone の始点へ時刻零を前置する。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.SpectrumNativeCotensorFiber
 public import SerrePositivity.KST.Spectra.SpectrumCircleEvaluationHom
 public import SerrePositivity.KST.Spectra.SpectrumNativeCircleEvaluationSquare
-public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.PointFunctorEvaluation
 
 /-!
 概要：元の Sp の各頂点での円評価四角形と、三角形の BF 写像空間による厳密な表示。
@@ -28,28 +28,28 @@ def nativeCircleEvaluationSquare (z : Sp.{u} _⦋0⦌) :
 
 /-- 点ごとの四角形は、関手 quasicategory の同じ四角形の頂点評価。 -/
 lemma nativeCircleEvaluationSquare_evaluation (z : Sp.{u} _⦋0⦌) :
-    nativeCircleEvaluationSquare z = circleEvaluationFunctorSquare ≫ evaluateFunctorAt z := by
+    nativeCircleEvaluationSquare z = circleEvaluationFunctorSquare ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z := by
   rw [nativeCircleEvaluationSquare, nativeCircleEvaluationSquareFamily,
-    ← curry_evaluateFunctorAt_vertex, curry_uncurry]
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.curry_evaluateFunctorAt_vertex, curry_uncurry]
 
 /-- 点ごとの四角形の二つの非対角頂点は、元の一点 BF スペクトルの標準頂点。 -/
 lemma nativeCircleEvaluationSquare_zeroCorner (z : Sp.{u} _⦋0⦌) (i : Fin 2) :
-    squareVertex (nativeCircleEvaluationSquare z) i i.rev =
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (nativeCircleEvaluationSquare z) i i.rev =
       pointZeroVertex.vertex := by
   rw [nativeCircleEvaluationSquare_evaluation]
-  change (evaluateFunctorAt z).app (Opposite.op ⦋0⦌)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z).app (Opposite.op ⦋0⦌)
     (circleEvaluationFunctorSquare.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm i.rev)) = _
   have h := congrArg SSet.yonedaEquiv (circleEvaluationFunctorSquare_zeroCorner.{u} i)
   change circleEvaluationFunctorSquare.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm i.rev) =
-        functorVertex (constantZeroDiagram Sp.{u}) at h
-  rw [h, evaluateFunctorAt_functorVertex]
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (constantZeroDiagram Sp.{u}) at h
+  rw [h, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex]
   rfl
 
 /-- 点ごとの四角形の非対角頂点は、Sp の実際の零対象。 -/
 lemma nativeCircleEvaluationSquare_zeroCorner_isZero (z : Sp.{u} _⦋0⦌) (i : Fin 2) :
-    IsZeroVertex (squareVertex (nativeCircleEvaluationSquare z) i i.rev) := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (nativeCircleEvaluationSquare z) i i.rev) := by
   rw [nativeCircleEvaluationSquare_zeroCorner]
   exact pointZeroVertex.isZero
 
@@ -57,7 +57,7 @@ lemma nativeCircleEvaluationSquare_zeroCorner_isZero (z : Sp.{u} _⦋0⦌) (i : 
 lemma nativeCircleEvaluationTriangleFamily_fiber (z : Sp.{u} _⦋0⦌) :
     lift (SSet.const z) (𝟙 (Δ[2] : SSet.{u + 1})) ≫
         nativeCircleEvaluationTriangleFamily =
-      SSet.yonedaEquiv.symm (coherentHomComparisonSimplex
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex
         ((circleEvaluationHomEdge
           (nativeCotensorInput PointedSimplicialSet.circle z).val).edge)) := by
   have hs : lift (SSet.const z) (𝟙 (Δ[2] : SSet.{u + 1})) ≫

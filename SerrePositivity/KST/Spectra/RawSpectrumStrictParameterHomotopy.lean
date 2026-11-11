@@ -86,12 +86,12 @@ lemma exists_pointedHomotopy_of_strictInterval
 lemma exists_pointedHomotopy_of_interval_structure
     (c d : A ⟶ pointedSpace X Y)
     (k : ∀ n, (X.level n).space ⟶ ((KanSequence.mapping A Y).freePath.level n).space)
-    (hk : ∀ n, k n ≫ (KanSequence.mappingPre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion
+    (hk : ∀ n, k n ≫ (KanSequence.mappingPre _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryInclusion
         (KanSequence.mapping A Y)).app n =
       (KanSequence.intervalBoundaryPair (homOfParameterFamily X Y A c)
         (homOfParameterFamily X Y A d)).app n)
     (h : ∀ n, PointedMapping.VerticalPath
-      ((KanSequence.mappingPre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion (KanSequence.mapping A Y)).app (n + 1))
+      ((KanSequence.mappingPre _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryInclusion (KanSequence.mapping A Y)).app (n + 1))
       (X.sigma n ≫ k (n + 1))
       (PointedSimplicialSet.circle.{u} ◁ k n ≫ (KanSequence.mapping A Y).freePath.sigma n)) :
     ∃ V : SSet.Homotopy c.right d.right,

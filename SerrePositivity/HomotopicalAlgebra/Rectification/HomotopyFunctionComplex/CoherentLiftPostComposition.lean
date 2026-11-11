@@ -98,13 +98,13 @@ lemma firstEdge_at_one : SSet.stdSimplex.δ (0 : Fin 2) ≫ firstEdge hcof hfib 
   rw [firstEdge, ← Category.assoc, postEdge_at_one]
   exact RelativeChoiceSpace.postMap_ofExtension _ _ _ _ _ _ _
 
-abbrev tupleMap := VertexTuples.map (postStrict X Y W f g)
-abbrev vertexMap := VertexTuples.verticesMap (postStrict X Y W f g)
+abbrev tupleMap := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (postStrict X Y W f g)
+abbrev vertexMap := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.verticesMap (postStrict X Y W f g)
 
 omit [ModelCategory SSet.{v}] in
-lemma tuple_composite : tupleMap X Y W f g ≫ VertexTuples.map (postStrict X W V (f ≫ g.base) h) ≫
+lemma tuple_composite : tupleMap X Y W f g ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (postStrict X W V (f ≫ g.base) h) ≫
     CoherentLiftBaseChange.tuples (Category.assoc f g.base h.base) =
-      VertexTuples.map (postStrict X Y V f (g ≫ h)) := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (postStrict X Y V f (g ≫ h)) := by
   ext n a
   funext i
   apply Subtype.ext
@@ -113,21 +113,21 @@ lemma tuple_composite : tupleMap X Y W f g ≫ VertexTuples.map (postStrict X W 
 lemma right_composite : tupleMap X Y W f g ≫ postRight hcof X W V (f ≫ g.base) h ≫
     castMap X Y W V f g h = postRight hcof X Y V f (g ≫ h) := by
   have hi := congrArg (fun k => tupleMap X Y W f g ≫
-    VertexTuples.map (postStrict X W V (f ≫ g.base) h) ≫ k)
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (postStrict X W V (f ≫ g.base) h) ≫ k)
       (CoherentLiftBaseChange.interpolation hcof (Category.assoc f g.base h.base))
   have ht := congrArg (fun k => k ≫ CoherentLiftTuples.interpolation hcof X V (f ≫ g.base ≫ h.base))
     (tuple_composite X Y W V f g h)
   have he : CoherentLiftTuples.interpolation hcof X V (f ≫ g.base ≫ h.base) =
       CoherentLiftTuples.interpolation hcof X V (f ≫ (g ≫ h).base) := rfl
   calc
-    _ = tupleMap X Y W f g ≫ VertexTuples.map (postStrict X W V (f ≫ g.base) h) ≫
+    _ = tupleMap X Y W f g ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (postStrict X W V (f ≫ g.base) h) ≫
         CoherentLiftBaseChange.tuples (Category.assoc f g.base h.base) ≫
           CoherentLiftTuples.interpolation hcof X V (f ≫ g.base ≫ h.base) := by
       simpa only [postRight, Category.assoc] using hi
-    _ = VertexTuples.map (postStrict X Y V f (g ≫ h)) ≫
+    _ = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (postStrict X Y V f (g ≫ h)) ≫
         CoherentLiftTuples.interpolation hcof X V (f ≫ g.base ≫ h.base) := by
       simpa only [Category.assoc] using ht
-    _ = _ := congrArg (fun k => VertexTuples.map (postStrict X Y V f (g ≫ h)) ≫ k) he
+    _ = _ := congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (postStrict X Y V f (g ≫ h)) ≫ k) he
 
 lemma middle_composite : tupleMap X Y W f g ≫ postLeft hcof X W V (f ≫ g.base) h ≫
     castMap X Y W V f g h = middle hcof X Y W V f g h := by
@@ -135,7 +135,7 @@ lemma middle_composite : tupleMap X Y W f g ≫ postLeft hcof X W V (f ≫ g.bas
 
 omit [ModelCategory SSet.{v}] in
 lemma vertex_square : vertexInclusion X Y f ≫ tupleMap X Y W f g =
-    vertexMap X Y W f g ≫ vertexInclusion X W (f ≫ g.base) := VertexTuples.inclusion_map _
+    vertexMap X Y W f g ≫ vertexInclusion X W (f ≫ g.base) := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.inclusion_map _
 
 include hcof in
 lemma second_boundary : vertexMap X Y W f g ≫
@@ -185,7 +185,7 @@ abbrev faces : Fin 3 → (SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ⟶
     firstEdge hcof hfib X Y W V f g h]
 
 /-- All three compatibility equations follow from the actual selected endpoints. -/
-lemma faces_compatible : BoundaryGluing.StandardCompatible (faces hcof hfib X Y W V f g h) := by
+lemma faces_compatible : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.StandardCompatible (faces hcof hfib X Y W V f g h) := by
   intro j k hjk
   fin_cases j <;> fin_cases k <;> norm_num at hjk
   · exact (secondEdge_at_one hcof hfib X Y W V f g h).trans
@@ -224,7 +224,7 @@ lemma triangle_fixed_boundary :
 
 lemma triangle_action_face (Z : C)
     (t : CoherentLiftTuples.obj X Y f ⊗ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 2) ⟶
-      (cosimplicialHom V.resolution.obj).obj Z) (k : Fin 3) :
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom V.resolution.obj).obj Z) (k : Fin 3) :
     CoherentLiftTuples.obj X Y f ◁ SSet.stdSimplex.δ k ≫
         KanLiftAction.parameterized hcof hfib X V (f ≫ (g ≫ h).base) Z
           (RelativeChoiceSpace.family (vertexInclusion X Y f) (postBoundary X Y V f (g ≫ h))

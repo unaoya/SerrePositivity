@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleMaps
 public import SerrePositivity.KST.Spectra.SpectrumPointedEnrichment
-public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterSquares
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterSquares
 
 /-!
 概要：cotensor の普遍評価と可換な射の組の合成。
@@ -59,7 +59,7 @@ lemma composition_condition (A : PointedSimplicialSet.{u}) (X Y Z : OmegaSpectru
         RawSpectrumMapping.pointedComposition X Y Z.toKanSequence ≫ evaluationPost A X Z := by
   rw [← Category.assoc, ← Category.assoc]
   apply (condition_iff A X Z _ _).mpr
-  exact _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_square_comp PointedSimplicialSet.{u}
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_parameter_square_comp PointedSimplicialSet.{u}
     (C := OmegaSpectrum.{u}) (A := A) (P := pointedSpace A X Y) (Q := pointedSpace A Y Z)
     (X := X) (Y := Y) (Z := Z)
     (X' := cotensor A X) (Y' := cotensor A Y) (Z' := cotensor A Z)

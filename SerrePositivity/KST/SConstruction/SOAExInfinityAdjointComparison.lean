@@ -21,10 +21,10 @@ local instance soaExInfinityAdjointLoop_kanComplex (Y : PointedSimplicialSet.{u}
 
 /-- 同じ元の射を回収する旧・新随伴は、前向き Kan 比較で点つき成分が可換。 -/
 lemma soaExInfinityAdjoint_component (U B : PointedSSetObject.{u})
-    (a : U.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B.obj)
-    (old : PointedKanReplacement.obj U.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedKanReplacement.obj B.obj))
+    (a : U.obj ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B.obj)
+    (old : PointedKanReplacement.obj U.obj ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedKanReplacement.obj B.obj))
     (new : (exInfinityPointedKanEnrichedFunctor.obj U).obj ⟶
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (exInfinityPointedKanEnrichedFunctor.obj B).obj)
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (exInfinityPointedKanEnrichedFunctor.obj B).obj)
     (ho : PointedKanReplacement.unit.app U.obj ≫ old = a ≫
       (PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u}).map
         (PointedKanReplacement.unit.app B.obj))

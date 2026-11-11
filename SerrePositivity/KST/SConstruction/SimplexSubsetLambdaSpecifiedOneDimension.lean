@@ -15,13 +15,13 @@ open CategoryTheory
 open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 variable {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-  (hmin : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
-  (hmax : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+  (hmin : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j)
+  (hmax : j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
 
 /-- 指定端点・次元の一面の実鎖射は、元の濃度次元の同じ一面と異種等号で一致。 -/
 lemma simplexSubsetLambdaCellAtDimension_one_face_normalized_heq (a b : Fin (n + 1))
-    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
     (p q : ℕ) (hp : p = (I.erase j).card - 2) (hq : q = I.card - 2) (hc : p + 1 = q) :
     HEq (serreCubeChainFace A true p q hc
         (Fin.cast hq.symm (simplexSubsetEraseNormalizedCoordinate I hI j hj hmin hmax)) ≫
@@ -29,19 +29,19 @@ lemma simplexSubsetLambdaCellAtDimension_one_face_normalized_heq (a b : Fin (n +
       (serreCubeChainFace A true ((I.erase j).card - 2) (I.card - 2)
         (simplexSubsetErase_normalized_codimension I hI j hj hmin hmax).symm
         (simplexSubsetEraseNormalizedCoordinate I hI j hj hmin hmax) ≫
-      simplexSubsetLambdaCellAt A I (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-        (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) hI rfl rfl) := by
+      simplexSubsetLambdaCellAt A I (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+        (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) hI rfl rfl) := by
   subst a b
   have he : serreCubeChainFace A true p q hc
         (Fin.cast hq.symm (simplexSubsetEraseNormalizedCoordinate I hI j hj hmin hmax)) ≫
-      simplexSubsetLambdaCellAtDimension A I (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-        (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) hI rfl rfl q hq =
+      simplexSubsetLambdaCellAtDimension A I (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+        (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) hI rfl rfl q hq =
       eqToHom (congrArg (serreCubeComplex A) hp) ≫
         (serreCubeChainFace A true ((I.erase j).card - 2) (I.card - 2)
           (simplexSubsetErase_normalized_codimension I hI j hj hmin hmax).symm
           (simplexSubsetEraseNormalizedCoordinate I hI j hj hmin hmax) ≫
-        simplexSubsetLambdaCellAt A I (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-          (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) hI rfl rfl) := by
+        simplexSubsetLambdaCellAt A I (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+          (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) hI rfl rfl) := by
     unfold simplexSubsetLambdaCellAtDimension
     rw [← Category.assoc, serreCubeChainFace_naturality A true hp hq
       (simplexSubsetErase_normalized_codimension I hI j hj hmin hmax).symm hc, Category.assoc]
@@ -49,8 +49,8 @@ lemma simplexSubsetLambdaCellAtDimension_one_face_normalized_heq (a b : Fin (n +
 
 /-- 元の指定端点・次元での一面は、元の左右 necklace の実分割合成を回収する。 -/
 lemma simplexSubsetLambdaCellAtDimension_one_face_heq (a b : Fin (n + 1))
-    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
     (p q : ℕ) (hp : p = (I.erase j).card - 2) (hq : q = I.card - 2) (hc : p + 1 = q) :
     let T := necklaceInSimplexSubsetSplitLeft.{u} I hI j hj
       (simplexSubsetSplitLeft_two I hI j hj hmin)

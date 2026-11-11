@@ -27,23 +27,23 @@ def parametricPost (A : PointedSimplicialSet.{u}) {P Z Z' : PointedSimplicialSet
 /-- 同じ射の族による後合成は、源制限と全パラメータを含め厳密に可換。 -/
 lemma parametricPost_restrict {A' A P Z Z' : PointedSimplicialSet.{u}} (i : A' ⟶ A)
     (v : P ⟶ PointedObject.basedHom Z Z') :
-    parametricPost A v ≫ PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z') =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z ≫ parametricPost A' v := by
+    parametricPost A v ≫ PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z') =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z ≫ parametricPost A' v := by
   have hh := ihomAction_restrict i Z Z'
   change ihomAction A Z Z' ≫
-      PointedObject.basedHomMap (PointedObject.basedHom A Z) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z') =
+      PointedObject.basedHomMap (PointedObject.basedHom A Z) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z') =
     ihomAction A' Z Z' ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z) (PointedObject.basedHom A' Z') at hh
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z) (PointedObject.basedHom A' Z') at hh
   have h : (v ≫ ihomAction A Z Z') ≫
-      PointedObject.basedHomMap (PointedObject.basedHom A Z) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z') =
+      PointedObject.basedHomMap (PointedObject.basedHom A Z) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z') =
     (v ≫ ihomAction A' Z Z') ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z) (PointedObject.basedHom A' Z') := by
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z) (PointedObject.basedHom A' Z') := by
     simpa only [Category.assoc] using congrArg (v ≫ ·) hh
   have ht := congrArg transpose h
-  have hl := transpose_post (v ≫ ihomAction A Z Z') (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z')
+  have hl := transpose_post (v ≫ ihomAction A Z Z') (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z')
   have hr := @transpose_pre_inner P (PointedObject.basedHom A' Z)
     (PointedObject.basedHom A Z) (PointedObject.basedHom A' Z')
-    (v ≫ ihomAction A' Z Z') (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z)
+    (v ≫ ihomAction A' Z Z') (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z)
   exact hl.symm.trans (ht.trans hr)
 
 end SerrePositivity.KST.Spectra.PointedMapping

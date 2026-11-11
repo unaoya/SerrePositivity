@@ -91,7 +91,7 @@ lemma evaluation_degeneracy (i : Fin (n + 1)) (k : SimplexCategoryᵒᵖ)
         (MonoidWithZeroHom.id (WordSegment.degree.{max u v} k)) ⋙
       largeEvaluation (C := C) hcof hfib P (n + 1) k t =
     largeEvaluation (C := C) hcof hfib P n k
-      ((P ◁ OrdinaryBarFreeResolutionDegeneracyValues.sigma n i).app k t) := by
+      ((P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i).app k t) := by
   apply RetractWords.functor_ext_generators
     (C := degree (D C) (n + 1)) (M := WordSegment.degree.{max u v} k)
   · rintro ⟨X⟩
@@ -108,7 +108,7 @@ lemma evaluation_degeneracy (i : Fin (n + 1)) (k : SimplexCategoryᵒᵖ)
       change (OrdinaryBarFreeAmbientFamilies.family hcof hfib P (n + 1)
         ((degeneracyFunctor (D C) n i).map f)).app k (x, t) =
           (OrdinaryBarFreeAmbientFamilies.family hcof hfib P n f).app k
-            (x, (P ◁ OrdinaryBarFreeResolutionDegeneracyValues.sigma n i).app k t)
+            (x, (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i).app k t)
       exact types_congr_hom (congr_app
         (OrdinaryBarFreeAmbientFamilies.family_degeneracy hcof hfib P n i f) k) (x, t)
     | word X w =>

@@ -49,7 +49,7 @@ lemma monicKTracedTripleInterchangeFirstUpper_map (n : ℕ) :
   rw [monicKTracedTripleInterchangeFirstUpper, cartesianInterchangeFirstUpper_map,
     kStageRawReverseComposition, pointedReverseComposition_lift]
   change lift _ (SSet.const (SSet.yonedaEquiv
-    (nervePoint (coherentArrowStringDirect h) ≫ (monicKPrismTracedStage F h n).val))) ≫ _ = _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect h) ≫ (monicKPrismTracedStage F h n).val))) ≫ _ = _
   rw [monicKPrismTracedStage_point_vertex]
 
 /-- 第二経路下辺は、元の BF 段比較辺を最終射の補正前 raw 段射と合成した全区間。 -/
@@ -63,7 +63,7 @@ lemma monicKTracedTripleInterchangeSecondLower_map (n : ℕ) :
   rw [monicKTracedTripleInterchangeSecondLower, cartesianInterchangeSecondLower_map,
     kStageRawReverseComposition, pointedReverseComposition_lift]
   change lift _ (SSet.const (SSet.yonedaEquiv
-    (nervePoint (coherentArrowStringDirect h) ≫ monicKPrismRawLevelFamily n F h))) ≫ _ = _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect h) ≫ monicKPrismRawLevelFamily n F h))) ≫ _ = _
   rw [monicKPrismRawLevelFamily, SSet.comp_const, ← SSet.yonedaEquiv_symm_zero,
     Equiv.apply_symm_apply]
 

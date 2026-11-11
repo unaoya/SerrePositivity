@@ -17,9 +17,9 @@ inductive CubeFaceDeletionResult : ℕ → ℕ → Type
 
 /-- 計算結果の元の頂点関数による評価。 -/
 def cubeFaceDeletionResultVertex : {n m : ℕ} → CubeFaceDeletionResult n m →
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m)
   | _, _, .pure d => cubeFaceNormalVertex d
-  | _, _, .input i d => cubeFaceNormalVertex d ∘ _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i
+  | _, _, .input i d => cubeFaceNormalVertex d ∘ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy _ i
 
 /-- 計算結果の最初の出力へ元の定数を追加する。 -/
 def cubeFaceDeletionResultPoint {n m : ℕ} (b : Bool) :
@@ -35,24 +35,24 @@ def cubeFaceDeletionResultKeep {n m : ℕ} :
 
 /-- 内側の座標の削除は、元の右端の値を保ち、残りへ同じ削除を作用させる。 -/
 lemma cubeVertexDegeneracy_cons (n : ℕ) (i : Fin (n + 1)) (b : Bool)
-    (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (n + 1)) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy (n + 1) i.succ (Fin.cons b x) =
-      Fin.cons b (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy n i x) := by
+    (x : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex (n + 1)) :
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy (n + 1) i.succ (Fin.cons b x) =
+      Fin.cons b (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy n i x) := by
   funext j
   refine Fin.cases ?_ (fun j => ?_) j
-  · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
-  · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
+  · simp [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy]
+  · simp [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy]
 
 /-- 結果への定数の追加は、元の評価へ同じ定数を追加する。 -/
 lemma cubeFaceDeletionResultPoint_vertex {n m : ℕ} (b : Bool)
-    (r : CubeFaceDeletionResult n m) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) :
+    (r : CubeFaceDeletionResult n m) (x : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n) :
     cubeFaceDeletionResultVertex (cubeFaceDeletionResultPoint b r) x =
       Fin.cons b (cubeFaceDeletionResultVertex r x) := by
   cases r <;> rfl
 
 /-- 結果への入力保持の追加は、元の評価へ同じ右端入力を保持する。 -/
 lemma cubeFaceDeletionResultKeep_vertex {n m : ℕ} (r : CubeFaceDeletionResult n m)
-    (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (n + 1)) :
+    (x : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex (n + 1)) :
     cubeFaceDeletionResultVertex (cubeFaceDeletionResultKeep r) x =
       Fin.cons (x 0) (cubeFaceDeletionResultVertex r (fun j => x j.succ)) := by
   cases r with
@@ -61,9 +61,9 @@ lemma cubeFaceDeletionResultKeep_vertex {n m : ℕ} (r : CubeFaceDeletionResult 
     funext j
     refine Fin.cases ?_ (fun j => ?_) j
     · simp [cubeFaceDeletionResultVertex, cubeFaceDeletionResultKeep, cubeFaceNormalVertex,
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy]
     · simp [cubeFaceDeletionResultVertex, cubeFaceDeletionResultKeep, cubeFaceNormalVertex,
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy]
       rfl
 
 end SerrePositivity.KST.SConstruction

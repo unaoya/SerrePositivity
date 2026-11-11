@@ -35,7 +35,7 @@ def kernelTowerEquiv (r : ℕ) :
   let : ∀ n, Fibration (step X n).right := fun n ↦ map_fibration X hX (Nat.le_succ n)
   exact MonoidKernelTransport.precomp
     (PointedFibrationTower.limitGroupComparison (stage X) (step X) r)
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso r (limitIso X) (limitIso_basepoint X))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso r (limitIso X) (limitIso_basepoint X))
 
 /-- 通常 Tot の比較の核と、実際の部分 Tot の塔の lim¹ の全単射。 -/
 def kernelLimOneEquiv (r : ℕ) :
@@ -43,8 +43,8 @@ def kernelLimOneEquiv (r : ℕ) :
     letI : ∀ n, KanComplex (stage X n).right := fun n ↦ stage_kanComplex X hX n
     letI : ∀ n, Fibration (step X n).right := fun n ↦ map_fibration X hX (Nat.le_succ n)
     (groupComparison X hX r).ker ≃
-      _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne
-        (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stage X n).right (r + 1) (stage X n).basepoint)
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne
+        (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stage X n).right (r + 1) (stage X n).basepoint)
         (fun n ↦ pointedGroupMap (r + 1) (step X n)) := by
   let := PointedTotalization.kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)
   let : ∀ n, KanComplex (stage X n).right := fun n ↦ stage_kanComplex X hX n
@@ -58,12 +58,12 @@ lemma kernelLimOneEquiv_one (r : ℕ) :
     letI := PointedTotalization.kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)
     letI : ∀ n, KanComplex (stage X n).right := fun n ↦ stage_kanComplex X hX n
     letI : ∀ n, Fibration (step X n).right := fun n ↦ map_fibration X hX (Nat.le_succ n)
-    kernelLimOneEquiv X hX r 1 = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _ := by
+    kernelLimOneEquiv X hX r 1 = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _ := by
   let := PointedTotalization.kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)
   let : ∀ n, KanComplex (stage X n).right := fun n ↦ stage_kanComplex X hX n
   let : ∀ n, Fibration (step X n).right := fun n ↦ map_fibration X hX (Nat.le_succ n)
   change PointedFibrationTower.kernelLimOneEquiv (stage X) (step X) r
-    (kernelTowerEquiv X hX r 1) = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _
+    (kernelTowerEquiv X hX r 1) = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _
   rw [map_one, PointedFibrationTower.kernelLimOneEquiv_one]
 
 /-- 逆写像も lim¹ の基点を単位元へ送る。 -/
@@ -72,7 +72,7 @@ lemma kernelLimOneEquiv_symm_point (r : ℕ) :
     letI := PointedTotalization.kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)
     letI : ∀ n, KanComplex (stage X n).right := fun n ↦ stage_kanComplex X hX n
     letI : ∀ n, Fibration (step X n).right := fun n ↦ map_fibration X hX (Nat.le_succ n)
-    (kernelLimOneEquiv X hX r).symm (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _) = 1 := by
+    (kernelLimOneEquiv X hX r).symm (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _) = 1 := by
   let := PointedTotalization.kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)
   let : ∀ n, KanComplex (stage X n).right := fun n ↦ stage_kanComplex X hX n
   let : ∀ n, Fibration (step X n).right := fun n ↦ map_fibration X hX (Nat.le_succ n)

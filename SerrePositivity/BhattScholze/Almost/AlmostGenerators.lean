@@ -162,7 +162,7 @@ theorem isAlmostZero_iff_forall_gen (J : Ideal R) {r : ℕ} (f : Fin r → R)
       rw [hf]
       exact Ideal.span_mono (Set.singleton_subset_iff.mpr ⟨i, rfl⟩))).trans (h n)
   · intro h n
-    let N := derivedInfinityHomology R n M
+    let N := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology R n M
     have hn : IsModuleComplete R (p : R) N :=
       isComplete_homology_isModuleComplete R (p : R) _ hM n
     have hs (s : Finset R) (hf' : (s : Set R) ⊆ Set.range f) :

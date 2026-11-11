@@ -12,7 +12,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 
 /-- 概要：元混合二辺の同じ実合成辺と指定合成三角形。
 方針：同じ合成の辺代表を取り、元二辺を保つ実二単体を回収する。
@@ -24,14 +24,14 @@ def dgOdotMilnorNuZeroMixedCompositeData :
         (dgOdotMilnorNuZeroMixedTopEdge R d) e := by
   letI : KanComplex (DGOdotMilnorNuNullCoherenceSpace R d) :=
     (dgOdotMilnorNuNullCoherenceSpace_contractible R d h).kanComplex
-  let hex := homotopyCategory_homMk_surjective
+  let hex := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective
     (X := DGOdotMilnorNuNullCoherenceSpace R d) _ _
       (SSet.Truncated.HomotopyCategory.homMk (dgOdotMilnorNuZeroMixedLeftEdge R d).toTruncated ≫
         SSet.Truncated.HomotopyCategory.homMk (dgOdotMilnorNuZeroMixedTopEdge R d).toTruncated)
   let e := hex.choose
   have he := hex.choose_spec
   exact ⟨Edge.ofTruncated e,
-    SSet.Edge.CompStruct.ofTruncated (compStruct_nonempty_of_homMk_fac he.symm).some⟩
+    SSet.Edge.CompStruct.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.compStruct_nonempty_of_homMk_fac he.symm).some⟩
 
 /-- 概要：元の二混合辺の同じ選択合成辺。
 方針：同じ実合成三角形に属する辺を読む。

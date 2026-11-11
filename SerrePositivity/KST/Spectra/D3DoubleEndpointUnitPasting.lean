@@ -20,69 +20,69 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 
 /-- 元の端点模型単位の loop 像を、同じ実 loop 像の厳密始点へ正規化する。 -/
 def d3EndpointLoopImageUnitIso :
-    FunctorIso (pointedKanLoopInfinity.{u} ≫ pointedKanLoopInfinity)
-      (d3EndpointLoopImageFamily ≫ loopDiagramEvaluation PointedKanInfinity 0 0) :=
-  F2.functorIsoOfEq (d3PointedKanEndpointLoopDiagram_sourceIso.postcomp pointedKanLoopInfinity)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (pointedKanLoopInfinity.{u} ≫ pointedKanLoopInfinity)
+      (d3EndpointLoopImageFamily ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (d3PointedKanEndpointLoopDiagram_sourceIso.postcomp pointedKanLoopInfinity)
     rfl (d3EndpointLoopImageFamily_corner 0 0).symm
 
 /-- 元の切断単位と切断補正の loop 像の貼合せを、同じ実始点上で厳密に回収。 -/
 lemma d3LoopedSectionUnitIso_pasting_eq :
     d3LoopedSectionUnitIso.{u} ≪≫
-      d3LoopedSectionDiagramIso.postcomp (loopDiagramEvaluation PointedKanInfinity 0 0) =
+      d3LoopedSectionDiagramIso.postcomp (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) =
     d3EndpointLoopImageUnitIso := by
-  exact eq_of_heq ((F2.functorIsoOfEq_heq _ rfl
+  exact eq_of_heq ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ rfl
     (d3EndpointLoopImageFamily_corner 0 0)).symm.trans
-      ((heq_of_eq d3LoopedSectionUnitIso_pasting).trans (F2.functorIsoOfEq_heq _ _ _).symm))
+      ((heq_of_eq d3LoopedSectionUnitIso_pasting).trans (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ _ _).symm))
 
 /-- 元の端点 loop 像の始点は、端点円作用の同じ通常 loop 像である。 -/
 lemma d3EndpointLoopImageFamily_source :
-    d3EndpointLoopImageFamily.{u} ≫ loopDiagramEvaluation PointedKanInfinity 0 0 =
-    coherentNerveMap (d3PointedKanIhom endpointCircle) ≫ pointedKanLoopInfinity := by
+    d3EndpointLoopImageFamily.{u} ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0 =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanIhom endpointCircle) ≫ pointedKanLoopInfinity := by
   rw [d3EndpointLoopImageFamily_corner, d3PointedKanEndpointLoopDiagram_corner]
   rfl
 
 /-- 左実面の同じ始点比較を、元の実 loop 像と実右面の厳密始点上に表示する。 -/
 def d3DoubleEndpointLeftImageSourceIso :
-    FunctorIso (d3EndpointLoopImageFamily.{u} ≫ loopDiagramEvaluation PointedKanInfinity 0 0)
-      (d3DoubleEndpointRightLoopFamily 0 0 ≫ loopDiagramEvaluation PointedKanInfinity 0 0) :=
-  F2.functorIsoOfEq (d3DoubleEndpointLeftSourceIso 0 0)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d3EndpointLoopImageFamily.{u} ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0)
+      (d3DoubleEndpointRightLoopFamily 0 0 ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (d3DoubleEndpointLeftSourceIso 0 0)
     d3EndpointLoopImageFamily_source.symm (d3DoubleEndpointRightLoopFamily_corner 0 0 0 0).symm
 
 /-- 右実面の始点比較も、同じ loop 像と実左面の厳密始点へ表示を揃える。 -/
 def d3DoubleEndpointRightImageSourceIso :
-    FunctorIso (d3EndpointLoopImageFamily.{u} ≫ loopDiagramEvaluation PointedKanInfinity 0 0)
-      (d3DoubleEndpointLeftLoopFamily 0 0 ≫ loopDiagramEvaluation PointedKanInfinity 0 0) :=
-  F2.functorIsoOfEq (d3DoubleEndpointRightSourceIso 0 0)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d3EndpointLoopImageFamily.{u} ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0)
+      (d3DoubleEndpointLeftLoopFamily 0 0 ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (d3DoubleEndpointRightSourceIso 0 0)
     d3EndpointLoopImageFamily_source.symm (d3DoubleEndpointLeftLoopFamily_corner 0 0 0 0).symm
 
 /-- 左の全図式比較の始点は、同じ元の左実面始点比較そのもの。 -/
 lemma d3DoubleEndpointLeftLoopImageDiagramIso_source :
     d3DoubleEndpointLeftLoopImageDiagramIso.{u}.postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0) = d3DoubleEndpointLeftImageSourceIso := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) = d3DoubleEndpointLeftImageSourceIso := by
   exact eq_of_heq ((d3DoubleEndpointLeftLoopImageDiagramIso_corner 0 0).trans
-    (F2.functorIsoOfEq_heq _ _ _).symm)
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ _ _).symm)
 
 /-- 右の全図式比較も、元の同じ指定始点比較を回収する。 -/
 lemma d3DoubleEndpointRightLoopImageDiagramIso_source :
     d3DoubleEndpointRightLoopImageDiagramIso.{u}.postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0) = d3DoubleEndpointRightImageSourceIso := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) = d3DoubleEndpointRightImageSourceIso := by
   exact eq_of_heq ((d3DoubleEndpointRightLoopImageDiagramIso_corner 0 0).trans
-    (F2.functorIsoOfEq_heq _ _ _).symm)
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ _ _).symm)
 
 /-- 切断 loop 単位を左二方向全図式比較へ貼ると、元の端点単位と左実面比較を回収。 -/
 lemma d3LoopedSectionLeftDiagramIso_unit_pasting :
     d3LoopedSectionUnitIso.{u} ≪≫
-      d3LoopedSectionLeftDiagramIso.postcomp (loopDiagramEvaluation PointedKanInfinity 0 0) =
+      d3LoopedSectionLeftDiagramIso.postcomp (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) =
     d3EndpointLoopImageUnitIso ≪≫ d3DoubleEndpointLeftImageSourceIso := by
-  rw [d3LoopedSectionLeftDiagramIso, F2.functorIso_postcomp_trans, ← Iso.trans_assoc,
+  rw [d3LoopedSectionLeftDiagramIso, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_trans, ← Iso.trans_assoc,
     d3LoopedSectionUnitIso_pasting_eq, d3DoubleEndpointLeftLoopImageDiagramIso_source]
 
 /-- 右二方向比較も、元の同じ単位と右実面比較の貼合せの指定値を保持。 -/
 lemma d3LoopedSectionRightDiagramIso_unit_pasting :
     d3LoopedSectionUnitIso.{u} ≪≫
-      d3LoopedSectionRightDiagramIso.postcomp (loopDiagramEvaluation PointedKanInfinity 0 0) =
+      d3LoopedSectionRightDiagramIso.postcomp (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) =
     d3EndpointLoopImageUnitIso ≪≫ d3DoubleEndpointRightImageSourceIso := by
-  rw [d3LoopedSectionRightDiagramIso, F2.functorIso_postcomp_trans, ← Iso.trans_assoc,
+  rw [d3LoopedSectionRightDiagramIso, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_trans, ← Iso.trans_assoc,
     d3LoopedSectionUnitIso_pasting_eq, d3DoubleEndpointRightLoopImageDiagramIso_source]
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

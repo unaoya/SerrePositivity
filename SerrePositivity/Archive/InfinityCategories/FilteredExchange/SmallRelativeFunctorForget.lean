@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SmallUnstraighteningFunctorIso
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SmallUnstraighteningRelativeVertex
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SmallUnstraighteningFunctorIso
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SmallUnstraighteningRelativeVertex
 
 /-!
 概要：相対写像空間の縮小と忘却は、同じ全空間の縮小操作と全次数で可換。

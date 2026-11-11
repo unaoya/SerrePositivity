@@ -18,8 +18,8 @@ open scoped Simplicial
 lemma pointedSSetSuspensionEnrichedFunctor_hom {X Y : PointedSSetObject.{u}} (f : X ⟶ Y) :
     eHomEquiv SSet f ≫ pointedSSetSuspensionEnrichedFunctor.map X Y =
       eHomEquiv SSet (pointedSSetSuspensionMap f) := by
-  apply ((PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y.obj)).right.unitHomEquiv).injective
+  apply ((PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X.obj)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y.obj)).right.unitHomEquiv).injective
   exact suspensionHom_vertex (show X.obj ⟶ Y.obj from f)
 
 end SerrePositivity.KST.SConstruction

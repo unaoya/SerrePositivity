@@ -17,7 +17,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 全 S 方向を同じ次数へ制限した、元の反復 core S• の厳密豊穣図式。 -/
 def presentedPerfectDGMultiSCoreDiagonalDiagram (r : ℕ) :
-    SimplicialObject (QuasicategoryEnrichedFunctorCategory (PerfDGInput.{u, v} A)) :=
+    SimplicialObject (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory (PerfDGInput.{u, v} A)) :=
   multiIndexDiagonal r ⋙ presentedPerfectDGMultiSCoreEnrichedDiagram A r
 
 /-- 全 native 入力を反復 core S• 対角図式全体へ送る厳密豊穣関手。 -/

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalDiagram
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteInternalHomContinuity
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.ComparisonWithTopologicalSpaces.FiniteInternalHomContinuity
 public import Mathlib.CategoryTheory.Limits.Preserves.Limits
 
 /-!

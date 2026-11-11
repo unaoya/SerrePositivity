@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedExtensionSpace
 public import SerrePositivity.KST.Spectra.PointedMappingHomotopy
-public import SerrePositivity.InfinityCategories.Core.TerminalUniqueness
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TerminalUniqueness
 
 /-! # 点つき延長の選択のホモトピー比較
 概要：指定した射の二つの anodyne 延長は実際の基点固定ホモトピーで比較できる。
@@ -24,7 +24,7 @@ open scoped Simplicial
 def pointedExtensionVertex {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (h : A ⟶ Z)
     (k : B ⟶ Z) (hk : i ≫ k = h) : (pointedExtensionSpace i h) _⦋0⦌ :=
   SSet.yonedaEquiv (pullback.lift
-    (f := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right)
+    (f := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right)
     (g := SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))
     (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex k)) (𝟙 (Δ[0] : SSet.{u})) (by
       apply SSet.yonedaEquiv.injective
@@ -36,7 +36,7 @@ def pointedExtensionVertex {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (h :
 規約：厳密等号。使われ方：辺の端点の照合。 -/
 lemma pointedExtensionVertex_projection {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (h : A ⟶ Z)
     (k : B ⟶ Z) (hk : i ≫ k = h) :
-    (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
+    (pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right
       (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))).app (Opposite.op ⦋0⦌)
         (pointedExtensionVertex i h k hk) = Spectra.PointedMapping.familyVertex k := by
   unfold pointedExtensionVertex
@@ -54,7 +54,7 @@ lemma pointedExtensions_nonempty_mappingEdge {A B Z : PointedSimplicialSet.{u}}
   let w := pointedExtensionVertex i h l hl
   have hc := pointedExtensionSpace_isContractibleKan i hi h
   obtain ⟨e⟩ := (hc.isTerminalVertex w).nonempty_edge v
-  let p := pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
+  let p := pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right
     (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))
   have he := SSet.Edge.map (SSet.Edge.ofTruncated e) p
   have hv := pointedExtensionVertex_projection i h k hk

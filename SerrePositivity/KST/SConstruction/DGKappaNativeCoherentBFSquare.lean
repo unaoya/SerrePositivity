@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKappaNativeBFEnrichedFunctor
 public import SerrePositivity.KST.Spectra.CoherentNerve
-public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.NervePostcomposition
 
 /-!
 概要：同じ未完備 native 一四角形を、実 BF スペクトルへ全二胞体ごと送る。
@@ -30,6 +30,6 @@ local instance nativeCoherentBFSquareTarget_simplicialCategory :
 def dgKappaNativeCoherentBFSquare :
     (Δ[1] ⊗ Δ[1] : SSet.{max (u + 1) v + 1}) ⟶ Sp.{max (u + 1) v} :=
   dgKappaNativeBFFiniteSquare.{u, v} R D I ≫
-    coherentNerveMap (dgKappaNativeBFEnrichedFunctor.{u, v} R D I)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (dgKappaNativeBFEnrichedFunctor.{u, v} R D I)
 
 end SerrePositivity.KST.SConstruction

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictCones
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictCones
 
 /-!
 概要：図式が異なる二つの通常の錐の比較を、始対象を加えた全関手の自然変換にする。
@@ -14,14 +14,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory Limits
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.LocalizingInvariants.StrictConeMap
 
 variable {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C]
   {F G : I ⥤ C} (η : F ⟶ G) (c : Cone F) (d : Cone G) (m : c.pt ⟶ d.pt)
   (hm : ∀ i, c.π.app i ≫ η.app i = m ≫ d.π.app i)
 
-def transformation : strictConeFunctor c ⟶ strictConeFunctor d where
+def transformation : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictConeFunctor c ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictConeFunctor d where
   app x := match x with
     | WithInitial.of i => η.app (AsSmall.down.obj i)
     | WithInitial.star => m

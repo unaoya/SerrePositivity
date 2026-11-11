@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.SimplexStrictification
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomMono
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexStrictification
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.HomMono
 
 /-!
 概要：最大化した coherent 単体の全 Hom の作用を strict な射列の定値単体として読む。

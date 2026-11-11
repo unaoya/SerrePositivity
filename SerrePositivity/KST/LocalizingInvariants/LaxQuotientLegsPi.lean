@@ -18,17 +18,17 @@ open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 open SerrePositivity.KST.Spectra.OmegaSpectrum
 namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
-variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
-  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
-  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i r)
 
 include h in
 lemma laxQuotientProductInclusion_pi_zero (j : ℤ) (a : valueHomotopyGroup Φ A j) :
-    homotopyMap ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r) j
+    homotopyMap ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap hΦ) p q r) j
       (homotopyMap (laxQuotientProductInclusion p q i) j a) = 1 := by
   have he : SpectrumHo.hom (laxQuotientProductInclusion p q i ≫
-      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r) = SpectrumHo.hom (0 : value Φ A ⟶ value Φ Q) := by
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap hΦ) p q r) = SpectrumHo.hom (0 : value Φ A ⟶ value Φ Q) := by
     rw [SpectrumHo.hom_comp, hΦ.laxQuotientProductInclusion_comp_map p q i r h,
       SpectrumHo.hom_zero]
   simpa only [homotopyMap_comp, MonoidHom.comp_apply, Binary.map_zero,
@@ -37,9 +37,9 @@ lemma laxQuotientProductInclusion_pi_zero (j : ℤ) (a : valueHomotopyGroup Φ A
 
 include hΦ h in
 lemma laxQuotientLegs_pi_commute (j : ℤ) (a : valueHomotopyGroup Φ A j) :
-    valueHomotopyMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r) j
+    valueHomotopyMap Φ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientCLeg p q r) j
         (valueHomotopyMap Φ (laxFst p q) j (valueHomotopyMap Φ i j a)) =
-      valueHomotopyMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r) j
+      valueHomotopyMap Φ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientDLeg p q r) j
         (valueHomotopyMap Φ (laxSnd p q) j (valueHomotopyMap Φ i j a)) := by
   have hf : homotopyMap (Binary.fst (value Φ C) (value Φ D)) j
       (homotopyMap (laxQuotientProductInclusion p q i) j a) =

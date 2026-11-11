@@ -18,7 +18,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 先頭次数を 1 に固定して残りを対角に取る、元の全 core 比較の図式。 -/
 def presentedPerfectDGOneDirectionCoreDiagram (r : ℕ) :
-    SimplicialObject (QuasicategoryEnrichedFunctorCategory (PerfDGInput.{u, v} A)) :=
+    SimplicialObject (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory (PerfDGInput.{u, v} A)) :=
   (multiIndexDiagonal r ⋙ oneDirectionIndex r) ⋙
     presentedPerfectDGMultiSCoreEnrichedDiagram A (r + 1)
 

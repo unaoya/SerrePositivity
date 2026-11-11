@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.Fibration.VerdierReadoutBoundaryDiagram
 public import SerrePositivity.KST.Fibration.VerdierReadoutPathBoundary
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalBoundaryExt
-public import SerrePositivity.InfinityCategories.F1B.RoofRelativeCompositionTriangle
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalBoundaryExt
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.RoofRelativeCompositionTriangle
 
 /-!
 概要：元の二つの全長 Hom 比較を、同じ直接端・合成端境界二単体を固定して合成する。
@@ -20,48 +20,48 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
 
 private theorem readoutComponentCurve
-    {f g : (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}) ⟶
+    {f g : (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}) ⟶
       verdierNativeLongHomTarget d}
     (H : SSet.Homotopy f g)
-    (x : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u})) _⦋0⦌) :
-    SSet.yonedaEquiv.symm (simplicialHomotopyVertexEdge H x).edge =
+    (x : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u})) _⦋0⦌) :
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H x).edge =
       lift (SSet.const x) (𝟙 (Δ[1] : SSet.{u + 1})) ≫ H.h := by
   apply SSet.yonedaEquiv.injective
   rw [Equiv.apply_symm_apply]
   change H.h.app (Opposite.op ⦋1⦌)
     ((Truncated.Edge.id (X := (truncation 2).obj ((SSet.uliftFunctor.{u + 1, u}).obj
-      (nerve TriangleNativePath.{u}))) x).edge, homotopyIntervalEdge.edge) =
+      (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))) x).edge, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge) =
     H.h.app (Opposite.op ⦋1⦌)
-      (PinchedHom.constant x 1, SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u + 1})))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 1, SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u + 1})))
   have hi : SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u + 1})) =
-      homotopyIntervalEdge.edge := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge := by
     apply SSet.stdSimplex.ext
     intro j
     fin_cases j <;> rfl
-  rw [pinchedConstant_one, hi]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one, hi]
 
 /-- 概要：元の実長 Hom ホモトピーの指定成分を全区間の実制限へ戻す。
 方針：同じ元の一単体の Yoneda 表示を回収する。
 規約：同じ Verdier 両端と全 path 入力を保持する。
 使われ方：相対合成の直接端を同じ下側読出しへ照合する。 -/
 theorem verdierReadoutComponentCurve
-    {f g : (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}) ⟶
+    {f g : (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}) ⟶
       verdierNativeLongHomTarget d}
     (H : SSet.Homotopy f g)
-    (x : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u})) _⦋0⦌) :
-    SSet.yonedaEquiv.symm (simplicialHomotopyVertexEdge H x).edge =
+    (x : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u})) _⦋0⦌) :
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H x).edge =
       lift (SSet.const x) (𝟙 (Δ[1] : SSet.{u + 1})) ≫ H.h :=
   readoutComponentCurve d H x
 
 variable
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-    (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
+    (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)
-  (hfull : L ≫ evaluateFunctorAt
-    (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+  (hfull : L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+    (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
       verdierLowerReconstructionCompositeFamily d Δ[1])
 
 /-- 概要：実境界図式の面零は同じ読出し全族の native path 境界への制限。
@@ -74,10 +74,10 @@ theorem verdierReadoutBoundaryDiagram_last_restriction :
       (verdierReadoutPathBoundary.{u} ▷ (Δ[1] : SSet.{u + 1})) ≫
         (verdierLowerNativeReadoutHomotopy d L hL).h := by
   rw [verdierReadoutBoundaryDiagram_last]
-  apply F2.intervalBoundary_hom_ext
-  · rw [intervalBoundaryDiagram_zero, ← Category.assoc, verdierReadoutPathBoundary_zero]
+  apply _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.intervalBoundary_hom_ext
+  · rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_zero, ← Category.assoc, verdierReadoutPathBoundary_zero]
     exact readoutComponentCurve d _ _
-  · rw [intervalBoundaryDiagram_one, ← Category.assoc, verdierReadoutPathBoundary_one]
+  · rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_one, ← Category.assoc, verdierReadoutPathBoundary_one]
     exact readoutComponentCurve d _ _
 
 /-- 概要：実境界図式の面二は同じ全 S• 比較の native path 境界への制限。
@@ -90,10 +90,10 @@ theorem verdierReadoutBoundaryDiagram_first_restriction :
       (verdierReadoutPathBoundary.{u} ▷ (Δ[1] : SSet.{u + 1})) ≫
         (verdierReadoutUpperComparison d).h := by
   rw [verdierReadoutBoundaryDiagram_first]
-  apply F2.intervalBoundary_hom_ext
-  · rw [intervalBoundaryDiagram_zero, ← Category.assoc, verdierReadoutPathBoundary_zero]
+  apply _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.intervalBoundary_hom_ext
+  · rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_zero, ← Category.assoc, verdierReadoutPathBoundary_zero]
     exact readoutComponentCurve d _ _
-  · rw [intervalBoundaryDiagram_one, ← Category.assoc, verdierReadoutPathBoundary_one]
+  · rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_one, ← Category.assoc, verdierReadoutPathBoundary_one]
     exact readoutComponentCurve d _ _
 
 /-- 概要：同じ読出しと全 S• 比較は、指定された二端点の合成二単体を保って合成できる。
@@ -103,13 +103,13 @@ theorem verdierReadoutBoundaryDiagram_first_restriction :
 theorem verdierReadoutRelativeComposition_exists :
     ∃ H : SSet.Homotopy
       ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0))
-      (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))
+      (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))
         (verdierNativeCompositePoint d 1)),
-      ∃ T : FunctorCompositionTriangle (verdierReadoutUpperComparison d)
+      ∃ T : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle (verdierReadoutUpperComparison d)
           (verdierLowerNativeReadoutHomotopy d L hL) H,
         T.diagram ≫ (pre verdierReadoutPathBoundary.{u}).app _ =
           curry (verdierReadoutBoundaryDiagram d L hL hfull) := by
-  apply roofRelativeCompositionTriangle_exists verdierReadoutPathBoundary
+  apply _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.roofRelativeCompositionTriangle_exists verdierReadoutPathBoundary
     (verdierReadoutUpperComparison d) (verdierLowerNativeReadoutHomotopy d L hL)
     (curry (verdierReadoutBoundaryDiagram d L hL hfull))
   · apply uncurry_injective

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedFiberTransportCoordinates
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PointedFiberTransportCoordinates
 
 /-!
 概要：coslice fiber の二頂点の表示変更を始点と終点の変更へ分ける。

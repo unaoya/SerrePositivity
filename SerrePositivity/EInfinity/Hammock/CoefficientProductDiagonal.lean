@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.CoefficientProductRelative
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DoubleSimplicialDiagonal
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.CoefficientProductRelative
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DoubleSimplicialDiagonal
 public import SerrePositivity.EInfinity.Hammock.WeakTensor
 
 /-!
@@ -22,9 +22,9 @@ namespace SerrePositivity.EInfinity.Hammock.CoefficientProduct
 open CategoryTheory MonoidalCategory SerrePositivity.InfinityCategories
 variable (P Q : SimplicialObject Cat.{u, u})
 def diagonalNerveIso :
-    DoubleSimplicial.diagonalFunctor.obj (diagram P Q ⋙ nerveFunctor) ≅
-      DoubleSimplicial.diagonalFunctor.obj (P ⋙ nerveFunctor) ⊗
-        DoubleSimplicial.diagonalFunctor.obj (Q ⋙ nerveFunctor) where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.CoefficientProduct.diagram P Q ⋙ nerveFunctor) ≅
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (P ⋙ nerveFunctor) ⊗
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (Q ⋙ nerveFunctor) where
   hom :=
     { app n := ↾fun σ => (σ ⋙ CategoryTheory.Prod.fst (P.obj n) (Q.obj n),
         σ ⋙ CategoryTheory.Prod.snd (P.obj n) (Q.obj n))
@@ -53,27 +53,27 @@ def diagonalNerveIso :
 variable {P Q} {P' Q' : SimplicialObject Cat.{u, u}}
   (α : P ⟶ P') (β : Q ⟶ Q')
 lemma diagonalNerveIso_naturality :
-    DoubleSimplicial.diagonalFunctor.map
-        (Functor.whiskerRight (change (𝟭 _) α β) nerveFunctor) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map
+        (Functor.whiskerRight (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.change (𝟭 _) α β) nerveFunctor) ≫
       (diagonalNerveIso P' Q').hom =
     (diagonalNerveIso P Q).hom ≫
-      (DoubleSimplicial.diagonalFunctor.map (Functor.whiskerRight α nerveFunctor) ⊗ₘ
-        DoubleSimplicial.diagonalFunctor.map (Functor.whiskerRight β nerveFunctor)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (Functor.whiskerRight α nerveFunctor) ⊗ₘ
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (Functor.whiskerRight β nerveFunctor)) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
   intro σ
   rfl
 lemma diagonalMap_weak
-    (hα : IsWeakHomotopyEquivalence
-      (DoubleSimplicial.diagonalFunctor.map (Functor.whiskerRight α nerveFunctor)))
-    (hβ : IsWeakHomotopyEquivalence
-      (DoubleSimplicial.diagonalFunctor.map (Functor.whiskerRight β nerveFunctor))) :
-    IsWeakHomotopyEquivalence (DoubleSimplicial.diagonalFunctor.map
-      (Functor.whiskerRight (change (𝟭 _) α β) nerveFunctor)) := by
-  have h := (isPrecompositionEquivalence_of_iso
+    (hα : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (Functor.whiskerRight α nerveFunctor)))
+    (hβ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (Functor.whiskerRight β nerveFunctor))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map
+      (Functor.whiskerRight (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.change (𝟭 _) α β) nerveFunctor)) := by
+  have h := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (diagonalNerveIso P Q)).isWeakHomotopyEquivalence.comp (weakTensor hα hβ)
   rw [← diagonalNerveIso_naturality] at h
-  exact (isPrecompositionEquivalence_of_iso
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (diagonalNerveIso P' Q')).isWeakHomotopyEquivalence.cancel_right h
 end SerrePositivity.EInfinity.Hammock.CoefficientProduct

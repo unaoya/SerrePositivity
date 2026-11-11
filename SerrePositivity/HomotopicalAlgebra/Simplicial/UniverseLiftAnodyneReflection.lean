@@ -53,27 +53,27 @@ instance preservesTerminal : PreservesLimitsOfShape (Discrete PEmpty) SSet.ulift
 
 lemma horn_terminal_map {K : SSet.{v}}
     (hK : SSet.modelCategoryQuillen.J.rlp (terminal.from K)) :
-    SSet.modelCategoryQuillen.J.rlp (terminal.from (obj.{w} K)) := by
+    SSet.modelCategoryQuillen.J.rlp (terminal.from (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K)) := by
   let e := (terminalIsTerminal.isTerminalObj SSet.uliftFunctor).uniqueUpToIso
     terminalIsTerminal
-  let a : Arrow.mk (map.{w} (terminal.from K)) ≅ Arrow.mk (terminal.from (obj.{w} K)) :=
+  let a : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} (terminal.from K)) ≅ Arrow.mk (terminal.from (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K)) :=
     Arrow.isoMk (Iso.refl _) e (by apply terminal.hom_ext)
   exact (SSet.modelCategoryQuillen.J.rlp.arrow_iso_iff a).mp
     ((horn_rightClass_iff (terminal.from K)).mpr hK)
 
 lemma kan_test_bijective {X Y K : SSet.{v}} (f : X ⟶ Y)
     (hK : SSet.modelCategoryQuillen.J.rlp (terminal.from K))
-    (hf : IsIso (anodyneQ.map (map.{w} f))) :
+    (hf : IsIso (anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} f))) :
     Function.Bijective (HomotopyClasses.pre f (K := K)) := by
-  have h := map_isIso_of_anodyneQ_isIso (HomotopyClasses.functor (obj.{w} K)).rightOp
-    (KanHomotopyClasses.rightOp_inverts _ (horn_terminal_map hK)) (map f) hf
-  have hp : IsIso ((HomotopyClasses.functor (obj.{w} K)).map ((map.{w} f).op)) :=
+  have h := map_isIso_of_anodyneQ_isIso (HomotopyClasses.functor (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K)).rightOp
+    (KanHomotopyClasses.rightOp_inverts _ (horn_terminal_map hK)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map f) hf
+  have hp : IsIso ((HomotopyClasses.functor (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K)).map ((_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} f).op)) :=
     (isIso_op_iff _).mp h
-  have hb : Function.Bijective (HomotopyClasses.pre (map.{w} f) (K := obj.{w} K)) :=
-    (isIso_iff_bijective ((HomotopyClasses.functor (obj.{w} K)).map ((map.{w} f).op))).mp hp
+  have hb : Function.Bijective (HomotopyClasses.pre (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} f) (K := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K)) :=
+    (isIso_iff_bijective ((HomotopyClasses.functor (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K)).map ((_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} f).op))).mp hp
   have he : HomotopyClasses.pre f (K := K) =
       (homotopyClassEquiv.{w} X K).symm ∘
-        HomotopyClasses.pre (map f) ∘ homotopyClassEquiv Y K := by
+        HomotopyClasses.pre (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map f) ∘ homotopyClassEquiv Y K := by
     funext x
     exact (Equiv.eq_symm_apply _).mpr (homotopyClassEquiv_pre f x)
   rw [he]
@@ -83,7 +83,7 @@ lemma kan_test_bijective {X Y K : SSet.{v}} (f : X ⟶ Y)
 lemma anodyneQ_map_isIso_reflect_of_kan {X Y : SSet.{v}} (f : X ⟶ Y)
     (hX : SSet.modelCategoryQuillen.J.rlp (terminal.from X))
     (hY : SSet.modelCategoryQuillen.J.rlp (terminal.from Y))
-    (hf : IsIso (anodyneQ.map (map.{w} f))) : IsIso (anodyneQ.map f) :=
+    (hf : IsIso (anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} f))) : IsIso (anodyneQ.map f) :=
   HomotopyClasses.map_isIso_of_tests anodyneQ (Localization.inverts _ _)
     f (kan_test_bijective f hX hf).surjective (kan_test_bijective f hY hf).injective
 
@@ -98,7 +98,7 @@ from the horn small-object argument, without assuming any model structure.
 写像・充填またはホモトピーを同じ全パラメータのまま移送する。
 -/
 lemma anodyneQ_map_isIso_reflect {X Y : SSet.{v}} (f : X ⟶ Y)
-    (hf : IsIso (anodyneQ.map (map.{w} f))) : IsIso (anodyneQ.map f) := by
+    (hf : IsIso (anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} f))) : IsIso (anodyneQ.map f) := by
   let J := SSet.modelCategoryQuillen.J.{v}
   let dx := MorphismProperty.factorizationData J.rlp.llp J.rlp (terminal.from X)
   let dy := MorphismProperty.factorizationData J.rlp.llp J.rlp (terminal.from Y)
@@ -136,7 +136,7 @@ lemma anodyneQ_map_isIso_reflect {X Y : SSet.{v}} (f : X ⟶ Y)
 写像・充填またはホモトピーを同じ全パラメータのまま移送する。
 -/
 lemma anodyneQ_map_isIso_iff {X Y : SSet.{v}} (f : X ⟶ Y) :
-    IsIso (anodyneQ.map (map.{w} f)) ↔ IsIso (anodyneQ.map f) :=
+    IsIso (anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} f)) ↔ IsIso (anodyneQ.map f) :=
   ⟨anodyneQ_map_isIso_reflect f, anodyneQ_map_isIso_of_small f⟩
 
 open HomotopicalAlgebra in
@@ -145,7 +145,7 @@ lemma weakEquivalences_iff_lift_anodyneQ_isIso [ModelCategory SSet.{v}]
     (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
     (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
     {X Y : SSet.{v}} (f : X ⟶ Y) :
-    weakEquivalences SSet.{v} f ↔ IsIso (anodyneQ.map (map.{w} f)) :=
+    weakEquivalences SSet.{v} f ↔ IsIso (anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} f)) :=
   (weakEquivalences_iff_anodyneQ_isIso hcof hfib f).trans (anodyneQ_map_isIso_iff f).symm
 
 open HomotopicalAlgebra in

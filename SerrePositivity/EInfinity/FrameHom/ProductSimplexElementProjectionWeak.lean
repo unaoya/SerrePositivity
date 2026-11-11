@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ProductSimplexProjection
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ProductSimplexLiftedOver
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver
 public import SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation
 public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
 
@@ -25,12 +25,12 @@ open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (M : SSet.{u}) (n : AsSmall.{u + 1} SimplexCategory)
 
-def firstNerveMap : nerve (productElements M n) ⟶ nerve (elements M) :=
-  nerveMap (firstComponent M n)
+def firstNerveMap : nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver.productElements M n) ⟶ nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver.elements M) :=
+  nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver.firstComponent M n)
 
-lemma firstComponent_eq_mapElements : firstComponent M n =
+lemma firstComponent_eq_mapElements : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver.firstComponent M n =
     ULiftHom.down.{0, u, u + 1} ⋙
-      (ProductSimplexProjection.projection M (ULift.down n).len).mapElements.op ⋙
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.projection M (ULift.down n).len).mapElements.op ⋙
         ULiftHom.up := rfl
 
 lemma firstNerveMap_augmentation : firstNerveMap M n ≫
@@ -38,10 +38,10 @@ lemma firstNerveMap_augmentation : firstNerveMap M n ≫
       SimplexTerminalNerve.liftedAugmentation.{u, u + 1}
         (M ⊗ SSet.stdSimplex.obj (ULift.down n)) ≫
           SSet.uliftFunctor.{u + 1, u}.map
-            (ProductSimplexProjection.projection M (ULift.down n).len) :=
+            (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.projection M (ULift.down n).len) :=
   by
     have h := SimplexTerminalNerve.liftedAugmentation_naturality.{u, u + 1}
-      (ProductSimplexProjection.projection M (ULift.down n).len)
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.projection M (ULift.down n).len)
     rw [← firstComponent_eq_mapElements] at h
     exact h
 
@@ -49,7 +49,7 @@ lemma firstNerveMap_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map (firstNerveMap M n)) := by
   let Q := AnodyneHomotopy.anodyneQ
   have hP := Hammock.anodyneQ_map_isIso_of_weak _
-    (ProductSimplexProjection.projection_weak M (ULift.down n).len)
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.projection_weak M (ULift.down n).len)
   have := UniverseLift.anodyneQ_map_isIso_of_small _ hP
   have := SimplexTerminalNerve.liftedAugmentation_localized_isIso.{u, u + 1} M
   have := SimplexTerminalNerve.liftedAugmentation_localized_isIso.{u, u + 1}
@@ -60,7 +60,7 @@ lemma firstNerveMap_localized_isIso :
       Q.map (SimplexTerminalNerve.liftedAugmentation.{u, u + 1} M)) := he.symm ▸ inferInstance
   exact (isIso_comp_right_iff _ _).1 h
 
-lemma firstNerveMap_weak : IsWeakHomotopyEquivalence (firstNerveMap M n) :=
+lemma firstNerveMap_weak : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (firstNerveMap M n) :=
   AnodyneWeakDetection.isWeakHomotopyEquivalence _ (firstNerveMap_localized_isIso M n)
 
 end SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver

@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.TotalizationWeightedReindex
 universe u
 open CategoryTheory CategoryTheory.Limits SSet
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.CosimplicialTotalization
 noncomputable section
@@ -24,7 +24,7 @@ set_option backward.isDefEq.respectTransparency.types false
 /-- BK end の Kan 性を元の重みの表示から移す。 -/
 lemma bousfieldKan_kanComplex (X : CosimplicialObject SSet.{u})
     (hX : reedyRight simplex modelCategoryQuillen.J.rlp (terminal.from X)) :
-    KanComplex (bousfieldKanHolim (AsSmall.down ⋙ X)) := by
+    KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (AsSmall.down ⋙ X)) := by
   exact WeightedEndReedyKan.kanComplex BousfieldKanWeightLatching.weight.{u} X
     BousfieldKanWeightLatching.reedyCofibrant hX
 
@@ -33,12 +33,12 @@ lemma bousfieldKanComparison_piIsomorphism (X : CosimplicialObject SSet.{u})
     (hX : reedyRight simplex modelCategoryQuillen.J.rlp (terminal.from X)) :
     letI := kanComplex X ((CosimplicialHornFibration.terminal_iff X).mp hX)
     letI := bousfieldKan_kanComplex X hX
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (bousfieldKanComparison X) := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (bousfieldKanComparison X) := by
   let := kanComplex X ((CosimplicialHornFibration.terminal_iff X).mp hX)
   let := bousfieldKan_kanComplex X hX
   let := WeightedEndReedyKan.kanComplex stdSimplex.{u} X ReedyWeightCofibrancy.standard hX
   rw [bousfieldKanComparison_eq_weightedPre]
-  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso (smallEndIso X)).comp
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso (smallEndIso X)).comp
     (CosimplicialLastVertex.originalWeightPre_piIsomorphism X hX)
 
 end

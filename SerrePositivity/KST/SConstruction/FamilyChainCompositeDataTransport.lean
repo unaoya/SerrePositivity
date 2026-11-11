@@ -19,7 +19,7 @@ open scoped Simplicial
 def FamilyChainCompositeData.precomp {T U E : SSet.{u}} {f g : U ⟶ E}
     {c : FamilyHomotopyChain f g} (D : FamilyChainCompositeData c) (j : T ⟶ U) :
     FamilyChainCompositeData (familyHomotopyChainPrecomp j c) :=
-  ⟨functorHomotopyPrecomp D.homotopy j, familyChainWitnessPrecomp j D.witness⟩
+  ⟨_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp D.homotopy j, familyChainWitnessPrecomp j D.witness⟩
 
 /-- 前合成した実円柱は、元の同じ全円柱の前合成そのもの。 -/
 lemma FamilyChainCompositeData.precomp_h {T U E : SSet.{u}} {f g : U ⟶ E}

@@ -17,12 +17,12 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory Opposite
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A B : Mon (Complex R)) [B.X.IsStrictlyLE 0]
   (n : ℤ) (hn : 0 ≤ n)
 
-def postnikovCellKanDiagram : AsSmall.{u} WalkingCospan ⥤ KanObject.{u} :=
+def postnikovCellKanDiagram : AsSmall.{u} WalkingCospan ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u} :=
   (AsSmall.down ⋙
     cospan (postnikovPerturbedClass R B n hn)
       (SquareZero.zeroSection (postnikov R B n) (postnikovShiftedLayerBimodule R B n hn 1))) ⋙
@@ -44,8 +44,8 @@ lemma postnikovCellKanCone_vertex :
       multiplicativeMappingSimplices R (cellResolution R A) (postnikov R B (n + 1)) := rfl
 
 def postnikovCellSpaceCone :
-    JoinCone (kanDiagramCoherentNerve (postnikovCellKanDiagram R A B n hn)) :=
-  (strictCoherentCone (postnikovCellKanCone R A B n hn)).cast
-    (strictCoherentDiagram_eq_kanDiagram (postnikovCellKanDiagram R A B n hn))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (postnikovCellKanDiagram R A B n hn)) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (postnikovCellKanCone R A B n hn)).cast
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram_eq_kanDiagram (postnikovCellKanDiagram R A B n hn))
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

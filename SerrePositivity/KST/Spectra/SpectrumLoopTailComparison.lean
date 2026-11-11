@@ -30,7 +30,7 @@ def circleReplacementTailComparison (X : OmegaSpectrum.{u}) :
 
 /-- 円の置換比較を一段移動した辺も元の Sp の同値。 -/
 lemma circleReplacementTailComparison_isInvertible (X : OmegaSpectrum.{u}) :
-    IsInvertibleEdge (coherentNerveEdge (circleReplacementTailComparison X)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (circleReplacementTailComparison X)) := by
   apply SpectrumMappingAcyclic.isInvertible_of_levelwise
   intro n
   exact cotensorPre_levelwise_of_anodyne CirclePower.unit
@@ -38,26 +38,26 @@ lemma circleReplacementTailComparison_isInvertible (X : OmegaSpectrum.{u}) :
 
 /-- 一段先の二つの円の cotensor の具体的な同型。 -/
 def circleReplacementTailVertexIso (X : OmegaSpectrum.{u}) :
-    VertexIso (coherentNerveVertex (rationalizationModel X))
-      (coherentNerveVertex (tail (cotensor PointedSimplicialSet.circle X))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (rationalizationModel X))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (tail (cotensor PointedSimplicialSet.circle X))) := by
   haveI := circleReplacementTailComparison_isInvertible X
   exact asIso (SSet.Truncated.HomotopyCategory.homMk
-    (coherentNerveEdge (circleReplacementTailComparison X)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (circleReplacementTailComparison X)))
 
 /-- loop の後で一段移動すると、対象ごとに元の頂点と同型。 -/
 def nativeTailLoopVertexIso (X : OmegaSpectrum.{u}) :
-    VertexIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
       (nativeTail.app (Opposite.op ⦋0⦌) (nativeLoop.app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex X))) (coherentNerveVertex X) := by
-  have h := VertexIso.map
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X))) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map
     (nativeLoopVertexIso (BasedLoop.square X) ≪≫ (BasedLoop.circleVertexIso X).symm) nativeTail
   rw [nativeTail_vertex] at h
   exact h ≪≫ (circleReplacementTailVertexIso X).symm ≪≫ (originalLoopModelVertexIso X).symm
 
 /-- 元の Sp の一段移動関手も本質的全射。 -/
-lemma nativeTail_essentiallySurjective : IsEssentiallySurjective nativeTail.{u} := by
+lemma nativeTail_essentiallySurjective : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective nativeTail.{u} := by
   intro x
-  obtain ⟨X, rfl⟩ := (coherentNerveVertexEquiv OmegaSpectrum.{u}).surjective x
-  exact ⟨nativeLoop.app (Opposite.op ⦋0⦌) (coherentNerveVertex X), ⟨nativeTailLoopVertexIso X⟩⟩
+  obtain ⟨X, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertexEquiv OmegaSpectrum.{u}).surjective x
+  exact ⟨nativeLoop.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X), ⟨nativeTailLoopVertexIso X⟩⟩
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

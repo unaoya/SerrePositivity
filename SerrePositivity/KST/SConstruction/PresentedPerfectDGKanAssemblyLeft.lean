@@ -34,7 +34,7 @@ def presentedPerfectDGKanAssemblyLeftTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGKanAssemblySourceFunctor A r)
       (presentedPerfectDGKanAssemblyLeftTargetFunctor A r) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationPostcompose _ _
     (coaugmentedThenSuspensionFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit)
     (presentedPerfectDGOneDirectionPointedComparison A r)
 

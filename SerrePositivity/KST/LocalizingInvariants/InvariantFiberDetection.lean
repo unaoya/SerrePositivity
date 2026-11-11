@@ -16,8 +16,8 @@ open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 
-variable {E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hE : IsLocalizingInvariant E)
-  (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
+variable {E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hE : IsLocalizingInvariant E)
+  (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.VerdierSequence.{u})
 include hE
 
 lemma projection_bijective_of_leftGroups
@@ -47,14 +47,14 @@ lemma inclusion_bijective_of_rightGroups
 /-- 左端の全整数 π が消滅すれば、元の商関手の像は Sp の同値。 -/
 lemma projection_isInvertible_of_leftGroups
     (hA : ∀ j : ℤ, Subsingleton (valueHomotopyGroup E d.left j)) :
-    IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).map E).toTruncated :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow d.projection).map E).toTruncated :=
   value_isInvertible_of_piIsomorphism E d.projection
     (hE.projection_bijective_of_leftGroups d hA)
 
 /-- 右端の全整数 π が消滅すれば、元の包含関手の像は Sp の同値。 -/
 lemma inclusion_isInvertible_of_rightGroups
     (hC : ∀ j : ℤ, Subsingleton (valueHomotopyGroup E d.right j)) :
-    IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).map E).toTruncated :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow d.inclusion).map E).toTruncated :=
   value_isInvertible_of_piIsomorphism E d.inclusion
     (hE.inclusion_bijective_of_rightGroups d hC)
 

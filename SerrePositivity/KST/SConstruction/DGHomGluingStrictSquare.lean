@@ -54,21 +54,21 @@ def dgStrictSquareClosedComparison (x : P) :
 
 /-- 元の厳密可換四角形から、実 Hom gluing への標準 dg 対角。 -/
 def dgStrictSquareDiagonal :
-    DGFunctor R P (DGGluingObject R C D (dgHomGluingBimodule R C D E p q)) :=
+    DGFunctor R P (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q)) :=
   dgHomGluingFunctor R C D E p q L G (dgStrictSquareClosedComparison R C D E p q L G h)
     (dgFunctorEq_closed_naturality (L.comp p) (G.comp q) h)
 
 /-- 同じ標準対角の左射影は、元の四角形の左関手そのもの。 -/
 lemma dgStrictSquareDiagonal_left :
     (dgStrictSquareDiagonal R C D E p q L G h).comp
-      (dgGluingLeft R C D (dgHomGluingBimodule R C D E p q)) = L :=
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D (dgHomGluingBimodule R C D E p q)) = L :=
   dgHomGluingFunctor_left R C D E p q L G (dgStrictSquareClosedComparison R C D E p q L G h)
     (dgFunctorEq_closed_naturality (L.comp p) (G.comp q) h)
 
 /-- 同じ標準対角の右射影は、元の四角形の右関手そのもの。 -/
 lemma dgStrictSquareDiagonal_right :
     (dgStrictSquareDiagonal R C D E p q L G h).comp
-      (dgGluingRight R C D (dgHomGluingBimodule R C D E p q)) = G :=
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D (dgHomGluingBimodule R C D E p q)) = G :=
   dgHomGluingFunctor_right R C D E p q L G (dgStrictSquareClosedComparison R C D E p q L G h)
     (dgFunctorEq_closed_naturality (L.comp p) (G.comp q) h)
 

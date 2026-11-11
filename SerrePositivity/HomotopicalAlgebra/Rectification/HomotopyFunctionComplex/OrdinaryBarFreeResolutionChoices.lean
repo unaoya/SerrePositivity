@@ -66,7 +66,7 @@ lemma diagram_face (n : ℕ) (i : Fin (n + 2)) : diagram (C := C) hcof hfib P (n
 
 lemma diagram_degeneracy (n : ℕ) (i : Fin (n + 1)) : degeneracyFunctor (D C) n i ⋙
     diagram hcof hfib P (n + 1) = diagram hcof hfib P n ⋙
-      OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ sigma n i) :=
+      OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i) :=
   OrdinaryBarFreeResolutionTower.diagram_degeneracy hcof hfib (D C) P (seed C hcof hfib P) n i
 
 def projection (n : ℕ) : degree (D C) (n + 1) ⥤ D C :=

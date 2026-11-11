@@ -18,7 +18,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet InfinityCategories Loca
 方針：元の零方向からの包含を全多次数図式の自然性で移す。
 規約：同じ原像を使う。使われ方：全零境界への制限。 -/
 lemma stableOneDirectionAction_mem_zeroRange (r : ℕ) (j : Fin r)
-    (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) (n : SimplexCategoryᵒᵖ)
+    (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) (n : SimplexCategoryᵒᵖ)
     (x : ((oneDirectionRealizationFunctor r).obj (stableCategoryModel C)).obj n)
     (p : (C ⟶[SSet.{u}] D).obj n)
     (hx : x ∈ (oneDirectionZeroRange r j (stableCategoryModel C)).obj n) :
@@ -36,7 +36,7 @@ lemma stableOneDirectionAction_mem_zeroRange (r : ℕ) (j : Fin r)
 方針：元の合併の元を同じ方向に属する元として保つ。
 規約：空の合併も含む。使われ方：元の全境界商への降下。 -/
 lemma stableOneDirectionAction_mem_fatBoundary (r : ℕ)
-    (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) (n : SimplexCategoryᵒᵖ)
+    (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) (n : SimplexCategoryᵒᵖ)
     (x : ((oneDirectionRealizationFunctor r).obj (stableCategoryModel C)).obj n)
     (p : (C ⟶[SSet.{u}] D).obj n)
     (hx : x ∈ (oneDirectionFatBoundary r (stableCategoryModel C)).obj n) :
@@ -49,7 +49,7 @@ lemma stableOneDirectionAction_mem_fatBoundary (r : ℕ)
 /-- 概要：元の全零境界への全パラメータ制限作用。
 方針：保存した各単体の像を同じ部分複体へ制限する。
 規約：元の境界包含を保持する。使われ方：商作用の崩壊条件。 -/
-def stableOneDirectionBoundaryAction (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+def stableOneDirectionBoundaryAction (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (oneDirectionFatBoundary r (stableCategoryModel C) : SSet.{u}) ⊗
       (C ⟶[SSet.{u}] D) ⟶
         (oneDirectionFatBoundary r (stableCategoryModel D) : SSet.{u}) :=
@@ -63,7 +63,7 @@ def stableOneDirectionBoundaryAction (r : ℕ) (C D : _root_.SerrePositivity.Inf
 /-- 概要：境界包含後には同じ元の全作用を回収する。
 方針：部分複体への制限の包含式を使う。
 規約：全単体の等式。使われ方：同じ商の普遍性。 -/
-lemma stableOneDirectionBoundaryAction_inclusion (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableOneDirectionBoundaryAction_inclusion (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     stableOneDirectionBoundaryAction r C D ≫
         (oneDirectionFatBoundary r (stableCategoryModel D)).ι =
       ((oneDirectionFatBoundary r (stableCategoryModel C)).ι ⊗ₘ 𝟙 _) ≫

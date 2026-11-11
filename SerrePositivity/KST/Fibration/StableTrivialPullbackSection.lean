@@ -15,7 +15,7 @@ open CategoryTheory Limits SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 open Relative
-variable {E Y T : StableModel.{u}} (p : E ⟶ Y) [TrivialKanFibration p.val]
+variable {E Y T : StableModel.{u}} (p : E ⟶ Y) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration p.val]
   (s : Y ⟶ E) (hs : s ≫ p = 𝟙 Y) (e : T ⟶ Y)
 
 /-- 概要：元の指定切断を保った基底変換の実切断。
@@ -51,13 +51,13 @@ def stableTrivialPullbackSectionEquivalence :
     StableModelEquivalence (stableTrivialPullback p e) T where
   hom := stableTrivialPullbackSnd p e
   inv := stableTrivialPullbackSection p s hs e
-  homInvIso := functorIsoOfTrivialKanFibration (stableTrivialPullbackSnd p e).val _ _ (by
+  homInvIso := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorIsoOfTrivialKanFibration (stableTrivialPullbackSnd p e).val _ _ (by
     change ((stableTrivialPullbackSnd p e ≫ stableTrivialPullbackSection p s hs e) ≫
       stableTrivialPullbackSnd p e).val = _
     rw [Category.assoc, stableTrivialPullbackSection_snd, Category.comp_id]
     rfl)
   invHomIso := by
-    change FunctorIso (stableTrivialPullbackSection p s hs e ≫
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (stableTrivialPullbackSection p s hs e ≫
       stableTrivialPullbackSnd p e).val (𝟙 T.carrier)
     rw [stableTrivialPullbackSection_snd]
     exact Iso.refl _

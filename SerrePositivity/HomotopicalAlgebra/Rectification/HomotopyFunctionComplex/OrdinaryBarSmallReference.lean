@@ -55,7 +55,7 @@ lemma value_kan (X : Cᵒᵖ × C) :
       (ReplacementMapping.ofBase X).1 (ReplacementMapping.ofBase X).2)
 
 def comparisonIso (X : Cᵒᵖ × C) :
-    AnodyneHomotopy.anodyneQ.obj (UniverseLift.obj.{max u v} (value hcof hfib X)) ≅
+    AnodyneHomotopy.anodyneQ.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (value hcof hfib X)) ≅
       AnodyneHomotopy.anodyneQ.obj (OrdinaryResolutionBar.functor.obj X) :=
   OrdinaryBarReplacementComparison.presentationIso hcof hfib AnodyneHomotopy.anodyneQ
     (Localization.inverts AnodyneHomotopy.anodyneQ SSet.anodyneExtensions)
@@ -63,7 +63,7 @@ def comparisonIso (X : Cᵒᵖ × C) :
 
 /-- This is an actual map, chosen to represent the original comparison inverse. -/
 def toReference (X : Cᵒᵖ × C) : OrdinaryResolutionBar.functor.obj X ⟶
-    UniverseLift.obj.{max u v} (value hcof hfib X) :=
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (value hcof hfib X) :=
   KanLocalizedRepresentatives.representative AnodyneHomotopy.anodyneQ
     (UniverseLift.horn_terminal_map (value_kan hcof hfib X))
     (comparisonIso hcof hfib X).inv
@@ -81,7 +81,7 @@ lemma toReference_isIso (X : Cᵒᵖ × C) :
 /-- Any other representative of that same inverse is connected by an actual interval. -/
 lemma toReference_homotopy (X : Cᵒᵖ × C)
     (f : OrdinaryResolutionBar.functor.obj X ⟶
-      UniverseLift.obj.{max u v} (value hcof hfib X))
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (value hcof hfib X))
     (hf : AnodyneHomotopy.anodyneQ.map f = (comparisonIso hcof hfib X).inv) :
     Nonempty (SSet.Homotopy (toReference hcof hfib X) f) :=
   (KanLocalizedRepresentatives.map_eq_iff_homotopy AnodyneHomotopy.anodyneQ

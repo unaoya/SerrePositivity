@@ -38,7 +38,7 @@ def necklaceCubicalCompose :
     (necklaceCubicalDiagram K y z)).desc (necklaceCubicalComposeCocone K x y z)
 
 /-- 全ての元の両生成射について、合成は指定した wedge の生成射を回収する。 -/
-lemma necklaceCubicalCompose_cell (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z) :
+lemma necklaceCubicalCompose_cell (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K y z) :
     cubicalDayTensorMap (necklaceCubicalCell T) (necklaceCubicalCell U) ≫
       necklaceCubicalCompose K x y z = necklaceCubicalComposeCell T U := by
   have h := (cubicalDayPairIsColimit (necklaceCubicalDiagram K x y)
@@ -51,7 +51,7 @@ lemma necklaceCubicalCompose_cell (T : _root_.SerrePositivity.InfinityCategories
 lemma necklaceCubicalTensor_hom_ext {M : CubicalSet.{u}}
     {f g : cubicalDayTensor (necklaceCubicalMapping K x y)
       (necklaceCubicalMapping K y z) ⟶ M}
-    (h : ∀ (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z),
+    (h : ∀ (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K y z),
       cubicalDayTensorMap (necklaceCubicalCell T) (necklaceCubicalCell U) ≫ f =
         cubicalDayTensorMap (necklaceCubicalCell T) (necklaceCubicalCell U) ≫ g) : f = g := by
   apply (cubicalDayPairIsColimit (necklaceCubicalDiagram K x y)

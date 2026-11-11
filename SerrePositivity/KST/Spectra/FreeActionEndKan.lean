@@ -17,7 +17,7 @@ universe u
 
 open CategoryTheory CategoryTheory.Limits MonoidalCategory MonoidalClosed SSet
 open scoped MonoidalClosed
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.FreeActionFamily
 
@@ -31,9 +31,9 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：群の有限性は不要。
 使われ方：Goerss–Jardine VIII §2。同変 cochain の充填。 -/
 instance end_kanComplex {G : Type u} [Group G] (S : Type u) (B : Action SSet.{u} G)
-    [KanComplex B.V] : KanComplex (weightedSections (weight S) (coefficients B)) := by
+    [KanComplex B.V] : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (weight S) (coefficients B)) := by
   let : KanComplex ((ihom ((Functor.const (SimplexCategoryᵒᵖ)).obj S)).obj B.V) := inferInstance
-  exact kanComplex_of_iso (endIso S B).symm
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanComplex_of_iso (endIso S B).symm
 
 /-- 概要：点つき単体集合の作用の実際の係数図式。
 方針：小さな一対象圏上の点つき作用図式として表示する。
@@ -52,10 +52,10 @@ lemma pointedEnd_kanComplex {G : Type u} [Group G] (S : Type u)
     KanComplex (PointedWeightedEnd.obj (weight S) (pointedCoefficients B)).right := by
   let D := (PointedSimplicialSet.forget.mapAction G).obj B
   let : KanComplex D.V := inferInstanceAs (KanComplex B.V.right)
-  let : KanComplex (weightedSections (weight S)
+  let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (weight S)
       (pointedCoefficients B ⋙ PointedSimplicialSet.forget)) :=
     end_kanComplex S D
-  exact kanComplex_of_iso (PointedWeightedEnd.underlyingIso (weight S) (pointedCoefficients B)).symm
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanComplex_of_iso (PointedWeightedEnd.underlyingIso (weight S) (pointedCoefficients B)).symm
 
 end
 

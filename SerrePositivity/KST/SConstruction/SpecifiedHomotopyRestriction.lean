@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.SquareFrameHomotopyPostcomp
-public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerHom
 
 /-!
 概要：元全ホモトピーの厳密な制限と射の類の保持から、指定全比較そのものを回収する。
@@ -21,20 +21,20 @@ open scoped Simplicial
 規約：全比較・元端点等号を保持。使われ方：指定境界の厳密回収。 -/
 lemma specifiedHomotopyRestrictionIso {A B X : SSet.{u}}
     {f g : A ⟶ X} {f' g' : B ⟶ X}
-    (H : SSet.Homotopy f g) (e : FunctorIso f g)
-    (he : e.hom = Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H))
+    (H : SSet.Homotopy f g) (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g)
+    (he : e.hom = Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))
     (q : B ⟶ A) (hf : q ≫ f = f') (hg : q ≫ g = g')
-    (H' : SSet.Homotopy f' g') (e' : FunctorIso f' g')
-    (he' : e'.hom = Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H'))
+    (H' : SSet.Homotopy f' g') (e' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f' g')
+    (he' : e'.hom = Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H'))
     (hh : (q ▷ (Δ[1] : SSet.{u})) ≫ H.h = H'.h) :
-    F2.functorIsoOfEq (e.precomp q) hf hg = e' := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (e.precomp q) hf hg = e' := by
   subst f' g'
   change e.precomp q = e'
   apply Iso.ext
-  rw [F2.functorIso_precomp_hom, he, he']
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_hom, he, he']
   change Truncated.HomotopyCategory.homMk
-    ((functorEdgeOfSimplicialHomotopy H).map ((truncation 2).map ((pre q).app X))) =
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H')
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H).map ((truncation 2).map ((pre q).app X))) =
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H')
   apply congrArg Truncated.HomotopyCategory.homMk
   apply Truncated.Edge.ext
   change ((pre q).app X).app (Opposite.op ⦋1⦌)
@@ -44,14 +44,14 @@ lemma specifiedHomotopyRestrictionIso {A B X : SSet.{u}}
 方針：元関手辺の後合成と curry の自然性を使う。
 規約：元全比較の値を保持。使われ方：Cat^perf 辺比較の StableInfinity 像。 -/
 lemma specifiedHomotopyPostcomp_class {A X Y : SSet.{u}} {f g : A ⟶ X}
-    (H : SSet.Homotopy f g) (e : FunctorIso f g)
-    (he : e.hom = Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H))
+    (H : SSet.Homotopy f g) (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g)
+    (he : e.hom = Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))
     (k : X ⟶ Y) : (e.postcomp k).hom =
       Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (specifiedHomotopyPostcomp H k)) := by
-  rw [F2.functorIso_postcomp_hom, he]
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (specifiedHomotopyPostcomp H k)) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_hom, he]
   change Truncated.HomotopyCategory.homMk
-    ((functorEdgeOfSimplicialHomotopy H).map ((truncation 2).map ((ihom A).map k))) = _
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H).map ((truncation 2).map ((ihom A).map k))) = _
   apply congrArg Truncated.HomotopyCategory.homMk
   apply Truncated.Edge.ext
   change ((ihom A).map k).app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv (curry H.h)) =
@@ -62,12 +62,12 @@ lemma specifiedHomotopyPostcomp_class {A X Y : SSet.{u}} {f g : A ⟶ X}
 方針：元端点等号を消去し、同じ全写像から同じ関手辺の類を回収する。
 規約：元全比較を選び直さない。使われ方：元正規形の辺比較と実四辺の照合。 -/
 lemma specifiedHomotopyEndpointIso {A X : SSet.{u}} {f g f' g' : A ⟶ X}
-    (H : SSet.Homotopy f g) (e : FunctorIso f g)
-    (he : e.hom = Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H))
+    (H : SSet.Homotopy f g) (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g)
+    (he : e.hom = Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))
     (hf : f = f') (hg : g = g') (H' : SSet.Homotopy f' g')
     (hh : H.h = H'.h) :
-    (F2.functorIsoOfEq e hf hg).hom =
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H') := by
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq e hf hg).hom =
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H') := by
   subst f' g'
   change e.hom = _
   rw [he]

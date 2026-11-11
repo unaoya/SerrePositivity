@@ -80,7 +80,7 @@ theorem cochain_acyclic_of_completedCover_resolution_acyclic
       (baseChangeScalarModule (modPMap p P.deltaStructure.frobeniusLift)))
     (hR : IsSMulRegular (A ⧸ P.ideal) (p : A ⧸ P.ideal))
     {L K : CochainComplex (ModuleCat.{u} A) ℤ} (q : L ⟶ K) [QuasiIso q]
-    (hL : complexSemifree A L)
+    (hL : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A L)
     (hp : IsComplete A (p : A) (DerivedCategory.Q.obj K))
     (hd : IsComplete A P.generator (DerivedCategory.Q.obj K))
     (h : ∀ i : ℤ, IsZero (((completedCoverModelFunctor P).obj L).homology i)) :
@@ -105,7 +105,7 @@ theorem exists_completedCover_detection_model
     (hp : IsComplete A (p : A) (DerivedCategory.Q.obj K))
     (hd : IsComplete A P.generator (DerivedCategory.Q.obj K)) :
     ∃ (L : CochainComplex (ModuleCat.{u} A) ℤ) (q : L ⟶ K), QuasiIso q ∧
-      complexSemifree A L ∧ complexKFlat A L ∧
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A L ∧ complexKFlat A L ∧
       complexKFlat (crystallineCoverRing P) (baseChange (crystallineCoverMap P).toRingHom L) ∧
       ((∀ i : ℤ, IsZero (((completedCoverModelFunctor P).obj L).homology i)) →
         ∀ i : ℤ, IsZero (K.homology i)) := by
@@ -121,7 +121,7 @@ theorem exists_completedCover_detection_model
 使われ方：Theorem 6.3 の普遍基底への帰着の古典的な入力。 -/
 theorem universal_cochain_acyclic_of_completedCover_resolution_acyclic
     {L K : CochainComplex (ModuleCat.{u} (UniversalOrientedPrismRing.{u} p)) ℤ}
-    (q : L ⟶ K) [QuasiIso q] (hL : complexSemifree _ L)
+    (q : L ⟶ K) [QuasiIso q] (hL : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree _ L)
     (hp : IsComplete _ (p : UniversalOrientedPrismRing.{u} p) (DerivedCategory.Q.obj K))
     (hd : IsComplete _ (universalOrientedPrism.{u} p).generator (DerivedCategory.Q.obj K))
     (h : ∀ i : ℤ, IsZero

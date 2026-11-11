@@ -22,37 +22,37 @@ open CategoryTheory HomotopicalAlgebra
 namespace SerrePositivity.EInfinity.BarrattEccles
 variable (A : Type u) [CommRing A] (X Y : (operad A).Algebra)
 
-def algebraHammockEraseSimplex {w : Hammock.Word} (j : Fin w.length) {n : SimplexCategoryᵒᵖ}
-    (τ : (algebraHammockGraph A w X Y).obj n) (hτ : ∀ r, Hammock.IdentityColumn (τ.obj r) j) :
-    (algebraHammockGraph A (Hammock.Word.erase w j) X Y).obj n := by
+def algebraHammockEraseSimplex {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (j : Fin w.length) {n : SimplexCategoryᵒᵖ}
+    (τ : (algebraHammockGraph A w X Y).obj n) (hτ : ∀ r, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj r) j) :
+    (algebraHammockGraph A (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.erase w j) X Y).obj n := by
   let := modelCategory A
   exact Hammock.eraseSimplex (weakEquivalences (operad A).Algebra) X Y j τ hτ
 
-lemma algebraHammockEraseSimplex_fac {w : Hammock.Word} (j : Fin w.length)
+lemma algebraHammockEraseSimplex_fac {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (j : Fin w.length)
     {n : SimplexCategoryᵒᵖ} (τ : (algebraHammockGraph A w X Y).obj n)
-    (hτ : ∀ r, Hammock.IdentityColumn (τ.obj r) j) :
-    (algebraHammockGraphMap A (Hammock.Word.eraseInclusion w j) X Y).app n
+    (hτ : ∀ r, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj r) j) :
+    (algebraHammockGraphMap A (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion w j) X Y).app n
         (algebraHammockEraseSimplex A X Y j τ hτ) = τ := by
   let := modelCategory A
   exact Hammock.eraseSimplex_fac (weakEquivalences (operad A).Algebra) X Y j τ hτ
 
 /-- 同じ元の全射列を保持する、基本削除後の未縮約対象。 -/
-def algebraHammockEraseRaw {w : Hammock.Word} (j : Fin w.length) {n : SimplexCategoryᵒᵖ}
-    (τ : (algebraHammockGraph A w X Y).obj n) (hτ : ∀ r, Hammock.IdentityColumn (τ.obj r) j) :
+def algebraHammockEraseRaw {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (j : Fin w.length) {n : SimplexCategoryᵒᵖ}
+    (τ : (algebraHammockGraph A w X Y).obj n) (hτ : ∀ r, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj r) j) :
     algebraHammockRaw A X Y n :=
-  ⟨Hammock.Word.erase w j, algebraHammockEraseSimplex A X Y j τ hτ⟩
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.erase w j, algebraHammockEraseSimplex A X Y j τ hτ⟩
 
-lemma algebraHammockEraseRaw_reduction {w : Hammock.Word} (j : Fin w.length)
+lemma algebraHammockEraseRaw_reduction {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (j : Fin w.length)
     {n : SimplexCategoryᵒᵖ} (τ : (algebraHammockGraph A w X Y).obj n)
-    (hτ : ∀ r, Hammock.IdentityColumn (τ.obj r) j) :
+    (hτ : ∀ r, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj r) j) :
     algebraHammockRawReduction A X Y ⟨w, τ⟩ (algebraHammockEraseRaw A X Y j τ hτ) := by
   let := modelCategory A
   exact Hammock.Reduction.erase j τ hτ
 
 /-- 元の二つの削除は全次数で、各側0〜1段の同じ元の対象への合流を持つ。 -/
-lemma algebraHammockEraseErase_join {w : Hammock.Word} {n : SimplexCategoryᵒᵖ}
+lemma algebraHammockEraseErase_join {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {n : SimplexCategoryᵒᵖ}
     (τ : (algebraHammockGraph A w X Y).obj n) (j k : Fin w.length)
-    (hj : ∀ r, Hammock.IdentityColumn (τ.obj r) j) (hk : ∀ r, Hammock.IdentityColumn (τ.obj r) k) :
+    (hj : ∀ r, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj r) j) (hk : ∀ r, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj r) k) :
     ∃ q : algebraHammockRaw A X Y n,
       Relation.ReflGen (algebraHammockRawReduction A X Y) (algebraHammockEraseRaw A X Y j τ hj) q ∧
       Relation.ReflGen (algebraHammockRawReduction A X Y)

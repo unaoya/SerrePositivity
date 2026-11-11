@@ -31,7 +31,7 @@ open SerrePositivity.DiagramModel SerrePositivity.Quillen
 namespace SerrePositivity.KST.Descent
 
 variable (K : Type u) [SmallCategory K] [ModelCategory SSet.{u}]
-  (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  (I J : MorphismProperty SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
 
 /-- 概要：指定増強つき図式の同型は実際の降下条件を保持（補題 3.2）。
 方針：指定増強の自然性と両射影の同型から Arrow の同型を構成する。

@@ -21,20 +21,20 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma localizationHoPre_nerve_fullyFaithful {X Q : SSet.{u}} [Quasicategory Q]
-    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : IsLocalization F W)
+    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization F W)
     (A : Type u) [Category.{u} A] :
-    IsFullyFaithful (nerveMap ((Functor.whiskeringLeft
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (nerveMap ((Functor.whiskeringLeft
       (hoFunctor.obj X) (hoFunctor.obj Q) A).obj (hoFunctor.map F).toFunctor)) := by
-  have hx : IsFullyFaithful (homotopyNerveExponentialIso X A).hom :=
-    (qCatEquivalenceOfIso (homotopyNerveExponentialIso X A)).isFullyFaithful
-  have hq : IsFullyFaithful (homotopyNerveExponentialIso Q A).hom :=
-    (qCatEquivalenceOfIso (homotopyNerveExponentialIso Q A)).isFullyFaithful
+  have hx : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (homotopyNerveExponentialIso X A).hom :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (homotopyNerveExponentialIso X A)).isFullyFaithful
+  have hq : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (homotopyNerveExponentialIso Q A).hom :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (homotopyNerveExponentialIso Q A)).isFullyFaithful
   apply hx.cancel_right
   rw [homotopyNerveExponentialIso_precomp]
   exact hq.comp (localizationPre_fullyFaithful F W hF)
 
 def localizationHoPre_fullyFaithful {X Q : SSet.{u}} [Quasicategory Q]
-    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : IsLocalization F W)
+    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization F W)
     (A : Type u) [Category.{u} A] :
     ((Functor.whiskeringLeft (hoFunctor.obj X) (hoFunctor.obj Q) A).obj
       (hoFunctor.map F).toFunctor).FullyFaithful :=

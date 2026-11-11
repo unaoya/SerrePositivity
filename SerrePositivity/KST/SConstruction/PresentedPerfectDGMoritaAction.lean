@@ -21,18 +21,18 @@ variable (A : Type u) [CommRing A] (D E : Type v)
 
 /-- 元の主 Perf 同値は、同じラベル付き native Perf 作用も同値にする。 -/
 lemma presentedPerfectDGMoritaAction_isQCatEquivalence :
-    IsQCatEquivalence (dgNerve.map (presentedPerfectDGAction A D E F)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGAction A D E F)) := by
   have hd := (presentedPerfectDGNerveEquivalence A D).isQCatEquivalence
   have he := (presentedPerfectDGNerveEquivalence A E).isQCatEquivalence
   have hp := perfectDGMoritaNerve_isQCatEquivalence A D E F
-  have hcomp : IsQCatEquivalence (dgNerve.map
+  have hcomp : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
       ((presentedPerfectDGEvaluation A D).comp (perfectDGExtension A D E F))) := by
-    rw [dgNerve.map_comp]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp]
     exact hd.comp hp
   have hs := (dgNerve_map_isQCatEquivalence_iff_standard _).mp hcomp
   have ht := hs.ofFunctorIso (presentedPerfectDGStandardActionComparisonIso A D E F)
   have hn := (dgNerve_map_isQCatEquivalence_iff_standard _).mpr ht
-  rw [dgNerve.map_comp] at hn
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp] at hn
   exact he.cancel_right hn
 
 end SerrePositivity.KST.SConstruction

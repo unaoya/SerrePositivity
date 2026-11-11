@@ -23,28 +23,28 @@ lemma dgFunctorNativeIdentitySimplex_point (N : ℕ) :
 
 /-- 元の恒等関手の native 単位単体を作用させると、元の全 Perf 単体を回収する。 -/
 lemma presentedPerfectDGNativeActionSimplex_unit {N : ℕ}
-    (x : DGNerve.Simplex A (PresentedPerfectDGObject A D) N) :
+    (x : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (PresentedPerfectDGObject A D) N) :
     presentedPerfectDGNativeActionSimplex A D D x (dgFunctorNativeIdentitySimplex A D N) = x := by
   rw [dgFunctorNativeIdentitySimplex_point, presentedPerfectDGNativeActionSimplex_fixed,
     presentedPerfectDGAction_id]
-  apply DGNerve.Simplex.ext
-  exact DGNerve.SimplexData.map_id x.toSimplexData
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.SimplexData.map_id x.toSimplexData
 
 /-- 元の恒等関手を選ぶ単位射による全単体的右作用は、元の右単位射。 -/
 lemma presentedPerfectDGNativeCoreAction_unit :
-    (𝟙 (dgNerve A (PresentedPerfectDGObject A D)) ⊗ₘ
+    (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D)) ⊗ₘ
         presentedPerfectDGNativeParameterPoint A D D (DGFunctor.id D)) ≫
         presentedPerfectDGNativeCoreAction A D D =
-      (ρ_ (dgNerve A (PresentedPerfectDGObject A D))).hom := by
+      (ρ_ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D))).hom := by
   rw [presentedPerfectDGNativeCoreAction_fixed, presentedPerfectDGAction_id,
-    dgNerve.map_id, Category.comp_id]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_id, Category.comp_id]
 
 /-- 元の恒等関手を選ぶ単位射の curry 像は、関手空間の元の豊穣恒等射。 -/
 lemma presentedPerfectDGNativeFamilyMap_unit :
     presentedPerfectDGNativeParameterPoint A D D (DGFunctor.id D) ≫
         presentedPerfectDGNativeFamilyMap A D D =
-      MonoidalClosed.id (dgNerve A (PresentedPerfectDGObject A D)) := by
-  rw [presentedPerfectDGNativeFamilyMap_fixed, presentedPerfectDGAction_id, dgNerve.map_id]
+      MonoidalClosed.id (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D)) := by
+  rw [presentedPerfectDGNativeFamilyMap_fixed, presentedPerfectDGAction_id, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_id]
   simp only [curry', Category.comp_id, MonoidalClosed.id]
 
 end SerrePositivity.KST.SConstruction

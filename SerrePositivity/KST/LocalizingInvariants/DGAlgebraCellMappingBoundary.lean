@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeConvolutionTargetTrivial
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSmallMappingCellLift
-public import SerrePositivity.InfinityCategories.Core.UniverseBoundary
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseBoundary
 
 /-!
 概要：全射擬同型な標的射は、cell 写像上で全境界に対する右持ち上げ性を持つ。
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory Opposite
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R)) {X B : Mon (Complex R)}
   (q : X ⟶ B) (hs : EInfinity.projectiveFibrations R q.hom) (hq : QuasiIso q.hom)
@@ -38,8 +38,8 @@ lemma multiplicativeCellMapping_boundary_rlp :
         (relativeConvolutionRestriction_quasiIso_of_target_trivial R q _ hs hq) a b sq.w
       exact ⟨c, ha, hb⟩ }
   exact HasLiftingProperty.of_arrow_iso_left
-    (Arrow.isoMk (uliftBoundaryIso.{0, u} n) (uliftStdSimplexIso.{0, u} n)
-      (uliftBoundaryIso_ι n))
+    (Arrow.isoMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftBoundaryIso.{0, u} n) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftStdSimplexIso.{0, u} n)
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftBoundaryIso_ι n))
     (multiplicativeMappingPostcompose R (cellResolution R A) q) (hip := hsmall)
 
 lemma multiplicativeCellMapping_mono_rlp :

@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：horn 内の面があればその最大の面の欠けた頂点を使い、なければ k 以外の任意の頂点を使う。
 規約：Moss 2020 Proposition 21 の Kan 性に向けた候補の horn への包含の証明。
 使われ方：二重細分の nerve の各単体の像を horn に制限する。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

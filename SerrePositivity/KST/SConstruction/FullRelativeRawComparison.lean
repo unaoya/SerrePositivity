@@ -25,11 +25,11 @@ variable (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
   (H : ∀ n, SSet.Homotopy (a ≫ RawSpectrumMapping.evaluation X Y n)
     (b ≫ RawSpectrumMapping.evaluation X Y n))
   (L : ∀ n, SSet.Homotopy
-    ((H (n + 1)).h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+    ((H (n + 1)).h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
     ((H n).h ≫ RawSpectrumMapping.step X Y n))
   (hL : ∀ n, (fullCylinderBoundaryInclusion j ▷ (Δ[1] : SSet.{u})) ≫ (L n).h =
     fst (fullCylinderBoundary j) Δ[1] ≫ fullCylinderBoundaryInclusion j ≫
-      (H (n + 1)).h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+      (H (n + 1)).h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
 
 /-- 全入力境界と比較時刻の両端を同時に保持して全段を束ねた実 raw 写像。 -/
 def fullRelativeRawComparisonMap : U ⊗ (Δ[1] : SSet.{u}) ⟶ RawSpectrumMapping.space X Y :=

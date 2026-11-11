@@ -30,9 +30,9 @@ variable (R : Type u) [CommRing R] (D : Type (max (u + 1) v)) [DGCategory R D] [
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ) (Z : DGKappaZeroInput R D I)
   (F : (Δ[1] ⊗ Δ[1] : SSet.{max (u + 1) v + 1}) ⟶
     dgKInputInfinity.{u, max (u + 1) v} R)
-  (hz : IsZeroVertex (squareVertex (F ≫ dgKInputK R) 0 1))
-  (hMiddle : squareVertex F 1 0 = coherentNerveVertex (dgKappaResolvedConeKInput R D I))
-  (hRight : squareVertex F 1 1 = coherentNerveVertex (dgKappaSuspensionKInput R D I))
+  (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (F ≫ dgKInputK R) 0 1))
+  (hMiddle : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedConeKInput R D I))
+  (hRight : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaSuspensionKInput R D I))
 
 
 /-- 明示四角形に条件付きで、同じ実 loop から固定 native loop への逆比較を実辺で表す。 -/
@@ -40,8 +40,8 @@ def dgKappaSuspensionConnectiveLoopInverseEdge :
     Truncated.Edge (X := (truncation 2).obj Sp.{max (u + 1) v})
       (dgKappaSuspensionConnectiveLoopSquare R D I Z F hz hMiddle hRight).vertex
       (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I)))) :=
-  Classical.choose (homotopyCategory_homMk_surjective _ _
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I)))) :=
+  Classical.choose (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective _ _
     (OmegaSpectrum.nativeLoopVertexIso
       (dgKappaSuspensionConnectiveLoopSquare R D I Z F hz hMiddle hRight)).inv)
 
@@ -51,16 +51,16 @@ theorem dgKappaSuspensionConnectiveLoopInverseEdge_hom :
       (dgKappaSuspensionConnectiveLoopInverseEdge R D I Z F hz hMiddle hRight) =
         (OmegaSpectrum.nativeLoopVertexIso
           (dgKappaSuspensionConnectiveLoopSquare R D I Z F hz hMiddle hRight)).inv :=
-  Classical.choose_spec (homotopyCategory_homMk_surjective _ _ _)
+  Classical.choose_spec (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective _ _ _)
 
 variable (A : PerfDGInput.{u, max (u + 1) v} R)
-  (hLeft : squareVertex F 0 0 = coherentNerveVertex A)
+  (hLeft : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)
 
 /-- 明示四角形に条件付きで、元の固定 K 核から同じ懸垂の native loop への実構造辺。 -/
 def dgKappaSuspensionConnectiveStructureEdge :
-    SSet.Edge (coherentNerveVertex (dgKInputSpectrum R A))
+    SSet.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R A))
       (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I)))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I)))) :=
   SSet.Edge.ofTruncated
     ((dgKappaSuspensionConnectiveLoopComparison R D I Z F hz hMiddle hRight A hLeft).toTruncated.comp
       (dgKappaSuspensionConnectiveLoopInverseEdge R D I Z F hz hMiddle hRight))
@@ -72,7 +72,7 @@ def dgKappaSuspensionConnectiveStructureMap :=
 
 /-- 明示四角形に条件付きで、元の実 BF 構造射は同じ構造辺の全一単体を保持する。 -/
 theorem dgKappaSuspensionConnectiveStructureMap_edge :
-    (coherentNerveEdge
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
       (dgKappaSuspensionConnectiveStructureMap R D I Z F hz hMiddle hRight A hLeft)).edge =
         (dgKappaSuspensionConnectiveStructureEdge R D I Z F hz hMiddle hRight A hLeft).edge :=
   SpectrumHo.edgeMap_edge _

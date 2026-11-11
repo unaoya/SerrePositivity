@@ -29,14 +29,14 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
-def modelBifibrantSourceRoofProductCommaEvaluationIso : FunctorIso
+def modelBifibrantSourceRoofProductCommaEvaluationIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (nerveMap (modelBifibrantSourceRoofProductCommaDiagram X Y q b) ≫
-      SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+      SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
     (SSet.const (X := nerve (modelBifibrantSourceRoofProductComma X Y q b))
       (modelBifibrantHammockVertex (modelBifibrantSourceRoofDegreeObject X Y q b))) :=
   augmentationFunctorIso (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
-    (SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+    (SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
     (fun s => modelBifibrantSourceFrameArrow_invertible X q s.hom)
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
@@ -44,31 +44,31 @@ def modelBifibrantSourceRoofProductCommaEvaluationIso : FunctorIso
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductCommaRightHomotopy : SSet.Homotopy
     (nerveMap (modelBifibrantSourceRoofProductCommaDiagram X Y q b) ≫
-      SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+      SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
     (SSet.const (X := nerve (modelBifibrantSourceRoofProductComma X Y q b))
       (modelBifibrantHammockVertex Y)) := by
-  simpa only [SerrePositivity.InfinityCategories.F1B.nerveMap_const, SSet.const_comp,
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveMap_const, SSet.const_comp,
     modelBifibrantHammockVertex] using
     HomotopyClasses.postHomotopy
-      (SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
-      (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy
+      (SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy
         (modelBifibrantSourceRoofProductCommaRightLeg X Y q b))
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
-def modelBifibrantSourceRoofProductCommaRightCell : FunctorHom
+def modelBifibrantSourceRoofProductCommaRightCell : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom
     (nerveMap (modelBifibrantSourceRoofProductCommaDiagram X Y q b) ≫
-      SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+      SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
     (SSet.const (X := nerve (modelBifibrantSourceRoofProductComma X Y q b))
       (modelBifibrantHammockVertex Y)) :=
-  SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+  SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
     (modelBifibrantSourceRoofProductCommaRightHomotopy X Y q b))
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
-def modelBifibrantSourceRoofProductCommaComparisonCell : FunctorHom
+def modelBifibrantSourceRoofProductCommaComparisonCell : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom
     (SSet.const (X := nerve (modelBifibrantSourceRoofProductComma X Y q b))
       (modelBifibrantHammockVertex (modelBifibrantSourceRoofDegreeObject X Y q b)))
     (SSet.const (X := nerve (modelBifibrantSourceRoofProductComma X Y q b))
@@ -89,7 +89,7 @@ lemma modelBifibrantSourceRoofProductCommaComparisonCell_triangle :
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaComparisonCell_unique
-    (c : FunctorHom
+    (c : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom
       (SSet.const (X := nerve (modelBifibrantSourceRoofProductComma X Y q b))
         (modelBifibrantHammockVertex (modelBifibrantSourceRoofDegreeObject X Y q b)))
       (SSet.const (X := nerve (modelBifibrantSourceRoofProductComma X Y q b))
@@ -108,14 +108,14 @@ def modelBifibrantSourceRoofProductCommaComparisonHomotopy : SSet.Homotopy
       (modelBifibrantHammockVertex (modelBifibrantSourceRoofDegreeObject X Y q b)))
     (SSet.const (X := nerve (modelBifibrantSourceRoofProductComma X Y q b))
       (modelBifibrantHammockVertex Y)) :=
-  functorHomHomotopy (modelBifibrantSourceRoofProductCommaComparisonCell X Y q b)
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy (modelBifibrantSourceRoofProductCommaComparisonCell X Y q b)
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaComparisonHomotopy_hom :
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (modelBifibrantSourceRoofProductCommaComparisonHomotopy X Y q b)) =
-        modelBifibrantSourceRoofProductCommaComparisonCell X Y q b := functorHomHomotopy_hom _
+        modelBifibrantSourceRoofProductCommaComparisonCell X Y q b := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy_hom _
 
 end SerrePositivity.EInfinity.SimplicialLocalization

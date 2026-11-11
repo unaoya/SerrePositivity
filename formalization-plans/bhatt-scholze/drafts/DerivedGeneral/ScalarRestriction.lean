@@ -7,10 +7,10 @@ module
 
 -- 取り込み時の依存先：drafts/DerivedGeneral/CompletionFunctor.lean（係数制限を用いない）。
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
-public import SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction
-public import SerrePositivity.InfinityCategories.Derived.BaseChange
-public import SerrePositivity.InfinityCategories.Derived.ScalarRestrictionNerve
-public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.Adjunction
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ScalarRestrictionNerve
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SiftedInfinity
 
 /-!
 # 係数制限の ∞ 関手 f_* : D(T) → D(S)（基盤待ち、M13）

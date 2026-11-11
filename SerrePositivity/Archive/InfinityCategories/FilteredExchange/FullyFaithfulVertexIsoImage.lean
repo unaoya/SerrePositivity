@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.PrecompositionEquivalence
 
 /-!
 概要：充満忠実性による元の頂点同型の逆像が、指定された像と一意性を保つことを示す。

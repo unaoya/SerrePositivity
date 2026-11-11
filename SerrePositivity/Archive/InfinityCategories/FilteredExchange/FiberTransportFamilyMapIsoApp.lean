@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberTransportRestrictedPrismComparison
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoCurryPointComparison
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoCurryPointComparison
 
 /-!
 概要：元の全輸送比較の Hom 関手同型の成分を、元の実 prism の指定比較へ値まで戻す。

@@ -88,7 +88,7 @@ def totComparison (A : AugmentedTotDiagram.{u}) :
 規約：増強元の Kan 性を明示する。Sp の整数次数への接続は別に行う。
 使われ方：主経路の分裂・細分・有限被覆族の実際の比較。 -/
 def HasTotDescent (A : AugmentedTotDiagram.{u}) [KanComplex A.left.right] : Prop :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (totComparison A).right
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (totComparison A).right
 
 /-- 概要：実 Tot への指定比較は増強図式の射と可換（補題 3.2）。
 方針：end の射影ごとに comma 射の可換性へ帰着する。

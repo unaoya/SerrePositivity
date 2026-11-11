@@ -16,9 +16,9 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (zc : C) (hc : IsZero (ForgetEnrichment.of (Complex R) zc))
   (zd : D) (hd : IsZero (ForgetEnrichment.of (Complex R) zd))
   (E : Type z) [DGCategory R E] [Small.{u} E]
-  (F : DGFunctor R (DGGluingObject R C D M) E)
-  {A : Type t} [DGCategory R A] (j : DGFunctor R A (DGGluingObject R C D M))
-local notation "G" => DGGluingObject R C D M
+  (F : DGFunctor R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) E)
+  {A : Type t} [DGCategory R A] (j : DGFunctor R A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M))
+local notation "G" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M
 local notation "Q" => moduleToDerived R E
 local notation "LF" => DGFunctor.comp (dgGluingLeftAxis R C D M zd hd) F
 local instance : (dgDerivedExtension R C E (LF)).CommShift ℤ :=

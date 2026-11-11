@@ -20,8 +20,8 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
 def dgGluingAxisRightComparison (z : C)
     (hz : CategoryTheory.Limits.IsZero (ForgetEnrichment.of (Complex R) z)) :
     GradedNatTrans ((Center.ofBraided (Complex R)).obj (𝟙_ (Complex R)))
-      ((dgGluingRight R C D M).comp (dgGluingRightAxis R C D M z hz))
-      (DGFunctor.id (A := R) (DGGluingObject R C D M)) :=
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D M).comp (dgGluingRightAxis R C D M z hz))
+      (DGFunctor.id (A := R) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)) :=
   dgFunctorClosedComparison R _ _ (dgGluingAxisRightInclusion R C D M z hz)
     (dgGluingAxisRightInclusion_hom_naturality R C D M z hz)
 
@@ -29,32 +29,32 @@ def dgGluingAxisRightComparison (z : C)
 def dgGluingAxisLeftComparison (z : D)
     (hz : CategoryTheory.Limits.IsZero (ForgetEnrichment.of (Complex R) z)) :
     GradedNatTrans ((Center.ofBraided (Complex R)).obj (𝟙_ (Complex R)))
-      (DGFunctor.id (A := R) (DGGluingObject R C D M))
-      ((dgGluingLeft R C D M).comp (dgGluingLeftAxis R C D M z hz)) :=
+      (DGFunctor.id (A := R) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M))
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D M).comp (dgGluingLeftAxis R C D M z hz)) :=
   dgFunctorClosedComparison R _ _ (dgGluingAxisLeftProjection R C D M z hz)
     (dgGluingAxisLeftProjection_hom_naturality R C D M z hz)
 
 /-- 元の右軸比較の閉零制限も、同じ元の成分で自然。 -/
 def dgGluingAxisRightClosedComparison (z : C)
     (hz : CategoryTheory.Limits.IsZero (ForgetEnrichment.of (Complex R) z)) :
-    ((dgGluingRight R C D M).comp (dgGluingRightAxis R C D M z hz)).onClosed ⟶
-      (DGFunctor.id (A := R) (DGGluingObject R C D M)).onClosed where
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D M).comp (dgGluingRightAxis R C D M z hz)).onClosed ⟶
+      (DGFunctor.id (A := R) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)).onClosed where
   app X := dgGluingAxisRightInclusion R C D M z hz (ForgetEnrichment.to (Complex R) X)
   naturality _ _ f := dgFunctorClosedComparison_naturality R
-    ((dgGluingRight R C D M).comp (dgGluingRightAxis R C D M z hz))
-    (DGFunctor.id (A := R) (DGGluingObject R C D M))
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D M).comp (dgGluingRightAxis R C D M z hz))
+    (DGFunctor.id (A := R) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M))
     (dgGluingAxisRightInclusion R C D M z hz)
     (dgGluingAxisRightInclusion_hom_naturality R C D M z hz) f
 
 /-- 元の左軸比較の閉零制限も、同じ元の成分で自然。 -/
 def dgGluingAxisLeftClosedComparison (z : D)
     (hz : CategoryTheory.Limits.IsZero (ForgetEnrichment.of (Complex R) z)) :
-    (DGFunctor.id (A := R) (DGGluingObject R C D M)).onClosed ⟶
-      ((dgGluingLeft R C D M).comp (dgGluingLeftAxis R C D M z hz)).onClosed where
+    (DGFunctor.id (A := R) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)).onClosed ⟶
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D M).comp (dgGluingLeftAxis R C D M z hz)).onClosed where
   app X := dgGluingAxisLeftProjection R C D M z hz (ForgetEnrichment.to (Complex R) X)
   naturality _ _ f := dgFunctorClosedComparison_naturality R
-    (DGFunctor.id (A := R) (DGGluingObject R C D M))
-    ((dgGluingLeft R C D M).comp (dgGluingLeftAxis R C D M z hz))
+    (DGFunctor.id (A := R) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M))
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D M).comp (dgGluingLeftAxis R C D M z hz))
     (dgGluingAxisLeftProjection R C D M z hz)
     (dgGluingAxisLeftProjection_hom_naturality R C D M z hz) f
 

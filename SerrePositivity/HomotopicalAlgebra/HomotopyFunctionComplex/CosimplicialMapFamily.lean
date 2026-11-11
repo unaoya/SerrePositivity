@@ -68,7 +68,7 @@ def reindex (a : CosimplicialMapFamily T D A) (f : U ⟶ T) : CosimplicialMapFam
 
 /-- Evaluate an actual family of natural transformations in both simplex coordinates. -/
 def ofDoubleHom {D : SimplexCategory ⥤ SimplexCategory ⥤ C} {A : SimplexCategory ⥤ C}
-    (s : T ⟶ (cosimplicialHom D).obj A) :
+    (s : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom D).obj A) :
     CosimplicialMapFamily T (DiagonalFrame.obj D) A where
   app n x := (s.app n x).app n.unop
   naturality {n m} θ x := by
@@ -83,7 +83,7 @@ def ofDoubleHom {D : SimplexCategory ⥤ SimplexCategory ⥤ C} {A : SimplexCate
         ((s.app n x).naturality θ.unop)).trans (Category.assoc _ _ _).symm)
 
 @[simp] lemma ofDoubleHom_app {D : SimplexCategory ⥤ SimplexCategory ⥤ C}
-    {A : SimplexCategory ⥤ C} (s : T ⟶ (cosimplicialHom D).obj A)
+    {A : SimplexCategory ⥤ C} (s : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom D).obj A)
     (n : SimplexCategoryᵒᵖ) (x : T.obj n) :
     (ofDoubleHom s).app n x = (s.app n x).app n.unop := rfl
 
@@ -94,7 +94,7 @@ def ofDoubleHom {D : SimplexCategory ⥤ SimplexCategory ⥤ C} {A : SimplexCate
 既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
 -/
 lemma ofDoubleHom_reindex {D : SimplexCategory ⥤ SimplexCategory ⥤ C}
-    {A : SimplexCategory ⥤ C} (s : T ⟶ (cosimplicialHom D).obj A) (f : U ⟶ T) :
+    {A : SimplexCategory ⥤ C} (s : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom D).obj A) (f : U ⟶ T) :
     ofDoubleHom (f ≫ s) = (ofDoubleHom s).reindex f := rfl
 
 end CosimplicialMapFamily

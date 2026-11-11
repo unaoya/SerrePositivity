@@ -23,40 +23,40 @@ open CategoryTheory Limits Opposite SSet SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
   {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
-  [LeftFibration (roofTargetProjection A Y q)]
+  [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (roofTargetProjection A Y q)]
 
-def roofCornerTerminalEvaluation : RoofTerminalEvaluation
+def roofCornerTerminalEvaluation : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.RoofTerminalEvaluation
     (roofCornerNormalizedProjection A Y q b) (roofCornerTerminal A Y q b) := by
   have := roofCornerNormalizedProjection_leftFibration A Y q b
-  exact Classical.choice (roofLeftFibration_terminalEvaluation_nonempty
+  exact Classical.choice (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.roofLeftFibration_terminalEvaluation_nonempty
     (roofCornerNormalizedProjection A Y q b) (roofCornerTerminal A Y q b)
     (roofCornerTerminal_isTerminal A Y q b))
 
 def roofCornerEvaluation :
-    sliceOverCorner (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q) ⟶
-      pinchedHom (q.app (op ⦋0⦌) (nerveVertex (A.obj (roofTargetDegree A Y q b))))
-        (q.app (op ⦋0⦌) (nerveVertex Y)) :=
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (A.obj (roofTargetDegree A Y q b))))
+        (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) :=
   roofCornerNormalizationMap A Y q b ≫ (roofCornerTerminalEvaluation A Y q b).evaluation ≫
     (roofCornerTerminalFiberIso A Y q b).hom ≫
       (roofTargetFiberPinchedIso A Y q (roofTargetDegree A Y q b)).hom
 
-lemma roofCornerEvaluation_weak : IsWeakHomotopyEquivalence (roofCornerEvaluation A Y q b) := by
+lemma roofCornerEvaluation_weak : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (roofCornerEvaluation A Y q b) := by
   have := roofCornerNormalizedProjection_leftFibration A Y q b
-  have h₀ := (isPrecompositionEquivalence_of_iso
+  have h₀ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (asIso (roofCornerNormalizationMap A Y q b))).isWeakHomotopyEquivalence
   have h₁ := terminalFiberEvaluation_weak (roofCornerNormalizedProjection A Y q b)
     (roofCornerTerminal A Y q b) (roofCornerTerminal_isTerminal A Y q b)
     (roofCornerTerminalEvaluation A Y q b)
-  have h₂ := (isPrecompositionEquivalence_of_iso
+  have h₂ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (roofCornerTerminalFiberIso A Y q b)).isWeakHomotopyEquivalence
-  have h₃ := (isPrecompositionEquivalence_of_iso
+  have h₃ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (roofTargetFiberPinchedIso A Y q (roofTargetDegree A Y q b))).isWeakHomotopyEquivalence
   exact h₀.comp (h₁.comp (h₂.comp h₃))
 
 lemma roofCornerEvaluation_weak_iff {S : SSet.{u}}
-    (f : S ⟶ sliceOverCorner (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q)) :
-    IsWeakHomotopyEquivalence f ↔
-      IsWeakHomotopyEquivalence (f ≫ roofCornerEvaluation A Y q b) :=
+    (f : S ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (f ≫ roofCornerEvaluation A Y q b) :=
   ⟨fun h => h.comp (roofCornerEvaluation_weak A Y q b),
     fun h => (roofCornerEvaluation_weak A Y q b).cancel_right h⟩
 

@@ -6,7 +6,7 @@ public import SerrePositivity.KST.Spectra.SphereHomotopy
 概要：境界で定数なパラメータ族を球面との積へ降ろす。
 方針：積で保存した商の pushout の普遍性を用いる。
 規約：パラメータにも標的にも Kan 性を要求しない。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。正方形の境界を順に潰す構成。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.3（Tag 00W3）。正方形の境界を順に潰す構成。
 -/
 
 @[expose] public section
@@ -38,7 +38,7 @@ def productDesc (n : ℕ) (P : SSet.{u}) (Y : PointedSimplicialSet.{u})
 /-- 概要：商へ降ろした族を単体へ戻すと元の族となる。
 方針：pushout の第一の脚で計算する。
 規約：商射を単体方向へ前合成する。
-使われ方：Kerodon §3.2.3。商の上の等式の確認。 -/
+使われ方：Kerodon §3.2.3（Tag 00W3）。商の上の等式の確認。 -/
 @[reassoc (attr := simp)]
 theorem quotient_productDesc (n : ℕ) (P : SSet.{u}) (Y : PointedSimplicialSet.{u})
     (f : (Δ[n] : SSet.{u}) ⊗ P ⟶ Y.right) (hf) :
@@ -59,7 +59,7 @@ theorem base_productDesc (n : ℕ) (P : SSet.{u}) (Y : PointedSimplicialSet.{u})
 /-- 概要：パラメータの指定部分での定数性は球面への降下で保たれる。
 方針：指定部分との積の pushout の両脚で等式を検査する。
 規約：指定部分の射に単射性を要求しない。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。二つ目の境界を潰す条件。 -/
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.3（Tag 00W3）。二つ目の境界を潰す条件。 -/
 theorem productDesc_parameter_constant (n : ℕ) (P Q : SSet.{u})
     (Y : PointedSimplicialSet.{u}) (f : (Δ[n] : SSet.{u}) ⊗ P ⟶ Y.right) (hf)
     (i : Q ⟶ P)

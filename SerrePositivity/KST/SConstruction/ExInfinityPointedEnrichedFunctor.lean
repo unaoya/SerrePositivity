@@ -13,7 +13,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open Comparison
+
 
 /-- 同じ Ex∞ の実値と元の基点の像を持つ、標準点つき厳密豊穣関手。 -/
 def exInfinityPointedEnrichedFunctor :

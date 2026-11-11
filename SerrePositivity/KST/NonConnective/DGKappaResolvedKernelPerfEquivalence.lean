@@ -24,7 +24,7 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 
 /-- I・P に条件付きで、同じ実評価核から作る元の固定 ν 値同士の全写像空間の同値。 -/
 def dgKappaResolvedKernelPerfQCatEquivalence :
-    QCatEquivalence (dgKInputStableValue R D).obj
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (dgKInputStableValue R D).obj
       (dgKInputStableValue R (dgKappaResolvedKernelKInput R D I)).obj :=
   ((presentedPerfectDGQCatEvaluationEquivalence R (dgKappaResolvedKernelKInput R D I)).trans
     ((dgKappaResolvedPerfectInfinity_isQCatEquivalence R D I P).choose.trans
@@ -35,8 +35,8 @@ def dgKappaResolvedKernelPerfEquivalence :
     StableModelEquivalence (stableCategoryModel (dgKInputStableValue R D))
       (stableCategoryModel (dgKInputStableValue R (dgKappaResolvedKernelKInput R D I))) := by
   let e := dgKappaResolvedKernelPerfQCatEquivalence R D I P
-  let : IsExactFunctor e.hom := isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
-  let : IsExactFunctor e.inv := isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.hom := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.inv := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
   exact ⟨⟨e.hom, preservesCofiberData_of_isExactFunctor e.hom⟩,
     ⟨e.inv, preservesCofiberData_of_isExactFunctor e.inv⟩, e.homInvIso, e.invHomIso⟩
 

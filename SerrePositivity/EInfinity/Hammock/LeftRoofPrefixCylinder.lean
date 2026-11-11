@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveNatTransCylinder
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveNatTransCylinder
 public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixEndpoints
 
 /-!
@@ -27,7 +27,7 @@ variable {C I : Type u} [Category.{u} C] [Category.{u} I]
   (hU : ∀ {i j} (a : i ⟶ j), W (U.map a)) (i : I)
 
 def component : upperDiagram W U σ hU i ⟶ lowerDiagram W U p hp σ hU i :=
-  Precompose.diagramComponent W (restrictedFrame U i) (restrictedAugmentation U p i)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagramComponent W (restrictedFrame U i) (restrictedAugmentation U p i)
     (restrictedAugmentation_weak W U p hp i) (p.app i) (restrictedRightLeg U σ i)
     (fun f => restrictedFrame_map_weak W U hU i f) (fixedSource U i) (𝟙 _)
     (fun _ => W.id_mem (U.obj i)) (inclusion U i)
@@ -39,16 +39,16 @@ lemma graphHomotopy_h_app (n : SimplexCategoryᵒᵖ)
     (graphHomotopy W U p hp σ hU i).h.app n (a, t) =
       ((stdSimplex.objEquiv t).toOrderHom.monotone.functor.prod' a) ⋙
         Functor.uncurry.obj (ComposableArrows.mk₁ (component W U p hp σ hU i)) :=
-  FrameHom.nerveNatTransHomotopy_app (component W U p hp σ hU i) n a t
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nerveNatTransHomotopy_app (component W U p hp σ hU i) n a t
 
 lemma arrowHomotopy_h_app (n : SimplexCategoryᵒᵖ)
     (a : (nerve (Under i)).obj n) (t : (Δ[1] : SSet.{u}).obj n) :
     (arrowHomotopy W U p hp σ hU i).h.app n (a, t) =
-      (graphInclusion W (U.obj i) Y Precompose.word).app n
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W (U.obj i) Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoofPrecomposeWords.word).app n
         (((stdSimplex.objEquiv t).toOrderHom.monotone.functor.prod' a) ⋙
           Functor.uncurry.obj (ComposableArrows.mk₁ (component W U p hp σ hU i))) := by
   rw [arrowHomotopy_h]
-  change (graphInclusion W (U.obj i) Y Precompose.word).app n
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W (U.obj i) Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoofPrecomposeWords.word).app n
     ((graphHomotopy W U p hp σ hU i).h.app n (a, t)) = _
   rw [graphHomotopy_h_app]
 

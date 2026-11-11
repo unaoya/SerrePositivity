@@ -27,8 +27,8 @@ def doubleParametricPost : doubleLoop Y ⟶ PointedObject.basedHom P (doubleLoop
 lemma tensorIso_parametricPost :
     PointedMapping.parametricPost (CirclePower.space.{u} ⊗ CirclePower.space.{u}) v ≫
       PointedObject.basedHomMap P
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso CirclePower.space.{u} CirclePower.space.{u} Y').hom =
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso CirclePower.space.{u} CirclePower.space.{u} Y).hom ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso CirclePower.space.{u} CirclePower.space.{u} Y').hom =
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso CirclePower.space.{u} CirclePower.space.{u} Y).hom ≫
       doubleParametricPost v :=
   PointedMapping.parametricPost_tensor CirclePower.space.{u} CirclePower.space.{u} v
 
@@ -37,31 +37,31 @@ lemma parametricSourceAction
     (a : CirclePower.space.{u} ⊗ CirclePower.space.{u} ⟶
       CirclePower.space.{u} ⊗ CirclePower.space.{u})
     (r : doubleLoop Y ⟶ doubleLoop Y) (r' : doubleLoop Y' ⟶ doubleLoop Y')
-    (h₀ : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Y ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso CirclePower.space.{u} CirclePower.space.{u} Y).hom =
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso CirclePower.space.{u} CirclePower.space.{u} Y).hom ≫ r)
-    (h₁ : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Y' ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso CirclePower.space.{u} CirclePower.space.{u} Y').hom =
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso CirclePower.space.{u} CirclePower.space.{u} Y').hom ≫ r') :
+    (h₀ : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Y ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso CirclePower.space.{u} CirclePower.space.{u} Y).hom =
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso CirclePower.space.{u} CirclePower.space.{u} Y).hom ≫ r)
+    (h₁ : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Y' ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso CirclePower.space.{u} CirclePower.space.{u} Y').hom =
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso CirclePower.space.{u} CirclePower.space.{u} Y').hom ≫ r') :
     r ≫ doubleParametricPost v = doubleParametricPost v ≫ PointedObject.basedHomMap P r' := by
   let K : PointedSimplicialSet.{u} := CirclePower.space.{u}
-  let e := (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K Y).hom
-  let e' := (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K Y').hom
-  have hm : PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Y') ≫
+  let e := (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K Y).hom
+  let e' := (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K Y').hom
+  have hm : PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Y') ≫
       PointedObject.basedHomMap P e' =
     PointedObject.basedHomMap P e' ≫ PointedObject.basedHomMap P r' := by
-    change (ihom P).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Y') ≫ (ihom P).map e' =
+    change (ihom P).map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Y') ≫ (ihom P).map e' =
       (ihom P).map e' ≫ (ihom P).map r'
     rw [← CategoryTheory.Functor.map_comp, h₁, CategoryTheory.Functor.map_comp]
-  apply (cancel_epi (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K Y).hom).mp
+  apply (cancel_epi (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K Y).hom).mp
   calc
     e ≫ (r ≫ doubleParametricPost v) =
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Y ≫ e) ≫ doubleParametricPost v := by rw [h₀, Category.assoc]
-    _ = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Y ≫
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Y ≫ e) ≫ doubleParametricPost v := by rw [h₀, Category.assoc]
+    _ = _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Y ≫
         (PointedMapping.parametricPost (K ⊗ K) v ≫ PointedObject.basedHomMap P e') := by
       rw [Category.assoc, ← tensorIso_parametricPost]
     _ = PointedMapping.parametricPost (K ⊗ K) v ≫
-        (PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Y') ≫
+        (PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Y') ≫
           PointedObject.basedHomMap P e') := by
       rw [← Category.assoc, ← PointedMapping.parametricPost_restrict, Category.assoc]
     _ = PointedMapping.parametricPost (K ⊗ K) v ≫
@@ -75,10 +75,10 @@ lemma swap_doubleParametricPost :
       doubleParametricPost v ≫ PointedObject.basedHomMap P (swap Y') := by
   apply parametricSourceAction v (β_ CirclePower.space.{u} CirclePower.space.{u}).hom
     (swap Y) (swap Y')
-  · rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
-    exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_swap _ _ _
-  · rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
-    exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_swap _ _ _
+  · rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
+    exact _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.natural_swap _ _ _
+  · rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
+    exact _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.natural_swap _ _ _
 
 /-- 元の内側の反転射も標準の二重 loop 全族作用と全単体で厳密に可換。 -/
 lemma reversal_doubleParametricPost :
@@ -87,10 +87,10 @@ lemma reversal_doubleParametricPost :
   apply parametricSourceAction v
     ((CirclePower.integerPowerMap.{u} (-1)) ▷ CirclePower.space.{u}) (reversal Y) (reversal Y')
   · dsimp only [reversal]
-    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
-    exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_left _ _ _
+    rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
+    exact _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensorSource.natural_pre_left _ _ _
   · dsimp only [reversal]
-    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
-    exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_left _ _ _
+    rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
+    exact _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensorSource.natural_pre_left _ _ _
 
 end SerrePositivity.KST.Spectra.LoopExchangePaths

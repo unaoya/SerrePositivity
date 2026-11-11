@@ -20,7 +20,7 @@ lemma simplexIntervalLambdaHomIso_map {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (a b : Fin (m + 1)) (hab : a ≤ b) :
     (simplexIntervalLambdaHomIso A a b hab).hom ≫
         (cubicalLambdaMap A (stdSimplex.map θ)).map
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) =
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) =
       (serreConcreteCubeComplexFunctor A).map (simplexIntervalCubeMap.{u} θ a b hab) ≫
         (simplexIntervalLambdaHomIso A (θ.toOrderHom a) (θ.toOrderHom b)
           (θ.toOrderHom.monotone hab)).hom := by
@@ -45,7 +45,7 @@ lemma simplexIntervalLambdaHomComonoidIso_map {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n
     (a b : Fin (m + 1)) (hab : a ≤ b) :
     (simplexIntervalLambdaHomComonoidIso A a b hab).hom ≫
         cubicalLambdaMapComonoid A (stdSimplex.map θ)
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) =
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) =
       (serreConcreteCubeFunctor A).map (simplexIntervalCubeMap.{u} θ a b hab) ≫
         (simplexIntervalLambdaHomComonoidIso A (θ.toOrderHom a) (θ.toOrderHom b)
           (θ.toOrderHom.monotone hab)).hom := by

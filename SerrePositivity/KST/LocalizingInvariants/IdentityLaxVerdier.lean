@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxVerdier
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.IdentityLaxVerdier
 
 public import SerrePositivity.KST.LocalizingInvariants.IdentityLaxKernel
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceAdjunction
@@ -18,19 +18,19 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
-variable (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
+variable (Q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u})
 
 lemma difference_isVerdier :
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (exactDiagonal Q) (exactLaxDifference (𝟙 Q) (𝟙 Q)) where
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence (exactDiagonal Q) (exactLaxDifference (𝟙 Q) (𝟙 Q)) where
   fullyFaithful := diagonal_fullyFaithful Q
   kernel := difference_kernel Q
   quotient := by
-    rw [← _root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel (exactDiagonal Q)
+    rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.invertedEdges_eq_cofiber_kernel (exactDiagonal Q)
       (exactLaxDifference (𝟙 Q) (𝟙 Q)) (difference_kernel Q)]
-    exact laxDifference_isLocalization (𝟙 Q) (𝟙 Q) (𝟙 Q.obj) (_root_.SerrePositivity.InfinityCategories.Stable.Lax.IdentityLax.identityAdjunction Q)
-      (QCatEquivalence.refl Q.obj).isFullyFaithful
+    exact laxDifference_isLocalization (𝟙 Q) (𝟙 Q) (𝟙 Q.obj) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.identityAdjunction Q)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.refl Q.obj).isFullyFaithful
 
-def verdierSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u} where
+def verdierSequence : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.VerdierSequence.{u} where
   left := Q
   middle := laxCategory (𝟙 Q) (𝟙 Q)
   right := Q

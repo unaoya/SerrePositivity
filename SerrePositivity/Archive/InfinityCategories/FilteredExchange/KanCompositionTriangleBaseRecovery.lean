@@ -4,7 +4,7 @@ public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTriangleCoefficientRecovery
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.TransportSquareWholeEquality
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.TransportTriangleFromSimplex
-public import SerrePositivity.InfinityCategories.F1.Coherent.KanRightCompositionTransport
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.KanRightCompositionTransport
 
 /-!
 概要：元の Kan 合成三角形を被覆する実三角形の底は、元の合成四角形そのもの。

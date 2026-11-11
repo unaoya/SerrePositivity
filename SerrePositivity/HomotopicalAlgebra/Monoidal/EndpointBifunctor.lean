@@ -38,7 +38,7 @@ variable {F} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} {H : C₂ᵒᵖ ⥤ C₃ ⥤ C�
 
 lemma isQuillenBifunctor_of_generator_endpoints (adj : F ⊣₂ G) (adjFlip : F.flip ⊣₂ H)
     (I₁ J₁ : MorphismProperty C₁) (I₂ J₂ : MorphismProperty C₂)
-    [CofibrantlyGenerated.{w₁} I₁ J₁] [CofibrantlyGenerated.{w₂} I₂ J₂]
+    [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w₁} I₁ J₁] [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w₂} I₂ J₂]
     (hc : ∀ {A B : C₁} (i : A ⟶ B) {X Y : C₂} (j : X ⟶ Y)
       (sq : F.PushoutObjObj i j), Cofibration i → Cofibration j → Cofibration sq.ι)
     (hI₁ : ∀ {A B : C₁} (i : A ⟶ B), I₁ i →
@@ -46,13 +46,13 @@ lemma isQuillenBifunctor_of_generator_endpoints (adj : F ⊣₂ G) (adjFlip : F.
     (hI₂ : ∀ {X Y : C₂} (j : X ⟶ Y), I₂ j →
       IsLeftQuillen (F.flip.obj X) ∧ IsLeftQuillen (F.flip.obj Y)) : IsQuillenBifunctor F := by
   have hi₁ : I₁ ≤ cofibrations C₁ :=
-    I₁.le_llp_rlp.trans (cofibrations_eq_generated I₁ J₁).symm.le
+    I₁.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I₁ J₁).symm.le
   have hi₂ : I₂ ≤ cofibrations C₂ :=
-    I₂.le_llp_rlp.trans (cofibrations_eq_generated I₂ J₂).symm.le
+    I₂.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I₂ J₂).symm.le
   have hj₁ : J₁ ≤ trivialCofibrations C₁ :=
-    J₁.le_llp_rlp.trans (trivialCofibrations_eq_generated I₁ J₁).symm.le
+    J₁.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated I₁ J₁).symm.le
   have hj₂ : J₂ ≤ trivialCofibrations C₂ :=
-    J₂.le_llp_rlp.trans (trivialCofibrations_eq_generated I₂ J₂).symm.le
+    J₂.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated I₂ J₂).symm.le
   apply isQuillenBifunctor_of_generators adj adjFlip I₁ J₁ I₂ J₂
   · intro A B i hi X Y j hj sq
     exact hc i j sq ⟨hi₁ i hi⟩ ⟨hi₂ j hj⟩

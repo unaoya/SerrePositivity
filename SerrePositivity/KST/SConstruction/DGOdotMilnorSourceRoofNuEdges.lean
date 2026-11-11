@@ -20,15 +20,15 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 方針：固定 ν の元一単体回収と元実辺の式を使う。
 規約：元始域増大屋根の辺を保持。使われ方：全外周比較の左下成分。 -/
 lemma dgOdotMilnorSourceKernelNullSquare_perfect_bottom_invertible
-    (h : DGGluingMilnorSquare R d) : IsInvertibleEdge (squareBottomArrow
+    (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow
       (dgOdotMilnorSourceKernelNullSquare R d ≫ dgKInputPerfectNu R)) := by
-  have hi : IsInvertibleEdge ((coherentNerveEdge
+  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
       (dgOdotMilnorSourceKernelInputMap R d)).map (dgKInputPerfectNu R)).toTruncated :=
     dgKInputPerfectNu_map_isIso_of_isQCatEquivalence R
       (dgOdotMilnorSourceKernelInputMap R d) (dgOdotMilnorSourceKernelNu_isQCatEquivalence R d h)
-  apply (isInvertibleEdge_congr (e := _) (f := squareBottomArrow
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := _) (f := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow
     (dgOdotMilnorSourceKernelNullSquare R d ≫ dgKInputPerfectNu R)) ?_).mp hi
-  rw [squareBottomArrow_edge, ← Category.assoc,
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge, ← Category.assoc,
     (dgOdotMilnorSourceKernelNullSquare_edges R d).1]
   simp only [SSet.yonedaEquiv_comp]
   rfl
@@ -37,14 +37,14 @@ lemma dgOdotMilnorSourceKernelNullSquare_perfect_bottom_invertible
 方針：元の商延長辺と同じ二零角の指定同型を照合する。
 規約：上辺全体を保持。使われ方：全外周比較の左上成分。 -/
 lemma dgOdotMilnorSourceKernelNullSquare_perfect_top_invertible :
-    IsInvertibleEdge (squareTopArrow
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow
       (dgOdotMilnorSourceKernelNullSquare R d ≫ dgKInputPerfectNu R)) := by
   have hi := dgKFixedNullPerfectNuMap_isInvertible R
     (dgOdotMilnorSourceCellInput R d) (dgOdotMilnorFlatKernelInput R d)
     (dgFixedNullTop R (dgOdotMilnorSourceKernelNullContracted R d))
-  apply (isInvertibleEdge_congr (e := _) (f := squareTopArrow
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := _) (f := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow
     (dgOdotMilnorSourceKernelNullSquare R d ≫ dgKInputPerfectNu R)) ?_).mp hi
-  rw [squareTopArrow_edge, ← Category.assoc,
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareTopArrow_edge, ← Category.assoc,
     (dgOdotMilnorSourceKernelNullSquare_edges R d).2.2.2]
   simp only [SSet.yonedaEquiv_comp]
   rfl

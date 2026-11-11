@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockColimitUnit
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EnrichedCategory
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory
 
 /-!
 # 任意の可換環上の元の E 代数の hammock 豊穣圏
@@ -32,13 +32,13 @@ lemma algebraHammockColimitComposition_assoc (X Y Z V : (operad A).Algebra) :
           (𝟙 (algebraHammockColimitGraph A X Y) ⊗ₘ algebraHammockColimitComposition A Y Z V) ≫
             algebraHammockColimitComposition A X Y V := by
   let := modelCategory A
-  exact Hammock.colimitComposition_assoc (weakEquivalences (operad A).Algebra) X Y Z V
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition_assoc (weakEquivalences (operad A).Algebra) X Y Z V
 
 /-- 任意の可換環上の、元の E 代数と全語の余極限による実際の単体的豊穣圏。 -/
 @[instance_reducible]
 def algebraHammockEnrichedCategory : EnrichedCategory SSet.{u + 1} (operad A).Algebra := by
   let := modelCategory A
-  exact Hammock.enrichedCategory (weakEquivalences (operad A).Algebra)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory (weakEquivalences (operad A).Algebra)
 
 /-- 豊穣 Hom は同じ元の全語の実際の余極限。 -/
 lemma algebraHammockEnrichedCategory_hom (X Y : (operad A).Algebra) :
@@ -57,12 +57,12 @@ lemma algebraHammockEnrichedCategory_comp (X Y Z : (operad A).Algebra) :
 lemma algebraHammockTensorTriple_hom_ext (X Y Z V : (operad A).Algebra) {K : SSet.{u + 1}}
     (f g : (algebraHammockColimitGraph A X Y ⊗ algebraHammockColimitGraph A Y Z) ⊗
       algebraHammockColimitGraph A Z V ⟶ K)
-    (h : ∀ a b c : Hammock.Word,
+    (h : ∀ a b c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word,
       ((algebraHammockGraphInclusion A a X Y ⊗ₘ algebraHammockGraphInclusion A b Y Z) ⊗ₘ
         algebraHammockGraphInclusion A c Z V) ≫ f =
       ((algebraHammockGraphInclusion A a X Y ⊗ₘ algebraHammockGraphInclusion A b Y Z) ⊗ₘ
         algebraHammockGraphInclusion A c Z V) ≫ g) : f = g := by
   let := modelCategory A
-  exact Hammock.tensorTriple_hom_ext (weakEquivalences (operad A).Algebra) X Y Z V f g h
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.tensorTriple_hom_ext (weakEquivalences (operad A).Algebra) X Y Z V f g h
 
 end SerrePositivity.EInfinity.BarrattEccles

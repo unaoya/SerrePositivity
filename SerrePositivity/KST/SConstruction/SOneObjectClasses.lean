@@ -29,12 +29,12 @@ lemma coreSOneComparison_piZero_bijective (X : StableModel.{u}) :
 
 /-- 元の全 gapped S₁ core の連結成分と元の core の連結成分の同値。 -/
 def coreSOnePiZeroEquiv (X : StableModel.{u}) :
-    SSet.π₀ (coreSConstruction 1 X.carrier) ≃ SSet.π₀ (quasicategoryCore X.carrier : SSet.{u}) :=
+    SSet.π₀ (coreSConstruction 1 X.carrier) ≃ SSet.π₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore X.carrier : SSet.{u}) :=
   Equiv.ofBijective _ (coreSOneComparison_piZero_bijective X)
 
 /-- 元の対象を同じ頂点として core に含める。 -/
 def objectCoreVertex (X : StableModel.{u}) (x : X.carrier _⦋0⦌) :
-    (quasicategoryCore X.carrier : SSet.{u}) _⦋0⦌ := ⟨x, quasicategoryCore_vertex x⟩
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore X.carrier : SSet.{u}) _⦋0⦌ := ⟨x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_vertex x⟩
 
 /-- 元の対象が定める元の K 空間の loop の連結成分。 -/
 def objectKPiZeroClass (X : StableModel.{u}) (x : X.carrier _⦋0⦌) :

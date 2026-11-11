@@ -22,7 +22,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 /-- 入出力の次数を同じ添字で読むための固定した係数群。 -/
 abbrev positiveAdditiveCoefficient (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n r : ℕ) :=
-  Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 1 + (r + 1)) Y.basepoint)
+  Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 1 + (r + 1)) Y.basepoint)
 
 /-- 実際の塔の係数微分を加法表示にし、出力の次数を入力の次数と同定する。 -/
 def positiveAdditiveCoefficientDifferential (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
@@ -51,7 +51,7 @@ def positiveAdditiveCoefficientDifferential (K : SSet.{u}) (Y : PointedSimplicia
 theorem positiveAdditiveCoefficientDifferential_eq (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n r : ℕ) :
     positiveAdditiveCoefficientDifferential K Y n r = (-1 : ℤ) ^ (n + 3 + r) •
-      _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K (AddCommGrpCat.of (positiveAdditiveCoefficient Y n r))
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K (AddCommGrpCat.of (positiveAdditiveCoefficient Y n r))
         (n + 1) := by
   ext a s
   exact coefficientDifferential_all_alternating K Y n r (fun t ↦ Additive.toMul (a t)) s
@@ -60,7 +60,7 @@ theorem positiveAdditiveCoefficientDifferential_eq (K : SSet.{u}) (Y : PointedSi
 theorem positiveAdditiveCoefficientDifferential_ker (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n r : ℕ) :
     (positiveAdditiveCoefficientDifferential K Y n r).ker =
-      (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K (AddCommGrpCat.of (positiveAdditiveCoefficient Y n r))
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K (AddCommGrpCat.of (positiveAdditiveCoefficient Y n r))
         (n + 1)).ker := by
   rw [positiveAdditiveCoefficientDifferential_eq]
   exact signed_ker _ _
@@ -69,7 +69,7 @@ theorem positiveAdditiveCoefficientDifferential_ker (K : SSet.{u}) (Y : PointedS
 theorem positiveAdditiveCoefficientDifferential_range (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n r : ℕ) :
     (positiveAdditiveCoefficientDifferential K Y n r).range =
-      (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K (AddCommGrpCat.of (positiveAdditiveCoefficient Y n r))
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K (AddCommGrpCat.of (positiveAdditiveCoefficient Y n r))
         (n + 1)).range := by
   rw [positiveAdditiveCoefficientDifferential_eq]
   exact signed_range _ _

@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：Mathlib の制限 Yoneda 随伴の成分の式を、標準細分の同型で書く。
 規約：二重細分の境界条件の射の等式に用いる補助。
 使われ方：horn の細分比較の包含との整合。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

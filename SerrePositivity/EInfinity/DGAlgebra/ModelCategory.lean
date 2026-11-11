@@ -57,7 +57,7 @@ lemma modelCategory_fibrations :
 使われ方：実 cell 分解と cofibrant 置換。 -/
 lemma modelCategory_cofibrantlyGenerated :
     let := modelCategory R
-    ModelGeneration.CofibrantlyGenerated.{u}
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
       (generatingCofibrations (R := R)) (generatingTrivialCofibrations (R := R)) := by
   let := projectiveModelCategory R
   have := projectiveModelCategory_cofibrantlyGenerated R

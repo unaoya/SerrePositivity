@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.OrderPostcomposition
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.OrderPostcomposition
 public import SerrePositivity.KST.Spectra.StrictEnrichedTransformationNerve
 public import SerrePositivity.KST.Spectra.EnrichedTransformationTriangleOuter
 
@@ -41,7 +41,7 @@ def d3GradedPrecomp (K : EnrichedFunctor SSet.{u} C D)
     intro d
     apply ConcreteCategory.hom_ext
     rintro ⟨a, f⟩
-    exact _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.naturality_app _ F G η (K.obj X) (K.obj Y) d a ((K.map X Y).app d f)
+    exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.naturality_app _ F G η (K.obj X) (K.obj Y) d a ((K.map X Y).app d f)
 
 /-- 同じ豊穣関手の全 Hom 作用で、元の厳密変換を後合成する。 -/
 def d3GradedPostcomp {F G : EnrichedFunctor SSet.{u} C D}
@@ -60,7 +60,7 @@ def d3GradedPostcomp {F G : EnrichedFunctor SSet.{u} C D}
       (eComp SSet _ _ _).app d
         ((K.map _ _).app d ((η.app X).app d a),
           (K.map _ _).app d ((G.map X Y).app d f))
-    rw [← _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functor_comp_app, ← _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functor_comp_app, _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.naturality_app]
+    rw [← _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functor_comp_app, ← _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functor_comp_app, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.naturality_app]
 
 /-- 元の二つの単位パラメータ変換の、同じ指定成分による縦合成。 -/
 def d3GradedComp {F G H : EnrichedFunctor SSet.{u} C D}
@@ -81,8 +81,8 @@ def d3GradedComp {F G H : EnrichedFunctor SSet.{u} C D}
       (eComp SSet _ _ _).app d
         ((eComp SSet _ _ _).app d ((η.app X).app d PUnit.unit,
           (θ.app X).app d PUnit.unit), (H.map X Y).app d f)
-    rw [← _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app, _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.naturality_app, _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app,
-      _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.naturality_app, ← _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app]
+    rw [← _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderCategory.base_assoc_app, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.naturality_app, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderCategory.base_assoc_app,
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.naturality_app, ← _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderCategory.base_assoc_app]
 
 section Components
 variable {C' D' E' : Type v} [Category.{u} C'] [Category.{u} D'] [Category.{u} E']
@@ -132,10 +132,10 @@ lemma d3GradedPostcomp_component
     (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G)
     (K : EnrichedFunctor SSet.{u} D' E') (X : C') :
     StrictEnrichedTransformation.componentHom _ _ (d3GradedPostcomp η K) X =
-      (SerrePositivity.InfinityCategories.coherentEnrichedUnderlyingFunctor K).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor K).map
         (StrictEnrichedTransformation.componentHom F G η X) := by
   apply (SimplicialCategory.homEquiv' _ _).injective
-  have h := SerrePositivity.InfinityCategories.coherentEnrichedUnderlyingFunctor_vertex K
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor_vertex K
     (StrictEnrichedTransformation.componentHom F G η X)
   refine Eq.trans ?_ h.symm
   simp only [StrictEnrichedTransformation.componentHom, d3GradedPostcomp,

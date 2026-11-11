@@ -108,52 +108,52 @@ lemma oldBD : RelativeChoiceSpace.family (ResolutionMixedTriangles.oldInclusion 
 lemma intervalAB_face : NerveMovingParameter.evaluate (intervalParameters C) (smallValues C)
     (intervalAB C hcof hfib) p = ResolutionMixedTriangles.face C hcof hfib p true 2 := by
   apply (intervalAB_evaluate C hcof hfib p).trans
-  apply (congrArg (fun k => UniverseLift.simplexTensorMap.{u} (preFamily C hcof hfib p) ≫
-    UniverseLift.map.{u} k) (bd_fibers C p)).trans
-  exact (UniverseLift.simplexTensorMap_target _ _).trans
-    (congrArg (fun k => UniverseLift.simplexTensorMap.{u} k) (oldAB C hcof hfib p).symm)
+  apply (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u} (preFamily C hcof hfib p) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} k) (bd_fibers C p)).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_target _ _).trans
+    (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u} k) (oldAB C hcof hfib p).symm)
 
 lemma intervalAC_face : NerveMovingParameter.evaluate (intervalParameters C) (smallValues C)
     (intervalAC C hcof hfib) p = ResolutionMixedTriangles.face C hcof hfib p false 2 := by
   apply (intervalAC_evaluate C hcof hfib p).trans
-  apply (congrArg (fun k => UniverseLift.simplexTensorMap.{u} (postFamily C hcof hfib p) ≫
-    UniverseLift.map.{u} k) (ResolutionArrowElementary.pre_fibers
+  apply (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u} (postFamily C hcof hfib p) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} k) (ResolutionArrowElementary.pre_fibers
       p.source p.middle p.final p.pre (p.center ≫ p.post.base))).trans
-  exact (UniverseLift.simplexTensorMap_target _ _).trans
-    (congrArg (fun k => UniverseLift.simplexTensorMap.{u} k) (oldAC C hcof hfib p).symm)
+  exact (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_target _ _).trans
+    (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u} k) (oldAC C hcof hfib p).symm)
 
 lemma intervalCD_face : NerveMovingParameter.evaluate (intervalParameters C) (smallValues C)
     (intervalCD C hcof hfib) p = ResolutionMixedTriangles.face C hcof hfib p false 0 := by
   apply (intervalCD_evaluate C hcof hfib p).trans
-  change (UniverseLift.map.{u} ((ResolutionArrowTuples.tuples C).map (ac C p)) ▷
+  change (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} ((ResolutionArrowTuples.tuples C).map (ac C p)) ▷
     SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫
-      UniverseLift.simplexTensorMap.{u} (finalPreFamily C hcof hfib p) = _
-  apply (congrArg (fun k => (UniverseLift.map.{u} k ▷
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u} (finalPreFamily C hcof hfib p) = _
+  apply (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} k ▷
     SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫
-      UniverseLift.simplexTensorMap.{u} (finalPreFamily C hcof hfib p))
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u} (finalPreFamily C hcof hfib p))
         (ResolutionArrowElementary.post_tuples p.middle p.target p.final p.center p.post)).trans
-  exact (UniverseLift.simplexTensorMap_source _ _).trans
-    (congrArg (fun k => UniverseLift.simplexTensorMap.{u} k) (oldCD C hcof hfib p).symm)
+  exact (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_source _ _).trans
+    (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u} k) (oldCD C hcof hfib p).symm)
 
 lemma intervalBD_face : NerveMovingParameter.evaluate (intervalParameters C) (smallValues C)
     (intervalBD C hcof hfib) p = ResolutionMixedTriangles.face C hcof hfib p true 0 := by
   apply (intervalBD_evaluate C hcof hfib p).trans
-  change (UniverseLift.map.{u} ((ResolutionArrowTuples.tuples C).map (ab C p)) ▷
+  change (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} ((ResolutionArrowTuples.tuples C).map (ab C p)) ▷
     SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫
-      UniverseLift.simplexTensorMap.{u} (finalPostFamily C hcof hfib p) ≫
-        UniverseLift.map.{u} (castMap p.source.inner p.middle.inner p.target p.final
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u} (finalPostFamily C hcof hfib p) ≫
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (castMap p.source.inner p.middle.inner p.target p.final
           p.pre.map p.center p.post) = _
-  apply (congrArg (fun k => (UniverseLift.map.{u} k ▷
+  apply (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} k ▷
     SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫
-      UniverseLift.simplexTensorMap.{u} (finalPostFamily C hcof hfib p) ≫
-        UniverseLift.map.{u} (castMap p.source.inner p.middle.inner p.target p.final
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u} (finalPostFamily C hcof hfib p) ≫
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (castMap p.source.inner p.middle.inner p.target p.final
           p.pre.map p.center p.post))
             (ResolutionArrowElementary.pre_tuples p.source p.middle p.target p.pre p.center)).trans
-  apply (congrArg (fun k => (UniverseLift.map.{u}
+  apply (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u}
     (tuplePre p.source.inner p.middle.inner p.target p.pre.map p.center) ▷
       SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ k)
-        (UniverseLift.simplexTensorMap_target _ _)).trans
-  exact (UniverseLift.simplexTensorMap_source _ _).trans
-    (congrArg (fun k => UniverseLift.simplexTensorMap.{u} k) (oldBD C hcof hfib p).symm)
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_target _ _)).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_source _ _).trans
+    (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{u} k) (oldBD C hcof hfib p).symm)
 
 end SerrePositivity.HomotopyFunctionComplex.ResolutionMixedEdgeRecovery

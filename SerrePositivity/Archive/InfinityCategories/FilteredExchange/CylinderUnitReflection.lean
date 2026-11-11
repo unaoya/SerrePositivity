@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.PiCriterion.ContinuousKanUnitHomotopy
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.ContinuousKanUnitHomotopy
 
 /-!
 概要：両端点の直和から指定した円柱の充填を、Kan 置換前のホモトピーへ戻す。

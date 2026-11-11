@@ -32,8 +32,8 @@ variable {C : Type u} [Category.{v} C] [original : ModelCategory C]
   (hcof : simplicial.categoryWithCofibrations.cofibrations = MorphismProperty.monomorphisms _)
   (hfib : simplicial.categoryWithFibrations.fibrations = SSet.modelCategoryQuillen.J.{v}.rlp)
   (I J G : MorphismProperty C)
-  [@ModelGeneration.CofibrantlyGenerated.{w} C _ original I J]
-  [@ModelGeneration.CofibrantlyGenerated.{w} C _ m I G]
+  [@_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} C _ original I J]
+  [@_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} C _ m I G]
 
 include h hcof hfib I J G in
 lemma monoidal_model_of_tensor_compatible

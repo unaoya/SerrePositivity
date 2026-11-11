@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension
-public import SerrePositivity.InfinityCategories.Stable.InitialPrismBoundary
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroBoundaryExtension
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.InitialPrismBoundary
 
 /-! # 枠の図式の族の相対境界延長
 概要：既存の部分図式と境界上の族を固定して、普遍的な端点で枠を補完する。
@@ -27,9 +27,9 @@ lemma frame_extend_boundary {B X : SSet.{u}} (S : B.Subcomplex) (n : ℕ)
       ((S : SSet.{u}) ◁ (boundary (n + 1)).ι) ≫ G)
     (ht : ∀ (m : ℕ) (s : B _⦋m + 1⦌), s ∉ S.obj (Opposite.op ⦋m + 1⦌) →
       (∀ v : (boundary (n + 1) : SSet.{u}) _⦋0⦌,
-        IsInitialVertex (H.app (Opposite.op ⦋0⦌) (simplexFirstVertex s, v))) ∨
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (H.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplexFirstVertex s, v))) ∨
       (∀ v : (boundary (n + 1) : SSet.{u}) _⦋0⦌,
-        IsTerminalVertex (H.app (Opposite.op ⦋0⦌) (simplexLastVertex s, v)))) :
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (H.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.simplexLastVertex s, v)))) :
     ∃ F : B ⊗ Δ[n + 1] ⟶ X,
       (B ◁ (boundary (n + 1)).ι) ≫ F = H ∧ (S.ι ▷ (Δ[n + 1] : SSet.{u})) ≫ F = G := by
   let T := boundary.{u} (n + 1)
@@ -43,23 +43,23 @@ lemma frame_extend_boundary {B X : SSet.{u}} (S : B.Subcomplex) (n : ℕ)
     intro v
     apply Or.inl
     refine ⟨by trivial, ?_⟩
-    have h := vertex_mem_boundary.{u} n (stdSimplex.obj₀Equiv.{u} v.2)
+    have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.vertex_mem_boundary.{u} n (stdSimplex.obj₀Equiv.{u} v.2)
     rw [Equiv.symm_apply_apply] at h
     exact h
   have hend (m : ℕ) (s : (B ⊗ (Δ[n + 1] : SSet.{u})) _⦋m + 1⦌)
       (hs : s ∉ A.obj (Opposite.op ⦋m + 1⦌)) :
-      IsInitialVertex (a.app (Opposite.op ⦋0⦌) ⟨simplexFirstVertex s, hA _⟩) ∨
-      IsTerminalVertex (a.app (Opposite.op ⦋0⦌) ⟨simplexLastVertex s, hA _⟩) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (a.app (Opposite.op ⦋0⦌) ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplexFirstVertex s, hA _⟩) ∨
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (a.app (Opposite.op ⦋0⦌) ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.simplexLastVertex s, hA _⟩) := by
     have hs₁ : s.1 ∉ S.obj (Opposite.op ⦋m + 1⦌) :=
       fun h ↦ hs (Or.inr ⟨h, by trivial⟩)
     have he (v : (B ⊗ (Δ[n + 1] : SSet.{u})) _⦋0⦌) :
         a.app (Opposite.op ⦋0⦌) ⟨v, hA v⟩ = H.app (Opposite.op ⦋0⦌)
           (v.1, ⟨v.2, by
-            have h := vertex_mem_boundary.{u} n (stdSimplex.obj₀Equiv.{u} v.2)
+            have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.vertex_mem_boundary.{u} n (stdSimplex.obj₀Equiv.{u} v.2)
             rw [Equiv.symm_apply_apply] at h
             exact h⟩) := by
       let w : (B ⊗ (T : SSet.{u})) _⦋0⦌ := (v.1, ⟨v.2, by
-        have h := vertex_mem_boundary.{u} n (stdSimplex.obj₀Equiv.{u} v.2)
+        have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.vertex_mem_boundary.{u} n (stdSimplex.obj₀Equiv.{u} v.2)
         rw [Equiv.symm_apply_apply] at h
         exact h⟩)
       exact ConcreteCategory.congr_hom (NatTrans.congr_app ha₁ (Opposite.op ⦋0⦌)) w
@@ -70,7 +70,7 @@ lemma frame_extend_boundary {B X : SSet.{u}} (S : B.Subcomplex) (n : ℕ)
     · right
       rw [he]
       exact ht _
-  obtain ⟨F, hF⟩ := exists_extension_of_initial_or_terminal_endpoints A hA a hend
+  obtain ⟨F, hF⟩ := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.exists_extension_of_initial_or_terminal_endpoints A hA a hend
   refine ⟨F, ?_, ?_⟩
   · rw [← Subcomplex.unionProd.ι₁_ι S T, Category.assoc, hF, ha₁]
   · rw [← Subcomplex.unionProd.ι₂_ι S T, Category.assoc, hF, ha₂]

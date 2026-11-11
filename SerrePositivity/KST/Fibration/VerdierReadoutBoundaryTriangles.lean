@@ -22,15 +22,15 @@ namespace SerrePositivity.KST.Fibration
 方針：元の全ホモトピーを同じ宇宙持ち上げへ送る。
 規約：元の二つの全 path 族を保持する。
 使われ方：実下側読出しへ続ける全長 Hom 比較。 -/
-def verdierReadoutUpperComparison (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
+def verdierReadoutUpperComparison (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :
     SSet.Homotopy
       ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0))
       ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 1)) :=
-  uliftSimplicialHomotopy.{u, u + 1} (verdierOriginalFullSCoreHomotopy d 0 1)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.uliftSimplicialHomotopy.{u, u + 1} (verdierOriginalFullSCoreHomotopy d 0 1)
 
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-    (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
+    (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)
 
 private theorem nativeReadoutLeftUnitTriangle
@@ -46,24 +46,24 @@ private theorem nativeReadoutLeftUnitTriangle
   exact ⟨e, t.ofEq (f₀₁ := l) (f₁₂ := r) (f₀₂ := e) hl.symm rfl rfl, rfl⟩
 
 private theorem readoutDirectTriangle_at
-    (x : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u})) _⦋0⦌)
+    (x : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u})) _⦋0⦌)
     (hsame : ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 1)).app
       (Opposite.op ⦋0⦌) x =
       ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0)).app
         (Opposite.op ⦋0⦌) x)
-    (hunit : (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d) x).edge =
+    (hunit : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d) x).edge =
       (Truncated.Edge.id (X := (truncation 2).obj (verdierNativeLongHomTarget d))
         (((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0)).app
           (Opposite.op ⦋0⦌) x)).edge) :
     ∃ e : (verdierNativeLongHomTarget d).Edge
       (((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0)).app
         (Opposite.op ⦋0⦌) x)
-      ((SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))
+      ((SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))
         (verdierNativeCompositePoint d 1)).app (Opposite.op ⦋0⦌) x),
       ∃ _T : SSet.Edge.CompStruct
-        (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d) x)
-        (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL) x) e,
-        e.edge = (simplicialHomotopyVertexEdge
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d) x)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL) x) e,
+        e.edge = (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
           (verdierLowerNativeReadoutHomotopy d L hL) x).edge := by
   exact nativeReadoutLeftUnitTriangle d _ _ hsame hunit
 
@@ -73,17 +73,17 @@ private theorem readoutDirectTriangle_at
 規約：合成辺の実一単体を同じ読出し成分へ厳密に戻す。
 使われ方：全境界合成二単体の直接端側の実指定面。 -/
 theorem verdierReadoutDirectBoundaryTriangle_exists :
-    let x : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u})) _⦋0⦌ :=
+    let x : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u})) _⦋0⦌ :=
       ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath)
     ∃ e : (verdierNativeLongHomTarget d).Edge
       (((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0)).app
         (Opposite.op ⦋0⦌) x)
-      ((SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))
+      ((SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))
         (verdierNativeCompositePoint d 1)).app (Opposite.op ⦋0⦌) x),
       ∃ _T : SSet.Edge.CompStruct
-        (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d) x)
-        (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL) x) e,
-        e.edge = (simplicialHomotopyVertexEdge
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d) x)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL) x) e,
+        e.edge = (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
           (verdierLowerNativeReadoutHomotopy d L hL) x).edge := by
   have hbSmall : (verdierOriginalNativeHomFamily d 1).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ coherentTriangleDirectPath) =
@@ -101,36 +101,36 @@ theorem verdierReadoutDirectBoundaryTriangle_exists :
 規約：元の全時刻合成端条件に条件付き。新たな存在入力は取らない。
 使われ方：全境界合成二単体の合成端側の実指定面。 -/
 theorem verdierReadoutFullBoundaryTriangle_exists
-    (hfull : L ≫ evaluateFunctorAt
-      (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+    (hfull : L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+      (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
         verdierLowerReconstructionCompositeFamily d Δ[1]) :
-    let x : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u})) _⦋0⦌ :=
-      ULift.up (ComposableArrows.mk₀ triangleFullPath)
+    let x : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u})) _⦋0⦌ :=
+      ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath)
     ∃ e : (verdierNativeLongHomTarget d).Edge
       (((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0)).app
         (Opposite.op ⦋0⦌) x)
-      ((SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))
+      ((SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))
         (verdierNativeCompositePoint d 1)).app (Opposite.op ⦋0⦌) x),
       ∃ _T : SSet.Edge.CompStruct
-        (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d) x)
-        (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL) x) e,
-        e.edge = (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d) x).edge := by
-  let x : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u})) _⦋0⦌ :=
-    ULift.up (ComposableArrows.mk₀ triangleFullPath)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d) x)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL) x) e,
+        e.edge = (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d) x).edge := by
+  let x : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u})) _⦋0⦌ :=
+    ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath)
   let a := ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0)).app
     (Opposite.op ⦋0⦌) x
   let b := ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 1)).app
     (Opposite.op ⦋0⦌) x
-  let c := (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))
+  let c := (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))
     (verdierNativeCompositePoint d 1)).app (Opposite.op ⦋0⦌) x
   let l : (verdierNativeLongHomTarget d).Edge a b :=
-    simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d) x
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d) x
   let r : (verdierNativeLongHomTarget d).Edge b c :=
-    simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL) x
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL) x
   have hc : c = verdierNativeCompositePoint d 1 := by
-    change PinchedHom.constant (X := verdierNativeLongHomTarget d)
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (X := verdierNativeLongHomTarget d)
       (verdierNativeCompositePoint d 1) 0 = _
-    exact pinchedConstant_zero _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero _
   have hr : r.edge = (Truncated.Edge.id
       (X := (truncation 2).obj (verdierNativeLongHomTarget d)) c).edge :=
     (verdierLowerNativeReadoutHomotopy_full_edge d L hL hfull).trans

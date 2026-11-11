@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedPerfectComparison
-public import SerrePositivity.InfinityCategories.Derived.DGPerfectIdempotentCompleteGeneral
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectIdempotentCompleteGeneral
 
 /-!
 概要：同じ D-9 実小核の native nerve に、P の元の Perf の coherent 冪等完備性を移す。
@@ -21,8 +21,8 @@ variable (R : Type u) [CommRing R] (D : Type (max (u + 1) v))
 include P in
 /-- I・P に条件付きで、同じ実小核の native nerve は coherent 冪等完備。 -/
 theorem dgKappaResolvedKernelNerve_isIdempotentComplete :
-    F2.Idempotent.IsIdempotentComplete (dgNerve R (dgKappaResolvedKernelKInput R D I)) :=
-  (dgPerfectModuleNerve_isIdempotentComplete R D).of_equivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (dgKappaResolvedKernelKInput R D I)) :=
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectModuleNerve_isIdempotentComplete R D).of_equivalence
     (dgKappaPerfectResolvedComparison_isQCatEquivalence R D I P).choose
 
 end SerrePositivity.KST.NonConnective

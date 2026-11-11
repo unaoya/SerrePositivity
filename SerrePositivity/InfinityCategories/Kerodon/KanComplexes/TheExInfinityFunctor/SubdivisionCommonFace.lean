@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：一方の余面の像で欠ける頂点を、他方の余面の中へ戻して、さらに一つの余面で持ち上げる。
 規約：Moss arXiv:1506.04887v2 Proposition 2.19 の細分比較の単射性への補助。
 使われ方：horn の細分における異なる余面表示の一致。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

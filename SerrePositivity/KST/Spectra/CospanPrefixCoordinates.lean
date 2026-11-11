@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CospanBousfieldKanWeight
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PrefixOverWeight
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.PrefixOverWeight
 
 /-!
 概要：元の cospan の各射の初区間の BK 重みを、元のホーンの左右の辺へ厳密同定する。
@@ -16,7 +16,7 @@ noncomputable section
 universe u
 open CategoryTheory Limits SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.CospanShape
 
 /-- 元の小さい cospan の左の一射の列。 -/
@@ -29,13 +29,13 @@ abbrev rightArrow : ComposableArrows (AsSmall.{u} WalkingCospan) 1 :=
 
 /-- 左射の元の初区間をホーン重みへ送ると、元の左辺に厳密一致する。 -/
 lemma leftPrefix_horn :
-    (prefixOverWeight leftArrow.{u}).app (1 : Fin 2) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverWeight leftArrow.{u}).app (1 : Fin 2) ≫
       cospanBKWeightIso.hom.app (AsSmall.up.obj .one) = horn₂₂.ι₀₂ := by
   apply SSet.yonedaEquiv.injective
   change (cospanNerveHornIso.hom).app (Opposite.op ⦋1⦌)
     ((nerveMap (Over.forget
       (AsSmall.up.obj WalkingCospan.one : AsSmall.{u} WalkingCospan))).app (Opposite.op ⦋1⦌)
-      (prefixOverChain leftArrow (1 : Fin 2))) = _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverChain leftArrow (1 : Fin 2))) = _
   apply Subtype.ext
   apply stdSimplex.ext
   intro i
@@ -43,13 +43,13 @@ lemma leftPrefix_horn :
 
 /-- 右射の元の初区間をホーン重みへ送ると、元の右辺に厳密一致する。 -/
 lemma rightPrefix_horn :
-    (prefixOverWeight rightArrow.{u}).app (1 : Fin 2) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverWeight rightArrow.{u}).app (1 : Fin 2) ≫
       cospanBKWeightIso.hom.app (AsSmall.up.obj .one) = horn₂₂.ι₁₂ := by
   apply SSet.yonedaEquiv.injective
   change (cospanNerveHornIso.hom).app (Opposite.op ⦋1⦌)
     ((nerveMap (Over.forget
       (AsSmall.up.obj WalkingCospan.one : AsSmall.{u} WalkingCospan))).app (Opposite.op ⦋1⦌)
-      (prefixOverChain rightArrow (1 : Fin 2))) = _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverChain rightArrow (1 : Fin 2))) = _
   apply Subtype.ext
   apply stdSimplex.ext
   intro i
@@ -57,17 +57,17 @@ lemma rightPrefix_horn :
 
 /-- 二つの元の初区間の終点は、同じ中央の恒等射の over 頂点を保持する。 -/
 lemma prefix_target_common :
-    stdSimplex.δ (0 : Fin 2) ≫ (prefixOverWeight leftArrow.{u}).app (1 : Fin 2) =
-      stdSimplex.δ (0 : Fin 2) ≫ (prefixOverWeight rightArrow).app (1 : Fin 2) := by
+    stdSimplex.δ (0 : Fin 2) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverWeight leftArrow.{u}).app (1 : Fin 2) =
+      stdSimplex.δ (0 : Fin 2) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverWeight rightArrow).app (1 : Fin 2) := by
   apply SSet.yonedaEquiv.injective
   change SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫
     (SSet.yonedaEquiv (X := nerve (Over
       (AsSmall.up.obj WalkingCospan.one : AsSmall.{u} WalkingCospan))) (n := ⦋1⦌)).symm
-        (prefixOverChain leftArrow.{u} (1 : Fin 2))) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverChain leftArrow.{u} (1 : Fin 2))) =
       SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫
         (SSet.yonedaEquiv (X := nerve (Over
         (AsSmall.up.obj WalkingCospan.one : AsSmall.{u} WalkingCospan))) (n := ⦋1⦌)).symm
-          (prefixOverChain rightArrow.{u} (1 : Fin 2)))
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverChain rightArrow.{u} (1 : Fin 2)))
   simp only [stdSimplex.yonedaEquiv_δ_comp, Equiv.apply_symm_apply]
   refine CategoryTheory.Functor.ext (fun i ↦ ?_) ?_
   · fin_cases i

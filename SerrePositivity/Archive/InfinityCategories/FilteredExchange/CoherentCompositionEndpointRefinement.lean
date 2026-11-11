@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCompositionEndpointPaths
-public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleHomotopy
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentPathHom
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentTriangleHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentPathHom
 
 /-!
 概要：零面の実円柱の終点の豊穣辺は元の指定精密化そのもの。

@@ -18,14 +18,14 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices
 open CategoryTheory
-variable (D : SimplicialObject Data.{u}) {O : Type u}
+variable (D : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u}) {O : Type u}
   (p : (n : SimplexCategoryᵒᵖ) → O ≃ (D.obj n).base)
   (hp : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (o : O),
     (D.map θ).base.obj (p n o) = p m o)
   (k : SimplexCategoryᵒᵖ) (x : Fin (k.unop.len + 1) → O)
 
 def fiberSpace : SSet.{u} where
-  obj n := FixedVertexChainCoordinates.Fiber (p n) (leftLabels D n) (rightLabels D n) k.unop.len x
+  obj n := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedVertexChainCoordinates.Fiber (p n) (leftLabels D n) (rightLabels D n) k.unop.len x
   map θ := ↾fun v => (map D p hp k θ ⟨x, v⟩).2
   map_id n := by
     apply ConcreteCategory.hom_ext

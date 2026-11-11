@@ -44,11 +44,11 @@ lemma arSquareFamilyApex_frame {n : ℕ} {C : SSet.{u}}
 使われ方：相対 cofiber 補完から実際の第一行復元を得る。 -/
 lemma isGapped_arSquareFamilyApex {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (E : arNerve n ⊗ (Δ[1] ⊗ Δ[1]) ⟶ C) (F : frameNerve n ⟶ C)
-    (hF : IsZeroFrameVertex (functorVertex F))
+    (hF : IsZeroFrameVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F))
     (hframe : (frameInclusion n ▷ (Δ[1] ⊗ Δ[1] : SSet.{u})) ≫ E = frameCofiberSquareMap n ≫ F)
-    (hleft : (arNerve n ◁ squareLeftEdge) ≫ E = arCofiberZeroInputMap n ≫ F)
-    (hbottom : (arNerve n ◁ squareBottomEdge) ≫ E = arCofiberInputMap n ≫ F)
-    (hpushout : ∀ a : Ar.{u} n, IsPushoutSquare
+    (hleft : (arNerve n ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge) ≫ E = arCofiberZeroInputMap n ≫ F)
+    (hbottom : (arNerve n ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge) ≫ E = arCofiberInputMap n ≫ F)
+    (hpushout : ∀ a : Ar.{u} n, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare
       (lift (SSet.const (ComposableArrows.mk₀ a)) (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{u})) ≫ E)) :
     IsGapped (arSquareFamilyApex E) := by
   apply (isGapped_iff_originSquares _).2
@@ -59,7 +59,7 @@ lemma isGapped_arSquareFamilyApex {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     have he := ConcreteCategory.congr_hom
       (NatTrans.congr_app (arSquareFamilyApex_frame E F hframe) (Opposite.op ⦋0⦌)) v
     have hz := hF v rfl
-    rw [evaluateFunctorAt_functorVertex] at hz
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex] at hz
     exact he.symm ▸ hz
   · intro i j hij
     have e := arCofiberCanonicalSquareComparisonIso E F hframe hleft hbottom (arObj i j hij)

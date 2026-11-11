@@ -89,7 +89,7 @@ lemma piProEquivalence_of_positiveTorModel
   have : ∀ i, IsIso ((e n hnpos).app i) := he n hnpos
   exact IsProZero.of_levelwiseIso (e n hnpos) (hTor n hnpos)
 
-variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (hΦ : IsKConnective R Φ k)
+variable (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (hΦ : IsKConnective R Φ k)
 include hΦ
 
 /-- 同じ元の dg 比較射の値に、正次数 Tor の pro 消滅の抽象判定を適用する。 -/

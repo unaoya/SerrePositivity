@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyFiber
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashMonomorphisms
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SmashMonomorphisms
 public import SerrePositivity.KST.Spectra.SpectrumIntegerHomotopyDetection
 
 /-!
@@ -26,7 +26,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.FiberModel
 lemma inclusion_mono {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) :
     Mono (pointedFiberι p).right := ⟨by
   intro Z a b h
-  exact _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p.right _ h⟩
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiber_hom_ext p.right _ h⟩
 
 /-- 元の単射な構造射から実 fiber の構造射の単射性を得る。 -/
 lemma sigma_mono {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y)
@@ -64,7 +64,7 @@ def comparison {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y)
 
 lemma comparison_levelwise {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y)
     (hp : ∀ n, Fibration (p.app n).right) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((comparison p hp).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((comparison p hp).app n).right :=
   fiberLevelProjection_piIsomorphism p hp n
 
 /-- 比較射の後の包含は、長完全列で使う元の包含そのもの。 -/
@@ -79,7 +79,7 @@ local instance rawFiberSimplicialCategory : SimplicialCategory OmegaSpectrum.{u}
 /-- 比較は元の Sp の同じ辺における同値。 -/
 lemma comparison_isInvertible {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y)
     (hp : ∀ n, Fibration (p.app n).right) :
-    IsInvertibleEdge (coherentNerveEdge (comparison p hp)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (comparison p hp)) :=
   isInvertible_of_piIsomorphism _ (piIsomorphism_of_levelwise _ (comparison_levelwise p hp))
 
 end SerrePositivity.KST.LocalizingInvariants.FiberModel

@@ -39,15 +39,15 @@ instance quasiIsoInfinity_quasicategory : Quasicategory (quasiIsoInfinity R) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_quasicategory _ _
 
 lemma quasiIsoInfinity_isLocalization :
-    IsLocalization (quasiIsoInfinityMap R) (quasiIsoInfinityEdges R) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (quasiIsoInfinityMap R) (quasiIsoInfinityEdges R) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_isLocalization _ _
 
 lemma quasiIsoInfinityMap_inverts {A B : Mon (Complex R)} (f : A ⟶ B) (hf : QuasiIso f.hom) :
-    IsInvertibleEdge ((nerve.edgeMk ((infinityPresentationFunctor R).map f)).map (quasiIsoInfinityMap R)).toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk ((infinityPresentationFunctor R).map f)).map (quasiIsoInfinityMap R)).toTruncated := by
   have he : (nerve.edgeMk ((infinityPresentationFunctor R).map f)).edge ∈ quasiIsoInfinityEdges R := hf
   have hi := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_inverts (nerve (InfinityPresentation R)) (quasiIsoInfinityEdges R)) he
-  exact (isInvertibleEdge_congr
-    (e := (edgeOfSimplex (nerve.edgeMk ((infinityPresentationFunctor R).map f)).edge).map
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+    (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (nerve.edgeMk ((infinityPresentationFunctor R).map f)).edge).map
       ((truncation 2).map (quasiIsoInfinityMap R)))
     (f := ((nerve.edgeMk ((infinityPresentationFunctor R).map f)).map (quasiIsoInfinityMap R)).toTruncated) rfl).mp hi
 

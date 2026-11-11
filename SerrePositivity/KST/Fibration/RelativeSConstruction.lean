@@ -29,7 +29,7 @@ def arVertexFunctor : SimplexCategory ⥤ Type u where
 /-- 元の全 gapped 図式の指定 Ar 成分での評価。 -/
 def sComponentEvaluation (B : SSet.{u}) (n : ℕ) (a : (arNerve n) _⦋0⦌) :
     sConstruction n B ⟶ B :=
-  (gappedSubcomplex n B).ι ≫ evaluateFunctorAt a
+  (gappedSubcomplex n B).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a
 
 /-- 評価と面・退化の可換性は元の K-1/K-2 界面の厳密な式である。 -/
 lemma sComponentEvaluation_reindex (B : SSet.{u}) {n m : SimplexCategoryᵒᵖ}
@@ -49,11 +49,11 @@ instance relativeSConstruction_quasicategory {B C : SSet.{u}} [Quasicategory B]
 
 /-- Verdier 列では、実辺の相対所属は全 Ar 成分の W 所属と同値。 -/
 lemma relativeSConstruction_mem_edge_iff
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : ℕ) (s : (sConstruction n B.obj) _⦋1⦌) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (n : ℕ) (s : (sConstruction n B.obj) _⦋1⦌) :
     s ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
       ∀ a, (sComponentEvaluation B.obj n a).app (Opposite.op ⦋1⦌) s ∈
-        _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i :=
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i :=
   relativeDiagram_mem_edge_iff h (sComponentEvaluation B.obj n) s
 
 /-- 元の全 gapped S• に相対条件を課した単体的対象 wS•B。 -/
@@ -70,7 +70,7 @@ def relativeSimplicialSConstructionInclusion {B C : SSet.{u}} (q : B ⟶ C) :
 
 /-- 元の core S•B から wS•B への、全ての面・退化と可換な包含。 -/
 def relativeSimplicialSConstructionCoreInclusion {B C : SSet.{u}} (q : B ⟶ C) :
-    simplicialSConstruction B ⋙ quasicategoryCoreFunctor ⟶ relativeSimplicialSConstruction q :=
+    simplicialSConstruction B ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor ⟶ relativeSimplicialSConstruction q :=
   relativeSimplicialDiagramCoreInclusion q (simplicialSConstruction B) arVertexFunctor
     (fun n => sComponentEvaluation B n.unop.len) (sComponentEvaluation_reindex B)
 

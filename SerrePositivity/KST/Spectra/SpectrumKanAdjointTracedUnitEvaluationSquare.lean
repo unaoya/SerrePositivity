@@ -23,7 +23,7 @@ variable (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet.{u}}
 def kanAdjointTracedUnitEvaluationSquare (n : ℕ) :
     SSet.Homotopy
       (((kanAdjointTracedUnitEvaluationInterval X Y φ (n + 1)).basedPost
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path)
       (((kanAdjointTracedUnitEvaluationInterval X Y φ n).basedPost
         (pointedStep X (KanSequence.signedLoopTail Y.toKanSequence) n)).path) where

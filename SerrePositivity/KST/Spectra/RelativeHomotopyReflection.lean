@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.RelativeHomotopyRlpLift
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.PointedKanWhitehead
 
 /-!
 概要：点つき Kan 射の π 同型に沿い、指定部分の全区間を保つホモトピーを反映する。
@@ -24,26 +24,26 @@ structure RelativeHomotopyReflection {E B : PointedSimplicialSet.{u}} {A X : SSe
     (H : SSet.Homotopy (f ≫ q.right) (g ≫ q.right))
     (V : SSet.Homotopy (i ≫ f) (i ≫ g)) where
   homotopy : SSet.Homotopy f g
-  trace : X ⊗ (Δ[1] : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath q).right
-  zero : SSet.ι₀ ≫ trace = f ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit q).right
-  one : SSet.ι₁ ≫ trace = g ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit q).right
-  over : trace ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection q).right = H.h
-  retraction : trace ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction q).right = homotopy.h
-  relative : i ▷ (Δ[1] : SSet.{u}) ≫ trace = V.h ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit q).right
+  trace : X ⊗ (Δ[1] : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPath q).right
+  zero : SSet.ι₀ ≫ trace = f ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit q).right
+  one : SSet.ι₁ ≫ trace = g ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit q).right
+  over : trace ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection q).right = H.h
+  retraction : trace ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction q).right = homotopy.h
+  relative : i ▷ (Δ[1] : SSet.{u}) ≫ trace = V.h ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit q).right
 
 /-- π 同型の写像 path 分解へ持ち上げ、同じ基底トレースを保って元の比較を回収する。 -/
 def RelativeHomotopyReflection.choose {E B : PointedSimplicialSet.{u}} {A X : SSet.{u}}
     [KanComplex E.right] [KanComplex B.right] (q : E ⟶ B)
-    (hq : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism q.right) (i : A ⟶ X) [Mono i] {f g : X ⟶ E.right}
+    (hq : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism q.right) (i : A ⟶ X) [Mono i] {f g : X ⟶ E.right}
     (H : SSet.Homotopy (f ≫ q.right) (g ≫ q.right))
     (V : SSet.Homotopy (i ≫ f) (i ≫ g))
     (hv : V.h ≫ q.right = i ▷ (Δ[1] : SSet.{u}) ≫ H.h) :
     RelativeHomotopyReflection q i H V := by
-  let U := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit q).right
-  let p := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection q).right
-  let r := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction q).right
-  have hfac : U ≫ p = q.right := congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_projection q)
-  have hret : U ≫ r = 𝟙 E.right := congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_retraction q)
+  let U := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit q).right
+  let p := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection q).right
+  let r := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction q).right
+  have hfac : U ≫ p = q.right := congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit_projection q)
+  have hret : U ≫ r = 𝟙 E.right := congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit_retraction q)
   let Hbase : SSet.Homotopy ((f ≫ U) ≫ p) ((g ≫ U) ≫ p) := {
     h := H.h
     h₀ := by rw [Category.assoc, hfac]; exact H.h₀
@@ -58,7 +58,7 @@ def RelativeHomotopyReflection.choose {E B : PointedSimplicialSet.{u}} {A X : SS
     change (V.h ≫ U) ≫ p = _
     rw [Category.assoc, hfac, hv]
   let L := RelativeHomotopyRlpLift.choose p
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection_rlp_of_piIsomorphism q hq) i Hbase Vup hV
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mappingPathProjection_rlp_of_piIsomorphism q hq) i Hbase Vup hV
   let R : SSet.Homotopy f g := {
     h := L.homotopy.h ≫ r
     h₀ := by
@@ -77,6 +77,6 @@ lemma RelativeHomotopyReflection.homotopy_relative
     {V : SSet.Homotopy (i ≫ f) (i ≫ g)} (L : RelativeHomotopyReflection q i H V) :
     i ▷ (Δ[1] : SSet.{u}) ≫ L.homotopy.h = V.h := by
   rw [← L.retraction, ← Category.assoc, L.relative, Category.assoc,
-    ← Under.comp_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_retraction, Under.id_right, Category.comp_id]
+    ← Under.comp_right, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit_retraction, Under.id_right, Category.comp_id]
 
 end SerrePositivity.KST.Spectra

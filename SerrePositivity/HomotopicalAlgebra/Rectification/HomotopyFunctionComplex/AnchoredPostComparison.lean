@@ -75,40 +75,40 @@ lemma triangle_reindex (θ : Fin (m + 1) →o Fin (n + 1)) (k : Fin (m + 1)) :
     triangle hcof hfib f (c.reindex θ) k = triangle hcof hfib f c (θ k) :=
   congrArg (factorTriangle hcof hfib f) (c.cut_reindex θ k)
 
-abbrev parameter (_c : AnchoredChain g n) : SSet.{v} := TriangleBook.obj (ULift.{v} (Fin (n + 1)))
+abbrev parameter (_c : AnchoredChain g n) : SSet.{v} := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.obj (ULift.{v} (Fin (n + 1)))
 
 def comparison : parameter c ⟶ postChoiceSpace X Y V f g :=
-  TriangleBook.desc (postEdge hcof hfib X Y V f g)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.desc (postEdge hcof hfib X Y V f g)
     (fun k : ULift.{v} (Fin (n + 1)) => triangle hcof hfib f c k.down)
     (fun k => triangle_direct hcof hfib f c k.down)
 
 @[reassoc]
 lemma comparison_cut (k : Fin (n + 1)) :
-    TriangleBook.triangle (ULift.{v} (Fin (n + 1))) ⟨k⟩ ≫ comparison hcof hfib f c =
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.triangle (ULift.{v} (Fin (n + 1))) ⟨k⟩ ≫ comparison hcof hfib f c =
       triangle hcof hfib f c k :=
-  TriangleBook.triangle_desc _ _ _ (⟨k⟩ : ULift.{v} (Fin (n + 1)))
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.triangle_desc _ _ _ (⟨k⟩ : ULift.{v} (Fin (n + 1)))
 
 @[reassoc]
 lemma comparison_direct :
-    TriangleBook.sharedEdge (ULift.{v} (Fin (n + 1))) ≫ comparison hcof hfib f c =
-      postEdge hcof hfib X Y V f g := TriangleBook.sharedEdge_desc _ _ _
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.sharedEdge (ULift.{v} (Fin (n + 1))) ≫ comparison hcof hfib f c =
+      postEdge hcof hfib X Y V f g := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.sharedEdge_desc _ _ _
 
 abbrev ordinalMap (θ : Fin (m + 1) →o Fin (n + 1)) : parameter (c.reindex θ) ⟶ parameter c :=
-  TriangleBook.reindex (fun k : ULift.{v} (Fin (m + 1)) => (⟨θ k.down⟩ : ULift.{v} (Fin (n + 1))))
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps.reindex (fun k : ULift.{v} (Fin (m + 1)) => (⟨θ k.down⟩ : ULift.{v} (Fin (n + 1))))
 
 /-- This changes the chain diagram itself, not merely its cut labels. -/
 lemma comparison_reindex (θ : Fin (m + 1) →o Fin (n + 1)) :
     ordinalMap c θ ≫ comparison hcof hfib f c = comparison hcof hfib f (c.reindex θ) := by
-  apply TriangleBook.hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps.hom_ext
   · rintro ⟨k⟩
-    change TriangleBook.triangle (ULift.{v} (Fin (m + 1)))
-      (⟨k⟩ : ULift.{v} (Fin (m + 1))) ≫ (TriangleBook.reindex _ ≫ _) = _
-    rw [← Category.assoc, TriangleBook.triangle_reindex]
+    change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.triangle (ULift.{v} (Fin (m + 1)))
+      (⟨k⟩ : ULift.{v} (Fin (m + 1))) ≫ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps.reindex _ ≫ _) = _
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps.triangle_reindex]
     exact (comparison_cut hcof hfib f c (θ k)).trans
       ((triangle_reindex hcof hfib f c θ k).symm.trans
         (comparison_cut hcof hfib f (c.reindex θ) k).symm)
-  · change TriangleBook.sharedEdge _ ≫ (TriangleBook.reindex _ ≫ _) = _
-    rw [← Category.assoc, TriangleBook.sharedEdge_reindex]
+  · change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.sharedEdge _ ≫ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps.reindex _ ≫ _) = _
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps.sharedEdge_reindex]
     exact (comparison_direct hcof hfib f c).trans
       (comparison_direct hcof hfib f (c.reindex θ)).symm
 
@@ -167,11 +167,11 @@ lemma reindexHomotopy_at_one (θ : Fin (m + 1) →o Fin (n + 1)) :
   (reindexHomotopy hcof hfib f c θ).at_one
 
 lemma reindexedBoundary (θ : Fin (m + 1) →o Fin (n + 1)) :
-    TriangleBook.desc (postEdge hcof hfib X Y V f g)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.desc (postEdge hcof hfib X Y V f g)
       (fun k : ULift.{v} (Fin (m + 1)) => triangle hcof hfib f c (θ k.down))
       (fun k => triangle_direct hcof hfib f c (θ k.down)) =
         comparison hcof hfib f (c.reindex θ) :=
-  (TriangleBook.desc_reindex
+  (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps.desc_reindex
     (fun k : ULift.{v} (Fin (m + 1)) => (⟨θ k.down⟩ : ULift.{v} (Fin (n + 1))))
     (postEdge hcof hfib X Y V f g)
     (fun k : ULift.{v} (Fin (n + 1)) => triangle hcof hfib f c k.down)
@@ -181,11 +181,11 @@ lemma reindexedBoundary (θ : Fin (m + 1) →o Fin (n + 1)) :
 lemma reindexHomotopy_relative (θ : Fin (m + 1) →o Fin (n + 1)) :
     KanTriangleFamily.inclusion hcof hfib (ULift.{v} (Fin (m + 1))) ▷
       SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ≫ (reindexHomotopy hcof hfib f c θ).hom =
-      TriangleBook.obj (ULift.{v} (Fin (m + 1))) ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.obj (ULift.{v} (Fin (m + 1))) ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫
         RelativeChoiceSpace.pointUnitIso.hom) ≫ (ρ_ _).hom ≫
           comparison hcof hfib f (c.reindex θ) :=
   (reindexHomotopy hcof hfib f c θ).relative.trans
-    (congrArg (fun e => TriangleBook.obj (ULift.{v} (Fin (m + 1))) ◁
+    (congrArg (fun e => _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.obj (ULift.{v} (Fin (m + 1))) ◁
       (SSet.stdSimplex.isTerminalObj₀.from _ ≫ RelativeChoiceSpace.pointUnitIso.hom) ≫
         (ρ_ _).hom ≫ e) (reindexedBoundary hcof hfib f c θ))
 

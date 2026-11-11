@@ -44,7 +44,7 @@ def adjointLoopUnitPost (A : OmegaSpectrum.{u}) (X : KanSequence.{u}) :
 使われ方：単位の同値性を全 Hom へ移す。 -/
 lemma adjointLoopUnitPost_piIsomorphism (A : OmegaSpectrum.{u})
     (X : KanSequence.{u}) (hX : X.OmegaCondition) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (adjointLoopUnitPost A X) :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (adjointLoopUnitPost A X) :=
   pointedPost_levelwise_piIsomorphism A (KanSequence.adjointLoopTailUnit X)
     (KanSequence.adjointLoopTailUnit_levelwise hX)
 

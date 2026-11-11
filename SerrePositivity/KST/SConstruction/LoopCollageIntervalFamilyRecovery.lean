@@ -20,11 +20,11 @@ open Spectra SerrePositivity.InfinityCategories
 /-- 元の suspension 写像空間から、collage 内の下段・上段間の区間模型への比較。 -/
 def loopCollageSuspensionIntervalComparison (X Y : PointedKanObject.{u}) :
     (SSet.uliftFunctor.{u + 1, u}).obj
-        (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj) Y.obj).right ⟶
-      intervalMappingSpace
-        (coherentNerveVertex ((enrichedFunctorCollageBottom
+        (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X.obj) Y.obj).right ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((enrichedFunctorCollageBottom
           pointedKanLoopEnrichedFunctor).obj X))
-        (coherentNerveVertex ((enrichedFunctorCollageTop
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((enrichedFunctorCollageTop
           pointedKanLoopEnrichedFunctor).obj Y)) :=
   (SSet.uliftFunctor.{u + 1, u}).map (suspensionLoopMappingIso X.obj Y.obj).hom ≫
     coherentMappingIntervalComparison
@@ -34,8 +34,8 @@ def loopCollageSuspensionIntervalComparison (X Y : PointedKanObject.{u}) :
 /-- 元の随伴同型と局所 Kan な collage の比較から、同じ suspension 比較が同値。 -/
 lemma loopCollageSuspensionIntervalComparison_isQCatEquivalence
     (X Y : PointedKanObject.{u}) :
-    IsQCatEquivalence (loopCollageSuspensionIntervalComparison X Y) := by
-  exact (qCatEquivalenceOfIso ((SSet.uliftFunctor.{u + 1, u}).mapIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (loopCollageSuspensionIntervalComparison X Y) := by
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso ((SSet.uliftFunctor.{u + 1, u}).mapIso
     (suspensionLoopMappingIso X.obj Y.obj))).isQCatEquivalence.comp
       (coherentMappingIntervalComparison_isQCatEquivalence _ _)
 
@@ -43,11 +43,11 @@ lemma loopCollageSuspensionIntervalComparison_isQCatEquivalence
 def relativeLoopCollageSuspensionFamilyRecovery (X Y : PointedKanObject.{u})
     {T U : SSet.{u + 1}} (j : T ⟶ U) [Mono j]
     (a : T ⟶ (SSet.uliftFunctor.{u + 1, u}).obj
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj) Y.obj).right)
-    (b : U ⟶ intervalMappingSpace
-      (coherentNerveVertex ((enrichedFunctorCollageBottom
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X.obj) Y.obj).right)
+    (b : U ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((enrichedFunctorCollageBottom
         pointedKanLoopEnrichedFunctor).obj X))
-      (coherentNerveVertex ((enrichedFunctorCollageTop
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((enrichedFunctorCollageTop
         pointedKanLoopEnrichedFunctor).obj Y)))
     (h : a ≫ loopCollageSuspensionIntervalComparison X Y = j ≫ b) :
     RelativeEquivalenceFamilyData (loopCollageSuspensionIntervalComparison X Y) j a b :=

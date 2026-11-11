@@ -61,7 +61,7 @@ def dgKappaNativeBFFinitePositiveTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (dgKappaNativeBFFiniteBoundaryKanFunctor.{u, v} R D I r)
       (dgKappaNativeBFFiniteLevelKanFunctor.{u, v} R D I (r + 1)) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _
     (fun C => ObjectProperty.homMk
       ((dgKappaNativeBFFinitePositiveStage.{u, v} R D I r).comparison C))
     (dgKappaNativeBFFinitePositiveStage.{u, v} R D I r).naturality
@@ -70,9 +70,9 @@ def dgKappaNativeBFFinitePositiveTransformation (r : ℕ) :
 方針：同じ全族変換と実比較の π 同型性を使う。
 規約：別の成分を選ばない。使われ方：元二胞体の比較。 -/
 def dgKappaNativeBFFinitePositiveFunctorIso (r : ℕ) :
-    FunctorIso (coherentNerveMap
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap
       (dgKappaNativeBFFiniteBoundaryKanFunctor.{u, v} R D I r))
-      (coherentNerveMap (dgKappaNativeBFFiniteLevelKanFunctor.{u, v} R D I (r + 1))) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (dgKappaNativeBFFiniteLevelKanFunctor.{u, v} R D I (r + 1))) :=
   StrictEnrichedTransformation.functorIso _ _
     (dgKappaNativeBFFinitePositiveTransformation.{u, v} R D I r) (by
       intro C

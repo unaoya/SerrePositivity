@@ -20,28 +20,28 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.FiberCone
 
 variable {K X : SSet.{u}} [Quasicategory X] {p q : K ⟶ X}
-  (c : JoinCone p) (d : JoinCone q) (hc : IsLimitCone c) (hd : IsLimitCone d)
-  (e : FunctorIso p q)
+  (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone p) (d : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone q) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c) (hd : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone d)
+  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso p q)
 
 structure RelativeDiagramIso where
-  iso : FunctorIso c.val d.val
-  base_arrow : Arrow.mk (homPre (joinInr Δ[0] K) iso.hom) = Arrow.mk e.hom
+  iso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso c.val d.val
+  base_arrow : Arrow.mk (homPre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr Δ[0] K) iso.hom) = Arrow.mk e.hom
 
-lemma projectionVertex_eq : (hoFunctor.map (limitConeProjection K X)).toFunctor.obj
-    (HomotopyCategory.mk (vertex c hc)) = HomotopyCategory.mk (functorVertex p) := by
-  change HomotopyCategory.mk (functorVertex (joinInr Δ[0] K ≫ c.val)) = _
-  exact congrArg (fun k ↦ HomotopyCategory.mk (functorVertex k)) c.property
+lemma projectionVertex_eq : (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitConeProjection K X)).toFunctor.obj
+    (HomotopyCategory.mk (vertex c hc)) = HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex p) := by
+  change HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr Δ[0] K ≫ c.val)) = _
+  exact congrArg (fun k ↦ HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex k)) c.property
 
 def relativeDiagramIso : RelativeDiagramIso c d e := by
-  let T := (hoFunctor.map (limitConeProjection K X)).toFunctor
+  let T := (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitConeProjection K X)).toFunctor
   let hx := projectionVertex_eq c hc
   let hy := projectionVertex_eq d hd
   let a := transportedPreimageIso T (projectionHoFullyFaithful K X) hx hy e
-  let i := (relativeTerminalVertices (coneRestriction K X)).ι
-  let E : FunctorIso c.val d.val := (hoFunctor.map i).toFunctor.mapIso a
+  let i := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.relativeTerminalVertices (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneRestriction K X)).ι
+  let E : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso c.val d.val := (hoFunctor.map i).toFunctor.mapIso a
   refine ⟨E, ?_⟩
   change Arrow.mk (((hoFunctor.map i).toFunctor ⋙
-    (hoFunctor.map ((pre (joinInr Δ[0] K)).app X)).toFunctor).map a.hom) = _
+    (hoFunctor.map ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr Δ[0] K)).app X)).toFunctor).map a.hom) = _
   rw [← Cat.Hom.comp_toFunctor, ← hoFunctor.map_comp]
   change Arrow.mk (T.map a.hom) = _
   exact transportedPreimageIso_map_arrow T (projectionHoFullyFaithful K X) hx hy e

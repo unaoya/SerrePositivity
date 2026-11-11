@@ -62,7 +62,7 @@ theorem closedArrowCofiberEquivalence_section {B : StableModel.{u}}
     (closedArrowCofiberEquivalence P).inv ≫ (closedArrowCofiberEquivalence P).hom =
       𝟙 (closedArrowModel P) := by
   apply Subtype.ext
-  exact Classical.choose_spec (trivialKanFibration_exists_section (closedCofiberProjection P))
+  exact Classical.choose_spec (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section (closedCofiberProjection P))
 
 /-- 概要：全旗の指定合成辺に同じ相対 cofiber 補完を付ける。
 方針：元の辺抽出と同じ切断を合成する。

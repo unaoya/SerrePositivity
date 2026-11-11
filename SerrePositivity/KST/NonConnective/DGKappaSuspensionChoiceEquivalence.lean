@@ -18,30 +18,30 @@ variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {κ : Cardinal.{u}} (I J : DGKappaConeInput R D κ)
   (P : DGKappaPerfectInput R D I) (Q : DGKappaPerfectInput R D J)
 local instance choiceEquivalenceSuspensionStable (L : DGKappaConeInput R D κ) :
-    IsStable (dgKappaSuspensionInfinity R D L) := dgKappaSuspensionInfinity_isStable R D L
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (dgKappaSuspensionInfinity R D L) := dgKappaSuspensionInfinity_isStable R D L
 
 /-- 二つの元の実下降射の合成は、同じ実商の恒等関手と同型。 -/
 def dgKappaSuspensionChoiceMap_inverseIso :
-    FunctorIso (dgKappaSuspensionChoiceMap R D I J P Q ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaSuspensionChoiceMap R D I J P Q ≫
       dgKappaSuspensionChoiceMap R D J I Q P) (𝟙 (dgKappaSuspensionInfinity R D I)) := by
   let F := dgKappaSuspensionChoiceMap R D I J P Q
   let G := dgKappaSuspensionChoiceMap R D J I Q P
-  let : IsExactFunctor F := dgKappaSuspensionChoiceMap_isExact R D I J P Q
-  let : IsExactFunctor G := dgKappaSuspensionChoiceMap_isExact R D J I Q P
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F := dgKappaSuspensionChoiceMap_isExact R D I J P Q
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor G := dgKappaSuspensionChoiceMap_isExact R D J I Q P
   apply dgKappaSuspensionFunctorIso_of_precomp R D I _ (F ≫ G) (𝟙 _)
-    (isExactFunctor_comp F G) (isExactFunctor_id _)
-  have e₀ : FunctorIso (dgKappaSuspensionProjection R D I ≫ (F ≫ G))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp F G) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_id _)
+  have e₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaSuspensionProjection R D I ≫ (F ≫ G))
       ((dgKappaConeChoiceEquivalence R D I J).hom ≫
         (dgKappaSuspensionProjection R D J ≫ G)) := by
     simpa only [Category.assoc, F] using!
       (dgKappaSuspensionChoiceMap_facIso R D I J P Q).postcomp G
   have e₁ := (dgKappaSuspensionChoiceMap_facIso R D J I Q P).precomp
     (dgKappaConeChoiceEquivalence R D I J).hom
-  have e₂ : FunctorIso
+  have e₂ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       ((dgKappaConeChoiceEquivalence R D I J).hom ≫
         (dgKappaConeChoiceEquivalence R D J I).hom ≫ dgKappaSuspensionProjection R D I)
       (dgKappaSuspensionProjection R D I) := by
-    have ec : FunctorIso ((dgKappaConeChoiceEquivalence R D I J).hom ≫
+    have ec : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((dgKappaConeChoiceEquivalence R D I J).hom ≫
         (dgKappaConeChoiceEquivalence R D J I).hom) (𝟙 _) :=
       dgKappaConeChoiceEquivalence_compIso R D I J I ≪≫
         dgKappaConeChoiceEquivalence_selfIso R D I
@@ -52,7 +52,7 @@ def dgKappaSuspensionChoiceMap_inverseIso :
 
 /-- 同じ実商の間の模型選択比較は全関手同値。 -/
 def dgKappaSuspensionChoiceEquivalence :
-    QCatEquivalence (dgKappaSuspensionInfinity R D I) (dgKappaSuspensionInfinity R D J) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (dgKappaSuspensionInfinity R D I) (dgKappaSuspensionInfinity R D J) :=
   ⟨dgKappaSuspensionChoiceMap R D I J P Q, dgKappaSuspensionChoiceMap R D J I Q P,
     dgKappaSuspensionChoiceMap_inverseIso R D I J P Q,
     dgKappaSuspensionChoiceMap_inverseIso R D J I Q P⟩

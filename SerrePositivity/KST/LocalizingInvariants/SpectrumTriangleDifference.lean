@@ -57,12 +57,12 @@ end TriangleDifference
 variable {Y Y' : OmegaSpectrum.{u}}
   (p : X ⟶ Y) (q : Y' ⟶ Z) (a : X ⟶ Y') (b : Y ⟶ Z) (d : X ⟶ Z)
   (U V : Sp.{u} _⦋2⦌)
-  (hu₂ : Sp.δ 2 U = (coherentNerveEdge a).edge)
-  (hu₀ : Sp.δ 0 U = (coherentNerveEdge q).edge)
-  (hu₁ : Sp.δ 1 U = (coherentNerveEdge d).edge)
-  (hv₂ : Sp.δ 2 V = (coherentNerveEdge p).edge)
-  (hv₀ : Sp.δ 0 V = (coherentNerveEdge b).edge)
-  (hv₁ : Sp.δ 1 V = (coherentNerveEdge d).edge)
+  (hu₂ : Sp.δ 2 U = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge)
+  (hu₀ : Sp.δ 0 U = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q).edge)
+  (hu₁ : Sp.δ 1 U = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d).edge)
+  (hv₂ : Sp.δ 2 V = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge p).edge)
+  (hv₀ : Sp.δ 0 V = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge b).edge)
+  (hv₁ : Sp.δ 1 V = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d).edge)
 
 def squareDifference : TriangleDifference (triangleEdge a q d U hu₂ hu₀ hu₁)
     (triangleEdge p b d V hv₂ hv₀ hv₁) :=

@@ -4,7 +4,7 @@ public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitApexFirstEndpointSquare
 public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitApexRawEdgeValues
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
 /-!
 概要：元の中間比較と raw 第一辺値の同じ合成を、第一指定対角値と比の逆へ分解する。
 方針：同じ raw 辺値とその逆を消去し、第一面の指定正方形を値へ移す。

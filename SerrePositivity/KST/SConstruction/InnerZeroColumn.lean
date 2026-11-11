@@ -25,7 +25,7 @@ def iteratedZeroColumnLastZeroPreimage (r : ℕ) (X : StableModel.{u}) (n : ℕ)
     ((iteratedSRealizationDiagram r X).obj (Opposite.op ⦋0⦌)).obj (Opposite.op ⦋n⦌) →
       (simplicialDiagonalFunctor.obj (zeroDirectionsDiagram {Fin.last r} X)).obj
         (Opposite.op ⦋n⦌) :=
-  (((stableModelForget ⋙ quasicategoryCoreFunctor).map
+  (((stableModelForget ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor).map
     ((innerZeroDirectionComparisonIso r n).hom.app X)).app (Opposite.op ⦋n⦌))
 
 /-- 概要：零列の単体の像は最後の零方向の包含で厳密に回収される。
@@ -37,7 +37,7 @@ lemma iteratedZeroColumnLastZeroPreimage_fac (r : ℕ) (X : StableModel.{u}) (n 
         (iteratedZeroColumnLastZeroPreimage r X n x) =
       ((diagonalZeroColumn (iteratedSRealizationDiagram r X) ≫
         (iteratedSRealizationCoordinateIso r X).hom).app (Opposite.op ⦋n⦌)) x := by
-  let H := stableModelForget.{u} ⋙ quasicategoryCoreFunctor
+  let H := stableModelForget.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
   have h := innerZeroDirectionComparisonIso_inclusion.{u} r n
   rw [← diagonalSInnerComparisonNatIso_app_eq_inner] at h
   have hh := congrArg (fun f => (H.map f).app (Opposite.op ⦋n⦌) x)

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.LocalizingInvariants.TensorBiproductExt
 
-public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZeroMultiplication
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareZeroMultiplication
 
 /-!
 概要：分裂平方零拡大の積に対して、左右の単位則を証明する。
@@ -20,38 +20,38 @@ namespace SerrePositivity.KST.LocalizingInvariants.SquareZero
 variable {C : Type u} [Category.{v} C] [Preadditive C] [MonoidalCategory C]
   [MonoidalPreadditive C] (A : Mon C) (M : Bimod A A) [HasBinaryBiproduct A.X M.X]
 
-lemma one_mul : (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one A M ▷ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M = (λ_ (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M)).hom := by
+lemma one_mul : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one A M ▷ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M = (λ_ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M)).hom := by
   apply biprodTensorRight_hom_ext
   · calc
-      (𝟙_ C ◁ biprod.inl) ≫ ((_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one A M ▷ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M) =
-          (η[A.X] ▷ A.X) ≫ (biprod.inl ⊗ₘ biprod.inl) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M := by
-        simp only [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one, ← id_tensorHom, ← tensorHom_id,
+      (𝟙_ C ◁ biprod.inl) ≫ ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one A M ▷ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M) =
+          (η[A.X] ▷ A.X) ≫ (biprod.inl ⊗ₘ biprod.inl) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M := by
+        simp only [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one, ← id_tensorHom, ← tensorHom_id,
           tensorHom_comp_tensorHom_assoc, Category.id_comp, Category.comp_id]
-      _ = (λ_ A.X).hom ≫ biprod.inl := by rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll, ← Category.assoc, MonObj.one_mul]
-      _ = (𝟙_ C ◁ biprod.inl) ≫ (λ_ (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M)).hom := by rw [leftUnitor_naturality]
+      _ = (λ_ A.X).hom ≫ biprod.inl := by rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_ll, ← Category.assoc, MonObj.one_mul]
+      _ = (𝟙_ C ◁ biprod.inl) ≫ (λ_ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M)).hom := by rw [leftUnitor_naturality]
   · calc
-      (𝟙_ C ◁ biprod.inr) ≫ ((_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one A M ▷ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M) =
-          (η[A.X] ▷ M.X) ≫ (biprod.inl ⊗ₘ biprod.inr) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M := by
-        simp only [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one, ← id_tensorHom, ← tensorHom_id,
+      (𝟙_ C ◁ biprod.inr) ≫ ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one A M ▷ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M) =
+          (η[A.X] ▷ M.X) ≫ (biprod.inl ⊗ₘ biprod.inr) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M := by
+        simp only [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one, ← id_tensorHom, ← tensorHom_id,
           tensorHom_comp_tensorHom_assoc, Category.id_comp, Category.comp_id]
-      _ = (λ_ M.X).hom ≫ biprod.inr := by rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr, ← Category.assoc, M.one_actLeft]
-      _ = (𝟙_ C ◁ biprod.inr) ≫ (λ_ (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M)).hom := by rw [leftUnitor_naturality]
+      _ = (λ_ M.X).hom ≫ biprod.inr := by rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr, ← Category.assoc, M.one_actLeft]
+      _ = (𝟙_ C ◁ biprod.inr) ≫ (λ_ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M)).hom := by rw [leftUnitor_naturality]
 
-lemma mul_one : (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M ◁ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one A M) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M = (ρ_ (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M)).hom := by
+lemma mul_one : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M ◁ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one A M) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M = (ρ_ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M)).hom := by
   apply biprodTensorLeft_hom_ext
   · calc
-      (biprod.inl ▷ 𝟙_ C) ≫ ((_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M ◁ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one A M) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M) =
-          (A.X ◁ η[A.X]) ≫ (biprod.inl ⊗ₘ biprod.inl) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M := by
-        simp only [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one, ← id_tensorHom, ← tensorHom_id,
+      (biprod.inl ▷ 𝟙_ C) ≫ ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M ◁ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one A M) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M) =
+          (A.X ◁ η[A.X]) ≫ (biprod.inl ⊗ₘ biprod.inl) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M := by
+        simp only [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one, ← id_tensorHom, ← tensorHom_id,
           tensorHom_comp_tensorHom_assoc, Category.id_comp, Category.comp_id]
-      _ = (ρ_ A.X).hom ≫ biprod.inl := by rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll, ← Category.assoc, MonObj.mul_one]
-      _ = (biprod.inl ▷ 𝟙_ C) ≫ (ρ_ (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M)).hom := by rw [rightUnitor_naturality]
+      _ = (ρ_ A.X).hom ≫ biprod.inl := by rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_ll, ← Category.assoc, MonObj.mul_one]
+      _ = (biprod.inl ▷ 𝟙_ C) ≫ (ρ_ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M)).hom := by rw [rightUnitor_naturality]
   · calc
-      (biprod.inr ▷ 𝟙_ C) ≫ ((_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M ◁ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one A M) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M) =
-          (M.X ◁ η[A.X]) ≫ (biprod.inr ⊗ₘ biprod.inl) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M := by
-        simp only [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one, ← id_tensorHom, ← tensorHom_id,
+      (biprod.inr ▷ 𝟙_ C) ≫ ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M ◁ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one A M) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M) =
+          (M.X ◁ η[A.X]) ≫ (biprod.inr ⊗ₘ biprod.inl) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M := by
+        simp only [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one, ← id_tensorHom, ← tensorHom_id,
           tensorHom_comp_tensorHom_assoc, Category.id_comp, Category.comp_id]
-      _ = (ρ_ M.X).hom ≫ biprod.inr := by rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl, ← Category.assoc, M.actRight_one]
-      _ = (biprod.inr ▷ 𝟙_ C) ≫ (ρ_ (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M)).hom := by rw [rightUnitor_naturality]
+      _ = (ρ_ M.X).hom ≫ biprod.inr := by rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl, ← Category.assoc, M.actRight_one]
+      _ = (biprod.inr ▷ 𝟙_ C) ≫ (ρ_ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M)).hom := by rw [rightUnitor_naturality]
 
 end SerrePositivity.KST.LocalizingInvariants.SquareZero

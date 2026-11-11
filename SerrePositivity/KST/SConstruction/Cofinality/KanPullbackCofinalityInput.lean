@@ -24,11 +24,11 @@ def KanPullbackCofinalityInput : Prop :=
   ∀ {P X E B : SSet.{u}} [KanComplex P] [KanComplex X] [KanComplex E] [KanComplex B]
     (q : P ⟶ X) (s : P ⟶ E) (g : X ⟶ B) (p : E ⟶ B),
     IsPullback q s g p → (SSet.modelCategoryQuillen.J).rlp p →
-    (∀ (n : ℕ) (e : E _⦋0⦌), Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy E n e)) →
-    (∀ (n : ℕ), 1 < n → ∀ b : B _⦋0⦌, Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy B n b)) →
+    (∀ (n : ℕ) (e : E _⦋0⦌), Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy E n e)) →
+    (∀ (n : ℕ), 1 < n → ∀ b : B _⦋0⦌, Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy B n b)) →
     ∀ a : P _⦋0⦌,
-      Function.Injective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 1 q (x := a) rfl) ∧
+      Function.Injective (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map 1 q (x := a) rfl) ∧
         ∀ n : ℕ, 1 < n →
-          Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n q (x := a) rfl)
+          Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n q (x := a) rfl)
 
 end SerrePositivity.KST.SConstruction.Cofinality

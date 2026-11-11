@@ -21,17 +21,17 @@ variable {T U E : SSet.{u}} [KanComplex E] (j : T ⟶ U) (hj : anodyneExtensions
   {F G H : U ⟶ E} (a : SSet.Homotopy F G) (b : SSet.Homotopy G H)
   (c : SSet.Homotopy F H)
   (t : SSet.Edge.CompStruct
-    ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
-    ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E))
-    ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy c)).map ((pre j).app E)))
+    ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
+    ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E))
+    ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy c)).map ((pre j).app E)))
 
 /-- 三つの元の全円柱と、指定境界の元の全二単体を固定する相対三角形。 -/
 def relativeSpecifiedTriangleFamilyData :=
   trivialKanTriangleLift ((pre j).app E)
-    (_root_.SerrePositivity.InfinityCategories.Kan.anodyne_pre_rlp_monomorphisms j hj E)
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy b))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy c)) t
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.anodyne_pre_rlp_monomorphisms j hj E)
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy b))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy c)) t
 
 /-- 同じ全三角形を、全パラメータの実二単体族として取り出す。 -/
 def relativeSpecifiedTriangleFamily : U ⊗ (Δ[2] : SSet.{u}) ⟶ E :=

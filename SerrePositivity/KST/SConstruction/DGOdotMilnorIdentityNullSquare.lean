@@ -73,15 +73,15 @@ def dgOdotMilnorIdentityNullSquare :
 方針：同じ選択された面の境界を回収する。
 規約：全一単体の等号を保持する。使われ方：指定全境界での貼合せ。 -/
 lemma dgOdotMilnorIdentityNullSquare_edges :
-    squareBottomEdge ≫ dgOdotMilnorIdentityNullSquare R d = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgOdotMilnorIdentityDiagonalInputMap R d)).edge ∧
-      squareRightEdge ≫ dgOdotMilnorIdentityNullSquare R d = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgOdotMilnorIdentityDifferenceInputMap R d)).edge ∧
-      squareLeftEdge ≫ dgOdotMilnorIdentityNullSquare R d = SSet.yonedaEquiv.symm
-        (coherentNerveEdge
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ dgOdotMilnorIdentityNullSquare R d = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorIdentityDiagonalInputMap R d)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ dgOdotMilnorIdentityNullSquare R d = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorIdentityDifferenceInputMap R d)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ dgOdotMilnorIdentityNullSquare R d = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
           (dgFixedNullLeft R (A := dgOdotMilnorIdentityBaseInput R d))).edge ∧
-      squareTopEdge ≫ dgOdotMilnorIdentityNullSquare R d = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgFixedNullTop R (dgOdotMilnorIdentityContracted R d))).edge :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ dgOdotMilnorIdentityNullSquare R d = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgFixedNullTop R (dgOdotMilnorIdentityContracted R d))).edge :=
   dgIdentityHomGluingNullSquare_edges R (C)
 
 end SerrePositivity.KST.SConstruction

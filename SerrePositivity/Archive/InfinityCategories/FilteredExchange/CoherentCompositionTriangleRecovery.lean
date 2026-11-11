@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RightPrismUpperRetraction
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionTriangle
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionTriangle
 
 /-!
 概要：元の slice 四角形全体は、その同じ零番三角形の折り畳みから回収できる。

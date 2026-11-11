@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Simplicial.VertexTuples
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.KanLiftCoherence
 
 /-!
@@ -52,7 +52,7 @@ abbrev StrictLift (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) : Type v :=
   {g : X ⟶ Y // g.base = f}
 
 abbrev obj (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) : SSet.{v} :=
-  SimplicialModel.VertexTuples.obj (StrictLift X Y f)
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.obj (StrictLift X Y f)
 
 def point (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (g : StrictLift X Y f) :
     SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0) ⟶ ResolutionLiftSpace.obj X Y f := by
@@ -66,20 +66,20 @@ variable [ModelCategory SSet.{v}]
 def interpolation (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) :
     obj X Y f ⟶ ResolutionLiftSpace.obj X Y f :=
   (ResolutionLiftSpace.extension hcof X Y f
-    (SimplicialModel.VertexTuples.inclusion (StrictLift X Y f))
-    (SimplicialModel.VertexTuples.pointsMap (point X Y f))).choose
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.inclusion (StrictLift X Y f))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap (point X Y f))).choose
 
 lemma interpolation_vertices (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) :
-    SimplicialModel.VertexTuples.inclusion (StrictLift X Y f) ≫ interpolation hcof X Y f =
-      SimplicialModel.VertexTuples.pointsMap (point X Y f) :=
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.inclusion (StrictLift X Y f) ≫ interpolation hcof X Y f =
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap (point X Y f) :=
   (ResolutionLiftSpace.extension hcof X Y f
-    (SimplicialModel.VertexTuples.inclusion (StrictLift X Y f))
-    (SimplicialModel.VertexTuples.pointsMap (point X Y f))).choose_spec
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.inclusion (StrictLift X Y f))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap (point X Y f))).choose_spec
 
 abbrev simplex (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) {n : ℕ}
     (a : Fin (n + 1) → StrictLift X Y f) :
     SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⟶ ResolutionLiftSpace.obj X Y f :=
-  SimplicialModel.VertexTuples.simplex a ≫ interpolation hcof X Y f
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.simplex a ≫ interpolation hcof X Y f
 
 /-- A single formula controls every face and every degeneracy, in all dimensions. -/
 lemma simplex_naturality (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) {n m : ℕ}
@@ -87,13 +87,13 @@ lemma simplex_naturality (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) {n m
     (θ : SimplexCategory.mk m ⟶ SimplexCategory.mk n) :
     SSet.stdSimplex.map θ ≫ simplex hcof X Y f a =
       simplex hcof X Y f (fun i => a (θ.toOrderHom i)) := by
-  rw [simplex, ← Category.assoc, SimplicialModel.VertexTuples.simplex_naturality]
+  rw [simplex, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.simplex_naturality]
 
 lemma simplex_vertex (X Y : ResolutionObject C) (f : X.base ⟶ Y.base)
     (a : StrictLift X Y f) :
     simplex hcof X Y f (fun _ : Fin 1 => a) = point X Y f a := by
-  rw [simplex, ← SimplicialModel.VertexTuples.vertex_inclusion, Category.assoc,
-    interpolation_vertices, SimplicialModel.VertexTuples.vertex_pointsMap]
+  rw [simplex, ← _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.vertex_inclusion, Category.assoc,
+    interpolation_vertices, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.vertex_pointsMap]
 
 /-- Repeating a strict vertex gives its actual degenerate simplex in every dimension. -/
 lemma simplex_constant (X Y : ResolutionObject C) (f : X.base ⟶ Y.base)
@@ -110,7 +110,7 @@ variable (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
 abbrev action (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : C) {n : ℕ}
     (a : Fin (n + 1) → StrictLift X Y f) :
     SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⨯
-        (cosimplicialHom Y.resolution.obj).obj Z ⟶ KanLiftAction.target hcof hfib X Z :=
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom Y.resolution.obj).obj Z ⟶ KanLiftAction.target hcof hfib X Z :=
   KanLiftAction.parameterized hcof hfib X Y f Z (prod.fst ≫ simplex hcof X Y f a) prod.snd
 
 lemma action_naturality (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : C) {n m : ℕ}
@@ -123,7 +123,7 @@ lemma action_naturality (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : 
 
 lemma action_target_naturality (X Y : ResolutionObject C) (f : X.base ⟶ Y.base)
     {Z Z' : C} (h : Z ⟶ Z') {n : ℕ} (a : Fin (n + 1) → StrictLift X Y f) :
-    prod.map (𝟙 _) ((cosimplicialHom Y.resolution.obj).map h) ≫
+    prod.map (𝟙 _) ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom Y.resolution.obj).map h) ≫
         action hcof hfib X Y f Z' a =
       action hcof hfib X Y f Z a ≫ (KanLiftAction.targetFunctor hcof hfib X).map h := by
   rw [action, KanLiftAction.parameterized_naturality]
@@ -132,7 +132,7 @@ lemma action_target_naturality (X Y : ResolutionObject C) (f : X.base ⟶ Y.base
 
 lemma action_strict_vertex {X Y : ResolutionObject C} (g : X ⟶ Y) (Z : C) :
     action hcof hfib X Y g.base Z (fun _ : Fin 1 => (⟨g, rfl⟩ : StrictLift X Y g.base)) =
-      prod.snd ≫ (cosimplicialHomMap g.diagram).app Z ≫
+      prod.snd ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap g.diagram).app Z ≫
         KanLiftAction.comparison hcof hfib X Z := by
   rw [action, simplex_vertex]
   exact KanLiftAction.ofLift hcof hfib g Z prod.fst prod.snd
@@ -141,7 +141,7 @@ lemma action_strict_vertex {X Y : ResolutionObject C} (g : X ⟶ Y) (Z : C) :
 lemma action_strict_constant {X Y : ResolutionObject C} (g : X ⟶ Y) (Z : C) (n : ℕ) :
     action hcof hfib X Y g.base Z
         (fun _ : Fin (n + 1) => (⟨g, rfl⟩ : StrictLift X Y g.base)) =
-      prod.snd ≫ (cosimplicialHomMap g.diagram).app Z ≫
+      prod.snd ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap g.diagram).app Z ≫
         KanLiftAction.comparison hcof hfib X Z := by
   rw [action, simplex_constant, ← Category.assoc]
   exact KanLiftAction.ofLift hcof hfib g Z
@@ -151,7 +151,7 @@ lemma action_strict_constant {X Y : ResolutionObject C} (g : X ⟶ Y) (Z : C) (n
 lemma action_vertex (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : C)
     (g : StrictLift X Y f) :
     action hcof hfib X Y f Z (fun _ : Fin 1 => g) =
-      prod.snd ≫ (cosimplicialHomMap g.val.diagram).app Z ≫
+      prod.snd ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap g.val.diagram).app Z ≫
         KanLiftAction.comparison hcof hfib X Z := by
   rcases g with ⟨g, rfl⟩
   exact action_strict_vertex hcof hfib g Z
@@ -161,7 +161,7 @@ lemma action_at_vertex (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : C
     (a : Fin (n + 1) → StrictLift X Y f) (i : Fin (n + 1)) :
     prod.map (SSet.stdSimplex.map ((SimplexCategory.mk 0).const (SimplexCategory.mk n) i))
         (𝟙 _) ≫ action hcof hfib X Y f Z a =
-      prod.snd ≫ (cosimplicialHomMap (a i).val.diagram).app Z ≫
+      prod.snd ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (a i).val.diagram).app Z ≫
         KanLiftAction.comparison hcof hfib X Z := by
   rw [action_naturality]
   exact action_vertex hcof hfib X Y f Z (a i)
@@ -186,7 +186,7 @@ of separately selected lower-dimensional comparison homotopies. -/
 abbrev tripleCompositeAction (X Y W V : ResolutionObject C)
     (f : X.base ⟶ Y.base) (g : Y.base ⟶ W.base) (h : W.base ⟶ V.base) (Z : C) :
     SSet.stdSimplex.{v}.obj (SimplexCategory.mk 3) ⨯
-        (cosimplicialHom V.resolution.obj).obj Z ⟶ KanLiftAction.target hcof hfib X Z :=
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom V.resolution.obj).obj Z ⟶ KanLiftAction.target hcof hfib X Z :=
   action hcof hfib X V (f ≫ g ≫ h) Z (tripleCompositeVertices X Y W V f g h)
 
 lemma tripleCompositeAction_face (X Y W V : ResolutionObject C)
@@ -205,7 +205,7 @@ lemma tripleCompositeAction_last_vertex (X Y W V : ResolutionObject C)
       prod.snd ≫ KanLiftCoherence.chosenMap W V h Z ≫ KanLiftCoherence.chosenMap Y W g Z ≫
         KanLiftCoherence.chosenMap X Y f Z ≫ KanLiftAction.comparison hcof hfib X Z := by
   refine (action_at_vertex hcof hfib X V (f ≫ g ≫ h) Z _ 3).trans ?_
-  have hc : (cosimplicialHomMap
+  have hc : (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap
         (tripleCompositeVertices X Y W V f g h 3).val.diagram).app Z =
       KanLiftCoherence.chosenMap W V h Z ≫ KanLiftCoherence.chosenMap Y W g Z ≫
         KanLiftCoherence.chosenMap X Y f Z := by

@@ -17,7 +17,7 @@ open CategoryTheory Limits DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] (E : Type z) [DGCategory R E] [Small.{u} E]
   (p : DGFunctor R C E) (q : DGFunctor R D E)
-variable (X : DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
+variable (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
 
 /-- 元の加群同型の cone を、その終域の恒等 cone と同定する。 -/
 def dgHomGluingModuleConeIsoIdentity {U V : ModuleCategory R E} (e : U ≅ V) :

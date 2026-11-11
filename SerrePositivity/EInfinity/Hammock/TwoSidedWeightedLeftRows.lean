@@ -25,32 +25,32 @@ variable {W : Type u} [Category.{u} W] (F : Wᵒᵖ ⥤ Cat.{u, u})
 
 def spaces : (W ⥤ Type u) ⥤ SSet.{u} where
   obj S := space F S
-  map β := TwoSidedBar.map (𝟙 (F ⋙ nerveFunctor))
+  map β := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.map (𝟙 (F ⋙ nerveFunctor))
     (Functor.whiskerRight β (Functor.const SimplexCategoryᵒᵖ))
   map_id S := by
-    change DoubleSimplicial.diagonalFunctor.map (TwoSidedBar.rowMap (𝟙 _) (𝟙 _)) = 𝟙 _
-    rw [TwoSidedBar.rowMap_id, CategoryTheory.Functor.map_id]
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rowMap (𝟙 _) (𝟙 _)) = 𝟙 _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rowMap_id, CategoryTheory.Functor.map_id]
   map_comp β γ := by
-    change DoubleSimplicial.diagonalFunctor.map
-      (TwoSidedBar.rowMap ((𝟙 (F ⋙ nerveFunctor)) ≫ 𝟙 _)
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rowMap ((𝟙 (F ⋙ nerveFunctor)) ≫ 𝟙 _)
         ((Functor.whiskerRight β (Functor.const SimplexCategoryᵒᵖ)) ≫
           Functor.whiskerRight γ (Functor.const SimplexCategoryᵒᵖ))) = _
-    rw [TwoSidedBar.rowMap_comp, CategoryTheory.Functor.map_comp]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rowMap_comp, CategoryTheory.Functor.map_comp]
     rfl
 
 def rows (G : W ⥤ Cat.{u, u}) : SimplicialObject SSet.{u} :=
   (G ⋙ nerveFunctor).flip ⋙ spaces F
 
 def rowMap (G : W ⥤ Cat.{u, u}) : rows F G ⟶
-    (BarConstruction.rows (TwoSidedGrothendieck.contravariantTotal F)).obj
-      ((TwoSidedGrothendieck.contravariantProjection F ⋙ G) ⋙ nerveFunctor) where
+    (BarConstruction.rows (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantTotal F)).obj
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F ⋙ G) ⋙ nerveFunctor) where
   app n := map F ((G ⋙ nerveFunctor).flip.obj n)
   naturality {n _} θ := (map_labels F ((G ⋙ nerveFunctor).flip.obj n)
     ((G ⋙ nerveFunctor).flip.map θ)).symm
 
 def diagonalSourceIso (G : W ⥤ Cat.{u, u}) :
-    DoubleSimplicial.diagonalFunctor.obj (rows F G) ≅
-      TwoSidedBar.space (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (rows F G) ≅
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.space (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) :=
   NatIso.ofComponents (fun _ => Iso.refl _) (by
     intro n m θ
     apply ConcreteCategory.hom_ext
@@ -58,9 +58,9 @@ def diagonalSourceIso (G : W ⥤ Cat.{u, u}) :
     rfl)
 
 def diagonalMap (G : W ⥤ Cat.{u, u}) :
-    TwoSidedBar.space (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ⟶
-      (BarConstruction.functor (TwoSidedGrothendieck.contravariantTotal F)).obj
-        (FrameHom.Thomason.nerveDiagram (TwoSidedGrothendieck.contravariantProjection F ⋙ G)) :=
-  (diagonalSourceIso F G).inv ≫ DoubleSimplicial.diagonalFunctor.map (rowMap F G)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.space (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ⟶
+      (BarConstruction.functor (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantTotal F)).obj
+        (FrameHom.Thomason.nerveDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F ⋙ G)) :=
+  (diagonalSourceIso F G).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (rowMap F G)
 
 end SerrePositivity.EInfinity.Hammock.TwoSidedWeightedLeft

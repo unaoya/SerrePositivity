@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorIsoTensor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorIsoTensor
 public import SerrePositivity.KST.Fibration.ZeroMiddleComparisonSupply
 public import SerrePositivity.KST.Fibration.ZeroMiddleLongFamilyComparison
 
@@ -19,7 +19,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
   (K : SSet.{u + 1})
 
 /-- 概要：同じ実全 S• 二短辺に対する再構成・読出しと元の指定比較。
@@ -31,7 +31,7 @@ structure ZeroMiddleSuppliedReconstruction where
     zeroMiddleFullSReconstructionTriangleSpace s hZ K
   read : zeroMiddleFullSReconstructionTriangleSpace s hZ K ⟶
     zeroMiddleFullSReconstructionLongSpace s hZ K
-  comparison : FunctorIso (encode ≫ read) (𝟙 _)
+  comparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (encode ≫ read) (𝟙 _)
   recovery : zeroMiddleFullSReconstructionRecovery s hZ K read
   diagonal : zeroMiddleFullSReconstructionDiagonalRecovery s hZ K encode read
   normalizeComparison : zeroMiddleFullSReconstructionNormalizeComparison s hZ K encode read
@@ -62,7 +62,7 @@ def ZeroMiddleSuppliedReconstruction.readback :=
 規約：指定合成端 fiber 内の同型であり、点ごとの Hom 比較ではない。
 使われ方：正規化後の全対角から元入力へ戻る移送。 -/
 def ZeroMiddleSuppliedReconstruction.readbackIso :
-    VertexIso (D.readback ℓ) ℓ :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (D.readback ℓ) ℓ :=
   zeroMiddleFullSComparisonReadPoint s hZ K D.encode D.read D.comparison ℓ
 
 /-- 概要：同じ読み戻しの直接 path 全族から元入力の全族への同型。
@@ -70,10 +70,10 @@ def ZeroMiddleSuppliedReconstruction.readbackIso :
 規約：全パラメータを保持する。厳密等式へ置き換えない。
 使われ方：再構成後の共有対角を元へ移送する。 -/
 def ZeroMiddleSuppliedReconstruction.directIso :
-    FunctorIso
-      (zeroMiddleLongPointFamily s hZ K (D.readback ℓ) ≫ evaluateFunctorAt
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (zeroMiddleLongPointFamily s hZ K (D.readback ℓ) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
         (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath)))
-      (zeroMiddleLongPointFamily s hZ K ℓ ≫ evaluateFunctorAt
+      (zeroMiddleLongPointFamily s hZ K ℓ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
         (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath))) :=
   zeroMiddleLongPointDirectFamilyIso s hZ K _ _ (D.readbackIso ℓ)
 
@@ -90,16 +90,16 @@ def ZeroMiddleSuppliedReconstruction.normalizedPoint :
 規約：各パラメータ点で再選択しない。
 使われ方：正規化側の共有対角を持つ実全族。 -/
 def ZeroMiddleSuppliedReconstruction.normalizedFamily :
-    (Δ[2] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u} :=
-  (functorVertexEquiv _ _).symm (D.normalizedPoint ℓ).val
+    (Δ[2] : SSet.{u + 1}) ⊗ K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm (D.normalizedPoint ℓ).val
 
 /-- 概要：同じ正規化族の関手頂点表示は元の再構成点。
 方針：標準の頂点表示の両逆を使う。
 規約：同じ全族を保持する。
 使われ方：元の固定ホーンと正規化対角への接続。 -/
 theorem ZeroMiddleSuppliedReconstruction.normalizedFamily_vertex :
-    functorVertex (D.normalizedFamily ℓ) = (D.normalizedPoint ℓ).val :=
-  (functorVertexEquiv _ _).apply_symm_apply _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (D.normalizedFamily ℓ) = (D.normalizedPoint ℓ).val :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).apply_symm_apply _
 
 /-- 概要：正規化族は元の二短辺の全ホーンを厳密に保つ。
 方針：同じ固定ホーン fiber の点の条件を実全族へ戻す。
@@ -108,11 +108,11 @@ theorem ZeroMiddleSuppliedReconstruction.normalizedFamily_vertex :
 theorem ZeroMiddleSuppliedReconstruction.normalizedFamily_horn :
     ((horn 2 (1 : Fin 3)).ι ▷ K) ≫ D.normalizedFamily ℓ =
       zeroMiddleFullSReconstructionHorn s hZ K := by
-  apply (functorVertexEquiv _ _).injective
-  change (((pre ((horn 2 (1 : Fin 3)).ι ▷ K)).app SpaceInfinity.{u}).app
-    (Opposite.op ⦋0⦌)) (functorVertex (D.normalizedFamily ℓ)) = _
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).injective
+  change (((pre ((horn 2 (1 : Fin 3)).ι ▷ K)).app _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}).app
+    (Opposite.op ⦋0⦌)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (D.normalizedFamily ℓ)) = _
   rw [D.normalizedFamily_vertex ℓ]
-  exact (D.normalizedPoint ℓ).property.trans (pinchedConstant_zero _)
+  exact (D.normalizedPoint ℓ).property.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero _)
 
 private theorem suppliedReconstructionDirectPath_eq :
     coherentTriangleDirectPath.{u} =
@@ -120,10 +120,10 @@ private theorem suppliedReconstructionDirectPath_eq :
          left := by simp
          right := by simp
          left_le := fun k _ => Fin.zero_le k.down
-         le_right := fun k _ => Fin.le_last k.down } : TriangleNativePath.{u}) := by
+         le_right := fun k _ => Fin.le_last k.down } : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}) := by
   apply SimplicialThickening.Path.ext
   ext ⟨k⟩
-  fin_cases k <;> simp [coherentTriangleDirectPath, coherentOnePath] <;> decide
+  fin_cases k <;> simp [coherentTriangleDirectPath, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentOnePath] <;> decide
 
 /-- 概要：正規化上側の対角は同じ読み戻し入力の直接 path 全族を厳密に回収する。
 方針：元の encode 像を正規化対角条項へ代入する。
@@ -131,9 +131,9 @@ private theorem suppliedReconstructionDirectPath_eq :
 使われ方：正規化側の厳密対角から元入力への全族可逆移送。 -/
 theorem ZeroMiddleSuppliedReconstruction.normalizedFamily_diagonal :
     (stdSimplex.δ (1 : Fin 3) ▷ K) ≫ D.normalizedFamily ℓ =
-      (Δ[1] ◁ (zeroMiddleLongPointFamily s hZ K (D.readback ℓ) ≫ evaluateFunctorAt
+      (Δ[1] ◁ (zeroMiddleLongPointFamily s hZ K (D.readback ℓ) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
         (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath)))) ≫
-        intervalMappingUncurry (coherentHomIntervalComparison
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison
           (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
           (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩))) := by
   rw [suppliedReconstructionDirectPath_eq]
@@ -149,7 +149,7 @@ theorem ZeroMiddleSuppliedReconstruction.normalizedFamily_diagonal :
 規約：元の実点との厳密等式は主張しない。
 使われ方：正規化族での構成を元の再構成像へ戻す。 -/
 def ZeroMiddleSuppliedReconstruction.normalizedPointIso :
-    VertexIso (D.encode.app (Opposite.op ⦋0⦌) ℓ) (D.normalizedPoint ℓ) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (D.encode.app (Opposite.op ⦋0⦌) ℓ) (D.normalizedPoint ℓ) :=
   Classical.choice (D.normalizeComparison (D.encode.app (Opposite.op ⦋0⦌) ℓ))
 
 /-- 概要：正規化上側の実全対角は元の指定対角全族と可逆比較される。
@@ -157,17 +157,17 @@ def ZeroMiddleSuppliedReconstruction.normalizedPointIso :
 規約：厳密切断も新しい存在仮定も使わない。全時刻の関手同型を保持する。
 使われ方：K-6 c4 の共有対角を可逆比較に沿って移送する。 -/
 def ZeroMiddleSuppliedReconstruction.diagonalIso :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       ((stdSimplex.δ (1 : Fin 3) ▷ K) ≫ D.normalizedFamily ℓ)
-      ((Δ[1] ◁ (zeroMiddleLongPointFamily s hZ K ℓ ≫ evaluateFunctorAt
+      ((Δ[1] ◁ (zeroMiddleLongPointFamily s hZ K ℓ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
         (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath)))) ≫
-        intervalMappingUncurry (coherentHomIntervalComparison
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison
           (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
           (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)))) := by
-  let ei : FunctorIso (𝟙 (Δ[1] : SSet.{u + 1})) (𝟙 Δ[1]) := Iso.refl _
-  have ewhole := F2.Presentable.functorIsoTensor ei (D.directIso ℓ)
+  let ei : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (𝟙 (Δ[1] : SSet.{u + 1})) (𝟙 Δ[1]) := Iso.refl _
+  have ewhole := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorIsoTensor ei (D.directIso ℓ)
   simp only [id_tensorHom] at ewhole
-  exact eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f))
+  exact eqToIso (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
     (D.normalizedFamily_diagonal ℓ)) ≪≫ ewhole.postcomp _
 
 end SerrePositivity.KST.Fibration

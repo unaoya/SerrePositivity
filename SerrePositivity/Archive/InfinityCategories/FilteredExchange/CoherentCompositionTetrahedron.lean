@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTriangleDeformationTime
-public import SerrePositivity.InfinityCategories.F1.Coherent.SimplexDeformation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexDeformation
 
 /-!
 概要：元の三角形と最大 path による合成を同じ三単体の面に置く。

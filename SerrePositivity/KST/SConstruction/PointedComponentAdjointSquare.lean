@@ -15,7 +15,7 @@ open Spectra.PointedMapping
 
 /-- 同じ随伴四角形の成分可換性を、元の suspension 四角形へ移す。 -/
 lemma pointedComponentAdjointSquare {A B K T : PointedSimplicialSet.{u}}
-    (c : A ⟶ K) (d : B ⟶ T) (a : A ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B) (σ : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension K ⟶ T)
+    (c : A ⟶ K) (d : B ⟶ T) (a : A ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B) (σ : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension K ⟶ T)
     (h : componentOf (c ≫ curry σ) = componentOf
       (a ≫ (PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u}).map d)) :
     componentOf (PointedSimplicialSet.circle.{u} ◁ c ≫ σ) =

@@ -23,7 +23,7 @@ variable {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
 
 /-- 元の三正方形と指定した全三角形を同時に保つ実写像。 -/
 def kKanOriginalCompositionSpecifiedPasting : threeSquareTrianglePasting ⟶
-    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
       ((kKanSequence (F.obj z)).level (r + 1)).space).right :=
   threeSquareTrianglePastingMap
     (kKanOriginalCompositionMappingSquare r F f g 0)
@@ -69,7 +69,7 @@ lemma kKanOriginalCompositionSpecifiedPasting_first_compatibility :
     stdSimplex.δ 0 ≫ threeSquareTriangleCell 1 ≫
       kKanOriginalCompositionSpecifiedPasting r F f g =
       SSet.yonedaEquiv.symm (kKanSuspensionCompatibilityEdge r F f).edge ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
           (kKanSequenceLevelMap (F.map g) (r + 1))).right := by
   rw [kKanOriginalCompositionSpecifiedPasting_triangle]
   change stdSimplex.δ 0 ≫ (kKanOriginalOuterTriangle r F f ≫ _) = _
@@ -80,7 +80,7 @@ lemma kKanOriginalCompositionSpecifiedPasting_second_compatibility :
     stdSimplex.δ 0 ≫ threeSquareTriangleCell 2 ≫
       kKanOriginalCompositionSpecifiedPasting r F f g =
       SSet.yonedaEquiv.symm (kKanSuspensionCompatibilityEdge r F g).edge ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   rw [kKanOriginalCompositionSpecifiedPasting_triangle]
   change stdSimplex.δ 0 ≫ (kKanOriginalOuterTriangle r F g ≫ _) = _

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CofiberUnitPrism
-public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SquareHomotopyCategory
 
 /-! # 四角形の対角から上辺・右辺への二つの三角形 prism
 概要：対角辺を上辺または右辺へ動かし、終点を固定した比較を作る。
@@ -26,21 +26,21 @@ def arrowTrianglePrism (b : Bool) : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ �
 
 /-- 三角形 prism の時刻零は対角辺。 -/
 lemma arrowTrianglePrism_zero (b : Bool) :
-    prismEndpoint 0 (Δ[1] : SSet.{u}) ≫ arrowTrianglePrism b = arrowSquareDiagonal := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (Δ[1] : SSet.{u}) ≫ arrowTrianglePrism b = arrowSquareDiagonal := by
   cases b <;> apply SSet.yonedaEquiv.injective <;> apply Prod.ext <;>
     apply stdSimplex.ext <;> intro r <;> fin_cases r <;> rfl
 
 /-- 三角形 prism の時刻一は上辺または右辺。 -/
 lemma arrowTrianglePrism_one (b : Bool) :
-    prismEndpoint 1 (Δ[1] : SSet.{u}) ≫ arrowTrianglePrism b =
-      (if b then squareRightEdge else squareTopEdge) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (Δ[1] : SSet.{u}) ≫ arrowTrianglePrism b =
+      (if b then _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge else _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge) := by
   cases b <;> apply SSet.yonedaEquiv.injective <;> apply Prod.ext <;>
     apply stdSimplex.ext <;> intro r <;> fin_cases r <;> rfl
 
 /-- 三角形 prism の始点での辺は元の左辺または下辺。 -/
 lemma arrowTrianglePrism_source (b : Bool) :
     lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫
-        arrowTrianglePrism b = (if b then squareBottomEdge else squareLeftEdge) := by
+        arrowTrianglePrism b = (if b then _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge else _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge) := by
   cases b <;> apply SSet.yonedaEquiv.injective <;> apply Prod.ext <;>
     apply stdSimplex.ext <;> intro r <;> fin_cases r <;> rfl
 

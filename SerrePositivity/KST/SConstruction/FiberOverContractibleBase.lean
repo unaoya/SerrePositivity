@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedContractibility
 public import SerrePositivity.KST.SConstruction.LocalizedTrivialFibrations
-public import SerrePositivity.InfinityCategories.Kan.FibrationComparison
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FibrationComparison
 
 /-! # 可縮な底の上の Kan fiber の包含
 概要：可縮な Kan 複体を底とする Kan fibration の fiber 包含は全基点 π_* 同型。
@@ -24,7 +24,7 @@ open scoped Simplicial
 方針：終対象から自身への基点射は同型であり、その引き戻しも同型。
 規約：全空間の Kan 性は不要。使われ方：底を一点へ写す fiber 比較。 -/
 lemma fiberTerminalInclusion_isIso (E : SSet.{u}) (e : E _⦋0⦌) :
-    IsIso (_root_.SerrePositivity.InfinityCategories.Kan.fiberι (terminal.from E) ((terminal.from E).app _ e)) := by
+    IsIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι (terminal.from E) ((terminal.from E).app _ e)) := by
   let c := SSet.const (X := terminal SSet.{u}) ((terminal.from E).app _ e)
   have hc : c = 𝟙 (terminal SSet.{u}) := terminal.hom_ext _ _
   let : IsIso c := by rw [hc]; infer_instance
@@ -36,8 +36,8 @@ lemma fiberTerminalInclusion_isIso (E : SSet.{u}) (e : E _⦋0⦌) :
 規約：零次数を含み、fiber の全ての基点で検証する。使われ方：homotopy fiber への loop の包含。 -/
 lemma fiberInclusion_piIsomorphism_of_contractible_base {E B : SSet.{u}}
     [KanComplex E] [KanComplex B] (p : E ⟶ B) [Fibration p]
-    (hB : IsContractibleKan B) (e : E _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) := by
+    (hB : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan B) (e : E _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι p (p.app _ e)) := by
   let : KanComplex (terminal SSet.{u}) := by
     change Fibration (terminal.from (terminal SSet.{u}))
     have ht : terminal.from (terminal SSet.{u}) = 𝟙 (terminal SSet.{u}) := terminal.hom_ext _ _
@@ -45,20 +45,20 @@ lemma fiberInclusion_piIsomorphism_of_contractible_base {E B : SSet.{u}}
     infer_instance
   let q := terminal.from E
   let g := terminal.from B
-  let : TrivialKanFibration g := (isContractibleKan_iff_trivialKanFibration B).1 hB
-  have hg : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g := kanPiIsomorphism_of_localized_isIso g
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration g := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_iff_trivialKanFibration B).1 hB
+  have hg : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism g := kanPiIsomorphism_of_localized_isIso g
     (map_isIso_of_trivialKanFibration AnodyneHomotopy.anodyneQ
       (Localization.inverts AnodyneHomotopy.anodyneQ anodyneExtensions) g)
   have hw : p ≫ g = 𝟙 E ≫ q := terminal.hom_ext _ _
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_piIsomorphism p q (𝟙 E) g hw
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id E) hg e
-  let : IsIso (_root_.SerrePositivity.InfinityCategories.Kan.fiberι q (q.app _ e)) := fiberTerminalInclusion_isIso E e
-  have hq : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.Kan.fiberι q (q.app _ e)) :=
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberMap_piIsomorphism p q (𝟙 E) g hw
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.id E) hg e
+  let : IsIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι q (q.app _ e)) := fiberTerminalInclusion_isIso E e
+  have hq : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι q (q.app _ e)) :=
     kanPiIsomorphism_of_localized_isIso _ (by infer_instance)
   have hc := h.comp hq
-  have hfac : _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap p q (𝟙 E) g hw e ≫
-      _root_.SerrePositivity.InfinityCategories.Kan.fiberι q (q.app _ e) = _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) :=
-    (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_ι p q (𝟙 E) g hw e).trans (Category.comp_id _)
+  have hfac : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FibrationSquare.fiberMap p q (𝟙 E) g hw e ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι q (q.app _ e) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι p (p.app _ e) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FibrationSquare.fiberMap_ι p q (𝟙 E) g hw e).trans (Category.comp_id _)
   exact hfac ▸ hc
 
 end SerrePositivity.KST.SConstruction

@@ -15,43 +15,43 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 元の全生成写像で、右端保持の評価は元の右 tensor を厳密に回収する。 -/
-lemma serreCubeRightKeep_generated {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
-    (h : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f) :
+lemma serreCubeRightKeep_generated {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m}
+    (h : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeMapGenerated f) :
     (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom ⟨f, h⟩) =
       serreCubeRightTensorMap A (n := n) (m := m)
         ((serreConcreteCubeFunctor A).map ⟨f, h⟩) := by
   induction h with
   | id n =>
-    change (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n))) =
+    change (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n))) =
       serreCubeRightTensorMap A (n := n) (m := n)
-        ((serreConcreteCubeFunctor A).map (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n)))
+        ((serreConcreteCubeFunctor A).map (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n)))
     erw [concreteCubeRightKeepHom_id, (serreConcreteCubeFunctor A).map_id,
       (serreConcreteCubeFunctor A).map_id]
     exact (serreCubeRightTensorMap_id A n).symm
   | face b n i =>
-    change (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b n i)) =
+    change (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace b n i)) =
       serreCubeRightTensorMap A (n := n) (m := n + 1)
-        ((serreConcreteCubeFunctor A).map (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b n i))
+        ((serreConcreteCubeFunctor A).map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace b n i))
     rw [serreConcreteCubeFunctor_face]
     exact serreRightKeepHomTensor_face A b n i
   | degeneracy n i =>
     change (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom
-      (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy n i)) =
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeDegeneracy n i)) =
       serreCubeRightTensorMap A (n := n + 1) (m := n)
-        ((serreConcreteCubeFunctor A).map (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy n i))
+        ((serreConcreteCubeFunctor A).map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeDegeneracy n i))
     rw [serreConcreteCubeFunctor_degeneracy]
     exact serreRightKeepHomTensor_degeneracy A n i
   | connection n i =>
     change (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom
-      (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection n i)) =
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeConnection n i)) =
       serreCubeRightTensorMap A (n := n + 2) (m := n + 1)
-        ((serreConcreteCubeFunctor A).map (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection n i))
+        ((serreConcreteCubeFunctor A).map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeConnection n i))
     rw [serreConcreteCubeFunctor_connection]
     exact serreRightKeepHomTensor_connection A n i
   | @comp n m l f g hf hg ihf ihg =>
     change (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom
-      ((⟨f, hf⟩ : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m) ≫
-        (⟨g, hg⟩ : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk l))) =
+      ((⟨f, hf⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m) ≫
+        (⟨g, hg⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk l))) =
       serreCubeRightTensorMap A (n := n) (m := l)
         ((serreConcreteCubeFunctor A).map (⟨f, hf⟩ ≫ ⟨g, hg⟩))
     erw [concreteCubeRightKeepHom_comp, (serreConcreteCubeFunctor A).map_comp,
@@ -62,13 +62,13 @@ lemma serreCubeRightKeep_generated {n m : ℕ} {f : _root_.SerrePositivity.Infin
 
 /-- 元の任意の具体的立方体の射で、同じ右 tensor を厳密に回収する。 -/
 lemma serreConcreteCubeRightKeep_tensor {n m : ℕ}
-    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m) :
+    (f : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m) :
     (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom f) =
       serreCubeRightTensorMap A (n := n) (m := m) ((serreConcreteCubeFunctor A).map f) :=
   serreCubeRightKeep_generated A f.property
 
 /-- 元の右端保持関手の全射は、同じ次元を持つ元の右 tensor を回収する。 -/
-lemma serreConcreteCubeRightKeep_tensor_map {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
+lemma serreConcreteCubeRightKeep_tensor_map {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube} (f : X ⟶ Y) :
     (serreConcreteCubeFunctor A).map (concreteCubeRightKeep.map f) =
       serreCubeRightTensorMap A (n := X.dimension) (m := Y.dimension)
         ((serreConcreteCubeFunctor A).map f) := by

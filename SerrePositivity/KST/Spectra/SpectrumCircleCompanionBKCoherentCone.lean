@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionReflectedTriangles
 public import SerrePositivity.KST.Spectra.BousfieldKanPointSectionCoefficients
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedStrictConeEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedStrictConeEvaluation
 
 /-!
 概要：元の companion の切断点から coherent 錐を復元し、その全切断を元の係数で計算する。
@@ -17,7 +17,7 @@ noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance companionBKCoherentConeSimplicialCategory :
     SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
@@ -38,7 +38,7 @@ lemma circleCompanionConeSectionPoint_yoneda (z : Sp.{u} _⦋0⦌) :
     SSet.yonedaEquiv.symm (circleCompanionConeSectionPoint z) =
       SSet.yonedaEquiv.symm (ULift.up
         (SSet.unitHomEquiv _ (circleCompanionBKReflectedPointMap z))) ≫
-        reflectedHomHolimConeComparison
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.reflectedHomHolimConeComparison
           (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val)
           (cotensor PointedSimplicialSet.circle
             (nativeCotensorInput PointedSimplicialSet.circle z).val) := by
@@ -48,45 +48,45 @@ lemma circleCompanionConeSectionPoint_yoneda (z : Sp.{u} _⦋0⦌) :
 
 /-- 既存の companion の固定頂点の切断点を、そのまま元の図式上の全 coherent 錐へ戻す。 -/
 def circleCompanionBKCoherentCone (z : Sp.{u} _⦋0⦌) :
-    JoinCone (strictCoherentDiagram
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram
       (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val)) :=
-  ((fixedVertexConeSpaceEquiv
-    (strictCoherentDiagram
+  ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.fixedVertexConeSpaceEquiv
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram
       (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val))
-    (coherentNerveVertex (cotensor PointedSimplicialSet.circle
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (cotensor PointedSimplicialSet.circle
       (nativeCotensorInput PointedSimplicialSet.circle z).val))).symm
     (circleCompanionConeSectionPoint z)).val
 
 /-- この元の companion の coherent 錐も、元の円 cotensor を頂点に持つ。 -/
 lemma circleCompanionBKCoherentCone_vertex (z : Sp.{u} _⦋0⦌) :
     (circleCompanionBKCoherentCone z).vertex =
-      coherentNerveVertex (cotensor PointedSimplicialSet.circle
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (cotensor PointedSimplicialSet.circle
         (nativeCotensorInput PointedSimplicialSet.circle z).val) := by
-  have h := ((fixedVertexConeSpaceEquiv
-    (strictCoherentDiagram
+  have h := ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.fixedVertexConeSpaceEquiv
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram
       (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val))
-    (coherentNerveVertex (cotensor PointedSimplicialSet.circle
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (cotensor PointedSimplicialSet.circle
       (nativeCotensorInput PointedSimplicialSet.circle z).val))).symm
     (circleCompanionConeSectionPoint z)).property
-  rw [JoinCone.vertex_eq]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone.vertex_eq]
   exact (congrArg SSet.yonedaEquiv h).trans (Equiv.apply_symm_apply _ _)
 
 /-- 元の companion 錐全体は、同じ点の元の weighted nerve 切断から厳密に復元できる。 -/
 lemma circleCompanionBKCoherentCone_val (z : Sp.{u} _⦋0⦌) :
     (circleCompanionBKCoherentCone z).val =
-      sliceUnderUncurry
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderUncurry
         ((SSet.uliftFunctor.{u + 1, u}).map
           (BousfieldKanPointSection.sectionMap (circleCompanionBKReflectedPointMap z)) ≫
-          weightedCosliceComparison
+          _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedCosliceComparison
             (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val)
             (cotensor PointedSimplicialSet.circle
               (nativeCotensorInput PointedSimplicialSet.circle z).val)) := by
-  change sliceUnderUncurry (inv (fst _ (Δ[0] : SSet.{u + 1})) ≫
-    relativeFunctorUncurry (SSet.yonedaEquiv.symm (circleCompanionConeSectionPoint z))) = _
-  apply congrArg sliceUnderUncurry
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderUncurry (inv (fst _ (Δ[0] : SSet.{u + 1})) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorUncurry (SSet.yonedaEquiv.symm (circleCompanionConeSectionPoint z))) = _
+  apply congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderUncurry
   erw [circleCompanionConeSectionPoint_yoneda,
-    HomotopyLimits.relativeFunctorUncurry_parameter, reflectedHomHolimConeComparison_uncurry]
-  have h := congrArg (fun f ↦ f ≫ weightedCosliceComparison
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.relativeFunctorUncurry_parameter, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.reflectedHomHolimConeComparison_uncurry]
+  have h := congrArg (fun f ↦ f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedCosliceComparison
       (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val)
       (cotensor PointedSimplicialSet.circle
         (nativeCotensorInput PointedSimplicialSet.circle z).val))
@@ -96,53 +96,53 @@ lemma circleCompanionBKCoherentCone_val (z : Sp.{u} _⦋0⦌) :
 /-- 元の coherent 錐の各標準単体への制限は、同じ全切断の weighted cone simplex。 -/
 lemma circleCompanionBKCoherentCone_simplex (z : Sp.{u} _⦋0⦌) {n : ℕ}
     (σ : ComposableArrows (AsSmall.{u} WalkingCospan) n) :
-    joinMap (𝟙 (Δ[0] : SSet.{u + 1}))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 (Δ[0] : SSet.{u + 1}))
       (SSet.yonedaEquiv.symm (ULift.up σ)) ≫ (circleCompanionBKCoherentCone z).val =
-    (leftPointStdSimplexIso n).hom ≫ SSet.yonedaEquiv.symm
-      (weightedConeSimplex
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.leftPointStdSimplexIso n).hom ≫ SSet.yonedaEquiv.symm
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeSimplex
         (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val)
         (cotensor PointedSimplicialSet.circle
           (nativeCotensorInput PointedSimplicialSet.circle z).val)
-        (prefixOverWeight σ ≫ Functor.whiskerLeft σ (circleCompanionBKReflectedSection z))) := by
-  rw [circleCompanionBKCoherentCone_val, ← sliceUnderUncurry_precomp]
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverWeight σ ≫ Functor.whiskerLeft σ (circleCompanionBKReflectedSection z))) := by
+  rw [circleCompanionBKCoherentCone_val, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderUncurry_precomp]
   have hs : SSet.yonedaEquiv.symm (ULift.up σ) ≫
       (SSet.uliftFunctor.{u + 1, u}).map
         (BousfieldKanPointSection.sectionMap (circleCompanionBKReflectedPointMap z)) ≫
-      weightedCosliceComparison
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedCosliceComparison
         (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val)
         (cotensor PointedSimplicialSet.circle
           (nativeCotensorInput PointedSimplicialSet.circle z).val) =
-      SSet.yonedaEquiv.symm (weightedCosliceSimplex
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedCosliceSimplex
         (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val)
         (cotensor PointedSimplicialSet.circle
           (nativeCotensorInput PointedSimplicialSet.circle z).val)
-        ⟨σ, prefixOverWeight σ ≫ Functor.whiskerLeft σ
+        ⟨σ, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverWeight σ ≫ Functor.whiskerLeft σ
           (circleCompanionBKReflectedSection z)⟩) := by
     apply SSet.yonedaEquiv.injective
     rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
-    change weightedCosliceSimplex _ _
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedCosliceSimplex _ _
       ((BousfieldKanPointSection.sectionMap (circleCompanionBKReflectedPointMap z)).app
         (Opposite.op ⦋n⦌) σ) = _
     rw [BousfieldKanPointSection.sectionMap_app, circleCompanionBKReflectedPointMap_transform]
     exact (Equiv.apply_symm_apply _ _).symm
-  rw [hs, sliceUnderUncurry_yoneda]
+  rw [hs, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sliceUnderUncurry_yoneda]
   rfl
 
 /-- 元の companion の coherent 錐を、元の標準 cone 単体で読む。 -/
 def circleCompanionBKCoherentConeSimplex (z : Sp.{u} _⦋0⦌) {n : ℕ}
     (σ : ComposableArrows (AsSmall.{u} WalkingCospan) n) : Sp.{u} _⦋n + 1⦌ :=
-  SSet.yonedaEquiv ((leftPointStdSimplexIso n).inv ≫
-    joinMap (𝟙 (Δ[0] : SSet.{u + 1})) (SSet.yonedaEquiv.symm (ULift.up σ)) ≫
+  SSet.yonedaEquiv ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.leftPointStdSimplexIso n).inv ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 (Δ[0] : SSet.{u + 1})) (SSet.yonedaEquiv.symm (ULift.up σ)) ≫
       (circleCompanionBKCoherentCone z).val)
 
 /-- この元の cone 単体は、同じ元の全切断から作った weighted cone simplex と厳密一致する。 -/
 lemma circleCompanionBKCoherentConeSimplex_eq (z : Sp.{u} _⦋0⦌) {n : ℕ}
     (σ : ComposableArrows (AsSmall.{u} WalkingCospan) n) :
-    circleCompanionBKCoherentConeSimplex z σ = weightedConeSimplex
+    circleCompanionBKCoherentConeSimplex z σ = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeSimplex
       (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val)
       (cotensor PointedSimplicialSet.circle
         (nativeCotensorInput PointedSimplicialSet.circle z).val)
-      (prefixOverWeight σ ≫ Functor.whiskerLeft σ (circleCompanionBKReflectedSection z)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverWeight σ ≫ Functor.whiskerLeft σ (circleCompanionBKReflectedSection z)) := by
   rw [circleCompanionBKCoherentConeSimplex, circleCompanionBKCoherentCone_simplex,
     Iso.inv_hom_id_assoc]
   exact Equiv.apply_symm_apply _ _

@@ -12,7 +12,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 local notation "K" => dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)
 local notation "B" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 
@@ -23,11 +23,11 @@ lemma dgOdotMilnorNuProjectionNullFactor_source :
     (dgOdotMilnorNuProjectionNullFactor R d h).app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       (dgOdotMilnorNuNullTriangleFactor R d 1).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) := by
   apply Subtype.ext
   exact (dgOdotMilnorNuProjectionNullHom_source R d h).trans
     (congrArg (fun x =>
-      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι.app
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι.app
         (Opposite.op ⦋0⦌) x) (dgOdotMilnorNuNullLowerHom_maximal R d)).symm
 
 /-- 概要：指定商比較の一端点は同じ絶対下三角形の元最大合成頂点。
@@ -37,11 +37,11 @@ lemma dgOdotMilnorNuProjectionNullFactor_target :
     (dgOdotMilnorNuProjectionNullFactor R d h).app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       (dgOdotMilnorNuAbsoluteTriangleFactor R d h 1).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) := by
   apply Subtype.ext
   exact (dgOdotMilnorNuProjectionNullHom_target R d h).trans
     (congrArg (fun x =>
-      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι.app
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι.app
         (Opposite.op ⦋0⦌) x) (dgOdotMilnorNuAbsoluteLowerHom_maximal R d h)).symm
 
 end SerrePositivity.KST.SConstruction

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceKernelEquivalence
-public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyEquivalence
 
 /-!
 概要：元対角始域を cell 増大屋根の終端として回収する指定 ν 同値を構成する。
@@ -15,35 +15,35 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "A" => DGSmallPerfectBase R (dgAlgebraCategory R (DGOdotInput.source d))
+local notation "A" => DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d))
 local notation "T" => DGCategoryCellResolution.Source R (A)
 local notation "P" => dgQuotientImage R
   (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))
-local notation "K" => resolvedDGQuotientThickFlatKernel R (DGOdotGluing R d) (P)
+local notation "K" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientThickFlatKernel R (DGOdotGluing R d) (P)
 local notation "F" => dgOdotMilnorSourceKernelDGMap R d
 
 /-- 概要：Milnor 条件から同じ厳密核比較は dg 準同値。
 方針：実 native 本質的全射性を D の同じ H⁰ 比較で戻す。
 規約：全 Hom 準同型性は元対角の判定から得る。使われ方：実 Perf 延長の同値性。 -/
-theorem dgOdotMilnorSourceKernelDGMap_quasiEquivalence (h : DGGluingMilnorSquare R d) :
+theorem dgOdotMilnorSourceKernelDGMap_quasiEquivalence (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d) :
     QuasiEquivalence (F) := by
   refine ⟨dgOdotMilnorSourceKernelDGMap_homQuasiIso R d h, ⟨?_⟩⟩
   intro Y
   let y : K := ForgetEnrichment.to (Complex R) Y.as
   obtain ⟨x, ⟨v⟩⟩ := dgOdotMilnorSourceKernelNerve_essentiallySurjective R d h
-    (DGNerve.Simplex.vertex y)
-  obtain ⟨x, rfl⟩ := DGNerve.Simplex.vertexEquiv.symm.surjective x
-  change VertexIso ((dgNerve.map (F)).app _ (DGNerve.Simplex.vertex x))
-    (DGNerve.Simplex.vertex y) at v
-  rw [dgFunctorNerve_vertex] at v
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex y)
+  obtain ⟨x, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.symm.surjective x
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (F)).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex y) at v
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex] at v
   exact ⟨(toHomotopy R (T)).obj (ForgetEnrichment.of (Complex R) x),
-    ⟨dgH0IsoOfVertexIso R (K) v⟩⟩
+    ⟨_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgH0IsoOfVertexIso R (K) v⟩⟩
 
 /-- 概要：元対角始域への同じ増大の ν 像は同値。
 方針：実準同値の一回 Perf 延長と宇宙持ち上げの保存を使用する。
 規約：順方向は同じ元の S 辺。使われ方：元入力への屋根の脚。 -/
 lemma dgOdotMilnorSourceAugmentationNu_isQCatEquivalence :
-    IsQCatEquivalence (dgOdotMilnorSourceAugmentationExactMap R d).hom := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (dgOdotMilnorSourceAugmentationExactMap R d).hom := by
   let Aug := DGCategoryCellResolution.augmentation R (A)
   letI : (quasiEquivalencePerfectExtension R (T) (A) Aug).IsEquivalence :=
     (quasiEquivalencePerfectEquivalence R _ _ Aug
@@ -60,8 +60,8 @@ lemma dgOdotMilnorSourceAugmentationNu_isQCatEquivalence :
 /-- 概要：同じ thick 平坦核への厳密比較の ν 像は Milnor 条件で同値。
 方針：構成した dg 準同値の同じ実 Perf 延長を使う。
 規約：追加の生成・完備化仮定なし。使われ方：始域回収屋根のもう一つの脚。 -/
-lemma dgOdotMilnorSourceKernelNu_isQCatEquivalence (h : DGGluingMilnorSquare R d) :
-    IsQCatEquivalence (dgOdotMilnorSourceKernelExactMap R d).hom := by
+lemma dgOdotMilnorSourceKernelNu_isQCatEquivalence (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (dgOdotMilnorSourceKernelExactMap R d).hom := by
   letI : (quasiEquivalencePerfectExtension R (T) (K) (F)).IsEquivalence :=
     (quasiEquivalencePerfectEquivalence R _ _ (F)
       (dgOdotMilnorSourceKernelDGMap_quasiEquivalence R d h)).isEquivalence_functor
@@ -77,7 +77,7 @@ lemma dgOdotMilnorSourceKernelNu_isQCatEquivalence (h : DGGluingMilnorSquare R d
 /-- 概要：同じ元始域増大の順方向を持つ指定 ν 同値。
 方針：構成済みの実同値証拠を束ねる。規約：元の S 辺の像を保持する。
 使われ方：始域回収の終端。 -/
-def dgOdotMilnorSourceAugmentationNuEquivalence : QCatEquivalence
+def dgOdotMilnorSourceAugmentationNuEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     (dgKInputStableValue R (dgOdotMilnorSourceCellInput R d)).obj
     (dgKInputStableValue R (dgOdotDiagonalSourceInput R d)).obj :=
   (dgOdotMilnorSourceAugmentationNu_isQCatEquivalence R d).choose
@@ -85,7 +85,7 @@ def dgOdotMilnorSourceAugmentationNuEquivalence : QCatEquivalence
 /-- 概要：同じ核比較の順方向を持つ指定 ν 同値。
 方針：Milnor 条件からの実同値証拠を束ねる。規約：核比較を選び直さない。
 使われ方：始域回収の共通始域側。 -/
-def dgOdotMilnorSourceKernelNuEquivalence (h : DGGluingMilnorSquare R d) : QCatEquivalence
+def dgOdotMilnorSourceKernelNuEquivalence (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     (dgKInputStableValue R (dgOdotMilnorSourceCellInput R d)).obj
     (dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)).obj :=
   (dgOdotMilnorSourceKernelNu_isQCatEquivalence R d h).choose
@@ -93,7 +93,7 @@ def dgOdotMilnorSourceKernelNuEquivalence (h : DGGluingMilnorSquare R d) : QCatE
 /-- 概要：同じ平坦核の ν 値から元対角始域値を回収する指定同値。
 方針：厳密核比較の逆と元入力への実増大を合成する。
 規約：逆は ν の下だけで使用する。使われ方：d④ の元始域回収。 -/
-def dgOdotMilnorSourceRecoveryNuEquivalence (h : DGGluingMilnorSquare R d) : QCatEquivalence
+def dgOdotMilnorSourceRecoveryNuEquivalence (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     (dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)).obj
     (dgKInputStableValue R (dgOdotDiagonalSourceInput R d)).obj :=
   (dgOdotMilnorSourceKernelNuEquivalence R d h).symm.trans
@@ -102,11 +102,11 @@ def dgOdotMilnorSourceRecoveryNuEquivalence (h : DGGluingMilnorSquare R d) : QCa
 /-- 概要：指定した始域回収は同じ cell 始域上で元入力への増大を回収する。
 方針：同じ核比較同値の単位二胞体を増大で後合成する。
 規約：全関手同型を保持する。使われ方：Sp の始域屋根の指定比較。 -/
-def dgOdotMilnorSourceRecoveryNuRoof (h : DGGluingMilnorSquare R d) : FunctorIso
+def dgOdotMilnorSourceRecoveryNuRoof (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((dgOdotMilnorSourceKernelExactMap R d).hom ≫
       (dgOdotMilnorSourceRecoveryNuEquivalence R d h).hom)
     (dgOdotMilnorSourceAugmentationExactMap R d).hom := by
-  change FunctorIso
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((dgOdotMilnorSourceKernelNuEquivalence R d h).hom ≫
       ((dgOdotMilnorSourceKernelNuEquivalence R d h).inv ≫
         (dgOdotMilnorSourceAugmentationNuEquivalence R d).hom))

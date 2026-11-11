@@ -23,17 +23,17 @@ set_option backward.isDefEq.respectTransparency.types false
 
 /-- 制限の fiber の loop と、loop 値の制限の fiber の同型。 -/
 def restrictionLoopIso {K L : SSet.{u}} (f : K ⟶ L) (Y : PointedSimplicialSet.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (pointedFiber (pre f Y)) ≅ pointedFiber (pre f (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (pointedFiber (pre f Y)) ≅ pointedFiber (pre f (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)) :=
   loopPointedFiberIso (pre f Y) ≪≫
     PointedFiberComparison.iso
       (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (pre f Y))
-      (pre f (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)) (loopSwap L Y) (loopSwap K Y) (loopSwap_pre f Y)
+      (pre f (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)) (loopSwap L Y) (loopSwap K Y) (loopSwap_pre f Y)
 
 /-- fiber の loop 交換は全空間への包含と可換。 -/
 @[reassoc]
 lemma restrictionLoopIso_hom_ι {K L : SSet.{u}} (f : K ⟶ L)
     (Y : PointedSimplicialSet.{u}) :
-    (restrictionLoopIso f Y).hom ≫ pointedFiberι (pre f (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)) =
+    (restrictionLoopIso f Y).hom ≫ pointedFiberι (pre f (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)) =
     PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (pointedFiberι (pre f Y)) ≫
       (loopSwap L Y).hom := by
   dsimp only [restrictionLoopIso, Iso.trans_hom, PointedFiberComparison.iso]
@@ -46,7 +46,7 @@ lemma restrictionLoopIso_inv_ι {K L : SSet.{u}} (f : K ⟶ L)
     (Y : PointedSimplicialSet.{u}) :
     (restrictionLoopIso f Y).inv ≫
         PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (pointedFiberι (pre f Y)) =
-      pointedFiberι (pre f (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)) ≫ (loopSwap L Y).inv := by
+      pointedFiberι (pre f (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)) ≫ (loopSwap L Y).inv := by
   apply (cancel_epi (restrictionLoopIso f Y).hom).mp
   rw [Iso.hom_inv_id_assoc, ← Category.assoc, restrictionLoopIso_hom_ι,
     Category.assoc, Iso.hom_inv_id, Category.comp_id]
@@ -61,14 +61,14 @@ lemma restrictionLoopIso_cofiber {K L : SSet.{u}} (f : K ⟶ L)
     PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (restrictionFiberIso f Y).hom ≫
       (restrictionLoopIso f Y).hom =
     (PointedMapping.loopSwap (relativeSource f) Y).hom ≫
-      (restrictionFiberIso f (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).hom := by
-  apply pointedFiber_hom_ext (pre f (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y))
+      (restrictionFiberIso f (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).hom := by
+  apply pointedFiber_hom_ext (pre f (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y))
   rw [Category.assoc, restrictionLoopIso_hom_ι, ← Category.assoc]
   have h :
       PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (restrictionFiberIso f Y).hom ≫
         PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (pointedFiberι (pre f Y)) =
       PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed
             (pointedCofiberProjection (PointedObject.adjoinFunctor.map f)) Y) ≫
         PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (freeHomIso L Y).hom := by
     have hh := congrArg ((PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u}).map)

@@ -1,6 +1,6 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneralLocalization
 
 @[expose] public section

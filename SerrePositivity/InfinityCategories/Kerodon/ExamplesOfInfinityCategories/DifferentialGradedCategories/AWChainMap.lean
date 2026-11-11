@@ -11,6 +11,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 方針：水平・垂直・削除後の切断・対角の項を定義し、区間の公式を適用する。
 規約：KST Construction A.5 の標準 AW。前半と後半は切断点を共有する。
 使われ方：Alexander–Whitney の成分を実際の鎖写像へ束ねる。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

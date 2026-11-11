@@ -54,10 +54,10 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 abbrev hom (X Y : degree (D C) (n + 1)) :=
   WordPresentationDiagram.smallHom.{u, max u v, max u v} (degree (D C) (n + 1)) X Y
 
-variable {T : SSet.{v}} (j : UniverseLift.obj.{max u v} T ⟶ parameters P n)
+variable {T : SSet.{v}} (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ parameters P n)
 
 def family {X Y : degree (D C) (n + 1)}
-    (f : UniverseLift.obj.{max u v} T ⟶ hom (C := C) n X Y) :
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ hom (C := C) n X Y) :
     small hcof hfib X ⊗ T ⟶ small hcof hfib Y where
   app k := ↾fun x =>
     ((OrdinaryBarWordPresentation.realization (C := C) hcof hfib P n k
@@ -87,8 +87,8 @@ def family {X Y : degree (D C) (n + 1)}
     exact congrArg ULift.down hh.symm
 
 lemma family_substitute {U : SSet.{v}} (i : U ⟶ T) {X Y : degree (D C) (n + 1)}
-    (f : UniverseLift.obj.{max u v} T ⟶ hom (C := C) n X Y) :
-    family hcof hfib P n (UniverseLift.map i ≫ j) (UniverseLift.map i ≫ f) =
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ hom (C := C) n X Y) :
+    family hcof hfib P n (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ f) =
       ParameterComposition.substitute i (family hcof hfib P n j f) := by
   ext k x
   rfl
@@ -106,8 +106,8 @@ lemma family_identity (X : degree (D C) (n + 1)) :
   rfl
 
 lemma family_comp {X Y Z : degree (D C) (n + 1)}
-    (f : UniverseLift.obj.{max u v} T ⟶ hom (C := C) n X Y)
-    (g : UniverseLift.obj.{max u v} T ⟶ hom (C := C) n Y Z) :
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ hom (C := C) n X Y)
+    (g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ hom (C := C) n Y Z) :
     ParameterComposition.comp (family hcof hfib P n j f) (family hcof hfib P n j g) =
       family hcof hfib P n j (lift f g ≫ WordPresentationDiagram.composition _ X Y Z) := by
   ext k x

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Joins.CosliceIntervalNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CosliceIntervalNaturality
 public import SerrePositivity.EInfinity.ComplexLimits.IntervalFamilyFunctorPrecomposition
 /-! 概要：元の全 pinched 族を同じ導来 roof に同定する。
 方針：全関手圏内の評価三角形と元の augmentation 逆を同じ関手で送る。
@@ -20,19 +20,19 @@ private lemma arrow_transport_eq {C : Type*} [Category* C] {x y x' y' : C}
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
 
 lemma pinchedFamilyPostcomp_arrow {K C D : SSet.{u}} (F : C ⟶ D)
-    {x y : C _⦋0⦌} (p : K ⟶ InfinityCategories.pinchedHom x y) :
-    Arrow.mk (intervalFamilyHom (p ≫ pinchedHomMap F x y ≫
-      pinchedHomToIntervalMappingSpace (X := D)
+    {x y : C _⦋0⦌} (p : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom x y) :
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (p ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap F x y ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := D)
         (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y))) =
       Arrow.mk ((hoFunctor.map ((ihom K).map F)).toFunctor.map
-        (intervalFamilyHom (p ≫ pinchedHomToIntervalMappingSpace x y))) := by
-  rw [pinchedHomToIntervalMappingSpace_naturality, ← Category.assoc,
-    intervalFunctorMap_familyHom]
-  unfold constantFunctorCompIso
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (p ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y))) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pinchedHomToIntervalMappingSpace_naturality, ← Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalFunctorMap_familyHom]
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.constantFunctorCompIso
   exact arrow_transport_eq
-    (congrArg (fun H : K ⟶ D => SSet.HomotopyCategory.mk (functorVertex H))
+    (congrArg (fun H : K ⟶ D => SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex H))
       (SSet.const_comp x F))
-    (congrArg (fun H : K ⟶ D => SSet.HomotopyCategory.mk (functorVertex H))
+    (congrArg (fun H : K ⟶ D => SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex H))
       (SSet.const_comp y F)) _
 
 end SerrePositivity.EInfinity.ComplexLimits

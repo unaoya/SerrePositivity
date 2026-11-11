@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.BinaryProjection
 local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
@@ -26,35 +26,35 @@ variable {X Z : OmegaSpectrum.{u}} (f : X ⟶ Z) (Y : OmegaSpectrum.{u})
 def ordinaryCone : PullbackCone (Binary.fst Z Y) f :=
   PullbackCone.mk (Binary.map f (𝟙 Y)) (Binary.fst X Y) (Binary.map_fst f (𝟙 Y))
 
-def levelIsLimit (n : ℕ) : IsLimit ((spectrumLevelFunctor n).mapCone (ordinaryCone f Y)) :=
-  (isLimitMapConePullbackConeEquiv (spectrumLevelFunctor n) (Binary.map_fst f (𝟙 Y))).symm
+def levelIsLimit (n : ℕ) : IsLimit ((_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor n).mapCone (ordinaryCone f Y)) :=
+  (isLimitMapConePullbackConeEquiv (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor n) (Binary.map_fst f (𝟙 Y))).symm
     (PointedProductProjection.isLimit (f.app n) (Y.level n).space)
 
 def diagram : AsSmall.{u} WalkingCospan ⥤ OmegaSpectrum.{u} :=
-  spectrumPullbackDiagram (Binary.fst Z Y) f
+  _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram (Binary.fst Z Y) f
 
 def cone : Cone (diagram f Y) := (ordinaryCone f Y).whisker AsSmall.down
 
-def cone_levelIsLimit (n : ℕ) : IsLimit (spectrumLevelCone (cone f Y) n) :=
-  (levelIsLimit f Y n).whiskerEquivalence
+def cone_levelIsLimit (n : ℕ) : IsLimit (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelCone (cone f Y) n) :=
+  (_root_.SerrePositivity.KST.LocalizingInvariants.BinaryProjection.levelIsLimit f Y n).whiskerEquivalence
     (AsSmall.equiv : WalkingCospan ≌ AsSmall.{u} WalkingCospan).symm
 
-def homIsLimit (A : OmegaSpectrum.{u}) : IsLimit (simplicialHomCone (cone f Y) A) :=
-  spectrumHomCone_isLimit_of_levelwise _ (cone_levelIsLimit f Y) A
+def homIsLimit (A : OmegaSpectrum.{u}) : IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone (_root_.SerrePositivity.KST.LocalizingInvariants.BinaryProjection.cone f Y) A) :=
+  _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomCone_isLimit_of_levelwise _ (cone_levelIsLimit f Y) A
 
-def infinityCone : JoinCone (strictCoherentDiagram (diagram f Y)) := strictCoherentCone (cone f Y)
+def infinityCone : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (diagram f Y)) := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (_root_.SerrePositivity.KST.LocalizingInvariants.BinaryProjection.cone f Y)
 
-lemma infinityCone_isLimit : IsLimitCone (infinityCone f Y) := by
+lemma infinityCone_isLimit : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.KST.LocalizingInvariants.BinaryProjection.infinityCone f Y) := by
   have : ∀ A : OmegaSpectrum.{u}, Fibration
-      ((simplicialHomDiagram (diagram f Y) A).map
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (diagram f Y) A).map
         (AsSmall.up.map WalkingCospan.Hom.inl)) := fun A => by
     change Fibration
       (((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op A)).map
         (Binary.fst Z Y))
     infer_instance
-  exact strictCoherentCone_isLimit_of_cospan_homLimit (cone f Y) (homIsLimit f Y)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_cospan_homLimit (_root_.SerrePositivity.KST.LocalizingInvariants.BinaryProjection.cone f Y) (_root_.SerrePositivity.KST.LocalizingInvariants.BinaryProjection.homIsLimit f Y)
 
-lemma infinityCone_vertex : (infinityCone f Y).vertex = coherentNerveVertex (Binary.obj X Y) :=
-  strictCoherentCone_vertex _
+lemma infinityCone_vertex : (_root_.SerrePositivity.KST.LocalizingInvariants.BinaryProjection.infinityCone f Y).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Binary.obj X Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone_vertex _
 
 end SerrePositivity.KST.LocalizingInvariants.BinaryProjection

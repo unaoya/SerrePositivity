@@ -39,20 +39,20 @@ lemma exists_postnikovProZeroRoof (A : Tower (NonpositiveAlgebra R))
     postnikovImageFactorisationSource_base R _ n hn, postnikovImageFactorisation_fac R _ n hn⟩
 
 lemma IsKConnective.postnikovImageBase_value_isInvertible
-    (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (h : IsKConnective R Φ k)
+    (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (h : IsKConnective R Φ k)
     {B C : Mon (Complex R)} [B.X.IsStrictlyLE 0] [C.X.IsStrictlyLE 0] (f : B ⟶ C)
     (hf : HomologicalComplex.homologyMap f.hom (-(n + 1)) = 0) :
-    IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (perfectMap R
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (perfectMap R
       (postnikovImageFactorisationBaseProjection R f n hn))).map Φ).toTruncated :=
   h.quasiIso_value_isInvertible R Φ (postnikovImageFactorisationObject_isConnective R f n hn)
     (postnikov_isConnective R B n) (postnikovImageFactorisationBaseProjection R f n hn)
     (postnikovImageFactorisationBaseProjection_quasiIso_of_zero R f n hn hf)
 
 lemma IsKConnective.exists_postnikovProZeroValueRoof
-    (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (h : IsKConnective R Φ k)
+    (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (h : IsKConnective R Φ k)
     (A : Tower (NonpositiveAlgebra R))
     (hA : IsProZero ((A.map (nonpositiveInclusion R)).map (groups R (n + 1)))) (i : ℕ) :
-    ∃ m, ∃ hi : i ≤ m, IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (perfectMap R
+    ∃ m, ∃ hi : i ≤ m, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (perfectMap R
       (postnikovImageFactorisationBaseProjection R
         (A.transition hi).hom n hn))).map Φ).toTruncated := by
   obtain ⟨m, hi, hz⟩ := hA i

@@ -61,16 +61,16 @@ lemma coherentTriangleTrace_composition_edge {C : Type v} [Category.{u} C] [Simp
 lemma coherentTriangleTrace_specified_edge_heq
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z)
-    (T : SSet.Edge.CompStruct (coherentNerveEdge f) (coherentNerveEdge g) (coherentNerveEdge h)) :
+    (T : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge h)) :
     HEq (triangleTrace T.simplex)
       (SSet.yonedaEquiv.symm (coherentTriangleMappingEdge f g h T).edge) := by
   rcases T with ⟨s, h₂, h₀, h₁⟩
   have hx : s.obj (.mk (ULift.up 0)) = X :=
-    congrArg (fun e => (coherentNerveArrowData e).1) h₂
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).1) h₂
   have hy : s.obj (.mk (ULift.up 1)) = Y :=
-    congrArg (fun e => (coherentNerveArrowData e).2.1) h₂
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).2.1) h₂
   have hz : s.obj (.mk (ULift.up 2)) = Z :=
-    congrArg (fun e => (coherentNerveArrowData e).2.1) h₀
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).2.1) h₀
   subst X
   subst Y
   subst Z
@@ -98,7 +98,7 @@ lemma simplicialHom_post_eqToHom_heq {A B D : SSet.{u}} (f : A ⟶ B) (h : B = D
 lemma coherentTriangleTrace_specified_edge
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z)
-    (T : SSet.Edge.CompStruct (coherentNerveEdge f) (coherentNerveEdge g) (coherentNerveEdge h))
+    (T : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge h))
     (e : SimplicialCategory.sHom (T.simplex.obj (.mk (ULift.up 0)))
       (T.simplex.obj (.mk (ULift.up 2))) = SimplicialCategory.sHom X Z) :
     triangleTrace T.simplex ≫ eqToHom e =
@@ -110,7 +110,7 @@ lemma coherentTriangleTrace_specified_edge
 lemma coherentTriangleTrace_specified_face
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z)
-    (T : SSet.Edge.CompStruct (coherentNerveEdge f) (coherentNerveEdge g) (coherentNerveEdge h))
+    (T : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge h))
     {s : (SimplicialNerve C) _⦋2⦌} (hs : s = T.simplex)
     (e : SimplicialCategory.sHom (s.obj (.mk (ULift.up 0)))
       (s.obj (.mk (ULift.up 2))) = SimplicialCategory.sHom X Z) :

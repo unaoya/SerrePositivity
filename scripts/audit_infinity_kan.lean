@@ -1,7 +1,7 @@
-import SerrePositivity.InfinityCategories.Kan.AnodyneMappingLifts
-import SerrePositivity.InfinityCategories.Kan.LastHornContraction
-import SerrePositivity.InfinityCategories.Kan.Pointed.PointedIntervalAnodyne
-import SerrePositivity.InfinityCategories.Kan.SimplexLastContraction
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanAnodyneMappingLifts
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.LastHornContraction
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanPointedPointedIntervalAnodyne
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanSimplexLastContraction
 import Lean.Util.CollectAxioms
 
 -- IF-W2c: 移動・分割先を定義元で監査し、私有宣言も標準三公理に限る。
@@ -10,12 +10,12 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected : Array Name := #[
-    `SerrePositivity.InfinityCategories.Kan.AnodyneMappingLifts,
-    `SerrePositivity.InfinityCategories.Kan.LastHornContraction,
-    `SerrePositivity.InfinityCategories.Kan.Pointed.PointedIntervalAnodyne,
-    `SerrePositivity.InfinityCategories.Kan.SimplexLastContraction
+    `SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanAnodyneMappingLifts,
+    `SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.LastHornContraction,
+    `SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanPointedPointedIntervalAnodyne,
+    `SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanSimplexLastContraction
   ]
-  let forbidModel : Array Name := #[`SerrePositivity.InfinityCategories.Kan.AnodyneMappingLifts, `SerrePositivity.InfinityCategories.Kan.LastHornContraction, `SerrePositivity.InfinityCategories.Kan.Pointed.PointedIntervalAnodyne, `SerrePositivity.InfinityCategories.Kan.SimplexLastContraction]
+  let forbidModel : Array Name := #[`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanAnodyneMappingLifts, `SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.LastHornContraction, `SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanPointedPointedIntervalAnodyne, `SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanSimplexLastContraction]
   for mod in expected do
     unless env.header.modules.any (fun entry => entry.module == mod) do
       throwError "W2c: audit module not imported: {mod}"

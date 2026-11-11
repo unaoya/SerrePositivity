@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：二つの余面表示を共通の小さい面から比較して単射性を示し、既証の全射性と合わせる。
 規約：Moss arXiv:1506.04887v2 Proposition 2.19 の細分された horn の模型の同定。
 使われ方：面の nerve の包含の anodyne 性を、実際の細分された horn へ移す。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

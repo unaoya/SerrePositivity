@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Transport.DiagonalFiberTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.DiagonalFiberTransport
 public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 
 /-!

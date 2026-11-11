@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.TwoSidedHomLeftEndpoint
-public import SerrePositivity.InfinityCategories.F1.Coherent.KanRightCompositionTransport
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.TwoSidedHomLeftEndpoint
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.KanRightCompositionTransport
 
 /-!
 概要：元の Kan Hom の共通解像上の左右区間族を同じ標準頂点で比較する。

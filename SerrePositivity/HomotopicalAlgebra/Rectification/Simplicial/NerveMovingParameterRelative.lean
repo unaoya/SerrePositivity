@@ -43,18 +43,18 @@ variable {D : Type uD} [Category.{vD} D]
 
 def restriction : NerveMovingParameter.values K F ⟶ NerveMovingParameter.values L F :=
   Functor.whiskerLeft (NerveBiparameter.endpoints D)
-    (Functor.whiskerRight (NatTrans.prod (NatTrans.op i) (𝟙 (NerveMovingParameter.lifted.{w} F)))
+    (Functor.whiskerRight (NatTrans.prod (NatTrans.op i) (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} F)))
       (Functor.uncurry.obj MonoidalClosed.internalHom))
 
 lemma restriction_app (s : Index D) : (restriction L K i F).app s =
-    (pre (i.app (NerveSimplexStart.start s))).app (UniverseLift.obj.{w} (F.obj (endpoint s))) := by
+    (pre (i.app (NerveSimplexStart.start s))).app (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} (F.obj (endpoint s))) := by
   change (pre (i.app (NerveSimplexStart.start s))).app
-      (UniverseLift.obj.{w} (F.obj (endpoint s))) ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} (F.obj (endpoint s))) ≫
     (ihom (L.obj (NerveSimplexStart.start s))).map
-      (𝟙 (UniverseLift.obj.{w} (F.obj (endpoint s)))) = _
+      (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} (F.obj (endpoint s)))) = _
   rw [CategoryTheory.Functor.map_id, Category.comp_id]
 
-variable (hp : ∀ d, UniverseLift.BoundaryFillers (F.obj d))
+variable (hp : ∀ d, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers (F.obj d))
   (hi : ∀ d, Mono (i.app d))
 
 include hp hi in
@@ -90,7 +90,7 @@ lemma extend_component (s : Lower (NerveCoherentFamily.reedy D) n) :
     (extend L K i F hp hi target n old hboundary).app s.obj = old.app s :=
   congr_app (extend_restrict L K i F hp hi target n old hboundary) s
 
-variable (families : ∀ d, K.obj d ⟶ UniverseLift.obj.{w} (F.obj d))
+variable (families : ∀ d, K.obj d ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} (F.obj d))
   (hfamilies : NerveMovingParameter.vertices K F families ≫
     Functor.whiskerLeft (lowerInclusion (NerveCoherentFamily.reedy D) 1) (restriction L K i F) =
       Functor.whiskerLeft (lowerInclusion (NerveCoherentFamily.reedy D) 1) target)

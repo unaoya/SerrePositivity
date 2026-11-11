@@ -16,7 +16,7 @@ variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D]
 
 /-- 同じ対象ラベルを下げる元の射は、全 Hom 恒等射を持つ実準同値。 -/
 lemma dgKUniverseLiftDown_quasiEquivalence :
-    QuasiEquivalence (dgUniverseLiftDown.{u, v, w} R D) := by
+    QuasiEquivalence (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown.{u, v, w} R D) := by
   refine ⟨?_, ⟨?_⟩⟩
   · intro x y
     change QuasiIso (𝟙 _)
@@ -24,14 +24,14 @@ lemma dgKUniverseLiftDown_quasiEquivalence :
     intro n
     exact quasiIsoAt_of_isIso (𝟙 _) n
   · rintro ⟨y⟩
-    refine ⟨(toHomotopy R (DGUniverseLift.{v, w} D)).obj
+    refine ⟨(toHomotopy R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{v, w} D)).obj
       (ForgetEnrichment.of (Complex R)
-        ((dgUniverseLiftUp.{u, v, w} R D).obj (ForgetEnrichment.to (Complex R) y))), ?_⟩
+        ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftUp.{u, v, w} R D).obj (ForgetEnrichment.to (Complex R) y))), ?_⟩
     exact ⟨Iso.refl _⟩
 
 /-- 同じ対象を持ち上げる元の射も、全 Hom 恒等射を持つ実準同値。 -/
 lemma dgKUniverseLiftUp_quasiEquivalence :
-    QuasiEquivalence (dgUniverseLiftUp.{u, v, w} R D) := by
+    QuasiEquivalence (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftUp.{u, v, w} R D) := by
   refine ⟨?_, ⟨?_⟩⟩
   · intro x y
     change QuasiIso (𝟙 _)
@@ -40,7 +40,7 @@ lemma dgKUniverseLiftUp_quasiEquivalence :
     exact quasiIsoAt_of_isIso (𝟙 _) n
   · rintro ⟨y⟩
     refine ⟨(toHomotopy R D).obj (ForgetEnrichment.of (Complex R)
-      ((dgUniverseLiftDown.{u, v, w} R D).obj (ForgetEnrichment.to (Complex R) y))), ?_⟩
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown.{u, v, w} R D).obj (ForgetEnrichment.to (Complex R) y))), ?_⟩
     obtain ⟨y⟩ := y
     obtain ⟨y⟩ := y
     exact ⟨Iso.refl _⟩

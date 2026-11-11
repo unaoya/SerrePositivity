@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.RelativeDiagramCore
-public import SerrePositivity.InfinityCategories.Core.EquivalencePathInternalHom
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.EquivalencePathInternalHom
 
 /-! # 関手圏の core と全成分での判定
 
@@ -20,39 +20,39 @@ namespace SerrePositivity.KST.Fibration
 /-- 関手圏の core の全高次単体は、全頂点評価の core 所属で判定できる。 -/
 lemma functorCore_mem_iff {K C : SSet.{u}} [Quasicategory C]
     {n : SimplexCategoryᵒᵖ} (s : ((ihom K).obj C).obj n) :
-    s ∈ (quasicategoryCore ((ihom K).obj C)).obj n ↔
+    s ∈ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom K).obj C)).obj n ↔
       ∀ k : K _⦋0⦌,
-        (evaluateFunctorAt k).app n s ∈ (quasicategoryCore C).obj n := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k).app n s ∈ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C).obj n := by
   change (∀ α : ⦋1⦌ ⟶ n.unop,
-    IsInvertibleEdge (edgeOfSimplex (((ihom K).obj C).map α.op s))) ↔ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (((ihom K).obj C).map α.op s))) ↔ _
   constructor
   · intro hs k α
-    have hi := (isInvertibleEdge_iff_evaluateFunctorAt_any
-      (edgeOfSimplex (((ihom K).obj C).map α.op s))).1 (hs α) k
+    have hi := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_iff_evaluateFunctorAt_any
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (((ihom K).obj C).map α.op s))).1 (hs α) k
     rw [← NatTrans.naturality_apply]
-    exact (isInvertibleEdge_congr
-      (e := (edgeOfSimplex (((ihom K).obj C).map α.op s)).map
-        ((truncation 2).map (evaluateFunctorAt k)))
-      (f := edgeOfSimplex ((evaluateFunctorAt k).app _
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+      (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (((ihom K).obj C).map α.op s)).map
+        ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k)))
+      (f := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k).app _
         (((ihom K).obj C).map α.op s))) rfl).mp hi
   · intro hs α
-    apply (isInvertibleEdge_iff_evaluateFunctorAt_any
-      (edgeOfSimplex (((ihom K).obj C).map α.op s))).2
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_iff_evaluateFunctorAt_any
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (((ihom K).obj C).map α.op s))).2
     intro k
     have hi := hs k α
     rw [← NatTrans.naturality_apply] at hi
-    exact (isInvertibleEdge_congr
-      (e := (edgeOfSimplex (((ihom K).obj C).map α.op s)).map
-        ((truncation 2).map (evaluateFunctorAt k)))
-      (f := edgeOfSimplex ((evaluateFunctorAt k).app _
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+      (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (((ihom K).obj C).map α.op s)).map
+        ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k)))
+      (f := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k).app _
         (((ihom K).obj C).map α.op s))) rfl).mpr hi
 
 /-- 全評価を持つ実図式の相対条件は、商への後合成による core の逆像である。 -/
 lemma relativeDiagram_eq_functorCore_preimage
     {K B C X : SSet.{u}} [Quasicategory C]
     (q : B ⟶ C) (d : X ⟶ (ihom K).obj B) :
-    relativeDiagram q (fun k : K _⦋0⦌ => d ≫ evaluateFunctorAt k) =
-      (quasicategoryCore ((ihom K).obj C)).preimage (d ≫ (ihom K).map q) := by
+    relativeDiagram q (fun k : K _⦋0⦌ => d ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom K).obj C)).preimage (d ≫ (ihom K).map q) := by
   ext n s
   exact (functorCore_mem_iff ((d ≫ (ihom K).map q).app n s)).symm
 
@@ -60,9 +60,9 @@ lemma relativeDiagram_eq_functorCore_preimage
 def relativeDiagramFunctorCoreMap
     {K B C X : SSet.{u}} [Quasicategory C]
     (q : B ⟶ C) (d : X ⟶ (ihom K).obj B) :
-    (relativeDiagram q (fun k : K _⦋0⦌ => d ≫ evaluateFunctorAt k) : SSet.{u}) ⟶
-      (quasicategoryCore ((ihom K).obj C) : SSet.{u}) :=
-  Subcomplex.lift ((relativeDiagram q (fun k => d ≫ evaluateFunctorAt k)).ι ≫
+    (relativeDiagram q (fun k : K _⦋0⦌ => d ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k) : SSet.{u}) ⟶
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom K).obj C) : SSet.{u}) :=
+  Subcomplex.lift ((relativeDiagram q (fun k => d ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k)).ι ≫
     d ≫ (ihom K).map q) (by
     rintro n _ ⟨s, rfl⟩
     exact (functorCore_mem_iff _).2 s.property)
@@ -71,8 +71,8 @@ def relativeDiagramFunctorCoreMap
 lemma relativeDiagramFunctorCoreMap_ι
     {K B C X : SSet.{u}} [Quasicategory C]
     (q : B ⟶ C) (d : X ⟶ (ihom K).obj B) :
-    relativeDiagramFunctorCoreMap q d ≫ (quasicategoryCore ((ihom K).obj C)).ι =
-      (relativeDiagram q (fun k : K _⦋0⦌ => d ≫ evaluateFunctorAt k)).ι ≫
+    relativeDiagramFunctorCoreMap q d ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom K).obj C)).ι =
+      (relativeDiagram q (fun k : K _⦋0⦌ => d ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k)).ι ≫
         d ≫ (ihom K).map q := rfl
 
 end SerrePositivity.KST.Fibration

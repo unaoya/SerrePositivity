@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.ModelBridge.MixedFrameDiagrams
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams
 
 /-!
 # 混合 Hom の始域 frame に関する自然な前合成
@@ -33,7 +33,7 @@ variable {C : Type u} [Category.{v} C] {A B : SimplexCategory ⥤ C}
 使われ方：両 frame 比較の共通図式の始域の射。 -/
 abbrev mixedSourceMap (a : A ⟶ B) : mixedFunctor B ⟶ mixedFunctor A :=
   Functor.whiskerRight
-    ((Functor.whiskeringRight SimplexCategoryᵒᵖ C SSet.{v}).map (cosimplicialHomMap a))
+    ((Functor.whiskeringRight SimplexCategoryᵒᵖ C SSet.{v}).map (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a))
     SerrePositivity.BisimplicialModel.diagonal
 
 /-- 概要：右 Hom は元の始域の射に反変（Hovey §5）。
@@ -51,8 +51,8 @@ variable (K : Type v) [SmallCategory K]
 使われ方：両錐比較の左側の可換四角形。 -/
 lemma leftDiagramComparison_source (a : A ⟶ B) (F : K ⥤ C)
     (R : K ⥤ SimplexCategoryᵒᵖ ⥤ C) (b : F ⋙ Functor.const SimplexCategoryᵒᵖ ⟶ R) :
-    Functor.whiskerLeft F (cosimplicialHomMap a) ≫ leftDiagramComparison K A F R b =
-      leftDiagramComparison K B F R b ≫ Functor.whiskerLeft R (mixedSourceMap a) := by
+    Functor.whiskerLeft F (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a) ≫ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagramComparison K A F R b =
+      _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagramComparison K B F R b ≫ Functor.whiskerLeft R (mixedSourceMap a) := by
   ext k n h
   change (a.app n.unop ≫ h) ≫ (b.app k).app n =
     a.app n.unop ≫ (h ≫ (b.app k).app n)
@@ -67,8 +67,8 @@ lemma rightDiagramComparison_source {X Y : C} (a : A ⟶ B) (f : X ⟶ Y)
     (q : B ⟶ (Functor.const SimplexCategory).obj Y)
     (h : a ≫ q = p ≫ (Functor.const SimplexCategory).map f)
     (R : K ⥤ SimplexCategoryᵒᵖ ⥤ C) :
-    Functor.whiskerLeft R (rightSourceMap f) ≫ rightDiagramComparison K A p R =
-      rightDiagramComparison K B q R ≫ Functor.whiskerLeft R (mixedSourceMap a) := by
+    Functor.whiskerLeft R (rightSourceMap f) ≫ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagramComparison K A p R =
+      _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagramComparison K B q R ≫ Functor.whiskerLeft R (mixedSourceMap a) := by
   ext k n g
   change p.app n.unop ≫ (f ≫ g) = a.app n.unop ≫ (q.app n.unop ≫ g)
   have hn : a.app n.unop ≫ q.app n.unop = p.app n.unop ≫ f := congr_app h n.unop

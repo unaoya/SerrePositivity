@@ -44,14 +44,14 @@ variable (C : Type u) [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
   (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
   {D : Type uD} [Category.{vD} D] (H : D ⥤ ResolutionArrowDiagram.Index C)
   (K : D ⥤ SSet.{v})
-  (a : NerveMovingParameter.System.{w, v} (NerveMovingParameter.lifted.{w} K)
+  (a : NerveMovingParameter.System.{w, v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K)
     (H ⋙ ResolutionArrowDiagram.fibers C))
 
 abbrev parameter {n : ℕ} (c : ComposableArrows D n) :=
   K.obj (c.obj 0) ⊗ SSet.stdSimplex.{v}.obj (SimplexCategory.mk n)
 abbrev center {n : ℕ} (c : ComposableArrows D n) := H.obj (c.obj (Fin.last n))
 abbrev input {n : ℕ} (c : ComposableArrows D n) (Z : C) :=
-  (cosimplicialHom (ResolutionArrowDiagram.target C (center C H c)).resolution.obj).obj Z
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionArrowDiagram.target C (center C H c)).resolution.obj).obj Z
 
 /-- A whole-chain action on small resolution Hom, retaining the actual last center. -/
 def action {n : ℕ} (c : ComposableArrows D n) (Z : C) (t : parameter K c ⟶ input C H c Z) :=

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowComparisonPrefixPath
-public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentEquivalences
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeVertexTriangles
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ArrowComparisonPrefixPath
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.SimplexAttachmentEquivalences
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeVertexTriangles
 
 /-!
 概要：全前段の比較と指定余錐脚の可換四角形から、全余錐図式の同型を構成する。
@@ -24,109 +24,109 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 終端脚の四角形から、共有経路を構成して全余錐の同型を貼り、前段比較を保つ。 -/
 lemma exists_simplexCoconeComparison {X : SSet.{u}} [Quasicategory X] {n : ℕ}
-    {F G : (Δ[n] : SSet.{u}) ⟶ X} (c : JoinCocone F) (d : JoinCocone G)
-    (a : SSet.Edge (X := (ihom (Δ[n] : SSet.{u})).obj X) (functorVertex F) (functorVertex G))
+    {F G : (Δ[n] : SSet.{u}) ⟶ X} (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone F) (d : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone G)
+    (a : SSet.Edge (X := (ihom (Δ[n] : SSet.{u})).obj X) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex G))
     (w : SSet.Edge c.vertex d.vertex)
-    (ha : IsInvertibleEdge a.toTruncated) (hw : IsInvertibleEdge w.toTruncated)
+    (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge a.toTruncated) (hw : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge w.toTruncated)
     (hc : Truncated.HomotopyCategory.homMk
-          (HomotopyLimits.coconeVertexLeg c (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated ≫
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeVertexLeg c (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n))).toTruncated ≫
         Truncated.HomotopyCategory.homMk w.toTruncated =
       Truncated.HomotopyCategory.homMk
-          (functorEdgeAt a (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated ≫
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.functorEdgeAt a (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n))).toTruncated ≫
         Truncated.HomotopyCategory.homMk
-          (HomotopyLimits.coconeVertexLeg d (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated) :
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeVertexLeg d (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n))).toTruncated) :
     ∃ l : Truncated.Edge
-        (X := (truncation 2).obj ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X))
-        (functorVertex c.val) (functorVertex d.val),
-      IsInvertibleEdge (X := (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X) l ∧
-      ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X).app
+        (X := (truncation 2).obj ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[n] : SSet.{u}) Δ[0])).obj X))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex c.val) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex d.val),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := (ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[n] : SSet.{u}) Δ[0])).obj X) l ∧
+      ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n] : SSet.{u}) Δ[0])).app X).app
         (Opposite.op ⦋1⦌) l.edge = a.edge ∧
-      SSet.yonedaEquiv.symm l.edge ≫ (pre (joinInr (Δ[n] : SSet.{u}) Δ[0])).app X =
+      SSet.yonedaEquiv.symm l.edge ≫ (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[n] : SSet.{u}) Δ[0])).app X =
         curry (snd (Δ[0] : SSet.{u}) Δ[1] ≫ SSet.yonedaEquiv.symm w.edge) := by
-  let k := SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint.{u} n)
-  let f := HomotopyLimits.coconeVertexLeg c k
-  let g := HomotopyLimits.coconeVertexLeg d k
-  obtain ⟨b, hbi, hbs, hbt⟩ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_arrowComparison_preservingEndpointPaths a
-    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) f g w ha hw hc
-  have hf : (joinStdSimplexIso 0 0).hom ≫ SSet.yonedaEquiv.symm f.edge =
-      joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) ≫ c.val := by
-    change (joinStdSimplexIso 0 0).hom ≫ SSet.yonedaEquiv.symm (SSet.yonedaEquiv
-      ((joinStdSimplexIso 0 0).inv ≫
-        joinMap (SSet.yonedaEquiv.symm (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)))
+  let k := SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint.{u} n)
+  let f := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeVertexLeg c k
+  let g := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeVertexLeg d k
+  obtain ⟨b, hbi, hbs, hbt⟩ := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.exists_arrowComparison_preservingEndpointPaths a
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n) f g w ha hw hc
+  have hf : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).hom ≫ SSet.yonedaEquiv.symm f.edge =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) ≫ c.val := by
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).hom ≫ SSet.yonedaEquiv.symm (SSet.yonedaEquiv
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).inv ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (SSet.yonedaEquiv.symm (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n)))
           (𝟙 Δ[0]) ≫ c.val)) = _
     rw [Equiv.symm_apply_apply, Equiv.symm_apply_apply, Iso.hom_inv_id_assoc]
-  have hg : (joinStdSimplexIso 0 0).hom ≫ SSet.yonedaEquiv.symm g.edge =
-      joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) ≫ d.val := by
-    change (joinStdSimplexIso 0 0).hom ≫ SSet.yonedaEquiv.symm (SSet.yonedaEquiv
-      ((joinStdSimplexIso 0 0).inv ≫
-        joinMap (SSet.yonedaEquiv.symm (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)))
+  have hg : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).hom ≫ SSet.yonedaEquiv.symm g.edge =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) ≫ d.val := by
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).hom ≫ SSet.yonedaEquiv.symm (SSet.yonedaEquiv
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).inv ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (SSet.yonedaEquiv.symm (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n)))
           (𝟙 Δ[0]) ≫ d.val)) = _
     rw [Equiv.symm_apply_apply, Equiv.symm_apply_apply, Iso.hom_inv_id_assoc]
-  let a' := a.ofEq (congrArg functorVertex c.property).symm
-    (congrArg functorVertex d.property).symm
-  let b₀ := SSet.Edge.ofTruncated (X := (ihom (join (Δ[0] : SSet.{u}) Δ[0])).obj X)
+  let a' := a.ofEq (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex c.property).symm
+    (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex d.property).symm
+  let b₀ := SSet.Edge.ofTruncated (X := (ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) Δ[0])).obj X)
     (b.map ((truncation 2).map
-    ((pre (joinStdSimplexIso.{u} 0 0).hom).app X)))
-  let b' := b₀.ofEq (congrArg functorVertex hf) (congrArg functorVertex hg)
-  have ha' : IsInvertibleEdge a'.toTruncated :=
-    (isInvertibleEdge_congr (e := a.toTruncated) (f := a'.toTruncated) rfl).mp ha
-  have hb' : IsInvertibleEdge b'.toTruncated :=
-    (isInvertibleEdge_congr (e := b₀.toTruncated) (f := b'.toTruncated) rfl).mp
-      (hbi.map ((pre (joinStdSimplexIso 0 0).hom).app X))
-  have hs : SSet.yonedaEquiv.symm a'.edge ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app X =
-      SSet.yonedaEquiv.symm b'.edge ≫ (pre (joinInl (Δ[0] : SSet.{u}) Δ[0])).app X := by
+    ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso.{u} 0 0).hom).app X)))
+  let b' := b₀.ofEq (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex hf) (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex hg)
+  have ha' : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge a'.toTruncated :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := a.toTruncated) (f := a'.toTruncated) rfl).mp ha
+  have hb' : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge b'.toTruncated :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := b₀.toTruncated) (f := b'.toTruncated) rfl).mp
+      (hbi.map ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).hom).app X))
+  have hs : SSet.yonedaEquiv.symm a'.edge ≫ (pre (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n)).app X =
+      SSet.yonedaEquiv.symm b'.edge ≫ (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[0] : SSet.{u}) Δ[0])).app X := by
     have haraw : a'.edge = a.edge := rfl
-    have hbraw : b'.edge = ((pre (joinStdSimplexIso 0 0).hom).app X).app
+    have hbraw : b'.edge = ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).hom).app X).app
         (Opposite.op ⦋1⦌) b.edge := rfl
     rw [haraw, hbraw]
     have hm : SSet.yonedaEquiv.symm b'.edge = SSet.yonedaEquiv.symm b.edge ≫
-        (pre (joinStdSimplexIso 0 0).hom).app X := by
+        (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).hom).app X := by
       rw [hbraw, ← SSet.yonedaEquiv_symm_comp]
       rfl
     rw [← hbraw, hm, Category.assoc, ← NatTrans.comp_app, ← pre_map,
-      joinStdSimplexIso_zero_inl]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.joinStdSimplexIso_zero_inl]
     exact hbs.symm
-  obtain ⟨l, hl, hr⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Localization.exists_simplexAttachmentComparison n c.val d.val
+  obtain ⟨l, hl, hr⟩ := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.exists_simplexAttachmentComparison n c.val d.val
     a'.toTruncated b'.toTruncated hs
-  have hla : IsInvertibleEdge (X := (ihom (Δ[n] : SSet.{u})).obj X)
-      (l.map ((truncation 2).map ((pre (joinInl Δ[n] Δ[0])).app X))) :=
-    (isInvertibleEdge_congr hl).mpr ha'
-  have hlb : IsInvertibleEdge (X := (ihom (join (Δ[0] : SSet.{u}) Δ[0])).obj X)
+  have hla : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := (ihom (Δ[n] : SSet.{u})).obj X)
+      (l.map ((truncation 2).map ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl Δ[n] Δ[0])).app X))) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr hl).mpr ha'
+  have hlb : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := (ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) Δ[0])).obj X)
       (l.map ((truncation 2).map
-        ((pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X))) :=
-    (isInvertibleEdge_congr hr).mpr hb'
-  refine ⟨l, _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentComparison_isInvertible n l hla hlb, hl, ?_⟩
-  have hj : joinInr (Δ[0] : SSet.{u}) Δ[0] ≫
-      joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) = joinInr (Δ[n] : SSet.{u}) Δ[0] := by
+        ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X))) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr hr).mpr hb'
+  refine ⟨l, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.simplexAttachmentComparison_isInvertible n l hla hlb, hl, ?_⟩
+  have hj : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{u}) Δ[0] ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[n] : SSet.{u}) Δ[0] := by
     simpa only [Category.id_comp] using
-      joinInr_joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u}))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr_joinMap (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u}))
   have hr' : SSet.yonedaEquiv.symm l.edge ≫
-      (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X =
+      (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X =
         SSet.yonedaEquiv.symm b'.edge := by
     rw [SSet.yonedaEquiv_symm_comp]
     exact congrArg SSet.yonedaEquiv.symm hr
   rw [← hj, pre_map, NatTrans.comp_app, ← Category.assoc, hr']
   change SSet.yonedaEquiv.symm
-      (((pre (joinStdSimplexIso 0 0).hom).app X).app (Opposite.op ⦋1⦌) b.edge) ≫ _ = _
+      (((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).hom).app X).app (Opposite.op ⦋1⦌) b.edge) ≫ _ = _
   rw [← SSet.yonedaEquiv_symm_comp, Category.assoc, ← NatTrans.comp_app,
-    ← pre_map, joinStdSimplexIso_zero_inr]
+    ← pre_map, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.joinStdSimplexIso_zero_inr]
   exact hbt
 
 /-- 終端脚の四角形から、元の前段比較を保つ全余錐同型を得る。 -/
 lemma exists_simplexCoconeFunctorIso {X : SSet.{u}} [Quasicategory X] {n : ℕ}
-    {F G : (Δ[n] : SSet.{u}) ⟶ X} (c : JoinCocone F) (d : JoinCocone G)
-    (a : SSet.Edge (X := (ihom (Δ[n] : SSet.{u})).obj X) (functorVertex F) (functorVertex G))
+    {F G : (Δ[n] : SSet.{u}) ⟶ X} (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone F) (d : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone G)
+    (a : SSet.Edge (X := (ihom (Δ[n] : SSet.{u})).obj X) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex G))
     (w : SSet.Edge c.vertex d.vertex)
-    (ha : IsInvertibleEdge a.toTruncated) (hw : IsInvertibleEdge w.toTruncated)
+    (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge a.toTruncated) (hw : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge w.toTruncated)
     (hc : Truncated.HomotopyCategory.homMk
-          (HomotopyLimits.coconeVertexLeg c (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated ≫
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeVertexLeg c (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n))).toTruncated ≫
         Truncated.HomotopyCategory.homMk w.toTruncated =
       Truncated.HomotopyCategory.homMk
-          (functorEdgeAt a (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated ≫
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.functorEdgeAt a (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n))).toTruncated ≫
         Truncated.HomotopyCategory.homMk
-          (HomotopyLimits.coconeVertexLeg d (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated) :
-    ∃ e : FunctorIso c.val d.val,
-      Arrow.mk ((hoFunctor.map ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X)).toFunctor.map
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeVertexLeg d (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n))).toTruncated) :
+    ∃ e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso c.val d.val,
+      Arrow.mk ((hoFunctor.map ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n] : SSet.{u}) Δ[0])).app X)).toFunctor.map
         e.hom) = Arrow.mk (Truncated.HomotopyCategory.homMk a.toTruncated) := by
   obtain ⟨l, hi, hp, _⟩ := exists_simplexCoconeComparison c d a w ha hw hc
   have := hi

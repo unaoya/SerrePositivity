@@ -14,22 +14,22 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.ScaffoldTransportComparisonSpan p)
 
 /-- 元の係数点の同じ weighted 像は、逆係数成分と標準 coherent Hom 比較の実像。 -/
 theorem coefficientWeightedPointedFiberPoint_val_coherent
-    (c : I) (v : (leftStrictTransport p c) _⦋0⦌) :
+    (c : I) (v : (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.leftStrictTransport p c) _⦋0⦌) :
     ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientWeightedPointedFiberPoint s) c v).val =
       (((SSet.uliftFunctor.{u + 1, u}).map
-        ((oppositePointHomDiagramIso (leftStrictTransportFunctor p)).inv.app c) ≫
-          HomotopyLimits.coherentCosliceFiberComparison pointKanObject
-            ((leftStrictTransportFunctor p ⋙ kanObjectOpFunctor).obj c) ≫
-          vertexFiberι (sliceUnderProjection
-            (yonedaEquiv.symm (coherentNerveVertex pointKanObject)))
-              (coherentNerveVertex ((leftStrictTransportFunctor p ⋙ kanObjectOpFunctor).obj c)) ≫
-          _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso.hom).app (Opposite.op ⦋0⦌) (ULift.up v)) := by
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.oppositePointHomDiagramIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.leftStrictTransportFunctor p)).inv.app c) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentCosliceFiberComparison _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointKanObject
+            ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.leftStrictTransportFunctor p ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanObjectOpFunctor).obj c) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection
+            (yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointKanObject)))
+              (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.leftStrictTransportFunctor p ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanObjectOpFunctor).obj c)) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.strictKanPointedApexIso.hom).app (Opposite.op ⦋0⦌) (ULift.up v)) := by
   have h := congrArg (fun m => m.app (Opposite.op ⦋0⦌) (ULift.up v))
-    (oppositeKanUnstraighteningComparison_constant_pointed (leftStrictTransportFunctor p) c)
+    (oppositeKanUnstraighteningComparison_constant_pointed (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.leftStrictTransportFunctor p) c)
   exact ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientWeightedPointedFiberPoint_val s) c v).trans h
 
 end ScaffoldTransportComparisonSpan

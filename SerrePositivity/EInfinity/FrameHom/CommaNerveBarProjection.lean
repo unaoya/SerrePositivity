@@ -76,14 +76,14 @@ lemma projection_localized_isIso :
 
 /-- 各行の射影は全係数作用素に自然。 -/
 def projectionRows :
-    (BarConstruction.rows D).obj (Thomason.nerveDiagram (costructuredArrowDiagram p)) ⟶
+    (BarConstruction.rows D).obj (Thomason.nerveDiagram (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.costructuredArrowDiagram p)) ⟶
       ConstantBar.labels D (nerve E) where
   app n := projection p n.unop.len
   naturality _ _ _ := by ext m c; rfl
 
 /-- comma 図式の元の bar から、同じ圏の nerve の宇宙拡大への射。 -/
 def barProjection :
-    (BarConstruction.functor D).obj (Thomason.nerveDiagram (costructuredArrowDiagram p)) ⟶
+    (BarConstruction.functor D).obj (Thomason.nerveDiagram (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.costructuredArrowDiagram p)) ⟶
       SSet.uliftFunctor.{max uD vD, max uE vE}.obj (nerve E) :=
   BisimplicialModel.diagonal.map (projectionRows p) ≫
     (ConstantBar.labelsDiagonalIso D (nerve E)).hom

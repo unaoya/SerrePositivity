@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.SequentialDiagramTransport
-public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SquareFunctorTransport
 
 /-!
 概要：同じ BF 余錐全体の比較を行うための、サイズを調整した自然変換の実現。
@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.NonConnective
 variable {I : Type (max u v)} [SmallCategory I]
   {C : Type v} [Category.{u} C] [SimplicialCategory C]
@@ -31,16 +31,16 @@ def sequentialResizedPrism {F G : I ⥤ C} (η : F ⟶ G) :
     naturality _ _ _ := by
       apply ConcreteCategory.hom_ext
       intro z
-      apply CategoryTheory.Functor.ext (fun _ ↦ rfl) } ≫ nerveToCoherent C
+      apply CategoryTheory.Functor.ext (fun _ ↦ rfl) } ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C
 
 /-- prism の零端は元の始域関手。 -/
 lemma sequentialResizedPrism_zero {F G : I ⥤ C} (η : F ⟶ G) :
-    prismEndpoint 0 _ ≫ sequentialResizedPrism η = resizedNerveMap F ≫ nerveToCoherent C := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ sequentialResizedPrism η = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
   intro s
-  apply congrArg ((nerveToCoherent C).app n)
+  apply congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C).app n)
   apply CategoryTheory.Functor.ext
   case h_obj => intro i; rfl
   case h_map =>
@@ -51,12 +51,12 @@ lemma sequentialResizedPrism_zero {F G : I ⥤ C} (η : F ⟶ G) :
 
 /-- prism の一端は元の終域関手。 -/
 lemma sequentialResizedPrism_one {F G : I ⥤ C} (η : F ⟶ G) :
-    prismEndpoint 1 _ ≫ sequentialResizedPrism η = resizedNerveMap G ≫ nerveToCoherent C := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 _ ≫ sequentialResizedPrism η = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
   intro s
-  apply congrArg ((nerveToCoherent C).app n)
+  apply congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C).app n)
   apply CategoryTheory.Functor.ext
   case h_obj => intro i; rfl
   case h_map =>
@@ -69,8 +69,8 @@ lemma sequentialResizedPrism_one {F G : I ⥤ C} (η : F ⟶ G) :
 lemma sequentialResizedPrism_vertexEdge {F G : I ⥤ C} (η : F ⟶ G) (a : I) :
     (sequentialResizedPrism η).app (Opposite.op ⦋1⦌)
       (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{max u v})),
-        PinchedHom.constant (nerveVertex a) 1) = (coherentNerveEdge (η.app a)).edge := by
-  apply congrArg ((nerveToCoherent C).app (Opposite.op ⦋1⦌))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex a) 1) = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (η.app a)).edge := by
+  apply congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C).app (Opposite.op ⦋1⦌))
   apply ComposableArrows.ext₁
   case left => rfl
   case right => rfl
@@ -82,16 +82,16 @@ lemma sequentialResizedPrism_vertexEdge {F G : I ⥤ C} (η : F ⟶ G) (a : I) :
 /-- 可逆な指定成分を持つ通常の比較から、同じ resized 図式間の関手同型を作る。 -/
 def sequentialResizedFunctorIso [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)]
     {F G : I ⥤ C} (η : F ⟶ G)
-    (hη : ∀ a, IsInvertibleEdge (coherentNerveEdge (η.app a))) :
-    FunctorIso (resizedNerveMap F ≫ nerveToCoherent C)
-      (resizedNerveMap G ≫ nerveToCoherent C) := by
-  apply functorIsoOfPointwiseInvertibleHomotopy
-    (homotopyOfPrism (sequentialResizedPrism η)
+    (hη : ∀ a, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (η.app a))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.homotopyOfPrism (sequentialResizedPrism η)
       (sequentialResizedPrism_zero η) (sequentialResizedPrism_one η))
   intro s
-  obtain ⟨a, rfl⟩ : ∃ a, s = nerveVertex a := ⟨s.obj 0, ComposableArrows.ext₀ rfl⟩
-  exact (isInvertibleEdge_congr
-    ((homotopyOfPrism_vertexEdge (sequentialResizedPrism η)
+  obtain ⟨a, rfl⟩ : ∃ a, s = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex a := ⟨s.obj 0, ComposableArrows.ext₀ rfl⟩
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.homotopyOfPrism_vertexEdge (sequentialResizedPrism η)
       (sequentialResizedPrism_zero η) (sequentialResizedPrism_one η) _).trans
         (sequentialResizedPrism_vertexEdge η a))).mpr (hη a)
 

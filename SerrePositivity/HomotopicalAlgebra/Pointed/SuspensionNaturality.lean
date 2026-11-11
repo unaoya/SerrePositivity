@@ -23,7 +23,7 @@ open scoped ZeroObject
 namespace SerrePositivity.HomotopySuspension
 variable {C : Type u} [Category.{v} C] [HasZeroObject C] [HasZeroMorphisms C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)
 

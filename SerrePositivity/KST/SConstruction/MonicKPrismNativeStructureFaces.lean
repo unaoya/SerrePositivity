@@ -46,7 +46,7 @@ lemma monicKPrismNativeStructureMap_projected (n : ℕ) :
     (nerve (CompositionStringParameters f g) ◁ stdSimplex.δ 1) ≫
         monicKPrismNativeStructureMap F f g n =
       (monicKPrismNativeCompositeCorrectionData F f g (n + 1)).homotopy.h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
           ((kKanSequence (F.obj z)).level (n + 1)).space :=
   familyCompStructRealization_direct _
 
@@ -76,7 +76,7 @@ lemma monicKPrismNativeDirectStructureMap_projected (n : ℕ) :
     (nerve (CompositionStringParameters f g) ◁ stdSimplex.δ 1) ≫
         monicKPrismNativeDirectStructureMap F f g n =
       (monicKPrismNativeDirectCorrectionData F f g (n + 1)).homotopy.h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
           ((kKanSequence (F.obj z)).level (n + 1)).space :=
   familyCompStructRealization_direct _
 

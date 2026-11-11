@@ -25,8 +25,8 @@ lemma cofibrantForgetSource_component_square
     {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y) :
     Truncated.HomotopyCategory.homMk
         ((nerve.edgeMk f).map (cAlgLocalizationSource A ≫ cAlgForgetDerived A)).toTruncated ≫
-      functorHomEvaluate (cAlgForgetDerived_sourceIso A).hom (nerveVertex Y) =
-    functorHomEvaluate (cAlgForgetDerived_sourceIso A).hom (nerveVertex X) ≫
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (cAlgForgetDerived_sourceIso A).hom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y) =
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (cAlgForgetDerived_sourceIso A).hom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≫
       Truncated.HomotopyCategory.homMk
         ((nerve.edgeMk f).map (cofibrantAlgebraUnderlyingDerivedSource A)).toTruncated := by
   exact (Arrow.mk_injective _ _)
@@ -46,7 +46,7 @@ lemma cofibrantUnderlying_component_transport (X Y : CofibrantAlgebra A)
         (ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated := by
   have he := congrArg ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌))
     (cofibrantAlgebraForgetNerve_mk₁ A f)
-  exact homMk_transport (X := derivedInfinityCategory A)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homMk_transport (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
     (cofibrantUnderlying_ordinary_vertex A X) (cofibrantUnderlying_ordinary_vertex A Y)
     ((nerve.edgeMk f).map (cofibrantAlgebraUnderlyingDerivedSource A)).toTruncated
     ((nerve.edgeMk ((cofibrantAlgebraDKForget A).map f)).map
@@ -83,11 +83,11 @@ lemma cofibrantForgetOrdinary_component_square (X Y : CofibrantAlgebra A)
     change (Truncated.mapHomotopyCategory ((truncation 2).map (cAlgForgetDerived A))).map _ = _
     rw [Truncated.mapHomotopyCategory_homMk]
     rfl
-  change _ ≫ (functorHomEvaluate (cAlgForgetDerived_sourceIso A).hom
-      (nerveVertex (ULiftHom.objUp.{u + 1, u + 1} Y)) ≫
+  change _ ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (cAlgForgetDerived_sourceIso A).hom
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} Y)) ≫
       ey.hom) =
-    (functorHomEvaluate (cAlgForgetDerived_sourceIso A).hom
-      (nerveVertex (ULiftHom.objUp.{u + 1, u + 1} X)) ≫ ex.hom) ≫ h
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (cAlgForgetDerived_sourceIso A).hom
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} X)) ≫ ex.hom) ≫ h
   have hn := cofibrantForgetSource_component_square A f
   rw [hf, ← Category.assoc, hn, Category.assoc, ht']
   simp only [Category.assoc]

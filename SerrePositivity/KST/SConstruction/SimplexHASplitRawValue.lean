@@ -16,7 +16,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の切断の左右の生の HA 値を、同じ切断頂点で豊穣順に合成した元。 -/
-def simplexHASplitRawValue {N : ℕ} (s : DGNerve.SimplexData A D N)
+def simplexHASplitRawValue {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D N)
     (n : ℕ) (i : SerreCubeGeneratorIndex n) (m : ℕ) (j : SerreCubeGeneratorIndex m)
     (v : Fin (n + 1 + m + 1) ↪o Fin (N + 1))
     (T : Finset (Fin (N + 1))) (hT : T.Nonempty)
@@ -33,13 +33,13 @@ def simplexHASplitRawValue {N : ℕ} (s : DGNerve.SimplexData A D N)
         omega)
 
 /-- 元の零次元の読み替えの生の値は、元の同じ始点と右側集合の tail 値。 -/
-lemma simplexHABeadWordDecode_zero_rawTail {N : ℕ} (s : DGNerve.SimplexData A D N)
+lemma simplexHABeadWordDecode_zero_rawTail {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D N)
     (i : SerreCubeGeneratorIndex 0) (v : Fin 1 ↪o Fin (N + 1))
     (T : Finset (Fin (N + 1))) (hT : T.Nonempty) (hb : ∀ r ∈ T, v 0 < r) :
     HEq (simplexHABeadWordRawValue A s (simplexHABeadWordDecode 0 i v T hT hb))
-      (simplexHABeadWordRawValue A s (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v 0) hb)) :=
+      (simplexHABeadWordRawValue A s (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v 0) hb)) :=
   simplexHABeadWordRawValue_reindex A s rfl
     (show T.card - 1 = serreCubeGeneratorFreeDimension 0 i + T.card - 1 by
-      simp only [serreCubeGeneratorFreeDimension, zero_add]) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v 0) hb)
+      simp only [serreCubeGeneratorFreeDimension, zero_add]) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v 0) hb)
 
 end SerrePositivity.KST.SConstruction

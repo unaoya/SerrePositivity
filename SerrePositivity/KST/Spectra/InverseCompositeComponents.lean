@@ -29,7 +29,7 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：BF 1978 §2、HTT A.3.3。有理化の射の比較への射影。 -/
 theorem OmegaSpectrum.inverseComposite_projection_component
     {A B C D : OmegaSpectrum.{u}} (p : C ⟶ D)
-    (hp : ∀ k, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (p.app k).right) (a : A ⟶ B) (b : B ⟶ D) (n : ℕ) :
+    (hp : ∀ k, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (p.app k).right) (a : A ⟶ B) (b : B ⟶ D) (n : ℕ) :
     PointedMapping.componentOf ((a ≫ b ≫ levelwiseInverse p hp).app n ≫ p.app n) =
       PointedMapping.componentOf ((a ≫ b).app n) := by
   have h := PointedMapping.componentOf_comp_left
@@ -48,7 +48,7 @@ theorem PointedMapping.compositeUnit_natural
     [KanComplex F.right] [KanComplex Q.right]
     (f : A ⟶ B) (a : A ⟶ C) (b : B ⟶ D) (t : C ⟶ D)
     (i : C ⟶ E) (j : D ⟶ F) (p : E ⟶ P) (q : F ⟶ Q)
-    (r : P ⟶ Q) (m : E ⟶ F) (hq : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism q.right)
+    (r : P ⟶ Q) (m : E ⟶ F) (hq : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism q.right)
     (h₁ : componentOf (f ≫ b) = componentOf (a ≫ t))
     (h₂ : componentOf (i ≫ p ≫ r) = componentOf (t ≫ j ≫ q))
     (h₃ : componentOf (m ≫ q) = componentOf (p ≫ r)) :

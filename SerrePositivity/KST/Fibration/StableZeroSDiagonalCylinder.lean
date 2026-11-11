@@ -17,13 +17,13 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 全 S• の同じ実円柱を、元の対角へ送る。 -/
-def stableZeroSDiagonalCylinder (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+def stableZeroSDiagonalCylinder (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
     simplicialDiagonalFunctor.obj (simplicialSConstruction A.obj) ⊗ (Δ[1] : SSet.{u}) ⟶
       simplicialDiagonalFunctor.obj (simplicialSConstruction A.obj) :=
   simplicialCylinderDiagonal _ _ _ (stableZeroSContractionNatTrans A)
 
 /-- 元の対角の零端は、同じ元の零自己関手の対角像そのもの。 -/
-theorem stableZeroSDiagonalCylinder_zero (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+theorem stableZeroSDiagonalCylinder_zero (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
     SSet.ι₀ ≫ stableZeroSDiagonalCylinder A =
       simplicialDiagonalFunctor.map (stableZeroSMap A) := by
   apply simplicialCylinderDiagonal_zero
@@ -31,7 +31,7 @@ theorem stableZeroSDiagonalCylinder_zero (A : _root_.SerrePositivity.InfinityCat
   exact uncurryIntervalFamily_zero _ _ (stableZeroSContractionFamily_zero A n.unop.len)
 
 /-- 元の対角の終端は、元の恒等射そのもの。 -/
-theorem stableZeroSDiagonalCylinder_one (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+theorem stableZeroSDiagonalCylinder_one (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
     SSet.ι₁ ≫ stableZeroSDiagonalCylinder A =
       𝟙 (simplicialDiagonalFunctor.obj (simplicialSConstruction A.obj)) := by
   have h := simplicialCylinderDiagonal_one (stableZeroSContractionNatTrans A)
@@ -40,13 +40,13 @@ theorem stableZeroSDiagonalCylinder_one (A : _root_.SerrePositivity.InfinityCate
   exact h.trans (CategoryTheory.Functor.map_id _ _)
 
 /-- 同じ零図式点の対角像を、元の一点を始域として保持する。 -/
-def stableZeroSDiagonalPoint (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+def stableZeroSDiagonalPoint (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
     𝟙_ SSet.{u} ⟶ simplicialDiagonalFunctor.obj (simplicialSConstruction A.obj) :=
   (constantSSetDiagonalIso (𝟙_ SSet.{u})).inv ≫
     simplicialDiagonalFunctor.map (stableZeroSPoint A)
 
 /-- 元の零端の対角像は、同じ一点射と同じ零図式点を厳密に通る。 -/
-theorem stableZeroSDiagonalMap_factor (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+theorem stableZeroSDiagonalMap_factor (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
     simplicialDiagonalFunctor.map (stableZeroSMap A) =
       toUnit _ ≫ stableZeroSDiagonalPoint A := by
   rw [stableZeroSMap_factor, CategoryTheory.Functor.map_comp]
@@ -56,7 +56,7 @@ theorem stableZeroSDiagonalMap_factor (A : _root_.SerrePositivity.InfinityCatego
   rw [← ht, stableZeroSDiagonalPoint, Category.assoc, Iso.hom_inv_id_assoc]
 
 /-- 同じ全単体的円柱は、対角の元の一点への実収縮ホモトピーを与える。 -/
-def stableZeroSDiagonalContraction (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+def stableZeroSDiagonalContraction (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
     SSet.Homotopy (toUnit _ ≫ stableZeroSDiagonalPoint A)
       (𝟙 (simplicialDiagonalFunctor.obj (simplicialSConstruction A.obj))) where
   h := stableZeroSDiagonalCylinder A

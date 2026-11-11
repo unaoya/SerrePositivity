@@ -28,7 +28,7 @@ def cofibrantAlgebraKanDKHigherPiZeroEquiv :
         SSet.π₀ (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y) :=
   (cAlgMappingSpaceComponentsIso A
     (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)).toEquiv.trans
-      (UniverseLiftPiZero.equiv (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y))
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.equiv (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y))
 
 lemma cofibrantAlgebraKanDKHigherPiZeroEquiv_unit
     (z : SSet.π₀ (localizationHom (cofibrantAlgebraRelativeCategory A)
@@ -39,7 +39,7 @@ lemma cofibrantAlgebraKanDKHigherPiZeroEquiv_unit
       cofibrantAlgebraDKHigherPiZeroEquiv A X Y z := by
   have h := ConcreteCategory.congr_hom (cAlgMappingSpaceComponentsIso_unit A
     (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)) z
-  exact congrArg (UniverseLiftPiZero.down (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y)) h
+  exact congrArg (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.down (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y)) h
 
 lemma cofibrantAlgebraKanDKHigherPiZeroEquiv_eq :
     cofibrantAlgebraKanDKHigherPiZeroEquiv A X Y = cofibrantAlgebraKanDKPiZeroEquiv A X Y := by

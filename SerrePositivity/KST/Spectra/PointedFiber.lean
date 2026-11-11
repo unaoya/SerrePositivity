@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.FibrationNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FibrationNaturality
 public import SerrePositivity.KST.Spectra.PointedHomotopy
 
 /-!
@@ -43,18 +43,18 @@ def pointedHomOfBasepoint {X Y : PointedSimplicialSet.{u}} (f : X.right ⟶ Y.ri
 規約：基礎対象は L9b の KanFiber そのもの。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。スペクトルの fiber の各段。 -/
 def pointedFiber {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) : PointedSimplicialSet.{u} :=
-  PointedSimplicialSet.ofVertex (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p.right (p.right.app _ E.basepoint))
-    (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p.right E.basepoint)
+  PointedSimplicialSet.ofVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanFiber p.right (p.right.app _ E.basepoint))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberPoint p.right E.basepoint)
 
 /-- 概要：点つき fiber から全空間への包含。
 方針：fiberι の基点保存を fiberPoint の計算から得る。
 規約：点つき射として構成する。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。fiber 列の最初の射。 -/
 def pointedFiberι {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) : pointedFiber p ⟶ E :=
-  pointedHomOfBasepoint (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p.right (p.right.app _ E.basepoint)) (by
-    have hb : (pointedFiber p).basepoint = _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p.right E.basepoint :=
+  pointedHomOfBasepoint (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι p.right (p.right.app _ E.basepoint)) (by
+    have hb : (pointedFiber p).basepoint = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberPoint p.right E.basepoint :=
       PointedSimplicialSet.basepoint_ofVertex _ _
-    exact (congrArg ((_root_.SerrePositivity.InfinityCategories.Kan.fiberι p.right _).app _) hb).trans (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p.right E.basepoint))
+    exact (congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι p.right _).app _) hb).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι_point p.right E.basepoint))
 
 /-- 概要：Kan fibration の点つき fiber は Kan。
 方針：L9b の引き戻しによる Kan 性を使う。
@@ -62,7 +62,7 @@ def pointedFiberι {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) : pointedFiber
 使われ方：Goerss–Jardine I §7、BF 1978 §2。fiber の Kan 列。 -/
 instance pointedFiber_kanComplex {E B : PointedSimplicialSet.{u}} (p : E ⟶ B)
     [HomotopicalAlgebra.Fibration p.right] : KanComplex (pointedFiber p).right :=
-  inferInstanceAs (KanComplex (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p.right (p.right.app _ E.basepoint)))
+  inferInstanceAs (KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanFiber p.right (p.right.app _ E.basepoint)))
 
 /-- 概要：基点上に合成が定数となる点つき射を fiber へ持ち上げる。
 方針：通常の fiberLift と、包含による頂点の検出を使う。
@@ -70,15 +70,15 @@ instance pointedFiber_kanComplex {E B : PointedSimplicialSet.{u}} (p : E ⟶ B)
 使われ方：Goerss–Jardine I §7、BF 1978 §2。fiber の構造射の構成。 -/
 def pointedFiberLift {A E B : PointedSimplicialSet.{u}} (p : E ⟶ B) (f : A ⟶ E)
     (hf : f.right ≫ p.right = SSet.const (p.right.app _ E.basepoint)) : A ⟶ pointedFiber p :=
-  pointedHomOfBasepoint (_root_.SerrePositivity.InfinityCategories.Kan.fiberLift p.right _ f.right hf) (by
-    have hb : (pointedFiber p).basepoint = _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p.right E.basepoint :=
+  pointedHomOfBasepoint (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberLift p.right _ f.right hf) (by
+    have hb : (pointedFiber p).basepoint = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberPoint p.right E.basepoint :=
       PointedSimplicialSet.basepoint_ofVertex _ _
     apply Eq.trans _ hb.symm
-    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_vertex_ext p.right (p.right.app _ E.basepoint)
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiber_vertex_ext p.right (p.right.app _ E.basepoint)
     have hl := congrArg (fun k : A.right ⟶ E.right ↦ k.app _ A.basepoint)
-      (_root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι p.right _ f.right hf)
-    exact hl.trans ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f).trans
-      (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p.right E.basepoint).symm))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberLift_ι p.right _ f.right hf)
+    exact hl.trans ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint f).trans
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι_point p.right E.basepoint).symm))
 
 /-- 概要：点つき fiber への持ち上げを包含すると元の点つき射。
 方針：通常の pullback の第一成分の計算を使う。
@@ -89,7 +89,7 @@ theorem pointedFiberLift_ι {A E B : PointedSimplicialSet.{u}} (p : E ⟶ B) (f 
     (hf : f.right ≫ p.right = SSet.const (p.right.app _ E.basepoint)) :
     pointedFiberLift p f hf ≫ pointedFiberι p = f := by
   apply Under.UnderMorphism.ext
-  exact _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι p.right _ f.right hf
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberLift_ι p.right _ f.right hf
 
 /-- 概要：fiber の包含と元の点つき射の合成は零射。
 方針：通常の fiber の定数性と元の射の基点保存を使う。
@@ -101,9 +101,9 @@ theorem pointedFiberι_comp {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) :
   apply Under.UnderMorphism.ext
   change (pointedFiberι p).right ≫ p.right = (0 : pointedFiber p ⟶ B).right
   rw [PointedObject.zero_right]
-  exact (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp p.right (p.right.app _ E.basepoint)).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι_comp p.right (p.right.app _ E.basepoint)).trans
     ((congrArg (fun b ↦ SSet.const (X := (pointedFiber p).right) b)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p)).trans (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const B _).symm)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p)).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const B _).symm)
 
 /-- 概要：合成が零射となる点つき射を fiber へ持ち上げる。
 方針：零射の基礎表示を基点の定数射へ直して既存の持ち上げを使う。
@@ -114,9 +114,9 @@ def pointedFiberLiftOfZero {A E B : PointedSimplicialSet.{u}} (p : E ⟶ B) (f :
   pointedFiberLift p f (by
     have h := congrArg Under.Hom.right hf
     change f.right ≫ p.right = (0 : A ⟶ B).right at h
-    rw [PointedObject.zero_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const] at h
+    rw [PointedObject.zero_right, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const] at h
     exact h.trans (congrArg (fun b ↦ (SSet.const (X := A.right) b))
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p).symm))
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p).symm))
 
 /-- 概要：零合成から作った fiber の持ち上げは包含後に元の射となる。
 方針：点つき fiberLift の計算を使う。
@@ -134,7 +134,7 @@ theorem pointedFiberLiftOfZero_ι {A E B : PointedSimplicialSet.{u}} (p : E ⟶ 
 theorem pointedFiber_hom_ext {A E B : PointedSimplicialSet.{u}} (p : E ⟶ B)
     {f g : A ⟶ pointedFiber p} (h : f ≫ pointedFiberι p = g ≫ pointedFiberι p) : f = g := by
   apply Under.UnderMorphism.ext
-  apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p.right _
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiber_hom_ext p.right _
   exact congrArg Under.Hom.right h
 
 end

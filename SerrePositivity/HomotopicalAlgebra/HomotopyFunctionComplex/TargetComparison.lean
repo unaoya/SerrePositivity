@@ -52,11 +52,11 @@ lemma right_trivialCofibration (X : C) : trivialCofibrations C ((right fib fib�
     (comparison_trivialCofibration fib₁) X
 
 abbrev homLeft (Q : C ⥤ (SimplexCategory ⥤ C)) :
-    resolutionHom Q (fibrantTarget fib₁) ⟶ resolutionHom Q (common fib fib₁ fib₂) :=
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom Q (fibrantTarget fib₁) ⟶ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom Q (common fib fib₁ fib₂) :=
   resolutionHomMapTarget Q (left fib fib₁ fib₂)
 
 abbrev homRight (Q : C ⥤ (SimplexCategory ⥤ C)) :
-    resolutionHom Q (fibrantTarget fib₂) ⟶ resolutionHom Q (common fib fib₁ fib₂) :=
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom Q (fibrantTarget fib₂) ⟶ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom Q (common fib fib₁ fib₂) :=
   resolutionHomMapTarget Q (right fib fib₁ fib₂)
 
 variable [ModelCategory SSet.{v}]

@@ -22,13 +22,13 @@ open CategoryTheory MonoidalCategory
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
 
 lemma marked_unitMap (X : Paths C) :
-    colimitUnit (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ≫ nilMap W X X =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ≫ nilMap W X X =
       unitMap W X := by
   ext n p
   rfl
 
 lemma marked_composition (X Y Z : Paths C) :
-    colimitComposition (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ⟨Y⟩ ⟨Z⟩ ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ⟨Y⟩ ⟨Z⟩ ≫
       nilMap W Z X = (nilMap W Y X ⊗ₘ nilMap W Z Y) ≫ composition W X Y Z := by
   ext n p
   rfl

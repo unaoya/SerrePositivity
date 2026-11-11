@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedMorphismIntervalFactor
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedUniversalEdgeValueTransport
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerCancellation
 
 /-!
 概要：元の raw 辺値比較の逆と同じ指定普遍比較の値を、同じ右作用比較へ戻す。

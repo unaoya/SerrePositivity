@@ -24,8 +24,8 @@ lemma consecutiveWeakStringEdge_lastFace (n : ℕ) (i : Fin (n + 1)) :
   simp
 
 /-- 元の先行列への制限とその有限比較は、同じ初期頂点・全先行 cofiber の射対。 -/
-lemma weakStringFiniteComparison_prefix {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
+lemma weakStringFiniteComparison_prefix {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) :
     (multiRealizationFunctor r).map
       (weakStringExactMap q (SimplexCategory.δ (Fin.last (n + 2)))) ≫
       weakStringFiniteComparison q (n + 1) r =
@@ -41,8 +41,8 @@ lemma weakStringFiniteComparison_prefix {B C : _root_.SerrePositivity.InfinityCa
       lift_snd, Pi.lift_comp_π, consecutiveWeakStringEdge_lastFace]
 
 /-- 最後の有限積因子を取り出すと、元の全 cofiber の順序を保つ射対になる。 -/
-lemma weakStringFiniteComparison_snoc {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
+lemma weakStringFiniteComparison_snoc {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) :
     weakStringFiniteComparison q (n + 2) r ≫
       (𝟙 _ ⊗ₘ (finSnocProductIso ((multiRealizationFunctor r).obj
         (closedStableModel (kernelClosedPredicate q))) (n + 1)).hom) =
@@ -55,8 +55,8 @@ lemma weakStringFiniteComparison_snoc {B C : _root_.SerrePositivity.InfinityCate
   rw [lift_map, Category.comp_id, finSnocProductIso_lift]
 
 /-- 元の有限積比較は、元の先行列と最後の cofiber の比較の帰納合成である。 -/
-lemma weakStringFiniteComparison_factor {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
+lemma weakStringFiniteComparison_factor {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) :
     weakStringTailMultiStep q n r ≫ (weakStringFiniteComparison q (n + 1) r ⊗ₘ 𝟙 _) ≫
       (α_ _ _ _).hom = weakStringFiniteComparison q (n + 2) r ≫
         (𝟙 _ ⊗ₘ (finSnocProductIso ((multiRealizationFunctor r).obj

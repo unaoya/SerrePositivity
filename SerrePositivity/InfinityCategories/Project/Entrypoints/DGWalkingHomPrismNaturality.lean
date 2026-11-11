@@ -1,0 +1,15 @@
+module
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGWalkingHomPrismGeneral
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGWalkingHomMapPinched
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGWalkingHomPinched
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGWalkingHomRefinementNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransComponentExt
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransSimplexWhisker
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
+
+/-! # 自由 Hom の閉細分 prism の全単体の自然性
+
+概要：閉前合成の厳密自然変換の二相単体は、dg 関手像の係数変換と可換。
+方針：両相の評価関手の等式、閉射の像、恒等元の像を成分比較へ渡す。
+規約：全次数・全係数・全時刻。使われ方：実屋根の商比較の固定標的部分。
+-/

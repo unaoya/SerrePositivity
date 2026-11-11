@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.AnodyneMappingLifts
 public import SerrePositivity.KST.Spectra.CofiberMappingPullback
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.PointedKanWhitehead
 
 /-!
 概要：anodyne 射の cofiber と、その Kan 値の点つき写像空間の相対充填。
@@ -43,10 +43,10 @@ theorem PointedMapping.terminal_rlp_of_basepoint_anodyne
       (terminal.from (PointedObject.basedHom A Y).right) := by
   let i : PointedObject.point ⟶ A := PointedObject.fromPoint A
   have hi : anodyneExtensions i.right := hA
-  let p := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y).right
+  let p := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y).right
   let t := terminal.from (PointedObject.basedHom PointedObject.point Y).right
   have : IsIso t := isIso_of_isTerminal (homPointIsTerminal Y) terminalIsTerminal t
-  have hp := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp i hi Y
+  have hp := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.anodyne_prePointed_rlp i hi Y
   have ht := (MorphismProperty.monomorphisms SSet.{u}).rlp_of_isIso t
   have h : terminal.from (PointedObject.basedHom A Y).right = p ≫ t := Subsingleton.elim _ _
   rw [h]

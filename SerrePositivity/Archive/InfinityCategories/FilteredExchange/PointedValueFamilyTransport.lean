@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedRightFamilyTransport
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPair
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedValueRightInverse
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoPair
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointedValueRightInverse
 
 /-!
 概要：既存の pointed 値比較の輸送自然性を、動く Kan 射の全族へ拡張する。

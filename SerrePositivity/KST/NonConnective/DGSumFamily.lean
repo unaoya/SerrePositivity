@@ -49,8 +49,8 @@ lemma dgSumFamilyHom_id (X : C) :
       eId (Complex R) (dgSumFamilyObj R D F X) ≫
         eHomWhiskerRight (Complex R) (Sigma.ι (fun j ↦ (F j).obj X) j.as) _
   rw [Category.assoc, dgSumFamilyHom_injection, ← Category.assoc, (F j.as).map_id]
-  exact (enrichedIdentity_postcompose (Complex R) (ModuleCategory R D) _).trans
-    (enrichedIdentity_precompose (Complex R) (ModuleCategory R D) _).symm
+  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.enrichedIdentity_postcompose (Complex R) (ModuleCategory R D) _).trans
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.enrichedIdentity_precompose (Complex R) (ModuleCategory R D) _).symm
 
 /-- 直和の全 Hom 作用は豊穣合成を保存する。 -/
 lemma dgSumFamilyHom_comp (X Y Z : C) :
@@ -71,7 +71,7 @@ lemma dgSumFamilyHom_comp (X Y Z : C) :
   symm
   rw [Category.assoc, eComp_eHomWhiskerRight, tensorHom_def', Category.assoc,
     ← comp_whiskerRight_assoc, dgSumFamilyHom_injection, comp_whiskerRight_assoc]
-  rw [enrichedComposition_middle, whisker_exchange_assoc,
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.enrichedComposition_middle, whisker_exchange_assoc,
     ← whiskerLeft_comp_assoc, dgSumFamilyHom_injection]
   simp only [whiskerLeft_comp, Category.assoc, tensorHom_def', whisker_exchange_assoc]
 

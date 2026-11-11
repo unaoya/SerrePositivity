@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：各境界の座標の同値と、左右の非対角境界の添字の同値を合成する。
 規約：KST Construction A.5 の標準 AW、符号を含む任意の加法的な項に使える。
 使われ方：全切断点での鎖写像性の有限和の比較。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 namespace SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories

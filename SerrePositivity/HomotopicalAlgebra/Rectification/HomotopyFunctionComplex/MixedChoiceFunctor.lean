@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.FramedPreChoiceFunctor
-public import SerrePositivity.InfinityCategories.Kan.FiberFunctor
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor
 
 /-!
 # 中断した任意モデル源への一般化：MixedChoiceFunctor
@@ -48,7 +48,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 local instance : ModelCategory (SimplexCategory ⥤ C) := Reedy.simplexModelCategory C
 
 abbrev rawBifunctor : (FramedResolution C)ᵒᵖ ⥤ (SimplexCategory ⥤ C) ⥤ SSet.{v} :=
-  FramedResolution.outerDiagrams.op ⋙ cosimplicialHomBifunctor
+  FramedResolution.outerDiagrams.op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 abbrev baseDiagrams : ResolutionObject C ⥤ SimplexCategory ⥤ C :=
   ResolutionObject.projection ⋙ Functor.const SimplexCategory
@@ -130,14 +130,14 @@ lemma basepoint_eq (t : Context Y W) : (basepoint Y W g).app t =
     (ResolutionLiftSpace.baseMap Y.inner W g) hb
   change (LiftSpace.point (ResolutionLiftSpace.frame Y.inner).obj
     (ResolutionLiftSpace.frame Y.inner).augmentation (ResolutionLiftSpace.baseMap Y.inner W g) ≫
-    (cosimplicialHomMap a.frame).app ((Functor.const SimplexCategory).obj W.base)) ≫
-    (cosimplicialHom (ResolutionLiftSpace.frame t.1.unop.left.inner).obj).map
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a.frame).app ((Functor.const SimplexCategory).obj W.base)) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame t.1.unop.left.inner).obj).map
       ((Functor.const SimplexCategory).map t.2.hom.base) = _
   rw [hp, LiftSpace.point_postcomp]
   congr 1
   simp only [ResolutionLiftSpace.baseMap, total, Functor.map_comp, Category.assoc, a]
 
-abbrev fibers : Context Y W ⥤ SSet.{v} := FiberFunctor.functor (rawProjection Y W) (basepoint Y W g)
+abbrev fibers : Context Y W ⥤ SSet.{v} := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.functor (rawProjection Y W) (basepoint Y W g)
 
 /-- This is the original actual resolution lift space over the transported base map. -/
 def fiberIso (t : Context Y W) : (fibers Y W g).obj t ≅
@@ -148,7 +148,7 @@ def fiberIso (t : Context Y W) : (fibers Y W g).obj t ≅
 lemma fiberIso_projection (t : Context Y W) :
     (fiberIso Y W g t).hom ≫
       ResolutionLiftSpace.projection t.1.unop.left.inner t.2.right (total Y W g t) =
-        (FiberFunctor.projection (rawProjection Y W) (basepoint Y W g)).app t :=
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.projection (rawProjection Y W) (basepoint Y W g)).app t :=
   by
     change (pullback.congrHom
       (rfl : (rawProjection Y W).app t = (rawProjection Y W).app t)
@@ -182,7 +182,7 @@ lemma rawFamily_over (t : Context Y W) :
 /-- A natural family of all transported root lifts, with its actual fiber target. -/
 def family : (Functor.const (Context Y W)).obj (ResolutionLiftSpace.obj Y.inner W g) ⟶
     fibers Y W g :=
-  FiberFunctor.liftFamily (rawProjection Y W) (basepoint Y W g)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.liftFamily (rawProjection Y W) (basepoint Y W g)
     (rawFamily Y W g) (rawFamily_over Y W g)
 
 /-- Both orders of changing the two contexts give the same actual fiber map. -/
@@ -240,7 +240,7 @@ lemma interchange {a b : (Over Y)ᵒᵖ} {c d : Under W} (k : a ⟶ b) (l : c �
 include hcof in
 lemma fiber_projection_trivialFibration (t : Context Y W) :
     trivialFibrations SSet.{v}
-      ((FiberFunctor.projection (rawProjection Y W) (basepoint Y W g)).app t) := by
+      ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.projection (rawProjection Y W) (basepoint Y W g)).app t) := by
   rw [← fiberIso_projection]
   exact (trivialFibrations SSet.{v}).comp_mem _ _
     ((trivialFibrations SSet.{v}).of_isIso (fiberIso Y W g t).hom)
@@ -249,9 +249,9 @@ lemma fiber_projection_trivialFibration (t : Context Y W) :
 lemma projection_trivialFibration
     (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp) (t : Context Y W) :
     trivialFibrations SSet.{v} ((projection Y W g hcof).app t) :=
-  RelativeChoiceSpace.projection_trivialFibration hcof hfib (vertexInclusion Y.inner W g)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.projection_trivialFibration hcof hfib (vertexInclusion Y.inner W g)
     ((boundary Y W g hcof).app t)
-    ((FiberFunctor.projection (rawProjection Y W) (basepoint Y W g)).app t)
+    ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.projection (rawProjection Y W) (basepoint Y W g)).app t)
     (fiber_projection_trivialFibration Y W g hcof t)
 
 lemma point_weakEquivalence

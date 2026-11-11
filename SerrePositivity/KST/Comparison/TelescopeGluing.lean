@@ -69,13 +69,13 @@ theorem telescopeStages_homotopyPullback_of_fibrations {F G : ℕ ⥤ SSet.{u}}
     IsHomotopyPullback (naturalitySquare (telescopeOddStage n) α) := by
   obtain ⟨hL, hR⟩ := telescopeSpan_homotopyPullbacks_of_fibrations α hα h
   constructor
-  · let hs := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_isPullback (fun k => α.app (2 * k)) n
+  · let hs := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_isPullback (fun k => α.app (2 * k)) n
     have hv := simplicialSumMap_rlp (fun k => α.app (2 * k)) (fun k => hα (2 * k))
     exact isHomotopyPullback_paste_horiz_of_middle_fibration hs.toCommSq
       (naturalitySquare spanCylinderLeft (telescopeSpanMap α))
       (isHomotopyPullback_of_left_fibration hs hv)
       (spanCylinder_vertex_homotopyPullback (telescopeSpanMap α) hL hR .left) hv
-  · let hs := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_isPullback (fun k => α.app (2 * k + 1)) n
+  · let hs := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_isPullback (fun k => α.app (2 * k + 1)) n
     have hv := simplicialSumMap_rlp (fun k => α.app (2 * k + 1)) (fun k => hα (2 * k + 1))
     exact isHomotopyPullback_paste_horiz_of_middle_fibration hs.toCommSq
       (naturalitySquare spanCylinderRight (telescopeSpanMap α))

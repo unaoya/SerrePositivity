@@ -17,7 +17,7 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 基点だけを忘れ、同じ Kan 値と全基点固定 Hom の包含を保持する。 -/
 def pointedKanForgetEnriched :
-    EnrichedFunctor SSet.{u} PointedKanObject.{u} KanObject.{u} where
+    EnrichedFunctor SSet.{u} PointedKanObject.{u} _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u} where
   obj X := ⟨X.obj.right, inferInstance⟩
   map X Y := PointedObject.basedHomι X.obj Y.obj
   map_id X := pointedClosedHomInclusion_id X.obj
@@ -25,7 +25,7 @@ def pointedKanForgetEnriched :
 
 /-- 元の全閉 Hom を持つ Ex∞ の Kan 値への厳密豊穣関手。 -/
 def exInfinityClosedKanEnrichedFunctor :
-    EnrichedFunctor SSet.{u} SSetInternalObject.{u} KanObject.{u} where
+    EnrichedFunctor SSet.{u} SSetInternalObject.{u} _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u} where
   obj X := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj X.obj, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex X.obj⟩
   map X Y := (coaugmentedClosedEnrichedFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit).map X Y
   map_id X := (coaugmentedClosedEnrichedFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit).map_id X

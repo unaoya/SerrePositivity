@@ -92,12 +92,12 @@ def totalizationSpectrumComparison :
 規約：零次数を含む。Sp の ∞ 極限性は含まない。
 使われ方：BF 1978 §2、Goerss–Jardine I §7。hG の模型の置換への独立性。 -/
 lemma totalizationSpectrumComparison_levelwise (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((totalizationSpectrumComparison A).app n).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((totalizationSpectrumComparison A).app n).right := by
   let e : ((totalizationKan A).level n).space.right ≅
       ((homotopyFixedPointsKan A).level n).space.right :=
     PointedSimplicialSet.forget.mapIso (totalizationLevelIso A n)
   exact (KanSequence.replacementProjection_piIsomorphism (totalizationKan A) n).comp
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso e)
 
 end
 

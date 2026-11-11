@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.IndCardinalChange
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndCardinalChange
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafAllSmallLimits
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafPointwiseColimits
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafAllSmallLimits
 public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
@@ -18,38 +18,38 @@ noncomputable section
 universe u
 open CategoryTheory SSet
 namespace SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories
-open _root_.SerrePositivity.InfinityCategories _root_.SerrePositivity.InfinityCategories.F2 _root_.SerrePositivity.InfinityCategories.F2.Presentable
+open _root_.SerrePositivity.InfinityCategories
 
 /-- 宇宙 u の任意の全図式の native な余極限が、元の宇宙 u+1 の標的に存在する。 -/
 @[kerodon 06B7]
 def HasSmallColimits (C : SSet.{u + 1}) : Prop :=
-  ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D
+  ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit D
 
 /-- 宇宙 u の任意の全図式の native な極限が、元の宇宙 u+1 の標的に存在する。 -/
 @[kerodon 06B7]
 def HasSmallLimits (C : SSet.{u + 1}) : Prop :=
-  ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D
+  ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit D
 
 /-- 指定された元の任意の小さい全余極限余錐を、同じ全関手で保存すること。 -/
 @[kerodon 06BA]
 def PreservesSmallColimits {C E : SSet.{u + 1}} (F : C ⟶ E) : Prop :=
   ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C)
-    (c : JoinCocone D), IsColimitCone c → IsColimitCone (mapJoinCocone F c)
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone D), _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCocone F c)
 
 /-- presentable は、同じ宇宙に関して accessible で、全ての小余極限を持つこと。 -/
 @[kerodon 06ND]
 def IsPresentable (C : SSet.{u + 1}) [Quasicategory C] : Prop :=
-  IsAccessible C ∧ HasSmallColimits C
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessible C ∧ HasSmallColimits C
 
 lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C]
-    (h : IsPresentable C) : IsAccessible C := h.1
+    (h : IsPresentable C) : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessible C := h.1
 
 lemma IsPresentable.hasSmallColimits {C : SSet.{u + 1}} [Quasicategory C]
     (h : IsPresentable C) : HasSmallColimits C := h.2
 
 /-- 小余極限は、同じ任意の濃度に対する小さい filtered 余極限の存在を含む。 -/
 lemma HasSmallColimits.hasSmallKappaFilteredColimits {C : SSet.{u + 1}}
-    (h : HasSmallColimits C) (κ : Cardinal.{u}) : Ind.HasSmallKappaFilteredColimits κ C := by
+    (h : HasSmallColimits C) (κ : Cardinal.{u}) : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.HasSmallKappaFilteredColimits κ C := by
   intro K hK hκ D
   exact h K D
 
@@ -67,24 +67,24 @@ lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}}
   ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩
 
 /-- 元の前層 ∞ 圏は、任意の小さい底に対して全ての小余極限を持つ。 -/
-lemma presheaf_hasSmallColimits (A : SSet.{u}) : HasSmallColimits (PresheafInfinity A) := by
+lemma presheaf_hasSmallColimits (A : SSet.{u}) : HasSmallColimits (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafInfinity A) := by
   intro K D
-  exact presheafInfinity_hasColimit D
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafInfinity_hasColimit D
 
 /-- 元の前層 ∞ 圏は、任意の小さい底に対して全ての小極限を持つ。 -/
-lemma presheaf_hasSmallLimits (A : SSet.{u}) : HasSmallLimits (PresheafInfinity A) := by
+lemma presheaf_hasSmallLimits (A : SSet.{u}) : HasSmallLimits (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafInfinity A) := by
   intro K D
-  exact presheafInfinity_hasLimit D
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafInfinity_hasLimit D
 
 /-- 元の空間 ∞ 圏は、全ての小余極限を持つ。 -/
-lemma space_hasSmallColimits : HasSmallColimits SpaceInfinity.{u} := by
+lemma space_hasSmallColimits : HasSmallColimits _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} := by
   intro K D
-  exact F2.hasColimit_coherentSpaceDiagram D
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.hasColimit_coherentSpaceDiagram D
 
 /-- 元の空間 ∞ 圏は、全ての小極限を持つ。 -/
 @[kerodon 05QQ]
-lemma space_hasSmallLimits : HasSmallLimits SpaceInfinity.{u} := by
+lemma space_hasSmallLimits : HasSmallLimits _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} := by
   intro K D
-  exact hasLimit_coherentSpaceDiagram D
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.hasLimit_coherentSpaceDiagram D
 
 end SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories

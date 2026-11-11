@@ -37,7 +37,7 @@ lemma modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap_image :
   let G := ((modelBifibrantSourceRoofProductCommaFirstNerve X Y q b ≫
     modelBifibrantSourceFrameGraphMap X Y q).app n) σ
   have ho (i : Fin (n.unop.len + 1)) : F.obj i = G.obj i := by
-    apply Zigzag.object_ext
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagExt.object_ext
     · intro j
       change Fin 3 at j
       fin_cases j <;> rfl
@@ -46,7 +46,7 @@ lemma modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap_image :
       fin_cases j <;> rfl
   apply Functor.hext ho
   intro i j f
-  apply Zigzag.hom_hext (ho i) (ho j)
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagExt.hom_hext (ho i) (ho j)
   intro k
   change Fin 3 at k
   fin_cases k <;> rfl
@@ -59,7 +59,7 @@ lemma modelBifibrantSourceRoofProductCommaAugmentationRoofMap_image :
       modelBifibrantSourceRoofProductCommaFirstNerve X Y q b ≫
         modelBifibrantSourceFrameColimitMap X Y q := by
   change modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap X Y q b ≫
-    graphInclusion _ _ _ LeftRoof.word = _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion _ _ _ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word = _
   rw [modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap_image,
     Category.assoc, modelBifibrantSourceFrameGraphMap_colimit]
 

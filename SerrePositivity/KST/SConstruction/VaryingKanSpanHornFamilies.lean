@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.KanSpanPastingChoices
 public import SerrePositivity.KST.SConstruction.RelativeAnodyneFamilyExtension
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-! # 二脚自体が変化する全ホーン族の貼り合わせ
 概要：同じ始点族から出る二円柱を、一つの全パラメータの実ホーン族へ貼る。
@@ -24,8 +24,8 @@ def varyingKanSpanHornFamily {U E : SSet.{u}} {D F G : U ⟶ E}
     (a : SSet.Homotopy D F) (b : SSet.Homotopy D G) :
     (Λ[2, 0] : SSet.{u}) ⊗ U ⟶ E :=
   (β_ (horn 2 (0 : Fin 3) : SSet.{u}) U).hom ≫ uncurry
-    (kanSpanHorn (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a))
-      (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy b)))
+    (kanSpanHorn (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a))
+      (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy b)))
 
 /-- 変化するホーン族の第一脚は、元の全パラメータの第一円柱そのもの。 -/
 lemma varyingKanSpanHornFamily_source {U E : SSet.{u}} {D F G : U ⟶ E}
@@ -100,8 +100,8 @@ lemma kanSpanHorn_postcomp {K L : SSet.{u}} {z x y : K _⦋0⦌}
 /-- 元の円柱を制限した関手辺は、同じ元の関手辺の写像空間での制限。 -/
 lemma varyingKanSpanEdge_precomp {T U E : SSet.{u}} (j : T ⟶ U) {D F : U ⟶ E}
     (a : SSet.Homotopy D F) :
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E) =
-      SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy (functorHomotopyPrecomp a j)) := by
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E) =
+      SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp a j)) := by
   have hc : curry a.h ≫ (pre j).app E = curry ((j ▷ (Δ[1] : SSet.{u})) ≫ a.h) := by
     apply uncurry_injective
     rw [uncurry_pre_app, uncurry_curry, uncurry_curry]
@@ -114,7 +114,7 @@ lemma varyingKanSpanEdge_precomp {T U E : SSet.{u}} (j : T ⟶ U) {D F : U ⟶ E
 lemma varyingKanSpanHornFamily_naturality {T U E : SSet.{u}} (j : T ⟶ U)
     {D F G : U ⟶ E} (a : SSet.Homotopy D F) (b : SSet.Homotopy D G) :
     ((horn 2 (0 : Fin 3) : SSet.{u}) ◁ j) ≫ varyingKanSpanHornFamily a b =
-      varyingKanSpanHornFamily (functorHomotopyPrecomp a j) (functorHomotopyPrecomp b j) := by
+      varyingKanSpanHornFamily (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp a j) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp b j) := by
   rw [varyingKanSpanHornFamily, BraidedCategory.braiding_naturality_right_assoc,
     ← uncurry_pre_app, kanSpanHorn_postcomp,
     varyingKanSpanEdge_precomp, varyingKanSpanEdge_precomp]

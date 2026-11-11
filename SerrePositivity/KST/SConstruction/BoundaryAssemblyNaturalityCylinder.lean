@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturalityFamilies
-public import SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderDesc
 
 /-! # 随伴構造射の自然性の二重写像円筒
 概要：延長側と逆射側の合成族を一つの実際のパラメーター空間へ貼る。
@@ -20,14 +20,14 @@ open scoped Simplicial
 
 /-- 二つの合成族の中間選択を円筒でつなぐパラメーター空間。 -/
 def boundaryAssemblyNaturalityCylinder (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) : SSet.{u} :=
-  _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f)
 
 /-- 二重円筒上へ厳密に貼り合わせた実際の写像空間の族。 -/
 def boundaryAssemblyNaturalityCylinderFamily (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
     boundaryAssemblyNaturalityCylinder r f ⟶
       (PointedObject.basedHom ((boundaryKanRealizationFunctor r).obj X)
         ((loopBoundaryKanFunctor (r + 1)).obj Y)).right :=
-  _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderDesc (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f)
     (fst _ (Δ[1] : SSet.{u}) ≫ boundaryAssemblyExtensionMiddle r f ≫
       boundaryAssemblyExtensionFamily r f)
     (boundaryAssemblyExtensionFamily r f) (boundaryAssemblyInverseFamily r f)
@@ -38,28 +38,28 @@ def boundaryAssemblyNaturalityCylinderFamily (r : ℕ) {X Y : StableModel.{u}} (
 /-- 貼り合わせた族の左側への制限は元の延長側の族。 -/
 lemma boundaryAssemblyNaturalityCylinderFamily_left (r : ℕ)
     {X Y : StableModel.{u}} (f : X ⟶ Y) :
-    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f) ≫
       boundaryAssemblyNaturalityCylinderFamily r f = boundaryAssemblyExtensionFamily r f :=
-  _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_desc ..
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_left_desc ..
 
 /-- 貼り合わせた族の右側への制限は元の逆射側の族。 -/
 lemma boundaryAssemblyNaturalityCylinderFamily_right (r : ℕ)
     {X Y : StableModel.{u}} (f : X ⟶ Y) :
-    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f) ≫
       boundaryAssemblyNaturalityCylinderFamily r f = boundaryAssemblyInverseFamily r f :=
-  _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_desc ..
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_right_desc ..
 
 /-- 元の源の構造射の全パラメーターを円筒へ含める。 -/
 def boundaryAssemblyNaturalityCylinderSource (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
     boundaryKanAssemblyChoices r X ⟶ boundaryAssemblyNaturalityCylinder r f :=
   boundaryAssemblyExtensionSource r f ≫
-    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f)
 
 /-- 元の標的の構造射の全パラメーターを円筒へ含める。 -/
 def boundaryAssemblyNaturalityCylinderTarget (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
     boundaryKanAssemblyChoices r Y ⟶ boundaryAssemblyNaturalityCylinder r f :=
   boundaryAssemblyInverseTarget r f ≫
-    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right (boundaryAssemblyExtensionMiddle r f) (boundaryAssemblyInverseMiddle r f)
 
 /-- 円筒の族は源で元の随伴構造射の族の後合成を厳密に回収する。 -/
 lemma boundaryAssemblyNaturalityCylinderFamily_source (r : ℕ)
@@ -77,7 +77,7 @@ lemma boundaryAssemblyNaturalityCylinderFamily_target (r : ℕ)
     {X Y : StableModel.{u}} (f : X ⟶ Y) :
     boundaryAssemblyNaturalityCylinderTarget r f ≫ boundaryAssemblyNaturalityCylinderFamily r f =
       boundaryKanAssemblyAdjointFamily r Y ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((boundaryKanRealizationFunctor r).map f)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((boundaryKanRealizationFunctor r).map f)
           ((loopBoundaryKanFunctor (r + 1)).obj Y)).right := by
   rw [boundaryAssemblyNaturalityCylinderTarget, Category.assoc,
     boundaryAssemblyNaturalityCylinderFamily_right]

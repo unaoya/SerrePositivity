@@ -22,7 +22,7 @@ universe u
 
 open CategoryTheory CategoryTheory.Limits SSet
 open SerrePositivity.KST.Spectra
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Descent.Main
 
@@ -61,7 +61,7 @@ theorem weightedEndComparison_naturality (W : I ⥤ SSet.{u})
 theorem weightedEndComparison_underlying (W : I ⥤ SSet.{u})
     (A : AugmentedLimitDiagram I) :
     (weightedEndComparison W A).right ≫ (PointedWeightedEnd.underlyingIso W A.right).hom =
-      weightedConeComparison W (underlyingAugmentationCone A) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison W (underlyingAugmentationCone A) := by
   exact PointedWeightedEnd.underlyingIso_coneComparison W (augmentationCone A)
 
 /-- 概要：BK 重みの場合の実 end 比較は実 homotopy limit 比較と一致（補題 3.2）。
@@ -69,9 +69,9 @@ theorem weightedEndComparison_underlying (W : I ⥤ SSet.{u})
 規約：比較同型は L9 の固定された underlyingIso。
 使われ方：一般形状と重み付き end の二つの主経路を整合させる。 -/
 theorem weightedEndComparison_bousfieldKan (A : AugmentedLimitDiagram I) :
-    (weightedEndComparison (bousfieldKanWeight I) A).right ≫
-      (PointedWeightedEnd.underlyingIso (bousfieldKanWeight I) A.right).hom =
+    (weightedEndComparison (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) A).right ≫
+      (PointedWeightedEnd.underlyingIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) A.right).hom =
         (homotopyLimitComparison A).right :=
-  weightedEndComparison_underlying (bousfieldKanWeight I) A
+  weightedEndComparison_underlying (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) A
 
 end SerrePositivity.KST.Descent.Main

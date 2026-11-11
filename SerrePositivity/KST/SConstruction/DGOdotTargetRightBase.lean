@@ -18,14 +18,14 @@ private lemma right_recovery {V : Type*} [Category V] {a b c d e : V}
   rw [Category.assoc, Category.assoc, hk, ← Category.assoc g, hg, Category.id_comp]
 
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "A" => dgAlgebraCategory R (DGOdotInput.source d)
-local notation "C" => dgAlgebraCategory R (DGOdotInput.left d)
-local notation "DRaw" => dgAlgebraCategory R (DGOdotInput.right d)
-local notation "E" => dgAlgebraCategory R (DGOdotInput.corner d)
-local notation "L" => dgAlgebraMap R (DGOdotInput.top d)
-local notation "gRaw" => dgAlgebraMap R (DGOdotInput.side d)
-local notation "p" => dgAlgebraMap R (DGOdotInput.lower d)
-local notation "q" => dgAlgebraMap R (DGOdotInput.upper d)
+local notation "A" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d)
+local notation "C" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.left d)
+local notation "DRaw" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.right d)
+local notation "E" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.corner d)
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.top d)
+local notation "gRaw" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.side d)
+local notation "p" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.lower d)
+local notation "q" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.upper d)
 local notation "CL" => DGSmallPerfectArrowTarget R (A) (C) (L)
 local notation "DR" => DGSmallPerfectArrowTarget R (A) (DRaw) (gRaw)
 local notation "pS" => dgSmallPerfectSquareLeftMap R (A) (C) (DRaw) (E) (L) (gRaw) (p) (q)
@@ -65,7 +65,7 @@ lemma dgOdotTargetRightEndMap_right :
     (I).diagonal (I).rightPoint]
   let i := dgGluingRightAxisHomIso R (CL) (DR) (M) (zc) (hc)
     (I).rightPoint (I).rightPoint
-  have hi : i.inv ≫ dgGluingRightHomMap R (CL) (DR) (M) (I).point (I).point = 𝟙 _ :=
+  have hi : i.inv ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightHomMap R (CL) (DR) (M) (I).point (I).point = 𝟙 _ :=
     (congrArg (fun f => i.inv ≫ f)
       (dgGluingRightAxisHomIso_hom R (CL) (DR) (M) (zc) (hc)
         (I).rightPoint (I).rightPoint).symm).trans i.inv_hom_id

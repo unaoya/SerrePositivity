@@ -18,9 +18,9 @@ open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 /-- 二つの端点の交換で元の始点基点の端点包含を回収する。 -/
 lemma terminalIntervalStart_swap :
     (coprod.braiding (𝟙_ SSet.{u}) (𝟙_ SSet.{u})).hom ≫ terminalIntervalStart.{u}.right =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}.right := by
   apply coprod.hom_ext <;>
-    simp [terminalIntervalStart_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_right, coprod.braiding]
+    simp [terminalIntervalStart_right, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint_right, coprod.braiding]
 
 /-- 終点を基点にした区間のもう一方の端点も潰した商。 -/
 abbrev terminalEndpointCircle : PointedSimplicialSet.{u} :=
@@ -30,14 +30,14 @@ abbrev terminalEndpointCircle : PointedSimplicialSet.{u} :=
 def terminalEndpointCircleToEndpointCircle : terminalEndpointCircle.{u} ⟶
     Spectra.endpointCircle.{u} :=
   PointedObject.cofiberDesc terminalIntervalStart.{u}.right Spectra.endpointCircle.{u}
-    (PointedObject.cofiberQuotient _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right) (by
+    (PointedObject.cofiberQuotient _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}.right) (by
       rw [terminalIntervalStart_right, Category.assoc,
         PointedObject.cofiberQuotient_condition, comp_toUnit_assoc])
 
 /-- 既存の端点商から終点基点の端点商への逆向きの射。 -/
 def endpointCircleToTerminalEndpointCircle : Spectra.endpointCircle.{u} ⟶
     terminalEndpointCircle.{u} :=
-  PointedObject.cofiberDesc _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right terminalEndpointCircle.{u}
+  PointedObject.cofiberDesc _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}.right terminalEndpointCircle.{u}
     (PointedObject.cofiberQuotient terminalIntervalStart.{u}.right) (by
       rw [← terminalIntervalStart_swap, Category.assoc,
         PointedObject.cofiberQuotient_condition, comp_toUnit_assoc])
@@ -51,7 +51,7 @@ def terminalEndpointCircleSwapIso : terminalEndpointCircle.{u} ≅ Spectra.endpo
     simp [terminalEndpointCircleToEndpointCircle, endpointCircleToTerminalEndpointCircle,
       Under.comp_right]
   inv_hom_id := by
-    apply PointedObject.cofiber_hom_ext _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right
+    apply PointedObject.cofiber_hom_ext _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}.right
     simp [terminalEndpointCircleToEndpointCircle, endpointCircleToTerminalEndpointCircle,
       Under.comp_right]
 

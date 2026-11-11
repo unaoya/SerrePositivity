@@ -21,22 +21,22 @@ local instance pointedCompatibilityInterchangeSimplicialCategory :
     SimplicialCategory PointedSimplicialSet.{u} := PointedEnrichment.simplicialCategory
 variable {U : SSet.{u}} {A R C : PointedSimplicialSet.{u}}
   {a b : U ⟶ (PointedObject.basedHom A R).right}
-  (c : FamilyHomotopyChain a b) (d₀ d₁ : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension R ⟶ C)
+  (c : FamilyHomotopyChain a b) (d₀ d₁ : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension R ⟶ C)
   (H : SSet.Homotopy (SSet.const (X := U) (familyVertex d₀)) (SSet.const (familyVertex d₁)))
 
 /-- suspension した元の補正全区間と同じ適合円柱との実交換正方形列。 -/
 def pointedCompatibilityInterchangeSquares :
     List ((U ⊗ (Δ[1] : SSet.{u})) ⊗ (Δ[1] : SSet.{u}) ⟶
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) C).right) :=
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension A) C).right) :=
   familyHomotopyChainInterchangeSquares
     (familyHomotopyChainMap c ((suspensionHom A R).right)) H.h
-    (eComp SSet (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension R) C)
+    (eComp SSet (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension A) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension R) C)
 
 /-- 第二時刻の零面は元の補正の suspension と適合の始点の後合成を回収する。 -/
 lemma pointedCompatibilityInterchangeSquares_second_zero :
     (pointedCompatibilityInterchangeSquares c d₀ d₁ H).map (SSet.ι₀ ≫ ·) =
       (familyHomotopyChainTrace c).map (fun h => h ≫ (suspensionHom A R).right ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) d₀).right) := by
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension A) d₀).right) := by
   simp only [pointedCompatibilityInterchangeSquares,
     familyHomotopyChainInterchangeSquares_second_zero, familyHomotopyChainMap_trace,
     List.map_map, Function.comp_def]
@@ -49,7 +49,7 @@ lemma pointedCompatibilityInterchangeSquares_second_zero :
 lemma pointedCompatibilityInterchangeSquares_second_one :
     (pointedCompatibilityInterchangeSquares c d₀ d₁ H).map (SSet.ι₁ ≫ ·) =
       (familyHomotopyChainTrace c).map (fun h => h ≫ (suspensionHom A R).right ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) d₁).right) := by
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension A) d₁).right) := by
   simp only [pointedCompatibilityInterchangeSquares,
     familyHomotopyChainInterchangeSquares_second_one, familyHomotopyChainMap_trace,
     List.map_map, Function.comp_def]

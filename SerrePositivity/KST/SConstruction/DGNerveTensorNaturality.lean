@@ -26,12 +26,12 @@ lemma cubicalLambdaNerveTensor_naturality (F : DGFunctor A D B) (G : DGFunctor A
 
 /-- native の直積から実 tensor への比較は、二つの厳密 dg 入力写像について自然。 -/
 lemma dgNerveTensor_naturality (F : DGFunctor A D B) (G : DGFunctor A E C) :
-    (dgNerve.map F ⊗ₘ dgNerve.map G) ≫ dgNerveTensor A B C =
-      dgNerveTensor A D E ≫ dgNerve.map (dgTensorFunctor A F G) := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map F ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map G) ≫ dgNerveTensor A B C =
+      dgNerveTensor A D E ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgTensorFunctor A F G) := by
   ext n p
   rcases p with ⟨s, t⟩
-  change DGNerve.Simplex A D n.unop.len at s
-  change DGNerve.Simplex A E n.unop.len at t
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n.unop.len at s
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A E n.unop.len at t
   change cubicalLambdaNativeSimplex A
       (cubicalLambdaFunctorPair A (simplexHAInverseFunctor A (s.map F))
         (simplexHAInverseFunctor A (t.map G))) =

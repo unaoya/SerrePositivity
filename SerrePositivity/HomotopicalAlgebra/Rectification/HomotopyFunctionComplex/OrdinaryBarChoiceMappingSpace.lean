@@ -80,7 +80,7 @@ abbrev labels (a b : Cᵒᵖ × C) := ULift.{max u v} (a ⟶ b)
 abbrev fibers (a b : Cᵒᵖ × C) (f : labels a b) := choices hcof hfib f.down
 
 def degreeEquiv (a b : Cᵒᵖ × C) (n : SimplexCategoryᵒᵖ) :
-    (space hcof hfib a b).obj n ≃ (DiscreteFamily.total (fibers hcof hfib a b)).obj n where
+    (space hcof hfib a b).obj n ≃ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.total (fibers hcof hfib a b)).obj n where
   toFun f := ⟨⟨f.base⟩, SSet.yonedaEquiv f.extension⟩
   invFun f := ⟨f.1.down, SSet.yonedaEquiv.symm f.2⟩
   left_inv f := by
@@ -94,7 +94,7 @@ def degreeEquiv (a b : Cᵒᵖ × C) (n : SimplexCategoryᵒᵖ) :
     exact congrArg (Sigma.mk (ULift.up f)) (SSet.yonedaEquiv.apply_symm_apply e)
 
 def totalIso (a b : Cᵒᵖ × C) :
-    space hcof hfib a b ≅ DiscreteFamily.total (fibers hcof hfib a b) :=
+    space hcof hfib a b ≅ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.total (fibers hcof hfib a b) :=
   NatIso.ofComponents (fun n => (degreeEquiv hcof hfib a b n).toIso) (by
     intro n m θ
     apply ConcreteCategory.hom_ext
@@ -102,8 +102,8 @@ def totalIso (a b : Cᵒᵖ × C) :
     apply congrArg (Sigma.mk (ULift.up f.base))
     exact (SSet.yonedaEquiv_naturality θ.unop f.extension).symm)
 
-def projection (a b : Cᵒᵖ × C) : space hcof hfib a b ⟶ PiZeroConstant.discrete (labels a b) :=
-  (totalIso hcof hfib a b).hom ≫ DiscreteFamily.projection (fibers hcof hfib a b)
+def projection (a b : Cᵒᵖ × C) : space hcof hfib a b ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete (labels a b) :=
+  (totalIso hcof hfib a b).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.projection (fibers hcof hfib a b)
 
 lemma projection_mono_rlp (a b : Cᵒᵖ × C) :
     (MorphismProperty.monomorphisms SSet.{max u v}).rlp (projection hcof hfib a b) :=
@@ -122,8 +122,8 @@ lemma kan (a b : Cᵒᵖ × C) :
     exact projection_mono_rlp hcof hfib a b j
       (SSet.modelCategoryQuillen.J_le_monomorphisms j hj)
   have h := SSet.modelCategoryQuillen.J.rlp.comp_mem _ _ hp
-    (PiZeroConstant.discrete_terminal_rlp (labels a b))
-  have he : projection hcof hfib a b ≫ terminal.from (PiZeroConstant.discrete (labels a b)) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete_terminal_rlp (labels a b))
+  have he : projection hcof hfib a b ≫ terminal.from (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete (labels a b)) =
       terminal.from (space hcof hfib a b) := terminal.hom_ext _ _
   rwa [he] at h
 
@@ -163,13 +163,13 @@ lemma right_unit (a b : Cᵒᵖ × C) :
   exact Category.comp_id x.1
 
 def baseComposition (a b c : Cᵒᵖ × C) :
-    PiZeroConstant.discrete (labels a b) ⊗ PiZeroConstant.discrete (labels b c) ⟶
-      PiZeroConstant.discrete (labels a c) where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete (labels a b) ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete (labels b c) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete (labels a c) where
   app _ := ↾fun x => ULift.up (x.1.down ≫ x.2.down)
   naturality {_ _} _ := by apply ConcreteCategory.hom_ext; intro x; rfl
 
 def baseIdentity (a : Cᵒᵖ × C) :
-    𝟙_ SSet.{max u v} ⟶ PiZeroConstant.discrete (labels a a) where
+    𝟙_ SSet.{max u v} ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete (labels a a) where
   app _ := ↾fun _ => ULift.up (𝟙 a)
   naturality {_ _} _ := by apply ConcreteCategory.hom_ext; intro x; rfl
 

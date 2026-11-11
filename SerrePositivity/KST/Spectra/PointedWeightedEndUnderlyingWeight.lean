@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedWeightedEndPreMap
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedRestriction
 
 /-!
 概要：点つき end と基礎単体集合の end の比較の重みへの自然性。
@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedRestrict
 universe u
 
 open CategoryTheory CategoryTheory.Limits MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.PointedWeightedEnd
@@ -36,18 +36,18 @@ local instance underlyingWeightPointedEnrichment :
 lemma underlyingIso_preMap {I : Type u} [SmallCategory I] {W V : I ⥤ SSet.{u}}
     (θ : W ⟶ V) (D : I ⥤ PointedSimplicialSet.{u}) :
     (preMap θ D).right ≫ (underlyingIso W D).hom =
-      (underlyingIso V D).hom ≫ weightedSectionsPre θ (D ⋙ PointedSimplicialSet.forget) := by
-  apply weightedSections_hom_ext
+      (underlyingIso V D).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre θ (D ⋙ PointedSimplicialSet.forget) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_hom_ext
   intro i
   rw [Category.assoc, underlyingIso_π, ← Category.assoc]
   have hp := congrArg Under.Hom.right (preMap_π θ D i)
-  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hp
+  rw [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hp
   change (preMap θ D).right ≫ (end_.π (diagram W D) i).right =
     (end_.π (diagram V D) i).right ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.adjoinFunctor.map (θ.app i)) (D.obj i)).right
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.adjoinFunctor.map (θ.app i)) (D.obj i)).right
     at hp
   rw [hp, Category.assoc, FreePointedHomRestriction.natural_pre]
-  conv_rhs => rw [Category.assoc, weightedSectionsPre_π, ← Category.assoc, underlyingIso_π]
+  conv_rhs => rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_π, ← Category.assoc, underlyingIso_π]
   rfl
 
 end

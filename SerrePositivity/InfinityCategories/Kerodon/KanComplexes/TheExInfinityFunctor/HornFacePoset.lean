@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：欠けた頂点があるという条件で面の部分型を取り、各鎖の最大の面を使う。
 規約：Moss 2020 Proposition 21 の二重細分の境界の計算。
 使われ方：horn 上で候補写像が反復最終頂点に一致すること。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

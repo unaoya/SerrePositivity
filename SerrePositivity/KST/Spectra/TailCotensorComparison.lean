@@ -49,8 +49,8 @@ lemma tailCotensorComparison_projection (A : PointedSimplicialSet.{u})
 /-- 一段移動と cotensor の比較は各段で全基点 π 同型。 -/
 lemma tailCotensorComparison_levelwise (A : PointedSimplicialSet.{u})
     (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((tailCotensorComparison A X).app n).right := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((cotensorProjection A (tail X)).app n).right) _
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((tailCotensorComparison A X).app n).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := ((cotensorProjection A (tail X)).app n).right) _
     (cotensorProjection_piIsomorphism A (tail X) n)
   have h := congrArg Under.Hom.right (tailCotensorComparison_projection A X n)
   simp only [Under.comp_right] at h
@@ -64,7 +64,7 @@ local instance tailCotensorHomKan (X Y : OmegaSpectrum.{u}) :
 
 /-- 指定した一段移動と cotensor の比較辺は元の Sp の同値。 -/
 lemma tailCotensorComparison_isInvertible (A : PointedSimplicialSet.{u})
-    (X : OmegaSpectrum.{u}) : IsInvertibleEdge (coherentNerveEdge (tailCotensorComparison A X)) :=
+    (X : OmegaSpectrum.{u}) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (tailCotensorComparison A X)) :=
   SpectrumMappingAcyclic.isInvertible_of_levelwise _ (tailCotensorComparison_levelwise A X)
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

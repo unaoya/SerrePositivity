@@ -33,7 +33,7 @@ def oneDirectionInverseCoherentPastingChoices {I : Type u} [SmallCategory I]
 /-- 延長の全選択にわたる貼り合わせの選択空間は可縮 Kan。 -/
 lemma kanAssemblyCoherentPastingChoices_isContractibleKan {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {X Y : I} (f : X ⟶ Y) :
-    IsContractibleKan (kanAssemblyCoherentPastingChoices r F f) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (kanAssemblyCoherentPastingChoices r F f) := by
   let : KanComplex ((kanAssemblyInputArrowDiagram r F).obj (assemblyArrowMk f)) :=
     (kanAssemblyInputArrowDiagram_isContractibleKan r F (assemblyArrowMk f)).kanComplex
   exact diagramUniversalCospanPastingChoices_isContractibleKan _ _ _
@@ -42,7 +42,7 @@ lemma kanAssemblyCoherentPastingChoices_isContractibleKan {I : Type u} [SmallCat
 lemma oneDirectionInverseCoherentPastingChoices_isContractibleKan
     {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
     {X Y : I} (f : X ⟶ Y) :
-    IsContractibleKan (oneDirectionInverseCoherentPastingChoices r F f) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (oneDirectionInverseCoherentPastingChoices r F f) := by
   let : KanComplex ((oneDirectionInverseInputArrowDiagram r F).obj (assemblyArrowMk f)) :=
     (oneDirectionInverseInputArrowDiagram_isContractibleKan r F (assemblyArrowMk f)).kanComplex
   exact diagramUniversalCospanPastingChoices_isContractibleKan _ _ _

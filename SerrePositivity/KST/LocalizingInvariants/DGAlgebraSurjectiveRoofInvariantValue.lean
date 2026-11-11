@@ -18,7 +18,7 @@ open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
-variable (R : Type u) [CommRing R] (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+variable (R : Type u) [CommRing R] (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
   {k : ℤ} (h : IsKConnective R Φ k) {A B C : Mon (Complex R)}
 
 def IsKConnective.roofValue (hA : IsConnective R A) (r : SurjectiveRoof R A B) :

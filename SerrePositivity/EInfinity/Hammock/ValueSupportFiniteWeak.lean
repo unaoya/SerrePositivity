@@ -24,8 +24,8 @@ variable {B : Type u} {X Y : SSet.{u}}
   (μ : Y ⟶ (Functor.const SimplexCategoryᵒᵖ).obj B) (f : X ⟶ Y) (h : f ≫ μ = ℓ)
 
 lemma finite_restriction_weak
-    (hw : ∀ β, IsWeakHomotopyEquivalence (restriction ℓ μ f h {β})) (S : Finset B) :
-    IsWeakHomotopyEquivalence (restriction ℓ μ f h (S : Set B)) := by
+    (hw : ∀ β, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (restriction ℓ μ f h {β})) (S : Finset B) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (restriction ℓ μ f h (S : Set B)) := by
   classical
   induction S using Finset.induction_on with
   | empty =>

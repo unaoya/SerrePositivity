@@ -35,11 +35,11 @@ lemma kKanOriginalPrismNativeHomIso_value_heq {I : Type u} [SmallCategory I]
 /-- 下側の元の円柱の指定成分は、元の square の同じ三角形の既存の復号辺。 -/
 lemma kKanOriginalPrismLowerCompositeContraction_boundary_leg {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    (simplicialHomotopyVertexEdge (kKanOriginalPrismLowerCompositeContraction r F f)
-      (nerveVertex (coherentArrowStringDirect f))).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (kKanOriginalPrismLowerCompositeContraction r F f)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (coherentArrowStringDirect f))).edge =
       (coherentSquareMappingBottomRight (kKanSuspensionMappingTriangles r F f)).edge := by
   have hc := kKanOriginalPrismLowerCompositeContraction_vertex_edge r F f
-  let s := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (coherentArrowStringDirect f)
+  let s := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentLowerPrismString (coherentArrowStringDirect f)
   let P := (nerve.edgeMk (coherentStringRefinementPathToFull (coherentArrowStringDirectTo s))).edge
   have ht := kKanOriginalPrismNativeHomIso_value_heq r F x y
     ((coherentStringNativeMap (kKanOriginalPrismStringDiagram r F) s).app (Opposite.op ⦋1⦌) P)
@@ -59,11 +59,11 @@ lemma kKanOriginalPrismLowerCompositeContraction_boundary_leg {I : Type u} [Smal
 /-- 上側の元の円柱の指定成分は、元の square の同じ三角形の既存の復号辺。 -/
 lemma kKanOriginalPrismUpperCompositeContraction_boundary_leg {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    (simplicialHomotopyVertexEdge (kKanOriginalPrismUpperCompositeContraction r F f)
-      (nerveVertex (coherentArrowStringDirect f))).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (kKanOriginalPrismUpperCompositeContraction r F f)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (coherentArrowStringDirect f))).edge =
       (coherentSquareMappingLeftTop (kKanSuspensionMappingTriangles r F f)).edge := by
   have hc := kKanOriginalPrismUpperCompositeContraction_vertex_edge r F f
-  let s := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (coherentArrowStringDirect f)
+  let s := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentUpperPrismString (coherentArrowStringDirect f)
   let P := (nerve.edgeMk (coherentStringRefinementPathToFull (coherentArrowStringDirectTo s))).edge
   have ht := kKanOriginalPrismNativeHomIso_value_heq r F x y
     ((coherentStringNativeMap (kKanOriginalPrismStringDiagram r F) s).app (Opposite.op ⦋1⦌) P)
@@ -85,8 +85,8 @@ lemma kKanOriginalPrismSpanInitialVertex_diagonal {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
     kKanOriginalPrismSpanInitialVertex r F f =
       PointedMapping.familyVertex (kKanSuspensionMappingTriangles r F f).diagonal := by
-  let e := simplicialHomotopyVertexEdge (kKanOriginalPrismLowerCompositeContraction r F f)
-    (nerveVertex (coherentArrowStringDirect f))
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (kKanOriginalPrismLowerCompositeContraction r F f)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (coherentArrowStringDirect f))
   have h := kKanOriginalPrismLowerCompositeContraction_boundary_leg r F f
   have hs := e.src_eq.symm.trans
     ((congrArg ((kKanOriginalSuspensionMappingTarget r F x y).map

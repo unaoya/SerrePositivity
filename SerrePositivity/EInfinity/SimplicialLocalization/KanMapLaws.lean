@@ -30,7 +30,7 @@ open SerrePositivity.KST.Comparison
 方針：元の Hom の恒等則と Ex∞ の恒等則を使う。
 規約：同じ Kan 豊穣構造を保持する。
 使われ方：局所化 nerve の係数の恒等則。 -/
-lemma kanLocalizationEnrichedMap_id (C : RelativeCategory.{u}) :
+lemma kanLocalizationEnrichedMap_id (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) :
     kanLocalizationEnrichedMap (𝟙 C) = EnrichedFunctor.id SSet (KanLocalizationObjects C) := by
   refine EnrichedFunctor.ext SSet (F := kanLocalizationEnrichedMap (𝟙 C))
     (G := EnrichedFunctor.id SSet (KanLocalizationObjects C)) (fun _ => rfl) ?_
@@ -42,7 +42,7 @@ lemma kanLocalizationEnrichedMap_id (C : RelativeCategory.{u}) :
 方針：元の Hom の合成則と Ex∞ の合成則を使う。
 規約：元の相対関手の合成順序を保持する。
 使われ方：局所化 nerve の係数の合成則。 -/
-lemma kanLocalizationEnrichedMap_comp {C D E : RelativeCategory.{u}}
+lemma kanLocalizationEnrichedMap_comp {C D E : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}}
     (F : C ⟶ D) (G : D ⟶ E) :
     kanLocalizationEnrichedMap (F ≫ G) =
       (kanLocalizationEnrichedMap F).comp SSet (kanLocalizationEnrichedMap G) := by
@@ -59,7 +59,7 @@ lemma kanLocalizationEnrichedMap_comp {C D E : RelativeCategory.{u}}
 方針：実際の Ex∞ の単位の自然性を同じ固定 Hom 写像へ適用する。
 規約：元の anodyne な単位を保持する。
 使われ方：Kan 化前後の係数比較の可換正方形。 -/
-lemma localizationHomKanUnit_naturality {C D : RelativeCategory.{u}} (F : C ⟶ D)
+lemma localizationHomKanUnit_naturality {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D)
     (X Y : C.category) :
     localizationHomMap F X Y ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom D (F.functor.obj X) (F.functor.obj Y)) =

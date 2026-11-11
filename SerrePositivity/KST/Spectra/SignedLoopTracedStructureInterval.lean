@@ -23,13 +23,13 @@ variable (X : KanSequence.{u}) (hX : X.OmegaCondition)
 /-- 元の交換符号辺と同じ自然な二重反転辺を保持する、構造比較の合成三角形。 -/
 def signedLoopStructureComposite (n : ℕ) :=
   SignedAdjointPaths.forwardComposite
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma (n + 2))) (hX (n + 2))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma (n + 2))) (hX (n + 2))
     (kanAdjoint X n) (kanAdjoint X (n + 1))
 
 /-- 同じ合成辺と定数辺を持つ、逆向き構造比較の実三角形。 -/
 def signedLoopStructureReverse (n : ℕ) :=
   SignedAdjointPaths.reverseComposite
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma (n + 2))) (hX (n + 2))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma (n + 2))) (hX (n + 2))
     (kanAdjoint X n) (kanAdjoint X (n + 1))
 
 /-- 保存した元の実区間と二つの三角形から得る、実際の単位構造区間。 -/

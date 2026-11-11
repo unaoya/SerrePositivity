@@ -41,11 +41,11 @@ lemma bondingAdjunction_homEquiv (n : ℕ) (A : C) (E : GeneralSymmetricSpectrum
 
 def localizingHomArrowIso (n : ℕ) (A : SimplexCategory ⥤ C)
     (E : GeneralSymmetricSpectrum C K) :
-    Arrow.mk ((cosimplicialHomMap (Functor.whiskerLeft A (stabilizationMap K n))).app E) ≅
-      Arrow.mk ((cosimplicialHom A).map (adjointStructureMap E n)) :=
+    Arrow.mk ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (Functor.whiskerLeft A (stabilizationMap K n))).app E) ≅
+      Arrow.mk ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map (adjointStructureMap E n)) :=
   Arrow.isoMk
-    ((adjunctionHomIsoSameUniverse (freeAtAdjunction (K := K) n) A).app E)
-    ((adjunctionHomIsoSameUniverse (bondingAdjunction K n) A).app E) (by
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.adjunctionHomIsoSameUniverse (freeAtAdjunction (K := K) n) A).app E)
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.adjunctionHomIsoSameUniverse (bondingAdjunction K n) A).app E) (by
       ext m f
       change freeAtHomEquiv n (A.obj m.unop) E f ≫ adjointStructureMap E n =
         (bondingAdjunction K n).homEquiv (A.obj m.unop) E (localizingMap K n _ ≫ f)

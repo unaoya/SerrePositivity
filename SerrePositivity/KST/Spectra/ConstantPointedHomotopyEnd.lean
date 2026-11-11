@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedEndBasepoint
 universe u
 
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra
 
@@ -46,10 +46,10 @@ end UnbasedPointedMapping
 使われ方：Goerss–Jardine VIII §2。自明作用の homotopy fixed points の点つき表示。 -/
 def constantPointedHomotopyEndIso (C : Type u) [SmallCategory C]
     (X : PointedSimplicialSet.{u}) :
-    PointedWeightedEnd.obj (bousfieldKanWeight C) ((Functor.const C).obj X) ≅
+    PointedWeightedEnd.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight C) ((Functor.const C).obj X) ≅
       UnbasedPointedMapping.obj (nerve C) X :=
   Under.isoMk
-    (PointedWeightedEnd.underlyingIso (bousfieldKanWeight C) ((Functor.const C).obj X) ≪≫
+    (PointedWeightedEnd.underlyingIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight C) ((Functor.const C).obj X) ≪≫
       constantHomotopyEndIso C X.right)
     (by
       rw [Iso.trans_hom, ← Category.assoc, PointedWeightedEnd.underlyingIso_basepoint]

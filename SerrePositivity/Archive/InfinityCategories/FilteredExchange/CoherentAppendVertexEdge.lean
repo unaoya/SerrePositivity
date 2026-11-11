@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentAppendLastPreserving
-public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.EdgeEquiv
 
 /-!
 概要：元の頂点へ指定射を追加すると、元の同じ coherent な射の辺になる。

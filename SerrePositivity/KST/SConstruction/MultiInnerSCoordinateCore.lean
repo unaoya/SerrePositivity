@@ -41,7 +41,7 @@ lemma multiInnerSCoordinateCoreIso_realization (r : ℕ) (X : StableModel.{u}) :
         (iteratedSRealizationCoordinateIso r X).hom := by
   apply NatTrans.ext
   funext d
-  let H := stableModelForget.{u} ⋙ quasicategoryCoreFunctor
+  let H := stableModelForget.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
   have h := NatTrans.congr_app
     (diagonalSInnerComparisonNatIso_app_eq_inner r d.unop.len) X
   change (H.map ((multiInnerSCoordinateAt r (fun _ => d)).hom.app X)).app d =

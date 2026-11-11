@@ -31,7 +31,7 @@ lemma sTwoCofiberRestriction_hasLiftingProperty_boundary (n : ℕ) (C : SSet.{u}
   intro a b sq
   let j := (gappedSubcomplex 2 C).ι
   let k : cofiberDiagrams C ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C :=
-    (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι
   let H := uncurry (a ≫ j)
   let G := uncurry (b ≫ k ≫ (pre arTwoMiddleIso.inv).app C)
   have h₀ : (a ≫ j) ≫ (pre arTwoMiddleSquare).app C = (boundary (n + 1)).ι ≫ (b ≫ k) := by
@@ -54,26 +54,26 @@ lemma sTwoCofiberRestriction_hasLiftingProperty_boundary (n : ℕ) (C : SSet.{u}
     rcases arTwoMiddle_missing_endpoint s hsm with he | he
     · left
       intro v
-      let V := (functorVertexEquiv (arNerve 2) C).symm ((a ≫ j).app (Opposite.op ⦋0⦌) v)
-      have hV : IsGapped V := fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) v)
-      have hv : functorVertex V = (a ≫ j).app (Opposite.op ⦋0⦌) v :=
-        (functorVertexEquiv _ C).apply_symm_apply _
-      have he₀ : simplexFirstVertex s = ComposableArrows.mk₀ (arObj 0 0 le_rfl) := by
+      let V := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve 2) C).symm ((a ≫ j).app (Opposite.op ⦋0⦌) v)
+      have hV : IsGapped V := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) v)
+      have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex V = (a ≫ j).app (Opposite.op ⦋0⦌) v :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).apply_symm_apply _
+      have he₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplexFirstVertex s = ComposableArrows.mk₀ (arObj 0 0 le_rfl) := by
         exact (ComposableArrows.ext₀ rfl).trans (congrArg ComposableArrows.mk₀ he)
-      change IsInitialVertex (((a ≫ j).app (Opposite.op ⦋0⦌) v).app
-        (Opposite.op ⦋0⦌) (𝟙 _) (simplexFirstVertex s))
+      change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (((a ≫ j).app (Opposite.op ⦋0⦌) v).app
+        (Opposite.op ⦋0⦌) (𝟙 _) (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplexFirstVertex s))
       rw [← hv, he₀]
       exact (hV.1 0).1
     · right
       intro v
-      let V := (functorVertexEquiv (arNerve 2) C).symm ((a ≫ j).app (Opposite.op ⦋0⦌) v)
-      have hV : IsGapped V := fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) v)
-      have hv : functorVertex V = (a ≫ j).app (Opposite.op ⦋0⦌) v :=
-        (functorVertexEquiv _ C).apply_symm_apply _
-      have he₁ : simplexLastVertex s = ComposableArrows.mk₀ (arObj 2 2 le_rfl) := by
+      let V := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve 2) C).symm ((a ≫ j).app (Opposite.op ⦋0⦌) v)
+      have hV : IsGapped V := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) v)
+      have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex V = (a ≫ j).app (Opposite.op ⦋0⦌) v :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).apply_symm_apply _
+      have he₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.simplexLastVertex s = ComposableArrows.mk₀ (arObj 2 2 le_rfl) := by
         exact (ComposableArrows.ext₀ rfl).trans (congrArg ComposableArrows.mk₀ he)
-      change IsTerminalVertex (((a ≫ j).app (Opposite.op ⦋0⦌) v).app
-        (Opposite.op ⦋0⦌) (𝟙 _) (simplexLastVertex s))
+      change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (((a ≫ j).app (Opposite.op ⦋0⦌) v).app
+        (Opposite.op ⦋0⦌) (𝟙 _) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.simplexLastVertex s))
       rw [← hv, he₁]
       exact (hV.1 2).2)
   let f := curry F
@@ -90,7 +90,7 @@ lemma sTwoCofiberRestriction_hasLiftingProperty_boundary (n : ℕ) (C : SSet.{u}
     rw [Category.assoc, middle_pre_iso]
     exact hm
   have hv : ∀ v : (Δ[n + 1] : SSet.{u}) _⦋0⦌,
-      IsGapped ((functorVertexEquiv (arNerve 2) C).symm (f.app (Opposite.op ⦋0⦌) v)) := by
+      IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve 2) C).symm (f.app (Opposite.op ⦋0⦌) v)) := by
     intro v
     obtain ⟨w, hw⟩ := boundary_vertex_surjective n v
     have he := ConcreteCategory.congr_hom (NatTrans.congr_app ha (Opposite.op ⦋0⦌)) w
@@ -98,9 +98,9 @@ lemma sTwoCofiberRestriction_hasLiftingProperty_boundary (n : ℕ) (C : SSet.{u}
       (a.app (Opposite.op ⦋0⦌) w).val at he
     rw [hw] at he
     rw [he]
-    exact fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) w)
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) w)
   let l : (Δ[n + 1] : SSet.{u}) ⟶ sConstruction 2 C :=
-    fullSubcomplexLift (fun v => IsGapped ((functorVertexEquiv (arNerve 2) C).symm v)) f hv
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (fun v => IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve 2) C).symm v)) f hv
   have hl : l ≫ j = f := rfl
   exact CommSq.HasLift.mk' {
     l := l
@@ -117,8 +117,8 @@ lemma sTwoCofiberRestriction_hasLiftingProperty_boundary (n : ℕ) (C : SSet.{u}
 方針：零次元は cofiber 正方形の外側の零対角を補い、正次元は相対境界補完を使う。
 規約：C は quasicategory のみ。使われ方：McCarthy の正方形表示と S₂ の比較。 -/
 instance sTwoCofiberRestriction_trivialKanFibration (C : SSet.{u}) [Quasicategory C] :
-    TrivialKanFibration (sTwoCofiberRestriction C) := by
-  apply (trivialKanFibration_iff_boundary _).2
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (sTwoCofiberRestriction C) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).2
   intro n
   cases n with
   | zero =>

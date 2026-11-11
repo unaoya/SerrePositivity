@@ -45,7 +45,7 @@ lemma tracedOriginalLoop_level_interval_whole_path (X : OmegaSpectrum.{u}) (n : 
         (KanSequence.mappingUnitEvaluation (KanSequence.signedLoopTail X.toKanSequence))
         n).path := by
   have h := tracedOriginalLoop_unit_interval_whole_path X n
-  have ht := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso
+  have ht := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso
     (𝟙_ PointedSimplicialSet.{u}) (X.level n).space
     ((KanSequence.signedLoopTail X.toKanSequence).level n).space).hom.right) h
   exact congrArg (· ≫ ((ihom (X.level n).space).map
@@ -62,7 +62,7 @@ lemma tracedOriginalLoop_level_interval_structure_path (X : OmegaSpectrum.{u}) (
     (KanSequence.mappingUnitEvaluation (KanSequence.signedLoopTail X.toKanSequence)) n
   rw [PointedMapping.VerticalPath.suspension_basedPost_path] at h ⊢
   change (tracedOriginalLoopRawComparison_level_interval X (n + 1)).path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
         ((KanSequence.signedLoopTail X.toKanSequence).level (n + 1)).space).right = _
   rw [tracedOriginalLoop_level_interval_whole_path,
     tracedOriginalLoop_level_interval_whole_path]

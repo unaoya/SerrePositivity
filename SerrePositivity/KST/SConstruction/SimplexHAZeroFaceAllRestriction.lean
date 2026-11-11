@@ -21,7 +21,7 @@ private lemma complex_object_cast_heq (K L : Complex A) (h : K = L) (k : ℤ) (x
   rfl
 
 /-- 元の全座標の零面への制限は、元の始点を保つ同じ削除列の線形復元。 -/
-lemma simplexHADegreeLift_zero_face_all_restriction {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADegreeLift_zero_face_all_restriction {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (q : Fin (m + 1)) (v : Fin (m + 2) ↪o Fin (n + 1))
     (b : Fin (n + 1)) (hb : v (Fin.last (m + 1)) < b) (k : ℤ) :
     (serreCubeFace A false m q).hom.f k ≫ simplexHADegreeLift A s (m + 1) v b hb k =

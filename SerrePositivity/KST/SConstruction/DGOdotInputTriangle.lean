@@ -16,11 +16,11 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 
 /-- 元の右代数の右加群用圏を、共通対象宇宙の同じ S に置く。 -/
 def dgOdotRightInput : PerfDGInput.{u, u + 1} R :=
-  dgKUniverseInput.{u, 0, u + 1} R (dgAlgebraCategory R d.right)
+  dgKUniverseInput.{u, 0, u + 1} R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.right)
 
 /-- 元の商 End 代数の右加群用圏を、同じ S に置く。 -/
 def dgOdotAlgebraInput : PerfDGInput.{u, u + 1} R :=
-  dgKUniverseInput.{u, 0, u + 1} R (dgAlgebraCategory R (dgOdotAlgebra R d))
+  dgKUniverseInput.{u, 0, u + 1} R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d))
 
 /-- 元の実対角商を、同じ S に置く。 -/
 def dgOdotQuotientInputVertex : PerfDGInput.{u, u + 1} R :=
@@ -28,49 +28,49 @@ def dgOdotQuotientInputVertex : PerfDGInput.{u, u + 1} R :=
 
 /-- 元の右代数射の全 Hom を保持する、同じ S 内の通常射。 -/
 def dgOdotRightInputMap : dgOdotRightInput R d ⟶ dgOdotAlgebraInput R d :=
-  ULift.up (dgUniverseLiftFunctor.{u, 0, 0, u + 1, u + 1}
-    (dgAlgebraMap R (dgOdotRightMap R d)))
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, 0, 0, u + 1, u + 1}
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotRightMap R d)))
 
 /-- 元の代数から商への実射の全 Hom を保持する、同じ S 内の通常射。 -/
 def dgOdotQuotientInputMap : dgOdotAlgebraInput R d ⟶ dgOdotQuotientInputVertex R d :=
-  ULift.up (dgUniverseLiftFunctor.{u, 0, u + 1, u + 1, u + 1}
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, 0, u + 1, u + 1, u + 1}
     (dgOdotAlgebraToQuotient R d))
 
 /-- 元の右 End 射を商へ送る実射を、同じ S 内の通常射として保持する。 -/
 def dgOdotOriginalRightInputMap : dgOdotRightInput R d ⟶ dgOdotQuotientInputVertex R d :=
-  ULift.up (dgUniverseLiftFunctor.{u, 0, u + 1, u + 1, u + 1}
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, 0, u + 1, u + 1, u + 1}
     (dgOdotOriginalRightToQuotient R d))
 
 /-- 同じ固定入力 S でも、元の右辺の厳密な因子分解を回収する。 -/
 lemma dgOdotRightInputMap_comp :
     dgOdotRightInputMap R d ≫ dgOdotQuotientInputMap R d = dgOdotOriginalRightInputMap R d := by
   apply ULift.ext
-  exact (dgUniverseLiftFunctor_comp.{u, 0, 0, u + 1, u + 1, u + 1, u + 1}
-    (dgAlgebraMap R (dgOdotRightMap R d)) (dgOdotAlgebraToQuotient R d)).symm.trans
-      (congrArg (fun F => dgUniverseLiftFunctor.{u, 0, u + 1, u + 1, u + 1} F)
+  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor_comp.{u, 0, 0, u + 1, u + 1, u + 1, u + 1}
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotRightMap R d)) (dgOdotAlgebraToQuotient R d)).symm.trans
+      (congrArg (fun F => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, 0, u + 1, u + 1, u + 1} F)
         (dgOdotRightMap_toQuotient R d))
 
 /-- 元の右辺と元の合成辺を保つ、固定 S 内の実二単体。 -/
 def dgOdotRightInputTriangle :
-    Edge.CompStruct (coherentNerveEdge (dgOdotRightInputMap R d))
-      (coherentNerveEdge (dgOdotQuotientInputMap R d))
-      (coherentNerveEdge (dgOdotOriginalRightInputMap R d)) := by
-  have h := coherentNerveCompStruct (dgOdotRightInputMap R d) (dgOdotQuotientInputMap R d)
+    Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotRightInputMap R d))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotQuotientInputMap R d))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotOriginalRightInputMap R d)) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (dgOdotRightInputMap R d) (dgOdotQuotientInputMap R d)
   rw [dgOdotRightInputMap_comp] at h
   exact h
 
 /-- 同じ元の二単体の ν 像。元の二辺と合成辺をそのまま写す。 -/
 def dgOdotRightNuTriangle :
-    Edge.CompStruct ((coherentNerveEdge (dgOdotRightInputMap R d)).map (dgKInputNu R))
-      ((coherentNerveEdge (dgOdotQuotientInputMap R d)).map (dgKInputNu R))
-      ((coherentNerveEdge (dgOdotOriginalRightInputMap R d)).map (dgKInputNu R)) :=
+    Edge.CompStruct ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotRightInputMap R d)).map (dgKInputNu R))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotQuotientInputMap R d)).map (dgKInputNu R))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotOriginalRightInputMap R d)).map (dgKInputNu R)) :=
   (dgOdotRightInputTriangle R d).map (dgKInputNu R)
 
 /-- 同じ元の二単体の K 像。π 群ごとの比較ではなく Sp 内の実二単体。 -/
 def dgOdotRightKTriangle :
-    Edge.CompStruct ((coherentNerveEdge (dgOdotRightInputMap R d)).map (dgKInputK R))
-      ((coherentNerveEdge (dgOdotQuotientInputMap R d)).map (dgKInputK R))
-      ((coherentNerveEdge (dgOdotOriginalRightInputMap R d)).map (dgKInputK R)) :=
+    Edge.CompStruct ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotRightInputMap R d)).map (dgKInputK R))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotQuotientInputMap R d)).map (dgKInputK R))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotOriginalRightInputMap R d)).map (dgKInputK R)) :=
   (dgOdotRightInputTriangle R d).map (dgKInputK R)
 
 end SerrePositivity.KST.SConstruction

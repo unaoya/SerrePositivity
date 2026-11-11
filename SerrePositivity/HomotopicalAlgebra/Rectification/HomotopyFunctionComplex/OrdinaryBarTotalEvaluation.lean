@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarTotalCone
-public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftElements
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftElements
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarTotalEvaluation
@@ -73,7 +73,7 @@ variable (a : NerveFirstChoice.System (OrdinaryBarCenters.leftChoices R))
 abbrev evaluationElements : OrdinaryBarTotalCone.Index R ⥤
     (BarOutput.output R).Elements :=
   (OrdinaryBarEvaluation.evaluation R a b).mapElements ⋙
-    UniverseLift.downElements (BarOutput.output R)
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.downElements (BarOutput.output R)
 
 def rowFactorization : OrdinaryBarTotalCone.rows R a b ≅
     evaluationElements R a b ⋙ rowElements R :=

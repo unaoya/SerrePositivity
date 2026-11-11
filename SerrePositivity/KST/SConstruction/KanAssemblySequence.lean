@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.KanAssemblyHomotopyMaps
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.PointedKanWhitehead
 public import SerrePositivity.KST.Spectra.UnbasedHomotopyIsomorphism
 public import SerrePositivity.KST.Spectra.CofibrantKanSequence
 
@@ -24,7 +24,7 @@ open scoped Simplicial
 規約：厳密な逆ではない。使われ方：同一の反復列上の随伴射。 -/
 def oneDirectionKanComparisonInverse (r : ℕ) (X : StableModel.{u}) :
     (boundaryKanRealizationFunctor r).obj X ⟶ (oneDirectionKanRealizationFunctor r).obj X :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopyInverse ((oneDirectionKanComparisonNat r).app X)
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.exists_pointedHomotopyInverse ((oneDirectionKanComparisonNat r).app X)
     (oneDirectionReducedComparison_kan_piIsomorphism r X)).choose
 
 /-- 概要：比較の後に逆射を合成すると源の恒等射と基点固定でホモトピック。
@@ -36,7 +36,7 @@ lemma oneDirectionKanComparison_inverse_homotopy (r : ℕ) (X : StableModel.{u})
       ((oneDirectionKanRealizationFunctor r).obj X).hom ▷ (Δ[1] : SSet.{u}) ≫ H.h =
         toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫
           ((oneDirectionKanRealizationFunctor r).obj X).hom :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopyInverse ((oneDirectionKanComparisonNat r).app X)
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.exists_pointedHomotopyInverse ((oneDirectionKanComparisonNat r).app X)
     (oneDirectionReducedComparison_kan_piIsomorphism r X)).choose_spec.1
 
 /-- 概要：逆射の後に比較を合成すると境界商の恒等射と基点固定でホモトピック。
@@ -48,17 +48,17 @@ lemma oneDirectionKanComparisonInverse_homotopy (r : ℕ) (X : StableModel.{u}) 
       ((boundaryKanRealizationFunctor r).obj X).hom ▷ (Δ[1] : SSet.{u}) ≫ H.h =
         toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫
           ((boundaryKanRealizationFunctor r).obj X).hom :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopyInverse ((oneDirectionKanComparisonNat r).app X)
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.exists_pointedHomotopyInverse ((oneDirectionKanComparisonNat r).app X)
     (oneDirectionReducedComparison_kan_piIsomorphism r X)).choose_spec.2
 
 /-- 概要：一次方向の比較の逆射も全基点 π 同型。
 方針：合成と恒等射のホモトピー不変性から、比較の π 同型を打ち消す。
 規約：零次数を含む。使われ方：段の接続の源の同値比較。 -/
 lemma oneDirectionKanComparisonInverse_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (oneDirectionKanComparisonInverse r X).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (oneDirectionKanComparisonInverse r X).right := by
   obtain ⟨H, _⟩ := oneDirectionKanComparisonInverse_homotopy r X
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp
-    ((Spectra.kanPiIsomorphism_iff_of_homotopy H).mp (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id _))
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp
+    ((Spectra.kanPiIsomorphism_iff_of_homotopy H).mp (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.id _))
     (oneDirectionReducedComparison_kan_piIsomorphism r X)
 
 /-- 概要：元の境界商の Kan 段から次段の loop への随伴射。
@@ -73,15 +73,15 @@ def boundaryKanAssemblyAdjoint (r : ℕ) (X : StableModel.{u}) :
 方針：構成した随伴射を L9 の smash と loop の随伴で戻す。
 規約：第 r 段は r+1 重 S の全零境界商の Kan 置換。使われ方：Kan 列への束ね。 -/
 def boundaryKanAssemblySigma (r : ℕ) (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((boundaryKanRealizationFunctor r).obj X) ⟶
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((boundaryKanRealizationFunctor r).obj X) ⟶
       (boundaryKanRealizationFunctor (r + 1)).obj X :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _).symm (boundaryKanAssemblyAdjoint r X)
+  (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _).symm (boundaryKanAssemblyAdjoint r X)
 
 /-- 概要：suspension 構造射の随伴は構成した loop への射。
 方針：随伴同値の逆方向の消去。
 規約：厳密等号。使われ方：Ω 条件の検証対象の特定。 -/
 lemma boundaryKanAssemblySigma_adjoint (r : ℕ) (X : StableModel.{u}) :
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _) (boundaryKanAssemblySigma r X) =
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _) (boundaryKanAssemblySigma r X) =
       boundaryKanAssemblyAdjoint r X := Equiv.apply_symm_apply _ _
 
 /-- 概要：全零境界商の Kan 模型と実際の構造射を持つ反復 S の列。
@@ -115,7 +115,7 @@ def monicBoundaryKanSequenceProjection (X : StableModel.{u}) :
 方針：L9 の置換射影の定理を使う。
 規約：零次数も含む。使われ方：単射な列と元の反復 S の比較。 -/
 lemma monicBoundaryKanSequenceProjection_piIsomorphism (X : StableModel.{u}) (r : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((monicBoundaryKanSequenceProjection X).app r).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((monicBoundaryKanSequenceProjection X).app r).right :=
   Spectra.KanSequence.replacementProjection_piIsomorphism _ r
 
 end SerrePositivity.KST.SConstruction

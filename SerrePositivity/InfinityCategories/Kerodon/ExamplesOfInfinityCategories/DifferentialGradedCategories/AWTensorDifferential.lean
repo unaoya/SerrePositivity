@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：全複体の標準包含の微分公式とテンソル写像の双加法性を使う。
 規約：KST Construction A.5 の標準 AW、垂直微分の符号は第一因子の次数。
 使われ方：左右の非対角項の添字変換と切断点の対角項の相殺。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

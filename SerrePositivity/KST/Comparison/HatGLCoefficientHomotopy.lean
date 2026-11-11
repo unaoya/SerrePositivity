@@ -30,8 +30,8 @@ open scoped Simplicial
 -/
 def hatGLCoefficientHomotopyMulEquiv (A : SimplicialObject RingCat.{u})
     [KanComplex (ringSpace A)] (r n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (hatGLSpace A r) n (1 : hatGLSubmonoid A r 0) ≃*
-      (Fin r → Fin r → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (hatGLSpace A r) n (1 : hatGLSubmonoid A r 0) ≃*
+      (Fin r → Fin r → _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))) :=
   (hatGLPositiveHomotopyMulEquiv A r (1 : hatGLSubmonoid A r 0) n).trans
     ((ringPositiveHomotopyBasepointEquiv (matrixRingObject A r)
       (1 : Matrix (Fin r) (Fin r) (A.obj (op ⦋0⦌))) n).trans

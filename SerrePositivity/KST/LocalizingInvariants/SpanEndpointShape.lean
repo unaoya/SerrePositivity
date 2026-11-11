@@ -26,7 +26,7 @@ def spanEndpointInclusion : (boundary 1 : SSet.{u}) ⟶ (horn 2 0 : SSet.{u}) :=
     · refine ⟨2, by decide, ?_⟩
       rintro ⟨j, hj⟩
       change Fin.succ (s.val j) = 2 at hj
-      rw [boundaryOne_simplex_constant s j, hs] at hj
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.boundaryOne_simplex_constant s j, hs] at hj
       contradiction
     · have hs' : s.val 0 = 1 := by
         have h := (s.val 0).isLt
@@ -37,7 +37,7 @@ def spanEndpointInclusion : (boundary 1 : SSet.{u}) ⟶ (horn 2 0 : SSet.{u}) :=
       refine ⟨1, by decide, ?_⟩
       rintro ⟨j, hj⟩
       change Fin.succ (s.val j) = 1 at hj
-      rw [boundaryOne_simplex_constant s j, hs'] at hj
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.boundaryOne_simplex_constant s j, hs'] at hj
       contradiction)
 
 lemma spanEndpointInclusion_ι : spanEndpointInclusion.{u} ≫ (horn 2 0).ι =
@@ -52,15 +52,15 @@ instance spanEndpointInclusion_mono : Mono spanEndpointInclusion.{u} := by
 lemma spanEndpointInclusion_app {n : ℕ} (s : (boundary 1 : SSet.{u}) _⦋n⦌) :
     spanEndpointInclusion.app (Opposite.op ⦋n⦌) s =
       if s.val 0 = 0 then horn₂₀.ι₀₁.app (Opposite.op ⦋n⦌)
-        (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n)
       else horn₂₀.ι₀₂.app (Opposite.op ⦋n⦌)
-        (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n) := by
   apply Subtype.ext
   split_ifs with hs
   · apply stdSimplex.ext
     intro j
     change Fin.succ (s.val j) = 1
-    rw [boundaryOne_simplex_constant s j, hs]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.boundaryOne_simplex_constant s j, hs]
     rfl
   · apply stdSimplex.ext
     intro j
@@ -71,7 +71,7 @@ lemma spanEndpointInclusion_app {n : ℕ} (s : (boundary 1 : SSet.{u}) _⦋n⦌)
       apply Fin.ext
       change (s.val 0).val = 1
       omega
-    rw [boundaryOne_simplex_constant s j, hs']
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.boundaryOne_simplex_constant s j, hs']
     rfl
 
 lemma markedSpanBoundary_restriction (X : SSet.{u}) (W : Set (X _⦋1⦌)) :
@@ -84,9 +84,9 @@ lemma markedSpanBoundary_restriction (X : SSet.{u}) (W : Set (X _⦋1⦌)) :
   rintro ⟨s, v⟩
   change (if s.val 0 = 0 then
     v.val.app (Opposite.op ⦋n⦌) (𝟙 _) (horn₂₀.ι₀₁.app (Opposite.op ⦋n⦌)
-      (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n))
     else v.val.app (Opposite.op ⦋n⦌) (𝟙 _) (horn₂₀.ι₀₂.app (Opposite.op ⦋n⦌)
-      (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n))) =
     v.val.app (Opposite.op ⦋n⦌) (𝟙 _) (spanEndpointInclusion.app (Opposite.op ⦋n⦌) s)
   rw [spanEndpointInclusion_app]
   split_ifs <;> rfl

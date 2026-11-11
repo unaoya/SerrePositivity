@@ -12,7 +12,7 @@ open SerrePositivity.InfinityCategories
 
 lemma prepend_injOn_iff {m n : ℕ} (θ : Fin (m + 1) →o Fin (n + 1))
     (I : Finset (Fin (m + 2))) :
-    Set.InjOn (prependOrderHom θ) (I : Set (Fin (m + 2))) ↔
+    Set.InjOn (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ) (I : Set (Fin (m + 2))) ↔
       Set.InjOn θ ((withoutFirst I) : Set (Fin (m + 1))) := by
   constructor
   · intro h i hi j hj hij
@@ -36,7 +36,7 @@ lemma prepend_injOn_iff {m n : ℕ} (θ : Fin (m + 1) →o Fin (n + 1))
 
 lemma withoutFirst_image_prepend_map {m n : ℕ} (θ : Fin (m + 1) →o Fin (n + 1))
     (I : Finset (Fin (m + 2))) :
-    withoutFirst (I.image (prependOrderHom θ)) = (withoutFirst I).image θ := by
+    withoutFirst (I.image (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ)) = (withoutFirst I).image θ := by
   ext i
   simp only [withoutFirst, Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_image]
   constructor

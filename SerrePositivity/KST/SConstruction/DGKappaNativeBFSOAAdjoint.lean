@@ -29,7 +29,7 @@ lemma dgKappaNativeBFStepAdjoint_component (r : ℕ)
         (((stableOneDirectionKanComparisonMap r C.obj).hom ≫
             (show ((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I r).obj C).obj ⟶
               (S.functor.obj C).obj from S.comparison C)) ≫
-          curry (show _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (S.functor.obj C).obj ⟶
+          curry (show _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (S.functor.obj C).obj ⟶
             ((dgKappaNativeBFFiniteStepFunctor.{u, v} R D I r S).obj C).obj
             from dgKappaNativeBFFiniteStepStructureMap.{u, v} R D I r S C)) =
       componentOf (stableKanAssemblyRightAdjoint r C.obj ≫
@@ -49,7 +49,7 @@ lemma dgKappaNativeBFStepAdjoint_component (r : ℕ)
   let l := (stableOneDirectionKanComparisonMap r C.obj).hom ≫
     (show ((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I r).obj C).obj ⟶
       (S.functor.obj C).obj from S.comparison C)
-  let σ : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (S.functor.obj C).obj ⟶
+  let σ : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (S.functor.obj C).obj ⟶
       ((dgKappaNativeBFFiniteStepFunctor.{u, v} R D I r S).obj C).obj :=
     dgKappaNativeBFFiniteStepStructureMap.{u, v} R D I r S C
   let a : ((dgKappaNativeBFFiniteAssemblySourceFunctor.{u, v} R D I r).obj C).obj ⟶
@@ -114,9 +114,9 @@ lemma dgKappaNativeBFRawSOAComparison_positive_adjoint (r : ℕ)
   let q' := (stableOneDirectionKanComparisonMap r C.obj).hom
   let c : ((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I r).obj C).obj ⟶
       (S.functor.obj C).obj := S.comparison C
-  let s : (S.functor.obj C).obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace
+  let s : (S.functor.obj C).obj ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace
       ((dgKappaNativeBFFiniteStepFunctor.{u, v} R D I r S).obj C).obj :=
-    curry (show _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (S.functor.obj C).obj ⟶
+    curry (show _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (S.functor.obj C).obj ⟶
       ((dgKappaNativeBFFiniteStepFunctor.{u, v} R D I r S).obj C).obj
       from dgKappaNativeBFFiniteStepStructureMap.{u, v} R D I r S C)
   let d : ((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I (r + 1)).obj C).obj ⟶

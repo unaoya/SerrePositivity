@@ -49,14 +49,14 @@ def iteratedPathHomotopyFiberFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimp
 方針：基点上の path を引き戻しの基点 fiber として含める。
 規約：実際の点つき写像。使われ方：delooping の fiber 比較の一方。 -/
 def iteratedPathLoopComparison (r : ℕ) (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((boundaryKanRealizationFunctor r).obj X) ⟶ iteratedPathHomotopyFiber r X :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((boundaryKanRealizationFunctor r).obj X) ⟶ iteratedPathHomotopyFiber r X :=
   loopToPathHomotopyFiber (pointedFullIteratedPathKanBoundary r X)
 
 /-- 概要：反復経路境界の homotopy fiber と標的の loop の比較は全基点 π_* 同型。
 方針：反復経路の実際の可縮 Kan 性に一般の比較を適用する。
 規約：全自然数次数を含み、追加仮定はない。使われ方：残る反復 S 実現との比較。 -/
 lemma iteratedPathLoopComparison_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (iteratedPathLoopComparison r X).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (iteratedPathLoopComparison r X).right :=
   loopToPathHomotopyFiber_piIsomorphism (pointedFullIteratedPathKanBoundary r X)
     (pointedIteratedPathKan_isContractibleKan r X)
 

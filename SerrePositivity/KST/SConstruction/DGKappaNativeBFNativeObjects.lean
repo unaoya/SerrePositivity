@@ -21,31 +21,31 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 方針：同じ実提示の左辺の終点を使う。
 規約：零対象を選び直さない。使われ方：四対象の有限入力化。 -/
 lemma dgKappaNativeBF_zeroVertex :
-    squareVertex (dgKappaNativeVerdierDiagram.{u, v} R D I).square 0 1 =
-      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{max (u + 1) v} := by
-  have h := squareLeftEdge_target (dgKappaNativeVerdierDiagram.{u, v} R D I).square
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeVerdierDiagram.{u, v} R D I).square 0 1 =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{max (u + 1) v} := by
+  have h := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftEdge_target (dgKappaNativeVerdierDiagram.{u, v} R D I).square
   let ev := fun k : (Δ[1] : SSet.{max (u + 1) v + 1}) ⟶
-      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} =>
-    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v}).map (SimplexCategory.δ (0 : Fin 2)).op
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{max (u + 1) v} =>
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{max (u + 1) v}).map (SimplexCategory.δ (0 : Fin 2)).op
       (SSet.yonedaEquiv k)
   have he := congrArg ev
     (VerdierSequence.presentation_left (dgKappaNativeVerdierSequence.{u, v} R D I))
   exact h.symm.trans (he.trans (by
-    change _ = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory
+    change _ = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory
     dsimp only [ev]
     rw [Equiv.apply_symm_apply]
-    exact (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory
+    exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory
       (dgKappaNativeVerdierSequence.{u, v} R D I).left)).tgt_eq))
 
 /-- 概要：元四角形の指定頂点を同じ充満有限入力へ保持する。
 方針：元の頂点等号を復号して同じ頂点像の証人にする。
 規約：通常対象は C のまま。使われ方：元の四辺の型付け。 -/
 def dgKappaNativeBFFiniteObjectOfVertexEq (a b : Fin 2)
-    (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{max (u + 1) v})
-    (h : squareVertex (dgKappaNativeVerdierDiagram.{u, v} R D I).square a b = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex C) :
+    (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{max (u + 1) v})
+    (h : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeVerdierDiagram.{u, v} R D I).square a b = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex C) :
     DGKappaNativeBFFiniteInput.{u, v} R D I :=
   ⟨C, ⟨(stdSimplex.obj₀Equiv.symm a, stdSimplex.obj₀Equiv.symm b),
-    congrArg (fun x => coherentNerveObject (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{max (u + 1) v}) x) h⟩⟩
+    congrArg (fun x => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{max (u + 1) v}) x) h⟩⟩
 
 /-- 概要：元の始域・中間・零角・終域を同じ有限入力で保持する。
 方針：元提示の三頂点等号と指定零角の等号を使う。
@@ -57,7 +57,7 @@ def dgKappaNativeBFFiniteNativeObject : Fin 4 → DGKappaNativeBFFiniteInput.{u,
     dgKappaNativeBFFiniteObjectOfVertexEq.{u, v} R D I 1 0
       (dgKappaNativeVerdierDiagram.{u, v} R D I).middle
       (dgKappaNativeVerdierDiagram.{u, v} R D I).middle_eq,
-    dgKappaNativeBFFiniteObjectOfVertexEq.{u, v} R D I 0 1 _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory
+    dgKappaNativeBFFiniteObjectOfVertexEq.{u, v} R D I 0 1 _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory
       (dgKappaNativeBF_zeroVertex.{u, v} R D I),
     dgKappaNativeBFFiniteObjectOfVertexEq.{u, v} R D I 1 1
       (dgKappaNativeVerdierDiagram.{u, v} R D I).right
@@ -76,7 +76,7 @@ def dgKappaNativeBFFiniteNativeArrow :
         ObjectProperty.homMk (dgKappaNativeVerdierDiagram.{u, v} R D I).projection),
     Arrow.mk (show dgKappaNativeBFFiniteNativeObject.{u, v} R D I 0 ⟶
       dgKappaNativeBFFiniteNativeObject.{u, v} R D I 2 from
-        ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (dgKappaNativeVerdierDiagram.{u, v} R D I).left)),
+        ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (dgKappaNativeVerdierDiagram.{u, v} R D I).left)),
     Arrow.mk (show dgKappaNativeBFFiniteNativeObject.{u, v} R D I 2 ⟶
       dgKappaNativeBFFiniteNativeObject.{u, v} R D I 3 from
         ObjectProperty.homMk (fromZeroCategory (dgKappaNativeVerdierDiagram.{u, v} R D I).right))]

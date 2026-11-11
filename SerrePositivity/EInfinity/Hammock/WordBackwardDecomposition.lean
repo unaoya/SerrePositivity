@@ -18,26 +18,26 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.Word.BackwardBounds
 open MiddleBackward
 
-variable {w : Word} {p : Fin w.length} (h : BackwardBounds w p)
+variable {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {p : Fin w.length} (h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardBounds w p)
 
 lemma whole_eq : h.wholeWord = w := by
-  apply Word.object_ext _ _ h.whole_length
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordUnit.object_ext _ _ h.whole_length
   intro i
   cases i using Fin.addCases with
   | left i =>
     cases i using Fin.addCases with
     | left i =>
-      rw [append_direction_left, append_direction_left]
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append_direction_left, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append_direction_left]
       apply congrArg w.direction
       apply Fin.ext
       rfl
     | right i =>
-      rw [append_direction_left, append_direction_right, h.core_direction]
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append_direction_left, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append_direction_right, h.core_direction]
       apply congrArg w.direction
       apply Fin.ext
       rfl
   | right i =>
-    rw [append_direction_right]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append_direction_right]
     apply congrArg w.direction
     apply Fin.ext
     change h.right.val + 1 + i.val = h.left.val + h.coreWord.length + i.val
@@ -55,3 +55,6 @@ lemma middle_column_cast :
   exact congrArg Fin.val h.middleIndex
 
 end SerrePositivity.EInfinity.Hammock.Word.BackwardBounds
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardBounds
+  export _root_.SerrePositivity.EInfinity.Hammock.Word.BackwardBounds (whole_eq middle_column_cast)

@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：水平集合の補集合による二因子交換を、証明済みの水平境界の同値と合成する。
 規約：KST Construction A.5、全次数 p+q=n。
 使われ方：垂直境界和と第二因子の通常境界和の並べ替え。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

@@ -39,7 +39,7 @@ lemma dgKappaNativeBFFiniteFirstStructureMap_whisker
       (dgKappaNativeBFFiniteFirstFunctor.{u, v} R D I).map C E ≫
         eHomWhiskerRight SSet (dgKappaNativeBFFiniteFirstStructureMap.{u, v} R D I C)
           ((dgKappaNativeBFFiniteFirstFunctor.{u, v} R D I).obj E) := by
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker _ _
+  have h := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformation_whisker _ _
     (pointedEnrichedMonicReplacementSourceTransformation
       (dgKappaNativeBFFiniteZeroSuspensionFunctor.{u, v} R D I)
       (dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I 0)

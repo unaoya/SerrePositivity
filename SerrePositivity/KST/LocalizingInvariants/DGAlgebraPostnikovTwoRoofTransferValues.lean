@@ -29,7 +29,7 @@ lemma postnikovTwoRoofTransfer_map_upper {D : Type v} [Category.{w} D]
   rw [← L.map_comp, ← L.map_comp]
   exact congrArg L.map (postnikovTwoRoofTransfer_upper R f c)
 
-variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+variable (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
 
 lemma IsKConnective.postnikovTwoRoofSourceUpper_value_isIso
     {k : ℤ} (h : IsKConnective R Φ k) :

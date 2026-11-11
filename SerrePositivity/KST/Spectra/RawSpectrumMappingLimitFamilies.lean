@@ -49,7 +49,7 @@ lemma limitFamily_fac (X : OmegaSpectrum.{u}) (c : Cone D)
 
 /-- 段の構造比較の後合成の自然性は点つき射でも厳密。 -/
 lemma pointedStep_post (X : OmegaSpectrum.{u}) {Y Z : KanSequence.{u}} (p : Y ⟶ Z) (n : ℕ) :
-    pointedStep X Y n ≫ PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (p.app (n + 1)) =
+    pointedStep X Y n ≫ PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (p.app (n + 1)) =
       PointedObject.basedHomMap (X.level n).space (p.app n) ≫ pointedStep X Z n := by
   apply Under.UnderMorphism.ext
   exact step_post X p n
@@ -59,26 +59,26 @@ lemma limitFamily_condition (X : OmegaSpectrum.{u}) (c : Cone D)
     (hc : ∀ n, IsLimit ((KanSequence.levelEvaluation n).mapCone c))
     (s : Cone (D ⋙ pointedFunctor X)) (n : ℕ) :
     limitFamily X c hc s (n + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (c.pt.level (n + 1)).space =
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (c.pt.level (n + 1)).space =
       limitFamily X c hc s n ≫ pointedStep X c.pt n := by
-  apply (levelHomCone_isLimit (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) c (n + 1) (hc (n + 1))).hom_ext
+  apply (levelHomCone_isLimit (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) c (n + 1) (hc (n + 1))).hom_ext
   intro i
   change (limitFamily X c hc s (n + 1) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (c.pt.level (n + 1)).space) ≫
-        PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) ((c.π.app i).app (n + 1)) =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (c.pt.level (n + 1)).space) ≫
+        PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) ((c.π.app i).app (n + 1)) =
     (limitFamily X c hc s n ≫ pointedStep X c.pt n) ≫
-      PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) ((c.π.app i).app (n + 1))
+      PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) ((c.π.app i).app (n + 1))
   have hpre : PointedObject.basedHomMap (X.level (n + 1)).space
       ((c.π.app i).app (n + 1)) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) ((D.obj i).level (n + 1)).space =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (c.pt.level (n + 1)).space ≫
-        PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) ((D.obj i).level (n + 1)).space =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (c.pt.level (n + 1)).space ≫
+        PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
           ((c.π.app i).app (n + 1)) := by
-    simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+    simp only [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
     exact (MonoidalClosed.pre (X.sigma n)).naturality ((c.π.app i).app (n + 1))
   rw [Category.assoc, ← hpre, ← Category.assoc, limitFamily_fac]
   have hs : pointedStep X c.pt n ≫
-      PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) ((c.π.app i).app (n + 1)) =
+      PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) ((c.π.app i).app (n + 1)) =
       PointedObject.basedHomMap (X.level n).space ((c.π.app i).app n) ≫
         pointedStep X (D.obj i) n := pointedStep_post X (c.π.app i) n
   conv_rhs => rw [Category.assoc, hs, ← Category.assoc, limitFamily_fac]

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedReverseKanDiagonalValue
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIsoTransport
 
 /-!
 概要：元の反転全対角の値比較を、元の F1 の同じ実合成 prism の指定比較へ戻す。

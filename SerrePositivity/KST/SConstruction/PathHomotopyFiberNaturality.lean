@@ -22,7 +22,7 @@ open Spectra
 lemma loopPointedPathFiberIso_hom_ι (B : PointedSimplicialSet.{u}) :
     (loopPointedPathFiberIso B).hom ≫ pointedFiberι (pathEndpoint B) =
       (loopToEndpointHomIso B).hom ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}) B := by
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}) B := by
   apply Under.UnderMorphism.ext
   exact loopBasedPathFiberIso_hom_ι B
 
@@ -32,7 +32,7 @@ lemma loopPointedPathFiberIso_hom_ι (B : PointedSimplicialSet.{u}) :
 lemma loopToPathHomotopyFiber_path {E B : PointedSimplicialSet.{u}} (f : E ⟶ B) :
     loopToPathHomotopyFiber f ≫ pullback.fst (pathEndpoint B) f =
       (loopToEndpointHomIso B).hom ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}) B := by
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}) B := by
   change ((loopPointedPathFiberIso B).hom ≫
       pointedPullbackFiberFrom (pathEndpoint B) f ≫
       pointedFiberι (pullback.snd (pathEndpoint B) f)) ≫ pullback.fst _ _ = _
@@ -80,11 +80,11 @@ lemma loopToPathHomotopyFiber_naturality {E B E' B' : PointedSimplicialSet.{u}}
           (pullback.fst (pathEndpoint B) f ≫ basedPathMap b) := by
         rw [Category.assoc, pathHomotopyFiberMap_path]
       _ = ((loopToEndpointHomIso B).hom ≫
-          _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}) B) ≫
+          _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}) B) ≫
           basedPathMap b := by rw [← Category.assoc, loopToPathHomotopyFiber_path]
       _ = PointedObject.basedHomMap PointedSimplicialSet.circle.{u} b ≫
           ((loopToEndpointHomIso B').hom ≫
-            _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}) B') :=
+            _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}) B') :=
         (loopToPath_natural b).symm
       _ = _ := by
         rw [Category.assoc]
@@ -110,7 +110,7 @@ lemma pathHomotopyFiberMap_id {E B : PointedSimplicialSet.{u}} (f : E ⟶ B)
     (h : f ≫ 𝟙 B = 𝟙 E ≫ f) :
     pathHomotopyFiberMap f f (𝟙 E) (𝟙 B) h = 𝟙 (pathHomotopyFiber f) := by
   have hp : basedPathMap (𝟙 B) = 𝟙 (basedPathSpace B) :=
-    (PointedObject.basedHomFunctor _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.{u}).map_id B
+    (PointedObject.basedHomFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval.{u}).map_id B
   apply pullback.hom_ext
   · calc
       _ = pullback.fst (pathEndpoint B) f ≫ basedPathMap (𝟙 B) :=
@@ -133,7 +133,7 @@ lemma pathHomotopyFiberMap_comp {E B E' B' E'' B'' : PointedSimplicialSet.{u}}
     pathHomotopyFiberMap f f' a b h ≫ pathHomotopyFiberMap f' f'' a' b' h' =
       pathHomotopyFiberMap f f'' (a ≫ a') (b ≫ b') h'' := by
   have hp : basedPathMap (b ≫ b') = basedPathMap b ≫ basedPathMap b' :=
-    (PointedObject.basedHomFunctor _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.{u}).map_comp b b'
+    (PointedObject.basedHomFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval.{u}).map_comp b b'
   apply pullback.hom_ext
   · calc
       _ = (pathHomotopyFiberMap f f' a b h ≫ pullback.fst (pathEndpoint B') f') ≫

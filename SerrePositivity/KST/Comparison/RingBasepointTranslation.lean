@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.MatrixSpace
-public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyIso
 
 /-!
 # 単体的環の加法による基点の平行移動
@@ -100,9 +100,9 @@ theorem ringTranslationIso_basepoint (A : SimplicialObject RingCat.{u})
 -/
 def ringPositiveHomotopyBasepointEquiv (A : SimplicialObject RingCat.{u})
     [KanComplex (ringSpace A)] (a : A.obj (op ⦋0⦌)) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n a ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌)) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (ringTranslationIso A a)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n a ≃*
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso n (ringTranslationIso A a)
     (ringTranslationIso_basepoint A a)
 
 end SerrePositivity.KST.Comparison

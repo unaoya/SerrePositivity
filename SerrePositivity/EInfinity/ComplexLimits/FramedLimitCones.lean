@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimit
 public import SerrePositivity.EInfinity.ComplexLimits.Probe
 public import SerrePositivity.EInfinity.HomotopyWeight.FrameCones
-public import SerrePositivity.InfinityCategories.ModelBridge.MixedFrameDiagrams
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams
 public import SerrePositivity.EInfinity.HomotopyWeight.Reindex
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization
 
@@ -50,7 +50,7 @@ lemma framedLimitConeSpace_kanComplex (F : K ⥤ (Complex A))
   let := projectiveModelCategory A
   have := framedLimitProbe_cofibrant A Y
   have : IsFibrant (op (framedLimitProbe A Y)) :=
-    FrameHom.MixedFrame.fibrantOp_of_cofibrant _
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
   exact HomotopyWeight.frameCone_kanComplex Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
     (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K) (rightFrameDiagram A K F)
     (fun k => rightFrame_cofibrant A (F.obj k.unop))
@@ -69,7 +69,7 @@ lemma framedLimitConeSpace_map_isIso {F G : K ⥤ (Complex A)} (f : F ⟶ G)
   let := projectiveModelCategory A
   have := framedLimitProbe_cofibrant A Y
   have : IsFibrant (op (framedLimitProbe A Y)) :=
-    FrameHom.MixedFrame.fibrantOp_of_cofibrant _
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
   exact HomotopyWeight.frameCone_source_weakEquivalence_isIso Kᵒᵖ
     (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K) L hL (rightFrameFactorization A)
     ((rightFrameDiagramFamily A K).map f.op)

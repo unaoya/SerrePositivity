@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransportAlgebra
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalPrismComparisonPrecomp
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoTransportAlgebra
 
 /-!
 概要：元の対角比較の値の係数制限を、同じ制限後の実 prism の指定比較の値へ戻す。

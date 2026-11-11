@@ -15,18 +15,18 @@ open CategoryTheory Simplicial SSet
 
 /-- 元の部分集合の数値次元を、同じ元の bead の次元へ移す同型。 -/
 def simplexSubsetCubeDimensionIso {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
-    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2) ≅
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2) ≅
       (necklaceConcreteCube.{u}).obj (necklaceInSimplexSubset.{u} I hI).necklace :=
-  @concreteCubeDimensionIso (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2))
-    (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (necklaceInSimplexSubset.{u} I hI).necklace.down.dimension)
+  @concreteCubeDimensionIso (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2))
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (necklaceInSimplexSubset.{u} I hI).necklace.down.dimension)
     (necklaceInSimplexSubset_dimension.{u} I hI).symm
 
 /-- 元の部分集合の表現可能立方体から、同じ元の necklace Hom への実生成射。 -/
 def simplexSubsetCubicalCell {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
-    cubicalYoneda.obj (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2)) ⟶
+    cubicalYoneda.obj (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2)) ⟶
       necklaceCubicalMapping (Δ[n] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (Finset.card_pos.mp (by omega))))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (Finset.card_pos.mp (by omega)))) :=
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (Finset.card_pos.mp (by omega))))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (Finset.card_pos.mp (by omega)))) :=
   cubicalYoneda.map (simplexSubsetCubeDimensionIso.{u} I hI).hom ≫
     necklaceCubicalCell (necklaceInSimplexSubset I hI)
 

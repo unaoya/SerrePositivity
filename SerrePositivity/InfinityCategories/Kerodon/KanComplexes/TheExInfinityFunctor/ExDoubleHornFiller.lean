@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：二重細分から horn への具体的な写像を随伴で転置し、境界条件を単位の反復へ移す。
 規約：Moss 2020 Proposition 21 の Kan 性に用いる有限段階の充填。
 使われ方：有限な horn の写像を反復列の有限段階で充填する。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

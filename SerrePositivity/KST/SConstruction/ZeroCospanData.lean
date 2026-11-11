@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.CospanFamilies
-public import SerrePositivity.InfinityCategories.Stable.ZeroSourceArrows
-public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
-public import SerrePositivity.InfinityCategories.Core.EquivalencePathIso
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CospanFamilies
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroSourceArrows
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.SuspensionDiagramArrows
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePathIso
 
 /-! # 零頂点から出る脚を持つ cospan のデータ
 概要：第一辺と、零対象からその終点への第二辺を引き戻しで束ねる。
@@ -22,8 +22,8 @@ open scoped Simplicial
 方針：二つの終点評価の引き戻し。
 規約：零対象と零射を選択せず全て保持する。使われ方：固定第一辺上の可縮な選択空間。 -/
 def zeroCospanData (C : SSet.{u}) : SSet.{u} :=
-  pullback (zeroSourceArrowTarget C)
-    (evaluateFunctorAt (Y := C) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+  pullback (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceArrowTarget C)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := C) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
 
 /-- 概要：零脚つき cospan のデータから第一辺を取る。
 方針：引き戻しの第二射影。
@@ -34,8 +34,8 @@ def zeroCospanDataProjection (C : SSet.{u}) : zeroCospanData C ⟶ (ihom (Δ[1] 
 /-- 概要：零脚の全選択の射影は trivial Kan fibration。
 方針：零対象からの辺の終点射影の trivial Kan fibration を引き戻す。
 規約：零対象の存在だけが必要。使われ方：固定第一辺上の同型の構成。 -/
-instance zeroCospanDataProjection_trivialKanFibration (C : SSet.{u}) [HasZeroVertex C] :
-    TrivialKanFibration (zeroCospanDataProjection C) := by
+instance zeroCospanDataProjection_trivialKanFibration (C : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (zeroCospanDataProjection C) := by
   dsimp only [zeroCospanDataProjection]
   infer_instance
 
@@ -44,38 +44,38 @@ instance zeroCospanDataProjection_trivialKanFibration (C : SSet.{u}) [HasZeroVer
 規約：全てのパラメーターに自然。使われ方：データの同型を cospan 全体の同型にする。 -/
 def zeroCospanDataDiagram (C : SSet.{u}) :
     zeroCospanData C ⟶ (ihom (horn 2 2 : SSet.{u})).obj C :=
-  stable_cospanFamilyOfArrows (zeroCospanDataProjection C)
-    (pullback.fst (zeroSourceArrowTarget C)
-      (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫
-        (fullSubcomplexOnVertices _ IsZeroSourceArrow).ι)
-    (by simpa only [zeroCospanDataProjection, zeroSourceArrowTarget, Category.assoc] using
-      (pullback.condition (f := zeroSourceArrowTarget C)
-        (g := evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))).symm)
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_cospanFamilyOfArrows (zeroCospanDataProjection C)
+    (pullback.fst (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceArrowTarget C)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow).ι)
+    (by simpa only [zeroCospanDataProjection, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceArrowTarget, Category.assoc] using
+      (pullback.condition (f := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceArrowTarget C)
+        (g := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))).symm)
 
 /-- 概要：貼り合わせた cospan の第一辺は指定データの第一辺。
 方針：二辺の貼り合わせの制限式を使う。
 規約：厳密等号。使われ方：固定入力の比較。 -/
 lemma zeroCospanDataDiagram_left (C : SSet.{u}) :
     zeroCospanDataDiagram C ≫ (pre horn₂₂.ι₀₂).app C = zeroCospanDataProjection C :=
-  stable_cospanFamilyOfArrows_left _ _ _
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_cospanFamilyOfArrows_left _ _ _
 
 /-- 概要：貼り合わせた cospan の第二辺は指定された零脚。
 方針：二辺の貼り合わせの制限式を使う。
 規約：厳密等号。使われ方：零脚の回収。 -/
 lemma zeroCospanDataDiagram_right (C : SSet.{u}) :
     zeroCospanDataDiagram C ≫ (pre horn₂₂.ι₁₂).app C =
-      pullback.fst (zeroSourceArrowTarget C)
-        (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫
-          (fullSubcomplexOnVertices _ IsZeroSourceArrow).ι :=
-  stable_cospanFamilyOfArrows_right _ _ _
+      pullback.fst (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceArrowTarget C)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow).ι :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_cospanFamilyOfArrows_right _ _ _
 
 /-- 概要：cospan の両脚の終点評価は厳密に一致する。
 方針：前合成後の評価を共通頂点の評価に直す。
 規約：C は任意。使われ方：実際の cospan をデータの引き戻しへ持ち上げる。 -/
 lemma zeroCospan_targets (C : SSet.{u}) :
-    (pre horn₂₂.ι₀₂).app C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-      (pre horn₂₂.ι₁₂).app C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
-  rw [stable_pre_evaluateFunctorAt, stable_pre_evaluateFunctorAt]
+    (pre horn₂₂.ι₀₂).app C ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+      (pre horn₂₂.ι₁₂).app C ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt]
   congr 1
 
 /-- 概要：零脚を持つ実際の cospan の族は零脚データへ厳密に持ち上がる。
@@ -83,12 +83,12 @@ lemma zeroCospan_targets (C : SSet.{u}) :
 規約：C やパラメーター A に quasicategory 性は要求しない。
 使われ方：指定された零射を変更せずに cofiber の選択空間へ入れる。 -/
 def zeroCospanDataLift {A C : SSet.{u}} (p : A ⟶ (ihom (horn 2 2 : SSet.{u})).obj C)
-    (hp : ∀ v : A _⦋0⦌, IsZeroSourceArrow
+    (hp : ∀ v : A _⦋0⦌, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow
       (((pre horn₂₂.ι₁₂).app C).app (Opposite.op ⦋0⦌) (p.app (Opposite.op ⦋0⦌) v))) :
     A ⟶ zeroCospanData C :=
-  pullback.lift (fullSubcomplexLift IsZeroSourceArrow (p ≫ (pre horn₂₂.ι₁₂).app C) hp)
+  pullback.lift (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow (p ≫ (pre horn₂₂.ι₁₂).app C) hp)
     (p ≫ (pre horn₂₂.ι₀₂).app C) (by
-      rw [zeroSourceArrowTarget, ← Category.assoc, fullSubcomplexLift_ι]
+      rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceArrowTarget, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
       simp only [Category.assoc]
       rw [← zeroCospan_targets])
 
@@ -106,10 +106,10 @@ lemma zeroCospanDataLift_projection {A C : SSet.{u}}
 lemma zeroCospanDataLift_diagram {A C : SSet.{u}}
     (p : A ⟶ (ihom (horn 2 2 : SSet.{u})).obj C) (hp) :
     zeroCospanDataLift p hp ≫ zeroCospanDataDiagram C = p := by
-  apply stable_cospanFamily_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_cospanFamily_hom_ext
   · rw [Category.assoc, zeroCospanDataDiagram_left, zeroCospanDataLift_projection]
   · rw [Category.assoc, zeroCospanDataDiagram_right, ← Category.assoc]
     change ((zeroCospanDataLift p hp) ≫ pullback.fst _ _) ≫ _ = _
-    rw [zeroCospanDataLift, pullback.lift_fst, fullSubcomplexLift_ι]
+    rw [zeroCospanDataLift, pullback.lift_fst, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
 
 end SerrePositivity.KST.SConstruction

@@ -33,9 +33,9 @@ lemma append_word (s : MarkedSpine W Y n X) (t : MarkedSpine W Z n Y) :
   | nil X p => cases t <;> rfl
   | cons X g p s ih => exact congrArg (List.cons g.val) ih
 
-lemma extraction_composePoint (p : (colimitGraph W.paths X Y).obj n)
-    (q : (colimitGraph W.paths Y Z).obj n) :
-    markedSpine W Z n X (composePoint W.paths X Y Z p q) =
+lemma extraction_composePoint (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n)
+    (q : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths Y Z).obj n) :
+    markedSpine W Z n X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X Y Z p q) =
       append (markedSpine W Y n X p) (markedSpine W Z n Y q) := by
   apply glue_injective
   rw [glue_markedSpine, glue_append, glue_markedSpine, glue_markedSpine]
@@ -50,7 +50,7 @@ def composition (W : MorphismProperty C) (X Y Z : Paths C) :
 
 lemma composition_gluing (W : MorphismProperty C) (X Y Z : Paths C) :
     composition W X Y Z ≫ gluing W Z X =
-      (gluing W Y X ⊗ₘ gluing W Z Y) ≫ colimitComposition W.paths X Y Z := by
+      (gluing W Y X ⊗ₘ gluing W Z Y) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition W.paths X Y Z := by
   ext n p
   exact glue_append p.1 p.2
 

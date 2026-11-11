@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitBlocks
-public import SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetInclusionMap
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexSubsetInclusionMap
 public import SerrePositivity.KST.SConstruction.NecklaceWedgeBeadOneFace
 
 /-! # 元の左右部分集合を連結した単体的射
@@ -19,7 +19,7 @@ lemma simplexSubsetSplit_length {n : ℕ} (I : Finset (Fin (n + 1))) (j : Fin (n
     (hj : j ∈ I) (hL : 2 ≤ (I.filter (· ≤ j)).card)
     (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
     ((I.filter (· ≤ j)).card - 1) + ((I.filter (j ≤ ·)).card - 1) = I.card - 1 := by
-  have h := DGNerve.Index.split_card hj
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.split_card hj
   omega
 
 /-- 元の分割二 bead の全頂点番号を、同じ全体単体の番号として読む。 -/
@@ -35,20 +35,20 @@ def simplexSubsetSplitOrder {n : ℕ} (I : Finset (Fin (n + 1))) (j : Fin (n + 1
 def simplexSubsetSplitMap {n : ℕ} (I : Finset (Fin (n + 1))) (j : Fin (n + 1))
     (hj : j ∈ I) (hL : 2 ≤ (I.filter (· ≤ j)).card)
     (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
-    ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedge
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1))).carrier.{u} ⟶ Δ[I.card - 1] :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.inclusion _ ≫ SSet.stdSimplex.map
+    ((_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedge
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1))).carrier.{u} ⟶ Δ[I.card - 1] :=
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.inclusion _ ≫ SSet.stdSimplex.map
     (SimplexCategory.Hom.mk (simplexSubsetSplitOrder I j hj hL hR))
 
 /-- 元の分割射の左制限は、元の左部分集合の昇順包含そのもの。 -/
 lemma simplexSubsetSplitMap_inl {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (j : Fin (n + 1)) (hj : j ∈ I) (hL : 2 ≤ (I.filter (· ≤ j)).card)
     (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedgeInl
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1)) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedgeInl
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1)) ≫
       simplexSubsetSplitMap.{u} I j hj hL hR =
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫
-      _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap (I.filter (· ≤ j)) I hL hI (Finset.filter_subset _ _) := by
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.singleSimplexIso _).hom ≫
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetInclusionMap (I.filter (· ≤ j)) I hL hI (Finset.filter_subset _ _) := by
   apply SSet.hom_ext
   intro d
   obtain ⟨⟨m⟩⟩ := d
@@ -63,11 +63,11 @@ lemma simplexSubsetSplitMap_inl {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤
 lemma simplexSubsetSplitMap_inr {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (j : Fin (n + 1)) (hj : j ∈ I) (hL : 2 ≤ (I.filter (· ≤ j)).card)
     (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedgeInr
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1)) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedgeInr
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1)) ≫
       simplexSubsetSplitMap.{u} I j hj hL hR =
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫
-      _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap (I.filter (j ≤ ·)) I hR hI (Finset.filter_subset _ _) := by
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.singleSimplexIso _).hom ≫
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetInclusionMap (I.filter (j ≤ ·)) I hR hI (Finset.filter_subset _ _) := by
   apply SSet.hom_ext
   intro d
   obtain ⟨⟨m⟩⟩ := d
@@ -77,7 +77,7 @@ lemma simplexSubsetSplitMap_inr {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤
   intro i
   apply Fin.ext
   change (I.filter (· ≤ j)).card - 1 + (s.val i).val =
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder (I.filter (j ≤ ·)) I hR hI
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetInclusionOrder (I.filter (j ≤ ·)) I hR hI
       (Finset.filter_subset _ _) (s.val i)).val
   have hc := simplexSubsetSplitLeft_card I hI j hj hL
   have hb := simplexSubsetSplitRight_block I hI j hj hR (s.val i)

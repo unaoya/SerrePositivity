@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.VertexIsoEndpointTransport
 
 /-!

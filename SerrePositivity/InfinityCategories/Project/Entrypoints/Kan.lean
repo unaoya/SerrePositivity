@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Kan.LastHornContraction
-public import SerrePositivity.InfinityCategories.Kan.SimplexLastContraction
-public import SerrePositivity.InfinityCategories.Kan.Pointed.PointedIntervalAnodyne
-public import SerrePositivity.InfinityCategories.Kan.AnodyneMappingLifts
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.LastHornContraction
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanSimplexLastContraction
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanPointedPointedIntervalAnodyne
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanAnodyneMappingLifts
 
 /-!
 # Kan 複体・充填と点付きの基礎

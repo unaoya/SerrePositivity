@@ -15,8 +15,8 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の単体的な核四角形を、四つの対象と四辺を保って対角へ送る。 -/
-theorem relativeSKernelRealizationSquare {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+theorem relativeSKernelRealizationSquare {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     CommSq
       (simplicialDiagonalFunctor.map
         (relativeSimplicialSConstructionCoreInclusion (f.hom ≫ q.hom)))
@@ -27,8 +27,8 @@ theorem relativeSKernelRealizationSquare {A B C : _root_.SerrePositivity.Infinit
 
 /-- 元の相対 S 核四角形そのものは、元の core 包含のまま実現後に homotopy pullback。 -/
 theorem relativeSKernelRealizationSquare_homotopyPullback
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
     IsHomotopyPullback (relativeSKernelRealizationSquare i q) := by
   apply (isHomotopyPullback_iff_of_localized_isIso
     (relativeSObjectKernelSquare i q) (relativeSKernelRealizationSquare i q)

@@ -22,23 +22,23 @@ lemma simplexHABeadWordDecode_zero :
 /-- 元の一端点の読み替えは、元の切断頂点を共有する同じ左右の語の連結。 -/
 lemma simplexHABeadWordDecode_one :
     HEq (simplexHABeadWordDecode (m + 1) (i, 1) v T hT hb)
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.join
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord.join
         (simplexHABeadWordDecode m i (Fin.castSuccOrderEmb.trans v)
           {v (Fin.last (m + 1))} (Finset.singleton_nonempty _) (simplexHADecodePrefix_cut m v))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb)) := by
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb)) := by
   have hp := Finset.card_pos.mpr hT
-  let left : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n (v 0) (v (Fin.last (m + 1)))
+  let left : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n (v 0) (v (Fin.last (m + 1)))
       (serreCubeGeneratorFreeDimension m i) := by
-    change _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n ((Fin.castSuccOrderEmb.trans v) 0)
+    change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n ((Fin.castSuccOrderEmb.trans v) 0)
       (v (Fin.last (m + 1))) (serreCubeGeneratorFreeDimension m i)
     simpa only [Finset.card_singleton, Nat.add_sub_cancel, Finset.max'_singleton] using
       simplexHABeadWordDecode m i (Fin.castSuccOrderEmb.trans v)
         {v (Fin.last (m + 1))} (Finset.singleton_nonempty _) (simplexHADecodePrefix_cut m v)
-  let right := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb
+  let right := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb
   have he : serreCubeGeneratorFreeDimension m i + (T.card - 1) =
       serreCubeGeneratorFreeDimension m i + T.card - 1 := by omega
-  change HEq (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex rfl he (left.join right)) (left.join right)
-  exact _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex_heq rfl he (left.join right)
+  change HEq (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadWordReindex rfl he (left.join right)) (left.join right)
+  exact _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadWordReindex_heq rfl he (left.join right)
 
 /-- 元の辺の読み替えは、元の切断頂点を同じ右側集合へ加えた読み替え。 -/
 lemma simplexHABeadWordDecode_edge :
@@ -46,9 +46,9 @@ lemma simplexHABeadWordDecode_edge :
       (simplexHABeadWordDecode m i (Fin.castSuccOrderEmb.trans v)
         (insert (v (Fin.last (m + 1))) T) (Finset.insert_nonempty _ T)
         (simplexHADecodePrefix_insert m v T hb)) := by
-  have hn := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T (v (Fin.last (m + 1))) hb
+  have hn := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail_not_mem T (v (Fin.last (m + 1))) hb
   have hc := Finset.card_insert_of_notMem hn
-  exact _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex_heq (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_max T hT _ hb)
+  exact _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadWordReindex_heq (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail_max T hT _ hb)
     (show serreCubeGeneratorFreeDimension m i + (insert (v (Fin.last (m + 1))) T).card - 1 =
       serreCubeGeneratorFreeDimension m i + 1 + T.card - 1 by omega) _
 

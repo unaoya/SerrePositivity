@@ -40,7 +40,7 @@ theorem sequentialCandidateMap_isInvertible_of_nonnegative_shift
     {D E : SpectrumSequence.{u}} (η : D ⟶ E)
     (hη : ∀ (n : ℕ) (j : ℤ), 0 ≤ j + (n : ℤ) →
       Function.Bijective (OmegaSpectrum.homotopyMap (η.app ⟨n⟩) j)) :
-    IsInvertibleEdge (coherentNerveEdge (sequentialCandidateMap η)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (sequentialCandidateMap η)) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (sequentialCandidateMap_piIsomorphism_of_nonnegative_shift η hη)
 

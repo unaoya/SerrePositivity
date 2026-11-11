@@ -22,11 +22,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 variable {E B : PointedSimplicialSet.{u}} (p : E ⟶ B)
-  {v : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B).right.PtSimplex 1
+  {v : (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B).right.PtSimplex 1
     ((PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right.app _
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace E).basepoint)}
-  (V : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace E).basepoint v)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace E).basepoint)}
+  (V : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace E).basepoint v)
   (φ : (Δ[2] : SSet.{u}) ⟶ (basedPathSpace E).right)
   (hφ : φ ≫ (basedPathMap p).right =
     stdSimplex.σ (Fin.last 0).castSucc ≫ (pathSimplex p (v := v)).map)
@@ -42,8 +42,8 @@ lemma zeroComparisonEndpoint_comp :
   have hn := congrArg Under.Hom.right (pathEndpoint_natural p)
   simp only [Under.comp_right] at hn
   rw [Category.assoc, ← hn, ← Category.assoc, hφ]
-  simp only [pathSimplex, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, Category.assoc,
-    PointedMapping.loopToPath_endpoint, comp_const, _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint]
+  simp only [pathSimplex, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex, Category.assoc,
+    PointedMapping.loopToPath_endpoint, comp_const, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint]
 
 /-- 概要：比較ホーンの境界 loop は元の fiber 内の U の終点の類の逆元を表す。
 方針：逆元公式を標準 fiber 基点へ戻し、比較ホモトピーの fiber 内での類の一致を使う。
@@ -54,35 +54,35 @@ theorem boundaryLoop_zero_inverse_endpoint [Fibration p.right]
     (hface : ∀ j, j ≠ Fin.last 2 →
       stdSimplex.δ j ≫ φ = AdjacentLiftComparison.face U (pathLift p V) j) :
     pointedFiberGroupEquiv p 0
-        (loopZeroHomotopyEquiv (pointedFiber p) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 (boundaryLoop p V))) =
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex p.right E.basepoint
-        (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (pathEndpoint E).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (pathEndpoint E)) U)
+        (loopZeroHomotopyEquiv (pointedFiber p) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.mk 0 (boundaryLoop p V))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftSimplex p.right E.basepoint
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (pathEndpoint E).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (pathEndpoint E)) U)
         (AdjacentLiftComparison.sourceEndpoint_comp U (pathLift p V) (pathEndpoint E).right
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (pathEndpoint E)) φ hface p.right
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (pathEndpoint E)) φ hface p.right
           (zeroComparisonEndpoint_comp p φ hφ))))⁻¹ := by
   let t := AdjacentLiftComparison.endpointSimplex U (pathLift p V) (pathEndpoint E).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (pathEndpoint E)) (pathLift_endpoint p V) φ hface
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (pathEndpoint E)) (pathLift_endpoint p V) φ hface
   let ht := AdjacentLiftComparison.targetEndpoint_comp U (pathLift p V) (pathEndpoint E).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (pathEndpoint E)) (pathLift_endpoint p V) φ hface p.right
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (pathEndpoint E)) (pathLift_endpoint p V) φ hface p.right
     (zeroComparisonEndpoint_comp p φ hφ)
   have he : pointedFiberGroupEquiv p 0
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl (pointedFiber p).right)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 0 (Iso.refl (pointedFiber p).right)
         (pathEndpoint_basepoint (pointedFiber p))
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (outputEndpointSimplex p V φ hφ U hface))) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex p.right E.basepoint t ht) := by
-    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 _) _ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 _) _
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (outputEndpointSimplex p V φ hφ U hface))) = _
-    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (outputEndpointSimplex p V φ hφ U hface))) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftSimplex p.right E.basepoint t ht) := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (𝟙 _) _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (𝟙 _) _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (outputEndpointSimplex p V φ hφ U hface))) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_mk, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_mk]
     congr 1
     ext : 1
-    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p.right (p.right.app _ E.basepoint)
-    simp only [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, Category.comp_id, _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex_ι]
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiber_hom_ext p.right (p.right.app _ E.basepoint)
+    simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex, Category.comp_id, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftSimplex_ι]
     exact outputFamily_endpoint_include p φ hφ
   have hout := congrArg (pointedFiberGroupEquiv p 0)
     (output_zero_boundary_inverse p V φ hφ U hface)
   rw [map_inv, he] at hout
   have hc := AdjacentLiftComparison.fiberEndpoint_class U (pathLift p V) (pathEndpoint E).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (pathEndpoint E)) (pathLift_endpoint p V) φ hface p.right
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (pathEndpoint E)) (pathLift_endpoint p V) φ hface p.right
     (zeroComparisonEndpoint_comp p φ hφ)
   exact hout.trans (congrArg Inv.inv hc)
 
@@ -96,10 +96,10 @@ theorem boundaryLoop_zero_inverse_common [Fibration p.right]
     (U : (basedPathSpace E).right.PtSimplex 1 (basedPathSpace E).basepoint)
     (hU : U.map ≫ (basedPathMap p).right = (pathSimplex p (v := v)).map) :
     pointedFiberGroupEquiv p 0
-        (loopZeroHomotopyEquiv (pointedFiber p) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 (boundaryLoop p V))) =
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (sourceFiberSimplex p U hU))⁻¹ := by
+        (loopZeroHomotopyEquiv (pointedFiber p) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.mk 0 (boundaryLoop p V))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (sourceFiberSimplex p U hU))⁻¹ := by
   have : Fibration (basedPathMap p).right := by
-    change Fibration (PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.{u} p).right
+    change Fibration (PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval.{u} p).right
     infer_instance
   obtain ⟨φ, hface, hφ⟩ := AdjacentLiftComparison.exists_lift U (pathLift p V) hU
   exact boundaryLoop_zero_inverse_endpoint p V φ hφ U hface

@@ -50,7 +50,7 @@ def map (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ W) :
     (LiftSpace.inclusion (ResolutionLiftSpace.frame X).obj
       (ResolutionLiftSpace.frame X).augmentation
       Y.resolution.augmentation (ResolutionLiftSpace.baseMap X Y f) ≫
-        (cosimplicialHom (ResolutionLiftSpace.frame X).obj).map g.diagram)
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame X).obj).map g.diagram)
     (ResolutionLiftSpace.projection X Y f) (by
       rw [Category.assoc, ← Functor.map_comp, g.over, Functor.map_comp, ← Category.assoc,
         LiftSpace.over, Category.assoc, LiftSpace.point_postcomp]
@@ -65,7 +65,7 @@ lemma map_inclusion (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y 
       LiftSpace.inclusion (ResolutionLiftSpace.frame X).obj
         (ResolutionLiftSpace.frame X).augmentation Y.resolution.augmentation
         (ResolutionLiftSpace.baseMap X Y f) ≫
-          (cosimplicialHom (ResolutionLiftSpace.frame X).obj).map g.diagram :=
+          (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame X).obj).map g.diagram :=
   pullback.lift_fst _ _ _
 
 @[reassoc (attr := simp)]
@@ -96,9 +96,9 @@ lemma boundary (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ W
 
 lemma raw_action (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ W)
     (Z : C) {T : SSet.{v}} (s : T ⟶ ResolutionLiftSpace.obj X Y f)
-    (t : T ⟶ (cosimplicialHom W.resolution.obj).obj Z) :
+    (t : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom W.resolution.obj).obj Z) :
     ResolutionLiftAction.parameterized X W (f ≫ g.base) Z (s ≫ map X Y W f g) t =
-      ResolutionLiftAction.parameterized X Y f Z s (t ≫ (cosimplicialHomMap g.diagram).app Z) := by
+      ResolutionLiftAction.parameterized X Y f Z s (t ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap g.diagram).app Z) := by
   change DiagonalHom.pairing _ _ _ ((_ ≫ map X Y W f g) ≫ _) t =
     DiagonalHom.pairing _ _ _ (_ ≫ _) _
   rw [Category.assoc, map_inclusion, ← Category.assoc]
@@ -110,10 +110,10 @@ variable [ModelCategory SSet.{v}]
 
 lemma kan_action (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ W)
     (Z : C) {T : SSet.{v}} (s : T ⟶ ResolutionLiftSpace.obj X Y f)
-    (t : T ⟶ (cosimplicialHom W.resolution.obj).obj Z) :
+    (t : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom W.resolution.obj).obj Z) :
     KanLiftAction.parameterized hcof hfib X W (f ≫ g.base) Z (s ≫ map X Y W f g) t =
       KanLiftAction.parameterized hcof hfib X Y f Z s
-        (t ≫ (cosimplicialHomMap g.diagram).app Z) := by
+        (t ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap g.diagram).app Z) := by
   exact congrArg (fun k => k ≫ (SimplicialModel.KanReplacement.unit hcof hfib).app
     (ResolutionLiftAction.target X Z)) (raw_action X Y W f g Z s t)
 

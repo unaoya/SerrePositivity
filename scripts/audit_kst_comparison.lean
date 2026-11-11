@@ -941,26 +941,26 @@ run_cmd do
 
 -- DoubleMappingCylinder.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_zero
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_zero
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_zero
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_zero
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_one
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_one
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_one
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_one
 
 
 -- DoubleMappingCylinderCollapse.lean
@@ -986,20 +986,20 @@ run_cmd do
 
 -- DoubleMappingCylinderDesc.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderDesc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderDesc
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_desc
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_desc
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_middle_desc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_middle_desc
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_desc
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_desc
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_left_desc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_left_desc
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_desc
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_desc
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_right_desc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_right_desc
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext
 
 
 -- DoubleMappingCylinderEquivalence.lean
@@ -1013,26 +1013,26 @@ run_cmd do
 
 -- DoubleMappingCylinderMap.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_map
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_map
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_middle_map
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_middle_map
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_map
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_map
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_left_map
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_left_map
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_right_map
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_right_map
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap_id
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap_id
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap_id
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap_id
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap_comp
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap_comp
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap_comp
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap_comp
 
 
 -- DoubleSubdivisionAdjunction.lean
@@ -4682,53 +4682,53 @@ run_cmd do
 
 -- SimplexComponents.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexVertex
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex_class_eq
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex_class_eq
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexVertex_class_eq
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexVertex_class_eq
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_map
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_map
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_map
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_map
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_zero
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_zero
 
 
 -- SimplexConeVertex.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_zero
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_zero
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_zero
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_zero
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_succ
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_succ
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_succ
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_succ
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_comp
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_comp
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_comp
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_comp
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_δ_zero
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_δ_zero
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_δ_zero
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_δ_zero
 
 
 -- SimplexContraction.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionAt
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionAt
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexContractionAt
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexContractionAt
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionMap
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionMap
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexContractionMap
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexContractionMap
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexContraction
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContraction
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexContraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexContraction
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexMapContraction
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexMapContraction
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexMapContraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexMapContraction
 
 
 -- SimplexFaceRetraction.lean
@@ -4748,65 +4748,65 @@ run_cmd do
 
 -- SimplexImageMono.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_comp_mono
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_comp_mono
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_comp_mono
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_comp_mono
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_comp_mono_ι
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_comp_mono_ι
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_comp_mono_ι
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_comp_mono_ι
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexFactorThruImage_comp_mono
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexFactorThruImage_comp_mono
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexFactorThruImage_comp_mono
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexFactorThruImage_comp_mono
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_of_epi
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_of_epi
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_of_epi
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_of_epi
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_ι_of_epi
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_ι_of_epi
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_ι_of_epi
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_ι_of_epi
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexFactorThruImage_of_epi
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexFactorThruImage_of_epi
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexFactorThruImage_of_epi
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexFactorThruImage_of_epi
 
 
 -- SimplexPrepend.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_zero
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_zero
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_zero
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_zero
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_succ
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_succ
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_succ
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_succ
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_comp
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_comp
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_comp
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_comp
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_id
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_id
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_id
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_id
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_epi
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_epi
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_epi
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_epi
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_mono
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_mono
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_mono
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_mono
 
 
 -- SimplexPrependRelations.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_δ_zero
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_δ_zero
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_δ_zero
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_δ_zero
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_δ
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_δ
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_δ
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_δ
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_σ
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_σ
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_σ
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_σ
 
 
 -- SimplicialCoproductMono.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialMonoCoprod
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialMonoCoprod
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialMonoCoprod
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialMonoCoprod
 
 
 -- SimplicialMonoidInternal.lean
@@ -4832,29 +4832,29 @@ run_cmd do
 
 -- SimplicialSum.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSum
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSum
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumDesc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumDesc
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_desc
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_desc
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_desc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_desc
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum_hom_ext
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum_hom_ext
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSum_hom_ext
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSum_hom_ext
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumIsCoproduct
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumIsCoproduct
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumMap
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumMap
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_map
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_map
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_map
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_map
 
 
 -- SimplicialSumEquivalences.lean
@@ -4877,20 +4877,20 @@ run_cmd do
 
 -- SimplicialSumPullbacks.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_reindex
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_reindex
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_reindex
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_reindex
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_commSq
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_commSq
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_commSq
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_commSq
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_isPullback
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_isPullback
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_isPullback
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_isPullback
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_isPullback
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_isPullback
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_isPullback
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_isPullback
 
 
 -- SliceAdjunction.lean
@@ -5540,8 +5540,8 @@ run_cmd do
 
 -- SubdivisionSimplexCover.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.subdivisionSimplexCover
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.subdivisionSimplexCover
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.subdivisionSimplexCover
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.subdivisionSimplexCover
 
 
 -- SubdivisionUnions.lean

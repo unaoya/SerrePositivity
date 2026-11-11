@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.TotalizationBousfieldKanComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedRestriction
 
 /-!
 概要：通常 Tot を宇宙を合わせた標準単体の重み付き end と厳密に同定する。
@@ -13,7 +13,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedRestrict
 @[expose] public section
 universe u
 open CategoryTheory CategoryTheory.Limits MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.CosimplicialTotalization
@@ -32,32 +32,32 @@ def smallFamily (X : CosimplicialObject SSet.{u}) :
 
 /-- 通常 Tot から AsSmall 上の標準単体 end への実際の付け替え。 -/
 def toSmallEnd (X : CosimplicialObject SSet.{u}) :
-    obj X ⟶ weightedSections (AsSmall.down ⋙ stdSimplex) (AsSmall.down ⋙ X) :=
-  weightedSectionsLift (smallFamily X)
+    obj X ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (AsSmall.down ⋙ stdSimplex) (AsSmall.down ⋙ X) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (smallFamily X)
 
 @[reassoc]
 lemma toSmallEnd_π (X : CosimplicialObject SSet.{u}) (j : AsSmall.{u} SimplexCategory) :
-    toSmallEnd X ≫ weightedSectionsπ (AsSmall.down ⋙ stdSimplex) (AsSmall.down ⋙ X) j =
+    toSmallEnd X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ (AsSmall.down ⋙ stdSimplex) (AsSmall.down ⋙ X) j =
       π X (AsSmall.down.obj j) := by
-  rw [toSmallEnd, weightedSectionsLift_π]
+  rw [toSmallEnd, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift_π]
   exact curry_uncurry _
 
 /-- AsSmall 上の end の族を元の余単体圏に戻す。 -/
 def fromSmallFamily (X : CosimplicialObject SSet.{u}) :
     SimplexTensorBoundary.diagram
-      (weightedSections (AsSmall.down ⋙ stdSimplex) (AsSmall.down ⋙ X)) ⟶ X where
-  app j := MonoidalClosed.uncurry (weightedSectionsπ
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (AsSmall.down ⋙ stdSimplex) (AsSmall.down ⋙ X)) ⟶ X where
+  app j := MonoidalClosed.uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ
     (AsSmall.down ⋙ stdSimplex) (AsSmall.down ⋙ X) (AsSmall.up.obj j))
   naturality i j f := by
     change (stdSimplex.map f ▷ _) ≫ _ = _
     rw [← uncurry_pre_app, ← uncurry_natural_right]
     exact congrArg MonoidalClosed.uncurry
-      (weightedSections_condition (AsSmall.down ⋙ stdSimplex) (AsSmall.down ⋙ X)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_condition (AsSmall.down ⋙ stdSimplex) (AsSmall.down ⋙ X)
         (AsSmall.up.map f)).symm
 
 /-- 通常 Tot と、宇宙を合わせた標準単体 end の標準同型。 -/
 def smallEndIso (X : CosimplicialObject SSet.{u}) :
-    obj X ≅ weightedSections (AsSmall.down ⋙ stdSimplex) (AsSmall.down ⋙ X) where
+    obj X ≅ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (AsSmall.down ⋙ stdSimplex) (AsSmall.down ⋙ X) where
   hom := toSmallEnd X
   inv := lift (fromSmallFamily X)
   hom_inv_id := by
@@ -66,27 +66,27 @@ def smallEndIso (X : CosimplicialObject SSet.{u}) :
     change (toSmallEnd X ≫ lift (fromSmallFamily X)) ≫ π X j = 𝟙 _ ≫ π X j
     rw [Category.assoc, lift_π]
     change toSmallEnd X ≫ curry (MonoidalClosed.uncurry
-      (weightedSectionsπ _ _ (AsSmall.up.obj j))) = _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ _ _ (AsSmall.up.obj j))) = _
     rw [curry_uncurry, toSmallEnd_π, Category.id_comp]
     rfl
   inv_hom_id := by
-    apply weightedSections_hom_ext
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_hom_ext
     intro j
     rw [Category.assoc, toSmallEnd_π]
     change lift (fromSmallFamily X) ≫ π X (AsSmall.down.obj j) = 𝟙 _ ≫ _
     rw [lift_π]
     change curry (MonoidalClosed.uncurry
-      (weightedSectionsπ _ _ (AsSmall.up.obj (AsSmall.down.obj j)))) = _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ _ _ (AsSmall.up.obj (AsSmall.down.obj j)))) = _
     rw [curry_uncurry, Category.id_comp]
     rfl
 
 /-- 構成済みの Tot 比較は終頂点の重みの射への前合成そのもの。 -/
 lemma bousfieldKanComparison_eq_weightedPre (X : CosimplicialObject SSet.{u}) :
     bousfieldKanComparison X = (smallEndIso X).hom ≫
-      weightedSectionsPre CosimplicialLastVertex.weightMap (AsSmall.down ⋙ X) := by
-  apply weightedSections_hom_ext
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre CosimplicialLastVertex.weightMap (AsSmall.down ⋙ X) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_hom_ext
   intro j
-  rw [bousfieldKanComparison_π, Category.assoc, weightedSectionsPre_π,
+  rw [bousfieldKanComparison_π, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_π,
     ← Category.assoc]
   dsimp only [smallEndIso]
   erw [toSmallEnd_π]

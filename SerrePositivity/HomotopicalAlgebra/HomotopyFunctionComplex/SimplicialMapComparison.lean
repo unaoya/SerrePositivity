@@ -45,9 +45,9 @@ variable
   (q : CofibrantResolutionFamily (C := C) simplex) (R : C ⥤ C)
 
 abbrev middle : Cᵒᵖ ⥤ C ⥤ SSet.{v} :=
-  resolutionHom (FrameComparison.commonObj cof q (tensorFrame S hcof hw Q ε hQ hε)) R
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom (FrameComparison.commonObj cof q (tensorFrame S hcof hw Q ε hQ hε)) R
 
-abbrev fromResolution : resolutionHom q.obj R ⟶ middle S hcof hw Q ε hQ hε cof q R :=
+abbrev fromResolution : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom q.obj R ⟶ middle S hcof hw Q ε hQ hε cof q R :=
   FrameComparison.homLeft cof q (tensorFrame S hcof hw Q ε hQ hε) R
 
 def fromMap : enrichedReplacementHom Q R ⟶ middle S hcof hw Q ε hQ hε cof q R :=

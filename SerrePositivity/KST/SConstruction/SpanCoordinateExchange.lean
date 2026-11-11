@@ -81,9 +81,9 @@ lemma exchangeDiagramFamily_pre_left {A A' B K C : SSet.{u}}
 規約：両端点に共通の公式。使われ方：正規化した押し出し頂点の回収。 -/
 lemma exchangeDiagramFamily_evaluation_interval {B K C : SSet.{u}}
     (F : (Δ[1] : SSet.{u}) ⊗ K ⟶ (ihom B).obj C) (i : Fin 2) :
-    exchangeDiagramFamily F ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm i) =
-      uncurry (prismEndpoint i K ≫ F) := by
-  rw [exchangeDiagramFamily, curry_evaluateFunctorAt_interval, uncurry_natural_left]
+    exchangeDiagramFamily F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm i) =
+      uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint i K ≫ F) := by
+  rw [exchangeDiagramFamily, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.curry_evaluateFunctorAt_interval, uncurry_natural_left]
   rw [← Category.assoc]
   congr 1
 

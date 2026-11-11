@@ -29,8 +29,8 @@ open scoped Simplicial
 def componentRelStructLift (X : SSet.{u}) (P : π₀ X → Prop)
     (x : (componentSubcomplex X P : SSet) _⦋0⦌) {n : ℕ}
     {f g : (componentSubcomplex X P : SSet).PtSimplex (n + 1) x} {i : Fin (n + 2)}
-    (r : PtSimplex.RelStruct (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (componentSubcomplex X P).ι rfl f)
-      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (componentSubcomplex X P).ι rfl g) i) :
+    (r : PtSimplex.RelStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (componentSubcomplex X P).ι rfl f)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (componentSubcomplex X P).ι rfl g) i) :
     PtSimplex.RelStruct f g i where
   map := componentSimplexLift X P r.map
     (simplex_in_component_of_face X P r.map i.castSucc f.map r.δ_castSucc_map)
@@ -57,22 +57,22 @@ def componentRelStructLift (X : SSet.{u}) (P : π₀ X → Prop)
 -/
 theorem componentHomotopyMap_bijective (X : SSet.{u}) [KanComplex X]
     (P : π₀ X → Prop) (x : (componentSubcomplex X P : SSet) _⦋0⦌) (n : ℕ) :
-    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n)
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := n)
       (componentSubcomplex X P).ι (x := x) rfl) := by
   constructor
   · intro a b hab
     induction a using Quotient.inductionOn with | h f => ?_
     induction b using Quotient.inductionOn with | h g => ?_
-    have he : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
-        (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (componentSubcomplex X P).ι rfl f) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (componentSubcomplex X P).ι rfl g) := hab
-    obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct (0 : Fin (n + 2))).1
-      ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk_eq_iff _ _).1 he)
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.sound (componentRelStructLift X P x r)
+    have he : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (componentSubcomplex X P).ι rfl f) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (componentSubcomplex X P).ι rfl g) := hab
+    obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.simplexRel_iff_relStruct (0 : Fin (n + 2))).1
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk_eq_iff _ _).1 he)
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.sound (componentRelStructLift X P x r)
   · intro a
     induction a using Quotient.inductionOn with | h s => ?_
-    refine ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (componentPtSimplexLift X P x s), ?_⟩
-    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex
+    refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (componentPtSimplexLift X P x s), ?_⟩
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex
       (componentSubcomplex X P).ι rfl (componentPtSimplexLift X P x s)) = _
     rw [componentPtSimplexLift_map]
     rfl
@@ -85,9 +85,9 @@ theorem componentHomotopyMap_bijective (X : SSet.{u}) [KanComplex X]
 -/
 def componentPositiveHomotopyMulEquiv (X : SSet.{u}) [KanComplex X]
     (P : π₀ X → Prop) (x : (componentSubcomplex X P : SSet) _⦋0⦌) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (componentSubcomplex X P : SSet) n x ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x.val :=
-  MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (componentSubcomplex X P).ι rfl)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (componentSubcomplex X P : SSet) n x ≃*
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup X n x.val :=
+  MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (componentSubcomplex X P).ι rfl)
     (componentHomotopyMap_bijective X P x n)
 
 end SerrePositivity.KST.Comparison

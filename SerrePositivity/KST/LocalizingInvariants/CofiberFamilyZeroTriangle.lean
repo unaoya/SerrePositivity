@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyZeroTriangle
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberFamilyZeroTriangle
 
 public import SerrePositivity.KST.LocalizingInvariants.DiagramFamilyTranspose
-public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberSquareFamily
-public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SquareHomotopyCategory
 
 /-!
 概要：元の cofiber 四角形の全族は関手圏内の零角四角形である。
@@ -22,25 +22,25 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 namespace CofiberFamily
-attribute [local instance] SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiberFamilyFunctorZero
-variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
+attribute [local instance] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberFamily.cofiberFamilyFunctorZero
+variable (X : SSet.{u}) [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
 
 /-- 元の全族を一つの関手圏内の零角四角形として保持する。 -/
-def functorZeroTriangle : ZeroTriangle ((ihom A).obj X) where
-  square := diagramFamilyTranspose (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares X a)
+def functorZeroTriangle : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle ((ihom A).obj X) where
+  square := diagramFamilyTranspose (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.squares X a)
   zero_corner := by
-    change IsZeroVertex ((diagramFamilyTranspose (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares X a)).app (Opposite.op ⦋0⦌) _)
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((diagramFamilyTranspose (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.squares X a)).app (Opposite.op ⦋0⦌) _)
     rw [diagramFamilyTranspose_vertex]
-    exact ⟨isInitialVertex_functorVertex_of_pointwise (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroCorner X a)
-      (fun x => (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroCorner_zero X a x).1),
-      isTerminalVertex_functorVertex_of_pointwise (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroCorner X a)
-        (fun x => (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroCorner_zero X a x).2)⟩
+    exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isInitialVertex_functorVertex_of_pointwise (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberFamily.zeroCorner X a)
+      (fun x => (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberFamily.zeroCorner_zero X a x).1),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isTerminalVertex_functorVertex_of_pointwise (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberFamily.zeroCorner X a)
+        (fun x => (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberFamily.zeroCorner_zero X a x).2)⟩
 
 /-- cofiber 全族の下辺と右辺の合成は h Fun で零。 -/
 lemma functorZeroTriangle_comp_zero :
-    squareHoBottom (functorZeroTriangle X a).square ≫
-      squareHoRight (functorZeroTriangle X a).square = 0 :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (functorZeroTriangle X a).square ≫
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (functorZeroTriangle X a).square = 0 :=
   (functorZeroTriangle X a).homMk_comp_eq_zero
 
 end CofiberFamily

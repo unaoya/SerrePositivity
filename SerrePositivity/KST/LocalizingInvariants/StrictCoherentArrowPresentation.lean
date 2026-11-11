@@ -5,7 +5,7 @@ public import SerrePositivity.KST.LocalizingInvariants.SquareDiagonalHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.TriangleEdgeNormalization
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyMapTransport
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.PrismHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PrismHomotopy
 
 /-!
 概要：通常の自然変換の一つの射への制限を、元の二つの合成三角形の全 h Fun 合成で表す。
@@ -26,64 +26,64 @@ namespace SerrePositivity.KST.LocalizingInvariants.StrictArrow
 variable {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C] [SimplicialCategory C]
   {F G : I ⥤ C} (η : F ⟶ G) {i j : I} (k : i ⟶ j)
 
-def homotopy := stableHomotopyPrecomp (shape k)
-  (F2.prismHomotopy (F2.strictCoherentNatTransMap η)
-    (F2.strictCoherentNatTransMap_zero _) (F2.strictCoherentNatTransMap_one _))
+def homotopy := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp (shape k)
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.prismHomotopy (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap η)
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap_zero _) (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap_one _))
 
 lemma homotopy_map : (homotopy η k).h = prism η k := by
   change (shape k ▷ (Δ[1] : SSet.{max u v})) ≫
-    (β_ _ Δ[1]).hom ≫ F2.strictCoherentNatTransMap η = _
+    (β_ _ Δ[1]).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap η = _
   rw [← Category.assoc, BraidedCategory.braiding_naturality_left, Category.assoc]
   rfl
 
-def post := TriangleEdge.normalizedPost (coherentNerveCompStruct (F.map k) (η.app j)).simplex
-  (coherentNerveEdge (F.map k)).edge (coherentNerveEdge (F.map k ≫ η.app j)).edge
-  (coherentNerveCompStruct (F.map k) (η.app j)).d₂
-  (coherentNerveCompStruct (F.map k) (η.app j)).d₁
+def post := TriangleEdge.normalizedPost (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (F.map k) (η.app j)).simplex
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (F.map k)).edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (F.map k ≫ η.app j)).edge
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (F.map k) (η.app j)).d₂
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (F.map k) (η.app j)).d₁
 
 def pre := HomotopyArrow.rebase
-  (TriangleEdge.normalizedPre (coherentNerveCompStruct (η.app i) (G.map k)).simplex
-    (coherentNerveEdge (η.app i ≫ G.map k)).edge (coherentNerveEdge (G.map k)).edge
-    (coherentNerveCompStruct (η.app i) (G.map k)).d₁
-    (coherentNerveCompStruct (η.app i) (G.map k)).d₀)
-  (congrArg (fun r ↦ SSet.yonedaEquiv.symm (coherentNerveEdge r).edge) (η.naturality k).symm) rfl
+  (TriangleEdge.normalizedPre (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (η.app i) (G.map k)).simplex
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (η.app i ≫ G.map k)).edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (G.map k)).edge
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (η.app i) (G.map k)).d₁
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (η.app i) (G.map k)).d₀)
+  (congrArg (fun r ↦ SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge r).edge) (η.naturality k).symm) rfl
 
 lemma afterBottom_arrow : Arrow.mk (Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (SquareDiagonal.afterBottom (homotopy η k)))) =
-      Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (post η k))) := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (SquareDiagonal.afterBottom (homotopy η k)))) =
+      Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (post η k))) := by
   apply HomotopyArrow.congr
-  have ht : squareTriangle 1 ≫ (homotopy η k).h =
-      SSet.yonedaEquiv.symm (coherentNerveCompStruct (F.map k) (η.app j)).simplex := by
-    exact (congrArg (fun r ↦ squareTriangle 1 ≫ r) (homotopy_map η k)).trans
+  have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ (homotopy η k).h =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (F.map k) (η.app j)).simplex := by
+    exact (congrArg (fun r ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ r) (homotopy_map η k)).trans
       (SSet.yonedaEquiv.eq_symm_apply.mpr (lower η k))
-  change SquareDiagonal.postShape ≫ squareTriangle 1 ≫ (homotopy η k).h = _
+  change SquareDiagonal.postShape ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ (homotopy η k).h = _
   rw [ht]
   rfl
 
 lemma beforeTop_arrow : Arrow.mk (Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (SquareDiagonal.beforeTop (homotopy η k)))) =
-      Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (pre η k))) := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (SquareDiagonal.beforeTop (homotopy η k)))) =
+      Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (pre η k))) := by
   apply HomotopyArrow.congr
-  have ht : squareTriangle 0 ≫ (homotopy η k).h =
-      SSet.yonedaEquiv.symm (coherentNerveCompStruct (η.app i) (G.map k)).simplex := by
-    exact (congrArg (fun r ↦ squareTriangle 0 ≫ r) (homotopy_map η k)).trans
+  have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ (homotopy η k).h =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (η.app i) (G.map k)).simplex := by
+    exact (congrArg (fun r ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ r) (homotopy_map η k)).trans
       (SSet.yonedaEquiv.eq_symm_apply.mpr (upper η k))
   change _ = (HomotopyArrow.rebase _ _ _).h
   rw [HomotopyArrow.rebase_map]
-  change SquareDiagonal.preShape ≫ squareTriangle 0 ≫ (homotopy η k).h = _
+  change SquareDiagonal.preShape ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ (homotopy η k).h = _
   rw [ht]
   rfl
 
 lemma presentation :
     Arrow.mk (homPre (shape k) (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (F2.prismHomotopy (F2.strictCoherentNatTransMap η)
-        (F2.strictCoherentNatTransMap_zero _) (F2.strictCoherentNatTransMap_one _))))) =
-    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (post η k)) ≫
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (pre η k))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.prismHomotopy (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap η)
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap_zero _) (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap_one _))))) =
+    Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (post η k)) ≫
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (pre η k))) := by
   unfold homPre
-  rw [homMk_functorEdge_precomp]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.homMk_functorEdge_precomp]
   change Arrow.mk (Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (homotopy η k))) = _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (homotopy η k))) = _
   rw [SquareDiagonal.homMk_decomposition]
   exact arrow_mk_comp_congr (afterBottom_arrow η k) (beforeTop_arrow η k)
 

@@ -23,7 +23,7 @@ local instance unconditionalBFSequenceSpectrumCategory : SimplicialCategory Omeg
 variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular]
   (hκ : Cardinal.aleph0 < κ) (A : PerfDGInput.{u, max (u + 1) v} R)
   (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-    F2.Idempotent.IsIdempotentCompletion f.val →
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
       (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
         Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
 
@@ -53,7 +53,7 @@ def dgSuspensionUnconditionalBFCandidateCocone :=
 方針：元の同じ余錐の普遍性を実段供給へ特殊化する。
 規約：共終性に条件付き。使われ方：K-7 の対象別実非連結化候補。 -/
 theorem dgSuspensionUnconditionalBFCandidateCocone_isColimit :
-    IsColimitCone (dgSuspensionUnconditionalBFCandidateCocone R κ hκ A hcofinal) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (dgSuspensionUnconditionalBFCandidateCocone R κ hκ A hcofinal) :=
   dgSuspensionSuppliedBFCandidateCocone_isColimit R
     (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A hcofinal
     (dgSuspensionUnconditionalIteration_zeroInput R κ hκ A)
@@ -65,10 +65,10 @@ def dgSuspensionUnconditionalBFConnectedComparison :=
   dgSuspensionSuppliedBFConnectedComparison R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A
     hcofinal (dgSuspensionUnconditionalIteration_zeroInput R κ hκ A)
 
-variable (hS : ∀ n : ℕ, IsPullbackSquare
+variable (hS : ∀ n : ℕ, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare
   ((dgKappaNativeVerdierDiagram R (dgSuspensionUnconditionalIteration R κ hκ A n)
     (dgSuspensionIterationStage R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone).square ≫
-      coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)))
 include hS
 
 /-- 概要：実段供給で得た同じ固定 K からの連結比較は非負次数 π 同型。

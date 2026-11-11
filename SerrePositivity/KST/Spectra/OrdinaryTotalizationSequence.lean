@@ -60,7 +60,7 @@ lemma totalizationKanComparison_app (D : CosimplicialObject KanSequence.{u})
 /-- 通常 Tot の構造可換な標準比較は各段で全基点 π 同型。 -/
 lemma totalizationKanComparison_levelwise (D : CosimplicialObject KanSequence.{u})
     (hD : TotalizationReedy D) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((totalizationKanComparison D hD).app n).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((totalizationKanComparison D hD).app n).right := by
   rw [totalizationKanComparison_app]
   exact PointedTotalization.weightedEndComparison_piIsomorphism
     (D ⋙ levelEvaluation n) (hD n)

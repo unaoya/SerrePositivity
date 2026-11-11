@@ -27,8 +27,8 @@ def limOneBoundary :
     letI := totalization_kanComplex X k
     letI : ∀ n, KanComplex (stage (coefficients X k) n).right := stage_kanComplex X k
     letI : ∀ n, HomotopicalAlgebra.Fibration (step (coefficients X k) n).right := step_fibration X k
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stage (coefficients X k) n).right (r + 1)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stage (coefficients X k) n).right (r + 1)
         (stage (coefficients X k) n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (step (coefficients X k) n)) →
       OmegaSpectrum.homotopyGroup (homotopyTotalization X) j := by
@@ -43,7 +43,7 @@ lemma limOneBoundary_point :
     letI := totalization_kanComplex X k
     letI : ∀ n, KanComplex (stage (coefficients X k) n).right := stage_kanComplex X k
     letI : ∀ n, HomotopicalAlgebra.Fibration (step (coefficients X k) n).right := step_fibration X k
-    limOneBoundary X j k r hk (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _) = 1 := by
+    limOneBoundary X j k r hk (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _) = 1 := by
   let := totalization_kanComplex X k
   let : ∀ n, KanComplex (stage (coefficients X k) n).right := stage_kanComplex X k
   let : ∀ n, HomotopicalAlgebra.Fibration (step (coefficients X k) n).right := step_fibration X k
@@ -68,8 +68,8 @@ lemma comparison_limOneBoundary :
     letI := totalization_kanComplex X k
     letI : ∀ n, KanComplex (stage (coefficients X k) n).right := stage_kanComplex X k
     letI : ∀ n, HomotopicalAlgebra.Fibration (step (coefficients X k) n).right := step_fibration X k
-    ∀ a : _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stage (coefficients X k) n).right (r + 1)
+    ∀ a : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stage (coefficients X k) n).right (r + 1)
         (stage (coefficients X k) n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (step (coefficients X k) n)),
       comparison X j k r hk (limOneBoundary X j k r hk a) = 1 := by
@@ -103,8 +103,8 @@ lemma comparison_bijective_iff :
     letI : ∀ n, KanComplex (stage (coefficients X k) n).right := stage_kanComplex X k
     letI : ∀ n, HomotopicalAlgebra.Fibration (step (coefficients X k) n).right := step_fibration X k
     Function.Bijective (comparison X j k r hk) ↔ Subsingleton (
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stage (coefficients X k) n).right (r + 1)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stage (coefficients X k) n).right (r + 1)
         (stage (coefficients X k) n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (step (coefficients X k) n))) := by
   let := totalization_kanComplex X k
@@ -120,8 +120,8 @@ lemma comparison_bijective_of_mittagLeffler :
     letI := totalization_kanComplex X k
     letI : ∀ n, KanComplex (stage (coefficients X k) n).right := stage_kanComplex X k
     letI : ∀ n, HomotopicalAlgebra.Fibration (step (coefficients X k) n).right := step_fibration X k
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.IsMittagLeffler
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stage (coefficients X k) n).right (r + 1)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.IsMittagLeffler
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stage (coefficients X k) n).right (r + 1)
         (stage (coefficients X k) n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (step (coefficients X k) n)) →
     Function.Bijective (comparison X j k r hk) := by
@@ -130,7 +130,7 @@ lemma comparison_bijective_of_mittagLeffler :
   let : ∀ n, HomotopicalAlgebra.Fibration (step (coefficients X k) n).right := step_fibration X k
   intro hML
   exact (comparison_bijective_iff X j k r hk).2
-    (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.subsingleton_of_mittagLeffler _ _ hML)
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.subsingleton_of_mittagLeffler _ _ hML)
 
 end
 end SerrePositivity.KST.Spectra.HomotopyTotalizationMilnor

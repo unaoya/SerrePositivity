@@ -17,22 +17,22 @@ open scoped _root_.Simplicial
 
 /-- 元の suspension 随伴の通常の Hom 同値は、構成済みの smash curry に一致する。 -/
 lemma suspensionLoopEquiv_eq_smashCurry (Q B : PointedSimplicialSet.{u})
-    (F : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Q ⟶ B) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv Q B F = PointedObject.smashCurry F := by
-  dsimp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv, PointedSimplicialSet.smashHomAdjunction,
+    (F : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Q ⟶ B) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv Q B F = PointedObject.smashCurry F := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv, PointedSimplicialSet.smashHomAdjunction,
     PointedObject.smashHomAdjunction]
   rw [Adjunction.mkOfHomEquiv_homEquiv]
   rfl
 
 /-- 元の suspension 随伴の評価を、円の元の区間商と任意のパラメータ上で回収する。 -/
 lemma suspensionLoopEquiv_interval {A : SSet.{u}} (Q B : PointedSimplicialSet.{u})
-    (F : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Q ⟶ B) (a : A ⟶ Q.right) :
+    (F : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Q ⟶ B) (a : A ⟶ Q.right) :
     (PointedObject.cofiberQuotient (boundary.{u} 1).ι ▷ A) ≫
-      MonoidalClosed.uncurry ((a ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv Q B F).right) ≫
+      MonoidalClosed.uncurry ((a ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv Q B F).right) ≫
         PointedObject.basedHomι PointedSimplicialSet.circle.{u} B) =
       (PointedObject.cofiberQuotient (boundary.{u} 1).ι ⊗ₘ a) ≫
         (PointedObject.smashQuotient PointedSimplicialSet.circle.{u} Q).right ≫ F.right := by
-  have hc : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv Q B F).right ≫
+  have hc : (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv Q B F).right ≫
       PointedObject.basedHomι PointedSimplicialSet.circle.{u} B =
     MonoidalClosed.curry
       ((PointedObject.smashQuotient PointedSimplicialSet.circle.{u} Q).right ≫ F.right) :=

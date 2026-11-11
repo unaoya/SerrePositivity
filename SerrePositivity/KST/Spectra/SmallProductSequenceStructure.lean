@@ -24,7 +24,7 @@ lemma adjoint_projection (X : S → KanSequence.{u}) (n : ℕ) (s : S) :
     adjoint X n ≫ PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
       (PointedSmallProduct.projection (fun t ↦ ((X t).level (n + 1)).space) s) =
     PointedSmallProduct.projection (fun t ↦ ((X t).level n).space) s ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((X s).level n).space ((X s).level (n + 1)).space ((X s).sigma n) := by
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((X s).level n).space ((X s).level (n + 1)).space ((X s).sigma n) := by
   rw [← loopIso_projection, adjoint, Category.assoc, Iso.inv_hom_id_assoc,
     PointedSmallProduct.map_projection]
 
@@ -34,7 +34,7 @@ lemma sigma_projection (X : S → KanSequence.{u}) (n : ℕ) (s : S) :
       (fun t ↦ ((X t).level (n + 1)).space) s =
     PointedSimplicialSet.circle.{u} ◁ PointedSmallProduct.projection
       (fun t ↦ ((X t).level n).space) s ≫ (X s).sigma n := by
-  apply (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _).injective
+  apply (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _).injective
   change curry (uncurry (adjoint X n) ≫ _) = curry (_ ≫ (X s).sigma n)
   rw [curry_natural_right, curry_uncurry, curry_natural_left]
   exact adjoint_projection X n s

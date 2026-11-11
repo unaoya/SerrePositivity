@@ -32,7 +32,7 @@ def totalizationSpectrumComparison (D : CosimplicialObject KanSequence.{u})
 /-- 通常 Tot の BF 比較は各段で全基点 π 同型。 -/
 lemma totalizationSpectrumComparison_levelwise (D : CosimplicialObject KanSequence.{u})
     (hD : TotalizationReedy D) (hΩ : ∀ j, (D.obj j).OmegaCondition) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((totalizationSpectrumComparison D hD hΩ).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((totalizationSpectrumComparison D hD hΩ).app n).right :=
   (replacementProjection_piIsomorphism (totalizationKan D hD) n).comp
     (totalizationKanComparison_levelwise D hD n)
 
@@ -46,7 +46,7 @@ def homotopyTotalizationComparison (D : CosimplicialObject KanSequence.{u})
 /-- もう一方の BF 比較も各段で全基点 π 同型。 -/
 lemma homotopyTotalizationComparison_levelwise (D : CosimplicialObject KanSequence.{u})
     (hΩ : ∀ j, (D.obj j).OmegaCondition) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((homotopyTotalizationComparison D hΩ).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((homotopyTotalizationComparison D hΩ).app n).right :=
   homotopyLimitProjection_levelwise (AsSmall.down ⋙ D)
     (fun j ↦ hΩ (AsSmall.down.obj j)) n
 

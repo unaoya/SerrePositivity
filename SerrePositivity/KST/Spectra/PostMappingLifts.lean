@@ -34,14 +34,14 @@ theorem post_rlp_monomorphisms (A : PointedSimplicialSet.{u})
     (MorphismProperty.monomorphisms SSet.{u}).rlp (PointedObject.basedHomMap A p).right := by
   intro T U j hj
   let : Mono j := hj
-  let : Mono A.hom := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basepoint_mono A
+  let : Mono A.hom := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basepoint_mono A
   constructor
   intro a b sq
   let earlier := MonoidalClosed.uncurry (a ≫ PointedObject.basedHomι A E)
   let prescribed := toUnit (𝟙_ SSet.{u} ⊗ U) ≫ E.hom
   let base := MonoidalClosed.uncurry (b ≫ PointedObject.basedHomι A B)
   have hc : A.hom ▷ T ≫ earlier = 𝟙_ SSet.{u} ◁ j ≫ prescribed := by
-    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint]
+    rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.uncurry_basepoint]
     simp only [prescribed, comp_toUnit_assoc]
   have he : earlier ≫ p.right = A.right ◁ j ≫ base := by
     dsimp only [earlier, base]
@@ -50,18 +50,18 @@ theorem post_rlp_monomorphisms (A : PointedSimplicialSet.{u})
       MonoidalClosed.uncurry_natural_left]
     rfl
   have ha : prescribed ≫ p.right = A.hom ▷ U ≫ base := by
-    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint]
+    rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.uncurry_basepoint]
     simp only [prescribed, Category.assoc, Under.w]
   obtain ⟨f, hf, hfixed, hbase⟩ := RelativeProductLifting.exists_lift
     p.right hp A.hom j earlier prescribed base hc he ha
-  let l := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry A E f hfixed
+  let l := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry A E f hfixed
   refine ⟨⟨{ l := l, fac_left := ?_, fac_right := ?_ }⟩⟩
   · apply (cancel_mono (PointedObject.basedHomι A E)).mp
-    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, ← MonoidalClosed.curry_natural_left,
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, ← MonoidalClosed.curry_natural_left,
       hf, MonoidalClosed.curry_uncurry]
   · apply (cancel_mono (PointedObject.basedHomι A B)).mp
     rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc,
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, ← MonoidalClosed.curry_natural_right, hbase,
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, ← MonoidalClosed.curry_natural_right, hbase,
       MonoidalClosed.curry_uncurry]
 
 end

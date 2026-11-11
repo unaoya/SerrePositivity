@@ -22,17 +22,17 @@ open CategoryTheory CategoryTheory.Limits
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) (X Y : Paths C)
 
-lemma cutMap_paste (w : Word) : cutMap W w X Y ≫ FactorTarget.paste W X Y =
-    NonemptyGraph.inclusion W w X Y ≫ graphInclusion W.paths X Y w := by
+lemma cutMap_paste (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cutMap W w X Y ≫ FactorTarget.paste W X Y =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedNonemptyGraph.inclusion W w X Y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths X Y w := by
   ext n τ
   exact paste_point W τ.val τ.property
 
-lemma colimitCut_paste : colimitCut W X Y ≫ FactorTarget.paste W X Y = ambientMap W X Y := by
+lemma colimitCut_paste : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.colimitCut W X Y ≫ FactorTarget.paste W X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.ambientMap W X Y := by
   apply colimit.hom_ext
   intro w
-  change inclusion W X Y w ≫ (colimitCut W X Y ≫ FactorTarget.paste W X Y) =
-    inclusion W X Y w ≫ ambientMap W X Y
-  rw [← Category.assoc, inclusion_colimitCut, inclusion_ambientMap]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.inclusion W X Y w ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.colimitCut W X Y ≫ FactorTarget.paste W X Y) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.inclusion W X Y w ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.ambientMap W X Y
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.inclusion_colimitCut, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.inclusion_ambientMap]
   exact cutMap_paste W X Y w
 
 lemma nonemptyCut_paste : nonemptyCut W X Y ≫ FactorTarget.paste W X Y =

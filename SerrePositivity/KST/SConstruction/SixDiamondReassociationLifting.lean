@@ -26,9 +26,9 @@ variable {E : SSet.{u}} {v₀ v₁ v₂ v₃ v₄ v₅ v₆ v₇ : E _⦋0⦌}
 
 /-- 元の全面・全共有面・同じ全基底六四面体を保持する実持ち上げ。 -/
 structure SixDiamondReassociationsOver
-    (DA : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond p₀ q k₁ k₂) (DB : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond a e k₂ k₃)
-    (DI : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond l r q k₃) (DL : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond s leftEdge p₀ l)
-    (DR : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond t b k₁ a) (DF : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond b e generatedEdge r)
+    (DA : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond p₀ q k₁ k₂) (DB : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond a e k₂ k₃)
+    (DI : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond l r q k₃) (DL : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond s leftEdge p₀ l)
+    (DR : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond t b k₁ a) (DF : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond b e generatedEdge r)
     (top : SSet.Edge.CompStruct DL.diagonal r topEdge)
     (bottom : SSet.Edge.CompStruct t generatedEdge bottomEdge)
     {B : SSet.{u}} (p : E ⟶ B)
@@ -64,9 +64,9 @@ structure SixDiamondReassociationsOver
   residual_eq : pasting.sixthMove.left.map p = R.sixthMove.left
 
 variable
-    (DA : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond p₀ q k₁ k₂) (DB : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond a e k₂ k₃)
-    (DI : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond l r q k₃) (DL : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond s leftEdge p₀ l)
-    (DR : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond t b k₁ a) (DF : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond b e generatedEdge r)
+    (DA : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond p₀ q k₁ k₂) (DB : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond a e k₂ k₃)
+    (DI : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond l r q k₃) (DL : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond s leftEdge p₀ l)
+    (DR : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond t b k₁ a) (DF : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond b e generatedEdge r)
     (top : SSet.Edge.CompStruct DL.diagonal r topEdge)
     (bottom : SSet.Edge.CompStruct t generatedEdge bottomEdge)
     {B : SSet.{u}} (p : E ⟶ B) [Fibration p]

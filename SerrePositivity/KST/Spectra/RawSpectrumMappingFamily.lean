@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Spectra.PostMappingLifts
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMapping
-public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativePointedHomLifting
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RelativePointedHomLifting
 public import SerrePositivity.KST.Spectra.PushoutProductMonomorphism
 
 /-!
@@ -20,7 +20,7 @@ open CategoryTheory Limits MonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 noncomputable section
 
 /-- 概要：段ごとの全単射 RLP に沿う Hom の単射パラメータは各段で整合する族へ持ち上がる。
@@ -38,7 +38,7 @@ lemma monoFamily (X : OmegaSpectrum.{u}) {Y Z : KanSequence.{u}}
       (∀ n, j ≫ l n = a ≫ evaluation X Y n) ∧
       (∀ n, l n ≫ (PointedObject.basedHomMap (X.level n).space (p.app n)).right =
         b ≫ evaluation X Z n) ∧
-      (∀ n, l (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+      (∀ n, l (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
         l n ≫ step X Y n) := by
   let LiftAt (n : ℕ) := {l : U ⟶
       (PointedObject.basedHom (X.level n).space (Y.level n).space).right //
@@ -56,11 +56,11 @@ lemma monoFamily (X : OmegaSpectrum.{u}) {Y Z : KanSequence.{u}}
         ← Category.assoc, h, Category.assoc]⟩
     exact ⟨⟨sq.lift, sq.fac_left, sq.fac_right⟩⟩
   have hn (n : ℕ) (prev : LiftAt n) : ∃ next : LiftAt (n + 1),
-      next.val ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+      next.val ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
         prev.val ≫ step X Y n := by
     have hc : j ≫ (prev.val ≫ step X Y n) =
         (a ≫ evaluation X Y (n + 1)) ≫
-          _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space := by
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space := by
       rw [← Category.assoc, prev.property.1, Category.assoc,
         ← evaluation_condition, ← Category.assoc]
     have he : (a ≫ evaluation X Y (n + 1)) ≫
@@ -69,11 +69,11 @@ lemma monoFamily (X : OmegaSpectrum.{u}) {Y Z : KanSequence.{u}}
       rw [Category.assoc, ← post_evaluation X (Y := Y) (Z := Z) p (n + 1),
         ← Category.assoc, h, Category.assoc]
     have ha : (prev.val ≫ step X Y n) ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (p.app (n + 1))).right =
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (p.app (n + 1))).right =
           (b ≫ evaluation X Z (n + 1)) ≫
-            _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Z.level (n + 1)).space := by
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Z.level (n + 1)).space := by
       change (prev.val ≫ step X Y n) ≫
-          (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map (p.app (n + 1)) = _
+          (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map (p.app (n + 1)) = _
       rw [Category.assoc, step_post X (Y := Y) (Z := Z) p n,
         ← Category.assoc]
       change (prev.val ≫ (PointedObject.basedHomMap (X.level n).space (p.app n)).right) ≫
@@ -83,7 +83,7 @@ lemma monoFamily (X : OmegaSpectrum.{u}) {Y Z : KanSequence.{u}}
     let pp := Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{u}) (X.sigma n).right j
     have hpp : HasLiftingProperty pp.ι (p.app (n + 1)).right :=
       hp (n + 1) pp.ι (PushoutProductMonomorphism.mono pp)
-    obtain ⟨l, hl, hp, hb⟩ := relativePointedHom_lift (X.sigma n) (p.app (n + 1)) j hpp
+    obtain ⟨l, hl, hp, hb⟩ := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.relativePointedHom_lift (X.sigma n) (p.app (n + 1)) j hpp
       (a ≫ evaluation X Y (n + 1)) (prev.val ≫ step X Y n)
       (b ≫ evaluation X Z (n + 1)) hc he ha
     exact ⟨⟨l, hl, hb⟩, hp⟩

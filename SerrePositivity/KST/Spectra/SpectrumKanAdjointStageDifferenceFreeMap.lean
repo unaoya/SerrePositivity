@@ -31,7 +31,7 @@ def kanAdjointStageDifferenceFreeMap (n : ℕ) :
 /-- 自由区間値へ移した各段は、二つの元の厳密列射の同じ両端境界族を持つ。 -/
 lemma kanAdjointStageDifferenceFreeMap_boundary (n : ℕ) :
     kanAdjointStageDifferenceFreeMap X Y φ j n ≫
-      (KanSequence.mappingPre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion
+      (KanSequence.mappingPre _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryInclusion
         (KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence))).app n =
     (KanSequence.intervalBoundaryPair (kanAdjointRelativeTracedParameterHom X Y φ j)
       (kanAdjointTracedUnitParameterHom X Y φ)).app n :=

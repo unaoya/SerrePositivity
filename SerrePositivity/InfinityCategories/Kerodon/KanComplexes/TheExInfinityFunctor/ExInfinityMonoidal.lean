@@ -11,6 +11,8 @@ public import Mathlib.CategoryTheory.Monoidal.Mon
 方針：Cartesian monoidal category の一般的な有限積保存からの構成を使う。
 規約：Segal 1974 Proposition 1.5 の群状モノイドの bar の Kan 模型の補助。
 使われ方：厳密なモノイド構造を保持したまま基礎単体集合を Kan にする。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

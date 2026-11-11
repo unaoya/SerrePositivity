@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneNonempty
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveInitialImage
-public import SerrePositivity.InfinityCategories.Simplicial.UniverseLift
-public import SerrePositivity.InfinityCategories.Kan.CodiscreteNerveExtension
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLift
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.CodiscreteNerveExtension
 public import Mathlib.CategoryTheory.WithTerminal.Basic
 public import Mathlib.CategoryTheory.CodiscreteCategory
 public import Mathlib.CategoryTheory.EssentiallySmall
@@ -79,7 +79,7 @@ lemma values_kan (i : I) (d : Index I) :
     have := isIso_of_isTerminal SSet.stdSimplex.isTerminalObj₀ terminalIsTerminal
       (terminal.from point)
     exact (SSet.modelCategoryQuillen.J.rlp).of_isIso _
-  | star => exact CodiscreteNerveExtension.terminal_horn_rlp i
+  | star => exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.terminal_horn_rlp i
 
 variable {I} {G : Index I ⥤ SSet.{u}} (α : G ⟶ diagram I)
   (hG : ∀ i, (G.obj (leaf I i)).Nonempty)
@@ -170,7 +170,7 @@ abbrev smallPointDiagram : Index (Type v) ⥤ SSet.{v} :=
 
 def smallQuotient : diagram (Type v) ⟶ smallPointDiagram ⋙ SSet.uliftFunctor.{v + 1, v} :=
   quotient (Type v) ≫
-    { app _ := (UniverseLift.simplexIso.{v + 1, v} (SimplexCategory.mk 0)).inv
+    { app _ := (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexIso.{v + 1, v} (SimplexCategory.mk 0)).inv
       naturality {_ _} _ := by ext n x; rfl }
 
 lemma smallQuotient_isIso :

@@ -10,6 +10,8 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 方針：有限台整数関数で宇宙に依存しない自由加群関手を実現する。
 規約：KST Appendix A、Definition A.3、Construction A.6。H_* 自体は定義しない。
 使われ方：nerve の実ホモトピーを単体的加群のホモトピーへ移す。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

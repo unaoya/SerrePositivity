@@ -57,10 +57,10 @@ lemma cutLeftInterval_restriction_extension_inclusion (n : ℕ) (k : Fin (n + 1)
 
 /-- Left 側の支持部分圏上の制限と延長の合成は内部で恒等関手と同型。 -/
 def cutLeftInterval_restriction_extensionIso (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
-    FunctorIso (cutLeftIntervalRestriction n k X ≫ cutLeftIntervalExtension n k X).val
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cutLeftIntervalRestriction n k X ≫ cutLeftIntervalExtension n k X).val
       (𝟙 (closedSubcategory (cutLeftSupport n k X))) := by
   apply functorIsoOfFullSubcomplexPostcomp (cutLeftSupport n k X).predicate
-  change FunctorIso ((cutLeftIntervalRestriction n k X ≫ cutLeftIntervalExtension n k X).val ≫
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((cutLeftIntervalRestriction n k X ≫ cutLeftIntervalExtension n k X).val ≫
     (closedStableInclusion (cutLeftSupport n k X)).val)
     (𝟙 _ ≫ (closedStableInclusion (cutLeftSupport n k X)).val)
   rw [cutLeftInterval_restriction_extension_inclusion, Category.id_comp]
@@ -68,12 +68,12 @@ def cutLeftInterval_restriction_extensionIso (n : ℕ) (k : Fin (n + 1)) (X : St
 
 /-- Left 側の支持部分圏と短い区間の S 構成の実際の quasicategory 同値。 -/
 def cutLeftIntervalEquivalence (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
-    QCatEquivalence (closedSubcategory (cutLeftSupport n k X))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (closedSubcategory (cutLeftSupport n k X))
       (sConstruction (k.val) X.carrier) where
   hom := (cutLeftIntervalRestriction n k X).val
   inv := (cutLeftIntervalExtension n k X).val
   homInvIso := cutLeftInterval_restriction_extensionIso n k X
-  invHomIso := eqToIso (congrArg (fun f => SSet.HomotopyCategory.mk (functorVertex f))
+  invHomIso := eqToIso (congrArg (fun f => SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
     (congrArg Subtype.val (cutLeftInterval_extension_restriction n k X)))
 
 /-- Right 側の短い区間の延長の後の制限は完全関手として厳密に恒等。 -/
@@ -114,10 +114,10 @@ lemma cutRightInterval_restriction_extension_inclusion (n : ℕ) (k : Fin (n + 1
 
 /-- Right 側の支持部分圏上の制限と延長の合成は内部で恒等関手と同型。 -/
 def cutRightInterval_restriction_extensionIso (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
-    FunctorIso (cutRightIntervalRestriction n k X ≫ cutRightIntervalExtension n k X).val
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cutRightIntervalRestriction n k X ≫ cutRightIntervalExtension n k X).val
       (𝟙 (closedSubcategory (cutRightSupport n k X))) := by
   apply functorIsoOfFullSubcomplexPostcomp (cutRightSupport n k X).predicate
-  change FunctorIso ((cutRightIntervalRestriction n k X ≫ cutRightIntervalExtension n k X).val ≫
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((cutRightIntervalRestriction n k X ≫ cutRightIntervalExtension n k X).val ≫
     (closedStableInclusion (cutRightSupport n k X)).val)
     (𝟙 _ ≫ (closedStableInclusion (cutRightSupport n k X)).val)
   rw [cutRightInterval_restriction_extension_inclusion, Category.id_comp]
@@ -125,12 +125,12 @@ def cutRightInterval_restriction_extensionIso (n : ℕ) (k : Fin (n + 1)) (X : S
 
 /-- Right 側の支持部分圏と短い区間の S 構成の実際の quasicategory 同値。 -/
 def cutRightIntervalEquivalence (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
-    QCatEquivalence (closedSubcategory (cutRightSupport n k X))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (closedSubcategory (cutRightSupport n k X))
       (sConstruction (n - k.val) X.carrier) where
   hom := (cutRightIntervalRestriction n k X).val
   inv := (cutRightIntervalExtension n k X).val
   homInvIso := cutRightInterval_restriction_extensionIso n k X
-  invHomIso := eqToIso (congrArg (fun f => SSet.HomotopyCategory.mk (functorVertex f))
+  invHomIso := eqToIso (congrArg (fun f => SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
     (congrArg Subtype.val (cutRightInterval_extension_restriction n k X)))
 
 end SerrePositivity.KST.SConstruction

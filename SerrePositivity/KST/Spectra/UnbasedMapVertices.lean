@@ -28,7 +28,7 @@ lemma mapVertex_const (A : SSet.{u}) (Y : PointedSimplicialSet.{u}) :
   apply SSet.yonedaEquiv.symm.injective
   rw [mapVertex, Equiv.symm_apply_apply, SSet.yonedaEquiv_symm_zero]
   apply uncurry_injective
-  rw [uncurry_curry, uncurry_constant_basepoint, comp_const, _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const]
+  rw [uncurry_curry, uncurry_constant_basepoint, comp_const, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const]
 
 /-- 通常の射の頂点表示は源への制限と可換。 -/
 lemma mapVertex_pre {A B : SSet.{u}} (i : A ⟶ B) (Y : PointedSimplicialSet.{u})
@@ -54,7 +54,7 @@ lemma freeHomIso_familyVertex {A : SSet.{u}} (Y : PointedSimplicialSet.{u})
   change SSet.yonedaEquiv _ = SSet.yonedaEquiv (curry (fst A (Δ[0] : SSet.{u}) ≫ f))
   apply congrArg SSet.yonedaEquiv
   dsimp only [PointedMapping.pointFamily, FreePointedHomRestriction.restrict]
-  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, curry_pre_app, whiskerRight_fst_assoc]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, curry_pre_app, whiskerRight_fst_assoc]
   change curry (fst A (Δ[0] : SSet.{u}) ≫
     (PointedObject.adjoinHomEquiv A Y) ((PointedObject.adjoinHomEquiv A Y).symm f)) = _
   rw [Equiv.apply_symm_apply]

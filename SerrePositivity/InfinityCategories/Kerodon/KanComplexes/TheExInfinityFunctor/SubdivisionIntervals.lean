@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：最大元の計算と単調な全射の初期区間の像を使う。
 規約：Moss 2020 Lemma 26 の交換則の生成元上の検証。
 使われ方：和集合を保つ作用素の比較原理へ渡す。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

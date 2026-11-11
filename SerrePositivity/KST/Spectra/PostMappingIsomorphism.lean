@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.PointedKanWhitehead
 public import SerrePositivity.KST.Spectra.PostMappingLifts
 
 /-!
@@ -29,30 +29,30 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2。Ω 条件の内部 Hom への移送。 -/
 theorem post_piIsomorphism (A : PointedSimplicialSet.{u})
     {X Y : PointedSimplicialSet.{u}} [KanComplex X.right] [KanComplex Y.right]
-    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (PointedObject.basedHomMap A f).right := by
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f.right) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (PointedObject.basedHomMap A f).right := by
   let F := ihom A
-  let : KanComplex (F.obj X).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex A X
-  let : KanComplex (F.obj Y).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex A Y
-  let : KanComplex (F.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath f)).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath f)
-  let u := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit f
-  let r := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f
-  let p := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f
-  have hr : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (F.map r).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (post_rlp_monomorphisms A r (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction_rlp f))
-  have hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (F.map p).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _
-      (post_rlp_monomorphisms A p (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection_rlp_of_piIsomorphism f hf))
+  let : KanComplex (F.obj X).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex A X
+  let : KanComplex (F.obj Y).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex A Y
+  let : KanComplex (F.obj (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPath f)).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPath f)
+  let u := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit f
+  let r := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction f
+  let p := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection f
+  have hr : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (F.map r).right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (post_rlp_monomorphisms A r (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction_rlp f))
+  have hp : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (F.map p).right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _
+      (post_rlp_monomorphisms A p (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mappingPathProjection_rlp_of_piIsomorphism f hf))
   have hur : F.map u ≫ F.map r = 𝟙 (F.obj X) := by
-    rw [← F.map_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_retraction, F.map_id]
-  have hu : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (F.map u).right := by
-    apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := (F.map r).right) _ hr
+    rw [← F.map_comp, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit_retraction, F.map_id]
+  have hu : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (F.map u).right := by
+    apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := (F.map r).right) _ hr
     have h : (F.map u).right ≫ (F.map r).right = 𝟙 (F.obj X).right :=
       congrArg Under.Hom.right hur
     rw [h]
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id _
+    exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.id _
   have hup : F.map u ≫ F.map p = F.map f := by
-    rw [← F.map_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_projection]
+    rw [← F.map_comp, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit_projection]
   have h : (F.map u).right ≫ (F.map p).right = (F.map f).right :=
     congrArg Under.Hom.right hup
   have hc := hu.comp hp

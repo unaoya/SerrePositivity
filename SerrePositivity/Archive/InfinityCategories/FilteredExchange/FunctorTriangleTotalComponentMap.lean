@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTriangleTotalComponent
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorHomotopyRelativePost
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryIsoPresentation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeFunctorCurryIsoPresentation
 
 /-!
 概要：元の全空間の三角形比較の成分を、その後の同じ射の像へも値を保って回収する。

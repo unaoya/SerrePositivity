@@ -23,34 +23,34 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 variable (X : ℕ → PointedSimplicialSet.{u}) (p : ∀ n, X (n + 1) ⟶ X n) (r : ℕ)
-  (s : (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ (X n).right) (fun n ↦ (p n).right)).PtSimplex
+  (s : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.limit (fun n ↦ (X n).right) (fun n ↦ (p n).right)).PtSimplex
     (r + 1) (limitBasepoint X p))
 
 /-- 極限の球面の各段への厳密な射影。 -/
 def projectedSimplex (n : ℕ) : (X n).right.PtSimplex (r + 1) (X n).basepoint :=
-  _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection (fun n ↦ (X n).right) (fun n ↦ (p n).right) n) rfl s
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection (fun n ↦ (X n).right) (fun n ↦ (p n).right) n) rfl s
 
 /-- 極限の球面の各射影は、単体として厳密に整合する。 -/
 lemma projectedSimplex_comp (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n))
       (projectedSimplex X p r s (n + 1)) = projectedSimplex X p r s n := by
   apply RelativeMorphism.ext
-  change (s.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection _ _ (n + 1)) ≫ (p n).right =
-    s.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection _ _ n
-  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp]
+  change (s.map ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection _ _ (n + 1)) ≫ (p n).right =
+    s.map ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection _ _ n
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection_comp]
 
 variable [∀ n, KanComplex (X n).right] [∀ n, Fibration (p n).right]
-  (hzero : limitGroupComparison X p r (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = 1)
+  (hzero : limitGroupComparison X p r (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s) = 1)
 
 include hzero in
 /-- 比較の核の代表の各段には、実際の零ホモトピーが存在する。 -/
 lemma exists_projected_nullHomotopy (n : ℕ) :
     Nonempty (PtSimplex.RelStruct .const (projectedSimplex X p r s n) (Fin.last (r + 1))) := by
-  have he := (limitGroupComparison_eq_one_iff X p r (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)).1 hzero n
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map _ rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = 1 at he
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk] at he
-  apply (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct (Fin.last (r + 1))).1
-  apply (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk_eq_iff _ _).1
+  have he := (limitGroupComparison_eq_one_iff X p r (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s)).1 hzero n
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map _ rfl (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s) = 1 at he
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_mk] at he
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.simplexRel_iff_relStruct (Fin.last (r + 1))).1
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk_eq_iff _ _).1
   exact he.symm
 
 /-- 比較の核の代表に対して各段の零ホモトピーを選ぶ。 -/
@@ -60,7 +60,7 @@ def projectedNullHomotopy (n : ℕ) :
 
 /-- 比較の核の固定した球面代表に付随する lim¹ の障害。 -/
 def kernelRepresentativeObstruction :
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (p n)) :=
   nullHomotopyObstruction X p r (projectedSimplex X p r s) (projectedSimplex_comp X p r s)
     (projectedNullHomotopy X p r s hzero)
@@ -77,28 +77,28 @@ include hzero in
 theorem kernelRepresentativeObstruction_eq_point_of_compatible
     (R : ∀ n, PtSimplex.RelStruct .const (projectedSimplex X p r s n) (Fin.last (r + 1)))
     (hc : ∀ n, (R (n + 1)).map ≫ (p n).right = (R n).map) :
-    kernelRepresentativeObstruction X p r s hzero = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _ := by
+    kernelRepresentativeObstruction X p r s hzero = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _ := by
   rw [kernelRepresentativeObstruction_eq X p r s hzero R]
   exact nullHomotopyObstruction_eq_point_of_compatible X p r _ _ R hc
 
 /-- 極限での零ホモトピーを射影した場合、代表の障害は基点になる。 -/
 theorem kernelRepresentativeObstruction_eq_point_of_null
     (R : PtSimplex.RelStruct .const s (Fin.last (r + 1))) :
-    kernelRepresentativeObstruction X p r s hzero = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _ := by
+    kernelRepresentativeObstruction X p r s hzero = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _ := by
   let R' n := NullHomotopyDifference.mapNull
-    (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection (fun n ↦ (X n).right) (fun n ↦ (p n).right) n) rfl R
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection (fun n ↦ (X n).right) (fun n ↦ (p n).right) n) rfl R
   apply kernelRepresentativeObstruction_eq_point_of_compatible X p r s hzero R'
   intro n
-  change (R.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection _ _ (n + 1)) ≫ (p n).right =
-    R.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection _ _ n
-  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp]
+  change (R.map ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection _ _ (n + 1)) ≫ (p n).right =
+    R.map ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection _ _ n
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection_comp]
 
 /-- 極限のホモトピー群で零となる代表は lim¹ の零障害を持つ。 -/
 theorem kernelRepresentativeObstruction_eq_point_of_mk_eq_one
-    (he : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s = 1) :
-    kernelRepresentativeObstruction X p r s hzero = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _ := by
-  obtain ⟨R⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct (Fin.last (r + 1))).1
-    ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk_eq_iff .const s).1 he.symm)
+    (he : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s = 1) :
+    kernelRepresentativeObstruction X p r s hzero = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _ := by
+  obtain ⟨R⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.simplexRel_iff_relStruct (Fin.last (r + 1))).1
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk_eq_iff .const s).1 he.symm)
   exact kernelRepresentativeObstruction_eq_point_of_null X p r s hzero R
 
 end

@@ -39,7 +39,7 @@ lemma arCutSquareMap_corner {n : ℕ} (k : Fin (n + 1)) (x y : Fin 2) :
 /-- 切断の族の角の評価は元の図式の端点写像による制限に厳密に一致する。 -/
 lemma arCutFamily_evaluation {n : ℕ} {C : SSet.{u}} (k : Fin (n + 1))
     (F : arNerve n ⟶ C) (x y : Fin 2) :
-    arCutFamily k F ≫ evaluateFunctorAt
+    arCutFamily k F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
         (stdSimplex.obj₀Equiv.symm x, stdSimplex.obj₀Equiv.symm y) =
       arNerveMap (cutCornerOrder k x y) ≫ F := by
   rw [arCutFamily, curry_evaluate_vertex]
@@ -53,14 +53,14 @@ lemma arCutFamily_evaluation {n : ℕ} {C : SSet.{u}} (k : Fin (n + 1))
 /-- 切断 cofiber 族の各角は元の図式の端点制限として厳密に回収される。 -/
 lemma gappedCutCofiberFamily_evaluation {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (k : Fin (n + 1)) {F : arNerve n ⟶ C} (hF : IsGapped F) (x y : Fin 2) :
-    gappedCutCofiberFamily k hF ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫
-        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm x, stdSimplex.obj₀Equiv.symm y) =
+    gappedCutCofiberFamily k hF ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm x, stdSimplex.obj₀Equiv.symm y) =
       arNerveMap (cutCornerOrder k x y) ≫ F := by
   rw [← Category.assoc, gappedCutCofiberFamily_ι, arCutFamily_evaluation]
 
 /-- 切断四角形の族は全 cofiber 図式の圏の中で実際に gapped。 -/
 lemma gappedCutCofiberFamily_isGapped {n : ℕ} {C : SSet.{u}}
-    [Quasicategory C] [IsStable C] (k : Fin (n + 1)) {F : arNerve n ⟶ C} (hF : IsGapped F) :
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (k : Fin (n + 1)) {F : arNerve n ⟶ C} (hF : IsGapped F) :
     IsGapped (gappedCutCofiberFamily k hF) := by
   apply IsGapped.of_fullSubcomplex IsCofiberDiagramVertex
   apply (isGapped_functor_iff_pointwise _).2

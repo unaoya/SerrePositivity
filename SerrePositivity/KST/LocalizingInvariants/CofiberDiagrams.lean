@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams
 
-public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberSquareFamily
-public import SerrePositivity.InfinityCategories.Stable.LoopDiagramArrows
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.LoopDiagramArrows
 
 /-!
 概要：普遍 cofiber 四角形の全部分圏と底辺・右辺の評価。
@@ -20,20 +20,20 @@ open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
 
-lemma bottom_source (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left X ≫ zeroTargetArrowSource X := by
-  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom, zeroTargetArrowSource, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left X), _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left,
-    fullSubcomplexLift_ι]
-  simp only [Category.assoc, stable_pre_evaluateFunctorAt]
+lemma bottom_source (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.bottom X ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.left X ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.zeroTargetArrowSource X := by
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.bottom, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.zeroTargetArrowSource, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.left X), _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.left,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
+  simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt]
   rfl
 
-lemma right_target (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top X ≫ zeroSourceArrowTarget X := by
-  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right, zeroSourceArrowTarget, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top X), _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top,
-    fullSubcomplexLift_ι]
-  simp only [Category.assoc, stable_pre_evaluateFunctorAt]
+lemma right_target (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.right X ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.top X ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceArrowTarget X := by
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.right, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceArrowTarget, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.top X), _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.top,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
+  simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt]
   rfl
 
 end SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams

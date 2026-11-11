@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceIntervalComparison
 
 /-!
 概要：元の区間全族の指定点での全係数制限を、同じ一点区間の定値族へ戻す。

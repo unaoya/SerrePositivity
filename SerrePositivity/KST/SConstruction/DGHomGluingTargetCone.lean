@@ -17,7 +17,7 @@ open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] (E : Type z) [DGCategory R E] [Small.{u} E]
   (p : DGFunctor R C E) (q : DGFunctor R D E)
-variable (X : DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
+variable (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
 
 /-- 同じ gluing の元の閉元を、元の終域内の閉比較射として読む。 -/
 def dgHomGluingTargetMap :

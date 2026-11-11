@@ -25,13 +25,13 @@ open CategoryTheory SSet SerrePositivity.InfinityCategories SerrePositivity.Simp
 使われ方：実単位の全族公式と全屋根比較を接続した後の弱同値性の出口。 -/
 lemma unitComparison_weak_of_probe_family {K D X : SSet.{u}} [Quasicategory X]
     {x y : X.obj (Opposite.op (SimplexCategory.mk 0))}
-    (f : D ⟶ intervalMappingSpace x y) (p : K ⟶ D) (g : K ⟶ pinchedHom x y)
-    (hp : IsWeakHomotopyEquivalence p) (hg : IsWeakHomotopyEquivalence g)
-    (h : intervalFamilyHom (p ≫ f) =
-      intervalFamilyHom (g ≫ pinchedHomToIntervalMappingSpace x y)) :
-    IsWeakHomotopyEquivalence f := by
-  have hi := (pinchedHomToIntervalMappingSpace_isQCatEquivalence x y).isWeakHomotopyEquivalence
-  obtain ⟨H⟩ := intervalFamilyHom_eq_imp_homotopy h
+    (f : D ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace x y) (p : K ⟶ D) (g : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom x y)
+    (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence p) (hg : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence g)
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (p ≫ f) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f := by
+  have hi := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence x y).isWeakHomotopyEquivalence
+  obtain ⟨H⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom_eq_imp_homotopy h
   have he := AnodyneHomotopy.map_homotopy_eq AnodyneHomotopy.anodyneQ
     SSet.anodyneExtensions.Q_inverts H
   have hgQ := Hammock.anodyneQ_map_isIso_of_weak _ (hg.comp hi)

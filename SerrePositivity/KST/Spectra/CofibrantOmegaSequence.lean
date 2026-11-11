@@ -29,8 +29,8 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：点つき内部 Hom の後合成で loop の射を表す。
 使われ方：BF 1978 §2、HA §1.4.2。Ω 条件の移送。 -/
 theorem Hom.adjoint_comm {X Y : KanSequence.{u}} (f : Hom X Y) (n : ℕ) :
-    f.app n ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space) (Y.sigma n) =
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space) (X.sigma n) ≫
+    f.app n ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space) (Y.sigma n) =
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space) (X.sigma n) ≫
         PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (f.app (n + 1)) := by
   let adj := PointedSimplicialSet.smashHomAdjunction PointedSimplicialSet.circle.{u}
   have h := congrArg (adj.homEquiv (X.level n).space (Y.level (n + 1)).space) (f.comm n)
@@ -48,16 +48,16 @@ theorem Hom.omegaCondition_of_target {X Y : KanSequence.{u}} (f : Hom X Y)
     (hf : ∀ n, (MorphismProperty.monomorphisms SSet.{u}).rlp (f.app n).right)
     (hY : Y.OmegaCondition) : X.OmegaCondition := by
   intro n
-  let a := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space) (X.sigma n)
-  let b := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space) (Y.sigma n)
+  let a := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space) (X.sigma n)
+  let b := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space) (Y.sigma n)
   let p := PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (f.app (n + 1))
-  have hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism p.right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight p.right
+  have hp : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism p.right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight p.right
     (PointedMapping.post_rlp_monomorphisms _ _ (hf (n + 1)))
-  have hn : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight (f.app n).right (hf n)
+  have hn : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight (f.app n).right (hf n)
   have heq : a.right ≫ p.right = (f.app n).right ≫ b.right :=
     congrArg Under.Hom.right (f.adjoint_comm n).symm
-  have hc : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (a.right ≫ p.right) := by
+  have hc : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (a.right ≫ p.right) := by
     rw [heq]
     exact hn.comp (hY n)
   exact hc.of_comp hp

@@ -35,10 +35,10 @@ public import Mathlib.CategoryTheory.Types.Basic
 public import Mathlib.Combinatorics.Quiver.Basic
 public import Mathlib.Data.Fintype.EquivFin
 public import Mathlib.Logic.Equiv.Defs
-public import SerrePositivity.InfinityCategories.F1.Pointed.SuspensionLoop
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumPoint
-public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
-public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.SuspensionLoop
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpectrumPoint
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyIso
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyIsomorphism
 public import SerrePositivity.KST.Spectra.OmegaSpectrum
 public import SerrePositivity.KST.Spectra.SuspensionLoop
 public import SerrePositivity.Spectra.Pointed.Basic
@@ -67,19 +67,19 @@ noncomputable section
 規約：全基点・零次数を含む Ω 条件と単射な構造射を持つ。
 使われ方：BF 1978 §2、Sp の空積の頂点。 -/
 def spectrumPoint : OmegaSpectrum.{u} where
-  level _ := ⟨PointedObject.point, pointedPoint_kanComplex⟩
+  level _ := ⟨PointedObject.point, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedPoint_kanComplex⟩
   sigma _ := PointedObject.toPoint _
   sigma_mono _ := by
-    have := suspensionPoint_isZero.isIso PointedObject.point_isZero (PointedObject.toPoint _)
+    have := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.suspensionPoint_isZero.isIso PointedObject.point_isZero (PointedObject.toPoint _)
     change Mono (PointedSimplicialSet.forget.map (PointedObject.toPoint
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (PointedObject.point : PointedSimplicialSet.{u}))))
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (PointedObject.point : PointedSimplicialSet.{u}))))
     infer_instance
   omega_condition _ := by
-    let f := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (PointedObject.point : PointedSimplicialSet.{u}) _
+    let f := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (PointedObject.point : PointedSimplicialSet.{u}) _
       (PointedObject.toPoint _)
-    have := PointedObject.point_isZero.isIso loopPoint_isZero f
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso (X := (PointedObject.point : PointedSimplicialSet.{u}).right)
-      (Y := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedObject.point : PointedSimplicialSet.{u})).right)
+    have := PointedObject.point_isZero.isIso _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.loopPoint_isZero f
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso (X := (PointedObject.point : PointedSimplicialSet.{u}).right)
+      (Y := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedObject.point : PointedSimplicialSet.{u})).right)
       (PointedSimplicialSet.forget.mapIso (asIso f))
 
 end

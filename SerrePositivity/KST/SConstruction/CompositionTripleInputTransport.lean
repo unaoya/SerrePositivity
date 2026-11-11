@@ -23,8 +23,8 @@ variable {E : SSet.{u}} {w x y z : E _⦋0⦌}
 /-- 右結合入力の表示を合わせても、元の全四面体と同じ左結合出力を厳密に保持する。 -/
 def compositionTripleInputTransport
     {right right' : SSet.Edge.CompStruct a bc abc} (h : right = right')
-    (R : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron first second right) :
-    {V : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron first second right' //
+    (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron first second right) :
+    {V : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron first second right' //
       V.simplex = R.simplex ∧ V.left = R.left} := by
   cases h
   exact ⟨R, rfl, rfl⟩
@@ -32,8 +32,8 @@ def compositionTripleInputTransport
 /-- 左結合入力の表示を合わせても、元の全四面体と同じ右結合出力を厳密に保持する。 -/
 def compositionTripleRightInputTransport
     {left left' : SSet.Edge.CompStruct ab c abc} (h : left = left')
-    (R : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron first second left) :
-    {V : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron first second left' //
+    (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron first second left) :
+    {V : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron first second left' //
       V.simplex = R.simplex ∧ V.right = R.right} := by
   cases h
   exact ⟨R, rfl, rfl⟩

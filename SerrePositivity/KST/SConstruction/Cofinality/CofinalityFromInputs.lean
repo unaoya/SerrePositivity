@@ -24,7 +24,7 @@ open scoped Simplicial
 使われ方：二供給の到着後の無条件な主結論の公開。 -/
 theorem kSpectrumMap_cofinality_of_inputs (supply : KanPullbackCofinalityInput.{u})
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (h : Fibration.Relative.ClosedStableFlagPostPullback
       (completionImageClosedPredicate 0 Fin.elim0 f hf)) :
     (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧

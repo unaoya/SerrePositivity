@@ -19,7 +19,7 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum.CotensorCompatible
 open RawSpectrumMapping
 
 local instance sourceDifferenceTargetKan (X Y : OmegaSpectrum.{u}) (n : ℕ) :
-    KanComplex (kanAdjointParameterTarget X Y n).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    KanComplex (kanAdjointParameterTarget X Y n).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 同じ源単位へ至る二辺を保持し、実評価から Kan 随伴の右側への辺を選ぶ。 -/
 def tracedSourceEvaluationRightDifference (X Y : OmegaSpectrum.{u}) (n : ℕ) :

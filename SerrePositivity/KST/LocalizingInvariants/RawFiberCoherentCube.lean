@@ -18,7 +18,7 @@ open CategoryTheory Limits MonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.LocalizingInvariants.RawFiberComparison
 
 local instance rawCubeSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
@@ -33,16 +33,16 @@ def cube : SSet.Homotopy (FiberModel.infinityCone p).val (FiberModel.infinityCon
     (cone_condition p q a b h)
 
 lemma cube_apex :
-    (simplicialHomotopyVertexEdge (cube p q a b h)
-      (SSet.yonedaEquiv (joinInl Δ[0] _))).edge = (coherentNerveEdge (map p q a b h)).edge :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (cube p q a b h)
+      (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl Δ[0] _))).edge = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (map p q a b h)).edge :=
   StrictConeMap.homotopy_apex _ _ _ _ _
 
 lemma cube_base :
-    (joinInr (Δ[0] : SSet.{u + 1}) _ ▷ (Δ[1] : SSet.{u + 1})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{u + 1}) _ ▷ (Δ[1] : SSet.{u + 1})) ≫
         (cube p q a b h).h =
       (β_ ((SSet.uliftFunctor.{u + 1, u}).obj
         (nerve (AsSmall.{u} WalkingCospan))) Δ[1]).hom ≫
-          F2.strictCoherentNatTransMap (diagramMap p q a b h) :=
+          _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap (diagramMap p q a b h) :=
   StrictConeMap.homotopy_base _ _ _ _ _
 
 end SerrePositivity.KST.LocalizingInvariants.RawFiberComparison

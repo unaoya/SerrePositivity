@@ -1,10 +1,10 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransportAlgebra
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.LiftedIntervalCospanRectification
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanHomotopyRectificationImage
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.HomotopyIsoRawComparison
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoTransportAlgebra
 
 /-!
 概要：厳密化した左脚の指定同型の共通点像を、元の持ち上げた全 path へ戻す。

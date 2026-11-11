@@ -19,25 +19,25 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.HomotopyFunctionComplex SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 variable (A : Type u) [CommRing A]
 
 lemma freeNormalizedHomFromStandard_homotopyEquivalence
     (X : (Complex A)ᵒᵖ) (B : (operad A).Algebra) :
-    IsSimplicialHomotopyEquivalence (((freeNormalizedHomFromStandard A).app X).app B) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (((freeNormalizedHomFromStandard A).app X).app B) := by
   let := modelCategory A
   have := isFibrant A B
-  exact fixedFrameOverFunctor_homLeft_homotopyEquivalence (mappingCofibrantFactorization A)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fixedFrameOverFunctor_homLeft_homotopyEquivalence (mappingCofibrantFactorization A)
     (cosimplicialResolutionFamily (mappingCofibrantFactorization A))
     (freeProbeFunctor A) (freeNormalizedProbeFrame A) (freeNormalizedProbeAugmentation A)
     (freeNormalizedProbeAugmentation_weak A) X B
 
 lemma freeNormalizedHomFromTensor_homotopyEquivalence
     (X : (Complex A)ᵒᵖ) (B : (operad A).Algebra) :
-    IsSimplicialHomotopyEquivalence (((freeNormalizedHomFromTensor A).app X).app B) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (((freeNormalizedHomFromTensor A).app X).app B) := by
   let := modelCategory A
   have := isFibrant A B
-  exact fixedFrameOverFunctor_homRight_homotopyEquivalence (mappingCofibrantFactorization A)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fixedFrameOverFunctor_homRight_homotopyEquivalence (mappingCofibrantFactorization A)
     (cosimplicialResolutionFamily (mappingCofibrantFactorization A))
     (freeProbeFunctor A) (freeNormalizedProbeFrame A) (freeNormalizedProbeAugmentation A)
     (freeNormalizedProbeAugmentation_weak A) (freeNormalizedProbeFrame_cofibrant A)

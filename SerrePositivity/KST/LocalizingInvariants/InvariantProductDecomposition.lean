@@ -22,18 +22,18 @@ namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 local instance invariantSplitSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
 
-variable {E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hE : IsLocalizingInvariant E)
-  (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
+variable {E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hE : IsLocalizingInvariant E)
+  (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.VerdierSequence.{u})
   (s : SpectrumHo.obj (value E d.right) ⟶ SpectrumHo.obj (value E d.middle))
   (hs : s ≫ SpectrumHo.hom (valueMap E d.projection) = 𝟙 _)
 
-def fiberSection : squareHoVertex (hE.abstractFiberTriangle d).square 1 1 ⟶
-    squareHoVertex (hE.abstractFiberTriangle d).square 1 0 :=
+def fiberSection : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (hE.abstractFiberTriangle d).square 1 1 ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (hE.abstractFiberTriangle d).square 1 0 :=
   (hE.fiberRightIso d).hom ≫ s ≫ (hE.fiberMiddleIso d).inv
 
 include hs in
 lemma fiberSection_section : hE.fiberSection d s ≫
-    squareHoRight (hE.abstractFiberTriangle d).square = 𝟙 _ := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (hE.abstractFiberTriangle d).square = 𝟙 _ := by
   apply (cancel_mono (hE.fiberRightIso d).hom).mp
   rw [Category.assoc, ← hE.fiber_right_naturality]
   simp only [fiberSection, Category.assoc, Iso.inv_hom_id_assoc]
@@ -45,7 +45,7 @@ def splitLeftFactorIso : SpectrumHo.obj (value E d.left) ≅ SpectrumHo.obj
     NativeSplit.fiberIso (hE.abstractFiberTriangle d) (hE.abstractFiberTriangle_isFiber d)
 
 def splitRightFactorIso : SpectrumHo.obj (value E d.right) ≅ SpectrumHo.obj
-    (SpectrumHo.spectrum (squareHoVertex (hE.abstractFiberTriangle d).square 1 1)) :=
+    (SpectrumHo.spectrum (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (hE.abstractFiberTriangle d).square 1 1)) :=
   (hE.fiberRightIso d).symm ≪≫
     NativeSplit.baseIso (hE.abstractFiberTriangle d) (hE.abstractFiberTriangle_isFiber d)
 

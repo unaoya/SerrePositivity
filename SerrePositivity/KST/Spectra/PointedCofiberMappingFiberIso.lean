@@ -30,23 +30,23 @@ set_option backward.isDefEq.respectTransparency.types false
 def pointedCofiberMappingFiberIso {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
     (Z : PointedSimplicialSet.{u}) :
     PointedObject.basedHom (pointedCofiber i) Z ≅
-      pointedFiber (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z) := by
-  let p := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z
+      pointedFiber (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z) := by
+  let p := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z
   let e := cofiberMappingFiberIso i Z ≪≫
-    fiberIsoOfEq p.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p).symm
+    fiberIsoOfEq p.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p).symm
   refine Under.isoMk e ?_
-  let : Mono (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p.right (p.right.app _
+  let : Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι p.right (p.right.app _
       (PointedSimplicialSet.basepoint (PointedObject.basedHom Y Z)))) := by
-    dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.fiberι]
+    dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι]
     infer_instance
-  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p.right (p.right.app _
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι p.right (p.right.app _
     (PointedSimplicialSet.basepoint (PointedObject.basedHom Y Z))))).mp
-  change (_ ≫ e.hom) ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p.right _ =
+  change (_ ≫ e.hom) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι p.right _ =
     (pointedFiber p).hom ≫ (pointedFiberι p).right
   dsimp only [e, Iso.trans_hom]
   rw [Category.assoc, Category.assoc, fiberIsoOfEq_hom_ι]
   erw [cofiberMappingFiberIso_hom_ι]
-  exact (Under.w (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection i) Z)).trans
+  exact (Under.w (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection i) Z)).trans
     (Under.w (pointedFiberι p)).symm
 
 end

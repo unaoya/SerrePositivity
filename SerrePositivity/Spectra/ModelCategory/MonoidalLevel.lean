@@ -34,7 +34,7 @@ lemma evaluatedFree_generators (J : MorphismProperty C) (hJ : J ≤ trivialCofib
     exact evaluatedFree_trivialCofibration K _ n m
 
 variable [LocallySmall.{w} (GeneralSymmetricSpectrum C K)]
-  (I J : MorphismProperty C) [CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   (κ : Cardinal.{w}) [Fact κ.IsRegular] [OrderBot κ.ord.ToType]
   (hI : ∀ {A B : C} (i : A ⟶ B), I i → IsCardinalPresentable A κ)
   (hJ : ∀ {A B : C} (i : A ⟶ B), J i → IsCardinalPresentable A κ)
@@ -43,14 +43,14 @@ variable [LocallySmall.{w} (GeneralSymmetricSpectrum C K)]
 def levelModelCategoryOfMonoidalGenerators : ModelCategory (GeneralSymmetricSpectrum C K) :=
   levelModelCategoryOfGenerators K I J κ hI hJ
     (evaluatedFree_generators K J
-      (J.le_llp_rlp.trans (trivialCofibrations_eq_generated I J).symm.le))
+      (J.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated I J).symm.le))
 
 lemma levelModelCategoryOfMonoidalGenerators_generated :
     let := levelModelCategoryOfMonoidalGenerators K I J κ hI hJ
-    CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J) :=
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J) :=
   levelModelCategoryOfGenerators_generated K I J κ hI hJ
     (evaluatedFree_generators K J
-      (J.le_llp_rlp.trans (trivialCofibrations_eq_generated I J).symm.le))
+      (J.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated I J).symm.le))
 
 lemma levelModelCategoryOfMonoidalGenerators_weakEquivalences :
     @weakEquivalences (GeneralSymmetricSpectrum C K) _

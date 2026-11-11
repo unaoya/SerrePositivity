@@ -17,16 +17,16 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 貼り合わせ上の両 W 条件は、商の元の実図式の core への厳密因子分解と同値。 -/
-lemma tailWeakPredicate_functorVertex_iff_factorCore {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ)
+lemma tailWeakPredicate_functorVertex_iff_factorCore {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n : ℕ)
     (F : (tailAttachment (Δ[n] : SSet.{u}) : SSet.{u}) ⟶ B.obj) :
-    (tailWeakPredicate q n).predicate (functorVertex F) ↔
+    (tailWeakPredicate q n).predicate (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F) ↔
       ∃ g : (tailAttachment (Δ[n] : SSet.{u}) : SSet.{u}) ⟶
-          (quasicategoryCore C.obj : SSet.{u}),
-        g ≫ (quasicategoryCore C.obj).ι = F ≫ q.hom := by
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj : SSet.{u}),
+        g ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).ι = F ≫ q.hom := by
   rw [tailWeakPredicate_iff]
-  change weakStringPredicate q ⦋n + 1⦌ (functorVertex (standardTailPrefix n ≫ F)) ∧
-    weakArrowPredicate q (functorVertex (tailAttachmentEdge (Δ[n] : SSet.{u}) ≫ F)) ↔ _
+  change weakStringPredicate q ⦋n + 1⦌ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (standardTailPrefix n ≫ F)) ∧
+    weakArrowPredicate q (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (tailAttachmentEdge (Δ[n] : SSet.{u}) ≫ F)) ↔ _
   rw [← weakStringPredicate_one_iff, weakStringPredicate_functorVertex_iff_factorCore,
     weakStringPredicate_functorVertex_iff_factorCore]
   have h := coreFactor_iff_of_isPushout (standardTail_isPushout n) (F ≫ q.hom)
@@ -41,13 +41,13 @@ lemma tailWeakPredicate_functorVertex_iff_factorCore {B C : _root_.SerrePositivi
       by simpa only [Category.assoc] using he⟩
 
 /-- 元の長い W 列の全辺条件は、貼り合わせに制限した先行列と最後の辺から正確に反映される。 -/
-theorem weakStringPredicate_iff_tail {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ)
+theorem weakStringPredicate_iff_tail {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n : ℕ)
     (v : ((ihom (Δ[n + 2] : SSet.{u})).obj B.obj) _⦋0⦌) :
     weakStringPredicate q ⦋n + 2⦌ v ↔ (tailWeakPredicate q n).predicate
       (((pre (standardTailInclusion n)).app B.obj).app (Opposite.op ⦋0⦌) v) := by
-  obtain ⟨F, rfl⟩ := (functorVertexEquiv (Δ[n + 2] : SSet.{u}) B.obj).surjective v
-  change weakStringPredicate q ⦋n + 2⦌ (functorVertex F) ↔
-    (tailWeakPredicate q n).predicate (functorVertex (standardTailInclusion n ≫ F))
+  obtain ⟨F, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (Δ[n + 2] : SSet.{u}) B.obj).surjective v
+  change weakStringPredicate q ⦋n + 2⦌ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F) ↔
+    (tailWeakPredicate q n).predicate (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (standardTailInclusion n ≫ F))
   rw [weakStringPredicate_functorVertex_iff_factorCore,
     tailWeakPredicate_functorVertex_iff_factorCore]
   constructor

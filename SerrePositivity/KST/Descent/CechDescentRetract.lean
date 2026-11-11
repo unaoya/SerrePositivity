@@ -32,7 +32,7 @@ open SerrePositivity.DiagramModel
 namespace SerrePositivity.KST.Descent
 
 variable (K : Type u) [SmallCategory K] [ModelCategory SSet.{u}]
-  (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  (I J : MorphismProperty SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
 
 /-- 概要：増強図式の retract は指定ホモトピー比較の retract を与える（補題 3.2）。
 方針：実際の指定比較の自然性を使う。

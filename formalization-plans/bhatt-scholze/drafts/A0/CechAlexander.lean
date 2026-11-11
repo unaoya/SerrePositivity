@@ -44,7 +44,7 @@ open scoped Simplicial
 namespace SerrePositivity.BhattScholze.Prismatic
 
 open SerrePositivity.DerivedCompletion SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.Sheaves
+
 
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p A) (hP : IsBoundedPrism P)
 variable (R : Type u) [CommRing R] [Algebra (A ⧸ P.ideal) R]

@@ -30,13 +30,13 @@ local instance circleComparisonApexRawHomKan (z : Sp.{u} _⦋0⦌) :
 
 /-- 元の比較自己射の前合成は、元の companion の差を正符号の類へ送る。 -/
 lemma circleCompanionConeComparison_native_difference (z : Sp.{u} _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map
       (RawSpectrumMapping.pointedPre (circleCompanionConeComparisonHom z)
         (nativeCotensorInput PointedSimplicialSet.circle z).val.toKanSequence).right
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (RawSpectrumMapping.pointedPre (circleCompanionConeComparisonHom z)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (RawSpectrumMapping.pointedPre (circleCompanionConeComparisonHom z)
         (nativeCotensorInput PointedSimplicialSet.circle z).val.toKanSequence))
-      ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z))⁻¹) =
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z) := by
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z))⁻¹) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z) := by
   apply FundamentalLoop.toHom_injective
   erw [FundamentalLoop.toHom_pointed_map]
   rw [← circleCompanionEdgewise_difference_toHom]
@@ -44,13 +44,13 @@ lemma circleCompanionConeComparison_native_difference (z : Sp.{u} _⦋0⦌) :
 
 /-- 元の比較自己射は、元の指定された評価 loop の類を逆元へ送る。 -/
 lemma circleCompanionConeComparison_native_loop (z : Sp.{u} _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map
       (RawSpectrumMapping.pointedPre (circleCompanionConeComparisonHom z)
         (nativeCotensorInput PointedSimplicialSet.circle z).val.toKanSequence).right
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (RawSpectrumMapping.pointedPre (circleCompanionConeComparisonHom z)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (RawSpectrumMapping.pointedPre (circleCompanionConeComparisonHom z)
         (nativeCotensorInput PointedSimplicialSet.circle z).val.toKanSequence))
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationLoopSimplex z)) =
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationLoopSimplex z))⁻¹ := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (circleEvaluationLoopSimplex z)) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (circleEvaluationLoopSimplex z))⁻¹ := by
   have h := congrArg Inv.inv (circleCompanionConeComparison_native_difference z)
   simp only [map_inv, inv_inv] at h
   rw [circleEvaluationCompanion_loop_class] at h
@@ -94,8 +94,8 @@ lemma circleCompanionConeComparison_square_component (z : Sp.{u} _⦋0⦌) :
 
 /-- 元の比較辺の apex の BF 自己射そのものが、Sp の可逆な辺を与える。 -/
 lemma circleCompanionConeComparisonHom_isInvertible (z : Sp.{u} _⦋0⦌) :
-    IsInvertibleEdge (coherentNerveEdge (circleCompanionConeComparisonHom z)) :=
-  coherentNerveEdge_isInvertible_of_enrichedInverse (circleCompanionConeComparisonHom z)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (circleCompanionConeComparisonHom z)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentNerveEdge_isInvertible_of_enrichedInverse (circleCompanionConeComparisonHom z)
     (circleCompanionConeComparisonHom z)
     (SpectrumMappingAcyclic.vertexIsoOfComponentEq
       (circleCompanionConeComparison_square_component z))

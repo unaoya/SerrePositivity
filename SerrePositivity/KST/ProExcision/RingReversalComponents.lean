@@ -59,6 +59,6 @@ lemma ringReversalComponentsEquiv_simplex (A : SimplicialObject RingCat.{u}) (n 
   change π₀.mk (X := Comparison.ringSpace A) (A.map (SimplexCategory.rev.map (SimplexCategory.const ⦋0⦌ ⦋n⦌ 0)).op x) =
     π₀.mk (X := Comparison.ringSpace A) (A.map (SimplexCategory.const ⦋0⦌ ⦋n⦌ 0).op x)
   rw [hc]
-  exact (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex_class_eq (Comparison.ringSpace A) x (Fin.last n)).symm
+  exact (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexVertex_class_eq (Comparison.ringSpace A) x (Fin.last n)).symm
 
 end SerrePositivity.KST.ProExcision

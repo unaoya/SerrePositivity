@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.VerdierMovingCanonicalKernelEndpoint
 public import SerrePositivity.KST.Fibration.VerdierNativeControlledSquareIso
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 
 /-!
 概要：指定四有限端点の照合から、同じ実正規化四角柱を元の Verdier・商核四角形へ戻す。
@@ -20,20 +20,20 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-    (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
+    (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)
-  (hfull : L ≫ evaluateFunctorAt
-    (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+  (hfull : L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+    (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
       verdierLowerReconstructionCompositeFamily d Δ[1])
 
 variable
   (H : SSet.Homotopy
     ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0))
-    (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))
+    (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))
       (verdierNativeCompositePoint d 1)))
-  (T : FunctorCompositionTriangle (verdierReadoutUpperComparison d)
+  (T : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle (verdierReadoutUpperComparison d)
     (verdierLowerNativeReadoutHomotopy d L hL) H)
   (hT : T.diagram ≫ (pre verdierReadoutPathBoundary.{u}).app _ =
     curry (verdierReadoutBoundaryDiagram d L hL hfull))
@@ -41,12 +41,12 @@ include hT
 
 
 variable
-  (hU₀ : familyAtVertex
+  (hU₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex
     (verdierMovingUpperFamily d (verdierReadoutMovingLongInput d L hL hfull H T hT))
     (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-      familyAtVertex (zeroMiddleNativeUpperFamily (verdierUpperTriangle d)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (zeroMiddleNativeUpperFamily (verdierUpperTriangle d)
         (verdierUpperTriangle_middle_isZero d) Δ[1]) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
-  (hN₀ : familyAtVertex
+  (hN₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex
     (verdierLowerCanonicalFamily d (verdierLowerCanonicalReadout d L hfull))
     (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = SSet.yonedaEquiv.symm (verdierFullSLowerSimplex d))
 include hU₀ hN₀
@@ -56,26 +56,26 @@ include hU₀ hN₀
 規約：hU₀・hN₀ に条件付き。境界の等号だけで代用しない。
 使われ方：同じ実対角固定三角柱への接続。 -/
 theorem verdierMovingCanonicalSquareFamily_first_controlled :
-    familyAtVertex (verdierMovingCanonicalSquareFamily d L hL hfull H T hT)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingCanonicalSquareFamily d L hL hfull H T hT)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       verdierNativeControlledSquare d (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
-  apply square_isPushout.hom_ext
-  · rw [← familyAtVertex_precomp, verdierMovingCanonicalSquareFamily_upper,
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.square_isPushout.hom_ext
+  · rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex_precomp, verdierMovingCanonicalSquareFamily_upper,
       verdierNativeControlledSquare_upper]
     exact hU₀
-  · rw [← familyAtVertex_precomp, verdierMovingCanonicalSquareFamily_lower,
+  · rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex_precomp, verdierMovingCanonicalSquareFamily_lower,
       verdierNativeControlledSquare_lower]
     exact hN₀.trans (verdierFullSLowerSimplex_original d)
 
 variable
-  (hU₁ : familyAtVertex
+  (hU₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex
     (verdierMovingUpperFamily d (verdierReadoutMovingLongInput d L hL hfull H T hT))
     (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       SSet.yonedaEquiv.symm (verdierMovingUpperLastTriangle d).simplex)
-  (hN₁ : familyAtVertex
+  (hN₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex
     (verdierLowerCanonicalFamily d (verdierLowerCanonicalReadout d L hfull))
     (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-      SSet.yonedaEquiv.symm (coherentSimplexMaximalization (verdierFullSLowerSimplex d)))
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexMaximalization (verdierFullSLowerSimplex d)))
 include hU₁ hN₁
 
 /-- 概要：四つの指定有限端点照合から元の Verdier 四角形と実全 S• 商核の全関手同型。
@@ -83,10 +83,10 @@ include hU₁ hN₁
 規約：hU₀・hN₀・hU₁・hN₁ に条件付き。新しい全族存在入力は取らない。
 使われ方：F1 外延性の供給後に無条件化する c4 の実比較。 -/
 def verdierMovingCanonicalFullKernelSquareIso :
-    FunctorIso (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0))
       (quotientSKernelFullInfinitySquare d.isVerdier) :=
   (verdierNativeControlledSquarePrismIso d (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).symm ≪≫
-    F2.functorIsoOfEq (verdierMovingCanonicalSquareEndpointIso d L hL hfull H T hT)
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (verdierMovingCanonicalSquareEndpointIso d L hL hfull H T hT)
       (verdierMovingCanonicalSquareFamily_first_controlled d L hL hfull H T hT hU₀ hN₀)
       (verdierMovingCanonicalSquareFamily_last_kernel d L hL hfull H T hT hU₁ hN₁)
 
@@ -94,7 +94,7 @@ def verdierMovingCanonicalFullKernelSquareIso :
 方針：同じ全 S• 零角同型の逆を末尾に合成する。
 規約：四端点照合に条件付き。使われ方：c5 の元の実商比較への入力。 -/
 def verdierMovingCanonicalKernelSquareIso :
-    FunctorIso (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0))
       (quotientSKernelInfinitySquare d.inclusion d.projection) :=
   verdierMovingCanonicalFullKernelSquareIso d L hL hfull H T hT hU₀ hN₀ hU₁ hN₁ ≪≫
     (quotientSKernelFullSquareIso d.isVerdier).symm
@@ -106,7 +106,7 @@ def verdierMovingCanonicalKernelSquareIso :
 theorem verdierMovingCanonicalSquare_isPullback_of_positive_stages
     (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
       (relativeSQuotientMap d.projection (n + 1)))) :
-    IsPullbackSquare (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (d.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0)) := by
   exact (quotientSKernelInfinitySquare_isPullback_of_positive_stages
     d.inclusion d.projection d.isVerdier hq).of_functorIso
       (verdierMovingCanonicalKernelSquareIso d L hL hfull H T hT hU₀ hN₀ hU₁ hN₁).symm

@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：普遍作用素の単射性と実比較の鎖写像性を使う。
 規約：KST Construction A.5、零次の差は実計算で零にする。
 使われ方：標準比較ホモトピーの再帰を始め、充填入力のサイクル性を得る。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

@@ -27,7 +27,7 @@ def edgeSourceTransportData {E : SSet.{u}} {x x' y : E _⦋0⦌}
 def EndpointFixedEdgeCylinder.postcomp {E B : SSet.{u}} {x y : E _⦋0⦌}
     {a b : E.Edge x y} (H : EndpointFixedEdgeCylinder a b) (p : E ⟶ B) :
     EndpointFixedEdgeCylinder (a.map p) (b.map p) where
-  homotopy := familyHomotopyEndpointTransport (functorHomotopyPostcomp H.homotopy p)
+  homotopy := familyHomotopyEndpointTransport (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H.homotopy p)
     (SSet.yonedaEquiv_symm_comp a.edge p).symm (SSet.yonedaEquiv_symm_comp b.edge p)
   relative := by
     rw [familyHomotopyEndpointTransport_h]

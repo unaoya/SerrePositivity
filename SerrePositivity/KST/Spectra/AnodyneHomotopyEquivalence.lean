@@ -44,7 +44,7 @@ theorem exists_pointedRetraction {A B : PointedSimplicialSet.{u}} [KanComplex A.
 /-- 概要：anodyne 射のレトラクションとの合成を基点を固定して恒等射へ収縮する。
 方針：包含上で定数のホモトピーを境界 pushout product に沿って延長する。
 規約：標的は Kan、左逆は厳密な点つきレトラクション。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.1。anodyne 射の π_* 保存。 -/
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.1（Tag 00V4）。anodyne 射の π_* 保存。 -/
 theorem exists_pointedRetractionHomotopy {A B : PointedSimplicialSet.{u}}
     [KanComplex B.right] (i : A ⟶ B) (hi : SSet.anodyneExtensions i.right)
     (r : B ⟶ A) (hr : i ≫ r = 𝟙 A) :
@@ -81,14 +81,14 @@ theorem pointedHomotopyMap_bijective_of_anodyne {A B : PointedSimplicialSet.{u}}
     Function.Bijective (pointedHomotopyMap n i) := by
   obtain ⟨r, hr⟩ := exists_pointedRetraction i hi
   obtain ⟨H, hH⟩ := exists_pointedRetractionHomotopy i hi r hr
-  let Hr := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy (r ≫ i) (𝟙 B) H hH
+  let Hr := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedRelativeHomotopy (r ≫ i) (𝟙 B) H hH
   have hl : Function.LeftInverse (pointedHomotopyMap n r) (pointedHomotopyMap n i) := by
     intro a
     rw [← pointedHomotopyMap_comp, hr, pointedHomotopyMap_id]
   have hh : Function.RightInverse (pointedHomotopyMap n r) (pointedHomotopyMap n i) := by
     intro a
     rw [← pointedHomotopyMap_comp]
-    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_eq_of_basedHomotopy n _ _ Hr a).trans (pointedHomotopyMap_id B n a)
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_eq_of_basedHomotopy n _ _ Hr a).trans (pointedHomotopyMap_id B n a)
   exact ⟨hl.injective, hh.surjective⟩
 
 /-- 概要：Kan 複体間の anodyne 射は全基点 π_* 同型。
@@ -96,7 +96,7 @@ theorem pointedHomotopyMap_bijective_of_anodyne {A B : PointedSimplicialSet.{u}}
 規約：L9 の零次数を含むホモトピー類の全単射性。
 使われ方：Goerss–Jardine I §7、BF 1978 §2、HTT A.3.3。置換射の検証。 -/
 theorem kanPiIsomorphism_of_anodyne {A B : SSet.{u}} [KanComplex A] [KanComplex B]
-    (i : A ⟶ B) (hi : SSet.anodyneExtensions i) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism i := by
+    (i : A ⟶ B) (hi : SSet.anodyneExtensions i) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism i := by
   intro a n
   let Ap := PointedSimplicialSet.ofVertex A a
   let Bp := PointedSimplicialSet.ofVertex B (i.app _ a)
@@ -106,7 +106,7 @@ theorem kanPiIsomorphism_of_anodyne {A B : SSet.{u}} [KanComplex A] [KanComplex 
     change SSet.const a ≫ i = SSet.const (i.app _ a)
     exact SSet.const_comp a i)
   have hb := pointedHomotopyMap_bijective_of_anodyne ip hi n
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_bijective_congr n i
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_bijective_congr n i
     (PointedSimplicialSet.basepoint_ofVertex A a)
     (PointedSimplicialSet.basepoint_ofVertex B (i.app _ a)) _ rfl hb
 

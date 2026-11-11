@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HigherComparisonComponents
-public import SerrePositivity.InfinityCategories.ModelBridge.ThreeArrowValue
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrowValue
 
 /-!
 # 元の全 E 代数の reduced hammock と同じ普通の局所化への評価
@@ -50,7 +50,7 @@ lemma mappingSpaceReducedHammockNerveMap_value (X Y : (operad A).Algebra) :
   let := modelCategory A
   rw [mappingSpaceReducedHammockNerveMap, Category.assoc, algebraReducedHammockValue_reduction]
   change (mappingSpaceHammockGraphNerveMap A X Y ≫
-      graphInclusion (weakEquivalences (operad A).Algebra) X Y Word.threeArrow) ≫ _ = _
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (weakEquivalences (operad A).Algebra) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow) ≫ _ = _
   rw [Category.assoc, UniverseValue.graphInclusion_colimitValue]
 
 lemma mappingSpaceReducedHammockNerveMap_value_zero (X Y : (operad A).Algebra)
@@ -69,7 +69,7 @@ lemma mappingSpaceReducedHammockNerveMap_value_zero (X Y : (operad A).Algebra)
       op ((((mappingSpace A).obj (op X)).obj Y).elementsMk (op ⦋0⦌) f))
   have h := congrArg (fun m => m.app (op ⦋0⦌) k)
     (mappingSpaceReducedHammockNerveMap_value A X Y)
-  exact h.trans ((ThreeArrow.special_value _).trans
+  exact h.trans ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.special_value _).trans
     (mappingSpaceSpecialHammockValue_zero A X Y f))
 
 end SerrePositivity.EInfinity.BarrattEccles

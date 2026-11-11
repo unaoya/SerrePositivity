@@ -113,17 +113,17 @@ lemma hornTensor_trivialCofibration
 lemma cosimplicialHom_kanComplex
     (hA : reedyLeft simplex (cofibrations C) (initial.to A))
     (hconst : ∀ {n m : SimplexCategory} (f : n ⟶ m), weakEquivalences C (A.map f))
-    (Y : C) [IsFibrant Y] : SSet.KanComplex ((cosimplicialHom A).obj Y) :=
+    (Y : C) [IsFibrant Y] : SSet.KanComplex ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y) :=
   kanComplex_of_hornTensors A (hornTensor_trivialCofibration A hA hconst) Y
 
 lemma cosimplicialHom_fibration
     (hA : reedyLeft simplex (cofibrations C) (initial.to A))
     (hconst : ∀ {n m : SimplexCategory} (f : n ⟶ m), weakEquivalences C (A.map f))
-    {Y Z : C} (p : Y ⟶ Z) [Fibration p] : Fibration ((cosimplicialHom A).map p) :=
+    {Y Z : C} (p : Y ⟶ Z) [Fibration p] : Fibration ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p) :=
   fibration_of_hornTensors A (hornTensor_trivialCofibration A hA hconst) p
 
 lemma cosimplicialResolution_hom_kanComplex (X Y : C) [IsFibrant Y] :
-    SSet.KanComplex ((cosimplicialHom (cosimplicialResolution X).obj).obj Y) :=
+    SSet.KanComplex ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (cosimplicialResolution X).obj).obj Y) :=
   cosimplicialHom_kanComplex _ (cosimplicialResolution X).cofibrant
     (cosimplicialResolution X).homotopicallyConstant Y
 

@@ -26,7 +26,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 lemma stageFiberFunctionHomotopyEquiv_formula (K : SSet.{u}) (X : PointedSimplicialSet.{u})
     [KanComplex X.right] (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K X n).right r
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K X n).right r
       (UnbasedPointedMapping.stageFiber K X n).basepoint) :
     stageFiberFunctionHomotopyEquiv K X n r a =
       SimplicialFunctionComplex.pointedHomotopyEquiv
@@ -41,7 +41,7 @@ lemma stageFiberFunctionHomotopyEquiv_formula (K : SSet.{u}) (X : PointedSimplic
 
 lemma stageFiberFunctionHomotopyEquiv_natural (K : SSet.{u}) {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right] (p : Y ⟶ Z) (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right r
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right r
       (UnbasedPointedMapping.stageFiber K Y n).basepoint) :
     stageFiberFunctionHomotopyEquiv K Z n r
       (pointedGroupMap (X := UnbasedPointedMapping.stageFiber K Y n)
@@ -68,10 +68,10 @@ lemma stageFiberFunctionHomotopyEquiv_natural (K : SSet.{u}) {Y Z : PointedSimpl
 
 lemma stageFiberCoefficientEquiv_formula (K : SSet.{u}) (X : PointedSimplicialSet.{u})
     [KanComplex X.right] (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K X n).right r
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K X n).right r
       (UnbasedPointedMapping.stageFiber K X n).basepoint) (s : K.nonDegenerate (n + 1)) :
     stageFiberCoefficientEquiv K X n r a s = SimplexCell.positiveHomotopyEquiv X n r
-      (stageFiberFunctionHomotopyEquiv K X n r a ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s)) := rfl
+      (stageFiberFunctionHomotopyEquiv K X n r a ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s)) := rfl
 
 /-- 概要：fiber の群の高次係数表示は係数射に自然。
 方針：各非退化単体で関数複体の群とセルの球面の次数移動の自然性を合成する。
@@ -79,7 +79,7 @@ lemma stageFiberCoefficientEquiv_formula (K : SSet.{u}) (X : PointedSimplicialSe
 使われ方：Goerss–Jardine VIII §1。係数微分の可換式の入力。 -/
 theorem stageFiberCoefficientEquiv_natural (K : SSet.{u}) {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right] (p : Y ⟶ Z) (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right r
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right r
       (UnbasedPointedMapping.stageFiber K Y n).basepoint) :
     stageFiberCoefficientEquiv K Z n r
       (pointedGroupMap (X := UnbasedPointedMapping.stageFiber K Y n)

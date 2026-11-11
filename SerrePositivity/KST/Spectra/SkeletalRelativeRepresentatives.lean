@@ -35,7 +35,7 @@ def relativeMap (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) (d : ℕ)
     pointedCofiber ((PointedObject.adjoinFunctor (C := SSet.{u})).map
       (Subcomplex.homOfLE (K.skeleton.monotone (Nat.le_succ d)))) ⟶ Y :=
   (adjoinCofiberIso _).hom ≫ PointedObject.cofiberDesc _ Y f
-    (hf.trans (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const Y _).symm)
+    (hf.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const Y _).symm)
 
 @[reassoc]
 lemma relativeMap_projection (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) (d : ℕ)
@@ -75,7 +75,7 @@ lemma cellRestriction_projection (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) (
         ((PointedObject.adjoinFunctor (C := SSet.{u})).map (boundary.{u} d).ι) ≫
         cellRestriction K Y d g c =
       (PointedObject.adjoinFunctor (C := SSet.{u})).map c.ιSigmaStdSimplex ≫
-        (PointedObject.adjoinFunctor (C := SSet.{u})).map (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap K d) ≫
+        (PointedObject.adjoinFunctor (C := SSet.{u})).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.characteristicMap K d) ≫
         pointedCofiberProjection ((PointedObject.adjoinFunctor (C := SSet.{u})).map
           (Subcomplex.homOfLE (K.skeleton.monotone (Nat.le_succ d)))) ≫ g := by
   have hc := congrArg (fun t ↦ t ≫ (cellCoproductIso K d).inv)
@@ -125,7 +125,7 @@ lemma cellRestriction_simplex_map (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) 
   change (PointedObject.cofiberQuotient (boundary.{u} d).ι ≫
     (adjoinCofiberIso (boundary.{u} d).ι).inv.right) ≫ _ = _
   rw [adjoinCofiberIso_inv_quotient, Category.assoc]
-  erw [hh, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.characteristic_eq_yoneda]
+  erw [hh, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.characteristic_eq_yoneda]
 
 end
 end SerrePositivity.KST.Spectra.SkeletalCellAttachment

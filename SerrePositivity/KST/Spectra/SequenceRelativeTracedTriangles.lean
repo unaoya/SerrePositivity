@@ -68,7 +68,7 @@ lemma relativeTracedComparison_triangle_simplex (n : ℕ) :
 /-- 三角形全体の射影も、元の指定した列の同じ構造射で一定。 -/
 lemma relativeTracedComparison_triangle_over (n : ℕ) :
     SSet.yonedaEquiv.symm (relativeTracedComparison_triangle hX q hq b f hb h n).simplex ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (q.app (n + 1))).right =
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (q.app (n + 1))).right =
         SSet.const (PointedMapping.familyVertex (X.sigma n ≫ b.app (n + 1))) := by
   rw [relativeTracedComparison_triangle_simplex]
   have hc := (relativeTracedComposite q hq b f h n

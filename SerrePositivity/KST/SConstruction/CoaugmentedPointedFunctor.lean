@@ -31,7 +31,7 @@ lemma coaugmentedPointedAction_basepoint (X Y : PointedSSetObject.{u}) :
     ((coaugmentedPointedObject F η X).obj.hom ▷ (X ⟶[SSet.{u}] Y)) ≫
       uncurry ((coaugmentedPointedInternalFunctor F η).map X Y) =
         toUnit _ ≫ (coaugmentedPointedObject F η Y).obj.hom := by
-  have hb := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint X.obj Y.obj
+  have hb := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.uncurry_basepoint X.obj Y.obj
     (𝟙 (PointedObject.basedHom X.obj Y.obj).right)
   rw [Category.id_comp] at hb
   change ((X.obj.hom ≫ η.app X.obj.right) ▷ (X ⟶[SSet.{u}] Y)) ≫
@@ -45,7 +45,7 @@ lemma coaugmentedPointedAction_basepoint (X Y : PointedSSetObject.{u}) :
 def coaugmentedPointedFamilyMap (X Y : PointedSSetObject.{u}) :
     (X ⟶[SSet.{u}] Y) ⟶
       (coaugmentedPointedObject F η X ⟶[SSet.{u}] coaugmentedPointedObject F η Y) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry (coaugmentedPointedObject F η X).obj
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry (coaugmentedPointedObject F η X).obj
     (coaugmentedPointedObject F η Y).obj
     (uncurry ((coaugmentedPointedInternalFunctor F η).map X Y))
     (coaugmentedPointedAction_basepoint F η X Y)
@@ -56,7 +56,7 @@ lemma coaugmentedPointedFamilyMap_inclusion (X Y : PointedSSetObject.{u}) :
       pointedSSetObjectClosedForget.map (coaugmentedPointedObject F η X)
         (coaugmentedPointedObject F η Y) =
       curry (uncurry ((coaugmentedPointedInternalFunctor F η).map X Y)) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι _ _ _ _
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι _ _ _ _
 
 /-- 同じ元の基点の像と全入力を保持する、標準点つき値の厳密豊穣関手。 -/
 def coaugmentedPointedEnrichedFunctor :

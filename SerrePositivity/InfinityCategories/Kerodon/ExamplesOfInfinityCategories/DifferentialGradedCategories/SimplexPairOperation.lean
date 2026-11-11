@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：単体射の対を二つの制限のテンソルへ送り、鎖の係数について線形に拡張する。
 規約：KST Construction A.5、非被約で全ての次数を許す。
 使われ方：再帰で構成した普遍鎖を比較ホモトピーの実成分にする。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

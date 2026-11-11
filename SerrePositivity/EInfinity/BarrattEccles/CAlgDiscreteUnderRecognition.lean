@@ -23,9 +23,9 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 def discreteCAlgUnderComparisonIso (B : CommAlgCat.{u} A) :
-    VertexIso ((discreteCAlgEmbedding A).app (Opposite.op ⦋0⦌) (nerveVertex B))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((discreteCAlgEmbedding A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B))
       ((discreteCAlgUnderEmbedding A).app (Opposite.op ⦋0⦌)
-        (nerveVertex ((commAlgCatEquivUnder (CommRingCat.of A)).functor.obj B))) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((commAlgCatEquivUnder (CommRingCat.of A)).functor.obj B))) := by
   let E := commAlgCatEquivUnder (CommRingCat.of A)
   let e := (discreteAlgebraFunctor A).mapIso (E.unitIso.app B)
   have hf : QuasiIso e.hom.hom := by
@@ -34,7 +34,7 @@ def discreteCAlgUnderComparisonIso (B : CommAlgCat.{u} A) :
   have h := cAlgVertexIsoOfQuasiIso A e.hom hf
   have h' := (discreteCAlgEmbedding_vertexIso A B) ≪≫ h ≪≫
     (discreteCAlgEmbedding_vertexIso A (E.inverse.obj (E.functor.obj B))).symm
-  change VertexIso _ ((discreteCAlgEmbedding A).app (Opposite.op ⦋0⦌)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso _ ((discreteCAlgEmbedding A).app (Opposite.op ⦋0⦌)
     ((nerveMap E.inverse).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (E.functor.obj B))))
   rw [nerveMap_app_mk₀]
   exact h'
@@ -42,15 +42,15 @@ def discreteCAlgUnderComparisonIso (B : CommAlgCat.{u} A) :
 variable [HasDerivedCategory.{w} (ModuleCat.{u} A)]
 
 def cAlgUnderlyingDiscDiscreteUnderIso (x : (CAlg_R A) _⦋0⦌) (h : cAlgUnderlyingDisc A x) :
-    VertexIso x ((discreteCAlgUnderEmbedding A).app (Opposite.op ⦋0⦌)
-      (nerveVertex ((commAlgCatEquivUnder (CommRingCat.of A)).functor.obj
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x ((discreteCAlgUnderEmbedding A).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((commAlgCatEquivUnder (CommRingCat.of A)).functor.obj
         (zeroDegreeDiscreteAlgebra A (cAlgVertexRepresentative A x))))) :=
   cAlgUnderlyingDiscDiscreteIso A x h ≪≫ discreteCAlgUnderComparisonIso A _
 
 theorem cAlgUnderlyingDisc_iff_discreteUnder (x : (CAlg_R A) _⦋0⦌) :
     cAlgUnderlyingDisc A x ↔ ∃ B : Under (CommRingCat.of A),
-      Nonempty (VertexIso x
-        ((discreteCAlgUnderEmbedding A).app (Opposite.op ⦋0⦌) (nerveVertex B))) := by
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x
+        ((discreteCAlgUnderEmbedding A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B))) := by
   constructor
   · intro h
     exact ⟨_, ⟨cAlgUnderlyingDiscDiscreteUnderIso A x h⟩⟩

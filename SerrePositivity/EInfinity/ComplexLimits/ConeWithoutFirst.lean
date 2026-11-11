@@ -8,7 +8,7 @@ public import SerrePositivity.EInfinity.ComplexLimits.ConeFirstIndex
 -/
 @[expose] public section
 namespace SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
-open SerrePositivity.InfinityCategories.DGNerve
+
 
 def withoutFirst {n : ℕ} (I : Finset (Fin (n + 2))) : Finset (Fin (n + 1)) :=
   Finset.univ.filter (fun i => i.succ ∈ I)
@@ -40,10 +40,10 @@ lemma withoutFirst_nonempty {n : ℕ} {I : Finset (Fin (n + 2))} (hI : 2 ≤ I.c
   omega
 
 lemma max_withoutFirst {n : ℕ} (I : Finset (Fin (n + 2))) (hI : 2 ≤ I.card) (h : 0 ∈ I) :
-    ((withoutFirst I).max' (withoutFirst_nonempty hI h)).succ = I.max' (Index.nonempty hI) := by
+    ((withoutFirst I).max' (withoutFirst_nonempty hI h)).succ = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI) := by
   have hr := withFirst_withoutFirst I h
   have he := max_withFirst (withoutFirst_nonempty hI h)
-    (show (withFirst (withoutFirst I)).Nonempty by rw [hr]; exact Index.nonempty hI)
+    (show (withFirst (withoutFirst I)).Nonempty by rw [hr]; exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)
   simpa only [hr] using he
 
 end SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex

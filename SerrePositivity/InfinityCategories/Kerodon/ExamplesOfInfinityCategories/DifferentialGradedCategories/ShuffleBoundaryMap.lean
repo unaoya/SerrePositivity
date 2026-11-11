@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：二つの単体写像の面の等式を反変な係数へ送り、テンソル写像の合成則を使う。
 規約：KST Construction A.5 の標準 shuffle。水平・垂直の両方の端点と内部を含む。
 使われ方：純粋境界和の有限な添字の同値に適用する各項の等式。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

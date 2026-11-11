@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CoherentNerve
-public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleEdge
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentTriangleEdge
 
 /-!
 概要：Sp の指定した三辺を持つ二単体から、元の全 BF 写像空間の辺を読む。
@@ -17,7 +17,7 @@ universe u
 open CategoryTheory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
-open SerrePositivity.InfinityCategories.F2
+
 namespace SerrePositivity.KST.LocalizingInvariants.SpectrumMappingPrism
 
 local instance triangleMappingSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
@@ -27,9 +27,9 @@ open OmegaSpectrum
 
 def triangleEdge {X Y Z : OmegaSpectrum.{u}}
     (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z) (s : Sp.{u} _⦋2⦌)
-    (h₂ : Sp.δ 2 s = (coherentNerveEdge f).edge)
-    (h₀ : Sp.δ 0 s = (coherentNerveEdge g).edge)
-    (h₁ : Sp.δ 1 s = (coherentNerveEdge h).edge) :
+    (h₂ : Sp.δ 2 s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge)
+    (h₀ : Sp.δ 0 s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).edge)
+    (h₁ : Sp.δ 1 s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge h).edge) :
     (mappingSpace X Z).Edge (vertexOfHom h) (vertexOfHom (f ≫ g)) := by
   have hx : s.obj ⟨ULift.up 0⟩ = X :=
     congrArg (fun t : Sp.{u} _⦋1⦌ ↦ t.obj ⟨ULift.up 0⟩) h₂
@@ -40,19 +40,19 @@ def triangleEdge {X Y Z : OmegaSpectrum.{u}}
   subst X
   subst Y
   subst Z
-  have hf : coherentEdgeHom (Sp.δ 2 s) = f := by
-    have h := congrArg coherentNerveArrowData h₂
-    rw [coherentNerveEdge_edge, coherentNerveArrowData_of_arrow] at h
+  have hf : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coherentEdgeHom (Sp.δ 2 s) = f := by
+    have h := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData h₂
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_edge, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData_of_arrow] at h
     exact eq_of_heq (Sigma.mk.inj (eq_of_heq (Sigma.mk.inj h).2)).2
-  have hg : coherentEdgeHom (Sp.δ 0 s) = g := by
-    have h := congrArg coherentNerveArrowData h₀
-    rw [coherentNerveEdge_edge, coherentNerveArrowData_of_arrow] at h
+  have hg : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coherentEdgeHom (Sp.δ 0 s) = g := by
+    have h := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData h₀
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_edge, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData_of_arrow] at h
     exact eq_of_heq (Sigma.mk.inj (eq_of_heq (Sigma.mk.inj h).2)).2
-  have hh : coherentEdgeHom (Sp.δ 1 s) = h := by
-    have he := congrArg coherentNerveArrowData h₁
-    rw [coherentNerveEdge_edge, coherentNerveArrowData_of_arrow] at he
+  have hh : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coherentEdgeHom (Sp.δ 1 s) = h := by
+    have he := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData h₁
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_edge, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData_of_arrow] at he
     exact eq_of_heq (Sigma.mk.inj (eq_of_heq (Sigma.mk.inj he).2)).2
-  have e := F2.coherentTriangleEdge s
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coherentTriangleEdge s
   dsimp only [Sp] at hf hg hh
   rw [hf, hg, hh] at e
   have hv (r : s.obj ⟨ULift.up 0⟩ ⟶ s.obj ⟨ULift.up 2⟩) :

@@ -48,23 +48,23 @@ variable (C : Type u) [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
 
 abbrev V := ResolutionArrowTupleCoherence.bigVertices C
 abbrev K := ResolutionArrowTupleCoherence.bigTuples C
-abbrev F := NerveMovingParameter.lifted.{u} (ResolutionArrowDiagram.fibers C)
+abbrev F := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{u} (ResolutionArrowDiagram.fibers C)
 abbrev rawBoundary (H J : Index C ⥤ ResolutionArrowDiagram.Index C) (τ : H ⟶ J) :=
   Functor.whiskerLeft H (ResolutionArrowTupleCoherence.bigBoundary C) ≫
     Functor.whiskerRight τ (F C)
 abbrev rawInclusion (H : Index C ⥤ ResolutionArrowDiagram.Index C) :=
-  horizontal (H ⋙ V C) (H ⋙ K C)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal (H ⋙ V C) (H ⋙ K C)
     (Functor.whiskerLeft H (ResolutionArrowTupleCoherence.bigInclusion C))
       ResolutionArrowCylinderBoundary.interval.{max u v}
-abbrev vertices := product (vertexParameters C) ResolutionArrowCylinderBoundary.interval.{max u v}
+abbrev vertices := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (vertexParameters C) ResolutionArrowCylinderBoundary.interval.{max u v}
 abbrev vertexMap := rawInclusion C (cornerA C)
 abbrev fixedVertices := NerveNaturalBoundary.ofNatTrans (vertices C)
-  (NerveMovingParameter.lifted (smallValues C))
+  (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
   (NerveProductParameter.projection (vertexParameters C)
     ResolutionArrowCylinderBoundary.interval.{max u v} ≫ vertexBoundary C)
 
 lemma preAB_vertices : preABSystem C hcof hfib ≫ restriction _ _
-    (NerveMovingParameter.lifted (bValues C)) (rawInclusion C (cornerA C)) =
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (bValues C)) (rawInclusion C (cornerA C)) =
     NerveNaturalBoundary.ofNatTrans _ _
       (NerveProductParameter.projection (cornerA C ⋙ V C)
         ResolutionArrowCylinderBoundary.interval.{max u v} ≫
@@ -72,7 +72,7 @@ lemma preAB_vertices : preABSystem C hcof hfib ≫ restriction _ _
   SelectedIntervalVertices.reindexed_vertices C hcof hfib (preAB C)
 
 lemma postAC_vertices : postACSystem C hcof hfib ≫ restriction _ _
-    (NerveMovingParameter.lifted (cValues C)) (rawInclusion C (cornerA C)) =
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (cValues C)) (rawInclusion C (cornerA C)) =
     NerveNaturalBoundary.ofNatTrans _ _
       (NerveProductParameter.projection (cornerA C ⋙ V C)
         ResolutionArrowCylinderBoundary.interval.{max u v} ≫
@@ -80,7 +80,7 @@ lemma postAC_vertices : postACSystem C hcof hfib ≫ restriction _ _
   SelectedIntervalVertices.reindexed_vertices C hcof hfib (postAC C)
 
 lemma preCD_vertices : preCDSystem C hcof hfib ≫ restriction _ _
-    (NerveMovingParameter.lifted (smallValues C)) (rawInclusion C (cornerC C)) =
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (rawInclusion C (cornerC C)) =
     NerveNaturalBoundary.ofNatTrans _ _
       (NerveProductParameter.projection (cornerC C ⋙ V C)
         ResolutionArrowCylinderBoundary.interval.{max u v} ≫
@@ -88,7 +88,7 @@ lemma preCD_vertices : preCDSystem C hcof hfib ≫ restriction _ _
   SelectedIntervalVertices.reindexed_vertices C hcof hfib (preCD C)
 
 lemma postBD_vertices : postBDSystem C hcof hfib ≫ restriction _ _
-    (NerveMovingParameter.lifted (leftFinalValues C)) (rawInclusion C (cornerB C)) =
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (leftFinalValues C)) (rawInclusion C (cornerB C)) =
     NerveNaturalBoundary.ofNatTrans _ _
       (NerveProductParameter.projection (cornerB C ⋙ V C)
         ResolutionArrowCylinderBoundary.interval.{max u v} ≫
@@ -107,11 +107,11 @@ by
     (b C p) ≫ (F C).map k) (edgeBDLeft_app C p).symm
 
 lemma AB_vertices : intervalAB C hcof hfib ≫ restriction _ _
-    (NerveMovingParameter.lifted (smallValues C)) (vertexMap C) = fixedVertices C := by
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (vertexMap C) = fixedVertices C := by
   change mapTarget _ _ _ _ (preABSystem C hcof hfib) ≫ _ = _
   rw [NerveProductEndpointTransport.mapTarget_restrict, preAB_vertices]
   apply (mapTarget_natural (vertices C) (cornerB C ⋙ F C)
-    (NerveMovingParameter.lifted (smallValues C))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
     (Functor.whiskerRight (edgeBD C) (F C)) _).trans
   apply congrArg (NerveNaturalBoundary.ofNatTrans _ _)
   apply NatTrans.ext
@@ -124,11 +124,11 @@ lemma AB_vertices : intervalAB C hcof hfib ≫ restriction _ _
   simp only [Category.assoc]
 
 lemma AC_vertices : intervalAC C hcof hfib ≫ restriction _ _
-    (NerveMovingParameter.lifted (smallValues C)) (vertexMap C) = fixedVertices C := by
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (vertexMap C) = fixedVertices C := by
   change mapTarget _ _ _ _ (postACSystem C hcof hfib) ≫ _ = _
   rw [NerveProductEndpointTransport.mapTarget_restrict, postAC_vertices]
   apply (mapTarget_natural (vertices C) (cornerC C ⋙ F C)
-    (NerveMovingParameter.lifted (smallValues C))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
     (Functor.whiskerRight (edgeCD C) (F C)) _).trans
   apply congrArg (NerveNaturalBoundary.ofNatTrans _ _)
   apply NatTrans.ext
@@ -141,7 +141,7 @@ lemma AC_vertices : intervalAC C hcof hfib ≫ restriction _ _
   simp only [Category.assoc]
 
 lemma CD_vertices : intervalCD C hcof hfib ≫ restriction _ _
-    (NerveMovingParameter.lifted (smallValues C)) (vertexMap C) = fixedVertices C := by
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (vertexMap C) = fixedVertices C := by
   have hs : Functor.whiskerLeft (cornerA C) (ResolutionArrowTupleCoherence.bigInclusion C) ≫
       Functor.whiskerRight (edgeAC C) (K C) =
       Functor.whiskerRight (edgeAC C) (V C) ≫
@@ -150,7 +150,7 @@ lemma CD_vertices : intervalCD C hcof hfib ≫ restriction _ _
     funext p
     exact ((ResolutionArrowTupleCoherence.bigInclusion C).naturality (ac C p)).symm
   apply (NerveNaturalBoundaryTransport.horizontal_fixed (cornerA C ⋙ V C) (parameters C)
-    (cornerC C ⋙ V C) (cParameters C) (NerveMovingParameter.lifted (smallValues C))
+    (cornerC C ⋙ V C) (cParameters C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
     (Functor.whiskerLeft (cornerA C) (ResolutionArrowTupleCoherence.bigInclusion C))
     (Functor.whiskerLeft (cornerC C) (ResolutionArrowTupleCoherence.bigInclusion C))
     (Functor.whiskerRight (edgeAC C) (K C)) (Functor.whiskerRight (edgeAC C) (V C)) hs
@@ -172,16 +172,16 @@ lemma CD_vertices : intervalCD C hcof hfib ≫ restriction _ _
     ResolutionArrowCylinderBoundary.interval.{max u v} ≫ b) hn
 
 lemma castBD_vertices : castBDSystem C hcof hfib ≫ restriction _ _
-    (NerveMovingParameter.lifted (smallValues C)) (rawInclusion C (cornerB C)) =
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (rawInclusion C (cornerB C)) =
     NerveNaturalBoundary.ofNatTrans _ _
       (NerveProductParameter.projection (cornerB C ⋙ V C)
         ResolutionArrowCylinderBoundary.interval.{max u v} ≫
         rawBoundary C (cornerB C) (cornerD C) (edgeBD C)) := by
   change mapTarget _ _ _ _ (postBDSystem C hcof hfib) ≫ _ = _
   rw [NerveProductEndpointTransport.mapTarget_restrict, postBD_vertices]
-  apply (mapTarget_natural (product (cornerB C ⋙ V C)
+  apply (mapTarget_natural (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (cornerB C ⋙ V C)
     ResolutionArrowCylinderBoundary.interval.{max u v}) (finalLeft C ⋙ F C)
-    (NerveMovingParameter.lifted (smallValues C))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
     (Functor.whiskerRight (toFinal C).hom (F C)) _).trans
   apply congrArg (NerveNaturalBoundary.ofNatTrans _ _)
   apply NatTrans.ext
@@ -195,7 +195,7 @@ lemma castBD_vertices : castBDSystem C hcof hfib ≫ restriction _ _
     (b C p) ≫ (F C).map k) (congr_app (ResolutionMixedEndpointCompatibility.bd_finish C) p)
 
 lemma BD_vertices : intervalBD C hcof hfib ≫ restriction _ _
-    (NerveMovingParameter.lifted (smallValues C)) (vertexMap C) = fixedVertices C := by
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (vertexMap C) = fixedVertices C := by
   have hs : Functor.whiskerLeft (cornerA C) (ResolutionArrowTupleCoherence.bigInclusion C) ≫
       Functor.whiskerRight (edgeAB C) (K C) =
       Functor.whiskerRight (edgeAB C) (V C) ≫
@@ -204,7 +204,7 @@ lemma BD_vertices : intervalBD C hcof hfib ≫ restriction _ _
     funext p
     exact ((ResolutionArrowTupleCoherence.bigInclusion C).naturality (ab C p)).symm
   apply (NerveNaturalBoundaryTransport.horizontal_fixed (cornerA C ⋙ V C) (parameters C)
-    (cornerB C ⋙ V C) (bParameters C) (NerveMovingParameter.lifted (smallValues C))
+    (cornerB C ⋙ V C) (bParameters C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
     (Functor.whiskerLeft (cornerA C) (ResolutionArrowTupleCoherence.bigInclusion C))
     (Functor.whiskerLeft (cornerB C) (ResolutionArrowTupleCoherence.bigInclusion C))
     (Functor.whiskerRight (edgeAB C) (K C)) (Functor.whiskerRight (edgeAB C) (V C)) hs
@@ -227,7 +227,7 @@ lemma BD_vertices : intervalBD C hcof hfib ≫ restriction _ _
 
 lemma faces_vertices (side : Bool) (k : Fin 3) :
     ResolutionMixedFaceSystems.faces C hcof hfib side k ≫ restriction _ _
-      (NerveMovingParameter.lifted (smallValues C)) (vertexMap C) = fixedVertices C := by
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (vertexMap C) = fixedVertices C := by
   cases side <;> fin_cases k
   · exact CD_vertices C hcof hfib
   · exact ResolutionMixedCoherentDiagonal.coherent_vertices C hcof hfib

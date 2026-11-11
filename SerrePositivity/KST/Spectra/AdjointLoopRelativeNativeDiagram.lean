@@ -32,7 +32,7 @@ def fullNativeLoopEndpoint : SimplicialNerve FullObject ⟶ Sp.{u} :=
 方針：終点を元の指定切断へ合成する。
 規約：nativeLoop が正本であることを保持する。
 使われ方：補助 BF 置換との全図式比較の標的。 -/
-def fullNativeLoopDiagramFamily : SimplicialNerve FullObject ⟶ loopDiagrams Sp.{u} :=
+def fullNativeLoopDiagramFamily : SimplicialNerve FullObject ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams Sp.{u} :=
   fullNativeLoopEndpoint ≫ nativeLoopTargetEquivalence.inv
 
 /-- 概要：比較先の全 loop 図式は指定終点を厳密に保つ。
@@ -40,7 +40,7 @@ def fullNativeLoopDiagramFamily : SimplicialNerve FullObject ⟶ loopDiagrams Sp
 規約：終点の同型で厳密等式を代用しない。
 使われ方：指定境界を保つ全図式比較。 -/
 lemma fullNativeLoopDiagramFamily_target :
-    fullNativeLoopDiagramFamily.{u} ≫ loopDiagramEvaluation Sp.{u} 1 1 =
+    fullNativeLoopDiagramFamily.{u} ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 1 1 =
       fullNativeLoopEndpoint := by
   rw [fullNativeLoopDiagramFamily, Category.assoc,
     nativeLoopTargetEquivalence_inv_target, Category.comp_id]
@@ -50,7 +50,7 @@ lemma fullNativeLoopDiagramFamily_target :
 規約：別の loop 関手を定義して同一視しない。
 使われ方：②で必要な全図式同型の右端。 -/
 lemma fullNativeLoopDiagramFamily_source :
-    fullNativeLoopDiagramFamily.{u} ≫ loopDiagramEvaluation Sp.{u} 0 0 =
+    fullNativeLoopDiagramFamily.{u} ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 0 0 =
       fullNativeLoopEndpoint ≫ nativeLoop := by
   rw [fullNativeLoopDiagramFamily, Category.assoc]
   rfl
@@ -60,11 +60,11 @@ lemma fullNativeLoopDiagramFamily_source :
 規約：元の対象を回収する。
 使われ方：既存の点ごとの実 delooping 比較の適用。 -/
 lemma fullNativeLoopEndpoint_vertex (X : FullObject.{u}) :
-    fullNativeLoopEndpoint.app _ (coherentNerveVertex X) =
-      coherentNerveVertex (tail X.val) := by
-  change nativeTail.app _ ((coherentNerveMap fullOriginalEnriched).app _
-    (coherentNerveVertex X)) = _
-  rw [coherentNerveMap_vertex]
+    fullNativeLoopEndpoint.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (tail X.val) := by
+  change nativeTail.app _ ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap fullOriginalEnriched).app _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex]
   exact nativeTail_vertex X.val
 
 /-- 概要：指定した native loop の頂点から元の相対 BF 置換への成分候補。
@@ -72,14 +72,14 @@ lemma fullNativeLoopEndpoint_vertex (X : FullObject.{u}) :
 規約：この成分候補の全 Hom 自然性は別途証明が必要。
 使われ方：②の点ごとの π 同型と厳密自然性を区別する。 -/
 def fullNativeLoopComponent (X : FullObject.{u}) :
-    VertexIso ((fullNativeLoopEndpoint ≫ nativeLoop).app _ (coherentNerveVertex X))
-      ((coherentNerveMap fullReplacedEnriched).app _ (coherentNerveVertex X)) := by
-  change VertexIso (nativeLoop.app _
-    (fullNativeLoopEndpoint.app _ (coherentNerveVertex X))) _
-  rw [fullNativeLoopEndpoint_vertex, coherentNerveMap_vertex]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((fullNativeLoopEndpoint ≫ nativeLoop).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap fullReplacedEnriched).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X)) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (nativeLoop.app _
+    (fullNativeLoopEndpoint.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X))) _
+  rw [fullNativeLoopEndpoint_vertex, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex]
   haveI := isInvertible_of_piIsomorphism (inclusion X.val)
     (piIsomorphism_of_levelwise _ (inclusion_levelwise X.val))
   exact nativeLoopTailVertexIso X.val ≪≫
-    asIso (SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge (inclusion X.val)))
+    asIso (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (inclusion X.val)))
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

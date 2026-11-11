@@ -26,7 +26,7 @@ def kanAdjointRelativeTracedStructureHomotopy (n : ℕ) :=
 
 /-- 正方形の上側には、元の選択済み実構造三角形そのものを保持する。 -/
 lemma kanAdjointRelativeTracedStructureHomotopy_upper (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ (kanAdjointRelativeTracedStructureHomotopy X Y φ j n).h =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ≫ (kanAdjointRelativeTracedStructureHomotopy X Y φ j n).h =
       SSet.yonedaEquiv.symm (kanAdjointRelativeTracedTriangle X Y φ j n).simplex :=
   compositionTriangleSquare_upper _
 
@@ -43,7 +43,7 @@ lemma kanAdjointRelativeTracedStructureHomotopy_start (n : ℕ) :
 /-- 元の非零境界への射影は、正方形全体で同じ構造射の定数族になる。 -/
 lemma kanAdjointRelativeTracedStructureHomotopy_over (n : ℕ) :
     (kanAdjointRelativeTracedStructureHomotopy X Y φ j n).h ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right =
       SSet.const (PointedMapping.familyVertex (X.sigma n ≫

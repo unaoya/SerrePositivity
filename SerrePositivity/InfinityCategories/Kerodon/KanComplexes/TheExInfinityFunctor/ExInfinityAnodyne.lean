@@ -11,6 +11,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 方針：各遷移は本レーンで証明した Ex の単位であり、自然数添字の合成の閉性を使う。
 規約：Moss 2020 Corollary 30。Kan 性の主張はこの定理に含めない。
 使われ方：有限極限を保つ Kan 置換に向けた単位の検証。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

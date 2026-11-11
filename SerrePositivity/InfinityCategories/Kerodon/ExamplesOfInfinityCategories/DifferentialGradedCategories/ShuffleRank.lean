@@ -9,6 +9,8 @@ public import Mathlib.Data.Finset.Sort
 方針：順序同型で開初区間を移し、有限集合の濃度を計算する。
 規約：KST Construction A.5 の標準 shuffle。
 使われ方：第一因子の面の番号から挿入すべき水平ステップを一意に選ぶ。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

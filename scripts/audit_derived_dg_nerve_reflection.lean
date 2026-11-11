@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Derived.DGNerveReflectsQuasiEquivalence
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGNerveReflectsQuasiEquivalence
 import Lean
 
 /-! 新二葉の全宣言を標準三公理で監査し、前三角な始域だけを仮定する公開型を照合する。 -/
@@ -6,8 +6,8 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let targets := #[
-    `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedGradedShift,
-    `SerrePositivity.InfinityCategories.Derived.DGNerveReflectsQuasiEquivalence]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedGradedShift,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGNerveReflectsQuasiEquivalence]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
@@ -21,7 +21,7 @@ run_cmd do
   logInfo m!"DG nerve reflection audit passed: {count} declarations."
 
 open CategoryTheory SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.DGNerve
+
 universe u v
 
 -- 依頼された u+1 の対象宇宙で、始域だけの前三角性から準同値を得る。

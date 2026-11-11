@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.ModelBridge.TargetInvariance
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.TargetInvariance
 public import SerrePositivity.EInfinity.FrameHom.SimplexTerminalEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.LiftSpace
 public import Mathlib.CategoryTheory.LiftingProperties.Limits
@@ -42,10 +42,10 @@ include hA in
 使われ方：元の持ち上げ空間の収縮。 -/
 lemma projection_mono_rlp :
     (MorphismProperty.monomorphisms SSet.{v}).rlp (LiftSpace.projection A a p f) := by
-  have h := SSet.rlp_monomorphisms.ge _ (target_boundary_rlp A hA p)
+  have h := SSet.rlp_monomorphisms.ge _ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.target_boundary_rlp A hA p)
   intro K L i hi
-  have : HasLiftingProperty i ((cosimplicialHom A).map p) := h i hi
-  exact (IsPullback.of_hasPullback ((cosimplicialHom A).map p)
+  have : HasLiftingProperty i ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p) := h i hi
+  exact (IsPullback.of_hasPullback ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p)
     (LiftSpace.point A a f)).hasLiftingProperty i
 
 include hA in

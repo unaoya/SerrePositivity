@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPath
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackHomotopyPoint
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalReplacementPath
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalPullbackHomotopyPoint
 
 /-!
 概要：元の区間引き戻しの全 path 座標を二射影の間の指定ホモトピーとして読む。

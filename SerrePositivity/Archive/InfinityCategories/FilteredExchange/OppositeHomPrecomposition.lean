@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConePrecomposition
-public import SerrePositivity.InfinityCategories.F1.Weighted.NerveFiber
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedConePrecomposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveFiber
 
 /-!
 概要：全反転 Hom の前合成を、weighted nerve の定値係数で厳密に計算する。

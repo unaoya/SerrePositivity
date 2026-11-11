@@ -27,7 +27,7 @@ lemma simplexHADecodeSubsetCell_one_face_heq {n : ℕ} (m : ℕ)
       (serreCubeChainComposition A m (T.card - 1)
         (simplexHADecodeSubsetCell A m (Fin.castSuccOrderEmb.trans v)
           {v (Fin.last (m + 1))} (Finset.singleton_nonempty _) (simplexHADecodePrefix_cut m v))
-        (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb))) := by
+        (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb))) := by
   let I := simplexHADecodeSubset (m + 1) v T
   let r := v (Fin.last (m + 1))
   have hI : 2 ≤ I.card := simplexHADecodeSubset_two (m + 1) v T hT hb
@@ -64,12 +64,12 @@ lemma simplexHADecodeSubsetCell_one_face_heq {n : ℕ} (m : ℕ)
       (simplexHADecodeSubset_right_two m v T hT hb)).trans
         (simplexHADecodeSubset_right_dimension m v T hb)
   have ht := serreCubeChainComposition_heq A (D := CubicalLambda A (Δ[n] : SSet.{u}))
-    (congrArg _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (simplexHADecodeSubset_min (m + 1) v T hb)) rfl
-    (congrArg _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (simplexHADecodeSubset_max (m + 1) v T hT hb)) hL hR
+    (congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (simplexHADecodeSubset_min (m + 1) v T hb)) rfl
+    (congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (simplexHADecodeSubset_max (m + 1) v T hT hb)) hL hR
     (necklaceLambdaCell A L) (necklaceLambdaCell A R)
     (simplexHADecodeSubsetCell A m (Fin.castSuccOrderEmb.trans v)
       {r} (Finset.singleton_nonempty r) (simplexHADecodePrefix_cut m v))
-    (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT r hb))
+    (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT r hb))
     (simplexHADecodeSplitLeft_cell_heq A m v T hT hb)
     (simplexHADecodeSplitRight_cell_heq A m v T hT hb)
   exact hs.trans ht
@@ -88,7 +88,7 @@ lemma simplexHADecodeSubsetCell_one_face {n : ℕ} (m : ℕ)
       serreCubeChainComposition A m (T.card - 1)
         (simplexHADecodeSubsetCell A m (Fin.castSuccOrderEmb.trans v)
           {v (Fin.last (m + 1))} (Finset.singleton_nonempty _) (simplexHADecodePrefix_cut m v))
-        (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb)) :=
+        (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb)) :=
   serreCubeChain_eq_transport_of_heq A (by
     have hp := Finset.card_pos.mpr hT
     omega) _ _

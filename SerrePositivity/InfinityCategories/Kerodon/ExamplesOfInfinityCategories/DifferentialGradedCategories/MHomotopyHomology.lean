@@ -11,6 +11,8 @@ public import Mathlib.Algebra.Category.ModuleCat.Abelian
 方針：区間から得られる実両端間の全鎖ホモトピーと、ホモロジー写像の当該次数の成分への依存性を使う。
 規約：KST Definition A.3、Lemma A.4 の複体側の基礎。H_* 関手自体は定義しない。
 使われ方：同変 bar への移送前の、m 次比較の正当化。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

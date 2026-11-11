@@ -51,7 +51,7 @@ omit [ModelCategory C] in
 使われ方：錐の連結成分の自然性を証明する。 -/
 lemma tensorFrameHomIso_source_naturality {B B' : K ⥤ SimplexCategory ⥤ C}
     (a : B ⟶ B') (Y : C) :
-    (cosimplicialHomMap (Functor.whiskerLeft
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (Functor.whiskerLeft
         (SSet.stdSimplex ⋙ WeightedCones.tensorDiagram Kᵒᵖ W)
         (FrameWeightRealization.map K a))).app Y ≫ (tensorFrameHomIso K W B).hom.app Y =
       (tensorFrameHomIso K W B').hom.app Y ≫ (WeightedCones.coneSpace Kᵒᵖ W).map
@@ -96,7 +96,7 @@ lemma frameConePiZeroLocalizationEquiv_source (a : B ⟶ B') (Y : C) [IsFibrant 
   have hn : ((tensorFrameHomIso K W B').app Y).hom ≫
       (WeightedCones.coneSpace Kᵒᵖ W).map
         (((FrameWeightRealization.homFamily K).map a.op).app Y) =
-    (cosimplicialHomMap (Functor.whiskerLeft
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (Functor.whiskerLeft
       (SSet.stdSimplex ⋙ WeightedCones.tensorDiagram Kᵒᵖ W)
       (FrameWeightRealization.map K a))).app Y ≫ ((tensorFrameHomIso K W B).app Y).hom :=
     (tensorFrameHomIso_source_naturality K W a Y).symm

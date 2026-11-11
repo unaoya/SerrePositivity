@@ -19,34 +19,34 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory CategoryTheory.Limits Hammock
-variable {C D : RelativeCategory.{u}} (F : C ⟶ D)
+variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D)
 
-lemma freeHammockFixedFunctor_augmentation (X Y : C.category) (w : Word)
+lemma freeHammockFixedFunctor_augmentation (X Y : C.category) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     (n : SimplexCategoryᵒᵖ) :
-    Zigzag.Relative.fixedFunctor (w := w) ((freeResolutionMap F).app n)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor (w := w) ((freeResolutionMap F).app n)
         (freeResolutionMap_object F n X) (freeResolutionMap_object F n Y) ⋙
-      Zigzag.Relative.fixedFunctor ((freeResolutionAugmentationNatTrans D).app n)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((freeResolutionAugmentationNatTrans D).app n)
         (freeResolutionObject_augmentation D n (F.functor.obj X))
         (freeResolutionObject_augmentation D n (F.functor.obj Y)) =
-    Zigzag.Relative.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n)
         (freeResolutionObject_augmentation C n X) (freeResolutionObject_augmentation C n Y) ⋙
-      Zigzag.Relative.functor F := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor F := by
   have he := congrArg (fun K : (freeResolution C).obj n ⟶ D => K.functor)
     (NatTrans.congr_app (freeResolutionMap_augmentation F) n)
-  exact (Zigzag.Relative.fixedFunctor_comp _ _ _ _ _ _).symm.trans
-    ((Zigzag.Relative.fixedFunctor_congr (w := w)
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor_comp _ _ _ _ _ _).symm.trans
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor_congr (w := w)
       (F := ((freeResolutionMap F).app n).comp
         ((freeResolutionAugmentationNatTrans D).app n))
       (G := ((freeResolutionAugmentationNatTrans C).app n).comp F) he _ _
       ((congrArg F.functor.obj (freeResolutionObject_augmentation C n X)).trans rfl)
       ((congrArg F.functor.obj (freeResolutionObject_augmentation C n Y)).trans rfl)).trans
-        (Zigzag.Relative.fixedFunctor_comp _ _ _ _ rfl rfl))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor_comp _ _ _ _ rfl rfl))
 
 lemma freeHammockGraphMap_augmentation (X Y : C.category) :
-    (flipFunctor Word SimplexCategoryᵒᵖ SSet.{u}).map (freeHammockWordMap F X Y) ≫
+    (flipFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word SimplexCategoryᵒᵖ SSet.{u}).map (freeHammockWordMap F X Y) ≫
         freeHammockGraphAugmentation D (F.functor.obj X) (F.functor.obj Y) =
       freeHammockGraphAugmentation C X Y ≫
-        (Functor.const SimplexCategoryᵒᵖ).map (Relative.graphDiagramMap F X Y) := by
+        (Functor.const SimplexCategoryᵒᵖ).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagramMap F X Y) := by
   apply NatTrans.ext
   funext n
   apply NatTrans.ext

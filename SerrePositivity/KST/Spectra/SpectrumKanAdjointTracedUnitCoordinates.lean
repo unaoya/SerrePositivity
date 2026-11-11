@@ -24,13 +24,13 @@ variable (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet.{u}}
 /-- 係数逆区間は、同じ単位構造区間への内部 Hom の作用そのもの。 -/
 lemma kanAdjointCoefficientReversePath_unit (n : ℕ) :
     kanAdjointCoefficientReversePath X Y n =
-      PointedMapping.VerticalPath.basedIhomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      PointedMapping.VerticalPath.basedIhomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         (OmegaSpectrum.signedLoopUnitStructurePath Y n) := rfl
 
 /-- 全 Hom の構造区間も同じ単位区間を元の懸垂評価へ前合成した同じ辺。 -/
 lemma kanAdjointParameterStructureInterval_unit_path (n : ℕ) :
     (kanAdjointParameterStructureInterval X Y φ n).path =
-      ((PointedMapping.VerticalPath.basedIhomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      ((PointedMapping.VerticalPath.basedIhomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         (OmegaSpectrum.signedLoopUnitStructurePath Y n)).pre
           (kanAdjointStructureInput X Y φ n)).path := rfl
 

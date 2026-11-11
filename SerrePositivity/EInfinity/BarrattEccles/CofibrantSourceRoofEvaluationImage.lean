@@ -28,7 +28,7 @@ lemma cofibrantAlgebraHammockColimitInclusionMap_precompose (Z : CofibrantAlgebr
     {U V : CofibrantAlgebra A}
     (f : (show (cofibrantAlgebraRelativeCategory A).category from U) ⟶
       (show (cofibrantAlgebraRelativeCategory A).category from V)) :
-    precomposePointMap (arrowMap (cofibrantAlgebraRelativeCategory A).weakEquivalences f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (cofibrantAlgebraRelativeCategory A).weakEquivalences f)
       (show (cofibrantAlgebraRelativeCategory A).category from Z) ≫
       cofibrantAlgebraHammockColimitInclusionMap A U Z =
     cofibrantAlgebraHammockColimitInclusionMap A V Z ≫
@@ -75,8 +75,8 @@ lemma cofibrantSourceRoofProductCommaEvaluationRoofMap_image_Q :
   have hp := cofibrantAlgebraHammockColimitInclusionMap_precompose A Y
     (U := cofibrantSourceRoofDegreeAlgebra A X Y b) (V := X)
     ((cofibrantDKSourceFrameAugmentation A X).app (cofibrantSourceRoofDegree A X Y b))
-  change precomposePointMap
-      (arrowMap (cofibrantAlgebraRelativeCategory A).weakEquivalences
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (cofibrantAlgebraRelativeCategory A).weakEquivalences
         ((cofibrantDKSourceFrameAugmentation A X).app (cofibrantSourceRoofDegree A X Y b)))
       (show (cofibrantAlgebraRelativeCategory A).category from Y) ≫
       cofibrantAlgebraHammockColimitInclusionMap A (cofibrantSourceRoofDegreeAlgebra A X Y b) Y =

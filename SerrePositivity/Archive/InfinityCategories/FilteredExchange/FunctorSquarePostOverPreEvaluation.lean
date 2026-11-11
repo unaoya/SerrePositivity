@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTrianglePostOverPreEvaluation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorHomotopyPostOverPreSquare
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.VertexIsoCompositionTransport
-public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMapCoherence
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.VertexIsoMapCoherence
 
 /-!
 概要：共有対角を持つ二面の指定比較合成を、同じ底上の射で制限する。

@@ -36,7 +36,7 @@ theorem simplicialSumReindex_homotopyPullback_of_fibrations
     (sq : ∀ i, CommSq (a i) (w i) (v (σ i)) (c i))
     (h : ∀ i, IsHomotopyPullback (sq i))
     (hv : ∀ j, SSet.modelCategoryQuillen.J.rlp (v j)) :
-    IsHomotopyPullback (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_commSq σ a w v c sq) := by
+    IsHomotopyPullback (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_commSq σ a w v c sq) := by
   let E i := pullback (c i) (v (σ i))
   let k i : A i ⟶ E i := pullback.lift (w i) (a i) (sq i).w.symm
   have hk i : IsIso (AnodyneHomotopy.anodyneQ.map (k i)) :=
@@ -45,22 +45,22 @@ theorem simplicialSumReindex_homotopyPullback_of_fibrations
   let w' i : E i ⟶ C i := pullback.fst (c i) (v (σ i))
   have h' i : IsPullback (a' i) (w' i) (v (σ i)) (c i) :=
     (IsPullback.of_hasPullback (c i) (v (σ i))).flip
-  have hs := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_isPullback σ a' w' v c h'
+  have hs := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_isPullback σ a' w' v c h'
   have hp := isHomotopyPullback_of_left_fibration hs (simplicialSumMap_rlp v hv)
   apply (isHomotopyPullback_iff_of_localized_isIso
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_commSq σ a w v c sq) hs.toCommSq
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap k) (𝟙 _) (𝟙 _) (𝟙 _) ?_ ?_ (by simp) (by simp)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_commSq σ a w v c sq) hs.toCommSq
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumMap k) (𝟙 _) (𝟙 _) (𝟙 _) ?_ ?_ (by simp) (by simp)
     (simplicialSumMap_localized_isIso k hk) (by infer_instance)
     (by infer_instance) (by infer_instance)).mpr hp
-  · apply _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum_hom_ext
+  · apply _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSum_hom_ext
     intro i
-    change a i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion B (σ i) =
-      (k i ≫ a' i) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion B (σ i)
+    change a i ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion B (σ i) =
+      (k i ≫ a' i) ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion B (σ i)
     simp [k, a']
-  · apply _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum_hom_ext
+  · apply _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSum_hom_ext
     intro i
-    change w i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion C i =
-      (k i ≫ w' i) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion C i
+    change w i ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion C i =
+      (k i ≫ w' i) ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion C i
     simp [k, w']
 
 end SerrePositivity.KST.Comparison

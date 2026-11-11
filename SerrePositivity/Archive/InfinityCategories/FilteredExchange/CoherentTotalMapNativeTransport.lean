@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTotalMapNativeAction
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCoconeValuePre
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTotalCoconeValuePre
 
 /-!
 概要：native 余極限写像の元の fiber 輸送と具体的 Kan 頂点射の指定比較。

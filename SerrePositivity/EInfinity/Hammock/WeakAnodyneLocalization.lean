@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ContinuousKanWeakFunctoriality
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
 
 /-!
 # Kan 標的による元の弱同値の anodyne 局所化での可逆性
@@ -22,7 +22,7 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 
 lemma anodyneQ_map_isIso_of_homotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B)
-    (hf : IsSimplicialHomotopyEquivalence f) : IsIso (AnodyneHomotopy.anodyneQ.map f) := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence f) : IsIso (AnodyneHomotopy.anodyneQ.map f) := by
   obtain ⟨g, ⟨H⟩, ⟨K⟩⟩ := hf
   let Q := AnodyneHomotopy.anodyneQ
   let e : Q.obj A ≅ Q.obj B :=
@@ -36,20 +36,20 @@ lemma anodyneQ_map_isIso_of_homotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B)
   exact e.isIso_hom
 
 lemma anodyneQ_map_isIso_of_weak {A B : SSet.{u}} (f : A ⟶ B)
-    (hf : IsWeakHomotopyEquivalence f) : IsIso (AnodyneHomotopy.anodyneQ.map f) := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f) : IsIso (AnodyneHomotopy.anodyneQ.map f) := by
   let Q := AnodyneHomotopy.anodyneQ
-  have hR := F2.continuousKanReplacement_map_isWeakHomotopyEquivalence f hf
-  have : IsIso (Q.map (F2.continuousKanReplacement.map f)) :=
+  have hR := _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.continuousKanReplacement_map_isWeakHomotopyEquivalence f hf
+  have : IsIso (Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.map f)) :=
     anodyneQ_map_isIso_of_homotopyEquivalence _ hR.isSimplicialHomotopyEquivalence
-  have : IsIso (Q.map (F2.continuousKanReplacementUnit.app A)) :=
-    SSet.anodyneExtensions.Q_inverts _ (F2.continuousKanReplacementUnit_anodyne A)
-  have : IsIso (Q.map (F2.continuousKanReplacementUnit.app B)) :=
-    SSet.anodyneExtensions.Q_inverts _ (F2.continuousKanReplacementUnit_anodyne B)
-  have hn := congrArg Q.map (F2.continuousKanReplacementUnit.naturality f)
-  change Q.map (f ≫ F2.continuousKanReplacementUnit.app B) =
-    Q.map (F2.continuousKanReplacementUnit.app A ≫ F2.continuousKanReplacement.map f) at hn
+  have : IsIso (Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app A)) :=
+    SSet.anodyneExtensions.Q_inverts _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit_anodyne A)
+  have : IsIso (Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app B)) :=
+    SSet.anodyneExtensions.Q_inverts _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit_anodyne B)
+  have hn := congrArg Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.naturality f)
+  change Q.map (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app B) =
+    Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app A ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.map f) at hn
   rw [Q.map_comp, Q.map_comp] at hn
-  have hc : IsIso (Q.map f ≫ Q.map (F2.continuousKanReplacementUnit.app B)) :=
+  have hc : IsIso (Q.map f ≫ Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app B)) :=
     hn.symm ▸ inferInstance
   exact (isIso_comp_right_iff _ _).mp hc
 

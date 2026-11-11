@@ -24,18 +24,18 @@ variable {C : Type u} [Category.{v} C]
 lemma cosimplicialHom_isCardinalAccessible (A : SimplexCategory ⥤ C)
     (κ : Cardinal.{w}) [Fact κ.IsRegular]
     [∀ n, IsCardinalPresentable (A.obj n) κ] :
-    (cosimplicialHom A).IsCardinalAccessible κ := by
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).IsCardinalAccessible κ := by
   have : ∀ n, Functor.IsCardinalAccessible
-      (cosimplicialHom A ⋙ (evaluation SimplexCategoryᵒᵖ (Type v)).obj n) κ := fun n ↦
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A ⋙ (evaluation SimplexCategoryᵒᵖ (Type v)).obj n) κ := fun n ↦
     inferInstanceAs ((coyoneda.obj (op (A.obj n.unop))).IsCardinalAccessible κ)
   exact Smith.AccessibleColimits.functorCategory_isCardinalAccessible _ κ
 
 lemma resolutionHom_isCardinalAccessible (Q : C ⥤ (SimplexCategory ⥤ C)) (R : C ⥤ C)
     (X : Cᵒᵖ) (κ : Cardinal.{w}) [Fact κ.IsRegular]
     [R.IsCardinalAccessible κ] [∀ n, IsCardinalPresentable ((Q.obj X.unop).obj n) κ] :
-    ((resolutionHom Q R).obj X).IsCardinalAccessible κ := by
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom Q R).obj X).IsCardinalAccessible κ := by
   have := cosimplicialHom_isCardinalAccessible (Q.obj X.unop) κ
-  exact inferInstanceAs ((R ⋙ cosimplicialHom (Q.obj X.unop)).IsCardinalAccessible κ)
+  exact inferInstanceAs ((R ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (Q.obj X.unop)).IsCardinalAccessible κ)
 
 /-- One cardinal bounds every degree of the entire fixed small family. -/
 lemma exists_common_degree_presentability [IsAccessibleCategory.{w} C]
@@ -52,7 +52,7 @@ lemma exists_accessible_resolutionHom_family [IsAccessibleCategory.{w} C]
     ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular),
       R.IsCardinalAccessible κ ∧
       (∀ i n, IsCardinalPresentable ((Q.obj (a i)).obj n) κ) ∧
-      (∀ i, ((resolutionHom Q R).obj (op (a i))).IsCardinalAccessible κ) := by
+      (∀ i, ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom Q R).obj (op (a i))).IsCardinalAccessible κ) := by
   obtain ⟨κ₀, h₀, hR⟩ := Functor.IsAccessible.exists_cardinal R
   obtain ⟨μ, hμ, hA⟩ := exists_common_degree_presentability (fun i ↦ Q.obj (a i))
   obtain ⟨κ, hκ, h₀κ, hμκ⟩ := Cardinal.SharplyLT.exists_of_pair κ₀ μ

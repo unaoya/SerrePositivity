@@ -21,20 +21,20 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 接続した二辺から元の初期頂点を取る完全関手。 -/
-def composableWeakInitialExact {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+def composableWeakInitialExact {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     composableWeakArrowModel q ⟶ closedStableModel (ClosedStablePredicate.top (sInputModel B)) :=
   composableWeakFirstExact q ≫ (weakArrowCofiberEquivalence q).inv ≫
     relativeCofiberSubobject (ClosedStablePredicate.top (sInputModel B)) (kernelClosedPredicate q)
 
 /-- 接続した二辺の各辺の共通 cofiber を取る完全関手。 -/
-def composableWeakCofiberExact {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (i : Fin 2) :
+def composableWeakCofiberExact {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (i : Fin 2) :
     composableWeakArrowModel q ⟶ closedStableModel (kernelClosedPredicate q) :=
   Fin.cases (composableWeakFirstExact q) (fun _ => composableWeakNextExact q) i ≫
     (weakArrowCofiberEquivalence q).inv ≫
       relativeCofiberQuotient (ClosedStablePredicate.top (sInputModel B)) (kernelClosedPredicate q)
 
 /-- 切断後の初期評価は元の初期頂点の評価である。 -/
-lemma weakStringTwoHorn_initial {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+lemma weakStringTwoHorn_initial {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     weakStringTwoHornExact q ≫ composableWeakInitialExact q =
       weakStringVertexTopExact q ⦋2⦌ 0 := by
   unfold composableWeakInitialExact
@@ -48,7 +48,7 @@ lemma weakStringTwoHorn_initial {B C : _root_.SerrePositivity.InfinityCategories
           (congrArg (weakStringVertexTopExact q ⦋2⦌) hv))
 
 /-- 切断後の両 cofiber は、元の同じ連続辺の共通補完を厳密に回収する。 -/
-lemma weakStringTwoHorn_cofiber {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (i : Fin 2) :
+lemma weakStringTwoHorn_cofiber {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (i : Fin 2) :
     weakStringTwoHornExact q ≫ composableWeakCofiberExact q i =
       weakStringKernelCofiber q (consecutiveWeakStringEdge 2 i) := by
   fin_cases i
@@ -74,7 +74,7 @@ lemma weakStringTwoHorn_cofiber {B C : _root_.SerrePositivity.InfinityCategories
       _ = _ := congrArg (weakStringKernelCofiber q) he.symm
 
 /-- 接続した二辺の模型上で、同じ初期頂点と同じ両 cofiber を束ねた積比較。 -/
-def composableWeakTwoComparison {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+def composableWeakTwoComparison {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     (multiRealizationFunctor r).obj (composableWeakArrowModel q) ⟶
       (multiRealizationFunctor r).obj
         (closedStableModel (ClosedStablePredicate.top (sInputModel B))) ⊗
@@ -84,7 +84,7 @@ def composableWeakTwoComparison {B C : _root_.SerrePositivity.InfinityCategories
     (Pi.lift (fun i => (multiRealizationFunctor r).map (composableWeakCofiberExact q i)))
 
 /-- 元の二辺の有限比較は、元の圏同値と引き戻し模型上の同じ積比較の合成。 -/
-lemma weakStringFiniteComparison_two_factor {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+lemma weakStringFiniteComparison_two_factor {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     (r : ℕ) :
     (multiRealizationFunctor r).map (weakStringTwoHornExact q) ≫
       composableWeakTwoComparison q r = weakStringFiniteComparison q 2 r := by
@@ -99,8 +99,8 @@ lemma weakStringFiniteComparison_two_factor {B C : _root_.SerrePositivity.Infini
     rfl
 
 /-- 二辺の有限比較の同値性は、引き戻し模型上の同じ具体的積比較の同値性と同値。 -/
-lemma weakStringFiniteComparison_two_localized_isIso_iff {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+lemma weakStringFiniteComparison_two_localized_isIso_iff {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     IsIso (AnodyneHomotopy.anodyneQ.map (weakStringFiniteComparison q 2 (r + 1))) ↔
       IsIso (AnodyneHomotopy.anodyneQ.map (composableWeakTwoComparison q (r + 1))) := by
   have : IsIso (AnodyneHomotopy.anodyneQ.map

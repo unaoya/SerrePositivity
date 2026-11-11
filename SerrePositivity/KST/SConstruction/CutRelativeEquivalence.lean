@@ -18,7 +18,7 @@ open SerrePositivity.InfinityCategories
 
 /-- 相対切断の中央評価後の切断と元の相対 cofiber の入力族は coherent に同型。 -/
 def cutRelativeInputIso (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       ((cutRelativeMiddle n k X ≫ cutStableComparison n k X).val ≫
         cofiberProjection (sConstruction n X.carrier))
       ((relativeCofiberInclusion (cutLeftSupport n k X) (cutRightSupport n k X)).val ≫
@@ -31,18 +31,18 @@ def cutRelativeInputIso (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
 
 /-- 中央評価の後の切断と元の cofiber 族は全ての選択を保った関手同型。 -/
 def cutRelativeAmbientIso (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
-    FunctorIso (cutRelativeMiddle n k X ≫ cutStableComparison n k X).val
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cutRelativeMiddle n k X ≫ cutStableComparison n k X).val
       (relativeCofiberInclusion (cutLeftSupport n k X) (cutRightSupport n k X)).val :=
   functorIsoOfTrivialKanFibrationPostcomp (cofiberProjection (sConstruction n X.carrier))
     (cutRelativeInputIso n k X)
 
 /-- 中央評価の後の相対切断比較は相対 E の内部で恒等関手と coherent に同型。 -/
 def cutRelativeMiddle_comparisonIso (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
-    FunctorIso (cutRelativeMiddle n k X ≫ cutRelativeComparison n k X).val
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cutRelativeMiddle n k X ≫ cutRelativeComparison n k X).val
       (𝟙 (relativeCofiberDiagrams (cutLeftSupport n k X) (cutRightSupport n k X))) := by
   apply functorIsoOfFullSubcomplexPostcomp
     (relativeCofiberPredicate (cutLeftSupport n k X) (cutRightSupport n k X)).predicate
-  change FunctorIso
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (((cutRelativeMiddle n k X ≫ cutRelativeComparison n k X) ≫
       relativeCofiberInclusion (cutLeftSupport n k X) (cutRightSupport n k X)).val)
     (𝟙 _ ≫ (relativeCofiberInclusion (cutLeftSupport n k X) (cutRightSupport n k X)).val)
@@ -57,11 +57,11 @@ def cutRelativeMiddle_comparisonIso (n : ℕ) (k : Fin (n + 1)) (X : StableModel
 
 /-- 任意の切断位置の左右支持の相対 E と S_n C の実際の quasicategory 同値。 -/
 def cutRelativeEquivalence (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
-    QCatEquivalence (sConstruction n X.carrier)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (sConstruction n X.carrier)
       (relativeCofiberDiagrams (cutLeftSupport n k X) (cutRightSupport n k X)) where
   hom := (cutRelativeComparison n k X).val
   inv := (cutRelativeMiddle n k X).val
-  homInvIso := eqToIso (congrArg (fun f => SSet.HomotopyCategory.mk (functorVertex f))
+  homInvIso := eqToIso (congrArg (fun f => SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
     (congrArg Subtype.val (cutRelativeComparison_middle n k X)))
   invHomIso := cutRelativeMiddle_comparisonIso n k X
 

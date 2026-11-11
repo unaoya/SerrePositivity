@@ -23,17 +23,17 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 def complexProbeDerivedSourceVertexIso (X : Complex A) :
-    VertexIso ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-      (nerveVertex ((framedLimitProbeFunctor A).obj X)))
-      ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((framedLimitProbeFunctor A).obj X)))
+      ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)) := by
   have hx : (nerveMap (framedLimitProbeFunctor A)).app (Opposite.op ⦋0⦌)
-      (nerveVertex X) = nerveVertex ((framedLimitProbeFunctor A).obj X) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((framedLimitProbeFunctor A).obj X) := by
     change (nerveMap (framedLimitProbeFunctor A)).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ X) = _
     rw [nerveMap_app_mk₀]
     rfl
   exact (eqToIso (congrArg HomotopyCategory.mk
     (congrArg ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)) hx))).symm ≪≫
-      (complexProbeDerivedSourceIso A).app (nerveVertex X)
+      (complexProbeDerivedSourceIso A).app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)
 
 end SerrePositivity.EInfinity.ComplexLimits

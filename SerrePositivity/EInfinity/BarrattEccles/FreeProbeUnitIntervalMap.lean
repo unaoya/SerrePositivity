@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitComma
-public import SerrePositivity.InfinityCategories.F1B.Adjunction.PointwiseUnitComparison
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.PointwiseUnitComparison
 
 /-!
 # 元の導来自由単位が誘導する標準区間比較
@@ -23,23 +23,23 @@ open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
-def derivedFreeProbeUnitIntervalMap (x : (derivedInfinityCategory A) _⦋0⦌)
+def derivedFreeProbeUnitIntervalMap (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌)
     (y : (CAlg_R A) _⦋0⦌) :
-    intervalMappingSpace (derivedFreeProbeVertex A x) y ⟶
-      intervalMappingSpace x ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) y) :=
-  intervalFunctorMap (cAlgForgetDerived A) (derivedFreeProbeVertex A x) y ≫
-    intervalPrecompose ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (derivedFreeProbeVertex A x) y ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace x ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap (cAlgForgetDerived A) (derivedFreeProbeVertex A x) y ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPrecompose ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) y)
       (derivedFreeProbeUnitHom A x)
 
-lemma derivedFreeProbeUnitIntervalMap_family (x : (derivedInfinityCategory A) _⦋0⦌)
+lemma derivedFreeProbeUnitIntervalMap_family (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌)
     (y : (CAlg_R A) _⦋0⦌) (T : SSet.{u + 1})
-    (f : T ⟶ intervalMappingSpace (derivedFreeProbeVertex A x) y) :
-    intervalFamilyHom (f ≫ derivedFreeProbeUnitIntervalMap A x y) =
-      constantFunctorHomMap T (derivedFreeProbeUnitHom A x) ≫
-        (constantFunctorCompIso T (derivedFreeProbeVertex A x) (cAlgForgetDerived A)).inv ≫
+    (f : T ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (derivedFreeProbeVertex A x) y) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ derivedFreeProbeUnitIntervalMap A x y) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap T (derivedFreeProbeUnitHom A x) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.constantFunctorCompIso T (derivedFreeProbeVertex A x) (cAlgForgetDerived A)).inv ≫
           (hoFunctor.map ((ihom T).map (cAlgForgetDerived A))).toFunctor.map
-            (intervalFamilyHom f) ≫ (constantFunctorCompIso T y (cAlgForgetDerived A)).hom := by
-  rw [derivedFreeProbeUnitIntervalMap, ← Category.assoc, intervalPrecompose_family,
-    intervalFunctorMap_familyHom]
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom f) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.constantFunctorCompIso T y (cAlgForgetDerived A)).hom := by
+  rw [derivedFreeProbeUnitIntervalMap, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPrecompose_family,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalFunctorMap_familyHom]
 
 end SerrePositivity.EInfinity.BarrattEccles

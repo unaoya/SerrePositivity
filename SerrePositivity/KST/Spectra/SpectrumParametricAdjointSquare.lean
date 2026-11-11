@@ -19,16 +19,16 @@ namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 
 /-- 元の段評価全体は、通常円の元の Ω 随伴に対して厳密な全族可換式を持つ。 -/
 lemma pointedEvaluation_parametric_adjoint (X Y : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space (X.sigma n) ≫
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space (X.sigma n) ≫
       PointedMapping.parametricPost PointedSimplicialSet.circle.{u}
         (pointedEvaluation X Y.toKanSequence (n + 1)) =
     PointedMapping.transpose (pointedEvaluation X Y.toKanSequence n) ≫
       PointedObject.basedHomMap (pointedSpace X Y.toKanSequence)
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space (Y.sigma n)) := by
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space (Y.sigma n)) := by
   let M := pointedSpace X Y.toKanSequence
-  let qX := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (X.level (n + 1)).space
-  let qY := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (Y.level (n + 1)).space
-  let aY := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space (Y.sigma n)
+  let qX := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} (X.level (n + 1)).space
+  let qY := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} (Y.level (n + 1)).space
+  let aY := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space (Y.sigma n)
   have h : kanAdjointParameterRight X Y n ≫
       PointedObject.basedHomMap (X.level n).space qY =
     pointedEvaluation X Y.toKanSequence n ≫ PointedObject.basedHomMap (X.level n).space aY :=
@@ -46,7 +46,7 @@ lemma pointedEvaluation_parametric_adjoint (X Y : OmegaSpectrum.{u}) (n : ℕ) :
       (pointedEvaluation X Y.toKanSequence (n + 1)) at hc
   have hk := KanSequence.kanAdjoint_comparison X.toKanSequence n
   change KanSequence.kanAdjoint X.toKanSequence n ≫ qX =
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space (X.sigma n) at hk
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space (X.sigma n) at hk
   calc
     _ = (KanSequence.kanAdjoint X.toKanSequence n ≫ qX) ≫
         PointedMapping.parametricPost PointedSimplicialSet.circle.{u}

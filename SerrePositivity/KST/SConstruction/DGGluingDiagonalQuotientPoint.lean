@@ -16,7 +16,7 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (zc : C) (hc : IsZero (ForgetEnrichment.of (Complex R) zc))
   (zd : D) (hd : IsZero (ForgetEnrichment.of (Complex R) zd))
-  {A : Type t} [DGCategory R A] (j : DGFunctor R A (DGGluingObject R C D M)) (b : D)
+  {A : Type t} [DGCategory R A] (j : DGFunctor R A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)) (b : D)
 local notation "T" => PointedDGQuotientObject R j
 local notation "q" => pointedDGQuotientProjection R j
 local notation "Q" => moduleToDerived R T

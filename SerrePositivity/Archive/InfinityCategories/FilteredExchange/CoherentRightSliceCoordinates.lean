@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionPrism
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionPrism
 public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentSimplexLastPostReindex
 

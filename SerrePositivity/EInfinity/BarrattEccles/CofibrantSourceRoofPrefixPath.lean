@@ -26,7 +26,7 @@ variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 def cofibrantSourceRoofProductCommaNativeFamilyMap :
     nerve (cofibrantSourceRoofProductComma A X Y b) ⟶
-      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
         (show (cofibrantAlgebraRelativeCategory A).category from
           cofibrantSourceRoofDegreeAlgebra A X Y b)
         (show (cofibrantAlgebraRelativeCategory A).category from Y)) :=
@@ -52,7 +52,7 @@ lemma cofibrantSourceRoofProductCommaNativeFamilyMap_pinched :
 def cofibrantSourceRoofProductCommaPrefixPathMap {n : ℕ}
     (Γ : Fin (n + 1) ⥤ cofibrantSourceRoofProductComma A X Y b)
     (t : Fin (n + 1) →o Fin 2) (i : Fin (n + 1)) :
-    nerve (FrameHom.PathMaximum.LastPath.{u + 1} n i) ⟶
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LastPath.{u + 1} n i) ⟶
       SimplicialCategory.sHom
         ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).obj
           ((cofibrantSourceRoofProductCommaDiagram A X Y b).obj (Γ.obj i)))

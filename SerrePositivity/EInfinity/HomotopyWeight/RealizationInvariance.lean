@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroNaturality
-public import SerrePositivity.InfinityCategories.ModelBridge.LocalizationDetection
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.LocalizationDetection
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization
 
 /-!
@@ -46,7 +46,7 @@ lemma realization_map_frame_weakEquivalence
       weakEquivalences C ((B'.obj k).map f))
     (ha : ∀ k n, weakEquivalences C ((a.app k).app n)) :
     weakEquivalences C ((FrameWeightRealization.map K a).app W) := by
-  apply FrameHom.weakEquivalence_of_localized_precomposition_fibrant
+  apply _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.weakEquivalence_of_localized_precomposition_fibrant
   dsimp only
   intro Y hY
   have := hY

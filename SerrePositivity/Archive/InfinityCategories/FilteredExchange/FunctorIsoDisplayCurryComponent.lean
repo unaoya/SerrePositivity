@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoDisplayComponent
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoCurryPointComparison
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoDisplayComponent
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoCurryPointComparison
 
 /-!
 概要：端点表示を揃えた curry の指定成分を、元の同じ係数制限へ戻す。

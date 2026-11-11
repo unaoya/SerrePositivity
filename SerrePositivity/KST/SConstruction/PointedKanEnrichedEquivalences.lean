@@ -1,10 +1,10 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedKanEnrichedObjects
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.PointedKanWhitehead
 public import SerrePositivity.KST.Spectra.PointedMappingComponents
 public import SerrePositivity.KST.Spectra.PointedHomotopyClasses
-public import SerrePositivity.InfinityCategories.F1.Coherent.EnrichedHomotopy
-public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.EnrichedHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.F1BKanComplexHomotopyClasses
 
 /-! # 点つき全基点 π 同型の coherent な可逆性
 概要：L9 の点つき Whitehead の逆を、点つき Kan 複体の ∞ 圏の可逆辺へ移す。
@@ -32,16 +32,16 @@ lemma pointedKanObject_vertex_eq {X Y : PointedKanObject.{u}} (f : X ⟶ Y) :
 /-- 元の基点固定ホモトピー成分の等式を、豊穣頂点の同型へ移す。 -/
 lemma pointedKanObject_nonempty_vertexIso_of_component {X Y : PointedKanObject.{u}}
     (f g : X ⟶ Y) (h : componentOf f.hom = componentOf g.hom) :
-    Nonempty (VertexIso (SimplicialCategory.homEquiv' X Y f)
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (SimplicialCategory.homEquiv' X Y f)
       (SimplicialCategory.homEquiv' X Y g)) := by
   rw [pointedKanObject_vertex_eq, pointedKanObject_vertex_eq]
-  exact nonempty_vertexIso_of_piZero_eq h
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.nonempty_vertexIso_of_piZero_eq h
 
 /-- 全基点 π_* 同型の点つき射の coherent な辺は可逆。 -/
 lemma pointedKanObject_edge_isInvertible_of_piIsomorphism {X Y : PointedKanObject.{u}}
-    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.hom.right) :
-    IsInvertibleEdge (coherentNerveEdge f) := by
-  obtain ⟨g, ⟨HX, hX⟩, ⟨HY, hY⟩⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopyInverse f.hom hf
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f.hom.right) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) := by
+  obtain ⟨g, ⟨HX, hX⟩, ⟨HY, hY⟩⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.exists_pointedHomotopyInverse f.hom hf
   let g' : Y ⟶ X := ObjectProperty.homMk g
   have h₀ : componentOf (f ≫ g').hom = componentOf (𝟙 X : X ⟶ X).hom :=
     ((piZero_eq_iff_pointedHomotopy (𝟙 X.obj) (f.hom ≫ g)).mpr ⟨HX, hX⟩).symm
@@ -49,6 +49,6 @@ lemma pointedKanObject_edge_isInvertible_of_piIsomorphism {X Y : PointedKanObjec
     ((piZero_eq_iff_pointedHomotopy (𝟙 Y.obj) (g ≫ f.hom)).mpr ⟨HY, hY⟩).symm
   obtain ⟨e₀⟩ := pointedKanObject_nonempty_vertexIso_of_component (f ≫ g') (𝟙 X) h₀
   obtain ⟨e₁⟩ := pointedKanObject_nonempty_vertexIso_of_component (g' ≫ f) (𝟙 Y) h₁
-  exact coherentNerveEdge_isInvertible_of_enrichedInverse f g' e₀ e₁
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentNerveEdge_isInvertible_of_enrichedInverse f g' e₀ e₁
 
 end SerrePositivity.KST.SConstruction

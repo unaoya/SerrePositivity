@@ -11,6 +11,8 @@ public import Mathlib.Algebra.Category.ModuleCat.Abelian
 規約：KST Construction A.5 の正規化テンソル。環 ℤ と加群の宇宙を独立に扱うため、
 ModuleCat の同宇宙の monoidal インスタンスを要求しない。
 使われ方：正規化 Moore 複体の ℕ 次数の全テンソルと AW/shuffle の比較。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

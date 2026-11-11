@@ -16,7 +16,7 @@ lemma normalizedTensorTriangleSimplex_eq_pinched {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (τ : Fin (n + 1) →o Fin 3) (h1 : ∀ i, τ i ≠ 1) :
     normalizedTensorTriangleSimplex A X Y c τ = normalizedTensorTrianglePinched A X Y c τ := by
-  apply Simplex.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
   apply simplexData_ext_of_components
   · intro i
     by_cases hz : τ i = 0

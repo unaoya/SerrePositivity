@@ -14,14 +14,14 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 open scoped Simplicial
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
-  (hC : IsIdempotentComplete C.obj) (hD : IsIdempotentComplete D.obj)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
+  (hC : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete C.obj) (hD : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete D.obj)
 
 include hC hD in
 /-- 元の F2 lax pullback そのものは、全 coherent 冪等図式について冪等完備。 -/
-lemma perfectLaxCategory_isIdempotentComplete : IsIdempotentComplete (laxCategory p q).obj :=
+lemma perfectLaxCategory_isIdempotentComplete : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete (laxCategory p q).obj :=
   perfectLaxPullback_isIdempotentComplete p.hom q.hom hC hD
 
 /-- 元の同じ実 lax pullback を Cat^perf の頂点にする。 -/

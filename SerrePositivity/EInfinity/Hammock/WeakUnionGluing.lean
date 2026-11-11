@@ -65,10 +65,10 @@ lemma mapsToSubcomplexSup {A B : X.Subcomplex} {A' B' : Y.Subcomplex}
 lemma weakUnion_gluing {A B : X.Subcomplex} {A' B' : Y.Subcomplex}
     (hA : ∀ k, Set.MapsTo (f.app k) (A.obj k) (A'.obj k))
     (hB : ∀ k, Set.MapsTo (f.app k) (B.obj k) (B'.obj k))
-    (hInf : IsWeakHomotopyEquivalence (mapSubcomplex f (mapsToSubcomplexInf f hA hB)))
-    (ha : IsWeakHomotopyEquivalence (mapSubcomplex f hA))
-    (hb : IsWeakHomotopyEquivalence (mapSubcomplex f hB)) :
-    IsWeakHomotopyEquivalence (mapSubcomplex f (mapsToSubcomplexSup f hA hB)) := by
+    (hInf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (mapSubcomplex f (mapsToSubcomplexInf f hA hB)))
+    (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (mapSubcomplex f hA))
+    (hb : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (mapSubcomplex f hB)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (mapSubcomplex f (mapsToSubcomplexSup f hA hB)) := by
   have hP := (show Subcomplex.BicartSq (A ⊓ B) A B (A ⊔ B) from
     { sup_eq := rfl, inf_eq := rfl }).isPushout
   have hP' := (show Subcomplex.BicartSq (A' ⊓ B') A' B' (A' ⊔ B') from

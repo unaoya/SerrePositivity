@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.EnrichedOrderedCylinderBridge
-public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderRestriction
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderRestriction
 
 /-!
 概要：二段の円柱の比較と、評価パラメータの制限の厳密な両立。
@@ -23,10 +23,10 @@ variable {C : Type v} {D : Type w} [EnrichedCategory SSet.{u} C] [EnrichedCatego
 
 /-- 指定したパラメータの辺での評価は、制限した自然変換の円柱での評価と一致。 -/
 lemma bridge_evaluation :
-    (bridge (C := C) i).comp SSet (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor A F G θ) =
+    (bridge (C := C) i).comp SSet (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.evaluationFunctor A F G θ) =
       (bridge (C := C) (𝟙 (𝟙_ SSet.{u}))).comp SSet
-        (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor (𝟙_ SSet.{u}) F G
-          (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.gradedRestriction i F G θ)) := by
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.evaluationFunctor (𝟙_ SSet.{u}) F G
+          (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.gradedRestriction i F G θ)) := by
   refine EnrichedFunctor.ext SSet ?_ ?_
   · rintro ⟨j, x⟩
     fin_cases j <;> rfl

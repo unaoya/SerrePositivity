@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianEdge
 
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanPostcomposition
-public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration
 
 /-!
 概要：第一終点を固定した分母付き span の第二終点射影は cocartesian fibration。
@@ -21,17 +21,17 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 instance markedSpanFamilyProjection_cocartesianFibration (X : SSet.{u}) [Quasicategory X]
-    (W : Set (X _⦋1⦌)) (x : X _⦋0⦌) : CocartesianFibration (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) where
+    (W : Set (X _⦋1⦌)) (x : X _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianFibration (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamilyProjection X W x) where
   mem := by
     refine ⟨InnerFibration.mem, ?_⟩
     intro v b hb
     obtain ⟨G, hG₀, hGt, hGs, hGa, _hGl⟩ := exists_markedSpanPostcomposition W v.val b hb
     have hv : (markedSpanSource X W).app (Opposite.op ⦋0⦌) v.val = x := by
-      simpa only [PinchedHom.constant_zero] using v.property
+      simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.constant_zero] using v.property
     have hs : G ≫ markedSpanSource X W = SSet.const x :=
       hGs.trans (congrArg SSet.const hv)
-    let F := vertexFiberLift (markedSpanSource X W) x G hs
-    have hF : F ≫ vertexFiberι (markedSpanSource X W) x = G := vertexFiberLift_ι _ _ _ _
+    let F := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberLift (markedSpanSource X W) x G hs
+    have hF : F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x = G := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberLift_ι _ _ _ _
     refine ⟨F, ?_, ?_, ?_⟩
     · have hf₀ : F.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = v := by
         apply Subtype.ext
@@ -43,36 +43,36 @@ instance markedSpanFamilyProjection_cocartesianFibration (X : SSet.{u}) [Quasica
               stdSimplex.obj₀Equiv.symm (0 : Fin 2) := by decide
         rw [hd] at hh
         change G.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-          PinchedHom.constant v.val 0 at hh
-        rw [pinchedConstant_zero] at hh
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant v.val 0 at hh
+        rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero] at hh
         exact hh
       apply SSet.yonedaEquiv.injective
       calc
         SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2) ≫ F) =
-            (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x).δ 1 (SSet.yonedaEquiv F) :=
+            (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamily X W x).δ 1 (SSet.yonedaEquiv F) :=
           (SSet.yonedaEquiv_naturality (SimplexCategory.δ (1 : Fin 2)) F).symm
         _ = F.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := intervalMap_source F
         _ = v := hf₀
         _ = _ := (SSet.yonedaEquiv.apply_symm_apply v).symm
-    · change (F ≫ vertexFiberι (markedSpanSource X W) x) ≫ markedSpanTarget X W = b
+    · change (F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x) ≫ markedSpanTarget X W = b
       rw [hF]
       exact hGt
     · have hFa : F ≫ markedSpanFamilyApex X W x =
           SSet.const ((markedSpanApex X W).app (Opposite.op ⦋0⦌) v.val) := by
-        change (F ≫ vertexFiberι (markedSpanSource X W) x) ≫ markedSpanApex X W = _
+        change (F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x) ≫ markedSpanApex X W = _
         rw [hF]
         exact hGa
       apply isCocartesianEdge_markedSpanFamilyProjection_of_apex
-      have hi := isEquivalencePathVertex_const
+      have hi := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isEquivalencePathVertex_const
         ((markedSpanApex X W).app (Opposite.op ⦋0⦌) v.val)
-      unfold IsEquivalencePathVertex at hi
-      rw [intervalFunctorVertexEdge_functorVertex] at hi
-      have he : ((edgeOfSimplex (SSet.yonedaEquiv F)).map
+      unfold _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsEquivalencePathVertex at hi
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge_functorVertex] at hi
+      have he : ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (SSet.yonedaEquiv F)).map
           ((truncation 2).map (markedSpanFamilyApex X W x))).edge =
-          PinchedHom.constant ((markedSpanApex X W).app (Opposite.op ⦋0⦌) v.val) 1 := by
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant ((markedSpanApex X W).app (Opposite.op ⦋0⦌) v.val) 1 := by
         change (markedSpanFamilyApex X W x).app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv F) = _
         rw [← SSet.yonedaEquiv_comp, hFa]
         rfl
-      exact (isInvertibleEdge_congr he).mpr hi
+      exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr he).mpr hi
 
 end SerrePositivity.KST.LocalizingInvariants

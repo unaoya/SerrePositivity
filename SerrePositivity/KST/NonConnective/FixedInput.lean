@@ -28,7 +28,7 @@ Morita 保存には元の射が Morita 射であるという仮定、BF 交換�
 universe u v w
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.NonConnective
 local instance fixedInputSpectrumCategory :
@@ -38,6 +38,6 @@ local instance fixedInputSpectrumCategory :
 def dgNonconnectiveKFixedInputDiagram (R : Type u) [CommRing R]
     (κ : Cardinal.{u}) [Fact κ.IsRegular] (hκ : Cardinal.aleph0 < κ)
     (A : PerfDGInput.{u, max (u + 1) v} R) :=
-  strictCoherentDiagram (dgNonconnectiveKDiagram R κ hκ A)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (dgNonconnectiveKDiagram R κ hκ A)
 
 end SerrePositivity.KST.NonConnective

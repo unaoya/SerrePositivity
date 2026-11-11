@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedTensorEnrichedFunctor
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformationWhisker
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationWhisker
 
 /-! # 同じ全 Hom 自然な比較の左 smash
 概要：任意の元の全 Hom 自然な比較を、固定左因子との同じ smash で保持する。
@@ -23,8 +23,8 @@ def pointedTensorComparisonTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (F.comp SSet (pointedTensorEnrichedFunctor K))
       (G.comp SSet (pointedTensorEnrichedFunctor K)) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose F G (pointedTensorEnrichedFunctor K)
-    (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker F G c hc)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationPostcompose F G (pointedTensorEnrichedFunctor K)
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker F G c hc)
 
 /-- 同じ比較の左 smash は、元の同じ通常射を成分に持つ。 -/
 lemma pointedTensorComparisonTransformation_app (X : C) :
@@ -49,7 +49,7 @@ lemma pointedTensorComparison_whisker (X Y : C) :
             (G.comp SSet (pointedTensorEnrichedFunctor K)).obj X from
               K ◁ (show (F.obj X).obj ⟶ (G.obj X).obj from c X))
           ((G.comp SSet (pointedTensorEnrichedFunctor K)).obj Y) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformation_whisker _ _
     (pointedTensorComparisonTransformation K F G c hc) _
     (pointedTensorComparisonTransformation_app K F G c hc) X Y
 

@@ -9,6 +9,8 @@ public import Mathlib.Tactic.Abel
 方針：C⊗ℤΔ¹ の射の加減法を用いる。
 規約：KST Construction A.5 の右辺の augmentation 補正。被約複体には移さない。
 使われ方：Lemma 4.16 の C(ψ) ≃ C(ψ)+C(φ)−C(e) から C(φ) ≃ C(e) を導く。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

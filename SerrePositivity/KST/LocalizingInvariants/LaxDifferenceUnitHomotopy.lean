@@ -19,31 +19,31 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
-  {v : E.obj ⟶ D.obj} (a : QCatAdjunction q.hom v) (hv : IsFullyFaithful v)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
+  {v : E.obj ⟶ D.obj} (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction q.hom v) (hv : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful v)
 
 /-- 元の C・D ホモトピーと元の四辺を保持する lax pullback 内の円柱。 -/
 def laxDifferenceUnitPrism : (laxCategory p q).obj ⊗ (Δ[1] : SSet.{u}) ⟶
     (laxCategory p q).obj :=
-  F2.laxPullbackLift p.hom q.hom (laxDifferenceUnitCHomotopy p q v).h
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackLift p.hom q.hom (laxDifferenceUnitCHomotopy p q v).h
     (laxDifferenceUnitDHomotopy p q v a).h
     (FunctorSquareArrowFamily.family (laxDifferenceUnitSquare p q a hv))
     (FunctorSquareArrowFamily.source _) (FunctorSquareArrowFamily.target _)
 
 lemma laxDifferenceUnitPrism_fst : laxDifferenceUnitPrism p q a hv ≫ (laxFst p q).hom =
-    (laxDifferenceUnitCHomotopy p q v).h := F2.laxPullbackLift_fst ..
+    (laxDifferenceUnitCHomotopy p q v).h := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackLift_fst ..
 
 lemma laxDifferenceUnitPrism_snd : laxDifferenceUnitPrism p q a hv ≫ (laxSnd p q).hom =
-    (laxDifferenceUnitDHomotopy p q v a).h := F2.laxPullbackLift_snd ..
+    (laxDifferenceUnitDHomotopy p q v a).h := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackLift_snd ..
 
 lemma laxDifferenceUnitPrism_arrow : laxDifferenceUnitPrism p q a hv ≫
-    F2.laxPullbackArrow p.hom q.hom =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom =
       FunctorSquareArrowFamily.family (laxDifferenceUnitSquare p q a hv) :=
-  F2.laxPullbackLift_arrow ..
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackLift_arrow ..
 
 lemma laxDifferenceUnitPrism_zero : SSet.ι₀ ≫ laxDifferenceUnitPrism p q a hv =
     𝟙 (laxCategory p q).obj := by
-  apply F2.laxPullback_hom_ext p.hom q.hom
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullback_hom_ext p.hom q.hom
   · rw [Category.assoc, laxDifferenceUnitPrism_arrow, FunctorSquareArrowFamily.zero,
       Category.id_comp]
     exact ZeroArrowFamily.ofHomotopy_eq_of_h (laxArrowHomotopy p q) _ rfl
@@ -58,10 +58,10 @@ lemma laxDifferenceUnitPrism_zero : SSet.ι₀ ≫ laxDifferenceUnitPrism p q a 
 
 lemma laxDifferenceUnitPrism_one : SSet.ι₁ ≫ laxDifferenceUnitPrism p q a hv =
     laxDifference p q ≫ laxDifferenceRho p q v := by
-  apply F2.laxPullback_hom_ext p.hom q.hom
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullback_hom_ext p.hom q.hom
   · rw [Category.assoc, laxDifferenceUnitPrism_arrow, FunctorSquareArrowFamily.one]
     have ht : ZeroArrowFamily.ofHomotopy (laxDifferenceUnitTargetArrowHomotopy p q v) =
-        ZeroArrowFamily.ofHomotopy (functorHomotopyPrecomp (laxArrowHomotopy p q)
+        ZeroArrowFamily.ofHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (laxArrowHomotopy p q)
           (laxDifference p q ≫ laxDifferenceRho p q v)) := rfl
     rw [ht, ZeroArrowFamily.ofHomotopy_precomp,
       ZeroArrowFamily.ofHomotopy_eq_of_h (laxArrowHomotopy p q) _ rfl]
@@ -81,29 +81,29 @@ def laxDifferenceUnitHomotopy : SSet.Homotopy (𝟙 (laxCategory p q).obj)
   rel := by ext n ⟨x, y⟩; exact x.property.elim
 
 /-- 写像空間による随伴判定に渡す、元の二関手に対する指定単位候補。 -/
-def laxDifferenceUnitHom : FunctorHom (𝟙 (laxCategory p q).obj)
+def laxDifferenceUnitHom : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (𝟙 (laxCategory p q).obj)
     (laxDifference p q ≫ laxDifferenceRho p q v) :=
   Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (laxDifferenceUnitHomotopy p q a hv))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (laxDifferenceUnitHomotopy p q a hv))
 
 /-- 実単位候補の第二射影は、元の転置された D 成分の類そのもの。 -/
 lemma laxDifferenceUnitHom_snd_arrow :
     Arrow.mk ((hoFunctor.map ((ihom (laxCategory p q).obj).map (laxSnd p q).hom)).toFunctor.map
       (laxDifferenceUnitHom p q a hv)) = Arrow.mk (laxDifferenceUnitD p q a) := by
-  have h := functorHomotopyPostcomp_hom (laxDifferenceUnitHomotopy p q a hv) (laxSnd p q).hom
+  have h := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom (laxDifferenceUnitHomotopy p q a hv) (laxSnd p q).hom
   change Truncated.HomotopyCategory.homMk _ =
     (hoFunctor.map ((ihom (laxCategory p q).obj).map (laxSnd p q).hom)).toFunctor.map
       (laxDifferenceUnitHom p q a hv) at h
   calc
-    _ = Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-        (functorHomotopyPostcomp (laxDifferenceUnitHomotopy p q a hv) (laxSnd p q).hom))) :=
+    _ = Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (laxDifferenceUnitHomotopy p q a hv) (laxSnd p q).hom))) :=
       (congrArg Arrow.mk h).symm
-    _ = Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-        (functorHomHomotopy (laxDifferenceUnitD p q a)))) := by
+    _ = Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy (laxDifferenceUnitD p q a)))) := by
       apply Truncated.HomotopyCategory.congr_arrowMk_homMk
       change SSet.yonedaEquiv (curry (laxDifferenceUnitPrism p q a hv ≫ (laxSnd p q).hom)) = _
       rw [laxDifferenceUnitPrism_snd]
       rfl
-    _ = _ := congrArg Arrow.mk (functorHomHomotopy_hom (laxDifferenceUnitD p q a))
+    _ = _ := congrArg Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy_hom (laxDifferenceUnitD p q a))
 
 end SerrePositivity.KST.LocalizingInvariants

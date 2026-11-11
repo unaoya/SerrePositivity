@@ -37,17 +37,17 @@ lemma algebraCAlgReplacementNerve_forget :
     cofibrantAlgebraDKReplacement_comp_inclusion]
   rfl
 
-def algebraUnderlyingDerivedSource : nerve (operad A).Algebra ⟶ derivedInfinityCategory A :=
+def algebraUnderlyingDerivedSource : nerve (operad A).Algebra ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
   nerveMap (Operad.Algebra.forget (operad A)) ≫ ComplexLimits.complexOrdinaryDerivedSource A
 
 def algebraReplacementUnderlyingDerivedIso :
-    FunctorIso (algebraCAlgReplacementNerve A ≫ cofibrantAlgebraUnderlyingDerivedSource A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (algebraCAlgReplacementNerve A ≫ cofibrantAlgebraUnderlyingDerivedSource A)
       (algebraUnderlyingDerivedSource A) := by
   let η := Functor.whiskerRight (framedLimitProbeComparisonNatTrans A)
     (Operad.Algebra.forget (operad A))
   have hη (X : (operad A).Algebra) : QuasiIso (η.app X) :=
     framedLimitProbeComparison_quasiIso A X
-  have e : FunctorIso
+  have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (nerveMap (framedLimitProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) ≫
         ComplexLimits.complexOrdinaryDerivedSource A) (algebraUnderlyingDerivedSource A) := by
     simpa only [Functor.id_comp, algebraUnderlyingDerivedSource] using
@@ -57,14 +57,14 @@ def algebraReplacementUnderlyingDerivedIso :
         ComplexLimits.complexOrdinaryDerivedSource A := by
     rw [cofibrantAlgebraUnderlyingDerivedSource, ← Category.assoc,
       algebraCAlgReplacementNerve_forget]
-  exact eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) he) ≪≫ e
+  exact eqToIso (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)) he) ≪≫ e
 
 def algebraCAlgSource_underlyingDerivedIso :
-    FunctorIso (algebraCAlgSource A ≫ cAlgForgetDerived A) (algebraUnderlyingDerivedSource A) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (algebraCAlgSource A ≫ cAlgForgetDerived A) (algebraUnderlyingDerivedSource A) :=
   algebraCAlgSource_forgetIso A ≪≫ algebraReplacementUnderlyingDerivedIso A
 
 def discreteCAlgEmbedding_underlyingDerivedIso :
-    FunctorIso (discreteCAlgEmbedding A ≫ cAlgForgetDerived A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (discreteCAlgEmbedding A ≫ cAlgForgetDerived A)
       (nerveMap (discreteAlgebraFunctor A) ≫ algebraUnderlyingDerivedSource A) := by
   simpa only [discreteCAlgEmbedding, Category.assoc] using
     (algebraCAlgSource_underlyingDerivedIso A).precomp (nerveMap (discreteAlgebraFunctor A))

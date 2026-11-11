@@ -21,7 +21,7 @@ lemma simplexHAZeroChainLift_recovery {n : ℕ}
     (v : Fin 1 ↪o Fin (n + 1)) (b : Fin (n + 1)) (hb : v 0 < b) :
     simplexHAZeroChainLift A (cubicalLambdaNativeSimplex A F) v b hb =
       simplexHABeadWordCell A (simplexHAGeneratorWord 0 PUnit.unit v b hb) ≫
-        F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) := by
+        F.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) := by
   apply serreCube_generator_hom_ext A 0
   intro i
   have hi : i = PUnit.unit := by cases i; rfl

@@ -60,7 +60,7 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   [HomotopicalAlgebra.ModelCategory SSet.{v}]
   (hcof : HomotopicalAlgebra.cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
   (hfib : HomotopicalAlgebra.fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
-  (P : SSet.{max u v}) {T : SSet.{v}} (j : UniverseLift.obj.{max u v} T ⟶ P)
+  (P : SSet.{max u v}) {T : SSet.{v}} (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
 
 abbrev evaluation (n : SimplexCategoryᵒᵖ) (x : P.obj n) :=
   (OrdinaryBarWordPresentation.realization (C := C) hcof hfib P n.unop.len n (point n x)).functor
@@ -91,7 +91,7 @@ lemma evaluation_naturality {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (z : P.
   exact hh.trans (types_congr_hom he ((lifted hcof hfib X).map θ x)).symm
 
 def family {X Y : D C}
-    (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) :
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) :
     small hcof hfib X ⊗ T ⟶ small hcof hfib Y where
   app n := ↾fun x =>
     (evaluation hcof hfib P n (j.app n (ULift.up x.2))
@@ -114,8 +114,8 @@ def family {X Y : D C}
     exact congrArg ULift.down hh.symm
 
 lemma family_substitute {U : SSet.{v}} (i : U ⟶ T) {X Y : D C}
-    (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) :
-    family hcof hfib P (UniverseLift.map i ≫ j) (UniverseLift.map i ≫ f) =
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) :
+    family hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ f) =
       ParameterComposition.substitute i (family hcof hfib P j f) := by
   ext n x
   rfl
@@ -132,8 +132,8 @@ lemma family_identity (X : D C) :
   rfl
 
 lemma family_comp {X Y Z : D C}
-    (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
-    (g : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C Y Z) :
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
+    (g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C Y Z) :
     ParameterComposition.comp (family hcof hfib P j f) (family hcof hfib P j g) =
       family hcof hfib P j (lift f g ≫ OrdinaryBarFixedWordResolution.composition C X Y Z) := by
   ext n x

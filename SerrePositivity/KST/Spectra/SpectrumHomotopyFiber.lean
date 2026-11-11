@@ -75,7 +75,7 @@ theorem homotopy_exact_connecting_fiber {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
     (j : ℤ) (a : homotopyGroup (homotopyFiber f) j) :
     homotopyMap (homotopyFiberInclusion f) j a = 1 ↔
       ∃ b : homotopyGroup Y (j + 1), homotopyFiberBoundary f j b = a :=
-  _root_.SerrePositivity.InfinityCategories.Kan.group_exact_of_equivalences (homotopyFiberBoundary f j)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.group_exact_of_equivalences (homotopyFiberBoundary f j)
     (homotopyMap (homotopyFiberInclusion f) j)
     (stableConnectingHom (fibrationReplacementProjection f) j)
     (homotopyMap (fiberInclusion (fibrationReplacementProjection f) inferInstance) j)
@@ -91,7 +91,7 @@ theorem homotopy_exact_total_base {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
     (j : ℤ) (a : homotopyGroup Y (j + 1)) :
     homotopyFiberBoundary f j a = 1 ↔
       ∃ b : homotopyGroup X (j + 1), homotopyMap f (j + 1) b = a :=
-  _root_.SerrePositivity.InfinityCategories.Kan.group_exact_of_equivalences (homotopyMap f (j + 1)) (homotopyFiberBoundary f j)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.group_exact_of_equivalences (homotopyMap f (j + 1)) (homotopyFiberBoundary f j)
     (homotopyMap (fibrationReplacementProjection f) (j + 1))
     (stableConnectingHom (fibrationReplacementProjection f) j)
     (fibrationReplacementGroupEquiv f (j + 1)) (MulEquiv.refl _) (MulEquiv.refl _)
@@ -106,7 +106,7 @@ theorem homotopy_exact_fiber_total {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
     (j : ℤ) (a : homotopyGroup X j) :
     homotopyMap f j a = 1 ↔
       ∃ b : homotopyGroup (homotopyFiber f) j, homotopyMap (homotopyFiberInclusion f) j b = a :=
-  _root_.SerrePositivity.InfinityCategories.Kan.group_exact_of_equivalences (homotopyMap (homotopyFiberInclusion f) j) (homotopyMap f j)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.group_exact_of_equivalences (homotopyMap (homotopyFiberInclusion f) j) (homotopyMap f j)
     (homotopyMap (fiberInclusion (fibrationReplacementProjection f) inferInstance) j)
     (homotopyMap (fibrationReplacementProjection f) j)
     (MulEquiv.refl _) (fibrationReplacementGroupEquiv f j) (MulEquiv.refl _)

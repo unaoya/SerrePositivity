@@ -23,7 +23,7 @@ open scoped Simplicial
 lemma ihom_fullSubcomplex_hasLiftingProperty_of_vertexSurjective {A B X : SSet.{u}}
     (K : SSet.{u}) (P : X _⦋0⦌ → Prop) (i : A ⟶ B)
     (hi : Function.Surjective (i.app (Opposite.op ⦋0⦌))) :
-    HasLiftingProperty i ((ihom K).map (fullSubcomplexOnVertices X P).ι) := by
+    HasLiftingProperty i ((ihom K).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι) := by
   apply ((ihom.adjunction K).hasLiftingProperty_iff i _).1
   apply fullSubcomplex_hasLiftingProperty_of_vertexSurjective
   rintro ⟨a, b⟩
@@ -37,10 +37,10 @@ lemma initialBoundaryLifting_reflect_of_boundary_lifting {E B E' B' : SSet.{u}}
     (p : E ⟶ B) (q : E' ⟶ B') (i : E ⟶ E') (j : B ⟶ B') [Mono j]
     (h : i ≫ q = p ≫ j)
     (hi : ∀ n : ℕ, HasLiftingProperty (boundary (n + 1)).ι i)
-    {x : E _⦋0⦌} (hx : InitialBoundaryLifting q (i.app (Opposite.op ⦋0⦌) x)) :
-    InitialBoundaryLifting p x := by
+    {x : E _⦋0⦌} (hx : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryLifting q (i.app (Opposite.op ⦋0⦌) x)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryLifting p x := by
   intro n a b ha sq
-  have hf : boundaryVertex n 0 ≫ (a ≫ i) =
+  have hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.boundaryVertex n 0 ≫ (a ≫ i) =
       SSet.yonedaEquiv.symm (i.app (Opposite.op ⦋0⦌) x) := by
     rw [← Category.assoc, ha, SSet.yonedaEquiv_symm_comp]
   have cs : CommSq (a ≫ i) (boundary (n + 1)).ι q (b ≫ j) := by
@@ -57,16 +57,16 @@ lemma initialBoundaryLifting_reflect_of_boundary_lifting {E B E' B' : SSet.{u}}
 方針：余錐制限の相対始点境界充填を、内部 Hom の包含を通じて反映する。
 規約：周囲だけが quasicategory。使われ方：gapped 普遍余錐を S_n 内で普遍にする。 -/
 lemma isColimitCone_fullSubcomplex_of_ambient {K X : SSet.{u}} [Quasicategory X]
-    (P : X _⦋0⦌ → Prop) {p : K ⟶ (fullSubcomplexOnVertices X P : SSet.{u})}
-    (c : JoinCocone p)
-    (hc : IsColimitCone (mapJoinCocone (fullSubcomplexOnVertices X P).ι c)) :
-    IsColimitCone c := by
-  apply isColimitCone_of_initialBoundaryLifting_coconeRestriction c
+    (P : X _⦋0⦌ → Prop) {p : K ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u})}
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone p)
+    (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (mapJoinCocone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι c)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_of_initialBoundaryLifting_coconeRestriction c
   apply initialBoundaryLifting_reflect_of_boundary_lifting
-    (coconeRestriction K (fullSubcomplexOnVertices X P : SSet.{u}))
-    (coconeRestriction K X) ((ihom (join K (Δ[0] : SSet.{u}))).map
-      (fullSubcomplexOnVertices X P).ι) ((ihom K).map (fullSubcomplexOnVertices X P).ι)
-  · exact (pre (joinInl K (Δ[0] : SSet.{u}))).naturality _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeRestriction K (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeRestriction K X) ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join K (Δ[0] : SSet.{u}))).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι) ((ihom K).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι)
+  · exact (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl K (Δ[0] : SSet.{u}))).naturality _
   · intro n
     exact ihom_fullSubcomplex_hasLiftingProperty_of_vertexSurjective _ P _
       (boundary_vertex_surjective n)

@@ -108,7 +108,7 @@ lemma cofibrantAlgebraDKCoefficientExtension_map_weak
 
 /-- 拡大後の局所化は、拡大前の cofibrant 代数の擬同型を反転する。 -/
 lemma cAlgCoefficientExtensionSource_inverts :
-    InvertsEdges (nerveMap (cofibrantAlgebraDKCoefficientExtension f) ≫ cAlgLocalizationSource T)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (nerveMap (cofibrantAlgebraDKCoefficientExtension f) ≫ cAlgLocalizationSource T)
       (weakNerveEdges (cofibrantAlgebraRelativeCategory S)) := by
   apply weakNerveEdges_inverts_of_arrows
   intro X Y g hg
@@ -116,7 +116,7 @@ lemma cAlgCoefficientExtensionSource_inverts :
   have h := weakNerveEdges_inverts_arrows (cofibrantAlgebraRelativeCategory T) _
     (cAlgLocalizationSource_inverts T) (F.map g)
     (cofibrantAlgebraDKCoefficientExtension_map_weak f g hg)
-  apply (isInvertibleEdge_congr
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
     (e := ((nerve.edgeMk g).map (nerveMap F ≫ cAlgLocalizationSource T)).toTruncated)
     (f := ((nerve.edgeMk (F.map g)).map (cAlgLocalizationSource T)).toTruncated) ?_).mpr h
   change (cAlgLocalizationSource T).app (Opposite.op ⦋1⦌)
@@ -127,9 +127,9 @@ lemma cAlgCoefficientExtensionSource_inverts :
 /-- HA §3.2.2 の底変更関手を、厳密な係数拡大から延長する。 -/
 lemma cAlgCoefficientExtension_exists :
     ∃ L : CAlg_R S ⟶ CAlg_R T,
-      Nonempty (FunctorIso (cAlgLocalizationSource S ≫ L)
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cAlgLocalizationSource S ≫ L)
         (nerveMap (cofibrantAlgebraDKCoefficientExtension f) ≫ cAlgLocalizationSource T)) :=
-  FrameHom.localization_extension_exists (cAlgLocalizationSource S)
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.localization_extension_exists (cAlgLocalizationSource S)
     (weakNerveEdges (cofibrantAlgebraRelativeCategory S)) (cAlgLocalizationSource_inverts S)
     (cAlgLocalizationPrecomposition_isQCatEquivalence S (CAlg_R T)) _
     (cAlgCoefficientExtensionSource_inverts f)
@@ -140,7 +140,7 @@ def barrattEcclesBaseChange : CAlg_R S ⟶ CAlg_R T :=
 
 /-- 導来係数拡大は cofibrant 入力上で厳密な拡大と自然に一致する。 -/
 def barrattEcclesBaseChange_cofibrantIso :
-    FunctorIso (cAlgLocalizationSource S ≫ barrattEcclesBaseChange f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cAlgLocalizationSource S ≫ barrattEcclesBaseChange f)
       (nerveMap (cofibrantAlgebraDKCoefficientExtension f) ≫ cAlgLocalizationSource T) :=
   (cAlgCoefficientExtension_exists f).choose_spec.some
 

@@ -78,14 +78,14 @@ lemma presentedPerfectDGBoundaryKanUnit_anodyne (r : ℕ) (C : PerfDGInput.{u, v
 /-- γ1 による、全 native dg 入力から点つき Kan 空間への各実現段の ∞ 関手。 -/
 def presentedPerfectDGBoundaryKanInfinityFunctor (r : ℕ) :
     perfDGInputInfinity.{u, v} A ⟶ PointedKanInfinity.{max (u + 1) v} :=
-  coherentNerveMap (presentedPerfectDGBoundaryKanEnrichedFunctor A r)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (presentedPerfectDGBoundaryKanEnrichedFunctor A r)
 
 /-- ∞ 関手の各頂点は、同じ元の境界商の基点を保持した Ex∞ Kan 値。 -/
 lemma presentedPerfectDGBoundaryKanInfinityFunctor_vertex (r : ℕ)
     (C : PerfDGInput.{u, v} A) :
     (presentedPerfectDGBoundaryKanInfinityFunctor A r).app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex C) =
-        coherentNerveVertex ((presentedPerfectDGBoundaryKanEnrichedFunctor A r).obj C) :=
-  coherentNerveMap_vertex _ C
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex C) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((presentedPerfectDGBoundaryKanEnrichedFunctor A r).obj C) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex _ C
 
 end SerrePositivity.KST.SConstruction

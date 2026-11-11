@@ -11,6 +11,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 方針：正則 pairing から像の包含の anodyne 性を得て、単射な単位の像への同型を合成する。
 規約：Moss 2020 Theorem 22。regular pairing は本レーンで証明し Mathlib の一般定理を使う。
 使われ方：Ex∞ の単位の anodyne 性と Kan 置換の構成。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

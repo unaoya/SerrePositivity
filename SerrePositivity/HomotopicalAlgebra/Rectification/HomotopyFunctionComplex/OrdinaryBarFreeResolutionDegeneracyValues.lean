@@ -4,7 +4,7 @@ public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionC
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorLatchingValues
 public import Mathlib.AlgebraicTopology.SimplexCategory.Rev
 
-public import SerrePositivity.InfinityCategories.Simplicial.ReversedDegeneracies
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ReversedDegeneracies
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarFreeResolutionDegeneracyValues
@@ -56,11 +56,11 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   (F : degree D (n + 2) ⥤ target (C := C) hcof hfib (parameters P (n + 1)))
   (G : degree D (n + 1) ⥤ target (C := C) hcof hfib (parameters P n))
   (degeneracyLaw : ∀ i : Fin (n + 1), degeneracyFunctor D n i ⋙ F =
-    G ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ sigma n i))
+    G ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i))
 
 def diagram (i : Fin (n + 2)) :
     degree D (n + 2) ⥤ target (C := C) hcof hfib (parameters P (n + 2)) :=
-  F ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ sigma (n + 1) i)
+  F ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma (n + 1) i)
 
 include degeneracyLaw in
 lemma diagram_overlap (i j : Fin (n + 1)) (h : i ≤ j) :
@@ -70,7 +70,7 @@ lemma diagram_overlap (i j : Fin (n + 1)) (h : i ≤ j) :
   rw [← CategoryTheory.Functor.assoc, ← CategoryTheory.Functor.assoc,
     degeneracyLaw j, degeneracyLaw i, CategoryTheory.Functor.assoc, CategoryTheory.Functor.assoc,
     ← OrdinaryBarChoiceCategory.reindex_comp, ← OrdinaryBarChoiceCategory.reindex_comp,
-    tensor_sigma_sigma P n i j h]
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.tensor_sigma_sigma P n i j h]
 
 abbrev object (X : D) : target (C := C) hcof hfib (parameters P (n + 2)) :=
   ⟨(F.obj X).base⟩

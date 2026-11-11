@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeFirstTetrahedronRelation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeLastTetrahedronRelation
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.PrismIsoCancellation
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PrismIsoCancellation
 
 /-!
 概要：Kan 錐の全円柱から得る脚の指定比較と元の錐の三角形の整合式。

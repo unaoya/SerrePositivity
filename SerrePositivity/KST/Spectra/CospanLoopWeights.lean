@@ -90,7 +90,7 @@ def loopHornCollapse : loopHornWeight.{u} ⟶ loopIntervalWeight :=
 lemma loopIntervalToTriangle_central_anodyne :
     anodyneExtensions (loopIntervalToTriangle.{u}.app (AsSmall.up.obj .one)) := by
   have h₁ : anodyneExtensions (horn₂₁.ι₀₁ : (Δ[1] : SSet.{u}) ⟶ horn 2 1) :=
-    MorphismProperty.of_isPushout horn₂₁.isPushout (_root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalFace_anodyne (1 : Fin 2))
+    MorphismProperty.of_isPushout horn₂₁.isPushout (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.intervalFace_anodyne (1 : Fin 2))
   have h₂ := anodyneExtensions.horn_ι (1 : Fin 3)
   have h := anodyneExtensions.comp_mem horn₂₁.ι₀₁ (horn 2 1).ι h₁ h₂
   rwa [horn.ι_ι] at h

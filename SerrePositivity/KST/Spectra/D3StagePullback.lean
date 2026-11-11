@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.D3StageEvaluation
 public import SerrePositivity.KST.Spectra.Limits.SpectrumHomFibrations
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeFunctorImage
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.StrictConeFunctorImage
 
 /-!
 概要：元の BF 引き戻し錐の全 coherent 段評価は、点つき Kan ∞ 圏の極限錐。
@@ -19,7 +19,7 @@ universe u
 open CategoryTheory Limits MonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 local instance d3StagePullbackSpectrumCategory : SimplicialCategory OmegaSpectrum.{u} :=
@@ -29,7 +29,7 @@ local instance d3StagePullbackPointedCategory : SimplicialCategory PointedSimpli
 
 /-- 同じ豊穣段評価の通常の作用。 -/
 abbrev d3StageOrdinary (n : ℕ) : OmegaSpectrum.{u} ⥤ PointedKanObject.{u} :=
-  coherentEnrichedUnderlyingFunctor (d3StageKanEnriched n)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (d3StageKanEnriched n)
 
 lemma d3StageOrdinary_map (n : ℕ) {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) :
     (d3StageOrdinary n).map f = ObjectProperty.homMk (f.app n) := by
@@ -65,7 +65,7 @@ def d3StagePullbackCone (n : ℕ) :
 
 /-- 元の段の実極限性から、同じ段錐の全 Kan 豊穣 Hom の極限性を得る。 -/
 def d3StagePullbackCone_hom_isLimit (n : ℕ) (Z : PointedKanObject.{u}) :
-    IsLimit (simplicialHomCone (d3StagePullbackCone p q n) Z) := by
+    IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone (d3StagePullbackCone p q n) Z) := by
   have hc : IsLimit (pointedKanProperty.ι.mapCone (d3StagePullbackCone p q n)) := by
     have h : IsLimit ((d3StageOrdinary n ⋙ pointedKanProperty.ι).mapCone
         (spectrumPullbackCone p q)) := by
@@ -82,27 +82,27 @@ def d3StagePullbackCone_hom_isLimit (n : ℕ) (Z : PointedKanObject.{u}) :
 
 /-- 同じ元の BF 引き戻し錐の段評価は、実際の ∞ 極限錐。 -/
 lemma d3StagePullbackCone_isLimit (n : ℕ) :
-    IsLimitCone (strictCoherentCone (d3StagePullbackCone p q n)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (d3StagePullbackCone p q n)) := by
   have h : ∀ Z : PointedKanObject.{u}, Fibration
-      ((simplicialHomDiagram (spectrumPullbackDiagram p q ⋙ d3StageOrdinary n) Z).map
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (spectrumPullbackDiagram p q ⋙ d3StageOrdinary n) Z).map
         (AsSmall.up.map WalkingCospan.Hom.inl)) := fun Z ↦ by
     change Fibration (eHomWhiskerLeft SSet Z ((d3StageOrdinary n).map p))
     rw [d3StageOrdinary_map]
     change Fibration (eHomWhiskerLeft SSet Z.obj (p.app n))
     rw [PointedEnrichment.whiskerLeft_eq]
     exact PointedMapping.post_fibration Z.obj (p.app n)
-  exact strictCoherentCone_isLimit_of_cospan_homLimit (d3StagePullbackCone p q n)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_cospan_homLimit (d3StagePullbackCone p q n)
     (d3StagePullbackCone_hom_isLimit p q n)
 
 /-- 結論の錐は、元の全 coherent BF 錐を同じ実段関手で後合成した錐そのもの。 -/
 lemma d3StagePullbackInfinityCone_isLimit (n : ℕ) :
-    IsLimitCone ((spectrumPullbackInfinityCone p q).postcomp
-      (coherentNerveMap (d3StageKanEnriched n))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone ((spectrumPullbackInfinityCone p q).postcomp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3StageKanEnriched n))) := by
   have h := d3StagePullbackCone_isLimit p q n
-  change IsLimitCone (strictCoherentCone
-    ((coherentEnrichedUnderlyingFunctor (d3StageKanEnriched n)).mapCone
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (d3StageKanEnriched n)).mapCone
       (spectrumPullbackCone p q))) at h
-  rw [← strictCoherentCone_postcomp] at h
-  exact (coherentConeCast_isLimit_iff _ _).mp h
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.strictCoherentCone_postcomp] at h
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentConeCast_isLimit_iff _ _).mp h
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

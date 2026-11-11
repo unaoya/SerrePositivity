@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrisms
-public import SerrePositivity.InfinityCategories.Core.JoinCylinderSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpacePrisms
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.JoinCylinderSimplex
 
 /-!
 概要：元の右 join prism と全係数の追加が、同じ切断上で厳密に両立する。

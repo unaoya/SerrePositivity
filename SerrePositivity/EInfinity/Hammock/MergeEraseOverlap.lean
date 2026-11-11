@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.PunctureSimplex
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RawSurjectionComparison
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawSurjectionComparison
 
 /-!
 # 合成する二列の一方が恒等列である混合縮約
@@ -24,35 +24,35 @@ open CategoryTheory
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
   (X Y : C) {n : SimplexCategoryᵒᵖ}
 
-lemma merge_erase_eq_of_cancel {k : ℕ} (d : Fin (k + 2) → Direction)
+lemma merge_erase_eq_of_cancel {k : ℕ} (d : Fin (k + 2) → _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction)
     (p : Fin (k + 1)) (hp : d p.castSucc = d p.succ) (j : Fin (k + 2))
     (hc : ∀ x, p.predAbove (j.succAbove x) = x)
-    (τ : (graph W (⟨k + 2, d⟩ : Word) X Y).obj n)
-    (hτ : ∀ r, IdentityColumn (τ.obj r) j) :
-    (⟨Word.mergeTarget d p,
-      ((graphDiagram W X Y).map (Word.mergeMap d p hp)).app n τ⟩ : RawHammock W X Y n) =
-      ⟨Word.erase (⟨k + 2, d⟩ : Word) j, eraseSimplex W X Y j τ hτ⟩ := by
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W (⟨k + 2, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) X Y).obj n)
+    (hτ : ∀ r, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj r) j) :
+    (⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeTarget d p,
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeMap d p hp)).app n τ⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n) =
+      ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.erase (⟨k + 2, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) j, eraseSimplex W X Y j τ hτ⟩ := by
   let σ := punctureSimplex W X Y d j τ hτ
-  let e := Word.punctureInclusion d j
-  let f := Word.mergeMap d p hp
-  have he := raw_eq_of_surjections W X Y (𝟙 (Word.puncture d j)) (e ≫ f)
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion d j
+  let f := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeMap d p hp
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.raw_eq_of_surjections W X Y (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.puncture d j)) (e ≫ f)
     Function.surjective_id rfl (fun x => (hc x).symm) n σ
   rw [CategoryTheory.Functor.map_id, CategoryTheory.Functor.map_comp] at he
-  change (⟨Word.puncture d j, σ⟩ : RawHammock W X Y n) =
-    ⟨Word.mergeTarget d p, ((graphDiagram W X Y).map f).app n
-      (((graphDiagram W X Y).map e).app n σ)⟩ at he
+  change (⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.puncture d j, σ⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n) =
+    ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeTarget d p, ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f).app n
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map e).app n σ)⟩ at he
   rw [punctureSimplex_fac] at he
   exact he.symm.trans (punctureSimplex_raw_eq W X Y d j τ hτ)
 
 /-- 合成する二列の一方を削除するなら、二つの縮約の結果は既に同じ。 -/
-lemma merge_erase_overlap_eq {k : ℕ} (d : Fin (k + 2) → Direction)
+lemma merge_erase_overlap_eq {k : ℕ} (d : Fin (k + 2) → _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction)
     (p : Fin (k + 1)) (hp : d p.castSucc = d p.succ) (j : Fin (k + 2))
     (hj : j = p.castSucc ∨ j = p.succ)
-    (τ : (graph W (⟨k + 2, d⟩ : Word) X Y).obj n)
-    (hτ : ∀ r, IdentityColumn (τ.obj r) j) :
-    (⟨Word.mergeTarget d p,
-      ((graphDiagram W X Y).map (Word.mergeMap d p hp)).app n τ⟩ : RawHammock W X Y n) =
-      ⟨Word.erase (⟨k + 2, d⟩ : Word) j, eraseSimplex W X Y j τ hτ⟩ := by
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W (⟨k + 2, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) X Y).obj n)
+    (hτ : ∀ r, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj r) j) :
+    (⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeTarget d p,
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeMap d p hp)).app n τ⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n) =
+      ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.erase (⟨k + 2, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) j, eraseSimplex W X Y j τ hτ⟩ := by
   apply merge_erase_eq_of_cancel W X Y d p hp j ?_ τ hτ
   intro x
   rcases hj with rfl | rfl

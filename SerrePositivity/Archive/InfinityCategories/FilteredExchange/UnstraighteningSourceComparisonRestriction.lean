@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.UnstraighteningSourceComparisonPresentation
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoComponentTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentTransport
 
 /-!
 概要：F1 の実際の始域付き比較の成分を同じ二 prism の制限後の比較へ移す。

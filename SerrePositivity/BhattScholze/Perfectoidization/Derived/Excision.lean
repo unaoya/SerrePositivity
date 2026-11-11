@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
-public import SerrePositivity.InfinityCategories.Derived.FiberLongExactSequence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FiberLongExactSequence
 public import SerrePositivity.CommutativeAlgebra.DerivedSingleTrianglePullback
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence
@@ -52,12 +52,12 @@ variable (R : Type u) [CommRing R]
 
 /-- 長完全列の両端の消滅から零次の中央三項が短完全になる。 -/
 theorem squareHZero_shortExact
-    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ derivedInfinityCategory R)
-    (hF : IsPullbackSquare F)
-    (hD : IsZero (derivedInfinityHomology R (-1) (derivedSquareTargetVertex F)))
-    (hA : IsZero (derivedInfinityHomology R 1 (pullbackCone F).vertex)) :
-    (derivedSquareInfinityHomology₂ F hF 0).ShortExact := by
-  obtain ⟨h₁, h₂, h₃⟩ := derivedSquareInfinityHomologyLongExact F hF 0
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare F)
+    (hD : IsZero (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology R (-1) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareTargetVertex F)))
+    (hA : IsZero (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology R 1 (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone F).vertex)) :
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareInfinityHomology₂ F hF 0).ShortExact := by
+  obtain ⟨h₁, h₂, h₃⟩ := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareInfinityHomologyLongExact F hF 0
   have hm := h₁.mono_g (hD.eq_of_src _ _)
   have he := h₃.epi_f (hA.eq_of_tgt _ _)
   exact { exact := h₂, mono_f := hm, epi_g := he }
@@ -65,90 +65,90 @@ theorem squareHZero_shortExact
 section Square
 variable {A B C D : A_R R} (a : A ⟶ B) (b : A ⟶ C)
     (c : B ⟶ D) (d : C ⟶ D) (w : a ≫ c = b ≫ d)
-    (P : algebraNerve R ⟶ derivedInfinityCategory R)
+    (P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)
 
 private lemma ordinarySquare_bottom :
-    derivedSquareBottomEdge ≫ ordinarySquare R a b c d w =
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareBottomEdge ≫ ordinarySquare R a b c d w =
       SSet.yonedaEquiv.symm (ComposableArrows.mk₁ a) := by
-  rw [← derivedSquareTriangle_bottom, Category.assoc, ordinarySquare_triangle_one]
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareTriangle_bottom, Category.assoc, ordinarySquare_triangle_one]
   apply SSet.yonedaEquiv.injective
   exact CategoryTheory.nerve.δ₂_mk₂_eq a c
 
 private lemma ordinarySquare_left :
-    derivedSquareLeftEdge ≫ ordinarySquare R a b c d w =
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareLeftEdge ≫ ordinarySquare R a b c d w =
       SSet.yonedaEquiv.symm (ComposableArrows.mk₁ b) := by
-  rw [← derivedSquareTriangle_left, Category.assoc, ordinarySquare_triangle_zero]
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareTriangle_left, Category.assoc, ordinarySquare_triangle_zero]
   apply SSet.yonedaEquiv.injective
   exact CategoryTheory.nerve.δ₂_mk₂_eq b d
 
 private lemma ordinarySquare_right :
-    squareRightEdge ≫ ordinarySquare R a b c d w =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ ordinarySquare R a b c d w =
       SSet.yonedaEquiv.symm (ComposableArrows.mk₁ c) := by
-  rw [← squareTriangle_rightEdge, Category.assoc, ordinarySquare_triangle_one]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTriangle_rightEdge, Category.assoc, ordinarySquare_triangle_one]
   apply SSet.yonedaEquiv.injective
   exact CategoryTheory.nerve.δ₀_mk₂_eq a c
 
 private lemma ordinarySquare_top :
-    squareTopEdge ≫ ordinarySquare R a b c d w =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ ordinarySquare R a b c d w =
       SSet.yonedaEquiv.symm (ComposableArrows.mk₁ d) := by
-  rw [← squareTriangle_topEdge, Category.assoc, ordinarySquare_triangle_zero]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTriangle_topEdge, Category.assoc, ordinarySquare_triangle_zero]
   apply SSet.yonedaEquiv.injective
   exact CategoryTheory.nerve.δ₀_mk₂_eq b d
 
 private lemma square_bottom_edge :
-    (derivedSquareBottomDgEdge (ordinarySquare R a b c d w ≫ P)).edge =
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareBottomDgEdge (ordinarySquare R a b c d w ≫ P)).edge =
       (edge R P a).edge := by
-  rw [derivedSquareBottomDgEdge_edge, ← Category.assoc, ordinarySquare_bottom]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareBottomDgEdge_edge, ← Category.assoc, ordinarySquare_bottom]
   rw [SSet.yonedaEquiv_comp]
   rfl
 
 private lemma square_left_edge :
-    (derivedSquareLeftDgEdge (ordinarySquare R a b c d w ≫ P)).edge =
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareLeftDgEdge (ordinarySquare R a b c d w ≫ P)).edge =
       (edge R P b).edge := by
-  rw [derivedSquareLeftDgEdge_edge, ← Category.assoc, ordinarySquare_left]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareLeftDgEdge_edge, ← Category.assoc, ordinarySquare_left]
   rw [SSet.yonedaEquiv_comp]
   rfl
 
 private lemma square_right_edge :
-    (derivedSquareRightDgEdge (ordinarySquare R a b c d w ≫ P)).edge =
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareRightDgEdge (ordinarySquare R a b c d w ≫ P)).edge =
       (edge R P c).edge := by
-  rw [derivedSquareRightDgEdge_edge, ← Category.assoc, ordinarySquare_right]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareRightDgEdge_edge, ← Category.assoc, ordinarySquare_right]
   rw [SSet.yonedaEquiv_comp]
   rfl
 
 private lemma square_top_edge :
-    (derivedSquareUpperDgEdge (ordinarySquare R a b c d w ≫ P)).edge =
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareUpperDgEdge (ordinarySquare R a b c d w ≫ P)).edge =
       (edge R P d).edge := by
-  rw [derivedSquareUpperDgEdge_edge, ← Category.assoc, ordinarySquare_top]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareUpperDgEdge_edge, ← Category.assoc, ordinarySquare_top]
   rw [SSet.yonedaEquiv_comp]
   rfl
 
-private lemma edge_source_eq {x y x' y' : (derivedInfinityCategory R) _⦋0⦌}
-    (e : ((SSet.truncation 2).obj (derivedInfinityCategory R)).Edge x y)
-    (e' : ((SSet.truncation 2).obj (derivedInfinityCategory R)).Edge x' y')
+private lemma edge_source_eq {x y x' y' : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌}
+    (e : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)).Edge x y)
+    (e' : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)).Edge x' y')
     (h : e.edge = e'.edge) : x = x' :=
   e.src_eq.symm.trans ((congrArg _ h).trans e'.src_eq)
 
-private lemma edge_target_eq {x y x' y' : (derivedInfinityCategory R) _⦋0⦌}
-    (e : ((SSet.truncation 2).obj (derivedInfinityCategory R)).Edge x y)
-    (e' : ((SSet.truncation 2).obj (derivedInfinityCategory R)).Edge x' y')
+private lemma edge_target_eq {x y x' y' : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌}
+    (e : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)).Edge x y)
+    (e' : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)).Edge x' y')
     (h : e.edge = e'.edge) : y = y' :=
   e.tgt_eq.symm.trans ((congrArg _ h).trans e'.tgt_eq)
 
 private lemma square_A :
-    (pullbackCone (ordinarySquare R a b c d w ≫ P)).vertex = vertex R P A :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone (ordinarySquare R a b c d w ≫ P)).vertex = vertex R P A :=
   edge_source_eq R _ _ (square_bottom_edge R a b c d w P)
 
 private lemma square_B :
-    derivedSquareBVertex (ordinarySquare R a b c d w ≫ P) = vertex R P B :=
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareBVertex (ordinarySquare R a b c d w ≫ P) = vertex R P B :=
   edge_target_eq R _ _ (square_bottom_edge R a b c d w P)
 
 private lemma square_C :
-    derivedSquareCVertex (ordinarySquare R a b c d w ≫ P) = vertex R P C :=
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareCVertex (ordinarySquare R a b c d w ≫ P) = vertex R P C :=
   edge_target_eq R _ _ (square_left_edge R a b c d w P)
 
 private lemma square_D :
-    derivedSquareTargetVertex (ordinarySquare R a b c d w ≫ P) = vertex R P D :=
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareTargetVertex (ordinarySquare R a b c d w ≫ P) = vertex R P D :=
   edge_target_eq R _ _ (square_right_edge R a b c d w P)
 
 end Square
@@ -168,29 +168,29 @@ end UnderAlgebra
 
 section HZeroSquare
 attribute [local instance] underAlgebra
-variable {P : algebraNerve R ⟶ derivedInfinityCategory R}
+variable {P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R}
     {η : NatInfinity R (J R) P} (h0 : H0RingData R P η)
     {A B C D : A_R R} (a : A ⟶ B) (b : A ⟶ C)
     (c : B ⟶ D) (d : C ⟶ D) (w : a ≫ c = b ≫ d)
 
-private def ringModuleIso (S : A_R R) (x : (derivedInfinityCategory R) _⦋0⦌)
+private def ringModuleIso (S : A_R R) (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌)
     (hx : x = vertex R P S) :
-    (discreteAlgebraModule R).obj (h0.ringFunctor.obj S) ≅ derivedInfinityHomology R 0 x :=
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule R).obj (h0.ringFunctor.obj S) ≅ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology R 0 x :=
   h0.moduleIso S ≪≫ eqToIso (congrArg (H R 0) hx.symm)
 
 private lemma ringModuleIso_map {S T : A_R R} (f : S ⟶ T)
-    {x y : (derivedInfinityCategory R) _⦋0⦌}
+    {x y : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌}
     (hx : x = vertex R P S) (hy : y = vertex R P T)
-    (e : ((SSet.truncation 2).obj (derivedInfinityCategory R)).Edge x y)
+    (e : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)).Edge x y)
     (he : e.edge = (edge R P f).edge) :
-    (discreteAlgebraModule R).map (h0.ringFunctor.map f) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule R).map (h0.ringFunctor.map f) ≫
         (ringModuleIso R h0 T y hy).hom =
-      (ringModuleIso R h0 S x hx).hom ≫ derivedInfinityHomologyMap R 0 e := by
+      (ringModuleIso R h0 S x hx).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyMap R 0 e := by
   subst x y
   have he' : e = (edge R P f).toTruncated := SSet.Truncated.Edge.ext he
   subst e
   simpa only [ringModuleIso, eqToIso_refl, Iso.trans_refl, HMap, HFunctor,
-    derivedInfinityHomologyMap, derivedInfinityHomologyFunctor] using h0.map_compat f
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyMap, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyFunctor] using h0.map_compat f
 
 /-- H⁰ の環の四辺を、元の商図式の順序で持つ短複体。 -/
 def h0SquareShortComplex : ShortComplex (ModuleCat.{u} R) :=
@@ -206,44 +206,44 @@ def h0SquareShortComplex : ShortComplex (ModuleCat.{u} R) :=
 set_option maxHeartbeats 800000 in
 -- 四辺・直和・導来比較の同時正規化に必要。
 private def h0SquareSequenceIso
-    (hF : IsPullbackSquare (ordinarySquare R a b c d w ≫ P)) :
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (ordinarySquare R a b c d w ≫ P)) :
     h0SquareShortComplex R h0 a b c d w ≅
-      derivedSquareInfinityHomology₂ (ordinarySquare R a b c d w ≫ P) hF 0 := by
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareInfinityHomology₂ (ordinarySquare R a b c d w ≫ P) hF 0 := by
   let eA := ringModuleIso R h0 A _ (square_A R a b c d w P)
   let eB := ringModuleIso R h0 B _ (square_B R a b c d w P)
   let eC := ringModuleIso R h0 C _ (square_C R a b c d w P)
   let eD := ringModuleIso R h0 D _ (square_D R a b c d w P)
   let eBC := (ModuleCat.biprodIsoProd
-      ((discreteAlgebraModule R).obj (h0.ringFunctor.obj B))
-      ((discreteAlgebraModule R).obj (h0.ringFunctor.obj C))).symm ≪≫ biprod.mapIso eB eC
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule R).obj (h0.ringFunctor.obj B))
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule R).obj (h0.ringFunctor.obj C))).symm ≪≫ biprod.mapIso eB eC
   refine ShortComplex.isoMk eA eBC eD ?_ ?_
-  · rw [derivedSquareInfinityHomology₂_f]
+  · rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareInfinityHomology₂_f]
     apply biprod.hom_ext
     · simp only [eBC, Iso.trans_hom, Iso.symm_hom, biprod.mapIso_hom,
         Category.assoc, biprod.map_fst,
-        derivedSquareInfinityHomologyPair, biprod.lift_fst]
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareInfinityHomologyPair, biprod.lift_fst]
       rw [← Category.assoc _ biprod.fst eB.hom,
         ModuleCat.biprodIsoProd_inv_comp_fst]
       exact (ringModuleIso_map R h0 a (square_A R a b c d w P)
         (square_B R a b c d w P) _ (square_bottom_edge R a b c d w P)).symm
     · simp only [eBC, Iso.trans_hom, Iso.symm_hom, biprod.mapIso_hom,
         Category.assoc, biprod.map_snd,
-        derivedSquareInfinityHomologyPair, biprod.lift_snd]
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareInfinityHomologyPair, biprod.lift_snd]
       rw [← Category.assoc _ biprod.snd eC.hom,
         ModuleCat.biprodIsoProd_inv_comp_snd]
       exact (ringModuleIso_map R h0 b (square_A R a b c d w P)
         (square_C R a b c d w P) _ (square_left_edge R a b c d w P)).symm
-  · rw [derivedSquareInfinityHomology₂_g]
+  · rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareInfinityHomology₂_g]
     have hc := ringModuleIso_map R h0 c (square_B R a b c d w P)
       (square_D R a b c d w P) _ (square_right_edge R a b c d w P)
     have hd := ringModuleIso_map R h0 d (square_C R a b c d w P)
       (square_D R a b c d w P) _ (square_top_edge R a b c d w P)
-    have hdiff : derivedSquareInfinityHomologyDifference (ordinarySquare R a b c d w ≫ P) 0 =
-        biprod.fst ≫ derivedInfinityHomologyMap R 0 (derivedSquareRightDgEdge
+    have hdiff : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareInfinityHomologyDifference (ordinarySquare R a b c d w ≫ P) 0 =
+        biprod.fst ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyMap R 0 (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareRightDgEdge
           (ordinarySquare R a b c d w ≫ P)) -
-        biprod.snd ≫ derivedInfinityHomologyMap R 0 (derivedSquareUpperDgEdge
+        biprod.snd ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyMap R 0 (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareUpperDgEdge
           (ordinarySquare R a b c d w ≫ P)) := by
-      apply biprod.hom_ext' <;> simp [derivedSquareInfinityHomologyDifference]
+      apply biprod.hom_ext' <;> simp [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareInfinityHomologyDifference]
     simp only [eBC, Iso.trans_hom, Iso.symm_hom, biprod.mapIso_hom, hdiff,
       Preadditive.comp_sub, Category.assoc]
     simp only [biprod.map_fst_assoc, biprod.map_snd_assoc]
@@ -255,15 +255,15 @@ private def h0SquareSequenceIso
 
 /-- H⁰ の環の対・差の列は、導来引き戻しと端点の離散性から短完全になる。 -/
 theorem h0SquareShortComplex_shortExact
-    (hF : IsPullbackSquare (ordinarySquare R a b c d w ≫ P))
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (ordinarySquare R a b c d w ≫ P))
     (hA : Disc R (vertex R P A)) (hD : Disc R (vertex R P D)) :
     (h0SquareShortComplex R h0 a b c d w).ShortExact := by
-  have hzD : IsZero (derivedInfinityHomology R (-1)
-      (derivedSquareTargetVertex (ordinarySquare R a b c d w ≫ P))) := by
+  have hzD : IsZero (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology R (-1)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareTargetVertex (ordinarySquare R a b c d w ≫ P))) := by
     rw [square_D R a b c d w P]
     exact hD (-1) (by decide)
-  have hzA : IsZero (derivedInfinityHomology R 1
-      (pullbackCone (ordinarySquare R a b c d w ≫ P)).vertex) := by
+  have hzA : IsZero (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology R 1
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone (ordinarySquare R a b c d w ≫ P)).vertex) := by
     rw [square_A R a b c d w P]
     exact hA 1 (by decide)
   exact ShortComplex.shortExact_of_iso (h0SquareSequenceIso R h0 a b c d w hF).symm
@@ -271,7 +271,7 @@ theorem h0SquareShortComplex_shortExact
 
 /-- 元の四辺の H⁰ の環準同型は環の引き戻しをなす。 -/
 theorem h0Square_isPullback
-    (hF : IsPullbackSquare (ordinarySquare R a b c d w ≫ P))
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (ordinarySquare R a b c d w ≫ P))
     (hA : Disc R (vertex R P A)) (hD : Disc R (vertex R P D)) :
     IsPullback (h0.ringFunctor.map a).right (h0.ringFunctor.map b).right
       (h0.ringFunctor.map c).right (h0.ringFunctor.map d).right :=
@@ -280,7 +280,7 @@ theorem h0Square_isPullback
 
 /-- 差は加法的な写像として全射であり、各環準同型の全射性は要求しない。 -/
 theorem h0Square_difference_surjective
-    (hF : IsPullbackSquare (ordinarySquare R a b c d w ≫ P))
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (ordinarySquare R a b c d w ≫ P))
     (hA : Disc R (vertex R P A)) (hD : Disc R (vertex R P D)) :
     Function.Surjective (fun x : (h0.ringFunctor.obj B).right × (h0.ringFunctor.obj C).right =>
       (h0.ringFunctor.map c).right.hom x.1 - (h0.ringFunctor.map d).right.hom x.2) := by
@@ -328,7 +328,7 @@ theorem h0PerfectoidEquiv_naturality {S T : A_R R} (f : S ⟶ T)
 theorem specifiedSquare_of_disc
     {A B C D : A_R R} (a : A ⟶ B) (b : A ⟶ C)
     (c : B ⟶ D) (d : C ⟶ D) (w : a ≫ c = b ≫ d)
-    (hF : IsPullbackSquare (ordinarySquare R a b c d w ≫ F.perfd))
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (ordinarySquare R a b c d w ≫ F.perfd))
     (hA : Disc R (vertex R F.perfd A)) (hB : Disc R (vertex R F.perfd B))
     (hC : Disc R (vertex R F.perfd C)) (hD : Disc R (vertex R F.perfd D))
     {A' B' C' D' : Type u} [CommRing A'] [CommRing B'] [CommRing C'] [CommRing D']

@@ -24,7 +24,7 @@ open SerrePositivity.SimplicialModel
 variable {W : Type u} [Category.{u} W]
 
 def forgetLeftElements (F : Wᵒᵖ ⥤ Type u) (G : W ⥤ Type u) :
-    TwoSidedElements.Element F G ⥤ G.Elements where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.Element F G ⥤ G.Elements where
   obj X := G.elementsMk X.base X.right
   map f := Functor.Elements.homMk f.base f.right
   map_id _ := Functor.Elements.hom_ext rfl
@@ -33,10 +33,10 @@ def forgetLeftElements (F : Wᵒᵖ ⥤ Type u) (G : W ⥤ Type u) :
 lemma forgetLeftElements_naturality {F F' : Wᵒᵖ ⥤ Type u} {G G' : W ⥤ Type u}
     (α : F ⟶ F') (β : G ⟶ G') :
     forgetLeftElements F G ⋙ β.mapElements =
-      TwoSidedElements.map α β ⋙ forgetLeftElements F' G' := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.map α β ⋙ forgetLeftElements F' G' := rfl
 
 def forgetLeftRows (F : Wᵒᵖ ⥤ SSet.{u}) (G : W ⥤ SSet.{u}) :
-    TwoSidedBar.rows F G ⟶ (BarConstruction.rows W).obj G where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rows F G ⟶ (BarConstruction.rows W).obj G where
   app n := nerveMap (forgetLeftElements (F.flip.obj n) (G.flip.obj n))
   naturality {n m} θ := by
     ext k e
@@ -44,13 +44,13 @@ def forgetLeftRows (F : Wᵒᵖ ⥤ SSet.{u}) (G : W ⥤ SSet.{u}) :
       (forgetLeftElements_naturality (F.flip.map θ) (G.flip.map θ)).symm
 
 def forgetLeftBar (F : Wᵒᵖ ⥤ SSet.{u}) (G : W ⥤ SSet.{u}) :
-    TwoSidedBar.space F G ⟶ (BarConstruction.functor W).obj G :=
-  DoubleSimplicial.diagonalFunctor.map (forgetLeftRows F G)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.space F G ⟶ (BarConstruction.functor W).obj G :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (forgetLeftRows F G)
 
 variable (F : Wᵒᵖ ⥤ Cat.{u, u}) (G : W ⥤ Cat.{u, u})
 
-def forgetLeftTotal : TwoSidedGrothendieck.total F G ⥤ Grothendieck G :=
-  Grothendieck.pre G (TwoSidedGrothendieck.contravariantProjection F)
+def forgetLeftTotal : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.total F G ⥤ Grothendieck G :=
+  Grothendieck.pre G (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F)
 
 lemma simplex_forgetLeft {n : ℕ} (e : ComposableArrows (labels F G n) n) :
     simplex F G e ⋙ forgetLeftTotal F G =

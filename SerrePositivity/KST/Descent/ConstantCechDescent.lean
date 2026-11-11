@@ -57,7 +57,7 @@ def terminalIndexAdjunction (k : K) (hk : IsTerminal k) :
   right_triangle_components _n := hk.hom_ext _ _
 
 variable [ModelCategory SSet.{u}]
-  (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  (I J : MorphismProperty SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{u})]
 
 /-- 概要：終対象を持つ添字圏の定数図式の恒等増強は実際に降下（公理 (1)）。

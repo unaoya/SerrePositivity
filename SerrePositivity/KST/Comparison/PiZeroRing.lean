@@ -3,7 +3,7 @@ module
 public import Mathlib.Algebra.Category.Ring.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 public import Mathlib.Data.Quot
-public import SerrePositivity.InfinityCategories.Simplicial.SimplexComponents
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexComponents
 public import Mathlib.Tactic.Abel
 
 /-!
@@ -292,7 +292,7 @@ def simplexToComponents (n : ℕ) : A.obj (op ⦋n⦌) →+* π₀ (ringSpace A)
 theorem simplexToComponents_natural {m n : ℕ} (f : ⦋m⦌ ⟶ ⦋n⦌)
     (s : A.obj (op ⦋n⦌)) :
     simplexToComponents A m ((A.map f.op).hom s) = simplexToComponents A n s :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_map (ringSpace A) f s
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_map (ringSpace A) f s
 
 end SimplicialRing
 

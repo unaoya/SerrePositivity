@@ -32,9 +32,9 @@ lemma exists_boundaryAssemblySpecifiedCoherentHomotopy {I : Type u} [SmallCatego
         (fun j => boundaryKanRealization_kanComplex r (F.obj j))
         (fun j => loopBoundaryKan_kanComplex (r + 1) (F.obj j)) H i =
           boundaryKanAssemblyAdjointAt r (F.obj i) (v i)) ∧
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) =
         SSet.Truncated.HomotopyCategory.homMk
-          (functorEdgeOfSimplicialHomotopy (boundaryAssemblyCoherentDiagramHomotopy r F)) :=
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (boundaryAssemblyCoherentDiagramHomotopy r F)) :=
   exists_pointedKanDiagram_specified_components
     (fun i => boundaryKanRealization_kanComplex r (F.obj i))
     (fun i => loopBoundaryKan_kanComplex (r + 1) (F.obj i))
@@ -52,9 +52,9 @@ lemma exists_boundaryAssemblyOriginalCoherentHomotopy {I : Type u} [SmallCategor
       (∀ i, pointedKanDiagramHomotopyMapAt
         (fun j => boundaryKanRealization_kanComplex r (F.obj j))
         (fun j => loopBoundaryKan_kanComplex (r + 1) (F.obj j)) H i = boundaryKanAssemblyAdjoint r (F.obj i)) ∧
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) =
         SSet.Truncated.HomotopyCategory.homMk
-          (functorEdgeOfSimplicialHomotopy (boundaryAssemblyCoherentDiagramHomotopy r F)) :=
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (boundaryAssemblyCoherentDiagramHomotopy r F)) :=
   exists_pointedKanDiagram_specified_components
     (fun i => boundaryKanRealization_kanComplex r (F.obj i))
     (fun i => loopBoundaryKan_kanComplex (r + 1) (F.obj i))
@@ -79,17 +79,17 @@ lemma boundaryAssemblyOriginalCoherentHomotopy_component {I : Type u} [SmallCate
 lemma boundaryAssemblyOriginalCoherentHomotopy_hom {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) :
     SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (boundaryAssemblyOriginalCoherentHomotopy r F)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (boundaryAssemblyOriginalCoherentHomotopy r F)) =
     SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (boundaryAssemblyCoherentDiagramHomotopy r F)) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (boundaryAssemblyCoherentDiagramHomotopy r F)) :=
   (exists_boundaryAssemblyOriginalCoherentHomotopy r F).choose_spec.2
 
 /-- 補正後の全体変換の対象での辺は、元の構造射の coherent な辺の一単体そのもの。 -/
 lemma boundaryAssemblyOriginalCoherentHomotopy_vertex_edge {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (i : I) :
-    (simplicialHomotopyVertexEdge (boundaryAssemblyOriginalCoherentHomotopy r F)
-      (ULift.up (nerveVertex i))).edge =
-    (coherentNerveEdge (show (boundaryPointedKanDiagram r F).obj i ⟶
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (boundaryAssemblyOriginalCoherentHomotopy r F)
+      (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (show (boundaryPointedKanDiagram r F).obj i ⟶
       (pointedKanDiagram (F ⋙ loopBoundaryKanFunctor (r + 1))
         (fun j => loopBoundaryKan_kanComplex (r + 1) (F.obj j))).obj i from
           ObjectProperty.homMk (boundaryKanAssemblyAdjoint r (F.obj i)))).edge := by

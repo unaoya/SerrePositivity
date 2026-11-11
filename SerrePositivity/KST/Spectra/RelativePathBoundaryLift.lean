@@ -53,9 +53,9 @@ theorem common_boundary_lift {E B : PointedSimplicialSet.{u}} (p : E ⟶ B)
       α j hj ≫ corner p = stdSimplex.δ j ≫ base := by
     apply pullback.hom_ext
     · simp only [α, base, Category.assoc, corner_fst, pullback.lift_fst]
-      rw [const_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint, hP j hj]
+      rw [const_comp, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint, hP j hj]
     · simp only [α, base, Category.assoc, corner_snd, pullback.lift_snd]
-      rw [const_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint, hL j hj]
+      rw [const_comp, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint, hL j hj]
   obtain ⟨T, hT, hbase⟩ := hα.exists_lift (corner p) base hp
   refine ⟨T, ?_, ?_, hT⟩
   · have h := congrArg (fun f ↦ f ≫ pullback.fst _ _) hbase

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Simplicial.BoundaryGluing
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions
 
 /-!
@@ -76,7 +76,7 @@ abbrev Compatible {n : ℕ}
 lemma transpose_compatible {n : ℕ}
     (faces : Fin (n + 3) → (T ⟶ (ihom
       (SSet.stdSimplex.{v}.obj (SimplexCategory.mk (n + 1)))).obj P))
-    (hf : Compatible faces) : BoundaryGluing.StandardCompatible (fun k => transpose (faces k)) := by
+    (hf : Compatible faces) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.StandardCompatible (fun k => transpose (faces k)) := by
   intro j k hjk
   rw [← transpose_restriction, ← transpose_restriction, hf j k hjk]
 
@@ -93,7 +93,7 @@ def standardDesc {n : ℕ}
     (faces : Fin (n + 3) → (T ⟶ (ihom
       (SSet.stdSimplex.{v}.obj (SimplexCategory.mk (n + 1)))).obj P))
     (hf : Compatible faces) : T ⟶ (ihom (SSet.boundary.{v} (n + 2)).toSSet).obj P :=
-  transpose (BoundaryGluing.standardDesc (fun k => transpose (faces k))
+  transpose (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.standardDesc (fun k => transpose (faces k))
     (transpose_compatible faces hf))
 
 @[reassoc]
@@ -104,7 +104,7 @@ lemma standardDesc_fac {n : ℕ}
     standardDesc faces hf ≫ (pre (SSet.boundary.ι k)).app P = faces k := by
   apply transpose_injective
   rw [transpose_restriction, standardDesc, transpose_transpose,
-    BoundaryGluing.standardDesc_fac]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.standardDesc_fac]
 
 lemma hom_ext {n : ℕ} {f g : T ⟶ (ihom (SSet.boundary.{v} (n + 1)).toSSet).obj P}
     (h : ∀ k : Fin (n + 2), f ≫ (pre (SSet.boundary.ι k)).app P =

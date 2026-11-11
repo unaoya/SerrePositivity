@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：追加する初期区間の右端は、既にある通常の退化の像以下である。
 規約：Moss 2020 Lemma 26 (2) の最大元を用いる補助証明。
 使われ方：前側の面の作用素が初期区間へ入ること。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

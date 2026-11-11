@@ -28,13 +28,13 @@ def oneDirectionKanUnitNat (r : ℕ) :
 /-- 一方向比較の mapping path の底への射影の自然変換。 -/
 def oneDirectionMappingPathProjectionNat (r : ℕ) :
     oneDirectionMappingPathFunctor r ⟶ boundaryKanRealizationFunctor r where
-  app X := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app X)
+  app X := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app X)
   naturality _ _ f := oneDirectionMappingPathMap_projection r f
 
 /-- 一方向比較の mapping path の一方向模型への射影の自然変換。 -/
 def oneDirectionMappingPathRetractionNat (r : ℕ) :
     oneDirectionMappingPathFunctor r ⟶ oneDirectionKanRealizationFunctor r where
-  app X := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction ((oneDirectionKanComparisonNat r).app X)
+  app X := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction ((oneDirectionKanComparisonNat r).app X)
   naturality _ _ f := oneDirectionMappingPathMap_retraction r f
 
 /-- 入力図式の全射と両側合成にわたる Kan 延長の混合選択空間。 -/
@@ -63,13 +63,13 @@ lemma oneDirectionInverseInputArrowDiagram_obj {I : Type v} [Category.{w} I]
 /-- 延長図式の全成分は追加仮定なしに可縮 Kan。 -/
 lemma kanAssemblyInputArrowDiagram_isContractibleKan {I : Type v} [Category.{w} I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (x : AssemblyInputArrow I) :
-    IsContractibleKan ((kanAssemblyInputArrowDiagram r F).obj x) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan ((kanAssemblyInputArrowDiagram r F).obj x) :=
   kanAssemblyMixedChoices_isContractibleKan r (F.map (assemblyArrowHom x))
 
 /-- 逆射図式の全成分は追加仮定なしに可縮 Kan。 -/
 lemma oneDirectionInverseInputArrowDiagram_isContractibleKan {I : Type v} [Category.{w} I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (x : AssemblyInputArrow I) :
-    IsContractibleKan ((oneDirectionInverseInputArrowDiagram r F).obj x) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan ((oneDirectionInverseInputArrowDiagram r F).obj x) :=
   oneDirectionInverseMixedChoices_isContractibleKan r (F.map (assemblyArrowHom x))
 
 end SerrePositivity.KST.SConstruction

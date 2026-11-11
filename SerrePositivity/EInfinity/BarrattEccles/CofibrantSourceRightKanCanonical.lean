@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRightKanLimits
 public import SerrePositivity.EInfinity.FrameHom.FrameRightKanCanonical
-public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightCanonicalMapping
-public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightPrecompositionFaithful
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RightCanonicalMapping
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RightPrecompositionFaithful
 
 /-!
 # 元の Kan hammock 上の標準右 Kan 条件
@@ -28,7 +28,7 @@ variable (A : Type u) [CommRing A]
 lemma cofibrantSourceRightKanCanonicalCone_isLimit (X : CofibrantAlgebra A)
     {E : SSet.{u + 1}} [Quasicategory E]
     (G : kanHammockNerve (cofibrantAlgebraRelativeCategory A) ⟶ E) :
-    IsLimitCone (rightKanCanonicalCone
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanCanonicalCone
       (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) G
       (cofibrantHammockVertex A X)) :=
   FrameHom.FrameArrows.frameRightKanCanonicalCone_isLimit (cofibrantDKSourceFrame A X)
@@ -41,9 +41,9 @@ lemma cofibrantSourceRightKanCanonicalCone_isLimit_all
     {E : SSet.{u + 1}} [Quasicategory E]
     (G : kanHammockNerve (cofibrantAlgebraRelativeCategory A) ⟶ E)
     (z : (kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌) :
-    IsLimitCone (rightKanCanonicalCone
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanCanonicalCone
       (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) G z) :=
-  (congrArg (fun t => IsLimitCone (rightKanCanonicalCone
+  (congrArg (fun t => _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanCanonicalCone
     (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) G t))
       (cofibrantHammockVertex_object A z)).mp
     (cofibrantSourceRightKanCanonicalCone_isLimit A (cofibrantHammockObject A z) G)
@@ -51,21 +51,21 @@ lemma cofibrantSourceRightKanCanonicalCone_isLimit_all
 lemma cofibrantSourceRightKanExtension_refl
     {E : SSet.{u + 1}} [Quasicategory E]
     (G : kanHammockNerve (cofibrantAlgebraRelativeCategory A) ⟶ E) :
-    IsRightKanExtension (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRightKanExtension (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G) G
-      (functorHomotopyRefl
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl
         (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G)) :=
-  F1B.kanRightKanExtension_refl_of_canonicalLimits
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRightKanExtension_refl_of_canonicalLimits
     (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) G
     (cofibrantSourceRightKanCanonicalCone_isLimit_all A G)
 
 lemma cofibrantHammockLocalizationPrecomposition_isFullyFaithful
     (E : SSet.{u + 1}) [Quasicategory E] :
-    IsFullyFaithful (localizationPrecomposition
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition
       (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       (weakNerveEdges (cofibrantAlgebraRelativeCategory A))
       (hammockLocalizationNerveMap_inverts (cofibrantAlgebraRelativeCategory A)) E) :=
-  localizationPrecomposition_isFullyFaithful_of_rightKan _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.localizationPrecomposition_isFullyFaithful_of_rightKan _ _ _
     (fun _ _ => cofibrantSourceRightKanExtension_refl A) E
 
 end SerrePositivity.EInfinity.BarrattEccles

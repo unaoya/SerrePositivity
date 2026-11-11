@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.UnderlyingWeightedCochains
 universe u
 
 open CategoryTheory MonoidalCategory MonoidalClosed SSet Opposite
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.UnderlyingWeightedCochains
 
@@ -26,14 +26,14 @@ set_option backward.isDefEq.respectTransparency.types false
 variable {I : Type u} [SmallCategory I]
 
 lemma map_pre {W V : I ⥤ SSet.{u}} (θ : W ⟶ V) {H E : I ⥤ SSet.{u}} (τ : H ⟶ E) :
-    weightedSectionsMap V τ ≫ weightedSectionsPre θ E =
-      weightedSectionsPre θ H ≫ weightedSectionsMap W τ := by
-  apply weightedSections_hom_ext
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap V τ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre θ E =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre θ H ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap W τ := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_hom_ext
   intro i
-  rw [Category.assoc, weightedSectionsPre_π, ← Category.assoc, weightedSectionsMap_π,
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_π, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap_π,
     Category.assoc]
-  conv_rhs => rw [Category.assoc, weightedSectionsMap_π, ← Category.assoc,
-    weightedSectionsPre_π, Category.assoc]
+  conv_rhs => rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap_π, ← Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_π, Category.assoc]
   rw [pre_comm_ihom_map]
 
 /-- 概要：通常の係数図式の射を余単体 cochain の射へ送る。
@@ -42,7 +42,7 @@ lemma map_pre {W V : I ⥤ SSet.{u}} (θ : W ⟶ V) {H E : I ⥤ SSet.{u}} (τ :
 使われ方：Goerss–Jardine VIII §§1–2。通常の Tot の係数の射への作用。 -/
 def map (W : SimplicialObject (I ⥤ SSet.{u})) {H E : I ⥤ SSet.{u}} (τ : H ⟶ E) :
     obj W H ⟶ obj W E where
-  app n := weightedSectionsMap (W.obj (op n)) τ
+  app n := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap (W.obj (op n)) τ
   naturality _ _ f := (map_pre (W.map f.op) τ).symm
 
 lemma pointedUnderlyingIso_natural (W : SimplicialObject (I ⥤ SSet.{u}))

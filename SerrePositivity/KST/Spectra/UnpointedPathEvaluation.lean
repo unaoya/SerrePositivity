@@ -1,13 +1,13 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace
-public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.FreePathSpace
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.MonoRightHomotopyEquivalence
 
 /-!
 概要：基点を固定しない指数 path 対象と二つの端点の全基点 π_* 同型性。
 方針：単位から区間への端点包含による指数の制限を使う。
 規約：基礎単体集合の構成であり、源の非空性は不要。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.1。一般のホモトピーによる π_* 同型性の移送。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.1（Tag 00V4）。一般のホモトピーによる π_* 同型性の移送。
 -/
 
 @[expose] public section
@@ -71,7 +71,7 @@ theorem endpoint_anodyne (t : Fin 2) : anodyneExtensions (endpoint.{u} t) := by
 /-- 概要：指数 path 対象の時刻 t での評価。
 方針：端点への制限と単位からの内部 Hom の同型を合成する。
 規約：通常の単体集合の射。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.1。ホモトピーの両端点。 -/
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.1（Tag 00V4）。ホモトピーの両端点。 -/
 def evaluation (X : SSet.{u}) (t : Fin 2) : object X ⟶ X :=
   (MonoidalClosed.pre (endpoint t)).app X ≫ (MonoidalClosed.unitIsoSelf (X := X)).hom
 
@@ -82,17 +82,17 @@ def evaluation (X : SSet.{u}) (t : Fin 2) : object X ⟶ X :=
 theorem evaluation_rlp (X : SSet.{u}) [KanComplex X] (t : Fin 2) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp (evaluation X t) :=
   (MorphismProperty.monomorphisms SSet.{u}).rlp.comp_mem _ _
-    (_root_.SerrePositivity.InfinityCategories.Kan.anodyne_pre_rlp_monomorphisms (endpoint t) (endpoint_anodyne t) X)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.anodyne_pre_rlp_monomorphisms (endpoint t) (endpoint_anodyne t) X)
     ((MorphismProperty.monomorphisms SSet.{u}).rlp_of_isIso
       (MonoidalClosed.unitIsoSelf (X := X)).hom)
 
 /-- 概要：指数 path の端点評価は全基点 π_* 同型。
 方針：実際の全単射 RLP からのホモトピー類の比較を使う。
 規約：基点の位置が二つの端点で異なっていてもよい。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.1。非基点固定のホモトピー不変性。 -/
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.1（Tag 00V4）。非基点固定のホモトピー不変性。 -/
 theorem evaluation_piIsomorphism (X : SSet.{u}) [KanComplex X] (t : Fin 2) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (evaluation X t) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (evaluation_rlp X t)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (evaluation X t) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (evaluation_rlp X t)
 
 /-- 概要：単位を源とする内部 Hom の curry の評価式。
 方針：単位の同型を評価射で展開し、随伴の三角恒等式を使う。

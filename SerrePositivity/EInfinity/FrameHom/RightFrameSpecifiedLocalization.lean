@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.RightFrameHammockComponent
 public import SerrePositivity.EInfinity.FrameHom.LocalizationComparison
-public import SerrePositivity.InfinityCategories.ModelBridge.RightFrameUnitFamily
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.RightFrameUnitFamily
 public import SerrePositivity.EInfinity.FrameHom.SourceRoofUnitNormalization
 public import SerrePositivity.EInfinity.SimplicialLocalization.HammockInvertsEdges
 
@@ -22,24 +22,24 @@ open CategoryTheory HomotopicalAlgebra SSet Opposite
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories
 open SimplicialLocalization
 open scoped Simplicial
-attribute [local instance] rightFrameHom_kanComplex
+attribute [local instance] _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom_kanComplex
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C} [IsCofibrant X]
   (q : CofibrantResolution (C := C) simplex X)
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   {Q : SSet.{max u v}} [Quasicategory Q]
-  (G : nerve (modelRelativeCategory C).category ⟶ Q)
-  (hG : IsLocalization G (weakNerveEdges (modelRelativeCategory C)))
-  (hH : IsLocalization (hammockLocalizationNerveMap (modelRelativeCategory C))
-    (weakNerveEdges (modelRelativeCategory C)))
-  (K : kanHammockNerve (modelRelativeCategory C) ⟶ Q)
-  (e : FunctorIso (hammockLocalizationNerveMap (modelRelativeCategory C) ≫ K) G)
+  (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category ⟶ Q)
+  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
+  (hH : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))
+    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
+  (K : kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ⟶ Q)
+  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ≫ K) G)
 
 /-- 概要：全圏 hammock と指定局所化の比較は元の全二胞体を保持する。
 方針：実局所化普遍性を明示した既存の一意性比較へ渡す。
 規約：元の K と e を変更しない。使われ方：全族と端点輸送の同じ比較。 -/
 def rightFrameSpecifiedLocalizationData :
-    CoherentLocalizationComparison (hammockLocalizationNerveMap (modelRelativeCategory C)) G :=
+    CoherentLocalizationComparison (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G :=
   localizationComparisonData _ G _ hH hG K e
 
 /-- 概要：同じ指定局所化比較の二胞体は元の二胞体そのもの。
@@ -53,12 +53,12 @@ lemma rightFrameSpecifiedLocalizationData_triangle :
 規約：元の全圏の局所化像を保持し、hammock 普遍性は明示入力。
 使われ方：その入力の供給後の条件の放電。 -/
 def rightFrameSpecifiedPinchedEquivalence (Y : C) :
-    QCatEquivalence (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y))
-      (pinchedHom (G.app (op ⦋0⦌) (nerveVertex (modelRelativeObject C X)))
-        (G.app (op ⦋0⦌) (nerveVertex (modelRelativeObject C Y)))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (SSet.uliftFunctor.{max u v, v}.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X).obj Y))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (G.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)))
+        (G.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)))) :=
   (rightFrameHammockPinchedEquivalence q r cof Y).trans
     ((rightFrameSpecifiedLocalizationData G hG hH K e).pinchedEquivalence
-      (nerveVertex (modelRelativeObject C X)) (nerveVertex (modelRelativeObject C Y)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)))
 
 /-- 概要：同じ実比較は元の六辺の比較と同じ K の Hom 作用・指定成分の共役。
 方針：合成同値の順射と元の端点輸送の定義を読む。
@@ -67,7 +67,7 @@ lemma rightFrameSpecifiedPinchedEquivalence_hom (Y : C) :
     (rightFrameSpecifiedPinchedEquivalence q r cof G hG hH K e Y).hom =
       (rightFrameHammockPinchedEquivalence q r cof Y).hom ≫
         ((rightFrameSpecifiedLocalizationData G hG hH K e).pinchedEquivalence
-          (nerveVertex (modelRelativeObject C X)) (nerveVertex (modelRelativeObject C Y))).hom :=
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y))).hom :=
   rfl
 
 end SerrePositivity.EInfinity.FrameHom

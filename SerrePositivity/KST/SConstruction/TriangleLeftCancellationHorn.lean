@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron
 public import SerrePositivity.KST.SConstruction.AnodyneExtensionChoices
 
 /-! # 元の二つの合成面を保持する始辺消去の全外ホーン
@@ -65,7 +65,7 @@ def triangleLeftCancellationChoices : SSet.{u} :=
 
 /-- 元の全二面を指定した始辺消去の選択空間は可縮 Kan。 -/
 lemma triangleLeftCancellationChoices_isContractibleKan [KanComplex E] :
-    IsContractibleKan (triangleLeftCancellationChoices T U) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (triangleLeftCancellationChoices T U) :=
   anodyneExtensionChoices_isContractibleKan _ (anodyneExtensions.horn_ι (0 : Fin 4)) _
 
 /-- 既存の全高次パラメータを保持して、同じ二面を持つ四面体の選択を延長できる。 -/

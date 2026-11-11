@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
-public import SerrePositivity.InfinityCategories.F1B.Fibrations.RightHomotopySquare
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.RightHomotopySquare
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RightIntervalEquivalence
 
 /-!
 # 全パラメータの区間族の射の一致による元の pinched 族の弱同値性
@@ -22,13 +22,13 @@ namespace SerrePositivity.EInfinity.FrameHom
 open CategoryTheory SSet SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 
 lemma pinchedFamily_weak_of_intervalFamilyHom_eq {K X : SSet.{u}} [Quasicategory X]
-    {x y : X.obj (Opposite.op (SimplexCategory.mk 0))} (f g : K ⟶ pinchedHom x y)
-    (hg : IsWeakHomotopyEquivalence g)
-    (h : intervalFamilyHom (f ≫ pinchedHomToIntervalMappingSpace x y) =
-      intervalFamilyHom (g ≫ pinchedHomToIntervalMappingSpace x y)) :
-    IsWeakHomotopyEquivalence f := by
-  have hi := (pinchedHomToIntervalMappingSpace_isQCatEquivalence x y).isWeakHomotopyEquivalence
-  obtain ⟨H⟩ := intervalFamilyHom_eq_imp_homotopy h
+    {x y : X.obj (Opposite.op (SimplexCategory.mk 0))} (f g : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom x y)
+    (hg : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence g)
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f := by
+  have hi := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence x y).isWeakHomotopyEquivalence
+  obtain ⟨H⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom_eq_imp_homotopy h
   have he := AnodyneHomotopy.map_homotopy_eq AnodyneHomotopy.anodyneQ
     SSet.anodyneExtensions.Q_inverts H
   have hgQ := Hammock.anodyneQ_map_isIso_of_weak _ (hg.comp hi)

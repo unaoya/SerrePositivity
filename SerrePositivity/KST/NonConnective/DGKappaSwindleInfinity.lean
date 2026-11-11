@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.KST.NonConnective.DGKappaSwindle
-public import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransVertex
-public import SerrePositivity.InfinityCategories.Derived.DGClosedEdges
-public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
-public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedFunctorExact
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransVertex
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedEdges
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorEdgePointwise
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedFunctorExact
 
 /-!
 概要：同じ dg cone の厳密 swindle を、元の dg nerve 上の実関手同型として保持する。
@@ -20,52 +20,52 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory SSet
 open scoped Simplicial
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
-open DGNerve.HomotopyComparison
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+
 namespace SerrePositivity.KST.NonConnective
-variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
+variable (R : Type u) [CommRing R] (D : Type v) [_root_.SerrePositivity.DifferentialGraded.DGCategory R D] [Small.{u} D]
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
 
 /-- 同じ dg cone の実可算直和関手は、native nerve 上で完全。 -/
 lemma dgKappaConeCountableSum_isExactFunctor :
-    IsExactFunctor (dgNerve.map (dgKappaConeCountableSum R D I)) :=
-  dgPretriangulatedFunctor_isExactFunctor R (DGKappaCone R D I) (DGKappaCone R D I)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgKappaConeCountableSum R D I)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPretriangulatedFunctor_isExactFunctor R (DGKappaCone R D I) (DGKappaCone R D I)
     (dgKappaConeCountableSum R D I)
 
 /-- 同じ dg cone の id ⊕ T も、native nerve 上で完全。 -/
 lemma dgKappaSwindleSource_isExactFunctor :
-    IsExactFunctor (dgNerve.map (dgKappaSwindleSource R D I)) :=
-  dgPretriangulatedFunctor_isExactFunctor R (DGKappaCone R D I) (DGKappaCone R D I)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgKappaSwindleSource R D I)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPretriangulatedFunctor_isExactFunctor R (DGKappaCone R D I) (DGKappaCone R D I)
     (dgKappaSwindleSource R D I)
 
 /-- 元の閉 dg 同型の同じ実辺は、同じ dg cone の nerve で可逆。 -/
 lemma dgKappaSwindleComponent_isInvertible (X : DGKappaCone R D I) :
-    IsInvertibleEdge (X := dgNerve R (DGKappaCone R D I)) (dgClosedEdge R (DGKappaCone R D I)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R D I)) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R (DGKappaCone R D I)
       (dgKappaSwindleComponentIso R D I X).hom) := by
-  let e := dgClosedEdge R (DGKappaCone R D I) (dgKappaSwindleComponentIso R D I X).hom
-  have h : IsIso ((toH0 R (DGKappaCone R D I)).map
+  let e := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R (DGKappaCone R D I) (dgKappaSwindleComponentIso R D I X).hom
+  have h : IsIso ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.toH0 R (DGKappaCone R D I)).map
       (Truncated.HomotopyCategory₂.homMk e)) := by
-    rw [toH0_homMk, dgClosedEdge_closed]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.toH0_homMk, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge_closed]
     infer_instance
   have : IsIso (Truncated.HomotopyCategory₂.homMk e) :=
-    isIso_of_reflects_iso _ (toH0 R (DGKappaCone R D I))
-  exact (edgeToPathHomotopyCategory _).map_isIso (Truncated.HomotopyCategory₂.homMk e)
+    isIso_of_reflects_iso _ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.toH0 R (DGKappaCone R D I))
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeToPathHomotopyCategory _).map_isIso (Truncated.HomotopyCategory₂.homMk e)
 
 /-- 元の厳密 swindle の同じ実ホモトピーは、全頂点で可逆な辺を持つ。 -/
-lemma dgKappaSwindleHomotopy_pointwise (z : (dgNerve R (DGKappaCone R D I)) _⦋0⦌) :
-    IsInvertibleEdge (simplicialHomotopyVertexEdge (dgKappaSwindleStrictHom R D I).homotopy
+lemma dgKappaSwindleHomotopy_pointwise (z : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R D I)) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (dgKappaSwindleStrictHom R D I).homotopy
       z).toTruncated := by
-  obtain ⟨X, rfl⟩ := Simplex.vertexEquiv.symm.surjective z
-  have he := dgStrictNatTrans_homotopy_vertex_edge (dgKappaSwindleStrictHom R D I) X
+  obtain ⟨X, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.symm.surjective z
+  have he := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTrans_homotopy_vertex_edge (dgKappaSwindleStrictHom R D I) X
   rw [dgKappaSwindleStrictHom_app] at he
-  apply (isInvertibleEdge_congr he).mpr
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr he).mpr
   exact dgKappaSwindleComponent_isInvertible R D I X
 
 /-- 同じ κ-compact dg cone 内の id ⊕ T と T の、実関手同型。 -/
 def dgKappaSwindleInfinityIso :
-    FunctorIso (dgNerve.map (dgKappaSwindleSource R D I))
-      (dgNerve.map (dgKappaConeCountableSum R D I)) :=
-  functorIsoOfPointwiseInvertibleHomotopy (dgKappaSwindleStrictHom R D I).homotopy
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgKappaSwindleSource R D I))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgKappaConeCountableSum R D I)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy (dgKappaSwindleStrictHom R D I).homotopy
     (dgKappaSwindleHomotopy_pointwise R D I)
 
 end SerrePositivity.KST.NonConnective

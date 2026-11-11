@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：交換した水平ステップだけの寄与が一つ増え、他の前半ステップ数は変わらない。
 規約：KST Construction A.5 の標準 shuffle、逆転数は垂直が水平に先行する対の数。
 使われ方：混合境界項の同じ実写像を逆符号で相殺する。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

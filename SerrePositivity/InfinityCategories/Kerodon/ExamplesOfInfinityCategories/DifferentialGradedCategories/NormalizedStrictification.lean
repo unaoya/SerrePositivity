@@ -11,6 +11,8 @@ public import Mathlib.AlgebraicTopology.DoldKan.Normalized
 規約：KST Construction A.5 の右辺の augmentation 補正。非被約 C(H) を保ち、
 因子内のホモトピーを正規化する。AW/shuffle の比較自体は別に構成する。
 使われ方：正規化した二つの差のテンソルの低次数消滅。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

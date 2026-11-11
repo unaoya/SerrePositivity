@@ -50,14 +50,14 @@ abbrev smallParameter (m r : ℕ) := AnchoredChainFiniteTest.smallParameter.{v} 
 
 omit [ModelCategory SSet.{v}] in
 def test {Y V : ResolutionObject C} (g : Y ⟶ V) {m : ℕ} (d : AnchoredChain g m) (r : ℕ) :
-    UniverseLift.obj.{u} (smallParameter.{v} m r) ⟶ AnchoredChainFiniteTest.parameter g r :=
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (smallParameter.{v} m r) ⟶ AnchoredChainFiniteTest.parameter g r :=
   (UniverseLift.stableIso.{v, u} (smallParameter.{v} m r)).hom ≫
     AnchoredChainFiniteTest.test g d r
 
 omit [ModelCategory SSet.{v}] in
 lemma test_reindex {Y V : ResolutionObject C} (g : Y ⟶ V) {m n : ℕ} (d : AnchoredChain g m)
     (ψ : SimplexCategory.mk n ⟶ SimplexCategory.mk m) (r : ℕ) :
-    UniverseLift.map.{u} (SSet.stdSimplex.map ψ ▷ SSet.stdSimplex.obj (SimplexCategory.mk r)) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (SSet.stdSimplex.map ψ ▷ SSet.stdSimplex.obj (SimplexCategory.mk r)) ≫
       test g d r = test g (d.reindex ψ.toOrderHom) r := by
   unfold test
   rw [← Category.assoc, UniverseLift.stableIso_naturality, Category.assoc,
@@ -66,7 +66,7 @@ lemma test_reindex {Y V : ResolutionObject C} (g : Y ⟶ V) {m n : ℕ} (d : Anc
 omit [ModelCategory SSet.{v}] in
 lemma test_operator {Y V : ResolutionObject C} (g : Y ⟶ V) {m r s : ℕ} (d : AnchoredChain g m)
     (θ : SimplexCategory.mk r ⟶ SimplexCategory.mk s) :
-    UniverseLift.map.{u} (SSet.stdSimplex.obj (SimplexCategory.mk m) ◁ SSet.stdSimplex.map θ) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (SSet.stdSimplex.obj (SimplexCategory.mk m) ◁ SSet.stdSimplex.map θ) ≫
       test g d s = test g d r ≫ AnchoredChain.simplicial g ◁ SSet.stdSimplex.map θ := by
   unfold test
   rw [← Category.assoc, UniverseLift.stableIso_naturality, Category.assoc,
@@ -131,18 +131,18 @@ def point (side : Bool) {m : ℕ} (d : AnchoredChain g m) (t : Context X V) :
 
 lemma point_recover (side : Bool) {m : ℕ} (d : AnchoredChain g m) (t : Context X V) :
     point hcof hfib X Y V f g side d t =
-    UniverseLift.lower (test g d 2 ≫ oldTriangle hcof hfib X Y V f g side t) :=
-  (NerveLargeSampling.point _ _ _ t).trans (congrArg (fun z => UniverseLift.lower
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower (test g d 2 ≫ oldTriangle hcof hfib X Y V f g side t) :=
+  (NerveLargeSampling.point _ _ _ t).trans (congrArg (fun z => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower
     (test g d 2 ≫ z)) (triangle_evaluate hcof hfib X Y V f g side t))
 
 /-- The same old all-factorization triangle is recovered in its original choice coordinates. -/
 lemma original_recover (side : Bool) {m : ℕ} (d : AnchoredChain g m) (t : Context X V) :
-    UniverseLift.map.{u} (point hcof hfib X Y V f g side d t) ≫
-      UniverseLift.map.{u}
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (point hcof hfib X Y V f g side d t) ≫
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u}
         (AllFactorizationMixedContext.valueIso hcof t.1.unop.hom f g t.2.hom).hom =
     test g d 2 ≫ AllFactorizationMixed.triangle hcof hfib t.1.unop.hom.map f g t.2.hom
       (FramedResolution.frameMap t.1.unop.hom) side := by
-  rw [point_recover, UniverseLift.map_lower, Category.assoc]
+  rw [point_recover, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map_lower, Category.assoc]
   exact congrArg (fun z => test g d 2 ≫ z)
     (AllFactorizationMixedContext.triangle_recover hcof hfib t.1.unop.hom f g t.2.hom side)
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationTriangleRelative
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTransformationTriangleRelative
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SmallRelativeVertexIsoPresentation
 
 /-!

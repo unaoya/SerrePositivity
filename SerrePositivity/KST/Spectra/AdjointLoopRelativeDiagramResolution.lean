@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeNativeDiagram
-public import SerrePositivity.InfinityCategories.Core.InnerPullback
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.InnerPullback
 
 /-!
 概要：左右因子を保つ始域に、厳密な終点上の実 loop 図式を加える。
@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 規約：頂点だけでなく全単体の実図式を保持する。
 使われ方：比較射を加える前の図式側の基底。 -/
 def fullLoopDiagramResolution : SSet.{u + 1} :=
-  pullback (loopDiagramEvaluation Sp.{u} 1 1) fullNativeLoopEndpoint
+  pullback (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 1 1) fullNativeLoopEndpoint
 
 /-- 概要：同じ始域から元の可換な組を回収する射影。
 方針：実引き戻しの第二射影を使う。
@@ -37,7 +37,7 @@ def fullLoopDiagramResolutionProjection :
 規約：nativeLoop の別定義ではない。
 使われ方：指定終点上の全図式比較。 -/
 def fullLoopDiagramResolutionFamily :
-    fullLoopDiagramResolution.{u} ⟶ loopDiagrams Sp.{u} :=
+    fullLoopDiagramResolution.{u} ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams Sp.{u} :=
   pullback.fst _ _
 
 /-- 概要：記憶した図式の終点は元の一段移動と厳密に一致する。
@@ -45,7 +45,7 @@ def fullLoopDiagramResolutionFamily :
 規約：対象ごとの同型で置き換えない。
 使われ方：nativeLoopDiagramFamilyIso の同じ終点条件。 -/
 lemma fullLoopDiagramResolutionFamily_target :
-    fullLoopDiagramResolutionFamily.{u} ≫ loopDiagramEvaluation Sp.{u} 1 1 =
+    fullLoopDiagramResolutionFamily.{u} ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 1 1 =
       fullLoopDiagramResolutionProjection ≫ fullNativeLoopEndpoint :=
   pullback.condition
 
@@ -54,9 +54,9 @@ lemma fullLoopDiagramResolutionFamily_target :
 規約：比較射を含む射影の充填性はここでは主張しない。
 使われ方：図式側の共通分解の全境界充填。 -/
 instance fullLoopDiagramResolutionProjection_trivialKanFibration :
-    TrivialKanFibration fullLoopDiagramResolutionProjection.{u} :=
-  ⟨trivialKanFibrations.pullback_snd _ _ (TrivialKanFibration.mem
-    (p := loopDiagramEvaluation Sp.{u} 1 1))⟩
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration fullLoopDiagramResolutionProjection.{u} :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.pullback_snd _ _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem
+    (p := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 1 1))⟩
 
 /-- 概要：図式側の共通始域は実 quasicategory。
 方針：元の可換な組への射影の inner fibration 性を使う。
@@ -71,8 +71,8 @@ instance fullLoopDiagramResolution_quasicategory :
 規約：比較射をまだ加えていない始域に対する同値。
 使われ方：元の全 Hom の可換な組の回収。 -/
 def fullLoopDiagramResolutionEquivalence :
-    QCatEquivalence fullLoopDiagramResolution.{u} (SimplicialNerve FullObject) :=
-  qCatEquivalenceOfTrivialKanFibration fullLoopDiagramResolutionProjection
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence fullLoopDiagramResolution.{u} (SimplicialNerve FullObject) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.qCatEquivalenceOfTrivialKanFibration fullLoopDiagramResolutionProjection
 
 /-- 概要：既存の指定 native 図式族は図式側の共通始域への厳密な切断。
 方針：同じ厳密終点式で引き戻しへ持ち上げる。
@@ -108,7 +108,7 @@ lemma fullLoopDiagramResolutionSection_family :
 規約：相対 BF 置換への比較射を含む自然性は別途必要。
 使われ方：d3b② の図式側の比較。 -/
 def fullLoopDiagramResolutionNativeIso :
-    FunctorIso fullLoopDiagramResolutionFamily.{u}
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso fullLoopDiagramResolutionFamily.{u}
       (fullLoopDiagramResolutionProjection ≫ fullNativeLoopDiagramFamily) :=
   nativeLoopDiagramFamilyIso _ _ (by
     rw [Category.assoc, fullNativeLoopDiagramFamily_target]
@@ -119,10 +119,10 @@ def fullLoopDiagramResolutionNativeIso :
 規約：この比較の他端は記憶した図式の始点であり、middle ではない。
 使われ方：比較射の全 Hom 充填を接続する端点。 -/
 def fullLoopDiagramResolutionSourceIso :
-    FunctorIso (fullLoopDiagramResolutionFamily.{u} ≫ loopDiagramEvaluation Sp.{u} 0 0)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (fullLoopDiagramResolutionFamily.{u} ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 0 0)
       ((fullLoopDiagramResolutionProjection ≫ fullNativeLoopEndpoint) ≫ nativeLoop) := by
-  have e := FunctorIso.postcomp fullLoopDiagramResolutionNativeIso
-    (loopDiagramEvaluation Sp.{u} 0 0)
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp fullLoopDiagramResolutionNativeIso
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 0 0)
   rw [Category.assoc, fullNativeLoopDiagramFamily_source, ← Category.assoc] at e
   exact e
 

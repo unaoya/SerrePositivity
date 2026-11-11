@@ -114,7 +114,7 @@ theorem stage_isIso (M : SimplicialObject MonCat.{u}) (hG : SimplicialMonoid.IsG
   | n + 1, X, a => by
     have hb (b : (SSet.boundary.{u} n).toSSet ⟶ monoidSpace M) :
         IsIso (AnodyneHomotopy.anodyneQ.map (monoidActionFamily M b)) := by
-      let e := SkeletalDimension.stageIso
+      let e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.stageIso
         (CellularNaturalComparison.cellMap (SSet.boundary.{u} n).toSSet) n
       exact of_iso M e b (stage_isIso M hG n _ (e.hom ≫ b))
     let i := CellularNaturalComparison.cellMap X

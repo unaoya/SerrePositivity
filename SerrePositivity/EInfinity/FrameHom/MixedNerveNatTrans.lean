@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveULiftHom
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransHomotopyComponent
-public import SerrePositivity.InfinityCategories.Derived.HomotopyComponentPrecomp
-public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.NatTransHomotopyComponent
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.HomotopyComponentPrecomp
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SpanHomotopyGluing
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
 
 /-!
@@ -57,13 +57,13 @@ lemma recover (F : C ⥤ D) :
   rfl
 
 def homotopy {F G : C ⥤ D} (η : F ⟶ G) : SSet.Homotopy (nerveMap F) (nerveMap G) :=
-  stableHomotopyRetarget
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget
     (HomotopyClasses.postHomotopy (down D)
-      (functorHomotopyPrecomp (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (liftedNatTrans η)) (up C)))
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (liftedNatTrans η)) (up C)))
     (recover F) (recover G)
 
-lemma up_vertex (i : C) : (up C).app (Opposite.op ⦋0⦌) (nerveVertex i) =
-    nerveVertex (ULiftHom.objUp i : ULiftHom.{u + 1} C) := ComposableArrows.ext₀ rfl
+lemma up_vertex (i : C) : (up C).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp i : ULiftHom.{u + 1} C) := ComposableArrows.ext₀ rfl
 
 lemma down_mk₁ {i j : ULiftHom.{u + 1} D} (f : i ⟶ j) :
     (down D).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f) =
@@ -73,16 +73,16 @@ lemma down_mk₁ {i j : ULiftHom.{u + 1} D} (f : i ⟶ j) :
   rfl
 
 lemma homotopy_component {F G : C ⥤ D} (η : F ⟶ G) (i : C) :
-    (simplicialHomotopyVertexEdge (homotopy η) (nerveVertex i)).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (homotopy η) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)).edge =
       (nerve.edgeMk (η.app i)).edge := by
-  let H := SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (liftedNatTrans η)
-  have hp := homotopyComponent_precomp_edge H (up C) (nerveVertex i)
+  let H := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (liftedNatTrans η)
+  have hp := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.homotopyComponent_precomp_edge H (up C) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)
   rw [up_vertex] at hp
-  have hc := hp.trans (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy_component
+  have hc := hp.trans (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy_component
     (liftedNatTrans η) (ULiftHom.objUp i))
   have h := congrArg ((down D).app (Opposite.op ⦋1⦌)) hc
   change (down D).app (Opposite.op ⦋1⦌)
-      (simplicialHomotopyVertexEdge (functorHomotopyPrecomp H (up C)) (nerveVertex i)).edge = _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H (up C)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)).edge = _
   refine h.trans ?_
   change (down D).app (Opposite.op ⦋1⦌)
     (ComposableArrows.mk₁ ((liftedNatTrans η).app (ULiftHom.objUp i))) =

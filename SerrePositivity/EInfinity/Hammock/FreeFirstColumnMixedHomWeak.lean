@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
 open CategoryTheory SimplicialLocalization SerrePositivity.InfinityCategories
 open TwoSidedDiagram.FixedVertices
-variable (C : RelativeCategory.{u}) (w : Word) (X Y : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category)
 def freeMixedFirstTargetObjectEquiv (n : SimplexCategoryᵒᵖ) : C.category ≃
     (((Functor.const SimplexCategoryᵒᵖ).obj (forwardBackwardData C w X Y)).obj n).base :=
   markedObjectEquiv C
@@ -63,14 +63,14 @@ lemma freeMixedFirstSourceHomIso_augmentation (U V : C.category) :
         (freeMixedFirstTargetHomIso C w X Y U V).hom := by
   ext n f
   apply WideSubcategory.hom_ext
-  change (eqToHom _ ≫ (markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map
+  change (eqToHom _ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map
     (eqToHom _ ≫ f ≫ eqToHom _) ≫ eqToHom _).hom =
-      (eqToHom _ ≫ (markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map f ≫
+      (eqToHom _ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map f ≫
         eqToHom _).hom
   simp only [Functor.map_comp, WideSubcategory.comp_def, marked_eqToHom_hom,
     eqToHom_map, Category.assoc, eqToHom_trans_assoc, eqToHom_trans]
 
 lemma freeMixedFirstHomSpaceMap_weak (U V : C.category) :
-    IsWeakHomotopyEquivalence (freeMixedFirstHomSpaceMap C w X Y U V) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeMixedFirstHomSpaceMap C w X Y U V) := by
   exact freeFirstHomSpaceMap_weak C w X Y U V
 end SerrePositivity.EInfinity.Hammock.FirstColumn

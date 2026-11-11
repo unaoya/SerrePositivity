@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConstantFiber
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.WeightedConstantFiber
 
 /-!
 概要：反転した一単体から作る標準 weighted cone の長辺 Hom を計算する。

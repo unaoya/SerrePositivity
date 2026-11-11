@@ -17,26 +17,26 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
-variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
+variable (R : Type u) [CommRing R] (D : Type v) [_root_.SerrePositivity.DifferentialGraded.DGCategory R D] [Small.{u} D]
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ) (Z : DGKappaZeroInput R D I)
   (H : ∀ X : PresentedPerfectDGObject R (DGKappaCone R D I), DGKappaSplitCofiberInput R D I X)
 
 private lemma action_preservesSData
-    (F : DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I)) :
-    PreservesSConstructionData (dgNerve.map
+    (F : _root_.SerrePositivity.DifferentialGraded.DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I)) :
+    PreservesSConstructionData (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
       (presentedPerfectDGAction R (DGKappaCone R D I) (DGKappaCone R D I) F)) := by
   let := presentedPerfectDGNerve_isStable R (DGKappaCone R D I)
   let := presentedPerfectDGActionNerve_isExactFunctor R (DGKappaCone R D I) (DGKappaCone R D I) F
-  exact ⟨fun x hx => IsExactFunctor.preservesZero _ hx,
-    fun s hs => IsExactFunctor.preservesPushoutSquare _ s hs⟩
+  exact ⟨fun x hx => _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero _ hx,
+    fun s hs => _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPushoutSquare _ s hs⟩
 
 /-- 元の全四角形族は、周囲の全関手圏で零対象と全押し出しを保つ。 -/
 theorem dgKappaSplitCofiberFamily_ambient_preservesSData :
     PreservesSConstructionData (dgKappaSplitCofiberFamily R D I Z H ≫
-      (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) := by
   let := presentedPerfectDGNerve_isStable R (DGKappaCone R D I)
   apply preservesSConstructionData_functor_of_pointwise
   rintro ⟨a, b⟩

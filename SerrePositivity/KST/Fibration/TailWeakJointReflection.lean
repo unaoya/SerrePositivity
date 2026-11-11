@@ -27,7 +27,7 @@ lemma standardTail_vertex_cover (n : ℕ)
     ((evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋0⦌))) v).symm
 
 /-- 元の先行列と最後の辺は、貼り合わせ図式圏の零対象・実押し出しを共同で反映する。 -/
-lemma tailWeak_jointReflection {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ) :
+lemma tailWeak_jointReflection {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n : ℕ) :
     JointlyReflectsSData (tailWeakPrefixExact q n).val (tailWeakEdgeExact q n).val := by
   apply (reindex_jointReflection (standardTailPrefix n) (tailAttachmentEdge (Δ[n] : SSet.{u}))
     (standardTail_vertex_cover n) (sInputModel B)).fullSubcomplex

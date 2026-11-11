@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.LoopTowers
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LoopTowers
 public import SerrePositivity.KST.Spectra.CofibrantOmegaSequence
 
 /-!
@@ -26,13 +26,13 @@ noncomputable section
 使われ方：実際の塔の極限の構造射。 -/
 def towerSequenceSigma (X : ℕ → KanSequence.{u})
     (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n)) (k : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (pointedTowerLimit (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k)) ⟶
-      pointedTowerLimit (fun n ↦ ((X n).level (k + 1)).space) (fun n ↦ (d n).app (k + 1)) :=
-  pointedTowerLift _ _
-    (fun n ↦ PointedSimplicialSet.circle.{u} ◁ pointedTowerProjection _ _ n ≫ (X n).sigma k)
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLimit (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k)) ⟶
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLimit (fun n ↦ ((X n).level (k + 1)).space) (fun n ↦ (d n).app (k + 1)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLift _ _
+    (fun n ↦ PointedSimplicialSet.circle.{u} ◁ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection _ _ n ≫ (X n).sigma k)
     (fun n ↦ by
       rw [Category.assoc, ← (d n).comm k, ← Category.assoc, ← whiskerLeft_comp,
-        pointedTowerProjection_comp])
+        _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection_comp])
 
 /-- 概要：段ごとに fibration の Kan 列の塔の厳密極限の Kan 列。
 方針：各段の極限の Kan 性を使い、構成した構造射を束ねる。
@@ -41,8 +41,8 @@ def towerSequenceSigma (X : ℕ → KanSequence.{u})
 def towerKanSequence (X : ℕ → KanSequence.{u})
     (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n))
     [∀ n k, Fibration ((d n).app k).right] : KanSequence.{u} where
-  level k := ⟨pointedTowerLimit (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k),
-    _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit_kanComplex _ _⟩
+  level k := ⟨_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLimit (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k),
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.limit_kanComplex _ _⟩
   sigma := towerSequenceSigma X d
 
 /-- 概要：Kan 列の塔の極限から指定段への厳密な射影。
@@ -53,10 +53,10 @@ def towerKanSequenceProjection (X : ℕ → KanSequence.{u})
     (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n))
     [∀ n k, Fibration ((d n).app k).right] (n : ℕ) :
     KanSequence.Hom (towerKanSequence X d) (X n) where
-  app k := pointedTowerProjection _ _ n
+  app k := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection _ _ n
   comm k := by
-    change _ = towerSequenceSigma X d k ≫ pointedTowerProjection _ _ n
-    rw [towerSequenceSigma, pointedTowerLift_projection]
+    change _ = towerSequenceSigma X d k ≫ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection _ _ n
+    rw [towerSequenceSigma, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLift_projection]
 
 /-- 概要：各段の随伴構造射から作る塔の極限の比較射。
 方針：射影と随伴構造射を合成し、随伴可換性で loop の塔へ持ち上げる。
@@ -64,14 +64,14 @@ def towerKanSequenceProjection (X : ℕ → KanSequence.{u})
 使われ方：実際の随伴構造射の π_* 同型性の検証。 -/
 def towerSequenceAdjointMap (X : ℕ → KanSequence.{u})
     (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n)) (k : ℕ) :
-    pointedTowerLimit (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k) ⟶
-      pointedTowerLimit (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((X n).level (k + 1)).space)
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLimit (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k) ⟶
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLimit (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((X n).level (k + 1)).space)
         (fun n ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} ((d n).app (k + 1))) :=
-  pointedTowerLift _ _
-    (fun n ↦ pointedTowerProjection _ _ n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ ((X n).sigma k))
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLift _ _
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection _ _ n ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ ((X n).sigma k))
     (fun n ↦ by
       rw [Category.assoc, ← (d n).adjoint_comm k, ← Category.assoc,
-        pointedTowerProjection_comp])
+        _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection_comp])
 
 /-- 概要：極限の構造射の随伴は loop と極限の同型の下で各随伴の塔の比較に一致する。
 方針：各射影で検査し、随伴の Hom 同値の両変数の自然性を使う。
@@ -79,23 +79,23 @@ def towerSequenceAdjointMap (X : ℕ → KanSequence.{u})
 使われ方：Sp の塔の Ω 条件を塔の π_* 比較へ帰着する。 -/
 lemma towerSequenceSigma_adjoint (X : ℕ → KanSequence.{u})
     (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n)) (k : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (towerSequenceSigma X d k) ≫
-        (loopTowerIso (fun n ↦ ((X n).level (k + 1)).space)
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (towerSequenceSigma X d k) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.loopTowerIso (fun n ↦ ((X n).level (k + 1)).space)
           (fun n ↦ (d n).app (k + 1))).hom = towerSequenceAdjointMap X d k := by
-  apply pointedTowerLimit_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLimit_hom_ext
   intro n
-  rw [Category.assoc, loopTowerIso_hom_projection,
-    towerSequenceAdjointMap, pointedTowerLift_projection]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.loopTowerIso_hom_projection,
+    towerSequenceAdjointMap, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLift_projection]
   let adj := PointedSimplicialSet.smashHomAdjunction PointedSimplicialSet.circle.{u}
   change adj.homEquiv _ _ (towerSequenceSigma X d k) ≫
       (PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u}).map
-        (pointedTowerProjection (fun n ↦ ((X n).level (k + 1)).space)
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection (fun n ↦ ((X n).level (k + 1)).space)
           (fun n ↦ (d n).app (k + 1)) n) =
-    pointedTowerProjection (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k) n ≫
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k) n ≫
       adj.homEquiv _ _ ((X n).sigma k)
-  rw [← adj.homEquiv_naturality_right, towerSequenceSigma, pointedTowerLift_projection]
+  rw [← adj.homEquiv_naturality_right, towerSequenceSigma, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLift_projection]
   exact adj.homEquiv_naturality_left
-    (pointedTowerProjection (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k) n)
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k) n)
     ((X n).sigma k)
 
 end

@@ -37,7 +37,7 @@ def triangleLeftCancellationUpperComparison :=
 /-- 出力円柱の下面は、元の同じ退化三角形に全比較時刻で固定する。 -/
 def triangleLeftCancellationLowerComparison :=
   familyHomotopyEndpointTransport
-    (functorHomotopyRefl (SSet.yonedaEquiv.symm (SSet.Edge.CompStruct.compId b).simplex))
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl (SSet.yonedaEquiv.symm (SSet.Edge.CompStruct.compId b).simplex))
     (ThreeEdgeTransport.square_lower (triangleLeftCancellationTransport T U v))
     (ThreeEdgeTransport.square_lower (triangleLeftCancellationTransport T U w)).symm
 
@@ -47,10 +47,10 @@ include hr
 lemma triangleLeftCancellationUpperComparison_edge (i : Fin 3) :
     (stdSimplex.δ i ▷ (Δ[1] : SSet.{u})) ≫
         (triangleLeftCancellationUpperComparison T U v w H).h =
-      fst (Δ[1] : SSet.{u}) Δ[1] ≫ stdSimplex.δ i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫
+      fst (Δ[1] : SSet.{u}) Δ[1] ≫ stdSimplex.δ i ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ≫
         (triangleLeftCancellationCylinder T U v).homotopy.h := by
   rw [triangleLeftCancellationUpperComparison, familyHomotopyEndpointTransport_h]
-  change _ = fst (Δ[1] : SSet.{u}) Δ[1] ≫ stdSimplex.δ i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫
+  change _ = fst (Δ[1] : SSet.{u}) Δ[1] ≫ stdSimplex.δ i ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ≫
     ThreeEdgeTransport.square (triangleLeftCancellationTransport T U v)
   rw [ThreeEdgeTransport.square_upper]
   exact hr i
@@ -60,11 +60,11 @@ omit hr in
 lemma triangleLeftCancellationLowerComparison_edge (i : Fin 3) :
     (stdSimplex.δ i ▷ (Δ[1] : SSet.{u})) ≫
         (triangleLeftCancellationLowerComparison T U v w).h =
-      fst (Δ[1] : SSet.{u}) Δ[1] ≫ stdSimplex.δ i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫
+      fst (Δ[1] : SSet.{u}) Δ[1] ≫ stdSimplex.δ i ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫
         (triangleLeftCancellationCylinder T U v).homotopy.h := by
   rw [triangleLeftCancellationLowerComparison, familyHomotopyEndpointTransport_h]
   change (stdSimplex.δ i ▷ (Δ[1] : SSet.{u})) ≫ fst Δ[2] Δ[1] ≫ _ =
-    fst (Δ[1] : SSet.{u}) Δ[1] ≫ stdSimplex.δ i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫
+    fst (Δ[1] : SSet.{u}) Δ[1] ≫ stdSimplex.δ i ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫
       ThreeEdgeTransport.square (triangleLeftCancellationTransport T U v)
   rw [whiskerRight_fst_assoc, ThreeEdgeTransport.square_lower]
   rfl
@@ -77,7 +77,7 @@ lemma triangleLeftCancellationComparison_diagonal :
         (triangleLeftCancellationLowerComparison T U v w).h := by
   rw [triangleLeftCancellationUpperComparison_edge T U v w H hr,
     triangleLeftCancellationLowerComparison_edge]
-  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_diagonal, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_diagonal]
+  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper_diagonal, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower_diagonal]
 
 /-- 元の全残面比較を保持する、出力した全円柱の実高次比較。 -/
 def triangleLeftCancellationCylinderComparisonFromTriangle : SSet.Homotopy
@@ -100,7 +100,7 @@ lemma triangleLeftCancellationCylinderComparisonFromTriangle_relative :
 
 /-- 指定した同じ全残面比較を、出力円柱比較の上面に厳密に保持する。 -/
 lemma triangleLeftCancellationCylinderComparisonFromTriangle_upper :
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ▷ (Δ[1] : SSet.{u})) ≫
         (triangleLeftCancellationCylinderComparisonFromTriangle T U v w H hr).h = H.h :=
   (squareTriangleHomotopyMap_upper _ _ _).trans (familyHomotopyEndpointTransport_h _ _ _)
 
@@ -108,8 +108,8 @@ lemma triangleLeftCancellationCylinderComparisonFromTriangle_upper :
 lemma triangleLeftCancellationCylinderComparisonFromTriangle_projection
     {B : SSet.{u}} (p : E ⟶ B)
     (q : ((Δ[1] : SSet.{u}) ⊗ Δ[1]) ⊗ Δ[1] ⟶ B)
-    (hu : (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ▷ (Δ[1] : SSet.{u})) ≫ q = H.h ≫ p)
-    (hl : (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ▷ (Δ[1] : SSet.{u})) ≫ q =
+    (hu : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ▷ (Δ[1] : SSet.{u})) ≫ q = H.h ≫ p)
+    (hl : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ▷ (Δ[1] : SSet.{u})) ≫ q =
       fst (Δ[2] : SSet.{u}) Δ[1] ≫
         SSet.yonedaEquiv.symm (SSet.Edge.CompStruct.compId b).simplex ≫ p) :
     (triangleLeftCancellationCylinderComparisonFromTriangle T U v w H hr).h ≫ p = q := by
@@ -139,7 +139,7 @@ lemma triangleLeftCancellationCylinderComparison_relative :
 
 /-- 元の全消去四面体比較の残面全体を、同じ出力円柱比較の上面に保持する。 -/
 lemma triangleLeftCancellationCylinderComparison_upper :
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ▷ (Δ[1] : SSet.{u})) ≫
         (triangleLeftCancellationCylinderComparison T U v w).h =
       (triangleLeftCancellationTriangleComparison T U v w).h :=
   triangleLeftCancellationCylinderComparisonFromTriangle_upper _ _ _ _ _ _

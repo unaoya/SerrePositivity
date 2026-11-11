@@ -33,15 +33,15 @@ lemma sClosedInclusion_vertex {X : StableModel.{u}} (n : ℕ) (P : ClosedStableP
     (NatTrans.congr_app (sPostcompCofiber_gapped_evaluate n
       (closedStableInclusion P).val (closedStableInclusion P).property a)
       (Opposite.op ⦋0⦌)) v
-  change P.predicate ((evaluateFunctorAt a).app (Opposite.op ⦋0⦌)
+  change P.predicate ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a).app (Opposite.op ⦋0⦌)
     ((((sEndofunctor n).map (closedStableInclusion P)).val.app (Opposite.op ⦋0⦌) v).val))
   exact (congrArg P.predicate h).mpr (closedSubcategory_vertex P
-    ((evaluateFunctorAt a).app (Opposite.op ⦋0⦌) v.val))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a).app (Opposite.op ⦋0⦌) v.val))
 
 /-- S_n A から S_n C 内の全成分の所属条件を持つ全部分圏への比較。 -/
 def sClosedComparison {X : StableModel.{u}} (n : ℕ) (P : ClosedStablePredicate X) :
     sConstruction n (closedSubcategory P) ⟶ closedSubcategory (sClosedPredicate n P) :=
-  fullSubcomplexLift (sClosedPredicate n P).predicate
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (sClosedPredicate n P).predicate
     ((sEndofunctor n).map (closedStableInclusion P)).val (sClosedInclusion_vertex n P)
 
 /-- 比較は S_n による元の包含の後合成と一致する。 -/
@@ -49,7 +49,7 @@ lemma sClosedComparison_inclusion {X : StableModel.{u}} (n : ℕ)
     (P : ClosedStablePredicate X) :
     sClosedComparison n P ≫ (closedStableInclusion (sClosedPredicate n P)).val =
       ((sEndofunctor n).map (closedStableInclusion P)).val :=
-  fullSubcomplexLift_ι _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 /-- 全成分が A に入る S_n C の全部分圏を S_n A に戻す。 -/
 def sClosedInverse {X : StableModel.{u}} (n : ℕ) (P : ClosedStablePredicate X) :
@@ -71,7 +71,7 @@ def sClosedIso {X : StableModel.{u}} (n : ℕ) (P : ClosedStablePredicate X) :
   inv := sClosedInverse n P
   hom_inv_id := by
     have : Mono (closedStableInclusion P).val :=
-      inferInstanceAs (Mono (fullSubcomplexOnVertices X.carrier P.predicate).ι)
+      inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X.carrier P.predicate).ι)
     have : Mono (((sEndofunctor n).map (closedStableInclusion P)).val) :=
       sPostcompCofiber_mono n (closedStableInclusion P).val (closedStableInclusion P).property
     apply inverse_comp_of_commuting_mono
@@ -83,7 +83,7 @@ def sClosedIso {X : StableModel.{u}} (n : ℕ) (P : ClosedStablePredicate X) :
     · exact Category.id_comp _
   inv_hom_id := by
     have : Mono (closedStableInclusion (sClosedPredicate n P)).val :=
-      inferInstanceAs (Mono (fullSubcomplexOnVertices _ (sClosedPredicate n P).predicate).ι)
+      inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (sClosedPredicate n P).predicate).ι)
     apply inverse_comp_of_commuting_mono
       (closedStableInclusion (sClosedPredicate n P)).val
       (((sEndofunctor n).map (closedStableInclusion P)).val)

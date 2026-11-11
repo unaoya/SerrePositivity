@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.ComplexLimits.NormalizedChainsHomNatural
 public import SerrePositivity.EInfinity.ComplexLimits.LinearizedSimplexHom
 public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 public import SerrePositivity.DifferentialGraded.Category.Basic
-public import SerrePositivity.InfinityCategories.DoldKanComparison.ConnectiveHom
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ConnectiveHom
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.HornTensor
 
 /-!
@@ -24,7 +24,7 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory MonoidalCategory
 open SerrePositivity.DifferentialGraded SerrePositivity.HomotopyFunctionComplex
-open SerrePositivity.InfinityCategories.DoldKanComparison
+
 variable (A : Type u) [CommRing A]
 
 def normalizedSimplexTensor (X : Complex A) : SimplexCategory ⥤ Complex A :=
@@ -38,7 +38,7 @@ def normalizedSimplexHomEquiv (H : Complex A) (n : SimplexCategory) :
 
 def normalizedSimplexTensorHomEquiv (X Y : Complex A) (n : SimplexCategory) :
     ((normalizedSimplexTensor A X).obj n ⟶ Y) ≃
-      (doldKanHomModule (R := A) (D := Complex A) X Y).obj (Opposite.op n) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomModule (R := A) (D := Complex A) X Y).obj (Opposite.op n) :=
   (tensorHomEquiv X ((BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj n)) Y).trans
     (normalizedSimplexHomEquiv A (homComplex A X Y) n)
 
@@ -55,8 +55,8 @@ lemma normalizedSimplexHomEquiv_naturality (H : Complex A) {n m : SimplexCategor
   exact linearizedSimplexHomEquiv_naturality A _ f _
 
 def normalizedSimplexTensorHomIso (X Y : Complex A) :
-    (cosimplicialHom (normalizedSimplexTensor A X)).obj Y ≅
-      doldKanHomSpace (R := A) (D := Complex A) X Y :=
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y ≅
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomSpace (R := A) (D := Complex A) X Y :=
   NatIso.ofComponents (fun n => Equiv.toIso (normalizedSimplexTensorHomEquiv A X Y n.unop)) (by
     intro d e f
     apply ConcreteCategory.hom_ext

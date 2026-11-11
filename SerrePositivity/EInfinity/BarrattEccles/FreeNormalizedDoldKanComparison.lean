@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeNormalizedHomUnit
 public import SerrePositivity.EInfinity.BarrattEccles.FreeNormalizedHomEquivalence
-public import SerrePositivity.InfinityCategories.DoldKanComparison.HomotopyIsoTransport
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.HomotopyIsoTransport
 
 /-!
 # 元の標準自由 Hom と実 DK Hom から同じ共通 Hom への実弱 span
@@ -33,7 +33,7 @@ def freeNormalizedHomFromDoldKan :
 open SSet.modelCategoryQuillen in
 lemma freeNormalizedHomFromDoldKan_homotopyEquivalence
     (X : (Complex A)ᵒᵖ) (B : (operad A).Algebra) :
-    IsSimplicialHomotopyEquivalence (((freeNormalizedHomFromDoldKan A).app X).app B) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (((freeNormalizedHomFromDoldKan A).app X).app B) := by
   have := freeNormalizedProbeHom_kanComplex A X B
   have := freeNormalizedHomMiddle_kanComplex A X B
   have : KanComplex (((((ComplexLimits.framedLimitProbeFunctor A).op ⋙
@@ -42,7 +42,7 @@ lemma freeNormalizedHomFromDoldKan_homotopyEquivalence
           (Operad.Algebra.forget (operad A))).obj X).obj B) :=
     HomotopicalAlgebra.isFibrant_of_fibration
       (((freeNormalizedProbeDoldKanIso A).inv.app X).app B)
-  exact (DoldKanComparison.simplicialHomotopyEquivalence_iso_hom
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialHomotopyEquivalence_iso_hom
     (((freeNormalizedProbeDoldKanIso A).app X).app B).symm).comp
     (freeNormalizedHomFromTensor_homotopyEquivalence A X B)
 

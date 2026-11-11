@@ -36,28 +36,28 @@ theorem positiveHomotopyEquiv_zero_loopClasses (Y : PointedSimplicialSet.{u})
       (Y := PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y)
       0 ((MonoidalClosed.pre (sphereIso.{u} (n + 1)).inv).app Y)
       (LoopMappingClasses.classEquiv (sphere.{u} (n + 1)) Y a)) = _
-  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  rw [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
   change SphereSimplex.fundamentalHomotopyEquiv Y n
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (sphereIso.{u} (n + 1)).inv Y).right
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (sphereIso.{u} (n + 1)).inv Y).right
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)
       (LoopMappingClasses.classEquiv (sphere.{u} (n + 1)) Y a)) = _
   rw [← h]
   change CirclePower.positiveHomotopyEquiv Y n
     (LoopMappingClasses.sphereComponentEquiv Y n
       ((LoopMappingClasses.groupEquiv (PointedSimplicialSet.sphere.{u} (n + 1)) Y).symm
         (LoopMappingClasses.groupEquiv (PointedSimplicialSet.sphere.{u} (n + 1)) Y
-          (mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (sphereIso.{u} (n + 1)).inv
+          (mapπ₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (sphereIso.{u} (n + 1)).inv
             (PointedObject.basedHom CirclePower.space Y)).right a)))) = _
   rw [MulEquiv.symm_apply_apply]
   change CirclePower.positiveHomotopyEquiv Y n
     (SphereSimplex.componentClass (PointedObject.basedHom CirclePower.space Y) n
-      (mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (sphereIso.{u} (n + 1)).inv
+      (mapπ₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (sphereIso.{u} (n + 1)).inv
         (PointedObject.basedHom CirclePower.space Y)).right a)) = _
   change _ = CirclePower.positiveHomotopyEquiv Y n
     (SphereSimplex.componentClass (PointedObject.basedHom CirclePower.space Y) n
       (mapπ₀ ((MonoidalClosed.pre (sphereIso.{u} (n + 1)).inv).app
         (PointedObject.basedHom CirclePower.space Y)).right a))
-  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  rw [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
 
 end
 end SerrePositivity.KST.Spectra.SimplexCell

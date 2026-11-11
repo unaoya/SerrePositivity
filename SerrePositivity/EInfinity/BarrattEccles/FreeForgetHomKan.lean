@@ -20,7 +20,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.HomotopyFunctionComplex
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 variable (A : Type u) [CommRing A]
 
 lemma freeHomLeft_kanComplex (X : (Complex A)ᵒᵖ) (B : (operad A).Algebra) :
@@ -53,7 +53,7 @@ lemma freeHomMiddle_kanComplex (X : (Complex A)ᵒᵖ) (B : (operad A).Algebra) 
   let qD := cosimplicialResolutionFamily (mappingCofibrantFactorization A)
   have ha : ∀ X n, weakEquivalences (operad A).Algebra
       (((freeHomImageAugmentation A).app X).app n) :=
-    quillenLeftFrameAugmentation_weak (operad A).freeAlgebraFunctor P Q
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.quillenLeftFrameAugmentation_weak (operad A).freeAlgebraFunctor P Q
       (ComplexLimits.framedLimitProbe_cofibrant A)
   exact cosimplicialHom_kanComplex _
     (FrameOverFunctor.commonObj_cofibrant (mappingCofibrantFactorization A) qD

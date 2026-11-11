@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.NativePointedConeLift
-public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldEvaluation
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeSectionRestrictionCriterion
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedStrictConeFamily
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.UniversalScaffoldEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.ConeSectionRestrictionCriterion
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedStrictConeFamily
 
 /-!
 概要：始点を固定した native 全錐の持ち上げを、同じ図式の切断の族へ送る。

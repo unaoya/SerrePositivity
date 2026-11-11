@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Semiorthogonal.SemiorthogonalDecomposition
 public import SerrePositivity.KST.LocalizingInvariants.StableValueFunctor
 public import SerrePositivity.KST.LocalizingInvariants.InvariantProductDecomposition
 
@@ -20,15 +20,15 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants
 
 namespace SemiorthogonalDecomposition
-variable {A B T : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (d : _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition A B T)
+variable {A B T : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Semiorthogonal.SemiorthogonalDecomposition A B T)
 
 /-- 元の右因子の包含の値は、元の射影の値の h Sp での切断。 -/
-lemma value_section (E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}) :
+lemma value_section (E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⟶ Sp.{u}) :
     SpectrumHo.hom (valueMap E d.rightInclusion) ≫ SpectrumHo.hom (valueMap E d.projection) =
       𝟙 (SpectrumHo.obj (value E B)) := by
   let c : B ⟶ B := (d.rightInclusion : B ⟶ T) ≫ (d.projection : T ⟶ B)
-  have e : FunctorIso c.hom (𝟙 B : B ⟶ B).hom := by
-    change FunctorIso (d.rightInclusion.hom ≫ d.projection.hom) (𝟙 B.obj)
+  have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso c.hom (𝟙 B : B ⟶ B).hom := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d.rightInclusion.hom ≫ d.projection.hom) (𝟙 B.obj)
     exact d.sectionIso
   have h := valueMap_hom_eq_of_functorIso E (F := c) (G := 𝟙 B) e
   change (stableValueFunctor E).map c =
@@ -39,8 +39,8 @@ lemma value_section (E : _root_.SerrePositivity.InfinityCategories.Stable.Infini
 end SemiorthogonalDecomposition
 
 namespace IsLocalizingInvariant
-variable {E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hE : IsLocalizingInvariant E)
-  {A B T : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (d : _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition A B T)
+variable {E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hE : IsLocalizingInvariant E)
+  {A B T : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Semiorthogonal.SemiorthogonalDecomposition A B T)
 
 /-- 半直交分解の元の値に適用する、実 Sp 積の頂点からの同値。 -/
 def semiorthogonalSplitEquivalence : SpectrumHo.obj

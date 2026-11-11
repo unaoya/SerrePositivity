@@ -19,23 +19,23 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
 
 /-- 元の上側二単体の native 像は、元の指定四角形の同じ上側三角形の全射。 -/
 theorem verdierFullSUpperPrism_original :
-    SSet.yonedaEquiv.symm ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+    SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
         (Opposite.op ⦋2⦌) (verdierUpperTriangle d)) =
-      squareTriangle 0 ≫ (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0)) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ (d.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0)) := by
   rw [stableCoreSingleKanInfinity_eq]
-  have h := SSet.yonedaEquiv_symm_comp (SSet.yonedaEquiv (squareTriangle (0 : Fin 2)))
-    (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0))
+  have h := SSet.yonedaEquiv_symm_comp (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle (0 : Fin 2)))
+    (d.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0))
   simpa only [Equiv.symm_apply_apply, verdierUpperTriangle, NatTrans.comp_app_apply] using! h.symm
 
 /-- 元の指定四角形の同じ全上側二胞体へ終わる、全 S• 中間対象の実三角柱。 -/
 def verdierFullSUpperPrism : SSet.Homotopy
     (zeroMiddleFullSKanTransportedTriangle (verdierUpperTriangle d)
       (verdierUpperTriangle_middle_isZero d))
-    (squareTriangle 0 ≫ (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0))) where
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ (d.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0))) where
   h := (zeroMiddleFullSKanPrism (verdierUpperTriangle d) (verdierUpperTriangle_middle_isZero d)).h
   h₀ := (zeroMiddleFullSKanPrism (verdierUpperTriangle d) (verdierUpperTriangle_middle_isZero d)).h₀
   h₁ := (zeroMiddleFullSKanPrism (verdierUpperTriangle d)
@@ -45,21 +45,21 @@ def verdierFullSUpperPrism : SSet.Homotopy
 /-- 元の指定上側二胞体へ戻る同じ三角柱は、全頂点で元の可逆な縦辺を保つ。 -/
 theorem verdierFullSUpperPrism_pointwise :
     ∀ k : (Δ[2] : SSet.{u + 1}) _⦋0⦌,
-      IsInvertibleEdge (simplicialHomotopyVertexEdge (verdierFullSUpperPrism d) k).toTruncated := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierFullSUpperPrism d) k).toTruncated := by
   intro k
-  apply (isInvertibleEdge_congr
-    (e := (simplicialHomotopyVertexEdge (verdierFullSUpperPrism d) k).toTruncated)
-    (f := (simplicialHomotopyVertexEdge (zeroMiddleFullSKanPrism (verdierUpperTriangle d)
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+    (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierFullSUpperPrism d) k).toTruncated)
+    (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (zeroMiddleFullSKanPrism (verdierUpperTriangle d)
       (verdierUpperTriangle_middle_isZero d)) k).toTruncated) rfl).mpr
   exact zeroMiddleFullSKanPrism_pointwise (verdierUpperTriangle d)
     (verdierUpperTriangle_middle_isZero d) k
 
 /-- 元の全上側二胞体を終端とする同じ実三角柱の全関手同型。 -/
-def verdierFullSUpperPrismIso : FunctorIso
+def verdierFullSUpperPrismIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (zeroMiddleFullSKanTransportedTriangle (verdierUpperTriangle d)
       (verdierUpperTriangle_middle_isZero d))
-    (squareTriangle 0 ≫ (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0))) :=
-  functorIsoOfPointwiseInvertibleHomotopy _ (verdierFullSUpperPrism_pointwise d)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ (d.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0))) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy _ (verdierFullSUpperPrism_pointwise d)
 
 /-- 指定全上側二胞体への同じ実三角柱は、共有対角を全時刻固定する。 -/
 theorem verdierFullSUpperPrism_diagonal :

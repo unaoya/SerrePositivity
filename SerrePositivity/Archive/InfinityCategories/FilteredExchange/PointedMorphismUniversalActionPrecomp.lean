@@ -4,7 +4,7 @@ public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedValueMorphismUniversalAction
 public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceSimplexPointedRestrictionNaturality
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元の指定右作用比較の実前合成を、元の全 Hom 成分の同じ前合成の値へ戻す。

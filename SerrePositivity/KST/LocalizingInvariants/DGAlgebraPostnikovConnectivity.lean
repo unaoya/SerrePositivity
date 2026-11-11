@@ -34,7 +34,7 @@ lemma nonpositive_isConnective : IsConnective R B := by
   infer_instance
 
 lemma IsKConnective.postnikovQuotient_connected
-    (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (h : IsKConnective R Φ k)
+    (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (h : IsKConnective R Φ k)
     (hn : 1 ≤ n) :
     (∀ j : ℤ, j < n + k →
       Function.Injective (invariantGroupMap R Φ (postnikovQuotient R B n) j)) ∧

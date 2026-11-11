@@ -127,7 +127,7 @@ lemma pointedIteratedPathKan_toPoint_localized_isIso (r : ℕ) (X : StableModel.
 方針：点つき Kan な模型の弱可縮性を一般の Whitehead の充填へ渡す。
 規約：追加の存在仮定なし。使われ方：delooping の可縮な点つき経路全空間。 -/
 lemma pointedIteratedPathKan_isContractibleKan (r : ℕ) (X : StableModel.{u}) :
-    IsContractibleKan (((pointedIteratedPathKanFunctor r).obj X).right) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (((pointedIteratedPathKanFunctor r).obj X).right) :=
   pointedIsContractibleKan_of_localized_toPoint _
     (pointedIteratedPathKan_toPoint_localized_isIso r X)
 

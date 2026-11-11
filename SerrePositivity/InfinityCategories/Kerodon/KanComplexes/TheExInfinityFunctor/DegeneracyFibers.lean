@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：predAbove の値を、添字以下ではそのまま、先では一つ引く式にする。
 規約：Moss 2020 Lemma 26 (7) の singleton 上の計算の補助。
 使われ方：二重の拡張退化を通常の退化へ比較する。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

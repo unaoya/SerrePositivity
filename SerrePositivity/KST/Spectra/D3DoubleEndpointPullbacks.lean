@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3ParameterPullbackCriterion
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashMonomorphisms
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SmashMonomorphisms
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
 
 /-!
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 local instance d3DoublePullbackSquareCategory : SmallCategory (Fin 2 × Fin 2) :=
@@ -67,7 +67,7 @@ end
 
 /-- 元の端点パラメータ四角形は、構成済みの同じ cofiber pushout。 -/
 lemma d3EndpointParameter_isPushout : D3ParameterIsPushout d3EndpointParameter.{u} := by
-  exact pointedCofiber_isPushout _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}
+  exact pointedCofiber_isPushout _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}
 
 /-- 元の端点 pushout を右テンソルで保存した、第一方向の実パラメータ面。 -/
 lemma d3DoubleEndpointLeftParameter_isPushout (k l : Fin 2) :
@@ -89,7 +89,7 @@ lemma d3DoubleEndpointLeftParameter_mono (k l : Fin 2) :
       ((d3BiParameterLeftOrder k l).toFunctor.op ⋙ d3DoubleEndpointParameter.{u})
       (show ((1, 0) : Fin 2 × Fin 2) ≤ (1, 1) by decide)).right := by
   rw [d3DoubleEndpointParameter, d3BiParameterLeft_arrow]
-  change Mono (PointedObject.smashMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}
+  change Mono (PointedObject.smashMap _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}
     (𝟙 (d3EndpointParameterObj (k, l)))).right
   infer_instance
 
@@ -99,14 +99,14 @@ lemma d3DoubleEndpointRightParameter_mono (i j : Fin 2) :
       ((d3BiParameterRightOrder i j).toFunctor.op ⋙ d3DoubleEndpointParameter.{u})
       (show ((1, 0) : Fin 2 × Fin 2) ≤ (1, 1) by decide)).right := by
   rw [d3DoubleEndpointParameter, d3BiParameterRight_arrow]
-  change Mono (d3EndpointParameterObj (i, j) ◁ _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}).right
+  change Mono (d3EndpointParameterObj (i, j) ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}).right
   infer_instance
 
 /-- 実四次元全図式の第一方向の各面は、同じ元の作用を持つ ∞ pullback。 -/
 lemma d3DoubleEndpointSquare_left_isPullback (k l : Fin 2) (Y : PointedKanObject.{u}) :
-    IsPullbackSquare (squareDiagram
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram
       ((d3DoubleEndpointSquare ≫ (MonoidalClosed.pre (d3BiParameterLeftFace k l)).app
-        PointedKanInfinity).app _ (coherentNerveVertex Y))) := by
+        PointedKanInfinity).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y))) := by
   rw [d3DoubleEndpointSquare, d3PointedKanBiParameterSquare_left]
   let D := (d3BiParameterLeftOrder k l).toFunctor.op ⋙ d3DoubleEndpointParameter.{u}
   have : Mono (d3ParameterArrow D
@@ -116,9 +116,9 @@ lemma d3DoubleEndpointSquare_left_isPullback (k l : Fin 2) (Y : PointedKanObject
 
 /-- 同じ実四次元図式の第二方向の各面も、元の作用を保つ ∞ pullback。 -/
 lemma d3DoubleEndpointSquare_right_isPullback (i j : Fin 2) (Y : PointedKanObject.{u}) :
-    IsPullbackSquare (squareDiagram
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram
       ((d3DoubleEndpointSquare ≫ (MonoidalClosed.pre (d3BiParameterRightFace i j)).app
-        PointedKanInfinity).app _ (coherentNerveVertex Y))) := by
+        PointedKanInfinity).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y))) := by
   rw [d3DoubleEndpointSquare, d3PointedKanBiParameterSquare_right]
   let D := (d3BiParameterRightOrder i j).toFunctor.op ⋙ d3DoubleEndpointParameter.{u}
   have : Mono (d3ParameterArrow D

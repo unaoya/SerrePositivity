@@ -13,14 +13,14 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "A" => dgAlgebraCategory R (DGOdotInput.source d)
-local notation "C" => dgAlgebraCategory R (DGOdotInput.left d)
-local notation "DRaw" => dgAlgebraCategory R (DGOdotInput.right d)
-local notation "E" => dgAlgebraCategory R (DGOdotInput.corner d)
-local notation "L" => dgAlgebraMap R (DGOdotInput.top d)
-local notation "G" => dgAlgebraMap R (DGOdotInput.side d)
-local notation "p" => dgAlgebraMap R (DGOdotInput.lower d)
-local notation "q" => dgAlgebraMap R (DGOdotInput.upper d)
+local notation "A" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d)
+local notation "C" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.left d)
+local notation "DRaw" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.right d)
+local notation "E" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.corner d)
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.top d)
+local notation "G" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.side d)
+local notation "p" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.lower d)
+local notation "q" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.upper d)
 local notation "CL" => DGSmallPerfectArrowTarget R (A) (C) (L)
 local notation "DR" => DGSmallPerfectArrowTarget R (A) (DRaw) (G)
 local notation "pS" => dgSmallPerfectSquareLeftMap R (A) (C) (DRaw) (E) (L) (G) (p) (q)
@@ -32,7 +32,7 @@ lemma dgOdotTargetRightEndMap_originalHom (x y : DGOdotQuotientEnd R d) :
     DGQuotient.originalHomInclusion R (DGOdotGluing R d)
         (dgQuotientImage R (I).diagonal) (I).point (I).point ≫
       (dgOdotTargetRightEndMap R d).map x y =
-    dgGluingRightHomMap R (CL) (DR)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightHomMap R (CL) (DR)
       (dgHomGluingBimodule R (CL) (DR) (DGOdotCorner R d) (pS) (qS)) (I).point (I).point ≫
         (qS).map (I).rightPoint (I).rightPoint := by
   have hQ := DGQuotient.quotientEvaluation_original R

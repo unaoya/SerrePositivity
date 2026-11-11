@@ -20,12 +20,12 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite SerrePositivity.HomotopyFunctionComplex.ComonadResolutionOperators
 open scoped Simplicial
 
-variable (C : RelativeCategory.{u}) {X Y : C.category}
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
 
 lemma generatorHom_face_heq (n : ℕ) (i : Fin (n + 2))
     (f : (freeResolutionGeneratorHom C X Y) _⦋n + 1⦌) :
     HEq ((freeResolutionGeneratorHom C X Y).δ i f)
-      ((face freeRelativeComonad C (n + 1) i).functor.map f) := by
+      ((face _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C (n + 1) i).functor.map f) := by
   change HEq (eqToHom _ ≫ ((freeResolution C).δ i).functor.map f ≫ eqToHom _) _
   simp only [eqToHom_comp_heq_iff, comp_eqToHom_heq_iff]
   rw [freeResolution_face]
@@ -33,7 +33,7 @@ lemma generatorHom_face_heq (n : ℕ) (i : Fin (n + 2))
 lemma generatorHom_degeneracy_heq (n : ℕ) (i : Fin (n + 1))
     (f : (freeResolutionGeneratorHom C X Y) _⦋n⦌) :
     HEq ((freeResolutionGeneratorHom C X Y).σ i f)
-      ((degeneracy freeRelativeComonad C n i).functor.map f) := by
+      ((degeneracy _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C n i).functor.map f) := by
   change HEq (eqToHom _ ≫ ((freeResolution C).σ i).functor.map f ≫ eqToHom _) _
   simp only [eqToHom_comp_heq_iff, comp_eqToHom_heq_iff]
   rw [freeResolution_degeneracy]
@@ -41,7 +41,7 @@ lemma generatorHom_degeneracy_heq (n : ℕ) (i : Fin (n + 1))
 lemma generatorHom_augmentation_heq (n : ℕ)
     (f : (freeResolutionGeneratorHom C X Y) _⦋n⦌) :
     HEq ((freeResolutionGeneratorHomAugmentation C X Y).app (op ⦋n⦌) f)
-      ((augmentation freeRelativeComonad C (n + 1)).functor.map f) := by
+      ((augmentation _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C (n + 1)).functor.map f) := by
   change HEq (eqToHom _ ≫ ((freeResolutionAugmentationNatTrans C).app (op ⦋n⦌)).functor.map f ≫
     eqToHom _) _
   simp only [eqToHom_comp_heq_iff, comp_eqToHom_heq_iff]

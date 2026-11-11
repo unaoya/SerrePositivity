@@ -84,7 +84,7 @@ lemma boundaryTensor_cofibration [ModelCategory C]
 lemma boundary_lifting_of_reedyCofibrant [ModelCategory C]
     (hA : reedyLeft simplex (cofibrations C) (initial.to A))
     {Y Z : C} (p : Y ⟶ Z) [Fibration p] [WeakEquivalence p] :
-    HasLiftingProperty (SSet.boundary.{v} n).ι ((cosimplicialHom A).map p) :=
+    HasLiftingProperty (SSet.boundary.{v} n).ι ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p) :=
   boundary_lifting_of_cofibration A (fun m ↦ boundaryTensor_cofibration A m hA) p n
 
 end SerrePositivity.HomotopyFunctionComplex

@@ -20,13 +20,13 @@ open SerrePositivity.HomotopyFunctionComplex
 namespace SerrePositivity.DiagramModel.FrameMappingLimit
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
 
 abbrev evaluatedHom : (K ⥤ C)ᵒᵖ ⥤ C ⥤ Kᵒᵖ ⥤ SSet.{v} :=
   (EvaluatedFrame.family K I J).op ⋙ Functor.opHom K (SimplexCategory ⥤ C) ⋙
     (Functor.whiskeringRight Kᵒᵖ (SimplexCategory ⥤ C)ᵒᵖ (C ⥤ SSet.{v})).obj
-      (cosimplicialHomBifunctor ⋙ (Functor.whiskeringLeft C C SSet.{v}).obj (fibrantTarget fib)) ⋙
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙ (Functor.whiskeringLeft C C SSet.{v}).obj (fibrantTarget fib)) ⋙
       flipFunctor Kᵒᵖ C SSet.{v}
 
 def evaluatedHomIso : PointwiseMappingComparison.frameDiagram K I J fib ≅
@@ -37,7 +37,7 @@ def evaluatedHomIso : PointwiseMappingComparison.frameDiagram K I J fib ≅
       ext n h
       simp [PointwiseMappingComparison.frameDiagram, PointwiseMappingComparison.diagrams,
         evaluatedHom, FrameOverFunctor.hom, EvaluatedFrame.frame, EvaluatedFrame.family,
-        cosimplicialHomBifunctor, cosimplicialHomMap])) (by
+        _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap])) (by
       intro Y Z f
       ext k n h
       rfl)) (by
@@ -45,7 +45,7 @@ def evaluatedHomIso : PointwiseMappingComparison.frameDiagram K I J fib ≅
     ext Y k n h
     simp [PointwiseMappingComparison.frameDiagram, PointwiseMappingComparison.diagrams,
       evaluatedHom, FrameOverFunctor.hom, EvaluatedFrame.frame, EvaluatedFrame.family,
-      cosimplicialHomBifunctor, cosimplicialHomMap])
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap])
 
 @[simp]
 lemma evaluatedHom_obj (F : (K ⥤ C)ᵒᵖ) (Y : C) :

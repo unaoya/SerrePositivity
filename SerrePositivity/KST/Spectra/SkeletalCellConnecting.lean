@@ -25,7 +25,7 @@ set_option maxHeartbeats 2000000 in
 -- 塔の源の関手と通常の制限射の定義的一致を検査するための局所的な上限。
 lemma stageDifferential_connecting (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n r : ℕ)
-    (x : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right (r + 1)
+    (x : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right (r + 1)
       (UnbasedPointedMapping.stageFiber K Y n).basepoint) :
     UnbasedPointedMapping.stageDifferential K Y n r x =
       pointedConnectingHom (UnbasedPointedMapping.pre
@@ -39,7 +39,7 @@ lemma stageDifferential_connecting (K : SSet.{u})
 使われ方：Goerss–Jardine VIII §1。交代式を証明すべき局所的な連結射を固定する。 -/
 theorem stageFiberDifferential_cellConnecting (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n r : ℕ)
-    (x : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right (r + 1)
+    (x : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right (r + 1)
       (UnbasedPointedMapping.stageFiber K Y n).basepoint) (s : K.nonDegenerate (n + 2)) :
     stageFiberCoefficientEquiv K Y (n + 1) r
         (UnbasedPointedMapping.stageDifferential K Y n r x) s =
@@ -49,16 +49,16 @@ theorem stageFiberDifferential_cellConnecting (K : SSet.{u})
           (pointedConnectingHom (UnbasedPointedMapping.pre (boundary (n + 2)).ι Y) r
             (pointedGroupMap (r + 1)
               (UnbasedPointedMapping.pre
-                (cellBoundarySource K (n + 2) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 2)).symm s)) Y)
+                (cellBoundarySource K (n + 2) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 2)).symm s)) Y)
               (pointedGroupMap (r + 1)
                 (pointedFiberι (UnbasedPointedMapping.pre
                   (UnbasedPointedMapping.skeletalInclusion K n) Y)) x)))) := by
   rw [stageFiberCoefficientEquiv_boundaryRestriction, stageDifferential_connecting]
   have h := UnbasedPointedMapping.restrictionSourceFiberMap_connecting
     (UnbasedPointedMapping.skeletalInclusion K (n + 1)) (boundary (n + 2)).ι
-    (cellBoundarySource K (n + 2) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 2)).symm s))
-    (cellSimplexSource K (n + 2) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 2)).symm s))
-    (cellSourceSquare K (n + 2) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 2)).symm s)) Y r
+    (cellBoundarySource K (n + 2) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 2)).symm s))
+    (cellSimplexSource K (n + 2) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 2)).symm s))
+    (cellSourceSquare K (n + 2) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 2)).symm s)) Y r
     (pointedGroupMap (r + 1)
       (pointedFiberι (UnbasedPointedMapping.pre
         (UnbasedPointedMapping.skeletalInclusion K n) Y)) x)

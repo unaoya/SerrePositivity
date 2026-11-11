@@ -22,8 +22,8 @@ variable {E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}}
 規約：元上下二胞体を保持し、実面の認証を仮定しない。
 使われ方：元始域比較長方形の右面の実認証。 -/
 theorem dgOdotMilnorPerfectNullSquare_value_isPullback
-    (h : DGGluingMilnorSquare R d) (hE : IsPerfectLocalizingInvariant E) :
-    IsPullbackSquare (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R ≫ E) :=
+    (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d) (hE : IsPerfectLocalizingInvariant E) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R ≫ E) :=
   RelativePerfectVerdierDiagram.isPullback_of_perfectImageIso
     (dgOdotMilnorNuPerfectSequence R d h).presentation hE
     (dgOdotMilnorNuAbsolutePerfectSquareBoundary R d h)
@@ -32,8 +32,8 @@ theorem dgOdotMilnorPerfectNullSquare_value_isPullback
 方針：元実核面の認証を既存の同じ始域比較長方形の貼り合わせへ供給する。
 規約：元 cell 始域と増大屋根を保持。使われ方：元始域への実零化面の回収。 -/
 theorem dgOdotMilnorSourceNullRectangle_value_outer_isPullback_of_milnor
-    (h : DGGluingMilnorSquare R d) (hE : IsPerfectLocalizingInvariant E) :
-    IsPullbackSquare (pastingSquare
+    (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d) (hE : IsPerfectLocalizingInvariant E) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare
       ((dgOdotMilnorSourceNullRectangle R d).diagram ≫ dgKInputPerfectNu R ≫ E) 1) :=
   dgOdotMilnorSourceNullRectangle_value_outer_isPullback R d h hE
     (dgOdotMilnorPerfectNullSquare_value_isPullback R d h hE)

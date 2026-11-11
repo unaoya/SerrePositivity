@@ -30,7 +30,7 @@ def normalized (D : FiberDiagram.{u}) : FiberDiagram.{u} where
   isFiber := (FiberModel.homotopyFiberSquare (NativeFiber.rightMap D.triangle)).isPullback
 
 def normalizationDiagramIso (D : FiberDiagram.{u}) :
-    FunctorIso D.triangle.square (normalized D).triangle.square :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso D.triangle.square (normalized D).triangle.square :=
   (FiberComparison.relativeFunctorIso
     (NativeFiber.asFiberSquare D.triangle D.isFiber)
     (FiberModel.homotopyFiberSquare (NativeFiber.rightMap D.triangle))).iso

@@ -19,14 +19,14 @@ namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra.Path
 variable (R : Type u) [CommRing R]
 
 abbrev primitive (B : Mon (Complex R)) : Cochain (algebra R B).X B.X (-1) :=
-  dgFunctorCommaPrimitive R _ _ (identityFunctor R B) (identityPoint R B) (identityPoint R B)
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaPrimitive R _ _ (identityFunctor R B) (identityPoint R B) (identityPoint R B)
 
 lemma chain_ext (B : Mon (Complex R)) {K : Complex R} (f g : K ⟶ (algebra R B).X)
     (hs : f ≫ (source R B).hom = g ≫ (source R B).hom)
     (ht : f ≫ (target R B).hom = g ≫ (target R B).hom)
     (hp : (Cochain.ofHom f).comp (primitive R B) (zero_add (-1)) =
       (Cochain.ofHom g).comp (primitive R B) (zero_add (-1))) : f = g :=
-  dgFunctorCommaHom_ext R _ _ (identityFunctor R B) (identityPoint R B) (identityPoint R B)
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHom_ext R _ _ (identityFunctor R B) (identityPoint R B) (identityPoint R B)
     K f g hs ht hp
 
 lemma mapHom_primitive {A B : Mon (Complex R)} (f : A ⟶ B) :

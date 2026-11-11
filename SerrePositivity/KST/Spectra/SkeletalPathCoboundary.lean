@@ -23,7 +23,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 variable (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) {n : ℕ}
-  (f : (K.skeleton (n + 3) : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right)
+  (f : (K.skeleton (n + 3) : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right)
 
 /-- 概要：loop 値の骨格射の path 表示は、次の骨格へ常に延長できる。
 方針：可縮な path 空間の終対象への射の全単射に対する RLP を適用する。
@@ -57,8 +57,8 @@ lemma endpoint_lower :
 
 /-- 延長の終点の、指定した新規セルでの境界定数単体。 -/
 def endpointSimplex (s : K _⦋n + 3⦌) : Y.right.PtSimplex (n + 3) Y.basepoint :=
-  _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.simplexValue (H ≫ (pathEndpoint Y).right)
-    (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant _ (endpoint_lower K Y f H hH)) s
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.simplexValue (H ≫ (pathEndpoint Y).right)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.lower_constant _ (endpoint_lower K Y f H hH)) s
 
 /-- 指定セルに制限した path の延長。 -/
 def cellPath (s : K _⦋n + 3⦌) : (Δ[n + 3] : SSet.{u}) ⟶ (basedPathSpace Y).right :=
@@ -75,10 +75,10 @@ include hH in
 使われ方：Goerss–Jardine VIII §1。球面的 path 境界の交代式への入力。 -/
 lemma cellPath_face
     (hf : ∀ t : (K.skeleton (n + 3) : SSet.{u}) _⦋n + 1⦌,
-      SSet.yonedaEquiv.symm t ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)
+      SSet.yonedaEquiv.symm t ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint)
     (s : K _⦋n + 3⦌) (j : Fin (n + 4)) :
     stdSimplex.δ j ≫ cellPath K Y H s =
-      (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.simplexValue f hf (K.δ j s)).map ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.simplexValue f hf (K.δ j s)).map ≫
         (PointedMapping.loopToPath Y).right := by
   have he : stdSimplex.δ j ≫ SSet.yonedaEquiv.symm
         (⟨s, K.mem_skeleton s⟩ : (K.skeleton (n + 4) : SSet.{u}) _⦋n + 3⦌) =
@@ -100,12 +100,12 @@ def endpointFiberVertex : (UnbasedPointedMapping.stageFiber K Y (n + 2)).right _
 lemma endpointFiberVertex_coefficient [KanComplex Y.right] (s : K.nonDegenerate (n + 3)) :
     SkeletalCellAttachment.stageFiberComponentEquiv K Y (n + 2)
         (π₀.mk (endpointFiberVertex K Y f H hH)) s =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (endpointSimplex K Y f H hH s.val) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (endpointSimplex K Y f H hH s.val) := by
   have hc := congrFun (SkeletalCellAttachment.skeletalFiberVertex_cochain K Y (n + 1)
     (H ≫ (pathEndpoint Y).right) (endpoint_lower K Y f H hH)) s
   change Additive.ofMul (SkeletalCellAttachment.stageFiberComponentEquiv K Y (n + 2)
     (π₀.mk (endpointFiberVertex K Y f H hH)) s) =
-      Additive.ofMul (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (endpointSimplex K Y f H hH s.val)) at hc
+      Additive.ofMul (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (endpointSimplex K Y f H hH s.val)) at hc
   exact congrArg Additive.toMul hc
 
 end

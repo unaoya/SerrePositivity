@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.AllMarkedNative
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EndpointColimit
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EndpointColimit
 
 /-!
 # 指定部分圏の包含と元の端点等式の移送
@@ -22,14 +22,14 @@ variable {C : Type u} [Category.{v} C] (W : MorphismProperty C)
   {X X' Y Y' : Paths C}
 
 lemma inclusion_endpoint (hX : X = X') (hY : Y = Y') :
-    EndpointChange.colimitMap (⊤ : MorphismProperty (WideSubcategory W.paths))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EndpointColimit.colimitMap (⊤ : MorphismProperty (WideSubcategory W.paths))
       (congrArg (fun Z : Paths C => (⟨Z⟩ : WideSubcategory W.paths)) hX)
       (congrArg (fun Z : Paths C => (⟨Z⟩ : WideSubcategory W.paths)) hY) ≫ inclusion W X' Y' =
-    inclusion W X Y ≫ EndpointChange.colimitMap W.paths hX hY := by
+    inclusion W X Y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EndpointColimit.colimitMap W.paths hX hY := by
   cases hX
   cases hY
   change 𝟙 (nativeSpace W X Y) ≫ inclusion W X Y =
-    inclusion W X Y ≫ 𝟙 (colimitGraph W.paths X Y)
+    inclusion W X Y ≫ 𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y)
   rw [Category.id_comp, Category.comp_id]
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked

@@ -27,7 +27,7 @@ def monicKTracedTripleInterchangePointSquare (n : ℕ) :=
 
 /-- 元の全交換族の直通列点制限は、実三角形対に用いた同じ二辺の全正方形そのもの。 -/
 lemma monicKTracedTripleInterchangeFamily_point (n : ℕ) :
-    (pointParameterMap (SSet.yonedaEquiv (nervePoint (coherentArrowStringDirect h)))
+    (pointParameterMap (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect h)))
         (Δ[1] : SSet.{u}) ▷ (Δ[1] : SSet.{u})) ≫
           monicKTracedTripleInterchangeFamily F f g h n =
       monicKTracedTripleInterchangePointSquare F f g h n := by

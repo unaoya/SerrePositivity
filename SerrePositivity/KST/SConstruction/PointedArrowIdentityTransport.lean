@@ -52,11 +52,11 @@ lemma pointedExtensionArrowIdentityIso_source {I : Type v} [Category.{w} I]
     {X Y : I} (f : X ⟶ Y) :
     (pointedExtensionArrowIdentityIso η θ X).hom ≫ pointedExtensionSourceTransport η θ f =
       pointedExtensionArrowMap η θ (assemblyArrowFromSource f) := by
-  let ps := pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app X) (L.obj X)).right
+  let ps := pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app X) (L.obj X)).right
     (SSet.yonedaEquiv.symm (familyVertex (θ.app X)))
-  let px := pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app X) (L.obj X)).right
+  let px := pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app X) (L.obj X)).right
     (SSet.yonedaEquiv.symm (familyVertex (R.map (𝟙 X) ≫ θ.app X)))
-  let pm := pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app X) (L.obj Y)).right
+  let pm := pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app X) (L.obj Y)).right
     (SSet.yonedaEquiv.symm (familyVertex (R.map f ≫ θ.app Y)))
   have hs : pointedExtensionSourceTransport η θ f ≫ pm =
       ps ≫ pointedMappingTransport (𝟙 (A.obj X)) (L.map f) :=
@@ -86,11 +86,11 @@ lemma pointedExtensionArrowIdentityIso_target {I : Type v} [Category.{w} I]
     {X Y : I} (f : X ⟶ Y) :
     (pointedExtensionArrowIdentityIso η θ Y).hom ≫ pointedExtensionTargetTransport η θ f =
       pointedExtensionArrowMap η θ (assemblyArrowFromTarget f) := by
-  let ps := pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app Y) (L.obj Y)).right
+  let ps := pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app Y) (L.obj Y)).right
     (SSet.yonedaEquiv.symm (familyVertex (θ.app Y)))
-  let px := pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app Y) (L.obj Y)).right
+  let px := pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app Y) (L.obj Y)).right
     (SSet.yonedaEquiv.symm (familyVertex (R.map (𝟙 Y) ≫ θ.app Y)))
-  let pm := pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app X) (L.obj Y)).right
+  let pm := pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app X) (L.obj Y)).right
     (SSet.yonedaEquiv.symm (familyVertex (R.map f ≫ θ.app Y)))
   have hs : pointedExtensionTargetTransport η θ f ≫ pm =
       ps ≫ pointedMappingTransport (A.map f) (𝟙 (L.obj Y)) :=

@@ -8,61 +8,61 @@ public import SerrePositivity.EInfinity.ComplexLimits.ConeWithoutFirst
 -/
 @[expose] public section
 namespace SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
-open SerrePositivity.InfinityCategories.DGNerve
+
 
 lemma erase_max_nonempty {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
-    (I.erase (I.max' (Index.nonempty hI))).Nonempty := by
+    (I.erase (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))).Nonempty := by
   apply Finset.card_pos.mp
-  have := Finset.card_erase_add_one (I.max'_mem (Index.nonempty hI))
+  have := Finset.card_erase_add_one (I.max'_mem (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
   omega
 
 def penultimate {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) : Fin (n + 1) :=
-  (I.erase (I.max' (Index.nonempty hI))).max' (erase_max_nonempty I hI)
+  (I.erase (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))).max' (erase_max_nonempty I hI)
 
 lemma penultimate_mem {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
     penultimate I hI ∈ I :=
-  Finset.mem_of_mem_erase ((I.erase (I.max' (Index.nonempty hI))).max'_mem _)
+  Finset.mem_of_mem_erase ((I.erase (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))).max'_mem _)
 
 lemma penultimate_lt_max {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
-    penultimate I hI < I.max' (Index.nonempty hI) := by
+    penultimate I hI < I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI) := by
   have hne := (Finset.mem_erase.mp
-    ((I.erase (I.max' (Index.nonempty hI))).max'_mem (erase_max_nonempty I hI))).1
+    ((I.erase (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))).max'_mem (erase_max_nonempty I hI))).1
   exact lt_of_le_of_ne (I.le_max' _ (penultimate_mem I hI)) hne
 
 lemma right_filter_penultimate {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
-    I.filter (penultimate I hI ≤ ·) = {penultimate I hI, I.max' (Index.nonempty hI)} := by
+    I.filter (penultimate I hI ≤ ·) = {penultimate I hI, I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)} := by
   ext i
   constructor
   · intro hi
     obtain ⟨hiI, hpi⟩ := Finset.mem_filter.mp hi
-    by_cases him : i = I.max' (Index.nonempty hI)
+    by_cases him : i = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)
     · simp [him]
     · have hip : i ≤ penultimate I hI :=
-        (I.erase (I.max' (Index.nonempty hI))).le_max' i (Finset.mem_erase.mpr ⟨him, hiI⟩)
+        (I.erase (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))).le_max' i (Finset.mem_erase.mpr ⟨him, hiI⟩)
       simp [le_antisymm hip hpi]
   · intro hi
-    rcases (show i = penultimate I hI ∨ i = I.max' (Index.nonempty hI) by
+    rcases (show i = penultimate I hI ∨ i = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI) by
       simpa only [Finset.mem_insert, Finset.mem_singleton] using hi) with rfl | rfl
     · exact Finset.mem_filter.mpr ⟨penultimate_mem I hI, le_rfl⟩
     · exact Finset.mem_filter.mpr ⟨I.max'_mem _, (penultimate_lt_max I hI).le⟩
 
 lemma right_card_two_iff_penultimate {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
-    (j : Fin (n + 1)) (hj : j ∈ I) (hjm : j < I.max' (Index.nonempty hI)) :
+    (j : Fin (n + 1)) (hj : j ∈ I) (hjm : j < I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) :
     (I.filter (j ≤ ·)).card = 2 ↔ j = penultimate I hI := by
   constructor
   · intro hc
-    have hjp : j ≤ penultimate I hI := (I.erase (I.max' (Index.nonempty hI))).le_max' j
+    have hjp : j ≤ penultimate I hI := (I.erase (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))).le_max' j
       (Finset.mem_erase.mpr ⟨hjm.ne, hj⟩)
     have hl : IsLeast (↑(I.filter (j ≤ ·)) : Set (Fin (n + 1))) j :=
       ⟨Finset.mem_filter.mpr ⟨hj, le_rfl⟩, fun _ h => (Finset.mem_filter.mp h).2⟩
     have hr : IsGreatest (↑(I.filter (j ≤ ·)) : Set (Fin (n + 1)))
-        (I.max' (Index.nonempty hI)) :=
+        (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) :=
       ⟨Finset.mem_filter.mpr ⟨I.max'_mem _, hjm.le⟩,
         fun _ h => I.le_max' _ (Finset.mem_filter.mp h).1⟩
     have hp : penultimate I hI ∈ I.filter (j ≤ ·) :=
       Finset.mem_filter.mpr ⟨penultimate_mem I hI, hjp⟩
-    rw [Index.eq_pair hc hl hr] at hp
-    rcases (show penultimate I hI = j ∨ penultimate I hI = I.max' (Index.nonempty hI) by
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.eq_pair hc hl hr] at hp
+    rcases (show penultimate I hI = j ∨ penultimate I hI = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI) by
       simpa only [Finset.mem_insert, Finset.mem_singleton] using hp) with hp | hp
     · exact hp.symm
     · exact False.elim ((penultimate_lt_max I hI).ne hp)
@@ -72,13 +72,13 @@ lemma right_card_two_iff_penultimate {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 
     simp [(penultimate_lt_max I hI).ne]
 
 lemma min_lt_penultimate {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
-    (hc : 3 ≤ I.card) : I.min' (Index.nonempty hI) < penultimate I hI := by
-  have he : 2 ≤ (I.erase (I.max' (Index.nonempty hI))).card := by
-    have := Finset.card_erase_add_one (I.max'_mem (Index.nonempty hI))
+    (hc : 3 ≤ I.card) : I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI) < penultimate I hI := by
+  have he : 2 ≤ (I.erase (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))).card := by
+    have := Finset.card_erase_add_one (I.max'_mem (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     omega
-  have hm := Index.erase_min (I.isLeast_min' (Index.nonempty hI))
-    (I.min'_lt_max'_of_card (by omega)) (Index.nonempty he)
+  have hm := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.erase_min (I.isLeast_min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (I.min'_lt_max'_of_card (by omega)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty he)
   rw [hm]
-  exact (I.erase (I.max' (Index.nonempty hI))).min'_lt_max'_of_card (by omega)
+  exact (I.erase (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))).min'_lt_max'_of_card (by omega)
 
 end SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex

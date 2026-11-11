@@ -20,7 +20,7 @@ open SSet.modelCategoryQuillen
 open CategoryTheory Limits MonoidalCategory Opposite HomotopicalAlgebra
 open scoped Simplicial
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R)) {X B : Mon (Complex R)}
   (q : X ⟶ B) (hq : EInfinity.projectiveFibrations R q.hom)
@@ -57,8 +57,8 @@ lemma multiplicativeCellMapping_fibration :
         a b sq.w
       exact ⟨c, ha, hb⟩ }
   exact HasLiftingProperty.of_arrow_iso_left
-    (Arrow.isoMk (uliftHornIso.{0, u} (n + 1) i) (uliftStdSimplexIso.{0, u} (n + 1))
-      (uliftHornIso_ι (n + 1) i))
+    (Arrow.isoMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftHornIso.{0, u} (n + 1) i) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftStdSimplexIso.{0, u} (n + 1))
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftHornIso_ι (n + 1) i))
     (multiplicativeMappingPostcompose R (cellResolution R A) q) (hip := hsmall)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

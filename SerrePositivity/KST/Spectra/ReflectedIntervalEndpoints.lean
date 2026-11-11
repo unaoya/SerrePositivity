@@ -37,7 +37,7 @@ lemma intervalMap_yoneda_face {X : SSet.{u}} (f : (Δ[1] : SSet.{u}) ⟶ X) (i :
 
 /-- 反転係数を戻した経路の始点は、元の反転係数の終点の基礎零単体。 -/
 lemma reflectedCoefficient_source {X : SSet.{u}} (τ : (Δ[1] : SSet.{u}) ⟶ X.op) :
-    ((stdSimplex.opIso ⦋1⦌).inv ≫ HomotopyLimits.reflectedSimplexMap τ).app
+    ((stdSimplex.opIso ⦋1⦌).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.reflectedSimplexMap τ).app
         (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 0) =
       SSet.opObjEquiv (τ.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 1)) := by
   rw [reflectedCoefficient_unreverse, simplexInterval_vertex, SSet.δ_opObjEquiv]
@@ -45,7 +45,7 @@ lemma reflectedCoefficient_source {X : SSet.{u}} (τ : (Δ[1] : SSet.{u}) ⟶ X.
 
 /-- 反転係数を戻した経路の終点は、元の反転係数の始点の基礎零単体。 -/
 lemma reflectedCoefficient_target {X : SSet.{u}} (τ : (Δ[1] : SSet.{u}) ⟶ X.op) :
-    ((stdSimplex.opIso ⦋1⦌).inv ≫ HomotopyLimits.reflectedSimplexMap τ).app
+    ((stdSimplex.opIso ⦋1⦌).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.reflectedSimplexMap τ).app
         (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 1) =
       SSet.opObjEquiv (τ.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 0)) := by
   rw [reflectedCoefficient_unreverse, simplexInterval_vertex, SSet.δ_opObjEquiv]

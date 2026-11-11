@@ -22,7 +22,7 @@ variable {C : Type u} [Category.{v} C] [HasFiniteColimits C] (A : SimplexCategor
 
 namespace BinaryCoproduct
 
-def simplexDesc (s : BinaryCofan (obj A X) (obj A Y)) : Z ⟶ (cosimplicialHom A).obj s.pt :=
+def simplexDesc (s : BinaryCofan (obj A X) (obj A Y)) : Z ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj s.pt :=
   BinaryCofan.IsColimit.desc h ((homEquiv A X s.pt).symm s.inl)
     ((homEquiv A Y s.pt).symm s.inr)
 

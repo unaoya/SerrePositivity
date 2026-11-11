@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockCompositionPairing
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitComposition
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitComposition
 
 /-!
 # 元の E 代数の二つの hammock 余極限の積からの合成
@@ -28,33 +28,33 @@ def algebraHammockTensorPairColimitIso (X Y Z : (operad A).Algebra) :
     Limits.colimit (algebraHammockPairDiagram A X Y Z) ≅
       algebraHammockColimitGraph A X Y ⊗ algebraHammockColimitGraph A Y Z := by
   let := modelCategory A
-  exact Hammock.tensorPairColimitIso (weakEquivalences (operad A).Algebra) X Y Z
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.tensorPairColimitIso (weakEquivalences (operad A).Algebra) X Y Z
 
 /-- 同じ元の二つの余極限の積を始域とする実際の合成。 -/
 def algebraHammockColimitComposition (X Y Z : (operad A).Algebra) :
     algebraHammockColimitGraph A X Y ⊗ algebraHammockColimitGraph A Y Z ⟶
       algebraHammockColimitGraph A X Z := by
   let := modelCategory A
-  exact Hammock.colimitComposition (weakEquivalences (operad A).Algebra) X Y Z
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition (weakEquivalences (operad A).Algebra) X Y Z
 
 /-- 全固定語の元の標準射上で、同じ合成と連結語の標準射を回収する。 -/
-lemma algebraHammockColimitComposition_fac (a b : Hammock.Word)
+lemma algebraHammockColimitComposition_fac (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     (X Y Z : (operad A).Algebra) :
     (algebraHammockGraphInclusion A a X Y ⊗ₘ algebraHammockGraphInclusion A b Y Z) ≫
         algebraHammockColimitComposition A X Y Z =
       algebraHammockGraphComposition A a b X Y Z ≫
-        algebraHammockGraphInclusion A (Hammock.Word.append a b) X Z := by
+        algebraHammockGraphInclusion A (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a b) X Z := by
   let := modelCategory A
-  exact Hammock.colimitComposition_fac (weakEquivalences (operad A).Algebra) X Y Z a b
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition_fac (weakEquivalences (operad A).Algebra) X Y Z a b
 
 /-- 同じ標準同型は、元の全固定語の二つの標準射の積を回収する。 -/
-lemma algebraHammockTensorPairColimitIso_fac (a b : Hammock.Word)
+lemma algebraHammockTensorPairColimitIso_fac (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     (X Y Z : (operad A).Algebra) :
     Limits.colimit.ι (algebraHammockPairDiagram A X Y Z) (a, b) ≫
         (algebraHammockTensorPairColimitIso A X Y Z).hom =
       (algebraHammockGraphInclusion A a X Y ⊗ₘ algebraHammockGraphInclusion A b Y Z) := by
   let := modelCategory A
-  exact Hammock.tensorPairColimitIso_fac (weakEquivalences (operad A).Algebra) X Y Z a b
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.tensorPairColimitIso_fac (weakEquivalences (operad A).Algebra) X Y Z a b
 
 /-- 前工程の同じ比較は、標準同型と二つの余極限の積からの合成に厳密に分解。 -/
 lemma algebraHammockTensorPairColimitIso_comp (X Y Z : (operad A).Algebra) :
@@ -62,16 +62,16 @@ lemma algebraHammockTensorPairColimitIso_comp (X Y Z : (operad A).Algebra) :
         algebraHammockColimitComposition A X Y Z =
       algebraHammockColimitCompositionPairing A X Y Z := by
   let := modelCategory A
-  exact Hammock.tensorPairColimitIso_comp (weakEquivalences (operad A).Algebra) X Y Z
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.tensorPairColimitIso_comp (weakEquivalences (operad A).Algebra) X Y Z
 
 /-- 全固定語の元の標準射の積は、実際の積からの射を一意に決める。 -/
 lemma algebraHammockTensorPair_hom_ext (X Y Z : (operad A).Algebra) {K : SSet.{u + 1}}
     (f g : algebraHammockColimitGraph A X Y ⊗ algebraHammockColimitGraph A Y Z ⟶ K)
-    (h : ∀ a b : Hammock.Word,
+    (h : ∀ a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word,
       (algebraHammockGraphInclusion A a X Y ⊗ₘ algebraHammockGraphInclusion A b Y Z) ≫ f =
       (algebraHammockGraphInclusion A a X Y ⊗ₘ algebraHammockGraphInclusion A b Y Z) ≫ g) :
     f = g := by
   let := modelCategory A
-  exact Hammock.tensorPair_hom_ext (weakEquivalences (operad A).Algebra) X Y Z f g h
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.tensorPair_hom_ext (weakEquivalences (operad A).Algebra) X Y Z f g h
 
 end SerrePositivity.EInfinity.BarrattEccles

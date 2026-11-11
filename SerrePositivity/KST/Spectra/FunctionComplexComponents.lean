@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.Pointed.FunctionComplexPointedSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex
 public import SerrePositivity.KST.Spectra.PointedMappingComponents
 public import SerrePositivity.KST.Spectra.FunctionComplexPost
 
@@ -25,8 +25,8 @@ noncomputable section
 方針：評価の誘導する π₀ の写像を並べる。
 規約：この写像自体には Kan 性は不要。
 使われ方：Goerss–Jardine I §7。係数表示の順写像。 -/
-def componentMap (S : Type u) (X : SSet.{u}) : π₀ (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) → (S → π₀ X) :=
-  fun a s ↦ mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S X s) a
+def componentMap (S : Type u) (X : SSet.{u}) : π₀ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.obj S X) → (S → π₀ X) :=
+  fun a s ↦ mapπ₀ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval S X s) a
 
 @[simp]
 lemma componentMap_mk (S : Type u) (X : SSet.{u}) (v : S → X _⦋0⦌) :
@@ -45,7 +45,7 @@ theorem componentMap_bijective (S : Type u) (X : SSet.{u}) [KanComplex X] :
     have he (s : S) : Nonempty (X.Edge (v s) (w s)) :=
       nonempty_edge_of_piZero_eq (congrFun h s)
     let e (s : S) := Classical.choice (he s)
-    exact π₀.sound (Edge.mk (X := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) (fun s ↦ (e s).edge)
+    exact π₀.sound (Edge.mk (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.obj S X) (fun s ↦ (e s).edge)
       (funext fun s ↦ (e s).src_eq) (funext fun s ↦ (e s).tgt_eq))
   · intro a
     choose v hv using fun s ↦ π₀.mk_surjective (a s)
@@ -56,7 +56,7 @@ theorem componentMap_bijective (S : Type u) (X : SSet.{u}) [KanComplex X] :
 規約：Kan 充填と選択公理による集合の同値。
 使われ方：Goerss–Jardine VIII §1。骨格の fiber の係数への接続。 -/
 def componentEquiv (S : Type u) (X : SSet.{u}) [KanComplex X] :
-    π₀ (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) ≃ (S → π₀ X) :=
+    π₀ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.obj S X) ≃ (S → π₀ X) :=
   Equiv.ofBijective _ (componentMap_bijective S X)
 
 @[simp]
@@ -69,11 +69,11 @@ lemma componentEquiv_mk (S : Type u) (X : SSet.{u}) [KanComplex X]
 規約：Kan 性を仮定せずに写像として述べる。
 使われ方：Goerss–Jardine VIII §1。成分係数の自然性。 -/
 theorem componentMap_natural (S : Type u) {X Y : SSet.{u}} (f : X ⟶ Y)
-    (a : π₀ (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X)) :
+    (a : π₀ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.obj S X)) :
     componentMap S Y (mapπ₀ (post S f) a) = fun s ↦ mapπ₀ f (componentMap S X a s) := by
   funext s
-  change mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S Y s) (mapπ₀ (post S f) a) =
-    mapπ₀ f (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S X s) a)
+  change mapπ₀ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval S Y s) (mapπ₀ (post S f) a) =
+    mapπ₀ f (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval S X s) a)
   rw [← mapπ₀_comp_apply, post_eval, mapπ₀_comp_apply]
 
 end

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitApexPointedLongComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedIntervalComparisonComposition
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoDownHorizontal
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：明示した元の長辺と元の普遍三角形の長辺との比較を、元の普遍比較へ合成する。

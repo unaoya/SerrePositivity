@@ -48,7 +48,7 @@ def objectSClosedBackward {X : StableModel.{u}} (P : ClosedStablePredicate X) :
     apply ConcreteCategory.hom_ext
     intro v
     have : Mono (closedStableInclusion P).val :=
-      inferInstanceAs (Mono (fullSubcomplexOnVertices X.carrier P.predicate).ι)
+      inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X.carrier P.predicate).ι)
     apply objectSConstructionFunctor_map_injective (closedStableInclusion P) m
     change (objectSConstructionFunctor.map (closedStableInclusion P)).app m
         (objectSClosedVertexLift P ((objectSConstruction X.carrier).map α v.val) _) =
@@ -79,7 +79,7 @@ def objectSClosedIso {X : StableModel.{u}} (P : ClosedStablePredicate X) :
     apply ConcreteCategory.hom_ext
     intro v
     have : Mono (closedStableInclusion P).val :=
-      inferInstanceAs (Mono (fullSubcomplexOnVertices X.carrier P.predicate).ι)
+      inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X.carrier P.predicate).ι)
     apply objectSConstructionFunctor_map_injective (closedStableInclusion P) n
     exact objectSClosedVertexLift_inclusion P _ _
   inv_hom_id := by

@@ -17,7 +17,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
   (K : SSet.{u + 1})
 
 /-- 概要：同じ実全 S• 再構成の読出し合成を恒等へ可逆比較する。
@@ -30,7 +30,7 @@ theorem zeroMiddleFullSComparisonReconstruction_exists
         zeroMiddleFullSReconstructionTriangleSpace s hZ K)
       (read : zeroMiddleFullSReconstructionTriangleSpace s hZ K ⟶
         zeroMiddleFullSReconstructionLongSpace s hZ K),
-      Nonempty (FunctorIso (encode ≫ read) (𝟙 _)) ∧
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (encode ≫ read) (𝟙 _)) ∧
       zeroMiddleFullSReconstructionRecovery s hZ K read ∧
       zeroMiddleFullSReconstructionDiagonalRecovery s hZ K encode read ∧
       zeroMiddleFullSReconstructionNormalizeComparison s hZ K encode read := by
@@ -53,11 +53,11 @@ def zeroMiddleFullSComparisonReadPoint
       zeroMiddleFullSReconstructionTriangleSpace s hZ K)
     (read : zeroMiddleFullSReconstructionTriangleSpace s hZ K ⟶
       zeroMiddleFullSReconstructionLongSpace s hZ K)
-    (e : FunctorIso (encode ≫ read) (𝟙 _))
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (encode ≫ read) (𝟙 _))
     (ℓ : (zeroMiddleFullSReconstructionLongSpace s hZ K) _⦋0⦌) :
-    VertexIso (read.app (Opposite.op ⦋0⦌)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (read.app (Opposite.op ⦋0⦌)
       (encode.app (Opposite.op ⦋0⦌) ℓ)) ℓ := by
-  have h := VertexIso.map e (evaluateFunctorAt ℓ)
-  simpa [evaluateFunctorAt_functorVertex] using h
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt ℓ)
+  simpa [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex] using h
 
 end SerrePositivity.KST.Fibration

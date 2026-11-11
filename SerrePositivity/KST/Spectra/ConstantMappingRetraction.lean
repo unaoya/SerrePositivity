@@ -32,7 +32,7 @@ def unitIso (X : PointedSimplicialSet.{u}) : obj (𝟙_ SSet.{u}) X ≅ X :=
   Under.isoMk (unitIsoSelf (X := X.right)) (by
     change curry (snd (𝟙_ SSet.{u}) (𝟙_ SSet.{u}) ≫ X.hom) ≫
       (unitIsoSelf (X := X.right)).hom = X.hom
-    rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry_unit_evaluation]
+    rw [_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.curry_unit_evaluation]
     change (λ_ (𝟙_ SSet.{u})).inv ≫ (λ_ (𝟙_ SSet.{u})).hom ≫ X.hom = X.hom
     simp)
 
@@ -60,7 +60,7 @@ lemma constant_evaluation {K : SSet.{u}} (v : 𝟙_ SSet.{u} ⟶ K)
   rw [evaluation, ← Category.assoc, constant_pre]
   apply Under.UnderMorphism.ext
   change curry (snd (𝟙_ SSet.{u}) X.right) ≫ (unitIsoSelf (X := X.right)).hom = 𝟙 X.right
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry_unit_evaluation]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.curry_unit_evaluation]
   exact Iso.inv_hom_id (λ_ X.right)
 
 /-- 概要：非空の源への定数射は全正次数の群で単射。

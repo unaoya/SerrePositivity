@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CospanTransportedKanPath
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberwisePullbackValueKanPoint
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.KanCospanPointHomotopy
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.IntervalReplacementKan
-public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanCospanPointHomotopy
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalReplacementKan
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.F1BKanComplexHomotopyClasses
 
 /-!
 概要：共通値へ輸送した Kan 引き戻し射を、元の値の実際の比較像へ戻す。

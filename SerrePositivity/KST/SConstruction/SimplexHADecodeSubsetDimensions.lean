@@ -23,7 +23,7 @@ lemma simplexHADecodeSubset_right_card
     (hb : ∀ t ∈ T, v (Fin.last (m + 1)) < t) :
     ((simplexHADecodeSubset (m + 1) v T).filter (v (Fin.last (m + 1)) ≤ ·)).card = T.card + 1 := by
   rw [simplexHADecodeSubset_filter_right m v T hb]
-  exact Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T _ hb)
+  exact Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail_not_mem T _ hb)
 
 /-- 元の左フィルターの cube 次元は、元の左列の同じ次元。 -/
 lemma simplexHADecodeSubset_left_dimension

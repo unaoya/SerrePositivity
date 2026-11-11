@@ -18,12 +18,12 @@ open Spectra
 /-- 零次 K 群の元の π₀ 表示は単位を定数 loop の成分へ送る。 -/
 lemma kHomotopyZeroPiZeroEquiv_one (X : StableModel.{u}) :
     kHomotopyZeroPiZeroEquiv X 1 = SSet.π₀.mk (boundaryKSpaceFunctor.obj X).basepoint := by
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero
     (pointedHomotopyMap 0 ((monicKKanSequenceProjection X).app 0)
       (OmegaSpectrum.homotopyGroupEquivAt (kOmegaSpectrum X) 0 0 _ 1)) = _
   rw [map_one, ← OmegaSpectrum.levelPoint_eq_one (kOmegaSpectrum X) 0 0,
-    pointedHomotopyMap, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_point]
-  simp only [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_mk, Equiv.apply_symm_apply]
+    pointedHomotopyMap, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_point]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.point, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero_mk, Equiv.apply_symm_apply]
   rfl
 
 end SerrePositivity.KST.SConstruction

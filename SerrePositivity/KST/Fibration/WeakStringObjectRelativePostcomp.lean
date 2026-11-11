@@ -15,8 +15,8 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 全 W 列と相対 S の元の二重単体の交換は、元の包含側の後合成と可換。 -/
-lemma weakStringObjectRelativeIso_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+lemma weakStringObjectRelativeIso_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     Functor.whiskerRight (weakStringStablePostcomp f q) objectSConstructionFunctor ≫
       (weakStringObjectRelativeIso q).hom =
         (weakStringObjectRelativeIso (f ≫ q : A ⟶ C)).hom ≫
@@ -45,8 +45,8 @@ lemma simplicialDiagonalFlipIso_naturality {X Y : SimplexCategoryᵒᵖ ⥤ SSet
   simp only [Category.comp_id, Category.id_comp]
 
 /-- 元の相対 S 対角の厳密交換同型は、元の包含側の完全関手と可換。 -/
-lemma weakStringObjectRelativeDiagonalIso_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+lemma weakStringObjectRelativeDiagonalIso_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     simplicialDiagonalFunctor.map
       (Functor.whiskerRight (weakStringStablePostcomp f q) objectSConstructionFunctor) ≫
       (weakStringObjectRelativeDiagonalIso q).hom =

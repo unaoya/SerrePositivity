@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.InitialCofinality
-public import SerrePositivity.InfinityCategories.Core.TerminalTransport
-public import SerrePositivity.InfinityCategories.Core.ConeEdgeCompatibility
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialCofinality
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TerminalTransport
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeEdgeCompatibility
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
-public import SerrePositivity.InfinityCategories.Derived.DiscreteCharacterization
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteCharacterization
 public import Mathlib.RingTheory.IntegralClosure.IsIntegral.Basic
 public import SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
@@ -49,82 +49,82 @@ set_option backward.defeqAttrib.useBackward true
 
 /-- 一点図式の恒等錐は slice の終対象である。 -/
 theorem sliceIdentityCone_terminal {X : SSet.{u}} [Quasicategory X] (x : X _⦋0⦌) :
-    IsTerminalVertex (sliceIdentityCone x) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sliceIdentityCone x) := by
   intro n b hb
-  let L := sliceOverUncurry b
-  let σ := (finalHornPointJoinIso (n + 1)).inv ≫ L
+  let L := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry b
+  let σ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.finalHornPointJoinIso (n + 1)).inv ≫ L
   let e := SSet.Truncated.Edge.id (X := (truncation 2).obj X) x
-  have he : IsInvertibleEdge e := by
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge e := by
     change IsIso (SSet.Truncated.HomotopyCategory.homMk e)
     rw [SSet.Truncated.HomotopyCategory.homMk_id]
     infer_instance
-  have hσ : σ.app (Opposite.op ⦋1⦌) (finalHornEdge n) = e.edge := by
-    rw [← finalHornPointJoinIso_edge, ← SSet.yonedaEquiv_comp]
-    change SSet.yonedaEquiv (((joinStdSimplexIso 0 0).inv ≫
-      joinMap (boundaryVertex n (Fin.last (n + 1))) (𝟙 Δ[0]) ≫
-        (finalHornPointJoinIso (n + 1)).hom) ≫
-          ((finalHornPointJoinIso (n + 1)).inv ≫ L)) = _
+  have hσ : σ.app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.finalHornEdge n) = e.edge := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.finalHornPointJoinIso_edge, ← SSet.yonedaEquiv_comp]
+    change SSet.yonedaEquiv (((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).inv ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.boundaryVertex n (Fin.last (n + 1))) (𝟙 Δ[0]) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.finalHornPointJoinIso (n + 1)).hom) ≫
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.finalHornPointJoinIso (n + 1)).inv ≫ L)) = _
     rw [Category.assoc, Category.assoc, Iso.hom_inv_id_assoc]
-    change SSet.yonedaEquiv ((joinStdSimplexIso 0 0).inv ≫
-      (joinMap (boundaryVertex n (Fin.last (n + 1))) (𝟙 Δ[0]) ≫ sliceOverUncurry b)) = _
-    rw [← sliceOverUncurry_precomp, hb, sliceOverUncurry_yoneda]
-    rw [sliceIdentityCone, SSet.comp_const]
+    change SSet.yonedaEquiv ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).inv ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.boundaryVertex n (Fin.last (n + 1))) (𝟙 Δ[0]) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry b)) = _
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry_precomp, hb, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sliceOverUncurry_yoneda]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sliceIdentityCone, SSet.comp_const]
     change X.map (SimplexCategory.const ⦋1⦌ ⦋0⦌ 0).op x =
       X.map (SimplexCategory.σ (0 : Fin 1)).op x
     exact congrArg (fun α : ⦋1⦌ ⟶ ⦋0⦌ => X.map α.op x) (by decide)
-  obtain ⟨G, hG⟩ := hasFinalHornFillers_of_isInvertibleEdge e he n σ hσ
-  let M := (joinStdSimplexIso (n + 1) 0).hom ≫ G
-  have hM : joinMap (boundary (n + 1)).ι (𝟙 Δ[0]) ≫ M = L := by
-    change joinMap (boundary (n + 1)).ι (𝟙 Δ[0]) ≫
-      (joinStdSimplexIso (n + 1) 0).hom ≫ G = L
-    rw [← Category.assoc, ← finalHornPointJoinIso_hom_ι, Category.assoc, hG]
-    exact (finalHornPointJoinIso (n + 1)).hom_inv_id_assoc L
-  have hfixed : joinInr Δ[n + 1] Δ[0] ≫ M = SSet.yonedaEquiv.symm x := by
-    rw [← sliceOverUncurry_fixed b]
-    change joinInr Δ[n + 1] Δ[0] ≫ M = joinInr (boundary (n + 1) : SSet) Δ[0] ≫ L
+  obtain ⟨G, hG⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.hasFinalHornFillers_of_isInvertibleEdge e he n σ hσ
+  let M := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso (n + 1) 0).hom ≫ G
+  have hM : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (boundary (n + 1)).ι (𝟙 Δ[0]) ≫ M = L := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (boundary (n + 1)).ι (𝟙 Δ[0]) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso (n + 1) 0).hom ≫ G = L
+    rw [← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.finalHornPointJoinIso_hom_ι, Category.assoc, hG]
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.finalHornPointJoinIso (n + 1)).hom_inv_id_assoc L
+  have hfixed : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr Δ[n + 1] Δ[0] ≫ M = SSet.yonedaEquiv.symm x := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry_fixed b]
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr Δ[n + 1] Δ[0] ≫ M = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (boundary (n + 1) : SSet) Δ[0] ≫ L
     rw [← hM]
-    simp only [← Category.assoc, joinInr_joinMap, Category.id_comp]
-  refine ⟨sliceOverCurry M hfixed, ?_⟩
-  rw [sliceOverCurry_precomp]
-  have heq : sliceOverCurry (joinMap (boundary (n + 1)).ι (𝟙 Δ[0]) ≫ M)
-      (by rw [← Category.assoc, joinInr_joinMap, Category.id_comp, hfixed]) =
-      sliceOverCurry (sliceOverUncurry b) (sliceOverUncurry_fixed b) := by
+    simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr_joinMap, Category.id_comp]
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverCurry M hfixed, ?_⟩
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverCurry_precomp]
+  have heq : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverCurry (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (boundary (n + 1)).ι (𝟙 Δ[0]) ≫ M)
+      (by rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr_joinMap, Category.id_comp, hfixed]) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverCurry (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry b) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry_fixed b) := by
     congr 1
-  exact heq.trans (sliceOverCurry_uncurry b)
+  exact heq.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverCurry_uncurry b)
 
 /-- 始対象を全射列に前置して得る標準錐。 -/
 def initialValueCone {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
-    {X : SSet.{max v w}} (F : nerve I ⟶ X) : JoinCone F :=
-  ⟨nerveInitialCone hc ≫ F, by rw [← Category.assoc, nerveInitialCone_inr, Category.id_comp]⟩
+    {X : SSet.{max v w}} (F : nerve I ⟶ X) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone F :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveInitialCone hc ≫ F, by rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveInitialCone_inr, Category.id_comp]⟩
 
 /-- 始対象で制限した標準錐の射は定数射。 -/
 theorem initialValueCone_restriction {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
     {X : SSet.{max v w}} (F : nerve I ⟶ X) :
-    ((initialRestriction F c).app (Opposite.op ⦋0⦌) (initialValueCone hc F)).val =
-      SSet.const (F.app _ (nerveVertex c)) := by
-  change joinMap (𝟙 Δ[0]) (nervePoint c) ≫ (nerveInitialCone hc ≫ F) = _
-  rw [← Category.assoc, nerveInitialCone_at_point, SSet.const_comp]
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialRestriction F c).app (Opposite.op ⦋0⦌) (initialValueCone hc F)).val =
+      SSet.const (F.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c)) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint c) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveInitialCone hc ≫ F) = _
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveInitialCone_at_point, SSet.const_comp]
 
 /-- 二宇宙版の cofinality により始対象の値の標準錐が極限になる。 -/
 theorem initialValueCone_isLimit {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
     {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X) :
-    IsLimitCone (initialValueCone hc F) := by
-  have := initialCofinality hc F
-  apply isTerminalVertex_of_trivialKanFibration (initialRestriction F c)
-  have hp : nervePoint c ≫ F = SSet.yonedaEquiv.symm (F.app _ (nerveVertex c)) := by
-    rw [nervePoint, SSet.yonedaEquiv_symm_comp]
-  let d := JoinCone.cast (sliceIdentityCone (F.app _ (nerveVertex c))) hp.symm
-  have hd : IsLimitCone d := IsLimitCone.cast (c := sliceIdentityCone (F.app _ (nerveVertex c)))
-    (sliceIdentityCone_terminal (F.app _ (nerveVertex c))) hp.symm
-  have ht : (initialRestriction F c).app (Opposite.op ⦋0⦌) (initialValueCone hc F) = d :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (initialValueCone hc F) := by
+  have := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialCofinality hc F
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isTerminalVertex_of_trivialKanFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialRestriction F c)
+  have hp : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint c ≫ F = SSet.yonedaEquiv.symm (F.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c)) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint, SSet.yonedaEquiv_symm_comp]
+  let d := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone.cast (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sliceIdentityCone (F.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c))) hp.symm
+  have hd : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone d := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone.cast (c := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sliceIdentityCone (F.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c)))
+    (sliceIdentityCone_terminal (F.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c))) hp.symm
+  have ht : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialRestriction F c).app (Opposite.op ⦋0⦌) (initialValueCone hc F) = d :=
     Subtype.ext (initialValueCone_restriction hc F)
   rw [ht]
   exact hd
 
 /-- 辺のホモトピー圏上で単体的射を作用させる。 -/
 def coneHomotopyMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (q : X ⟶ Y) :=
-  (homotopyCategoryBridge X).functor ⋙ (hoFunctor.map q).toFunctor ⋙
-    (homotopyCategoryBridge Y).inverse
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge X).functor ⋙ (hoFunctor.map q).toFunctor ⋙
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge Y).inverse
 
 /-- この作用は辺の像そのものを与える。 -/
 theorem coneHomotopyMap_homMk {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
@@ -132,11 +132,11 @@ theorem coneHomotopyMap_homMk {X Y : SSet.{u}} [Quasicategory X] [Quasicategory 
     (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) :
     (coneHomotopyMap q).map (SSet.Truncated.HomotopyCategory₂.homMk e) =
       SSet.Truncated.HomotopyCategory₂.homMk (e.map ((truncation 2).map q)) := by
-  change (pathToEdgeHomotopyCategory _).map
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.pathToEdgeHomotopyCategory _).map
     ((SSet.Truncated.mapHomotopyCategory ((truncation 2).map q)).map
       (SSet.Truncated.HomotopyCategory.homMk e)) = _
   rw [SSet.Truncated.mapHomotopyCategory_homMk]
-  simp only [pathToEdgeHomotopyCategory, SSet.Truncated.HomotopyCategory.lift_map_homMk]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.pathToEdgeHomotopyCategory, SSet.Truncated.HomotopyCategory.lift_map_homMk]
 
 /-- 一単体が一致する辺の可逆性は、端点の表示によらない。 -/
 theorem coneEdge_isIso_of_edge_eq {X : SSet.{u}} [Quasicategory X]
@@ -155,46 +155,46 @@ theorem coneEdge_isIso_of_edge_eq {X : SSet.{u}} [Quasicategory X]
 /-- 標準錐の始対象への脚は退化した恒等一単体である。 -/
 theorem initialValueCone_leg {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
     {X : SSet.{max v w}} (F : nerve I ⟶ X) :
-    (derivedConeLeg (initialValueCone hc F) (nerveVertex c)).edge =
-      (SSet.Truncated.Edge.id (X := (truncation 2).obj X) (F.app _ (nerveVertex c))).edge := by
-  change SSet.yonedaEquiv ((joinStdSimplexIso 0 0).inv ≫
-    joinMap (𝟙 Δ[0]) (nervePoint c) ≫ (nerveInitialCone hc ≫ F)) = _
-  rw [← Category.assoc (joinMap _ _) _ _, nerveInitialCone_at_point, SSet.const_comp,
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.derivedConeLeg (initialValueCone hc F) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c)).edge =
+      (SSet.Truncated.Edge.id (X := (truncation 2).obj X) (F.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c))).edge := by
+  change SSet.yonedaEquiv ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).inv ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint c) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveInitialCone hc ≫ F)) = _
+  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap _ _) _ _, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveInitialCone_at_point, SSet.const_comp,
     SSet.comp_const]
   change X.map (SimplexCategory.const ⦋1⦌ ⦋0⦌ 0).op _ =
     X.map (SimplexCategory.σ (0 : Fin 1)).op _
-  exact congrArg (fun α : ⦋1⦌ ⟶ ⦋0⦌ => X.map α.op (F.app _ (nerveVertex c))) (by decide)
+  exact congrArg (fun α : ⦋1⦌ ⟶ ⦋0⦌ => X.map α.op (F.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c))) (by decide)
 
 /-- 指定錐と始対象の値の標準錐との同型は h(sliceOver F) にある。 -/
 def initialLimitConeIso {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
     {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X)
-    (a : JoinCone F) (ha : IsLimitCone a) :
-    (SSet.HomotopyCategory.mk a : hoFunctor.obj (sliceOver F)) ≅
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone F) (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone a) :
+    (SSet.HomotopyCategory.mk a : hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver F)) ≅
       SSet.HomotopyCategory.mk (initialValueCone hc F) :=
-  limitConeIso a (initialValueCone hc F) ha (initialValueCone_isLimit hc F)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitConeIso a (initialValueCone hc F) ha (initialValueCone_isLimit hc F)
 
 /-- 極限錐の比較同型を表す slice の辺を選ぶ。 -/
 def initialLimitConeEdge {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
     {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X)
-    (a : JoinCone F) (ha : IsLimitCone a) :
-    SSet.Truncated.Edge (X := (truncation 2).obj (sliceOver F)) a (initialValueCone hc F) :=
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone F) (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone a) :
+    SSet.Truncated.Edge (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver F)) a (initialValueCone hc F) :=
   Classical.choose (SSet.Truncated.HomotopyCategory₂.homMk_surjective
-    (terminalVertexIso₂ ha (initialValueCone_isLimit hc F)).hom)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.terminalVertexIso₂ ha (initialValueCone_isLimit hc F)).hom)
 
 /-- 選んだ辺の類は、二次切断で計算した同じ比較同型である。 -/
 theorem initialLimitConeEdge_homMk {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
     {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X)
-    (a : JoinCone F) (ha : IsLimitCone a) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone F) (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone a) :
     SSet.Truncated.HomotopyCategory₂.homMk (initialLimitConeEdge hc F a ha) =
-      (terminalVertexIso₂ ha (initialValueCone_isLimit hc F)).hom :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.terminalVertexIso₂ ha (initialValueCone_isLimit hc F)).hom :=
   Classical.choose_spec (SSet.Truncated.HomotopyCategory₂.homMk_surjective
-    (terminalVertexIso₂ ha (initialValueCone_isLimit hc F)).hom)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.terminalVertexIso₂ ha (initialValueCone_isLimit hc F)).hom)
 
 /-- slice の比較辺は、公開した h(sliceOver) の比較同型そのものを表す。 -/
 theorem initialLimitConeEdge_path {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
     {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X)
-    (a : JoinCone F) (ha : IsLimitCone a) :
-    (homotopyCategoryBridge (sliceOver F)).functor.map
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone F) (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone a) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver F)).functor.map
         (SSet.Truncated.HomotopyCategory₂.homMk (initialLimitConeEdge hc F a ha)) =
       (initialLimitConeIso hc F a ha).hom := by
   rw [initialLimitConeEdge_homMk]
@@ -203,34 +203,34 @@ theorem initialLimitConeEdge_path {I : Type v} [Category.{w} I] {c : I} (hc : Is
 /-- 比較同型の頂点への射影は、指定した各脚と三角形で両立する。 -/
 theorem initialLimitConeEdge_leg {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
     {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X)
-    (a : JoinCone F) (ha : IsLimitCone a) (t : (nerve I) _⦋0⦌) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone F) (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone a) (t : (nerve I) _⦋0⦌) :
     SSet.Truncated.HomotopyCategory₂.homMk
-        ((initialLimitConeEdge hc F a ha).map ((truncation 2).map (sliceOverProjection F))) ≫
-      SSet.Truncated.HomotopyCategory₂.homMk (derivedConeLeg (initialValueCone hc F) t) =
-        SSet.Truncated.HomotopyCategory₂.homMk (derivedConeLeg a t) :=
-  derivedConeLeg_homMk_comp (initialLimitConeEdge hc F a ha) t
+        ((initialLimitConeEdge hc F a ha).map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection F))) ≫
+      SSet.Truncated.HomotopyCategory₂.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.derivedConeLeg (initialValueCone hc F) t) =
+        SSet.Truncated.HomotopyCategory₂.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.derivedConeLeg a t) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.derivedConeLeg_homMk_comp (initialLimitConeEdge hc F a ha) t
 
 /-- 極限錐の始対象への実際の脚は導来同値を表す。 -/
 theorem initialLimitLeg_isIso {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
     {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X)
-    (a : JoinCone F) (ha : IsLimitCone a) :
-    IsIso (SSet.Truncated.HomotopyCategory₂.homMk (derivedConeLeg a (nerveVertex c))) := by
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone F) (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone a) :
+    IsIso (SSet.Truncated.HomotopyCategory₂.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.derivedConeLeg a (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c))) := by
   let e := initialLimitConeEdge hc F a ha
   have hi : IsIso (SSet.Truncated.HomotopyCategory₂.homMk e) := by
     rw [initialLimitConeEdge_homMk]
     infer_instance
   have hi' : IsIso (SSet.Truncated.HomotopyCategory₂.homMk
-      (e.map ((truncation 2).map (sliceOverProjection F)))) := by
-    rw [← coneHomotopyMap_homMk (sliceOverProjection F) e]
+      (e.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection F)))) := by
+    rw [← coneHomotopyMap_homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection F) e]
     infer_instance
   have hj : IsIso (SSet.Truncated.HomotopyCategory₂.homMk
-      (derivedConeLeg (initialValueCone hc F) (nerveVertex c))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.derivedConeLeg (initialValueCone hc F) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c))) := by
     have : IsIso (SSet.Truncated.HomotopyCategory₂.homMk
-        (SSet.Truncated.Edge.id (X := (truncation 2).obj X) (F.app _ (nerveVertex c)))) := by
+        (SSet.Truncated.Edge.id (X := (truncation 2).obj X) (F.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c)))) := by
       rw [SSet.Truncated.HomotopyCategory₂.homMk_id]
       infer_instance
     exact coneEdge_isIso_of_edge_eq _ _ (initialValueCone_leg hc F)
-  rw [← derivedConeLeg_homMk_comp e (nerveVertex c)]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.derivedConeLeg_homMk_comp e (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c)]
   infer_instance
 
 end SerrePositivity.BhattScholze.PerfectoidizationInterface
@@ -292,24 +292,24 @@ def specifiedAlgebra (S : A_R R) {C : Type u} [CommRing C]
 
 /-- 図式の一頂点への脚を、界面の join の一単体の表記で評価する。 -/
 theorem coneLeg_edge {K X : SSet.{u + 1}} {G : K ⟶ X}
-    (a : JoinCone G) (v : K _⦋0⦌) :
-    (derivedConeLeg a v).edge = a.val.app _ (joinLegSimplex v) := by
-  change SSet.yonedaEquiv ((joinStdSimplexIso 0 0).inv ≫
-    joinMap (𝟙 Δ[0]) (SSet.yonedaEquiv.symm v) ≫ a.val) = _
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone G) (v : K _⦋0⦌) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.derivedConeLeg a v).edge = a.val.app _ (joinLegSimplex v) := by
+  change SSet.yonedaEquiv ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).inv ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) (SSet.yonedaEquiv.symm v) ≫ a.val) = _
   rw [← Category.assoc, SSet.yonedaEquiv_comp]
   congr 1
   rw [SSet.yonedaEquiv_comp]
-  have h00 : SSet.yonedaEquiv (joinStdSimplexIso 0 0 :
-      join (Δ[0] : SSet.{u + 1}) Δ[0] ≅ Δ[1]).inv =
+  have h00 : SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0 :
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u + 1}) Δ[0] ≅ Δ[1]).inv =
       joinLegSimplex (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u + 1}))) := by
     apply (ConcreteCategory.bijective_of_isIso
-      ((joinStdSimplexIso 0 0).hom.app (Opposite.op ⦋1⦌))).injective
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).hom.app (Opposite.op ⦋1⦌))).injective
     rw [← SSet.yonedaEquiv_comp, Iso.inv_hom_id]
     apply SSet.stdSimplex.ext
     intro i
     fin_cases i <;> rfl
   rw [h00]
-  simp [joinLegSimplex, joinMap, Join.augHom]
+  simp [joinLegSimplex, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Join.augHom]
 
 section Interface
 variable (hR : IsIntegralPerfectoid R p) (F : PerfectoidizationInterfaceE3 R p hR)
@@ -319,7 +319,7 @@ variable (hR : IsIntegralPerfectoid R p) (F : PerfectoidizationInterfaceE3 R p h
 /-- 比較は指定された界面の錐と始対象からの標準錐の間の h(sliceOver) の同型。 -/
 def specifiedLimitConeIso :
     (SSet.HomotopyCategory.mk (F.limitCone S).cone :
-        SSet.hoFunctor.obj (sliceOver (targetDiagram R p S))) ≅
+        SSet.hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (targetDiagram R p S))) ≅
       SSet.HomotopyCategory.mk (initialValueCone
         (specifiedTarget_isInitial p S.right ηC hC) (targetDiagram R p S)) :=
   initialLimitConeIso (specifiedTarget_isInitial p S.right ηC hC)
@@ -331,14 +331,14 @@ theorem specifiedProjection_isIso :
       ((F.limitCone S).projectionEdge (specifiedTarget p S.right ηC hC)).toTruncated) := by
   have := initialLimitLeg_isIso (specifiedTarget_isInitial p S.right ηC hC)
     (targetDiagram R p S) (F.limitCone S).cone (F.limit_isLimit S)
-  apply coneEdge_isIso_of_edge_eq _ (derivedConeLeg (F.limitCone S).cone
-    (nerveVertex (specifiedTarget p S.right ηC hC)))
+  apply coneEdge_isIso_of_edge_eq _ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.derivedConeLeg (F.limitCone S).cone
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (specifiedTarget p S.right ηC hC)))
   change ((F.limitCone S).projectionEdge (specifiedTarget p S.right ηC hC)).edge = _
   exact ((F.limitCone S).projectionEdge_eq _).trans (coneLeg_edge _ _).symm
 
 /-- vertex perfd S と指定された C の離散像の同型。射は元の錐の射影である。 -/
 def specifiedDerivedIso :
-    (⟨vertex R F.perfd S⟩ : derivedInfinityHomotopyCategory R) ≅
+    (⟨vertex R F.perfd S⟩ : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyCategory R) ≅
       ⟨vertex R (J R) (specifiedAlgebra p R S ηC hC)⟩ := by
   have := specifiedProjection_isIso p R hR F S ηC hC
   exact asIso (SSet.Truncated.HomotopyCategory₂.homMk
@@ -352,16 +352,16 @@ theorem specifiedDerivedIso_unit :
         (edge R (J R) (targetUnitMap R p S (specifiedTarget p S.right ηC hC))).toTruncated := by
   let T := specifiedTarget p S.right ηC hC
   let cc := F.limitCone S
-  have hs : (derivedConeLeg (cc.sourceCone.postcomp (J R)) (nerveVertex T)).edge =
+  have hs : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.derivedConeLeg (cc.sourceCone.postcomp (J R)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex T)).edge =
       (edge R (J R) (targetUnitMap R p S T)).edge := by
     rw [coneLeg_edge]
-    change (J R).app _ (cc.sourceCone.val.app _ (joinLegSimplex (nerveVertex T))) = _
-    rw [show nerveVertex T = ComposableArrows.mk₀ T from rfl, cc.source_legs T]
+    change (J R).app _ (cc.sourceCone.val.app _ (joinLegSimplex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex T))) = _
+    rw [show _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex T = ComposableArrows.mk₀ T from rfl, cc.source_legs T]
     rfl
-  have hp : (derivedConeLeg cc.cone (nerveVertex T)).edge = (cc.projectionEdge T).edge := by
+  have hp : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.derivedConeLeg cc.cone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex T)).edge = (cc.projectionEdge T).edge := by
     rw [coneLeg_edge, cc.projectionEdge_eq]
     rfl
-  let raw := derivedConeLegCompStruct cc.overSource.toTruncated (nerveVertex T)
+  let raw := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.derivedConeLegCompStruct cc.overSource.toTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex T)
   let triangle : SSet.Truncated.Edge.CompStruct (component R F.unit S).toTruncated
       (cc.projectionEdge T).toTruncated (edge R (J R) (targetUnitMap R p S T)).toTruncated :=
     ⟨raw.simplex, raw.d₂.trans cc.overSource_unit, raw.d₀.trans hp, raw.d₁.trans hs⟩
@@ -371,7 +371,7 @@ include ηC hC in
 /-- 指定普遍環が存在すれば、導来 perfectoid 化全体は離散である。 -/
 theorem specified_disc : Disc R (vertex R F.perfd S) := by
   have hJ : Disc R (vertex R (J R) (specifiedAlgebra p R S ηC hC)) :=
-    moduleHeartVertex_disc ((discreteAlgebraModule R).obj (specifiedAlgebra p R S ηC hC))
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex_disc ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule R).obj (specifiedAlgebra p R S ηC hC))
   intro i hi
   exact (hJ i hi).of_iso ((HFunctor R i).mapIso (specifiedDerivedIso p R hR F S ηC hC))
 
@@ -379,13 +379,13 @@ theorem specified_disc : Disc R (vertex R F.perfd S) := by
 theorem specifiedRingProjection_isIso :
     IsIso ((F.limitCone S).projection (specifiedTarget p S.right ηC hC)).right := by
   have := specifiedProjection_isIso p R hR F S ηC hC
-  have hmap : IsIso ((discreteAlgebraModule R).map
+  have hmap : IsIso ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule R).map
       ((F.limitCone S).projection (specifiedTarget p S.right ηC hC))) := by
     rw [← (F.limitCone S).projection_compat]
     dsimp only [HMap]
     infer_instance
   apply (ConcreteCategory.isIso_iff_bijective _).mpr
-  exact ConcreteCategory.bijective_of_isIso ((discreteAlgebraModule R).map
+  exact ConcreteCategory.bijective_of_isIso ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule R).map
     ((F.limitCone S).projection (specifiedTarget p S.right ηC hC)))
 
 /-- H⁰ の環と指定普遍環の同型。射は指定錐の環準同型である。 -/

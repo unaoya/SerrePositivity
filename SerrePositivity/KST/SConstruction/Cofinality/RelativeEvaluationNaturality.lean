@@ -21,10 +21,10 @@ open scoped Simplicial
 規約：各多次数の対象は元の completionRelativeFlagRealization。
 使われ方：評価の全多次数自然性の始域。 -/
 def completionRelativeFlagRealizationDiagram (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u} :=
   completionRelativeFlagDiagram r f hf ⋙
-    (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} SSet.{u}).obj quasicategoryCoreFunctor ⋙
+    (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} SSet.{u}).obj _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor ⋙
       simplicialDiagonalFunctor
 
 /-- 概要：元の相対 core 旗の対角評価は全 S 多次数で自然。
@@ -32,7 +32,7 @@ def completionRelativeFlagRealizationDiagram (r : ℕ) {X Y : StableModel.{u}} (
 規約：元の評価射も元の wide 構造射も変更しない。
 使われ方：相対旗と wide の元の先頭実現の比較。 -/
 def completionRelativeWideEvaluationNat (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionRelativeFlagRealizationDiagram r f hf ⟶ completionCanonicalWideDiagram r f hf where
   app ι := completionRelativeFlagWideEvaluation r ι f hf
   naturality {_ _} α := by

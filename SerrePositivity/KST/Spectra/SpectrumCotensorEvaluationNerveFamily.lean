@@ -21,8 +21,8 @@ local instance evaluationNerveFamilySpectrumSimplicialCategory :
 /-- 元の cotensor の普遍評価の、実際の二変数の coherent な族。 -/
 def evaluationNerveFamily (A : PointedSimplicialSet.{u}) :
     SimplicialNerve (Object A) ⊗
-        SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A.right
-          _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{u + 1}) ⟶ Sp.{u} :=
+        SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A.right
+          _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{u + 1}) ⟶ Sp.{u} :=
   EnrichedParameterCylinder.nervePair A.right ≫ evaluationCylinderInfinityMap A
 
 /-- 二変数の評価の左端は元の cotensor 射影そのもの。 -/

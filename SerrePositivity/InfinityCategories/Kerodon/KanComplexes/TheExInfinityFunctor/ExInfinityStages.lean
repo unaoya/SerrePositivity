@@ -10,6 +10,8 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Presentable
 方針：有限表示可能性と順序余極限の余錐条件を使う。
 規約：Moss 2020 Proposition 21 の有限段階から Kan 性への移行。
 使われ方：horn を有限段階で充填して Ex∞ へ戻す。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

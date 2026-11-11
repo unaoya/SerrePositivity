@@ -21,17 +21,17 @@ lemma intervalFamilyFunctorMap_triangle {K C D : SSet.{u}} (F : C ⟶ D)
     {p x y : C _⦋0⦌}
     (a : (HomotopyCategory.mk p : hoFunctor.obj C) ⟶ HomotopyCategory.mk x)
     (b : (HomotopyCategory.mk p : hoFunctor.obj C) ⟶ HomotopyCategory.mk y)
-    (g : K ⟶ intervalMappingSpace x y)
-    (h : constantFunctorHomMap K a ≫ intervalFamilyHom g = constantFunctorHomMap K b) :
-    constantFunctorHomMap K ((hoFunctor.map F).toFunctor.map a) ≫
-      intervalFamilyHom (g ≫ intervalFunctorMap F x y) =
-    constantFunctorHomMap K ((hoFunctor.map F).toFunctor.map b) := by
-  rw [intervalFunctorMap_familyHom, ← constantFunctorHomMap_postcomp K F a,
-    ← constantFunctorHomMap_postcomp K F b]
+    (g : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace x y)
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom g = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K b) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K ((hoFunctor.map F).toFunctor.map a) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap F x y) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K ((hoFunctor.map F).toFunctor.map b) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalFunctorMap_familyHom, ← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_postcomp K F a,
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_postcomp K F b]
   simp only [Category.assoc, Iso.hom_inv_id_assoc]
   simpa only [CategoryTheory.Functor.map_comp, Category.assoc] using
-    congrArg (fun f => (constantFunctorCompIso K p F).inv ≫
+    congrArg (fun f => (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.constantFunctorCompIso K p F).inv ≫
     (hoFunctor.map ((ihom K).map F)).toFunctor.map f ≫
-      (constantFunctorCompIso K y F).hom) h
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.constantFunctorCompIso K y F).hom) h
 
 end SerrePositivity.EInfinity.ComplexLimits

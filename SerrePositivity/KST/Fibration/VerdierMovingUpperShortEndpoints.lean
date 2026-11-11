@@ -17,7 +17,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
 
 /-- 概要：動く実第二短辺の始端は元の上側合成完全射の全 S• 作用。
 方針：元の同じ小さい実区間の始端をそのまま持ち上げる。
@@ -25,19 +25,19 @@ variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierD
 theorem verdierMovingUpperLastFamily_first :
     (verdierMovingUpperLastFamily d).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-        ULift.up (functorVertex (show (fullSRealizationKanObject d.left).obj ⟶
-          (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj from
+        ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (show (fullSRealizationKanObject d.left).obj ⟶
+          (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.right)).obj from
             verdierOriginalFullSCompositeMap d 0)) := by
   have h := verdierOriginalFullSCompositePath_first d 0 1
   rw [SSet.yonedaEquiv_symm_zero] at h
   have hv := congrArg (fun f => f.app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) h
   change (verdierOriginalFullSCompositePath d 0 1).app (Opposite.op ⦋0⦌)
-    (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = PinchedHom.constant
-      (functorVertex (show (fullSRealizationKanObject d.left).obj ⟶
-        (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj from
+    (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (show (fullSRealizationKanObject d.left).obj ⟶
+        (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.right)).obj from
           verdierOriginalFullSCompositeMap d 0)) 0 at hv
-  rw [pinchedConstant_zero] at hv
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero] at hv
   change ULift.up ((verdierOriginalFullSCompositePath d 0 1).app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) = _
   exact congrArg ULift.up hv
@@ -48,19 +48,19 @@ theorem verdierMovingUpperLastFamily_first :
 theorem verdierMovingUpperLastFamily_last :
     (verdierMovingUpperLastFamily d).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-        ULift.up (functorVertex (show (fullSRealizationKanObject d.left).obj ⟶
-          (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj from
+        ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (show (fullSRealizationKanObject d.left).obj ⟶
+          (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.right)).obj from
             verdierOriginalFullSCompositeMap d 1)) := by
   have h := verdierOriginalFullSCompositePath_last d 0 1
   rw [SSet.yonedaEquiv_symm_zero] at h
   have hv := congrArg (fun f => f.app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) h
   change (verdierOriginalFullSCompositePath d 0 1).app (Opposite.op ⦋0⦌)
-    (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = PinchedHom.constant
-      (functorVertex (show (fullSRealizationKanObject d.left).obj ⟶
-        (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj from
+    (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (show (fullSRealizationKanObject d.left).obj ⟶
+        (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.right)).obj from
           verdierOriginalFullSCompositeMap d 1)) 0 at hv
-  rw [pinchedConstant_zero] at hv
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero] at hv
   change ULift.up ((verdierOriginalFullSCompositePath d 0 1).app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) = _
   exact congrArg ULift.up hv

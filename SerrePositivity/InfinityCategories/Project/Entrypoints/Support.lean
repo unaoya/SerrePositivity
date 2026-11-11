@@ -1,18 +1,18 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.SupportBasic
-public import SerrePositivity.InfinityCategories.Derived.SupportClosure
-public import SerrePositivity.InfinityCategories.Derived.SupportZero
-public import SerrePositivity.InfinityCategories.Derived.SupportScalar
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SupportBasic
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SupportClosure
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SupportZero
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SupportScalar
 
-public import SerrePositivity.InfinityCategories.Derived.FullSemifreeHomotopy
-public import SerrePositivity.InfinityCategories.Derived.FullSemifreeCanonical
-public import SerrePositivity.InfinityCategories.Derived.SupportHomotopy
-public import SerrePositivity.InfinityCategories.Derived.SupportComparison
-public import SerrePositivity.InfinityCategories.Derived.SupportBaseChangeComparison
-public import SerrePositivity.InfinityCategories.Derived.SupportK0
-public import SerrePositivity.InfinityCategories.Derived.SupportOperations
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FullSemifreeHomotopy
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FullSemifreeCanonical
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SupportHomotopy
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SupportComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SupportBaseChangeComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SupportK0
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SupportOperations
 
-public import SerrePositivity.InfinityCategories.Derived.SupportCoproduct
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SupportCoproduct
 
 /-! # 台つき導来 ∞ 圏
 

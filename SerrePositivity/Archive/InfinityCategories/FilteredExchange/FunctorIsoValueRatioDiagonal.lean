@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.VertexIsoCompositionTransport
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 /-!
 概要：同じ辺値の逆と実対角値の比を、元の普遍比較の値による比へ移す。
 方針：元の辺値の端点表示と、指定対角値の実終点の等式を保持して合成する。

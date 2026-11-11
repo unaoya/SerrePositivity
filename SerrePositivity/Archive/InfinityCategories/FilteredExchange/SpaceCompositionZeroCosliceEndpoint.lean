@@ -4,7 +4,7 @@ public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceC
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpacePrefixConeProjection
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCompositionTetrahedronStrictFace
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCompositionEndpointRefinement
-public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplexPrismFirstVertex
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexPrismFirstVertex
 
 /-!
 概要：零面の実 coslice 円柱の終点辺と元の指定精密化の座標を保持する。

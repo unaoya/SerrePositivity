@@ -9,6 +9,8 @@ public import Mathlib.AlgebraicTopology.ExtraDegeneracy
 方針：標準単体の extra degeneracy を各座標に同時に適用する。
 規約：KST Construction A.5 の標準比較を再帰で実現する模型。非被約。
 使われ方：比較の差を普遍模型で埋め、任意の二つの加群の単体へ評価する。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

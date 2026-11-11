@@ -50,21 +50,21 @@ lemma name_evaluate (d : D) : RelativeChoiceSpace.name (NerveMovingParameter.eva
 
 lemma evaluate_mapTarget (G : D ⥤ SSet.{v}) (p : F ⟶ G) (d : D) :
     NerveMovingParameter.evaluate K G
-      (mapTarget K (NerveMovingParameter.lifted F) (NerveMovingParameter.lifted G)
+      (mapTarget K (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted F) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted G)
         (Functor.whiskerRight p SSet.uliftFunctor.{w, v}) a) d =
-      NerveMovingParameter.evaluate K F a d ≫ UniverseLift.map.{w} (p.app d) := by
+      NerveMovingParameter.evaluate K F a d ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} (p.app d) := by
   change uncurry' (RelativeChoiceSpace.pointUnitIso.inv ≫
     (a.app (ofChain (ComposableArrows.mk₀ d)) ≫
-      (ihom (K.obj d)).map (UniverseLift.map.{w} (p.app d)))) = _
+      (ihom (K.obj d)).map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} (p.app d)))) = _
   rw [← name_evaluate K F a d, RelativeChoiceSpace.name_postcomp,
     RelativeChoiceSpace.name, Iso.inv_hom_id_assoc, uncurry'_curry']
 
 lemma evaluate_restrict (L : D ⥤ SSet.{max w v}) (i : L ⟶ K) (d : D) :
-    NerveMovingParameter.evaluate L F (restrict L K (NerveMovingParameter.lifted F) i a) d =
+    NerveMovingParameter.evaluate L F (restrict L K (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted F) i a) d =
       i.app d ≫ NerveMovingParameter.evaluate K F a d := by
   change uncurry' (RelativeChoiceSpace.pointUnitIso.inv ≫
     (a.app (ofChain (ComposableArrows.mk₀ d)) ≫
-      (pre (i.app d)).app (UniverseLift.obj.{w} (F.obj d)))) = _
+      (pre (i.app d)).app (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} (F.obj d)))) = _
   rw [← name_evaluate K F a d]
   exact (congrArg (fun k => uncurry' (RelativeChoiceSpace.pointUnitIso.inv ≫ k))
     (RelativeChoiceSpace.name_precomp (i.app d) (NerveMovingParameter.evaluate K F a d))).trans
@@ -73,7 +73,7 @@ lemma evaluate_restrict (L : D ⥤ SSet.{max w v}) (i : L ⟶ K) (d : D) :
 variable {E : Type uE} [Category.{vE} E] (H : E ⥤ D)
 
 lemma evaluate_reindex (e : E) : NerveMovingParameter.evaluate (H ⋙ K) (H ⋙ F)
-    (reindex K (NerveMovingParameter.lifted F) H a) e =
+    (reindex K (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted F) H a) e =
       NerveMovingParameter.evaluate K F a (H.obj e) := by
   dsimp only [NerveMovingParameter.evaluate, reindex]
   congr 3

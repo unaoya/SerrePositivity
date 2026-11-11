@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：隣接する余退化を分裂に選び、欠けた頂点以外の元の復元を有限集合へ広げる。
 規約：Moss arXiv:1506.04887v2 Proposition 2.19 の実際の細分比較の補助。
 使われ方：horn の面の nerve の単体を余面の細分から持ち上げる。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

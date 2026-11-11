@@ -4,8 +4,8 @@ module
 
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import Mathlib.FieldTheory.Finite.Basic
-public import SerrePositivity.InfinityCategories.Derived.Homology
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluation
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluation
 -- 取り込み時の依存先：drafts/DerivedGeneral/ScalarRestriction.lean。
 -- 本ファイルは drafts/Shared/CosimplicialEInfinity.lean（余単体的可換環の Tot_{E∞}）を使う。
 

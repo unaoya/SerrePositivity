@@ -65,13 +65,13 @@ lemma left_weakEquivalence (ha : ∀ X n, weakEquivalences C ((a.app X).app n))
 
 /-- Actual Hom, functorial in an independent source parameter and the target. -/
 abbrev hom (A : B ⥤ (SimplexCategory ⥤ C)) : Bᵒᵖ ⥤ C ⥤ SSet.{v} :=
-  A.op ⋙ cosimplicialHomBifunctor
+  A.op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 abbrev homLeft : hom (resolution q H) ⟶ hom (commonObj cof q H P a) :=
-  Functor.whiskerRight (NatTrans.op (left cof q H P a)) cosimplicialHomBifunctor
+  Functor.whiskerRight (NatTrans.op (left cof q H P a)) _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 abbrev homRight : hom P ⟶ hom (commonObj cof q H P a) :=
-  Functor.whiskerRight (NatTrans.op (right cof q H P a)) cosimplicialHomBifunctor
+  Functor.whiskerRight (NatTrans.op (right cof q H P a)) _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 lemma commonObj_homotopicallyConstant
     (ha : ∀ X n, weakEquivalences C ((a.app X).app n))

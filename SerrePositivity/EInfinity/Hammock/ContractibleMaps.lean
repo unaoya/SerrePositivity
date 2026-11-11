@@ -20,10 +20,10 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory Limits SerrePositivity.InfinityCategories
 
 lemma weak_of_contractible {A B : SSet.{u}} (f : A ⟶ B)
-    (hA : IsWeaklyContractible A) (hB : IsWeaklyContractible B) :
-    IsWeakHomotopyEquivalence f := by
+    (hA : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible A) (hB : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible B) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f := by
   have he : f ≫ terminal.from B = terminal.from A := terminal.hom_ext _ _
-  have hfg : IsWeakHomotopyEquivalence (f ≫ terminal.from B) := he.symm ▸ hA
+  have hfg : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (f ≫ terminal.from B) := he.symm ▸ hA
   exact hB.cancel_right hfg
 
 end SerrePositivity.EInfinity.Hammock

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.SimplexTerminalEquivalence
-public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveULiftHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyne
 
 /-!
@@ -33,7 +33,7 @@ open SerrePositivity.SimplicialModel
 使われ方：実際の Map^h の共通比較の左射。 -/
 def liftedAugmentation (K : SSet.{v}) :
     nerve (ULiftHom.{w} K.Elementsᵒᵖ) ⟶ SSet.uliftFunctor.{w, v}.obj K :=
-  (NerveULiftHom.iso K.Elementsᵒᵖ).hom ≫ SSet.uliftFunctor.map (augmentation.app K)
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom.iso K.Elementsᵒᵖ).hom ≫ SSet.uliftFunctor.map (augmentation.app K)
 
 /-- 概要：宇宙を上げた同じ augmentation は大きい宇宙で anodyne 反転後に可逆（Dwyer–Kan）。
 方針：元の実同型と同じ小さい augmentation の反転性の宇宙持ち上げを合成する。
@@ -56,11 +56,11 @@ lemma liftedAugmentation_zero (K : SSet.{v}) (x : K.obj (Opposite.op (SimplexCat
     (liftedAugmentation.{v, w} K).app (Opposite.op (SimplexCategory.mk 0))
         (ComposableArrows.mk₀ (show ULiftHom.{w} K.Elementsᵒᵖ from
           Opposite.op (K.elementsMk (Opposite.op (SimplexCategory.mk 0)) x))) = ULift.up x := by
-  change ULift.up ((SimplexTerminalAugmentation.augmentation K).app
+  change ULift.up ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalAugmentation.augmentation K).app
     (Opposite.op (SimplexCategory.mk 0))
       (ComposableArrows.mk₀ (Opposite.op (K.elementsMk
         (Opposite.op (SimplexCategory.mk 0)) x)))) = ULift.up x
-  exact congrArg ULift.up (SimplexTerminalAugmentation.augmentation_zero K x)
+  exact congrArg ULift.up (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalAugmentation.augmentation_zero K x)
 
 /-- 概要：持ち上げた同じ終端 augmentation も全係数射に自然（Dwyer–Kan §7）。
 方針：元の nerve の宇宙比較と元の augmentation の同じ自然性を合成する。
@@ -70,11 +70,11 @@ lemma liftedAugmentation_naturality {K M : SSet.{v}} (f : K ⟶ M) :
     nerveMap (ULiftHom.down.{0, v, w} ⋙ f.mapElements.op ⋙ ULiftHom.up) ≫
         liftedAugmentation M = liftedAugmentation K ≫ SSet.uliftFunctor.map f := by
   unfold liftedAugmentation
-  rw [← Category.assoc, NerveULiftHom.naturality, Category.assoc,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom.naturality, Category.assoc,
     ← SSet.uliftFunctor.map_comp]
-  change (NerveULiftHom.iso K.Elementsᵒᵖ).hom ≫ SSet.uliftFunctor.map
-      (nerveMap f.mapElements.op ≫ SimplexTerminalAugmentation.augmentation M) = _
-  rw [SimplexTerminalAugmentation.naturality, SSet.uliftFunctor.map_comp, Category.assoc]
+  change (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom.iso K.Elementsᵒᵖ).hom ≫ SSet.uliftFunctor.map
+      (nerveMap f.mapElements.op ≫ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalAugmentation.augmentation M) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalAugmentation.naturality, SSet.uliftFunctor.map_comp, Category.assoc]
   rfl
 
 end SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowCofinality
-public import SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalLimitTransfer
 
 /-!
 # 元の frame の全矢の図式の極限を次数圏へ制限する
@@ -22,11 +22,11 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C)
   {E : SSet.{u}} [SSet.Quasicategory E] (F : nerve C ⟶ E)
 
 lemma identityInclusion_nerve_target :
-    nerveMap (identityInclusion A) ≫ nerveMap (target A) = nerveMap A := rfl
+    nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.identityInclusion A) ≫ nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.target A) = nerveMap A := rfl
 
-lemma target_hasLimit_iff : HasLimit (nerveMap (target A) ≫ F) ↔ HasLimit (nerveMap A ≫ F) := by
-  have h := hasLimit_iff_restrict_of_leftCofinal (nerveMap (identityInclusion A))
-    (identityInclusion_nerve_isLeftCofinal A) (nerveMap (target A) ≫ F)
+lemma target_hasLimit_iff : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.target A) ≫ F) ↔ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (nerveMap A ≫ F) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.hasLimit_iff_restrict_of_leftCofinal (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.identityInclusion A))
+    (identityInclusion_nerve_isLeftCofinal A) (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.target A) ≫ F)
   simpa only [← Category.assoc, identityInclusion_nerve_target] using h
 
 end SerrePositivity.EInfinity.FrameHom.FrameArrows

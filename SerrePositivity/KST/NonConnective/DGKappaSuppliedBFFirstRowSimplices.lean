@@ -26,8 +26,8 @@ local instance suppliedBFFirstRowSpectrumCategory : SimplicialCategory OmegaSpec
   OmegaSpectrum.simplicialCategory
 variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
-  (hIso : FunctorIso ((dgKappaNativeVerdierDiagram R D I).square ≫
-    coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0))
+  (hIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((dgKappaNativeVerdierDiagram R D I).square ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0))
     (quotientSKernelInfinitySquare (dgKappaNativeKernelInclusion R D I)
       (dgKappaNativeQuotient R D I)))
   (hrow : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
@@ -49,8 +49,8 @@ include hIso hrow in
 規約：hIso・hrow に条件付きで、局所化や全族比較の存在は結論しない。
 使われ方：K-6 c4・c5 の独立した二供給を同じ D-9 実列へ代入する。 -/
 theorem dgKappaNativeFullSSquare_isPullback_of_kernelIso_firstRowSimplices :
-    IsPullbackSquare ((dgKappaNativeVerdierDiagram R D I).square ≫
-      coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare ((dgKappaNativeVerdierDiagram R D I).square ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)) :=
   (dgKappaFirstRowRelativeComparison R D I hIso hrow).isPullback _
 
 include hIso hrow in
@@ -72,7 +72,7 @@ include hIso hrow in
 使われ方：K-7 c5・d3 の同じ cone の構造射への受け渡し。 -/
 theorem dgKappaSuppliedBFFixedStructure_nonnegative_of_kernelIso_firstRowSimplices
     (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-      F2.Idempotent.IsIdempotentCompletion f.val →
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
         (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
           Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
     (Z : DGKappaZeroInput R D I) (j : ℤ) (hj : 0 ≤ j) :

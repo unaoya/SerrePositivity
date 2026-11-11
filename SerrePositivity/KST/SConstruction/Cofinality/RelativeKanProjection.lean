@@ -25,7 +25,7 @@ open scoped Simplicial
 使われ方：Sp-8 (3) の実入力。 -/
 def completionRelativeKanPullback (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) : SSet.{u} :=
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) : SSet.{u} :=
   homotopyPullbackObject
     (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Fibration.Relative.closedRelativeConstant
       (completionImageClosedPredicate r ι f hf)))
@@ -38,7 +38,7 @@ def completionRelativeKanPullback (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
 使われ方：第一射影の元のホモトピー群。 -/
 instance completionRelativeKanPullback_kanComplex (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     KanComplex (completionRelativeKanPullback r ι f hf) := by
   let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj
       (coreSRealizationFunctor.obj (((multiSEndofunctor r).obj ι).obj Y))) :=
@@ -51,7 +51,7 @@ instance completionRelativeKanPullback_kanComplex (r : ℕ)
 使われ方：元の本質像包含の射影回収。 -/
 def completionRelativeKanProjection (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionRelativeKanPullback r ι f hf ⟶
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (coreSRealizationFunctor.obj (((multiSEndofunctor r).obj ι).obj Y)) :=
   pullback.fst _ _
@@ -63,12 +63,12 @@ def completionRelativeKanProjection (r : ℕ) (ι : Fin r → SimplexCategoryᵒ
 lemma completionRelativeKanProjection_groupConditions_of_input
     (supply : KanPullbackCofinalityInput.{u}) (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (a : (completionRelativeKanPullback r ι f hf) _⦋0⦌) :
     Function.Injective
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 1 (completionRelativeKanProjection r ι f hf) (x := a) rfl) ∧
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map 1 (completionRelativeKanProjection r ι f hf) (x := a) rfl) ∧
       ∀ n : ℕ, 1 < n → Function.Bijective
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (completionRelativeKanProjection r ι f hf) (x := a) rfl) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n (completionRelativeKanProjection r ι f hf) (x := a) rfl) := by
   let P := completionImageClosedPredicate r ι f hf
   let c := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Fibration.Relative.closedRelativeConstant P)
   let b := Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Fibration.Relative.closedKernelRealizationPost P))

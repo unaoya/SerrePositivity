@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.Transfunctor
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramBar
 
 /-!
@@ -29,34 +29,34 @@ private lemma natTrans_hext {C D : Type*} [Category* C] [Category* D]
   exact eq_of_heq (ha X)
 
 variable {I : Type v} [Category I] (B : I ⥤ Cat.{u, u})
-  (L : Covariant (B ⋙ Cat.opFunctor)) (R : Covariant B)
+  (L : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.Covariant (B ⋙ Cat.opFunctor)) (R : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.Covariant B)
 
-def twoSidedDiagram : I ⥤ TwoSidedDiagram.Data.{u} where
-  obj i := ⟨B.obj i, fiber L i, fiber R i⟩
-  map θ := ⟨(B.map θ).toFunctor, transition L θ, transition R θ⟩
+def twoSidedDiagram : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u} where
+  obj i := ⟨B.obj i, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.fiber L i, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.fiber R i⟩
+  map θ := ⟨(B.map θ).toFunctor, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.transition L θ, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.transition R θ⟩
   map_id i := by
-    refine TwoSidedDiagram.hom_ext _ _ ?_ ?_ ?_
+    refine _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.hom_ext _ _ ?_ ?_ ?_
     · exact congrArg Cat.Hom.toFunctor (B.map_id i)
-    · change HEq (transition L (𝟙 i)) (𝟙 (fiber L i))
-      refine natTrans_hext rfl ?_ _ _ (transition_id_app L i)
+    · change HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.transition L (𝟙 i)) (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.fiber L i))
+      refine natTrans_hext rfl ?_ _ _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.transition_id_app L i)
       rw [(B ⋙ Cat.opFunctor).map_id]
       rfl
-    · change HEq (transition R (𝟙 i)) (𝟙 (fiber R i))
-      refine natTrans_hext rfl ?_ _ _ (transition_id_app R i)
+    · change HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.transition R (𝟙 i)) (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.fiber R i))
+      refine natTrans_hext rfl ?_ _ _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.transition_id_app R i)
       rw [B.map_id]
       rfl
   map_comp θ φ := by
-    refine TwoSidedDiagram.hom_ext _ _ ?_ ?_ ?_
+    refine _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.hom_ext _ _ ?_ ?_ ?_
     · exact congrArg Cat.Hom.toFunctor (B.map_comp θ φ)
-    · change HEq (transition L (θ ≫ φ))
-        (transition L θ ≫ Functor.whiskerLeft ((B ⋙ Cat.opFunctor).map θ).toFunctor
-          (transition L φ))
-      refine natTrans_hext rfl ?_ _ _ (transition_comp_app L θ φ)
+    · change HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.transition L (θ ≫ φ))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.transition L θ ≫ Functor.whiskerLeft ((B ⋙ Cat.opFunctor).map θ).toFunctor
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.transition L φ))
+      refine natTrans_hext rfl ?_ _ _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.transition_comp_app L θ φ)
       rw [(B ⋙ Cat.opFunctor).map_comp]
       rfl
-    · change HEq (transition R (θ ≫ φ))
-        (transition R θ ≫ Functor.whiskerLeft (B.map θ).toFunctor (transition R φ))
-      refine natTrans_hext rfl ?_ _ _ (transition_comp_app R θ φ)
+    · change HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.transition R (θ ≫ φ))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.transition R θ ≫ Functor.whiskerLeft (B.map θ).toFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.transition R φ))
+      refine natTrans_hext rfl ?_ _ _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.transition_comp_app R θ φ)
       rw [B.map_comp]
       rfl
 

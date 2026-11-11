@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorHomotopyExtensionEndpoint
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FunctorIsoComponentPost
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentPost
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorHomotopySourceComponent
 
 /-!

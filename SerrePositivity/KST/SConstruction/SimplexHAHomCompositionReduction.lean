@@ -15,15 +15,15 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の厳密三頂点で合成を保てば、対角と逆向きも含む元の全三頂点で合成を保つ。 -/
-lemma simplexHAHomMap_comp_of_strict {N : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHAHomMap_comp_of_strict {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (hstrict : ∀ (a b c : Fin (N + 1)), a < b → b < c →
       eComp (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A)
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex c) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex c) ≫
           simplexHAHomMap A s a c =
         (simplexHAHomMap A s a b ⊗ₘ simplexHAHomMap A s b c) ≫
           eComp (Complex A) (s.obj a) (s.obj b) (s.obj c)) (a b c : Fin (N + 1)) :
     eComp (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A)
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex c) ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex c) ≫
         simplexHAHomMap A s a c =
       (simplexHAHomMap A s a b ⊗ₘ simplexHAHomMap A s b c) ≫
         eComp (Complex A) (s.obj a) (s.obj b) (s.obj c) := by

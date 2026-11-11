@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeTetrahedra
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeDiagramDiagonalEdge
-public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.ConeDiagramDiagonalEdge
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.InvertibleEdge
 
 /-!
 概要：Kan 錐の全円柱の図式成分と対角を元の Kan 射へ戻す。

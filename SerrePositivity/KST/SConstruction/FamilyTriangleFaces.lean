@@ -91,10 +91,10 @@ lemma familyTriangleCurry_face {U E : SSet.{u}} (T : U ⊗ (Δ[2] : SSet.{u}) �
 /-- 元の全二単体を保持した、同じ三面の実合成構造。 -/
 def familyTriangleCompStruct {U E : SSet.{u}} (T : U ⊗ (Δ[2] : SSet.{u}) ⟶ E) :
     SSet.Edge.CompStruct
-      (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy (familyTriangleFirst T)))
-      (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy
+      (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (familyTriangleFirst T)))
+      (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (familyCylinder ((U ◁ stdSimplex.δ 0) ≫ T))))
-      (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy (familyTriangleDirect T))) :=
+      (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (familyTriangleDirect T))) :=
   SSet.Edge.CompStruct.mk (SSet.yonedaEquiv (curry T))
     (familyTriangleCurry_face T 2) (familyTriangleCurry_face T 0) (familyTriangleCurry_face T 1)
 

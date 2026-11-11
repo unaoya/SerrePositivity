@@ -54,7 +54,7 @@ lemma cofibrantAlgebraDKPiZeroEquiv_value
     (cofibrantAlgebraDKPiZeroEquiv A X Y z)
   have he : cofibrantAlgebraMappingSpacePiZeroEquiv A X Y
       (cofibrantAlgebraDKPiZeroEquiv A X Y z) =
-    FrameHom.ULiftRelativeLocalization.homEquiv (cofibrantAlgebraWeakEquivalences A)
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.homEquiv (cofibrantAlgebraWeakEquivalences A)
       (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)
       (localizationHomPiZeroEquiv (cofibrantAlgebraRelativeCategory A)
         (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y) z) :=

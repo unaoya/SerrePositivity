@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordEmbeddingUniqueness
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RawHammock
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordEmbeddingUniqueness
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock
 public import SerrePositivity.EInfinity.Hammock.GraphEmbedding
 
 /-!
@@ -23,13 +23,13 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory
 
 lemma raw_eq_of_embeddings {C : Type u} [Category.{v} C] (W : MorphismProperty C)
-    [W.IsMultiplicative] (X Y : C) {a b c : Word} (f : a ⟶ c) (g : b ⟶ c)
+    [W.IsMultiplicative] (X Y : C) {a b c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ c) (g : b ⟶ c)
     (hf : Function.Injective f.orderHom) (hg : Function.Injective g.orderHom)
     (hfg : Set.range f.orderHom = Set.range g.orderHom) (n : SimplexCategoryᵒᵖ)
-    (σ : (graph W a X Y).obj n) (τ : (graph W b X Y).obj n)
-    (hστ : ((graphDiagram W X Y).map f).app n σ = ((graphDiagram W X Y).map g).app n τ) :
-    (⟨a, σ⟩ : RawHammock W X Y n) = ⟨b, τ⟩ := by
-  obtain ⟨hab, he⟩ := Word.embedding_eq_of_range f g hf hg hfg
+    (σ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W a X Y).obj n) (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W b X Y).obj n)
+    (hστ : ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f).app n σ = ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map g).app n τ) :
+    (⟨a, σ⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n) = ⟨b, τ⟩ := by
+  obtain ⟨hab, he⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.embedding_eq_of_range f g hf hg hfg
   cases hab
   rw [eqToHom_refl, Category.id_comp] at he
   subst f

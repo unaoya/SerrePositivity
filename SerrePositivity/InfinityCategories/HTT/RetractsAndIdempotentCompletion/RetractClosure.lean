@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetractions
 
-public import SerrePositivity.InfinityCategories.Core.Equivalence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
 public import Mathlib.CategoryTheory.Retract
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -51,7 +51,7 @@ lemma retractClosure_idempotent {X : SSet.{u}} (P : X _⦋0⦌ → Prop) (x : X 
 
 /-- 元の retract 閉包の所属は元の頂点同型で不変。 -/
 lemma retractClosure_iff_of_iso {X : SSet.{u}} (P : X _⦋0⦌ → Prop)
-    {x y : X _⦋0⦌} (e : VertexIso x y) : retractClosure P x ↔ retractClosure P y := by
+    {x y : X _⦋0⦌} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x y) : retractClosure P x ↔ retractClosure P y := by
   constructor
   · exact retractClosure_of_retract (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso e.symm)
   · exact retractClosure_of_retract (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso e)

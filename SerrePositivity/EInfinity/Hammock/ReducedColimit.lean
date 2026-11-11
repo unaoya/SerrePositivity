@@ -25,7 +25,7 @@ variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicat
   (X Y : C)
 
 /-- 元の固定語の全単体から縮約済みの一意な代表への射。 -/
-def graphNormalization (w : Word) : graph W w X Y ⟶ reducedSimplicialSet W X Y where
+def graphNormalization (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W w X Y ⟶ reducedSimplicialSet W X Y where
   app n := ↾fun τ => ⟨normalForm W X Y n ⟨w, τ⟩, normalForm_reduced W X Y n ⟨w, τ⟩⟩
   naturality n m α := by
     apply ConcreteCategory.hom_ext
@@ -33,8 +33,8 @@ def graphNormalization (w : Word) : graph W w X Y ⟶ reducedSimplicialSet W X Y
     apply Subtype.ext
     exact (normalForm_map_normalForm W X Y n α ⟨w, τ⟩).symm
 
-lemma graphNormalization_naturality {a b : Word} (f : a ⟶ b) :
-    (graphDiagram W X Y).map f ≫ graphNormalization W X Y b = graphNormalization W X Y a := by
+lemma graphNormalization_naturality {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f ≫ graphNormalization W X Y b = graphNormalization W X Y a := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
@@ -42,8 +42,8 @@ lemma graphNormalization_naturality {a b : Word} (f : a ⟶ b) :
   apply Subtype.ext
   exact normalForm_transition W X Y n f τ
 
-lemma graphNormalization_augmentation (w : Word) :
-    graphNormalization W X Y w ≫ reducedAugmentation W X Y = graphInclusion W X Y w := by
+lemma graphNormalization_augmentation (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
+    graphNormalization W X Y w ≫ reducedAugmentation W X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y w := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
@@ -51,17 +51,17 @@ lemma graphNormalization_augmentation (w : Word) :
   exact normalForm_value W X Y n ⟨w, τ⟩
 
 /-- 元の全語の余極限から元の縮約済み代表への正規化。 -/
-def colimitNormalization : colimitGraph W X Y ⟶ reducedSimplicialSet W X Y :=
-  colimitGraphDesc W X Y (graphNormalization W X Y)
+def colimitNormalization : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y ⟶ reducedSimplicialSet W X Y :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraphDesc W X Y (graphNormalization W X Y)
     (fun f => graphNormalization_naturality W X Y f)
 
-lemma graphInclusion_colimitNormalization (w : Word) :
-    graphInclusion W X Y w ≫ colimitNormalization W X Y = graphNormalization W X Y w :=
-  graphInclusion_desc W X Y _ _ w
+lemma graphInclusion_colimitNormalization (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y w ≫ colimitNormalization W X Y = graphNormalization W X Y w :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion_desc W X Y _ _ w
 
 lemma colimitNormalization_augmentation :
-    colimitNormalization W X Y ≫ reducedAugmentation W X Y = 𝟙 (colimitGraph W X Y) := by
-  apply colimitGraph_hom_ext W X Y
+    colimitNormalization W X Y ≫ reducedAugmentation W X Y = 𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph_hom_ext W X Y
   intro w
   rw [← Category.assoc, graphInclusion_colimitNormalization, Category.comp_id]
   exact graphNormalization_augmentation W X Y w
@@ -73,30 +73,30 @@ lemma augmentation_colimitNormalization :
   apply ConcreteCategory.hom_ext
   intro r
   apply Subtype.ext
-  have he := congrArg (fun η : graph W r.val.1 X Y ⟶ reducedSimplicialSet W X Y =>
+  have he := congrArg (fun η : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W r.val.1 X Y ⟶ reducedSimplicialSet W X Y =>
     (η.app n r.val.2).val) (graphInclusion_colimitNormalization W X Y r.val.1)
   change ((colimitNormalization W X Y).app n
-    ((graphInclusion W X Y r.val.1).app n r.val.2)).val = normalForm W X Y n r.val at he
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y r.val.1).app n r.val.2)).val = normalForm W X Y n r.val at he
   exact he.trans (normalForm_eq_self W X Y n r.property)
 
 lemma rawAugmentation_colimitNormalization :
-    RawHammock.augmentation W X Y ≫ colimitNormalization W X Y = normalization W X Y := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawSimplicialSet.augmentation W X Y ≫ colimitNormalization W X Y = normalization W X Y := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
   intro r
-  exact congrArg (fun η : graph W r.1 X Y ⟶ reducedSimplicialSet W X Y => η.app n r.2)
+  exact congrArg (fun η : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W r.1 X Y ⟶ reducedSimplicialSet W X Y => η.app n r.2)
     (graphInclusion_colimitNormalization W X Y r.1)
 
 /-- Dwyer–Kan §5.5 の、元の余極限と縮約 hammock の単体集合としての実同型。 -/
-def reducedColimitIso : colimitGraph W X Y ≅ reducedSimplicialSet W X Y where
+def reducedColimitIso : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y ≅ reducedSimplicialSet W X Y where
   hom := colimitNormalization W X Y
   inv := reducedAugmentation W X Y
   hom_inv_id := colimitNormalization_augmentation W X Y
   inv_hom_id := augmentation_colimitNormalization W X Y
 
-lemma reducedColimitIso_hom_fac (w : Word) :
-    graphInclusion W X Y w ≫ (reducedColimitIso W X Y).hom = graphNormalization W X Y w :=
+lemma reducedColimitIso_hom_fac (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y w ≫ (reducedColimitIso W X Y).hom = graphNormalization W X Y w :=
   graphInclusion_colimitNormalization W X Y w
 
 lemma reducedColimitIso_inv : (reducedColimitIso W X Y).inv = reducedAugmentation W X Y := rfl

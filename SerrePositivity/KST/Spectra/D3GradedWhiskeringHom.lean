@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3GradedWhiskeringNerve
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 
 /-!
 概要：指定豊穣変換の実現の前後合成を、関手空間の同じ実射の作用へ戻す。
@@ -67,19 +67,19 @@ lemma d3GradedHom_precomp_heq [Quasicategory (SimplicialNerve E)]
     (K : EnrichedFunctor SSet.{u} C D) {F G : EnrichedFunctor SSet.{u} D E}
     (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G) :
     HEq (d3GradedHom (d3GradedPrecomp K η))
-      ((SSet.mapHomotopyCategory ((pre (coherentNerveMap K)).app (SimplicialNerve E))).map
+      ((SSet.mapHomotopyCategory ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap K)).app (SimplicialNerve E))).map
         (d3GradedHom η)) := by
   apply d3HomMk_heq
-    (functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy _ _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy _ _
       (d3GradedPrecomp K η)))
-    ((functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy F G η)).map
-      ((truncation 2).map ((pre (coherentNerveMap K)).app (SimplicialNerve E))))
-    (congrArg functorVertex (coherentNerveMap_comp K F))
-    (congrArg functorVertex (coherentNerveMap_comp K G))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy F G η)).map
+      ((truncation 2).map ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap K)).app (SimplicialNerve E))))
+    (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp K F))
+    (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp K G))
   change SSet.yonedaEquiv (curry (StrictEnrichedTransformation.family _ _
     (d3GradedPrecomp K η))) = _
   rw [d3GradedPrecomp_family]
-  change SSet.yonedaEquiv (curry ((coherentNerveMap K ▷ (Δ[1] : SSet.{max u v})) ≫
+  change SSet.yonedaEquiv (curry ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap K ▷ (Δ[1] : SSet.{max u v})) ≫
     StrictEnrichedTransformation.family F G η)) = _
   rw [← curry_pre_app]
   exact SSet.yonedaEquiv_comp _ _
@@ -90,15 +90,15 @@ lemma d3GradedHom_postcomp_heq [Quasicategory (SimplicialNerve D)]
     (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G)
     (K : EnrichedFunctor SSet.{u} D E) :
     HEq (d3GradedHom (d3GradedPostcomp η K))
-      ((SSet.mapHomotopyCategory ((ihom (SimplicialNerve C)).map (coherentNerveMap K))).map
+      ((SSet.mapHomotopyCategory ((ihom (SimplicialNerve C)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap K))).map
         (d3GradedHom η)) := by
   apply d3HomMk_heq
-    (functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy _ _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy _ _
       (d3GradedPostcomp η K)))
-    ((functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy F G η)).map
-      ((truncation 2).map ((ihom (SimplicialNerve C)).map (coherentNerveMap K))))
-    (congrArg functorVertex (coherentNerveMap_comp F K))
-    (congrArg functorVertex (coherentNerveMap_comp G K))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy F G η)).map
+      ((truncation 2).map ((ihom (SimplicialNerve C)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap K))))
+    (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp F K))
+    (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp G K))
   change SSet.yonedaEquiv (curry (StrictEnrichedTransformation.family _ _
     (d3GradedPostcomp η K))) = _
   rw [d3GradedPostcomp_family, curry_natural_right]
@@ -108,11 +108,11 @@ lemma d3GradedHom_postcomp_heq [Quasicategory (SimplicialNerve D)]
 lemma d3GradedIso_precomp_hom_heq [Quasicategory (SimplicialNerve E)]
     (K : EnrichedFunctor SSet.{u} C D) {F G : EnrichedFunctor SSet.{u} D E}
     (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G)
-    (hη : ∀ X, IsInvertibleEdge (coherentNerveEdge
+    (hη : ∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
       (StrictEnrichedTransformation.componentHom F G η X)).toTruncated) :
-    HEq (((StrictEnrichedTransformation.functorIso F G η hη).precomp (coherentNerveMap K)).hom)
+    HEq (((StrictEnrichedTransformation.functorIso F G η hη).precomp (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap K)).hom)
       (d3GradedHom (d3GradedPrecomp K η)) := by
-  rw [F2.functorIso_precomp_hom, d3GradedHom_functorIso]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_hom, d3GradedHom_functorIso]
   exact (d3GradedHom_precomp_heq K η).symm
 
 /-- 元の関手同型の後合成の順射を、同じ厳密変換の後合成の実現として回収する。 -/
@@ -120,11 +120,11 @@ lemma d3GradedIso_postcomp_hom_heq [Quasicategory (SimplicialNerve D)]
     [Quasicategory (SimplicialNerve E)] {F G : EnrichedFunctor SSet.{u} C D}
     (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G)
     (K : EnrichedFunctor SSet.{u} D E)
-    (hη : ∀ X, IsInvertibleEdge (coherentNerveEdge
+    (hη : ∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
       (StrictEnrichedTransformation.componentHom F G η X)).toTruncated) :
-    HEq (((StrictEnrichedTransformation.functorIso F G η hη).postcomp (coherentNerveMap K)).hom)
+    HEq (((StrictEnrichedTransformation.functorIso F G η hη).postcomp (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap K)).hom)
       (d3GradedHom (d3GradedPostcomp η K)) := by
-  rw [F2.functorIso_postcomp_hom, d3GradedHom_functorIso]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_hom, d3GradedHom_functorIso]
   exact (d3GradedHom_postcomp_heq η K).symm
 
 /-- 前後合成を連続しても、元の指定厳密変換の実現を回収する。 -/
@@ -134,47 +134,47 @@ lemma d3GradedIso_precomp_postcomp_hom_heq {J : Type v} [Category.{u} J]
     (K : EnrichedFunctor SSet.{u} C D) {F G : EnrichedFunctor SSet.{u} D E}
     (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G)
     (L : EnrichedFunctor SSet.{u} E J)
-    (hη : ∀ X, IsInvertibleEdge (coherentNerveEdge
+    (hη : ∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
       (StrictEnrichedTransformation.componentHom F G η X)).toTruncated) :
     HEq ((((StrictEnrichedTransformation.functorIso F G η hη).precomp
-      (coherentNerveMap K)).postcomp (coherentNerveMap L)).hom)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap K)).postcomp (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap L)).hom)
       (d3GradedHom (d3GradedPostcomp (d3GradedPrecomp K η) L)) := by
-  rw [F2.functorIso_postcomp_hom]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_hom]
   have h := d3MapHom_heq _ _
-    (congrArg (fun a ↦ SSet.HomotopyCategory.mk (functorVertex a))
-      (coherentNerveMap_comp K F).symm)
-    (congrArg (fun a ↦ SSet.HomotopyCategory.mk (functorVertex a))
-      (coherentNerveMap_comp K G).symm)
+    (congrArg (fun a ↦ SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex a))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp K F).symm)
+    (congrArg (fun a ↦ SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex a))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp K G).symm)
     (d3GradedIso_precomp_hom_heq K η hη)
-    (SSet.mapHomotopyCategory ((ihom (SimplicialNerve C)).map (coherentNerveMap L)))
+    (SSet.mapHomotopyCategory ((ihom (SimplicialNerve C)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap L)))
   exact h.trans (d3GradedHom_postcomp_heq (d3GradedPrecomp K η) L).symm
 
 /-- 既存関手同型の端点表示の正規化は、同じ順射の指定値を保持する。 -/
 lemma d3FunctorIsoOfEq_hom_heq {A X : SSet.{u}} {f g f' g' : A ⟶ X}
-    (e : FunctorIso f g) (hf : f = f') (hg : g = g') :
-    HEq (F2.functorIsoOfEq e hf hg).hom e.hom := by
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g) (hf : f = f') (hg : g = g') :
+    HEq (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq e hf hg).hom e.hom := by
   subst f' g'
   rfl
 
 /-- 端点表示を正規化した同じ同型へ前合成しても、順射の指定値を保持する。 -/
 lemma d3FunctorIsoOfEq_precomp_hom_heq {A B X : SSet.{u}} {f g f' g' : A ⟶ X}
-    (e : FunctorIso f g) (hf : f = f') (hg : g = g') (q : B ⟶ A) :
-    HEq ((F2.functorIsoOfEq e hf hg).precomp q).hom (e.precomp q).hom := by
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g) (hf : f = f') (hg : g = g') (q : B ⟶ A) :
+    HEq ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq e hf hg).precomp q).hom (e.precomp q).hom := by
   subst f' g'
   rfl
 
 /-- 端点表示を正規化した同じ同型へ後合成しても、順射の指定値を保持する。 -/
 lemma d3FunctorIsoOfEq_postcomp_hom_heq {A X Y : SSet.{u}} {f g f' g' : A ⟶ X}
-    (e : FunctorIso f g) (hf : f = f') (hg : g = g') (q : X ⟶ Y) :
-    HEq ((F2.functorIsoOfEq e hf hg).postcomp q).hom (e.postcomp q).hom := by
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g) (hf : f = f') (hg : g = g') (q : X ⟶ Y) :
+    HEq ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq e hf hg).postcomp q).hom (e.postcomp q).hom := by
   subst f' g'
   rfl
 
 /-- 端点正規化後の連続した前後合成は、元の指定同型の順射を保持する。 -/
 lemma d3FunctorIsoOfEq_precomp_postcomp_hom_heq {A B X Y : SSet.{u}}
-    {f g f' g' : A ⟶ X} (e : FunctorIso f g) (hf : f = f') (hg : g = g')
+    {f g f' g' : A ⟶ X} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g) (hf : f = f') (hg : g = g')
     (p : B ⟶ A) (q : X ⟶ Y) :
-    HEq (((F2.functorIsoOfEq e hf hg).precomp p).postcomp q).hom
+    HEq (((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq e hf hg).precomp p).postcomp q).hom
       ((e.precomp p).postcomp q).hom := by
   subst f' g'
   rfl

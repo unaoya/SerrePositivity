@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.LiftedIntervalCospanRectification
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementSection
-public import SerrePositivity.InfinityCategories.Core.FullyFaithfulCalculus
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalReplacementSection
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulCalculus
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
 
 /-!
 概要：持ち上げた interval cospan の厳密化後の左成分の同値性。

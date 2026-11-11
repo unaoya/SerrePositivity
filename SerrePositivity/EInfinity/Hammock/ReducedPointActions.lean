@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.PointActions
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitArrowMap
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.PointActions
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitArrowMap
 public import SerrePositivity.EInfinity.Hammock.ReducedColimit
 
 /-!
@@ -21,26 +21,26 @@ open CategoryTheory MonoidalCategory
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
 
 def reducedArrowMap {X Y : C} (f : X ⟶ Y) : 𝟙_ SSet.{max u v} ⟶ reducedSimplicialSet W X Y :=
-  arrowMap W f ≫ (reducedColimitIso W X Y).hom
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f ≫ (reducedColimitIso W X Y).hom
 
 def reducedPostcomposeMap (X : C) {Y Z : C} (g : Y ⟶ Z) :
     reducedSimplicialSet W X Y ⟶ reducedSimplicialSet W X Z :=
-  (reducedColimitIso W X Y).inv ≫ postcomposePointMap X (arrowMap W g) ≫
+  (reducedColimitIso W X Y).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W g) ≫
     (reducedColimitIso W X Z).hom
 
 def reducedPrecomposeMap {X Y : C} (Z : C) (f : X ⟶ Y) :
     reducedSimplicialSet W Y Z ⟶ reducedSimplicialSet W X Z :=
-  (reducedColimitIso W Y Z).inv ≫ precomposePointMap (arrowMap W f) Z ≫
+  (reducedColimitIso W Y Z).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f) Z ≫
     (reducedColimitIso W X Z).hom
 
 lemma reducedColimitIso_postcompose (X : C) {Y Z : C} (g : Y ⟶ Z) :
     (reducedColimitIso W X Y).hom ≫ reducedPostcomposeMap W X g =
-      postcomposePointMap X (arrowMap W g) ≫ (reducedColimitIso W X Z).hom := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W g) ≫ (reducedColimitIso W X Z).hom := by
   simp only [reducedPostcomposeMap, Iso.hom_inv_id_assoc]
 
 lemma reducedColimitIso_precompose {X Y : C} (Z : C) (f : X ⟶ Y) :
     (reducedColimitIso W Y Z).hom ≫ reducedPrecomposeMap W Z f =
-      precomposePointMap (arrowMap W f) Z ≫ (reducedColimitIso W X Z).hom := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f) Z ≫ (reducedColimitIso W X Z).hom := by
   simp only [reducedPrecomposeMap, Iso.hom_inv_id_assoc]
 
 end SerrePositivity.EInfinity.Hammock

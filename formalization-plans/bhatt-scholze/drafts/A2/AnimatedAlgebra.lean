@@ -5,13 +5,13 @@ module
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaRestrictionEquivalence
-public import SerrePositivity.InfinityCategories.F2.Compact.DiscreteComponentLabels
-public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve
-public import SerrePositivity.InfinityCategories.Core.FatJoinTensorDesc
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.OppositeIso
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
-public import SerrePositivity.InfinityCategories.Derived.DiscreteEmbedding
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SigmaRestrictionEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.DiscreteComponentLabels
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramCoherentNerve
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FatJoinTensorDesc
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.OppositeIso
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteEmbedding
 public import Mathlib.Algebra.MvPolynomial.Basic
 public import Mathlib.CategoryTheory.Comma.Over.Basic
 
@@ -48,7 +48,7 @@ variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 
 variable (k : Type u) [CommRing k]
 

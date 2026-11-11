@@ -24,8 +24,8 @@ lemma simplexIntervalLambdaHomIso_cell {N : ℕ} (a b : Fin (N + 1)) (hab : a �
         (necklaceBead_dimension.{u} (b.val - a.val)).symm) ≫
           necklaceLambdaCell A (necklaceInSimplexInterval.{u} a b hab) := by
   let f := (concreteCubeDimensionIso
-    (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1))
-    (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (necklaceBead.{u} (b.val - a.val)).down.dimension)
+    (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1))
+    (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (necklaceBead.{u} (b.val - a.val)).down.dimension)
     (necklaceBead_dimension.{u} (b.val - a.val)).symm).hom
   have h := (cubicalSerreChainsCubeIso A).hom.naturality f
   have hd : (serreConcreteCubeComplexFunctor A).map f = eqToHom
@@ -33,7 +33,7 @@ lemma simplexIntervalLambdaHomIso_cell {N : ℕ} (a b : Fin (N + 1)) (hab : a �
         (necklaceBead_dimension.{u} (b.val - a.val)).symm) := by
     exact serreCubeComplexMap_dimension_inv A (necklaceBead_dimension.{u} _)
   have h₁ : (simplexIntervalLambdaHomIso A a b hab).hom =
-      (cubicalSerreChainsCubeIso A).hom.app (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1)) ≫
+      (cubicalSerreChainsCubeIso A).hom.app (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1)) ≫
         ((cubicalSerreChains A).map (cubicalYoneda.map f) ≫
           (cubicalSerreChains A).map
             (necklaceCubicalCell (necklaceInSimplexInterval.{u} a b hab))) :=
@@ -50,13 +50,13 @@ lemma simplexIntervalLambdaHomIso_cell {N : ℕ} (a b : Fin (N + 1)) (hab : a �
 /-- 元の二区間の連結生成射は、元の実合成 cube と全区間生成射の合成。 -/
 lemma simplexIntervalLambdaCell_wedge {N : ℕ} (a b c : Fin (N + 1))
     (hab : a ≤ b) (hbc : b ≤ c) :
-    necklaceLambdaCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge (necklaceInSimplexInterval.{u} a b hab)
+    necklaceLambdaCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge (necklaceInSimplexInterval.{u} a b hab)
       (necklaceInSimplexInterval b c hbc)) =
         (serreConcreteCubeComplexFunctor A).map
           (necklaceConcreteCubeMap (simplexIntervalComposeBeadHom.{u} a b c hab hbc)) ≫
             necklaceLambdaCell A (necklaceInSimplexInterval a c (hab.trans hbc)) :=
   (necklaceLambdaCell_relation A (necklaceInToSimplexInterval a c (hab.trans hbc)
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge (necklaceInSimplexInterval a b hab)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge (necklaceInSimplexInterval a b hab)
       (necklaceInSimplexInterval b c hbc)))).symm
 
 end SerrePositivity.KST.SConstruction

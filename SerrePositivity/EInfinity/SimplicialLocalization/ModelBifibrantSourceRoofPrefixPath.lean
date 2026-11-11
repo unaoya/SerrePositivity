@@ -29,10 +29,10 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductCommaNativeFamilyMap :
     nerve (modelBifibrantSourceRoofProductComma X Y q b) ⟶
-      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (colimitGraph (modelBifibrantRelativeCategory C).weakEquivalences
-        (modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
-        (modelBifibrantObject C Y)) :=
-  RoofPrefix.familyMap (modelBifibrantRelativeCategory C)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)) :=
+  RoofPrefix.familyMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
     (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation_weak X Y q b)
@@ -51,9 +51,9 @@ lemma modelBifibrantSourceRoofProductCommaNativeFamilyMap_eq :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaNativeFamilyMap_pinched :
     modelBifibrantSourceRoofProductCommaNativeFamilyMap X Y q b ≫
-      kanHammockHomPinchedMap (modelBifibrantRelativeCategory C)
-        (modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
-        (modelBifibrantObject C Y) =
+      kanHammockHomPinchedMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y) =
       modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b := rfl
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
@@ -62,13 +62,13 @@ lemma modelBifibrantSourceRoofProductCommaNativeFamilyMap_pinched :
 def modelBifibrantSourceRoofProductCommaPrefixPathMap {n : ℕ}
     (Γ : Fin (n + 1) ⥤ modelBifibrantSourceRoofProductComma X Y q b)
     (t : Fin (n + 1) →o Fin 2) (i : Fin (n + 1)) :
-    nerve (FrameHom.PathMaximum.LastPath.{max u v} n i) ⟶
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LastPath.{max u v} n i) ⟶
       SimplicialCategory.sHom
-        ((kanHammockSourceFunctor (modelBifibrantRelativeCategory C)).obj
+        ((kanHammockSourceFunctor (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).obj
           ((modelBifibrantSourceRoofProductCommaDiagram X Y q b).obj (Γ.obj i)))
-        ((kanHammockSourceFunctor (modelBifibrantRelativeCategory C)).obj
-          (modelBifibrantObject C Y)) :=
-  RoofPrefix.pathMap (modelBifibrantRelativeCategory C)
+        ((kanHammockSourceFunctor (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).obj
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)) :=
+  RoofPrefix.pathMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
     (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation_weak X Y q b)

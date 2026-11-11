@@ -47,7 +47,7 @@ def monicKTracedTripleRawStageComparisonTriangle (n : ℕ) :
         RawSpectrumMapping.evaluation (kOmegaSpectrum (F.obj w)) (kKanSequence (F.obj z)) n)) := by
   apply SSet.Edge.CompStruct.ofTruncated
   apply Nonempty.some
-  apply compStruct_nonempty_of_homMk_fac
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.compStruct_nonempty_of_homMk_fac
   change SSet.HomotopyCategory.homMk _ ≫
     SSet.HomotopyCategory.homMk (SSet.Edge.id _) = _
   rw [SSet.HomotopyCategory.homMk_id, Category.comp_id]
@@ -78,7 +78,7 @@ lemma monicKTracedTripleRawStageComparison_relative (n : ℕ) :
 
 /-- 円柱は、その構成に用いた同じ全比較三角形を指定面に厳密に保持する。 -/
 lemma monicKTracedTripleRawStageComparison_triangle (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ (monicKTracedTripleRawStageComparison F f g h n).homotopy.h =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ (monicKTracedTripleRawStageComparison F f g h n).homotopy.h =
       SSet.yonedaEquiv.symm
         (monicKTracedTripleRawStageComparisonTriangle F f g h n).simplex :=
   endpointFixedTriangleHomotopy_triangle _

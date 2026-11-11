@@ -40,7 +40,7 @@ lemma signedLoopActionFamily_evaluation
     (φ ≫ pointedEvaluation X Y.toKanSequence (n + 1)) ≫
       PointedMapping.ihomAction CirclePower.space.{u}
         (X.level (n + 1)).space (Y.level (n + 1)).space ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (q.app n)
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (q.app n)
         (PointedObject.basedHom CirclePower.space.{u} (Y.level (n + 1)).space) := by
   rw [parameterFamily_evaluation]
   change PointedMapping.transpose (q.app n ≫

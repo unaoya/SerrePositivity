@@ -32,12 +32,12 @@ theorem LoopMappingClasses.classOf_comp_nested_integer {A Z : PointedSimplicialS
     (f : A ⟶ PointedObject.basedHom CirclePower.space.{u}
       (PointedObject.basedHom CirclePower.space.{u} Z)) (z : ℤ) :
     LoopMappingClasses.classOf (f ≫ PointedObject.basedHomMap CirclePower.space.{u}
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} z) Z)) =
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} z) Z)) =
       LoopMappingClasses.classOf f ^ z := by
   have h := LoopMappingClasses.post_target_integer A Z z (LoopMappingClasses.classOf f)
   change mapπ₀ (PointedObject.basedHomMap A
     (PointedObject.basedHomMap CirclePower.space.{u}
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} z) Z))).right
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} z) Z))).right
         (π₀.mk (PointedMapping.familyVertex f)) = _ at h
   rw [mapπ₀_mk, PointedMapping.familyVertex_post] at h
   exact h
@@ -51,9 +51,9 @@ theorem PointedMapping.componentOf_nested_neg_one_twice {A Z : PointedSimplicial
     (f : A ⟶ PointedObject.basedHom CirclePower.space.{u}
       (PointedObject.basedHom CirclePower.space.{u} Z)) :
     PointedMapping.componentOf ((f ≫ PointedObject.basedHomMap CirclePower.space.{u}
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z)) ≫
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z)) ≫
         PointedObject.basedHomMap CirclePower.space.{u}
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z)) =
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z)) =
       PointedMapping.componentOf f := by
   change LoopMappingClasses.classOf _ = LoopMappingClasses.classOf f
   rw [LoopMappingClasses.classOf_comp_nested_integer,

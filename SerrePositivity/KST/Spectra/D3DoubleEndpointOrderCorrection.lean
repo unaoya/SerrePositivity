@@ -21,10 +21,10 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 
 /-- 全四次元比較の同じ始点作用を、保持した実右面の厳密始点へ表示する。 -/
 def d3DoubleEndpointOrderRealSourceIso :
-    FunctorIso (d3DoubleEndpointRightLoopFamily.{u} 0 0 ≫
-      loopDiagramEvaluation PointedKanInfinity 0 0)
-      (d3DoubleEndpointRightLoopFamily 0 0 ≫ loopDiagramEvaluation PointedKanInfinity 0 0) :=
-  F2.functorIsoOfEq (d3DoubleEndpointOrderFaceSourceIso 0 0)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d3DoubleEndpointRightLoopFamily.{u} 0 0 ≫
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0)
+      (d3DoubleEndpointRightLoopFamily 0 0 ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (d3DoubleEndpointOrderFaceSourceIso 0 0)
     (d3DoubleEndpointRightLoopFamily_corner 0 0 0 0).symm
     (d3DoubleEndpointRightLoopFamily_corner 0 0 0 0).symm
 
@@ -32,14 +32,14 @@ def d3DoubleEndpointOrderRealSourceIso :
 lemma d3DoubleEndpointOrderRealSourceIso_pasting :
     d3LeftDoubleEndpointSourceIso.{u} ≪≫ d3DoubleEndpointOrderRealSourceIso =
       d3RightDoubleEndpointSourceIso := by
-  have h := functorIso_trans_heq_of_heq rfl
+  have h := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.functorIso_trans_heq_of_heq rfl
     (d3DoubleEndpointRightLoopFamily_corner 0 0 0 0).symm
     (d3DoubleEndpointRightLoopFamily_corner 0 0 0 0).symm
     (d3DoubleEndpointLeftSourceIso.{u} 0 0) (d3DoubleEndpointOrderFaceSourceIso 0 0)
     d3LeftDoubleEndpointSourceIso d3DoubleEndpointOrderRealSourceIso
-    (F2.functorIsoOfEq_heq _ _ _) (F2.functorIsoOfEq_heq _ _ _)
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ _ _) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ _ _)
   have hr : HEq d3RightDoubleEndpointSourceIso.{u} (d3DoubleEndpointRightSourceIso.{u} 0 0) :=
-    (F2.functorIsoOfEq_heq _ _ _).symm
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ _ _).symm
   exact eq_of_heq (h.trans ((heq_of_eq (d3DoubleEndpointOrderFaceSourceIso_pasting 0 0)).trans
     hr.symm))
 
@@ -53,8 +53,8 @@ lemma d3DoubleEndpointSourceDifference_order_value :
 
 /-- 元の端点表示と左始点比較を、同じ実四次元始点への指定単位として保持する。 -/
 def d3DoubleEndpointTotalUnitIso :
-    FunctorIso (pointedKanLoopInfinity.{u} ≫ pointedKanLoopInfinity)
-      (d3DoubleEndpointRightLoopFamily 0 0 ≫ loopDiagramEvaluation PointedKanInfinity 0 0) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (pointedKanLoopInfinity.{u} ≫ pointedKanLoopInfinity)
+      (d3DoubleEndpointRightLoopFamily 0 0 ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) :=
   d3PointedKanEndpointLoopIso.postcomp pointedKanLoopInfinity ≪≫ d3LeftDoubleEndpointSourceIso
 
 /-- 保持した全入力模型補正は、同じ全四次元比較の始点作用の逆を移した値そのもの。 -/

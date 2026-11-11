@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanIntervalConeLeg
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackCoordinates
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalPullbackCoordinates
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-!
 概要：区間引き戻しの native 錐の二脚と元の具体的な射影を照合する。

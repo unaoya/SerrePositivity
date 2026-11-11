@@ -25,21 +25,21 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
   (s : DGSuspensionStageProvider.{u, v} R κ)
   (A B : PerfDGInput.{u, max (u + 1) v} R)
   (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-    F2.Idempotent.IsIdempotentCompletion f.val →
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
       (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
         Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
   (ZA : ∀ n : ℕ, DGKappaZeroInput R (dgSuspensionIteration R s A n)
     (dgSuspensionIterationStage R s A n).cone)
   (ZB : ∀ n : ℕ, DGKappaZeroInput R (dgSuspensionIteration R s B n)
     (dgSuspensionIterationStage R s B n).cone)
-  (hSA : ∀ n : ℕ, IsPullbackSquare
+  (hSA : ∀ n : ℕ, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare
     ((dgKappaNativeVerdierDiagram R (dgSuspensionIteration R s A n)
       (dgSuspensionIterationStage R s A n).cone).square ≫
-        coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)))
-  (hSB : ∀ n : ℕ, IsPullbackSquare
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)))
+  (hSB : ∀ n : ℕ, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare
     ((dgKappaNativeVerdierDiagram R (dgSuspensionIteration R s B n)
       (dgSuspensionIterationStage R s B n).cone).square ≫
-        coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)))
   (η : dgSuspensionNativeSequence R s A (dgSuspensionSuppliedBFStructureEdge R s A hcofinal ZA) ⟶
     dgSuspensionNativeSequence R s B (dgSuspensionSuppliedBFStructureEdge R s B hcofinal ZB))
 

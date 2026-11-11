@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockColimitComposition
 public import SerrePositivity.EInfinity.BarrattEccles.HammockUnit
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitCompositionUnit
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitCompositionUnit
 
 /-!
 # 元の E 代数の hammock 合成の左右単位則
@@ -30,7 +30,7 @@ lemma algebraHammockColimitComposition_left_unit (X Y : (operad A).Algebra) :
         algebraHammockColimitComposition A X X Y =
       (λ_ (algebraHammockColimitGraph A X Y)).hom := by
   let := modelCategory A
-  exact Hammock.colimitComposition_left_unit (weakEquivalences (operad A).Algebra) X Y
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition_left_unit (weakEquivalences (operad A).Algebra) X Y
 
 /-- 元の単位と実際の二つの余極限の積からの合成の右単位則。 -/
 lemma algebraHammockColimitComposition_right_unit (X Y : (operad A).Algebra) :
@@ -38,24 +38,24 @@ lemma algebraHammockColimitComposition_right_unit (X Y : (operad A).Algebra) :
         algebraHammockColimitComposition A X Y Y =
       (ρ_ (algebraHammockColimitGraph A X Y)).hom := by
   let := modelCategory A
-  exact Hammock.colimitComposition_right_unit (weakEquivalences (operad A).Algebra) X Y
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition_right_unit (weakEquivalences (operad A).Algebra) X Y
 
 /-- 全固定語の元の標準射上で、左単位則は同じ単位同型を回収する。 -/
-lemma algebraHammockColimitComposition_left_unit_fac (a : Hammock.Word)
+lemma algebraHammockColimitComposition_left_unit_fac (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     (X Y : (operad A).Algebra) :
     (algebraHammockColimitUnit A X ⊗ₘ algebraHammockGraphInclusion A a X Y) ≫
         algebraHammockColimitComposition A X X Y =
       (λ_ (algebraHammockGraph A a X Y)).hom ≫ algebraHammockGraphInclusion A a X Y := by
   let := modelCategory A
-  exact Hammock.colimitComposition_left_unit_fac (weakEquivalences (operad A).Algebra) X Y a
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition_left_unit_fac (weakEquivalences (operad A).Algebra) X Y a
 
 /-- 全固定語の元の標準射上で、右単位則も同じ単位同型を回収する。 -/
-lemma algebraHammockColimitComposition_right_unit_fac (a : Hammock.Word)
+lemma algebraHammockColimitComposition_right_unit_fac (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     (X Y : (operad A).Algebra) :
     (algebraHammockGraphInclusion A a X Y ⊗ₘ algebraHammockColimitUnit A Y) ≫
         algebraHammockColimitComposition A X Y Y =
       (ρ_ (algebraHammockGraph A a X Y)).hom ≫ algebraHammockGraphInclusion A a X Y := by
   let := modelCategory A
-  exact Hammock.colimitComposition_right_unit_fac (weakEquivalences (operad A).Algebra) X Y a
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition_right_unit_fac (weakEquivalences (operad A).Algebra) X Y a
 
 end SerrePositivity.EInfinity.BarrattEccles

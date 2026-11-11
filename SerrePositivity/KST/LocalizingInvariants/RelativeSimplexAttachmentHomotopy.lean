@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentFamilies
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.SimplexAttachmentFamilies
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingRelativeHomotopy
 
 /-!
@@ -23,39 +23,39 @@ namespace SerrePositivity.KST.LocalizingInvariants
 /-- 両端と両制限を保ち、指定部分の同じ Homotopy へ全図式 Homotopy を延長する。 -/
 lemma exists_relative_simplexAttachmentHomotopy {S K X : SSet.{u}} [Quasicategory X]
     (n : ℕ) (j : S ⟶ K) [Mono j]
-    {F G : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X}
+    {F G : K ⟶ (ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[n] : SSet.{u}) Δ[0])).obj X}
     (H : SSet.Homotopy F G) (A : SSet.Homotopy (j ≫ F) (j ≫ G))
-    (hp : A.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X =
-      (j ▷ (Δ[1] : SSet.{u})) ≫ H.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X)
-    (hn : A.h ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X =
+    (hp : A.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n] : SSet.{u}) Δ[0])).app X =
+      (j ▷ (Δ[1] : SSet.{u})) ≫ H.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n] : SSet.{u}) Δ[0])).app X)
+    (hn : A.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X =
       (j ▷ (Δ[1] : SSet.{u})) ≫ H.h ≫
-        (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X) :
+        (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X) :
     ∃ V : SSet.Homotopy F G,
       (j ▷ (Δ[1] : SSet.{u})) ≫ V.h = A.h ∧
-      V.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app X =
-        H.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app X ∧
-      V.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X =
-        H.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X ∧
-      V.h ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X =
-        H.h ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X := by
-  let p := (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app X
-  have hpp : p ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentPrefix n)).app X =
-      (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X := by
-    rw [← NatTrans.comp_app, ← pre_map, _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentPrefix_ι]
-  have hpn : p ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentLastEdge n)).app X =
-      (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X := by
-    rw [← NatTrans.comp_app, ← pre_map, _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentLastEdge_ι]
+      V.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.simplexAttachmentBoundary n).ι).app X =
+        H.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.simplexAttachmentBoundary n).ι).app X ∧
+      V.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n] : SSet.{u}) Δ[0])).app X =
+        H.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n] : SSet.{u}) Δ[0])).app X ∧
+      V.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X =
+        H.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X := by
+  let p := (pre (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.simplexAttachmentBoundary n).ι).app X
+  have hpp : p ≫ (pre (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.simplexAttachmentPrefix n)).app X =
+      (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n] : SSet.{u}) Δ[0])).app X := by
+    rw [← NatTrans.comp_app, ← pre_map, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.simplexAttachmentPrefix_ι]
+  have hpn : p ≫ (pre (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.simplexAttachmentLastEdge n)).app X =
+      (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X := by
+    rw [← NatTrans.comp_app, ← pre_map, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.simplexAttachmentLastEdge_ι]
   have ha : A.h ≫ p = (j ▷ (Δ[1] : SSet.{u})) ≫ H.h ≫ p := by
-    apply (isPullback_pre_of_isPushout (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary_isPushout n) X).hom_ext
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isPullback_pre_of_isPushout (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.simplexAttachmentBoundary_isPushout n) X).hom_ext
     · simpa only [Category.assoc, hpp] using hp
     · simpa only [Category.assoc, hpn] using hn
   obtain ⟨V, hV, hS⟩ :=
     SerrePositivity.SimplicialModel.MonoRightLiftingRelativeHomotopy.exists_extension
-      p TrivialKanFibration.mem j H A ha
+      p _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem j H A ha
   refine ⟨V, hS, hV, ?_, ?_⟩
-  · have he := congrArg (fun f => f ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentPrefix n)).app X) hV
+  · have he := congrArg (fun f => f ≫ (pre (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.simplexAttachmentPrefix n)).app X) hV
     simpa only [Category.assoc, hpp] using he
-  · have he := congrArg (fun f => f ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentLastEdge n)).app X) hV
+  · have he := congrArg (fun f => f ≫ (pre (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.simplexAttachmentLastEdge n)).app X) hV
     simpa only [Category.assoc, hpn] using he
 
 end SerrePositivity.KST.LocalizingInvariants

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedElementsOpposite
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElementsOpposite
 public import SerrePositivity.EInfinity.Hammock.TwoSidedWeightedLeftMap
 public import SerrePositivity.KST.ProExcision.NerveOppositeIso
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BarConstruction
@@ -26,18 +26,18 @@ open SerrePositivity.SimplicialModel
 variable {W : Type u} [Category.{u} W]
 
 def elementsNerveIso (A : Wᵒᵖ ⥤ Type u) (S : W ⥤ Type u) :
-    nerve (TwoSidedElements.Element A S) ≅
+    nerve (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.Element A S) ≅
       (nerve (((Functor.Elements.π S).op ⋙ A).Elements)).op :=
-  (show nerve (TwoSidedElements.Element A S) ≅
-      nerve (TwoSidedElements.oppositeElements A S) from
-    { hom := nerveMap (TwoSidedElements.toOpposite A S)
-      inv := nerveMap (TwoSidedElements.fromOpposite A S)
+  (show nerve (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.Element A S) ≅
+      nerve (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.oppositeElements A S) from
+    { hom := nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.toOpposite A S)
+      inv := nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.fromOpposite A S)
       hom_inv_id := by ext n e; rfl
       inv_hom_id := by ext n e; rfl }) ≪≫
     SerrePositivity.KST.ProExcision.nerveOppositeIso _
 
 def oppositeRowsIso (A : Wᵒᵖ ⥤ SSet.{u}) (S : W ⥤ Type u) :
-    TwoSidedBar.rows A (S ⋙ Functor.const SimplexCategoryᵒᵖ) ≅
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rows A (S ⋙ Functor.const SimplexCategoryᵒᵖ) ≅
       (BarConstruction.rows S.Elementsᵒᵖ).obj ((Functor.Elements.π S).op ⋙ A) ⋙ SSet.opFunctor :=
   NatIso.ofComponents (fun n => elementsNerveIso (A.flip.obj n) S) (by
     intro n m θ
@@ -45,22 +45,22 @@ def oppositeRowsIso (A : Wᵒᵖ ⥤ SSet.{u}) (S : W ⥤ Type u) :
     rfl)
 
 def outerOpRowsIso (A : Wᵒᵖ ⥤ SSet.{u}) (S : W ⥤ Type u) :
-    SimplicialObject.opFunctor.obj (TwoSidedBar.rows A (S ⋙ Functor.const SimplexCategoryᵒᵖ)) ≅
-      TwoSidedBar.rows (A ⋙ SSet.opFunctor) (S ⋙ Functor.const SimplexCategoryᵒᵖ) :=
+    SimplicialObject.opFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rows A (S ⋙ Functor.const SimplexCategoryᵒᵖ)) ≅
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rows (A ⋙ SSet.opFunctor) (S ⋙ Functor.const SimplexCategoryᵒᵖ) :=
   NatIso.ofComponents (fun _ => Iso.refl _) (by
     intro n m θ
     ext k e
     rfl)
 
 def coefficientRowsIso {A B : Wᵒᵖ ⥤ SSet.{u}} (e : A ≅ B) (S : W ⥤ Type u) :
-    TwoSidedBar.rows A (S ⋙ Functor.const SimplexCategoryᵒᵖ) ≅
-      TwoSidedBar.rows B (S ⋙ Functor.const SimplexCategoryᵒᵖ) where
-  hom := TwoSidedBar.rowMap e.hom (𝟙 _)
-  inv := TwoSidedBar.rowMap e.inv (𝟙 _)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rows A (S ⋙ Functor.const SimplexCategoryᵒᵖ) ≅
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rows B (S ⋙ Functor.const SimplexCategoryᵒᵖ) where
+  hom := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rowMap e.hom (𝟙 _)
+  inv := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rowMap e.inv (𝟙 _)
   hom_inv_id := by
-    rw [← TwoSidedBar.rowMap_comp, e.hom_inv_id, Category.id_comp, TwoSidedBar.rowMap_id]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rowMap_comp, e.hom_inv_id, Category.id_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rowMap_id]
   inv_hom_id := by
-    rw [← TwoSidedBar.rowMap_comp, e.inv_hom_id, Category.id_comp, TwoSidedBar.rowMap_id]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rowMap_comp, e.inv_hom_id, Category.id_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rowMap_id]
 
 def nerveOpIso (F : Wᵒᵖ ⥤ Cat.{u, u}) :
     (F ⋙ Cat.opFunctor) ⋙ nerveFunctor ≅ (F ⋙ nerveFunctor) ⋙ SSet.opFunctor :=
@@ -70,9 +70,9 @@ def nerveOpIso (F : Wᵒᵖ ⥤ Cat.{u, u}) :
 
 def rowsIso (F : Wᵒᵖ ⥤ Cat.{u, u}) (S : W ⥤ Type u) :
     SimplicialObject.opFunctor.obj
-      (TwoSidedBar.rows (F ⋙ nerveFunctor) (S ⋙ Functor.const SimplexCategoryᵒᵖ)) ≅
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rows (F ⋙ nerveFunctor) (S ⋙ Functor.const SimplexCategoryᵒᵖ)) ≅
       (BarConstruction.rows S.Elementsᵒᵖ).obj
-        (TwoSidedMixedLabel.pulledDiagram F S ⋙ nerveFunctor) ⋙ SSet.opFunctor :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S ⋙ nerveFunctor) ⋙ SSet.opFunctor :=
   outerOpRowsIso (F ⋙ nerveFunctor) S ≪≫
     coefficientRowsIso (nerveOpIso F).symm S ≪≫
       oppositeRowsIso ((F ⋙ Cat.opFunctor) ⋙ nerveFunctor) S

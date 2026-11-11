@@ -17,7 +17,7 @@ lemma pointedFamily_whisker_naturality {P : SSet.{u}} (X Y Z W : PointedSSetObje
     (σ : X ⟶ Z) (τ : Y ⟶ W) (a : P ⟶ (X ⟶[SSet.{u}] Y))
     (b : P ⟶ (Z ⟶[SSet.{u}] W))
     (h : a ≫ pointedFamilyPost X.obj Y.obj W.obj τ =
-      b ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre σ W.obj) :
+      b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre σ W.obj) :
     a ≫ eHomWhiskerLeft SSet X τ = b ≫ eHomWhiskerRight SSet σ W := by
   rw [pointedSSetObject_whiskerLeft, pointedSSetObject_whiskerRight]
   exact h

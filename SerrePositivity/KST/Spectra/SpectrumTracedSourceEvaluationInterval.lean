@@ -24,7 +24,7 @@ def tracedSourceUnitAction (X Y : OmegaSpectrum.{u}) (n : ℕ) :
   pointedEvaluation X Y.toKanSequence (n + 1) ≫
     PointedMapping.ihomAction CirclePower.space.{u}
       (X.level (n + 1)).space (Y.level (n + 1)).space ≫
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((tracedSignedLoopUnit X).app n ≫ (signedLoopProjection X).app n)
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((tracedSignedLoopUnit X).app n ≫ (signedLoopProjection X).app n)
       (PointedObject.basedHom CirclePower.space.{u} (Y.level (n + 1)).space)
 
 /-- 実際の元の評価から、同じトレース付き源単位を通る段写像への実区間。 -/
@@ -43,7 +43,7 @@ def tracedSourceEvaluationInterval (X Y : OmegaSpectrum.{u}) (n : ℕ) :
       pointedEvaluation X Y.toKanSequence (n + 1) ≫
         (PointedMapping.ihomAction CirclePower.space.{u}
           (X.level (n + 1)).space (Y.level (n + 1)).space ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((tracedOriginalLoopRawComparison X).app n)
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((tracedOriginalLoopRawComparison X).app n)
           (PointedObject.basedHom CirclePower.space.{u} (Y.level (n + 1)).space)) := by
     rw [signedEvaluationAt_action]
     rfl
@@ -62,7 +62,7 @@ def kanAdjointTracedSourceEvaluationInterval (X Y : OmegaSpectrum.{u}) (n : ℕ)
       pointedEvaluation X Y.toKanSequence (n + 1) ≫
         (PointedMapping.ihomAction CirclePower.space.{u}
           (X.level (n + 1)).space (Y.level (n + 1)).space ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (KanSequence.kanAdjoint X.toKanSequence n)
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (KanSequence.kanAdjoint X.toKanSequence n)
           (PointedObject.basedHom CirclePower.space.{u} (Y.level (n + 1)).space)) := by
     rw [PointedMapping.ihomParameterAction_eq_adjoint_pre]
     rfl

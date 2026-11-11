@@ -19,7 +19,7 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 /-- 転置した普遍評価は、元の源比較による同じ前合成を表す。 -/
 lemma transpose_evaluation_pre {W D : PointedSimplicialSet.{u}} (q : W ⟶ D)
     (C : PointedSimplicialSet.{u}) :
-    transpose (q ≫ transpose (𝟙 (PointedObject.basedHom D C))) = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed q C := by
+    transpose (q ≫ transpose (𝟙 (PointedObject.basedHom D C))) = _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed q C := by
   rw [transpose_pre_outer, transpose_transpose, Category.id_comp]
 
 namespace VerticalPath
@@ -28,7 +28,7 @@ namespace VerticalPath
 def basedPre {W D : PointedSimplicialSet.{u}} {f g : W ⟶ D}
     (H : VerticalPath (PointedObject.toPoint D) f g) (C : PointedSimplicialSet.{u}) :
     VerticalPath (PointedObject.toPoint (PointedObject.basedHom W C))
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed f C) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed g C) :=
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed f C) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed g C) :=
   ((H.basedPost (transpose (𝟙 (PointedObject.basedHom D C)))).basedTranspose).changeEndpoints
     (transpose_evaluation_pre f C).symm (transpose_evaluation_pre g C).symm
 
@@ -43,7 +43,7 @@ def basedPreAction {W D C A T : PointedSimplicialSet.{u}} {f g : W ⟶ D}
     (H : VerticalPath (PointedObject.toPoint D) f g)
     (r : A ⟶ PointedObject.basedHom D C) (a : T ⟶ A) :
     VerticalPath (PointedObject.toPoint (PointedObject.basedHom W C))
-      (a ≫ r ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed f C) (a ≫ r ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed g C) :=
+      (a ≫ r ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed f C) (a ≫ r ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed g C) :=
   ((H.basedPre C).pre r).pre a
 
 end VerticalPath

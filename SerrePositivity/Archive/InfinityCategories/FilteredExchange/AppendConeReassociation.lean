@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.JoinAssociatorBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinAssociatorBoundary
 
 /-!
 概要：追加錐の二終点を一つの実辺へ束ねるための join の組み替え。

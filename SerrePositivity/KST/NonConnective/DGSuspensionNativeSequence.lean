@@ -33,12 +33,12 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
 /-- 同じ n 回懸垂の固定 K 頂点に、公開 native loop を同じ n 回だけ作用させる。 -/
 def dgSuspensionNativeSequenceVertex (n : ℕ) : Sp.{max (u + 1) v} _⦋0⦌ :=
   ((End.of OmegaSpectrum.nativeLoop ^ n).asHom).app (Opposite.op ⦋0⦌)
-    (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
 
 variable (β : ∀ n : ℕ,
-  SSet.Edge (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
+  SSet.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
     (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1))))))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1))))))
 
 /-- 各段の元の実構造辺の供給に条件付きで、同じ n 回 loop した実辺を保持する。 -/
 def dgSuspensionNativeSequenceEdge (n : ℕ) :
@@ -50,20 +50,20 @@ def dgSuspensionNativeSequenceEdge (n : ℕ) :
 
 /-- 明示構造辺に条件付きの、同じ native loop 頂点を表す元の実 BF spectrum。 -/
 def dgSuspensionNativeSequenceStage (n : ℕ) : OmegaSpectrum.{max (u + 1) v} :=
-  coherentNerveObject (dgSuspensionNativeSequenceVertex R s A n)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (dgSuspensionNativeSequenceVertex R s A n)
 
 /-- 明示構造辺に条件付きで、同じ元の全一単体を表す厳密 BF 遷移射を回収する。 -/
 def dgSuspensionNativeSequenceMap (n : ℕ) :
     dgSuspensionNativeSequenceStage R s A n ⟶ dgSuspensionNativeSequenceStage R s A (n + 1) :=
-  coherentNerveEdgeToHom ((dgSuspensionNativeSequenceEdge R s A β n).ofEq
-    (coherentNerveVertex_object _).symm (coherentNerveVertex_object _).symm)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom ((dgSuspensionNativeSequenceEdge R s A β n).ofEq
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object _).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object _).symm)
 
 /-- 明示構造辺に条件付きで、回収した BF 遷移射は元の loop 反復辺の全一単体を保つ。 -/
 theorem dgSuspensionNativeSequenceMap_edge (n : ℕ) :
-    (coherentNerveEdge (dgSuspensionNativeSequenceMap R s A β n)).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgSuspensionNativeSequenceMap R s A β n)).edge =
       (dgSuspensionNativeSequenceEdge R s A β n).edge := by
-  have he := coherentNerveEdge_hom ((dgSuspensionNativeSequenceEdge R s A β n).ofEq
-    (coherentNerveVertex_object _).symm (coherentNerveVertex_object _).symm)
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_hom ((dgSuspensionNativeSequenceEdge R s A β n).ofEq
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object _).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object _).symm)
   exact congrArg (fun e => e.edge) he
 
 /-- 明示構造辺に条件付きの、同じ元の遷移射を持つ厳密逐次 BF 列。 -/
@@ -87,7 +87,7 @@ def dgSuspensionNativeCandidateCocone :=
 
 /-- 明示構造辺に条件付きで、同じ実 Sp 余錐は全写像空間で余極限である。 -/
 theorem dgSuspensionNativeCandidateCocone_isColimit :
-    IsColimitCone (dgSuspensionNativeCandidateCocone R s A β) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (dgSuspensionNativeCandidateCocone R s A β) :=
   sequentialCandidateColimitCocone_isColimit (dgSuspensionNativeSequence R s A β)
 
 end SerrePositivity.KST.NonConnective

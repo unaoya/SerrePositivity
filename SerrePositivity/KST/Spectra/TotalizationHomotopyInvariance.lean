@@ -37,8 +37,8 @@ lemma CosimplicialTotalization.map_piIsomorphism
     (f : X ⟶ Y)
     (hX : reedyRight simplex SSet.modelCategoryQuillen.J.rlp (terminal.from X))
     (hY : reedyRight simplex SSet.modelCategoryQuillen.J.rlp (terminal.from Y))
-    (hf : ∀ j, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app j)) (e₀ : ∀ j, X.obj j _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (CosimplicialTotalization.map f) := by
+    (hf : ∀ j, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app j)) (e₀ : ∀ j, X.obj j _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (CosimplicialTotalization.map f) := by
   let : ∀ j, KanComplex ((CosimplicialTwoProjections.obj f).obj j) :=
     fun j ↦ CosimplicialTwoProjections.obj_kanComplex f hY j
   let : KanComplex (CosimplicialTotalization.obj (CosimplicialTwoProjections.obj f)) :=
@@ -55,13 +55,13 @@ lemma CosimplicialTotalization.map_piIsomorphism
     (CosimplicialTwoProjections.targetProjection f)
     (CosimplicialTwoProjections.targetProjection_reedy f hX)
     (CosimplicialTwoProjections.targetProjection_levelwise f hf e₀) eu
-  have hcomp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+  have hcomp : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       (CosimplicialTotalization.map (CosimplicialTwoProjections.inclusion f) ≫
         CosimplicialTotalization.map (CosimplicialTwoProjections.sourceProjection f)) := by
     rw [← CosimplicialTotalization.map_comp,
       CosimplicialTwoProjections.inclusion_sourceProjection, CosimplicialTotalization.map_id]
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id _
-  have hi := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hcomp hr
+    exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.id _
+  have hi := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp hcomp hr
   have h := hi.comp hq
   rw [← CosimplicialTotalization.map_comp,
     CosimplicialTwoProjections.inclusion_targetProjection] at h
@@ -81,8 +81,8 @@ lemma PointedTotalization.map_piIsomorphism
       (terminal.from (X ⋙ PointedSimplicialSet.forget)))
     (hY : reedyRight simplex SSet.modelCategoryQuillen.J.rlp
       (terminal.from (Y ⋙ PointedSimplicialSet.forget)))
-    (hf : ∀ j, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app j).right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (PointedTotalization.map f).right := by
+    (hf : ∀ j, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app j).right) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (PointedTotalization.map f).right := by
   let : ∀ j, KanComplex ((X ⋙ PointedSimplicialSet.forget).obj j) :=
     fun j ↦ inferInstanceAs (KanComplex (X.obj j).right)
   let : ∀ j, KanComplex ((Y ⋙ PointedSimplicialSet.forget).obj j) :=

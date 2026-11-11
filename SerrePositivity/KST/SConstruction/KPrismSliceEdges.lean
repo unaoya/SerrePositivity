@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
-open Spectra SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open Spectra SerrePositivity.InfinityCategories
 open scoped Simplicial
 local instance kPrismSliceEdges_pointed_simplicialCategory :
     SimplicialCategory PointedSimplicialSet.{u} := PointedEnrichment.simplicialCategory
@@ -25,38 +25,38 @@ lemma kKanOriginalPrismStringEdge_bottom {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
     (kKanOriginalPrismStringDiagram r F).app (Opposite.op ⦋1⦌)
       (ULift.up (nerve.edgeMk ((coherentPrismSliceFunctor I (ULift.up 0)).map f)).edge) =
-      (coherentNerveEdge (((F ⋙ kKanSequenceLevelFunctor r) ⋙
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (((F ⋙ kKanSequenceLevelFunctor r) ⋙
         MonoidalCategory.tensorLeft PointedSimplicialSet.circle.{u}).map f)).edge := by
   have h := congrArg (fun Q => Q.app (Opposite.op ⦋1⦌)
     (ULift.up (nerve.edgeMk f).edge)) (kKanOriginalPrismStringDiagram_bottom r F)
   change (kKanOriginalPrismStringDiagram r F).app _ (ULift.up
     ((nerveMap (coherentPrismSliceFunctor I (ULift.up 0))).app _ (nerve.edgeMk f).edge)) = _ at h
   rw [nerve.edgeMk_edge, nerveMap_app_mk₁] at h
-  exact h.trans (strictCoherentDiagram_edge _ f)
+  exact h.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.strictCoherentDiagram_edge _ f)
 
 /-- 上段の元の辺は、元の次段の写像の辺そのもの。 -/
 lemma kKanOriginalPrismStringEdge_top {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
     (kKanOriginalPrismStringDiagram r F).app (Opposite.op ⦋1⦌)
       (ULift.up (nerve.edgeMk ((coherentPrismSliceFunctor I (ULift.up 1)).map f)).edge) =
-      (coherentNerveEdge ((F ⋙ kKanSequenceLevelFunctor (r + 1)).map f)).edge := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((F ⋙ kKanSequenceLevelFunctor (r + 1)).map f)).edge := by
   have h := congrArg (fun Q => Q.app (Opposite.op ⦋1⦌)
     (ULift.up (nerve.edgeMk f).edge)) (kKanOriginalPrismStringDiagram_top r F)
   change (kKanOriginalPrismStringDiagram r F).app _ (ULift.up
     ((nerveMap (coherentPrismSliceFunctor I (ULift.up 1))).app _ (nerve.edgeMk f).edge)) = _ at h
   rw [nerve.edgeMk_edge, nerveMap_app_mk₁] at h
-  exact h.trans (strictCoherentDiagram_edge _ f)
+  exact h.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.strictCoherentDiagram_edge _ f)
 
 /-- 積圏表示の元の縦辺は、元の K の同じ構造射の指定辺そのもの。 -/
 lemma kKanOriginalPrismStringEdge_vertical {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (i : I) :
     (kKanOriginalPrismStringDiagram r F).app (Opposite.op ⦋1⦌)
       (ULift.up (nerve.edgeMk (coherentPrismArrow (𝟙 i))).edge) =
-      (coherentNerveEdge ((kKanSequence (F.obj i)).sigma r)).edge := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((kKanSequence (F.obj i)).sigma r)).edge := by
   have hp : (coherentOrdinaryPrismIso.{u, u + 1} I).hom.app (Opposite.op ⦋1⦌)
       (ULift.up (nerve.edgeMk (coherentPrismArrow (𝟙 i))).edge) =
       (((SSet.uliftFunctor.{u + 1, u}).obj (nerve I)).map (SimplexCategory.σ 0).op
-        (ULift.up (nerveVertex i)), SSet.stdSimplex.objEquiv.symm (𝟙 ⦋1⦌)) := by
+        (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)), SSet.stdSimplex.objEquiv.symm (𝟙 ⦋1⦌)) := by
     apply Prod.ext
     · apply ULift.ext
       refine ComposableArrows.ext₁ ?_ ?_ ?_

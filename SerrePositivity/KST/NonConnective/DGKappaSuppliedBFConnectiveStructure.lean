@@ -33,12 +33,12 @@ theorem dgKappaSuppliedBFFiberComparison_target :
     (dgKappaSuppliedBFKLimitCone R D I).vertex =
       (dgKappaSuppliedBFCanonicalFiberSquare R D I).fiber := by
   have h := congrArg (fun f => f.app (Opposite.op ⦋0⦌) (dgKappaSuppliedBFKLimitCone R D I))
-    (sliceSquareDiagramMap_sourceEvaluation (pullbackCospan (dgKappaNativeCoherentBFSquare R D I)))
-  change (evaluateFunctorAt (Y := Sp.{max (u + 1) v})
-    (squareVertex (𝟙 ((Δ[1] : SSet.{max (u + 1) v + 1}) ⊗ Δ[1])) 0 0)).app
-    (Opposite.op ⦋0⦌) ((sliceSquareDiagramMap _).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap_sourceEvaluation (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan (dgKappaNativeCoherentBFSquare R D I)))
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := Sp.{max (u + 1) v})
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{max (u + 1) v + 1}) ⊗ Δ[1])) 0 0)).app
+    (Opposite.op ⦋0⦌) ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap _).app (Opposite.op ⦋0⦌)
       (dgKappaSuppliedBFKLimitCone R D I)) = _ at h
-  rw [sliceSquareDiagramMap_vertex] at h
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap_vertex] at h
   exact h.symm
 
 /-- 概要：同じ実 fiber 四角形の右辺は元の実供給右辺そのもの。
@@ -46,13 +46,13 @@ theorem dgKappaSuppliedBFFiberComparison_target :
 規約：旧 BF 右辺に取り替えない。
 使われ方：実供給の同じ商頂点・cone 頂点を回収する。 -/
 private theorem suppliedBFCanonicalFiber_right :
-    squareRightEdge ≫ (dgKappaSuppliedBFCanonicalFiberSquare R D I).square =
-      squareRightEdge ≫ dgKappaNativeCoherentBFSquare R D I := by
-  rw [(dgKappaSuppliedBFCanonicalFiberSquare R D I).right_edge, squareRightArrow_edge]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (dgKappaSuppliedBFCanonicalFiberSquare R D I).square =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ dgKappaNativeCoherentBFSquare R D I := by
+  rw [(dgKappaSuppliedBFCanonicalFiberSquare R D I).right_edge, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
   exact SSet.yonedaEquiv.symm_apply_apply _
 
 variable (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-    F2.Idempotent.IsIdempotentCompletion f.val →
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
       (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
         Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
   (Z : DGKappaZeroInput R D I)
@@ -62,17 +62,17 @@ variable (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
 規約：共終性に条件付き。元の BF 四角形の引き戻し性は仮定しない。
 使われ方：元の実 fiber 比較を同じ未完備実商の loop へ送る。 -/
 def dgKappaSuppliedBFConnectiveLoopSquare :
-    LoopSquare (squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1) where
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.LoopSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1) where
   toZeroTriangle := (dgKappaSuppliedBFCanonicalFiberSquare R D I).toZeroTriangle
   target_eq := by
-    have ht : squareVertex (dgKappaSuppliedBFCanonicalFiberSquare R D I).square 1 1 =
-        squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1 := by
-      rw [← squareRightEdge_target, suppliedBFCanonicalFiber_right, squareRightEdge_target]
+    have ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaSuppliedBFCanonicalFiberSquare R D I).square 1 1 =
+        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1 := by
+      rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target, suppliedBFCanonicalFiber_right, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target]
     exact ht
   other_zero := by
-    have hs : squareVertex (dgKappaSuppliedBFCanonicalFiberSquare R D I).square 1 0 =
-        squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 0 := by
-      rw [← squareRightEdge_source, suppliedBFCanonicalFiber_right, squareRightEdge_source]
+    have hs : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaSuppliedBFCanonicalFiberSquare R D I).square 1 0 =
+        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 0 := by
+      rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_source, suppliedBFCanonicalFiber_right, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_source]
     rw [hs]
     exact dgKappaSuppliedBFSquare_middle_isZero R D I hcofinal Z
   isPullback := (dgKappaSuppliedBFCanonicalFiberSquare R D I).isPullback
@@ -85,8 +85,8 @@ def dgKappaSuppliedBFConnectiveLoopInverseEdge :
     Truncated.Edge (X := (truncation 2).obj Sp.{max (u + 1) v})
       (dgKappaSuppliedBFConnectiveLoopSquare R D I hcofinal Z).vertex
       ((OmegaSpectrum.nativeLoop.{max (u + 1) v}).app (Opposite.op ⦋0⦌)
-        (squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1)) :=
-  Classical.choose (homotopyCategory_homMk_surjective _ _
+        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1)) :=
+  Classical.choose (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective _ _
     (OmegaSpectrum.nativeLoopVertexIso
       (dgKappaSuppliedBFConnectiveLoopSquare R D I hcofinal Z)).inv)
 
@@ -99,16 +99,16 @@ theorem dgKappaSuppliedBFConnectiveLoopInverseEdge_hom :
       (dgKappaSuppliedBFConnectiveLoopInverseEdge R D I hcofinal Z) =
         (OmegaSpectrum.nativeLoopVertexIso
           (dgKappaSuppliedBFConnectiveLoopSquare R D I hcofinal Z)).inv :=
-  Classical.choose_spec (homotopyCategory_homMk_surjective _ _ _)
+  Classical.choose_spec (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective _ _ _)
 
 /-- 概要：元の実 fiber 比較を経る、同じ未完備実核の新 BF 模型から実商の新 BF loop への実辺。
 方針：同じ全比較辺に同じ実 loop 比較同型の逆辺を後合成する。
 規約：別の fibration 辺の存在は仮定しない。
 使われ方：固定 K への元の完備化比較の前の実辺。 -/
 def dgKappaSuppliedBFConnectiveFibrationEdge : Sp.{max (u + 1) v}.Edge
-    (pullbackCone (dgKappaNativeCoherentBFSquare R D I)).vertex
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone (dgKappaNativeCoherentBFSquare R D I)).vertex
     ((OmegaSpectrum.nativeLoop.{max (u + 1) v}).app (Opposite.op ⦋0⦌)
-      (squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1)) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1)) :=
   SSet.Edge.ofTruncated
     ((SSet.Edge.ofTruncated (dgKappaSuppliedBFFiberComparison R D I)).ofEq
         rfl (dgKappaSuppliedBFFiberComparison_target R D I) |>.toTruncated.comp
@@ -119,8 +119,8 @@ def dgKappaSuppliedBFConnectiveFibrationEdge : Sp.{max (u + 1) v}.Edge
 規約：全段の Sp 引き戻し性や零次全射性は要求しない。
 使われ方：K-7 c5・d3 の連結主経路の隣接安定化。 -/
 theorem dgKappaSuppliedBFConnectiveFibrationEdge_nonnegative
-    (hS : IsPullbackSquare ((dgKappaNativeVerdierDiagram R D I).square ≫
-      coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)))
+    (hS : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare ((dgKappaNativeVerdierDiagram R D I).square ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)))
     (j : ℤ) (hj : 0 ≤ j) :
     Function.Bijective (SpectrumHo.piMap (Truncated.HomotopyCategory.homMk
       (dgKappaSuppliedBFConnectiveFibrationEdge R D I hcofinal Z).toTruncated) j) := by

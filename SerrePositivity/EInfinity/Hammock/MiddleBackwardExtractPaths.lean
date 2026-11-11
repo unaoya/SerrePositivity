@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.MiddleBackwardPositions
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagColumnDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagColumnDiagram
 
 /-!
 # 元の固定語の zigzag 圏から左右の forward 射列を抽出する
@@ -23,41 +23,41 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 variable {C : Type u} [Category.{v} C] {W : MorphismProperty C} [W.IsMultiplicative]
   {n m : ℕ} {X Y : C}
 
-def leftPath (S : Zigzag W (word n m) X Y) : ComposableArrows C n :=
+def leftPath (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y) : ComposableArrows C n :=
   ComposableArrows.mkOfObjOfMapSucc (fun i => S.vertex (Positions.leftVertex n m i))
-    (fun i => (Zigzag.columnDiagram (Positions.leftColumn n m i)
+    (fun i => (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagColumnDiagram.columnDiagram (Positions.leftColumn n m i)
       (Positions.leftVertex n m i.castSucc) (Positions.leftVertex n m i.succ)
       (Positions.left_source n m i).symm (Positions.left_target n m i)).app S)
 
-def rightPath (S : Zigzag W (word n m) X Y) : ComposableArrows C m :=
+def rightPath (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y) : ComposableArrows C m :=
   ComposableArrows.mkOfObjOfMapSucc (fun i => S.vertex (Positions.rightVertex n m i))
-    (fun i => (Zigzag.columnDiagram (Positions.rightColumn n m i)
+    (fun i => (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagColumnDiagram.columnDiagram (Positions.rightColumn n m i)
       (Positions.rightVertex n m i.castSucc) (Positions.rightVertex n m i.succ)
       (Positions.right_source n m i).symm (Positions.right_target n m i)).app S)
 
-def leftPathMap {S T : Zigzag W (word n m) X Y} (f : Zigzag.Hom S T) :
+def leftPathMap {S T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y} (f : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag.Hom S T) :
     leftPath S ⟶ leftPath T :=
   ComposableArrows.homMk (fun i => f.app (Positions.leftVertex n m i)) (by
     intro i hi
     dsimp only [leftPath]
     rw [ComposableArrows.mkOfObjOfMapSucc_map_succ _ _ i hi,
       ComposableArrows.mkOfObjOfMapSucc_map_succ _ _ i hi]
-    dsimp only [Zigzag.columnDiagram]
-    exact Segment.square_transport f _ _ _ (Positions.left_source n m ⟨i, hi⟩).symm
+    dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagColumnDiagram.columnDiagram]
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SegmentNaturality.square_transport f _ _ _ (Positions.left_source n m ⟨i, hi⟩).symm
       (Positions.left_target n m ⟨i, hi⟩))
 
-def rightPathMap {S T : Zigzag W (word n m) X Y} (f : Zigzag.Hom S T) :
+def rightPathMap {S T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y} (f : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag.Hom S T) :
     rightPath S ⟶ rightPath T :=
   ComposableArrows.homMk (fun i => f.app (Positions.rightVertex n m i)) (by
     intro i hi
     dsimp only [rightPath]
     rw [ComposableArrows.mkOfObjOfMapSucc_map_succ _ _ i hi,
       ComposableArrows.mkOfObjOfMapSucc_map_succ _ _ i hi]
-    dsimp only [Zigzag.columnDiagram]
-    exact Segment.square_transport f _ _ _ (Positions.right_source n m ⟨i, hi⟩).symm
+    dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagColumnDiagram.columnDiagram]
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SegmentNaturality.square_transport f _ _ _ (Positions.right_source n m ⟨i, hi⟩).symm
       (Positions.right_target n m ⟨i, hi⟩))
 
-def leftFunctor : Zigzag W (word n m) X Y ⥤ ComposableArrows C n where
+def leftFunctor : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y ⥤ ComposableArrows C n where
   obj := leftPath
   map := leftPathMap
   map_id _ := by
@@ -69,7 +69,7 @@ def leftFunctor : Zigzag W (word n m) X Y ⥤ ComposableArrows C n where
     funext i
     rfl
 
-def rightFunctor : Zigzag W (word n m) X Y ⥤ ComposableArrows C m where
+def rightFunctor : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y ⥤ ComposableArrows C m where
   obj := rightPath
   map := rightPathMap
   map_id _ := by
@@ -81,17 +81,17 @@ def rightFunctor : Zigzag W (word n m) X Y ⥤ ComposableArrows C m where
     funext i
     rfl
 
-lemma leftPath_map_succ_heq (S : Zigzag W (word n m) X Y) (i : ℕ) (hi : i < n) :
+lemma leftPath_map_succ_heq (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y) (i : ℕ) (hi : i < n) :
     HEq ((leftPath S).map' i (i + 1)) (S.arrow (Positions.leftColumn n m ⟨i, hi⟩)) := by
   rw [leftPath, ComposableArrows.mkOfObjOfMapSucc_map_succ _ _ i hi]
-  dsimp only [Zigzag.columnDiagram]
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagColumnDiagram.columnDiagram]
   simp only [eqToHom_comp_heq_iff, comp_eqToHom_heq_iff]
   rfl
 
-lemma rightPath_map_succ_heq (S : Zigzag W (word n m) X Y) (i : ℕ) (hi : i < m) :
+lemma rightPath_map_succ_heq (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y) (i : ℕ) (hi : i < m) :
     HEq ((rightPath S).map' i (i + 1)) (S.arrow (Positions.rightColumn n m ⟨i, hi⟩)) := by
   rw [rightPath, ComposableArrows.mkOfObjOfMapSucc_map_succ _ _ i hi]
-  dsimp only [Zigzag.columnDiagram]
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagColumnDiagram.columnDiagram]
   simp only [eqToHom_comp_heq_iff, comp_eqToHom_heq_iff]
   rfl
 

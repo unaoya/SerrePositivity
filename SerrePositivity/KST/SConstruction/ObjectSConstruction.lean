@@ -35,10 +35,10 @@ lemma objectSConstruction_obj (C : SSet.{u}) (n : ℕ) :
 規約：quasicategory 性は不要。使われ方：object から core の object への比較。 -/
 def coreVertexNatIso :
     (evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋0⦌) ≅
-      quasicategoryCoreFunctor ⋙
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor ⋙
         (evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋0⦌) :=
   NatIso.ofComponents (fun X => Equiv.toIso {
-    toFun := fun x => ⟨x, quasicategoryCore_vertex x⟩
+    toFun := fun x => ⟨x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_vertex x⟩
     invFun := Subtype.val
     left_inv := fun _ => rfl
     right_inv := fun _ => Subtype.ext rfl }) (by
@@ -55,7 +55,7 @@ def coreDiagramObjectsIso :
     (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} (Type u)).obj
         ((evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋0⦌)) ≅
       (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} SSet.{u}).obj
-        quasicategoryCoreFunctor ⋙
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor ⋙
       (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} (Type u)).obj
         ((evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋0⦌)) :=
   NatIso.ofComponents (fun X => Functor.isoWhiskerLeft X coreVertexNatIso) (by
@@ -74,9 +74,9 @@ def objectCoreDiagonalComparisonNat :
     (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} (Type u)).obj
         ((evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋0⦌)) ⟶
       (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} SSet.{u}).obj
-        quasicategoryCoreFunctor ⋙ simplicialDiagonalFunctor :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor ⋙ simplicialDiagonalFunctor :=
   coreDiagramObjectsIso.hom ≫ Functor.whiskerLeft
-    ((Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} SSet.{u}).obj quasicategoryCoreFunctor)
+    ((Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} SSet.{u}).obj _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor)
     diagonalObjectInclusionNat
 
 /-- 概要：object S 構成と core S• の零単体の単体集合は同型。
@@ -109,7 +109,7 @@ lemma objectToCoreSRealization_naturality {C D : SSet.{u}}
         ((evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋0⦌)) ≫
       objectToCoreSRealization D =
         objectToCoreSRealization C ≫
-          simplicialDiagonalFunctor.map (Functor.whiskerRight f quasicategoryCoreFunctor) :=
+          simplicialDiagonalFunctor.map (Functor.whiskerRight f _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor) :=
   objectCoreDiagonalComparisonNat.naturality f
 
 /-- 概要：object S 構成を安定な入力について関手化する。

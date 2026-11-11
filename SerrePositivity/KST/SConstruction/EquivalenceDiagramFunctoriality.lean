@@ -46,7 +46,7 @@ lemma equivalenceDiagramReindex_evaluation {K L : SSet.{u}} (i : L ⟶ K)
     equivalenceDiagramReindex i C ≫ equivalenceDiagramEvaluation L C l =
       equivalenceDiagramEvaluation K C (i.app (Opposite.op ⦋0⦌) l) := by
   rw [equivalenceDiagramEvaluation, ← Category.assoc, equivalenceDiagramReindex_ι,
-    Category.assoc, stable_pre_evaluateFunctorAt]
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt]
   rfl
 
 /-- 概要：全同値な定数図式の包含は任意の添字制限と厳密に両立する。

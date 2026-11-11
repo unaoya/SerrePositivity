@@ -27,8 +27,8 @@ open scoped _root_.Simplicial
 規約：K-L9 の二つの円の同型をそのまま使う。
 使われ方：loop から path への反変な制限。
 -/
-def intervalCircleProjection : _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.{u} ⟶ PointedSimplicialSet.circle.{u} :=
-  Spectra.pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint ≫ Spectra.endpointCircleIso.hom
+def intervalCircleProjection : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval.{u} ⟶ PointedSimplicialSet.circle.{u} :=
+  Spectra.pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint ≫ Spectra.endpointCircleIso.hom
 
 /--
 概要：区間から円への商写像の基礎射は境界を潰す元の商である。
@@ -38,7 +38,7 @@ def intervalCircleProjection : _root_.SerrePositivity.InfinityCategories.F1.Poin
 -/
 theorem intervalCircleProjection_right : intervalCircleProjection.{u}.right =
     PointedObject.cofiberQuotient (SSet.boundary.{u} 1).ι := by
-  change PointedObject.cofiberQuotient _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right ≫
+  change PointedObject.cofiberQuotient _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}.right ≫
     Spectra.endpointCircleToCircle.{u}.right = _
   unfold Spectra.endpointCircleToCircle
   rw [PointedObject.cofiberQuotient_desc]
@@ -50,8 +50,8 @@ theorem intervalCircleProjection_right : intervalCircleProjection.{u}.right =
 使われ方：基点上の厳密なファイバーの包含。
 -/
 def loopPathRestriction (Y : PointedSimplicialSet.{u}) :
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right ⟶ (Spectra.basedPathSpace Y).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre intervalCircleProjection Y
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right ⟶ (Spectra.basedPathSpace Y).right :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre intervalCircleProjection Y
 
 /--
 概要：loop の制限を基礎指数へ含めると、境界の商による通常の指数の制限になる。
@@ -60,10 +60,10 @@ def loopPathRestriction (Y : PointedSimplicialSet.{u}) :
 使われ方：標準ループ写像の評価との比較。
 -/
 @[reassoc] theorem loopPathRestriction_ι (Y : PointedSimplicialSet.{u}) :
-    loopPathRestriction Y ≫ PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y =
+    loopPathRestriction Y ≫ PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y =
       PointedObject.basedHomι PointedSimplicialSet.circle Y ≫
         (MonoidalClosed.pre
           (PointedObject.cofiberQuotient (SSet.boundary.{u} 1).ι)).app Y.right := by
-  rw [loopPathRestriction, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, intervalCircleProjection_right]
+  rw [loopPathRestriction, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_ι, intervalCircleProjection_right]
 
 end SerrePositivity.KST.Comparison

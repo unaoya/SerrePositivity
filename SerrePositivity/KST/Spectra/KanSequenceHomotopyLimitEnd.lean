@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.KanSequence
 variable {I : Type u} [SmallCategory I] (D : I ⥤ KanSequence.{u})
 
@@ -31,23 +31,23 @@ def homotopyLimitWedge_isLimit : IsLimit (homotopyLimitWedge D) :=
       apply end_.hom_ext
       intro i
       have h := congrArg (fun p : s.pt ⟶
-        mapping (PointedObject.adjoin ((bousfieldKanWeight I).obj i)) (D.obj i) ↦ p.app n)
+        mapping (PointedObject.adjoin ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I).obj i)) (D.obj i) ↦ p.app n)
         (hm i)
       exact h.trans (homotopyLimitWedgeLiftApp_π D s n i).symm)
 
 /-- 重み付き内部 Hom 列の図式は、実際に end を持つ。 -/
-instance weightedDiagram_hasEnd : HasEnd (weightedDiagram (bousfieldKanWeight I) D) :=
+instance weightedDiagram_hasEnd : HasEnd (weightedDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D) :=
   HasLimit.mk ⟨homotopyLimitWedge D, homotopyLimitWedge_isLimit D⟩
 
 /-- 元の段ごとの模型と、Kan 列の圏で取った実際の end の同型。 -/
 def homotopyLimitEndIso :
-    homotopyLimit D ≅ end_ (weightedDiagram (bousfieldKanWeight I) D) :=
+    homotopyLimit D ≅ end_ (weightedDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D) :=
   (homotopyLimitWedge_isLimit D).conePointUniqueUpToIso (limit.isLimit _)
 
 /-- 同型を通した end の射影は、構成済みの元の厳密な射影。 -/
 @[reassoc (attr := simp)]
 lemma homotopyLimitEndIso_hom_π (i : I) :
-    (homotopyLimitEndIso D).hom ≫ end_.π (weightedDiagram (bousfieldKanWeight I) D) i =
+    (homotopyLimitEndIso D).hom ≫ end_.π (weightedDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D) i =
       homotopyLimitEvaluation D i :=
   IsLimit.conePointUniqueUpToIso_hom_comp
     (homotopyLimitWedge_isLimit D) (limit.isLimit _) (.left i)

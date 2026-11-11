@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SpecifiedBoundaryEdgeNormalization
-public import SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeComparisonInverse
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.RelativeComparisonInverse
 public import SerrePositivity.KST.LocalizingInvariants.VerdierInitialConeTensorRelativeComparison
 
 /-!
@@ -22,25 +22,25 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の図式側で定値な実境界比較は、その側を固定した実延長と全比較を与える。 -/
-lemma exists_verdierInitialConeTensorRelativeBoundary {A₀ B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A₀ B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
+lemma exists_verdierInitialConeTensorRelativeBoundary {A₀ B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A₀ B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q)
     (A L : SSet.{u}) [A.Finite] [L.Finite]
     (p : initialConeTensorCorner A L ⟶ B.obj)
-    (H : join (Δ[0] : SSet.{u}) A ⊗ join (Δ[0] : SSet.{u}) L ⟶ C.obj)
-    (a : SSet.Edge (functorVertex (initialConeTensorCornerInclusion A L ≫ H))
-      (functorVertex (p ≫ q.hom))) (ha : IsInvertibleEdge a)
+    (H : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) A ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) L ⟶ C.obj)
+    (a : SSet.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (initialConeTensorCornerInclusion A L ≫ H))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (p ≫ q.hom))) (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge a)
     {O : SSet.{u}} (k : O ⟶ initialConeTensorCorner A L) [Mono k]
     (hk : ((pre k).app C.obj).app (Opposite.op ⦋1⦌) a.edge =
       (Truncated.Edge.id (X := (truncation 2).obj ((ihom O).obj C.obj))
-        (functorVertex (k ≫ p ≫ q.hom))).edge) :
-    ∃ (D : join (Δ[0] : SSet.{u}) A ⊗ join (Δ[0] : SSet.{u}) L ⟶ B.obj)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (k ≫ p ≫ q.hom))).edge) :
+    ∃ (D : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) A ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) L ⟶ B.obj)
       (J : SSet.Homotopy (D ≫ q.hom) H),
       initialConeTensorCornerInclusion A L ≫ D = p ∧
       ((k ≫ initialConeTensorCornerInclusion A L) ▷ (Δ[1] : SSet.{u})) ≫ J.h =
         fst O Δ[1] ≫ (k ≫ p ≫ q.hom) ∧
-      ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge J x).toTruncated := by
+      ∀ x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge J x).toTruncated := by
   have hH : (k ≫ initialConeTensorCornerInclusion A L) ≫ H = k ≫ p ≫ q.hom := by
-    apply functorVertex_injective
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex_injective
     calc
       _ = ((ihom O).obj C.obj).δ 1
           (((pre k).app C.obj).app (Opposite.op ⦋1⦌) a.edge) :=
@@ -62,17 +62,17 @@ lemma exists_verdierInitialConeTensorRelativeBoundary {A₀ B C : _root_.SerrePo
   have hNfixed : ((k ≫ initialConeTensorCornerInclusion A L) ▷ (Δ[1] : SSet.{u})) ≫
       n.homotopy.h = fst O Δ[1] ≫ (k ≫ p ≫ q.hom) := by
     rw [comp_whiskerRight, Category.assoc, n.homotopy_restriction]
-    exact simplicialHomotopyOfFunctorEdge_pre_eq_constant k (k ≫ p ≫ q.hom)
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.simplicialHomotopyOfFunctorEdge_pre_eq_constant k (k ≫ p ≫ q.hom)
       a.toTruncated hk
-  have hiN : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge n.homotopy x).toTruncated :=
-    simplicialHomotopyOfFunctorEdge_vertex_isInvertible n.edge.toTruncated n.isInvertible
-  obtain ⟨eU⟩ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.fixedDiagramVertexIso_of_relativeHomotopy
+  have hiN : ∀ x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge n.homotopy x).toTruncated :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.simplicialHomotopyOfFunctorEdge_vertex_isInvertible n.edge.toTruncated n.isInvertible
+  obtain ⟨eU⟩ := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.fixedDiagramVertexIso_of_relativeHomotopy
     (k ≫ initialConeTensorCornerInclusion A L) (k ≫ p ≫ q.hom)
     (d.diagram ≫ q.hom) n.diagram hD hN U hUfixed hiU
-  obtain ⟨eN⟩ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.fixedDiagramVertexIso_of_relativeHomotopy
+  obtain ⟨eN⟩ := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.fixedDiagramVertexIso_of_relativeHomotopy
     (k ≫ initialConeTensorCornerInclusion A L) (k ≫ p ≫ q.hom)
     H n.diagram hH hN n.homotopy hNfixed hiN
-  obtain ⟨J, hJ, hiJ⟩ := exists_relative_homotopy_of_fixedDiagram_vertexIso
+  obtain ⟨J, hJ, hiJ⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_relative_homotopy_of_fixedDiagram_vertexIso
     (k ≫ initialConeTensorCornerInclusion A L) (k ≫ p ≫ q.hom)
     (d.diagram ≫ q.hom) H hD hH (eU ≪≫ eN.symm)
   exact ⟨d.diagram, J, d.boundary, hJ, hiJ⟩

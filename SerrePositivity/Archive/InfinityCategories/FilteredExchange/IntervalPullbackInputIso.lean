@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackLift
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalPullbackLift
 
 /-!
 概要：共通標的を固定した cospan の入力同型は、全 path を保つ interval 引き戻し同型を与える。

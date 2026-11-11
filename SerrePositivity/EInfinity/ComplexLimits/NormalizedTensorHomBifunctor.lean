@@ -23,7 +23,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.HomotopyFunctionComplex
 variable (A : Type u) [CommRing A]
 
 def normalizedTensorHomBifunctor : (Complex A)ᵒᵖ ⥤ Complex A ⥤ SSet.{u} :=
-  (normalizedSimplexTensorFamily A).op ⋙ cosimplicialHomBifunctor
+  (normalizedSimplexTensorFamily A).op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 def actualDoldKanHomBifunctor : (Complex A)ᵒᵖ ⥤ Complex A ⥤ SSet.{u} :=
   MonoidalClosed.internalHom ⋙
@@ -55,7 +55,7 @@ def normalizedTensorHomDoldKanIso :
 
 lemma actualDoldKanHomBifunctor_obj (X Y : Complex A) :
     ((actualDoldKanHomBifunctor A).obj (Opposite.op X)).obj Y =
-      SerrePositivity.InfinityCategories.DoldKanComparison.doldKanHomSpace
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomSpace
         (R := A) (D := Complex A) X Y := rfl
 
 lemma normalizedTensorHomDoldKanIso_hom_app (X Y : Complex A) :

@@ -25,7 +25,7 @@ def loopSourcePreSection (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) :
     RawSpectrumMapping.space X Y ⟶ RawSpectrumMapping.space (loopSource X) Y := by
   let := loopSourcePre_trivialKanFibration X Y
   exact Classical.choose
-    (trivialKanFibration_exists_section (RawSpectrumMapping.pre (loopSourceInclusion X) Y))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section (RawSpectrumMapping.pre (loopSourceInclusion X) Y))
 
 /-- 同じ切断と元の前合成は全単体で厳密に恒等射を回収する。 -/
 @[reassoc]
@@ -33,7 +33,7 @@ lemma loopSourcePreSection_fac (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) :
     loopSourcePreSection X Y ≫ RawSpectrumMapping.pre (loopSourceInclusion X) Y = 𝟙 _ := by
   let := loopSourcePre_trivialKanFibration X Y
   exact Classical.choose_spec
-    (trivialKanFibration_exists_section (RawSpectrumMapping.pre (loopSourceInclusion X) Y))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section (RawSpectrumMapping.pre (loopSourceInclusion X) Y))
 
 /-- 元の補助単位の同じ零単体を、実 BF 始点へ延長した全 Hom の点。 -/
 def loopSourceUnitFamily (X : OmegaSpectrum.{u}) :
@@ -71,7 +71,7 @@ lemma loopSourceProjection_fac (X : OmegaSpectrum.{u}) (n : ℕ) :
 
 /-- 構成した右脚自身も全段の全基点 π 同型。元の単位と左因子から消去する。 -/
 lemma loopSourceProjection_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((loopSourceProjection X).app n).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((loopSourceProjection X).app n).right := by
   apply (_root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.cancel_left_atVertex (loopSourceInclusion_levelwise X n))
     (x := PointedSimplicialSet.basepoint (X.level n).space)
   rw [← Under.comp_right, loopSourceProjection_fac]

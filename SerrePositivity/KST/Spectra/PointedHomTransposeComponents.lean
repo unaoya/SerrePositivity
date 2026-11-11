@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeVertices
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeVertices
 public import SerrePositivity.KST.Spectra.PointedHomotopyClasses
 
 /-!
@@ -34,9 +34,9 @@ lemma transpose_transpose {A U V : PointedSimplicialSet.{u}}
 lemma familyVertex_transpose {A U V : PointedSimplicialSet.{u}}
     (f : A ⟶ (ihom U).obj V) :
     familyVertex (transpose f) =
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A U V).hom.right.app (Opposite.op ⦋0⦌) (familyVertex f) := by
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A U V).hom.right.app (Opposite.op ⦋0⦌) (familyVertex f) := by
   have h := congrArg (PointedSimplicialSet.unitVertexEquiv _)
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry'_hom f)
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeVertices.curry'_hom f)
   rw [PointedSimplicialSet.unitVertexEquiv_naturality] at h
   exact (familyVertex_eq_pointedHomVertex _).trans
     (h.symm.trans (congrArg _ (familyVertex_eq_pointedHomVertex _).symm))
@@ -45,7 +45,7 @@ lemma familyVertex_transpose {A U V : PointedSimplicialSet.{u}}
 lemma componentOf_transpose {A U V : PointedSimplicialSet.{u}}
     {f g : A ⟶ (ihom U).obj V} (h : componentOf f = componentOf g) :
     componentOf (transpose f) = componentOf (transpose g) := by
-  have he := congrArg (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A U V).hom.right) h
+  have he := congrArg (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A U V).hom.right) h
   simpa only [componentOf, mapπ₀_mk, familyVertex_transpose] using he
 
 end SerrePositivity.KST.Spectra.PointedMapping

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterMapping
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.SelectedTriangle
 
-public import SerrePositivity.InfinityCategories.Kan.MappingSpaceEdges
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceEdges
 
 /-!
 # 中断した任意モデル源への一般化：LargeParameterSquare
@@ -44,46 +44,46 @@ open CategoryTheory.CartesianMonoidalCategory CategoryTheory.MonoidalClosed
 
 namespace SerrePositivity.SimplicialModel.LargeParameterSquare
 
-variable {P : SSet.{v}} (hp : UniverseLift.BoundaryFillers P) {K : SSet.{max w v}}
-  {e₀ e₁ e₂ e₃ : K ⟶ UniverseLift.obj.{w} P}
+variable {P : SSet.{v}} (hp : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers P) {K : SSet.{max w v}}
+  {e₀ e₁ e₂ e₃ : K ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P}
   (H₀₁ : SSet.Homotopy e₀ e₁) (H₁₃ : SSet.Homotopy e₁ e₃)
   (H₀₂ : SSet.Homotopy e₀ e₂) (H₂₃ : SSet.Homotopy e₂ e₃)
 
 abbrev diagonal := LargeParameterHomotopy.homotopy hp e₀ e₃
 
-def leftBoundary : SelectedTriangle.Boundary ((ihom K).obj (UniverseLift.obj.{w} P)) where
-  vertex0 := point e₀
-  vertex1 := point e₁
-  vertex2 := point e₃
+def leftBoundary : SelectedTriangle.Boundary ((ihom K).obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P)) where
+  vertex0 := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point e₀
+  vertex1 := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point e₁
+  vertex2 := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point e₃
   edge01 := curry H₀₁.h
   edge12 := curry H₁₃.h
   edge02 := curry (diagonal hp).h
-  edge01_zero := edge_zero H₀₁
-  edge01_one := edge_one H₀₁
-  edge12_zero := edge_zero H₁₃
-  edge12_one := edge_one H₁₃
-  edge02_zero := edge_zero (diagonal hp)
-  edge02_one := edge_one (diagonal hp)
+  edge01_zero := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_zero H₀₁
+  edge01_one := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_one H₀₁
+  edge12_zero := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_zero H₁₃
+  edge12_one := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_one H₁₃
+  edge02_zero := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_zero (diagonal hp)
+  edge02_one := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_one (diagonal hp)
 
-def rightBoundary : SelectedTriangle.Boundary ((ihom K).obj (UniverseLift.obj.{w} P)) where
-  vertex0 := point e₀
-  vertex1 := point e₂
-  vertex2 := point e₃
+def rightBoundary : SelectedTriangle.Boundary ((ihom K).obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P)) where
+  vertex0 := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point e₀
+  vertex1 := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point e₂
+  vertex2 := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point e₃
   edge01 := curry H₀₂.h
   edge12 := curry H₂₃.h
   edge02 := curry (diagonal hp).h
-  edge01_zero := edge_zero H₀₂
-  edge01_one := edge_one H₀₂
-  edge12_zero := edge_zero H₂₃
-  edge12_one := edge_one H₂₃
-  edge02_zero := edge_zero (diagonal hp)
-  edge02_one := edge_one (diagonal hp)
+  edge01_zero := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_zero H₀₂
+  edge01_one := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_one H₀₂
+  edge12_zero := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_zero H₂₃
+  edge12_one := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_one H₂₃
+  edge02_zero := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_zero (diagonal hp)
+  edge02_one := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_one (diagonal hp)
 
 abbrev boundaryData (left : Bool) := if left then leftBoundary hp H₀₁ H₁₃
   else rightBoundary hp H₀₂ H₂₃
 
 def triangle (left : Bool) : K ⊗ SSet.stdSimplex.{max w v}.obj (SimplexCategory.mk 2) ⟶
-    UniverseLift.obj.{w} P :=
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P :=
   uncurry (LargeParameterMapping.fillFaces hp K (boundaryData hp H₀₁ H₁₃ H₀₂ H₂₃ left).faces
     (boundaryData hp H₀₁ H₁₃ H₀₂ H₂₃ left).compatible)
 

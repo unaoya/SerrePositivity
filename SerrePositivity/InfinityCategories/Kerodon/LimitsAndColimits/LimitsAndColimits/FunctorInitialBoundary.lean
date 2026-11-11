@@ -1,13 +1,15 @@
 module
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KSTSConstructionRelativeInitialExtension
-public import SerrePositivity.InfinityCategories.Stable.InitialPrismBoundary
-public import SerrePositivity.InfinityCategories.Core.FunctorRelativeTerminal
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.InitialPrismBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorRelativeTerminal
 
 /-! # 関手圏の点ごとの相対始点境界充填
 概要：各点での相対始対象の普遍性を関手単体集合へ移す。
 方針：境界とパラメーターの積を相対骨格で延長する。
 規約：quasicategory 性・fibration 性を仮定しない。
 使われ方：HTT 5.1.2.2 の余極限側と点ごとの押し出し。
+
+対応節は Kerodon 7.1（Tag 02H1）。
 -/
 @[expose] public section
 set_option backward.isDefEq.respectTransparency false
@@ -22,7 +24,7 @@ open scoped Simplicial
 規約：単体の次数は任意。使われ方：始点の相対境界充填の積への移送。 -/
 lemma simplexFirstVertex_stdSimplex_of_notMem_boundary {n m : ℕ}
     (s : (Δ[n] : SSet.{u}) _⦋m⦌) (hs : s ∉ (boundary n).obj (Opposite.op ⦋m⦌)) :
-    simplexFirstVertex s = stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplexFirstVertex s = stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1)) := by
   have hsurj : Function.Surjective (stdSimplex.asOrderHom s) := not_not.mp hs
   obtain ⟨j, hj⟩ := hsurj 0
   apply stdSimplex.obj₀Equiv.injective
@@ -35,11 +37,11 @@ lemma simplexFirstVertex_stdSimplex_of_notMem_boundary {n m : ℕ}
 /-- 概要：射の上の点ごとの始点境界充填は関手単体集合でも成り立つ。
 方針：境界とパラメーターの直積で、各新しいセルの始点の充填条件を適用する。
 規約：単体集合の quasicategory 性や射の fibration 性を必要としない。
-使われ方：Kerodon Proposition 7.1.8.10 の空図式の場合の相対版への準備。 -/
+使われ方：Kerodon Proposition 7.1.8.10（Tag 02XK） の空図式の場合の相対版への準備。 -/
 lemma initialBoundaryLifting_ihom_of_pointwise {K X Y : SSet.{u}}
     (p : X ⟶ Y) (f : K ⟶ X)
-    (hf : ∀ k : K _⦋0⦌, InitialBoundaryLifting p (f.app (Opposite.op ⦋0⦌) k)) :
-    InitialBoundaryLifting ((ihom K).map p) (functorVertex f) := by
+    (hf : ∀ k : K _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryLifting p (f.app (Opposite.op ⦋0⦌) k)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryLifting ((ihom K).map p) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f) := by
   intro n b β hb sq
   let A : (K ⊗ (Δ[n + 1] : SSet.{u})).Subcomplex :=
     (⊤ : K.Subcomplex).prod (boundary (n + 1))
@@ -51,29 +53,29 @@ lemma initialBoundaryLifting_ihom_of_pointwise {K X Y : SSet.{u}}
       v ∈ A.obj (Opposite.op ⦋0⦌) := by
     intro v
     refine ⟨by trivial, ?_⟩
-    have h := vertex_mem_boundary.{u} n (stdSimplex.obj₀Equiv.{u} v.2)
+    have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.vertex_mem_boundary.{u} n (stdSimplex.obj₀Equiv.{u} v.2)
     rw [Equiv.symm_apply_apply] at h
     exact h
   have hbfirst : b.app (Opposite.op ⦋0⦌)
-      ⟨stdSimplex.obj₀Equiv.symm (0), vertex_mem_boundary n _⟩ = functorVertex f := by
+      ⟨stdSimplex.obj₀Equiv.symm (0), _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.vertex_mem_boundary n _⟩ = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f := by
     apply SSet.yonedaEquiv.symm.injective
-    simpa only [boundaryVertex, SSet.yonedaEquiv_symm_comp] using hb
+    simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.boundaryVertex, SSet.yonedaEquiv_symm_comp] using hb
   have ht : ∀ (m : ℕ) (s : (K ⊗ (Δ[n + 1] : SSet.{u})) _⦋m + 1⦌),
       s ∉ A.obj (Opposite.op ⦋m + 1⦌) →
-        InitialBoundaryLifting p (a.app (Opposite.op ⦋0⦌) ⟨simplexFirstVertex s, hA _⟩) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryLifting p (a.app (Opposite.op ⦋0⦌) ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplexFirstVertex s, hA _⟩) := by
     intro m s hs
     have hs₂ : s.2 ∉ (boundary (n + 1)).obj (Opposite.op ⦋m + 1⦌) :=
       fun h ↦ hs ⟨by trivial, h⟩
     have he₂ := simplexFirstVertex_stdSimplex_of_notMem_boundary s.2 hs₂
-    have ha : a.app (Opposite.op ⦋0⦌) ⟨simplexFirstVertex s, hA _⟩ =
-        f.app (Opposite.op ⦋0⦌) (simplexFirstVertex s.1) := by
+    have ha : a.app (Opposite.op ⦋0⦌) ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplexFirstVertex s, hA _⟩ =
+        f.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplexFirstVertex s.1) := by
       change (uncurry b).app (Opposite.op ⦋0⦌)
-        ((simplexFirstVertex s).1, ⟨(simplexFirstVertex s).2, _⟩) = _
-      rw [stable_simplexFirstVertex_prod]
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplexFirstVertex s).1, ⟨(_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplexFirstVertex s).2, _⟩) = _
+      rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_simplexFirstVertex_prod]
       simp only [he₂]
       change (b.app (Opposite.op ⦋0⦌)
         ⟨stdSimplex.obj₀Equiv.symm (0), _⟩).app
-          (Opposite.op ⦋0⦌) (𝟙 _) (simplexFirstVertex s.1) = _
+          (Opposite.op ⦋0⦌) (𝟙 _) (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplexFirstVertex s.1) = _
       rw [hbfirst]
       rfl
     rw [ha]

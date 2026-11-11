@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.CospanFamilies
-public import SerrePositivity.InfinityCategories.Core.MappingSpaceTrivialFibration
-public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
-public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CospanFamilies
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.MappingSpaceTrivialFibration
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.EquivalenceFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.SuspensionDiagramArrows
 
 /-!
 概要：第二枝の始点が零対象である cospan は、第一枝への制限と同値。
@@ -24,13 +24,13 @@ namespace SerrePositivity.KST.LocalizingInvariants.ZeroCospan
 variable (X : SSet.{u})
 
 def zeroSecond (v : ((ihom (horn 2 2 : SSet.{u})).obj X) _⦋0⦌) : Prop :=
-  IsZeroSourceArrow (((pre horn₂₂.ι₁₂).app X).app (Opposite.op ⦋0⦌) v)
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow (((pre horn₂₂.ι₁₂).app X).app (Opposite.op ⦋0⦌) v)
 
 def diagrams : SSet.{u} :=
-  (fullSubcomplexOnVertices _ (zeroSecond X) : SSet.{u})
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (zeroSecond X) : SSet.{u})
 
 def inclusion : diagrams X ⟶ (ihom (horn 2 2 : SSet.{u})).obj X :=
-  (fullSubcomplexOnVertices _ (zeroSecond X)).ι
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (zeroSecond X)).ι
 
 def first : diagrams X ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
   inclusion X ≫ (pre horn₂₂.ι₀₂).app X
@@ -39,60 +39,60 @@ instance inclusion_mono : Mono (inclusion X) := by
   dsimp only [inclusion]
   infer_instance
 
-def second : diagrams X ⟶ zeroSourceArrows X :=
-  fullSubcomplexLift IsZeroSourceArrow
+def second : diagrams X ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceArrows X :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow
     (inclusion X ≫ (pre horn₂₂.ι₁₂).app X)
-    (fun v ↦ fullSubcomplexOnVertices_vertex v)
+    (fun v ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v)
 
 lemma second_inclusion : second X ≫
-    (fullSubcomplexOnVertices _ IsZeroSourceArrow).ι =
-      inclusion X ≫ (pre horn₂₂.ι₁₂).app X := fullSubcomplexLift_ι _ _ _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow).ι =
+      inclusion X ≫ (pre horn₂₂.ι₁₂).app X := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
-lemma targets : first X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-    second X ≫ zeroSourceArrowTarget X := by
-  change first X ≫ evaluateFunctorAt (Y := X)
+lemma targets : first X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+    second X ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceArrowTarget X := by
+  change first X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X)
     (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = (second X ≫
-    (fullSubcomplexOnVertices _ IsZeroSourceArrow).ι) ≫
-      evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow).ι) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
   rw [second_inclusion]
   dsimp only [first]
-  rw [Category.assoc, Category.assoc, stable_pre_evaluateFunctorAt,
-    stable_pre_evaluateFunctorAt]
+  rw [Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt,
+    _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt]
   rfl
 
-instance first_trivialKanFibration [HasZeroVertex X] : TrivialKanFibration (first X) := by
-  apply (trivialKanFibration_iff_boundary _).2
+instance first_trivialKanFibration [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (first X) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).2
   intro n
   constructor
   intro a b sq
-  let j : zeroSourceArrows X ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
-    (fullSubcomplexOnVertices _ IsZeroSourceArrow).ι
-  let t := evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
-  have sqR : CommSq (a ≫ second X) (boundary n).ι (zeroSourceArrowTarget X) (b ≫ t) := by
+  let j : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceArrows X ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow).ι
+  let t := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+  have sqR : CommSq (a ≫ second X) (boundary n).ι (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceArrowTarget X) (b ≫ t) := by
     constructor
     rw [Category.assoc, ← targets, ← Category.assoc, sq.w, Category.assoc]
-  have : HasLiftingProperty (boundary n).ι (zeroSourceArrowTarget X) :=
-    TrivialKanFibration.mem (p := zeroSourceArrowTarget X) _ inferInstance
+  have : HasLiftingProperty (boundary n).ι (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceArrowTarget X) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceArrowTarget X) _ inferInstance
   let R := sqR.lift
   have hLR : b ≫ t = (R ≫ j) ≫ t := sqR.fac_right.symm
-  let d := stable_cospanFamilyOfArrows b (R ≫ j) hLR
+  let d := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_cospanFamilyOfArrows b (R ≫ j) hLR
   have hd : (boundary n).ι ≫ d = a ≫ inclusion X := by
-    apply stable_cospanFamily_hom_ext
-    · rw [Category.assoc, stable_cospanFamilyOfArrows_left]
+    apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_cospanFamily_hom_ext
+    · rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_cospanFamilyOfArrows_left]
       exact sq.w.symm
-    · rw [Category.assoc, stable_cospanFamilyOfArrows_right, ← Category.assoc,
+    · rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_cospanFamilyOfArrows_right, ← Category.assoc,
         sqR.fac_left, Category.assoc]
       exact congrArg (fun k ↦ a ≫ k) (second_inclusion X)
   have hz (v : (Δ[n] : SSet.{u}) _⦋0⦌) : zeroSecond X (d.app _ v) := by
     have h := congrArg (fun k ↦ k.app (Opposite.op ⦋0⦌) v)
-      (stable_cospanFamilyOfArrows_right b (R ≫ j) hLR)
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_cospanFamilyOfArrows_right b (R ≫ j) hLR)
     change ((pre horn₂₂.ι₁₂).app X).app _ (d.app _ v) =
       (R.app _ v).val at h
-    change IsZeroSourceArrow (((pre horn₂₂.ι₁₂).app X).app _ (d.app _ v))
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow (((pre horn₂₂.ι₁₂).app X).app _ (d.app _ v))
     rw [h]
-    exact fullSubcomplexOnVertices_vertex (R.app _ v)
-  let F := fullSubcomplexLift (zeroSecond X) d hz
-  have hFi : F ≫ inclusion X = d := fullSubcomplexLift_ι _ _ _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (R.app _ v)
+  let F := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (zeroSecond X) d hz
+  have hFi : F ≫ inclusion X = d := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
   refine CommSq.HasLift.mk' {
     l := F
     fac_left := ?_
@@ -101,12 +101,12 @@ instance first_trivialKanFibration [HasZeroVertex X] : TrivialKanFibration (firs
     rw [Category.assoc, hFi]
     exact hd
   · change F ≫ (inclusion X ≫ (pre horn₂₂.ι₀₂).app X) = b
-    rw [← Category.assoc, hFi, stable_cospanFamilyOfArrows_left]
+    rw [← Category.assoc, hFi, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_cospanFamilyOfArrows_left]
 
 instance diagrams_quasicategory [Quasicategory X] : Quasicategory (diagrams X) :=
-  fullSubcomplexOnVertices_quasicategory _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.fullSubcomplexOnVertices_quasicategory _ _
 
-lemma first_isFullyFaithful [Quasicategory X] [HasZeroVertex X] :
-    IsFullyFaithful (first X) := isFullyFaithful_of_trivialKanFibration _
+lemma first_isFullyFaithful [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (first X) := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isFullyFaithful_of_trivialKanFibration _
 
 end SerrePositivity.KST.LocalizingInvariants.ZeroCospan

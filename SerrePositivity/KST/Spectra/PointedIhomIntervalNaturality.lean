@@ -41,11 +41,11 @@ lemma basedIhomMap_pre_path_natural (K : PointedSimplicialSet.{u})
     ((P.pre j).basedIhomMap K).path =
       ((P.basedIhomMap K).pre (PointedObject.basedHomMap K j)).path := by
   rw [basedIhomMap_path]
-  change (P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j V).right) ≫ _ = (P.basedIhomMap K).path ≫ _
+  change (P.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j V).right) ≫ _ = (P.basedIhomMap K).path ≫ _
   rw [basedIhomMap_path]
   have h := ihomAction_pre K j V
-  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j V ≫ ihomAction K B V =
-    ihomAction K A V ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.basedHomMap K j)
+  change _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j V ≫ ihomAction K B V =
+    ihomAction K A V ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.basedHomMap K j)
       (PointedObject.basedHom K V) at h
   simpa only [Under.comp_right, Category.assoc, PointedObject.ihom_obj_eq_basedHom] using
     congrArg (fun q => P.path ≫ q.right) h

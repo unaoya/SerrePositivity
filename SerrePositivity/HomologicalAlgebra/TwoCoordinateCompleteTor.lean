@@ -35,7 +35,7 @@ variable {R S : Type u} [CommRing R] [CommRing S]
 使われ方：正則な剰余から完全振幅へ移す。 -/
 @[expose] def HasCochainTorAmplitude (f : R →+* S) (c : ℕ) : Prop :=
   ∀ (L K : CochainComplex (ModuleCat.{u} R) ℤ) (q : L ⟶ K), QuasiIso q →
-    complexSemifree R L → ∀ (m : ℤ),
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree R L → ∀ (m : ℤ),
       (∀ i : ℤ, i < m → IsZero (K.homology i)) →
         ∀ i : ℤ, i < m - (c : ℤ) → IsZero ((baseChange f L).homology i)
 

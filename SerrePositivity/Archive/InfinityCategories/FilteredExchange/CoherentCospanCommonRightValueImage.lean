@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanCommonRightIso
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentNativeKanPostImage
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerHEq
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerHEq
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoPostcompReduction
 
 /-!

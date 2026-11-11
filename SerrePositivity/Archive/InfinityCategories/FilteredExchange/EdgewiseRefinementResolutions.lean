@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseWeightCoordinates
-public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseEndpoints
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.EdgewiseWeightCoordinates
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.EdgewiseEndpoints
 
 /-!
 概要：同じ元の一単体を共通 Hom 解像の二つの実一単体で表す。

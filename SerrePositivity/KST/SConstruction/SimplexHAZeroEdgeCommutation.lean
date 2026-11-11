@@ -18,7 +18,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の全次元の最高生成元で、元の二つの微分合成の差は零。 -/
-lemma simplexHADegreeDefect_top_zero {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeDefect_top_zero {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last m) < b) :
     simplexHADegreeDefect A s.toSimplexData m v b hb (-(m : ℤ)) (serreCubeTopCell A m) = 0 := by
@@ -29,7 +29,7 @@ lemma simplexHADegreeDefect_top_zero {n : ℕ} (s : DGNerve.Simplex A D n)
   exact sub_eq_zero.mpr (simplexHADegreeLift_top_comm_all A s m v b hb)
 
 /-- 元の最高添字の生成元の差は、任意指定次数へ移しても零。 -/
-lemma simplexHADegreeDefect_top_generator_zero {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeDefect_top_generator_zero {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last m) < b) (k : ℤ)
     (hi : serreCubeGeneratorDegree m (serreCubeTopGeneratorIndex m) = k) :
@@ -42,7 +42,7 @@ lemma simplexHADegreeDefect_top_generator_zero {n : ℕ} (s : DGNerve.Simplex A 
     (serreCubeTopGeneratorIndex_cast A m)).trans (simplexHADegreeDefect_top_zero A s m v b hb)
 
 /-- 元の零端点と辺だけを含む全生成元で、元の二つの微分合成の差は零。 -/
-lemma simplexHADegreeDefect_zeroEdge_zero {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeDefect_zeroEdge_zero {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (hie : SerreCubeZeroEdgeIndex m i)
     (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last m) < b) (k : ℤ) (hi : serreCubeGeneratorDegree m i = k) :
@@ -69,7 +69,7 @@ lemma simplexHADegreeDefect_zeroEdge_zero {n : ℕ} (s : DGNerve.Simplex A D n)
       exact h.trans (ht.trans (map_zero _))
 
 /-- 元の零端点と辺が混在する全生成元で、元の source・target 微分は実際に可換。 -/
-lemma simplexHADegreeLift_zeroEdge_generator_comm {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeLift_zeroEdge_generator_comm {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (hie : SerreCubeZeroEdgeIndex m i)
     (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last m) < b) (k : ℤ) (hi : serreCubeGeneratorDegree m i = k) :
@@ -84,7 +84,7 @@ lemma simplexHADegreeLift_zeroEdge_generator_comm {n : ℕ} (s : DGNerve.Simplex
   sub_eq_zero.mp (simplexHADegreeDefect_zeroEdge_zero A s m i hie v b hb k hi)
 
 /-- 元の零端点と辺の全生成元の source 微分像は、独立に定義した元の HA 境界値。 -/
-lemma simplexHADegreeLift_zeroEdge_source_boundary {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeLift_zeroEdge_source_boundary {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (hie : SerreCubeZeroEdgeIndex m i)
     (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last m) < b) (k : ℤ) (hi : serreCubeGeneratorDegree m i = k) :

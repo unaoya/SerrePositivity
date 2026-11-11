@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.EdgewiseRefinementNaturality
-public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
 
 /-!
 概要：共通解像の二つの実辺の像を、その同じホモトピー類の同型として保持する。

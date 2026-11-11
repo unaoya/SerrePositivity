@@ -28,7 +28,7 @@ variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular]
 /-- 元の実構造辺の全一単体は、K-B の canonical 構造射の全一単体そのもの。 -/
 theorem dgNonconnectiveKStructureEdge_canonical (n : ℕ) :
     (dgNonconnectiveKStructureEdge R κ hκ A n).edge =
-      (coherentNerveEdge (Relative.dgKappaCanonicalSuspensionStructureMap R
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Relative.dgKappaCanonicalSuspensionStructureMap R
         (dgSuspensionUnconditionalIteration R κ hκ A n)
         (dgSuspensionIterationStage R
           (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone

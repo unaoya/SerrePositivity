@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedTriangleDiagramSource
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorCurryHom
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorCurryHom
 
 /-!
 概要：相対 curry の豊穣作用の値側の点評価を、元の全族の同じ点への制限へ戻す。

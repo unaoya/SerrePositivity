@@ -34,7 +34,7 @@ def landTammeSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ Sp.{u + 1} :=
 /-- 概要：同じ正方形を全局所化不変量が引き戻しへ送る。
 方針：Tamme 分裂・実 Verdier 列・D の完備性を接続する。
 規約：d の実証拠の存在は仮定のまま。使われ方：LT の Cat^perf 版の形式的結論。 -/
-theorem landTamme_isPullback : IsPullbackSquare (h.landTammeSquare hF) :=
+theorem landTamme_isPullback : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (h.landTammeSquare hF) :=
   (dgOdotCatPerfInput R d).landTamme_isPullback h hF
 
 /-- 概要：元の完備化後の二脚の実 cospan。
@@ -46,13 +46,13 @@ def landTammeCospan : (horn 2 2 : SSet.{u + 2}) ⟶ Sp.{u + 1} :=
 /-- 概要：元の対角始域値を頂点とする同じ実錐。
 方針：四証人を既存の錐へ代入する。規約：頂点を取り替えない。
 使われ方：主定理の極限表示。 -/
-def landTammeCone : JoinCone (h.landTammeCospan hF) :=
+def landTammeCone : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (h.landTammeCospan hF) :=
   (dgOdotCatPerfInput R d).landTammeCone h hF
 
 /-- 概要：同じ二脚と頂点を持つ錐の ∞ 極限性。
 方針：既存の極限証明へ D の証人を渡す。規約：群の比較だけで代用しない。
 使われ方：d の仮定からの LT 極限結論。 -/
-theorem landTammeCone_isLimit : IsLimitCone (h.landTammeCone hF) :=
+theorem landTammeCone_isLimit : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (h.landTammeCone hF) :=
   (dgOdotCatPerfInput R d).landTammeCone_isLimit h hF
 
 /-- 概要：極限錐の頂点は元の同じ ν 値への不変量値。
@@ -60,10 +60,10 @@ theorem landTammeCone_isLimit : IsLimitCone (h.landTammeCone hF) :=
 規約：対象同値で弱めない。使われ方：固定 S での元の dg 対角始域の回収。 -/
 lemma landTammeCone_source : (h.landTammeCone hF).vertex =
     (dgKInputPerfectNu R ≫ F).app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex (dgOdotDiagonalSourceInput R d)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d)) := by
   change (h.landTammeCone hF).vertex = F.app (Opposite.op ⦋0⦌)
     ((dgKInputPerfectNu R).app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex (dgOdotDiagonalSourceInput R d)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d)))
   rw [dgKInputPerfectNu_vertex]
   exact (dgOdotCatPerfInput R d).landTammeCone_source h hF
 

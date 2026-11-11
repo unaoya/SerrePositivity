@@ -1,10 +1,10 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoChainTransport
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentNativeUnitValue
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTriangleConstantPostValue
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorHomotopyConstantPostTransport
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoChainTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoChainTransport
 
 /-!
 概要：元の単位作用後の全三角形比較の値を、同じ native 単位表現の値へ戻す。

@@ -28,8 +28,8 @@ def sourceFrameSpecialHammockNerveMap (X Y : (operad A).Algebra) :
       nerve (algebraSpecialHammock A X Y) := by
   let := modelCategory A
   let q := (cosimplicialResolutionFamily (mappingCofibrantFactorization A)).atObject X
-  exact FrameHom.frameElementSpanNerveMap _ _ q.obj q.augmentation
-    (FrameHom.resolutionAugmentation_trivialFibration q) (𝟙 Y)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.frameElementSpanNerveMap _ _ q.obj q.augmentation
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionAugmentation_trivialFibration q) (𝟙 Y)
     ((trivialCofibrations (operad A).Algebra).id_mem Y)
 
 def sourceFrameMappingSpaceIndexMap (X Y : (operad A).Algebra) :
@@ -45,9 +45,9 @@ def sourceFrameSpecialHammockHomotopy (X Y : (operad A).Algebra) :
   let q := (cosimplicialResolutionFamily (mappingCofibrantFactorization A)).atObject X
   let j := (fibrantTargetComparison (mappingFibrantFactorization A)).app Y
   exact FrameHom.frameSpanTargetHomotopy _ _ q.obj q.augmentation
-    (FrameHom.resolutionAugmentation_trivialFibration q) (𝟙 Y)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionAugmentation_trivialFibration q) (𝟙 Y)
     ((trivialCofibrations (operad A).Algebra).id_mem Y) j
-    (FrameHom.fibrantTargetComparison_trivialCofibration (mappingFibrantFactorization A) Y)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantTargetComparison_trivialCofibration (mappingFibrantFactorization A) Y)
     j (Category.id_comp j)
 
 end SerrePositivity.EInfinity.BarrattEccles

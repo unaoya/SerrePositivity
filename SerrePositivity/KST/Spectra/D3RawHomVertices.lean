@@ -85,7 +85,7 @@ lemma d3HomOfVertex_pre {X L : OmegaSpectrum.{u}} (a : X ⟶ L) (Y : KanSequence
   simp only [Equiv.apply_symm_apply]
   have h := ConcreteCategory.congr_hom (NatTrans.congr_app (pre_evaluation a Y n) _) v
   change (evaluation X Y n).app _ ((pre a Y).app _ v) =
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (a.app n) (Y.level n).space).app _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (a.app n) (Y.level n).space).app _
     ((evaluation L Y n).app _ v) at h
   rw [h, ← pointedHomVertexEquiv_pre, Equiv.apply_symm_apply]
 

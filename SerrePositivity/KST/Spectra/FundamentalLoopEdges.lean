@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyGroups
 public import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
 
 /-!

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.SemifreeResolution
-public import SerrePositivity.InfinityCategories.Derived.SemifreeBaseChange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeResolution
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeBaseChange
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
 
 /-!
@@ -34,7 +34,7 @@ variable {R S : Type u} [CommRing R] [CommRing S]
 方針：一点 dg 環の Hom の K-flat 性と既存の objectwise 判定を使う。
 規約：非有界、BS 著者版 Construction 6.1 の計算模型。
 使われ方：Koszul の増大をテンソルに通す。 -/
-theorem semifreeComplex_isKFlat {P : Complex R} (hP : complexSemifree R P) :
+theorem semifreeComplex_isKFlat {P : Complex R} (hP : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree R P) :
     complexKFlat R P :=
   moduleSemifree_objectwiseKFlat R PUnit.{1} (fun _ _ => complexKFlat_unit R) hP PUnit.unit
 
@@ -43,19 +43,19 @@ theorem semifreeComplex_isKFlat {P : Complex R} (hP : complexSemifree R P) :
 規約：平坦性を要求しない、BS 著者版 Construction 6.1。
 使われ方：結晶被覆上での p の Koszul 分解の比較。 -/
 theorem semifreeComplex_baseChange_isKFlat (f : R →+* S)
-    {P : Complex R} (hP : complexSemifree R P) :
-    complexKFlat S ((complexBaseChange f).obj P) :=
-  semifreeComplex_isKFlat (complexSemifree_baseChange f hP)
+    {P : Complex R} (hP : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree R P) :
+    complexKFlat S ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f).obj P) :=
+  semifreeComplex_isKFlat (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexSemifree_baseChange f hP)
 
 /-- 概要：任意の非有界複体に、底変換の前後で K-flat な実際の分解がある。
 方針：既存の次数ごと全射な半自由分解を取り、二つの K-flat 判定を付ける。
 規約：BS 著者版 Construction 6.1。存在しない模型の仮定を置かない。
 使われ方：任意の入力の導来テンソルを分解上で評価する。 -/
 theorem exists_unbounded_baseChange_model (f : R →+* S) (K : Complex R) :
-    ∃ (P : Complex R) (q : P ⟶ K), complexSemifree R P ∧ QuasiIso q ∧
+    ∃ (P : Complex R) (q : P ⟶ K), _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree R P ∧ QuasiIso q ∧
       (∀ i : ℤ, Function.Surjective (q.f i)) ∧ complexKFlat R P ∧
-        complexKFlat S ((complexBaseChange f).obj P) := by
-  obtain ⟨P, q, hP, hq, hW⟩ := exists_complexSemifree_resolution R K
+        complexKFlat S ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f).obj P) := by
+  obtain ⟨P, q, hP, hq, hW⟩ := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.exists_complexSemifree_resolution R K
   exact ⟨P, q, hP, hW, hq, semifreeComplex_isKFlat hP, semifreeComplex_baseChange_isKFlat f hP⟩
 
 end SerrePositivity

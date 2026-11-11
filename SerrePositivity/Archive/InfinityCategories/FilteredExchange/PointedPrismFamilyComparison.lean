@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedPrismFamilySection
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ContractibleIsoComposition
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.RelativeFunctorExtensionSpace
 
 /-!
 概要：可変初期値の同じ二つの全延長を、全パラメータを固定した選択空間で比較する。

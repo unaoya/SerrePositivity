@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Core.LimitProjectionExistence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitProjectionExistence
 import SerrePositivity.KST.LocalizingInvariants
 import Lean.Util.CollectAxioms
 
@@ -7,6 +7,11 @@ import Lean.Util.CollectAxioms
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
+  let oldAuditPrefix1 := `SerrePositivity.KST.LocalizingInvariants
+  let klw1AuditLayout1 ← IO.ofExcept <| Lean.Json.parse (← IO.FS.readFile "scripts/refactor/targets/kl-module-map.json")
+  let klw1AuditLayout1 ← IO.ofExcept klw1AuditLayout1.getObj?
+  let klw1AuditOwners1 := Std.HashSet.ofList (klw1AuditLayout1.toList.filterMap fun (source, dest) =>
+    if oldAuditPrefix1.isPrefixOf source.toName then dest.getStr?.toOption.map String.toName else none)
   let env ← getEnv
   let expected := #[
     `SerrePositivity.KST.LocalizingInvariants.VerdierSimplexDenominators,
@@ -314,11 +319,11 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorSourceModelProjections,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorTargetModelProjections,
 
-    `SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories,
-    `SerrePositivity.InfinityCategories.Stable.Infinity.ExactEnrichment,
-    `SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity,
-    `SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence,
-    `SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams,
+    `SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategories,
+    `SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.ExactEnrichment,
+    `SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity,
+    `SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.VerdierSequence,
+    `SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagrams,
     `SerrePositivity.KST.LocalizingInvariants.Invariant,
     `SerrePositivity.KST.LocalizingInvariants.ValueHomotopy,
     `SerrePositivity.KST.LocalizingInvariants.SplitFiberGroups,
@@ -370,8 +375,8 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.SplitProductShear,
     `SerrePositivity.KST.LocalizingInvariants.FiberProductDecomposition,
     `SerrePositivity.KST.LocalizingInvariants.InvariantProductDecomposition,
-    `SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization,
-    `SerrePositivity.InfinityCategories.Stable.Verdier.AdjointVerdier,
+    `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.AdjointLocalization,
+    `SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.AdjointVerdier,
     `SerrePositivity.KST.LocalizingInvariants.LaxStableCategory,
     `SerrePositivity.KST.LocalizingInvariants.StableValueFunctor,
     `SerrePositivity.KST.LocalizingInvariants.SemiorthogonalInvariant,
@@ -446,17 +451,17 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceMapping,
     `SerrePositivity.KST.LocalizingInvariants.ReflectiveMappingAdjunction,
     `SerrePositivity.KST.LocalizingInvariants.LaxDifferenceAdjunction,
-    `SerrePositivity.KST.LocalizingInvariants.CoreAnodyneLifting,
-    `SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence,
-    `SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceRestriction,
-    `SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceUniversal,
-    `SerrePositivity.InfinityCategories.F1B.Localization.ParametricDiagramGluing,
-    `SerrePositivity.KST.LocalizingInvariants.InverseAttachment,
-    `SerrePositivity.KST.LocalizingInvariants.InverseAttachmentRestriction,
-    `SerrePositivity.KST.LocalizingInvariants.InverseAttachmentLifting,
-    `SerrePositivity.KST.LocalizingInvariants.InverseAttachmentUniversal,
-    `SerrePositivity.KST.LocalizingInvariants.LocalizationResolution,
-    `SerrePositivity.KST.LocalizingInvariants.GeneralLocalization,
+    `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.CoreAnodyneLifting,
+    `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalence,
+    `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceRestriction,
+    `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceUniversal,
+    `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ParametricDiagramGluing,
+    `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment,
+    `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentRestriction,
+    `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentLifting,
+    `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentUniversal,
+    `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LocalizationResolution,
+    `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneralLocalization,
     `SerrePositivity.KST.LocalizingInvariants.LocalizationFactorization,
     `SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness,
     `SerrePositivity.KST.LocalizingInvariants.TammeQuotientCandidate,
@@ -491,7 +496,7 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.StableCospanPullbacks,
     `SerrePositivity.KST.LocalizingInvariants.TammeUniversalOre,
     `SerrePositivity.KST.LocalizingInvariants.StableFunctorMaps,
-    `SerrePositivity.InfinityCategories.Core.LimitProjectionExistence,
+    `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitProjectionExistence,
     `SerrePositivity.KST.LocalizingInvariants.PullbackDiagramFamilies,
     `SerrePositivity.KST.LocalizingInvariants.TammeRelativeOre,
     `SerrePositivity.KST.LocalizingInvariants.EquivalenceSpanTriangles,
@@ -1855,8 +1860,8 @@ run_cmd do
   for (name, info) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    unless (`SerrePositivity.KST.LocalizingInvariants).isPrefixOf mod ||
-        mod == `SerrePositivity.InfinityCategories.Core.LimitProjectionExistence ||
+    unless (oldAuditPrefix1.isPrefixOf mod || klw1AuditOwners1.contains mod) ||
+        mod == `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitProjectionExistence ||
         expected.contains mod do continue
     if info.type.getUsedConstants.contains `HomotopicalAlgebra.ModelCategory then
       throwError "K-5: ModelCategory assumption in type of {name}"

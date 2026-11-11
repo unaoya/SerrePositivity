@@ -17,27 +17,27 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 /-- 概要：元 gluing の固定 ν 値から同じ実中央辺への増大屋根。
 方針：保存済み増大同値の逆を実中央辺へ合成する。
 規約：厳密 dg 逆増大を仮定しない。使われ方：中央辺の元始域回収。 -/
-def dgOdotMilnorRightAxisNuRoof : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
+def dgOdotMilnorRightAxisNuRoof : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotGluingInput R d))
     (dgKInputStableValue R (dgOdotMilnorRightAxisInput R d)) where
   hom := (dgOdotMilnorAugmentationNuEquivalence R d).inv ≫
     (dgOdotMilnorRightAxisExactMap R d).hom
   isExact := by
-    letI : IsExactFunctor (dgOdotMilnorAugmentationNuEquivalence R d).inv :=
-      isExactFunctor_of_isQCatEquivalence
+    letI : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (dgOdotMilnorAugmentationNuEquivalence R d).inv :=
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence
         (dgOdotMilnorAugmentationNuEquivalence R d).symm.isQCatEquivalence
     letI := (dgOdotMilnorRightAxisExactMap R d).isExact
-    exact isExactFunctor_comp _ _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _
 
 /-- 概要：同じ増大上で屋根は元中央辺の全 ν 関手を回収する。
 方針：元増大同値の指定単位を同じ実中央辺で後合成する。
 規約：全単体を保持し、導来 bimodule の射等号で代用しない。
 使われ方：中央辺を貼る際の指定増大境界。 -/
-def dgOdotMilnorRightAxisNuRoof_comparison : FunctorIso
+def dgOdotMilnorRightAxisNuRoof_comparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((dgOdotMilnorAugmentationExactMap R d).hom ≫
       (dgOdotMilnorRightAxisNuRoof R d).hom)
     (dgOdotMilnorRightAxisExactMap R d).hom := by
-  change FunctorIso
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((dgOdotMilnorAugmentationNuEquivalence R d).hom ≫
       ((dgOdotMilnorAugmentationNuEquivalence R d).inv ≫
         (dgOdotMilnorRightAxisExactMap R d).hom)) _

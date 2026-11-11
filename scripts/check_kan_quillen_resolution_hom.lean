@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.ModelBridge.Inputs.ResolutionHom
+import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Inputs.ResolutionHom
 import Lean.Util.CollectAxioms
 import Lean.Util.Sorry
 

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGKanAssemblyLeft
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGKanAssemblyUnit
 public import SerrePositivity.KST.SConstruction.PointedEnrichedSpanFunctor
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformationWhisker
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationWhisker
 
 /-! # 元の Kan 隣接段 span 全体への厳密 dg 豊穣関手
 概要：同じ三つの値と左右の前向き実射を、全 span の標準 end に豊穣に束ねる。
@@ -25,7 +25,7 @@ lemma presentedPerfectDGKanAssemblyLeft_whisker (r : ℕ) (C D : PerfDGInput.{u,
     (presentedPerfectDGKanAssemblyLeftTargetFunctor A r).map C D ≫
       eHomWhiskerRight SSet (presentedPerfectDGKanAssemblyLeftMap A r C)
         ((presentedPerfectDGKanAssemblyLeftTargetFunctor A r).obj D) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformation_whisker _ _
     (presentedPerfectDGKanAssemblyLeftTransformation A r) (presentedPerfectDGKanAssemblyLeftMap A r)
     (presentedPerfectDGKanAssemblyLeftTransformation_app A r) C D
 
@@ -37,7 +37,7 @@ lemma presentedPerfectDGKanAssemblyRight_whisker (r : ℕ) (C D : PerfDGInput.{u
     (presentedPerfectDGKanAssemblyTargetFunctor A r).map C D ≫
       eHomWhiskerRight SSet (presentedPerfectDGKanAssemblyRightMap A r C)
         ((presentedPerfectDGKanAssemblyTargetFunctor A r).obj D) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformation_whisker _ _
     (presentedPerfectDGKanAssemblyRightTransformation A r)
     (presentedPerfectDGKanAssemblyRightMap A r)
     (presentedPerfectDGKanAssemblyRightTransformation_app A r) C D

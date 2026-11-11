@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedEndBasepoint
 universe u
 
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet Opposite
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.SimplexDensity
 

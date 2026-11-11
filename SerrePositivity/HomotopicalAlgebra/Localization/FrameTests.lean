@@ -24,7 +24,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
 
 include hcof in
 lemma mappingTest_eq_of_frame (p : CosimplicialFrameFamily (C := C)) (Y : C) :
-    mappingTest cof fib Y = MappingTests.test (resolutionHom p.obj (fibrantTarget fib))
+    mappingTest cof fib Y = MappingTests.test (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom p.obj (fibrantTarget fib))
       (weakEquivalences SSet.{v}) Y := by
   let q := cosimplicialResolutionFamily cof
   let R := fibrantTarget fib
@@ -32,7 +32,7 @@ lemma mappingTest_eq_of_frame (p : CosimplicialFrameFamily (C := C)) (Y : C) :
   have hl := MappingTests.test_eq_of_weakComparison (chosenResolutionHom cof fib)
     (weakEquivalences SSet.{v}) (FrameComparison.homLeft cof q p R)
     (FrameComparison.homLeft_weakEquivalence cof q p hcof R hR) Y
-  have hr := MappingTests.test_eq_of_weakComparison (resolutionHom p.obj R)
+  have hr := MappingTests.test_eq_of_weakComparison (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom p.obj R)
     (weakEquivalences SSet.{v}) (FrameComparison.homRight cof q p R)
     (FrameComparison.homRight_weakEquivalence cof q p hcof R hR) Y
   exact hl.trans hr.symm

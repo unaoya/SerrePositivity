@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureConeInput
-public import SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureInput
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SphereClosureConeInput
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.SphereClosureInput
 public import SerrePositivity.KST.NonConnective.DGKappaZeroFunctor
 
 /-!
@@ -19,15 +19,15 @@ variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 採用実 cone の唯一の選択点。D-2 の sphere-only 正本を使う。 -/
 def dgKappaSelectedConeInput : DGKappaConeInput R D κ :=
-  dgKappaConeInput_unconditional' R D κ hκ
+  _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaConeInput_unconditional' R D κ hκ
 
 /-- P は常に同じ採用 cone に対する D 正本の構成を使う。 -/
 def dgKappaSelectedPerfectInput : DGKappaPerfectInput R D (dgKappaSelectedConeInput R D κ hκ) :=
-  dgKappaPerfectInput_unconditional' R D κ hκ
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectInput_unconditional' R D κ hκ
 
 /-- 実零所属も採用模型に固定する。新模型の零所属供給はこの一箇所へ代入する。 -/
 theorem dgKappaSelectedZeroInput : DGKappaZeroInput R D (dgKappaSelectedConeInput R D κ hκ) := by
-  change dgKappaSphereClosureObjects R D κ (moduleZero R D)
-  exact dgKappaSphereClosureObjects_zero R D hκ
+  change _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaSphereClosureObjects R D κ (moduleZero R D)
+  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaSphereClosureObjects_zero R D hκ
 
 end SerrePositivity.KST.NonConnective

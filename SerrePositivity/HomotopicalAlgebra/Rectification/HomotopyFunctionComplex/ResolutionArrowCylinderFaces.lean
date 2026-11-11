@@ -42,8 +42,8 @@ namespace SerrePositivity.HomotopyFunctionComplex.ResolutionArrowCylinderFaces
 variable (C : Type u) [Category.{v} C] [ModelCategory C]
 
 lemma zero : zeroInclusion C ≫ inclusion C =
-    vertical (SSet.stdSimplex.δ (1 : Fin 2)) (parameter C) := by
-  change (vertical NerveMovingIntervalBoundary.zero (parameter C) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.stdSimplex.δ (1 : Fin 2)) (parameter C) := by
+  change (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical NerveMovingIntervalBoundary.zero (parameter C) ≫
     endpointInclusion (vertexParameter C) (parameter C) (vertexInclusion C) boundaryMap.{max u v}) ≫
       NerveCylinderBoundary.inclusion (vertexParameter C) (parameter C)
         (vertexInclusion C) boundaryMap.{max u v} = _
@@ -55,8 +55,8 @@ lemma zero : zeroInclusion C ≫ inclusion C =
   rw [← MonoidalCategory.whiskerLeft_comp, SSet.boundary.ι_ι]
 
 lemma one : oneInclusion C ≫ inclusion C =
-    vertical (SSet.stdSimplex.δ (0 : Fin 2)) (parameter C) := by
-  change (vertical NerveMovingIntervalBoundary.one (parameter C) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.stdSimplex.δ (0 : Fin 2)) (parameter C) := by
+  change (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical NerveMovingIntervalBoundary.one (parameter C) ≫
     endpointInclusion (vertexParameter C) (parameter C) (vertexInclusion C) boundaryMap.{max u v}) ≫
       NerveCylinderBoundary.inclusion (vertexParameter C) (parameter C)
         (vertexInclusion C) boundaryMap.{max u v} = _

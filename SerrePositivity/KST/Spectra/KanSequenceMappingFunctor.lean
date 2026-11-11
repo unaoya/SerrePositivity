@@ -35,9 +35,9 @@ def mappingPreTransformation {A B : PointedSimplicialSet.{u}} (i : A ⟶ B) :
   naturality X Y f := by
     apply Hom.ext_app
     intro n
-    change (ihom B).map (f.app n) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (Y.level n).space =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (X.level n).space ≫ (ihom A).map (f.app n)
-    simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+    change (ihom B).map (f.app n) ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (Y.level n).space =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (X.level n).space ≫ (ihom A).map (f.app n)
+    simp only [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
     exact (MonoidalClosed.pre i).naturality (f.app n)
 
 end SerrePositivity.KST.Spectra.KanSequence

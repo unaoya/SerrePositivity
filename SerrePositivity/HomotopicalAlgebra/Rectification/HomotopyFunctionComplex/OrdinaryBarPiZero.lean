@@ -62,7 +62,7 @@ lemma entry_localized_isIso (R : OrdinaryResolutionPairs.Index (C := C)) :
   have : IsIso (AnodyneHomotopy.anodyneQ.map (OrdinaryBarReference.sectionMap S)) :=
     (isIso_comp_right_iff _ _).mp hc
   let e : SSet.uliftFunctor.{max u v, v}.obj (OrdinaryResolutionPairs.raw.obj R) ≅
-      UniverseLift.obj.{u} (OrdinaryResolutionPairs.raw.obj R) :=
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (OrdinaryResolutionPairs.raw.obj R) :=
     NatIso.ofComponents (fun _ => Equiv.toIso
       { toFun := fun x => ⟨x.down⟩
         invFun := fun x => ⟨x.down⟩

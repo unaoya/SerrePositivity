@@ -42,7 +42,7 @@ def mcCarthyFiberParameter (X : StableModel.{u}) {m n : ℕ}
 lemma mcCarthyFiberDiagram_source (X : StableModel.{u}) {m n : ℕ}
     (a : (objectSConstruction X.carrier) _⦋m⦌) (e : (cofiberSubobjectLeftFiber X a) _⦋n⦌) :
     mcCarthyFiberDiagram X a e ≫ cofiberProjection X.carrier ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       arNerveMap (stdSimplex.objEquiv (mcCarthyFiberParameter X a e)).toOrderHom ≫
         gappedDiagram a := by
   have he := ConcreteCategory.congr_hom (NatTrans.congr_app

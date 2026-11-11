@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.SquarePrismGluing
-public import SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SquarePrismGluing
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.HomotopyPrecompVertex
 public import Mathlib.CategoryTheory.Limits.Types.Pushouts
 
 /-!
@@ -56,35 +56,35 @@ lemma pushoutComparisonHomotopy_right :
 
 /-- 貼合せ全比較は、元の両比較が各頂点で可逆なら各頂点で可逆。 -/
 lemma pushoutComparisonHomotopy_isInvertible [Quasicategory X]
-    (hJ : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge J x).toTruncated)
-    (hK : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge K x).toTruncated) :
-    IsInvertibleEdge (functorEdgeOfSimplicialHomotopy
+    (hJ : ∀ x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge J x).toTruncated)
+    (hK : ∀ x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge K x).toTruncated) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (pushoutComparisonHomotopy s J K h)) := by
-  apply functorEdgeOfSimplicialHomotopy_isInvertible_of_pointwise
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorEdgeOfSimplicialHomotopy_isInvertible_of_pointwise
   intro x
   have hs := s.map ((evaluation _ (Type u)).obj (Opposite.op ⦋0⦌))
   obtain ⟨x, rfl⟩ | ⟨x, rfl⟩ := Types.eq_or_eq_of_isPushout hs x
-  · have he := simplicialHomotopyVertexEdge_precomp_edge
+  · have he := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.simplicialHomotopyVertexEdge_precomp_edge
       (pushoutComparisonHomotopy s J K h) l x
-    have hh : (functorHomotopyPrecomp (pushoutComparisonHomotopy s J K h) l).h = J.h :=
+    have hh : (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (pushoutComparisonHomotopy s J K h) l).h = J.h :=
       pushoutComparisonHomotopy_left s J K h
-    have hv : (simplicialHomotopyVertexEdge
-        (functorHomotopyPrecomp (pushoutComparisonHomotopy s J K h) l) x).edge =
-        (simplicialHomotopyVertexEdge J x).edge := by
+    have hv : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
+        (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (pushoutComparisonHomotopy s J K h) l) x).edge =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge J x).edge := by
       exact congrArg (fun f => f.app (Opposite.op ⦋1⦌)
         ((Truncated.Edge.id (X := (truncation 2).obj A) x).edge,
-          homotopyIntervalEdge.edge)) hh
-    exact (isInvertibleEdge_congr (he.symm.trans hv)).mpr (hJ x)
-  · have he := simplicialHomotopyVertexEdge_precomp_edge
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge)) hh
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (he.symm.trans hv)).mpr (hJ x)
+  · have he := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.simplicialHomotopyVertexEdge_precomp_edge
       (pushoutComparisonHomotopy s J K h) r x
-    have hh : (functorHomotopyPrecomp (pushoutComparisonHomotopy s J K h) r).h = K.h :=
+    have hh : (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (pushoutComparisonHomotopy s J K h) r).h = K.h :=
       pushoutComparisonHomotopy_right s J K h
-    have hv : (simplicialHomotopyVertexEdge
-        (functorHomotopyPrecomp (pushoutComparisonHomotopy s J K h) r) x).edge =
-        (simplicialHomotopyVertexEdge K x).edge := by
+    have hv : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
+        (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (pushoutComparisonHomotopy s J K h) r) x).edge =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge K x).edge := by
       exact congrArg (fun f => f.app (Opposite.op ⦋1⦌)
         ((Truncated.Edge.id (X := (truncation 2).obj B) x).edge,
-          homotopyIntervalEdge.edge)) hh
-    exact (isInvertibleEdge_congr (he.symm.trans hv)).mpr (hK x)
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge)) hh
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (he.symm.trans hv)).mpr (hK x)
 
 end SerrePositivity.KST.LocalizingInvariants

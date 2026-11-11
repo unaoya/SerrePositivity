@@ -19,7 +19,7 @@ open scoped Simplicial
 lemma fixedBoundaryHomotopy_postcomp {A T E B : SSet.{u}} (j : A ⟶ T) (b : A ⟶ E)
     {f g : T ⟶ E} (H : SSet.Homotopy f g)
     (hr : (j ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst A Δ[1] ≫ b) (p : E ⟶ B) :
-    (j ▷ (Δ[1] : SSet.{u})) ≫ (functorHomotopyPostcomp H p).h = fst A Δ[1] ≫ b ≫ p := by
+    (j ▷ (Δ[1] : SSet.{u})) ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H p).h = fst A Δ[1] ≫ b ≫ p := by
   change _ ≫ H.h ≫ p = _
   rw [← Category.assoc, hr, Category.assoc]
 

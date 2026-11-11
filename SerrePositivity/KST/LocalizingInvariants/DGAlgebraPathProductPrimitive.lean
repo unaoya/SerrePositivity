@@ -22,7 +22,7 @@ variable (R : Type u) [CommRing R] (B : Mon (Complex R))
 
 lemma one_primitive : (Cochain.ofHom η[(algebra R B).X]).comp
     (primitive R B) (zero_add (-1)) = 0 :=
-  dgFunctorCommaIdentity_comparison R _ _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaIdentity_comparison R _ _ _ _
 
 lemma mul_primitive : (Cochain.ofHom μ[(algebra R B).X]).comp
     (primitive R B) (zero_add (-1)) =
@@ -32,12 +32,12 @@ lemma mul_primitive : (Cochain.ofHom μ[(algebra R B).X]).comp
       ((tensorLeftHom (algebra R B).X (algebra R B).X B.X).f (-1)
         (primitive R B)).comp
         (Cochain.ofHom (((target R B).hom ⊗ₘ 𝟙 B.X) ≫ μ[B.X])) (add_zero (-1)) := by
-  have h := dgFunctorCommaComposition_comparison R _ _ (identityFunctor R B)
+  have h := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaComposition_comparison R _ _ (identityFunctor R B)
     (identityPoint R B) (identityPoint R B) (identityPoint R B)
-  simpa only [dgFunctorCommaHomComparison, dgFunctorCommaCompositePrimitive,
-    dgFunctorCommaFirstCompositePrimitive, dgFunctorCommaSecondCompositePrimitive,
-    dgFunctorCommaFirstCompositionMap, dgFunctorCommaSecondCompositionMap,
-    dgFunctorCommaImageHomMap, identityFunctor, EnrichedFunctor.id_map,
+  simpa only [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComparison, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaCompositePrimitive,
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaFirstCompositePrimitive, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaSecondCompositePrimitive,
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaFirstCompositionMap, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaSecondCompositionMap,
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaImageHomMap, identityFunctor, EnrichedFunctor.id_map,
     Category.comp_id] using! h
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.Path

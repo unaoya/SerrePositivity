@@ -15,12 +15,12 @@ open CategoryTheory MonoidalCategory SSet
 open SerrePositivity.InfinityCategories LocalizingInvariants
 
 /-- 元の同じ点つき境界商を保持する対象。 -/
-def stableBoundaryPointedObject (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) : PointedSSetObject.{u} :=
+def stableBoundaryPointedObject (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) : PointedSSetObject.{u} :=
   ⟨boundaryReducedRealization r (stableCategoryModel C)⟩
 
 /-- 元の境界商と全自然同値族を保持する標準点つき厳密豊穣関手。 -/
 def stableBoundaryPointedEnrichedFunctor (r : ℕ) :
-    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} PointedSSetObject.{u} :=
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u} PointedSSetObject.{u} :=
   pointedEnrichedFunctorOfAction (stableBoundaryPointedObject r)
     (stableBoundaryReducedAction r) (stableBoundaryReducedAction_unit r)
     (stableBoundaryReducedAction_comp r) (stableBoundaryReducedFamilyMap r)
@@ -28,7 +28,7 @@ def stableBoundaryPointedEnrichedFunctor (r : ℕ) :
 
 /-- 元の完全射では、同じ元の境界商射を全 Hom 作用から回収する。 -/
 lemma stableBoundaryPointedEnrichedFunctor_hom (r : ℕ)
-    {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : C ⟶ D) :
+    {C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (F : C ⟶ D) :
     eHomEquiv SSet.{u} F ≫ (stableBoundaryPointedEnrichedFunctor r).map C D =
       eHomEquiv SSet.{u}
         (show (stableBoundaryPointedEnrichedFunctor r).obj C ⟶

@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：混合和の対合による消滅と、純粋境界和の二因子の境界への同定を使う。
 規約：KST Construction A.5、非被約な零次を含む。
 使われ方：標準 shuffle の鎖写像性の組立。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

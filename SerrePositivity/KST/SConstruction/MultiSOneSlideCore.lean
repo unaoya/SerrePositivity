@@ -21,9 +21,9 @@ open scoped Simplicial
 lemma multiCoreSOne_map (r : ℕ) (X : StableModel.{u})
     {d e : Fin r → SimplexCategoryᵒᵖ} (f : d ⟶ e) :
     (multiCoreSConstruction (r + 1) X).map ((oneDirectionIndex r).map f) =
-      (stableModelForget.{u} ⋙ quasicategoryCoreFunctor).map
+      (stableModelForget.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor).map
         ((sEndofunctor 1).map (((multiSEndofunctor r).map f).app X)) := by
-  let H := stableModelForget.{u} ⋙ quasicategoryCoreFunctor
+  let H := stableModelForget.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
   have h : ((multiSEndofunctor (r + 1)).map ((oneDirectionIndex r).map f)).app X =
       (sEndofunctor 1).map (((multiSEndofunctor r).map f).app X) := by
     change ((simplicialStableEndofunctor.map (𝟙 (Opposite.op ⦋1⦌))).app
@@ -38,7 +38,7 @@ def multiSOneSlideCoreAt (r : ℕ) (X : StableModel.{u})
     (d : Fin r → SimplexCategoryᵒᵖ) :
     (multiCoreSConstruction r (sStableModel 1 X)).obj d ≅
       (multiCoreSConstruction (r + 1) X).obj ((oneDirectionIndex r).obj d) := by
-  let H := stableModelForget.{u} ⋙ quasicategoryCoreFunctor
+  let H := stableModelForget.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
   change H.obj (((multiSEndofunctor r).obj d).obj (sStableModel 1 X)) ≅
     H.obj (sStableModel 1 (((multiSEndofunctor r).obj d).obj X))
   exact H.mapIso ((multiFixedSEndofunctorIso 1 r d).app X)
@@ -47,7 +47,7 @@ def multiSOneSlideCoreAt (r : ℕ) (X : StableModel.{u})
 lemma multiSOneSlideCoreAt_hom (r : ℕ) (X : StableModel.{u})
     (d : Fin r → SimplexCategoryᵒᵖ) :
     (multiSOneSlideCoreAt r X d).hom =
-      (stableModelForget.{u} ⋙ quasicategoryCoreFunctor).map
+      (stableModelForget.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor).map
         ((multiFixedSEndofunctorIso 1 r d).hom.app X) := rfl
 
 /-- 元の core 交換の成分は全多次数の射について自然。 -/
@@ -58,7 +58,7 @@ lemma multiSOneSlideCoreAt_naturality (r : ℕ) (X : StableModel.{u})
       (multiSOneSlideCoreAt r X d).hom ≫
         (multiCoreSConstruction (r + 1) X).map ((oneDirectionIndex r).map f) := by
   rw [multiSOneSlideCoreAt_hom, multiSOneSlideCoreAt_hom]
-  let H := stableModelForget.{u} ⋙ quasicategoryCoreFunctor
+  let H := stableModelForget.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
   change H.map (((multiSEndofunctor r).map f).app (sStableModel 1 X)) ≫
     H.map ((multiFixedSEndofunctorIso 1 r e).hom.app X) =
     H.map ((multiFixedSEndofunctorIso 1 r d).hom.app X) ≫
@@ -83,7 +83,7 @@ lemma multiSOneSlideCoreIso_realization (r : ℕ) (X : StableModel.{u}) :
         (sOneInnerOuterRealizationIso r X).hom := by
   apply NatTrans.ext
   funext d
-  change ((stableModelForget.{u} ⋙ quasicategoryCoreFunctor).map
+  change ((stableModelForget.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor).map
     ((multiFixedSEndofunctorIso 1 r (fun _ => d)).hom.app X)).app d = _
   rw [multiFixedSEndofunctorIso_diagonal_app]
   rfl

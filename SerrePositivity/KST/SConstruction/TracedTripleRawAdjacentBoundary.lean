@@ -64,7 +64,7 @@ lemma monicKTracedTripleRawComparisonLevelHomotopy_zero_realization :
 /-- 次段の元の全円柱の、同じ単射構造射による制限。 -/
 def monicKTracedTripleRawAdjacentSource (n : ℕ) :=
   (monicKTracedTripleRawComparisonLevelHomotopy F f g h (n + 1)).h ≫
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj w)).sigma n)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj w)).sigma n)
       ((kKanSequence (F.obj z)).level (n + 1)).space
 
 /-- 前段の元の全円柱の、同じ raw 構造作用による像。 -/

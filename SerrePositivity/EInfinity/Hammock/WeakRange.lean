@@ -43,14 +43,14 @@ lemma toRange_rangeMap : Subfunctor.toRange p ≫ rangeMap p p' a b h =
   rw [Category.assoc, mapSubcomplex_ι, ← Category.assoc, Subfunctor.toRange_ι,
     h, Category.assoc, Subfunctor.toRange_ι]
 
-lemma weakRangeMap [Mono p] [Mono p'] (ha : IsWeakHomotopyEquivalence a) :
-    IsWeakHomotopyEquivalence (rangeMap p p' a b h) := by
-  have ep := isPrecompositionEquivalence_of_iso (asIso (Subfunctor.toRange p))
-  have ep' := isPrecompositionEquivalence_of_iso (asIso (Subfunctor.toRange p'))
+lemma weakRangeMap [Mono p] [Mono p'] (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence a) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (rangeMap p p' a b h) := by
+  have ep := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (asIso (Subfunctor.toRange p))
+  have ep' := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (asIso (Subfunctor.toRange p'))
   have hp := ep.isWeakHomotopyEquivalence
   have hp' := ep'.isWeakHomotopyEquivalence
   apply hp.cancel_left
-  change IsWeakHomotopyEquivalence (Subfunctor.toRange p ≫ rangeMap p p' a b h)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Subfunctor.toRange p ≫ rangeMap p p' a b h)
   rw [toRange_rangeMap]
   exact ha.comp hp'
 

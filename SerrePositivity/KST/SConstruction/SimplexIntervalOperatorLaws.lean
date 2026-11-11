@@ -25,7 +25,7 @@ lemma simplexIntervalCubicalMap_comp {l m n : ℕ} (θ : ⦋l⦌ ⟶ ⦋m⦌) (�
 /-- 元の恒等単体作用素は、元の次元を持つ区間 cube の恒等射を誘導する。 -/
 lemma simplexIntervalCubeMap_id {m : ℕ} (a b : Fin (m + 1)) (hab : a ≤ b) :
     simplexIntervalCubeMap.{u} (𝟙 ⦋m⦌) a b hab =
-      𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1)) := by
+      𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1)) := by
   change (simplexIntervalCubeDimensionIso.{u} a b).hom ≫
     necklaceConcreteCube.map (simplexIntervalBeadMap.{u} (𝟙 ⦋m⦌) a b hab) ≫
       (simplexIntervalCubeDimensionIso.{u} a b).inv = _
@@ -55,7 +55,7 @@ lemma simplexIntervalCubeMap_comp {l m n : ℕ} (θ : ⦋l⦌ ⟶ ⦋m⦌) (φ :
     (necklaceConcreteCube.map_comp (simplexIntervalBeadMap.{u} θ a b hab)
       (simplexIntervalBeadMap.{u} φ (θ.toOrderHom a) (θ.toOrderHom b)
         (θ.toOrderHom.monotone hab)))
-  have hc {P Q R S T U : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (e : P ≅ Q) (e' : R ≅ S) (e'' : T ≅ U)
+  have hc {P Q R S T U : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube} (e : P ≅ Q) (e' : R ≅ S) (e'' : T ≅ U)
       (f : Q ⟶ S) (g : S ⟶ U) :
       e.hom ≫ (f ≫ g) ≫ e''.inv =
         (e.hom ≫ f ≫ e'.inv) ≫ (e'.hom ≫ g ≫ e''.inv) := by
@@ -69,7 +69,7 @@ lemma simplexIntervalCubeMap_comp {l m n : ℕ} (θ : ⦋l⦌ ⟶ ⦋m⦌) (φ :
 lemma simplexIntervalCubicalMap_id {m : ℕ} (a b : Fin (m + 1)) :
     simplexIntervalCubicalMap.{u} (𝟙 ⦋m⦌) a b =
       𝟙 (necklaceCubicalMapping (Δ[m] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)) := by
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b)) := by
   by_cases hab : a ≤ b
   · apply (cancel_epi (simplexIntervalCubicalMappingIso a b hab).hom).1
     have h := simplexIntervalCubicalMappingIso_map.{u} (𝟙 ⦋m⦌) a b hab

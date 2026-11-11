@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 /-- 元の raw 比較の評価は、同じ普遍評価を補正済みの円パラメータへ制限したもの。 -/
 lemma signedLoopRawComparison_evaluation (X : OmegaSpectrum.{u}) (n : ℕ) :
     PointedMapping.transpose ((signedLoopRawComparison X).app n ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (X.level (n + 1)).space) =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} (X.level (n + 1)).space) =
     CirclePower.signedEvaluationParameter n ≫
       CotensorCompatible.evaluationAt CirclePower.space.{u} X (n + 1) := by
   rw [signedLoopRawComparison_restriction, PointedMapping.transpose_pre_inner]
@@ -31,9 +31,9 @@ lemma signedLoopRawComparison_evaluation (X : OmegaSpectrum.{u}) (n : ℕ) :
 /-- 同じ符号付き評価を、元の通常円の普遍評価と実際の BF 制限射で表示する。 -/
 lemma signedLoopRawComparison_ordinaryEvaluation (X : OmegaSpectrum.{u}) (n : ℕ) :
     PointedMapping.transpose ((signedLoopRawComparison X).app n ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (X.level (n + 1)).space) =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} (X.level (n + 1)).space) =
     CotensorCompatible.evaluationAt PointedSimplicialSet.circle.{u} X (n + 1) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed
         ((cotensorPre (CirclePower.signedEvaluationParameter n) X).app (n + 1))
         (X.level (n + 1)).space := by
   rw [signedLoopRawComparison_evaluation]
@@ -48,7 +48,7 @@ def signedLoopEvaluationPostAt (X Y : OmegaSpectrum.{u}) (n : ℕ) :
         (PointedObject.basedHom ((cotensor CirclePower.space.{u} X).level (n + 1)).space
           (Y.level (n + 1)).space) :=
   curry (PointedMapping.transpose ((signedLoopRawComparison X).app n ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (X.level (n + 1)).space) ▷
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} (X.level (n + 1)).space) ▷
         PointedObject.basedHom (X.level (n + 1)).space (Y.level (n + 1)).space ≫
     MonoidalClosed.comp ((cotensor CirclePower.space.{u} X).level (n + 1)).space
       (X.level (n + 1)).space (Y.level (n + 1)).space)
@@ -57,11 +57,11 @@ def signedLoopEvaluationPostAt (X Y : OmegaSpectrum.{u}) (n : ℕ) :
 lemma signedLoopEvaluationPostAt_eq (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     signedLoopEvaluationPostAt X Y n =
       evaluationPostAt CirclePower.space.{u} X Y (n + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.signedEvaluationParameter n)
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.signedEvaluationParameter n)
           (PointedObject.basedHom ((cotensor CirclePower.space.{u} X).level (n + 1)).space
             (Y.level (n + 1)).space) := by
   apply uncurry_injective
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, uncurry_pre_app]
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, uncurry_pre_app]
   simp only [signedLoopEvaluationPostAt, evaluationPostAt, uncurry_curry]
   rw [signedLoopRawComparison_evaluation, comp_whiskerRight, Category.assoc]
 
@@ -70,7 +70,7 @@ lemma evaluationPost_signedLoop_evaluation (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     (evaluationPost CirclePower.space.{u} X Y ≫ (ihom CirclePower.space.{u}).map
       (RawSpectrumMapping.pointedEvaluation (cotensor CirclePower.space.{u} X)
         Y.toKanSequence (n + 1))) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.signedEvaluationParameter n)
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.signedEvaluationParameter n)
         (PointedObject.basedHom ((cotensor CirclePower.space.{u} X).level (n + 1)).space
           (Y.level (n + 1)).space) =
     RawSpectrumMapping.pointedEvaluation X Y.toKanSequence (n + 1) ≫
@@ -93,7 +93,7 @@ lemma evaluationPost_circle_signedLoop_evaluation (X Y : OmegaSpectrum.{u}) (n :
   have hn := (MonoidalClosed.pre (CirclePower.signedEvaluationParameter.{u} n)).naturality
     (RawSpectrumMapping.pointedEvaluation (cotensor CirclePower.space.{u} X)
       Y.toKanSequence (n + 1))
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hn
   rw [Category.assoc, ← hn, ← Category.assoc]
   exact evaluationPost_signedLoop_evaluation X Y n
 

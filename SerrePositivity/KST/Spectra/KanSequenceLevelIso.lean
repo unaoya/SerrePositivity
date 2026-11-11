@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.KanSequenceCategory
-public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyIsomorphism
 
 /-!
 概要：段ごとの点つき同型による Kan 列の構造射と Ω 条件の移送。
@@ -42,7 +42,7 @@ def changeLevels : KanSequence.{u} where
 def changeLevelsProjection : Hom (changeLevels X Z e) X where
   app n := (e n).hom
   comm n := by
-    apply (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (Z n).space (X.level (n + 1)).space).injective
+    apply (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (Z n).space (X.level (n + 1)).space).injective
     change curry (PointedSimplicialSet.circle.{u} ◁ (e n).hom ≫ X.sigma n) =
       curry (uncurry ((e n).hom ≫ curry (X.sigma n) ≫
         (ihom PointedSimplicialSet.circle.{u}).map (e (n + 1)).inv) ≫ (e (n + 1)).hom)
@@ -59,12 +59,12 @@ lemma changeLevels_omegaCondition (hX : X.OmegaCondition) :
   intro n
   let a : (Z n).space.right ≅ (X.level n).space.right :=
     PointedSimplicialSet.forget.mapIso (e n)
-  let b : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X.level (n + 1)).space).right ≅ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (Z (n + 1)).space).right :=
+  let b : (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (X.level (n + 1)).space).right ≅ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (Z (n + 1)).space).right :=
     PointedSimplicialSet.forget.mapIso
       ((ihom PointedSimplicialSet.circle.{u}).mapIso (e (n + 1)).symm)
-  have h := (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso a).comp ((hX n).comp (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso b))
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (X := (Z n).space.right)
-    (Y := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (Z (n + 1)).space).right)
+  have h := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso a).comp ((hX n).comp (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso b))
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (X := (Z n).space.right)
+    (Y := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (Z (n + 1)).space).right)
     (curry (uncurry ((e n).hom ≫ curry (X.sigma n) ≫
     (ihom PointedSimplicialSet.circle.{u}).map (e (n + 1)).inv))).right
   rw [curry_uncurry]

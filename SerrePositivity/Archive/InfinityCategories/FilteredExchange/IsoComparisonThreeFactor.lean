@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.Equivalence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
 
 /-!
 概要：比較の自然性と三因子の整合式を合成する。

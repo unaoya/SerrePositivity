@@ -23,11 +23,11 @@ variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) (Y : Paths C)
   (n : SimplexCategoryᵒᵖ)
 
 open Classical in
-def cutRec (P : ∀ X : Paths C, (colimitGraph W.paths X Y).obj n → Sort s)
+def cutRec (P : ∀ X : Paths C, (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n → Sort s)
     (base : ∀ X x, (colimitValue W X Y).app n x = [] → P X x)
     (step : ∀ X (x : (NonemptyValue.space W X Y).obj n),
       P ((nonemptyCut W X Y).app n x).1.val.right ((nonemptyCut W X Y).app n x).2.2 → P X x.val)
-    (X : Paths C) (x : (colimitGraph W.paths X Y).obj n) : P X x :=
+    (X : Paths C) (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n) : P X x :=
   if hx : (colimitValue W X Y).app n x = [] then base X x hx else
     step X ⟨x, hx⟩ (cutRec P base step
       ((nonemptyCut W X Y).app n ⟨x, hx⟩).1.val.right
@@ -35,12 +35,12 @@ def cutRec (P : ∀ X : Paths C, (colimitGraph W.paths X Y).obj n → Sort s)
 termination_by ((colimitValue W X Y).app n x).length
 decreasing_by exact nonemptyCut_residual_length_lt W ⟨x, hx⟩
 
-variable (P : ∀ X : Paths C, (colimitGraph W.paths X Y).obj n → Sort s)
+variable (P : ∀ X : Paths C, (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n → Sort s)
   (base : ∀ X x, (colimitValue W X Y).app n x = [] → P X x)
   (step : ∀ X (x : (NonemptyValue.space W X Y).obj n),
     P ((nonemptyCut W X Y).app n x).1.val.right ((nonemptyCut W X Y).app n x).2.2 → P X x.val)
 
-lemma cutRec_empty (X : Paths C) (x : (colimitGraph W.paths X Y).obj n)
+lemma cutRec_empty (X : Paths C) (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n)
     (hx : (colimitValue W X Y).app n x = []) :
     cutRec W Y n P base step X x = base X x hx := by
   classical

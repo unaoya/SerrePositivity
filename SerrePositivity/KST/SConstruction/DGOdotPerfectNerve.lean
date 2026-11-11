@@ -12,28 +12,28 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "B" => dgAlgebraCategory R (dgOdotAlgebra R d)
+local notation "B" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d)
 local notation "I" => dgOdotQuotientInput R d
 local notation "T" => DGLaxQuotientEndInput.quotientObject (I)
 local notation "F" => dgOdotAlgebraToQuotient R d
 
 /-- 実 ⊙ の元の自由代表の点は、同じ商内の元の (0,b,0) の像そのもの。 -/
 lemma dgOdotAlgebraToQuotient_point :
-    (F).obj (Opposite.op DGAlgebraPoint.star) = (I).projection.obj (I).point := rfl
+    (F).obj (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star) = (I).projection.obj (I).point := rfl
 
 /-- 同じ射の導来延長は、元の自由代表を同じ指定商対象の representable へ写す。 -/
 def dgOdotAlgebraQuotientRepresentableIso :
     (dgDerivedExtension R (B) (T) (F)).obj ((moduleToDerived R (B)).obj
-      (ForgetEnrichment.of (Complex R) (representable R (Opposite.op DGAlgebraPoint.star)))) ≅
+      (ForgetEnrichment.of (Complex R) (representable R (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star)))) ≅
     (moduleToDerived R (T)).obj (ForgetEnrichment.of (Complex R)
       (representable R ((I).projection.obj (I).point))) :=
-  dgDerivedExtensionRepresentableIso R (B) (T) (F) (Opposite.op DGAlgebraPoint.star)
+  dgDerivedExtensionRepresentableIso R (B) (T) (F) (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star)
 
 /-- 二生成条件の下で、元の一回の実 Perf 延長の native nerve 自体が同値を与える。 -/
 def dgOdotAlgebraQuotientPerfectNerveEquivalence (hgen : DGOdotGeneratorConditions R d) :
-    QCatEquivalence (dgNerve R (PerfectDGModule R (B)))
-      (dgNerve R (PerfectDGModule R (T))) :=
-  dgQuasiEquivalenceNerveEquivalence (perfectDGExtension R (B) (T) (F))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R (B)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R (T))) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgQuasiEquivalenceNerveEquivalence (perfectDGExtension R (B) (T) (F))
     (dgOdotAlgebraToQuotient_perfectDG_quasiEquivalence R d hgen)
 
 end SerrePositivity.KST.SConstruction

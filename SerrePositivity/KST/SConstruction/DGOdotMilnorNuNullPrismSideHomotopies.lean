@@ -18,15 +18,15 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 
 /-- 概要：元上下二胞体の最初の短辺を結ぶ同じ実ホモトピー。
 方針：上は元零角左辺、下は元核包含の指定ホモトピーを使う。
 規約：元実辺と元絶対辺。使われ方：元比較 prism の最初の側面。 -/
 def dgOdotMilnorNuNullPrismFirstHomotopy (j : Fin 2) : SSet.Homotopy
-    (![squareLeftEdge, squareBottomEdge] j ≫
+    (![_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge] j ≫
       dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
-    (![squareLeftEdge, squareBottomEdge] j ≫
+    (![_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge] j ≫
       perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) :=
   Fin.cases (dgOdotMilnorNuZeroLeftDiagramHomotopy R d h)
     (fun k : Fin 1 => Fin.cases (dgOdotMilnorNuInclusionDiagramHomotopy R d h)
@@ -36,9 +36,9 @@ def dgOdotMilnorNuNullPrismFirstHomotopy (j : Fin 2) : SSet.Homotopy
 方針：上は元零角上辺、下は元商の指定ホモトピーを使う。
 規約：元実辺と元絶対辺。使われ方：元比較 prism の最後の側面。 -/
 def dgOdotMilnorNuNullPrismLastHomotopy (j : Fin 2) : SSet.Homotopy
-    (![squareTopEdge, squareRightEdge] j ≫
+    (![_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge] j ≫
       dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
-    (![squareTopEdge, squareRightEdge] j ≫
+    (![_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge] j ≫
       perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) :=
   Fin.cases (dgOdotMilnorNuZeroTopDiagramHomotopy R d h)
     (fun k : Fin 1 => Fin.cases (dgOdotMilnorNuProjectionDiagramHomotopy R d h)
@@ -90,7 +90,7 @@ lemma dgOdotMilnorNuNullPrismSide_target (j : Fin 2) :
 方針：元零角左辺・元包含辺の実ホモトピーの可逆性を使う。
 規約：元側面を変えない。使われ方：全 prism 比較の境界の可逆性。 -/
 lemma dgOdotMilnorNuNullPrismFirstHomotopy_isInvertible (j : Fin 2) :
-    IsInvertibleEdge (functorEdgeOfSimplicialHomotopy
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (dgOdotMilnorNuNullPrismFirstHomotopy R d h j)) := by
   fin_cases j
   · exact dgOdotMilnorNuZeroLeftDiagramHomotopy_isInvertible R d h
@@ -100,7 +100,7 @@ lemma dgOdotMilnorNuNullPrismFirstHomotopy_isInvertible (j : Fin 2) :
 方針：元零角上辺・元商辺の実ホモトピーの可逆性を使う。
 規約：元側面を変えない。使われ方：全 prism 比較の境界の可逆性。 -/
 lemma dgOdotMilnorNuNullPrismLastHomotopy_isInvertible (j : Fin 2) :
-    IsInvertibleEdge (functorEdgeOfSimplicialHomotopy
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (dgOdotMilnorNuNullPrismLastHomotopy R d h j)) := by
   fin_cases j
   · exact dgOdotMilnorNuZeroTopDiagramHomotopy_isInvertible R d h

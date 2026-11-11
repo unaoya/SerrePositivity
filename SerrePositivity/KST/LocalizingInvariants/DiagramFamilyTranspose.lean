@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ZeroArrowFamily
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomSquare
-public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomSquare
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.PointFunctorEvaluation
 
 /-!
 概要：図式の全族を、関手圏内の一つの図式へ転置する。
@@ -35,12 +35,12 @@ lemma diagramFamilyTranspose_pre {A K L X : SSet.{u}}
 lemma diagramFamilyTranspose_vertex {A K X : SSet.{u}} (f : A ⟶ (ihom K).obj X)
     (k : K _⦋0⦌) :
     (diagramFamilyTranspose f).app (Opposite.op ⦋0⦌) k =
-      functorVertex (f ≫ evaluateFunctorAt k) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k) := by
   let v : 𝟙_ SSet.{u} ⟶ K := (SSet.unitHomEquiv K).symm k
   have hv : SSet.unitHomEquiv K v = k := (SSet.unitHomEquiv K).apply_symm_apply k
-  have he : f ≫ evaluateFunctorAt k =
+  have he : f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k =
       CartesianMonoidalCategory.lift (SSet.const k) (𝟙 A) ≫ uncurry f := by
-    simpa only [curry_uncurry] using curry_evaluateFunctorAt_vertex (uncurry f) k
+    simpa only [curry_uncurry] using _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.curry_evaluateFunctorAt_vertex (uncurry f) k
   have hl : SSet.unitHomEquiv _ (v ≫ diagramFamilyTranspose f) =
       (diagramFamilyTranspose f).app (Opposite.op ⦋0⦌) k := by
     change (diagramFamilyTranspose f).app (Opposite.op ⦋0⦌)

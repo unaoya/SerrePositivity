@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra SerrePositivity.KST.Spectra.OmegaSpectrum
 namespace SerrePositivity.KST.LocalizingInvariants.FiberModel
 
@@ -32,71 +32,71 @@ variable {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y) [hp : ∀ n, Fibration (p.app n
 
 /-- 元の BF fiber への頂点変更と、比較射上の slice の辺を同時に選ぶ。 -/
 lemma exists_replacedCone :
-    ∃ c : JoinCone (strictCoherentDiagram (spectrumPullbackDiagram p (fromPoint Y))),
-      IsLimitCone c ∧ c.vertex = coherentNerveVertex (fiber p hp) ∧
+    ∃ c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (fromPoint Y))),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c ∧ c.vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (fiber p hp) ∧
       ∃ a : SSet.Truncated.Edge
-          (X := (truncation 2).obj (sliceOver
-            (strictCoherentDiagram (spectrumPullbackDiagram p (fromPoint Y))))) c (infinityCone p),
-        (a.map ((truncation 2).map (sliceOverProjection _))).edge =
-          (coherentNerveEdge (comparison p hp)).edge := by
-  let e := (coherentNerveEdge (comparison p hp)).ofEq rfl (infinityCone_vertex p).symm
-  have he : IsInvertibleEdge e.toTruncated :=
-    (isInvertibleEdge_congr (e := (coherentNerveEdge (comparison p hp)).toTruncated)
+          (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (fromPoint Y))))) c (infinityCone p),
+        (a.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection _))).edge =
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (comparison p hp)).edge := by
+  let e := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (comparison p hp)).ofEq rfl (infinityCone_vertex p).symm
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge e.toTruncated :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (comparison p hp)).toTruncated)
       (f := e.toTruncated) rfl).mp (comparison_isInvertible p hp)
   exact ConeVertexTransport.exists_limitCone (infinityCone p) (infinityCone_isLimit p)
     e he
 
 /-- 長完全列の元の置換済み BF fiber を頂点に持つ錐。 -/
-def replacedCone : JoinCone (strictCoherentDiagram (spectrumPullbackDiagram p (fromPoint Y))) :=
-  (exists_replacedCone p).choose
+def replacedCone : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (fromPoint Y))) :=
+  (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.exists_replacedCone p).choose
 
-lemma replacedCone_isLimit : IsLimitCone (replacedCone p) :=
-  (exists_replacedCone p).choose_spec.1
+lemma replacedCone_isLimit : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.replacedCone p) :=
+  (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.exists_replacedCone p).choose_spec.1
 
-lemma replacedCone_vertex : (replacedCone p).vertex = coherentNerveVertex (fiber p hp) :=
-  (exists_replacedCone p).choose_spec.2.1
+lemma replacedCone_vertex : (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.replacedCone p).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (fiber p hp) :=
+  (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.exists_replacedCone p).choose_spec.2.1
 
 /-- 置換後の錐と段ごとの fiber の錐の間の、同じ図式上の比較。 -/
 def replacedConeComparison : SSet.Truncated.Edge
-    (X := (truncation 2).obj (sliceOver
-      (strictCoherentDiagram (spectrumPullbackDiagram p (fromPoint Y)))))
-    (replacedCone p) (infinityCone p) :=
-  (exists_replacedCone p).choose_spec.2.2.choose
+    (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (fromPoint Y)))))
+    (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.replacedCone p) (infinityCone p) :=
+  (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.exists_replacedCone p).choose_spec.2.2.choose
 
 lemma replacedConeComparison_projection :
-    ((replacedConeComparison p).map ((truncation 2).map (sliceOverProjection _))).edge =
-      (coherentNerveEdge (comparison p hp)).edge :=
-  (exists_replacedCone p).choose_spec.2.2.choose_spec
+    ((_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.replacedConeComparison p).map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection _))).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (comparison p hp)).edge :=
+  (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.exists_replacedCone p).choose_spec.2.2.choose_spec
 
 /-- 置換単位の元の円柱を保持した、元の cospan への錐の輸送。 -/
 def homotopyFiberTransport {E B : OmegaSpectrum.{u}} (f : E ⟶ B) :
-    F2.SpecifiedLimitConeTransport
-      (p := strictCoherentDiagram (spectrumPullbackDiagram f (fromPoint B)))
-      (F2.strictCoherentNatTransMap (CospanReplacement.unit f (fromPoint B)))
-      (replacedCone (fibrationReplacementProjection f)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpecifiedLimitConeTransport
+      (p := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram f (fromPoint B)))
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap (CospanReplacement.unit f (fromPoint B)))
+      (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.replacedCone (fibrationReplacementProjection f)) :=
   StrictConeTransport.transport (CospanReplacement.unit f (fromPoint B))
     (CospanReplacement.unit_isInvertible f (fromPoint B))
-    (replacedCone (fibrationReplacementProjection f))
-    (replacedCone_isLimit (fibrationReplacementProjection f))
+    (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.replacedCone (fibrationReplacementProjection f))
+    (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.replacedCone_isLimit (fibrationReplacementProjection f))
 
 /-- 任意射の元の homotopyFiber を頂点とする、元の cospan 上の極限錐の存在。 -/
 lemma homotopyFiber_exists_limitCone {E B : OmegaSpectrum.{u}} (f : E ⟶ B) :
-    ∃ c : JoinCone (strictCoherentDiagram (spectrumPullbackDiagram f (fromPoint B))),
-      IsLimitCone c ∧ c.vertex = coherentNerveVertex (homotopyFiber f) := by
-  let t := homotopyFiberTransport f
+    ∃ c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram f (fromPoint B))),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c ∧ c.vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (homotopyFiber f) := by
+  let t := _root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.homotopyFiberTransport f
   exact ⟨t.cone, t.isLimit,
     t.vertex_eq.trans (replacedCone_vertex (fibrationReplacementProjection f))⟩
 
 def homotopyFiberCone {E B : OmegaSpectrum.{u}} (f : E ⟶ B) :
-    JoinCone (strictCoherentDiagram (spectrumPullbackDiagram f (fromPoint B))) :=
-  (homotopyFiberTransport f).cone
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram f (fromPoint B))) :=
+  (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.homotopyFiberTransport f).cone
 
 lemma homotopyFiberCone_isLimit {E B : OmegaSpectrum.{u}} (f : E ⟶ B) :
-    IsLimitCone (homotopyFiberCone f) := (homotopyFiberTransport f).isLimit
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.homotopyFiberCone f) := (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.homotopyFiberTransport f).isLimit
 
 lemma homotopyFiberCone_vertex {E B : OmegaSpectrum.{u}} (f : E ⟶ B) :
-    (homotopyFiberCone f).vertex = coherentNerveVertex (homotopyFiber f) :=
-  (homotopyFiberTransport f).vertex_eq.trans
+    (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.homotopyFiberCone f).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (homotopyFiber f) :=
+  (_root_.SerrePositivity.KST.LocalizingInvariants.FiberModel.homotopyFiberTransport f).vertex_eq.trans
     (replacedCone_vertex (fibrationReplacementProjection f))
 
 end SerrePositivity.KST.LocalizingInvariants.FiberModel

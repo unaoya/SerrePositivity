@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseFunctorSpace
-public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredDiagonalCofinality
-public import SerrePositivity.InfinityCategories.F1B.Cofinality.LeftFibrationCofinalPullback
-public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalWeakEquivalence
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberwiseFunctorSpace
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.FilteredDiagonalCofinality
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.LeftFibrationCofinalPullback
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalWeakEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ContinuousKanWeakFunctoriality
 
 /-!
 概要：有限形状では、fiber ごとの関手から全関手空間への射は right cofinal。

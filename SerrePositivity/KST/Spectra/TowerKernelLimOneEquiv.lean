@@ -23,7 +23,7 @@ variable (X : ℕ → PointedSimplicialSet.{u}) (p : ∀ n, X (n + 1) ⟶ X n)
 /-- 塔の比較の核と、次のホモトピー群の塔の lim¹ の基点を保つ全単射。 -/
 def kernelLimOneEquiv :
     (limitGroupComparison X p r).ker ≃
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (p n)) :=
   Equiv.ofBijective (kernelObstruction X p r)
     ⟨kernelObstruction_injective X p r, kernelObstruction_surjective X p r⟩
@@ -36,13 +36,13 @@ lemma kernelLimOneEquiv_apply (b : (limitGroupComparison X p r).ker) :
 /-- 全単射は核の単位元を lim¹ の基点へ送る。 -/
 @[simp]
 lemma kernelLimOneEquiv_one :
-    kernelLimOneEquiv X p r 1 = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _ :=
+    kernelLimOneEquiv X p r 1 = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _ :=
   kernelObstruction_one X p r
 
 /-- 全単射の逆も基点を保つ。 -/
 @[simp]
 lemma kernelLimOneEquiv_symm_point :
-    (kernelLimOneEquiv X p r).symm (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _) = 1 := by
+    (kernelLimOneEquiv X p r).symm (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _) = 1 := by
   apply (kernelLimOneEquiv X p r).injective
   rw [Equiv.apply_symm_apply, kernelLimOneEquiv_one]
 

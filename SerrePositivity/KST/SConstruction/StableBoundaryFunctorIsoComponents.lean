@@ -18,7 +18,7 @@ open scoped Simplicial
 
 /-- 全 Hom 作用の通常射の頂点は、元の同じ境界商射の点つき頂点。 -/
 lemma stableBoundaryPointedEnrichedFunctor_vertex (r : ℕ)
-    {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : C ⟶ D) :
+    {C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (F : C ⟶ D) :
     ((stableBoundaryPointedEnrichedFunctor r).map C D).app (Opposite.op ⦋0⦌)
         (SimplicialCategory.homEquiv' C D F) =
       PointedMapping.familyVertex
@@ -29,7 +29,7 @@ lemma stableBoundaryPointedEnrichedFunctor_vertex (r : ℕ)
 
 /-- 同じ完全関手の関手同型は、元の境界商の基点固定成分の等号を与える。 -/
 lemma stableBoundaryReducedMap_component_of_functorIso (r : ℕ)
-    {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} {F G : C ⟶ D} (e : FunctorIso F.hom G.hom) :
+    {C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} {F G : C ⟶ D} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F.hom G.hom) :
     PointedMapping.componentOf (boundaryReducedRealizationMap r (stableExactInputMap F)) =
       PointedMapping.componentOf
         (boundaryReducedRealizationMap r (stableExactInputMap G)) := by

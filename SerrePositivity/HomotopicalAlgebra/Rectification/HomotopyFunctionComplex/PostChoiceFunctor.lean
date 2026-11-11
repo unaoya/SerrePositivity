@@ -59,10 +59,10 @@ lemma tailTo_compose (g : Y ⟶ V) (b : V ⟶ W) (h : Y ⟶ W) (e : g ≫ b = h)
         (ResolutionLiftSpace.inclusion X Z (f ≫ k.base))).trans
       (congrArg (fun q => tailTo f g b h e ≫ q) (tailTo_inclusion f h c k e'))
     have ht := congrArg (fun q => q ≫
-      (cosimplicialHom (ResolutionLiftSpace.frame X).obj).map c.diagram)
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame X).obj).map c.diagram)
       (tailTo_inclusion f g b h e)
     have hm := congrArg (fun q => ResolutionLiftSpace.inclusion X V (f ≫ g.base) ≫ q)
-      ((cosimplicialHom (ResolutionLiftSpace.frame X).obj).map_comp b.diagram c.diagram).symm
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame X).obj).map_comp b.diagram c.diagram).symm
     exact hl.trans ((Category.assoc _ _ _).symm.trans
       (ht.trans ((Category.assoc _ _ _).trans
         (hm.trans (tailTo_inclusion f g (b ≫ c) k e'').symm))))
@@ -76,7 +76,7 @@ lemma tailTo_identity (g : Y ⟶ V) :
   apply ResolutionLiftSpace.hom_ext
   · have h := tailTo_inclusion f g (𝟙 V) g (Category.comp_id g)
     change _ = ResolutionLiftSpace.inclusion X V (f ≫ g.base) ≫
-      (cosimplicialHom (ResolutionLiftSpace.frame X).obj).map (𝟙 V.resolution.obj) at h
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame X).obj).map (𝟙 V.resolution.obj) at h
     simpa only [CategoryTheory.Functor.map_id, Category.comp_id, Category.id_comp] using h
   · exact (tailTo_projection f g (𝟙 V) g (Category.comp_id g)).trans (Category.id_comp _).symm
 
@@ -168,7 +168,7 @@ lemma point_projection : point hcof f ≫ projection hcof f = 𝟙 _ := by
 lemma projection_trivialFibration
     (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp) (g : Under Y) :
     trivialFibrations SSet.{v} ((projection hcof f).app g) :=
-  RelativeChoiceSpace.projection_trivialFibration hcof hfib (vertexInclusion X Y f)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.projection_trivialFibration hcof hfib (vertexInclusion X Y f)
     (postBoundary X Y g.right f g.hom) (ResolutionLiftSpace.projection X g.right (f ≫ g.hom.base))
     (ResolutionLiftSpace.projection_trivialFibration hcof X g.right (f ≫ g.hom.base))
 

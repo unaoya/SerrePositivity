@@ -26,18 +26,18 @@ lemma connectionHom_boundary : δ (-1) 0 (connectionCochain R B) +
 
 /-- connection の全次数の実 chain map。乗法性は別途必要。 -/
 def connectionHom : (algebra R B).X ⟶ (algebra R (algebra R B)).X :=
-  dgFunctorCommaHomLift R _ _ (identityFunctor R (algebra R B))
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomLift R _ _ (identityFunctor R (algebra R B))
     (identityPoint R (algebra R B)) (identityPoint R (algebra R B))
     (algebra R B).X ((source R B).hom ≫ diagonalHom R B) (𝟙 _)
     (connectionCochain R B) (connectionHom_boundary R B)
 
 lemma connectionHom_source : connectionHom R B ≫ (source R (algebra R B)).hom =
     (source R B).hom ≫ diagonalHom R B :=
-  dgFunctorCommaHomLift_source R _ _ _ _ _ _ _ _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomLift_source R _ _ _ _ _ _ _ _ _ _
 
 lemma connectionHom_target : connectionHom R B ≫ (target R (algebra R B)).hom =
     𝟙 (algebra R B).X :=
-  dgFunctorCommaHomLift_replacement R _ _ _ _ _ _ _ _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomLift_replacement R _ _ _ _ _ _ _ _ _ _
 
 lemma connectionHom_primitive :
     (Cochain.ofHom (connectionHom R B)).comp (primitive R (algebra R B))

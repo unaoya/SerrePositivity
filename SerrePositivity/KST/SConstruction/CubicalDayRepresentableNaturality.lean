@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Opposite
 
 /-- 表現可能 Day tensor の比較は元の両因子の具体的射について自然。 -/
-lemma cubicalDayCubeProjection_naturality {c c' d d' : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma cubicalDayCubeProjection_naturality {c c' d d' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (f : c ⟶ c') (g : d ⟶ d') :
     cubicalDayTensorMap (cubicalYoneda.{u}.map f) (cubicalYoneda.map g) ≫
         cubicalDayCubeProjection c' d' =

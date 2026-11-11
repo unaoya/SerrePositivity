@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitCoconeTriangle
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorCospanCone
-public import SerrePositivity.InfinityCategories.Core.EquivalenceLimits
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.EquivalenceLimits
 
 /-!
 概要：元の二三角形からなる全 cospan 錐を、元の native 余錐の全錐へ写す。

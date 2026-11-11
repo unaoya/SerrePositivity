@@ -23,17 +23,17 @@ variable (X Y : OmegaSpectrum.{u}) {A B : PointedSimplicialSet.{u}}
 /-- 同じ段合成区間の counit 像は、元の厳密な次段評価の構造制限から始まる。 -/
 def kanAdjointRelativeTracedCounitInterval (n : ℕ) :
     PointedMapping.VerticalPath
-      (PointedObject.toPoint (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.toPoint (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         (Y.level (n + 1)).space))
       (φ ≫ pointedEvaluation X Y.toKanSequence (n + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space)
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space)
       ((kanAdjointRelativeTracedComparison X Y φ j ≫
         pointedEvaluation X (KanSequence.signedLoopTail Y.toKanSequence) n) ≫
         kanLoopCounit (X.level n).space (Y.level (n + 1)).space) := by
   have hs : (φ ≫ kanAdjointParameterLeft X Y n) ≫
       kanLoopCounit (X.level n).space (Y.level (n + 1)).space =
         φ ≫ pointedEvaluation X Y.toKanSequence (n + 1) ≫
-          _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space := by
+          _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space := by
     rw [Category.assoc, kanAdjointParameterLeft_counit]
   exact ((kanAdjointRelativeTracedEvaluationInterval X Y φ j n).basedPost
     (kanLoopCounit (X.level n).space (Y.level (n + 1)).space)).changeEndpoints hs.symm rfl
@@ -54,7 +54,7 @@ lemma kanAdjointRelativeTracedCounitInterval_base (n : ℕ) :
     A.hom ▷ (Δ[1] : SSet.{u}) ≫
         (kanAdjointRelativeTracedCounitInterval X Y φ j n).homotopy.h =
       toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫
-        (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 1)).space).hom :=
+        (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 1)).space).hom :=
   (kanAdjointRelativeTracedCounitInterval X Y φ j n).homotopy_base
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

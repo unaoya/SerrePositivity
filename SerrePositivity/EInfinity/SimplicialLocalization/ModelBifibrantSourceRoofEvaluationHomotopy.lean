@@ -30,29 +30,29 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductCommaEvaluationHomotopy : SSet.Homotopy
     (nerveMap (modelBifibrantSourceRoofProductCommaDiagram X Y q b) ≫
-      SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+      SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
     (SSet.const (X := nerve (modelBifibrantSourceRoofProductComma X Y q b))
       (modelBifibrantHammockVertex (modelBifibrantSourceRoofDegreeObject X Y q b))) := by
   exact FrameHom.FrameArrows.augmentationHomotopy
     (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
-    (SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+    (SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaEvaluationHomotopy_h :
     (modelBifibrantSourceRoofProductCommaEvaluationHomotopy X Y q b).h =
-      (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy
         (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)).h ≫
         SimplicialLocalization.hammockLocalizationNerveMap
-          (modelBifibrantRelativeCategory C) := rfl
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C) := rfl
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaEvaluationHomotopy_hom :
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (modelBifibrantSourceRoofProductCommaEvaluationHomotopy X Y q b)) =
         (modelBifibrantSourceRoofProductCommaEvaluationIso X Y q b).hom := by
   rfl
@@ -64,12 +64,12 @@ lemma modelBifibrantSourceRoofProductOverTerminalHomotopy_evaluation_h :
     (overTerminalHomotopy (modelBifibrantSourceRoofDegree X Y q b)
       (modelBifibrantSourceRoofProductCommaOver X Y q b)).h ≫
       nerveMap (Over.forget (modelBifibrantSourceRoofDegree X Y q b)) ≫
-        nerveMap (modelBifibrantDKFrame X q) ≫
+        nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q) ≫
           SimplicialLocalization.hammockLocalizationNerveMap
-            (modelBifibrantRelativeCategory C) =
+            (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C) =
     (modelBifibrantSourceRoofProductCommaEvaluationHomotopy X Y q b).h := by
-  have h : ((modelBifibrantDKFrame X q).mapCocone
-      ((SerrePositivity.InfinityCategories.F1B.overForgetCocone
+  have h : ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q).mapCocone
+      ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.overForgetCocone
         (modelBifibrantSourceRoofDegree X Y q b)).whisker
         (modelBifibrantSourceRoofProductCommaOver X Y q b))).ι =
       modelBifibrantSourceRoofProductCommaEvaluation X Y q b := by
@@ -77,10 +77,10 @@ lemma modelBifibrantSourceRoofProductOverTerminalHomotopy_evaluation_h :
     funext s
     rfl
   have hm := overTerminalHomotopy_map_forget_h (modelBifibrantSourceRoofDegree X Y q b)
-    (modelBifibrantSourceRoofProductCommaOver X Y q b) (modelBifibrantDKFrame X q)
+    (modelBifibrantSourceRoofProductCommaOver X Y q b) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
   rw [h] at hm
   have hpost := congrArg (fun g => g ≫
-    SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) hm
+    SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) hm
   rw [modelBifibrantSourceRoofProductCommaEvaluationHomotopy_h]
   simpa only [Category.assoc] using hpost
 

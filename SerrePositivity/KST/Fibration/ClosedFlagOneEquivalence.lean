@@ -23,9 +23,9 @@ open Relative
 theorem closedFlagOne_predicate {B : StableModel.{u}} (P : ClosedStablePredicate B)
     (v : ((ihom (Δ[1] : SSet.{u})).obj B.carrier) _⦋0⦌) :
     (closedFlagStablePredicate P ⦋1⦌).predicate v ↔ (closedArrowPredicate P).predicate v := by
-  let f := (functorVertexEquiv (Δ[1] : SSet.{u}) B.carrier).symm v
-  have hv : functorVertex f = v := (functorVertexEquiv _ _).apply_symm_apply v
-  have h := (closedFlagStablePredicate_iff P ⦋1⦌ (functorVertex f)).trans
+  let f := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (Δ[1] : SSet.{u}) B.carrier).symm v
+  have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f = v := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).apply_symm_apply v
+  have h := (closedFlagStablePredicate_iff P ⦋1⦌ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)).trans
     ((closedFlag_factor_iff P 1 f).trans (closedArrow_factor_iff P f).symm)
   simpa only [hv] using h
 
@@ -33,12 +33,12 @@ theorem closedFlagOne_predicate {B : StableModel.{u}} (P : ClosedStablePredicate
 方針：同じ恒等制限と正確な頂点逆像の全部分圏補題。
 規約：ModelCategory 仮定なし。使われ方：実完全同値と加法性の接続。 -/
 instance closedFlagOne_trivialKan {B : StableModel.{u}} (P : ClosedStablePredicate B) :
-    TrivialKanFibration (closedFlagEdge P (𝟙 ⦋1⦌)).val := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (closedFlagEdge P (𝟙 ⦋1⦌)).val := by
   have hi : (pre (stdSimplex.map (𝟙 ⦋1⦌))).app B.carrier =
       𝟙 ((ihom (Δ[1] : SSet.{u})).obj B.carrier) := by
     rw [CategoryTheory.Functor.map_id, pre_id, NatTrans.id_app]
-  have : TrivialKanFibration (diagramRestrictionMap (flagAmbient B) (𝟙 ⦋1⦌)).val := by
-    change TrivialKanFibration ((pre (stdSimplex.map (𝟙 ⦋1⦌))).app B.carrier)
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (diagramRestrictionMap (flagAmbient B) (𝟙 ⦋1⦌)).val := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration ((pre (stdSimplex.map (𝟙 ⦋1⦌))).app B.carrier)
     rw [hi]
     infer_instance
   apply fullPredicateMap_trivialKanFibration

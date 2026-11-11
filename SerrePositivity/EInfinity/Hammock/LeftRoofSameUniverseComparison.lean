@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.LeftRoofPrecomposeHomotopy
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransHomotopy
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.NatTransHomotopy
 
 /-!
 # 元の四列 roof 比較の同じ宇宙の任意添字への全単体入口
@@ -20,35 +20,35 @@ universe u
 namespace SerrePositivity.EInfinity.Hammock.LeftRoof.Precompose.SameUniverse
 open CategoryTheory MonoidalCategory SerrePositivity.SimplicialModel
 variable {C I : Type u} [Category.{u} C] [Category.{u} I]
-  (W : MorphismProperty C) [W.IsMultiplicative] {B E X' X Y : C} {w : Word}
+  (W : MorphismProperty C) [W.IsMultiplicative] {B E X' X Y : C} {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word}
 
-def diagramGraphMap (F : I ⥤ Zigzag W w B E) : nerve I ⟶ graph W w B E := nerveMap F
+def diagramGraphMap (F : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W w B E) : nerve I ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W w B E := nerveMap F
 
-def diagramColimitMap (F : I ⥤ Zigzag W w B E) : nerve I ⟶ colimitGraph W B E :=
-  diagramGraphMap W F ≫ graphInclusion W B E w
+def diagramColimitMap (F : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W w B E) : nerve I ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W B E :=
+  diagramGraphMap W F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W B E w
 
-lemma diagramColimitMap_wordAction (F : I ⥤ Zigzag W w B E) {w' : Word} (f : w ⟶ w') :
-    diagramColimitMap W (F ⋙ WordAction.functor f) = diagramColimitMap W F := by
-  have h : diagramGraphMap W (F ⋙ WordAction.functor f) =
-      diagramGraphMap W F ≫ (graphDiagram W B E).map f := rfl
+lemma diagramColimitMap_wordAction (F : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W w B E) {w' : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : w ⟶ w') :
+    diagramColimitMap W (F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f) = diagramColimitMap W F := by
+  have h : diagramGraphMap W (F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f) =
+      diagramGraphMap W F ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W B E).map f := rfl
   unfold diagramColimitMap
-  rw [h, Category.assoc, graphInclusion_naturality]
+  rw [h, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion_naturality]
 
-lemma diagramColimitMap_precompose (F : I ⥤ Zigzag W LeftRoof.word X Y) (f : X' ⟶ X) :
+lemma diagramColimitMap_precompose (F : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word X Y) (f : X' ⟶ X) :
     diagramColimitMap W
-      (((Functor.const I).obj (ForwardZigzag.obj (W := W) f)).prod' F ⋙ ZigzagAppend.functor) =
-    diagramColimitMap W F ≫ precomposePointMap (arrowMap W f) Y := by
+      (((Functor.const I).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.obj (W := W) f)).prod' F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendFunctor.functor) =
+    diagramColimitMap W F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f) Y := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
   intro σ
   let Γ := σ ⋙ F
-  change (graphInclusion W X' Y preWord).app n
-      ((arrowSimplex W f n).prod' Γ ⋙ ZigzagAppend.functor) =
-    composePoint W X' X Y (arrowPoint W f n)
-      ((graphInclusion W X Y LeftRoof.word).app n Γ)
-  exact (composePoint_inclusions W X' X Y (Word.single .forward) LeftRoof.word
-    (arrowSimplex W f n) Γ).symm
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X' Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoofPrecomposeWords.preWord).app n
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W f n).prod' Γ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendFunctor.functor) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W X' X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W f n)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word).app n Γ)
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_inclusions W X' X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W f n) Γ).symm
 
 variable (A' A : I ⥤ C) (p' : A' ⟶ (Functor.const I).obj X') (hp' : ∀ i, W (p'.app i))
   (p : A ⟶ (Functor.const I).obj X) (hp : ∀ i, W (p.app i))
@@ -58,17 +58,17 @@ variable (A' A : I ⥤ C) (p' : A' ⟶ (Functor.const I).obj X') (hp' : ∀ i, W
   (hA : ∀ {i j} (a : i ⟶ j), W (A.map a))
 
 def diagramHomotopy : SSet.Homotopy
-    (diagramGraphMap W (upperDiagram W A' A p' hp' α σ hA' hA))
-    (diagramGraphMap W (lowerDiagram W A p hp f σ hA)) :=
-  SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy
-    (diagramComponent W A p hp f σ hA A' p' hp' α h hA')
+    (diagramGraphMap W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.upperDiagram W A' A p' hp' α σ hA' hA))
+    (diagramGraphMap W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lowerDiagram W A p hp f σ hA)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagramComponent W A p hp f σ hA A' p' hp' α h hA')
 
 include h in
 lemma diagramColimitMap_component :
     AnodyneHomotopy.anodyneQ.map
-      (diagramColimitMap W (upperDiagram W A' A p' hp' α σ hA' hA)) =
+      (diagramColimitMap W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.upperDiagram W A' A p' hp' α σ hA' hA)) =
     AnodyneHomotopy.anodyneQ.map
-      (diagramColimitMap W (lowerDiagram W A p hp f σ hA)) := by
+      (diagramColimitMap W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lowerDiagram W A p hp f σ hA)) := by
   have he := AnodyneHomotopy.map_homotopy_eq AnodyneHomotopy.anodyneQ
     SSet.anodyneExtensions.Q_inverts (diagramHomotopy W A' A p' hp' p hp α f σ h hA' hA)
   simp only [diagramColimitMap, Functor.map_comp]
@@ -77,19 +77,19 @@ lemma diagramColimitMap_component :
 include h in
 lemma diagramColimitMap_sourceComparison :
     AnodyneHomotopy.anodyneQ.map (diagramColimitMap W
-      (LeftRoof.diagram W A' p' hp' (α ≫ σ) hA')) =
-    AnodyneHomotopy.anodyneQ.map (diagramColimitMap W (LeftRoof.diagram W A p hp σ hA)) ≫
-      AnodyneHomotopy.anodyneQ.map (precomposePointMap (arrowMap W f) Y) := by
-  have huI : diagramColimitMap W (upperDiagram W A' A p' hp' α σ hA' hA) =
-      diagramColimitMap W (upperOriginalDiagram W A' A p' hp' α σ hA' hA) := by
-    rw [← upperOriginalDiagram_insert, diagramColimitMap_wordAction]
-  have huC : diagramColimitMap W (upperOriginalDiagram W A' A p' hp' α σ hA' hA) =
-      diagramColimitMap W (LeftRoof.diagram W A' p' hp' (α ≫ σ) hA') := by
-    rw [← upperOriginalDiagram_collapse, diagramColimitMap_wordAction]
-  have hl : diagramColimitMap W (lowerDiagram W A p hp f σ hA) =
-      diagramColimitMap W (LeftRoof.diagram W A p hp σ hA) ≫
-        precomposePointMap (arrowMap W f) Y := by
-    rw [← lowerDiagram_insert, ← CategoryTheory.Functor.assoc,
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram W A' p' hp' (α ≫ σ) hA')) =
+    AnodyneHomotopy.anodyneQ.map (diagramColimitMap W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram W A p hp σ hA)) ≫
+      AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f) Y) := by
+  have huI : diagramColimitMap W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.upperDiagram W A' A p' hp' α σ hA' hA) =
+      diagramColimitMap W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.upperOriginalDiagram W A' A p' hp' α σ hA' hA) := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.upperOriginalDiagram_insert, diagramColimitMap_wordAction]
+  have huC : diagramColimitMap W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.upperOriginalDiagram W A' A p' hp' α σ hA' hA) =
+      diagramColimitMap W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram W A' p' hp' (α ≫ σ) hA') := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.upperOriginalDiagram_collapse, diagramColimitMap_wordAction]
+  have hl : diagramColimitMap W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lowerDiagram W A p hp f σ hA) =
+      diagramColimitMap W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram W A p hp σ hA) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f) Y := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lowerDiagram_insert, ← CategoryTheory.Functor.assoc,
       diagramColimitMap_wordAction, diagramColimitMap_precompose]
   rw [← huC, ← huI, diagramColimitMap_component W A' A p' hp' p hp α f σ h hA' hA,
     hl, Functor.map_comp]

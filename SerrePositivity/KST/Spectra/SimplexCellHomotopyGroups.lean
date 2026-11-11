@@ -28,16 +28,16 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：実際の標的の次数は n+r+2。
 使われ方：Goerss–Jardine I §7、VIII §1。各 fiber の係数の同定。 -/
 def positiveHomotopyEquiv (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n r : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom (sphere.{u} (n + 1)) Y).right r
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom (sphere.{u} (n + 1)) Y).right r
         (PointedSimplicialSet.basepoint (PointedObject.basedHom (sphere.{u} (n + 1)) Y)) ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 1 + r) Y.basepoint := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 1 + r) Y.basepoint := by
   let ep : PointedObject.basedHom (sphere.{u} (n + 1)) Y ≅
       PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y :=
     (internalHom.flip.obj Y).mapIso (sphereIso.{u} (n + 1)).symm.op
   let e : (PointedObject.basedHom (sphere.{u} (n + 1)) Y).right ≅
       (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y).right :=
     PointedSimplicialSet.forget.mapIso ep
-  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso r e (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint ep.hom)).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso r e (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint ep.hom)).trans
     (SphereSimplex.positiveHomotopyEquiv Y n r)
 
 end

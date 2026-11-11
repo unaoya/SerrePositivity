@@ -63,22 +63,22 @@ theorem filteredSpectrumInjection_stage (D : J ⥤ OmegaSpectrum.{u}) (a : J)
     (j : ℤ) (k n : ℕ) (hk : -j ≤ (k : ℤ)) (hd : degree j k = n + 1)
     (x : homotopyGroup (D.obj a) j) :
     filteredSpectrumStageEquiv D j k n hk hd (homotopyMap (filteredSpectrumInjection D a) j x) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (colimit.ι (levelDiagram D k) a).right
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) (positiveStageEquiv (D.obj a) j k n hk hd x) := by
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n (filteredLevelComparison D k).right
-    (filteredLevelComparison_piIsomorphism D k) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := n) (colimit.ι (levelDiagram D k) a).right
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _) (positiveStageEquiv (D.obj a) j k n hk hd x) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfPiIsomorphism n (filteredLevelComparison D k).right
+    (filteredLevelComparison_piIsomorphism D k) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)
       (positiveStageEquiv (filteredOmegaSpectrum D) j k n hk hd
         (homotopyMap (filteredSpectrumInjection D a) j x)) = _
   rw [positiveStageEquiv_natural]
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfPiIsomorphism_apply]
   let s := positiveStageEquiv (D.obj a) j k n hk hd x
-  have hm := DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (n := n)
-    ((filteredSpectrumInjection D a).app k).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
-    (filteredLevelComparison D k).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint ((filteredSpectrumInjection D a).app k ≫
+  have hm := DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_comp (n := n)
+    ((filteredSpectrumInjection D a).app k).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)
+    (filteredLevelComparison D k).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint ((filteredSpectrumInjection D a).app k ≫
       filteredLevelComparison D k))) s
   have heq := congrArg (fun f : ((D.obj a).level k).space ⟶ colimit (levelDiagram D k) ↦
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) f.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f) s)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := n) f.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint f) s)
       (filteredSpectrumInjection_comparison D a k)
   exact hm.symm.trans heq
 

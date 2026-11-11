@@ -16,28 +16,28 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の face の右端保持は、座標を一つずらした元の Serre 射を回収する。 -/
 lemma serreConcreteCubeRightKeep_face (b : Bool) (n : ℕ) (i : Fin (n + 1)) :
-    (serreConcreteCubeFunctor A).map (concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b n i)) =
+    (serreConcreteCubeFunctor A).map (concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace b n i)) =
       serreCubeFace A b (n + 1) i.succ := by
-  have h : concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b n i) =
-      _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b (n + 1) i.succ := Subtype.ext (cubeVertexRightKeep_face b n i)
+  have h : concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace b n i) =
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace b (n + 1) i.succ := Subtype.ext (cubeVertexRightKeep_face b n i)
   exact (congrArg (fun k => (serreConcreteCubeFunctor A).map k) h).trans
     (serreConcreteCubeFunctor_face A b (n + 1) i.succ)
 
 /-- 元の degeneracy の右端保持は、座標を一つずらした元の Serre 射を回収する。 -/
 lemma serreConcreteCubeRightKeep_degeneracy (n : ℕ) (i : Fin (n + 1)) :
-    (serreConcreteCubeFunctor A).map (concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy n i)) =
+    (serreConcreteCubeFunctor A).map (concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeDegeneracy n i)) =
       serreCubeDegeneracy A (n + 1) i.succ := by
-  have h : concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy n i) =
-      _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy (n + 1) i.succ := Subtype.ext (cubeVertexRightKeep_degeneracy n i)
+  have h : concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeDegeneracy n i) =
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeDegeneracy (n + 1) i.succ := Subtype.ext (cubeVertexRightKeep_degeneracy n i)
   exact (congrArg (fun k => (serreConcreteCubeFunctor A).map k) h).trans
     (serreConcreteCubeFunctor_degeneracy A (n + 1) i.succ)
 
 /-- 元の connection の右端保持は、座標を一つずらした元の Serre 射を回収する。 -/
 lemma serreConcreteCubeRightKeep_connection (n : ℕ) (i : Fin (n + 1)) :
-    (serreConcreteCubeFunctor A).map (concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection n i)) =
+    (serreConcreteCubeFunctor A).map (concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeConnection n i)) =
       serreCubeConnection A (n + 1) i.succ := by
-  have h : concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection n i) =
-      _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection (n + 1) i.succ := Subtype.ext (cubeVertexRightKeep_connection n i)
+  have h : concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeConnection n i) =
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeConnection (n + 1) i.succ := Subtype.ext (cubeVertexRightKeep_connection n i)
   exact (congrArg (fun k => (serreConcreteCubeFunctor A).map k) h).trans
     (serreConcreteCubeFunctor_connection A (n + 1) i.succ)
 

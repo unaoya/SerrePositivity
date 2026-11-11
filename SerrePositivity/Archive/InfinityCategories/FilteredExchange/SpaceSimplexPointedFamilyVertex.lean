@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceSimplexPointedFamily
-public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplexPrismFirstVertex
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexPrismFirstVertex
 
 /-!
 概要：元の全 pointed 族の任意の頂点を、同じ coslice 頂点への全 Hom 前合成で読む。

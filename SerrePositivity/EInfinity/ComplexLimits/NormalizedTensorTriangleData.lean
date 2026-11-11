@@ -19,7 +19,7 @@ variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 def normalizedTensorTriangleData {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
-    (τ : Fin (n + 1) →o Fin 3) : SimplexData A (Complex A) n where
+    (τ : Fin (n + 1) →o Fin 3) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A (Complex A) n where
   obj := normalizedTensorTriangleObj A X Y c τ
   hom I a b k hI ha hb hk := by
     have hab : a ≤ b := by

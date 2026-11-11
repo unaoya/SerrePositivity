@@ -19,28 +19,28 @@ open CategoryTheory Limits SSet
 open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
-variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
 
 include hΦ in
-lemma valueMap_hom_zero_of_zero_values {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
-    (hF : ∀ a, IsZeroVertex (F.hom.app (Opposite.op ⦋0⦌) a)) :
+lemma valueMap_hom_zero_of_zero_values {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B)
+    (hF : ∀ a, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.hom.app (Opposite.op ⦋0⦌) a)) :
     SpectrumHo.hom (valueMap Φ F) = 0 := by
-  let G : A ⟶ B := (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A : A ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory) ≫ fromZeroCategory B
-  have hG : ∀ a, IsZeroVertex (G.hom.app (Opposite.op ⦋0⦌) a) := by
+  let G : A ⟶ B := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory A : A ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory) ≫ fromZeroCategory B
+  have hG : ∀ a, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (G.hom.app (Opposite.op ⦋0⦌) a) := by
     intro a
-    change IsZeroVertex (((_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A).hom ≫ (fromZeroCategory B).hom).app _ a)
-    rw [throughZero_hom, zeroDiagram_const_vertex]
-    exact (chosenZeroVertex B.obj).isZero
-  have e : FunctorIso F.hom G.hom := zeroDiagramFunctorIso _ _ hF hG
-  have hz : IsZero ((stableValueFunctor Φ).obj _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u}) := by
-    have h := hΦ.preservesZero _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero
-    rw [← value_vertex Φ _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory] at h
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory A).hom ≫ (fromZeroCategory B).hom).app _ a)
+    rw [throughZero_hom, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex]
+    exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex B.obj).isZero
+  have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F.hom G.hom := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagramFunctorIso _ _ hF hG
+  have hz : IsZero ((stableValueFunctor Φ).obj _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{u}) := by
+    have h := hΦ.preservesZero _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory_isZero
+    rw [← value_vertex Φ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory] at h
     exact h.isZeroHo
   calc
     SpectrumHo.hom (valueMap Φ F) = (stableValueFunctor Φ).map G :=
       valueMap_hom_eq_of_functorIso Φ e
-    _ = (stableValueFunctor Φ).map (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A) ≫
+    _ = (stableValueFunctor Φ).map (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory A) ≫
         (stableValueFunctor Φ).map (fromZeroCategory B) := Functor.map_comp _ _ _
-    _ = 0 := by rw [hz.eq_zero_of_tgt ((stableValueFunctor Φ).map (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A)), zero_comp]
+    _ = 0 := by rw [hz.eq_zero_of_tgt ((stableValueFunctor Φ).map (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory A)), zero_comp]
 
 end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant

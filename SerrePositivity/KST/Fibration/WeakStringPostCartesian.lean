@@ -16,8 +16,8 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 元の全ての面の自然性四角形は、全正反復で homotopy pullback。 -/
 theorem weakStringMultiPostcomp_face_homotopyPullback
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (r n : ℕ) (j : Fin (n + 2)) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (r n : ℕ) (j : Fin (n + 2)) :
     IsHomotopyPullback (CommSq.mk ((weakStringMultiPostcomp i q (r + 1)).naturality
       (SimplexCategory.δ j).op)) := by
   refine Fin.cases ?_ (fun k => ?_) j
@@ -28,8 +28,8 @@ theorem weakStringMultiPostcomp_face_homotopyPullback
 
 /-- 元の全ての退化の自然性四角形は、全正反復で homotopy pullback。 -/
 theorem weakStringMultiPostcomp_degeneracy_homotopyPullback
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (r n : ℕ) (j : Fin (n + 1)) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (r n : ℕ) (j : Fin (n + 1)) :
     IsHomotopyPullback (CommSq.mk ((weakStringMultiPostcomp i q (r + 1)).naturality
       (SimplexCategory.σ j).op)) := by
   apply weakStringMultiPostcomp_headPreserving_homotopyPullback h r (SimplexCategory.σ j)
@@ -37,8 +37,8 @@ theorem weakStringMultiPostcomp_degeneracy_homotopyPullback
 
 /-- 元の全 W 列の Verdier 包含による後合成は、全正反復で全単体的に homotopy-cartesian。 -/
 theorem weakStringMultiPostcomp_homotopyPullback
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (r : ℕ) {d e : SimplexCategory} (θ : d ⟶ e) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (r : ℕ) {d e : SimplexCategory} (θ : d ⟶ e) :
     IsHomotopyPullback (CommSq.mk ((weakStringMultiPostcomp i q (r + 1)).naturality
       θ.op)) :=
   simplicialNaturality_homotopyPullback_of_head (weakStringMultiPostcomp i q (r + 1))

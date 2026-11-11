@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialOrdinaryMap
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialOrdinaryMap
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFMap
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryKanFunctor
 
@@ -19,12 +19,12 @@ variable (A : Type u) [CommRing A]
 /-- 境界の通常射の回収は、元の同じ境界商の Ex∞ 射と一致する。 -/
 lemma presentedPerfectDGBFBoundaryOrdinaryMap (r : ℕ)
     {X Y : PerfDGInput.{u, v} A} (f : X ⟶ Y) :
-    _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap (presentedPerfectDGBFBoundaryFunctor A r) f =
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialOrdinaryMap (presentedPerfectDGBFBoundaryFunctor A r) f =
       (show (presentedPerfectDGBFBoundaryFunctor A r).obj X ⟶
         (presentedPerfectDGBFBoundaryFunctor A r).obj Y from
           (presentedPerfectDGBoundaryKanMap A r f).hom) := by
   apply (eHomEquiv SSet).injective
-  exact (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_hom _ f).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialOrdinaryMap_hom _ f).trans
     (presentedPerfectDGBoundaryKanEnrichedFunctor_hom A r f)
 
 /-- 元の前向き段比較は、同じ境界 Kan 射と実段射に関して厳密に自然。 -/
@@ -38,8 +38,8 @@ lemma presentedPerfectDGBFStageComparison_naturality (r : ℕ)
       (show ((presentedPerfectDGBFBoundaryFunctor A r).obj X).obj ⟶
         (S.functor.obj X).obj from S.comparison X) ≫
         (show (S.functor.obj X).obj ⟶ (S.functor.obj Y).obj from
-          _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap S.functor f) := by
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_naturality
+          _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialOrdinaryMap S.functor f) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialOrdinaryMap_naturality
     (presentedPerfectDGBFBoundaryFunctor A r) S.functor S.comparison S.naturality f
   rw [presentedPerfectDGBFBoundaryOrdinaryMap A r f] at h
   exact h
@@ -50,7 +50,7 @@ lemma presentedPerfectDGBFMap_positive_app {X Y : PerfDGInput.{u, v} A}
     (presentedPerfectDGBFMap A f).app (r + 1) =
       (show (((presentedPerfectDGBFPositiveStage A r).functor).obj X).obj ⟶
         (((presentedPerfectDGBFPositiveStage A r).functor).obj Y).obj from
-          _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap (presentedPerfectDGBFPositiveStage A r).functor f) :=
+          _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialOrdinaryMap (presentedPerfectDGBFPositiveStage A r).functor f) :=
   presentedPerfectDGBFMap_app A f (r + 1)
 
 /-- 零段の同じ実 BF 射は、元の境界 Kan 射の loop を厳密に回収する。 -/
@@ -60,10 +60,10 @@ lemma presentedPerfectDGBFMap_zero_app {X Y : PerfDGInput.{u, v} A} (f : X ⟶ Y
         (presentedPerfectDGBoundaryKanMap A 0 f).hom := by
   have h := presentedPerfectDGBFMap_app A f 0
   refine h.trans ?_
-  change _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialOrdinaryMap
     ((presentedPerfectDGBFBoundaryFunctor A 0).comp SSet pointedStandardLoopEnrichedFunctor) f = _
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_comp, presentedPerfectDGBFBoundaryOrdinaryMap A 0 f]
-  exact _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_of_hom pointedStandardLoopEnrichedFunctor _
+  rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialOrdinaryMap_comp, presentedPerfectDGBFBoundaryOrdinaryMap A 0 f]
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialOrdinaryMap_of_hom pointedStandardLoopEnrichedFunctor _
     (pointedStandardLoopMap
       (show (presentedPerfectDGBFBoundaryFunctor A 0).obj X ⟶
         (presentedPerfectDGBFBoundaryFunctor A 0).obj Y from

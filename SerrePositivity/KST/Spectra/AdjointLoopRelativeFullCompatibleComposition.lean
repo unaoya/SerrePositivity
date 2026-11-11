@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeBoundaryCoordinates
-public import SerrePositivity.InfinityCategories.Kan.EnrichedWhiskeredSquareComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedWhiskeredSquareComposition
 
 /-!
 概要：元の相対 BF 左因子と右射影を同時に保つ全 Hom の組の合成。
@@ -83,7 +83,7 @@ lemma full_right_whiskered (X Y : OmegaSpectrum.{u}) (n : ℕ) :
       (RawSpectrumMapping.pointedEvaluation X Y.toKanSequence (n + 1)).right ≫
       (PointedMapping.ihomAction PointedSimplicialSet.circle.{u}
         (X.level (n + 1)).space (Y.level (n + 1)).space).right) ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((projection X).app n) ((target Y).level n).space).right =
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((projection X).app n) ((target Y).level n).space).right =
     (fullReplacedMap X Y ≫ evaluation (middle X) (middle Y) n) ≫
       (PointedObject.basedHomMap ((middle X).level n).space ((projection Y).app n)).right
   simpa only [Category.assoc] using h.symm
@@ -98,7 +98,7 @@ lemma full_composition_left_whiskered (X Y Z : OmegaSpectrum.{u}) :
           eHomWhiskerRight SSet (inclusion X) (middle Z) =
       (fullOriginalMap X Y ⊗ₘ fullOriginalMap Y Z) ≫ mappingComposition X Y Z ≫
         eHomWhiskerLeft SSet X (inclusion Z) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_comp SSet (inclusion X) (inclusion Y) (inclusion Z)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_whiskered_square_comp SSet (inclusion X) (inclusion Y) (inclusion Z)
     (fullReplacedMap X Y) (fullOriginalMap X Y) (fullReplacedMap Y Z) (fullOriginalMap Y Z)
     (full_left_whiskered X Y) (full_left_whiskered Y Z)
 
@@ -164,7 +164,7 @@ lemma full_composition_right (X Y Z : OmegaSpectrum.{u}) :
         (projectionParameterFamily X Z _ (universalParameterHom X Z)).right := by
   apply RawSpectrumMapping.hom_ext (middle X) (target Z)
   intro n
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_comp SSet ((projection X).app n)
+  have h := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_whiskered_square_comp SSet ((projection X).app n)
     ((projection Y).app n) ((projection Z).app n)
     (fullOriginalLoopStage X Y n) (fullReplacedStage X Y n)
     (fullOriginalLoopStage Y Z n) (fullReplacedStage Y Z n)
@@ -193,7 +193,7 @@ lemma full_composition_right (X Y Z : OmegaSpectrum.{u}) :
       evaluation X Z (n + 1) ≫
       (PointedMapping.ihomAction PointedSimplicialSet.circle.{u}
         (X.level (n + 1)).space (Z.level (n + 1)).space).right ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((projection X).app n) ((target Z).level n).space
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((projection X).app n) ((target Z).level n).space
   simpa only [Category.assoc] using h.symm
 
 /-- 概要：元の左右因子を同時に保つ全 Hom の組の実際の豊穣合成。

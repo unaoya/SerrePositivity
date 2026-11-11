@@ -30,15 +30,15 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：BF 1978 §2、HA §1.4.2。loop の符号反転を BF 対象へ移す。 -/
 theorem cotensorPre_levelwise_of_pre_piIsomorphism {A B : PointedSimplicialSet.{u}}
     (i : A ⟶ B) (X : OmegaSpectrum.{u})
-    (hi : ∀ k, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (X.level k).space).right)
-    (k : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((cotensorPre i X).app k).right := by
+    (hi : ∀ k, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (X.level k).space).right)
+    (k : ℕ) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((cotensorPre i X).app k).right := by
   have hcomp := (cotensorProjection_piIsomorphism B X k).comp (hi k)
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((cotensorProjection A X).app k).right) _
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := ((cotensorProjection A X).app k).right) _
     (cotensorProjection_piIsomorphism A X k)
   have h := congrArg Under.Hom.right (cotensorPre_comparison i X k)
   change ((cotensorPre i X).app k).right ≫ ((cotensorProjection A X).app k).right =
     ((cotensorProjection B X).app k).right ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (X.level k).space).right at h
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (X.level k).space).right at h
   rw [h]
   exact hcomp
 
@@ -59,7 +59,7 @@ theorem cotensorPre_integer_homotopyMap (X : OmegaSpectrum.{u}) (z j : ℤ)
 規約：零次数も含む。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。構造射の符号変更の Ω 条件。 -/
 theorem cotensorPre_neg_one_levelwise (X : OmegaSpectrum.{u}) (k : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((cotensorPre (CirclePower.integerPowerMap (-1)) X).app k).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((cotensorPre (CirclePower.integerPowerMap (-1)) X).app k).right :=
   cotensorPre_levelwise_of_pre_piIsomorphism _ X
     (fun k => LoopMappingClasses.pre_neg_one_piIsomorphism (X.level k).space) k
 

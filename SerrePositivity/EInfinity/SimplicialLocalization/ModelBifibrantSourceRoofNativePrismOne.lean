@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismOne
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinchedValue
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePrism
-public import SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Roof.SliceEvaluationPinched
 
 /-!
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
@@ -32,14 +32,14 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 lemma modelBifibrantSourceRoofProductCommaNativeSimplex_one {n : ℕ}
     (Γ : Fin (n + 1) ⥤ modelBifibrantSourceRoofProductComma X Y q b) :
     modelBifibrantSourceRoofProductCommaNativeSimplex X Y q b Γ (OrderHom.const _ 1) =
-    coherentHomComparisonSimplex
-      (C := KanHammockCategory (modelBifibrantRelativeCategory C))
-      (X := (kanHammockSourceFunctor (modelBifibrantRelativeCategory C)).obj
-        (modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b)))
-      (Y := (kanHammockSourceFunctor (modelBifibrantRelativeCategory C)).obj
-        (modelBifibrantObject C Y))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex
+      (C := KanHammockCategory (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+      (X := (kanHammockSourceFunctor (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).obj
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b)))
+      (Y := (kanHammockSourceFunctor (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).obj
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y))
       ((modelBifibrantSourceRoofProductCommaNativeFamilyMap X Y q b).app (Opposite.op ⦋n⦌) Γ) :=
-  RoofPrefix.simplex_one (modelBifibrantRelativeCategory C)
+  RoofPrefix.simplex_one (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
     (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation_weak X Y q b)
@@ -52,27 +52,27 @@ lemma modelBifibrantSourceRoofProductCommaNativeSimplex_one {n : ℕ}
 lemma modelBifibrantSourceRoofProductCommaNativePinchedMap_app_val {n : ℕ}
     (Γ : (nerve (modelBifibrantSourceRoofProductComma X Y q b)) _⦋n⦌) :
     ((modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b).app (Opposite.op ⦋n⦌) Γ).val =
-    coherentHomComparisonSimplex
-      (C := KanHammockCategory (modelBifibrantRelativeCategory C))
-      (X := (kanHammockSourceFunctor (modelBifibrantRelativeCategory C)).obj
-        (modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b)))
-      (Y := (kanHammockSourceFunctor (modelBifibrantRelativeCategory C)).obj
-        (modelBifibrantObject C Y))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex
+      (C := KanHammockCategory (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+      (X := (kanHammockSourceFunctor (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).obj
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b)))
+      (Y := (kanHammockSourceFunctor (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).obj
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y))
       ((modelBifibrantSourceRoofProductCommaNativeFamilyMap X Y q b).app (Opposite.op ⦋n⦌) Γ) := by
   rw [← modelBifibrantSourceRoofProductCommaNativeFamilyMap_pinched X Y q b]
-  exact kanHammockHomPinchedMap_app_val (modelBifibrantRelativeCategory C)
-    (modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
-    (modelBifibrantObject C Y)
+  exact kanHammockHomPinchedMap_app_val (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
     ((modelBifibrantSourceRoofProductCommaNativeFamilyMap X Y q b).app (Opposite.op ⦋n⦌) Γ)
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaNativePrism_one :
-    prismEndpoint 1 (nerve (modelBifibrantSourceRoofProductComma X Y q b)) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (nerve (modelBifibrantSourceRoofProductComma X Y q b)) ≫
       modelBifibrantSourceRoofProductCommaNativePrism X Y q b =
     modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b ≫
-      pinchedFamilySlice (kanHammockNerve (modelBifibrantRelativeCategory C))
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.pinchedFamilySlice (kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
         (modelBifibrantHammockVertex (modelBifibrantSourceRoofDegreeObject X Y q b))
         (modelBifibrantHammockVertex Y) := by
   apply SSet.hom_ext
@@ -80,9 +80,9 @@ lemma modelBifibrantSourceRoofProductCommaNativePrism_one :
   apply ConcreteCategory.hom_ext
   intro Γ
   apply Subtype.ext
-  change (joinStdSimplexIso n 0).hom ≫ SSet.yonedaEquiv.symm
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom ≫ SSet.yonedaEquiv.symm
     (modelBifibrantSourceRoofProductCommaNativeSimplex X Y q b Γ (OrderHom.const _ 1)) =
-      (joinStdSimplexIso n 0).hom ≫ SSet.yonedaEquiv.symm
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom ≫ SSet.yonedaEquiv.symm
         (((modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b).app
           (Opposite.op ⦋n⦌) Γ).val)
   rw [modelBifibrantSourceRoofProductCommaNativeSimplex_one X Y q b Γ,
@@ -93,15 +93,15 @@ lemma modelBifibrantSourceRoofProductCommaNativePrism_one :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaNativePrism_one_evaluation :
     (β_ (nerve (modelBifibrantSourceRoofProductComma X Y q b)) (Δ[1] : SSet.{max u v})).hom ≫
-      rightMappingSpacePrism _ ≫ sliceOverUncurry
-        (prismEndpoint 1 _ ≫ modelBifibrantSourceRoofProductCommaNativePrism X Y q b) =
-    (intervalFamilyHomotopy (modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b ≫
-      pinchedHomToIntervalMappingSpace _ _)).h := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 _ ≫ modelBifibrantSourceRoofProductCommaNativePrism X Y q b) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHomotopy (modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)).h := by
   rw [modelBifibrantSourceRoofProductCommaNativePrism_one X Y q b]
-  exact (roofSliceEvaluationHomotopy_precomp_h (modelBifibrantHammockVertex Y)
+  exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Roof.roofSliceEvaluationHomotopy_precomp_h (modelBifibrantHammockVertex Y)
     (modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b ≫
-      pinchedFamilySlice _ _ _)).symm.trans
-        (roofSliceEvaluationHomotopy_pinched_h
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.pinchedFamilySlice _ _ _)).symm.trans
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Roof.roofSliceEvaluationHomotopy_pinched_h
           (modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b))
 
 end SerrePositivity.EInfinity.SimplicialLocalization

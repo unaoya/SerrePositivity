@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.Hammock.AsSmallComposition
 public import SerrePositivity.EInfinity.FrameHom.KanHomFamily
 public import SerrePositivity.EInfinity.FrameHom.SourceRoofFamily
-public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramNaturalTransformation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanDiagramNaturalTransformation
 
 /-!
 概要：元の全標的 hammock Hom 図式を同じ AsSmall 表示に全自然に同定する。
@@ -34,9 +34,9 @@ def asSmallHammockHomFamilyIso :
 方針：元の全射へ一つの関手を適用する。
 規約：元の同型成分そのもの。使われ方：coherent 図式同型への実入力。 -/
 def asSmallKanHammockHomFamilyMap :
-    AsSmall.down ⋙ kanHomFamily (hammockHomFamily W X) ⋙ kanObjectForget ⟶
+    AsSmall.down ⋙ kanHomFamily (hammockHomFamily W X) ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget ⟶
       kanHomFamily (hammockHomFamily (AsSmallComparison.weak W) (AsSmall.up.obj X)) ⋙
-        kanObjectForget :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget :=
   Functor.whiskerRight (asSmallHammockHomFamilyIso W X).hom _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity
 
 /-- 概要：同じ Kan 自然変換の全成分は実際の同型。
@@ -55,16 +55,16 @@ attribute [local instance] kanHomFamily_kanComplex
 使われ方：S (6) の終端と同じ balanced Kan hammock Hom 図式の比較。
 -/
 def asSmallHammockHomCoherentIso :
-    FunctorIso
-      (kanDiagramCoherentNerve (AsSmall.down ⋙ kanHomFamily (hammockHomFamily W X)))
-      (kanDiagramCoherentNerve
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (AsSmall.down ⋙ kanHomFamily (hammockHomFamily W X)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve
         (kanHomFamily (hammockHomFamily (AsSmallComparison.weak W) (AsSmall.up.obj X)))) :=
-  kanDiagramFunctorIsoOfPointwise
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramFunctorIsoOfPointwise
     (F := ⟨AsSmall.down ⋙ kanHomFamily (hammockHomFamily W X), trivial⟩)
     (G := ⟨kanHomFamily (hammockHomFamily (AsSmallComparison.weak W)
       (AsSmall.up.obj X)), trivial⟩)
     (asSmallKanHammockHomFamilyMap W X) (fun Y => by
-      let e := qCatEquivalenceOfIso
+      let e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso
         (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.mapIso ((asSmallHammockHomFamilyIso W X).app Y))
       exact e.isQCatEquivalence)
 

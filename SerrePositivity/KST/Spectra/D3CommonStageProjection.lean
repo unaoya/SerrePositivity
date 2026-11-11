@@ -83,16 +83,16 @@ lemma commonProjection_stage_whiskered (X Y : OmegaSpectrum.{u}) (n : ℕ) :
 
 /-- 元の共通右射影の全段 π 同型。 -/
 lemma commonProjection_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((commonProjection X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((commonProjection X).app n).right :=
   (commonComparison_levelwise X n).comp
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (projection_rlp X n))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (projection_rlp X n))
 
 /-- 同じ元の右射影を成分とする、各段の厳密豊穣自然変換。 -/
 def commonStageGradedProjection (n : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (commonRefinedStageKanEnriched n) (commonTargetStageKanEnriched n) where
   app X := eHomEquiv SSet (ObjectProperty.homMk ((commonProjection X.val).app n))
-  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff SSet
+  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_whiskered_square_iff SSet
     ((commonProjection X.val).app n) ((commonProjection Y.val).app n)
     (commonBaseMap X.val Y.val ≫ fullOriginalLoopStage X.val Y.val n)
     (commonRefinedMap X.val Y.val ≫ evaluation (commonRefinement X.val)
@@ -112,8 +112,8 @@ lemma commonStageGradedProjection_component (n : ℕ) (X : CommonObject.{u}) :
 
 /-- 指定共通右射影そのものを成分に持つ、各段の全関手同型。 -/
 def commonStageProjectionFunctorIso (n : ℕ) :
-    FunctorIso (coherentNerveMap (commonRefinedStageKanEnriched n))
-      (coherentNerveMap (commonTargetStageKanEnriched n)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (commonRefinedStageKanEnriched n))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (commonTargetStageKanEnriched n)) :=
   StrictEnrichedTransformation.functorIso _ _ (commonStageGradedProjection n) (fun X ↦ by
     rw [commonStageGradedProjection_component]
     exact pointedKanObject_edge_isInvertible_of_piIsomorphism _

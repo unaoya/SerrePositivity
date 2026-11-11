@@ -30,9 +30,9 @@ instance sDoubleInclusion_mono (m n : ℕ) (C : SSet.{u}) : Mono (sDoubleInclusi
     (ihom (arNerve m)).map (gappedSubcomplex n C).ι))
 
 /-- 二重包含の表示上で S の交換は元の内部 Hom の交換。 -/
-lemma sInterchange_doubleInclusion (m n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+lemma sInterchange_doubleInclusion (m n : ℕ) (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     sInterchange m n C ≫ sDoubleInclusion n m C = sDoubleInclusion m n C ≫
-      (internalHomSwapIso (arNerve m) (arNerve n) C).hom :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve m) (arNerve n) C).hom :=
   (Category.assoc _ _ _).symm.trans (sInterchange_double_ι m n C)
 
 /-- 二重 S の完全な後合成は二重内部 Hom の後合成を厳密に回収する。 -/

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedInfinity
-public import SerrePositivity.InfinityCategories.Derived.InfinityCategory
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.InfinityCategory
 public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 
 /-!
@@ -23,20 +23,20 @@ open CategoryTheory DifferentialGraded
 open SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
-def semifreeRingEvaluationDG : DGFunctor A (SemifreeDGModules A PUnit.{1}) (Semifree A) where
+def semifreeRingEvaluationDG : DGFunctor A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeDGModules A PUnit.{1}) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A) where
   obj M := ⟨(moduleEvaluationDG A PUnit.{1} PUnit.unit).obj M.val,
-    (complexSemifree_evaluation A (ForgetEnrichment.of (Complex A) M.val)).mpr M.property⟩
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree_evaluation A (ForgetEnrichment.of (Complex A) M.val)).mpr M.property⟩
   map M N := (moduleEvaluationDG A PUnit.{1} PUnit.unit).map M.val N.val
   map_id M := (moduleEvaluationDG A PUnit.{1} PUnit.unit).map_id M.val
   map_comp M N P := (moduleEvaluationDG A PUnit.{1} PUnit.unit).map_comp M.val N.val P.val
 
 def semifreeRingEvaluationInfinity :
-    dgModuleDerivedInfinityCategory A PUnit.{1} ⟶ derivedInfinityCategory A :=
-  dgNerve.map (semifreeRingEvaluationDG A)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleDerivedInfinityCategory A PUnit.{1} ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (semifreeRingEvaluationDG A)
 
 def complexSemifreeResolutionInfinity :
-    dgNerve A (Complex A) ⟶ derivedInfinityCategory A :=
-  dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A) ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
     semifreeRingEvaluationInfinity A
 
 end SerrePositivity.EInfinity.ComplexLimits

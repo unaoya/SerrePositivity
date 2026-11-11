@@ -26,7 +26,7 @@ def mappingParameterHom (K : PointedSimplicialSet.{u}) {A : PointedSimplicialSet
 lemma mappingParameterHom_app (K : PointedSimplicialSet.{u}) {A : PointedSimplicialSet.{u}}
     {X Y : KanSequence.{u}} (f : Hom X (mapping A Y)) (n : ℕ) :
     (mappingParameterHom K f).app n = (ihom K).map (f.app n) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K A (Y.level n).space).hom := rfl
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso K A (Y.level n).space).hom := rfl
 
 /-- 元の mapping パラメータへの制限は、全列の族の作用と厳密に可換。 -/
 lemma mappingParameterHom_pre {K' K A : PointedSimplicialSet.{u}} (i : K' ⟶ K)
@@ -35,17 +35,17 @@ lemma mappingParameterHom_pre {K' K A : PointedSimplicialSet.{u}} (i : K' ⟶ K)
       (mappingParameterHom K f).comp (mappingPost A (mappingPre i Y)) := by
   apply Hom.ext_app
   intro n
-  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (X.level n).space ≫
-      ((ihom K').map (f.app n) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K' A (Y.level n).space).hom) =
-    ((ihom K).map (f.app n) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K A (Y.level n).space).hom) ≫
-      (ihom A).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (Y.level n).space)
+  change _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (X.level n).space ≫
+      ((ihom K').map (f.app n) ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso K' A (Y.level n).space).hom) =
+    ((ihom K).map (f.app n) ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso K A (Y.level n).space).hom) ≫
+      (ihom A).map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (Y.level n).space)
   have hn := (MonoidalClosed.pre i).naturality (f.app n)
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hn
   rw [← Category.assoc]
   erw [← hn]
   rw [Category.assoc]
-  have he := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_left i A (Y.level n).space
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at he
+  have he := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeNaturality.natural_pre_left i A (Y.level n).space
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at he
   erw [he]
   rw [Category.assoc]
 

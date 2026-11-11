@@ -81,32 +81,32 @@ lemma family_zero_face {T : SSet.{max u v}} {a b c d : Cᵒᵖ × C}
   WordRetractChainFamily.zero_face _ _ _ _ _ _ _ _ q f r
 
 def smallFamily {T : SSet.{v}} {b c : Cᵒᵖ × C}
-    (q : chain hcof hfib (UniverseLift.obj.{max u v} T) b c) :
+    (q : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) b c) :
     small hcof hfib b ⊗ T ⟶ small hcof hfib c :=
-  UniverseLift.lowerTensor (family hcof hfib q)
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerTensor (family hcof hfib q)
 
 lemma smallFamily_substitute {T U : SSet.{v}} {b c : Cᵒᵖ × C}
-    (j : U ⟶ T) (q : chain hcof hfib (UniverseLift.obj.{max u v} T) b c) :
-    smallFamily hcof hfib (q.substitute (UniverseLift.map j)) =
+    (j : U ⟶ T) (q : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) b c) :
+    smallFamily hcof hfib (q.substitute (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map j)) =
       ParameterComposition.substitute j (smallFamily hcof hfib q) := by
   rw [smallFamily, family_substitute]
   ext n x
   rfl
 
 lemma smallFamily_zero_face {T : SSet.{v}} {a b c d e : Cᵒᵖ × C}
-    (q : chain hcof hfib (UniverseLift.obj.{max u v} T) a b)
+    (q : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) a b)
     (f : ambient hcof hfib b ⟶ ambient hcof hfib c)
     (g : ambient hcof hfib c ⟶ ambient hcof hfib d)
-    (t : UniverseLift.obj.{max u v} T ⟶ WordSegment.obj)
-    (r : chain hcof hfib (UniverseLift.obj.{max u v} T) d e) :
+    (t : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ WordSegment.obj)
+    (r : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) d e) :
     smallFamily hcof hfib (((q.snoc f (WordSegment.unitAt _)).snoc g t).append r) =
       smallFamily hcof hfib ((q.snoc (f ≫ g) t).append r) :=
-  congrArg UniverseLift.lowerTensor (family_unit_face hcof hfib q f g t r)
+  congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerTensor (family_unit_face hcof hfib q f g t r)
 
 lemma smallFamily_one_face {T : SSet.{v}} {a b c d : Cᵒᵖ × C}
-    (q : chain hcof hfib (UniverseLift.obj.{max u v} T) a b)
+    (q : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) a b)
     (f : ambient hcof hfib b ⟶ ambient hcof hfib c)
-    (r : chain hcof hfib (UniverseLift.obj.{max u v} T) c d) :
+    (r : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) c d) :
     smallFamily hcof hfib ((q.snoc f (WordSegment.zeroAt _)).append r) =
       ParameterComposition.comp
         (smallFamily hcof hfib (q.snoc f (WordSegment.unitAt _)))
@@ -125,15 +125,15 @@ lemma interior_identity {T : SSet.{max u v}} {a b c d : Cᵒᵖ × C}
   WordRetractChainFamily.interior_identity _ _ _ _ _ _ _ _ q f t w r
 
 lemma small_interior_identity {T : SSet.{v}} {a b c d : Cᵒᵖ × C}
-    (q : chain hcof hfib (UniverseLift.obj.{max u v} T) a b)
-    (f : ambient hcof hfib b ⊗ UniverseLift.obj.{max u v} T ⟶ ambient hcof hfib c)
-    (t w : UniverseLift.obj.{max u v} T ⟶ WordSegment.obj)
-    (r : chain hcof hfib (UniverseLift.obj.{max u v} T) c d) :
+    (q : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) a b)
+    (f : ambient hcof hfib b ⊗ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ ambient hcof hfib c)
+    (t w : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ WordSegment.obj)
+    (r : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) c d) :
     smallFamily hcof hfib
       (((q.familySnoc f t).familySnoc
         (ParameterComposition.const _ (𝟙 (ambient hcof hfib c))) w).append r) =
       smallFamily hcof hfib ((q.familySnoc f (lift t w ≫ WordSegment.mul)).append r) :=
-  congrArg UniverseLift.lowerTensor (interior_identity hcof hfib q f t w r)
+  congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerTensor (interior_identity hcof hfib q f t w r)
 
 lemma family_ofInterval {T : SSet.{max u v}} {a b : Cᵒᵖ × C}
     (q : OrdinaryBarChainFamily.chain hcof hfib T a b) :
@@ -142,9 +142,9 @@ lemma family_ofInterval {T : SSet.{max u v}} {a b : Cᵒᵖ × C}
   WordRetractChainFamily.transfer_ofInterval _ _ _ _ _ _ _ _ q
 
 lemma smallFamily_ofInterval {T : SSet.{v}} {a b : Cᵒᵖ × C}
-    (q : OrdinaryBarChainFamily.chain hcof hfib (UniverseLift.obj.{max u v} T) a b) :
+    (q : OrdinaryBarChainFamily.chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) a b) :
     smallFamily hcof hfib (WordRetractChainFamily.Chain.ofInterval q) =
       OrdinaryBarChainFamily.smallFamily hcof hfib q :=
-  congrArg UniverseLift.lowerTensor (family_ofInterval hcof hfib q)
+  congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerTensor (family_ofInterval hcof hfib q)
 
 end SerrePositivity.HomotopyFunctionComplex.OrdinaryBarWordChainFamily

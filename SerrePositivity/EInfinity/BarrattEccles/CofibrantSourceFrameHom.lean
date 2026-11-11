@@ -22,7 +22,7 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 def cofibrantSourceFrameHomIso :
-    (cosimplicialHom (cofibrantSourceFrame A X)).obj Y ≅
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (cofibrantSourceFrame A X)).obj Y ≅
       ((sourceFrameHom A).obj (op X.obj)).obj Y.obj where
   hom :=
     { app _ := ↾fun f => f.hom

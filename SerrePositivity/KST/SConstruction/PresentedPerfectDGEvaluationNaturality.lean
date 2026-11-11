@@ -21,18 +21,18 @@ variable (A : Type u) [CommRing A]
 def presentedPerfectDGEvaluationNativeComparison (D E : Type v)
     [DGCategory A D] [Small.{u} D] [DGCategory A E] [Small.{u} E]
     (F : DGFunctor A D E) :
-    FunctorIso (dgNerve.map (presentedPerfectDGEvaluation A D) ≫
-        dgNerve.map (perfectDGExtension A D E F))
-      (dgNerve.map (presentedPerfectDGAction A D E F) ≫
-        dgNerve.map (presentedPerfectDGEvaluation A E)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGEvaluation A D) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (perfectDGExtension A D E F))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGAction A D E F) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGEvaluation A E)) := by
   have h := dgStandardFunctorIso_to_native (presentedPerfectDGStandardActionComparisonIso A D E F)
-  rw [dgNerve.map_comp, dgNerve.map_comp] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp] at h
   exact h
 
 /-- 同じ安定入力の評価と元の入力作用の四角形は、元の native 関手同型で可換。 -/
 def presentedPerfectDGBFEvaluationInputComparison
     {X Y : PerfDGInput.{u, v} A} (f : X ⟶ Y) :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (((presentedPerfectDGBFEvaluationEquivalence A X).hom ≫
         perfectDGStableMap A X Y f.down).val)
       ((presentedPerfectDGBFInputStableMap A f ≫

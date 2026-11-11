@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentSimplexArrows
-public import SerrePositivity.InfinityCategories.Coherent.PathFaces
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.PathFaces
 
 /-! # 保存した coherent 面の全 Path 作用の回収
 概要：実単体の指定面の等号から、元の面の全豊穣写像を依存等号で回収する。
@@ -23,7 +23,7 @@ lemma coherentSimplexFaceMapping_heq {C : Type v} [Category.{u} C] [SimplicialCa
     {n : ℕ} (s : (SimplicialNerve C) _⦋n + 1⦌) (j : Fin (n + 2))
     (t : (SimplicialNerve C) _⦋n⦌) (ht : (SimplicialNerve C).δ j s = t)
     (a b : Fin (n + 1)) :
-    HEq (Coherent.pathFaceMap.{u} j a b ≫
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceMap.{u} j a b ≫
       s.map (.mk (ULift.up (j.succAbove a))) (.mk (ULift.up (j.succAbove b))))
       (t.map (.mk (ULift.up a)) (.mk (ULift.up b))) := by
   subst t

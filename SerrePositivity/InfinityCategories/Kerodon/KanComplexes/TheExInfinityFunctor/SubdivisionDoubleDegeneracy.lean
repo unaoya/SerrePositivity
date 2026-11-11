@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：singleton 上で二つの特別な頂点を分け、通常の退化の恒等式を使う。
 規約：Moss 2020 Lemma 26 (7) より強い未切断の式を先に証明し、原典の式を後合成で得る。
 使われ方：Ex の pairing 候補を二度適用すると退化すること。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

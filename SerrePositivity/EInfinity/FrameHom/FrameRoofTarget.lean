@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofSource
-public import SerrePositivity.InfinityCategories.Derived.RoofLocallyConstantPullback
-public import SerrePositivity.InfinityCategories.Core.RightFibrationContractible
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.RoofLocallyConstantPullback
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.RightFibrationContractible
 
 /-!
 # 元の frame の実屋根標的と次数射影
@@ -25,11 +25,11 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
   {E : SSet.{u}} (q : nerve C ⟶ E)
 
 abbrev roofTarget := pullback
-  (sliceOverProjection (SSet.yonedaEquiv.symm (nerveVertex Y) ≫ q)) (nerveMap A ≫ q)
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y) ≫ q)) (nerveMap A ≫ q)
 abbrev roofTargetProjection : roofTarget A Y q ⟶ nerve I := pullback.snd _ _
 
 instance roofTargetProjection_rightFibration [SSet.Quasicategory E] :
-    RightFibration (roofTargetProjection A Y q) := rightFibration_pullback_snd _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration (roofTargetProjection A Y q) := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.rightFibration_pullback_snd _ _
 
 instance roofTarget_quasicategory [SSet.Quasicategory E] :
     SSet.Quasicategory (roofTarget A Y q) :=
@@ -37,16 +37,16 @@ instance roofTarget_quasicategory [SSet.Quasicategory E] :
 
 lemma roofTargetProjection_leftFibration [SSet.Quasicategory E]
     (hA : ∀ {i j : I} (f : i ⟶ j),
-      IsInvertibleEdge ((nerve.edgeMk (A.map f)).map q).toTruncated) :
-    LeftFibration (roofTargetProjection A Y q) := by
-  apply roofRightFibration_pullback_leftFibration_of_inverts
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk (A.map f)).map q).toTruncated) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (roofTargetProjection A Y q) := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.roofRightFibration_pullback_leftFibration_of_inverts
   intro s
   obtain ⟨i, j, f, rfl⟩ := ComposableArrows.mk₁_surjective s
   have he : (nerveMap A ≫ q).app (op ⦋1⦌) (ComposableArrows.mk₁ f) =
       ((nerve.edgeMk (A.map f)).map q).edge := by
     rw [NatTrans.comp_app_apply, nerveMap_app_mk₁]
     rfl
-  exact (isInvertibleEdge_congr (e := edgeOfSimplex _)
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex _)
     (f := ((nerve.edgeMk (A.map f)).map q).toTruncated) he).mpr (hA f)
 
 def roofTargetDegree (b : (roofTarget A Y q) _⦋0⦌) : I :=
@@ -54,11 +54,11 @@ def roofTargetDegree (b : (roofTarget A Y q) _⦋0⦌) : I :=
 
 lemma roofTargetDegree_vertex (b : (roofTarget A Y q) _⦋0⦌) :
     (roofTargetProjection A Y q).app (op ⦋0⦌) b =
-      nerveVertex (roofTargetDegree A Y q b) := ComposableArrows.ext₀ rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (roofTargetDegree A Y q b) := ComposableArrows.ext₀ rfl
 
 lemma roofTargetPoint_projection (b : (roofTarget A Y q) _⦋0⦌) :
     SSet.yonedaEquiv.symm b ≫ roofTargetProjection A Y q =
-      SSet.yonedaEquiv.symm (nerveVertex (roofTargetDegree A Y q b)) := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (roofTargetDegree A Y q b)) := by
   apply SSet.yonedaEquiv.injective
   rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply, Equiv.apply_symm_apply]
   exact roofTargetDegree_vertex A Y q b

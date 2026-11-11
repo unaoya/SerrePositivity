@@ -23,10 +23,10 @@ namespace SerrePositivity.KST.Spectra.PointedMapping.VerticalPath
 lemma pre_pre_path {A B C E D : PointedSimplicialSet.{u}} {p : E ⟶ D}
     {f g : A ⟶ E} (P : VerticalPath p f g) (i : B ⟶ A) (j : C ⟶ B) :
     ((P.pre i).pre j).path = (P.pre (j ≫ i)).path := by
-  change (P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i E).right) ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j E).right =
-    P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (j ≫ i) E).right
+  change (P.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i E).right) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j E).right =
+    P.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (j ≫ i) E).right
   simpa only [Under.comp_right, Category.assoc] using
-    congrArg (fun q => P.path ≫ q.right) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp j i E)
+    congrArg (fun q => P.path ≫ q.right) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp j i E)
 
 /-- 射影を経由する一つの固定族では、同じ入力比較の前合成作用は全区間で一定。 -/
 lemma basedPre_at_factored_family {A B C : PointedSimplicialSet.{u}}
@@ -35,14 +35,14 @@ lemma basedPre_at_factored_family {A B C : PointedSimplicialSet.{u}}
     pointFamily (p ≫ u) ▷ (Δ[1] : SSet.{u}) ≫
         (H.forgetProjection.basedPre E).homotopy.h =
       fst (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ pointFamily ((a ≫ p) ≫ u) := by
-  have hp := pre_homotopy_h (H.forgetProjection.basedPre E) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed p E)
+  have hp := pre_homotopy_h (H.forgetProjection.basedPre E) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed p E)
   have hk := hp.symm.trans (H.basedPre_projection_constant E)
   rw [← pointFamily_pre p u, comp_whiskerRight_assoc]
   change (pointFamily u ▷ (Δ[1] : SSet.{u})) ≫
-    ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed p E).right ▷ (Δ[1] : SSet.{u}) ≫
+    ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed p E).right ▷ (Δ[1] : SSet.{u}) ≫
       (H.forgetProjection.basedPre E).homotopy.h) = _
   rw [hk]
-  have hpf : pointFamily u ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (a ≫ p) E).right =
+  have hpf : pointFamily u ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (a ≫ p) E).right =
       pointFamily ((a ≫ p) ≫ u) := pointFamily_pre (a ≫ p) u
   rw [← Category.assoc, whiskerRight_fst, Category.assoc, hpf]
 

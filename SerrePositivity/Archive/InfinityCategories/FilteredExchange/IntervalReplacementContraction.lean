@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.IntervalShapeEndpoints
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementPathSection
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalReplacementPathSection
 
 /-!
 概要：区間置換の各 path を始点の定値 path から元の path へ変形する。

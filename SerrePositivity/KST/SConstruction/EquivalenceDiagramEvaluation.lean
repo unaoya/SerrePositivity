@@ -1,10 +1,10 @@
 module
 public import SerrePositivity.KST.SConstruction.RestrictedPrecompositionIso
-public import SerrePositivity.InfinityCategories.Kan.SimplexInitialContraction
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplexInitialContraction
 public import SerrePositivity.KST.SConstruction.FunctorVertexEvaluation
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexFunctorFaithful
-public import SerrePositivity.InfinityCategories.Core.FullyFaithfulBoundary
-public import SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FullSubcomplexFunctorFaithful
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.PrecompositionEquivalence
 
 /-! # D(m,w) の零頂点での評価の自明ファイブレーション
 概要：全同値な標準単体の図式の零頂点での評価は trivial Kan fibration。
@@ -25,7 +25,7 @@ open scoped Simplicial
 方針：定値射を一点経由で分解し、一点からの内部 Hom の同型を使う。
 規約：添字と標的は任意。使われ方：収縮の始点と評価の合成の照合。 -/
 lemma pre_constant_evaluation {K C : SSet.{u}} (k : K _⦋0⦌) :
-    (pre (SSet.const k : K ⟶ K)).app C = evaluateFunctorAt k ≫ curry (snd K C) := by
+    (pre (SSet.const k : K ⟶ K)).app C = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k ≫ curry (snd K C) := by
   let t := stdSimplex.isTerminalObj₀.from K
   have ht : (pointFunctorEvaluationIso C).inv ≫ (pre t).app C = curry (snd K C) := by
     apply uncurry_injective
@@ -47,15 +47,15 @@ lemma pre_constant_evaluation {K C : SSet.{u}} (k : K _⦋0⦌) :
 def simplexInitialHomotopy (n : ℕ) :
     SSet.Homotopy (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))))
       (𝟙 (Δ[n] : SSet.{u})) where
-  h := (β_ (Δ[n] : SSet.{u}) Δ[1]).hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction n
+  h := (β_ (Δ[n] : SSet.{u}) Δ[1]).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialContraction n
   h₀ := by
     rw [← Category.assoc]
-    change prismEndpoint 0 (Δ[n] : SSet.{u}) ≫ _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction n = _
-    exact _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction_zero n
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (Δ[n] : SSet.{u}) ≫ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialContraction n = _
+    exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialContraction_zero n
   h₁ := by
     rw [← Category.assoc]
-    change prismEndpoint 1 (Δ[n] : SSet.{u}) ≫ _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction n = _
-    exact _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction_one n
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (Δ[n] : SSet.{u}) ≫ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialContraction n = _
+    exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialContraction_one n
   rel := by
     apply SSet.hom_ext
     intro d
@@ -67,29 +67,29 @@ def simplexInitialHomotopy (n : ℕ) :
 方針：添字の収縮の各成分は全同値図式の下で可逆となり、充満包含で同型を持ち上げる。
 規約：元の全同値図式の圏における関手同型。使われ方：評価の同値と充満忠実性。 -/
 def equivalenceDiagramEvaluation_comparison (n : ℕ) (C : SSet.{u}) [Quasicategory C] :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (equivalenceDiagramEvaluation (Δ[n] : SSet.{u}) C (stdSimplex.obj₀Equiv.symm 0) ≫
         equivalenceDiagramConstant Δ[n] C) (𝟙 (equivalenceDiagrams Δ[n] C)) := by
   let E := equivalenceDiagrams (Δ[n] : SSet.{u}) C
   let ι := equivalenceDiagramι (Δ[n] : SSet.{u}) C
   let p := equivalenceDiagramEvaluation (Δ[n] : SSet.{u}) C (stdSimplex.obj₀Equiv.symm 0)
   let s := equivalenceDiagramConstant (Δ[n] : SSet.{u}) C
-  have e : FunctorIso
+  have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (ι ≫ (pre (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) :
         (Δ[n] : SSet.{u}) ⟶ Δ[n])).app C)
       (ι ≫ (pre (𝟙 (Δ[n] : SSet.{u}))).app C) := by
     exact restrictedPrecompositionIso (simplexInitialHomotopy n) ι (fun v a =>
-      (fullSubcomplexOnVertices_vertex v)
-        (simplicialHomotopyVertexEdge (simplexInitialHomotopy n) a).edge)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (simplexInitialHomotopy n) a).edge)
   have hs : (p ≫ s) ≫ ι = ι ≫ (pre (SSet.const (stdSimplex.obj₀Equiv.symm
       (0 : Fin (n + 1))))).app C := by
     rw [pre_constant_evaluation, ← Category.assoc]
     change (p ≫ s) ≫ ι = p ≫ curry (snd (Δ[n] : SSet.{u}) C)
     rw [Category.assoc, equivalenceDiagramConstant_ι]
-  have he : FunctorIso ((p ≫ s) ≫ ι) ((𝟙 E) ≫ ι) := by
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((p ≫ s) ≫ ι) ((𝟙 E) ≫ ι) := by
     rw [Category.id_comp, hs]
     simpa only [pre_id, NatTrans.id_app, Category.comp_id] using e
-  apply (isFullyFaithful_fullSubcomplexFunctorInclusion E ((ihom (Δ[n] : SSet.{u})).obj C)
+  apply (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexFunctorInclusion E ((ihom (Δ[n] : SSet.{u})).obj C)
     IsEquivalenceDiagramVertex).preimageVertexIso
   exact he
 
@@ -97,18 +97,18 @@ def equivalenceDiagramEvaluation_comparison (n : ℕ) (C : SSet.{u}) [Quasicateg
 方針：定数図式を逆、収縮による関手同型と厳密な切断を比較に使う。
 規約：標的の quasicategory 性のみ。使われ方：評価の充満忠実性。 -/
 def equivalenceDiagramEvaluationEquivalence (n : ℕ) (C : SSet.{u}) [Quasicategory C] :
-    QCatEquivalence (equivalenceDiagrams (Δ[n] : SSet.{u}) C) C where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (equivalenceDiagrams (Δ[n] : SSet.{u}) C) C where
   hom := equivalenceDiagramEvaluation Δ[n] C (stdSimplex.obj₀Equiv.symm 0)
   inv := equivalenceDiagramConstant Δ[n] C
   homInvIso := equivalenceDiagramEvaluation_comparison n C
-  invHomIso := functorIsoOfTrivialKanFibration (𝟙 C) _ _ (by
+  invHomIso := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorIsoOfTrivialKanFibration (𝟙 C) _ _ (by
     rw [Category.comp_id, Category.id_comp, equivalenceDiagramConstant_evaluation])
 
 /-- 概要：D(m,w) の零頂点での評価は trivial Kan fibration。
 方針：inner fibration 性、自然同値からの充満忠実性、定数図式による頂点の全射性を合わせる。
 規約：零次数を含む全ての m。使われ方：object S による行の弱同値の比較。 -/
 instance equivalenceDiagramEvaluation_trivialKanFibration (n : ℕ) (C : SSet.{u})
-    [Quasicategory C] : TrivialKanFibration
+    [Quasicategory C] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration
       (equivalenceDiagramEvaluation (Δ[n] : SSet.{u}) C (stdSimplex.obj₀Equiv.symm 0)) := by
   let e := equivalenceDiagramEvaluationEquivalence n C
   have : InnerFibration e.hom := equivalenceDiagramEvaluation_innerFibration _ _ _

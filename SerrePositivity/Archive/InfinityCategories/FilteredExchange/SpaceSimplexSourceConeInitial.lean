@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceSimplexSourceCone
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceSourceIdentity
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceSourceIdentity
 
 /-!
 概要：元の初点からの coslice 単体を初点へ制限すると、元の恒等射を回収する。

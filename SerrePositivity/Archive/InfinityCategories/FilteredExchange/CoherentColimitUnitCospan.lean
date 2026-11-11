@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitUnitTrianglePrism
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorCospanCone
-public import SerrePositivity.InfinityCategories.Core.EquivalenceLimits
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.EquivalenceLimits
 
 /-!
 概要：元の全 cospan 錐と余極限後の全錐を、元の単位の全円柱で同時に結ぶ。

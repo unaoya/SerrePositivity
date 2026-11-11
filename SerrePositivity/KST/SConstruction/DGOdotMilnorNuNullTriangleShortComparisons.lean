@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullLowerPrismSides
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullUpperPrismSides
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerHom
 
 /-!
 概要：元上下二胞体の全関手同型から、元四辺の指定全比較をそのまま回収する。
@@ -19,39 +19,39 @@ open DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
 
 private lemma nullTriangleShortComparison
-    {f g : (Δ[2] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}}
-    {f' g' : (Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}}
-    (H : SSet.Homotopy f g) (e : FunctorIso f g)
-    (he : e.hom = Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H))
+    {f g : (Δ[2] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1}}
+    {f' g' : (Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1}}
+    (H : SSet.Homotopy f g) (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g)
+    (he : e.hom = Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))
     (q : (Δ[1] : SSet.{u + 2}) ⟶ Δ[2]) (hf : q ≫ f = f') (hg : q ≫ g = g')
-    (H' : SSet.Homotopy f' g') (e' : FunctorIso f' g')
-    (he' : e'.hom = Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H'))
+    (H' : SSet.Homotopy f' g') (e' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f' g')
+    (he' : e'.hom = Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H'))
     (hh : (q ▷ (Δ[1] : SSet.{u + 2})) ≫ H.h = H'.h) :
-    F2.functorIsoOfEq (e.precomp q) hf hg = e' := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (e.precomp q) hf hg = e' := by
   subst f' g'
   change e.precomp q = e'
   apply Iso.ext
-  rw [F2.functorIso_precomp_hom, he, he']
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_hom, he, he']
   change Truncated.HomotopyCategory.homMk
-    ((functorEdgeOfSimplicialHomotopy H).map
-      ((truncation 2).map ((pre q).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}))) =
-        Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H')
-  have hedge : (functorEdgeOfSimplicialHomotopy H).map
-      ((truncation 2).map ((pre q).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1})) =
-        functorEdgeOfSimplicialHomotopy H' := by
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H).map
+      ((truncation 2).map ((pre q).app _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1}))) =
+        Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H')
+  have hedge : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H).map
+      ((truncation 2).map ((pre q).app _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1})) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H' := by
     apply Truncated.Edge.ext
-    change ((pre q).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}).app (Opposite.op ⦋1⦌)
+    change ((pre q).app _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1}).app (Opposite.op ⦋1⦌)
       (SSet.yonedaEquiv (curry H.h)) = SSet.yonedaEquiv (curry H'.h)
     rw [← SSet.yonedaEquiv_comp, curry_pre_app, hh]
   exact congrArg Truncated.HomotopyCategory.homMk hedge
 
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 
 /-- 概要：元下全比較の短辺制限は同じ元包含の指定全比較そのもの。
 方針：元短辺ホモトピーの厳密回収と同じ元二端点等号を使う。
 規約：元指定同型の等号。使われ方：元全図式比較の指定短辺境界。 -/
 lemma dgOdotMilnorNuNullLowerTriangleComparison_inclusion :
-    F2.functorIsoOfEq
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
       ((dgOdotMilnorNuNullLowerTriangleComparison R d h).precomp
         (stdSimplex.δ (2 : Fin 3)))
       (dgOdotMilnorNuNullPrismTriangle_first_actual R d 1)
@@ -70,7 +70,7 @@ lemma dgOdotMilnorNuNullLowerTriangleComparison_inclusion :
 方針：元短辺ホモトピーの厳密回収と同じ元二端点等号を使う。
 規約：元指定同型の等号。使われ方：元全図式比較の指定短辺境界。 -/
 lemma dgOdotMilnorNuNullLowerTriangleComparison_projection :
-    F2.functorIsoOfEq
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
       ((dgOdotMilnorNuNullLowerTriangleComparison R d h).precomp
         (stdSimplex.δ (0 : Fin 3)))
       (dgOdotMilnorNuNullPrismTriangle_last_actual R d 1)
@@ -89,7 +89,7 @@ lemma dgOdotMilnorNuNullLowerTriangleComparison_projection :
 方針：元短辺ホモトピーの厳密回収と同じ元二端点等号を使う。
 規約：元指定同型の等号。使われ方：元全図式比較の指定短辺境界。 -/
 lemma dgOdotMilnorNuNullUpperTriangleComparison_zeroLeft :
-    F2.functorIsoOfEq
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
       ((dgOdotMilnorNuNullUpperTriangleComparison R d h).precomp
         (stdSimplex.δ (2 : Fin 3)))
       (dgOdotMilnorNuNullPrismTriangle_first_actual R d 0)
@@ -108,7 +108,7 @@ lemma dgOdotMilnorNuNullUpperTriangleComparison_zeroLeft :
 方針：元短辺ホモトピーの厳密回収と同じ元二端点等号を使う。
 規約：元指定同型の等号。使われ方：元全図式比較の指定短辺境界。 -/
 lemma dgOdotMilnorNuNullUpperTriangleComparison_zeroTop :
-    F2.functorIsoOfEq
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
       ((dgOdotMilnorNuNullUpperTriangleComparison R d h).precomp
         (stdSimplex.δ (0 : Fin 3)))
       (dgOdotMilnorNuNullPrismTriangle_last_actual R d 0)

@@ -19,7 +19,7 @@ namespace SerrePositivity.KST.NonConnective
 
 /-- 元の共終性引数型に対する、K-cof 正本の実証明。 -/
 theorem dgKThomasonCofinality (X Y : StableModel.{u}) (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
       Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0) :=
   Cofinality.kSpectrumMap_cofinality f hf

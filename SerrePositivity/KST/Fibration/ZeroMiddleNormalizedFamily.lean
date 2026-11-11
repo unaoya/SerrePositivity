@@ -17,7 +17,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
   (K : SSet.{u + 1}) (h9 : zeroMiddleControlledTriangleSupply.{u})
   (t : (zeroMiddleFullSReconstructionTriangleSpace s hZ K) _⦋0⦌)
 
@@ -56,7 +56,7 @@ theorem zeroMiddleNormalizedFamilyPoint_idempotent :
 規約：元 t 自身の厳密対角回収を仮定しない。
 使われ方：正規化族での貼り合わせを元の実族へ戻す。 -/
 def zeroMiddleNormalizedFamilyPointIso :
-    VertexIso t (zeroMiddleNormalizedFamilyPoint s hZ K h9 t) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso t (zeroMiddleNormalizedFamilyPoint s hZ K h9 t) :=
   Classical.choice (zeroMiddleFullSReconstructionRead_normalizeComparison s hZ K h9 t)
 
 /-- 概要：正規化した同じ実族は元の指定二短辺を厳密保持する。
@@ -73,18 +73,18 @@ theorem zeroMiddleNormalizedFamily_horn :
 方針：固定ホーン fiber 内の指定同型を同じ包含へ写す。
 規約：共有対角は正規化族側で厳密回収し、この同型で元へ戻す。
 使われ方：K-6 c4 の正規化後の貼り合わせと元の上側二胞体の比較。 -/
-def zeroMiddleNormalizedFamilyIso : FunctorIso
-    ((functorVertexEquiv (Δ[2] ⊗ K) SpaceInfinity.{u}).symm t.val)
+def zeroMiddleNormalizedFamilyIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (Δ[2] ⊗ K) _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}).symm t.val)
     (zeroMiddleReconstructedFamily s hZ K h9
       ((zeroMiddleFullSReconstructionRead s hZ K h9).app (Opposite.op ⦋0⦌) t)) := by
-  have hf : functorVertex
-      ((functorVertexEquiv (Δ[2] ⊗ K) SpaceInfinity.{u}).symm t.val) = t.val :=
-    (functorVertexEquiv _ _).apply_symm_apply _
+  have hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (Δ[2] ⊗ K) _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}).symm t.val) = t.val :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).apply_symm_apply _
   have hg := zeroMiddleReconstructedFamily_vertex s hZ K h9
     ((zeroMiddleFullSReconstructionRead s hZ K h9).app (Opposite.op ⦋0⦌) t)
-  have ht := VertexIso.map (zeroMiddleNormalizedFamilyPointIso s hZ K h9 t)
-    (vertexFiberι ((pre ((horn 2 (1 : Fin 3)).ι ▷ K)).app SpaceInfinity.{u})
-      (functorVertex (zeroMiddleFullSReconstructionHorn s hZ K)))
+  have ht := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (zeroMiddleNormalizedFamilyPointIso s hZ K h9 t)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι ((pre ((horn 2 (1 : Fin 3)).ι ▷ K)).app _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (zeroMiddleFullSReconstructionHorn s hZ K)))
   exact eqToIso (congrArg HomotopyCategory.mk hf) ≪≫ ht ≪≫
     eqToIso (congrArg HomotopyCategory.mk hg.symm)
 
@@ -93,16 +93,16 @@ def zeroMiddleNormalizedFamilyIso : FunctorIso
 規約：対角の元 t での厳密回収は使わない。各点の全 native Hom を比較する。
 使われ方：正規化後の貼り合わせを元のラベル作用へ戻す照合。 -/
 theorem zeroMiddleNormalizedFamily_longHom (k : K _⦋0⦌) :
-    let original := (functorVertexEquiv (Δ[2] ⊗ K) SpaceInfinity.{u}).symm t.val
+    let original := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (Δ[2] ⊗ K) _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}).symm t.val
     let normalized := zeroMiddleReconstructedFamily s hZ K h9
       ((zeroMiddleFullSReconstructionRead s hZ K h9).app (Opposite.op ⦋0⦌) t)
-    let a := SSet.yonedaEquiv ((functorVertexEquiv Δ[2] SpaceInfinity.{u}).symm
+    let a := SSet.yonedaEquiv ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv Δ[2] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}).symm
       ((curry original).app (Opposite.op ⦋0⦌) k))
-    let b := SSet.yonedaEquiv ((functorVertexEquiv Δ[2] SpaceInfinity.{u}).symm
+    let b := SSet.yonedaEquiv ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv Δ[2] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}).symm
       ((curry normalized).app (Opposite.op ⦋0⦌) k))
-    HEq (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
       (a.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)))
-      (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
         (b.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩))) := by
   have h := zeroMiddleFullSReconstructionRead_recovery s hZ K h9 t k
   dsimp only [zeroMiddleFullSReconstructionRecovery] at h

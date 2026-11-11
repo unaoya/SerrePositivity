@@ -29,7 +29,7 @@ namespace NullHomotopyStrictLifting
 theorem exists_adjust_to {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] {e : E _⦋0⦌} {b : B _⦋0⦌} (hb : p.app _ e = b)
     {n : ℕ} {s : E.PtSimplex (n + 1) e} {t : B.PtSimplex (n + 1) b}
-    (hs : _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p hb s = t)
+    (hs : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex p hb s = t)
     (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
     (T : PtSimplex.RelStruct .const t (Fin.last (n + 1)))
     (he : difference T (mapNullTo p hb hs R) = 1) :
@@ -46,7 +46,7 @@ namespace PointedFibrationTower
 variable (X : ℕ → PointedSimplicialSet.{u}) (p : ∀ n, X (n + 1) ⟶ X n)
   [∀ n, KanComplex (X n).right] [∀ n, Fibration (p n).right] (r : ℕ)
   (s : ∀ n, (X n).right.PtSimplex (r + 1) (X n).basepoint)
-  (hs : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n))
+  (hs : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n))
     (s (n + 1)) = s n)
   (R : ∀ n, PtSimplex.RelStruct .const (s n) (Fin.last (r + 1)))
   (hr : ∀ n, nullHomotopyDifferenceFamily X p r s hs R n = 1)
@@ -58,9 +58,9 @@ lemma exists_next_nullHomotopy (n : ℕ)
     ∃ V : PtSimplex.RelStruct .const (s (n + 1)) (Fin.last (r + 1)),
       V.map ≫ (p n).right = U.val.map ∧ difference V (R (n + 1)) = 1 := by
   apply NullHomotopyStrictLifting.exists_adjust_to (p n).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n)) (hs n) (R (n + 1)) U.val
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n)) (hs n) (R (n + 1)) U.val
   rw [← difference_comp U.val (R n)
-    (mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n)) (hs n) (R (n + 1))),
+    (mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n)) (hs n) (R (n + 1))),
     U.property]
   exact mul_one _ |>.trans (hr n)
 
@@ -82,7 +82,7 @@ lemma strictNullHomotopy_comp (n : ℕ) :
 
 /-- lim¹ の零障害から、厳密に整合する零ホモトピーを構成する。 -/
 theorem exists_compatible_nullHomotopies
-    (hz : nullHomotopyObstruction X p r s hs R = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _) :
+    (hz : nullHomotopyObstruction X p r s hs R = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _) :
     ∃ U : ∀ n, PtSimplex.RelStruct .const (s n) (Fin.last (r + 1)),
       ∀ n, (U (n + 1)).map ≫ (p n).right = (U n).map := by
   obtain ⟨R', hR'⟩ := exists_zero_difference_family X p r s hs R hz

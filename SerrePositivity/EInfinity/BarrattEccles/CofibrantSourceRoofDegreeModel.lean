@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofSlices
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ProductSimplexLiftedOver
-public import SerrePositivity.InfinityCategories.HomotopyLimits.MixedNerveCostructuredPullback
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.MixedNerveCostructuredPullback
 
 /-!
 # 実屋根 slice の次数モデルと元の sourceFrameHom×Δ[n]
@@ -26,12 +26,12 @@ variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
   (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
 
 abbrev cofibrantSourceRoofProductElements :=
-  ProductSimplexLiftedOver.productElements (((sourceFrameHom A).obj (op X.obj)).obj Y.obj)
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver.productElements (((sourceFrameHom A).obj (op X.obj)).obj Y.obj)
     (cofibrantSourceRoofDegree A X Y b)
 
 def cofibrantSourceRoofProductFirst : cofibrantSourceRoofProductElements A X Y b ⥤
     sourceFrameElementCategory A X Y :=
-  ProductSimplexLiftedOver.firstComponent _ _
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver.firstComponent _ _
 
 def cofibrantSourceRoofProductFirstNerve :
     nerve (cofibrantSourceRoofProductElements A X Y b) ⟶
@@ -40,7 +40,7 @@ def cofibrantSourceRoofProductFirstNerve :
   naturality _ _ _ := rfl
 
 def cofibrantSourceRoofProductOver : cofibrantSourceRoofProductElements A X Y b ⥤
-    Over (cofibrantSourceRoofDegree A X Y b) := ProductSimplexLiftedOver.over _ _
+    Over (cofibrantSourceRoofDegree A X Y b) := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver.over _ _
 
 def cofibrantSourceRoofProductOverNerve : nerve (cofibrantSourceRoofProductElements A X Y b) ⟶
     nerve (Over (cofibrantSourceRoofDegree A X Y b)) where
@@ -49,25 +49,25 @@ def cofibrantSourceRoofProductOverNerve : nerve (cofibrantSourceRoofProductEleme
 
 def cofibrantSourceRoofProductIso : nerve (cofibrantSourceRoofProductElements A X Y b) ≅
     cofibrantSourceRoofDegreeModel A X Y b :=
-  ProductSimplexLiftedOver.nerveIso _ _ ≪≫
-    MixedNerveCostructuredPullback.pullbackIso (sourceFrameElementDegree A X Y)
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver.nerveIso _ _ ≪≫
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.MixedNerveCostructuredPullback.pullbackIso (sourceFrameElementDegree A X Y)
       (cofibrantSourceRoofDegree A X Y b)
 
 lemma cofibrantSourceRoofProductIso_source : (cofibrantSourceRoofProductIso A X Y b).hom ≫
     pullback.fst _ _ = cofibrantSourceRoofProductFirstNerve A X Y b := by
-  have h := MixedNerveCostructuredPullback.pullbackIso_source
+  have h := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.MixedNerveCostructuredPullback.pullbackIso_source
     (sourceFrameElementDegree A X Y) (cofibrantSourceRoofDegree A X Y b)
   exact (Category.assoc _ _ _).trans (congrArg
-    (fun f => (ProductSimplexLiftedOver.nerveIso
+    (fun f => (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver.nerveIso
       (((sourceFrameHom A).obj (op X.obj)).obj Y.obj)
       (cofibrantSourceRoofDegree A X Y b)).hom ≫ f) h)
 
 lemma cofibrantSourceRoofProductIso_over : (cofibrantSourceRoofProductIso A X Y b).hom ≫
     pullback.snd _ _ = cofibrantSourceRoofProductOverNerve A X Y b := by
-  have h := MixedNerveCostructuredPullback.pullbackIso_over
+  have h := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.MixedNerveCostructuredPullback.pullbackIso_over
     (sourceFrameElementDegree A X Y) (cofibrantSourceRoofDegree A X Y b)
   exact (Category.assoc _ _ _).trans (congrArg
-    (fun f => (ProductSimplexLiftedOver.nerveIso
+    (fun f => (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver.nerveIso
       (((sourceFrameHom A).obj (op X.obj)).obj Y.obj)
       (cofibrantSourceRoofDegree A X Y b)).hom ≫ f) h)
 

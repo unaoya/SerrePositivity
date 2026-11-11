@@ -22,45 +22,45 @@ open CategoryTheory SimplicialLocalization
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
 
 def identityFoldData :
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     EnrichedFoldData W (Paths C) := by
-  letI := Hammock.enrichedCategory W.paths
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   exact
     { obj := fun X => X
       marked := AllMarked.inclusion W
-      generator := fun g => arrowMap W.paths g.val.hom.toPath
+      generator := fun g => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W.paths g.val.hom.toPath
       marked_unit := AllMarked.inclusion_unit W
       marked_comp := AllMarked.inclusion_composition W }
 
 def markedInclusionFunctor :
-    letI := Hammock.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     EnrichedFunctor SSet.{u} (WideSubcategory W.paths) (Paths C) := by
-  letI := Hammock.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
-  letI := Hammock.enrichedCategory W.paths
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   exact (identityFoldData W).markedEnrichedFunctor
 
 def unmarkedInclusionFunctor :
-    letI := DiscreteEnrichment.enrichedCategory
-      (C := Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
-    letI := Hammock.enrichedCategory W.paths
-    EnrichedFunctor SSet.{u} (Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.enrichedCategory
+      (C := Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
+    EnrichedFunctor SSet.{u} (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
       (Paths C) := by
-  letI := DiscreteEnrichment.enrichedCategory
-    (C := Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
-  letI := Hammock.enrichedCategory W.paths
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.enrichedCategory
+    (C := Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   exact (identityFoldData W).unmarkedEnrichedFunctor
 
-lemma unmarkedInclusion_generator (g : FactorTarget.Index W) :
-    letI := DiscreteEnrichment.enrichedCategory
-      (C := Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
-    letI := Hammock.enrichedCategory W.paths
-    DiscreteEnrichment.point (unmarkedGeneratorPath W g) ≫
+lemma unmarkedInclusion_generator (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) :
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.enrichedCategory
+      (C := Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.point (unmarkedGeneratorPath W g) ≫
       (unmarkedInclusionFunctor W).map g.val.left g.val.right =
-        arrowMap W.paths g.val.hom.toPath := by
-  let := DiscreteEnrichment.enrichedCategory
-    (C := Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
-  let := Hammock.enrichedCategory W.paths
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W.paths g.val.hom.toPath := by
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.enrichedCategory
+    (C := Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   exact (identityFoldData W).unmarkedEnrichedFunctor_generator g
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine

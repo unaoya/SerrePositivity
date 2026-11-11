@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
-public import SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentPinchedTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.PinchedEndpointTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentPinchedTransport
 
 /-!
 概要：同じ辺集合の指定された二つの ∞ 局所化の Hom を実比較する。
@@ -21,15 +21,15 @@ open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable {A Q D : SSet.{u}} [Quasicategory Q] [Quasicategory D]
   (F : A ⟶ Q) (G : A ⟶ D) (W : Set (A _⦋1⦌))
-  (hF : IsLocalization F W) (hG : IsLocalization G W)
-  (K : Q ⟶ D) (e : FunctorIso (F ≫ K) G)
+  (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization F W) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G W)
+  (K : Q ⟶ D) (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (F ≫ K) G)
 
 include F G W hF hG e in
 /-- 概要：指定された局所化比較の元の Hom 射は QCat 同値。
 方針：同じ比較関手の局所化一意性と全充満忠実性を使う。
 規約：比較 K を新しく選ばない。使われ方：実 frame 比較の弱同値性の輸送。 -/
 lemma localizationComparison_pinchedHom_isQCatEquivalence (x y : Q _⦋0⦌) :
-    IsQCatEquivalence (pinchedHomMap K x y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap K x y) := by
   let c := KST.LocalizingInvariants.localizationComparisonEquivalence F G W hF hG K e
   exact (c.isQCatEquivalence.isFullyFaithful x y).isQCatEquivalence
 
@@ -37,9 +37,9 @@ lemma localizationComparison_pinchedHom_isQCatEquivalence (x y : Q _⦋0⦌) :
 方針：同じ K の Hom 射を端点の等式で輸送する。
 規約：両方の元の局所化頂点を保持する。使われ方：指定局所化への実比較射。 -/
 def localizationPinchedComparison (h : F ≫ K = G) (x y : A _⦋0⦌) :
-    pinchedHom (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y) ⟶
-      pinchedHom (G.app (Opposite.op ⦋0⦌) x) (G.app (Opposite.op ⦋0⦌) y) :=
-  pinchedHomMap K _ _ ≫ (pinchedEndpointIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (G.app (Opposite.op ⦋0⦌) x) (G.app (Opposite.op ⦋0⦌) y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap K _ _ ≫ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso
     (congrArg (fun t : A ⟶ D => t.app (Opposite.op ⦋0⦌) x) h)
     (congrArg (fun t : A ⟶ D => t.app (Opposite.op ⦋0⦌) y) h)).hom
 
@@ -49,9 +49,9 @@ include W hF hG e in
 規約：π₀ の比較へ置き換えない。使われ方：元の frame Hom との実合成。 -/
 lemma localizationPinchedComparison_isQCatEquivalence
     (h : F ≫ K = G) (x y : A _⦋0⦌) :
-    IsQCatEquivalence (localizationPinchedComparison F G K h x y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (localizationPinchedComparison F G K h x y) := by
   exact (localizationComparison_pinchedHom_isQCatEquivalence F G W hF hG K e _ _).comp
-    (qCatEquivalenceOfIso (pinchedEndpointIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso
       (congrArg (fun t : A ⟶ D => t.app (Opposite.op ⦋0⦌) x) h)
       (congrArg (fun t : A ⟶ D => t.app (Opposite.op ⦋0⦌) y) h))).isQCatEquivalence
 
@@ -59,8 +59,8 @@ lemma localizationPinchedComparison_isQCatEquivalence
 方針：元の比較関手の同値と同じ三角形を組にする。
 規約：三角形を等式へ変更しない。使われ方：Sp における coherent な合成。 -/
 structure CoherentLocalizationComparison (F : A ⟶ Q) (G : A ⟶ D) where
-  equivalence : QCatEquivalence Q D
-  triangle : FunctorIso (F ≫ equivalence.hom) G
+  equivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence Q D
+  triangle : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (F ≫ equivalence.hom) G
 
 /-- 概要：局所化一意性の同じ K と同じ指定二胞体を公開する。
 方針：読み取り専用の一意性定理の元の比較を束ねる。
@@ -83,11 +83,11 @@ variable {F G} (c : CoherentLocalizationComparison F G)
 規約：源には成分の逆、標的には成分自身を使う。
 使われ方：実 frame Hom から指定局所化への輸送。 -/
 def pinchedEquivalence (x y : A _⦋0⦌) :
-    QCatEquivalence
-      (pinchedHom (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y))
-      (pinchedHom (G.app (Opposite.op ⦋0⦌) x) (G.app (Opposite.op ⦋0⦌) y)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (G.app (Opposite.op ⦋0⦌) x) (G.app (Opposite.op ⦋0⦌) y)) :=
   ((c.equivalence.isQCatEquivalence.isFullyFaithful _ _).isQCatEquivalence.choose).trans
-    (pinchedEndpointEquivalence (c.triangle.toNatIso.app (HomotopyCategory.mk x))
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pinchedEndpointEquivalence (c.triangle.toNatIso.app (HomotopyCategory.mk x))
       (c.triangle.toNatIso.app (HomotopyCategory.mk y)))
 
 /-- 概要：実 Hom 比較は同じ K の作用と指定成分の共役。
@@ -95,8 +95,8 @@ def pinchedEquivalence (x y : A _⦋0⦌) :
 規約：元の三角形の両端成分を保持。使われ方：零単体の coherent な照合。 -/
 lemma pinchedEquivalence_hom (x y : A _⦋0⦌) :
     (c.pinchedEquivalence x y).hom =
-      pinchedHomMap c.equivalence.hom _ _ ≫
-        (pinchedEndpointEquivalence (c.triangle.toNatIso.app (HomotopyCategory.mk x))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap c.equivalence.hom _ _ ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pinchedEndpointEquivalence (c.triangle.toNatIso.app (HomotopyCategory.mk x))
           (c.triangle.toNatIso.app (HomotopyCategory.mk y))).hom := rfl
 
 /-- 概要：指定二胞体の成分は元の全射に自然。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.LocalizingInvariants.IntervalPrecompositionFamily
 
-public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareArrowFamily
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareArrowFamily
 public import SerrePositivity.KST.LocalizingInvariants.SpanPostcompositionFamily
 
 /-!
@@ -23,24 +23,24 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma exists_spanBaseChangeFamily {X : SSet.{u}} [Quasicategory X]
     (p : (horn 2 0 : SSet.{u}) ⟶ X) (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X)
-    (hR : squareRightEdge ≫ R = horn₂₀.ι₀₂ ≫ p) :
+    (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ R = horn₂₀.ι₀₂ ≫ p) :
     ∃ (T : (Δ[2] : SSet.{u}) ⟶ X)
       (F : (Δ[1] : SSet.{u}) ⟶ (ihom (horn 2 0 : SSet.{u})).obj X),
-      stdSimplex.δ (2 : Fin 3) ≫ T = squareBottomEdge ≫ R ∧
+      stdSimplex.δ (2 : Fin 3) ≫ T = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ R ∧
       stdSimplex.δ (0 : Fin 3) ≫ T = horn₂₀.ι₀₁ ≫ p ∧
-      stdSimplex.δ (0 : Fin 2) ≫ F = SSet.const (functorVertex p) ∧
+      stdSimplex.δ (0 : Fin 2) ≫ F = SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex p) ∧
       F ≫ (pre horn₂₀.ι₀₁).app X = intervalPrecompositionFamily T ∧
-      F ≫ (pre horn₂₀.ι₀₂).app X = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R ∧
+      F ≫ (pre horn₂₀.ι₀₂).app X = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.squareArrowFamily R ∧
       F ≫ (pre horn₂₀.ι₀₁).app X ≫
-        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
           SSet.const ((horn₂₀.ι₀₁ ≫ p).app (Opposite.op ⦋0⦌)
             (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ∧
       F ≫ (pre horn₂₀.ι₀₂).app X ≫
-        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = squareTopEdge ≫ R := by
-  have hc : stdSimplex.δ (0 : Fin 2) ≫ (squareBottomEdge ≫ R) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ R := by
+  have hc : stdSimplex.δ (0 : Fin 2) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ R) =
       stdSimplex.δ (1 : Fin 2) ≫ (horn₂₀.ι₀₁ ≫ p) := by
-    have hcorner : stdSimplex.δ (0 : Fin 2) ≫ squareBottomEdge.{u} =
-        stdSimplex.δ (1 : Fin 2) ≫ squareRightEdge := by
+    have hcorner : stdSimplex.δ (0 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge.{u} =
+        stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge := by
       apply SSet.yonedaEquiv.injective
       apply Prod.ext <;> decide
     have hsource : stdSimplex.δ (1 : Fin 2) ≫
@@ -51,24 +51,24 @@ lemma exists_spanBaseChangeFamily {X : SSet.{u}} [Quasicategory X]
     rw [← Category.assoc, hcorner, Category.assoc, hR, ← Category.assoc,
       hsource, Category.assoc]
   obtain ⟨T, hT₂, hT₀, hL₁, hLs, hLt⟩ :=
-    exists_intervalPrecompositionFamily (horn₂₀.ι₀₁ ≫ p) (squareBottomEdge ≫ R) hc
+    exists_intervalPrecompositionFamily (horn₂₀.ι₀₁ ≫ p) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ R) hc
   have hLR : intervalPrecompositionFamily T ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-      _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
-    rw [hLs, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily_source]
-  let F := stable_spanFamilyOfArrows (intervalPrecompositionFamily T) (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R) hLR
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.squareArrowFamily R ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
+    rw [hLs, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.squareArrowFamily_source]
+  let F := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_spanFamilyOfArrows (intervalPrecompositionFamily T) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.squareArrowFamily R) hLR
   have hFl : F ≫ (pre horn₂₀.ι₀₁).app X = intervalPrecompositionFamily T :=
-    stable_spanFamilyOfArrows_left _ _ _
-  have hFr : F ≫ (pre horn₂₀.ι₀₂).app X = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R :=
-    stable_spanFamilyOfArrows_right _ _ _
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_spanFamilyOfArrows_left _ _ _
+  have hFr : F ≫ (pre horn₂₀.ι₀₂).app X = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.squareArrowFamily R :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_spanFamilyOfArrows_right _ _ _
   refine ⟨T, F, hT₂, hT₀, ?_, hFl, hFr, ?_, ?_⟩
-  · apply stable_spanFamily_hom_ext
+  · apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_spanFamily_hom_ext
     · rw [Category.assoc, hFl, hL₁, SSet.const_comp]
       rfl
-    · rw [Category.assoc, hFr, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily_one, hR, SSet.const_comp]
+    · rw [Category.assoc, hFr, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.squareArrowFamily_one, hR, SSet.const_comp]
       rfl
   · rw [← Category.assoc, hFl]
     exact hLt
-  · rw [← Category.assoc, hFr, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily_target]
+  · rw [← Category.assoc, hFr, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.squareArrowFamily_target]
 
 end SerrePositivity.KST.LocalizingInvariants

@@ -48,14 +48,14 @@ lemma cofibrantAlgebraDKCoefficientExtension_inclusion :
 
 /-- 元の厳密代数上での導来係数拡大は、同じ置換に厳密な拡大を施す。 -/
 def barrattEcclesBaseChange_sourceIso :
-    FunctorIso (algebraCAlgSource S ≫ barrattEcclesBaseChange f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (algebraCAlgSource S ≫ barrattEcclesBaseChange f)
       (nerveMap (framedLimitProbeFunctor S ⋙ coefficientExtension f) ≫ algebraCAlgSource T) := by
   let Q := algebraCAlgReplacementNerve S
   let L := nerveMap (cofibrantAlgebraDKCoefficientExtension f)
   let e := (barrattEcclesBaseChange_cofibrantIso f).precomp Q
-  let d := FunctorIso.precomp (cAlgLocalizationSource_algebraIso T).symm (Q ≫ L)
-  refine F2.functorIsoOfEq (e ≪≫ ?_) (by rw [algebraCAlgSource, Category.assoc]) rfl
-  refine F2.functorIsoOfEq d (Category.assoc _ _ _) ?_
+  let d := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (cAlgLocalizationSource_algebraIso T).symm (Q ≫ L)
+  refine _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (e ≪≫ ?_) (by rw [algebraCAlgSource, Category.assoc]) rfl
+  refine _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq d (Category.assoc _ _ _) ?_
   let i := cofibrantAlgebraInclusionNerve S
   let k := nerveMap (coefficientExtension f)
   let p := nerveMap (framedLimitProbeFunctor S)

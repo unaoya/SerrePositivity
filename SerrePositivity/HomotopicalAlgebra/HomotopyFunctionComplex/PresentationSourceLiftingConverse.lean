@@ -15,7 +15,7 @@ variable {C : Type u} [Category.{v} C] {I : Type w} [Category.{t} I]
   (hs : IsColimit s) {A B : SimplexCategory ⥤ C}
   [HasColimit (D ⋙ A)] [HasColimit (D ⋙ B)] (α : A ⟶ B)
   [HasPushouts C] (c : Cocone D) [HasTerminal C] (targetObject : C)
-  [HasLiftingProperty (presentationMap D s hs c) ((cosimplicialHomMap α).app targetObject)]
+  [HasLiftingProperty (presentationMap D s hs c) ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app targetObject)]
 
 include s hs in
 lemma relativeTensor_hasLiftingProperty :
@@ -25,10 +25,10 @@ lemma relativeTensor_hasLiftingProperty :
   let u := pushout.inl (tensorSourceMap D α) (tensorMap D A c) ≫ a
   let v := pushout.inr (tensorSourceMap D α) (tensorMap D A c) ≫ a
   let u' := (homEquiv D s hs B).symm u
-  let v' : SSet.stdSimplex.obj c.pt ⟶ (cosimplicialHom A).obj targetObject :=
+  let v' : SSet.stdSimplex.obj c.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj targetObject :=
     SSet.yonedaEquiv.symm v
   have sq' : CommSq u' (presentationMap D s hs c)
-      ((cosimplicialHomMap α).app targetObject) v' := by
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app targetObject) v' := by
     constructor
     apply (homEquiv D s hs A).injective
     rw [← homEquiv_source_naturality, homEquiv_presentationMap]
@@ -46,7 +46,7 @@ lemma relativeTensor_hasLiftingProperty :
     rw [Equiv.symm_apply_apply] at he
     simpa only [u', Equiv.apply_symm_apply] using he.symm.trans h
   · rw [inr_relativeTensorMap_assoc]
-    have h := congrArg (SSet.yonedaEquiv (X := (cosimplicialHom A).obj targetObject))
+    have h := congrArg (SSet.yonedaEquiv (X := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj targetObject))
       sq'.fac_right
     change α.app c.pt ≫ SSet.yonedaEquiv sq'.lift = SSet.yonedaEquiv v' at h
     simpa only [v', Equiv.apply_symm_apply] using h

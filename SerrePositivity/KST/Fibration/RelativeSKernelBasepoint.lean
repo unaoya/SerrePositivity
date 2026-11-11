@@ -15,10 +15,10 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 元の S₀ の零対象を相対全単体の同型で戻し、同じ対角の基点にする。 -/
 def relativeSKernelBasepoint
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) : Δ[0] ⟶ simplicialDiagonalFunctor.obj
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) : Δ[0] ⟶ simplicialDiagonalFunctor.obj
       (relativeSimplicialSConstruction (i.hom ≫ q.hom)) :=
   yonedaEquiv.symm ((relativeSKernelTopIso h 0).inv.app (Opposite.op ⦋0⦌)
-    (chosenZeroVertex (sConstruction 0 A.obj)).vertex)
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (sConstruction 0 A.obj)).vertex)
 
 end SerrePositivity.KST.Fibration

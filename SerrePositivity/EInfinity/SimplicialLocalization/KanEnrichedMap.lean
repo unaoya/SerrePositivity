@@ -30,7 +30,7 @@ open SerrePositivity.KST.Comparison
 方針：同じ Ex∞ の関手則と tensorator の自然性を使う。
 規約：各 Hom の作用は元の係数射の Ex∞ 像そのもの。
 使われ方：Kan な局所化の coherent nerve への後合成。 -/
-def kanLocalizationEnrichedMap {C D : RelativeCategory.{u}} (F : C ⟶ D) :
+def kanLocalizationEnrichedMap {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) :
     EnrichedFunctor SSet.{u} (KanLocalizationObjects C) (KanLocalizationObjects D) where
   obj := F.functor.obj
   map X Y := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap F X Y)
@@ -65,7 +65,7 @@ def kanLocalizationEnrichedMap {C D : RelativeCategory.{u}} (F : C ⟶ D) :
 方針：同じ ForgetEnrichment の標準関手を使う。
 規約：同じ Kan Hom への作用を保持する。
 使われ方：局所 Kan な単体的圏の係数比較。 -/
-def kanLocalizationFunctor {C D : RelativeCategory.{u}} (F : C ⟶ D) :
+def kanLocalizationFunctor {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) :
     KanLocalizationCategory C ⥤ KanLocalizationCategory D :=
   (kanLocalizationEnrichedMap F).forget
 

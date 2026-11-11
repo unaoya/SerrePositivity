@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3CommonHom
-public import SerrePositivity.InfinityCategories.Kan.EnrichedWhiskeredSquareComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedWhiskeredSquareComposition
 
 /-!
 概要：指定比較射を保つ共通 Hom の恒等と実豊穣合成。
@@ -25,10 +25,10 @@ def commonIdentity (X : OmegaSpectrum.{u}) : 𝟙_ SSet.{u} ⟶ commonHom X X :=
   commonHomLift X X (mappingIdentity (commonRefinement X)) (fullCompatibleIdentity X)
     (by
       rw [fullCompatibleIdentity_originalMap_assoc]
-      simpa only [common_eId] using _root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_id SSet (commonInclusion X))
+      simpa only [common_eId] using _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_whiskered_square_id SSet (commonInclusion X))
     (by
       rw [fullCompatibleIdentity_replacedMap_assoc]
-      simpa only [common_eId] using (_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_id SSet (commonComparison X)).symm)
+      simpa only [common_eId] using (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_whiskered_square_id SSet (commonComparison X)).symm)
 
 @[reassoc (attr := simp)]
 lemma commonIdentity_refined (X : OmegaSpectrum.{u}) :
@@ -47,7 +47,7 @@ lemma common_composition_left (X Y Z : OmegaSpectrum.{u}) :
         eHomWhiskerRight SSet (commonInclusion X) (commonRefinement Z) =
       (commonBaseMap X Y ⊗ₘ commonBaseMap Y Z) ≫ fullCompatibleComposition X Y Z ≫
         fullOriginalMap X Z ≫ eHomWhiskerLeft SSet X (commonInclusion Z) := by
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_comp SSet
+  have h := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_whiskered_square_comp SSet
     (commonInclusion X) (commonInclusion Y) (commonInclusion Z)
     (commonRefinedMap X Y) (commonOriginalMap X Y)
     (commonRefinedMap Y Z) (commonOriginalMap Y Z)
@@ -62,7 +62,7 @@ lemma common_composition_right (X Y Z : OmegaSpectrum.{u}) :
         eHomWhiskerLeft SSet (commonRefinement X) (commonComparison Z) =
       (commonBaseMap X Y ⊗ₘ commonBaseMap Y Z) ≫ fullCompatibleComposition X Y Z ≫
         fullReplacedMap X Z ≫ eHomWhiskerRight SSet (commonComparison X) (middle Z) := by
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_comp SSet
+  have h := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_whiskered_square_comp SSet
     (commonComparison X) (commonComparison Y) (commonComparison Z)
     (commonMiddleMap X Y) (commonRefinedMap X Y)
     (commonMiddleMap Y Z) (commonRefinedMap Y Z)

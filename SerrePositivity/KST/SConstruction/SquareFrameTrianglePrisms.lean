@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.SpecifiedTwoTrianglePrism
 public import SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorTriangleSquare
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorTriangleSquare
 
 /-!
 概要：指定四境界比較から、元の上下二単体を保つ比較 prism をそれぞれ構成する。
@@ -17,35 +17,35 @@ open CategoryTheory MonoidalCategory SSet InfinityCategories LocalizingInvariant
 open scoped Simplicial
 variable {X : SSet.{u}} [Quasicategory X]
   {f g : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
-  (H : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare f) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare g))
+  (H : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ofSquare f) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ofSquare g))
 
 /-- 概要：元上面の左辺・下面の下辺の全比較を元二単体の前辺に表示する。
 方針：標準二三角形の元前辺の式を使う。
 規約：全比較写像を保持。使われ方：元三角形比較の第一側面。 -/
 def squareFrameTriangleFirst (j : Fin 2) : SSet.Homotopy
-    (stdSimplex.δ (2 : Fin 3) ≫ squareTriangle j ≫ f)
-    (stdSimplex.δ (2 : Fin 3) ≫ squareTriangle j ≫ g) where
+    (stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle j ≫ f)
+    (stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle j ≫ g) where
   h := if j = 0 then H.left.h else H.bottom.h
   h₀ := by
     fin_cases j
     · change SSet.ι₀ ≫ H.left.h = _
       exact H.left.h₀.trans ((Category.assoc _ _ _).symm.trans
         (congrArg (fun k : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1] => k ≫ f)
-          triangleSquare_upper_left)).symm
+          _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.triangleSquare_upper_left)).symm
     · change SSet.ι₀ ≫ H.bottom.h = _
       exact H.bottom.h₀.trans ((Category.assoc _ _ _).symm.trans
         (congrArg (fun k : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1] => k ≫ f)
-          triangleSquare_lower_bottom)).symm
+          _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.triangleSquare_lower_bottom)).symm
   h₁ := by
     fin_cases j
     · change SSet.ι₁ ≫ H.left.h = _
       exact H.left.h₁.trans ((Category.assoc _ _ _).symm.trans
         (congrArg (fun k : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1] => k ≫ g)
-          triangleSquare_upper_left)).symm
+          _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.triangleSquare_upper_left)).symm
     · change SSet.ι₁ ≫ H.bottom.h = _
       exact H.bottom.h₁.trans ((Category.assoc _ _ _).symm.trans
         (congrArg (fun k : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1] => k ≫ g)
-          triangleSquare_lower_bottom)).symm
+          _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.triangleSquare_lower_bottom)).symm
   rel := by
     apply SSet.hom_ext
     intro n
@@ -57,29 +57,29 @@ def squareFrameTriangleFirst (j : Fin 2) : SSet.Homotopy
 方針：標準二三角形の元後辺の式を使う。
 規約：全比較写像を保持。使われ方：元三角形比較の第二側面。 -/
 def squareFrameTriangleLast (j : Fin 2) : SSet.Homotopy
-    (stdSimplex.δ (0 : Fin 3) ≫ squareTriangle j ≫ f)
-    (stdSimplex.δ (0 : Fin 3) ≫ squareTriangle j ≫ g) where
+    (stdSimplex.δ (0 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle j ≫ f)
+    (stdSimplex.δ (0 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle j ≫ g) where
   h := if j = 0 then H.top.h else H.right.h
   h₀ := by
     fin_cases j
     · change SSet.ι₀ ≫ H.top.h = _
       exact H.top.h₀.trans ((Category.assoc _ _ _).symm.trans
         (congrArg (fun k : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1] => k ≫ f)
-          triangleSquare_upper_top)).symm
+          _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.triangleSquare_upper_top)).symm
     · change SSet.ι₀ ≫ H.right.h = _
       exact H.right.h₀.trans ((Category.assoc _ _ _).symm.trans
         (congrArg (fun k : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1] => k ≫ f)
-          triangleSquare_lower_right)).symm
+          _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.triangleSquare_lower_right)).symm
   h₁ := by
     fin_cases j
     · change SSet.ι₁ ≫ H.top.h = _
       exact H.top.h₁.trans ((Category.assoc _ _ _).symm.trans
         (congrArg (fun k : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1] => k ≫ g)
-          triangleSquare_upper_top)).symm
+          _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.triangleSquare_upper_top)).symm
     · change SSet.ι₁ ≫ H.right.h = _
       exact H.right.h₁.trans ((Category.assoc _ _ _).symm.trans
         (congrArg (fun k : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1] => k ≫ g)
-          triangleSquare_lower_right)).symm
+          _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.triangleSquare_lower_right)).symm
   rel := by
     apply SSet.hom_ext
     intro n
@@ -101,7 +101,7 @@ lemma squareFrameTriangle_middle (j : Fin 2) :
 方針：共有頂点経路で貼った内ホーンを両端固定で延長する。
 規約：元二単体・元四側面を保持。使われ方：共有対角を整列する二つの実比較。 -/
 def squareFrameTriangleHomotopy (j : Fin 2) :
-    SSet.Homotopy (squareTriangle j ≫ f) (squareTriangle j ≫ g) :=
+    SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle j ≫ f) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle j ≫ g) :=
   specifiedTwoTriangleHomotopy _ _ (squareFrameTriangleFirst H j)
     (squareFrameTriangleLast H j) (squareFrameTriangle_middle H j)
 

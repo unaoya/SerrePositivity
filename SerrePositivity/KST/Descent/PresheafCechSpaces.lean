@@ -72,7 +72,7 @@ def presheafAugmentedCechSpaces : ((Over Y)ᵒᵖ ⥤ V) ⥤ AugmentedCechDiagra
       exact U.map_comp _ _
 
 variable [ModelCategory SSet.{z}]
-  (I J : MorphismProperty SSet.{z}) [ModelGeneration.CofibrantlyGenerated.{z} I J]
+  (I J : MorphismProperty SSet.{z}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{z} I J]
 
 /-- 概要：前層の retract は実際の指定降下を元の前層へ戻す（補題 3.2）。
 方針：増強を保持する関手で retract を写し、実際の比較の弱同値を移す。

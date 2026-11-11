@@ -19,8 +19,8 @@ open Spectra
 
 /-- 入力の射を一方向比較の mapping path の射へ移す。 -/
 def oneDirectionMappingPathMap (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath ((oneDirectionKanComparisonNat r).app X) ⟶
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath ((oneDirectionKanComparisonNat r).app Y) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPath ((oneDirectionKanComparisonNat r).app X) ⟶
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPath ((oneDirectionKanComparisonNat r).app Y) :=
   mappingPathTransport _ _ ((oneDirectionKanRealizationFunctor r).map f)
     ((boundaryKanRealizationFunctor r).map f) ((oneDirectionKanComparisonNat r).naturality f)
 
@@ -42,21 +42,21 @@ lemma oneDirectionMappingPathMap_comp (r : ℕ) {X Y Z : StableModel.{u}}
 
 /-- 一方向比較の mapping path を厳密な関手へ束ねる。 -/
 def oneDirectionMappingPathFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimplicialSet.{u} where
-  obj X := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath ((oneDirectionKanComparisonNat r).app X)
+  obj X := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPath ((oneDirectionKanComparisonNat r).app X)
   map f := oneDirectionMappingPathMap r f
   map_id X := oneDirectionMappingPathMap_id r X
   map_comp f g := oneDirectionMappingPathMap_comp r f g
 
 /-- mapping path から境界への射影の厳密な自然性。 -/
 lemma oneDirectionMappingPathMap_projection (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
-    oneDirectionMappingPathMap r f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y) =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app X) ≫
+    oneDirectionMappingPathMap r f ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y) =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app X) ≫
         (boundaryKanRealizationFunctor r).map f := mappingPathTransport_projection ..
 
 /-- mapping path から一方向模型への射影の厳密な自然性。 -/
 lemma oneDirectionMappingPathMap_retraction (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
-    oneDirectionMappingPathMap r f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction ((oneDirectionKanComparisonNat r).app Y) =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction ((oneDirectionKanComparisonNat r).app X) ≫
+    oneDirectionMappingPathMap r f ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction ((oneDirectionKanComparisonNat r).app Y) =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction ((oneDirectionKanComparisonNat r).app X) ≫
         (oneDirectionKanRealizationFunctor r).map f := mappingPathTransport_retraction ..
 
 end SerrePositivity.KST.SConstruction

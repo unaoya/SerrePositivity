@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedEvaluationMorita
-public import SerrePositivity.InfinityCategories.Derived.DGPerfectKernelMoritaInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectKernelMoritaInfinity
 public import SerrePositivity.KST.NonConnective.DGKInputDerivedCompactGeneration
 
 /-!
@@ -29,7 +29,7 @@ include P in
 theorem dgKappaResolvedEvaluationClassical_isEquivalence :
     (Morita.kernelDerivedTensorOnBimodule R (dgKappaResolvedKernelKInput R D I) D
       (dgKappaResolvedEvaluationBimodule R D I)).IsEquivalence :=
-  dgKernelClassical_isEquivalence_of_morita R (dgKappaResolvedKernelKInput R D I) D
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKernelClassical_isEquivalence_of_morita R (dgKappaResolvedKernelKInput R D I) D
     (dgKappaResolvedEvaluationBimodule R D I)
     ⟨dgKappaResolvedEvaluationKernel_columnsPerfect R D I P,
       dgKappaResolvedEvaluationKernel_fullHomQuasiIso R D I,
@@ -40,27 +40,27 @@ theorem dgKappaResolvedEvaluationClassical_isEquivalence :
 
 /-- I・P に条件付きで、同じ実評価核の元の実 ∞-Perf 作用。 -/
 def dgKappaResolvedPerfectInfinity :
-    dgModulePerfectInfinityCategory R (dgKappaResolvedKernelKInput R D I) ⟶
-      dgModulePerfectInfinityCategory R D := by
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModulePerfectInfinityCategory R (dgKappaResolvedKernelKInput R D I) ⟶
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModulePerfectInfinityCategory R D := by
   let := dgKappaResolvedEvaluationClassical_isEquivalence R D I P
-  exact dgPerfectKernelInfinity R (dgKappaResolvedKernelKInput R D I) D
+  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectKernelInfinity R (dgKappaResolvedKernelKInput R D I) D
     (dgKappaResolvedEvaluationBimodule R D I)
 
 /-- I・P に条件付きで、同じ実 ∞-Perf 作用は全写像空間の同値。 -/
 theorem dgKappaResolvedPerfectInfinity_isQCatEquivalence :
-    IsQCatEquivalence (dgKappaResolvedPerfectInfinity R D I P) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (dgKappaResolvedPerfectInfinity R D I P) := by
   let := dgKappaResolvedEvaluationClassical_isEquivalence R D I P
-  exact dgPerfectKernelInfinity_isQCatEquivalence_of_classical R
+  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectKernelInfinity_isQCatEquivalence_of_classical R
     (dgKappaResolvedKernelKInput R D I) D (dgKappaResolvedEvaluationBimodule R D I)
 
 /-- I・P に条件付きで、同じ ∞-Perf 作用の包含は元の同じ実導来 kernel 作用と全関手で可換。 -/
 def dgKappaResolvedPerfectInfinity_inclusionIso :
-    FunctorIso (dgKappaResolvedPerfectInfinity R D I P ≫ dgPerfectInclusionInfinity R D)
-      (dgPerfectInclusionInfinity R (dgKappaResolvedKernelKInput R D I) ≫
-        dgKernelDerivedInfinity R (dgKappaResolvedKernelKInput R D I) D
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaResolvedPerfectInfinity R D I P ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectInclusionInfinity R D)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectInclusionInfinity R (dgKappaResolvedKernelKInput R D I) ≫
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKernelDerivedInfinity R (dgKappaResolvedKernelKInput R D I) D
           (dgKappaResolvedEvaluationBimodule R D I)) := by
   let := dgKappaResolvedEvaluationClassical_isEquivalence R D I P
-  exact dgPerfectKernelInclusionIso R (dgKappaResolvedKernelKInput R D I) D
+  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectKernelInclusionIso R (dgKappaResolvedKernelKInput R D I) D
     (dgKappaResolvedEvaluationBimodule R D I)
 
 end SerrePositivity.KST.NonConnective

@@ -29,9 +29,9 @@ lemma coaugmentedPointedSuspensionComparison_family_source_quotient {P : SSet.{u
           (coaugmentedPointedObject F η (pointedSSetSuspensionObject Y)).obj)) =
     ((coaugmentedTensorLeftStrength F η PointedSimplicialSet.circle.{u}.right X.obj.right ≫
       F.map (PointedSimplicialSet.productToSmash PointedSimplicialSet.circle.{u} X.obj)) ▷ P) ≫
-      coaugmentedTensorRightStrength F η (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj).right P ≫
+      coaugmentedTensorRightStrength F η (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X.obj).right P ≫
       F.map (uncurry (a ≫ (Spectra.suspensionHom X.obj Y.obj).right ≫
-        PointedObject.basedHomι (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y.obj))) := by
+        PointedObject.basedHomι (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X.obj) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y.obj))) := by
   erw [← Category.assoc, ← comp_whiskerRight,
     coaugmentedPointedSuspensionComparison_quotient_strength,
     coaugmentedPointedFamily_strength]
@@ -46,8 +46,8 @@ lemma coaugmentedPointedSuspensionComparison_family_target_quotient {P : SSet.{u
       (Spectra.suspensionHom (coaugmentedPointedObject F η X).obj
         (coaugmentedPointedObject F η Y).obj).right ≫
       PointedObject.basedHomι
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (coaugmentedPointedObject F η X).obj)
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (coaugmentedPointedObject F η Y).obj)) ≫
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (coaugmentedPointedObject F η X).obj)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (coaugmentedPointedObject F η Y).obj)) ≫
       (coaugmentedPointedSuspensionComparison F η Y).right) =
     (α_ PointedSimplicialSet.circle.{u}.right (F.obj X.obj.right) P).hom ≫
       (PointedSimplicialSet.circle.{u}.right ◁
@@ -77,8 +77,8 @@ lemma coaugmentedPointedSuspensionComparison_family_action {P : SSet.{u}}
       (Spectra.suspensionHom (coaugmentedPointedObject F η X).obj
         (coaugmentedPointedObject F η Y).obj).right ≫
       PointedObject.basedHomι
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (coaugmentedPointedObject F η X).obj)
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (coaugmentedPointedObject F η Y).obj)) ≫
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (coaugmentedPointedObject F η X).obj)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (coaugmentedPointedObject F η Y).obj)) ≫
       (coaugmentedPointedSuspensionComparison F η Y).right := by
   let q := PointedSimplicialSet.productToSmash PointedSimplicialSet.circle.{u}
     (coaugmentedPointedObject F η X).obj

@@ -59,12 +59,12 @@ abbrev chain (U : SSet.{max u v}) (X Y : D C) := OrdinaryBarChainFamily.chain hc
 variable {U V : SSet.{max u v}} (j : U ⟶ parameters P n)
 
 def snoc {a : D C} {X Y : degree (D C) (n + 1)} (q : chain hcof hfib U a X)
-    (f : X ⟶ Y) (t : U ⟶ RetractChainFamily.interval) : chain hcof hfib U a Y :=
+    (f : X ⟶ Y) (t : U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) : chain hcof hfib U a Y :=
   q.familySnoc (ParameterComposition.substitute j
     (OrdinaryBarFreeAmbientFamilies.family hcof hfib P n f)) t
 
 lemma snoc_substitute (k : V ⟶ U) {a : D C} {X Y : degree (D C) (n + 1)}
-    (q : chain hcof hfib U a X) (f : X ⟶ Y) (t : U ⟶ RetractChainFamily.interval) :
+    (q : chain hcof hfib U a X) (f : X ⟶ Y) (t : U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) :
     (snoc hcof hfib P n j q f t).substitute k =
       snoc hcof hfib P n (k ≫ j) (q.substitute k) f (k ≫ t) := by
   simp only [snoc, RetractChainFamily.Chain.substitute, ParameterComposition.substitute,
@@ -72,19 +72,19 @@ lemma snoc_substitute (k : V ⟶ U) {a : D C} {X Y : degree (D C) (n + 1)}
 
 def ofPath {X : degree (D C) (n + 1)} :
     {Y : degree (D C) (n + 1)} → Quiver.Path X Y →
-      (ℕ → (U ⟶ RetractChainFamily.interval)) → chain hcof hfib U X Y
+      (ℕ → (U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) → chain hcof hfib U X Y
   | _, .nil, _ => .nil
   | _, .cons q f, t => snoc hcof hfib P n j (ofPath q t) f (t q.length)
 
 lemma ofPath_length {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y)
-    (t : ℕ → (U ⟶ RetractChainFamily.interval)) :
+    (t : ℕ → (U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     (ofPath hcof hfib P n j q t).length = q.length := by
   induction q with
   | nil => rfl
   | cons q f ih => change (ofPath hcof hfib P n j q t).length + 1 = q.length + 1; rw [ih]
 
 lemma ofPath_substitute (k : V ⟶ U) {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y)
-    (t : ℕ → (U ⟶ RetractChainFamily.interval)) :
+    (t : ℕ → (U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     (ofPath hcof hfib P n j q t).substitute k =
       ofPath hcof hfib P n (k ≫ j) q (fun r => k ≫ t r) := by
   induction q with
@@ -92,23 +92,23 @@ lemma ofPath_substitute (k : V ⟶ U) {X Y : degree (D C) (n + 1)} (q : Quiver.P
   | cons q f ih => simp only [ofPath, snoc_substitute, ih]
 
 def family {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y)
-    (t : ℕ → (U ⟶ RetractChainFamily.interval)) : lifted hcof hfib X ⊗ U ⟶ lifted hcof hfib Y :=
+    (t : ℕ → (U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) : lifted hcof hfib X ⊗ U ⟶ lifted hcof hfib Y :=
   OrdinaryBarChainFamily.family hcof hfib (ofPath hcof hfib P n j q t)
 
 lemma family_substitute (k : V ⟶ U) {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y)
-    (t : ℕ → (U ⟶ RetractChainFamily.interval)) :
+    (t : ℕ → (U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     family hcof hfib P n (k ≫ j) q (fun r => k ≫ t r) =
       ParameterComposition.substitute k (family hcof hfib P n j q t) := by
   rw [family, ← ofPath_substitute, OrdinaryBarChainFamily.family_substitute]
   rfl
 
-lemma family_nil (X : degree (D C) (n + 1)) (t : ℕ → (U ⟶ RetractChainFamily.interval)) :
+lemma family_nil (X : degree (D C) (n + 1)) (t : ℕ → (U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     family hcof hfib P n j (Quiver.Path.nil : Quiver.Path X X) t = fst (lifted hcof hfib X) U := by
   ext m x
   exact types_congr_hom (congr_app (section_fac hcof hfib X) m) x.1
 
 lemma family_single {X Y : degree (D C) (n + 1)} (f : X ⟶ Y)
-    (t : ℕ → (U ⟶ RetractChainFamily.interval)) :
+    (t : ℕ → (U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     family hcof hfib P n j f.toPath t =
       OrdinaryBarFreeTransferredFamilies.ofFamily hcof hfib (ParameterComposition.substitute j
         (OrdinaryBarFreeAmbientFamilies.family hcof hfib P n f)) := by
@@ -122,9 +122,9 @@ lemma family_single {X Y : degree (D C) (n + 1)} (f : X ⟶ Y)
 
 lemma zero_face {a d : D C} {X Y Z : degree (D C) (n + 1)}
     (q : chain hcof hfib U a X) (f : X ⟶ Y) (g : Y ⟶ Z)
-    (t : U ⟶ RetractChainFamily.interval) (r : chain hcof hfib U Z d) :
+    (t : U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) (r : chain hcof hfib U Z d) :
     OrdinaryBarChainFamily.family hcof hfib
-      ((snoc hcof hfib P n j (snoc hcof hfib P n j q f (RetractChainFamily.zero U)) g t).append r) =
+      ((snoc hcof hfib P n j (snoc hcof hfib P n j q f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero U)) g t).append r) =
     OrdinaryBarChainFamily.family hcof hfib ((snoc hcof hfib P n j q (f ≫ g) t).append r) := by
   have hh := RetractChainFamily.zero_family_face (ambient hcof hfib) (lifted hcof hfib)
     (section_ hcof hfib) (projection hcof hfib) (contraction hcof hfib) q
@@ -136,15 +136,15 @@ lemma zero_face {a d : D C} {X Y Z : degree (D C) (n + 1)}
 lemma one_face {a d : D C} {X Y : degree (D C) (n + 1)}
     (q : chain hcof hfib U a X) (f : X ⟶ Y) (r : chain hcof hfib U Y d) :
     OrdinaryBarChainFamily.family hcof hfib
-      ((snoc hcof hfib P n j q f (RetractChainFamily.one U)).append r) =
+      ((snoc hcof hfib P n j q f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.one U)).append r) =
     ParameterComposition.comp
       (OrdinaryBarChainFamily.family hcof hfib
-        (snoc hcof hfib P n j q f (RetractChainFamily.zero U)))
+        (snoc hcof hfib P n j q f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero U)))
       (OrdinaryBarChainFamily.family hcof hfib r) :=
   RetractChainFamily.one_family_face _ _ _ _ _ (contraction_over hcof hfib) q _ r
 
 lemma snoc_face (i : Fin (n + 2)) {a : D C} {X Y : degree (D C) (n + 2)}
-    (q : chain hcof hfib U a X) (f : X ⟶ Y) (t : U ⟶ RetractChainFamily.interval) :
+    (q : chain hcof hfib U a X) (f : X ⟶ Y) (t : U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) :
     snoc hcof hfib P n j q ((FreeGeneratorFaces.fixedFace (D C) (n + 1) i).map f) t =
       snoc hcof hfib P (n + 1) (j ≫ P ◁ SSet.stdSimplex.δ i) q f t := by
   simp only [snoc, ← OrdinaryBarFreeAmbientFamilies.family_face,
@@ -152,9 +152,9 @@ lemma snoc_face (i : Fin (n + 2)) {a : D C} {X Y : degree (D C) (n + 2)}
 
 lemma snoc_degeneracy (i : Fin (n + 1)) (k : U ⟶ parameters P (n + 1))
     {a : D C} {X Y : degree (D C) (n + 1)} (q : chain hcof hfib U a X) (f : X ⟶ Y)
-    (t : U ⟶ RetractChainFamily.interval) :
+    (t : U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) :
     snoc hcof hfib P (n + 1) k q ((degeneracyFunctor (D C) n i).map f) t =
-      snoc hcof hfib P n (k ≫ P ◁ OrdinaryBarFreeResolutionDegeneracyValues.sigma n i) q f t := by
+      snoc hcof hfib P n (k ≫ P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i) q f t := by
   simp only [snoc, OrdinaryBarFreeAmbientFamilies.family_degeneracy,
     ParameterComposition.substitute, whiskerLeft_comp, Category.assoc]
 
@@ -174,7 +174,7 @@ lemma degeneracy_path_length (i : Fin (n + 1)) {X Y : degree (D C) (n + 1)}
   | cons q f ih => change _ + 1 = q.length + 1; rw [ih]
 
 lemma ofPath_face (i : Fin (n + 2)) {X Y : degree (D C) (n + 2)} (q : Quiver.Path X Y)
-    (t : ℕ → (U ⟶ RetractChainFamily.interval)) :
+    (t : ℕ → (U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     ofPath hcof hfib P n j
       ((FreeGeneratorFaces.fixedFace (D C) (n + 1) i).toPrefunctor.mapPath q) t =
     ofPath hcof hfib P (n + 1) (j ≫ P ◁ SSet.stdSimplex.δ i) q t := by
@@ -187,9 +187,9 @@ lemma ofPath_face (i : Fin (n + 2)) {X Y : degree (D C) (n + 2)} (q : Quiver.Pat
 
 lemma ofPath_degeneracy (i : Fin (n + 1)) (k : U ⟶ parameters P (n + 1))
     {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y)
-    (t : ℕ → (U ⟶ RetractChainFamily.interval)) :
+    (t : ℕ → (U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     ofPath hcof hfib P (n + 1) k ((degeneracyFunctor (D C) n i).toPrefunctor.mapPath q) t =
-    ofPath hcof hfib P n (k ≫ P ◁ OrdinaryBarFreeResolutionDegeneracyValues.sigma n i) q t := by
+    ofPath hcof hfib P n (k ≫ P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i) q t := by
   induction q with
   | nil => rfl
   | cons q f ih =>
@@ -198,7 +198,7 @@ lemma ofPath_degeneracy (i : Fin (n + 1)) (k : U ⟶ parameters P (n + 1))
     exact snoc_degeneracy hcof hfib P n i k _ f _
 
 lemma family_face (i : Fin (n + 2)) {X Y : degree (D C) (n + 2)} (q : Quiver.Path X Y)
-    (t : ℕ → (U ⟶ RetractChainFamily.interval)) :
+    (t : ℕ → (U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     family hcof hfib P n j
       ((FreeGeneratorFaces.fixedFace (D C) (n + 1) i).toPrefunctor.mapPath q) t =
     family hcof hfib P (n + 1) (j ≫ P ◁ SSet.stdSimplex.δ i) q t :=
@@ -206,15 +206,15 @@ lemma family_face (i : Fin (n + 2)) {X Y : degree (D C) (n + 2)} (q : Quiver.Pat
 
 lemma family_degeneracy (i : Fin (n + 1)) (k : U ⟶ parameters P (n + 1))
     {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y)
-    (t : ℕ → (U ⟶ RetractChainFamily.interval)) :
+    (t : ℕ → (U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     family hcof hfib P (n + 1) k ((degeneracyFunctor (D C) n i).toPrefunctor.mapPath q) t =
-    family hcof hfib P n (k ≫ P ◁ OrdinaryBarFreeResolutionDegeneracyValues.sigma n i) q t :=
+    family hcof hfib P n (k ≫ P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i) q t :=
   congrArg (OrdinaryBarChainFamily.family hcof hfib) (ofPath_degeneracy hcof hfib P n i k q t)
 
 lemma evaluate_zero {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y) :
     RetractChainFamily.evaluate (ambient hcof hfib) (lifted hcof hfib)
       (section_ hcof hfib) (projection hcof hfib) (contraction hcof hfib)
-        (ofPath hcof hfib P n j q (fun _ => RetractChainFamily.zero U)) =
+        (ofPath hcof hfib P n j q (fun _ => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero U)) =
     ParameterComposition.substitute j (OrdinaryBarFreeAmbientFamilies.family hcof hfib P n
       ((pathComposition (degree (D C) (n + 1))).map q)) := by
   induction q with
@@ -227,17 +227,17 @@ lemma evaluate_zero {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y) :
     change ParameterComposition.comp
       (RetractChainFamily.evaluate (ambient hcof hfib) (lifted hcof hfib)
         (section_ hcof hfib) (projection hcof hfib) (contraction hcof hfib)
-          (ofPath hcof hfib P n j q (fun _ => RetractChainFamily.zero U)))
+          (ofPath hcof hfib P n j q (fun _ => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero U)))
       (ParameterComposition.comp
         (ParameterComposition.substitute j (OrdinaryBarFreeAmbientFamilies.family hcof hfib P n f))
-        (RetractChainFamily.contraction _ _ _ _ _ _ (RetractChainFamily.zero U))) =
+        (RetractChainFamily.contraction _ _ _ _ _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero U))) =
       ParameterComposition.substitute j (OrdinaryBarFreeAmbientFamilies.family hcof hfib P n
         ((pathComposition (degree (D C) (n + 1))).map q ≫ f))
     rw [RetractChainFamily.contraction_zero, ParameterComposition.comp_id, ih,
       OrdinaryBarFreeAmbientFamilies.family_comp, ParameterComposition.substitute_comp]
 
 lemma family_zero {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y) :
-    family hcof hfib P n j q (fun _ => RetractChainFamily.zero U) =
+    family hcof hfib P n j q (fun _ => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero U) =
     OrdinaryBarFreeTransferredFamilies.ofFamily hcof hfib (ParameterComposition.substitute j
       (OrdinaryBarFreeAmbientFamilies.family hcof hfib P n
         ((pathComposition (degree (D C) (n + 1))).map q))) := by
@@ -245,7 +245,7 @@ lemma family_zero {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y) :
     (ParameterComposition.comp
       (RetractChainFamily.evaluate (ambient hcof hfib) (lifted hcof hfib)
         (section_ hcof hfib) (projection hcof hfib) (contraction hcof hfib)
-          (ofPath hcof hfib P n j q (fun _ => RetractChainFamily.zero U)))
+          (ofPath hcof hfib P n j q (fun _ => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero U)))
       (ParameterComposition.const U (projection hcof hfib Y))) = _
   rw [evaluate_zero]
   ext m x

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.RightFibrationEdgeTarget
-public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.RightFibrationEdgeTarget
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.RightFibrationReflection
 
 /-!
 概要：右 fibration に沿い、指定した可逆辺そのものを始端固定で持ち上げる。
@@ -21,14 +21,14 @@ namespace SerrePositivity.InfinityCategories
 
 /-- 指定可逆辺の同じ単体を、右 fibration の指定始端から持ち上げる。 -/
 lemma d3_rightFibration_liftEdge_source {E B : SSet.{u}} [Quasicategory B]
-    (p : E ⟶ B) [RightFibration p] (x : E _⦋0⦌) {y : B _⦋0⦌}
+    (p : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration p] (x : E _⦋0⦌) {y : B _⦋0⦌}
     (e : Truncated.Edge (X := (truncation 2).obj B)
-      (p.app (Opposite.op ⦋0⦌) x) y) (he : IsInvertibleEdge e) :
+      (p.app (Opposite.op ⦋0⦌) x) y) (he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge e) :
     ∃ F : (Δ[1] : SSet.{u}) ⟶ E,
       stdSimplex.δ 1 ≫ F = SSet.yonedaEquiv.symm x ∧
         F ≫ p = SSet.yonedaEquiv.symm e.edge := by
-  obtain ⟨f, t, _⟩ := IsInvertibleEdge.nonempty_inverse he
-  obtain ⟨G, hG₀, hGp⟩ := rightFibration_liftEdge_target p x f
+  obtain ⟨f, t, _⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge.nonempty_inverse he
+  obtain ⟨G, hG₀, hGp⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.rightFibration_liftEdge_target p x f
   let z := E.δ 1 (SSet.yonedaEquiv G)
   let g : Truncated.Edge (X := (truncation 2).obj E) z x :=
     ⟨SSet.yonedaEquiv G, rfl, by
@@ -55,7 +55,7 @@ lemma d3_rightFibration_liftEdge_source {E B : SSet.{u}} [Quasicategory B]
         _ = B.σ 0 (p.app (Opposite.op ⦋0⦌) x) := t.d₁
         _ = _ := (ConcreteCategory.congr_hom
           (p.naturality (SimplexCategory.σ (0 : Fin 1)).op) x).symm
-  obtain ⟨a, s, hs⟩ := derived_rightFibration_liftCompStruct p g
+  obtain ⟨a, s, hs⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.derived_rightFibration_liftCompStruct p g
     (Truncated.Edge.id (X := (truncation 2).obj E) x) e' t'
   have hap : p.app (Opposite.op ⦋1⦌) a.edge = e.edge := by
     rw [← s.d₂]

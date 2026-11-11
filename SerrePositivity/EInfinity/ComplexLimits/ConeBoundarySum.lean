@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.ConeFirstBoundary
-public import SerrePositivity.InfinityCategories.DGNerve.PinchedLinear
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedLinear
 
 /-!
 概要：実 cone の混合方程式で、内部削除和へ最後の一項を戻す有限和を計算する。
@@ -10,7 +10,7 @@ public import SerrePositivity.InfinityCategories.DGNerve.PinchedLinear
 @[expose] public section
 noncomputable section
 namespace SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
-open SerrePositivity.InfinityCategories.DGNerve
+
 lemma signed_coefficient_commute {M : Type*} [AddCommGroup M] (k g : ℤ) (v : M) :
     g.negOnePow • ((k + 1).negOnePow • v) =
       k.negOnePow • ((g + 1).negOnePow • v) := by
@@ -21,11 +21,11 @@ lemma signed_coefficient_commute {M : Type*} [AddCommGroup M] (k g : ℤ) (v : M
 lemma sum_restore_terminal {n : ℕ} {M : Type*} [AddCommGroup M]
     (J : Finset (Fin (n + 1))) (hm : Fin.last n ∈ J)
     (f : J → M) (r : ℤˣ) :
-    (∑ j : J, if j.val < Fin.last n then Index.sign J j.val • (r • f j) else 0) +
-      r • f ⟨Fin.last n, hm⟩ = ∑ j : J, Index.sign J j.val • (r • f j) := by
+    (∑ j : J, if j.val < Fin.last n then _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign J j.val • (r • f j) else 0) +
+      r • f ⟨Fin.last n, hm⟩ = ∑ j : J, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign J j.val • (r • f j) := by
   let b : J := ⟨Fin.last n, hm⟩
-  have hb : Index.sign J b.val = 1 := by
-    unfold Index.sign
+  have hb : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign J b.val = 1 := by
+    unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign
     have he : J.filter (b.val < ·) = ∅ := by
       ext i
       simp only [Finset.mem_filter, Finset.notMem_empty, iff_false, not_and]
@@ -33,21 +33,21 @@ lemma sum_restore_terminal {n : ℕ} {M : Type*} [AddCommGroup M]
       exact not_lt_of_ge (Fin.le_last i)
     rw [he]
     rfl
-  have hsum : (∑ j : J, if j = b then 0 else Index.sign J j.val • (r • f j)) +
-      Index.sign J b.val • (r • f b) = ∑ j : J, Index.sign J j.val • (r • f j) := by
+  have hsum : (∑ j : J, if j = b then 0 else _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign J j.val • (r • f j)) +
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign J b.val • (r • f b) = ∑ j : J, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign J j.val • (r • f j) := by
     calc
-      _ = (∑ j : J, if j = b then 0 else Index.sign J j.val • (r • f j)) +
-          (∑ j : J, if j = b then Index.sign J b.val • (r • f b) else 0) := by simp
-      _ = ∑ j : J, ((if j = b then 0 else Index.sign J j.val • (r • f j)) +
-          (if j = b then Index.sign J b.val • (r • f b) else 0)) :=
+      _ = (∑ j : J, if j = b then 0 else _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign J j.val • (r • f j)) +
+          (∑ j : J, if j = b then _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign J b.val • (r • f b) else 0) := by simp
+      _ = ∑ j : J, ((if j = b then 0 else _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign J j.val • (r • f j)) +
+          (if j = b then _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign J b.val • (r • f b) else 0)) :=
         Finset.sum_add_distrib.symm
       _ = _ := by
         apply Finset.sum_congr rfl
         intro j _
         by_cases he : j = b <;> simp [he]
   have he : ∀ j : J,
-      (if j.val < Fin.last n then Index.sign J j.val • (r • f j) else 0) =
-        (if j = b then 0 else Index.sign J j.val • (r • f j)) := by
+      (if j.val < Fin.last n then _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign J j.val • (r • f j) else 0) =
+        (if j = b then 0 else _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign J j.val • (r • f j)) := by
     intro j
     by_cases hj : j = b
     · subst j
@@ -60,7 +60,7 @@ lemma sum_restore_terminal {n : ℕ} {M : Type*} [AddCommGroup M]
 
 lemma sum_interior_zero_last {n : ℕ} {M : Type*} [AddCommMonoid M]
     (I : Finset (Fin (n + 2))) (f : Fin (n + 2) → M) :
-    (∑ j ∈ Index.interior I 0 (Fin.last (n + 1)), f j) =
+    (∑ j ∈ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.interior I 0 (Fin.last (n + 1)), f j) =
       ∑ j : ConeHeadIndex.withoutFirst I,
         if j.val < Fin.last n then f j.val.succ else 0 := by
   rw [ConeHeadIndex.interior_zero_last]
@@ -74,7 +74,7 @@ lemma sum_interior_zero_last {n : ℕ} {M : Type*} [AddCommMonoid M]
 lemma sum_restore_terminal_linear {n : ℕ} {M : Type*} [AddCommGroup M]
     (J : Finset (Fin (n + 1))) (hm : Fin.last n ∈ J) (f : J → M) (k : ℤ) :
     (∑ j : J, if j.val < Fin.last n then
-      Index.sign J j.val • ((k + 1).negOnePow • f j) else 0) +
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign J j.val • ((k + 1).negOnePow • f j) else 0) +
       (k + 1).negOnePow • f ⟨Fin.last n, hm⟩ =
         k.negOnePow • ∑ j : J,
           (((J.filter (j.val < ·)).card : ℤ) + 1).negOnePow • f j := by

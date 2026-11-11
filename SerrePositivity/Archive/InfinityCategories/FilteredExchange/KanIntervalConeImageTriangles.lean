@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanIntervalConeStrictNaturality
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanIntervalConeImageIsos
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerUnit
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerUnit
 
 /-!
 概要：元の左右の三角形と置換後の中心への比較の整合。

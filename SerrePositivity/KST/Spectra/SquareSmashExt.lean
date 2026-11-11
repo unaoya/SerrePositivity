@@ -7,7 +7,7 @@ public import Mathlib.CategoryTheory.Functor.EpiMono
 概要：二つの円の smash 積からの写像を正方形上で判定する。
 方針：円の商射の全射性と smash の商の普遍性を使う。
 規約：Kan 性は要求しない。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。三角形分割との比較の一意性。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.3（Tag 00W3）。三角形分割との比較の一意性。
 -/
 
 @[expose] public section
@@ -41,7 +41,7 @@ instance circleQuotient_epi : Epi (PointedObject.cofiberQuotient (boundary.{u} 1
 /-- 概要：二つの円の商射の積も全射である。
 方針：閉構造の積関手による全射の保存を使う。
 規約：二つの区間から二つの円への積の射。
-使われ方：Kerodon §3.2.3。二変数の商における等式の判定。 -/
+使われ方：Kerodon §3.2.3（Tag 00W3）。二変数の商における等式の判定。 -/
 instance squareCircleQuotient_epi : Epi
     (PointedObject.cofiberQuotient (boundary.{u} 1).ι ⊗ₘ
       PointedObject.cofiberQuotient (boundary.{u} 1).ι) := by

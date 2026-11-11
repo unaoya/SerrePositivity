@@ -12,7 +12,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 
 /-- 概要：時刻を先にした元全側境界も同じ元三比較側面を厳密回収する。
 方針：元因子交換の自然性と元側境界の回収式を使う。
@@ -48,7 +48,7 @@ lemma dgOdotMilnorNuNullPrismFullBoundary_face (j : Fin 2) (i : Fin 3) :
 lemma dgOdotMilnorNuNullPrismSideFamily_diagonal (j : Fin 2) :
     dgOdotMilnorNuNullPrismSideFamily R d h j (1 : Fin 3) =
       (dgOdotMilnorNuNullDiagonalDiagramHomotopy R d h).h := by
-  let middle (f g k : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}) :
+  let middle (f g k : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1}) :
       ![f, g, k] (1 : Fin 3) = g := rfl
   exact middle _ _ _
 
@@ -72,20 +72,20 @@ lemma dgOdotMilnorNuNullPrismFullBoundary_sharedDiagonal :
 方針：元端点入射と元区間境界図式の始端回収を使う。
 規約：二胞体を取り替えない。使われ方：内部充填の元実端点の固定。 -/
 lemma dgOdotMilnorNuNullPrismFullBoundary_start (j : Fin 2) :
-    intervalBoundaryEndpoint 0 (Δ[2] : SSet.{u + 2}) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint 0 (Δ[2] : SSet.{u + 2}) ≫
         Subcomplex.unionProd.ι₂ (boundary 1) (boundary 2) ≫
         dgOdotMilnorNuNullPrismFullBoundary R d h j =
       SSet.yonedaEquiv.symm (dgOdotMilnorNuNullTriangle R d j) := by
-  rw [dgOdotMilnorNuNullPrismFullBoundary_ends, intervalBoundaryDiagram_zero]
+  rw [dgOdotMilnorNuNullPrismFullBoundary_ends, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_zero]
 
 /-- 概要：元 prism 全境界の終端は同じ元絶対二胞体の全単体。
 方針：元端点入射と元区間境界図式の終端回収を使う。
 規約：二胞体を取り替えない。使われ方：内部充填の元絶対端点の固定。 -/
 lemma dgOdotMilnorNuNullPrismFullBoundary_end (j : Fin 2) :
-    intervalBoundaryEndpoint 1 (Δ[2] : SSet.{u + 2}) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint 1 (Δ[2] : SSet.{u + 2}) ≫
         Subcomplex.unionProd.ι₂ (boundary 1) (boundary 2) ≫
         dgOdotMilnorNuNullPrismFullBoundary R d h j =
       SSet.yonedaEquiv.symm (dgOdotMilnorNuAbsoluteNullTriangle R d h j) := by
-  rw [dgOdotMilnorNuNullPrismFullBoundary_ends, intervalBoundaryDiagram_one]
+  rw [dgOdotMilnorNuNullPrismFullBoundary_ends, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_one]
 
 end SerrePositivity.KST.SConstruction

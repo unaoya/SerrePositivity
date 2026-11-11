@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.RightFrameHammockComponent
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyRepresentative
 
 /-!
 概要：実 QCat 比較の選択した逆が同じ元の比較辺の反転と一致することを追跡する。
@@ -20,10 +20,10 @@ open SerrePositivity.Reedy SerrePositivity.InfinityCategories SerrePositivity.Si
 方針：元の指定二胞体の全ホモトピーを同じ反転関手に送る。
 規約：元の逆と単位を保持。使われ方：六辺の実逆の照合。 -/
 lemma qCatEquivalence_hom_inv_Q {A B : SSet.{w}} [Quasicategory A] [Quasicategory B]
-    (e : QCatEquivalence A B) :
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence A B) :
     AnodyneHomotopy.anodyneQ.map e.hom ≫ AnodyneHomotopy.anodyneQ.map e.inv = 𝟙 _ := by
   have h := AnodyneHomotopy.map_homotopy_eq AnodyneHomotopy.anodyneQ
-    (Localization.inverts _ SSet.anodyneExtensions) (functorHomHomotopy e.homInvIso.hom)
+    (Localization.inverts _ SSet.anodyneExtensions) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy e.homInvIso.hom)
   simp only [Functor.map_comp] at h
   exact h.trans (AnodyneHomotopy.anodyneQ.map_id _)
 
@@ -31,10 +31,10 @@ lemma qCatEquivalence_hom_inv_Q {A B : SSet.{w}} [Quasicategory A] [Quasicategor
 方針：もう一つの指定二胞体を同じ全ホモトピーとして送る。
 規約：元の逆と余単位を保持。使われ方：元の反転の一意性。 -/
 lemma qCatEquivalence_inv_hom_Q {A B : SSet.{w}} [Quasicategory A] [Quasicategory B]
-    (e : QCatEquivalence A B) :
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence A B) :
     AnodyneHomotopy.anodyneQ.map e.inv ≫ AnodyneHomotopy.anodyneQ.map e.hom = 𝟙 _ := by
   have h := AnodyneHomotopy.map_homotopy_eq AnodyneHomotopy.anodyneQ
-    (Localization.inverts _ SSet.anodyneExtensions) (functorHomHomotopy e.invHomIso.hom)
+    (Localization.inverts _ SSet.anodyneExtensions) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy e.invHomIso.hom)
   simp only [Functor.map_comp] at h
   exact h.trans (AnodyneHomotopy.anodyneQ.map_id _)
 

@@ -39,7 +39,7 @@ lemma comparison_primitive :
 lemma comparison_toMappingCocone :
     (comparison R f g).hom ≫ toMappingCocone R f g =
       cochainPullbackToCocone f.hom g.hom := by
-  apply dgMappingCocone_hom_ext (difference R f g)
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgMappingCocone_hom_ext (difference R f g)
   · calc
       _ = (comparison R f g).hom ≫ pairHom R f g := by
         rw [Category.assoc, toMappingCocone_fst]

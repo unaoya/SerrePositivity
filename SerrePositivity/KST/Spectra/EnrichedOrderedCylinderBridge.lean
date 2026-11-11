@@ -20,23 +20,23 @@ variable {C : Type v} [EnrichedCategory SSet.{u} C]
   {A : SSet.{u}} (i : 𝟙_ SSet.{u} ⟶ A)
 
 /-- 二段の順序付き円柱の段を、二対象の円柱の両端へ送る。 -/
-def bridgeObject (X : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 2) C) : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C :=
+def bridgeObject (X : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object (Fin 2) C) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A C :=
   ⟨X.position != 0, X.val⟩
 
 /-- 指定した単位パラメータを添える、二段の円柱の Hom の写像。 -/
-def bridgeMap : (X Y : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 2) C) →
-    _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.hom X Y ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A (bridgeObject X) (bridgeObject Y)
+def bridgeMap : (X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object (Fin 2) C) →
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.hom X Y ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.hom A (bridgeObject X) (bridgeObject Y)
   | ⟨⟨0, _⟩, _⟩, ⟨⟨0, _⟩, _⟩ => snd _ _
   | ⟨⟨0, _⟩, _⟩, ⟨⟨1, _⟩, _⟩ => lift (toUnit _ ≫ i) (snd _ _)
   | ⟨⟨1, _⟩, _⟩, ⟨⟨0, _⟩, _⟩ =>
-      _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.eliminateHom _ _ (by intro h; change (1 : ℕ) ≤ 0 at h; omega) _
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.eliminateHom _ _ (by intro h; change (1 : ℕ) ≤ 0 at h; omega) _
   | ⟨⟨1, _⟩, _⟩, ⟨⟨1, _⟩, _⟩ => snd _ _
   | ⟨⟨n + 2, hn⟩, _⟩, _ => False.elim (by omega)
   | _, ⟨⟨n + 2, hn⟩, _⟩ => False.elim (by omega)
 
 /-- 指定した単位パラメータでの、実際の二段の円柱の比較関手。 -/
 def bridge :
-    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 2) C) (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) where
+    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object (Fin 2) C) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A C) where
   obj := bridgeObject
   map := bridgeMap i
   map_id X := by

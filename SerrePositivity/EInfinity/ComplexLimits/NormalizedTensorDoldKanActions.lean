@@ -24,7 +24,7 @@ open SerrePositivity.HomotopyFunctionComplex
 variable (A : Type u) [CommRing A]
 
 lemma normalizedTensorDoldKanIso_precomp {X X' : Complex A} (Y : Complex A) (f : X' ⟶ X) :
-    (cosimplicialHomMap ((normalizedSimplexTensorFamily A).map f)).app Y ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((normalizedSimplexTensorFamily A).map f)).app Y ≫
       (normalizedSimplexTensorHomIso A X' Y).hom =
     (normalizedSimplexTensorHomIso A X Y).hom ≫
       doldKanHomSpaceChainMap (D := Complex A) (E := Complex A) (homPrecompose f Y) := by
@@ -35,7 +35,7 @@ lemma normalizedTensorDoldKanIso_precomp {X X' : Complex A} (Y : Complex A) (f :
   exact normalizedSimplexTensorHomEquiv_precomp A Y f n.unop g
 
 lemma normalizedTensorDoldKanIso_postcomp (X : Complex A) {Y Y' : Complex A} (f : Y ⟶ Y') :
-    (cosimplicialHom (normalizedSimplexTensor A X)).map f ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).map f ≫
       (normalizedSimplexTensorHomIso A X Y').hom =
     (normalizedSimplexTensorHomIso A X Y).hom ≫
       doldKanHomSpaceChainMap (D := Complex A) (E := Complex A) (homPostcompose X f) := by

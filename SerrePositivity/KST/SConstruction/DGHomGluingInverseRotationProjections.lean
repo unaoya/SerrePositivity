@@ -22,7 +22,7 @@ local notation "T" => DGHomGluingLoopConeBase R C D E p q
 規約：元全 Hom と対象を保持。使われ方：LT 実中央比較の左脚。 -/
 lemma dgHomGluingInverseRotationFunctor_left :
     (dgHomGluingInverseRotationFunctor R C D E p q).comp
-      (dgGluingLeft R (T) (T)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R (T) (T)
         (dgHomGluingBimodule R (T) (T) (T) (DGFunctor.id (T)) (DGFunctor.id (T)))) =
       dgHomGluingLoopConeSmall R C D E p q :=
   dgIdentityHomGluingFunctor_left R (T)
@@ -35,7 +35,7 @@ lemma dgHomGluingInverseRotationFunctor_left :
 規約：元全 Hom と対象を保持。使われ方：LT 実中央比較の右脚。 -/
 lemma dgHomGluingInverseRotationFunctor_right :
     (dgHomGluingInverseRotationFunctor R C D E p q).comp
-      (dgGluingRight R (T) (T)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R (T) (T)
         (dgHomGluingBimodule R (T) (T) (T) (DGFunctor.id (T)) (DGFunctor.id (T)))) =
       dgHomGluingLoopConeShiftedTarget R C D E p q :=
   dgIdentityHomGluingFunctor_right R (T)

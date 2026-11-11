@@ -15,7 +15,7 @@ open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (E : Type w) [DGCategory R E]
 
 /-- 対象宇宙を上げた同じ二対象の間に、元の順逆射を保つ閉同型を置く。 -/
-def dgUniverseLiftClosedIso (x y : DGUniverseLift.{w, s} E)
+def dgUniverseLiftClosedIso (x y : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{w, s} E)
     (e : ForgetEnrichment.of (Complex R) x.label.down ≅
       ForgetEnrichment.of (Complex R) y.label.down) :
     ForgetEnrichment.of (Complex R) x ≅ ForgetEnrichment.of (Complex R) y where
@@ -25,13 +25,13 @@ def dgUniverseLiftClosedIso (x y : DGUniverseLift.{w, s} E)
   inv_hom_id := e.inv_hom_id
 
 /-- 同じ順射による全 Hom 後合成は、元の後合成そのもの。 -/
-lemma dgUniverseLiftClosedIso_whiskerLeft (x y z : DGUniverseLift.{w, s} E) (e) :
+lemma dgUniverseLiftClosedIso_whiskerLeft (x y z : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{w, s} E) (e) :
     eHomWhiskerLeft (Complex R) (ForgetEnrichment.of (Complex R) z)
       (dgUniverseLiftClosedIso R E x y e).hom =
     eHomWhiskerLeft (Complex R) (ForgetEnrichment.of (Complex R) z.label.down) e.hom := rfl
 
 /-- 同じ順射による全 Hom 前合成も、元の前合成そのもの。 -/
-lemma dgUniverseLiftClosedIso_whiskerRight (x y z : DGUniverseLift.{w, s} E) (e) :
+lemma dgUniverseLiftClosedIso_whiskerRight (x y z : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{w, s} E) (e) :
     eHomWhiskerRight (Complex R) (dgUniverseLiftClosedIso R E x y e).hom
       (ForgetEnrichment.of (Complex R) z) =
     eHomWhiskerRight (Complex R) e.hom (ForgetEnrichment.of (Complex R) z.label.down) := rfl
@@ -46,23 +46,23 @@ variable (D : Type v) [DGCategory R D] [Small.{u} D] (F G : DGFunctor R D E)
 
 /-- 元の全 Hom 自然な同型族を、持ち上げ後も同じ全次数 Hom end の閉同型にする。 -/
 def dgUniverseLiftFunctorClosedIso :
-    ForgetEnrichment.of (Complex R) (dgUniverseLiftFunctor.{u, v, w, r, s} F) ≅
-    ForgetEnrichment.of (Complex R) (dgUniverseLiftFunctor.{u, v, w, r, s} G) :=
-  dgFunctorClosedIsoFromFamily R (DGUniverseLift.{v, r} D) (DGUniverseLift.{w, s} E)
-    (dgUniverseLiftFunctor F) (dgUniverseLiftFunctor G)
+    ForgetEnrichment.of (Complex R) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, v, w, r, s} F) ≅
+    ForgetEnrichment.of (Complex R) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, v, w, r, s} G) :=
+  dgFunctorClosedIsoFromFamily R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{v, r} D) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{w, s} E)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor F) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor G)
     (fun x => dgUniverseLiftClosedIso R E _ _ (e x.label.down))
     (fun x y => h x.label.down y.label.down)
 
 /-- 持ち上げ後の実 Hom end の順射の評価は、元の指定順射を保つ。 -/
-lemma dgUniverseLiftFunctorClosedIso_hom_eval (x : DGUniverseLift.{v, r} D) :
-    (dgFunctorEvaluationDG R (DGUniverseLift.{v, r} D) (DGUniverseLift.{w, s} E) x).onClosed.map
+lemma dgUniverseLiftFunctorClosedIso_hom_eval (x : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{v, r} D) :
+    (dgFunctorEvaluationDG R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{v, r} D) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{w, s} E) x).onClosed.map
       (dgUniverseLiftFunctorClosedIso R E D F G e h).hom =
     (dgUniverseLiftClosedIso R E _ _ (e x.label.down)).hom :=
   dgFunctorClosedHomFromFamily_eval R _ _ _ _ _ _ x
 
 /-- 同じ Hom end の逆射の評価も、元の指定逆射を保つ。 -/
-lemma dgUniverseLiftFunctorClosedIso_inv_eval (x : DGUniverseLift.{v, r} D) :
-    (dgFunctorEvaluationDG R (DGUniverseLift.{v, r} D) (DGUniverseLift.{w, s} E) x).onClosed.map
+lemma dgUniverseLiftFunctorClosedIso_inv_eval (x : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{v, r} D) :
+    (dgFunctorEvaluationDG R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{v, r} D) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{w, s} E) x).onClosed.map
       (dgUniverseLiftFunctorClosedIso R E D F G e h).inv =
     (dgUniverseLiftClosedIso R E _ _ (e x.label.down)).inv :=
   dgFunctorClosedHomFromFamily_eval R _ _ _ _ _ _ x

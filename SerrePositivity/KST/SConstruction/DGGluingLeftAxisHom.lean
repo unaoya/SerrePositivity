@@ -31,14 +31,14 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
 
 /-- 同じ実左軸間の全 Hom を、元の左射影そのものを持つ鎖同型で比較する。 -/
 def dgGluingLeftAxisHomIso (d e : C) :
-    homObject R (DGGluingObject R C D M)
+    homObject R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)
       (dgGluingLeftAxisObject R C D M z d) (dgGluingLeftAxisObject R C D M z e) ≅
     homObject R C d e :=
-  ((dgGluingHomRepresentableIso R C D M
+  ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomRepresentableIso R C D M
     (dgGluingLeftAxisObject R C D M z d) (dgGluingLeftAxisObject R C D M z e)) ≪≫
     (dgCommaZeroReplacementIso R D (RightModule R C) M.toFunctor
-      (dgGluingCommaObject R C D M (dgGluingLeftAxisObject R C D M z d))
-      (dgGluingCommaObject R C D M (dgGluingLeftAxisObject R C D M z e))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingCommaObject R C D M (dgGluingLeftAxisObject R C D M z d))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingCommaObject R C D M (dgGluingLeftAxisObject R C D M z e))
       (dgHom_isZero_of_closed_zero_target R z hz z)
       (dgBimoduleClosedZero_hom R C D M z hz (representable R d)))) ≪≫
     dgYonedaIso R d (representable R e)
@@ -46,26 +46,26 @@ def dgGluingLeftAxisHomIso (d e : C) :
 /-- 同じ全 Hom 同型の順射は、元の実左 Hom 射影そのもの。 -/
 lemma dgGluingLeftAxisHomIso_hom (d e : C) :
     (dgGluingLeftAxisHomIso R C D M z hz d e).hom =
-      dgGluingLeftHomMap R C D M
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeftHomMap R C D M
         (dgGluingLeftAxisObject R C D M z d) (dgGluingLeftAxisObject R C D M z e) := by
   have hh := congrArg (fun k => k ≫ (dgYonedaIso R d (representable R e)).hom)
-    (dgGluingHomRepresentableIso_left R C D M
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomRepresentableIso_left R C D M
       (dgGluingLeftAxisObject R C D M z d) (dgGluingLeftAxisObject R C D M z e))
   exact hh.trans (postIsoInverseCancel
-    (dgGluingLeftHomMap R C D M
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeftHomMap R C D M
       (dgGluingLeftAxisObject R C D M z d) (dgGluingLeftAxisObject R C D M z e))
     (dgYonedaIso R d (representable R e)))
 
 /-- 元の実左軸包含の Hom 作用と元の左射影は、厳密に恒等写像へ合成する。 -/
 lemma dgGluingLeftAxis_map_left (d e : C) :
-    (dgGluingLeftAxis R C D M z hz).map d e ≫ dgGluingLeftHomMap R C D M
+    (dgGluingLeftAxis R C D M z hz).map d e ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeftHomMap R C D M
       (dgGluingLeftAxisObject R C D M z d) (dgGluingLeftAxisObject R C D M z e) =
       𝟙 (homObject R C d e) := by
   have hh := dgFunctorMapOfEq
-    ((dgGluingLeftAxis R C D M z hz).comp (dgGluingLeft R C D M)) (DGFunctor.id C)
+    ((dgGluingLeftAxis R C D M z hz).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D M)) (DGFunctor.id C)
     (dgGluingLeftAxis_left R C D M z hz) (fun _ => rfl) d e
   change ((dgGluingLeftAxis R C D M z hz).map d e ≫
-    dgGluingLeftHomMap R C D M
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeftHomMap R C D M
       (dgGluingLeftAxisObject R C D M z d) (dgGluingLeftAxisObject R C D M z e)) ≫
         𝟙 _ = 𝟙 _ at hh
   rw [Category.comp_id] at hh

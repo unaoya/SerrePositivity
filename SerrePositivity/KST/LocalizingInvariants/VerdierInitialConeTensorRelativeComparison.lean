@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierInitialConeTensorRefinement
-public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRelativeComparison
-public import SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.VerdierQuotientConeRelativeComparison
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.HomotopyPrecompVertex
 
 /-!
 概要：回収した二つの左錐の積の全比較を、元の貼合せ境界上で厳密に定値にする。
@@ -22,10 +22,10 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 namespace VerdierInitialConeTensorRefinement
-variable {A₀ B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A₀ B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {A L : SSet.{u}}
+variable {A₀ B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A₀ B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q} {A L : SSet.{u}}
   {p : initialConeTensorCorner A L ⟶ B.obj}
-  {H : join (Δ[0] : SSet.{u}) A ⊗ join (Δ[0] : SSet.{u}) L ⟶ C.obj}
+  {H : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) A ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) L ⟶ C.obj}
   {hH : initialConeTensorCornerInclusion A L ≫ H = p ≫ q.hom}
   (d : VerdierInitialConeTensorRefinement h A L p H hH)
 
@@ -34,8 +34,8 @@ lemma exists_relativeComparison :
     ∃ J : SSet.Homotopy (d.diagram ≫ q.hom) H,
       (initialConeTensorCornerInclusion A L ▷ (Δ[1] : SSet.{u})) ≫ J.h =
         fst (initialConeTensorCorner A L) Δ[1] ≫ (p ≫ q.hom) ∧
-      ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge J x).toTruncated := by
-  obtain ⟨J, hJ, hi⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_coneRelativeComparison (mapJoinCone q.hom d.cone)
+      ∀ x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge J x).toTruncated := by
+  obtain ⟨J, hJ, hi⟩ := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.exists_coneRelativeComparison (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone q.hom d.cone)
     (initialConeTensorQuotientCone q.hom A L p H hH) d.comparison
   let J' : SSet.Homotopy (d.diagram ≫ q.hom) H := {
     h := ((initialConeTensorIso A L).inv ▷ (Δ[1] : SSet.{u})) ≫ J.h
@@ -46,7 +46,7 @@ lemma exists_relativeComparison :
       rw [SSet.ι₁_comp_assoc, J.h₁]
       change (initialConeTensorIso A L).inv ≫ (initialConeTensorIso A L).hom ≫ H = H
       exact Iso.inv_hom_id_assoc _ _
-    rel := (functorHomotopyPrecomp J (initialConeTensorIso A L).inv).rel }
+    rel := (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp J (initialConeTensorIso A L).inv).rel }
   refine ⟨J', ?_, ?_⟩
   · change (initialConeTensorCornerInclusion A L ▷ Δ[1]) ≫
       (((initialConeTensorIso A L).inv ▷ Δ[1]) ≫ J.h) = _
@@ -54,12 +54,12 @@ lemma exists_relativeComparison :
     simp only [Category.assoc, Iso.hom_inv_id, Category.comp_id]
     exact hJ
   · intro x
-    have he : (simplicialHomotopyVertexEdge J' x).edge =
-        (simplicialHomotopyVertexEdge
-          (functorHomotopyPrecomp J (initialConeTensorIso A L).inv) x).edge := rfl
-    apply (isInvertibleEdge_congr he).mpr
-    exact (isInvertibleEdge_congr
-      (simplicialHomotopyVertexEdge_precomp_edge J (initialConeTensorIso A L).inv x)).mpr
+    have he : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge J' x).edge =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
+          (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp J (initialConeTensorIso A L).inv) x).edge := rfl
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr he).mpr
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.simplicialHomotopyVertexEdge_precomp_edge J (initialConeTensorIso A L).inv x)).mpr
         (hi _)
 
 end VerdierInitialConeTensorRefinement

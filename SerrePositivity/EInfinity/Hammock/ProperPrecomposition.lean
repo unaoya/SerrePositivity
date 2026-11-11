@@ -19,25 +19,25 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory
 
-lemma ProperDiagram.precomp {F : Word ⥤ SSet.{w}} (hF : ProperDiagram F) (P : Word ⥤ Word)
-    (hm : ∀ {a b : Word} (f : a ⟶ b), Function.Injective f.orderHom →
+lemma ProperDiagram.precomp {F : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SSet.{w}} (hF : ProperDiagram F) (P : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
+    (hm : ∀ {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b), Function.Injective f.orderHom →
       Function.Injective (P.map f).orderHom)
-    (hi : ∀ {a b c : Word} (f : a ⟶ c) (g : b ⟶ c),
+    (hi : ∀ {a b c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ c) (g : b ⟶ c),
       Function.Injective f.orderHom → Function.Injective g.orderHom →
-      Set.range (P.map (Word.intersectionInclusion f g)).orderHom =
+      Set.range (P.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.intersectionInclusion f g)).orderHom =
         Set.range (P.map f).orderHom ∩ Set.range (P.map g).orderHom) :
     ProperDiagram (P ⋙ F) where
   map_mono f hf := hF.map_mono (P.map f) (hm f hf)
   intersection_range f g hf hg := by
-    change Subfunctor.range (F.map (P.map (Word.intersectionInclusion f g))) =
+    change Subfunctor.range (F.map (P.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.intersectionInclusion f g))) =
       Subfunctor.range (F.map (P.map f)) ⊓ Subfunctor.range (F.map (P.map g))
-    rw [range_eq_subsetImage F _ _ (hm _ (Word.intersectionInclusion_injective f g)),
+    rw [range_eq_subsetImage F _ _ (hm _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.intersectionInclusion_injective f g)),
       range_eq_subsetImage F _ _ (hm f hf), range_eq_subsetImage F _ _ (hm g hg)]
-    have hc : Word.columnImage (P.map (Word.intersectionInclusion f g)) =
-        Word.columnImage (P.map f) ⊓ Word.columnImage (P.map g) := by
+    have hc : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.columnImage (P.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.intersectionInclusion f g)) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.columnImage (P.map f) ⊓ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.columnImage (P.map g) := by
       apply Finset.coe_injective
-      rw [Finset.inf_eq_inter, Finset.coe_inter, Word.coe_columnImage,
-        Word.coe_columnImage, Word.coe_columnImage]
+      rw [Finset.inf_eq_inter, Finset.coe_inter, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coe_columnImage,
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coe_columnImage, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coe_columnImage]
       exact hi f g hf hg
     rw [hc]
     exact subsetImage_inf F _ hF _ _

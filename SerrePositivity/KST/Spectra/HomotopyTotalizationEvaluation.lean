@@ -39,7 +39,7 @@ def evaluation (X : CosimplicialObject OmegaSpectrum.{u})
     letI := PointedTotalization.kanComplex (diagram X ⋙ KanSequence.levelEvaluation k)
       ((CosimplicialHornFibration.terminal_iff _).mp (reedy X k))
     OmegaSpectrum.homotopyGroup (homotopyTotalization X) j ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedTotalization.obj (diagram X ⋙ KanSequence.levelEvaluation k)).right r
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedTotalization.obj (diagram X ⋙ KanSequence.levelEvaluation k)).right r
         (PointedTotalization.obj (diagram X ⋙ KanSequence.levelEvaluation k)).basepoint := by
   let := PointedTotalization.kanComplex (diagram X ⋙ KanSequence.levelEvaluation k)
     ((CosimplicialHornFibration.terminal_iff _).mp (reedy X k))

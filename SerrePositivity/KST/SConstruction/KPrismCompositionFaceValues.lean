@@ -24,22 +24,22 @@ local instance kPrismCompositionFaceValues_pointed_simplicialCategory :
 /-- 下側の元の合成面の値は、全次数で切断点を通る Path に依存しない。 -/
 lemma kKanOriginalPrismLowerCompositionValues_eq {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} {f : x ⟶ y}
-    (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) (d : ℕ)
+    (s : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) (d : ℕ)
     (P Q : (nerve (SimplicialThickening.Path
       (ULift.up 0 : ULift.{u} (Fin (s.length + 2)))
       (ULift.up (Fin.last (s.length + 1))))) _⦋d⦌)
-    (hP : P ∈ (Coherent.pathThrough (ULift.up (Fin.last s.length).castSucc)).obj (Opposite.op ⦋d⦌))
-    (hQ : Q ∈ (Coherent.pathThrough (ULift.up (Fin.last s.length).castSucc)).obj (Opposite.op ⦋d⦌)) :
+    (hP : P ∈ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (ULift.up (Fin.last s.length).castSucc)).obj (Opposite.op ⦋d⦌))
+    (hQ : Q ∈ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (ULift.up (Fin.last s.length).castSucc)).obj (Opposite.op ⦋d⦌)) :
     let R : EnrichedFunctor SSet.{u}
         (SimplicialThickening (ULift.{u} (Fin (s.length + 2)))) PointedSimplicialSet.{u} :=
-      (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s).chain)
+      (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentLowerPrismString s).chain)
     (R.map (.mk (ULift.up 0)) (.mk (ULift.up (Fin.last (s.length + 1))))).app
       (Opposite.op ⦋d⦌) P =
       (R.map (.mk (ULift.up 0)) (.mk (ULift.up (Fin.last (s.length + 1))))).app
         (Opposite.op ⦋d⦌) Q := by
   let R : EnrichedFunctor SSet.{u}
       (SimplicialThickening (ULift.{u} (Fin (s.length + 2)))) PointedSimplicialSet.{u} :=
-    (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s).chain)
+    (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentLowerPrismString s).chain)
   refine coherentCompositionFaceValues_eq R
     (show (ULift.up 0 : ULift.{u} (Fin (s.length + 2))) ≤ ULift.up (Fin.last s.length).castSucc from Fin.zero_le _)
     (show ULift.up (Fin.last s.length).castSucc ≤ ULift.up (Fin.last (s.length + 1)) from Fin.le_last _) ?_ ?_ d P Q hP hQ
@@ -49,22 +49,22 @@ lemma kKanOriginalPrismLowerCompositionValues_eq {I : Type u} [SmallCategory I]
 /-- 上側の元の合成面の値は、全次数で切断点を通る Path に依存しない。 -/
 lemma kKanOriginalPrismUpperCompositionValues_eq {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} {f : x ⟶ y}
-    (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) (d : ℕ)
+    (s : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) (d : ℕ)
     (P Q : (nerve (SimplicialThickening.Path
       (ULift.up 0 : ULift.{u} (Fin (s.length + 2)))
       (ULift.up (Fin.last (s.length + 1))))) _⦋d⦌)
-    (hP : P ∈ (Coherent.pathThrough (ULift.up ((0 : Fin (s.length + 1)).succ))).obj (Opposite.op ⦋d⦌))
-    (hQ : Q ∈ (Coherent.pathThrough (ULift.up ((0 : Fin (s.length + 1)).succ))).obj (Opposite.op ⦋d⦌)) :
+    (hP : P ∈ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (ULift.up ((0 : Fin (s.length + 1)).succ))).obj (Opposite.op ⦋d⦌))
+    (hQ : Q ∈ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (ULift.up ((0 : Fin (s.length + 1)).succ))).obj (Opposite.op ⦋d⦌)) :
     let R : EnrichedFunctor SSet.{u}
         (SimplicialThickening (ULift.{u} (Fin (s.length + 2)))) PointedSimplicialSet.{u} :=
-      (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s).chain)
+      (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentUpperPrismString s).chain)
     (R.map (.mk (ULift.up 0)) (.mk (ULift.up (Fin.last (s.length + 1))))).app
       (Opposite.op ⦋d⦌) P =
       (R.map (.mk (ULift.up 0)) (.mk (ULift.up (Fin.last (s.length + 1))))).app
         (Opposite.op ⦋d⦌) Q := by
   let R : EnrichedFunctor SSet.{u}
       (SimplicialThickening (ULift.{u} (Fin (s.length + 2)))) PointedSimplicialSet.{u} :=
-    (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s).chain)
+    (kKanOriginalPrismStringDiagram r F).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentUpperPrismString s).chain)
   refine coherentCompositionFaceValues_eq R
     (show (ULift.up 0 : ULift.{u} (Fin (s.length + 2))) ≤ ULift.up ((0 : Fin (s.length + 1)).succ) from Fin.zero_le _)
     (show ULift.up ((0 : Fin (s.length + 1)).succ) ≤ ULift.up (Fin.last (s.length + 1)) from Fin.le_last _) ?_ ?_ d P Q hP hQ
@@ -74,17 +74,17 @@ lemma kKanOriginalPrismUpperCompositionValues_eq {I : Type u} [SmallCategory I]
 /-- 元の両端へ移送した下側の native Hom の値も、合成面の全 Path で一致する。 -/
 lemma kKanOriginalPrismLowerNativeValues_eq {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} {f : x ⟶ y}
-    (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) (d : ℕ)
+    (s : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) (d : ℕ)
     (P Q : (nerve (SimplicialThickening.Path
       (ULift.up 0 : ULift.{u} (Fin (s.length + 2)))
       (ULift.up (Fin.last (s.length + 1))))) _⦋d⦌)
-    (hP : P ∈ (Coherent.pathThrough (ULift.up (Fin.last s.length).castSucc)).obj (Opposite.op ⦋d⦌))
-    (hQ : Q ∈ (Coherent.pathThrough (ULift.up (Fin.last s.length).castSucc)).obj (Opposite.op ⦋d⦌)) :
+    (hP : P ∈ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (ULift.up (Fin.last s.length).castSucc)).obj (Opposite.op ⦋d⦌))
+    (hQ : Q ∈ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (ULift.up (Fin.last s.length).castSucc)).obj (Opposite.op ⦋d⦌)) :
     (coherentStringNativeMap (kKanOriginalPrismStringDiagram r F)
-      (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s)).app (Opposite.op ⦋d⦌) P =
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentLowerPrismString s)).app (Opposite.op ⦋d⦌) P =
       (coherentStringNativeMap (kKanOriginalPrismStringDiagram r F)
-        (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s)).app (Opposite.op ⦋d⦌) Q := by
-  dsimp only [coherentStringNativeMap, coherentStringDiagramCell, Coherent.reobjectFunctor]
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentLowerPrismString s)).app (Opposite.op ⦋d⦌) Q := by
+  dsimp only [coherentStringNativeMap, coherentStringDiagramCell, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.reobjectFunctor]
   simp only [NatTrans.comp_app, ConcreteCategory.comp_apply]
   congr 2
   exact kKanOriginalPrismLowerCompositionValues_eq r F s d P Q hP hQ
@@ -92,17 +92,17 @@ lemma kKanOriginalPrismLowerNativeValues_eq {I : Type u} [SmallCategory I]
 /-- 元の両端へ移送した上側の native Hom の値も、合成面の全 Path で一致する。 -/
 lemma kKanOriginalPrismUpperNativeValues_eq {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} {f : x ⟶ y}
-    (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) (d : ℕ)
+    (s : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) (d : ℕ)
     (P Q : (nerve (SimplicialThickening.Path
       (ULift.up 0 : ULift.{u} (Fin (s.length + 2)))
       (ULift.up (Fin.last (s.length + 1))))) _⦋d⦌)
-    (hP : P ∈ (Coherent.pathThrough (ULift.up ((0 : Fin (s.length + 1)).succ))).obj (Opposite.op ⦋d⦌))
-    (hQ : Q ∈ (Coherent.pathThrough (ULift.up ((0 : Fin (s.length + 1)).succ))).obj (Opposite.op ⦋d⦌)) :
+    (hP : P ∈ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (ULift.up ((0 : Fin (s.length + 1)).succ))).obj (Opposite.op ⦋d⦌))
+    (hQ : Q ∈ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (ULift.up ((0 : Fin (s.length + 1)).succ))).obj (Opposite.op ⦋d⦌)) :
     (coherentStringNativeMap (kKanOriginalPrismStringDiagram r F)
-      (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s)).app (Opposite.op ⦋d⦌) P =
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentUpperPrismString s)).app (Opposite.op ⦋d⦌) P =
       (coherentStringNativeMap (kKanOriginalPrismStringDiagram r F)
-        (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s)).app (Opposite.op ⦋d⦌) Q := by
-  dsimp only [coherentStringNativeMap, coherentStringDiagramCell, Coherent.reobjectFunctor]
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentUpperPrismString s)).app (Opposite.op ⦋d⦌) Q := by
+  dsimp only [coherentStringNativeMap, coherentStringDiagramCell, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.reobjectFunctor]
   simp only [NatTrans.comp_app, ConcreteCategory.comp_apply]
   congr 2
   exact kKanOriginalPrismUpperCompositionValues_eq r F s d P Q hP hQ

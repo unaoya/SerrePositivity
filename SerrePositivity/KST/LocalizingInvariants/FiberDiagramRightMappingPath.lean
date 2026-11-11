@@ -25,17 +25,17 @@ local instance rightMappingSimplicialCategory : SimplicialCategory OmegaSpectrum
 variable {D E : FiberDiagram.{u}} (f : D ⟶ E)
 
 lemma comparisonMap_edge (i j : Fin 2) :
-    (coherentNerveEdge (comparisonMap f i j)).edge = (comparisonEdge f i j).edge :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (comparisonMap f i j)).edge = (comparisonEdge f i j).edge :=
   SpectrumHo.edgeMap_edge _
 
 def rightDiagonalMap := SpectrumHo.edgeMap (rightDiagonal f)
 
-lemma rightDiagonalMap_edge : (coherentNerveEdge (rightDiagonalMap f)).edge =
+lemma rightDiagonalMap_edge : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (rightDiagonalMap f)).edge =
     (rightDiagonal f).edge := SpectrumHo.edgeMap_edge _
 
 lemma rightMap_edge (A : FiberDiagram.{u}) :
-    (coherentNerveEdge (NativeFiber.rightMap A.triangle)).edge =
-      (squareRightArrow A.triangle.square).edge := SpectrumHo.edgeMap_edge _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (NativeFiber.rightMap A.triangle)).edge =
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow A.triangle.square).edge := SpectrumHo.edgeMap_edge _
 
 def rightDifference := SpectrumMappingPrism.squareDifference
   (NativeFiber.rightMap D.triangle) (NativeFiber.rightMap E.triangle)

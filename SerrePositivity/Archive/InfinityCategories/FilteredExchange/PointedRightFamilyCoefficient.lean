@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedRightMorphismTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointedRightMorphismTransport
 
 /-!
 概要：同じパラメータで動く Kan 点と Kan 射の一点 Hom の合成を厳密に計算する。

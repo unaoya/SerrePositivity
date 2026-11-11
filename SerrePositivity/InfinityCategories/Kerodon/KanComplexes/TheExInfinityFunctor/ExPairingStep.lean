@@ -11,6 +11,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：拡張退化の指定面で復元し、複雑度の上界を双方の表示で比較する。
 規約：Moss 2020 Lemma 27。対応先の非退化性や型 II の条件は別の証明項目。
 使われ方：X→Ex(X) の regular pairing の一意性の部分。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

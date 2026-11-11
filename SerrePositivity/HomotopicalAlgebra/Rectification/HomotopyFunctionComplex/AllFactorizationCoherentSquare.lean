@@ -57,7 +57,7 @@ abbrev values : Context X V ⥤ SSet.{v} := contexts X Y V g ⋙ MixedChoiceFunc
 
 include hfib in
 lemma valueFillers (t : Context X V) :
-    UniverseLift.BoundaryFillers ((values hcof X Y V f g).obj t) := by
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers ((values hcof X Y V f g).obj t) := by
   intro n a
   let e := AllFactorizationMixedContext.valueIso hcof t.1.unop.hom f g t.2.hom
   obtain ⟨b, hb⟩ := AllFactorizationPre.fillers hcof hfib t.1.unop.hom.map f (g ≫ t.2.hom)
@@ -78,12 +78,12 @@ abbrev side (left : Bool) : triangleParameter Y V g ⟶ squareParameter Y V g :=
   if left then pushout.inl _ _ else pushout.inr _ _
 
 abbrev oldTriangle (left : Bool) (t : Context X V) : triangleParameter Y V g ⟶
-    UniverseLift.obj.{u} ((values hcof X Y V f g).obj t) :=
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((values hcof X Y V f g).obj t) :=
   AllFactorizationMixedContext.triangle hcof hfib t.1.unop.hom f g t.2.hom left
 
 /-- Glue the already selected entire triangles before making any external choice. -/
 def oldSquare (t : Context X V) : squareParameter Y V g ⟶
-    UniverseLift.obj.{u} ((values hcof X Y V f g).obj t) :=
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((values hcof X Y V f g).obj t) :=
   pushout.desc (oldTriangle hcof hfib X Y V f g true t)
     (oldTriangle hcof hfib X Y V f g false t)
     (AllFactorizationMixedContext.common_diagonal hcof hfib t.1.unop.hom f g t.2.hom)
@@ -100,7 +100,7 @@ def square : NerveLargeParameter.System (values hcof X Y V f g) (squareParameter
     (valueFillers hcof hfib X Y V f g) (squareParameter Y V g) (oldSquare hcof hfib X Y V f g)
 
 lemma square_evaluate (t : Context X V) :
-    NerveParameterExtension.evaluate (NerveLargeParameter.lifted (values hcof X Y V f g))
+    NerveParameterExtension.evaluate (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted (values hcof X Y V f g))
       (square hcof hfib X Y V f g) t = oldSquare hcof hfib X Y V f g t :=
   NerveLargeParameter.extendFamilies_evaluate _ _ _ _ t
 
@@ -110,7 +110,7 @@ def triangle (left : Bool) : NerveLargeParameter.System (values hcof X Y V f g)
     (square hcof hfib X Y V f g) (side Y V g left)
 
 lemma triangle_evaluate (left : Bool) (t : Context X V) :
-    NerveParameterExtension.evaluate (NerveLargeParameter.lifted (values hcof X Y V f g))
+    NerveParameterExtension.evaluate (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted (values hcof X Y V f g))
       (triangle hcof hfib X Y V f g left) t = oldTriangle hcof hfib X Y V f g left t := by
   rw [triangle, NerveLargeParameter.restrict_evaluate, square_evaluate, oldSquare_side]
 
@@ -125,9 +125,9 @@ lemma shared_diagonal :
 
 /-- Recover the originally selected square in its old choice-space coordinates. -/
 lemma triangle_recover (left : Bool) (t : Context X V) :
-    NerveParameterExtension.evaluate (NerveLargeParameter.lifted (values hcof X Y V f g))
+    NerveParameterExtension.evaluate (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted (values hcof X Y V f g))
       (triangle hcof hfib X Y V f g left) t ≫
-        UniverseLift.map.{u}
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u}
           (AllFactorizationMixedContext.valueIso hcof t.1.unop.hom f g t.2.hom).hom =
     AllFactorizationMixed.triangle hcof hfib t.1.unop.hom.map f g t.2.hom
       (FramedResolution.frameMap t.1.unop.hom) left := by
@@ -141,9 +141,9 @@ def edge (left : Bool) (k : Fin 3) : NerveLargeParameter.System (values hcof X Y
     (AnchoredChain.simplicial g ◁ SSet.stdSimplex.δ k)
 
 lemma edge_recover (left : Bool) (k : Fin 3) (t : Context X V) :
-    NerveParameterExtension.evaluate (NerveLargeParameter.lifted (values hcof X Y V f g))
+    NerveParameterExtension.evaluate (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted (values hcof X Y V f g))
       (edge hcof hfib X Y V f g left k) t ≫
-        UniverseLift.map.{u}
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u}
           (AllFactorizationMixedContext.valueIso hcof t.1.unop.hom f g t.2.hom).hom =
     AnchoredChain.simplicial g ◁ SSet.stdSimplex.δ k ≫
       AllFactorizationMixed.triangle hcof hfib t.1.unop.hom.map f g t.2.hom
@@ -158,8 +158,8 @@ def simplex (left : Bool) (t : Context X V) {n : ℕ} (c : AnchoredChain g n)
       AllFactorizationMixed.choiceSpace t.1.unop.hom.map f g t.2.hom
         (FramedResolution.frameMap t.1.unop.hom) :=
   SSet.yonedaEquiv.symm (((NerveParameterExtension.evaluate
-    (NerveLargeParameter.lifted (values hcof X Y V f g)) (triangle hcof hfib X Y V f g left) t ≫
-      UniverseLift.map.{u}
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted (values hcof X Y V f g)) (triangle hcof hfib X Y V f g left) t ≫
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u}
         (AllFactorizationMixedContext.valueIso hcof t.1.unop.hom f g t.2.hom).hom).app
     (Opposite.op (SimplexCategory.mk n)) (c, q)).down)
 

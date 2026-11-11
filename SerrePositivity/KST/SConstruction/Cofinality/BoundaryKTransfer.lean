@@ -57,10 +57,10 @@ lemma boundaryK_groupConditions_of_boundaryKan {X Y : StableModel.{u}} (f : X �
 使われ方：相対 fiber の供給を消費した後の主結論の公開。 -/
 theorem kSpectrumMap_cofinality_of_coreS {X Y : StableModel.{u}} (f : X ⟶ Y)
     (h : ∀ a : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (coreSRealizationFunctor.obj X)) _⦋0⦌,
-      Function.Injective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 1 (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSRealizationFunctor.map f))
+      Function.Injective (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map 1 (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSRealizationFunctor.map f))
         (x := a) rfl) ∧
       ∀ n : ℕ, 1 < n → Function.Bijective
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSRealizationFunctor.map f)) (x := a) rfl)) :
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSRealizationFunctor.map f)) (x := a) rfl)) :
     (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
       Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0) :=
   (kSpectrumMap_cofinality_iff_boundary f).mpr

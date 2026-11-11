@@ -32,7 +32,7 @@ structure KanSequence where
   方針：円との smash からの点つき射で与える。
   規約：単射性をまだ要求しない。
   使われ方：BF 1978 §2。 -/
-  sigma : ∀ n, _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (level n).space ⟶ (level (n + 1)).space
+  sigma : ∀ n, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (level n).space ⟶ (level (n + 1)).space
 
 namespace KanSequence
 
@@ -41,8 +41,8 @@ namespace KanSequence
 規約：完成した Ω スペクトルと同じ条件であり、厳密同型は要求しない。
 使われ方：BF 1978 §2、HA §1.4.2。置換前後の fibrant 条件。 -/
 def OmegaCondition (X : KanSequence.{u}) : Prop :=
-  ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
-    ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space) (X.sigma n)).right
+  ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
+    ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space) (X.sigma n)).right
 
 /-- 概要：Kan 列の厳密な比較射。
 方針：各段の点つき射と構造射との可換条件を持たせる。

@@ -156,7 +156,7 @@ lemma snoc_degeneracy (i : Fin (n + 1)) (k : U ⟶ parameters P (n + 1))
     {a : D C} {X Y : degree (D C) (n + 1)} (q : chain hcof hfib U a X) (f : X ⟶ Y)
     (t : U ⟶ WordSegment.obj) :
     snoc hcof hfib P (n + 1) k q ((degeneracyFunctor (D C) n i).map f) t =
-      snoc hcof hfib P n (k ≫ P ◁ OrdinaryBarFreeResolutionDegeneracyValues.sigma n i) q f t := by
+      snoc hcof hfib P n (k ≫ P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i) q f t := by
   simp only [snoc, OrdinaryBarFreeAmbientFamilies.family_degeneracy,
     ParameterComposition.substitute, whiskerLeft_comp, Category.assoc]
 
@@ -191,7 +191,7 @@ lemma ofPath_degeneracy (i : Fin (n + 1)) (k : U ⟶ parameters P (n + 1))
     {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y)
     (t : ℕ → (U ⟶ WordSegment.obj)) :
     ofPath hcof hfib P (n + 1) k ((degeneracyFunctor (D C) n i).toPrefunctor.mapPath q) t =
-    ofPath hcof hfib P n (k ≫ P ◁ OrdinaryBarFreeResolutionDegeneracyValues.sigma n i) q t := by
+    ofPath hcof hfib P n (k ≫ P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i) q t := by
   induction q with
   | nil => rfl
   | cons q f ih =>
@@ -210,7 +210,7 @@ lemma family_degeneracy (i : Fin (n + 1)) (k : U ⟶ parameters P (n + 1))
     {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y)
     (t : ℕ → (U ⟶ WordSegment.obj)) :
     family hcof hfib P (n + 1) k ((degeneracyFunctor (D C) n i).toPrefunctor.mapPath q) t =
-    family hcof hfib P n (k ≫ P ◁ OrdinaryBarFreeResolutionDegeneracyValues.sigma n i) q t :=
+    family hcof hfib P n (k ≫ P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i) q t :=
   congrArg (OrdinaryBarWordChainFamily.family hcof hfib) (ofPath_degeneracy hcof hfib P n i k q t)
 
 lemma interior_identity {a d : D C} {X Y : degree (D C) (n + 1)}
@@ -226,20 +226,20 @@ lemma interior_identity {a d : D C} {X Y : degree (D C) (n + 1)}
   exact OrdinaryBarWordChainFamily.interior_identity hcof hfib q _ t w r
 
 lemma small_interior_identity {T : SSet.{v}}
-    (k : UniverseLift.obj.{max u v} T ⟶ parameters P n) {a d : D C}
+    (k : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ parameters P n) {a d : D C}
     {X Y : degree (D C) (n + 1)}
-    (q : chain hcof hfib (UniverseLift.obj.{max u v} T) a X) (f : X ⟶ Y)
-    (t w : UniverseLift.obj.{max u v} T ⟶ WordSegment.obj)
-    (r : chain hcof hfib (UniverseLift.obj.{max u v} T) Y d) :
+    (q : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) a X) (f : X ⟶ Y)
+    (t w : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ WordSegment.obj)
+    (r : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) Y d) :
     OrdinaryBarWordChainFamily.smallFamily hcof hfib
       ((snoc hcof hfib P n k (snoc hcof hfib P n k q f t)
         (FreeGeneratorCategories.identity (D C) (n + 1) Y) w).append r) =
       OrdinaryBarWordChainFamily.smallFamily hcof hfib
         ((snoc hcof hfib P n k q f (lift t w ≫ WordSegment.mul)).append r) :=
-  congrArg UniverseLift.lowerTensor (interior_identity hcof hfib P n k q f t w r)
+  congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerTensor (interior_identity hcof hfib P n k q f t w r)
 
 lemma ofPath_ofInterval {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y)
-    (t : ℕ → (U ⟶ RetractChainFamily.interval)) :
+    (t : ℕ → (U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     WordRetractChainFamily.Chain.ofInterval
       (OrdinaryBarFreeChainTransfer.ofPath hcof hfib P n j q t) =
       ofPath hcof hfib P n j q (fun k => t k ≫ WordSegment.letter) := by
@@ -252,7 +252,7 @@ lemma ofPath_ofInterval {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y)
     rfl
 
 lemma family_ofInterval {X Y : degree (D C) (n + 1)} (q : Quiver.Path X Y)
-    (t : ℕ → (U ⟶ RetractChainFamily.interval)) :
+    (t : ℕ → (U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     family hcof hfib P n j q (fun k => t k ≫ WordSegment.letter) =
       OrdinaryBarFreeChainTransfer.family hcof hfib P n j q t := by
   rw [family, ← ofPath_ofInterval, OrdinaryBarWordChainFamily.family_ofInterval]

@@ -120,7 +120,7 @@ def rawFlipComponent (X : RightResolutionMapping.Index C) :
       DualResolutionTargets.framedPresentation, DualResolutionTargets.framedForget,
       DualResolutionTargets.presentations, DualResolutionTargets.presentation,
       DualResolutionTargets.diagram, presentationRows, sourcePoints,
-      cosimplicialHomBifunctor, cosimplicialHomMap, cosimplicialHom,
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom,
       FramedResolution.innerDiagrams, FramedResolution.forget, ResolutionObject.diagrams,
       ResolutionObject.instCategory,
       SerrePositivity.ModelReplacement.FibrantReplacementObject.targets, Equiv.toIso]
@@ -142,7 +142,7 @@ def rawFlipIso : BiresolutionRawMapping.functor (C := C) ≅ rawFunctor :=
       DualResolutionTargets.framedPresentation, DualResolutionTargets.framedForget,
       DualResolutionTargets.presentations, DualResolutionTargets.presentation,
       DualResolutionTargets.diagram, presentationRows, sourcePoints,
-      cosimplicialHomBifunctor, cosimplicialHomMap, cosimplicialHom,
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom,
       FramedResolution.innerDiagrams, FramedResolution.forget, ResolutionObject.diagrams,
       ResolutionObject.instCategory,
       SerrePositivity.ModelReplacement.FibrantReplacementObject.targets, Equiv.toIso]

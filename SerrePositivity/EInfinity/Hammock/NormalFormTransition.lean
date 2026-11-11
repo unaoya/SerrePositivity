@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordFactorization
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordFactorization
 public import SerrePositivity.EInfinity.Hammock.NormalForm
 public import SerrePositivity.EInfinity.Hammock.RawEmbeddingComparison
 public import SerrePositivity.EInfinity.Hammock.EraseEmbedding
@@ -26,23 +26,23 @@ open CategoryTheory
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
   (X Y : C) (n : SimplexCategoryᵒᵖ)
 
-lemma normalForm_transition_bijective {a b : Word} (f : a ⟶ b)
-    (hf : Function.Bijective f.orderHom) (τ : (graph W a X Y).obj n) :
-    normalForm W X Y n ⟨b, ((graphDiagram W X Y).map f).app n τ⟩ =
+lemma normalForm_transition_bijective {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b)
+    (hf : Function.Bijective f.orderHom) (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W a X Y).obj n) :
+    normalForm W X Y n ⟨b, ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f).app n τ⟩ =
       normalForm W X Y n ⟨a, τ⟩ := by
   have he := raw_eq_of_embeddings W X Y f (𝟙 b) hf.1 Function.injective_id
     (by rw [Set.range_eq_univ.mpr hf.2]; exact Set.range_id.symm) n τ
-    (((graphDiagram W X Y).map f).app n τ) (by rw [CategoryTheory.Functor.map_id]; rfl)
+    (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f).app n τ) (by rw [CategoryTheory.Functor.map_id]; rfl)
   exact congrArg (normalForm W X Y n) he.symm
 
 /-- 任意の元の語の遷移は、語を含む元の正規形を厳密に保持する。 -/
-lemma normalForm_transition {a b : Word} (f : a ⟶ b) (τ : (graph W a X Y).obj n) :
-    normalForm W X Y n ⟨b, ((graphDiagram W X Y).map f).app n τ⟩ =
+lemma normalForm_transition {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b) (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W a X Y).obj n) :
+    normalForm W X Y n ⟨b, ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f).app n τ⟩ =
       normalForm W X Y n ⟨a, τ⟩ := by
   classical
-  suffices h : ∀ m (a b : Word) (f : a ⟶ b), a.length + b.length = m →
-      ∀ τ : (graph W a X Y).obj n,
-        normalForm W X Y n ⟨b, ((graphDiagram W X Y).map f).app n τ⟩ =
+  suffices h : ∀ m (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (f : a ⟶ b), a.length + b.length = m →
+      ∀ τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W a X Y).obj n,
+        normalForm W X Y n ⟨b, ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f).app n τ⟩ =
           normalForm W X Y n ⟨a, τ⟩ from h _ a b f rfl τ
   intro m
   induction m using Nat.strong_induction_on with
@@ -58,24 +58,24 @@ lemma normalForm_transition {a b : Word} (f : a ⟶ b) (τ : (graph W a X Y).obj
           cases l with
           | zero => exact Fin.elim0 j
           | succ k =>
-            let e := Word.punctureInclusion d j
-            obtain ⟨g, hg⟩ := Word.factorEmbedding e (Word.punctureInclusion_injective d j) f (by
+            let e := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion d j
+            obtain ⟨g, hg⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.factorEmbedding e (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion_injective d j) f (by
               intro x hx
-              rw [Word.punctureInclusion_range]
+              rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion_range]
               intro he
               subst x
               obtain ⟨i, hi⟩ := hx
               exact hj i hi)
-            let σ := ((graphDiagram W X Y).map g).app n τ
-            have hfac : ((graphDiagram W X Y).map e).app n σ =
-                ((graphDiagram W X Y).map f).app n τ := by
+            let σ := ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map g).app n τ
+            have hfac : ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map e).app n σ =
+                ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f).app n τ := by
               rw [← hg, CategoryTheory.Functor.map_comp]
               rfl
             have hred := erase_reduction_of_embedding W X Y e
-              (Word.punctureInclusion_injective d j) j (Word.punctureInclusion_range d j)
+              (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion_injective d j) j (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion_range d j)
               σ _ hfac
             have hi := ih (a.length + k) (by change a.length + (k + 1) = m at hm; omega)
-              a (Word.puncture d j) g rfl τ
+              a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.puncture d j) g rfl τ
             exact (normalForm_eq_of_reduction W X Y n hred).trans hi
     · cases a with
       | mk l d =>
@@ -88,16 +88,16 @@ lemma normalForm_transition {a b : Word} (f : a ⟶ b) (τ : (graph W a X Y).obj
           cases l with
           | zero => exact Fin.elim0 p
           | succ k =>
-            let hc := Word.adjacent_color_of_image_eq d f p hp
-            obtain ⟨g, hg⟩ := Word.factorMerge d f p hp
-            let σ := ((graphDiagram W X Y).map (Word.mergeMap d p hc)).app n τ
-            have hfac : ((graphDiagram W X Y).map f).app n τ =
-                ((graphDiagram W X Y).map g).app n σ := by
+            let hc := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.adjacent_color_of_image_eq d f p hp
+            obtain ⟨g, hg⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.factorMerge d f p hp
+            let σ := ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeMap d p hc)).app n τ
+            have hfac : ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f).app n τ =
+                ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map g).app n σ := by
               rw [← hg, CategoryTheory.Functor.map_comp]
               rfl
             have hi := ih (k + 1 + b.length)
               (by change (k + 2) + b.length = m at hm; omega)
-              (Word.mergeTarget d p) b g rfl σ
+              (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeTarget d p) b g rfl σ
             rw [hfac]
             exact hi.trans (normalForm_eq_of_reduction W X Y n
               (Reduction.merge d p hc τ)).symm

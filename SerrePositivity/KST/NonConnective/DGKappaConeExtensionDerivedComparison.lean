@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectInput
-public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.Perfect
-public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.Comparison
-public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedChangeComparison
-public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedPrecomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.Perfect
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.Comparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedChangeComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedPrecomposition
 
 /-!
 概要：実延長と代表化した cone 関手を、同じ実導来模型への全関手同型で比較する。
@@ -22,7 +22,7 @@ variable (R : Type u) [CommRing R]
   (C D : Type (max (u + 1) v)) [DGCategory R C] [Small.{u} C]
   [DGCategory R D] [Small.{u} D] (f : DGFunctor R C D)
   {κ : Cardinal.{u}} (I : DGKappaConeInput R C κ) (J : DGKappaConeInput R D κ)
-  (e : DGModuleStrictImage R C D (dgModuleExtension R C D f) I.objects J.objects)
+  (e : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.DGModuleStrictImage R C D (dgModuleExtension R C D f) I.objects J.objects)
 
 /-- 元の cone 加群を実延長した、同じ未分解出力の双加群。 -/
 def dgKappaConeExtensionBimodule : DGFunctor R (DGKappaCone R C I) (RightModule R D) :=
@@ -37,12 +37,12 @@ def dgKappaConeStrictImageBimodule : DGFunctor R (DGKappaCone R C I) (RightModul
 
 /-- 全 Hom 自然な同じ閉同型は、同じ二つの出力分解を全関手で比較する。 -/
 def dgKappaConeExtensionResolvedIso :
-    FunctorIso
-      (dgModuleResolvedInfinity R (DGKappaCone R C I) D
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity R (DGKappaCone R C I) D
         (dgKappaConeExtensionBimodule R C D f I))
-      (dgModuleResolvedInfinity R (DGKappaCone R C I) D
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity R (DGKappaCone R C I) D
         (dgKappaConeStrictImageBimodule R C D f I J e)) := by
-  apply dgModuleResolvedInfinity_changeIso R (DGKappaCone R C I) D
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity_changeIso R (DGKappaCone R C I) D
     (F := dgKappaConeExtensionBimodule R C D f I)
     (G := dgKappaConeStrictImageBimodule R C D f I J e)
     (fun M => (e.iso M).hom)
@@ -61,22 +61,22 @@ def dgKappaConeExtensionResolvedIso :
 
 /-- 代表化した同じ cone 射の後の実導来包含は、元の実延長の出力分解と全関手で同型。 -/
 def dgKappaConeStrictImageDerivedIso :
-    FunctorIso
-      (dgModuleResolvedInfinity R (DGKappaCone R C I) D
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity R (DGKappaCone R C I) D
         (dgKappaConeExtensionBimodule R C D f I))
-      (dgNerve.map (e.functor R C D _ I.objects J.objects) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (e.functor R C D _ I.objects J.objects) ≫
         dgKappaConeDerivedComparison R D J) := by
-  have h := dgModuleResolvedInfinity_precompIso R (DGKappaCone R C I)
+  have h := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity_precompIso R (DGKappaCone R C I)
     (ModuleCategory R D) D
     ((e.functor R C D _ I.objects J.objects).comp
       (dgFullSubcategoryInclusion R (ModuleCategory R D) J.objects)) (dgConeModuleForget R D)
-  have h' : FunctorIso
-      (dgModuleResolvedInfinity R (DGKappaCone R C I) D
+  have h' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity R (DGKappaCone R C I) D
         (dgKappaConeStrictImageBimodule R C D f I J e))
-      (dgNerve.map (e.functor R C D _ I.objects J.objects) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (e.functor R C D _ I.objects J.objects) ≫
         dgKappaConeDerivedComparison R D J) := by
     simpa only [dgKappaConeStrictImageBimodule, dgKappaConeDerivedComparison,
-      dgConeModuleDerived, dgNerve.map_comp, Category.assoc] using! h
+      dgConeModuleDerived, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, Category.assoc] using! h
   exact dgKappaConeExtensionResolvedIso R C D f I J e ≪≫ h'
 
 end SerrePositivity.KST.NonConnective

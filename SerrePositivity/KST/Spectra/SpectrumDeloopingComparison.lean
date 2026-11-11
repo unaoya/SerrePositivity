@@ -25,7 +25,7 @@ def deloopingComparison (X : OmegaSpectrum.{u}) : X ⟶ BasedLoop.obj (tail X) :
 
 /-- delooping 比較は各段で全基点 π 同型。 -/
 lemma deloopingComparison_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((deloopingComparison X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((deloopingComparison X).app n).right :=
   (originalLoopModelMap_levelwise X n).comp
     ((tailCotensorComparison_levelwise CirclePower.space X n).comp
       ((cotensorPre_levelwise_of_anodyne CirclePower.unit
@@ -39,14 +39,14 @@ local instance deloopingHomKan (X Y : OmegaSpectrum.{u}) :
 
 /-- 指定した delooping 比較辺は元の Sp の同値。 -/
 lemma deloopingComparison_isInvertible (X : OmegaSpectrum.{u}) :
-    IsInvertibleEdge (coherentNerveEdge (deloopingComparison X)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (deloopingComparison X)) :=
   SpectrumMappingAcyclic.isInvertible_of_levelwise _ (deloopingComparison_levelwise X)
 
 /-- 元の対象と一段先の対象の実際の loop 四角形の頂点の同型。 -/
 def deloopingVertexIso (X : OmegaSpectrum.{u}) :
-    VertexIso (coherentNerveVertex X) (BasedLoop.square (tail X)).vertex := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) (BasedLoop.square (tail X)).vertex := by
   rw [BasedLoop.square_vertex]
   haveI := deloopingComparison_isInvertible X
-  exact asIso (SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge (deloopingComparison X)))
+  exact asIso (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (deloopingComparison X)))
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

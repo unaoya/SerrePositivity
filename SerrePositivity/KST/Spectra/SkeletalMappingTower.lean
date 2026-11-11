@@ -8,7 +8,7 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutP
 概要：有限骨格からの写像空間の Kan fibration の塔と全体の写像空間の復元。
 方針：骨格の単射の指数版 pushout-product と、反変内部 Hom の極限保存を使う。
 規約：係数の Kan 性だけを要求する。ホモトピー群と塔の極限の交換は別工程。
-使われ方：Goerss–Jardine VIII §§1–2、Kerodon §3.1.3。自明作用の hG の塔。
+使われ方：Goerss–Jardine VIII §§1–2、Kerodon §3.1.3（Tag 00TJ）。自明作用の hG の塔。
 -/
 
 @[expose] public section
@@ -48,7 +48,7 @@ instance level_kanComplex (X Y : SSet.{u}) [KanComplex Y] (n : ℕᵒᵖ) :
 /-- 概要：有限骨格の写像空間の塔の遷移は Kan fibration。
 方針：骨格の包含の単射性を指数版 pushout-product の充填に渡す。
 規約：源の単体集合 X の Kan 性は不要。
-使われ方：Goerss–Jardine VIII §1、Kerodon §3.1.3。塔の fiber の長完全列の準備。 -/
+使われ方：Goerss–Jardine VIII §1、Kerodon §3.1.3（Tag 00TJ）。塔の fiber の長完全列の準備。 -/
 theorem map_fibration (X Y : SSet.{u}) [KanComplex Y] {n m : ℕᵒᵖ} (f : n ⟶ m) :
     Fibration ((tower X Y).map f) := by
   change Fibration ((pre (Subcomplex.homOfLE
@@ -73,7 +73,7 @@ def coneIsLimit (X Y : SSet.{u}) : IsLimit (cone X Y) :=
 /-- 概要：全体から各骨格への制限も Kan fibration。
 方針：骨格から全体への包含の単射性を指数版の充填に使う。
 規約：係数 Y の Kan 性のみを要求する。
-使われ方：Goerss–Jardine VIII §1、Kerodon §3.1.3。全体の制限の fiber。 -/
+使われ方：Goerss–Jardine VIII §1、Kerodon §3.1.3（Tag 00TJ）。全体の制限の fiber。 -/
 theorem projection_fibration (X Y : SSet.{u}) [KanComplex Y] (n : ℕᵒᵖ) :
     Fibration ((cone X Y).π.app n) := by
   change Fibration ((pre (X.skeleton (n.unop + 1)).ι).app Y)

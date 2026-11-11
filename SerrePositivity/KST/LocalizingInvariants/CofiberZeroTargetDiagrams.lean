@@ -1,10 +1,10 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetDiagrams
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberZeroTargetDiagrams
 
-public import SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactDiagrams
-public import SerrePositivity.InfinityCategories.Core.CocartesianPathSpace
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationComparisonProjection
-public import SerrePositivity.InfinityCategories.Stable.CofiberZeroSource
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.SuspensionExactDiagrams
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianPathSpace
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.TrivialFibrationComparisonProjection
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberZeroSource
 
 /-!
 概要：零終点矢印の元の cofiber 全族を、同じ始点の suspension 全図式と比較する。
@@ -21,50 +21,50 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberFamily
-variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
+variable (X : SSet.{u}) [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
-  (ha : ∀ x, IsZeroTargetArrow (a.app (Opposite.op ⦋0⦌) x))
+  (ha : ∀ x, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroTargetArrow (a.app (Opposite.op ⦋0⦌) x))
 
 lemma zeroTargetDiagrams_source :
-    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroTargetDiagrams X a ha ≫ suspensionDiagramEvaluation X 0 0 =
-      a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
-  have he := congrArg (fun f => f ≫ evaluateFunctorAt
-    (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares_bottom X a)
-  rw [Category.assoc, stable_pre_evaluateFunctorAt] at he
-  rw [suspensionDiagramEvaluation, ← Category.assoc,
-    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroTargetDiagrams, fullSubcomplexLift_ι]
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroTargetDiagrams X a ha ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.suspensionDiagramEvaluation X 0 0 =
+      a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
+  have he := congrArg (fun f => f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+    (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.squares_bottom X a)
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt] at he
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.suspensionDiagramEvaluation, ← Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroTargetDiagrams, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
   exact he
 
 lemma zeroTargetDiagrams_target :
-    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroTargetDiagrams X a ha ≫ suspensionDiagramEvaluation X 1 1 = _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a := by
-  rw [suspensionDiagramEvaluation, ← Category.assoc,
-    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroTargetDiagrams, fullSubcomplexLift_ι]
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroTargetDiagrams X a ha ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.suspensionDiagramEvaluation X 1 1 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber X a := by
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.suspensionDiagramEvaluation, ← Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroTargetDiagrams, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
   rfl
 
 lemma zeroTargetDiagrams_sameSource :
-    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroTargetDiagrams X a ha ≫ suspensionDiagramEvaluation X 0 0 =
-      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource X a ≫ suspensionDiagramEvaluation X 0 0 := by
-  rw [zeroTargetDiagrams_source, _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource_source]
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroTargetDiagrams X a ha ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.suspensionDiagramEvaluation X 0 0 =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.suspensionDiagramsAtSource X a ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.suspensionDiagramEvaluation X 0 0 := by
+  rw [zeroTargetDiagrams_source, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.suspensionDiagramsAtSource_source]
 
-def zeroTargetDiagramComparison : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroTargetDiagrams X a ha)
-    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource X a) :=
-  suspensionDiagramFamilyIso _ _ (zeroTargetDiagrams_sameSource X a ha)
+def zeroTargetDiagramComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroTargetDiagrams X a ha)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.suspensionDiagramsAtSource X a) :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionDiagramFamilyIso _ _ (zeroTargetDiagrams_sameSource X a ha)
 
 lemma zeroTargetDiagramComparison_source_arrow :
-    Arrow.mk (FunctorIso.postcomp (zeroTargetDiagramComparison X a ha)
-      (suspensionDiagramEvaluation X 0 0)).hom =
-        Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex
-          (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource X a ≫ suspensionDiagramEvaluation X 0 0)) :
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp (zeroTargetDiagramComparison X a ha)
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.suspensionDiagramEvaluation X 0 0)).hom =
+        Arrow.mk (𝟙 (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
+          (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.suspensionDiagramsAtSource X a ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.suspensionDiagramEvaluation X 0 0)) :
             hoFunctor.obj ((ihom A).obj X))) :=
-  functorIsoOfTrivialKanFibration_projection_arrow _ _ _ (zeroTargetDiagrams_sameSource X a ha)
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorIsoOfTrivialKanFibration_projection_arrow _ _ _ (zeroTargetDiagrams_sameSource X a ha)
 
-def zeroTargetRelativeIso : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a)
-    ((a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫
-      _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map X) := by
-  have e := FunctorIso.postcomp (zeroTargetDiagramComparison X a ha)
-    (suspensionDiagramEvaluation X 1 1)
+def zeroTargetRelativeIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber X a)
+    ((a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.map X) := by
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp (zeroTargetDiagramComparison X a ha)
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.suspensionDiagramEvaluation X 1 1)
   rw [zeroTargetDiagrams_target] at e
-  simpa only [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource, Category.assoc,
-    _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams_target] using e
+  simpa only [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.suspensionDiagramsAtSource, Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.SuspensionExactDiagrams.diagrams_target] using e
 
 end SerrePositivity.KST.LocalizingInvariants.CofiberFamily

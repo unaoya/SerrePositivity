@@ -10,6 +10,8 @@ public import Mathlib.Tactic.Abel
 方針：最初の面を分離し、残る交代和を一つ低い微分と相殺する。
 規約：KST Construction A.5 の普遍単体模型に適用する。
 使われ方：AW/shuffle の比較ホモトピーの各次数で普遍サイクルを埋める。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

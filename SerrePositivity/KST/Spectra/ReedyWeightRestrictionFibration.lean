@@ -13,7 +13,7 @@ public import SerrePositivity.KST.Spectra.ReedyWeightCornerLifting
 universe u
 open CategoryTheory CategoryTheory.Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open SerrePositivity.Reedy SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.Reedy
 namespace SerrePositivity.KST.Spectra.ReedyWeightRestrictionFibration
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -27,7 +27,7 @@ lemma hasLiftingProperty (θ : F ⟶ G)
     (X : CosimplicialObject SSet.{u})
     (hX : reedyRight simplex modelCategoryQuillen.J.rlp (terminal.from X))
     {A B : SSet.{u}} (i : A ⟶ B) (hi : anodyneExtensions i) :
-    HasLiftingProperty i (weightedSectionsPre (Functor.whiskerLeft AsSmall.down θ)
+    HasLiftingProperty i (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (Functor.whiskerLeft AsSmall.down θ)
       (AsSmall.down ⋙ X)) :=
   ReedyWeightCornerLifting.hasLiftingProperty θ X hX i
     (WeightCornerPushout.corner_reedy_anodyne_of_mono θ i hθ hi)
@@ -37,7 +37,7 @@ lemma fibration (θ : F ⟶ G)
     (hθ : reedyLeft simplex (MorphismProperty.monomorphisms SSet.{u}) θ)
     (X : CosimplicialObject SSet.{u})
     (hX : reedyRight simplex modelCategoryQuillen.J.rlp (terminal.from X)) :
-    Fibration (weightedSectionsPre (Functor.whiskerLeft AsSmall.down θ) (AsSmall.down ⋙ X)) := by
+    Fibration (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (Functor.whiskerLeft AsSmall.down θ) (AsSmall.down ⋙ X)) := by
   let := CosimplicialHornFactorization.hornWeakFactorization.{u}
   apply (modelCategoryQuillen.fibration_iff _).mpr
   intro A B i hi

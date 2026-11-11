@@ -25,7 +25,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{
   [ModelCategory SSet.{w}]
 
 lemma exists_accessible_smallLocalObjects
-    (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+    (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
     (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
     (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
     {ι : Type w} (s : ι → Arrow C) :
@@ -75,7 +75,7 @@ lemma exists_accessible_smallLocalObjects
   exact ⟨κ, hκ, d, hP', hi'⟩
 
 lemma exists_accessible_smallLocalObjects_of_small
-    (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+    (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
     (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
     (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
     (S : MorphismProperty C) [S.IsSmall.{w}] :

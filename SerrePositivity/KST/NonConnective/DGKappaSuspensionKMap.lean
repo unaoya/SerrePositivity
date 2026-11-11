@@ -67,9 +67,9 @@ variable (M : DGKappaSuspensionMapData R D E I J)
 
 /-- 同じ平坦分解の射は、懸垂で零化する同じ対象集合を保つ。 -/
 theorem dgKappaSuspensionMap_preservesNullObjects :
-    ∀ x ∈ resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I),
+    ∀ x ∈ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I),
       M.resolved.obj x ∈
-        resolvedDGNullObjects R (DGKappaCone R E J) (dgKappaConePerfectObjects R E J) := by
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R E J) (dgKappaConePerfectObjects R E J) := by
   intro x hx
   have h := congrArg (fun F => F.obj x) M.augmentation
   change (DGCategoryCellResolution.augmentation R (DGKappaCone R E J)).obj
@@ -85,8 +85,8 @@ def dgKappaSuspensionInputMap : dgKappaSuspensionKInput R D I ⟶ dgKappaSuspens
   ULift.up (DGQuotient.quotientDGFunctor R
     (DGCategoryCellResolution.Source R (DGKappaCone R D I))
     (DGCategoryCellResolution.Source R (DGKappaCone R E J)) M.resolved
-    (resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I))
-    (resolvedDGNullObjects R (DGKappaCone R E J) (dgKappaConePerfectObjects R E J))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R E J) (dgKappaConePerfectObjects R E J))
     (dgKappaSuspensionMap_preservesNullObjects R D E I J M))
 
 /-- 同じ懸垂屋根の右脚は、固定 dg 入力の通常射として厳密に自然。 -/

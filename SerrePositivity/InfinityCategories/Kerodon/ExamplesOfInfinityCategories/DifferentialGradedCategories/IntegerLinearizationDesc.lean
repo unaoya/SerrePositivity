@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：有限台関数の線形な和を使う。
 規約：KST Lemma A.4 の線形係数の持ち上げ。非被約な自由化を保つ。
 使われ方：語を固定した bar の区間写像の線形な構成。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

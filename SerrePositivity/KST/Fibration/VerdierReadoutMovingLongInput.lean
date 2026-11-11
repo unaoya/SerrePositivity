@@ -18,20 +18,20 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-    (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
+    (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)
-  (hfull : L ≫ evaluateFunctorAt
-    (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+  (hfull : L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+    (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
       verdierLowerReconstructionCompositeFamily d Δ[1])
 
 variable
   (H : SSet.Homotopy
     ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0))
-    (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))
+    (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))
       (verdierNativeCompositePoint d 1)))
-  (T : FunctorCompositionTriangle (verdierReadoutUpperComparison d)
+  (T : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle (verdierReadoutUpperComparison d)
     (verdierLowerNativeReadoutHomotopy d L hL) H)
   (hT : T.diagram ≫ (pre verdierReadoutPathBoundary.{u}).app _ =
     curry (verdierReadoutBoundaryDiagram d L hL hfull))
@@ -42,10 +42,10 @@ include hT
 方針：同じ境界回収式へ元の全 S• 成分照合を代入する。
 規約：全時刻の厳密等式。使われ方：実長 Hom fiber への登録。 -/
 theorem verdierReadoutComposition_movingComposite :
-    curry H.h ≫ evaluateFunctorAt
-      (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+    curry H.h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+      (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
         verdierMovingUpperCompositeFamily d := by
-  rw [curry_evaluateFunctorAt_vertex,
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.curry_evaluateFunctorAt_vertex,
     verdierReadoutComposition_full d L hL hfull H T hT,
     verdierMovingUpperCompositeFamily_component]
 
@@ -54,9 +54,9 @@ theorem verdierReadoutComposition_movingComposite :
 規約：追加の存在仮定や長 Hom の再選択を行わない。
 使われ方：元の実上側 canonical encoder への入力。 -/
 def verdierReadoutMovingLongInput : (verdierMovingUpperLongSpace d) _⦋0⦌ :=
-  controlledTriangleLongHomVertex
-    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
-    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)) Δ[1]
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleLongHomVertex
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.left))
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.right)) Δ[1]
     (verdierMovingUpperCompositeFamily d) (curry H.h)
     (verdierReadoutComposition_movingComposite d L hL hfull H T hT)
 
@@ -64,22 +64,22 @@ def verdierReadoutMovingLongInput : (verdierMovingUpperLongSpace d) _⦋0⦌ :=
 方針：同じ fiber 頂点の実全族回収を使う。
 規約：元の同じ合成を保持。使われ方：直接端と有限端点の同時回収。 -/
 theorem verdierReadoutMovingLongInput_value :
-    controlledTriangleLongHomValue (verdierReadoutMovingLongInput d L hL hfull H T hT) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleLongHomValue (verdierReadoutMovingLongInput d L hL hfull H T hT) =
       curry H.h :=
-  controlledTriangleLongHomVertex_value _ _ _ _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleLongHomVertex_value _ _ _ _ _ _
 
 /-- 概要：同じ実上側入力の直接端は元の同じ下側読出しの直接端全族。
 方針：相対合成の指定直接端を同じ下側ホモトピーの uncurry 回収へ戻す。
 規約：非退化一単体を含む全時刻の厳密等式。
 使われ方：正規化した下側との全共有対角の貼り合わせ。 -/
 theorem verdierReadoutMovingLongInput_direct :
-    controlledTriangleLongHomValue (verdierReadoutMovingLongInput d L hL hfull H T hT) ≫
-      evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u})) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleLongHomValue (verdierReadoutMovingLongInput d L hL hfull H T hT) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u})) =
     verdierLowerNativeLongHomTransport d Δ[1] L ≫
-      evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u})) := by
-  rw [verdierReadoutMovingLongInput_value, curry_evaluateFunctorAt_vertex,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u})) := by
+  rw [verdierReadoutMovingLongInput_value, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.curry_evaluateFunctorAt_vertex,
     verdierReadoutComposition_direct d L hL hfull H T hT,
     verdierReadoutComponentCurve, verdierLowerNativeReadoutHomotopy_h,
-    ← curry_evaluateFunctorAt_vertex, curry_uncurry]
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.curry_evaluateFunctorAt_vertex, curry_uncurry]
 
 end SerrePositivity.KST.Fibration

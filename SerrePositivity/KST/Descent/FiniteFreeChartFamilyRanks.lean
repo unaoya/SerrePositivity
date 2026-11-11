@@ -39,7 +39,7 @@ variable {S : Scheme.{u}} [IsNoetherian S] {X Y : FiniteTypeSchemes S}
   {V : Type v} [Category.{w} V] [Preadditive V] [Linear ℚ V]
   (F : (FiniteTypeSchemes S)ᵒᵖ ⥤ V) (U : V ⥤ SSet.{0}) (a : F ⟶ F)
   [ModelCategory SSet.{0}]
-  (I J : MorphismProperty SSet.{0}) [ModelGeneration.CofibrantlyGenerated.{0} I J]
+  (I J : MorphismProperty SSet.{0}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{0})]
   [FiniteZariskiCechDescent I J (F ⋙ U)]
 

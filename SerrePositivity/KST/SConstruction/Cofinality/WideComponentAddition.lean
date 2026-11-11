@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：障害の離散成分の加法演算。 -/
 def completionWideAdd (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     SSet.π₀ (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) →
       SSet.π₀ (LocalizingInvariants.completionCofiberWide
@@ -48,7 +48,7 @@ def completionWideAdd (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
 使われ方：双積の同型からの演算法則の輸送。 -/
 lemma completionWideAdd_objectClass (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (a b : hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier) :
     completionWideAdd r ι f hf (completionWideObjectClass r ι f hf a)
       (completionWideObjectClass r ι f hf b) = completionWideObjectClass r ι f hf (a ⊞ b) := by
@@ -62,11 +62,11 @@ lemma completionWideAdd_objectClass (r : ℕ) (ι : Fin r → SimplexCategoryᵒ
 使われ方：離散的障害の零元。 -/
 def completionWideZero (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     SSet.π₀ (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) :=
   completionWideObjectClass r ι f hf
-    (HomotopyCategory.mk (chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier).vertex)
+    (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier).vertex)
 
 /-- 概要：成分の双積和は可換。
 方針：元の双積の交換同型を成分の等号へ写す。
@@ -74,7 +74,7 @@ def completionWideZero (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
 使われ方：障害成分の可換群構造。 -/
 lemma completionWideAdd_comm (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (a b : SSet.π₀ (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u})) :
     completionWideAdd r ι f hf a b = completionWideAdd r ι f hf b a := by
@@ -91,7 +91,7 @@ lemma completionWideAdd_comm (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
 使われ方：障害成分の可換群構造。 -/
 lemma completionWideAdd_assoc (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (a b c : SSet.π₀ (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u})) :
     completionWideAdd r ι f hf (completionWideAdd r ι f hf a b) c =
@@ -118,12 +118,12 @@ lemma completionWideAdd_assoc (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
 使われ方：障害成分の加法単位の検証。 -/
 lemma completionWideAdd_zero_left (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (a : SSet.π₀ (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u})) :
     completionWideAdd r ι f hf (completionWideZero r ι f hf) a = a := by
   obtain ⟨a, rfl⟩ := SSet.π₀.mk_surjective a
-  let z := chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier
+  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier
   exact (completionWideAdd_objectClass r ι f hf (HomotopyCategory.mk z.vertex)
     (HomotopyCategory.mk a.val)).trans
       (completionWideObjectClass_iso r ι f hf (isoZeroBiprod
@@ -137,7 +137,7 @@ lemma completionWideAdd_zero_left (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
 使われ方：障害成分の加法単位の検証。 -/
 lemma completionWideAdd_zero_right (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (a : SSet.π₀ (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u})) :
     completionWideAdd r ι f hf a (completionWideZero r ι f hf) = a :=

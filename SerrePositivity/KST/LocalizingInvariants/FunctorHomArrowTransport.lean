@@ -52,7 +52,7 @@ lemma hom_eq_of_arrow_mk_eq {a b : B} {f g : a ⟶ b}
   simpa only [eqToHom_refl, Category.id_comp, Category.comp_id] using he
 
 lemma homPre_arrow_congr {A B X : SSet.{u}} (i : A ⟶ B)
-    {F G F' G' : B ⟶ X} {α : FunctorHom F G} {β : FunctorHom F' G'}
+    {F G F' G' : B ⟶ X} {α : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom F G} {β : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom F' G'}
     (h : Arrow.mk α = Arrow.mk β) : Arrow.mk (homPre i α) = Arrow.mk (homPre i β) :=
   congrArg (hoFunctor.map ((pre i).app X)).toFunctor.mapArrow.obj h
 

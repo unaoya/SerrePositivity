@@ -23,28 +23,28 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 零圏の元の core S_n は可縮 Kan 複体。 -/
-theorem coreSZeroTarget_isContractibleKan (Z : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
-    (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory Z) (n : ℕ) :
-    IsContractibleKan (quasicategoryCore (sConstruction n Z.obj) : SSet.{u}) := by
+theorem coreSZeroTarget_isContractibleKan (Z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u})
+    (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory Z) (n : ℕ) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (sConstruction n Z.obj) : SSet.{u}) := by
   have hc := allZeroVertices_isContractibleKan (sConstruction n Z.obj) (fun v => by
     apply (sConstruction_isZeroVertex_iff_components _ n v).mpr
     intro a
     exact hZ _)
   let := hc.kanComplex
-  exact isContractibleKan_of_iso (kanCoreIso _) hc
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_of_iso (kanCoreIso _) hc
 
 /-- 零圏の元の一回の core S• 実現の一点射は可逆。 -/
-theorem coreSZeroTarget_toPoint_localized_isIso (Z : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
-    (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory Z) :
+theorem coreSZeroTarget_toPoint_localized_isIso (Z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u})
+    (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory Z) :
     IsIso (AnodyneHomotopy.anodyneQ.map (terminal.from
       (simplicialDiagonalFunctor.obj
-        (simplicialSConstruction Z.obj ⋙ quasicategoryCoreFunctor)))) := by
-  let F := simplicialSConstruction Z.obj ⋙ quasicategoryCoreFunctor
+        (simplicialSConstruction Z.obj ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor)))) := by
+  let F := simplicialSConstruction Z.obj ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
   let c := simplicialSpaceToPoint F
   have hd : IsIso (AnodyneHomotopy.anodyneQ.map (simplicialDiagonalFunctor.map c)) := by
     apply BisimplicialModel.localized_diagonal_map
     intro n
-    letI : TrivialKanFibration (toUnit (F.obj n)) :=
+    letI : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (toUnit (F.obj n)) :=
       trivialKanFibration_toUnit_of_contractible
         (coreSZeroTarget_isContractibleKan Z hZ n.unop.len)
     have ht : IsIso (terminal.from (𝟙_ SSet.{u})) :=
@@ -65,8 +65,8 @@ theorem coreSZeroTarget_toPoint_localized_isIso (Z : _root_.SerrePositivity.Infi
 
 /-- 元の指定零値関手で作った核角比較の実現射そのものが可逆。 -/
 theorem relativeSZeroTargetCornerMap_localized_isIso
-    {A B C Z : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A Z) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory Z) :
+    {A B C Z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A Z) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory Z) :
     IsIso (AnodyneHomotopy.anodyneQ.map (simplicialDiagonalFunctor.map
       (relativeSZeroTargetCornerMap (i.hom ≫ q.hom) f hZ))) := by
   let Q := AnodyneHomotopy.anodyneQ.{u}

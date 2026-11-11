@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：特別な頂点を分け、それ以外では通常の退化の不等式を使う。
 規約：Moss 2020 Lemma 26 (8)・(9) の補助。
 使われ方：通常の退化との交換を singleton 上で検証する。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

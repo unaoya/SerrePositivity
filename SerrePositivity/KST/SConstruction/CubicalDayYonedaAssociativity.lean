@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory Opposite
 
 /-- 元の表現可能 tensor の逆比較と、元の両結合同型の可換性。 -/
-lemma cubicalDayCubeInclusion_associativity (c d e : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
+lemma cubicalDayCubeInclusion_associativity (c d e : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) :
     cubicalDayCubeInclusion.{u} (concreteCubeTensorObj c d) e ≫
         cubicalDayTensorMap (cubicalDayCubeInclusion c d) (𝟙 (cubicalYoneda.{u}.obj e)) ≫
           (α_ (DayFunctor.mk (cubicalYoneda.{u}.obj c)) (DayFunctor.mk (cubicalYoneda.{u}.obj d))

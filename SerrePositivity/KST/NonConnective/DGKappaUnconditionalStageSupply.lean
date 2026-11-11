@@ -47,13 +47,13 @@ theorem dgKappaUnconditionalStageProvider_perfect
 theorem dgKappaUnconditionalStageProvider_cone_newInput
     (A : PerfDGInput.{u, max (u + 1) v} R) :
     (dgKappaUnconditionalStageProvider.{u, v} R κ hκ A).cone =
-      dgKappaConeInput_unconditional' R A κ hκ := rfl
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaConeInput_unconditional' R A κ hκ := rfl
 
 /-- 同じ新 cone に対する新 P 正本を厳密回収する。 -/
 theorem dgKappaUnconditionalStageProvider_perfect_newInput
     (A : PerfDGInput.{u, max (u + 1) v} R) :
     (dgKappaUnconditionalStageProvider.{u, v} R κ hκ A).perfect =
-      dgKappaPerfectInput_unconditional' R A κ hκ := rfl
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectInput_unconditional' R A κ hκ := rfl
 
 /-- 概要：元の同じ κ の全実懸垂対象を、I・P の存在仮定なしで反復する。
 方針：実供給された同じ段入力を既存の反復へ代入する。

@@ -40,7 +40,7 @@ def nativeHatGLHomotopyGroupDiagram (A : SimplicialObject RingCat.{u}) (n : ℕ)
 theorem nativeHatGLHomotopyGroupDiagram_map_succ (A : SimplicialObject RingCat.{u})
     (n r : ℕ) :
     (nativeHatGLHomotopyGroupDiagram A n).map (homOfLE (r.le_add_right 1)) =
-      GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (hatGLSpaceStabilization A r)
+      GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := n) (hatGLSpaceStabilization A r)
         (hatGLSpaceStabilization_unit A r)) := by
   let f := (hatGLRankSequence A).map (homOfLE (r.le_add_right 1))
   have hf : (Functor.whiskerRight f (forget MonCat)).app (op ⦋0⦌)
@@ -51,7 +51,7 @@ theorem nativeHatGLHomotopyGroupDiagram_map_succ (A : SimplicialObject RingCat.{
   have : KanComplex ((hatGLRankSequence A).obj (r + 1) ⋙ forget MonCat) :=
     inferInstanceAs (KanComplex (hatGLSpace A (r + 1)))
   apply GrpCat.hom_ext
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (Functor.whiskerRight f (forget MonCat)) hf = _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := n) (Functor.whiskerRight f (forget MonCat)) hf = _
   dsimp only [f]
   simp only [hatGLRankSequence, Functor.ofSequence_map_homOfLE_succ]
   rfl
@@ -65,17 +65,17 @@ theorem nativeHatGLHomotopyGroupDiagram_map_succ (A : SimplicialObject RingCat.{
 def nativeHatGLRankCoefficientIso (A : SimplicialObject RingCat.{u}) (n : ℕ) :
     nativeHatGLHomotopyGroupDiagram A n ≅
       coefficientMatrixRankSequence
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))) := by
   let e (r : ℕ) : (nativeHatGLHomotopyGroupDiagram A n).obj r ≅
       (coefficientMatrixRankSequence
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌)))).obj r :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌)))).obj r :=
     MulEquiv.toGrpIso (X := (nativeHatGLHomotopyGroupDiagram A n).obj r)
       (Y := (coefficientMatrixRankSequence
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌)))).obj r)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌)))).obj r)
       (simplicialRingHatGLCoefficientHomotopyMulEquiv A r n)
   let α : nativeHatGLHomotopyGroupDiagram A n ⟶
       coefficientMatrixRankSequence
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))) :=
     NatTrans.ofSequence
       (fun r => (e r).hom)
       (fun r => by
@@ -87,7 +87,7 @@ def nativeHatGLRankCoefficientIso (A : SimplicialObject RingCat.{u}) (n : ℕ) :
         exact hatGLCoefficientHomotopy_stabilization A r n x)
   exact NatIso.ofComponents (F := nativeHatGLHomotopyGroupDiagram A n)
     (G := coefficientMatrixRankSequence
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))))
     e (fun f => α.naturality f)
 
 /--
@@ -99,7 +99,7 @@ def nativeHatGLRankCoefficientIso (A : SimplicialObject RingCat.{u}) (n : ℕ) :
 def hatGLRankCoefficientIso (A : SimplicialObject RingCat.{u}) (n : ℕ) :
     stableHatGLHomotopyGroupDiagram A n ≅
       liftedRankEquivalence.functor ⋙ coefficientMatrixRankSequence
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))) :=
   (Functor.leftUnitor (stableHatGLHomotopyGroupDiagram A n)).symm ≪≫
     Functor.isoWhiskerRight liftedRankEquivalence.unitIso (stableHatGLHomotopyGroupDiagram A n) ≪≫
       Functor.associator liftedRankEquivalence.functor liftedRankEquivalence.inverse

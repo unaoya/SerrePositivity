@@ -18,9 +18,9 @@ variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 方針：元の augmentation・評価を既存 LeftRoof へ代入。
 規約：全縦弱同値を保持。使われ方：全単体の hammock 比較。 -/
 def freeProbeRelativeElementRoof : freeProbeRelativeElementIndex A X B ⥤
-    Zigzag (cofibrantAlgebraRelativeCategory A).weakEquivalences LeftRoof.word
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (cofibrantAlgebraRelativeCategory A).weakEquivalences _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word
       (freeProbeRelativeElementSource A X) (ULiftHom.objUp.{u + 1, u + 1} B) :=
-  LeftRoof.diagram (cofibrantAlgebraRelativeCategory A).weakEquivalences
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram (cofibrantAlgebraRelativeCategory A).weakEquivalences
     (freeProbeRelativeElementColumn A X B) (freeProbeRelativeElementAugmentation A X B)
     (freeProbeRelativeElementAugmentation_weak A X B)
     (freeProbeRelativeElementEvaluation A X B)
@@ -30,7 +30,7 @@ def freeProbeRelativeElementRoof : freeProbeRelativeElementIndex A X B ⥤
 方針：SameUniverse の既存全単体入口を使う。
 規約：全パラメータを保持。使われ方：CAlg_R の全 pinched 族。 -/
 def freeProbeRelativeElementRoofMap : nerve (freeProbeRelativeElementIndex A X B) ⟶
-    colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
       (freeProbeRelativeElementSource A X) (ULiftHom.objUp.{u + 1, u + 1} B) :=
   LeftRoof.Precompose.SameUniverse.diagramColimitMap
     (cofibrantAlgebraRelativeCategory A).weakEquivalences (freeProbeRelativeElementRoof A X B)

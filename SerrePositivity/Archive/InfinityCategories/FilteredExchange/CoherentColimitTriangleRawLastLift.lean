@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitConstantTriangleBaseFaces
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitRawTransportPointPrism
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ConstantDiagramTransportCoordinates
-public import SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePrism
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.ConstantDiagramTransportCoordinates
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.F1DiagramsTrianglePrism
 
 /-!
 概要：元の全定値三角形上で、最初辺を固定し最後辺を元の raw 普遍輸送にする。

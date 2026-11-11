@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitUniversalCocone
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.PointwiseColimitChoiceTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.PointwiseColimitChoiceTransport
 
 /-!
 概要：任意の coherent な図式の族に、余極限関手を頂点とする点ごとの普遍余錐を与える。

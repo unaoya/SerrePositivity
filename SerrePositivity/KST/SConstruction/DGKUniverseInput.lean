@@ -16,6 +16,6 @@ variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 元の全 Hom を持つ宇宙持ち上げを、同じ固定 dg 始域の実入力へ束ねる。 -/
 def dgKUniverseInput : PerfDGInput.{u, max v w} R :=
-  perfDGInputOf R (DGUniverseLift.{v, w} D)
+  perfDGInputOf R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{v, w} D)
 
 end SerrePositivity.KST.SConstruction

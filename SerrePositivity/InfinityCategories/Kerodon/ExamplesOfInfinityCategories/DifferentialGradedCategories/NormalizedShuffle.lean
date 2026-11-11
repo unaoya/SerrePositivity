@@ -10,6 +10,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 方針：実鎖写像の合成として定義し、三つの比較写像の自然性を使う。
 規約：KST Construction A.5、非被約 C(H) の零次を保つ。
 使われ方：差の全テンソルの低次消滅を対角へ戻す比較。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

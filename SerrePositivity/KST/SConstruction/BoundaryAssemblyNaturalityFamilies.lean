@@ -84,7 +84,7 @@ lemma boundaryAssemblyNaturalityFamilies_source (r : ℕ) {X Y : StableModel.{u}
 lemma boundaryAssemblyNaturalityFamilies_target (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
     boundaryAssemblyInverseTarget r f ≫ boundaryAssemblyInverseFamily r f =
       boundaryKanAssemblyAdjointFamily r Y ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((boundaryKanRealizationFunctor r).map f)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((boundaryKanRealizationFunctor r).map f)
           ((loopBoundaryKanFunctor (r + 1)).obj Y)).right := by
   dsimp only [boundaryAssemblyInverseTarget, boundaryAssemblyInverseFamily]
   rw [← Category.assoc, tensorHom_comp_tensorHom, Category.id_comp,

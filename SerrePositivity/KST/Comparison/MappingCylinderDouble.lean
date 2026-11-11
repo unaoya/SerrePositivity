@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.MappingCylinder
-public import SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderDesc
 
 /-!
 # 二重写像円筒の二段階の pushout 表示
@@ -28,9 +28,9 @@ open scoped _root_.Simplicial
 使われ方：二段階の pushout の第一の包含。
 -/
 def mappingCylinderToDouble {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    mappingCylinder f ⟶ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g :=
-  pushout.desc (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g) (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f g)
-    (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_zero f g)
+    mappingCylinder f ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder f g :=
+  pushout.desc (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle f g) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left f g)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_zero f g)
 
 /--
 概要：片端の円筒からの射は中央の円筒への包含を保つ。
@@ -39,7 +39,7 @@ def mappingCylinderToDouble {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
 使われ方：二段階の普遍性の計算。
 -/
 @[reassoc] theorem mappingCylinderTop_toDouble {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    mappingCylinderTop f ≫ mappingCylinderToDouble f g = _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g :=
+    mappingCylinderTop f ≫ mappingCylinderToDouble f g = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle f g :=
   pushout.inl_desc ..
 
 /--
@@ -49,7 +49,7 @@ def mappingCylinderToDouble {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
 使われ方：二段階の普遍性の計算。
 -/
 @[reassoc] theorem mappingCylinderBase_toDouble {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    mappingCylinderBase f ≫ mappingCylinderToDouble f g = _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f g :=
+    mappingCylinderBase f ≫ mappingCylinderToDouble f g = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left f g :=
   pushout.inr_desc ..
 
 /--
@@ -61,9 +61,9 @@ def mappingCylinderToDouble {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
 @[reassoc] theorem mappingCylinderEndpoint_toDouble {C A B : SSet.{u}}
     (f : C ⟶ A) (g : C ⟶ B) :
     mappingCylinderEndpoint f ≫ mappingCylinderToDouble f g =
-      g ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f g := by
+      g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right f g := by
   rw [mappingCylinderEndpoint, Category.assoc, mappingCylinderTop_toDouble,
-    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_one]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_one]
 
 /--
 概要：既存の二重写像円筒は、片端の mapping cylinder の残る端点を貼る pushout である。
@@ -73,10 +73,10 @@ def mappingCylinderToDouble {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
 -/
 theorem mappingCylinderToDouble_isPushout {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
     IsPushout (mappingCylinderEndpoint f) g (mappingCylinderToDouble f g)
-      (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f g) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right f g) := by
   refine IsPushout.mk' (mappingCylinderEndpoint_toDouble f g) ?_ ?_
   · intro T u v hC hB
-    apply _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext f g
+    apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext f g
     · simpa only [← Category.assoc, mappingCylinderTop_toDouble] using
         congrArg (fun k => mappingCylinderTop f ≫ k) hC
     · simpa only [← Category.assoc, mappingCylinderBase_toDouble] using
@@ -88,13 +88,13 @@ theorem mappingCylinderToDouble_isPushout {C A B : SSet.{u}} (f : C ⟶ A) (g : 
       change (SSet.ι₀ ≫ pushout.inl _ _) ≫ a = f ≫ (pushout.inr _ _ ≫ a)
       rw [pushout.condition, Category.assoc]
     have h₁ : SSet.ι₁ ≫ (mappingCylinderTop f ≫ a) = g ≫ b := hab
-    let l := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc f g (mappingCylinderTop f ≫ a)
+    let l := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderDesc f g (mappingCylinderTop f ≫ a)
       (mappingCylinderBase f ≫ a) b h₀ h₁
-    refine ⟨l, ?_, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_desc ..⟩
+    refine ⟨l, ?_, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_right_desc ..⟩
     apply pushout.hom_ext
     · change mappingCylinderTop f ≫ (mappingCylinderToDouble f g ≫ l) = mappingCylinderTop f ≫ a
-      rw [← Category.assoc, mappingCylinderTop_toDouble, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_desc]
+      rw [← Category.assoc, mappingCylinderTop_toDouble, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_middle_desc]
     · change mappingCylinderBase f ≫ (mappingCylinderToDouble f g ≫ l) = mappingCylinderBase f ≫ a
-      rw [← Category.assoc, mappingCylinderBase_toDouble, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_desc]
+      rw [← Category.assoc, mappingCylinderBase_toDouble, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_left_desc]
 
 end SerrePositivity.KST.Comparison

@@ -20,16 +20,16 @@ variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorElementUniversalSimplex_reindex {n m : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
-    (DGNerve.pinchedHom A (Complex A) X
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) X
       ((normalizedTensorElementDiagram A X Y).obj (c.obj (Fin.last n)))).map θ.op
         (normalizedTensorElementUniversalSimplex A X Y c) =
-    (pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
       (homPostcompose X ((normalizedTensorElementDiagram A X Y).map
         (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m)))))))).app (Opposite.op ⦋m⦌)
       (normalizedTensorElementUniversalSimplex A X Y
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)) := by
   have h := congrArg (fun f : SSet.uliftFunctor.{u + 1, u}.obj (Δ[m] : SSet.{u}) ⟶
-      DGNerve.pinchedHom A (Complex A) X
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) X
         ((normalizedTensorElementDiagram A X Y).obj (c.obj (Fin.last n))) =>
       f.app (Opposite.op ⦋m⦌) (ULift.up (SSet.stdSimplex.objEquiv.symm (𝟙 ⦋m⦌))))
     (normalizedTensorElementUniversalFamily_reindex A X Y c θ)

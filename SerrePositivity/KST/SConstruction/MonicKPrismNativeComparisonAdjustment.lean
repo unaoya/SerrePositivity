@@ -21,14 +21,14 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
   {x y z : I} (f : x ⟶ y) (g : y ⟶ z)
 
 local instance nativeComparisonEndpointRestrictionFibration (n : ℕ) :
-    Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+    Fibration (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
       ((kKanSequence (F.obj z)).level (n + 1)).space) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_fibration _ _
 
 /-- 元の全適合比較を持ち上げ、両端を保って次段比較の射影を厳密に補正する。 -/
 def monicKPrismNativeComparisonAdjustmentData (n : ℕ) :=
   cylinderEndpointAdjustmentData
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
       ((kKanSequence (F.obj z)).level (n + 1)).space)
     (monicKPrismNativeLevelComparison F f g (n + 1))
     (monicKPrismNativePreviousComparison F f g n)
@@ -39,7 +39,7 @@ def monicKPrismNativeComparisonAdjustmentData (n : ℕ) :=
 /-- 補正後の次段実比較は、元の前段比較の構造射像を厳密に回収する。 -/
 lemma monicKPrismNativeComparisonAdjustmentData_projection (n : ℕ) :
     (monicKPrismNativeComparisonAdjustmentData F f g n).val.h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
           ((kKanSequence (F.obj z)).level (n + 1)).space =
       (monicKPrismNativeLevelComparison F f g n).h ≫
         RawSpectrumMapping.step (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj z)) n :=
@@ -59,7 +59,7 @@ lemma monicKPrismNativeComparisonAdjustmentData_boundary (n : ℕ) :
 /-- 全相対補正の射影は、四つの元の三角形から構成した同じ全二次元比較。 -/
 lemma monicKPrismNativeComparisonAdjustmentData_comparison_projection (n : ℕ) :
     (monicKPrismNativeComparisonAdjustmentData F f g n).comparison.h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
           ((kKanSequence (F.obj z)).level (n + 1)).space =
       (monicKPrismNativeComparisonCompatibility F f g n).h :=
   (monicKPrismNativeComparisonAdjustmentData F f g n).comparison_projection

@@ -42,7 +42,7 @@ lemma presentedPerfectDGBFLevel_kanComplex (n : ℕ) (X : PerfDGInput.{u, v} A) 
 
 /-- 同じ全ての実構造射は、基礎単体集合上で単射。 -/
 lemma presentedPerfectDGBFStructureMap_mono (n : ℕ) (X : PerfDGInput.{u, v} A) :
-    Mono (show _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (((presentedPerfectDGBFLevelFunctor A n).obj X).obj) ⟶
+    Mono (show _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (((presentedPerfectDGBFLevelFunctor A n).obj X).obj) ⟶
       ((presentedPerfectDGBFLevelFunctor A (n + 1)).obj X).obj from
         presentedPerfectDGBFStructureMap A n X).right := by
   cases n with
@@ -66,7 +66,7 @@ lemma presentedPerfectDGBFStructureMap_whisker (n : ℕ) (X Y : PerfDGInput.{u, 
           ((presentedPerfectDGBFLevelFunctor A (n + 1)).obj Y) := by
   cases n with
   | zero =>
-      exact _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker _ _
+      exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformation_whisker _ _
         (presentedPerfectDGBFFirstStructureTransformation A)
         (presentedPerfectDGBFFirstStructureMap A)
         (presentedPerfectDGBFFirstStructureTransformation_app A) X Y
@@ -82,7 +82,7 @@ def presentedPerfectDGBFStructureTransformation (n : ℕ) :
       ((presentedPerfectDGBFLevelFunctor A n).comp SSet
         (pointedTensorEnrichedFunctor PointedSimplicialSet.circle.{max (u + 1) v}))
       (presentedPerfectDGBFLevelFunctor A (n + 1)) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (presentedPerfectDGBFStructureMap A n)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _ (presentedPerfectDGBFStructureMap A n)
     (presentedPerfectDGBFStructureMap_whisker A n)
 
 /-- 同じ全構造変換の成分は、元の同じ実構造射。 -/
@@ -100,6 +100,6 @@ def presentedPerfectDGBFKanSequence (X : PerfDGInput.{u, v} A) :
 /-- 同じ実 Kan 列の零段は、元の零次境界 Kan 商の loop そのもの。 -/
 lemma presentedPerfectDGBFKanSequence_zero (X : PerfDGInput.{u, v} A) :
     ((presentedPerfectDGBFKanSequence A X).level 0).space =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((presentedPerfectDGBoundaryKanEnrichedFunctor A 0).obj X).obj := rfl
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((presentedPerfectDGBoundaryKanEnrichedFunctor A 0).obj X).obj := rfl
 
 end SerrePositivity.KST.SConstruction

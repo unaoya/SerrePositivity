@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.SchurDegreeDecomposition
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.ArityFreeRepresentation
 public import SerrePositivity.EInfinity.BarrattEccles.Sequence
-public import SerrePositivity.InfinityCategories.Derived.TensorBasis
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.TensorBasis
 
 /-!
 # Schur 複体の次数付き基底の移送
@@ -50,7 +50,7 @@ lemma moduleCoproductBasis_apply {J : Type v} (V : J → ModuleCat.{max v u} A)
   classical
   change (ModuleCat.coprodIsoDirectSum V).inv
     (DFinsupp.basis b x) = _
-  rw [SerrePositivity.InfinityCategories.directSumBasis_apply]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.directSumBasis_apply]
   exact congrArg (fun f => f (b x.1 x.2))
     (ModuleCat.lof_coprodIsoDirectSum_inv V x.1)
 

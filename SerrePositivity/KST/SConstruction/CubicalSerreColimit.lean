@@ -25,7 +25,7 @@ def cubicalSerreChainsColimitIso (K : CubicalSet.{u}) :
   cubicalYoneda.leftKanExtensionObjIsoColimit (serreConcreteCubeComplexFunctor A) K
 
 /-- 余極限の比較は、元の各立方体からの射を厳密に回収する。 -/
-lemma cubicalSerreChainsColimitIso_cell (K : CubicalSet.{u}) (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube)
+lemma cubicalSerreChainsColimitIso_cell (K : CubicalSet.{u}) (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube)
     (φ : cubicalYoneda.obj c ⟶ K) :
     (cubicalSerreChainsCubeUnit A).app c ≫ (cubicalSerreChains A).map φ ≫
         (cubicalSerreChainsColimitIso A K).hom =
@@ -35,7 +35,7 @@ lemma cubicalSerreChainsColimitIso_cell (K : CubicalSet.{u}) (c : _root_.SerrePo
 /-- 元の全 cell への制限で cubical 鎖複体からの射の等号を判定できる。 -/
 lemma cubicalSerreChains_hom_ext {K : CubicalSet.{u}} {T : Complex A}
     {f g : (cubicalSerreChains A).obj K ⟶ T}
-    (h : ∀ (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)),
+    (h : ∀ (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)),
       cubicalSerreCell A c x ≫ f = cubicalSerreCell A c x ≫ g) : f = g := by
   apply (Functor.isPointwiseLeftKanExtensionLeftKanExtensionUnit cubicalYoneda
     (serreConcreteCubeComplexFunctor A) K).hom_ext'
@@ -46,9 +46,9 @@ lemma cubicalSerreChains_hom_ext {K : CubicalSet.{u}} {T : Complex A}
   simpa only [cubicalSerreCell, cubicalCell_equiv, Category.assoc] using hx
 
 variable (K : CubicalSet.{u}) (T : Complex A)
-  (s : ∀ c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube, (cubicalYoneda.obj c ⟶ K) →
+  (s : ∀ c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube, (cubicalYoneda.obj c ⟶ K) →
     ((serreConcreteCubeComplexFunctor A).obj c ⟶ T))
-  (hs : ∀ {c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : c ⟶ d) (φ : cubicalYoneda.obj d ⟶ K),
+  (hs : ∀ {c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube} (f : c ⟶ d) (φ : cubicalYoneda.obj d ⟶ K),
     (serreConcreteCubeComplexFunctor A).map f ≫ s d φ = s c (cubicalYoneda.map f ≫ φ))
 
 /-- 元の立方体の全表示関係と両立する射の族の余錐。 -/
@@ -67,7 +67,7 @@ def cubicalSerreDesc : (cubicalSerreChains A).obj K ⟶ T :=
     (serreConcreteCubeComplexFunctor A) K).desc (cubicalSerreCocone A K T s hs)
 
 /-- 元の立方体への制限は、指定した射そのものを回収する。 -/
-lemma cubicalSerreDesc_fac (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (φ : cubicalYoneda.obj c ⟶ K) :
+lemma cubicalSerreDesc_fac (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (φ : cubicalYoneda.obj c ⟶ K) :
     (cubicalSerreChainsCubeUnit A).app c ≫ (cubicalSerreChains A).map φ ≫
       cubicalSerreDesc A K T s hs = s c φ := by
   exact (Functor.isPointwiseLeftKanExtensionLeftKanExtensionUnit cubicalYoneda

@@ -50,7 +50,7 @@ def homComplexComparison : ContravariantChainHom.obj (K.chainComplex R) M ≅ co
 規約：通常の複体のホモトピー同値であり、Tot の比較を主張しない。
 使われ方：Goerss–Jardine III §2、VIII §2。正規化群 cochain の cohomology の入力。 -/
 def normalizationHomotopyEquiv :
-    HomotopyEquiv (complex K R M) (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex K R M) :=
+    HomotopyEquiv (complex K R M) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.complex K R M) :=
   (HomotopyEquiv.ofIso (homComplexComparison K R M).symm).trans
     (NormalizedSimplicialCochains.normalizationHomotopyEquiv K R M)
 

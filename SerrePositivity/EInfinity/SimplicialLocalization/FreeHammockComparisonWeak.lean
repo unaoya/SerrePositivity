@@ -22,9 +22,9 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory SerrePositivity.InfinityCategories
 
-lemma freeHammockHomComparison_app_isWeakHomotopyEquivalence (C : RelativeCategory.{u})
+lemma freeHammockHomComparison_app_isWeakHomotopyEquivalence (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
     (X Y : C.category) (n : SimplexCategoryᵒᵖ) :
-    IsWeakHomotopyEquivalence ((freeHammockHomComparison C X Y).app n) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeHammockHomComparison C X Y).app n) := by
   apply (freeHammockLocalizationObjects C).colimitValue_weak_of_localizationValue n X Y
   exact Hammock.free_localizationValue_isWeakHomotopyEquivalence
     (freeResolutionGeneratorBase C n).weakEquivalences

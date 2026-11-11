@@ -28,8 +28,8 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine VIII §2。作用の cochain の各次数のホモトピー不変性。 -/
 lemma map_piIsomorphism {G : Type u} [Group G]
     {B C : Action PointedSimplicialSet.{u} G} [KanComplex B.V.right] [KanComplex C.V.right]
-    (τ : B ⟶ C) (hτ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism τ.hom.right) (j : SimplexCategory) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (X := ((obj B).obj j).right) (Y := ((obj C).obj j).right)
+    (τ : B ⟶ C) (hτ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism τ.hom.right) (j : SimplexCategory) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (X := ((obj B).obj j).right) (Y := ((obj C).obj j).right)
       ((map τ).app j).right := by
   induction j using SimplexCategory.rec with | _ n =>
   let eB : ((obj B).obj (SimplexCategory.mk n)).right ≅
@@ -45,10 +45,10 @@ lemma map_piIsomorphism {G : Type u} [Group G]
   change ((map τ).app (SimplexCategory.mk n)).right ≫ eC.hom =
     eB.hom ≫ (PointedWeightedEnd.map (FreeActionFamily.weight (Fin n → G))
       (FreeActionFamily.pointedCoefficientsMap τ)).right at he
-  have hc : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (((map τ).app (SimplexCategory.mk n)).right ≫ eC.hom) := by
+  have hc : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (((map τ).app (SimplexCategory.mk n)).right ≫ eC.hom) := by
     rw [he]
-    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso eB).comp hfree
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hc (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso eC)
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso eB).comp hfree
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp hc (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso eC)
 
 end
 

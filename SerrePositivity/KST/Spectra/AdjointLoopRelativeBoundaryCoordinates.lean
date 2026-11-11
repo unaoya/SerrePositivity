@@ -54,13 +54,13 @@ lemma projectionParameterFamily_universal_evaluation (X Y : OmegaSpectrum.{u}) (
     RawSpectrumMapping.pointedEvaluation X Y.toKanSequence (n + 1) ≫
       PointedMapping.ihomAction PointedSimplicialSet.circle.{u}
         (X.level (n + 1)).space (Y.level (n + 1)).space ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((projection X).app n) ((target Y).level n).space := by
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((projection X).app n) ((target Y).level n).space := by
   dsimp only [projectionParameterFamily]
   rw [RawSpectrumMapping.parameterFamily_evaluation]
   change PointedMapping.transpose
       ((projection X).app n ≫
         (ihom PointedSimplicialSet.circle.{u}).map ((universalParameterHom X Y).app (n + 1)) ≫
-          (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u}
+          (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u}
             (RawSpectrumMapping.pointedSpace X Y.toKanSequence)
             (Y.level (n + 1)).space).hom) = _
   have h := PointedMapping.transpose_ihomParameterAction

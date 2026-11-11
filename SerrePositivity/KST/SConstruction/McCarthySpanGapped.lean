@@ -21,13 +21,13 @@ open scoped Simplicial
 方針：内部 Hom の交換と curry の頂点公式。
 規約：全形状に共通。使われ方：McCarthy の三つの入力図式の同定。 -/
 lemma transposeFamily_vertex {A K D : SSet.{u}} (F : A ⊗ K ⟶ D) (a : A _⦋0⦌) :
-    (functorVertexEquiv K D).symm
-      ((internalHomFlipHomEquiv K A D (curry F)).app (Opposite.op ⦋0⦌) a) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv K D).symm
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv K A D (curry F)).app (Opposite.op ⦋0⦌) a) =
       lift (SSet.const a) (𝟙 K) ≫ F := by
-  change (functorVertexEquiv K D).symm
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv K D).symm
     ((curry ((β_ K A).hom ≫ uncurry (curry F))).app (Opposite.op ⦋0⦌) a) = _
   rw [uncurry_curry, curry_vertex_value]
-  change (functorVertexEquiv K D).symm ((functorVertexEquiv K D)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv K D).symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv K D)
     (lift (𝟙 K) (SSet.const a) ≫ (β_ K A).hom ≫ F)) = _
   rw [Equiv.symm_apply_apply]
   rfl
@@ -37,10 +37,10 @@ lemma transposeFamily_vertex {A K D : SSet.{u}} (F : A ⊗ K ⟶ D) (a : A _⦋0
 規約：区間から span への射は任意。使われ方：λ・μ・ν の端点の回収。 -/
 lemma transposeFamily_interval_vertex {A K D : SSet.{u}} (F : A ⊗ K ⟶ D)
     (i : (Δ[1] : SSet.{u}) ⟶ A) (j : Fin 2) :
-    (functorVertexEquiv K D).symm
-      ((internalHomFlipHomEquiv K A D (curry F)).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv K D).symm
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv K A D (curry F)).app (Opposite.op ⦋0⦌)
         (i.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm j))) =
-      prismEndpoint j K ≫ (i ▷ K) ≫ F := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint j K ≫ (i ▷ K) ≫ F := by
   rw [transposeFamily_vertex]
   rw [← Category.assoc]
   congr 1
@@ -49,9 +49,9 @@ lemma transposeFamily_interval_vertex {A K D : SSet.{u}} (F : A ⊗ K ⟶ D)
   apply ConcreteCategory.hom_ext
   intro k
   apply Prod.ext
-  · change PinchedHom.constant
+  · change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant
       (i.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm j)) d.unop.len =
-      i.app d (PinchedHom.constant (stdSimplex.obj₀Equiv.symm j) d.unop.len)
+      i.app d (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm j) d.unop.len)
     exact (ConcreteCategory.congr_hom (i.naturality
       (SimplexCategory.const d.unop ⦋0⦌ 0).op) (stdSimplex.obj₀Equiv.symm j)).symm
   · rfl
@@ -59,14 +59,14 @@ lemma transposeFamily_interval_vertex {A K D : SSet.{u}} (F : A ⊗ K ⟶ D)
 /-- 概要：McCarthy の span の三つの入力図式は gapped。
 方針：ホーンの全頂点を二枝の端点で表し、λ・μ・E を回収する。
 規約：A と E の gapped 性だけを使う。使われ方：ρ の gapped 性の無条件な供給。 -/
-lemma mcCarthySpan_isGapped_vertex {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
-    (z : ZeroVertex C) (A : arNerve m ⟶ C) (hA : IsGapped A)
+lemma mcCarthySpan_isGapped_vertex {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
+    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (A : arNerve m ⟶ C) (hA : IsGapped A)
     (α : Fin (n + 1) →o Fin (m + 1)) (τ : Fin (n + 1) →o Fin 2)
     (E : arNerve n ⟶ cofiberDiagrams C) (hE : IsGapped E)
-    (h : E ≫ cofiberProjection C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+    (h : E ≫ cofiberProjection C ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       arNerveMap α ≫ A) (a : (horn 2 0 : SSet.{u}) _⦋0⦌) :
-    IsGapped ((functorVertexEquiv (arNerve n) (cofiberDiagrams C)).symm
-      ((internalHomFlipHomEquiv (arNerve n) (horn 2 0) (cofiberDiagrams C)
+    IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) (cofiberDiagrams C)).symm
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (arNerve n) (horn 2 0) (cofiberDiagrams C)
         (curry (mcCarthySpan z A α τ E h))).app (Opposite.op ⦋0⦌) a)) := by
   obtain ⟨a, ha⟩ := a
   obtain ⟨i, rfl⟩ := stdSimplex.obj₀Equiv.symm.surjective a
@@ -76,8 +76,8 @@ lemma mcCarthySpan_isGapped_vertex {n m : ℕ} {C : SSet.{u}} [Quasicategory C] 
         horn₂₀.ι₀₁.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
       apply Subtype.ext
       rfl
-    change IsGapped ((functorVertexEquiv (arNerve n) (cofiberDiagrams C)).symm
-      ((internalHomFlipHomEquiv (arNerve n) (horn 2 0) (cofiberDiagrams C)
+    change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) (cofiberDiagrams C)).symm
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (arNerve n) (horn 2 0) (cofiberDiagrams C)
         (curry (mcCarthySpan z A α τ E h))).app (Opposite.op ⦋0⦌)
           (⟨stdSimplex.obj₀Equiv.symm (0 : Fin 3), ha⟩)))
     rw [he, transposeFamily_interval_vertex, mcCarthySpan_upper,
@@ -88,8 +88,8 @@ lemma mcCarthySpan_isGapped_vertex {n m : ℕ} {C : SSet.{u}} [Quasicategory C] 
         horn₂₀.ι₀₁.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
       apply Subtype.ext
       rfl
-    change IsGapped ((functorVertexEquiv (arNerve n) (cofiberDiagrams C)).symm
-      ((internalHomFlipHomEquiv (arNerve n) (horn 2 0) (cofiberDiagrams C)
+    change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) (cofiberDiagrams C)).symm
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (arNerve n) (horn 2 0) (cofiberDiagrams C)
         (curry (mcCarthySpan z A α τ E h))).app (Opposite.op ⦋0⦌)
           (⟨stdSimplex.obj₀Equiv.symm (1 : Fin 3), ha⟩)))
     rw [he, transposeFamily_interval_vertex, mcCarthySpan_upper,
@@ -100,8 +100,8 @@ lemma mcCarthySpan_isGapped_vertex {n m : ℕ} {C : SSet.{u}} [Quasicategory C] 
         horn₂₀.ι₀₂.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
       apply Subtype.ext
       rfl
-    change IsGapped ((functorVertexEquiv (arNerve n) (cofiberDiagrams C)).symm
-      ((internalHomFlipHomEquiv (arNerve n) (horn 2 0) (cofiberDiagrams C)
+    change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) (cofiberDiagrams C)).symm
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (arNerve n) (horn 2 0) (cofiberDiagrams C)
         (curry (mcCarthySpan z A α τ E h))).app (Opposite.op ⦋0⦌)
           (⟨stdSimplex.obj₀Equiv.symm (2 : Fin 3), ha⟩)))
     rw [he, transposeFamily_interval_vertex, mcCarthySpan_left,

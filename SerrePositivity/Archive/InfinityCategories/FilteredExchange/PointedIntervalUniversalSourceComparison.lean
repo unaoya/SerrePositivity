@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedIntervalUniversalPrismComponent
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedParametrizedTransportPointEndpoint
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerCancellation
 
 /-!
 概要：元の指定一点区間の普遍比較を、元の任意の全初期値で制限して同じ比較へ戻す。

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.EquivalencePathFamily
-public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationComparisonProjection
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConstantFunctor
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.TrivialFibrationComparisonProjection
 
 /-!
 概要：可逆矢印の全族を、同じ始点の恒等矢印族へ比較する。
@@ -21,39 +21,39 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.EquivalenceArrowFamily
 variable {A X : SSet.{u}} [Quasicategory X]
   (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
-  (ha : ∀ x, IsEquivalencePathVertex (a.app (Opposite.op ⦋0⦌) x))
+  (ha : ∀ x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsEquivalencePathVertex (a.app (Opposite.op ⦋0⦌) x))
 
-def pathLift : A ⟶ equivalencePath X := fullSubcomplexLift IsEquivalencePathVertex a ha
+def pathLift : A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePath X := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsEquivalencePathVertex a ha
 
-lemma pathLift_inclusion : pathLift a ha ≫ equivalencePathι X = a :=
-  fullSubcomplexLift_ι _ _ _
+lemma pathLift_inclusion : pathLift a ha ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathι X = a :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
-lemma pathLift_source : pathLift a ha ≫ equivalencePathEndpoint X 0 =
-    a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
-  rw [equivalencePathEndpoint, ← Category.assoc, pathLift_inclusion]
+lemma pathLift_source : pathLift a ha ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint X 0 =
+    a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint, ← Category.assoc, pathLift_inclusion]
 
-def sourceRefl : A ⟶ equivalencePath X :=
-  (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫ equivalencePathRefl X
+def sourceRefl : A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePath X :=
+  (a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathRefl X
 
-lemma sameSource : pathLift a ha ≫ equivalencePathEndpoint X 0 =
-    sourceRefl a ≫ equivalencePathEndpoint X 0 := by
-  rw [pathLift_source, sourceRefl, Category.assoc, equivalencePathRefl_endpoint,
+lemma sameSource : pathLift a ha ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint X 0 =
+    sourceRefl a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint X 0 := by
+  rw [pathLift_source, sourceRefl, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathRefl_endpoint,
     Category.comp_id]
 
-def pathComparison : FunctorIso (pathLift a ha) (sourceRefl a) :=
-  functorIsoOfTrivialKanFibration (equivalencePathEndpoint X 0) _ _ (sameSource a ha)
+def pathComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (pathLift a ha) (sourceRefl a) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorIsoOfTrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint X 0) _ _ (sameSource a ha)
 
 lemma pathComparison_source_arrow :
-    Arrow.mk (FunctorIso.postcomp (pathComparison a ha) (equivalencePathEndpoint X 0)).hom =
-      Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex
-        (sourceRefl a ≫ equivalencePathEndpoint X 0)) : hoFunctor.obj ((ihom A).obj X))) :=
-  functorIsoOfTrivialKanFibration_projection_arrow _ _ _ (sameSource a ha)
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp (pathComparison a ha) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint X 0)).hom =
+      Arrow.mk (𝟙 (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
+        (sourceRefl a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint X 0)) : hoFunctor.obj ((ihom A).obj X))) :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorIsoOfTrivialKanFibration_projection_arrow _ _ _ (sameSource a ha)
 
-def comparison : FunctorIso a
-    ((a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫
-      constantFunctorMap (Δ[1] : SSet.{u}) X) := by
-  have e := FunctorIso.postcomp (pathComparison a ha) (equivalencePathι X)
+def comparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso a
+    ((a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap (Δ[1] : SSet.{u}) X) := by
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp (pathComparison a ha) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathι X)
   rw [pathLift_inclusion] at e
-  simpa only [sourceRefl, Category.assoc, equivalencePathRefl_ι, constantFunctorMap] using e
+  simpa only [sourceRefl, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.equivalencePathRefl_ι, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap] using e
 
 end SerrePositivity.KST.LocalizingInvariants.EquivalenceArrowFamily

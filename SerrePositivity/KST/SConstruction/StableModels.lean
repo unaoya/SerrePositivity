@@ -21,7 +21,7 @@ open scoped Simplicial
 structure StableModel where
   carrier : SSet.{u}
   [quasicategory : Quasicategory carrier]
-  [stable : IsStable carrier]
+  [stable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable carrier]
 
 attribute [instance] StableModel.quasicategory StableModel.stable
 

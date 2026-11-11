@@ -21,7 +21,7 @@ open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
 
-lemma ValueSpine.cons_decomposition {X Y : Paths C} (g : FactorTarget.Index W)
+lemma ValueSpine.cons_decomposition {X Y : Paths C} (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)
     (p : valueHomType W X g.val.left) (t : ValueSpine W Y g.val.right) :
     ValueSpine.compose (ValueSpine.nil X p) (ValueSpine.compose (ValueSpine.generator W g) t) =
       ValueSpine.cons X g p t := by

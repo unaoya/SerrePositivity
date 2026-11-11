@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite Hammock
 open scoped Simplicial
-variable (C : RelativeCategory.{u}) {X Y : C.category}
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
 
 def freeResolutionArrowZero (f : X ⟶ Y) :
     freeResolutionObject C (op ⦋0⦌) X ⟶ freeResolutionObject C (op ⦋0⦌) Y :=
@@ -28,7 +28,7 @@ def freeResolutionArrowZero (f : X ⟶ Y) :
     eqToHom (freeResolutionObject_generator C 0 Y).symm
 
 def freeHammockArrowZero (f : X ⟶ Y) : (freeHammockDiagonal C X Y) _⦋0⦌ :=
-  arrowPoint ((freeResolution C).obj (op ⦋0⦌)).weakEquivalences
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint ((freeResolution C).obj (op ⦋0⦌)).weakEquivalences
     (freeResolutionArrowZero C f) (op ⦋0⦌)
 
 lemma freeHammockArrowZero_comparison (f : X ⟶ Y) :
@@ -37,7 +37,7 @@ lemma freeHammockArrowZero_comparison (f : X ⟶ Y) :
   change eqToHom (freeResolutionObject_localized C (op ⦋0⦌) X).symm ≫
       (Zigzag.Value.colimitValue ((freeResolution C).obj (op ⦋0⦌)).weakEquivalences.Q
         ((freeResolution C).obj (op ⦋0⦌)).weakEquivalences.Q_inverts _ _).app (op ⦋0⦌)
-          (arrowPoint _ (freeResolutionArrowZero C f) (op ⦋0⦌)) ≫
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint _ (freeResolutionArrowZero C f) (op ⦋0⦌)) ≫
       eqToHom (freeResolutionObject_localized C (op ⦋0⦌) Y) = localizationArrowZero C f
   rw [Zigzag.Value.colimitValue_arrowPoint]
   dsimp only [freeResolutionArrowZero, localizationArrowZero]

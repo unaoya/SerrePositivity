@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismBoundaryHomotopy
-public import SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.HomotopyBoundaryExtension
 
 /-!
 概要：元実／絶対二胞体と指定三比較側面を一つの実 prism 全境界へ貼る。
@@ -15,13 +15,13 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 
 /-- 概要：元三側面を時刻を第一因子にして保持する同じ実族。
 方針：元境界ホモトピーの因子だけを交換する。
 規約：元の全単体を保持。使われ方：元 prism 全境界の側面。 -/
 def dgOdotMilnorNuNullPrismTimeBoundary (j : Fin 2) :
-    (Δ[1] : SSet.{u + 2}) ⊗ (boundary 2 : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} :=
+    (Δ[1] : SSet.{u + 2}) ⊗ (boundary 2 : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} :=
   (β_ Δ[1] (boundary 2 : SSet.{u + 2})).hom ≫
     (dgOdotMilnorNuNullPrismBoundaryHomotopy R d h j).h
 
@@ -32,20 +32,20 @@ lemma dgOdotMilnorNuNullPrismBoundary_compatible (j : Fin 2) :
     ((boundary 1).ι ▷ (boundary 2 : SSet.{u + 2})) ≫
         dgOdotMilnorNuNullPrismTimeBoundary R d h j =
       ((boundary 1 : SSet.{u + 2}) ◁ (boundary 2).ι) ≫
-        intervalBoundaryDiagram
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram
           (SSet.yonedaEquiv.symm (dgOdotMilnorNuNullTriangle R d j))
           (SSet.yonedaEquiv.symm (dgOdotMilnorNuAbsoluteNullTriangle R d h j)) := by
-  rw [intervalBoundaryDiagram_restrict, intervalBoundaryDiagram_naturality]
-  apply congrArg₂ intervalBoundaryDiagram
-  · change prismEndpoint 0 (boundary 2 : SSet.{u + 2}) ≫
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_restrict, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_naturality]
+  apply congrArg₂ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram
+  · change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (boundary 2 : SSet.{u + 2}) ≫
       (β_ Δ[1] (boundary 2 : SSet.{u + 2})).hom ≫
         (dgOdotMilnorNuNullPrismBoundaryHomotopy R d h j).h = _
-    rw [← Category.assoc, prismEndpoint_zero_braiding]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.prismEndpoint_zero_braiding]
     exact (dgOdotMilnorNuNullPrismBoundaryHomotopy R d h j).h₀
-  · change prismEndpoint 1 (boundary 2 : SSet.{u + 2}) ≫
+  · change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (boundary 2 : SSet.{u + 2}) ≫
       (β_ Δ[1] (boundary 2 : SSet.{u + 2})).hom ≫
         (dgOdotMilnorNuNullPrismBoundaryHomotopy R d h j).h = _
-    rw [← Category.assoc, prismEndpoint_one_braiding]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.prismEndpoint_one_braiding]
     exact (dgOdotMilnorNuNullPrismBoundaryHomotopy R d h j).h₁
 
 /-- 概要：同じ元両二胞体と指定三側面を全て保持する実 prism 全境界。
@@ -53,10 +53,10 @@ lemma dgOdotMilnorNuNullPrismBoundary_compatible (j : Fin 2) :
 規約：元全五面を変更しない。使われ方：指定全境界の内部充填への入口。 -/
 def dgOdotMilnorNuNullPrismFullBoundary (j : Fin 2) :
     (Subcomplex.unionProd (boundary 1) (boundary 2) : SSet.{u + 2}) ⟶
-      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} :=
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} :=
   (Subcomplex.unionProd.isPushout (boundary 1) (boundary 2)).desc
     (dgOdotMilnorNuNullPrismTimeBoundary R d h j)
-    (intervalBoundaryDiagram
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram
       (SSet.yonedaEquiv.symm (dgOdotMilnorNuNullTriangle R d j))
       (SSet.yonedaEquiv.symm (dgOdotMilnorNuAbsoluteNullTriangle R d h j)))
     (dgOdotMilnorNuNullPrismBoundary_compatible R d h j)
@@ -76,7 +76,7 @@ lemma dgOdotMilnorNuNullPrismFullBoundary_side (j : Fin 2) :
 lemma dgOdotMilnorNuNullPrismFullBoundary_ends (j : Fin 2) :
     Subcomplex.unionProd.ι₂ (boundary 1) (boundary 2) ≫
         dgOdotMilnorNuNullPrismFullBoundary R d h j =
-      intervalBoundaryDiagram
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram
         (SSet.yonedaEquiv.symm (dgOdotMilnorNuNullTriangle R d j))
         (SSet.yonedaEquiv.symm (dgOdotMilnorNuAbsoluteNullTriangle R d h j)) :=
   (Subcomplex.unionProd.isPushout (boundary 1) (boundary 2)).inr_desc _ _ _

@@ -31,7 +31,7 @@ structure PointedSequence where
   方針：円との smash からの射で与える。
   規約：任意の点つき射。
   使われ方：BF 1978 §2。 -/
-  sigma : ∀ n, _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (level n) ⟶ level (n + 1)
+  sigma : ∀ n, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (level n) ⟶ level (n + 1)
 
 namespace PointedSequence
 

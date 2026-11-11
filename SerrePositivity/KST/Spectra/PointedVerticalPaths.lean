@@ -33,7 +33,7 @@ lemma uncurry_const_familyVertex {T E : PointedSimplicialSet.{u}} (f : T ⟶ E)
       omega
     rw [hv, ← SSet.yonedaEquiv_comp, Category.id_comp]
     rfl
-  rw [← hk, Category.assoc, pointFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
+  rw [← hk, Category.assoc, pointFamily, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι,
     uncurry_natural_left, uncurry_curry]
   rfl
 
@@ -82,12 +82,12 @@ def ofHomotopy (H : SSet.Homotopy f.right g.right)
       toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ E.hom)
     (hvertical : H.h ≫ p.right = fst T.right (Δ[1] : SSet.{u}) ≫ f.right ≫ p.right) :
     VerticalPath p f g where
-  path := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry T E H.h hbase
+  path := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry T E H.h hbase
   zero := paramCurry_homotopy_zero H hbase
   one := paramCurry_homotopy_one H hbase
   over := by
     apply (cancel_mono (PointedObject.basedHomι T B)).1
-    rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
+    rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι,
       ← curry_natural_right]
     apply uncurry_injective
     rw [uncurry_curry, uncurry_const_familyVertex]

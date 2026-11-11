@@ -26,7 +26,7 @@ variable (A : Type u) [CommRing A]
 /-- 元の共通始域から同じ Map^h への左射も弱ホモトピー同値。 -/
 lemma mappingSpaceIndexAugmentation_isWeakHomotopyEquivalence
     (X Y : (operad A).Algebra) :
-    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (mappingSpaceIndexAugmentation A X Y) :=
   FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (mappingSpaceIndexAugmentation_localized_isIso A X Y)

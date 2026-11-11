@@ -18,9 +18,9 @@ variable (A : Type u) [CommRing A]
 /-- 同じ全 native Kan 入力族を、全完全関手空間に表示する厳密豊穣 Perf 関手。 -/
 def presentedPerfectDGFullEnrichedFunctor :
     EnrichedFunctor SSet.{max (u + 1) v} (PerfDGInput.{u, v} A)
-      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} :=
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{max (u + 1) v} :=
   (presentedPerfectDGEnrichedExactFunctor A).comp SSet
-    (coreEnrichedInclusion _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v})
+    (coreEnrichedInclusion _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{max (u + 1) v})
 
 /-- 元の安定値は、同じラベル付き実 Perf のままである。 -/
 lemma presentedPerfectDGFullEnrichedFunctor_obj (C : PerfDGInput.{u, v} A) :
@@ -35,11 +35,11 @@ lemma presentedPerfectDGFullEnrichedFunctor_map (C D : PerfDGInput.{u, v} A) :
 lemma presentedPerfectDGFullEnrichedFunctor_hom
     {C D : PerfDGInput.{u, v} A} (F : C ⟶ D) :
     eHomEquiv SSet.{max (u + 1) v} F ≫ (presentedPerfectDGFullEnrichedFunctor A).map C D =
-      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv (presentedPerfectDGExactMap A F) := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactHomEquiv (presentedPerfectDGExactMap A F) := by
   change eHomEquiv SSet.{max (u + 1) v} F ≫
     ((presentedPerfectDGEnrichedExactFunctor A).map C D ≫ _) = _
   exact (Category.assoc _ _ _).symm.trans
-    ((congrArg (fun f => f ≫ (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
+    ((congrArg (fun f => f ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors
       (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D) :
         SSet.{max (u + 1) v})).ι) (presentedPerfectDGEnrichedExactFunctor_hom A F)).trans
           (stableExactCoreHomEquiv_inclusion (show presentedPerfectDGStableQCat A C ⟶

@@ -22,20 +22,20 @@ abbrev obj (X : SSet.{v}) [X.Nonsingular] [X.Finite] :=
   colimit (NonsingularPresentation.diagram X ⋙ A)
 
 abbrev homEquiv (X : SSet.{v}) [X.Nonsingular] [X.Finite] (Y : C) :
-    (X ⟶ (cosimplicialHom A).obj Y) ≃ (obj A X ⟶ Y) :=
+    (X ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y) ≃ (obj A X ⟶ Y) :=
   NonsingularPresentation.homEquiv X A Y
 
 abbrev unit (X : SSet.{v}) [X.Nonsingular] [X.Finite] :
-    X ⟶ (cosimplicialHom A).obj (obj A X) := (homEquiv A X (obj A X)).symm (𝟙 _)
+    X ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj (obj A X) := (homEquiv A X (obj A X)).symm (𝟙 _)
 
 lemma homEquiv_naturality (X : SSet.{v}) [X.Nonsingular] [X.Finite] {Y Z : C}
-    (f : X ⟶ (cosimplicialHom A).obj Y) (p : Y ⟶ Z) :
-    homEquiv A X Z (f ≫ (cosimplicialHom A).map p) = homEquiv A X Y f ≫ p :=
+    (f : X ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y) (p : Y ⟶ Z) :
+    homEquiv A X Z (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p) = homEquiv A X Y f ≫ p :=
   HomPresentation.homEquiv_naturality (NonsingularPresentation.diagram X)
     (NonsingularPresentation.cocone X) (NonsingularPresentation.isColimit X) A f p
 
 lemma unit_comp (X : SSet.{v}) [X.Nonsingular] [X.Finite] {Y : C} (f : obj A X ⟶ Y) :
-    unit A X ≫ (cosimplicialHom A).map f = (homEquiv A X Y).symm f := by
+    unit A X ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map f = (homEquiv A X Y).symm f := by
   apply (homEquiv A X Y).injective
   exact (homEquiv_naturality A X (unit A X) f).trans
     ((congrArg (fun g ↦ g ≫ f) ((homEquiv A X (obj A X)).apply_symm_apply (𝟙 _))).trans
@@ -52,7 +52,7 @@ lemma map_comp_homEquiv (h : X ⟶ Y) {W : C} (f : obj A Y ⟶ W) :
     (congrArg (homEquiv A X W) ((Category.assoc _ _ _).trans
       (congrArg (fun g ↦ h ≫ g) (unit_comp A Y f))))
 
-lemma map_comp_homEquiv_apply (h : X ⟶ Y) {W : C} (f : Y ⟶ (cosimplicialHom A).obj W) :
+lemma map_comp_homEquiv_apply (h : X ⟶ Y) {W : C} (f : Y ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj W) :
     map A h ≫ homEquiv A Y W f = homEquiv A X W (h ≫ f) :=
   (map_comp_homEquiv A h _).trans (congrArg (homEquiv A X W)
     (congrArg (fun g ↦ h ≫ g) ((homEquiv A Y W).symm_apply_apply f)))

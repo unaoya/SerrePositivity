@@ -19,29 +19,29 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.ZeroCospan
 
-variable {X : SSet.{u}} [Quasicategory X] [HasZeroVertex X]
+variable {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X]
   (F G : (horn 2 2 : SSet.{u}) ⟶ X)
-  (hF : zeroSecond X (functorVertex F)) (hG : zeroSecond X (functorVertex G))
+  (hF : zeroSecond X (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) (hG : zeroSecond X (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex G))
   (L : (Δ[1] : SSet.{u}) ⟶ X) (hFL : horn₂₂.ι₀₂ ≫ F = L) (hGL : horn₂₂.ι₀₂ ≫ G = L)
 
 structure FirstRelativeIso where
-  iso : FunctorIso F G
+  iso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G
   first_arrow : Arrow.mk (homPre horn₂₂.ι₀₂ iso.hom) =
-    Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex L)))
+    Arrow.mk (𝟙 (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex L)))
 
 include hFL in
 lemma firstVertex_eq : (hoFunctor.map (first X)).toFunctor.obj
-    (HomotopyCategory.mk (vertex F hF)) = HomotopyCategory.mk (functorVertex L) := by
-  change HomotopyCategory.mk (functorVertex (horn₂₂.ι₀₂ ≫ F)) = _
-  exact congrArg (fun k ↦ HomotopyCategory.mk (functorVertex k)) hFL
+    (HomotopyCategory.mk (vertex F hF)) = HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex L) := by
+  change HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (horn₂₂.ι₀₂ ≫ F)) = _
+  exact congrArg (fun k ↦ HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex k)) hFL
 
 def firstRelativeIso : FirstRelativeIso F G L := by
   let T := (hoFunctor.map (first X)).toFunctor
   let hx := firstVertex_eq F hF L hFL
   let hy := firstVertex_eq G hG L hGL
   let e := transportedPreimageIso T (first_isFullyFaithful X).toHoFullyFaithful hx hy
-    (Iso.refl (HomotopyCategory.mk (functorVertex L)))
-  let E : FunctorIso F G := (hoFunctor.map (inclusion X)).toFunctor.mapIso e
+    (Iso.refl (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex L)))
+  let E : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G := (hoFunctor.map (inclusion X)).toFunctor.mapIso e
   refine ⟨E, ?_⟩
   change Arrow.mk (((hoFunctor.map (inclusion X)).toFunctor ⋙
     (hoFunctor.map ((pre horn₂₂.ι₀₂).app X)).toFunctor).map e.hom) = _

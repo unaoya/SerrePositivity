@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：元の core S 実現を取る前の供給側図式。 -/
 def completionClosedSFlagDiagram (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     SimplexCategoryᵒᵖ ⥤ (SimplexCategoryᵒᵖ ⥤ SSet.{u}) :=
   Fibration.Relative.closedFlagSimplicial (completionImageClosedPredicate r ι f hf) ⋙
     simplicialStableEndofunctor.flip ⋙
@@ -34,7 +34,7 @@ def completionClosedSFlagDiagram (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ
 使われ方：相対 fiber 右項の元の実現への接続。 -/
 def completionClosedSFlagDiagramIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionClosedSFlagDiagram r ι f hf ≅
       (completionCokernelHeadIndex r ι ⋙ completionRelativeFlagDiagram (r + 1) f hf).flip :=
   NatIso.ofComponents

@@ -21,7 +21,7 @@ lemma simplexHABeadWordDecode_base_cell {k : ℕ} (i : SerreCubeGeneratorIndex 0
     (v : Fin 1 ↪o Fin (k + 1)) (T : Finset (Fin (k + 1))) (hT : T.Nonempty)
     (hb : ∀ t ∈ T, v (Fin.last 0) < t) :
     HEq (simplexHABeadWordCell A (simplexHABeadWordDecode 0 i v T hT hb))
-      (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v 0) hb)) :=
+      (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v 0) hb)) :=
   simplexHABeadWordCell_reindex A rfl
     (show T.card - 1 = serreCubeGeneratorFreeDimension 0 i + T.card - 1 by
       simp only [serreCubeGeneratorFreeDimension, zero_add]) _
@@ -51,10 +51,10 @@ lemma simplexHABeadWordDecode_cell_standard {k : ℕ} (m : ℕ)
       have hc := serreCubeChainComposition_heq A rfl rfl rfl rfl rfl
         (simplexHABeadWordCell A (simplexHABeadWordDecode m i (Fin.castSuccOrderEmb.trans v)
           {v (Fin.last (m + 1))} (Finset.singleton_nonempty _) (simplexHADecodePrefix_cut m v)))
-        (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb))
+        (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb))
         (simplexHAGeneratorStandardCell A m i (Fin.castSuccOrderEmb.trans v)
           {v (Fin.last (m + 1))} (Finset.singleton_nonempty _) (simplexHADecodePrefix_cut m v))
-        (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb)) hl HEq.rfl
+        (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb)) hl HEq.rfl
       exact (simplexHABeadWordDecode_one_cell A m i v T hT hb).trans
         (hc.trans (simplexHAGeneratorStandardCell_point_one A m i v T hT hb).symm)
     · exact (simplexHABeadWordDecode_edge_cell A m i v T hT hb).trans

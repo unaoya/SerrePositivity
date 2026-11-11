@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：singleton の像と最大元の保存で、閾値以上の最大元を持つ全ての集合を扱う。
 規約：Moss 2020 Lemma 26 (2)。原典の join の計算を最大元の単調性で補う。
 使われ方：pairing の前側の面の複雑度が下がること。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

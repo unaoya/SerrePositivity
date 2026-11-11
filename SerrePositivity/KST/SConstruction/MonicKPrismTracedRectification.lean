@@ -21,34 +21,34 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u}) {x y : I} (f
 /-- 元の適合円柱を指定頂点に制限して実構成した全段の境界補正列。 -/
 def monicKPrismTracedBoundary :=
   canonicalTracedSequenceBoundaryData (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj y))
-    (nervePoint (coherentArrowStringDirect f))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f))
     (fun n => monicKPrismRawLevelFamily n F f)
     (fun n => monicKPrismRawSequenceCompatibility n F f)
 
 /-- 構成した一点上の補正列を保つ、全精密化上の厳密な raw 写像族。 -/
 def monicKPrismTracedRawFamily :=
   prescribedSequenceFamilyRectification (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj y))
-    (nervePoint (coherentArrowStringDirect f))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f))
     (fun n => monicKPrismRawLevelFamily n F f)
     (fun n => monicKPrismRawSequenceCompatibility n F f) (monicKPrismTracedBoundary F f)
 
 /-- 元の補正列から先に選んだ一点上の BF 境界。 -/
 def monicKPrismTracedBFBoundary :=
   (kTracedBoundaryLiftData (F.obj x) (F.obj y)
-    (nervePoint (coherentArrowStringDirect f))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f))
     (fun n => monicKPrismRawLevelFamily n F f)
     (fun n => monicKPrismRawSequenceCompatibility n F f) (monicKPrismTracedBoundary F f)).val
 
 /-- 元の全適合円柱を厳密化し、先に選んだ BF 境界を保持した全精密化族。 -/
 def monicKPrismTracedBFFamily :=
   (kTracedFamilyLiftData (F.obj x) (F.obj y)
-    (nervePoint (coherentArrowStringDirect f))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f))
     (fun n => monicKPrismRawLevelFamily n F f)
     (fun n => monicKPrismRawSequenceCompatibility n F f) (monicKPrismTracedBoundary F f)).val
 
 /-- 全精密化の BF 族は、先に構成した同じ BF 境界を厳密に回収する。 -/
 lemma monicKPrismTracedBFFamily_boundary :
-    nervePoint (coherentArrowStringDirect f) ≫ monicKPrismTracedBFFamily F f =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) ≫ monicKPrismTracedBFFamily F f =
       monicKPrismTracedBFBoundary F f :=
   kTracedFamilyLiftData_boundary _ _ _ _ _ _
 
@@ -65,7 +65,7 @@ lemma monicKPrismTracedBFFamily_evaluation (n : ℕ) :
         (PointedObject.basedHomMap ((kOmegaSpectrum (F.obj x)).level n).space
           ((monicKKanSequenceProjection (F.obj y)).app n)).right =
       (prescribedSequenceFamilyStage (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj y))
-        (nervePoint (coherentArrowStringDirect f))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f))
         (fun n => monicKPrismRawLevelFamily n F f)
         (fun n => monicKPrismRawSequenceCompatibility n F f)
         (monicKPrismTracedBoundary F f) n).val := by
@@ -82,7 +82,7 @@ lemma monicKPrismTracedRawFamily_chain (n : ℕ) :
     (prescribedSequenceFamilyRectification _ _ _ _ _ _ ≫ _))
   rw [prescribedSequenceFamilyRectification_evaluation]
   exact ⟨(prescribedSequenceFamilyStage (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj y))
-    (nervePoint (coherentArrowStringDirect f))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f))
     (fun n => monicKPrismRawLevelFamily n F f)
     (fun n => monicKPrismRawSequenceCompatibility n F f)
     (monicKPrismTracedBoundary F f) n).chain⟩

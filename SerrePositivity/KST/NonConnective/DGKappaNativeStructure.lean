@@ -26,9 +26,9 @@ local instance nativeStructureSpectrumHomKan (X Y : OmegaSpectrum.{w}) :
 variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
 variable (ρ : Sp.{max (u + 1) v}.Edge
-  (coherentNerveVertex (kOmegaSpectrum (stableCategoryModel (dgKappaNativeKernelCategory R D I))))
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum (stableCategoryModel (dgKappaNativeKernelCategory R D I))))
   ((OmegaSpectrum.nativeLoop.{max (u + 1) v}).app (Opposite.op ⦋0⦌)
-    (coherentNerveVertex (kOmegaSpectrum
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
       (stableCategoryModel (dgKappaNativeSuspensionCategory R D I))))))
 
 /-- 概要：同じ実 fibration 辺に条件付きで、元の固定 K の間の実構造辺を作る。
@@ -36,11 +36,11 @@ variable (ρ : Sp.{max (u + 1) v}.Edge
 規約：元の I・P・実商と固定 K の頂点を保持し、既存の条件付き屋根を置換しない。
 使われ方：採用経路による段別構造辺の利用側。 -/
 def dgKappaNativeStructureEdge : Sp.{max (u + 1) v}.Edge
-    (coherentNerveVertex (dgKInputSpectrum R D))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R D))
     ((OmegaSpectrum.nativeLoop.{max (u + 1) v}).app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I)))) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I)))) :=
   SSet.Edge.ofTruncated
-    (((coherentNerveEdge (dgKappaNativeKernelKComparison R D I)).toTruncated.comp ρ.toTruncated).comp
+    (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeKernelKComparison R D I)).toTruncated.comp ρ.toTruncated).comp
       (dgKappaRawSuspensionToFixedLoopEdge R D I).toTruncated)
 
 /-- 概要：同じ実構造辺に対応する実 BF 射。
@@ -54,11 +54,11 @@ def dgKappaNativeStructureMap := SpectrumHo.edgeMap (dgKappaNativeStructureEdge 
 規約：元の実 fibration 辺を含む合成辺の厳密等式。
 使われ方：構造辺と元の実逐次遷移射の照合。 -/
 theorem dgKappaNativeStructureMap_edge :
-    (coherentNerveEdge (dgKappaNativeStructureMap R D I ρ)).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeStructureMap R D I ρ)).edge =
       (dgKappaNativeStructureEdge R D I ρ).edge := SpectrumHo.edgeMap_edge _
 
 variable (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-  F2.Idempotent.IsIdempotentCompletion f.val →
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
     (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
       Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
 
@@ -72,14 +72,14 @@ theorem dgKappaNativeStructureMap_nonnegative
       (SpectrumHo.piMap (Truncated.HomotopyCategory.homMk ρ.toTruncated) j))
     (j : ℤ) (hj : 0 ≤ j) :
     Function.Bijective (OmegaSpectrum.homotopyMap (dgKappaNativeStructureMap R D I ρ) j) := by
-  let a := (coherentNerveEdge (dgKappaNativeKernelKComparison R D I)).toTruncated
+  let a := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeKernelKComparison R D I)).toTruncated
   let b := ρ.toTruncated
   let c := (dgKappaRawSuspensionToFixedLoopEdge R D I).toTruncated
   have ha : Function.Bijective (SpectrumHo.piMap (Truncated.HomotopyCategory.homMk a) j) := by
     rw [SpectrumHo.piMap_edge]
     change Function.Bijective (OmegaSpectrum.homotopyMap
-      (coherentNerveEdgeToHom (coherentNerveEdge (dgKappaNativeKernelKComparison R D I))) j)
-    rw [coherentNerveEdgeToHom_edge]
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeKernelKComparison R D I))) j)
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom_edge]
     exact dgKappaNativeKernelKComparison_piIsomorphism R D I j
   have hc := dgKappaRawSuspensionToFixedLoopEdge_nonnegative R D I hcofinal j hj
   rw [dgKappaNativeStructureMap, ← SpectrumHo.piMap_edge]

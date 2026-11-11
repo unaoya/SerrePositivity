@@ -123,8 +123,8 @@ lemma piZeroLabel_base {b c : Cᵒᵖ × C} (f : b ⟶ c)
   obtain ⟨x, rfl⟩ := SSet.π₀.mk_surjective z
   exact label_base Q f _ x
 
-def kernel : DiagramQuotient.Congruence (OrdinaryResolutionBar.functor (C := C)) :=
-  DiagramQuotient.kernel (augmentation Q)
+def kernel : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.Congruence (OrdinaryResolutionBar.functor (C := C)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.kernel (augmentation Q)
 
 lemma kernel_iff (b : Cᵒᵖ × C) (n : SimplexCategoryᵒᵖ)
     (x y : (OrdinaryResolutionBar.functor.obj b).obj n) :
@@ -136,7 +136,7 @@ lemma kernel_small (b : Cᵒᵖ × C) (n : SimplexCategoryᵒᵖ) :
   have : Small.{v} (((LocalizedHomDiagram.spaces Q ⋙
       SSet.uliftFunctor.{max u v, v}).obj b).obj n) :=
     small_of_injective (f := ULift.down) ULift.down_injective
-  exact DiagramQuotient.kernel_small (augmentation Q) b n
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.kernel_small (augmentation Q) b n
 
 lemma quotient_eq_iff_label_eq (b : Cᵒᵖ × C) (n : SimplexCategoryᵒᵖ)
     (x y : (OrdinaryResolutionBar.functor.obj b).obj n) :
@@ -146,16 +146,16 @@ lemma quotient_eq_iff_label_eq (b : Cᵒᵖ × C) (n : SimplexCategoryᵒᵖ)
     fun h => Quotient.sound ((kernel_iff Q b n x y).mpr h)⟩
 
 /-- Any finer stable relation preserving these labels retains the ordinary class map. -/
-def descend (R : DiagramQuotient.Congruence (OrdinaryResolutionBar.functor (C := C)))
+def descend (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.Congruence (OrdinaryResolutionBar.functor (C := C)))
     (hR : ∀ b n {x y}, (R.rel b n).r x y → label Q b n x = label Q b n y) :
-    DiagramQuotient.functor R ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.functor R ⟶
       LocalizedHomDiagram.spaces Q ⋙ SSet.uliftFunctor.{max u v, v} :=
-  DiagramQuotient.descend R (augmentation Q) (fun b n {_ _} h => ULift.ext (hR b n h))
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.descend R (augmentation Q) (fun b n {_ _} h => ULift.ext (hR b n h))
 
 lemma descend_factorization
-    (R : DiagramQuotient.Congruence (OrdinaryResolutionBar.functor (C := C)))
+    (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.Congruence (OrdinaryResolutionBar.functor (C := C)))
     (hR : ∀ b n {x y}, (R.rel b n).r x y → label Q b n x = label Q b n y) :
-    DiagramQuotient.projection R ≫ descend Q R hR = augmentation Q := rfl
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.projection R ≫ descend Q R hR = augmentation Q := rfl
 
 /-- This is a coarse mapping-class quotient, not the homotopy function complex. -/
 abbrev coarseQuotient : Cᵒᵖ × C ⥤ SSet.{v} :=

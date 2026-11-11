@@ -79,7 +79,7 @@ lemma pointedLiftArrowSpace_isContractibleKan {J : Type v} [Category.{w} J]
     {E B : J ⥤ PointedSimplicialSet.{u}} (p : E ⟶ B)
     (hp : ∀ x, (MorphismProperty.monomorphisms SSet.{u}).rlp (p.app x).right)
     (x : AssemblyInputArrow J) :
-    SerrePositivity.InfinityCategories.IsContractibleKan (pointedLiftArrowSpace p x) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (pointedLiftArrowSpace p x) :=
   pointedLiftSpace_isContractibleKan _ (hp _) _
 
 end SerrePositivity.KST.SConstruction

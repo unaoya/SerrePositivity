@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTriangleRelativeComparison
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.UnstraighteningTriangleVertex
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.UnstraighteningTriangleVertex
 
 /-!
 概要：元の全三角形の指定比較を、同じ三つの全空間実射の比較として保持する。

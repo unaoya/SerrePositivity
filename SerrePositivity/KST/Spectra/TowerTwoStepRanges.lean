@@ -24,8 +24,8 @@ variable (G : ℕ → Type u) [∀ n, Group (G n)] (q : ∀ n, G (n + 1) →* G 
 /-- 隣接する合成遷移は元の遷移。 -/
 lemma transitionLE_step (n : ℕ) (a : G (n + 1)) :
     transitionLE G q n (n + 1) (Nat.le_succ n) a = q n a := by
-  dsimp only [transitionLE, _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition]
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.groupTower_step]
+  dsimp only [transitionLE, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.transition]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.groupTower_step]
   rfl
 
 /-- 次段からの合成遷移の値は、隣接射の後の合成遷移で計算できる。 -/
@@ -35,8 +35,8 @@ lemma transitionLE_step_comp (n m : ℕ) (h : n ≤ m) (a : G (m + 1)) :
   have he : (homOfLE (h.trans (Nat.le_succ m))).op =
       (homOfLE (Nat.le_succ m)).op ≫ (homOfLE h).op := Subsingleton.elim _ _
   dsimp only [transitionLE]
-  rw [he, _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition_comp]
-  have hs : _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition G q (homOfLE (Nat.le_succ m)).op a = q m a :=
+  rw [he, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.transition_comp]
+  have hs : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.transition G q (homOfLE (Nat.le_succ m)).op a = q m a :=
     transitionLE_step G q m a
   rw [hs]
 
@@ -72,7 +72,7 @@ lemma stable_ranges_of_two_step_lifting
 /-- 二段の持ち上げ条件を持つ群の塔は Mittag–Leffler。 -/
 theorem isMittagLeffler_of_two_step_lifting
     (hlift : ∀ m, ∀ a : G (m + 1), ∃ b : G (m + 2), q m (q (m + 1) b) = q m a) :
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.IsMittagLeffler G q := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.IsMittagLeffler G q := by
   apply isMittagLeffler_of_stable_ranges
   intro n
   exact ⟨n + 1, Nat.le_succ n, fun k h ↦ stable_ranges_of_two_step_lifting G q hlift n k h⟩

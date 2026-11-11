@@ -21,7 +21,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite
 open scoped Simplicial
 
-lemma freeResolutionObject_localized (C : RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
+lemma freeResolutionObject_localized (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
     (X : C.category) :
     ((freeResolution C).obj n).weakEquivalences.Q.obj (freeResolutionObject C n X) =
       localizedFreeResolutionObject C n X := by
@@ -31,7 +31,7 @@ lemma freeResolutionObject_localized (C : RelativeCategory.{u}) (n : SimplexCate
   rw [freeResolutionObject_generator, localizedFreeResolutionObject_generator]
   rfl
 
-def freeHammockLocalizationObjects (C : RelativeCategory.{u}) :
+def freeHammockLocalizationObjects (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) :
     Hammock.FixedObjectDiagram.LocalizationObjects (freeResolution C) C.category where
   original := freeResolutionObject C
   original_naturality := fun θ X => freeResolutionObject_naturality C θ X

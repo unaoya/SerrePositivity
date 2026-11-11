@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedIntervalTransportPoint
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedIntervalTransportUniversal
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.VertexIsoEndpointTransport
-public import SerrePositivity.InfinityCategories.F1B.FunctorIsoPointEvaluation
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorIsoPointEvaluation
 
 /-!
 概要：元の区間族の指定点の輸送を、同じ普遍輸送射の指定点での値へ戻す。

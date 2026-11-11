@@ -26,9 +26,9 @@ lemma curry_parameter_square {A B R P Q E F : PointedSimplicialSet.{u}}
     (cA : P ⊗ R ⟶ E) (cB : Q ⊗ R ⟶ F) (p : E ⟶ F)
     (hc : cA ≫ p = s ▷ R ≫ cB) (he : eA ≫ s = i ≫ eB) :
     curry (eA ▷ R ≫ cA) ≫ (ihom A).map p =
-      curry (eB ▷ R ≫ cB) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i F := by
+      curry (eB ▷ R ≫ cB) ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i F := by
   apply uncurry_injective
-  rw [uncurry_natural_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, uncurry_pre_app]
+  rw [uncurry_natural_right, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, uncurry_pre_app]
   simp only [uncurry_curry]
   rw [Category.assoc, hc, ← comp_whiskerRight_assoc, he, comp_whiskerRight, Category.assoc]
 
@@ -38,7 +38,7 @@ variable {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
 /-- BF cotensor の元の段評価は、同じ源パラメータの制限と厳密に可換。 -/
 lemma cotensorEvaluationAt_parameter (X : OmegaSpectrum.{u}) (n : ℕ) :
     CotensorCompatible.evaluationAt A X n ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((cotensorPre i X).app n) (X.level n).space =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((cotensorPre i X).app n) (X.level n).space =
     i ≫ CotensorCompatible.evaluationAt B X n := by
   have h := congrArg PointedMapping.transpose (cotensorPre_comparison i X n)
   have hl := PointedMapping.transpose_pre_outer ((cotensorProjection A X).app n)
@@ -63,7 +63,7 @@ namespace CotensorCompatible
 lemma evaluationPost_parameter (X Y : OmegaSpectrum.{u}) :
     evaluationPost A X Y ≫ (ihom A).map
       (RawSpectrumMapping.pointedPre (cotensorPre i X) Y.toKanSequence) =
-    evaluationPost B X Y ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i
+    evaluationPost B X Y ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i
       (RawSpectrumMapping.pointedSpace (cotensor B X) Y.toKanSequence) := by
   exact curry_parameter_square i (cotensorEvaluation A X) (cotensorEvaluation B X)
     (RawSpectrumMapping.pointedPre (cotensorPre i X) X.toKanSequence)

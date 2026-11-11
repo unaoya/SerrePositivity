@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ReplacedFiberLeg
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.EdgeSquareTransport
 
 /-!
 概要：任意射の元の cospan 上の錐の脚と、元の homotopyFiberInclusion の類の一致。
@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra SerrePositivity.KST.Spectra.OmegaSpectrum
 namespace SerrePositivity.KST.LocalizingInvariants.FiberModel
 
@@ -29,26 +29,26 @@ variable {E B : OmegaSpectrum.{u}} (f : E ⟶ B)
 
 /-- 元の図式上の錐の脚を、元の BF fiber を始域とする射へ戻す。 -/
 def homotopyFiberLeg (i : AsSmall.{u} WalkingCospan) : homotopyFiber f ⟶
-    (spectrumPullbackDiagram f (fromPoint B)).obj i :=
+    (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram f (fromPoint B)).obj i :=
   SpectrumConeLeg.map (homotopyFiberCone f) (homotopyFiberCone_vertex f) i
 
 lemma homotopyFiberTransport_apexEdge :
-    (F2.coneHomotopyApexEdge (homotopyFiberTransport f).homotopy).edge =
-      (coherentNerveEdge (𝟙 (homotopyFiber f))).edge := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneHomotopyApexEdge (homotopyFiberTransport f).homotopy).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 (homotopyFiber f))).edge := by
   have h := StrictConeTransport.apexEdge (CospanReplacement.unit f (fromPoint B))
     (CospanReplacement.unit_isInvertible f (fromPoint B))
     (replacedCone (fibrationReplacementProjection f))
     (replacedCone_isLimit (fibrationReplacementProjection f))
-  change (F2.coneHomotopyApexEdge (homotopyFiberTransport f).homotopy).edge =
-    PinchedHom.constant (replacedCone (fibrationReplacementProjection f)).vertex 1 at h
-  have hv := congrArg (fun v : Sp.{u} _⦋0⦌ ↦ PinchedHom.constant v 1)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneHomotopyApexEdge (homotopyFiberTransport f).homotopy).edge =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (replacedCone (fibrationReplacementProjection f)).vertex 1 at h
+  have hv := congrArg (fun v : Sp.{u} _⦋0⦌ ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant v 1)
     (replacedCone_vertex (fibrationReplacementProjection f))
-  exact h.trans (hv.trans (by rw [coherentNerveEdge_id, pinchedConstant_one]; rfl))
+  exact h.trans (hv.trans (by rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_id, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one]; rfl))
 
 lemma homotopyFiberTransport_diagramEdge (i : AsSmall.{u} WalkingCospan) :
-    (F2.coneHomotopyDiagramEdge (homotopyFiberTransport f).homotopy
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneHomotopyDiagramEdge (homotopyFiberTransport f).homotopy
       (ULift.up (ComposableArrows.mk₀ i))).edge =
-      (coherentNerveEdge ((CospanReplacement.unit f (fromPoint B)).app i)).edge :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((CospanReplacement.unit f (fromPoint B)).app i)).edge :=
   StrictConeTransport.diagramEdge (CospanReplacement.unit f (fromPoint B))
     (CospanReplacement.unit_isInvertible f (fromPoint B))
     (replacedCone (fibrationReplacementProjection f))
@@ -61,20 +61,20 @@ lemma homotopyFiberLeg_unit (i : AsSmall.{u} WalkingCospan) :
       SpectrumHo.hom (replacedLeg (fibrationReplacementProjection f) i) := by
   let G := (homotopyFiberTransport f).homotopy
   let k := ULift.up (ComposableArrows.mk₀ i)
-  have h := F2.coneHomotopy_leg_naturality G k
-  have hs := F2.homMk_square_transport
-    (F2.nativeConeLeg (homotopyFiberCone f) k) (F2.coneHomotopyDiagramEdge G k)
-    (F2.coneHomotopyApexEdge G)
-    (F2.nativeConeLeg (replacedCone (fibrationReplacementProjection f)) k)
-    (coherentNerveEdge (homotopyFiberLeg f i)).toTruncated
-    (coherentNerveEdge ((CospanReplacement.unit f (fromPoint B)).app i)).toTruncated
-    (coherentNerveEdge (𝟙 (homotopyFiber f))).toTruncated
-    (coherentNerveEdge (replacedLeg (fibrationReplacementProjection f) i)).toTruncated
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneHomotopy_leg_naturality G k
+  have hs := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.homMk_square_transport
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg (homotopyFiberCone f) k) (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneHomotopyDiagramEdge G k)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneHomotopyApexEdge G)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg (replacedCone (fibrationReplacementProjection f)) k)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (homotopyFiberLeg f i)).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((CospanReplacement.unit f (fromPoint B)).app i)).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 (homotopyFiber f))).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (replacedLeg (fibrationReplacementProjection f) i)).toTruncated
     h (homotopyFiberCone_vertex f)
-    (strictCoherentDiagram_vertex (spectrumPullbackDiagram f (fromPoint B)) i)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram_vertex (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram f (fromPoint B)) i)
     (replacedCone_vertex (fibrationReplacementProjection f))
-    (strictCoherentDiagram_vertex
-      (spectrumPullbackDiagram (fibrationReplacementProjection f) (fromPoint B)) i)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram_vertex
+      (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram (fibrationReplacementProjection f) (fromPoint B)) i)
     (SpectrumConeLeg.map_edge _ _ i).symm (homotopyFiberTransport_diagramEdge f i)
     (homotopyFiberTransport_apexEdge f) (SpectrumConeLeg.map_edge _ _ i).symm
   change SpectrumHo.hom (homotopyFiberLeg f i) ≫

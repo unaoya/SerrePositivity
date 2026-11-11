@@ -38,7 +38,7 @@ lemma spectrumHom_hornLift (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
       l ≫ ((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op X)).map p = b := by
   obtain ⟨f, ha, hb, hf⟩ := spectrumHom_hornFamily X p j hj a b h
   let l := TruncatedMapping.familyLift (fun n ↦ (X.level n).space)
-    (fun n ↦ (Y.level n).space) (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    (fun n ↦ (Y.level n).space) (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
     X.sigma (OmegaSpectrum.mappingStep X Y) f hf
   have hl (n : ℕ) : l ≫ OmegaSpectrum.evaluation X Y n = f n :=
     TruncatedMapping.familyLift_evaluation _ _ _ _ _ f hf n
@@ -73,14 +73,14 @@ instance spectrumHomMap_fibration (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{
 使われ方：HTT 4.2.4.1 の双対、BF 1978 §2、HA §1.4.2、γ3c の Sp の引き戻し。 -/
 lemma spectrumPullbackInfinityCone_isLimit {E X B : OmegaSpectrum.{u}}
     (f : E ⟶ B) (g : X ⟶ B) [∀ n, Fibration (f.app n).right] :
-    IsLimitCone (spectrumPullbackInfinityCone f g) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (spectrumPullbackInfinityCone f g) := by
   have : ∀ Z : OmegaSpectrum.{u}, Fibration
-      ((simplicialHomDiagram (spectrumPullbackDiagram f g) Z).map
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (spectrumPullbackDiagram f g) Z).map
         (AsSmall.up.map WalkingCospan.Hom.inl)) := fun Z ↦ by
     change Fibration
       (((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op Z)).map f)
     exact spectrumHomMap_fibration Z f
-  exact strictCoherentCone_isLimit_of_cospan_homLimit (spectrumPullbackCone f g)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_cospan_homLimit (spectrumPullbackCone f g)
     (spectrumPullbackCone_hom_isLimit f g)
 
 end

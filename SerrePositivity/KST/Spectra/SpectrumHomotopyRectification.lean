@@ -56,9 +56,9 @@ theorem rectifyInto_projection (n : ℕ) :
 方針：厳密化のホモトピー不変性と標的の cofibrant 比較の同型性を使う。
 規約：零次数を含む全ての基点。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。実際のスペクトルの比較射の検査。 -/
-theorem rectifyInto_levelwise (hpi : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f n).right) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((rectifyInto X Y hY f hf).app n).right := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((Y.cofibrantOmegaProjection hY).app n).right) _
+theorem rectifyInto_levelwise (hpi : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f n).right) (n : ℕ) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((rectifyInto X Y hY f hf).app n).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := ((Y.cofibrantOmegaProjection hY).app n).right) _
     (Y.replacementProjection_piIsomorphism n)
   have h := congrArg Under.Hom.right (rectifyInto_projection X Y hY f hf n)
   change ((rectifyInto X Y hY f hf).app n).right ≫
@@ -71,7 +71,7 @@ theorem rectifyInto_levelwise (hpi : ∀ n, _root_.SerrePositivity.InfinityCateg
 方針：各段での同型性を整数次数へ移す。
 規約：全整数次数の群の同型性。
 使われ方：BF 1978 §2、HA §1.4.2。次数移動の実際のスペクトルの比較。 -/
-theorem rectifyInto_piIsomorphism (hpi : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f n).right) :
+theorem rectifyInto_piIsomorphism (hpi : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f n).right) :
     PiIsomorphism (rectifyInto X Y hY f hf) :=
   piIsomorphism_of_levelwise _ (rectifyInto_levelwise X Y hY f hf hpi)
 

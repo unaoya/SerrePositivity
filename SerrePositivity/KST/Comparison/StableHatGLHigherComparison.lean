@@ -50,15 +50,15 @@ instance monoidBarKanConnected (M : SimplicialObject MonCat.{u}) :
 使われ方：分類空間の一つ上の次数の群の計算。
 -/
 def stableHatGLCoefficientHomotopyIso (A : SimplicialObject RingCat.{u}) (n : ℕ) :
-    GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (monoidSpace (stableHatGL A)) n
+    GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (monoidSpace (stableHatGL A)) n
         (monoidPointed (stableHatGL A)).basepoint) ≅
       stableCoefficientMatrices
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))) :=
   (stableHatGLHomotopyGroupColimitIso A n).symm ≪≫
     HasColimit.isoOfNatIso (hatGLRankCoefficientIso A n) ≪≫
       Functor.Final.colimitIso liftedRankEquivalence.functor
         (coefficientMatrixRankSequence
-          (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))))
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))))
 
 /--
 概要：安定 ĜL の正次数の群と安定係数行列群の乗法同値。
@@ -67,10 +67,10 @@ def stableHatGLCoefficientHomotopyIso (A : SimplicialObject RingCat.{u}) (n : �
 使われ方：KST Lemma 2.13 の高次の群の同定。
 -/
 def stableHatGLCoefficientHomotopyMulEquiv (A : SimplicialObject RingCat.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (monoidSpace (stableHatGL A)) n
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (monoidSpace (stableHatGL A)) n
         (monoidPointed (stableHatGL A)).basepoint ≃*
       stableCoefficientMatrices
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))) :=
   (stableHatGLCoefficientHomotopyIso A n).groupIsoToMulEquiv
 
 /--
@@ -81,7 +81,7 @@ def stableHatGLCoefficientHomotopyMulEquiv (A : SimplicialObject RingCat.{u}) (n
 -/
 def lemma_2_13_pi_one (A : SimplicialObject RingCat.{u}) :
     stableGeneralLinear (π₀ (ringSpace A)) ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (monoidBarKanPointed (stableHatGL A)).right 0
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (monoidBarKanPointed (stableHatGL A)).right 0
         (monoidBarKanPointed (stableHatGL A)).basepoint :=
   stableHatGLBarFundamentalMulEquiv A
 
@@ -92,10 +92,10 @@ def lemma_2_13_pi_one (A : SimplicialObject RingCat.{u}) :
 使われ方：KST §2 の比較定理と plus 構成への入力。
 -/
 def lemma_2_13_higher (A : SimplicialObject RingCat.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (monoidBarKanPointed (stableHatGL A)).right (n + 1)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (monoidBarKanPointed (stableHatGL A)).right (n + 1)
         (monoidBarKanPointed (stableHatGL A)).basepoint ≃*
       stableCoefficientMatrices
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌))) :=
   (stableHatGLBarPositiveHomotopyMulEquiv A n).symm.trans
     (stableHatGLCoefficientHomotopyMulEquiv A n)
 

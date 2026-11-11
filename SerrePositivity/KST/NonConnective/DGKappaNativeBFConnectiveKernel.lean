@@ -25,14 +25,14 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
 variable
   (V : SSet.Homotopy
-    (squareTriangle 0 ≫ verdierFullSTransportedSquare.{max (u + 1) v}
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ verdierFullSTransportedSquare.{max (u + 1) v}
       (dgKappaNativeVerdierDiagram R D I))
-    (squareTriangle 0 ≫ quotientSKernelFullInfinitySquare.{max (u + 1) v}
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ quotientSKernelFullInfinitySquare.{max (u + 1) v}
       (dgKappaNativeVerdierDiagram R D I).isVerdier))
   (hdiag : (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{max (u + 1) v + 1})) ≫ V.h =
     (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{max (u + 1) v + 1})) ≫
       (verdierFullSLowerDeformation.{max (u + 1) v} (dgKappaNativeVerdierDiagram R D I)).h)
-  (hV : ∀ k, IsInvertibleEdge (simplicialHomotopyVertexEdge V k).toTruncated)
+  (hV : ∀ k, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge V k).toTruncated)
 
 
 variable (hBF : dgKappaNativeBFSquareComparison R D I)
@@ -52,7 +52,7 @@ theorem dgKappaNativeBFFiber_nonnegative_of_kernel
     (dgKappaNativeFullSSquare_isPullback R D I V hdiag hV hstage) j hj
 
 variable (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-    F2.Idempotent.IsIdempotentCompletion f.val →
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
       (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
         Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
   (Z : DGKappaZeroInput R D I)

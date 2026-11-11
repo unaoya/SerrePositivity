@@ -17,21 +17,21 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の厳密区間の全内部頂点を使う、元の HA 実 Hom 鎖射。 -/
-def simplexHAIntervalChainLift {N : ℕ} (s : DGNerve.Simplex A D N)
+def simplexHAIntervalChainLift {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (a b : Fin (N + 1)) (hab : a < b) :
     serreCubeComplex A (b.val - a.val - 1) ⟶ homObject A D (s.obj a) (s.obj b) :=
   simplexHAChainLift A s (b.val - a.val - 1) (simplexHAStrictIntervalOrder a b hab) b
     (simplexHAStrictIntervalOrder_last_lt a b hab)
 
 /-- 元の厳密区間の Λ Hom から、元の HA 値を保つ実 Hom 鎖射を得る。 -/
-def simplexHAIntervalHomMap {N : ℕ} (s : DGNerve.Simplex A D N)
+def simplexHAIntervalHomMap {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (a b : Fin (N + 1)) (hab : a < b) :
     homObject A (CubicalLambda A (Δ[N] : SSet.{u}))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) ⟶ homObject A D (s.obj a) (s.obj b) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) ⟶ homObject A D (s.obj a) (s.obj b) :=
   (simplexIntervalLambdaHomIso A a b hab.le).inv ≫ simplexHAIntervalChainLift A s a b hab
 
 /-- 元の厳密区間の Hom 同型への制限は、元の同じ HA 実鎖射を厳密に回収する。 -/
-lemma simplexHAIntervalHomMap_restrict {N : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHAIntervalHomMap_restrict {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (a b : Fin (N + 1)) (hab : a < b) :
     (simplexIntervalLambdaHomIso A a b hab.le).hom ≫ simplexHAIntervalHomMap A s a b hab =
       simplexHAIntervalChainLift A s a b hab := by
@@ -40,7 +40,7 @@ lemma simplexHAIntervalHomMap_restrict {N : ℕ} (s : DGNerve.Simplex A D N)
       (simplexIntervalLambdaHomIso A a b hab.le).hom_inv_id).trans (Category.id_comp _))
 
 /-- 元の厳密区間の逆 Hom 鎖射は、元の厳密 dg 後合成と可換。 -/
-lemma simplexHAIntervalHomMap_post {N : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHAIntervalHomMap_post {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     {E : Type w} [DGCategory A E] (F : DGFunctor A D E)
     (a b : Fin (N + 1)) (hab : a < b) :
     simplexHAIntervalHomMap A (s.map F) a b hab =

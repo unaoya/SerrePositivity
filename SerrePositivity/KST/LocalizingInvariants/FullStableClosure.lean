@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Exact.FullStableClosure
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.FullStableClosure
 
 public import SerrePositivity.KST.LocalizingInvariants.FullSubcomplexSquares
-public import SerrePositivity.InfinityCategories.Stable.ExactFunctor
-public import SerrePositivity.InfinityCategories.Stable.InitialTransport
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.ExactFunctor
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.InitialTransport
 
 /-!
 概要：零対象・fiber・cofiber に閉じた頂点条件の全部分圏は安定。
@@ -24,44 +24,44 @@ namespace SerrePositivity.KST.LocalizingInvariants
 namespace FullSubcomplex
 variable {X : SSet.{u}} (P : X _⦋0⦌ → Prop)
 
-variable [Quasicategory X] [IsStable X] (hP : _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition P)
+variable [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] (hP : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.StableVertexCondition P)
 
 /-- 部分圏は周囲の選んだ零対象を含む。 -/
-def zeroVertex : ZeroVertex (fullSubcomplexOnVertices X P : SSet.{u}) where
-  vertex := _root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.vertex P (chosenZeroVertex X).vertex (hP.zero _ (chosenZeroVertex X).isZero)
-  isInitial := (reflects_zero P _ (chosenZeroVertex X).isZero).1
-  isTerminal := (reflects_zero P _ (chosenZeroVertex X).isZero).2
+def zeroVertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}) where
+  vertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.FullSubcomplex.vertex P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).vertex (hP.zero _ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero)
+  isInitial := (reflects_zero P _ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero).1
+  isTerminal := (reflects_zero P _ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero).2
 
 include hP
 
-lemma inclusion_preservesZero : PreservesZeroVertices (fullSubcomplexOnVertices X P).ι := by
+lemma inclusion_preservesZero : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesZeroVertices (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι := by
   intro x hx
   let z := zeroVertex P hP
-  let e := terminalVertexIso hx.2 z.isTerminal
-  exact (chosenZeroVertex X).isZero.of_vertexIso
-    (VertexIso.map e (fullSubcomplexOnVertices X P).ι).symm
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.terminalVertexIso hx.2 z.isTerminal
+  exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero.of_vertexIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι).symm
 
-variable {x y : (fullSubcomplexOnVertices X P : SSet.{u}) _⦋0⦌}
+variable {x y : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}) _⦋0⦌}
   (f : Truncated.Edge (X := (truncation 2).obj
-    (fullSubcomplexOnVertices X P : SSet.{u})) x y)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u})) x y)
 
 /-- 閉性から元の全部分複体の安定性を導く。 -/
-theorem isStable : IsStable (fullSubcomplexOnVertices X P : SSet.{u}) := by
-  have : HasZeroVertex (fullSubcomplexOnVertices X P : SSet.{u}) := ⟨⟨(zeroVertex P hP).vertex,
+theorem isStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}) := by
+  have : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}) := ⟨⟨(zeroVertex P hP).vertex,
     (zeroVertex P hP).isZero⟩⟩
-  apply isStable_of_bicartesian_choices
+  apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isStable_of_bicartesian_choices
   · intro x y f
-    let s := chosenFiberSquare (f.map ((truncation 2).map (fullSubcomplexOnVertices X P).ι))
-    refine ⟨fiberLift P f s (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.fiber_vertices P hP f s), reflects_pushout P _ ?_⟩
-    change IsPushoutSquare (squareLift P s.square (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.fiber_vertices P hP f s) ≫ _)
+    let s := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenFiberSquare (f.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι))
+    refine ⟨fiberLift P f s (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.FullSubcomplex.fiber_vertices P hP f s), reflects_pushout P _ ?_⟩
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (squareLift P s.square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.FullSubcomplex.fiber_vertices P hP f s) ≫ _)
     rw [squareLift_ι]
-    exact IsStable.pushout_of_pullback s.toZeroTriangle s.isPullback
+    exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable.pushout_of_pullback s.toZeroTriangle s.isPullback
   · intro x y f
-    let s := chosenCofiberSquare (f.map ((truncation 2).map (fullSubcomplexOnVertices X P).ι))
-    refine ⟨cofiberLift P f s (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.cofiber_vertices P hP f s), reflects_pullback P _ ?_⟩
-    change IsPullbackSquare (squareLift P s.square (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.cofiber_vertices P hP f s) ≫ _)
+    let s := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberSquare (f.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι))
+    refine ⟨cofiberLift P f s (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.FullSubcomplex.cofiber_vertices P hP f s), reflects_pullback P _ ?_⟩
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (squareLift P s.square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.FullSubcomplex.cofiber_vertices P hP f s) ≫ _)
     rw [squareLift_ι]
-    exact IsStable.pullback_of_pushout s.toZeroTriangle s.isPushout
+    exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable.pullback_of_pushout s.toZeroTriangle s.isPushout
 
 end FullSubcomplex
 end SerrePositivity.KST.LocalizingInvariants

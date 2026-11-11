@@ -12,6 +12,8 @@ public import Mathlib.Algebra.Category.ModuleCat.Colimits
 方針：通常の全複体の各直和成分 i+j=n について、少なくとも片方の写像が零であることを使う。
 規約：KST Construction A.5、非被約複体の差に適用する。スペクトル系列を使わない。
 使われ方：正規化した二つの差のテンソルの消滅と augmentation 補正式。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

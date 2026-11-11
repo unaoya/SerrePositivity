@@ -29,19 +29,19 @@ open scoped _root_.Simplicial
 theorem freeStandardPrependNormalForm_action {n d r : ℕ} (θ : ⦋r⦌ ⟶ ⦋d⦌)
     (p : FatNormalForm (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋d⦌)) :
     freeDegeneraciesNormalForm (Δ[n] : SSet.{u}) (op ⦋r + 1⦌)
-      ((freeDegeneracies.obj (Δ[n] : SSet.{u})).map (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ).op
+      ((freeDegeneracies.obj (Δ[n] : SSet.{u})).map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend θ).op
         (fatNormalFormRealize _ _ (freeStandardPrependNormalForm p))) =
       freeStandardPrependNormalForm
         (freeDegeneraciesNormalForm (Δ[n] : SSet.{u}) (op ⦋r⦌)
           ((freeDegeneracies.obj (Δ[n] : SSet.{u})).map θ.op (fatNormalFormRealize _ _ p))) := by
   rw [freeDegeneraciesNormalForm_action, freeDegeneraciesNormalForm_action]
   change fatNormalize (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋r + 1⦌)
-    (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (SSet.stdSimplex.objEquiv p.simplex)))
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend p.epi) =
+    (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero (SSet.stdSimplex.objEquiv p.simplex)))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend θ ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend p.epi) =
     freeStandardPrependNormalForm
       (fatNormalize (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋r⦌)
         p.simplex (θ ≫ p.epi))
-  rw [← _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_comp]
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_comp]
   exact freeStandardPrepend_normalize p.simplex (θ ≫ p.epi)
 
 end SerrePositivity.KST.Comparison

@@ -21,12 +21,12 @@ namespace SerrePositivity.EInfinity.Hammock.FreeQuiverCover
 open CategoryTheory SerrePositivity.InfinityCategories
 
 lemma hammockValue_isWeakHomotopyEquivalence {Q : Type u} [Quiver.{v} Q]
-    (A : Q) (Y : Paths Q) : IsWeakHomotopyEquivalence (hammockValue A Y) :=
+    (A : Q) (Y : Paths Q) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (hammockValue A Y) :=
   ValueSupport.weak_of_contractible_fibers _ (hammockValueFiber_isWeaklyContractible A Y)
 
 lemma existingHammockValue_isWeakHomotopyEquivalence {Q : Type u} [Quiver.{u} Q]
-    (A : Q) (Y : Paths Q) : IsWeakHomotopyEquivalence
-      (Zigzag.Value.colimitValue positiveEvaluation positiveEvaluation_inverts_top
+    (A : Q) (Y : Paths Q) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
+      (Zigzag.Value.colimitValue _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation_inverts_top
         ((Paths.of Q).obj A) Y) :=
   ValueSupport.weak_of_contractible_fibers _
     (existingHammockValueFiber_isWeaklyContractible A Y)

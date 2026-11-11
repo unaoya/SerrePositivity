@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentCutSpanFamilies
 public import SerrePositivity.KST.SConstruction.KPrismPathDecoding
-public import SerrePositivity.InfinityCategories.F1.Coherent.MapSmallness
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.MapSmallness
 
 /-! # 元の K prism の Kan な終点での二切断族の相対合成
 概要：元の prism の終点が上段にある場合、二切断円柱の相対合成を追加の Kan 仮定なしで作る。
@@ -25,16 +25,16 @@ local instance kPrismCutSpanFamilies_pointed_simplicialCategory :
 lemma kKanOriginalPrism_top_object {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {n : ℕ} (s : (nerve I) _⦋n⦌)
     (a : (Δ[n] : SSet.{u + 1}) _⦋0⦌) :
-    coherentNerveObject ((kKanOriginalSuspensionPrism r F s).app (Opposite.op ⦋0⦌)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject ((kKanOriginalSuspensionPrism r F s).app (Opposite.op ⦋0⦌)
       (a, SSet.stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
       ((kKanSequence (F.obj (s.obj (a 0)))).level (r + 1)).space := by
-  have h := congrArg coherentNerveObject (ConcreteCategory.congr_hom
+  have h := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (ConcreteCategory.congr_hom
     (NatTrans.congr_app (kKanOriginalSuspensionPrism_vertex r F s a)
       (Opposite.op ⦋0⦌)) (SSet.stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
   have he : (SSet.yonedaEquiv.symm
-      (coherentNerveEdge ((kKanSequence (F.obj (s.obj (a 0)))).sigma r)).edge).app
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((kKanSequence (F.obj (s.obj (a 0)))).sigma r)).edge).app
       (Opposite.op ⦋0⦌) (SSet.stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-      coherentNerveVertex ((kKanSequence (F.obj (s.obj (a 0)))).level (r + 1)).space := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((kKanSequence (F.obj (s.obj (a 0)))).level (r + 1)).space := by
     have ht : SSet.stdSimplex.objEquiv
         (SSet.stdSimplex.obj₀Equiv.symm (1 : Fin 2) :
           (Δ[1] : SSet.{u + 1}) _⦋0⦌) = SimplexCategory.δ (0 : Fin 2) := by
@@ -42,17 +42,17 @@ lemma kKanOriginalPrism_top_object {I : Type u} [SmallCategory I]
       fin_cases t
       rfl
     rw [SSet.yonedaEquiv_symm_app, ht]
-    exact (coherentNerveEdge ((kKanSequence (F.obj (s.obj (a 0)))).sigma r)).tgt_eq
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((kKanSequence (F.obj (s.obj (a 0)))).sigma r)).tgt_eq
   have hc : (SSet.const a : (Δ[1] : SSet.{u + 1}) ⟶ Δ[n]).app
       (Opposite.op ⦋0⦌) (SSet.stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = a := by
     simp only [SSet.const_app, SimplexCategory.const_eq_id, op_id,
       CategoryTheory.Functor.map_id_apply]
     rfl
-  change coherentNerveObject ((kKanOriginalSuspensionPrism r F s).app _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject ((kKanOriginalSuspensionPrism r F s).app _
     ((SSet.const a).app _ (SSet.stdSimplex.obj₀Equiv.symm (1 : Fin 2)),
       SSet.stdSimplex.obj₀Equiv.symm (1 : Fin 2))) = _ at h
   rw [hc] at h
-  exact h.trans (congrArg coherentNerveObject he)
+  exact h.trans (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject he)
 
 /-- 元の prism の高次単体の上段にある頂点は、元の Kan 段の対象を回収する。 -/
 lemma kKanPrism_top_simplex_object {I : Type u} [SmallCategory I]
@@ -61,7 +61,7 @@ lemma kKanPrism_top_simplex_object {I : Type u} [SmallCategory I]
     (hp : p.2 k = 1) :
     ((kKanOriginalSuspensionPrism r F s).app _ p).obj (.mk (ULift.up k)) =
       ((kKanSequence (F.obj (s.obj (p.1 k)))).level (r + 1)).space := by
-  rw [coherentMap_simplex_obj]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentMap_simplex_obj]
   let θ := SimplexCategory.const ⦋0⦌ ⦋m⦌ k
   have ht : (Δ[1] : SSet.{u + 1}).map θ.op p.2 =
       SSet.stdSimplex.obj₀Equiv.symm (1 : Fin 2) := by
@@ -69,7 +69,7 @@ lemma kKanPrism_top_simplex_object {I : Type u} [SmallCategory I]
     intro t
     fin_cases t
     exact hp
-  change coherentNerveObject ((kKanOriginalSuspensionPrism r F s).app _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject ((kKanOriginalSuspensionPrism r F s).app _
     ((Δ[n] : SSet.{u + 1}).map θ.op p.1, (Δ[1] : SSet.{u + 1}).map θ.op p.2)) = _
   rw [ht, kKanOriginalPrism_top_object]
   rfl
@@ -86,7 +86,7 @@ lemma kKanPrism_top_hom_kanComplex {I : Type u} [SmallCategory I]
       ((((kKanOriginalSuspensionPrism r F s).app _ p).obj (.mk (ULift.up k))).right) := by
     rw [kKanPrism_top_simplex_object r F s p k hp]
     infer_instance
-  exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 上段で終わる元の高次 prism の二切断円柱を、元の共通合成面を固定して合成する。 -/
 def kKanPrismCutSpanComposite {I : Type u} [SmallCategory I]

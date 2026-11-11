@@ -71,7 +71,7 @@ theorem pointFamily_closed {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
       PointedSimplicialSet.unitUnderlyingHom (PointedObject.basedHom X Y)
         (MonoidalClosed.curry' f) := by
   apply (cancel_mono (PointedObject.basedHomι X Y)).mp
-  rw [pointFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι]
+  rw [pointFamily, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι]
   dsimp only [PointedSimplicialSet.unitUnderlyingHom, PointedObject.adjoinHomEquiv,
     Equiv.coe_fn_mk, MonoidalClosed.curry']
   rw [curry_eq_smashCurry, Category.assoc, Category.assoc, PointedObject.smashCurry_ι]

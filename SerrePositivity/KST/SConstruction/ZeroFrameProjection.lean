@@ -21,20 +21,20 @@ open scoped Simplicial
 def IsZeroFrameVertex {n : ℕ} {C : SSet.{u}}
     (v : ((ihom (frameNerve n)).obj C) _⦋0⦌) : Prop :=
   ∀ x : (frameNerve n) _⦋0⦌, IsDiagonal (nerveEquiv x).val →
-    IsZeroVertex ((evaluateFunctorAt x).app (Opposite.op ⦋0⦌) v)
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt x).app (Opposite.op ⦋0⦌) v)
 
 /-- 概要：零対角を持つ全ての枠の図式。
 方針：内部 Hom の全部分複体。
 規約：零対象は固定せず動かす。使われ方：第一行制限の中間図式圏。 -/
 def zeroFrameDiagrams (n : ℕ) (C : SSet.{u}) : SSet.{u} :=
-  (fullSubcomplexOnVertices ((ihom (frameNerve n)).obj C) IsZeroFrameVertex : SSet.{u})
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices ((ihom (frameNerve n)).obj C) IsZeroFrameVertex : SSet.{u})
 
 /-- 概要：零対角を持つ枠から第一行への制限。
 方針：全部分複体の包含の後で前合成する。
 規約：第一行は枠内の充満部分複体。使われ方：零対角の選択を忘れる射影。 -/
 def zeroFrameProjection (n : ℕ) (C : SSet.{u}) :
     zeroFrameDiagrams n C ⟶ (ihom (framePositiveRow n : SSet.{u})).obj C :=
-  (fullSubcomplexOnVertices _ IsZeroFrameVertex).ι ≫ (pre (framePositiveRow n).ι).app C
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsZeroFrameVertex).ι ≫ (pre (framePositiveRow n).ι).app C
 
 /-- 概要：対角は正の第一行に属さない。
 方針：左端零と端点の等号は右端の正性に矛盾する。
@@ -51,18 +51,18 @@ lemma diagonal_not_mem_framePositiveRow {n : ℕ} (x : (frameNerve.{u} n) _⦋0�
     (hd : IsDiagonal (nerveEquiv x).val) :
     x ∉ (framePositiveRow n).obj (Opposite.op ⦋0⦌) := by
   intro hx
-  exact diagonal_not_positiveRow hd (fullSubcomplexOnVertices_vertex ⟨x, hx⟩)
+  exact diagonal_not_positiveRow hd (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex ⟨x, hx⟩)
 
 /-- 概要：任意の第一行は零対角を持つ枠に延長できる。
 方針：既存頂点の像を保ち、対角に零対象を指定して混合端点延長を使う。
 規約：値域の quasicategory 性は不要。使われ方：零次元の持ち上げ。 -/
-lemma exists_zeroFrame_extension {C : SSet.{u}} [HasZeroVertex C] (n : ℕ)
+lemma exists_zeroFrame_extension {C : SSet.{u}} [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] (n : ℕ)
     (f : (framePositiveRow n : SSet.{u}) ⟶ C) :
     ∃ F : frameNerve n ⟶ C, (framePositiveRow n).ι ≫ F = f ∧
       ∀ x : (frameNerve n) _⦋0⦌, IsDiagonal (nerveEquiv x).val →
-        IsZeroVertex (F.app (Opposite.op ⦋0⦌) x) := by
+        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x) := by
   classical
-  let z := chosenZeroVertex C
+  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C
   let x : (frameNerve n) _⦋0⦌ → C _⦋0⦌ := fun v ↦
     if h : v ∈ (framePositiveRow n).obj (Opposite.op ⦋0⦌) then
       f.app (Opposite.op ⦋0⦌) ⟨v, h⟩ else z.vertex
@@ -75,7 +75,7 @@ lemma exists_zeroFrame_extension {C : SSet.{u}} [HasZeroVertex C] (n : ℕ)
       x v = z.vertex := by
     dsimp [x]
     rw [dite_eq_right (diagonal_not_mem_framePositiveRow v hd)]
-  obtain ⟨F, hF, hv⟩ := exists_extension_with_vertices (framePositiveRow n) f x hx (by
+  obtain ⟨F, hF, hv⟩ := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.exists_extension_with_vertices (framePositiveRow n) f x hx (by
     intro m s hs
     rcases frameNerve_diagonal_endpoint s hs with hi | ht
     · rw [hxd _ hi]
@@ -91,24 +91,24 @@ lemma exists_zeroFrame_extension {C : SSet.{u}} [HasZeroVertex C] (n : ℕ)
 方針：零次元は零頂点を指定した延長、正次元は枠の境界延長で充填する。
 規約：HasZeroVertex だけを要求し、cofiber 条件はまだ課さない。
 使われ方：第一行から gapped 図式を復元する第一段階。 -/
-instance zeroFrameProjection_trivialKanFibration (n : ℕ) (C : SSet.{u}) [HasZeroVertex C] :
-    TrivialKanFibration (zeroFrameProjection n C) := by
-  apply (trivialKanFibration_iff_boundary _).2
+instance zeroFrameProjection_trivialKanFibration (n : ℕ) (C : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (zeroFrameProjection n C) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).2
   intro d
   constructor
   intro a b sq
   let ι : zeroFrameDiagrams n C ⟶ (ihom (frameNerve n)).obj C :=
-    (fullSubcomplexOnVertices _ IsZeroFrameVertex).ι
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsZeroFrameVertex).ι
   cases d with
   | zero =>
-    let f := (functorVertexEquiv (framePositiveRow n : SSet.{u}) C).symm (SSet.yonedaEquiv b)
+    let f := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (framePositiveRow n : SSet.{u}) C).symm (SSet.yonedaEquiv b)
     obtain ⟨F, hF, hz⟩ := exists_zeroFrame_extension n f
-    let v : (zeroFrameDiagrams n C) _⦋0⦌ := ⟨functorVertex F, by
+    let v : (zeroFrameDiagrams n C) _⦋0⦌ := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F, by
       intro α
       have hα : α = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
       rw [hα, op_id, CategoryTheory.Functor.map_id_apply]
       intro x hd
-      rw [evaluateFunctorAt_functorVertex]
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex]
       exact hz x hd⟩
     refine CommSq.HasLift.mk' {
       l := SSet.yonedaEquiv.symm v
@@ -116,9 +116,9 @@ instance zeroFrameProjection_trivialKanFibration (n : ℕ) (C : SSet.{u}) [HasZe
       fac_right := ?_ }
     apply SSet.yonedaEquiv.injective
     rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
-    change functorVertex ((framePositiveRow n).ι ≫ F) = SSet.yonedaEquiv b
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((framePositiveRow n).ι ≫ F) = SSet.yonedaEquiv b
     rw [hF]
-    exact (functorVertexEquiv _ C).apply_symm_apply _
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).apply_symm_apply _
   | succ d =>
     let H := uncurry (a ≫ ι)
     let G := uncurry b
@@ -132,11 +132,11 @@ instance zeroFrameProjection_trivialKanFibration (n : ℕ) (C : SSet.{u}) [HasZe
       exact hh
     have hz (x : (frameNerve n) _⦋0⦌) (hd : IsDiagonal (nerveEquiv x).val)
         (v : (boundary (d + 1) : SSet.{u}) _⦋0⦌) :
-        IsZeroVertex (H.app (Opposite.op ⦋0⦌) (x, v)) := by
-      have hh := fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) v) x hd
-      change IsZeroVertex ((a.app (Opposite.op ⦋0⦌) v).val.app
-        (Opposite.op ⦋0⦌) (𝟙 _) (PinchedHom.constant x 0)) at hh
-      rw [pinchedConstant_zero] at hh
+        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (H.app (Opposite.op ⦋0⦌) (x, v)) := by
+      have hh := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) v) x hd
+      change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((a.app (Opposite.op ⦋0⦌) v).val.app
+        (Opposite.op ⦋0⦌) (𝟙 _) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 0)) at hh
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero] at hh
       exact hh
     obtain ⟨F, hF, hFG⟩ := zeroFrame_extend_boundary n d H G hw hz
     have hc : (boundary (d + 1)).ι ≫ curry F = a ≫ ι := by
@@ -144,16 +144,16 @@ instance zeroFrameProjection_trivialKanFibration (n : ℕ) (C : SSet.{u}) [HasZe
     have hv (v : (Δ[d + 1] : SSet.{u}) _⦋0⦌) :
         IsZeroFrameVertex ((curry F).app (Opposite.op ⦋0⦌) v) := by
       let w : (boundary (d + 1) : SSet.{u}) _⦋0⦌ := ⟨v, by
-        have h := vertex_mem_boundary.{u} d (stdSimplex.obj₀Equiv.{u} v)
+        have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.vertex_mem_boundary.{u} d (stdSimplex.obj₀Equiv.{u} v)
         rw [Equiv.symm_apply_apply] at h
         exact h⟩
       have hh := ConcreteCategory.congr_hom (NatTrans.congr_app hc (Opposite.op ⦋0⦌)) w
       change (curry F).app (Opposite.op ⦋0⦌) v =
         (a.app (Opposite.op ⦋0⦌) w).val at hh
       rw [hh]
-      exact fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) w)
-    let g := fullSubcomplexLift IsZeroFrameVertex (curry F) hv
-    have hg : g ≫ ι = curry F := fullSubcomplexLift_ι _ _ _
+      exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) w)
+    let g := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift IsZeroFrameVertex (curry F) hv
+    have hg : g ≫ ι = curry F := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
     refine CommSq.HasLift.mk' { l := g, fac_left := ?_, fac_right := ?_ }
     · apply (cancel_mono ι).1
       rw [Category.assoc, hg, hc]

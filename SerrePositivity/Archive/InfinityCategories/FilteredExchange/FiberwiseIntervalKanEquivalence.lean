@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseIntervalKanCoordinates
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberwiseIntervalKanCoordinates
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberwiseIntervalEquivalence
-public import SerrePositivity.InfinityCategories.HomotopyLimits.KanEquivalencePaths
-public import SerrePositivity.InfinityCategories.Core.EquivalencePathLifting
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.KanEquivalencePaths
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.EquivalencePathLifting
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
 
 /-!
 概要：両端を固定して選んだ定値底の Kan path 比較は実際のホモトピー同値。

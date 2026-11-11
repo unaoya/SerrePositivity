@@ -73,7 +73,7 @@ def weightedCechAugmentation (W : K ⥤ SSet.{u})
     (WeightComparison.tensorComparison K q)
 
 variable [ModelCategory SSet.{u}] (I J : MorphismProperty SSet.{u})
-  [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
 
 /-- 概要：指定増強を実際の置換込みの重みつき計算へ送る自然変換（補題 3.2）。
 方針：指定錐の随伴像を既存の指定置換比較で写す。

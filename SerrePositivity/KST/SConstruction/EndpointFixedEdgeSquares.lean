@@ -21,7 +21,7 @@ variable {E : SSet.{u}} {x y : E _⦋0⦌} {a b : E.Edge x y}
   (t : SSet.Edge.CompStruct a (SSet.Edge.id y) b)
 
 /-- 元の二辺を結ぶ、両端が同じ恒等辺の実輸送データ。 -/
-def endpointFixedEdgeTransport : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport a (SSet.Edge.id x) b :=
+def endpointFixedEdgeTransport : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransport a (SSet.Edge.id x) b :=
   ⟨b, SSet.Edge.id y, SSet.Edge.CompStruct.idComp b, t⟩
 
 /-- 元の比較三角形を全体として保持する、端点固定の実正方形。 -/
@@ -58,7 +58,7 @@ lemma endpointFixedEdgeSquare_target :
 
 /-- 下側の全二単体は、入力した同じ元の比較三角形。 -/
 lemma endpointFixedEdgeSquare_triangle :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ endpointFixedEdgeSquare t = SSet.yonedaEquiv.symm t.simplex :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ endpointFixedEdgeSquare t = SSet.yonedaEquiv.symm t.simplex :=
   ThreeEdgeTransport.square_lower _
 
 /-- 始点側の指定 zero 垂直区間も、元の対応する端点の全時刻の定数族。 -/

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpacePiZero
-public import SerrePositivity.InfinityCategories.ModelBridge.ResolutionSpanNormalization
-public import SerrePositivity.InfinityCategories.ModelBridge.FrameSpanNerve
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ResolutionSpanNormalization
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FrameSpanNerve
 
 /-!
 # 元の E 代数の Map^h の全単体から特殊な三本矢への図式
@@ -35,7 +35,7 @@ variable (A : Type u) [CommRing A]
 使われ方：元の Map^h の全単体の共通比較先。 -/
 abbrev algebraSpecialHammock (X Y : (operad A).Algebra) :=
   let := modelCategory A
-  FrameHom.SpecialHammock X Y
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialHammock X Y
 
 /-- 概要：元の Map^h の全単体を実際の特殊な三本矢へ送る（Dwyer–Kan §7）。
 方針：同じ二つの関手的分解を全単体の一般の図式に代入する。
@@ -44,7 +44,7 @@ abbrev algebraSpecialHammock (X Y : (operad A).Algebra) :=
 def mappingSpaceSpecialHammockFunctor (X Y : (operad A).Algebra) :
     ((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ ⥤ algebraSpecialHammock A X Y := by
   let := modelCategory A
-  exact FrameHom.chosenResolutionSpanFunctor (mappingCofibrantFactorization A)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.chosenResolutionSpanFunctor (mappingCofibrantFactorization A)
     (mappingFibrantFactorization A) X Y
 
 /-- 概要：実際の共通図式の左の全縦射は同じ擬同型（Dwyer–Kan §7）。
@@ -55,7 +55,7 @@ lemma mappingSpaceSpecialHammockFunctor_left_quasiIso {X Y : (operad A).Algebra}
     {s t : ((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ} (f : s ⟶ t) :
     QuasiIso (((mappingSpaceSpecialHammockFunctor A X Y).map f).left).hom := by
   let := modelCategory A
-  exact FrameHom.SpecialHammock.left_weakEquivalence
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialHammock.left_weakEquivalence
     ((mappingSpaceSpecialHammockFunctor A X Y).map f)
 
 /-- 概要：実際の共通図式の右の全縦射も同じ擬同型（Dwyer–Kan §7）。
@@ -66,7 +66,7 @@ lemma mappingSpaceSpecialHammockFunctor_right_quasiIso {X Y : (operad A).Algebra
     {s t : ((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ} (f : s ⟶ t) :
     QuasiIso (((mappingSpaceSpecialHammockFunctor A X Y).map f).right).hom := by
   let := modelCategory A
-  exact FrameHom.SpecialHammock.right_weakEquivalence
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialHammock.right_weakEquivalence
     ((mappingSpaceSpecialHammockFunctor A X Y).map f)
 
 /-- 概要：元の Map^h の零単体の三本矢は同じ元の局所化射（Dwyer–Kan §7）。
@@ -76,12 +76,12 @@ lemma mappingSpaceSpecialHammockFunctor_right_quasiIso {X Y : (operad A).Algebra
 lemma mappingSpaceSpecialHammockValue_zero (X Y : (operad A).Algebra)
     (f : (((mappingSpace A).obj (op X)).obj Y) _⦋0⦌) :
     let := modelCategory A
-    FrameHom.SpecialHammock.value ((mappingSpaceSpecialHammockFunctor A X Y).obj
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.value ((mappingSpaceSpecialHammockFunctor A X Y).obj
         (op ((((mappingSpace A).obj (op X)).obj Y).elementsMk (op ⦋0⦌) f))) =
       mappingSpacePiZeroEquiv A (weakEquivalences (operad A).Algebra).Q
         (op X) Y (SSet.π₀.mk f) := by
   let := modelCategory A
-  exact FrameHom.chosenResolutionSpanValue_zero (mappingCofibrantFactorization A)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.chosenResolutionSpanValue_zero (mappingCofibrantFactorization A)
     (mappingFibrantFactorization A) X Y f
 
 /-- 概要：実際の Map^h の全単体の図式は特殊な三本矢の nerve の射を与える（Dwyer–Kan）。
@@ -92,7 +92,7 @@ def mappingSpaceSpecialHammockNerveMap (X Y : (operad A).Algebra) :
     nerve (ULiftHom.{u + 1} (((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ)) ⟶
       nerve (algebraSpecialHammock A X Y) := by
   let := modelCategory A
-  exact FrameHom.chosenResolutionSpanNerveMap (mappingCofibrantFactorization A)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.chosenResolutionSpanNerveMap (mappingCofibrantFactorization A)
     (mappingFibrantFactorization A) X Y
 
 end SerrePositivity.EInfinity.BarrattEccles

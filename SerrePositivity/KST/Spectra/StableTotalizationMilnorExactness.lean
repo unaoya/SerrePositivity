@@ -33,8 +33,8 @@ def limOneBoundary :
       fun n ↦ stage_kanComplex _ (hD k) n
     letI : ∀ n, Fibration (step (D ⋙ KanSequence.levelEvaluation k) n).right :=
       fun n ↦ map_fibration _ (hD k) (Nat.le_succ n)
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stage (D ⋙ KanSequence.levelEvaluation k) n).right
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stage (D ⋙ KanSequence.levelEvaluation k) n).right
         (r + 1) (stage (D ⋙ KanSequence.levelEvaluation k) n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (step (D ⋙ KanSequence.levelEvaluation k) n)) →
       OmegaSpectrum.homotopyGroup (KanSequence.totalizationSpectrum D hD hΩ) j := by
@@ -56,7 +56,7 @@ lemma limOneBoundary_point :
       fun n ↦ stage_kanComplex _ (hD k) n
     letI : ∀ n, Fibration (step (D ⋙ KanSequence.levelEvaluation k) n).right :=
       fun n ↦ map_fibration _ (hD k) (Nat.le_succ n)
-    limOneBoundary D hD hΩ j k r hk (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _) = 1 := by
+    limOneBoundary D hD hΩ j k r hk (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _) = 1 := by
   let := PointedTotalization.kanComplex (D ⋙ KanSequence.levelEvaluation k)
     ((CosimplicialHornFibration.terminal_iff _).mp (hD k))
   let : ∀ n, KanComplex (stage (D ⋙ KanSequence.levelEvaluation k) n).right :=
@@ -94,8 +94,8 @@ lemma comparison_limOneBoundary :
     letI : ∀ n, Fibration (step (D ⋙ KanSequence.levelEvaluation k) n).right :=
       fun n ↦ map_fibration _ (hD k) (Nat.le_succ n)
     ∀ a :
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stage (D ⋙ KanSequence.levelEvaluation k) n).right
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stage (D ⋙ KanSequence.levelEvaluation k) n).right
         (r + 1) (stage (D ⋙ KanSequence.levelEvaluation k) n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (step (D ⋙ KanSequence.levelEvaluation k) n)),
       comparison D hD hΩ j k r hk (limOneBoundary D hD hΩ j k r hk a) = 1 := by

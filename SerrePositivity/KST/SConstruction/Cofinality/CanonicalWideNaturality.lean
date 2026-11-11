@@ -24,7 +24,7 @@ open scoped Simplicial
 def completionCanonicalWideStructureMap (r : ℕ)
     {ι κ : Fin r → SimplexCategoryᵒᵖ} (α : ι ⟶ κ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) ⟶
       (LocalizingInvariants.completionCofiberWide
@@ -40,7 +40,7 @@ def completionCanonicalWideStructureMap (r : ℕ)
 lemma completionCanonicalWideStructureMap_obstruction (r : ℕ)
     {ι κ : Fin r → SimplexCategoryᵒᵖ} (α : ι ⟶ κ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (a : SSet.π₀ (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u})) :
     completionWideKZeroObstruction r κ f
@@ -56,7 +56,7 @@ lemma completionCanonicalWideStructureMap_obstruction (r : ℕ)
 def completionWideGroupStructureMap (r : ℕ)
     {ι κ : Fin r → SimplexCategoryᵒᵖ} (α : ι ⟶ κ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionWideGroup r ι f hf →+ completionWideGroup r κ f hf :=
   (completionWideKZeroObstructionEquiv r κ f hf).symm.toAddMonoidHom.comp
     ((completionKZeroCokernelStructureMap r α f).comp
@@ -69,7 +69,7 @@ def completionWideGroupStructureMap (r : ℕ)
 lemma completionWideGroupStructureMap_apply (r : ℕ)
     {ι κ : Fin r → SimplexCategoryᵒᵖ} (α : ι ⟶ κ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (a : completionWideGroup r ι f hf) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (a : completionWideGroup r ι f hf) :
     completionWideGroupStructureMap r α f hf a =
       SSet.mapπ₀ (completionCanonicalWideStructureMap r α f hf) a := by
   apply (completionWideKZeroObstructionEquiv r κ f hf).injective

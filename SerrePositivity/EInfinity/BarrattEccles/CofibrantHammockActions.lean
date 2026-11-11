@@ -30,7 +30,7 @@ lemma cofibrantAlgebraHammockInclusionMap_eq_mixed
   let := modelCategory A
   apply (cancel_epi (reducedColimitIso
     (cofibrantAlgebraRelativeCategory A).weakEquivalences X Y).hom).1
-  apply colimitGraph_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph_hom_ext
   intro w
   rw [← Category.assoc, reducedColimitIso_hom_fac,
     cofibrantAlgebraHammockInclusionMap_normalization,

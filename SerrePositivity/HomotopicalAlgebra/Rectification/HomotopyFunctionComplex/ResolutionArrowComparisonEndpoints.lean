@@ -49,36 +49,36 @@ abbrev values := NerveArrowComparison.target (fibers C)
 abbrev vertexParameter := NerveArrowComparison.source (bigVertices C)
 abbrev vertexInclusion : vertexParameter C ⟶ parameter C :=
   NerveArrowComparison.sourceMap (bigInclusion C)
-abbrev vertexBoundary : vertexParameter C ⟶ NerveMovingParameter.lifted.{u} (values C) :=
-  NerveArrowComparison.boundary (bigVertices C) (NerveMovingParameter.lifted (fibers C))
+abbrev vertexBoundary : vertexParameter C ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{u} (values C) :=
+  NerveArrowComparison.boundary (bigVertices C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (fibers C))
     (bigBoundary C)
 
 /-- Both endpoints are transported restrictions of the same existing whole all-center system. -/
 def left : NerveMovingParameter.System.{u, v} (parameter C) (values C) :=
-  NerveArrowComparison.left (bigTuples C) (NerveMovingParameter.lifted (fibers C))
+  NerveArrowComparison.left (bigTuples C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (fibers C))
     (system C hcof)
 
 def right : NerveMovingParameter.System.{u, v} (parameter C) (values C) :=
-  NerveArrowComparison.right (bigTuples C) (NerveMovingParameter.lifted (fibers C))
+  NerveArrowComparison.right (bigTuples C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (fibers C))
     (system C hcof)
 
 lemma left_vertices : left C hcof ≫ NerveBiparameterMaps.restriction
-    (vertexParameter C) (parameter C) (NerveMovingParameter.lifted (values C))
+    (vertexParameter C) (parameter C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C))
       (vertexInclusion C) = NerveNaturalBoundary.ofNatTrans
-        (vertexParameter C) (NerveMovingParameter.lifted (values C)) (vertexBoundary C) :=
+        (vertexParameter C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C)) (vertexBoundary C) :=
   NerveArrowComparison.left_boundary _ _ _ (bigInclusion C) (bigBoundary C)
     (system C hcof) (vertices_fixed C hcof)
 
 lemma right_vertices : right C hcof ≫ NerveBiparameterMaps.restriction
-    (vertexParameter C) (parameter C) (NerveMovingParameter.lifted (values C))
+    (vertexParameter C) (parameter C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C))
       (vertexInclusion C) = NerveNaturalBoundary.ofNatTrans
-        (vertexParameter C) (NerveMovingParameter.lifted (values C)) (vertexBoundary C) :=
+        (vertexParameter C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C)) (vertexBoundary C) :=
   NerveArrowComparison.right_boundary _ _ _ (bigInclusion C) (bigBoundary C)
     (system C hcof) (vertices_fixed C hcof)
 
 lemma left_evaluate (e : Arrow (Index C)) :
     NerveMovingParameter.evaluate (parameter C) (values C) (left C hcof) e =
-      oldFamily C hcof e.left ≫ UniverseLift.map.{u} ((fibers C).map e.hom) := by
+      oldFamily C hcof e.left ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} ((fibers C).map e.hom) := by
   change NerveMovingParameter.evaluate (parameter C) (values C)
     (NerveBiparameterMaps.mapTarget _ _ _
       (Functor.whiskerRight (NerveArrowComparison.transport (fibers C))
@@ -99,22 +99,22 @@ lemma right_evaluate (e : Arrow (Index C)) :
   rfl
 
 /-- Recover the actual original small interpolation followed by actual fiber transport. -/
-lemma left_recover (e : Arrow (Index C)) : UniverseLift.lower
+lemma left_recover (e : Arrow (Index C)) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower
     (NerveMovingParameter.evaluate (parameter C) (values C) (left C hcof) e) =
     CoherentLiftTuples.interpolation hcof (source C e.left).inner (target C e.left)
       (arrow C e.left) ≫ (fibers C).map e.hom := by
-  rw [left_evaluate, ← UniverseLift.map_comp]
-  exact UniverseLift.lower_map _
+  rw [left_evaluate, ← _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map_comp]
+  exact _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower_map _
 
 /-- Recover actual tuple transport followed by the actual original small interpolation. -/
-lemma right_recover (e : Arrow (Index C)) : UniverseLift.lower
+lemma right_recover (e : Arrow (Index C)) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower
     (NerveMovingParameter.evaluate (parameter C) (values C) (right C hcof) e) =
     (tuples C).map e.hom ≫ CoherentLiftTuples.interpolation hcof
       (source C e.right).inner (target C e.right) (arrow C e.right) := by
   rw [right_evaluate]
-  change UniverseLift.lower (UniverseLift.map.{u} ((tuples C).map e.hom) ≫
-    UniverseLift.map.{u} (CoherentLiftTuples.interpolation hcof _ _ _)) = _
-  rw [← UniverseLift.map_comp]
-  exact UniverseLift.lower_map _
+  change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} ((tuples C).map e.hom) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (CoherentLiftTuples.interpolation hcof _ _ _)) = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map_comp]
+  exact _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower_map _
 
 end SerrePositivity.HomotopyFunctionComplex.ResolutionArrowComparisonEndpoints

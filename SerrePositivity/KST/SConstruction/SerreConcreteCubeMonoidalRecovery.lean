@@ -15,12 +15,12 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 元の Serre tensorator は、元の連結比較の逆射そのもの。 -/
-lemma serreConcreteCube_tensorator (X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
+lemma serreConcreteCube_tensorator (X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) :
     Functor.LaxMonoidal.μ (serreConcreteCubeFunctor A) X Y =
       (serreCubeTensorIso A X.dimension Y.dimension).inv := rfl
 
 /-- 元の Serre cotensorator は、元の連結比較の順射そのもの。 -/
-lemma serreConcreteCube_cotensorator (X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
+lemma serreConcreteCube_cotensorator (X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) :
     Functor.OplaxMonoidal.δ (serreConcreteCubeFunctor A) X Y =
       (serreCubeTensorIso A X.dimension Y.dimension).hom := rfl
 
@@ -33,7 +33,7 @@ lemma serreConcreteCube_counit :
     Functor.OplaxMonoidal.η (serreConcreteCubeFunctor A) = 𝟙 (𝟙_ (Comon (Complex A))) := rfl
 
 /-- 元の連結射の評価は、同じ tensor 射を元の連結比較で移送したもの。 -/
-lemma serreConcreteCube_map_tensor {X X' Y Y' : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ X') (g : Y ⟶ Y') :
+lemma serreConcreteCube_map_tensor {X X' Y Y' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube} (f : X ⟶ X') (g : Y ⟶ Y') :
     (serreConcreteCubeFunctor A).map (concreteCubeTensorMap f g) =
       (serreCubeTensorIso A X.dimension Y.dimension).hom ≫
         serreCubeTensorHom A (n := X.dimension) (p := X'.dimension)

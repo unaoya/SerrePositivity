@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleMaps
 public import SerrePositivity.KST.Spectra.RawSpectrumHomPoints
 public import SerrePositivity.KST.Spectra.SpectrumPointedEnrichment
-public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterSquares
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterSquares
 
 /-!
 概要：補助単位の相対 BF 左因子と可換な全 Hom の組を合成する。
@@ -40,7 +40,7 @@ lemma homPoint_composition_pre {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
     comp (X.level n).space (Y.level n).space (Z.level n).space = _
   rw [curry'_whiskerRight_comp (f.app n)]
   erw [leftUnitor_naturality_assoc (pointedEvaluation Y Z n)]
-  rw [Category.assoc, pointedPre_evaluation, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  rw [Category.assoc, pointedPre_evaluation, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
 
 /-- 概要：元の列射の単位パラメータでの合成は、同じ射の後合成。
 方針：各段で curry' の後合成の公式と右単位子の自然性を使う。
@@ -119,7 +119,7 @@ lemma compatible_composition_condition (X Y Z : OmegaSpectrum.{u}) :
         RawSpectrumMapping.pointedComposition X Y Z.toKanSequence ≫ inclusionPost X Z := by
   rw [← Category.assoc, ← Category.assoc]
   apply (compatible_condition_iff X Z _ _).mpr
-  exact _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_square_comp PointedSimplicialSet.{u}
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_parameter_square_comp PointedSimplicialSet.{u}
     (C := OmegaSpectrum.{u}) (inclusionPoint X) (inclusionPoint Y) (inclusionPoint Z)
     (replacedMap X Y) (originalMap X Y) (replacedMap Y Z) (originalMap Y Z)
     ((compatible_condition_iff X Y _ _).mp (compatible_condition X Y))

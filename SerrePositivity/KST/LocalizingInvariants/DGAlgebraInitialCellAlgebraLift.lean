@@ -28,7 +28,7 @@ lemma initialCellAlgebraLift_projection :
     initialCellAlgebraLift R p hs hq ≫ p = cellStageAugmentation R B 0 := by
   apply Mon.Hom.ext
   exact congrArg (fun F : DGFunctor R
-      (DGCategoryCycleCover.Source R (DGAlgebraPoint R B)) (DGAlgebraPoint R B) ↦
+      (DGCategoryCycleCover.Source R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) ↦
       (show (cellStage R B 0).X ⟶ B.X from F.map .star .star))
     (initialCellLift_augmentation R p hs hq)
 

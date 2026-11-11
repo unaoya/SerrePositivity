@@ -27,7 +27,7 @@ def monicKPrismUnaryCorrectionData (n : ℕ) :=
 /-- 単一射の零段の元の全補正列は空で、同じ全定数円柱を保持する。 -/
 lemma monicKPrismUnaryCorrectionData_zero :
     (monicKPrismUnaryCorrectionData F f 0).homotopy.h =
-      fst (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (Δ[1] : SSet.{u}) ≫
+      fst (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)) (Δ[1] : SSet.{u}) ≫
         SSet.const (familyVertex (monicKToRawLevelMap (F.map f) 0)) :=
   familyChainCompositeData_constant_of_trace_nil _ rfl
 
@@ -85,7 +85,7 @@ def monicKPrismNativeDirectCanonicalComparison : (n : ℕ) → SSet.Homotopy
     (monicKPrismNativeCanonicalDirectData F f g n).homotopy.h := fun n =>
   match n with
   | 0 => familyHomotopyEndpointTransport
-      (functorHomotopyRefl (monicKPrismNativeDirectCorrectionData F f g 0).homotopy.h) rfl
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl (monicKPrismNativeDirectCorrectionData F f g 0).homotopy.h) rfl
       ((monicKPrismNativeDirectCorrectionData_zero F f g).trans
         (monicKPrismNativeCanonicalDirectData_zero F f g).symm)
   | n + 1 => familyChainCompositionComparison

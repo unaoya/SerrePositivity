@@ -52,30 +52,30 @@ lemma condition (A : PointedSimplicialSet.{u}) (X Y : OmegaSpectrum.{u}) :
 
 /-- 可換な組の空間の元の射への射影は実際の自明 Kan fibration。 -/
 lemma sourceMap_trivialKanFibration (A : PointedSimplicialSet.{u})
-    (X Y : OmegaSpectrum.{u}) : TrivialKanFibration (sourceMap A X Y).right := by
-  exact ⟨_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_snd_rlp _ _
+    (X Y : OmegaSpectrum.{u}) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (sourceMap A X Y).right := by
+  exact ⟨_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_snd_rlp _ _
     (cotensorEvaluationPrecomposition_trivialKanFibration (cotensor A X) Y A).mem⟩
 
 /-- 可換な組の全空間は Kan。 -/
 instance pointedSpace_kanComplex (A : PointedSimplicialSet.{u})
     (X Y : OmegaSpectrum.{u}) : KanComplex (pointedSpace A X Y).right := by
   let compatibleComparisonTrivial :
-      TrivialKanFibration (cotensorEvaluationPrecomposition (cotensor A X) Y A).right :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (cotensorEvaluationPrecomposition (cotensor A X) Y A).right :=
     cotensorEvaluationPrecomposition_trivialKanFibration (cotensor A X) Y A
   let compatibleComparisonFibration : HomotopicalAlgebra.Fibration
       (cotensorEvaluationPrecomposition (cotensor A X) Y A).right :=
     (modelCategoryQuillen.fibration_iff _).2 (fun _ _ j hj ↦
       compatibleComparisonTrivial.mem j (modelCategoryQuillen.J_le_monomorphisms j hj))
-  exact @_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_kanComplex _ _ _
+  exact @_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_kanComplex _ _ _
     (cotensorEvaluationPrecomposition (cotensor A X) Y A) (evaluationPost A X Y)
     compatibleComparisonFibration (RawSpectrumMapping.pointedSpace_kanComplex X Y.toKanSequence)
 
 /-- 元の Hom への実際の射影を順射とする同値。 -/
 def sourceEquivalence (A : PointedSimplicialSet.{u}) (X Y : OmegaSpectrum.{u}) :
-    QCatEquivalence (pointedSpace A X Y).right (mappingSpace X Y) := by
-  letI compatibleProjectionTrivial : TrivialKanFibration (sourceMap A X Y).right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (pointedSpace A X Y).right (mappingSpace X Y) := by
+  letI compatibleProjectionTrivial : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (sourceMap A X Y).right :=
     sourceMap_trivialKanFibration A X Y
-  exact qCatEquivalenceOfTrivialKanFibration (sourceMap A X Y).right
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.qCatEquivalenceOfTrivialKanFibration (sourceMap A X Y).right
 
 /-- 同値の順写像は元の射への射影そのもの。 -/
 lemma sourceEquivalence_hom (A : PointedSimplicialSet.{u}) (X Y : OmegaSpectrum.{u}) :

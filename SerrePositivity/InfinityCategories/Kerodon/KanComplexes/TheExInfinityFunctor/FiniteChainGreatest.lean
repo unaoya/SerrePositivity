@@ -11,6 +11,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 方針：有限集合の極大元と、鎖の全ての二元の比較可能性を組み合わせる。
 規約：Moss 2020 Proposition 21 の二重細分の有限鎖の計算に用いる補助。
 使われ方：線形順序を仮定せず反復細分の最終頂点を計算する。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

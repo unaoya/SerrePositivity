@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.NonConnective
 lemma sequentialSuspensionHom_pre {X Z Y : PointedSimplicialSet.{u}} (i : X ⟶ Z) :
     (MonoidalClosed.pre i).app Y ≫ suspensionHom X Y =
       suspensionHom Z Y ≫ (MonoidalClosed.pre (PointedSimplicialSet.circle.{u} ◁ i)).app
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y) := by
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y) := by
   unfold suspensionHom
   rw [← curry_natural_left, curry_pre_app]
   apply congrArg curry
@@ -34,20 +34,20 @@ lemma sequentialSuspensionHom_pre {X Z Y : PointedSimplicialSet.{u}} (i : X ⟶ 
 lemma sequentialRawStep_pre {X Z : OmegaSpectrum.{u}} (f : X ⟶ Z)
     (Y : KanSequence.{u}) (k : ℕ) :
     RawSpectrumMapping.step Z Y k ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ f.app k) (Y.level (k + 1)).space =
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (f.app k) (Y.level k).space ≫ RawSpectrumMapping.step X Y k := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ f.app k) (Y.level (k + 1)).space =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (f.app k) (Y.level k).space ≫ RawSpectrumMapping.step X Y k := by
   have h : (suspensionHom (Z.level k).space (Y.level k).space ≫
-      (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (Z.level k).space)).map (Y.sigma k)) ≫
+      (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (Z.level k).space)).map (Y.sigma k)) ≫
         (MonoidalClosed.pre (PointedSimplicialSet.circle.{u} ◁ f.app k)).app
           (Y.level (k + 1)).space =
       (MonoidalClosed.pre (f.app k)).app (Y.level k).space ≫
         (suspensionHom (X.level k).space (Y.level k).space ≫
-          (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level k).space)).map (Y.sigma k)) := by
+          (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level k).space)).map (Y.sigma k)) := by
     rw [Category.assoc, ← pre_comm_ihom_map, ← Category.assoc,
       ← sequentialSuspensionHom_pre, Category.assoc]
-  have hp := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre
+  have hp := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre
     (PointedSimplicialSet.circle.{u} ◁ f.app k) (Y.level (k + 1)).space
-  have hq := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre (f.app k) (Y.level k).space
+  have hq := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre (f.app k) (Y.level k).space
   have hr := congrArg Under.Hom.right h
   change _ ≫ ((MonoidalClosed.pre (PointedSimplicialSet.circle.{u} ◁ f.app k)).app
     (Y.level (k + 1)).space).right =
@@ -59,7 +59,7 @@ lemma sequentialRawStep_pre {X Z : OmegaSpectrum.{u}} (f : X ⟶ Z)
 /-- 点つき源の制限の合成を、同じ基礎単体集合の射として保持する。 -/
 lemma sequentialPointedPre_comp {A B C : PointedSimplicialSet.{u}}
     (f : A ⟶ B) (g : B ⟶ C) (Y : PointedSimplicialSet.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (f ≫ g) Y = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre g Y ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre f Y :=
-  (congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp f g Y)).symm
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (f ≫ g) Y = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre g Y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre f Y :=
+  (congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp f g Y)).symm
 
 end SerrePositivity.KST.NonConnective

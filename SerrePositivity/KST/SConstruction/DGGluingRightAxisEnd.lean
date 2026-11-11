@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingRightAxisHom
 public import SerrePositivity.KST.SConstruction.DGPointedQuotientEnd
-public import SerrePositivity.InfinityCategories.Derived.Gluing.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
 
 /-! # 元の右対象 End から指定商 End への実 dg 射
 概要：元の右軸包含を通し、右対象 b の End を同じ (0,b,0) の商 End へ送る。
@@ -17,7 +17,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (z : C) (hz : CategoryTheory.Limits.IsZero (ForgetEnrichment.of (Complex R) z))
-  {P : Type t} [DGCategory R P] (i : DGFunctor R P (DGGluingObject R C D M)) (b : D)
+  {P : Type t} [DGCategory R P] (i : DGFunctor R P (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)) (b : D)
 
 /-- 元の右対象の全 End を、同じ右軸対象の全 End へ送る実 dg 関手。 -/
 def dgGluingRightAxisEndMap :
@@ -43,9 +43,9 @@ def dgGluingRightQuotientEndMap :
 lemma dgGluingRightQuotientEndMap_map (x y : EndomorphismObject b) :
     (dgGluingRightQuotientEndMap R C D M z hz i b).map x y =
       (dgGluingRightAxisHomIso R C D M z hz b b).inv ≫
-        DGQuotient.originalHomInclusion R (DGGluingObject R C D M) (dgQuotientImage R i)
+        DGQuotient.originalHomInclusion R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) (dgQuotientImage R i)
           (dgGluingRightAxisObject R C D M z b) (dgGluingRightAxisObject R C D M z b) :=
-  congrArg (fun k => k ≫ DGQuotient.originalHomInclusion R (DGGluingObject R C D M)
+  congrArg (fun k => k ≫ DGQuotient.originalHomInclusion R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)
     (dgQuotientImage R i) (dgGluingRightAxisObject R C D M z b)
       (dgGluingRightAxisObject R C D M z b)) (dgGluingRightAxis_map R C D M z hz b b)
 
@@ -62,10 +62,10 @@ lemma dgGluingRightQuotientEndMap_inclusion :
       (pointedDGQuotientProjection R i)) (fun _ => rfl)
   intro x y
   change (((dgGluingRightAxis R C D M z hz).map b b ≫
-    DGQuotient.originalHomInclusion R (DGGluingObject R C D M) (dgQuotientImage R i)
+    DGQuotient.originalHomInclusion R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) (dgQuotientImage R i)
       (dgGluingRightAxisObject R C D M z b) (dgGluingRightAxisObject R C D M z b)) ≫ 𝟙 _) ≫
     𝟙 _ = (𝟙 _ ≫ (dgGluingRightAxis R C D M z hz).map b b) ≫
-      DGQuotient.originalHomInclusion R (DGGluingObject R C D M) (dgQuotientImage R i)
+      DGQuotient.originalHomInclusion R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) (dgQuotientImage R i)
         (dgGluingRightAxisObject R C D M z b) (dgGluingRightAxisObject R C D M z b)
   simp only [Category.comp_id, Category.id_comp]
 

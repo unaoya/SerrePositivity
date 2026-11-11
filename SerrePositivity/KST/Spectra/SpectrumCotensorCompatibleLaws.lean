@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleComposition
-public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterUnits
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterUnits
 
 /-!
 概要：cotensor の整合写像空間の恒等射と、合成の圏の法則。
@@ -33,7 +33,7 @@ lemma identity_condition (A : PointedSimplicialSet.{u}) (X : OmegaSpectrum.{u}) 
         cotensorEvaluationPrecomposition (cotensor A X) X A =
       RawSpectrumMapping.pointedIdentity X ≫ evaluationPost A X X := by
   apply (condition_iff A X X _ _).mpr
-  exact _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_square_id PointedSimplicialSet.{u}
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_parameter_square_id PointedSimplicialSet.{u}
     (C := OmegaSpectrum.{u}) (X := cotensor A X) (Y := X) (cotensorEvaluation A X)
 
 /-- 二つの元の恒等射の組。 -/

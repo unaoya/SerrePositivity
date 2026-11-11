@@ -47,7 +47,7 @@ lemma objectEqualityMap_eq {C : Type u} [Category.{v} C] {X Y : C} {f g : X ⟶ 
   rfl
 
 /-- 元の具体的 cube の次元同型は対象等号による移送。 -/
-lemma concreteCubeDimensionIso_objectEqualityMap {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma concreteCubeDimensionIso_objectEqualityMap {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (h : X.dimension = Y.dimension) : IsObjectEqualityMap (concreteCubeDimensionIso h).hom := by
   cases X
   cases Y
@@ -55,7 +55,7 @@ lemma concreteCubeDimensionIso_objectEqualityMap {X Y : _root_.SerrePositivity.I
   exact objectEqualityMap_id _
 
 /-- 元の具体的 cube tensor は両側の実際の移送射を保つ。 -/
-lemma concreteCubeTensor_objectEqualityMap {X X' Y Y' : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma concreteCubeTensor_objectEqualityMap {X X' Y Y' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     {f : X ⟶ X'} {g : Y ⟶ Y'} (hf : IsObjectEqualityMap f) (hg : IsObjectEqualityMap g) :
     IsObjectEqualityMap (concreteCubeTensorMap f g) := by
   obtain ⟨h, rfl⟩ := hf

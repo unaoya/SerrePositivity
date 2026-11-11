@@ -27,15 +27,15 @@ variable (R : Type u) [CommRing R]
 使われ方：Sp の終端図式から正本 Hom∞ への主入口。 -/
 def frameTerminalHomIso {Q : SSet.{u + 1}} [Quasicategory Q] :
     letI _modelInst := modelCategory R
-    ∀ (G : nerve (modelRelativeCategory (Mon (Complex R))).category ⟶ Q)
-      (_hG : IsLocalization G (weakNerveEdges (modelRelativeCategory (Mon (Complex R)))))
+    ∀ (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))).category ⟶ Q)
+      (_hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))))
       (X : Mon (Complex R)),
-      FunctorIso
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
         (FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
           (rightFrameFamily R) 6)
         (SSet.uliftFunctor.{u + 2, u + 1}.map G ≫
-          homInfinityCovariant (G.app (op ⦋0⦌)
-            (nerveVertex (modelRelativeObject (Mon (Complex R)) X)))) := by
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (G.app (op ⦋0⦌)
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) X)))) := by
   letI _modelInst := modelCategory R
   intro G hG X
   exact FrameHom.rightFrameTerminalHomIso
@@ -48,15 +48,15 @@ def frameTerminalHomIso {Q : SSet.{u + 1}} [Quasicategory Q] :
 使われ方：Sp の実 right frame 図式から指定局所化の Hom への主比較の構成。 -/
 def frameCoherentHomIso {Q : SSet.{u + 1}} [Quasicategory Q] :
     letI _modelInst := modelCategory R
-    ∀ (G : nerve (modelRelativeCategory (Mon (Complex R))).category ⟶ Q)
-      (_hG : IsLocalization G (weakNerveEdges (modelRelativeCategory (Mon (Complex R)))))
+    ∀ (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))).category ⟶ Q)
+      (_hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))))
       (X : Mon (Complex R)), IsCofibrant X →
-      FunctorIso
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
         (FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
           (rightFrameFamily R) 0)
         (SSet.uliftFunctor.{u + 2, u + 1}.map G ≫
-          homInfinityCovariant (G.app (op ⦋0⦌)
-            (nerveVertex (modelRelativeObject (Mon (Complex R)) X)))) := by
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (G.app (op ⦋0⦌)
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) X)))) := by
   letI _modelInst := modelCategory R
   intro G hG X hX
   exact rightFrameHammockCoherentComparison R X hX ≪≫

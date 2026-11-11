@@ -351,7 +351,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument('--report', action='store_true')
-    mode.add_argument('--enforce', choices=TIERS)
+    mode.add_argument('--enforce', choices=(*TIERS, 'KLW1'))
     mode.add_argument('--ratchet', type=Path)
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[2])
     parser.add_argument('--config', type=Path, default=Path(__file__).with_name('layers.json'))
@@ -363,6 +363,19 @@ def main():
     started = time.monotonic()
     try:
         config = json.loads(args.config.read_text())
+        if args.enforce == 'KLW1' or (args.report and 'klw1' in config):
+            from klw1_layer_check import check, source_graph
+            profile = config['klw1']
+            result = check(source_graph(args.root.resolve(), profile.get('exclude_prefixes', [])), profile)
+            failed = bool(args.enforce and result['violations'])
+            result.update(mode='enforce' if args.enforce else 'report',
+                          status='FAIL' if failed else 'PASS' if args.enforce else 'REPORT',
+                          seconds=round(time.monotonic()-started, 3))
+            output = args.output or args.root / '.lake/verify/layers.json'
+            output.parent.mkdir(parents=True, exist_ok=True)
+            output.write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n')
+            print(f"KL-W1 {result['status']}: {len(result['violations'])} violations -> {output}")
+            return int(failed)
         graph, mentions = read_graph(args.root.resolve(), config)
         result = analyze(graph, mentions, config)
         increases = ratchet_increases(result, json.loads(args.ratchet.read_text())) if args.ratchet else []

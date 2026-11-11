@@ -17,18 +17,18 @@ namespace SerrePositivity.KST.Fibration
 lemma JointlyReflectsSData.fullSubcomplex {P X A : SSet.{u}} [Quasicategory P]
     {p : P ⟶ X} {q : P ⟶ A} (h : JointlyReflectsSData p q)
     (RP : P _⦋0⦌ → Prop) (RX : X _⦋0⦌ → Prop) (RA : A _⦋0⦌ → Prop)
-    {p' : (fullSubcomplexOnVertices P RP : SSet.{u}) ⟶ fullSubcomplexOnVertices X RX}
-    {q' : (fullSubcomplexOnVertices P RP : SSet.{u}) ⟶ fullSubcomplexOnVertices A RA}
-    (hp : p' ≫ (fullSubcomplexOnVertices X RX).ι = (fullSubcomplexOnVertices P RP).ι ≫ p)
-    (hq : q' ≫ (fullSubcomplexOnVertices A RA).ι = (fullSubcomplexOnVertices P RP).ι ≫ q)
-    (hx : PreservesSConstructionData (fullSubcomplexOnVertices X RX).ι)
-    (ha : PreservesSConstructionData (fullSubcomplexOnVertices A RA).ι) :
+    {p' : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices P RP : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X RX}
+    {q' : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices P RP : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices A RA}
+    (hp : p' ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X RX).ι = (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices P RP).ι ≫ p)
+    (hq : q' ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices A RA).ι = (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices P RP).ι ≫ q)
+    (hx : PreservesSConstructionData (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X RX).ι)
+    (ha : PreservesSConstructionData (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices A RA).ι) :
     JointlyReflectsSData p' q' where
   zero v hvp hvq := by
     have hvp' := hx.1 _ hvp
     have hvq' := ha.1 _ hvq
-    change IsZeroVertex ((p' ≫ (fullSubcomplexOnVertices X RX).ι).app _ v) at hvp'
-    change IsZeroVertex ((q' ≫ (fullSubcomplexOnVertices A RA).ι).app _ v) at hvq'
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((p' ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X RX).ι).app _ v) at hvp'
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((q' ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices A RA).ι).app _ v) at hvq'
     rw [hp] at hvp'
     rw [hq] at hvq'
     have hz := h.zero v.val hvp' hvq'

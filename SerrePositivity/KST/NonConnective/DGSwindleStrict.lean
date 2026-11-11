@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.DGSwindleEnriched
-public import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransUnitNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransUnitNaturality
 public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-!
@@ -17,43 +17,43 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory Limits MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.NonConnective
-variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
+variable (R : Type u) [CommRing R] (D : Type v) [_root_.SerrePositivity.DifferentialGraded.DGCategory R D] [Small.{u} D]
 
 /-- 同じ閉 dg swindle 射を成分とする、全斉次射に自然な厳密 dg 変換。 -/
 def dgSwindleStrictHom :
-    StrictNatTrans (dgSwindleSourceFunctor R D) (dgCountableSumFunctor R D) :=
-  dgStrictNatTransOfUnitNaturality
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (dgSwindleSourceFunctor R D) (dgCountableSumFunctor R D) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransOfUnitNaturality
     (F := dgSwindleSourceFunctor R D) (G := dgCountableSumFunctor R D)
-    (fun M ↦ eHomEquiv (Complex R) (countableSwindleIso (ModuleCategory R D) M).hom)
+    (fun M ↦ eHomEquiv (_root_.SerrePositivity.DifferentialGraded.Complex R) (countableSwindleIso (_root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) M).hom)
     (by
       intro M N
       simpa only [eHomWhiskerLeft, eHomWhiskerRight, Category.assoc,
-        countableSwindleIso, dgCountableSumFunctor, homObject,
+        countableSwindleIso, dgCountableSumFunctor, _root_.SerrePositivity.DifferentialGraded.homObject,
         dgSwindleSourceFunctor_obj,
         countableSumObject, dgCountableSumObj] using
         dgSwindleHom_enriched_naturality R D M N)
 
 /-- 同じ実閉 swindle 同型の逆射も、全 Hom chain map に関して自然。 -/
-lemma dgSwindleInv_enriched_naturality (M N : ModuleCategory R D) :
-    dgCountableSumHom R D M N ≫ eHomWhiskerLeft (Complex R)
-      (dgCountableSumObj R D M) (countableSwindleIso (ModuleCategory R D) N).inv =
-    (dgSwindleSourceFunctor R D).map M N ≫ eHomWhiskerRight (Complex R)
-      (countableSwindleIso (ModuleCategory R D) M).inv ((dgSwindleSourceFunctor R D).obj N) :=
-  moduleHom_iso_square_inv R D _ _ (countableSwindleIso (ModuleCategory R D) M)
-    (countableSwindleIso (ModuleCategory R D) N) (dgSwindleHom_enriched_naturality R D M N)
+lemma dgSwindleInv_enriched_naturality (M N : _root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) :
+    dgCountableSumHom R D M N ≫ eHomWhiskerLeft (_root_.SerrePositivity.DifferentialGraded.Complex R)
+      (dgCountableSumObj R D M) (countableSwindleIso (_root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) N).inv =
+    (dgSwindleSourceFunctor R D).map M N ≫ eHomWhiskerRight (_root_.SerrePositivity.DifferentialGraded.Complex R)
+      (countableSwindleIso (_root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) M).inv ((dgSwindleSourceFunctor R D).obj N) :=
+  _root_.SerrePositivity.DifferentialGraded.moduleHom_iso_square_inv R D _ _ (countableSwindleIso (_root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) M)
+    (countableSwindleIso (_root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) N) (dgSwindleHom_enriched_naturality R D M N)
 
 /-- 同じ閉 dg swindle の逆射を成分とする厳密 dg 自然変換。 -/
 def dgSwindleStrictInv :
-    StrictNatTrans (dgCountableSumFunctor R D) (dgSwindleSourceFunctor R D) :=
-  dgStrictNatTransOfUnitNaturality
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (dgCountableSumFunctor R D) (dgSwindleSourceFunctor R D) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransOfUnitNaturality
     (F := dgCountableSumFunctor R D) (G := dgSwindleSourceFunctor R D)
-    (fun M ↦ eHomEquiv (Complex R) (countableSwindleIso (ModuleCategory R D) M).inv)
+    (fun M ↦ eHomEquiv (_root_.SerrePositivity.DifferentialGraded.Complex R) (countableSwindleIso (_root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) M).inv)
     (by
       intro M N
       simpa only [eHomWhiskerLeft, eHomWhiskerRight, Category.assoc,
-        countableSwindleIso, dgCountableSumFunctor, homObject,
+        countableSwindleIso, dgCountableSumFunctor, _root_.SerrePositivity.DifferentialGraded.homObject,
         dgSwindleSourceFunctor_obj,
         countableSumObject, dgCountableSumObj] using
         dgSwindleInv_enriched_naturality R D M N)

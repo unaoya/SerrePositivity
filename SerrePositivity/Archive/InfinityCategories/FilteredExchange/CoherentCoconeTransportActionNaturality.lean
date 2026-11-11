@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoherentCoconeTransportAction
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentCoconeTransportAction
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoComponentNaturality
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.IsoFiveFactorCancellation
 

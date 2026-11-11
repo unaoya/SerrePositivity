@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionPo
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryPointedFunctor
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionReducedComparison
 public import SerrePositivity.KST.SConstruction.PointedSSetWhisker
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
 
 /-! # 元の S₁ 境界商比較の厳密単体的自然変換
 概要：同じ前向きの境界商比較を、全 native dg 入力上の厳密豊穣自然変換へ束ねる。
@@ -43,7 +43,7 @@ def presentedPerfectDGOneDirectionPointedComparison (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGOneDirectionPointedEnrichedFunctor A r)
       (presentedPerfectDGBoundaryPointedEnrichedFunctor A r) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _
     (presentedPerfectDGOneDirectionPointedComparisonMap A r)
     (presentedPerfectDGOneDirectionPointedComparison_whisker A r)
 

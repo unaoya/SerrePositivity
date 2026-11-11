@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.Equivalence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
 
 /-!
 概要：三因子の整合と評価比較の正方形から、同じ三角形の整合を回収する。

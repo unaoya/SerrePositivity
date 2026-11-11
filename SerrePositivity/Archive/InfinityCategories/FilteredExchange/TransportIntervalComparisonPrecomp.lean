@@ -3,7 +3,7 @@ module
 public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.TransportIntervalComparisonPresentation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalPrismComparisonPrecomp
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIsoTransport
 
 /-!
 概要：元の区間表示の指定比較は、全係数を制限しても同じ実 prism 比較になる。

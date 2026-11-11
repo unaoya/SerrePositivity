@@ -119,8 +119,8 @@ lemma diagonal_comparison : (comparison F F (diagonal F)).h =
     fst T (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ f := by
   change uncurry (SSet.stdSimplex.δ (2 : Fin 3) ≫
     (SSet.stdSimplex.σ (0 : Fin 2) ≫ curry F.h)) = _
-  rw [← Category.assoc, face_collapse_start, Category.assoc, LargeParameterSquare.edge_zero,
-    uncurry_natural_left, LargeParameterSquare.point, uncurry_curry, ← Category.assoc]
+  rw [← Category.assoc, face_collapse_start, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_zero,
+    uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point, uncurry_curry, ← Category.assoc]
   rfl
 
 variable (a : Data F G) (b : Data G F)

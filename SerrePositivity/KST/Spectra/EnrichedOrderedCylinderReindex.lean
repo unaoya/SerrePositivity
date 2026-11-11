@@ -20,7 +20,7 @@ variable {J : Type w} {K : Type w'} [Preorder J] [Preorder K]
   {C : Type v} [EnrichedCategory SSet.{u} C]
 
 /-- 段を単調写像で選び直し、元の Hom を保つ豊穣関手。 -/
-def reindex (f : J →o K) : EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J C) (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object K C) where
+def reindex (f : J →o K) : EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object J C) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object K C) where
   obj X := ⟨f X.position, X.val⟩
   map X Y := {
     app _ := ↾fun ⟨p, a⟩ ↦ (⟨⟨f.monotone p.down.down⟩⟩, a)
@@ -51,7 +51,7 @@ variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
 /-- 標準単体の制限と、順序付き円柱の段の選び直しは厳密に可換する。 -/
 lemma nerveSimplexFamily_naturality {n m : ℕ} (α : ⦋n⦌ ⟶ ⦋m⦌) :
     (𝟙 (SimplicialNerve C) ⊗ₘ stdSimplex.map α) ≫ nerveSimplexFamily m =
-      nerveSimplexFamily n ≫ coherentNerveMap (reindex α.toOrderHom) := by
+      nerveSimplexFamily n ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (reindex α.toOrderHom) := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext

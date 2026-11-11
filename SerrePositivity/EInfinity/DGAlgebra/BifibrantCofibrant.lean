@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.DGAlgebra.ModelCategory
-public import SerrePositivity.InfinityCategories.ModelBridge.ModelBifibrantRelative
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelBifibrantRelative
 
 /-!
 概要：実 dg 代数では cofibrant 全部分圏と bifibrant 全部分圏が同じ底を持つ。

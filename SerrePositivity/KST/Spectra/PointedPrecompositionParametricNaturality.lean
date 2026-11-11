@@ -23,13 +23,13 @@ variable {W D : PointedSimplicialSet.{u}} {a b : W ⟶ D}
 /-- 同じ前合成区間を cotensor に移すことと源交換は、実辺全体で厳密に可換。 -/
 lemma basedPre_cotensor_exchange_path (P Z : PointedSimplicialSet.{u}) :
     ((R.basedPre (PointedObject.basedHom P Z)).basedPost
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso W P Z).hom).path =
-      (((R.basedPre Z).basedIhomMap P).pre (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso D P Z).hom).path := by
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso W P Z).hom).path =
+      (((R.basedPre Z).basedIhomMap P).pre (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso D P Z).hom).path := by
   change (R.basedPre (PointedObject.basedHom P Z)).path ≫
       (PointedObject.basedHomMap (PointedObject.basedHom D (PointedObject.basedHom P Z))
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso W P Z).hom).right =
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso W P Z).hom).right =
     ((R.basedPre Z).basedIhomMap P).path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso D P Z).hom
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso D P Z).hom
         (PointedObject.basedHom P (PointedObject.basedHom W Z))).right
   rw [basedPre_action_path, basedIhomMap_path, basedPre_action_path]
   simpa only [Under.comp_right, Category.assoc] using
@@ -42,21 +42,21 @@ lemma basedPre_parametricPost_path {P Z Z' : PointedSimplicialSet.{u}}
       (((R.basedPre Z').basedIhomMap P).pre (parametricPost D v)).path := by
   calc
     _ = (((R.basedPre Z).basedPost (PointedObject.basedHomMap W (transpose v))).basedPost
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso W P Z').hom).path := by
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso W P Z').hom).path := by
       rw [basedPost_basedPost_path, parametricPost_exchange]
     _ = (((R.basedPre (PointedObject.basedHom P Z')).pre
         (PointedObject.basedHomMap D (transpose v))).basedPost
-          (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso W P Z').hom).path :=
+          (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso W P Z').hom).path :=
       congrArg (· ≫ (PointedObject.basedHomMap (PointedObject.basedHom D Z)
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso W P Z').hom).right) (R.basedPre_post_path (transpose v))
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso W P Z').hom).right) (R.basedPre_post_path (transpose v))
     _ = (((R.basedPre (PointedObject.basedHom P Z')).basedPost
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso W P Z').hom).pre
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso W P Z').hom).pre
           (PointedObject.basedHomMap D (transpose v))).path :=
       ((R.basedPre (PointedObject.basedHom P Z')).pre_basedPost_path
-        (PointedObject.basedHomMap D (transpose v)) (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso W P Z').hom).symm
-    _ = ((((R.basedPre Z').basedIhomMap P).pre (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso D P Z').hom).pre
+        (PointedObject.basedHomMap D (transpose v)) (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso W P Z').hom).symm
+    _ = ((((R.basedPre Z').basedIhomMap P).pre (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso D P Z').hom).pre
         (PointedObject.basedHomMap D (transpose v))).path :=
-      congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.basedHomMap D (transpose v))
+      congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.basedHomMap D (transpose v))
         (PointedObject.basedHom P (PointedObject.basedHom W Z'))).right)
         (R.basedPre_cotensor_exchange_path P Z')
     _ = _ := by rw [pre_pre_path, parametricPost_exchange]

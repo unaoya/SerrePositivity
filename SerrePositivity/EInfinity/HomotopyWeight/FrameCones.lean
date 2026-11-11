@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.HomotopyWeight.ConeLifting
-public import SerrePositivity.InfinityCategories.ModelBridge.SourceInvariance
-public import SerrePositivity.InfinityCategories.ModelBridge.PointwiseBrown
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SourceInvariance
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.PointwiseBrown
 public import SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightFunctoriality
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.HornTensor
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution
@@ -51,7 +51,7 @@ lemma frameCone_target_boundary_rlp (B : K ⥤ SimplexCategory ⥤ C)
     SSet.modelCategoryQuillen.I.rlp ((frameCone K W B).map p) := by
   apply coneSpace_map_boundary_rlp Kᵒᵖ W hW
   intro k
-  exact FrameHom.target_boundary_rlp (B.obj k.unop) (hB k.unop) p
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.target_boundary_rlp (B.obj k.unop) (hB k.unop) p
 
 /-- 概要：frame の重み付き錐は fibrant 終域で Kan 複体（Hovey §5）。
 方針：各 frame の Hom の Kan 性を重み付き錐へ移す。
@@ -78,7 +78,7 @@ lemma frameCone_source_boundary_rlp {B B' : K ⥤ SimplexCategory ⥤ C}
         (((FrameWeightRealization.homFamily K).map a.op).app Y)) := by
   apply coneSpace_map_boundary_rlp Kᵒᵖ W hW
   intro k
-  exact FrameHom.source_boundary_rlp (a.app k.unop) (ha k.unop) Y
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.source_boundary_rlp (a.app k.unop) (ha k.unop) Y
 
 variable {D : Type w} [Category.{t} D] (L : SSet.{u} ⥤ D)
   (hL : SSet.anodyneExtensions.IsInvertedBy L)
@@ -93,7 +93,7 @@ lemma frameCone_target_weakEquivalence_isIso (B : K ⥤ SimplexCategory ⥤ C)
     (hB : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (B.obj k)))
     {Y Z : C} [IsFibrant Y] [IsFibrant Z] (f : Y ⟶ Z) [WeakEquivalence f] :
     IsIso (L.map ((frameCone K W B).map f)) := by
-  apply FrameHom.map_isIso_of_fibrant (frameCone K W B ⋙ L)
+  apply _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.map_isIso_of_fibrant (frameCone K W B ⋙ L)
   intro Y Z p hp
   have : Fibration p := ⟨hp.1⟩
   have : WeakEquivalence p := ⟨hp.2⟩
@@ -136,7 +136,7 @@ lemma frameCone_source_weakEquivalence_isIso
     FrameWeightRealization.homFamily K ⋙
       (CategoryTheory.evaluation C (Kᵒᵖ ⥤ SSet.{u})).obj target ⋙
       WeightedCones.coneSpace Kᵒᵖ W ⋙ L
-  apply FrameHom.map_isIso_of_pointwise_cofibrant K d' T _ a
+  apply _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.map_isIso_of_pointwise_cofibrant K d' T _ a
     (fun k => ⟨hB k⟩) (fun k => ⟨hB' k⟩) ha
   intro B₀ B₁ b hb
   apply frameCone_source_trivialCofibration_isIso K W hW L hL b _ target

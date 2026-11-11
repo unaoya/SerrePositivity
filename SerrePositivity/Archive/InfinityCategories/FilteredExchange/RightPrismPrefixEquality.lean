@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrisms
-public import SerrePositivity.InfinityCategories.Core.JoinCylinderSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpacePrisms
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.JoinCylinderSimplex
 
 /-!
 概要：右 join prism の実単体は、外側時間が零である先頭部分の係数だけに依存する。

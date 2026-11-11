@@ -16,7 +16,7 @@ variable (R : Type u) [CommRing R] (E P : Type (u + 1))
   [DGCategory R E] [Small.{u} E] [DGCategory R P]
   (F G : DGFunctor R P (PerfectDGModule R E))
   (τ : DGFunctorParamTrans R P (PerfectDGModule R E) (𝟙_ (Complex R)) F G)
-  (η : StrictNatTrans F G)
+  (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "T" => DGPerfectComparisonBase R E F G
 local notation "L" => dgPerfectComparisonFirst R E F G
 local notation "M" => dgPerfectComparisonSecond R E F G

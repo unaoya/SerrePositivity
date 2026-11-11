@@ -22,7 +22,7 @@ open CategoryTheory
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) [W.IsMultiplicative]
   (X Y : C)
 
-def localizationValue : colimitGraph W X Y ⟶
+def localizationValue : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y ⟶
     (Functor.const SimplexCategoryᵒᵖ).obj (W.Q.obj X ⟶ W.Q.obj Y) :=
   Zigzag.Value.colimitValue W.Q W.Q_inverts X Y
 
@@ -30,24 +30,24 @@ def reducedLocalizationValue : reducedSimplicialSet W X Y ⟶
     (Functor.const SimplexCategoryᵒᵖ).obj (W.Q.obj X ⟶ W.Q.obj Y) :=
   Zigzag.Value.reducedValue W.Q W.Q_inverts X Y
 
-lemma graphInclusion_localizationValue (w : Word) :
-    graphInclusion W X Y w ≫ localizationValue W X Y = Zigzag.Value.graphMap W.Q W.Q_inverts :=
+lemma graphInclusion_localizationValue (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y w ≫ localizationValue W X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValueGraph.graphMap W.Q W.Q_inverts :=
   Zigzag.Value.graphInclusion_colimitValue W.Q W.Q_inverts X Y w
 
-lemma graphNormalization_reducedLocalizationValue (w : Word) :
+lemma graphNormalization_reducedLocalizationValue (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     graphNormalization W X Y w ≫ reducedLocalizationValue W X Y =
-      Zigzag.Value.graphMap W.Q W.Q_inverts :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValueGraph.graphMap W.Q W.Q_inverts :=
   Zigzag.Value.graphNormalization_reducedValue W.Q W.Q_inverts X Y w
 
 omit [W.IsMultiplicative] in
-lemma localized_edge_backward {w : Word} (S : Zigzag W w X Y) (i : Fin w.length)
-    (hi : w.direction i = .backward) : Zigzag.Value.edge W.Q W.Q_inverts S i =
-      (Localization.Construction.wIso (W := W) (Direction.arrow .backward S i hi).unop
-        (Direction.arrow_allowed .backward S i hi)).inv := by
-  rw [Zigzag.Value.edge_backward W.Q W.Q_inverts S i hi]
-  have h : Zigzag.Value.backwardIso W.Q W.Q_inverts S i hi =
-      Localization.Construction.wIso (W := W) (Direction.arrow .backward S i hi).unop
-        (Direction.arrow_allowed .backward S i hi) := by
+lemma localized_edge_backward {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W w X Y) (i : Fin w.length)
+    (hi : w.direction i = .backward) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.edge W.Q W.Q_inverts S i =
+      (Localization.Construction.wIso (W := W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DirectionCategory.arrow .backward S i hi).unop
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DirectionCategory.arrow_allowed .backward S i hi)).inv := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.edge_backward W.Q W.Q_inverts S i hi]
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.backwardIso W.Q W.Q_inverts S i hi =
+      Localization.Construction.wIso (W := W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DirectionCategory.arrow .backward S i hi).unop
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DirectionCategory.arrow_allowed .backward S i hi) := by
     apply Iso.ext
     rfl
   exact congrArg Iso.inv h

@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Simplicial.CubicalCompositionTensorCalculus
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubicalCompositionTensorCalculus
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalTripleExt
-public import SerrePositivity.InfinityCategories.Simplicial.NecklaceInStructuralIso
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInStructuralIso
 
 /-! # 元の cubical mapping object の合成の結合則
 概要：元の全 mapping object 上の Day tensor 合成は、元の結合同型と両立する。
@@ -16,7 +16,7 @@ open CategoryTheory MonoidalCategory Simplicial SSet
 
 /-- 元の三つの生成射で、左右の結合の合成は元の Day 結合同型と一致する。 -/
 lemma necklaceCubicalDay_assoc_cell {K : SSet.{u}} {w x y z : K _⦋0⦌}
-    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K w x) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) (V : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z) :
+    (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K w x) (U : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) (V : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K y z) :
     ((necklaceCubicalDayCell T ⊗ₘ necklaceCubicalDayCell U) ⊗ₘ
         necklaceCubicalDayCell V) ≫
         necklaceCubicalDayCompose K w x y ▷ necklaceCubicalDayMapping K y z ≫
@@ -27,49 +27,49 @@ lemma necklaceCubicalDay_assoc_cell {K : SSet.{u}} {w x y z : K _⦋0⦌}
           (necklaceCubicalDayCell U ⊗ₘ necklaceCubicalDayCell V)) ≫
         necklaceCubicalDayMapping K w x ◁ necklaceCubicalDayCompose K x y z ≫
         necklaceCubicalDayCompose K w x z := by
-  have hl := _root_.SerrePositivity.InfinityCategories.Simplicial.cubicalComposeTensor_left
+  have hl := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubicalComposeTensor_left
     (necklaceCubicalDayCell T) (necklaceCubicalDayCell U) (necklaceCubicalDayCell V)
     (necklaceCubicalDayCompose K w x y) (necklaceCubicalDayCompose K w y z)
     (Functor.LaxMonoidal.μ necklaceCubicalDay T.necklace U.necklace)
-    (necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U))
+    (necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T U))
     (Functor.LaxMonoidal.μ necklaceCubicalDay
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T.necklace U.necklace) V.necklace)
-    (necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U) V))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedge T.necklace U.necklace) V.necklace)
+    (necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T U) V))
     (necklaceCubicalDayCompose_cell T U)
-    (necklaceCubicalDayCompose_cell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U) V)
-  have hr := _root_.SerrePositivity.InfinityCategories.Simplicial.cubicalComposeTensor_right
+    (necklaceCubicalDayCompose_cell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T U) V)
+  have hr := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubicalComposeTensor_right
     (necklaceCubicalDayCell T) (necklaceCubicalDayCell U) (necklaceCubicalDayCell V)
     (necklaceCubicalDayCompose K x y z) (necklaceCubicalDayCompose K w x z)
     (Functor.LaxMonoidal.μ necklaceCubicalDay U.necklace V.necklace)
-    (necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge U V))
+    (necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge U V))
     (Functor.LaxMonoidal.μ necklaceCubicalDay T.necklace
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge U.necklace V.necklace))
-    (necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge U V)))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedge U.necklace V.necklace))
+    (necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge U V)))
     (necklaceCubicalDayCompose_cell U V)
-    (necklaceCubicalDayCompose_cell T (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge U V))
+    (necklaceCubicalDayCompose_cell T (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge U V))
   have hc : necklaceCubicalDay.map (α_ T.necklace U.necklace V.necklace).hom ≫
-      necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge U V)) =
-      necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U) V) :=
-    necklaceCubicalDayCell_relation (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator T U V).hom
+      necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge U V)) =
+      necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T U) V) :=
+    necklaceCubicalDayCell_relation (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInAssociator T U V).hom
   have hm := congrArg (fun b =>
     (Functor.LaxMonoidal.μ necklaceCubicalDay T.necklace U.necklace ▷
       necklaceCubicalDay.obj V.necklace) ≫
       Functor.LaxMonoidal.μ necklaceCubicalDay
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T.necklace U.necklace) V.necklace ≫ b) hc.symm
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedge T.necklace U.necklace) V.necklace ≫ b) hc.symm
   have hmid :
       (Functor.LaxMonoidal.μ necklaceCubicalDay T.necklace U.necklace ▷
         necklaceCubicalDay.obj V.necklace) ≫
         Functor.LaxMonoidal.μ necklaceCubicalDay
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T.necklace U.necklace) V.necklace ≫
-        necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U) V) =
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedge T.necklace U.necklace) V.necklace ≫
+        necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T U) V) =
       (α_ (necklaceCubicalDay.obj T.necklace) (necklaceCubicalDay.obj U.necklace)
         (necklaceCubicalDay.obj V.necklace)).hom ≫
         necklaceCubicalDay.obj T.necklace ◁
           Functor.LaxMonoidal.μ necklaceCubicalDay U.necklace V.necklace ≫
         Functor.LaxMonoidal.μ necklaceCubicalDay T.necklace
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge U.necklace V.necklace) ≫
-        necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge U V)) := by
-    exact hm.trans (_root_.SerrePositivity.InfinityCategories.Simplicial.cubicalComposeTensor_postcompose_eq _ _ _ _ _ _ _
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedge U.necklace V.necklace) ≫
+        necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge U V)) := by
+    exact hm.trans (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubicalComposeTensor_postcompose_eq _ _ _ _ _ _ _
       (Functor.LaxMonoidal.associativity necklaceCubicalDay
         T.necklace U.necklace V.necklace))
   exact hl.trans (hmid.trans

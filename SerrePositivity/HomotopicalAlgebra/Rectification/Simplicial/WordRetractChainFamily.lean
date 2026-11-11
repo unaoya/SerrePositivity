@@ -288,7 +288,7 @@ lemma leading_identity {T : SSet.{v}} {a b : ι}
     ParameterComposition.assoc]
   rw [← ParameterComposition.assoc, section_comp_contraction]
 
-lemma contraction_letter (i : ι) {T : SSet.{v}} (t : T ⟶ RetractChainFamily.interval) :
+lemma contraction_letter (i : ι) {T : SSet.{v}} (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) :
     contraction E K s p hs H hP hS i (t ≫ WordSegment.letter) =
       RetractChainFamily.contraction E K s p H i t := by
   rw [contraction, whiskerLeft_comp, Category.assoc, WordRetractionAction.action_letter]

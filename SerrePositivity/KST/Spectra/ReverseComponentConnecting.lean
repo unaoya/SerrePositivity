@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.ReverseBoundaryEdge
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ReverseBoundaryEdge
 public import SerrePositivity.KST.Spectra.PointedZeroConnecting
 public import SerrePositivity.KST.Spectra.LoopBoundaryRepresentatives
-public import SerrePositivity.InfinityCategories.Kan.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyComponents
 
 /-!
 概要：基点から fiber の頂点への辺は、底の逆向きの loop の成分接続写像を計算する。
@@ -37,14 +37,14 @@ theorem pointedConnectingZero_inverse_edge {E B : PointedSimplicialSet.{u}}
     (h₀ : stdSimplex.δ (0 : Fin 2) ≫ T = a.map ≫ (pointedFiberι p).right)
     (h₁ : stdSimplex.δ (1 : Fin 2) ≫ T = SSet.const E.basepoint) :
     pointedConnectingZero p
-        ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl B.right)
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s))⁻¹) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 a := by
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 0 (Iso.refl B.right)
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s))⁻¹) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.mk 0 a := by
   let af := SimplexBasepoint.rebase (PointedSimplicialSet.basepoint_ofVertex _ _) a
   obtain ⟨t, ⟨m⟩⟩ := PtSimplex.MulStruct.exists_left_inverse s (0 : Fin 1)
-  obtain ⟨R, hR⟩ := _root_.SerrePositivity.InfinityCategories.Kan.exists_reverse_boundary_edge p.right E.basepoint af T hT h₀ h₁ m
-  have ht : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t = (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)⁻¹ :=
-    eq_inv_of_mul_eq_one_left (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq m)
+  obtain ⟨R, hR⟩ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exists_reverse_boundary_edge p.right E.basepoint af T hT h₀ h₁ m
+  have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk t = (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s)⁻¹ :=
+    eq_inv_of_mul_eq_one_left (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mul_eq m)
   have hr : (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary R) = a := by
     ext : 1
     change R.boundary.map = af.map

@@ -25,8 +25,8 @@ lemma cubeDeletionConnectionNormalVertex_injective (n m : ℕ) :
     funext y
     obtain ⟨x, hx⟩ := cubeDeletionNormalVertex_surjective d y
     have hxy := congrFun h x
-    change cubeConnectionNormalVertex c (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d x) =
-      cubeConnectionNormalVertex f (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d x) at hxy
+    change cubeConnectionNormalVertex c (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalVertex d x) =
+      cubeConnectionNormalVertex f (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalVertex d x) at hxy
     rw [hx] at hxy
     exact hxy
   subst f

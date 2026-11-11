@@ -60,7 +60,7 @@ def triangleLeftCancellationTriangleComparison : SSet.Homotopy
     (SSet.yonedaEquiv.symm (triangleLeftCancellationTriangle T U v).simplex)
     (SSet.yonedaEquiv.symm (triangleLeftCancellationTriangle T U w).simplex) :=
   familyHomotopyEndpointTransport
-    (functorHomotopyPrecomp (triangleLeftCancellationComparison T U v w) (stdSimplex.δ 0))
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (triangleLeftCancellationComparison T U v w) (stdSimplex.δ 0))
     (triangleLeftCancellationTriangle_face T U v)
     (triangleLeftCancellationTriangle_face T U w).symm
 
@@ -114,7 +114,7 @@ def triangleLeftCancellationComparisonOverData :
       K.h ≫ p = H.h ∧ ((horn 3 (0 : Fin 4)).ι ▷ (Δ[1] : SSet.{u})) ≫ K.h =
         fst (Λ[3, 0] : SSet.{u}) Δ[1] ≫ triangleLeftCancellationHorn T U} := by
   let C := familyHomotopyEndpointTransport
-    (functorHomotopyRefl (triangleLeftCancellationHorn T U))
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl (triangleLeftCancellationHorn T U))
     (anodyneExtensionAt_fac _ _ v) (anodyneExtensionAt_fac _ _ w).symm
   have hC : C.h = fst (Λ[3, 0] : SSet.{u}) Δ[1] ≫ triangleLeftCancellationHorn T U :=
     familyHomotopyEndpointTransport_h _ _ _

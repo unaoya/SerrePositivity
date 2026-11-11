@@ -27,7 +27,7 @@ lemma edge_target_eq_of_edge_eq {K : SSet.{u}} {x₀ x₁ y₀ y₁ : K _⦋0⦌
 
 /-- 可縮なパラメーターの中央辺が恒等辺へ写れば、指定二辺と対角辺を保つ実三角形がある。 -/
 lemma contractibleKan_mapped_three_edge_triangle {P K : SSet.{u}} [Quasicategory K]
-    (hP : IsContractibleKan P) (F : P ⟶ K)
+    (hP : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan P) (F : P ⟶ K)
     {p₀ p₁ p₂ p₃ : P _⦋0⦌}
     (a : P.Edge p₀ p₁) (b : P.Edge p₁ p₂) (c : P.Edge p₂ p₃) (d : P.Edge p₀ p₃)
     {x₀ x₁ x₂ : K _⦋0⦌} (e : K.Edge x₀ x₁) (f : K.Edge x₁ x₂) (g : K.Edge x₀ x₂)

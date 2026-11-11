@@ -20,7 +20,7 @@ universe u v w
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.Spectra
 open SerrePositivity.KST.LocalizingInvariants SerrePositivity.KST.NonConnective
 open SerrePositivity.SimplicialModel
@@ -39,13 +39,13 @@ theorem k6Fibration_fiberTarget :
     (dgKappaSuppliedBFKLimitCone R D I).vertex =
       (dgKappaSuppliedBFCanonicalFiberSquare R D I).fiber := by
   have h := congrArg (fun f => f.app (Opposite.op ⦋0⦌) (dgKappaSuppliedBFKLimitCone R D I))
-    (sliceSquareDiagramMap_sourceEvaluation
-      (pullbackCospan (dgKappaNativeCoherentBFSquare R D I)))
-  change (evaluateFunctorAt (Y := Sp.{max (u + 1) v})
-      (squareVertex (𝟙 ((Δ[1] : SSet.{max (u + 1) v + 1}) ⊗ Δ[1])) 0 0)).app
-      (Opposite.op ⦋0⦌) ((sliceSquareDiagramMap _).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap_sourceEvaluation
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan (dgKappaNativeCoherentBFSquare R D I)))
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := Sp.{max (u + 1) v})
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{max (u + 1) v + 1}) ⊗ Δ[1])) 0 0)).app
+      (Opposite.op ⦋0⦌) ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap _).app (Opposite.op ⦋0⦌)
         (dgKappaSuppliedBFKLimitCone R D I)) = _ at h
-  rw [sliceSquareDiagramMap_vertex] at h
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap_vertex] at h
   exact h.symm
 
 /-- 概要：主定理の Sp fiber の右辺は指定した同じ BF 商射である。
@@ -53,12 +53,12 @@ theorem k6Fibration_fiberTarget :
 規約：頂点同型や群作用から射の比較を推論しない。
 使われ方：K-B3 が L10 の同じ実 BF 右辺と照合する。 -/
 theorem k6Fibration_quotientEdge :
-    squareRightEdge ≫ (dgKappaSuppliedBFCanonicalFiberSquare R D I).square =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (dgKappaSuppliedBFCanonicalFiberSquare R D I).square =
       SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgKappaNativeCoherentBFArrow R D I 1).hom).edge := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeCoherentBFArrow R D I 1).hom).edge := by
   calc
-    _ = squareRightEdge ≫ dgKappaNativeCoherentBFSquare R D I := by
-      rw [(dgKappaSuppliedBFCanonicalFiberSquare R D I).right_edge, squareRightArrow_edge]
+    _ = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ dgKappaNativeCoherentBFSquare R D I := by
+      rw [(dgKappaSuppliedBFCanonicalFiberSquare R D I).right_edge, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
       exact SSet.yonedaEquiv.symm_apply_apply _
     _ = _ := dgKappaNativeCoherentBFSquare_boundary R D I 1
 
@@ -69,8 +69,8 @@ theorem k6Fibration_quotientEdge :
 structure K6FibrationConclusions : Prop where
   fiber_target : (dgKappaSuppliedBFKLimitCone R D I).vertex =
     (dgKappaSuppliedBFCanonicalFiberSquare R D I).fiber
-  quotient_edge : squareRightEdge ≫ (dgKappaSuppliedBFCanonicalFiberSquare R D I).square =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (dgKappaNativeCoherentBFArrow R D I 1).hom).edge
+  quotient_edge : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (dgKappaSuppliedBFCanonicalFiberSquare R D I).square =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeCoherentBFArrow R D I 1).hom).edge
   fiber_nonnegative : ∀ j : ℤ, 0 ≤ j →
     Function.Bijective (SpectrumHo.piMap (Truncated.HomotopyCategory.homMk
       (dgKappaCanonicalFixedSourceFiberComparison R D I).toTruncated) j)

@@ -21,37 +21,37 @@ open scoped Simplicial
 /-- 概要：gapped 図式の span の選んだ点ごとの押し出し頂点は gapped。
 方針：S_n 内の普遍四角形と関手圏の選んだ普遍四角形を同じ span 上で比較する。
 規約：全入力の gapped 性から結論する。使われ方：raw ρ の持ち上げ。 -/
-lemma pointwisePushoutApex_isGapped {n : ℕ} {D : SSet.{u}} [Quasicategory D] [IsStable D]
+lemma pointwisePushoutApex_isGapped {n : ℕ} {D : SSet.{u}} [Quasicategory D] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable D]
     (F : (horn 2 0 : SSet.{u}) ⊗ arNerve n ⟶ D)
     (hg : ∀ a : (horn 2 0 : SSet.{u}) _⦋0⦌, IsGapped
-      ((functorVertexEquiv (arNerve n) D).symm
-        ((internalHomFlipHomEquiv (arNerve n) (horn 2 0) D (curry F)).app
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) D).symm
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (arNerve n) (horn 2 0) D (curry F)).app
           (Opposite.op ⦋0⦌) a))) :
     IsGapped (pointwisePushoutApex (curry F)) := by
   let : Quasicategory (diagramSpace n D) :=
     inferInstanceAs (Quasicategory ((ihom (arNerve n)).obj D))
-  let p := internalHomFlipHomEquiv (arNerve n) (horn 2 0) D (curry F)
-  let q : (horn 2 0 : SSet.{u}) ⟶ sConstruction n D := fullSubcomplexLift _ p hg
-  obtain ⟨R, hR, hRp⟩ := _root_.SerrePositivity.InfinityCategories.Stable.exists_stable_pushoutSquare_of_span q
+  let p := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (arNerve n) (horn 2 0) D (curry F)
+  let q : (horn 2 0 : SSet.{u}) ⟶ sConstruction n D := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ p hg
+  obtain ⟨R, hR, hRp⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_stable_pushoutSquare_of_span q
   let Q := chosenDiagramPushout (curry F)
-  have hs : pushoutSpan (R ≫ (gappedSubcomplex n D).ι) = pushoutSpan Q := by
-    change (pushoutSpan R) ≫ (gappedSubcomplex n D).ι = _
+  have hs : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan (R ≫ (gappedSubcomplex n D).ι) = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan Q := by
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan R) ≫ (gappedSubcomplex n D).ι = _
     rw [hR]
     exact (chosenDiagramPushout_span (curry F)).symm
   let e := pushoutSquareIsoOfSpanIso (R ≫ (gappedSubcomplex n D).ι) Q
     ((gappedInclusion_preservesSConstructionData n D).2 R hRp)
     (chosenDiagramPushout_isPushout _) (by rw [hs])
-  have ea := VertexIso.map e (evaluateFunctorAt
+  have ea := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
     (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
-  rw [evaluateFunctorAt_functorVertex, evaluateFunctorAt_functorVertex] at ea
-  change VertexIso ((gappedSubcomplex n D).ι.app (Opposite.op ⦋0⦌) (squareVertex R 1 1))
-    (squareVertex (chosenDiagramPushout (curry F)) 1 1) at ea
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex] at ea
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((gappedSubcomplex n D).ι.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 1 1))
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (chosenDiagramPushout (curry F)) 1 1) at ea
   rw [chosenDiagramPushout_apex] at ea
-  apply (gappedDiagram_isGapped (squareVertex R 1 1)).of_functorIso
-  change VertexIso (functorVertex (gappedDiagram (squareVertex R 1 1))) _
-  have he : functorVertex (gappedDiagram (squareVertex R 1 1)) =
-      (gappedSubcomplex n D).ι.app (Opposite.op ⦋0⦌) (squareVertex R 1 1) :=
-    (functorVertexEquiv _ D).apply_symm_apply _
+  apply (gappedDiagram_isGapped (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 1 1)).of_functorIso
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 1 1))) _
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 1 1)) =
+      (gappedSubcomplex n D).ι.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 1 1) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ D).apply_symm_apply _
   rw [he]
   exact ea
 

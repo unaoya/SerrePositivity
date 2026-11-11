@@ -20,7 +20,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 open scoped Simplicial
 
 local instance (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
-    KanComplex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right := Spectra.loopSpace_kanComplex Y
+    KanComplex (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right := Spectra.loopSpace_kanComplex Y
 
 /-- 概要：零段の任意の頂点を選んだ点つき対角から、零段を潰す商への点つき写像。
 方針：頂点の定値射と cofiber の関係式を合成する。
@@ -42,9 +42,9 @@ def diagonalReductionPointedMap (X : SimplexCategoryᵒᵖ ⥤ SSet.{u})
 方針：商写像の局所化可逆性を L9 の実際の π_* 比較へ渡す。
 規約：元の対角の Kan 性は不要。使われ方：選んだ零対象の実現模型との比較。 -/
 lemma diagonalReductionPointedMap_kan_piIsomorphism (X : SimplexCategoryᵒᵖ ⥤ SSet.{u})
-    (hX : IsContractibleKan (X.obj (Opposite.op ⦋0⦌)))
+    (hX : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (X.obj (Opposite.op ⦋0⦌)))
     (z : (X.obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (Spectra.PointedKanReplacement.map (diagonalReductionPointedMap X z)).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (Spectra.PointedKanReplacement.map (diagonalReductionPointedMap X z)).right := by
   apply pointedKanReplacement_map_piIsomorphism_of_localized_isIso
   exact diagonalReductionQuotient_image_isIso AnodyneHomotopy.anodyneQ
     (Localization.inverts AnodyneHomotopy.anodyneQ anodyneExtensions) X hX
@@ -54,10 +54,10 @@ lemma diagonalReductionPointedMap_kan_piIsomorphism (X : SimplexCategoryᵒᵖ �
 規約：Ω は L9 の既存の模型。使われ方：K 空間の比較。 -/
 def diagonalReductionLoopMap (X : SimplexCategoryᵒᵖ ⥤ SSet.{u})
     (z : (X.obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (Spectra.PointedKanReplacement.obj
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (Spectra.PointedKanReplacement.obj
       (PointedSimplicialSet.ofVertex (simplicialDiagonalFunctor.obj X)
         ((diagonalZeroColumn X).app (Opposite.op ⦋0⦌) z))) ⟶
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (Spectra.PointedKanReplacement.obj (reducedDiagonal X)) :=
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (Spectra.PointedKanReplacement.obj (reducedDiagonal X)) :=
   (PointedObject.basedHomFunctor (C := SSet.{u}) PointedSimplicialSet.circle.{u}).map
     (Spectra.PointedKanReplacement.map (diagonalReductionPointedMap X z))
 
@@ -65,9 +65,9 @@ def diagonalReductionLoopMap (X : SimplexCategoryᵒᵖ ⥤ SSet.{u})
 方針：Kan な点つき対象間の π_* 同型を L9 の点つき内部 Hom へ移す。
 規約：零次数を含む。使われ方：K 空間の選択によらない模型の比較。 -/
 lemma diagonalReductionLoopMap_piIsomorphism (X : SimplexCategoryᵒᵖ ⥤ SSet.{u})
-    (hX : IsContractibleKan (X.obj (Opposite.op ⦋0⦌)))
+    (hX : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (X.obj (Opposite.op ⦋0⦌)))
     (z : (X.obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (diagonalReductionLoopMap X z).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (diagonalReductionLoopMap X z).right :=
   Spectra.PointedMapping.post_piIsomorphism PointedSimplicialSet.circle
     (Spectra.PointedKanReplacement.map (diagonalReductionPointedMap X z))
     (diagonalReductionPointedMap_kan_piIsomorphism X hX z)

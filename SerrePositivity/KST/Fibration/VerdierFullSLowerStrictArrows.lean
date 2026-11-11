@@ -19,23 +19,23 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
 
 /-- 元の同じ下側二胞体の最大 path による実通常図式。 -/
-def verdierFullSLowerStrictDiagram : ULift.{u} (Fin 3) ⥤ KanObject.{u} :=
-  coherentSimplexStrictDiagram (verdierFullSLowerSimplex d)
+def verdierFullSLowerStrictDiagram : ULift.{u} (Fin 3) ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexStrictDiagram (verdierFullSLowerSimplex d)
 
 /-- 同じ実通常図式の第一射の Hom 頂点は、元の全第一短辺の同じ Hom 頂点。 -/
 theorem verdierFullSLowerStrictDiagram_first_vertex :
     SimplicialCategory.homEquiv' _ _ ((verdierFullSLowerStrictDiagram d).map
       (homOfLE (show (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 1 from by decide))) =
-    coherentArrowHomVertex (SpaceInfinity.δ 2 (verdierFullSLowerSimplex d)) := by
+    coherentArrowHomVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.δ 2 (verdierFullSLowerSimplex d)) := by
   change SimplicialCategory.homEquiv' _ _
-    ((coherentEnrichedUnderlyingFunctor (verdierFullSLowerSimplex d)).map
-      (coherentMaximalPath (show (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 1
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (verdierFullSLowerSimplex d)).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentMaximalPath (show (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 1
         from by decide))) = _
-  refine (coherentEnrichedUnderlyingFunctor_vertex (verdierFullSLowerSimplex d)
-    (coherentMaximalPath (show (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 1
+  refine (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor_vertex (verdierFullSLowerSimplex d)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentMaximalPath (show (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 1
       from by decide))).trans ?_
   change coherentTriangleHomVertex (verdierFullSLowerSimplex d) _ = _
   exact (congrArg (coherentTriangleHomVertex (verdierFullSLowerSimplex d))
@@ -45,13 +45,13 @@ theorem verdierFullSLowerStrictDiagram_first_vertex :
 theorem verdierFullSLowerStrictDiagram_last_vertex :
     SimplicialCategory.homEquiv' _ _ ((verdierFullSLowerStrictDiagram d).map
       (homOfLE (show (ULift.up (1 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 2 from by decide))) =
-    coherentArrowHomVertex (SpaceInfinity.δ 0 (verdierFullSLowerSimplex d)) := by
+    coherentArrowHomVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.δ 0 (verdierFullSLowerSimplex d)) := by
   change SimplicialCategory.homEquiv' _ _
-    ((coherentEnrichedUnderlyingFunctor (verdierFullSLowerSimplex d)).map
-      (coherentMaximalPath (show (ULift.up (1 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 2
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (verdierFullSLowerSimplex d)).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentMaximalPath (show (ULift.up (1 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 2
         from by decide))) = _
-  refine (coherentEnrichedUnderlyingFunctor_vertex (verdierFullSLowerSimplex d)
-    (coherentMaximalPath (show (ULift.up (1 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 2
+  refine (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor_vertex (verdierFullSLowerSimplex d)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentMaximalPath (show (ULift.up (1 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 2
       from by decide))).trans ?_
   change coherentTriangleHomVertex (verdierFullSLowerSimplex d) _ = _
   exact (congrArg (coherentTriangleHomVertex (verdierFullSLowerSimplex d))

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.D3ComparisonOutput
 public import SerrePositivity.KST.Spectra.SpectrumTailEquivalence
-public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalenceCalculus
 
 /-!
 概要：B の全関手比較を明示入力として、元の nativeLoop の同値性を回収する。
@@ -28,11 +28,11 @@ local instance tailLoopHomKan (X Y : OmegaSpectrum.{u}) :
 規約：B の存在を証明したとは扱わない。
 使われ方：D の一般安定性判定への hΩ の供給。 -/
 theorem nativeLoop_isQCatEquivalence_of_tailComparison (hB : NativeLoopComparison.{u}) :
-    IsQCatEquivalence nativeLoop.{u} := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence nativeLoop.{u} := by
   have h := commonOriginalInfinityEquivalence.{u}.isQCatEquivalence.ofFunctorIso
     (commonInclusionFunctorIso ≪≫ hB)
-  have htail : IsQCatEquivalence nativeTail.{u} := nativeTailEquivalence.isQCatEquivalence
-  have hbase : IsQCatEquivalence commonNativeLoopEndpoint.{u} :=
+  have htail : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence nativeTail.{u} := nativeTailEquivalence.isQCatEquivalence
+  have hbase : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence commonNativeLoopEndpoint.{u} :=
     commonOriginalInfinityEquivalence.isQCatEquivalence.comp htail
   exact hbase.cancel_left h
 

@@ -65,7 +65,7 @@ lemma fibers (p : Index C) : (ResolutionArrowDiagram.fibers C).map
 lemma tuples (p : Index C) : (ResolutionArrowTuples.tuples C).map
     ((ResolutionMixedDiagram.diagonal C).app p) =
     CoherentLiftMixedComparison.tuplePost p.middle.inner p.target p.final p.center p.post ≫
-      VertexTuples.map (CoherentLiftRelative.preStrict p.source.inner p.middle.inner p.final
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (CoherentLiftRelative.preStrict p.source.inner p.middle.inner p.final
         p.pre.map (p.center ≫ p.post.base)) := by
   apply (congrArg (fun k => (ResolutionArrowTuples.tuples C).map k) (commutes C p)).trans
   apply ((ResolutionArrowTuples.tuples C).map_comp (ac C p) (cd C p)).trans
@@ -97,10 +97,10 @@ abbrev oldHomotopy := RelativeChoiceSpace.FixedBoundaryHomotopy.ofEdge
   (CoherentLiftMixedComparison.diagonal_one hcof hfib p.source.inner p.middle.inner p.target
     p.final p.pre.map p.center p.post (FramedResolution.frameMap p.pre))
 
-abbrev family : (intervalParameters C).obj p ⟶ UniverseLift.obj.{u} ((smallValues C).obj p) :=
+abbrev family : (intervalParameters C).obj p ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((smallValues C).obj p) :=
   UniverseLift.fixedHomotopyMap.{u} (oldHomotopy C hcof hfib p)
 
-lemma left_recover : UniverseLift.lower (NerveMovingParameter.evaluate
+lemma left_recover : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower (NerveMovingParameter.evaluate
     (ResolutionArrowComparisonEndpoints.parameter C) (ResolutionArrowComparisonEndpoints.values C)
     (ResolutionArrowComparisonEndpoints.left C hcof) ((arrowFunctor C).obj p)) = first C hcof p :=
       by
@@ -109,7 +109,7 @@ lemma left_recover : UniverseLift.lower (NerveMovingParameter.evaluate
     p.center ≫ k) (fibers C p)).trans
   exact (Category.assoc _ _ _).symm
 
-lemma right_recover : UniverseLift.lower (NerveMovingParameter.evaluate
+lemma right_recover : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower (NerveMovingParameter.evaluate
     (ResolutionArrowComparisonEndpoints.parameter C) (ResolutionArrowComparisonEndpoints.values C)
     (ResolutionArrowComparisonEndpoints.right C hcof) ((arrowFunctor C).obj p)) = last C hcof p :=
       by
@@ -120,14 +120,14 @@ lemma right_recover : UniverseLift.lower (NerveMovingParameter.evaluate
 
 lemma left_lifted : NerveMovingParameter.evaluate (ResolutionArrowComparisonEndpoints.parameter C)
     (ResolutionArrowComparisonEndpoints.values C) (ResolutionArrowComparisonEndpoints.left C hcof)
-    ((arrowFunctor C).obj p) = UniverseLift.map.{u} (first C hcof p) :=
-  (UniverseLift.map_lower _).symm.trans (congrArg (fun k => UniverseLift.map.{u} k)
+    ((arrowFunctor C).obj p) = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (first C hcof p) :=
+  (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map_lower _).symm.trans (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} k)
     (left_recover C hcof p))
 
 lemma right_lifted : NerveMovingParameter.evaluate (ResolutionArrowComparisonEndpoints.parameter C)
     (ResolutionArrowComparisonEndpoints.values C) (ResolutionArrowComparisonEndpoints.right C hcof)
-    ((arrowFunctor C).obj p) = UniverseLift.map.{u} (last C hcof p) :=
-  (UniverseLift.map_lower _).symm.trans (congrArg (fun k => UniverseLift.map.{u} k)
+    ((arrowFunctor C).obj p) = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (last C hcof p) :=
+  (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map_lower _).symm.trans (congrArg (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} k)
     (right_recover C hcof p))
 
 lemma zero : (ResolutionArrowCylinderBoundary.zeroInclusion C ≫
@@ -155,7 +155,7 @@ lemma one : (ResolutionArrowCylinderBoundary.oneInclusion C ≫
   exact (UniverseLift.fixedHomotopyMap_one.{u} (oldHomotopy C hcof hfib p)).trans
     (congrArg (fun k => fst _ _ ≫ k) (right_lifted C hcof p).symm)
 
-lemma vertex : (NerveCylinderBoundary.horizontal
+lemma vertex : (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal
     (ResolutionArrowComparisonEndpoints.vertexParameter C)
       (ResolutionArrowComparisonEndpoints.parameter C)
     (ResolutionArrowComparisonEndpoints.vertexInclusion C)
@@ -175,7 +175,7 @@ lemma fit : (ResolutionArrowCylinderBoundary.inclusion C).app ((arrowFunctor C).
   ResolutionArrowCylinderFamilyFit.pointwise_fit C hcof _ _
     (zero C hcof hfib p) (one C hcof hfib p) (vertex C hcof hfib p)
 
-lemma recover : UniverseLift.lowerSimplexTensor (family C hcof hfib p) =
+lemma recover : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor (family C hcof hfib p) =
     RelativeChoiceSpace.family (ResolutionMixedTriangles.oldInclusion C p)
       (ResolutionMixedTriangles.oldBoundary C p) (ResolutionMixedTriangles.oldDiagonal C hcof hfib
         p) :=

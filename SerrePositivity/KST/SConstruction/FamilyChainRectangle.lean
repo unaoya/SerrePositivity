@@ -22,12 +22,12 @@ open scoped Simplicial
 def familyHomotopySquareBoundary {U E : SSet.{u}}
     {f g : U ⊗ (Δ[1] : SSet.{u}) ⟶ E} (H : SSet.Homotopy f g) :
     MappingSquareBoundaryData
-      (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy (familyCylinder f)))
-      (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy (familyCylinder g)))
-      (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy
-        (functorHomotopyPrecomp H (SSet.ι₀ (X := U)))))
-      (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy
-        (functorHomotopyPrecomp H (SSet.ι₁ (X := U))))) where
+      (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (familyCylinder f)))
+      (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (familyCylinder g)))
+      (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H (SSet.ι₀ (X := U)))))
+      (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H (SSet.ι₁ (X := U))))) where
   square := familySquareCurry H.h
   bottom_eq := by
     change SSet.ι₀ ≫ familySquareCurry H.h =
@@ -52,24 +52,24 @@ def familyHomotopySquareBoundary {U E : SSet.{u}}
 lemma familyHomotopySquare_class {U E : SSet.{u}}
     {f g : U ⊗ (Δ[1] : SSet.{u}) ⟶ E} (H : SSet.Homotopy f g) :
     SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (familyCylinder f)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (familyCylinder f)) ≫
       SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (functorHomotopyPrecomp H SSet.ι₁)) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H SSet.ι₁)) =
     SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (functorHomotopyPrecomp H SSet.ι₀)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H SSet.ι₀)) ≫
       SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (familyCylinder g)) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (familyCylinder g)) :=
   (familyHomotopySquareBoundary H).homMk_comp
 
 /-- 元の二次元補正全列の両側の辺路は、全区間を順に合成すると一致する。 -/
 lemma familyChainRectangle_class {U E : SSet.{u}}
     {f g : U ⊗ (Δ[1] : SSet.{u}) ⟶ E} (c : FamilyHomotopyChain f g) :
     SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (familyCylinder f)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (familyCylinder f)) ≫
       familyChainCompositeClass (familyHomotopyChainPrecomp (SSet.ι₁ (X := U)) c) =
     familyChainCompositeClass (familyHomotopyChainPrecomp (SSet.ι₀ (X := U)) c) ≫
       SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (familyCylinder g)) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (familyCylinder g)) := by
   induction c with
   | nil => exact (Category.comp_id _).trans (Category.id_comp _).symm
   | cons H tail ih =>

@@ -3,14 +3,14 @@
 module
 
 -- 取り込み時の依存先：drafts/DerivedGeneral/CompletionFunctor.lean。
-public import SerrePositivity.InfinityCategories.Derived.DiscreteEmbedding
-public import SerrePositivity.InfinityCategories.Core.NerveCone
-public import SerrePositivity.InfinityCategories.Stable.Loop
-public import SerrePositivity.InfinityCategories.Stable.Suspension
-public import SerrePositivity.InfinityCategories.Derived.Homology
-public import SerrePositivity.InfinityCategories.Derived.Stability
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluation
-public import SerrePositivity.InfinityCategories.Derived.StableLimits
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteEmbedding
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Loop
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Suspension
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Stability
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluation
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.StableLimits
 
 /-!
 # D(A) の標準 t 構造と Postnikov 切り捨て（∞ 関手として）

@@ -10,6 +10,8 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PairingC
 方針：全次元の添字を Sigma 型で表し、前段の像に入るかどうかで全単射を与える。
 規約：Moss 2020 Theorem 22、Lemmas 27・28・29。正則性はこの構成に含めない。
 使われ方：単位の anodyne 性に向けた regular pairing の構成。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

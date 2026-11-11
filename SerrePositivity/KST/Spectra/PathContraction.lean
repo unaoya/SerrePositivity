@@ -6,7 +6,7 @@ public import SerrePositivity.KST.Spectra.PathContractionBody
 概要：基点固定の path space の収縮写像と端点。
 方針：始点を保つ再パラメータ付けの評価を curry する。
 規約：標的の Kan 性は収縮の幾何的構成自体には不要。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。loop の次数移動。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.5（Tag 00WD）。loop の次数移動。
 -/
 
 @[expose] public section
@@ -26,10 +26,10 @@ set_option backward.isDefEq.respectTransparency.types false
 /-- 概要：path space の定数 path から恒等射への収縮。
 方針：評価前の収縮を点つき Hom へパラメータ付き curry する。
 規約：パラメータは path と時刻の直積。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。path space のホモトピー群。 -/
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.5（Tag 00WD）。path space のホモトピー群。 -/
 def pathContraction (Y : PointedSimplicialSet.{u}) :
     (basedPathSpace Y).right ⊗ (Δ[1] : SSet.{u}) ⟶ (basedPathSpace Y).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y (pathContractionBody Y)
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y (pathContractionBody Y)
     (pathContractionBody_basepoint Y)
 
 /-- 概要：path space の収縮の時刻零は定数 path への定数射。
@@ -39,8 +39,8 @@ def pathContraction (Y : PointedSimplicialSet.{u}) :
 theorem pathContraction_zero (Y : PointedSimplicialSet.{u}) :
     (SSet.ι₀ : (basedPathSpace Y).right ⟶ _) ≫ pathContraction Y =
       toUnit (basedPathSpace Y).right ≫ (basedPathSpace Y).hom := by
-  apply (cancel_mono (PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y)).mp
-  rw [Category.assoc, pathContraction, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
+  apply (cancel_mono (PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y)).mp
+  rw [Category.assoc, pathContraction, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι,
     ← MonoidalClosed.curry_natural_left, pathContractionBody_zero, Category.assoc,
     PointedObject.basedHom_basepoint_ι, PointedObject.curry_constant]
   rfl
@@ -51,8 +51,8 @@ theorem pathContraction_zero (Y : PointedSimplicialSet.{u}) :
 使われ方：Goerss–Jardine I §7。収縮の終端。 -/
 theorem pathContraction_one (Y : PointedSimplicialSet.{u}) :
     (SSet.ι₁ : (basedPathSpace Y).right ⟶ _) ≫ pathContraction Y = 𝟙 _ := by
-  apply (cancel_mono (PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y)).mp
-  rw [Category.assoc, pathContraction, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
+  apply (cancel_mono (PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y)).mp
+  rw [Category.assoc, pathContraction, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι,
     ← MonoidalClosed.curry_natural_left, pathContractionBody_one, pathEvaluation,
     MonoidalClosed.curry_uncurry, Category.id_comp]
 
@@ -63,8 +63,8 @@ theorem pathContraction_one (Y : PointedSimplicialSet.{u}) :
 theorem pathContraction_constant (Y : PointedSimplicialSet.{u}) :
     (basedPathSpace Y).hom ▷ (Δ[1] : SSet.{u}) ≫ pathContraction Y =
       toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ (basedPathSpace Y).hom := by
-  apply (cancel_mono (PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y)).mp
-  rw [Category.assoc, pathContraction, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
+  apply (cancel_mono (PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y)).mp
+  rw [Category.assoc, pathContraction, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι,
     ← MonoidalClosed.curry_natural_left, pathContractionBody_constant, Category.assoc,
     PointedObject.basedHom_basepoint_ι, PointedObject.curry_constant]
   rfl

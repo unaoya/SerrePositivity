@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.CofiberLocalizingComposition
-public import SerrePositivity.InfinityCategories.Kan.HigherHornEdgeCover
-public import SerrePositivity.InfinityCategories.Kan.InnerTwoHornEdges
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberLocalizingComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HigherHornEdgeCover
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.InnerTwoHornEdges
 public import Mathlib.AlgebraicTopology.Quasicategory.InnerFibration
 
 /-!
@@ -37,19 +37,19 @@ def edgewiseSubcomplex {X : SSet.{u}} (W : Set (X _⦋1⦌)) : X.Subcomplex wher
 規約：retract 閉包に置き換えない。SConstruction を import しない。
 使われ方：Sp-7 の元の本質像に沿う亜群化の離散性。 -/
 def stableCofiberWide {X : SSet.{u}} (P : Set (X _⦋0⦌)) : X.Subcomplex :=
-  edgewiseSubcomplex (cofiberLocalizingEdges {x | StableVertexClosure P x})
+  edgewiseSubcomplex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges {x | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P x})
 
 @[simp] lemma stableCofiberWide_mem {X : SSet.{u}} (P : Set (X _⦋0⦌))
     (n : ℕ) (s : X _⦋n⦌) :
     s ∈ (stableCofiberWide P).obj (Opposite.op ⦋n⦌) ↔
       ∀ θ : ⦋1⦌ ⟶ ⦋n⦌,
-        X.map θ.op s ∈ cofiberLocalizingEdges {x | StableVertexClosure P x} := Iff.rfl
+        X.map θ.op s ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges {x | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P x} := Iff.rfl
 
 /-- 概要：二対三性と高次ホーンの全辺被覆により、同じ wide 包含は inner fibration。
 方針：全単体の全辺条件を定義し、二次内ホーンは二対三性、高次は辺の被覆で充填する。
 規約：retract 閉包に置き換えない。SConstruction を import しない。
 使われ方：Sp-7 の元の本質像に沿う亜群化の離散性。 -/
-instance stableCofiberWide_innerFibration {X : SSet.{u}} [Quasicategory X] [IsStable X]
+instance stableCofiberWide_innerFibration {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     (P : Set (X _⦋0⦌)) : InnerFibration (stableCofiberWide P).ι where
   mem := by
     intro A B i hi
@@ -59,7 +59,7 @@ instance stableCofiberWide_innerFibration {X : SSet.{u}} [Quasicategory X] [IsSt
       intro a b sq
       have hknown (e : (horn (n + 2) i : SSet.{u}) _⦋1⦌) :
           b.app (Opposite.op ⦋1⦌) e.val ∈
-            cofiberLocalizingEdges {x | StableVertexClosure P x} := by
+            _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges {x | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P x} := by
         have he := congrArg (fun f => f.app (Opposite.op ⦋1⦌) e) sq.w
         change (a.app (Opposite.op ⦋1⦌) e).val = b.app (Opposite.op ⦋1⦌) e.val at he
         rw [← he]
@@ -67,7 +67,7 @@ instance stableCofiberWide_innerFibration {X : SSet.{u}} [Quasicategory X] [IsSt
           (a.app (Opposite.op ⦋1⦌) e).property (𝟙 ⦋1⦌)
       have hedge (e : (Δ[n + 2] : SSet.{u}) _⦋1⦌) :
           b.app (Opposite.op ⦋1⦌) e ∈
-            cofiberLocalizingEdges {x | StableVertexClosure P x} := by
+            _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges {x | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P x} := by
         cases n with
         | zero =>
           have hi : i = 1 := by
@@ -79,13 +79,13 @@ instance stableCofiberWide_innerFibration {X : SSet.{u}} [Quasicategory X] [IsSt
           subst i
           by_cases he : e ∈ (horn 2 1).obj (Opposite.op ⦋1⦌)
           · exact hknown ⟨e, he⟩
-          · rw [innerTwoHorn_missing_edge_eq_long e he]
+          · rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.innerTwoHorn_missing_edge_eq_long e he]
             have hleft := hknown (horn.face (1 : Fin 3) 2 (by decide))
             have hright := hknown (horn.face (1 : Fin 3) 0 (by decide))
-            have ht := (cofiberStableEdges_twoOfThree P b).1
+            have ht := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_twoOfThree P b).1
             simpa only [SSet.yonedaEquiv_comp] using ht hleft hright
         | succ n =>
-          obtain ⟨e', he'⟩ := horn_ι_edge_surjective_of_three_le (by omega) i e
+          obtain ⟨e', he'⟩ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horn_ι_edge_surjective_of_three_le (by omega) i e
           exact he' ▸ hknown e'
       let l : (Δ[n + 2] : SSet.{u}) ⟶ (stableCofiberWide P : SSet.{u}) := {
         app := fun m => ↾fun s => ⟨b.app m s, fun θ => by
@@ -106,7 +106,7 @@ instance stableCofiberWide_innerFibration {X : SSet.{u}} [Quasicategory X] [IsSt
 方針：全単体の全辺条件を定義し、二次内ホーンは二対三性、高次は辺の被覆で充填する。
 規約：retract 閉包に置き換えない。SConstruction を import しない。
 使われ方：Sp-7 の元の本質像に沿う亜群化の離散性。 -/
-instance stableCofiberWide_quasicategory {X : SSet.{u}} [Quasicategory X] [IsStable X]
+instance stableCofiberWide_quasicategory {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     (P : Set (X _⦋0⦌)) : Quasicategory (stableCofiberWide P : SSet.{u}) :=
   quasicategory_of_innerFibration (stableCofiberWide P).ι
 

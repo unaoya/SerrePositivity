@@ -21,7 +21,7 @@ instance relativeCofiberLeftFiberForget_mono {X : StableModel.{u}} (A B : Closed
     {m : ℕ} (a : (objectSConstruction (closedSubcategory A)) _⦋m⦌) :
     Mono (relativeCofiberLeftFiberForget A B a) := by
   have : Mono (relativeCofiberInclusion A B).val := inferInstanceAs
-    (Mono (fullSubcomplexOnVertices (cofiberDiagrams X.carrier)
+    (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices (cofiberDiagrams X.carrier)
       (relativeCofiberPredicate A B).predicate).ι)
   constructor
   intro K f g h

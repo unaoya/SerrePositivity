@@ -21,7 +21,7 @@ open scoped Simplicial
 方針：全ての交差と全ての次数を量化する。
 規約：この条件は適用先で証明する。使われ方：有限合併の弱可縮性の入力。 -/
 def CoordinateZeroContractible {r : ℕ} (M : (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u}) : Prop :=
-  ∀ (s : Finset (Fin r)), s.Nonempty → ∀ d, IsContractibleKan ((coordinateZeroDiagram s M).obj d)
+  ∀ (s : Finset (Fin r)), s.Nonempty → ∀ d, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan ((coordinateZeroDiagram s M).obj d)
 
 /-- 概要：零方向の図式から一点の定値図式への自然変換。
 方針：各段で終対象への一意な射を使う。

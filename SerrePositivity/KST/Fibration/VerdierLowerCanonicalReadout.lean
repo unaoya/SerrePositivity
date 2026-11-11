@@ -17,18 +17,18 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-    (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
-  (hfull : L ≫ evaluateFunctorAt
-    (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+    (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
+  (hfull : L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+    (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
       verdierLowerReconstructionCompositeFamily d Δ[1])
 
 /-- 概要：同じ実読出しを正規化下側の実長 Hom fiber へ登録する。
 方針：元の全合成端回収をそのまま使う。
 規約：新しい存在仮定を追加しない。使われ方：実 canonical encoder への入力。 -/
 def verdierLowerCanonicalReadout : (verdierLowerCanonicalLongSpace d) _⦋0⦌ :=
-  controlledTriangleLongHomVertex
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleLongHomVertex
     (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 0⟩))
     (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 2⟩)) Δ[1]
     (verdierLowerReconstructionCompositeFamily d Δ[1]) L hfull
@@ -37,8 +37,8 @@ def verdierLowerCanonicalReadout : (verdierLowerCanonicalLongSpace d) _⦋0⦌ :
 方針：実 fiber 頂点の標準順逆比較を使う。
 規約：各点に弱めない。使われ方：共有対角と native Hom の同時照合。 -/
 theorem verdierLowerCanonicalReadout_value :
-    controlledTriangleLongHomValue (verdierLowerCanonicalReadout d L hfull) = L :=
-  controlledTriangleLongHomVertex_value _ _ _ _ _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleLongHomValue (verdierLowerCanonicalReadout d L hfull) = L :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleLongHomVertex_value _ _ _ _ _ _
 
 /-- 概要：同じ読出しを使う正規化下側は元の実下側の全 native Hom を各時刻で保持する。
 方針：同じ実入力の native 回収と元の読出し回収を合成する。
@@ -47,12 +47,12 @@ theorem verdierLowerCanonicalReadout_value :
 theorem verdierLowerCanonicalReadout_native
     (hL : VerdierLowerNativeReadoutRecovery d L)
     (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌) :
-    HEq (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
-      ((SSet.yonedaEquiv (familyAtVertex
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+      ((SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex
         (verdierLowerCanonicalFamily d (verdierLowerCanonicalReadout d L hfull)) k)).map
           ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)))
-      (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
-        ((SSet.yonedaEquiv (familyAtVertex (verdierFullSLowerDeformation d).h k)).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+        ((SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierFullSLowerDeformation d).h k)).map
           ⟨ULift.up 0⟩ ⟨ULift.up 2⟩))) := by
   have hn := verdierLowerCanonicalFamily_native d (verdierLowerCanonicalReadout d L hfull) k
   rw [verdierLowerCanonicalReadout_value] at hn

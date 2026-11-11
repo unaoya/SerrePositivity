@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open SerrePositivity.InfinityCategories.HomotopyLimits SerrePositivity.KST.Spectra
+open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.Binary
 
 lemma projection_fibration (X Y : SSet.{u}) [KanComplex Y] :

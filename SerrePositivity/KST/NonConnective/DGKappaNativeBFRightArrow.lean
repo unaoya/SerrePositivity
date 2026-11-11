@@ -29,10 +29,10 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 規約：辺そのものを旧 BF 射へ取り替えない。
 使われ方：同じ実 fiber 右辺の実 BF 射への読戻し。 -/
 def dgKappaNativeBFSquareRightEdge : Sp.{max (u + 1) v}.Edge
-    (coherentNerveVertex (kOmegaSpectrum (dgKappaNativeResolvedCone R D I)))
-    (coherentNerveVertex (kOmegaSpectrum
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum (dgKappaNativeResolvedCone R D I)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
       (stableCategoryModel (dgKappaNativeSuspensionCategory R D I)))) :=
-  (SSet.Edge.ofTruncated (squareRightArrow (dgKappaNativeBFSquare R D I hBF))).ofEq
+  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (dgKappaNativeBFSquare R D I hBF))).ofEq
     (dgKappaNativeBFSquare_middle R D I hBF) (dgKappaNativeBFSquare_target R D I hBF)
 
 /-- 概要：同じ Φ から読む実右辺は新 coherent BF 射の辺そのもの。
@@ -41,15 +41,15 @@ def dgKappaNativeBFSquareRightEdge : Sp.{max (u + 1) v}.Edge
 使われ方：実 fiber の右辺に指定正段比較と整数 π 一致を適用する。 -/
 theorem dgKappaNativeBFSquareRightEdge_eq :
     dgKappaNativeBFSquareRightEdge R D I hBF =
-      coherentNerveEdge (dgKappaNativeBFBoundary R D I hBF).right := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeBFBoundary R D I hBF).right := by
   apply SSet.Edge.ext
-  change (squareRightArrow (dgKappaNativeBFSquare R D I hBF)).edge = _
+  change (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (dgKappaNativeBFSquare R D I hBF)).edge = _
   have he := congrArg (fun F : (Δ[1] : SSet.{max (u + 1) v + 1}) ⟶
       Sp.{max (u + 1) v} => SSet.yonedaEquiv F)
     (dgKappaNativeBFSquare_right R D I hBF)
-  exact (squareRightArrow_edge _).trans (he.trans
+  exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge _).trans (he.trans
     (SSet.yonedaEquiv.apply_symm_apply
-      (coherentNerveEdge (dgKappaNativeBFBoundary R D I hBF).right).edge))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeBFBoundary R D I hBF).right).edge))
 
 /-- 概要：同じ実 Φ から読み戻す未完備 cone から実商への BF 射。
 方針：同じ元の BF 端点を持つ実右辺を復号する。
@@ -57,7 +57,7 @@ theorem dgKappaNativeBFSquareRightEdge_eq :
 使われ方：実 fiber 右辺の整数 π の比較。 -/
 def dgKappaNativeBFSquareRightMap : kOmegaSpectrum (dgKappaNativeResolvedCone R D I) ⟶
     kOmegaSpectrum (stableCategoryModel (dgKappaNativeSuspensionCategory R D I)) :=
-  coherentNerveEdgeToHom (dgKappaNativeBFSquareRightEdge R D I hBF)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom (dgKappaNativeBFSquareRightEdge R D I hBF)
 
 /-- 概要：同じ実右辺の読戻しは指定された新 coherent BF 射そのもの。
 方針：元の coherent 辺の順逆の回収式を使う。
@@ -66,7 +66,7 @@ def dgKappaNativeBFSquareRightMap : kOmegaSpectrum (dgKappaNativeResolvedCone R 
 theorem dgKappaNativeBFSquareRightMap_eq :
     dgKappaNativeBFSquareRightMap R D I hBF = (dgKappaNativeBFBoundary R D I hBF).right := by
   rw [dgKappaNativeBFSquareRightMap, dgKappaNativeBFSquareRightEdge_eq,
-    coherentNerveEdgeToHom_edge]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom_edge]
 
 /-- 概要：同じ実 fiber に使う右辺の全整数 π 作用は旧 BF 商射と一致する。
 方針：実右辺を新 BF 射へ回収し、指定された同じ群作用の等式を使う。

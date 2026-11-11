@@ -10,6 +10,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 規約：KST Construction A.5 の比較。前半が第一因子、後半が第二因子。
 使われ方：正規化したテンソルの消滅を単体的な次数ごとのテンソルへ戻す比較。
 このファイルの成分構成だけでは鎖写像性・shuffle 比較の完成を主張しない。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

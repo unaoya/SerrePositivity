@@ -20,26 +20,26 @@ namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted
 open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
-  {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : FactorTarget.Index W)
+  {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)
   (σ : (AllMarked.nativeGraph W X g.val.left a).obj n)
-  (τ : (graph W.paths b g.val.right Y).obj n)
+  (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths b g.val.right Y).obj n)
 
 lemma pastePoint_inclusions : FactorTarget.pastePoint W X Y g
     ((AllMarked.nativeInclusion W X g.val.left a).app n σ)
-    ((graphInclusion W.paths g.val.right Y b).app n τ) =
-      (graphInclusion W.paths X Y (Word.append (Word.append a (Word.single .forward)) b)).app n
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths g.val.right Y b).app n τ) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b)).app n
         (simplex W g σ τ) := by
   let P := (AllMarked.graphMap W X g.val.left a).app n σ
-  let A := arrowSimplex W.paths g.val.hom.toPath n
+  let A := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W.paths g.val.hom.toPath n
   have hp := congrArg (fun k => k.app n σ) (AllMarked.nativeInclusion_inclusion W X g.val.left a)
-  have hi := composePoint_inclusions W.paths X g.val.left g.val.right a (Word.single .forward) P A
-  have ho := composePoint_inclusions W.paths X g.val.right Y (Word.append a (Word.single .forward))
-    b (P.prod' A ⋙ ZigzagAppend.functor) τ
-  have he := congrArg (fun p => composePoint W.paths X g.val.right Y
-    (composePoint W.paths X g.val.left g.val.right p (arrowPoint W.paths g.val.hom.toPath n))
-    ((graphInclusion W.paths g.val.right Y b).app n τ)) hp
-  have hm := congrArg (fun p => composePoint W.paths X g.val.right Y p
-    ((graphInclusion W.paths g.val.right Y b).app n τ)) hi
+  have hi := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_inclusions W.paths X g.val.left g.val.right a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) P A
+  have ho := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_inclusions W.paths X g.val.right Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward))
+    b (P.prod' A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendFunctor.functor) τ
+  have he := congrArg (fun p => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X g.val.right Y
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X g.val.left g.val.right p (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W.paths g.val.hom.toPath n))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths g.val.right Y b).app n τ)) hp
+  have hm := congrArg (fun p => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X g.val.right Y p
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths g.val.right Y b).app n τ)) hi
   exact he.trans (hm.trans ho)
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted

@@ -18,34 +18,34 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
+variable (X : SSet.{u}) [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
 
 /-- 零始点の元の矢印は、その実終点を右随伴へ入れた矢印と同型。 -/
 def cofiberZeroSourceVertexIso (z : ((ihom (Δ[1] : SSet.{u})).obj X) _⦋0⦌)
-    (hz : IsZeroSourceArrow z) :
-    VertexIso z ((cofiberRightAdjoint X).app (Opposite.op ⦋0⦌)
-      ((_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target X).app (Opposite.op ⦋0⦌) z)) := by
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow z) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso z ((cofiberRightAdjoint X).app (Opposite.op ⦋0⦌)
+      ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.target X).app (Opposite.op ⦋0⦌) z)) := by
   let a : (Δ[0] : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X := SSet.const z
-  have ha : ∀ w, IsZeroSourceArrow (a.app (Opposite.op ⦋0⦌) w) := by
+  have ha : ∀ w, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow (a.app (Opposite.op ⦋0⦌) w) := by
     intro w
     dsimp only [a]
-    rw [zeroDiagram_const_vertex]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex]
     exact hz
-  have e := FunctorIso.app (zeroSourceArrowComparison X a ha)
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app (zeroSourceArrowComparison X a ha)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 1))
-  change VertexIso ((SSet.const z : (Δ[0] : SSet.{u}) ⟶ _).app (Opposite.op ⦋0⦌) _)
-    ((cofiberRightAdjoint X).app (Opposite.op ⦋0⦌) ((_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target X).app
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((SSet.const z : (Δ[0] : SSet.{u}) ⟶ _).app (Opposite.op ⦋0⦌) _)
+    ((cofiberRightAdjoint X).app (Opposite.op ⦋0⦌) ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.target X).app
       (Opposite.op ⦋0⦌) ((SSet.const z : (Δ[0] : SSet.{u}) ⟶ _).app
         (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 1))))) at e
-  rw [zeroDiagram_const_vertex] at e
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex] at e
   exact e
 
 lemma cofiberZeroSourceMapping_equivalence
-    (x z : ((ihom (Δ[1] : SSet.{u})).obj X) _⦋0⦌) (hz : IsZeroSourceArrow z) :
-    IsSimplicialHomotopyEquivalence (pinchedHomMap
-      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 ((ihom (Δ[1] : SSet.{u})).obj X))) x z) :=
+    (x z : ((ihom (Δ[1] : SSet.{u})).obj X) _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow z) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber X (𝟙 ((ihom (Δ[1] : SSet.{u})).obj X))) x z) :=
   reflectiveIsoTargetPinchedHomMap_equivalence (cofiberAdjunction X)
-    (cofiberRightAdjoint_fullyFaithful X) x z ((_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target X).app (Opposite.op ⦋0⦌) z)
+    (cofiberRightAdjoint_fullyFaithful X) x z ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.target X).app (Opposite.op ⦋0⦌) z)
     (cofiberZeroSourceVertexIso X z hz)
 
 end SerrePositivity.KST.LocalizingInvariants

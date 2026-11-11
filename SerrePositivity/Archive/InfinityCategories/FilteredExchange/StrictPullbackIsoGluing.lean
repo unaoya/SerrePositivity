@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.StrictPullbackHomotopyGluing
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.HomotopyIsoTransport
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyClasses
-public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomotopyClasses
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
 
 /-!
 概要：共通の底で整合する指定二脚の関手同型を、厳密な引き戻し全体へ貼り合わせる。

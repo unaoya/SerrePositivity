@@ -38,7 +38,7 @@ def cofiberTopCorner : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[1] ⊗ Δ[1] :=
 方針：各単体の頂点で max 0 x = x を計算する。
 規約：厳密等号。使われ方：比較の始点。 -/
 lemma squareHorizontalPrism_zero :
-    prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ squareHorizontalPrism = 𝟙 _ := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ squareHorizontalPrism = 𝟙 _ := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -56,7 +56,7 @@ lemma squareHorizontalPrism_zero :
 方針：各単体の頂点で max 1 x = 1 を計算する。
 規約：厳密等号。使われ方：比較の終点。 -/
 lemma squareHorizontalPrism_one :
-    prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ squareHorizontalPrism = cofiberUnitCorner := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ squareHorizontalPrism = cofiberUnitCorner := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -74,7 +74,7 @@ lemma squareHorizontalPrism_one :
 方針：各単体の頂点で max 0 y = y を計算する。
 規約：厳密等号。使われ方：比較の始点。 -/
 lemma squareVerticalPrism_zero :
-    prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ squareVerticalPrism = 𝟙 _ := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ squareVerticalPrism = 𝟙 _ := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -92,7 +92,7 @@ lemma squareVerticalPrism_zero :
 方針：各単体の頂点で max 1 y = 1 を計算する。
 規約：厳密等号。使われ方：比較の終点。 -/
 lemma squareVerticalPrism_one :
-    prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ squareVerticalPrism = cofiberTopCorner := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ squareVerticalPrism = cofiberTopCorner := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -186,57 +186,57 @@ lemma arSquare_topCorner {n : ℕ} (a : Ar.{u} n) :
 /-- 概要：内部横座標の比較は T から始まる。
 方針：水平 prism の始点を使う。規約：厳密等号。使われ方：比較同型の始域。 -/
 lemma arCofiberHorizontalPrism_zero {n : ℕ} (a : Ar.{u} n) :
-    prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberHorizontalPrism a =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberHorizontalPrism a =
       arCofiberComparisonSquare a := by
   rw [arCofiberHorizontalPrism, comp_lift, squareHorizontalPrism_zero]
-  simp only [prismEndpoint, ← Category.assoc, lift_snd, Category.id_comp]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint, ← Category.assoc, lift_snd, Category.id_comp]
   rfl
 
 /-- 概要：内部横座標の比較は U に終わる。
 方針：水平 prism の終点を使う。規約：厳密等号。使われ方：比較同型の終域。 -/
 lemma arCofiberHorizontalPrism_one {n : ℕ} (a : Ar.{u} n) :
-    prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberHorizontalPrism a =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberHorizontalPrism a =
       arCofiberComparisonUnitSquare a := by
   rw [arCofiberHorizontalPrism, comp_lift, squareHorizontalPrism_one]
-  simp only [prismEndpoint, ← Category.assoc, lift_snd, Category.id_comp]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint, ← Category.assoc, lift_snd, Category.id_comp]
   rfl
 
 /-- 概要：区間の第二端点の比較は T から始まる。
 方針：水平 prism の始点を使う。規約：厳密等号。使われ方：比較同型の始域。 -/
 lemma arCofiberTargetPrism_zero {n : ℕ} (a : Ar.{u} n) :
-    prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberTargetPrism a =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberTargetPrism a =
       arCofiberComparisonSquare a := by
   rw [arCofiberTargetPrism, comp_lift, ← Category.assoc, squareHorizontalPrism_zero]
-  simp only [Category.id_comp, prismEndpoint, lift_snd]
+  simp only [Category.id_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint, lift_snd]
   rfl
 
 /-- 概要：区間の第二端点の比較は元の区間の四角形に終わる。
 方針：水平 prism の終点と右辺での定値性を使う。
 規約：厳密等号。使われ方：選んだ H(a) との比較。 -/
 lemma arCofiberTargetPrism_one {n : ℕ} (a : Ar.{u} n) :
-    prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberTargetPrism a =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberTargetPrism a =
       lift (SSet.const (ComposableArrows.mk₀ a)) (𝟙 _) := by
   rw [arCofiberTargetPrism, comp_lift, ← Category.assoc, squareHorizontalPrism_one,
     arFixedStartSquare_unitCorner]
-  simp only [prismEndpoint, lift_snd]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint, lift_snd]
 
 /-- 概要：区間の第一端点の比較は単位の中間正方形 D から始まる。
 方針：縦 prism の始点を使う。規約：厳密等号。使われ方：比較同型の始域。 -/
 lemma arCofiberSourcePrism_zero {n : ℕ} (a : Ar.{u} n) :
-    prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberSourcePrism a =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberSourcePrism a =
       arCofiberUnitSquare a := by
   rw [arCofiberSourcePrism, comp_lift, ← Category.assoc, squareVerticalPrism_zero]
-  simp only [Category.id_comp, prismEndpoint, ← Category.assoc, lift_snd]
+  simp only [Category.id_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint, ← Category.assoc, lift_snd]
   rfl
 
 /-- 概要：区間の第一端点の比較は U に終わる。
 方針：縦 prism の終点と標準正方形の上辺の形状を使う。
 規約：厳密等号。使われ方：比較同型の終域。 -/
 lemma arCofiberSourcePrism_one {n : ℕ} (a : Ar.{u} n) :
-    prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberSourcePrism a =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberSourcePrism a =
       arCofiberComparisonUnitSquare a := by
   rw [arCofiberSourcePrism, comp_lift, ← Category.assoc, squareVerticalPrism_one, arSquare_topCorner]
-  simp only [prismEndpoint, ← Category.assoc, lift_snd, Category.id_comp]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint, ← Category.assoc, lift_snd, Category.id_comp]
   rfl
 
 end SerrePositivity.KST.SConstruction

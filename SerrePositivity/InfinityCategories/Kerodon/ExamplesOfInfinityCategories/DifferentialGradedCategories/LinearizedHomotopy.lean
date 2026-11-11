@@ -9,6 +9,8 @@ public import Mathlib.CategoryTheory.Preadditive.FunctorCategory
 方針：積の自由化との同型で両端を移送し、次数制限を明示する。
 規約：KST Definition A.3。作用の同変性は別に検証する条件であり、この基礎定義には含めない。
 使われ方：Construction A.6 の全次数ホモトピーと A.5 の部分次数比較。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

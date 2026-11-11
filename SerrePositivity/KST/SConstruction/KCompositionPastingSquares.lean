@@ -24,7 +24,7 @@ variable {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
 
 /-- 元の三正方形を貼った、元の suspension Hom への実写像。 -/
 def kKanOriginalCompositionPastingSquares : threeSquarePasting ⟶
-    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
       ((kKanSequence (F.obj z)).level (r + 1)).space).right :=
   threeSquarePastingMap
     (kKanOriginalCompositionMappingSquare r F f g 0)

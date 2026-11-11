@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedKanDiagramTriangleComponents
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-! # 図式全体の比較逆射の三角形と元の成分の逆条件
 概要：関手同型の逆の代表を、元の比較と両方向の恒等辺を保つ三角形で照合する。
@@ -22,8 +22,8 @@ open scoped Simplicial
 /-- 関手の辺を円柱へ戻して再び curry すると元の辺。 -/
 lemma diagramFunctorEdge_homotopy_roundtrip {A X : SSet.{u}} {f g : A ⟶ X}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj ((CategoryTheory.ihom A).obj X))
-      (functorVertex f) (functorVertex g)) :
-    functorEdgeOfSimplicialHomotopy (simplicialHomotopyOfFunctorEdge e) = e := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex g)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge e) = e := by
   ext
   change SSet.yonedaEquiv (CategoryTheory.MonoidalClosed.curry
     (CategoryTheory.MonoidalClosed.uncurry (SSet.yonedaEquiv.symm e.edge))) = e.edge
@@ -33,74 +33,74 @@ lemma diagramFunctorEdge_homotopy_roundtrip {A X : SSet.{u}} {f g : A ⟶ X}
 lemma pointedKanDiagramFunctorIso_hom {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
-    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (η.app i).right) :
+    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (η.app i).right) :
     (pointedKanDiagramFunctorIso hF hG η hη).hom =
       SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (pointedKanDiagramHomotopy hF hG η)) := rfl
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (pointedKanDiagramHomotopy hF hG η)) := rfl
 
 /-- 選んだ全体逆の円柱の辺の類は元の図式同型の逆射。 -/
 lemma pointedKanDiagramInverseHomotopy_hom {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
-    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (η.app i).right) :
+    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (η.app i).right) :
     SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (pointedKanDiagramInverseHomotopy hF hG η hη)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (pointedKanDiagramInverseHomotopy hF hG η hη)) =
       (pointedKanDiagramFunctorIso hF hG η hη).inv := by
   dsimp only [pointedKanDiagramInverseHomotopy]
-  rw [diagramFunctorEdge_homotopy_roundtrip, FunctorIso.edge_homMk]
+  rw [diagramFunctorEdge_homotopy_roundtrip, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.edge_homMk]
   rfl
 
 /-- 元の比較と全体逆は、源の恒等円柱を第三辺に持つ実三角形をなす。 -/
 lemma pointedKanDiagramInverse_leftTriangle_nonempty {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
-    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (η.app i).right) :
-    Nonempty (FunctorCompositionTriangle (pointedKanDiagramHomotopy hF hG η)
+    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (η.app i).right) :
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle (pointedKanDiagramHomotopy hF hG η)
       (pointedKanDiagramInverseHomotopy hF hG η hη)
-      (functorHomotopyRefl (pointedKanCoherentDiagram F hF))) := by
-  apply nonempty_functorCompositionTriangle_of_homEq
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl (pointedKanCoherentDiagram F hF))) := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.nonempty_functorCompositionTriangle_of_homEq
   rw [pointedKanDiagramInverseHomotopy_hom, ← pointedKanDiagramFunctorIso_hom hF hG η hη,
-    functorHomotopyRefl_hom]
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl_hom]
   exact (pointedKanDiagramFunctorIso hF hG η hη).hom_inv_id
 
 /-- 全体逆と元の比較は、標的の恒等円柱を第三辺に持つ実三角形をなす。 -/
 lemma pointedKanDiagramInverse_rightTriangle_nonempty {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
-    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (η.app i).right) :
-    Nonempty (FunctorCompositionTriangle (pointedKanDiagramInverseHomotopy hF hG η hη)
+    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (η.app i).right) :
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle (pointedKanDiagramInverseHomotopy hF hG η hη)
       (pointedKanDiagramHomotopy hF hG η)
-      (functorHomotopyRefl (pointedKanCoherentDiagram G hG))) := by
-  apply nonempty_functorCompositionTriangle_of_homEq
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl (pointedKanCoherentDiagram G hG))) := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.nonempty_functorCompositionTriangle_of_homEq
   rw [pointedKanDiagramInverseHomotopy_hom, ← pointedKanDiagramFunctorIso_hom hF hG η hη,
-    functorHomotopyRefl_hom]
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl_hom]
   exact (pointedKanDiagramFunctorIso hF hG η hη).inv_hom_id
 
 /-- 恒等円柱から元の模型へ戻した点つき射は恒等射そのもの。 -/
 lemma pointedKanDiagramHomotopyMapAt_refl {I : Type u} [SmallCategory I]
     (F : I ⥤ PointedSimplicialSet.{u}) (hF : ∀ i, KanComplex (F.obj i).right) (i : I) :
     pointedKanDiagramHomotopyMapAt hF hF
-      (functorHomotopyRefl (pointedKanCoherentDiagram F hF)) i = 𝟙 (F.obj i) := by
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl (pointedKanCoherentDiagram F hF)) i = 𝟙 (F.obj i) := by
   let e := pointedKanDiagramHomotopyEdgeAt hF hF
-    (functorHomotopyRefl (pointedKanCoherentDiagram F hF)) i
-  have he : e = coherentNerveEdge (𝟙 ((pointedKanDiagram F hF).obj i)) := by
-    rw [coherentNerveEdge_id]
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl (pointedKanCoherentDiagram F hF)) i
+  have he : e = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 ((pointedKanDiagram F hF).obj i)) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_id]
     apply SSet.Edge.ext
     change (pointedKanCoherentDiagram F hF).app (Opposite.op ⦋1⦌)
-      (((SSet.uliftFunctor.{u+1,u}).obj (nerve I)).σ 0 (ULift.up (nerveVertex i))) =
-        PointedKanInfinity.σ 0 (coherentNerveVertex ((pointedKanDiagram F hF).obj i))
+      (((SSet.uliftFunctor.{u+1,u}).obj (nerve I)).σ 0 (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))) =
+        PointedKanInfinity.σ 0 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((pointedKanDiagram F hF).obj i))
     rw [σ_naturality_apply]
     exact congrArg (PointedKanInfinity.σ 0)
-      (HomotopyLimits.strictCoherentDiagram_vertex (pointedKanDiagram F hF) i)
-  change (coherentNerveEdgeToHom e).hom = _
-  rw [he, coherentNerveEdgeToHom_edge]
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram_vertex (pointedKanDiagram F hF) i)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom e).hom = _
+  rw [he, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom_edge]
   rfl
 
 /-- 対象で回収した全体逆は、元の比較の左逆の点つき成分を持つ。 -/
 lemma pointedKanDiagramInverse_left_component {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
-    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (η.app i).right) (i : I) :
+    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (η.app i).right) (i : I) :
     componentOf (η.app i ≫ pointedKanDiagramHomotopyMapAt hG hF
       (pointedKanDiagramInverseHomotopy hF hG η hη) i) = componentOf (𝟙 (F.obj i)) := by
   obtain ⟨T⟩ := pointedKanDiagramInverse_leftTriangle_nonempty hF hG η hη
@@ -112,7 +112,7 @@ lemma pointedKanDiagramInverse_left_component {I : Type u} [SmallCategory I]
 lemma pointedKanDiagramInverse_right_component {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
-    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (η.app i).right) (i : I) :
+    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (η.app i).right) (i : I) :
     componentOf (pointedKanDiagramHomotopyMapAt hG hF
       (pointedKanDiagramInverseHomotopy hF hG η hη) i ≫ η.app i) = componentOf (𝟙 (G.obj i)) := by
   obtain ⟨T⟩ := pointedKanDiagramInverse_rightTriangle_nonempty hF hG η hη

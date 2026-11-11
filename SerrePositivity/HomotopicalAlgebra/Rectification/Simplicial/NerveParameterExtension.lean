@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.FixedBoundaryExtensions
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveRelativeValueExtension
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceSpace
@@ -74,7 +74,7 @@ variable [ModelCategory SSet.{v}]
 include hcof hfib hp in
 lemma restriction_trivialFibration {A K : SSet.{v}} (i : A ⟶ K) [Mono i] (d : D) :
     trivialFibrations SSet.{v} ((restriction F i).app d) :=
-  RelativeChoiceSpace.restriction_trivialFibration hcof hfib i
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.restriction_trivialFibration hcof hfib i
     ((NerveCoherentExtension.projection F).app d) (hp d)
 
 variable {A K : SSet.{v}} (i : A ⟶ K) [Mono i]

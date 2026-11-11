@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentReverseSlicePost
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentHomSlicePost
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionReverse
-public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionReverse
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.VertexFiberMap
 
 /-!
 概要：反対左 coslice の後合成を fiber に降ろし、元の反転 Hom 比較を保つ。

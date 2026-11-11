@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoconeIntervalTransportUnit
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeIntervalTransportUnit
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoconeIntervalFiberTransport
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCurryPointVertex
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorCurryPointVertex
 
 /-!
 概要：元の区間 Hom 比較の成分の両端を、同じ単位と同じ係数制限の実射の頂点へ戻す。

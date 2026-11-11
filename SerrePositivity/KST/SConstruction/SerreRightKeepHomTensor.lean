@@ -16,7 +16,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 次元を明示した元の面の右端保持は、同じ面の右 tensor。 -/
 lemma serreRightKeepHomTensor_face (b : Bool) (n : ℕ) (i : Fin (n + 1)) :
-    (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b n i)) =
+    (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace b n i)) =
       serreCubeRightTensorMap A (n := n) (m := n + 1) (serreCubeFace A b n i) := by
   have h0 := (congrArg (fun k => (serreConcreteCubeFunctor A).map k)
     (concreteCubeRightKeepHom_face b n i)).trans
@@ -25,7 +25,7 @@ lemma serreRightKeepHomTensor_face (b : Bool) (n : ℕ) (i : Fin (n + 1)) :
 
 /-- 次元を明示した元の削除の右端保持は、同じ削除の右 tensor。 -/
 lemma serreRightKeepHomTensor_degeneracy (n : ℕ) (i : Fin (n + 1)) :
-    (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy n i)) =
+    (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeDegeneracy n i)) =
       serreCubeRightTensorMap A (n := n + 1) (m := n) (serreCubeDegeneracy A n i) := by
   have h0 := (congrArg (fun k => (serreConcreteCubeFunctor A).map k)
     (concreteCubeRightKeepHom_degeneracy n i)).trans
@@ -34,7 +34,7 @@ lemma serreRightKeepHomTensor_degeneracy (n : ℕ) (i : Fin (n + 1)) :
 
 /-- 次元を明示した元の connection の右端保持は、同じ connection の右 tensor。 -/
 lemma serreRightKeepHomTensor_connection (n : ℕ) (i : Fin (n + 1)) :
-    (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection n i)) =
+    (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeConnection n i)) =
       serreCubeRightTensorMap A (n := n + 2) (m := n + 1) (serreCubeConnection A n i) := by
   have h0 := (congrArg (fun k => (serreConcreteCubeFunctor A).map k)
     (concreteCubeRightKeepHom_connection n i)).trans

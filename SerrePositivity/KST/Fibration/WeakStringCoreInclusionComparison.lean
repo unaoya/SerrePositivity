@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 元の core S 包含は、相対 S の実比較の後で元の定数 W 列の core S 実現になる。 -/
 theorem relativeSWeakStringCoreComparison_coreInclusion
-    {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+    {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     AnodyneHomotopy.anodyneQ.map (simplicialDiagonalFunctor.map
       (relativeSimplicialSConstructionCoreInclusion q.hom)) ≫
       AnodyneHomotopy.anodyneQ.map (relativeSWeakStringCoreComparison q) =
@@ -38,7 +38,7 @@ theorem relativeSWeakStringCoreComparison_coreInclusion
   exact congrArg Q.map h
 
 /-- 同じ定数包含を core S と単回反復実現の座標同型が保つ。 -/
-lemma weakStringConstantDiagonal_coreSingle {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+lemma weakStringConstantDiagonal_coreSingle {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     (coreSingleRealizationIso (sInputModel B)).hom ≫
       weakStringRealizationConstantDiagonal (multiRealizationFunctor 1) q =
         weakStringRealizationConstantDiagonal coreSRealizationFunctor q ≫
@@ -51,7 +51,7 @@ lemma weakStringConstantDiagonal_coreSingle {B C : _root_.SerrePositivity.Infini
 
 /-- 元の core 包含は、有限加法性と同じ単回反復実現への実比較でも同じ定数包含になる。 -/
 theorem relativeSWeakStringMultiComparison_coreInclusion
-    {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+    {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     AnodyneHomotopy.anodyneQ.map (simplicialDiagonalFunctor.map
       (relativeSimplicialSConstructionCoreInclusion q.hom)) ≫
       AnodyneHomotopy.anodyneQ.map (relativeSWeakStringMultiComparison q) =

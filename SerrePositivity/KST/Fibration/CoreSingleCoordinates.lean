@@ -21,7 +21,7 @@ theorem coreSingleRealization_obj_eq (X : StableModel.{u}) :
   apply CategoryTheory.Functor.ext (fun _ => rfl)
 
 /-- 同じ元の完全関手の core S 実現射は、既存の通常の実現関手の射である。 -/
-theorem coreSExactMap_realization_eq {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
+theorem coreSExactMap_realization_eq {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) :
     simplicialDiagonalFunctor.map (coreSExactMap f) =
       coreSRealizationFunctor.map (stableExactInputMap f) := rfl
 

@@ -49,7 +49,7 @@ variable (K P : SSet.{v})
 
 abbrev family : SimplexCategory ⥤ SSet.{v} := SSet.stdSimplex ⋙ tensorLeft K
 
-abbrev obj : SSet.{v} := (HomotopyFunctionComplex.cosimplicialHom (family K)).obj P
+abbrev obj : SSet.{v} := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (family K)).obj P
 
 def nativeEquiv (n : SimplexCategory) :
     (K ⊗ SSet.stdSimplex.obj n ⟶ P) ≃ ((ihom K).obj P).obj (Opposite.op n) :=

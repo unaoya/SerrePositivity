@@ -59,7 +59,7 @@ def coherentSimplexCompositionEdge {C : Type v} [Category.{u} C] [SimplicialCate
   refine e.ofEq ?_ ?_
   · simp only [coherentSimplexArrow, Equiv.apply_symm_apply]
     rfl
-  · rw [simplicialHom_vertex_comp]
+  · rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialHom_vertex_comp]
     simp only [coherentSimplexArrow, Equiv.apply_symm_apply]
     exact ConcreteCategory.congr_hom
       (NatTrans.congr_app (s.map_comp a b c) (Opposite.op ⦋0⦌))

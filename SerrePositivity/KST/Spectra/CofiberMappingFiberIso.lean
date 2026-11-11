@@ -30,9 +30,9 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7、VIII §1。写像空間の fiber の商による表示。 -/
 theorem cofiberMappingFiber_isPullback {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
     (Z : PointedSimplicialSet.{u}) :
-    IsPullback (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (pointedCofiberProjection i) Z)
+    IsPullback (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (pointedCofiberProjection i) Z)
       (terminal.from (PointedObject.basedHom (pointedCofiber i) Z).right)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Z)
       (SSet.const (X := ⊤_ SSet.{u})
         (PointedSimplicialSet.basepoint (PointedObject.basedHom X Z))) := by
   let T := PointedObject.basedHom (PointedObject.point : PointedSimplicialSet.{u}) Z
@@ -45,11 +45,11 @@ theorem cofiberMappingFiber_isPullback {X Y : PointedSimplicialSet.{u}} (i : X �
   · simp
   · let : IsIso T.hom := isIso_of_isTerminal isTerminalTensorUnit (homPointIsTerminal Z) _
     apply (cancel_epi T.hom).mp
-    have hw : T.hom ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedObject.toPoint X) Z = B.hom :=
-      Under.w (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.toPoint X) Z)
+    have hw : T.hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedObject.toPoint X) Z = B.hom :=
+      Under.w (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.toPoint X) Z)
     have hc : SSet.const (X := 𝟙_ SSet.{u}) B.basepoint = B.hom := by
       simpa only [toUnit_unit, Category.id_comp] using
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const B (𝟙_ SSet.{u})).symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const B (𝟙_ SSet.{u})).symm
     exact hw.trans (by rw [SSet.comp_const, SSet.comp_const, hc])
 
 /-- 概要：cofiber からの Hom と制限射の基点 fiber の実際の同型。
@@ -59,7 +59,7 @@ theorem cofiberMappingFiber_isPullback {X Y : PointedSimplicialSet.{u}} (i : X �
 def cofiberMappingFiberIso {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
     (Z : PointedSimplicialSet.{u}) :
     (PointedObject.basedHom (pointedCofiber i) Z).right ≅
-      _root_.SerrePositivity.InfinityCategories.Kan.KanFiber (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanFiber (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Z)
         (PointedSimplicialSet.basepoint (PointedObject.basedHom X Z)) :=
   (cofiberMappingFiber_isPullback i Z).isoPullback
 
@@ -67,9 +67,9 @@ def cofiberMappingFiberIso {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
 lemma cofiberMappingFiberIso_hom_ι {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
     (Z : PointedSimplicialSet.{u}) :
     (cofiberMappingFiberIso i Z).hom ≫
-        _root_.SerrePositivity.InfinityCategories.Kan.fiberι (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Z)
           (PointedSimplicialSet.basepoint (PointedObject.basedHom X Z)) =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (pointedCofiberProjection i) Z :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (pointedCofiberProjection i) Z :=
   (cofiberMappingFiber_isPullback i Z).isoPullback_hom_fst
 
 end

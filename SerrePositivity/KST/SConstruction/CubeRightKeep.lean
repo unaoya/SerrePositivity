@@ -11,35 +11,35 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の頂点写像に右端の一入力の保持を添える。 -/
-def cubeVertexRightKeep {n m : ℕ} (f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (n + 1) → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (m + 1) :=
+def cubeVertexRightKeep {n m : ℕ} (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m) :
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex (n + 1) → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex (m + 1) :=
   fun x => Fin.cons (x 0) (f (fun j => x j.succ))
 
 /-- 右端入力の保持は元の恒等関数を保つ。 -/
 lemma cubeVertexRightKeep_id (n : ℕ) :
-    cubeVertexRightKeep (_root_.id : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) = _root_.id := by
+    cubeVertexRightKeep (_root_.id : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n) = _root_.id := by
   funext x
   exact Fin.cons_self_tail x
 
 /-- 右端入力の保持は元の関数合成を保つ。 -/
-lemma cubeVertexRightKeep_comp {n m k : ℕ} (f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m)
-    (g : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex k) :
+lemma cubeVertexRightKeep_comp {n m k : ℕ} (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m)
+    (g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex k) :
     cubeVertexRightKeep (g ∘ f) = cubeVertexRightKeep g ∘ cubeVertexRightKeep f := by
   funext x j
   refine Fin.cases rfl (fun j => rfl) j
 
 /-- 右端入力の保持は、元の面の同じ座標を一つずらす。 -/
 lemma cubeVertexRightKeep_face (b : Bool) (n : ℕ) (i : Fin (n + 1)) :
-    cubeVertexRightKeep (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b n i) = _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b (n + 1) i.succ := by
+    cubeVertexRightKeep (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b n i) = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b (n + 1) i.succ := by
   funext x
   conv_rhs => rw [← Fin.cons_self_tail x]
-  simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_succ_cons, cubeVertexRightKeep]
+  simp only [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace, Fin.insertNth_succ_cons, cubeVertexRightKeep]
   rfl
 
 /-- 右端入力の保持は、元の削除の同じ座標を一つずらす。 -/
 lemma cubeVertexRightKeep_degeneracy (n : ℕ) (i : Fin (n + 1)) :
-    cubeVertexRightKeep (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy n i) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy (n + 1) i.succ := by
+    cubeVertexRightKeep (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy n i) =
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy (n + 1) i.succ := by
   funext x
   conv_rhs => rw [← Fin.cons_self_tail x]
   rw [cubeVertexDegeneracy_cons]
@@ -47,16 +47,16 @@ lemma cubeVertexRightKeep_degeneracy (n : ℕ) (i : Fin (n + 1)) :
 
 /-- 右端入力の保持は、元の connection の同じ座標を一つずらす。 -/
 lemma cubeVertexRightKeep_connection (n : ℕ) (i : Fin (n + 1)) :
-    cubeVertexRightKeep (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection n i) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection (n + 1) i.succ := by
+    cubeVertexRightKeep (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection n i) =
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection (n + 1) i.succ := by
   funext x
   conv_rhs => rw [← Fin.cons_self_tail x]
   rw [cubeVertexConnection_cons]
   rfl
 
 /-- 元の生成関数は右端入力の保持で閉じる。 -/
-lemma cubeMapGenerated_rightKeep {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
-    (h : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (cubeVertexRightKeep f) := by
+lemma cubeMapGenerated_rightKeep {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m}
+    (h : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeMapGenerated f) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeMapGenerated (cubeVertexRightKeep f) := by
   induction h with
   | id n => rw [cubeVertexRightKeep_id]; exact .id _
   | face b n i => rw [cubeVertexRightKeep_face]; exact .face _ _ _
@@ -65,7 +65,7 @@ lemma cubeMapGenerated_rightKeep {n m : ℕ} {f : _root_.SerrePositivity.Infinit
   | comp hf hg ihf ihg => rw [cubeVertexRightKeep_comp]; exact .comp ihf ihg
 
 /-- 具体的な立方体圏の元の右端入力保持関手。 -/
-def concreteCubeRightKeep : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube ⥤ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube where
+def concreteCubeRightKeep : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube ⥤ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube where
   obj X := ⟨X.dimension + 1⟩
   map f := ⟨cubeVertexRightKeep f.val, cubeMapGenerated_rightKeep f.property⟩
   map_id X := Subtype.ext (cubeVertexRightKeep_id X.dimension)

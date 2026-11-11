@@ -78,14 +78,14 @@ lemma monicKTracedCompositionRecoveryCylinderRealization_second :
 
 /-- 第一の元の実比較三角形全体も、同じ高次比較の指定面として保持する。 -/
 lemma monicKTracedCompositionRecoveryCylinderRealization_first_triangle :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 1) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 1) ≫
         monicKTracedCompositionRecoveryCylinderRealization F f g =
       SSet.yonedaEquiv.symm (monicKTracedCompositionRecovery F f g).first.simplex :=
   endpointFixedDiamondComparisonRealization_first_triangle _
 
 /-- 第二の元の実比較三角形全体も、同じ高次比較の指定面として保持する。 -/
 lemma monicKTracedCompositionRecoveryCylinderRealization_second_triangle :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 0) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 0) ≫
         monicKTracedCompositionRecoveryCylinderRealization F f g =
       SSet.yonedaEquiv.symm (monicKTracedCompositionRecovery F f g).second.simplex :=
   endpointFixedDiamondComparisonRealization_second_triangle _

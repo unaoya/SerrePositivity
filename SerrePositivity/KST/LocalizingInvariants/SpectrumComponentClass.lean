@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumHomotopyClass
-public import SerrePositivity.InfinityCategories.F1.Coherent.EnrichedHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.EnrichedHomotopy
 
 /-!
 概要：元の BF 写像空間の成分の等式を h Sp の射の等式へ移す。
@@ -35,7 +35,7 @@ lemma hom_eq_of_component_eq {X Y : OmegaSpectrum.{u}} (f g : X ⟶ Y)
       π₀.mk (SimplicialCategory.homEquiv' X Y g) := by
     rw [hv, hv]
     exact h
-  obtain ⟨e⟩ := F2.coherentVertexIso_of_piZero_eq hp
-  exact coherentNerveEdge_homMk_eq_of_enrichedVertexIso e
+  obtain ⟨e⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coherentVertexIso_of_piZero_eq hp
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentNerveEdge_homMk_eq_of_enrichedVertexIso e
 
 end SerrePositivity.KST.LocalizingInvariants.SpectrumHo

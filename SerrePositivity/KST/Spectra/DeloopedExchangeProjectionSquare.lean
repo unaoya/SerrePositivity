@@ -19,7 +19,7 @@ namespace SerrePositivity.KST.Spectra.LoopExchangePaths
 
 variable {Y Z : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Z.right]
   (h : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z)
-  (hh : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism h.right)
+  (hh : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism h.right)
 
 /-- 元の Ω 対象の交換区間の像と、同じ普遍交換区間を結ぶ実正方形。 -/
 def exchangeProjectionSquare :

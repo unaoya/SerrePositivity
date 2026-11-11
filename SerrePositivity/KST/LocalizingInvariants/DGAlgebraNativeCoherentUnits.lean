@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeOrdinaryHomKan
-public import SerrePositivity.InfinityCategories.F2.Presentable.KanDiagramBundle
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentUnderlyingHo
-public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningSimplexRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.KanDiagramBundle
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentUnderlyingHo
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexRestriction
 
 /-!
 概要：実 frame の元の単位を、全標的の coherent 図式間の射として保持する。
@@ -25,44 +25,44 @@ variable (R : Type u) [CommRing R]
 
 /-- 元の提示上の全 Kan 図式を、同じ全図式関手空間のホモトピー圏へ実現する。 -/
 def nativeKanDiagramRealizationFunctor :
-    (InfinityPresentation R ⥤ KanObject.{u + 1}) ⥤
+    (InfinityPresentation R ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u + 1}) ⥤
       hoFunctor.obj ((ihom ((SSet.uliftFunctor.{u + 2, u + 1}).obj
-        (nerve (InfinityPresentation R)))).obj SpaceInfinity.{u + 1}) :=
-  let F := F2.Presentable.kanDiagramBundle ⋙
-    HomotopyLimits.coherentUnderlyingHoFunctor (KanDiagramObject (InfinityPresentation R)) ⋙
-    (hoFunctor.map (kanDiagramRealization (InfinityPresentation R))).toFunctor
-  F.copyObj (fun D => HomotopyCategory.mk (functorVertex (kanDiagramCoherentNerve D)))
+        (nerve (InfinityPresentation R)))).obj _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u + 1}) :=
+  let F := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.kanDiagramBundle ⋙
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coherentUnderlyingHoFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanDiagramObject (InfinityPresentation R)) ⋙
+    (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramRealization (InfinityPresentation R))).toFunctor
+  F.copyObj (fun D => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve D)))
     (fun D => eqToIso (congrArg HomotopyCategory.mk
-      (kanDiagramRealization_vertex ⟨D, trivial⟩)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramRealization_vertex ⟨D, trivial⟩)))
 
 lemma nativeKanDiagramRealizationFunctor_map
-    {F G : InfinityPresentation R ⥤ KanObject.{u + 1}} (η : F ⟶ G) :
+    {F G : InfinityPresentation R ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u + 1}} (η : F ⟶ G) :
     (nativeKanDiagramRealizationFunctor R).map η =
       Truncated.HomotopyCategory.homMk
-        (kanDiagramNaturalTransformationEdge
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramNaturalTransformationEdge
           (F := ⟨F, trivial⟩) (G := ⟨G, trivial⟩)
-          (Functor.whiskerRight η kanObjectForget)).toTruncated := by
+          (Functor.whiskerRight η _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget)).toTruncated := by
   change _ = Truncated.HomotopyCategory.homMk
-    (((coherentNerveEdge (kanDiagramHom (Functor.whiskerRight η kanObjectForget))).map
-      (kanDiagramRealization (InfinityPresentation R))).ofEq
-        (kanDiagramRealization_vertex ⟨F, trivial⟩)
-        (kanDiagramRealization_vertex ⟨G, trivial⟩)).toTruncated
-  erw [homMk_edge_ofEq]
+    (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramHom (Functor.whiskerRight η _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget))).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramRealization (InfinityPresentation R))).ofEq
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramRealization_vertex ⟨F, trivial⟩)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramRealization_vertex ⟨G, trivial⟩)).toTruncated
+  erw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homMk_edge_ofEq]
   rfl
 
 /-- 元の全標的自然変換を、同じ ULiftHom 提示の Kan 値自然変換として保持する。 -/
 def nativePresentationKanTransformation
-    {F G : Mon (Complex R) ⥤ KanObject.{u + 1}}
-    (η : F ⋙ kanObjectForget ⟶ G ⋙ kanObjectForget) :
+    {F G : Mon (Complex R) ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u + 1}}
+    (η : F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget ⟶ G ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget) :
     (ULiftHom.down : InfinityPresentation R ⥤ _) ⋙ F ⟶
       (ULiftHom.down : InfinityPresentation R ⥤ _) ⋙ G where
   app B := η.app B.objDown
   naturality _B _C f := η.naturality f.down
 
 lemma nativeMixedPresentationIso_hom
-    (F G : Mon (Complex R) ⥤ KanObject.{u + 1})
-    (η : F ⋙ kanObjectForget ⟶ G ⋙ kanObjectForget)
-    (hη : ∀ B, IsQCatEquivalence (X := (F.obj B).obj) (Y := (G.obj B).obj) (η.app B)) :
+    (F G : Mon (Complex R) ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u + 1})
+    (η : F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget ⟶ G ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget)
+    (hη : ∀ B, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (X := (F.obj B).obj) (Y := (G.obj B).obj) (η.app B)) :
     (nativeMixedPresentationIso R F G η hη).hom =
       (nativeKanDiagramRealizationFunctor R).map (nativePresentationKanTransformation R η) := by
   rw [nativeKanDiagramRealizationFunctor_map]
@@ -71,25 +71,25 @@ lemma nativeMixedPresentationIso_hom
 variable (A : Mon (Complex R))
 
 def nativeCellMappingCoherentUnit :
-    HomotopyCategory.mk (functorVertex
-      (kanDiagramCoherentNerve (nativeCellOrdinaryInfinityKanFunctor R A))) ⟶
-    HomotopyCategory.mk (functorVertex (multiplicativeCellMappingInfinityCoherent R A)) :=
+    HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellOrdinaryInfinityKanFunctor R A))) ⟶
+    HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (multiplicativeCellMappingInfinityCoherent R A)) :=
   (nativeKanDiagramRealizationFunctor R).map
     (nativePresentationKanTransformation R (nativeCellMappingUnitLarge R A))
 
 def nativeCellSourceFrameMappingCoherentUnit :
-    HomotopyCategory.mk (functorVertex
-      (kanDiagramCoherentNerve (nativeCellOrdinaryInfinityKanFunctor R A))) ⟶
-    HomotopyCategory.mk (functorVertex
-      (kanDiagramCoherentNerve (nativeCellSourceFrameInfinityKanFunctor R A))) :=
+    HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellOrdinaryInfinityKanFunctor R A))) ⟶
+    HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellSourceFrameInfinityKanFunctor R A))) :=
   (nativeKanDiagramRealizationFunctor R).map
     (nativePresentationKanTransformation R (nativeCellSourceFrameMappingUnitLarge R A))
 
 def nativeCellChosenRightMappingCoherentUnit :
-    HomotopyCategory.mk (functorVertex
-      (kanDiagramCoherentNerve (nativeCellOrdinaryInfinityKanFunctor R A))) ⟶
-    HomotopyCategory.mk (functorVertex
-      (kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))) :=
+    HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellOrdinaryInfinityKanFunctor R A))) ⟶
+    HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))) :=
   (nativeKanDiagramRealizationFunctor R).map
     (nativePresentationKanTransformation R (nativeCellChosenRightMappingUnitLarge R A))
 

@@ -23,8 +23,8 @@ open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
   {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
-  [LeftFibration (roofTargetProjection A Y q)]
-  {S : SSet.{u}} (f : S ⟶ sliceOverCorner (SSet.yonedaEquiv.symm b)
+  [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (roofTargetProjection A Y q)]
+  {S : SSet.{u}} (f : S ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b)
     (roofTargetProjection A Y q))
 
 lemma roofCornerEvaluationLeftHomotopy_h_base :
@@ -34,12 +34,12 @@ lemma roofCornerEvaluationLeftHomotopy_h_base :
         (f ≫ roofCornerNormalizationMap A Y q b)).h ≫
       nerveMap (Over.forget (roofTargetDegree A Y q b)) ≫ nerveMap A ≫ q := by
   have hraw := pullback.condition
-    (f := sliceOverProjection (SSet.yonedaEquiv.symm (nerveVertex Y) ≫ q))
+    (f := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y) ≫ q))
     (g := nerveMap A ≫ q)
   have hnorm := pullback.condition (f := roofTargetProjection A Y q)
     (g := nerveMap (Over.forget (roofTargetDegree A Y q b)))
   change ((f ▷ (Δ[1] : SSet.{u})) ≫ (roofCornerEvaluationSliceHomotopy A Y q b).h) ≫
-    sliceOverProjection (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (nerveVertex Y))) = _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))) = _
   rw [roofCornerEvaluationSliceHomotopy_h, terminalFiberBaseHomotopy_h]
   simp only [Category.assoc, comp_whiskerRight, roofTargetSlicePointIso_projection]
   rw [hraw, reassoc_of% hnorm]

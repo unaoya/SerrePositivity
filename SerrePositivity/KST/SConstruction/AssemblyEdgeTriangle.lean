@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.ObjectAssemblySimplex
-public import SerrePositivity.InfinityCategories.Core.HomotopyNatTrans
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.HomotopyNatTrans
 
 /-! # 対角の辺と内部の頂点の辺を結ぶ組み立ての三角形
 概要：区間の積の三角形と対角組み立てを照合する。

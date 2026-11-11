@@ -24,7 +24,7 @@ private lemma transportedAddArrow (s t q : ℤ) (h : s + t = q) (M : RightModule
 方針：加群型を展開せず整数和を先に輸送する。
 規約：元比較を保持。使われ方：指定相殺の第一因子。 -/
 def dgModuleShiftAddInvSpecifiedComparison :
-    StrictNatTrans ((moduleShiftDG R D 1).comp (moduleShiftDG R D (-1)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans ((moduleShiftDG R D 1).comp (moduleShiftDG R D (-1)))
       (moduleShiftDG R D 0) :=
   (show (1 : ℤ) + (-1) = 0 from rfl) ▸ dgModuleShiftAddInvStrictComparison R D 1 (-1)
 

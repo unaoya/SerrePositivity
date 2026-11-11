@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.FreeActionFunctionPre
 public import SerrePositivity.KST.Spectra.FunctionComplexIsoFormula
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedRestriction
 
 /-!
 概要：自由作用の end の関数複体表示と自由軌道の射による前合成の整合性。
@@ -16,7 +16,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedRestrict
 universe u
 
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.FreeActionFamily
 
@@ -32,13 +32,13 @@ variable {G : Type u} [Group G]
 規約：添字集合と係数の Kan 性は仮定しない。
 使われ方：Goerss–Jardine VIII §2。非斉次 cochain の単体集合としての表示。 -/
 def functionIso (S : Type u) (B : Action SSet.{u} G) :
-    weightedSections (weight S) (coefficients B) ≅ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S B.V :=
-  endIso S B ≪≫ _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.iso S B.V
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (weight S) (coefficients B) ≅ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.obj S B.V :=
+  endIso S B ≪≫ _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.iso S B.V
 
 lemma comp_functionIso (S : Type u) (B : Action SSet.{u} G) {A : SSet.{u}}
-    (t : A ⟶ weightedSections (weight S) (coefficients B)) :
+    (t : A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (weight S) (coefficients B)) :
     t ≫ (functionIso S B).hom =
-      _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions S B.V (restrict S B (weightedSectionsUncurry t)) := by
+      _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.toFunctions S B.V (restrict S B (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry t)) := by
   rw [functionIso, Iso.trans_hom, ← Category.assoc, comp_endIso,
     homEquiv_apply, DiscreteInternalHom.comp_iso, uncurry_curry]
 
@@ -46,10 +46,10 @@ lemma functionPre_restrict {S T : Type u}
     (θ : (Action.leftRegular G ⊗ Action.trivial G T) ⟶
       (Action.leftRegular G ⊗ Action.trivial G S)) (B : Action SSet.{u} G) {A : SSet.{u}}
     (t : weight S ⊗ (Functor.const (AsSmall.{u} (SingleObj G))).obj A ⟶ coefficients B) :
-    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions T B.V (restrict T B
+    _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.toFunctions T B.V (restrict T B
         (((GroupActionCochains.actionWeightFunctor G).map θ ▷
           (Functor.const (AsSmall.{u} (SingleObj G))).obj A) ≫ t)) =
-      _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions S B.V (restrict S B t) ≫ functionPre θ B := by
+      _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.toFunctions S B.V (restrict S B t) ≫ functionPre θ B := by
   conv_lhs => rw [← extend_restrict S B t]
   rfl
 
@@ -60,16 +60,16 @@ lemma functionPre_restrict {S T : Type u}
 lemma functionIso_pre {S T : Type u}
     (θ : (Action.leftRegular G ⊗ Action.trivial G T) ⟶
       (Action.leftRegular G ⊗ Action.trivial G S)) (B : Action SSet.{u} G) :
-    weightedSectionsPre ((GroupActionCochains.actionWeightFunctor G).map θ) (coefficients B) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre ((GroupActionCochains.actionWeightFunctor G).map θ) (coefficients B) ≫
         (functionIso T B).hom =
       (functionIso S B).hom ≫ functionPre θ B := by
   rw [comp_functionIso]
-  have hu := weightedSectionsUncurry_comp_pre
+  have hu := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_comp_pre
     ((GroupActionCochains.actionWeightFunctor G).map θ)
-    (𝟙 (weightedSections (weight S) (coefficients B)))
+    (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (weight S) (coefficients B)))
   simp only [Category.id_comp] at hu
   rw [hu, functionPre_restrict]
-  have h := comp_functionIso S B (𝟙 (weightedSections (weight S) (coefficients B)))
+  have h := comp_functionIso S B (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (weight S) (coefficients B)))
   simp only [Category.id_comp] at h
   rw [h]
 

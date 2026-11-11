@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：一つの通常の退化で表示し、その添字と閾値を比較する。
 規約：Moss 2020 Lemma 28 の退化性の部分。
 使われ方：regular pairing の型 II の条件。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

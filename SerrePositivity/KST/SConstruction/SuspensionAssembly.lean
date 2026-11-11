@@ -57,7 +57,7 @@ lemma multiDiagonalAssembly_zeroCylinder_condition (r : ℕ) (X : StableModel.{u
 規約：L9 の円と suspension の定義そのものを使う。使われ方：反復間の構造射の比較。
 -/
 def oneDirectionSuspensionAssembly (r : ℕ) (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (oneDirectionReducedRealization r X) ⟶ boundaryReducedRealization (r + 1) X :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (oneDirectionReducedRealization r X) ⟶ boundaryReducedRealization (r + 1) X :=
   rawCofiberTensorDesc (boundary.{u} 1).ι (oneDirectionFatBoundary (r + 1) X).ι
     (boundaryReducedRealization (r + 1) X)
     (multiDiagonalAssembly (r + 1) X ≫ boundaryReductionQuotient (r + 1) X)
@@ -70,7 +70,7 @@ def oneDirectionSuspensionAssembly (r : ℕ) (X : StableModel.{u}) :
 def oneDirectionSuspensionProjection (r : ℕ) (X : StableModel.{u}) :
     PointedObject.adjoin (Δ[1] : SSet.{u}) ⊗
       PointedObject.adjoin ((oneDirectionRealizationFunctor (r + 1)).obj X) ⟶
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (oneDirectionReducedRealization r X) :=
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (oneDirectionReducedRealization r X) :=
   PointedObject.cofiberProjection (boundary.{u} 1).ι ⊗ₘ
     PointedObject.cofiberProjection (oneDirectionFatBoundary (r + 1) X).ι
 

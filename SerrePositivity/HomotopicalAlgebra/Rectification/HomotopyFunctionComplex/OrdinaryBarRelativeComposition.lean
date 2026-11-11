@@ -47,11 +47,11 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   (hcof : HomotopicalAlgebra.cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
   (hfib : HomotopicalAlgebra.fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
   (P : SSet.{max u v}) {T : SSet.{v}} {X Y Z : D C}
-  (j : UniverseLift.obj.{max u v} T ⟶ P)
-  (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
-  (g : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C Y Z)
-  (c : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X Y)
-  (d : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P Y Z)
+  (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+  (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
+  (g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C Y Z)
+  (c : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X Y)
+  (d : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P Y Z)
 
 abbrev compositionSquare : (T ⊗ HomotopyBinarySquare.interval) ⊗
     HomotopyBinarySquare.interval ⟶ (ihom (small hcof hfib X)).obj (small hcof hfib Z) :=
@@ -64,7 +64,7 @@ def compositionComparison : SSet.Homotopy
         MonoidalClosed.comp (small hcof hfib X) (small hcof hfib Y) (small hcof hfib Z))
     (OrdinaryBarDiagonalClosedAction.nativeFamily hcof hfib P j
       (lift f g ≫ OrdinaryBarFixedWordResolution.composition C X Y Z)) :=
-  LargeParameterSquare.changeEndpoints
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints
     (ClosedHomotopyComposition.comp (nativeRestrictionComparison hcof hfib P j f c)
       (nativeRestrictionComparison hcof hfib P j g d)) rfl
     (OrdinaryBarDiagonalClosedAction.nativeFamily_comp hcof hfib P j f g).symm
@@ -101,15 +101,15 @@ lemma compositionSquare_inner_one : (SSet.ι₁ (X := T)) ▷ HomotopyBinarySqua
 
 lemma compositionSquare_diagonal : HomotopyBinarySquare.diagonal T ≫
     compositionSquare hcof hfib P j f g c d = (compositionComparison hcof hfib P j f g c d).h := by
-  simp only [compositionComparison, LargeParameterSquare.changeEndpoints_h]
+  simp only [compositionComparison, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
   exact HomotopyBinarySquare.diagonal_square _ _ _
 
 lemma compositionComparison_substitute {U : SSet.{v}} (i : U ⟶ T) :
-    (compositionComparison hcof hfib P (UniverseLift.map i ≫ j)
-      (UniverseLift.map i ≫ f) (UniverseLift.map i ≫ g)
-      (UniverseLift.map i ≫ c) (UniverseLift.map i ≫ d)).h =
+    (compositionComparison hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ f) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ g)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ c) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ d)).h =
       i ▷ HomotopyBinarySquare.interval ≫ (compositionComparison hcof hfib P j f g c d).h := by
-  simp only [compositionComparison, LargeParameterSquare.changeEndpoints_h]
+  simp only [compositionComparison, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
   change lift _ _ ≫ MonoidalClosed.comp _ _ _ = i ▷ _ ≫ (lift _ _ ≫ _)
   rw [nativeRestrictionComparison_substitute, nativeRestrictionComparison_substitute,
     ← Category.assoc, comp_lift]

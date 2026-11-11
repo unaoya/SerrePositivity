@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：退化写像による像に、必要な場合だけ初期区間 [0,k] を加える。
 規約：Moss 2020 Definition 25、Lemma 26 (1)。Segal 1974 Proposition 1.6 の補助。
 使われ方：Ex の単体の regular pairing の対応先を作る。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

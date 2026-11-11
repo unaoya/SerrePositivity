@@ -48,7 +48,7 @@ def oneDirectionInverseInputIdentityChoicesIso {I : Type v} [Category.{w} I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (i : I) :
     (oneDirectionInverseInputArrowDiagram r F).obj (assemblyArrowMk (𝟙 i)) ≅
       oneDirectionKanInverseChoices r (F.obj i) :=
-  pointedLiftBaseIso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app (F.obj i)))
+  pointedLiftBaseIso (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app (F.obj i)))
     (oneDirectionInverseInputIdentity_constraint r F i)
 
 /-- 恒等入力射の比較は元の随伴射の族を全次数で厳密に回収する。 -/
@@ -67,9 +67,9 @@ lemma oneDirectionInverseInputIdentityChoicesIso_family {I : Type v} [Category.{
         pointedMappingPathInverseFamily ((oneDirectionKanComparisonNat r).app (F.obj i)) =
       oneDirectionInverseMixedFamily r (F.map (𝟙 i)) :=
   pointedLiftBaseIso_evaluation
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app (F.obj i)))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app (F.obj i)))
     (oneDirectionInverseInputIdentity_constraint r F i)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction ((oneDirectionKanComparisonNat r).app (F.obj i)))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction ((oneDirectionKanComparisonNat r).app (F.obj i)))
 
 /-- 恒等入力射の比較後に取り出す随伴射は元の混合選択の射そのもの。 -/
 lemma kanAssemblyInputIdentityChoicesIso_map {I : Type v} [Category.{w} I]

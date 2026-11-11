@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeTetrahedra
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyTetrahedronLowerSides
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.ConeHomotopyTetrahedronLowerSides
 
 /-!
 概要：Kan 錐の比較三単体の下側の側面。

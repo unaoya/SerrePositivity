@@ -37,7 +37,7 @@ def constantDiagramSourceBifunctor :
     (Complex A)ᵒᵖ ⥤ (K ⥤ (Complex A)) ⥤ SSet.{u} := by
   let := SerrePositivity.EInfinity.projectiveModelCategory A
   exact (cosimplicialResolutionFamily (carrierProbeFactorization A)).obj.op ⋙
-    cosimplicialHomBifunctor ⋙ Functor.whiskeringRight K (Complex A) SSet.{u} ⋙
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙ Functor.whiskeringRight K (Complex A) SSet.{u} ⋙
       (Functor.whiskeringRight (K ⥤ (Complex A)) (K ⥤ SSet.{u}) SSet.{u}).obj
         (WeightedCones.coneSpace K (HomotopyWeight.weight K))
 
@@ -65,7 +65,7 @@ lemma constantDiagramSourceMap_app {Y Z : (Complex A)} (f : Y ⟶ Z)
     let := SerrePositivity.EInfinity.projectiveModelCategory A
     (constantDiagramSourceMap A K f).app F =
       (WeightedCones.coneSpace K (HomotopyWeight.weight K)).map
-        (Functor.whiskerLeft F (cosimplicialHomMap
+        (Functor.whiskerLeft F (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap
           ((cosimplicialResolutionFamily (carrierProbeFactorization A)).obj.map f))) := rfl
 
 end SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram

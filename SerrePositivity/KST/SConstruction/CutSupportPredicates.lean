@@ -35,7 +35,7 @@ lemma cutLeftSupport_iff (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u})
     (v : (sConstruction n X.carrier) _⦋0⦌) :
     (cutLeftSupport n k X).predicate v ↔
       ∀ a : {a : Ar.{u} n // k ≤ a.down.val.1},
-        IsZeroVertex ((evaluateFunctorAt (ComposableArrows.mk₀ a.val)).app
+        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ComposableArrows.mk₀ a.val)).app
           (Opposite.op ⦋0⦌) v.val) :=
   Iff.rfl
 
@@ -44,29 +44,29 @@ lemma cutRightSupport_iff (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u})
     (v : (sConstruction n X.carrier) _⦋0⦌) :
     (cutRightSupport n k X).predicate v ↔
       ∀ a : {a : Ar.{u} n // a.down.val.2 ≤ k},
-        IsZeroVertex ((evaluateFunctorAt (ComposableArrows.mk₀ a.val)).app
+        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ComposableArrows.mk₀ a.val)).app
           (Opposite.op ⦋0⦌) v.val) :=
   Iff.rfl
 
 /-- S_n の全頂点の対角評価は実際の零対象。 -/
 lemma sConstructionVertex_diagonal_isZero {n : ℕ} {C : SSet.{u}}
     (v : (sConstruction n C) _⦋0⦌) (i : Fin (n + 1)) :
-    IsZeroVertex ((evaluateFunctorAt (ComposableArrows.mk₀ (arObj i i le_rfl))).app
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ComposableArrows.mk₀ (arObj i i le_rfl))).app
       (Opposite.op ⦋0⦌) v.val) := by
-  have h := evaluateFunctorAt_functorVertex (ComposableArrows.mk₀ (arObj i i le_rfl))
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex (ComposableArrows.mk₀ (arObj i i le_rfl))
     (gappedDiagram v)
-  have hv : functorVertex (gappedDiagram v) = v.val :=
-    (functorVertexEquiv _ C).apply_symm_apply v.val
+  have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram v) = v.val :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).apply_symm_apply v.val
   rw [hv] at h
-  exact (congrArg IsZeroVertex h).mpr ((gappedDiagram_isGapped v).1 i)
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex h).mpr ((gappedDiagram_isGapped v).1 i)
 
 /-- S_n の制限の頂点の任意の成分は元の添字の像での評価。 -/
 lemma sMap_evaluate_vertex {m n : ℕ} {C : SSet.{u}}
     (θ : Fin (m + 1) →o Fin (n + 1)) (v : (sConstruction n C) _⦋0⦌)
     (a : (arNerve m) _⦋0⦌) :
-    (evaluateFunctorAt (Y := C) a).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := C) a).app (Opposite.op ⦋0⦌)
         ((sMap C θ).app (Opposite.op ⦋0⦌) v).val =
-      (evaluateFunctorAt (Y := C) ((arNerveMap θ).app (Opposite.op ⦋0⦌) a)).app
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := C) ((arNerveMap θ).app (Opposite.op ⦋0⦌) a)).app
         (Opposite.op ⦋0⦌) v.val := by
   have h := ConcreteCategory.congr_hom
     (NatTrans.congr_app (sMap_gapped_evaluate C θ a) (Opposite.op ⦋0⦌)) v

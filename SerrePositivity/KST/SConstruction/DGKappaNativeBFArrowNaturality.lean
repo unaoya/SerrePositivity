@@ -30,7 +30,7 @@ lemma dgKappaNativeBFFinitePositiveComparison_naturality
         (dgKappaNativeBFFinitePositiveStage.{u, v} R D I r).comparison E =
       (dgKappaNativeBFFinitePositiveStage.{u, v} R D I r).comparison C ≫
         (dgKappaNativeBFFiniteArrow.{u, v} R D I f).app (r + 1) := by
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_naturality
+  have h := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialOrdinaryMap_naturality
     (dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I r)
     (dgKappaNativeBFFiniteLevelFunctor.{u, v} R D I (r + 1))
     (dgKappaNativeBFFinitePositiveStage.{u, v} R D I r).comparison

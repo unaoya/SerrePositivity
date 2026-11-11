@@ -118,9 +118,9 @@ abbrev vertexParameters := cornerA C ⋙ ResolutionArrowTupleCoherence.bigVertic
 abbrev smallValues := cornerD C ⋙ fibers C
 abbrev vertexInclusion : vertexParameters C ⟶ parameters C :=
   Functor.whiskerLeft (cornerA C) (ResolutionArrowTupleCoherence.bigInclusion C)
-abbrev vertexBoundary : vertexParameters C ⟶ NerveMovingParameter.lifted.{u} (smallValues C) :=
+abbrev vertexBoundary : vertexParameters C ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{u} (smallValues C) :=
   Functor.whiskerLeft (cornerA C) (ResolutionArrowTupleCoherence.bigBoundary C) ≫
-    Functor.whiskerRight (diagonal C) (NerveMovingParameter.lifted (fibers C))
+    Functor.whiskerRight (diagonal C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (fibers C))
 
 lemma vertexInclusion_mono (p : Index C) : Mono ((vertexInclusion C).app p) :=
   ResolutionArrowTupleCoherence.bigInclusion_mono C (a C p)

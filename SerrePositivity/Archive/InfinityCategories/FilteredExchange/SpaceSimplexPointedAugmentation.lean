@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceSourcePrecomposition
-public import SerrePositivity.InfinityCategories.F1.Coherent.ConeTailExtension
-public import SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceSourcePrecomposition
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.ConeTailExtension
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PointedSpaces
 
 /-!
 概要：元の任意の Space 単体に、一点からの Hom の全単体パラメータを前置する。

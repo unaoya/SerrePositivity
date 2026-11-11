@@ -23,11 +23,11 @@ variable (A : Type u) [CommRing A] (X : Complex A) (B : (operad A).Algebra)
 /-- 概要：元の忘却屋根を同じ複体頂点の定値関手間に置く。
 方針：既存の定値端点同型で元の屋根を輸送する。
 規約：元の全屋根を保持。使われ方：標準単位の全族三角形。 -/
-def freeProbeElementUnderlyingRoofFamily : ConstantFunctorHom
-    (nerve (freeProbeElementIndex A X B)) (derivedInfinityCategory A)
+def freeProbeElementUnderlyingRoofFamily : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ConstantFunctorHom
+    (nerve (freeProbeElementIndex A X B)) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
     ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-      (nerveVertex ((freeProbeFunctor A).obj X).carrier))
-    ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex B.carrier)) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((freeProbeFunctor A).obj X).carrier))
+    ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B.carrier)) :=
   (complexOrdinaryDerivedConstantIso A (freeProbeElementIndex A X B)
     ((freeProbeFunctor A).obj X).carrier).inv ≫
     freeProbeElementUnderlyingRoof A X B ≫
@@ -40,10 +40,10 @@ lemma freeProbeElementUnderlyingRoofFamily_arrow :
     Arrow.mk (freeProbeElementUnderlyingRoofFamily A X B) =
       Arrow.mk (freeProbeElementUnderlyingRoof A X B) := by
   apply (Arrow.mk_eq_mk_iff _ _).mpr
-  refine ⟨(congrArg (fun f => HomotopyCategory.mk (functorVertex f))
+  refine ⟨(congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
     (complexOrdinaryDerivedConstant_eq A (freeProbeElementIndex A X B)
       ((freeProbeFunctor A).obj X).carrier)).symm,
-    (congrArg (fun f => HomotopyCategory.mk (functorVertex f))
+    (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
       (complexOrdinaryDerivedConstant_eq A (freeProbeElementIndex A X B) B.carrier)).symm, ?_⟩
   rfl
 
@@ -51,11 +51,11 @@ lemma freeProbeElementUnderlyingRoofFamily_arrow :
 方針：元の全単位三角形と定値自然変換の全円柱比較を接続する。
 規約：全 h Fun の同じ射の等式。使われ方：実単位比較の全族判定。 -/
 lemma freeProbeElementUnderlyingRoofFamily_unit_triangle :
-    constantFunctorHomMap (nerve (freeProbeElementIndex A X B))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap (nerve (freeProbeElementIndex A X B))
       (freeProbeUnitOrdinaryHom A X) ≫ freeProbeElementUnderlyingRoofFamily A X B =
     normalizedTensorElementDerivedRoofFamily A ((ComplexLimits.framedLimitProbeFunctor A).obj X)
       (complexSemifreeResolutionValue A B.carrier).val ≫
-      constantFunctorHomMap (nerve (freeProbeElementIndex A X B))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap (nerve (freeProbeElementIndex A X B))
         (Truncated.HomotopyCategory.homMk
           ((nerve.edgeMk (complexSemifreeResolutionValueAugmentation A B.carrier)).map
             (complexOrdinaryDerivedSource A)).toTruncated) := by

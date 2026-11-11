@@ -23,23 +23,23 @@ namespace SerrePositivity.KST.Fibration
 方針：元の二つの面の一単体を厳密回収する。
 規約：対角の合成やホモトピー類だけの比較に弱めない。
 使われ方：正規化再構成の二短辺条件への実代入。 -/
-theorem verdierFullSLowerHorn_composable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
+theorem verdierFullSLowerHorn_composable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :
     verdierFullSLowerHorn d =
-      composableEdgeHorn (coherentNerveEdge (stableCoreSingleKanMap
-        (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 (verdierLowerTriangle d)))))
-        (coherentNerveEdge (stableCoreSingleKanMap
-          (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 (verdierLowerTriangle d))))) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.composableEdgeHorn (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (stableCoreSingleKanMap
+        (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.δ 2 (verdierLowerTriangle d)))))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (stableCoreSingleKanMap
+          (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.δ 0 (verdierLowerTriangle d))))) := by
   apply horn₂₁.isPushout.hom_ext
-  · rw [composableEdgeHorn_first, verdierFullSLowerHorn, ← Category.assoc, horn.ι_ι]
+  · rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.composableEdgeHorn_first, verdierFullSLowerHorn, ← Category.assoc, horn.ι_ι]
     apply SSet.yonedaEquiv.injective
     rw [stdSimplex.yonedaEquiv_δ_comp, Equiv.apply_symm_apply, Equiv.apply_symm_apply]
     exact zeroMiddleCoreSingleKanTriangle_first (verdierLowerTriangle d)
-  · rw [composableEdgeHorn_last, verdierFullSLowerHorn, ← Category.assoc, horn.ι_ι]
+  · rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.composableEdgeHorn_last, verdierFullSLowerHorn, ← Category.assoc, horn.ι_ι]
     apply SSet.yonedaEquiv.injective
     rw [stdSimplex.yonedaEquiv_δ_comp, Equiv.apply_symm_apply, Equiv.apply_symm_apply]
     exact zeroMiddleCoreSingleKanTriangle_last (verdierLowerTriangle d)
 
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (K : SSet.{u + 1})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (K : SSet.{u + 1})
 
 /-- 概要：実下側の元の第一短辺を全パラメータで固定する。
 方針：同じ回収 Kan 射の豊穣頂点の定値族を取る。
@@ -54,7 +54,7 @@ def verdierLowerReconstructionFirstFamily :
     (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 0⟩))
     (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 1⟩))
     (stableCoreSingleKanMap
-      (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 (verdierLowerTriangle d))))))
+      (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.δ 2 (verdierLowerTriangle d))))))
 
 /-- 概要：同じ固定ホーンの第一辺は指定短辺族の標準区間像。
 方針：元の coherent ホーンと豊穣頂点の比較を使う。
@@ -64,14 +64,14 @@ theorem verdierLowerReconstructionHorn_first :
     (horn₂₁.ι₀₁ ▷ K) ≫
       (fst (Λ[2, 1] : SSet.{u + 1}) K ≫ verdierFullSLowerHorn d) =
         (Δ[1] ◁ verdierLowerReconstructionFirstFamily d K) ≫
-          intervalMappingUncurry (coherentHomIntervalComparison
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison
             (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 0⟩))
             (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 1⟩))) := by
   rw [verdierFullSLowerHorn_composable, ← Category.assoc, whiskerRight_fst,
-    Category.assoc, composableEdgeHorn_first]
-  rw [← intervalMappingUncurry_precomp, verdierLowerReconstructionFirstFamily,
-    SSet.const_comp, coherentHomIntervalComparison_vertex, Equiv.symm_apply_apply,
-    intervalMappingUncurry_const_vertex]
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.composableEdgeHorn_first]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry_precomp, verdierLowerReconstructionFirstFamily,
+    SSet.const_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison_vertex, Equiv.symm_apply_apply,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.intervalMappingUncurry_const_vertex]
   congr 2
 
 /-- 概要：実下側の元の第二短辺を全パラメータで固定する。
@@ -87,7 +87,7 @@ def verdierLowerReconstructionLastFamily :
     (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 1⟩))
     (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 2⟩))
     (stableCoreSingleKanMap
-      (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 (verdierLowerTriangle d))))))
+      (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.δ 0 (verdierLowerTriangle d))))))
 
 /-- 概要：同じ固定ホーンの第二辺は指定短辺族の標準区間像。
 方針：元の coherent ホーンと豊穣頂点の比較を使う。
@@ -97,14 +97,14 @@ theorem verdierLowerReconstructionHorn_last :
     (horn₂₁.ι₁₂ ▷ K) ≫
       (fst (Λ[2, 1] : SSet.{u + 1}) K ≫ verdierFullSLowerHorn d) =
         (Δ[1] ◁ verdierLowerReconstructionLastFamily d K) ≫
-          intervalMappingUncurry (coherentHomIntervalComparison
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison
             (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 1⟩))
             (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 2⟩))) := by
   rw [verdierFullSLowerHorn_composable, ← Category.assoc, whiskerRight_fst,
-    Category.assoc, composableEdgeHorn_last]
-  rw [← intervalMappingUncurry_precomp, verdierLowerReconstructionLastFamily,
-    SSet.const_comp, coherentHomIntervalComparison_vertex, Equiv.symm_apply_apply,
-    intervalMappingUncurry_const_vertex]
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.composableEdgeHorn_last]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry_precomp, verdierLowerReconstructionLastFamily,
+    SSet.const_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison_vertex, Equiv.symm_apply_apply,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.intervalMappingUncurry_const_vertex]
   congr 2
 
 /-- 概要：元の下側二短辺の全族を厳密固定する再構成空間。
@@ -112,8 +112,8 @@ theorem verdierLowerReconstructionHorn_last :
 規約：上側の中間対象を持つ空間とは区別する。
 使われ方：同じ実下側変形を正規化前の点として保持する。 -/
 abbrev verdierLowerReconstructionTriangleSpace :=
-  vertexFiber ((pre ((horn 2 (1 : Fin 3)).ι ▷ K)).app SpaceInfinity.{u})
-    (functorVertex (fst (Λ[2, 1] : SSet.{u + 1}) K ≫ verdierFullSLowerHorn d))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber ((pre ((horn 2 (1 : Fin 3)).ι ▷ K)).app _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (fst (Λ[2, 1] : SSet.{u + 1}) K ≫ verdierFullSLowerHorn d))
 
 /-- 概要：元の下側全変形そのものは同じ固定ホーン族の実入力点。
 方針：元の全変形と実ホーン回収式を関手頂点へ写す。
@@ -121,20 +121,20 @@ abbrev verdierLowerReconstructionTriangleSpace :=
 使われ方：normalize(t) と元 t の比較に渡す具体的な元の族。 -/
 def verdierLowerReconstructionPoint :
     (verdierLowerReconstructionTriangleSpace d Δ[1]) _⦋0⦌ := by
-  refine ⟨functorVertex (verdierFullSLowerDeformation d).h, ?_⟩
-  rw [pinchedConstant_zero]
-  change functorVertex (((horn 2 (1 : Fin 3)).ι ▷ Δ[1]) ≫
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (verdierFullSLowerDeformation d).h, ?_⟩
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (((horn 2 (1 : Fin 3)).ι ▷ Δ[1]) ≫
     (verdierFullSLowerDeformation d).h) = _
-  exact congrArg functorVertex (verdierFullSLowerDeformation_horn d)
+  exact congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (verdierFullSLowerDeformation_horn d)
 
 /-- 概要：同じ実入力点から元の下側全変形が厳密に回収される。
 方針：関手頂点の同じ標準順逆比較を使う。
 規約：各点だけでなく全三角柱の射を回収する。
 使われ方：正規化後の可逆比較を元の実下側族へ戻す。 -/
 theorem verdierLowerReconstructionPoint_recovery :
-    (functorVertexEquiv (Δ[2] ⊗ Δ[1]) SpaceInfinity.{u}).symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (Δ[2] ⊗ Δ[1]) _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}).symm
       (verdierLowerReconstructionPoint d).val = (verdierFullSLowerDeformation d).h :=
-  (functorVertexEquiv _ _).symm_apply_apply _
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm_apply_apply _
 
 /-- 概要：元の下側二短辺の合成を同じ全パラメータで固定する。
 方針：同じ豊穣合成と宇宙持ち上げの積比較を使う。
@@ -143,7 +143,7 @@ theorem verdierLowerReconstructionPoint_recovery :
 def verdierLowerReconstructionCompositeFamily :=
   lift (verdierLowerReconstructionFirstFamily d K)
     (verdierLowerReconstructionLastFamily d K) ≫
-      (HomotopyLimits.uliftTensorIso.{u, u + 1}
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftTensorIso.{u, u + 1}
         (SimplicialCategory.sHom
           (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 0⟩))
           (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 1⟩)))
@@ -164,9 +164,9 @@ theorem verdierLowerReconstructionCompositeFamily_eq :
   let Z := stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 2⟩)
   verdierLowerReconstructionCompositeFamily d K =
     SSet.const (ULift.up (SimplicialCategory.homEquiv' X Z
-      (stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 (verdierLowerTriangle d))) ≫
+      (stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.δ 2 (verdierLowerTriangle d))) ≫
         stableCoreSingleKanMap
-          (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 (verdierLowerTriangle d)))))) := by
+          (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.δ 0 (verdierLowerTriangle d)))))) := by
   dsimp only [verdierLowerReconstructionCompositeFamily]
   apply SSet.hom_ext
   intro n

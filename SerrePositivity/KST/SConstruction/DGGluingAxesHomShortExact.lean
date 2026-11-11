@@ -17,11 +17,11 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] (M : Bimodule R C D)
   (zc : C) (hc : IsZero (ForgetEnrichment.of (Complex R) zc))
   (zd : D) (hd : IsZero (ForgetEnrichment.of (Complex R) zd))
-  (T X : DGGluingObject R C D M)
-local notation "f" => dgGluingPostcomposition R C D M T
+  (T X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)
+local notation "f" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingPostcomposition R C D M T
   (dgGluingRightAxisObject R C D M zc X.right) X
   (dgGluingAxisRightInclusion R C D M zc hc X)
-local notation "g" => dgGluingPostcomposition R C D M T X
+local notation "g" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingPostcomposition R C D M T X
   (dgGluingLeftAxisObject R C D M zd X.left)
   (dgGluingAxisLeftProjection R C D M zd hd X)
 
@@ -37,8 +37,8 @@ def dgGluingAxesHomShortComplex : ShortComplex (Complex R) :=
 
 /-- 同じ実短複体は、標準二成分 cocone の元の短複体と実同型。 -/
 def dgGluingAxesHomShortComplexIso : dgGluingAxesHomShortComplex R C D M zc hc zd hd T X ≅
-    complexMappingCoconeBiprodShortComplex (-dgGluingLeftAction R C D M T X)
-      (dgGluingRightAction R C D M T X) :=
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodShortComplex (-_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeftAction R C D M T X)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightAction R C D M T X) :=
   ShortComplex.isoMk (dgGluingRightAxisHomCoconeIso R C D M zc hc T X)
     (dgGluingHomBiprodCoconeIso R C D M T X)
     (dgGluingToLeftAxisHomIso R C D M zd hd T X.left)
@@ -49,7 +49,7 @@ def dgGluingAxesHomShortComplexIso : dgGluingAxesHomShortComplex R C D M zc hc z
 lemma dgGluingAxesHomShortComplex_shortExact :
     (dgGluingAxesHomShortComplex R C D M zc hc zd hd T X).ShortExact :=
   ShortComplex.shortExact_of_iso (dgGluingAxesHomShortComplexIso R C D M zc hc zd hd T X).symm
-    (complexMappingCoconeBiprodShortComplex_shortExact _ _)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodShortComplex_shortExact _ _)
 
 /-- 同じ元の二射による円錐比較は、全試験対象に対して実準同型となる。 -/
 lemma dgGluingAxesHomConeComparison_quasiIso :

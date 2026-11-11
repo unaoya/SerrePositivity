@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Pointed.PullbackKanSequence
+public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PullbackKanSequence
 
 public import SerrePositivity.KST.Spectra.KanSequence
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Pullbacks
@@ -37,7 +37,7 @@ variable {E X B : KanSequence.{u}} (f : Hom E B) (g : Hom X B)
 規約：各段の Kan 性は構造射の構成そのものには不要。
 使われ方：BF 1978 §2、HTT A.3.3。mapping path 列の構造。 -/
 def pullbackSigma (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (pullback (f.app n) (g.app n)) ⟶
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (pullback (f.app n) (g.app n)) ⟶
       pullback (f.app (n + 1)) (g.app (n + 1)) :=
   pullback.lift (PointedSimplicialSet.circle.{u} ◁ pullback.fst (f.app n) (g.app n) ≫ E.sigma n)
     (PointedSimplicialSet.circle.{u} ◁ pullback.snd (f.app n) (g.app n) ≫ X.sigma n) (by
@@ -53,7 +53,7 @@ variable [hf : ∀ n, Fibration (f.app n).right]
 def pullbackSequence : KanSequence.{u} where
   level n := {
     space := pullback (f.app n) (g.app n)
-    kan := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_kanComplex _ _ }
+    kan := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_kanComplex _ _ }
   sigma := pullbackSigma f g
 
 /-- 概要：引き戻しの Kan 列から第一の列への厳密な射影。

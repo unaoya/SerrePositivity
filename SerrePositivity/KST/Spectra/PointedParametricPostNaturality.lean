@@ -20,13 +20,13 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 /-- 同じ射の族へ源の射を前合成する操作は、内部 Hom に移した同じ射の前合成になる。 -/
 lemma parametricPost_pre (K : PointedSimplicialSet.{u}) {P Y E F : PointedSimplicialSet.{u}}
     (a : Y ⟶ E) (w : P ⟶ PointedObject.basedHom E F) :
-    parametricPost K (w ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a F) = PointedObject.basedHomMap K a ≫ parametricPost K w := by
+    parametricPost K (w ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a F) = PointedObject.basedHomMap K a ≫ parametricPost K w := by
   have hh := ihomAction_pre K a F
-  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a F ≫ ihomAction K Y F = ihomAction K E F ≫
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.basedHomMap K a) (PointedObject.basedHom K F) at hh
-  have h : (w ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a F) ≫ ihomAction K Y F =
+  change _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a F ≫ ihomAction K Y F = ihomAction K E F ≫
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.basedHomMap K a) (PointedObject.basedHom K F) at hh
+  have h : (w ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a F) ≫ ihomAction K Y F =
       (w ≫ ihomAction K E F) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.basedHomMap K a) (PointedObject.basedHom K F) := by
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.basedHomMap K a) (PointedObject.basedHom K F) := by
     simpa only [Category.assoc] using congrArg (w ≫ ·) hh
   have ht := congrArg transpose h
   have hr := @transpose_pre_inner P (PointedObject.basedHom K E)
@@ -60,7 +60,7 @@ lemma parametricPost_square (K : PointedSimplicialSet.{u})
   have hl := transpose_pre_outer (transpose w) a
   have hr := transpose_post (transpose v) a'
   rw [transpose_transpose] at hl hr
-  have hf : w ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a E' = v ≫ PointedObject.basedHomMap Y a' :=
+  have hf : w ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a E' = v ≫ PointedObject.basedHomMap Y a' :=
     hl.symm.trans (h.trans hr)
   have hk := congrArg (fun z => parametricPost K z) hf
   rw [parametricPost_pre, parametricPost_post] at hk

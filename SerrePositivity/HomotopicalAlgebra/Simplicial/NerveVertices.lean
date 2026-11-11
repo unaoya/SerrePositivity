@@ -1,7 +1,7 @@
 module
 
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
-public import SerrePositivity.InfinityCategories.Simplicial.VertexTuples
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples
 
 /-!
 # 圏のnerveにその頂点部分単体集合を含める射を構成する
@@ -40,7 +40,7 @@ open CategoryTheory CategoryTheory.Limits
 namespace SerrePositivity.NerveVertices
 variable (C : Type u) [Category.{v} C]
 
-abbrev vertices : SSet.{max u v} := SimplicialModel.VertexTuples.vertices (ULift.{v} C)
+abbrev vertices : SSet.{max u v} := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.vertices (ULift.{v} C)
 
 /-- 圏のnerveにその頂点部分単体集合を含める射を構成する。
 
@@ -60,7 +60,7 @@ instance : Mono (inclusion C) := by
 
 @[reassoc]
 lemma vertex_inclusion (a : C) :
-    SimplicialModel.VertexTuples.vertex (⟨a⟩ : ULift.{v} C) ≫ inclusion C =
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.vertex (⟨a⟩ : ULift.{v} C) ≫ inclusion C =
       SSet.yonedaEquiv.symm (ComposableArrows.mk₀ a) := rfl
 
 end SerrePositivity.NerveVertices

@@ -18,14 +18,14 @@ open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の零長同型は唯一の頂点の評価を回収する。 -/
-lemma weakStringZeroAmbientIso_hom {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+lemma weakStringZeroAmbientIso_hom {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     (weakStringZeroAmbientIso q).hom = weakStringVertexExact q ⦋0⦌ 0 := by
   apply Subtype.ext
   rfl
 
 /-- 元の零長同型は包含側の完全関手に関して厳密に自然。 -/
-lemma weakStringZeroAmbientIso_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+lemma weakStringZeroAmbientIso_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     weakStringPostExact f q ⦋0⦌ ≫ (weakStringZeroAmbientIso q).hom =
       (weakStringZeroAmbientIso (f ≫ q : A ⟶ C)).hom ≫ sInputExactMap f := by
   rw [weakStringZeroAmbientIso_hom, weakStringZeroAmbientIso_hom]
@@ -33,13 +33,13 @@ lemma weakStringZeroAmbientIso_postcomp {A B C : _root_.SerrePositivity.Infinity
 
 /-- 零行と零次標準単体の積を、元の入力の同じ実現へ戻す厳密同型。 -/
 def weakStringRealizationZeroRowIso (F : StableModel.{u} ⥤ SSet.{u})
-    {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+    {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     F.obj (weakStringModel q ⦋0⦌) ⊗ Δ[0] ≅ F.obj (sInputModel B) :=
   simplexZeroTensorIso _ ≪≫ F.mapIso (weakStringZeroAmbientIso q)
 
 /-- 全入力を保つ元の零行評価は、零行同型の後の元の定数包含そのもの。 -/
 theorem weakStringRealizationZeroRow_evaluation (F : StableModel.{u} ⥤ SSet.{u})
-    {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+    {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     diagonalRowEvaluation (weakStringStableSimplicial q ⋙ F) 0 =
       (weakStringRealizationZeroRowIso F q).hom ≫
         weakStringRealizationConstantDiagonal F q := by

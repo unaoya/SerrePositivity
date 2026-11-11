@@ -21,18 +21,18 @@ open scoped Simplicial
 
 /-- 元の S₁ 零図式の評価は指定した元の零対象。 -/
 lemma sOneComparison_zeroVertex (X : StableModel.{u}) (z : X.carrier _⦋0⦌)
-    (hz : IsZeroVertex z) :
+    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) :
     (sOneComparison X.carrier).app _ (sConstructionZeroVertex 1 z hz) = z := by
   rw [sOneComparison_eq_evaluation]
-  change (evaluateFunctorAt (Y := X.carrier)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X.carrier)
     (ComposableArrows.mk₀ (arObj (0 : Fin 2) 1 (by decide)))).app (Opposite.op ⦋0⦌)
-    (functorVertex (SSet.const z : arNerve 1 ⟶ X.carrier)) = z
-  rw [evaluateFunctorAt_functorVertex]
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.const z : arNerve 1 ⟶ X.carrier)) = z
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex]
   simp [SSet.const]
 
 /-- 任意の零対象の元の K loop 類は定数 loop の成分。 -/
 lemma objectKPiZeroClass_of_isZero (X : StableModel.{u}) (z : X.carrier _⦋0⦌)
-    (hz : IsZeroVertex z) :
+    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) :
     objectKPiZeroClass X z = SSet.π₀.mk (boundaryKSpaceFunctor.obj X).basepoint := by
   let b := coreSConstructionZeroVertex 0 z hz
   let d := coreSConstructionZeroVertex 1 z hz
@@ -52,7 +52,7 @@ lemma objectKPiZeroClass_of_isZero (X : StableModel.{u}) (z : X.carrier _⦋0⦌
 
 /-- 任意の零対象は実際の加法記法の零次 BF K 群で零元を表す。 -/
 lemma objectKClass_of_isZero (X : StableModel.{u}) (z : X.carrier _⦋0⦌)
-    (hz : IsZeroVertex z) : objectKClass X z = 0 := by
+    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) : objectKClass X z = 0 := by
   apply Additive.toMul.injective
   apply (kHomotopyZeroPiZeroEquiv X).injective
   rw [objectKClass_piZero]

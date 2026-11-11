@@ -58,7 +58,7 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.R
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Simplex
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalRelativeMatching
-public import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.DiagonalRelativeMatching
 
 /-!
 # 二重単体的集合の対角はReedy anodyne射をanodyne射へ送る
@@ -106,7 +106,7 @@ lemma relativeMatching_horn_rlp {E B : SSet.{v}} (p : E ⟶ B)
   have : Fibration p := (SSet.modelCategoryQuillen.fibration_iff p).mpr hp
   have : Fibration (boundaryPullbackHom p n).π := SSet.fibration_pullbackObjObjπ _
   have h := (SSet.modelCategoryQuillen.fibration_iff (boundaryPullbackHom p n).π).mp this
-  exact (SSet.modelCategoryQuillen.J.rlp.arrow_iso_iff (relativeMatchingArrowIso p n)).mpr h
+  exact (SSet.modelCategoryQuillen.J.rlp.arrow_iso_iff (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.relativeMatchingArrowIso p n)).mpr h
 
 /-- 二重単体的集合の対角はReedy anodyne射をanodyne射へ送る。
 

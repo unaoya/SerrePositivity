@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionFiberEndpointEvaluation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionEndpointCoordinates
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantUnstraighteningEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ConstantUnstraighteningEvaluation
 
 /-!
 概要：定値図式を標的とする元の相対終点を、同じ fiber 終点の全評価へ同定する。

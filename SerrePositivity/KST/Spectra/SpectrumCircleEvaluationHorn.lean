@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumNativeCircleEvaluationTriangle
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.FunctorFiber
 public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
 
 /-!

@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransportAlgebra
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.UnstraighteningSourceActualWitnessComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConstantDiagramWitnessCurryComparison
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoTransportAlgebra
 
 /-!
 概要：元の始域恒等射付き定値図式比較の fiber 像を、同じ二実輸送の比較へ戻す。

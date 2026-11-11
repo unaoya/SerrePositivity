@@ -21,42 +21,42 @@ local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicia
 variable {T X Y Z : OmegaSpectrum.{u}} (a : T ⟶ X) (b : T ⟶ Y) (f : X ⟶ Z) (g : Y ⟶ Z)
   (hc : SpectrumHo.hom a ≫ SpectrumHo.hom f = SpectrumHo.hom b ≫ SpectrumHo.hom g)
 
-def productComposition : SSet.Edge.CompStruct (coherentNerveEdge (Binary.map f (𝟙 Y)))
-    (coherentNerveEdge (Binary.map (𝟙 Z) g)) (coherentNerveEdge (Binary.map f g)) :=
-  (coherentNerveCompStruct (Binary.map f (𝟙 Y)) (Binary.map (𝟙 Z) g)).ofEq rfl rfl
+def productComposition : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.map f (𝟙 Y)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.map (𝟙 Z) g)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.map f g)) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (Binary.map f (𝟙 Y)) (Binary.map (𝟙 Z) g)).ofEq rfl rfl
     (by rw [← Binary.map_factor])
 
-def rectangle : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle (square a b f g hc)
+def rectangle : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.SquarePastingRectangle (square a b f g hc)
     ((β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ BinaryGraph.square g)
-    (SSet.yonedaEquiv.symm (coherentNerveCompStruct b g).simplex)
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct b g).simplex)
     (SSet.yonedaEquiv.symm (productComposition f g).simplex) := by
   apply Classical.choice
-  apply _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.nonempty_squarePastingRectangle
-  · rw [square_right, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left, BinaryGraph.square_bottom]
+  apply _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.nonempty_squarePastingRectangle
+  · rw [square_right, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.square_transpose_left, BinaryGraph.square_bottom]
   · rw [square_bottom, stdSimplex.δ_comp_yonedaEquiv_symm]
-    exact congrArg SSet.yonedaEquiv.symm (coherentNerveCompStruct b g).d₂.symm
-  · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom, BinaryGraph.square_left,
+    exact congrArg SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct b g).d₂.symm
+  · rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.square_transpose_bottom, BinaryGraph.square_left,
       stdSimplex.δ_comp_yonedaEquiv_symm]
-    exact congrArg SSet.yonedaEquiv.symm (coherentNerveCompStruct b g).d₀.symm
+    exact congrArg SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct b g).d₀.symm
   · rw [square_top, stdSimplex.δ_comp_yonedaEquiv_symm]
     exact congrArg SSet.yonedaEquiv.symm (productComposition f g).d₂.symm
-  · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top, BinaryGraph.square_right,
+  · rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.square_transpose_top, BinaryGraph.square_right,
       stdSimplex.δ_comp_yonedaEquiv_symm]
     exact congrArg SSet.yonedaEquiv.symm (productComposition f g).d₀.symm
 
 lemma rectangle_right_isPullback :
-    IsPullbackSquare (pastingSquare (rectangle a b f g hc).diagram 0) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (rectangle a b f g hc).diagram 0) := by
   rw [(rectangle a b f g hc).right_eq]
-  exact (isPullbackSquare_iff_transpose _).1 (BinaryGraph.square_isPullback g)
+  exact (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_transpose _).1 (BinaryGraph.square_isPullback g)
 
-lemma rectangle_outer_right : squareRightEdge ≫ pastingSquare (rectangle a b f g hc).diagram 1 =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (BinaryGraph.diagonal Z)).edge := by
-  rw [pastingSquare_outer_rightEdge, (rectangle a b f g hc).right_eq,
-    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right, BinaryGraph.square_top]
+lemma rectangle_outer_right : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (rectangle a b f g hc).diagram 1 =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (BinaryGraph.diagonal Z)).edge := by
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare_outer_rightEdge, (rectangle a b f g hc).right_eq,
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.square_transpose_right, BinaryGraph.square_top]
 
-lemma rectangle_outer_top : squareTopEdge ≫ pastingSquare (rectangle a b f g hc).diagram 1 =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.map f g)).edge := by
-  rw [pastingSquare_topEdge, (rectangle a b f g hc).top_eq,
+lemma rectangle_outer_top : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (rectangle a b f g hc).diagram 1 =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.map f g)).edge := by
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare_topEdge, (rectangle a b f g hc).top_eq,
     stdSimplex.δ_comp_yonedaEquiv_symm]
   exact congrArg SSet.yonedaEquiv.symm (productComposition f g).d₁
 

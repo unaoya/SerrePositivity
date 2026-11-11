@@ -22,9 +22,9 @@ variable (A : Type u) [CommRing A] {I : Type (u + 1)} [Category.{u} I]
 方針：元の等式による後合成を Arrow の標準則で除去する。
 規約：元の図式と値を保持。使われ方：自由源比較の端点表示の照合。 -/
 lemma complexDiagramDerivedVertexIso_comp_arrow (H : I ⥤ Complex A) (i : I)
-    {z : (derivedInfinityCategory A).obj (Opposite.op ⦋0⦌)}
-    (f : (HomotopyCategory.mk z : hoFunctor.obj (derivedInfinityCategory A)) ⟶ HomotopyCategory.mk
-      ((nerveMap H ≫ complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex i))) :
+    {z : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A).obj (Opposite.op ⦋0⦌)}
+    (f : (HomotopyCategory.mk z : hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)) ⟶ HomotopyCategory.mk
+      ((nerveMap H ≫ complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))) :
     Arrow.mk (f ≫ (complexDiagramDerivedVertexIso A H i).hom) = Arrow.mk f := by
   dsimp only [complexDiagramDerivedVertexIso]
   rw [eqToIso.hom]
@@ -35,10 +35,10 @@ lemma complexDiagramDerivedVertexIso_comp_arrow (H : I ⥤ Complex A) (i : I)
 方針：元の円柱の成分式を全 Arrow に送る。
 規約：端点表示を保持。使われ方：全源同型の通常射への回収。 -/
 lemma complexOrdinaryDerivedNatTransHom_component_arrow (i : I) :
-    Arrow.mk (functorHomEvaluate (complexOrdinaryDerivedNatTransHom A a) (nerveVertex i)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (complexOrdinaryDerivedNatTransHom A a) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)) =
       Arrow.mk (Truncated.HomotopyCategory.homMk
         ((nerve.edgeMk (a.app i)).map (complexOrdinaryDerivedSource A)).toTruncated) := by
-  rw [complexOrdinaryDerivedNatTransHom, functorHomEvaluate_homotopy]
+  rw [complexOrdinaryDerivedNatTransHom, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomEvaluate_homotopy]
   exact Truncated.HomotopyCategory.congr_arrowMk_homMk _ _
     (complexOrdinaryDerivedNatTransHomotopy_component A a i)
 
@@ -47,10 +47,10 @@ lemma complexOrdinaryDerivedNatTransHom_component_arrow (i : I) :
 規約：元の弱成分を選び直さない。使われ方：置換 augmentation の源比較。 -/
 lemma complexOrdinaryDerivedNatTransIso_component_arrow
     (ha : ∀ i, QuasiIso (a.app i)) (i : I) :
-    Arrow.mk (functorHomEvaluate (complexOrdinaryDerivedNatTransIso A a ha).hom (nerveVertex i)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (complexOrdinaryDerivedNatTransIso A a ha).hom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)) =
       Arrow.mk (Truncated.HomotopyCategory.homMk
         ((nerve.edgeMk (a.app i)).map (complexOrdinaryDerivedSource A)).toTruncated) := by
-  change Arrow.mk (functorHomEvaluate (complexOrdinaryDerivedNatTransHom A a) (nerveVertex i)) = _
+  change Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (complexOrdinaryDerivedNatTransHom A a) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)) = _
   exact complexOrdinaryDerivedNatTransHom_component_arrow A a i
 
 end SerrePositivity.EInfinity.ComplexLimits

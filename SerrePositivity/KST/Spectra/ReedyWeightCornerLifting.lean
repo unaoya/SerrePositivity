@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.RelativeCornerProductCube
 public import SerrePositivity.KST.Spectra.WeightedEndReedyKan
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedRestriction
 
 /-!
 概要：重みの相対 corner の Reedy anodyne 性から end 制限の持ち上げを構成する。
@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedRestrict
 @[expose] public section
 universe u
 open CategoryTheory CategoryTheory.Limits MonoidalCategory SSet HomotopicalAlgebra
-open SerrePositivity.Reedy SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.Reedy
 namespace SerrePositivity.KST.Spectra.ReedyWeightCornerLifting
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -26,7 +26,7 @@ lemma hasLiftingProperty {F G : CosimplicialObject SSet.{u}} (θ : F ⟶ G)
     (hX : reedyRight simplex modelCategoryQuillen.J.rlp (terminal.from X))
     {A B : SSet.{u}} (i : A ⟶ B)
     (hi : reedyLeft simplex anodyneExtensions (WeightCornerPushout.corner θ i).ι) :
-    HasLiftingProperty i (weightedSectionsPre (Functor.whiskerLeft AsSmall.down θ)
+    HasLiftingProperty i (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (Functor.whiskerLeft AsSmall.down θ)
       (AsSmall.down ⋙ X)) := by
   let := CosimplicialHornFactorization.hornWeakFactorization.{u}
   let P := WeightCornerPushout.corner θ i
@@ -36,12 +36,12 @@ lemma hasLiftingProperty {F G : CosimplicialObject SSet.{u}} (θ : F ⟶ G)
   let : HasLiftingProperty P.ι (terminal.from X) := Lifting.hasLiftingProperty simplex
   constructor
   intro t s sq
-  let t' := WeightedEndReedyKan.ordinaryFamily (weightedSectionsUncurry t)
-  let s' := WeightedEndReedyKan.ordinaryFamily (weightedSectionsUncurry s)
+  let t' := WeightedEndReedyKan.ordinaryFamily (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry t)
+  let s' := WeightedEndReedyKan.ordinaryFamily (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry s)
   have hw : Functor.whiskerRight θ (tensorRight A) ≫ t' =
       WeightTensorLatching.map F i ≫ s' := by
-    have h := congrArg weightedSectionsUncurry sq.w
-    rw [weightedSectionsUncurry_comp_pre, weightedSectionsUncurry_precomp] at h
+    have h := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry sq.w
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_comp_pre, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_precomp] at h
     apply NatTrans.ext
     funext j
     exact NatTrans.congr_app h (AsSmall.up.obj j)
@@ -56,21 +56,21 @@ lemma hasLiftingProperty {F G : CosimplicialObject SSet.{u}} (θ : F ⟶ G)
     rw [← Category.assoc, P.inr_ι, P.isPushout.inr_desc] at h
     exact h
   refine CommSq.HasLift.mk' {
-    l := weightedSectionsLift (WeightedEndReedyKan.smallFamily q.lift)
+    l := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (WeightedEndReedyKan.smallFamily q.lift)
     fac_left := ?_
     fac_right := ?_ }
-  · apply (weightedSectionsHomEquiv (AsSmall.down ⋙ G) (AsSmall.down ⋙ X) A).injective
-    change weightedSectionsUncurry
-      (i ≫ weightedSectionsLift (WeightedEndReedyKan.smallFamily q.lift)) = _
-    rw [weightedSectionsUncurry_precomp, weightedSectionsUncurry_lift]
+  · apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsHomEquiv (AsSmall.down ⋙ G) (AsSmall.down ⋙ X) A).injective
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry
+      (i ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (WeightedEndReedyKan.smallFamily q.lift)) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_precomp, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_lift]
     apply NatTrans.ext
     funext j
     exact NatTrans.congr_app ht (AsSmall.down.obj j)
-  · apply (weightedSectionsHomEquiv (AsSmall.down ⋙ F) (AsSmall.down ⋙ X) B).injective
-    change weightedSectionsUncurry
-      (weightedSectionsLift (WeightedEndReedyKan.smallFamily q.lift) ≫
-        weightedSectionsPre (Functor.whiskerLeft AsSmall.down θ) (AsSmall.down ⋙ X)) = _
-    rw [weightedSectionsUncurry_comp_pre, weightedSectionsUncurry_lift]
+  · apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsHomEquiv (AsSmall.down ⋙ F) (AsSmall.down ⋙ X) B).injective
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (WeightedEndReedyKan.smallFamily q.lift) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (Functor.whiskerLeft AsSmall.down θ) (AsSmall.down ⋙ X)) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_comp_pre, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_lift]
     apply NatTrans.ext
     funext j
     exact NatTrans.congr_app hs (AsSmall.down.obj j)

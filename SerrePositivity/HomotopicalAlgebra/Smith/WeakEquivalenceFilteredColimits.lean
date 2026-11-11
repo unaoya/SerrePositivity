@@ -75,7 +75,7 @@ and its actual full inclusion preserves them. This does not assert a small
 presentable generating family for that category. -/
 lemma exists_weakEquivalence_filtered_colimits
     {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
-    (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J] :
+    (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J] :
     ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular),
       HasCardinalFilteredColimits.{w} (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧
       (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ := by
@@ -98,7 +98,7 @@ lemma exists_weakEquivalence_filtered_colimits
     have := (ha i).2
     exact isCardinalPresentable_of_le _ (le_max_right _ _)
   have := d'.fibrationAccessible
-  have hI := ModelGeneration.CofibrantlyGenerated.rlp_I (I := I) (J := J)
+  have hI := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.rlp_I (I := I) (J := J)
   exact ⟨κ, inferInstance,
     WeakEquivalenceFilteredColimits.hasCardinalFilteredColimits d'.fibrationData I hI κ,
     WeakEquivalenceFilteredColimits.inclusion_isCardinalAccessible d'.fibrationData I hI κ⟩

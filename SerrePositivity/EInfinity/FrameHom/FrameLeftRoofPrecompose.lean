@@ -29,18 +29,18 @@ variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicat
   (hα : α ≫ p = p' ≫ (Functor.const SimplexCategory).map f)
 
 def frameSpanSourceIndexMap :
-    ULiftHom.{max u v} (((cosimplicialHom A).obj Y).Elements)ᵒᵖ ⥤
-      ULiftHom.{max u v} (((cosimplicialHom A').obj Y).Elements)ᵒᵖ :=
-  ULiftHom.down.{0, v, max u v} ⋙ ((cosimplicialHomMap α).app Y).mapElements.op ⋙ ULiftHom.up
+    ULiftHom.{max u v} (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y).Elements)ᵒᵖ ⥤
+      ULiftHom.{max u v} (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A').obj Y).Elements)ᵒᵖ :=
+  ULiftHom.down.{0, v, max u v} ⋙ ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app Y).mapElements.op ⋙ ULiftHom.up
 
 include hα in
 lemma frameLeftRoofColimitMap_precompose :
     AnodyneHomotopy.anodyneQ.map
         (nerveMap (frameSpanSourceIndexMap A' A α) ≫ frameLeftRoofColimitMap W A' p' hp' hA') =
       AnodyneHomotopy.anodyneQ.map (frameLeftRoofColimitMap W A p hp hA) ≫
-        AnodyneHomotopy.anodyneQ.map (precomposePointMap (arrowMap W f) Y) := by
-  let I := (((cosimplicialHom A).obj Y).Elements)ᵒᵖ
-  let K : I ⥤ SimplexCategory := (Functor.Elements.π ((cosimplicialHom A).obj Y)).leftOp
+        AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f) Y) := by
+  let I := (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y).Elements)ᵒᵖ
+  let K : I ⥤ SimplexCategory := (Functor.Elements.π ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y)).leftOp
   let U' := K ⋙ A'
   let U := K ⋙ A
   let q' : U' ⟶ (Functor.const I).obj X' := Functor.whiskerLeft K p'

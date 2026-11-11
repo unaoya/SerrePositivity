@@ -34,22 +34,22 @@ lemma conjugate_natural_path {A A' B B' : PointedSimplicialSet.{u}}
 lemma basedPre_ihom_conjugate_path {A : PointedSimplicialSet.{u}} {a b : A ⟶ A}
     (R : VerticalPath (PointedObject.toPoint A) a b) (K Z : PointedSimplicialSet.{u}) :
     (((R.basedPre (PointedObject.basedHom K Z)).basedPost
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Z).hom).pre (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Z).inv).path =
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A K Z).hom).pre (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A K Z).inv).path =
       ((R.basedPre Z).basedIhomMap K).path := by
-  let e := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Z
+  let e := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A K Z
   let V := (ihom K).obj (PointedObject.basedHom A Z)
   have h := R.basedPre_cotensor_exchange_path K Z
   change (R.basedPre (PointedObject.basedHom K Z)).path ≫
       (PointedObject.basedHomMap (PointedObject.basedHom A (PointedObject.basedHom K Z))
         e.hom).right =
-    ((R.basedPre Z).basedIhomMap K).path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e.hom V).right at h
-  have hp : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e.hom V ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e.inv V = 𝟙 _ := by
-    simpa only [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.preIso, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
-      PointedObject.ihom_obj_eq_basedHom] using (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.preIso e V).hom_inv_id
-  have ht := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e.inv V).right) h
+    ((R.basedPre Z).basedIhomMap K).path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e.hom V).right at h
+  have hp : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e.hom V ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e.inv V = 𝟙 _ := by
+    simpa only [_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.preIso, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre,
+      PointedObject.ihom_obj_eq_basedHom] using (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.preIso e V).hom_inv_id
+  have ht := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e.inv V).right) h
   change ((R.basedPre (PointedObject.basedHom K Z)).path ≫
-    (PointedObject.basedHomMap _ e.hom).right) ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e.inv V).right = _
-  have hp' : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e.hom V).right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e.inv V).right = 𝟙 _ := by
+    (PointedObject.basedHomMap _ e.hom).right) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e.inv V).right = _
+  have hp' : (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e.hom V).right ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e.inv V).right = 𝟙 _ := by
     exact (congrArg Under.Hom.right hp).trans (by rfl)
   exact ht.trans (by
     rw [Category.assoc, hp']

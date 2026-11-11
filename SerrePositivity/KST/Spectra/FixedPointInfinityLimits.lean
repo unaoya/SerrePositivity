@@ -16,39 +16,39 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra
 local instance fixedPointInfinitySimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
 
 /-- 元の群作用図式上の、元の hG を頂点とする coherent な錐。 -/
 def homotopyFixedPointsInfinityCone {G : Type u} [Group G] (A : GroupAction.{u} G) :
-    JoinCone (strictCoherentDiagram (AsSmall.down ⋙ (GroupAction.diagramFunctor G).obj A)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (AsSmall.down ⋙ (GroupAction.diagramFunctor G).obj A)) :=
   OmegaSpectrum.homotopyLimitCoherentCone _
 
 /-- hG の錐の頂点は、元の BF hG 対象そのもの。 -/
 lemma homotopyFixedPointsInfinityCone_vertex {G : Type u} [Group G] (A : GroupAction.{u} G) :
-    (homotopyFixedPointsInfinityCone A).vertex = coherentNerveVertex (homotopyFixedPoints A) :=
+    (homotopyFixedPointsInfinityCone A).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (homotopyFixedPoints A) :=
   OmegaSpectrum.homotopyLimitCoherentCone_vertex _
 
 /-- 元の hG 対象の coherent な錐は、Sp 内の実際の ∞ 極限錐。 -/
 lemma homotopyFixedPointsInfinityCone_isLimit {G : Type u} [Group G] (A : GroupAction.{u} G) :
-    IsLimitCone (homotopyFixedPointsInfinityCone A) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (homotopyFixedPointsInfinityCone A) :=
   OmegaSpectrum.homotopyLimitCoherentCone_isLimit _
 
 /-- 元の余単体図式上の、元の homotopy Tot を頂点とする coherent な錐。 -/
 def homotopyTotalizationInfinityCone (D : CosimplicialObject OmegaSpectrum.{u}) :
-    JoinCone (strictCoherentDiagram (AsSmall.down ⋙ D)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (AsSmall.down ⋙ D)) :=
   OmegaSpectrum.homotopyLimitCoherentCone _
 
 /-- Tot の錐の頂点は、元の BF homotopy Tot 対象そのもの。 -/
 lemma homotopyTotalizationInfinityCone_vertex (D : CosimplicialObject OmegaSpectrum.{u}) :
-    (homotopyTotalizationInfinityCone D).vertex = coherentNerveVertex (homotopyTotalization D) :=
+    (homotopyTotalizationInfinityCone D).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (homotopyTotalization D) :=
   OmegaSpectrum.homotopyLimitCoherentCone_vertex _
 
 /-- 元の homotopy Tot 対象の coherent な錐は、Sp 内の実際の ∞ 極限錐。 -/
 lemma homotopyTotalizationInfinityCone_isLimit (D : CosimplicialObject OmegaSpectrum.{u}) :
-    IsLimitCone (homotopyTotalizationInfinityCone D) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (homotopyTotalizationInfinityCone D) :=
   OmegaSpectrum.homotopyLimitCoherentCone_isLimit _
 
 end SerrePositivity.KST.Spectra

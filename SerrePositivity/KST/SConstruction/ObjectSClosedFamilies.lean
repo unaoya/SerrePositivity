@@ -62,7 +62,7 @@ lemma objectSClosedFamilyLift_unique {X : StableModel.{u}} (P : ClosedStablePred
     (hG : G ≫ objectSConstructionFunctor.map (closedStableInclusion P) = F) :
     G = objectSClosedFamilyLift P F hF := by
   have : Mono (closedStableInclusion P).val :=
-    inferInstanceAs (Mono (fullSubcomplexOnVertices X.carrier P.predicate).ι)
+    inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X.carrier P.predicate).ι)
   apply (cancel_mono (objectSConstructionFunctor.map (closedStableInclusion P))).1
   rw [hG, objectSClosedFamilyLift_inclusion]
 

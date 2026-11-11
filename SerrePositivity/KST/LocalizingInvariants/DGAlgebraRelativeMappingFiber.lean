@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeCellMappingKan
-public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteTotalFibers
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FibrationDerivedFiberSpan
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.ScaffoldFiniteTotalFibers
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.FibrationDerivedFiberSpan
 
 /-!
 概要：指定底上の実乗法的写像模型を、同じ基点の strict fiber と導来 fiber へ比較する。
@@ -19,7 +19,7 @@ universe u
 open SSet.modelCategoryQuillen
 open CategoryTheory Limits MonoidalCategory HomotopicalAlgebra SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R]
 
@@ -33,20 +33,20 @@ lemma multiplicativeMappingBase_eq_const :
 
 lemma relativeMultiplicativeMapping_vertexFiber_isPullback :
     IsPullback
-      (vertexFiberι (multiplicativeMappingPostcompose R A q) (multiplicativeMappingBasePoint R s))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (multiplicativeMappingPostcompose R A q) (multiplicativeMappingBasePoint R s))
       (stdSimplex.isTerminalObj₀.from _)
       (multiplicativeMappingPostcompose R A q) (multiplicativeMappingBase R s) := by
   rw [multiplicativeMappingBase_eq_const]
-  exact vertexFiber_isPullback _ _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.vertexFiber_isPullback _ _
 
 def relativeMultiplicativeMappingFiberIso :
     relativeMultiplicativeMappingSimplices R q s ≅
-      vertexFiber (multiplicativeMappingPostcompose R A q) (multiplicativeMappingBasePoint R s) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (multiplicativeMappingPostcompose R A q) (multiplicativeMappingBasePoint R s) :=
   (relativeMultiplicativeMapping_vertexFiber_isPullback R q s).isoPullback.symm
 
 lemma relativeMultiplicativeMappingFiberIso_projection :
     (relativeMultiplicativeMappingFiberIso R q s).hom ≫
-      vertexFiberι (multiplicativeMappingPostcompose R A q) (multiplicativeMappingBasePoint R s) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (multiplicativeMappingPostcompose R A q) (multiplicativeMappingBasePoint R s) =
         relativeMultiplicativeMappingProjection R q s :=
   (relativeMultiplicativeMapping_vertexFiber_isPullback R q s).isoPullback_inv_fst
 
@@ -58,22 +58,22 @@ variable (A : Mon (Complex R)) {X B : Mon (Complex R)} (q : X ⟶ B)
 
 def relativeMultiplicativeCellMappingDerivedFiberMap :
     relativeMultiplicativeMappingSimplices R q s ⟶
-      comparisonFiber (multiplicativeMappingPostcompose R (cellResolution R A) q)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.comparisonFiber (multiplicativeMappingPostcompose R (cellResolution R A) q)
         (multiplicativeMappingBasePoint R s) := by
   have := multiplicativeCellMapping_fibration R A q hq
   exact (relativeMultiplicativeMappingFiberIso R q s).hom ≫
-    (fibrationStrictDerivedFiberEquivalence
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.fibrationStrictDerivedFiberEquivalence
       (multiplicativeMappingPostcompose R (cellResolution R A) q)
       (multiplicativeMappingBasePoint R s)).hom
 
 lemma relativeMultiplicativeCellMappingDerivedFiberMap_isQCatEquivalence :
     let := multiplicativeCellMapping_fibration R A q hq
     let := relativeMultiplicativeCellMapping_kanComplex R A q hq s
-    IsQCatEquivalence (relativeMultiplicativeCellMappingDerivedFiberMap R A q hq s) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (relativeMultiplicativeCellMappingDerivedFiberMap R A q hq s) := by
   have := multiplicativeCellMapping_fibration R A q hq
   have := relativeMultiplicativeCellMapping_kanComplex R A q hq s
-  exact (qCatEquivalenceOfIso (relativeMultiplicativeMappingFiberIso R q s)).isQCatEquivalence.comp
-    (fibrationStrictDerivedFiberEquivalence
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (relativeMultiplicativeMappingFiberIso R q s)).isQCatEquivalence.comp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.fibrationStrictDerivedFiberEquivalence
       (multiplicativeMappingPostcompose R (cellResolution R A) q)
       (multiplicativeMappingBasePoint R s)).isQCatEquivalence
 

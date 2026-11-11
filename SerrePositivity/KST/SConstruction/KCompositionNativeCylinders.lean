@@ -26,22 +26,22 @@ variable {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
 /-- 元の前の射の適合円柱を、独立な全精密化の共通パラメータに移す。 -/
 def kKanCompositionFirstNativeCylinder :=
   constantFamilyHomotopyWhisker (nerveMap (compositionStringFirst f g))
-    ((PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+    ((PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
       (kKanSequenceLevelMap (F.map g) (r + 1))).right)
     (kKanOriginalPrismSpecifiedCompatibilityFamily r F f)
 
 /-- 指定直通列の組では、元の前の射の適合区間の全時刻を厳密に回収する。 -/
 lemma kKanCompositionFirstNativeCylinder_boundary :
-    (nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
         (kKanCompositionFirstNativeCylinder r F f g).h =
       snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫
         SSet.yonedaEquiv.symm (kKanOriginalCompositionCompatibilityData r F f g).first.edge := by
   have h := constantFamilyHomotopyWhisker_boundary
     (nerveMap (compositionStringFirst f g))
-    ((PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+    ((PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
       (kKanSequenceLevelMap (F.map g) (r + 1))).right)
     (kKanOriginalPrismSpecifiedCompatibilityFamily r F f)
-    (nervePoint (compositionStringDirect f g)) (nervePoint (coherentArrowStringDirect f))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f))
     (SSet.yonedaEquiv.symm (kKanSuspensionCompatibilityEdge r F f).edge)
     (compositionStringFirst_direct f g)
     (kKanOriginalPrismSpecifiedCompatibilityFamily_boundary r F f)
@@ -51,23 +51,23 @@ lemma kKanCompositionFirstNativeCylinder_boundary :
 /-- 元の後の射の適合円柱を、独立な全精密化の共通パラメータに移す。 -/
 def kKanCompositionSecondNativeCylinder :=
   constantFamilyHomotopyWhisker (nerveMap (compositionStringSecond f g))
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
       (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
       ((kKanSequence (F.obj z)).level (r + 1)).space)
     (kKanOriginalPrismSpecifiedCompatibilityFamily r F g)
 
 /-- 指定直通列の組では、元の後の射の適合区間の全時刻を厳密に回収する。 -/
 lemma kKanCompositionSecondNativeCylinder_boundary :
-    (nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
         (kKanCompositionSecondNativeCylinder r F f g).h =
       snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫
         SSet.yonedaEquiv.symm (kKanOriginalCompositionCompatibilityData r F f g).second.edge := by
   have h := constantFamilyHomotopyWhisker_boundary
-    (nerveMap (compositionStringSecond f g)) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+    (nerveMap (compositionStringSecond f g)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
       (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
       ((kKanSequence (F.obj z)).level (r + 1)).space)
     (kKanOriginalPrismSpecifiedCompatibilityFamily r F g)
-    (nervePoint (compositionStringDirect f g)) (nervePoint (coherentArrowStringDirect g))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect g))
     (SSet.yonedaEquiv.symm (kKanSuspensionCompatibilityEdge r F g).edge)
     (compositionStringSecond_direct f g)
     (kKanOriginalPrismSpecifiedCompatibilityFamily_boundary r F g)
@@ -82,13 +82,13 @@ def kKanCompositionCompositeNativeCylinder :=
 
 /-- 指定直通列の組では、元の合成射の適合区間の全時刻を厳密に回収する。 -/
 lemma kKanCompositionCompositeNativeCylinder_boundary :
-    (nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
         (kKanCompositionCompositeNativeCylinder r F f g).h =
       snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫
         SSet.yonedaEquiv.symm
           (kKanOriginalCompositionCompatibilityData r F f g).composite.edge := by
   rw [kKanOriginalCompositionCompatibilityData_composite]
-  change (nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
     ((nerveMap (compositionStringComposite f g) ▷ (Δ[1] : SSet.{u})) ≫
       (kKanOriginalPrismSpecifiedCompatibilityFamily r F (f ≫ g)).h ≫ 𝟙 _) = _
   rw [Category.comp_id, ← Category.assoc, ← comp_whiskerRight,

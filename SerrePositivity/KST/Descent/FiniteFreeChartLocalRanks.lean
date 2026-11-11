@@ -40,7 +40,7 @@ variable {S : Scheme.{u}} [IsNoetherian S] {X Y : FiniteTypeSchemes S}
   (U : V ⥤ SSet.{0}) (a : F ⟶ F)
   [ModelCategory SSet.{0}]
   (genI genJ : MorphismProperty SSet.{0})
-  [ModelGeneration.CofibrantlyGenerated.{0} genI genJ]
+  [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} genI genJ]
   [IsQuillenBifunctor (curriedTensor SSet.{0})]
 
 /-- 概要：実際の有限自由 chart の各正 rank の等式から基底の作用は弱同値（補題 3.2）。

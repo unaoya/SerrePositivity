@@ -25,7 +25,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
 include hcof in
 lemma mappingTest_iff_at_fibrant {X Z : C} (f : X ⟶ Z) (Y : C) [IsFibrant Y] :
     mappingTest cof fib Y f ↔ weakEquivalences SSet.{v}
-      ((cosimplicialHomMap ((cosimplicialResolutionFamily cof).obj.map f)).app Y) := by
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((cosimplicialResolutionFamily cof).obj.map f)).app Y) := by
   let a := (cosimplicialResolutionFamily cof).obj.map f
   let q := (fibrantTargetComparison fib).app Y
   have : IsFibrant ((𝟭 C).obj Y) := inferInstanceAs (IsFibrant Y)
@@ -35,8 +35,8 @@ lemma mappingTest_iff_at_fibrant {X Z : C} (f : X ⟶ Z) (Y : C) [IsFibrant Y] :
     ((cosimplicialResolutionFamily cof).cofibrant X) q
   have hZ := cosimplicialHom_weakEquivalence_of_fibrant hcof _
     ((cosimplicialResolutionFamily cof).cofibrant Z) q
-  have hn := (cosimplicialHomMap a).naturality q
-  change weakEquivalences SSet.{v} ((cosimplicialHomMap a).app ((fibrantTarget fib).obj Y)) ↔ _
+  have hn := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a).naturality q
+  change weakEquivalences SSet.{v} ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a).app ((fibrantTarget fib).obj Y)) ↔ _
   constructor
   · intro h
     exact (weakEquivalences SSet.{v}).of_postcomp _ _ hX

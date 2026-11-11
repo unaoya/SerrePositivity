@@ -15,14 +15,14 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "A" => dgAlgebraCategory R (DGOdotInput.source d)
-local notation "CRaw" => dgAlgebraCategory R (DGOdotInput.left d)
-local notation "DRaw" => dgAlgebraCategory R (DGOdotInput.right d)
-local notation "E" => dgAlgebraCategory R (DGOdotInput.corner d)
-local notation "L" => dgAlgebraMap R (DGOdotInput.top d)
-local notation "gRaw" => dgAlgebraMap R (DGOdotInput.side d)
-local notation "p" => dgAlgebraMap R (DGOdotInput.lower d)
-local notation "q" => dgAlgebraMap R (DGOdotInput.upper d)
+local notation "A" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d)
+local notation "CRaw" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.left d)
+local notation "DRaw" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.right d)
+local notation "E" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.corner d)
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.top d)
+local notation "gRaw" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.side d)
+local notation "p" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.lower d)
+local notation "q" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.upper d)
 local notation "CL" => DGSmallPerfectArrowTarget R (A) (CRaw) (L)
 local notation "DR" => DGSmallPerfectArrowTarget R (A) (DRaw) (gRaw)
 local notation "pS" => dgSmallPerfectSquareLeftMap R (A) (CRaw) (DRaw) (E) (L) (gRaw) (p) (q)
@@ -40,11 +40,11 @@ local notation "b" => dgOdotInputRightPoint R d
 local notation "J" => dgSmallPerfectSquareCornerInclusion R (A) (CRaw) (DRaw) (E)
   (L) (gRaw) (p) (q)
 
-local notation "B" => dgAlgebraCategory R (dgOdotAlgebra R d)
+local notation "B" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d)
 
 /-- 元の ⊙ 比較代数射が、元の終域の自由代表に作用する同じ実関手。 -/
 def dgOdotTargetAlgebraRepresentation : DGFunctor R (B) (RightModule R (E)) :=
-  (dgAlgebraMap R (dgOdotTargetMap R d)).comp (dgYoneda R (E))
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotTargetMap R d)).comp (dgYoneda R (E))
 
 /-- 元の ⊙ から元の指定商 End を経由して評価した、同じ実 cone 作用。 -/
 def dgOdotConeAlgebraRepresentation : DGFunctor R (B) (RightModule R (E)) :=

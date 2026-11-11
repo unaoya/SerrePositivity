@@ -29,9 +29,9 @@ def dgKappaNativeKernelModelEquivalence :
     StableModelEquivalence (stableCategoryModel (dgKInputStableValue R D))
       (stableCategoryModel (dgKappaNativeKernelCategory R D I)) := by
   let e := (presentedPerfectDGQCatEvaluationEquivalence R D).trans
-    (dgKappaPerfectResolvedComparison_isQCatEquivalence R D I (dgKappaPerfectInput R D I)).choose
-  let : IsExactFunctor e.hom := isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
-  let : IsExactFunctor e.inv := isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
+    (dgKappaPerfectResolvedComparison_isQCatEquivalence R D I (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectInput R D I)).choose
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.hom := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.inv := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
   exact ⟨⟨e.hom, preservesCofiberData_of_isExactFunctor _⟩,
     ⟨e.inv, preservesCofiberData_of_isExactFunctor _⟩, e.homInvIso, e.invHomIso⟩
 
@@ -42,7 +42,7 @@ def dgKappaNativeKernelModelEquivalence :
 theorem dgKappaNativeKernelModelEquivalence_hom :
     (dgKappaNativeKernelModelEquivalence R D I).hom.val =
       (presentedPerfectDGQCatEvaluationEquivalence R D).hom ≫
-        dgKappaPerfectResolvedComparison R D I (dgKappaPerfectInput R D I) := rfl
+        dgKappaPerfectResolvedComparison R D I (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectInput R D I) := rfl
 
 /-- 概要：同じ native 実核への指定完全同値による実始点比較。
 方針：SOA 逆比較と同じ完全同値の K 射を合成する。

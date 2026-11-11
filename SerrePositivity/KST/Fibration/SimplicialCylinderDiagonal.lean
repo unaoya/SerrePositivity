@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DiagonalReduction
-public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorHomotopy
 
 /-! # 全単体で自然な実円柱の、同じパラメータを保つ対角評価と両端の回収 -/
 
@@ -17,24 +17,24 @@ namespace SerrePositivity.KST.Fibration
 /-- 指定した元の区間族の始点の式を、同じ実評価円柱の始点へ移す。 -/
 theorem uncurryIntervalFamily_zero {X Y : SSet.{u}}
     (H : (Δ[1] : SSet.{u}) ⟶ (ihom X).obj Y) (f : X ⟶ Y)
-    (hf : stdSimplex.δ (1 : Fin 2) ≫ H = SSet.yonedaEquiv.symm (functorVertex f)) :
+    (hf : stdSimplex.δ (1 : Fin 2) ≫ H = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)) :
     SSet.ι₀ ≫ uncurry H = f := by
-  have h := functorVertex_uncurry_zero (SSet.yonedaEquiv H)
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex_uncurry_zero (SSet.yonedaEquiv H)
   rw [Equiv.symm_apply_apply] at h
   have he := congrArg SSet.yonedaEquiv hf
   rw [stdSimplex.yonedaEquiv_δ_comp, Equiv.apply_symm_apply] at he
-  exact functorVertex_injective (h.trans he)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex_injective (h.trans he)
 
 /-- 指定した元の区間族の終点の式を、同じ実評価円柱の終点へ移す。 -/
 theorem uncurryIntervalFamily_one {X Y : SSet.{u}}
     (H : (Δ[1] : SSet.{u}) ⟶ (ihom X).obj Y) (f : X ⟶ Y)
-    (hf : stdSimplex.δ (0 : Fin 2) ≫ H = SSet.yonedaEquiv.symm (functorVertex f)) :
+    (hf : stdSimplex.δ (0 : Fin 2) ≫ H = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)) :
     SSet.ι₁ ≫ uncurry H = f := by
-  have h := functorVertex_uncurry_one (SSet.yonedaEquiv H)
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex_uncurry_one (SSet.yonedaEquiv H)
   rw [Equiv.symm_apply_apply] at h
   have he := congrArg SSet.yonedaEquiv hf
   rw [stdSimplex.yonedaEquiv_δ_comp, Equiv.apply_symm_apply] at he
-  exact functorVertex_injective (h.trans he)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex_injective (h.trans he)
 
 /-- 元の全段のパラメータ付き実射を、同じ各次数の評価のまま対角へ送る。 -/
 def simplicialCylinderDiagonal (F G : SimplexCategoryᵒᵖ ⥤ SSet.{u}) (P : SSet.{u})

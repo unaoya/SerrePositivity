@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceTetrahedronHomotopy
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTetrahedronEndEdges
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorWhiskerSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentTetrahedronEndEdges
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorWhiskerSimplex
 
 /-!
 概要：𝒮 の三単体の四面の円柱を元の三角形と前後合成へ厳密に同定する。

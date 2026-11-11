@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedEndFunctor
 universe u
 
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.KanSequence
 
@@ -51,12 +51,12 @@ theorem adjointTransformation_natural (τ : D ⟶ E) (n : ℕ) :
 規約：通常の点つき射の厳密な等式。
 使われ方：HA §1.4.2、BF 1978 §2。hG・Tot の射への作用。 -/
 theorem homotopyLimitMapApp_adjoint (τ : D ⟶ E) (n : ℕ) :
-    PointedWeightedEnd.map (bousfieldKanWeight I) (homotopyLimitLevelTransformation τ n) ≫
+    PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (homotopyLimitLevelTransformation τ n) ≫
       homotopyLimitAdjoint E n =
     homotopyLimitAdjoint D n ≫ (ihom PointedSimplicialSet.circle.{u}).map
-      (PointedWeightedEnd.map (bousfieldKanWeight I) (homotopyLimitLevelTransformation τ (n + 1))) := by
+      (PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (homotopyLimitLevelTransformation τ (n + 1))) := by
   let A := PointedSimplicialSet.circle.{u}
-  let W := bousfieldKanWeight I
+  let W := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I
   let a := PointedWeightedEnd.map W (homotopyLimitLevelTransformation τ n)
   let b := PointedWeightedEnd.map W (homotopyLimitLevelTransformation τ (n + 1))
   let mD := PointedWeightedEnd.map W (adjointTransformation D n)
@@ -87,15 +87,15 @@ theorem homotopyLimitMapApp_adjoint (τ : D ⟶ E) (n : ℕ) :
 規約：単射構造射の置換前の列で構成する。
 使われ方：HA §1.4.2、BF 1978 §2。BF 比較への持ち上げの入力。 -/
 def homotopyLimitMap (τ : D ⟶ E) : Hom (homotopyLimit D) (homotopyLimit E) where
-  app n := PointedWeightedEnd.map (bousfieldKanWeight I) (homotopyLimitLevelTransformation τ n)
+  app n := PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (homotopyLimitLevelTransformation τ n)
   comm n := by
-    apply (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((homotopyLimit D).level n).space
+    apply (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((homotopyLimit D).level n).space
       ((homotopyLimit E).level (n + 1)).space).injective
     change curry (PointedSimplicialSet.circle.{u} ◁
-      PointedWeightedEnd.map (bousfieldKanWeight I) (homotopyLimitLevelTransformation τ n) ≫
+      PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (homotopyLimitLevelTransformation τ n) ≫
         uncurry (homotopyLimitAdjoint E n)) =
       curry (uncurry (homotopyLimitAdjoint D n) ≫
-        PointedWeightedEnd.map (bousfieldKanWeight I) (homotopyLimitLevelTransformation τ (n + 1)))
+        PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (homotopyLimitLevelTransformation τ (n + 1)))
     rw [curry_natural_left, curry_uncurry, curry_natural_right, curry_uncurry]
     exact homotopyLimitMapApp_adjoint τ n
 
@@ -104,8 +104,8 @@ def homotopyLimitMap (τ : D ⟶ E) : Hom (homotopyLimit D) (homotopyLimit E) wh
 規約：零次数を含み全ての基点で述べる。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。hG・Tot の係数の置換不変性。 -/
 theorem homotopyLimitMap_levelwise (τ : D ⟶ E)
-    (hτ : ∀ i n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((τ.app i).app n).right) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((homotopyLimitMap τ).app n).right :=
+    (hτ : ∀ i n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((τ.app i).app n).right) (n : ℕ) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((homotopyLimitMap τ).app n).right :=
   PointedWeightedEnd.map_piIsomorphism (homotopyLimitLevelTransformation τ n) (fun i ↦ hτ i n)
 
 /-- 概要：Kan 列の homotopy end の射への作用は恒等射を保つ。
@@ -116,7 +116,7 @@ theorem homotopyLimitMap_id (D : I ⥤ KanSequence.{u}) :
     homotopyLimitMap (𝟙 D) = 𝟙 (homotopyLimit D) := by
   apply Hom.ext_app
   intro n
-  change PointedWeightedEnd.map (bousfieldKanWeight I) (𝟙 (levelDiagram D n)) = 𝟙 _
+  change PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (𝟙 (levelDiagram D n)) = 𝟙 _
   exact PointedWeightedEnd.map_id _ _
 
 /-- 概要：Kan 列の homotopy end の射への作用は合成を保つ。
@@ -127,10 +127,10 @@ theorem homotopyLimitMap_comp (τ : D ⟶ E) (υ : E ⟶ F) :
     homotopyLimitMap (τ ≫ υ) = (homotopyLimitMap τ).comp (homotopyLimitMap υ) := by
   apply Hom.ext_app
   intro n
-  change PointedWeightedEnd.map (bousfieldKanWeight I)
+  change PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
     (homotopyLimitLevelTransformation τ n ≫ homotopyLimitLevelTransformation υ n) =
-    PointedWeightedEnd.map (bousfieldKanWeight I) (homotopyLimitLevelTransformation τ n) ≫
-      PointedWeightedEnd.map (bousfieldKanWeight I) (homotopyLimitLevelTransformation υ n)
+    PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (homotopyLimitLevelTransformation τ n) ≫
+      PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (homotopyLimitLevelTransformation υ n)
   exact PointedWeightedEnd.map_comp _ _ _
 
 end

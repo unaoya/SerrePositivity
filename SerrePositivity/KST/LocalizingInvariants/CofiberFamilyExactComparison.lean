@@ -17,16 +17,16 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberFamily
-variable {X Y A : SSet.{u}} [Quasicategory X] [IsStable X]
-  [Quasicategory Y] [IsStable Y] (F : X ⟶ Y) [IsExactFunctor F]
+variable {X Y A : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
+  [Quasicategory Y] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable Y] (F : X ⟶ Y) [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F]
   (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
 
-def familyExactComparison : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a ≫ F)
-    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Y (a ≫ (ihom (Δ[1] : SSet.{u})).map F)) := by
-  have h := FunctorIso.postcomp (compositionIso X a) F
-  have e : FunctorIso ((a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 _)) ≫ F)
-      ((a ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Y (𝟙 _)) := by
-    simpa only [Category.assoc] using FunctorIso.precomp (exactNaturality F) a
+def familyExactComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber X a ≫ F)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber Y (a ≫ (ihom (Δ[1] : SSet.{u})).map F)) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp (compositionIso X a) F
+  have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((a ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber X (𝟙 _)) ≫ F)
+      ((a ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber Y (𝟙 _)) := by
+    simpa only [Category.assoc] using _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (exactNaturality F) a
   exact h ≪≫ e ≪≫ (compositionIso Y (a ≫ (ihom (Δ[1] : SSet.{u})).map F)).symm
 
 end SerrePositivity.KST.LocalizingInvariants.CofiberFamily

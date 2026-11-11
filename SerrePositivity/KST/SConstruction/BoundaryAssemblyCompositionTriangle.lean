@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturalityData
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyFamilyWhiskering
 public import SerrePositivity.KST.SConstruction.AssemblyCrossedFamilyBoundary
-public import SerrePositivity.InfinityCategories.Kan.CartesianFamilyEdgeTransport
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CartesianFamilyEdgeTransport
 public import SerrePositivity.KST.SConstruction.FactorizationDiagramPasting
 public import SerrePositivity.KST.SConstruction.PointedNaturalityCompositionEdges
 public import SerrePositivity.KST.SConstruction.AssemblyCompositionEdgeEvaluation
@@ -46,7 +46,7 @@ lemma boundaryAssemblyCompositionTriangle_nonempty (r : ℕ) {X Y Z : StableMode
       (boundaryAssemblyChosenNaturalityEdge r (f ≫ g) vX vZ dFG)) := by
   let post := (PointedObject.basedHomMap ((boundaryKanRealizationFunctor r).obj X)
     ((loopBoundaryKanFunctor (r + 1)).map g)).right
-  let pre := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((boundaryKanRealizationFunctor r).map f)
+  let pre := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((boundaryKanRealizationFunctor r).map f)
     ((loopBoundaryKanFunctor (r + 1)).obj Z)).right
   let e₀₁ := pointedNaturalityCompositionFirstEdge (boundaryKanRealizationFunctor r)
     (loopBoundaryKanFunctor (r + 1)) f g
@@ -74,19 +74,19 @@ lemma boundaryAssemblyCompositionTriangle_nonempty (r : ℕ) {X Y Z : StableMode
     dF.extension dG.extension dFG.extension
   obtain ⟨tI⟩ := oneDirectionInverseCompositionTriangle_nonempty r f g vX.1 vY.1 vZ.1
     dF.inverse dG.inverse dFG.inverse
-  let lt := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeCompStruct (K := oneDirectionKanInverseChoices r X)
+  let lt := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeCompStruct (K := oneDirectionKanInverseChoices r X)
     (L := kanAssemblyMixedChoices r (f ≫ g))
     (SSet.Edge.CompStruct.idComp (SSet.Edge.id (X := oneDirectionKanInverseChoices r X) vX.1))
     tE).map (boundaryAssemblyExtensionFamily r (f ≫ g))
-  let rt := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeCompStruct (K := oneDirectionInverseMixedChoices r (f ≫ g))
+  let rt := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeCompStruct (K := oneDirectionInverseMixedChoices r (f ≫ g))
     (L := kanAssemblyAdjointChoices r Z) tI
     (SSet.Edge.CompStruct.idComp (SSet.Edge.id (X := kanAssemblyAdjointChoices r Z) vZ.2))).map
     (boundaryAssemblyInverseFamily r (f ≫ g))
-  let cl := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeLowerTriangle (K := oneDirectionInverseMixedChoices r f)
+  let cl := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeLowerTriangle (K := oneDirectionInverseMixedChoices r f)
     (L := kanAssemblyMixedChoices r g) dF.inverse dG.extension).map (assemblyCrossedFamily r f g)
-  let cu := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeUpperTriangle (K := oneDirectionInverseMixedChoices r f)
+  let cu := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeUpperTriangle (K := oneDirectionInverseMixedChoices r f)
     (L := kanAssemblyMixedChoices r g) dF.inverse dG.extension).map (assemblyCrossedFamily r f g)
-  have hl₀₁ := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftFamilyEdge_square (kanAssemblyMixedPost r f g)
+  have hl₀₁ := (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianLeftFamilyEdge_square (kanAssemblyMixedPost r f g)
     (boundaryAssemblyExtensionFamily r f) (boundaryAssemblyExtensionFamily r (f ≫ g)) post
     (boundaryAssemblyExtensionFamily_post r f g) vX.1 dF.extension).trans
     ((congrArg (post.app (Opposite.op ⦋1⦌))
@@ -94,7 +94,7 @@ lemma boundaryAssemblyCompositionTriangle_nonempty (r : ℕ) {X Y Z : StableMode
         ha₀₁.symm)
   have hl₀₂ := (boundaryAssemblyExtensionEdgeAt_evaluation r (f ≫ g)
     dFG.evaluation vX vZ dFG.extension).symm
-  have hr₁₂ := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianRightFamilyEdge_square (oneDirectionInverseMixedPre r f g)
+  have hr₁₂ := (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianRightFamilyEdge_square (oneDirectionInverseMixedPre r f g)
     (boundaryAssemblyInverseFamily r g) (boundaryAssemblyInverseFamily r (f ≫ g)) pre
     (boundaryAssemblyInverseFamily_pre r f g) vZ.2 dG.inverse).trans
     ((congrArg (pre.app (Opposite.op ⦋1⦌))
@@ -102,85 +102,85 @@ lemma boundaryAssemblyCompositionTriangle_nonempty (r : ℕ) {X Y Z : StableMode
         hb₁₂.symm)
   have hr₀₂ := (boundaryAssemblyInverseEdgeAt_evaluation r (f ≫ g)
     dFG.evaluation vX vZ dFG.inverse).symm
-  have hp₀₁ := _root_.SerrePositivity.InfinityCategories.Kan.cartesianRightFamilyEdge_parameter (kanAssemblyMixedFromSource r g)
+  have hp₀₁ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianRightFamilyEdge_parameter (kanAssemblyMixedFromSource r g)
     (assemblyCrossedFamily r f g) vY.2 dF.inverse
-  have hq₀₁ := _root_.SerrePositivity.InfinityCategories.Kan.mappedEdge_family_congr _ _ (assemblyCrossedFamily_extension_source r f g)
-    (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
+  have hq₀₁ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.mappedEdge_family_congr _ _ (assemblyCrossedFamily_extension_source r f g)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
       (L := kanAssemblyAdjointChoices r Y) dF.inverse (SSet.Edge.id vY.2))
   have hv₀₁ := boundaryAssemblyInverseEdgeAt_evaluation r f dF.evaluation vX vY dF.inverse
   simp only [SSet.Edge.map_edge, NatTrans.comp_app,
     ConcreteCategory.comp_apply] at hp₀₁ hq₀₁ hv₀₁ hb₀₁
   have hc₀₁ := hp₀₁.trans (hq₀₁.trans
     ((congrArg (post.app (Opposite.op ⦋1⦌)) hv₀₁.symm).trans hb₀₁.symm))
-  have hp₁₃ := _root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftFamilyEdge_parameter (oneDirectionInverseMixedFromTarget r f)
+  have hp₁₃ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianLeftFamilyEdge_parameter (oneDirectionInverseMixedFromTarget r f)
     (assemblyCrossedFamily r f g) vY.1 dG.extension
-  have hq₁₃ := _root_.SerrePositivity.InfinityCategories.Kan.mappedEdge_family_congr _ _ (assemblyCrossedFamily_inverse_target r f g)
-    (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionKanInverseChoices r Y)
+  have hq₁₃ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.mappedEdge_family_congr _ _ (assemblyCrossedFamily_inverse_target r f g)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionKanInverseChoices r Y)
       (L := kanAssemblyMixedChoices r g) (SSet.Edge.id vY.1) dG.extension)
   have hv₁₃ := boundaryAssemblyExtensionEdgeAt_evaluation r g dG.evaluation vY vZ dG.extension
   simp only [SSet.Edge.map_edge, NatTrans.comp_app,
     ConcreteCategory.comp_apply] at hp₁₃ hq₁₃ hv₁₃ ha₁₂
   have hc₁₃ := hp₁₃.trans (hq₁₃.trans
     ((congrArg (pre.app (Opposite.op ⦋1⦌)) hv₁₃.symm).trans ha₁₂.symm))
-  have hp₀₂ := _root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftFamilyEdge_parameter (oneDirectionInverseMixedFromSource r f)
+  have hp₀₂ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianLeftFamilyEdge_parameter (oneDirectionInverseMixedFromSource r f)
     (assemblyCrossedFamily r f g) vX.1 dG.extension
-  have hq₀₂ := _root_.SerrePositivity.InfinityCategories.Kan.mappedEdge_family_congr _ _ (assemblyCrossedFamily_inverse_source r f g)
-    (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionKanInverseChoices r X)
+  have hq₀₂ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.mappedEdge_family_congr _ _ (assemblyCrossedFamily_inverse_source r f g)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionKanInverseChoices r X)
       (L := kanAssemblyMixedChoices r g) (SSet.Edge.id vX.1) dG.extension)
-  have hm₀₂ := _root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftFamilyEdge_moving (kanAssemblyMixedPre r f g)
+  have hm₀₂ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianLeftFamilyEdge_moving (kanAssemblyMixedPre r f g)
     (boundaryAssemblyExtensionFamily r (f ≫ g)) vX.1 dG.extension
   simp only [SSet.Edge.map_edge, NatTrans.comp_app,
     ConcreteCategory.comp_apply] at hp₀₂ hq₀₂ hm₀₂
   have hc₀₂ := hp₀₂.trans (hq₀₂.trans hm₀₂.symm)
-  have hp₂₃ := _root_.SerrePositivity.InfinityCategories.Kan.cartesianRightFamilyEdge_parameter (kanAssemblyMixedFromTarget r g)
+  have hp₂₃ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianRightFamilyEdge_parameter (kanAssemblyMixedFromTarget r g)
     (assemblyCrossedFamily r f g) vZ.2 dF.inverse
-  have hq₂₃ := _root_.SerrePositivity.InfinityCategories.Kan.mappedEdge_family_congr _ _ (assemblyCrossedFamily_extension_target r f g)
-    (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
+  have hq₂₃ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.mappedEdge_family_congr _ _ (assemblyCrossedFamily_extension_target r f g)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
       (L := kanAssemblyAdjointChoices r Z) dF.inverse (SSet.Edge.id vZ.2))
-  have hm₂₃ := _root_.SerrePositivity.InfinityCategories.Kan.cartesianRightFamilyEdge_moving (oneDirectionInverseMixedPost r f g)
+  have hm₂₃ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianRightFamilyEdge_moving (oneDirectionInverseMixedPost r f g)
     (boundaryAssemblyInverseFamily r (f ≫ g)) vZ.2 dF.inverse
   simp only [SSet.Edge.map_edge, NatTrans.comp_app,
     ConcreteCategory.comp_apply] at hp₂₃ hq₂₃ hm₂₃
   have hc₂₃ := hp₂₃.trans (hq₂₃.trans hm₂₃.symm)
-  let l₀₁ := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionKanInverseChoices r X)
+  let l₀₁ := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionKanInverseChoices r X)
     (L := kanAssemblyMixedChoices r (f ≫ g)) (SSet.Edge.id vX.1)
     (kanAssemblyCompositionFirstEdge r f g vX.2 vY.2 dF.extension)).map
       (boundaryAssemblyExtensionFamily r (f ≫ g))
-  let l₁₂ := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionKanInverseChoices r X)
+  let l₁₂ := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionKanInverseChoices r X)
     (L := kanAssemblyMixedChoices r (f ≫ g)) (SSet.Edge.id vX.1)
     (kanAssemblyCompositionSecondEdge r f g vY.2 vZ.2 dG.extension)).map
       (boundaryAssemblyExtensionFamily r (f ≫ g))
-  let l₀₂ := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionKanInverseChoices r X)
+  let l₀₂ := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionKanInverseChoices r X)
     (L := kanAssemblyMixedChoices r (f ≫ g)) (SSet.Edge.id vX.1) dFG.extension).map
       (boundaryAssemblyExtensionFamily r (f ≫ g))
-  let r₀₁ := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionInverseMixedChoices r (f ≫ g))
+  let r₀₁ := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionInverseMixedChoices r (f ≫ g))
     (L := kanAssemblyAdjointChoices r Z)
     (oneDirectionInverseCompositionFirstEdge r f g vX.1 vY.1 dF.inverse)
     (SSet.Edge.id vZ.2)).map (boundaryAssemblyInverseFamily r (f ≫ g))
-  let r₁₂ := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionInverseMixedChoices r (f ≫ g))
+  let r₁₂ := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionInverseMixedChoices r (f ≫ g))
     (L := kanAssemblyAdjointChoices r Z)
     (oneDirectionInverseCompositionSecondEdge r f g vY.1 vZ.1 dG.inverse)
     (SSet.Edge.id vZ.2)).map (boundaryAssemblyInverseFamily r (f ≫ g))
-  let r₀₂ := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionInverseMixedChoices r (f ≫ g))
+  let r₀₂ := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionInverseMixedChoices r (f ≫ g))
     (L := kanAssemblyAdjointChoices r Z) dFG.inverse (SSet.Edge.id vZ.2)).map
       (boundaryAssemblyInverseFamily r (f ≫ g))
-  let c₀₁ := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
+  let c₀₁ := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
     (L := kanAssemblyMixedChoices r g) dF.inverse
     (SSet.Edge.id ((kanAssemblyMixedFromSource r g).app (Opposite.op ⦋0⦌) vY.2))).map
       (assemblyCrossedFamily r f g)
-  let c₁₃ := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
+  let c₁₃ := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
     (L := kanAssemblyMixedChoices r g)
     (SSet.Edge.id ((oneDirectionInverseMixedFromTarget r f).app (Opposite.op ⦋0⦌) vY.1))
     dG.extension).map (assemblyCrossedFamily r f g)
-  let c₀₂ := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
+  let c₀₂ := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
     (L := kanAssemblyMixedChoices r g)
     (SSet.Edge.id ((oneDirectionInverseMixedFromSource r f).app (Opposite.op ⦋0⦌) vX.1))
     dG.extension).map (assemblyCrossedFamily r f g)
-  let c₂₃ := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
+  let c₂₃ := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
     (L := kanAssemblyMixedChoices r g) dF.inverse
     (SSet.Edge.id ((kanAssemblyMixedFromTarget r g).app (Opposite.op ⦋0⦌) vZ.2))).map
       (assemblyCrossedFamily r f g)
-  let c₀₃ := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
+  let c₀₃ := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
     (L := kanAssemblyMixedChoices r g) dF.inverse dG.extension).map (assemblyCrossedFamily r f g)
   refine nonemptyCompStruct_paste_factorization_diagram
     (K := (PointedObject.basedHom ((boundaryKanRealizationFunctor r).obj X)
@@ -195,24 +195,24 @@ lemma boundaryAssemblyCompositionTriangle_nonempty (r : ℕ) {X Y Z : StableMode
   · exact rt
   · exact cl
   · exact cu
-  · exact (_root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftFamilyEdge_congr (boundaryAssemblyExtensionFamily r (f ≫ g)) vX.1
+  · exact (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianLeftFamilyEdge_congr (boundaryAssemblyExtensionFamily r (f ≫ g)) vX.1
       (kanAssemblyCompositionFirstEdge r f g vX.2 vY.2 dF.extension)
       (dF.extension.map (kanAssemblyMixedPost r f g))
       (kanAssemblyCompositionFirstEdge_edge r f g vX.2 vY.2 dF.extension)).trans hl₀₁
   · exact hl₀₂
-  · exact (_root_.SerrePositivity.InfinityCategories.Kan.cartesianRightFamilyEdge_congr (boundaryAssemblyInverseFamily r (f ≫ g)) vZ.2
+  · exact (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianRightFamilyEdge_congr (boundaryAssemblyInverseFamily r (f ≫ g)) vZ.2
       (oneDirectionInverseCompositionSecondEdge r f g vY.1 vZ.1 dG.inverse)
       (dG.inverse.map (oneDirectionInverseMixedPre r f g))
       (oneDirectionInverseCompositionSecondEdge_edge r f g vY.1 vZ.1 dG.inverse)).trans hr₁₂
   · exact hr₀₂
   · exact hc₀₁
   · exact hc₁₃
-  · exact hc₀₂.trans (_root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftFamilyEdge_congr
+  · exact hc₀₂.trans (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianLeftFamilyEdge_congr
       (boundaryAssemblyExtensionFamily r (f ≫ g)) vX.1
       (kanAssemblyCompositionSecondEdge r f g vY.2 vZ.2 dG.extension)
       (dG.extension.map (kanAssemblyMixedPre r f g))
       (kanAssemblyCompositionSecondEdge_edge r f g vY.2 vZ.2 dG.extension)).symm
-  · exact hc₂₃.trans (_root_.SerrePositivity.InfinityCategories.Kan.cartesianRightFamilyEdge_congr
+  · exact hc₂₃.trans (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianRightFamilyEdge_congr
       (boundaryAssemblyInverseFamily r (f ≫ g)) vZ.2
       (oneDirectionInverseCompositionFirstEdge r f g vX.1 vY.1 dF.inverse)
       (dF.inverse.map (oneDirectionInverseMixedPost r f g))

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKConeSourceRestriction
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentConeSourceApex
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentConeFamilyHomotopy
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentConeSourceApex
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.CoherentConeFamilyHomotopy
 
 /-!
 概要：元の円評価の BK 切断点が与える cotensor 錐は、実際の Sp の ∞ 極限錐。
@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance circleBKIsLimitSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
@@ -25,13 +25,13 @@ local instance circleBKIsLimitHomKan (X Y : OmegaSpectrum.{u}) :
 
 /-- 元の円 cotensor の恒等射の BK 切断点から作った錐は、実際の Sp の極限錐。 -/
 lemma circleBKCoherentCone_isLimit (Y : OmegaSpectrum.{u}) :
-    IsLimitCone (circleBKCoherentCone Y) := by
-  apply coherentCone_isLimit_of_family_lifts (circleBKCoherentCone Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (circleBKCoherentCone Y) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCone_isLimit_of_family_lifts (circleBKCoherentCone Y)
     (cotensor PointedSimplicialSet.circle Y) (circleBKCoherentCone_vertex Y)
-    (fun X ↦ coherentConeSourceFamily (circleBKCoherentCone Y)
+    (fun X ↦ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coherentConeSourceFamily (circleBKCoherentCone Y)
       (cotensor PointedSimplicialSet.circle Y) (circleBKCoherentCone_vertex Y) X)
   · intro X
-    exact coherentConeSourceFamily_evaluation _ _ _ _
+    exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coherentConeSourceFamily_evaluation _ _ _ _
   · intro X
     rw [circleBKCoherentConeSourceFamily_restrict]
     exact circleBKNativeConeComparison_homotopyEquivalence X Y

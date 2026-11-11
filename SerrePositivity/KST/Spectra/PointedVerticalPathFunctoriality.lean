@@ -63,11 +63,11 @@ def post (H : VerticalPath p f g) {E' B' : PointedSimplicialSet.{u}}
 /-- 源の前合成は、元の射影を固定する区間を保つ。 -/
 def pre (H : VerticalPath p f g) {U : PointedSimplicialSet.{u}} (i : U ⟶ T) :
     VerticalPath p (i ≫ f) (i ≫ g) := by
-  have hs : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i E ≫ PointedObject.basedHomMap U p =
-      PointedObject.basedHomMap T p ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i B := by
-    simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  have hs : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i E ≫ PointedObject.basedHomMap U p =
+      PointedObject.basedHomMap T p ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i B := by
+    simp only [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
     exact ((MonoidalClosed.pre i).naturality p).symm
-  exact H.map p (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i E) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i B) (i ≫ f) (i ≫ g)
+  exact H.map p (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i E) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i B) (i ≫ f) (i ≫ g)
     (familyVertex_pre i f) (familyVertex_pre i g) hs
     ((familyVertex_pre i (f ≫ p)).trans (congrArg familyVertex (Category.assoc i f p).symm))
 

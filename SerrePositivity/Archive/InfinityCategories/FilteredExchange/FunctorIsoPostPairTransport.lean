@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoChainTransport
 
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoChainTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoChainTransport
 
 /-!
 概要：同じ実合成射を表す二組の後合成は、同じ指定同型の値を保持する。

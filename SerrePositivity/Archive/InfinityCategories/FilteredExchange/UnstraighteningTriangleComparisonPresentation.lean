@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.UnstraighteningTriangleComposition
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.UnstraighteningTriangleComposition
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.UnstraighteningSourceComparisonPresentation
 
 /-!

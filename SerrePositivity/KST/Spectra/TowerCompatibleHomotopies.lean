@@ -31,9 +31,9 @@ structure HomotopyTriangle {X : SSet.{u}} {x : X _⦋0⦌} {r : ℕ}
 variable (X : ℕ → PointedSimplicialSet.{u}) (p : ∀ n, X (n + 1) ⟶ X n)
   [∀ n, KanComplex (X n).right] [∀ n, Fibration (p n).right] (r : ℕ)
   (s t : ∀ n, (X n).right.PtSimplex (r + 1) (X n).basepoint)
-  (hs : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n))
+  (hs : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n))
     (s (n + 1)) = s n)
-  (ht : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n))
+  (ht : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n))
     (t (n + 1)) = t n)
   (R : ∀ n, PtSimplex.RelStruct .const (s n) (Fin.last (r + 1)))
   (S : ∀ n, PtSimplex.RelStruct .const (t n) (Fin.last (r + 1)))
@@ -45,7 +45,7 @@ lemma exists_next_triangle (n : ℕ) (U : HomotopyTriangle (R n) (S n)) :
     ∃ V : HomotopyTriangle (R (n + 1)) (S (n + 1)),
       V.relation.map ≫ (p n).right = U.relation.map := by
   obtain ⟨A, φ, hp, hφ⟩ := NullHomotopyTriangle.exists_step (p n).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n)) (hs n) (ht n)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n)) (hs n) (ht n)
     (R n) (S n) (R (n + 1)) (S (n + 1)) U.relation U.filler U.face (congrFun hd n)
   exact ⟨⟨A, φ, hφ⟩, hp⟩
 

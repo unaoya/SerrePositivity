@@ -19,8 +19,8 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma interval_edge_cases (e : (Δ[1] : SSet.{u}) _⦋1⦌) :
-    e = PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) 1 ∨
-    e = PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) 1 ∨
+    e = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) 1 ∨
+    e = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) 1 ∨
     e = SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) := by
   have hm := stdSimplex.monotone_apply e (show (0 : Fin 2) ≤ 1 by decide)
   change e 0 ≤ e 1 at hm
@@ -44,24 +44,24 @@ lemma interval_edge_cases (e : (Δ[1] : SSet.{u}) _⦋1⦌) :
     fin_cases i <;> assumption
 
 lemma intervalMap_edges_mem {X : SSet.{u}} (W : Set (X _⦋1⦌))
-    (hW : ∀ x : X _⦋0⦌, PinchedHom.constant x 1 ∈ W)
+    (hW : ∀ x : X _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 1 ∈ W)
     (s : X _⦋1⦌) (hs : s ∈ W) (e : (Δ[1] : SSet.{u}) _⦋1⦌) :
     (SSet.yonedaEquiv.symm s).app (Opposite.op ⦋1⦌) e ∈ W := by
   rcases interval_edge_cases e with h | h | h
-  · rw [h, pinchedConstant_map]
+  · rw [h, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedConstant_map]
     exact hW _
-  · rw [h, pinchedConstant_map]
+  · rw [h, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedConstant_map]
     exact hW _
   · rw [h]
     simpa only [← SSet.yonedaEquiv_comp, Category.id_comp, Equiv.apply_symm_apply] using hs
 
 lemma invertedEdges_constant {X Y : SSet.{u}} (F : X ⟶ Y) (x : X _⦋0⦌) :
-    PinchedHom.constant x 1 ∈ invertedEdges F := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 1 ∈ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertedEdges F := by
   have h := invertsEdges_const (Δ[1] : SSet.{u}) Y
     (F.app (Opposite.op ⦋0⦌) x) Set.univ (a := SSet.yonedaEquiv (𝟙 Δ[1])) (Set.mem_univ _)
-  change IsInvertibleEdge ((edgeOfSimplex (PinchedHom.constant x 1)).map ((truncation 2).map F))
-  have he : (((edgeOfSimplex (PinchedHom.constant x 1)).map ((truncation 2).map F))).edge =
-      PinchedHom.constant (F.app (Opposite.op ⦋0⦌) x) 1 := pinchedConstant_map _ _ _
-  exact (isInvertibleEdge_congr he).mpr h
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 1)).map ((truncation 2).map F))
+  have he : (((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 1)).map ((truncation 2).map F))).edge =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (F.app (Opposite.op ⦋0⦌) x) 1 := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedConstant_map _ _ _
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr he).mpr h
 
 end SerrePositivity.KST.LocalizingInvariants

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FiberwisePullbackValue
-public import SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredLeftFibrationRelativeDetection
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberwisePullbackValue
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.FilteredLeftFibrationRelativeDetection
 
 /-!
 概要：引き戻し全空間の有限な相対射を、元の三つの値の path 引き戻しで検出する。

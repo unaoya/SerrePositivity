@@ -23,7 +23,7 @@ lemma cubicalLambdaNativeSimplexData_hom_cell {n : ℕ}
     (hb : b = I.max' (Finset.card_pos.mp (by omega))) (hk : k = 2 - (I.card : ℤ)) :
     (cubicalLambdaNativeSimplexData A F).hom I a b k hI ha hb hk =
       eqToHom (congrArg (fun d => (homObject A D
-        (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a)) (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))).X d)
+        (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a)) (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))).X d)
         (show -((I.card - 2 : ℕ) : ℤ) = k by omega))
         (serreCubeTopCellImage A _ (I.card - 2)
           (by

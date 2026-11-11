@@ -75,7 +75,7 @@ theorem constantCechTupleProductIso_fac (n : SimplexCategory) :
     familyCechDiagonalProjection, constantCechTupleEquiv]
 
 variable {S : Scheme.{u}} [IsNoetherian S] [ModelCategory SSet.{0}]
-  (I J : MorphismProperty SSet.{0}) [ModelGeneration.CofibrantlyGenerated.{0} I J]
+  (I J : MorphismProperty SSet.{0}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{0})]
 
 /-- 概要：非交和被覆の各段の対角比較は弱同値（公理 (1)）。

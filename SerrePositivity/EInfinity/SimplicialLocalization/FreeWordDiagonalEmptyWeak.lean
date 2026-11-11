@@ -20,8 +20,8 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Hammock SerrePositivity.InfinityCategories
-lemma freeWordDiagonalAugmentation_empty_weak (C : RelativeCategory.{u}) (X Y : C.category) :
-    IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app Word.empty) :=
+lemma freeWordDiagonalAugmentation_empty_weak (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty) :=
   FixedObjectDiagram.wordDiagonalAugmentation_empty_weak (freeResolution C) C
     (freeResolutionObject C) (fun θ X => freeResolutionObject_naturality C θ X)
     (freeResolutionAugmentationNatTrans C) (freeResolutionObject_augmentation C)

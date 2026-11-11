@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：horn に属する面では最大頂点、それ以外では欠けた面の添字を取り、その像の最大元を取る。
 規約：Moss 2020 Proposition 21 の Kan 性に向けた二重細分の直接的な計算。
 使われ方：二重細分から horn への充填写像の頂点の構成。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

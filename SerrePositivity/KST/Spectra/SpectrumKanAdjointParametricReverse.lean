@@ -22,8 +22,8 @@ namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 /-- 元の全 Hom で具体化した、三つの実正方形と保存済み四三角形を保持する比較データ。 -/
 def kanAdjointSignedReverseParametricComparison (X Y : OmegaSpectrum.{u}) (n : ℕ) :=
   SignedAdjointPaths.reverseParametricNaturalityComparison
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma (n + 2))) (X.toKanSequence_omega (n + 2))
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (Y.sigma (n + 2))) (Y.toKanSequence_omega (n + 2))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma (n + 2))) (X.toKanSequence_omega (n + 2))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (Y.sigma (n + 2))) (Y.toKanSequence_omega (n + 2))
     (pointedEvaluation X Y.toKanSequence (n + 2))
     (pointedEvaluation X Y.toKanSequence (n + 3))
     (pointedEvaluation_parametric_adjoint X Y (n + 2))
@@ -45,8 +45,8 @@ def kanAdjointSignedReverseParametricSquare (X Y : OmegaSpectrum.{u}) (n : ℕ) 
         (KanSequence.signedLoopStructureReverse Y.toKanSequence Y.toKanSequence_omega n).path).pre
           (PointedMapping.transpose (pointedEvaluation X Y.toKanSequence n))).path) :=
   SignedAdjointPaths.reverseParametricNaturalitySquare
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma (n + 2))) (X.toKanSequence_omega (n + 2))
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (Y.sigma (n + 2))) (Y.toKanSequence_omega (n + 2))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma (n + 2))) (X.toKanSequence_omega (n + 2))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (Y.sigma (n + 2))) (Y.toKanSequence_omega (n + 2))
     (pointedEvaluation X Y.toKanSequence (n + 2))
     (pointedEvaluation X Y.toKanSequence (n + 3))
     (pointedEvaluation_parametric_adjoint X Y (n + 2))

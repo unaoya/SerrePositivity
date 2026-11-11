@@ -25,7 +25,7 @@ open scoped Simplicial
 使われ方：元の核の全基点ホモトピーの自明性。 -/
 lemma completionClosedKernelExInfinity_toPoint_isIso (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (toUnit (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (Fibration.Relative.closedKernelRealization
         (completionImageClosedPredicate r ι f hf))))) := by
@@ -51,10 +51,10 @@ lemma completionClosedKernelExInfinity_toPoint_isIso (r : ℕ)
 使われ方：元の相対 fiber 比較の可縮な角。 -/
 lemma completionClosedKernelExInfinity_homotopy_subsingleton (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : ℕ)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : ℕ)
     (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (Fibration.Relative.closedKernelRealization
       (completionImageClosedPredicate r ι f hf))) _⦋0⦌) :
-    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
       (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (Fibration.Relative.closedKernelRealization
         (completionImageClosedPredicate r ι f hf))) n x) := by
   let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (Fibration.Relative.closedKernelRealization

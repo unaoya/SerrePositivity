@@ -49,10 +49,10 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
 
 include hcof hfib in
 lemma post_fill_faces (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ W) (n : ℕ)
-    (a : ∀ k, (BoundaryGluing.facet n k).toSSet ⟶ postChoiceSpace X Y W f g)
-    (ha : BoundaryGluing.Compatible a) :
+    (a : ∀ k, (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.facet n k).toSSet ⟶ postChoiceSpace X Y W f g)
+    (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.Compatible a) :
     ∃ e : SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⟶ postChoiceSpace X Y W f g,
-      (∀ k, (BoundaryGluing.facet n k).ι ≫ e = a k) ∧
+      (∀ k, (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.facet n k).ι ≫ e = a k) ∧
       vertexInclusion X Y f ▷ SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ≫
           RelativeChoiceSpace.family (vertexInclusion X Y f) (postBoundary X Y W f g) e =
         vertices X Y f ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫
@@ -62,10 +62,10 @@ lemma post_fill_faces (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : 
 
 include hcof hfib in
 lemma pre_fill_faces (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W.base) (n : ℕ)
-    (a : ∀ k, (BoundaryGluing.facet n k).toSSet ⟶ preChoiceSpace X Y W f g)
-    (ha : BoundaryGluing.Compatible a) :
+    (a : ∀ k, (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.facet n k).toSSet ⟶ preChoiceSpace X Y W f g)
+    (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.Compatible a) :
     ∃ e : SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⟶ preChoiceSpace X Y W f g,
-      (∀ k, (BoundaryGluing.facet n k).ι ≫ e = a k) ∧
+      (∀ k, (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.facet n k).ι ≫ e = a k) ∧
       vertexInclusion Y W g ▷ SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ≫
           RelativeChoiceSpace.family (vertexInclusion Y W g) (preBoundary X Y W f g) e =
         vertices Y W g ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫

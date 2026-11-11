@@ -31,7 +31,7 @@ lemma d3CornerFamily {A L : OmegaSpectrum.{u}} (a : A ⟶ L)
     ∃ d : U ⟶ space L E, j ≫ d = k ∧ d ≫ pre a E = s ∧ d ≫ post L q = t := by
   let b := pullback.lift s t hst
   let := relativeCorner_trivialKanFibration a ha q hq
-  have := TrivialKanFibration.mem (p := relativeCorner a q) j inferInstance
+  have := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := relativeCorner a q) j inferInstance
   have hw : k ≫ relativeCorner a q = j ≫ b := by
     apply pullback.hom_ext
     · simpa only [Category.assoc, relativeCorner_fst, b, pullback.lift_fst] using hs
@@ -69,7 +69,7 @@ lemma d3CompositeCorner_trivialKanFibration {A L N : OmegaSpectrum.{u}} (a : A �
     (b : L ⟶ N) (ha : IsSequentialRelativeCofibration a) (hb : IsSequentialRelativeCofibration b)
     {E Z : KanSequence.{u}} (q : KanSequence.Hom E Z)
     (hq : ∀ n, (MorphismProperty.monomorphisms SSet.{u}).rlp (q.app n).right) :
-    TrivialKanFibration (relativeCorner (a ≫ b) q) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (relativeCorner (a ≫ b) q) := by
   constructor
   intro V U j hj
   let : Mono j := hj

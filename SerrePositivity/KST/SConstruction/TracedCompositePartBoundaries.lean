@@ -77,18 +77,18 @@ lemma monicKPrismCompositePart_middle (n : ℕ) :
 
 /-- 元の合成補正の同じ終点は、後の単一射の補正終点の同じ BF 前合成。 -/
 lemma monicKPrismCompositePart_target (n : ℕ) :
-    nervePoint (compositionStringDirect f g) ≫ compositionStringPair f g ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ≫ compositionStringPair f g ≫
         monicKPrismTracedRawComposition F f g ≫
           RawSpectrumMapping.evaluation (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj z)) n =
       SSet.const (monicKTracedRawStageVertex F g n) ≫
         monicKTracedTripleLastPairStageMap F f z n := by
-  have hp : nervePoint (compositionStringDirect f g) ≫ compositionStringPair f g ≫
-      fst (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) =
-      nervePoint (coherentArrowStringDirect f) := by
+  have hp : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ≫ compositionStringPair f g ≫
+      fst (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) := by
     rw [compositionStringPair_first, compositionStringFirst_direct]
-  have hq : nervePoint (compositionStringDirect f g) ≫ compositionStringPair f g ≫
-      snd (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) =
-      nervePoint (coherentArrowStringDirect g) := by
+  have hq : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ≫ compositionStringPair f g ≫
+      snd (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect g) := by
     rw [compositionStringPair_second, compositionStringSecond_direct]
   rw [monicKPrismTracedRawComposition_evaluation,
     monicKTracedTripleLastPairStageMap]

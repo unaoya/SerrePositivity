@@ -14,45 +14,45 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "A" => dgAlgebraCategory R (DGOdotInput.source d)
-local notation "B" => dgAlgebraCategory R (DGOdotInput.left d)
-local notation "D" => dgAlgebraCategory R (DGOdotInput.right d)
-local notation "V" => dgAlgebraCategory R (DGOdotInput.corner d)
-local notation "L" => dgAlgebraMap R (DGOdotInput.top d)
-local notation "G" => dgAlgebraMap R (DGOdotInput.side d)
-local notation "p" => dgAlgebraMap R (DGOdotInput.lower d)
-local notation "q" => dgAlgebraMap R (DGOdotInput.upper d)
+local notation "A" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d)
+local notation "B" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.left d)
+local notation "D" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.right d)
+local notation "V" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.corner d)
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.top d)
+local notation "G" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.side d)
+local notation "p" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.lower d)
+local notation "q" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.upper d)
 local notation "CL" => DGSmallPerfectArrowTarget R (A) (B) (L)
 local notation "DR" => DGSmallPerfectArrowTarget R (A) (D) (G)
 local notation "VT" => DGSmallPerfectSquareCorner R (A) (B) (D) (V) (L) (G) (p) (q)
 local notation "pS" => dgSmallPerfectSquareLeftMap R (A) (B) (D) (V) (L) (G) (p) (q)
 local notation "qS" => dgSmallPerfectSquareRightMap R (A) (B) (D) (V) (L) (G) (p) (q)
 local notation "M" => dgHomGluingBimodule R (CL) (DR) (VT) (pS) (qS)
-local instance : IsDGPretriangulated R (DGOdotGluing R d) :=
-  dgGluingMilnor_isDGPretriangulated R d
-local instance : IsExactFunctor (dgNerve.map (dgOdotQuotientInput R d).diagonal) :=
-  dgGluingMilnorNativeDiagonal_isExactFunctor R d
+local instance : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (DGOdotGluing R d) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnor_isDGPretriangulated R d
+local instance : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgOdotQuotientInput R d).diagonal) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorNativeDiagonal_isExactFunctor R d
 
 /-- 概要：元左小 Perf 因子の同宇宙 ULift 表示。
 方針：型の ULift 自然同型を使う。規約：全単体を保つ。
 使われ方：元 top の実延長との strict 比較。 -/
-def dgOdotMilnorLeftLiftIso : dgNerve R (CL) ≅ (dgOdotMilnorLaxLeft R d).obj :=
-  (Functor.isoWhiskerLeft (dgNerve R (CL)) CategoryTheory.uliftFunctorTrivial ≪≫
+def dgOdotMilnorLeftLiftIso : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (CL) ≅ (dgOdotMilnorLaxLeft R d).obj :=
+  (Functor.isoWhiskerLeft (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (CL)) CategoryTheory.uliftFunctorTrivial ≪≫
     Functor.rightUnitor _).symm
 
 /-- 概要：元右小 Perf 因子の同宇宙 ULift 表示。
 方針：型の ULift 自然同型を使う。規約：全単体を保つ。
 使われ方：元 side の実延長との strict 比較。 -/
-def dgOdotMilnorRightLiftIso : dgNerve R (DR) ≅ (dgOdotMilnorLaxRight R d).obj :=
-  (Functor.isoWhiskerLeft (dgNerve R (DR)) CategoryTheory.uliftFunctorTrivial ≪≫
+def dgOdotMilnorRightLiftIso : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DR) ≅ (dgOdotMilnorLaxRight R d).obj :=
+  (Functor.isoWhiskerLeft (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DR)) CategoryTheory.uliftFunctorTrivial ≪≫
     Functor.rightUnitor _).symm
 
 /-- 概要：元左射影の宇宙共通化は同じ strict native 射影と可換。
 方針：同じ全単体の実作用を比較する。規約：表示以外の選択を加えない。
 使われ方：lax 第一射影の元の射への回収。 -/
 lemma dgOdotMilnorNativeLeftProjection_lift :
-    (dgOdotMilnorNativeLiftIso R d).hom ≫ dgGluingUniverseLeftNerve R (CL) (DR) (M) =
-      dgNerve.map (dgGluingLeft R (CL) (DR) (M)) ≫ (dgOdotMilnorLeftLiftIso R d).hom := by
+    (dgOdotMilnorNativeLiftIso R d).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseLeftNerve R (CL) (DR) (M) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R (CL) (DR) (M)) ≫ (dgOdotMilnorLeftLiftIso R d).hom := by
   ext n a
   rfl
 
@@ -60,8 +60,8 @@ lemma dgOdotMilnorNativeLeftProjection_lift :
 方針：同じ全単体の実作用を比較する。規約：表示以外の選択を加えない。
 使われ方：lax 第二射影の元の射への回収。 -/
 lemma dgOdotMilnorNativeRightProjection_lift :
-    (dgOdotMilnorNativeLiftIso R d).hom ≫ dgGluingUniverseRightNerve R (CL) (DR) (M) =
-      dgNerve.map (dgGluingRight R (CL) (DR) (M)) ≫ (dgOdotMilnorRightLiftIso R d).hom := by
+    (dgOdotMilnorNativeLiftIso R d).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseRightNerve R (CL) (DR) (M) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R (CL) (DR) (M)) ≫ (dgOdotMilnorRightLiftIso R d).hom := by
   ext n a
   rfl
 
@@ -71,16 +71,16 @@ lemma dgOdotMilnorNativeRightProjection_lift :
 lemma dgOdotMilnorLaxInclusion_fst_original :
     (dgOdotMilnorLaxInclusion R d).hom ≫
       (laxFst (dgOdotMilnorLaxYoneda R d) (dgOdotMilnorLaxCoefficient R d)).hom =
-        dgNerve.map (dgSmallPerfectArrow R (A) (B) (L)) ≫ (dgOdotMilnorLeftLiftIso R d).hom := by
-  change ((dgGluingMilnorNativeDiagonal R d).hom ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgSmallPerfectArrow R (A) (B) (L)) ≫ (dgOdotMilnorLeftLiftIso R d).hom := by
+  change ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorNativeDiagonal R d).hom ≫
     (dgOdotMilnorNativeLaxComparison R d).hom) ≫ _ = _
   rw [Category.assoc, dgOdotMilnorNativeLaxComparison_fst,
     dgOdotMilnorNativeLeftProjection_lift]
-  change dgNerve.map (dgOdotQuotientInput R d).diagonal ≫
-    (dgNerve.map (dgGluingLeft R (CL) (DR) (M)) ≫
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgOdotQuotientInput R d).diagonal ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R (CL) (DR) (M)) ≫
       (dgOdotMilnorLeftLiftIso R d).hom) = _
-  rw [← Category.assoc, ← dgNerve.map_comp]
-  exact congrArg (fun F => dgNerve.map F ≫ (dgOdotMilnorLeftLiftIso R d).hom)
+  rw [← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp]
+  exact congrArg (fun F => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map F ≫ (dgOdotMilnorLeftLiftIso R d).hom)
     (dgSmallPerfectSquareDiagonal_left R (A) (B) (D) (V) (L) (G) (p) (q)
       (dgOdotInput_dg_commutes R d))
 
@@ -90,16 +90,16 @@ lemma dgOdotMilnorLaxInclusion_fst_original :
 lemma dgOdotMilnorLaxInclusion_snd_original :
     (dgOdotMilnorLaxInclusion R d).hom ≫
       (laxSnd (dgOdotMilnorLaxYoneda R d) (dgOdotMilnorLaxCoefficient R d)).hom =
-        dgNerve.map (dgSmallPerfectArrow R (A) (D) (G)) ≫ (dgOdotMilnorRightLiftIso R d).hom := by
-  change ((dgGluingMilnorNativeDiagonal R d).hom ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgSmallPerfectArrow R (A) (D) (G)) ≫ (dgOdotMilnorRightLiftIso R d).hom := by
+  change ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorNativeDiagonal R d).hom ≫
     (dgOdotMilnorNativeLaxComparison R d).hom) ≫ _ = _
   rw [Category.assoc, dgOdotMilnorNativeLaxComparison_snd,
     dgOdotMilnorNativeRightProjection_lift]
-  change dgNerve.map (dgOdotQuotientInput R d).diagonal ≫
-    (dgNerve.map (dgGluingRight R (CL) (DR) (M)) ≫
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgOdotQuotientInput R d).diagonal ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R (CL) (DR) (M)) ≫
       (dgOdotMilnorRightLiftIso R d).hom) = _
-  rw [← Category.assoc, ← dgNerve.map_comp]
-  exact congrArg (fun F => dgNerve.map F ≫ (dgOdotMilnorRightLiftIso R d).hom)
+  rw [← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp]
+  exact congrArg (fun F => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map F ≫ (dgOdotMilnorRightLiftIso R d).hom)
     (dgSmallPerfectSquareDiagonal_right R (A) (B) (D) (V) (L) (G) (p) (q)
       (dgOdotInput_dg_commutes R d))
 

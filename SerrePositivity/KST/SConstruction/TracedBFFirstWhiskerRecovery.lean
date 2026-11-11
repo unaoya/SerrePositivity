@@ -89,7 +89,7 @@ lemma monicKTracedFirstWhiskerRecoveryRealization_first :
 
 /-- 元の第一実三角形全体も、同じ高次比較の指定面の全像として厳密に保持する。 -/
 lemma monicKTracedFirstWhiskerRecoveryRealization_first_triangle :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 1) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 1) ≫
         monicKTracedFirstWhiskerRecoveryRealization F f g h =
       SSet.yonedaEquiv.symm (monicKTracedCompositionRecovery F g h).first.simplex ≫
         enrichedFixedLeftComposition (monicKTracedSpectrumMap F f) := by
@@ -109,7 +109,7 @@ lemma monicKTracedFirstWhiskerRecoveryRealization_second :
 
 /-- 元の第二実三角形全体も、同じ高次比較の指定面の全像として厳密に保持する。 -/
 lemma monicKTracedFirstWhiskerRecoveryRealization_second_triangle :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 0) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 0) ≫
         monicKTracedFirstWhiskerRecoveryRealization F f g h =
       SSet.yonedaEquiv.symm (monicKTracedCompositionRecovery F g h).second.simplex ≫
         enrichedFixedLeftComposition (monicKTracedSpectrumMap F f) := by

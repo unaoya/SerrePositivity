@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeMarkedSpanCartesianLift
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianFibration
-public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.BaseChange
 
 /-!
 概要：全辺が Tamme 分母へ写る任意の底図式上では、span の射影は両側 fibration。
@@ -19,14 +19,14 @@ open CategoryTheory Limits MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
 lemma tammeSpanDenominatorBaseChange_cartesianFibration
     (x : (laxCategory p q).obj _⦋0⦌) {B : SSet.{u}} (f : B ⟶ (laxCategory p q).obj)
     (hW : ∀ e : B _⦋1⦌, f.app (Opposite.op ⦋1⦌) e ∈ tammeLocalizingEdges p q) :
-    CartesianFibration (pullback.snd
-      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f) := by
-  let π := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration (pullback.snd
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f) := by
+  let π := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x
   refine ⟨innerFibrations.pullback_snd π f (InnerFibration.mem (q := π)), ?_⟩
   intro v e he
   change stdSimplex.δ (0 : Fin 2) ≫ e =
@@ -56,14 +56,14 @@ lemma tammeSpanDenominatorBaseChange_cartesianFibration
   · apply pullback.hom_ext
     · simpa only [Category.assoc, pullback.lift_fst, SSet.yonedaEquiv_symm_comp] using hG
     · simpa only [Category.assoc, pullback.lift_snd, SSet.yonedaEquiv_symm_comp] using he
-  · apply isCartesianEdge_pullback
+  · apply _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_pullback
     rw [← SSet.yonedaEquiv_comp, pullback.lift_fst]
     exact hGc
 
 lemma tammeSpanBaseChange_cocartesianFibration
     (x : (laxCategory p q).obj _⦋0⦌) {B : SSet.{u}} (f : B ⟶ (laxCategory p q).obj) :
-    CocartesianFibration (pullback.snd
-      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianFibration (pullback.snd
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f) :=
   inferInstance
 
 end SerrePositivity.KST.LocalizingInvariants

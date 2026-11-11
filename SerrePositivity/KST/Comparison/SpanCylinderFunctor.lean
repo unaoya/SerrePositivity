@@ -27,15 +27,15 @@ open CategoryTheory Limits
 使われ方：関手的な span の置換の円筒への移送。
 -/
 def spanCylinderFunctor : (WalkingSpan ⥤ SSet.{u}) ⥤ SSet.{u} where
-  obj F := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd)
-  map {F G} α := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap
+  obj F := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd)
+  map {F G} α := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap
     (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd)
     (G.map WalkingSpan.Hom.fst) (G.map WalkingSpan.Hom.snd)
     (α.app .zero) (α.app .left) (α.app .right)
     (α.naturality WalkingSpan.Hom.fst).symm (α.naturality WalkingSpan.Hom.snd).symm
-  map_id _ := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap_id _ _
+  map_id _ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap_id _ _
   map_comp {F G H} α β :=
-    (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap_comp
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap_comp
       (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd)
       (G.map WalkingSpan.Hom.fst) (G.map WalkingSpan.Hom.snd)
       (H.map WalkingSpan.Hom.fst) (H.map WalkingSpan.Hom.snd)
@@ -51,8 +51,8 @@ def spanCylinderFunctor : (WalkingSpan ⥤ SSet.{u}) ⥤ SSet.{u} where
 使われ方：左頂点のホモトピー引き戻しの置換。
 -/
 def spanCylinderLeft : (evaluation WalkingSpan SSet.{u}).obj .left ⟶ spanCylinderFunctor where
-  app F := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd)
-  naturality {_ _} α := (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_map _ _ _ _ _ _ _
+  app F := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd)
+  naturality {_ _} α := (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_left_map _ _ _ _ _ _ _
     (α.naturality WalkingSpan.Hom.fst).symm (α.naturality WalkingSpan.Hom.snd).symm).symm
 
 /--
@@ -62,8 +62,8 @@ def spanCylinderLeft : (evaluation WalkingSpan SSet.{u}).obj .left ⟶ spanCylin
 使われ方：右頂点のホモトピー引き戻しの置換。
 -/
 def spanCylinderRight : (evaluation WalkingSpan SSet.{u}).obj .right ⟶ spanCylinderFunctor where
-  app F := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd)
-  naturality {_ _} α := (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map _ _ _ _ _ _ _
+  app F := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd)
+  naturality {_ _} α := (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_right_map _ _ _ _ _ _ _
     (α.naturality WalkingSpan.Hom.fst).symm (α.naturality WalkingSpan.Hom.snd).symm).symm
 
 /--

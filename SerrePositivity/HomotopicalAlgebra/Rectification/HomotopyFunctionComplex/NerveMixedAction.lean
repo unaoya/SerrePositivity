@@ -47,9 +47,9 @@ variable (C : Type u) [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
   (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
   {D : Type uD} [Category.{vD} D] (H : D ⥤ MixedResolutionCenters.Index C)
   (K : D ⥤ SSet.{v})
-  (a : NerveMovingParameter.System.{w, v} (NerveMovingParameter.lifted.{w} K)
+  (a : NerveMovingParameter.System.{w, v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K)
     (H ⋙ MixedResolutionCenters.leftChoices C))
-  (b : NerveMovingParameter.System.{w, v} (NerveMovingParameter.lifted.{w} K)
+  (b : NerveMovingParameter.System.{w, v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K)
     (H ⋙ MixedResolutionCenters.rightChoices C))
 
 abbrev parameter {n : ℕ} (c : ComposableArrows D n) :=

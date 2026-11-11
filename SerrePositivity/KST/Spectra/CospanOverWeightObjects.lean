@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CospanNerveHornIso
-public import SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKan
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.BousfieldKan
 
 /-!
 概要：cospan の BK 重みの中央と両端の over 圏を、元の cospan と一点として記述する。

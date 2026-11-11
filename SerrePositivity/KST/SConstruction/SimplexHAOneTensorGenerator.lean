@@ -17,7 +17,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の内部一面の全生成元対の復元値は、同じ左右生成元の HA 値の豊穣順合成。 -/
-lemma simplexHADegreeLift_one_tensor_generator {N : ℕ} (s : DGNerve.SimplexData A D N)
+lemma simplexHADegreeLift_one_tensor_generator {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D N)
     (n : ℕ) (i : SerreCubeGeneratorIndex n) (m : ℕ) (j : SerreCubeGeneratorIndex m)
     (v : Fin (n + 1 + m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1))
     (hb : v (Fin.last (n + 1 + m)) < b) (k : ℤ)

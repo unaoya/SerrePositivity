@@ -4,7 +4,7 @@ public import SerrePositivity.KST.NonConnective.SequentialRelativeHomFibration
 public import SerrePositivity.KST.NonConnective.SequentialNativeHomLimit
 public import SerrePositivity.KST.NonConnective.SequentialTowerIndex
 public import SerrePositivity.KST.NonConnective.SequentialDiagramReplacement
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNativeCocones
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.StrictNativeCocones
 
 /-!
 概要：相対 cofibrant な逐次 BF 列の実際の ∞ 余極限。
@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.NonConnective
 local instance sequentialCofibrantColimitSimplicialCategory :
@@ -34,7 +34,7 @@ local instance sequentialCofibrantColimitOppositeHomKan (X Y : OmegaSpectrum.{u}
 lemma sequentialNativeHomTower_fibration (D : SpectrumSequence.{u})
     (hD : ∀ n, IsSequentialRelativeCofibration (D.map (homOfLE (Nat.le_succ n))))
     (X : OmegaSpectrum.{u}ᵒᵖ) (n : ℕ) :
-    Fibration ((simplicialHomDiagram (sequentialTowerIndex ⋙ D.op) X).map
+    Fibration ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (sequentialTowerIndex ⋙ D.op) X).map
       (AsSmall.up.map (homOfLE (Nat.le_succ n)).op)) := by
   change Fibration (eHomWhiskerRight SSet (D.map (homOfLE (Nat.le_succ n))) X.unop)
   rw [← RawSpectrumMapping.pre_spectrum]
@@ -43,15 +43,15 @@ lemma sequentialNativeHomTower_fibration (D : SpectrumSequence.{u})
 /-- 相対 cofibrant な逐次 BF 列の段ごとの実余錐は、元の Sp 図式上の ∞ 余極限。 -/
 lemma sequentialLevelCocone_isColimit_of_relativeCofibrations (D : SpectrumSequence.{u})
     (hD : ∀ n, IsSequentialRelativeCofibration (D.map (homOfLE (Nat.le_succ n)))) :
-    IsColimitCone (strictNativeCocone (sequentialLevelColimitCocone D)) := by
-  rw [strictNativeCocone_isColimit_iff]
-  apply (strictCoherentCone_isLimit_iff_whisker (sequentialLevelColimitCocone D).op
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictNativeCocone (sequentialLevelColimitCocone D)) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictNativeCocone_isColimit_iff]
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone_isLimit_iff_whisker (sequentialLevelColimitCocone D).op
     sequentialTowerIndex).mpr
   let : ∀ (X : OmegaSpectrum.{u}ᵒᵖ) (n : ℕ),
-      Fibration ((simplicialHomDiagram (sequentialTowerIndex ⋙ D.op) X).map
+      Fibration ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (sequentialTowerIndex ⋙ D.op) X).map
         (AsSmall.up.map (homOfLE (Nat.le_succ n)).op)) :=
     fun X n ↦ sequentialNativeHomTower_fibration D hD X n
-  apply strictCoherentCone_isLimit_of_tower_homLimit
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_tower_homLimit
   intro X
   exact (sequentialNativeHomIsLimit D X).whiskerEquivalence sequentialTowerIndexEquivalence
 
@@ -65,7 +65,7 @@ lemma sequentialDiagramReplacement_map_succ (D : SpectrumSequence.{u}) (n : ℕ)
 
 /-- 任意の元の逐次 BF 列から構成した置換図式の実余錐は、追加仮定なしの ∞ 余極限。 -/
 lemma sequentialReplacementLevelCocone_isColimit (D : SpectrumSequence.{u}) :
-    IsColimitCone (strictNativeCocone
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictNativeCocone
       (sequentialLevelColimitCocone (sequentialDiagramReplacement D))) := by
   apply sequentialLevelCocone_isColimit_of_relativeCofibrations
   intro n

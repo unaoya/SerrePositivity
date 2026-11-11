@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConeTetrahedronParameter
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CompositionAppendDiagram
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RightSliceAppendFront
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionTriangle
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionTriangle
 
 /-!
 概要：元の実合成三角形へ指定終点を追加し、元の 012 面を厳密に保持する。

@@ -43,7 +43,7 @@ lemma closedKernel_constant_post {B : StableModel.{u}} (P : ClosedStablePredicat
     weakStringConstantExact (closedKernelZeroMap P) n ≫ closedKernelFlagPost P n =
       closedStableInclusion P ≫ closedFlagConstant P n := by
   apply Subtype.ext
-  apply (cancel_mono (fullSubcomplexOnVertices
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices
     ((ihom (stdSimplex.obj n)).obj B.carrier) (closedFlagStablePredicate P n).predicate).ι).1
   have h₀ := closedKernelFlagPost_inclusion P n
   have h₁ := weakStringConstantExact_ι (closedKernelZeroMap P) n
@@ -85,8 +85,8 @@ theorem closedRelativeSquare {B : StableModel.{u}} (P : ClosedStablePredicate B)
 方針：同型の完全性を消費。規約：底の二射を変更しない。
 使われ方：零長旗の評価同型。 -/
 def stableIsoOfCarrierIso {X Y : StableModel.{u}} (e : X.carrier ≅ Y.carrier) : X ≅ Y := by
-  have h := isExactFunctor_of_isQCatEquivalence (qCatEquivalenceOfIso e).isQCatEquivalence
-  have k := isExactFunctor_of_isQCatEquivalence (qCatEquivalenceOfIso e).symm.isQCatEquivalence
+  have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso e).isQCatEquivalence
+  have k := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso e).symm.isQCatEquivalence
   exact {
     hom := ⟨e.hom, h.preservesZero, h.preservesCofiber⟩
     inv := ⟨e.inv, k.preservesZero, k.preservesCofiber⟩
@@ -99,7 +99,7 @@ def stableIsoOfCarrierIso {X Y : StableModel.{u}} (e : X.carrier ≅ Y.carrier) 
 def closedFlagZeroIso {B : StableModel.{u}} (P : ClosedStablePredicate B) :
     closedFlagModel P ⦋0⦌ ≅ B :=
   stableIsoOfCarrierIso
-    (fullSubcomplexIso (SConstruction.pointFunctorEvaluationIso B.carrier)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fullSubcomplexIso (SConstruction.pointFunctorEvaluationIso B.carrier)
       (closedFlagStablePredicate P ⦋0⦌).predicate (ClosedStablePredicate.top B).predicate
       (fun v => ⟨fun _ => trivial,
         fun _ => coreFlag_mem P ⦋0⦌ v (weakStringPredicate_zero (𝟙 (flagAmbient B)) v)⟩) ≪≫
@@ -117,7 +117,7 @@ lemma closedFlagZeroIso_hom {B : StableModel.{u}} (P : ClosedStablePredicate B) 
 lemma closedFlagZeroIso_inv {B : StableModel.{u}} (P : ClosedStablePredicate B) :
     (closedFlagZeroIso P).inv = closedFlagConstant P ⦋0⦌ := by
   apply Subtype.ext
-  apply (cancel_mono (fullSubcomplexOnVertices
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices
     ((ihom (Δ[0] : SSet.{u})).obj B.carrier)
     (closedFlagStablePredicate P ⦋0⦌).predicate).ι).1
   have h : (closedFlagZeroIso P).inv.val ≫

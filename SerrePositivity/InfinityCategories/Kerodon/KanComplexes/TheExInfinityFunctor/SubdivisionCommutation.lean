@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：和集合保存から singleton に帰着し、通常の退化の不等式を使う。
 規約：Moss 2020 Lemma 26 (4)。射の合成の順序は Lean の前から後の順。
 使われ方：Ex の regular pairing における複雑度の制御。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

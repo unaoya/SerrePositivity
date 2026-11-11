@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
-public import SerrePositivity.InfinityCategories.Stable.FunctorHoEvaluation
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluationNaturality
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FunctorHoEvaluation
 
 /-!
 概要：指定した関手の辺の制限等式を、同じ辺の頂点成分の等式へ移す。
@@ -30,14 +30,14 @@ lemma restrictedFunctorEdge_evaluation_arrow {A B X : SSet.{u}} (i : A ⟶ B)
     (l : Truncated.Edge (X := (truncation 2).obj ((ihom B).obj X)) f g)
     (m : Truncated.Edge (X := (truncation 2).obj ((ihom A).obj X)) f' g')
     (h : ((pre i).app X).app (Opposite.op ⦋1⦌) l.edge = m.edge) (x : A _⦋0⦌) :
-    Arrow.mk ((hoFunctor.map (evaluateFunctorAt (Y := X) (i.app (Opposite.op ⦋0⦌) x))).toFunctor.map
+    Arrow.mk ((hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X) (i.app (Opposite.op ⦋0⦌) x))).toFunctor.map
       (Truncated.HomotopyCategory.homMk l)) =
-    Arrow.mk ((hoFunctor.map (evaluateFunctorAt (Y := X) x)).toFunctor.map
+    Arrow.mk ((hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X) x)).toFunctor.map
       (Truncated.HomotopyCategory.homMk m)) := by
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
   have he := congrArg (fun k : (ihom B).obj X ⟶ X =>
-    k.app (Opposite.op ⦋1⦌) l.edge) (evaluateFunctorAt_precomp (X := X) i x)
-  change (evaluateFunctorAt (Y := X) x).app (Opposite.op ⦋1⦌)
+    k.app (Opposite.op ⦋1⦌) l.edge) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.evaluateFunctorAt_precomp (X := X) i x)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X) x).app (Opposite.op ⦋1⦌)
     (((pre i).app X).app (Opposite.op ⦋1⦌) l.edge) = _ at he
   rw [h] at he
   exact he.symm

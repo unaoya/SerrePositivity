@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedGrothendieckFunctoriality
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckFunctoriality
 public import SerrePositivity.EInfinity.Hammock.GrothendieckPointwiseWeak
 
 /-!
@@ -23,17 +23,17 @@ open CategoryTheory SerrePositivity.InfinityCategories
 variable {W : Type u} [Category.{u} W] (F : Wᵒᵖ ⥤ Cat.{u, u})
   {G G' : W ⥤ Cat.{u, u}}
 
-def rightCoefficientMap (β : G ⟶ G') : total F G ⥤ total F G' :=
-  Grothendieck.map (Functor.whiskerLeft (contravariantProjection F) β)
+def rightCoefficientMap (β : G ⟶ G') : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.total F G ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.total F G' :=
+  Grothendieck.map (Functor.whiskerLeft (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F) β)
 
 lemma rightCoefficientMap_projection (β : G ⟶ G') :
-    rightCoefficientMap F β ⋙ projection = projection := rfl
+    rightCoefficientMap F β ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.projection = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.projection := rfl
 
 lemma rightCoefficientMap_isWeakHomotopyEquivalence (β : G ⟶ G')
-    (hβ : ∀ w, IsWeakHomotopyEquivalence (nerveMap (β.app w).toFunctor)) :
-    IsWeakHomotopyEquivalence (nerveMap (rightCoefficientMap F β)) :=
+    (hβ : ∀ w, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (β.app w).toFunctor)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (rightCoefficientMap F β)) :=
   grothendieck_map_isWeakHomotopyEquivalence
-    (Functor.whiskerLeft (contravariantProjection F) β)
-    (fun X => hβ ((contravariantProjection F).obj X))
+    (Functor.whiskerLeft (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F) β)
+    (fun X => hβ ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F).obj X))
 
 end SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck

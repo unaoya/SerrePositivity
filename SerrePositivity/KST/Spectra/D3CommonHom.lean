@@ -73,16 +73,16 @@ def commonBaseMap (X Y : OmegaSpectrum.{u}) : commonHom X Y ⟶ fullCompatibleSp
 
 /-- 共通対象の指定二境界の corner を元の BF 豊穣表記で認証する。 -/
 lemma commonSpectrumCorner_trivialKanFibration (X Y : OmegaSpectrum.{u}) :
-    TrivialKanFibration (spectrumCorner (commonInclusion X) (commonComparison Y)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (spectrumCorner (commonInclusion X) (commonComparison Y)) :=
   spectrumCompositeCorner_trivialKanFibration
     (loopSourceInclusion X) (commonLoopInclusion X) (loopSourceInclusion_relative X)
     (commonLoopInclusion_relative X) (commonComparison Y) (commonComparison_rlp Y)
 
 /-- 共通比較を含む Hom の射影の全単射 RLP を実 corner から証明する。 -/
 instance commonBaseMap_trivialKanFibration (X Y : OmegaSpectrum.{u}) :
-    TrivialKanFibration (commonBaseMap X Y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (commonBaseMap X Y) := by
   dsimp only [commonBaseMap, commonHom]
-  exact ⟨trivialKanFibrations.pullback_snd _ _ (commonSpectrumCorner_trivialKanFibration X Y).mem⟩
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.pullback_snd _ _ (commonSpectrumCorner_trivialKanFibration X Y).mem⟩
 
 /-- 同じ比較 Hom から元の X,Y の Hom を回収する。 -/
 def commonOriginalMap (X Y : OmegaSpectrum.{u}) : commonHom X Y ⟶ mappingSpace X Y :=
@@ -95,8 +95,8 @@ def commonMiddleMap (X Y : OmegaSpectrum.{u}) :
 
 /-- 元の全 Hom への合成射影も、比較を含めて実自明 Kan fibration。 -/
 instance commonOriginalMap_trivialKanFibration (X Y : OmegaSpectrum.{u}) :
-    TrivialKanFibration (commonOriginalMap X Y) :=
-  ⟨trivialKanFibrations.comp_mem _ _ (TrivialKanFibration.mem (p := commonBaseMap X Y))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (commonOriginalMap X Y) :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.comp_mem _ _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := commonBaseMap X Y))
     (fullOriginalMap_trivialKanFibration X Y).mem⟩
 
 /-- 比較 Hom の左境界は、元の二段包含の全 Hom 正方形。 -/

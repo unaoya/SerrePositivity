@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredRelativeFactorization
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FilteredRelativeFactorization
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd
 

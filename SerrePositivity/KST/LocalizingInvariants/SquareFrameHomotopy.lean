@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.SquareFrameHomotopy
 
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyPathFamily
 public import SerrePositivity.KST.LocalizingInvariants.SquareFramePathExtension
@@ -21,53 +21,53 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 namespace SquareFrameHomotopy
-attribute [local instance] SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.instMonoSSetEquivalencePathι
-variable {X : SSet.{u}} {f g : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame X} (H : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy f g)
+attribute [local instance] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.SquareFrameHomotopy.instMonoSSetEquivalencePathι
+variable {X : SSet.{u}} {f g : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareFrame X} (H : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.SquareFrameHomotopy f g)
 
-def pathFrame : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame (equivalencePath X) where
+def pathFrame : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareFrame (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePath X) where
   bottom := homotopyPathFamily H.bottom H.bottom_invertible
   top := homotopyPathFamily H.top H.top_invertible
   left := homotopyPathFamily H.left H.left_invertible
   right := homotopyPathFamily H.right H.right_invertible
   lower_left := by
-    apply (cancel_mono (equivalencePathι X)).1
+    apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathι X)).1
     simp only [Category.assoc, homotopyPathFamily_inclusion]
     exact ofHomotopy_restriction_eq _ _ _ _ H.lower_left
   lower_right := by
-    apply (cancel_mono (equivalencePathι X)).1
+    apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathι X)).1
     simp only [Category.assoc, homotopyPathFamily_inclusion]
     exact ofHomotopy_restriction_eq _ _ _ _ H.lower_right
   upper_left := by
-    apply (cancel_mono (equivalencePathι X)).1
+    apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathι X)).1
     simp only [Category.assoc, homotopyPathFamily_inclusion]
     exact ofHomotopy_restriction_eq _ _ _ _ H.upper_left
   upper_right := by
-    apply (cancel_mono (equivalencePathι X)).1
+    apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathι X)).1
     simp only [Category.assoc, homotopyPathFamily_inclusion]
     exact ofHomotopy_restriction_eq _ _ _ _ H.upper_right
 
-lemma pathFrame_source : (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame H)) (equivalencePathEndpoint X 0) = f := by
-  apply _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.ext
+lemma pathFrame_source : (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.postcomp (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame H)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint X 0) = f := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareFrame.ext
   · exact homotopyPathFamily_source H.bottom H.bottom_invertible
   · exact homotopyPathFamily_source H.top H.top_invertible
   · exact homotopyPathFamily_source H.left H.left_invertible
   · exact homotopyPathFamily_source H.right H.right_invertible
 
-lemma pathFrame_target : (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame H)) (equivalencePathEndpoint X 1) = g := by
-  apply _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.ext
+lemma pathFrame_target : (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.postcomp (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame H)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint X 1) = g := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareFrame.ext
   · exact homotopyPathFamily_target H.bottom H.bottom_invertible
   · exact homotopyPathFamily_target H.top H.top_invertible
   · exact homotopyPathFamily_target H.left H.left_invertible
   · exact homotopyPathFamily_target H.right H.right_invertible
 
-variable [Quasicategory X] (Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) (hf : f = _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare Q)
+variable [Quasicategory X] (Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) (hf : f = _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ofSquare Q)
 
-def extension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame H) Q :=
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.pathExtension _ _ ((_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame_source H).trans hf)
+def extension : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.PathExtension (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame H) Q :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.pathExtension _ _ ((_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame_source H).trans hf)
 
-lemma extension_target_boundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ ((_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.extension H) Q hf).target =
+lemma extension_target_boundary : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareFrame.boundaryι ≫ ((_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.extension H) Q hf).target =
     g.diagram := by
-  rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.target_boundary, pathFrame_target]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.PathExtension.target_boundary, pathFrame_target]
 
 end SquareFrameHomotopy
 end SerrePositivity.KST.LocalizingInvariants

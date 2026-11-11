@@ -11,24 +11,24 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 
 /-- 元の refinement が誘導する、同じ局所番号を持つ非 joint 頂点の順序埋め込み。 -/
-def necklaceRefinementNonjoint (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) : T.down.NonjointVertex ↪o
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single T.down.vertexMax).NonjointVertex where
+def necklaceRefinementNonjoint (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Necklace.{u}) : T.down.NonjointVertex ↪o
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single T.down.vertexMax).NonjointVertex where
   toFun v := ⟨v.val, by
     intro h
-    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton] at h
+    simp only [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton] at h
     rcases h with h | h
     · exact v.property ((congrArg (fun j => j ∈ T.down.joints) h).mpr T.down.zero_mem)
     · exact v.property ((congrArg (fun j => j ∈ T.down.joints) h).mpr T.down.last_mem)⟩
   inj' v w h := Subtype.ext (congrArg
-    (fun x : (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single T.down.vertexMax).NonjointVertex => x.val) h)
+    (fun x : (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single T.down.vertexMax).NonjointVertex => x.val) h)
   map_rel_iff' := Iff.rfl
 
 /-- 元の非 joint 頂点の包含は、元の全頂点の局所番号を厳密に保持する。 -/
-lemma necklaceRefinementNonjoint_val (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) (v : T.down.NonjointVertex) :
+lemma necklaceRefinementNonjoint_val (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Necklace.{u}) (v : T.down.NonjointVertex) :
     (necklaceRefinementNonjoint T v).val = v.val := rfl
 
 /-- 元の非 joint 包含の像は、元の necklace の joints に入らない同じ内部頂点の全体。 -/
-lemma necklaceRefinementNonjoint_range (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) :
+lemma necklaceRefinementNonjoint_range (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Necklace.{u}) :
     Set.range (necklaceRefinementNonjoint T) = {v | v.val.val ∉ T.down.joints} := by
   ext v
   constructor

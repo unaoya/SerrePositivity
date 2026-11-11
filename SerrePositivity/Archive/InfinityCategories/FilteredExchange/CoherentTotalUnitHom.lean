@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceLeftHomValue
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
-public import SerrePositivity.InfinityCategories.F1.Universe.Homotopy
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceLeftHomValue
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Homotopy
 
 /-!
 概要：全空間の実際の単位による前合成を、𝒮 内の全左 Hom からの比較として表示する。

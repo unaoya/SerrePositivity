@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.ClosedFlagCofiberCoordinates
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulPostcomposition
 
 /-!
 概要：閉じた P cofiber の全補完から元の全矢印図式への充満忠実な実射影。
@@ -29,9 +29,9 @@ def closedCofiberRawProjection :
 /-- 概要：全 P 補完の元の実底辺射影は native 写像空間で充満忠実。
 方針：同じ trivial Kan 射影と全部分圏包含の充満忠実性を合成する。
 規約：商・分数 API を新設しない。使われ方：二つの共通補完の全族比較。 -/
-theorem closedCofiberRawProjection_fullyFaithful : IsFullyFaithful (closedCofiberRawProjection P) :=
-  (isFullyFaithful_of_trivialKanFibration (closedCofiberProjection P)).comp
-    (isFullyFaithful_fullSubcomplexOnVertices_ι _ (closedArrowPredicate P).predicate)
+theorem closedCofiberRawProjection_fullyFaithful : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (closedCofiberRawProjection P) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isFullyFaithful_of_trivialKanFibration (closedCofiberProjection P)).comp
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι _ (closedArrowPredicate P).predicate)
 
 /-- 概要：元の実底辺射影は同じ全 cofiber 図式の底辺そのもの。
 方針：元の全部分圏制限の厳密包含公式を消費する。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConstantUnstraighteningFiberMapOverPre
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorSquareTotalComponentMap
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTriangleTotalAction
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：定値標的の元の二面比較を、任意の同じ fiber 射の実作用へ値まで戻す。

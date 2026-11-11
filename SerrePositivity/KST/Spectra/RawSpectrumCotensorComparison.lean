@@ -22,13 +22,13 @@ def exchangeFamily (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
     pointedSpace X (KanSequence.mapping A Y) ⟶
       (ihom A).obj (PointedObject.basedHom (X.level n).space (Y.level n).space) :=
   pointedEvaluation X (KanSequence.mapping A Y) n ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (X.level n).space A (Y.level n).space).hom
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (X.level n).space A (Y.level n).space).hom
 
 /-- 交換した各段評価も元の構造条件を保つ。 -/
 lemma exchangeFamily_condition (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
     (A : PointedSimplicialSet.{u}) (n : ℕ) :
     exchangeFamily X Y A (n + 1) ≫
-        (ihom A).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space) =
+        (ihom A).map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space) =
       exchangeFamily X Y A n ≫ (ihom A).map (pointedStep X Y n) := by
   dsimp only [exchangeFamily]
   rw [Category.assoc, ← restriction_exchange, ← Category.assoc]
@@ -39,7 +39,7 @@ lemma exchangeFamily_condition (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
 lemma uncurryExchangeFamily_condition (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
     (A : PointedSimplicialSet.{u}) (n : ℕ) :
     uncurry (exchangeFamily X Y A (n + 1)) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space =
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space =
       uncurry (exchangeFamily X Y A n) ≫ pointedStep X Y n := by
   rw [← uncurry_natural_right, ← uncurry_natural_right, exchangeFamily_condition]
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentPrefixConeSimplex
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCompositionTetrahedron
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTrianglePathSets
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentTrianglePathSets
 
 /-!
 概要：零面の実 coslice 円柱の終点に現れる精密化の二端点を元の path へ戻す。

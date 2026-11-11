@@ -45,7 +45,7 @@ lemma basedPathBasepoint_localized_isIso (B : PointedSimplicialSet.{u}) :
 def strictZeroPathFiberMap {A : SSet.{u}} {E B : PointedSimplicialSet.{u}}
     (f : E ⟶ B) (a : A ⟶ E.right) (ha : a ≫ f.right = toUnit A ≫ B.hom) :
     A ⟶ (pathHomotopyFiber f).right :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (pathEndpoint B) f).lift
+  (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback (pathEndpoint B) f).lift
     (toUnit A ≫ (basedPathSpace B).hom) a (by
       rw [Category.assoc, Under.w (pathEndpoint B)]
       exact ha.symm)
@@ -55,13 +55,13 @@ lemma strictZeroPathFiberMap_path {A : SSet.{u}} {E B : PointedSimplicialSet.{u}
     (f : E ⟶ B) (a : A ⟶ E.right) (ha : a ≫ f.right = toUnit A ≫ B.hom) :
     strictZeroPathFiberMap f a ha ≫ (pullback.fst (pathEndpoint B) f).right =
       toUnit A ≫ (basedPathSpace B).hom :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (pathEndpoint B) f).lift_fst _ _ _
+  (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback (pathEndpoint B) f).lift_fst _ _ _
 
 /-- 元の homotopy fiber への比較の全空間への射影は元の射。 -/
 lemma strictZeroPathFiberMap_projection {A : SSet.{u}} {E B : PointedSimplicialSet.{u}}
     (f : E ⟶ B) (a : A ⟶ E.right) (ha : a ≫ f.right = toUnit A ≫ B.hom) :
     strictZeroPathFiberMap f a ha ≫ (pathHomotopyFiberProjection f).right = a :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (pathEndpoint B) f).lift_snd _ _ _
+  (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback (pathEndpoint B) f).lift_snd _ _ _
 
 /-- 零合成の元の四角形が homotopy pullback なら既存の path homotopy fiber への比較は局所化同型。 -/
 lemma strictZeroPathFiberMap_localized_isIso_of_homotopyPullback
@@ -72,7 +72,7 @@ lemma strictZeroPathFiberMap_localized_isIso_of_homotopyPullback
   exact (isHomotopyPullback_iff_alternative_fiber (CommSq.mk ha).flip
     (basedPathSpace B).hom (basedPathBasepoint_localized_isIso B) (pathEndpoint B).right
     ((SSet.modelCategoryQuillen.fibration_iff _).mp inferInstance) (Under.w (pathEndpoint B))
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (pathEndpoint B) f).flip (strictZeroPathFiberMap f a ha)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback (pathEndpoint B) f).flip (strictZeroPathFiberMap f a ha)
     (strictZeroPathFiberMap_projection f a ha) (strictZeroPathFiberMap_path f a ha)).mp
       ((isHomotopyPullback_flip_iff (CommSq.mk ha)).mpr h)
 

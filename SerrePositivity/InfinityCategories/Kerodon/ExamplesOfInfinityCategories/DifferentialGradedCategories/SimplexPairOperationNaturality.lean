@@ -9,6 +9,8 @@ public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 方針：純テンソル上で単体的評価射の自然性を使う。
 規約：KST Construction A.5、群や環の可換性を追加しない。
 使われ方：普遍な充填による比較ホモトピーの再帰と外部作用の同変性。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

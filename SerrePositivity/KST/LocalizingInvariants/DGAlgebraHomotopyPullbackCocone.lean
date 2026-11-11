@@ -39,7 +39,7 @@ lemma primitive_boundary : δ (-1) 0 (primitive R f g) +
     Cochain.ofHom (pairHom R f g ≫ difference R f g) = 0 := by
   have hb : δ (-1) 0 (Path.primitive R B) +
       Cochain.ofHom (Path.endpointsHom R B ≫ Path.difference R B) = 0 :=
-    complexMappingCocone_snd_boundary (Path.difference R B)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCocone_snd_boundary (Path.difference R B)
   rw [Path.endpointsHom_difference] at hb
   have hs : (path R f g).hom ≫ (Path.source R B).hom =
       (left R f g).hom ≫ f.hom := congrArg Mon.Hom.hom (path_source R f g)

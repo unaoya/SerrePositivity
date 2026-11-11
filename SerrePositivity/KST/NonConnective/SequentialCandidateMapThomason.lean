@@ -22,7 +22,7 @@ local instance thomasonCandidateSpectrumCategory : SimplicialCategory OmegaSpect
 
 variable {D E : SpectrumSequence.{u}} (η : D ⟶ E)
   (X Y : ℕ → StableModel.{u}) (f : ∀ n, X n ⟶ Y n)
-  (hf : ∀ n, F2.Idempotent.IsIdempotentCompletion (f n).val)
+  (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion (f n).val)
   (a : ∀ (n : ℕ) (j : ℤ), OmegaSpectrum.homotopyGroup (D.obj ⟨n⟩) j ≃*
     OmegaSpectrum.homotopyGroup (kOmegaSpectrum (X n)) (j + n))
   (b : ∀ (n : ℕ) (j : ℤ), OmegaSpectrum.homotopyGroup (E.obj ⟨n⟩) j ≃*
@@ -57,7 +57,7 @@ theorem sequentialCandidateMap_piIsomorphism_of_thomason :
 
 /-- 同じ候補比較の実 Sp 辺は可逆。dg 入力から実逐次比較の存在は主張しない。 -/
 theorem sequentialCandidateMap_isInvertible_of_thomason :
-    IsInvertibleEdge (coherentNerveEdge (sequentialCandidateMap η)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (sequentialCandidateMap η)) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (sequentialCandidateMap_piIsomorphism_of_thomason η X Y f hf a b h)
 

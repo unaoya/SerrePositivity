@@ -82,7 +82,7 @@ lemma fromBottom_llp_of_projective (R : K ⥤ C)
 
 namespace Projective
 variable [IsLocallyPresentable.{w} C] (I J : MorphismProperty C)
-  [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 lemma fromBottom_cofibration_of_isCofibrant (R : K ⥤ C)
     (hR : let := modelCategory K I J; IsCofibrant R) :

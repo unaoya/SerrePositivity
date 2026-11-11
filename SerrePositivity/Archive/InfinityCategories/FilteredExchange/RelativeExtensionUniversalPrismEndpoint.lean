@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionUniversalPrism
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionFiberEndpointEvaluation
-public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.UniversalScaffoldEvaluation
 
 /-!
 概要：全 prism の普遍評価の終点を、同じ指定 fiber 内の全終点写像として保持する。

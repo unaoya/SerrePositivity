@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.TriangleBookMaps
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanReplacement
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceCells
 
@@ -50,28 +50,28 @@ variable [ModelCategory SSet.{v}]
   (hp : trivialFibrations SSet.{v} p)
 
 abbrev parameter (I : Type v) : SSet.{v} :=
-  (KanReplacement.functor hcof hfib).obj (TriangleBook.obj I)
-abbrev inclusion (I : Type v) : TriangleBook.obj I ⟶ parameter hcof hfib I :=
-  (KanReplacement.unit hcof hfib).app (TriangleBook.obj I)
+  (KanReplacement.functor hcof hfib).obj (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.obj I)
+abbrev inclusion (I : Type v) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.obj I ⟶ parameter hcof hfib I :=
+  (KanReplacement.unit hcof hfib).app (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.obj I)
 
 local instance (I : Type v) : Mono (inclusion hcof hfib I) := KanReplacement.unit_mono _ _ _
 
 abbrev reindex {I J : Type v} (α : I → J) :
     parameter hcof hfib I ⟶ parameter hcof hfib J :=
-  (KanReplacement.functor hcof hfib).map (TriangleBook.reindex α)
+  (KanReplacement.functor hcof hfib).map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps.reindex α)
 
 @[reassoc]
 lemma inclusion_reindex {I J : Type v} (α : I → J) :
     inclusion hcof hfib I ≫ reindex hcof hfib α =
-      TriangleBook.reindex α ≫ inclusion hcof hfib J :=
-  ((KanReplacement.unit hcof hfib).naturality (TriangleBook.reindex α)).symm
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps.reindex α ≫ inclusion hcof hfib J :=
+  ((KanReplacement.unit hcof hfib).naturality (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps.reindex α)).symm
 
 lemma reindex_id (I : Type v) : reindex hcof hfib (id : I → I) = 𝟙 _ := by
-  rw [reindex, TriangleBook.reindex_id, CategoryTheory.Functor.map_id]
+  rw [reindex, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps.reindex_id, CategoryTheory.Functor.map_id]
 
 lemma reindex_comp {I J K : Type v} (α : I → J) (β : J → K) :
     reindex hcof hfib α ≫ reindex hcof hfib β = reindex hcof hfib (β ∘ α) := by
-  rw [reindex, reindex, ← CategoryTheory.Functor.map_comp, TriangleBook.reindex_comp]
+  rw [reindex, reindex, ← CategoryTheory.Functor.map_comp, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps.reindex_comp]
 
 variable {I : Type v}
   (d : SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ⟶ RelativeChoiceSpace.obj i b)
@@ -80,17 +80,17 @@ variable {I : Type v}
 
 def extension : parameter hcof hfib I ⟶ RelativeChoiceSpace.obj i b :=
   RelativeChoiceCells.assemble hcof hfib i b p hp (inclusion hcof hfib I)
-    (TriangleBook.desc d f hf) (fun _ _ => none)
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.desc d f hf) (fun _ _ => none)
 
 @[reassoc]
 lemma extension_initial : inclusion hcof hfib I ≫ extension hcof hfib i b p hp d f hf =
-    TriangleBook.desc d f hf := RelativeChoiceCells.assemble_initial _ _ _ _ _ _ _ _ _
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.desc d f hf := RelativeChoiceCells.assemble_initial _ _ _ _ _ _ _ _ _
 
 @[reassoc]
 lemma extension_triangle (k : I) :
-    (TriangleBook.triangle I k ≫ inclusion hcof hfib I) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.triangle I k ≫ inclusion hcof hfib I) ≫
       extension hcof hfib i b p hp d f hf = f k := by
-  rw [Category.assoc, extension_initial, TriangleBook.triangle_desc]
+  rw [Category.assoc, extension_initial, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.triangle_desc]
 
 variable {J : Type v} (α : J → I)
 
@@ -102,17 +102,17 @@ abbrev transported : parameter hcof hfib J ⟶ RelativeChoiceSpace.obj i b :=
 
 @[reassoc]
 lemma transported_initial : inclusion hcof hfib J ≫ transported hcof hfib i b p hp d f hf α =
-    TriangleBook.desc d (fun j => f (α j)) (fun j => hf (α j)) := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.desc d (fun j => f (α j)) (fun j => hf (α j)) := by
   rw [transported, ← Category.assoc, inclusion_reindex, Category.assoc, extension_initial,
-    TriangleBook.desc_reindex]
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps.desc_reindex]
 
 /-- The comparison fixes every whole original triangle, including repeated selections. -/
 def reindexHomotopy : RelativeChoiceSpace.FixedBoundaryHomotopy (inclusion hcof hfib J)
-    (TriangleBook.desc d (fun j => f (α j)) (fun j => hf (α j)))
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.desc d (fun j => f (α j)) (fun j => hf (α j)))
     (restricted hcof hfib i b p hp d f hf α) (transported hcof hfib i b p hp d f hf α) :=
-  Classical.choice (RelativeChoiceSpace.nonempty_fixedBoundaryHomotopy hcof hfib _ _
+  Classical.choice (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.nonempty_fixedBoundaryHomotopy hcof hfib _ _
     (RelativeChoiceSpace.projection i b)
-    (RelativeChoiceSpace.projection_trivialFibration hcof hfib i b p hp) _ _
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.projection_trivialFibration hcof hfib i b p hp) _ _
     (extension_initial hcof hfib i b p hp d (fun j => f (α j)) (fun j => hf (α j)))
     (transported_initial hcof hfib i b p hp d f hf α))
 

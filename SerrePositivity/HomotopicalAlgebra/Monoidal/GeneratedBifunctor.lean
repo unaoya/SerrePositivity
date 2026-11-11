@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.Basic
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Basic
 
 public import SerrePositivity.CategoryTheory.Limits
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
@@ -26,7 +26,7 @@ variable {C₁ : Type u₁} {C₂ : Type u₂} {C₃ : Type u₃}
 two-variable Quillen condition for arbitrary pushout choices. -/
 lemma isQuillenBifunctor_of_generators (adj : F ⊣₂ G) (adjFlip : F.flip ⊣₂ H)
     (I₁ J₁ : MorphismProperty C₁) (I₂ J₂ : MorphismProperty C₂)
-    [CofibrantlyGenerated.{w₁} I₁ J₁] [CofibrantlyGenerated.{w₂} I₂ J₂]
+    [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w₁} I₁ J₁] [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w₂} I₂ J₂]
     (hII : ∀ {A B : C₁} (i : A ⟶ B), I₁ i →
       ∀ {X Y : C₂} (j : X ⟶ Y), I₂ j → ∀ sq : F.PushoutObjObj i j, Cofibration sq.ι)
     (hJI : ∀ {A B : C₁} (i : A ⟶ B), J₁ i →
@@ -43,9 +43,9 @@ lemma isQuillenBifunctor_of_generators (adj : F ⊣₂ G) (adjFlip : F.flip ⊣�
     · intro A' B' i' hi' X' Y' j' hj' sq'
       rw [trivialFibrations_llp]
       exact (cofibration_iff _).1 (hII i' hi' j' hj' sq')
-    · rw [← cofibrations_eq_generated I₁ J₁]
+    · rw [← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I₁ J₁]
       exact (cofibration_iff _).1 hi
-    · rw [← cofibrations_eq_generated I₂ J₂]
+    · rw [← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I₂ J₂]
       exact (cofibration_iff _).1 hj
   · intro A B X Y i j sq hi hj hw
     have ht : trivialCofibrations C₃ sq.ι := by
@@ -55,17 +55,17 @@ lemma isQuillenBifunctor_of_generators (adj : F ⊣₂ G) (adjFlip : F.flip ⊣�
         · intro A' B' i' hi' X' Y' j' hj' sq'
           rw [fibrations_llp]
           exact hJI i' hi' j' hj' sq'
-        · rw [← trivialCofibrations_eq_generated I₁ J₁]
+        · rw [← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated I₁ J₁]
           exact (mem_trivialCofibrations_iff _).2 ⟨hi, hiw⟩
-        · rw [← cofibrations_eq_generated I₂ J₂]
+        · rw [← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I₂ J₂]
           exact (cofibration_iff _).1 hj
       · apply adj.pushout_generated_both adjFlip I₁ J₂ (fibrations C₃) _ i _ j _ sq
         · intro A' B' i' hi' X' Y' j' hj' sq'
           rw [fibrations_llp]
           exact hIJ i' hi' j' hj' sq'
-        · rw [← cofibrations_eq_generated I₁ J₁]
+        · rw [← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I₁ J₁]
           exact (cofibration_iff _).1 hi
-        · rw [← trivialCofibrations_eq_generated I₂ J₂]
+        · rw [← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated I₂ J₂]
           exact (mem_trivialCofibrations_iff _).2 ⟨hj, hjw⟩
     exact (weakEquivalence_iff _).2 ht.2
 

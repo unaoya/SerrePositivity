@@ -48,8 +48,8 @@ lemma totalizationSpectrumMap_projection (n : ℕ) :
 
 /-- 実際の BF 比較射は各段で全基点 π 同型。 -/
 lemma totalizationSpectrumMap_levelwise (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((totalizationSpectrumMap D hD hΩ).app n).right := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((totalizationSpectrumMap D hD hΩ).app n).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp
     (g := ((homotopyTotalizationComparison D hΩ).app n).right) _
     (homotopyTotalizationComparison_levelwise D hΩ n)
   have he := congrArg Under.Hom.right (totalizationSpectrumMap_projection D hD hΩ n)

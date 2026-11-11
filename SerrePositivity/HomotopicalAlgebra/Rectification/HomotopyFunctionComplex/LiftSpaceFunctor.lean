@@ -46,15 +46,15 @@ variable {C : Type u} [Category.{v} C] (A : SimplexCategory ⥤ C) {X B : C}
 /-- Postcompose a lift along an actual morphism over B. -/
 def map {E E' : C} {p : E ⟶ B} {p' : E' ⟶ B} (k : E ⟶ E') (hk : k ≫ p' = p) :
     obj A a p f ⟶ obj A a p' f :=
-  pullback.lift (inclusion A a p f ≫ (cosimplicialHom A).map k) (projection A a p f) (by
-    rw [Category.assoc, ← (cosimplicialHom A).map_comp, hk]
+  pullback.lift (inclusion A a p f ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map k) (projection A a p f) (by
+    rw [Category.assoc, ← (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map_comp, hk]
     exact over A a p f)
 
 @[reassoc (attr := simp)]
 lemma map_inclusion {E E' : C} {p : E ⟶ B} {p' : E' ⟶ B}
     (k : E ⟶ E') (hk : k ≫ p' = p) :
     map A a f k hk ≫ inclusion A a p' f =
-      inclusion A a p f ≫ (cosimplicialHom A).map k := pullback.lift_fst _ _ _
+      inclusion A a p f ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map k := pullback.lift_fst _ _ _
 
 @[reassoc (attr := simp)]
 lemma map_projection {E E' : C} {p : E ⟶ B} {p' : E' ⟶ B}

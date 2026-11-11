@@ -33,21 +33,21 @@ def perfectDGExtensionCommaFamily :
 /-- 全 Hom の単位・合成を厳密に保ち、元の逆合成比較を持つ実 Perf comma 関手。 -/
 def perfectDGExtensionCommaFunctor :
     DGFunctor A (PerfectDGModule A D)
-      (DGFunctorCommaObject A (PerfectDGModule A E) (PerfectDGModule A T)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject A (PerfectDGModule A E) (PerfectDGModule A T)
         (perfectDGExtension A E T G)) :=
   (perfectDGExtensionCommaFamily A D E T F G).toDGFunctor
 
 /-- 同じ comma 関手の第一射影は、元の第一の実 Perf 延長そのもの。 -/
 lemma perfectDGExtensionCommaFunctor_source :
     (perfectDGExtensionCommaFunctor A D E T F G).comp
-      (dgFunctorCommaSource A (PerfectDGModule A E) (PerfectDGModule A T)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaSource A (PerfectDGModule A E) (PerfectDGModule A T)
         (perfectDGExtension A E T G)) = perfectDGExtension A D E F :=
   (perfectDGExtensionCommaFamily A D E T F G).toDGFunctor_source
 
 /-- 同じ comma 関手の第二射影は、元の合成入力の実 Perf 延長そのもの。 -/
 lemma perfectDGExtensionCommaFunctor_replacement :
     (perfectDGExtensionCommaFunctor A D E T F G).comp
-      (dgFunctorCommaReplacement A (PerfectDGModule A E) (PerfectDGModule A T)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaReplacement A (PerfectDGModule A E) (PerfectDGModule A T)
         (perfectDGExtension A E T G)) = perfectDGExtension A D T (F.comp G) :=
   (perfectDGExtensionCommaFamily A D E T F G).toDGFunctor_replacement
 

@@ -26,14 +26,14 @@ local instance unitCanonicalCategory : SimplicialCategory OmegaSpectrum.{u} :=
 variable {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y)
 
 lemma unitRightPost_identity : Arrow.mk (Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (unitRightPost p))) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (unitRightPost p))) =
     Arrow.mk (𝟙 (HomotopyCategory.mk
-      (functorVertex (SSet.yonedaEquiv.symm (coherentNerveEdge p).edge)))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge p).edge)))) := by
   exact SpectrumTriangleNormalization.canonicalPost_identity_arrow p
 
 lemma unitRightPre_canonical : Arrow.mk (Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (unitRightPre p))) =
-    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (unitRightPre p))) =
+    Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (SpectrumTriangleNormalization.canonicalPre
         (fibrationReplacementUnit p) (fibrationReplacementProjection p)))) := by
   apply HomotopyArrow.congr
@@ -42,11 +42,11 @@ lemma unitRightPre_canonical : Arrow.mk (Truncated.HomotopyCategory.homMk
   rfl
 
 lemma rightUnitIso_canonical : Arrow.mk (rightUnitIso p).hom =
-    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (SpectrumTriangleNormalization.canonicalPre
         (fibrationReplacementUnit p) (fibrationReplacementProjection p)))) := by
   exact (rightUnitIso_presentation p).trans
-    ((_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_of_any_identity _ _ (unitRightPost_identity p)).trans
+    ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.arrow_mk_comp_of_any_identity _ _ (unitRightPost_identity p)).trans
       (unitRightPre_canonical p))
 
 end SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeComparison

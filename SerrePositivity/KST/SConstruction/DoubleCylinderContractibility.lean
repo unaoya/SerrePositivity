@@ -22,9 +22,9 @@ open Comparison Spectra
 open scoped Simplicial
 
 /-- 可縮 Kan 複体の一点への射は anodyne 局所化で同型。 -/
-lemma contractibleKan_toUnit_localized_isIso {K : SSet.{u}} (hK : IsContractibleKan K) :
+lemma contractibleKan_toUnit_localized_isIso {K : SSet.{u}} (hK : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan K) :
     IsIso (AnodyneHomotopy.anodyneQ.map (toUnit K)) := by
-  have ht := (isContractibleKan_iff_trivialKanFibration K).mp hK
+  have ht := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_iff_trivialKanFibration K).mp hK
   have : IsIso (AnodyneHomotopy.anodyneQ.map (terminal.from K)) :=
     MonoRightLiftingContraction.localized_isIso _ ht.mem
   let e : terminal SSet.{u} ≅ 𝟙_ SSet.{u} :=
@@ -36,7 +36,7 @@ lemma contractibleKan_toUnit_localized_isIso {K : SSet.{u}} (hK : IsContractible
 /-- 一点の span の二重円筒は局所化で一点と同型。 -/
 lemma pointDoubleCylinder_toUnit_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map
-      (toUnit (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder (𝟙 (𝟙_ SSet.{u})) (𝟙 (𝟙_ SSet.{u}))))) := by
+      (toUnit (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder (𝟙 (𝟙_ SSet.{u})) (𝟙 (𝟙_ SSet.{u}))))) := by
   let Q := AnodyneHomotopy.anodyneQ.{u}
   let f := 𝟙 (𝟙_ SSet.{u})
   let P := pushout f f
@@ -49,17 +49,17 @@ lemma pointDoubleCylinder_toUnit_localized_isIso :
     exact (isIso_comp_left_iff _ _).mp hc
   have : IsIso (Q.map (doubleMappingCylinderCollapse f f)) :=
     doubleMappingCylinderCollapse_localized_isIso f f
-  have h : toUnit (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f f) = doubleMappingCylinderCollapse f f ≫ toUnit P :=
+  have h : toUnit (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder f f) = doubleMappingCylinderCollapse f f ≫ toUnit P :=
     isTerminalTensorUnit.hom_ext _ _
-  change IsIso (Q.map (toUnit (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f f)))
+  change IsIso (Q.map (toUnit (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder f f)))
   rw [h, Functor.map_comp]
   infer_instance
 
 /-- 三成分が可縮 Kan な任意の span の二重円筒は局所化で一点と同型。 -/
 lemma doubleCylinder_toUnit_localized_isIso {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B)
-    (hC : IsContractibleKan C) (hA : IsContractibleKan A) (hB : IsContractibleKan B) :
-    IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g))) := by
-  let q := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g (𝟙 (𝟙_ SSet.{u})) (𝟙 (𝟙_ SSet.{u}))
+    (hC : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan C) (hA : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan A) (hB : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan B) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder f g))) := by
+  let q := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap f g (𝟙 (𝟙_ SSet.{u})) (𝟙 (𝟙_ SSet.{u}))
     (toUnit C) (toUnit A) (toUnit B)
     (isTerminalTensorUnit.hom_ext _ _) (isTerminalTensorUnit.hom_ext _ _)
   have : IsIso (AnodyneHomotopy.anodyneQ.map q) :=
@@ -67,14 +67,14 @@ lemma doubleCylinder_toUnit_localized_isIso {C A B : SSet.{u}} (f : C ⟶ A) (g 
       (contractibleKan_toUnit_localized_isIso hC)
       (contractibleKan_toUnit_localized_isIso hA) (contractibleKan_toUnit_localized_isIso hB)
   have := pointDoubleCylinder_toUnit_localized_isIso.{u}
-  have h : toUnit (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g) = q ≫ toUnit _ := isTerminalTensorUnit.hom_ext _ _
+  have h : toUnit (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder f g) = q ≫ toUnit _ := isTerminalTensorUnit.hom_ext _ _
   rw [h, Functor.map_comp]
   infer_instance
 
 /-- 一点と局所化同値な非空単体集合の Kan 置換は全境界を充填する。 -/
 lemma kanReplacement_contractible_of_localized_toUnit {D : SSet.{u}} (d : D _⦋0⦌)
     (hD : IsIso (AnodyneHomotopy.anodyneQ.map (toUnit D))) :
-    IsContractibleKan (AnodyneKanReplacement.functor.obj D) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (AnodyneKanReplacement.functor.obj D) := by
   let P : PointedSimplicialSet.{u} := Under.mk (SSet.const d)
   let Z := PointedKanReplacement.obj P
   have hi : IsIso (AnodyneHomotopy.anodyneQ.map (AnodyneKanReplacement.unit.app D)) :=

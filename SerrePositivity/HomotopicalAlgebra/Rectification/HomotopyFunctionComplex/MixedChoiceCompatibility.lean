@@ -54,7 +54,7 @@ variable (Y : FramedResolution C) (W : ResolutionObject C) (g : Y.inner.base ⟶
 lemma fiberIso_inclusion (t : Context Y W) :
     (fiberIso Y W g t).hom ≫
       ResolutionLiftSpace.inclusion t.1.unop.left.inner t.2.right (total Y W g t) =
-        (FiberFunctor.inclusion (rawProjection Y W) (basepoint Y W g)).app t := by
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.inclusion (rawProjection Y W) (basepoint Y W g)).app t := by
   change (pullback.congrHom
     (rfl : (rawProjection Y W).app t = (rawProjection Y W).app t)
     (basepoint_eq Y W g t)).hom ≫ pullback.fst _ _ = pullback.fst _ _
@@ -71,13 +71,13 @@ lemma family_existing (t : Context Y W) :
     change (pullback.lift _ _ _ ≫ pullback.fst _ _) = _
     rw [pullback.lift_fst]
     change ResolutionLiftSpace.inclusion Y.inner W g ≫
-      ((cosimplicialHomMap t.1.unop.hom.frame).app W.resolution.obj ≫
-        (cosimplicialHom (ResolutionLiftSpace.frame t.1.unop.left.inner).obj).map
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap t.1.unop.hom.frame).app W.resolution.obj ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame t.1.unop.left.inner).obj).map
           t.2.hom.diagram) = _
     simp only [Category.assoc, ResolutionLiftSpace.pre_inclusion,
       ResolutionLiftSpace.post_inclusion_assoc]
     exact congrArg (fun q => ResolutionLiftSpace.inclusion Y.inner W g ≫ q)
-      ((cosimplicialHomMap t.1.unop.hom.frame).naturality t.2.hom.diagram).symm
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap t.1.unop.hom.frame).naturality t.2.hom.diagram).symm
   · rw [Category.assoc, fiberIso_projection]
     change pullback.lift _ _ _ ≫ pullback.snd _ _ = _
     rw [pullback.lift_snd]

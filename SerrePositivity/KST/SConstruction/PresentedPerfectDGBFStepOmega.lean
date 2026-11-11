@@ -68,7 +68,7 @@ local instance presentedPerfectDGBFStepOmegaAssemblyLoop_kanComplex (r : ℕ)
 /-- 同じ帰納段への前向き比較は全基点 π 同型。 -/
 lemma presentedPerfectDGBFStageComparison_piIsomorphism (r : ℕ)
     (S : PresentedPerfectDGBFStage.{u, v} A r) (C : PerfDGInput.{u, v} A) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       (show ((presentedPerfectDGBFBoundaryFunctor A r).obj C).obj ⟶
         (S.functor.obj C).obj from S.comparison C).right := by
   let _ : KanComplex (((presentedPerfectDGBFBoundaryFunctor A r).obj C).obj).right :=
@@ -93,8 +93,8 @@ lemma presentedPerfectDGBFStepLeftMap_suspension (r : ℕ)
 /-- 同じ実円柱次段の元の構造随伴は全基点・全次数で π 同型。 -/
 lemma presentedPerfectDGBFStepStructureAdjoint_piIsomorphism (r : ℕ)
     (S : PresentedPerfectDGBFStage.{u, v} A r) (C : PerfDGInput.{u, v} A) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (curry
-      (show _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((S.functor.obj C).obj) ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (curry
+      (show _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((S.functor.obj C).obj) ⟶
         ((presentedPerfectDGBFStepFunctor A r S.functor S.comparison S.naturality).obj C).obj
         from presentedPerfectDGBFStepStructureMap A r S.functor S.comparison
           S.naturality C)).right := by
@@ -107,12 +107,12 @@ lemma presentedPerfectDGBFStepStructureAdjoint_piIsomorphism (r : ℕ)
   let c : ((presentedPerfectDGKanAssemblyTargetFunctor A r).obj C).obj ⟶
       ((presentedPerfectDGBFStepFunctor A r S.functor S.comparison S.naturality).obj C).obj :=
     presentedPerfectDGBFStepComparison A r S.functor S.comparison S.naturality C
-  have hl : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism l.right :=
+  have hl : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism l.right :=
     (presentedPerfectDGOneDirectionKanComparisonMap_piIsomorphism A r C).comp
       (presentedPerfectDGBFStageComparison_piIsomorphism A r S C)
-  have ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (curry a).right :=
+  have ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (curry a).right :=
     presentedPerfectDGKanAssemblyRightAdjoint_piIsomorphism A r C
-  have hc : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism c.right :=
+  have hc : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism c.right :=
     kanPiIsomorphism_of_localized_isIso _
       (presentedPerfectDGBFStepComparison_localized_isIso A r S.functor S.comparison
         S.naturality C (S.kan C) (S.weak C))

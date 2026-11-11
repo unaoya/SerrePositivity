@@ -82,25 +82,25 @@ theorem hatGLShiftedEntryMap_app (A : SimplicialObject RingCat.{u}) (r q : ℕ)
 使われ方：rank の安定化との可換性。
 -/
 theorem hatGLCoefficientHomotopyMulEquiv_entry (A : SimplicialObject RingCat.{u})
-    (r n : ℕ) (x : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (hatGLSpace A r) n (1 : hatGLSubmonoid A r 0))
+    (r n : ℕ) (x : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (hatGLSpace A r) n (1 : hatGLSubmonoid A r 0))
     (i j : Fin r) :
     simplicialRingHatGLCoefficientHomotopyMulEquiv A r n x i j =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (hatGLShiftedEntryMap A r i j)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (hatGLShiftedEntryMap A r i j)
         (hatGLShiftedEntryMap_basepoint A r i j) x := by
   let T := (ringTranslationIso (matrixRingObject A r)
     (1 : Matrix (Fin r) (Fin r) (A.obj (op ⦋0⦌)))).hom
   let hT := ringTranslationIso_basepoint (matrixRingObject A r)
     (1 : Matrix (Fin r) (Fin r) (A.obj (op ⦋0⦌)))
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (matrixEntryMap A r i j) rfl
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map T hT
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (matrixEntryMap A r i j) rfl
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map T hT
       (hatGLPositiveHomotopyMulEquiv A r (1 : hatGLSubmonoid A r 0) n x)) = _
   rw [hatGLPositiveHomotopyMulEquiv_apply]
-  have h₁ := DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (n := n)
+  have h₁ := DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_comp (n := n)
     (hatGLMatrixInclusion A r) rfl T hT hT) x
-  have h₂ := DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (n := n)
+  have h₂ := DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_comp (n := n)
     (hatGLMatrixInclusion A r ≫ T) hT (matrixEntryMap A r i j) rfl
       (hatGLShiftedEntryMap_basepoint A r i j)) x
-  exact (congrArg (fun z => _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (matrixEntryMap A r i j) rfl z)
+  exact (congrArg (fun z => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (matrixEntryMap A r i j) rfl z)
     h₁.symm).trans h₂.symm
 
 end SerrePositivity.KST.Comparison

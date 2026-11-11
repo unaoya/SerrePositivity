@@ -22,16 +22,16 @@ namespace SerrePositivity.KST.LocalizingInvariants.SpectrumHo
 def nativeLoopPiIso (j : ℤ) :
     (hoFunctor.map nativeLoop.{u}).toFunctor ⋙ piFunctor j ≅ piFunctor (j + 1) := by
   let U := (hoFunctor.map nativeLoopTargetEquivalence.{u}.inv).toFunctor
-  let E₀ := (hoFunctor.map (loopDiagramEvaluation Sp.{u} 0 0)).toFunctor
-  let E₁ := (hoFunctor.map (loopDiagramEvaluation Sp.{u} 1 1)).toFunctor
+  let E₀ := (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 0 0)).toFunctor
+  let E₁ := (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 1 1)).toFunctor
   have h₀ : U ⋙ E₀ = (hoFunctor.map nativeLoop.{u}).toFunctor := by
     change (hoFunctor.map nativeLoopTargetEquivalence.inv ≫
-      hoFunctor.map (loopDiagramEvaluation Sp.{u} 0 0)).toFunctor = _
+      hoFunctor.map (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 0 0)).toFunctor = _
     rw [← Functor.map_comp]
     rfl
   have h₁ : U ⋙ E₁ = 𝟭 (hoFunctor.obj Sp.{u}) := by
     change (hoFunctor.map nativeLoopTargetEquivalence.inv ≫
-      hoFunctor.map (loopDiagramEvaluation Sp.{u} 1 1)).toFunctor = _
+      hoFunctor.map (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 1 1)).toFunctor = _
     rw [← Functor.map_comp, nativeLoopTargetEquivalence_inv_target, CategoryTheory.Functor.map_id]
     rfl
   exact (eqToIso (congrArg (fun F => F ⋙ piFunctor j) h₀)).symm ≪≫

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleComposition
-public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterUnits
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterUnits
 
 /-!
 概要：相対 BF 左因子と可換な全 Hom の組の単位と圏の法則。
@@ -39,7 +39,7 @@ lemma compatibleIdentity_condition (X : OmegaSpectrum.{u}) :
         RawSpectrumMapping.pointedPre (inclusion X) (middle X).toKanSequence =
       RawSpectrumMapping.pointedIdentity X ≫ inclusionPost X X := by
   apply (compatible_condition_iff X X _ _).mpr
-  exact _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_square_id PointedSimplicialSet.{u}
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_parameter_square_id PointedSimplicialSet.{u}
     (C := OmegaSpectrum.{u}) (X := X) (Y := middle X) (inclusionPoint X)
 
 /-- 概要：二つの元の恒等射の組。

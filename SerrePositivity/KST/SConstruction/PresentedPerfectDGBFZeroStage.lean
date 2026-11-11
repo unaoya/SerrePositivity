@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedStandardLoopEvaluation
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryKanFunctor
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
 
 /-! # 厳密 dg 入力における元の ΩB₀ と評価
 概要：元の零次境界商の Ex∞ を B₀ とし、零段 ΩB₀ と評価 ΣΩB₀→B₀ を構成する。
@@ -69,7 +69,7 @@ lemma presentedPerfectDGBFZeroEvaluation_whisker (C D : PerfDGInput.{u, v} A) :
 def presentedPerfectDGBFZeroEvaluationTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGBFZeroSuspensionFunctor A) (presentedPerfectDGBFBaseFunctor A) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (presentedPerfectDGBFZeroEvaluation A)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _ (presentedPerfectDGBFZeroEvaluation A)
     (presentedPerfectDGBFZeroEvaluation_whisker A)
 
 /-- 零段の同じ元の値は Kan 複体。 -/

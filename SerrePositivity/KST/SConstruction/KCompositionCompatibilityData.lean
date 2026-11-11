@@ -24,7 +24,7 @@ variable {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
 
 /-- 元の三正方形と三指定三角形の全境界を保つ、無条件の実比較入力。 -/
 def kKanOriginalCompositionCompatibilityData : ThreeSquareCompatibilityData
-    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
       ((kKanSequence (F.obj z)).level (r + 1)).space).right :=
   threeSquareCompatibilityDataOfMaps
     (kKanOriginalCompositionMappingSquare r F f g 0)

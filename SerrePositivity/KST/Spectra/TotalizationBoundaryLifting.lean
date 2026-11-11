@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.TotalizationFibration
 public import SerrePositivity.KST.Spectra.BoundaryTensorMonomorphism
-public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.MonoRightHomotopyEquivalence
 
 /-!
 概要：通常の Tot による相対 matching 全ての単射に対する RLP の保存。
@@ -70,8 +70,8 @@ lemma map_piIsomorphism_of_matching_monoRight
     {X Y : CosimplicialObject SSet.{u}} [KanComplex (obj X)] [KanComplex (obj Y)]
     (f : X ⟶ Y)
     (hf : reedyRight simplex (MorphismProperty.monomorphisms SSet.{u}).rlp f) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (map f) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (map_rlp_monomorphisms f hf)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (map f) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (map_rlp_monomorphisms f hf)
 
 end
 

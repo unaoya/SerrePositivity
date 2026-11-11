@@ -65,7 +65,7 @@ def replacementStage (X : KanSequence.{u}) : (n : ℕ) → ReplacementStage X n
 規約：各段の構造射は単射。
 使われ方：BF 1978 §2。cofibrant な構造射。 -/
 def replacementSigma (X : KanSequence.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (replacementStage X n).level.space ⟶ (replacementStage X (n + 1)).level.space :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (replacementStage X n).level.space ⟶ (replacementStage X (n + 1)).level.space :=
   PointedFactorization.left
     (PointedSimplicialSet.circle.{u} ◁ (replacementStage X n).projection ≫ X.sigma n)
 
@@ -99,8 +99,8 @@ instance cofibrantReplacement_sigma_mono (X : KanSequence.{u}) (n : ℕ) :
 規約：零次数を含む。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。段ごとの置換の検証。 -/
 theorem replacementProjection_piIsomorphism (X : KanSequence.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((replacementProjection X).app n).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight ((replacementStage X n).projection).right
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((replacementProjection X).app n).right :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight ((replacementStage X n).projection).right
     (replacementStage X n).projection_rlp
 
 end

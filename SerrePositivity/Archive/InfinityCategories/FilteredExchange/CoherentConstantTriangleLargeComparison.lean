@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationUnitRepresentation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTransformationUnitRepresentation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoTargetFactorValue
 
 /-!

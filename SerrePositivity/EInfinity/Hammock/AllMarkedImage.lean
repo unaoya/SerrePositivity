@@ -22,29 +22,29 @@ open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) {X Y : Paths C}
 
-lemma holds_value_iff {w : Word} {n : SimplexCategoryᵒᵖ} (τ : (graph W.paths w X Y).obj n) :
-    Holds W τ ↔ value W (τ.obj 0) = [] := by
+lemma holds_value_iff {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {n : SimplexCategoryᵒᵖ} (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths w X Y).obj n) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Holds W τ ↔ value W (τ.obj 0) = [] := by
   classical
-  simp only [holds_iff, ← value_ne_nil_iff, not_not]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.holds_iff, ← value_ne_nil_iff, not_not]
 
-lemma value_graphMap {w : Word} {n : SimplexCategoryᵒᵖ}
+lemma value_graphMap {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {n : SimplexCategoryᵒᵖ}
     (τ : (nativeGraph W X Y w).obj n) : value W (((graphMap W X Y w).app n τ).obj 0) = [] :=
   (holds_value_iff W _).1 (graphMap_holds W τ)
 
 lemma inclusion_range (X Y : Paths C) (n : SimplexCategoryᵒᵖ)
-    (x : (colimitGraph W.paths X Y).obj n) :
+    (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n) :
     (∃ z, (inclusion W X Y).app n z = x) ↔ (colimitValue W X Y).app n x = [] := by
   constructor
   · rintro ⟨z, rfl⟩
-    obtain ⟨w, τ, rfl⟩ := colimit_point_surjective
-      (graphDiagram (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ⟨Y⟩) n z
+    obtain ⟨w, τ, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimit_point_surjective
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ⟨Y⟩) n z
     have hi := congrArg (fun k => k.app n τ) (nativeInclusion_inclusion W X Y w)
     exact ((congrArg ((colimitValue W X Y).app n) hi).trans
       (FirstFactor.colimitValue_inclusion W X Y w ((graphMap W X Y w).app n τ))).trans
         (value_graphMap W τ)
   · intro hx
-    obtain ⟨w, τ, rfl⟩ := colimit_point_surjective (graphDiagram W.paths X Y) n x
-    have hτ : Holds W τ := (holds_value_iff W τ).2
+    obtain ⟨w, τ, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimit_point_surjective (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W.paths X Y) n x
+    have hτ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Holds W τ := (holds_value_iff W τ).2
       ((FirstFactor.colimitValue_inclusion W X Y w τ).symm.trans hx)
     refine ⟨(nativeInclusion W X Y w).app n (lift W τ hτ), ?_⟩
     exact congrArg (fun k => k.app n (lift W τ hτ)) (nativeInclusion_inclusion W X Y w)

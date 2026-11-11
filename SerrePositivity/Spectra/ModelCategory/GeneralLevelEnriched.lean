@@ -23,8 +23,8 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C
   [ModelCategory C] [IsQuillenBifunctor (curriedTensor C)] (K : C)
   [ModelCategory (GeneralSymmetricSpectrum C K)]
   [∀ n : ℕ, IsLeftQuillen (freeAt (K := K) n)]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
-  [ModelGeneration.CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J)]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
+  [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J)]
 
 local instance : EnrichedOrdinaryCategory C (GeneralSymmetricSpectrum C K) :=
   mappingEnrichedOrdinaryCategory

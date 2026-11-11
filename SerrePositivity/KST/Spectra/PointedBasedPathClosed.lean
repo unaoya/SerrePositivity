@@ -48,14 +48,14 @@ def basedMap {A E A' E' : PointedSimplicialSet.{u}} {f g : A ⟶ E}
 def basedCurry {K A V : PointedSimplicialSet.{u}} {f g : K ⊗ A ⟶ V}
     (H : VerticalPath (PointedObject.toPoint V) f g) :
     VerticalPath (PointedObject.toPoint ((ihom K).obj V)) (curry f) (curry g) :=
-  H.basedMap (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K A V).hom (curry f) (curry g)
+  H.basedMap (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K A V).hom (curry f) (curry g)
     (familyVertex_curry f).symm (familyVertex_curry g).symm
 
 /-- 転置は元の基点固定区間族を、内部 Hom の同じ交換射による像へ移す。 -/
 def basedTranspose {A U V : PointedSimplicialSet.{u}} {f g : A ⟶ (ihom U).obj V}
     (H : VerticalPath (PointedObject.toPoint ((ihom U).obj V)) f g) :
     VerticalPath (PointedObject.toPoint ((ihom A).obj V)) (transpose f) (transpose g) :=
-  H.basedMap (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A U V).hom (transpose f) (transpose g)
+  H.basedMap (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A U V).hom (transpose f) (transpose g)
     (familyVertex_transpose f).symm (familyVertex_transpose g).symm
 
 /-- 内部 Hom の標的への作用を、元の同じ区間の前合成と curry で構成する。 -/

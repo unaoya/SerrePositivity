@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConePoint
 public import SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConeSuccessor
-public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeShapeIso
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.VerdierRelativeConeShapeIso
 
 /-!
 概要：全次数の標準単体パラメータについて、元の有限境界付き商錐を回収する。
@@ -22,15 +22,15 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の有限境界を全時刻固定する商錐回収は、零次を含む全ての標準単体で成り立つ。 -/
-lemma hasVerdierRelativeConeRecovery_simplex {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.HasVerdierRelativeConeRecovery q.hom (Δ[n] : SSet.{u}) := by
+lemma hasVerdierRelativeConeRecovery_simplex {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (n : ℕ) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.HasVerdierRelativeConeRecovery q.hom (Δ[n] : SSet.{u}) := by
   induction n with
   | zero => exact hasVerdierRelativeConeRecovery_point h
   | succ n ih =>
-    let e : join (Δ[0] : SSet.{u}) Δ[n] ≅ (Δ[n + 1] : SSet.{u}) := by
-      simpa only [Nat.zero_add] using joinStdSimplexIso 0 n
-    exact _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.hasVerdierRelativeConeRecovery_of_iso q.hom e
+    let e : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) Δ[n] ≅ (Δ[n + 1] : SSet.{u}) := by
+      simpa only [Nat.zero_add] using _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 n
+    exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.hasVerdierRelativeConeRecovery_of_iso q.hom e
       (hasVerdierRelativeConeRecovery_join h Δ[n] ih)
 
 end SerrePositivity.KST.LocalizingInvariants

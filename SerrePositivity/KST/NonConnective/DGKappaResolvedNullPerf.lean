@@ -2,8 +2,8 @@ module
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedConnectiveSquare
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 public import SerrePositivity.DifferentialGraded.Derived.Basic
-public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.Derived.DGPerfectModulesInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectModulesInfinity
 
 /-!
 概要：同じ実核の全対象商について、残っていた実零角の Perf 零性を証明する。
@@ -49,35 +49,35 @@ theorem dgKappaResolvedNullPerfect_h0_isZero
 
 /-- 同じ全対象商の実 Perf nerve の全頂点は、実零頂点である。 -/
 theorem dgKappaResolvedNullPerfect_vertex_isZero
-    (z : (dgNerve R (PerfectDGModule R
+    (z : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R
       (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I)))).obj (Opposite.op ⦋0⦌)) :
-    IsZeroVertex z := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z := by
   let Q := dgFixedNullInput R (dgKappaResolvedKernelKInput R D I)
-  let := dgModulePerfectInfinityCategory_isStable R Q
-  let w := chosenZeroVertex (dgNerve R (PerfectDGModule R Q))
-  obtain ⟨M, rfl⟩ := DGNerve.Simplex.vertexEquiv.symm.surjective z
-  obtain ⟨N, hN⟩ := DGNerve.Simplex.vertexEquiv.symm.surjective w.vertex
+  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModulePerfectInfinityCategory_isStable R Q
+  let w := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R Q))
+  obtain ⟨M, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.symm.surjective z
+  obtain ⟨N, hN⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.symm.surjective w.vertex
   have e := (dgKappaResolvedNullPerfect_h0_isZero R D I N).iso
     (dgKappaResolvedNullPerfect_h0_isZero R D I M)
-  have hn : IsZeroVertex (X := dgNerve R (PerfectDGModule R Q))
-      (DGNerve.Simplex.vertex N) := by
-    have he : DGNerve.Simplex.vertex N = w.vertex := hN
+  have hn : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R Q))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex N) := by
+    have he : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex N = w.vertex := hN
     exact he.symm ▸ w.isZero
-  exact hn.of_vertexIso (dgVertexIsoOfH0 R (PerfectDGModule R Q) e)
+  exact hn.of_vertexIso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgVertexIsoOfH0 R (PerfectDGModule R Q) e)
 
 /-- 同じ実零角の固定 ν（Perf 値）は零。P との比較や ν 上の Verdier 性は要求しない。 -/
 theorem dgKappaResolvedNullPerf_isZero :
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I))) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (dgKInputStableValue R (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I))) := by
   let Q := dgFixedNullInput R (dgKappaResolvedKernelKInput R D I)
   let e := presentedPerfectDGNerveEquivalence R Q
-  let := dgModulePerfectInfinityCategory_isStable R Q
+  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModulePerfectInfinityCategory_isStable R Q
   let := presentedPerfectDGNerve_isStable R Q
-  have hInv := isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
-  change IsExactFunctor e.inv at hInv
-  letI : IsExactFunctor e.inv := hInv
+  have hInv := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.inv at hInv
+  letI : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.inv := hInv
   intro z
   have hz := dgKappaResolvedNullPerfect_vertex_isZero R D I (e.hom.app _ z)
-  have hi := IsExactFunctor.preservesZero (F := e.inv) _ hz
+  have hi := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := e.inv) _ hz
   exact hi.of_vertexIso (e.homInvIso.app z)
 
 end SerrePositivity.KST.NonConnective

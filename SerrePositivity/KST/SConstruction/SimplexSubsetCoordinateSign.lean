@@ -27,12 +27,12 @@ lemma simplexSubsetStrictRight_card {n : ℕ} (I : Finset (Fin (n + 1)))
 
 /-- 元の cube の座標に一を加えた数は、元の対応頂点より右にある部分集合の頂点数。 -/
 lemma simplexSubsetCoordinate_right_count {n : ℕ} (I : Finset (Fin (n + 1)))
-    (hI : 2 ≤ I.card) (i : Fin (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single (I.card - 1)).dimension) :
-    (I.filter (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI
-      ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single (I.card - 1)).nonjointCoordinate i).val < ·)).card = i.val + 1 := by
-  let v := (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single (I.card - 1)).nonjointCoordinate i
-  let j := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI v.val
-  have hj : j ∈ I := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_mem I hI v.val
+    (hI : 2 ≤ I.card) (i : Fin (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single (I.card - 1)).dimension) :
+    (I.filter (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetOrder I hI
+      ((_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single (I.card - 1)).nonjointCoordinate i).val < ·)).card = i.val + 1 := by
+  let v := (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single (I.card - 1)).nonjointCoordinate i
+  let j := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetOrder I hI v.val
+  have hj : j ∈ I := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetOrder_mem I hI v.val
   have hb := simplexSubsetNonjoint_bounds I hI v
   have hR := simplexSubsetSplitRight_two I hI j hj hb.2
   have hr := simplexSubsetSplitRight_card I hI j hj hR
@@ -47,10 +47,10 @@ lemma simplexSubsetCoordinate_right_count {n : ℕ} (I : Finset (Fin (n + 1)))
 
 /-- 元の cube 面の符号は、元の HA の同じ頂点の右側頂点数の符号そのもの。 -/
 lemma simplexSubsetCoordinate_sign {n : ℕ} (I : Finset (Fin (n + 1)))
-    (hI : 2 ≤ I.card) (i : Fin (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single (I.card - 1)).dimension) :
+    (hI : 2 ≤ I.card) (i : Fin (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single (I.card - 1)).dimension) :
     ((i.val + 1 : ℕ) : ℤ).negOnePow =
-      ((I.filter (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI
-        ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single (I.card - 1)).nonjointCoordinate i).val < ·)).card : ℤ).negOnePow :=
+      ((I.filter (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetOrder I hI
+        ((_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single (I.card - 1)).nonjointCoordinate i).val < ·)).card : ℤ).negOnePow :=
   congrArg (fun k : ℕ => (k : ℤ).negOnePow)
     (simplexSubsetCoordinate_right_count I hI i).symm
 

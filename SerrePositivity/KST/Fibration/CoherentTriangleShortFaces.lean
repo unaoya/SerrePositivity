@@ -52,7 +52,7 @@ theorem coherentTriangleFirst_vertex {C : Type v} [Category.{u} C] [SimplicialCa
   congrArg (coherentTriangleHomVertex s)
     (coherentTriangleFirstPath_unique ((SimplicialThickening.functorMap
       (SimplexCategory.δ (2 : Fin 3)).toOrderHom.uliftMap ⟨ULift.up 0⟩ ⟨ULift.up 1⟩).obj
-        coherentOnePath)).symm
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentOnePath)).symm
 
 /-- 元の第二短 path の像は、同じ第二短辺 δ₀ の実 Hom 頂点である。 -/
 theorem coherentTriangleLast_vertex {C : Type v} [Category.{u} C] [SimplicialCategory C]
@@ -62,6 +62,6 @@ theorem coherentTriangleLast_vertex {C : Type v} [Category.{u} C] [SimplicialCat
   congrArg (coherentTriangleHomVertex s)
     (coherentTriangleLastPath_unique ((SimplicialThickening.functorMap
       (SimplexCategory.δ (0 : Fin 3)).toOrderHom.uliftMap ⟨ULift.up 0⟩ ⟨ULift.up 1⟩).obj
-        coherentOnePath)).symm
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentOnePath)).symm
 
 end SerrePositivity.KST.Fibration

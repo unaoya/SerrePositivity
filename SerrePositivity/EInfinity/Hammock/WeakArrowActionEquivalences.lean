@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WeakArrowActionHomotopies
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WeakArrowActionHomotopies
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
 
 /-!
@@ -25,52 +25,52 @@ variable {C : Type u} [Category.{v} C] {W : MorphismProperty C} [W.IsMultiplicat
   {H : Type uH} [Category.{vH} H] (L : SSet.{max u v} ⥤ H)
   (hL : SSet.anodyneExtensions.IsInvertedBy L)
 
-def postcompositionIso : L.obj (colimitGraph W A X) ≅ L.obj (colimitGraph W A Y) where
-  hom := L.map (postcomposePointMap A (arrowMap W g))
-  inv := L.map (postcomposePointMap A (backwardMap g hg))
+def postcompositionIso : L.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W A X) ≅ L.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W A Y) where
+  hom := L.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap A (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W g))
+  inv := L.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap A (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitRowComposition.backwardMap g hg))
   hom_inv_id := by
     rw [← L.map_comp]
-    exact (AnodyneHomotopy.map_homotopy_eq L hL (postSourceHomotopy g hg A)).symm.trans
+    exact (AnodyneHomotopy.map_homotopy_eq L hL (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postSourceHomotopy g hg A)).symm.trans
       (L.map_id _)
   inv_hom_id := by
     rw [← L.map_comp]
-    exact (AnodyneHomotopy.map_homotopy_eq L hL (postTargetHomotopy g hg A)).trans
+    exact (AnodyneHomotopy.map_homotopy_eq L hL (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postTargetHomotopy g hg A)).trans
       (L.map_id _)
 
-def precompositionIso : L.obj (colimitGraph W X A) ≅ L.obj (colimitGraph W Y A) where
-  hom := L.map (precomposePointMap (backwardMap g hg) A)
-  inv := L.map (precomposePointMap (arrowMap W g) A)
+def precompositionIso : L.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X A) ≅ L.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W Y A) where
+  hom := L.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitRowComposition.backwardMap g hg) A)
+  inv := L.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W g) A)
   hom_inv_id := by
     rw [← L.map_comp]
-    exact (AnodyneHomotopy.map_homotopy_eq L hL (preSourceHomotopy g hg A)).symm.trans
+    exact (AnodyneHomotopy.map_homotopy_eq L hL (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.preSourceHomotopy g hg A)).symm.trans
       (L.map_id _)
   inv_hom_id := by
     rw [← L.map_comp]
-    exact (AnodyneHomotopy.map_homotopy_eq L hL (preTargetHomotopy g hg A)).trans
+    exact (AnodyneHomotopy.map_homotopy_eq L hL (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.preTargetHomotopy g hg A)).trans
       (L.map_id _)
 
 include hg in
 lemma postcompose_forward_isWeakHomotopyEquivalence :
-    IsWeakHomotopyEquivalence (postcomposePointMap A (arrowMap W g)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap A (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W g)) :=
   FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (postcompositionIso g hg A AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions)).isIso_hom
 
 lemma postcompose_backward_isWeakHomotopyEquivalence :
-    IsWeakHomotopyEquivalence (postcomposePointMap A (backwardMap g hg)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap A (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitRowComposition.backwardMap g hg)) :=
   FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (postcompositionIso g hg A AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions)).isIso_inv
 
 include hg in
 lemma precompose_forward_isWeakHomotopyEquivalence :
-    IsWeakHomotopyEquivalence (precomposePointMap (arrowMap W g) A) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W g) A) :=
   FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (precompositionIso g hg A AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions)).isIso_inv
 
 lemma precompose_backward_isWeakHomotopyEquivalence :
-    IsWeakHomotopyEquivalence (precomposePointMap (backwardMap g hg) A) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitRowComposition.backwardMap g hg) A) :=
   FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (precompositionIso g hg A AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions)).isIso_hom

@@ -32,22 +32,22 @@ def algebraCAlgReplacementNerve :
     rfl
 
 lemma algebraCAlgReplacementNerve_vertex (X : (operad A).Algebra) :
-    (algebraCAlgReplacementNerve A).app (Opposite.op ⦋0⦌) (nerveVertex X) =
-      nerveVertex ((cofibrantAlgebraDKReplacement A).obj X) :=
+    (algebraCAlgReplacementNerve A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((cofibrantAlgebraDKReplacement A).obj X) :=
   ComposableArrows.ext₀ rfl
 
 def algebraCAlgSource : nerve (operad A).Algebra ⟶ CAlg_R A :=
   algebraCAlgReplacementNerve A ≫ cAlgLocalizationSource A
 
 def algebraCAlgSource_vertexIso (X : (operad A).Algebra) :
-    VertexIso ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)) (cAlgVertex A X) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)) (cAlgVertex A X) :=
   eqToIso (congrArg HomotopyCategory.mk
     (congrArg ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌))
       (algebraCAlgReplacementNerve_vertex A X))) ≪≫
         cAlgLocalizationSource_vertexIso A ((cofibrantAlgebraDKReplacement A).obj X)
 
 def algebraCAlgSource_forgetIso :
-    FunctorIso (algebraCAlgSource A ≫ cAlgForgetDerived A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (algebraCAlgSource A ≫ cAlgForgetDerived A)
       (algebraCAlgReplacementNerve A ≫ cofibrantAlgebraUnderlyingDerivedSource A) := by
   simpa only [algebraCAlgSource, Category.assoc] using
     (cAlgForgetDerived_sourceIso A).precomp (algebraCAlgReplacementNerve A)

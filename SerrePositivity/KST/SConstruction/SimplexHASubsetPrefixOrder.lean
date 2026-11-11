@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubset
-public import SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetInclusionOrder
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexSubsetInclusionOrder
 public import Mathlib.Data.Finset.Sort
 
 /-! # 元の任意部分集合を HA 頂点列と終点で読む
@@ -23,32 +23,32 @@ def simplexHASubsetPrefixOrder {N : ℕ} (I : Finset (Fin (N + 1))) (hI : 2 ≤ 
 
 /-- 元の全部分集合列の始点は、同じ元の最小頂点。 -/
 lemma simplexHASubsetFullOrder_first {N : ℕ} (I : Finset (Fin (N + 1))) (hI : 2 ≤ I.card) :
-    simplexHASubsetFullOrder I hI 0 = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) :=
+    simplexHASubsetFullOrder I hI 0 = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) :=
   Finset.orderEmbOfFin_zero (show I.card = I.card - 2 + 1 + 1 by omega) (by omega)
 
 /-- 元の全部分集合列の終点は、同じ元の最大頂点。 -/
 lemma simplexHASubsetFullOrder_last {N : ℕ} (I : Finset (Fin (N + 1))) (hI : 2 ≤ I.card) :
     simplexHASubsetFullOrder I hI (Fin.last (I.card - 2 + 1)) =
-      I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) :=
+      I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) :=
   Finset.orderEmbOfFin_last (show I.card = I.card - 2 + 1 + 1 by omega) (by omega)
 
 /-- 元の HA 部分集合列は、元の同じ最小頂点を始点とする。 -/
 lemma simplexHASubsetPrefixOrder_first {N : ℕ} (I : Finset (Fin (N + 1))) (hI : 2 ≤ I.card) :
-    simplexHASubsetPrefixOrder I hI 0 = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) :=
+    simplexHASubsetPrefixOrder I hI 0 = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) :=
   simplexHASubsetFullOrder_first I hI
 
 /-- 元の HA 部分集合列の最後は、元の最大頂点より厳密に左。 -/
 lemma simplexHASubsetPrefixOrder_last_lt {N : ℕ} (I : Finset (Fin (N + 1)))
     (hI : 2 ≤ I.card) :
     simplexHASubsetPrefixOrder I hI (Fin.last (I.card - 2)) <
-      I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) :=
+      I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) :=
   lt_of_lt_of_eq ((simplexHASubsetFullOrder I hI).strictMono (Fin.castSucc_lt_last _))
     (simplexHASubsetFullOrder_last I hI)
 
 /-- 元の HA 部分集合列と元の最大頂点を合わせると、元の部分集合全体が戻る。 -/
 lemma simplexHASubsetPrefixOrder_subset {N : ℕ} (I : Finset (Fin (N + 1))) (hI : 2 ≤ I.card) :
     simplexHADecodeSubset (I.card - 2) (simplexHASubsetPrefixOrder I hI)
-      {I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)} = I := by
+      {I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)} = I := by
   have hr : Set.range (simplexHASubsetFullOrder I hI) = I :=
     I.range_orderEmbOfFin (show I.card = I.card - 2 + 1 + 1 by omega)
   ext x

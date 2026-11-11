@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.VertexFiberMap
 
 /-!
 概要：射影の明示した等式で同じ頂点 fiber の二つの表示を厳密に同定する。

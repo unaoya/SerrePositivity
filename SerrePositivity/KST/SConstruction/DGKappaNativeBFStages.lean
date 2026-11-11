@@ -3,7 +3,7 @@ public import SerrePositivity.KST.NonConnective.DGKappaNativeSquareComparison
 public import SerrePositivity.KST.Fibration.SpectrumSpaceEvaluation
 public import SerrePositivity.KST.SConstruction.KSpectrumMaps
 public import SerrePositivity.KST.SConstruction.PointedSOAExInfinityComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.KanWhiteheadComparison
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanWhiteheadComparison
 
 /-!
 概要：D-9 の同じ未完備 native 四角形の全正段と元 BF 頂点の比較を固定する。
@@ -27,15 +27,15 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 方針：同じ元四角形へ既存の全 Hom 関手を適用する。
 規約：Perf 値へ置換しない。使われ方：要求された全正段比較の右辺。 -/
 def dgKappaNativeBFStageSquare (r : ℕ) :
-    (Δ[1] ⊗ Δ[1] : SSet.{max (u + 1) v + 1}) ⟶ SpaceInfinity.{max (u + 1) v} :=
+    (Δ[1] ⊗ Δ[1] : SSet.{max (u + 1) v + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{max (u + 1) v} :=
   (dgKappaNativeVerdierDiagram.{u, v} R D I).square ≫
-    coherentNerveMap (stableBoundaryClosedKanEnrichedFunctor.{max (u + 1) v} r)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableBoundaryClosedKanEnrichedFunctor.{max (u + 1) v} r)
 
 /-- 概要：同じ native 四角形の四頂点の元の安定圏。
 方針：元四角形の頂点から回収する。
 規約：冪等完備化しない。使われ方：元 BF 頂点と元境界商の照合。 -/
-def dgKappaNativeBFVertexCategory (a b : Fin 2) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} :=
-  _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (dgKappaNativeVerdierDiagram.{u, v} R D I).square a b)
+def dgKappaNativeBFVertexCategory (a b : Fin 2) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{max (u + 1) v} :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeVerdierDiagram.{u, v} R D I).square a b)
 
 /-- 概要：同じ未完備四頂点の元の BF スペクトル。
 方針：既存の同じ kOmegaSpectrum を使用する。
@@ -81,7 +81,7 @@ def dgKappaNativeBFPositiveProjection (a b : Fin 2) (r : ℕ) :
 方針：元の二つの比較の全基点 π 同型を合成する。
 規約：指定された同じ比較。使われ方：四頂点成分の可逆性。 -/
 lemma dgKappaNativeBFPositiveProjection_piIsomorphism (a b : Fin 2) (r : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (dgKappaNativeBFPositiveProjection.{u, v} R D I a b r) :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (dgKappaNativeBFPositiveProjection.{u, v} R D I a b r) :=
   (monicKKanSequenceProjection_piIsomorphism
     (sInputModel (dgKappaNativeBFVertexCategory.{u, v} R D I a b)) (r + 1)).comp
       (pointedSOAExInfinityComparison_piIsomorphism
@@ -91,10 +91,10 @@ lemma dgKappaNativeBFPositiveProjection_piIsomorphism (a b : Fin 2) (r : ℕ) :
 方針：合成比較の全基点 π 同型を既存の Kan 同値判定へ渡す。
 規約：指定射影そのものを保持する。使われ方：有限全図式比較の頂点成分。 -/
 lemma dgKappaNativeBFPositiveProjection_isInvertible (a b : Fin 2) (r : ℕ) :
-    IsInvertibleEdge
-      (coherentNerveEdge (dgKappaNativeBFPositiveProjection.{u, v} R D I a b r)) := by
-  apply coherentKanEdge_isInvertible_of_isQCatEquivalence
-  have he := HomotopyLimits.homotopyEquivalence_of_kanPiIsomorphism_of_vertex
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeBFPositiveProjection.{u, v} R D I a b r)) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentKanEdge_isInvertible_of_isQCatEquivalence
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.homotopyEquivalence_of_kanPiIsomorphism_of_vertex
     (dgKappaNativeBFPositiveProjection.{u, v} R D I a b r)
     (dgKappaNativeBFPositiveProjection_piIsomorphism.{u, v} R D I a b r)
     (((dgKappaNativeBFVertexSpectrum.{u, v} R D I a b).level (r + 1)).space).basepoint

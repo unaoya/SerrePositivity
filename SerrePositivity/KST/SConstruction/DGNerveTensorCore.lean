@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGNerveTensorAssociativity
-public import SerrePositivity.InfinityCategories.F1.Categories.CoreProduct
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoreProduct
 
 /-! # native dg nerve の core の直積から実 tensor source への比較
 概要：二つの native core の直積を、実 tensor dg 圏の native core へ送る。
@@ -18,23 +18,23 @@ variable (A : Type u) [CommRing A] (D E B : Type v)
 
 /-- 元の native core の直積から、実 tensor dg 圏の native core への実単体的写像。 -/
 def dgNerveCoreTensor :
-    (quasicategoryCore (dgNerve A D) : SSet) ⊗ (quasicategoryCore (dgNerve A E) : SSet) ⟶
-      (quasicategoryCore (dgNerve A (DGTensorCategory A D E)) : SSet) :=
-  quasicategoryCoreProduct (dgNerve A D) (dgNerve A E) ≫
-    quasicategoryCoreMap (dgNerveTensor A D E)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A D) : SSet) ⊗ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A E) : SSet) ⟶
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (DGTensorCategory A D E)) : SSet) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.quasicategoryCoreProduct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A D) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A E) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (dgNerveTensor A D E)
 
 /-- 元の core 比較は、包含後に元の全 native tensor 比較を回収する。 -/
 lemma dgNerveCoreTensor_inclusion :
-    dgNerveCoreTensor A D E ≫ (quasicategoryCore (dgNerve A (DGTensorCategory A D E))).ι =
-      ((quasicategoryCore (dgNerve A D)).ι ⊗ₘ (quasicategoryCore (dgNerve A E)).ι) ≫
+    dgNerveCoreTensor A D E ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (DGTensorCategory A D E))).ι =
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A D)).ι ⊗ₘ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A E)).ι) ≫
         dgNerveTensor A D E := rfl
 
 /-- native core の実 tensor 比較は、両方の厳密 dg 入力写像について自然。 -/
 lemma dgNerveCoreTensor_naturality {C T : Type v} [DGCategory A C] [DGCategory A T]
     (F : DGFunctor A D C) (G : DGFunctor A E T) :
-    (quasicategoryCoreMap (dgNerve.map F) ⊗ₘ quasicategoryCoreMap (dgNerve.map G)) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map F) ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map G)) ≫
         dgNerveCoreTensor A C T =
-      dgNerveCoreTensor A D E ≫ quasicategoryCoreMap (dgNerve.map (dgTensorFunctor A F G)) := by
+      dgNerveCoreTensor A D E ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgTensorFunctor A F G)) := by
   ext n p
   rcases p with ⟨s, t⟩
   apply Subtype.ext
@@ -42,13 +42,13 @@ lemma dgNerveCoreTensor_naturality {C T : Type v} [DGCategory A C] [DGCategory A
 
 /-- native core の実 tensor 比較の二回適用は、元の実 dg 結合関手で一致する。 -/
 lemma dgNerveCoreTensor_associativity :
-    (dgNerveCoreTensor A D E ⊗ₘ 𝟙 (quasicategoryCore (dgNerve A B) : SSet)) ≫
+    (dgNerveCoreTensor A D E ⊗ₘ 𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A B) : SSet)) ≫
         dgNerveCoreTensor A (DGTensorCategory A D E) B ≫
-        quasicategoryCoreMap (dgNerve.map (dgTensorAssociator A D E B)) =
-      (α_ (quasicategoryCore (dgNerve A D) : SSet)
-        (quasicategoryCore (dgNerve A E) : SSet)
-        (quasicategoryCore (dgNerve A B) : SSet)).hom ≫
-        (𝟙 (quasicategoryCore (dgNerve A D) : SSet) ⊗ₘ dgNerveCoreTensor A E B) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgTensorAssociator A D E B)) =
+      (α_ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A D) : SSet)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A E) : SSet)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A B) : SSet)).hom ≫
+        (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A D) : SSet) ⊗ₘ dgNerveCoreTensor A E B) ≫
         dgNerveCoreTensor A D (DGTensorCategory A E B) := by
   ext n p
   rcases p with ⟨⟨s, t⟩, r⟩

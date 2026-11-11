@@ -110,19 +110,19 @@ lemma cofibrantSourceRoofSliceProductMap_over : cofibrantSourceRoofSliceProductM
     _ = _ := pullback.lift_snd _ _ _
 
 lemma cofibrantSourceRoofSliceProductMap_rightFibration :
-    RightFibration (cofibrantSourceRoofSliceProductMap A X Y b) where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration (cofibrantSourceRoofSliceProductMap A X Y b) where
   mem := by
     intro K L i hi
     cases hi with
-    | @intro n i _hi =>
+    | @_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightHornInclusions.intro n i _hi =>
       exact ((SSet.modelCategoryQuillen.fibration_iff _).1
         (cofibrantSourceRoofSliceProductMap_fibration A X Y b)) _
         (SSet.modelCategoryQuillen.horn_ι_mem_J _ i)
 
 lemma cofibrantSourceRoofSliceProductMap_fiber_kanComplex
     (v : (nerve (cofibrantSourceRoofProductElements A X Y b)) _⦋0⦌) :
-    KanComplex (vertexFiber (cofibrantSourceRoofSliceProductMap A X Y b) v) := by
+    KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (cofibrantSourceRoofSliceProductMap A X Y b) v) := by
   have := cofibrantSourceRoofSliceProductMap_rightFibration A X Y b
-  exact vertexFiber_kanComplex _ v
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_kanComplex _ v
 
 end SerrePositivity.EInfinity.BarrattEccles

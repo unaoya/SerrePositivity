@@ -7,7 +7,7 @@ public import SerrePositivity.Spectra.Pointed.ReducedPair
 概要：正方形の四辺で定数な写像を二つの円の smash 積へ降ろす。
 方針：二つの境界の商を順に取り、二変数の reduced map を構成する。
 規約：座標の順序は最初の区間を第一の円とする。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。二つの相対三角形の貼り合わせ。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.3（Tag 00W3）。二つの相対三角形の貼り合わせ。
 -/
 
 @[expose] public section
@@ -47,7 +47,7 @@ theorem firstDesc_boundary :
 /-- 概要：座標を交換した第一の降下は、残る単体方向の境界で定数。
 方針：対称性の自然性で境界の射を交換する。
 規約：第二の降下の入力では円をパラメータとする。
-使われ方：Kerodon §3.2.3。正方形の境界を二方向へ潰す。 -/
+使われ方：Kerodon §3.2.3（Tag 00W3）。正方形の境界を二方向へ潰す。 -/
 theorem firstDesc_swap_boundary :
     (boundary.{u} 1).ι ▷ (PointedSimplicialSet.circle.{u}).right ≫
       (β_ (Δ[1] : SSet.{u}) (PointedSimplicialSet.circle.{u}).right).hom ≫
@@ -86,7 +86,7 @@ theorem firstDesc_swap_base :
 /-- 概要：二重の降下は第一の円の基点上で定数。
 方針：第二の降下のパラメータ定数性を使う。
 規約：第一の変数を基点に制限する。
-使われ方：Kerodon §3.2.3。smash への降下の第一条件。 -/
+使われ方：Kerodon §3.2.3（Tag 00W3）。smash への降下の第一条件。 -/
 theorem squareDesc_base_left :
     PointedSimplicialSet.circle.{u}.hom ▷ PointedSimplicialSet.circle.{u}.right ≫
       squareDesc Y f hl hr =
@@ -99,7 +99,7 @@ theorem squareDesc_base_left :
 /-- 概要：二重の降下は第二の円の基点上で定数。
 方針：第二の降下の球面の基点条件を使う。
 規約：第二の変数を基点に制限する。
-使われ方：Kerodon §3.2.3。smash への降下の第二条件。 -/
+使われ方：Kerodon §3.2.3（Tag 00W3）。smash への降下の第二条件。 -/
 theorem squareDesc_base_right :
     PointedSimplicialSet.circle.{u}.right ◁ PointedSimplicialSet.circle.{u}.hom ≫
       squareDesc Y f hl hr =

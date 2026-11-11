@@ -22,7 +22,7 @@ variable (R : Type u) [CommRing R] (B : Mon (Complex R))
 
 lemma cellAugmentation_fills (c : ComplexBoundaryCell R (cellAugmentation R B).hom) :
     c.HasFilling R :=
-  dgCellAugmentation_fills R (DGAlgebraPoint R B) .star .star c
+  dgCellAugmentation_fills R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) .star .star c
 
 lemma cellAugmentation_surjective (n : ℤ) :
     Function.Surjective ((cellAugmentation R B).hom.f n) :=

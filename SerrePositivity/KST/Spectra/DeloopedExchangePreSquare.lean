@@ -18,7 +18,7 @@ namespace SerrePositivity.KST.Spectra.LoopExchangePaths
 
 variable {A Y Z : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Z.right]
   (h : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z)
-  (hh : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism h.right) (a : A ⟶ doubleLoop Y)
+  (hh : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism h.right) (a : A ⟶ doubleLoop Y)
 
 /-- 同じ射影比較を源へ前合成し、元の普遍区間の同じ合成入力へ至る実正方形。 -/
 def exchangePreProjectionSquare :
@@ -26,7 +26,7 @@ def exchangePreProjectionSquare :
       ((((deloopedExchange h hh).basedPost (doublePost h)).pre a).path)
       (((TripleCircle.loopExchangeInterval Z).pre (a ≫ doublePost h)).path) where
   h := (exchangeProjectionSquare h hh).h ≫
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a
       (doubleLoop (PointedObject.basedHom CirclePower.space.{u} Z))).right
   h₀ := by rw [← Category.assoc, (exchangeProjectionSquare h hh).h₀]; rfl
   h₁ := by

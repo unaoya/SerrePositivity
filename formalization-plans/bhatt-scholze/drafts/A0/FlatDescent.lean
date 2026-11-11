@@ -8,10 +8,10 @@ public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategori
 public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import SerrePositivity.BhattScholze.Prism.Bounded.Completeness
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
-public import SerrePositivity.InfinityCategories.Derived.BaseChange
-public import SerrePositivity.InfinityCategories.Derived.Homology
-public import SerrePositivity.InfinityCategories.Derived.Tensor.Fixed
-public import SerrePositivity.InfinityCategories.Core.NerveCone
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.Fixed
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Defs
 public import Mathlib.CategoryTheory.Sites.Sheaf
 -- 本ファイルは drafts/A0/PrismaticSite.lean（site・O_Δ・Δ_{R/A}）、drafts/DerivedGeneral/{Truncation,CompletionFunctor}.lean
@@ -77,7 +77,7 @@ end SerrePositivity.InfinityCategories.Derived
 namespace SerrePositivity.BhattScholze.Prismatic
 
 open SerrePositivity.DerivedCompletion SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.Sheaves
+
 
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p A)
 

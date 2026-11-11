@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentNativeUnitValue
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTriangleTotalAction
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange
-public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.InnerFibration
 
 /-!
 概要：元の native 単位の指定値の比較を、同じ全三角形比較と交換する。

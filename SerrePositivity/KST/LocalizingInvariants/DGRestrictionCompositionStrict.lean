@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.DGNerve
+
 namespace SerrePositivity.KST.LocalizingInvariants
 variable (R : Type u) [CommRing R]
 
@@ -68,10 +68,10 @@ lemma dgRestrictionCompositionHomNaturality (M N : RightModule R T) :
   rfl
 
 /-- 元の制限の合成同型と同じ閉零成分を持つ厳密 dg 自然変換。 -/
-def dgRestrictionCompositionStrict : StrictNatTrans
+def dgRestrictionCompositionStrict : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans
     ((dgModuleRestriction R E T G.op).comp (dgModuleRestriction R D E F.op))
     (dgModuleRestriction R D T (F.comp G).op) :=
-  dgModuleStrictNatTransOfHomNaturality R D
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R D
     (fun M => (graphRestrictionCompositionIso R D E T F G).hom.app
       (ForgetEnrichment.of (Complex R) M))
     (dgRestrictionCompositionHomNaturality R D E T F G)
@@ -120,10 +120,10 @@ lemma dgRestrictionCompositionInvHomNaturality (M N : RightModule R T) :
   rfl
 
 /-- 元の逆同型と同じ成分を持つ、制限の合成比較の厳密逆変換。 -/
-def dgRestrictionCompositionInvStrict : StrictNatTrans
+def dgRestrictionCompositionInvStrict : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans
     (dgModuleRestriction R D T (F.comp G).op)
     ((dgModuleRestriction R E T G.op).comp (dgModuleRestriction R D E F.op)) :=
-  dgModuleStrictNatTransOfHomNaturality R D
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R D
     (fun M => (graphRestrictionCompositionIso R D E T F G).inv.app
       (ForgetEnrichment.of (Complex R) M))
     (dgRestrictionCompositionInvHomNaturality R D E T F G)

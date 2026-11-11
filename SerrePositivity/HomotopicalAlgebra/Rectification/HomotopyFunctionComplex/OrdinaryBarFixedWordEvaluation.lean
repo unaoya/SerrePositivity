@@ -88,9 +88,9 @@ lemma evaluation_map {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (k : SimplexCa
       rfl
 
 lemma family_map {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) {T : SSet.{v}}
-    (j : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFreeResolutionAction.parameters P m)
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFreeResolutionAction.parameters P m)
     {X Y : D C}
-    (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarWordAction.hom (C := C) n.unop.len X Y) :
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarWordAction.hom (C := C) n.unop.len X Y) :
     OrdinaryBarWordAction.family hcof hfib P m.unop.len j
       (f ≫ WordPresentationSourceMap.mapHomSame (literalMap C θ) X Y) =
     OrdinaryBarWordAction.family hcof hfib P n.unop.len

@@ -29,11 +29,11 @@ private lemma surjective_of_iso_square {G H G' H' : CommGrpCat.{w}}
 
 /-- 元の相対四角形を固定 K で写した、その右辺自体の零次 π 作用は全射。 -/
 theorem dgRelativePiZeroMap_surjective (A : Type u) [CommRing A]
-    (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
+    (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
     Function.Surjective (((SpectrumHo.piFunctor 0).map
-      (squareHoRight (d.square ≫ dgKInputK A))).hom) := by
-  let e := coherentNerveEdge (dgRelativeRightArrowData A d).2.2
-  let t := SSet.Edge.ofTruncated (squareRightArrow d.square)
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (d.square ≫ dgKInputK A))).hom) := by
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgRelativeRightArrowData A d).2.2
+  let t := SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow d.square)
   have he : e.edge = t.edge := dgInputArrowData_edge A _
   have hs := e.src_eq.symm.trans
     ((congrArg ((dgKInputInfinity A).δ 1) he).trans t.src_eq)
@@ -42,10 +42,10 @@ theorem dgRelativePiZeroMap_surjective (A : Type u) [CommRing A]
   have hks := congrArg ((dgKInputK A).app (Opposite.op ⦋0⦌)) hs
   have hkt := congrArg ((dgKInputK A).app (Opposite.op ⦋0⦌)) ht
   have hm : (e.map (dgKInputK A)).toTruncated.edge =
-      (squareRightArrow (d.square ≫ dgKInputK A)).edge :=
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (d.square ≫ dgKInputK A)).edge :=
     congrArg ((dgKInputK A).app (Opposite.op ⦋1⦌)) he
-  have hn := homMk_transport hks hkt (e.map (dgKInputK A)).toTruncated
-    (squareRightArrow (d.square ≫ dgKInputK A)) hm
+  have hn := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homMk_transport hks hkt (e.map (dgKInputK A)).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (d.square ≫ dgKInputK A)) hm
   have hn' := congrArg
     (fun m => eqToHom (congrArg HomotopyCategory.mk hks) ≫ m) hn
   simp only [← Category.assoc, eqToHom_trans, eqToHom_refl, Category.id_comp] at hn'

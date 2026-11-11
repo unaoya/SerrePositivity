@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordErasure
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordErasure
 public import SerrePositivity.EInfinity.Hammock.ProperDiagram
 
 /-!
@@ -22,29 +22,29 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory
 
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
-  (X Y : C) {w : Word} (j : Fin w.length) {n : SimplexCategoryᵒᵖ}
-  (τ : (graph W w X Y).obj n) (hτ : ∀ k, IdentityColumn (τ.obj k) j)
+  (X Y : C) {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (j : Fin w.length) {n : SimplexCategoryᵒᵖ}
+  (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W w X Y).obj n) (hτ : ∀ k, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj k) j)
 include hτ
 
-lemma exists_eraseSimplex : ∃ σ : (graph W (Word.erase w j) X Y).obj n,
-    ((graphDiagram W X Y).map (Word.eraseInclusion w j)).app n σ = τ :=
-  (graphDiagram_map_range_iff_identityOutside (Word.eraseInclusion w j)
-    (Word.eraseInclusion_injective w j) n τ).2
-      (fun k => (identityOutside_erase_iff (τ.obj k) j).2 (hτ k))
+lemma exists_eraseSimplex : ∃ σ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.erase w j) X Y).obj n,
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion w j)).app n σ = τ :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagram_map_range_iff_identityOutside (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion w j)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion_injective w j) n τ).2
+      (fun k => (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.identityOutside_erase_iff (τ.obj k) j).2 (hτ k))
 
 /-- 全行が恒等である元の一列を削除した、同じ全射列の原像。 -/
-def eraseSimplex : (graph W (Word.erase w j) X Y).obj n :=
+def eraseSimplex : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.erase w j) X Y).obj n :=
   Classical.choose (exists_eraseSimplex W X Y j τ hτ)
 
 lemma eraseSimplex_fac :
-    ((graphDiagram W X Y).map (Word.eraseInclusion w j)).app n
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion w j)).app n
       (eraseSimplex W X Y j τ hτ) = τ :=
   Classical.choose_spec (exists_eraseSimplex W X Y j τ hτ)
 
-lemma eraseSimplex_unique (σ : (graph W (Word.erase w j) X Y).obj n)
-    (hσ : ((graphDiagram W X Y).map (Word.eraseInclusion w j)).app n σ = τ) :
+lemma eraseSimplex_unique (σ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.erase w j) X Y).obj n)
+    (hσ : ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion w j)).app n σ = τ) :
     σ = eraseSimplex W X Y j τ hτ := by
-  apply graphDiagram_map_app_injective W _ (Word.eraseInclusion_injective w j) X Y n
+  apply graphDiagram_map_app_injective W _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion_injective w j) X Y n
   exact hσ.trans (eraseSimplex_fac W X Y j τ hτ).symm
 
 end SerrePositivity.EInfinity.Hammock

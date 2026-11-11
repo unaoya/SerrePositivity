@@ -68,7 +68,7 @@ local presentability of C and tests on the evaluated free generators. -/
 lemma exists_leftProper_combinatorial_levelModel
     [IsLocallyPresentable.{w} C]
     [(weakEquivalences C).IsStableUnderCobaseChangeAgainst (cofibrations C)]
-    (J : MorphismProperty C) [CofibrantlyGenerated.{w} I J]
+    (J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
     (hevalI : ∀ n m : ℕ, I.strictMap (freeAt (K := K) n ⋙ evaluation m) ≤
       cofibrations C)
     (hevalJ : ∀ n m : ℕ, J.strictMap (freeAt (K := K) n ⋙ evaluation m) ≤
@@ -77,7 +77,7 @@ lemma exists_leftProper_combinatorial_levelModel
       m.categoryWithWeakEquivalences.weakEquivalences = levelProperty K (weakEquivalences C) ∧
       m.categoryWithFibrations.fibrations = levelProperty K (fibrations C) ∧
       m.categoryWithCofibrations.cofibrations = (levelGenerators K I).rlp.llp ∧
-      (let := m; CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J)) ∧
+      (let := m; _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J)) ∧
       m.categoryWithWeakEquivalences.weakEquivalences.IsStableUnderCobaseChangeAgainst
         m.categoryWithCofibrations.cofibrations := by
   have := Smith.locallyPresentable_hasColimits (C := C)
@@ -98,12 +98,12 @@ lemma exists_leftProper_levelModel_of_monoidal
     [IsLocallyPresentable.{w} C]
     [(weakEquivalences C).IsStableUnderCobaseChangeAgainst (cofibrations C)]
     [Quillen.IsQuillenBifunctor (curriedTensor C)] [IsCofibrant (𝟙_ C)] [IsCofibrant K]
-    (J : MorphismProperty C) [CofibrantlyGenerated.{w} I J] :
+    (J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J] :
     ∃ m : ModelCategory (GeneralSymmetricSpectrum C K),
       m.categoryWithWeakEquivalences.weakEquivalences = levelProperty K (weakEquivalences C) ∧
       m.categoryWithFibrations.fibrations = levelProperty K (fibrations C) ∧
       m.categoryWithCofibrations.cofibrations = (levelGenerators K I).rlp.llp ∧
-      (let := m; CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J)) ∧
+      (let := m; _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J)) ∧
       m.categoryWithWeakEquivalences.weakEquivalences.IsStableUnderCobaseChangeAgainst
         m.categoryWithCofibrations.cofibrations := by
   apply exists_leftProper_combinatorial_levelModel K I J
@@ -111,7 +111,7 @@ lemma exists_leftProper_levelModel_of_monoidal
     cases hf with
     | map hf =>
       have hi : I ≤ cofibrations C := by
-        rw [cofibrations_eq_generated I J]
+        rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I J]
         exact I.le_llp_rlp
       have : Cofibration _ := ⟨hi _ hf⟩
       exact evaluatedFree_cofibration K _ n m
@@ -119,7 +119,7 @@ lemma exists_leftProper_levelModel_of_monoidal
     cases hf with
     | map hf =>
       have hj : J ≤ trivialCofibrations C := by
-        rw [trivialCofibrations_eq_generated I J]
+        rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated I J]
         exact J.le_llp_rlp
       have : Cofibration _ := ⟨(hj _ hf).1⟩
       have : WeakEquivalence _ := ⟨(hj _ hf).2⟩

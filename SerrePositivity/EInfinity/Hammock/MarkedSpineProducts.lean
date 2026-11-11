@@ -24,7 +24,7 @@ open CategoryTheory MonoidalCategory SerrePositivity.InfinityCategories
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
 
 def products (F : Paths C → Paths C → SSet.{u}) (Y : Paths C) :
-    Paths C → List (FactorTarget.Index W) → SSet.{u}
+    Paths C → List (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) → SSet.{u}
   | X, [] => F X Y
   | X, g :: gs => F X g.val.left ⊗ products F Y g.val.right gs
 
@@ -34,9 +34,9 @@ def productsMap {F G : Paths C → Paths C → SSet.{u}} (η : ∀ X Y, F X Y �
   | X, g :: gs => η X g.val.left ⊗ₘ productsMap η Y g.val.right gs
 
 lemma productsMap_weak {F G : Paths C → Paths C → SSet.{u}}
-    (η : ∀ X Y, F X Y ⟶ G X Y) (hη : ∀ X Y, IsWeakHomotopyEquivalence (η X Y))
-    (Y X : Paths C) (gs : List (FactorTarget.Index W)) :
-    IsWeakHomotopyEquivalence (productsMap W η Y X gs) := by
+    (η : ∀ X Y, F X Y ⟶ G X Y) (hη : ∀ X Y, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (η X Y))
+    (Y X : Paths C) (gs : List (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (productsMap W η Y X gs) := by
   induction gs generalizing X with
   | nil => exact hη X Y
   | cons g gs ih => exact weakTensor (hη X g.val.left) (ih g.val.right)
@@ -49,8 +49,8 @@ def sumProductsMap {F G : Paths C → Paths C → SSet.{u}} (η : ∀ X Y, F X Y
   IndexedSum.map (productsMap W η Y X)
 
 lemma sumProductsMap_weak {F G : Paths C → Paths C → SSet.{u}}
-    (η : ∀ X Y, F X Y ⟶ G X Y) (hη : ∀ X Y, IsWeakHomotopyEquivalence (η X Y))
-    (Y X : Paths C) : IsWeakHomotopyEquivalence (sumProductsMap W η Y X) :=
+    (η : ∀ X Y, F X Y ⟶ G X Y) (hη : ∀ X Y, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (η X Y))
+    (Y X : Paths C) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (sumProductsMap W η Y X) :=
   IndexedSum.map_weak _ (productsMap_weak W η hη Y X)
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine

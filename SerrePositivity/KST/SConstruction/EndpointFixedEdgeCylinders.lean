@@ -30,7 +30,7 @@ structure EndpointFixedEdgeCylinder {E : SSet.{u}} {x y : E _⦋0⦌}
 /-- 同じ元の辺を全時刻固定する円柱。 -/
 def endpointFixedEdgeCylinderRefl {E : SSet.{u}} {x y : E _⦋0⦌} (a : E.Edge x y) :
     EndpointFixedEdgeCylinder a a :=
-  ⟨functorHomotopyRefl (SSet.yonedaEquiv.symm a.edge), by
+  ⟨_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl (SSet.yonedaEquiv.symm a.edge), by
     change _ ≫ fst Δ[1] Δ[1] ≫ SSet.yonedaEquiv.symm a.edge = _
     rw [whiskerRight_fst_assoc]⟩
 

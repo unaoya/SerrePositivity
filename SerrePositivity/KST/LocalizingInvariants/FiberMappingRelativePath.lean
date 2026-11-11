@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingAcyclic
-public import SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeMappingEdge
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.RelativeMappingEdge
 
 /-!
 概要：同じ列の射影を持つ二つの BF 射を、全写像空間で射影に垂直な実区間で結ぶ。
@@ -67,11 +67,11 @@ lemma post_vertex_eq (h : ∀ n, f.app n ≫ c.app n = g.app n ≫ c.app n) :
 structure RelativePath where
   path : (mappingSpace X W).Edge (vertexOfHom f) (vertexOfHom g)
   «over» : (post X c).app (Opposite.op ⦋1⦌) path.edge =
-    PinchedHom.constant ((post X c).app (Opposite.op ⦋0⦌) (vertexOfHom f)) 1
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant ((post X c).app (Opposite.op ⦋0⦌) (vertexOfHom f)) 1
 
 def relativePath (hc : ∀ n, (MorphismProperty.monomorphisms SSet.{u}).rlp (c.app n).right)
     (h : ∀ n, f.app n ≫ c.app n = g.app n ≫ c.app n) : RelativePath c f g := by
-  let P := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeMappingEdge (post X c) (post_rlp X c hc)
+  let P := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.relativeMappingEdge (post X c) (post_rlp X c hc)
     (vertexOfHom f) (vertexOfHom g) (post_vertex_eq c f g h)
   exact ⟨P.edge, P.over⟩
 

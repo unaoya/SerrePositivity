@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Core.PinchedSlice
-public import SerrePositivity.InfinityCategories.DGNerve.PinchedReindexIndex
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedSlice
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedReindexIndex
 
 /-!
 概要：実二重 cone から最初の先端を除く作用素を、既存の終点固定延長で指定する。
@@ -13,15 +13,15 @@ open CategoryTheory
 open SerrePositivity.InfinityCategories
 
 def doubleConeTailOrderHom (n : ℕ) : Fin (n + 2) →o Fin (n + 3) :=
-  InfinityCategories.PinchedHom.extendOrderHom (Fin.succOrderEmb (n + 1)).toOrderHom
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extendOrderHom (Fin.succOrderEmb (n + 1)).toOrderHom
 
 lemma doubleConeTailOrderHom_castSucc (n : ℕ) (i : Fin (n + 1)) :
     doubleConeTailOrderHom n i.castSucc = i.succ.castSucc :=
-  InfinityCategories.PinchedHom.extendOrderHom_castSucc _ i
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extendOrderHom_castSucc _ i
 
 lemma doubleConeTailOrderHom_last (n : ℕ) :
     doubleConeTailOrderHom n (Fin.last (n + 1)) = Fin.last (n + 2) :=
-  InfinityCategories.PinchedHom.extendOrderHom_last _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extendOrderHom_last _
 
 lemma doubleConeTailOrderHom_predAbove (n : ℕ) (i : Fin (n + 2))
     (hi : i ≠ Fin.last (n + 1)) :

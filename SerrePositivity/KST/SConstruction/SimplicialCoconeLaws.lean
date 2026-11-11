@@ -34,7 +34,7 @@ lemma simplicialCocone_map_comp (F : EnrichedFunctor SSet.{u} C D) (X Y Z : C)
       F.map Y Z ≫ eHomWhiskerLeft SSet (F.obj Y) jZ) :
     ((mXY ⊗ₘ mYZ) ≫ eComp SSet QX QY QZ) ≫ eHomWhiskerRight SSet jX QZ =
       (eComp SSet X Y Z ≫ F.map X Z) ≫ eHomWhiskerLeft SSet (F.obj X) jZ := by
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.enriched_compatible_comp SSet (EnrichedFunctor.id SSet.{u} D)
+  have h := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_compatible_comp SSet (EnrichedFunctor.id SSet.{u} D)
     jX jY jZ (F.map X Y) mXY (F.map Y Z) mYZ
     (by
       change mXY ≫ eHomWhiskerRight SSet jX QY =

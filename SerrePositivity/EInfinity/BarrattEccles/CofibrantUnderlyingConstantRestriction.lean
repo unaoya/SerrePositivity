@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ConstantRestrictionArrow
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.ConeFamilyUnderlying
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ConstantRestrictionArrow
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeFamilyUnderlying
 /-!
 概要：実 U の全源同型の定値制限を元の底の複体頂点へ比較する。
 方針：同じ全源同型を評価し、通常忘却の零単体表示だけを輸送する。
@@ -25,9 +25,9 @@ variable (A : Type u) [CommRing A] (B : CofibrantAlgebra A)
 規約：頂点の表示だけの等式。使われ方：全源同型の端点輸送。 -/
 lemma cofibrantUnderlying_ordinary_vertex :
     (cofibrantAlgebraUnderlyingDerivedSource A).app (Opposite.op ⦋0⦌)
-      (nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B)) =
     (ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-      (nerveVertex B.obj.carrier) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B.obj.carrier) := by
   apply congrArg ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌))
   exact ComposableArrows.ext₀ rfl
 
@@ -35,13 +35,13 @@ lemma cofibrantUnderlying_ordinary_vertex :
 方針：同じ全二射の評価と通常忘却の零単体等式を合成する。
 規約：比較射を選び直さない。使われ方：全族単位三角形の実端点。 -/
 def cofibrantForgetOrdinaryVertexIso :
-    VertexIso ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌)
       ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
-        (nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B))))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B))))
       ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-        (nerveVertex B.obj.carrier)) :=
-  functorIsoEvaluate (cAlgForgetDerived_sourceIso A)
-    (nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B)) ≪≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B.obj.carrier)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate (cAlgForgetDerived_sourceIso A)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B)) ≪≫
       eqToIso (congrArg HomotopyCategory.mk (cofibrantUnderlying_ordinary_vertex A B))
 
 variable (I : Type (u + 1)) [Category.{u + 1} I]
@@ -52,15 +52,15 @@ variable (I : Type (u + 1)) [Category.{u + 1} I]
 lemma cofibrantForgetOrdinaryRestriction_hom_arrow :
     Arrow.mk (((cAlgForgetDerived_sourceIso A).precomp
       (nerveMap ((Functor.const I).obj (ULiftHom.objUp.{u + 1, u + 1} B)))).hom) =
-    Arrow.mk (constantFunctorHomMap (nerve I) (cofibrantForgetOrdinaryVertexIso A B).hom) := by
-  rw [F1B.nerveMap_const]
-  have h := constantRestriction_arrow (nerve I) (cAlgForgetDerived_sourceIso A).hom
-    (nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B))
-  have ht := constantHom_transport_arrow (nerve I) rfl
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap (nerve I) (cofibrantForgetOrdinaryVertexIso A B).hom) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveMap_const]
+  have h := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.constantRestriction_arrow (nerve I) (cAlgForgetDerived_sourceIso A).hom
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B))
+  have ht := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.constantHom_transport_arrow (nerve I) rfl
     (cofibrantUnderlying_ordinary_vertex A B)
-    (functorHomEvaluate (cAlgForgetDerived_sourceIso A).hom
-      (nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B)))
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (cAlgForgetDerived_sourceIso A).hom
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B)))
   exact h.trans (by simpa only [cofibrantForgetOrdinaryVertexIso, Iso.trans_hom,
-    functorIsoEvaluate, eqToIso.hom, eqToHom_refl, Category.id_comp] using ht.symm)
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate, eqToIso.hom, eqToHom_refl, Category.id_comp] using ht.symm)
 
 end SerrePositivity.EInfinity.BarrattEccles

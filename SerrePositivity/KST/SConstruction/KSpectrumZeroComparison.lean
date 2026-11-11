@@ -18,15 +18,15 @@ open Spectra
 /-- BF K スペクトルの零次数と既存の K 空間の零次ホモトピー類の同値。 -/
 def kOmegaSpectrum_zeroEquivKSpaceHomotopy (X : StableModel.{u}) :
     OmegaSpectrum.homotopyGroup (kOmegaSpectrum X) 0 ≃
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (kSpace X.carrier).right 0 (kSpace X.carrier).basepoint :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (kSpace X.carrier).right 0 (kSpace X.carrier).basepoint :=
   (kOmegaSpectrum_zeroGroupEquiv X).toEquiv.trans
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism 0 (kSpaceSpectrumComparison X).right
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.equivOfPiIsomorphism 0 (kSpaceSpectrumComparison X).right
       (kSpaceSpectrumComparison_piIsomorphism X)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (kSpaceSpectrumComparison X))).symm
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (kSpaceSpectrumComparison X))).symm
 
 /-- BF K スペクトルの零次数は既存の K 空間の連結成分で計算できる。 -/
 def kOmegaSpectrum_zeroEquivKSpacePiZero (X : StableModel.{u}) :
     OmegaSpectrum.homotopyGroup (kOmegaSpectrum X) 0 ≃ SSet.π₀ (kSpace X.carrier).right :=
-  (kOmegaSpectrum_zeroEquivKSpaceHomotopy X).trans _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+  (kOmegaSpectrum_zeroEquivKSpaceHomotopy X).trans _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero
 
 end SerrePositivity.KST.SConstruction

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.EdgeEquiv
 
 /-! # Coherent 単体の二頂点を結ぶ元の通常の射
 概要：各二頂点の端点だけの Path で豊穣作用を評価し、通常の射を回収する。
@@ -57,10 +57,10 @@ def coherentSimplexArrow {C : Type v} [Category.{u} C] [SimplicialCategory C]
 /-- 通常の射を辺として埋めた場合、元の射そのものを回収する。 -/
 lemma coherentSimplexArrow_edge {C : Type v} [Category.{u} C] [SimplicialCategory C]
     {X Y : C} (f : X ⟶ Y) :
-    coherentSimplexArrow (coherentNerveEdge f).edge 0 1 (by decide) = f := by
+    coherentSimplexArrow (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge 0 1 (by decide) = f := by
   change (SimplicialCategory.homEquiv' X Y).symm
-    (PinchedHom.constant (SimplicialCategory.homEquiv' X Y f) 0) = f
-  rw [pinchedConstant_zero, Equiv.symm_apply_apply]
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' X Y f) 0) = f
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero, Equiv.symm_apply_apply]
 
 /-- 任意の単体作用による辺の復号は、元の単体の対応する二頂点での復号そのもの。 -/
 lemma coherentSimplexArrow_naturality {C : Type v} [Category.{u} C] [SimplicialCategory C]

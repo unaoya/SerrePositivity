@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SuspensionLoop
-public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyIsomorphism
 public import SerrePositivity.KST.Spectra.TruncatedMapping
 
 /-!
@@ -52,7 +52,7 @@ structure OmegaSpectrum where
   方針：通常の点つき単体集合の射を使う。
   規約：厳密同型は要求しない。
   使われ方：BF 1978 §2、HA §1.4.2。 -/
-  sigma : ∀ n, _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (level n).space ⟶ (level (n + 1)).space
+  sigma : ∀ n, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (level n).space ⟶ (level (n + 1)).space
   /-- 概要：構造射の単射性。
   方針：基礎単体集合の Mono を保持する。
   規約：cell 分解と同値な cofibrant 条件。
@@ -62,8 +62,8 @@ structure OmegaSpectrum where
   方針：実装済みのホモトピー類への誘導写像の全単射性で表す。
   規約：零次数を含む。厳密 Ω 同型は要求しない。
   使われ方：BF 1978 §2、HA §1.4.2。段によらない安定ホモトピー群。 -/
-  omega_condition : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
-    ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (level n).space (level (n + 1)).space) (sigma n)).right
+  omega_condition : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
+    ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (level n).space (level (n + 1)).space) (sigma n)).right
 
 attribute [instance] OmegaSpectrum.sigma_mono
 
@@ -77,9 +77,9 @@ noncomputable section
 使われ方：BF 1978 §2、HTT A.3.3。切断 Hom の引き戻し。 -/
 def mappingStep (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     (PointedObject.basedHom (X.level n).space (Y.level n).space).right ⟶
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 1)).space).right :=
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 1)).space).right :=
   (suspensionHom (X.level n).space (Y.level n).space).right ≫
-    (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.sigma n)).right
+    (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.sigma n)).right
 
 /-- 概要：n 段までのスペクトルの切断写像空間。
 方針：構造射による制限と境界比較を引き戻す塔を用いる。
@@ -87,7 +87,7 @@ def mappingStep (X Y : OmegaSpectrum.{u}) (n : ℕ) :
 使われ方：BF 1978 §2、HTT A.3.3。Hom の塔。 -/
 abbrev truncatedHom (X Y : OmegaSpectrum.{u}) (n : ℕ) : SSet.{u} :=
   TruncatedMapping.space (fun n ↦ (X.level n).space) (fun n ↦ (Y.level n).space)
-    (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) X.sigma (mappingStep X Y) n
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) X.sigma (mappingStep X Y) n
 
 /-- 概要：スペクトルの写像空間として用いる全切断の整合族。
 方針：構造射と可換する写像の切断の逆極限を取る。
@@ -95,7 +95,7 @@ abbrev truncatedHom (X Y : OmegaSpectrum.{u}) (n : ℕ) : SSet.{u} :=
 使われ方：BF 1978 §2、HTT A.3.3。coherent nerve の Hom の候補。 -/
 abbrev mappingSpace (X Y : OmegaSpectrum.{u}) : SSet.{u} :=
   TruncatedMapping.total (fun n ↦ (X.level n).space) (fun n ↦ (Y.level n).space)
-    (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) X.sigma (mappingStep X Y)
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) X.sigma (mappingStep X Y)
 
 /-- 概要：スペクトルの整合写像空間は Kan 複体。
 方針：構造射の単射性と各段の Kan 性を塔の構成に適用する。

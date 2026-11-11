@@ -1,12 +1,12 @@
-import SerrePositivity.InfinityCategories.Derived.DGSuspensionCoherentSquareInput
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentSquareInput
 import Lean
 /-! 採用 B1 の作用・全四角形入力の全宣言を監査する。 -/
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.InfinityCategories.Derived.DGSuspensionCoherentActionInput,
-    `SerrePositivity.InfinityCategories.Derived.DGSuspensionCoherentSquareInput]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentActionInput,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentSquareInput]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
@@ -24,7 +24,7 @@ run_cmd do
   let total := counts.foldl (· + ·) (0 : Nat)
   logInfo m!"D coherent input audit passed: {total} declarations in {modules.size} modules."
 
-#check SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput
-#check SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.ofStrict
-#check SerrePositivity.InfinityCategories.DGSuspensionCoherentSquareInput
-#check SerrePositivity.InfinityCategories.DGSuspensionCoherentSquareInput.ofStrict
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentActionInput
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentActionInput.ofStrict
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentSquareInput
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentSquareInput.ofStrict

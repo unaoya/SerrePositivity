@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：一歩で一つ増える座標の閾値と、挿入した路の座標の変化を比較する。
 規約：KST Construction A.5 の標準 shuffle、内部の水平・水平または垂直・垂直の面。
 使われ方：shuffle の鎖写像性で各因子の通常境界へ対応する項の同定。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

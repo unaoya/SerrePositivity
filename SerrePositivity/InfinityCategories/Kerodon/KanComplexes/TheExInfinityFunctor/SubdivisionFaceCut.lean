@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：閾値を超える最大元の像を計算し、両辺を同じ初期区間へ送る。
 規約：Moss 2020 Lemma 26 (5)。
 使われ方：regular pairing の対応先の一意性に用いる。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.CompatibleInputMap
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputMap
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NormalizedHornTargetComparison
 
 /-!
@@ -50,7 +50,7 @@ lemma boundary_naturality (d : Fin (n + 1)) : DegenerateHornInput.boundary i d K
 
 def map : (NormalizedHornTargetComparison.inputs (K := K) i).toSSet ⟶
     (NormalizedHornTargetComparison.inputs (K := L) i).toSSet :=
-  CompatibleInputMap.map
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputMap.map
     (fun _ : Fin (n + 1) => (ihom (SSet.stdSimplex.obj (SimplexCategory.mk n))).obj K)
     (fun _ : Fin (n + 1) => (ihom (SSet.stdSimplex.obj (SimplexCategory.mk n))).obj L)
     (fun d => DegenerateHornInput.boundary i d K)

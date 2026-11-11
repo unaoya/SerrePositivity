@@ -31,10 +31,10 @@ lemma restrict_hammock_extend (F : EnrichedFoldData W D) :
   · exact heq_of_eq (funext fun g => F.hammockFoldMap_generator g)
 
 lemma extend_hammock_restrict :
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     ∀ G : EnrichedFunctor SSet.{u} (Paths C) D,
       (restrictHammockEnrichedFunctor W G).hammockEnrichedFunctor W = G := by
-  let := Hammock.enrichedCategory W.paths
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   intro G
   apply EnrichedFunctor.ext SSet.{u}
     (F := (restrictHammockEnrichedFunctor W G).hammockEnrichedFunctor W) (G := G) (fun _ => rfl)
@@ -46,9 +46,9 @@ lemma extend_hammock_restrict :
   exact (Category.comp_id ((restrictHammockEnrichedFunctor W G).hammockFoldMap X Y)).trans he.symm
 
 def hammockEnrichedFunctorEquiv (W : MorphismProperty C) :
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     EnrichedFunctor SSet.{u} (Paths C) D ≃ EnrichedFoldData W D := by
-  letI := Hammock.enrichedCategory W.paths
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   exact
     { toFun := restrictHammockEnrichedFunctor W
       invFun := fun F => F.hammockEnrichedFunctor W

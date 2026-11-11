@@ -25,8 +25,8 @@ lemma kanAssemblyAdjointAt_piMap_eq (r n : ℕ) (X : StableModel.{u})
       Spectra.pointedHomotopyMap n (kanAssemblyAdjointAt r X w) := by
   obtain ⟨H, hH⟩ := kanAssemblyAdjointAt_homotopy r X v w
   funext a
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_eq_of_basedHomotopy n _ _
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy _ _ H hH) a
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_eq_of_basedHomotopy n _ _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedRelativeHomotopy _ _ H hH) a
 
 /-- 概要：随伴射の全自然数次数の誘導写像は入力の射について自然。
 方針：ホモトピー自然性に π の不変性を適用し、合成の法則で書き直す。
@@ -34,15 +34,15 @@ lemma kanAssemblyAdjointAt_piMap_eq (r n : ℕ) (X : StableModel.{u})
 lemma kanAssemblyAdjointAt_piMap_naturality (r n : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
     (v : (kanAssemblyAdjointChoices r X) _⦋0⦌)
     (w : (kanAssemblyAdjointChoices r Y) _⦋0⦌)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy ((oneDirectionKanRealizationFunctor r).obj X).right n
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy ((oneDirectionKanRealizationFunctor r).obj X).right n
       ((oneDirectionKanRealizationFunctor r).obj X).basepoint) :
     Spectra.pointedHomotopyMap n (kanAssemblyAdjointAt r Y w)
         (Spectra.pointedHomotopyMap n ((oneDirectionKanRealizationFunctor r).map f) a) =
       Spectra.pointedHomotopyMap n ((loopBoundaryKanFunctor (r + 1)).map f)
         (Spectra.pointedHomotopyMap n (kanAssemblyAdjointAt r X v) a) := by
   obtain ⟨H, hH⟩ := kanAssemblyAdjointAt_naturality_homotopy r f v w
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_eq_of_basedHomotopy n _ _
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy _ _ H hH) a
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_eq_of_basedHomotopy n _ _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedRelativeHomotopy _ _ H hH) a
   rw [← Spectra.pointedHomotopyMap_comp, ← Spectra.pointedHomotopyMap_comp]
   exact h
 
@@ -50,7 +50,7 @@ lemma kanAssemblyAdjointAt_piMap_naturality (r n : ℕ) {X Y : StableModel.{u}} 
 方針：L9 の誘導写像と恒等・合成の法則を束ねる。
 規約：次数 n は固定。使われ方：随伴射の π による自然変換の源。 -/
 def oneDirectionHomotopyFunctor (r n : ℕ) : StableModel.{u} ⥤ Type u where
-  obj X := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy ((oneDirectionKanRealizationFunctor r).obj X).right n
+  obj X := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy ((oneDirectionKanRealizationFunctor r).obj X).right n
     ((oneDirectionKanRealizationFunctor r).obj X).basepoint
   map f := ↾(Spectra.pointedHomotopyMap n ((oneDirectionKanRealizationFunctor r).map f))
   map_id X := by
@@ -70,7 +70,7 @@ def oneDirectionHomotopyFunctor (r n : ℕ) : StableModel.{u} ⥤ Type u where
 方針：L9 の誘導写像の関手法則を使う。
 規約：r は loop を取る段の番号。使われ方：随伴射の π による自然変換の標的。 -/
 def loopBoundaryHomotopyFunctor (r n : ℕ) : StableModel.{u} ⥤ Type u where
-  obj X := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy ((loopBoundaryKanFunctor r).obj X).right n
+  obj X := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy ((loopBoundaryKanFunctor r).obj X).right n
     ((loopBoundaryKanFunctor r).obj X).basepoint
   map f := ↾(Spectra.pointedHomotopyMap n ((loopBoundaryKanFunctor r).map f))
   map_id X := by

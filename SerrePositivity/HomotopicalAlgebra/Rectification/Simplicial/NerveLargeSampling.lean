@@ -46,17 +46,17 @@ def moving : NerveMovingParameter.System.{w, v} ((Functor.const D).obj K) F wher
   app s := a.app s
   naturality {s t} f := by
     change SSet.stdSimplex.map (operator f) ≫ a.app t =
-      a.app s ≫ (pre (𝟙 K)).app (UniverseLift.obj.{w} (F.obj (endpoint s))) ≫
-        (ihom K).map (UniverseLift.map.{w} (F.map (endpointMap f)))
+      a.app s ≫ (pre (𝟙 K)).app (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} (F.obj (endpoint s))) ≫
+        (ihom K).map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} (F.map (endpointMap f)))
     rw [pre_id]
     exact (a.naturality f).trans (congrArg (fun z => a.app s ≫ z)
-      (Category.id_comp ((ihom K).map (UniverseLift.map.{w} (F.map (endpointMap f))))).symm)
+      (Category.id_comp ((ihom K).map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} (F.map (endpointMap f))))).symm)
 
-variable {P : SSet.{v}} (k : UniverseLift.obj.{w} P ⟶ K)
+variable {P : SSet.{v}} (k : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P ⟶ K)
 
 /-- Retain the entire prescribed small test, rather than only one of its simplices. -/
 def system : NerveMovingParameter.System.{w, v}
-    (NerveMovingParameter.lifted.{w} ((Functor.const D).obj P)) F :=
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} ((Functor.const D).obj P)) F :=
   NerveBiparameterMaps.restrict _ _ _ ((Functor.const D).map k) (moving F a)
 
 def family {n : ℕ} (c : ComposableArrows D n) :
@@ -77,22 +77,22 @@ lemma family_naturality {n m : ℕ} (c : ComposableArrows D n)
   exact h
 
 lemma point (d : D) : NerveSmallFamilies.point ((Functor.const D).obj P) F (system F a k) d =
-    UniverseLift.lower (k ≫ NerveParameterExtension.evaluate (NerveLargeParameter.lifted.{w} F) a d)
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower (k ≫ NerveParameterExtension.evaluate (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted.{w} F) a d)
       := by
   have he : NerveMovingParameter.evaluate
-      (NerveMovingParameter.lifted.{w} ((Functor.const D).obj P)) F (system F a k) d =
-      k ≫ NerveParameterExtension.evaluate (NerveLargeParameter.lifted.{w} F) a d :=
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} ((Functor.const D).obj P)) F (system F a k) d =
+      k ≫ NerveParameterExtension.evaluate (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted.{w} F) a d :=
     NerveBiparameterMaps.evaluate_restrict _ _ _ _ _ d
-  exact congrArg UniverseLift.lower he
+  exact congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower he
 
 lemma family_lift {n : ℕ} (c : ComposableArrows D n) :
-    UniverseLift.simplexTensorMap.{w} (family F a k c) =
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{w} (family F a k c) =
     (k ▷ SSet.stdSimplex.obj (SimplexCategory.mk n)) ≫ uncurry (a.app (ofChain c)) :=
   (NerveSmallFamilies.family_lift _ _ _ c).trans
-    (uncurry_pre_app (UniverseLift.obj.{w} (F.obj (c.obj (Fin.last n))))
+    (uncurry_pre_app (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} (F.obj (c.obj (Fin.last n))))
       (a.app (ofChain c)) k)
 
-lemma system_precomp {Q : SSet.{v}} (q : Q ⟶ P) : system F a (UniverseLift.map.{w} q ≫ k) =
+lemma system_precomp {Q : SSet.{v}} (q : Q ⟶ P) : system F a (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} q ≫ k) =
     NerveBiparameterMaps.restrict _ _ _
       (Functor.whiskerRight ((Functor.const D).map q) SSet.uliftFunctor.{w, v})
       (system F a k) := by
@@ -103,12 +103,12 @@ lemma system_precomp {Q : SSet.{v}} (q : Q ⟶ P) : system F a (UniverseLift.map
   rfl
 
 lemma family_precomp {Q : SSet.{v}} (q : Q ⟶ P) {n : ℕ} (c : ComposableArrows D n) :
-    family F a (UniverseLift.map.{w} q ≫ k) c =
+    family F a (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} q ≫ k) c =
       (q ▷ SSet.stdSimplex.obj (SimplexCategory.mk n)) ≫ family F a k c :=
   (congrArg (fun z => NerveSmallFamilies.family ((Functor.const D).obj Q) F z c)
     (system_precomp F a k q)).trans (NerveSmallFamilies.family_restrict _ _ _ _ _ c)
 
-lemma system_restrict {L : SSet.{max w v}} (i : L ⟶ K) (l : UniverseLift.obj.{w} P ⟶ L) :
+lemma system_restrict {L : SSet.{max w v}} (i : L ⟶ K) (l : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P ⟶ L) :
     system F (NerveLargeParameter.restrict F a i) l = system F a (l ≫ i) := by
   apply NatTrans.ext
   funext s
@@ -116,9 +116,9 @@ lemma system_restrict {L : SSet.{max w v}} (i : L ⟶ K) (l : UniverseLift.obj.{
     a.app s ≫ (pre (l ≫ i)).app _
   rw [Category.assoc]
   exact congrArg (fun z => a.app s ≫ z)
-    (RelativeChoiceSpace.restriction_comp (P := UniverseLift.obj.{w} (F.obj (endpoint s))) l i)
+    (RelativeChoiceSpace.restriction_comp (P := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} (F.obj (endpoint s))) l i)
 
-lemma family_restrict {L : SSet.{max w v}} (i : L ⟶ K) (l : UniverseLift.obj.{w} P ⟶ L)
+lemma family_restrict {L : SSet.{max w v}} (i : L ⟶ K) (l : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P ⟶ L)
     {n : ℕ} (c : ComposableArrows D n) :
     family F (NerveLargeParameter.restrict F a i) l c = family F a (l ≫ i) c :=
   congrArg (fun z => NerveSmallFamilies.family ((Functor.const D).obj P) F z c)

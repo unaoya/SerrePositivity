@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.EvaluationFamily
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.EvaluationMorphismProperties
 
@@ -22,7 +22,7 @@ variable {C : Type u} [Category.{v} C] {D : Type u'} [Category.{v'} D]
   [MonoidalCategory C] [ModelCategory C] [HasMonoidAxiom.{w} C]
   [∀ i, PreservesColimitsOfSize.{w, w} (R i)]
   [∀ i, PreservesColimitsOfShape WalkingSpan (R i)]
-  (I J : MorphismProperty C) [CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 include I in
 /-- Free J-cells are detected as weak equivalences at every module object. -/
@@ -31,7 +31,7 @@ lemma freeCells_acyclic
     relativeCells.{w} (EvaluationFamily.generators L J) ≤
       EvaluationFamily.detected R (weakEquivalences C) := by
   have hgen : J ≤ trivialCofibrations C :=
-    J.le_llp_rlp.trans (trivialCofibrations_eq_generated I J).symm.le
+    J.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated I J).symm.le
   intro A B f hf j
   have hmap : EvaluationFamily.generators L J ≤ (tensorRightImages J).inverseImage (R j) :=
     iSup_le (fun i ↦ hfree i j)
@@ -64,7 +64,7 @@ free-generator tensor formula. Small-object arguments remain concrete inputs. -/
 def modelCategory
     (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) :
     ModelCategory D :=
-  EvaluationFamily.modelCategory L R adj I J (freeCells_acyclic L R I J hfree)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCategory L R adj I J (freeCells_acyclic L R I J hfree)
 
 lemma modelCategory_weakEquivalences (hfree) :
     @weakEquivalences D _ (modelCategory L R I J adj hfree).categoryWithWeakEquivalences =
@@ -76,8 +76,8 @@ lemma modelCategory_fibrations (hfree) :
 
 lemma modelCategory_generated (hfree) :
     let := modelCategory L R I J adj hfree
-    CofibrantlyGenerated.{w} (EvaluationFamily.generators L I) (EvaluationFamily.generators L J) :=
-  EvaluationFamily.modelCategory_generated L R adj I J (freeCells_acyclic L R I J hfree)
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} (EvaluationFamily.generators L I) (EvaluationFamily.generators L J) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCategory_generated L R adj I J (freeCells_acyclic L R I J hfree)
 
 /-- Many-object transfer with the natural free/evaluation formula as concrete input. -/
 @[instance_reducible]
@@ -88,11 +88,11 @@ def modelCategoryOfTensorFormula [BraidedCategory C] (H : ι → ι → C)
 lemma evaluation_isRightQuillen (hfree) (i : ι) :
     let := modelCategory L R I J adj hfree
     IsRightQuillen (R i) :=
-  EvaluationFamily.evaluation_isRightQuillen L R adj I J (freeCells_acyclic L R I J hfree) i
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.evaluation_isRightQuillen L R adj I J (freeCells_acyclic L R I J hfree) i
 
 lemma free_isLeftQuillen (hfree) (i : ι) :
     let := modelCategory L R I J adj hfree
     IsLeftQuillen (L i) :=
-  EvaluationFamily.free_isLeftQuillen L R adj I J (freeCells_acyclic L R I J hfree) i
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.free_isLeftQuillen L R adj I J (freeCells_acyclic L R I J hfree) i
 
 end SerrePositivity.ManyObjectModelTransfer

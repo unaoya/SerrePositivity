@@ -48,8 +48,8 @@ instance multiSConstruction_quasicategory (r : ℕ) (X : StableModel.{u})
 方針：自己関手の値の安定性を使う。
 規約：余極限存在の追加仮定なし。使われ方：さらに S を反復する。 -/
 instance multiSConstruction_isStable (r : ℕ) (X : StableModel.{u})
-    (d : Fin r → SimplexCategoryᵒᵖ) : IsStable ((multiSConstruction r X).obj d) := by
-  change IsStable ((((multiSEndofunctor r).obj d).obj X).carrier)
+    (d : Fin r → SimplexCategoryᵒᵖ) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable ((multiSConstruction r X).obj d) := by
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable ((((multiSEndofunctor r).obj d).obj X).carrier)
   infer_instance
 
 /-- 概要：反復の先頭の次数は最も外側の S_n。
@@ -79,21 +79,21 @@ lemma multiSConstruction_obj_eq_iterated (r : ℕ) (X : StableModel.{u})
 規約：全方向の面・退化は関手法則を保つ。使われ方：多単体的 Kan 複体。 -/
 def multiCoreSConstruction (r : ℕ) (X : StableModel.{u}) :
     (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u} :=
-  multiSConstruction r X ⋙ quasicategoryCoreFunctor
+  multiSConstruction r X ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
 
 /-- 概要：多単体的 core の各段は Kan 複体。
 方針：反復 S の quasicategory 性と core の Kan 性を使う。
 規約：対角を Kan と主張しない。使われ方：反復実現前の対象。 -/
 instance multiCoreSConstruction_kanComplex (r : ℕ) (X : StableModel.{u})
     (d : Fin r → SimplexCategoryᵒᵖ) : KanComplex ((multiCoreSConstruction r X).obj d) :=
-  quasicategoryCore_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.quasicategoryCore_kanComplex _
 
 /-- 概要：零次数の方向を持つ反復 S は可縮な Kan 複体。
 方針：対象をリスト版に同定し、既存の零方向の可縮性を使う。
 規約：任意の一方向でよい。使われ方：境界の coherent な潰しの準備。 -/
 lemma multiSConstruction_isContractibleKan_of_zero_coordinate (r : ℕ) (X : StableModel.{u})
     (d : Fin r → SimplexCategoryᵒᵖ) (i : Fin r) (hi : (d i).unop.len = 0) :
-    IsContractibleKan ((multiSConstruction r X).obj d) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan ((multiSConstruction r X).obj d) := by
   rw [multiSConstruction_obj_eq_iterated]
   exact iteratedSConstruction_isContractibleKan_of_zero_mem _ X.carrier
     (List.mem_ofFn.mpr ⟨i, hi⟩)
@@ -103,8 +103,8 @@ lemma multiSConstruction_isContractibleKan_of_zero_coordinate (r : ℕ) (X : Sta
 規約：全方向の構造射はそのまま保持する。使われ方：境界の処理。 -/
 lemma multiCoreSConstruction_isContractibleKan_of_zero_coordinate (r : ℕ) (X : StableModel.{u})
     (d : Fin r → SimplexCategoryᵒᵖ) (i : Fin r) (hi : (d i).unop.len = 0) :
-    IsContractibleKan ((multiCoreSConstruction r X).obj d) := by
-  change IsContractibleKan (quasicategoryCore ((multiSConstruction r X).obj d) : SSet.{u})
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan ((multiCoreSConstruction r X).obj d) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((multiSConstruction r X).obj d) : SSet.{u})
   rw [multiSConstruction_obj_eq_iterated]
   exact iteratedCoreSConstruction_isContractibleKan_of_zero_mem _ X.carrier
     (List.mem_ofFn.mpr ⟨i, hi⟩)

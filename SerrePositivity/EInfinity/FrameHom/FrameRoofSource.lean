@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftKanShapeIso
-public import SerrePositivity.InfinityCategories.Derived.RoofComparisonTransport
-public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalOpposite
-public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalComposition
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.LeftKanShapeIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.RoofComparisonTransport
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalOpposite
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalComposition
 
 /-!
 # 元の frame の実屋根比較の始域を全固定終域の矢で表す
@@ -23,29 +23,29 @@ namespace SerrePositivity.EInfinity.FrameHom.FrameArrows
 open CategoryTheory Limits SerrePositivity.InfinityCategories
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
 
-abbrev roofSource := pullback (sliceOverProjection (SSet.yonedaEquiv.symm (nerveVertex Y)))
+abbrev roofSource := pullback (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)))
   (nerveMap A)
 
 def roofSourceIso : nerve (CostructuredArrow A Y) ≅ roofSource A Y :=
-  SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso A Y ≪≫ pullbackSymmetry _ _
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveLeftKanShapeIso A Y ≪≫ pullbackSymmetry _ _
 
 lemma roofSourceIso_degree : (roofSourceIso A Y).hom ≫ pullback.snd _ _ =
     nerveMap (CostructuredArrow.proj A Y) := by
   rw [roofSourceIso, Iso.trans_hom, Category.assoc, pullbackSymmetry_hom_comp_snd]
-  exact SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso_hom_projection A Y
+  exact _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveLeftKanShapeIso_hom_projection A Y
 
 lemma roofSourceIso_over : (roofSourceIso A Y).hom ≫ pullback.fst _ _ =
-    nerveMap (CostructuredArrow.toOver A Y) ≫ (SerrePositivity.InfinityCategories.F1B.nerveOverIso Y).hom := by
+    nerveMap (CostructuredArrow.toOver A Y) ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso Y).hom := by
   rw [roofSourceIso, Iso.trans_hom, Category.assoc, pullbackSymmetry_hom_comp_fst]
-  exact SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeMap_over A Y
+  exact _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveLeftKanShapeMap_over A Y
 
 variable {E : SSet.{u}} (q : nerve C ⟶ E)
 
 def frameRoofMap : nerve (CostructuredArrow A Y) ⟶
-    pullback (sliceOverProjection (SSet.yonedaEquiv.symm (nerveVertex Y) ≫ q))
+    pullback (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y) ≫ q))
       (nerveMap A ≫ q) :=
-  (roofSourceIso A Y).hom ≫ rawRoofFunctorMap q (nerveMap A)
-    (SSet.yonedaEquiv.symm (nerveVertex Y))
+  (roofSourceIso A Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.rawRoofFunctorMap q (nerveMap A)
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))
 
 lemma frameRoofMap_degree : frameRoofMap A Y q ≫ pullback.snd _ _ =
     nerveMap (CostructuredArrow.proj A Y) := by
@@ -55,10 +55,10 @@ lemma frameRoofMap_degree : frameRoofMap A Y q ≫ pullback.snd _ _ =
   rw [pullback.lift_snd]
   exact roofSourceIso_degree A Y
 
-lemma frameRoofMap_isLeftCofinal_iff_raw : IsLeftCofinal (frameRoofMap A Y q) ↔
-    IsLeftCofinal (rawRoofFunctorMap q (nerveMap A)
-      (SSet.yonedaEquiv.symm (nerveVertex Y))) := by
-  have hi := isLeftCofinal_of_isIso (roofSourceIso A Y).hom
+lemma frameRoofMap_isLeftCofinal_iff_raw : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (frameRoofMap A Y q) ↔
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.rawRoofFunctorMap q (nerveMap A)
+      (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))) := by
+  have hi := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_of_isIso (roofSourceIso A Y).hom
   constructor
   · intro h
     exact hi.cancel_left h

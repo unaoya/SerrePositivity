@@ -52,17 +52,17 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
 
 abbrev choiceSpace : SSet.{v} := postChoiceSpace X Y W f (g ≫ b)
 
-abbrev direct : AnchoredChain.simplicial g ⟶ UniverseLift.obj.{u} (choiceSpace f g b) :=
+abbrev direct : AnchoredChain.simplicial g ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (choiceSpace f g b) :=
   AnchoredChain.mapFunctor (ArrowFactorization.postTo g b (g ≫ b) rfl) ≫
     AllFactorizationComparison.chainComparison hcof hfib f (g ≫ b)
 
-abbrev transported : AnchoredChain.simplicial g ⟶ UniverseLift.obj.{u} (choiceSpace f g b) :=
+abbrev transported : AnchoredChain.simplicial g ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (choiceSpace f g b) :=
   AllFactorizationComparison.chainComparison hcof hfib f g ≫
-    UniverseLift.map (CoherentLiftPostComposition.firstMap hcof X Y V W f g b)
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map (CoherentLiftPostComposition.firstMap hcof X Y V W f g b)
 
 include hcof hfib in
-lemma fillers : UniverseLift.BoundaryFillers (choiceSpace f g b) :=
-  LargeParameterExtension.relativeFillers hcof hfib (vertexInclusion X Y f)
+lemma fillers : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers (choiceSpace f g b) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.relativeFillers hcof hfib (vertexInclusion X Y f)
     (postBoundary X Y W f (g ≫ b))
     (ResolutionLiftSpace.projection X W (f ≫ (g ≫ b).base))
     (ResolutionLiftSpace.projection_trivialFibration hcof X W (f ≫ (g ≫ b).base))

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.LocalizationNerveSource
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LocalizationEquivalenceTransport
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LocalizationEquivalenceTransport
 
 /-!
 # 元の反転関手圏への全前合成と既存 nerve の比較
@@ -18,20 +18,20 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory MonoidalClosed SerrePositivity.InfinityCategories
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 lemma localizationNerveSourceMap_precomposition (E : SSet.{u}) :
-    localizationPrecomposition (localizationNerveSourceMap C) (weakNerveEdges C)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition (localizationNerveSourceMap C) (weakNerveEdges C)
         (localizationNerveSourceMap_inverts C) E =
       (pre (kanHammockLocalizationEquivalence C).hom).app E ≫
-        localizationPrecomposition (hammockLocalizationNerveMap C) (weakNerveEdges C)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition (hammockLocalizationNerveMap C) (weakNerveEdges C)
           (hammockLocalizationNerveMap_inverts C) E :=
-  Hammock.localizationPrecomposition_comp_equivalence _ _ _ _ E
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition_comp_equivalence _ _ _ _ E
 
 lemma localizationNerveSourceMap_isLocalization_iff :
-    IsLocalization (localizationNerveSourceMap C) (weakNerveEdges C) ↔
-      IsLocalization (hammockLocalizationNerveMap C) (weakNerveEdges C) :=
-  Hammock.isLocalization_comp_equivalence_iff _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (localizationNerveSourceMap C) (weakNerveEdges C) ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap C) (weakNerveEdges C) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_comp_equivalence_iff _ _
     (hammockLocalizationNerveMap_inverts C) (kanHammockLocalizationEquivalence C)
 
 end SerrePositivity.EInfinity.SimplicialLocalization

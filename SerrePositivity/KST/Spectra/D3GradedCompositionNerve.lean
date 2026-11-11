@@ -27,14 +27,14 @@ variable {C D : Type v} [Category.{u} C] [Category.{u} D]
 
 /-- 指定二変換と同じ厳密縦合成を三辺とする、元の三段豊穣円柱の関手。 -/
 def d3GradedCompositionTriangleEnriched :
-    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 3) C) D :=
-  _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.functor F G H η θ (d3GradedComp η θ) (fun _ ↦ rfl)
+    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object (Fin 3) C) D :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedTransformationTriangle.functor F G H η θ (d3GradedComp η θ) (fun _ ↦ rfl)
 
 /-- 同じ合成三角形の、全対象・全高次単体を持つ実族。 -/
 def d3GradedCompositionTriangleFamily :
     SimplicialNerve C ⊗ (Δ[2] : SSet.{max u v}) ⟶ SimplicialNerve D :=
   EnrichedOrderedCylinder.nerveSimplexFamily 2 ≫
-    coherentNerveMap (d3GradedCompositionTriangleEnriched η θ)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3GradedCompositionTriangleEnriched η θ)
 
 lemma d3GradedCompositionTriangleEnriched_first :
     (EnrichedOrderedCylinder.reindex (C := C) (SimplexCategory.δ (2 : Fin 3)).toOrderHom).comp
@@ -81,7 +81,7 @@ lemma d3GradedCompositionTriangleFamily_first :
     EnrichedOrderedCylinder.nerveSimplexFamily 2 = _ at hn
   rw [d3GradedCompositionTriangleFamily, ← Category.assoc,
     hn, Category.assoc,
-    ← coherentNerveMap_comp, d3GradedCompositionTriangleEnriched_first]
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, d3GradedCompositionTriangleEnriched_first]
   rfl
 
 lemma d3GradedCompositionTriangleFamily_second :
@@ -93,7 +93,7 @@ lemma d3GradedCompositionTriangleFamily_second :
     EnrichedOrderedCylinder.nerveSimplexFamily 2 = _ at hn
   rw [d3GradedCompositionTriangleFamily, ← Category.assoc,
     hn, Category.assoc,
-    ← coherentNerveMap_comp, d3GradedCompositionTriangleEnriched_second]
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, d3GradedCompositionTriangleEnriched_second]
   rfl
 
 lemma d3GradedCompositionTriangleFamily_outer :
@@ -106,16 +106,16 @@ lemma d3GradedCompositionTriangleFamily_outer :
     EnrichedOrderedCylinder.nerveSimplexFamily 2 = _ at hn
   rw [d3GradedCompositionTriangleFamily, ← Category.assoc,
     hn, Category.assoc,
-    ← coherentNerveMap_comp, d3GradedCompositionTriangleEnriched,
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, d3GradedCompositionTriangleEnriched,
     EnrichedTransformationTriangle.functor_outer]
   rfl
 
 /-- 同じ三辺を持つ関手空間内の実合成三角形。 -/
 def d3GradedComposition_compStruct :
     SSet.Truncated.Edge.CompStruct
-      (functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy F G η))
-      (functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy G H θ))
-      (functorEdgeOfSimplicialHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy F G η))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy G H θ))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (StrictEnrichedTransformation.homotopy F H (d3GradedComp η θ))) where
   simplex := SSet.yonedaEquiv (curry (d3GradedCompositionTriangleFamily η θ))
   d₂ := by
@@ -143,10 +143,10 @@ def d3GradedComposition_compStruct :
 /-- 厳密変換の縦合成は、同じ指定関手辺のホモトピー圏の合成を回収する。 -/
 lemma d3GradedComposition_hom_trans [Quasicategory (SimplicialNerve D)] :
     SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy F G η)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy F G η)) ≫
       SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy G H θ)) =
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy G H θ)) =
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (StrictEnrichedTransformation.homotopy F H (d3GradedComp η θ))) :=
   SSet.Truncated.HomotopyCategory.homMk_comp_homMk (d3GradedComposition_compStruct η θ)
 
@@ -154,10 +154,10 @@ lemma d3GradedComposition_hom_trans [Quasicategory (SimplicialNerve D)] :
 def d3GradedHom [Quasicategory (SimplicialNerve D)]
     {F G : EnrichedFunctor SSet.{u} C D}
     (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G) :
-    SSet.HomotopyCategory.mk (functorVertex (coherentNerveMap F)) ⟶
-      SSet.HomotopyCategory.mk (functorVertex (coherentNerveMap G)) :=
+    SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap F)) ⟶
+      SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap G)) :=
   SSet.Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy F G η))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (StrictEnrichedTransformation.homotopy F G η))
 
 /-- 元の厳密変換の実現は、関手空間の射の合成を保つ。 -/
 lemma d3GradedHom_comp [Quasicategory (SimplicialNerve D)] :
@@ -166,7 +166,7 @@ lemma d3GradedHom_comp [Quasicategory (SimplicialNerve D)] :
 
 /-- 厳密変換から構成済みの関手同型の順射は、この同じ指定辺の類。 -/
 lemma d3GradedHom_functorIso [Quasicategory (SimplicialNerve D)]
-    (hη : ∀ X, IsInvertibleEdge (coherentNerveEdge
+    (hη : ∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
       (StrictEnrichedTransformation.componentHom F G η X)).toTruncated) :
     (StrictEnrichedTransformation.functorIso F G η hη).hom = d3GradedHom η := rfl
 

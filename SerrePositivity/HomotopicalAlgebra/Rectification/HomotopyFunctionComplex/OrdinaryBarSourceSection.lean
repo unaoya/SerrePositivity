@@ -45,10 +45,10 @@ open OrdinaryBarFreeResolutionSeed OrdinaryBarSourceContraction OppositeHomotopy
 variable (C : Type u) [Category.{v} C] (X Y : D C)
 
 def section_ : OrdinaryBarDiagonalHomAugmentation.baseHom C X Y ⟶
-    UniverseLift.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) :=
   (baseReverseIso C X Y).inv ≫
     reverseMap (OrdinaryBarSourceExtraDegeneracy.extraDegeneracy C X Y).section_ ≫
-      (doubleIso (UniverseLift.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y))).hom
+      (doubleIso (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y))).hom
 
 lemma section_comp_augmentation : section_ C X Y ≫ OrdinaryBarSourceHom.augmentation C X Y =
     𝟙 (OrdinaryBarDiagonalHomAugmentation.baseHom C X Y) := by

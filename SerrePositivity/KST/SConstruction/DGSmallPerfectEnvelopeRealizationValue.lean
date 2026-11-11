@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGPerfectRealizationPerfectYoneda
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeValue
-public import SerrePositivity.InfinityCategories.Derived.Gluing.NativePerfectYonedaEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.NativePerfectYonedaEquivalence
 public import SerrePositivity.KST.SConstruction.FunctorIsoEquivalenceReflection
 
 /-!
@@ -24,25 +24,25 @@ local notation "VP" => dgPerfectRealizationPerfect R (C) D (I)
 /-- 概要：元小包絡の同じ strict Perf realization と指定 ν 値同値は全自然に比較される。
 方針：元 Yoneda 同値の前で元代表評価と保存済み包絡評価を貼り、同じ同値で反映する。
 規約：元の全評価同型を保持。使われ方：二段実評価と固定 ν 終域の全接続。 -/
-def dgSmallPerfectEnvelopeRealizationValueComparison : FunctorIso
+def dgSmallPerfectEnvelopeRealizationValueComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((dgKNativePerfectValueEquivalence R (C)).hom ≫
       (dgSmallPerfectEnvelopeValueEquivalence R D J X).hom)
-    (dgNerve.map (VP) ≫ (dgKNativePerfectValueEquivalence R D).hom) := by
-  let eY := @dgGluingNativePerfectYonedaEquivalence R _ (C) _ _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (VP) ≫ (dgKNativePerfectValueEquivalence R D).hom) := by
+  let eY := @_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingNativePerfectYonedaEquivalence R _ (C) _ _
     (dgSmallPerfectEnvelope_pretriangulated R D J X)
     (dgSmallPerfectEnvelope_complete R D J X)
   let s := (dgSmallPerfectEnvelopeValueEquivalence R D J X).hom
   let v := (dgKNativePerfectValueEquivalence R D).hom
   have hC := @dgKNativeValueComparison_eq R _ (C) _ _
     (dgSmallPerfectEnvelope_pretriangulated R D J X)
-  have hleft : FunctorIso
+  have hleft : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (eY.hom ≫ (dgKNativePerfectValueEquivalence R (C)).hom ≫ s)
-      (dgNerve.map (I) ≫ v) :=
-    F2.functorIsoOfEq (dgSmallPerfectEnvelopeValueEquivalence_native R D J X)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (I) ≫ v) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (dgSmallPerfectEnvelopeValueEquivalence_native R D J X)
       ((congrArg (fun F => F ≫ s) hC).trans (Category.assoc _ _ _)) rfl
-  have hright : FunctorIso (eY.hom ≫ dgNerve.map (VP) ≫ v)
-      (dgNerve.map (I) ≫ v) :=
-    F2.functorIsoOfEq
+  have hright : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (eY.hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (VP) ≫ v)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (I) ≫ v) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
       ((dgPerfectRealizationPerfectYonedaComparison R (C) D (I)).postcomp v)
       (Category.assoc _ _ _) rfl
   exact functorIsoReflectPreEquivalence eY (hleft.trans hright.symm)

@@ -26,15 +26,15 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
   (hBF : ∀ n : ℕ, dgKappaNativeBFSquareComparison R (dgSuspensionIteration R s A n)
     (dgSuspensionIterationStage R s A n).cone)
   (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-    F2.Idempotent.IsIdempotentCompletion f.val →
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
       (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
         Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
   (Z : ∀ n : ℕ, DGKappaZeroInput R (dgSuspensionIteration R s A n)
     (dgSuspensionIterationStage R s A n).cone)
-  (hS : ∀ (n r : ℕ), IsPullbackSquare
+  (hS : ∀ (n r : ℕ), _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare
     ((dgKappaNativeVerdierDiagram R (dgSuspensionIteration R s A n)
       (dgSuspensionIterationStage R s A n).cone).square ≫
-        coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} r)))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} r)))
 
 /-- 概要：各段の同じ有限 BF 四角形から得た元の未完備実 fibration 辺。
 方針：同じ段の同じ実 cone と同じ全 S• 比較を代入する。
@@ -72,7 +72,7 @@ def dgSuspensionNativeBFCandidateCocone :=
 規約：段別供給・共終性・未完備全 S• fibration に条件付き。
 使われ方：K-7 c5 の実余極限性。 -/
 theorem dgSuspensionNativeBFCandidateCocone_isColimit :
-    IsColimitCone (dgSuspensionNativeBFCandidateCocone R s A hBF hcofinal Z hS) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (dgSuspensionNativeBFCandidateCocone R s A hBF hcofinal Z hS) :=
   dgSuspensionNativeCandidateCocone_isColimit R s A _
 
 /-- 概要：元の連結固定 K から同じ実候補への実比較射。

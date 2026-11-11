@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.KanCommSqEdges
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictConeSimplex
 
 /-!
 概要：元の厳密 Kan 四角形の coherent 表示から、上下全二胞体の実射列を回収する。
@@ -16,12 +16,12 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.Fibration
 
-variable {P X Y Z : KanObject.{u}}
+variable {P X Y Z : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u}}
   {a : P.obj ⟶ X.obj} {b : P.obj ⟶ Y.obj} {f : X.obj ⟶ Z.obj} {g : Y.obj ⟶ Z.obj}
   (sq : CommSq a b f g)
 
@@ -31,27 +31,27 @@ def kanCommSqLowerBaseEdge : (Δ[1] : SSet.{u + 1}) ⟶
   horn₂₂.ι₀₂ ≫ CospanShape.strictCospanHornIso.{u, u + 1}.inv
 
 /-- 元の下側二胞体に対応する、元の通常の錐の脚を前置した同じ二射列。 -/
-def kanCommSqLowerChain : ComposableArrows KanObject.{u} 2 :=
+def kanCommSqLowerChain : ComposableArrows _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u} 2 :=
   ComposableArrows.precomp
     ((SSet.yonedaEquiv kanCommSqLowerBaseEdge).down ⋙
-      kanPullbackDiagram (show Y ⟶ Z from g) (show X ⟶ Z from f))
-    ((_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq).π.app ((SSet.yonedaEquiv kanCommSqLowerBaseEdge).down.obj 0))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.kanPullbackDiagram (show Y ⟶ Z from g) (show X ⟶ Z from f))
+    ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanCommSqCone sq).π.app ((SSet.yonedaEquiv kanCommSqLowerBaseEdge).down.obj 0))
 
 /-- 元の coherent 四角形の下側全二胞体は、同じ元の通常の錐の二射列の実像。 -/
 theorem kanCommSqInfinitySquare_lower :
-    squareTriangle 1 ≫ kanCommSqInfinitySquare sq =
-      (joinStdSimplexIso 0 1).inv ≫ (pointJoinStdSimplexIso 1).hom ≫
-        SSet.yonedaEquiv.symm ((nerveToCoherent KanObject.{u}).app (Opposite.op ⦋2⦌)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ kanCommSqInfinitySquare sq =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 1).inv ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso 1).hom ≫
+        SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u}).app (Opposite.op ⦋2⦌)
           (kanCommSqLowerChain sq)) := by
-  have ht : squareTriangle 1 ≫ cospanConeSquareIso.{u + 1}.inv = cospanConeTriangleLeft := by
-    rw [← cospanConeSquareIso_left, Category.assoc, Iso.hom_inv_id, Category.comp_id]
-  change (squareTriangle 1 ≫ cospanConeSquareIso.inv) ≫
-    (joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.inv ≫
-      strictCoherentConeMap (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq)) = _
+  have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.{u + 1}.inv = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeTriangleLeft := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso_left, Category.assoc, Iso.hom_inv_id, Category.comp_id]
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.inv) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.inv ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentConeMap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanCommSqCone sq)) = _
   rw [ht]
-  change ((joinStdSimplexIso 0 1).inv ≫ joinMap (𝟙 Δ[0]) horn₂₂.ι₀₂) ≫ _ = _
-  rw [Category.assoc, ← Category.assoc (joinMap _ _), ← joinMap_comp, Category.id_comp]
-  rw [strictCoherentConeMap_simplex]
+  change ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 1).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) horn₂₂.ι₀₂) ≫ _ = _
+  rw [Category.assoc, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap _ _), ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap_comp, Category.id_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentConeMap_simplex]
   rfl
 
 /-- 下側全二胞体の実射列は、元の下辺と右辺の二射列そのもの。 -/
@@ -61,7 +61,7 @@ theorem kanCommSqLowerChain_eq :
   refine ComposableArrows.ext_succ rfl ?_ ?_
   · refine ComposableArrows.ext₁ rfl rfl ?_
     simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
-    change (kanPullbackDiagram (show Y ⟶ Z from g) (show X ⟶ Z from f)).map
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.kanPullbackDiagram (show Y ⟶ Z from g) (show X ⟶ Z from f)).map
       ((SSet.yonedaEquiv kanCommSqLowerBaseEdge).down.map
         (homOfLE (by decide : (0 : Fin 2) ≤ 1))) = _
     have he : (SSet.yonedaEquiv kanCommSqLowerBaseEdge).down.map
@@ -75,13 +75,13 @@ theorem kanCommSqLowerChain_eq :
 
 /-- 元の下側全二胞体を、同じ二射の標準 coherent 合成二胞体へ厳密に回収する。 -/
 theorem kanCommSqInfinitySquare_lower_compStruct :
-    squareTriangle 1 ≫ kanCommSqInfinitySquare sq =
-      SSet.yonedaEquiv.symm (coherentNerveCompStruct
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ kanCommSqInfinitySquare sq =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct
         (show P ⟶ Y from b) (show Y ⟶ Z from g)).simplex := by
   rw [kanCommSqInfinitySquare_lower, kanCommSqLowerChain_eq]
-  have h : (joinStdSimplexIso 0 1).inv ≫ (pointJoinStdSimplexIso 1).hom =
+  have h : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 1).inv ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso 1).hom =
       𝟙 (Δ[2] : SSet.{u + 1}) := by
-    simp [pointJoinStdSimplexIso, simplexCastIso]
+    simp [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.simplexCastIso]
   rw [← Category.assoc, h, Category.id_comp]
   rfl
 
@@ -92,27 +92,27 @@ def kanCommSqUpperBaseEdge : (Δ[1] : SSet.{u + 1}) ⟶
   horn₂₂.ι₁₂ ≫ CospanShape.strictCospanHornIso.{u, u + 1}.inv
 
 /-- 元の上側二胞体に対応する、元の通常の錐の脚を前置した同じ二射列。 -/
-def kanCommSqUpperChain : ComposableArrows KanObject.{u} 2 :=
+def kanCommSqUpperChain : ComposableArrows _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u} 2 :=
   ComposableArrows.precomp
     ((SSet.yonedaEquiv kanCommSqUpperBaseEdge).down ⋙
-      kanPullbackDiagram (show Y ⟶ Z from g) (show X ⟶ Z from f))
-    ((_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq).π.app ((SSet.yonedaEquiv kanCommSqUpperBaseEdge).down.obj 0))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.kanPullbackDiagram (show Y ⟶ Z from g) (show X ⟶ Z from f))
+    ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanCommSqCone sq).π.app ((SSet.yonedaEquiv kanCommSqUpperBaseEdge).down.obj 0))
 
 /-- 元の coherent 四角形の上側全二胞体は、同じ元の通常の錐の二射列の実像。 -/
 theorem kanCommSqInfinitySquare_upper :
-    squareTriangle 0 ≫ kanCommSqInfinitySquare sq =
-      (joinStdSimplexIso 0 1).inv ≫ (pointJoinStdSimplexIso 1).hom ≫
-        SSet.yonedaEquiv.symm ((nerveToCoherent KanObject.{u}).app (Opposite.op ⦋2⦌)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ kanCommSqInfinitySquare sq =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 1).inv ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso 1).hom ≫
+        SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u}).app (Opposite.op ⦋2⦌)
           (kanCommSqUpperChain sq)) := by
-  have ht : squareTriangle 0 ≫ cospanConeSquareIso.{u + 1}.inv = cospanConeTriangleRight := by
-    rw [← cospanConeSquareIso_right, Category.assoc, Iso.hom_inv_id, Category.comp_id]
-  change (squareTriangle 0 ≫ cospanConeSquareIso.inv) ≫
-    (joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.inv ≫
-      strictCoherentConeMap (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq)) = _
+  have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.{u + 1}.inv = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeTriangleRight := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso_right, Category.assoc, Iso.hom_inv_id, Category.comp_id]
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.inv) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.inv ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentConeMap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanCommSqCone sq)) = _
   rw [ht]
-  change ((joinStdSimplexIso 0 1).inv ≫ joinMap (𝟙 Δ[0]) horn₂₂.ι₁₂) ≫ _ = _
-  rw [Category.assoc, ← Category.assoc (joinMap _ _), ← joinMap_comp, Category.id_comp]
-  rw [strictCoherentConeMap_simplex]
+  change ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 1).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) horn₂₂.ι₁₂) ≫ _ = _
+  rw [Category.assoc, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap _ _), ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap_comp, Category.id_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentConeMap_simplex]
   rfl
 
 /-- 上側全二胞体の実射列は、元の下辺と右辺の二射列そのもの。 -/
@@ -122,7 +122,7 @@ theorem kanCommSqUpperChain_eq :
   refine ComposableArrows.ext_succ rfl ?_ ?_
   · refine ComposableArrows.ext₁ rfl rfl ?_
     simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
-    change (kanPullbackDiagram (show Y ⟶ Z from g) (show X ⟶ Z from f)).map
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.kanPullbackDiagram (show Y ⟶ Z from g) (show X ⟶ Z from f)).map
       ((SSet.yonedaEquiv kanCommSqUpperBaseEdge).down.map
         (homOfLE (by decide : (0 : Fin 2) ≤ 1))) = _
     have he : (SSet.yonedaEquiv kanCommSqUpperBaseEdge).down.map
@@ -136,13 +136,13 @@ theorem kanCommSqUpperChain_eq :
 
 /-- 元の上側全二胞体を、同じ二射の標準 coherent 合成二胞体へ厳密に回収する。 -/
 theorem kanCommSqInfinitySquare_upper_compStruct :
-    squareTriangle 0 ≫ kanCommSqInfinitySquare sq =
-      SSet.yonedaEquiv.symm (coherentNerveCompStruct
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ kanCommSqInfinitySquare sq =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct
         (show P ⟶ X from a) (show X ⟶ Z from f)).simplex := by
   rw [kanCommSqInfinitySquare_upper, kanCommSqUpperChain_eq]
-  have h : (joinStdSimplexIso 0 1).inv ≫ (pointJoinStdSimplexIso 1).hom =
+  have h : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 1).inv ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso 1).hom =
       𝟙 (Δ[2] : SSet.{u + 1}) := by
-    simp [pointJoinStdSimplexIso, simplexCastIso]
+    simp [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.simplexCastIso]
   rw [← Category.assoc, h, Category.id_comp]
   rfl
 

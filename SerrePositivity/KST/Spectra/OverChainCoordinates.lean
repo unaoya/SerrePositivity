@@ -86,7 +86,7 @@ def coordinateDiagram (C : Type u) [SmallCategory C] (n : ℕ) : C ⥤ Type u wh
 
 /-- BK 重みの各単体次数は終点の変数について representable の直和と自然同型。 -/
 def degreeIso (C : Type u) [SmallCategory C] (n : ℕ) :
-    SerrePositivity.InfinityCategories.HomotopyLimits.bousfieldKanWeight C ⋙
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight C ⋙
       (evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋n⦌) ≅
     coordinateDiagram C n :=
   NatIso.ofComponents (fun j ↦ (equiv j n).toIso) (fun f ↦ by

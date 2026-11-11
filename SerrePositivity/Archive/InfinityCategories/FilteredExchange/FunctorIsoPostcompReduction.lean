@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoChainTransport
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoChainTransport
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoChainTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerComposition
 
 /-!
 概要：二段の後合成が指定した同じ射に一致すれば、その指定像を型付きで簡約する。

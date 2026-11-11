@@ -1,6 +1,6 @@
 import SerrePositivity.InfinityCategories.Project.Entrypoints.Idempotent
 
-open SerrePositivity.InfinityCategories.F2.Idempotent
+
 
 #check @WalkingIdem
 #print axioms WalkingIdem

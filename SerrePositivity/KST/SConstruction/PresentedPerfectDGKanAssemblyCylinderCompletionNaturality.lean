@@ -72,7 +72,7 @@ def presentedPerfectDGKanAssemblyCylinderCompletionUnitTransformation (r : ℕ) 
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGKanAssemblyCylinderPushoutFunctor A r)
       (presentedPerfectDGKanAssemblyCylinderCompletionFunctor A r) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _
     (presentedPerfectDGKanAssemblyCylinderCompletionUnit A r)
     (presentedPerfectDGKanAssemblyCylinderCompletionUnit_whisker A r)
 
@@ -87,7 +87,7 @@ def presentedPerfectDGKanAssemblyCylinderCompletionLeftTransformation (r : ℕ) 
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGKanAssemblyLeftTargetFunctor A r)
       (presentedPerfectDGKanAssemblyCylinderCompletionFunctor A r) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _
     (presentedPerfectDGKanAssemblyCylinderCompletionLeftMap A r)
     (presentedPerfectDGKanAssemblyCylinderCompletionLeft_whisker A r)
 
@@ -102,7 +102,7 @@ def presentedPerfectDGKanAssemblyCylinderCompletionRightTransformation (r : ℕ)
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGKanAssemblyTargetFunctor A r)
       (presentedPerfectDGKanAssemblyCylinderCompletionFunctor A r) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _
     (presentedPerfectDGKanAssemblyCylinderCompletionRightMap A r)
     (presentedPerfectDGKanAssemblyCylinderCompletionRight_whisker A r)
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FilteredPointwiseWeakEquivalences
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FilteredPointwiseWeakEquivalences
 public import Mathlib.CategoryTheory.Category.ULift
 public import Mathlib.CategoryTheory.Limits.Final
 public import Mathlib.CategoryTheory.Category.Preorder
@@ -24,13 +24,13 @@ open CategoryTheory CategoryTheory.Limits
 open SerrePositivity.InfinityCategories
 
 lemma weakSequentialColimitMap {F G : ℕ ⥤ SSet.{w}} (η : F ⟶ G)
-    (hη : ∀ n, IsWeakHomotopyEquivalence (η.app n)) :
-    IsWeakHomotopyEquivalence (colim.map η) := by
+    (hη : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (η.app n)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (colim.map η) := by
   let e := ULiftHomULiftCategory.equiv.{w, w} ℕ
   let L := e.inverse
   let τ := Functor.whiskerLeft L η
-  have hτ : IsWeakHomotopyEquivalence (colim.map τ) :=
-    F2.filteredColimitMap_isWeakHomotopyEquivalence_of_pointwise τ
+  have hτ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (colim.map τ) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.filteredColimitMap_isWeakHomotopyEquivalence_of_pointwise τ
       (fun i => hη (L.obj i))
   let iF := Functor.Final.colimitIso L F
   let iG := Functor.Final.colimitIso L G
@@ -41,8 +41,8 @@ lemma weakSequentialColimitMap {F G : ℕ ⥤ SSet.{w}} (η : F ⟶ G)
       Functor.Final.ι_colimitIso_hom, ← Category.assoc,
       Functor.Final.ι_colimitIso_hom, colimit.ι_map]
     rfl
-  have hF := (isPrecompositionEquivalence_of_iso iF).isWeakHomotopyEquivalence
-  have hG := (isPrecompositionEquivalence_of_iso iG).isWeakHomotopyEquivalence
+  have hF := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso iF).isWeakHomotopyEquivalence
+  have hG := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso iG).isWeakHomotopyEquivalence
   apply hF.cancel_left
   rw [← hn]
   exact hτ.comp hG

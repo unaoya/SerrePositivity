@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.RootedFiniteGraphColimit
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RootedFiniteBidiagram
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteBidiagram
 
 /-!
 # 固定語の元の余極限同型の全語での自然性
@@ -24,32 +24,32 @@ attribute [local instance] Classical.propDecidable
 variable {Q : Type u} [Quiver.{v} Q] (T : WideSubquiver (Quiver.Symmetrify Q))
   [Quiver.Arborescence T] (X Y : Q)
 
-def graphColimitDiagramIso : graphWordDiagram T X Y ⋙ colim ≅
-    Hammock.graphDiagram (⊤ : MorphismProperty (Paths Q))
+def graphColimitDiagramIso : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteBidiagram.graphWordDiagram T X Y ⋙ colim ≅
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (⊤ : MorphismProperty (Paths Q))
       ((Paths.of Q).obj X) ((Paths.of Q).obj Y) :=
   NatIso.ofComponents (graphColimitIso T X Y) (fun {a b} f => by
-    let τ : graphDiagram T X Y a ⟶ graphDiagram T X Y b := (graphWordDiagram T X Y).map f
+    let τ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphDiagram T X Y a ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphDiagram T X Y b := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteBidiagram.graphWordDiagram T X Y).map f
     change colim.map τ ≫ (graphColimitIso T X Y b).hom =
       (graphColimitIso T X Y a).hom ≫ nerveMap
-        (WordAction.functor (W := ⊤) (X := (Paths.of Q).obj X) (Y := (Paths.of Q).obj Y) f)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor (W := ⊤) (X := (Paths.of Q).obj X) (Y := (Paths.of Q).obj Y) f)
     apply colimit.hom_ext
     intro S
-    change colimit.ι (graphDiagram T X Y a) S ≫ colim.map τ ≫
-      (graphColimitIso T X Y b).hom = colimit.ι (graphDiagram T X Y a) S ≫
+    change colimit.ι (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphDiagram T X Y a) S ≫ colim.map τ ≫
+      (graphColimitIso T X Y b).hom = colimit.ι (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphDiagram T X Y a) S ≫
       (graphColimitIso T X Y a).hom ≫ nerveMap
-        (WordAction.functor (W := ⊤) (X := (Paths.of Q).obj X) (Y := (Paths.of Q).obj Y) f)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor (W := ⊤) (X := (Paths.of Q).obj X) (Y := (Paths.of Q).obj Y) f)
     rw [← Category.assoc, colimit.ι_map, Category.assoc, graphColimitIso_fac,
       ← Category.assoc, graphColimitIso_fac]
-    change nerveMap (wordActionFunctor T X Y S f ⋙ projectionFunctor T X Y b S) =
-      nerveMap (projectionFunctor T X Y a S ⋙ WordAction.functor f)
-    exact congrArg nerveMap (projectionFunctor_wordAction T X Y S f).symm)
+    change nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordActionFunctor T X Y S f ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.projectionFunctor T X Y b S) =
+      nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.projectionFunctor T X Y a S ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f)
+    exact congrArg nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.projectionFunctor_wordAction T X Y S f).symm)
 
 lemma wordDiagram_eq (S : Finset Q) :
-    (graphWordDiagram T X Y).flip.obj S =
-      letI := FiniteQuiver.quiver (hull T X Y S)
-      Hammock.graphDiagram (⊤ : MorphismProperty (Paths (FiniteQuiver.Vertex (hull T X Y S))))
-        (left T X Y S) (right T X Y S) := by
-  let := FiniteQuiver.quiver (hull T X Y S)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteBidiagram.graphWordDiagram T X Y).flip.obj S =
+      letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteCategory.hull T X Y S)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (⊤ : MorphismProperty (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteCategory.hull T X Y S))))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteCategory.left T X Y S) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteCategory.right T X Y S) := by
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteCategory.hull T X Y S)
   rfl
 
 end SerrePositivity.EInfinity.Hammock.RootedFinite

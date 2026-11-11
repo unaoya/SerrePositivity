@@ -22,18 +22,18 @@ variable (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet.{u}}
 
 /-- 二重随伴を元の全パラメータの同じ懸垂評価へ施した座標。 -/
 def kanAdjointDoubleCounitCoordinate (n : ℕ)
-    (d : (Y.level n).space ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (Y.level (n + 2)).space)) :
-    A ⟶ PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space))
+    (d : (Y.level n).space ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (Y.level (n + 2)).space)) :
+    A ⟶ PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space))
       (Y.level (n + 2)).space :=
   kanAdjointStructureInput X Y φ n ≫
-    PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (uncurry d) ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso PointedSimplicialSet.circle.{u}
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 2)).space).inv
+    PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (uncurry d) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso PointedSimplicialSet.circle.{u}
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 2)).space).inv
 
 /-- 同じ元の構造区間の像は、通常と符号付き二重随伴の座標を結ぶ実際の区間。 -/
 def kanAdjointDoubleCounitInterval (n : ℕ) :
     PointedMapping.VerticalPath
-      (PointedObject.toPoint (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space))
+      (PointedObject.toPoint (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space))
         (Y.level (n + 2)).space))
       (kanAdjointDoubleCounitCoordinate X Y φ n
         (KanSequence.ordinaryDoubleAdjoint Y.toKanSequence n))
@@ -53,7 +53,7 @@ lemma kanAdjointDoubleCounitInterval_h (n : ℕ) :
     (kanAdjointDoubleCounitInterval X Y φ n).homotopy.h =
       (kanAdjointStructureInput X Y φ n).right ▷ (Δ[1] : SSet.{u}) ≫
         (kanAdjointCoefficientReversePath X Y n).homotopy.h ≫
-        (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 2)).space).right := by
+        (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 2)).space).right := by
   rw [kanAdjointDoubleCounitInterval,
     PointedMapping.VerticalPath.changeEndpoints_homotopy_h,
     kanAdjointStructureCounitInterval_h, kanAdjointParameterStructureInterval_h, Category.assoc]
@@ -64,7 +64,7 @@ lemma kanAdjointDoubleCounitInterval_boundary {B : PointedSimplicialSet.{u}}
     j.right ▷ (Δ[1] : SSet.{u}) ≫ (kanAdjointDoubleCounitInterval X Y φ n).homotopy.h =
       (j ≫ kanAdjointStructureInput X Y φ n).right ▷ (Δ[1] : SSet.{u}) ≫
         (kanAdjointCoefficientReversePath X Y n).homotopy.h ≫
-        (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 2)).space).right := by
+        (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 2)).space).right := by
   rw [kanAdjointDoubleCounitInterval,
     PointedMapping.VerticalPath.changeEndpoints_homotopy_h]
   exact kanAdjointStructureCounitInterval_boundary X Y φ j n

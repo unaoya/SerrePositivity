@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.UniverseHomotopyDownNaturality
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.VertexIsoTerminalEquality
 
 /-!
 概要：同じ合成射の二表示による指定同型の像は宇宙下降後も HEq で一致する。

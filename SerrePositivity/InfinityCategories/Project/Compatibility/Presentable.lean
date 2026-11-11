@@ -1,6 +1,6 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits
 
 @[expose] public section

@@ -36,7 +36,7 @@ lemma asSmallKanHammockHomFamilyMap_app (Y : AsSmall.{max u v} C) :
 lemma asSmallHammockHomCoherentIso_hom :
     (asSmallHammockHomCoherentIso W X).hom =
       HomotopyCategory.homMk
-        (kanDiagramNaturalTransformationEdge
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramNaturalTransformationEdge
           (F := ⟨AsSmall.down ⋙ kanHomFamily (hammockHomFamily W X), trivial⟩)
           (G := ⟨kanHomFamily (hammockHomFamily (AsSmallComparison.weak W)
             (AsSmall.up.obj X)), trivial⟩)
@@ -46,17 +46,17 @@ lemma asSmallHammockHomCoherentIso_hom :
 方針：元の実自然変換の評価に原本の全図式評価公式を使う。
 規約：辺の厳密な等式。使われ方：同じ全比較の零単体の照合。 -/
 lemma asSmallHammockHomCoherentEdge_at (Y : AsSmall.{max u v} C) :
-    (functorEdgeAt (kanDiagramNaturalTransformationEdge
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.functorEdgeAt (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramNaturalTransformationEdge
       (F := ⟨AsSmall.down ⋙ kanHomFamily (hammockHomFamily W X), trivial⟩)
       (G := ⟨kanHomFamily (hammockHomFamily (AsSmallComparison.weak W)
         (AsSmall.up.obj X)), trivial⟩)
-      (asSmallKanHammockHomFamilyMap W X)) (ULift.up (nerveVertex Y))).edge =
-      (coherentNerveEdge (show
+      (asSmallKanHammockHomFamilyMap W X)) (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (show
         (AsSmall.down ⋙ kanHomFamily (hammockHomFamily W X)).obj Y ⟶
           (kanHomFamily (hammockHomFamily (AsSmallComparison.weak W)
             (AsSmall.up.obj X))).obj Y from
               (asSmallKanHammockHomFamilyMap W X).app Y)).edge := by
-  exact kanDiagramNaturalTransformationEdge_at
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramNaturalTransformationEdge_at
     (F := ⟨AsSmall.down ⋙ kanHomFamily (hammockHomFamily W X), trivial⟩)
     (G := ⟨kanHomFamily (hammockHomFamily (AsSmallComparison.weak W)
       (AsSmall.up.obj X)), trivial⟩)
@@ -66,10 +66,10 @@ lemma asSmallHammockHomCoherentEdge_at (Y : AsSmall.{max u v} C) :
 方針：同じ宇宙同型の全 Ex∞ 単位三角形をそのまま使う。
 規約：全同型と同じ実射。使われ方：Yoneda 比較の元の局所化辺の入力。 -/
 lemma asSmallKanHammockHomFamilyMap_arrow {Y : C} (f : X ⟶ Y) :
-    arrowMap W f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (colimitGraph W X Y) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y) ≫
       (asSmallKanHammockHomFamilyMap W X).app (AsSmall.up.obj Y) =
-        arrowMap (AsSmallComparison.weak W) (AsSmall.up.map f) ≫
-          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (colimitGraph (AsSmallComparison.weak W)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (AsSmallComparison.weak W) (AsSmall.up.map f) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (AsSmallComparison.weak W)
             (AsSmall.up.obj X) (AsSmall.up.obj Y)) :=
   AsSmallComparison.arrowMap_exInfinity_colimitIso W f
 

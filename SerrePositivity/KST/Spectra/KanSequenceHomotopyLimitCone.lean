@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedConeCompatibility
 universe u
 
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.KanSequence
 
@@ -39,7 +39,7 @@ def levelCone (c : Cone D) (n : ℕ) : Cone (levelDiagram D n) :=
 使われ方：HA §1.4.2、BF 1978 §2。標準射を列に束ねる各段の射。 -/
 def homotopyLimitConeApp (c : Cone D) (n : ℕ) :
     (c.pt.level n).space ⟶ ((homotopyLimit D).level n).space :=
-  PointedWeightedEnd.coneComparison (bousfieldKanWeight I) (levelCone c n)
+  PointedWeightedEnd.coneComparison (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (levelCone c n)
 
 /-- 概要：錐から homotopy end への比較は随伴構造射と厳密に可換。
 方針：錐の自然性を end に送り、内部 Hom と end の交換で標準比較を移す。
@@ -47,11 +47,11 @@ def homotopyLimitConeApp (c : Cone D) (n : ℕ) :
 使われ方：HA §1.4.2、BF 1978 §2。厳密な列の射の構造条件。 -/
 theorem homotopyLimitConeApp_adjoint (c : Cone D) (n : ℕ) :
     homotopyLimitConeApp c n ≫ homotopyLimitAdjoint D n =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (c.pt.level n).space (c.pt.level (n + 1)).space (c.pt.sigma n) ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (c.pt.level n).space (c.pt.level (n + 1)).space (c.pt.sigma n) ≫
         (ihom PointedSimplicialSet.circle.{u}).map (homotopyLimitConeApp c (n + 1)) := by
   let A := PointedSimplicialSet.circle.{u}
-  let W := bousfieldKanWeight I
-  let a := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (c.pt.level n).space (c.pt.level (n + 1)).space (c.pt.sigma n)
+  let W := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I
+  let a := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (c.pt.level n).space (c.pt.level (n + 1)).space (c.pt.sigma n)
   let e := PointedWeightedEnd.cotensorIso A W (levelDiagram D (n + 1))
   have h := PointedWeightedEnd.coneComparison_natural W (levelCone c n)
     ((ihom A).mapCone (levelCone c (n + 1))) a (adjointTransformation D n)
@@ -76,7 +76,7 @@ theorem homotopyLimitConeApp_adjoint (c : Cone D) (n : ℕ) :
 def homotopyLimitCone (c : Cone D) : Hom c.pt (homotopyLimit D) where
   app := homotopyLimitConeApp c
   comm n := by
-    apply (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (c.pt.level n).space ((homotopyLimit D).level (n + 1)).space).injective
+    apply (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (c.pt.level n).space ((homotopyLimit D).level (n + 1)).space).injective
     change curry (PointedSimplicialSet.circle.{u} ◁ homotopyLimitConeApp c n ≫
       uncurry (homotopyLimitAdjoint D n)) = curry (c.pt.sigma n ≫ homotopyLimitConeApp c (n + 1))
     rw [curry_natural_left, curry_uncurry, curry_natural_right]

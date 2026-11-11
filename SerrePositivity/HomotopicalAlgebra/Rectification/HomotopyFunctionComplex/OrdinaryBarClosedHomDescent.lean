@@ -57,12 +57,12 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   (P : SSet.{max u v})
 
 lemma target_kan (X Y : D C) : SSet.modelCategoryQuillen.J.rlp (terminal.from
-    (UniverseLift.obj.{max u v} ((ihom (small hcof hfib X)).obj (small hcof hfib Y)))) :=
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} ((ihom (small hcof hfib X)).obj (small hcof hfib Y)))) :=
   UniverseLift.horn_terminal_map (SimplexParameterHom.native_kan
     (small hcof hfib X) (small hcof hfib Y) (OrdinaryBarSmallReference.value_kan hcof hfib Y))
 
 def mapping (X Y : D C) : P ⊗ baseHom C X Y ⟶
-    UniverseLift.obj.{max u v} ((ihom (small hcof hfib X)).obj (small hcof hfib Y)) :=
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} ((ihom (small hcof hfib X)).obj (small hcof hfib Y)) :=
   SplitLocalizedDescent.descend
     (SplitLocalizedDescent.tensorSplit (OrdinaryBarHomSections.small C X Y) P)
     (OrdinaryBarDiagonalClosedAction.mapping hcof hfib P X Y)
@@ -90,8 +90,8 @@ lemma lifts_homotopy {T : SSet.{max u v}} {X Y : D C} (j : T ⟶ P)
     (lift j f) (lift j g) h
 
 lemma native_lifts_homotopy {T : SSet.{v}} {X Y : D C}
-    (j : UniverseLift.obj.{max u v} T ⟶ P)
-    (f g : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+    (f g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
     (hfg : f ≫ smallAugmentation C X Y = g ≫ smallAugmentation C X Y) :
     Nonempty (SSet.Homotopy
       (OrdinaryBarDiagonalClosedAction.nativeFamily hcof hfib P j f)
@@ -106,23 +106,23 @@ lemma native_lifts_homotopy {T : SSet.{v}} {X Y : D C}
     (SimplexParameterHom.native_kan _ _ (OrdinaryBarSmallReference.value_kan hcof hfib Y))
     _ _).mp h
 
-def nativeFamily {T : SSet.{v}} {X Y : D C} (j : UniverseLift.obj.{max u v} T ⟶ P)
-    (f : UniverseLift.obj.{max u v} T ⟶ baseHom C X Y) :
+def nativeFamily {T : SSet.{v}} {X Y : D C} (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ baseHom C X Y) :
     T ⟶ (ihom (small hcof hfib X)).obj (small hcof hfib Y) :=
   OrdinaryBarDiagonalClosedAction.nativeFamily hcof hfib P j
     (f ≫ (OrdinaryBarHomSections.small C X Y).section_)
 
 lemma nativeFamily_substitute {T U : SSet.{v}} {X Y : D C}
-    (j : UniverseLift.obj.{max u v} T ⟶ P)
-    (f : UniverseLift.obj.{max u v} T ⟶ baseHom C X Y) (i : U ⟶ T) :
-    nativeFamily hcof hfib P (UniverseLift.map i ≫ j) (UniverseLift.map i ≫ f) =
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ baseHom C X Y) (i : U ⟶ T) :
+    nativeFamily hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ f) =
       i ≫ nativeFamily hcof hfib P j f := by
   unfold nativeFamily
   rw [Category.assoc, OrdinaryBarDiagonalClosedAction.nativeFamily_substitute]
 
 lemma native_restriction_homotopy {T : SSet.{v}} {X Y : D C}
-    (j : UniverseLift.obj.{max u v} T ⟶ P)
-    (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) :
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) :
     Nonempty (SSet.Homotopy
       (nativeFamily hcof hfib P j (f ≫ smallAugmentation C X Y))
       (OrdinaryBarDiagonalClosedAction.nativeFamily hcof hfib P j f)) := by

@@ -16,8 +16,8 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- Fin 2 積を二項積へ戻すと、元の初期頂点と同じ二つの cofiber を回収する。 -/
-lemma composableWeakTwoComparison_normalize {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+lemma composableWeakTwoComparison_normalize {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     composableWeakTwoComparison q r ≫ (𝟙 _ ⊗ₘ (finTwoProductIso
       ((multiRealizationFunctor r).obj (closedStableModel (kernelClosedPredicate q)))).hom) =
         lift ((multiRealizationFunctor r).map (composableWeakInitialExact q))
@@ -27,7 +27,7 @@ lemma composableWeakTwoComparison_normalize {B C : _root_.SerrePositivity.Infini
   rw [lift_map, Category.comp_id, finTwoProductIso_lift]
 
 /-- 元の第一 W 辺への射影と一辺の加法性は、同じ初期頂点と第一 cofiber の射対。 -/
-lemma composableWeakFirst_additivity {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+lemma composableWeakFirst_additivity {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     (multiRealizationFunctor (r + 1)).map (composableWeakFirstExact q) ≫
       weakArrowMultiAdditivityMap q r =
         lift ((multiRealizationFunctor (r + 1)).map (composableWeakInitialExact q))
@@ -41,8 +41,8 @@ lemma composableWeakFirst_additivity {B C : _root_.SerrePositivity.InfinityCateg
     rfl
 
 /-- 二辺の有限積比較は、元の第一辺・第二 cofiber の射対と一辺の加法性の合成。 -/
-lemma composableWeakTwoComparison_factor {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+lemma composableWeakTwoComparison_factor {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     composableWeakMultiStep q (r + 1) ≫ (weakArrowMultiAdditivityMap q r ⊗ₘ 𝟙 _) ≫
       (α_ _ _ _).hom = composableWeakTwoComparison q (r + 1) ≫
         (𝟙 _ ⊗ₘ (finTwoProductIso ((multiRealizationFunctor (r + 1)).obj
@@ -53,8 +53,8 @@ lemma composableWeakTwoComparison_factor {B C : _root_.SerrePositivity.InfinityC
     lift_lift_associator_hom]
 
 /-- 元の第一辺・第二 cofiber の射対の同値性は、元の二辺の有限積比較へ移る。 -/
-lemma composableWeakTwoComparison_localized_isIso_of_step {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ)
+lemma composableWeakTwoComparison_localized_isIso_of_step {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ)
     (h : IsIso (AnodyneHomotopy.anodyneQ.map (composableWeakMultiStep q (r + 1)))) :
     IsIso (AnodyneHomotopy.anodyneQ.map (composableWeakTwoComparison q (r + 1))) := by
   let Q := AnodyneHomotopy.anodyneQ

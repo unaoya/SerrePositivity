@@ -15,17 +15,17 @@ open scoped BigOperators
 /-- 元の所属頂点全体の端点で零になる和は、元の所属内部頂点による同じ寄与の和。 -/
 lemma simplexSubset_sum_interior {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     {M : Type*} [AddCommMonoid M]
-    (f : ∀ j ∈ I, I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j →
-      j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) → M) :
-    (∑ j : I, if h : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j.val ∧
-        j.val < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) then f j.val j.property h.1 h.2 else 0) =
+    (f : ∀ j ∈ I, I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j →
+      j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) → M) :
+    (∑ j : I, if h : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j.val ∧
+        j.val < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) then f j.val j.property h.1 h.2 else 0) =
       ∑ j : SimplexSubsetInterior I hI, f j.val j.property.1 j.property.2.1 j.property.2.2 := by
   classical
-  let t (a : I) := if h : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < a.val ∧
-    a.val < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) then f a.val a.property h.1 h.2 else 0
+  let t (a : I) := if h : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < a.val ∧
+    a.val < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) then f a.val a.property h.1 h.2 else 0
   have hb (a : I) (ha : t a ≠ 0) :
-      I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < a.val ∧
-        a.val < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) := by
+      I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < a.val ∧
+        a.val < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) := by
     by_contra h
     exact ha (dite_eq_right h)
   let e (a : I) (ha : t a ≠ 0) : SimplexSubsetInterior I hI :=

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.Gluing.PrimitiveComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.PrimitiveComparison
 
 /-! # 元の gluing 単位の第三成分
 概要：元の閉単位の比較 cochain の零性を、同じ実単位元の値に戻す。
@@ -16,12 +16,12 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] (M : Bimodule R C D)
 
 /-- 元の実 gluing 単位の第三成分は零。 -/
-lemma dgHomGluingUnit_primitive (X : DGGluingObject R C D M) :
-    (dgGluingHomPrimitive R C D M X X).v 0 (-1) (by omega)
+lemma dgHomGluingUnit_primitive (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomPrimitive R C D M X X).v 0 (-1) (by omega)
       (unitElement R X).val = 0 := by
-  have h := Cochain.congr_v (dgGluingIdentity_comparison R C D M X)
+  have h := Cochain.congr_v (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingIdentity_comparison R C D M X)
     0 (-1) (by omega)
-  simp only [dgGluingHomComparison, Cochain.zero_cochain_comp_v,
+  simp only [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComparison, Cochain.zero_cochain_comp_v,
     Cochain.ofHom_v, Cochain.zero_v] at h
   exact congrArg (fun f => f
     ((singleObjXSelf (ComplexShape.up ℤ) 0 (𝟙_ (ModuleCat R))).inv 1)) h

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeSplitting
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.TammeSplitting
 public import SerrePositivity.KST.LocalizingInvariants.InvariantZeroMap
 
 /-!
@@ -18,8 +18,8 @@ open CategoryTheory Limits SSet
 open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants
-variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u})
-  {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⟶ Sp.{u})
+  {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
 def laxValueProjectionHom : SpectrumHo.obj (value Φ (laxCategory p q)) ⟶
     SpectrumHo.obj (Binary.obj (value Φ C) (value Φ D)) :=
@@ -44,7 +44,7 @@ lemma laxValueProjectionHom_fromC :
   have hc : SpectrumHo.hom (valueMap Φ (LaxInclusion.exactFromC p q)) ≫
       SpectrumHo.hom (valueMap Φ (laxFst p q)) = 𝟙 _ := by
     have hcomp : (LaxInclusion.exactFromC p q : C ⟶ laxCategory p q) ≫ laxFst p q = 𝟙 C :=
-      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (LaxInclusion.fromC_fst p q)
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.ext (LaxInclusion.fromC_fst p q)
     have h := (stableValueFunctor Φ).map_comp
       (LaxInclusion.exactFromC p q : C ⟶ laxCategory p q) (laxFst p q)
     rw [hcomp, CategoryTheory.Functor.map_id] at h
@@ -54,9 +54,9 @@ lemma laxValueProjectionHom_fromC :
     let F : C ⟶ D := (LaxInclusion.exactFromC p q : C ⟶ laxCategory p q) ≫ laxSnd p q
     have h := hΦ.valueMap_hom_zero_of_zero_values F (by
         intro c
-        change IsZeroVertex ((LaxInclusion.fromC p q ≫ (laxSnd p q).hom).app _ c)
-        rw [LaxInclusion.fromC_snd, _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD, zeroDiagram_const_vertex]
-        exact (chosenZeroVertex D.obj).isZero)
+        change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((LaxInclusion.fromC p q ≫ (laxSnd p q).hom).app _ c)
+        rw [LaxInclusion.fromC_snd, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroD, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex]
+        exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex D.obj).isZero)
     change (stableValueFunctor Φ).map
       ((LaxInclusion.exactFromC p q : C ⟶ laxCategory p q) ≫ (laxSnd p q : laxCategory p q ⟶ D)) =
         0 at h
@@ -75,9 +75,9 @@ lemma laxValueProjectionHom_fromD :
     let F : D ⟶ C := (LaxInclusion.exactFromD p q : D ⟶ laxCategory p q) ≫ laxFst p q
     have h := hΦ.valueMap_hom_zero_of_zero_values F (by
         intro d
-        change IsZeroVertex ((LaxInclusion.fromD p q ≫ (laxFst p q).hom).app _ d)
-        rw [LaxInclusion.fromD_fst, _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex]
-        exact (chosenZeroVertex C.obj).isZero)
+        change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((LaxInclusion.fromD p q ≫ (laxFst p q).hom).app _ d)
+        rw [LaxInclusion.fromD_fst, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex]
+        exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C.obj).isZero)
     change (stableValueFunctor Φ).map
       ((LaxInclusion.exactFromD p q : D ⟶ laxCategory p q) ≫ (laxFst p q : laxCategory p q ⟶ C)) =
         0 at h
@@ -86,7 +86,7 @@ lemma laxValueProjectionHom_fromD :
   have hd : SpectrumHo.hom (valueMap Φ (LaxInclusion.exactFromD p q)) ≫
       SpectrumHo.hom (valueMap Φ (laxSnd p q)) = 𝟙 _ := by
     have hcomp : (LaxInclusion.exactFromD p q : D ⟶ laxCategory p q) ≫ laxSnd p q = 𝟙 D :=
-      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (LaxInclusion.fromD_snd p q)
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.ext (LaxInclusion.fromD_snd p q)
     have h := (stableValueFunctor Φ).map_comp
       (LaxInclusion.exactFromD p q : D ⟶ laxCategory p q) (laxSnd p q)
     rw [hcomp, CategoryTheory.Functor.map_id] at h

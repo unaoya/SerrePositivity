@@ -43,14 +43,14 @@ namespace SerrePositivity.SimplicialModel.StarDiagramSmallQuotient
 open SmallSubdiagramObstruction
 
 abbrev original : Index (Type v) ⥤ SSet.{v + 1} := diagram (Type v)
-abbrev relation : DiagramQuotient.Congruence original.{v} := DiagramQuotient.total original
+abbrev relation : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.Congruence original.{v} := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.total original
 
 lemma small (d : Index (Type v)) (n : SimplexCategoryᵒᵖ) :
     Small.{v} (Quotient (relation.rel d n)) := by
   exact SmallDiagramQuotient.total_small.{v, v + 1} (F := original) d n
 
 lemma boundary (d : Index (Type v)) :
-    SSet.modelCategoryQuillen.I.rlp ((DiagramQuotient.projection relation).app d) := by
+    SSet.modelCategoryQuillen.I.rlp ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.projection relation).app d) := by
   apply SmallDiagramQuotient.total_boundary_rlp original d
   cases d with
   | of d =>
@@ -59,7 +59,7 @@ lemma boundary (d : Index (Type v)) :
     have := isIso_of_isTerminal SSet.stdSimplex.isTerminalObj₀ terminalIsTerminal
       (terminal.from point)
     exact (MorphismProperty.monomorphisms _).rlp.of_isIso _
-  | star => exact CodiscreteNerveExtension.terminal_mono_rlp PUnit
+  | star => exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.terminal_mono_rlp PUnit
 
 /-- The actual small strict diagram is the quotient construction, not a chosen constant model. -/
 abbrev functor : Index (Type v) ⥤ SSet.{v} :=

@@ -21,24 +21,24 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet SimplicialThickening
 open Hammock SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
 open scoped Simplicial
-variable (C : RelativeCategory.{u}) {I : Type u} [Category.{u} I]
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {I : Type u} [Category.{u} I]
   (U : I ⥤ C.category) {X Y : C.category} (p : U ⟶ (Functor.const I).obj X)
   (hp : ∀ i, C.weakEquivalences (p.app i)) (σ : U ⟶ (Functor.const I).obj Y)
   (hU : ∀ {i j} (a : i ⟶ j), C.weakEquivalences (U.map a))
 
-def familyMap : nerve I ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (colimitGraph C.weakEquivalences X Y) :=
+def familyMap : nerve I ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y) :=
   LeftRoof.Precompose.SameUniverse.diagramColimitMap C.weakEquivalences
-    (LeftRoof.diagram C.weakEquivalences U p hp σ hU) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram C.weakEquivalences U p hp σ hU) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _
 
 def pathMap {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
-    (i : Fin (n + 1)) : nerve (FrameHom.PathMaximum.LastPath.{u} n i) ⟶
+    (i : Fin (n + 1)) : nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LastPath.{u} n i) ⟶
       SimplicialCategory.sHom ((kanHammockSourceFunctor C).obj (U.obj (Γ.obj i)))
         ((kanHammockSourceFunctor C).obj Y) :=
   LeftRoof.Prefix.pathMap C.weakEquivalences U p hp σ hU Γ t i ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _
 
 lemma pathMap_reindex {m n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
     (α : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 1)) :
-    nerveMap (pathLastReindexFunctor.{u} α i) ≫ pathMap C U p hp σ hU Γ t (α.toOrderHom i) =
+    nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastReindexFunctor.{u} α i) ≫ pathMap C U p hp σ hU Γ t (α.toOrderHom i) =
       pathMap C U p hp σ hU (α.toOrderHom.monotone.functor ⋙ Γ) (t.comp α.toOrderHom) i := by
   dsimp only [pathMap]
   rw [← Category.assoc, LeftRoof.Prefix.pathMap_reindex]
@@ -49,12 +49,12 @@ lemma pathMap_comp {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 
     eComp SSet (⟨ULift.up i.castSucc⟩ : SimplicialThickening (ULift.{u} (Fin (n + 2))))
       ⟨ULift.up j.castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩ ≫ pathMap C U p hp σ hU Γ t i =
     snd _ _ ≫ pathMap C U p hp σ hU Γ t j ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
-      (precomposePointMap (arrowMap C.weakEquivalences (U.map (Γ.map (homOfLE hij)))) Y) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences (U.map (Γ.map (homOfLE hij)))) Y) := by
   dsimp only [pathMap]
   rw [← Category.assoc, LeftRoof.Prefix.pathMap_comp C.weakEquivalences U p hp σ hU Γ t i j hij]
   simp only [Category.assoc]
   have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality
-    (precomposePointMap (arrowMap C.weakEquivalences (U.map (Γ.map (homOfLE hij)))) Y)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences (U.map (Γ.map (homOfLE hij)))) Y)
   simp only [Functor.id_map] at h
   exact congrArg (fun k => snd _ _ ≫
     LeftRoof.Prefix.pathMap C.weakEquivalences U p hp σ hU Γ t j ≫ k) h
@@ -69,21 +69,21 @@ lemma pathMap_zero {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (i : Fin (n + 1)) :
 
 lemma pathMap_one_of_source {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
     (i : Fin (n + 1)) (hi : t i = 1) :
-    pathMap C U p hp σ hU Γ t i = pathLastMaximumMap i ≫ SSet.yonedaEquiv.symm Γ ≫
+    pathMap C U p hp σ hU Γ t i = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastMaximumMap i ≫ SSet.yonedaEquiv.symm Γ ≫
       familyMap C U p hp σ hU ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
-        (precomposePointMap (arrowMap C.weakEquivalences (p.app (Γ.obj i))) Y) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences (p.app (Γ.obj i))) Y) := by
   dsimp only [pathMap, familyMap]
   rw [LeftRoof.Prefix.pathMap_one_of_source C.weakEquivalences U p hp σ hU Γ t i hi]
   simp only [Category.assoc]
   have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality
-    (precomposePointMap (arrowMap C.weakEquivalences (p.app (Γ.obj i))) Y)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences (p.app (Γ.obj i))) Y)
   simp only [Functor.id_map] at h
-  let L : nerve (FrameHom.PathMaximum.LastPath.{u} n i) ⟶
-      colimitGraph C.weakEquivalences X Y :=
-    pathLastMaximumMap i ≫ SSet.yonedaEquiv.symm Γ ≫
+  let L : nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LastPath.{u} n i) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastMaximumMap i ≫ SSet.yonedaEquiv.symm Γ ≫
       LeftRoof.Precompose.SameUniverse.diagramColimitMap C.weakEquivalences
-        (LeftRoof.diagram C.weakEquivalences U p hp σ hU)
-  exact congrArg (fun k : colimitGraph C.weakEquivalences X Y ⟶
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (colimitGraph C.weakEquivalences (U.obj (Γ.obj i)) Y) => L ≫ k) h
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram C.weakEquivalences U p hp σ hU)
+  exact congrArg (fun k : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences (U.obj (Γ.obj i)) Y) => L ≫ k) h
 
 end SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix

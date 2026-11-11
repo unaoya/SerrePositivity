@@ -28,7 +28,7 @@ lemma cofibrantSourceRoofProductCommaPrefixHomotopy_underMap
     (nerveMap (Under.map a) ▷ (Δ[1] : SSet.{u + 1})) ≫
       (cofibrantSourceRoofProductCommaPrefixHomotopy A X Y b s).h =
     (cofibrantSourceRoofProductCommaPrefixHomotopy A X Y b t).h ≫
-      Hammock.precomposePointMap (Hammock.arrowMap
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap
         (cofibrantAlgebraRelativeCategory A).weakEquivalences
         ((cofibrantSourceRoofProductCommaDiagram A X Y b).map a))
         (show (cofibrantAlgebraRelativeCategory A).category from Y) :=

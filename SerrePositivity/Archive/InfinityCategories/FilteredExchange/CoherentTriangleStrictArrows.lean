@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTriangleMaximalPaths
-public import SerrePositivity.InfinityCategories.F1.Coherent.SimplexStrictification
-public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleComposite
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexStrictification
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentTriangleComposite
 
 /-!
 概要：最大化による strict な三角形の三射を、元の第一射・最後射・二射合成へ戻す。

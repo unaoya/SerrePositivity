@@ -27,8 +27,8 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C
   [ModelCategory C] [IsQuillenBifunctor (curriedTensor C)] (K : C) [IsCofibrant K]
   [IsCofibrant (𝟙_ C)] [levelModel : ModelCategory (GeneralSymmetricSpectrum C K)]
   [∀ n : ℕ, IsLeftQuillen (freeAt (K := K) n)]
-  (I J : MorphismProperty C) [CofibrantlyGenerated.{w} I J]
-  [CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J)]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
+  [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J)]
   [ModelCategory SSet.{v}]
   (cofC : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   (cofSp : MorphismProperty.FunctorialFactorizationData

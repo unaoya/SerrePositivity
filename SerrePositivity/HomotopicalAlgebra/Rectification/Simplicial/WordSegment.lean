@@ -3,7 +3,7 @@ module
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.SegmentWords
-public import SerrePositivity.InfinityCategories.Simplicial.ParameterCube
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube
 
 /-!
 # 中断した任意モデル源への一般化：WordSegment
@@ -44,7 +44,7 @@ open CategoryTheory CategoryTheory.MonoidalCategory CategoryTheory.Limits
 open CategoryTheory.CartesianMonoidalCategory
 
 namespace SerrePositivity.SimplicialModel.WordSegment
-abbrev interval : SSet.{v} := RetractChainFamily.interval
+abbrev interval : SSet.{v} := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval
 
 def endpoint (n : SimplexCategoryᵒᵖ) (b : Fin 2) : interval.{v}.obj n :=
   SSet.stdSimplex.objEquiv.symm (SimplexCategory.Hom.mk (OrderHom.const _ b))

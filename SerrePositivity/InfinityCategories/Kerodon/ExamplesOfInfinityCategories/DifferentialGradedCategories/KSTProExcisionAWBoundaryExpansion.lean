@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：水平側は最初の切断点、垂直側は最後の切断点を除いて面の和に展開する。
 規約：KST Construction A.5 の標準 AW、非被約な零次の因子を含む。
 使われ方：非対角項の添字変換と対角項の相殺による鎖写像性の証明。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

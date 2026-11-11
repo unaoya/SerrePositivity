@@ -48,7 +48,7 @@ abbrev baseReverseIso : reverse (OrdinaryBarDiagonalHomAugmentation.baseHom C X 
   NatIso.ofComponents (fun _ => Iso.refl _) (by intro n m θ; rfl)
 
 lemma augmentation_factorization : OrdinaryBarSourceHom.augmentation C X Y =
-    (doubleIso (UniverseLift.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y))).inv ≫
+    (doubleIso (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y))).inv ≫
       reverseMap (OrdinaryBarSourceExtraDegeneracy.augmented C X Y).hom ≫
         (baseReverseIso C X Y).hom := by
   ext n f

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedBar
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar
 public import SerrePositivity.EInfinity.FrameHom.ThomasonSimplex
 
 /-!
@@ -22,7 +22,7 @@ open CategoryTheory Opposite
 variable {W : Type u} [Category.{u} W]
   (F : Wᵒᵖ ⥤ Cat.{u, u}) (S : W ⥤ Type u)
 
-abbrev labels (n : ℕ) := TwoSidedElements.Element (FrameHom.Thomason.values F n) S
+abbrev labels (n : ℕ) := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.Element (FrameHom.Thomason.values F n) S
 
 variable {n : ℕ} (e : ComposableArrows (labels F S n) n)
 

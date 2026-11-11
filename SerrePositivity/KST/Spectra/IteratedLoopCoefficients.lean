@@ -25,24 +25,24 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7。高次数を成分へ下げる係数。 -/
 def iteratedLoopSpace : ℕ → PointedSimplicialSet.{u} → PointedSimplicialSet.{u}
   | 0, Y => Y
-  | r + 1, Y => iteratedLoopSpace r (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)
+  | r + 1, Y => iteratedLoopSpace r (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)
 
 instance iteratedLoopSpace_kanComplex (r : ℕ) (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] : KanComplex (iteratedLoopSpace r Y).right := by
   induction r generalizing Y with
   | zero => exact inferInstanceAs (KanComplex Y.right)
-  | succ r ih => exact ih (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)
+  | succ r ih => exact ih (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)
 
 /-- 概要：反復 loop の正次数群を元の係数の高次群へ戻す。
 方針：通常の loop の群同型を反復回数について合成する。
 規約：始域の実際の次数は q+1、終域は q+r+1。
 使われ方：Goerss–Jardine I §7。反復した係数の次数の管理。 -/
 def iteratedLoopGroupEquiv (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (q : ℕ) :
-    (r : ℕ) → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (iteratedLoopSpace r Y).right q
+    (r : ℕ) → _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (iteratedLoopSpace r Y).right q
         (iteratedLoopSpace r Y).basepoint ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (q + r) Y.basepoint
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (q + r) Y.basepoint
   | 0 => MulEquiv.refl _
-  | r + 1 => (iteratedLoopGroupEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) q r).trans
+  | r + 1 => (iteratedLoopGroupEquiv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) q r).trans
       (loopPositiveHomotopyEquiv Y (q + r))
 
 namespace SkeletalCellAttachment
@@ -56,10 +56,10 @@ def stageFiberIteratedLoopComponentEquiv (K : SSet.{u})
     (r : ℕ) →
       π₀ (UnbasedPointedMapping.stageFiber K
         (PointedObject.basedHom CirclePower.space.{u} (iteratedLoopSpace r Y)) n).right ≃
-          _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right r
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right r
             (UnbasedPointedMapping.stageFiber K Y n).basepoint
   | 0 => stageFiberLoopComponentEquiv K Y n
-  | r + 1 => (stageFiberIteratedLoopComponentEquiv K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n r).trans
+  | r + 1 => (stageFiberIteratedLoopComponentEquiv K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n r).trans
       (stageFiberLoopPositiveEquiv K Y n r).toEquiv
 
 /-- 概要：全正次数の既存の係数表示は反復 loop 値の成分係数と正符号で可換。
@@ -81,8 +81,8 @@ theorem stageFiberCoefficientEquiv_iteratedLoopComponent (K : SSet.{u})
   | succ r ih =>
     change stageFiberCoefficientEquiv K Y n (r + 1)
       (stageFiberLoopPositiveEquiv K Y n r
-        (stageFiberIteratedLoopComponentEquiv K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n r a)) s = _
-    rw [stageFiberCoefficientEquiv_loopPositive, ih (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)]
+        (stageFiberIteratedLoopComponentEquiv K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n r a)) s = _
+    rw [stageFiberCoefficientEquiv_loopPositive, ih (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)]
     rfl
 
 end SkeletalCellAttachment

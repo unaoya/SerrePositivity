@@ -28,7 +28,7 @@ def signedLoopSourceReversal :
 
 /-- 源の実際の反転は、全段・全基点で π 同型。 -/
 lemma signedLoopSourceReversal_levelwise (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((signedLoopSourceReversal X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((signedLoopSourceReversal X).app n).right :=
   cotensorPre_neg_one_levelwise X (n + 1)
 
 /-- 段依存の符号補正を源の構造射に入れた BF 対象。 -/
@@ -69,18 +69,18 @@ def signedLoopSourceTwistComparison :
 
 /-- 同じ源の twist 比較は全段・全基点で π 同型。 -/
 lemma signedLoopSourceTwistComparison_levelwise (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((signedLoopSourceTwistComparison X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((signedLoopSourceTwistComparison X).app n).right :=
   twistComparison_levelwise (tail (cotensor CirclePower.space.{u} X))
     (signedLoopSourceReversal X) (signedLoopSourceReversal_levelwise X) n
 
 /-- twist 後の生の射影は元の同じ BF 射影を各段に持つ。 -/
 lemma signedLoopSourceTwistRawProjection_levelwise (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((signedLoopSourceTwistRawProjection X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((signedLoopSourceTwistRawProjection X).app n).right :=
   cotensorProjection_piIsomorphism CirclePower.space.{u} X (n + 1)
 
 /-- BF 置換後の射影も全段・全基点で π 同型。 -/
 lemma signedLoopSourceTwistProjection_levelwise (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((signedLoopSourceTwistProjection X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((signedLoopSourceTwistProjection X).app n).right :=
   (KanSequence.replacementProjection_piIsomorphism
     (KanSequence.twist (signedLoopSourceReversal X)) n).comp
       (signedLoopSourceTwistRawProjection_levelwise X n)

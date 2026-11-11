@@ -29,10 +29,10 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 規約：辺や対象だけの比較で代用せず、hBF の存在仮定を取らない。
 使われ方：未完備 fibration から実 BF 正段の引き戻しへの接続。 -/
 def dgKappaSuppliedBFMultiSquareIso (r : ℕ) :
-    FunctorIso ((dgKappaNativeVerdierDiagram R D I).square ≫
-      coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} r))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((dgKappaNativeVerdierDiagram R D I).square ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} r))
       (dgKappaNativeCoherentBFSquare R D I ≫
-        coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1))) :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1))) :=
   (stableBoundaryQuotientKanIso r).precomp (dgKappaNativeVerdierDiagram R D I).square ≪≫
     (dgKappaNativeCoherentBFPositiveComparison R D I r).symm
 
@@ -41,10 +41,10 @@ def dgKappaSuppliedBFMultiSquareIso (r : ℕ) :
 規約：旧 BF 辺への変更や固定連結 K の Sp 引き戻し性は主張しない。
 使われ方：実 fiber 比較の同じ第一正段への受け渡し。 -/
 theorem dgKappaSuppliedBF_spaceEvaluation_isPullback (r : ℕ)
-    (hS : IsPullbackSquare ((dgKappaNativeVerdierDiagram R D I).square ≫
-      coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} r))) :
-    IsPullbackSquare (dgKappaNativeCoherentBFSquare R D I ≫
-      coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1))) :=
+    (hS : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare ((dgKappaNativeVerdierDiagram R D I).square ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} r))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (dgKappaNativeCoherentBFSquare R D I ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1))) :=
   hS.of_functorIso (dgKappaSuppliedBFMultiSquareIso R D I r)
 
 /-- 概要：実供給 BF 四辺の π 全単射性は旧 K 射の同じ性質と同値。
@@ -95,11 +95,11 @@ theorem dgKappaSuppliedBFArrow_injective_iff (e : Fin 4) (j : ℤ) :
 使われ方：新 coherent BF 四辺と旧 K-cof の直接の接続。 -/
 theorem dgKappaSuppliedBFArrow_cofinal
     (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-      F2.Idempotent.IsIdempotentCompletion f.val →
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
         (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
           Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
     (e : Fin 4)
-    (hf : F2.Idempotent.IsIdempotentCompletion
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion
       (sInputExactMap (dgKappaNativeBFFiniteNativeArrow R D I e).hom.hom).val) :
     (∀ j : ℤ, 0 < j → Function.Bijective
       (OmegaSpectrum.homotopyMap (dgKappaNativeCoherentBFArrow R D I e).hom j)) ∧

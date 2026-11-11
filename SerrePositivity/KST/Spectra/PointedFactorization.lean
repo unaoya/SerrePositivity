@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.MonoRightHomotopyEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
 
 /-!
@@ -109,8 +109,8 @@ instance middle_kanComplex {X Y : PointedSimplicialSet.{u}} [KanComplex Y.right]
 規約：零次数を含む全基点の比較。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。cofibrant 置換の段ごとの比較。 -/
 theorem right_piIsomorphism {X Y : PointedSimplicialSet.{u}} [KanComplex Y.right]
-    (f : X ⟶ Y) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (right f).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight (right f).right (right_rlp f)
+    (f : X ⟶ Y) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (right f).right :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight (right f).right (right_rlp f)
 
 end
 

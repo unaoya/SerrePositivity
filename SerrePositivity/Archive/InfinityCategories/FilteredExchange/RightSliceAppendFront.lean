@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentRightSliceAppendEdge
-public import SerrePositivity.InfinityCategories.Core.JoinCurryHomExt
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionSquareEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.JoinCurryHomExt
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionSquareEvaluation
 
 /-!
 概要：指定射を追加した全錐族の始端側の面は、元の全錐族そのもの。

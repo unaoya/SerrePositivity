@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.ArrowContext
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.MixedChoiceFunctor
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveFillerExtension
-public import SerrePositivity.InfinityCategories.Kan.FiberFunctorReindex
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctorReindex
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveCoherentReindex
 
 /-!
@@ -89,7 +89,7 @@ def basepoint : (Functor.const (Index C)).obj
     exact h.symm
 
 /-- Small actual fibers for every framed source, target resolution and center simultaneously. -/
-abbrev fibers : Index C ⥤ SSet.{v} := FiberFunctor.functor (rawProjection C) (basepoint C)
+abbrev fibers : Index C ⥤ SSet.{v} := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.functor (rawProjection C) (basepoint C)
 
 /-- No change of coordinates is needed at an object: this is the original lift space. -/
 def fiberIso (q : Index C) : (fibers C).obj q ≅
@@ -98,19 +98,19 @@ def fiberIso (q : Index C) : (fibers C).obj q ≅
 @[reassoc (attr := simp)]
 lemma fiberIso_inclusion (q : Index C) : (fiberIso C q).hom ≫
     ResolutionLiftSpace.inclusion (source C q).inner (target C q) (arrow C q) =
-      (FiberFunctor.inclusion (rawProjection C) (basepoint C)).app q := Category.id_comp _
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.inclusion (rawProjection C) (basepoint C)).app q := Category.id_comp _
 
 @[reassoc (attr := simp)]
 lemma fiberIso_projection (q : Index C) : (fiberIso C q).hom ≫
     ResolutionLiftSpace.projection (source C q).inner (target C q) (arrow C q) =
-      (FiberFunctor.projection (rawProjection C) (basepoint C)).app q := Category.id_comp _
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.projection (rawProjection C) (basepoint C)).app q := Category.id_comp _
 
 /-- The universal lift maps cover the actual raw frame/target transport. -/
 @[reassoc]
 lemma map_inclusion {q r : Index C} (f : q ⟶ r) :
-    (fibers C).map f ≫ (FiberFunctor.inclusion (rawProjection C) (basepoint C)).app r =
-      (FiberFunctor.inclusion (rawProjection C) (basepoint C)).app q ≫
-        MixedChoiceFunctor.rawPairs.map f.hom := FiberFunctor.map_fst _ _ f
+    (fibers C).map f ≫ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.inclusion (rawProjection C) (basepoint C)).app r =
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.inclusion (rawProjection C) (basepoint C)).app q ≫
+        MixedChoiceFunctor.rawPairs.map f.hom := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.map_fst _ _ f
 
 /-- Embed every fixed-center external context in the universal changing-center index. -/
 def fromContext (X : FramedResolution C) (W : ResolutionObject C) (g : X.inner.base ⟶ W.base) :
@@ -144,8 +144,8 @@ lemma fromContext_basepoint (X : FramedResolution C) (W : ResolutionObject C)
 def fromContextIso (X : FramedResolution C) (W : ResolutionObject C)
     (g : X.inner.base ⟶ W.base) :
     fromContext C X W g ⋙ fibers C ≅ MixedChoiceFunctor.fibers X W g :=
-  FiberFunctor.reindex (rawProjection C) (basepoint C) (fromContext C X W g) ≪≫
-    FiberFunctor.congrPoint _ _ _ (fromContext_basepoint C X W g)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctorReindex.reindex (rawProjection C) (basepoint C) (fromContext C X W g) ≪≫
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctorReindex.congrPoint _ _ _ (fromContext_basepoint C X W g)
 
 /-- Any actual strict lift can still be prescribed as the original point. -/
 def selectedPoint (q : Index C) : SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0) ⟶
@@ -157,11 +157,11 @@ variable [ModelCategory SSet.{v}]
 
 include hcof in
 lemma projection_trivialFibration (q : Index C) : trivialFibrations SSet.{v}
-    ((FiberFunctor.projection (rawProjection C) (basepoint C)).app q) :=
+    ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.projection (rawProjection C) (basepoint C)).app q) :=
   ResolutionLiftSpace.projection_trivialFibration hcof _ _ _
 
 include hcof in
-lemma fillers (q : Index C) : UniverseLift.BoundaryFillers ((fibers C).obj q) :=
+lemma fillers (q : Index C) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers ((fibers C).obj q) :=
   fun n a => ResolutionLiftSpace.extension hcof _ _ _ (SSet.boundary n).ι a
 
 /-- One whole coherent choice for all centers, retaining every given independent lift point. -/

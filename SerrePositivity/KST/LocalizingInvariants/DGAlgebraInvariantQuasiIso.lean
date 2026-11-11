@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R]
 
 
-variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+variable (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
 
 lemma IsKConnective.quasiIso_value_isIso {k : ℤ} (h : IsKConnective R Φ k)
     {B C : Mon (Complex R)} (hB : IsConnective R B) (hC : IsConnective R C)

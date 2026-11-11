@@ -24,25 +24,25 @@ variable {C : Type u} [Category.{u} C] {W : MorphismProperty C} {Y : Paths C}
 
 def map (θ : n ⟶ m) {X : Paths C} : MarkedSpine W Y n X → MarkedSpine W Y m X
   | .nil X p => .nil X ((AllMarked.nativeSpace W X Y).map θ p)
-  | .cons X g p t => .cons X g ((FactorTarget.left W X g.val).map θ p) (map θ t)
+  | .cons X g p t => .cons X g ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).map θ p) (map θ t)
 
 lemma map_id {X : Paths C} (t : MarkedSpine W Y n X) : map (𝟙 n) t = t := by
   induction t with
   | nil X p => exact congrArg (nil X) ((AllMarked.nativeSpace W X Y).map_id_apply n p)
   | cons X g p t ih =>
-    change cons X g ((FactorTarget.left W X g.val).map (𝟙 n) p) (map (𝟙 n) t) = _
+    change cons X g ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).map (𝟙 n) p) (map (𝟙 n) t) = _
     rw [ih]
-    exact congrArg (fun q => cons X g q t) ((FactorTarget.left W X g.val).map_id_apply n p)
+    exact congrArg (fun q => cons X g q t) ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).map_id_apply n p)
 
 lemma map_comp (θ : n ⟶ m) (φ : m ⟶ k) {X : Paths C} (t : MarkedSpine W Y n X) :
     map (θ ≫ φ) t = map φ (map θ t) := by
   induction t with
   | nil X p => exact congrArg (nil X) ((AllMarked.nativeSpace W X Y).map_comp_apply θ φ p)
   | cons X g p t ih =>
-    change cons X g ((FactorTarget.left W X g.val).map (θ ≫ φ) p) (map (θ ≫ φ) t) = _
+    change cons X g ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).map (θ ≫ φ) p) (map (θ ≫ φ) t) = _
     rw [ih]
     exact congrArg (fun q => cons X g q (map φ (map θ t)))
-      ((FactorTarget.left W X g.val).map_comp_apply θ φ p)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).map_comp_apply θ φ p)
 
 lemma word_map (θ : n ⟶ m) {X : Paths C} (t : MarkedSpine W Y n X) : (map θ t).word = t.word := by
   induction t with

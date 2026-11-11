@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 local instance homotopyEndCompositionSelfEnrichment :
     EnrichedOrdinaryCategory PointedSimplicialSet.{u} PointedSimplicialSet.{u} :=
@@ -27,13 +27,13 @@ lemma homotopyLimitIso_composition_component {I : Type u} [SmallCategory I]
     (X Y : OmegaSpectrum.{u})
     (D : I ⥤ KanSequence.{u}) (i : I) :
     pointedComposition X Y (KanSequence.homotopyLimit D) ≫ (homotopyLimitIso X D).hom ≫
-        end_.π (PointedWeightedEnd.diagram (bousfieldKanWeight I) (D ⋙ pointedFunctor X)) i =
+        end_.π (PointedWeightedEnd.diagram (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (D ⋙ pointedFunctor X)) i =
       (𝟙 (pointedSpace X Y.toKanSequence) ⊗ₘ
         ((homotopyLimitIso Y D).hom ≫
-          end_.π (PointedWeightedEnd.diagram (bousfieldKanWeight I) (D ⋙ pointedFunctor Y)) i)) ≫
-        _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map (pointedSpace X Y.toKanSequence)
-          (PointedObject.adjoin ((bousfieldKanWeight I).obj i)) (pointedSpace Y (D.obj i)) ≫
-          (ihom (PointedObject.adjoin ((bousfieldKanWeight I).obj i))).map
+          end_.π (PointedWeightedEnd.diagram (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (D ⋙ pointedFunctor Y)) i)) ≫
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.map (pointedSpace X Y.toKanSequence)
+          (PointedObject.adjoin ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I).obj i)) (pointedSpace Y (D.obj i)) ≫
+          (ihom (PointedObject.adjoin ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I).obj i))).map
             (pointedComposition X Y (D.obj i)) := by
   rw [homotopyLimitIso_hom_π, homotopyLimitIso_hom_π,
     ← Category.assoc, pointedComposition_post, Category.assoc]
@@ -46,7 +46,7 @@ lemma homotopyLimitIso_composition {I : Type u} [SmallCategory I]
     (X Y : OmegaSpectrum.{u}) (D : I ⥤ KanSequence.{u}) :
     pointedComposition X Y (KanSequence.homotopyLimit D) ≫ (homotopyLimitIso X D).hom =
       (𝟙 (pointedSpace X Y.toKanSequence) ⊗ₘ (homotopyLimitIso Y D).hom) ≫
-        weightedComposition X Y (bousfieldKanWeight I) D := by
+        weightedComposition X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D := by
   apply end_.hom_ext
   intro i
   conv_lhs => rw [Category.assoc]

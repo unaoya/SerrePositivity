@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 variable {I : Type u} [SmallCategory I]
 local instance homotopyCompositionCoefficientKan (X : OmegaSpectrum.{u})
@@ -27,7 +27,7 @@ local instance homotopyCompositionCoefficientKan (X : OmegaSpectrum.{u})
 def homotopyLimitPointedMappingComparison (X : OmegaSpectrum.{u})
     (D : I ⥤ OmegaSpectrum.{u}) :
     RawSpectrumMapping.pointedSpace X (homotopyLimit D).toKanSequence ⟶
-      PointedWeightedEnd.obj (bousfieldKanWeight I)
+      PointedWeightedEnd.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
         ((D ⋙ forgetToKan) ⋙ RawSpectrumMapping.pointedFunctor X) :=
   RawSpectrumMapping.pointedPost X (homotopyLimitProjection D) ≫
     (RawSpectrumMapping.homotopyLimitIso X (D ⋙ forgetToKan)).hom
@@ -45,7 +45,7 @@ lemma homotopyLimitPointedMappingComparison_composition (X Y : OmegaSpectrum.{u}
         homotopyLimitPointedMappingComparison X D =
       (𝟙 (RawSpectrumMapping.pointedSpace X Y.toKanSequence) ⊗ₘ
         homotopyLimitPointedMappingComparison Y D) ≫
-          RawSpectrumMapping.weightedComposition X Y (bousfieldKanWeight I) (D ⋙ forgetToKan) := by
+          RawSpectrumMapping.weightedComposition X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (D ⋙ forgetToKan) := by
   dsimp only [homotopyLimitPointedMappingComparison]
   rw [← Category.assoc, RawSpectrumMapping.pointedComposition_post,
     Category.assoc, RawSpectrumMapping.homotopyLimitIso_composition,

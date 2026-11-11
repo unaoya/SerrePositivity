@@ -12,6 +12,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 方針：有限な horn の写像を有限反復へ因子化し、二回の Ex の後の具体的な充填を余極限へ送る。
 規約：Moss 2020 Proposition 21。二重細分の充填候補と境界条件は本レーンで証明する。
 使われ方：有限極限を保ち単位が anodyne である Kan 置換。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

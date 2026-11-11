@@ -21,18 +21,18 @@ variable {A Q : SSet.{u}}
 
 lemma triangleThirdEdge_source (f : A ⟶ (ihom (Δ[2] : SSet.{u})).obj Q) :
     (f ≫ (pre (stdSimplex.δ (0 : Fin 3))).app Q) ≫
-        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       (f ≫ (pre (horn 2 0).ι).app Q) ≫ (pre horn₂₀.ι₀₁).app Q ≫
-        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
-  simp only [Category.assoc, stable_pre_evaluateFunctorAt]
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
+  simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt]
   rfl
 
 lemma triangleThirdEdge_target (f : A ⟶ (ihom (Δ[2] : SSet.{u})).obj Q) :
     (f ≫ (pre (stdSimplex.δ (0 : Fin 3))).app Q) ≫
-        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       (f ≫ (pre (horn 2 0).ι).app Q) ≫ (pre horn₂₀.ι₀₂).app Q ≫
-        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
-  simp only [Category.assoc, stable_pre_evaluateFunctorAt]
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
+  simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt]
   rfl
 
 lemma triangleThirdEdge_boundary_eq {f g : A ⟶ (ihom (Δ[2] : SSet.{u})).obj Q}

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotAlgebra
-public import SerrePositivity.InfinityCategories.Derived.DGQuasiEquivalenceNerve
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGQuasiEquivalenceNerve
 
 /-! # 元の商 End 代数の右加群用一対象圏と元の End の比較
 概要：構成した dg 代数の右加群用圏から、同じ元の商 End への全 Hom 恒等射を構成する。
@@ -18,7 +18,7 @@ local notation "K" => homObject R (Q) EndomorphismObject.point EndomorphismObjec
 
 /-- 右加群用の反転 End 代数の圏から元の対象への、全 Hom 恒等の実 dg 射。 -/
 def dgOdotEndAlgebraOppositeInclusion (D : Type v) [DGCategory R D] (x : D) :
-    DGFunctor R (dgAlgebraCategory R
+    DGFunctor R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R
       (LocalizingInvariants.dgEndAlgebra R Dᵒᵖ (Opposite.op x))) D where
   obj _ := x
   map _ _ := 𝟙 _
@@ -33,7 +33,7 @@ def dgOdotEndAlgebraOppositeInclusion (D : Type v) [DGCategory R D] (x : D) :
     rw [id_tensorHom_id, Category.comp_id, Category.id_comp, SymmetricCategory.symmetry_assoc]
 
 /-- 右加群の向きへ揃えた実代数の圏は、元の商 End を同じ全 Hom で回収する。 -/
-def dgOdotAlgebraToEnd : DGFunctor R (dgAlgebraCategory R (dgOdotAlgebra R d)) (Q) :=
+def dgOdotAlgebraToEnd : DGFunctor R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d)) (Q) :=
   dgOdotEndAlgebraOppositeInclusion R (Q) EndomorphismObject.point
 
 /-- 同じ代数の右加群用圏から元の商 End への実射は準同値。 -/
@@ -45,16 +45,16 @@ lemma dgOdotAlgebraToEnd_quasiEquivalence : QuasiEquivalence (dgOdotAlgebraToEnd
     intro n
     exact quasiIsoAt_of_isIso (𝟙 _) n
   · intro y
-    refine ⟨(toHomotopy R (dgAlgebraCategory R (dgOdotAlgebra R d))).obj
-      (ForgetEnrichment.of (Complex R) (Opposite.op DGAlgebraPoint.star)), ⟨?_⟩⟩
+    refine ⟨(toHomotopy R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d))).obj
+      (ForgetEnrichment.of (Complex R) (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star)), ⟨?_⟩⟩
     obtain ⟨y⟩ := y
     cases y using EndomorphismObject.rec
     exact Iso.refl _
 
 /-- 同じ実代数の右加群用圏と元の商 End の native nerve の実同値。 -/
 def dgOdotAlgebraEndNerveEquivalence :
-    QCatEquivalence (dgNerve R (dgAlgebraCategory R (dgOdotAlgebra R d))) (dgNerve R (Q)) :=
-  dgQuasiEquivalenceNerveEquivalence (dgOdotAlgebraToEnd R d)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d))) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (Q)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgQuasiEquivalenceNerveEquivalence (dgOdotAlgebraToEnd R d)
     (dgOdotAlgebraToEnd_quasiEquivalence R d)
 
 end SerrePositivity.KST.SConstruction

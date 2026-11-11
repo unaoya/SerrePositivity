@@ -24,7 +24,7 @@ def mcCarthyRhoFiberParameterMap (X : StableModel.{u}) {m : ℕ}
     cofiberSubobjectLeftFiber X a ⊗ Δ[1] ⟶ Δ[m] :=
   (β_ (cofiberSubobjectLeftFiber X a) (Δ[1] : SSet.{u})).hom ≫
     (Δ[1] ◁ simplexLeftFiberParameter
-      (objectSConstructionFunctor.map (cofiberStableSubobject X)) a) ≫ prismLastContraction m
+      (objectSConstructionFunctor.map (cofiberStableSubobject X)) a) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.prismLastContraction m
 
 /-- 概要：ρ の単体的な族は動かしたパラメーターの固定単体上にある。
 方針：図式への単射な対応で subobject の厳密回収を使う。
@@ -41,12 +41,12 @@ lemma mcCarthyRhoFiber_condition (X : StableModel.{u}) {m : ℕ}
   change gappedDiagram ((objectSConstructionFunctor.map (cofiberStableSubobject X)).app
     (Opposite.op ⦋n⦌) (mcCarthyRhoFiberObjectVertex X a e τ)) =
       gappedDiagram ((SSet.yonedaEquiv.symm a).app (Opposite.op ⦋n⦌)
-        ((prismLastContraction m).app (Opposite.op ⦋n⦌)
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.prismLastContraction m).app (Opposite.op ⦋n⦌)
           (τ, mcCarthyFiberParameter X a e)))
   rw [gappedDiagram_objectSFunctor_map, SSet.yonedaEquiv_symm_app,
     gappedDiagram_objectS_map, mcCarthyMovedOrder_simplex, mcCarthyRhoFiberObjectVertex_diagram]
   change mcCarthyRho _ _ _ _ _ _ ≫
-    (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ evaluateFunctorAt
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm 0) = _
   rw [← cofiberProjection_source]
   exact mcCarthyRho_source _ _ _ _ _ _

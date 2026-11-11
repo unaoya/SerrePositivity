@@ -20,13 +20,13 @@ universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
 open CategoryTheory SimplicialLocalization SerrePositivity.InfinityCategories
 open TwoSidedDiagram.FixedVertices
-variable (C : RelativeCategory.{u}) (w : Word) (X Y : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category)
 def freeBackwardFirstTargetObjectEquiv (n : SimplexCategoryᵒᵖ) : C.category ≃
-    (((Functor.const SimplexCategoryᵒᵖ).obj (backwardBackwardData C w X Y)).obj n).base :=
+    (((Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardData C w X Y)).obj n).base :=
   markedObjectEquiv C
 lemma freeBackwardFirstTargetObjectEquiv_naturality {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m)
     (Z : C.category) :
-    ((((Functor.const SimplexCategoryᵒᵖ).obj (backwardBackwardData C w X Y)).map θ).base.obj
+    ((((Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardData C w X Y)).map θ).base.obj
       (freeBackwardFirstTargetObjectEquiv C w X Y n Z)) = 
         freeBackwardFirstTargetObjectEquiv C w X Y m Z := rfl
 
@@ -37,7 +37,7 @@ def freeBackwardFirstSourceHomIso (U V : C.category) :
   NatIso.ofComponents (fun _ => Iso.refl _) (by intros; rfl)
 
 def freeBackwardFirstTargetHomIso (U V : C.category) :
-    homSpace ((Functor.const SimplexCategoryᵒᵖ).obj (backwardBackwardData C w X Y))
+    homSpace ((Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardData C w X Y))
       (freeBackwardFirstTargetObjectEquiv C w X Y) 
       (freeBackwardFirstTargetObjectEquiv_naturality C w X Y) U V ≅
     (Functor.const SimplexCategoryᵒᵖ).obj
@@ -63,14 +63,14 @@ lemma freeBackwardFirstSourceHomIso_augmentation (U V : C.category) :
         (freeBackwardFirstTargetHomIso C w X Y U V).hom := by
   ext n f
   apply WideSubcategory.hom_ext
-  change (eqToHom _ ≫ (markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map
+  change (eqToHom _ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map
     (eqToHom _ ≫ f ≫ eqToHom _) ≫ eqToHom _).hom =
-      (eqToHom _ ≫ (markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map f ≫
+      (eqToHom _ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map f ≫
         eqToHom _).hom
   simp only [Functor.map_comp, WideSubcategory.comp_def, marked_eqToHom_hom,
     eqToHom_map, Category.assoc, eqToHom_trans_assoc, eqToHom_trans]
 
 lemma freeBackwardFirstHomSpaceMap_weak (U V : C.category) :
-    IsWeakHomotopyEquivalence (freeBackwardFirstHomSpaceMap C w X Y U V) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeBackwardFirstHomSpaceMap C w X Y U V) := by
   exact freeFirstHomSpaceMap_weak C w X Y U V
 end SerrePositivity.EInfinity.Hammock.FirstColumn

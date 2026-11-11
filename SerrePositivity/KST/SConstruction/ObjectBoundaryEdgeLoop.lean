@@ -22,14 +22,14 @@ open scoped Simplicial
 lemma objectBoundaryEdge_loop (X : StableModel.{u})
     (e : (objectSConstruction X.carrier) _⦋1⦌) :
     (zeroRowLoopComparison 0 X).app _
-      (⟨e, SerrePositivity.InfinityCategories.quasicategoryCore_vertex
+      (⟨e, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_vertex
         (X := sConstruction 1 X.carrier) e⟩ : (coreSConstruction 1 X.carrier) _⦋0⦌) =
       PointedMapping.familyVertex
         ((SphereSimplex.equiv ((boundaryKanRealizationFunctor 0).obj X) 1).symm
           (objectBoundaryEdge X e)) := by
   let B := (boundaryKanRealizationFunctor 0).obj X
   let d : (coreSConstruction 1 X.carrier) _⦋0⦌ :=
-    ⟨e, SerrePositivity.InfinityCategories.quasicategoryCore_vertex
+    ⟨e, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_vertex
       (X := sConstruction 1 X.carrier) e⟩
   let a : (Δ[0] : SSet.{u}) ⟶ coreSConstruction 1 X.carrier := SSet.yonedaEquiv.symm d
   let t := (SphereSimplex.equiv B 1).symm (objectBoundaryEdge X e)
@@ -65,9 +65,9 @@ lemma objectBoundaryEdge_loop (X : StableModel.{u})
   have hh : a ≫ zeroRowLoopComparison 0 X = PointedMapping.pointFamily t := by
     apply loop_interval_hom_ext
     refine hp.trans (hs.trans (Eq.symm ?_))
-    change _ ≫ uncurry (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry PointedSimplicialSet.circle B
+    change _ ≫ uncurry (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry PointedSimplicialSet.circle B
       (fst PointedSimplicialSet.circle.right (Δ[0] : SSet.{u}) ≫ t.right) _ ≫ _) = _
-    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, uncurry_curry]
+    rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, uncurry_curry]
     have hf : (PointedObject.cofiberQuotient (boundary.{u} 1).ι ▷ (Δ[0] : SSet.{u})) ≫
         fst PointedSimplicialSet.circle.{u}.right (Δ[0] : SSet.{u}) =
       fst (Δ[1] : SSet.{u}) (Δ[0] : SSet.{u}) ≫

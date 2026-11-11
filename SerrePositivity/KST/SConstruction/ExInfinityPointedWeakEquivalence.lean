@@ -19,7 +19,7 @@ lemma exInfinityPointedKanMap_piIsomorphism_of_localized
     {X Y : PointedSSetObject.{u}} (f : X ⟶ Y)
     (hf : IsIso (AnodyneHomotopy.anodyneQ.map
       (show X.obj ⟶ Y.obj from f).right)) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (exInfinityPointedKanMap f).hom.right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (exInfinityPointedKanMap f).hom.right := by
   let Q := AnodyneHomotopy.anodyneQ
   let _ := hf
   let _ : IsIso (Q.map (exInfinityPointedUnit X).right) :=

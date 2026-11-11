@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：水平ステップの順位と挿入直後の第一座標を比較する。
 規約：KST Construction A.5、先頭・末尾・内部の水平境界を含む。
 使われ方：水平境界添字の同値と実境界和の並べ替え。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

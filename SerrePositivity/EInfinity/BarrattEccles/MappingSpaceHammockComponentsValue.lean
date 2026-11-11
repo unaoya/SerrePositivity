@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockLocalizationValue
-public import SerrePositivity.InfinityCategories.Kan.UniverseLiftPiZero
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.UniverseLiftPiZero
 
 /-!
 # 既存 Map^h の高次比較が誘導する π₀ 評価の正規化
@@ -29,7 +29,7 @@ def algebraReducedHammockPiZeroValue :
       ((weakEquivalences (operad A).Algebra).Q.obj X ⟶
         (weakEquivalences (operad A).Algebra).Q.obj Y) := by
   let := modelCategory A
-  exact PiZeroConstant.toComponents (algebraReducedHammockValue A X Y)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.toComponents (algebraReducedHammockValue A X Y)
 
 lemma mappingSpaceReducedHammockComponentsIso_value
     (z : SSet.π₀ (SSet.uliftFunctor.{u + 1, u}.obj (((mappingSpace A).obj (op X)).obj Y))) :
@@ -37,7 +37,7 @@ lemma mappingSpaceReducedHammockComponentsIso_value
     algebraReducedHammockPiZeroValue A X Y
         ((mappingSpaceReducedHammockComponentsIso A X Y).hom z) =
       mappingSpacePiZeroEquiv A (weakEquivalences (operad A).Algebra).Q (op X) Y
-        (UniverseLiftPiZero.down (((mappingSpace A).obj (op X)).obj Y) z) := by
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.down (((mappingSpace A).obj (op X)).obj Y) z) := by
   let := modelCategory A
   obtain ⟨⟨f⟩, rfl⟩ := SSet.π₀.mk_surjective z
   let k := ComposableArrows.mk₀ (show ULiftHom.{u + 1}
@@ -57,7 +57,7 @@ lemma algebraReducedHammockPiZeroValue_bijective :
     Function.Bijective (algebraReducedHammockPiZeroValue A X Y) := by
   let := modelCategory A
   let e := (mappingSpaceReducedHammockComponentsIso A X Y).toEquiv
-  let d := UniverseLiftPiZero.equiv.{u, u + 1} (((mappingSpace A).obj (op X)).obj Y)
+  let d := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.equiv.{u, u + 1} (((mappingSpace A).obj (op X)).obj Y)
   let h := mappingSpacePiZeroEquiv A (weakEquivalences (operad A).Algebra).Q (op X) Y
   have he : algebraReducedHammockPiZeroValue A X Y = fun z => h (d (e.symm z)) := by
     funext z

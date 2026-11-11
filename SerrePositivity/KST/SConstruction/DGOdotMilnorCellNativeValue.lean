@@ -14,29 +14,29 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "A" => DGSmallPerfectBase R (dgAlgebraCategory R (DGOdotInput.source d))
+local notation "A" => DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d))
 local notation "T" => DGCategoryCellResolution.Source R (A)
 local notation "B" => DGOdotGluing R d
-local notation "K" => resolvedDGQuotientThickFlatKernel R (B)
+local notation "K" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientThickFlatKernel R (B)
   (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d)))
 
 /-- 概要：元始域の cell 分解から同じ固定 ν 値への指定同値。
 方針：同じ実 Yoneda 比較に native 完備性を適用する。
 規約：増大屋根の元の cell 始域を保持する。使われ方：始域比較面の左頂点。 -/
-def dgOdotMilnorSourceCellNativeValueEquivalence : QCatEquivalence (dgNerve R (T))
+def dgOdotMilnorSourceCellNativeValueEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (T))
     (dgKInputStableValue R (dgOdotMilnorSourceCellInput R d)).obj := by
-  letI : IsDGPretriangulated R (A) := dgGluingMilnorSource_isDGPretriangulated R d
-  letI : IsDGPretriangulated R (T) := dgCellResolutionSource_isDGPretriangulated R (A)
+  letI : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (A) := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorSource_isDGPretriangulated R d
+  letI : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (T) := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolutionSource_isDGPretriangulated R (A)
   exact (dgKNativeValueComparison_isQCatEquivalence R (T)
     (dgOdotMilnorSourceCell_complete R d)).choose
 
 /-- 概要：同じ thick 平坦核から同じ固定 ν 値への指定同値。
 方針：Milnor 条件から得た native 完備性と前三角性を使用する。
 規約：thick 核の全対象を保つ。使われ方：元始域回収と実零化面の左頂点。 -/
-def dgOdotMilnorSourceKernelNativeValueEquivalence (h : DGGluingMilnorSquare R d) :
-    QCatEquivalence (dgNerve R (K))
+def dgOdotMilnorSourceKernelNativeValueEquivalence (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (K))
       (dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)).obj := by
-  letI : IsDGPretriangulated R (K) := dgOdotMilnorSourceKernel_isDGPretriangulated R d h
+  letI : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (K) := dgOdotMilnorSourceKernel_isDGPretriangulated R d h
   exact (dgKNativeValueComparison_isQCatEquivalence R (K)
     (dgOdotMilnorSourceKernel_complete R d h)).choose
 
@@ -44,11 +44,11 @@ def dgOdotMilnorSourceKernelNativeValueEquivalence (h : DGGluingMilnorSquare R d
 方針：実 gluing の完備性と cell 増大の同値を使用する。
 規約：商射影の始域を保持する。使われ方：実零化面の中央頂点。 -/
 def dgOdotMilnorCellMiddleNativeValueEquivalence :
-    QCatEquivalence (dgNerve R (DGCategoryCellResolution.Source R (B)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGCategoryCellResolution.Source R (B)))
       (dgKInputStableValue R (dgOdotMilnorCellInput R d)).obj := by
-  letI : IsDGPretriangulated R (B) := dgGluingMilnor_isDGPretriangulated R d
-  letI : IsDGPretriangulated R (DGCategoryCellResolution.Source R (B)) :=
-    dgCellResolutionSource_isDGPretriangulated R (B)
+  letI : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (B) := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnor_isDGPretriangulated R d
+  letI : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (DGCategoryCellResolution.Source R (B)) :=
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolutionSource_isDGPretriangulated R (B)
   exact (dgKNativeValueComparison_isQCatEquivalence R
     (DGCategoryCellResolution.Source R (B)) (dgOdotMilnorCellMiddle_complete R d)).choose
 

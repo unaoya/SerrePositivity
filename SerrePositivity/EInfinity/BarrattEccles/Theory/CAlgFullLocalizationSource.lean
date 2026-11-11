@@ -35,7 +35,7 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 /-- 全代数の相対圏。弱同値は同じ底の擬同型。 -/
-def allAlgebraRelativeCategory : RelativeCategory.{u + 1} where
+def allAlgebraRelativeCategory : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u + 1} where
   category := Cat.of (ULiftHom.{u + 1} (operad A).Algebra)
   weakEquivalences := (quasiIso (ModuleCat A) (.up ℤ)).inverseImage
     ((ULiftHom.down.{u, u + 1, u + 1} (C := (operad A).Algebra)) ⋙
@@ -76,7 +76,7 @@ def allAlgebraCAlgSource : nerve (allAlgebraRelativeCategory A).category ⟶ CAl
 
 /-- 全代数からの源も、同じ CAlg を局所化として実現する。 -/
 lemma allAlgebraCAlgSource_isLocalization :
-    IsLocalization (allAlgebraCAlgSource A) (weakNerveEdges (allAlgebraRelativeCategory A)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (allAlgebraCAlgSource A) (weakNerveEdges (allAlgebraRelativeCategory A)) := by
   let C := cofibrantAlgebraRelativeCategory A
   let B := allAlgebraRelativeCategory A
   let I : LocalizerMorphism C.weakEquivalences B.weakEquivalences :=
@@ -90,10 +90,10 @@ lemma allAlgebraCAlgSource_isLocalization :
     framedLimitProbeComparison_quasiIso A ((allAlgebraDKDown A).obj X)
   have hθ (X : C.category) : C.weakEquivalences (θ.app X) :=
     framedLimitProbeComparison_quasiIso A ((cofibrantAlgebraDKInclusion A).obj X)
-  exact isLocalization_of_weakDeformation
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_of_weakDeformation
     (nerveMap I.functor) (nerveMap P.functor) (cAlgLocalizationSource A)
     (weakNerveEdges C) (weakNerveEdges B) (relativeNerve_mapsWeak I) (relativeNerve_mapsWeak P)
-    (F1B.nerveNatTransHomotopy η) (F1B.nerveNatTransHomotopy θ)
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy η) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy θ)
     (relativeNerve_homotopy_component_weak η hη)
     (relativeNerve_homotopy_component_weak θ hθ) (cAlgLocalizationSource_isLocalization A)
 

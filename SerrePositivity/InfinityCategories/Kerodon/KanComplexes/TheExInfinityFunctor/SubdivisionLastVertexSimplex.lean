@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：制限 Yoneda 随伴の Hom 同値の成分の式を使う。
 規約：Moss 2020 §3 の標準単体の最終頂点と全対象の写像の整合。
 使われ方：二重細分から horn への候補の境界の計算。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

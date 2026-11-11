@@ -57,7 +57,7 @@ theorem monoidVertexNerveKanMap_point (M : SimplicialObject MonCat.{u}) :
 -/
 def monoidBarVertexLoop (M : SimplicialObject MonCat.{u}) (a : M.obj (op ⦋0⦌)) :
     (monoidBarKanPointed M).right.PtSimplex 1 (monoidBarKanPointed M).basepoint :=
-  _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (monoidVertexNerveKanMap M) (monoidVertexNerveKanMap_point M)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (monoidVertexNerveKanMap M) (monoidVertexNerveKanMap_point M)
     (monoidNerveLoop (M.obj (op ⦋0⦌)) a)
 
 /--

@@ -27,7 +27,7 @@ def endpointFixedCylinderLiftData (H : EndpointFixedEdgeCylinder (a.map p) (b.ma
       ((SSet.boundary 1).ι ≫ SSet.yonedaEquiv.symm a.edge)
       ((SSet.boundary 1).ι ≫ SSet.yonedaEquiv.symm b.edge) :=
     familyHomotopyEndpointTransport
-      (functorHomotopyRefl ((SSet.boundary 1).ι ≫ SSet.yonedaEquiv.symm a.edge)) rfl
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl ((SSet.boundary 1).ι ≫ SSet.yonedaEquiv.symm a.edge)) rfl
       (parallelEdge_boundary_eq a b)
   have hA : A.h = fst (SSet.boundary 1).toSSet Δ[1] ≫
       (SSet.boundary 1).ι ≫ SSet.yonedaEquiv.symm a.edge :=

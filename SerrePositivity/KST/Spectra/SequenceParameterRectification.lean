@@ -43,7 +43,7 @@ lemma rectifyParameter_evaluation (n : ℕ) :
     cotensorComparison_evaluation]
   dsimp only [exchangeFamily]
   rw [← Category.assoc, homPoint_evaluation]
-  exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry'_hom _
+  exact _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeVertices.curry'_hom _
 
 /-- 全パラメータの修正後の座標は、元の指定した全パラメータの座標と同じ成分。 -/
 lemma rectifyParameter_evaluation_component (n : ℕ) :
@@ -63,7 +63,7 @@ lemma rectifyParameter_evaluation_homotopy (n : ℕ) :
           (PointedObject.basedHom (X.level n).space (Y.level n).space).hom := by
   let parameterTargetKan :
       KanComplex (PointedObject.basedHom (X.level n).space (Y.level n).space).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact (PointedMapping.piZero_eq_iff_pointedHomotopy _ _).1
     (rectifyParameter_evaluation_component X Y A f hf n)
 

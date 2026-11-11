@@ -24,7 +24,7 @@ lemma zeroRowLoopComparison_terminalFactor (r : ℕ) (X : StableModel.{u}) :
       (loopToTerminalPathHomotopyFiber (pointedFullIteratedPathKanBoundary r X)).right =
         zeroRowTerminalLoopFiberComparison r X := by
   let f := pointedFullIteratedPathKanBoundary r X
-  apply (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback
+  apply (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback
     (terminalPathStart ((boundaryKanRealizationFunctor r).obj X)) f).hom_ext
   · rw [Category.assoc, ← Under.comp_right, loopToTerminalPathHomotopyFiber_path]
     change _ = terminalPathFamilyFiberMap f (zeroRowPathContraction r X) _ ≫ _
@@ -35,7 +35,7 @@ lemma zeroRowLoopComparison_terminalFactor (r : ℕ) (X : StableModel.{u}) :
   · have hp := congrArg Under.Hom.right (loopToTerminalPathHomotopyFiber_projection f)
     change (loopToTerminalPathHomotopyFiber f).right ≫
       (pullback.snd (terminalPathStart ((boundaryKanRealizationFunctor r).obj X)) f).right =
-        (0 : _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((boundaryKanRealizationFunctor r).obj X) ⟶
+        (0 : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((boundaryKanRealizationFunctor r).obj X) ⟶
           ((pointedIteratedPathKanFunctor r).obj X)).right at hp
     rw [Category.assoc, hp, PointedObject.zero_right, ← Category.assoc,
       comp_toUnit, zeroRowTerminalLoopFiberComparison_projection]

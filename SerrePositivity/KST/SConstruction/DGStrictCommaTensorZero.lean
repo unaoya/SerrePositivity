@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.Gluing.TensorPrimitiveTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.TensorPrimitiveTransport
 
 /-! # 指定した比較零元の tensor 合成における保存
 概要：元の全比較 cochain を消す二つの実鎖写像は、tensor 合成後も同じ比較を零にする。
@@ -21,7 +21,7 @@ lemma dgStrictCommaTensorRight_zero {P H Q J T U : Complex R} (n : ℤ)
     (Cochain.ofHom (a ⊗ₘ b)).comp
       (((tensorRightHom J H T).f n h).comp (Cochain.ofHom m) (add_zero n))
       (zero_add n) = 0 := by
-  have ht := dgGluingTensorRightPrimitive_transport n a b (𝟙 T) (𝟙 U)
+  have ht := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingTensorRightPrimitive_transport n a b (𝟙 T) (𝟙 U)
     (0 : Cochain P T n) h ((𝟙 T ⊗ₘ b) ≫ m) m
     (by simpa only [Cochain.zero_comp] using hh) (Category.comp_id _).symm
   simpa only [map_zero, Cochain.zero_comp] using ht
@@ -33,7 +33,7 @@ lemma dgStrictCommaTensorLeft_zero {P H Q J T U : Complex R} (n : ℤ)
     (Cochain.ofHom (a ⊗ₘ b)).comp
       (((tensorLeftHom H J T).f n h).comp (Cochain.ofHom m) (add_zero n))
       (zero_add n) = 0 := by
-  have ht := dgGluingTensorLeftPrimitive_transport n a b (𝟙 T) (𝟙 U)
+  have ht := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingTensorLeftPrimitive_transport n a b (𝟙 T) (𝟙 U)
     (0 : Cochain Q T n) h ((a ⊗ₘ 𝟙 T) ≫ m) m
     (by simpa only [Cochain.zero_comp] using hh) (Category.comp_id _).symm
   simpa only [map_zero, Cochain.zero_comp] using ht

@@ -66,7 +66,7 @@ lemma d3TensorParameter_arrow {p q : J × K} (h : p ≤ q) :
 
 /-- 二つの全パラメータと元の Kan 入力 Hom を同時に保持する実豊穣関手。 -/
 def d3TensorParameterDiagram :
-    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (J × K) PointedKanObject.{u})
+    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object (J × K) PointedKanObject.{u})
       PointedKanObject.{u} :=
   d3PointedKanParameterDiagram (d3TensorParameter D E)
 

@@ -27,7 +27,7 @@ lemma cubicalDaySerre_cotensorator (X Y : CubicalDaySet.{u}) :
 /-- 単位射は元の単位生成 cell の同じ鎖射。 -/
 lemma cubicalDaySerre_unit :
     Functor.LaxMonoidal.ε (cubicalDaySerreChains A) =
-      cubicalSerreCell A (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) cubicalDayUnitCell := rfl
+      cubicalSerreCell A (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0) cubicalDayUnitCell := rfl
 
 /-- 逆単位射は元の Day 単位上の同じ Serre 増大。 -/
 lemma cubicalDaySerre_counit :
@@ -37,7 +37,7 @@ lemma cubicalDaySerre_counit :
 
 /-- 元の全ての両 cell 上で tensorator は同じ Serre 組み立てを回収する。 -/
 lemma cubicalDaySerre_tensorator_cell {K L : CubicalSet.{u}}
-    (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
+    (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
     (cubicalSerreCell A c x ⊗ₘ cubicalSerreCell A d y) ≫
         Functor.LaxMonoidal.μ (cubicalDaySerreChains A) (DayFunctor.mk K) (DayFunctor.mk L) =
       cubicalSerreDayAssembly A c d x y :=
@@ -45,7 +45,7 @@ lemma cubicalDaySerre_tensorator_cell {K L : CubicalSet.{u}}
 
 /-- 元の全連結 cell 上で cotensorator は同じ元の両鎖射の比較を回収する。 -/
 lemma cubicalDaySerre_cotensorator_cell {K L : CubicalSet.{u}}
-    (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
+    (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
     cubicalSerreCell A (concreteCubeTensorObj c d) (cubicalDayTensorCell c d x y) ≫
         Functor.OplaxMonoidal.δ (cubicalDaySerreChains A) (DayFunctor.mk K) (DayFunctor.mk L) =
       cubicalSerreDayPair A c d x y :=

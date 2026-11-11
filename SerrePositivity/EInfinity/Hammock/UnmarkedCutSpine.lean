@@ -23,9 +23,9 @@ variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) (Y : Paths C)
   (n : SimplexCategoryᵒᵖ)
 
 inductive Spine : Paths C → Type u
-  | nil (X : Paths C) (x : (colimitGraph W.paths X Y).obj n)
+  | nil (X : Paths C) (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n)
       (empty : (colimitValue W X Y).app n x = []) : Spine X
-  | cons (X : Paths C) (g : FactorTarget.Index W) (p : (FactorTarget.left W X g.val).obj n)
+  | cons (X : Paths C) (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).obj n)
       (tail : Spine g.val.right) : Spine X
 
 variable {W Y n}
@@ -36,7 +36,7 @@ def Spine.word {X : Paths C} : Spine W Y n X → List (Quiver.Total C)
 
 variable (W Y n)
 
-def spineWithValue (X : Paths C) (x : (colimitGraph W.paths X Y).obj n) :
+def spineWithValue (X : Paths C) (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n) :
     {t : Spine W Y n X // t.word = (colimitValue W X Y).app n x} :=
   cutRec W Y n (fun X x => {t : Spine W Y n X // t.word = (colimitValue W X Y).app n x})
     (fun X x hx => ⟨Spine.nil X x hx, hx.symm⟩)
@@ -45,14 +45,14 @@ def spineWithValue (X : Paths C) (x : (colimitGraph W.paths X Y).obj n) :
       (congrArg (List.cons ((nonemptyCut W X Y).app n x).1.val) t.property).trans
         (nonemptyCut_value W x).symm⟩) X x
 
-def spine (X : Paths C) (x : (colimitGraph W.paths X Y).obj n) : Spine W Y n X :=
+def spine (X : Paths C) (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n) : Spine W Y n X :=
   (spineWithValue W Y n X x).val
 
-lemma spine_word (X : Paths C) (x : (colimitGraph W.paths X Y).obj n) :
+lemma spine_word (X : Paths C) (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n) :
     (spine W Y n X x).word = (colimitValue W X Y).app n x :=
   (spineWithValue W Y n X x).property
 
-lemma spine_empty (X : Paths C) (x : (colimitGraph W.paths X Y).obj n)
+lemma spine_empty (X : Paths C) (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n)
     (hx : (colimitValue W X Y).app n x = []) : spine W Y n X x = Spine.nil X x hx := by
   unfold spine spineWithValue
   rw [cutRec_empty W Y n _ _ _ X x hx]

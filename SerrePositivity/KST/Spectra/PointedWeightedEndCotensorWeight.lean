@@ -49,7 +49,7 @@ lemma cotensorIso_preMap (A : PointedSimplicialSet.{u})
   conv_rhs =>
     rw [Category.assoc, preMap_π, ← Category.assoc, cotensorIso_π, Category.assoc]
   apply congrArg (fun t ↦ (ihom A).map (end_.π (diagram V D) i) ≫ t)
-  exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_right A (PointedObject.adjoinFunctor.map (θ.app i))
+  exact _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeSecondSource.natural_pre_right A (PointedObject.adjoinFunctor.map (θ.app i))
     (D.obj i)
 
 end

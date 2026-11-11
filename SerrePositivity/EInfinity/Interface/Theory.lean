@@ -5,14 +5,14 @@ public import Mathlib.Algebra.Homology.Embedding.CochainComplex
 public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 public import SerrePositivity.EInfinity.Interface.Core
 public import SerrePositivity.EInfinity.Interface.StrictInputs
-public import SerrePositivity.InfinityCategories.Derived.BaseChange
-public import SerrePositivity.InfinityCategories.Derived.Tensor.Fixed
-public import SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluation
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
-public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedColimitPreservation
-public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.Fixed
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.Adjunction
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.NativeConeLeg
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.SiftedColimitPreservation
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoproductCocone
 
 /-!
 # BS が使う E∞ 代数の界面
@@ -37,7 +37,7 @@ universe u v w
 
 open CategoryTheory CategoryTheory.Limits SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped Simplicial
 namespace SerrePositivity.EInfinity
 
@@ -48,8 +48,8 @@ abbrev hoMap {X Y : SSet.{u}} (F : X ⟶ Y) := (hoFunctor.map F).toFunctor
 
 /-- 余鎖次数 i のホモロジーを通常のホモトピー圏上で取る。 -/
 abbrev cohomologyOnHo (S : Type u) [CommRing S] (i : ℤ) :=
-  (homotopyCategoryBridge (derivedInfinityCategory S)).inverse ⋙
-    derivedInfinityHomologyFunctor S i
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S)).inverse ⋙
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyFunctor S i
 
 /-- 係数制限で比較するホモロジーの台の可換群。 -/
 abbrev additiveCohomologyOnHo (S : Type u) [CommRing S] (i : ℤ) :=
@@ -71,7 +71,7 @@ abbrev CosimplicialCDGA (S : Type u) [CommRing S] :=
 /-- 交代余面複体を整数次数に零延長する。 -/
 def cosimplicialCochains (S : Type u) [CommRing S] :
     CosimplicialRingAlgebra S ⥤ Complex S :=
-  (Functor.whiskeringRight SimplexCategory _ _).obj (discreteAlgebraModule S) ⋙
+  (Functor.whiskeringRight SimplexCategory _ _).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule S) ⋙
     AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat S) ⋙
     ComplexShape.embeddingUpNat.extendFunctor (ModuleCat S)
 
@@ -82,7 +82,7 @@ def ordinaryToHoNerve (A : Type (u + 1)) [Category.{u} A] :
   map f := SSet.HomotopyCategory.homMk (nerve.edgeMk f)
   map_id x := by
     rw [nerve.edgeMk_id]
-    exact SSet.HomotopyCategory.homMk_id (X := nerve A) (nerveVertex x)
+    exact SSet.HomotopyCategory.homMk_id (X := nerve A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex x)
   map_comp f g := by
     obtain ⟨h⟩ := (nerve.nonempty_compStruct_iff f g (f ≫ g)).mpr rfl
     exact (SSet.HomotopyCategory.homMk_comp_homMk h).symm
@@ -97,35 +97,35 @@ def cosimplicialNerve {A : Type w} [Category.{v} A]
 /-- 指定関手の頂点を頂点に持つ Δ 上の極限錐。 -/
 abbrev TotalizationCone {X : SSet.{u + 1}}
     (D : (SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategory) ⟶ X) (x : X _⦋0⦌) :=
-  { c : JoinCone D // c.vertex = x ∧ IsLimitCone c }
+  { c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone D // c.vertex = x ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c }
 
 /-- BS 著者版 §7–8 に必要な E∞ 代数のデータと比較。 -/
 structure EInfinityTheory extends EInfinityCore.{u} where
   forget_conservative (S : Type u) [CommRing S]
       {x y : (CAlg S) _⦋0⦌} (e : SSet.Edge x y) :
-    IsInvertibleEdge (e.map (forget S)).toTruncated → IsInvertibleEdge e.toTruncated
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (e.map (forget S)).toTruncated → _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge e.toTruncated
   forget_preservesSifted (S : Type u) [CommRing S] :
-    PreservesSmallSiftedColimits (forget S)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallSiftedColimits (forget S)
   presentable (S : Type u) [CommRing S] :
-    @F2.Presentable.IsPresentable (CAlg S) (quasicategory S)
+    @_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (CAlg S) (quasicategory S)
   coprodWith (S : Type u) [CommRing S] (y : (CAlg S) _⦋0⦌) : CAlg S ⟶ CAlg S
   coprodWith_cocone (S : Type u) [CommRing S] (x y : (CAlg S) _⦋0⦌) :
-    { c : JoinCocone (binaryPointDiagram x y) //
-      c.vertex = atVertex (coprodWith S y) x ∧ IsColimitCone c }
+    { c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram x y) //
+      c.vertex = atVertex (coprodWith S y) x ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c }
   coproduct_tensor (S : Type u) [CommRing S] (y : (CAlg S) _⦋0⦌) :
-    FunctorIso (coprodWith S y ≫ forget S) (forget S ≫ tensorWith (atVertex (forget S) y))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (coprodWith S y ≫ forget S) (forget S ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.tensorWith (atVertex (forget S) y))
   discrete_initial (S : Type u) [CommRing S] :
     letI := quasicategory S
-    IsInitialVertex (atVertex (discrete S)
-      (nerveVertex (Under.mk (𝟙 (CommRingCat.of S)))))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (atVertex (discrete S)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Under.mk (𝟙 (CommRingCat.of S)))))
 
   restrictD {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
-    derivedInfinityCategory T ⟶ derivedInfinityCategory S
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory T ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S
   restrictD_id (S : Type u) [CommRing S] :
-    FunctorIso (restrictD (RingHom.id S)) (𝟙 (derivedInfinityCategory S))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (restrictD (RingHom.id S)) (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S))
   restrictD_comp {S T W : Type u} [CommRing S] [CommRing T] [CommRing W]
       (f : S →+* T) (g : T →+* W) :
-    FunctorIso (restrictD (g.comp f)) (restrictD g ≫ restrictD f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (restrictD (g.comp f)) (restrictD g ≫ restrictD f)
   /-- DAG XIII Construction 2.2.6 の半線形作用を読むための自然比較。 -/
   restrictD_homologyIso {S T : Type u} [CommRing S] [CommRing T]
       (f : S →+* T) (i : ℤ) :
@@ -135,57 +135,57 @@ structure EInfinityTheory extends EInfinityCore.{u} where
   baseChange {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
     CAlg S ⟶ CAlg T
   baseChange_adjunction {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
-    @QCatAdjunction (CAlg S) (CAlg T) (quasicategory S) (quasicategory T)
+    @_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction (CAlg S) (CAlg T) (quasicategory S) (quasicategory T)
       (baseChange f) (restrict f)
   restrict_forget {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
-    FunctorIso (restrict f ≫ forget S) (forget T ≫ restrictD f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (restrict f ≫ forget S) (forget T ≫ restrictD f)
   baseChange_forget {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
-    FunctorIso (baseChange f ≫ forget T) (forget S ≫ derivedInfinityBaseChange f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (baseChange f ≫ forget T) (forget S ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityBaseChange f)
   restrict_id (S : Type u) [CommRing S] :
-    FunctorIso (restrict (RingHom.id S)) (𝟙 (CAlg S))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (restrict (RingHom.id S)) (𝟙 (CAlg S))
   restrict_comp {S T W : Type u} [CommRing S] [CommRing T] [CommRing W]
       (f : S →+* T) (g : T →+* W) :
-    FunctorIso (restrict (g.comp f)) (restrict g ≫ restrict f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (restrict (g.comp f)) (restrict g ≫ restrict f)
   discrete_restrict {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
-    FunctorIso (nerveMap (restrictRingAlgebra f) ≫ discrete S) (discrete T ≫ restrict f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap (restrictRingAlgebra f) ≫ discrete S) (discrete T ≫ restrict f)
 
   pi0 (S : Type u) [CommRing S] : (CAlg S).HomotopyCategory ⥤ RingAlgebra S
   pi0_forget (S : Type u) [CommRing S] :
-    pi0 S ⋙ discreteAlgebraModule S ≅ hoMap (forget S) ⋙ cohomologyOnHo S 0
+    pi0 S ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule S ≅ hoMap (forget S) ⋙ cohomologyOnHo S 0
   pi0_discrete (S : Type u) [CommRing S] :
     ordinaryToHoNerve (RingAlgebra S) ⋙ hoMap (discrete S) ⋙ pi0 S ≅
       𝟭 (RingAlgebra S)
   pi0_restrict {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
     hoMap (restrict f) ⋙ pi0 S ≅ pi0 T ⋙ restrictRingAlgebra f
 
-  strictToD (S : Type u) [CommRing S] : nerve (Complex S) ⟶ derivedInfinityCategory S
+  strictToD (S : Type u) [CommRing S] : nerve (Complex S) ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S
   /-- BS 著者版 Theorem 6.2 の Tot で使う、厳密複体のホモロジーとの自然比較。 -/
   strictToD_homologyIso (S : Type u) [CommRing S] (i : ℤ) :
     ordinaryToHoNerve (Complex S) ⋙ hoMap (strictToD S) ⋙ cohomologyOnHo S i ≅
       HomologicalComplex.homologyFunctor (ModuleCat S) (.up ℤ) i
   ofCosimplicial (S : Type u) [CommRing S] : nerve (CosimplicialRingAlgebra S) ⟶ CAlg S
   ofCosimplicial_forget (S : Type u) [CommRing S] :
-    FunctorIso (ofCosimplicial S ≫ forget S)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (ofCosimplicial S ≫ forget S)
       (nerveMap (cosimplicialCochains S) ≫ strictToD S)
   ofCosimplicial_cone (S : Type u) [CommRing S] (X : CosimplicialRingAlgebra S) :
     TotalizationCone (cosimplicialNerve X ≫ discrete S)
-      (atVertex (ofCosimplicial S) (nerveVertex X))
+      (atVertex (ofCosimplicial S) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
   ofCosimplicial_restrict {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (nerveMap ((Functor.whiskeringRight SimplexCategory _ _).obj (restrictRingAlgebra f)) ≫
         ofCosimplicial S)
       (ofCosimplicial T ≫ restrict f)
   ofCdga (S : Type u) [CommRing S] : nerve (CommMon (Complex S)) ⟶ CAlg S
   ofCdga_forget (S : Type u) [CommRing S] :
-    FunctorIso (ofCdga S ≫ forget S) (nerveMap (CommMon.forget (Complex S)) ≫ strictToD S)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (ofCdga S ≫ forget S) (nerveMap (CommMon.forget (Complex S)) ≫ strictToD S)
   ofCdga_discrete (S : Type u) [CommRing S] :
-    FunctorIso (nerveMap (discreteCDGA S) ≫ ofCdga S) (discrete S)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap (discreteCDGA S) ≫ ofCdga S) (discrete S)
   ofCosimplicialCdga (S : Type u) [CommRing S] : nerve (CosimplicialCDGA S) ⟶ CAlg S
   ofCosimplicialCdga_cone (S : Type u) [CommRing S] (X : CosimplicialCDGA S) :
     TotalizationCone (cosimplicialNerve X ≫ ofCdga S)
-      (atVertex (ofCosimplicialCdga S) (nerveVertex X))
+      (atVertex (ofCosimplicialCdga S) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
   ofCosimplicialCdga_discrete (S : Type u) [CommRing S] :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (nerveMap ((Functor.whiskeringRight SimplexCategory _ _).obj (discreteCDGA S)) ≫
         ofCosimplicialCdga S) (ofCosimplicial S)
   ofCosimplicialCdga_evalZero (S : Type u) [CommRing S] :
@@ -193,49 +193,49 @@ structure EInfinityTheory extends EInfinityCore.{u} where
       (nerveMap ((evaluation SimplexCategory (CommMon (Complex S))).obj ⦋0⦌) ≫ ofCdga S)
 
   ofCosimplicialCdga_evalZero_leg (S : Type u) [CommRing S] (X : CosimplicialCDGA S) :
-    (simplicialHomotopyVertexEdge (ofCosimplicialCdga_evalZero S) (nerveVertex X)).edge =
-      (F2.nativeConeLeg (ofCosimplicialCdga_cone S X).val
-        (ULift.up (nerveVertex (⦋0⦌ : SimplexCategory)))).edge
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (ofCosimplicialCdga_evalZero S) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg (ofCosimplicialCdga_cone S X).val
+        (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (⦋0⦌ : SimplexCategory)))).edge
 
   powerOp0 (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p] :
-    FunctorHom (forget k) (forget k ≫ restrictD (frobenius k p))
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (forget k) (forget k ≫ restrictD (frobenius k p))
   powerOp0_zero (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
       (x : (CAlg k) _⦋0⦌) (a : ((pi0 k).obj (SSet.HomotopyCategory.mk x)).right) :
     let e := (pi0_forget k).app (SSet.HomotopyCategory.mk x)
-    let α := (cohomologyOnHo k 0).map (functorHomEvaluate (powerOp0 k p) x)
+    let α := (cohomologyOnHo k 0).map (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (powerOp0 k p) x)
     let res := (restrictD_homologyIso (frobenius k p) 0).app
       (SSet.HomotopyCategory.mk (atVertex (forget k) x))
     res.hom (α (e.hom a)) =
       e.hom (a ^ p)
   powerOp0_pos (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
       (x : (CAlg k) _⦋0⦌) (n : ℤ) (hn : 0 < n) :
-    (cohomologyOnHo k (-n)).map (functorHomEvaluate (powerOp0 k p) x) = 0
+    (cohomologyOnHo k (-n)).map (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (powerOp0 k p) x) = 0
   powerOp0_discrete (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
       (B : RingAlgebra k) (f : B ⟶ (restrictRingAlgebra (frobenius k p)).obj B)
       (hf : ∀ a : B.right, f.right.hom a = a ^ p) :
     letI := quasicategory k
-    let x := atVertex (discrete k) (nerveVertex B)
-    functorHomEvaluate (powerOp0 k p) x =
+    let x := atVertex (discrete k) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (powerOp0 k p) x =
       SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map (discrete k ≫ forget k)) ≫
-        (((discrete_restrict (frobenius k p)).app (nerveVertex B)).map (forget k)).hom ≫
+        (((discrete_restrict (frobenius k p)).app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)).map (forget k)).hom ≫
         ((restrict_forget (frobenius k p)).app x).hom
   powerOp0_tot (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
       (X : CosimplicialRingAlgebra k)
       (f : X ⟶ X ⋙ restrictRingAlgebra (frobenius k p))
       (hf : ∀ j (a : (X.obj j).right), (f.app j).right.hom a = a ^ p) :
     letI := quasicategory k
-    let x := atVertex (ofCosimplicial k) (nerveVertex X)
-    functorHomEvaluate (powerOp0 k p) x =
+    let x := atVertex (ofCosimplicial k) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (powerOp0 k p) x =
       SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map (ofCosimplicial k ≫ forget k)) ≫
-        (((ofCosimplicial_restrict (frobenius k p)).app (nerveVertex X)).map (forget k)).hom ≫
+        (((ofCosimplicial_restrict (frobenius k p)).app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)).map (forget k)).hom ≫
         ((restrict_forget (frobenius k p)).app x).hom
 
 /-- 自然比較の成分を台の加法同型として読む。 -/
 def EInfinityTheory.restrictD_homology (E : EInfinityTheory.{u})
     {S T : Type u} [CommRing S] [CommRing T]
-    (f : S →+* T) (i : ℤ) (x : (derivedInfinityCategory T) _⦋0⦌) :
-    derivedInfinityHomology S i (atVertex (E.restrictD f) x) ≃+
-      derivedInfinityHomology T i x :=
+    (f : S →+* T) (i : ℤ) (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory T) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology S i (atVertex (E.restrictD f) x) ≃+
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology T i x :=
   ((E.restrictD_homologyIso f i).app (SSet.HomotopyCategory.mk x)).addCommGroupIsoToAddEquiv
 
 end SerrePositivity.EInfinity

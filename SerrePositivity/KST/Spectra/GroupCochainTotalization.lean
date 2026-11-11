@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.GroupUniversalCoverEnd
 universe u
 
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.GroupActionCochains
 
@@ -33,7 +33,7 @@ variable (G : Type u) [Group G]
 def underlyingTotalizationEndIso
     (D : AsSmall.{u} (SingleObj G) ⥤ PointedSimplicialSet.{u}) :
     (PointedTotalization.obj (weightedCochains (universalCoverWeight G) D)).right ≅
-      (PointedWeightedEnd.obj (bousfieldKanWeight (AsSmall.{u} (SingleObj G))) D).right := by
+      (PointedWeightedEnd.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} (SingleObj G))) D).right := by
   let e := SimplexDensity.pointedUnderlyingTotalizationEndIso (universalCoverDiagram G) D
   rw [← universalCoverWeight_eq_discreteLevels G] at e
   exact e ≪≫ PointedSimplicialSet.forget.mapIso (universalCoverEndIso G D).symm
@@ -46,7 +46,7 @@ lemma totalization_kanComplex
     (D : AsSmall.{u} (SingleObj G) ⥤ PointedSimplicialSet.{u})
     [∀ i, KanComplex (D.obj i).right] :
     KanComplex (PointedTotalization.obj (weightedCochains (universalCoverWeight G) D)).right := by
-  exact kanComplex_of_iso (underlyingTotalizationEndIso G D).symm
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanComplex_of_iso (underlyingTotalizationEndIso G D).symm
 
 end
 

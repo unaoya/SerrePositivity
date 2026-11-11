@@ -46,7 +46,7 @@ theorem dgKappaResolvedKernelKComparison_piIsomorphism :
       (presentedPerfectDGBFSOASpectrumComparison_piIsomorphism R (dgKappaResolvedKernelKInput R D I)))
 
 variable (Z : DGKappaZeroInput R D I)
-  (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R
+  (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (dgKInputStableValue R
     (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I))))
 
 /-- 指定 Perf 同値・零所属・実零角に条件付きの、同じ実核からの構造射。 -/
@@ -60,8 +60,8 @@ def dgKappaResolvedKernelStructureMap :=
 /-- 指定 Perf 同値・零所属・実零角に条件付きの、元の K(D) 始点の同じ実構造射。 -/
 def dgKappaResolvedConnectiveStructureMap :
     dgKInputSpectrum R D ⟶
-      coherentNerveObject (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I)))) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I)))) :=
   dgKappaResolvedKernelKComparison R D I e ≫ dgKappaResolvedKernelStructureMap R D I Z hz
 
 /-- 明示比較・零所属・実零角に条件付きで、元の K(D) 始点への移送は指定次数の全単射性を保つ。 -/

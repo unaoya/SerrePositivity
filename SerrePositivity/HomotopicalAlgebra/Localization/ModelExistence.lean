@@ -21,9 +21,9 @@ namespace SerrePositivity.Bousfield
 variable {C : Type u} [Category.{v} C] [original : ModelCategory C] [IsLocallyPresentable.{w} C]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [ModelCategory SSet.{w}]
-  (IS JS : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  (IS JS : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
   (hw : weakEquivalences SSet.{w} = SimplicialHomotopy.weakEquivalences)
@@ -47,7 +47,7 @@ structure ModelPresentation (S : MorphismProperty C) where
       @localEquivalences C _ original simplicialV cof fib S).rlp
   generators : MorphismProperty C
   generators_small : generators.IsSmall.{w}
-  generated : let := model; ModelGeneration.CofibrantlyGenerated.{w} I generators
+  generated : let := model; _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I generators
 
 include I J IS JS hcof hfib hw hcofV hfibV hcofB hfibB in
 lemma exists_modelPresentation (S : MorphismProperty C) [S.IsSmall.{w}] :
@@ -64,11 +64,11 @@ lemma exists_modelPresentation (S : MorphismProperty C) [S.IsSmall.{w}] :
   have := hc.1
   have := hc.2
   have hC : original.categoryWithCofibrations.cofibrations = I.rlp.llp :=
-    ModelGeneration.cofibrations_eq_generated I J
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I J
   have hIW : I.rlp ≤ W := by
     intro A B f hf
     have ht : trivialFibrations C f :=
-      (ModelGeneration.CofibrantlyGenerated.rlp_I (I := I) (J := J)).le f hf
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.rlp_I (I := I) (J := J)).le f hf
     exact weakEquivalences_le_localEquivalences cof fib hcofV S f ht.2
   let G := Smith.smithGenerators I W hIW
   have hG : G.IsSmall.{w} := inferInstance
@@ -76,7 +76,7 @@ lemma exists_modelPresentation (S : MorphismProperty C) [S.IsSmall.{w}] :
   let : CategoryWithWeakEquivalences C := ⟨W⟩
   let : CategoryWithFibrations C := ⟨(I.rlp.llp ⊓ W).rlp⟩
   let m := Smith.modelCategoryOfSmith I W hC rfl rfl hIW
-  have hgen : let := m; ModelGeneration.CofibrantlyGenerated.{w} I G := by
+  have hgen : let := m; _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I G := by
     let := m
     exact Smith.cofibrantlyGeneratedOfSmith I W rfl rfl hIW
   refine ⟨@ModelPresentation.mk.{w, v, u} _ _ original cof fib I simplicialV S m
@@ -151,7 +151,7 @@ lemma ModelPresentation.exists_accessible_factorizations {S : MorphismProperty C
   have hgen := p.generated
   let G := p.generators
   let := p.model
-  have : ModelGeneration.CofibrantlyGenerated.{w} I G := hgen
+  have : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I G := hgen
   exact Smith.exists_accessible_model_factorizations C I G
 
 /-- A chosen actual model presentation, rather than an assumed localization certificate. -/

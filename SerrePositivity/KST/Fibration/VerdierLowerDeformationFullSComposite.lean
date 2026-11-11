@@ -25,7 +25,7 @@ namespace SerrePositivity.KST.Fibration
 使われ方：下側の全長 Hom の合成端を回収する。 -/
 theorem verdierLowerDeformation_compositePath
     (t : ULift.{u} (Fin 3) →o Fin 2) :
-    coherentPathDeformation
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPathDeformation
       (OrderHom.id : ULift.{u} (Fin 3) →o ULift.{u} (Fin 3)) t coherentTriangleFullPath =
       coherentTriangleFullPath := by
   rw [coherentTriangleFullPath_eq_univ]
@@ -34,7 +34,7 @@ theorem verdierLowerDeformation_compositePath
   change (z ∈ (OrderHom.id : ULift.{u} (Fin 3) →o ULift.{u} (Fin 3)) '' Set.univ ∨ _) ↔ z ∈ Set.univ
   simp
 
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (t : ULift.{u} (Fin 3) →o Fin 2)
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (t : ULift.{u} (Fin 3) →o Fin 2)
 
 /-- 概要：元の下側変形の零値持ち上げは、指定合成 path で元の同じ実点へ戻る。
 方針：全体 path の厳密な固定を、元の enriched Hom の評価へ代入する。
@@ -50,7 +50,7 @@ theorem verdierLowerDeformationZeroHomLift_composite :
   change (stableHomAmbient _ _).app (Opposite.op ⦋0⦌)
     (((verdierLowerTriangle d).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩).app
       (Opposite.op ⦋0⦌) (ComposableArrows.mk₀
-        (coherentPathDeformation
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPathDeformation
           (OrderHom.id : ULift.{u} (Fin 3) →o ULift.{u} (Fin 3)) t
           coherentTriangleFullPath))) = _
   rw [verdierLowerDeformation_compositePath]

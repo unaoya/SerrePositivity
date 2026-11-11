@@ -29,10 +29,10 @@ variable {hR : IsIntegralPerfectoid R p}
 方針：U の極限保存と全錐比較を合成する。規約：形状の制限なし。
 使われ方：旧 G1 の limit_isLimit の欄。 -/
 lemma BSLimitConeDataCAlg.underlying_isLimit
-    {P : algebraNerve R ⟶ CAlg_R R} {η : FunctorHom (algebraEmbedding R) P}
+    {P : algebraNerve R ⟶ CAlg_R R} {η : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (algebraEmbedding R) P}
     {h0 : H0RingData R (P ≫ cAlgForgetDerived R) (underlyingUnit R η)} {S : A_R R}
-    (c : BSLimitConeDataCAlg R p P η h0 S) (hc : IsLimitCone c.cone) :
-    IsLimitCone c.underlying.cone :=
+    (c : BSLimitConeDataCAlg R p P η h0 S) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c.cone) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c.underlying.cone :=
   (cAlgForgetDerived_mapJoinCone_isLimit R c.cone hc).of_functorIso c.comparison
 
 /-- 概要：実 U と指定比較による旧 G1 界面の構成。

@@ -20,8 +20,8 @@ local instance nativeCotensorEvaluationSpectrumSimplicialCategory :
 
 /-- 元の Sp 上の二変数の coherent な普遍評価の族。 -/
 def nativeCotensorEvaluationFamily (A : PointedSimplicialSet.{u}) :
-    Sp.{u} ⊗ SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A.right
-      _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{u + 1}) ⟶ Sp.{u} :=
+    Sp.{u} ⊗ SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A.right
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{u + 1}) ⟶ Sp.{u} :=
   ((CotensorCompatible.sourceInfinityEquivalence A).inv ⊗ₘ 𝟙 _) ≫
     CotensorCompatible.evaluationNerveFamily A
 
@@ -56,7 +56,7 @@ lemma nativeCotensorEvaluationFamily_right (A : PointedSimplicialSet.{u}) :
 
 /-- 評価の族の右端は恒等関手と実際に関手同型。 -/
 def nativeCotensorEvaluationFamily_rightIso (A : PointedSimplicialSet.{u}) :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (lift (𝟙 Sp.{u}) (SSet.const (EnrichedParameterCylinder.rightVertex.{u, u + 1} A.right)) ≫
         nativeCotensorEvaluationFamily A) (𝟙 Sp.{u}) := by
   rw [nativeCotensorEvaluationFamily_right]

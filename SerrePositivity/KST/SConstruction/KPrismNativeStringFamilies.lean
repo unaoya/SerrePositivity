@@ -46,7 +46,7 @@ lemma kKanOriginalPrismStringDiagram_simplex {I : Type u} [SmallCategory I]
 /-- 元の K prism の任意の射の全合成列を、同じ両端の native Hom の実族へ束ねる。 -/
 def kKanOriginalPrismNativeFamily {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {a b : I × ULift.{u} (Fin 2)} (f : a ⟶ b) :
-    nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⟶
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) ⟶
       SimplicialCategory.sHom (coherentStringVertexObject (kKanOriginalPrismStringDiagram r F) a)
         (coherentStringVertexObject (kKanOriginalPrismStringDiagram r F) b) :=
   coherentArrowNativeFamily (kKanOriginalPrismStringDiagram r F) f

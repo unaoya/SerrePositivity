@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.RightFibration
-public import SerrePositivity.InfinityCategories.Core.Terminal
-public import SerrePositivity.InfinityCategories.Core.LeftFiberKan
-public import SerrePositivity.InfinityCategories.Core.VertexFiberPullback
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.Terminal
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.LeftFiberKan
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.VertexFiberPullback
 
 /-!
 概要：anodyne・fibration と頂点 fiber の基礎を読むための入口。

@@ -35,7 +35,7 @@ instance coefficientGroupCommGroup (n r : ℕ) : CommGroup (coefficientGroup K X
     intro s
     change a s * b s = b s * a s
     have h : ∀ (q : ℕ) (_ : 0 < q)
-        (c d : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X.right q X.basepoint), c * d = d * c := by
+        (c d : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup X.right q X.basepoint), c * d = d * c := by
       intro q hq
       cases q with
       | zero => omega
@@ -43,7 +43,7 @@ instance coefficientGroupCommGroup (n r : ℕ) : CommGroup (coefficientGroup K X
     exact h _ (by omega) (a s) (b s)
 
 lemma stageFiber_mul_comm (n r : ℕ)
-    (a b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K X n).right r
+    (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K X n).right r
       (UnbasedPointedMapping.stageFiber K X n).basepoint) : a * b = b * a := by
   apply (stageFiberCoefficientEquiv K X n r).injective
   simpa only [map_mul] using
@@ -54,9 +54,9 @@ lemma stageFiber_mul_comm (n r : ℕ)
 規約：既存の群構造の演算を変更しない。
 使われ方：Goerss–Jardine VIII §1。塔の微分を加法群の射として扱う。 -/
 instance stageFiberCommGroup (n r : ℕ) :
-    CommGroup (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K X n).right r
+    CommGroup (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K X n).right r
       (UnbasedPointedMapping.stageFiber K X n).basepoint) where
-  __ := (inferInstance : Group (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+  __ := (inferInstance : Group (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup
     (UnbasedPointedMapping.stageFiber K X n).right r
       (UnbasedPointedMapping.stageFiber K X n).basepoint))
   mul_comm := stageFiber_mul_comm K X n r

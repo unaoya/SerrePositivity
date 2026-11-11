@@ -19,7 +19,7 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 /-- 同じ Hom の族を、元の前合成・後合成で新しい座標へ移す点つき射。 -/
 def coordinateMap {A A' B B' : PointedSimplicialSet.{u}} (i : A' ⟶ A) (j : B ⟶ B') :
     PointedObject.basedHom A B ⟶ PointedObject.basedHom A' B' :=
-  PointedObject.basedHomMap A j ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i B'
+  PointedObject.basedHomMap A j ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i B'
 
 private lemma closed_coordinate_post {C : Type*} [Category C] [MonoidalCategory C]
     [MonoidalClosed C] {A A' B B' : C} (i : A' ⟶ A) (x : A ⟶ A')
@@ -52,13 +52,13 @@ lemma VerticalPath.coordinate_post_path {A A' B B' : PointedSimplicialSet.{u}}
     ((((P.basedPost e.hom).pre e.inv).basedPost w).path) =
       (P.basedPost v).path ≫ (coordinateMap e.inv d.hom).right := by
   change ((P.path ≫ (PointedObject.basedHomMap A e.hom).right) ≫
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e.inv A').right) ≫ (PointedObject.basedHomMap A' w).right =
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e.inv A').right) ≫ (PointedObject.basedHomMap A' w).right =
       (P.path ≫ (PointedObject.basedHomMap A v).right) ≫ _
   have hc := closed_coordinate_post e.inv e.hom d.hom v w h
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hc
-  change (PointedObject.basedHomMap A e.hom ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e.inv A') ≫
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hc
+  change (PointedObject.basedHomMap A e.hom ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e.inv A') ≫
       PointedObject.basedHomMap A' w = PointedObject.basedHomMap A v ≫
-        (PointedObject.basedHomMap A d.hom ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e.inv B') at hc
+        (PointedObject.basedHomMap A d.hom ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e.inv B') at hc
   simpa only [coordinateMap, Under.comp_right, Category.assoc,
     PointedObject.ihom_obj_eq_basedHom] using congrArg (fun q => P.path ≫ q.right) hc
 
@@ -70,13 +70,13 @@ lemma VerticalPath.coordinate_pre_path {A A' B B' : PointedSimplicialSet.{u}}
     ((((Q.basedPost d.hom).pre d.inv).pre w).path) =
       (Q.pre v).path ≫ (coordinateMap e.inv d.hom).right := by
   change ((Q.path ≫ (PointedObject.basedHomMap B d.hom).right) ≫
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed d.inv B').right) ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed w B').right =
-      (Q.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed v B).right) ≫ _
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed d.inv B').right) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed w B').right =
+      (Q.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed v B).right) ≫ _
   have hc := closed_coordinate_pre e.inv d.hom d.inv v w h
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hc
-  change (PointedObject.basedHomMap B d.hom ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed d.inv B') ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed w B' = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed v B ≫
-        (PointedObject.basedHomMap A d.hom ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e.inv B') at hc
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hc
+  change (PointedObject.basedHomMap B d.hom ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed d.inv B') ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed w B' = _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed v B ≫
+        (PointedObject.basedHomMap A d.hom ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed e.inv B') at hc
   simpa only [coordinateMap, Under.comp_right, Category.assoc,
     PointedObject.ihom_obj_eq_basedHom] using congrArg (fun q => Q.path ≫ q.right) hc
 

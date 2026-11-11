@@ -15,7 +15,7 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 元の Serre 関手の右 tensor。 -/
-def serreCubeRightTensorFunctor : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube ⥤ Comon (Complex A) :=
+def serreCubeRightTensorFunctor : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube ⥤ Comon (Complex A) :=
   serreConcreteCubeFunctor A ⋙ tensorRight (serreIntervalComonoid A)
 
 end SerrePositivity.KST.SConstruction

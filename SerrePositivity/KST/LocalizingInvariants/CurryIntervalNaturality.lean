@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryIntervalNaturality
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.CurryIntervalNaturality
 
-public import SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.CurryHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport
 
 /-!
@@ -23,18 +23,18 @@ namespace SerrePositivity.KST.LocalizingInvariants.CurryInterval
 variable {A X : SSet.{u}}
 
 lemma commutation [Quasicategory X] {F G : A ⊗ Δ[1] ⟶ X} (H : SSet.Homotopy F G) :
-    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal F)) ≫
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-        (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.slice H (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) =
-    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-        (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.slice H (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))) ≫
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal G)) := by
-  have hn := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.naturality H
-    (SSet.Edge.ofTruncated (X := (Δ[1] : SSet.{u})) homotopyIntervalEdge)
-  have hl := arrow_mk_comp_congr (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal_arrow F)
-    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.component_arrow H (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+    Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.horizontal F)) ≫
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.slice H (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) =
+    Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.slice H (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))) ≫
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.horizontal G)) := by
+  have hn := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.naturality H
+    (SSet.Edge.ofTruncated (X := (Δ[1] : SSet.{u})) _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge)
+  have hl := arrow_mk_comp_congr (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.horizontal_arrow F)
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.component_arrow H (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
   have hr := arrow_mk_comp_congr
-    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.component_arrow H (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal_arrow G)
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.component_arrow H (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.horizontal_arrow G)
   apply Arrow.mk_injective
   exact hl.symm.trans ((congrArg Arrow.mk hn).trans hr)
 

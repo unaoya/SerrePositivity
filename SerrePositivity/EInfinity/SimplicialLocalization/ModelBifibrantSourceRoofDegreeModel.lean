@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofSlices
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ProductSimplexUniverseOver
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseNerveCostructuredPullback
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseNerveCostructuredPullback
 
 /-!
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
@@ -29,23 +29,23 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 abbrev modelBifibrantSourceRoofProductElements :=
-  ProductSimplexUniverseOver.productElements.{v, u}
-    ((SerrePositivity.HomotopyFunctionComplex.cosimplicialHom q.obj).obj Y.obj)
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.productElements.{v, u}
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y.obj)
     (modelBifibrantSourceRoofDegree X Y q b)
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductFirst : modelBifibrantSourceRoofProductElements X Y q b ⥤
-    modelBifibrantSourceFrameElementCategory X Y q :=
-  ProductSimplexUniverseOver.firstComponent.{v, u} _ _
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementCategory X Y q :=
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.firstComponent.{v, u} _ _
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductFirstNerve :
     nerve (modelBifibrantSourceRoofProductElements X Y q b) ⟶
-      nerve (modelBifibrantSourceFrameElementCategory X Y q) where
+      nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementCategory X Y q) where
   app _ := ↾fun σ => σ ⋙ modelBifibrantSourceRoofProductFirst X Y q b
   naturality _ _ _ := rfl
 
@@ -53,7 +53,7 @@ def modelBifibrantSourceRoofProductFirstNerve :
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductOver : modelBifibrantSourceRoofProductElements X Y q b ⥤
-    Over (modelBifibrantSourceRoofDegree X Y q b) := ProductSimplexUniverseOver.over.{v, u} _ _
+    Over (modelBifibrantSourceRoofDegree X Y q b) := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.over.{v, u} _ _
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
@@ -69,9 +69,9 @@ def modelBifibrantSourceRoofProductOverNerve :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductIso : nerve (modelBifibrantSourceRoofProductElements X Y q b) ≅
     modelBifibrantSourceRoofDegreeModel X Y q b :=
-  ProductSimplexUniverseOver.nerveIso.{v, u} _ _ ≪≫
-    UniverseNerveCostructuredPullback.pullbackIso.{v, u}
-      (modelBifibrantSourceFrameElementDegree X Y q)
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.nerveIso.{v, u} _ _ ≪≫
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseNerveCostructuredPullback.pullbackIso.{v, u}
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegree X Y q)
       (modelBifibrantSourceRoofDegree X Y q b)
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
@@ -79,11 +79,11 @@ def modelBifibrantSourceRoofProductIso : nerve (modelBifibrantSourceRoofProductE
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductIso_source : (modelBifibrantSourceRoofProductIso X Y q b).hom ≫
     pullback.fst _ _ = modelBifibrantSourceRoofProductFirstNerve X Y q b := by
-  have h := UniverseNerveCostructuredPullback.pullbackIso_source.{v, u}
-    (modelBifibrantSourceFrameElementDegree X Y q) (modelBifibrantSourceRoofDegree X Y q b)
+  have h := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseNerveCostructuredPullback.pullbackIso_source.{v, u}
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegree X Y q) (modelBifibrantSourceRoofDegree X Y q b)
   exact (Category.assoc _ _ _).trans (congrArg
-    (fun f => (ProductSimplexUniverseOver.nerveIso.{v, u}
-      ((SerrePositivity.HomotopyFunctionComplex.cosimplicialHom q.obj).obj Y.obj)
+    (fun f => (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.nerveIso.{v, u}
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y.obj)
       (modelBifibrantSourceRoofDegree X Y q b)).hom ≫ f) h)
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
@@ -91,11 +91,11 @@ lemma modelBifibrantSourceRoofProductIso_source : (modelBifibrantSourceRoofProdu
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductIso_over : (modelBifibrantSourceRoofProductIso X Y q b).hom ≫
     pullback.snd _ _ = modelBifibrantSourceRoofProductOverNerve X Y q b := by
-  have h := UniverseNerveCostructuredPullback.pullbackIso_over.{v, u}
-    (modelBifibrantSourceFrameElementDegree X Y q) (modelBifibrantSourceRoofDegree X Y q b)
+  have h := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseNerveCostructuredPullback.pullbackIso_over.{v, u}
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegree X Y q) (modelBifibrantSourceRoofDegree X Y q b)
   exact (Category.assoc _ _ _).trans (congrArg
-    (fun f => (ProductSimplexUniverseOver.nerveIso.{v, u}
-      ((SerrePositivity.HomotopyFunctionComplex.cosimplicialHom q.obj).obj Y.obj)
+    (fun f => (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.nerveIso.{v, u}
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y.obj)
       (modelBifibrantSourceRoofDegree X Y q b)).hom ≫ f) h)
 
 end SerrePositivity.EInfinity.SimplicialLocalization

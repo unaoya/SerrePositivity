@@ -27,15 +27,15 @@ lemma simplicialLevelTensor_isQuillen :
     IsQuillenBifunctor (curriedTensor SymmetricSpectrum.{u}) := by
   let := simplicialLevelModelCategory hCof hFib
   let := simplicialLevelModelCategory_generated hCof hFib
-  let : CofibrantlyGenerated.{u} pointedI.{u} pointedJ.{u} :=
+  let : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} pointedI.{u} pointedJ.{u} :=
     pointedSimplicial_cofibrantlyGenerated hCof hFib
   have hI {A B : PointedSimplicialSet.{u}} (f : A ⟶ B) (hf : pointedI f) : Cofibration f := by
     apply (cofibration_iff _).2
-    rw [cofibrations_eq_generated pointedI pointedJ]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated pointedI pointedJ]
     exact pointedI.le_llp_rlp _ hf
   have hJ {A B : PointedSimplicialSet.{u}} (f : A ⟶ B) (hf : pointedJ f) :
       trivialCofibrations PointedSimplicialSet.{u} f := by
-    rw [trivialCofibrations_eq_generated pointedI pointedJ]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated pointedI pointedJ]
     exact pointedJ.le_llp_rlp _ hf
   let adj := MonoidalClosed.internalHomAdjunction₂ (C := SymmetricSpectrum.{u})
   let adjFlip := SerrePositivity.ParametrizedAdjunctionTransport.left adj

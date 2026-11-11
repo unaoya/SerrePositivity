@@ -19,13 +19,13 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedDiagram
 open CategoryTheory SerrePositivity.InfinityCategories
 
-variable {D E : SimplicialObject Data.{u}} (τ : D ⟶ E)
+variable {D E : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u}} (τ : D ⟶ E)
 
 def diagonalBarMap : diagonalBar D ⟶ diagonalBar E :=
-  DoubleSimplicial.diagonalFunctor.map (Functor.whiskerRight τ barFunctor)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (Functor.whiskerRight τ barFunctor)
 
 def diagonalTotalMap : diagonalTotalNerve D ⟶ diagonalTotalNerve E :=
-  DoubleSimplicial.diagonalFunctor.map
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map
     (Functor.whiskerRight τ (totalFunctor ⋙ nerveFunctor))
 
 lemma diagonalThomasonMap_naturality :
@@ -36,8 +36,8 @@ lemma diagonalThomasonMap_naturality :
     (NatTrans.congr_app (thomasonMap.naturality (τ.app n)).symm n) e
 
 lemma diagonalMap_weak_iff :
-    IsWeakHomotopyEquivalence (diagonalTotalMap τ) ↔
-      IsWeakHomotopyEquivalence (diagonalBarMap τ) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (diagonalTotalMap τ) ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (diagonalBarMap τ) := by
   constructor
   · intro h
     have hc := (diagonalThomasonMap_isWeakHomotopyEquivalence D).comp h

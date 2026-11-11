@@ -47,11 +47,11 @@ lemma comparison_piIsomorphism : PiIsomorphism (comparison f s) := by
     ⟨Binary.groupProjection_injective _ _ j, Binary.groupProjection_surjective _ _ j⟩
 
 /-- 分裂比較は、元の Sp の辺として可逆である。 -/
-lemma comparison_isInvertible : IsInvertibleEdge (coherentNerveEdge (comparison f s)) :=
+lemma comparison_isInvertible : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (comparison f s)) :=
   isInvertible_of_piIsomorphism (comparison f s) (comparison_piIsomorphism f s hs)
 
-def productVertexIso : VertexIso (coherentNerveVertex (Binary.obj (homotopyFiber f) Y))
-    (coherentNerveVertex X) := by
+def productVertexIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Binary.obj (homotopyFiber f) Y))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) := by
   haveI : IsIso (SpectrumHo.hom (comparison f s)) := comparison_isInvertible f s hs
   exact asIso (SpectrumHo.hom (comparison f s))
 

@@ -26,19 +26,19 @@ def cAlgLocalizationSource :
   localizationNerveSourceMap (cofibrantAlgebraRelativeCategory A)
 
 lemma cAlgLocalizationSource_inverts :
-    InvertsEdges (cAlgLocalizationSource A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (cAlgLocalizationSource A)
       (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) :=
   localizationNerveSourceMap_inverts (cofibrantAlgebraRelativeCategory A)
 
 def cAlgLocalizationSource_vertexIso (X : (cofibrantAlgebraRelativeCategory A).category) :
-    VertexIso ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
       (cAlgVertexEquiv A (show CAlgSimplicialCategory A from X)) :=
   localizationNerveSourceMap_vertexIso (cofibrantAlgebraRelativeCategory A) X
 
 lemma cAlgLocalizationSource_isLocalization_iff :
-    IsLocalization (cAlgLocalizationSource A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (cAlgLocalizationSource A)
         (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) ↔
-      IsLocalization (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
         (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) :=
   localizationNerveSourceMap_isLocalization_iff (cofibrantAlgebraRelativeCategory A)
 

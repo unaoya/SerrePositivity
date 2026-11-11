@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.ComplexLimits.NormalizedColimits
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedMonomorphismCofibration
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LatchingPreservation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalMatching
-public import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.DiagonalMatching
 
 /-!
 # 元の正規化標準単体の Reedy cofibrancy
@@ -35,7 +35,7 @@ lemma normalizedSimplex_reedyCofibrant :
   intro j
   have : Mono ((latchingComparison simplex j).app SSet.stdSimplex.{0}) := by
     induction j using SimplexCategory.rec with | _ n =>
-    rw [← BisimplicialModel.standardBoundaryIso_fac n]
+    rw [← _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.standardBoundaryIso_fac n]
     infer_instance
   have h : cofibrations (Complex A)
       ((BarrattEccles.normalizedFunctor A).map

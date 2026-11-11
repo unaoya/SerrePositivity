@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CochainKernelHomology
-public import SerrePositivity.InfinityCategories.Derived.ComplexShortExactQuasiIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexShortExactQuasiIso
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Kernels
 
 /-!
@@ -35,7 +35,7 @@ lemma cochainPullback_snd_quasiIso [Epi f] (hq : QuasiIso f) :
     intro i
     exact (exactAt_iff_of_quasiIsoAt k i).2 (hK i)
   have : Epi q := cochainPullback_snd_epi f g
-  exact complexShortExact_quasiIso_projection (cochainKernelSequence q)
+  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexShortExact_quasiIso_projection (cochainKernelSequence q)
     (cochainKernelSequence_shortExact q) hQ
 
 lemma cochainPullback_snd_surjective [Epi f] (n : ℤ) :

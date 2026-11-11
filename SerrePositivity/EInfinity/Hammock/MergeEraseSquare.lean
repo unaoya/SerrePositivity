@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.PunctureSimplex
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordMerge
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordSurjectionDescent
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordMerge
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordSurjectionDescent
 
 /-!
 # 元の合成と外側の削除の可換四角形からの局所合流
@@ -25,44 +25,44 @@ open CategoryTheory
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
   (X Y : C) {n : SimplexCategoryᵒᵖ}
 
-lemma merge_erase_join_of_square {k : ℕ} (d : Fin (k + 3) → Direction)
+lemma merge_erase_join_of_square {k : ℕ} (d : Fin (k + 3) → _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction)
     (p : Fin (k + 2)) (hp : d p.castSucc = d p.succ) (j : Fin (k + 3))
     (q : Fin (k + 1)) (r : Fin (k + 2))
     (hc : ∀ x, p.predAbove (j.succAbove x) = r.succAbove (q.predAbove x))
-    (τ : (graph W (⟨k + 3, d⟩ : Word) X Y).obj n)
-    (hτ : ∀ t, IdentityColumn (τ.obj t) j) :
-    ∃ s : RawHammock W X Y n,
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W (⟨k + 3, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) X Y).obj n)
+    (hτ : ∀ t, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj t) j) :
+    ∃ s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n,
       Relation.ReflGen (Reduction W X Y n)
-        ⟨_, ((graphDiagram W X Y).map (Word.mergeMap d p hp)).app n τ⟩ s ∧
+        ⟨_, ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeMap d p hp)).app n τ⟩ s ∧
       Relation.ReflGen (Reduction W X Y n)
-        ⟨Word.erase (⟨k + 3, d⟩ : Word) j, eraseSimplex W X Y j τ hτ⟩ s := by
-  let e := Word.punctureInclusion d j
-  let f := Word.mergeMap d p hp
+        ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.erase (⟨k + 3, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) j, eraseSimplex W X Y j τ hτ⟩ s := by
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion d j
+  let f := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeMap d p hp
   let u := e ≫ f
-  have hq : (Word.puncture d j).direction q.castSucc =
-      (Word.puncture d j).direction q.succ := by
+  have hq : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.puncture d j).direction q.castSucc =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.puncture d j).direction q.succ := by
     have he : u.orderHom q.castSucc = u.orderHom q.succ := by
       change p.predAbove (j.succAbove q.castSucc) = p.predAbove (j.succAbove q.succ)
       rw [hc, hc, Fin.predAbove_castSucc_self, Fin.predAbove_succ_self]
     exact (u.direction_eq q.castSucc).symm.trans
-      ((congrArg (Word.mergeTarget d p).direction he).trans (u.direction_eq q.succ))
-  let f' := Word.mergeMap (Word.puncture d j).direction q hq
-  let h := Word.descendSurjection f'
-    (Word.mergeMap_surjective (Word.puncture d j).direction q hq) u
+      ((congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeTarget d p).direction he).trans (u.direction_eq q.succ))
+  let f' := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.puncture d j).direction q hq
+  let h := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.descendSurjection f'
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeMap_surjective (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.puncture d j).direction q hq) u
     (Fin.succAboveOrderEmb r).toOrderHom (fun x => (hc x).symm)
   have hh : Function.Injective h.orderHom := Fin.succAbove_right_injective
   have hr : Set.range h.orderHom = {r}ᶜ := Fin.range_succAbove r
-  have hword : f' ≫ h = e ≫ f := Word.descendSurjection_fac _ _ _ _ _
+  have hword : f' ≫ h = e ≫ f := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.descendSurjection_fac _ _ _ _ _
   let σ := punctureSimplex W X Y d j τ hτ
-  let ρ := ((graphDiagram W X Y).map f').app n σ
-  let s : RawHammock W X Y n := ⟨_, ρ⟩
-  have hfac : ((graphDiagram W X Y).map h).app n ρ =
-      ((graphDiagram W X Y).map f).app n τ := by
-    have he := congrArg (fun z => ((graphDiagram W X Y).map z).app n σ) hword
+  let ρ := ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f').app n σ
+  let s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n := ⟨_, ρ⟩
+  have hfac : ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map h).app n ρ =
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f).app n τ := by
+    have he := congrArg (fun z => ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map z).app n σ) hword
     rw [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_comp] at he
-    change ((graphDiagram W X Y).map h).app n
-      (((graphDiagram W X Y).map f').app n σ) =
-      ((graphDiagram W X Y).map f).app n (((graphDiagram W X Y).map e).app n σ) at he
+    change ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map h).app n
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f').app n σ) =
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f).app n (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map e).app n σ) at he
     rw [punctureSimplex_fac] at he
     exact he
   refine ⟨s, Relation.ReflGen.single ?_, Relation.ReflGen.single ?_⟩

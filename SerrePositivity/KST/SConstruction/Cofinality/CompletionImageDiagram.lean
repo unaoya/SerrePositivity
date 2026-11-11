@@ -23,7 +23,7 @@ open scoped Simplicial
 使われ方：構造射の閉じた本質像への制限。 -/
 lemma completionImage_map_mem (r : ℕ) {ι κ : Fin r → SimplexCategoryᵒᵖ}
     (α : ι ⟶ κ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (y : (((multiSEndofunctor r).obj ι).obj Y).carrier _⦋0⦌)
     (hy : (completionImageClosedPredicate r ι f hf).predicate y) :
     (completionImageClosedPredicate r κ f hf).predicate
@@ -41,7 +41,7 @@ lemma completionImage_map_mem (r : ℕ) {ι κ : Fin r → SimplexCategoryᵒᵖ
 使われ方：本質像の全多単体図式の射。 -/
 def completionImageStructureMap (r : ℕ) {ι κ : Fin r → SimplexCategoryᵒᵖ}
     (α : ι ⟶ κ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     closedStableModel (completionImageClosedPredicate r ι f hf) ⟶
       closedStableModel (completionImageClosedPredicate r κ f hf) :=
   closedStableMap (completionImageClosedPredicate r ι f hf)
@@ -55,7 +55,7 @@ def completionImageStructureMap (r : ℕ) {ι κ : Fin r → SimplexCategoryᵒ�
 lemma completionImageStructureMap_inclusion (r : ℕ)
     {ι κ : Fin r → SimplexCategoryᵒᵖ} (α : ι ⟶ κ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionImageStructureMap r α f hf ≫
       closedStableInclusion (completionImageClosedPredicate r κ f hf) =
       closedStableInclusion (completionImageClosedPredicate r ι f hf) ≫
@@ -69,7 +69,7 @@ lemma completionImageStructureMap_inclusion (r : ℕ)
 lemma completionSourceImageStableMap_naturality (r : ℕ)
     {ι κ : Fin r → SimplexCategoryᵒᵖ} (α : ι ⟶ κ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     ((multiSEndofunctor r).map α).app X ≫ completionSourceImageStableMap r κ f hf =
       completionSourceImageStableMap r ι f hf ≫ completionImageStructureMap r α f hf := by
   apply closedStableInclusion_cancel (completionImageClosedPredicate r κ f hf)
@@ -88,7 +88,7 @@ lemma completionSourceImageStableMap_naturality (r : ℕ)
 規約：実現前の StableModel 値図式として束ねる。
 使われ方：相対 fiber 供給へ渡す全多単体的な左項。 -/
 def completionImageDiagram (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     (Fin r → SimplexCategoryᵒᵖ) ⥤ StableModel.{u} where
   obj ι := closedStableModel (completionImageClosedPredicate r ι f hf)
   map α := completionImageStructureMap r α f hf
@@ -136,7 +136,7 @@ def completionImageDiagram (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
 規約：各成分は元の指定反復 S 射の本質像への制限。
 使われ方：供給の左項を全多次数で元の始域へ戻す。 -/
 def completionSourceImageNatTrans (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     multiSEndofunctor r ⋙ (evaluation StableModel StableModel).obj X ⟶
       completionImageDiagram r f hf where
   app ι := completionSourceImageStableMap r ι f hf

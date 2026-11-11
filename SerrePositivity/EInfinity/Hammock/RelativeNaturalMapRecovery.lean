@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeNaturalGraphHomotopy
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeNaturalWordRows
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeNaturalGraphHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeNaturalWordRows
 public import SerrePositivity.EInfinity.Hammock.RelativeCompositionPoints
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.PointActions
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitArrowMap
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.PointActions
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitArrowMap
 
 /-!
 # 比較ホモトピーの両端と元の前後合成の一致
@@ -25,48 +25,48 @@ open CategoryTheory
 
 variable {C D : Type u} [Category.{v} C] [Category.{v} D]
   {W : MorphismProperty C} [W.IsMultiplicative] {V : MorphismProperty D} [V.IsMultiplicative]
-  {F G : LocalizerMorphism W V} (η : F.functor ⟶ G.functor) (w : Word) (X Y : C)
+  {F G : LocalizerMorphism W V} (η : F.functor ⟶ G.functor) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C)
 
-lemma beforeMap_recovery : beforeMap η w X Y = graphInclusion W X Y w ≫
-    Relative.colimitMap F X Y ≫ postcomposePointMap (F.functor.obj X) (arrowMap V (η.app Y)) := by
+lemma beforeMap_recovery : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.beforeMap η w X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y w ≫
+    Relative.colimitMap F X Y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap (F.functor.obj X) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap V (η.app Y)) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
   intro σ
-  change (graphInclusion V (F.functor.obj X) (G.functor.obj Y) (wordFunctor.obj w)).app n
-    (σ ⋙ beforeFunctor η w X Y) = composePoint V _ _ _
-      ((Relative.colimitMap F X Y).app n ((graphInclusion W X Y w).app n σ))
-      (arrowPoint V (η.app Y) n)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion V (F.functor.obj X) (G.functor.obj Y) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordFunctor.obj w)).app n
+    (σ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.beforeFunctor η w X Y) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint V _ _ _
+      ((Relative.colimitMap F X Y).app n ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y w).app n σ))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint V (η.app Y) n)
   rw [Relative.graphInclusion_point]
-  have h : (graphInclusion V (F.functor.obj X) (G.functor.obj Y) (wordFunctor.obj w)).app n
-      (σ ⋙ beforeFunctor η w X Y) =
-      composePoint V _ _ _ (arrowPoint V (𝟙 (F.functor.obj X)) n)
-        (composePoint V _ _ _
-          ((graphInclusion V (F.functor.obj X) (F.functor.obj Y) w).app n
-            (σ ⋙ Zigzag.Relative.functor F)) (arrowPoint V (η.app Y) n)) := by
-    rw [arrowPoint, arrowPoint, composePoint_inclusions, composePoint_inclusions]
+  have h : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion V (F.functor.obj X) (G.functor.obj Y) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordFunctor.obj w)).app n
+      (σ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.beforeFunctor η w X Y) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint V _ _ _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint V (𝟙 (F.functor.obj X)) n)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint V _ _ _
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion V (F.functor.obj X) (F.functor.obj Y) w).app n
+            (σ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor F)) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint V (η.app Y) n)) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_inclusions, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_inclusions]
     rfl
-  rw [composePoint_identity_left] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_identity_left] at h
   exact h
 
-lemma afterMap_recovery : afterMap η w X Y = graphInclusion W X Y w ≫
-    Relative.colimitMap G X Y ≫ precomposePointMap (arrowMap V (η.app X)) (G.functor.obj Y) := by
+lemma afterMap_recovery : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.afterMap η w X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y w ≫
+    Relative.colimitMap G X Y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap V (η.app X)) (G.functor.obj Y) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
   intro σ
-  change (graphInclusion V (F.functor.obj X) (G.functor.obj Y) (wordFunctor.obj w)).app n
-    (σ ⋙ afterFunctor η w X Y) = composePoint V _ _ _ (arrowPoint V (η.app X) n)
-      ((Relative.colimitMap G X Y).app n ((graphInclusion W X Y w).app n σ))
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion V (F.functor.obj X) (G.functor.obj Y) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordFunctor.obj w)).app n
+    (σ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.afterFunctor η w X Y) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint V _ _ _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint V (η.app X) n)
+      ((Relative.colimitMap G X Y).app n ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y w).app n σ))
   rw [Relative.graphInclusion_point]
-  have h : (graphInclusion V (F.functor.obj X) (G.functor.obj Y) (wordFunctor.obj w)).app n
-      (σ ⋙ afterFunctor η w X Y) = composePoint V _ _ _ (arrowPoint V (η.app X) n)
-        (composePoint V _ _ _
-          ((graphInclusion V (G.functor.obj X) (G.functor.obj Y) w).app n
-            (σ ⋙ Zigzag.Relative.functor G)) (arrowPoint V (𝟙 (G.functor.obj Y)) n)) := by
-    rw [arrowPoint, arrowPoint, composePoint_inclusions, composePoint_inclusions]
+  have h : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion V (F.functor.obj X) (G.functor.obj Y) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordFunctor.obj w)).app n
+      (σ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.afterFunctor η w X Y) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint V _ _ _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint V (η.app X) n)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint V _ _ _
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion V (G.functor.obj X) (G.functor.obj Y) w).app n
+            (σ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor G)) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint V (𝟙 (G.functor.obj Y)) n)) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_inclusions, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_inclusions]
     rfl
-  rw [composePoint_identity_right] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_identity_right] at h
   exact h
 
 end SerrePositivity.EInfinity.Hammock.RelativeNatural

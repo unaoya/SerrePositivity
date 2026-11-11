@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 lemma exists_pointed_section {E B : PointedSimplicialSet.{u}} (p : E ⟶ B)
     (hp : (MorphismProperty.monomorphisms SSet.{u}).rlp p.right) :
     ∃ s : B ⟶ E, s ≫ p = 𝟙 B := by
-  let baseMono : Mono B.hom := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basepoint_mono B
+  let baseMono : Mono B.hom := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basepoint_mono B
   let liftBase : HasLiftingProperty B.hom p.right := hp _ baseMono
   let sq : CommSq E.hom B.hom p.right (𝟙 B.right) := ⟨by rw [Under.w p, Category.comp_id]⟩
   exact ⟨Under.homMk sq.lift sq.fac_left, Under.UnderMorphism.ext sq.fac_right⟩
@@ -52,7 +52,7 @@ lemma section_naturality_nonempty {E B E' B' : PointedSimplicialSet.{u}}
       _ = sectionOfRlp p hp ≫ (p ≫ b) := by rw [Category.assoc, h]
       _ = b := by rw [← Category.assoc, sectionOfRlp_condition, Category.id_comp]
       _ = _ := by rw [Category.assoc, sectionOfRlp_condition, Category.comp_id]
-  let baseMono : Mono B.hom := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basepoint_mono B
+  let baseMono : Mono B.hom := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basepoint_mono B
   have hb : B.hom ≫ f.right = B.hom ≫ g.right := by rw [Under.w f, Under.w g]
   obtain ⟨H, hP, hB⟩ := MonoRightLiftingRelativeHomotopy.exists_relative_vertical_homotopy
     p'.right hp' B.hom f.right g.right (congrArg Under.Hom.right hf) hb

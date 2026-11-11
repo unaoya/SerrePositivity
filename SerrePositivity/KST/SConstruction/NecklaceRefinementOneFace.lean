@@ -14,17 +14,17 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory
 open SerrePositivity.DifferentialGraded
-variable (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) (j : (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single T.down.vertexMax).NonjointVertex)
+variable (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Necklace.{u}) (j : (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single T.down.vertexMax).NonjointVertex)
 
 /-- 元の三 joint refinement の実 cube 射は、元の中間 joint の同じ座標の標準一面。 -/
 lemma necklaceRefinement_cube_one_face
     (hJ : T.down.joints = {0, j.val.val, T.down.vertexMax}) :
     necklaceConcreteCubeMap (necklaceBeadRefinement T) ≫
         (concreteCubeDimensionIso
-          (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single T.down.vertexMax).dimension)
-          (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (T.down.dimension + 1))
+          (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single T.down.vertexMax).dimension)
+          (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (T.down.dimension + 1))
           (necklaceRefinementMissingCoordinate_codimension T j hJ)).hom =
-      _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace true T.down.dimension
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace true T.down.dimension
         (Fin.cast (necklaceRefinementMissingCoordinate_codimension T j hJ)
           (necklaceRefinementMissingCoordinate T j)) :=
   concreteCube_face_of_coordinate_embedding true _ (necklaceRefinementCoordinate T)
@@ -37,12 +37,12 @@ lemma necklaceRefinement_cube_one_face
 lemma necklaceRefinement_cube_factor
     (hJ : T.down.joints = {0, j.val.val, T.down.vertexMax}) :
     necklaceConcreteCubeMap (necklaceBeadRefinement T) =
-      _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace true T.down.dimension
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace true T.down.dimension
         (Fin.cast (necklaceRefinementMissingCoordinate_codimension T j hJ)
           (necklaceRefinementMissingCoordinate T j)) ≫
         (concreteCubeDimensionIso
-          (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single T.down.vertexMax).dimension)
-          (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (T.down.dimension + 1))
+          (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single T.down.vertexMax).dimension)
+          (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (T.down.dimension + 1))
           (necklaceRefinementMissingCoordinate_codimension T j hJ)).inv :=
   (Iso.eq_comp_inv _).mpr (necklaceRefinement_cube_one_face T j hJ)
 

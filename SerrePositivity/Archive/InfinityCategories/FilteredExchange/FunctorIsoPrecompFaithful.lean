@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FunctorComposition
-public import SerrePositivity.InfinityCategories.Core.FullyFaithful
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorComposition
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithful
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerHom
 
 /-!
 概要：同値による前合成は、元の指定関手同型の等式を忠実に反映する。

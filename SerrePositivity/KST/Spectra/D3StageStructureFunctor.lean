@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3CommonStageStructure
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 
 /-!
 概要：元の構造随伴射を成分とする、BF 段評価と次段 loop 評価の全関手同型。
@@ -45,7 +45,7 @@ def d3StageStructureGraded (n : ℕ) :
       (d3StageKanEnriched n) (d3StageLoopKanEnriched n) where
   app X := eHomEquiv SSet
     (ObjectProperty.homMk ((KanSequence.adjointLoopTailUnit X.toKanSequence).app n))
-  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff SSet
+  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_whiskered_square_iff SSet
     ((KanSequence.adjointLoopTailUnit X.toKanSequence).app n)
     ((KanSequence.adjointLoopTailUnit Y.toKanSequence).app n)
     ((d3StageLoopKanEnriched n).map X Y) ((d3StageKanEnriched n).map X Y)).mp
@@ -66,15 +66,15 @@ lemma d3StageStructureGraded_component (n : ℕ) (X : OmegaSpectrum.{u}) :
 
 /-- 同じ元の Ω 条件により、構造随伴射を成分とする全関手同型を得る。 -/
 def d3StageStructureFunctorIso (n : ℕ) :
-    FunctorIso (coherentNerveMap (d3StageKanEnriched.{u} n))
-      (coherentNerveMap (d3StageKanEnriched (n + 1)) ≫ pointedKanLoopInfinity) :=
-  F2.functorIsoOfEq (StrictEnrichedTransformation.functorIso _ _ (d3StageStructureGraded.{u} n)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3StageKanEnriched.{u} n))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3StageKanEnriched (n + 1)) ≫ pointedKanLoopInfinity) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (StrictEnrichedTransformation.functorIso _ _ (d3StageStructureGraded.{u} n)
     (fun X ↦ by
       rw [d3StageStructureGraded_component]
       exact pointedKanObject_edge_isInvertible_of_piIsomorphism _
         (KanSequence.adjointLoopTailUnit_levelwise X.toKanSequence_omega n))) rfl
     (by
-      rw [d3StageLoopKanEnriched, coherentNerveMap_comp]
+      rw [d3StageLoopKanEnriched, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp]
       rfl)
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

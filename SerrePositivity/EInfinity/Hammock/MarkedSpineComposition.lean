@@ -47,24 +47,24 @@ lemma append_simplex (θ : n ⟶ m) (s : MarkedSpine W Y n X) (t : MarkedSpine W
   induction s with
   | nil X p => exact prepend_simplex θ p t
   | cons X g p s ih =>
-    exact congrArg (cons X g ((FactorTarget.left W X g.val).map θ p)) ih
+    exact congrArg (cons X g ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).map θ p)) ih
 
 lemma glue_prepend (p : (AllMarked.nativeSpace W X Y).obj n) (t : MarkedSpine W Z n Y) :
-    glue (prepend p t) = composePoint W.paths X Y Z ((AllMarked.inclusion W X Y).app n p)
+    glue (prepend p t) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X Y Z ((AllMarked.inclusion W X Y).app n p)
       (glue t) := by
   cases t with
   | nil Y q => exact AllMarked.inclusion_composePoint W X Y Z p q
   | cons Y g q t =>
     dsimp only [prepend, glue, FactorTarget.pastePoint]
-    simp only [AllMarked.inclusion_composePoint, composePoint_assoc]
+    simp only [AllMarked.inclusion_composePoint, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_assoc]
 
 lemma glue_append (s : MarkedSpine W Y n X) (t : MarkedSpine W Z n Y) :
-    glue (append s t) = composePoint W.paths X Y Z (glue s) (glue t) := by
+    glue (append s t) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X Y Z (glue s) (glue t) := by
   induction s with
   | nil X p => exact glue_prepend p t
   | cons X g p s ih =>
     change FactorTarget.pastePoint W X Z g p (glue (append s t)) = _
     rw [ih]
-    exact (composePoint_assoc W.paths _ _ _).symm
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_assoc W.paths _ _ _).symm
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine

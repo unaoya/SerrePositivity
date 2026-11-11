@@ -65,13 +65,13 @@ def stageFiberIso (K : SSet.{u}) (X : PointedSimplicialSet.{u}) (n : ℕ) :
 使われ方：Goerss–Jardine I §7、VIII §1。fiber の群を相対骨格へ移す界面。 -/
 def stageFiberHomotopyEquiv (K : SSet.{u}) (X : PointedSimplicialSet.{u})
     [KanComplex X.right] (n r : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom (skeletalRelativeSource K n) X).right r
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom (skeletalRelativeSource K n) X).right r
         (PointedSimplicialSet.basepoint (PointedObject.basedHom (skeletalRelativeSource K n) X)) ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stageFiber K X n).right r (stageFiber K X n).basepoint := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stageFiber K X n).right r (stageFiber K X n).basepoint := by
   let e : (PointedObject.basedHom (skeletalRelativeSource K n) X).right ≅
       (stageFiber K X n).right := PointedSimplicialSet.forget.mapIso (stageFiberIso K X n)
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso r e
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (stageFiberIso K X n).hom)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso r e
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (stageFiberIso K X n).hom)
 
 end
 

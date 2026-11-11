@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionHomRepresentation
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DirectionCategory
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DirectionCategory
 public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
 
 /-!
@@ -22,14 +22,14 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite
 open scoped Simplicial
 
-variable (C : RelativeCategory.{u}) (X Y : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
 
 def freeResolutionMarkedHomSubcomplex : (freeResolutionGeneratorHom C X Y).Subcomplex where
   obj n := {f | ((freeResolution C).obj n).weakEquivalences f}
   map θ f hf := by
     change ((freeResolution C).obj _).weakEquivalences
       (eqToHom _ ≫ ((freeResolution C).map θ).functor.map f ≫ eqToHom _)
-    exact (Hammock.Direction.transport_mem _ _ _).2 (((freeResolution C).map θ).map f hf)
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DirectionCategory.transport_mem _ _ _).2 (((freeResolution C).map θ).map f hf)
 
 abbrev freeResolutionMarkedHom : SSet.{u} := (freeResolutionMarkedHomSubcomplex C X Y).toSSet
 
@@ -38,7 +38,7 @@ def freeResolutionMarkedHomAugmentation : freeResolutionMarkedHom C X Y ⟶
   app n := ↾fun f => ⟨(freeResolutionGeneratorHomAugmentation C X Y).app n f.val, by
     change C.weakEquivalences (eqToHom _ ≫
       ((freeResolutionAugmentationNatTrans C).app n).functor.map f.val ≫ eqToHom _)
-    exact (Hammock.Direction.transport_mem _ _ _).2
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DirectionCategory.transport_mem _ _ _).2
       (((freeResolutionAugmentationNatTrans C).app n).map f.val f.property)⟩
   naturality n m θ := by
     apply ConcreteCategory.hom_ext

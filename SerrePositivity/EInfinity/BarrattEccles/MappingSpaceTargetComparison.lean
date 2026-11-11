@@ -32,7 +32,7 @@ variable (A : Type u) [CommRing A]
 使われ方：極限の実際の Hom と導来写像空間を比較する。 -/
 def sourceFrameHom : (operad A).Algebraᵒᵖ ⥤ (operad A).Algebra ⥤ SSet.{u} := by
   let := modelCategory A
-  exact resolutionHom (cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj (𝟭 _)
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom (cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj (𝟭 _)
 
 /-- 概要：元の終域への frame Hom は Kan 複体（BM 命題 4.1、Hovey §5）。
 方針：全 E 代数の fibrancy と frame のホーン持ち上げを使う。
@@ -74,7 +74,7 @@ lemma sourceFrameHomComparison_isIso (X : (operad A).Algebraᵒᵖ) (Y : (operad
   have := fibrantTarget_isFibrant r Y
   have : WeakEquivalence ((fibrantTargetComparison r).app Y) :=
     ⟨fibrantTargetComparison_weakEquivalence r Y⟩
-  exact FrameHom.target_weakEquivalence_isIso (q.obj.obj X.unop) (q.cofibrant X.unop)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.target_weakEquivalence_isIso (q.obj.obj X.unop) (q.cofibrant X.unop)
     L hL ((fibrantTargetComparison r).app Y)
 
 /-- 概要：元の終域の Hom と Map^h は anodyne 反転後に二変数で自然同型（Hovey §5）。

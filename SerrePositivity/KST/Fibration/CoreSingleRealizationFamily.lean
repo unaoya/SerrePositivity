@@ -22,22 +22,22 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の core S 対角実現を、同じ閉内部 Hom を持つ対象として保持する。 -/
-def coreSingleRealizationObject (A : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) : SSetInternalObject.{u} :=
+def coreSingleRealizationObject (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) : SSetInternalObject.{u} :=
   ⟨coreSRealizationFunctor.obj (stableCategoryModel A)⟩
 
 /-- 元の単回実現値と core S 実現値の対象等号。 -/
-theorem coreSingleRealizationObject_eq (A : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+theorem coreSingleRealizationObject_eq (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (stableMultiRealizationEnrichedFunctor 1).obj A = coreSingleRealizationObject A :=
   congrArg SSetInternalObject.mk (coreSingleRealization_obj_eq (stableCategoryModel A)).symm
 
 /-- 元の core S 実現対象上へ全 Hom を読み替えた、同じ豊穣関手。 -/
 def coreSingleRealizationEnrichedFunctor :
-    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} SSetInternalObject.{u} :=
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u} SSetInternalObject.{u} :=
   relabelEnrichedObjects (stableMultiRealizationEnrichedFunctor 1)
     coreSingleRealizationObject (funext coreSingleRealizationObject_eq)
 
 /-- 全 Hom の読み替えは、元の単回実現座標同型による評価の輸送と一致する。 -/
-theorem coreSingleRealizationFamily_coordinates {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} {P : SSet.{u}}
+theorem coreSingleRealizationFamily_coordinates {A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} {P : SSet.{u}}
     (H : P ⟶ (A ⟶[SSet.{u}] C)) :
     uncurry (H ≫ coreSingleRealizationEnrichedFunctor.map A C) =
       ((coreSingleRealizationIso (stableCategoryModel A)).hom ▷ P) ≫
@@ -54,14 +54,14 @@ theorem coreSingleRealizationFamily_coordinates {A C : _root_.SerrePositivity.In
 
 /-- 元の商核円柱は、元の core S 対象上の同じ豊穣実現族の評価そのもの。 -/
 theorem quotientSKernelNullCylinder_coreRealization
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
     quotientSKernelNullCylinder h =
       uncurry (zeroEndPostcompFamily
         (show A ⟶ C from (show A ⟶ B from i) ≫ (show B ⟶ C from q))
           (verdierSequenceComposite_zero h) ≫
             coreSingleRealizationEnrichedFunctor.map
-              (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A) (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C)) := by
+              (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from A) (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from C)) := by
   rw [coreSingleRealizationFamily_coordinates]
   exact quotientSKernelNullCylinder_realization h
 

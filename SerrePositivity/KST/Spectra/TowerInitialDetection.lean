@@ -22,13 +22,13 @@ set_option backward.isDefEq.respectTransparency.types false
 
 variable (X : ℕ → PointedSimplicialSet.{u}) (p : ∀ n, X (n + 1) ⟶ X n)
   [∀ n, KanComplex (X n).right] [∀ n, Fibration (p n).right] (r : ℕ)
-  (hex : ∀ n, ∀ z : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p (n + 1))).right (r + 1)
+  (hex : ∀ n, ∀ z : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedFiber (p (n + 1))).right (r + 1)
       (pointedFiber (p (n + 1))).basepoint,
     differential X p (n + 1) r z = 1 →
-      ∃ c : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p n)).right (r + 2)
+      ∃ c : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedFiber (p n)).right (r + 2)
           (pointedFiber (p n)).basepoint,
         differential X p n (r + 1) c = z)
-  (hfirst : ∀ z : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p 0)).right (r + 1)
+  (hfirst : ∀ z : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedFiber (p 0)).right (r + 1)
       (pointedFiber (p 0)).basepoint, differential X p 0 r z = 1 → z = 1)
 
 include hex hfirst in

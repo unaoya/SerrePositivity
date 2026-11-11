@@ -48,7 +48,7 @@ lemma rawPointedPre_right {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (Z : OmegaSpec
 /-- 元の円 cotensor への BF 射の成分を、元の Hom の基本群へ送る標準比較。 -/
 def circleCotensorComponentClass (X Y : OmegaSpectrum.{u}) :
     π₀ (mappingSpace X (cotensor PointedSimplicialSet.circle Y)) →
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (RawSpectrumMapping.pointedSpace X Y.toKanSequence).right 0
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (RawSpectrumMapping.pointedSpace X Y.toKanSequence).right 0
         (RawSpectrumMapping.pointedSpace X Y.toKanSequence).basepoint :=
   SphereSimplex.componentClass (RawSpectrumMapping.pointedSpace X Y.toKanSequence) 0 ∘
     mapπ₀ (cotensorMappingEquivalence X Y PointedSimplicialSet.circle).hom
@@ -68,7 +68,7 @@ lemma circleCotensorComponentClass_bijective (X Y : OmegaSpectrum.{u}) :
 /-- 元の BF 射の成分と、元の Hom の基本群との集合の同値。 -/
 def circleCotensorComponentEquiv (X Y : OmegaSpectrum.{u}) :
     π₀ (mappingSpace X (cotensor PointedSimplicialSet.circle Y)) ≃
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (RawSpectrumMapping.pointedSpace X Y.toKanSequence).right 0
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (RawSpectrumMapping.pointedSpace X Y.toKanSequence).right 0
         (RawSpectrumMapping.pointedSpace X Y.toKanSequence).basepoint :=
   Equiv.ofBijective _ (circleCotensorComponentClass_bijective X Y)
 
@@ -78,8 +78,8 @@ lemma circleCotensorComponentClass_pre {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
     (a : π₀ (mappingSpace Y (cotensor PointedSimplicialSet.circle Z))) :
     circleCotensorComponentClass X Z
       (mapπ₀ (SpectrumMappingAcyclic.pre f (cotensor PointedSimplicialSet.circle Z)) a) =
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (RawSpectrumMapping.pointedPre f Z.toKanSequence).right
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (RawSpectrumMapping.pointedPre f Z.toKanSequence))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (RawSpectrumMapping.pointedPre f Z.toKanSequence).right
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (RawSpectrumMapping.pointedPre f Z.toKanSequence))
       (circleCotensorComponentClass Y Z a) := by
   have h := congrArg (fun q ↦ mapπ₀ q.right a)
     (cotensorPointedMappingComparison_pre_source f Z PointedSimplicialSet.circle)

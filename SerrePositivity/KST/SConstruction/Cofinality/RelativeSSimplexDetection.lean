@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：相対旗の S 交換の全単体条件。 -/
 lemma completionSWideSimplex_iff_pointwise (m r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (d : SimplexCategory)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (d : SimplexCategory)
     (v : (sStableModel m (((multiSEndofunctor r).obj ι).obj Y)).carrier.obj (Opposite.op d)) :
     v ∈ (LocalizingInvariants.completionCofiberWide
         ((sEndofunctor m).map (((multiSEndofunctor r).obj ι).map f)).val).obj (Opposite.op d) ↔
@@ -34,20 +34,20 @@ lemma completionSWideSimplex_iff_pointwise (m r : ℕ) (ι : Fin r → SimplexCa
   · intro hv a θ
     let E := sStableEvaluation m (((multiSEndofunctor r).obj ι).obj Y) a
     have h := (completionSWideEdge_iff_pointwise m r ι f hf
-      (edgeOfSimplex ((sStableModel m (((multiSEndofunctor r).obj ι).obj Y)).carrier.map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((sStableModel m (((multiSEndofunctor r).obj ι).obj Y)).carrier.map
         θ.op v))).mp (hv θ) a
     have he := ConcreteCategory.congr_hom (E.val.naturality θ.op) v
-    exact (congrArg (fun t => t ∈ cofiberLocalizingEdges
+    exact (congrArg (fun t => t ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
       (LocalizingInvariants.completionEssentialImage (((multiSEndofunctor r).obj ι).map f).val))
         he).mp h
   · intro hv θ
     apply (completionSWideEdge_iff_pointwise m r ι f hf
-      (edgeOfSimplex ((sStableModel m (((multiSEndofunctor r).obj ι).obj Y)).carrier.map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((sStableModel m (((multiSEndofunctor r).obj ι).obj Y)).carrier.map
         θ.op v))).mpr
     intro a
     let E := sStableEvaluation m (((multiSEndofunctor r).obj ι).obj Y) a
     have he := ConcreteCategory.congr_hom (E.val.naturality θ.op) v
-    exact (congrArg (fun t => t ∈ cofiberLocalizingEdges
+    exact (congrArg (fun t => t ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
       (LocalizingInvariants.completionEssentialImage (((multiSEndofunctor r).obj ι).map f).val))
         he).mpr (hv a θ)
 

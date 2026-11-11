@@ -21,7 +21,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 /-- 全補正の射影は、元の第一面から始まる同じ全区間の分解を厳密に保持する。 -/
 lemma monicKPrismNativeCompositeCorrectionChain_projection_trace (n : ℕ) :
     (familyHomotopyChainTrace (monicKPrismNativeCompositeCorrectionChain F f g (n + 1))).map
-      (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+      (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
         ((kKanSequence (F.obj z)).level (n + 1)).space) =
       ((nerve (CompositionStringParameters f g) ◁ stdSimplex.δ 2) ≫
           monicKPrismCompositionNativeTriangle n F f g) ::
@@ -36,7 +36,7 @@ lemma monicKPrismNativeCompositeCorrectionChain_projection_trace (n : ℕ) :
     monicKPrismNativeCompositeCorrectionChain_trace]
   calc
     _ = ((familyHomotopyChainTrace (monicKPrismTracedCompositeCorrectionChain F f g
-        (n + 1))).map (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+        (n + 1))).map (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
           ((kKanSequence (F.obj z)).level (n + 1)).space)).map
         ((compositionStringPair f g ▷ (Δ[1] : SSet.{u})) ≫ ·) := by
       simp only [List.map_map, Function.comp_def, Category.assoc]

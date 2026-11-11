@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductCylinderMap
-public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
-public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoproductCylinderMap
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.VertexFiberMap
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorHomotopy
 
 /-!
 概要：二入力の指定輸送を標的の境界の指定輸送へまとめる。

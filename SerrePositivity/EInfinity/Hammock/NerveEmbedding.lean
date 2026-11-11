@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.NerveAsSmall
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightMapMono
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightMapMono
 
 /-!
 # 対象と射の宇宙が異なる圏の nerve の単射性
@@ -39,7 +39,7 @@ lemma nerveMap_mono_of_faithful (F : C ⥤ D) [F.Faithful]
         apply F.map_injective
         exact congrArg ULift.down h }
   have : Mono (nerveMap G) :=
-    InfinityCategories.HomotopyLimits.nerveMap_mono_of_faithful G hG
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.nerveMap_mono_of_faithful G hG
   rw [NatTrans.mono_iff_mono_app]
   intro n
   rw [mono_iff_injective]

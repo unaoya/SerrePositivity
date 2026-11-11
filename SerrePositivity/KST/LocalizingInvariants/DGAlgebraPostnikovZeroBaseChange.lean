@@ -40,7 +40,7 @@ lemma postnikovZeroBaseProjection_localized_isProIso
   rightProjection_isProIso_of_inverts R _ _ (quasiIsoLocalization R)
     (quasiIsoLocalization_inverts R) (postnikovZeroMap_isProIso R f hf)
 
-variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+variable (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
 
 lemma IsKConnective.postnikovZeroBaseProjection_value_isProIso
     {k : ℤ} (h : IsKConnective R Φ k)

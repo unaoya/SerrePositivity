@@ -16,7 +16,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
 
 /-- 全 gapped 図式の二重 S 構成を二回転置すると厳密に元へ戻る。 -/
-lemma sInterchange_twice (m n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+lemma sInterchange_twice (m n : ℕ) (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     sInterchange m n C ≫ sInterchange n m C = 𝟙 _ := by
   let i := (gappedSubcomplex m (sConstruction n C)).ι
   let j := (ihom (arNerve m)).map (gappedSubcomplex n C).ι
@@ -25,14 +25,14 @@ lemma sInterchange_twice (m n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable 
   have : Mono j := (ihom (arNerve m)).map_mono _
   apply inverse_comp_of_commuting_mono (i ≫ j) (k ≫ l)
     (sInterchange m n C) (sInterchange n m C)
-    (internalHomSwapIso (arNerve m) (arNerve n) C).hom
-    (internalHomSwapIso (arNerve n) (arNerve m) C).hom
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve m) (arNerve n) C).hom
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve n) (arNerve m) C).hom
   · exact (Category.assoc _ _ _).symm.trans (sInterchange_double_ι m n C)
   · exact (Category.assoc _ _ _).symm.trans (sInterchange_double_ι n m C)
-  · exact _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_twice _ _ _
+  · exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.internalHomSwap_twice _ _ _
 
 /-- 全 gapped 図式の二重 S 構成は二方向の転置で厳密に同型。 -/
-def sInterchangeIso (m n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+def sInterchangeIso (m n : ℕ) (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     sConstruction m (sConstruction n C) ≅ sConstruction n (sConstruction m C) where
   hom := sInterchange m n C
   inv := sInterchange n m C

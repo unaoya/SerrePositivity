@@ -30,11 +30,11 @@ def kKanSuspensionPastingChoices {I : Type u} [SmallCategory I]
 /-- 元の二三角形の全貼り合わせは、追加の Kan 仮定なしで可縮 Kan。 -/
 lemma kKanSuspensionPastingChoices_isContractibleKan {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {i j : I} (f : i ⟶ j) :
-    IsContractibleKan (kKanSuspensionPastingChoices r F f) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (kKanSuspensionPastingChoices r F f) := by
   let : KanComplex (SimplicialCategory.sHom
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj i)).level r).space)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj i)).level r).space)
       ((kKanSequence (F.obj j)).level (r + 1)).space) :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact kanSpanPastingChoices_isContractibleKan _ _
 
 /-- 以前の指定適合辺を変更せず、同じ二三角形の全貼り合わせ空間へ入れる。 -/
@@ -42,9 +42,9 @@ def kKanSuspensionSpecifiedPastingVertex {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {i j : I} (f : i ⟶ j) :
     (kKanSuspensionPastingChoices r F f) _⦋0⦌ :=
   letI : KanComplex (SimplicialCategory.sHom
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj i)).level r).space)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj i)).level r).space)
       ((kKanSequence (F.obj j)).level (r + 1)).space) :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   kanMappingSpanPastingVertex (kKanSuspensionCompatibilityComposition r F f)
 
 /-- 元の適合辺は、指定頂点の評価で raw な一単体として厳密に回収する。 -/
@@ -56,9 +56,9 @@ lemma kKanSuspensionSpecifiedPastingVertex_edge {I : Type u} [SmallCategory I]
       (kKanSuspensionSpecifiedPastingVertex r F f)).edge =
       (kKanSuspensionCompatibilityEdge r F f).edge := by
   let : KanComplex (SimplicialCategory.sHom
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj i)).level r).space)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj i)).level r).space)
       ((kKanSequence (F.obj j)).level (r + 1)).space) :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact congrArg SSet.Edge.edge
     (kanSpanPastedEdge_mappingSpanVertex (kKanSuspensionCompatibilityComposition r F f))
 
@@ -68,16 +68,16 @@ lemma kKanSuspensionPastingChoices_relative_lifting {I : Type u} [SmallCategory 
     {T U : SSet.{u}} (k : T ⟶ U) [Mono k] (a : T ⟶ kKanSuspensionPastingChoices r F f) :
     ∃ b : U ⟶ kKanSuspensionPastingChoices r F f, k ≫ b = a := by
   let : KanComplex (SimplicialCategory.sHom
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj i)).level r).space)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj i)).level r).space)
       ((kKanSequence (F.obj j)).level (r + 1)).space) :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact kanSpanPastingChoices_relative_lifting _ _ k a
 
 /-- 元の全貼り合わせ三角形を同時に評価する、実際の native な二単体族。 -/
 def kKanSuspensionPastingFamily {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {i j : I} (f : i ⟶ j) :
     (Δ[2] : SSet.{u}) ⊗ kKanSuspensionPastingChoices r F f ⟶
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj i)).level r).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj i)).level r).space)
         ((kKanSequence (F.obj j)).level (r + 1)).space).right :=
   kanSpanPastingFamily
     (coherentSquareMappingLeftTop (kKanSuspensionMappingTriangles r F f))
@@ -87,7 +87,7 @@ def kKanSuspensionPastingFamily {I : Type u} [SmallCategory I]
 def kKanSuspensionPastingEdge {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {i j : I} (f : i ⟶ j)
     (v : (kKanSuspensionPastingChoices r F f) _⦋0⦌) :
-    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj i)).level r).space)
+    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj i)).level r).space)
       ((kKanSequence (F.obj j)).level (r + 1)).space).right.Edge
       (PointedMapping.familyVertex
         ((kKanSequence (F.obj i)).sigma r ≫ kKanSequenceLevelMap (F.map f) (r + 1)))

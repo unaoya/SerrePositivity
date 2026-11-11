@@ -37,7 +37,7 @@ lemma circleTensor_isLeftQuillen :
 variable (hw : weakEquivalences SSet.{u} = SimplicialHomotopy.weakEquivalences)
   [IsLocallyPresentable.{w} (GeneralSymmetricSpectrum PointedSimplicialSet.{u} K)]
   (I J : MorphismProperty (GeneralSymmetricSpectrum PointedSimplicialSet.{u} K))
-  [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [MorphismProperty.IsStableUnderCobaseChangeAgainst
     (weakEquivalences (GeneralSymmetricSpectrum PointedSimplicialSet.{u} K))
     (cofibrations (GeneralSymmetricSpectrum PointedSimplicialSet.{u} K))]

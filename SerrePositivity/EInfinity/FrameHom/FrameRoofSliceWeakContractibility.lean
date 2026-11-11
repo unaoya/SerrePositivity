@@ -3,8 +3,8 @@ module
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofSliceFibration
 public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
 public import SerrePositivity.KST.Comparison.ArbitraryBasePullback
-public import SerrePositivity.InfinityCategories.F1B.Cones.SliceIdentityTerminal
-public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialTerminalWeakContractibility
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SliceIdentityTerminal
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.InitialTerminalWeakContractibility
 
 /-!
 # 元の次数比較による実屋根 slice の弱可縮性の還元
@@ -32,15 +32,15 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
 def roofQuillenDegreeCornerMap :
     pullback (f ≫ roofTargetProjection A Y q)
       (nerveMap (Over.forget (roofTargetDegree A Y q b))) ⟶
-        sliceOverCorner (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q) :=
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q) :=
   inv (roofQuillenDegreeNormalizationMap A Y q b f) ≫
-    sliceRoofCornerBase (roofTargetProjection A Y q) f (SSet.yonedaEquiv.symm b)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceRoofCornerBase (roofTargetProjection A Y q) f (SSet.yonedaEquiv.symm b)
 
 lemma roofQuillenDegreeCorner_isPullback : IsPullback (pullback.snd f
-    (sliceOverProjection (SSet.yonedaEquiv.symm b))) (roofQuillenSliceDegreeMap A Y q b f)
-      (sliceOverCornerMap (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm b))) (roofQuillenSliceDegreeMap A Y q b f)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCornerMap (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q))
       (roofQuillenDegreeCornerMap A Y q b f) := by
-  apply (sliceRoofCorner_isPullback (roofTargetProjection A Y q) f
+  apply (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceRoofCorner_isPullback (roofTargetProjection A Y q) f
     (SSet.yonedaEquiv.symm b)).of_iso (Iso.refl _) (Iso.refl _)
     (asIso (roofQuillenDegreeNormalizationMap A Y q b f)) (Iso.refl _)
   · simp only [Iso.refl_hom, Category.comp_id, Category.id_comp]
@@ -50,9 +50,9 @@ lemma roofQuillenDegreeCorner_isPullback : IsPullback (pullback.snd f
       ← Category.assoc, IsIso.hom_inv_id, Category.id_comp]
 
 lemma roofQuillenSlice_weaklyContractible_of_corner_weak [SSet.Quasicategory E]
-    [LeftFibration (roofTargetProjection A Y q)]
-    (h : IsWeakHomotopyEquivalence (roofQuillenDegreeCornerMap A Y q b f)) :
-    IsWeaklyContractible (roofQuillenSlice A Y q b f) := by
+    [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (roofTargetProjection A Y q)]
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (roofQuillenDegreeCornerMap A Y q b f)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (roofQuillenSlice A Y q b f) := by
   have hi := Hammock.anodyneQ_map_isIso_of_weak _ h
   have hp := pointSliceCornerMap_fibration (SSet.yonedaEquiv.symm b)
     (roofTargetProjection A Y q)
@@ -61,6 +61,6 @@ lemma roofQuillenSlice_weaklyContractible_of_corner_weak [SSet.Quasicategory E]
     (roofQuillenDegreeCorner_isPullback A Y q b f)
   have hw := AnodyneWeakDetection.isWeakHomotopyEquivalence _ hj
   exact hw.weaklyContractible_iff.mpr
-    (SerrePositivity.InfinityCategories.F1B.sliceIdentityCone_isTerminalVertex b).isWeaklyContractible
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceIdentityCone_isTerminalVertex b).isWeaklyContractible
 
 end SerrePositivity.EInfinity.FrameHom.FrameArrows

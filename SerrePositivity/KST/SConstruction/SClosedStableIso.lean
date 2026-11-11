@@ -48,7 +48,7 @@ lemma closedStableInclusion_cancel {X Y : StableModel.{u}} (P : ClosedStablePred
     {f g : X ⟶ closedStableModel P}
     (h : f ≫ closedStableInclusion P = g ≫ closedStableInclusion P) : f = g := by
   have : Mono (closedStableInclusion P).val :=
-    inferInstanceAs (Mono (fullSubcomplexOnVertices Y.carrier P.predicate).ι)
+    inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices Y.carrier P.predicate).ι)
   apply Subtype.ext
   apply (cancel_mono (closedStableInclusion P).val).1
   exact congrArg Subtype.val h

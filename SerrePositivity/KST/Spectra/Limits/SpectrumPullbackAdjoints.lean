@@ -29,7 +29,7 @@ local instance : (PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u})
 規約：Kan 性や fibration 性を要求しない通常の厳密な同型。
 使われ方：Sp の引き戻し列の随伴構造射の比較。 -/
 def loopPullbackIso {E X B : PointedSimplicialSet.{u}} (f : E ⟶ B) (g : X ⟶ B) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (pullback f g) ≅
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (pullback f g) ≅
       pullback (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} f)
         (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} g) :=
   PreservesPullback.iso (PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u}) f g
@@ -64,8 +64,8 @@ def pullbackAdjointMap {E X B : KanSequence.{u}}
       pullback (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (f.app (n + 1)))
         (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (g.app (n + 1))) :=
   pullback.lift
-    (pullback.fst (f.app n) (g.app n) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (E.sigma n))
-    (pullback.snd (f.app n) (g.app n) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma n)) (by
+    (pullback.fst (f.app n) (g.app n) ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (E.sigma n))
+    (pullback.snd (f.app n) (g.app n) ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma n)) (by
       rw [Category.assoc, ← f.adjoint_comm n, ← Category.assoc, pullback.condition,
         Category.assoc, g.adjoint_comm n, ← Category.assoc])
 
@@ -75,7 +75,7 @@ def pullbackAdjointMap {E X B : KanSequence.{u}}
 使われ方：BF 1978 §2、Sp の引き戻しの Ω 条件を比較射の π_* 同型へ帰着する。 -/
 lemma pullbackSigma_adjoint {E X B : KanSequence.{u}}
     (f : KanSequence.Hom E B) (g : KanSequence.Hom X B) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (KanSequence.pullbackSigma f g n) ≫
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (KanSequence.pullbackSigma f g n) ≫
         (loopPullbackIso (f.app (n + 1)) (g.app (n + 1))).hom =
       pullbackAdjointMap f g n := by
   apply pullback.hom_ext
@@ -104,11 +104,11 @@ lemma pullbackSequence_omega_iff {E X B : KanSequence.{u}}
     (f : KanSequence.Hom E B) (g : KanSequence.Hom X B)
     [∀ n, Fibration (f.app n).right] :
     (KanSequence.pullbackSequence f g).OmegaCondition ↔
-      ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pullbackAdjointMap f g n).right := by
-  have hi (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+      ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (pullbackAdjointMap f g n).right := by
+  have hi (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       (loopPullbackIso (f.app (n + 1)) (g.app (n + 1))).hom.right :=
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso
-      (X := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (pullback (f.app (n + 1)) (g.app (n + 1)))).right)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso
+      (X := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (pullback (f.app (n + 1)) (g.app (n + 1)))).right)
       (Y := (pullback
         (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (f.app (n + 1)))
         (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (g.app (n + 1)))).right)
@@ -118,8 +118,8 @@ lemma pullbackSequence_omega_iff {E X B : KanSequence.{u}}
     have he := (h n).comp (hi n)
     have hc := congrArg Under.Hom.right (pullbackSigma_adjoint f g n)
     simp only [Under.comp_right] at hc
-    change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
-      ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (KanSequence.pullbackSigma f g n)).right ≫ _) at he
+    change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
+      ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (KanSequence.pullbackSigma f g n)).right ≫ _) at he
     rw [hc] at he
     exact he
   · intro h n

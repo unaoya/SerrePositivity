@@ -36,7 +36,7 @@ def constantComparison : (Functor.const K : SSet.{w} ⥤ _) ⋙ Q ≅
     L ⋙ localizedConstant K L Q :=
   (Localization.fac ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L).symm
 
-variable (I J : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+variable (I J : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 abbrev functor : (K ⥤ SSet.{w}) ⥤ SSet.{w} := HomotopyCones.functor K I J
 

@@ -31,57 +31,57 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 def dgKappaSuppliedBFVertexComparison : Prop :=
   ∀ (c : Fin 4) (_ : c = 0 ∨ c = 3),
     let C := dgKappaNativeBFFiniteNativeObject R D I c
-    Nonempty (VertexIso (coherentNerveVertex (kOmegaSpectrum (sInputModel C.obj)))
-      (coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum R D I C)))
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum (sInputModel C.obj)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum R D I C)))
 
 /-- 概要：同じ実供給四角形の始点は元の実核の新 BF 模型。
 方針：元の実下辺の始点を回収する。
 規約：旧 K 値と新 BF 模型を等号で同一視しない。
 使われ方：二頂点供給の始点比較を元の全錐へ戻す。 -/
 theorem dgKappaSuppliedBFSquare_source :
-    squareVertex (dgKappaNativeCoherentBFSquare R D I) 0 0 =
-      coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum R D I
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 0 0 =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum R D I
         (dgKappaNativeBFFiniteNativeObject R D I 0)) := by
-  have h := squareBottomEdge_source (dgKappaNativeCoherentBFSquare R D I)
+  have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source (dgKappaNativeCoherentBFSquare R D I)
   have hb := dgKappaNativeCoherentBFSquare_boundary R D I 0
-  change squareBottomEdge ≫ dgKappaNativeCoherentBFSquare R D I = _ at hb
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ dgKappaNativeCoherentBFSquare R D I = _ at hb
   rw [hb] at h
   have hv := congrArg (fun t : Sp.{max (u + 1) v} _⦋1⦌ =>
     Sp.{max (u + 1) v}.δ 1 t)
     (SSet.yonedaEquiv.apply_symm_apply
-      (coherentNerveEdge (dgKappaNativeCoherentBFArrow R D I 0).hom).edge)
-  exact h.symm.trans (hv.trans (coherentNerveEdge _).src_eq)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeCoherentBFArrow R D I 0).hom).edge)
+  exact h.symm.trans (hv.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge _).src_eq)
 
 /-- 概要：同じ実供給四角形の終点は元の実商の新 BF 模型。
 方針：元の実右辺の終点を回収する。
 規約：旧 K 値と新 BF 模型を等号で同一視しない。
 使われ方：二頂点供給の終点比較を元の loop へ戻す。 -/
 theorem dgKappaSuppliedBFSquare_target :
-    squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1 =
-      coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum R D I
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1 =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum R D I
         (dgKappaNativeBFFiniteNativeObject R D I 3)) := by
-  have h := squareRightEdge_target (dgKappaNativeCoherentBFSquare R D I)
+  have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target (dgKappaNativeCoherentBFSquare R D I)
   have hb := dgKappaNativeCoherentBFSquare_boundary R D I 1
-  change squareRightEdge ≫ dgKappaNativeCoherentBFSquare R D I = _ at hb
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ dgKappaNativeCoherentBFSquare R D I = _ at hb
   rw [hb] at h
   have hv := congrArg (fun t : Sp.{max (u + 1) v} _⦋1⦌ =>
     Sp.{max (u + 1) v}.δ 0 t)
     (SSet.yonedaEquiv.apply_symm_apply
-      (coherentNerveEdge (dgKappaNativeCoherentBFArrow R D I 1).hom).edge)
-  exact h.symm.trans (hv.trans (coherentNerveEdge _).tgt_eq)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeCoherentBFArrow R D I 1).hom).edge)
+  exact h.symm.trans (hv.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge _).tgt_eq)
 
 /-- 概要：同じ実供給全錐の始点は同じ実核の新 BF 頂点。
 方針：元の全錐の頂点評価と実下辺の始点を照合する。
 規約：同じ実全錐を保持する。
 使われ方：実構造辺に前合成する二頂点比較の行先。 -/
 theorem dgKappaSuppliedBFFiberComparison_source :
-    (pullbackCone (dgKappaNativeCoherentBFSquare R D I)).vertex =
-      coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum R D I
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone (dgKappaNativeCoherentBFSquare R D I)).vertex =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum R D I
         (dgKappaNativeBFFiniteNativeObject R D I 0)) := by
-  rw [JoinCone.vertex_eq]
-  change SSet.yonedaEquiv (joinInl Δ[0] (horn 2 2) ≫
-    (cospanConeSquareIso.hom ≫ dgKappaNativeCoherentBFSquare R D I)) = _
-  rw [← Category.assoc, cospanConeSquareIso_initialPoint,
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone.vertex_eq]
+  change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl Δ[0] (horn 2 2) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.hom ≫ dgKappaNativeCoherentBFSquare R D I)) = _
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cospanConeSquareIso_initialPoint,
     SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
   exact dgKappaSuppliedBFSquare_source R D I
 
@@ -97,9 +97,9 @@ theorem dgKappaSuppliedBFVertexComparison_of_sConstruction :
 方針：番号 0 の元の SOA 比較同型を同じ錐頂点へ読み替える。
 規約：公開済みの実 Sp 同型を使い、整数群から構成しない。
 使われ方：固定 K から元の新 BF 構造辺へ入る実始点比較。 -/
-def dgKappaSuppliedBFSourceIso : VertexIso
-    (coherentNerveVertex (kOmegaSpectrum (stableCategoryModel (dgKappaNativeKernelCategory R D I))))
-    (pullbackCone (dgKappaNativeCoherentBFSquare R D I)).vertex := by
+def dgKappaSuppliedBFSourceIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum (stableCategoryModel (dgKappaNativeKernelCategory R D I))))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone (dgKappaNativeCoherentBFSquare R D I)).vertex := by
   rw [dgKappaSuppliedBFFiberComparison_source]
   exact dgKappaNativeBFSOAVertexIso R D I (dgKappaNativeBFFiniteNativeObject R D I 0)
 
@@ -107,10 +107,10 @@ def dgKappaSuppliedBFSourceIso : VertexIso
 方針：番号 3 の元の SOA 比較同型を同じ実四角形の終点へ読み替える。
 規約：公開済みの実 Sp 同型を使い、実商は同じ未完備の値を保つ。
 使われ方：新 BF 商の loop から元の Yoneda 完備化比較へ戻す。 -/
-def dgKappaSuppliedBFTargetIso : VertexIso
-    (coherentNerveVertex (kOmegaSpectrum
+def dgKappaSuppliedBFTargetIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
       (stableCategoryModel (dgKappaNativeSuspensionCategory R D I))))
-    (squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1) := by
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1) := by
   rw [dgKappaSuppliedBFSquare_target]
   exact dgKappaNativeBFSOAVertexIso R D I (dgKappaNativeBFFiniteNativeObject R D I 3)
 

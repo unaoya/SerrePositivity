@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.SquareOpposite
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.SquareOpposite
 
 /-!
 概要：四角形の反転は cospan を反転した span に移す。
@@ -19,26 +19,26 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma pushoutSpan_reverseGrid {X : SSet.{u}} (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) :
-    pushoutSpan (reverseGrid F) =
-      (hornReverseIso 2 2).hom ≫ SSet.opFunctor.map (pullbackCospan F) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid F) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.hornReverseIso 2 2).hom ≫ SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan F) := by
   apply horn₂₀.isPushout.hom_ext
-  · rw [← Category.assoc, stableHornReverse_two_left, Category.assoc,
+  · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHornReverse_two_left, Category.assoc,
       ← CategoryTheory.Functor.map_comp]
-    rw [pushoutSpan, ← Category.assoc, spanSquareBoundary_bottomEdge,
-      pullbackCospan, ← Category.assoc, cospanSquareBoundary_topEdge]
-    change squareBottomEdge ≫ reverseGrid F =
-      (stdSimplex.opIso ⦋1⦌).inv ≫ SSet.opFunctor.map (squareTopEdge ≫ F)
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary_bottomEdge,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary_topEdge]
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid F =
+      (stdSimplex.opIso ⦋1⦌).inv ≫ SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ F)
     apply SSet.hom_ext
     rintro ⟨⟨n⟩⟩
     apply ConcreteCategory.hom_ext
     intro s
     rfl
-  · rw [← Category.assoc, stableHornReverse_two_right, Category.assoc,
+  · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHornReverse_two_right, Category.assoc,
       ← CategoryTheory.Functor.map_comp]
-    rw [pushoutSpan, ← Category.assoc, spanSquareBoundary_leftEdge,
-      pullbackCospan, ← Category.assoc, cospanSquareBoundary_rightEdge]
-    change squareLeftEdge ≫ reverseGrid F =
-      (stdSimplex.opIso ⦋1⦌).inv ≫ SSet.opFunctor.map (squareRightEdge ≫ F)
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary_leftEdge,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary_rightEdge]
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid F =
+      (stdSimplex.opIso ⦋1⦌).inv ≫ SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ F)
     apply SSet.hom_ext
     rintro ⟨⟨n⟩⟩
     apply ConcreteCategory.hom_ext
@@ -47,8 +47,8 @@ lemma pushoutSpan_reverseGrid {X : SSet.{u}} (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) �
 
 lemma pushoutSpan_reverseGrid_eq_of_cospan_eq {X : SSet.{u}}
     {F G : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
-    (h : pullbackCospan F = pullbackCospan G) :
-    pushoutSpan (reverseGrid F) = pushoutSpan (reverseGrid G) := by
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan F = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan G) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid F) = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid G) := by
   rw [pushoutSpan_reverseGrid, pushoutSpan_reverseGrid, h]
 
 end SerrePositivity.KST.LocalizingInvariants

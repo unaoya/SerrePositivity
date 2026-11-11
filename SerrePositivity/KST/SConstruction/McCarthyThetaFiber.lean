@@ -32,10 +32,10 @@ lemma mcCarthyThetaFiber_condition (X : StableModel.{u}) {m : ℕ}
   change gappedDiagram ((objectSConstructionFunctor.map (cofiberStableSubobject X)).app
     (Opposite.op ⦋n⦌) (mcCarthyThetaObjectVertex X a e τ)) =
       gappedDiagram ((SSet.yonedaEquiv.symm a).app (Opposite.op ⦋n⦌)
-        (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (Fin.last m)) n))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (Fin.last m)) n))
   rw [gappedDiagram_objectSFunctor_map, mcCarthyThetaObjectVertex_diagram]
   change variableTimeImage _ _ _ ≫
-    (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ evaluateFunctorAt
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm 0) = _
   rw [← cofiberProjection_source, zeroSourceTheta_variableTime_source]
   symm

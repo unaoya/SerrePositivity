@@ -25,7 +25,7 @@ def pointedSSetSuspensionObject (X : PointedSSetObject.{u}) : PointedSSetObject.
 
 /-- 元の円の単位と smash 比較から得る、同じ写した値の suspension の実比較。 -/
 def coaugmentedPointedSuspensionComparison (X : PointedSSetObject.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (coaugmentedPointedObject F η X).obj ⟶
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (coaugmentedPointedObject F η X).obj ⟶
       (coaugmentedPointedObject F η (pointedSSetSuspensionObject X)).obj :=
   ((show pointedSSetCircleObject.obj ⟶
       (coaugmentedPointedObject F η pointedSSetCircleObject).obj from
@@ -35,7 +35,7 @@ def coaugmentedPointedSuspensionComparison (X : PointedSSetObject.{u}) :
 
 /-- 元の単位の suspension を、同じ元の円を固定した通常の点つき射として保持する。 -/
 def coaugmentedPointedSuspensionUnit (X : PointedSSetObject.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (coaugmentedPointedObject F η X).obj :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X.obj ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (coaugmentedPointedObject F η X).obj :=
   PointedSimplicialSet.circle.{u} ◁
     (show X.obj ⟶ (coaugmentedPointedObject F η X).obj from coaugmentedPointedUnit F η X)
 

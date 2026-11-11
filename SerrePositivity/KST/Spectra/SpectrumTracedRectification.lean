@@ -48,9 +48,9 @@ def tracedRectifyIntoComparison (n : ℕ) :
 
 /-- トレースを保持した同じ BF 比較も、全段・全基点の π 同型性を保つ。 -/
 lemma tracedRectifyInto_levelwise
-    (hpi : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f n).right) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((tracedRectifyInto X Y hY f h).app n).right := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp
+    (hpi : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f n).right) (n : ℕ) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((tracedRectifyInto X Y hY f h).app n).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp
     (g := ((Y.cofibrantOmegaProjection hY).app n).right) _ (Y.replacementProjection_piIsomorphism n)
   have hp := (kanPiIsomorphism_iff_of_homotopy
     (tracedRectifyIntoComparison X Y hY f h n).homotopy).mp (hpi n)

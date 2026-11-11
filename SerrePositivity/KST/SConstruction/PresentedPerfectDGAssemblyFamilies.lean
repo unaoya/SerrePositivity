@@ -21,7 +21,7 @@ variable (A : Type u) [CommRing A]
 /-- 元の一次方向商の同じ suspension を標準点つき値として保持する。 -/
 def presentedPerfectDGAssemblyObject (r : ℕ) (C : PerfDGInput.{u, v} A) :
     PointedSSetObject.{max (u + 1) v} :=
-  ⟨_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (oneDirectionReducedRealization r
+  ⟨_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (oneDirectionReducedRealization r
     (stableCategoryModel (presentedPerfectDGStableCategory.{u, v} A C)))⟩
 
 /-- 元の一次方向の全族を同じ円で suspension した実写像族。 -/
@@ -48,7 +48,7 @@ lemma presentedPerfectDGAssemblyFamily_based (r : ℕ) (C D : PerfDGInput.{u, v}
         (presentedPerfectDGBoundaryPointedObject.{u, v} A (r + 1) D).obj
         (presentedPerfectDGAssemblyObjectMap.{u, v} A r D) =
     presentedPerfectDGBoundaryReducedFamilyMap.{u, v} A (r + 1) C D ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (presentedPerfectDGAssemblyObjectMap.{u, v} A r C)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (presentedPerfectDGAssemblyObjectMap.{u, v} A r C)
         (presentedPerfectDGBoundaryPointedObject.{u, v} A (r + 1) D).obj := by
   ext n t
   exact types_congr_hom (NatTrans.congr_app

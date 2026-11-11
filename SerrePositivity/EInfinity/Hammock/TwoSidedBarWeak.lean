@@ -26,24 +26,24 @@ variable {W : Type u} [Category.{u} W]
   {F F' : Wᵒᵖ ⥤ SSet.{u}} {G G' : W ⥤ SSet.{u}}
 
 lemma flippedRowMap_isWeakHomotopyEquivalence (α : F ⟶ F') (β : G ⟶ G')
-    (hα : ∀ w, IsWeakHomotopyEquivalence (α.app w))
-    (hβ : ∀ w, IsWeakHomotopyEquivalence (β.app w)) (n : SimplexCategoryᵒᵖ) :
-    IsWeakHomotopyEquivalence (flippedRowMap α β n) := by
+    (hα : ∀ w, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (α.app w))
+    (hβ : ∀ w, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (β.app w)) (n : SimplexCategoryᵒᵖ) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (flippedRowMap α β n) := by
   have hs := IndexedSum.map_weak
     (fun c : ComposableArrows W n.unop.len =>
       α.app (op (c.obj (Fin.last n.unop.len))) ⊗ₘ β.app (c.obj 0))
     (fun c => weakTensor (hα _) (hβ _))
   have h :=
-    (isPrecompositionEquivalence_of_iso (rowIso F G n)).isWeakHomotopyEquivalence.comp hs
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (rowIso F G n)).isWeakHomotopyEquivalence.comp hs
   rw [← rowIso_naturality α β n] at h
-  exact (isPrecompositionEquivalence_of_iso
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (rowIso F' G' n)).isWeakHomotopyEquivalence.cancel_right h
 
 lemma map_isWeakHomotopyEquivalence (α : F ⟶ F') (β : G ⟶ G')
-    (hα : ∀ w, IsWeakHomotopyEquivalence (α.app w))
-    (hβ : ∀ w, IsWeakHomotopyEquivalence (β.app w)) :
-    IsWeakHomotopyEquivalence (map α β) :=
-  DoubleSimplicial.diagonalFunctor_map_weak_of_columns (rowMap α β)
+    (hα : ∀ w, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (α.app w))
+    (hβ : ∀ w, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (β.app w)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.map α β) :=
+  DoubleSimplicial.diagonalFunctor_map_weak_of_columns (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rowMap α β)
     (flippedRowMap_isWeakHomotopyEquivalence α β hα hβ)
 
 end SerrePositivity.EInfinity.Hammock.TwoSidedBar

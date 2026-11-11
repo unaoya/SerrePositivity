@@ -41,8 +41,8 @@ lemma signedLoopSourceComparison_projection (n : ℕ) :
 
 /-- 源の twist と符号付き loop 模型の実際の比較は全段・全基点で π 同型。 -/
 lemma signedLoopSourceComparison_levelwise (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((signedLoopSourceComparison X).app n).right := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((signedLoopProjection X).app n).right) _
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((signedLoopSourceComparison X).app n).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := ((signedLoopProjection X).app n).right) _
     (KanSequence.replacementProjection_piIsomorphism (KanSequence.signedLoopTail X.toKanSequence) n)
   have h := congrArg Under.Hom.right (signedLoopSourceComparison_projection X n)
   change ((signedLoopSourceComparison X).app n).right ≫

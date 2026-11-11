@@ -21,8 +21,8 @@ namespace SerrePositivity.KST.Spectra.TripleCircle
 
 /-- 三つの円の元の交換と反転は、任意の Kan 標的への前合成の成分作用が一致する。 -/
 lemma pre_swap_eq_reversal (Z : PointedSimplicialSet.{u}) [KanComplex Z.right] :
-    mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed swap.{u} Z).right =
-      mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed reversal.{u} Z).right := by
+    mapπ₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed swap.{u} Z).right =
+      mapπ₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed reversal.{u} Z).right := by
   have hinj : Function.Injective (mapπ₀ (mappingIso Z).hom.right) := by
     intro b c h
     have hi := congrArg Under.Hom.right (mappingIso Z).hom_inv_id

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCompositionTetrahedron
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTrianglePathSets
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentTrianglePathSets
 
 /-!
 概要：比較三単体の第二面の二つの長い path を元の精密化の両端に同定する。

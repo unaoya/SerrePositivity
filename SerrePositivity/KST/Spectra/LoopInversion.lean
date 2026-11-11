@@ -45,7 +45,7 @@ theorem classOf_inversion (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
 規約：次数は n+1。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。負の整数冪の群への作用。 -/
 theorem groupMap_inversion (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom CirclePower.space.{u} Y).right n
+    (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom CirclePower.space.{u} Y).right n
       (PointedSimplicialSet.basepoint (PointedObject.basedHom CirclePower.space Y))) :
     pointedGroupMap n (inversion Y) a = a⁻¹ := by
   have hc : classOf (PointedObject.prodLift (𝟙 _) (inversion Y) ≫ multiplication Y) =
@@ -92,7 +92,7 @@ theorem classOf_integerPowerRepresentative (Y : PointedSimplicialSet.{u}) [KanCo
 使われ方：Goerss–Jardine I §7、HA §1.4.2。負の次数射の通常の群への移送。 -/
 theorem groupMap_integerPowerRepresentative (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
     (z : ℤ) (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom CirclePower.space.{u} Y).right n
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom CirclePower.space.{u} Y).right n
       (PointedSimplicialSet.basepoint (PointedObject.basedHom CirclePower.space Y))) :
     pointedGroupMap n (integerPowerRepresentative Y z) a = a ^ z := by
   cases z with

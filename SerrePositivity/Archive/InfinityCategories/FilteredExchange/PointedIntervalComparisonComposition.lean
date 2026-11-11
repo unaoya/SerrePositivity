@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.PointedIntervalTransport
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PointedIntervalTransport
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberTransportFamilyComparisonComposition
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.Square
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Square
 
 /-!
 概要：有限格子の単調写像を、標準単体の直積からの全単体的写像へ移す。

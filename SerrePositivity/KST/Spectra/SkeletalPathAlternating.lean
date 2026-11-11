@@ -26,39 +26,39 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine VIII §1。成分微分の代表と照合すべき交代式。 -/
 theorem normalizedDifferential_endpoint (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] {n : ℕ}
-    (f : (K.skeleton (n + 3) : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right)
+    (f : (K.skeleton (n + 3) : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right)
     (hf : ∀ t : (K.skeleton (n + 3) : SSet.{u}) _⦋n + 1⦌,
-      yonedaEquiv.symm t ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)
+      yonedaEquiv.symm t ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint)
     (H : (K.skeleton (n + 4) : SSet.{u}) ⟶ (basedPathSpace Y).right)
     (hH : UnbasedPointedMapping.skeletalInclusion K (n + 2) ≫ H =
       f ≫ (PointedMapping.loopToPath Y).right)
     (s : K.nonDegenerate (n + 3)) :
     (loopPositiveHomotopyEquiv Y (n + 1)).toAdditive
-        (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K
           (AddCommGrpCat.of (Additive
-            (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right (n + 1) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)))
-          (n + 2) (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cochain f hf) s) =
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right (n + 1) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint)))
+          (n + 2) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cochain f hf) s) =
       (-1 : ℤ) ^ (n + 3) • Additive.ofMul
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (endpointSimplex K Y f H hH s.val)) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (endpointSimplex K Y f H hH s.val)) := by
   let b := SimplexBasepoint.rebase (pathEndpoint_basepoint Y).symm
     (endpointSimplex K Y f H hH s.val)
-  let a := fun j : Fin (n + 4) ↦ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.simplexValue f hf (K.δ j s.val)
+  let a := fun j : Fin (n + 4) ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.simplexValue f hf (K.δ j s.val)
   have hface : ∀ j, stdSimplex.δ j ≫ cellPath K Y H s.val =
-      (a j).map ≫ (loopBasedPathFiberIso Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι (pathEndpoint Y).right
+      (a j).map ≫ (loopBasedPathFiberIso Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι (pathEndpoint Y).right
         ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint) := by
     intro j
     rw [PointedMapping.loopToPath_fiber]
     exact cellPath_face K Y f H hH hf s.val j
   have h := SphericalPathBoundary.alternating_loopPositive Y b a
     (cellPath K Y H s.val) (cellPath_endpoint K Y f H hH s.val) hface
-  have hb : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (n + 2) (Iso.refl Y.right)
-      (pathEndpoint_basepoint Y) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (endpointSimplex K Y f H hH s.val) := by
+  have hb : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso (n + 2) (Iso.refl Y.right)
+      (pathEndpoint_basepoint Y) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk b) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (endpointSimplex K Y f H hH s.val) := by
     rw [SimplexBasepoint.group_mk]
     congr 1
   rw [hb] at h
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.differential_cochain_apply]
-  simpa only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass,
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.differential_cochain_apply]
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.alternatingClass, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.additiveClass,
     map_sum, map_zsmul, MulEquiv.toAdditive_apply_apply, toMul_ofMul] using h
 
 /-- 概要：正規化微分は、path 延長の終点の実際の fiber 成分の係数を計算する。
@@ -67,18 +67,18 @@ theorem normalizedDifferential_endpoint (K : SSet.{u})
 使われ方：Goerss–Jardine VIII §1。成分微分の代表と照合すべき交代式。 -/
 theorem normalizedDifferential_endpointFiber (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] {n : ℕ}
-    (f : (K.skeleton (n + 3) : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right)
+    (f : (K.skeleton (n + 3) : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right)
     (hf : ∀ t : (K.skeleton (n + 3) : SSet.{u}) _⦋n + 1⦌,
-      yonedaEquiv.symm t ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)
+      yonedaEquiv.symm t ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint)
     (H : (K.skeleton (n + 4) : SSet.{u}) ⟶ (basedPathSpace Y).right)
     (hH : UnbasedPointedMapping.skeletalInclusion K (n + 2) ≫ H =
       f ≫ (PointedMapping.loopToPath Y).right)
     (s : K.nonDegenerate (n + 3)) :
     (loopPositiveHomotopyEquiv Y (n + 1)).toAdditive
-        (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K
           (AddCommGrpCat.of (Additive
-            (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right (n + 1) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)))
-          (n + 2) (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cochain f hf) s) =
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right (n + 1) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint)))
+          (n + 2) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cochain f hf) s) =
       (-1 : ℤ) ^ (n + 3) • Additive.ofMul
         (SkeletalCellAttachment.stageFiberComponentEquiv K Y (n + 2)
           (π₀.mk (endpointFiberVertex K Y f H hH)) s) := by

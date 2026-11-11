@@ -27,12 +27,12 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
   (hBF : dgKappaNativeBFSquareComparison R D I)
   (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-    F2.Idempotent.IsIdempotentCompletion f.val →
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
       (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
         Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
   (Z : DGKappaZeroInput R D I)
-  (hS : ∀ r : ℕ, IsPullbackSquare ((dgKappaNativeVerdierDiagram R D I).square ≫
-    coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} r)))
+  (hS : ∀ r : ℕ, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare ((dgKappaNativeVerdierDiagram R D I).square ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} r)))
 
 include hS in
 /-- 概要：同じ未完備全 S• fibration に条件付きで、供給された同じ BF 四角形は引き戻し。
@@ -40,7 +40,7 @@ include hS in
 規約：完備化後の固定 K 四角形については主張しない。hS の証明は K-6 の残り。
 使われ方：同じ元の実商と cone による実 loop 四角形。 -/
 theorem dgKappaNativeBFSquare_isPullback :
-    IsPullbackSquare (dgKappaNativeBFSquare R D I hBF) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (dgKappaNativeBFSquare R D I hBF) :=
   dgKappaNativeBFK_isPullback_of_positive_spaceEvaluation R D I hBF
     (fun r => dgKappaNativeBF_spaceEvaluation_isPullback R D I hBF r (hS r))
 
@@ -49,7 +49,7 @@ theorem dgKappaNativeBFSquare_isPullback :
 規約：有限 BF・共終性・実零所属・全 S• fibration に条件付き。
 使われ方：元の未完備実核 K から同じ実商の native loop への実比較辺。 -/
 def dgKappaNativeBFLoopSquare :
-    LoopSquare (coherentNerveVertex (kOmegaSpectrum
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.LoopSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
       (stableCategoryModel (dgKappaNativeSuspensionCategory R D I)))) where
   square := dgKappaNativeBFSquare R D I hBF
   zero_corner := dgKappaNativeBFSquare_zero_corner R D I hBF
@@ -66,9 +66,9 @@ def dgKappaNativeBFLoopInverseEdge :
     Truncated.Edge (X := (truncation 2).obj Sp.{max (u + 1) v})
       (dgKappaNativeBFLoopSquare R D I hBF hcofinal Z hS).vertex
       ((OmegaSpectrum.nativeLoop.{max (u + 1) v}).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (kOmegaSpectrum
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
           (stableCategoryModel (dgKappaNativeSuspensionCategory R D I))))) :=
-  Classical.choose (homotopyCategory_homMk_surjective _ _
+  Classical.choose (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective _ _
     (OmegaSpectrum.nativeLoopVertexIso
       (dgKappaNativeBFLoopSquare R D I hBF hcofinal Z hS)).inv)
 
@@ -81,17 +81,17 @@ theorem dgKappaNativeBFLoopInverseEdge_hom :
       (dgKappaNativeBFLoopInverseEdge R D I hBF hcofinal Z hS) =
         (OmegaSpectrum.nativeLoopVertexIso
           (dgKappaNativeBFLoopSquare R D I hBF hcofinal Z hS)).inv :=
-  Classical.choose_spec (homotopyCategory_homMk_surjective _ _ _)
+  Classical.choose_spec (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective _ _ _)
 
 /-- 概要：同じ未完備実核 K から同じ実商の native loop への実 fibration 辺。
 方針：元の実 loop 逆辺の始点だけを同じ実核の指定頂点へ戻す。
 規約：採用済み供給と未完備全 S• fibration に条件付き。
 使われ方：既存の固定 K 構造辺の利用側に元の実 fibration 辺を供給する。 -/
 def dgKappaNativeBFFibrationEdge : Sp.{max (u + 1) v}.Edge
-    (coherentNerveVertex (kOmegaSpectrum
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
       (stableCategoryModel (dgKappaNativeKernelCategory R D I))))
     ((OmegaSpectrum.nativeLoop.{max (u + 1) v}).app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex (kOmegaSpectrum
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
         (stableCategoryModel (dgKappaNativeSuspensionCategory R D I))))) :=
   (SSet.Edge.ofTruncated (dgKappaNativeBFLoopInverseEdge R D I hBF hcofinal Z hS)).ofEq
     (dgKappaNativeBFSquare_source R D I hBF) rfl
@@ -101,13 +101,13 @@ def dgKappaNativeBFFibrationEdge : Sp.{max (u + 1) v}.Edge
 規約：完備化後の固定 K の構造辺の可逆性は主張しない。
 使われ方：固定 K へ完備化を続ける前の実比較。 -/
 theorem dgKappaNativeBFFibrationEdge_isInvertible :
-    IsInvertibleEdge (dgKappaNativeBFFibrationEdge R D I hBF hcofinal Z hS).toTruncated := by
-  have he : IsInvertibleEdge (dgKappaNativeBFLoopInverseEdge R D I hBF hcofinal Z hS) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (dgKappaNativeBFFibrationEdge R D I hBF hcofinal Z hS).toTruncated := by
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (dgKappaNativeBFLoopInverseEdge R D I hBF hcofinal Z hS) := by
     change IsIso (Truncated.HomotopyCategory.homMk
       (dgKappaNativeBFLoopInverseEdge R D I hBF hcofinal Z hS))
     rw [dgKappaNativeBFLoopInverseEdge_hom]
     infer_instance
-  exact (isInvertibleEdge_congr (e :=
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e :=
     (dgKappaNativeBFFibrationEdge R D I hBF hcofinal Z hS).toTruncated)
     (f := dgKappaNativeBFLoopInverseEdge R D I hBF hcofinal Z hS) rfl).mpr he
 

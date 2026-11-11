@@ -72,7 +72,7 @@ lemma ofFamily_id (X : D C) (T : SSet.{max u v}) :
 
 def ofFamilyClosed {X Y : D C} {T : SSet.{max u v}}
     (a : ambient hcof hfib X ⊗ T ⟶ ambient hcof hfib Y) :
-    T ⟶ UniverseLift.obj.{max u v} ((ihom (small hcof hfib X)).obj (small hcof hfib Y)) :=
+    T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} ((ihom (small hcof hfib X)).obj (small hcof hfib Y)) :=
   curry (ofFamily hcof hfib a) ≫
     (UniverseLiftParameterHom.closedIso (small hcof hfib X) (small hcof hfib Y)).inv
 
@@ -101,13 +101,13 @@ lemma family_face (n : ℕ) (i : Fin (n + 2)) {X Y : degree (D C) (n + 2)} (f : 
 
 lemma family_degeneracy (n : ℕ) (i : Fin (n + 1)) {X Y : degree (D C) (n + 1)} (f : X ⟶ Y) :
     family hcof hfib P (n + 1) ((degeneracyFunctor (D C) n i).map f) =
-      lifted hcof hfib X ◁ (P ◁ sigma n i) ≫ family hcof hfib P n f := by
+      lifted hcof hfib X ◁ (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i) ≫ family hcof hfib P n f := by
   rw [family, family, OrdinaryBarFreeAmbientFamilies.family_degeneracy, ofFamily_substitute]
   rfl
 
 /-- A whole family valued in the universe lift of the small native internal Hom. -/
 def transferred (n : ℕ) {X Y : D C} (f : FreeGeneratorDegeneracies.hom (n + 1) X Y) :
-    parameters P n ⟶ UniverseLift.obj.{max u v}
+    parameters P n ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v}
       ((ihom (small hcof hfib X)).obj (small hcof hfib Y)) :=
   ofFamilyClosed hcof hfib (OrdinaryBarFreeAmbientFamilies.family hcof hfib P n f)
 
@@ -120,7 +120,7 @@ lemma transferred_face (n : ℕ) (i : Fin (n + 2)) {X Y : degree (D C) (n + 2)} 
 lemma transferred_degeneracy (n : ℕ) (i : Fin (n + 1))
     {X Y : degree (D C) (n + 1)} (f : X ⟶ Y) :
     transferred hcof hfib P (n + 1) ((degeneracyFunctor (D C) n i).map f) =
-      P ◁ sigma n i ≫ transferred hcof hfib P n f := by
+      P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i ≫ transferred hcof hfib P n f := by
   rw [transferred, transferred, OrdinaryBarFreeAmbientFamilies.family_degeneracy,
     ofFamilyClosed_substitute]
 

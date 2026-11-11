@@ -21,23 +21,23 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory CategoryTheory.Limits
 
-variable {F G : Word ⥤ SSet.{w}} (η : F ⟶ G) (n : ℕ)
+variable {F G : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SSet.{w}} (η : F ⟶ G) (n : ℕ)
 
 def stageBoundarySumMap : stageBoundarySum F n ⟶ stageBoundarySum G n :=
-  Limits.Sigma.map (fun a : Word.MaximalAlternating n => lengthBoundaryMap η n a.val)
+  Limits.Sigma.map (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n => lengthBoundaryMap η n a.val)
 
 def stageTopSumMap : stageTopSum F n ⟶ stageTopSum G n :=
-  Limits.Sigma.map (fun a : Word.MaximalAlternating n => η.app a.val)
+  Limits.Sigma.map (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n => η.app a.val)
 
-lemma stageBoundarySumMap_fac (a : Word.MaximalAlternating n) :
-    Sigma.ι (fun a : Word.MaximalAlternating n => (lengthBoundary F n a.val).toFunctor) a ≫
+lemma stageBoundarySumMap_fac (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n) :
+    Sigma.ι (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n => (lengthBoundary F n a.val).toFunctor) a ≫
         stageBoundarySumMap η n = lengthBoundaryMap η n a.val ≫
-      Sigma.ι (fun a : Word.MaximalAlternating n => (lengthBoundary G n a.val).toFunctor) a :=
+      Sigma.ι (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n => (lengthBoundary G n a.val).toFunctor) a :=
   Sigma.ι_map _ _
 
-lemma stageTopSumMap_fac (a : Word.MaximalAlternating n) :
-    Sigma.ι (fun a : Word.MaximalAlternating n => F.obj a.val) a ≫ stageTopSumMap η n =
-      η.app a.val ≫ Sigma.ι (fun a : Word.MaximalAlternating n => G.obj a.val) a :=
+lemma stageTopSumMap_fac (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n) :
+    Sigma.ι (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n => F.obj a.val) a ≫ stageTopSumMap η n =
+      η.app a.val ≫ Sigma.ι (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n => G.obj a.val) a :=
   Sigma.ι_map _ _
 
 lemma stageBoundarySumMap_inclusion :
@@ -52,7 +52,7 @@ lemma stageBoundarySumMap_inclusion :
   exact (Category.assoc _ _ _).symm
 
 lemma stageBoundarySumMap_attach (hF : ProperDiagram F) (hG : ProperDiagram G) :
-    stageBoundaryAttach n hF ≫ lengthStageMap η n =
+    stageBoundaryAttach n hF ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageMap η n =
       stageBoundarySumMap η n ≫ stageBoundaryAttach n hG := by
   apply Sigma.hom_ext
   intro a
@@ -61,16 +61,16 @@ lemma stageBoundarySumMap_attach (hF : ProperDiagram F) (hG : ProperDiagram G) :
     lengthBoundaryMap_attach]
 
 lemma stageTopSumMap_inclusion :
-    stageTopInclusion F n ≫ lengthStageMap η (n + 1) =
+    stageTopInclusion F n ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageMap η (n + 1) =
       stageTopSumMap η n ≫ stageTopInclusion G n := by
   apply Sigma.hom_ext
   intro a
   rw [← Category.assoc, stageTopInclusion_fac, ← Category.assoc, stageTopSumMap_fac,
-    Category.assoc, stageTopInclusion_fac, lengthStageInclusion_map]
+    Category.assoc, stageTopInclusion_fac, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageInclusion_map]
 
 lemma stageBoundarySumInclusion_mono : Mono (stageBoundarySumInclusion F n) := by
   have he : stageBoundarySumInclusion F n = Limits.Sigma.map
-      (fun a : Word.MaximalAlternating n => (lengthBoundary F n a.val).ι) := by
+      (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n => (lengthBoundary F n a.val).ι) := by
     apply Sigma.hom_ext
     intro a
     rw [stageBoundarySumInclusion_fac, Sigma.ι_map]

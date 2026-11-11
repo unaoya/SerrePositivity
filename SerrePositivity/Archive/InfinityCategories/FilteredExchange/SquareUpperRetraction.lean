@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.TransportTriangleParameter
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorNaturalityTriangles
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorNaturalityTriangles
 
 /-!
 概要：右の終点を潰す四角形の折り畳みと零番三角形への戻しを計算する。

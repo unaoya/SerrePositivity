@@ -44,7 +44,7 @@ open OrdinaryBarWordRowMaps
 variable (C : Type u) [Category.{v} C] (X Y : D C)
 
 def targetRows : SimplexCategoryᵒᵖ ⥤ SSet.{max u v} :=
-  UniverseLift.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) ⋙ Functor.const SimplexCategoryᵒᵖ
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) ⋙ Functor.const SimplexCategoryᵒᵖ
 
 def augmentation : rows C X Y ⟶ targetRows C X Y where
   app n := OrdinaryBarFixedRowWordHom.augmentation C n.unop.len X Y
@@ -78,14 +78,14 @@ def diagonalAugmentation : diagonal C X Y ⟶ targetDiagonal C X Y :=
     (Functor.uncurry.map (augmentation C X Y))
 
 def targetDiagonalIso : targetDiagonal C X Y ≅
-    UniverseLift.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) :=
   NatIso.ofComponents (fun _ => Iso.refl _) (by
     intro n m θ
     apply ConcreteCategory.hom_ext
     intro f
     rfl)
 
-def toSource : diagonal C X Y ⟶ UniverseLift.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) :=
+def toSource : diagonal C X Y ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) :=
   diagonalAugmentation C X Y ≫ (targetDiagonalIso C X Y).hom
 
 end SerrePositivity.HomotopyFunctionComplex.OrdinaryBarWordRows

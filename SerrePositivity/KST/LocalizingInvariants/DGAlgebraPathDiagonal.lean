@@ -28,53 +28,53 @@ lemma diagonal_boundary :
   simp
 
 def diagonalHom : B.X ⟶ (algebra R B).X :=
-  dgFunctorCommaHomLift R _ _ (identityFunctor R B) (identityPoint R B) (identityPoint R B)
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomLift R _ _ (identityFunctor R B) (identityPoint R B) (identityPoint R B)
     B.X (𝟙 _) (𝟙 _) 0 (diagonal_boundary R B)
 
 lemma diagonalHom_source : diagonalHom R B ≫ (source R B).hom = 𝟙 B.X :=
-  dgFunctorCommaHomLift_source R _ _ _ _ _ _ _ _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomLift_source R _ _ _ _ _ _ _ _ _ _
 
 lemma diagonalHom_target : diagonalHom R B ≫ (target R B).hom = 𝟙 B.X :=
-  dgFunctorCommaHomLift_replacement R _ _ _ _ _ _ _ _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomLift_replacement R _ _ _ _ _ _ _ _ _ _
 
 lemma diagonalHom_comparison :
-    dgFunctorCommaHomComparison R _ _ (identityFunctor R B) (identityPoint R B)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComparison R _ _ (identityFunctor R B) (identityPoint R B)
       (identityPoint R B) B.X (diagonalHom R B) = 0 := by
   apply Cochain.ext
   intro p q hpq
-  simp only [dgFunctorCommaHomComparison, Cochain.zero_cochain_comp_v, Cochain.ofHom_v]
+  simp only [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComparison, Cochain.zero_cochain_comp_v, Cochain.ofHom_v]
   exact mappingCocone.lift_f_snd_v (difference R B)
     (biprod.lift (𝟙 B.X) (𝟙 B.X)) 0 (diagonal_boundary R B) p q hpq
 
 lemma diagonalHom_one : η[B.X] ≫ diagonalHom R B = η[(algebra R B).X] := by
-  apply dgFunctorCommaHom_ext R _ _ (identityFunctor R B)
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHom_ext R _ _ (identityFunctor R B)
     (identityPoint R B) (identityPoint R B)
   · change (η[B.X] ≫ diagonalHom R B) ≫ (source R B).hom = _
     rw [Category.assoc, diagonalHom_source, Category.comp_id]
-    exact (dgFunctorCommaIdentity_source R _ _ (identityFunctor R B) (identityPoint R B)).symm
+    exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaIdentity_source R _ _ (identityFunctor R B) (identityPoint R B)).symm
   · change (η[B.X] ≫ diagonalHom R B) ≫ (target R B).hom = _
     rw [Category.assoc, diagonalHom_target, Category.comp_id]
-    exact (dgFunctorCommaIdentity_replacement R _ _ (identityFunctor R B)
+    exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaIdentity_replacement R _ _ (identityFunctor R B)
       (identityPoint R B)).symm
-  · rw [dgFunctorCommaHomComparison_precompose, diagonalHom_comparison, Cochain.comp_zero]
-    exact (dgFunctorCommaIdentity_comparison R _ _ _ _).symm
+  · rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComparison_precompose, diagonalHom_comparison, Cochain.comp_zero]
+    exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaIdentity_comparison R _ _ _ _).symm
 
 lemma diagonal_tensor_comparison :
-    dgFunctorCommaHomComparison R _ _ (identityFunctor R B) (identityPoint R B)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComparison R _ _ (identityFunctor R B) (identityPoint R B)
       (identityPoint R B) (B.X ⊗ B.X)
       ((diagonalHom R B ⊗ₘ diagonalHom R B) ≫ μ[(algebra R B).X]) = 0 := by
-  let P := dgFunctorCommaHomComplex R _ _ (identityFunctor R B)
+  let P := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComplex R _ _ (identityFunctor R B)
     (identityPoint R B) (identityPoint R B)
   let i : B.X ⟶ P := diagonalHom R B
   have hz : (Cochain.ofHom i).comp
-      (dgFunctorCommaPrimitive R _ _ (identityFunctor R B)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaPrimitive R _ _ (identityFunctor R B)
         (identityPoint R B) (identityPoint R B)) (zero_add (-1)) = 0 :=
     diagonalHom_comparison R B
-  change dgFunctorCommaHomComparison R _ _ (identityFunctor R B) _ _ (B.X ⊗ B.X)
-    ((i ⊗ₘ i) ≫ dgFunctorCommaComposition R _ _ _ _ _ _) = 0
-  rw [dgFunctorCommaHomComparison_precompose, dgFunctorCommaComposition_comparison,
-    dgFunctorCommaCompositePrimitive, Cochain.comp_add,
-    dgFunctorCommaFirstCompositePrimitive, dgFunctorCommaSecondCompositePrimitive,
+  change _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComparison R _ _ (identityFunctor R B) _ _ (B.X ⊗ B.X)
+    ((i ⊗ₘ i) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaComposition R _ _ _ _ _ _) = 0
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComparison_precompose, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaComposition_comparison,
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaCompositePrimitive, Cochain.comp_add,
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaFirstCompositePrimitive, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaSecondCompositePrimitive,
     ← Cochain.comp_assoc_of_first_is_zero_cochain,
     tensorRight_precompose_zero i i _ _ hz, Cochain.zero_comp, zero_add,
     ← Cochain.comp_assoc_of_first_is_zero_cochain,
@@ -82,7 +82,7 @@ lemma diagonal_tensor_comparison :
 
 lemma diagonalHom_mul : μ[B.X] ≫ diagonalHom R B =
     (diagonalHom R B ⊗ₘ diagonalHom R B) ≫ μ[(algebra R B).X] := by
-  apply dgFunctorCommaHom_ext R _ _ (identityFunctor R B)
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHom_ext R _ _ (identityFunctor R B)
     (identityPoint R B) (identityPoint R B)
   · change (μ[B.X] ≫ diagonalHom R B) ≫ (source R B).hom =
       ((diagonalHom R B ⊗ₘ diagonalHom R B) ≫ μ[(algebra R B).X]) ≫ (source R B).hom
@@ -94,7 +94,7 @@ lemma diagonalHom_mul : μ[B.X] ≫ diagonalHom R B =
     rw [Category.assoc, diagonalHom_target, Category.comp_id, Category.assoc,
       IsMonHom.mul_hom, ← Category.assoc, tensorHom_comp_tensorHom, diagonalHom_target,
       tensorHom_id, id_whiskerRight, Category.id_comp]
-  · rw [dgFunctorCommaHomComparison_precompose, diagonalHom_comparison, Cochain.comp_zero,
+  · rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComparison_precompose, diagonalHom_comparison, Cochain.comp_zero,
       diagonal_tensor_comparison]
 
 def diagonal : B ⟶ algebra R B := Mon.Hom.mk' (diagonalHom R B)

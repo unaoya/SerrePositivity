@@ -18,7 +18,7 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 namespace SerrePositivity.DiagramModel.ProjectiveSpan
 variable (K : Type w) [SmallCategory K] (e : K ≌ WalkingSpan)
   {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 lemma legs_cofibrations (D : K ⥤ C)
     (hD : let := Projective.modelCategory K I J; IsCofibrant D) :

@@ -23,11 +23,11 @@ def coefficientMap : algebra A M ⟶ algebra A N := by
   refine Mon.Hom.mk' (biprod.map (𝟙 A.X) f.hom) ?_ ?_
   · change (η[A.X] ≫ biprod.inl) ≫ biprod.map (𝟙 A.X) f.hom = η[A.X] ≫ biprod.inl
     rw [Category.assoc, biprod.inl_map, Category.id_comp]
-  · change _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M ≫ biprod.map (𝟙 A.X) f.hom =
-      (biprod.map (𝟙 A.X) f.hom ⊗ₘ biprod.map (𝟙 A.X) f.hom) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A N
+  · change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M ≫ biprod.map (𝟙 A.X) f.hom =
+      (biprod.map (𝟙 A.X) f.hom ⊗ₘ biprod.map (𝟙 A.X) f.hom) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A N
     apply biprodTensor_hom_ext
     all_goals
-      simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rr, Category.assoc,
+      simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_ll, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rr, Category.assoc,
         biprod.inl_map, biprod.inr_map, tensorHom_comp_tensorHom_assoc,
         Category.id_comp, ← whiskerLeft_comp_tensorHom_assoc,
         ← whiskerRight_comp_tensorHom_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl_assoc,

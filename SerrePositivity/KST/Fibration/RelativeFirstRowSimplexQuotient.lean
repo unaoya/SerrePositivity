@@ -18,15 +18,15 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
-variable {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ)
+variable {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n : ℕ)
 
 /-- 概要：同じ商の標準単体相対図式から商図式の core への元の射影。
 方針：同じ core 逆像の指定射影を使う。
 規約：元の商後合成と全図式を保持する。
 使われ方：Sp の有限線型図式供給を受ける実比較射。 -/
 def relativeFirstRowSimplexQuotient : (relativeFirstRowSimplex q n : SSet.{u}) ⟶
-    (quasicategoryCore ((ihom (Δ[n] : SSet.{u})).obj C.obj) : SSet.{u}) :=
-  (quasicategoryCore ((ihom (Δ[n] : SSet.{u})).obj C.obj)).fromPreimage
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom (Δ[n] : SSet.{u})).obj C.obj) : SSet.{u}) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom (Δ[n] : SSet.{u})).obj C.obj)).fromPreimage
     ((ihom (Δ[n] : SSet.{u})).map q.hom)
 
 /-- 概要：標準単体商比較の包含後は、同じ元の商関手による後合成。
@@ -35,7 +35,7 @@ def relativeFirstRowSimplexQuotient : (relativeFirstRowSimplex q n : SSet.{u}) �
 使われ方：元の第一行商比較との照合。 -/
 theorem relativeFirstRowSimplexQuotient_ι :
     relativeFirstRowSimplexQuotient q n ≫
-      (quasicategoryCore ((ihom (Δ[n] : SSet.{u})).obj C.obj)).ι =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom (Δ[n] : SSet.{u})).obj C.obj)).ι =
       (relativeFirstRowSimplex q n).ι ≫ (ihom (Δ[n] : SSet.{u})).map q.hom := rfl
 
 /-- 概要：元の相対第一行の商比較は標準単体の同じ商比較と厳密に可換。
@@ -45,12 +45,12 @@ theorem relativeFirstRowSimplexQuotient_ι :
 theorem relativeFirstRowSimplexQuotient_square :
     relativeFirstRowToSimplex q n ≫ relativeFirstRowSimplexQuotient q n =
       relativeFirstRowQuotient q (n + 1) ≫
-        quasicategoryCoreMap (relativeFirstRowSimplexIso n C.obj).hom := by
-  apply (cancel_mono (quasicategoryCore ((ihom (Δ[n] : SSet.{u})).obj C.obj)).ι).mp
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (relativeFirstRowSimplexIso n C.obj).hom := by
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom (Δ[n] : SSet.{u})).obj C.obj)).ι).mp
   rw [Category.assoc, relativeFirstRowSimplexQuotient_ι, ← Category.assoc]
   change ((relativeFirstRow q (n + 1)).ι ≫ (relativeFirstRowSimplexIso n B.obj).hom) ≫
     (ihom (Δ[n] : SSet.{u})).map q.hom = _
-  rw [Category.assoc, Category.assoc, quasicategoryCoreMap_ι,
+  rw [Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap_ι,
     ← Category.assoc (relativeFirstRowQuotient q (n + 1)), relativeFirstRowQuotient_ι,
     Category.assoc, relativeFirstRowSimplexIso_postcomp]
 
@@ -65,8 +65,8 @@ theorem relativeFirstRowQuotient_localized_isIso_iff_simplex :
   have hs : IsIso (Q.map (relativeFirstRowToSimplex q n)) := by
     change IsIso (Q.map (relativeFirstRowSimplexRelativeIso q n).hom)
     infer_instance
-  have ht : IsIso (Q.map (quasicategoryCoreMap (relativeFirstRowSimplexIso n C.obj).hom)) := by
-    change IsIso (Q.map (quasicategoryCoreFunctor.map (relativeFirstRowSimplexIso n C.obj).hom))
+  have ht : IsIso (Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (relativeFirstRowSimplexIso n C.obj).hom)) := by
+    change IsIso (Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor.map (relativeFirstRowSimplexIso n C.obj).hom))
     infer_instance
   have he := congrArg Q.map (relativeFirstRowSimplexQuotient_square q n)
   rw [Q.map_comp, Q.map_comp] at he
@@ -79,7 +79,7 @@ theorem relativeFirstRowQuotient_localized_isIso_iff_simplex :
     exact (isIso_comp_left_iff _ _).mp hm
   · intro h
     have hm : IsIso (Q.map (relativeFirstRowQuotient q (n + 1)) ≫
-        Q.map (quasicategoryCoreMap (relativeFirstRowSimplexIso n C.obj).hom)) := by
+        Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (relativeFirstRowSimplexIso n C.obj).hom)) := by
       rw [← he]
       infer_instance
     exact (isIso_comp_right_iff _ _).mp hm

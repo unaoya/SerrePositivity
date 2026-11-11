@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomotopy
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.ArrowFamilyHomotopy
 
 public import SerrePositivity.KST.LocalizingInvariants.ArrowFamilyRoundTrip
 
@@ -21,23 +21,23 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma arrowFamilyHomotopy_roundTrip {A X : SSet.{u}}
     (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
-    ZeroArrowFamily.ofHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy a) = a :=
+    ZeroArrowFamily.ofHomotopy (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.arrowFamilyHomotopy a) = a :=
   ZeroArrowFamily.ofHomotopy_eq_of_h _ a rfl
 
 lemma arrowFamilyHomotopy_vertex_edge {A X : SSet.{u}}
     (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) (x : A _⦋0⦌) :
-    (simplicialHomotopyVertexEdge (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy a) x).edge =
-      intervalFunctorVertexEdge (a.app (Opposite.op ⦋0⦌) x) := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.arrowFamilyHomotopy a) x).edge =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge (a.app (Opposite.op ⦋0⦌) x) := by
   conv_rhs => rw [← arrowFamilyHomotopy_roundTrip a]
-  rw [ZeroArrowFamily.ofHomotopy, intervalFunctorVertexEdge_curry]
-  change (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy a).h.app (Opposite.op ⦋1⦌)
-    ((Truncated.Edge.id (X := (truncation 2).obj A) x).edge, homotopyIntervalEdge.edge) =
-      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy a).h.app (Opposite.op ⦋1⦌)
-        (PinchedHom.constant x 1, SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})))
-  have hi : SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) = homotopyIntervalEdge.edge := by
+  rw [ZeroArrowFamily.ofHomotopy, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge_curry]
+  change (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.arrowFamilyHomotopy a).h.app (Opposite.op ⦋1⦌)
+    ((Truncated.Edge.id (X := (truncation 2).obj A) x).edge, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge) =
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.arrowFamilyHomotopy a).h.app (Opposite.op ⦋1⦌)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 1, SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})))
+  have hi : SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge := by
     apply SSet.stdSimplex.ext
     intro i
     fin_cases i <;> rfl
-  rw [pinchedConstant_one, hi]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one, hi]
 
 end SerrePositivity.KST.LocalizingInvariants

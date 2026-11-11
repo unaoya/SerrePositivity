@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingLargeInvariance
-public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramEdges
-public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramEdges
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanInvertible
 
 /-!
 概要：大宇宙の実 cell 写像関手を全単体の空間値図式とし、元の擬同型辺を反転する。
@@ -24,25 +24,25 @@ variable (R : Type u) [CommRing R] (A : Mon (Complex R))
 
 def multiplicativeCellMappingInfinityCoherent :
     SSet.uliftFunctor.{u + 2, u + 1}.obj (nerve (InfinityPresentation R)) ⟶
-      SpaceInfinity.{u + 1} :=
-  kanDiagramCoherentNerve (multiplicativeCellMappingInfinityKanFunctor R A)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u + 1} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (multiplicativeCellMappingInfinityKanFunctor R A)
 
 set_option maxHeartbeats 800000 in -- 元の提示の射と大宇宙の実 Kan 写像の表示を照合する。
 lemma multiplicativeCellMappingInfinityCoherent_inverts :
-    InvertsEdges (multiplicativeCellMappingInfinityCoherent R A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (multiplicativeCellMappingInfinityCoherent R A)
       (ULift.up.{u + 2, u + 1} '' quasiIsoInfinityEdges R) := by
   rintro _ ⟨s, hs, rfl⟩
-  have hi := coherentKanEdge_isInvertible_of_isQCatEquivalence
+  have hi := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentKanEdge_isInvertible_of_isQCatEquivalence
     (multiplicativeCellMappingInfinity_target_isQCatEquivalence R A s.hom hs)
-  apply (isInvertibleEdge_congr
-    (e := (edgeOfSimplex (ULift.up.{u + 2, u + 1} s)).map
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+    (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (ULift.up.{u + 2, u + 1} s)).map
       ((truncation 2).map (multiplicativeCellMappingInfinityCoherent R A)))
-    (f := (coherentNerveEdge
+    (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
       ((multiplicativeCellMappingInfinityKanFunctor R A).map s.hom)).toTruncated) ?_).mpr hi
-  change (kanDiagramCoherentNerve (multiplicativeCellMappingInfinityKanFunctor R A)).app
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (multiplicativeCellMappingInfinityKanFunctor R A)).app
     (Opposite.op ⦋1⦌) (ULift.up s) = _
   have hs' : (nerve.edgeMk s.hom).edge = s := ComposableArrows.ext₁ rfl rfl rfl
   simpa only [hs', SSet.Edge.toTruncated_edge] using
-    (kanDiagramCoherentNerve_edge (multiplicativeCellMappingInfinityKanFunctor R A) s.hom)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve_edge (multiplicativeCellMappingInfinityKanFunctor R A) s.hom)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.PointedKanWhitehead
 public import SerrePositivity.KST.Spectra.PointedHomotopyClasses
 
 /-!
@@ -27,7 +27,7 @@ noncomputable section
 theorem componentOf_eq_of_comp_eq_rlp {A E B : PointedSimplicialSet.{u}} [KanComplex E.right]
     (p : E ⟶ B) (hp : (MorphismProperty.monomorphisms SSet.{u}).rlp p.right)
     (a b : A ⟶ E) (h : a ≫ p = b ≫ p) : componentOf a = componentOf b :=
-  (piZero_eq_iff_pointedHomotopy a b).mpr (_root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopy_of_comp_eq p hp a b h)
+  (piZero_eq_iff_pointedHomotopy a b).mpr (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.exists_pointedHomotopy_of_comp_eq p hp a b h)
 
 end
 

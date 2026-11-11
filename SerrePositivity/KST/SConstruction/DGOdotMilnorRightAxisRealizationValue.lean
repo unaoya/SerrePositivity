@@ -19,7 +19,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "B" => DGOdotGluing R d
 local notation "P" => DGCategoryCellResolution.Source R (B)
 local notation "Q" => DGQuotient.QuotientObject (P)
-  (resolvedDGNullObjects R (B)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (B)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))))
 local notation "F" => dgOdotMilnorRightAxisQuotientSource R d
 local notation "G" => dgOdotMilnorRightAxisQuotientTarget R d
@@ -43,31 +43,31 @@ local notation "eT" => dgOdotMilnorRightAxisDifferenceResolvedValueEquivalence R
 /-- 概要：元実差の指定終域値は同じ二段実 realization の評価と全比較される。
 方針：元全像回収と二段の元包絡値比較をそのまま貼る。
 規約：元指定評価を変更しない。使われ方：実合成辺を保存済み二段全比較へ渡す。 -/
-def dgOdotMilnorRightAxisDifferenceRealizationNuComparison : FunctorIso
+def dgOdotMilnorRightAxisDifferenceRealizationNuComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((eD).hom ≫ (eT).hom)
-    (dgNerve.map (iD) ≫ dgNerve.map (VP1) ≫ dgNerve.map (VP2) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (iD) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (VP1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (VP2) ≫
       (dgKNativePerfectValueEquivalence R (Q)).hom) := by
   let vU := (dgKNativePerfectValueEquivalence R (U)).hom
   let vT := (dgKNativePerfectValueEquivalence R (T)).hom
   let vQ := (dgKNativePerfectValueEquivalence R (Q)).hom
   let s1 := (dgOdotMilnorRightAxisBaseStepValueEquivalence R d).hom
   let s2 := (dgOdotMilnorRightAxisComparisonBaseValueEquivalence R d).hom
-  let p := dgNerve.map (iD)
-  let r1 := dgNerve.map (VP1)
-  let r2 := dgNerve.map (VP2)
-  have h0 : FunctorIso ((eD).hom ≫ (eT).hom) (p ≫ vU ≫ s1 ≫ s2) :=
-    F2.functorIsoOfEq
+  let p := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (iD)
+  let r1 := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (VP1)
+  let r2 := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (VP2)
+  have h0 : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((eD).hom ≫ (eT).hom) (p ≫ vU ≫ s1 ≫ s2) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
       ((dgOdotMilnorRightAxisIdentityDifferenceValueEquivalence_native R d).postcomp
         (dgOdotMilnorRightAxisBaseValueEquivalence R d).hom)
       (Category.assoc _ _ _) (Category.assoc _ _ _)
-  have h1 : FunctorIso (p ≫ vU ≫ s1 ≫ s2) (p ≫ r1 ≫ vT ≫ s2) :=
-    FunctorIso.precomp
-      (F2.functorIsoOfEq
+  have h1 : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (p ≫ vU ≫ s1 ≫ s2) (p ≫ r1 ≫ vT ≫ s2) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
         ((dgSmallPerfectEnvelopeRealizationValueComparison R (T) ((LT) ⊕ (LT)) (Z)).postcomp s2)
         (Category.assoc _ _ _) (Category.assoc _ _ _)) p
-  have h2 : FunctorIso (p ≫ r1 ≫ vT ≫ s2) (p ≫ r1 ≫ r2 ≫ vQ) :=
-    F2.functorIsoOfEq
-      (FunctorIso.precomp (dgSmallPerfectEnvelopeRealizationValueComparison R (Q) ((P) ⊕ (P)) (X))
+  have h2 : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (p ≫ r1 ≫ vT ≫ s2) (p ≫ r1 ≫ r2 ≫ vQ) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (dgSmallPerfectEnvelopeRealizationValueComparison R (Q) ((P) ⊕ (P)) (X))
         (p ≫ r1)) (Category.assoc _ _ _) (Category.assoc _ _ _)
   exact h0.trans (h1.trans h2)
 

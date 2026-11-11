@@ -29,7 +29,7 @@ def multiDiagonalDiagramFunctor (r : ℕ) : StableModel.{u} ⥤ (SimplexCategory
 方針：任意の一つの零方向の可縮性を適用する。
 規約：反復回数は r+1。使われ方：商写像の弱同値性。 -/
 lemma multiDiagonalDiagram_zero_isContractibleKan (r : ℕ) (X : StableModel.{u}) :
-    IsContractibleKan (((multiDiagonalDiagramFunctor (r + 1)).obj X).obj (Opposite.op ⦋0⦌)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (((multiDiagonalDiagramFunctor (r + 1)).obj X).obj (Opposite.op ⦋0⦌)) :=
   multiCoreSConstruction_isContractibleKan_of_zero_coordinate (r + 1) X
     (fun _ => Opposite.op ⦋0⦌) 0 rfl
 

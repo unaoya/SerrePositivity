@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedMappingLocalizedImage
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.PointedKanWhitehead
 
 /-! # 点つき実ホモトピー逆からの suspension の局所化可逆性
 概要：元の点つき射の実ホモトピー逆を suspension の写像空間へ移し、局所化像を可逆にする。
@@ -31,9 +31,9 @@ lemma suspensionImage_isIso_of_inverse_components {X Y : PointedSimplicialSet.{u
 
 /-- 元の点つき Kan 射の全基点 π 同型は、suspension 後にも局所化で可逆。 -/
 lemma suspensionImage_isIso_of_piIsomorphism {X Y : PointedSimplicialSet.{u}}
-    [KanComplex X.right] [KanComplex Y.right] (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right) :
+    [KanComplex X.right] [KanComplex Y.right] (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f.right) :
     IsIso (L.map (PointedSimplicialSet.circle.{u} ◁ f).right) := by
-  obtain ⟨g, ⟨HX, hX⟩, ⟨HY, hY⟩⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopyInverse f hf
+  obtain ⟨g, ⟨HX, hX⟩, ⟨HY, hY⟩⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.exists_pointedHomotopyInverse f hf
   apply suspensionImage_isIso_of_inverse_components L hL f g
   · exact (π₀.sound (edgeOfHomotopy (f := 𝟙 X) (g := f ≫ g) HX hX)).symm
   · exact (π₀.sound (edgeOfHomotopy (f := 𝟙 Y) (g := g ≫ f) HY hY)).symm

@@ -21,16 +21,16 @@ noncomputable section
 
 /-- 零単体が一つなら、正規化零次微分は零。 -/
 lemma differential_zero_of_subsingleton (K : SSet.{u}) [Subsingleton (K _⦋0⦌)]
-    (M : AddCommGrpCat.{u}) (a : K.nonDegenerate 0 → M) : _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K M 0 a = 0 := by
+    (M : AddCommGrpCat.{u}) (a : K.nonDegenerate 0 → M) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K M 0 a = 0 := by
   funext s
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential_apply, Fin.sum_univ_two]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential_apply, Fin.sum_univ_two]
   have he : K.δ (0 : Fin 2) s.val = K.δ (1 : Fin 2) s.val := Subsingleton.elim _ _
   simp [he]
 
 /-- H¹ が零で零次微分も零なら一次 cocycle は零。 -/
 theorem first_cocycle_eq_zero (K : SSet.{u}) [Subsingleton (K _⦋0⦌)]
     (M : AddCommGrpCat.{u}) (hH : IsZero ((complex K M).homology 1))
-    (z : K.nonDegenerate 1 → M) (hz : _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K M 1 z = 0) : z = 0 := by
+    (z : K.nonDegenerate 1 → M) (hz : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K M 1 z = 0) : z = 0 := by
   obtain ⟨a, ha⟩ := exists_primitive_of_isZero K M 0 hH z hz
   rw [← ha, differential_zero_of_subsingleton]
 

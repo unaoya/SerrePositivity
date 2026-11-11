@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.PointedKanWhitehead
 public import SerrePositivity.KST.Spectra.PointedVerticalPaths
 
 /-!
@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 def verticalPathOfRlp {A E B : PointedSimplicialSet.{u}} (p : E ⟶ B)
     (hp : (MorphismProperty.monomorphisms SSet.{u}).rlp p.right)
     (f g : A ⟶ E) (h : f ≫ p = g ≫ p) : VerticalPath p f g := by
-  letI basepointMono : Mono A.hom := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basepoint_mono A
+  letI basepointMono : Mono A.hom := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basepoint_mono A
   have hbase : A.hom ≫ f.right = A.hom ≫ g.right := by rw [Under.w f, Under.w g]
   let hex := MonoRightLiftingRelativeHomotopy.exists_relative_vertical_homotopy p.right hp
     A.hom f.right g.right (congrArg Under.Hom.right h) hbase

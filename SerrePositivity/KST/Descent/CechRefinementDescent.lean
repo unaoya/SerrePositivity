@@ -33,7 +33,7 @@ namespace SerrePositivity.KST.Descent
 variable {C : Type u} [Category.{v} C] [HasFiniteLimits C]
   (F : Cᵒᵖ ⥤ SSet.{0}) {X W Y : C} (f : X ⟶ Y) (g : W ⟶ Y)
   [ModelCategory SSet.{0}]
-  (I J : MorphismProperty SSet.{0}) [ModelGeneration.CofibrantlyGenerated.{0} I J]
+  (I J : MorphismProperty SSet.{0}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{0})]
 
 /-- 概要：二つの混合 Čech の軸交換で実際の指定降下は同値（補題 3.2・3.3）。

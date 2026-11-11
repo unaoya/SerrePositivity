@@ -43,17 +43,17 @@ variable {D : Type uD} [Category.{vD} D] (K : D ⥤ SSet.{max w v}) (F : D ⥤ S
 
 lemma restriction (L : D ⥤ SSet.{max w v}) (i : L ⟶ K)
     (a : NerveMovingParameter.System K F) (b : NerveMovingParameter.System L F)
-    (h : a ≫ NerveBiparameterMaps.restriction L K (NerveMovingParameter.lifted F) i = b)
+    (h : a ≫ NerveBiparameterMaps.restriction L K (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted F) i = b)
     (d : D) : i.app d ≫ NerveMovingParameter.evaluate K F a d =
       NerveMovingParameter.evaluate L F b d :=
   (NerveBiparameterMaps.evaluate_restrict K F a L i d).symm.trans
     (congrArg (fun z => NerveMovingParameter.evaluate L F z d) h)
 
-lemma natural (b : K ⟶ NerveMovingParameter.lifted.{w} F) (d : D) :
+lemma natural (b : K ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} F) (d : D) :
     NerveMovingParameter.evaluate K F
-      (NerveNaturalBoundary.ofNatTrans K (NerveMovingParameter.lifted F) b) d = b.app d := by
+      (NerveNaturalBoundary.ofNatTrans K (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted F) b) d = b.app d := by
   change uncurry' (RelativeChoiceSpace.pointUnitIso.inv ≫
-    (NerveNaturalBoundary.ofNatTrans K (NerveMovingParameter.lifted F) b).app
+    (NerveNaturalBoundary.ofNatTrans K (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted F) b).app
       (ofChain (ComposableArrows.mk₀ d))) = _
   rw [NerveNaturalBoundary.ofNatTrans_zero _ _ _ _ rfl]
   change uncurry' (RelativeChoiceSpace.pointUnitIso.inv ≫
@@ -64,8 +64,8 @@ lemma natural (b : K ⟶ NerveMovingParameter.lifted.{w} F) (d : D) :
     RelativeChoiceSpace.name, Iso.inv_hom_id_assoc, uncurry'_curry']
 
 lemma expand (T : SSet.{max w v}) (a : NerveMovingParameter.System K F) (d : D) :
-    NerveMovingParameter.evaluate (NerveCylinderBoundary.product K T) F
-      (NerveProductParameter.expand K (NerveMovingParameter.lifted F) T a) d =
+    NerveMovingParameter.evaluate (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K T) F
+      (NerveProductParameter.expand K (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted F) T a) d =
     (NerveProductParameter.projection K T).app d ≫ NerveMovingParameter.evaluate K F a d :=
   NerveBiparameterMaps.evaluate_restrict K F a _ _ d
 

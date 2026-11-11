@@ -22,15 +22,15 @@ theorem subcomplexTopIso_hom_inclusion {X : SSet.{u}} (P : X.Subcomplex) (h : P 
 
 /-- 元の核の各相対 S_n の同型は、周囲の元の S_n への包含を厳密に回収する。 -/
 theorem relativeSKernelTopIso_hom_inclusion
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : ℕ) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (n : ℕ) :
     (relativeSKernelTopIso h n).hom = (relativeSConstruction (i.hom ≫ q.hom) n).ι :=
   subcomplexTopIso_hom_inclusion _ (relativeSKernel_eq_top h n)
 
 /-- 元の各段の同型は、全ての面・退化と厳密に可換する。 -/
 theorem relativeSKernelTopIso_naturality
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) :
     (relativeSimplicialSConstruction (i.hom ≫ q.hom)).map θ ≫
         (relativeSKernelTopIso h m.unop.len).hom =
       (relativeSKernelTopIso h n.unop.len).hom ≫ (simplicialSConstruction A.obj).map θ := by
@@ -39,8 +39,8 @@ theorem relativeSKernelTopIso_naturality
 
 /-- 元の相対 S 核の同じ全単体的図式は、元の全 S• と自然に同型。 -/
 def relativeSKernelSimplicialIso
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
     relativeSimplicialSConstruction (i.hom ≫ q.hom) ≅ simplicialSConstruction A.obj :=
   NatIso.ofComponents (fun n => relativeSKernelTopIso h n.unop.len)
     (fun θ => relativeSKernelTopIso_naturality h θ)

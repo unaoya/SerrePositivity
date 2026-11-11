@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Coherent.ArrowData
-public import SerrePositivity.InfinityCategories.Coherent.Path
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.ArrowData
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Path
 
 /-! # 元の coherent 二単体の全長 Hom と、同じ実 path の合成値 -/
 

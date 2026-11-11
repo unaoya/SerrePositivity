@@ -26,20 +26,20 @@ variable (X : ℕ → PointedSimplicialSet.{u}) (p : ∀ n, X (n + 1) ⟶ X n)
 
 /-- 次段への連結射の値は fiber 微分の cocycle。 -/
 lemma connecting_differential_eq_one (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X (n + 1)).right (r + 2) (X (n + 1)).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X (n + 1)).right (r + 2) (X (n + 1)).basepoint) :
     differential X p (n + 1) r (pointedConnectingHom (p (n + 1)) (r + 1) a) = 1 := by
   rw [differential_apply, pointedConnectingHom_inclusion, map_one]
 
 /-- fiber 微分の cocycle が境界なら、一段下への射影を保って次段へ持ち上げられる。 -/
 theorem exists_lift_preserving_projection (n r : ℕ)
-    (hex : ∀ z : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p (n + 1))).right (r + 1)
+    (hex : ∀ z : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedFiber (p (n + 1))).right (r + 1)
         (pointedFiber (p (n + 1))).basepoint,
       differential X p (n + 1) r z = 1 →
-        ∃ c : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p n)).right (r + 2)
+        ∃ c : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedFiber (p n)).right (r + 2)
             (pointedFiber (p n)).basepoint,
           differential X p n (r + 1) c = z)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X (n + 1)).right (r + 2) (X (n + 1)).basepoint) :
-    ∃ b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X (n + 2)).right (r + 2) (X (n + 2)).basepoint,
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X (n + 1)).right (r + 2) (X (n + 1)).basepoint) :
+    ∃ b : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X (n + 2)).right (r + 2) (X (n + 2)).basepoint,
       pointedGroupMap (r + 2) (p n) (pointedGroupMap (r + 2) (p (n + 1)) b) =
         pointedGroupMap (r + 2) (p n) a := by
   obtain ⟨c, hc⟩ := hex (pointedConnectingHom (p (n + 1)) (r + 1) a)

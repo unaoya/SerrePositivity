@@ -91,18 +91,18 @@ after the explicit universe lift; no higher-homotopy equivalence is asserted. -/
 def coarseLiftIso :
     OrdinaryBarMappingClasses.coarseQuotient Q ⋙ SSet.uliftFunctor.{max u v, v} ≅
       LocalizedHomDiagram.spaces Q ⋙ SSet.uliftFunctor.{max u v, v} := by
-  have := DiagramQuotient.kernelComparison_isIso
+  have := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.kernelComparison_isIso
     (OrdinaryBarMappingClasses.augmentation Q) (augmentation_surjective Q)
-  exact SmallSimplicialValue.diagramLiftIso
-    (DiagramQuotient.functor (OrdinaryBarMappingClasses.kernel Q))
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.diagramLiftIso
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.functor (OrdinaryBarMappingClasses.kernel Q))
     (OrdinaryBarMappingClasses.kernel_small Q) ≪≫
-      asIso (DiagramQuotient.kernelComparison (OrdinaryBarMappingClasses.augmentation Q))
+      asIso (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.kernelComparison (OrdinaryBarMappingClasses.augmentation Q))
 
 lemma coarseProjection_comparison :
     OrdinaryBarMappingClasses.coarseProjection Q ≫ (coarseLiftIso Q).hom =
       OrdinaryBarMappingClasses.augmentation Q := by
-  change (DiagramQuotient.projection _ ≫ _) ≫ (_ ≫ _) = _
+  change (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.projection _ ≫ _) ≫ (_ ≫ _) = _
   simp only [Category.assoc, Iso.inv_hom_id_assoc]
-  exact DiagramQuotient.kernel_factorization _
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.kernel_factorization _
 
 end SerrePositivity.HomotopyFunctionComplex.OrdinaryBarLabelSurjectivity

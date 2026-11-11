@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitPointMaps
 public import SerrePositivity.KST.Spectra.EdgewiseHomEndPrecomposition
-public import SerrePositivity.InfinityCategories.Kan.ParameterPoint
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ParameterPoint
 
 /-!
 概要：元の BF 恒等射の像の全 Hom 前合成族は、元の BF Hom–end 同値に一致。
@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance homEndFamilySimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
@@ -29,14 +29,14 @@ local instance homEndFamilyRawCoefficientKan (X : OmegaSpectrum.{u})
   RawSpectrumMapping.pointedSpace_kanComplex X (D.obj i).toKanSequence
 local instance homEndFamilyCoefficientKan (X : OmegaSpectrum.{u})
     (D : I ⥤ OmegaSpectrum.{u}) (i : I) :
-    KanComplex ((simplicialHomDiagram D X).obj i) := mappingSpace_kanComplex X (D.obj i)
+    KanComplex ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X).obj i) := mappingSpace_kanComplex X (D.obj i)
 local instance homEndFamilyEndKan (X : OmegaSpectrum.{u}) (D : I ⥤ OmegaSpectrum.{u}) :
-    KanComplex (bousfieldKanHolim (simplicialHomDiagram D X)) :=
-  bousfieldKanHolim_kanComplex (simplicialHomDiagram D X)
+    KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim_kanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X)
 /-- 元の恒等射の像で end の前合成作用を固定した、全 Hom パラメータの族。 -/
 def homotopyLimitHomEndFamily (D : I ⥤ OmegaSpectrum.{u}) (X : OmegaSpectrum.{u}) :
-    mappingSpace X (homotopyLimit D) ⟶ bousfieldKanHolim (simplicialHomDiagram D X) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (homotopyLimitHomEndPointMap D) (mappingSpace X (homotopyLimit D)) ≫
+    mappingSpace X (homotopyLimit D) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X) :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.family (homotopyLimitHomEndPointMap D) (mappingSpace X (homotopyLimit D)) ≫
     homEndPrecomposition D X (homotopyLimit D)
 
 /-- 恒等射の像の前合成族は、既存の BF Hom–end 同値の順射そのもの。 -/
@@ -52,7 +52,7 @@ lemma homotopyLimitHomEndFamily_eq (D : I ⥤ OmegaSpectrum.{u}) (X : OmegaSpect
   have hl := congrArg (fun f ↦ f ≫ (homotopyLimitHomHolimEquivalence X D).hom)
     (mappingComposition_identity X L)
   simp only [Category.id_comp, Category.assoc] at hl
-  dsimp only [homotopyLimitHomEndFamily, _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family]
+  dsimp only [homotopyLimitHomEndFamily, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.family]
   rw [homotopyLimitHomEndPointMap_eq]
   exact (Category.assoc _ _ _).trans (h.symm.trans hl)
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedAfterData
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedJoints
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagEndpointHExt
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagEndpointHExt
 
 /-!
 # 元の貼り戻しの前後の全図式の端点表示を含む回収
@@ -22,49 +22,49 @@ namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted
 open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
-  {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : FactorTarget.Index W)
+  {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)
   (σ : (AllMarked.nativeGraph W X g.val.left a).obj n)
-  (τ : (graph W.paths b g.val.right Y).obj n)
+  (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths b g.val.right Y).obj n)
 
 lemma before_diagram :
-    HEq (Zigzag.MovingDiagram.changeWord (before_word a b)
-      (Attachments.beforeDiagram W (simplex W g σ τ) (columnIndex a b)))
-      (Zigzag.MovingDiagram.ofFunctor ((AllMarked.graphMap W X g.val.left a).app n σ)) := by
-  let F := Attachments.beforeDiagram W (simplex W g σ τ) (columnIndex a b)
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.changeWord (before_word a b)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachments.beforeDiagram W (simplex W g σ τ) (columnIndex a b)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ofFunctor ((AllMarked.graphMap W X g.val.left a).app n σ)) := by
+  let F := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachments.beforeDiagram W (simplex W g σ τ) (columnIndex a b)
   have hB := sourceJoint_eq W g σ τ
-  apply Zigzag.MovingDiagram.hext_endpoints rfl hB
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MovingDiagram.hext_endpoints rfl hB
   · intro d
-    apply Zigzag.object_hext_endpoints rfl (congrArg (fun G => G.obj d) hB)
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.object_hext_endpoints rfl (congrArg (fun G => G.obj d) hB)
     · intro j
-      exact (Zigzag.MovingDiagram.changeWord_vertex (before_word a b) F d j j rfl).trans
+      exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.changeWord_vertex (before_word a b) F d j j rfl).trans
         (before_vertex W g σ τ d j)
     · intro j
-      exact (Zigzag.MovingDiagram.changeWord_arrow_heq (before_word a b) F d j j rfl).trans
+      exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.changeWord_arrow_heq (before_word a b) F d j j rfl).trans
         (before_arrow W g σ τ d j)
   · intro d e f j
-    exact (Zigzag.MovingDiagram.changeWord_map_app_heq (before_word a b) F f j j rfl).trans
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.changeWord_map_app_heq (before_word a b) F f j j rfl).trans
       (before_map_app W g σ τ f j)
 
 lemma after_diagram :
-    HEq (Zigzag.MovingDiagram.changeWord (after_word a b)
-      (Attachments.afterDiagram W (simplex W g σ τ) (columnIndex a b)))
-      (Zigzag.MovingDiagram.ofFunctor τ) := by
-  let F := Attachments.afterDiagram W (simplex W g σ τ) (columnIndex a b)
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.changeWord (after_word a b)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachments.afterDiagram W (simplex W g σ τ) (columnIndex a b)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ofFunctor τ) := by
+  let F := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachments.afterDiagram W (simplex W g σ τ) (columnIndex a b)
   have hA := targetJoint_eq W g σ τ
-  apply Zigzag.MovingDiagram.hext_endpoints hA rfl
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MovingDiagram.hext_endpoints hA rfl
   · intro d
-    apply Zigzag.object_hext_endpoints (congrArg (fun G => G.obj d) hA) rfl
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.object_hext_endpoints (congrArg (fun G => G.obj d) hA) rfl
     · intro j
-      let j' := Fin.cast (congrArg (fun w : Word => w.length + 1) (after_word a b)).symm j
-      exact (Zigzag.MovingDiagram.changeWord_vertex (after_word a b) F d j' j rfl).trans
+      let j' := Fin.cast (congrArg (fun w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word => w.length + 1) (after_word a b)).symm j
+      exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.changeWord_vertex (after_word a b) F d j' j rfl).trans
         (after_vertex W g σ τ d j')
     · intro j
-      let j' := Fin.cast (congrArg Word.length (after_word a b)).symm j
-      exact (Zigzag.MovingDiagram.changeWord_arrow_heq (after_word a b) F d j' j rfl).trans
+      let j' := Fin.cast (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.length (after_word a b)).symm j
+      exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.changeWord_arrow_heq (after_word a b) F d j' j rfl).trans
         (after_arrow W g σ τ d j')
   · intro d e f j
-    let j' := Fin.cast (congrArg (fun w : Word => w.length + 1) (after_word a b)).symm j
-    exact (Zigzag.MovingDiagram.changeWord_map_app_heq (after_word a b) F f j' j rfl).trans
+    let j' := Fin.cast (congrArg (fun w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word => w.length + 1) (after_word a b)).symm j
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.changeWord_map_app_heq (after_word a b) F f j' j rfl).trans
       (after_map_app W g σ τ f j')
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted

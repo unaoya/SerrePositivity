@@ -72,15 +72,15 @@ local instance spectrumPullbackCones_simplicialCategory :
 規約：Hom を代替模型に取り替えない。
 使われ方：HTT 4.2.4.1 の Sp の引き戻しの Hom の普遍性。 -/
 def spectrumPullbackCone_hom_isLimit (Z : OmegaSpectrum.{u}) :
-    IsLimit (simplicialHomCone (spectrumPullbackCone f g) Z) :=
+    IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone (spectrumPullbackCone f g) Z) :=
   spectrumHomCone_isLimit_of_levelwise _ (spectrumPullbackCone_level_isLimit f g) Z
 
 /-- 概要：実際のスペクトルの引き戻し錐を L9 の Sp の錐へ写す。
 方針：小さい cospan の厳密な錐へ coherent nerve の構成を適用する。
 規約：この定義だけでは ∞ 極限性は主張しない。
 使われ方：Hom の fibration 性の検証後に Sp の極限錐として公開する対象。 -/
-def spectrumPullbackInfinityCone : JoinCone (strictCoherentDiagram (spectrumPullbackDiagram f g)) :=
-  strictCoherentCone (spectrumPullbackCone f g)
+def spectrumPullbackInfinityCone : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (spectrumPullbackDiagram f g)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (spectrumPullbackCone f g)
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

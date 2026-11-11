@@ -22,7 +22,7 @@ namespace PointedMapping.VerticalPath
 lemma refl_pre_path {A D E : PointedSimplicialSet.{u}} (f : D ⟶ E) (i : A ⟶ D) :
     ((refl (PointedObject.toPoint E) f).pre i).path =
       SSet.const (familyVertex (i ≫ f)) := by
-  change SSet.const (familyVertex f) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i E = _
+  change SSet.const (familyVertex f) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i E = _
   rw [SSet.const_comp]
   exact congrArg (fun x => SSet.const x) (familyVertex_pre i f)
 

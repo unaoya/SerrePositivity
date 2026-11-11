@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：固定点の式を挿入して Moss Lemma 26 (6) を適用する。
 規約：Moss 2020 Lemma 29 の後ろの面の退化性。
 使われ方：指定面の一意性と pairing の正則性。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

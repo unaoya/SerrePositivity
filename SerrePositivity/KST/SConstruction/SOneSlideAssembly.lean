@@ -27,7 +27,7 @@ lemma sOneInnerOuterRealizationIso_assembly (r : ℕ) (X : StableModel.{u}) :
   funext d
   apply ConcreteCategory.hom_ext
   intro z
-  let H := stableModelForget.{u} ⋙ quasicategoryCoreFunctor
+  let H := stableModelForget.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
   let a := (stdSimplex.objEquiv z.1).toOrderHom
   have h := congrArg (fun f => (H.map f).app d z.2)
     (diagonalFixedSInterchangeNatIso_index r d X a)

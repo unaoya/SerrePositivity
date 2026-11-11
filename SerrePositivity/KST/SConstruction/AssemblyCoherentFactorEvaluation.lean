@@ -16,13 +16,13 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
 /-- Coherent な全延長選択を、元の点つき射の両側合成の図式へ評価する。 -/
 def kanAssemblyCoherentEvaluation {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (v : (kanAssemblyCoherentChoices r F) _⦋0⦌) :
-    bousfieldKanWeight (AssemblyInputArrow I) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AssemblyInputArrow I) ⟶
       pointedMappingArrowDiagram (F ⋙ oneDirectionKanRealizationFunctor r)
         (F ⋙ loopBoundaryKanFunctor (r + 1)) :=
   kanAssemblyCoherentFamily r F v ≫ pointedExtensionArrowEvaluation
@@ -32,7 +32,7 @@ def kanAssemblyCoherentEvaluation {I : Type u} [SmallCategory I]
 /-- Coherent な全逆射選択を、元の点つき射の両側合成の図式へ評価する。 -/
 def oneDirectionInverseCoherentEvaluation {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (v : (oneDirectionInverseCoherentChoices r F) _⦋0⦌) :
-    bousfieldKanWeight (AssemblyInputArrow I) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AssemblyInputArrow I) ⟶
       pointedMappingArrowDiagram (F ⋙ boundaryKanRealizationFunctor r)
         (F ⋙ oneDirectionKanRealizationFunctor r) :=
   oneDirectionInverseCoherentFamily r F v ≫ pointedLiftArrowEvaluation

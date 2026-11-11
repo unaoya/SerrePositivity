@@ -24,7 +24,7 @@ def MultiPointwiseImage {X Y : StableModel.{u}} (f : X ⟶ Y) (r : ℕ) :
     (d : Fin r → SimplexCategoryᵒᵖ) →
       (((((multiSEndofunctor r).obj d).obj Y).carrier) _⦋0⦌) → Prop := by
   induction r with
-  | zero => exact fun _ y => ∃ x, Nonempty (VertexIso (f.val.app (Opposite.op ⦋0⦌) x) y)
+  | zero => exact fun _ y => ∃ x, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (f.val.app (Opposite.op ⦋0⦌) x) y)
   | succ r ih =>
     intro d y
     exact ∀ a : (arNerve (d 0).unop.len) _⦋0⦌,
@@ -36,11 +36,11 @@ def MultiPointwiseImage {X Y : StableModel.{u}} (f : X ⟶ Y) (r : ℕ) :
 使われ方：全族の図式持ち上げに必要な本質像条件の証明。 -/
 lemma exists_multiSVertexIso_of_pointwise_image (r : ℕ)
     (d : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : IsFullyFaithful f.val)
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful f.val)
     (y : ((((multiSEndofunctor r).obj d).obj Y).carrier) _⦋0⦌)
     (hy : MultiPointwiseImage f r d y) :
     ∃ x : ((((multiSEndofunctor r).obj d).obj X).carrier) _⦋0⦌,
-      Nonempty (VertexIso ((((multiSEndofunctor r).obj d).map f).val.app
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((((multiSEndofunctor r).obj d).map f).val.app
         (Opposite.op ⦋0⦌) x) y) := by
   induction r generalizing X Y with
   | zero => exact hy
@@ -59,12 +59,12 @@ lemma exists_multiSVertexIso_of_pointwise_image (r : ℕ)
 使われ方：有限反復図式の補対象の回収を元の S• 比較へ接続する。 -/
 lemma exists_multiSFamily_of_pointwise_image (r : ℕ)
     (d : Fin r → SimplexCategoryᵒᵖ) {K : SSet.{u}} {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : IsFullyFaithful f.val)
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful f.val)
     (F : K ⟶ (((multiSEndofunctor r).obj d).obj Y).carrier)
     (hF : ∀ k : K _⦋0⦌, MultiPointwiseImage f r d (F.app (Opposite.op ⦋0⦌) k)) :
     ∃ G : K ⟶ (((multiSEndofunctor r).obj d).obj X).carrier,
-      Nonempty (FunctorIso (G ≫ (((multiSEndofunctor r).obj d).map f).val) F) :=
-  F2.Idempotent.exists_diagram_in_fullyFaithful_source _
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (G ≫ (((multiSEndofunctor r).obj d).map f).val) F) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_diagram_in_fullyFaithful_source _
     (multiSEndofunctor_map_isFullyFaithful r d f hf) F
     (fun k => exists_multiSVertexIso_of_pointwise_image r d f hf _ (hF k))
 

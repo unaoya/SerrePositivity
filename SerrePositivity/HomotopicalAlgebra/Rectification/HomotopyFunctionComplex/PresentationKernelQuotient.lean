@@ -77,7 +77,7 @@ lemma toReference_localized_isIso (R : RightResolutionMapping.Index C) :
 abbrev enlarged : RightResolutionMapping.Index C ⥤ SSet.{max u v} :=
   SmallTargetKernelQuotient.middle (toReference (C := C))
 
-abbrev relation : DiagramQuotient.Congruence (enlarged (C := C)) :=
+abbrev relation : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.Congruence (enlarged (C := C)) :=
   SmallTargetKernelQuotient.relation toReference
 
 lemma quotient_small (R : RightResolutionMapping.Index C) (n : SimplexCategoryᵒᵖ) :
@@ -85,7 +85,7 @@ lemma quotient_small (R : RightResolutionMapping.Index C) (n : SimplexCategory�
   SmallTargetKernelQuotient.quotient_small toReference R n
 
 lemma quotient_boundary_rlp (R : RightResolutionMapping.Index C) :
-    SSet.modelCategoryQuillen.I.rlp ((DiagramQuotient.projection (relation (C := C))).app R) :=
+    SSet.modelCategoryQuillen.I.rlp ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.projection (relation (C := C))).app R) :=
   SmallTargetKernelQuotient.quotient_boundary_rlp toReference reference_kan
     toReference_localized_isIso R
 

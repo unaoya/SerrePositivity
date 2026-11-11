@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.ExInfinityPointedFamilies
 public import SerrePositivity.KST.SConstruction.PointedSSetWhisker
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
 
 /-! # 同じ Ex∞ 単位の標準点つき全 Hom 自然性
 概要：元の Ex∞ 単位は、標準点つき厳密豊穣関手の全 Hom に自然。
@@ -56,7 +56,7 @@ def enrichedExInfinityPointedUnitTransformation
     (F : EnrichedFunctor SSet.{u} C PointedSSetObject.{u}) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F
       (F.comp SSet exInfinityPointedEnrichedFunctor) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (fun X => exInfinityPointedUnit (F.obj X))
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _ (fun X => exInfinityPointedUnit (F.obj X))
     (enrichedExInfinityPointedUnit_whisker F)
 
 end SerrePositivity.KST.SConstruction

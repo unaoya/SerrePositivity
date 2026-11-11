@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.LocalizingInvariants.FinalHornContraction
 
-public import SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowContractionSquares
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ArrowContractionSquares
 
 /-!
 概要：最終外ホーンの矢印族を正方形族へ移し、末尾二点を元の最後の辺と恒等辺へ同定する。
@@ -22,60 +22,60 @@ namespace SerrePositivity.KST.LocalizingInvariants
 def finalHornArrowSquares {X : SSet.{u}} (m : ℕ)
     (σ : (horn (m + 2) (Fin.last (m + 2)) : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
     (horn (m + 2) (Fin.last (m + 2)) : SSet.{u}) ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X :=
-  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares (finalHornLastContraction m) σ
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.arrowContractionSquares (finalHornLastContraction m) σ
 
 lemma finalHornArrowSquares_bottom {X : SSet.{u}} (m : ℕ)
     (σ : (horn (m + 2) (Fin.last (m + 2)) : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
-    finalHornArrowSquares m σ ≫ (pre squareBottomEdge).app X = σ := by
-  rw [finalHornArrowSquares, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_bottom,
+    finalHornArrowSquares m σ ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge).app X = σ := by
+  rw [finalHornArrowSquares, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.arrowContractionSquares_bottom,
     finalHornLastContraction_zero, Category.id_comp]
 
 lemma finalHornArrowSquares_top {X : SSet.{u}} (m : ℕ)
     (σ : (horn (m + 2) (Fin.last (m + 2)) : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
-    finalHornArrowSquares m σ ≫ (pre squareTopEdge).app X =
+    finalHornArrowSquares m σ ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge).app X =
       SSet.const (σ.app (Opposite.op ⦋0⦌) (finalHornLastVertex m)) := by
-  rw [finalHornArrowSquares, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_top, finalHornLastContraction_one,
+  rw [finalHornArrowSquares, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.arrowContractionSquares_top, finalHornLastContraction_one,
     SSet.const_comp]
 
 lemma finalHornArrowSquares_right {X : SSet.{u}} (m : ℕ)
     (σ : (horn (m + 2) (Fin.last (m + 2)) : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
     (β : (Δ[m + 2] : SSet.{u}) ⟶ X)
-    (hβ : σ ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+    (hβ : σ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       (horn (m + 2) (Fin.last (m + 2))).ι ≫ β) :
-    finalHornArrowSquares m σ ≫ (pre squareRightEdge).app X =
+    finalHornArrowSquares m σ ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge).app X =
       curry ((Δ[1] ◁ (horn (m + 2) (Fin.last (m + 2))).ι) ≫
-        prismLastContraction (m + 2) ≫ β) := by
-  rw [finalHornArrowSquares, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_right, hβ, ← Category.assoc,
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.prismLastContraction (m + 2) ≫ β) := by
+  rw [finalHornArrowSquares, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.arrowContractionSquares_right, hβ, ← Category.assoc,
     finalHornLastContraction_inclusion, Category.assoc]
 
 lemma finalHorn_contractionAtVertex_penultimate (m : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex (finalHornLastContraction.{u} m) (finalHornPenultimateVertex m) =
-      SSet.yonedaEquiv.symm (finalHornEdge m) := by
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.contractionAtVertex (finalHornLastContraction.{u} m) (finalHornPenultimateVertex m) =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.finalHornEdge m) := by
   apply SSet.yonedaEquiv.injective
-  rw [Equiv.apply_symm_apply, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex, SSet.yonedaEquiv_comp]
+  rw [Equiv.apply_symm_apply, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.contractionAtVertex, SSet.yonedaEquiv_comp]
   exact finalHornLastContraction_penultimate_edge m
 
 lemma finalHorn_contractionAtVertex_last (m : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex (finalHornLastContraction.{u} m) (finalHornLastVertex m) =
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.contractionAtVertex (finalHornLastContraction.{u} m) (finalHornLastVertex m) =
       SSet.const (finalHornLastVertex m) := by
   apply SSet.yonedaEquiv.injective
-  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex, SSet.yonedaEquiv_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.contractionAtVertex, SSet.yonedaEquiv_comp]
   exact finalHornLastContraction_last_edge m
 
 lemma finalHornArrowSquares_penultimate {X : SSet.{u}} (m : ℕ)
     (σ : (horn (m + 2) (Fin.last (m + 2)) : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
     (finalHornArrowSquares m σ).app (Opposite.op ⦋0⦌) (finalHornPenultimateVertex m) =
-      functorVertex (uncurry (SSet.yonedaEquiv.symm
-        (σ.app (Opposite.op ⦋1⦌) (finalHornEdge m)))) := by
-  rw [finalHornArrowSquares, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_vertex,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (uncurry (SSet.yonedaEquiv.symm
+        (σ.app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.finalHornEdge m)))) := by
+  rw [finalHornArrowSquares, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.arrowContractionSquares_vertex,
     finalHorn_contractionAtVertex_penultimate, SSet.yonedaEquiv_symm_comp]
 
 lemma finalHornArrowSquares_last {X : SSet.{u}} (m : ℕ)
     (σ : (horn (m + 2) (Fin.last (m + 2)) : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
     (finalHornArrowSquares m σ).app (Opposite.op ⦋0⦌) (finalHornLastVertex m) =
-      functorVertex (uncurry (SSet.const (σ.app (Opposite.op ⦋0⦌) (finalHornLastVertex m)) :
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (uncurry (SSet.const (σ.app (Opposite.op ⦋0⦌) (finalHornLastVertex m)) :
         (Δ[1] : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X)) := by
-  rw [finalHornArrowSquares, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_vertex,
+  rw [finalHornArrowSquares, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.arrowContractionSquares_vertex,
     finalHorn_contractionAtVertex_last, SSet.const_comp]
 
 end SerrePositivity.KST.LocalizingInvariants

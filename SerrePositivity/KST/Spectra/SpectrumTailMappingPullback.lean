@@ -21,8 +21,8 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 
 /-- 一段先の整合族を、元の零段の構造射の境界で評価する。 -/
 def tailMappingBoundary (X Y : OmegaSpectrum.{u}) : mappingSpace (tail X) (tail Y) ⟶
-    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level 0).space) (Y.level 1).space).right :=
-  evaluation (tail X) (tail Y) 0 ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma 0) (Y.level 1).space
+    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level 0).space) (Y.level 1).space).right :=
+  evaluation (tail X) (tail Y) 0 ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma 0) (Y.level 1).space
 
 /-- 整合写像全体は、零段と残りの整合族を構造射の境界で貼った引き戻し。 -/
 lemma tailMapping_isPullback (X Y : OmegaSpectrum.{u}) :
@@ -45,18 +45,18 @@ lemma tailMapping_isPullback (X Y : OmegaSpectrum.{u}) :
       | 0 => a
       | n + 1 => b ≫ evaluation (tail X) (tail Y) n
     have hf (n : ℕ) :
-        f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+        f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
           f n ≫ mappingStep X Y n := by
       cases n with
       | zero => exact hab.symm
       | succ n =>
         change (b ≫ evaluation (tail X) (tail Y) (n + 1)) ≫
-            _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((tail X).sigma n) ((tail Y).level (n + 1)).space =
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((tail X).sigma n) ((tail Y).level (n + 1)).space =
           (b ≫ evaluation (tail X) (tail Y) n) ≫ mappingStep (tail X) (tail Y) n
         rw [Category.assoc, evaluation_condition, ← Category.assoc]
     let l := TruncatedMapping.familyLift
       (fun n ↦ (X.level n).space) (fun n ↦ (Y.level n).space)
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) X.sigma (mappingStep X Y) f hf
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) X.sigma (mappingStep X Y) f hf
     have hl (n : ℕ) : l ≫ evaluation X Y n = f n :=
       TruncatedMapping.familyLift_evaluation _ _ _ _ _ _ _ n
     refine ⟨l, hl 0, ?_⟩
@@ -69,8 +69,8 @@ lemma evaluation_zero_fibration (X Y : OmegaSpectrum.{u}) : Fibration (evaluatio
   let (n : ℕ) : Mono (X.sigma n).right := X.sigma_mono n
   have h := TruncatedMapping.total_projection_fibration
     (fun n ↦ (X.level n).space) (fun n ↦ (Y.level n).space)
-    (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) X.sigma (mappingStep X Y)
-  change Fibration (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection _ _ 0 ≫ 𝟙 _)
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) X.sigma (mappingStep X Y)
+  change Fibration (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection _ _ 0 ≫ 𝟙 _)
   simpa only [Category.comp_id] using h
 
 /-- 引き戻し表示の境界側は Kan fibration であり、右固有性を適用できる。 -/
@@ -78,8 +78,8 @@ lemma tailMappingBoundary_fibration (X Y : OmegaSpectrum.{u}) :
     Fibration (tailMappingBoundary X Y) := by
   let : Fibration (evaluation (tail X) (tail Y) 0) := evaluation_zero_fibration _ _
   let : Mono (X.sigma 0).right := X.sigma_mono 0
-  let : Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma 0) (Y.level 1).space) :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration _ _
+  let : Fibration (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma 0) (Y.level 1).space) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_fibration _ _
   unfold tailMappingBoundary
   infer_instance
 

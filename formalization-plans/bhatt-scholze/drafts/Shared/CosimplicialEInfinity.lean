@@ -4,9 +4,9 @@ module
 
 public import SerrePositivity.EInfinity.Interface.Theory
 public import Mathlib.Algebra.Homology.Embedding.ExtendHomology
-public import SerrePositivity.InfinityCategories.Derived.Homology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
 public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
-public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorEdgePointwise
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 -- 本ファイルは drafts/Shared/CosimplicialCupProduct.lean と drafts/Sheaves/{CechConerveLimit,CAlgValued}.lean を使う。
@@ -46,8 +46,7 @@ variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.Cosimplicial
 
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.Sheaves
-open SerrePositivity.InfinityCategories.F2.Presentable
+open SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity
 attribute [local instance] HasDerivedCategory.standard
 

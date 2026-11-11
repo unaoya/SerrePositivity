@@ -22,13 +22,13 @@ lemma serreCubeFaceTopImage_dimension_post {K L : Complex A} (b : Bool)
     eqToHom (congrArg L.X hm) (serreCubeTopCellImage A L m
         (((serreCubeFace A b m (Fin.cast hd i)).hom ≫
           (serreConcreteCubeComplexFunctor A).map
-            (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk d)
-              (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (m + 1)) hd).inv ≫ f) ≫ g)) =
+            (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk d)
+              (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (m + 1)) hd).inv ≫ f) ≫ g)) =
       eqToHom (congrArg L.X hn) (serreCubeTopCellImage A L n
         (((serreCubeFace A b n (Fin.cast hd' i)).hom ≫
           (serreConcreteCubeComplexFunctor A).map
-            (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk d)
-              (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n + 1)) hd').inv ≫ f) ≫ g)) := by
+            (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk d)
+              (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (n + 1)) hd').inv ≫ f) ≫ g)) := by
   cases h
   rfl
 

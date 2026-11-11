@@ -17,21 +17,21 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "B" => DGOdotGluing R d
 local notation "P" => DGCategoryCellResolution.Source R (B)
 local notation "Q" => DGQuotient.QuotientObject (P)
-  (resolvedDGNullObjects R (B)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (B)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))))
-local notation "ρ" => dgModuleResolvedInfinity R (RightModule R (P)) (P)
+local notation "ρ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity R (RightModule R (P)) (P)
   (DGFunctor.id (RightModule R (P)))
-local notation "E" => dgModuleExtensionInfinity R (P) (Q) (dgOdotMilnorResolvedInclusion R d)
+local notation "E" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleExtensionInfinity R (P) (Q) (dgOdotMilnorResolvedInclusion R d)
 local notation "I" => dgFullSubcategoryInclusion R (RightModule R (Q))
-  (dgModuleSemifreeProperty R (Q))
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleSemifreeProperty R (Q))
 
 /-- 概要：元右軸 graph の native 商値は同じ実 Perf 延長の包含像と全比較される。
 方針：元の同じ graph・同じ商包含へ実延長比較を適用する。
 規約：元の実対象と全 Hom を保持。使われ方：中央射の第一成分の模型照合。 -/
-def dgOdotMilnorRightAxisPerfNativeSourceComparison : FunctorIso
-    ((dgNerve.map (dgCellResolvedGraphModuleFunctor R (B)
-      (dgOdotMilnorRightAxisEndofunctor R d)) ≫ (ρ)) ≫ (E) ≫ dgNerve.map (I))
-    (dgNerve.map ((dgOdotMilnorRightAxisQuotientSource R d).comp
+def dgOdotMilnorRightAxisPerfNativeSourceComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgCellResolvedGraphModuleFunctor R (B)
+      (dgOdotMilnorRightAxisEndofunctor R d)) ≫ (ρ)) ≫ (E) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (I))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((dgOdotMilnorRightAxisQuotientSource R d).comp
       (perfectDGModuleInclusion R (Q) Set.univ))) :=
   dgCellResolvedGraphPerfectExtendedNativeComparison.{u, u} R (B) (Q)
     (dgOdotMilnorRightAxisEndofunctor R d) (dgOdotMilnorResolvedInclusion R d)
@@ -39,10 +39,10 @@ def dgOdotMilnorRightAxisPerfNativeSourceComparison : FunctorIso
 /-- 概要：元恒等 graph の native 商値は同じ実 Perf 延長の包含像と全比較される。
 方針：元の同じ graph・同じ商包含へ実延長比較を適用する。
 規約：元の実対象と全 Hom を保持。使われ方：中央射の第二成分の模型照合。 -/
-def dgOdotMilnorRightAxisPerfNativeTargetComparison : FunctorIso
-    ((dgNerve.map (dgCellResolvedGraphModuleFunctor R (B) (DGFunctor.id (B))) ≫ (ρ)) ≫
-      (E) ≫ dgNerve.map (I))
-    (dgNerve.map ((dgOdotMilnorRightAxisQuotientTarget R d).comp
+def dgOdotMilnorRightAxisPerfNativeTargetComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgCellResolvedGraphModuleFunctor R (B) (DGFunctor.id (B))) ≫ (ρ)) ≫
+      (E) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (I))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((dgOdotMilnorRightAxisQuotientTarget R d).comp
       (perfectDGModuleInclusion R (Q) Set.univ))) :=
   dgCellResolvedGraphPerfectExtendedNativeComparison.{u, u} R (B) (Q)
     (DGFunctor.id (B)) (dgOdotMilnorResolvedInclusion R d)

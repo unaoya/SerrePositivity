@@ -48,19 +48,19 @@ variable (C : Type u) [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
   (K : D ⥤ SSet.{v})
 
 def leftSystem (families : ∀ d, K.obj d ⟶ (MixedResolutionCenters.leftChoices C).obj (H.obj d)) :
-    NerveMovingParameter.System.{w, v} (NerveMovingParameter.lifted.{w} K)
+    NerveMovingParameter.System.{w, v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K)
       (H ⋙ MixedResolutionCenters.leftChoices C) :=
   NerveMovingParameter.extendFamilies _ _
     (fun d => ResolutionArrowDiagram.fillers C hcof (H.obj d).1)
-    (fun d => UniverseLift.map.{w, v} (families d))
+    (fun d => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w, v} (families d))
 
 def rightSystem
     (families : ∀ d, K.obj d ⟶ (MixedResolutionCenters.rightChoices C).obj (H.obj d)) :
-    NerveMovingParameter.System.{w, v} (NerveMovingParameter.lifted.{w} K)
+    NerveMovingParameter.System.{w, v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K)
       (H ⋙ MixedResolutionCenters.rightChoices C) :=
   NerveMovingParameter.extendFamilies _ _
     (fun d => ResolutionArrowDiagram.fillers Cᵒᵖ hcof (H.obj d).2)
-    (fun d => UniverseLift.map.{w, v} (families d))
+    (fun d => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w, v} (families d))
 
 lemma left_point
     (families : ∀ d, K.obj d ⟶ (MixedResolutionCenters.leftChoices C).obj (H.obj d)) (d : D) :
@@ -68,7 +68,7 @@ lemma left_point
       (leftSystem.{v, u, w} C hcof H K families) d = families d := by
   unfold NerveSmallFamilies.point leftSystem
   rw [NerveMovingParameter.extendFamilies_evaluate]
-  exact UniverseLift.lower_map _
+  exact _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower_map _
 
 lemma right_point
     (families : ∀ d, K.obj d ⟶ (MixedResolutionCenters.rightChoices C).obj (H.obj d)) (d : D) :
@@ -76,40 +76,40 @@ lemma right_point
       (rightSystem.{v, u, w} C hcof H K families) d = families d := by
   unfold NerveSmallFamilies.point rightSystem
   rw [NerveMovingParameter.extendFamilies_evaluate]
-  exact UniverseLift.lower_map _
+  exact _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower_map _
 
-def selectedLeft : NerveMovingParameter.System.{w, v} (NerveMovingParameter.lifted.{w} K)
+def selectedLeft : NerveMovingParameter.System.{w, v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K)
     (H ⋙ MixedResolutionCenters.leftChoices C) :=
   leftSystem C hcof H K (fun d => SSet.stdSimplex.isTerminalObj₀.from (K.obj d) ≫
     ResolutionArrowDiagram.selectedPoint C (H.obj d).1)
 
-def selectedRight : NerveMovingParameter.System.{w, v} (NerveMovingParameter.lifted.{w} K)
+def selectedRight : NerveMovingParameter.System.{w, v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K)
     (H ⋙ MixedResolutionCenters.rightChoices C) :=
   rightSystem C hcof H K (fun d => SSet.stdSimplex.isTerminalObj₀.from (K.obj d) ≫
     ResolutionArrowDiagram.selectedPoint Cᵒᵖ (H.obj d).2)
 
 def extendLeft (n : ℕ) (old : NerveMovingParameter.LowerSystem
-    (NerveMovingParameter.lifted.{w} K) (H ⋙ MixedResolutionCenters.leftChoices C) n) :
-    NerveMovingParameter.System.{w, v} (NerveMovingParameter.lifted.{w} K)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K) (H ⋙ MixedResolutionCenters.leftChoices C) n) :
+    NerveMovingParameter.System.{w, v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K)
       (H ⋙ MixedResolutionCenters.leftChoices C) :=
   NerveMovingParameter.extend _ _
     (fun d => ResolutionArrowDiagram.fillers C hcof (H.obj d).1) n old
 
 def extendRight (n : ℕ) (old : NerveMovingParameter.LowerSystem
-    (NerveMovingParameter.lifted.{w} K) (H ⋙ MixedResolutionCenters.rightChoices C) n) :
-    NerveMovingParameter.System.{w, v} (NerveMovingParameter.lifted.{w} K)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K) (H ⋙ MixedResolutionCenters.rightChoices C) n) :
+    NerveMovingParameter.System.{w, v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K)
       (H ⋙ MixedResolutionCenters.rightChoices C) :=
   NerveMovingParameter.extend _ _
     (fun d => ResolutionArrowDiagram.fillers Cᵒᵖ hcof (H.obj d).2) n old
 
 lemma extendLeft_restrict (n : ℕ) (old : NerveMovingParameter.LowerSystem
-    (NerveMovingParameter.lifted.{w} K) (H ⋙ MixedResolutionCenters.leftChoices C) n) :
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K) (H ⋙ MixedResolutionCenters.leftChoices C) n) :
     Functor.whiskerLeft (Reedy.lowerInclusion (NerveCoherentFamily.reedy D) n)
       (extendLeft C hcof H K n old) = old :=
   NerveMovingParameter.extend_restrict _ _ _ n old
 
 lemma extendRight_restrict (n : ℕ) (old : NerveMovingParameter.LowerSystem
-    (NerveMovingParameter.lifted.{w} K) (H ⋙ MixedResolutionCenters.rightChoices C) n) :
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted.{w} K) (H ⋙ MixedResolutionCenters.rightChoices C) n) :
     Functor.whiskerLeft (Reedy.lowerInclusion (NerveCoherentFamily.reedy D) n)
       (extendRight C hcof H K n old) = old :=
   NerveMovingParameter.extend_restrict _ _ _ n old

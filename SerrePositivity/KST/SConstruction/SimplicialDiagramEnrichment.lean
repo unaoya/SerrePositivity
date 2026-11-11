@@ -1,6 +1,6 @@
 module
 public import Mathlib.CategoryTheory.Enriched.FunctorCategory
-public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramOrdinaryFunctor
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedDiagramOrdinaryFunctor
 public import SerrePositivity.KST.SConstruction.QuasicategoryEnrichedDiagramPrecomposition
 
 /-! # 単体的図式全体の標準豊穣 Hom
@@ -106,8 +106,8 @@ lemma simplicialSSetDiagramHomEquiv_projection {X Y : SimplicialSSetDiagram.{u}}
 /-- 全高次比較の評価自然性は、同じ内部 Hom の前後合成の自然性と一致する。 -/
 lemma quasicategoryEnrichedComparison_internal_naturality
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
-    {F G : EnrichedFunctor SSet.{u} C QuasicategoryObject.{u}}
-    (η : QuasicategoryEnrichedComparison F G) (X Y : C) :
+    {F G : EnrichedFunctor SSet.{u} C _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QuasicategoryObject.{u}}
+    (η : _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedComparison F G) (X Y : C) :
     F.map X Y ≫ (ihom (F.obj X).obj).map (η.val Y) =
       G.map X Y ≫ (pre (η.val X)).app (G.obj Y).obj := by
   apply uncurry_injective

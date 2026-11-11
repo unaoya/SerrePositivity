@@ -22,7 +22,7 @@ open scoped Simplicial
 def pointedMappingTransport {B B' Z Z' : PointedSimplicialSet.{u}}
     (b : B' ⟶ B) (z : Z ⟶ Z') :
     (PointedObject.basedHom B Z).right ⟶ (PointedObject.basedHom B' Z').right :=
-  (PointedObject.basedHomMap B z ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed b Z').right
+  (PointedObject.basedHomMap B z ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed b Z').right
 
 /-- 写像空間の移送は通常の射の頂点で前合成・後合成になる。 -/
 lemma pointedMappingTransport_vertex {B B' Z Z' : PointedSimplicialSet.{u}}
@@ -35,8 +35,8 @@ lemma pointedMappingTransport_vertex {B B' Z Z' : PointedSimplicialSet.{u}}
 /-- 写像空間の移送は恒等で恒等射になる。 -/
 lemma pointedMappingTransport_id (B Z : PointedSimplicialSet.{u}) :
     pointedMappingTransport (𝟙 B) (𝟙 Z) = 𝟙 _ := by
-  have hp : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (𝟙 B) Z = 𝟙 _ := by
-    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, pre_id]
+  have hp : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (𝟙 B) Z = 𝟙 _ := by
+    rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, pre_id]
     rfl
   have hz : PointedObject.basedHomMap B (𝟙 Z) = 𝟙 _ :=
     (PointedObject.basedHomFunctor B).map_id Z
@@ -50,10 +50,10 @@ lemma pointedMappingTransport_comp {B B' B'' Z Z' Z'' : PointedSimplicialSet.{u}
   have hz : PointedObject.basedHomMap B z ≫ PointedObject.basedHomMap B w =
       PointedObject.basedHomMap B (z ≫ w) :=
     ((PointedObject.basedHomFunctor B).map_comp z w).symm
-  change ((PointedObject.basedHomMap B z ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed b Z') ≫
-      (PointedObject.basedHomMap B' w ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed c Z'')).right = _
-  rw [Category.assoc, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed b Z'), prePointed_post,
-    Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, ← Category.assoc, hz]
+  change ((PointedObject.basedHomMap B z ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed b Z') ≫
+      (PointedObject.basedHomMap B' w ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed c Z'')).right = _
+  rw [Category.assoc, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed b Z'), prePointed_post,
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp, ← Category.assoc, hz]
   rfl
 
 /-- 源の可換正方形の移送は、延長を元の部分へ制限する操作と可換。 -/
@@ -61,12 +61,12 @@ lemma pointedMappingTransport_restriction
     {A B Z A' B' Z' : PointedSimplicialSet.{u}}
     (i : A ⟶ B) (i' : A' ⟶ B') (a : A' ⟶ A) (b : B' ⟶ B) (z : Z ⟶ Z')
     (hi : a ≫ i = i' ≫ b) :
-    pointedMappingTransport b z ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i' Z').right =
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right ≫ pointedMappingTransport a z := by
-  change ((PointedObject.basedHomMap B z ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed b Z') ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i' Z').right =
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z ≫ PointedObject.basedHomMap A z ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Z').right
-  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp,
-    ← Category.assoc (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z), prePointed_post, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, hi]
+    pointedMappingTransport b z ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i' Z').right =
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right ≫ pointedMappingTransport a z := by
+  change ((PointedObject.basedHomMap B z ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed b Z') ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i' Z').right =
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z ≫ PointedObject.basedHomMap A z ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Z').right
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp,
+    ← Category.assoc (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z), prePointed_post, Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp, hi]
 
 /-- 延長空間の全次数を、可換正方形と標的の射に沿って移送する。 -/
 def pointedExtensionTransport {A B Z A' B' Z' : PointedSimplicialSet.{u}}
@@ -75,9 +75,9 @@ def pointedExtensionTransport {A B Z A' B' Z' : PointedSimplicialSet.{u}}
     (hi : a ≫ i = i' ≫ b) (hh : a ≫ h ≫ z = h') :
     pointedExtensionSpace i h ⟶ pointedExtensionSpace i' h' :=
   pullback.lift
-    (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right (SSet.yonedaEquiv.symm (familyVertex h)) ≫
+    (pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right (SSet.yonedaEquiv.symm (familyVertex h)) ≫
       pointedMappingTransport b z)
-    (pullback.snd (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right (SSet.yonedaEquiv.symm (familyVertex h))) (by
+    (pullback.snd (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right (SSet.yonedaEquiv.symm (familyVertex h))) (by
       rw [Category.assoc, pointedMappingTransport_restriction i i' a b z hi,
         ← Category.assoc, pullback.condition, Category.assoc]
       congr 1
@@ -91,8 +91,8 @@ lemma pointedExtensionTransport_projection {A B Z A' B' Z' : PointedSimplicialSe
     (a : A' ⟶ A) (b : B' ⟶ B) (z : Z ⟶ Z')
     (hi : a ≫ i = i' ≫ b) (hh : a ≫ h ≫ z = h') :
     pointedExtensionTransport i h i' h' a b z hi hh ≫
-      pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i' Z').right (SSet.yonedaEquiv.symm (familyVertex h')) =
-    pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right (SSet.yonedaEquiv.symm (familyVertex h)) ≫
+      pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i' Z').right (SSet.yonedaEquiv.symm (familyVertex h')) =
+    pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right (SSet.yonedaEquiv.symm (familyVertex h)) ≫
       pointedMappingTransport b z := pullback.lift_fst ..
 
 /-- 移送は実際の延長の頂点で前合成・後合成になる。 -/
@@ -112,9 +112,9 @@ lemma pointedExtensionTransport_vertex {A B Z A' B' Z' : PointedSimplicialSet.{u
       (Opposite.op ⦋0⦌)) v
   simp only [NatTrans.comp_app, ConcreteCategory.comp_apply] at hp
   change _ = (pointedMappingTransport b z).app (Opposite.op ⦋0⦌)
-    ((pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right (SSet.yonedaEquiv.symm (familyVertex h))).app _ v) at hp
+    ((pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right (SSet.yonedaEquiv.symm (familyVertex h))).app _ v) at hp
   refine hp.trans ?_
-  have hv : (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
+  have hv : (pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right
       (SSet.yonedaEquiv.symm (familyVertex h))).app (Opposite.op ⦋0⦌) v =
       familyVertex (pointedExtensionMap i h v) := (familyVertex_familyMap B Z _).symm
   exact (congrArg ((pointedMappingTransport b z).app (Opposite.op ⦋0⦌)) hv).trans

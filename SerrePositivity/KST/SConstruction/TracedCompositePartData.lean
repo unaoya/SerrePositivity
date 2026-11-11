@@ -35,14 +35,14 @@ def monicKPrismCompositePointSecondData (n : ℕ) :=
 /-- 元の同じ全合成補正を、二部分と同じ定数始点・同じ終点表示で保持する。 -/
 def monicKPrismCompositeConstantPointData (n : ℕ) :=
   (monicKPrismCompositePointData F f g n).endpointTransport
-    (SSet.comp_const (nervePoint (compositionStringDirect f g))
+    (SSet.comp_const (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g))
       (familyVertex (monicKToRawLevelMap (F.map (f ≫ g)) n))).symm
     (monicKPrismCompositePart_target F f g n)
 
 /-- 第一部分の全円柱は、前の同じ単一射補正の後合成像そのもの。 -/
 lemma monicKPrismCompositePointFirstData_h (n : ℕ) :
     (monicKPrismCompositePointFirstData F f g n).homotopy.h =
-      ((nervePoint (coherentArrowStringDirect f) ▷ (Δ[1] : SSet.{u})) ≫
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) ▷ (Δ[1] : SSet.{u})) ≫
         (monicKPrismUnaryCorrectionData F f n).homotopy.h) ≫
           (PointedObject.basedHomMap ((kOmegaSpectrum (F.obj x)).level n).space
             (kKanSequenceLevelMap (F.map g) n)).right := by
@@ -52,7 +52,7 @@ lemma monicKPrismCompositePointFirstData_h (n : ℕ) :
 /-- 第二部分の全円柱も、後の同じ単一射補正と同じ BF 頂点の実合成像。 -/
 lemma monicKPrismCompositePointSecondData_h (n : ℕ) :
     (monicKPrismCompositePointSecondData F f g n).homotopy.h =
-      ((nervePoint (coherentArrowStringDirect g) ▷ (Δ[1] : SSet.{u})) ≫
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect g) ▷ (Δ[1] : SSet.{u})) ≫
         (monicKPrismUnaryCorrectionData F g n).homotopy.h) ≫
           monicKTracedTripleLastPairStageMap F f z n := by
   rw [monicKPrismCompositePointSecondData, FamilyChainCompositeData.endpointTransport_h,

@@ -10,6 +10,8 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Degenerate
 方針：退化表示から同じ単体を与える隣接した二つの面を構成する。
 規約：Moss 2020 Lemma 29 の補助。非退化面からの単射性により原典の計算を表す。
 使われ方：Ex の pairing の対応先の非退化性。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

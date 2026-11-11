@@ -59,7 +59,7 @@ open scoped Simplicial
 使われ方：van Kampen の立方体の第一の引き戻し条件を仮定なしで満たす。
 -/
 theorem cylinderEndpoints_isPullback {C C' : SSet.{u}} (c : C ⟶ C') :
-    IsPullback (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map c c) (c ▷ Δ[1]) (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C') := by
+    IsPullback (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints C) (coprod.map c c) (c ▷ Δ[1]) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints C') := by
   have h₁ : IsPullback (cylinderBoundaryIso C).hom (coprod.map c c)
       (c ▷ (SSet.boundary.{u} 1)) (cylinderBoundaryIso C').hom :=
     IsPullback.of_horiz_isIso ⟨(cylinderBoundaryIso_naturality c).symm⟩

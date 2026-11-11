@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphNativeAugmentation
-public import SerrePositivity.InfinityCategories.Derived.DGBimoduleResolvedMapInvertible
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGBimoduleResolvedMapInvertible
 
 /-!
 概要：元 graph 比較の増大 square を native 全関手圏の射として可換にする。
@@ -16,16 +16,16 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet DifferentialGraded Infi
 variable (R : Type u) [CommRing R] (B : Type (max (u + 1) v))
   [DGCategory R B] [Small.{u} B]
 local notation "P" => DGCategoryCellResolution.Source R B
-local notation "ρ" => dgModuleResolvedInfinity R (RightModule R (P)) (P)
+local notation "ρ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity R (RightModule R (P)) (P)
   (DGFunctor.id (RightModule R (P)))
 
 /-- 概要：同じ cell 上の実 bimodule を native 導来加群値の全関手へ送る。
 方針：元実 nerve 全関手と実加群分解の後合成を使う。
 規約：元の全自然変換の射を保持。使われ方：graph 増大 square の実値域。 -/
 def dgCellGraphNativeFunctor : BimoduleCategory R (P) (P) ⥤
-    hoFunctor.obj ((ihom (dgNerve R (P))).obj (dgModuleDerivedInfinityCategory R (P))) :=
-  dgBimoduleFunctorHomFunctor R (P) (P) ⋙
-    SSet.mapHomotopyCategory ((ihom (dgNerve R (P))).map (ρ))
+    hoFunctor.obj ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (P))).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleDerivedInfinityCategory R (P))) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgBimoduleFunctorHomFunctor R (P) (P) ⋙
+    SSet.mapHomotopyCategory ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (P))).map (ρ))
 
 /-- 概要：同じ native 全関手作用は各実 bimodule 準同型を反転する。
 方針：元の全自然な実変換の点ごとの準同型性を使う。
@@ -33,7 +33,7 @@ def dgCellGraphNativeFunctor : BimoduleCategory R (P) (P) ⥤
 lemma dgCellGraphNativeFunctor_inverts :
     (BimoduleCategory.quasiIso R (P) (P)).IsInvertedBy (dgCellGraphNativeFunctor R B) := by
   intro X Y f hf
-  exact dgBimoduleFunctorHomFunctor_resolvedMap_isIso_of_quasiIso R (P) (P) f hf
+  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgBimoduleFunctorHomFunctor_resolvedMap_isIso_of_quasiIso R (P) (P) f hf
 
 /-- 概要：保存済み graph 比較の同じ増大 square は native 全関手射として可換。
 方針：元全関手作用の局所化から元の射を厳密に回収する。

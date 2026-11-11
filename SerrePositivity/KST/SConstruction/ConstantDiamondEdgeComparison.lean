@@ -17,7 +17,7 @@ open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
 variable {E : SSet.{u}} [KanComplex E] {x m n z : E _⦋0⦌}
   {a : E.Edge x m} {b : E.Edge m z} {c e : E.Edge x n} {d : E.Edge n z}
-  (D : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond a b c d)
+  (D : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond a b c d)
   (ha : ∃ v, SSet.yonedaEquiv.symm a.edge = SSet.const v)
   (hb : ∃ v, SSet.yonedaEquiv.symm b.edge = SSet.const v)
   (hd : ∃ v, SSet.yonedaEquiv.symm d.edge = SSet.const v)
@@ -50,7 +50,7 @@ lemma constantDiamondEdgeComparisonRealization_comparison :
 
 /-- 元の第一全三角形は、同じ高次比較の指定面にそのまま保持する。 -/
 lemma constantDiamondEdgeComparisonRealization_first_triangle :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 1) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 1) ≫
         constantDiamondEdgeComparisonRealization D ha hb hd he =
       SSet.yonedaEquiv.symm D.first.simplex := by
   rw [constantDiamondEdgeComparisonRealization,
@@ -59,7 +59,7 @@ lemma constantDiamondEdgeComparisonRealization_first_triangle :
 
 /-- 元の第二全三角形も、同じ高次比較の指定面にそのまま保持する。 -/
 lemma constantDiamondEdgeComparisonRealization_second_triangle :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 0) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 0) ≫
         constantDiamondEdgeComparisonRealization D ha hb hd he =
       SSet.yonedaEquiv.symm D.second.simplex := by
   rw [constantDiamondEdgeComparisonRealization,

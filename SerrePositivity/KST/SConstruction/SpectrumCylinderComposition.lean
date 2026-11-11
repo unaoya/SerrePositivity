@@ -31,20 +31,20 @@ def spectrumCylinderComposite (Z : PointedSimplicialSet.{u}) (n : ℕ)
 /-- BF 族の段の suspension と、射影先の同じ後続実円柱の合成。 -/
 def spectrumSuspendedCylinderComposite (Z : PointedSimplicialSet.{u}) (n : ℕ)
     (a : P ⟶ OmegaSpectrum.mappingSpace X Y)
-    (h : Q ⊗ (Δ[1] : SSet.{u}) ⟶ (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (Y.level n).space) Z).right) :
+    (h : Q ⊗ (Δ[1] : SSet.{u}) ⟶ (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (Y.level n).space) Z).right) :
     (P ⊗ Q) ⊗ (Δ[1] : SSet.{u}) ⟶
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) Z).right :=
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) Z).right :=
   lift (fst (P ⊗ Q) Δ[1] ≫ fst P Q ≫ a ≫ OmegaSpectrum.evaluation X Y n ≫
       (suspensionHom (X.level n).space (Y.level n).space).right)
     ((snd P Q ▷ (Δ[1] : SSet.{u})) ≫ h) ≫
-      eComp SSet (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (Y.level n).space) Z
+      eComp SSet (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (Y.level n).space) Z
 
 /-- 厳密な BF 族との円柱合成の射影は、後続円柱の射影だけで計算できる。 -/
 lemma spectrumCylinderComposite_projection (Z : PointedSimplicialSet.{u}) (n : ℕ)
     (a : P ⟶ OmegaSpectrum.mappingSpace X Y)
     (h : Q ⊗ (Δ[1] : SSet.{u}) ⟶ (PointedObject.basedHom (Y.level (n + 1)).space Z).right) :
-    spectrumCylinderComposite X Y Z (n + 1) a h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) Z =
-      spectrumSuspendedCylinderComposite X Y Z n a (h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (Y.sigma n) Z) := by
+    spectrumCylinderComposite X Y Z (n + 1) a h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) Z =
+      spectrumSuspendedCylinderComposite X Y Z n a (h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (Y.sigma n) Z) := by
   unfold spectrumCylinderComposite spectrumSuspendedCylinderComposite
   simp only [← Category.assoc]
   apply pointed_left_compatible_lift

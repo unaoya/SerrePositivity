@@ -1,0 +1,47 @@
+module
+
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.InnerFiber
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.VertexFiber
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Vertices
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.InnerFibration
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ElementsDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafUnstraightening
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.DensityCanonicalTransportEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.DensityCanonicalValueCriterion
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ElementsYonedaSliceComparison
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ElementsYonedaSliceValue
+
+/-!
+概要：元の小さい元の圏から Yoneda comma への元の密度比較自体が同値。
+方針：同じ全 fiber の canonical 輸送同値を、元の指定値写像と right fibration の判定へ戻す。
+規約：元の比較と元の余錐を保持し、同値性を仮定しない。
+使われ方：Ind の元の小さい κ-filtered 表示を Yoneda comma の模型へ移す。
+
+対応節は Kerodon 8.4（Tag 03V7）。
+-/
+
+@[expose] public section
+noncomputable section
+universe u
+open CategoryTheory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion
+variable {C : SSet.{u}} [Quasicategory C]
+  (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
+
+/-- 元の comma 比較の実際の全 fiber 値写像自身が同値。 -/
+lemma presheafElementsYonedaSliceValue_isQCatEquivalence (x : C _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.presheafElementsYonedaSliceValue F x) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.presheafElementsYonedaSliceValue_iff_canonicalTransport F x).mpr
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.presheafDensityCanonicalTransportValue_isQCatEquivalence F x)
+
+/-- 元の小さい元の圏から同じ元の前層への Yoneda comma の密度比較自体が同値。 -/
+lemma presheafElementsYonedaSliceComparison_isQCatEquivalence :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.presheafElementsYonedaSliceComparison F) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.presheafElementsYonedaSliceComparison_isQCatEquivalence_of_values F
+    (presheafElementsYonedaSliceValue_isQCatEquivalence F)
+
+end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion

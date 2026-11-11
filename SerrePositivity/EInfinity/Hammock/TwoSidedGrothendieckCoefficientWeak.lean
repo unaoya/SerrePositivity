@@ -24,26 +24,26 @@ variable {W : Type u} [Category.{u} W] {F F' : Wᵒᵖ ⥤ Cat.{u, u}}
   {G G' : W ⥤ Cat.{u, u}}
 
 lemma leftCoefficientMap_isWeakHomotopyEquivalence (G : W ⥤ Cat.{u, u}) (α : F ⟶ F')
-    (hα : ∀ w, IsWeakHomotopyEquivalence (nerveMap (α.app w).toFunctor)) :
-    IsWeakHomotopyEquivalence (nerveMap (leftCoefficientMap G α)) := by
-  have hr := rightCoefficientMap_isWeakHomotopyEquivalence (dualLeft G)
+    (hα : ∀ w, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (α.app w).toFunctor)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (leftCoefficientMap G α)) := by
+  have hr := rightCoefficientMap_isWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.dualLeft G)
     (Functor.whiskerRight α Cat.opFunctor)
     (fun w => nerveMap_op_isWeakHomotopyEquivalence _ (hα w))
-  have h := (nerveMap_equivalence_isWeakHomotopyEquivalence (dualEquivalence F G)).comp
+  have h := (nerveMap_equivalence_isWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.dualEquivalence F G)).comp
     (nerveMap_op_isWeakHomotopyEquivalence _ hr)
-  change IsWeakHomotopyEquivalence (nerveMap (dualFunctor F G ⋙
-    (rightCoefficientMap (dualLeft G) (Functor.whiskerRight α Cat.opFunctor)).op)) at h
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.dualFunctor F G ⋙
+    (rightCoefficientMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.dualLeft G) (Functor.whiskerRight α Cat.opFunctor)).op)) at h
   rw [← leftCoefficientMap_dualFunctor G α] at h
-  change IsWeakHomotopyEquivalence (nerveMap (leftCoefficientMap G α) ≫
-    nerveMap (dualFunctor F' G)) at h
-  exact (nerveMap_equivalence_isWeakHomotopyEquivalence (dualEquivalence F' G)).cancel_right h
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (leftCoefficientMap G α) ≫
+    nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.dualFunctor F' G)) at h
+  exact (nerveMap_equivalence_isWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.dualEquivalence F' G)).cancel_right h
 
 lemma coefficientMap_isWeakHomotopyEquivalence (α : F ⟶ F') (β : G ⟶ G')
-    (hα : ∀ w, IsWeakHomotopyEquivalence (nerveMap (α.app w).toFunctor))
-    (hβ : ∀ w, IsWeakHomotopyEquivalence (nerveMap (β.app w).toFunctor)) :
-    IsWeakHomotopyEquivalence (nerveMap (coefficientMap α β)) := by
+    (hα : ∀ w, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (α.app w).toFunctor))
+    (hβ : ∀ w, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (β.app w).toFunctor)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckFunctoriality.coefficientMap α β)) := by
   rw [coefficientMap_factorization G α β]
-  change IsWeakHomotopyEquivalence (nerveMap (rightCoefficientMap F β) ≫
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (rightCoefficientMap F β) ≫
     nerveMap (leftCoefficientMap G' α))
   exact (rightCoefficientMap_isWeakHomotopyEquivalence F β hβ).comp
     (leftCoefficientMap_isWeakHomotopyEquivalence G' α hα)

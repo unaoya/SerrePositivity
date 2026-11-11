@@ -23,7 +23,7 @@ def pointedSSetSuspensionEnrichedFunctor :
 
 /-- suspension の実値は、元の円との同じ smash。 -/
 lemma pointedSSetSuspensionEnrichedFunctor_obj (X : PointedSSetObject.{u}) :
-    (pointedSSetSuspensionEnrichedFunctor.obj X).obj = _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj := rfl
+    (pointedSSetSuspensionEnrichedFunctor.obj X).obj = _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X.obj := rfl
 
 /-- 全 Hom 作用は、元の suspensionHom そのもの。 -/
 lemma pointedSSetSuspensionEnrichedFunctor_map (X Y : PointedSSetObject.{u}) :

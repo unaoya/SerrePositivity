@@ -20,13 +20,13 @@ variable (A : Type u) [CommRing A] (I : Type (u + 1)) [Category.{u} I]
 
 lemma complexOrdinaryDerivedConstant_eq (X : Complex A) :
     nerveMap ((Functor.const I).obj X) ≫ complexOrdinaryDerivedSource A =
-    SSet.const ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)) := by
+    SSet.const ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)) := by
   rw [FrameHom.MixedNerve.nerveMap_const, SSet.const_comp]
 
 def complexOrdinaryDerivedConstantIso (X : Complex A) :
-    FunctorIso (nerveMap ((Functor.const I).obj X) ≫ complexOrdinaryDerivedSource A)
-      (SSet.const ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))) :=
-  eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap ((Functor.const I).obj X) ≫ complexOrdinaryDerivedSource A)
+      (SSet.const ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))) :=
+  eqToIso (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
     (complexOrdinaryDerivedConstant_eq A I X))
 
 end SerrePositivity.EInfinity.ComplexLimits

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictHomotopyLimits
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.StrictHomotopyLimits
 public import SerrePositivity.KST.Spectra.CoherentNerve
 public import Mathlib.CategoryTheory.Adjunction.Limits
 
@@ -8,7 +8,7 @@ public import Mathlib.CategoryTheory.Adjunction.Limits
 概要：L9 の実際の Ω スペクトルの写像空間と各段の点つき写像空間の自然性。
 方針：L9 の厳密な単体的合成を各段で評価し、後合成を点つき内部 Hom の作用に同定する。
 規約：L9 の対象と豊穣構造をそのまま用いる。別の Sp の模型は定義しない。
-使われ方：HTT 4.2.4.1、BF 1978 §2、Kerodon 7.5.4.6 の Sp の Hom の極限条件の検証。
+使われ方：HTT 4.2.4.1、BF 1978 §2、Kerodon 7.5.4.6（Tag 03BB） の Sp の Hom の極限条件の検証。
 -/
 
 @[expose] public section
@@ -35,7 +35,7 @@ def spectrumLevelFunctor (n : ℕ) : OmegaSpectrum.{u} ⥤ PointedSimplicialSet.
 /-- 概要：始域を固定した点つき写像単体集合の共変関手。
 方針：点つき内部 Hom 関手に基点の忘却を合成する。
 規約：パラメータの単体集合には基点を要求しない。
-使われ方：Kerodon 7.5.4.6 の段ごとの Hom の極限の計算。 -/
+使われ方：Kerodon 7.5.4.6（Tag 03BB） の段ごとの Hom の極限の計算。 -/
 noncomputable def pointedMappingFunctor (A : PointedSimplicialSet.{u}) :
     PointedSimplicialSet.{u} ⥤ SSet.{u} :=
   PointedObject.basedHomFunctor A ⋙ PointedSimplicialSet.forget
@@ -56,7 +56,7 @@ noncomputable instance pointedMappingFunctor_preservesLimits (A : PointedSimplic
 /-- 概要：スペクトルの射による Hom の後合成を指定段で評価するとその段の後合成になる。
 方針：L9 の合成の評価式と通常の射の頂点の評価を使い、右単位子の自然性でまとめる。
 規約：実際の L9 の写像単体集合の射の厳密な等式。
-使われ方：BF 1978 §2、Kerodon 7.5.4.6 の Hom 図式と段評価の可換性。 -/
+使われ方：BF 1978 §2、Kerodon 7.5.4.6（Tag 03BB） の Hom 図式と段評価の可換性。 -/
 lemma spectrumHomMap_evaluation (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
     (f : Y ⟶ Z) (n : ℕ) :
     ((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op X)).map f ≫
@@ -85,7 +85,7 @@ lemma spectrumHomMap_evaluation (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}
 /-- 概要：スペクトルの段ごとの点つき Hom の図式。
 方針：指定段の評価と点つき写像空間の関手を合成する。
 規約：始域のスペクトル X と段 n を固定する。
-使われ方：Kerodon 7.5.4.6 のスペクトルの Hom の極限を検査する各段の図式。 -/
+使われ方：Kerodon 7.5.4.6（Tag 03BB） のスペクトルの Hom の極限を検査する各段の図式。 -/
 noncomputable def spectrumStageHomFunctor (X : OmegaSpectrum.{u}) (n : ℕ) :
     OmegaSpectrum.{u} ⥤ SSet.{u} :=
   spectrumLevelFunctor n ⋙ pointedMappingFunctor (X.level n).space
@@ -105,8 +105,8 @@ noncomputable def spectrumMappingEvaluation (X : OmegaSpectrum.{u}) (n : ℕ) :
 規約：点つき対象の Kan 性は要求しない。
 使われ方：BF 1978 §2、各段の普遍族の境界条件の検証。 -/
 lemma pointedMapping_pre_post {A B Y Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (f : Y ⟶ Z) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y ≫ (pointedMappingFunctor A).map f =
-      (pointedMappingFunctor B).map f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y ≫ (pointedMappingFunctor A).map f =
+      (pointedMappingFunctor B).map f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Z := by
   have h := eHom_whisker_exchange SSet i f
   simp only [PointedEnrichment.whiskerRight_eq, PointedEnrichment.whiskerLeft_eq] at h
   exact h.symm
@@ -118,17 +118,17 @@ lemma pointedMapping_pre_post {A B Y Z : PointedSimplicialSet.{u}} (i : A ⟶ B)
 lemma suspensionHom_post (A : PointedSimplicialSet.{u}) {B D : PointedSimplicialSet.{u}}
     (f : B ⟶ D) :
     (pointedMappingFunctor A).map f ≫ (suspensionHom A D).right =
-      (suspensionHom A B).right ≫ (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A)).map
+      (suspensionHom A B).right ≫ (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension A)).map
         (PointedSimplicialSet.circle.{u} ◁ f) := by
   have h : (ihom A).map f ≫ suspensionHom A D =
-      suspensionHom A B ≫ (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A)).map (PointedSimplicialSet.circle.{u} ◁ f) := by
+      suspensionHom A B ≫ (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension A)).map (PointedSimplicialSet.circle.{u} ◁ f) := by
     have hev := (ihom.ev A).naturality f
     change (A ◁ (ihom A).map f) ≫ (ihom.ev A).app D = (ihom.ev A).app B ≫ f at hev
     apply MonoidalClosed.uncurry_injective
     rw [MonoidalClosed.uncurry_natural_left, MonoidalClosed.uncurry_natural_right,
       suspensionHom, MonoidalClosed.uncurry_curry, suspensionHom,
       MonoidalClosed.uncurry_curry]
-    change (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A ◁ (ihom A).map f) ≫
+    change (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension A ◁ (ihom A).map f) ≫
         (α_ PointedSimplicialSet.circle.{u} A ((ihom A).obj D)).hom ≫
           PointedSimplicialSet.circle.{u} ◁ (ihom.ev A).app D = _
     rw [associator_naturality_right_assoc, ← whiskerLeft_comp,
@@ -142,13 +142,13 @@ lemma suspensionHom_post (A : PointedSimplicialSet.{u}) {B D : PointedSimplicial
 lemma spectrumMappingStep_post (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
     (f : Y ⟶ Z) (n : ℕ) :
     OmegaSpectrum.mappingStep X Y n ≫
-        (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map (f.app (n + 1)) =
+        (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map (f.app (n + 1)) =
       (pointedMappingFunctor (X.level n).space).map (f.app n) ≫
         OmegaSpectrum.mappingStep X Z n := by
   change ((suspensionHom (X.level n).space (Y.level n).space).right ≫
-    (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map (Y.sigma n)) ≫ _ =
+    (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map (Y.sigma n)) ≫ _ =
     _ ≫ (suspensionHom (X.level n).space (Z.level n).space).right ≫
-      (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map (Z.sigma n)
+      (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map (Z.sigma n)
   rw [Category.assoc, ← CategoryTheory.Functor.map_comp, ← f.comm,
     CategoryTheory.Functor.map_comp, ← Category.assoc, ← suspensionHom_post, Category.assoc]
 

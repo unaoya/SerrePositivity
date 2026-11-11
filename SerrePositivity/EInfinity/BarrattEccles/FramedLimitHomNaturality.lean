@@ -48,7 +48,7 @@ lemma framedLimitHomPiZeroEquiv_target (Y : (operad A).Algebra)
     rw [weakEquivalences_op]
     infer_instance
   have := framedLimitProbe_cofibrant A Y
-  have : IsFibrant (op (framedLimitProbe A Y)) := FrameHom.MixedFrame.fibrantOp_of_cofibrant _
+  have : IsFibrant (op (framedLimitProbe A Y)) := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
   let e (F : K ⥤ (operad A).Algebra) :=
     HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
       (rightFrameDiagram A K F) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K)

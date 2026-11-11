@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
-open Spectra SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open Spectra SerrePositivity.InfinityCategories
 open scoped Simplicial
 local instance kPrismSliceDiagrams_pointed_simplicialCategory :
     SimplicialCategory PointedSimplicialSet.{u} := PointedEnrichment.simplicialCategory
@@ -26,12 +26,12 @@ lemma kKanOriginalPrismStringDiagram_bottom {I : Type u} [SmallCategory I]
     (SSet.uliftFunctor.{u + 1, u}).map
       (nerveMap (coherentPrismSliceFunctor I (ULift.up 0))) ≫
         kKanOriginalPrismStringDiagram r F =
-      strictCoherentDiagram ((F ⋙ kKanSequenceLevelFunctor r) ⋙
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram ((F ⋙ kKanSequenceLevelFunctor r) ⋙
         MonoidalCategory.tensorLeft PointedSimplicialSet.circle.{u}) := by
   rw [kKanOriginalPrismStringDiagram, coherentOrdinaryPrismSlice_source]
-  change (kKanCoherentLevelDiagram F r ≫ coherentNerveMap pointedKanInclusionEnriched) ≫
-    coherentNerveMap suspensionEnrichedFunctor = _
-  rw [kKanCoherentLevelDiagram_inclusion, strictCoherentDiagram_postcomp,
+  change (kKanCoherentLevelDiagram F r ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanInclusionEnriched) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap suspensionEnrichedFunctor = _
+  rw [kKanCoherentLevelDiagram_inclusion, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.strictCoherentDiagram_postcomp,
     suspensionEnrichedUnderlying_eq]
 
 /-- 上段の全入力図式は、元の次段の strict な図式そのもの。 -/
@@ -40,7 +40,7 @@ lemma kKanOriginalPrismStringDiagram_top {I : Type u} [SmallCategory I]
     (SSet.uliftFunctor.{u + 1, u}).map
       (nerveMap (coherentPrismSliceFunctor I (ULift.up 1))) ≫
         kKanOriginalPrismStringDiagram r F =
-      strictCoherentDiagram (F ⋙ kKanSequenceLevelFunctor (r + 1)) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (F ⋙ kKanSequenceLevelFunctor (r + 1)) := by
   rw [kKanOriginalPrismStringDiagram, coherentOrdinaryPrismSlice_target,
     kKanCoherentLevelDiagram_inclusion]
 

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Spectra.PullbackKanSequence
 
-public import SerrePositivity.InfinityCategories.F1.Pointed.MappingPathSpace
+public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.MappingPathSpace
 public import SerrePositivity.KST.Spectra.MappingKanSequence
 public import SerrePositivity.KST.Spectra.CofibrantOmegaSequence
 
@@ -32,7 +32,7 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：BF 1978 §2、Goerss–Jardine I §7。mapping path 列の引き戻し。 -/
 instance freePathEvaluation_fibration (Y : KanSequence.{u}) (i : Fin 2) :
     ∀ n, Fibration ((Y.freePathEvaluation i).app n).right := fun n ↦
-  inferInstanceAs (Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint (Y.level n).space i).right)
+  inferInstanceAs (Fibration (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathEndpoint (Y.level n).space i).right)
 
 /-- 概要：任意の Kan 列の射の mapping path 列。
 方針：始点評価の列を元の射に沿って段ごとに引き戻す。
@@ -63,9 +63,9 @@ def mappingPathComparison {X Y : KanSequence.{u}} (f : Hom X Y) :
     Hom X (mappingPathSequence f) :=
   pullbackLift (Y.freePathEvaluation 1) f (f.comp Y.freePathConstant)
     { app n := 𝟙 _, comm n := by simp } (fun n ↦ by
-      change (f.app n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath (Y.level n).space) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint (Y.level n).space 1 = (𝟙 _) ≫ f.app n
-      simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath_endpoint, Category.comp_id, Category.id_comp])
+      change (f.app n ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeConstantPath (Y.level n).space) ≫
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathEndpoint (Y.level n).space 1 = (𝟙 _) ≫ f.app n
+      simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeConstantPath_endpoint, Category.comp_id, Category.id_comp])
 
 /-- 概要：mapping path の源射影は各段で全ての単射に RLP を持つ。
 方針：始点評価の RLP を引き戻す。
@@ -73,7 +73,7 @@ def mappingPathComparison {X Y : KanSequence.{u}} (f : Hom X Y) :
 使われ方：BF 1978 §2、HTT A.3.3。中間列の Ω 条件。 -/
 theorem mappingPathSource_rlp {X Y : KanSequence.{u}} (f : Hom X Y) (n : ℕ) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp ((mappingPathSource f).app n).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction_rlp (f.app n)
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction_rlp (f.app n)
 
 /-- 概要：mapping path の終点射は各段で Kan fibration。
 方針：点つき単体集合の mapping path の相対ホーン充填を使う。
@@ -81,7 +81,7 @@ theorem mappingPathSource_rlp {X Y : KanSequence.{u}} (f : Hom X Y) (n : ℕ) :
 使われ方：BF 1978 §2、Goerss–Jardine I §7。段ごとの fibration 置換。 -/
 instance mappingPathTarget_fibration {X Y : KanSequence.{u}} (f : Hom X Y) :
     ∀ n, Fibration ((mappingPathTarget f).app n).right := fun n ↦
-  inferInstanceAs (Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection (f.app n)).right)
+  inferInstanceAs (Fibration (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection (f.app n)).right)
 
 /-- 概要：mapping path の比較射と源射影の合成は各段で恒等射。
 方針：定数 path の引き戻しの第二射影を計算する。
@@ -90,7 +90,7 @@ instance mappingPathTarget_fibration {X Y : KanSequence.{u}} (f : Hom X Y) :
 @[reassoc (attr := simp)]
 theorem mappingPathComparison_source {X Y : KanSequence.{u}} (f : Hom X Y) (n : ℕ) :
     (mappingPathComparison f).app n ≫ (mappingPathSource f).app n = 𝟙 _ :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_retraction (f.app n)
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit_retraction (f.app n)
 
 /-- 概要：mapping path の比較射と終点射の合成は各段で元の射。
 方針：定数 path の終点評価を計算する。
@@ -99,21 +99,21 @@ theorem mappingPathComparison_source {X Y : KanSequence.{u}} (f : Hom X Y) (n : 
 @[reassoc (attr := simp)]
 theorem mappingPathComparison_target {X Y : KanSequence.{u}} (f : Hom X Y) (n : ℕ) :
     (mappingPathComparison f).app n ≫ (mappingPathTarget f).app n = f.app n :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_projection (f.app n)
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit_projection (f.app n)
 
 /-- 概要：mapping path 列の比較射は各段で全基点の π_* 同型。
 方針：源射影の RLP による π_* 同型を、恒等射となる合成から打ち消す。
 規約：零次数も含む。
 使われ方：BF 1978 §2、Goerss–Jardine I §7。fibration 置換の同値。 -/
 theorem mappingPathComparison_piIsomorphism {X Y : KanSequence.{u}}
-    (f : Hom X Y) (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((mappingPathComparison f).app n).right := by
-  have hr : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((mappingPathSource f).app n).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (mappingPathSource_rlp f n)
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((mappingPathSource f).app n).right) _ hr
+    (f : Hom X Y) (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((mappingPathComparison f).app n).right := by
+  have hr : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((mappingPathSource f).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (mappingPathSource_rlp f n)
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := ((mappingPathSource f).app n).right) _ hr
   have h : ((mappingPathComparison f).app n).right ≫ ((mappingPathSource f).app n).right =
       𝟙 (X.level n).space.right := congrArg Under.Hom.right (mappingPathComparison_source f n)
   rw [h]
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id _
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.id _
 
 /-- 概要：源が Ω 条件を満たすなら mapping path 列も Ω 条件を満たす。
 方針：源射影の各段の全単射への RLP により Ω 条件を移す。

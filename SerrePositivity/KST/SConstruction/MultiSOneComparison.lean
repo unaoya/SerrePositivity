@@ -59,7 +59,7 @@ lemma multiSOneComparison_app (r : ℕ) (X : StableModel.{u})
 規約：追加の補完仮定なし。使われ方：core と実現の弱同値の比較。 -/
 instance multiSOneComparison_trivialKanFibration (r : ℕ) (X : StableModel.{u})
     (d : Fin r → SimplexCategoryᵒᵖ) :
-    TrivialKanFibration ((multiSOneComparison r X).app d) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration ((multiSOneComparison r X).app d) := by
   rw [multiSOneComparison_app]
   infer_instance
 
@@ -68,14 +68,14 @@ instance multiSOneComparison_trivialKanFibration (r : ℕ) (X : StableModel.{u})
 規約：各段は Kan。使われ方：実現の比較。 -/
 def multiCoreSOneComparison (r : ℕ) (X : StableModel.{u}) :
     oneDirectionIndex r ⋙ multiCoreSConstruction (r + 1) X ⟶ multiCoreSConstruction r X :=
-  Functor.whiskerRight (multiSOneComparison r X) quasicategoryCoreFunctor
+  Functor.whiskerRight (multiSOneComparison r X) _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
 
 /-- 概要：core の一次方向の比較も各段で trivial Kan fibration。
 方針：元の比較の充填性を core に制限する。
 規約：源・標的の quasicategory 性は反復の安定性から得る。使われ方：対角比較。 -/
 instance multiCoreSOneComparison_trivialKanFibration (r : ℕ) (X : StableModel.{u})
     (d : Fin r → SimplexCategoryᵒᵖ) :
-    TrivialKanFibration ((multiCoreSOneComparison r X).app d) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration ((multiCoreSOneComparison r X).app d) := by
   have : Quasicategory ((oneDirectionIndex r ⋙ multiSConstruction (r + 1) X).obj d) := by
     change Quasicategory ((multiSConstruction (r + 1) X).obj ((oneDirectionIndex r).obj d))
     infer_instance
@@ -128,7 +128,7 @@ lemma multiCoreSOneComparison_naturality (r : ℕ) {X Y : StableModel.{u}} (f : 
     Functor.whiskerLeft (oneDirectionIndex r) ((multiCoreSConstructionFunctor (r + 1)).map f) ≫
         multiCoreSOneComparison r Y =
       multiCoreSOneComparison r X ≫ (multiCoreSConstructionFunctor r).map f := by
-  exact congrArg ((Functor.whiskeringRight _ _ _).obj quasicategoryCoreFunctor).map
+  exact congrArg ((Functor.whiskeringRight _ _ _).obj _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor).map
     (multiSOneComparison_naturality r f)
 
 /-- 概要：一次方向の比較を入力についての自然変換にまとめる。

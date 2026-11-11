@@ -17,7 +17,7 @@ universe u
 open CategoryTheory Limits MonoidalCategory SSet HomotopicalAlgebra
 open scoped _root_.Simplicial
 open SSet.modelCategoryQuillen
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.BinarySecondProjection
 local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
@@ -33,54 +33,54 @@ instance snd_level_fibration (A B : OmegaSpectrum.{u}) (n : ℕ) :
 def ordinaryCone : PullbackCone (Binary.snd Y Z) f :=
   PullbackCone.mk (Binary.map (𝟙 Y) f) (Binary.snd Y X) (Binary.map_snd (𝟙 Y) f)
 
-def levelIsLimit (n : ℕ) : IsLimit ((spectrumLevelFunctor n).mapCone (ordinaryCone f Y)) :=
-  (isLimitMapConePullbackConeEquiv (spectrumLevelFunctor n) (Binary.map_snd (𝟙 Y) f)).symm
+def levelIsLimit (n : ℕ) : IsLimit ((_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor n).mapCone (ordinaryCone f Y)) :=
+  (isLimitMapConePullbackConeEquiv (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor n) (Binary.map_snd (𝟙 Y) f)).symm
     (PointedSecondProjection.isLimit (f.app n) (Y.level n).space)
 
 def diagram : AsSmall.{u} WalkingCospan ⥤ OmegaSpectrum.{u} :=
-  spectrumPullbackDiagram (Binary.snd Y Z) f
+  _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram (Binary.snd Y Z) f
 
 def cone : Cone (diagram f Y) := (ordinaryCone f Y).whisker AsSmall.down
 
-def homIsLimit (A : OmegaSpectrum.{u}) : IsLimit (simplicialHomCone (cone f Y) A) :=
-  spectrumHomCone_isLimit_of_levelwise (cone f Y) (fun n =>
+def homIsLimit (A : OmegaSpectrum.{u}) : IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone (_root_.SerrePositivity.KST.LocalizingInvariants.BinarySecondProjection.cone f Y) A) :=
+  _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomCone_isLimit_of_levelwise (cone f Y) (fun n =>
     (levelIsLimit f Y n).whiskerEquivalence
     (AsSmall.equiv : WalkingCospan ≌ AsSmall.{u} WalkingCospan).symm) A
 
-lemma infinityCone_isLimit : IsLimitCone (strictCoherentCone (cone f Y)) := by
+lemma infinityCone_isLimit : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (_root_.SerrePositivity.KST.LocalizingInvariants.BinarySecondProjection.cone f Y)) := by
   have : ∀ A : OmegaSpectrum.{u}, Fibration
-      ((simplicialHomDiagram (diagram f Y) A).map
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (diagram f Y) A).map
         (AsSmall.up.map WalkingCospan.Hom.inl)) := fun A => by
     change Fibration
       (((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op A)).map
         (Binary.snd Y Z))
     infer_instance
-  exact strictCoherentCone_isLimit_of_cospan_homLimit (cone f Y) (homIsLimit f Y)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_cospan_homLimit (_root_.SerrePositivity.KST.LocalizingInvariants.BinarySecondProjection.cone f Y) (_root_.SerrePositivity.KST.LocalizingInvariants.BinarySecondProjection.homIsLimit f Y)
 
 def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
   (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
-    StrictCospanCone.square (Binary.snd Y Z) f (cone f Y)
+    StrictCospanCone.square (Binary.snd Y Z) f (_root_.SerrePositivity.KST.LocalizingInvariants.BinarySecondProjection.cone f Y)
 
-lemma square_isPullback : IsPullbackSquare (square f Y) :=
-  (isPullbackSquare_iff_transpose _).mp
-    (StrictCospanCone.square_isPullback _ _ _ (infinityCone_isLimit f Y))
+lemma square_isPullback : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (square f Y) :=
+  (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_transpose _).mp
+    (StrictCospanCone.square_isPullback _ _ _ (_root_.SerrePositivity.KST.LocalizingInvariants.BinarySecondProjection.infinityCone_isLimit f Y))
 
-lemma square_bottom : squareBottomEdge ≫ square f Y =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.snd Y X)).edge := by
-  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom, StrictCospanCone.square_left]
+lemma square_bottom : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ square f Y =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.snd Y X)).edge := by
+  rw [square, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.square_transpose_bottom, StrictCospanCone.square_left]
   rfl
 
-lemma square_left : squareLeftEdge ≫ square f Y =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.map (𝟙 Y) f)).edge := by
-  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left, StrictCospanCone.square_bottom]
+lemma square_left : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ square f Y =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.map (𝟙 Y) f)).edge := by
+  rw [square, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.square_transpose_left, StrictCospanCone.square_bottom]
   rfl
 
-lemma square_right : squareRightEdge ≫ square f Y =
-    SSet.yonedaEquiv.symm (coherentNerveEdge f).edge := by
-  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right, StrictCospanCone.square_top]
+lemma square_right : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ square f Y =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge := by
+  rw [square, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.square_transpose_right, StrictCospanCone.square_top]
 
-lemma square_top : squareTopEdge ≫ square f Y =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.snd Y Z)).edge := by
-  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top, StrictCospanCone.square_right]
+lemma square_top : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ square f Y =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.snd Y Z)).edge := by
+  rw [square, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.square_transpose_top, StrictCospanCone.square_right]
 
 end SerrePositivity.KST.LocalizingInvariants.BinarySecondProjection

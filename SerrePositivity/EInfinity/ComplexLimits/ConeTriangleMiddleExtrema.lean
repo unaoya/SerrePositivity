@@ -8,12 +8,12 @@ public import SerrePositivity.EInfinity.ComplexLimits.ConeTrianglePrincipalInjec
 -/
 @[expose] public section
 namespace SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.InfinityCategories.DGNerve
+
 
 lemma middle_min_eq_second {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (hs1 : τ (ConeHeadIndex.second I hI) = 1)
-    (haz : τ (I.min' (Index.nonempty hI)) = 0) :
+    (haz : τ (I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) = 0) :
     (I.filter (fun i => τ i = 1)).min'
       (by exact ⟨_, Finset.mem_filter.mpr ⟨ConeHeadIndex.second_mem I hI, hs1⟩⟩) =
       ConeHeadIndex.second I hI := by
@@ -23,7 +23,7 @@ lemma middle_min_eq_second {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
   have hJ : J.Nonempty := ⟨_, hsJ⟩
   apply le_antisymm (J.min'_le _ hsJ)
   have hm := Finset.mem_filter.mp (J.min'_mem hJ)
-  apply (I.erase (I.min' (Index.nonempty hI))).min'_le _
+  apply (I.erase (I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))).min'_le _
   refine Finset.mem_erase.mpr ⟨?_, hm.1⟩
   intro he
   have ht := congrArg τ he
@@ -33,7 +33,7 @@ lemma middle_min_eq_second {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
 lemma middle_max_eq_penultimate {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (hp1 : τ (ConeHeadIndex.penultimate I hI) = 1)
-    (hbt : τ (I.max' (Index.nonempty hI)) = 2) :
+    (hbt : τ (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) = 2) :
     (I.filter (fun i => τ i = 1)).max'
       (by exact ⟨_, Finset.mem_filter.mpr ⟨ConeHeadIndex.penultimate_mem I hI, hp1⟩⟩) =
       ConeHeadIndex.penultimate I hI := by
@@ -43,7 +43,7 @@ lemma middle_max_eq_penultimate {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
   have hJ : J.Nonempty := ⟨_, hpJ⟩
   apply le_antisymm ?_ (J.le_max' _ hpJ)
   have hm := Finset.mem_filter.mp (J.max'_mem hJ)
-  apply (I.erase (I.max' (Index.nonempty hI))).le_max' _
+  apply (I.erase (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))).le_max' _
   refine Finset.mem_erase.mpr ⟨?_, hm.1⟩
   intro he
   have ht := congrArg τ he

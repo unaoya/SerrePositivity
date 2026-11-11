@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.Basic
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Basic
 
 public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 public import SerrePositivity.HomotopicalAlgebra.Transfer.Recognition
@@ -410,7 +410,7 @@ lemma projectiveModelCategory_fibrations :
 使われ方：`Transfer.Right` の `CofibrantlyGenerated` 仮定を満たす。 -/
 lemma projectiveModelCategory_cofibrantlyGenerated :
     letI := projectiveModelCategory A
-    SerrePositivity.ModelGeneration.CofibrantlyGenerated.{u}
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
       (projectiveGeneratingCofibrations A) (projectiveGeneratingTrivialCofibrations A) := by
   let := projectiveModelCategory A
   exact ⟨inferInstance, inferInstance, projectiveGeneratingCofibrations_rlp A,

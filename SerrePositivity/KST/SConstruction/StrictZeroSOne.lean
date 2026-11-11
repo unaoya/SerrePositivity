@@ -36,24 +36,24 @@ lemma arOne_isFrame (a : Ar.{u} 1) : a.down.val.1 = 0 ∨ IsDiagonal a := by
 
 /-- 指定した同じ零頂点を両対角に持ち、中間頂点を厳密に回収する補完。 -/
 lemma exists_strictZeroSOneDiagram {C : SSet.{u}} [Quasicategory C]
-    (x z : C _⦋0⦌) (hz : IsZeroVertex z) :
+    (x z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) :
     ∃ F : arNerve 1 ⟶ C, IsGapped F ∧
       F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (arObj (0 : Fin 2) 1 (by decide))) = x ∧
       ∀ j : Fin 2, F.app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ (arObj j j le_rfl)) = z := by
   classical
-  let A := fullSubcomplexOnVertices (arNerve.{u} 1)
+  let A := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices (arNerve.{u} 1)
     (fun v ↦ IsPositiveRow (nerveEquiv v))
   let values : (arNerve.{u} 1) _⦋0⦌ → C _⦋0⦌ := fun v ↦
     if IsPositiveRow (nerveEquiv v) then x else z
   have hd (v : (arNerve.{u} 1) _⦋0⦌) (h : IsDiagonal (nerveEquiv v)) :
       values v = z := by
     exact ite_eq_right (diagonal_not_positiveRow h)
-  obtain ⟨F, _, hv⟩ := exists_extension_with_vertices A (SSet.const x) values (by
+  obtain ⟨F, _, hv⟩ := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.exists_extension_with_vertices A (SSet.const x) values (by
     intro v
-    have hp := fullSubcomplexOnVertices_vertex v
-    change (if IsPositiveRow (nerveEquiv v.val) then x else z) = PinchedHom.constant x 0
-    rw [ite_eq_left hp, pinchedConstant_zero]) (by
+    have hp := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v
+    change (if IsPositiveRow (nerveEquiv v.val) then x else z) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 0
+    rw [ite_eq_left hp, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero]) (by
     intro n s hs
     have hn : ¬ ∀ r, IsPositiveRow (s.obj r) := by
       intro h
@@ -63,7 +63,7 @@ lemma exists_strictZeroSOneDiagram {C : SSet.{u}} [Quasicategory C]
     rcases frameChain_diagonal_endpoint s (fun r ↦ arOne_isFrame (s.obj r)) hn with hi | ht
     · rw [hd _ hi]
       exact Or.inl hz.1
-    · rw [hd (simplexLastVertex s) ht]
+    · rw [hd (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.simplexLastVertex s) ht]
       exact Or.inr hz.2)
   have hdiag (j : Fin 2) : F.app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ (arObj j j le_rfl)) = z := by
@@ -81,21 +81,21 @@ lemma arZero_hom_ext {C : SSet.{u}} (F G : arNerve 0 ⟶ C)
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
   intro s
-  have hs : s = PinchedHom.constant
+  have hs : s = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant
       (ComposableArrows.mk₀ (arObj (0 : Fin 1) 0 le_rfl)) n := by
     refine CategoryTheory.Functor.ext (fun r ↦ ?_) (fun _ _ _ ↦ Subsingleton.elim _ _)
     apply ULift.ext
     apply Subtype.ext
     apply Prod.ext <;> exact Fin.eq_zero _
-  rw [hs, pinchedConstant_map, pinchedConstant_map, h]
+  rw [hs, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedConstant_map, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedConstant_map, h]
 
 /-- 任意の対象は、両端が同じ元の object S₀ 頂点となる S₁ 辺で表される。 -/
-lemma exists_closedObjectSOne {C : SSet.{u}} [Quasicategory C] [HasZeroVertex C]
+lemma exists_closedObjectSOne {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C]
     (x : C _⦋0⦌) : ∃ e : (objectSConstruction C) _⦋1⦌,
       (sOneComparison C).app (Opposite.op ⦋0⦌) e = x ∧
       (objectSConstruction C).δ 0 e = (objectSConstruction C).δ 1 e := by
   obtain ⟨F, hF, hx, hz⟩ := exists_strictZeroSOneDiagram x
-    (chosenZeroVertex C).vertex (chosenZeroVertex C).isZero
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C).vertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C).isZero
   let e := gappedObjectVertex F hF
   refine ⟨e, ?_, ?_⟩
   · rw [sOneComparison_gappedDiagram_vertex, gappedDiagram_gappedObjectVertex]

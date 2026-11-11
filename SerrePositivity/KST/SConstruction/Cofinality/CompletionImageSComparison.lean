@@ -24,11 +24,11 @@ open scoped Simplicial
 使われ方：本質像の閉じた安定条件と S 構成との交換。 -/
 lemma completionImage_sClosedPredicate_iff (n r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (v : (sConstruction n (((multiSEndofunctor r).obj ι).obj Y).carrier) _⦋0⦌) :
     (sClosedPredicate n (completionImageClosedPredicate r ι f hf)).predicate v ↔
       ∃ x : (sConstruction n (((multiSEndofunctor r).obj ι).obj X).carrier) _⦋0⦌,
-        Nonempty (VertexIso (((sEndofunctor n).map
+        Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (((sEndofunctor n).map
           (((multiSEndofunctor r).obj ι).map f)).val.app (Opposite.op ⦋0⦌) x) v) := by
   let F := ((multiSEndofunctor r).obj ι).map f
   constructor
@@ -37,8 +37,8 @@ lemma completionImage_sClosedPredicate_iff (n r : ℕ) (ι : Fin r → SimplexCa
       (multiSEndofunctor_map_isIdempotentCompletion r ι f hf).2.1 v
     intro a
     have h := hv a
-    change ∃ x, Nonempty (VertexIso (F.val.app (Opposite.op ⦋0⦌) x)
-      ((evaluateFunctorAt a).app (Opposite.op ⦋0⦌) v.val)) at h
+    change ∃ x, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (F.val.app (Opposite.op ⦋0⦌) x)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a).app (Opposite.op ⦋0⦌) v.val)) at h
     exact (functorVertexEquiv_symm_evaluate v.val a).symm ▸ h
   · rintro ⟨x, ⟨e⟩⟩ a
     have ei := e.map (sStableEvaluation n (((multiSEndofunctor r).obj ι).obj Y) a).val
@@ -55,7 +55,7 @@ lemma completionImage_sClosedPredicate_iff (n r : ℕ) (ι : Fin r → SimplexCa
 使われ方：元の本質像を全 S 多次数の共通供給へ代入する際の判定。 -/
 theorem completionImage_multiPointwise_iff (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (v : ((((multiSEndofunctor r).obj ι).obj Y).carrier) _⦋0⦌) :
     MultiPointwiseImage f r ι v ↔
       (completionImageClosedPredicate r ι f hf).predicate v := by
@@ -82,7 +82,7 @@ theorem completionImage_multiPointwise_iff (r : ℕ) (ι : Fin r → SimplexCate
 使われ方：閉じた本質像の模型と S 模型の厳密な照合。 -/
 lemma completionImage_sClosedPredicate_eq (n r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     sClosedPredicate n (completionImageClosedPredicate r ι f hf) =
       completionImageClosedPredicate (r + 1) (Fin.cons (Opposite.op ⦋n⦌) ι) f hf := by
   have hp : (sClosedPredicate n (completionImageClosedPredicate r ι f hf)).predicate =
@@ -102,7 +102,7 @@ lemma completionImage_sClosedPredicate_eq (n r : ℕ) (ι : Fin r → SimplexCat
 使われ方：K-B2-S1 への入力を全 S 多次数へ移す交換同型。 -/
 def completionImageSStableIso (n r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     sStableModel n (closedStableModel (completionImageClosedPredicate r ι f hf)) ≅
       closedStableModel (completionImageClosedPredicate (r + 1)
         (Fin.cons (Opposite.op ⦋n⦌) ι) f hf) :=

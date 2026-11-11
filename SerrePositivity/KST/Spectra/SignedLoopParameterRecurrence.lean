@@ -36,10 +36,10 @@ lemma signedEvaluationParameter_succ (n : ℕ) :
 
 /-- 同じ補正の漸化式を、任意の標的の実際の内部 Hom の制限へ移す。 -/
 lemma signedEvaluationParameter_pre_succ (V : PointedSimplicialSet.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (reversalIterate n) V ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (unit.{u} ≫ integerPowerMap.{u} (-1)) V =
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (signedEvaluationParameter (n + 1)) V := by
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, signedEvaluationParameter, reversalIterate,
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (reversalIterate n) V ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (unit.{u} ≫ integerPowerMap.{u} (-1)) V =
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (signedEvaluationParameter (n + 1)) V := by
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp, signedEvaluationParameter, reversalIterate,
     ← Category.assoc]
 
 end SerrePositivity.KST.Spectra.CirclePower

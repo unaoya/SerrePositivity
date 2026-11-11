@@ -22,7 +22,7 @@ def pointedEnrichedMonicReplacementUnitTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (pointedEnrichedMappingCylinderFunctor F G t h)
       (pointedEnrichedMonicReplacementFunctor F G t h) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (pointedEnrichedMonicReplacementUnit F G t h)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _ (pointedEnrichedMonicReplacementUnit F G t h)
     (pointedEnrichedMonicReplacementUnit_whisker F G t h)
 
 /-- 豊穣変換の成分は、同じ元の Unit 比較を回収する。 -/
@@ -34,7 +34,7 @@ lemma pointedEnrichedMonicReplacementUnitTransformation_app (X : C) :
 def pointedEnrichedMonicReplacementSourceTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F
       (pointedEnrichedMonicReplacementFunctor F G t h) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (pointedEnrichedMonicReplacementSource F G t h)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _ (pointedEnrichedMonicReplacementSource F G t h)
     (pointedEnrichedMonicReplacementSource_whisker F G t h)
 
 /-- 豊穣変換の成分は、同じ元の Source 比較を回収する。 -/
@@ -46,7 +46,7 @@ lemma pointedEnrichedMonicReplacementSourceTransformation_app (X : C) :
 def pointedEnrichedMonicReplacementTargetTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) G
       (pointedEnrichedMonicReplacementFunctor F G t h) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (pointedEnrichedMonicReplacementTarget F G t h)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _ (pointedEnrichedMonicReplacementTarget F G t h)
     (pointedEnrichedMonicReplacementTarget_whisker F G t h)
 
 /-- 豊穣変換の成分は、同じ元の Target 比較を回収する。 -/

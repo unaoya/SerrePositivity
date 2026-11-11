@@ -32,20 +32,20 @@ def cubicalSerreChainsCubeIso : serreConcreteCubeComplexFunctor A ≅
   exact asIso (cubicalSerreChainsCubeUnit A)
 
 /-- 元の各立方体が cubical set の鎖複体へ定める射。 -/
-def cubicalSerreCell {K : CubicalSet.{u}} (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) :
+def cubicalSerreCell {K : CubicalSet.{u}} (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)) :
     (serreConcreteCubeComplexFunctor A).obj c ⟶ (cubicalSerreChains A).obj K :=
   (cubicalSerreChainsCubeUnit A).app c ≫ (cubicalSerreChains A).map (cubicalCell c x)
 
 /-- 各立方体の鎖射は cubical set の元の射について自然。 -/
 lemma cubicalSerreCell_naturality {K L : CubicalSet.{u}} (f : K ⟶ L)
-    (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) :
+    (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)) :
     cubicalSerreCell A c x ≫ (cubicalSerreChains A).map f =
       cubicalSerreCell A c (f.app (op c) x) := by
   dsimp only [cubicalSerreCell]
   rw [Category.assoc, ← Functor.map_comp, cubicalCell_naturality]
 
 /-- 元の立方体の射に関する比較の自然性は、元の鎖射そのものを保持する。 -/
-lemma cubicalSerreChainsCubeUnit_naturality {c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : c ⟶ d) :
+lemma cubicalSerreChainsCubeUnit_naturality {c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube} (f : c ⟶ d) :
     (serreConcreteCubeComplexFunctor A).map f ≫ (cubicalSerreChainsCubeUnit A).app d =
       (cubicalSerreChainsCubeUnit A).app c ≫
         (cubicalSerreChains A).map (cubicalYoneda.map f) :=

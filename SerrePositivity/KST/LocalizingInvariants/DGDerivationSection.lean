@@ -27,17 +27,17 @@ structure Derivation where
 
 def Derivation.section (d : Derivation A M) : A ⟶ algebra A M := by
   refine Mon.Hom.mk' (biprod.lift (𝟙 A.X) d.hom) ?_ ?_
-  · change η[A.X] ≫ biprod.lift (𝟙 A.X) d.hom = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one A M
+  · change η[A.X] ≫ biprod.lift (𝟙 A.X) d.hom = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one A M
     apply biprod.hom_ext
-    · simp only [Category.assoc, biprod.lift_fst, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one, biprod.inl_fst, Category.comp_id]
-    · simp only [Category.assoc, biprod.lift_snd, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one, biprod.inl_snd, comp_zero, d.unit]
+    · simp only [Category.assoc, biprod.lift_fst, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one, biprod.inl_fst, Category.comp_id]
+    · simp only [Category.assoc, biprod.lift_snd, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one, biprod.inl_snd, comp_zero, d.unit]
   · change μ[A.X] ≫ biprod.lift (𝟙 A.X) d.hom =
-      (biprod.lift (𝟙 A.X) d.hom ⊗ₘ biprod.lift (𝟙 A.X) d.hom) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M
+      (biprod.lift (𝟙 A.X) d.hom ⊗ₘ biprod.lift (𝟙 A.X) d.hom) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M
     apply biprod.hom_ext
-    · simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_fst, biprod.lift_fst,
+    · simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_fst, biprod.lift_fst,
         tensorHom_comp_tensorHom_assoc, Category.id_comp, Category.comp_id,
         tensorHom_id, id_whiskerRight]
-    · simpa only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_snd, comp_add, tensorHom_comp_tensorHom_assoc,
+    · simpa only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_snd, comp_add, tensorHom_comp_tensorHom_assoc,
         biprod.lift_fst, biprod.lift_snd, id_tensorHom, tensorHom_id] using d.leibniz
 
 lemma Derivation.section_projection (d : Derivation A M) :

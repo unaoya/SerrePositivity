@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.UnstraighteningTriangleComposition
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoComponentTransport
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.UnstraighteningTriangleComposition
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentTransport
 
 /-!
 概要：同じ全三角形の辺の族を等しい表示へ変えても、指定比較の成分を保持する。

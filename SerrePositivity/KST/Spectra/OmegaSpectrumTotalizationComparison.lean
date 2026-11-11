@@ -31,7 +31,7 @@ def ordinaryTotalizationComparison : ordinaryTotalization X hX ⟶ homotopyTotal
 
 /-- 通常 Tot の比較は各段で全基点 π 同型。 -/
 lemma ordinaryTotalizationComparison_levelwise (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((ordinaryTotalizationComparison X hX).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((ordinaryTotalizationComparison X hX).app n).right :=
   KanSequence.totalizationSpectrumMap_levelwise (X ⋙ forgetToKan) hX
     (fun j ↦ (X.obj j).toKanSequence_omega) n
 

@@ -46,9 +46,9 @@ structure StableModelPresentation where
 
 variable [HasLimitsOfSize.{0, 0} C] [IsLocallyPresentable.{w} C]
   [Quillen.IsQuillenBifunctor (curriedTensor C)] [IsCofibrant K]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   (JP : MorphismProperty (GeneralSymmetricSpectrum C K))
-  [ModelGeneration.CofibrantlyGenerated.{w} IP JP]
+  [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IP JP]
   (hW : weakEquivalences (GeneralSymmetricSpectrum C K) =
     SpectrumLevelModel.levelProperty K (weakEquivalences C))
   (hF : fibrations (GeneralSymmetricSpectrum C K) =
@@ -56,7 +56,7 @@ variable [HasLimitsOfSize.{0, 0} C] [IsLocallyPresentable.{w} C]
   [(weakEquivalences (GeneralSymmetricSpectrum C K)).IsStableUnderCobaseChangeAgainst
     (cofibrations (GeneralSymmetricSpectrum C K))]
   [ModelCategory SSet.{w}] [ModelCategory SSet.{max v w}]
-  (IS JS : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  (IS JS : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (hcofW : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfibW : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
   (hcofV : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)

@@ -92,10 +92,10 @@ lemma boundaryMap_one : K ◁ SSet.boundary.ι (0 : Fin 2) ≫ boundaryMap e₀ 
 
 end Boundary
 
-variable {P : SSet.{v}} (hp : UniverseLift.BoundaryFillers P) {K : SSet.{max w v}}
-  (e₀ e₁ : K ⟶ UniverseLift.obj.{w} P)
+variable {P : SSet.{v}} (hp : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers P) {K : SSet.{max w v}}
+  (e₀ e₁ : K ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P)
 
-def hom : K ⊗ SSet.stdSimplex.{max w v}.obj (SimplexCategory.mk 1) ⟶ UniverseLift.obj.{w} P :=
+def hom : K ⊗ SSet.stdSimplex.{max w v}.obj (SimplexCategory.mk 1) ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P :=
   LargeParameterExtension.extend hp (K ◁ (SSet.boundary.{max w v} 1).ι) (boundaryMap e₀ e₁)
 
 lemma face_zero : K ◁ SSet.stdSimplex.δ (1 : Fin 2) ≫ hom hp e₀ e₁ = fst K _ ≫ e₀ := by

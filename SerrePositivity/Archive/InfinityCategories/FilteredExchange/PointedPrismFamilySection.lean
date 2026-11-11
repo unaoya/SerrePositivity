@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedTransportPrismFamily
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PointedTransportPrismFamily
 
 /-!
 概要：可変初期値を持つ元の全 pointed 延長を、同じ延長族の全空間の切断へ束ねる。

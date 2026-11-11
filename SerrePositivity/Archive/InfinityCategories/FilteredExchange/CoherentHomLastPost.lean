@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomReindex
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.HomReindex
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentSimplexLastPost
 public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentSimplexLastPostNormalized

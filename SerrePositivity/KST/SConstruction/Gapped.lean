@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
-public import SerrePositivity.InfinityCategories.Core.Pointed
-public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.FullSubcomplexFibration
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Pointed
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseLimitExistence
 public import Mathlib.AlgebraicTopology.SimplicialSet.ProdStdSimplex
 
 /-! # Ar[n] と gapped 図式
@@ -106,10 +106,10 @@ def arSquare {n : ℕ} (i j k l : Fin (n + 1))
 規約：quasicategory 性や安定性と独立に述語を定義する。
 使われ方：BGT Definition 7.1 の S_n(C)。 -/
 def IsGapped {n : ℕ} {C : SSet.{u}} (F : arNerve n ⟶ C) : Prop :=
-  (∀ i : Fin (n + 1), IsZeroVertex (F.app (Opposite.op ⦋0⦌)
+  (∀ i : Fin (n + 1), _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
     (ComposableArrows.mk₀ (arObj i i le_rfl)))) ∧
   ∀ (i j k l : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) (hkl : k ≤ l),
-    IsPushoutSquare (arSquare i j k l hij hjk hkl ≫ F)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (arSquare i j k l hij hjk hkl ≫ F)
 
 /-- 概要：単調写像は区間四角形と可換。
 方針：二端点の選択が写像と可換であることを使う。
@@ -156,8 +156,8 @@ lemma IsGapped.precomp {m n : ℕ} {C : SSet.{u}} {F : arNerve n ⟶ C}
 方針：内部 Hom の頂点を実際の図式に戻して条件を課す。
 規約：core は別工程で取る。使われ方：∞-S• の n 段目。 -/
 def gappedSubcomplex (n : ℕ) (C : SSet.{u}) : (diagramSpace n C).Subcomplex :=
-  fullSubcomplexOnVertices (diagramSpace n C)
-    (fun v ↦ IsGapped ((functorVertexEquiv (arNerve n) C).symm v))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices (diagramSpace n C)
+    (fun v ↦ IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).symm v))
 
 /-- 概要：S_n(C) は全 gapped 図式の単体集合。
 方針：充満部分複体の underlying 単体集合を取る。
@@ -176,17 +176,17 @@ instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] 
 規約：反変。使われ方：S• の面・退化写像。 -/
 def sMap {m n : ℕ} (C : SSet.{u}) (θ : Fin (m + 1) →o Fin (n + 1)) :
     sConstruction n C ⟶ sConstruction m C :=
-  fullSubcomplexLift _ ((gappedSubcomplex n C).ι ≫ (pre (arNerveMap θ)).app C) (by
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ ((gappedSubcomplex n C).ι ≫ (pre (arNerveMap θ)).app C) (by
     intro v
-    let F := (functorVertexEquiv (arNerve n) C).symm v.val
-    have hv : functorVertex F = v.val :=
-      (functorVertexEquiv (arNerve n) C).apply_symm_apply v.val
-    have hF : IsGapped F := fullSubcomplexOnVertices_vertex v
-    change IsGapped ((functorVertexEquiv (arNerve m) C).symm
+    let F := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).symm v.val
+    have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F = v.val :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).apply_symm_apply v.val
+    have hF : IsGapped F := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v
+    change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve m) C).symm
       (((pre (arNerveMap θ)).app C).app (Opposite.op ⦋0⦌) v.val))
     rw [← hv]
-    change IsGapped ((functorVertexEquiv (arNerve m) C).symm
-      (functorVertexEquiv (arNerve m) C (arNerveMap θ ≫ F)))
+    change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve m) C).symm
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve m) C (arNerveMap θ ≫ F)))
     rw [Equiv.symm_apply_apply]
     exact hF.precomp θ)
 

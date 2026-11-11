@@ -23,24 +23,24 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
   (q : CofibrantResolution (C := C) simplex X)
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   {Q : SSet.{max u v}} [Quasicategory Q]
-  {G : nerve (modelRelativeCategory C).category ⟶ Q}
-  (c : CoherentLocalizationComparison (hammockLocalizationNerveMap (modelRelativeCategory C)) G)
+  {G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category ⟶ Q}
+  (c : CoherentLocalizationComparison (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G)
 
 /-- 概要：同じ終端から指定 G の共変 Hom への全図式比較の実還元。
 方針：同じ終端実現に全 Yoneda 比較を前合成し、同じ指定 K・二胞体の輸送を合成する。
 規約：唯一の追加比較は全 FunctorIso であり、点ごとの弱同値ではない。
 使われ方：原本 Yoneda 全比較の代入後の主入口。 -/
 def rightFrameTerminalHomIso_of_yonedaIso
-    (h : FunctorIso
-      (kanHammockHomCoherent (modelRelativeCategory C) (modelRelativeObject C X))
-      (homInfinityCovariant ((hammockLocalizationNerveMap (modelRelativeCategory C)).app
-        (op ⦋0⦌) (nerveVertex (modelRelativeObject C X))))) :
-    FunctorIso (rightFrameHammockCoherentDiagram q r 6)
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (kanHammockHomCoherent (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant ((hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)).app
+        (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (rightFrameHammockCoherentDiagram q r 6)
       (SSet.uliftFunctor.{max u v + 1, max u v}.map G ≫
-        homInfinityCovariant (G.app (op ⦋0⦌) (nerveVertex (modelRelativeObject C X)))) :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (G.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)))) :=
   rightFrameHammockTerminalRealizationIso q r ≪≫
-    FunctorIso.precomp h (SSet.uliftFunctor.{max u v + 1, max u v}.map
-      (hammockLocalizationNerveMap (modelRelativeCategory C))) ≪≫
-    c.homInfinityTransport (nerveVertex (modelRelativeObject C X))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp h (SSet.uliftFunctor.{max u v + 1, max u v}.map
+      (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))) ≪≫
+    c.homInfinityTransport (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))
 
 end SerrePositivity.EInfinity.FrameHom

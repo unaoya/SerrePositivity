@@ -20,8 +20,8 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 variable {C D K : SSet.{u}} [Quasicategory C] [Quasicategory D]
-  [IsStable C] [IsStable D] (f : C ⟶ D) [IsExactFunctor f]
-  (h : F2.Idempotent.IsIdempotentCompletion f)
+  [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable D] (f : C ⟶ D) [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f]
+  (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f)
 include h
 
 /-- 概要：水平・垂直の実分母から、同じ全 prism の全ての斜辺も元の分母になる。
@@ -31,16 +31,16 @@ include h
 lemma completionPrism_edges (H : K ⊗ (Δ[1] : SSet.{u}) ⟶ D)
     (horizontal : ∀ (e : K _⦋1⦌) (t : (Δ[1] : SSet.{u}) _⦋0⦌),
       H.app _ (e, (Δ[1] : SSet.{u}).σ 0 t) ∈
-        cofiberLocalizingEdges (completionEssentialImage f))
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (completionEssentialImage f))
     (vertical : ∀ (k : K _⦋0⦌) (a : (Δ[1] : SSet.{u}) _⦋1⦌),
-      H.app _ (K.σ 0 k, a) ∈ cofiberLocalizingEdges (completionEssentialImage f))
+      H.app _ (K.σ 0 k, a) ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (completionEssentialImage f))
     (s : (K ⊗ (Δ[1] : SSet.{u})) _⦋1⦌) :
-    H.app _ s ∈ cofiberLocalizingEdges (completionEssentialImage f) := by
-  let e := edgeOfSimplex s.1
-  let a := edgeOfSimplex s.2
+    H.app _ s ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (completionEssentialImage f) := by
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex s.1
+  let a := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex s.2
   let c := (Truncated.Edge.CompStruct.compId e).tensor
     (Truncated.Edge.CompStruct.idComp a)
-  have ht := cofiberStableEdges_compStruct_twoOfThree (completionEssentialImage f)
+  have ht := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_compStruct_twoOfThree (completionEssentialImage f)
     (c.map ((truncation 2).map H))
   rw [stableClosure_completionEssentialImage f h.2.1] at ht
   exact ht.1 (horizontal s.1 ((Δ[1] : SSet.{u}).δ 1 s.2))

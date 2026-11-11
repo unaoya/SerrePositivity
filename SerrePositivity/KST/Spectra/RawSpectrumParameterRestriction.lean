@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumParameterHomFamilies
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeUnit
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeUnit
 
 /-!
 概要：厳密な cotensor 値の列射から元の全 Hom に戻す操作のパラメータ制限を計算する。
@@ -22,7 +22,7 @@ lemma PointedMapping.transpose_unit {T V : PointedSimplicialSet.{u}}
     (f : T ⟶ (ihom (𝟙_ PointedSimplicialSet.{u})).obj V) :
     transpose f = curry' (f ≫ (unitIsoSelf (X := V)).hom) := by
   have he : uncurry f = (λ_ T).hom ≫ f ≫ (unitIsoSelf (X := V)).hom := by
-    have h := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry_unit_evaluation (uncurry f)
+    have h := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.curry_unit_evaluation (uncurry f)
     rw [curry_uncurry] at h
     rw [h, Iso.hom_inv_id_assoc]
   unfold transpose curry'

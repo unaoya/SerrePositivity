@@ -55,7 +55,7 @@ def relativeCofiberLeftFiberLift {X : StableModel.{u}} (A B : ClosedStablePredic
     (F ≫ simplexLeftFiberParameter (objectSConstructionFunctor.map (cofiberStableSubobject X))
       (relativeCofiberBaseSimplex A a)) (by
         have : Mono (closedStableInclusion A).val :=
-          inferInstanceAs (Mono (fullSubcomplexOnVertices X.carrier A.predicate).ι)
+          inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X.carrier A.predicate).ι)
         apply (cancel_mono (objectSConstructionFunctor.map (closedStableInclusion A))).1
         rw [Category.assoc, relativeCofiberObjectSubobject_square, ← Category.assoc,
           relativeCofiberFiberObjectLift_inclusion, Category.assoc, simplexLeftFiber_condition]

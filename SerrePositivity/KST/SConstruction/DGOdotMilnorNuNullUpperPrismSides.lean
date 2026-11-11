@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 
 /-- 概要：元上比較 prism の元二短辺側面は同じ指定実ホモトピーそのもの。
 方針：元内ホーンの二面を元全側境界の同じ面へ戻す。
@@ -23,10 +23,10 @@ lemma dgOdotMilnorNuNullUpperPrism_face (i : Fin 3) (hi : i ≠ 1) :
     ((Δ[1] : SSet.{u + 2}) ◁ stdSimplex.δ i) ≫ dgOdotMilnorNuNullUpperPrism R d h =
       (β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫
         dgOdotMilnorNuNullPrismSideFamily R d h 0 i := by
-  have hface : horn.ι (1 : Fin 3) i hi ≫ hornBoundaryInclusion 1 1 =
+  have hface : horn.ι (1 : Fin 3) i hi ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.hornBoundaryInclusion 1 1 =
       (boundary.ι i : (Δ[1] : SSet.{u + 2}) ⟶ boundary 2) := by
     apply (cancel_mono (boundary 2).ι).mp
-    have hι : hornBoundaryInclusion 1 1 ≫ (boundary 2 : (Δ[2] : SSet.{u + 2}).Subcomplex).ι =
+    have hι : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.hornBoundaryInclusion 1 1 ≫ (boundary 2 : (Δ[2] : SSet.{u + 2}).Subcomplex).ι =
         (horn 2 1).ι := rfl
     rw [Category.assoc, hι, horn.ι_ι, boundary.ι_ι]
   rw [← horn.ι_ι (1 : Fin 3) i hi, whiskerLeft_comp, Category.assoc,
@@ -46,7 +46,7 @@ lemma dgOdotMilnorNuNullUpperTriangleHomotopy_face (i : Fin 3) (hi : i ≠ 1) :
   change (stdSimplex.δ i ▷ (Δ[1] : SSet.{u + 2})) ≫ (β_ Δ[2] Δ[1]).hom ≫
     dgOdotMilnorNuNullUpperPrism R d h = _
   rw [← Category.assoc, hs, Category.assoc, dgOdotMilnorNuNullUpperPrism_face R d h i hi]
-  let cancel (H : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}) :
+  let cancel (H : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1}) :
       (β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫
         (β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫ H = H := rfl
   exact cancel _

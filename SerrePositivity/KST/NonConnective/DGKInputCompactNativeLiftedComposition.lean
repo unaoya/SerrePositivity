@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseSSetMaps
 public import SerrePositivity.KST.NonConnective.DGKInputCompactNativeComposition
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeFamilyCoherence
 
@@ -26,7 +26,7 @@ variable (R : Type u) [CommRing R] (A B C : PerfDGInput.{u, v} R)
 規約：同じ元の入力合成を保持する。
 使われ方：元の固定 ν の全族と compact 生成元間の全族の合成比較。 -/
 def dgKInputCompactNativeParameterComp :=
-  (HomotopyLimits.uliftTensorIso.{max (u + 1) v, max (u + 1) v + 1}
+  (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftTensorIso.{max (u + 1) v, max (u + 1) v + 1}
     (presentedPerfectDGNativeParameter R A B) (presentedPerfectDGNativeParameter R B C)).inv ≫
     (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).map
       (presentedPerfectDGNativeParameterComp R A B C)

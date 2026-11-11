@@ -34,15 +34,15 @@ def cellSphereInclusion (K : SSet.{u}) (d : ℕ)
 lemma cellHomFunctionIso_pointedEval (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) (d : ℕ)
     (c : relativeCellComplexOfMono.Cell (K.skeleton d).ι d) :
     (cellHomFunctionIso K Y d).hom ≫ SimplicialFunctionComplex.pointedEval _ _ c =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (cellSphereInclusion K d c) Y := by
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (cellSphereInclusion K d c) Y := by
   apply Under.UnderMorphism.ext
   change ((MonoidalClosed.pre (cellCoproductIso K d).inv).app Y).right ≫
-    ((pointedCoproductHomUnderlyingIso _ _ Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval _ _ c) = _
+    ((pointedCoproductHomUnderlyingIso _ _ Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval _ _ c) = _
   rw [pointedCoproductHomUnderlyingIso_eval]
   change (((MonoidalClosed.pre (cellCoproductIso K d).inv).app Y) ≫
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed _ Y).right = _
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, ← NatTrans.comp_app, ← MonoidalClosed.pre_map]
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed _ Y).right = _
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, ← NatTrans.comp_app, ← MonoidalClosed.pre_map]
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
   rfl
 
 @[reassoc]
@@ -50,7 +50,7 @@ lemma stageFiberFunctionIso_pointedEval (K : SSet.{u}) (Y : PointedSimplicialSet
     (c : relativeCellComplexOfMono.Cell (K.skeleton (n + 1)).ι (n + 1)) :
     (stageFiberFunctionIso K Y n).hom ≫ SimplicialFunctionComplex.pointedEval _ _ c =
       (stageFiberCellIso K Y n).inv ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (cellSphereInclusion K (n + 1) c) Y := by
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (cellSphereInclusion K (n + 1) c) Y := by
   change ((stageFiberCellIso K Y n).inv ≫ (cellHomFunctionIso K Y (n + 1)).hom) ≫ _ = _
   rw [Category.assoc, cellHomFunctionIso_pointedEval]
 
@@ -60,11 +60,11 @@ lemma stageFiberFunctionIso_pointedEval (K : SSet.{u}) (Y : PointedSimplicialSet
 使われ方：Goerss–Jardine VIII §1。塔の微分の各セルでの計算への帰着。 -/
 lemma stageFiberCoefficientEquiv_restriction (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right r
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right r
       (UnbasedPointedMapping.stageFiber K Y n).basepoint) (s : K.nonDegenerate (n + 1)) :
     stageFiberCoefficientEquiv K Y n r a s = SimplexCell.positiveHomotopyEquiv Y n r
-      (pointedGroupMap r (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
-        (cellSphereInclusion K (n + 1) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s)) Y)
+      (pointedGroupMap r (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed
+        (cellSphereInclusion K (n + 1) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s)) Y)
         (pointedGroupMap r (stageFiberCellIso K Y n).inv a)) := by
   rw [stageFiberCoefficientEquiv_formula, stageFiberFunctionHomotopyEquiv_formula,
     SimplicialFunctionComplex.pointedHomotopyEquiv_eval, ← pointedGroupMap_comp,
@@ -78,17 +78,17 @@ lemma stageFiberComponentEquiv_restriction (K : SSet.{u}) (Y : PointedSimplicial
     [KanComplex Y.right] (n : ℕ) (a : π₀ (UnbasedPointedMapping.stageFiber K Y n).right)
     (s : K.nonDegenerate (n + 1)) :
     stageFiberComponentEquiv K Y n a s = SimplexCell.componentEquiv Y n
-      (mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
-        (cellSphereInclusion K (n + 1) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s)) Y).right
+      (mapπ₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed
+        (cellSphereInclusion K (n + 1) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s)) Y).right
         (mapπ₀ (stageFiberCellIso K Y n).inv.right a)) := by
   have he := congrArg Under.Hom.right (stageFiberFunctionIso_pointedEval K Y n
-    ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s))
   change (stageFiberFunctionIso K Y n).hom.right ≫
-    _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval _ _ ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s) =
-      (stageFiberCellIso K Y n).inv.right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
-        (cellSphereInclusion K (n + 1) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s)) Y).right at he
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval _ _ ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s) =
+      (stageFiberCellIso K Y n).inv.right ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed
+        (cellSphereInclusion K (n + 1) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s)) Y).right at he
   change SimplexCell.componentEquiv Y n
-    (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval _ _ ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s))
+    (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval _ _ ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s))
       (mapπ₀ (stageFiberFunctionIso K Y n).hom.right a)) = _
   erw [← mapπ₀_comp_apply, he, mapπ₀_comp_apply]
 

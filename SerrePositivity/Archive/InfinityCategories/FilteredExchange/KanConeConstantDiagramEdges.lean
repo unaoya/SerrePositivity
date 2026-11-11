@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeDiagramEdges
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyVerticalRestriction
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentEdgeHomEquality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.HomotopyVerticalRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentEdgeHomEquality
 
 /-!
 概要：図式上で定値な全錐円柱の成分と対角を元の恒等射・図式射へ同定する。

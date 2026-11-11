@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：連続した頂点区間を順序写像として表し、頂点番号を比較する。
 規約：KST Construction A.5 の標準 AW。単体圏の面は指定頂点を飛ばす包含。
 使われ方：AW の鎖写像性で、二重境界和を相殺項と削除後の切断に分ける。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

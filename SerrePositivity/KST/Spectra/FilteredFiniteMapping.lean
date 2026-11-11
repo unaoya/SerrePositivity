@@ -42,17 +42,17 @@ theorem finite_basedHom_factorization {P : SSet.{u}} [P.Finite]
   let earlier := toUnit (𝟙_ SSet.{u} ⊗ P) ≫ (D.obj j).hom
   let body := MonoidalClosed.uncurry (s ≫ PointedObject.basedHomι A c.pt)
   have h : earlier ≫ (c.ι.app j).right = A.hom ▷ P ≫ body := by
-    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint]
+    rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.uncurry_basepoint]
     simp only [earlier, Category.assoc, Under.w]
     rfl
-  obtain ⟨k, v, q, hq, heq⟩ := _root_.SerrePositivity.InfinityCategories.Kan.finite_relative_factorization hc (A.hom ▷ P) j earlier body h
+  obtain ⟨k, v, q, hq, heq⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.finite_relative_factorization hc (A.hom ▷ P) j earlier body h
   have hfixed : A.hom ▷ P ≫ q = toUnit (𝟙_ SSet.{u} ⊗ P) ≫ (D.obj k).hom := by
     rw [hq]
     change (toUnit _ ≫ (D.obj j).hom) ≫ (D.map v).right = _
     rw [Category.assoc, Under.w]
-  refine ⟨k, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry A (D.obj k) q hfixed, ?_⟩
+  refine ⟨k, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry A (D.obj k) q hfixed, ?_⟩
   apply (cancel_mono (PointedObject.basedHomι A c.pt)).mp
-  rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
+  rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι,
     ← MonoidalClosed.curry_natural_right]
   change q ≫ (c.ι.app k).right = body at heq
   rw [heq, MonoidalClosed.curry_uncurry]

@@ -41,7 +41,7 @@ abbrev pointwiseRealization : (K ⥤ SSet.{u}) ⥤ K ⥤ C :=
 規約：frame は添字によらず固定する。
 使われ方：射影境界の右類による持ち上げの移送。 -/
 abbrev pointwiseFrameHom : (K ⥤ C) ⥤ K ⥤ SSet.{u} :=
-  (Functor.whiskeringRight K C SSet.{u}).obj (cosimplicialHom B)
+  (Functor.whiskeringRight K C SSet.{u}).obj (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B)
 
 /-- 概要：各値の frame 実現と Hom の実際の随伴（Hovey §5.4）。
 方針：元の実現随伴を関手圏へ移す。

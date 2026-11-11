@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：非空有限集合の帰納法により、全体の一致を頂点上の式へ帰着する。
 規約：Moss 2020 Lemma 26 の証明で使う binary join に関する議論。
 使われ方：細分上の面・退化との交換則を証明する。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Core.EquivalencePathInnerFibration
-public import SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePrism
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePathInnerFibration
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.F1DiagramsTrianglePrism
 
 /-!
 概要：元の二三角形と指定二短辺の比較を同時に保つ prism を構成する。
@@ -40,27 +40,27 @@ lemma specifiedTwoTriangleHorn_faces :
 方針：元 pushout の二短辺で全写像の等号を検出する。
 規約：両端の元三角形を固定。使われ方：両端固定 prism 延長の入力。 -/
 lemma specifiedTwoTriangleHorn_endpoints :
-    prismEndpoint 0 (horn 2 1 : SSet.{u}) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (horn 2 1 : SSet.{u}) ≫
         (β_ Δ[1] (horn 2 1 : SSet.{u})).hom ≫ specifiedTwoTriangleHorn f g H₂ H₀ hw =
       (horn 2 1).ι ≫ f ∧
-    prismEndpoint 1 (horn 2 1 : SSet.{u}) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (horn 2 1 : SSet.{u}) ≫
         (β_ Δ[1] (horn 2 1 : SSet.{u})).hom ≫ specifiedTwoTriangleHorn f g H₂ H₀ hw =
       (horn 2 1).ι ≫ g := by
   constructor
   all_goals apply horn₂₁.isPushout.hom_ext
-  · rw [← Category.assoc (prismEndpoint 0 _) _, prismEndpoint_zero_braiding,
+  · rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _) _, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.prismEndpoint_zero_braiding,
       ← Category.assoc, ← SSet.ι₀_comp, Category.assoc,
       (specifiedTwoTriangleHorn_faces f g H₂ H₀ hw).1, H₂.h₀,
       ← Category.assoc, horn.ι_ι]
-  · rw [← Category.assoc (prismEndpoint 0 _) _, prismEndpoint_zero_braiding,
+  · rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _) _, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.prismEndpoint_zero_braiding,
       ← Category.assoc, ← SSet.ι₀_comp, Category.assoc,
       (specifiedTwoTriangleHorn_faces f g H₂ H₀ hw).2, H₀.h₀,
       ← Category.assoc, horn.ι_ι]
-  · rw [← Category.assoc (prismEndpoint 1 _) _, prismEndpoint_one_braiding,
+  · rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 _) _, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.prismEndpoint_one_braiding,
       ← Category.assoc, ← SSet.ι₁_comp, Category.assoc,
       (specifiedTwoTriangleHorn_faces f g H₂ H₀ hw).1, H₂.h₁,
       ← Category.assoc, horn.ι_ι]
-  · rw [← Category.assoc (prismEndpoint 1 _) _, prismEndpoint_one_braiding,
+  · rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 _) _, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.prismEndpoint_one_braiding,
       ← Category.assoc, ← SSet.ι₁_comp, Category.assoc,
       (specifiedTwoTriangleHorn_faces f g H₂ H₀ hw).2, H₀.h₁,
       ← Category.assoc, horn.ι_ι]
@@ -72,8 +72,8 @@ lemma exists_specifiedTwoTrianglePrism :
     ∃ P : (Δ[1] ⊗ Δ[2] : SSet.{u}) ⟶ X,
       (Δ[1] ◁ (horn 2 1).ι) ≫ P =
         (β_ Δ[1] (horn 2 1 : SSet.{u})).hom ≫ specifiedTwoTriangleHorn f g H₂ H₀ hw ∧
-      prismEndpoint 0 Δ[2] ≫ P = f ∧ prismEndpoint 1 Δ[2] ≫ P = g :=
-  prism_extend_innerHorn_with_endpoints (1 : Fin 3) (by decide) (by decide) _ f g
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 Δ[2] ≫ P = f ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 Δ[2] ≫ P = g :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.prism_extend_innerHorn_with_endpoints (1 : Fin 3) (by decide) (by decide) _ f g
     (specifiedTwoTriangleHorn_endpoints f g H₂ H₀ hw).1
     (specifiedTwoTriangleHorn_endpoints f g H₂ H₀ hw).2
 /-- 概要：同じ元両二単体と指定二側面を保つ比較 prism。
@@ -88,8 +88,8 @@ def specifiedTwoTrianglePrism : (Δ[1] ⊗ Δ[2] : SSet.{u}) ⟶ X :=
 lemma specifiedTwoTrianglePrism_restrictions :
     (Δ[1] ◁ (horn 2 1).ι) ≫ specifiedTwoTrianglePrism f g H₂ H₀ hw =
         (β_ Δ[1] (horn 2 1 : SSet.{u})).hom ≫ specifiedTwoTriangleHorn f g H₂ H₀ hw ∧
-      prismEndpoint 0 Δ[2] ≫ specifiedTwoTrianglePrism f g H₂ H₀ hw = f ∧
-      prismEndpoint 1 Δ[2] ≫ specifiedTwoTrianglePrism f g H₂ H₀ hw = g :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 Δ[2] ≫ specifiedTwoTrianglePrism f g H₂ H₀ hw = f ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 Δ[2] ≫ specifiedTwoTrianglePrism f g H₂ H₀ hw = g :=
   (exists_specifiedTwoTrianglePrism f g H₂ H₀ hw).choose_spec
 
 /-- 概要：元二単体を結ぶ同じ全ホモトピー。

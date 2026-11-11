@@ -33,7 +33,7 @@ local notation "I" => DGFunctor.id C
 local notation "M" => dgHomGluingBimodule R C C C (I) (I)
 local notation "H" => dgIdentityHomGluingFunctor R C F G a h
 
-local notation "L" => DGGluingObject R C C (M)
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C C (M)
 local notation "family" => dgHomGluingLoopConeFamily R C C C (I) (I)
 local notation "J" => dgSmallPerfectEnvelopeInclusion R C ((L) ⊕ (L)) (family)
 local notation "K" => dgPerfectModuleUnderlying R C (J)

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineDescentRecovery
 public import SerrePositivity.EInfinity.Hammock.LocalizationValue
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagValueComparison
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValueComparison
 
 /-!
 # 元の指定因子の評価と同じ局所化評価の一致
@@ -39,9 +39,9 @@ lemma nativeValue_localizationValue :
         (AllMarked.nativeFreeEvaluation_inverts_top W) ⟨X⟩ ⟨Y⟩ ≫ nativeValueHomMap W X Y
   rw [← Category.assoc, AllMarked.nativeInclusion_inclusion, Category.assoc,
     graphInclusion_localizationValue]
-  change nerveMap (Zigzag.Relative.functor (MarkedZigzag.inclusion W.paths)) ≫
-    Zigzag.Value.graphMap W.paths.Q W.paths.Q_inverts =
-      graphInclusion (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ⟨Y⟩ w ≫
+  change nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedZigzagLift.inclusion W.paths)) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValueGraph.graphMap W.paths.Q W.paths.Q_inverts =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ⟨Y⟩ w ≫
         Zigzag.Value.colimitValue (AllMarked.nativeFreeEvaluation W)
           (AllMarked.nativeFreeEvaluation_inverts_top W) ⟨X⟩ ⟨Y⟩ ≫ nativeValueHomMap W X Y
   rw [← Category.assoc, Zigzag.Value.graphInclusion_colimitValue]
@@ -49,7 +49,7 @@ lemma nativeValue_localizationValue :
   funext n
   apply ConcreteCategory.hom_ext
   intro τ
-  exact eq_of_heq (Zigzag.Value.value_comparison (MarkedZigzag.inclusion W.paths)
+  exact eq_of_heq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.value_comparison (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedZigzagLift.inclusion W.paths)
     (AllMarked.nativeFreeEvaluation W) (AllMarked.nativeFreeEvaluation_inverts_top W)
     W.paths.Q W.paths.Q_inverts (markedValueDescent W W.paths.Q W.paths.Q_inverts)
     (nativeFreeEvaluation_descent W W.paths.Q W.paths.Q_inverts) (τ.obj 0))

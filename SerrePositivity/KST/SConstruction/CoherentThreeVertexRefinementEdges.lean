@@ -20,7 +20,7 @@ open scoped Simplicial
 
 /-- 長さ二の元の列では、精密化の Path 包含辺は標準三角形の同じ包含辺である。 -/
 lemma coherentStringRefinementPathToFull_triangle_heq {I : Type u} [SmallCategory I]
-    {x y : I} {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) (hs : s.length = 2) :
+    {x y : I} {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) (hs : s.length = 2) :
     HEq (nerve.edgeMk (coherentStringRefinementPathToFull (coherentArrowStringDirectTo s))).edge
       (nerve.edgeMk (coherentEndpointPathToComposite
         (show (ULift.up 0 : ULift.{u} (Fin 3)) ≤ ULift.up 1 from by decide)

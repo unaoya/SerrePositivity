@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FrameArrowCategory
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftKanShapeIso
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.Terminal
-public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialTerminalWeakContractibility
-public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenALeft
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.LeftKanShapeIso
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Terminal
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.InitialTerminalWeakContractibility
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.QuillenALeft
 public import Mathlib.CategoryTheory.Adjunction.Comma
 
 /-!
@@ -27,20 +27,20 @@ open scoped Simplicial
 
 lemma nerveMap_leftAdjoint_isLeftCofinal {I D : Type u}
     [Category.{u} I] [Category.{u} D] {L : I ⥤ D} {R : D ⥤ I} (a : L ⊣ R) :
-    IsLeftCofinal (nerveMap L) := by
-  apply isLeftCofinal_of_weaklyContractible_slices
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (nerveMap L) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_of_weaklyContractible_slices
   intro z
   obtain ⟨d, rfl⟩ := ComposableArrows.mk₀_surjective z
   have ht := mkTerminalOfRightAdjoint R a d
-  have hn := (SerrePositivity.InfinityCategories.F1B.nerveVertex_isTerminal ht).isWeaklyContractible
-  have he : IsWeakHomotopyEquivalence (SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso L d).hom :=
-    IsPrecompositionEquivalence.isWeakHomotopyEquivalence
-      (isPrecompositionEquivalence_of_iso (SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso L d))
+  have hn := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveVertex_isTerminal ht).isWeaklyContractible
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveLeftKanShapeIso L d).hom :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsPrecompositionEquivalence.isWeakHomotopyEquivalence
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveLeftKanShapeIso L d))
   exact he.weaklyContractible_iff.mp hn
 
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C)
 
-lemma identityInclusion_nerve_isLeftCofinal : IsLeftCofinal (nerveMap (identityInclusion A)) :=
-  nerveMap_leftAdjoint_isLeftCofinal (identityDegreeAdjunction A)
+lemma identityInclusion_nerve_isLeftCofinal : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.identityInclusion A)) :=
+  nerveMap_leftAdjoint_isLeftCofinal (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.identityDegreeAdjunction A)
 
 end SerrePositivity.EInfinity.FrameHom.FrameArrows

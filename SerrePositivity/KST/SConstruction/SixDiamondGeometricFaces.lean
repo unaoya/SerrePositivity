@@ -20,9 +20,9 @@ variable {E : SSet.{u}} {v₀ v₁ v₂ v₃ v₄ v₅ v₆ v₇ : E _⦋0⦌}
   {r : E.Edge v₂ v₃} {p : E.Edge v₀ v₄} {l : E.Edge v₄ v₂}
   {q : E.Edge v₄ v₅} {k₁ : E.Edge v₀ v₆} {k₂ : E.Edge v₆ v₅}
   {k₃ : E.Edge v₅ v₃} {a : E.Edge v₆ v₇} {e : E.Edge v₇ v₃} {b : E.Edge v₁ v₇}
-  {DA : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond p q k₁ k₂} {DB : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond a e k₂ k₃}
-  {DI : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond l r q k₃} {DL : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond s leftEdge p l}
-  {DR : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond t b k₁ a} {DF : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond b e generatedEdge r}
+  {DA : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond p q k₁ k₂} {DB : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond a e k₂ k₃}
+  {DI : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond l r q k₃} {DL : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond s leftEdge p l}
+  {DR : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond t b k₁ a} {DF : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond b e generatedEdge r}
   {H : EndpointFixedEdgeCylinder s t}
   (D : SixDiamondGeometricPasting DA DB DI DL DR DF H)
 

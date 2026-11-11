@@ -70,7 +70,7 @@ lemma postnikovImageFactorisationObject_homology_zero (j : ℤ) (hj : j < -(n + 
     (asIso (homologyMap (postnikovImageFactorisationComparison R f n hn).hom j))
 
 lemma IsKConnective.postnikovImageFactorisationSource_connected
-    (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (h : IsKConnective R Φ k) (hn' : 1 ≤ n) :
+    (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (h : IsKConnective R Φ k) (hn' : 1 ≤ n) :
     (∀ j : ℤ, j < n + k →
       Function.Injective (invariantGroupMap R Φ (postnikovImageFactorisationSource R f n hn) j)) ∧
     ∀ j : ℤ, j ≤ n + k →

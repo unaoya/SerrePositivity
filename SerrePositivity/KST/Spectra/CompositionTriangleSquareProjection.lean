@@ -22,7 +22,7 @@ lemma compositionTriangleSquare_map {E B : SSet.{u}} (p : E ⟶ B)
     {x y z : E _⦋0⦌} {a : E.Edge x y} {b : E.Edge y z} {c : E.Edge x z}
     (t : SSet.Edge.CompStruct a b c) :
     compositionTriangleSquare t ≫ p = compositionTriangleSquare (t.map p) := by
-  apply _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.isPushout.hom_ext
   · rw [← Category.assoc, compositionTriangleSquare_upper, compositionTriangleSquare_upper]
     exact SSet.yonedaEquiv_symm_comp t.simplex p
   · rw [← Category.assoc, compositionTriangleSquare_lower, compositionTriangleSquare_lower]
@@ -39,7 +39,7 @@ lemma compositionTriangleSquare_post_eq {E B : SSet.{u}} (p : E ⟶ B)
     (s : SSet.Edge.CompStruct a' b' c')
     (ht : SSet.yonedaEquiv.symm t.simplex ≫ p = SSet.yonedaEquiv.symm s.simplex) :
     compositionTriangleSquare t ≫ p = compositionTriangleSquare s := by
-  apply _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.isPushout.hom_ext
   · rw [← Category.assoc, compositionTriangleSquare_upper, compositionTriangleSquare_upper]
     exact ht
   · rw [← Category.assoc, compositionTriangleSquare_lower, compositionTriangleSquare_lower]
@@ -61,7 +61,7 @@ lemma compositionTriangleSquare_post_const {E B : SSet.{u}} (p : E ⟶ B)
     (t : SSet.Edge.CompStruct a b c) (v : B _⦋0⦌)
     (ht : SSet.yonedaEquiv.symm t.simplex ≫ p = SSet.const v) :
     compositionTriangleSquare t ≫ p = SSet.const v := by
-  apply _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.isPushout.hom_ext
   · rw [← Category.assoc, compositionTriangleSquare_upper, SSet.comp_const]
     exact ht
   · rw [← Category.assoc, compositionTriangleSquare_lower, SSet.comp_const]

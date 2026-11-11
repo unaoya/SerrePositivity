@@ -23,11 +23,11 @@ private lemma diagonalTransportHomotopy_h {A X : SSet.{u}}
 
 private lemma diagonalTransportComparison {A X : SSet.{u}} [Quasicategory X]
     {f g f' g' : A ⟶ X} (hf : f = f') (hg : g = g') (H : SSet.Homotopy f g)
-    (e : FunctorIso f g)
-    (he : SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) = e.hom) :
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g)
+    (he : SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) = e.hom) :
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (Eq.mp (congrArg₂ (fun a b => SSet.Homotopy a b) hf hg) H)) =
-      (Eq.mp (congrArg₂ (fun a b => FunctorIso a b) hf hg) e).hom := by
+      (Eq.mp (congrArg₂ (fun a b => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso a b) hf hg) e).hom := by
   subst f' g'
   exact he
 
@@ -35,15 +35,15 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "A" => dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)
 local notation "B" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 
-variable (h : DGGluingMilnorSquare R d)
+variable (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 
 /-- 概要：同じ元共有対角辺全体を結ぶ指定端点経路付きの実ホモトピー。
 方針：元全辺の等号で同じ元ホモトピーを輸送する。
 規約：新しい辺や充填を選ばない。使われ方：元下比較 prism の実共有対角面。 -/
 def dgOdotMilnorNuNullDiagonalDiagramHomotopy : SSet.Homotopy
-    (squareDiagonal ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
-    (squareDiagonal ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) :=
-  Eq.mp (congrArg₂ (fun f g : (Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} =>
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareDiagonal ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareDiagonal ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) :=
+  Eq.mp (congrArg₂ (fun f g : (Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} =>
     SSet.Homotopy f g) (dgOdotMilnorNuNullDiagonalMap_diagram R d)
       (dgOdotMilnorNuAbsoluteDiagonalMap_diagram R d h))
         (dgOdotMilnorNuNullDiagonalArrowHomotopy R d h)
@@ -63,7 +63,7 @@ lemma dgOdotMilnorNuNullDiagonalDiagramHomotopy_h :
 規約：元比較の射の等号。使われ方：元上下共有境界の保持。 -/
 lemma dgOdotMilnorNuNullDiagonalDiagramHomotopy_comparison :
     SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuNullDiagonalDiagramHomotopy R d h)) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuNullDiagonalDiagramHomotopy R d h)) =
       (dgOdotMilnorNuNullDiagonalDiagramComparison R d h).hom :=
   diagonalTransportComparison (dgOdotMilnorNuNullDiagonalMap_diagram R d)
     (dgOdotMilnorNuAbsoluteDiagonalMap_diagram R d h)
@@ -75,10 +75,10 @@ lemma dgOdotMilnorNuNullDiagonalDiagramHomotopy_comparison :
 方針：同じ指定比較の射への等号で可逆性を戻す。
 規約：元指定比較を保持。使われ方：元全比較 prism の実共有対角面。 -/
 lemma dgOdotMilnorNuNullDiagonalDiagramHomotopy_isInvertible :
-    IsInvertibleEdge (functorEdgeOfSimplicialHomotopy
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (dgOdotMilnorNuNullDiagonalDiagramHomotopy R d h)) := by
   change IsIso (SSet.Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuNullDiagonalDiagramHomotopy R d h)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuNullDiagonalDiagramHomotopy R d h)))
   exact Eq.mp (congrArg (fun f => IsIso f)
     (dgOdotMilnorNuNullDiagonalDiagramHomotopy_comparison R d h)).symm
       (inferInstance : IsIso (dgOdotMilnorNuNullDiagonalDiagramComparison R d h).hom)
@@ -90,11 +90,11 @@ lemma dgOdotMilnorNuNullDiagonalDiagramHomotopy_paths :
     (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullDiagonalDiagramHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (A : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (𝟙 (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}))).edge ∧
       (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullDiagonalDiagramHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge :=
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}))).edge :=
   ⟨(congrArg (fun f => (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫ f)
       (dgOdotMilnorNuNullDiagonalDiagramHomotopy_h R d h)).trans
         (dgOdotMilnorNuNullDiagonalArrowHomotopy_paths R d h).1,

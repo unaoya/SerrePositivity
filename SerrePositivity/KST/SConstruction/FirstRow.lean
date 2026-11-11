@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.KST.SConstruction.Gapped
 public import SerrePositivity.KST.SConstruction.ZeroChoices
-public import SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension
-public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
-public import SerrePositivity.InfinityCategories.Stable.Definition
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroBoundaryExtension
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ColimitCoconeFamilies
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Definition
 
 /-! # gapped 図式の第一行
 概要：F(0,1)→…→F(0,n) への制限を定義する。
@@ -52,14 +52,14 @@ def firstRowRestriction (n : ℕ) (C : SSet.{u}) :
 方針：内部 Hom の頂点同値を逆向きに使う。
 規約：証明は忘れるが選択は加えない。使われ方：第一行の評価式。 -/
 def gappedDiagram {n : ℕ} {C : SSet.{u}} (v : (sConstruction n C) _⦋0⦌) :
-    arNerve n ⟶ C := (functorVertexEquiv (arNerve n) C).symm v.val
+    arNerve n ⟶ C := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).symm v.val
 
 /-- 概要：取り出した図式は gapped である。
 方針：充満部分複体の零単体条件を使う。
 規約：quasicategory 性は不要。使われ方：相対拡張の始点。 -/
 lemma gappedDiagram_isGapped {n : ℕ} {C : SSet.{u}}
     (v : (sConstruction n C) _⦋0⦌) : IsGapped (gappedDiagram v) :=
-  fullSubcomplexOnVertices_vertex v
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v
 
 /-- 概要：第一行制限の頂点は元の図式の前合成を表す。
 方針：内部 Hom の前合成を零次元で計算する。
@@ -67,9 +67,9 @@ lemma gappedDiagram_isGapped {n : ℕ} {C : SSet.{u}}
 lemma firstRowRestriction_vertex {n : ℕ} {C : SSet.{u}}
     (v : (sConstruction n C) _⦋0⦌) :
     (firstRowRestriction n C).app (Opposite.op ⦋0⦌) v =
-      functorVertex (firstRowInclusion n ≫ gappedDiagram v) := by
-  have hv : functorVertex (gappedDiagram v) = v.val :=
-    (functorVertexEquiv (arNerve n) C).apply_symm_apply v.val
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (firstRowInclusion n ≫ gappedDiagram v) := by
+  have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram v) = v.val :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).apply_symm_apply v.val
   change ((pre (firstRowInclusion n)).app C).app (Opposite.op ⦋0⦌) v.val = _
   rw [← hv]
   rfl

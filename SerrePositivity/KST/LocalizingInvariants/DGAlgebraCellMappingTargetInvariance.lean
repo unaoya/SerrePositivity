@@ -32,7 +32,7 @@ lemma multiplicativeCellMapping_anodyneImage_isIso (hq : QuasiIso q.hom) :
       (multiplicativeCellMapping_mono_rlp R A p hs hp)) q hq
 
 lemma multiplicativeCellMapping_target_weakEquivalence (hq : QuasiIso q.hom) :
-    IsWeakHomotopyEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (multiplicativeMappingPostcompose R (cellResolution R A) q) :=
   EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (multiplicativeCellMapping_anodyneImage_isIso R A q hq)

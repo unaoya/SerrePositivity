@@ -26,11 +26,11 @@ lemma finiteTensor_map_ι : FiniteTensor.map A S.ι ≫
       SubcomplexTensor.inclusion S A := by
   have h := FiniteTensor.map_comp_homEquiv_apply A S.ι
     (𝟙 (SSet.stdSimplex.obj n) ≫
-      (SSet.yonedaEquiv (X := (cosimplicialHom A).obj (A.obj n))).symm (𝟙 (A.obj n)))
+      (SSet.yonedaEquiv (X := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj (A.obj n))).symm (𝟙 (A.obj n)))
   have ht := congrArg (SubcomplexTensor.homEquiv S A (A.obj n))
     (congrArg (fun f ↦ S.ι ≫ f)
       (Category.id_comp
-        ((SSet.yonedaEquiv (X := (cosimplicialHom A).obj (A.obj n))).symm (𝟙 _))))
+        ((SSet.yonedaEquiv (X := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj (A.obj n))).symm (𝟙 _))))
   exact h.trans (ht.trans ((SubcomplexTensor.homEquiv_simplex A S (𝟙 _)).trans
     (Category.comp_id _)))
 

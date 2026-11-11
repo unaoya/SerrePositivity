@@ -45,12 +45,12 @@ def dgKappaResolvedConnectiveSquare :
 
 /-- 元の包含と商の全一単体は、同じ零化四角形の下辺・右辺に厳密に残る。 -/
 theorem dgKappaResolvedConnectiveSquare_edges :
-    squareBottomEdge ≫ dgKappaResolvedConnectiveSquare R D I =
-      SSet.yonedaEquiv.symm (coherentNerveEdge (dgKappaResolvedKernelInputMap R D I)).edge ∧
-    squareRightEdge ≫ dgKappaResolvedConnectiveSquare R D I =
-      SSet.yonedaEquiv.symm (coherentNerveEdge (dgKappaResolvedSuspensionInputMap R D I)).edge ∧
-    squareLeftEdge ≫ dgKappaResolvedConnectiveSquare R D I =
-      SSet.yonedaEquiv.symm (coherentNerveEdge
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ dgKappaResolvedConnectiveSquare R D I =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaResolvedKernelInputMap R D I)).edge ∧
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ dgKappaResolvedConnectiveSquare R D I =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaResolvedSuspensionInputMap R D I)).edge ∧
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ dgKappaResolvedConnectiveSquare R D I =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
         (dgFixedNullLeft R (A := dgKappaResolvedKernelKInput R D I))).edge := by
   have h := (exists_dgFixedNullSquare R (dgKappaResolvedKernelInputMap R D I)
     (dgKappaResolvedSuspensionInputMap R D I) (dgKappaResolvedKernelContraction R D I)
@@ -59,51 +59,51 @@ theorem dgKappaResolvedConnectiveSquare_edges :
 
 /-- 実核・平坦 cone・懸垂・全対象商の四頂点は、元の同じ入力頂点である。 -/
 theorem dgKappaResolvedConnectiveSquare_vertices :
-    squareVertex (dgKappaResolvedConnectiveSquare R D I) 0 0 =
-      coherentNerveVertex (dgKappaResolvedKernelKInput R D I) ∧
-    squareVertex (dgKappaResolvedConnectiveSquare R D I) 1 0 =
-      coherentNerveVertex (dgKappaResolvedConeKInput R D I) ∧
-    squareVertex (dgKappaResolvedConnectiveSquare R D I) 1 1 =
-      coherentNerveVertex (dgKappaSuspensionKInput R D I) ∧
-    squareVertex (dgKappaResolvedConnectiveSquare R D I) 0 1 =
-      coherentNerveVertex (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I)) := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaResolvedConnectiveSquare R D I) 0 0 =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedKernelKInput R D I) ∧
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaResolvedConnectiveSquare R D I) 1 0 =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedConeKInput R D I) ∧
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaResolvedConnectiveSquare R D I) 1 1 =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaSuspensionKInput R D I) ∧
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaResolvedConnectiveSquare R D I) 0 1 =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I)) := by
   obtain ⟨hi, hq, hl⟩ := dgKappaResolvedConnectiveSquare_edges R D I
   let ie : (dgKInputInfinity.{u, max (u + 1) v} R).Edge
-      (coherentNerveVertex (dgKappaResolvedKernelKInput R D I))
-      (coherentNerveVertex (dgKappaResolvedConeKInput R D I)) :=
-    coherentNerveEdge (dgKappaResolvedKernelInputMap R D I)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedKernelKInput R D I))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedConeKInput R D I)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaResolvedKernelInputMap R D I)
   let qe : (dgKInputInfinity.{u, max (u + 1) v} R).Edge
-      (coherentNerveVertex (dgKappaResolvedConeKInput R D I))
-      (coherentNerveVertex (dgKappaSuspensionKInput R D I)) :=
-    coherentNerveEdge (dgKappaResolvedSuspensionInputMap R D I)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedConeKInput R D I))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaSuspensionKInput R D I)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaResolvedSuspensionInputMap R D I)
   let le : (dgKInputInfinity.{u, max (u + 1) v} R).Edge
-      (coherentNerveVertex (dgKappaResolvedKernelKInput R D I))
-      (coherentNerveVertex (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I))) :=
-    coherentNerveEdge (dgFixedNullLeft R (A := dgKappaResolvedKernelKInput R D I))
-  change squareBottomEdge ≫ _ = SSet.yonedaEquiv.symm ie.edge at hi
-  change squareRightEdge ≫ _ = SSet.yonedaEquiv.symm qe.edge at hq
-  change squareLeftEdge ≫ _ = SSet.yonedaEquiv.symm le.edge at hl
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedKernelKInput R D I))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgFixedNullLeft R (A := dgKappaResolvedKernelKInput R D I))
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ _ = SSet.yonedaEquiv.symm ie.edge at hi
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ _ = SSet.yonedaEquiv.symm qe.edge at hq
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ _ = SSet.yonedaEquiv.symm le.edge at hl
   refine ⟨?_, ?_, ?_, ?_⟩
-  · have h := squareBottomEdge_source (dgKappaResolvedConnectiveSquare R D I)
+  · have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source (dgKappaResolvedConnectiveSquare R D I)
     rw [hi, Equiv.apply_symm_apply, ie.src_eq] at h
     exact h.symm
-  · have h := squareBottomEdge_target (dgKappaResolvedConnectiveSquare R D I)
+  · have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_target (dgKappaResolvedConnectiveSquare R D I)
     rw [hi, Equiv.apply_symm_apply, ie.tgt_eq] at h
     exact h.symm
-  · have h := squareRightEdge_target (dgKappaResolvedConnectiveSquare R D I)
+  · have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target (dgKappaResolvedConnectiveSquare R D I)
     rw [hq, Equiv.apply_symm_apply, qe.tgt_eq] at h
     exact h.symm
-  · have h := squareLeftEdge_target (dgKappaResolvedConnectiveSquare R D I)
+  · have h := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftEdge_target (dgKappaResolvedConnectiveSquare R D I)
     rw [hl, Equiv.apply_symm_apply, le.tgt_eq] at h
     exact h.symm
 
 /-- 実全対象商の Perf 零性に条件付きで、同じ元の固定 K 四角形の零角を得る。 -/
 theorem dgKappaResolvedConnectiveSquare_zero_corner
-    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (dgKInputStableValue R
       (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I)))) :
-    IsZeroVertex (squareVertex (dgKappaResolvedConnectiveSquare R D I ≫ dgKInputK R) 0 1) := by
-  change IsZeroVertex ((dgKInputK R).app (Opposite.op ⦋0⦌)
-    (squareVertex (dgKappaResolvedConnectiveSquare R D I) 0 1))
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaResolvedConnectiveSquare R D I ≫ dgKInputK R) 0 1) := by
+  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgKInputK R).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaResolvedConnectiveSquare R D I) 0 1))
   rw [(dgKappaResolvedConnectiveSquare_vertices R D I).2.2.2]
   exact dgKInputK_vertex_isZero_of_zero R _ hz
 

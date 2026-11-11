@@ -19,7 +19,7 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 namespace SerrePositivity.DiagramModel.Projective
 variable (K : Type w) [SmallCategory K]
   {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 lemma evaluation_isLeftQuillen (k : K) :
     let := modelCategory K I J
@@ -32,7 +32,7 @@ lemma evaluation_isLeftQuillen (k : K) :
     exact ⟨cofibrations_le_objectwise K I J f hf.1 k, hf.2 k⟩
 
 variable {D : Type u'} [Category.{v'} D] [ModelCategory D] [IsLocallyPresentable.{w} D]
-  (I' J' : MorphismProperty D) [ModelGeneration.CofibrantlyGenerated.{w} I' J']
+  (I' J' : MorphismProperty D) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I' J']
 
 lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] :
     let := modelCategory K I J

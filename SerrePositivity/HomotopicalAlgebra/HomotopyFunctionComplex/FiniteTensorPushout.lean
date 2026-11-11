@@ -21,7 +21,7 @@ variable {C : Type u} [Category.{v} C] [HasFiniteColimits C]
 namespace Gluing
 
 def simplexDesc (s : PushoutCocone (map A f) (map A g)) :
-    X₄ ⟶ (cosimplicialHom A).obj s.pt :=
+    X₄ ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj s.pt :=
   sq.desc ((homEquiv A X₂ s.pt).symm s.inl) ((homEquiv A X₃ s.pt).symm s.inr)
     ((homEquiv_symm_map_comp A f s.inl).symm.trans
       ((congrArg (homEquiv A X₁ s.pt).symm s.condition).trans

@@ -2,8 +2,8 @@ module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullCriterion
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
-public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEdges
-public import SerrePositivity.InfinityCategories.Derived.DGClosedEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedEdges
 
 /-!
 概要：元 cone が可縮な gluing 対象の元比較辺は可逆である。
@@ -52,12 +52,12 @@ lemma dgIdentityHomGluingNullProperty_targetHomotopyIso (x : L)
 規約：辺代表を選び直さない。使われ方：V 上の可逆矢印全族の頂点条件。 -/
 lemma dgIdentityHomGluingNullProperty_targetEdgeInvertible (x : L)
     (hx : dgIdentityHomGluingNullProperty R C x) :
-    IsInvertibleEdge (X := dgNerve R C) (dgClosedEdge R C (dgHomGluingTargetMap R C C C (I) (I) x)) := by
-  have hi : IsIso ((dgStableHomotopyEquivalence R C).functor.map
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R C) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R C (dgHomGluingTargetMap R C C C (I) (I) x)) := by
+  have hi : IsIso ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableHomotopyEquivalence R C).functor.map
       (Truncated.HomotopyCategory.homMk
-        (dgClosedEdge R C (dgHomGluingTargetMap R C C C (I) (I) x)))) := by
-    erw [dgStableHomotopyEquivalence_map_homMk, dgClosedEdge_closed]
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R C (dgHomGluingTargetMap R C C C (I) (I) x)))) := by
+    erw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableHomotopyEquivalence_map_homMk, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge_closed]
     exact dgIdentityHomGluingNullProperty_targetHomotopyIso R C x hx
-  exact isIso_of_reflects_iso _ (dgStableHomotopyEquivalence R C).functor
+  exact isIso_of_reflects_iso _ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableHomotopyEquivalence R C).functor
 
 end SerrePositivity.KST.SConstruction

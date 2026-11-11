@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTrianglePathClassification
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentPathMinimum
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.CoherentPathMinimum
 
 /-!
 概要：二単体の実 path の最初の正頂点と、その反転の値を計算する。

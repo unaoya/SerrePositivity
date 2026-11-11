@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：二つの同種ステップと、異種ステップの交換対の分類を有限な条件で表す。
 規約：KST Construction A.5、全ステップ数 n+1 は少なくとも1。
 使われ方：全混合境界和の消滅と二つの純粋境界和を合成する。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

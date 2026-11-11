@@ -19,7 +19,7 @@ open scoped Simplicial
 
 /-- 元の一重 S の全零境界商の、置換前の辺と二単体から作る基本亜群。 -/
 abbrev boundaryFundamentalGroupoid (X : StableModel.{u}) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid (boundaryReducedRealization 0 X).right
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.simplicialFundamentalGroupoid (boundaryReducedRealization 0 X).right
 
 /-- 元の境界商の基点を基本亜群の対象とする。 -/
 def boundaryFundamentalBasepoint (X : StableModel.{u}) : boundaryFundamentalGroupoid X :=

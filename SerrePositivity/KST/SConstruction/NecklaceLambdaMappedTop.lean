@@ -18,12 +18,12 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 /-- 元の連結生成射を実 dg 関手で送った最高生成元像は、同じ通常順合成。 -/
 lemma necklaceLambdaCell_top_composition_post {K : SSet.{u}}
     (F : DGFunctor A (CubicalLambda A K) D) {x y z : K _⦋0⦌}
-    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z) :
+    (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K y z) :
     serreCubeTopCellImage A (homObject A D (F.obj x) (F.obj z))
         (T.necklace.down.dimension + U.necklace.down.dimension)
         (((serreConcreteCubeComplexFunctor A).map
           (necklaceCubeTensorIso T.necklace U.necklace).hom ≫
-            necklaceLambdaCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U)) ≫ F.map x z) =
+            necklaceLambdaCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T U)) ≫ F.map x z) =
       compose A
         (serreCubeTopCellImage A (homObject A D (F.obj y) (F.obj z)) U.necklace.down.dimension
           (necklaceLambdaCell A U ≫ F.map y z))

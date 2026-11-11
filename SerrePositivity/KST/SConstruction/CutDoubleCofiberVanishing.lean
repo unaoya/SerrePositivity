@@ -54,22 +54,22 @@ lemma cutDoubleCofiberFamily_column_zero_quotient (n : ℕ) (k : Fin (n + 1)) (X
 /-- 相対入力の左右支持により、二重切断格子の零番目の行の商は全点で実際に零。 -/
 lemma cutDoubleCofiberFamily_row_zero_isZero (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u})
     (v : (relativeCofiberDiagrams (cutLeftSupport n k X) (cutRightSupport n k X)) _⦋0⦌) :
-    IsZeroVertex ((doubleCofiberRow (cutDoubleCofiberFamily n k X) 0 ≫
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((doubleCofiberRow (cutDoubleCofiberFamily n k X) 0 ≫
       cofiberApex (sConstruction n X.carrier)).app (Opposite.op ⦋0⦌) v) := by
   have h := congrArg (fun f => f.app (Opposite.op ⦋0⦌) v)
     (cutDoubleCofiberFamily_row_zero_quotient n k X)
-  exact (congrArg IsZeroVertex h).mpr
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex h).mpr
     (cutLeftSupport_rightCut_isZero n k X _
       (relativeCofiber_vertex (cutLeftSupport n k X) (cutRightSupport n k X) v).1)
 
 /-- 相対入力の左右支持により、二重切断格子の零番目の列の商は全点で実際に零。 -/
 lemma cutDoubleCofiberFamily_column_zero_isZero (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u})
     (v : (relativeCofiberDiagrams (cutLeftSupport n k X) (cutRightSupport n k X)) _⦋0⦌) :
-    IsZeroVertex ((doubleCofiberColumn (cutDoubleCofiberFamily n k X) 0 ≫
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((doubleCofiberColumn (cutDoubleCofiberFamily n k X) 0 ≫
       cofiberApex (sConstruction n X.carrier)).app (Opposite.op ⦋0⦌) v) := by
   have h := congrArg (fun f => f.app (Opposite.op ⦋0⦌) v)
     (cutDoubleCofiberFamily_column_zero_quotient n k X)
-  exact (congrArg IsZeroVertex h).mpr
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex h).mpr
     (cutRightSupport_leftCut_isZero n k X _
       (relativeCofiber_vertex (cutLeftSupport n k X) (cutRightSupport n k X) v).2)
 

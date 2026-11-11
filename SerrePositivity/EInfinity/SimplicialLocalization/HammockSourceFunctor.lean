@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ArrowMapComposition
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ArrowMapComposition
 public import SerrePositivity.EInfinity.SimplicialLocalization.ComparisonEnrichment
 public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 
@@ -20,28 +20,28 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Hammock
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 abbrev HammockCategory := ForgetEnrichment SSet.{u} (HammockObjects C)
 
 def hammockSourceFunctor : C.category ⥤ HammockCategory C where
   obj X := ForgetEnrichment.of SSet.{u} (show HammockObjects C from X)
   map {X Y} f := ForgetEnrichment.homOf SSet.{u}
-    (C := HammockObjects C) (X := X) (Y := Y) (arrowMap C.weakEquivalences f)
+    (C := HammockObjects C) (X := X) (Y := Y) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f)
   map_id X := by
     change ForgetEnrichment.homOf SSet.{u} (C := HammockObjects C) (X := X) (Y := X)
-      (arrowMap C.weakEquivalences (𝟙 X)) = _
-    rw [arrowMap_identity]
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences (𝟙 X)) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap_identity]
     exact ForgetEnrichment.homOf_eId SSet.{u} (show HammockObjects C from X)
   map_comp {X Y Z} f g := by
     have hc := ForgetEnrichment.homOf_comp SSet.{u}
       (C := HammockObjects C) (X := X) (Y := Y) (Z := Z)
-      (arrowMap C.weakEquivalences f) (arrowMap C.weakEquivalences g)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences g)
     exact (congrArg (ForgetEnrichment.homOf SSet.{u} (C := HammockObjects C))
-      (composeUnitMaps_arrowMap C.weakEquivalences f g)).symm.trans hc
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composeUnitMaps_arrowMap C.weakEquivalences f g)).symm.trans hc
 
 lemma hammockSourceFunctor_homTo {X Y : C.category} (f : X ⟶ Y) :
     ForgetEnrichment.homTo SSet.{u} ((hammockSourceFunctor C).map f) =
-      arrowMap C.weakEquivalences f := ForgetEnrichment.homTo_homOf SSet.{u} _
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f := ForgetEnrichment.homTo_homOf SSet.{u} _
 
 end SerrePositivity.EInfinity.SimplicialLocalization

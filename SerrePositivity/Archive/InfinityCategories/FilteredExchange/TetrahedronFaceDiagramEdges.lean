@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.TetrahedronEdgeFaces
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.TetrahedronEdgeFaces
 
 /-!
 概要：元の三単体の二面の共有辺を、yoneda 表示の実図式の厳密な等式として保持する。

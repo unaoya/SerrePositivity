@@ -17,7 +17,7 @@ open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
   (v : E.obj ⟶ D.obj)
 
 lemma laxDifferenceUnit_target_snd :
@@ -26,13 +26,13 @@ lemma laxDifferenceUnit_target_snd :
   rw [Category.assoc, laxDifferenceRho_snd]
 
 lemma laxDifferenceUnit_target_fst_zero (x : (laxCategory p q).obj _⦋0⦌) :
-    IsZeroVertex (((laxDifference p q ≫ laxDifferenceRho p q v) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((laxDifference p q ≫ laxDifferenceRho p q v) ≫
       (laxFst p q).hom).app (Opposite.op ⦋0⦌) x) := by
   rw [laxDifferenceRho, Category.assoc, Category.assoc, LaxInclusion.fromD_fst]
-  change IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC (C := C) (D := D)).app (Opposite.op ⦋0⦌)
+  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC (C := C) (D := D)).app (Opposite.op ⦋0⦌)
     (v.app (Opposite.op ⦋0⦌) ((laxDifference p q).app (Opposite.op ⦋0⦌) x)))
-  rw [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex]
-  exact (chosenZeroVertex C.obj).isZero
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex]
+  exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C.obj).isZero
 
 /-- 元の第一射影から、同じ実終点の第一射影への自然な零枝。 -/
 def laxDifferenceUnitCHomotopy : SSet.Homotopy (laxFst p q).hom
@@ -40,36 +40,36 @@ def laxDifferenceUnitCHomotopy : SSet.Homotopy (laxFst p q).hom
   ZeroArrowFamily.toZero _ _ (laxDifferenceUnit_target_fst_zero p q v)
 
 /-- 転置された D 成分の代表を保持し、終点を実第二射影へ正規化する。 -/
-def laxDifferenceUnitDHomotopy (a : QCatAdjunction q.hom v) :
+def laxDifferenceUnitDHomotopy (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction q.hom v) :
     SSet.Homotopy (laxSnd p q).hom
       ((laxDifference p q ≫ laxDifferenceRho p q v) ≫ (laxSnd p q).hom) where
-  h := (functorHomHomotopy (laxDifferenceUnitD p q a)).h
-  h₀ := (functorHomHomotopy (laxDifferenceUnitD p q a)).h₀
+  h := (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy (laxDifferenceUnitD p q a)).h
+  h₀ := (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy (laxDifferenceUnitD p q a)).h₀
   h₁ := by
     rw [laxDifferenceUnit_target_snd]
-    exact (functorHomHomotopy (laxDifferenceUnitD p q a)).h₁
-  rel := (functorHomHomotopy (laxDifferenceUnitD p q a)).rel
+    exact (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy (laxDifferenceUnitD p q a)).h₁
+  rel := (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy (laxDifferenceUnitD p q a)).rel
 
 /-- 単位候補の終点における元の指定矢印族。 -/
 def laxDifferenceUnitTargetArrowHomotopy : SSet.Homotopy
     (((laxDifference p q ≫ laxDifferenceRho p q v) ≫ (laxFst p q).hom) ≫ p.hom)
     (((laxDifference p q ≫ laxDifferenceRho p q v) ≫ (laxSnd p q).hom) ≫ q.hom) where
-  h := (functorHomotopyPrecomp (laxArrowHomotopy p q)
+  h := (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (laxArrowHomotopy p q)
     (laxDifference p q ≫ laxDifferenceRho p q v)).h
   h₀ := by
-    rw [(functorHomotopyPrecomp (laxArrowHomotopy p q)
+    rw [(_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (laxArrowHomotopy p q)
       (laxDifference p q ≫ laxDifferenceRho p q v)).h₀]
     rfl
   h₁ := by
-    rw [(functorHomotopyPrecomp (laxArrowHomotopy p q)
+    rw [(_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (laxArrowHomotopy p q)
       (laxDifference p q ≫ laxDifferenceRho p q v)).h₁]
     rfl
-  rel := (functorHomotopyPrecomp (laxArrowHomotopy p q)
+  rel := (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (laxArrowHomotopy p q)
     (laxDifference p q ≫ laxDifferenceRho p q v)).rel
 
 lemma laxDifferenceUnit_target_fst_post_zero (x : (laxCategory p q).obj _⦋0⦌) :
-    IsZeroVertex ((((laxDifference p q ≫ laxDifferenceRho p q v) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((((laxDifference p q ≫ laxDifferenceRho p q v) ≫
       (laxFst p q).hom) ≫ p.hom).app (Opposite.op ⦋0⦌) x) :=
-  IsExactFunctor.preservesZero (F := p.hom) _ (laxDifferenceUnit_target_fst_zero p q v x)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := p.hom) _ (laxDifferenceUnit_target_fst_zero p q v x)
 
 end SerrePositivity.KST.LocalizingInvariants

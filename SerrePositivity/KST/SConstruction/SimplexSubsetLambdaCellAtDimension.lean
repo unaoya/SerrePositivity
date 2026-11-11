@@ -16,26 +16,26 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の同端点の部分集合生成射を、同じ濃度次元に等しい指定次元から読む。 -/
 def simplexSubsetLambdaCellAtDimension {n : ℕ} (I : Finset (Fin (n + 1))) (a b : Fin (n + 1))
-    (hI : 2 ≤ I.card) (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (d : ℕ) (hd : d = I.card - 2) :
+    (hI : 2 ≤ I.card) (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (d : ℕ) (hd : d = I.card - 2) :
     serreCubeComplex A d ⟶ homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) :=
   eqToHom (congrArg (serreCubeComplex A) hd) ≫ simplexSubsetLambdaCellAt A I a b hI ha hb
 
 /-- 元の濃度次元を指定すれば、元の同端点の部分集合生成射を回収する。 -/
 lemma simplexSubsetLambdaCellAtDimension_refl {n : ℕ} (I : Finset (Fin (n + 1)))
-    (a b : Fin (n + 1)) (hI : 2 ≤ I.card) (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) :
+    (a b : Fin (n + 1)) (hI : 2 ≤ I.card) (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) :
     simplexSubsetLambdaCellAtDimension A I a b hI ha hb (I.card - 2) rfl =
       simplexSubsetLambdaCellAt A I a b hI ha hb := Category.id_comp _
 
 /-- 元の部分集合が等しければ、同じ指定次元・同じ端点の実生成射も厳密に一致する。 -/
 lemma simplexSubsetLambdaCellAtDimension_congr {n : ℕ} (I J : Finset (Fin (n + 1)))
     (hIJ : I = J) (a b : Fin (n + 1)) (hI : 2 ≤ I.card) (hJ : 2 ≤ J.card)
-    (haI : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hbI : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (haJ : a = J.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty J hJ))
-    (hbJ : b = J.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty J hJ))
+    (haI : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hbI : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (haJ : a = J.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty J hJ))
+    (hbJ : b = J.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty J hJ))
     (d : ℕ) (hdI : d = I.card - 2) (hdJ : d = J.card - 2) :
     simplexSubsetLambdaCellAtDimension A I a b hI haI hbI d hdI =
       simplexSubsetLambdaCellAtDimension A J a b hJ haJ hbJ d hdJ := by
@@ -45,8 +45,8 @@ lemma simplexSubsetLambdaCellAtDimension_congr {n : ℕ} (I J : Finset (Fin (n +
 /-- 元の指定端点・次元の生成射は、元の同じ部分集合の実生成射と異種等号で一致。 -/
 lemma simplexSubsetLambdaCellAtDimension_canonical_heq {n : ℕ}
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (d : ℕ) (hd : d = I.card - 2) :
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (d : ℕ) (hd : d = I.card - 2) :
     HEq (simplexSubsetLambdaCellAtDimension A I a b hI ha hb d hd)
       (simplexSubsetLambdaCell A I hI) := by
   subst a b d

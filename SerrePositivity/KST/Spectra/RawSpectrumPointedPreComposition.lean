@@ -36,12 +36,12 @@ lemma pointedComposition_pre {W V : OmegaSpectrum.{u}} (f : W ⟶ V)
   have hc := eComp_eHomWhiskerRight PointedSimplicialSet.{u} (f.app n)
     (X.level n).space (Z.level n).space
   simp only [enrichedCategorySelf_comp, enrichedOrdinaryCategorySelf_eHomWhiskerRight,
-    ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hc
+    ← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hc
   dsimp only [pointedCompositionFamily]
   rw [Category.assoc, hc, ← Category.assoc]
   exact congrArg (· ≫ MonoidalClosed.comp
     (W.level n).space (X.level n).space (Z.level n).space)
     (tensorHom_comp_whiskerRight (pointedEvaluation V X.toKanSequence n)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (f.app n) (X.level n).space) (pointedEvaluation X Z n))
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (f.app n) (X.level n).space) (pointedEvaluation X Z n))
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.ModelBridge.ThreeArrowGraphWeakComparison
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrowGraphWeakComparison
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphColimit
 
 /-!
@@ -21,15 +21,15 @@ open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
 lemma algebraHammockGraphInclusion_threeArrow_isWeakHomotopyEquivalence
-    (X Y : (operad A).Algebra) : IsWeakHomotopyEquivalence
-      (algebraHammockGraphInclusion A Hammock.Word.threeArrow X Y) := by
+    (X Y : (operad A).Algebra) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
+      (algebraHammockGraphInclusion A _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow X Y) := by
   let := modelCategory A
-  exact Hammock.threeArrowGraphInclusion_isWeakHomotopyEquivalence X Y
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.threeArrowGraphInclusion_isWeakHomotopyEquivalence X Y
     (mappingCofibrantFactorization A)
 
 lemma mappingSpaceHammockColimitNerveMap_isWeakHomotopyEquivalence
     (X Y : (operad A).Algebra) :
-    IsWeakHomotopyEquivalence (mappingSpaceHammockColimitNerveMap A X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (mappingSpaceHammockColimitNerveMap A X Y) :=
   (mappingSpaceHammockGraphNerveMap_isWeakHomotopyEquivalence A X Y).comp
     (algebraHammockGraphInclusion_threeArrow_isWeakHomotopyEquivalence A X Y)
 

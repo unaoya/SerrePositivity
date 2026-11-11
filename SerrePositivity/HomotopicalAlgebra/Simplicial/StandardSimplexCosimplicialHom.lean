@@ -30,7 +30,7 @@ public import Mathlib.Logic.Equiv.Defs
 public import Mathlib.Order.Defs.PartialOrder
 public import Mathlib.Order.Fin.Basic
 public import Mathlib.Order.Hom.Basic
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CosimplicialHom.ResolutionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom
 
 /-! # Standard cosimplicial frames under a left Quillen left adjoint
 
@@ -59,7 +59,7 @@ def augmentation : SSet.stdSimplex.{w} ⟶ (Functor.const SimplexCategory).obj (
       ← Category.assoc, ← Functor.map_comp, hc]
 
 /-- The actual cosimplicial Hom of standard simplices is the simplicial set itself. -/
-def homIso : cosimplicialHom SSet.stdSimplex.{w} ≅ 𝟭 SSet.{w} :=
+def homIso : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom SSet.stdSimplex.{w} ≅ 𝟭 SSet.{w} :=
   NatIso.ofComponents (fun Y => NatIso.ofComponents (fun n =>
     Equiv.toIso (SSet.yonedaEquiv (X := Y) (n := n.unop))) (by
       intro n m f

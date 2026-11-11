@@ -110,9 +110,9 @@ lemma projection_rlp (X : OmegaSpectrum.{u}) (n : ℕ) :
 規約：構成した左因子の射そのものの検証。
 使われ方：BF 比較の同値性。 -/
 lemma inclusion_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((inclusion X).app n).right := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((projection X).app n).right) _
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (projection_rlp X n))
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((inclusion X).app n).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := ((projection X).app n).right) _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (projection_rlp X n))
   rw [← Under.comp_right, fac]
   exact KanSequence.adjointLoopTailUnit_levelwise X.toKanSequence_omega n
 

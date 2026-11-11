@@ -76,7 +76,7 @@ lemma presentedPerfectDGOneDirectionAction_hom (r : ℕ)
     (X := (G.obj C).obj) (Y := (G.obj D).obj)
     (P := C ⟶[SSet.{max (u + 1) v}] D)
     (eHomEquiv SSet.{max (u + 1) v} F) (G.map C D)
-    (quasicategoryCoreMap (multiSExactMap (r + 1) d (presentedPerfectDGExactMap A F)).hom) h
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (multiSExactMap (r + 1) d (presentedPerfectDGExactMap A F)).hom) h
   exact (presentedPerfectDGOneDirectionAction_app A r C D n z.1
     ((eHomEquiv SSet.{max (u + 1) v} F).app n z.2)).trans
       (types_congr_hom (NatTrans.congr_app he n) z)

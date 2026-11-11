@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingFamily
-public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.MonoRightHomotopyEquivalence
 public import SerrePositivity.KST.Spectra.MappingOmegaSequence
-public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.TrivialFibrationEquivalence
 
 /-!
 概要：一般の Kan 列への整合写像空間で、段ごとの全単射 RLP は後合成で保存される。
@@ -45,13 +45,13 @@ lemma post_rlp (X : OmegaSpectrum.{u}) {Y Z : KanSequence.{u}} (p : KanSequence.
 lemma post_trivialKanFibration (X : OmegaSpectrum.{u}) {Y Z : KanSequence.{u}}
     (p : KanSequence.Hom Y Z)
     (hp : ∀ n, (MorphismProperty.monomorphisms SSet.{u}).rlp (p.app n).right) :
-    TrivialKanFibration (post X p) := ⟨post_rlp X p hp⟩
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (post X p) := ⟨post_rlp X p hp⟩
 
 /-- 全単射 RLP を持つ後合成は全基点で π 同型。 -/
 lemma post_piIsomorphism (X : OmegaSpectrum.{u}) {Y Z : KanSequence.{u}}
     (p : KanSequence.Hom Y Z)
     (hp : ∀ n, (MorphismProperty.monomorphisms SSet.{u}).rlp (p.app n).right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (post X p) := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (post_rlp X p hp)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (post X p) := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (post_rlp X p hp)
 
 /-- BF cotensor の射影は実際の写像空間でも全単射 RLP を持つ。 -/
 lemma cotensorProjection_rlp (X Y : OmegaSpectrum.{u}) (A : PointedSimplicialSet.{u}) :
@@ -62,17 +62,17 @@ lemma cotensorProjection_rlp (X Y : OmegaSpectrum.{u}) (A : PointedSimplicialSet
 /-- BF cotensor の写像空間と、置換前の内部 Hom 列への写像空間の実際の比較は π 同型。 -/
 lemma cotensorProjection_piIsomorphism (X Y : OmegaSpectrum.{u})
     (A : PointedSimplicialSet.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (post X (OmegaSpectrum.cotensorProjection A Y)) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (cotensorProjection_rlp X Y A)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (post X (OmegaSpectrum.cotensorProjection A Y)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (cotensorProjection_rlp X Y A)
 
 /-- 元の BF cotensor の豊穣 Hom と置換前の写像空間の実際の同値。 -/
 def cotensorProjectionEquivalence (X Y : OmegaSpectrum.{u}) (A : PointedSimplicialSet.{u}) :
-    SerrePositivity.InfinityCategories.QCatEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
       (OmegaSpectrum.mappingSpace X (OmegaSpectrum.cotensor A Y))
       (space X (KanSequence.mapping A Y.toKanSequence)) := by
-  have : TrivialKanFibration (post X (OmegaSpectrum.cotensorProjection A Y)) :=
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (post X (OmegaSpectrum.cotensorProjection A Y)) :=
     ⟨cotensorProjection_rlp X Y A⟩
-  exact qCatEquivalenceOfTrivialKanFibration (post X (OmegaSpectrum.cotensorProjection A Y))
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.qCatEquivalenceOfTrivialKanFibration (post X (OmegaSpectrum.cotensorProjection A Y))
 
 /-- 構成した同値の順写像は、元の置換射影による後合成。 -/
 lemma cotensorProjectionEquivalence_hom (X Y : OmegaSpectrum.{u})

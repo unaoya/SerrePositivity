@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open Spectra
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 local instance boundarySuspensionPrisms_pointed_simplicialCategory :
     SimplicialCategory PointedSimplicialSet.{u} := PointedEnrichment.simplicialCategory
@@ -32,13 +32,13 @@ lemma boundaryAssemblyOriginalSuspensionPrism_zero {I : Type u} [SmallCategory I
     (r : ℕ) (F : I ⥤ StableModel.{u}) {n : ℕ} (s : (nerve I) _⦋n⦌) :
     SSet.ι₀ ≫ boundaryAssemblyOriginalSuspensionPrism r F s =
       SSet.yonedaEquiv.symm (ULift.up s) ≫
-        strictCoherentDiagram (F ⋙ boundaryKanRealizationFunctor r) ≫
-          coherentNerveMap suspensionEnrichedFunctor := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (F ⋙ boundaryKanRealizationFunctor r) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap suspensionEnrichedFunctor := by
   have hs : pointedKanCoherentDiagram (F ⋙ boundaryKanRealizationFunctor r)
       (fun i => boundaryKanRealization_kanComplex r (F.obj i)) ≫
-        coherentNerveMap pointedKanInclusionEnriched ≫ coherentNerveMap suspensionEnrichedFunctor =
-      strictCoherentDiagram (F ⋙ boundaryKanRealizationFunctor r) ≫
-        coherentNerveMap suspensionEnrichedFunctor := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanInclusionEnriched ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap suspensionEnrichedFunctor =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (F ⋙ boundaryKanRealizationFunctor r) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap suspensionEnrichedFunctor := by
     rw [← Category.assoc, pointedKanInclusion_coherentDiagram]
   have h := homotopySimplexPrism_zero (boundaryAssemblyOriginalSuspensionHomotopy r F)
     (ULift.up s)
@@ -50,7 +50,7 @@ lemma boundaryAssemblyOriginalSuspensionPrism_one {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {n : ℕ} (s : (nerve I) _⦋n⦌) :
     SSet.ι₁ ≫ boundaryAssemblyOriginalSuspensionPrism r F s =
       SSet.yonedaEquiv.symm (ULift.up s) ≫
-        strictCoherentDiagram (F ⋙ boundaryKanRealizationFunctor (r + 1)) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (F ⋙ boundaryKanRealizationFunctor (r + 1)) := by
   have h := homotopySimplexPrism_one (boundaryAssemblyOriginalSuspensionHomotopy r F)
     (ULift.up s)
   conv at h => rhs; rw [pointedKanInclusion_coherentDiagram]
@@ -72,10 +72,10 @@ lemma boundaryAssemblyOriginalSuspensionPrism_vertex {I : Type u} [SmallCategory
     lift (SSet.const a) (𝟙 (Δ[1] : SSet.{u + 1})) ≫
       boundaryAssemblyOriginalSuspensionPrism r F s =
         SSet.yonedaEquiv.symm
-          (coherentNerveEdge (boundaryKanAssemblySigma r (F.obj (s.obj (a 0))))).edge := by
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (boundaryKanAssemblySigma r (F.obj (s.obj (a 0))))).edge := by
   have ha : (SSet.yonedaEquiv.symm (ULift.up s) : (Δ[n] : SSet.{u + 1}) ⟶
       (SSet.uliftFunctor.{u+1,u}).obj (nerve I)).app (Opposite.op ⦋0⦌) a =
-      ULift.up (nerveVertex (s.obj (a 0))) := by
+      ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (s.obj (a 0))) := by
     apply congrArg ULift.up
     exact ComposableArrows.ext₀ rfl
   have h := homotopySimplexPrism_vertex (boundaryAssemblyOriginalSuspensionHomotopy r F)

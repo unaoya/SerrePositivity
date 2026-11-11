@@ -25,15 +25,15 @@ variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicat
   (X Y : C) {n : SimplexCategoryᵒᵖ}
 
 /-- 元の基本合成と削除のすべての相対位置での局所合流。 -/
-lemma merge_erase_join {k : ℕ} (d : Fin (k + 2) → Direction)
+lemma merge_erase_join {k : ℕ} (d : Fin (k + 2) → _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction)
     (p : Fin (k + 1)) (hp : d p.castSucc = d p.succ) (j : Fin (k + 2))
-    (τ : (graph W (⟨k + 2, d⟩ : Word) X Y).obj n)
-    (hτ : ∀ r, IdentityColumn (τ.obj r) j) :
-    ∃ s : RawHammock W X Y n,
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W (⟨k + 2, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) X Y).obj n)
+    (hτ : ∀ r, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj r) j) :
+    ∃ s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n,
       Relation.ReflGen (Reduction W X Y n)
-        ⟨_, ((graphDiagram W X Y).map (Word.mergeMap d p hp)).app n τ⟩ s ∧
+        ⟨_, ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeMap d p hp)).app n τ⟩ s ∧
       Relation.ReflGen (Reduction W X Y n)
-        ⟨Word.erase (⟨k + 2, d⟩ : Word) j, eraseSimplex W X Y j τ hτ⟩ s := by
+        ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.erase (⟨k + 2, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) j, eraseSimplex W X Y j τ hτ⟩ s := by
   by_cases hj : j = p.castSucc ∨ j = p.succ
   · refine ⟨_, Relation.ReflGen.refl, ?_⟩
     rw [merge_erase_overlap_eq W X Y d p hp j hj τ hτ]

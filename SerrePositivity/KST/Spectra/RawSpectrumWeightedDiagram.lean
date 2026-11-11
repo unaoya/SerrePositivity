@@ -47,7 +47,7 @@ def weightedDiagramIso {I : Type u} [SmallCategory I] (X : OmegaSpectrum.{u})
       simp only [enrichedOrdinaryCategorySelf_eHomWhiskerRight]
       have h := cotensorComparison_pre X (D.obj j)
         (PointedObject.adjoinFunctor.map (W.map f.unop))
-      rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
+      rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at h
       exact h)
 
 /-- 整合写像を施した二変数図式の end と、整合写像を係数とする重み付き end の同型。 -/

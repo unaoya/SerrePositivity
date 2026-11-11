@@ -144,7 +144,7 @@ theorem sequentialCandidateMap_piIsomorphism {D E : SpectrumSequence.{u}} (η : 
 使われ方：K-7 e の実列比較に条件付きの非連結化候補の可逆性。 -/
 theorem sequentialCandidateMap_isInvertible {D E : SpectrumSequence.{u}} (η : D ⟶ E)
     (hη : ∀ a, OmegaSpectrum.PiIsomorphism (η.app a)) :
-    IsInvertibleEdge (coherentNerveEdge (sequentialCandidateMap η)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (sequentialCandidateMap η)) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _ (sequentialCandidateMap_piIsomorphism η hη)
 
 end SerrePositivity.KST.NonConnective

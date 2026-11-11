@@ -20,7 +20,7 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 
 /-- 元の四角形族の参照三角形の全ての頂点の評価。 -/
 lemma circleSquareFamily_reference_vertex (i : Fin 3) :
-    lift (𝟙 Sp.{u}) (SSet.const ((squareTriangle.{u + 1} 0).app (Opposite.op ⦋0⦌)
+    lift (𝟙 Sp.{u}) (SSet.const ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle.{u + 1} 0).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm i))) ≫ nativeCircleEvaluationSquareFamily =
     lift (𝟙 Sp.{u}) (SSet.const (stdSimplex.obj₀Equiv.symm i)) ≫
       nativeZeroEvaluationTriangleFamily PointedSimplicialSet.circle := by
@@ -29,10 +29,10 @@ lemma circleSquareFamily_reference_vertex (i : Fin 3) :
 
 /-- 元の loop 図式族の始点の全関手は、元の native な円 cotensor。 -/
 lemma circleLoopDiagramFamily_source :
-    circleLoopDiagramFamily.{u} ≫ loopDiagramEvaluation Sp.{u} 0 0 =
+    circleLoopDiagramFamily.{u} ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 0 0 =
       nativeCotensor PointedSimplicialSet.circle := by
   have h := circleSquareFamily_reference_vertex.{u} 0
-  have hs : (squareTriangle.{u + 1} 0).app (Opposite.op ⦋0⦌)
+  have hs : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle.{u + 1} 0).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 3)) =
       (stdSimplex.obj₀Equiv.symm 0, stdSimplex.obj₀Equiv.symm 0) := by
     apply Prod.ext <;> decide
@@ -42,11 +42,11 @@ lemma circleLoopDiagramFamily_source :
 
 /-- 元の loop 図式族の終点の全関手は、元の共通解像の逆と源射影の合成。 -/
 lemma circleLoopDiagramFamily_target :
-    circleLoopDiagramFamily.{u} ≫ loopDiagramEvaluation Sp.{u} 1 1 =
+    circleLoopDiagramFamily.{u} ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 1 1 =
       (CotensorCompatible.sourceInfinityEquivalence PointedSimplicialSet.circle).inv ≫
         CotensorCompatible.sourceInfinityMap PointedSimplicialSet.circle := by
   have h := circleSquareFamily_reference_vertex.{u} 2
-  have hs : (squareTriangle.{u + 1} 0).app (Opposite.op ⦋0⦌)
+  have hs : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle.{u + 1} 0).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (2 : Fin 3)) =
       (stdSimplex.obj₀Equiv.symm 1, stdSimplex.obj₀Equiv.symm 1) := by
     apply Prod.ext <;> decide
@@ -56,7 +56,7 @@ lemma circleLoopDiagramFamily_target :
 
 /-- 元の全 loop 図式族の終点は、元の恒等関手と実際に関手同型。 -/
 def circleLoopDiagramFamily_targetIso :
-    FunctorIso (circleLoopDiagramFamily.{u} ≫ loopDiagramEvaluation Sp.{u} 1 1) (𝟙 Sp.{u}) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (circleLoopDiagramFamily.{u} ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 1 1) (𝟙 Sp.{u}) := by
   rw [circleLoopDiagramFamily_target]
   exact (CotensorCompatible.sourceInfinityEquivalence PointedSimplicialSet.circle).invHomIso
 

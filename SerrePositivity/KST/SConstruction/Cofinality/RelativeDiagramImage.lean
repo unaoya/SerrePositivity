@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.DiagramImage
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：有限 S 図式の全族回収を、指定された境界図式と比較する。
@@ -24,22 +24,22 @@ open scoped Simplicial
 def sBoundaryImageIso {n : ℕ} {L K : SSet.{u}} {X Y : StableModel.{u}}
     (f : X ⟶ Y) (i : L ⟶ K) (G : K ⟶ sConstruction n X.carrier)
     (g : L ⟶ sConstruction n X.carrier) (F : K ⟶ sConstruction n Y.carrier)
-    (e : FunctorIso (G ≫ ((sEndofunctor n).map f).val) F)
-    (b : FunctorIso (g ≫ ((sEndofunctor n).map f).val) (i ≫ F)) :
-    FunctorIso ((i ≫ G) ≫ ((sEndofunctor n).map f).val)
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (G ≫ ((sEndofunctor n).map f).val) F)
+    (b : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (g ≫ ((sEndofunctor n).map f).val) (i ≫ F)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((i ≫ G) ≫ ((sEndofunctor n).map f).val)
       (g ≫ ((sEndofunctor n).map f).val) :=
-  F2.functorIsoOfEq ((e.precomp i) ≪≫ b.symm) (Category.assoc _ _ _).symm rfl
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((e.precomp i) ≪≫ b.symm) (Category.assoc _ _ _).symm rfl
 
 /-- 概要：元の全族回収を指定された始域の境界図式と同じ始域内で比較する。
 方針：指定像内比較を同じ S_n 射の充満忠実性で反映する。
 規約：厳密な境界等号や相対ホモトピー延長は主張しない。
 使われ方：同じ境界の相対比較を構成する入口。 -/
 def sBoundaryRecoveryIso {n : ℕ} {L K : SSet.{u}} {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : IsFullyFaithful f.val) (i : L ⟶ K)
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful f.val) (i : L ⟶ K)
     (G : K ⟶ sConstruction n X.carrier) (g : L ⟶ sConstruction n X.carrier)
     (F : K ⟶ sConstruction n Y.carrier)
-    (e : FunctorIso (G ≫ ((sEndofunctor n).map f).val) F)
-    (b : FunctorIso (g ≫ ((sEndofunctor n).map f).val) (i ≫ F)) : FunctorIso (i ≫ G) g :=
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (G ≫ ((sEndofunctor n).map f).val) F)
+    (b : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (g ≫ ((sEndofunctor n).map f).val) (i ≫ F)) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (i ≫ G) g :=
   (sEndofunctor_map_isFullyFaithful n f hf).preimageFunctorIso (sBoundaryImageIso f i G g F e b)
 
 /-- 概要：元の境界比較を反映してから同じ S_n 射へ写すと、指定した像内比較を回収する。
@@ -47,14 +47,14 @@ def sBoundaryRecoveryIso {n : ℕ} {L K : SSet.{u}} {X Y : StableModel.{u}}
 規約：指定比較の等号を保ち、存在だけに弱めない。
 使われ方：元の境界と全族比較を相対的に照合する。 -/
 lemma sBoundaryRecoveryIso_postcomp {n : ℕ} {L K : SSet.{u}} {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : IsFullyFaithful f.val) (i : L ⟶ K)
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful f.val) (i : L ⟶ K)
     (G : K ⟶ sConstruction n X.carrier) (g : L ⟶ sConstruction n X.carrier)
     (F : K ⟶ sConstruction n Y.carrier)
-    (e : FunctorIso (G ≫ ((sEndofunctor n).map f).val) F)
-    (b : FunctorIso (g ≫ ((sEndofunctor n).map f).val) (i ≫ F)) :
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (G ≫ ((sEndofunctor n).map f).val) F)
+    (b : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (g ≫ ((sEndofunctor n).map f).val) (i ≫ F)) :
     (sBoundaryRecoveryIso f hf i G g F e b).postcomp ((sEndofunctor n).map f).val =
       sBoundaryImageIso f i G g F e b := by
-  refine (F2.functorIso_postcomp_eq_mapIso
+  refine (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_eq_mapIso
     (sBoundaryRecoveryIso f hf i G g F e b) ((sEndofunctor n).map f).val).trans ?_
   apply Iso.ext
   exact ((sEndofunctor_map_isFullyFaithful n f hf).postcompose L).toHoFullyFaithful.map_preimage _

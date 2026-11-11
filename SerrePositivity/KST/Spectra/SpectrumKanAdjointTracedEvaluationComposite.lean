@@ -24,17 +24,17 @@ def kanAdjointRelativeTracedEvaluationComposite (n : ℕ) :
     { C : PointedMapping.BasedPathComposite
         (kanAdjointTracedBoundaryCoordinate X Y φ j n).interval
         (kanAdjointRelativeTracedCorrectionInterval X Y φ j n).val //
-      C.path.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (kanAdjointParameterTarget X Y n)).right =
+      C.path.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (kanAdjointParameterTarget X Y n)).right =
           (kanAdjointTracedBoundaryInterval X Y φ j n).path ∧
       SSet.yonedaEquiv.symm C.triangle.simplex ≫
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (kanAdjointParameterTarget X Y n)).right =
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (kanAdjointParameterTarget X Y n)).right =
         SSet.yonedaEquiv.symm (SSet.Edge.CompStruct.compId
           (kanAdjointTracedBoundaryInterval X Y φ j n).edge).simplex } := by
   let targetKan : KanComplex (kanAdjointParameterTarget X Y n).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   let P := (kanAdjointTracedBoundaryCoordinate X Y φ j n).interval
   let R := kanAdjointTracedBoundaryInterval X Y φ j n
-  have hP : P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (kanAdjointParameterTarget X Y n)).right =
+  have hP : P.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (kanAdjointParameterTarget X Y n)).right =
       R.path := by
     apply PointedMapping.VerticalPath.path_restriction_eq_of_homotopy
     rw [KanAdjointBoundaryCoordinate.interval_h]

@@ -24,7 +24,7 @@ def relativeDiagramMap {B C X Y : SSet.{u}} {J : Type v} {K : Type w}
   Subcomplex.lift ((relativeDiagram q evX).ι ≫ f) (by
     rintro n _ ⟨s, rfl⟩ k
     have he := ConcreteCategory.congr_hom (NatTrans.congr_app (hf k) n) s.val
-    change q.app n ((evY k).app n (f.app n s.val)) ∈ (quasicategoryCore C).obj n
+    change q.app n ((evY k).app n (f.app n s.val)) ∈ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C).obj n
     change (evY k).app n (f.app n s.val) = (evX (r k)).app n s.val at he
     rw [he]
     exact s.property (r k))
@@ -42,7 +42,7 @@ lemma relativeDiagramMap_evaluation {B C X Y : SSet.{u}} {J : Type v} {K : Type 
     (f : X ⟶ Y) (r : K → J) (hf : ∀ k, f ≫ evY k = evX (r k)) (k : K) :
     relativeDiagramMap q evX evY f r hf ≫ relativeDiagramEvaluation q evY k =
       relativeDiagramEvaluation q evX (r k) := by
-  apply (cancel_mono (quasicategoryCore C).ι).1
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C).ι).1
   simp only [Category.assoc, relativeDiagramEvaluation_ι]
   rw [← Category.assoc, ← Category.assoc, relativeDiagramMap_ι]
   simp only [Category.assoc]

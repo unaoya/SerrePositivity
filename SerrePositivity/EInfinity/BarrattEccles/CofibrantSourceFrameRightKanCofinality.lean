@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativeTriangle
-public import SerrePositivity.InfinityCategories.Derived.RelativeRoofComparisonCofinality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.RelativeRoofComparisonCofinality
 
 /-!
 # 元の source frame 次数比較の実右 Kan cofinal 性
@@ -24,35 +24,35 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : CofibrantAlgebra A)
 
 lemma cofibrantSourceFrameRawRoofMap_isLeftCofinal (Y : CofibrantAlgebra A) :
-    IsLeftCofinal (rawRoofFunctorMap
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.rawRoofFunctorMap
       (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       (nerveMap (cofibrantDKSourceFrame A X))
       (SSet.yonedaEquiv.symm
-        (nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from Y)))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from Y)))) :=
   (cofibrantSourceFrameRoofMap_isLeftCofinal_iff_raw A X Y).mp
     (cofibrantSourceRoofMap_isLeftCofinal A X Y)
 
 lemma cofibrantSourceFrameRightKanMap_isLeftCofinal :
-    IsLeftCofinal (cofibrantSourceFrameRightKanMap A X) := by
-  apply isLeftCofinal_of_relativeRoofComparisons
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (cofibrantSourceFrameRightKanMap A X) := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.isLeftCofinal_of_relativeRoofComparisons
   · intro c
-    apply (relativeRoofComparison_isLeftCofinal_iff_raw _ _ _ _).mpr
-    change IsLeftCofinal (rawRoofFunctorMap
+    apply (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.relativeRoofComparison_isLeftCofinal_iff_raw _ _ _ _).mpr
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.rawRoofFunctorMap
       (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
-      (cofibrantSourceFrameRightKanMap A X ≫ rightKanProjection
+      (cofibrantSourceFrameRightKanMap A X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection
         (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
         (cofibrantHammockVertex A X))
-      (SSet.yonedaEquiv.symm c ≫ rightKanProjection
+      (SSet.yonedaEquiv.symm c ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection
         (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
         (cofibrantHammockVertex A X)))
     rw [cofibrantSourceFrameRightKanMap_projection]
-    let Y : CofibrantAlgebra A := ((rightKanProjection
+    let Y : CofibrantAlgebra A := ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection
       (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       (cofibrantHammockVertex A X)).app (Opposite.op ⦋0⦌) c).obj 0
-    have hp : SSet.yonedaEquiv.symm c ≫ rightKanProjection
+    have hp : SSet.yonedaEquiv.symm c ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection
         (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
         (cofibrantHammockVertex A X) = SSet.yonedaEquiv.symm
-          (nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from Y)) := by
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from Y)) := by
       apply SSet.yonedaEquiv.injective
       rw [SSet.yonedaEquiv_comp, SSet.yonedaEquiv.apply_symm_apply,
         SSet.yonedaEquiv.apply_symm_apply]

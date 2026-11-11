@@ -40,7 +40,7 @@ lemma LoopMappingClasses.sphereComponentEquiv_natural {Y Z : PointedSimplicialSe
 namespace SphereSimplex
 
 lemma fundamentalHomotopyEquiv_formula (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+    (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup
       (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y).right 0
         (PointedSimplicialSet.basepoint
           (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y))) :
@@ -54,7 +54,7 @@ lemma fundamentalHomotopyEquiv_formula (Y : PointedSimplicialSet.{u}) [KanComple
 使われ方：Goerss–Jardine I §7、VIII §1。正次数の自然性の帰納法の基本段。 -/
 theorem fundamentalHomotopyEquiv_natural {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right] (p : Y ⟶ Z) (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup
       (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y).right 0
         (PointedSimplicialSet.basepoint
           (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y))) :

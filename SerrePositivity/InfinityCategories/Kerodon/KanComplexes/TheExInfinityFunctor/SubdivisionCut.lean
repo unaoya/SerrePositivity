@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：最大元が k 以下なら集合を保ち、それ以外では同じ最大元の初期区間に置き換える。
 規約：Moss 2020 Definition 23。Segal 1974 Proposition 1.6 の対角模型の補助。
 使われ方：X→Ex(X) の anodyne 性に用いる単体の複雑度フィルター。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

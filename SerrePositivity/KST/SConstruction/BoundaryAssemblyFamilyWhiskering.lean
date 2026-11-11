@@ -36,7 +36,7 @@ lemma boundaryAssemblyInverseFamily_pre (r : ℕ) {X Y Z : StableModel.{u}}
     (oneDirectionInverseMixedPre r f g ⊗ₘ 𝟙 (kanAssemblyAdjointChoices r Z)) ≫
         boundaryAssemblyInverseFamily r (f ≫ g) =
       boundaryAssemblyInverseFamily r g ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((boundaryKanRealizationFunctor r).map f)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((boundaryKanRealizationFunctor r).map f)
           ((loopBoundaryKanFunctor (r + 1)).obj Z)).right := by
   dsimp only [boundaryAssemblyInverseFamily]
   rw [← Category.assoc, tensorHom_comp_tensorHom, Category.id_comp,

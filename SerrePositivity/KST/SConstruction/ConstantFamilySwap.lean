@@ -21,8 +21,8 @@ open scoped Simplicial
 方針：内部 Hom の交換を各単体で計算する。
 規約：添字と標的は任意。使われ方：定数包含と行の object 包含の照合。 -/
 lemma flipConstantFamily {A K C : SSet.{u}} (F : A ⟶ C) :
-    internalHomFlipHomEquiv A K C (F ≫ curry (snd K C)) =
-      (SSet.const (functorVertex F) : K ⟶ (ihom A).obj C) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A K C (F ≫ curry (snd K C)) =
+      (SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F) : K ⟶ (ihom A).obj C) := by
   change curry ((β_ A K).hom ≫ uncurry (F ≫ curry (snd K C))) = _
   rw [uncurry_natural_left, uncurry_curry]
   apply SSet.hom_ext
@@ -43,18 +43,18 @@ lemma gappedEquivalenceDiagramCoreMap_constant (n m : ℕ) (X : StableModel.{u})
     gappedEquivalenceDiagramCoreMap
       ((objectSConstructionFunctor.map (equivalenceDiagramStableConstant m X)).app
         (Opposite.op ⦋n⦌) v) =
-      (SSet.const ⟨v, quasicategoryCore_vertex v⟩ :
-        (Δ[m] : SSet.{u}) ⟶ (quasicategoryCore (sConstruction n X.carrier) : SSet.{u})) := by
-  apply (cancel_mono (quasicategoryCore (sConstruction n X.carrier)).ι).1
+      (SSet.const ⟨v, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_vertex v⟩ :
+        (Δ[m] : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (sConstruction n X.carrier) : SSet.{u})) := by
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (sConstruction n X.carrier)).ι).1
   apply (cancel_mono (gappedSubcomplex n X.carrier).ι).1
   rw [Category.assoc, gappedEquivalenceDiagramCoreMap_ι, gappedDiagram_objectSFunctor_map]
-  change internalHomFlipHomEquiv (arNerve n) (Δ[m] : SSet.{u}) X.carrier
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (arNerve n) (Δ[m] : SSet.{u}) X.carrier
     ((gappedDiagram v ≫ equivalenceDiagramConstant Δ[m] X.carrier) ≫
       equivalenceDiagramι Δ[m] X.carrier) = _
   rw [Category.assoc, equivalenceDiagramConstant_ι, flipConstantFamily]
   simp only [SSet.const_comp]
   congr 1
-  exact (functorVertexEquiv _ X.carrier).apply_symm_apply v.val
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ X.carrier).apply_symm_apply v.val
 
 /-- 概要：定数包含と行の同型の合成は元の object/core 比較の行の射。
 方針：交換した定数族の式を各単体で Yoneda 同値に送る。

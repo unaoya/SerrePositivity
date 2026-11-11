@@ -14,7 +14,7 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 namespace SerrePositivity.DiagramModel.Projective
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)
 
@@ -68,9 +68,9 @@ lemma functorialFactorizations :
       (trivialCofibrations (K ⥤ C)).HasFunctorialFactorization (fibrations (K ⥤ C)) := by
   let := modelCategory K I J
   have := modelCategory_generated K I J
-  exact ⟨ModelGeneration.hasFunctorialFactorization_cofibration_trivialFibration
+  exact ⟨_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration
       (generators K I) (generators K J),
-    ModelGeneration.hasFunctorialFactorization_trivialCofibration_fibration
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_trivialCofibration_fibration
       (generators K I) (generators K J)⟩
 
 /-- Colimit admits the actual Mathlib pointwise left derived functor for

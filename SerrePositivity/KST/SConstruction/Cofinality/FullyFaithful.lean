@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.StableModels
 public import SerrePositivity.KST.SConstruction.MultiSimplicial
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulPostcomposition
 
 /-!
 概要：指定された充満忠実な完全射の S_n 後合成も充満忠実である。
@@ -22,8 +22,8 @@ open SerrePositivity.InfinityCategories
 規約：任意の n を扱い、面や core の対象を選び直さない。
 使われ方：共終性の有限 S 図式側の充満忠実性。 -/
 lemma sEndofunctor_map_isFullyFaithful (n : ℕ) {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : IsFullyFaithful f.val) :
-    IsFullyFaithful ((sEndofunctor n).map f).val := by
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful f.val) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful ((sEndofunctor n).map f).val := by
   let : Quasicategory (diagramSpace n X.carrier) := by
     dsimp [diagramSpace]
     infer_instance
@@ -34,12 +34,12 @@ lemma sEndofunctor_map_isFullyFaithful (n : ℕ) {X Y : StableModel.{u}}
     sConstruction_quasicategory n X.carrier
   let : Quasicategory (gappedSubcomplex n Y.carrier).toSSet :=
     sConstruction_quasicategory n Y.carrier
-  have hiY : IsFullyFaithful (gappedSubcomplex n Y.carrier).ι :=
-    isFullyFaithful_fullSubcomplexOnVertices_ι _ _
-  have hiX : IsFullyFaithful (gappedSubcomplex n X.carrier).ι :=
-    isFullyFaithful_fullSubcomplexOnVertices_ι _ _
+  have hiY : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (gappedSubcomplex n Y.carrier).ι :=
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι _ _
+  have hiX : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (gappedSubcomplex n X.carrier).ι :=
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι _ _
   apply hiY.cancel_right
-  change IsFullyFaithful ((gappedSubcomplex n X.carrier).ι ≫
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful ((gappedSubcomplex n X.carrier).ι ≫
     (ihom (arNerve n)).map f.val)
   exact hiX.comp (hf.postcompose (arNerve n))
 
@@ -49,8 +49,8 @@ lemma sEndofunctor_map_isFullyFaithful (n : ℕ) {X Y : StableModel.{u}}
 使われ方：正反復 S• の dense 比較で全方向を保つ充満忠実性。 -/
 lemma multiSEndofunctor_map_isFullyFaithful (r : ℕ)
     (d : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : IsFullyFaithful f.val) :
-    IsFullyFaithful (((multiSEndofunctor r).obj d).map f).val := by
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful f.val) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (((multiSEndofunctor r).obj d).map f).val := by
   induction r generalizing X Y with
   | zero => exact hf
   | succ r ih =>

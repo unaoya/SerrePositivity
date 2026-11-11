@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectSupply
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedEvaluationInclusion
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIsoRecovery
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FullyFaithfulIsoRecovery
 
 /-!
 概要：同じ I に対する既存 P と D の実供給 P を、元の全導来包含を通して照合する。
@@ -27,7 +27,7 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 規約：P の比較射を使わず、元の実包含を固定する。
 使われ方：既存 P と標準 P の比較を反映する同じ実射。 -/
 abbrev dgKappaPerfectDerivedInclusion :=
-  dgStableClosureInclusion R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I) ≫
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I) ≫
     dgKappaConeDerivedComparison R D I
 
 /-- 概要：同じ実 perfect 閉包の導来包含は全写像空間で充満忠実。
@@ -35,8 +35,8 @@ abbrev dgKappaPerfectDerivedInclusion :=
 規約：新たな包含や充満忠実性の仮定を加えない。
 使われ方：元の P の全関手比較を実供給へ戻す。 -/
 theorem dgKappaPerfectDerivedInclusion_isFullyFaithful :
-    IsFullyFaithful (dgKappaPerfectDerivedInclusion R D I) :=
-  (dgStableClosureInclusion_isFullyFaithful R (DGKappaCone R D I)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (dgKappaPerfectDerivedInclusion R D I) :=
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion_isFullyFaithful R (DGKappaCone R D I)
     (dgKappaConePerfectObjects R D I)).comp I.derivedFullyFaithful
 
 /-- 概要：元の実包含後で、既存 P と実供給 P を同じ二つの包含同型で比較する。
@@ -44,17 +44,17 @@ theorem dgKappaPerfectDerivedInclusion_isFullyFaithful :
 規約：同じ包含の全関手同型を使い、点別の同型を選ばない。
 使われ方：同じ完全充満包含で反映する元の比較そのもの。 -/
 def dgKappaPerfectSupplyDerivedIso (P : DGKappaPerfectInput R D I) :
-    FunctorIso (P.comparison ≫ dgKappaPerfectDerivedInclusion R D I)
-      ((dgKappaPerfectInput R D I).comparison ≫ dgKappaPerfectDerivedInclusion R D I) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (P.comparison ≫ dgKappaPerfectDerivedInclusion R D I)
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectInput R D I).comparison ≫ dgKappaPerfectDerivedInclusion R D I) := by
   simpa only [dgKappaPerfectDerivedInclusion, Category.assoc] using!
-    P.inclusion ≪≫ (dgKappaPerfectInput R D I).inclusion.symm
+    P.inclusion ≪≫ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectInput R D I).inclusion.symm
 
 /-- 概要：同じ I の任意の既存 P は、D の実供給 P と全 native Perf 関手として同型。
 方針：元の実導来包含の充満忠実性で同じ指定比較を戻す。
 規約：元の包含比較を保持し、D の入力族全体での自然性を主張しない。
 使われ方：K-7 c5・d4 の実供給 P と既存 P の選択比較。 -/
 def dgKappaPerfectSupplyComparison (P : DGKappaPerfectInput R D I) :
-    FunctorIso P.comparison (dgKappaPerfectInput R D I).comparison :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso P.comparison (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectInput R D I).comparison :=
   (dgKappaPerfectDerivedInclusion_isFullyFaithful R D I).preimageFunctorIso
     (dgKappaPerfectSupplyDerivedIso R D I P)
 
@@ -63,8 +63,8 @@ def dgKappaPerfectSupplyComparison (P : DGKappaPerfectInput R D I) :
 規約：核同値の逆射を選び直さない。
 使われ方：既存の実評価・実構造射の元の Perf 始点との照合。 -/
 def dgKappaPerfectResolvedSupplyComparison (P : DGKappaPerfectInput R D I) :
-    FunctorIso (dgKappaPerfectResolvedComparison R D I P)
-      (dgKappaPerfectResolvedComparison R D I (dgKappaPerfectInput R D I)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaPerfectResolvedComparison R D I P)
+      (dgKappaPerfectResolvedComparison R D I (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectInput R D I)) :=
   (dgKappaPerfectSupplyComparison R D I P).postcomp
     (dgKappaResolvedKernelNerveEquivalence R D I).inv
 
@@ -113,7 +113,7 @@ theorem dgKappaResolvedConnectiveStructureMap_perfect_input_irrel
 規約：元の Perf 全 Hom 上の比較であり、入力 D 自体は固定する。
 使われ方：K-7 d4 の P 選択比較を同じ標準供給で正規化する。 -/
 def dgKappaPerfectChoiceIso (P Q : DGKappaPerfectInput R D I) :
-    FunctorIso P.comparison Q.comparison :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso P.comparison Q.comparison :=
   dgKappaPerfectSupplyComparison R D I P ≪≫ (dgKappaPerfectSupplyComparison R D I Q).symm
 
 /-- 概要：同じ P への選択比較は元の全関手の恒等同型。

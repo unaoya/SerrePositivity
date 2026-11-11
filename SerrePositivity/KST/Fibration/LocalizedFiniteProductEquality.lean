@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairBothEquality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.LocalizedPairBothEquality
 public import SerrePositivity.KST.Fibration.FinSnocProductIso
 
 /-! # 元の有限積への実際の射の全成分の局所化等号 -/
@@ -41,6 +41,6 @@ lemma finProduct_eq_of_anodyneQ_eq {P X : SSet.{u}} (n : ℕ)
         simpa only [Category.assoc, Pi.lift_comp_π] using h i.castSucc)
     apply (cancel_mono (AnodyneHomotopy.anodyneQ.map (finSnocProductIso X n).hom)).1
     rw [← Functor.map_comp, ← Functor.map_comp, finProduct_comp_snoc, finProduct_comp_snoc]
-    exact _root_.SerrePositivity.InfinityCategories.F1.Transport.pair_eq_of_anodyneQ_eq hp (h (Fin.last n))
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pair_eq_of_anodyneQ_eq hp (h (Fin.last n))
 
 end SerrePositivity.KST.Fibration

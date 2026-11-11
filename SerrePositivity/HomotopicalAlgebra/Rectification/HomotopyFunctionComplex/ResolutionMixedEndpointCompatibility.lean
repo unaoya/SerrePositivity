@@ -46,9 +46,9 @@ variable (C : Type u) [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
   (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
 
 abbrev point := SSet.stdSimplex.{w}.obj (SimplexCategory.mk 0)
-abbrev pointParameters := NerveCylinderBoundary.product (parameters C) point.{max u v}
+abbrev pointParameters := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (parameters C) point.{max u v}
 abbrev faceMap (ε : Fin 2) : pointParameters C ⟶ intervalParameters C :=
-  NerveCylinderBoundary.vertical (SSet.stdSimplex.δ ε) (parameters C)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.stdSimplex.δ ε) (parameters C)
 abbrev toB := Functor.whiskerRight (edgeAB C) (K C)
 abbrev toC := Functor.whiskerRight (edgeAC C) (K C)
 abbrev fromB := Functor.whiskerRight (edgeBD C) (F C)
@@ -57,19 +57,19 @@ abbrev castFinal := Functor.whiskerRight (toFinal C).hom (F C)
 
 abbrev corner0 := leftAlong (K C) (F C) (chosen C hcof) (cornerA C) (cornerD C)
   (ResolutionMixedDiagram.diagonal C)
-abbrev corner1 := mapTarget (parameters C) (NerveMovingParameter.lifted (bValues C))
-  (NerveMovingParameter.lifted (smallValues C)) (fromB C) (rightAB C hcof)
+abbrev corner1 := mapTarget (parameters C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (bValues C))
+  (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (fromB C) (rightAB C hcof)
 abbrev corner2 := restrict (parameters C) (cParameters C)
-  (NerveMovingParameter.lifted (smallValues C)) (toC C) (leftCD C hcof)
+  (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (toC C) (leftCD C hcof)
 abbrev corner3 := rightAlong (K C) (F C) (chosen C hcof) (cornerA C) (cornerD C)
   (ResolutionMixedDiagram.diagonal C)
 
 abbrev expand (a : NerveMovingParameter.System.{u, v} (parameters C) (smallValues C)) :=
-  NerveProductParameter.expand (parameters C) (NerveMovingParameter.lifted (smallValues C))
+  NerveProductParameter.expand (parameters C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
     point.{max u v} a
 abbrev endpoint (a : NerveMovingParameter.System.{u, v} (intervalParameters C) (smallValues C))
     (ε : Fin 2) := a ≫ restriction (pointParameters C) (intervalParameters C)
-      (NerveMovingParameter.lifted (smallValues C)) (faceMap C ε)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (faceMap C ε)
 
 omit [ModelCategory SSet.{v}] in
 lemma bd_finish : edgeBDLeft C ≫ (toFinal C).hom = edgeBD C := by
@@ -100,7 +100,7 @@ lemma bd_right_finish : mapTarget _ _ _ (castFinal C) (rightBD C hcof) =
 
 lemma AB_zero : endpoint C (intervalAB C hcof hfib) 1 = expand C (corner0 C hcof) := by
   apply (NerveProductEndpointTransport.mapTarget_endpoint (parameters C)
-    (NerveMovingParameter.lifted (bValues C)) (NerveMovingParameter.lifted (smallValues C))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (bValues C)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
     (fromB C) (SSet.stdSimplex.δ (1 : Fin 2)) (preABSystem C hcof hfib) (leftAB C hcof)
       (ResolutionMixedRawEndpoints.AB_zero C hcof hfib)).trans
   exact congrArg (expand C)
@@ -109,13 +109,13 @@ lemma AB_zero : endpoint C (intervalAB C hcof hfib) 1 = expand C (corner0 C hcof
 
 lemma AB_one : endpoint C (intervalAB C hcof hfib) 0 = expand C (corner1 C hcof) :=
   NerveProductEndpointTransport.mapTarget_endpoint (parameters C)
-    (NerveMovingParameter.lifted (bValues C)) (NerveMovingParameter.lifted (smallValues C))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (bValues C)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
     (fromB C) (SSet.stdSimplex.δ (0 : Fin 2)) (preABSystem C hcof hfib) (rightAB C hcof)
       (ResolutionMixedRawEndpoints.AB_one C hcof hfib)
 
 lemma AC_zero : endpoint C (intervalAC C hcof hfib) 1 = expand C (corner0 C hcof) := by
   apply (NerveProductEndpointTransport.mapTarget_endpoint (parameters C)
-    (NerveMovingParameter.lifted (cValues C)) (NerveMovingParameter.lifted (smallValues C))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (cValues C)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
     (fromC C) (SSet.stdSimplex.δ (1 : Fin 2)) (postACSystem C hcof hfib) (leftAC C hcof)
       (ResolutionMixedRawEndpoints.AC_zero C hcof hfib)).trans
   exact congrArg (expand C)
@@ -126,7 +126,7 @@ lemma AC_zero : endpoint C (intervalAC C hcof hfib) 1 = expand C (corner0 C hcof
 
 lemma AC_one : endpoint C (intervalAC C hcof hfib) 0 = expand C (corner2 C hcof) := by
   apply (NerveProductEndpointTransport.mapTarget_endpoint (parameters C)
-    (NerveMovingParameter.lifted (cValues C)) (NerveMovingParameter.lifted (smallValues C))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (cValues C)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
     (fromC C) (SSet.stdSimplex.δ (0 : Fin 2)) (postACSystem C hcof hfib) (rightAC C hcof)
       (ResolutionMixedRawEndpoints.AC_one C hcof hfib)).trans
   exact congrArg (expand C)
@@ -135,12 +135,12 @@ lemma AC_one : endpoint C (intervalAC C hcof hfib) 0 = expand C (corner2 C hcof)
 
 lemma CD_zero : endpoint C (intervalCD C hcof hfib) 1 = expand C (corner2 C hcof) :=
   NerveProductEndpointTransport.restrict_endpoint (parameters C) (cParameters C)
-    (NerveMovingParameter.lifted (smallValues C)) (toC C) (SSet.stdSimplex.δ (1 : Fin 2))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (toC C) (SSet.stdSimplex.δ (1 : Fin 2))
     (preCDSystem C hcof hfib) (leftCD C hcof) (ResolutionMixedRawEndpoints.CD_zero C hcof hfib)
 
 lemma CD_one : endpoint C (intervalCD C hcof hfib) 0 = expand C (corner3 C hcof) := by
   apply (NerveProductEndpointTransport.restrict_endpoint (parameters C) (cParameters C)
-    (NerveMovingParameter.lifted (smallValues C)) (toC C) (SSet.stdSimplex.δ (0 : Fin 2))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (toC C) (SSet.stdSimplex.δ (0 : Fin 2))
     (preCDSystem C hcof hfib) (rightCD C hcof) (ResolutionMixedRawEndpoints.CD_one C hcof
       hfib)).trans
   exact congrArg (expand C)
@@ -151,27 +151,27 @@ lemma CD_one : endpoint C (intervalCD C hcof hfib) 0 = expand C (corner3 C hcof)
 
 lemma BD_zero : endpoint C (intervalBD C hcof hfib) 1 = expand C (corner1 C hcof) := by
   have hb := NerveProductEndpointTransport.mapTarget_endpoint (bParameters C)
-    (NerveMovingParameter.lifted (leftFinalValues C)) (NerveMovingParameter.lifted (smallValues C))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (leftFinalValues C)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
     (castFinal C) (SSet.stdSimplex.δ (1 : Fin 2)) (postBDSystem C hcof hfib) (leftBD C hcof)
       (ResolutionMixedRawEndpoints.BD_zero C hcof hfib)
   apply (NerveProductEndpointTransport.restrict_endpoint (parameters C) (bParameters C)
-    (NerveMovingParameter.lifted (smallValues C)) (toB C) (SSet.stdSimplex.δ (1 : Fin 2))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (toB C) (SSet.stdSimplex.δ (1 : Fin 2))
       (castBDSystem C hcof hfib) _ hb).trans
   exact congrArg (fun a => expand C (restrict (parameters C) (bParameters C)
-    (NerveMovingParameter.lifted (smallValues C)) (toB C) a)) (bd_left_finish C hcof) |>.trans
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (toB C) a)) (bd_left_finish C hcof) |>.trans
       (congrArg (expand C) (middle_exchange (K C) (F C) (chosen C hcof)
         (cornerA C) (cornerB C) (cornerD C) (edgeAB C) (edgeBD C)).symm)
 
 lemma BD_one : endpoint C (intervalBD C hcof hfib) 0 = expand C (corner3 C hcof) := by
   have hb := NerveProductEndpointTransport.mapTarget_endpoint (bParameters C)
-    (NerveMovingParameter.lifted (leftFinalValues C)) (NerveMovingParameter.lifted (smallValues C))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (leftFinalValues C)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
     (castFinal C) (SSet.stdSimplex.δ (0 : Fin 2)) (postBDSystem C hcof hfib) (rightBD C hcof)
       (ResolutionMixedRawEndpoints.BD_one C hcof hfib)
   apply (NerveProductEndpointTransport.restrict_endpoint (parameters C) (bParameters C)
-    (NerveMovingParameter.lifted (smallValues C)) (toB C) (SSet.stdSimplex.δ (0 : Fin 2))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (toB C) (SSet.stdSimplex.δ (0 : Fin 2))
       (castBDSystem C hcof hfib) _ hb).trans
   exact congrArg (fun a => expand C (restrict (parameters C) (bParameters C)
-    (NerveMovingParameter.lifted (smallValues C)) (toB C) a)) (bd_right_finish C hcof) |>.trans
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (toB C) a)) (bd_right_finish C hcof) |>.trans
       (congrArg (expand C) (right_precede (K C) (F C) (chosen C hcof)
         (cornerA C) (cornerB C) (cornerD C) (edgeAB C) (edgeBD C)))
 

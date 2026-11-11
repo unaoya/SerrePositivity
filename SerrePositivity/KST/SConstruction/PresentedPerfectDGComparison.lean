@@ -69,20 +69,20 @@ lemma presentedPerfectDGEvaluation_quasiEquivalence :
 
 /-- ラベルを保持する模型の native dg nerve と、元の実 Perf の nerve の同値。 -/
 def presentedPerfectDGNerveEquivalence :
-    QCatEquivalence (dgNerve A (PresentedPerfectDGObject A D))
-      (dgNerve A (PerfectDGModule A D)) :=
-  dgQuasiEquivalenceNerveEquivalence (presentedPerfectDGEvaluation A D)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PerfectDGModule A D)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgQuasiEquivalenceNerveEquivalence (presentedPerfectDGEvaluation A D)
     (presentedPerfectDGEvaluation_quasiEquivalence A D)
 
 /-- ラベル付き Perf の native nerve は、実際の評価同値で安定性を反映する。 -/
 lemma presentedPerfectDGNerve_isStable :
-    IsStable (dgNerve A (PresentedPerfectDGObject A D)) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D)) :=
   (presentedPerfectDGNerveEquivalence A D).isStable_iff.mpr
     (perfectDGStableModel A D Set.univ).stable
 
 /-- 元の全 Hom 複体を持つラベル付き Perf の実安定模型。 -/
 def presentedPerfectDGStableModel : StableModel.{max (u + 1) v} where
-  carrier := dgNerve A (PresentedPerfectDGObject A D)
+  carrier := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D)
   quasicategory := inferInstance
   stable := presentedPerfectDGNerve_isStable A D
 

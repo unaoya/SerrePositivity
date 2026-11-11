@@ -51,10 +51,10 @@ def freeDerivedHomFromStandard (X : Complex A) (B : (operad A).Algebra) :
 
 def freeDerivedHomToUnderlying (X : Complex A) (B : (operad A).Algebra) :
     freeDerivedHomTestSpace A X B ⟶
-    pinchedHom (X := derivedInfinityCategory A)
-      ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+      ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
       ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-        (nerveVertex B.carrier)) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B.carrier)) :=
   ComplexLimits.normalizedOrdinaryDerivedHomMap A X B.carrier
 
 end SerrePositivity.EInfinity.BarrattEccles

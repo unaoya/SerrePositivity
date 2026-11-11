@@ -87,10 +87,10 @@ lemma ofLift {X Y W : ResolutionObject C} (f : X ⟶ Y) (k : Y ⟶ W) (φ : Fram
 
 abbrev rawTargetMap {X Y : ResolutionObject C} (f : X ⟶ Y) (φ : FrameMap f) (Z : C) :
     ResolutionLiftAction.target Y Z ⟶ ResolutionLiftAction.target X Z :=
-  (cosimplicialHomMap (DiagonalFrame.map φ.val)).app Z
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (DiagonalFrame.map φ.val)).app Z
 
 lemma raw_comparison {X Y : ResolutionObject C} (f : X ⟶ Y) (φ : FrameMap f) (Z : C) :
-    (cosimplicialHomMap f.diagram).app Z ≫ ResolutionLiftAction.comparison X Z =
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap f.diagram).app Z ≫ ResolutionLiftAction.comparison X Z =
       ResolutionLiftAction.comparison Y Z ≫ rawTargetMap f φ Z := by
   ext n x
   have h := congr_app (congr_app φ.property n.unop) n.unop
@@ -106,7 +106,7 @@ lemma raw_comparison {X Y : ResolutionObject C} (f : X ⟶ Y) (φ : FrameMap f) 
 
 lemma raw_action (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W.base)
     (φ : FrameMap f) (Z : C) {T : SSet.{v}} (s : T ⟶ ResolutionLiftSpace.obj Y W g)
-    (t : T ⟶ (cosimplicialHom W.resolution.obj).obj Z) :
+    (t : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom W.resolution.obj).obj Z) :
     ResolutionLiftAction.parameterized X W (f.base ≫ g) Z (s ≫ map X Y W f g φ) t =
       ResolutionLiftAction.parameterized Y W g Z s t ≫ rawTargetMap f φ Z := by
   change DiagonalHom.pairing _ _ _ ((_ ≫ LiftSpacePrecomposition.map _ _ _ _ _ _ _ _ _ _ _) ≫ _)
@@ -132,13 +132,13 @@ abbrev kanTargetMap {X Y : ResolutionObject C} (f : X ⟶ Y) (φ : FrameMap f) (
 /-- Source change is a natural transformation of the existing target functors. -/
 abbrev kanTargetNatTrans {X Y : ResolutionObject C} (f : X ⟶ Y) (φ : FrameMap f) :
     KanLiftAction.targetFunctor hcof hfib Y ⟶ KanLiftAction.targetFunctor hcof hfib X :=
-  Functor.whiskerRight (cosimplicialHomMap (DiagonalFrame.map φ.val))
+  Functor.whiskerRight (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (DiagonalFrame.map φ.val))
     (SimplicialModel.KanReplacement.functor hcof hfib)
 
 lemma kanTargetMap_identity (X : ResolutionObject C) (Z : C) :
     kanTargetMap hcof hfib (𝟙 X) (identity X) Z = 𝟙 _ := by
   have hd : DiagonalFrame.map (identity X).val = 𝟙 _ := by ext n; rfl
-  have hh : (cosimplicialHomMap (𝟙 (DiagonalFrame.obj (ResolutionLiftSpace.frame X).obj))).app Z =
+  have hh : (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (𝟙 (DiagonalFrame.obj (ResolutionLiftSpace.frame X).obj))).app Z =
       𝟙 _ := by
     ext n x
     exact Category.id_comp x
@@ -151,9 +151,9 @@ lemma kanTargetMap_compose {X Y W : ResolutionObject C} (f : X ⟶ Y) (g : Y ⟶
       kanTargetMap hcof hfib g ψ Z ≫ kanTargetMap hcof hfib f φ Z := by
   have hd : DiagonalFrame.map (compose φ ψ).val =
       DiagonalFrame.map φ.val ≫ DiagonalFrame.map ψ.val := by ext n; rfl
-  have hh : (cosimplicialHomMap (DiagonalFrame.map φ.val ≫ DiagonalFrame.map ψ.val)).app Z =
-      (cosimplicialHomMap (DiagonalFrame.map ψ.val)).app Z ≫
-        (cosimplicialHomMap (DiagonalFrame.map φ.val)).app Z := by
+  have hh : (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (DiagonalFrame.map φ.val ≫ DiagonalFrame.map ψ.val)).app Z =
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (DiagonalFrame.map ψ.val)).app Z ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (DiagonalFrame.map φ.val)).app Z := by
     ext n x
     exact Category.assoc _ _ _
   change (SimplicialModel.KanReplacement.functor hcof hfib).map _ =
@@ -162,7 +162,7 @@ lemma kanTargetMap_compose {X Y W : ResolutionObject C} (f : X ⟶ Y) (g : Y ⟶
   rw [rawTargetMap, hd, hh, Functor.map_comp]
 
 lemma kan_comparison {X Y : ResolutionObject C} (f : X ⟶ Y) (φ : FrameMap f) (Z : C) :
-    (cosimplicialHomMap f.diagram).app Z ≫ KanLiftAction.comparison hcof hfib X Z =
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap f.diagram).app Z ≫ KanLiftAction.comparison hcof hfib X Z =
       KanLiftAction.comparison hcof hfib Y Z ≫ kanTargetMap hcof hfib f φ Z := by
   have hu := (SimplicialModel.KanReplacement.unit hcof hfib).naturality (rawTargetMap f φ Z)
   change rawTargetMap f φ Z ≫ (SimplicialModel.KanReplacement.unit hcof hfib).app
@@ -186,7 +186,7 @@ lemma kanTargetMap_weakEquivalence {X Y : ResolutionObject C} (f : X ⟶ Y) (φ 
 
 lemma piZero_comparison {H : Type uH} [Category.{vH} H] (Q : C ⥤ H)
     [Q.IsLocalization (weakEquivalences C)] (X : ResolutionObject C) (Z : C) [IsFibrant Z]
-    (z : SSet.π₀ ((cosimplicialHom X.resolution.obj).obj Z)) :
+    (z : SSet.π₀ ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom X.resolution.obj).obj Z)) :
     KanLiftAction.piZeroLocalizationEquiv hcof hfib Q X Z
         (SSet.mapπ₀ (KanLiftAction.comparison hcof hfib X Z) z) =
       resolutionPiZeroLocalizationEquiv Q X.resolution Z z := by
@@ -203,7 +203,7 @@ lemma piZero_naturality_source {H : Type uH} [Category.{vH} H] (Q : C ⥤ H)
         (SSet.mapπ₀ (kanTargetMap hcof hfib f φ Z) z) =
       Q.map f.base ≫ KanLiftAction.piZeroLocalizationEquiv hcof hfib Q Y Z z := by
   obtain ⟨x, rfl⟩ := (KanLiftAction.comparison_piZero_bijective hcof hfib Y Z).surjective z
-  have hc := (SSet.mapπ₀_comp_apply ((cosimplicialHomMap f.diagram).app Z)
+  have hc := (SSet.mapπ₀_comp_apply ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap f.diagram).app Z)
     (KanLiftAction.comparison hcof hfib X Z) x).symm.trans
       ((congrArg (fun k => SSet.mapπ₀ k x) (kan_comparison hcof hfib f φ Z)).trans
         (SSet.mapπ₀_comp_apply (KanLiftAction.comparison hcof hfib Y Z)
@@ -213,7 +213,7 @@ lemma piZero_naturality_source {H : Type uH} [Category.{vH} H] (Q : C ⥤ H)
 
 lemma kan_action (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W.base)
     (φ : FrameMap f) (Z : C) {T : SSet.{v}} (s : T ⟶ ResolutionLiftSpace.obj Y W g)
-    (t : T ⟶ (cosimplicialHom W.resolution.obj).obj Z) :
+    (t : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom W.resolution.obj).obj Z) :
     KanLiftAction.parameterized hcof hfib X W (f.base ≫ g) Z (s ≫ map X Y W f g φ) t =
       KanLiftAction.parameterized hcof hfib Y W g Z s t ≫ kanTargetMap hcof hfib f φ Z := by
   have hu := (SimplicialModel.KanReplacement.unit hcof hfib).naturality (rawTargetMap f φ Z)

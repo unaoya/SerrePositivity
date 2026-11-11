@@ -68,7 +68,7 @@ lemma kanAdjointParameterRectification_evaluation_homotopy
         toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫
           (kanAdjointParameterTarget X Y n).hom := by
   let parameterTargetKan : KanComplex (kanAdjointParameterTarget X Y n).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact (PointedMapping.piZero_eq_iff_pointedHomotopy _ _).1
     (kanAdjointParameterRectification_evaluation_component X Y n)
 
@@ -91,7 +91,7 @@ lemma kanAdjointParameterRectification_restriction_component
       kanAdjointParameterRestriction X Y n) =
     PointedMapping.componentOf (pointedEvaluation X Y.toKanSequence n ≫
       PointedObject.basedHomMap (X.level n).space
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space (Y.sigma n))) := by
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space (Y.sigma n))) := by
   have h := PointedMapping.componentOf_comp_right
     (kanAdjointParameterRectification_evaluation_component X Y n)
     (kanAdjointParameterRestriction X Y n)
@@ -105,7 +105,7 @@ lemma kanAdjointParameterRectification_restriction_zero (X Y : OmegaSpectrum.{u}
       kanAdjointParameterRestriction X Y 0 =
     pointedEvaluation X Y.toKanSequence 0 ≫
       PointedObject.basedHomMap (X.level 0).space
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (Y.level 0).space (Y.level (0 + 1)).space (Y.sigma 0)) := by
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (Y.level 0).space (Y.level (0 + 1)).space (Y.sigma 0)) := by
   rw [kanAdjointParameterRectification_evaluation_zero, kanAdjointParameterLeft_restriction]
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

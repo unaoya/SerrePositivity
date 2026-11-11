@@ -40,7 +40,7 @@ open SerrePositivity.NerveSimplexEndpoint SerrePositivity.Reedy
 
 namespace SerrePositivity.SimplicialModel.NerveFillerExtension
 variable {D : Type uD} [Category.{vD} D] (F : D ⥤ SSet.{v})
-  (hp : ∀ d, UniverseLift.BoundaryFillers (F.obj d))
+  (hp : ∀ d, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers (F.obj d))
   (n : ℕ) (old : NerveLowerExtension.LowerSystem F n)
 
 abbrev point : D ⥤ SSet.{v} := (Functor.const D).obj

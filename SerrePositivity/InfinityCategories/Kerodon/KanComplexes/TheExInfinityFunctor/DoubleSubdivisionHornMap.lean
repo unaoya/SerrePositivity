@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：最初の細分の標準同型、順序集合の nerve の細分比較、horn への有限鎖の写像を合成する。
 規約：Moss 2020 Proposition 21 の Kan 性に向けた充填候補。境界条件は別の証明項目。
 使われ方：Ex∞ の有限段階における horn の充填。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

@@ -45,8 +45,8 @@ theorem dgSuspensionNativeSquareDiagramFamily_recovery :
 規約：各入力で別の四角形を選び直さない。
 使われ方：採用済みの元の実核・cone・零角・懸垂との厳密一致条件。 -/
 def dgSuspensionNativeSquareAt (A : PerfDGInput.{u, max (u + 1) v} R) :=
-  squareDiagram ((dgSuspensionNativeSquareDiagramFamily R F).app
-    (Opposite.op ⦋0⦌) (coherentNerveVertex A))
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram ((dgSuspensionNativeSquareDiagramFamily R F).app
+    (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A))
 
 /-- 概要：同じ全族の任意の指定一辺を全 native 入力上の族として取り出す。
 方針：元の四角形の辺による前合成を行う。
@@ -64,7 +64,7 @@ def dgSuspensionNativeSquareFaceFamily (e : (Δ[1] : SSet.{max (u + 1) v + 1}) �
 def dgSuspensionNativeSquareCornerFamily (i j : Fin 2) :
     dgKInputInfinity.{u, max (u + 1) v} R ⟶ dgKInputInfinity.{u, max (u + 1) v} R :=
   dgSuspensionNativeSquareDiagramFamily R F ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j)
 
 /-- 概要：同じ全四角形族を元の固定 K で全 native 入力に同時に作用させる。
 方針：関手空間の固定 K による後合成を使う。
@@ -96,14 +96,14 @@ theorem dgSuspensionNativeSquareFaceFamily_at
     (e : (Δ[1] : SSet.{max (u + 1) v + 1}) ⟶ Δ[1] ⊗ Δ[1])
     (A : PerfDGInput.{u, max (u + 1) v} R) :
     (dgSuspensionNativeSquareFaceFamily R F e).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex A) =
-      functorVertex (e ≫ dgKappaResolvedConnectiveSquare R A (s A).cone) := by
-  have hv : functorVertex (dgSuspensionNativeSquareAt R F A) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (e ≫ dgKappaResolvedConnectiveSquare R A (s A).cone) := by
+  have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (dgSuspensionNativeSquareAt R F A) =
       (dgSuspensionNativeSquareDiagramFamily R F).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex A) := (functorVertexEquiv _ _).apply_symm_apply _
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).apply_symm_apply _
   change ((pre e).app _).app (Opposite.op ⦋0⦌)
     ((dgSuspensionNativeSquareDiagramFamily R F).app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex A)) = _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
   rw [← hv, hF A]
   rfl
 
@@ -115,16 +115,16 @@ include hF in
 theorem dgSuspensionNativeSquareCornerFamily_at (i j : Fin 2)
     (A : PerfDGInput.{u, max (u + 1) v} R) :
     (dgSuspensionNativeSquareCornerFamily R F i j).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex A) =
-      squareVertex (dgKappaResolvedConnectiveSquare R A (s A).cone) i j := by
-  have hv : functorVertex (dgSuspensionNativeSquareAt R F A) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) =
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaResolvedConnectiveSquare R A (s A).cone) i j := by
+  have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (dgSuspensionNativeSquareAt R F A) =
       (dgSuspensionNativeSquareDiagramFamily R F).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex A) := (functorVertexEquiv _ _).apply_symm_apply _
-  change (evaluateFunctorAt
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).apply_symm_apply _
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j)).app (Opposite.op ⦋0⦌)
     ((dgSuspensionNativeSquareDiagramFamily R F).app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex A)) = _
-  rw [← hv, hF A, evaluateFunctorAt_functorVertex]
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
+  rw [← hv, hF A, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex]
   rfl
 
 include hF in
@@ -134,14 +134,14 @@ include hF in
 使われ方：K-7 c4・c5 の元の実核・cone・零角・懸垂の固定 K 像。 -/
 theorem dgSuspensionNativeKSquareFamily_at
     (A : PerfDGInput.{u, max (u + 1) v} R) :
-    (dgSuspensionNativeKSquareFamily R F).app (Opposite.op ⦋0⦌) (coherentNerveVertex A) =
-      functorVertex (dgKappaResolvedConnectiveSquare R A (s A).cone ≫ dgKInputK R) := by
-  have hv : functorVertex (dgSuspensionNativeSquareAt R F A) =
+    (dgSuspensionNativeKSquareFamily R F).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (dgKappaResolvedConnectiveSquare R A (s A).cone ≫ dgKInputK R) := by
+  have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (dgSuspensionNativeSquareAt R F A) =
       (dgSuspensionNativeSquareDiagramFamily R F).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex A) := (functorVertexEquiv _ _).apply_symm_apply _
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).apply_symm_apply _
   change ((ihom (Δ[1] ⊗ Δ[1])).map (dgKInputK R)).app (Opposite.op ⦋0⦌)
     ((dgSuspensionNativeSquareDiagramFamily R F).app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex A)) = _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
   rw [← hv, hF A]
   rfl
 
@@ -152,9 +152,9 @@ include hF in
 使われ方：D-8 e の全入力自然性と同じ実包含の照合。 -/
 theorem dgSuspensionNativeSquareBottomFamily_at
     (A : PerfDGInput.{u, max (u + 1) v} R) :
-    (dgSuspensionNativeSquareFaceFamily R F squareBottomEdge).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex A) = functorVertex (SSet.yonedaEquiv.symm
-          (coherentNerveEdge (dgKappaResolvedKernelInputMap R A (s A).cone)).edge) := by
+    (dgSuspensionNativeSquareFaceFamily R F _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge).app (Opposite.op ⦋0⦌)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.yonedaEquiv.symm
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaResolvedKernelInputMap R A (s A).cone)).edge) := by
   rw [dgSuspensionNativeSquareFaceFamily_at R F s hF]
   rw [(dgKappaResolvedConnectiveSquare_edges R A (s A).cone).1]
 
@@ -165,9 +165,9 @@ include hF in
 使われ方：D-8 e の全入力自然性と同じ実商射影の照合。 -/
 theorem dgSuspensionNativeSquareRightFamily_at
     (A : PerfDGInput.{u, max (u + 1) v} R) :
-    (dgSuspensionNativeSquareFaceFamily R F squareRightEdge).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex A) = functorVertex (SSet.yonedaEquiv.symm
-          (coherentNerveEdge (dgKappaResolvedSuspensionInputMap R A (s A).cone)).edge) := by
+    (dgSuspensionNativeSquareFaceFamily R F _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge).app (Opposite.op ⦋0⦌)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.yonedaEquiv.symm
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaResolvedSuspensionInputMap R A (s A).cone)).edge) := by
   rw [dgSuspensionNativeSquareFaceFamily_at R F s hF]
   rw [(dgKappaResolvedConnectiveSquare_edges R A (s A).cone).2.1]
 
@@ -210,16 +210,16 @@ theorem dgSuspensionNativeSquareIterationFamily_at
     (a : DGSuspensionNativeActionInput R s)
     (A : PerfDGInput.{u, max (u + 1) v} R) (n : ℕ) :
     (dgSuspensionNativeSquareIterationFamily R F s a n).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex A) = functorVertex (dgKappaResolvedConnectiveSquare R
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (dgKappaResolvedConnectiveSquare R
           (dgSuspensionIteration R s A n) (dgSuspensionIterationStage R s A n).cone) := by
   change (dgSuspensionNativeSquareDiagramFamily R F).app (Opposite.op ⦋0⦌)
     ((DGSuspensionNativeActionInput.iteration R s a n).app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex A)) = _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
   rw [DGSuspensionNativeActionInput.iteration_vertex]
-  have hv : functorVertex (dgSuspensionNativeSquareAt R F (dgSuspensionIteration R s A n)) =
+  have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (dgSuspensionNativeSquareAt R F (dgSuspensionIteration R s A n)) =
       (dgSuspensionNativeSquareDiagramFamily R F).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (dgSuspensionIteration R s A n)) :=
-    (functorVertexEquiv _ _).apply_symm_apply _
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgSuspensionIteration R s A n)) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).apply_symm_apply _
   rw [← hv, hF]
   rfl
 
@@ -232,12 +232,12 @@ theorem dgSuspensionNativeKSquareIterationFamily_at
     (a : DGSuspensionNativeActionInput R s)
     (A : PerfDGInput.{u, max (u + 1) v} R) (n : ℕ) :
     (DGSuspensionNativeActionInput.iteration R s a n ≫
-        dgSuspensionNativeKSquareFamily R F).app (Opposite.op ⦋0⦌) (coherentNerveVertex A) =
-      functorVertex (dgKappaResolvedConnectiveSquare R (dgSuspensionIteration R s A n)
+        dgSuspensionNativeKSquareFamily R F).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (dgKappaResolvedConnectiveSquare R (dgSuspensionIteration R s A n)
         (dgSuspensionIterationStage R s A n).cone ≫ dgKInputK R) := by
   change (dgSuspensionNativeKSquareFamily R F).app (Opposite.op ⦋0⦌)
     ((DGSuspensionNativeActionInput.iteration R s a n).app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex A)) = _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
   rw [DGSuspensionNativeActionInput.iteration_vertex]
   exact dgSuspensionNativeKSquareFamily_at R F s hF (dgSuspensionIteration R s A n)
 
@@ -251,8 +251,8 @@ def DGSuspensionNativeActionInput.ofSquareFamily
       DGKappaSuspensionMapData R A B (s A).cone (s B).cone)
     (hedge : ∀ {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B),
       (dgSuspensionNativeSquareCornerFamily R F 1 1).app (Opposite.op ⦋1⦌)
-        (coherentNerveEdge f).edge =
-      (coherentNerveEdge
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
         (dgKappaSuspensionInputMap R A B (s A).cone (s B).cone (d f))).edge) :
     DGSuspensionNativeActionInput R s where
   map := dgSuspensionNativeSquareCornerFamily R F 1 1

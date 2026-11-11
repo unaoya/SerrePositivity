@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleClosedChoices
 public import SerrePositivity.KST.SConstruction.DGModuleClosedStability
-public import SerrePositivity.InfinityCategories.Stable.ExactFunctorChoice
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExactFunctorChoice
 
 /-! # 実有限操作の閉性を満たす dg 加群の包含の完全性
 
@@ -15,48 +15,48 @@ set_option backward.isDefEq.respectTransparency false
 universe u v
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SerrePositivity.DifferentialGraded
-open SerrePositivity.InfinityCategories DGNerve DGNerve.HomotopyComparison SSet
+open SerrePositivity.InfinityCategories SSet
 open scoped Simplicial
-variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
-variable (P : RightModule A D → Prop) (hP : DGModuleClosedOperations A D P)
+variable (A : Type u) [CommRing A] (D : Type v) [_root_.SerrePositivity.DifferentialGraded.DGCategory A D] [Small.{u} D]
+variable (P : _root_.SerrePositivity.DifferentialGraded.RightModule A D → Prop) (hP : DGModuleClosedOperations A D P)
 include hP
 
 /-- 各部分圏内の実辺には、周囲でも押し出しとなる cofiber 四角形がある。 -/
 lemma dgModuleClosed_cofiber_exists_preserved
-    {x y : (dgNerve A (DGFullSubcategory (RightModule A D) P)) _⦋0⦌}
+    {x y : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (DGFullSubcategory (RightModule A D) P)) _⦋0⦌}
     (e : Truncated.Edge
-      (X := (truncation 2).obj (dgNerve A (DGFullSubcategory (RightModule A D) P))) x y) :
-    ∃ s : CofiberSquare e, IsPushoutSquare
-      (s.square ≫ dgNerve.map (dgFullSubcategoryInclusion A (RightModule A D)
+      (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (DGFullSubcategory (RightModule A D) P))) x y) :
+    ∃ s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare e, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare
+      (s.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFullSubcategoryInclusion A (RightModule A D)
         (P))) := by
-  obtain ⟨M, rfl⟩ := Simplex.vertexEquiv.symm.surjective x
-  obtain ⟨N, rfl⟩ := Simplex.vertexEquiv.symm.surjective y
+  obtain ⟨M, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.symm.surjective x
+  obtain ⟨N, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.symm.surjective y
   let a := dgModuleClosedAmbientEdge A D P e
-  let f := edgeClosed a
+  let f := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.edgeClosed a
   let L := dgModuleClosedConeSquare A D P hP f M.property N.property
-  have he : (dgModuleEdge A D f).edge = a.edge :=
-    congrArg Truncated.Edge.edge (dgModuleEdge_edgeClosed A D a)
-  let s : CofiberSquare e := {
+  have he : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleEdge A D f).edge = a.edge :=
+    congrArg Truncated.Edge.edge (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleEdge_edgeClosed A D a)
+  let s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare e := {
     square := L
-    zero_corner := dgFullSquareLift_zero_corner A _ _ _ _
-      (dgModuleConeZeroTriangle A D f).zero_corner
+    zero_corner := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFullSquareLift_zero_corner A _ _ _ _
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeZeroTriangle A D f).zero_corner
     bottom_edge := by
-      apply dgFullSquareLift_edge A (RightModule A D)
+      apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFullSquareLift_edge A (RightModule A D)
         (P) _ _ _ e
-      rw [dgModuleConeSquare_bottom]
+      rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeSquare_bottom]
       exact congrArg SSet.yonedaEquiv.symm he
     isPushout := dgModuleClosedConeSquare_isPushout A D P hP f M.property N.property }
   refine ⟨s, ?_⟩
-  change IsPushoutSquare (dgModuleClosedConeSquare A D P hP f M.property N.property ≫ _)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (dgModuleClosedConeSquare A D P hP f M.property N.property ≫ _)
   dsimp only [dgModuleClosedConeSquare]
-  rw [dgFullSquareLift_inclusion]
-  exact dgModuleConeSquare_isPushout A D f
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFullSquareLift_inclusion]
+  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeSquare_isPushout A D f
 
 /-- 実操作の条件で閉じた全 dg 加群の充満部分圏の包含は完全。 -/
 theorem dgModuleClosedInclusion_isExactFunctor :
-    IsExactFunctor (dgNerve.map (dgFullSubcategoryInclusion A (RightModule A D)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFullSubcategoryInclusion A (RightModule A D)
       (P))) :=
-  isExactFunctor_of_preserves_chosen_cofibers _
-    (dgFunctorNerve_preservesZeroVertices _) (dgModuleClosed_cofiber_exists_preserved A D P hP)
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_preserves_chosen_cofibers _
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_preservesZeroVertices _) (dgModuleClosed_cofiber_exists_preserved A D P hP)
 
 end SerrePositivity.KST.SConstruction

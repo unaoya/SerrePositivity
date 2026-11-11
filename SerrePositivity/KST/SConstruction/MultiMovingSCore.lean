@@ -29,7 +29,7 @@ def multiOuterSCoreIso (r : ℕ) (X : StableModel.{u}) :
   NatIso.ofComponents (fun _ => Iso.refl _) (by
     intro d e f
     simp only [Iso.refl_hom, Category.id_comp, Category.comp_id]
-    let H := stableModelForget.{u} ⋙ quasicategoryCoreFunctor
+    let H := stableModelForget.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
     change H.map ((((multiTailSEndofunctor r).map f ⊗ₘ
       (multiHeadSEndofunctor r).map f)).app X) =
       H.map (((multiSEndofunctor (r + 1)).map f).app X)
@@ -67,7 +67,7 @@ lemma multiMovingSCoreIso_realization (r : ℕ) (X : StableModel.{u}) :
         (iteratedSRealizationCyclicIso r X).hom := by
   apply NatTrans.ext
   funext d
-  let H := stableModelForget.{u} ⋙ quasicategoryCoreFunctor
+  let H := stableModelForget.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
   change (H.map ((multiFixedSEndofunctorIso d.unop.len r (fun _ => d)).hom.app X)).app d =
     (H.map (((diagonalFixedSInterchangeNatIso d.unop.len r).hom.app d).app X)).app d
   rw [multiFixedSEndofunctorIso_diagonal_app]

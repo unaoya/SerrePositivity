@@ -13,6 +13,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 規約：Moss arXiv:1506.04887v2 Proposition 2.19、Proposition 3.12。
 原典の pairing による strong 性とは異なり、相対収縮による anodyne 性を示す。
 使われ方：Ex∞ の fibration 保存と、非 Kan 基底での引き戻し比較。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

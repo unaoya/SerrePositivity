@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Core.NerveCone
-public import SerrePositivity.InfinityCategories.PinchedHom.Index
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Index
 
 /-!
 概要：大域評価三角形の三相の時刻を、元の cone と終端付き単体の添字へ写す。
@@ -69,25 +69,25 @@ lemma coneTriangleBackIndex_ne_two {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
 lemma coneTriangleFrontIndex_reindex {m n : ℕ} (τ : Fin (n + 1) →o Fin 3)
     (θ : Fin (m + 1) →o Fin (n + 1)) :
     (coneTriangleFrontIndex τ).comp θ =
-      (prependOrderHom θ).comp (coneTriangleFrontIndex (τ.comp θ)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ).comp (coneTriangleFrontIndex (τ.comp θ)) := by
   apply DFunLike.ext
   intro i
   change (if τ (θ i) = 0 then 0 else (θ i).succ) =
-    prependOrderHom θ (if τ (θ i) = 0 then 0 else i.succ)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ (if τ (θ i) = 0 then 0 else i.succ)
   split_ifs <;> rfl
 
 lemma coneTriangleBackIndex_reindex {m n : ℕ} (τ : Fin (n + 1) →o Fin 3)
     (θ : Fin (m + 1) →o Fin (n + 1)) :
     (coneTriangleBackIndex τ).comp θ =
-      (InfinityCategories.PinchedHom.extendOrderHom θ).comp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extendOrderHom θ).comp
         (coneTriangleBackIndex (τ.comp θ)) := by
   apply DFunLike.ext
   intro i
   change (if τ (θ i) = 2 then Fin.last (n + 1) else (θ i).castSucc) =
-    InfinityCategories.PinchedHom.extendOrderHom θ
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extendOrderHom θ
       (if τ (θ i) = 2 then Fin.last (m + 1) else i.castSucc)
   split_ifs
-  · exact (InfinityCategories.PinchedHom.extendOrderHom_last θ).symm
-  · exact (InfinityCategories.PinchedHom.extendOrderHom_castSucc θ i).symm
+  · exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extendOrderHom_last θ).symm
+  · exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extendOrderHom_castSucc θ i).symm
 
 end SerrePositivity.EInfinity.ComplexLimits

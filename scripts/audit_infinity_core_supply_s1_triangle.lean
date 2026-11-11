@@ -9,7 +9,7 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let env ← getEnv
-  let owned := #[`SerrePositivity.InfinityCategories.F1.Diagrams.TriangleNativeExt]
+  let owned := #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativeExt]
   let mut count : Nat := 0
   for (name, info) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue

@@ -46,13 +46,13 @@ variable {C : Type u} [Category.{v} C]
   (A : SimplexCategory ⥤ SimplexCategory ⥤ C) (B : SimplexCategory ⥤ C) (Z : C)
 
 abbrev source : SSet.{v} :=
-  (cosimplicialHom A).obj B ⨯ (cosimplicialHom B).obj Z
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj B ⨯ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z
 
-abbrev first : source A B Z ⟶ (cosimplicialHom A).obj B := prod.fst
-abbrev second : source A B Z ⟶ (cosimplicialHom B).obj Z := prod.snd
+abbrev first : source A B Z ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj B := prod.fst
+abbrev second : source A B Z ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z := prod.snd
 
 /-- Actual degreewise composition, with simplicial naturality. -/
-def composition : source A B Z ⟶ (cosimplicialHom (DiagonalFrame.obj A)).obj Z where
+def composition : source A B Z ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (DiagonalFrame.obj A)).obj Z where
   app n := ↾fun x =>
     (((first A B Z).app n) x).app n.unop ≫
       ((second A B Z).app n) x
@@ -82,14 +82,14 @@ lemma composition_app (n : SimplexCategoryᵒᵖ) (x : (source A B Z).obj n) :
         ((second A B Z).app n) x := rfl
 
 /-- Composition with both simplices parameterized by the same simplicial set. -/
-abbrev pairing {T : SSet.{v}} (a : T ⟶ (cosimplicialHom A).obj B)
-    (b : T ⟶ (cosimplicialHom B).obj Z) :
-    T ⟶ (cosimplicialHom (DiagonalFrame.obj A)).obj Z :=
+abbrev pairing {T : SSet.{v}} (a : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj B)
+    (b : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z) :
+    T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (DiagonalFrame.obj A)).obj Z :=
   prod.lift a b ≫ composition A B Z
 
 @[simp]
-lemma pairing_app {T : SSet.{v}} (a : T ⟶ (cosimplicialHom A).obj B)
-    (b : T ⟶ (cosimplicialHom B).obj Z) (n : SimplexCategoryᵒᵖ) (x : T.obj n) :
+lemma pairing_app {T : SSet.{v}} (a : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj B)
+    (b : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z) (n : SimplexCategoryᵒᵖ) (x : T.obj n) :
     (pairing A B Z a b).app n x = (a.app n x).app n.unop ≫ b.app n x := by
   change (((first A B Z).app n) ((prod.lift a b).app n x)).app n.unop ≫
     ((second A B Z).app n) ((prod.lift a b).app n x) = _
@@ -101,7 +101,7 @@ lemma pairing_app {T : SSet.{v}} (a : T ⟶ (cosimplicialHom A).obj B)
 
 @[reassoc]
 lemma pairing_naturality {T U : SSet.{v}} (u : U ⟶ T)
-    (a : T ⟶ (cosimplicialHom A).obj B) (b : T ⟶ (cosimplicialHom B).obj Z) :
+    (a : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj B) (b : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z) :
     u ≫ pairing A B Z a b = pairing A B Z (u ≫ a) (u ≫ b) := by
   ext n x
   change (pairing A B Z a b).app n (u.app n x) = _
@@ -110,32 +110,32 @@ lemma pairing_naturality {T U : SSet.{v}} (u : U ⟶ T)
 
 /-- Postcomposition in the ordinary target commutes with the actual pairing. -/
 lemma pairing_target_naturality {Z' : C} (h : Z ⟶ Z') {T : SSet.{v}}
-    (a : T ⟶ (cosimplicialHom A).obj B) (b : T ⟶ (cosimplicialHom B).obj Z) :
-    pairing A B Z' a (b ≫ (cosimplicialHom B).map h) =
-      pairing A B Z a b ≫ (cosimplicialHom (DiagonalFrame.obj A)).map h := by
+    (a : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj B) (b : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z) :
+    pairing A B Z' a (b ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).map h) =
+      pairing A B Z a b ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (DiagonalFrame.obj A)).map h := by
   ext n x
-  exact (pairing_app A B Z' a (b ≫ (cosimplicialHom B).map h) n x).trans
+  exact (pairing_app A B Z' a (b ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).map h) n x).trans
     ((Category.assoc ((a.app n x).app n.unop) (b.app n x) h).symm.trans
       (congrArg (fun k => k ≫ h) (pairing_app A B Z a b n x).symm))
 
 /-- Composition through an actual map of the intermediate resolution is associative. -/
 lemma pairing_middle_naturality {B' : SimplexCategory ⥤ C} (k : B ⟶ B') {T : SSet.{v}}
-    (a : T ⟶ (cosimplicialHom A).obj B) (b : T ⟶ (cosimplicialHom B').obj Z) :
-    pairing A B' Z (a ≫ (cosimplicialHom A).map k) b =
-      pairing A B Z a (b ≫ (cosimplicialHomMap k).app Z) := by
+    (a : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj B) (b : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B').obj Z) :
+    pairing A B' Z (a ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map k) b =
+      pairing A B Z a (b ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap k).app Z) := by
   ext n x
-  exact (pairing_app A B' Z (a ≫ (cosimplicialHom A).map k) b n x).trans
+  exact (pairing_app A B' Z (a ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map k) b n x).trans
     ((Category.assoc ((a.app n x).app n.unop) (k.app n.unop) (b.app n x)).trans
-      (pairing_app A B Z a (b ≫ (cosimplicialHomMap k).app Z) n x).symm)
+      (pairing_app A B Z a (b ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap k).app Z) n x).symm)
 
 /-- Source change is compatible with restriction of a double diagram to the diagonal. -/
 lemma pairing_source_naturality {A' : SimplexCategory ⥤ SimplexCategory ⥤ C}
-    (φ : A ⟶ A') {T : SSet.{v}} (a : T ⟶ (cosimplicialHom A').obj B)
-    (b : T ⟶ (cosimplicialHom B).obj Z) :
-    pairing A B Z (a ≫ (cosimplicialHomMap φ).app B) b =
-      pairing A' B Z a b ≫ (cosimplicialHomMap (DiagonalFrame.map φ)).app Z := by
+    (φ : A ⟶ A') {T : SSet.{v}} (a : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A').obj B)
+    (b : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z) :
+    pairing A B Z (a ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap φ).app B) b =
+      pairing A' B Z a b ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (DiagonalFrame.map φ)).app Z := by
   ext n x
-  exact (pairing_app A B Z (a ≫ (cosimplicialHomMap φ).app B) b n x).trans
+  exact (pairing_app A B Z (a ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap φ).app B) b n x).trans
     ((Category.assoc ((φ.app n.unop).app n.unop) ((a.app n x).app n.unop) (b.app n x)).trans
       (congrArg (fun k => (φ.app n.unop).app n.unop ≫ k)
         (pairing_app A' B Z a b n x)).symm)

@@ -53,9 +53,9 @@ def inputComparisonSecond :
 variable [KanComplex Z'.right]
 local instance inputComparisonInnerKan :
     KanComplex (PointedObject.basedHom CirclePower.space.{u} Z').right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 local instance inputComparisonDoubleKan : KanComplex (doubleLoop Z').right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 元の二つの入力比較区間と同じ実合成三角形を保持する、二重 loop 入力比較。 -/
 def inputComparisonComposite :

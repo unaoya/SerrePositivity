@@ -19,7 +19,7 @@ public import Mathlib.NumberTheory.Padics.PadicIntegers
 public import Mathlib.Algebra.Ring.ULift
 public import Mathlib.Algebra.MvPolynomial.Basic
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
-public import SerrePositivity.InfinityCategories.Core.UniverseLimits
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseLimits
 -- 相対 Čech の部分は drafts/Sheaves/{SheafCondition,CechConerveLimit}.lean の S1・S3 を import する。
 -- 本ファイルは drafts/A5/RootAdjunction.lean（`rootClosure`・`rootClosure_extends`）、drafts/A5/WeaklyInitialAndDescent.lean（`rootClosure_isSemiperfectoid`）、drafts/A5/SemiperfectoidCase.lean（`universalPerfectoidRing`）、
 -- drafts/A0/PrismaticSite.lean（`cutoff`）を import する（W9-III-14 で所在を RootAdjunction に揃えた）。
@@ -60,7 +60,7 @@ variable (p : ℕ) [Fact p.Prime] (κ : Cardinal.{u})
 
 section ArcCech
 
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.Sheaves
+open SerrePositivity.InfinityCategories
 open SSet
 
 /-- 小さい模型の射 f が一点族として arc 被覆である条件。 -/

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.ZeroMiddleFullSKanHorn
-public import SerrePositivity.InfinityCategories.Stable.TriangleMiddlePrism
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.TriangleMiddlePrism
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 
 /-!
@@ -20,10 +20,10 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
 
 /-- 元の二胞体を面 1 とする内角の、指定した一つの実充填。 -/
-def zeroMiddleFullSKanTetrahedron : (Δ[3] : SSet.{u + 1}) ⟶ SpaceInfinity.{u} :=
+def zeroMiddleFullSKanTetrahedron : (Δ[3] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} :=
   Classical.choose (Quasicategory.hornFilling (by decide) (by decide)
     (zeroMiddleFullSKanHorn s hZ))
 
@@ -37,7 +37,7 @@ theorem zeroMiddleFullSKanTetrahedron_horn :
 /-- 元の native 二胞体は、選択した充填の面 1 から全二単体で厳密に戻る。 -/
 theorem zeroMiddleFullSKanTetrahedron_original :
     stdSimplex.δ (1 : Fin 4) ≫ zeroMiddleFullSKanTetrahedron s hZ =
-      SSet.yonedaEquiv.symm ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+      SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
         (Opposite.op ⦋2⦌) s) := by
   calc
     _ = horn₃₂.ι₁ ≫ ((horn 3 (2 : Fin 4)).ι ≫
@@ -47,16 +47,16 @@ theorem zeroMiddleFullSKanTetrahedron_original :
     _ = _ := zeroMiddleFullSKanHorn_original s hZ
 
 /-- 全 S• 中間頂点を持つ始端は、同じ実充填の面 2 として保持する。 -/
-def zeroMiddleFullSKanTransportedTriangle : (Δ[2] : SSet.{u + 1}) ⟶ SpaceInfinity.{u} :=
+def zeroMiddleFullSKanTransportedTriangle : (Δ[2] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} :=
   stdSimplex.δ (2 : Fin 4) ≫ zeroMiddleFullSKanTetrahedron s hZ
 
 /-- 元の全二胞体を終端に厳密保持する、同じ全 S• 中間対象の実三角柱。 -/
 def zeroMiddleFullSKanPrism : SSet.Homotopy (zeroMiddleFullSKanTransportedTriangle s hZ)
-    (SSet.yonedaEquiv.symm ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+    (SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
       (Opposite.op ⦋2⦌) s)) where
-  h := triangleMiddlePrism ≫ zeroMiddleFullSKanTetrahedron s hZ
-  h₀ := by rw [← Category.assoc, triangleMiddlePrism_zero]; rfl
-  h₁ := by rw [← Category.assoc, triangleMiddlePrism_one,
+  h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.triangleMiddlePrism ≫ zeroMiddleFullSKanTetrahedron s hZ
+  h₀ := by rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.triangleMiddlePrism_zero]; rfl
+  h₁ := by rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.triangleMiddlePrism_one,
     zeroMiddleFullSKanTetrahedron_original]; rfl
   rel := by ext n t; exact False.elim t.1.2
 
@@ -65,8 +65,8 @@ theorem zeroMiddleFullSKanPrism_diagonal :
     (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) ≫ (zeroMiddleFullSKanPrism s hZ).h =
       CartesianMonoidalCategory.fst (Δ[1] : SSet.{u + 1}) Δ[1] ≫
         stdSimplex.δ (1 : Fin 3) ≫ zeroMiddleFullSKanTransportedTriangle s hZ := by
-  change _ ≫ (triangleMiddlePrism ≫ _) = _
-  rw [← Category.assoc, triangleMiddlePrism_diagonal]
+  change _ ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.triangleMiddlePrism ≫ _) = _
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.triangleMiddlePrism_diagonal]
   simp only [zeroMiddleFullSKanTransportedTriangle, Category.assoc]
 
 end SerrePositivity.KST.Fibration

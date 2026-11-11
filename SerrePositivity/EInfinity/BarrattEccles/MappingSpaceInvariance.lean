@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpace
-public import SerrePositivity.InfinityCategories.ModelBridge.SourceInvariance
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SourceInvariance
 
 /-!
 # E 代数の導来写像空間の始域・終域の不変性
@@ -43,7 +43,7 @@ lemma mappingSpace_map_target_isIso (X : (operad A).Algebraᵒᵖ)
   have := fibrantTarget_isFibrant r Z
   have : WeakEquivalence ((fibrantTarget r).map g) :=
     ⟨fibrantTarget_map_weakEquivalence r g hg⟩
-  exact FrameHom.target_weakEquivalence_isIso (q.obj.obj X.unop) (q.cofibrant X.unop)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.target_weakEquivalence_isIso (q.obj.obj X.unop) (q.cofibrant X.unop)
     L hL ((fibrantTarget r).map g)
 
 /-- 概要：E 代数の始域の擬同型は Map^h で anodyne 反転後に同型（Hovey §5）。
@@ -57,7 +57,7 @@ lemma mappingSpace_map_source_isIso {X X' : (operad A).Algebraᵒᵖ}
   let q := cosimplicialResolutionFamily (mappingCofibrantFactorization A)
   let r := mappingFibrantFactorization A
   have := fibrantTarget_isFibrant r Y
-  exact FrameHom.source_weakEquivalence_isIso L hL (q.obj.map f.unop)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.source_weakEquivalence_isIso L hL (q.obj.map f.unop)
     (q.cofibrant X'.unop) (q.cofibrant X.unop) (q.map_weakEquivalence f.unop hf)
     ((fibrantTarget r).obj Y)
 

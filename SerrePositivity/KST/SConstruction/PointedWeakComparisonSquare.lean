@@ -19,9 +19,9 @@ lemma pointedPiIsomorphism_of_weakComparisonSquare
     {A B X Y : PointedSimplicialSet.{u}} [KanComplex A.right] [KanComplex B.right]
     [KanComplex X.right] [KanComplex Y.right]
     (a : A ⟶ B) (c : A ⟶ X) (d : B ⟶ Y) (f : X ⟶ Y)
-    (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right) (hc : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism c.right)
-    (hd : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism d.right) (h : a ≫ d = c ≫ f) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right := by
+    (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right) (hc : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism c.right)
+    (hd : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism d.right) (h : a ≫ d = c ≫ f) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f.right := by
   let Q := AnodyneHomotopy.anodyneQ
   let _ : IsIso (Q.map a.right) := pointed_localized_isIso_of_piIsomorphism a ha
   let _ : IsIso (Q.map c.right) := pointed_localized_isIso_of_piIsomorphism c hc

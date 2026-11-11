@@ -81,7 +81,7 @@ def VerticalPathComposite.choose {T E B : PointedSimplicialSet.{u}} {p : E ⟶ B
 def VerticalPathComposite.fiberTriangle {T E B : PointedSimplicialSet.{u}} {p : E ⟶ B}
     {f g h : T ⟶ E} {P : VerticalPath p f g} {Q : VerticalPath p g h}
     (C : VerticalPathComposite P Q) : (Δ[2] : SSet.{u}) ⟶ verticalFiber p f :=
-  _root_.SerrePositivity.InfinityCategories.Kan.fiberLift (PointedObject.basedHomMap T p).right (familyVertex (f ≫ p))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberLift (PointedObject.basedHomMap T p).right (familyVertex (f ≫ p))
     (SSet.yonedaEquiv.symm C.triangle.simplex) C.triangle_over
 
 end SerrePositivity.KST.Spectra.PointedMapping

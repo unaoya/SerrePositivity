@@ -21,7 +21,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PathBaseChange
 variable (R : Type u) [CommRing R] {P B U : Mon (Complex R)}
   (a b : P ⟶ B) (q : U ⟶ B) (w : Path.Witness R a b)
   [P.X.IsStrictlyLE 0] [U.X.IsStrictlyLE 0] [Epi q.hom]
-  (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+  (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
 
 attribute [local instance] firstPullback_nonpositive secondPullback_nonpositive
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CategoryTheory.Limits
-public import SerrePositivity.InfinityCategories.Simplicial.BoundaryGluing
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing
 public import Mathlib.AlgebraicTopology.SimplicialSet.Skeleton
 
 /-!
@@ -116,8 +116,8 @@ omit [Mono j] in
 /-- Face compatibility is an output of the preceding skeletal map. -/
 lemma attachingFaces_compatible {n : ℕ} (a : stage j (n + 2) ⟶ Q)
     (c : Cell j (n + 2)) :
-    BoundaryGluing.StandardCompatible (fun k => SSet.boundary.ι k ≫ boundary j c ≫ a) :=
-  BoundaryGluing.standardCompatible_of_boundary (boundary j c ≫ a)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.StandardCompatible (fun k => SSet.boundary.ι k ≫ boundary j c ≫ a) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.standardCompatible_of_boundary (boundary j c ≫ a)
 
 /-- The next stage retains every supplied cell and the entire preceding skeleton. -/
 abbrev Rule := ∀ (n : ℕ) (a : stage j n ⟶ Q) (c : Cell j n),

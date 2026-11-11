@@ -44,7 +44,7 @@ def arVerticalRectangle {n : ℕ} (i j k l : Fin (n + 1))
 規約：面番号2。使われ方：押し出しの相殺の左面。 -/
 lemma arVerticalRectangle_left {n : ℕ} (i j k l : Fin (n + 1))
     (hij : i ≤ j) (hjk : j ≤ k) (hkl : k ≤ l) :
-    pastingSquare (arVerticalRectangle i j k l hij hjk hkl) 2 =
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arVerticalRectangle i j k l hij hjk hkl) 2 =
       (β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ arSquare i j k l hij hjk hkl := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
@@ -66,7 +66,7 @@ lemma arVerticalRectangle_left {n : ℕ} (i j k l : Fin (n + 1))
 規約：面番号1。使われ方：押し出しの相殺の外側。 -/
 lemma arVerticalRectangle_outer {n : ℕ} (i j k l : Fin (n + 1))
     (hij : i ≤ j) (hjk : j ≤ k) (hkl : k ≤ l) :
-    pastingSquare (arVerticalRectangle i j k l hij hjk hkl) 1 =
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arVerticalRectangle i j k l hij hjk hkl) 1 =
       (β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫
         arSquare i k k l (hij.trans hjk) le_rfl hkl := by
   apply SSet.hom_ext
@@ -89,7 +89,7 @@ lemma arVerticalRectangle_outer {n : ℕ} (i j k l : Fin (n + 1))
 規約：面番号0。使われ方：押し出しの相殺の結論。 -/
 lemma arVerticalRectangle_right {n : ℕ} (i j k l : Fin (n + 1))
     (hij : i ≤ j) (hjk : j ≤ k) (hkl : k ≤ l) :
-    pastingSquare (arVerticalRectangle i j k l hij hjk hkl) 0 =
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arVerticalRectangle i j k l hij hjk hkl) 0 =
       (β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ arSquare j k k l hjk le_rfl hkl := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
@@ -113,35 +113,35 @@ lemma arVerticalRectangle_right {n : ℕ} (i j k l : Fin (n + 1))
 lemma arTriple_isPushout_of_originSquares {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (F : arNerve n ⟶ C)
     (hF : ∀ (i j : Fin (n + 1)) (hij : i ≤ j),
-      IsPushoutSquare (arSquare 0 i i j (Fin.zero_le _) le_rfl hij ≫ F))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (arSquare 0 i i j (Fin.zero_le _) le_rfl hij ≫ F))
     (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) :
-    IsPushoutSquare (arSquare i j j k hij le_rfl hjk ≫ F) := by
-  have htop : IsPushoutSquare (arSquare 0 i j k (Fin.zero_le _) hij hjk ≫ F) := by
-    have hl : IsPushoutSquare
-        (pastingSquare (arCofiberRectangle 0 i j k (Fin.zero_le _) hij hjk ≫ F) 2) := by
-      change IsPushoutSquare (pastingSquare (arCofiberRectangle 0 i j k (Fin.zero_le _) hij hjk) 2 ≫ F)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (arSquare i j j k hij le_rfl hjk ≫ F) := by
+  have htop : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (arSquare 0 i j k (Fin.zero_le _) hij hjk ≫ F) := by
+    have hl : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare
+        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arCofiberRectangle 0 i j k (Fin.zero_le _) hij hjk ≫ F) 2) := by
+      change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arCofiberRectangle 0 i j k (Fin.zero_le _) hij hjk) 2 ≫ F)
       rw [arCofiberRectangle_left]
       exact hF i j hij
-    have ho : IsPushoutSquare
-        (pastingSquare (arCofiberRectangle 0 i j k (Fin.zero_le _) hij hjk ≫ F) 1) := by
-      change IsPushoutSquare (pastingSquare (arCofiberRectangle 0 i j k (Fin.zero_le _) hij hjk) 1 ≫ F)
+    have ho : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare
+        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arCofiberRectangle 0 i j k (Fin.zero_le _) hij hjk ≫ F) 1) := by
+      change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arCofiberRectangle 0 i j k (Fin.zero_le _) hij hjk) 1 ≫ F)
       rw [arCofiberRectangle_outer]
       exact hF i k (hij.trans hjk)
-    have ht := isPushoutSquare_pasting_cancel_left _ hl ho
-    change IsPushoutSquare (pastingSquare (arCofiberRectangle 0 i j k (Fin.zero_le _) hij hjk) 0 ≫ F) at ht
+    have ht := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isPushoutSquare_pasting_cancel_left _ hl ho
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arCofiberRectangle 0 i j k (Fin.zero_le _) hij hjk) 0 ≫ F) at ht
     rwa [arCofiberRectangle_right] at ht
-  have hl : IsPushoutSquare
-      (pastingSquare (arVerticalRectangle 0 i j k (Fin.zero_le _) hij hjk ≫ F) 2) := by
-    change IsPushoutSquare (pastingSquare (arVerticalRectangle 0 i j k (Fin.zero_le _) hij hjk) 2 ≫ F)
+  have hl : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arVerticalRectangle 0 i j k (Fin.zero_le _) hij hjk ≫ F) 2) := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arVerticalRectangle 0 i j k (Fin.zero_le _) hij hjk) 2 ≫ F)
     rw [arVerticalRectangle_left, Category.assoc]
     exact IsPushoutSquare.transpose htop
-  have ho : IsPushoutSquare
-      (pastingSquare (arVerticalRectangle 0 i j k (Fin.zero_le _) hij hjk ≫ F) 1) := by
-    change IsPushoutSquare (pastingSquare (arVerticalRectangle 0 i j k (Fin.zero_le _) hij hjk) 1 ≫ F)
+  have ho : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arVerticalRectangle 0 i j k (Fin.zero_le _) hij hjk ≫ F) 1) := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arVerticalRectangle 0 i j k (Fin.zero_le _) hij hjk) 1 ≫ F)
     rw [arVerticalRectangle_outer, Category.assoc]
     exact IsPushoutSquare.transpose (hF j k hjk)
-  have ht := isPushoutSquare_pasting_cancel_left _ hl ho
-  change IsPushoutSquare (pastingSquare (arVerticalRectangle 0 i j k (Fin.zero_le _) hij hjk) 0 ≫ F) at ht
+  have ht := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isPushoutSquare_pasting_cancel_left _ hl ho
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arVerticalRectangle 0 i j k (Fin.zero_le _) hij hjk) 0 ≫ F) at ht
   rw [arVerticalRectangle_right, Category.assoc] at ht
   have ht' := IsPushoutSquare.transpose ht
   simpa only [← Category.assoc, Iso.hom_inv_id, SymmetricCategory.symmetry,
@@ -152,10 +152,10 @@ lemma arTriple_isPushout_of_originSquares {n : ℕ} {C : SSet.{u}} [Quasicategor
 規約：C は quasicategory。使われ方：第一行からの復元で残る普遍性の正確な形。 -/
 lemma isGapped_iff_originSquares {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (F : arNerve n ⟶ C) : IsGapped F ↔
-      (∀ i : Fin (n + 1), IsZeroVertex (F.app (Opposite.op ⦋0⦌)
+      (∀ i : Fin (n + 1), _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ (arObj i i le_rfl)))) ∧
       (∀ (i j : Fin (n + 1)) (hij : i ≤ j),
-        IsPushoutSquare (arSquare 0 i i j (Fin.zero_le _) le_rfl hij ≫ F)) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (arSquare 0 i i j (Fin.zero_le _) le_rfl hij ≫ F)) := by
   constructor
   · intro h
     exact ⟨h.1, fun i j hij => h.2 0 i i j (Fin.zero_le _) le_rfl hij⟩
@@ -174,7 +174,7 @@ lemma isGapped_iff_arCofiberFamily_vertices {n : ℕ} {C : SSet.{u}} [Quasicateg
     have ha : a = ComposableArrows.mk₀ (nerveEquiv a) :=
       (nerveEquiv.symm_apply_apply a).symm
     rw [ha, arCofiberFamily_vertex]
-    change IsZeroVertex (squareVertex
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex
       (arSquare 0 (nerveEquiv a).down.val.1 (nerveEquiv a).down.val.1
         (nerveEquiv a).down.val.2 (Fin.zero_le _) le_rfl (nerveEquiv a).down.property ≫ F) 0 1) ∧ _
     exact ⟨h.1 (nerveEquiv a).down.val.1,

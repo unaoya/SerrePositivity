@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：境界添字の実同値と各項の写像・符号の一致を使い、有限和を分配する。
 規約：KST Construction A.5 の標準 shuffle、非被約な零次を含む。
 使われ方：全混合境界和の消滅と合わせる shuffle の鎖写像性。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

@@ -30,24 +30,24 @@ structure RelativeSequenceFamilyStage (n : ℕ) where
   chain : RelativeFamilyChain j (f n) val
 
 variable (H : ∀ n, SSet.Homotopy
-    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
     (f n ≫ RawSpectrumMapping.step X Y n))
   (hrel : ∀ n, (j ▷ (Δ[1] : SSet.{u})) ≫ (H n).h =
     fst T (Δ[1] : SSet.{u}) ≫ j ≫ f (n + 1) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
 
 /-- 前段の補正を含む全ての元の区間を用いて、次段の族を境界固定で厳密化する。 -/
 def relativeSequenceFamilyNext (n : ℕ) (s : RelativeSequenceFamilyStage X Y j f n) :
     {t : RelativeSequenceFamilyStage X Y j f (n + 1) //
-      t.val ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+      t.val ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
         s.val ≫ RawSpectrumMapping.step X Y n ∧
       (relativeFamilyChainTrace t.chain).map
-        (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) =
+        (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) =
       relativeFamilyChainTrace (relativeFamilyChainAppend
         (relativeFamilyChainSingle j (H n) (hrel n))
         (relativeFamilyChainMap s.chain (RawSpectrumMapping.step X Y n)))} := by
-  let p := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space
-  let : Fibration p := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration (X.sigma n) (Y.level (n + 1)).space
+  let p := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space
+  let : Fibration p := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_fibration (X.sigma n) (Y.level (n + 1)).space
   let c := relativeFamilyChainAppend (relativeFamilyChainSingle j (H n) (hrel n))
     (relativeFamilyChainMap s.chain (RawSpectrumMapping.step X Y n))
   let hex := exists_relativeFamilyChain_lift_with_trace p j c (f (n + 1)) rfl
@@ -58,7 +58,7 @@ def relativeSequenceFamilyNext (n : ℕ) (s : RelativeSequenceFamilyStage X Y j 
 lemma relativeSequenceFamilyNext_trace (n : ℕ)
     (s : RelativeSequenceFamilyStage X Y j f n) :
     (relativeFamilyChainTrace (relativeSequenceFamilyNext X Y j f H hrel n s).val.chain).map
-      (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) =
+      (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) =
     relativeFamilyChainTrace (relativeFamilyChainAppend
       (relativeFamilyChainSingle j (H n) (hrel n))
       (relativeFamilyChainMap s.chain (RawSpectrumMapping.step X Y n))) :=

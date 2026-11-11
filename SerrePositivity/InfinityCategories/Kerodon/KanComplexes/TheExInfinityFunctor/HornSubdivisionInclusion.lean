@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：随伴で Ex への写像に移し、各単体の有限鎖の像を計算する。
 規約：Moss 2020 Proposition 21 の二重細分の境界の接続。
 使われ方：候補の horn 上での境界条件を得る。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

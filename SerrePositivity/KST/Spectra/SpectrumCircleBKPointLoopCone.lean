@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance circlePointLoopConeSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
@@ -26,7 +26,7 @@ local instance circlePointLoopConeHomKan (X Y : OmegaSpectrum.{u}) :
     KanComplex (SimplicialCategory.sHom X Y) := mappingSpace_kanComplex X Y
 
 /-- 元の円評価の BK 切断点による、固定ホーン図式上の実際の cotensor 錐。 -/
-def circleBKPointLoopCone (Y : OmegaSpectrum.{u}) : JoinCone (pointLoopCospan Y) :=
+def circleBKPointLoopCone (Y : OmegaSpectrum.{u}) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (pointLoopCospan Y) :=
   (DiagramLimitTransport.restrict (circleBKCoherentCone Y)
     CospanShape.strictCospanHornIso.inv).cast
       (CospanShape.strictDiagram_eq (fromPoint Y) (fromPoint Y))
@@ -34,20 +34,20 @@ def circleBKPointLoopCone (Y : OmegaSpectrum.{u}) : JoinCone (pointLoopCospan Y)
 /-- 形状同型による制限後も、頂点は元の円 cotensor の標準頂点そのもの。 -/
 lemma circleBKPointLoopCone_vertex (Y : OmegaSpectrum.{u}) :
     (circleBKPointLoopCone Y).vertex =
-      coherentNerveVertex (cotensor PointedSimplicialSet.circle Y) := by
-  rw [circleBKPointLoopCone, JoinCone.vertex_cast, DiagramLimitTransport.vertex_restrict,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (cotensor PointedSimplicialSet.circle Y) := by
+  rw [circleBKPointLoopCone, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone.vertex_cast, DiagramLimitTransport.vertex_restrict,
     circleBKCoherentCone_vertex]
 
 /-- 固定された一点 → Y ← 一点の図式に対する、元の円 cotensor の実際の極限錐。 -/
 lemma circleBKPointLoopCone_isLimit (Y : OmegaSpectrum.{u}) :
-    IsLimitCone (circleBKPointLoopCone Y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (circleBKPointLoopCone Y) := by
   let D := pointLoopDiagram Y
   let i := CospanShape.strictCospanHornIso.{u, u + 1}.inv
-  have restrictionTrivial : TrivialKanFibration (sliceOverRestrict (strictCoherentDiagram D) i) :=
-    DiagramLimitTransport.restriction_trivial (strictCoherentDiagram D) i
-      (isPrecompositionEquivalence_of_iso CospanShape.strictCospanHornIso.symm)
-  let e := qCatEquivalenceOfTrivialKanFibration (sliceOverRestrict (strictCoherentDiagram D) i)
-  have hc : IsLimitCone (DiagramLimitTransport.restrict (circleBKCoherentCone Y) i) :=
+  have restrictionTrivial : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverRestrict (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram D) i) :=
+    DiagramLimitTransport.restriction_trivial (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram D) i
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso CospanShape.strictCospanHornIso.symm)
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.qCatEquivalenceOfTrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverRestrict (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram D) i)
+  have hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (DiagramLimitTransport.restrict (circleBKCoherentCone Y) i) :=
     (e.isTerminalVertex_iff _).1 (circleBKCoherentCone_isLimit Y)
   exact hc.cast (CospanShape.strictDiagram_eq (fromPoint Y) (fromPoint Y))
 

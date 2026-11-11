@@ -39,7 +39,7 @@ lemma kanAdjointCanonicalStructureDeformation_boundary (n : ℕ) :
 /-- 変形全体の非零境界への射影は、元の選択済み収縮そのもの。 -/
 lemma kanAdjointCanonicalStructureDeformation_projection (n : ℕ) :
     (kanAdjointCanonicalStructureDeformation X Y φ j n).val.h ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right =
       (kanAdjointCanonicalStructureContraction X Y φ j n).homotopy.h :=

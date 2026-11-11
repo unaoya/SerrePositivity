@@ -19,21 +19,21 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet InfinityCategories Loca
 方針：元の全図式作用と元の対角豊穣関手を合成する。
 規約：元の実現値を保持する。使われ方：商への作用の降下。 -/
 def stableOneDirectionEnrichedFunctor (r : ℕ) :
-    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} SSetInternalObject.{u} :=
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u} SSetInternalObject.{u} :=
   (stableOneDirectionObjectEnrichedFunctor r).comp SSet
     simplicialSSetDiagramDiagonalEnrichedFunctor
 
 /-- 概要：実現の値は元の一次方向図式の対角。
 方針：二つの図式制限を展開する。
 規約：同じ安定値を固定する。使われ方：元の S₁ 比較との型照合。 -/
-lemma stableOneDirectionEnrichedFunctor_obj (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableOneDirectionEnrichedFunctor_obj (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     ((stableOneDirectionEnrichedFunctor r).obj C).obj =
       (oneDirectionRealizationFunctor r).obj (stableCategoryModel C) := rfl
 
 /-- 概要：元の一次方向実現の全パラメータ作用。
 方針：元の全多次数作用を同じ対角に制限する。
 規約：全単体を保持する。使われ方：全零境界の保存。 -/
-def stableOneDirectionAction (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+def stableOneDirectionAction (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     ((oneDirectionRealizationFunctor r).obj (stableCategoryModel C)) ⊗
       (C ⟶[SSet.{u}] D) ⟶
         (oneDirectionRealizationFunctor r).obj (stableCategoryModel D) :=
@@ -43,14 +43,14 @@ def stableOneDirectionAction (r : ℕ) (C D : _root_.SerrePositivity.InfinityCat
 /-- 概要：豊穣射の評価は同じ元の全実現作用。
 方針：同じ対角作用の定義を展開する。
 規約：全パラメータの等式。使われ方：元の作用法則の回収。 -/
-lemma stableOneDirectionEnrichedFunctor_action (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableOneDirectionEnrichedFunctor_action (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     uncurry ((stableOneDirectionEnrichedFunctor r).map C D) =
       stableOneDirectionAction r C D := rfl
 
 /-- 概要：全作用の各単体は同じ多次数の全 core 作用。
 方針：既存の対角作用の評価式を使う。
 規約：高次入力 p を固定する。使われ方：境界保存と比較自然性の検証。 -/
-lemma stableOneDirectionAction_app (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u})
+lemma stableOneDirectionAction_app (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u})
     (n : SimplexCategoryᵒᵖ)
     (x : ((oneDirectionRealizationFunctor r).obj (stableCategoryModel C)).obj n)
     (p : (C ⟶[SSet.{u}] D).obj n) :
@@ -63,7 +63,7 @@ lemma stableOneDirectionAction_app (r : ℕ) (C D : _root_.SerrePositivity.Infin
 /-- 概要：元の S₁ 実現比較は全自然同値パラメータと厳密に可換する。
 方針：元の core 比較の全族自然性を対角の同じ単体に適用する。
 規約：対象ごとの可換性で代用しない。使われ方：有限四角形の全 Ω 比較。 -/
-lemma stableOneDirectionComparison_action (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableOneDirectionComparison_action (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (oneDirectionRealizationComparison r (stableCategoryModel C) ▷
         (C ⟶[SSet.{u}] D)) ≫ stableMultiRealizationAction r C D =
       stableOneDirectionAction r C D ≫

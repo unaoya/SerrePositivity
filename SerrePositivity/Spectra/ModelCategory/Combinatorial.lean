@@ -42,7 +42,7 @@ lemma symmetricSpectrum_isLocallyPresentable (K : C) :
 /-- Actual level model, with image smallness and presentability derived from C.
 No cardinal bounds or SOA hypotheses on spectra are additional inputs. -/
 lemma exists_combinatorial_levelModel [ModelCategory C] (K : C)
-    (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+    (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
     (heval : ∀ n m : ℕ, J.strictMap
       (GeneralSymmetricSpectrum.freeAt (K := K) n ⋙ GeneralSymmetricSpectrum.evaluation m) ≤
         trivialCofibrations C) :
@@ -50,7 +50,7 @@ lemma exists_combinatorial_levelModel [ModelCategory C] (K : C)
       m.categoryWithWeakEquivalences.weakEquivalences = levelProperty K (weakEquivalences C) ∧
       m.categoryWithFibrations.fibrations = levelProperty K (fibrations C) ∧
       m.categoryWithCofibrations.cofibrations = (levelGenerators K I).rlp.llp ∧
-      (let := m; ModelGeneration.CofibrantlyGenerated.{w}
+      (let := m; _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w}
         (levelGenerators K I) (levelGenerators K J)) := by
   have := Smith.locallyPresentable_hasColimits (C := C)
   have := symmetricSpectrum_isLocallyPresentable (K := K)

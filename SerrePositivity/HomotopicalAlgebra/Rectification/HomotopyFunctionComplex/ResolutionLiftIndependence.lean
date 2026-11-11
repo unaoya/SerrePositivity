@@ -69,9 +69,9 @@ lemma hom_map_eq_of_base_eq {X X' : (ResolutionObject C)ᵒᵖ}
     have ha' : ∀ n, weakEquivalences C (a.hom.app n) := ha
     have hw := cosimplicialHomMap_weakEquivalence hcof a.hom
       (mem_cofibrations (initial.to A.obj)) (mem_cofibrations (initial.to B.obj)) ha' Y.obj
-    have : IsIso (L.map ((cosimplicialHomMap a.hom).app Y.obj)) :=
+    have : IsIso (L.map ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a.hom).app Y.obj)) :=
       Localization.inverts L (weakEquivalences SSet.{v}) _ hw
-    exact inferInstanceAs (IsIso (L.map ((cosimplicialHomMap a.hom).app Y.obj)).op)
+    exact inferInstanceAs (IsIso (L.map ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a.hom).app Y.obj)).op)
   have he' : (CofibrantObject.ι ⋙ Q).map (CofibrantObject.homMk f.unop.diagram) =
       (CofibrantObject.ι ⋙ Q).map (CofibrantObject.homMk g.unop.diagram) := he
   have eqF := (AreEqualizedByLocalization.mk _ _ _

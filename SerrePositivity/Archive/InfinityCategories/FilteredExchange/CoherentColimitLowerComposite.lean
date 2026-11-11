@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitIntervalVertex
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentNativeUnitRepresentation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoconeIntervalFiberTransport
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.UnstraighteningTriangleComposition
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.UnstraighteningTriangleComposition
 
 /-!
 概要：元の単位正方形の下三角形の全空間作用を、同じ指定辺の普遍輸送へ比較する。

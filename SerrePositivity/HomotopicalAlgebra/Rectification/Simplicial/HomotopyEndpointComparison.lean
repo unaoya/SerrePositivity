@@ -43,8 +43,8 @@ open CategoryTheory.CartesianMonoidalCategory
 
 namespace SerrePositivity.SimplicialModel.HomotopyEndpointComparison
 
-variable {P : SSet.{v}} (hp : UniverseLift.BoundaryFillers P) {K : SSet.{max w v}}
-  {e₀ e₁ : K ⟶ UniverseLift.obj.{w} P} (H H' : SSet.Homotopy e₀ e₁)
+variable {P : SSet.{v}} (hp : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers P) {K : SSet.{max w v}}
+  {e₀ e₁ : K ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P} (H H' : SSet.Homotopy e₀ e₁)
 
 /-- Both actual homotopies are retained and both original endpoint families stay fixed. -/
 abbrev homotopy : SSet.Homotopy H.h H'.h :=

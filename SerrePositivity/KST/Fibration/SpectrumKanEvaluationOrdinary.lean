@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.DGKPositiveEvaluation
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeFunctorImage
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.StrictConeFunctorImage
 public import SerrePositivity.KST.Spectra.Limits.SpectrumMappingDiagram
 
 /-! # 元の BF 段評価の、同じ通常射と点つき値の回収 -/
@@ -11,7 +11,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalCategory SSet
 open SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.Fibration
@@ -23,13 +23,13 @@ local instance evaluationOrdinaryPointedCategory :
 
 /-- 同じ厳密豊穣評価から得る、元の点つき Kan 段への通常の関手。 -/
 abbrev spectrumKanEvaluationOrdinary (n : ℕ) : OmegaSpectrum.{u} ⥤ PointedKanObject.{u} :=
-  coherentEnrichedUnderlyingFunctor (spectrumKanEvaluation n)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (spectrumKanEvaluation n)
 
 /-- 元の BF 射を評価すると、同じ元の段射 app n そのものが得られる。 -/
 theorem spectrumKanEvaluationOrdinary_map (n : ℕ) {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) :
     (spectrumKanEvaluationOrdinary n).map f = ObjectProperty.homMk (f.app n) := by
-  change _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap (spectrumKanEvaluation n) f = _
-  apply _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_of_hom
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialOrdinaryMap (spectrumKanEvaluation n) f = _
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialOrdinaryMap_of_hom
   have hf : eHomEquiv SSet f = OmegaSpectrum.vertexOfHomMap f := by
     change (SSet.unitHomEquiv _).symm
       ((SSet.unitHomEquiv _) (OmegaSpectrum.vertexOfHomMap f)) = _

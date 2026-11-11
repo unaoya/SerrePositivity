@@ -22,8 +22,8 @@ def simplicialSpaceToPoint (F : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
 
 /-- 元の核の各相対 S の収縮から、元の対角の同じ一点射も局所化同型。 -/
 theorem relativeSKernelDiagonal_toPoint_localized_isIso
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
     IsIso (AnodyneHomotopy.anodyneQ.map (terminal.from
       (simplicialDiagonalFunctor.obj (relativeSimplicialSConstruction (i.hom ≫ q.hom))))) := by
   let F := relativeSimplicialSConstruction (i.hom ≫ q.hom)

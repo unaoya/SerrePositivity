@@ -28,7 +28,7 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 abbrev modelBifibrantSourceRoofProductComma :=
-  CostructuredArrow (modelBifibrantSourceFrameElementDegree X Y q)
+  CostructuredArrow (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegree X Y q)
   (modelBifibrantSourceRoofDegree X Y q b)
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
@@ -37,14 +37,14 @@ abbrev modelBifibrantSourceRoofProductComma :=
 def modelBifibrantSourceRoofProductCommaIso :
   nerve (modelBifibrantSourceRoofProductElements X Y q b) ≅
     nerve (modelBifibrantSourceRoofProductComma X Y q b) :=
-      ProductSimplexUniverseOver.nerveIso.{v, u} _ _
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.nerveIso.{v, u} _ _
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductCommaFirstNerve :
   nerve (modelBifibrantSourceRoofProductComma X Y q b) ⟶
-    nerve (modelBifibrantSourceFrameElementCategory X Y q) where
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementCategory X Y q) where
   app _ := ↾fun σ => σ ⋙ CostructuredArrow.proj _ _
   naturality _ _ _ := rfl
 
@@ -61,7 +61,7 @@ lemma modelBifibrantSourceRoofProductCommaIso_first :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaIso_over :
     (modelBifibrantSourceRoofProductCommaIso X Y q b).hom ≫
-      nerveMap (CostructuredArrow.toOver (modelBifibrantSourceFrameElementDegree X Y q)
+      nerveMap (CostructuredArrow.toOver (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegree X Y q)
         (modelBifibrantSourceRoofDegree X Y q b)) =
           modelBifibrantSourceRoofProductOverNerve X Y q b := rfl
 
@@ -70,14 +70,14 @@ lemma modelBifibrantSourceRoofProductCommaIso_over :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 abbrev modelBifibrantSourceRoofProductCommaDegree : modelBifibrantSourceRoofProductComma X Y q b ⥤
     AsSmall.{max u v} SimplexCategory :=
-  CostructuredArrow.proj _ _ ⋙ modelBifibrantSourceFrameElementDegree X Y q
+  CostructuredArrow.proj _ _ ⋙ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegree X Y q
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 abbrev modelBifibrantSourceRoofProductCommaDiagram : modelBifibrantSourceRoofProductComma X Y q b ⥤
-    (modelBifibrantRelativeCategory C).category :=
-  modelBifibrantSourceRoofProductCommaDegree X Y q b ⋙ modelBifibrantDKFrame X q
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).category :=
+  modelBifibrantSourceRoofProductCommaDegree X Y q b ⋙ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
@@ -85,12 +85,12 @@ abbrev modelBifibrantSourceRoofProductCommaDiagram : modelBifibrantSourceRoofPro
 def modelBifibrantSourceRoofProductCommaEvaluation :
   modelBifibrantSourceRoofProductCommaDiagram X Y q b ⟶
     (Functor.const (modelBifibrantSourceRoofProductComma X Y q b)).obj
-      ((modelBifibrantDKFrame X q).obj (modelBifibrantSourceRoofDegree X Y q b)) where
-  app s := (modelBifibrantDKFrame X q).map s.hom
+      ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q).obj (modelBifibrantSourceRoofDegree X Y q b)) where
+  app s := (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q).map s.hom
   naturality {_s _t} f := by
-    change (modelBifibrantDKFrame X q).map ((modelBifibrantSourceFrameElementDegree X Y q).map
+    change (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q).map ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegree X Y q).map
       f.left) ≫
-      (modelBifibrantDKFrame X q).map _ = _ ≫ 𝟙 _
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q).map _ = _ ≫ 𝟙 _
     rw [← CategoryTheory.Functor.map_comp, CostructuredArrow.w, Category.comp_id]
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
@@ -99,10 +99,10 @@ def modelBifibrantSourceRoofProductCommaEvaluation :
 def modelBifibrantSourceRoofProductCommaRightLeg :
   modelBifibrantSourceRoofProductCommaDiagram X Y q b ⟶
     (Functor.const (modelBifibrantSourceRoofProductComma X Y q b)).obj
-      (modelBifibrantObject C Y) where
-  app s := ((modelBifibrantSourceFrameElementsToDK X Y q).obj s.left).hom
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y) where
+  app s := ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementsToDK X Y q).obj s.left).hom
   naturality {_s _t} f := by
-    exact (CostructuredArrow.w ((modelBifibrantSourceFrameElementsToDK X Y q).map f.left)).trans
+    exact (CostructuredArrow.w ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementsToDK X Y q).map f.left)).trans
       (Category.comp_id _).symm
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
@@ -111,9 +111,9 @@ def modelBifibrantSourceRoofProductCommaRightLeg :
 def modelBifibrantSourceRoofProductCommaAugmentation :
     modelBifibrantSourceRoofProductCommaDiagram X Y q b ⟶
       (Functor.const (modelBifibrantSourceRoofProductComma X Y q b)).obj
-        (modelBifibrantObject C X) :=
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C X) :=
   Functor.whiskerLeft (modelBifibrantSourceRoofProductCommaDegree X Y q b)
-    (modelBifibrantDKFrameAugmentation X q)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrameAugmentation X q)
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
@@ -121,29 +121,29 @@ def modelBifibrantSourceRoofProductCommaAugmentation :
 lemma modelBifibrantSourceRoofProductCommaAugmentation_triangle :
     modelBifibrantSourceRoofProductCommaEvaluation X Y q b ≫
       (Functor.const (modelBifibrantSourceRoofProductComma X Y q b)).map
-        ((modelBifibrantDKFrameAugmentation X q).app (modelBifibrantSourceRoofDegree X Y q b)) =
+        ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrameAugmentation X q).app (modelBifibrantSourceRoofDegree X Y q b)) =
           modelBifibrantSourceRoofProductCommaAugmentation X Y q b := by
   apply NatTrans.ext
   funext s
-  exact ((modelBifibrantDKFrameAugmentation X q).naturality s.hom).trans (Category.comp_id _)
+  exact ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrameAugmentation X q).naturality s.hom).trans (Category.comp_id _)
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaEvaluation_weak (s :
   modelBifibrantSourceRoofProductComma X Y q b) :
-    (modelBifibrantRelativeCategory C).weakEquivalences
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
       ((modelBifibrantSourceRoofProductCommaEvaluation X Y q b).app s) :=
-  modelBifibrantDKFrame_map_weak X q s.hom
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame_map_weak X q s.hom
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaAugmentation_weak
     (s : modelBifibrantSourceRoofProductComma X Y q b) :
-    (modelBifibrantRelativeCategory C).weakEquivalences
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
       ((modelBifibrantSourceRoofProductCommaAugmentation X Y q b).app s) :=
-  modelBifibrantDKFrameAugmentation_weak X q ((modelBifibrantSourceFrameElementDegree X Y
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrameAugmentation_weak X q ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegree X Y
     q).obj s.left)
 
 end SerrePositivity.EInfinity.SimplicialLocalization

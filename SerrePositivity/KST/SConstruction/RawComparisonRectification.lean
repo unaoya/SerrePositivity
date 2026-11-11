@@ -20,12 +20,12 @@ variable (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) {U : SSet.{u}}
   (H : ∀ n, SSet.Homotopy (a ≫ RawSpectrumMapping.evaluation X Y n)
     (b ≫ RawSpectrumMapping.evaluation X Y n))
   (L : ∀ n, SSet.Homotopy
-    ((H (n + 1)).h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+    ((H (n + 1)).h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
     ((H n).h ≫ RawSpectrumMapping.step X Y n))
   (hL : ∀ n, ((U ◁ (SSet.boundary 1).ι) ▷ (Δ[1] : SSet.{u})) ≫ (L n).h =
     CartesianMonoidalCategory.fst (U ⊗ (SSet.boundary 1).toSSet) Δ[1] ≫
       (U ◁ (SSet.boundary 1).ι) ≫ (H (n + 1)).h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
 
 /-- 累積補正済みの全段の実円柱を、一つの raw 族に束ねる。 -/
 def rawComparisonRectificationMap : U ⊗ (Δ[1] : SSet.{u}) ⟶ RawSpectrumMapping.space X Y :=

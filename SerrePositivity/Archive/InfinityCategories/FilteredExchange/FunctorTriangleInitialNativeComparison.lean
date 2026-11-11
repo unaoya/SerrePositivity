@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTriangleInitialNativeEvaluation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.VertexIsoConstantValue
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryIsoPresentation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeFunctorCurryIsoPresentation
 
 /-!
 概要：元の全三角形比較の固定始点の辺像は、native 始点で同じ恒等同型となる。

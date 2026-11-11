@@ -21,9 +21,9 @@ namespace SerrePositivity.KST.Spectra.LoopExchangePaths
 variable {Y Y' Z Z' : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Y'.right]
   [KanComplex Z.right] [KanComplex Z'.right]
   (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
-  (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+  (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
   (a' : Y' ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z')
-  (ha' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a'.right) (v : Y ⟶ Y') (w : Z ⟶ Z')
+  (ha' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a'.right) (v : Y ⟶ Y') (w : Z ⟶ Z')
   (hc : a ≫ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} w = v ≫ a')
 
 /-- 元の随伴を使った同じ exchange の二辺と、像の正方形への相対反映トレース。 -/

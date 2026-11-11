@@ -32,10 +32,10 @@ def rebase {X : SSet.{u}} {x y : X _⦋0⦌} (h : x = y) {m : ℕ}
 /-- 恒等射の群同型による基点移送は、射を変えない単体の移送と一致する。 -/
 lemma group_mk {X : SSet.{u}} [KanComplex X] {x y : X _⦋0⦌} (h : x = y) {n : ℕ}
     (s : X.PtSimplex (n + 1) x) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (Iso.refl X) h (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (rebase h s) := by
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 X) h (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso n (Iso.refl X) h (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (rebase h s) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (𝟙 X) h (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_mk]
   congr 1
 
 end SimplexBasepoint
@@ -45,12 +45,12 @@ namespace BoundaryLift
 variable {Y : PointedSimplicialSet.{u}} {n : ℕ}
   {s : Y.right.PtSimplex (n + 2)
     ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint)}
-  (M : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift (pathEndpoint Y).right (basedPathSpace Y).basepoint s)
+  (M : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift (pathEndpoint Y).right (basedPathSpace Y).basepoint s)
 
 /-- path の充填の最後の面を loop の単体へ戻す。 -/
-def loopSimplex : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right.PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint :=
-  _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (loopBasedPathFiberIso Y).inv
-    (_root_.SerrePositivity.InfinityCategories.Kan.iso_inverse_basepoint (loopBasedPathFiberIso Y) (loopBasedPathFiberIso_basepoint Y)) M.boundary
+def loopSimplex : (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right.PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (loopBasedPathFiberIso Y).inv
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.iso_inverse_basepoint (loopBasedPathFiberIso Y) (loopBasedPathFiberIso_basepoint Y)) M.boundary
 
 /-- loop の代表を path に含めると元の充填の最後の面へ戻る。 -/
 @[reassoc]
@@ -65,28 +65,28 @@ lemma loopSimplex_toPath : (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loop
 規約：標準基点への移送を式に保持する。
 使われ方：Goerss–Jardine I §7–8。標準の loop 同型への代表の接続。 -/
 lemma loopPositive_loopSimplex [KanComplex Y.right] :
-    loopPositiveHomotopyEquiv Y n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M)) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (n + 1) (Iso.refl Y.right) (pathEndpoint_basepoint Y)
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) := by
-  let b := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (n + 1) (Iso.refl Y.right) (pathEndpoint_basepoint Y)
-  have hf : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (loopBasedPathFiberIso Y)
-      (loopBasedPathFiberIso_basepoint Y) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M)) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk M.boundary := by
-    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (loopBasedPathFiberIso Y).hom _
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M)) = _
-    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
+    loopPositiveHomotopyEquiv Y n (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso (n + 1) (Iso.refl Y.right) (pathEndpoint_basepoint Y)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s) := by
+  let b := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso (n + 1) (Iso.refl Y.right) (pathEndpoint_basepoint Y)
+  have hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso n (loopBasedPathFiberIso Y)
+      (loopBasedPathFiberIso_basepoint Y) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk M.boundary := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (loopBasedPathFiberIso Y).hom _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M)) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_mk]
     congr 1
     ext : 1
-    simp only [loopSimplex, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, Category.assoc, Iso.inv_hom_id, Category.comp_id]
-  have he : b.symm (loopPositiveHomotopyEquiv Y n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M))) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s := by
-    apply (_root_.SerrePositivity.InfinityCategories.Kan.connectingHomEquivOfTotalSubsingleton (pathEndpoint Y).right
+    simp only [loopSimplex, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex, Category.assoc, Iso.inv_hom_id, Category.comp_id]
+  have he : b.symm (loopPositiveHomotopyEquiv Y n (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M))) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s := by
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connectingHomEquivOfTotalSubsingleton (pathEndpoint Y).right
       (basedPathSpace Y).basepoint n).injective
-    change _root_.SerrePositivity.InfinityCategories.Kan.connectingHom (pathEndpoint Y).right (basedPathSpace Y).basepoint n _ = _
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connectingHom (pathEndpoint Y).right (basedPathSpace Y).basepoint n _ = _
     rw [connecting_loopPositiveHomotopyEquiv, hf]
-    change _ = _root_.SerrePositivity.InfinityCategories.Kan.connecting (pathEndpoint Y).right (basedPathSpace Y).basepoint (n + 1)
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)
-    exact (_root_.SerrePositivity.InfinityCategories.Kan.connecting_eq (pathEndpoint Y).right (basedPathSpace Y).basepoint M).symm
+    change _ = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connecting (pathEndpoint Y).right (basedPathSpace Y).basepoint (n + 1)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s)
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connecting_eq (pathEndpoint Y).right (basedPathSpace Y).basepoint M).symm
   have he' := congrArg b he
   simpa only [MulEquiv.apply_symm_apply] using he'
 

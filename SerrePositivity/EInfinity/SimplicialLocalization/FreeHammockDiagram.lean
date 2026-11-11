@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockObjects
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectWordDiagram
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitGraph
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectWordDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitGraph
 
 /-!
 # 元の自由相対解像の固定対象の hammock の二重単体的図式
@@ -19,19 +19,19 @@ noncomputable section
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory CategoryTheory.Limits
 
-def freeHammockWordDiagram (C : RelativeCategory.{u}) (X Y : C.category) :
-    Hammock.Word ⥤ SimplexCategoryᵒᵖ ⥤ SSet.{u} :=
-  Hammock.FixedObjectDiagram.graphWordDiagram (freeResolution C) (freeResolutionObject C)
+def freeHammockWordDiagram (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SimplexCategoryᵒᵖ ⥤ SSet.{u} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectWordDiagram.graphWordDiagram (freeResolution C) (freeResolutionObject C)
     (fun θ X => freeResolutionObject_naturality C θ X) X Y
 
-def freeHammockResolution (C : RelativeCategory.{u}) (X Y : C.category) :
+def freeHammockResolution (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
     SimplicialObject SSet.{u} :=
   (freeHammockWordDiagram C X Y).flip ⋙ colim
 
-lemma freeHammockResolution_obj (C : RelativeCategory.{u}) (X Y : C.category)
+lemma freeHammockResolution_obj (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
     (n : SimplexCategoryᵒᵖ) :
     (freeHammockResolution C X Y).obj n =
-      Hammock.colimitGraph ((freeResolution C).obj n).weakEquivalences
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph ((freeResolution C).obj n).weakEquivalences
         (freeResolutionObject C n X) (freeResolutionObject C n Y) := rfl
 
 end SerrePositivity.EInfinity.SimplicialLocalization

@@ -15,7 +15,7 @@ open SerrePositivity.HomotopyFunctionComplex
 namespace SerrePositivity.DiagramModel.FrameWeightedLimit
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C] [ModelCategory SSet.{w}]
-  (I J : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 abbrev family : (K ⥤ SimplexCategory ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} :=
   SmallHomFrameWeights.homFamily K ⋙
@@ -37,9 +37,9 @@ end SerrePositivity.DiagramModel.FrameWeightedLimit
 namespace SerrePositivity.DiagramModel.HocolimWeightedComparison
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [ModelCategory SSet.{w}]
-  (IS JS : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  (IS JS : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
 
 abbrev weightedHom : (K ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{w} :=

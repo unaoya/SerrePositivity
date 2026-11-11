@@ -23,31 +23,31 @@ variable {C D E : Type u} [Category.{v} C] [Category.{v} D] [Category.{v} E]
   {W : MorphismProperty C} [W.IsMultiplicative] {V : MorphismProperty D} [V.IsMultiplicative]
   {U : MorphismProperty E} [U.IsMultiplicative]
 
-lemma Zigzag.Relative.functor_id (w : Word) (X Y : C) :
-    Zigzag.Relative.functor (w := w) (X := X) (Y := Y) (LocalizerMorphism.id W) = 𝟭 _ := rfl
+lemma Zigzag.Relative.functor_id (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (w := w) (X := X) (Y := Y) (LocalizerMorphism.id W) = 𝟭 _ := rfl
 
 lemma Zigzag.Relative.functor_comp (F : LocalizerMorphism W V) (G : LocalizerMorphism V U)
-    (w : Word) (X Y : C) :
-    Zigzag.Relative.functor (w := w) (X := X) (Y := Y) (F.comp G) =
-      Zigzag.Relative.functor F ⋙ Zigzag.Relative.functor G := rfl
+    (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (w := w) (X := X) (Y := Y) (F.comp G) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor G := rfl
 
 namespace Relative
 
-lemma graphDiagramMap_id (X Y : C) : graphDiagramMap (LocalizerMorphism.id W) X Y = 𝟙 _ := by
+lemma graphDiagramMap_id (X Y : C) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagramMap (LocalizerMorphism.id W) X Y = 𝟙 _ := by
   apply NatTrans.ext
   funext w
-  change nerveFunctor.map (𝟙 (Cat.of (Zigzag W w X Y))) = 𝟙 _
+  change nerveFunctor.map (𝟙 (Cat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W w X Y))) = 𝟙 _
   exact nerveFunctor.map_id _
 
 lemma graphDiagramMap_comp (F : LocalizerMorphism W V) (G : LocalizerMorphism V U) (X Y : C) :
-    graphDiagramMap (F.comp G) X Y = graphDiagramMap F X Y ≫
-      graphDiagramMap G (F.functor.obj X) (F.functor.obj Y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagramMap (F.comp G) X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagramMap F X Y ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagramMap G (F.functor.obj X) (F.functor.obj Y) := by
   apply NatTrans.ext
   funext w
   change nerveFunctor.map
-    (Zigzag.Relative.functor (w := w) (X := X) (Y := Y) (F.comp G)).toCatHom =
-    nerveFunctor.map (Zigzag.Relative.functor (w := w) (X := X) (Y := Y) F).toCatHom ≫
-      nerveFunctor.map (Zigzag.Relative.functor (w := w)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (w := w) (X := X) (Y := Y) (F.comp G)).toCatHom =
+    nerveFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (w := w) (X := X) (Y := Y) F).toCatHom ≫
+      nerveFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (w := w)
         (X := F.functor.obj X) (Y := F.functor.obj Y) G).toCatHom
   rw [← nerveFunctor.map_comp]
   rfl

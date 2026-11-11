@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionBarRowPresentations
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarSectionUnit
-public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftPadding
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftPadding
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.LargeParameterSquare
 
 /-!
@@ -47,7 +47,7 @@ namespace SerrePositivity.HomotopyFunctionComplex.ResolutionBarRowHomotopy
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (R : RightResolutionMapping.Index C) (n : SimplexCategoryᵒᵖ)
 
-def sectionMap : UniverseLift.obj.{u}
+def sectionMap : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u}
     ((MixedBiresolutionComparison.functor (C := C)).obj
       (ResolutionBarRowPresentations.pair R n)) ⟶
       ResolutionBarEvaluation.bar R where
@@ -58,7 +58,7 @@ def sectionMap : UniverseLift.obj.{u}
   naturality {_ _} _ := rfl
 
 lemma padded_reference :
-    (UniverseLift.paddingIso.{v, u}.app
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.paddingIso.{v, u}.app
       ((MixedBiresolutionComparison.functor (C := C)).obj R)).hom ≫
       BarConstruction.commaSection (RightResolutionMapping.projection (C := C))
         MixedBiresolutionComparison.functor
@@ -69,7 +69,7 @@ lemma padded_reference :
 
 /-- Both endpoints are the original maps into the same actual bar. -/
 def homotopy : SSet.Homotopy (ResolutionBarReference.sectionMap R)
-    (UniverseLift.map.{u} ((ResolutionRowMixedMapping.rowComparison n).app R) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} ((ResolutionRowMixedMapping.rowComparison n).app R) ≫
       sectionMap R n) := by
   let H := BarConstruction.commaSectionHomotopy (RightResolutionMapping.projection (C := C))
     MixedBiresolutionComparison.functor (d := R) (e := ResolutionBarRowPresentations.pair R n)
@@ -77,9 +77,9 @@ def homotopy : SSet.Homotopy (ResolutionBarReference.sectionMap R)
     (𝟙 ((RightResolutionMapping.projection (C := C)).obj R))
     (ResolutionBarRowPresentations.arrow R n) (by
       rw [ResolutionBarRowPresentations.arrow_base, Category.id_comp])
-  exact LargeParameterSquare.changeEndpoints
-    (LargeParameterSquare.transport
-      (UniverseLift.paddingIso.{v, u}.app
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.transport
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.paddingIso.{v, u}.app
       ((MixedBiresolutionComparison.functor (C := C)).obj R)).hom
       (𝟙 _) H)
     (by ext m x; rfl) (by ext m x; rfl)
@@ -89,7 +89,7 @@ variable {H : Type uH} [Category.{vH} H] (L : SSet.{max u v} ⥤ H)
 
 include hL in
 lemma image_eq : L.map (ResolutionBarReference.sectionMap R) =
-    L.map (UniverseLift.map.{u} ((ResolutionRowMixedMapping.rowComparison n).app R)) ≫
+    L.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} ((ResolutionRowMixedMapping.rowComparison n).app R)) ≫
       L.map (sectionMap R n) :=
   (AnodyneHomotopy.map_homotopy_eq L hL (homotopy R n)).trans (L.map_comp _ _)
 
@@ -102,7 +102,7 @@ lemma section_isIso_iff : IsIso (AnodyneHomotopy.anodyneQ.map
     (ResolutionBarReference.sectionMap R)) ↔
     IsIso (AnodyneHomotopy.anodyneQ.map (sectionMap R n)) := by
   have hi : IsIso (AnodyneHomotopy.anodyneQ.map
-      (UniverseLift.map.{u} ((ResolutionRowMixedMapping.rowComparison n).app R))) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} ((ResolutionRowMixedMapping.rowComparison n).app R))) :=
     (UniverseLift.weakEquivalences_iff_lift_anodyneQ_isIso hcof hfib _).mp
       (ResolutionRowMixedMapping.rowComparison_weakEquivalence hcof hfib R n)
   rw [image_eq R n AnodyneHomotopy.anodyneQ
@@ -123,7 +123,7 @@ lemma right_isIso_iff_row : IsIso (AnodyneHomotopy.anodyneQ.map
       (𝟙 ((RightResolutionMapping.projection (C := C)).obj R)))) ↔
       IsIso (Q.map (ResolutionBarReference.sectionMap R)) := by
     have := Functor.map_isIso (F := Q)
-      (UniverseLift.paddingIso.{v, u}.app
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.paddingIso.{v, u}.app
         ((MixedBiresolutionComparison.functor (C := C)).obj R)).hom
     rw [← padded_reference, Q.map_comp]
     exact (isIso_comp_left_iff _ _).symm

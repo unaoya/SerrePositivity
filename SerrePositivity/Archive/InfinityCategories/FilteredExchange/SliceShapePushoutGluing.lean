@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ConeRestrictionTransport
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeRestrictionTransport
 
 /-!
 概要：形状の pushout 上の coherent な錐の全空間を、元の二部分から一意に貼る。

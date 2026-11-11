@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：連続区間の面の交換公式を、全テンソルへの斉次制限項に適用する。
 規約：KST Construction A.5 の標準 AW。全次数は p+q=n、元の単体の次元は n+1。
 使われ方：境界添字の同値と合わせた AW の鎖写像性。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

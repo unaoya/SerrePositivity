@@ -42,7 +42,7 @@ local instance sequentialComparisonSimplicialCategory : SimplicialCategory Omega
 theorem sequentialInjection_isInvertible_of_stable (D : SpectrumSequence.{u}) (N : ℕ)
     (h : ∀ (j : ℤ) (m : ℕ) (hm : N ≤ m),
       Function.Bijective (OmegaSpectrum.homotopyMap (D.map (homOfLE hm)) j)) :
-    IsInvertibleEdge (coherentNerveEdge (sequentialInjection D N)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (sequentialInjection D N)) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (fun j ↦ sequentialInjection_bijective_of_stable D j N (h j))
 

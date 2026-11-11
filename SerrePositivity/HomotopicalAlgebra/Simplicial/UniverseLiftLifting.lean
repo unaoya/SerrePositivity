@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Simplicial.UniverseLift
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLift
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FullyFaithfulLifting
 public import Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.EpiMono
@@ -22,13 +22,13 @@ variable {X Y : SSet.{v}} (p : X ⟶ Y)
 lemma boundary_lifting_iff (n : ℕ) :
     HasLiftingProperty (SSet.boundary.{max v w} n).ι (SSet.uliftFunctor.{w, v}.map p) ↔
       HasLiftingProperty (SSet.boundary.{v} n).ι p :=
-  (HasLiftingProperty.iff_of_arrow_iso_left (boundaryArrowIso n) _).symm.trans
+  (HasLiftingProperty.iff_of_arrow_iso_left (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.boundaryArrowIso n) _).symm.trans
     (ModelGeneration.hasLiftingProperty_map_iff SSet.uliftFunctor.{w, v} _ p)
 
 lemma horn_lifting_iff (n : ℕ) (i : Fin (n + 1)) :
     HasLiftingProperty (SSet.horn.{max v w} n i).ι (SSet.uliftFunctor.{w, v}.map p) ↔
       HasLiftingProperty (SSet.horn.{v} n i).ι p :=
-  (HasLiftingProperty.iff_of_arrow_iso_left (hornArrowIso n i) _).symm.trans
+  (HasLiftingProperty.iff_of_arrow_iso_left (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.hornArrowIso n i) _).symm.trans
     (ModelGeneration.hasLiftingProperty_map_iff SSet.uliftFunctor.{w, v} _ p)
 
 lemma boundary_rightClass_iff :

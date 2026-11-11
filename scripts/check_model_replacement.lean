@@ -1,5 +1,5 @@
 import SerrePositivity.HomotopicalAlgebra.Generated.Replacement
-import SerrePositivity.InfinityCategories.ModelBridge.Inputs.SimplicialLevel
+import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Inputs.SimplicialLevel
 import Lean.Util.CollectAxioms
 
 universe w u v

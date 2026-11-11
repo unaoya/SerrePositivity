@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonalHomotopy
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.SquareDiagonalHomotopy
 
 public import SerrePositivity.KST.LocalizingInvariants.SquareDiagonalShape
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorTriangleSquare
-public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorTriangleSquare
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
 
 /-!
 概要：元の辺の比較を、下側三角形・共通対角・上側三角形の全 h Fun 合成に分解する。
@@ -23,13 +23,13 @@ namespace SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
 
 variable {X : SSet.{u}} {F G : (Δ[1] : SSet.{u}) ⟶ X} (H : SSet.Homotopy F G)
 
-def afterBottom : SSet.Homotopy F (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.diagonal H) where
-  h := postShape ≫ squareTriangle 1 ≫ H.h
+def afterBottom : SSet.Homotopy F (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.diagonal H) where
+  h := postShape ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ H.h
   h₀ := by
-    rw [← Category.assoc, postShape_zero, ← Category.assoc, triangleSquare_lower_bottom, H.h₀]
+    rw [← Category.assoc, postShape_zero, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.triangleSquare_lower_bottom, H.h₀]
     rfl
   h₁ := by
-    rw [← Category.assoc, postShape_one, ← Category.assoc, squareTriangle_diagonal]
+    rw [← Category.assoc, postShape_one, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle_diagonal]
     rfl
   rel := by
     apply SSet.hom_ext
@@ -38,13 +38,13 @@ def afterBottom : SSet.Homotopy F (_root_.SerrePositivity.InfinityCategories.Sta
     intro s
     exact False.elim s.1.property
 
-def beforeTop : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.diagonal H) G where
-  h := preShape ≫ squareTriangle 0 ≫ H.h
+def beforeTop : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.diagonal H) G where
+  h := preShape ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ H.h
   h₀ := by
-    rw [← Category.assoc, preShape_zero, ← Category.assoc, squareTriangle_diagonal]
+    rw [← Category.assoc, preShape_zero, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle_diagonal]
     rfl
   h₁ := by
-    rw [← Category.assoc, preShape_one, ← Category.assoc, triangleSquare_upper_top, H.h₁]
+    rw [← Category.assoc, preShape_one, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.triangleSquare_upper_top, H.h₁]
     rfl
   rel := by
     apply SSet.hom_ext
@@ -54,8 +54,8 @@ def beforeTop : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Stable.
     exact False.elim s.1.property
 
 def compositionTriangle : Truncated.Edge.CompStruct
-    (functorEdgeOfSimplicialHomotopy (afterBottom H))
-    (functorEdgeOfSimplicialHomotopy (beforeTop H)) (functorEdgeOfSimplicialHomotopy H) where
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (afterBottom H))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (beforeTop H)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) where
   simplex := SSet.yonedaEquiv (curry (factor ≫ H.h))
   d₂ := by
     change ((ihom (Δ[1] : SSet.{u})).obj X).δ 2
@@ -83,9 +83,9 @@ def compositionTriangle : Truncated.Edge.CompStruct
     rw [← stdSimplex.yonedaEquiv_δ_comp, he]
 
 lemma homMk_decomposition :
-    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (afterBottom H)) ≫
-        Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (beforeTop H)) :=
+    Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) =
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (afterBottom H)) ≫
+        Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (beforeTop H)) :=
   (Truncated.HomotopyCategory.homMk_comp_homMk (compositionTriangle H)).symm
 
 end SerrePositivity.KST.LocalizingInvariants.SquareDiagonal

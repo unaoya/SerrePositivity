@@ -24,11 +24,11 @@ local instance nativeCoherentBFPositiveTarget_simplicialCategory :
 方針：豊穣合成の nerve と元の充満制限の包含式を使う。
 規約：全二胞体の等式。使われ方：実正段同型の元図式への照合。 -/
 lemma dgKappaNativeBFFiniteBoundarySquare_eq (r : ℕ) :
-    dgKappaNativeBFFiniteSquare.{u, v} R D I ≫ coherentNerveMap
+    dgKappaNativeBFFiniteSquare.{u, v} R D I ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap
       (dgKappaNativeBFFiniteBoundaryKanFunctor.{u, v} R D I r) =
         dgKappaNativeBFPointedStageSquare.{u, v} R D I r := by
   unfold dgKappaNativeBFFiniteBoundaryKanFunctor
-  rw [coherentNerveMap_comp, ← Category.assoc, dgKappaNativeBFFiniteSquare_inclusion]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, ← Category.assoc, dgKappaNativeBFFiniteSquare_inclusion]
   rfl
 
 /-- 概要：実 BF 全四角形の評価は同じ実段の全四角形。
@@ -36,25 +36,25 @@ lemma dgKappaNativeBFFiniteBoundarySquare_eq (r : ℕ) :
 規約：新しい充填を選ばない。使われ方：全正段の指定比較。 -/
 lemma dgKappaNativeCoherentBFSquare_pointedEvaluation (n : ℕ) :
     dgKappaNativeCoherentBFSquare.{u, v} R D I ≫
-        coherentNerveMap (spectrumKanEvaluation n) =
-      dgKappaNativeBFFiniteSquare.{u, v} R D I ≫ coherentNerveMap
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumKanEvaluation n) =
+      dgKappaNativeBFFiniteSquare.{u, v} R D I ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap
         (dgKappaNativeBFFiniteLevelKanFunctor.{u, v} R D I n) := by
   exact (Category.assoc (dgKappaNativeBFFiniteSquare.{u, v} R D I)
-    (coherentNerveMap (dgKappaNativeBFEnrichedFunctor.{u, v} R D I))
-    (coherentNerveMap (spectrumKanEvaluation n))).trans
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (dgKappaNativeBFEnrichedFunctor.{u, v} R D I))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumKanEvaluation n))).trans
       (congrArg (fun f => dgKappaNativeBFFiniteSquare.{u, v} R D I ≫ f)
-        ((coherentNerveMap_comp (dgKappaNativeBFEnrichedFunctor.{u, v} R D I)
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp (dgKappaNativeBFEnrichedFunctor.{u, v} R D I)
           (spectrumKanEvaluation n)).symm.trans
-          (congrArg coherentNerveMap
+          (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap
             (dgKappaNativeBFFiniteLevelKanFunctor_eq_evaluation.{u, v} R D I n))))
 
 /-- 概要：元正段の全二胞体と実 BF 全二胞体の指定点つき比較。
 方針：同じ有限入力の全族同型を元の四角形へ制限する。
 規約：元の全二単体を保持。使われ方：基点忘却前の群比較。 -/
 def dgKappaNativeCoherentBFPointedPositiveComparison (r : ℕ) :
-    FunctorIso (dgKappaNativeBFPointedStageSquare.{u, v} R D I r)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaNativeBFPointedStageSquare.{u, v} R D I r)
       (dgKappaNativeCoherentBFSquare.{u, v} R D I ≫
-        coherentNerveMap (spectrumKanEvaluation (r + 1))) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumKanEvaluation (r + 1))) := by
   have h := dgKappaNativeCoherentBFSquare_pointedEvaluation.{u, v} R D I (r + 1)
   have hb := dgKappaNativeBFFiniteBoundarySquare_eq.{u, v} R D I r
   exact h.symm ▸ hb ▸ (dgKappaNativeBFFinitePositiveFunctorIso.{u, v} R D I r).precomp
@@ -64,22 +64,22 @@ def dgKappaNativeCoherentBFPointedPositiveComparison (r : ℕ) :
 方針：同じ点つき全図式比較を反転し、基点忘却する。
 規約：辺の成分比較で代用しない。使われ方：K-B へ供給する全正段比較。 -/
 def dgKappaNativeCoherentBFPositiveComparison (r : ℕ) :
-    FunctorIso (dgKappaNativeCoherentBFSquare.{u, v} R D I ≫
-      coherentNerveMap (spectrumSpaceEvaluation (r + 1)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaNativeCoherentBFSquare.{u, v} R D I ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation (r + 1)))
       (dgKappaNativeBFStageSquare.{u, v} R D I r) := by
-  have h := FunctorIso.postcomp
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp
     (dgKappaNativeCoherentBFPointedPositiveComparison.{u, v} R D I r).symm
-    (coherentNerveMap pointedKanForgetEnriched)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanForgetEnriched)
   have he : (dgKappaNativeCoherentBFSquare.{u, v} R D I ≫
-      coherentNerveMap (spectrumKanEvaluation (r + 1))) ≫
-        coherentNerveMap pointedKanForgetEnriched =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumKanEvaluation (r + 1))) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanForgetEnriched =
       dgKappaNativeCoherentBFSquare.{u, v} R D I ≫
-        coherentNerveMap (spectrumSpaceEvaluation (r + 1)) :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation (r + 1)) :=
     (Category.assoc (dgKappaNativeCoherentBFSquare.{u, v} R D I)
-      (coherentNerveMap (spectrumKanEvaluation (r + 1)))
-      (coherentNerveMap pointedKanForgetEnriched)).trans
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumKanEvaluation (r + 1)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanForgetEnriched)).trans
       (congrArg (fun f => dgKappaNativeCoherentBFSquare.{u, v} R D I ≫ f)
-        (coherentNerveMap_comp (spectrumKanEvaluation (r + 1))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp (spectrumKanEvaluation (r + 1))
           pointedKanForgetEnriched).symm)
   exact he ▸ (dgKappaNativeBFPointedStageSquare_forget.{u, v} R D I r) ▸ h
 

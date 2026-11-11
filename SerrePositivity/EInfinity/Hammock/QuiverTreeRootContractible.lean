@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.QuiverTreeRootCategory
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.QuiverTreeRootCategory
 public import SerrePositivity.EInfinity.Hammock.SubsingletonCategoryContractible
 
 /-!
@@ -25,13 +25,13 @@ variable {Q : Type u} [Quiver.{v} Q] (T : WideSubquiver (Quiver.Symmetrify Q))
 
 lemma root_colimit_isWeaklyContractible
     (hroot : ∀ x ∈ S, (show T from x) = Quiver.root T) :
-    letI := FiniteQuiver.quiver S
-    ∀ x y : Paths (FiniteQuiver.Vertex S),
-      IsWeaklyContractible (colimitGraph
-        (⊤ : MorphismProperty (Paths (FiniteQuiver.Vertex S))) x y) := by
-  let := FiniteQuiver.quiver S
-  let := rootPathsSubsingleton T hroot
-  let := rootPathsThin T hroot
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+    ∀ x y : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
+        (⊤ : MorphismProperty (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S))) x y) := by
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rootPathsSubsingleton T hroot
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rootPathsThin T hroot
   intro x y
   exact SubsingletonCategory.colimit_isWeaklyContractible _ x y
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentSimplexAppendMorphism
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentSimplexLastPostReindex
-public import SerrePositivity.InfinityCategories.Core.MappingSpaceRightKan
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceRightKan
 
 /-!
 概要：同じ最終射を追加した実単体の最終手前の面を、元の後合成へ同定する。

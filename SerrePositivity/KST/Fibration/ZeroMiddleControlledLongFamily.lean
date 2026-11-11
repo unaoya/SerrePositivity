@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.ZeroMiddleFullSReconstruction
-public import SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleLongHomFamily
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleLongHomFamily
 
 /-!
 概要：元の全 S• 中間頂点と指定長 Hom 入力から、同じ二短辺の実制御二胞体族を構成する。
@@ -24,7 +24,7 @@ namespace SerrePositivity.KST.Fibration
 規約：(9) の存在仮定は不要。全時刻の共有対角の厳密一致はこの定理では主張しない。
 使われ方：元の全 S• 上側の実二胞体構成を先に放電する。 -/
 theorem zeroMiddleFullSControlledFamily_exists
-    (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
     (K : SSet.{u + 1}) (ℓ : (zeroMiddleFullSReconstructionLongSpace s hZ K) _⦋0⦌) :
     let P := SimplicialThickening.Path
       (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) (ULift.up 2)
@@ -32,14 +32,14 @@ theorem zeroMiddleFullSControlledFamily_exists
     let H := (SSet.uliftFunctor.{u + 1, u}).obj
       (SimplicialCategory.sHom (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
         (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)))
-    let L := (functorVertexEquiv K ((ihom Pu).obj H)).symm ℓ.val
-    ∃ F : (Δ[2] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u},
+    let L := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv K ((ihom Pu).obj H)).symm ℓ.val
+    ∃ F : (Δ[2] : SSet.{u + 1}) ⊗ K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u},
       ((horn 2 (1 : Fin 3)).ι ▷ K) ≫ F = zeroMiddleFullSReconstructionHorn s hZ K ∧
       ∀ k : K _⦋0⦌,
         HEq (L.app (Opposite.op ⦋0⦌) k)
-          (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
-            ((SSet.yonedaEquiv (familyAtVertex F k)).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩))) := by
-  apply controlledTriangleFamily_exists_of_longHom
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+            ((SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex F k)).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩))) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleFamily_exists_of_longHom
     (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
     (fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩))
     (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)) K
@@ -47,13 +47,13 @@ theorem zeroMiddleFullSControlledFamily_exists
     (zeroMiddleFullSReconstructionHorn s hZ K)
     (zeroMiddleFullSReconstructionHorn_first s hZ K)
     (zeroMiddleFullSReconstructionHorn_last s hZ K)
-  apply (functorVertexEquiv _ _).injective
-  change functorVertex (((functorVertexEquiv _ _).symm ℓ.val) ≫
-    evaluateFunctorAt _) = functorVertex _
-  have hv := (functorVertexEquiv _ _).apply_symm_apply ℓ.val
-  have hℓ := ℓ.property.trans (pinchedConstant_zero _)
-  change (((ihom K).map (evaluateFunctorAt _)).app (Opposite.op ⦋0⦌))
-    (functorVertex ((functorVertexEquiv _ _).symm ℓ.val)) = _
-  exact (congrArg ((((ihom K).map (evaluateFunctorAt _)).app (Opposite.op ⦋0⦌))) hv).trans hℓ
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).injective
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm ℓ.val) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex _
+  have hv := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).apply_symm_apply ℓ.val
+  have hℓ := ℓ.property.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero _)
+  change (((ihom K).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _)).app (Opposite.op ⦋0⦌))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm ℓ.val)) = _
+  exact (congrArg ((((ihom K).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _)).app (Opposite.op ⦋0⦌))) hv).trans hℓ
 
 end SerrePositivity.KST.Fibration

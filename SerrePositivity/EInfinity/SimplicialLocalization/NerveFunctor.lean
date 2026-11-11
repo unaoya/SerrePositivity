@@ -30,17 +30,17 @@ open SerrePositivity.InfinityCategories
 方針：同じ Kan 豊穣係数関手の恒等則を nerve へ送る。
 規約：元の coherent nerve を使う。
 使われ方：局所化 nerve の係数関手の恒等則。 -/
-lemma localizationNerveMap_id (C : RelativeCategory.{u}) :
+lemma localizationNerveMap_id (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) :
     localizationNerveMap (𝟙 C) = 𝟙 (localizationNerve C) := by
   unfold localizationNerveMap
   rw [kanLocalizationEnrichedMap_id]
-  exact coherentNerveMap_id (KanLocalizationCategory C)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_id (KanLocalizationCategory C)
 
 /-- 概要：相対関手の合成は局所化 nerve の射の合成を誘導する（HTT §1.1.5）。
 方針：同じ Kan 豊穣係数関手の合成則を nerve へ送る。
 規約：元の相対関手の合成順序を保持する。
 使われ方：忘却や離散対象の係数関手の合成則。 -/
-lemma localizationNerveMap_comp {C D E : RelativeCategory.{u}} (F : C ⟶ D) (G : D ⟶ E) :
+lemma localizationNerveMap_comp {C D E : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) (G : D ⟶ E) :
     localizationNerveMap (F ≫ G) = localizationNerveMap F ≫ localizationNerveMap G := by
   unfold localizationNerveMap
   rw [kanLocalizationEnrichedMap_comp]
@@ -50,7 +50,7 @@ lemma localizationNerveMap_comp {C D E : RelativeCategory.{u}} (F : C ⟶ D) (G 
 方針：同じ対象・係数射と厳密な恒等・合成則を束ねる。
 規約：全ての値は構成済みの quasicategory。
 使われ方：具体的なモデルの ∞ 関手の関手的な供給。 -/
-def localizationNerveFunctor : RelativeCategory.{u} ⥤ SSet.{u} where
+def localizationNerveFunctor : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u} ⥤ SSet.{u} where
   obj := localizationNerve
   map := localizationNerveMap
   map_id := localizationNerveMap_id

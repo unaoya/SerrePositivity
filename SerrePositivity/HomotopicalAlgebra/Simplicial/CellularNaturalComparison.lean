@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.SkeletalDimension
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletalDimension
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanPushoutCube
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedCoproducts
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanSequentialColimitComparison
@@ -105,7 +105,7 @@ lemma stage_isIso : ∀ n (X : SSet.{v}), IsIso (AnodyneHomotopy.anodyneQ.map (�
   | 0, X => of_iso η (SSet.relativeCellComplexOfMono (cellMap X)).isoBot.symm (initial_isIso η)
   | n + 1, X => by
     have hb : IsIso (AnodyneHomotopy.anodyneQ.map (η.app (SSet.boundary.{v} n).toSSet)) :=
-      of_iso η (SkeletalDimension.stageIso (cellMap (SSet.boundary.{v} n).toSSet) n)
+      of_iso η (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.stageIso (cellMap (SSet.boundary.{v} n).toSSet) n)
         (stage_isIso n _)
     let i := cellMap X
     have hB : IsIso (AnodyneHomotopy.anodyneQ.map

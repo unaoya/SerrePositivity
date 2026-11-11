@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：AW の切断と shuffle の格子路を後合成し、同じ有限和を自由鎖で取る。
 規約：KST Construction A.5 の標準比較、非被約な零次を保持する。
 使われ方：恒等との比較ホモトピーの再帰の普遍な差。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

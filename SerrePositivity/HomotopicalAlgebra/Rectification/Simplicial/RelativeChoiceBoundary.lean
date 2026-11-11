@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.FixedBoundaryExtensions
 
-public import SerrePositivity.InfinityCategories.Simplicial.BoundaryGluing
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceSpace
 
 /-!
@@ -50,17 +50,17 @@ include hcof hfib in
 lemma fill_faces {V T P : SSet.{v}} (i : V ⟶ T) [Mono i] (b : V ⟶ P)
     (p : P ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
     (hp : trivialFibrations SSet.{v} p) (n : ℕ)
-    (f : ∀ k, (BoundaryGluing.facet n k).toSSet ⟶ obj i b) (hf : BoundaryGluing.Compatible f) :
+    (f : ∀ k, (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.facet n k).toSSet ⟶ obj i b) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.Compatible f) :
     ∃ e : SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⟶ obj i b,
-      (∀ k, (BoundaryGluing.facet n k).ι ≫ e = f k) ∧
+      (∀ k, (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.facet n k).ι ≫ e = f k) ∧
       i ▷ SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ≫ family i b e =
         V ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫ pointUnitIso.hom) ≫ (ρ_ V).hom ≫ b := by
-  obtain ⟨e, he⟩ := extension hcof hfib i b p hp (SSet.boundary.{v} n).ι
-    (BoundaryGluing.desc f hf)
+  obtain ⟨e, he⟩ := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.extension hcof hfib i b p hp (SSet.boundary.{v} n).ι
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.BoundaryGluing.desc f hf)
   refine ⟨e, fun k => ?_, family_fixed_boundary i b e⟩
-  have hk : SSet.boundary.faceι k ≫ (SSet.boundary.{v} n).ι = (BoundaryGluing.facet n k).ι := rfl
+  have hk : SSet.boundary.faceι k ≫ (SSet.boundary.{v} n).ι = (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.facet n k).ι := rfl
   rw [← hk, Category.assoc, he]
-  exact BoundaryGluing.desc_fac f hf k
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.BoundaryGluing.desc_fac f hf k
 
 include hcof hfib in
 /-- Fill given standard faces satisfying the ordinary simplicial face identities. -/
@@ -68,15 +68,15 @@ lemma fill_standard_faces {V T P : SSet.{v}} (i : V ⟶ T) [Mono i] (b : V ⟶ P
     (p : P ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
     (hp : trivialFibrations SSet.{v} p) (n : ℕ)
     (f : Fin (n + 3) → (SSet.stdSimplex.{v}.obj (SimplexCategory.mk (n + 1)) ⟶ obj i b))
-    (hf : BoundaryGluing.StandardCompatible f) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.StandardCompatible f) :
     ∃ e : SSet.stdSimplex.{v}.obj (SimplexCategory.mk (n + 2)) ⟶ obj i b,
       (∀ k, SSet.stdSimplex.δ k ≫ e = f k) ∧
       i ▷ SSet.stdSimplex.{v}.obj (SimplexCategory.mk (n + 2)) ≫ family i b e =
         V ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫ pointUnitIso.hom) ≫ (ρ_ V).hom ≫ b := by
-  obtain ⟨e, he⟩ := extension hcof hfib i b p hp (SSet.boundary.{v} (n + 2)).ι
-    (BoundaryGluing.standardDesc f hf)
+  obtain ⟨e, he⟩ := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.extension hcof hfib i b p hp (SSet.boundary.{v} (n + 2)).ι
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.standardDesc f hf)
   refine ⟨e, fun k => ?_, family_fixed_boundary i b e⟩
   rw [← SSet.boundary.ι_ι k, Category.assoc, he]
-  exact BoundaryGluing.standardDesc_fac f hf k
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.standardDesc_fac f hf k
 
 end SerrePositivity.SimplicialModel.RelativeChoiceSpace

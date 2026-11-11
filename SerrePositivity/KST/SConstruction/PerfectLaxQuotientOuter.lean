@@ -14,61 +14,61 @@ open CategoryTheory MonoidalCategory SSet
 open SerrePositivity.InfinityCategories LocalizingInvariants
 open scoped Simplicial
 namespace PerfectLaxQuotient
-variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B}
+variable {C D B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D B}
   (d : PerfectLaxQuotient p q)
 
 /-- 元の全長方形の外周を、Verdier 列の向きへ転置する。 -/
-def rawOuterSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} :=
-  (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ pastingSquare d.rawRectangle.diagram 1
+def rawOuterSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} :=
+  (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.rawRectangle.diagram 1
 
 /-- 外周の下辺は、元の包含そのもの。 -/
-lemma rawOuterSquare_bottom : squareBottomEdge ≫ d.rawOuterSquare =
-    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge := by
-  rw [rawOuterSquare, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom, pastingSquare_outer_leftEdge,
-    d.rawRectangle.left_eq, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left, d.universalRawSquare_edges.1]
+lemma rawOuterSquare_bottom : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ d.rawOuterSquare =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow d.inclusion).edge := by
+  rw [rawOuterSquare, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.square_transpose_bottom, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare_outer_leftEdge,
+    d.rawRectangle.left_eq, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.square_transpose_left, d.universalRawSquare_edges.1]
 
 /-- 外周の右辺は、元の実商と完備化の合成そのもの。 -/
-lemma rawOuterSquare_right : squareRightEdge ≫ d.rawOuterSquare =
-    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.sequence.projection).edge := by
-  rw [rawOuterSquare, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right, pastingSquare_topEdge,
+lemma rawOuterSquare_right : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ d.rawOuterSquare =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow d.sequence.projection).edge := by
+  rw [rawOuterSquare, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.square_transpose_right, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare_topEdge,
     d.rawRectangle.top_eq, stdSimplex.δ_comp_yonedaEquiv_symm,
-    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.quotientCompositionTriangle p q d.sequence.projection).d₁]
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalDifferenceSquare.quotientCompositionTriangle p q d.sequence.projection).d₁]
   rfl
 
 /-- 外周の左辺は、元の左端から元の零圏への射。 -/
-lemma rawOuterSquare_left : squareLeftEdge ≫ d.rawOuterSquare =
-    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory d.left)).edge := by
-  rw [rawOuterSquare, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left, pastingSquare_bottomEdge,
+lemma rawOuterSquare_left : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ d.rawOuterSquare =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory d.left)).edge := by
+  rw [rawOuterSquare, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.square_transpose_left, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare_bottomEdge,
     d.rawRectangle.bottom_eq, stdSimplex.δ_comp_yonedaEquiv_symm,
     (LaxUniversalDifference.zeroCompositionTriangle p q d.inclusion d.sequence.projection).d₁]
 
 /-- 外周の四角は、元の左端・lax 圏・完備化先と元の零圏。 -/
 lemma rawOuterSquare_vertices :
-    squareVertex d.rawOuterSquare 0 0 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex d.left ∧
-      squareVertex d.rawOuterSquare 1 0 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (laxCategory p q) ∧
-      squareVertex d.rawOuterSquare 1 1 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex d.sequence.right ∧
-      squareVertex d.rawOuterSquare 0 1 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u} := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.rawOuterSquare 0 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex d.left ∧
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.rawOuterSquare 1 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex (laxCategory p q) ∧
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.rawOuterSquare 1 1 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex d.sequence.right ∧
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.rawOuterSquare 0 1 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{u} := by
   constructor
-  · have h := squareBottomEdge_source d.rawOuterSquare
-    rw [d.rawOuterSquare_bottom, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).src_eq] at h
+  · have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source d.rawOuterSquare
+    rw [d.rawOuterSquare_bottom, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow d.inclusion).src_eq] at h
     exact h.symm
   constructor
-  · have h := squareBottomEdge_target d.rawOuterSquare
-    rw [d.rawOuterSquare_bottom, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).tgt_eq] at h
+  · have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_target d.rawOuterSquare
+    rw [d.rawOuterSquare_bottom, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow d.inclusion).tgt_eq] at h
     exact h.symm
   constructor
-  · have h := squareRightEdge_target d.rawOuterSquare
+  · have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target d.rawOuterSquare
     rw [d.rawOuterSquare_right, Equiv.apply_symm_apply,
-      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.sequence.projection).tgt_eq] at h
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow d.sequence.projection).tgt_eq] at h
     exact h.symm
-  · have h := squareLeftEdge_target d.rawOuterSquare
+  · have h := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftEdge_target d.rawOuterSquare
     rw [d.rawOuterSquare_left, Equiv.apply_symm_apply,
-      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory d.left)).tgt_eq] at h
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory d.left)).tgt_eq] at h
     exact h.symm
 
 /-- Cat^perf の同じ長方形の外周。 -/
 def outerSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ perfectStableInfinity.{u} :=
-  (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ pastingSquare d.rectangleDiagram 1
+  (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.rectangleDiagram 1
 
 /-- 外周の持ち上げも、元の安定圏値の全外周を回収する。 -/
 lemma outerSquare_inclusion : d.outerSquare ≫ perfectStableInfinityInclusion =
@@ -97,9 +97,9 @@ def outerDiagram : PerfectVerdierDiagram.{u} where
     rw [d.outerSquare_inclusion]
     exact d.rawOuterSquare_right
   zero_corner := by
-    change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex d.rawOuterSquare 0 1))
-    rw [d.rawOuterSquare_vertices.2.2.2, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
-    exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.rawOuterSquare 0 1))
+    rw [d.rawOuterSquare_vertices.2.2.2, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject_vertex]
+    exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory_isZero
 
 end PerfectLaxQuotient
 end SerrePositivity.KST.SConstruction

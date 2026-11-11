@@ -22,7 +22,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite
 open scoped Simplicial
 
-variable (C : RelativeCategory.{u}) (X Y : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
 
 def freeResolutionGeneratorHomAugmented : SimplicialObject.Augmented (Type u) :=
   { left := freeResolutionGeneratorHom C X Y
@@ -55,7 +55,7 @@ def freeResolutionGeneratorHomExtraDegeneracy :
     exact generatorHomExtra_degeneracy_succ C n i f
 
 lemma freeResolutionGeneratorHomAugmentation_isWeakHomotopyEquivalence :
-    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (freeResolutionGeneratorHomAugmentation C X Y) :=
   FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (SerrePositivity.SimplicialModel.ExtraDegeneracyContraction.localized_augmentation_isIso

@@ -25,16 +25,16 @@ variable {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
 /-- 元の全三角形族を、単射源からの同じ suspension Hom に表示する。 -/
 def monicKPrismCompositionNativeTriangle :
     nerve (CompositionStringParameters f g) ⊗ (Δ[2] : SSet.{u}) ⟶
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum (F.obj x)).level r).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kOmegaSpectrum (F.obj x)).level r).space)
         ((kKanSequence (F.obj z)).level (r + 1)).space).right :=
   kKanCompositionNativeTriangle r F f g ≫
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
       (PointedSimplicialSet.circle.{u} ◁ (monicKKanSequenceProjection (F.obj x)).app r)
       ((kKanSequence (F.obj z)).level (r + 1)).space
 
 /-- 指定直通列点では、元の同じ単射源の全比較二単体を厳密に回収する。 -/
 lemma monicKPrismCompositionNativeTriangle_boundary :
-    (nervePoint (compositionStringDirect f g) ▷ (Δ[2] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[2] : SSet.{u})) ≫
         monicKPrismCompositionNativeTriangle r F f g =
       snd (Δ[0] : SSet.{u}) (Δ[2] : SSet.{u}) ≫
         monicKPrismOriginalCompositionTriangle r F f g := by
@@ -47,7 +47,7 @@ lemma monicKPrismCompositionNativeTriangle_first :
     (nerve (CompositionStringParameters f g) ◁ stdSimplex.δ 2) ≫
         monicKPrismCompositionNativeTriangle r F f g =
       (kKanCompositionFirstNativeCylinder r F f g).h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ (monicKKanSequenceProjection (F.obj x)).app r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   rw [monicKPrismCompositionNativeTriangle, ← Category.assoc, kKanCompositionNativeTriangle_first]
@@ -57,7 +57,7 @@ lemma monicKPrismCompositionNativeTriangle_second :
     (nerve (CompositionStringParameters f g) ◁ stdSimplex.δ 0) ≫
         monicKPrismCompositionNativeTriangle r F f g =
       (kKanCompositionSecondNativeCylinder r F f g).h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ (monicKKanSequenceProjection (F.obj x)).app r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   rw [monicKPrismCompositionNativeTriangle, ← Category.assoc, kKanCompositionNativeTriangle_second]
@@ -67,7 +67,7 @@ lemma monicKPrismCompositionNativeTriangle_composite :
     (nerve (CompositionStringParameters f g) ◁ stdSimplex.δ 1) ≫
         monicKPrismCompositionNativeTriangle r F f g =
       (kKanCompositionCompositeNativeCylinder r F f g).h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ (monicKKanSequenceProjection (F.obj x)).app r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   rw [monicKPrismCompositionNativeTriangle, ← Category.assoc,

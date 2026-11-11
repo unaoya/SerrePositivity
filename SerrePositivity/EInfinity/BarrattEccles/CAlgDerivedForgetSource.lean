@@ -42,19 +42,19 @@ lemma cofibrantAlgebraForgetNerve_mk₁
   rfl
 
 def cofibrantAlgebraUnderlyingDerivedSource :
-    nerve (cofibrantAlgebraRelativeCategory A).category ⟶ derivedInfinityCategory A :=
+    nerve (cofibrantAlgebraRelativeCategory A).category ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
   cofibrantAlgebraForgetNerve A ≫ ComplexLimits.complexOrdinaryDerivedSource A
 
 lemma cofibrantAlgebraUnderlyingDerivedSource_map_weak
     {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y)
     (hf : (cofibrantAlgebraRelativeCategory A).weakEquivalences f) :
-    IsInvertibleEdge
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
       ((nerve.edgeMk f).map (cofibrantAlgebraUnderlyingDerivedSource A)).toTruncated := by
   have hq : QuasiIso ((cofibrantAlgebraDKForget A).map f) :=
     (cofibrantAlgebraDKForgetRelative A).map f hf
   have h := ComplexLimits.complexOrdinaryDerivedSource_map_weak A
     ((cofibrantAlgebraDKForget A).map f) hq
-  apply (isInvertibleEdge_congr (e := ((nerve.edgeMk
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := ((nerve.edgeMk
     ((cofibrantAlgebraDKForget A).map f)).map
       (ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated) ?_).mp h
   change (ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
@@ -64,7 +64,7 @@ lemma cofibrantAlgebraUnderlyingDerivedSource_map_weak
   rw [cofibrantAlgebraForgetNerve_mk₁]
 
 lemma cofibrantAlgebraUnderlyingDerivedSource_inverts :
-    InvertsEdges (cofibrantAlgebraUnderlyingDerivedSource A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (cofibrantAlgebraUnderlyingDerivedSource A)
       (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) :=
   weakNerveEdges_inverts_of_arrows (cofibrantAlgebraRelativeCategory A)
     (cofibrantAlgebraUnderlyingDerivedSource A)

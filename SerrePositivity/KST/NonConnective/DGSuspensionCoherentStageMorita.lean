@@ -22,7 +22,7 @@ local instance coherentStageMoritaSpectrumCategory : SimplicialCategory OmegaSpe
   OmegaSpectrum.simplicialCategory
 variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular]
   (hκ : Cardinal.aleph0 < κ)
-  (a : DGSuspensionCoherentActionInput R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ))
+  (a : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentActionInput R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ))
   (hd : ∀ {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B),
     a.data f = dgKappaUnconditionalSuspensionMapData R κ hκ f)
 include hd
@@ -45,7 +45,7 @@ variable {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B)
 
 /-- 同じ実 Morita 射の K/loop 指定辺は全段で可逆。 -/
 theorem dgSuspensionCoherentStageInputEdge_isInvertible_of_morita (n : ℕ) :
-    IsInvertibleEdge (dgSuspensionCoherentStageInputEdge R
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (dgSuspensionCoherentStageInputEdge R
       (dgKappaUnconditionalStageProvider R κ hκ) a f n) := by
   unfold dgSuspensionCoherentStageInputEdge
   rw [dgSuspensionCoherentIterationMap_eq_unconditional R κ hκ a hd f n]
@@ -54,7 +54,7 @@ theorem dgSuspensionCoherentStageInputEdge_isInvertible_of_morita (n : ℕ) :
 
 /-- B1 の指定比較を通して、全作用の同じ正規化辺も Morita 射で可逆。 -/
 theorem dgSuspensionCoherentStageMappedEdge_isInvertible_of_morita (n : ℕ) :
-    IsInvertibleEdge (dgSuspensionCoherentStageMappedEdge R
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (dgSuspensionCoherentStageMappedEdge R
       (dgKappaUnconditionalStageProvider R κ hκ) a f n) :=
   (suspensionEdgeIso_isInvertible_iff (dgSuspensionCoherentStageFamily_edgeIso R
     (dgKappaUnconditionalStageProvider R κ hκ) a f n)).mpr
@@ -62,14 +62,14 @@ theorem dgSuspensionCoherentStageMappedEdge_isInvertible_of_morita (n : ℕ) :
 
 /-- 同じ全単体 K/loop 段族が送る元の Morita 辺自身は可逆。 -/
 theorem dgSuspensionCoherentStageFamily_morita_isInvertible (n : ℕ) :
-    IsInvertibleEdge (edgeOfSimplex ((dgSuspensionCoherentStageFamily R
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((dgSuspensionCoherentStageFamily R
       (dgKappaUnconditionalStageProvider R κ hκ) a n).app (Opposite.op ⦋1⦌)
-        (coherentNerveEdge f).edge)) :=
-  (isInvertibleEdge_congr (e := dgSuspensionCoherentStageMappedEdge R
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge)) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := dgSuspensionCoherentStageMappedEdge R
     (dgKappaUnconditionalStageProvider R κ hκ) a f n)
-    (f := edgeOfSimplex ((dgSuspensionCoherentStageFamily R
+    (f := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((dgSuspensionCoherentStageFamily R
       (dgKappaUnconditionalStageProvider R κ hκ) a n).app (Opposite.op ⦋1⦌)
-        (coherentNerveEdge f).edge)) rfl).mp
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge)) rfl).mp
       (dgSuspensionCoherentStageMappedEdge_isInvertible_of_morita R κ hκ a hd f n)
 
 end SerrePositivity.KST.NonConnective

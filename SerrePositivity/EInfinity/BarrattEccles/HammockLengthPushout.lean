@@ -40,15 +40,15 @@ def algebraHammockStageTopInclusion (n : ℕ) :
     algebraHammockStageTopSum A X Y n ⟶ algebraHammockLengthStage A X Y (n + 1) :=
   Hammock.stageTopInclusion (algebraHammockGraphDiagram A X Y) n
 
-lemma algebraHammockStageBoundaryAttach_fac (n : ℕ) (a : Hammock.Word.MaximalAlternating n) :
-    Sigma.ι (fun a : Hammock.Word.MaximalAlternating n =>
+lemma algebraHammockStageBoundaryAttach_fac (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n) :
+    Sigma.ι (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n =>
       (algebraHammockLengthBoundary A X Y n a.val).toFunctor) a ≫
         algebraHammockStageBoundaryAttach A X Y n =
       algebraHammockLengthBoundaryToStage A X Y n a.val :=
   Hammock.stageBoundaryAttach_fac n (algebraHammockGraphDiagram_proper A X Y) a
 
-lemma algebraHammockStageTopInclusion_fac (n : ℕ) (a : Hammock.Word.MaximalAlternating n) :
-    Sigma.ι (fun a : Hammock.Word.MaximalAlternating n => algebraHammockGraph A a.val X Y) a ≫
+lemma algebraHammockStageTopInclusion_fac (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n) :
+    Sigma.ι (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n => algebraHammockGraph A a.val X Y) a ≫
         algebraHammockStageTopInclusion A X Y n =
       algebraHammockLengthStageInclusion A X Y (n + 1) a.val a.property.1.le :=
   Hammock.stageTopInclusion_fac (algebraHammockGraphDiagram A X Y) n a

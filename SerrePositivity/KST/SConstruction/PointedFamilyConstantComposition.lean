@@ -45,7 +45,7 @@ lemma pointedFamilyComposition_const_right {U : SSet.{u}} {A B C : PointedSimpli
 lemma pointedFamilyComposition_const_left {U : SSet.{u}} {A B C : PointedSimplicialSet.{u}}
     (f : A ⟶ B) (b : U ⟶ (PointedObject.basedHom B C).right) :
     lift (SSet.const (familyVertex f)) b ≫ eComp SSet A B C =
-      b ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre f C := by
+      b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre f C := by
   rw [pointedFamilyConstant_eq, ← PointedEnrichment.whiskerRight_eq]
   dsimp only [eHomWhiskerRight]
   simp only [← Category.assoc]

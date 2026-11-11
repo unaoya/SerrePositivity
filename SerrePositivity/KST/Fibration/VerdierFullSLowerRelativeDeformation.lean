@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.VerdierFullSLowerShortFaces
-public import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleFamily
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CompositionTriangleFamily
 
 /-!
 概要：指定 Verdier 下側の実三角柱を、元の短辺を固定した全三角形空間の実辺にする。
@@ -19,10 +19,10 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
 
 /-- 元の下側二胞体の二短辺を、そのまま同じ内ホーンへ制限する。 -/
-def verdierFullSLowerHorn : (horn 2 1 : SSet.{u + 1}) ⟶ SpaceInfinity.{u} :=
+def verdierFullSLowerHorn : (horn 2 1 : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} :=
   (horn 2 1).ι ≫ SSet.yonedaEquiv.symm (verdierFullSLowerSimplex d)
 
 /-- 同じ下側実三角柱は、元の二短辺の内ホーン全体を全時刻固定する。 -/
@@ -49,19 +49,19 @@ theorem verdierFullSLowerDeformation_horn :
 
 /-- 元の短辺を固定した全三角形空間は可縮 Kan。 -/
 theorem verdierFullSLowerExtension_isContractibleKan :
-    IsContractibleKan (innerTriangleExtensionSpace (verdierFullSLowerHorn d)) :=
-  innerTriangleExtensionSpace_isContractibleKan _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.innerTriangleExtensionSpace (verdierFullSLowerHorn d)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.innerTriangleExtensionSpace_isContractibleKan _
 
 /-- 同じ元の三角柱を、指定短辺の延長空間の実辺として読む。 -/
 def verdierFullSLowerDeformationFamily :
-    (Δ[1] : SSet.{u + 1}) ⟶ innerTriangleExtensionSpace (verdierFullSLowerHorn d) :=
-  innerTriangleExtensionCurry (verdierFullSLowerHorn d)
+    (Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.innerTriangleExtensionSpace (verdierFullSLowerHorn d) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.innerTriangleExtensionCurry (verdierFullSLowerHorn d)
     (verdierFullSLowerDeformation d).h (verdierFullSLowerDeformation_horn d)
 
 /-- 同じ固定延長空間の実辺の評価は、元の全三角柱そのもの。 -/
 theorem verdierFullSLowerDeformationFamily_recovery :
-    innerTriangleExtensionUncurry (verdierFullSLowerDeformationFamily d) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.innerTriangleExtensionUncurry (verdierFullSLowerDeformationFamily d) =
       (verdierFullSLowerDeformation d).h :=
-  innerTriangleExtensionUncurry_curry _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.innerTriangleExtensionUncurry_curry _ _ _
 
 end SerrePositivity.KST.Fibration

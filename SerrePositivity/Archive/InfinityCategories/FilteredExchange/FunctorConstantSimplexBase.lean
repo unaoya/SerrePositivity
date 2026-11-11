@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorSimplexPointedStart
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.ConstantDiagram
 
 /-!
 概要：任意の元の全単体を定値図式へ移した底を、同じ全単体の係数射影へ戻す。

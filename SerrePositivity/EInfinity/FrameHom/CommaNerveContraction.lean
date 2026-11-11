@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.ThomasonSimplex
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CostructuredArrowDiagram
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CostructuredArrowDiagram
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ElementsChainLifting
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
@@ -28,7 +28,7 @@ variable {E : Type uE} [Category.{vE} E] {D : Type uD} [Category.{vD} D]
   (p : E ⥤ D) (n : ℕ)
 
 /-- 元の comma の n 射列をラベルとする図式。 -/
-abbrev values := Thomason.values (costructuredArrowDiagram p) n
+abbrev values := Thomason.values (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.costructuredArrowDiagram p) n
 
 /-- ラベルの元の E の射列。 -/
 abbrev chain (e : (values p n).Elements) : ComposableArrows E n :=
@@ -88,7 +88,7 @@ def contraction : retraction p n ⟶ 𝟭 _ where
     have h := eqToHom_naturality
       (fun q : ComposableArrows (CostructuredArrow p e'.obj) n =>
         (q.obj (Fin.last n)).hom) f.map_val
-    dsimp [values, Thomason.values, Thomason.nerveDiagram, costructuredArrowDiagram,
+    dsimp [values, Thomason.values, Thomason.nerveDiagram, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.costructuredArrowDiagram,
       nerveFunctor, nerveMap, CostructuredArrow.map] at h
     simpa only [eqToHom_refl, Category.comp_id] using h.symm
 

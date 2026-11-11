@@ -30,8 +30,8 @@ set_option backward.isDefEq.respectTransparency.types false
 def kanLoopLift {Y Z : PointedSimplicialSet.{u}} [KanComplex Z.right]
     (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z) :
     Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z :=
-  (pointedMapLift (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} Z)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp CirclePower.unit
+  (pointedMapLift (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} Z)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.anodyne_prePointed_rlp CirclePower.unit
       (PointedKanReplacement.unit_anodyne PointedSimplicialSet.circle.{u}) Z) a).val
 
 /-- 概要：持ち上げを通常の円へ制限すると元の loop への射となる。
@@ -41,9 +41,9 @@ def kanLoopLift {Y Z : PointedSimplicialSet.{u}} [KanComplex Z.right]
 @[reassoc]
 theorem kanLoopLift_comparison {Y Z : PointedSimplicialSet.{u}} [KanComplex Z.right]
     (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z) :
-    kanLoopLift a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} Z = a :=
-  (pointedMapLift (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} Z)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp CirclePower.unit
+    kanLoopLift a ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} Z = a :=
+  (pointedMapLift (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} Z)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.anodyne_prePointed_rlp CirclePower.unit
       (PointedKanReplacement.unit_anodyne PointedSimplicialSet.circle.{u}) Z) a).property
 
 /-- 概要：元の loop への射が全基点 π_* 同型なら Kan 円への持ち上げも同型。
@@ -53,14 +53,14 @@ theorem kanLoopLift_comparison {Y Z : PointedSimplicialSet.{u}} [KanComplex Z.ri
 theorem kanLoopLift_piIsomorphism {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right]
     (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
-    (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (kanLoopLift a).right := by
-  have hq : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} Z).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp CirclePower.unit
+    (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (kanLoopLift a).right := by
+  have hq : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} Z).right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.anodyne_prePointed_rlp CirclePower.unit
       (PointedKanReplacement.unit_anodyne PointedSimplicialSet.circle.{u}) Z)
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} Z).right)
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} Z).right)
     _ hq
   have h := congrArg Under.Hom.right (kanLoopLift_comparison a)
-  change (kanLoopLift a).right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} Z).right =
+  change (kanLoopLift a).right ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} Z).right =
     a.right at h
   rw [h]
   exact ha

@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.Spectra.PointedFactorization
-public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyIsomorphism
 public import Mathlib.CategoryTheory.Comma.Arrow
-public import SerrePositivity.InfinityCategories.Core.Terminal
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.Terminal
 
 /-! # 点つき自然変換の関手的な単射分解
 概要：L9 の点つき射の分解を、任意の添字圏上の自然変換へ適用する。
@@ -109,7 +109,7 @@ instance pointedTransformationLeft_mono {T : Type v} [Category.{w} T]
 規約：源・標的の Kan 性を要求しない。使われ方：比較射の充填性。 -/
 instance pointedTransformationRight_trivialKanFibration {T : Type v} [Category.{w} T]
     {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) (X : T) :
-    TrivialKanFibration ((pointedTransformationRight α).app X).right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration ((pointedTransformationRight α).app X).right :=
   ⟨Spectra.PointedFactorization.right_rlp (α.app X)⟩
 
 /-- 概要：標的が Kan なら自然な中間対象も Kan。
@@ -125,7 +125,7 @@ instance pointedTransformationMiddle_kanComplex {T : Type v} [Category.{w} T]
 規約：各入力での主張。使われ方：中間 Kan 模型との同値比較。 -/
 lemma pointedTransformationRight_piIsomorphism {T : Type v} [Category.{w} T]
     {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) (X : T) [KanComplex (G.obj X).right] :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((pointedTransformationRight α).app X).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((pointedTransformationRight α).app X).right :=
   Spectra.PointedFactorization.right_piIsomorphism (α.app X)
 
 /-- 概要：元の比較が π_* 同型なら単射な左因子も π_* 同型。
@@ -134,9 +134,9 @@ lemma pointedTransformationRight_piIsomorphism {T : Type v} [Category.{w} T]
 lemma pointedTransformationLeft_piIsomorphism {T : Type v} [Category.{w} T]
     {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) (X : T)
     [KanComplex (F.obj X).right] [KanComplex (G.obj X).right]
-    (hα : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (α.app X).right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((pointedTransformationLeft α).app X).right := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((pointedTransformationRight α).app X).right) _
+    (hα : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (α.app X).right) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((pointedTransformationLeft α).app X).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := ((pointedTransformationRight α).app X).right) _
     (pointedTransformationRight_piIsomorphism α X)
   have h := congrArg Under.Hom.right (Spectra.PointedFactorization.fac (α.app X))
   change ((pointedTransformationLeft α).app X).right ≫

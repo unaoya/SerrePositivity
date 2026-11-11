@@ -38,9 +38,9 @@ instance iteratedSConstruction_quasicategory (ns : List ℕ) (C : SSet.{u}) [Qua
 方針：各段の定値零図式を帰納的に使う。
 規約：C は零対象を持つ quasicategory。使われ方：反復構成の基点。 -/
 instance iteratedSConstruction_hasZeroVertex (ns : List ℕ) (C : SSet.{u}) [Quasicategory C]
-    [HasZeroVertex C] : HasZeroVertex (iteratedSConstruction ns C) := by
+    [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex (iteratedSConstruction ns C) := by
   induction ns with
-  | nil => exact inferInstanceAs (HasZeroVertex C)
+  | nil => exact inferInstanceAs (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C)
   | cons n ns ih =>
     letI := ih
     exact sConstruction_hasZeroVertex n (iteratedSConstruction ns C)
@@ -49,7 +49,7 @@ instance iteratedSConstruction_hasZeroVertex (ns : List ℕ) (C : SSet.{u}) [Qua
 方針：各段で零図式を作り、その零対象性の証明も保持する。
 規約：元の零対象の選択を明示する。使われ方：多重実現の基点。 -/
 def iteratedZeroVertex (ns : List ℕ) {C : SSet.{u}} [Quasicategory C]
-    (z : C _⦋0⦌) (hz : IsZeroVertex z) : ZeroVertex (iteratedSConstruction ns C) :=
+    (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex (iteratedSConstruction ns C) :=
   match ns with
   | [] => ⟨z, hz.1, hz.2⟩
   | n :: ns =>
@@ -63,23 +63,23 @@ def iteratedZeroVertex (ns : List ℕ) {C : SSet.{u}} [Quasicategory C]
 規約：core 自体を S の入力にせず、最後に core を取る。
 使われ方：反復 S• による K スペクトルの段の準備。 -/
 def iteratedCoreSConstruction (ns : List ℕ) (C : SSet.{u}) : SSet.{u} :=
-  (quasicategoryCore (iteratedSConstruction ns C) : SSet.{u})
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (iteratedSConstruction ns C) : SSet.{u})
 
 /-- 概要：反復 S 構成の core は Kan 複体。
 方針：反復後の quasicategory 性と α2 の core の Kan 性を使う。
 規約：安定性は不要。使われ方：反復構成の各段の Kan 性。 -/
 instance iteratedCoreSConstruction_kanComplex (ns : List ℕ) (C : SSet.{u}) [Quasicategory C] :
-    KanComplex (iteratedCoreSConstruction ns C) := quasicategoryCore_kanComplex _
+    KanComplex (iteratedCoreSConstruction ns C) := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.quasicategoryCore_kanComplex _
 
 /-- 概要：可縮な Kan 複体を値域とする S_n の全頂点は零対象。
 方針：図式圏で点ごとの零対象性を使い、全部分複体へ移す。
 規約：全ての gapped 図式を保持する。使われ方：零次数を含む反復の可縮性。 -/
 lemma sConstruction_isZeroVertex_of_contractible (n : ℕ) {C : SSet.{u}}
-    [Quasicategory C] (h : IsContractibleKan C) (v : (sConstruction n C) _⦋0⦌) :
-    IsZeroVertex v := by
-  have ha : IsZeroVertex v.val := by
-    have he : functorVertex (gappedDiagram v) = v.val :=
-      (functorVertexEquiv _ C).apply_symm_apply _
+    [Quasicategory C] (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan C) (v : (sConstruction n C) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex v := by
+  have ha : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex v.val := by
+    have he : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram v) = v.val :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).apply_symm_apply _
     rw [← he]
     apply isZeroVertex_functorVertex_of_pointwise
     intro a
@@ -91,10 +91,10 @@ lemma sConstruction_isZeroVertex_of_contractible (n : ℕ) {C : SSet.{u}}
 方針：定値零図式で非空性を示し、全頂点の終対象性で境界を充填する。
 規約：core を取る前の主張。使われ方：反復の零方向の可縮性。 -/
 lemma sConstruction_isContractibleKan_of_contractible (n : ℕ) {C : SSet.{u}}
-    [Quasicategory C] (h : IsContractibleKan C) : IsContractibleKan (sConstruction n C) := by
+    [Quasicategory C] (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan C) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (sConstruction n C) := by
   let z := Classical.choice h.nonempty
-  have hz : IsZeroVertex z := ⟨h.isInitialVertex z, h.isTerminalVertex z⟩
-  apply isContractibleKan_of_nonempty_of_all_terminal
+  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z := ⟨h.isInitialVertex z, h.isTerminalVertex z⟩
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_of_nonempty_of_all_terminal
   · exact ⟨sConstructionZeroVertex n z hz⟩
   · intro v
     exact (sConstruction_isZeroVertex_of_contractible n h v).2
@@ -103,8 +103,8 @@ lemma sConstruction_isContractibleKan_of_contractible (n : ℕ) {C : SSet.{u}}
 方針：零次数で S_0 の可縮性を使い、外側の S 構成へ可縮性を移す。
 規約：任意の位置の零次数。使われ方：反復構成の reduced な境界条件。 -/
 lemma iteratedSConstruction_isContractibleKan_of_zero_mem (ns : List ℕ) (C : SSet.{u})
-    [Quasicategory C] [HasZeroVertex C] (h : 0 ∈ ns) :
-    IsContractibleKan (iteratedSConstruction ns C) := by
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] (h : 0 ∈ ns) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (iteratedSConstruction ns C) := by
   induction ns with
   | nil => exact False.elim (List.not_mem_nil h)
   | cons n ns ih =>
@@ -117,10 +117,10 @@ lemma iteratedSConstruction_isContractibleKan_of_zero_mem (ns : List ℕ) (C : S
 方針：反復図式圏の可縮性を Kan 複体と core の比較同型で移す。
 規約：任意の位置の零次数。使われ方：反復実現の基点と境界の比較。 -/
 lemma iteratedCoreSConstruction_isContractibleKan_of_zero_mem (ns : List ℕ) (C : SSet.{u})
-    [Quasicategory C] [HasZeroVertex C] (h : 0 ∈ ns) :
-    IsContractibleKan (iteratedCoreSConstruction ns C) := by
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] (h : 0 ∈ ns) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (iteratedCoreSConstruction ns C) := by
   have hc := iteratedSConstruction_isContractibleKan_of_zero_mem ns C h
   letI := hc.kanComplex
-  exact isContractibleKan_of_iso (kanCoreIso (iteratedSConstruction ns C)) hc
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_of_iso (kanCoreIso (iteratedSConstruction ns C)) hc
 
 end SerrePositivity.KST.SConstruction

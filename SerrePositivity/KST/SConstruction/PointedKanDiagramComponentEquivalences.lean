@@ -23,15 +23,15 @@ def pointedKanDiagramHomotopyFunctorIso {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
     (H : SSet.Homotopy (pointedKanCoherentDiagram F hF) (pointedKanCoherentDiagram G hG))
-    (hH : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pointedKanDiagramHomotopyMapAt hF hG H i).right) :
-    FunctorIso (pointedKanCoherentDiagram F hF) (pointedKanCoherentDiagram G hG) := by
-  apply functorIsoOfPointwiseInvertibleHomotopy H
+    (hH : ∀ i, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (pointedKanDiagramHomotopyMapAt hF hG H i).right) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (pointedKanCoherentDiagram F hF) (pointedKanCoherentDiagram G hG) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy H
   rintro ⟨s⟩
-  have hs : s = nerveVertex (s.obj 0) := ComposableArrows.ext₀ rfl
+  have hs : s = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (s.obj 0) := ComposableArrows.ext₀ rfl
   rw [hs]
   let f : (pointedKanDiagram F hF).obj (s.obj 0) ⟶ (pointedKanDiagram G hG).obj (s.obj 0) :=
     ObjectProperty.homMk (pointedKanDiagramHomotopyMapAt hF hG H (s.obj 0))
   have hf := pointedKanObject_edge_isInvertible_of_piIsomorphism f (hH (s.obj 0))
-  exact (isInvertibleEdge_congr (pointedKanDiagramHomotopyMapAt_edge hF hG H (s.obj 0))).mp hf
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (pointedKanDiagramHomotopyMapAt_edge hF hG H (s.obj 0))).mp hf
 
 end SerrePositivity.KST.SConstruction

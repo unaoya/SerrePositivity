@@ -29,7 +29,7 @@ private lemma orientation_smul_heq {x y : D} {p q : ℕ} (hp : p = q)
   rfl
 
 /-- 元の全辺添字の HA 値は、元の同じ部分集合成分の向きを戻した値。 -/
-lemma simplexHAGeneratorValue_top_heq {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHAGeneratorValue_top_heq {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last m) < b) :
     HEq (simplexHAGeneratorValue A s m (serreCubeTopGeneratorIndex m) v b hb)
@@ -52,7 +52,7 @@ lemma simplexHAGeneratorValue_top_heq {n : ℕ} (s : DGNerve.SimplexData A D n)
       (orientation_smul_heq A (serreCubeTopGeneratorIndex_freeDimension m) _ _ h)
 
 /-- 任意の元の HA 次数線形復元は、最高生成元で元の同じ部分集合成分を回収する。 -/
-lemma simplexHADegreeLift_top {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADegreeLift_top {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last m) < b) :
     simplexHADegreeLift A s m v b hb (-(m : ℤ)) (serreCubeTopCell A m) =

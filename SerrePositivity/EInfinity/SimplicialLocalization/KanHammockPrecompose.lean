@@ -19,17 +19,17 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open Hammock SerrePositivity.KST.Comparison
-variable (C : RelativeCategory.{u}) {X Y : C.category} (f : X ⟶ Y) (Z : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category} (f : X ⟶ Y) (Z : C.category)
 
 lemma kanHammockSource_precompose :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (precomposePointMap (arrowMap C.weakEquivalences f) Z) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f) Z) =
     lift (toUnit _ ≫ ForgetEnrichment.homTo SSet.{u} ((kanHammockSourceFunctor C).map f))
       (𝟙 _) ≫ eComp SSet ((kanHammockSourceFunctor C).obj X)
         ((kanHammockSourceFunctor C).obj Y) ((kanHammockSourceFunctor C).obj Z) := by
-  let p := arrowMap C.weakEquivalences f
-  let B := colimitGraph C.weakEquivalences Y Z
-  have hp : precomposePointMap p Z = lift (toUnit B ≫ p) (𝟙 B) ≫
-      colimitComposition C.weakEquivalences X Y Z := rfl
+  let p := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f
+  let B := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences Y Z
+  have hp : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap p Z = lift (toUnit B ≫ p) (𝟙 B) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition C.weakEquivalences X Y Z := rfl
   have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (𝟙_ SSet.{u}) = Functor.LaxMonoidal.ε _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity := by
     simpa using (NatTrans.IsMonoidal.unit (τ := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.{u}))
   have hn := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality p
@@ -39,7 +39,7 @@ lemma kanHammockSource_precompose :
     rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_comp, ← Functor.Monoidal.toUnit_ε,
       ← hu, Category.assoc, ← hn]
     exact (Category.assoc _ _ _).symm
-  rw [show arrowMap C.weakEquivalences f = p from rfl, hp, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_comp,
+  rw [show _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f = p from rfl, hp, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_comp,
     ← Functor.Monoidal.lift_μ, hc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_id,
     kanHammockSourceFunctor_homTo]
   rfl
@@ -47,7 +47,7 @@ lemma kanHammockSource_precompose :
 lemma kanHammockSource_precompose_family {K : SSet.{u}}
     (L : K ⟶ SimplicialCategory.sHom ((kanHammockSourceFunctor C).obj Y)
       ((kanHammockSourceFunctor C).obj Z)) :
-    L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (precomposePointMap (arrowMap C.weakEquivalences f) Z) =
+    L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f) Z) =
       lift (toUnit K ≫ ForgetEnrichment.homTo SSet.{u} ((kanHammockSourceFunctor C).map f)) L ≫
         eComp SSet ((kanHammockSourceFunctor C).obj X) ((kanHammockSourceFunctor C).obj Y)
           ((kanHammockSourceFunctor C).obj Z) := by

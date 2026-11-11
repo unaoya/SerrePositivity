@@ -28,24 +28,24 @@ def kanAdjointStructureInput (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet
 def kanAdjointParameterStructureInterval (X Y : OmegaSpectrum.{u})
     {A : PointedSimplicialSet.{u}} (φ : A ⟶ pointedSpace X Y.toKanSequence) (n : ℕ) :
     PointedMapping.VerticalPath (PointedObject.toPoint
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space))
       ((φ ≫ kanAdjointParameterLeft X Y (n + 1)) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)
       ((φ ≫ kanAdjointParameterLeft X Y n) ≫
         pointedStep X (KanSequence.signedLoopTail Y.toKanSequence) n) := by
   have hr : ((φ ≫ kanAdjointParameterLeft X Y (n + 1)) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space) =
-      kanAdjointStructureInput X Y φ n ≫ (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map
+      kanAdjointStructureInput X Y φ n ≫ (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map
         (Y.sigma n ≫ KanSequence.kanAdjoint Y.toKanSequence (n + 1)) := by
     have h := congrArg (φ ≫ ·) (kanAdjointParameterLeft_source_restriction X Y n)
     simp only [kanAdjointStructureInput, Category.assoc] at h ⊢
     exact h
   have hl : ((φ ≫ kanAdjointParameterLeft X Y n) ≫
       pointedStep X (KanSequence.signedLoopTail Y.toKanSequence) n) =
-      kanAdjointStructureInput X Y φ n ≫ (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map
+      kanAdjointStructureInput X Y φ n ≫ (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map
         (PointedSimplicialSet.circle.{u} ◁ KanSequence.kanAdjoint Y.toKanSequence n ≫
           (KanSequence.signedLoopTail Y.toKanSequence).sigma n) := by
     have h := congrArg (φ ≫ ·) (kanAdjointParameterLeft_step X Y n)
@@ -99,9 +99,9 @@ def interval (s : KanAdjointBoundaryCoordinate X Y φ j c n H) :
 lemma interval_h (s : KanAdjointBoundaryCoordinate X Y φ j c n H) :
     s.interval.homotopy.h = s.comparison.h := by
   rw [PointedMapping.VerticalPath.homotopy_h]
-  change uncurry (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry A (kanAdjointParameterTarget X Y n)
+  change uncurry (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry A (kanAdjointParameterTarget X Y n)
     s.comparison.h s.comparison_base ≫ _) = _
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, uncurry_curry]
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, uncurry_curry]
 
 /-- 段調整を構造 Hom へ後合成した区間の境界は、指定された元の H の同じ後合成。 -/
 lemma interval_post_boundary (s : KanAdjointBoundaryCoordinate X Y φ j c n H)

@@ -16,25 +16,25 @@ variable {B D : SSet.{u}} {J : Type u} [Category.{u} J]
 
 /-- 逆成分は任意の元の切断点を、同じ厳密な底変換逆射の像へ送る。 -/
 theorem relativeSectionBaseChangeComponentIso_backward_pointHom
-    (X : LeftFibrationObject B) (j : J)
-    (v : (((relativeSectionEnrichedDiagram (A ⋙ Over.map k)).obj j).obj X).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
-      (((relativeSectionEnrichedDiagram (A ⋙ Over.map k)).obj j).obj X)).symm v) ≫
+    (X : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftFibrationObject B) (j : J)
+    (v : (((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.relativeSectionEnrichedDiagram (A ⋙ Over.map k)).obj j).obj X).obj _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cosliceFiberPointHom ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceFiberVertexEquiv
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.relativeSectionEnrichedDiagram (A ⋙ Over.map k)).obj j).obj X)).symm v) ≫
       (relativeSectionBaseChangeComponentIso k A X j).inv =
-    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
-      ((((relativeSectionEnrichedDiagram A).precompose
-        (leftFibrationBaseChangeEnriched k)).obj j).obj X)).symm
-          ((relativeFunctorBaseChangeBackward X.val.hom k (A.obj (Opposite.op j)).hom).app
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cosliceFiberPointHom ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceFiberVertexEquiv
+      ((((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.relativeSectionEnrichedDiagram A).precompose
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.leftFibrationBaseChangeEnriched k)).obj j).obj X)).symm
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.relativeFunctorBaseChangeBackward X.val.hom k (A.obj (Opposite.op j)).hom).app
             (Opposite.op ⦋0⦌) v)) := by
   have hv := congrArg (fun m => m.app (Opposite.op ⦋0⦌) v)
-    (relativeFunctorBaseChangeIso X.val.hom k (A.obj (Opposite.op j)).hom).inv_hom_id
-  change (relativeFunctorBaseChangeForward X.val.hom k (A.obj (Opposite.op j)).hom).app
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.relativeFunctorBaseChangeIso X.val.hom k (A.obj (Opposite.op j)).hom).inv_hom_id
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.relativeFunctorBaseChangeForward X.val.hom k (A.obj (Opposite.op j)).hom).app
       (Opposite.op ⦋0⦌)
-      ((relativeFunctorBaseChangeBackward X.val.hom k (A.obj (Opposite.op j)).hom).app
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.relativeFunctorBaseChangeBackward X.val.hom k (A.obj (Opposite.op j)).hom).app
         (Opposite.op ⦋0⦌) v) = v at hv
   apply (Iso.comp_inv_eq _).2
   have hp := relativeSectionBaseChangeComponentIso_pointHom k A X j
-    ((relativeFunctorBaseChangeBackward X.val.hom k (A.obj (Opposite.op j)).hom).app
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.relativeFunctorBaseChangeBackward X.val.hom k (A.obj (Opposite.op j)).hom).app
       (Opposite.op ⦋0⦌) v)
   rw [hv] at hp
   exact hp.symm

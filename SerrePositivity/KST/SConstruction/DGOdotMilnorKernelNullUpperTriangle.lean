@@ -18,9 +18,9 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "B" => DGOdotGluing R d
 local notation "P" => DGCategoryCellResolution.Source R (B)
 local notation "I" => dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))
-local notation "K" => resolvedDGQuotientThickFlatKernel R (B) (I)
-local notation "Q" => DGQuotient.QuotientObject (P) (resolvedDGNullObjects R (B) (I))
-local notation "k" => resolvedDGQuotientThickFlatKernelInclusion R (B) (I)
+local notation "K" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientThickFlatKernel R (B) (I)
+local notation "Q" => DGQuotient.QuotientObject (P) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (B) (I))
+local notation "k" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientThickFlatKernelInclusion R (B) (I)
 local notation "H" => dgOdotMilnorRightAxisLift R d
 local notation "U" => DGOdotMilnorRightAxisBase R d
 local notation "F" => dgOdotMilnorRightAxisQuotientSource R d
@@ -56,9 +56,9 @@ def dgOdotMilnorKernelNullFactorInputMap :
 規約：K-S2 の共有対角そのもの。使われ方：共通長方形の比較面。 -/
 def dgOdotMilnorKernelNullUpperTriangle : SSet.Edge.CompStruct
     (X := dgKInputInfinity.{u, u + 1} R)
-    (coherentNerveEdge (dgOdotMilnorKernelNullFactorInputMap R d))
-    (coherentNerveEdge (dgIdentityHomGluingNullInputMap R (U)))
-    (coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorKernelNullFactorInputMap R d))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgIdentityHomGluingNullInputMap R (U)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d ≫
       dgOdotMilnorRightAxisInputMap R d)) :=
   dgIdentityHomGluingNullFactorCompositeTriangle R (U) (P) (k) (H)
     (dgOdotMilnorKernelLift_nullProperty R d)

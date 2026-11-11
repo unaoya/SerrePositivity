@@ -30,10 +30,10 @@ def mappingSmallSpanRecoveryNerveMap (X Y : (operad A).Algebra) :
       nerve (algebraSpecialHammock A X Y) := by
   let := modelCategory A
   exact FrameHom.SmallCommaGrothendieck.recoveryNerveMap.{u + 1, u, u + 1}
-      (FrameHom.ArrowSpan.leftSliceForget (trivialFibrations _) X)
-      (FrameHom.ArrowSpan.rightSliceForget (trivialCofibrations _) Y) ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.leftSliceForget (trivialFibrations _) X)
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.rightSliceForget (trivialCofibrations _) Y) ≫
     (FrameHom.Thomason.selfLiftIso _).hom ≫
-      nerveMap (FrameHom.ArrowSpan.fromComma (trivialFibrations _) (trivialCofibrations _) X Y)
+      nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.fromComma (trivialFibrations _) (trivialCofibrations _) X Y)
 
 /-- 全次数で元の中間射を down して取り出す。 -/
 lemma mappingSmallSpanRecoveryNerveMap_middle (X Y : (operad A).Algebra)
@@ -48,11 +48,11 @@ lemma mappingSmallSpanRecoveryNerveMap_localized_isIso (X Y : (operad A).Algebra
     IsIso (AnodyneHomotopy.anodyneQ.map (mappingSmallSpanRecoveryNerveMap A X Y)) := by
   let := modelCategory A
   have := FrameHom.SmallCommaGrothendieck.recoveryNerveMap_localized_isIso.{u + 1, u, u + 1}
-    (FrameHom.ArrowSpan.leftSliceForget (trivialFibrations _) X)
-    (FrameHom.ArrowSpan.rightSliceForget (trivialCofibrations _) Y)
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.leftSliceForget (trivialFibrations _) X)
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.rightSliceForget (trivialCofibrations _) Y)
   have : IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap
-      (FrameHom.ArrowSpan.fromComma (trivialFibrations _) (trivialCofibrations _) X Y))) :=
-    (FrameHom.NerveEquivalenceImage.imageIso (FrameHom.ArrowSpan.commaEquivalence
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.fromComma (trivialFibrations _) (trivialCofibrations _) X Y))) :=
+    (FrameHom.NerveEquivalenceImage.imageIso (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.commaEquivalence
       (trivialFibrations _) (trivialCofibrations _) X Y).symm AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions)).isIso_hom
   dsimp only [mappingSmallSpanRecoveryNerveMap]

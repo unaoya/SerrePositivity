@@ -3,7 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization
 public import SerrePositivity.BhattScholze.Almost.Lemma103
 public import SerrePositivity.CommutativeAlgebra.Almost.Quotient
-public import SerrePositivity.InfinityCategories.Derived.Homology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
 public import SerrePositivity.BhattScholze.Almost.CompletedModuleTensor
 
 /-! # 商の perfectoid 化の核と複体の almost 零性
@@ -85,12 +85,12 @@ attribute [local instance] HasDerivedCategory.standard
 /-- 全次数のコホモロジーが J-almost 零である（BS 著者版 Proposition 10.4）。 -/
 def IsJAlmostZero (M : DVertex R) : Prop :=
   ∀ i : ℤ, SerrePositivity.Almost.IsAlmostZero (perfectoidKernel p R hR J)
-    (derivedInfinityHomology R i M)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology R i M)
 
 /-- 正次数のコホモロジーが J-almost 零である（BS 著者版 Lemma 10.5）。 -/
 def IsAlmostConnective (M : DVertex R) : Prop :=
   ∀ i : ℤ, 0 < i → SerrePositivity.Almost.IsAlmostZero (perfectoidKernel p R hR J)
-    (derivedInfinityHomology R i M)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology R i M)
 
 /-- 複体の J-almost 零性は根基で決まる。 -/
 theorem isAlmostZero_radical (M : DVertex R) :
@@ -136,7 +136,7 @@ attribute [local instance] HasDerivedCategory.standard
 
 /-- 頂点を通常の導来圏に移し、主元 p に関する導来完備性を判定する。 -/
 def isPCompleteVertex (p : ℕ) (R : Type u) [CommRing R]
-    (M : (derivedInfinityCategory R) _⦋0⦌) : Prop :=
-  IsComplete R (p : R) ((derivedInfinityHomotopyEquivalence R).functor.obj ⟨M⟩)
+    (M : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌) : Prop :=
+  IsComplete R (p : R) ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj ⟨M⟩)
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

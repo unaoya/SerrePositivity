@@ -18,9 +18,9 @@ open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable {U E : SSet.{u}} {a b : U ⟶ E} {H K : SSet.Homotopy a b}
   (t : SSet.Edge.CompStruct
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy H))
-    (SSet.Edge.id (functorVertex b))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy K)))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))
+    (SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex b))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy K)))
 
 /-- 指定した同じ実三角形を保つ、元の二円柱の端点固定二次元比較。 -/
 def familyCylinderTriangleComparison : SSet.Homotopy H.h K.h where
@@ -48,7 +48,7 @@ lemma familyCylinderTriangleComparison_source :
       (familyCylinderTriangleComparison t).h = fst U (Δ[1] : SSet.{u}) ≫ a := by
   change _ ≫ mappingSquareUncurry _ = _
   rw [mappingSquareUncurry_source, endpointFixedEdgeSquare_vertical_zero,
-    uncurry_const_functorVertex]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.uncurry_const_functorVertex]
 
 /-- 元の終点族も全比較時刻で厳密に固定される。 -/
 lemma familyCylinderTriangleComparison_target :
@@ -56,6 +56,6 @@ lemma familyCylinderTriangleComparison_target :
       (familyCylinderTriangleComparison t).h = fst U (Δ[1] : SSet.{u}) ≫ b := by
   change _ ≫ mappingSquareUncurry _ = _
   rw [mappingSquareUncurry_target, endpointFixedEdgeSquare_vertical_one,
-    uncurry_const_functorVertex]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.uncurry_const_functorVertex]
 
 end SerrePositivity.KST.SConstruction

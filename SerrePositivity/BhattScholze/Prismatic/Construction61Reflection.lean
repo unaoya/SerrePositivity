@@ -78,7 +78,7 @@ theorem quasiIso_of_completedCover_semifree_map_quasiIso
       (baseChangeScalarModule (modPMap p P.deltaStructure.frobeniusLift)))
     (hR : IsSMulRegular (A ⧸ P.ideal) (p : A ⧸ P.ideal))
     {K L : CochainComplex (ModuleCat.{u} A) ℤ} (f : K ⟶ L)
-    (hK : complexSemifree A K) (hL : complexSemifree A L)
+    (hK : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A K) (hL : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A L)
     (hpK : IsComplete A (p : A) (DerivedCategory.Q.obj K))
     (hpL : IsComplete A (p : A) (DerivedCategory.Q.obj L))
     (hdK : IsComplete A P.generator (DerivedCategory.Q.obj K))
@@ -95,7 +95,7 @@ theorem quasiIso_of_completedCover_semifree_map_quasiIso
 使われ方：普遍基底上の比較射の検出。 -/
 theorem universal_quasiIso_of_completedCover_map_quasiIso
     {K L : CochainComplex (ModuleCat.{u} (UniversalOrientedPrismRing.{u} p)) ℤ}
-    (f : K ⟶ L) (hK : complexSemifree _ K) (hL : complexSemifree _ L)
+    (f : K ⟶ L) (hK : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree _ K) (hL : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree _ L)
     (hpK : IsComplete _ (p : UniversalOrientedPrismRing.{u} p) (DerivedCategory.Q.obj K))
     (hpL : IsComplete _ (p : UniversalOrientedPrismRing.{u} p) (DerivedCategory.Q.obj L))
     (hdK : IsComplete _ (universalOrientedPrism.{u} p).generator (DerivedCategory.Q.obj K))
@@ -115,7 +115,7 @@ theorem completedCover_semifree_map_quasiIso_iff
       (baseChangeScalarModule (modPMap p P.deltaStructure.frobeniusLift)))
     (hR : IsSMulRegular (A ⧸ P.ideal) (p : A ⧸ P.ideal))
     {K L : CochainComplex (ModuleCat.{u} A) ℤ} (f : K ⟶ L)
-    (hK : complexSemifree A K) (hL : complexSemifree A L)
+    (hK : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A K) (hL : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A L)
     (hpK : IsComplete A (p : A) (DerivedCategory.Q.obj K))
     (hpL : IsComplete A (p : A) (DerivedCategory.Q.obj L))
     (hdK : IsComplete A P.generator (DerivedCategory.Q.obj K))

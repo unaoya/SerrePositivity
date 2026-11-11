@@ -26,8 +26,8 @@ set_option backward.isDefEq.respectTransparency.types false
 def differentialZero (X : ℕ → PointedSimplicialSet.{u})
     (p : ∀ n, X (n + 1) ⟶ X n)
     [∀ n, KanComplex (X n).right] [∀ n, Fibration (p n).right] (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p n)).right 0 (pointedFiber (p n)).basepoint →
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (pointedFiber (p (n + 1))).right 0 (pointedFiber (p (n + 1))).basepoint :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedFiber (p n)).right 0 (pointedFiber (p n)).basepoint →
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (pointedFiber (p (n + 1))).right 0 (pointedFiber (p (n + 1))).basepoint :=
   fun a ↦ pointedConnectingZero (p (n + 1)) (pointedGroupMap 0 (pointedFiberι (p n)) a)
 
 /-- 概要：塔の厳密な射は零次数の微分と可換。
@@ -39,7 +39,7 @@ theorem differentialZero_natural {X Y : ℕ → PointedSimplicialSet.{u}}
     [∀ n, KanComplex (X n).right] [∀ n, KanComplex (Y n).right]
     [∀ n, Fibration (p n).right] [∀ n, Fibration (q n).right]
     (f : ∀ n, X n ⟶ Y n) (h : ∀ n, p n ≫ f n = f (n + 1) ≫ q n) (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p n)).right 0 (pointedFiber (p n)).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedFiber (p n)).right 0 (pointedFiber (p n)).basepoint) :
     pointedHomotopyMap 0
       (PointedFiberComparison.map (p (n + 1)) (q (n + 1)) (f (n + 2)) (f (n + 1)) (h (n + 1)))
       (differentialZero X p n a) =

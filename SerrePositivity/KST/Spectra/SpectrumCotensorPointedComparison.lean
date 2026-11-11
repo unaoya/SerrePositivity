@@ -37,11 +37,11 @@ lemma cotensorPointedMappingComparison_right (X Y : OmegaSpectrum.{u})
 /-- 比較は同値であるだけでなく、実際の自明 Kan fibration である。 -/
 lemma cotensorPointedMappingComparison_trivialKanFibration (X Y : OmegaSpectrum.{u})
     (A : PointedSimplicialSet.{u}) :
-    TrivialKanFibration (cotensorPointedMappingComparison X Y A).right := by
-  change TrivialKanFibration (RawSpectrumMapping.post X (cotensorProjection A Y) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (cotensorPointedMappingComparison X Y A).right := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (RawSpectrumMapping.post X (cotensorProjection A Y) ≫
     (PointedSimplicialSet.forget.mapIso
       (RawSpectrumMapping.cotensorIso X Y.toKanSequence A)).hom)
-  exact ⟨trivialKanFibrations.comp_mem _ _
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.comp_mem _ _
     (RawSpectrumMapping.cotensorProjection_rlp X Y A)
     (MorphismProperty.rlp_of_isIso _ _)⟩
 
@@ -52,7 +52,7 @@ lemma cotensorPointedMappingComparison_composition (X Y Z : OmegaSpectrum.{u})
         cotensorPointedMappingComparison X Z A =
       (𝟙 (RawSpectrumMapping.pointedSpace X Y.toKanSequence) ⊗ₘ
         cotensorPointedMappingComparison Y Z A) ≫
-      _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map (RawSpectrumMapping.pointedSpace X Y.toKanSequence) A
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.map (RawSpectrumMapping.pointedSpace X Y.toKanSequence) A
         (RawSpectrumMapping.pointedSpace Y Z.toKanSequence) ≫
       (ihom A).map (RawSpectrumMapping.pointedComposition X Y Z.toKanSequence) := by
   dsimp only [cotensorPointedMappingComparison]

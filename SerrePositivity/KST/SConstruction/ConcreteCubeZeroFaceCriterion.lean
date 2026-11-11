@@ -19,36 +19,36 @@ lemma cubeCoordinateEmbedding_eq_succAbove {m : ℕ} (e : Fin m ↪o Fin (m + 1)
 
 /-- 元の一座標に零を入れ、順序を保つ全残存座標を保持する実 cube 射は元の標準零面。 -/
 lemma concreteCube_zero_face_of_coordinate_embedding {m n : ℕ}
-    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n) (e : Fin m ↪o Fin n) (i : Fin n)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n) (e : Fin m ↪o Fin n) (i : Fin n)
     (hn : n = m + 1) (hr : Set.range e = {i}ᶜ)
     (hz : ∀ x, f.val x i = false) (he : ∀ x j, f.val x (e j) = x j) :
     f ≫ (concreteCubeDimensionIso
-      (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n) (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (m + 1)) hn).hom =
-        _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace false m (Fin.cast hn i) := by
+      (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n) (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (m + 1)) hn).hom =
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace false m (Fin.cast hn i) := by
   subst n
   have h := cubeCoordinateEmbedding_eq_succAbove e i hr
   subst e
   apply Subtype.ext
   funext x j
-  change f.val x j = _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace false m i x j
+  change f.val x j = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace false m i x j
   refine Fin.succAboveCases i ?_ (fun k => ?_) j
-  · simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_apply_same] using hz x
-  · simpa only [Fin.coe_succAboveOrderEmb, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_apply_succAbove]
+  · simpa only [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace, Fin.insertNth_apply_same] using hz x
+  · simpa only [Fin.coe_succAboveOrderEmb, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace, Fin.insertNth_apply_succAbove]
       using he x k
 
 /-- 元の零面の同定は、始域・終域の元の次元同型による共役でも保たれる。 -/
 lemma concreteCube_zero_face_conjugate {m n m' n' : ℕ} (hm : m' = m) (hn : n' = n)
     (hc : n = m + 1) (hc' : n' = m' + 1)
-    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n) (i : Fin n)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n) (i : Fin n)
     (hf : f ≫ (concreteCubeDimensionIso
-      (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n) (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (m + 1)) hc).hom =
-        _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace false m (Fin.cast hc i)) :
-    ((concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m') (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m) hm).hom ≫
+      (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n) (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (m + 1)) hc).hom =
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace false m (Fin.cast hc i)) :
+    ((concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m') (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m) hm).hom ≫
         f ≫ (concreteCubeDimensionIso
-          (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n') (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n) hn).inv) ≫
+          (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n') (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n) hn).inv) ≫
       (concreteCubeDimensionIso
-        (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n') (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (m' + 1)) hc').hom =
-    _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace false m' (Fin.cast hc' (Fin.cast hn.symm i)) := by
+        (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n') (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (m' + 1)) hc').hom =
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace false m' (Fin.cast hc' (Fin.cast hn.symm i)) := by
   subst m'
   subst n'
   simpa only [concreteCubeDimensionIso, eqToIso_refl, Iso.refl_hom, Iso.refl_inv,

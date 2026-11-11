@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Pointed.SpectrumHomotopyFunctor
+public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.SpectrumHomotopyFunctor
 
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyGroups
 public import SerrePositivity.KST.Spectra.SpectrumMorphisms
@@ -34,7 +34,7 @@ def positiveLevelMap (X Y : OmegaSpectrum.{u}) (k n : ℕ) (hn : 0 < n)
     (f : (X.level k).space ⟶ (Y.level k).space) : levelHomotopy X k n →* levelHomotopy Y k n := by
   cases n with
   | zero => omega
-  | succ n => exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f)
+  | succ n => exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map f.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint f)
 
 /-- 概要：段の正次数の準同型の元への作用は通常のホモトピー類の誘導写像。
 方針：正次数の定義を展開する。
@@ -42,7 +42,7 @@ def positiveLevelMap (X Y : OmegaSpectrum.{u}) (k n : ℕ) (hn : 0 < n)
 使われ方：BF 1978 §2。関手性の計算。 -/
 theorem positiveLevelMap_apply (X Y : OmegaSpectrum.{u}) (k n : ℕ) (hn : 0 < n)
     (f : (X.level k).space ⟶ (Y.level k).space) (a : levelHomotopy X k n) :
-    positiveLevelMap X Y k n hn f a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f) a := by
+    positiveLevelMap X Y k n hn f a = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n f.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint f) a := by
   cases n with
   | zero => omega
   | succ n => rfl
@@ -63,8 +63,8 @@ def homotopyMap {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (j : ℤ) :
 @[simp]
 theorem homotopyMap_apply {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (j : ℤ)
     (a : homotopyGroup X j) :
-    homotopyMap f j a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map (degree j (canonicalLevel j))
-      (f.app (canonicalLevel j)).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) a :=
+    homotopyMap f j a = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map (degree j (canonicalLevel j))
+      (f.app (canonicalLevel j)).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _) a :=
   positiveLevelMap_apply _ _ _ _ _ _ _
 
 /-- 概要：整数次数の誘導写像は恒等射を保つ。
@@ -76,7 +76,7 @@ theorem homotopyMap_id (X : OmegaSpectrum.{u}) (j : ℤ) : homotopyMap (𝟙 X) 
   apply MonoidHom.ext
   intro a
   rw [homotopyMap_apply]
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_id _ a
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_id _ a
 
 /-- 概要：整数次数の誘導写像は合成を保つ。
 方針：自然数次数の誘導写像の合成法則を使う。
@@ -87,7 +87,7 @@ theorem homotopyMap_comp {X Y Z : OmegaSpectrum.{u}} (f : X ⟶ Y) (g : Y ⟶ Z)
   apply MonoidHom.ext
   intro a
   rw [MonoidHom.comp_apply, homotopyMap_apply, homotopyMap_apply, homotopyMap_apply]
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp _ _ _ _ _ _ a
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_comp _ _ _ _ _ _ a
 
 /-- 概要：Ω スペクトルから整数次数の可換群への関手。
 方針：構成済みの群と誘導準同型、恒等・合成法則を束ねる。

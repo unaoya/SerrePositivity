@@ -33,7 +33,7 @@ public import Mathlib.Order.RelClasses
 public import Mathlib.Order.SuccPred.Nat
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Objects
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LatchingDegeneracies
-public import SerrePositivity.InfinityCategories.ModelBridge.R72.LatchingDegeneracies
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.LatchingDegeneracies
 
 /-!
 # 単体的集合のlatching比較射は単射となる
@@ -93,7 +93,7 @@ lemma comparison_mono (X : SSet.{v}) (j : SimplexCategoryᵒᵖ) :
         X.map i.obj.hom z :=
     congrArg (fun k => k z) (colimit.ι_desc (latchingCocone simplexOp X j) i)
   have h' := (ha a xa).symm.trans (h.trans (ha b yb))
-  obtain ⟨r, u, w, z, hzx, hzy⟩ := common_refinement X a b xa yb h'
+  obtain ⟨r, u, w, z, hzx, hzy⟩ := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.common_refinement X a b xa yb h'
   have hu := congrArg (fun k => k z) (colimit.w (latchingSource simplexOp j ⋙ X) u)
   have hw := congrArg (fun k => k z) (colimit.w (latchingSource simplexOp j ⋙ X) w)
   change colimit.ι (latchingSource simplexOp j ⋙ X) a (X.map u.hom.left z) =

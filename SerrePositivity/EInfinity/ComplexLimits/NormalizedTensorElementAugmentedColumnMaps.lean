@@ -34,9 +34,9 @@ lemma normalizedTensorElementAugmentedColumn_map_cast_cast {n : ℕ}
       ((normalizedTensorElementDiagram A X Y).map (c.map (homOfLE hij))) := by
   let L := normalizedTensorElementLiftedAugmentationCocone A X Y
   let Γ := c ⋙ ULiftHom.up.{u, u + 1, u + 1}
-  have he := FrameHom.TerminalCoconeSimplex.diagram_map_cast_cast L Γ i j hij
-  have hx := FrameHom.TerminalCoconeSimplex.diagram_obj_cast L Γ i
-  have hy := FrameHom.TerminalCoconeSimplex.diagram_obj_cast L Γ j
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_map_cast_cast L Γ i j hij
+  have hx := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_cast L Γ i
+  have hy := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_cast L Γ j
   exact downMap_heq hx hy _ _ he
 
 lemma normalizedTensorElementAugmentedColumn_map_cast_last {n : ℕ}
@@ -46,9 +46,9 @@ lemma normalizedTensorElementAugmentedColumn_map_cast_last {n : ℕ}
       ((normalizedTensorElementAugmentation A X Y).app (c.obj i)) := by
   let L := normalizedTensorElementLiftedAugmentationCocone A X Y
   let Γ := c ⋙ ULiftHom.up.{u, u + 1, u + 1}
-  have he := FrameHom.TerminalCoconeSimplex.diagram_map_cast_last L Γ i
-  have hx := FrameHom.TerminalCoconeSimplex.diagram_obj_cast L Γ i
-  have hy := FrameHom.TerminalCoconeSimplex.diagram_obj_last L Γ
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_map_cast_last L Γ i
+  have hx := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_cast L Γ i
+  have hy := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_last L Γ
   exact downMap_heq hx hy _ _ he
 
 end SerrePositivity.EInfinity.ComplexLimits

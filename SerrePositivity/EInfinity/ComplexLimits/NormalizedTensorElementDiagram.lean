@@ -23,14 +23,14 @@ variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 abbrev normalizedTensorElementIndex :=
   ULiftHom.{u} (ULift.{u + 1}
-    ((((cosimplicialHom (normalizedSimplexTensor A X)).obj Y).Elements)ᵒᵖ))
+    ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y).Elements)ᵒᵖ))
 
 instance normalizedTensorElementIndexCategory :
     Category.{u} (normalizedTensorElementIndex A X Y) := inferInstance
 
 def normalizedTensorElementDegree : normalizedTensorElementIndex A X Y ⥤ SimplexCategory :=
   ULiftHom.down ⋙ ULift.downFunctor ⋙
-    (Functor.Elements.π ((cosimplicialHom (normalizedSimplexTensor A X)).obj Y)).leftOp
+    (Functor.Elements.π ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y)).leftOp
 
 def normalizedTensorElementDiagram : normalizedTensorElementIndex A X Y ⥤ Complex A :=
   normalizedTensorElementDegree A X Y ⋙ normalizedSimplexTensor A X

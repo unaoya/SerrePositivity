@@ -19,7 +19,7 @@ variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorDoubleConeSlicePrism_projection :
     normalizedTensorDoubleConeSlicePrism A X Y ≫
-      sliceOverProjection (normalizedTensorConePoint A X) = normalizedTensorConePrism A X Y := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (normalizedTensorConePoint A X) = normalizedTensorConePrism A X Y := by
   simp only [normalizedTensorDoubleConeSlicePrism, normalizedTensorConePrism, Category.assoc,
     normalizedTensorDoubleConeOverJoin_projection]
 

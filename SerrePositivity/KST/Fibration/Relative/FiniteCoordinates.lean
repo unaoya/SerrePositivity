@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.Fibration.Relative
 
 /-- 概要：各次数の実有限積。方針：既存比較の値域を使う。
 規約：r は正反復から一を引いた数。使われ方：局所化後の座標対象。 -/
-def finiteCoordinates {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) : SSet.{u} :=
+def finiteCoordinates {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) : SSet.{u} :=
   (multiRealizationFunctor (r + 1)).obj
     (closedStableModel (ClosedStablePredicate.top (sInputModel B))) ⊗
       ∏ᶜ (fun _ : Fin n => (multiRealizationFunctor (r + 1)).obj
@@ -30,7 +30,7 @@ def finiteCoordinates {B C : _root_.SerrePositivity.InfinityCategories.Stable.Ve
 
 /-- 概要：元の比較を順射に持つ同型。方針：既存の加法性定理を適用。
 規約：局所化内のみ。使われ方：全面・全退化の座標輸送。 -/
-def finiteComparisonIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
+def finiteComparisonIso {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) :
     AnodyneHomotopy.anodyneQ.obj ((weakStringMultiRealization q (r + 1)).obj
       (Opposite.op ⦋n⦌)) ≅ AnodyneHomotopy.anodyneQ.obj (finiteCoordinates q n r) := by
   exact @asIso _ _ _ _
@@ -39,7 +39,7 @@ def finiteComparisonIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.
 
 /-- 概要：有限積座標の全単体作用。方針：元の W 列の作用を同型で共役する。
 規約：生の積上の厳密加法を選ばない。使われ方：全単体的局所化比較。 -/
-def finiteCoordinateDiagram {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+def finiteCoordinateDiagram {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     SimplicialObject SSet.anodyneExtensions.{u}.Localization where
   obj n := AnodyneHomotopy.anodyneQ.obj (finiteCoordinates q n.unop.len r)
   map {n m} θ := (finiteComparisonIso q n.unop.len r).inv ≫
@@ -50,7 +50,7 @@ def finiteCoordinateDiagram {B C : _root_.SerrePositivity.InfinityCategories.Sta
 
 /-- 概要：元の全 W 列から有限積座標への単体的同型。
 方針：同じ比較を各次数に置く。規約：局所化後。使われ方：元の全作用の保持。 -/
-def finiteComparisonNatIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+def finiteComparisonNatIso {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     weakStringMultiRealization q (r + 1) ⋙ AnodyneHomotopy.anodyneQ ≅
       finiteCoordinateDiagram q r :=
   NatIso.ofComponents (fun n => finiteComparisonIso q n.unop.len r) (by
@@ -59,7 +59,7 @@ def finiteComparisonNatIso {B C : _root_.SerrePositivity.InfinityCategories.Stab
 
 /-- 概要：全面・全退化の自然性。方針：同型の自然性を読む。
 規約：元の有限比較を使う。使われ方：個々の面に限定しない比較。 -/
-theorem finiteComparison_reindex {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+theorem finiteComparison_reindex {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     (r : ℕ) {m n : SimplexCategoryᵒᵖ} (θ : m ⟶ n) :
     AnodyneHomotopy.anodyneQ.map ((weakStringMultiRealization q (r + 1)).map θ) ≫
         (finiteComparisonIso q n.unop.len r).hom =

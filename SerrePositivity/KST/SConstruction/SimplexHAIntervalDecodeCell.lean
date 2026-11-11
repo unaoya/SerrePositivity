@@ -21,8 +21,8 @@ variable (A : Type u) [CommRing A]
 /-- 元の閉区間部分集合の指定次元生成射は、同じ区間 Hom 同型の順射と異種等号で一致。 -/
 lemma simplexSubsetLambdaCellAtDimension_closedInterval_heq {N : ℕ}
     (a b : Fin (N + 1)) (hab : a ≤ b) (hI : 2 ≤ (Finset.Icc a b).card)
-    (ha : a = (Finset.Icc a b).min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty (Finset.Icc a b) hI))
-    (hb : b = (Finset.Icc a b).max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty (Finset.Icc a b) hI))
+    (ha : a = (Finset.Icc a b).min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty (Finset.Icc a b) hI))
+    (hb : b = (Finset.Icc a b).max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty (Finset.Icc a b) hI))
     (d : ℕ) (hd : d = (Finset.Icc a b).card - 2) :
     HEq (simplexSubsetLambdaCellAtDimension A (Finset.Icc a b) a b hI ha hb d hd)
       (simplexIntervalLambdaHomIso A a b hab).hom :=
@@ -38,11 +38,11 @@ lemma simplexHADecodeSubsetCell_strictInterval {N : ℕ} (a b : Fin (N + 1)) (ha
       {b} (Finset.singleton_nonempty b)
       (fun _ ht => (Finset.mem_singleton.mp ht) ▸ simplexHAStrictIntervalOrder_last_lt a b hab) =
         (simplexIntervalLambdaHomIso A a b hab.le).hom := by
-  have hI := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClosedInterval_two a b hab
-  have ha := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClosedInterval_min a b hab.le (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty (Finset.Icc a b) hI)
-  have hb := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClosedInterval_max a b hab.le (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty (Finset.Icc a b) hI)
+  have hI := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClosedInterval_two a b hab
+  have ha := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClosedInterval_min a b hab.le (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty (Finset.Icc a b) hI)
+  have hb := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClosedInterval_max a b hab.le (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty (Finset.Icc a b) hI)
   have hd : b.val - a.val - 1 = (Finset.Icc a b).card - 2 := by
-    rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClosedInterval_card a b hab.le]
+    rw [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClosedInterval_card a b hab.le]
     omega
   have h₀ := simplexHADecodeSubsetCell_canonical_heq A (b.val - a.val - 1)
     (simplexHAStrictIntervalOrder a b hab) {b} (Finset.singleton_nonempty b)

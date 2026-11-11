@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedOrdinaryDerivedHom
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
-public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilyInvariance
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalFamilyInvariance
 
 /-!
 # 同じ元の始域比較を用いる実 D(R) Hom 比較の全区間族
@@ -28,31 +28,31 @@ lemma normalizedOrdinaryDerivedHomMap_family (X Y : Complex A) (T : SSet.{u + 1}
     (f : T ⟶ SSet.uliftFunctor.{u + 1, u}.obj
       (((normalizedProbeTensorHom A).obj (Opposite.op X)).obj
         (complexSemifreeResolutionValue A Y).val)) :
-    let x := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)
+    let x := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)
     let qx := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-      (nerveVertex ((framedLimitProbeFunctor A).obj X))
-    let y := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)
-    intervalFamilyHom (f ≫ normalizedOrdinaryDerivedHomMap A X Y ≫
-      SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace x y) =
-    constantFunctorHomMap T (complexProbeDerivedSourceVertexIso A X).inv ≫
-      intervalFamilyHom (f ≫ normalizedProbeDerivedHomMap A X Y ≫
-        (normalizedProbeDerivedEndpointIso A X Y).hom ≫ SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace qx y) := by
-  let x := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((framedLimitProbeFunctor A).obj X))
+    let y := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ normalizedOrdinaryDerivedHomMap A X Y ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap T (complexProbeDerivedSourceVertexIso A X).inv ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ normalizedProbeDerivedHomMap A X Y ≫
+        (normalizedProbeDerivedEndpointIso A X Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace qx y) := by
+  let x := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)
   let qx := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-    (nerveVertex ((framedLimitProbeFunctor A).obj X))
-  let y := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((framedLimitProbeFunctor A).obj X))
+  let y := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)
   let p := normalizedProbeDerivedHomMap A X Y ≫ (normalizedProbeDerivedEndpointIso A X Y).hom
   let e := complexProbeDerivedSourceVertexIso A X
-  have H := FunctorIso.simplicialHomotopy
-    (PinchedInterval.liftMapComparisonIso (intervalPrecompose y e.inv))
-  have h := intervalFamilyHom_eq_of_homotopy (functorHomotopyPrecomp H (f ≫ p))
+  have H := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.simplicialHomotopy
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.liftMapComparisonIso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPrecompose y e.inv))
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalFamilyHom_eq_of_homotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H (f ≫ p))
   calc
-    _ = intervalFamilyHom ((f ≫ p) ≫
-        (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace qx y ≫ intervalPrecompose y e.inv)) := by
-      simpa only [normalizedOrdinaryDerivedHomMap, PinchedInterval.precompose,
+    _ = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom ((f ≫ p) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace qx y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPrecompose y e.inv)) := by
+      simpa only [normalizedOrdinaryDerivedHomMap, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.precompose,
         p, e, x, qx, y, Category.assoc] using h
     _ = _ := by
-      rw [← Category.assoc, intervalPrecompose_family]
+      rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPrecompose_family]
       rfl
 
 end SerrePositivity.EInfinity.ComplexLimits

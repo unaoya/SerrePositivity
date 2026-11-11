@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：各単体の欠けた頂点は全ての部分面にも欠けることを使い、sd⊣Ex で転置する。
 規約：Moss 2020 Proposition 21 の境界条件の実際の horn への移行。
 使われ方：二重細分の horn 上での制限の計算。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

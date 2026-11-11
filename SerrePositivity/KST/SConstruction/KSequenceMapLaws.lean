@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.MonicKSequenceMaps
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.PointedKanWhitehead
 
 /-! # K の候補列の射のホモトピー関手法則
 概要：構成した列の射は各段の点つきホモトピー成分で恒等・合成を保つ。
@@ -21,9 +21,9 @@ open Spectra.PointedMapping
 規約：源 A の Kan 性は不要。使われ方：置換射影の成分での打ち消し。 -/
 lemma pointedComponent_cancel_right_of_piIsomorphism {A E B : PointedSimplicialSet.{u}}
     [KanComplex E.right] [KanComplex B.right] (p : E ⟶ B)
-    (hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism p.right) (a b : A ⟶ E)
+    (hp : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism p.right) (a b : A ⟶ E)
     (h : componentOf (a ≫ p) = componentOf (b ≫ p)) : componentOf a = componentOf b := by
-  obtain ⟨g, hleft, _⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopyInverse p hp
+  obtain ⟨g, hleft, _⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.exists_pointedHomotopyInverse p hp
   have hi : componentOf (p ≫ g) = componentOf (𝟙 E) :=
     ((piZero_eq_iff_pointedHomotopy _ _).mpr hleft).symm
   calc

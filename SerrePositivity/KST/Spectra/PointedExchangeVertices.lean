@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeVertices
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeVertices
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeSymmetry
 public import SerrePositivity.KST.Spectra.PointedVertexComparison
 public import SerrePositivity.KST.Spectra.LoopMappingPositiveEquiv
 
@@ -66,26 +66,26 @@ lemma exchangeMap_ι {A K Y : PointedSimplicialSet.{u}}
 /-- パラメータ族の頂点への交換同型の作用は射の転置で計算される。 -/
 lemma exchange_familyVertex {A K Y : PointedSimplicialSet.{u}}
     (f : A ⟶ PointedObject.basedHom K Y) :
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Y).hom.right.app _ (familyVertex f) =
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A K Y).hom.right.app _ (familyVertex f) =
       familyVertex (exchangeMap f) := by
-  change (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Y).hom.right.app _ (yonedaEquiv (pointFamily f)) =
+  change (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A K Y).hom.right.app _ (yonedaEquiv (pointFamily f)) =
     yonedaEquiv (pointFamily (exchangeMap f))
   erw [← yonedaEquiv_comp]
   apply congrArg yonedaEquiv
   rw [pointFamily_closed, pointFamily_closed, Category.assoc]
-  have hc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry'_hom f
+  have hc := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeVertices.curry'_hom f
   have hn := unitUnderlyingHom_post
     (X := (ihom A).obj ((ihom K).obj Y)) (Z := (ihom K).obj ((ihom A).obj Y))
-    (curry' f) (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Y).hom
+    (curry' f) (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A K Y).hom
   exact congrArg (fun g ↦ PointedSimplicialSet.deltaZeroUnitIso.hom ≫ g)
     (hn.symm.trans (congrArg (PointedSimplicialSet.unitUnderlyingHom _) hc))
 
 /-- 逆向きの loop 交換は loop 値の射を円からの射へ転置する。 -/
 lemma loopSwap_inv_familyVertex {A Y : PointedSimplicialSet.{u}}
-    (f : A ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) :
+    (f : A ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) :
     (loopSwap A Y).inv.right.app _ (familyVertex f) = familyVertex (exchangeMap f) := by
-  change (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle A Y).inv.right.app _ _ = _
-  rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv]
+  change (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle A Y).inv.right.app _ _ = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.hom_eq_inv]
   exact exchange_familyVertex f
 
 end

@@ -2,7 +2,7 @@ module
 
 public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.TransportIntervalRestrictedComparison
-public import SerrePositivity.InfinityCategories.F1.Transport.IntervalSquareConstant
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IntervalSquareConstant
 
 /-!
 概要：元の定値区間の輸送比較に使う実定値 prism と、その同じ指定値を保持する。

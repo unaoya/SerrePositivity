@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FullyFaithful
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithful
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.IsoFiveFactorCancellation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.IsoComparisonNaturalityTransfer
 

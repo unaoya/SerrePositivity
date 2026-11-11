@@ -18,20 +18,20 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 variable {A B X : SSet.{u}} (e : A ≅ B) {F G : B ⟶ X}
-  (α : FunctorIso (e.hom ≫ F) (e.hom ≫ G))
+  (α : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (e.hom ≫ F) (e.hom ≫ G))
 
-def cancelPrecompIso : FunctorIso F G :=
-  eqToIso (congrArg (fun k ↦ HomotopyCategory.mk (functorVertex k))
+def cancelPrecompIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G :=
+  eqToIso (congrArg (fun k ↦ HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex k))
     (e.inv_hom_id_assoc F).symm) ≪≫ α.precomp e.inv ≪≫
-  eqToIso (congrArg (fun k ↦ HomotopyCategory.mk (functorVertex k)) (e.inv_hom_id_assoc G))
+  eqToIso (congrArg (fun k ↦ HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex k)) (e.inv_hom_id_assoc G))
 
 lemma cancelPrecompIso_arrow : Arrow.mk (cancelPrecompIso e α).hom =
     Arrow.mk (homPre e.inv α.hom) := by
   unfold cancelPrecompIso
   simp only [Iso.trans_hom, eqToIso.hom]
   let f := homPre e.inv α.hom
-  let h₀ := congrArg (fun k ↦ HomotopyCategory.mk (functorVertex k)) (e.inv_hom_id_assoc F).symm
-  let h₁ := congrArg (fun k ↦ HomotopyCategory.mk (functorVertex k)) (e.inv_hom_id_assoc G)
+  let h₀ := congrArg (fun k ↦ HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex k)) (e.inv_hom_id_assoc F).symm
+  let h₁ := congrArg (fun k ↦ HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex k)) (e.inv_hom_id_assoc G)
   change Arrow.mk (eqToHom h₀ ≫ f ≫ eqToHom h₁) = Arrow.mk f
   exact (arrow_mk_eqToHom_comp h₀ (f ≫ eqToHom h₁)).trans (arrow_mk_comp_eqToHom f h₁)
 

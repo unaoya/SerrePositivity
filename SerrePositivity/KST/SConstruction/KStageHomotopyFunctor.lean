@@ -25,14 +25,14 @@ lemma pointedHomotopyMap_eq_of_component {A B : PointedSimplicialSet.{u}}
     Spectra.pointedHomotopyMap n f = Spectra.pointedHomotopyMap n g := by
   obtain ⟨H, hH⟩ := (piZero_eq_iff_pointedHomotopy f g).mp h
   funext a
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_eq_of_basedHomotopy n _ _
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy f g H hH) a
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_eq_of_basedHomotopy n _ _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedRelativeHomotopy f g H hH) a
 
 /-- 概要：単射な K の候補列の各段の全次数ホモトピー集合の関手。
 方針：実際に構成した列の射の誘導写像に、成分での恒等・合成法則を適用する。
 規約：r と n を固定する。使われ方：反復 S の Kan 模型での自然な π の計算。 -/
 def kStageHomotopyFunctor (r n : ℕ) : StableModel.{u} ⥤ Type u where
-  obj X := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (((monicKKanSequence X).level r).space).right n
+  obj X := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (((monicKKanSequence X).level r).space).right n
     (((monicKKanSequence X).level r).space).basepoint
   map f := ↾(Spectra.pointedHomotopyMap n ((monicKKanSequenceMap f).app r))
   map_id X := by
@@ -54,7 +54,7 @@ def kStageHomotopyFunctor (r n : ℕ) : StableModel.{u} ⥤ Type u where
 方針：元の各段の関手が持つ恒等・合成法則に π の誘導写像を適用する。
 規約：零段は既定の K 空間。使われ方：置換した列との自然な比較の標的。 -/
 def rawKStageHomotopyFunctor (r n : ℕ) : StableModel.{u} ⥤ Type u where
-  obj X := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (((kKanSequence X).level r).space).right n
+  obj X := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (((kKanSequence X).level r).space).right n
     (((kKanSequence X).level r).space).basepoint
   map f := ↾(Spectra.pointedHomotopyMap n (kKanSequenceLevelMap f r))
   map_id X := by
@@ -95,14 +95,14 @@ def kStageHomotopyProjection (r n : ℕ) :
 instance kStageHomotopyProjection_app_isIso (r n : ℕ) (X : StableModel.{u}) :
     IsIso ((kStageHomotopyProjection r n).app X) := by
   let p := (monicKKanSequenceProjection X).app r
-  let e := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism n p.right
-    (monicKKanSequenceProjection_piIsomorphism X r) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p)
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.equivOfPiIsomorphism n p.right
+    (monicKKanSequenceProjection_piIsomorphism X r) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p)
   have he : (kStageHomotopyProjection r n).app X = e.toIso.hom := by
     apply ConcreteCategory.hom_ext
     intro a
-    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism_apply n p.right
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.equivOfPiIsomorphism_apply n p.right
       (monicKKanSequenceProjection_piIsomorphism X r)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) a).symm
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p) a).symm
   rw [he]
   infer_instance
 

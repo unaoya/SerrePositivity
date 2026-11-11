@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitEdgeValueComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.SpaceEdgeTransportValue
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceEdgeTransportValue
 
 /-!
 概要：a6 の選択済み native 輸送を、同じ native 区間辺の実際の辺輸送に比較する。

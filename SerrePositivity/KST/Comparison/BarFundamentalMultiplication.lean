@@ -31,7 +31,7 @@ open SerrePositivity.SimplicialModel
 使われ方：基本群の乗法との整合の証明。
 -/
 def monoidBarFundamentalClass (M : SimplicialObject MonCat.{u}) :
-    π₀ (monoidSpace M) → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (monoidBarKanPointed M).right 0
+    π₀ (monoidSpace M) → _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (monoidBarKanPointed M).right 0
       (monoidBarKanPointed M).basepoint :=
   fun a => Spectra.SphereSimplex.componentClass (monoidBarKanPointed M) 0
     (mapπ₀ (monoidGroupCompletionMap M) a)
@@ -45,8 +45,8 @@ def monoidBarFundamentalClass (M : SimplicialObject MonCat.{u}) :
 theorem monoidBarFundamentalClass_mk (M : SimplicialObject MonCat.{u})
     (a : M.obj (op ⦋0⦌)) :
     monoidBarFundamentalClass M (π₀.mk a) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (monoidBarVertexLoop M a) := by
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (monoidBarVertexLoop M a) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk
     (Spectra.SphereSimplex.equiv (monoidBarKanPointed M) 1
       (Spectra.PointedMapping.familyMap _ _ ((monoidGroupCompletionMap M).app _ a))) = _
   rw [groupCompletionVertex_eq_barLoop]
@@ -79,8 +79,8 @@ theorem monoidBarFundamentalClass_mul (M : SimplicialObject MonCat.{u})
   change monoidBarFundamentalClass M (π₀.mk (b * a)) = _
   rw [monoidBarFundamentalClass_mk, monoidBarFundamentalClass_mk,
     monoidBarFundamentalClass_mk]
-  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq
-    (_root_.SerrePositivity.InfinityCategories.Kan.mapMulStruct (monoidVertexNerveKanMap M) (monoidVertexNerveKanMap_point M)
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mul_eq
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapMulStruct (monoidVertexNerveKanMap M) (monoidVertexNerveKanMap_point M)
       (monoidNerveLoopMulStruct (M.obj (op ⦋0⦌)) a b))).symm
 
 /--
@@ -92,7 +92,7 @@ theorem monoidBarFundamentalClass_mul (M : SimplicialObject MonCat.{u})
 def monoidBarFundamentalMulEquiv (M : SimplicialObject MonCat.{u})
     (hM : SimplicialMonoid.IsGrouplike M) :
     letI := SimplicialMonoid.componentsGroup M hM
-    π₀ (monoidSpace M) ≃* _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (monoidBarKanPointed M).right 0
+    π₀ (monoidSpace M) ≃* _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (monoidBarKanPointed M).right 0
       (monoidBarKanPointed M).basepoint := by
   letI := SimplicialMonoid.componentsGroup M hM
   refine
@@ -113,7 +113,7 @@ def monoidBarFundamentalMulEquiv (M : SimplicialObject MonCat.{u})
 -/
 def stableHatGLBarFundamentalMulEquiv (A : SimplicialObject RingCat.{u}) :
     stableGeneralLinear (π₀ (ringSpace A)) ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (monoidBarKanPointed (stableHatGL A)).right 0
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (monoidBarKanPointed (stableHatGL A)).right 0
         (monoidBarKanPointed (stableHatGL A)).basepoint :=
   (Iso.monCatIsoToMulEquiv (stableHatGLComponentsIso A)).symm.trans
     (monoidBarFundamentalMulEquiv (stableHatGL A) (stableHatGL_isGrouplike A))

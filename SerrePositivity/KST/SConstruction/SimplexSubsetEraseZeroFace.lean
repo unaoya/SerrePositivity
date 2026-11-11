@@ -15,18 +15,18 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory
 open SerrePositivity.DifferentialGraded
 variable {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-  (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
-  (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+  (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j)
+  (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
 
 /-- 元の内部点削除の実 cube 射は、元の同じ欠落数値座標の標準零面そのもの。 -/
 lemma necklaceInSimplexSubsetErase_cube_zero_face :
     necklaceConcreteCubeMap (necklaceInSimplexSubsetErase.{u} I hI j hjm hjM).necklaceHom ≫
         (concreteCubeDimensionIso
-          (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single (I.card - 1)).dimension)
-          (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk
-            ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.erase j).card - 1)).dimension + 1))
+          (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single (I.card - 1)).dimension)
+          (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk
+            ((_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.erase j).card - 1)).dimension + 1))
           (simplexSubsetEraseCoordinate_codimension I hI j hj hjm hjM)).hom =
-      _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace false (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.erase j).card - 1)).dimension
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace false (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.erase j).card - 1)).dimension
         (Fin.cast (simplexSubsetEraseCoordinate_codimension I hI j hj hjm hjM)
           (simplexSubsetEraseCoordinate I hI j hj hjm hjM)) :=
   concreteCube_zero_face_of_coordinate_embedding _
@@ -46,7 +46,7 @@ lemma necklaceInSimplexSubsetErase_serre_zero_face (A : Type u) [CommRing A] :
     serreConcreteCubeMap A
         (necklaceConcreteCubeMap (necklaceInSimplexSubsetErase.{u} I hI j hjm hjM).necklaceHom) ≫
       serreCubeDimensionMap A (simplexSubsetEraseCoordinate_codimension I hI j hj hjm hjM) =
-    serreCubeFace A false (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.erase j).card - 1)).dimension
+    serreCubeFace A false (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.erase j).card - 1)).dimension
       (Fin.cast (simplexSubsetEraseCoordinate_codimension I hI j hj hjm hjM)
         (simplexSubsetEraseCoordinate I hI j hj hjm hjM)) := by
   have h := congrArg (fun f => serreConcreteCubeMap A f)

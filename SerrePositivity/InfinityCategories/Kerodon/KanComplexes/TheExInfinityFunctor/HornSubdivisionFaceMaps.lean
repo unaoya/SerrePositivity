@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：標準細分同型を使い、共通の小さい面を経由する二つの射の一致を移す。
 規約：Moss arXiv:1506.04887v2 Proposition 2.19 の細分比較の単射性への補助。
 使われ方：二つの余面表示を共通の面から比較する。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

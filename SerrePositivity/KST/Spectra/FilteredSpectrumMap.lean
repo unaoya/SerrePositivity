@@ -103,12 +103,12 @@ theorem filteredSpectrumMap_comparison (τ : D ⟶ E) (k : ℕ) :
 規約：零次数を含み、全ての基点で述べる。
 使われ方：BF 1978 §2、Goerss–Jardine I §7。telescope の置換不変性。 -/
 theorem filteredSpectrumMap_levelwise (τ : D ⟶ E)
-    (hτ : ∀ a k, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((τ.app a).app k).right) (k : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((filteredSpectrumMap τ).app k).right := by
-  have hc : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (colimMap (levelTransformation τ k)).right :=
+    (hτ : ∀ a k, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((τ.app a).app k).right) (k : ℕ) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((filteredSpectrumMap τ).app k).right := by
+  have hc : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (colimMap (levelTransformation τ k)).right :=
     pointedColimMap_kanPiIsomorphism _ (fun a ↦ hτ a k)
   have hcomp := (filteredLevelComparison_piIsomorphism D k).comp hc
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := (filteredLevelComparison E k).right) _
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := (filteredLevelComparison E k).right) _
     (filteredLevelComparison_piIsomorphism E k)
   have h := congrArg Under.Hom.right (filteredSpectrumMap_comparison τ k)
   change ((filteredSpectrumMap τ).app k).right ≫ (filteredLevelComparison E k).right =
@@ -121,7 +121,7 @@ theorem filteredSpectrumMap_levelwise (τ : D ⟶ E)
 規約：coherent nerve の同値との同定は別工程。
 使われ方：BF 1978 §2、HA §1.4.2。telescope の整数次数での置換不変性。 -/
 theorem filteredSpectrumMap_piIsomorphism (τ : D ⟶ E)
-    (hτ : ∀ a k, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((τ.app a).app k).right) :
+    (hτ : ∀ a k, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((τ.app a).app k).right) :
     PiIsomorphism (filteredSpectrumMap τ) :=
   piIsomorphism_of_levelwise _ (filteredSpectrumMap_levelwise τ hτ)
 

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.WeakArrowEquivalence
 public import SerrePositivity.KST.Fibration.FamilyExactness
-public import SerrePositivity.InfinityCategories.Core.EquivalencePathReplacement
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePathReplacement
 
 /-! # W 辺を持つ任意の安定図式の全相対 cofiber 補完 -/
 
@@ -14,23 +14,23 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
-variable {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {T : StableModel.{u}}
+variable {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) {T : StableModel.{u}}
   (e : T ⟶ weakArrowModel q)
 
 /-- 指定された元の実 W 辺の、全相対 cofiber 補完を保持する引き戻し。 -/
 def weakCofiberCompletionCategory : SSet.{u} := pullback (weakCofiberProjection q) e.val
 
 instance weakCofiberCompletionProjection_trivialKanFibration :
-    TrivialKanFibration (pullback.snd (weakCofiberProjection q) e.val) :=
-  trivialKanFibration_pullback_snd _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (pullback.snd (weakCofiberProjection q) e.val) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_pullback_snd _ _
 
 instance weakCofiberCompletionCategory_quasicategory :
     Quasicategory (weakCofiberCompletionCategory q e) :=
   quasicategory_of_innerFibration (pullback.snd (weakCofiberProjection q) e.val)
 
 instance weakCofiberCompletionCategory_isStable :
-    IsStable (weakCofiberCompletionCategory q e) :=
-  InfinityCategories.isStable_of_trivialKanFibration (pullback.snd (weakCofiberProjection q) e.val)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (weakCofiberCompletionCategory q e) :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isStable_of_trivialKanFibration (pullback.snd (weakCofiberProjection q) e.val)
 
 /-- 元の全相対 cofiber 補完を持つ安定模型。 -/
 def weakCofiberCompletionModel : StableModel.{u} where
@@ -40,11 +40,11 @@ def weakCofiberCompletionModel : StableModel.{u} where
 
 /-- 補完だけを忘れる元の射影は完全。 -/
 def weakCofiberCompletionForget : weakCofiberCompletionModel q e ⟶ T :=
-  ⟨pullback.snd _ _, IsExactFunctor.preservesZero, IsExactFunctor.preservesCofiber⟩
+  ⟨pullback.snd _ _, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesCofiber⟩
 
 instance weakCofiberCompletionForget_trivialKanFibration :
-    TrivialKanFibration (weakCofiberCompletionForget q e).val :=
-  inferInstanceAs (TrivialKanFibration (pullback.snd (weakCofiberProjection q) e.val))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (weakCofiberCompletionForget q e).val :=
+  inferInstanceAs (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (pullback.snd (weakCofiberProjection q) e.val))
 
 /-- 保持した元の相対 cofiber 図式を抽出する完全関手。 -/
 def weakCofiberCompletionCofiber : weakCofiberCompletionModel q e ⟶ weakCofiberModel q :=

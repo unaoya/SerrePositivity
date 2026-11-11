@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismSimplex
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentRightConeStrict
-public import SerrePositivity.InfinityCategories.HomotopyLimits.TerminalCoconeSimplex
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentRightConeStrict
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalCoconeSimplex
 
 /-!
 # 元の混合 coherent 単体の零端は通常の右余錐
@@ -22,7 +22,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix
 open CategoryTheory Limits SSet MonoidalCategory CartesianMonoidalCategory
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
-variable (C : RelativeCategory.{u}) {I : Type u} [Category.{u} I]
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {I : Type u} [Category.{u} I]
   (U : I ⥤ C.category) {X Y : C.category} (p : U ⟶ (Functor.const I).obj X)
   (hp : ∀ i, C.weakEquivalences (p.app i)) (σ : U ⟶ (Functor.const I).obj Y)
   (hU : ∀ {i j} (a : i ⟶ j), C.weakEquivalences (U.map a))
@@ -32,25 +32,25 @@ def rightCocone : Cocone (U ⋙ kanHammockSourceFunctor C) :=
 
 lemma simplex_zero {n : ℕ} (Γ : Fin (n + 1) ⥤ I) :
     simplex C U p hp σ hU Γ (OrderHom.const _ 0) =
-      (nerveToCoherent (KanHammockCategory C)).app (Opposite.op ⦋n + 1⦌)
-        (FrameHom.TerminalCoconeSimplex.diagram (rightCocone C U σ) Γ) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent (KanHammockCategory C)).app (Opposite.op ⦋n + 1⦌)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram (rightCocone C U σ) Γ) := by
   let c := rightCocone C U σ
-  let G := FrameHom.TerminalCoconeSimplex.diagram c Γ
+  let G := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram c Γ
   have hc (i : Fin (n + 1)) :
       (frontDiagram C U p Γ (OrderHom.const _ 0)).obj i = G.obj i.castSucc :=
     (frontDiagram_obj_zero C U p Γ (OrderHom.const _ 0) i rfl).trans
-      (FrameHom.TerminalCoconeSimplex.diagram_obj_cast c Γ i).symm
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_cast c Γ i).symm
   have hy : (kanHammockSourceFunctor C).obj Y = G.obj (Fin.last (n + 1)) :=
-    (FrameHom.TerminalCoconeSimplex.diagram_obj_last c Γ).symm
-  apply FrameHom.CoherentRightCone.diagram_eq_order
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_last c Γ).symm
+  apply _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.diagram_eq_order
     (frontDiagram C U p Γ (OrderHom.const _ 0)) ((kanHammockSourceFunctor C).obj Y)
     (lastHom C U p hp σ hU Γ (OrderHom.const _ 0))
     (lastHom_comp C U p hp σ hU Γ (OrderHom.const _ 0)) G hc hy
   · intro i j hij
     exact (frontDiagram_map_zero_zero C U p Γ (OrderHom.const _ 0) i j hij rfl rfl).trans
-      (FrameHom.TerminalCoconeSimplex.diagram_map_cast_cast c Γ i j hij).symm
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_map_cast_cast c Γ i j hij).symm
   · intro i
-    have hd := (FrameHom.TerminalCoconeSimplex.diagram_obj_cast c Γ i).symm
+    have hd := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_cast c Γ i).symm
     calc
       _ = (lastHom C U p hp σ hU Γ (OrderHom.const _ 0) i ≫
           eqToHom (congrArg₂ SimplicialCategory.sHom
@@ -62,9 +62,9 @@ lemma simplex_zero {n : ℕ} (Γ : Fin (n + 1) ⥤ I) :
         rw [lastHom_zero C U p hp σ hU Γ (OrderHom.const _ 0) i rfl,
           pathMap_zero C U p hp σ hU Γ i, Category.assoc]
         exact congrArg (fun f => toUnit _ ≫ f)
-          (FrameHom.CoherentRightCone.unitHom_transport hd hy
+          (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.unitHom_transport hd hy
             ((kanHammockSourceFunctor C).map (σ.app (Γ.obj i)))
             (G.map (homOfLE (Fin.le_last i.castSucc)))
-            (FrameHom.TerminalCoconeSimplex.diagram_map_cast_last c Γ i).symm)
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_map_cast_last c Γ i).symm)
 
 end SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix

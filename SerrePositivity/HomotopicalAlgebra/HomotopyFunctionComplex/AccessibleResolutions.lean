@@ -27,7 +27,7 @@ lemma simplicialResolutionFamily_isAccessible
     (fun _ _ h ↦ Opposite.unop_injective (SimplexCategory.ext h))
     (fun n ↦ ⟨op (SimplexCategory.mk n), rfl⟩) source
 
-variable (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+variable (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 include I J in
 /-- F3's common cardinal includes the actual source-variable resolution

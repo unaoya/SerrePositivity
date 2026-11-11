@@ -24,16 +24,16 @@ def commonChosenStageLoopedCanonicalSquareFamily (n : ℕ) :
     SimplicialNerve CommonObject.{u} ⟶
       (ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).obj PointedKanInfinity :=
   (commonChosenStageCanonicalFamily (n + 1) ≫
-    (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι) ≫
       (ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).map pointedKanLoopInfinity
 
 /-- 同じ既存の次段図式比較を通常 loop で写した、全四角形の指定同型。 -/
 def commonChosenStageLoopedCanonicalSquareIso (n : ℕ) :
-    FunctorIso (commonChosenStageLoopImageSquareFamily.{u} n)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (commonChosenStageLoopImageSquareFamily.{u} n)
       (commonChosenStageLoopedCanonicalSquareFamily n) :=
-  F2.functorIsoOfEq
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
     ((commonChosenStageCanonicalDiagramIso (n + 1)).postcomp
-      ((fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι ≫
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι ≫
         (ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).map pointedKanLoopInfinity))
     (by simp only [commonChosenStageLoopImageSquareFamily,
       ← commonChosenStageLoopDiagramFamily_ι, Category.assoc])
@@ -42,40 +42,40 @@ def commonChosenStageLoopedCanonicalSquareIso (n : ℕ) :
 /-- この同じ loop 像の標準図式は、元の実次段像との全図式同型から loop 性を持つ。 -/
 lemma commonChosenStageLoopedCanonicalSquareFamily_isLoop (n : ℕ)
     (v : (SimplicialNerve CommonObject.{u}) _⦋0⦌) :
-    IsLoopDiagramVertex ((commonChosenStageLoopedCanonicalSquareFamily n).app _ v) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex ((commonChosenStageLoopedCanonicalSquareFamily n).app _ v) := by
   have e := (commonChosenStageLoopedCanonicalSquareIso n).toNatIso.app
     (SSet.HomotopyCategory.mk v)
   exact (d3IsLoopDiagramVertex_iso e).mp (commonChosenStageLoopImageSquareFamily_isLoop n v)
 
 /-- 元の標準族へ通常 loop を施した同じ全族を、実 loop 図式族へ因子化する。 -/
 def commonChosenStageLoopedCanonicalFamily (n : ℕ) :
-    SimplicialNerve CommonObject.{u} ⟶ loopDiagrams PointedKanInfinity :=
-  fullSubcomplexLift IsLoopDiagramVertex (commonChosenStageLoopedCanonicalSquareFamily n)
+    SimplicialNerve CommonObject.{u} ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams PointedKanInfinity :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex (commonChosenStageLoopedCanonicalSquareFamily n)
     (commonChosenStageLoopedCanonicalSquareFamily_isLoop n)
 
 lemma commonChosenStageLoopedCanonicalFamily_ι (n : ℕ) :
     commonChosenStageLoopedCanonicalFamily.{u} n ≫
-      (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι =
-        commonChosenStageLoopedCanonicalSquareFamily n := fullSubcomplexLift_ι _ _ _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι =
+        commonChosenStageLoopedCanonicalSquareFamily n := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 /-- 同じ次段比較の loop 像を、実 loop 全図式の指定同型として回収する。 -/
 def commonChosenStageLoopedCanonicalDiagramIso (n : ℕ) :
-    FunctorIso (commonChosenStageLoopImageFamily.{u} n)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (commonChosenStageLoopImageFamily.{u} n)
       (commonChosenStageLoopedCanonicalFamily n) :=
-  (isFullyFaithful_fullSubcomplexOnVertices_ι
+  (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι
     ((ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).obj PointedKanInfinity)
-      IsLoopDiagramVertex).preimageFunctorIso
-    (F2.functorIsoOfEq (commonChosenStageLoopedCanonicalSquareIso n)
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).preimageFunctorIso
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (commonChosenStageLoopedCanonicalSquareIso n)
       (commonChosenStageLoopImageFamily_ι n).symm
       (commonChosenStageLoopedCanonicalFamily_ι n).symm)
 
 /-- 同じ通常 loop 像の各角は、元の標準族の同じ角の loop そのもの。 -/
 lemma commonChosenStageLoopedCanonicalFamily_corner (n : ℕ) (i j : Fin 2) :
     commonChosenStageLoopedCanonicalFamily.{u} n ≫
-      loopDiagramEvaluation PointedKanInfinity i j =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity i j =
     (commonChosenStageCanonicalFamily (n + 1) ≫
-      loopDiagramEvaluation PointedKanInfinity i j) ≫ pointedKanLoopInfinity := by
-  dsimp only [loopDiagramEvaluation]
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity i j) ≫ pointedKanLoopInfinity := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation]
   rw [← Category.assoc, commonChosenStageLoopedCanonicalFamily_ι]
   dsimp only [commonChosenStageLoopedCanonicalSquareFamily]
   rw [Category.assoc, d3SquareEvaluation_postcomp]
@@ -83,10 +83,10 @@ lemma commonChosenStageLoopedCanonicalFamily_corner (n : ℕ) (i j : Fin 2) :
 
 /-- 元の実次段 loop 像も、各角で元の実次段の同じ loop を回収する。 -/
 lemma commonChosenStageLoopImageFamily_corner (n : ℕ) (i j : Fin 2) :
-    commonChosenStageLoopImageFamily.{u} n ≫ loopDiagramEvaluation PointedKanInfinity i j =
+    commonChosenStageLoopImageFamily.{u} n ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity i j =
     (commonChosenStageLoopDiagramFamily (n + 1) ≫
-      loopDiagramEvaluation PointedKanInfinity i j) ≫ pointedKanLoopInfinity := by
-  dsimp only [loopDiagramEvaluation]
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity i j) ≫ pointedKanLoopInfinity := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation]
   rw [← Category.assoc, commonChosenStageLoopImageFamily_ι]
   dsimp only [commonChosenStageLoopImageSquareFamily]
   rw [← commonChosenStageLoopDiagramFamily_ι]
@@ -96,8 +96,8 @@ lemma commonChosenStageLoopImageFamily_corner (n : ℕ) (i j : Fin 2) :
 /-- 既存の次段比較の同じ通常 loop 像は、同じ元の厳密終点を保つ。 -/
 lemma commonChosenStageLoopedCanonicalFamily_target (n : ℕ) :
     commonChosenStageLoopedCanonicalFamily.{u} n ≫
-      loopDiagramEvaluation PointedKanInfinity 1 1 =
-    commonChosenStageLoopImageFamily n ≫ loopDiagramEvaluation PointedKanInfinity 1 1 := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1 =
+    commonChosenStageLoopImageFamily n ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1 := by
   rw [commonChosenStageLoopedCanonicalFamily_corner, commonChosenStageLoopImageFamily_corner,
     commonChosenStageCanonicalFamily_target]
 

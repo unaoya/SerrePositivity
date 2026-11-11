@@ -32,22 +32,22 @@ structure RelativeEquivalenceFamilyData {E B T U : SSet.{u}} (q : E ⟶ B)
 
 /-- 同値の先の族を元の指定境界のまま回収し、境界定数の実比較円柱も与える。 -/
 def relativeEquivalenceFamilyRecovery {E B T U : SSet.{u}}
-    [Quasicategory E] [Quasicategory B] (q : E ⟶ B) (hq : IsQCatEquivalence q)
+    [Quasicategory E] [Quasicategory B] (q : E ⟶ B) (hq : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence q)
     (j : T ⟶ U) [Mono j] (a : T ⟶ E) (b : U ⟶ B)
     (h : a ≫ q = j ≫ b) : RelativeEquivalenceFamilyData q j a b := by
   let L := relativeEquivalenceFamilyPathLift q hq j a b h
-  let g := L.val ≫ equivalencePathReplacementProjection q
+  let g := L.val ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathReplacementProjection q
   let H := equivalenceFamilyPathHomotopy q L.val
   have hg : j ≫ g = a := by
-    rw [show j ≫ g = (j ≫ L.val) ≫ equivalencePathReplacementProjection q from
+    rw [show j ≫ g = (j ≫ L.val) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathReplacementProjection q from
       (Category.assoc _ _ _).symm, L.property.1, Category.assoc,
-      equivalencePathReplacementSection_projection, Category.comp_id]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathReplacementSection_projection, Category.comp_id]
   let V : SSet.Homotopy (g ≫ q) b :=
     { h := H.h, h₀ := H.h₀, h₁ := H.h₁.trans L.property.2, rel := H.rel }
   refine ⟨g, hg, V, ?_⟩
   change (j ▷ (Δ[1] : SSet.{u})) ≫ H.h = _
   rw [← equivalenceFamilyPathHomotopy_precomp]
-  have he := congrArg (fun m : T ⟶ equivalencePathReplacement q =>
+  have he := congrArg (fun m : T ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathReplacement q =>
     (equivalenceFamilyPathHomotopy q m).h) L.property.1
   exact he.trans (equivalenceFamilyPathHomotopy_section_pre q a)
 

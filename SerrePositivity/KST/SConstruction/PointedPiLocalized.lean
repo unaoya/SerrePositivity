@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.LocalizedPiComparison
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.PointedKanWhitehead
 
 /-! # 点つき Kan 射の π 同型から局所化同型への回収
 概要：全基点 π 同型の点つき Kan 射は anodyne 局所化で可逆になる。
@@ -19,10 +19,10 @@ open SerrePositivity.SimplicialModel
 /-- 全基点 π 同型の点つき Kan 射は元の anodyne 局所化で可逆。 -/
 lemma pointed_localized_isIso_of_piIsomorphism {A B : PointedSimplicialSet.{u}}
     [KanComplex A.right] [KanComplex B.right] (f : A ⟶ B)
-    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f.right) :
     IsIso (AnodyneHomotopy.anodyneQ.map f.right) := by
   let Q := AnodyneHomotopy.anodyneQ
-  obtain ⟨g, ⟨H, _⟩, ⟨G, _⟩⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopyInverse f hf
+  obtain ⟨g, ⟨H, _⟩, ⟨G, _⟩⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.exists_pointedHomotopyInverse f hf
   have hH := AnodyneHomotopy.map_homotopy_eq Q (Localization.inverts Q anodyneExtensions) H
   have hG := AnodyneHomotopy.map_homotopy_eq Q (Localization.inverts Q anodyneExtensions) G
   change Q.map (𝟙 A.right) = Q.map (f.right ≫ g.right) at hH

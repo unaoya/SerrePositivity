@@ -36,9 +36,9 @@ lemma presentedPerfectDGBFRawSOAComparison_positive_adjoint (r : ℕ)
   let q' := (presentedPerfectDGOneDirectionKanComparisonMap A r C).hom
   let c : ((presentedPerfectDGBFBoundaryFunctor A r).obj C).obj ⟶
       (S.functor.obj C).obj := S.comparison C
-  let s : (S.functor.obj C).obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace
+  let s : (S.functor.obj C).obj ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace
       ((presentedPerfectDGBFStepFunctor A r S.functor S.comparison S.naturality).obj C).obj :=
-    curry (show _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (S.functor.obj C).obj ⟶
+    curry (show _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (S.functor.obj C).obj ⟶
       ((presentedPerfectDGBFStepFunctor A r S.functor S.comparison S.naturality).obj C).obj
       from presentedPerfectDGBFStepStructureMap A r S.functor S.comparison S.naturality C)
   let d : ((presentedPerfectDGKanAssemblyTargetFunctor A r).obj C).obj ⟶

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FirstColumnBackwardForwardEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FirstColumnBackwardForwardEquivalence
 public import Mathlib.CategoryTheory.IsoCat
 public import SerrePositivity.EInfinity.Hammock.NerveWeakTransport
 
@@ -19,39 +19,39 @@ universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
 open CategoryTheory
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) [W.IsMultiplicative]
-  (w : Word) (X Y : C)
+  (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C)
 lemma backwardForwardFunctor_obj_bijective :
-    Function.Bijective (backwardForwardFunctor W w X Y).obj := by
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardFunctor W w X Y).obj := by
   constructor
   · intro S T h
-    have he := congrArg (backwardForwardRebuild W w X Y) h
-    simpa only [backwardForwardRebuild_functor_obj] using he
+    have he := congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardRebuild W w X Y) h
+    simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardRebuild_functor_obj] using he
   · intro Z
-    exact ⟨backwardForwardRebuild W w X Y Z, backwardForwardRebuild_object W w X Y Z⟩
+    exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardRebuild W w X Y Z, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardRebuild_object W w X Y Z⟩
 
-instance backwardForwardFunctor_isIso : (backwardForwardFunctor W w X Y).IsIso where
+instance backwardForwardFunctor_isIso : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardFunctor W w X Y).IsIso where
   bijective_obj := backwardForwardFunctor_obj_bijective W w X Y
 
-def backwardForwardCatIso : Cat.of (backwardForwardSource W w X Y) ≅
-    Cat.of (backwardForwardTarget W w X Y) where
-  hom := (backwardForwardFunctor W w X Y).toCatHom
-  inv := (backwardForwardFunctor W w X Y).asIsomorphism.inverse.toCatHom
+def backwardForwardCatIso : Cat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardSource W w X Y) ≅
+    Cat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardTarget W w X Y) where
+  hom := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardFunctor W w X Y).toCatHom
+  inv := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardFunctor W w X Y).asIsomorphism.inverse.toCatHom
   hom_inv_id := congrArg CategoryTheory.Functor.toCatHom
-    (backwardForwardFunctor W w X Y).asIsomorphism.unit_eq.symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardFunctor W w X Y).asIsomorphism.unit_eq.symm
   inv_hom_id := congrArg CategoryTheory.Functor.toCatHom
-    (backwardForwardFunctor W w X Y).asIsomorphism.counit_eq
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardFunctor W w X Y).asIsomorphism.counit_eq
 
 lemma backwardForwardCatIso_hom : (backwardForwardCatIso W w X Y).hom =
-    (backwardForwardFunctor W w X Y).toCatHom := rfl
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardFunctor W w X Y).toCatHom := rfl
 
 def backwardForwardGraphIso :
-    graph W (Word.append (Word.single .backward) (Word.cons .forward w)) X Y ≅
-      nerve (backwardForwardTarget W w X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w)) X Y ≅
+      nerve (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardTarget W w X Y) :=
   nerveFunctor.mapIso (backwardForwardCatIso W w X Y)
 lemma backwardForwardGraphIso_hom : (backwardForwardGraphIso W w X Y).hom =
-    nerveMap (backwardForwardFunctor W w X Y) := rfl
+    nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardFunctor W w X Y) := rfl
 lemma backwardForwardFunctor_weak :
-    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence
-      (nerveMap (backwardForwardFunctor W w X Y)) :=
-  nerveMap_equivalence_isWeakHomotopyEquivalence (backwardForwardEquivalence W w X Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
+      (nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardFunctor W w X Y)) :=
+  nerveMap_equivalence_isWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardEquivalence W w X Y)
 end SerrePositivity.EInfinity.Hammock.FirstColumn

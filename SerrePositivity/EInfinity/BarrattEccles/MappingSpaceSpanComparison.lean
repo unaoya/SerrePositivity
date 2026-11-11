@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpans
 public import SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation
-public import SerrePositivity.InfinityCategories.ModelBridge.FrameIndexComparison
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FrameIndexComparison
 
 /-!
 # 元の E 代数の Map^h への共通比較の反転可能な左射
@@ -67,13 +67,13 @@ lemma mappingSpaceIndexAugmentation_zero (X Y : (operad A).Algebra)
 lemma mappingSpaceSpanComparison_vertex (X Y : (operad A).Algebra)
     (s : ((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ) :
     let := modelCategory A
-    FrameHom.SpecialHammock.value ((mappingSpaceSpecialHammockFunctor A X Y).obj s) =
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.value ((mappingSpaceSpecialHammockFunctor A X Y).obj s) =
       mappingSpacePiZeroEquiv A (weakEquivalences (operad A).Algebra).Q (op X) Y
         (SSet.π₀.mk (((mappingSpaceIndexAugmentation A X Y).app (op ⦋0⦌)
           (ComposableArrows.mk₀ (show ULiftHom.{u + 1}
             (((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ) from s))).down)) := by
   let := modelCategory A
-  exact FrameHom.chosenResolutionSpanValue_augmentation (mappingCofibrantFactorization A)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.chosenResolutionSpanValue_augmentation (mappingCofibrantFactorization A)
     (mappingFibrantFactorization A) X Y s
 
 end SerrePositivity.EInfinity.BarrattEccles

@@ -26,7 +26,7 @@ local instance d3EndpointSquareOrderCategory : SmallCategory (Fin 2 × Fin 2) :=
 def d3EndpointParameterObj (p : Fin 2 × Fin 2) : PointedSimplicialSet.{u} :=
   if p.1 = 0 then
     if p.2 = 0 then endpointCircle else PointedObject.point
-  else if p.2 = 0 then _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval else 𝟙_ PointedSimplicialSet.{u}
+  else if p.2 = 0 then _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval else 𝟙_ PointedSimplicialSet.{u}
 
 /-- 四角の逆向きの各辺は、元の端点包含・cofiber 商・一点の射そのもの。 -/
 def d3EndpointParameterMap (s t : Fin 2 × Fin 2) (h : t ≤ s) :
@@ -56,11 +56,11 @@ def d3EndpointParameterMap (s t : Fin 2 × Fin 2) (h : t ≤ s) :
   · exact 𝟙 _
   · exact PointedObject.fromPoint endpointCircle
   · exact 𝟙 _
-  · exact pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint
+  · exact pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint
   · exact 𝟙 _
   · exact 0
   · exact PointedObject.toPoint (𝟙_ PointedSimplicialSet.{u})
-  · exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint
+  · exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint
   · exact 𝟙 _
 
 lemma d3EndpointParameterMap_id (s : Fin 2 × Fin 2) :
@@ -98,33 +98,33 @@ def d3EndpointParameterSquare : PointedKanInfinity.{u} ⟶
 /-- 元の全端点円作用は、構成済み実パラメータ四角形族の始点である。 -/
 lemma d3EndpointParameterSquare_source :
     d3EndpointParameterSquare.{u} ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2),
         stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-          coherentNerveMap (d3PointedKanIhom endpointCircle) :=
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanIhom endpointCircle) :=
   d3PointedKanParameterSquare_corner d3EndpointParameter 0 0
 
 /-- 右零角は元の区間からの Hom の全作用そのもの。 -/
 lemma d3EndpointParameterSquare_path :
     d3EndpointParameterSquare.{u} ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2),
         stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-          coherentNerveMap (d3PointedKanIhom _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval) :=
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanIhom _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval) :=
   d3PointedKanParameterSquare_corner d3EndpointParameter 1 0
 
 /-- 他の零角は元の一点からの Hom の全作用そのもの。 -/
 lemma d3EndpointParameterSquare_point :
     d3EndpointParameterSquare.{u} ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2),
         stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-          coherentNerveMap (d3PointedKanIhom PointedObject.point) :=
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanIhom PointedObject.point) :=
   d3PointedKanParameterSquare_corner d3EndpointParameter 0 1
 
 /-- 終点は元の単位パラメータからの Hom の全作用。単位同型との接続は別途行う。 -/
 lemma d3EndpointParameterSquare_target :
     d3EndpointParameterSquare.{u} ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2),
         stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-          coherentNerveMap (d3PointedKanIhom (𝟙_ PointedSimplicialSet.{u})) :=
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanIhom (𝟙_ PointedSimplicialSet.{u})) :=
   d3PointedKanParameterSquare_corner d3EndpointParameter 1 1
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

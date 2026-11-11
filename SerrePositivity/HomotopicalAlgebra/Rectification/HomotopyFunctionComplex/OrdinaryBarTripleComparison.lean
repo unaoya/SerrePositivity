@@ -64,16 +64,16 @@ variable [HomotopicalAlgebra.ModelCategory C] [HomotopicalAlgebra.ModelCategory 
   (hcof : HomotopicalAlgebra.cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
   (hfib : HomotopicalAlgebra.fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
   (P : SSet.{max u v}) {T : SSet.{v}}
-  (j : UniverseLift.obj.{max u v} T ⟶ P)
-  (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C W X)
-  (g : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
-  (h : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C Y Z)
-  (c₀₁ : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P W X)
-  (c₁₂ : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X Y)
-  (c₂₃ : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P Y Z)
-  (c₀₂ : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P W Y)
-  (c₁₃ : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X Z)
-  (c₀₃ : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P W Z)
+  (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+  (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C W X)
+  (g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
+  (h : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C Y Z)
+  (c₀₁ : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P W X)
+  (c₁₂ : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X Y)
+  (c₂₃ : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P Y Z)
+  (c₀₂ : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P W Y)
+  (c₁₃ : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X Z)
+  (c₀₃ : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P W Z)
 
 local notation "R" => nativeRestrictionComparison hcof hfib P j
 local notation "N" => OrdinaryBarDiagonalClosedAction.nativeFamily hcof hfib P j
@@ -94,7 +94,7 @@ def total : SSet.Homotopy
       (D (h ≫ OrdinaryBarDiagonalHomAugmentation.smallAugmentation C Y Z) c₂₃) ≫
         MonoidalClosed.comp sW sY sZ)
     (N (wordComp (wordComp f g) h)) :=
-  LargeParameterSquare.changeEndpoints
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints
     (ClosedHomotopyComposition.comp (ClosedHomotopyComposition.comp (R f c₀₁) (R g c₁₂))
       (R h c₂₃)) rfl (by
         rw [← OrdinaryBarDiagonalClosedAction.nativeFamily_comp hcof hfib P j f g,
@@ -105,7 +105,7 @@ def rightIntermediate : SSet.Homotopy
       (D (wordComp g h ≫ OrdinaryBarDiagonalHomAugmentation.smallAugmentation C X Z) c₁₃) ≫
         MonoidalClosed.comp sW sX sZ)
     (N (wordComp (wordComp f g) h)) :=
-  LargeParameterSquare.changeEndpoints
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints
     (compositionComparison hcof hfib P j f (wordComp g h) c₀₁ c₁₃) rfl
     (congrArg N (word_assoc f g h).symm)
 
@@ -121,16 +121,16 @@ def leftInnerTriangle : KanComparisonTriangle.Data
       (compositionComparison hcof hfib P j f g c₀₁ c₁₂) (R h c₂₃)
       (MonoidalClosed.comp sW sY sZ) (compositionTriangle hcof hfib P j f g c₀₁ c₁₂ c₀₂))
     (by simp only [leftIntermediate, compositionComparison,
-          LargeParameterSquare.changeEndpoints_h])
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h])
     (by
       change lift (compositionComparison hcof hfib P j f g c₀₁ c₁₂).h (R h c₂₃).h ≫
         MonoidalClosed.comp sW sY sZ = (total hcof hfib P j f g h c₀₁ c₁₂ c₂₃).h
-      rw [total, LargeParameterSquare.changeEndpoints_h]
+      rw [total, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
       change lift (compositionComparison hcof hfib P j f g c₀₁ c₁₂).h (R h c₂₃).h ≫
         MonoidalClosed.comp sW sY sZ =
           lift (ClosedHomotopyComposition.comp (R f c₀₁) (R g c₁₂)).h (R h c₂₃).h ≫
             MonoidalClosed.comp sW sY sZ
-      rw [compositionComparison, LargeParameterSquare.changeEndpoints_h])
+      rw [compositionComparison, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h])
 
 def rightOuterTriangle : KanComparisonTriangle.Data
     (root hcof hfib P j f g h c₀₃) (rightIntermediate hcof hfib P j f g h c₀₁ c₁₃) :=
@@ -141,7 +141,7 @@ def rightOuterTriangle : KanComparisonTriangle.Data
     (by change (R (wordComp f (wordComp g h)) c₀₃).h =
           (R (wordComp (wordComp f g) h) c₀₃).h
         rw [word_assoc])
-    (by simp only [rightIntermediate, LargeParameterSquare.changeEndpoints_h])
+    (by simp only [rightIntermediate, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h])
 
 def rightInnerTriangle : KanComparisonTriangle.Data
     (rightIntermediate hcof hfib P j f g h c₀₁ c₁₃) (total hcof hfib P j f g h c₀₁ c₁₂ c₂₃) :=
@@ -152,11 +152,11 @@ def rightInnerTriangle : KanComparisonTriangle.Data
       (R (wordComp g h) c₁₃) (compositionComparison hcof hfib P j g h c₁₂ c₂₃)
       (compositionTriangle hcof hfib P j g h c₁₂ c₂₃ c₁₃))
     (by simp only [rightIntermediate, compositionComparison,
-          LargeParameterSquare.changeEndpoints_h])
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h])
     (by
       change lift (R f c₀₁).h (compositionComparison hcof hfib P j g h c₁₂ c₂₃).h ≫
         MonoidalClosed.comp sW sX sZ = (total hcof hfib P j f g h c₀₁ c₁₂ c₂₃).h
-      rw [total, LargeParameterSquare.changeEndpoints_h]
+      rw [total, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
       calc
         _ = (ClosedHomotopyComposition.comp (R f c₀₁)
             (ClosedHomotopyComposition.comp (R g c₁₂) (R h c₂₃))).h := by
@@ -164,7 +164,7 @@ def rightInnerTriangle : KanComparisonTriangle.Data
             MonoidalClosed.comp sW sX sZ =
               lift (R f c₀₁).h (ClosedHomotopyComposition.comp (R g c₁₂) (R h c₂₃)).h ≫
                 MonoidalClosed.comp sW sX sZ
-          rw [compositionComparison, LargeParameterSquare.changeEndpoints_h]
+          rw [compositionComparison, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
         _ = _ := (ClosedHomotopyComposition.assoc_interval (R f c₀₁) (R g c₁₂) (R h c₂₃)).symm)
 
 end SerrePositivity.HomotopyFunctionComplex.OrdinaryBarTripleComparison

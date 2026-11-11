@@ -58,8 +58,8 @@ lemma kKanPrismCutHomotopy_endpoint_edge {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {n m : ℕ} (s : (nerve I) _⦋n⦌)
     (p : ((Δ[n] : SSet.{u + 1}) ⊗ Δ[1]) _⦋m⦌)
     (i j k : Fin (m + 1)) (hij : i ≤ j) (hjk : j ≤ k) :
-    (simplicialHomotopyVertexEdge (kKanPrismCutHomotopy r F s p i j k hij hjk)
-      (nerveVertex (coherentEndpointPath
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (kKanPrismCutHomotopy r F s p i j k hij hjk)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (coherentEndpointPath
         (show (ULift.up i : ULift.{u} _) ≤ ULift.up k from hij.trans hjk)))).edge =
       (coherentSimplexCompositionEdge
         ((kKanOriginalSuspensionPrism r F s).app _ p) i j k hij hjk).edge :=

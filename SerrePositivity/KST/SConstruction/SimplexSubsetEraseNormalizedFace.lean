@@ -13,8 +13,8 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory
 variable {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-  (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
-  (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+  (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j)
+  (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
 
 include hI hj hjm hjM in
 /-- 元の所属内部点の削除は、元の濃度−2 次元でも余次元一。 -/
@@ -30,14 +30,14 @@ def simplexSubsetEraseNormalizedCoordinate : Fin (I.card - 2) :=
 
 /-- 元の濃度−2 次元に揃えた削除の実 cube 包含も、元の同じ座標の標準零面。 -/
 lemma simplexSubsetErase_normalized_zero_face :
-    simplexSubsetCubeInclusion.{u} (I.erase j) I (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-        (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (simplexSubsetErase_two I hI j hjm hjM) hI
+    simplexSubsetCubeInclusion.{u} (I.erase j) I (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+        (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (simplexSubsetErase_two I hI j hjm hjM) hI
         (Finset.erase_subset _ _) (simplexSubsetErase_min I hI j hjm hjM).symm
         (simplexSubsetErase_max I hI j hjm hjM).symm rfl rfl ≫
-      (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2))
-        (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk ((I.erase j).card - 2 + 1))
+      (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2))
+        (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk ((I.erase j).card - 2 + 1))
         (simplexSubsetErase_normalized_codimension I hI j hj hjm hjM)).hom =
-    _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace false ((I.erase j).card - 2)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace false ((I.erase j).card - 2)
       (Fin.cast (simplexSubsetErase_normalized_codimension I hI j hj hjm hjM)
         (simplexSubsetEraseNormalizedCoordinate I hI j hj hjm hjM)) :=
   concreteCube_zero_face_conjugate

@@ -102,10 +102,10 @@ theorem groupCompletionKanMap_localized_isIso (M : SimplicialObject MonCat.{u})
 def pointedKanHomotopyEquivOfLocalizedIso {X Y : PointedSimplicialSet.{u}}
     [KanComplex X.right] [KanComplex Y.right] (f : X ⟶ Y)
     (hf : IsIso (AnodyneHomotopy.anodyneQ.map f.right)) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X.right n X.basepoint ≃ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy Y.right n Y.basepoint :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy X.right n X.basepoint ≃ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy Y.right n Y.basepoint :=
   (kanHomotopyEquivOfLocalizedIso f.right hf X.basepoint n).trans
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso n (Iso.refl Y.right)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.equivOfIso n (Iso.refl Y.right)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint f))
 
 /--
 概要：群状モノイドの Kan 模型の π_n は分類空間の π_(n+1) と同値。
@@ -115,9 +115,9 @@ def pointedKanHomotopyEquivOfLocalizedIso {X Y : PointedSimplicialSet.{u}}
 -/
 def monoidBarHomotopyEquiv (M : SimplicialObject MonCat.{u})
     (hM : SimplicialMonoid.IsGrouplike M) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (Spectra.PointedKanReplacement.obj (monoidPointed M)).right n
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (Spectra.PointedKanReplacement.obj (monoidPointed M)).right n
         (Spectra.PointedKanReplacement.obj (monoidPointed M)).basepoint ≃
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (monoidBarKanPointed M).right (n + 1)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (monoidBarKanPointed M).right (n + 1)
         (monoidBarKanPointed M).basepoint :=
   (pointedKanHomotopyEquivOfLocalizedIso (groupCompletionKanMap M)
     (groupCompletionKanMap_localized_isIso M hM) n).trans

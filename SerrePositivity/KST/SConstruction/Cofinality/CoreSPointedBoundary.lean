@@ -64,7 +64,7 @@ lemma coreSVertexBoundary_naturality {X Y : StableModel.{u}} (f : X ⟶ Y)
 使われ方：元の包含の次数条件を境界 Kan 模型で反映する。 -/
 lemma coreSExInfinityBoundary_piIsomorphism (X : StableModel.{u})
     (x : (coreSRealizationFunctor.obj X) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (exInfinityPointedKanMap
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (exInfinityPointedKanMap
       (X := coreSVertexObject X x)
       (Y := ⟨(boundaryReducedRealizationFunctor 0).obj X⟩)
       (coreSVertexBoundary X x)).hom.right := by

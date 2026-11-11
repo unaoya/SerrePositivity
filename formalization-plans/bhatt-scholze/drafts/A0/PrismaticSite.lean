@@ -6,7 +6,7 @@ public import SerrePositivity.BhattScholze.Prismatic.PrismOver
 public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import SerrePositivity.BhattScholze.Prism.Bounded.Completeness
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
-public import SerrePositivity.InfinityCategories.Derived.DiscreteEmbedding
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteEmbedding
 public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import Mathlib.CategoryTheory.Sites.Grothendieck
 public import Mathlib.CategoryTheory.EssentiallySmall

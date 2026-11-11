@@ -18,7 +18,7 @@ public import Mathlib.CategoryTheory.Monoidal.Closed.Enrichment
 universe u
 
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet Opposite
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.PointedWeightedEnd
@@ -80,7 +80,7 @@ def underlyingDiagramIso (W : I ⥤ SSet.{u}) (D : I ⥤ PointedSimplicialSet.{u
       change ((pre (PointedObject.adjoinFunctor.map (W.map f.unop))).app (D.obj j)).right ≫
           FreePointedHomRestriction.restrict _ (D.obj j) =
         FreePointedHomRestriction.restrict _ (D.obj j) ≫ (pre (W.map f.unop)).app (D.obj j).right
-      rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+      rw [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
       exact FreePointedHomRestriction.natural_pre _ _)
 
 /-- 概要：点つき enriched end の基礎単体集合は通常の重み付き end と同型。
@@ -88,20 +88,20 @@ def underlyingDiagramIso (W : I ⥤ SSet.{u}) (D : I ⥤ PointedSimplicialSet.{u
 規約：全て通常の圏の実際の同型。
 使われ方：HA §1.4.2、BF 1978 §2。Kan 性と π_* 同型保存を点つき模型へ移す。 -/
 def underlyingIso (W : I ⥤ SSet.{u}) (D : I ⥤ PointedSimplicialSet.{u}) :
-    (obj W D).right ≅ weightedSections W (D ⋙ PointedSimplicialSet.forget) :=
+    (obj W D).right ≅ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections W (D ⋙ PointedSimplicialSet.forget) :=
   EndRightAdjoint.iso PointedObject.adjoinForgetAdjunction (diagram W D) ≪≫
     (endFunctor I SSet.{u}).mapIso (underlyingDiagramIso W D)
 
 /-- 概要：Bousfield–Kan の重みによる点つき enriched end は Kan。
 方針：基礎の end との実際の同型で、既存のホーン充填による Kan 性を移す。
 規約：係数が段ごとに Kan であることを仮定する。
-使われ方：BF 1978 §2、HA §1.4.2、Kerodon 7.5.4.6。hG・Tot の Ω 列の各段。 -/
+使われ方：BF 1978 §2、HA §1.4.2、Kerodon 7.5.4.6（Tag 03BB）。hG・Tot の Ω 列の各段。 -/
 instance kanComplex (D : I ⥤ PointedSimplicialSet.{u}) [∀ i, KanComplex (D.obj i).right] :
-    KanComplex (obj (bousfieldKanWeight I) D).right := by
+    KanComplex (obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D).right := by
   let : ∀ i, KanComplex ((D ⋙ PointedSimplicialSet.forget).obj i) :=
     fun i ↦ inferInstanceAs (KanComplex (D.obj i).right)
-  exact SerrePositivity.InfinityCategories.HomotopyLimits.kanComplex_of_iso
-    (underlyingIso (bousfieldKanWeight I) D).symm
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanComplex_of_iso
+    (underlyingIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D).symm
 
 end
 

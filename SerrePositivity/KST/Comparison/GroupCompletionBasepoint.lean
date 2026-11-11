@@ -82,7 +82,7 @@ theorem monoidBarEdgeMap_unit (M : SimplicialObject MonCat.{u}) :
 -/
 theorem monoidGroupCompletionMap_restriction_ι (M : SimplicialObject MonCat.{u}) :
     monoidGroupCompletionMap M ≫ loopPathRestriction (monoidBarKanPointed M) ≫
-      PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval (monoidBarKanPointed M) =
+      PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval (monoidBarKanPointed M) =
         curry ((β_ (Δ[1] : SSet.{u}) (monoidSpace M)).hom ≫ monoidBarEdgeMap M ≫
           AnodyneKanReplacement.unit.app (monoidBar M)) := by
   rw [loopPathRestriction_ι]
@@ -101,20 +101,20 @@ theorem monoidGroupCompletionMap_unit (M : SimplicialObject MonCat.{u}) :
   let Y := monoidBarKanPointed M
   have : Mono (SSet.const (X := ⊤_ SSet.{u}) Y.basepoint) := by
     exact NatTrans.mono_of_mono_app _
-  have : Mono (_root_.SerrePositivity.InfinityCategories.Kan.fiberι (Spectra.pathEndpoint Y).right Y.basepoint) := by
-    unfold _root_.SerrePositivity.InfinityCategories.Kan.fiberι
+  have : Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι (Spectra.pathEndpoint Y).right Y.basepoint) := by
+    unfold _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι
     infer_instance
   have : Mono (loopPathRestriction Y) := by
     rw [← loopPathFiberIso_hom_restriction]
     infer_instance
   apply (cancel_mono (loopPathRestriction Y)).mp
-  apply (cancel_mono (PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y)).mp
+  apply (cancel_mono (PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y)).mp
   rw [Category.assoc, Category.assoc, monoidGroupCompletionMap_restriction_ι,
     ← curry_natural_left]
-  have hr : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).hom ≫ loopPathRestriction Y =
+  have hr : (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).hom ≫ loopPathRestriction Y =
       (Spectra.basedPathSpace Y).hom :=
-    Under.w (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed intervalCircleProjection Y)
-  change _ = ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).hom ≫ loopPathRestriction Y) ≫ _
+    Under.w (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed intervalCircleProjection Y)
+  change _ = ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).hom ≫ loopPathRestriction Y) ≫ _
   rw [hr, PointedObject.basedHom_basepoint_ι]
   change curry _ = curry _
   congr 1

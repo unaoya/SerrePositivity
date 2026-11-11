@@ -47,7 +47,7 @@ variable (C : Type u) [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
 abbrev interval := SSet.stdSimplex.{w}.obj (SimplexCategory.mk 1)
 abbrev ends := NerveMovingIntervalBoundary.ends.{w}
 abbrev boundaryMap : ends.{w} ⟶ interval.{w} := (SSet.boundary 1).ι
-abbrev fullParameter := product (parameter C) interval.{max u v}
+abbrev fullParameter := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (parameter C) interval.{max u v}
 abbrev boundaryParameter := NerveCylinderBoundary.boundary (vertexParameter C) (parameter C)
   (vertexInclusion C) boundaryMap.{max u v}
 abbrev inclusion : boundaryParameter C ⟶ fullParameter C :=
@@ -55,58 +55,58 @@ abbrev inclusion : boundaryParameter C ⟶ fullParameter C :=
     (vertexInclusion C) boundaryMap.{max u v}
 
 abbrev endpoints : NerveMovingParameter.System.{u, v}
-    (product (parameter C) ends.{max u v}) (values C) :=
-  NerveMovingIntervalBoundary.glue (parameter C) (NerveMovingParameter.lifted (values C))
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (parameter C) ends.{max u v}) (values C) :=
+  NerveMovingIntervalBoundary.glue (parameter C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C))
     (left C hcof) (right C hcof)
 
 abbrev vertices : NerveMovingParameter.System.{u, v}
-    (product (vertexParameter C) interval.{max u v}) (values C) :=
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (vertexParameter C) interval.{max u v}) (values C) :=
   NerveNaturalBoundary.ofNatTrans _ _
     (NerveProductParameter.projection (vertexParameter C) interval.{max u v} ≫ vertexBoundary C)
 
-lemma compatible : endpoints C hcof ≫ restriction _ _ (NerveMovingParameter.lifted (values C))
-    (horizontal (vertexParameter C) (parameter C) (vertexInclusion C) ends.{max u v}) =
-    vertices C ≫ restriction _ _ (NerveMovingParameter.lifted (values C))
-      (vertical boundaryMap.{max u v} (vertexParameter C)) :=
+lemma compatible : endpoints C hcof ≫ restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C))
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal (vertexParameter C) (parameter C) (vertexInclusion C) ends.{max u v}) =
+    vertices C ≫ restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C))
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical boundaryMap.{max u v} (vertexParameter C)) :=
   NerveMovingIntervalBoundary.common_boundary (parameter C)
-    (NerveMovingParameter.lifted (values C)) (vertexParameter C) (vertexInclusion C)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C)) (vertexParameter C) (vertexInclusion C)
     (vertexBoundary C) (left C hcof) (right C hcof)
     (left_vertices C hcof) (right_vertices C hcof) boundaryMap.{max u v}
 
 /-- The whole common-boundary equality is proved from the old endpoint systems. -/
 def system : NerveMovingParameter.System.{u, v} (boundaryParameter C) (values C) :=
   NerveCylinderBoundary.system (vertexParameter C) (parameter C) (vertexInclusion C)
-    boundaryMap.{max u v} (NerveMovingParameter.lifted (values C))
+    boundaryMap.{max u v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C))
     (endpoints C hcof) (vertices C) (compatible C hcof)
 
-lemma system_endpoints : system C hcof ≫ restriction _ _ (NerveMovingParameter.lifted (values C))
+lemma system_endpoints : system C hcof ≫ restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C))
     (endpointInclusion (vertexParameter C) (parameter C)
       (vertexInclusion C) boundaryMap.{max u v}) = endpoints C hcof :=
   NerveCylinderBoundary.system_endpoints _ _ _ _ _ _ _ _
 
-lemma system_vertices : system C hcof ≫ restriction _ _ (NerveMovingParameter.lifted (values C))
+lemma system_vertices : system C hcof ≫ restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C))
     (NerveCylinderBoundary.vertexInclusion (vertexParameter C) (parameter C)
       (vertexInclusion C) boundaryMap.{max u v}) = vertices C :=
   NerveCylinderBoundary.system_vertices _ _ _ _ _ _ _ _
 
-abbrev zeroInclusion : product (parameter C) NerveMovingIntervalBoundary.point ⟶
-    boundaryParameter C := vertical NerveMovingIntervalBoundary.zero (parameter C) ≫
+abbrev zeroInclusion : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (parameter C) NerveMovingIntervalBoundary.point ⟶
+    boundaryParameter C := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical NerveMovingIntervalBoundary.zero (parameter C) ≫
       endpointInclusion (vertexParameter C) (parameter C) (vertexInclusion C) boundaryMap.{max u v}
 
-abbrev oneInclusion : product (parameter C) NerveMovingIntervalBoundary.point ⟶
-    boundaryParameter C := vertical NerveMovingIntervalBoundary.one (parameter C) ≫
+abbrev oneInclusion : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (parameter C) NerveMovingIntervalBoundary.point ⟶
+    boundaryParameter C := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical NerveMovingIntervalBoundary.one (parameter C) ≫
       endpointInclusion (vertexParameter C) (parameter C) (vertexInclusion C) boundaryMap.{max u v}
 
-lemma system_zero : system C hcof ≫ restriction _ _ (NerveMovingParameter.lifted (values C))
+lemma system_zero : system C hcof ≫ restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C))
     (zeroInclusion C) = NerveProductParameter.expand _ _ _ (left C hcof) := by
-  rw [show zeroInclusion C = vertical NerveMovingIntervalBoundary.zero (parameter C) ≫
+  rw [show zeroInclusion C = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical NerveMovingIntervalBoundary.zero (parameter C) ≫
     endpointInclusion (vertexParameter C) (parameter C) (vertexInclusion C) boundaryMap.{max u v}
       from rfl, ← restriction_comp, ← Category.assoc, system_endpoints]
   exact NerveMovingIntervalBoundary.glue_zero _ _ _ _
 
-lemma system_one : system C hcof ≫ restriction _ _ (NerveMovingParameter.lifted (values C))
+lemma system_one : system C hcof ≫ restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C))
     (oneInclusion C) = NerveProductParameter.expand _ _ _ (right C hcof) := by
-  rw [show oneInclusion C = vertical NerveMovingIntervalBoundary.one (parameter C) ≫
+  rw [show oneInclusion C = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical NerveMovingIntervalBoundary.one (parameter C) ≫
     endpointInclusion (vertexParameter C) (parameter C) (vertexInclusion C) boundaryMap.{max u v}
       from rfl, ← restriction_comp, ← Category.assoc, system_endpoints]
   exact NerveMovingIntervalBoundary.glue_one _ _ _ _
@@ -140,27 +140,27 @@ lemma extend_restrict : Functor.whiskerLeft
   NerveMovingParameterRelative.extend_restrict _ _ _ _ _ _ _ _ _ _
 
 lemma extend_zero : extend C hcof n old hboundary ≫
-    restriction _ _ (NerveMovingParameter.lifted (values C)) (zeroInclusion C ≫ inclusion C) =
+    restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C)) (zeroInclusion C ≫ inclusion C) =
       NerveProductParameter.expand _ _ _ (left C hcof) := by
   rw [← restriction_comp, ← Category.assoc]
-  exact (congrArg (fun a => a ≫ restriction _ _ (NerveMovingParameter.lifted (values C))
+  exact (congrArg (fun a => a ≫ restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C))
     (zeroInclusion C)) (extend_boundary C hcof n old hboundary)).trans (system_zero C hcof)
 
 lemma extend_one : extend C hcof n old hboundary ≫
-    restriction _ _ (NerveMovingParameter.lifted (values C)) (oneInclusion C ≫ inclusion C) =
+    restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C)) (oneInclusion C ≫ inclusion C) =
       NerveProductParameter.expand _ _ _ (right C hcof) := by
   rw [← restriction_comp, ← Category.assoc]
-  exact (congrArg (fun a => a ≫ restriction _ _ (NerveMovingParameter.lifted (values C))
+  exact (congrArg (fun a => a ≫ restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C))
     (oneInclusion C)) (extend_boundary C hcof n old hboundary)).trans (system_one C hcof)
 
 lemma extend_vertices : extend C hcof n old hboundary ≫
-    restriction _ _ (NerveMovingParameter.lifted (values C))
-      (horizontal (vertexParameter C) (parameter C) (vertexInclusion C) interval.{max u v}) =
+    restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C))
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal (vertexParameter C) (parameter C) (vertexInclusion C) interval.{max u v}) =
         vertices C := by
   rw [← NerveCylinderBoundary.vertexInclusion_inclusion
     (vertexParameter C) (parameter C) (vertexInclusion C) boundaryMap.{max u v},
     ← restriction_comp, ← Category.assoc]
-  exact (congrArg (fun a => a ≫ restriction _ _ (NerveMovingParameter.lifted (values C))
+  exact (congrArg (fun a => a ≫ restriction _ _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (values C))
     (NerveCylinderBoundary.vertexInclusion (vertexParameter C) (parameter C)
       (vertexInclusion C) boundaryMap.{max u v}))
         (extend_boundary C hcof n old hboundary)).trans (system_vertices C hcof)

@@ -74,13 +74,13 @@ lemma cofibrantCarrierKFlat_of_cellStages
   let I := (projectiveGeneratingCofibrations A).strictMap P.freeAlgebraFunctor
   let J := (projectiveGeneratingTrivialCofibrations A).strictMap P.freeAlgebraFunctor
   let U := Operad.Algebra.forget P
-  let : ModelGeneration.CofibrantlyGenerated.{u} I J := modelCategory_cofibrantlyGenerated A
+  let : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J := modelCategory_cofibrantlyGenerated A
   let : HasCoproducts.{u} P.Algebra := fun α =>
     (inferInstance : HasColimitsOfSize.{u, u} P.Algebra).has_colimits_of_shape (Discrete α)
   intro hX
   let f := initial.to X
   have hf : I.rlp.llp f := by
-    rw [← ModelGeneration.cofibrations_eq_generated I J]
+    rw [← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I J]
     let : IsCofibrant X := hX
     exact mem_cofibrations f
   obtain ⟨κ, hκ, hbot, hsmall⟩ := MorphismProperty.HasSmallObjectArgument.exists_cardinal

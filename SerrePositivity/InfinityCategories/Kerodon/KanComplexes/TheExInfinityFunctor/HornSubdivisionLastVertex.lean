@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：随伴形で各頂点を計算し、有限鎖の最大元と単調写像の交換を使う。
 規約：Moss 2020 Proposition 21 の境界条件の一段階。
 使われ方：二重細分の候補を Ex の単位の反復と比較する。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

@@ -43,7 +43,7 @@ lemma map_monomorphism {K L : SSet.{v}} (i : K ⟶ L) (hi : Mono i) :
   have : Fibration p := ⟨hp.1⟩
   have : WeakEquivalence p := ⟨hp.2⟩
   apply ((Realization.adjunction B).hasLiftingProperty_iff i p).mpr
-  have h : (MorphismProperty.monomorphisms SSet.{v}).rlp ((cosimplicialHom B).map p) := by
+  have h : (MorphismProperty.monomorphisms SSet.{v}).rlp ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).map p) := by
     rw [SSet.rlp_monomorphisms]
     intro X Y f hf
     obtain ⟨n⟩ := hf
@@ -62,7 +62,7 @@ lemma map_anodyne
   intro Y Z p hp
   have : Fibration p := ⟨hp⟩
   apply ((Realization.adjunction B).hasLiftingProperty_iff i p).mpr
-  have h : Fibration ((cosimplicialHom B).map p) :=
+  have h : Fibration ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).map p) :=
     cosimplicialHom_fibration B hB hconst p
   exact hi _ ((SSet.modelCategoryQuillen.fibration_iff _).mp h)
 

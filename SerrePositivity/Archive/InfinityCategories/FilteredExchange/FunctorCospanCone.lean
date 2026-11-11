@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentFunctorCospan
-public import SerrePositivity.InfinityCategories.Core.FunctorLimits
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorLimits
 
 /-!
 概要：元の共通対角円柱を持つ二三角形を、関手 ∞ 圏の元の全 cospan 錐へ貼る。

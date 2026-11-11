@@ -20,7 +20,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix
 open CategoryTheory SSet MonoidalCategory
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
-variable (C : RelativeCategory.{u}) {I : Type u} [Category.{u} I]
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {I : Type u} [Category.{u} I]
   (U : I ⥤ C.category) {X Y : C.category} (p : U ⟶ (Functor.const I).obj X)
   (hp : ∀ i, C.weakEquivalences (p.app i)) (σ : U ⟶ (Functor.const I).obj Y)
   (hU : ∀ {i j} (a : i ⟶ j), C.weakEquivalences (U.map a))
@@ -36,7 +36,7 @@ lemma frontDiagram_reindex {m n : ℕ} (Γ : Fin (n + 1) ⥤ I)
 
 lemma lastHom_reindex {m n : ℕ} (Γ : Fin (n + 1) ⥤ I)
     (t : Fin (n + 1) →o Fin 2) (α : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 1)) :
-    nerveMap (pathLastReindexFunctor.{u} α i) ≫ lastHom C U p hp σ hU Γ t (α.toOrderHom i) =
+    nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastReindexFunctor.{u} α i) ≫ lastHom C U p hp σ hU Γ t (α.toOrderHom i) =
       lastHom C U p hp σ hU (α.toOrderHom.monotone.functor ⋙ Γ) (t.comp α.toOrderHom) i := by
   by_cases hi : t (α.toOrderHom i) = 0
   · apply (cancel_mono (eqToHom (congrArg₂ SimplicialCategory.sHom
@@ -60,8 +60,8 @@ lemma lastHom_reindex {m n : ℕ} (Γ : Fin (n + 1) ⥤ I)
           α.toOrderHom.monotone.functor ⋙ Γ) := by
       rw [SSet.yonedaEquiv_symm_naturality_left]
       rfl
-    rw [← Category.assoc (nerveMap (pathLastReindexFunctor.{u} α i))
-      (pathLastMaximumMap (α.toOrderHom i)), pathLastMaximumMap_naturality]
+    rw [← Category.assoc (nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastReindexFunctor.{u} α i))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastMaximumMap (α.toOrderHom i)), _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastMaximumMap_naturality]
     simp only [Category.assoc]
     rw [← Category.assoc (SSet.stdSimplex.map α)
       (SSet.yonedaEquiv.symm (show (nerve I) _⦋n⦌ from Γ)), hΓ]

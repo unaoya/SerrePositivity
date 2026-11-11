@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterComposition
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.HomotopyEndpointComparison
 
-public import SerrePositivity.InfinityCategories.Simplicial.IntervalEndpoints
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.IntervalEndpoints
 
 /-!
 # 中断した任意モデル源への一般化：RetractChainFamily
@@ -51,12 +51,12 @@ variable {ι : Type u} (E : ι → SSet.{v})
 inductive Chain (T : SSet.{v}) (a : ι) : ι → Type (max u (v + 1))
   | nil : Chain T a a
   | familySnoc {b c : ι} (p : Chain T a b)
-      (f : E b ⊗ T ⟶ E c) (t : T ⟶ interval) : Chain T a c
+      (f : E b ⊗ T ⟶ E c) (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) : Chain T a c
 
 namespace Chain
 variable {E} {T U : SSet.{v}} {a b c d : ι}
 
-def snoc (q : Chain E T a b) (f : E b ⟶ E c) (t : T ⟶ interval) : Chain E T a c :=
+def snoc (q : Chain E T a b) (f : E b ⟶ E c) (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) : Chain E T a c :=
   q.familySnoc (ParameterComposition.const T f) t
 
 def length {a : ι} : {b : ι} → Chain E T a b → ℕ
@@ -73,18 +73,18 @@ def substitute (j : U ⟶ T) {a : ι} : {b : ι} → Chain E T a b → Chain E U
       .familySnoc (substitute j p) (ParameterComposition.substitute j f) (j ≫ t)
 
 def sequence (b : ℕ → ι) (f : ∀ n, E (b n) ⟶ E (b (n + 1)))
-    (t : ℕ → (T ⟶ interval)) : ∀ n, Chain E T (b 0) (b n)
+    (t : ℕ → (T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) : ∀ n, Chain E T (b 0) (b n)
   | 0 => .nil
   | n + 1 => .snoc (sequence b f t n) (f n) (t n)
 
 lemma sequence_length (b : ℕ → ι) (f : ∀ n, E (b n) ⟶ E (b (n + 1)))
-    (t : ℕ → (T ⟶ interval)) (n : ℕ) : (sequence b f t n).length = n := by
+    (t : ℕ → (T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) (n : ℕ) : (sequence b f t n).length = n := by
   induction n with
   | zero => rfl
   | succ n ih => change (sequence b f t n).length + 1 = n + 1; rw [ih]
 
 lemma substitute_sequence (j : U ⟶ T) (b : ℕ → ι)
-    (f : ∀ n, E (b n) ⟶ E (b (n + 1))) (t : ℕ → (T ⟶ interval)) (n : ℕ) :
+    (f : ∀ n, E (b n) ⟶ E (b (n + 1))) (t : ℕ → (T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) (n : ℕ) :
     (sequence b f t n).substitute j = sequence b f (fun k => j ≫ t k) n := by
   induction n with
   | zero => rfl
@@ -95,24 +95,24 @@ end Chain
 variable (K : ι → SSet.{v}) (s : ∀ i, K i ⟶ E i) (p : ∀ i, E i ⟶ K i)
   (H : ∀ i, SSet.Homotopy (𝟙 (E i)) (p i ≫ s i))
 
-def contraction (i : ι) {T : SSet.{v}} (t : T ⟶ interval) : E i ⊗ T ⟶ E i :=
+def contraction (i : ι) {T : SSet.{v}} (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) : E i ⊗ T ⟶ E i :=
   E i ◁ t ≫ (H i).h
 
 lemma contraction_zero (i : ι) (T : SSet.{v}) :
-    contraction E K s p H i (zero T) = ParameterComposition.const T (𝟙 (E i)) := by
-  rw [contraction, zero, whiskerLeft_comp, Category.assoc,
+    contraction E K s p H i (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero T) = ParameterComposition.const T (𝟙 (E i)) := by
+  rw [contraction, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero, whiskerLeft_comp, Category.assoc,
     HomotopyEndpointComparison.face_zero]
   ext n x
   rfl
 
 lemma contraction_one (i : ι) (T : SSet.{v}) :
-    contraction E K s p H i (one T) = ParameterComposition.const T (p i ≫ s i) := by
-  rw [contraction, one, whiskerLeft_comp, Category.assoc,
+    contraction E K s p H i (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.one T) = ParameterComposition.const T (p i ≫ s i) := by
+  rw [contraction, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.one, whiskerLeft_comp, Category.assoc,
     HomotopyEndpointComparison.face_one]
   ext n x
   rfl
 
-lemma contraction_substitute (i : ι) {T U : SSet.{v}} (j : U ⟶ T) (t : T ⟶ interval) :
+lemma contraction_substitute (i : ι) {T U : SSet.{v}} (j : U ⟶ T) (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) :
     contraction E K s p H i (j ≫ t) =
       ParameterComposition.substitute j (contraction E K s p H i t) := by
   rw [contraction, contraction, ParameterComposition.substitute, whiskerLeft_comp, Category.assoc]
@@ -154,11 +154,11 @@ lemma transfer_substitute {T U : SSet.{v}} {a b : ι} (j : U ⟶ T) (q : Chain E
     ParameterComposition.substitute_const, evaluate_substitute]
 
 lemma zero_family_face {T : SSet.{v}} {a b c d e : ι} (q : Chain E T a b)
-    (f : E b ⊗ T ⟶ E c) (g : E c ⊗ T ⟶ E d) (t : T ⟶ interval)
+    (f : E b ⊗ T ⟶ E c) (g : E c ⊗ T ⟶ E d) (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)
     (r : Chain E T d e) :
-    transfer E K s p H (((q.familySnoc f (zero T)).familySnoc g t).append r) =
+    transfer E K s p H (((q.familySnoc f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero T)).familySnoc g t).append r) =
       transfer E K s p H ((q.familySnoc (ParameterComposition.comp f g) t).append r) := by
-  have he : evaluate E K s p H ((q.familySnoc f (zero T)).familySnoc g t) =
+  have he : evaluate E K s p H ((q.familySnoc f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero T)).familySnoc g t) =
       evaluate E K s p H (q.familySnoc (ParameterComposition.comp f g) t) := by
     simp only [evaluate, contraction_zero, ParameterComposition.comp_id]
     ext n x
@@ -166,9 +166,9 @@ lemma zero_family_face {T : SSet.{v}} {a b c d e : ι} (q : Chain E T a b)
   simp only [transfer, evaluate_append, he]
 
 lemma transfer_last_family_parameter
-    (hH : ∀ i, (H i).h ≫ p i = fst (E i) interval ≫ p i)
+    (hH : ∀ i, (H i).h ≫ p i = fst (E i) _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval ≫ p i)
     {T : SSet.{v}} {a b c : ι} (q : Chain E T a b) (f : E b ⊗ T ⟶ E c)
-    (t : T ⟶ interval) :
+    (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) :
     transfer E K s p H (q.familySnoc f t) =
       ParameterComposition.comp (ParameterComposition.const T (s a))
         (ParameterComposition.comp (evaluate E K s p H q)
@@ -181,11 +181,11 @@ lemma transfer_last_family_parameter
   simp only [transfer, evaluate, ParameterComposition.assoc, he]
 
 lemma one_family_face
-    (hH : ∀ i, (H i).h ≫ p i = fst (E i) interval ≫ p i)
+    (hH : ∀ i, (H i).h ≫ p i = fst (E i) _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval ≫ p i)
     {T : SSet.{v}} {a b c d : ι} (q : Chain E T a b) (f : E b ⊗ T ⟶ E c)
     (r : Chain E T c d) :
-    transfer E K s p H ((q.familySnoc f (one T)).append r) =
-      ParameterComposition.comp (transfer E K s p H (q.familySnoc f (zero T)))
+    transfer E K s p H ((q.familySnoc f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.one T)).append r) =
+      ParameterComposition.comp (transfer E K s p H (q.familySnoc f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero T)))
         (transfer E K s p H r) := by
   rw [transfer_last_family_parameter E K s p H hH]
   simp only [transfer, evaluate_append, evaluate, contraction_one]
@@ -193,16 +193,16 @@ lemma one_family_face
   rfl
 
 lemma zero_face {T : SSet.{v}} {a b c d e : ι} (q : Chain E T a b)
-    (f : E b ⟶ E c) (g : E c ⟶ E d) (t : T ⟶ interval) (r : Chain E T d e) :
-    transfer E K s p H (((q.snoc f (zero T)).snoc g t).append r) =
+    (f : E b ⟶ E c) (g : E c ⟶ E d) (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) (r : Chain E T d e) :
+    transfer E K s p H (((q.snoc f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero T)).snoc g t).append r) =
       transfer E K s p H ((q.snoc (f ≫ g) t).append r) := by
   simpa only [Chain.snoc, ParameterComposition.const_comp] using
     zero_family_face E K s p H q (ParameterComposition.const T f)
       (ParameterComposition.const T g) t r
 
 lemma transfer_last_parameter
-    (hH : ∀ i, (H i).h ≫ p i = fst (E i) interval ≫ p i)
-    {T : SSet.{v}} {a b c : ι} (q : Chain E T a b) (f : E b ⟶ E c) (t : T ⟶ interval) :
+    (hH : ∀ i, (H i).h ≫ p i = fst (E i) _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval ≫ p i)
+    {T : SSet.{v}} {a b c : ι} (q : Chain E T a b) (f : E b ⟶ E c) (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) :
     transfer E K s p H (q.snoc f t) =
       ParameterComposition.comp (ParameterComposition.const T (s a))
         (ParameterComposition.comp (evaluate E K s p H q)
@@ -211,11 +211,11 @@ lemma transfer_last_parameter
     transfer_last_family_parameter E K s p H hH q (ParameterComposition.const T f) t
 
 lemma one_face
-    (hH : ∀ i, (H i).h ≫ p i = fst (E i) interval ≫ p i)
+    (hH : ∀ i, (H i).h ≫ p i = fst (E i) _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval ≫ p i)
     {T : SSet.{v}} {a b c d : ι} (q : Chain E T a b) (f : E b ⟶ E c)
     (r : Chain E T c d) :
-    transfer E K s p H ((q.snoc f (one T)).append r) =
-      ParameterComposition.comp (transfer E K s p H (q.snoc f (zero T)))
+    transfer E K s p H ((q.snoc f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.one T)).append r) =
+      ParameterComposition.comp (transfer E K s p H (q.snoc f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero T)))
         (transfer E K s p H r) := by
   simpa only [Chain.snoc] using
     one_family_face E K s p H hH q (ParameterComposition.const T f) r

@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedEndCotensorWeight
 @[expose] public section
 universe u
 open CategoryTheory CategoryTheory.Limits MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.Reedy SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.Reedy
 
 namespace SerrePositivity.KST.Spectra.KanSequence
 noncomputable section
@@ -30,7 +30,7 @@ abbrev TotalizationReedy (D : CosimplicialObject KanSequence.{u}) : Prop :=
 def totalizationAdjoint (D : CosimplicialObject KanSequence.{u}) (n : ℕ) :
     PointedWeightedEnd.obj (AsSmall.down ⋙ stdSimplex)
       (levelDiagram (AsSmall.down ⋙ D) n) ⟶
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedWeightedEnd.obj (AsSmall.down ⋙ stdSimplex)
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedWeightedEnd.obj (AsSmall.down ⋙ stdSimplex)
       (levelDiagram (AsSmall.down ⋙ D) (n + 1))) :=
   PointedWeightedEnd.map (AsSmall.down ⋙ stdSimplex)
       (adjointTransformation (AsSmall.down ⋙ D) n) ≫
@@ -49,7 +49,7 @@ def ordinaryTotalization (D : CosimplicialObject KanSequence.{u})
 /-- 標準単体 end の随伴は定義した随伴構造射と一致する。 -/
 lemma ordinaryTotalization_adjoint (D : CosimplicialObject KanSequence.{u})
     (hD : TotalizationReedy D) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((ordinaryTotalization D hD).level n).space
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((ordinaryTotalization D hD).level n).space
       ((ordinaryTotalization D hD).level (n + 1)).space
         ((ordinaryTotalization D hD).sigma n) = totalizationAdjoint D n :=
   curry_uncurry _

@@ -33,7 +33,7 @@ lemma complexElement_degree_cast_eq (K : Complex A) {p q : ℤ} (h : p = q)
   exact eq_of_heq hxy
 
 /-- 元の HA 方程式と同じ出力次数に置いた、元の内部頂点削除成分。 -/
-def simplexHAErasedFaceComponent {n : ℕ} (s : DGNerve.SimplexData A D n)
+def simplexHAErasedFaceComponent {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (i : Fin (m + 1)) :
     GradedHom A (s.obj (v 0)) (s.obj b) (-((m + 1 : ℕ) : ℤ) + 1) :=
@@ -50,7 +50,7 @@ def simplexHAErasedFaceComponent {n : ℕ} (s : DGNerve.SimplexData A D n)
       (fun _ ht => (Finset.mem_singleton.mp ht) ▸ hb) b (Finset.mem_singleton_self b))
 
 /-- 元の HA 向き標準面像を、元の HA 方程式の同じ出力次数へ移す。 -/
-def simplexHAOrientedFaceImage {n : ℕ} (s : DGNerve.SimplexData A D n)
+def simplexHAOrientedFaceImage {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (e : Bool) (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (i : Fin (m + 1)) :
     GradedHom A (s.obj (v 0)) (s.obj b) (-((m + 1 : ℕ) : ℤ) + 1) :=
@@ -60,7 +60,7 @@ def simplexHAOrientedFaceImage {n : ℕ} (s : DGNerve.SimplexData A D n)
         ((serreCubeFace A e m i).hom.f (-(m : ℤ)) (serreCubeOrientedTopCell A m)))
 
 /-- 元の削除成分は、元の HA 方程式の出力次数で同じ元と異種等号で一致する。 -/
-lemma simplexHADeletedFaceValue_component_heq {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADeletedFaceValue_component_heq {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (i : Fin (m + 1)) :
     HEq (simplexHADeletedFaceValue A s m v {b} (Finset.singleton_nonempty b)
@@ -71,7 +71,7 @@ lemma simplexHADeletedFaceValue_component_heq {n : ℕ} (s : DGNerve.SimplexData
     omega)
 
 /-- 元の共通 HA 出力次数の零面像は、元の同じ内部頂点削除成分。 -/
-lemma simplexHAOrientedFaceImage_zero {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHAOrientedFaceImage_zero {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (i : Fin (m + 1)) :
     simplexHAOrientedFaceImage A s false m v b hb i =
@@ -81,7 +81,7 @@ lemma simplexHAOrientedFaceImage_zero {n : ℕ} (s : DGNerve.SimplexData A D n)
       (simplexHADeletedFaceValue_component_heq A s m v b hb i))
 
 /-- 元の共通 HA 出力次数の一面像は、元の同じ内部頂点の HA 切断合成。 -/
-lemma simplexHAOrientedFaceImage_one {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHAOrientedFaceImage_one {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (i : Fin (m + 1)) :
     simplexHAOrientedFaceImage A s true m v b hb i =

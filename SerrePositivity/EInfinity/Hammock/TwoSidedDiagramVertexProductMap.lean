@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices
 open CategoryTheory Opposite MonoidalCategory
-variable {D E : SimplicialObject Data.{u}} {O : Type u}
+variable {D E : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u}} {O : Type u}
   (p : (n : SimplexCategoryᵒᵖ) → O ≃ (D.obj n).base)
   (q : (n : SimplexCategoryᵒᵖ) → O ≃ (E.obj n).base)
   (hp : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (o : O),
@@ -37,17 +37,17 @@ def productMap (k : SimplexCategoryᵒᵖ) (x : Fin (k.unop.len + 1) → O) :
 lemma productMap_app (k : SimplexCategoryᵒᵖ) (x : Fin (k.unop.len + 1) → O)
     (n : SimplexCategoryᵒᵖ) (v : (product D p hp k x).obj n) :
     (productMap p q hp hq τ hτ k x).app n v =
-      FixedVertexChainCoordinates.fiberMap (q n) (τ.app n).base
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedVertexChainCoordinates.fiberMap (q n) (τ.app n).base
         (leftLabelComparison τ n) (rightLabelComparison τ n) (hτ n) x v := by
-  unfold FixedVertexChainCoordinates.fiberMap
-  rw [LabelledChainCoordinates.cast_fiber (leftLabels E n) (rightLabels E n)
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedVertexChainCoordinates.fiberMap
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cast_fiber (leftLabels E n) (rightLabels E n)
     (fun i => hτ n (x i))]
   rfl
 
 lemma productsIso_inv_app (k : SimplexCategoryᵒᵖ) (n : SimplexCategoryᵒᵖ)
     (x : Fin (k.unop.len + 1) → O) (v : (product D p hp k x).obj n) :
     (productsIso D p hp k).inv.app n ⟨x, v⟩ =
-      FixedVertexChainCoordinates.decode (p n)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedVertexChainCoordinates.decode (p n)
         (leftLabels D n) (rightLabels D n) k.unop.len x v := rfl
 
 lemma productsIso_inv_naturality (k : SimplexCategoryᵒᵖ) :
@@ -58,7 +58,7 @@ lemma productsIso_inv_naturality (k : SimplexCategoryᵒᵖ) :
   change (chainRowMap τ k).app n ((productsIso D p hp k).inv.app n ⟨x, v⟩) =
     (productsIso E q hq k).inv.app n ⟨x, (productMap p q hp hq τ hτ k x).app n v⟩
   rw [productsIso_inv_app, productsIso_inv_app, chainRowMap_app, productMap_app]
-  exact FixedVertexChainCoordinates.decode_naturality (q n) (τ.app n).base
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedVertexChainCoordinates.decode_naturality (q n) (τ.app n).base
     (leftLabelComparison τ n) (rightLabelComparison τ n) (hτ n) x v
 
 end SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices

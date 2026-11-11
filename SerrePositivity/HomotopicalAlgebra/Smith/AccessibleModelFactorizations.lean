@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.Basic
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Basic
 
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleGeneratedPair
 
@@ -92,7 +92,7 @@ lemma fibration_right_isCardinalAccessible :
 end AccessibleModelFactorizations
 
 lemma exists_accessible_model_factorizations [IsLocallyPresentable.{w} C]
-    (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J] :
+    (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J] :
     ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular),
       Nonempty (AccessibleModelFactorizations C κ) := by
   have : I.IsSmall.{w} := by
@@ -102,10 +102,10 @@ lemma exists_accessible_model_factorizations [IsLocallyPresentable.{w} C]
     obtain ⟨μ, hμ, hb, hJ⟩ := MorphismProperty.HasSmallObjectArgument.exists_cardinal (I := J)
     exact SmallObject.isSmall J μ
   obtain ⟨κ, hκ, dI, dJ, hI, hJ⟩ := exists_common_accessible_generated_factorizations I J
-  have hcof := ModelGeneration.cofibrations_eq_generated I J
-  have htcof := ModelGeneration.trivialCofibrations_eq_generated I J
-  have htFib := ModelGeneration.CofibrantlyGenerated.rlp_I (I := I) (J := J)
-  have hFib := ModelGeneration.CofibrantlyGenerated.rlp_J (I := I) (J := J)
+  have hcof := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I J
+  have htcof := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated I J
+  have htFib := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.rlp_I (I := I) (J := J)
+  have hFib := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.rlp_J (I := I) (J := J)
   let d₁ : MorphismProperty.FunctorialFactorizationData
       (cofibrations C) (trivialFibrations C) := dI.ofLE (by rw [hcof]) (by rw [htFib])
   let d₂ : MorphismProperty.FunctorialFactorizationData

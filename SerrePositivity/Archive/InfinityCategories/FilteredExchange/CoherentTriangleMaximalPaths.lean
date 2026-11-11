@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.MaximalPathFunctor
-public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTrianglePaths
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.MaximalPathFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentTrianglePaths
 
 /-!
 概要：三頂点の最大 path を、元の第一辺・最後辺・二辺合成の path に同定する。

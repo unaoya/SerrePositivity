@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaCell
-public import SerrePositivity.InfinityCategories.DGNerve.FunctorMapping
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.FunctorMapping
 
 /-! # 元の Λ 標準単体からの dg 関手の native HA 成分データ
 概要：元の実 dg 関手から、元の有限部分集合の生成元の像で native な全成分を取り出す。
@@ -17,8 +17,8 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の Λ 標準単体からの実 dg 関手の、元の全 HA 部分集合成分データ。 -/
 def cubicalLambdaNativeSimplexData {n : ℕ}
-    (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D) : DGNerve.SimplexData A D n where
-  obj a := F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a)
+    (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n where
+  obj a := F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a)
   hom I a b k hI ha hb hk := by
     subst a
     subst b
@@ -28,7 +28,7 @@ def cubicalLambdaNativeSimplexData {n : ℕ}
 /-- 元の成分データの対象は、同じ番号の元の零単体への dg 関手の値。 -/
 lemma cubicalLambdaNativeSimplexData_obj {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D) (a : Fin (n + 1)) :
-    (cubicalLambdaNativeSimplexData A F).obj a = F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) := rfl
+    (cubicalLambdaNativeSimplexData A F).obj a = F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) := rfl
 
 /-- 元の全部分集合成分は、同じ元の生成元に元の実 dg Hom 射を作用させた像。 -/
 lemma cubicalLambdaNativeSimplexData_hom {n : ℕ}
@@ -44,7 +44,7 @@ lemma cubicalLambdaNativeSimplexData_post {n : ℕ} {E : Type w} [DGCategory A E
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D) (G : DGFunctor A D E) :
     cubicalLambdaNativeSimplexData A (DGFunctor.comp F G) =
       (cubicalLambdaNativeSimplexData A F).map G := by
-  apply DGNerve.SimplexData.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.ext
   · rfl
   · apply heq_of_eq
     funext I a b k hI ha hb hk

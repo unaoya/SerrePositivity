@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionRestriction
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ContractibleIsoComposition
-public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplexPrismFirstVertex
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexPrismFirstVertex
 
 /-!
 概要：始点固定の全三単体の延長を、同じ始点を含む三つの全二面へ制限する。

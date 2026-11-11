@@ -26,9 +26,9 @@ lemma projectedIhomPre_path {D E A B : PointedSimplicialSet.{u}} {f g : D ⟶ D}
       ((((R.basedIhomMap P).basedPost (PointedObject.basedHomMap P q)).pre
         (j ≫ PointedObject.basedHomMap P i)).path) := by
   change (((R.pre i).basedPost q).basedIhomMap P).path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (PointedObject.basedHom P E)).right =
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (PointedObject.basedHom P E)).right =
     ((R.basedIhomMap P).basedPost (PointedObject.basedHomMap P q)).path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (j ≫ PointedObject.basedHomMap P i) (PointedObject.basedHom P E)).right
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (j ≫ PointedObject.basedHomMap P i) (PointedObject.basedHom P E)).right
   rw [basedIhomMap_post_path]
   change (((R.pre i).basedIhomMap P).path ≫
       (PointedObject.basedHomMap (PointedObject.basedHom P A)
@@ -36,7 +36,7 @@ lemma projectedIhomPre_path {D E A B : PointedSimplicialSet.{u}} {f g : D ⟶ D}
   rw [basedIhomMap_pre_path_natural]
   have he := (R.basedIhomMap P).pre_basedPost_path
     (PointedObject.basedHomMap P i) (PointedObject.basedHomMap P q)
-  exact (congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j _).right) he.symm).trans
+  exact (congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j _).right) he.symm).trans
     (((R.basedIhomMap P).basedPost (PointedObject.basedHomMap P q)).pre_pre_path
       (PointedObject.basedHomMap P i) j)
 

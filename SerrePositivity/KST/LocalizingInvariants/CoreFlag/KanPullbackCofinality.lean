@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.CoreFlag.KanPullbackCofinality
-public import SerrePositivity.InfinityCategories.F1.CoreFlag.KanPullbackFibers
-public import SerrePositivity.InfinityCategories.F1.CoreFlag.KanFibrationVanishing
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag.KanPullbackCofinality
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.KanPullbackFibers
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanFibrationVanishing
 public import SerrePositivity.KST.SConstruction.Cofinality.KanPullbackCofinalityInput
 
 /-!
@@ -25,13 +25,13 @@ open Spectra
 theorem kanPullbackCofinalityInput : SConstruction.Cofinality.KanPullbackCofinalityInput.{u} := by
   intro P X E B _ _ _ _ q s g p h hp hE hB a
   have : Fibration p := (SSet.modelCategoryQuillen.fibration_iff p).mpr hp
-  have : Fibration q := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullback_fibration h hp
+  have : Fibration q := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.pullback_fibration h hp
   have hf (n : ℕ) (hn : 0 < n) :=
-    _root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.pullback_positive_fiber_subsingleton q s g p h hE hB a n hn
-  refine ⟨_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_map_injective_of_fiber_subsingleton q a 1 (by omega) (hf 1 (by omega)), ?_⟩
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag.pullback_positive_fiber_subsingleton q s g p h hE hB a n hn
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.fibration_map_injective_of_fiber_subsingleton q a 1 (by omega) (hf 1 (by omega)), ?_⟩
   intro n hn
-  refine ⟨_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_map_injective_of_fiber_subsingleton q a n (by omega) (hf n (by omega)), ?_⟩
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.fibration_map_injective_of_fiber_subsingleton q a n (by omega) (hf n (by omega)), ?_⟩
   obtain ⟨k, rfl⟩ : ∃ k, n = k + 1 := ⟨n - 1, by omega⟩
-  exact _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_map_surjective_of_fiber_subsingleton q a k (hf k (by omega))
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.fibration_map_surjective_of_fiber_subsingleton q a k (hf k (by omega))
 
 end SerrePositivity.KST.LocalizingInvariants.CoreFlag

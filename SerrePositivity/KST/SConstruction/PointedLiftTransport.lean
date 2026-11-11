@@ -30,9 +30,9 @@ lemma pointedMappingTransport_post {A A' E E' B B' : PointedSimplicialSet.{u}}
   have h₂ : PointedObject.basedHomMap A p ≫ PointedObject.basedHomMap A c =
       PointedObject.basedHomMap A (p ≫ c) :=
     ((PointedObject.basedHomFunctor A).map_comp p c).symm
-  change ((PointedObject.basedHomMap A e ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a E') ≫
+  change ((PointedObject.basedHomMap A e ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a E') ≫
       PointedObject.basedHomMap A' p').right =
-    (PointedObject.basedHomMap A p ≫ PointedObject.basedHomMap A c ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a B').right
+    (PointedObject.basedHomMap A p ≫ PointedObject.basedHomMap A c ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a B').right
   rw [Category.assoc, prePointed_post, ← Category.assoc, h₁, hp, ← h₂, Category.assoc]
 
 /-- 可換正方形に沿う持ち上げの全パラメーターの移送。 -/

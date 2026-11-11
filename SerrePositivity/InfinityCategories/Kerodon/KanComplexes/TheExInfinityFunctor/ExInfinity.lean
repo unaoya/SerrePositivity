@@ -13,6 +13,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 方針：各反復は右随伴なので有限極限を保ち、型の filtered colimit との交換を使う。
 規約：Moss 2020 Proposition 31 の有限極限保存の部分。Kan 性と単位の anodyne 性は別項目。
 使われ方：非 Kan 基底の引き戻し比較に使う置換の準備。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

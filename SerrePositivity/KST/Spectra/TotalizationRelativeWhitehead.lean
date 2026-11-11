@@ -35,8 +35,8 @@ lemma CosimplicialTotalization.map_piIsomorphism_of_reedyFibration
     [KanComplex (CosimplicialTotalization.obj X)]
     [KanComplex (CosimplicialTotalization.obj Y)]
     (f : X ⟶ Y) (hf : reedyRight simplex SSet.modelCategoryQuillen.J.rlp f)
-    (hπ : ∀ j, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app j)) (e₀ : ∀ j, X.obj j _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (CosimplicialTotalization.map f) :=
+    (hπ : ∀ j, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app j)) (e₀ : ∀ j, X.obj j _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (CosimplicialTotalization.map f) :=
   CosimplicialTotalization.map_piIsomorphism_of_matching_monoRight f
     (CosimplicialRelativeWhitehead.matching_rlp_of_levelwise f hf hπ e₀)
 
@@ -52,8 +52,8 @@ lemma PointedTotalization.map_piIsomorphism_of_reedyFibration
     (f : X ⟶ Y)
     (hf : reedyRight simplex SSet.modelCategoryQuillen.J.rlp
       (Functor.whiskerRight f PointedSimplicialSet.forget))
-    (hπ : ∀ j, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app j).right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (PointedTotalization.map f).right := by
+    (hπ : ∀ j, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app j).right) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (PointedTotalization.map f).right := by
   let : ∀ j, KanComplex ((X ⋙ PointedSimplicialSet.forget).obj j) :=
     fun j ↦ inferInstanceAs (KanComplex (X.obj j).right)
   let : ∀ j, KanComplex ((Y ⋙ PointedSimplicialSet.forget).obj j) :=

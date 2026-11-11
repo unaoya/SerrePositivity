@@ -24,7 +24,7 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
 方針：恒等後合成の単位則を元 Hom gluing 関手へ渡す。
 規約：元の全 Hom を保持。使われ方：逆回転の共通小基底への関手化。 -/
 def dgIdentityHomGluingFunctor : DGFunctor R P
-    (DGGluingObject R C C (dgHomGluingBimodule R C C C (DGFunctor.id C) (DGFunctor.id C))) :=
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C C (dgHomGluingBimodule R C C C (DGFunctor.id C) (DGFunctor.id C))) :=
   dgHomGluingFunctor R C C C (DGFunctor.id C) (DGFunctor.id C) F G a (by
     intro x y
     change (F.map x y ≫ 𝟙 _) ≫
@@ -47,7 +47,7 @@ lemma dgIdentityHomGluingFunctor_obj (x : P) :
 規約：全 dg 関手の等号。使われ方：元逆回転の左成分。 -/
 lemma dgIdentityHomGluingFunctor_left :
     (dgIdentityHomGluingFunctor R C F G a h).comp
-      (dgGluingLeft R C C (dgHomGluingBimodule R C C C (DGFunctor.id C) (DGFunctor.id C))) = F := by
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C C (dgHomGluingBimodule R C C C (DGFunctor.id C) (DGFunctor.id C))) = F := by
   unfold dgIdentityHomGluingFunctor
   apply dgHomGluingFunctor_left
 
@@ -56,7 +56,7 @@ lemma dgIdentityHomGluingFunctor_left :
 規約：全 dg 関手の等号。使われ方：元逆回転の右成分。 -/
 lemma dgIdentityHomGluingFunctor_right :
     (dgIdentityHomGluingFunctor R C F G a h).comp
-      (dgGluingRight R C C (dgHomGluingBimodule R C C C (DGFunctor.id C) (DGFunctor.id C))) = G := by
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C C (dgHomGluingBimodule R C C C (DGFunctor.id C) (DGFunctor.id C))) = G := by
   unfold dgIdentityHomGluingFunctor
   apply dgHomGluingFunctor_right
 end SerrePositivity.KST.SConstruction

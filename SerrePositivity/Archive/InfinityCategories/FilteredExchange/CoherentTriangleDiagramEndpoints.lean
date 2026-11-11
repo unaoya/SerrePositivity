@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FiniteShapes
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiniteShapes
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTransformationPointTriangle
 

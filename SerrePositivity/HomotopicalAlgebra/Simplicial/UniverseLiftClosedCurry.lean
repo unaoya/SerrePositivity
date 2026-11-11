@@ -52,24 +52,24 @@ lemma nativeEquiv_symm_curry {K P T : SSet.{v}} (f : K ⊗ T ⟶ P)
   rw [SSet.yonedaEquiv_symm_comp, Equiv.apply_symm_apply]
 
 lemma curry_tensorMap {K P T : SSet.{v}} (f : K ⊗ T ⟶ P) :
-    UniverseLift.map.{w} (curry f) ≫ (UniverseLiftParameterHom.closedIso K P).hom =
-      curry (UniverseLift.tensorMap.{w} f) := by
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} (curry f) ≫ (UniverseLiftParameterHom.closedIso K P).hom =
+      curry (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.tensorMap.{w} f) := by
   ext n x
-  change SimplexParameterHom.nativeEquiv (UniverseLift.obj.{w} K) (UniverseLift.obj.{w} P) n.unop
-    (UniverseLift.simplexTensorMap ((SimplexParameterHom.nativeEquiv K P n.unop).symm
-      ((curry f).app n x.down))) = (curry (UniverseLift.tensorMap.{w} f)).app n x
+  change SimplexParameterHom.nativeEquiv (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P) n.unop
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap ((SimplexParameterHom.nativeEquiv K P n.unop).symm
+      ((curry f).app n x.down))) = (curry (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.tensorMap.{w} f)).app n x
   rw [nativeEquiv_symm_curry]
-  apply (SimplexParameterHom.nativeEquiv (UniverseLift.obj.{w} K)
-    (UniverseLift.obj.{w} P) n.unop).symm.injective
+  apply (SimplexParameterHom.nativeEquiv (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P) n.unop).symm.injective
   rw [Equiv.symm_apply_apply, nativeEquiv_symm_curry]
   ext m y
   rfl
 
 lemma curry_lowerTensor {K P T : SSet.{v}}
-    (f : UniverseLift.obj.{w} K ⊗ UniverseLift.obj.{w} T ⟶ UniverseLift.obj.{w} P) :
-    UniverseLift.map.{w} (curry (UniverseLift.lowerTensor f)) ≫
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K ⊗ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P) :
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} (curry (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerTensor f)) ≫
         (UniverseLiftParameterHom.closedIso K P).hom = curry f := by
-  rw [curry_tensorMap, UniverseLift.tensorMap_lowerTensor]
+  rw [curry_tensorMap, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.tensorMap_lowerTensor]
 
 /-- 実際の宇宙比較が内部Homの評価と整合する。
 
@@ -78,13 +78,13 @@ lemma curry_lowerTensor {K P T : SSet.{v}}
 写像・充填またはホモトピーを同じ全パラメータのまま移送する。
 -/
 lemma evaluation (K P : SSet.{v}) :
-    UniverseLift.obj.{w} K ◁ (UniverseLiftParameterHom.closedIso K P).hom ≫
-      (ihom.ev (UniverseLift.obj K)).app (UniverseLift.obj P) =
-        UniverseLift.tensorMap.{w} ((ihom.ev K).app P) := by
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K ◁ (UniverseLiftParameterHom.closedIso K P).hom ≫
+      (ihom.ev (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj K)).app (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj P) =
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.tensorMap.{w} ((ihom.ev K).app P) := by
   have h := curry_tensorMap.{w} ((ihom.ev K).app P)
   rw [← uncurry_id_eq_ev, curry_uncurry] at h
-  have hi : UniverseLift.map.{w} (𝟙 ((ihom K).obj P)) =
-      𝟙 (UniverseLift.obj.{w} ((ihom K).obj P)) := rfl
+  have hi : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} (𝟙 ((ihom K).obj P)) =
+      𝟙 (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} ((ihom K).obj P)) := rfl
   rw [hi, Category.id_comp] at h
   have hh := congrArg uncurry h
   rw [uncurry_curry, uncurry_eq] at hh

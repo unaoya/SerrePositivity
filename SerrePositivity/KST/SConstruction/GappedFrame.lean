@@ -31,13 +31,13 @@ lemma firstRowFrameMap_inclusion (n : ℕ) :
 方針：対角区間を (i,i) と書き直し、gapped の零対角条件を使う。
 規約：quasicategory 性は不要。使われ方：枠への制限の頂点条件。 -/
 lemma IsGapped.zeroFrameVertex {n : ℕ} {C : SSet.{u}} {F : arNerve n ⟶ C}
-    (hF : IsGapped F) : IsZeroFrameVertex (functorVertex (frameInclusion n ≫ F)) := by
+    (hF : IsGapped F) : IsZeroFrameVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (frameInclusion n ≫ F)) := by
   intro x hd
-  rw [evaluateFunctorAt_functorVertex]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex]
   let a := (nerveEquiv x).val
   have hx : x = ComposableArrows.mk₀ (nerveEquiv x) := (nerveEquiv.symm_apply_apply x).symm
   rw [hx]
-  change IsZeroVertex (F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a))
+  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a))
   have ha : a = arObj a.down.val.1 a.down.val.1 le_rfl := by
     apply ULift.ext
     apply Subtype.ext
@@ -50,10 +50,10 @@ lemma IsGapped.zeroFrameVertex {n : ℕ} {C : SSet.{u}} {F : arNerve n ⟶ C}
 規約：全ての選択を保持する。使われ方：cofiber 補完の忘却射。 -/
 def gappedFrameRestriction (n : ℕ) (C : SSet.{u}) :
     sConstruction n C ⟶ zeroFrameDiagrams n C :=
-  fullSubcomplexLift _ ((gappedSubcomplex n C).ι ≫ (pre (frameInclusion n)).app C) (by
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ ((gappedSubcomplex n C).ι ≫ (pre (frameInclusion n)).app C) (by
     intro v
-    have hv : functorVertex (gappedDiagram v) = v.val :=
-      (functorVertexEquiv (arNerve n) C).apply_symm_apply v.val
+    have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram v) = v.val :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).apply_symm_apply v.val
     change IsZeroFrameVertex (((pre (frameInclusion n)).app C).app (Opposite.op ⦋0⦌) v.val)
     rw [← hv]
     exact (gappedDiagram_isGapped v).zeroFrameVertex)
@@ -100,10 +100,10 @@ def frameRowDiagramIso (n : ℕ) (C : SSet.{u}) :
 /-- 概要：零対角の枠から元の第一行への制限は trivial Kan fibration。
 方針：枠内の第一行への射影に添字の同型を合成する。
 規約：零対象の存在だけで成立する。使われ方：第一行の cofiber 補完との分離。 -/
-instance frameRowRestriction_trivialKanFibration (n : ℕ) (C : SSet.{u}) [HasZeroVertex C] :
-    TrivialKanFibration (frameRowRestriction n C) := by
-  change TrivialKanFibration (zeroFrameProjection n C ≫ (frameRowDiagramIso n C).hom)
-  exact ⟨trivialKanFibrations.comp_mem _ _ TrivialKanFibration.mem
+instance frameRowRestriction_trivialKanFibration (n : ℕ) (C : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (frameRowRestriction n C) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (zeroFrameProjection n C ≫ (frameRowDiagramIso n C).hom)
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.comp_mem _ _ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem
     (MorphismProperty.rlp_of_isIso _ _)⟩
 
 end SerrePositivity.KST.SConstruction

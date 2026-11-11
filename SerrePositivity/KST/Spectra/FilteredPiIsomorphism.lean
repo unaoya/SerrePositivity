@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.FilteredPointing
-public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyIso
 
 /-!
 概要：全基点の π_* 同型は Kan 複体の filtered colimit で保たれる。
@@ -29,10 +29,10 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：零次数を含む全自然数次数。
 使われ方：Goerss–Jardine I §7。任意基点の比較を点つき図式へ移す。 -/
 theorem pointedHomotopyMap_bijective_of_piIsomorphism {A B : PointedSimplicialSet.{u}}
-    [KanComplex A.right] [KanComplex B.right] (f : A ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right)
+    [KanComplex A.right] [KanComplex B.right] (f : A ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f.right)
     (n : ℕ) : Function.Bijective (pointedHomotopyMap n f) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_bijective_congr n f.right rfl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f)
-    rfl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f) (hf A.basepoint n)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_bijective_congr n f.right rfl (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint f)
+    rfl (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint f) (hf A.basepoint n)
 
 /-- 概要：Kan 図式の段ごとの全基点 π_* 同型は filtered colimit でも全基点 π_* 同型。
 方針：余極限の頂点を一段へ下ろし、後続段に基点を付けてホモトピー類の余極限を比較する。
@@ -43,7 +43,7 @@ theorem kanPiIsomorphism_of_filtered {J : Type u} [SmallCategory J] [IsFiltered 
     {c : Cocone F} {d : Cocone G} [KanComplex c.pt] [KanComplex d.pt]
     (hc : IsColimit c) (hd : IsColimit d) (t : F ⟶ G) (g : c.pt ⟶ d.pt)
     (hg : ∀ j, c.ι.app j ≫ g = t.app j ≫ d.ι.app j)
-    (ht : ∀ j, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (t.app j)) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g := by
+    (ht : ∀ j, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (t.app j)) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism g := by
   intro x n
   obtain ⟨j, p, hp⟩ := IsFinitelyPresentable.exists_hom_of_isColimit hc
     ((SSet.yonedaEquiv (X := c.pt)).symm x)
@@ -82,8 +82,8 @@ theorem kanPiIsomorphism_of_filtered {J : Type u} [SmallCategory J] [IsFiltered 
   have hdy : d'.pt.basepoint = g.app _ ((c.ι.app j).app _ xj) := by
     simp only [d', pointFromStageCocone, PointedSimplicialSet.basepoint_ofVertex]
     exact (congrArg (fun z : F.obj j ⟶ d.pt ↦ z.app _ xj) (hg j)).symm
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_bijective_congr n g hcx hdy
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint g') rfl hb
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_bijective_congr n g hcx hdy
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint g') rfl hb
 
 /-- 概要：段ごとの全基点 π_* 同型の filtered diagram の選ばれた余極限射も π_* 同型。
 方針：余極限射の各脚の可換式と Kan 性を一般の比較へ適用する。
@@ -91,7 +91,7 @@ theorem kanPiIsomorphism_of_filtered {J : Type u} [SmallCategory J] [IsFiltered 
 使われ方：BF 1978 §2、Goerss–Jardine I §7、HA §1.4.2。telescope の Ω 条件。 -/
 theorem colimMap_kanPiIsomorphism {J : Type u} [SmallCategory J] [IsFiltered J]
     {F G : J ⥤ SSet.{u}} [∀ j, KanComplex (F.obj j)] [∀ j, KanComplex (G.obj j)]
-    (t : F ⟶ G) (ht : ∀ j, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (t.app j)) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (colimMap t) := by
+    (t : F ⟶ G) (ht : ∀ j, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (t.app j)) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (colimMap t) := by
   let : KanComplex (colimit.cocone F).pt := inferInstanceAs (KanComplex (colimit F))
   let : KanComplex (colimit.cocone G).pt := inferInstanceAs (KanComplex (colimit G))
   exact kanPiIsomorphism_of_filtered (colimit.isColimit F) (colimit.isColimit G) t (colimMap t)
@@ -104,8 +104,8 @@ theorem colimMap_kanPiIsomorphism {J : Type u} [SmallCategory J] [IsFiltered J]
 theorem pointedColimMap_kanPiIsomorphism {J : Type u} [SmallCategory J] [IsFiltered J]
     {D E : J ⥤ PointedSimplicialSet.{u}}
     [∀ j, KanComplex (D.obj j).right] [∀ j, KanComplex (E.obj j).right]
-    (t : D ⟶ E) (ht : ∀ j, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (t.app j).right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (colimMap t).right := by
+    (t : D ⟶ E) (ht : ∀ j, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (t.app j).right) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (colimMap t).right := by
   let : ∀ j, KanComplex ((D ⋙ PointedSimplicialSet.forget).obj j) :=
     fun j ↦ inferInstanceAs (KanComplex (D.obj j).right)
   let : ∀ j, KanComplex ((E ⋙ PointedSimplicialSet.forget).obj j) :=

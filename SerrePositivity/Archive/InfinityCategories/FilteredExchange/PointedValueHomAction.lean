@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedValueFamilyTransport
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseInternalHom
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorSpaceCurrying
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseInternalHom
 
 /-!
 概要：全 Kan Hom 上で、元の値による評価と同じ区間の輸送を比較する。

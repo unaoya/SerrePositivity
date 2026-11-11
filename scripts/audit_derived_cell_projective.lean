@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Derived.DGGluingCellProjectiveInput
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGGluingCellProjectiveInput
 import Lean
 /-! 固定 cell graph 射影性の全新規宣言：許容三公理のみ。 -/
 open Lean Elab Command in
@@ -8,12 +8,12 @@ run_cmd do
     `SerrePositivity.DifferentialGraded.Complexes.TensorShift,
     `SerrePositivity.DifferentialGraded.Derived.Basic,
     `SerrePositivity.DifferentialGraded.Derived.BimoduleTensor,
-    `SerrePositivity.InfinityCategories.Derived.RingComplexColimits,
-    `SerrePositivity.InfinityCategories.Derived.ComplexProjectiveClosure,
-    `SerrePositivity.InfinityCategories.Derived.DGCellAttachmentProjective,
-    `SerrePositivity.InfinityCategories.Derived.DGCellSourceProjective,
-    `SerrePositivity.InfinityCategories.Derived.DGCellResolvedGraphProjective,
-    `SerrePositivity.InfinityCategories.Derived.DGGluingCellProjectiveInput]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.RingComplexColimits,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexProjectiveClosure,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCellAttachmentProjective,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCellSourceProjective,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCellResolvedGraphProjective,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGGluingCellProjectiveInput]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
@@ -30,6 +30,6 @@ run_cmd do
       throwError "No declarations checked in {modules[position]!}"
   logInfo m!"D cell projective audit passed: {counts.foldl (· + ·) (0 : Nat)} declarations in {modules.size} modules."
 
-#check SerrePositivity.InfinityCategories.dgCellResolvedGraph_projective
-#check SerrePositivity.InfinityCategories.dgGluingCellRightAxisProjectiveInput
-#print axioms SerrePositivity.InfinityCategories.dgGluingCellRightAxisProjectiveInput
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolvedGraph_projective
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgGluingCellRightAxisProjectiveInput
+#print axioms SerrePositivity.InfinityCategories.Project.DerivedCategories.dgGluingCellRightAxisProjectiveInput

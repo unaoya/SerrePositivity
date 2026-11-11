@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SkeletalStandardLatching
-public import SerrePositivity.InfinityCategories.Kan.SkeletonTransitionPullback
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletonTransitionPullback
 public import SerrePositivity.KST.Spectra.TypesColimitPullback
 
 /-!
@@ -21,10 +21,10 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 abbrev diagram (n : ℕ) : CosimplicialObject SSet.{u} :=
-  stdSimplex ⋙ _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor n
+  stdSimplex ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.functor n
 
 abbrev transition {n m : ℕ} (h : n ≤ m) : diagram.{u} n ⟶ diagram.{u} m :=
-  Functor.whiskerLeft stdSimplex (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition h)
+  Functor.whiskerLeft stdSimplex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.transition h)
 
 /-- 骨格間の包含に対する latching の自然性正方形は次数ごとの pullback。 -/
 lemma transition_latching_app_isPullback {n m : ℕ} (h : n ≤ m)
@@ -69,7 +69,7 @@ lemma transition_latching_app_isPullback {n m : ℕ} (h : n ≤ m)
     rw [hF, hG]
     let : Mono a.obj.hom := a.property.1
     let : Mono (stdSimplex.{u}.map a.obj.hom) := standard_map_mono a.obj.hom
-    exact _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition_app_isPullback (stdSimplex.map a.obj.hom) h k
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.transition_app_isPullback (stdSimplex.map a.obj.hom) h k
 
 end
 end SerrePositivity.KST.Spectra.SkeletalStandardLatching

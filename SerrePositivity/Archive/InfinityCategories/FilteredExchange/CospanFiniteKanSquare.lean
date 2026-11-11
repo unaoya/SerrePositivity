@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CospanTransportedKanPath
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanSpecifiedHomotopy
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.ContinuousKanSpecifiedHomotopy
 
 /-!
 概要：指定有限 path の同時輸送を、元の境界全円柱を保つ Kan 置換内の正方形へ移す。

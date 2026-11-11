@@ -21,7 +21,7 @@ open scoped Simplicial
 lemma coherentTriangleMappingEdge_raw_heq
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z)
-    (T : SSet.Edge.CompStruct (coherentNerveEdge f) (coherentNerveEdge g) (coherentNerveEdge h)) :
+    (T : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge h)) :
     HEq (coherentTriangleMappingEdge f g h T).edge
       ((T.simplex.map (.mk (ULift.up 0)) (.mk (ULift.up 2))).app (Opposite.op ⦋1⦌)
         (nerve.edgeMk (coherentEndpointPathToComposite
@@ -29,11 +29,11 @@ lemma coherentTriangleMappingEdge_raw_heq
           (show (ULift.up 1 : ULift.{u} (Fin 3)) ≤ ULift.up 2 from by decide))).edge) := by
   rcases T with ⟨s, h₂, h₀, h₁⟩
   have hx : s.obj (.mk (ULift.up 0)) = X :=
-    congrArg (fun e => (coherentNerveArrowData e).1) h₂
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).1) h₂
   have hy : s.obj (.mk (ULift.up 1)) = Y :=
-    congrArg (fun e => (coherentNerveArrowData e).2.1) h₂
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).2.1) h₂
   have hz : s.obj (.mk (ULift.up 2)) = Z :=
-    congrArg (fun e => (coherentNerveArrowData e).2.1) h₀
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).2.1) h₀
   subst X
   subst Y
   subst Z

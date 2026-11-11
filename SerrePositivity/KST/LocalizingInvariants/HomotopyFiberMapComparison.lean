@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberMapNaturality
-public import SerrePositivity.InfinityCategories.Kan.GroupFiveLemma
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.GroupFiveLemma
 public import SerrePositivity.KST.Spectra.SpectrumIntegerHomotopyDetection
 
 /-!
@@ -39,7 +39,7 @@ lemma inclusion_natural (j : ℤ) (x : homotopyGroup (homotopyFiber p) j) :
 lemma map_piIsomorphism (ha : PiIsomorphism a) (hb : PiIsomorphism b) :
     PiIsomorphism (map p q a b h) := by
   intro j
-  exact _root_.SerrePositivity.InfinityCategories.Kan.group_five_lemma
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.group_five_lemma
     (homotopyMap p (j + 1)) (homotopyFiberBoundary p j)
     (homotopyMap (homotopyFiberInclusion p) j) (homotopyMap p j)
     (homotopyMap q (j + 1)) (homotopyFiberBoundary q j)
@@ -57,7 +57,7 @@ local instance comparisonSimplicialCategory : SimplicialCategory OmegaSpectrum.{
   OmegaSpectrum.simplicialCategory
 
 lemma map_isInvertible (ha : PiIsomorphism a) (hb : PiIsomorphism b) :
-    IsInvertibleEdge (coherentNerveEdge (map p q a b h)).toTruncated :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (map p q a b h)).toTruncated :=
   isInvertible_of_piIsomorphism _ (map_piIsomorphism p q a b h ha hb)
 
 end SerrePositivity.KST.LocalizingInvariants.HomotopyFiberComparison

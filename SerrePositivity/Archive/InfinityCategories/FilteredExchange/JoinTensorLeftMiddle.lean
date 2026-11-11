@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.JoinTensorInterval
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.JoinTensorInterval
 
 /-!
 概要：係数付き左錐への比較は、元の左の join 因子の全写像に自然。

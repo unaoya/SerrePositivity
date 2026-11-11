@@ -44,7 +44,7 @@ def kanAdjointBoundaryCoordinate [Mono j.right] (n : ℕ)
       toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ (kanAdjointParameterTarget X Y n).hom) :
     KanAdjointBoundaryCoordinate X Y φ j c n H := by
   let parameterTargetKan : KanComplex (kanAdjointParameterTarget X Y n).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   let ex := PointedExtension.exists_homotopy_from_zero j
     (φ ≫ kanAdjointParameterLeft X Y n)
     (c ≫ pointedEvaluation X (KanSequence.signedLoopTail Y.toKanSequence) n) H hb

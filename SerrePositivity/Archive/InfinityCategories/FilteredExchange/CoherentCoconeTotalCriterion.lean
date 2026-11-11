@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoherentCoconeTotalComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconePointHomInitiality
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.CoherentCoconeTotalComparison
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconePointHomInitiality
 
 /-!
 概要：一般 coherent 空間値図式の余極限性を、元の全空間を共通模型とする全 Hom で判定する。

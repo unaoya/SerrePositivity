@@ -36,18 +36,18 @@ def constantFunctor (T : Type w) [EnrichedCategory SSet.{u} T] (X : C) :
     intro d
     apply ConcreteCategory.hom_ext
     intro a
-    exact (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_id_comp_app X X d ((eId SSet X).app d PUnit.unit)).symm
+    exact (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderCategory.base_id_comp_app X X d ((eId SSet X).app d PUnit.unit)).symm
 
 /-- 二対象のパラメータ円柱を、元の一対象の左右のコピーへ送る。 -/
 def fiberEnriched (A : SSet.{u}) (X : C) :
-    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}) (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairFunctor A (constantFunctor (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}) X) (EnrichedFunctor.id SSet _)
+    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v}) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A C) :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.pairFunctor A (constantFunctor (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v}) X) (EnrichedFunctor.id SSet _)
 
 /-- 一対象上の円柱の cross Hom は、元の対象の恒等族を厳密に保持する。 -/
 lemma fiberEnriched_cross (A : SSet.{u}) (X : C) :
     (ρ_ A).inv ≫ (fiberEnriched A X).map
-        (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}) ⟨true, ⟨PUnit.unit⟩⟩ =
-      _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.crossIdentity A X := by
+        (⟨false, ⟨PUnit.unit⟩⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v}) ⟨true, ⟨PUnit.unit⟩⟩ =
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.crossIdentity A X := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -59,9 +59,9 @@ variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
 
 /-- pairing を元の対象の標準頂点へ制限すると、一対象の円柱の nerve そのもの。 -/
 lemma nervePair_fiber (A : SSet.{u}) (X : C) :
-    lift (SSet.const (coherentNerveVertex X))
-        (𝟙 (SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}))) ≫ nervePair A =
-      coherentNerveMap (fiberEnriched A X) := by
+    lift (SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X))
+        (𝟙 (SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object A _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v}))) ≫ nervePair A =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (fiberEnriched A X) := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -70,11 +70,11 @@ lemma nervePair_fiber (A : SSet.{u}) (X : C) :
   · intro a
     rfl
   intro a b
-  change _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide A (G.obj a).side (G.obj b).side (G.map a b)
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.pairBySide A (G.obj a).side (G.obj b).side (G.map a b)
       (toUnit _ ≫ eId SSet X) ≫ 𝟙 _ =
-    G.map a b ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide A (G.obj a).side (G.obj b).side (𝟙 _)
+    G.map a b ≫ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.pairBySide A (G.obj a).side (G.obj b).side (𝟙 _)
       (toUnit _ ≫ eId SSet X)
-  rw [Category.comp_id, _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide_precomp]
+  rw [Category.comp_id, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.pairBySide_precomp]
   rfl
 
 end SerrePositivity.KST.Spectra.EnrichedParameterCylinder

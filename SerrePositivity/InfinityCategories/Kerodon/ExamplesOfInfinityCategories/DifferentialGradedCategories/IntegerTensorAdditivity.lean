@@ -8,6 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：各変数を加法群準同型に束ねる。
 規約：KST Construction A.5、任意の加群の宇宙。
 使われ方：AW の成分と全複体の交代境界和の接続。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

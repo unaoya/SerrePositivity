@@ -10,6 +10,8 @@ public import Mathlib.AlgebraicTopology.DoldKan.HomotopyEquivalence
 方針：双加法関手の二変数それぞれのホモトピー移送を合成する。
 規約：KST Construction A.5、ℕ 次数と任意の加群の宇宙。
 使われ方：正規化 AW/shuffle の合成で挟まれた Moore 射影・包含を除く。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

@@ -18,8 +18,8 @@ open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] [IsStable C] [IsStable D]
-  (f : C ⟶ D) [IsExactFunctor f] (h : F2.Idempotent.IsIdempotentCompletion f)
+variable {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable D]
+  (f : C ⟶ D) [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f] (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f)
 include h
 
 /-- 概要：元の全図式収縮の水平辺は、始点と終点の元の wide 辺である。
@@ -30,7 +30,7 @@ lemma completionAmbientContraction_horizontal
     (e : (completionCofiberWide f : SSet.{u}) _⦋1⦌)
     (t : (Δ[1] : SSet.{u}) _⦋0⦌) :
     (completionAmbientContraction f h).h.app _ (e, (Δ[1] : SSet.{u}).σ 0 t) ∈
-      cofiberLocalizingEdges (completionEssentialImage f) := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (completionEssentialImage f) := by
   obtain ⟨i, rfl⟩ := stdSimplex.obj₀Equiv.symm.surjective t
   fin_cases i
   · have hh := congrArg (fun l => l.app (Opposite.op ⦋1⦌) e)
@@ -55,10 +55,10 @@ lemma completionAmbientContraction_vertical
     (a : (Δ[1] : SSet.{u}) _⦋1⦌) :
     (completionAmbientContraction f h).h.app _
       ((completionCofiberWide f : SSet.{u}).σ 0 x, a) ∈
-        cofiberLocalizingEdges (completionEssentialImage f) := by
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (completionEssentialImage f) := by
   obtain ⟨θ, rfl⟩ := (stdSimplex.objEquiv
     (n := ⦋1⦌) (m := Opposite.op ⦋1⦌)).symm.surjective a
-  rcases intervalEndomorphism_cases θ with ht | ht | ht
+  rcases _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.intervalEndomorphism_cases θ with ht | ht | ht
   · subst θ
     change (completionAmbientContraction f h).h.app _
       (((completionCofiberWide f : SSet.{u})).σ 0 x,

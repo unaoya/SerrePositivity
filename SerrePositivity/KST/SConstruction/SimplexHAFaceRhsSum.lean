@@ -16,10 +16,10 @@ open scoped BigOperators
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の指定端点・次数の HA 右辺は、同じ所属内部頂点の元の項の和。 -/
-lemma simplexHARhs_interior {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHARhs_interior {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (DGNerve.Index.nonempty hI))
-    (hb : b = I.max' (DGNerve.Index.nonempty hI)) (hk : k = 2 - (I.card : ℤ)) :
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hk : k = 2 - (I.card : ℤ)) :
     s.rhs I a b k hI ha hb hk =
       ∑ j : SimplexSubsetInterior I hI, s.term I a b k hI ha hb hk j.val j.property.1
         (ha.trans_lt j.property.2.1) (j.property.2.2.trans_eq hb.symm) := by
@@ -28,7 +28,7 @@ lemma simplexHARhs_interior {n : ℕ} (s : DGNerve.SimplexData A D n)
     s.term I _ _ k hI rfl rfl hk j hj haj hjb)
 
 /-- 元の読み替え部分集合の HA 右辺は、同じ元の全ての面座標の寄与の和。 -/
-lemma simplexHADecode_rhs_faces {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADecode_rhs_faces {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (k : ℤ)
     (hk : k = 2 - ((simplexHADecodeSubset (m + 1) v {b}).card : ℤ)) :

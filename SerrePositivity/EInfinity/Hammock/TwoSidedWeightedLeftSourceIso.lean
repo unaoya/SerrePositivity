@@ -21,9 +21,9 @@ open CategoryTheory Opposite
 open SerrePositivity.SimplicialModel
 
 def diagonalDoubleOpIso (B : SimplicialObject SSet.{u}) :
-    DoubleSimplicial.diagonalFunctor.obj
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj
       (SimplicialObject.opFunctor.obj (B ⋙ SSet.opFunctor)) ≅
-        (DoubleSimplicial.diagonalFunctor.obj B).op :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj B).op :=
   NatIso.ofComponents (fun _ => Iso.refl _) (by
     intro n m θ
     apply ConcreteCategory.hom_ext
@@ -34,12 +34,12 @@ variable {W : Type u} [Category.{u} W] (F : Wᵒᵖ ⥤ Cat.{u, u}) (S : W ⥤ T
 
 def spaceIso : TwoSidedWeightedLeft.space F S ≅
     ((BarConstruction.functor S.Elementsᵒᵖ).obj
-      (TwoSidedMixedLabel.pulledDiagram F S ⋙ nerveFunctor)).op :=
-  DoubleSimplicial.diagonalFunctor.mapIso
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S ⋙ nerveFunctor)).op :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.mapIso
     ((SimplicialObject.opFunctorCompOpFunctorIso.app
-      (TwoSidedBar.rows (F ⋙ nerveFunctor) (S ⋙ Functor.const SimplexCategoryᵒᵖ))).symm ≪≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rows (F ⋙ nerveFunctor) (S ⋙ Functor.const SimplexCategoryᵒᵖ))).symm ≪≫
         SimplicialObject.opFunctor.mapIso (rowsIso F S)) ≪≫
     diagonalDoubleOpIso ((BarConstruction.rows S.Elementsᵒᵖ).obj
-      (TwoSidedMixedLabel.pulledDiagram F S ⋙ nerveFunctor))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S ⋙ nerveFunctor))
 
 end SerrePositivity.EInfinity.Hammock.TwoSidedWeightedLeftSource

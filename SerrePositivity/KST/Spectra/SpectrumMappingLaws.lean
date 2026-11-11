@@ -49,7 +49,7 @@ theorem mappingIdentity_evaluation (X : OmegaSpectrum.{u}) (n : ℕ) :
     mappingIdentity X ≫ evaluation X X n = eId SSet (X.level n).space := by
   have h := TruncatedMapping.familyLift_evaluation
     (fun n ↦ (X.level n).space) (fun n ↦ (X.level n).space)
-    (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) X.sigma (mappingStep X X)
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) X.sigma (mappingStep X X)
     (homFamily (𝟙 X)) (homFamily_condition (𝟙 X)) n
   change mappingIdentity X ≫ evaluation X X n = homFamily (𝟙 X) n at h
   rw [h]

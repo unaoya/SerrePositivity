@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalUniversalPrism
-public import SerrePositivity.InfinityCategories.F1.Transport.ParametrizedFiberTransportNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ParametrizedFiberTransportNaturality
 
 /-!
 概要：元の全区間普遍輸送族を、元の指定区間族へ引き戻した同じ標的証拠を公開する。

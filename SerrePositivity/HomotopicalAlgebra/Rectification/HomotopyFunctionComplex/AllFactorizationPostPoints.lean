@@ -57,7 +57,7 @@ abbrev tailTo : ResolutionLiftSpace.obj X M (f ≫ l.base) ⟶
 omit [ModelCategory SSet.{v}] in
 lemma tailTo_inclusion : tailTo f l r g e ≫ ResolutionLiftSpace.inclusion X V (f ≫ g.base) =
     ResolutionLiftSpace.inclusion X M (f ≫ l.base) ≫
-      (cosimplicialHom (ResolutionLiftSpace.frame X).obj).map r.diagram := by
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame X).obj).map r.diagram := by
   exact (Category.assoc _ _ _).trans
     ((congrArg (fun q => CoherentLiftPostComposition.tailMap X Y M V f l r ≫ q)
       (ResolutionLiftSpace.baseChange_inclusion (congrArg (fun k => f ≫ k.base) e))).trans
@@ -82,10 +82,10 @@ lemma tailTo_post (b : V ⟶ W) (e' : l ≫ (r ≫ b) = g ≫ b) :
       (congrArg (fun q => tailTo f l r g e ≫ q)
         (AllFactorizationMixedTransport.postTail_inclusion g b X f))
     have ht := congrArg (fun q => q ≫
-      (cosimplicialHom (ResolutionLiftSpace.frame X).obj).map b.diagram)
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame X).obj).map b.diagram)
       (tailTo_inclusion f l r g e)
     have hm := congrArg (fun q => ResolutionLiftSpace.inclusion X M (f ≫ l.base) ≫ q)
-      ((cosimplicialHom (ResolutionLiftSpace.frame X).obj).map_comp r.diagram b.diagram).symm
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame X).obj).map_comp r.diagram b.diagram).symm
     exact hl.trans ((Category.assoc _ _ _).symm.trans
       (ht.trans ((Category.assoc _ _ _).trans (hm.trans (tailTo_inclusion f l (r ≫ b) _ e').symm))))
   · exact (Category.assoc _ _ _).trans

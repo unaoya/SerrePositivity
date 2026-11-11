@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NervePushoutBoundary
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility
 
-public import SerrePositivity.InfinityCategories.Kan.DiagramTensor
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramTensor
 
 /-!
 # 中断した任意モデル源への一般化：NerveCylinderBoundary
@@ -43,20 +43,20 @@ namespace SerrePositivity.SimplicialModel.NerveCylinderBoundary
 variable {D : Type uD} [Category.{vD} D]
   (V K : D ⥤ SSet.{w}) (i : V ⟶ K) {A T : SSet.{w}} (j : A ⟶ T)
 
-abbrev boundary : D ⥤ SSet.{w} := pushout (horizontal V K i A) (vertical j V)
-abbrev endpointInclusion : product K A ⟶ boundary V K i j := pushout.inl _ _
-abbrev vertexInclusion : product V T ⟶ boundary V K i j := pushout.inr _ _
+abbrev boundary : D ⥤ SSet.{w} := pushout (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal V K i A) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical j V)
+abbrev endpointInclusion : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K A ⟶ boundary V K i j := pushout.inl _ _
+abbrev vertexInclusion : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product V T ⟶ boundary V K i j := pushout.inr _ _
 
-def inclusion : boundary V K i j ⟶ product K T :=
-  pushout.desc (vertical j K) (horizontal V K i T) (commute V K i j)
+def inclusion : boundary V K i j ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K T :=
+  pushout.desc (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical j K) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal V K i T) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.commute V K i j)
 
 @[reassoc]
 lemma endpointInclusion_inclusion : endpointInclusion V K i j ≫ inclusion V K i j =
-    vertical j K := pushout.inl_desc _ _ _
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical j K := pushout.inl_desc _ _ _
 
 @[reassoc]
 lemma vertexInclusion_inclusion : vertexInclusion V K i j ≫ inclusion V K i j =
-    horizontal V K i T := pushout.inr_desc _ _ _
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal V K i T := pushout.inr_desc _ _ _
 
 /-- The evaluated functor-category boundary is the actual simplicial pushout-product. -/
 def pushoutProduct (d : D) :
@@ -65,7 +65,7 @@ def pushoutProduct (d : D) :
   inl := (endpointInclusion V K i j).app d
   inr := (vertexInclusion V K i j).app d
   isPushout := NervePushoutBoundary.square
-    (product V A) (product K A) (product V T) (horizontal V K i A) (vertical j V) d
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product V A) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K A) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product V T) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal V K i A) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical j V) d
   ι := (inclusion V K i j).app d
   inl_ι := congr_app (endpointInclusion_inclusion V K i j) d
   inr_ι := congr_app (vertexInclusion_inclusion V K i j) d
@@ -76,14 +76,14 @@ lemma inclusion_mono (hi : ∀ d, Mono (i.app d)) [Mono j] (d : D) :
   exact simplicial_pushoutProduct_mono (i.app d) j (pushoutProduct V K i j d)
 
 variable (F : D ⥤ SSet.{w})
-  (b : NerveBiparameter.System (product K A) F)
-  (c : NerveBiparameter.System (product V T) F)
-  (h : b ≫ NerveBiparameterMaps.restriction _ _ F (horizontal V K i A) =
-    c ≫ NerveBiparameterMaps.restriction _ _ F (vertical j V))
+  (b : NerveBiparameter.System (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K A) F)
+  (c : NerveBiparameter.System (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product V T) F)
+  (h : b ≫ NerveBiparameterMaps.restriction _ _ F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal V K i A) =
+    c ≫ NerveBiparameterMaps.restriction _ _ F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical j V))
 
 /-- Glue both prescribed whole coherent boundary systems before extending the cylinder. -/
 def system : NerveBiparameter.System (boundary V K i j) F :=
-  NervePushoutBoundary.glue _ _ _ F (horizontal V K i A) (vertical j V) b c h
+  NervePushoutBoundary.glue _ _ _ F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal V K i A) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical j V) b c h
 
 lemma system_endpoints : system V K i j F b c h ≫
     NerveBiparameterMaps.restriction _ _ F (endpointInclusion V K i j) = b :=

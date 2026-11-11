@@ -18,48 +18,48 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
-variable (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
+variable (Q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u})
 
-lemma diagonal_fullyFaithful : IsFullyFaithful (diagonal Q) := by
-  have hi : IsQCatEquivalence (equivalencePathRefl Q.obj ≫
-      equivalencePathEndpoint Q.obj 0) := by
-    rw [equivalencePathRefl_endpoint]
-    exact (QCatEquivalence.refl Q.obj).isQCatEquivalence
-  have hr := (isQCatEquivalence_of_trivialKanFibration
-    (equivalencePathEndpoint Q.obj 0)).cancel_right hi
+lemma diagonal_fullyFaithful : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (diagonal Q) := by
+  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathRefl Q.obj ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint Q.obj 0) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathRefl_endpoint]
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.refl Q.obj).isQCatEquivalence
+  have hr := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isQCatEquivalence_of_trivialKanFibration
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint Q.obj 0)).cancel_right hi
   have hc := hr.isFullyFaithful.comp
-    (isFullyFaithful_fullSubcomplexOnVertices_ι _ IsEquivalencePathVertex)
-  change IsFullyFaithful (equivalencePathRefl Q.obj ≫ equivalencePathι Q.obj) at hc
-  rw [equivalencePathRefl_ι] at hc
-  have he : IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Q.obj) :=
-    (isQCatEquivalence_of_trivialKanFibration (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso Q.obj).inv).isFullyFaithful
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι _ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsEquivalencePathVertex)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathRefl Q.obj ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathι Q.obj) at hc
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.equivalencePathRefl_ι] at hc
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.arrowLaxInverse Q.obj) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isQCatEquivalence_of_trivialKanFibration (_root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.arrowLaxIso Q.obj).inv).isFullyFaithful
   exact hc.comp he
 
-def pullbackDiagonalIso : FunctorIso (pullbackInclusion (𝟙 Q) (𝟙 Q)).hom
+def pullbackDiagonalIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (pullbackInclusion (𝟙 Q) (𝟙 Q)).hom
     ((pullbackFst (𝟙 Q) (𝟙 Q)).hom ≫ diagonal Q) := by
-  let j := F2.catPullbackToLax (𝟙 Q.obj) (𝟙 Q.obj)
-  change FunctorIso j ((j ≫ F2.laxPullbackFst (𝟙 Q.obj) (𝟙 Q.obj)) ≫ diagonal Q)
-  let a := j ≫ F2.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj)
-  have ha : ∀ x, IsEquivalencePathVertex (a.app (Opposite.op ⦋0⦌) x) := by
+  let j := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackToLax (𝟙 Q.obj) (𝟙 Q.obj)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso j ((j ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackFst (𝟙 Q.obj) (𝟙 Q.obj)) ≫ diagonal Q)
+  let a := j ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj)
+  have ha : ∀ x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsEquivalencePathVertex (a.app (Opposite.op ⦋0⦌) x) := by
     intro x
-    exact F2.catPullbackToLax_vertex (𝟙 Q.obj) (𝟙 Q.obj) x
-  have e := FunctorIso.postcomp (EquivalenceArrowFamily.comparison a ha)
-    (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Q.obj)
-  have hinv : F2.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj) ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Q.obj = 𝟙 _ :=
-    (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso Q.obj).hom_inv_id
-  have hsrc : a ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Q.obj = j := by
-    rw [show a = j ≫ F2.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj) from rfl,
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackToLax_vertex (𝟙 Q.obj) (𝟙 Q.obj) x
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp (EquivalenceArrowFamily.comparison a ha)
+    (_root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.arrowLaxInverse Q.obj)
+  have hinv : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj) ≫ _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.arrowLaxInverse Q.obj = 𝟙 _ :=
+    (_root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.arrowLaxIso Q.obj).hom_inv_id
+  have hsrc : a ≫ _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.arrowLaxInverse Q.obj = j := by
+    rw [show a = j ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj) from rfl,
       Category.assoc, hinv, Category.comp_id]
-  have hfst : a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-      j ≫ F2.laxPullbackFst (𝟙 Q.obj) (𝟙 Q.obj) := by
-    change (j ≫ F2.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj)) ≫ _ = _
-    rw [Category.assoc, F2.laxPullbackArrow_source, Category.comp_id]
+  have hfst : a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      j ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackFst (𝟙 Q.obj) (𝟙 Q.obj) := by
+    change (j ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj)) ≫ _ = _
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow_source, Category.comp_id]
   rw [hsrc, hfst] at e
   simpa only [diagonal, Category.assoc] using e
 
 lemma difference_kernel (x : (laxCategory (𝟙 Q) (𝟙 Q)).obj _⦋0⦌) :
-    IsZeroVertex ((laxDifference (𝟙 Q) (𝟙 Q)).app (Opposite.op ⦋0⦌) x) ↔
-      x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (exactDiagonal Q) := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((laxDifference (𝟙 Q) (𝟙 Q)).app (Opposite.op ⦋0⦌) x) ↔
+      x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (exactDiagonal Q) := by
   constructor
   · intro hx
     obtain ⟨y, ⟨e⟩⟩ := (laxDifference_kernel (𝟙 Q) (𝟙 Q) x).mp hx

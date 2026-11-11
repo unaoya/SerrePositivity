@@ -26,30 +26,30 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7、VIII §1。全正次数の比較の反復。 -/
 def stageFiberLoopPositiveEquiv (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n r : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).right r
-        (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).basepoint ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right (r + 1)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n).right r
+        (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n).basepoint ≃*
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right (r + 1)
         (UnbasedPointedMapping.stageFiber K Y n).basepoint := by
-  let eL : (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).right ≅
-      (PointedObject.basedHom (cellCofiber K (n + 1)) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right :=
-    PointedSimplicialSet.forget.mapIso (stageFiberCellIso K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).symm
+  let eL : (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n).right ≅
+      (PointedObject.basedHom (cellCofiber K (n + 1)) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right :=
+    PointedSimplicialSet.forget.mapIso (stageFiberCellIso K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n).symm
   let eY : (PointedObject.basedHom (cellCofiber K (n + 1)) Y).right ≅
       (UnbasedPointedMapping.stageFiber K Y n).right :=
     PointedSimplicialSet.forget.mapIso (stageFiberCellIso K Y n)
-  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso r eL
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (stageFiberCellIso K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).inv)).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso r eL
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (stageFiberCellIso K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n).inv)).trans
       ((PointedMapping.loopPositiveEquiv (cellCofiber K (n + 1)) Y r).trans
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (r + 1) eY
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (stageFiberCellIso K Y n).hom)))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso (r + 1) eY
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (stageFiberCellIso K Y n).hom)))
 
 lemma stageFiberLoopPositiveEquiv_apply (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).right r
-      (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n).right r
+      (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n).basepoint) :
     stageFiberLoopPositiveEquiv K Y n r a =
       pointedGroupMap (r + 1) (stageFiberCellIso K Y n).hom
         (PointedMapping.loopPositiveEquiv (cellCofiber K (n + 1)) Y r
-          (pointedGroupMap r (stageFiberCellIso K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).inv a)) := rfl
+          (pointedGroupMap r (stageFiberCellIso K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n).inv a)) := rfl
 
 /-- 概要：全正次数で骨格 fiber の係数表示は loop 値比較と正符号で可換。
 方針：両辺を同じセル球面への制限へ戻し、源の自然性と球面の帰納式を使う。
@@ -57,12 +57,12 @@ lemma stageFiberLoopPositiveEquiv_apply (K : SSet.{u}) (Y : PointedSimplicialSet
 使われ方：Goerss–Jardine VIII §1。塔の微分を高次数で同定するための比較。 -/
 theorem stageFiberCoefficientEquiv_loopPositive (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).right r
-      (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).basepoint)
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n).right r
+      (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n).basepoint)
     (s : K.nonDegenerate (n + 1)) :
     stageFiberCoefficientEquiv K Y n (r + 1) (stageFiberLoopPositiveEquiv K Y n r a) s =
       loopPositiveHomotopyEquiv Y (n + 1 + r)
-        (stageFiberCoefficientEquiv K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n r a s) := by
+        (stageFiberCoefficientEquiv K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n r a s) := by
   rw [stageFiberLoopPositiveEquiv_apply, stageFiberCoefficientEquiv_restriction,
     ← pointedGroupMap_comp (r + 1) (stageFiberCellIso K Y n).hom (stageFiberCellIso K Y n).inv,
     Iso.hom_inv_id, pointedGroupMap_id, ← PointedMapping.loopPositiveEquiv_pre,

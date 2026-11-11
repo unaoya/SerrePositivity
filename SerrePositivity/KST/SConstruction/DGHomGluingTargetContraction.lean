@@ -15,7 +15,7 @@ open CategoryTheory Limits DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] (E : Type z) [DGCategory R E] [Small.{u} E]
   (p : DGFunctor R C E) (q : DGFunctor R D E)
-variable (X : DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
+variable (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
 
 private lemma homotopy_contractingElement_d (K : ModuleCategory R E)
     (h : ModuleHomotopy R E (𝟙 K) 0) :

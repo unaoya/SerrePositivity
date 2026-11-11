@@ -10,6 +10,8 @@ public import Mathlib.Data.Finset.Max
 方針：非空有限鎖をその最大元へ送り、nerve と標準単体の同型を使う。
 規約：Moss 2020 §3 の sd–Ex 構成。Segal 1974 Proposition 1.6 の対角模型の補助。
 使われ方：id→Ex の単位と、その反復による有限極限を保つ置換の入口。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

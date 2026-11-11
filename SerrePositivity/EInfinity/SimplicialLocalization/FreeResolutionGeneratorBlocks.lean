@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionGeneratorPartition
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GeneratorBlockCategory
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GeneratorBlockParts
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorBlockCategory
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorBlockParts
 
 /-!
 # 元の自由解像の全次数の交互標準形
@@ -21,32 +21,32 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory
 
-def freeResolutionBlockEquiv (C : RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
+def freeResolutionBlockEquiv (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
     (X Y : ((freeResolution C).obj n).category) :
-    (X ⟶ Y) ≃ GeneratorBlocks.Normal (freeResolutionGeneratorBase C n).weakEquivalences X Y :=
-  GeneratorBlocks.equivalence (freeResolutionGeneratorBase C n).weakEquivalences X Y
+    (X ⟶ Y) ≃ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Normal (freeResolutionGeneratorBase C n).weakEquivalences X Y :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorBlockEquivalence.equivalence (freeResolutionGeneratorBase C n).weakEquivalences X Y
 
-def freeResolutionBlockCategoryEquivalence (C : RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ) :
-    GeneratorBlocks.BlockCategory (freeResolutionGeneratorBase C n).weakEquivalences ≌
+def freeResolutionBlockCategoryEquivalence (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorBlockCategory.BlockCategory (freeResolutionGeneratorBase C n).weakEquivalences ≌
       ((freeResolution C).obj n).category :=
-  GeneratorBlocks.categoryEquivalence (freeResolutionGeneratorBase C n).weakEquivalences
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorBlockCategory.categoryEquivalence (freeResolutionGeneratorBase C n).weakEquivalences
 
-lemma freeResolutionBlockEquiv_symm_apply (C : RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
+lemma freeResolutionBlockEquiv_symm_apply (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
     (X Y : ((freeResolution C).obj n).category)
-    (N : GeneratorBlocks.Normal (freeResolutionGeneratorBase C n).weakEquivalences X Y) :
+    (N : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Normal (freeResolutionGeneratorBase C n).weakEquivalences X Y) :
     (freeResolutionBlockEquiv C n X Y).symm N =
-      GeneratorBlocks.flattenNormal (freeResolutionGeneratorBase C n).weakEquivalences N := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.flattenNormal (freeResolutionGeneratorBase C n).weakEquivalences N := rfl
 
-lemma freeResolutionBlockEquiv_id (C : RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
+lemma freeResolutionBlockEquiv_id (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
     (X : ((freeResolution C).obj n).category) :
     freeResolutionBlockEquiv C n X X (𝟙 X) =
-      GeneratorBlocks.empty (freeResolutionGeneratorBase C n).weakEquivalences X := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.empty (freeResolutionGeneratorBase C n).weakEquivalences X := rfl
 
-lemma freeResolutionBlockEquiv_comp (C : RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
+lemma freeResolutionBlockEquiv_comp (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
     {X Y Z : ((freeResolution C).obj n).category} (f : X ⟶ Y) (g : Y ⟶ Z) :
     freeResolutionBlockEquiv C n X Z (f ≫ g) =
-      GeneratorBlocks.comp (freeResolutionGeneratorBase C n).weakEquivalences
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorBlockComposition.comp (freeResolutionGeneratorBase C n).weakEquivalences
         (freeResolutionBlockEquiv C n X Y f) (freeResolutionBlockEquiv C n Y Z g) :=
-  GeneratorBlocks.normalize_comp (freeResolutionGeneratorBase C n).weakEquivalences f g
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorBlockComposition.normalize_comp (freeResolutionGeneratorBase C n).weakEquivalences f g
 
 end SerrePositivity.EInfinity.SimplicialLocalization

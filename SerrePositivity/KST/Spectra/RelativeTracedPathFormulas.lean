@@ -35,13 +35,13 @@ variable {X Y Z : KanSequence.{u}} (hX : ∀ n, Mono (X.sigma n).right)
 lemma relativeTracedRestrictionPath_pre (n : ℕ) :
     (relativeTracedRestrictionPath hX q hq b f hb h n).path =
       (relativeTracedRectifyComparison hX q hq b f hb h (n + 1)).path ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space).right := rfl
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space).right := rfl
 
 /-- 前段比較の構造像の区間族は、同じ懸垂と後合成を施した族そのもの。 -/
 lemma relativeTracedStepPath_path (n : ℕ) (s : RelativeTracedRectificationStage q b f n) :
     (relativeTracedStepPath q b f n s).path = s.comparison.path ≫
       (suspensionHom (X.level n).space (Y.level n).space).right ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.sigma n)).right := rfl
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.sigma n)).right := rfl
 
 end KanSequence
 end SerrePositivity.KST.Spectra

@@ -10,6 +10,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 方針：各単体を表す写像に、細分の最終頂点写像を前合成する。
 規約：Moss 2020 §3 の j:X→Ex(X)。Kan 性や単位の anodyne 性は別の証明項目。
 使われ方：Ex の反復と Ex∞ の順序余極限。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CofiberRows
-public import SerrePositivity.InfinityCategories.Stable.Pasting
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pasting
 
 /-! # 三つ組の cofiber 条件から gapped 条件へ
 概要：BGT Definition 7.1 の三つ組の正方形の普遍性から全四つ組の押し出し性を導く。
@@ -54,7 +54,7 @@ def arCofiberRectangle {n : ℕ} (i j k l : Fin (n + 1))
 規約：面番号2。使われ方：左押し出しの入力。 -/
 lemma arCofiberRectangle_left {n : ℕ} (i j k l : Fin (n + 1))
     (hij : i ≤ j) (hjk : j ≤ k) (hkl : k ≤ l) :
-    pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 2 =
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 2 =
       arSquare i j j k hij le_rfl hjk := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
@@ -76,7 +76,7 @@ lemma arCofiberRectangle_left {n : ℕ} (i j k l : Fin (n + 1))
 規約：面番号1。使われ方：外側押し出しの入力。 -/
 lemma arCofiberRectangle_outer {n : ℕ} (i j k l : Fin (n + 1))
     (hij : i ≤ j) (hjk : j ≤ k) (hkl : k ≤ l) :
-    pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 1 =
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 1 =
       arSquare i j j l hij le_rfl (hjk.trans hkl) := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
@@ -98,7 +98,7 @@ lemma arCofiberRectangle_outer {n : ℕ} (i j k l : Fin (n + 1))
 規約：面番号0。使われ方：押し出しの相殺の結論。 -/
 lemma arCofiberRectangle_right {n : ℕ} (i j k l : Fin (n + 1))
     (hij : i ≤ j) (hjk : j ≤ k) (hkl : k ≤ l) :
-    pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 0 =
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 0 =
       arSquare i j k l hij hjk hkl := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
@@ -122,21 +122,21 @@ lemma arCofiberRectangle_right {n : ℕ} (i j k l : Fin (n + 1))
 lemma arSquares_isPushout_of_triples {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (F : arNerve n ⟶ C)
     (hF : ∀ (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k),
-      IsPushoutSquare (arSquare i j j k hij le_rfl hjk ≫ F))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (arSquare i j j k hij le_rfl hjk ≫ F))
     (i j k l : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) (hkl : k ≤ l) :
-    IsPushoutSquare (arSquare i j k l hij hjk hkl ≫ F) := by
-  have hleft : IsPushoutSquare
-      (pastingSquare (arCofiberRectangle i j k l hij hjk hkl ≫ F) 2) := by
-    change IsPushoutSquare (pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 2 ≫ F)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (arSquare i j k l hij hjk hkl ≫ F) := by
+  have hleft : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arCofiberRectangle i j k l hij hjk hkl ≫ F) 2) := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 2 ≫ F)
     rw [arCofiberRectangle_left]
     exact hF i j k hij hjk
-  have houter : IsPushoutSquare
-      (pastingSquare (arCofiberRectangle i j k l hij hjk hkl ≫ F) 1) := by
-    change IsPushoutSquare (pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 1 ≫ F)
+  have houter : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arCofiberRectangle i j k l hij hjk hkl ≫ F) 1) := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 1 ≫ F)
     rw [arCofiberRectangle_outer]
     exact hF i j l hij (hjk.trans hkl)
-  have h := isPushoutSquare_pasting_cancel_left _ hleft houter
-  change IsPushoutSquare (pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 0 ≫ F) at h
+  have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isPushoutSquare_pasting_cancel_left _ hleft houter
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (arCofiberRectangle i j k l hij hjk hkl) 0 ≫ F) at h
   rwa [arCofiberRectangle_right] at h
 
 /-- 概要：零対角を持つ図式の gapped 条件は全三つ組の cofiber 正方形の普遍性と同値。
@@ -144,10 +144,10 @@ lemma arSquares_isPushout_of_triples {n : ℕ} {C : SSet.{u}} [Quasicategory C]
 規約：C は quasicategory。使われ方：第一行からの構成で確認すべき条件の削減。 -/
 lemma isGapped_iff_triples {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (F : arNerve n ⟶ C) : IsGapped F ↔
-      (∀ i : Fin (n + 1), IsZeroVertex (F.app (Opposite.op ⦋0⦌)
+      (∀ i : Fin (n + 1), _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ (arObj i i le_rfl)))) ∧
       (∀ (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k),
-        IsPushoutSquare (arSquare i j j k hij le_rfl hjk ≫ F)) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (arSquare i j j k hij le_rfl hjk ≫ F)) := by
   constructor
   · intro h
     exact ⟨h.1, fun i j k hij hjk => h.2 i j j k hij le_rfl hjk⟩

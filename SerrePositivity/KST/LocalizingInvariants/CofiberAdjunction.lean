@@ -18,20 +18,20 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
+variable (X : SSet.{u}) [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
 
 /-- 恒等矢印を逆回転して得る、cofiber の実右随伴。 -/
 def cofiberRightAdjoint : X ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
-  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.identityArrow X ≫ CofiberRotation.inverseRotation X
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.identityArrow X ≫ CofiberRotation.inverseRotation X
 
 /-- 元の全単体上の cofiber 選択は、この逆回転関手の実左随伴である。 -/
 def cofiberAdjunction :
-    QCatAdjunction (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 ((ihom (Δ[1] : SSet.{u})).obj X)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber X (𝟙 ((ihom (Δ[1] : SSet.{u})).obj X)))
       (cofiberRightAdjoint X) := by
   have a := (CofiberRotation.adjunction X).comp (ArrowTarget.adjunction X)
-  change QCatAdjunction
-    ((CofiberDiagrams.lift X (𝟙 _) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X) ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction
+    ((CofiberDiagrams.lift X (𝟙 _) ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.right X) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
     (cofiberRightAdjoint X) at a
   rw [CofiberDiagrams.lift_right_target] at a
   exact a

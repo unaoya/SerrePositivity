@@ -75,7 +75,7 @@ instance hasColimit [X.Finite] [HasFiniteColimits C] : HasColimit (diagram X ⋙
   infer_instance
 
 abbrev homEquiv [HasColimit (diagram X ⋙ A)] (Y : C) :
-    (X ⟶ (cosimplicialHom A).obj Y) ≃ (colimit (diagram X ⋙ A) ⟶ Y) :=
+    (X ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y) ≃ (colimit (diagram X ⋙ A) ⟶ Y) :=
   HomPresentation.homEquiv (diagram X) (cocone X) (isColimit X) A
 
 end SerrePositivity.HomotopyFunctionComplex.NonsingularPresentation

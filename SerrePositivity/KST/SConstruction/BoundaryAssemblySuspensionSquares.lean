@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open Spectra
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 local instance boundarySuspensionSquares_pointed_simplicialCategory :
     SimplicialCategory PointedSimplicialSet.{u} := PointedEnrichment.simplicialCategory
@@ -30,12 +30,12 @@ def boundaryAssemblyOriginalSuspensionSquare {I : Type u} [SmallCategory I]
 lemma boundaryAssemblyOriginalSuspensionSquare_zero {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {i j : I} (f : i ⟶ j) :
     SSet.ι₀ ≫ boundaryAssemblyOriginalSuspensionSquare r F f =
-      SSet.yonedaEquiv.symm (coherentNerveEdge
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
         (PointedSimplicialSet.circle.{u} ◁
           (boundaryKanRealizationFunctor r).map (F.map f))).edge := by
   rw [boundaryAssemblyOriginalSuspensionSquare, boundaryAssemblyOriginalSuspensionPrism_zero,
     ← Category.assoc, SSet.yonedaEquiv_symm_comp,
-    strictCoherentDiagram_edge (F ⋙ boundaryKanRealizationFunctor r) f,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.strictCoherentDiagram_edge (F ⋙ boundaryKanRealizationFunctor r) f,
     SSet.yonedaEquiv_symm_comp, enrichedNerveMap_edge, suspensionEnrichedUnderlying_map]
   rfl
 
@@ -43,11 +43,11 @@ lemma boundaryAssemblyOriginalSuspensionSquare_zero {I : Type u} [SmallCategory 
 lemma boundaryAssemblyOriginalSuspensionSquare_one {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {i j : I} (f : i ⟶ j) :
     SSet.ι₁ ≫ boundaryAssemblyOriginalSuspensionSquare r F f =
-      SSet.yonedaEquiv.symm (coherentNerveEdge
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
         ((boundaryKanRealizationFunctor (r + 1)).map (F.map f))).edge := by
   rw [boundaryAssemblyOriginalSuspensionSquare, boundaryAssemblyOriginalSuspensionPrism_one,
     SSet.yonedaEquiv_symm_comp,
-    strictCoherentDiagram_edge (F ⋙ boundaryKanRealizationFunctor (r + 1)) f]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.strictCoherentDiagram_edge (F ⋙ boundaryKanRealizationFunctor (r + 1)) f]
   rfl
 
 /-- 左辺は入力の始点での元の固定構造射の辺そのもの。 -/
@@ -55,7 +55,7 @@ lemma boundaryAssemblyOriginalSuspensionSquare_left {I : Type u} [SmallCategory 
     (r : ℕ) (F : I ⥤ StableModel.{u}) {i j : I} (f : i ⟶ j) :
     lift (SSet.const (SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
       (𝟙 (Δ[1] : SSet.{u + 1})) ≫ boundaryAssemblyOriginalSuspensionSquare r F f =
-      SSet.yonedaEquiv.symm (coherentNerveEdge (boundaryKanAssemblySigma r (F.obj i))).edge :=
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (boundaryKanAssemblySigma r (F.obj i))).edge :=
   boundaryAssemblyOriginalSuspensionPrism_vertex r F (nerve.edgeMk f).edge
     (SSet.stdSimplex.obj₀Equiv.symm 0)
 
@@ -64,7 +64,7 @@ lemma boundaryAssemblyOriginalSuspensionSquare_right {I : Type u} [SmallCategory
     (r : ℕ) (F : I ⥤ StableModel.{u}) {i j : I} (f : i ⟶ j) :
     lift (SSet.const (SSet.stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
       (𝟙 (Δ[1] : SSet.{u + 1})) ≫ boundaryAssemblyOriginalSuspensionSquare r F f =
-      SSet.yonedaEquiv.symm (coherentNerveEdge (boundaryKanAssemblySigma r (F.obj j))).edge :=
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (boundaryKanAssemblySigma r (F.obj j))).edge :=
   boundaryAssemblyOriginalSuspensionPrism_vertex r F (nerve.edgeMk f).edge
     (SSet.stdSimplex.obj₀Equiv.symm 1)
 
@@ -114,13 +114,13 @@ lemma boundaryAssemblyOriginalSuspensionSquare_comp_composite {I : Type u} [Smal
 lemma boundaryAssemblyOriginalSuspensionSquare_id {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (i : I) :
     (SSet.stdSimplex.σ (0 : Fin 1) ▷ (Δ[1] : SSet.{u + 1})) ≫
-      boundaryAssemblyOriginalSuspensionPrism r F (nerveVertex i) =
+      boundaryAssemblyOriginalSuspensionPrism r F (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i) =
         boundaryAssemblyOriginalSuspensionSquare r F (𝟙 i) := by
   have h := boundaryAssemblyOriginalSuspensionPrism_naturality r F
-    (SimplexCategory.σ (0 : Fin 1)) (nerveVertex i)
+    (SimplexCategory.σ (0 : Fin 1)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)
   change (SSet.stdSimplex.σ (0 : Fin 1) ▷ (Δ[1] : SSet.{u + 1})) ≫
-    boundaryAssemblyOriginalSuspensionPrism r F (nerveVertex i) =
-      boundaryAssemblyOriginalSuspensionPrism r F ((nerve I).σ 0 (nerveVertex i)) at h
+    boundaryAssemblyOriginalSuspensionPrism r F (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i) =
+      boundaryAssemblyOriginalSuspensionPrism r F ((nerve I).σ 0 (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)) at h
   exact h.trans (congrArg (boundaryAssemblyOriginalSuspensionPrism r F)
     (nerve.σ₀_mk₀_eq i))
 

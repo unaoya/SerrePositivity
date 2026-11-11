@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.DGNerve.HomHEqAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.HomHEqAlgebra
 public import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 
 /-!

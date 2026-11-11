@@ -39,13 +39,13 @@ lemma oneDirectionInverseMixedFamily_source (r : ℕ) {X Y : StableModel.{u}} (f
         (PointedObject.basedHomMap ((boundaryKanRealizationFunctor r).obj X)
           ((oneDirectionKanRealizationFunctor r).map f)).right := by
   have h := pointedLiftTransport_evaluation
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app X)) (𝟙 _)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app X)) (𝟙 _)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y))
     ((boundaryKanRealizationFunctor r).map f)
     (𝟙 _) (oneDirectionMappingPathMap r f) ((boundaryKanRealizationFunctor r).map f)
     (oneDirectionMappingPathMap_projection r f) (by simp)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction ((oneDirectionKanComparisonNat r).app X))
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction ((oneDirectionKanComparisonNat r).app Y))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction ((oneDirectionKanComparisonNat r).app X))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction ((oneDirectionKanComparisonNat r).app Y))
     ((oneDirectionKanRealizationFunctor r).map f) (oneDirectionMappingPathMap_retraction r f)
   have hu := congrArg
     (pointedMappingPathInverseFamily ((oneDirectionKanComparisonNat r).app X) ≫ ·)
@@ -56,15 +56,15 @@ lemma oneDirectionInverseMixedFamily_source (r : ℕ) {X Y : StableModel.{u}} (f
 lemma oneDirectionInverseMixedFamily_target (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
     oneDirectionInverseMixedFromTarget r f ≫ oneDirectionInverseMixedFamily r f =
       pointedMappingPathInverseFamily ((oneDirectionKanComparisonNat r).app Y) ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((boundaryKanRealizationFunctor r).map f)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((boundaryKanRealizationFunctor r).map f)
           ((oneDirectionKanRealizationFunctor r).obj Y)).right := by
   have h := pointedLiftTransport_evaluation
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y)) (𝟙 _)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y)) (𝟙 _)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y))
     ((boundaryKanRealizationFunctor r).map f)
     ((boundaryKanRealizationFunctor r).map f) (𝟙 _) (𝟙 _) (by simp) (by simp)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction ((oneDirectionKanComparisonNat r).app Y))
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction ((oneDirectionKanComparisonNat r).app Y)) (𝟙 _) (by simp)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction ((oneDirectionKanComparisonNat r).app Y))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction ((oneDirectionKanComparisonNat r).app Y)) (𝟙 _) (by simp)
   have hu := congrArg
     (pointedMappingPathInverseFamily ((oneDirectionKanComparisonNat r).app Y) ≫ ·)
     (pointedMappingTransport_target_id ((boundaryKanRealizationFunctor r).map f))

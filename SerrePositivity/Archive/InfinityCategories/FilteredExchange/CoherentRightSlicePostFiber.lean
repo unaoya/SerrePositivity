@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentHomSlicePost
 public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentRightSlicePostComposition
-public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.VertexFiberMap
 
 /-!
 概要：元の右 slice 後合成を同じ始点の fiber へ降ろし、元の Hom 比較を保持する。

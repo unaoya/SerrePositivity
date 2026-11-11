@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.KanTwoHornLift
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanTwoHornLift
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.CurriedHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
 
@@ -96,20 +96,20 @@ variable {E B : SSet.{v}} (p : E ⟶ B) (hp : SSet.modelCategoryQuillen.J.rlp p)
   (s : B ⟶ E) (hs : s ≫ p = 𝟙 B) (H : SSet.Homotopy (𝟙 E) (p ≫ s))
 
 def sectionLoop : SSet.Homotopy (p ≫ s) (p ≫ s) :=
-  LargeParameterSquare.changeEndpoints (HomotopyClasses.postHomotopy (p ≫ s) H)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints (HomotopyClasses.postHomotopy (p ≫ s) H)
     (Category.id_comp _) (by
       rw [Category.assoc p s (p ≫ s), ← Category.assoc s p s, hs, Category.id_comp])
 
 def baseLoop : SSet.Homotopy p p :=
-  LargeParameterSquare.changeEndpoints (HomotopyClasses.postHomotopy p H)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints (HomotopyClasses.postHomotopy p H)
     (Category.id_comp _) (by simp only [Category.assoc, hs, Category.comp_id])
 
 lemma sectionLoop_h : (sectionLoop p s hs H).h = H.h ≫ (p ≫ s) := by
-  rw [sectionLoop, LargeParameterSquare.changeEndpoints_h]
+  rw [sectionLoop, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
   rfl
 
 lemma baseLoop_h : (baseLoop p s hs H).h = H.h ≫ p := by
-  rw [baseLoop, LargeParameterSquare.changeEndpoints_h]
+  rw [baseLoop, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
   rfl
 
 include hp hs H in
@@ -129,8 +129,8 @@ lemma exists_homotopy : ∃ V : SSet.Homotopy (𝟙 E) (p ≫ s),
   let b := SSet.stdSimplex.σ (0 : Fin 2) ≫ curry (baseLoop p s hs H).h
   have hc : SSet.stdSimplex.δ (0 : Fin 2) ≫ e₀ =
       SSet.stdSimplex.δ (0 : Fin 2) ≫ e₁ :=
-    (LargeParameterSquare.edge_one (sectionLoop p s hs H)).trans
-      (LargeParameterSquare.edge_one H).symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_one (sectionLoop p s hs H)).trans
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_one H).symm
   have h₀ : e₀ ≫ (ihom E).map p = SSet.stdSimplex.δ (0 : Fin 3) ≫ b := by
     dsimp only [e₀, b]
     rw [← Category.assoc, face_zero_sigma, Category.id_comp, ← curry_natural_right]
@@ -140,22 +140,22 @@ lemma exists_homotopy : ∃ V : SSet.Homotopy (𝟙 E) (p ≫ s),
     dsimp only [e₁, b]
     rw [← Category.assoc, face_one_sigma, Category.id_comp, ← curry_natural_right]
     rw [baseLoop_h]
-  obtain ⟨t, ht₀, ht₁, htp⟩ := KanTwoHornLift.exists_triangle ((ihom E).map p) hq e₀ e₁ b hc h₀ h₁
+  obtain ⟨t, ht₀, ht₁, htp⟩ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exists_triangle ((ihom E).map p) hq e₀ e₁ b hc h₀ h₁
   have hz : SSet.stdSimplex.δ (1 : Fin 2) ≫ (SSet.stdSimplex.δ (2 : Fin 3) ≫ t) =
-      LargeParameterSquare.point (𝟙 E) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point (𝟙 E) := by
     rw [← Category.assoc, vertex_zero, Category.assoc, ht₁]
-    exact LargeParameterSquare.edge_zero H
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_zero H
   have ho : SSet.stdSimplex.δ (0 : Fin 2) ≫ (SSet.stdSimplex.δ (2 : Fin 3) ≫ t) =
-      LargeParameterSquare.point (p ≫ s) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point (p ≫ s) := by
     rw [← Category.assoc, vertex_one, Category.assoc, ht₀]
-    exact LargeParameterSquare.edge_zero (sectionLoop p s hs H)
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_zero (sectionLoop p s hs H)
   refine ⟨CurriedHomotopy.ofEdge (SSet.stdSimplex.δ (2 : Fin 3) ≫ t) hz ho, ?_⟩
   change uncurry (SSet.stdSimplex.δ (2 : Fin 3) ≫ t) ≫ p = _
   rw [← uncurry_natural_right, Category.assoc, htp]
   dsimp only [b]
   rw [← Category.assoc, face_two_sigma, Category.assoc,
-    LargeParameterSquare.edge_zero (baseLoop p s hs H), uncurry_natural_left,
-    LargeParameterSquare.point, uncurry_curry]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_zero (baseLoop p s hs H), uncurry_natural_left,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point, uncurry_curry]
   rfl
 
 end SerrePositivity.SimplicialModel.KanFiberwiseContraction

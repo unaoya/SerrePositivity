@@ -25,7 +25,7 @@ private theorem compStruct_eq_of_arrowData {C : Type (u + 1)} [Category.{u} C]
     (a : A ⟶ B) (b : B ⟶ E)
     (hf : (⟨X, Y, f⟩ : Σ V W : C, V ⟶ W) = ⟨A, B, a⟩)
     (hg : (⟨Y, Z, g⟩ : Σ V W : C, V ⟶ W) = ⟨B, E, b⟩) :
-    (coherentNerveCompStruct f g).simplex = (coherentNerveCompStruct a b).simplex := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct f g).simplex = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a b).simplex := by
   have hX := congrArg (fun t : Σ V W : C, V ⟶ W => t.1) hf
   have hY := congrArg (fun t : Σ V W : C, V ⟶ W => t.2.1) hf
   have hZ := congrArg (fun t : Σ V W : C, V ⟶ W => t.2.1) hg
@@ -38,23 +38,23 @@ private theorem compStruct_eq_of_arrowData {C : Type (u + 1)} [Category.{u} C]
   cases hg'
   rfl
 
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
 
 /-- 同じ最大化の全二胞体は、元の実 Kan 包含と商の標準合成二胞体そのもの。 -/
 theorem verdierFullSLowerMaximalization_eq_kernelCompStruct :
-    coherentSimplexMaximalization (verdierFullSLowerSimplex d) =
-      (coherentNerveCompStruct (stableCoreSingleKanMap d.inclusion)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexMaximalization (verdierFullSLowerSimplex d) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (stableCoreSingleKanMap d.inclusion)
         (stableCoreSingleKanMap d.projection)).simplex := by
   let f := (verdierFullSLowerStrictDiagram d).map (homOfLE
     (show (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 1 from by decide))
   let g := (verdierFullSLowerStrictDiagram d).map (homOfLE
     (show (ULift.up (1 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 2 from by decide))
-  let t := coherentNerveCompStruct f g
+  let t := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct f g
   have h := verdierFullSLowerMaximalization_eq_compStruct d
-  have hf := (congrArg coherentNerveArrowData
-    ((congrArg (SpaceInfinity.δ 2) h).trans t.d₂)).trans (coherentNerveArrowData_of_arrow f)
-  have hg := (congrArg coherentNerveArrowData
-    ((congrArg (SpaceInfinity.δ 0) h).trans t.d₀)).trans (coherentNerveArrowData_of_arrow g)
+  have hf := (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData
+    ((congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.δ 2) h).trans t.d₂)).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData_of_arrow f)
+  have hg := (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData
+    ((congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.δ 0) h).trans t.d₀)).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData_of_arrow g)
   exact h.trans (compStruct_eq_of_arrowData f g
     (stableCoreSingleKanMap d.inclusion) (stableCoreSingleKanMap d.projection)
     (hf.symm.trans (verdierFullSLowerCanonical_first_data d))
@@ -62,17 +62,17 @@ theorem verdierFullSLowerMaximalization_eq_kernelCompStruct :
 
 /-- 同じ最大化の全二胞体の射は、元の商核四角形の下側二胞体そのもの。 -/
 theorem verdierFullSLowerMaximalization_kernel :
-    SSet.yonedaEquiv.symm (coherentSimplexMaximalization (verdierFullSLowerSimplex d)) =
-      squareTriangle 1 ≫ quotientSKernelInfinitySquare d.inclusion d.projection :=
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexMaximalization (verdierFullSLowerSimplex d)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ quotientSKernelInfinitySquare d.inclusion d.projection :=
   (congrArg SSet.yonedaEquiv.symm (verdierFullSLowerMaximalization_eq_kernelCompStruct d)).trans
     (quotientSKernelInfinitySquare_lower d.inclusion d.projection).symm
 
 /-- 元の指定全下側二胞体から、元の商核全下側二胞体への同じ三角柱による全関手同型。 -/
 def verdierFullSLowerKernelIso :
-    FunctorIso (squareTriangle 1 ≫ (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0)))
-      (squareTriangle 1 ≫ quotientSKernelInfinitySquare d.inclusion d.projection) :=
-  (congrArg (fun f => FunctorIso
-    (squareTriangle 1 ≫ (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0))) f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ (d.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ quotientSKernelInfinitySquare d.inclusion d.projection) :=
+  (congrArg (fun f => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ (d.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0))) f)
     (verdierFullSLowerMaximalization_kernel d)).mp (verdierFullSLowerDeformationIso d)
 
 end SerrePositivity.KST.Fibration

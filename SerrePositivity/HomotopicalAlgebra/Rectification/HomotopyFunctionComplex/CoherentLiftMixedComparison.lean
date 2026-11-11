@@ -132,21 +132,21 @@ lemma edgeBD_one : SSet.stdSimplex.δ (0 : Fin 2) ≫ edgeBD hcof hfib X Y W V f
   exact RelativeChoiceSpace.ofExtension_congr _ _ _ _ _ _ (final_interchange hcof X Y W V f g h)
 
 def diagonal : SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ⟶ space X Y W V f g h φ :=
-  (RelativeChoiceSpace.interval hcof hfib (vertexInclusion Y W g) (boundary X Y W V f g h φ)
+  (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.interval hcof hfib (vertexInclusion Y W g) (boundary X Y W V f g h φ)
     (ResolutionLiftSpace.projection X V (f.base ≫ g ≫ h.base))
     (ResolutionLiftSpace.projection_trivialFibration hcof X V (f.base ≫ g ≫ h.base))
     (pointA hcof X Y W V f g h φ) (pointD hcof X Y W V f g h φ)).choose
 
 lemma diagonal_zero : SSet.stdSimplex.δ (1 : Fin 2) ≫ diagonal hcof hfib X Y W V f g h φ =
     pointA hcof X Y W V f g h φ :=
-  (RelativeChoiceSpace.interval hcof hfib (vertexInclusion Y W g) (boundary X Y W V f g h φ)
+  (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.interval hcof hfib (vertexInclusion Y W g) (boundary X Y W V f g h φ)
     (ResolutionLiftSpace.projection X V (f.base ≫ g ≫ h.base))
     (ResolutionLiftSpace.projection_trivialFibration hcof X V (f.base ≫ g ≫ h.base))
     (pointA hcof X Y W V f g h φ) (pointD hcof X Y W V f g h φ)).choose_spec.1
 
 lemma diagonal_one : SSet.stdSimplex.δ (0 : Fin 2) ≫ diagonal hcof hfib X Y W V f g h φ =
     pointD hcof X Y W V f g h φ :=
-  (RelativeChoiceSpace.interval hcof hfib (vertexInclusion Y W g) (boundary X Y W V f g h φ)
+  (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.interval hcof hfib (vertexInclusion Y W g) (boundary X Y W V f g h φ)
     (ResolutionLiftSpace.projection X V (f.base ≫ g ≫ h.base))
     (ResolutionLiftSpace.projection_trivialFibration hcof X V (f.base ≫ g ≫ h.base))
     (pointA hcof X Y W V f g h φ) (pointD hcof X Y W V f g h φ)).choose_spec.2
@@ -218,7 +218,7 @@ lemma triangle_fixed_boundary (left : Bool) :
 
 lemma triangle_action_face (left : Bool) (Z : C)
     (t : CoherentLiftTuples.obj Y W g ⊗ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 2) ⟶
-      (cosimplicialHom V.resolution.obj).obj Z) (k : Fin 3) :
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom V.resolution.obj).obj Z) (k : Fin 3) :
     CoherentLiftTuples.obj Y W g ◁ SSet.stdSimplex.δ k ≫
         KanLiftAction.parameterized hcof hfib X V (f.base ≫ g ≫ h.base) Z
           (RelativeChoiceSpace.family (vertexInclusion Y W g) (boundary X Y W V f g h φ)

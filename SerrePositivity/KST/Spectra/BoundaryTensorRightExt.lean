@@ -6,7 +6,7 @@ public import SerrePositivity.KST.Spectra.BoundaryTensorExt
 概要：第二変数の境界との積からの射を各面で判定する。
 方針：境界の面による被覆を各単体次数で使う。
 規約：第一変数は任意のパラメータ。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。正方形の横辺の定数性。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.3（Tag 00W3）。正方形の横辺の定数性。
 -/
 
 @[expose] public section

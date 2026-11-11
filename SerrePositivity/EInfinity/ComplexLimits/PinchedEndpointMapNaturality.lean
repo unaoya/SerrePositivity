@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.PinchedEndpointTransport
 
 /-!
 # 端点の等式輸送と元の pinched Hom 関手作用
@@ -19,12 +19,12 @@ open SerrePositivity.InfinityCategories
 
 lemma pinchedEndpointIso_map {C D : SSet.{u}} (F : C ⟶ D)
     {x y x' y' : C.obj (Opposite.op (SimplexCategory.mk 0))} (hx : x = x') (hy : y = y') :
-    (pinchedEndpointIso hx hy).hom ≫ pinchedHomMap F x' y' =
-    pinchedHomMap F x y ≫ (pinchedEndpointIso
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso hx hy).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap F x' y' =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap F x y ≫ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso
       (congrArg (F.app (Opposite.op (SimplexCategory.mk 0))) hx)
       (congrArg (F.app (Opposite.op (SimplexCategory.mk 0))) hy)).hom := by
   subst x'
   subst y'
-  simp only [pinchedEndpointIso, Iso.refl_hom, Category.id_comp, Category.comp_id]
+  simp only [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso, Iso.refl_hom, Category.id_comp, Category.comp_id]
 
 end SerrePositivity.EInfinity.ComplexLimits

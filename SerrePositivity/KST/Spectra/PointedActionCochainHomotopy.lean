@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedActionCochains
-public import SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom
-public import SerrePositivity.InfinityCategories.Kan.FunctionComplexHomotopyGroups
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexHomotopyGroups
 
 /-!
 概要：点つき群作用の cochain の各次数の正次数ホモトピー群の関数群による表示。
@@ -31,12 +31,12 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine VIII §2。各 cochain 次数の π_* の座標表示。 -/
 def functionIso {G : Type u} [Group G] (B : Action PointedSimplicialSet.{u} G) (n : ℕ) :
     ((obj B).obj (SimplexCategory.mk n)).right ≅
-      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj (Fin n → G) B.V.right :=
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.obj (Fin n → G) B.V.right :=
   PointedSimplicialSet.forget.mapIso (freeIso B n) ≪≫
     PointedWeightedEnd.underlyingIso (FreeActionFamily.weight (Fin n → G))
       (FreeActionFamily.pointedCoefficients B) ≪≫
     FreeActionFamily.endIso (Fin n → G) ((PointedSimplicialSet.forget.mapAction G).obj B) ≪≫
-    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.iso (Fin n → G) B.V.right
+    _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.iso (Fin n → G) B.V.right
 
 /-- 概要：群 cochain の各次数の正次数ホモトピー群は係数の群の関数群と同型。
 方針：各次数の関数複体の同型と関数複体のホモトピー群の同型を合成する。
@@ -44,10 +44,10 @@ def functionIso {G : Type u} [Group G] (B : Action PointedSimplicialSet.{u} G) (
 使われ方：Goerss–Jardine I §7、VIII §2。有理群 cochain の係数の群との比較。 -/
 def homotopyFunctionEquiv {G : Type u} [Group G] (B : Action PointedSimplicialSet.{u} G)
     [KanComplex B.V.right] (n k : ℕ) (x : ((obj B).obj (SimplexCategory.mk n)).right _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((obj B).obj (SimplexCategory.mk n)).right k x ≃*
-      (∀ s : Fin n → G, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B.V.right k ((functionIso B n).hom.app _ x s)) :=
-  (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso k (functionIso B n) rfl).trans
-    (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyEquiv (Fin n → G) B.V.right k
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup ((obj B).obj (SimplexCategory.mk n)).right k x ≃*
+      (∀ s : Fin n → G, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup B.V.right k ((functionIso B n).hom.app _ x s)) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso k (functionIso B n) rfl).trans
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.homotopyEquiv (Fin n → G) B.V.right k
       ((functionIso B n).hom.app _ x))
 
 end

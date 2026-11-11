@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCatSimplicial
 
 /-! # 閉内部 Hom を保持する単体集合の圏
 概要：任意の実単体集合を、同じ閉内部 Hom による単体的圏の対象にする。

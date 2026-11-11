@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ZeroArrowFamily
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-!
 概要：矢印族と代表ホモトピーの往復およびパラメータ制限の整合。
@@ -27,7 +27,7 @@ lemma ofHomotopy_eq_of_h (H : SSet.Homotopy f g)
     curry_uncurry]
 
 lemma ofHomotopy_precomp (H : SSet.Homotopy f g) (i : B ⟶ A) :
-    ofHomotopy (functorHomotopyPrecomp H i) = i ≫ ofHomotopy H := by
+    ofHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H i) = i ≫ ofHomotopy H := by
   apply uncurry_injective
   rw [ofHomotopy, uncurry_curry, uncurry_natural_left, ofHomotopy, uncurry_curry]
   apply SSet.hom_ext
@@ -37,7 +37,7 @@ lemma ofHomotopy_precomp (H : SSet.Homotopy f g) (i : B ⟶ A) :
   rfl
 
 lemma ofHomotopy_postcomp {Y : SSet.{u}} (H : SSet.Homotopy f g) (r : X ⟶ Y) :
-    ofHomotopy (functorHomotopyPostcomp H r) =
+    ofHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H r) =
       ofHomotopy H ≫ (ihom (Δ[1] : SSet.{u})).map r := by
   apply uncurry_injective
   rw [ofHomotopy, uncurry_curry, uncurry_natural_right, ofHomotopy, uncurry_curry]

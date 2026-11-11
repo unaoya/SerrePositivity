@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphEmbedding
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GraphEmbeddingRange
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GraphEmbeddingRange
 
 /-!
 # 元の E 代数の包含の充満性と全単体の像
@@ -21,20 +21,20 @@ open CategoryTheory HomotopicalAlgebra
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-variable (A : Type u) [CommRing A] {a b : Hammock.Word} (f : a ⟶ b)
+variable (A : Type u) [CommRing A] {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b)
   (hf : Function.Injective f.orderHom) (X Y : (operad A).Algebra)
 include hf
 
 lemma algebraHammockTransition_full : (algebraHammockTransition A f X Y).Full := by
   let := modelCategory A
-  exact Hammock.WordAction.functor_full f hf
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.functor_full f hf
 
 /-- 同じ元の包含の像の間の全縦射を回収する。 -/
 def algebraHammockTransitionPreimage {S T : algebraHammockZigzag A a X Y}
     (g : (algebraHammockTransition A f X Y).obj S ⟶
       (algebraHammockTransition A f X Y).obj T) : S ⟶ T := by
   let := modelCategory A
-  exact Hammock.WordAction.embeddingPreimage f hf g
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.embeddingPreimage f hf g
 
 lemma algebraHammockTransition_map_preimage {S T : algebraHammockZigzag A a X Y}
     (g : (algebraHammockTransition A f X Y).obj S ⟶
@@ -42,13 +42,13 @@ lemma algebraHammockTransition_map_preimage {S T : algebraHammockZigzag A a X Y}
     (algebraHammockTransition A f X Y).map (algebraHammockTransitionPreimage A f hf X Y g) =
       g := by
   let := modelCategory A
-  exact Hammock.WordAction.map_embeddingPreimage f hf g
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.map_embeddingPreimage f hf g
 
 lemma algebraHammockTransition_preimage_map {S T : algebraHammockZigzag A a X Y} (g : S ⟶ T) :
     algebraHammockTransitionPreimage A f hf X Y ((algebraHammockTransition A f X Y).map g) =
       g := by
   let := modelCategory A
-  exact Hammock.WordAction.embeddingPreimage_map f hf g
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.embeddingPreimage_map f hf g
 
 /-- 同じ元の全単体の像は、元の全ての行の対象の像で特徴付けられる。 -/
 lemma algebraHammockGraphMap_range_iff (n : SimplexCategoryᵒᵖ)
@@ -58,6 +58,6 @@ lemma algebraHammockGraphMap_range_iff (n : SimplexCategoryᵒᵖ)
         τ.obj j := by
   have := algebraHammockTransition_full A f hf X Y
   have := algebraHammockTransition_faithful A f hf X Y
-  exact Hammock.nerveMap_range_iff _ τ
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.nerveMap_range_iff _ τ
 
 end SerrePositivity.EInfinity.BarrattEccles

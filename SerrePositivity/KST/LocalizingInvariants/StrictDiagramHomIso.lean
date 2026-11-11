@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTransComponent
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.PrismHomotopy
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.StrictCoherentNatTransComponent
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PrismHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberRightShape
 
 /-!
@@ -17,33 +17,33 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 variable {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C] [SimplicialCategory C]
   [Quasicategory (SimplicialNerve C)] {F G : I ⥤ C} (η : F ⟶ G)
-  (hη : ∀ i, IsInvertibleEdge (coherentNerveEdge (η.app i)))
+  (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (η.app i)))
 
-def strictDiagramHomotopy := F2.prismHomotopy (F2.strictCoherentNatTransMap η)
-  (F2.strictCoherentNatTransMap_zero _) (F2.strictCoherentNatTransMap_one _)
+def strictDiagramHomotopy := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.prismHomotopy (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap η)
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap_zero _) (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap_one _)
 
 include hη in
 lemma strictDiagramHomotopy_vertical
     (x : ((SSet.uliftFunctor.{v, u}).obj (nerve I)) _⦋0⦌) :
-    IsInvertibleEdge (simplicialHomotopyVertexEdge (strictDiagramHomotopy η) x).toTruncated := by
-  have he := F2.prismHomotopy_vertical (F2.strictCoherentNatTransMap η)
-    (F2.strictCoherentNatTransMap_zero _) (F2.strictCoherentNatTransMap_one _) x
-  exact (isInvertibleEdge_congr (e :=
-    (simplicialHomotopyVertexEdge (strictDiagramHomotopy η) x).toTruncated)
-    (f := edgeOfSimplex _) he).mpr
-      (F2.strictCoherentNatTransMap_vertical_isInvertible η hη x)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (strictDiagramHomotopy η) x).toTruncated := by
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.prismHomotopy_vertical (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap η)
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap_zero _) (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap_one _) x
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (strictDiagramHomotopy η) x).toTruncated)
+    (f := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex _) he).mpr
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap_vertical_isInvertible η hη x)
 
-def strictDiagramHomIso : FunctorIso (strictCoherentDiagram F) (strictCoherentDiagram G) :=
-  functorIsoOfPointwiseInvertibleHomotopy (strictDiagramHomotopy η)
+def strictDiagramHomIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram F) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram G) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy (strictDiagramHomotopy η)
     (strictDiagramHomotopy_vertical η hη)
 
 lemma strictDiagramHomIso_hom : (strictDiagramHomIso η hη).hom =
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (strictDiagramHomotopy η)) := rfl
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (strictDiagramHomotopy η)) := rfl
 
 end SerrePositivity.KST.LocalizingInvariants

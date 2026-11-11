@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OppositeWeakHomotopy
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.OppositeWeakHomotopy
 public import SerrePositivity.KST.ProExcision.NerveOppositeIso
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
-public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PrecompositionTensor
 
 /-!
 # 元の nerve の圏同値と反対圏による弱同値の移送
@@ -24,8 +24,8 @@ open CategoryTheory SerrePositivity.InfinityCategories
 
 lemma nerveMap_equivalence_isWeakHomotopyEquivalence {C D : Type u}
     [Category.{u} C] [Category.{u} D] (e : C ≌ D) :
-    IsWeakHomotopyEquivalence (nerveMap e.functor) := by
-  apply IsSimplicialHomotopyEquivalence.isWeakHomotopyEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap e.functor) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence.isWeakHomotopyEquivalence
   refine ⟨nerveMap e.inverse, ⟨?_⟩, ⟨?_⟩⟩
   · change SSet.Homotopy (nerveMap (e.functor ⋙ e.inverse)) (nerveMap (𝟭 C))
     exact SerrePositivity.NerveHomotopy.homotopy e.unitIso.inv
@@ -34,13 +34,13 @@ lemma nerveMap_equivalence_isWeakHomotopyEquivalence {C D : Type u}
 
 lemma nerveMap_op_isWeakHomotopyEquivalence {C D : Type u}
     [Category.{u} C] [Category.{u} D] (F : C ⥤ D)
-    (hF : IsWeakHomotopyEquivalence (nerveMap F)) :
-    IsWeakHomotopyEquivalence (nerveMap F.op) := by
-  have h := (isPrecompositionEquivalence_of_iso
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap F)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap F.op) := by
+  have h := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (SerrePositivity.KST.ProExcision.nerveOppositeIso C)).isWeakHomotopyEquivalence.comp
-      (F2.opposite_map_isWeakHomotopyEquivalence _ hF)
+      (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.opposite_map_isWeakHomotopyEquivalence _ hF)
   rw [← SerrePositivity.KST.ProExcision.nerveOppositeIso_natural C F] at h
-  exact (isPrecompositionEquivalence_of_iso
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (SerrePositivity.KST.ProExcision.nerveOppositeIso D)).isWeakHomotopyEquivalence.cancel_right h
 
 end SerrePositivity.EInfinity.Hammock

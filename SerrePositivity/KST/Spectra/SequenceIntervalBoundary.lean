@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary
+public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.FreeIntervalBoundary
 public import SerrePositivity.KST.Spectra.MappingKanSequence
 
 /-!
@@ -19,11 +19,11 @@ namespace SerrePositivity.KST.Spectra
 
 /-- 境界からの Hom に値を取る射は、両端への評価で決まる。 -/
 lemma freeBoundaryHom_hom_ext {T Y : PointedSimplicialSet.{u}}
-    {f g : T ⟶ PointedObject.basedHom _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} Y}
-    (he : f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd Y = g ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd Y)
-    (hs : f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart Y = g ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart Y) : f = g := by
+    {f g : T ⟶ PointedObject.basedHom _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeIntervalBoundary.{u} Y}
+    (he : f ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryHomEnd Y = g ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryHomEnd Y)
+    (hs : f ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryHomStart Y = g ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryHomStart Y) : f = g := by
   apply Under.UnderMorphism.ext
-  apply (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIsLimit Y).hom_ext
+  apply (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIsLimit Y).hom_ext
   rintro ⟨i⟩
   cases i
   · exact congrArg Under.Hom.right he
@@ -31,63 +31,63 @@ lemma freeBoundaryHom_hom_ext {T Y : PointedSimplicialSet.{u}}
 
 /-- 二つの点つき射を、同じ両端を持つ境界内部 Hom の族へ束ねる。 -/
 def freeBoundaryHomPair {T Y : PointedSimplicialSet.{u}} (f g : T ⟶ Y) :
-    T ⟶ PointedObject.basedHom _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} Y := by
-  let r := prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).inv
+    T ⟶ PointedObject.basedHom _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeIntervalBoundary.{u} Y := by
+  let r := prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).inv
   refine Under.homMk r ?_
-  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).hom).1
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).hom).1
   apply prod.hom_ext
-  · change T.hom ≫ (prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).inv) ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).hom ≫ prod.fst =
-      (PointedObject.basedHom _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary Y).hom ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).hom ≫ prod.fst
+  · change T.hom ≫ (prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).inv) ≫
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).hom ≫ prod.fst =
+      (PointedObject.basedHom _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeIntervalBoundary Y).hom ≫
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).hom ≫ prod.fst
     simp only [Category.assoc, Iso.inv_hom_id_assoc]
-    rw [prod.lift_fst, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_fst, Under.w, Under.w]
-  · change T.hom ≫ (prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).inv) ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).hom ≫ prod.snd =
-      (PointedObject.basedHom _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary Y).hom ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).hom ≫ prod.snd
+    rw [prod.lift_fst, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso_fst, Under.w, Under.w]
+  · change T.hom ≫ (prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).inv) ≫
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).hom ≫ prod.snd =
+      (PointedObject.basedHom _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeIntervalBoundary Y).hom ≫
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).hom ≫ prod.snd
     simp only [Category.assoc, Iso.inv_hom_id_assoc]
-    rw [prod.lift_snd, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_snd, Under.w, Under.w]
+    rw [prod.lift_snd, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso_snd, Under.w, Under.w]
 
 /-- 境界の終点は、指定した第二の射そのもの。 -/
 @[reassoc]
 lemma freeBoundaryHomPair_end {T Y : PointedSimplicialSet.{u}} (f g : T ⟶ Y) :
-    freeBoundaryHomPair f g ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd Y = g := by
+    freeBoundaryHomPair f g ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryHomEnd Y = g := by
   apply Under.UnderMorphism.ext
-  change (prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).inv) ≫ _ = _
+  change (prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).inv) ≫ _ = _
   calc
-    _ = (prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).inv) ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).hom ≫ prod.fst :=
-      congrArg ((prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).inv) ≫ ·)
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_fst Y).symm
+    _ = (prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).inv) ≫
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).hom ≫ prod.fst :=
+      congrArg ((prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).inv) ≫ ·)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso_fst Y).symm
     _ = _ := by simp only [Category.assoc, Iso.inv_hom_id_assoc, prod.lift_fst]
 
 /-- 境界の始点は、指定した第一の射そのもの。 -/
 @[reassoc]
 lemma freeBoundaryHomPair_start {T Y : PointedSimplicialSet.{u}} (f g : T ⟶ Y) :
-    freeBoundaryHomPair f g ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart Y = f := by
+    freeBoundaryHomPair f g ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryHomStart Y = f := by
   apply Under.UnderMorphism.ext
-  change (prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).inv) ≫ _ = _
+  change (prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).inv) ≫ _ = _
   calc
-    _ = (prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).inv) ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).hom ≫ prod.snd :=
-      congrArg ((prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).inv) ≫ ·)
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_snd Y).symm
+    _ = (prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).inv) ≫
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).hom ≫ prod.snd :=
+      congrArg ((prod.lift g.right f.right ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso Y).inv) ≫ ·)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEvaluationIso_snd Y).symm
     _ = _ := by simp only [Category.assoc, Iso.inv_hom_id_assoc, prod.lift_snd]
 
 namespace KanSequence
 
 /-- 自由境界上の列からの終点評価は、元の列への厳密な射。 -/
-def intervalBoundaryEnd (Y : KanSequence.{u}) : Hom (mapping _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary Y) Y :=
-  (mappingPre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd Y).comp (mappingUnitEvaluation Y)
+def intervalBoundaryEnd (Y : KanSequence.{u}) : Hom (mapping _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeIntervalBoundary Y) Y :=
+  (mappingPre _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEnd Y).comp (mappingUnitEvaluation Y)
 
 /-- 自由境界上の列からの始点評価は、元の列への厳密な射。 -/
-def intervalBoundaryStart (Y : KanSequence.{u}) : Hom (mapping _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary Y) Y :=
-  (mappingPre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart Y).comp (mappingUnitEvaluation Y)
+def intervalBoundaryStart (Y : KanSequence.{u}) : Hom (mapping _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeIntervalBoundary Y) Y :=
+  (mappingPre _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryStart Y).comp (mappingUnitEvaluation Y)
 
 /-- 二つの厳密な列射を、同じ両端を持つ厳密な境界列射へ束ねる。 -/
 def intervalBoundaryPair {X Y : KanSequence.{u}} (f g : Hom X Y) :
-    Hom X (mapping _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary Y) where
+    Hom X (mapping _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeIntervalBoundary Y) where
   app n := freeBoundaryHomPair (f.app n) (g.app n)
   comm n := by
     have he (k : ℕ) : freeBoundaryHomPair (f.app k) (g.app k) ≫

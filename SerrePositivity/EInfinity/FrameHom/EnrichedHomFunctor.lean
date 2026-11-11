@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanComparisonNerves
-public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramCoherentNerve
 
 /-!
 概要：局所 Kan な単体的圏の同じ豊穣 Hom を空間値の豊穣関手に束ねる。
@@ -25,7 +25,7 @@ variable {D : Type v} [Category.{u} D] [SimplicialCategory D]
 規約：対象は元の Kan Hom、全 Hom 単体の作用を保持する。
 使われ方：coherent nerve 上の元の共変 Hom 図式。
 -/
-def enrichedHomFunctor : EnrichedFunctor SSet.{u} D KanObject.{u} where
+def enrichedHomFunctor : EnrichedFunctor SSet.{u} D _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u} where
   obj Y := ⟨SimplicialCategory.sHom X Y, inferInstance⟩
   map Y Z := curry (SimplicialCategory.sHomComp X Y Z)
   map_id Y := by

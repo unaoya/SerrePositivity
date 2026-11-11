@@ -3,7 +3,7 @@ public import SerrePositivity.KST.Fibration.ClosedKernelFiniteCoordinates
 public import SerrePositivity.KST.Fibration.ClosedFlagCofiberPostcomparison
 public import SerrePositivity.KST.Fibration.ClosedFlagFiniteAllLengths
 public import SerrePositivity.KST.Fibration.ProductCoordinatePullbackTransfer
-public import SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairBothEquality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.LocalizedPairBothEquality
 public import SerrePositivity.KST.Fibration.LocalizedFiniteProductEquality
 
 /-!
@@ -42,7 +42,7 @@ theorem closedKernelPulledCoordinates_localized_eq (n r : ℕ) :
   unfold closedKernelPulledCoordinates closedKernelFiniteComparison weakStringFiniteComparison
   rw [lift_map]
   simp only [closedKernelInitialExact, Functor.map_comp]
-  apply _root_.SerrePositivity.InfinityCategories.F1.Transport.pair_eq_of_anodyneQ_eq rfl
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pair_eq_of_anodyneQ_eq rfl
   apply finProduct_eq_of_anodyneQ_eq
   intro j
   simpa only [closedFlagConsecutiveCofibers, weakStringConsecutiveCofibers,

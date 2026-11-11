@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentEdges
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedRightMorphismTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentEdges
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointedRightMorphismTransport
 
 /-!
 概要：元の Space 辺と、その元の Kan 射から作る辺の実一次単体・両端点を同定する。

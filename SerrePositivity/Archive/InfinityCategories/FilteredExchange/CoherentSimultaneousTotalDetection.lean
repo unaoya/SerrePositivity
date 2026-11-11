@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredTotalDetection
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.CoherentFilteredTotalDetection
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SimultaneousTotalDetection
 
 /-!

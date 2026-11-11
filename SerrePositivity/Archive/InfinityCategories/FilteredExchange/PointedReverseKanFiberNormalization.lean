@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CosliceFiberVertexFactor
-public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedReverseFiberCoordinates
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedCoherentFiberComparison
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PointedReverseFiberCoordinates
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointedCoherentFiberComparison
 
 /-!
 概要：反転 Kan の全一点 Hom 比較を、元の coherent 比較の同じ頂点移送へ戻す。

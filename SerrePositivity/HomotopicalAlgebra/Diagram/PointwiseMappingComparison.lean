@@ -19,7 +19,7 @@ open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 namespace SerrePositivity.DiagramModel.PointwiseMappingComparison
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
 
@@ -40,7 +40,7 @@ abbrev diagramsMap {A B : ((K ⥤ C) × K) ⥤ (SimplexCategory ⥤ C)} (a : A �
   Functor.whiskerRight (Functor.curry.map (Functor.whiskerLeft
     (CategoryTheory.prodOpEquiv (C := K ⥤ C) (D := K)).inverse
     (Functor.whiskerRight (NatTrans.op a)
-      (cosimplicialHomBifunctor ⋙ (Functor.whiskeringLeft C C SSet.{v}).obj (fibrantTarget fib)))))
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙ (Functor.whiskeringLeft C C SSet.{v}).obj (fibrantTarget fib)))))
     (flipFunctor Kᵒᵖ C SSet.{v})
 
 abbrev resolvedDiagram : (K ⥤ C)ᵒᵖ ⥤ C ⥤ Kᵒᵖ ⥤ SSet.{v} :=
@@ -74,16 +74,16 @@ def pointwiseRMapIso : resolvedDiagram K cof fib ≅ pointwiseRMap K cof fib :=
       intro k l f
       ext n h
       simp [resolvedDiagram, diagrams, pointwiseRMap, FrameOverFunctor.hom,
-        EvaluatedFrame.originalEvaluation, resolutionHom, chosenResolutionHom,
-        cosimplicialHomBifunctor, cosimplicialHomMap])) (by
+        EvaluatedFrame.originalEvaluation, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom, chosenResolutionHom,
+        _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap])) (by
       intro Y Z g
       ext k n h
       rfl)) (by
     intro F G f
     ext Y k n h
     simp [resolvedDiagram, diagrams, pointwiseRMap, FrameOverFunctor.hom,
-      EvaluatedFrame.originalEvaluation, resolutionHom, chosenResolutionHom,
-      cosimplicialHomBifunctor, cosimplicialHomMap])
+      EvaluatedFrame.originalEvaluation, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom, chosenResolutionHom,
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap])
 
 abbrev pointwiseLeft : pointwiseRMap K cof fib ⟶ middle K I J cof fib :=
   (pointwiseRMapIso K cof fib).inv ≫ left K I J cof fib

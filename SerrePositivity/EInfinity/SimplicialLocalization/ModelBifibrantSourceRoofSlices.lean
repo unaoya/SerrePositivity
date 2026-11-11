@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFrameRoof
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofQuillenSlice
-public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenALeft
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.QuillenALeft
 
 /-!
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
@@ -27,9 +27,9 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
-abbrev modelBifibrantSourceRoofTarget := roofTarget (modelBifibrantDKFrame X q)
-  (modelBifibrantObject C Y)
-  (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+abbrev modelBifibrantSourceRoofTarget := roofTarget (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+  (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+  (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
@@ -41,31 +41,31 @@ abbrev modelBifibrantSourceRoofProjection : modelBifibrantSourceRoofTarget X Y q
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceFrameArrow_invertible {i j : AsSmall.{max u v} SimplexCategory}
-    (f : i ⟶ j) : IsInvertibleEdge
-      ((nerve.edgeMk ((modelBifibrantDKFrame X q).map f)).map
-        (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))).toTruncated := by
-  have hi := kanHammockSourceFunctor_weak_invertible (modelBifibrantRelativeCategory C)
-    ((modelBifibrantDKFrame X q).map f) (modelBifibrantDKFrame_map_weak X q f)
-  exact (isInvertibleEdge_congr
-    (X := kanHammockNerve (modelBifibrantRelativeCategory C))
-    (e := (coherentNerveEdge ((kanHammockSourceFunctor (modelBifibrantRelativeCategory C)).map
-      ((modelBifibrantDKFrame X q).map f))).toTruncated)
-    (f := ((nerve.edgeMk ((modelBifibrantDKFrame X q).map f)).map
-      (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))).toTruncated)
-    (hammockLocalizationNerveMap_arrow (modelBifibrantRelativeCategory C)
-      ((modelBifibrantDKFrame X q).map f)).symm).mp hi
+    (f : i ⟶ j) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
+      ((nerve.edgeMk ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q).map f)).map
+        (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))).toTruncated := by
+  have hi := kanHammockSourceFunctor_weak_invertible (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
+    ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q).map f) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame_map_weak X q f)
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+    (X := kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+    (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((kanHammockSourceFunctor (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).map
+      ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q).map f))).toTruncated)
+    (f := ((nerve.edgeMk ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q).map f)).map
+      (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))).toTruncated)
+    (hammockLocalizationNerveMap_arrow (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
+      ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q).map f)).symm).mp hi
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProjection_rightFibration :
-    RightFibration (modelBifibrantSourceRoofProjection X Y q) := inferInstance
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration (modelBifibrantSourceRoofProjection X Y q) := inferInstance
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProjection_leftFibration :
-    LeftFibration (modelBifibrantSourceRoofProjection X Y q) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (modelBifibrantSourceRoofProjection X Y q) :=
   roofTargetProjection_leftFibration _ _ _ (modelBifibrantSourceFrameArrow_invertible X q)
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
@@ -80,14 +80,14 @@ variable (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 abbrev modelBifibrantSourceRoofSlice := pullback (modelBifibrantSourceFrameRoofMap X Y q)
-  (sliceOverProjection (SSet.yonedaEquiv.symm b))
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm b))
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
-abbrev modelBifibrantSourceRoofDegree := roofTargetDegree (modelBifibrantDKFrame X q)
-  (modelBifibrantObject C Y)
-  (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) b
+abbrev modelBifibrantSourceRoofDegree := roofTargetDegree (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+  (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+  (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) b
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
@@ -102,10 +102,10 @@ def modelBifibrantSourceRoofSliceOver : modelBifibrantSourceRoofSlice X Y q b �
 lemma modelBifibrantSourceRoofSliceOver_projection :
     modelBifibrantSourceRoofSliceOver X Y q b ≫
       nerveMap (Over.forget (modelBifibrantSourceRoofDegree X Y q b)) =
-        pullback.fst _ _ ≫ modelBifibrantSourceFrameElementDegreeNerve X Y q := by
-  have h := roofQuillenSliceOver_projection (modelBifibrantDKFrame X q)
-    (modelBifibrantObject C Y)
-    (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) b
+        pullback.fst _ _ ≫ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegreeNerve X Y q := by
+  have h := roofQuillenSliceOver_projection (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+    (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) b
     (modelBifibrantSourceFrameRoofMap X Y q)
   change modelBifibrantSourceRoofSliceOver X Y q b ≫ _ =
     (pullback.fst _ _ ≫ modelBifibrantSourceFrameRoofMap X Y q) ≫ pullback.snd _ _ at h
@@ -116,7 +116,7 @@ lemma modelBifibrantSourceRoofSliceOver_projection :
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 abbrev modelBifibrantSourceRoofDegreeModel :=
-  pullback (modelBifibrantSourceFrameElementDegreeNerve X Y q)
+  pullback (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegreeNerve X Y q)
   (nerveMap (Over.forget (modelBifibrantSourceRoofDegree X Y q b)))
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
@@ -138,10 +138,10 @@ lemma modelBifibrantSourceRoofSliceDegreeMap_source :
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofMap_isLeftCofinal_iff_slices :
-    IsLeftCofinal (modelBifibrantSourceFrameRoofMap X Y q) ↔
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (modelBifibrantSourceFrameRoofMap X Y q) ↔
       ∀ b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌,
-        IsWeaklyContractible (modelBifibrantSourceRoofSlice X Y q b) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (modelBifibrantSourceRoofSlice X Y q b) := by
   have := modelBifibrantSourceRoofTarget_quasicategory X Y q
-  exact isLeftCofinal_iff_weaklyContractible_slices _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_iff_weaklyContractible_slices _
 
 end SerrePositivity.EInfinity.SimplicialLocalization

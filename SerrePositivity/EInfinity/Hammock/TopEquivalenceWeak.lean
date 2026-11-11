@@ -29,23 +29,23 @@ def topRelative (F : C ⥤ D) :
 
 lemma topRelative_composite_weak (F : C ⥤ D) (G : D ⥤ C)
     (η : F ⋙ G ⟶ 𝟭 C) (X Y : C) :
-    IsWeakHomotopyEquivalence (Relative.colimitMap ((topRelative F).comp (topRelative G)) X Y) := by
-  have hid : IsWeakHomotopyEquivalence (Relative.colimitMap
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap ((topRelative F).comp (topRelative G)) X Y) := by
+  have hid : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap
       (LocalizerMorphism.id (⊤ : MorphismProperty C)) X Y) := by
     rw [Relative.colimitMap_id]
-    exact isWeakHomotopyEquivalence_id _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_id _
   exact (RelativeNatural.weak_iff (F := (topRelative F).comp (topRelative G))
     (G := LocalizerMorphism.id _) η (fun _ => trivial) X Y).mpr hid
 
 lemma topEquivalence_colimitMap_weak (e : C ≌ D) (X Y : C) :
-    IsWeakHomotopyEquivalence (Relative.colimitMap (topRelative e.functor) X Y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap (topRelative e.functor) X Y) := by
   let F := topRelative e.functor
   let G := topRelative e.inverse
-  have hfg : IsWeakHomotopyEquivalence (Relative.colimitMap F X Y ≫
+  have hfg : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap F X Y ≫
       Relative.colimitMap G (e.functor.obj X) (e.functor.obj Y)) := by
     exact (Relative.colimitMap_comp F G X Y) ▸
       topRelative_composite_weak e.functor e.inverse e.unitIso.inv X Y
-  have hgh : IsWeakHomotopyEquivalence
+  have hgh : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (Relative.colimitMap G (e.functor.obj X) (e.functor.obj Y) ≫
         Relative.colimitMap F (e.inverse.obj (e.functor.obj X))
           (e.inverse.obj (e.functor.obj Y))) := by

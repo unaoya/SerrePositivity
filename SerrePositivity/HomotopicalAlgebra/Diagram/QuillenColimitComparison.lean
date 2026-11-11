@@ -20,9 +20,9 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 namespace SerrePositivity.DiagramModel.QuillenColimitComparison
 variable (K : Type w) [SmallCategory K]
   {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   {D : Type u'} [Category.{v'} D] [ModelCategory D] [IsLocallyPresentable.{w} D]
-  (I' J' : MorphismProperty D) [ModelGeneration.CofibrantlyGenerated.{w} I' J']
+  (I' J' : MorphismProperty D) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I' J']
   {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L]
 
 local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)

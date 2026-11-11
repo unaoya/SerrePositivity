@@ -60,7 +60,7 @@ lemma d3ParameterMixed_comp (i j k : J) (h : i ≤ j) (h' : j ≤ k)
 
 /-- 全対象・全 Hom と元のパラメータ図式の同時評価を持つ実豊穣関手。 -/
 def d3PointedKanParameterDiagram :
-    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J PointedKanObject.{u}) PointedKanObject.{u} :=
+    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object J PointedKanObject.{u}) PointedKanObject.{u} :=
   D3EnrichedOrderedDiagram.functor (d3ParameterStage D) (d3ParameterMixed D)
     (d3ParameterMixed_id D) (d3ParameterMixed_comp D)
 

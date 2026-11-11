@@ -13,11 +13,11 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "A" => dgAlgebraCategory R (DGOdotInput.source d)
-local notation "C" => dgAlgebraCategory R (DGOdotInput.left d)
-local notation "D" => dgAlgebraCategory R (DGOdotInput.right d)
-local notation "L" => dgAlgebraMap R (DGOdotInput.top d)
-local notation "G" => dgAlgebraMap R (DGOdotInput.side d)
+local notation "A" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d)
+local notation "C" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.left d)
+local notation "D" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.right d)
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.top d)
+local notation "G" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (DGOdotInput.side d)
 
 /-- 元の四角形の左右の実自由代表は、それぞれの小模型で全 Perf を生成する。 -/
 lemma dgOdotGeneratorConditions : DGOdotGeneratorConditions R d where

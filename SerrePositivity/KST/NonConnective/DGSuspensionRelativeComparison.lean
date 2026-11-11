@@ -29,7 +29,7 @@ theorem dgKappaRelativeFixedStructureMap_nonnegative
     (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
     {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
     (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-      F2.Idempotent.IsIdempotentCompletion f.val →
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
         (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
           Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
     (Z : DGKappaZeroInput R D I)
@@ -43,7 +43,7 @@ theorem dgKappaRelativeFixedStructureMap_nonnegative
 variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
   (s : DGSuspensionStageProvider.{u, v} R κ) (A : PerfDGInput.{u, max (u + 1) v} R)
   (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-    F2.Idempotent.IsIdempotentCompletion f.val →
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
       (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
         Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
   (Z : ∀ n : ℕ, DGKappaZeroInput R (dgSuspensionIteration R s A n)

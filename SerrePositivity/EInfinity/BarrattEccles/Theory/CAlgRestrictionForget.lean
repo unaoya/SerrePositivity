@@ -37,7 +37,7 @@ variable {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T)
 
 /-- 導来係数制限の忘却は、忘却した導来複体の係数制限と自然同型。 -/
 def barrattEcclesRestrict_forget :
-    FunctorIso (barrattEcclesRestrict f ≫ cAlgForgetDerived S)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (barrattEcclesRestrict f ≫ cAlgForgetDerived S)
       (cAlgForgetDerived T ≫ ComplexLimits.barrattEcclesRestrictD f) := by
   apply algebraCAlgSource_descendIso T
   let R := ComplexLimits.barrattEcclesRestrictD f
@@ -45,16 +45,16 @@ def barrattEcclesRestrict_forget :
   let K := nerveMap (ScalarExtension.restriction f)
   let Q := ComplexLimits.complexOrdinaryDerivedSource S
   let r := nerveMap (coefficientRestriction f)
-  have e₁ : FunctorIso (algebraCAlgSource T ≫ barrattEcclesRestrict f ≫ cAlgForgetDerived S)
+  have e₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (algebraCAlgSource T ≫ barrattEcclesRestrict f ≫ cAlgForgetDerived S)
       (r ≫ algebraCAlgSource S ≫ cAlgForgetDerived S) := by
     simpa only [Category.assoc] using
       (barrattEcclesRestrict_sourceIso f).postcomp (cAlgForgetDerived S)
-  have e₂ : FunctorIso (r ≫ algebraCAlgSource S ≫ cAlgForgetDerived S) (N ≫ K ≫ Q) :=
-    F2.functorIsoOfEq ((algebraCAlgSource_underlyingDerivedIso S).precomp r) rfl rfl
-  have e₃ : FunctorIso (N ≫ K ≫ Q) (algebraUnderlyingDerivedSource T ≫ R) := by
+  have e₂ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (r ≫ algebraCAlgSource S ≫ cAlgForgetDerived S) (N ≫ K ≫ Q) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((algebraCAlgSource_underlyingDerivedIso S).precomp r) rfl rfl
+  have e₃ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (N ≫ K ≫ Q) (algebraUnderlyingDerivedSource T ≫ R) := by
     simpa only [algebraUnderlyingDerivedSource, Category.assoc] using
       ((ComplexLimits.barrattEcclesRestrictD_sourceIso f).precomp N).symm
-  have e₄ : FunctorIso (algebraUnderlyingDerivedSource T ≫ R)
+  have e₄ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (algebraUnderlyingDerivedSource T ≫ R)
       (algebraCAlgSource T ≫ cAlgForgetDerived T ≫ R) := by
     simpa only [Category.assoc] using
       ((algebraCAlgSource_underlyingDerivedIso T).postcomp R).symm

@@ -23,7 +23,7 @@ open CategoryTheory
 variable {C : Type u} [Category.{u} C] {W : MorphismProperty C} {n : SimplexCategoryᵒᵖ}
   {D : Type uD} [Category.{vD} D] (F : FoldData W n D)
 
-lemma fold_generatorPoint (g : FactorTarget.Index W) :
+lemma fold_generatorPoint (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) :
     F.fold (generatorPoint W g n) = F.generator g := by
   change F.marked (AllMarked.nativeUnitPoint W g.val.left n) ≫ F.generator g ≫
     F.fold (unitPoint W g.val.right n) = _

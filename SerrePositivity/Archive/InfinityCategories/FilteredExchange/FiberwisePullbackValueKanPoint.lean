@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwisePullbackValueKanComparison
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanCospanPoint
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberwisePullbackValueKanComparison
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanCospanPoint
 
 /-!
 概要：元の値の指定 path を、構成済み全空間 Kan 引き戻し比較の像として厳密に表示する。

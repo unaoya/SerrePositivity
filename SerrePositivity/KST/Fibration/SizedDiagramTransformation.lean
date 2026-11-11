@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNerveMaps
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTransComponent
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictNerveMaps
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.StrictCoherentNatTransComponent
 public import Mathlib.CategoryTheory.Functor.Currying
 
 /-! # 大きい通常の錐添字の、元の成分を保つ coherent な自然変換 -/
@@ -12,7 +12,7 @@ universe u v
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Fibration
 variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
   {J : Type (max u v)} [SmallCategory J] {F G : J ⥤ C}
@@ -30,7 +30,7 @@ def sizedNatTransMap (η : F ⟶ G) :
 omit [SimplicialCategory C] in
 /-- 区間族の始点は、元の通常の始域関手である。 -/
 theorem sizedNatTransMap_zero (η : F ⟶ G) :
-    prismEndpoint 0 (nerve J) ≫ sizedNatTransMap η = resizedNerveMap F := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (nerve J) ≫ sizedNatTransMap η = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap F := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -46,7 +46,7 @@ theorem sizedNatTransMap_zero (η : F ⟶ G) :
 omit [SimplicialCategory C] in
 /-- 区間族の終点は、元の通常の終域関手である。 -/
 theorem sizedNatTransMap_one (η : F ⟶ G) :
-    prismEndpoint 1 (nerve J) ≫ sizedNatTransMap η = resizedNerveMap G := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (nerve J) ≫ sizedNatTransMap η = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap G := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -64,7 +64,7 @@ omit [SimplicialCategory C] in
 theorem sizedNatTransMap_component (η : F ⟶ G) (j : J) :
     (sizedNatTransMap η).app (Opposite.op ⦋1⦌)
       (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{max u v})),
-        PinchedHom.constant (nerveVertex j) 1) = (nerve.edgeMk (η.app j)).edge := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex j) 1) = (nerve.edgeMk (η.app j)).edge := by
   apply ComposableArrows.ext₁
   case left => rfl
   case right => rfl
@@ -75,24 +75,24 @@ theorem sizedNatTransMap_component (η : F ⟶ G) (j : J) :
 
 /-- 全成分が coherent に可逆な通常変換は、同じ全図式の自然同型を与える。 -/
 def sizedCoherentNatTransIso [Quasicategory (SimplicialNerve C)] (η : F ⟶ G)
-    (hη : ∀ j, IsInvertibleEdge (coherentNerveEdge (η.app j))) :
-    FunctorIso (resizedNerveMap F ≫ nerveToCoherent C)
-      (resizedNerveMap G ≫ nerveToCoherent C) := by
-  let H := sizedNatTransMap η ≫ nerveToCoherent C
-  have e := functorIsoOfEquivalenceHomotopy H (by
+    (hη : ∀ j, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (η.app j))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C) := by
+  let H := sizedNatTransMap η ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorIsoOfEquivalenceHomotopy H (by
     intro x
-    have hx : x = nerveVertex (x.obj 0) := ComposableArrows.ext₀ rfl
+    have hx : x = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (x.obj 0) := ComposableArrows.ext₀ rfl
     rw [hx]
-    change IsInvertibleEdge (edgeOfSimplex ((nerveToCoherent C).app (Opposite.op ⦋1⦌)
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C).app (Opposite.op ⦋1⦌)
       ((sizedNatTransMap η).app (Opposite.op ⦋1⦌) _)))
     rw [sizedNatTransMap_component]
-    exact (isInvertibleEdge_congr (e := edgeOfSimplex _)
-      (f := coherentNerveEdge (η.app (x.obj 0))) rfl).mpr (hη _))
-  have h0 : prismEndpoint 0 (nerve J) ≫ H = resizedNerveMap F ≫ nerveToCoherent C := by
-    change prismEndpoint 0 (nerve J) ≫ (sizedNatTransMap η ≫ nerveToCoherent C) = _
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex _)
+      (f := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (η.app (x.obj 0))) rfl).mpr (hη _))
+  have h0 : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (nerve J) ≫ H = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (nerve J) ≫ (sizedNatTransMap η ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C) = _
     rw [← Category.assoc, sizedNatTransMap_zero]
-  have h1 : prismEndpoint 1 (nerve J) ≫ H = resizedNerveMap G ≫ nerveToCoherent C := by
-    change prismEndpoint 1 (nerve J) ≫ (sizedNatTransMap η ≫ nerveToCoherent C) = _
+  have h1 : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (nerve J) ≫ H = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (nerve J) ≫ (sizedNatTransMap η ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C) = _
     rw [← Category.assoc, sizedNatTransMap_one]
   rw [h0, h1] at e
   exact e

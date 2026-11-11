@@ -13,21 +13,21 @@ open CategoryTheory
 
 /-- 元の max の式を、元の cubical 生成語の圏の path として実現する。 -/
 def cubeConnectionExpressionPath {n : ℕ} : {m : ℕ} → CubeConnectionExpression n m →
-    Quiver.Path (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk n) (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk m)
+    Quiver.Path (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk n) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk m)
   | _, .id _ => .nil
-  | _, .connect p i => (cubeConnectionExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection _ i)
+  | _, .connect p i => (cubeConnectionExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.connection _ i)
 termination_by structural _m p => p
 
 /-- max の式の path の具体的評価は、同じ式の元の頂点関数。 -/
 lemma cubeConnectionExpressionPath_concrete {n m : ℕ} (p : CubeConnectionExpression n m) :
-    (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (cubeConnectionExpressionPath p)).val =
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map (cubeConnectionExpressionPath p)).val =
       cubeConnectionExpressionVertex p := by
   induction p with
   | id => rfl
   | connect p i ih =>
-    change _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection _ i ∘
-      (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (cubeConnectionExpressionPath p)).val =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection _ i ∘ cubeConnectionExpressionVertex p
+    change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection _ i ∘
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map (cubeConnectionExpressionPath p)).val =
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection _ i ∘ cubeConnectionExpressionVertex p
     rw [ih]
     rfl
 

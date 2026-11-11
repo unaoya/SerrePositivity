@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentitySquareSideRecovery
 public import SerrePositivity.KST.SConstruction.StableZeroTargetHom
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元恒等実右面への指定三境界付き Cat^perf 全図式比較を構成する。
@@ -23,20 +23,20 @@ variable (v : DGOdotMilnorIdentityLaxComparisonInput R d)
 方針：元全比較の逆と元包含・商制限の厳密回収、零点図式比較の一意性を使う。
 規約：元両二胞体と既存指定零角比較を保持。D2 入力の存在は別工程。
 使われ方：Sp 正本の完備化付き実右面認証。 -/
-def rightSquareDiagramIso (h : DGGluingMilnorSquare R d) : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso
+def rightSquareDiagramIso (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareDiagramIso
     (dgOdotMilnorActualRightDiagram R d h).square
     (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R)
     (squareBoundary R d v h) where
   comparison := (perfectSquareComparison R d v).symm
   inclusion_eq := by
-    exact (F2.functorIso_precomp_symm (perfectSquareComparison R d v) squareBottomEdge).trans
+    exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_symm (perfectSquareComparison R d v) _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge).trans
       (congrArg Iso.symm (perfectSquareComparison_bottom R d v))
   quotient_eq := by
-    exact (F2.functorIso_precomp_symm (perfectSquareComparison R d v) squareRightEdge).trans
+    exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_symm (perfectSquareComparison R d v) _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge).trans
       (congrArg Iso.symm (perfectSquareComparison_right R d v))
   zero_eq := by
     apply perfectZeroPointFunctorIso_ext
-    change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex
       (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R) 0 1))
     exact dgOdotMilnorIdentityNullSquare_perfect_zero R d
 end DGOdotMilnorIdentityLaxComparisonInput

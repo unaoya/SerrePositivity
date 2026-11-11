@@ -22,30 +22,30 @@ open scoped Simplicial
 使われ方：wide 成分内の零成分条件の輸送。 -/
 lemma completionMultiWideEdge_image_iff (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {x y : (((multiSEndofunctor r).obj ι).obj Y).carrier _⦋0⦌}
     (a : Truncated.Edge (X := (truncation 2).obj
       (((multiSEndofunctor r).obj ι).obj Y).carrier) x y)
-    (ha : a.edge ∈ cofiberLocalizingEdges (LocalizingInvariants.completionEssentialImage
+    (ha : a.edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val)) :
     x ∈ LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val ↔
       y ∈ LocalizingInvariants.completionEssentialImage
         (((multiSEndofunctor r).obj ι).map f).val := by
   let F := ((multiSEndofunctor r).obj ι).map f
-  let : IsExactFunctor F.val := stableModelHom_exact F
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F.val := stableModelHom_exact F
   let P := LocalizingInvariants.completionEssentialImage F.val
   have he := LocalizingInvariants.stableClosure_completionEssentialImage F.val
     (multiSEndofunctor_map_isIdempotentCompletion r ι f hf).2.1
-  have hm (z) : StableVertexClosure P z ↔ z ∈ P :=
+  have hm (z) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P z ↔ z ∈ P :=
     Iff.of_eq (congrArg (fun Q => z ∈ Q) he)
-  have hw := (cofiberStableEdges_iff_trW P a).mp (he.symm ▸ ha)
-  obtain ⟨Z, g, h, hT, hZ⟩ := (stableHoClosure P).trW_iff _ |>.mp hw
+  have hw := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_iff_trW P a).mp (he.symm ▸ ha)
+  obtain ⟨Z, g, h, hT, hZ⟩ := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoClosure P).trW_iff _ |>.mp hw
   constructor
   · intro hx
-    exact (hm y).mp ((stableHoClosure P).ext_of_isTriangulatedClosed₂ _ hT ((hm x).mpr hx) hZ)
+    exact (hm y).mp ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoClosure P).ext_of_isTriangulatedClosed₂ _ hT ((hm x).mpr hx) hZ)
   · intro hy
-    exact (hm x).mp ((stableHoClosure P).ext_of_isTriangulatedClosed₁ _ hT ((hm y).mpr hy) hZ)
+    exact (hm x).mp ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoClosure P).ext_of_isTriangulatedClosed₁ _ hT ((hm y).mpr hy) hZ)
 
 /-- 概要：同じ全多次数の wide の同じ成分内では元の本質像所属が一致する。
 方針：元の辺の関係・反射・対称・推移に沿って両端の同値を合成する。
@@ -53,7 +53,7 @@ lemma completionMultiWideEdge_image_iff (r : ℕ) (ι : Fin r → SimplexCategor
 使われ方：相対旗の基点成分から始域の全図式への回収。 -/
 lemma completionMultiWideComponent_image_iff (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (x y : (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) _⦋0⦌)
     (hxy : SSet.π₀.mk x = SSet.π₀.mk y) :
@@ -69,7 +69,7 @@ lemma completionMultiWideComponent_image_iff (r : ℕ) (ι : Fin r → SimplexCa
     apply completionMultiWideEdge_image_iff r ι f hf
       (e.map (LocalizingInvariants.completionCofiberWide
         (((multiSEndofunctor r).obj ι).map f).val).ι).toTruncated
-    change e.edge.val ∈ cofiberLocalizingEdges (LocalizingInvariants.completionEssentialImage
+    change e.edge.val ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val)
     simpa only [op_id, CategoryTheory.Functor.map_id, types_id_apply]
       using e.edge.property (𝟙 ⦋1⦌)

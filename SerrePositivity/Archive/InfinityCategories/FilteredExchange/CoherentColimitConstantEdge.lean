@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitUnitSquare
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseFunctorFiber
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentColimitUnitSquare
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberwiseFunctorFiber
 
 /-!
 概要：余極限関手の元の指定辺を、元の余錐の頂点の定値図式間の辺へ移す。

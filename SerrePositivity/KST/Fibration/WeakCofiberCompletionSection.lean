@@ -13,7 +13,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
-variable {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {T : StableModel.{u}}
+variable {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) {T : StableModel.{u}}
   (e : T ⟶ weakArrowModel q)
 
 /-- 元の指定辺と既存の cofiber 選択を使う厳密な切断。 -/
@@ -49,13 +49,13 @@ def weakCofiberCompletionEquivalence :
     StableModelEquivalence (weakCofiberCompletionModel q e) T where
   hom := weakCofiberCompletionForget q e
   inv := weakCofiberCompletionSection q e
-  homInvIso := functorIsoOfTrivialKanFibration (weakCofiberCompletionForget q e).val _ _ (by
+  homInvIso := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorIsoOfTrivialKanFibration (weakCofiberCompletionForget q e).val _ _ (by
     change ((weakCofiberCompletionForget q e ≫ weakCofiberCompletionSection q e) ≫
       weakCofiberCompletionForget q e).val = _
     rw [Category.assoc, weakCofiberCompletionSection_forget, Category.comp_id]
     rfl)
   invHomIso := by
-    change FunctorIso (weakCofiberCompletionSection q e ≫ weakCofiberCompletionForget q e).val
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (weakCofiberCompletionSection q e ≫ weakCofiberCompletionForget q e).val
       (𝟙 T.carrier)
     rw [weakCofiberCompletionSection_forget]
     exact Iso.refl _

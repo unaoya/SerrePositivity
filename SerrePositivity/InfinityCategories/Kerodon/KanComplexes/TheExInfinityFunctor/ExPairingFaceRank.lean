@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：前側の面の閾値の減少を使い、後ろの面は型 I または退化として除く。
 規約：Moss 2020 Theorem 22 の正則性の証明。
 使われ方：最小複雑度を Mathlib の WeakRankFunction とする。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

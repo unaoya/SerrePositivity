@@ -94,13 +94,13 @@ lemma old_triangle_faces (side : Bool) (k : Fin 3) (p : Index C) :
   (ResolutionMixedTriangles.triangle_face C hcof hfib p side k).trans
     (faces_evaluate C hcof hfib side k p).symm
 
-lemma faces_recover (side : Bool) (k : Fin 3) (p : Index C) : UniverseLift.lowerSimplexTensor
+lemma faces_recover (side : Bool) (k : Fin 3) (p : Index C) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor
     (NerveMovingParameter.evaluate (intervalParameters C) (smallValues C)
       (faces C hcof hfib side k) p) =
     RelativeChoiceSpace.family (ResolutionMixedTriangles.oldInclusion C p)
       (ResolutionMixedTriangles.oldBoundary C p) (ResolutionMixedTriangles.oldFace C hcof hfib p
         side k) :=
-  (congrArg UniverseLift.lowerSimplexTensor (faces_evaluate C hcof hfib side k p)).trans
+  (congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor (faces_evaluate C hcof hfib side k p)).trans
     (ResolutionMixedTriangles.face_recover C hcof hfib p side k)
 
 end SerrePositivity.HomotopyFunctionComplex.ResolutionMixedFaceSystems

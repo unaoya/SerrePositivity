@@ -38,8 +38,8 @@ def adjointMap {G : Type u} [Group G] (A : GroupAction.{u} G) (n : ℕ) :
 規約：零次数の成分集合も含む。
 使われ方：HA §1.4.2、BF 1978 §2。cochain の Ω 条件の入力。 -/
 lemma adjointMap_piIsomorphism {G : Type u} [Group G] (A : GroupAction.{u} G) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (X := (A.V.level n).space.right)
-      (Y := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (A.V.level (n + 1)).space).right) (adjointMap A n).hom.right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (X := (A.V.level n).space.right)
+      (Y := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (A.V.level (n + 1)).space).right) (adjointMap A n).hom.right :=
   A.V.omega_condition n
 
 /-- 概要：同変な随伴構造射は作用スペクトルの射に自然。

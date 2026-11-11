@@ -1,9 +1,9 @@
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNativeComposition
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonFamilyLift
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNative
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.QuotientEpsilonNativeComposition
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.QuotientEpsilonFamilyLift
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.QuotientEpsilonNative
 import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCriterion
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientParameterLaws
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.QuotientEpsilonCriterion
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.QuotientParameterLaws
 
 import Lean
 /-! 固定実商の全パラメータ延長の全新規宣言：許容三公理のみ。 -/
@@ -11,16 +11,16 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonFamilyLift,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNative,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.QuotientEpsilonFamilyLift,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.QuotientEpsilonNative,
     `SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonHorizontal,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonHorizontalFunctor,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNativeComposition,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonHom,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCategory,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCriterion,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientParameterLaws,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.QuotientEpsilonHorizontal,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.QuotientEpsilonHorizontalFunctor,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.QuotientEpsilonNativeComposition,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.QuotientEpsilonHom,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.QuotientEpsilonCategory,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.QuotientEpsilonCriterion,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.QuotientParameterLaws,
     `SerrePositivity.DifferentialGraded.Functor.ModuleValued,
     `SerrePositivity.DifferentialGraded.Quotient.Path.Construction,
     `SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation]
@@ -48,15 +48,15 @@ run_cmd do
 #check SerrePositivity.DifferentialGraded.DGQuotient.parameterExtension_postcomposition
 #check SerrePositivity.DifferentialGraded.DGQuotient.parameterExtension_postcomposition_heq
 
-#check SerrePositivity.DifferentialGraded.DGQuotient.parameterExtension_identity
-#check SerrePositivity.DifferentialGraded.DGQuotient.parameterExtension_composition
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.parameterExtension_identity
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.parameterExtension_composition
 
-#check SerrePositivity.InfinityCategories.NullPreservingFunctorsε
-#check SerrePositivity.InfinityCategories.quotientInputFunctor
-#check SerrePositivity.InfinityCategories.quotientInputFunctor_obj
-#check SerrePositivity.InfinityCategories.quotientEpsilonHom_factor_iff
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.NullPreservingFunctorsε
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.quotientInputFunctor
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.quotientInputFunctor_obj
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.quotientEpsilonHom_factor_iff
 
-#check SerrePositivity.InfinityCategories.quotientEpsilonNativeForget
-#check SerrePositivity.InfinityCategories.quotientEpsilonNativeMap_vertex
-#check SerrePositivity.InfinityCategories.quotientEpsilonNativeMap_unit
-#check SerrePositivity.InfinityCategories.quotientEpsilonNativeMap_composition
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.quotientEpsilonNativeForget
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.quotientEpsilonNativeMap_vertex
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.quotientEpsilonNativeMap_unit
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.quotientEpsilonNativeMap_composition

@@ -11,6 +11,8 @@ public import Mathlib.CategoryTheory.Limits.FunctorCategory.EpiMono
 方針：各 nerve の単体を余面の細分から持ち上げ、細分比較の包含との可換性を使う。
 規約：Moss arXiv:1506.04887v2 Proposition 2.19 の細分の像の同定の一方向。
 使われ方：細分比較の同型性の全射側。単射性は別項目。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

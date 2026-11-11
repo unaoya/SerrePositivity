@@ -23,10 +23,10 @@ inductive CubeConnectionDeletionExpression : ℕ → ℕ → Type
 /-- 元の max・削除の式の全頂点での評価。 -/
 def cubeConnectionDeletionExpressionVertex {n : ℕ} :
     {m : ℕ} → CubeConnectionDeletionExpression n m →
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m)
   | _, .id _ => _root_.id
-  | _, .connect p i => _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection _ i ∘ cubeConnectionDeletionExpressionVertex p
-  | _, .erase p i => _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i ∘ cubeConnectionDeletionExpressionVertex p
+  | _, .connect p i => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection _ i ∘ cubeConnectionDeletionExpressionVertex p
+  | _, .erase p i => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy _ i ∘ cubeConnectionDeletionExpressionVertex p
 termination_by structural _m p => p
 
 /-- 元の max・削除の式を削除・max の二段標準表示へ移す。 -/
@@ -49,12 +49,12 @@ lemma cubeConnectionDeletionExpressionNormal_vertex {n m : ℕ}
   | connect p i ih =>
     change cubeDeletionConnectionNormalVertex
       (cubeDeletionConnectionNormalConnect (cubeConnectionDeletionExpressionNormal p) i) =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection _ i ∘ cubeConnectionDeletionExpressionVertex p
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection _ i ∘ cubeConnectionDeletionExpressionVertex p
     rw [cubeDeletionConnectionNormalConnect_vertex, ih]
   | erase p i ih =>
     change cubeDeletionConnectionNormalVertex
       (cubeDeletionConnectionNormalDelete (cubeConnectionDeletionExpressionNormal p) i) =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i ∘ cubeConnectionDeletionExpressionVertex p
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy _ i ∘ cubeConnectionDeletionExpressionVertex p
     rw [cubeDeletionConnectionNormalDelete_vertex, ih]
 
 open SerrePositivity.DifferentialGraded

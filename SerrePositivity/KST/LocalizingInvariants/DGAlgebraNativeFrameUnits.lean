@@ -22,19 +22,19 @@ variable (R : Type u) [CommRing R] (A : Mon (Complex R))
 attribute [local instance] EInfinity.DGAlgebra.modelCategory
 
 def nativeCellMappingUnit :
-    EInfinity.FrameHom.ordinaryHomFamily (cellResolution R A) ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ordinaryHomFamily (cellResolution R A) ⟶
       multiplicativeMappingFunctor R (cellResolution R A) :=
   Functor.whiskerRight (multiplicativeSimplicesConstant R)
     (EInfinity.FrameHom.MixedFrame.rightHomFunctor (cellResolution R A))
 
 def nativeCellChosenRightMappingUnit :
-    EInfinity.FrameHom.ordinaryHomFamily (cellResolution R A) ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ordinaryHomFamily (cellResolution R A) ⟶
       nativeCellChosenRightMappingFunctor R A :=
-  EInfinity.FrameHom.rightFrameHomUnit (nativeModelRightResolutionFamily R) (cellResolution R A)
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHomUnit (nativeModelRightResolutionFamily R) (cellResolution R A)
 
 def nativeCellSourceFrameMappingUnit :
-    EInfinity.FrameHom.ordinaryHomFamily (cellResolution R A) ⟶
-      cosimplicialHom (nativeCellSourceFrame R A) where
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ordinaryHomFamily (cellResolution R A) ⟶
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (nativeCellSourceFrame R A) where
   app B :=
     { app n := ↾fun f => (nativeCellSourceFrameAugmentation R A).app n.unop ≫ f
       naturality n m α := by
@@ -92,9 +92,9 @@ lemma nativeCellChosenRightMappingUnit_mixed_triangle :
   apply ConcreteCategory.hom_ext
   intro f
   change ((nativeCellSourceFrameAugmentation R A).app n.unop ≫ f) ≫
-      ((EInfinity.FrameHom.rightFrameUnit (nativeModelRightResolutionFamily R)).app B).app n =
+      ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameUnit (nativeModelRightResolutionFamily R)).app B).app n =
     (nativeCellSourceFrameAugmentation R A).app n.unop ≫
-      (f ≫ ((EInfinity.FrameHom.rightFrameUnit (nativeModelRightResolutionFamily R)).app B).app n)
+      (f ≫ ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameUnit (nativeModelRightResolutionFamily R)).app B).app n)
   exact Category.assoc _ _ _
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

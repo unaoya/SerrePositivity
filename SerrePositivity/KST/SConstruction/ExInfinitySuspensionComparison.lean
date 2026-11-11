@@ -15,13 +15,13 @@ open CategoryTheory MonoidalCategory SSet
 
 /-- 元の同じ Ex∞ Kan 値の suspension から、元の suspension の Ex∞ Kan 値への実比較。 -/
 def exInfinitySuspensionComparison (X : PointedSSetObject.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (exInfinityPointedKanEnrichedFunctor.obj X).obj ⟶
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (exInfinityPointedKanEnrichedFunctor.obj X).obj ⟶
       (exInfinityPointedKanEnrichedFunctor.obj (pointedSSetSuspensionObject X)).obj :=
   coaugmentedPointedSuspensionComparison _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit X
 
 /-- 元の円を固定した、同じ Ex∞ 単位の suspension。 -/
 def exInfinitySuspensionUnit (X : PointedSSetObject.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (exInfinityPointedKanEnrichedFunctor.obj X).obj :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X.obj ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (exInfinityPointedKanEnrichedFunctor.obj X).obj :=
   coaugmentedPointedSuspensionUnit _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit X
 
 /-- 元の直積商射上で、円の単位・Ex∞ の乗法比較・元の商射の像を厳密に回収する。 -/

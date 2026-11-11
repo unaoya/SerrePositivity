@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeActionSimplex
 public import SerrePositivity.KST.SConstruction.DGFunctorNativeComposition
-public import SerrePositivity.InfinityCategories.F1.Universe.Kan
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Kan
 
 /-! # 全 native 関手族による Perf の実単体的右作用
 概要：元のラベル付き Perf と全関手族に、実 dg tensor 右作用を全単体的に適用する。
@@ -20,9 +20,9 @@ variable (A : Type u) [CommRing A] (D E : Type v)
 
 /-- 元の全 native 関手族とラベル付き Perf の、出力宇宙を保つ実単体的右作用。 -/
 def presentedPerfectDGNativeAction :
-    dgNerve A (PresentedPerfectDGObject A D) ⊗
-        (SSet.uliftFunctor.{u + 1, max u v}).obj (dgNerve A (DGFunctor A D E)) ⟶
-      dgNerve A (PresentedPerfectDGObject A E) where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D) ⊗
+        (SSet.uliftFunctor.{u + 1, max u v}).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (DGFunctor A D E)) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A E) where
   app _ := ↾fun p => presentedPerfectDGNativeActionSimplex A D E p.1 p.2.down
   naturality X Y f := by
     ext p
@@ -31,8 +31,8 @@ def presentedPerfectDGNativeAction :
 
 /-- 元の実単体的右作用の各次数は、元の native tensor 単体と実右作用の合成。 -/
 lemma presentedPerfectDGNativeAction_app {N : ℕ}
-    (x : DGNerve.Simplex A (PresentedPerfectDGObject A D) N)
-    (s : DGNerve.Simplex A (DGFunctor A D E) N) :
+    (x : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (PresentedPerfectDGObject A D) N)
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (DGFunctor A D E) N) :
     (presentedPerfectDGNativeAction A D E).app (op ⦋N⦌) (x, ULift.up s) =
       presentedPerfectDGNativeActionSimplex A D E x s := rfl
 
@@ -40,9 +40,9 @@ lemma presentedPerfectDGNativeAction_app {N : ℕ}
 lemma presentedPerfectDGNativeAction_vertex (X : PresentedPerfectDGObject A D)
     (F : DGFunctor A D E) :
     (presentedPerfectDGNativeAction A D E).app (op ⦋0⦌)
-        (DGNerve.Simplex.vertex X, ULift.up (DGNerve.Simplex.vertex F)) =
-      DGNerve.Simplex.vertex ((presentedPerfectDGAction A D E F).obj X) := by
-  apply DGNerve.Simplex.vertexEquiv.injective
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X, ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex F)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((presentedPerfectDGAction A D E F).obj X) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.injective
   rfl
 
 /-- 出力 Perf の宇宙へ持ち上げた、元の非離散な native Kan 入力写像空間。 -/
@@ -57,16 +57,16 @@ instance presentedPerfectDGNativeParameter_kan :
 
 /-- 元の Kan 入力写像空間の全高次単体による、ラベル付き Perf の実単体的右作用。 -/
 def presentedPerfectDGNativeCoreAction :
-    dgNerve A (PresentedPerfectDGObject A D) ⊗ presentedPerfectDGNativeParameter A D E ⟶
-      dgNerve A (PresentedPerfectDGObject A E) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D) ⊗ presentedPerfectDGNativeParameter A D E ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A E) :=
   (𝟙 _ ⊗ₘ (SSet.uliftFunctor.{u + 1, max u v}).map
-    (quasicategoryCore (dgNerve A (DGFunctor A D E))).ι) ≫ presentedPerfectDGNativeAction A D E
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (DGFunctor A D E))).ι) ≫ presentedPerfectDGNativeAction A D E
 
 /-- 元の Kan 入力写像空間から、ラベル付き Perf 間の全関手空間への実単体的射。 -/
 def presentedPerfectDGNativeFamilyMap :
     presentedPerfectDGNativeParameter A D E ⟶
-      (ihom (dgNerve A (PresentedPerfectDGObject A D))).obj
-        (dgNerve A (PresentedPerfectDGObject A E)) :=
+      (ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D))).obj
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A E)) :=
   curry (presentedPerfectDGNativeCoreAction A D E)
 
 /-- 元の全関手族の curry は、評価すると元の実単体的右作用を厳密に回収する。 -/

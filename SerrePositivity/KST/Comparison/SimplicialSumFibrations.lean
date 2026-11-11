@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Simplicial.SimplicialSumPullbacks
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplicialSumPullbacks
 public import SerrePositivity.KST.Comparison.FibrationLocality
 
 /-!
@@ -30,15 +30,15 @@ variable {ι : Type v}
 -/
 theorem simplicialSumMap_rlp {A B : ι → SSet.{max u v}} (f : ∀ i, A i ⟶ B i)
     (hf : ∀ i, SSet.modelCategoryQuillen.J.rlp (f i)) :
-    SSet.modelCategoryQuillen.J.rlp (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap f) := by
+    SSet.modelCategoryQuillen.J.rlp (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumMap f) := by
   intro P D j hj
   simp only [SSet.modelCategoryQuillen.J, MorphismProperty.iSup_iff] at hj
   obtain ⟨n, ⟨k⟩⟩ := hj
-  apply lifting_of_pullbackFactorizations (SSet.horn (n + 1) k).ι (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap f)
+  apply lifting_of_pullbackFactorizations (SSet.horn (n + 1) k).ι (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumMap f)
   intro b
   let x := SSet.yonedaEquiv b
-  refine ⟨B x.1, A x.1, _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion B x.1, _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion A x.1,
-    f x.1, SSet.yonedaEquiv.symm x.2, _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_isPullback f x.1,
+  refine ⟨B x.1, A x.1, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion B x.1, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion A x.1,
+    f x.1, SSet.yonedaEquiv.symm x.2, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_isPullback f x.1,
     hf x.1 _ (SSet.modelCategoryQuillen.horn_ι_mem_J (n + 1) k), ?_⟩
   apply SSet.yonedaEquiv.injective
   rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]

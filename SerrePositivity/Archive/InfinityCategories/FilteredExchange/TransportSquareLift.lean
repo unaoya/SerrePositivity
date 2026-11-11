@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Transport.IntervalSquareComposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IntervalSquareComposition
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalUniversalPrism
 
 /-!

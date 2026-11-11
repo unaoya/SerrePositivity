@@ -23,25 +23,25 @@ local instance loopCollageCrossEvaluation_pointed_simplicialCategory :
 
 /-- 一般の交差射は、元の loop 値の点つき射から作る交差射そのもの。 -/
 lemma enrichedFunctorCollageCross_loop (X Y : PointedKanObject.{u})
-    (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) :
+    (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj) :
     enrichedFunctorCollageCross pointedKanLoopEnrichedFunctor
       (show X ⟶ pointedKanLoopObject Y from ObjectProperty.homMk f) =
       loopCollageCrossMap X Y f := by
   change eHomEquiv SSet (show X ⟶ pointedKanLoopObject Y from ObjectProperty.homMk f) =
-    (SSet.unitHomEquiv _).symm (pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) f)
+    (SSet.unitHomEquiv _).symm (pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj) f)
   apply (SSet.unitHomEquiv _).injective
-  change pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) f =
-    (SSet.unitHomEquiv ((PointedObject.basedHom X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj)).right))
-      ((SSet.unitHomEquiv _).symm (pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) f))
+  change pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj) f =
+    (SSet.unitHomEquiv ((PointedObject.basedHom X.obj (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj)).right))
+      ((SSet.unitHomEquiv _).symm (pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj) f))
   exact (Equiv.apply_symm_apply _ _).symm
 
 /-- 一般の交差射の評価も、同じ元の逆随伴を厳密に回収する。 -/
 lemma enrichedFunctorCollageCross_loop_evaluation (X Y : PointedKanObject.{u})
-    (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) :
-    (coherentEnrichedUnderlyingFunctor loopCollageEvaluation).map
+    (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor loopCollageEvaluation).map
       (enrichedFunctorCollageCross pointedKanLoopEnrichedFunctor
         (show X ⟶ pointedKanLoopObject Y from ObjectProperty.homMk f)) =
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv X.obj Y.obj).symm f := by
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv X.obj Y.obj).symm f := by
   rw [enrichedFunctorCollageCross_loop]
   exact loopCollageCrossMap_evaluation X Y f
 

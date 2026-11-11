@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionEdgewiseSection
-public import SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedronDifference
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.FramedTetrahedronDifference
 
 /-!
 概要：companion の元の共通解像の二つの三単体の、内辺・外辺・右辺を厳密に計算する。
@@ -16,7 +16,7 @@ noncomputable section
 universe u
 open CategoryTheory Limits SSet
 open scoped _root_.Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 
 /-- 元の companion の全解像切断を左右の初区間で読んだ、同じ Hom 内の三単体。 -/
@@ -45,15 +45,15 @@ lemma circleCompanionEdgewiseTetrahedron_outer (z : Sp.{u} _⦋0⦌) :
 lemma circleCompanionEdgewiseTetrahedron_right (z : Sp.{u} _⦋0⦌) (k : WalkingPair) :
     SSet.yonedaEquiv.symm (stdSimplex.edge 3 2 3 (by decide)) ≫
       circleCompanionEdgewiseTetrahedron z k =
-        (prefixOverWeight (LoopEdgewiseSection.arrow k)).app (1 : Fin 2) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverWeight (LoopEdgewiseSection.arrow k)).app (1 : Fin 2) ≫
           circleBKParameter ≫ (circleEvaluationCompanionCircleMap z).right := by
   rw [circleCompanionEdgewiseTetrahedron, ← EdgewiseCoordinates.rightCurve]
-  have h : joinInr (Δ[1] : SSet.{u}).op Δ[1] ≫
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[1] : SSet.{u}).op Δ[1] ≫
       SSet.yonedaEquiv (LoopEdgewiseSection.parameter (circleEvaluationPointedHom z)
         (circleCompanionBKEdgewiseLoopSection z) k) =
       LoopEdgewiseSection.parameter (circleEvaluationPointedHom z)
         (circleCompanionBKEdgewiseLoopSection z) k ≫
-          edgewiseRight (circleEvaluationPointedHom z).right := by
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight (circleEvaluationPointedHom z).right := by
     apply SSet.yonedaEquiv.injective
     rw [SSet.yonedaEquiv_comp]
     rfl
@@ -65,11 +65,11 @@ lemma circleCompanionEdgewiseTetrahedron_right_left (z : Sp.{u} _⦋0⦌) :
     SSet.yonedaEquiv.symm (stdSimplex.edge 3 2 3 (by decide)) ≫
       circleCompanionEdgewiseTetrahedron z .left = circleEvaluationCompanionHomPath z := by
   rw [circleCompanionEdgewiseTetrahedron_right]
-  have hp : (prefixOverWeight CospanShape.leftArrow.{u}).app (1 : Fin 2) =
+  have hp : (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverWeight CospanShape.leftArrow.{u}).app (1 : Fin 2) =
       horn₂₂.ι₀₂ ≫ cospanBKWeightIso.inv.app (AsSmall.up.obj .one) := by
     rw [← CospanShape.leftPrefix_horn, Category.assoc, Iso.hom_inv_id_app]
     erw [Category.comp_id]
-  change (prefixOverWeight CospanShape.leftArrow).app (1 : Fin 2) ≫ _ = _
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverWeight CospanShape.leftArrow).app (1 : Fin 2) ≫ _ = _
   rw [hp, Category.assoc, circleCompanionBKParameter_leftEdge]
 
 /-- 参照側の三単体の右辺は、元の零 Hom 頂点で定値。 -/
@@ -78,11 +78,11 @@ lemma circleCompanionEdgewiseTetrahedron_right_right (z : Sp.{u} _⦋0⦌) :
       circleCompanionEdgewiseTetrahedron z .right =
         SSet.const (circleEvaluationPointedHom z).basepoint := by
   rw [circleCompanionEdgewiseTetrahedron_right]
-  have hp : (prefixOverWeight CospanShape.rightArrow.{u}).app (1 : Fin 2) =
+  have hp : (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverWeight CospanShape.rightArrow.{u}).app (1 : Fin 2) =
       horn₂₂.ι₁₂ ≫ cospanBKWeightIso.inv.app (AsSmall.up.obj .one) := by
     rw [← CospanShape.rightPrefix_horn, Category.assoc, Iso.hom_inv_id_app]
     erw [Category.comp_id]
-  change (prefixOverWeight CospanShape.rightArrow).app (1 : Fin 2) ≫ _ = _
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverWeight CospanShape.rightArrow).app (1 : Fin 2) ≫ _ = _
   rw [hp, Category.assoc, circleCompanionBKParameter_rightEdge]
 
 /-- 二つの三単体の共通初頂点。同じ中央の解像頂点から得られる Hom 頂点。 -/
@@ -94,7 +94,7 @@ def circleCompanionEdgewiseInitialVertex (z : Sp.{u} _⦋0⦌) :=
 lemma circleCompanionEdgewiseTetrahedron_vertices (z : Sp.{u} _⦋0⦌) (k : WalkingPair)
     (i : Fin 4) :
     (circleCompanionEdgewiseTetrahedron z k).app (Opposite.op ⦋0⦌)
-      (stdSimplex.obj₀Equiv.symm i) = _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.vertex
+      (stdSimplex.obj₀Equiv.symm i) = _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.vertex
         (circleCompanionEdgewiseInitialVertex z) (circleEvaluationPointedHom z).basepoint i := by
   have h1 := congrArg (fun h : (Δ[1] : SSet.{u}) ⟶
       (circleEvaluationPointedHom z).right ↦
@@ -104,8 +104,8 @@ lemma circleCompanionEdgewiseTetrahedron_vertices (z : Sp.{u} _⦋0⦌) (k : Wal
       (circleEvaluationPointedHom z).right ↦
         h.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
     (circleCompanionEdgewiseTetrahedron_inner z k)
-  simp only [NatTrans.comp_app, types_comp_apply, _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edgeMap_vertex,
-    _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex, ↓reduceIte] at h1 h2
+  simp only [NatTrans.comp_app, types_comp_apply, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.edgeMap_vertex,
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.const_vertex, ↓reduceIte] at h1 h2
   change (circleCompanionEdgewiseTetrahedron z k).app _
     (stdSimplex.obj₀Equiv.symm (1 : Fin 4)) = (circleEvaluationPointedHom z).basepoint at h1
   change (circleCompanionEdgewiseTetrahedron z k).app _
@@ -117,7 +117,7 @@ lemma circleCompanionEdgewiseTetrahedron_vertices (z : Sp.{u} _⦋0⦌) (k : Wal
           (circleEvaluationPointedHom z).right ↦
             h.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
         (circleCompanionEdgewiseTetrahedron_outer z)
-      simp only [NatTrans.comp_app, types_comp_apply, _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edgeMap_vertex,
+      simp only [NatTrans.comp_app, types_comp_apply, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.edgeMap_vertex,
         ↓reduceIte] at h
       exact h.symm
   · exact h1
@@ -127,20 +127,20 @@ lemma circleCompanionEdgewiseTetrahedron_vertices (z : Sp.{u} _⦋0⦌) (k : Wal
           (circleEvaluationPointedHom z).right ↦
             h.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
         (circleCompanionEdgewiseTetrahedron_right_left z)
-      simp only [NatTrans.comp_app, types_comp_apply, _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edgeMap_vertex] at h
+      simp only [NatTrans.comp_app, types_comp_apply, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.edgeMap_vertex] at h
       exact h.trans (circleEvaluationCompanion_vertex z 1)
     · have h := congrArg (fun h : (Δ[1] : SSet.{u}) ⟶
           (circleEvaluationPointedHom z).right ↦
             h.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
         (circleCompanionEdgewiseTetrahedron_right_right z)
-      simp only [NatTrans.comp_app, types_comp_apply, _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edgeMap_vertex,
-        _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex] at h
+      simp only [NatTrans.comp_app, types_comp_apply, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.edgeMap_vertex,
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.const_vertex] at h
       exact h
 
 /-- 元の共通解像三単体の同じ辺を、指定した共通初頂点と零頂点へ表示する。 -/
 def circleCompanionEdgewiseFramedEdge (z : Sp.{u} _⦋0⦌) (k : WalkingPair)
     (i j : Fin 4) (hij : i ≤ j) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge (circleCompanionEdgewiseTetrahedron z k)
+  _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.edge (circleCompanionEdgewiseTetrahedron z k)
     (circleCompanionEdgewiseInitialVertex z) (circleEvaluationPointedHom z).basepoint
     (circleCompanionEdgewiseTetrahedron_vertices z k) i j hij
 
@@ -202,7 +202,7 @@ lemma circleCompanionEdgewise_difference_inverse (z : Sp.{u} _⦋0⦌) :
   have hrs : (circleCompanionEdgewiseTetrahedron z .right).app (Opposite.op ⦋1⦌)
       (stdSimplex.edge 3 2 3 (by decide)) =
       ((circleEvaluationPointedHom z).right.σ 0) (circleEvaluationPointedHom z).basepoint := hr
-  exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.difference_inverse _ _ _ _
+  exact _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.difference_inverse _ _ _ _
     (circleCompanionEdgewiseTetrahedron_vertices z .left)
     (circleCompanionEdgewiseTetrahedron_vertices z .right) (his .left) (his .right) hrs ho
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarConstruction
-public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftFillers
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers
 
 /-!
 # 相対barへのsectionの区間が全単体作用素と整合する
@@ -50,7 +50,7 @@ abbrev sectionPoint (α : p.obj d ⟶ b) (n : SimplexCategoryᵒᵖ) (x : (F.obj
   CostructuredArrow.mk (Y := (F.flip.obj n).elementsMk d x) α
 
 def commaSection (α : p.obj d ⟶ b) :
-    UniverseLift.obj.{max uD vD vB} (F.obj d) ⟶ (relative p F).obj b where
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max uD vD vB} (F.obj d) ⟶ (relative p F).obj b where
   app n := ↾fun x => (Functor.const (Fin (n.unop.len + 1))).obj (sectionPoint p F α n x.down)
   naturality {_ _} _ := rfl
 

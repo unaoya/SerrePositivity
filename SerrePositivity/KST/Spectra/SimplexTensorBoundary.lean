@@ -51,7 +51,7 @@ def map {A B : SSet.{u}} (f : A ⟶ B) : diagram A ⟶ diagram B where
 abbrev iso (A : SSet.{u}) (n : ℕ) :
     SubcomplexTensor.obj (SSet.boundary.{u} n) (diagram A) ≅
       (SSet.boundary.{u} n).toSSet ⊗ A :=
-  StandardCosimplicial.tensorIso (tensorRight A) (SSet.boundary.{u} n).toSSet
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.tensorIso (tensorRight A) (SSet.boundary.{u} n).toSSet
 
 /-- 概要：境界 tensor の比較は境界包含を tensor した射と可換。
 方針：有限 tensor の包含についての標準公式を使う。
@@ -60,7 +60,7 @@ abbrev iso (A : SSet.{u}) (n : ℕ) :
 lemma iso_inclusion (A : SSet.{u}) (n : ℕ) :
     (iso A n).hom ≫ ((SSet.boundary.{u} n).ι ▷ A) =
       SubcomplexTensor.inclusion (SSet.boundary.{u} n) (diagram A) :=
-  StandardCosimplicial.tensorIso_inclusion (tensorRight A) (SSet.boundary.{u} n)
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.tensorIso_inclusion (tensorRight A) (SSet.boundary.{u} n)
 
 /-- 概要：境界 tensor の比較同型はパラメーターの射に自然。
 方針：境界表示の各余極限射で tensor の交換則を使う。
@@ -73,8 +73,8 @@ lemma iso_natural {A B : SSet.{u}} (f : A ⟶ B) (n : ℕ) :
   apply colimit.hom_ext
   intro x
   rw [← Category.assoc, HomPresentation.ι_tensorSourceMap, Category.assoc,
-    StandardCosimplicial.ι_tensorIso_hom, ← Category.assoc,
-    StandardCosimplicial.ι_tensorIso_hom]
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.ι_tensorIso_hom, ← Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.ι_tensorIso_hom]
   exact (whisker_exchange
     ((NonsingularPresentation.cocone (SSet.boundary.{u} n).toSSet).ι.app x) f).symm
 

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.CosliceComparisonVertices
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CosliceComparisonVertices
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceSimplexSourceCone
-public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentEdges
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentEdges
 
 /-!
 概要：元の Kan 射の標準 Hom 比較の零成分を、同じ実 coslice 頂点として読む。

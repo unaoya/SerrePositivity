@@ -56,18 +56,18 @@ lemma general_freePushoutProduct_trivialCofibration (m n : ℕ) {A B X Y : C}
   exact ((trivialCofibrations (GeneralSymmetricSpectrum C K)).arrow_mk_iso_iff
     (freePushoutProductIso (K := K) m n i j base sp)).mpr hf
 
-variable (I J : MorphismProperty C) [CofibrantlyGenerated.{w} I J]
-  [CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J)]
+variable (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
+  [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J)]
 
 include I J in
 lemma general_levelTensor_isQuillen :
     IsQuillenBifunctor (curriedTensor (GeneralSymmetricSpectrum C K)) := by
   have hI {A B : C} (f : A ⟶ B) (hf : I f) : Cofibration f := by
     apply (cofibration_iff _).mpr
-    rw [cofibrations_eq_generated I J]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I J]
     exact I.le_llp_rlp _ hf
   have hJ {A B : C} (f : A ⟶ B) (hf : J f) : trivialCofibrations C f := by
-    rw [trivialCofibrations_eq_generated I J]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated I J]
     exact J.le_llp_rlp _ hf
   let adj := MonoidalClosed.internalHomAdjunction₂ (C := GeneralSymmetricSpectrum C K)
   let adjFlip := SerrePositivity.ParametrizedAdjunctionTransport.left adj

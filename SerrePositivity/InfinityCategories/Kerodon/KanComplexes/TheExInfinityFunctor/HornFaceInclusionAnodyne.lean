@@ -12,6 +12,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 規約：Moss arXiv:1506.04887v2 Proposition 2.19 に現れる面の模型。
 この段階では実際の細分された horn との同型は主張しない。
 使われ方：細分比較が同型であることを示した後の anodyne 性の移送。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

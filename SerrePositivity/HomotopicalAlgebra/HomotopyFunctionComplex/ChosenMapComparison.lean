@@ -51,7 +51,7 @@ abbrev frame := SimplicialMapComparison.tensorFrame S hcof hw
   (fun X ↦ (cofibrantSourceComparison_trivialFibration cof X).2)
 
 abbrev middle : Cᵒᵖ ⥤ C ⥤ SSet.{v} :=
-  resolutionHom (FrameComparison.commonObj cof (Reedy.cosimplicialResolutionFamily cof)
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom (FrameComparison.commonObj cof (Reedy.cosimplicialResolutionFamily cof)
     (frame S hcof hw cof)) (fibrantTarget fib)
 
 abbrev fromResolution : chosenResolutionHom cof fib ⟶ middle S hcof hw cof fib :=

@@ -16,24 +16,24 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory HomotopicalAlgebra SSet Opposite
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories
 open scoped Simplicial
-attribute [local instance] FrameHom.rightFrameHom_kanComplex
+attribute [local instance] _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom_kanComplex
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)]
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   {Q : SSet.{max u v}} [Quasicategory Q]
-  (G : nerve (modelRelativeCategory C).category ⟶ Q)
-  (hG : IsLocalization G (weakNerveEdges (modelRelativeCategory C)))
-  (hH : IsLocalization (hammockLocalizationNerveMap (modelRelativeCategory C))
-    (weakNerveEdges (modelRelativeCategory C)))
-  (K : kanHammockNerve (modelRelativeCategory C) ⟶ Q)
-  (e : FunctorIso (hammockLocalizationNerveMap (modelRelativeCategory C) ≫ K) G)
+  (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category ⟶ Q)
+  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
+  (hH : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))
+    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
+  (K : kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ⟶ Q)
+  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ≫ K) G)
   (X : C) [IsCofibrant X]
 
 /-- 概要：第一分解から選んだ同じ source frame による全 right frame 比較。
 方針：全六辺の coherent 関手同型を元の全標的図式で回収する。
 規約：source frame の追加存在入力なし。使われ方：指定局所化比較の全図式側。 -/
 def modelRightFrameHammockCoherentComparison :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (FrameHom.rightFrameHammockCoherentDiagram
         ((modelSourceFrameFamily (C := C)).atObject X) r 0)
       (FrameHom.rightFrameHammockCoherentDiagram
@@ -45,10 +45,10 @@ def modelRightFrameHammockCoherentComparison :
 方針：同じ第一分解から選んだ source frame と同じ六辺へ実データを代入する。
 規約：残る入力は全圏 hammock の普遍性。使われ方：源移送供給後の条件の放電。 -/
 def modelRightFrameSpecifiedPinchedEquivalence (Y : C) :
-    QCatEquivalence
-      (SSet.uliftFunctor.{max u v, v}.obj ((FrameHom.rightFrameHom r X).obj Y))
-      (pinchedHom (G.app (op ⦋0⦌) (nerveVertex (modelRelativeObject C X)))
-        (G.app (op ⦋0⦌) (nerveVertex (modelRelativeObject C Y)))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
+      (SSet.uliftFunctor.{max u v, v}.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X).obj Y))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (G.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)))
+        (G.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)))) :=
   FrameHom.rightFrameSpecifiedPinchedEquivalence ((modelSourceFrameFamily (C := C)).atObject X)
     r (MorphismProperty.functorialFactorizationData _ _) G hG hH K e Y
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.HomTensorStrength
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength
 public import SerrePositivity.Spectra.PointedSimplicialSet.SmashUnderlyingCoherence
 
 /-!
@@ -33,10 +33,10 @@ lemma associator_inv (A K Z : PointedSimplicialSet.{u}) :
 @[reassoc]
 lemma exchange (A K Z : PointedSimplicialSet.{u}) :
     A.right ◁ productToSmash K Z ≫ productToSmash A (K ⊗ Z) ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K Z).hom.right =
-      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A.right K.right Z.right).hom ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.exchange A K Z).hom.right =
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.exchange A.right K.right Z.right).hom ≫
         K.right ◁ productToSmash A Z ≫ productToSmash K (A ⊗ Z) := by
-  simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
+  simp only [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
     tensorRight, Functor.flip, curriedTensor, Under.comp_right, Category.assoc]
   rw [associator_inv_assoc]
   have hn := productToSmash_naturality (β_ A K).hom (𝟙 Z)

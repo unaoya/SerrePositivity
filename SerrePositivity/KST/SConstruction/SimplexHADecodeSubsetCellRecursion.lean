@@ -29,12 +29,12 @@ lemma simplexHADecodeSubsetCell_edge {n : ℕ} (m : ℕ)
 lemma simplexHADecodeSubsetCell_zero {n : ℕ} (v : Fin 1 ↪o Fin (n + 1))
     (T : Finset (Fin (n + 1))) (hT : T.Nonempty) (hb : ∀ t ∈ T, v (Fin.last 0) < t) :
     HEq (simplexHADecodeSubsetCell A 0 v T hT hb)
-      (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v 0) hb)) := by
+      (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v 0) hb)) := by
   have hI : 2 ≤ (insert (v 0) T).card := by
     simpa only [simplexHADecodeSubset_zero] using simplexHADecodeSubset_two 0 v T hT hb
-  have hmin : v 0 = (insert (v 0) T).min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hI) := by
+  have hmin : v 0 = (insert (v 0) T).min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hI) := by
     simpa only [simplexHADecodeSubset_zero] using (simplexHADecodeSubset_min 0 v T hb).symm
-  have hmax : T.max' hT = (insert (v 0) T).max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hI) := by
+  have hmax : T.max' hT = (insert (v 0) T).max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hI) := by
     simpa only [simplexHADecodeSubset_zero] using (simplexHADecodeSubset_max 0 v T hT hb).symm
   exact (simplexHADecodeSubsetCell_canonical_heq A 0 v T hT hb).trans
     ((simplexSubsetLambdaCell_heq_of_eq A _ _ (simplexHADecodeSubset_zero v T) _ hI).trans

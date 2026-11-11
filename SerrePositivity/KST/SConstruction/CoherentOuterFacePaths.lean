@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Coherent.PathFaces
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.PathFaces
 
 /-! # 外側面は水平区間の全 Path を覆う
 概要：最初又は最後に縦辺を加えた単体の水平区間は、元の外側面の全 Path と一致する。
@@ -19,8 +19,8 @@ open scoped Simplicial
 
 /-- 終点の縦辺を除いた外側面は、下側の水平区間の全 Path を覆う。 -/
 instance coherentLastPathFace_epi (n : ℕ) :
-    Epi (Coherent.pathFaceMap.{u} (Fin.last (n + 1)) 0 (Fin.last n)) := by
-  rw [← SSet.Subcomplex.range_eq_top_iff, Coherent.range_pathFaceMap]
+    Epi (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceMap.{u} (Fin.last (n + 1)) 0 (Fin.last n)) := by
+  rw [← SSet.Subcomplex.range_eq_top_iff, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.range_pathFaceMap]
   apply Subfunctor.ext
   funext d
   ext P
@@ -35,8 +35,8 @@ instance coherentLastPathFace_epi (n : ℕ) :
 
 /-- 始点の縦辺を除いた外側面は、上側の水平区間の全 Path を覆う。 -/
 instance coherentFirstPathFace_epi (n : ℕ) :
-    Epi (Coherent.pathFaceMap.{u} (0 : Fin (n + 2)) 0 (Fin.last n)) := by
-  rw [← SSet.Subcomplex.range_eq_top_iff, Coherent.range_pathFaceMap]
+    Epi (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceMap.{u} (0 : Fin (n + 2)) 0 (Fin.last n)) := by
+  rw [← SSet.Subcomplex.range_eq_top_iff, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.range_pathFaceMap]
   apply Subfunctor.ext
   funext d
   ext P

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionHomTriangles
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.AdjunctionHomTriangles
 
 /-!
 # 局所化の比較による随伴の三角恒等式
@@ -75,12 +75,12 @@ def adjunctionOfLocalizationComparisons
   left_triangle := by
     have ha : a.unit ▷ F ≫ F ◁ a.counit = 𝟙 F := by
       have h := a.left_triangle
-      simp only [bicategory_leftZigzag_explicit, Strict.associator_eqToIso,
+      simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.bicategory_leftZigzag_explicit, Strict.associator_eqToIso,
         Strict.leftUnitor_eqToIso,
         Strict.rightUnitor_eqToIso, eqToIso.hom, eqToIso.inv, eqToHom_refl,
         Category.id_comp, Category.comp_id] at h
       exact h
-    simp only [bicategory_leftZigzag_explicit, Strict.associator_eqToIso,
+    simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.bicategory_leftZigzag_explicit, Strict.associator_eqToIso,
         Strict.leftUnitor_eqToIso,
       Strict.rightUnitor_eqToIso, eqToIso.hom, eqToIso.inv, eqToHom_refl,
       Category.id_comp, Category.comp_id]
@@ -115,12 +115,12 @@ def adjunctionOfLocalizationComparisons
   right_triangle := by
     have ha : G ◁ a.unit ≫ a.counit ▷ G = 𝟙 G := by
       have h := a.right_triangle
-      simp only [bicategory_rightZigzag_explicit, Strict.associator_eqToIso,
+      simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.bicategory_rightZigzag_explicit, Strict.associator_eqToIso,
         Strict.leftUnitor_eqToIso,
         Strict.rightUnitor_eqToIso, eqToIso.hom, eqToIso.inv, eqToHom_refl,
         Category.id_comp, Category.comp_id] at h
       exact h
-    simp only [bicategory_rightZigzag_explicit, Strict.associator_eqToIso,
+    simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.bicategory_rightZigzag_explicit, Strict.associator_eqToIso,
         Strict.leftUnitor_eqToIso,
       Strict.rightUnitor_eqToIso, eqToIso.hom, eqToIso.inv, eqToHom_refl,
       Category.id_comp, Category.comp_id]

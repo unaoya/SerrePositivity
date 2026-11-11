@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Transport.DiagonalFiberTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.DiagonalFiberTransport
 
 /-!
 概要：元の全区間の普遍輸送族を、元の動く初期値と区間で制限した実 prism を公開する。

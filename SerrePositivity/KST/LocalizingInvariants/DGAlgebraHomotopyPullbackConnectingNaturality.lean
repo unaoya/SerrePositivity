@@ -23,14 +23,14 @@ variable (R : Type u) [CommRing R] {A₀ B₀ C₀ A₁ B₁ C₁ : Mon (Complex
   (hf : a ≫ f₁ = f₀ ≫ b) (hg : c ≫ g₁ = g₀ ≫ b)
 
 lemma map_fromMappingCocone :
-    complexMappingCoconeMap (difference R f₀ g₀) (difference R f₁ g₁)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap (difference R f₀ g₀) (difference R f₁ g₁)
       (sumMap R a c) b.hom (difference_comm R _ _ _ _ _ _ _ hf hg) ≫
       (complexIso R f₁ g₁).inv =
     (complexIso R f₀ g₀).inv ≫ (map R f₀ g₀ f₁ g₁ a b c hf hg).hom := by
   apply (cancel_mono (complexIso R f₁ g₁).hom).1
   rw [Category.assoc, Iso.inv_hom_id, Category.comp_id, Category.assoc]
   have hm : (map R f₀ g₀ f₁ g₁ a b c hf hg).hom ≫ (complexIso R f₁ g₁).hom =
-      (complexIso R f₀ g₀).hom ≫ complexMappingCoconeMap (difference R f₀ g₀)
+      (complexIso R f₀ g₀).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap (difference R f₀ g₀)
         (difference R f₁ g₁) (sumMap R a c) b.hom (difference_comm R _ _ _ _ _ _ _ hf hg) :=
     map_toMappingCocone R _ _ _ _ _ _ _ _ _
   rw [hm, ← Category.assoc, Iso.inv_hom_id, Category.id_comp]
@@ -45,7 +45,7 @@ lemma connecting_naturality (n : ℤ) :
   unfold connecting
   refine (Category.assoc _ _ _).symm.trans (hh.trans ?_)
   change (homologyδOfTriangle (mappingCocone.triangle (difference R f₀ g₀))
-      (n - 1) n (by omega) ≫ homologyMap (complexMappingCoconeMap
+      (n - 1) n (by omega) ≫ homologyMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap
         (difference R f₀ g₀) (difference R f₁ g₁) (sumMap R a c) b.hom
           (difference_comm R _ _ _ _ _ _ _ hf hg)) n) ≫ _ = _
   rw [Category.assoc, ← homologyMap_comp,

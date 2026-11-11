@@ -14,24 +14,24 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : ℕ)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (n : ℕ)
 include h
 
 /-- 元の Verdier 包含による S 後合成は、全写像空間で充満忠実。 -/
 theorem verdierSPostcomp_fullyFaithful :
-    IsFullyFaithful (sPostcomp n i.hom (exactMap_preservesSData i)) := by
-  have hi : IsFullyFaithful
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (sPostcomp n i.hom (exactMap_preservesSData i)) := by
+  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful
       (X := closedSubcategory (sClosedPredicate n (kernelClosedPredicate q)))
       (Y := sConstruction n B.obj)
       (closedStableInclusion (sClosedPredicate n (kernelClosedPredicate q))).val :=
-    isFullyFaithful_fullSubcomplexOnVertices_ι _ _
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι _ _
   have he := (verdierSStageKernelEquivalence h n).isFullyFaithful.comp hi
-  exact (congrArg IsFullyFaithful (verdierSStageKernelEquivalence_inclusion h n)).mp he
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (verdierSStageKernelEquivalence_inclusion h n)).mp he
 
 /-- 元の S_n(D) の全図式は、元の同じ S 商作用で零になる。 -/
 theorem verdierSPostcomp_image_isZero (a : (sConstruction n A.obj) _⦋0⦌) :
-    IsZeroVertex ((sPostcomp n q.hom (exactMap_preservesSData q)).app (Opposite.op ⦋0⦌)
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sPostcomp n q.hom (exactMap_preservesSData q)).app (Opposite.op ⦋0⦌)
       ((sPostcomp n i.hom (exactMap_preservesSData i)).app (Opposite.op ⦋0⦌) a)) := by
   let k := (verdierSStageKernelEquivalence h n).hom.app (Opposite.op ⦋0⦌) a
   have hk := (sStageKernelPredicate_iff q n k.val).mp
@@ -39,15 +39,15 @@ theorem verdierSPostcomp_image_isZero (a : (sConstruction n A.obj) _⦋0⦌) :
   have he := congrArg (fun f : sConstruction n A.obj ⟶ sConstruction n B.obj =>
     f.app (Opposite.op ⦋0⦌) a) (verdierSStageKernelEquivalence_inclusion h n)
   exact (congrArg (fun z : (sConstruction n B.obj) _⦋0⦌ =>
-    IsZeroVertex ((sPostcomp n q.hom (exactMap_preservesSData q)).app
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sPostcomp n q.hom (exactMap_preservesSData q)).app
       (Opposite.op ⦋0⦌) z)) he).mp hk
 
 /-- 同じ S 後合成の実核は、元の S_n(D) 包含の本質像と一致する。 -/
 theorem verdierSPostcomp_kernel (v : (sConstruction n B.obj) _⦋0⦌) :
-    IsZeroVertex ((sPostcomp n q.hom (exactMap_preservesSData q)).app
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sPostcomp n q.hom (exactMap_preservesSData q)).app
       (Opposite.op ⦋0⦌) v) ↔
       ∃ a : (sConstruction n A.obj) _⦋0⦌,
-        Nonempty (VertexIso (X := sConstruction n B.obj)
+        Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (X := sConstruction n B.obj)
           ((sPostcomp n i.hom (exactMap_preservesSData i)).app (Opposite.op ⦋0⦌) a) v) := by
   constructor
   · intro hv
@@ -62,7 +62,7 @@ theorem verdierSPostcomp_kernel (v : (sConstruction n B.obj) _⦋0⦌) :
     have he := congrArg (fun f : sConstruction n A.obj ⟶ sConstruction n B.obj =>
       f.app (Opposite.op ⦋0⦌) a) (verdierSStageKernelEquivalence_inclusion h n)
     exact (eqToIso (congrArg HomotopyCategory.mk he)).symm ≪≫
-      VertexIso.map e (closedStableInclusion (sClosedPredicate n (kernelClosedPredicate q))).val
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (closedStableInclusion (sClosedPredicate n (kernelClosedPredicate q))).val
   · rintro ⟨a, ⟨e⟩⟩
     exact (verdierSPostcomp_image_isZero h n a).of_vertexIso
       (e.map (sPostcomp n q.hom (exactMap_preservesSData q)))
@@ -71,10 +71,10 @@ theorem verdierSPostcomp_kernel (v : (sConstruction n B.obj) _⦋0⦌) :
 theorem relativeSConstruction_mem_edge_iff_cofiber_image
     {x y : (sConstruction n B.obj) _⦋0⦌}
     {f : Truncated.Edge (X := (truncation 2).obj (sConstruction n B.obj)) x y}
-    (s : CofiberSquare f) :
+    (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) :
     f.edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
       ∃ a : (sConstruction n A.obj) _⦋0⦌,
-        Nonempty (VertexIso (X := sConstruction n B.obj)
+        Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (X := sConstruction n B.obj)
           ((sPostcomp n i.hom (exactMap_preservesSData i)).app (Opposite.op ⦋0⦌) a) s.cofiber) :=
   (relativeSConstruction_mem_edge_iff_cofiber_zero h n s).trans
     (verdierSPostcomp_kernel h n s.cofiber)

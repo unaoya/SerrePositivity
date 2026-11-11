@@ -16,7 +16,7 @@ open SerrePositivity.InfinityCategories LocalizingInvariants
 
 /-- 元の安定入力の全作用は、任意の零方向の元の冪等作用と厳密に可換。 -/
 lemma stableMultiRealizationAction_zeroOperator (r : ℕ)
-    (s : Finset (Fin r)) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) (n : SimplexCategoryᵒᵖ)
+    (s : Finset (Fin r)) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) (n : SimplexCategoryᵒᵖ)
     (x : ((stableMultiRealizationEnrichedFunctor r).obj C).obj.obj n)
     (p : (C ⟶[SSet.{u}] D).obj n) :
     (stableMultiRealizationAction r C D).app n
@@ -48,7 +48,7 @@ lemma stableMultiRealizationAction_zeroOperator (r : ℕ)
 
 /-- 零方向の像の固定点条件は、安定入力の全単体で保存される。 -/
 lemma stableMultiRealizationAction_mem_zeroRange (r : ℕ)
-    (s : Finset (Fin r)) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) (n : SimplexCategoryᵒᵖ)
+    (s : Finset (Fin r)) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) (n : SimplexCategoryᵒᵖ)
     (x : ((stableMultiRealizationEnrichedFunctor r).obj C).obj.obj n)
     (p : (C ⟶[SSet.{u}] D).obj n)
     (hx : x ∈ (zeroDirectionsRange s
@@ -63,7 +63,7 @@ lemma stableMultiRealizationAction_mem_zeroRange (r : ℕ)
 
 /-- 零方向の像の任意の有限合併は、安定入力の全単体で保存される。 -/
 lemma stableMultiRealizationAction_mem_zeroBoundary (r : ℕ)
-    (s t : Finset (Fin r)) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) (n : SimplexCategoryᵒᵖ)
+    (s t : Finset (Fin r)) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) (n : SimplexCategoryᵒᵖ)
     (x : ((stableMultiRealizationEnrichedFunctor r).obj C).obj.obj n)
     (p : (C ⟶[SSet.{u}] D).obj n)
     (hx : x ∈ (zeroDirectionsBoundary s t
@@ -80,7 +80,7 @@ lemma stableMultiRealizationAction_mem_zeroBoundary (r : ℕ)
     · exact Or.inr (ih hx)
 
 /-- 元の全零境界上の、完全関手の全自然同値入力族による実作用。 -/
-def stableZeroBoundaryAction (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+def stableZeroBoundaryAction (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (zeroDirectionsFatBoundary r
       (stableCategoryModel C) : SSet.{u}) ⊗
         (C ⟶[SSet.{u}] D) ⟶
@@ -96,7 +96,7 @@ def stableZeroBoundaryAction (r : ℕ) (C D : _root_.SerrePositivity.InfinityCat
       C D n p.1.val p.2 p.1.property)
 
 /-- 元の全零境界の包含後には、同じ安定入力の全実現作用を厳密に回収する。 -/
-lemma stableZeroBoundaryAction_inclusion (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableZeroBoundaryAction_inclusion (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     stableZeroBoundaryAction r C D ≫
       (zeroDirectionsFatBoundary r
         (stableCategoryModel D)).ι =

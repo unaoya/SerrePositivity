@@ -78,7 +78,7 @@ lemma boundaryAssemblyExtensionEdgeAt_evaluation (r : ℕ) {X Y : StableModel.{u
       ((kanAssemblyMixedFromSource r f).app (Opposite.op ⦋0⦌) v.2)
       ((kanAssemblyMixedFromTarget r f).app (Opposite.op ⦋0⦌) w.2)) :
     (boundaryAssemblyExtensionEdgeAt r f u v w a).edge =
-      ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionKanInverseChoices r X)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionKanInverseChoices r X)
         (L := kanAssemblyMixedChoices r f) (SSet.Edge.id v.1) a).map (boundaryAssemblyExtensionFamily r f)).edge :=
   boundaryAssemblyExtensionParameterEdge_evaluation r f u v w a
 
@@ -91,7 +91,7 @@ lemma boundaryAssemblyInverseEdgeAt_evaluation (r : ℕ) {X Y : StableModel.{u}}
       ((oneDirectionInverseMixedFromSource r f).app (Opposite.op ⦋0⦌) v.1)
       ((oneDirectionInverseMixedFromTarget r f).app (Opposite.op ⦋0⦌) w.1)) :
     (boundaryAssemblyInverseEdgeAt r f u v w b).edge =
-      ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (K := oneDirectionInverseMixedChoices r f)
         (L := kanAssemblyAdjointChoices r Y) b (SSet.Edge.id w.2)).map (boundaryAssemblyInverseFamily r f)).edge :=
   boundaryAssemblyInverseParameterEdge_evaluation r f u v w b
 

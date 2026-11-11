@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.RightSimplicialFrames
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimitCones
-public import SerrePositivity.InfinityCategories.ModelBridge.MixedFrameDiagrams
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams
 public import SerrePositivity.EInfinity.HomotopyWeight.ConeReindex
 
 /-!
@@ -38,7 +38,7 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 使われ方：混合 Hom の右側の具体的な図式。 -/
 abbrev rightSimplicialHomDiagram (Y : (Complex A))
     (F : K ⥤ (Complex A)) : K ⥤ SSet.{u} :=
-  rightDiagram K (framedLimitProbe A Y) (F ⋙ rightSimplicialFrameFamily A)
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagram K (framedLimitProbe A Y) (F ⋙ rightSimplicialFrameFamily A)
 
 /-- 概要：右 Hom 図式を元の図式の関手として束ねる（Hovey §5）。
 方針：右 frame と同じ始域からの Hom を後合成する。

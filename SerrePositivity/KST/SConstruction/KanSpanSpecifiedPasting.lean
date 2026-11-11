@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.KanSpanPastingChoices
 public import SerrePositivity.KST.SConstruction.AnodyneExtensionSpecifiedVertices
-public import SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition
 
 /-! # 元の指定辺・指定三角形を保つ span 貼り合わせの頂点
 概要：元の三辺を持つ実三角形を可縮選択空間へ入れ、その辺と二単体を厳密に回収する。
@@ -58,24 +58,24 @@ lemma kanSpanPastedTriangle_vertex_simplex {K : SSet.{u}} {z x y : K _⦋0⦌}
 
 /-- 既存の逆・合成証人の同じ合成辺を保つ、元の二脚の外側三角形。 -/
 def kanMappingSpanOuterTriangle {K : SSet.{u}} [KanComplex K] {z x y : K _⦋0⦌}
-    {a : K.Edge z x} {b : K.Edge z y} (t : _root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition a b) :
+    {a : K.Edge z x} {b : K.Edge z y} (t : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition a b) :
     SSet.Edge.CompStruct a t.edge b := by
   have hc : SSet.HomotopyCategory.homMk a ≫ SSet.HomotopyCategory.homMk t.edge =
       SSet.HomotopyCategory.homMk b := by
     rw [← SSet.HomotopyCategory.homMk_comp_homMk t.triangle, ← Category.assoc,
       SSet.HomotopyCategory.homMk_comp_homMk t.inverseLeft,
       SSet.HomotopyCategory.homMk_id, Category.id_comp]
-  exact SSet.Edge.CompStruct.ofTruncated (compStruct_nonempty_of_homMk_fac hc).some
+  exact SSet.Edge.CompStruct.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.compStruct_nonempty_of_homMk_fac hc).some
 
 /-- 元の選んだ合成辺を保ったまま、可縮な全貼り合わせ空間へ入れる。 -/
 def kanMappingSpanPastingVertex {K : SSet.{u}} [KanComplex K] {z x y : K _⦋0⦌}
-    {a : K.Edge z x} {b : K.Edge z y} (t : _root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition a b) :
+    {a : K.Edge z x} {b : K.Edge z y} (t : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition a b) :
     (kanSpanPastingChoices a b) _⦋0⦌ :=
   kanSpanPastingVertex (kanMappingSpanOuterTriangle t)
 
 /-- 以前の逆・合成による指定辺は、全貼り合わせ空間の評価で厳密に保たれる。 -/
 lemma kanSpanPastedEdge_mappingSpanVertex {K : SSet.{u}} [KanComplex K] {z x y : K _⦋0⦌}
-    {a : K.Edge z x} {b : K.Edge z y} (t : _root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition a b) :
+    {a : K.Edge z x} {b : K.Edge z y} (t : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition a b) :
     kanSpanPastedEdge a b (kanMappingSpanPastingVertex t) = t.edge :=
   kanSpanPastedEdge_vertex (kanMappingSpanOuterTriangle t)
 

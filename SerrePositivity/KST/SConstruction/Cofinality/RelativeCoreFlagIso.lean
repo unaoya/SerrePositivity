@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.WideInvertibleReflection
-public import SerrePositivity.InfinityCategories.Core.EquivalencePathInternalHom
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.EquivalencePathInternalHom
 
 /-!
 概要：同じ全多次数の内部 wide 旗と相対旗の core を比較する。
@@ -23,32 +23,32 @@ open scoped Simplicial
 使われ方：core 旗比較の逆射。 -/
 def completionRelativeCoreToWideFlags (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (K : SSet.{u}) :
-    (quasicategoryCore
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (K : SSet.{u}) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore
       (suppliedMultiRelativeFlags stableWideCofinalitySupply r ι f hf K) : SSet.{u}) ⟶
-      (quasicategoryCore ((ihom K).obj (LocalizingInvariants.completionCofiberWide
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom K).obj (LocalizingInvariants.completionCofiberWide
         (((multiSEndofunctor r).obj ι).map f).val : SSet.{u})) : SSet.{u}) := by
   let F := ((multiSEndofunctor r).obj ι).map f
-  let : IsExactFunctor F.val := stableModelHom_exact F
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F.val := stableModelHom_exact F
   let : Quasicategory (LocalizingInvariants.completionCofiberWide F.val : SSet.{u}) :=
     LocalizingInvariants.completionCofiberWide_quasicategory F.val
       (multiSEndofunctor_map_isIdempotentCompletion r ι f hf)
-  refine quasicategoryCoreLift (curry (completionRelativeCoreEvaluationWide r ι f hf K)) ?_
+  refine _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreLift (curry (completionRelativeCoreEvaluationWide r ι f hf K)) ?_
   intro s
-  apply (isInvertibleEdge_iff_evaluateFunctorAt_any _).mpr
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_iff_evaluateFunctorAt_any _).mpr
   intro k
   let a := ((curry (completionRelativeCoreEvaluationWide r ι f hf K)) ≫
-    evaluateFunctorAt k).app (Opposite.op ⦋1⦌) s
-  apply (isInvertibleEdge_congr (e := edgeOfSimplex a)
-    (f := (edgeOfSimplex ((curry (completionRelativeCoreEvaluationWide r ι f hf K)).app
-      (Opposite.op ⦋1⦌) s)).map ((truncation 2).map (evaluateFunctorAt k))) rfl).mp
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k).app (Opposite.op ⦋1⦌) s
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a)
+    (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((curry (completionRelativeCoreEvaluationWide r ι f hf K)).app
+      (Opposite.op ⦋1⦌) s)).map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k))) rfl).mp
   apply completionWide_invertibleEdge_of_ambient r ι f hf a
   let E := multiRelativeFlagsInclusion r ι Y
     (multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex K ≫
-      evaluateFunctorAt (Y := (((multiSEndofunctor r).obj ι).obj Y).carrier) k
-  have h := (quasicategoryCore_edge s).map E
-  exact (isInvertibleEdge_congr (e := (edgeOfSimplex s.val).map ((truncation 2).map E))
-    (f := edgeOfSimplex a.val) rfl).mp h
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := (((multiSEndofunctor r).obj ι).obj Y).carrier) k
+  have h := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_edge s).map E
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex s.val).map ((truncation 2).map E))
+    (f := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a.val) rfl).mp h
 
 /-- 概要：内部旗から相対旗へ移して戻すと元の core 旗を厳密に回収する。
 方針：core と wide の部分型を外し、内部 Hom の全評価を計算する。
@@ -56,8 +56,8 @@ def completionRelativeCoreToWideFlags (r : ℕ) (ι : Fin r → SimplexCategory�
 使われ方：core 旗比較の同型の一方の逆則。 -/
 lemma completionWideRelativeCore_roundtrip (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (K : SSet.{u}) :
-    quasicategoryCoreMap (completionWideToRelativeFlags r ι f hf K) ≫
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (K : SSet.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (completionWideToRelativeFlags r ι f hf K) ≫
       completionRelativeCoreToWideFlags r ι f hf K = 𝟙 _ := by
   apply SSet.hom_ext
   intro n
@@ -78,9 +78,9 @@ lemma completionWideRelativeCore_roundtrip (r : ℕ) (ι : Fin r → SimplexCate
 使われ方：core 旗比較の同型のもう一方の逆則。 -/
 lemma completionRelativeWideCore_roundtrip (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (K : SSet.{u}) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (K : SSet.{u}) :
     completionRelativeCoreToWideFlags r ι f hf K ≫
-      quasicategoryCoreMap (completionWideToRelativeFlags r ι f hf K) = 𝟙 _ := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (completionWideToRelativeFlags r ι f hf K) = 𝟙 _ := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -100,12 +100,12 @@ lemma completionRelativeWideCore_roundtrip (r : ℕ) (ι : Fin r → SimplexCate
 使われ方：一般供給と相対実現の間の S• 固有の比較。 -/
 def completionWideRelativeCoreIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (K : SSet.{u}) :
-    (quasicategoryCore ((ihom K).obj (LocalizingInvariants.completionCofiberWide
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (K : SSet.{u}) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom K).obj (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u})) : SSet.{u}) ≅
-      (quasicategoryCore
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore
         (suppliedMultiRelativeFlags stableWideCofinalitySupply r ι f hf K) : SSet.{u}) where
-  hom := quasicategoryCoreMap (completionWideToRelativeFlags r ι f hf K)
+  hom := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (completionWideToRelativeFlags r ι f hf K)
   inv := completionRelativeCoreToWideFlags r ι f hf K
   hom_inv_id := completionWideRelativeCore_roundtrip r ι f hf K
   inv_hom_id := completionRelativeWideCore_roundtrip r ι f hf K
@@ -116,7 +116,7 @@ def completionWideRelativeCoreIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
 使われ方：対角関手を適用する前の自然同型。 -/
 def completionWideRelativeCoreDiagramIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionWideCoreFlagDiagram r ι f ≅ completionRelativeCoreFlagDiagram r ι f hf :=
   NatIso.ofComponents (fun n =>
     completionWideRelativeCoreIso r ι f hf (SSet.stdSimplex.obj n.unop))
@@ -128,7 +128,7 @@ def completionWideRelativeCoreDiagramIso (r : ℕ) (ι : Fin r → SimplexCatego
 使われ方：一般評価の供給を相対評価へ移す。 -/
 def completionWideRelativeFlagDiagonalIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     simplicialDiagonalFunctor.obj (completionWideCoreFlagDiagram r ι f) ≅
       completionRelativeFlagRealization r ι f hf :=
   simplicialDiagonalFunctor.mapIso (completionWideRelativeCoreDiagramIso r ι f hf)
@@ -139,9 +139,9 @@ def completionWideRelativeFlagDiagonalIso (r : ℕ) (ι : Fin r → SimplexCateg
 使われ方：Sp-8 消費に残っていた相対側の比較条件を消去する。 -/
 lemma completionWideFlagDiagonalComparison_isWeak (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
-    IsWeakHomotopyEquivalence (completionWideFlagDiagonalComparison r ι f hf) :=
-  (isPrecompositionEquivalence_of_iso
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (completionWideFlagDiagonalComparison r ι f hf) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (completionWideRelativeFlagDiagonalIso r ι f hf)).isWeakHomotopyEquivalence
 
 /-- 概要：一般 core 旗評価の供給を、この指定射の wide 模型で受け取る型。
@@ -158,7 +158,7 @@ structure CompletionCoreFlagEvaluationInput (r : ℕ) (ι : Fin r → SimplexCat
     evaluation.app (Opposite.op ⦋n⦌) v =
       SSet.yonedaEquiv (CartesianMonoidalCategory.lift (𝟙 (Δ[n] : SSet.{u})) (𝟙 _) ≫
         uncurry (SSet.yonedaEquiv.symm v.val))
-  isWeak : IsWeakHomotopyEquivalence evaluation
+  isWeak : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence evaluation
 
 /-- 概要：一般 core 旗評価の供給があれば、元の相対旗の wide 評価は弱同値。
 方針：内部旗との厳密な同型と、対角制限の照合を使う。
@@ -166,9 +166,9 @@ structure CompletionCoreFlagEvaluationInput (r : ℕ) (ι : Fin r → SimplexCat
 使われ方：相対実現の離散性と fiber 比較へ進むための条件付き接続。 -/
 lemma completionRelativeFlagWideEvaluation_isWeak_of_input (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (input : CompletionCoreFlagEvaluationInput r ι f) :
-    IsWeakHomotopyEquivalence (completionRelativeFlagWideEvaluation r ι f hf) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (completionRelativeFlagWideEvaluation r ι f hf) :=
   completionRelativeFlagWideEvaluation_isWeak_of_coreFlag r ι f hf input.evaluation
     input.diagonal_eq input.isWeak (completionWideFlagDiagonalComparison_isWeak r ι f hf)
 

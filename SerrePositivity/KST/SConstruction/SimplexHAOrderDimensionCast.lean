@@ -41,7 +41,7 @@ lemma simplexHAOrderDimensionCast_last {N n m : ℕ} (h : n = m)
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の次元・添字・頂点列の移送は、元の生成元上の微分合成の差の零性を保つ。 -/
-lemma simplexHADegreeDefect_generator_zero_heq {N n m : ℕ} (s : DGNerve.SimplexData A D N)
+lemma simplexHADegreeDefect_generator_zero_heq {N n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D N)
     (hn : n = m) (i : SerreCubeGeneratorIndex n) (j : SerreCubeGeneratorIndex m) (hi : HEq i j)
     (v : Fin (n + 1) ↪o Fin (N + 1)) (w : Fin (m + 1) ↪o Fin (N + 1)) (hv : HEq v w)
     (b : Fin (N + 1)) (hb : v (Fin.last n) < b) (hb' : w (Fin.last m) < b)

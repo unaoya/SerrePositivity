@@ -36,10 +36,10 @@ lemma simplexIntervalLambdaHomIso_composition {N : ℕ} (a b c : Fin (N + 1))
   let H := necklaceLambdaCell A (necklaceInSimplexInterval.{u} a c (hab.le.trans hbc.le))
   have hn := (necklaceBead_dimension.{u} (b.val - a.val)).symm
   have hm := (necklaceBead_dimension.{u} (c.val - b.val)).symm
-  let es := concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n + m))
-    (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (T.down.dimension + U.down.dimension)) (congrArg₂ Nat.add hn hm)
-  let et := concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (c.val - a.val - 1))
-    (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk V.down.dimension) (necklaceBead_dimension.{u} (c.val - a.val)).symm
+  let es := concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (n + m))
+    (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (T.down.dimension + U.down.dimension)) (congrArg₂ Nat.add hn hm)
+  let et := concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (c.val - a.val - 1))
+    (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk V.down.dimension) (necklaceBead_dimension.{u} (c.val - a.val)).symm
   have hdim : F.map es.hom =
       eqToHom (congrArg (serreCubeComplex A) (congrArg₂ Nat.add hn hm)) :=
     serreCubeComplexMap_dimension_inv A (congrArg₂ Nat.add hn hm).symm
@@ -56,8 +56,8 @@ lemma simplexIntervalLambdaHomIso_composition {N : ℕ} (a b c : Fin (N + 1))
     have hd := concreteCubeDimensionIso_hom_trans (congrArg₂ Nat.add hn hm)
       (T.down.wedge_dimension U.down).symm
     have he : es.hom ≫ (necklaceCubeTensorIso T U).hom =
-        (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n + m))
-          (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T U).down.dimension)
+        (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (n + m))
+          (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedge T U).down.dimension)
           (simplexIntervalCompose_source_dimension.{u} a b c)).hom := hd
     rw [← Category.assoc, he]
     unfold simplexIntervalComposeStandardCube

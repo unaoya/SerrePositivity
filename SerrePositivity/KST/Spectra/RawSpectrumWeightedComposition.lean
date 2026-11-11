@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumPointedCompositionNaturality
 public import SerrePositivity.KST.Spectra.PointedWeightedEndFunctor
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeSymmetry
 
 /-!
 概要：BF 源の全 Hom パラメータによる、元の weighted Hom end への合成作用。
@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 local instance weightedCompositionSelfEnrichment :
     EnrichedOrdinaryCategory PointedSimplicialSet.{u} PointedSimplicialSet.{u} :=
@@ -42,7 +42,7 @@ lemma weightedCotensor_inv_π {I : Type u} [SmallCategory I]
     (PointedWeightedEnd.cotensorIso K W D).inv ≫
         (ihom K).map (end_.π (PointedWeightedEnd.diagram W D) i) =
       end_.π (PointedWeightedEnd.diagram W (D ⋙ ihom K)) i ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K (PointedObject.adjoin (W.obj i)) (D.obj i)).inv := by
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso K (PointedObject.adjoin (W.obj i)) (D.obj i)).inv := by
   apply (cancel_epi (PointedWeightedEnd.cotensorIso K W D).hom).mp
   rw [Iso.hom_inv_id_assoc, ← Category.assoc, PointedWeightedEnd.cotensorIso_π,
     Category.assoc, Iso.hom_inv_id, Category.comp_id]
@@ -63,7 +63,7 @@ lemma weightedComposition_π {I : Type u} [SmallCategory I] (X Y : OmegaSpectrum
     weightedComposition X Y W D ≫ end_.π (PointedWeightedEnd.diagram W (D ⋙ pointedFunctor X)) i =
       (𝟙 (pointedSpace X Y.toKanSequence) ⊗ₘ
         end_.π (PointedWeightedEnd.diagram W (D ⋙ pointedFunctor Y)) i) ≫
-        _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map (pointedSpace X Y.toKanSequence)
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.map (pointedSpace X Y.toKanSequence)
           (PointedObject.adjoin (W.obj i)) (pointedSpace Y (D.obj i)) ≫
           (ihom (PointedObject.adjoin (W.obj i))).map
             (pointedComposition X Y (D.obj i)) := by
@@ -73,9 +73,9 @@ lemma weightedComposition_π {I : Type u} [SmallCategory I] (X Y : OmegaSpectrum
   rw [Category.assoc]
   change uncurry (end_.π (PointedWeightedEnd.diagram W (D ⋙ pointedFunctor Y)) i ≫
     (ihom (PointedObject.adjoin (W.obj i))).map (curry (pointedComposition X Y (D.obj i))) ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (pointedSpace X Y.toKanSequence)
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (pointedSpace X Y.toKanSequence)
       (PointedObject.adjoin (W.obj i)) (pointedSpace X (D.obj i))).inv) = _
-  rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv, ← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry_strength,
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.hom_eq_inv, ← _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.curry_strength,
     uncurry_natural_left, uncurry_curry, id_tensorHom]
   rfl
 

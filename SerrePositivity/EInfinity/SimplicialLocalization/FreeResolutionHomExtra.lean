@@ -20,14 +20,14 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite SerrePositivity.HomotopyFunctionComplex.ComonadResolutionOperators
 open scoped Simplicial
 
-variable (C : RelativeCategory.{u}) {X Y : C.category}
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
 
 def generatorHomSection (f : X ⟶ Y) : (freeResolutionGeneratorHom C X Y) _⦋0⦌ :=
   Quiver.Hom.toPath (V := C.category) f
 
 def generatorHomExtra (n : ℕ) (f : (freeResolutionGeneratorHom C X Y) _⦋n⦌) :
     (freeResolutionGeneratorHom C X Y) _⦋n + 1⦌ :=
-  Quiver.Hom.toPath (V := (power freeRelativeComonad C (n + 1)).category) f
+  Quiver.Hom.toPath (V := (power _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C (n + 1)).category) f
 
 lemma generatorHomSection_augmentation (f : X ⟶ Y) :
     (freeResolutionGeneratorHomAugmentation C X Y).app (op ⦋0⦌) (generatorHomSection C f) = f := by

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.CochainSplitCoconeHomology
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroProjection
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackCoconeIso
-public import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBiprodExact
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeBiprodExact
 public import Mathlib.Algebra.Homology.HomologySequenceLemmas
 
 /-!
@@ -25,10 +25,10 @@ variable {R : Type u} [CommRing R] {A W : Mon (Complex R)} (N : Bimod A A)
 
 abbrev model := DGAlgebra.HomotopyPullbackModel.algebra R a (SquareZero.zeroSection A N)
 abbrev kernelComplex := mappingCocone (-(SquareZero.zeroSection A N).hom)
-abbrev sequence := complexMappingCoconeBiprodShortComplex a.hom (-(SquareZero.zeroSection A N).hom)
+abbrev sequence := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodShortComplex a.hom (-(SquareZero.zeroSection A N).hom)
 
 lemma sequence_shortExact : (sequence N a).ShortExact :=
-  complexMappingCoconeBiprodShortComplex_shortExact _ _
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodShortComplex_shortExact _ _
 
 def kernelHomologyIso (j : ℤ) : (kernelComplex N).homology j ≅ N.X.homology (j - 1) :=
   cochainNegInlCoconeHomologyIso A.X N.X j
@@ -40,7 +40,7 @@ lemma projection_quasiIsoAt (j : ℤ) (h₀ : IsZero (N.X.homology (j - 1)))
   have hz' : IsZero ((kernelComplex N).homology (j + 1)) := by
     have h : IsZero (N.X.homology (j + 1 - 1)) := by simpa using h₁
     exact h.of_iso (kernelHomologyIso N (j + 1))
-  let p := complexMappingCoconeBiprodProjection a.hom (-(SquareZero.zeroSection A N).hom)
+  let p := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodProjection a.hom (-(SquareZero.zeroSection A N).hom)
   have : Mono (homologyMap p j) :=
     ((sequence_shortExact N a).homology_exact₂ j).mono_g (hz.eq_of_src _ _)
   have : Epi (homologyMap p j) :=
@@ -67,7 +67,7 @@ lemma model_homology_isZero (j : ℤ) (hN : IsZero (N.X.homology (j - 1)))
 
 def layerHomologyIso (j : ℤ) (h₀ : IsZero (W.X.homology (j - 1)))
     (h₁ : IsZero (W.X.homology j)) : (model N a).X.homology j ≅ N.X.homology (j - 1) := by
-  let i := complexMappingCoconeBiprodInclusion a.hom (-(SquareZero.zeroSection A N).hom)
+  let i := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion a.hom (-(SquareZero.zeroSection A N).hom)
   have : Mono (homologyMap i j) :=
     ((sequence_shortExact N a).homology_exact₁ (j - 1) j
       (by change j - 1 + 1 = j; omega)).mono_g (h₀.eq_of_src _ _)

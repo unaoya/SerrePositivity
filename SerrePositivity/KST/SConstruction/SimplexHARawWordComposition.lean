@@ -15,19 +15,19 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の生の HA 値は、語の右端点・自由次元の等号移送前後で異種等号を保つ。 -/
-lemma simplexHABeadWordRawValue_reindex {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHABeadWordRawValue_reindex {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     {a b c : Fin (n + 1)} {p q : ℕ} (hb : b = c) (hd : p = q)
-    (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b p) :
-    HEq (simplexHABeadWordRawValue A s (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex hb hd word))
+    (word : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b p) :
+    HEq (simplexHABeadWordRawValue A s (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadWordReindex hb hd word))
       (simplexHABeadWordRawValue A s word) := by
   cases hb
   cases hd
   rfl
 
 /-- 元の生の HA 語の連結値は、同じ因子順の元の dg 豊穣順合成そのもの。 -/
-lemma simplexHABeadWordRawValue_join {n : ℕ} (s : DGNerve.SimplexData A D n)
-    {a b c : Fin (n + 1)} {p q : ℕ} (left : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b p)
-    (right : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n b c q) :
+lemma simplexHABeadWordRawValue_join {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
+    {a b c : Fin (n + 1)} {p q : ℕ} (left : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b p)
+    (right : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n b c q) :
     simplexHABeadWordRawValue A s (left.join right) =
       forward A (simplexHABeadWordRawValue A s left) (simplexHABeadWordRawValue A s right)
         (show -(p : ℤ) + -(q : ℤ) = -((p + q : ℕ) : ℤ) by omega) := by

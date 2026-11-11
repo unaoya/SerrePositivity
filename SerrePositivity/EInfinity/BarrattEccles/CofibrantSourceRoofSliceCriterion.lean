@@ -25,7 +25,7 @@ variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
   (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
 
 def cofibrantSourceRoofProductCornerMap : nerve (cofibrantSourceRoofProductElements A X Y b) ⟶
-    sliceOverCorner (SSet.yonedaEquiv.symm b) (cofibrantSourceRoofProjection A X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (cofibrantSourceRoofProjection A X Y) :=
   (cofibrantSourceRoofProductIso A X Y b).hom ≫
     (cofibrantSourceRoofDegreeTransportIso A X Y b).inv ≫
       roofQuillenDegreeCornerMap (cofibrantDKSourceFrame A X)
@@ -34,12 +34,12 @@ def cofibrantSourceRoofProductCornerMap : nerve (cofibrantSourceRoofProductEleme
         b (cofibrantSourceFrameRoofMap A X Y)
 
 lemma cofibrantSourceRoofSlice_weaklyContractible_of_productCorner_weak
-    (h : IsWeakHomotopyEquivalence (cofibrantSourceRoofProductCornerMap A X Y b)) :
-    IsWeaklyContractible (cofibrantSourceRoofSlice A X Y b) := by
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductCornerMap A X Y b)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (cofibrantSourceRoofSlice A X Y b) := by
   have := cofibrantSourceRoofProjection_leftFibration A X Y
   let e := cofibrantSourceRoofProductIso A X Y b ≪≫
     (cofibrantSourceRoofDegreeTransportIso A X Y b).symm
-  have he := (isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence
+  have he := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence
   apply roofQuillenSlice_weaklyContractible_of_corner_weak (cofibrantDKSourceFrame A X)
     (show (cofibrantAlgebraRelativeCategory A).category from Y)
     (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
@@ -48,8 +48,8 @@ lemma cofibrantSourceRoofSlice_weaklyContractible_of_productCorner_weak
 
 lemma cofibrantSourceRoofMap_isLeftCofinal_of_productCorner_weak
     (h : ∀ b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌,
-      IsWeakHomotopyEquivalence (cofibrantSourceRoofProductCornerMap A X Y b)) :
-    IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductCornerMap A X Y b)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
   (cofibrantSourceRoofMap_isLeftCofinal_iff_slices A X Y).2
     (fun b => cofibrantSourceRoofSlice_weaklyContractible_of_productCorner_weak A X Y b (h b))
 

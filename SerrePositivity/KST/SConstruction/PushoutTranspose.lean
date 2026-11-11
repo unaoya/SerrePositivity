@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Pasting
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pasting
 
 /-! # 押し出し正方形の転置
 概要：正方形の二座標を交換しても押し出し性は変わらない。
@@ -55,23 +55,23 @@ instance spanTranspose_isIso : IsIso spanTranspose.{u} := spanTransposeIso.isIso
 方針：余錐の二三角形への制限を計算する。
 規約：余錐の頂点は固定。使われ方：転置した押し出しの余極限判定。 -/
 lemma spanTranspose_square :
-    joinMap spanTranspose.{u} (𝟙 (Δ[0] : SSet.{u})) ≫ spanCoconeSquareIso.hom =
-      spanCoconeSquareIso.hom ≫ (β_ (Δ[1] : SSet.{u}) Δ[1]).hom := by
-  apply spanCocone_isPushout.hom_ext
-  · have he : spanCoconeTriangleLeft ≫ joinMap spanTranspose (𝟙 (Δ[0] : SSet.{u})) =
-        spanCoconeTriangleRight := by
-      simp only [spanCoconeTriangleLeft, spanCoconeTriangleRight, Category.assoc,
-        ← joinMap_comp, spanTranspose_left, Category.id_comp]
-    rw [← Category.assoc, he, spanCoconeSquareIso_right,
-      ← Category.assoc, spanCoconeSquareIso_left]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap spanTranspose.{u} (𝟙 (Δ[0] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeSquareIso.hom =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeSquareIso.hom ≫ (β_ (Δ[1] : SSet.{u}) Δ[1]).hom := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCocone_isPushout.hom_ext
+  · have he : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeTriangleLeft ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap spanTranspose (𝟙 (Δ[0] : SSet.{u})) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeTriangleRight := by
+      simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeTriangleLeft, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeTriangleRight, Category.assoc,
+        ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap_comp, spanTranspose_left, Category.id_comp]
+    rw [← Category.assoc, he, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeSquareIso_right,
+      ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeSquareIso_left]
     apply SSet.yonedaEquiv.injective
     apply Prod.ext <;> decide
-  · have he : spanCoconeTriangleRight ≫ joinMap spanTranspose (𝟙 (Δ[0] : SSet.{u})) =
-        spanCoconeTriangleLeft := by
-      simp only [spanCoconeTriangleLeft, spanCoconeTriangleRight, Category.assoc,
-        ← joinMap_comp, spanTranspose_right, Category.id_comp]
-    rw [← Category.assoc, he, spanCoconeSquareIso_left,
-      ← Category.assoc, spanCoconeSquareIso_right]
+  · have he : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeTriangleRight ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap spanTranspose (𝟙 (Δ[0] : SSet.{u})) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeTriangleLeft := by
+      simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeTriangleLeft, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeTriangleRight, Category.assoc,
+        ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap_comp, spanTranspose_right, Category.id_comp]
+    rw [← Category.assoc, he, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeSquareIso_left,
+      ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeSquareIso_right]
     apply SSet.yonedaEquiv.injective
     apply Prod.ext <;> decide
 
@@ -79,13 +79,13 @@ lemma spanTranspose_square :
 方針：span の同型による余錐の制限で余極限性を移す。
 規約：C は quasicategory。使われ方：押し出しの縦方向の相殺。 -/
 lemma IsPushoutSquare.transpose {C : SSet.{u}} [Quasicategory C]
-    {F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ C} (hF : IsPushoutSquare F) :
-    IsPushoutSquare ((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ F) := by
-  have h := IsColimitCone.restrict_of_rightAnodyne hF spanTranspose
-    (MorphismProperty.of_isIso rightAnodyneExtensions spanTranspose)
-  apply (isColimitCone_iff_of_val_eq _ _ ?_).1 h
-  change joinMap spanTranspose (𝟙 (Δ[0] : SSet.{u})) ≫ (spanCoconeSquareIso.hom ≫ F) =
-    spanCoconeSquareIso.hom ≫ ((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ F)
+    {F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ C} (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare F) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare ((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ F) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone.restrict_of_rightAnodyne hF spanTranspose
+    (MorphismProperty.of_isIso _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightAnodyneExtensions spanTranspose)
+  apply (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isColimitCone_iff_of_val_eq _ _ ?_).1 h
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap spanTranspose (𝟙 (Δ[0] : SSet.{u})) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeSquareIso.hom ≫ F) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeSquareIso.hom ≫ ((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ F)
   rw [← Category.assoc, spanTranspose_square, Category.assoc]
 
 end SerrePositivity.KST.SConstruction

@@ -25,13 +25,13 @@ def presentedPerfectDGCoreSimplicialObjectEnrichedFunctor :
 lemma presentedPerfectDGCoreSimplicialObjectEnrichedFunctor_obj
     (C : PerfDGInput.{u, v} A) (n : SimplexCategoryᵒᵖ) :
     ((presentedPerfectDGCoreSimplicialObjectEnrichedFunctor A).obj C).diagram.obj n =
-      coreSConstruction n.unop.len (dgNerve A (PresentedPerfectDGObject A C)) := rfl
+      coreSConstruction n.unop.len (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A C)) := rfl
 
 /-- 図式全体の全ての面退化は、同じ元の添字制限の core 射。 -/
 lemma presentedPerfectDGCoreSimplicialObjectEnrichedFunctor_obj_map
     (C : PerfDGInput.{u, v} A) {n m : SimplexCategoryᵒᵖ} (f : n ⟶ m) :
     ((presentedPerfectDGCoreSimplicialObjectEnrichedFunctor A).obj C).diagram.map f =
-      coreSMap (dgNerve A (PresentedPerfectDGObject A C)) f.unop.toOrderHom := rfl
+      coreSMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A C)) f.unop.toOrderHom := rfl
 
 /-- 図式全体の Hom の各射影は、同じ段の全 native Kan 入力族を回収する。 -/
 lemma presentedPerfectDGCoreSimplicialObjectEnrichedFunctor_projection
@@ -51,7 +51,7 @@ def presentedPerfectDGCoreSimplicialObjectMap {C D : PerfDGInput.{u, v} A} (F : 
   Functor.whiskerRight (show
     ((presentedPerfectDGSimplicialObjectEnrichedFunctor A).obj C).diagram ⟶
       ((presentedPerfectDGSimplicialObjectEnrichedFunctor A).obj D).diagram from
-        presentedPerfectDGSimplicialObjectMap A F) quasicategoryCoreFunctor
+        presentedPerfectDGSimplicialObjectMap A F) _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
 
 /-- 通常 dg 入力射では、同じ元の core S• 自然変換の豊穣表示を回収する。 -/
 lemma presentedPerfectDGCoreSimplicialObjectEnrichedFunctor_hom

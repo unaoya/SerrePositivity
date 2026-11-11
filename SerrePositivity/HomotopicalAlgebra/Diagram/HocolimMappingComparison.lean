@@ -23,9 +23,9 @@ open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 namespace SerrePositivity.DiagramModel.HocolimMappingComparison
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [ModelCategory SSet.{w}]
-  (IS JS : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  (IS JS : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (D : K ⥤ C)
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
@@ -43,7 +43,7 @@ abbrev fromRMap : (chosenResolutionHom cof fib).obj
     (WeightedHomotopyColimitFrame.augmentation K I J IS JS D))
 
 abbrev fromFrame : fibrantTarget fib ⋙
-    cosimplicialHom (WeightedHomotopyColimitFrame.frame K I J IS JS D) ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (WeightedHomotopyColimitFrame.frame K I J IS JS D) ⟶
       middle K I J IS JS D cof fib :=
   Functor.whiskerLeft (fibrantTarget fib) (FrameOverObject.right cof
     (cosimplicialResolutionFamily cof) ((HomotopyColimit.functor K I J).obj D)
@@ -57,7 +57,7 @@ abbrev liftedFromFrame := Functor.whiskerRight (fromFrame K I J IS JS D cof fib)
 
 /-- This is the middle isomorphism of the actual lifted zigzag. -/
 def weightedIso : fibrantTarget fib ⋙
-    cosimplicialHom (WeightedHomotopyColimitFrame.frame K I J IS JS D) ⋙
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (WeightedHomotopyColimitFrame.frame K I J IS JS D) ⋙
       SSet.uliftFunctor.{w,v} ≅
     fibrantTarget fib ⋙ FrameWeightedLimit.weightedHom K IS JS
       (WeightedSourceComparison.frames K I J D) ⋙ SSet.uliftFunctor.{v,w} :=

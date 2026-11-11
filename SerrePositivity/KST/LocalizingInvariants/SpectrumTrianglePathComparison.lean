@@ -25,9 +25,9 @@ local instance trianglePathCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
 
 variable {X Y Z : OmegaSpectrum.{u}} (a : X ⟶ Y) (q : Y ⟶ Z) (s : Sp.{u} _⦋2⦌)
-  (h₂ : Sp.δ 2 s = (coherentNerveEdge a).edge)
-  (h₀ : Sp.δ 0 s = (coherentNerveEdge q).edge)
-  (d : X ⟶ Z) (h₁ : Sp.δ 1 s = (coherentNerveEdge d).edge)
+  (h₂ : Sp.δ 2 s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge)
+  (h₀ : Sp.δ 0 s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q).edge)
+  (d : X ⟶ Z) (h₁ : Sp.δ 1 s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d).edge)
 
 def pathRealization := SpectrumMappingPath.normalizedIntervalRealization d (a ≫ q)
   (Truncated.HomotopyCategory.homMk (diagonalEdge a q s h₂ h₀ d h₁).toTruncated)
@@ -42,28 +42,28 @@ lemma path_interval_image : Truncated.HomotopyCategory.homMk
 
 lemma path_arrow_image : SpectrumMappingPath.arrowHom (path a q s h₂ h₀ d h₁) =
     Truncated.HomotopyCategory.homMk
-      ((diagonalEdge a q s h₂ h₀ d h₁).map (vertexFiberι _ _)).toTruncated :=
-  congrArg (fun k ↦ (hoFunctor.map (vertexFiberι _ _)).toFunctor.map k)
+      ((diagonalEdge a q s h₂ h₀ d h₁).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι _ _)).toTruncated :=
+  congrArg (fun k ↦ (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι _ _)).toFunctor.map k)
     (path_interval_image a q s h₂ h₀ d h₁)
 
 def diagonalHomotopy : SSet.Homotopy
-    (SSet.yonedaEquiv.symm (coherentNerveEdge d).edge)
-    (SSet.yonedaEquiv.symm (coherentNerveEdge (a ≫ q)).edge) :=
-  simplicialHomotopyOfFunctorEdge
-    ((diagonalEdge a q s h₂ h₀ d h₁).map (vertexFiberι _ _)).toTruncated
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d).edge)
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (a ≫ q)).edge) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge
+    ((diagonalEdge a q s h₂ h₀ d h₁).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι _ _)).toTruncated
 
 lemma diagonalHomotopy_map : (diagonalHomotopy a q s h₂ h₀ d h₁).h =
     (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) ≫ prism a q s h₂ h₀ := by
   rw [prism_diagonal a q s h₂ h₀ d h₁]
-  unfold intervalMappingUncurry
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry
   rw [SSet.yonedaEquiv_symm_comp]
   rfl
 
 lemma path_homotopy_image : SpectrumMappingPath.arrowHom (path a q s h₂ h₀ d h₁) =
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (diagonalHomotopy a q s h₂ h₀ d h₁)) := by
-  have hr : functorEdgeOfSimplicialHomotopy (diagonalHomotopy a q s h₂ h₀ d h₁) =
-      ((diagonalEdge a q s h₂ h₀ d h₁).map (vertexFiberι _ _)).toTruncated := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (diagonalHomotopy a q s h₂ h₀ d h₁)) := by
+  have hr : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (diagonalHomotopy a q s h₂ h₀ d h₁) =
+      ((diagonalEdge a q s h₂ h₀ d h₁).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι _ _)).toTruncated := by
     apply Truncated.Edge.ext
     change SSet.yonedaEquiv (curry (uncurry (SSet.yonedaEquiv.symm _))) = _
     rw [curry_uncurry, Equiv.apply_symm_apply]

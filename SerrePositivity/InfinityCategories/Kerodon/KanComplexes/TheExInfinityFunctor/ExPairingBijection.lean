@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 方針：対応先の一意性と Moss Lemmas 28・29 の非退化性を使う。
 規約：Moss 2020 Theorem 22 の pairing。正則性は別の条件。
 使われ方：全次元の非退化単体の分割と Mathlib の pairing の構成。
+
+対応節は Kerodon 3.3（Tag 00XF）。
 -/
 
 @[expose] public section

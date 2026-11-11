@@ -27,10 +27,10 @@ def limOneBoundary (r : ℕ) :
     letI := PointedTotalization.kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)
     letI : ∀ n, KanComplex (stage X n).right := fun n ↦ stage_kanComplex X hX n
     letI : ∀ n, Fibration (step X n).right := fun n ↦ map_fibration X hX (Nat.le_succ n)
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stage X n).right (r + 1) (stage X n).basepoint)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stage X n).right (r + 1) (stage X n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (step X n)) →
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedTotalization.obj X).right r
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedTotalization.obj X).right r
         (PointedTotalization.obj X).basepoint := by
   let := PointedTotalization.kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)
   let : ∀ n, KanComplex (stage X n).right := fun n ↦ stage_kanComplex X hX n
@@ -44,7 +44,7 @@ lemma limOneBoundary_point (r : ℕ) :
     letI := PointedTotalization.kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)
     letI : ∀ n, KanComplex (stage X n).right := fun n ↦ stage_kanComplex X hX n
     letI : ∀ n, Fibration (step X n).right := fun n ↦ map_fibration X hX (Nat.le_succ n)
-    limOneBoundary X hX r (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _) = 1 := by
+    limOneBoundary X hX r (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _) = 1 := by
   let := PointedTotalization.kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)
   let : ∀ n, KanComplex (stage X n).right := fun n ↦ stage_kanComplex X hX n
   let : ∀ n, Fibration (step X n).right := fun n ↦ map_fibration X hX (Nat.le_succ n)
@@ -69,8 +69,8 @@ lemma groupComparison_limOneBoundary (r : ℕ) :
     letI := PointedTotalization.kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)
     letI : ∀ n, KanComplex (stage X n).right := fun n ↦ stage_kanComplex X hX n
     letI : ∀ n, Fibration (step X n).right := fun n ↦ map_fibration X hX (Nat.le_succ n)
-    ∀ a : _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stage X n).right (r + 1) (stage X n).basepoint)
+    ∀ a : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stage X n).right (r + 1) (stage X n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (step X n)),
       groupComparison X hX r (limOneBoundary X hX r a) = 1 := by
   let := PointedTotalization.kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)

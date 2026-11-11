@@ -17,7 +17,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の零端点追加生成元の HA 値は、同じ最右頂点を削除した前段の HA 値。 -/
-lemma simplexHAGeneratorValue_point_zero_heq {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHAGeneratorValue_point_zero_heq {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (v : Fin (m + 2) ↪o Fin (n + 1))
     (b : Fin (n + 1)) (hb : v (Fin.last (m + 1)) < b) :
     HEq (simplexHAGeneratorValue A s (m + 1) (i, 0) v b hb)
@@ -31,7 +31,7 @@ lemma simplexHAGeneratorValue_point_zero_heq {n : ℕ} (s : DGNerve.SimplexData 
             (serreCubeGeneratorDegree_freeDimension m i).symm _).symm)
 
 /-- 元の右端零面への前合成は、全整数次数で元の削除頂点列の HA 線形復元と一致する。 -/
-lemma simplexHADegreeLift_zero_face_restriction {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADegreeLift_zero_face_restriction {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (k : ℤ) :
     (serreCubeFace A false m 0).hom.f k ≫ simplexHADegreeLift A s (m + 1) v b hb k =

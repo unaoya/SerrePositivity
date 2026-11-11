@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.UniverseLiftAnodyne
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.UniverseLiftAnodyne
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarEvaluationEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.MixedResolutionInvariance
@@ -53,7 +53,7 @@ lemma small_map_isIso {X Y : SSet.{v}} (f : X ⟶ Y)
     (hf : weakEquivalences SSet.{v} f) :
     IsIso (L.map (SSet.uliftFunctor.{max u v, v}.map f)) :=
   AnodyneHomotopy.map_isIso_of_anodyneQ_isIso L hL _
-    (UniverseLift.anodyneQ_map_isIso_of_weakEquivalence hcof hfib f hf)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.anodyneQ_map_isIso_of_weakEquivalence hcof hfib f hf)
 
 include hcof hfib hL in
 lemma right_isIso : IsIso (Functor.whiskerRight

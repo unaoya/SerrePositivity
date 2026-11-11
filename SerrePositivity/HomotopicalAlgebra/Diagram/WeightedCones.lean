@@ -54,7 +54,7 @@ def adjunction (W : K ⥤ SSet.{w}) : tensorDiagram K W ⊣ coneSpace K W :=
   Adjunction.ofIsLeftAdjoint _
 
 variable [ModelCategory SSet.{w}]
-  (I J : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{w})]
 
 lemma tensorDiagram_isLeftQuillen (W : K ⥤ SSet.{w})

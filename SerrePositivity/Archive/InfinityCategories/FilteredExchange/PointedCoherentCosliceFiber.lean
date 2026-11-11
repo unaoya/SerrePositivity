@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedCoherentCosliceNormalization
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedCoherentFiberComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointedCoherentFiberComparison
 
 /-!
 概要：coherent な一点 coslice の全空間の正規化と、元の fiber 比較を照合する。

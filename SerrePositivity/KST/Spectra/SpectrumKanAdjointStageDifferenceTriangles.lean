@@ -29,7 +29,7 @@ def kanAdjointStageDifference (n : ℕ) :=
 /-- 次段の同じ比較三角形を、元の源の構造射へ制限した二単体。 -/
 def kanAdjointStageDifferenceSourceTriangle (n : ℕ) :=
   SSet.yonedaEquiv.symm (kanAdjointStageDifference X Y φ j (n + 1)).triangle.simplex ≫
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
       ((KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).level
         (n + 1)).space).right
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.InverseComparisonCounitSecondTriangle
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedValueRightInverse
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointedValueRightInverse
 
 /-!
 概要：元の pointed 値比較の指定単位と指定余単位の三角恒等式を証明する。

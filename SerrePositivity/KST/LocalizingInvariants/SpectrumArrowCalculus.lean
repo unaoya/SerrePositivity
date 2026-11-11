@@ -25,21 +25,21 @@ local instance arrowCalculusCategory : SimplicialCategory OmegaSpectrum.{u} :=
 variable {A B C D : OmegaSpectrum.{u}}
 
 def diagram {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) :=
-  SSet.yonedaEquiv.symm (coherentNerveEdge f).edge
+  SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge
 
 def obj {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) :=
-  HomotopyCategory.mk (functorVertex (diagram f))
+  HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (diagram f))
 
 def post (a : A ⟶ B) (b : B ⟶ C) : obj a ⟶ obj (a ≫ b) :=
   Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (SpectrumTriangleNormalization.canonicalPost a b))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (SpectrumTriangleNormalization.canonicalPost a b))
 
 def pre (a : A ⟶ B) (b : B ⟶ C) : obj (a ≫ b) ⟶ obj b :=
   Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (SpectrumTriangleNormalization.canonicalPre a b))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (SpectrumTriangleNormalization.canonicalPre a b))
 
 def preAt (a : A ⟶ B) (b : B ⟶ C) {d : A ⟶ C} (h : a ≫ b = d) : obj d ⟶ obj b :=
-  Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+  Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
     (HomotopyArrow.rebase (SpectrumTriangleNormalization.canonicalPre a b)
       (congrArg diagram h) rfl))
 

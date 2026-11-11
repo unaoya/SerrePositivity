@@ -22,15 +22,15 @@ open CategoryTheory MonoidalCategory
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C)
 
 lemma inclusion_unit (X : Paths C) :
-    colimitUnit (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ≫ inclusion W X X =
-      colimitUnit W.paths X := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ≫ inclusion W X X =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit W.paths X := by
   ext n p
   exact inclusion_unitPoint W X n
 
 lemma inclusion_composition (X Y Z : Paths C) :
-    colimitComposition (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ⟨Y⟩ ⟨Z⟩ ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ⟨Y⟩ ⟨Z⟩ ≫
       inclusion W X Z =
-        (inclusion W X Y ⊗ₘ inclusion W Y Z) ≫ colimitComposition W.paths X Y Z := by
+        (inclusion W X Y ⊗ₘ inclusion W Y Z) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition W.paths X Y Z := by
   ext n p
   exact inclusion_composePoint W X Y Z p.1 p.2
 

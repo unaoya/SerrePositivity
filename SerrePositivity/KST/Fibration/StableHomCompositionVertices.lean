@@ -17,26 +17,26 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の通常完全射の全 Hom の頂点表示は、同じ元の関手頂点を回収する。 -/
-theorem stableHomAmbient_homEquiv' {A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (f : A ⟶ B) :
+theorem stableHomAmbient_homEquiv' {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (f : A ⟶ B) :
     (stableHomAmbient A B).app (Opposite.op ⦋0⦌)
-      (SimplicialCategory.homEquiv' A B f) = functorVertex f.hom := by
-  have he := (congrArg (fun h => h ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B).ι)
-    (stableExactCoreHomEquiv_inclusion f)).trans (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv_ι f)
+      (SimplicialCategory.homEquiv' A B f) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f.hom := by
+  have he := (congrArg (fun h => h ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors A B).ι)
+    (stableExactCoreHomEquiv_inclusion f)).trans (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactHomEquiv_ι f)
   exact congrArg (SSet.unitHomEquiv _)
     ((Category.assoc (eHomEquiv SSet f)
-      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u})).ι (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B).ι).symm.trans he)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors A B : SSet.{u})).ι (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors A B).ι).symm.trans he)
 
 /-- 零圏を通る元の二つの完全関手の全 Hom の合成頂点は零値関手である。 -/
-theorem stableHomZeroVertex_comp_throughZero {A Z B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}}
-    (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory Z) (v : (A ⟶[SSet.{u}] Z) _⦋0⦌)
+theorem stableHomZeroVertex_comp_throughZero {A Z B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}}
+    (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory Z) (v : (A ⟶[SSet.{u}] Z) _⦋0⦌)
     (w : (Z ⟶[SSet.{u}] B) _⦋0⦌) :
     StableHomZeroVertex A B ((eComp SSet A Z B).app (Opposite.op ⦋0⦌) (v, w)) := by
   obtain ⟨f, rfl⟩ := (SimplicialCategory.homEquiv' A Z).surjective v
   obtain ⟨g, rfl⟩ := (SimplicialCategory.homEquiv' Z B).surjective w
   have hz : StableHomZeroVertex A B (SimplicialCategory.homEquiv' A B (f ≫ g)) := by
-    change IsZeroVertex ((stableHomAmbient A B).app (Opposite.op ⦋0⦌) _)
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((stableHomAmbient A B).app (Opposite.op ⦋0⦌) _)
     have hf := isZeroVertex_functorVertex_of_pointwise (f.hom ≫ g.hom)
-      (fun a => IsExactFunctor.preservesZero (F := g.hom) _
+      (fun a => _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := g.hom) _
         (hZ (f.hom.app (Opposite.op ⦋0⦌) a)))
     exact (stableHomAmbient_homEquiv' (f ≫ g)).symm ▸ hf
   exact simplicialHomVertex_comp f g ▸ hz

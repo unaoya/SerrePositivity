@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionSimplex
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionCoordinates
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionCoordinates
 
 /-!
 概要：元の合成単体の最後への Hom の座標と、同じ固定射の後合成を照合する。

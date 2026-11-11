@@ -39,36 +39,36 @@ structure RawComparisonStage (n : ℕ) where
 /-- 零段には新しい比較円柱を選ばず、元の円柱と定数な補正を保持する。 -/
 def rawComparisonBase : RawComparisonStage X Y a b H 0 where
   val := H 0
-  correction := functorHomotopyRefl (H 0).h
+  correction := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl (H 0).h
   boundary := whiskerRight_fst_assoc _ _ _
 
 variable
   (L : ∀ n, SSet.Homotopy
-    ((H (n + 1)).h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+    ((H (n + 1)).h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
     ((H n).h ≫ RawSpectrumMapping.step X Y n))
   (hL : ∀ n, ((U ◁ (SSet.boundary 1).ι) ▷ (Δ[1] : SSet.{u})) ≫ (L n).h =
     fst (U ⊗ (SSet.boundary 1).toSSet) Δ[1] ≫ (U ◁ (SSet.boundary 1).ι) ≫
-      (H (n + 1)).h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+      (H (n + 1)).h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
 
 local instance rawComparisonRestrictionFibration (n : ℕ) :
-    Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration _ _
+    Fibration (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_fibration _ _
 
 /-- 累積前段補正を元の適合比較へ相対合成して、同じ全比較を次段で持ち上げる。 -/
 def rawComparisonNext (n : ℕ) (s : RawComparisonStage X Y a b H n) :
     {t : RawComparisonStage X Y a b H (n + 1) //
-      t.val.h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+      t.val.h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
         s.val.h ≫ RawSpectrumMapping.step X Y n} := by
   let j := U ◁ (SSet.boundary 1).ι
   let step := RawSpectrumMapping.step X Y n
-  let K := functorHomotopyPostcomp s.correction step
+  let K := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp s.correction step
   have hK : (j ▷ (Δ[1] : SSet.{u})) ≫ K.h =
       fst (U ⊗ (SSet.boundary 1).toSSet) Δ[1] ≫ j ≫ ((H n).h ≫ step) := by
     change (j ▷ (Δ[1] : SSet.{u})) ≫ s.correction.h ≫ step = _
     rw [← Category.assoc, s.boundary, Category.assoc, Category.assoc]
   let C := sourceFixedBoundaryComposition j (L n) K (hL n) hK
   let D := cylinderBoundaryAdjustmentData
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) (H (n + 1))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) (H (n + 1))
     (rawStageComparisonImage X Y a b n s.val) C.homotopy C.relative
   exact ⟨⟨D.val, D.comparison, D.boundary⟩, D.projection⟩
 
@@ -80,7 +80,7 @@ def rawComparisonStage : (n : ℕ) → RawComparisonStage X Y a b H n
 /-- 隣接する二段の実比較円柱は厳密な全射の等号で構造適合する。 -/
 lemma rawComparisonStage_condition (n : ℕ) :
     (rawComparisonStage X Y a b H L hL (n + 1)).val.h ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
     (rawComparisonStage X Y a b H L hL n).val.h ≫ RawSpectrumMapping.step X Y n :=
   (rawComparisonNext X Y a b H L hL n (rawComparisonStage X Y a b H L hL n)).property
 

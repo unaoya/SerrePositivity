@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismLowerSides
-public import SerrePositivity.InfinityCategories.Core.Square
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.TrianglePrismLowerSides
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Square
 
 /-!
 概要：三角柱の側面の元の二単体を、同じ辺の全正方形の標準三角形で表示する。

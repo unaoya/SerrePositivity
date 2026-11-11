@@ -24,20 +24,20 @@ def cubicalDayTensorRight (L : CubicalSet.{u}) : CubicalSet.{u} ⥤ CubicalSet.{
 
 /-- 左因子を固定した外積の Kan 延長と元の Day tensor の自然同型。 -/
 def cubicalDayKanLeftIso (K : CubicalSet.{u}) :
-    cubicalExternalLeft K ⋙ (tensor _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ).lan ≅ cubicalDayTensorLeft K :=
+    cubicalExternalLeft K ⋙ (tensor _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ).lan ≅ cubicalDayTensorLeft K :=
   NatIso.ofComponents (fun L => cubicalDayKanIso K L)
     (fun f => cubicalDayKanIso_naturality (𝟙 K) f)
 
 /-- 右因子を固定した外積の Kan 延長と元の Day tensor の自然同型。 -/
 def cubicalDayKanRightIso (L : CubicalSet.{u}) :
-    cubicalExternalRight L ⋙ (tensor _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ).lan ≅ cubicalDayTensorRight L :=
+    cubicalExternalRight L ⋙ (tensor _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ).lan ≅ cubicalDayTensorRight L :=
   NatIso.ofComponents (fun K => cubicalDayKanIso K L)
     (fun f => cubicalDayKanIso_naturality f (𝟙 L))
 
 /-- 具体的立方体の tensor に沿う左 Kan 延長は、同じ大きさの余極限を保つ。 -/
 instance cubicalTensorKan_preservesColimits : PreservesColimitsOfSize.{u, u}
-    ((tensor _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ).lan (H := Type u)) :=
-  ((tensor _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ).lanAdjunction (Type u)).leftAdjoint_preservesColimits
+    ((tensor _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ).lan (H := Type u)) :=
+  ((tensor _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ).lanAdjunction (Type u)).leftAdjoint_preservesColimits
 
 /-- 元の左因子を固定した Day tensor は余極限を保つ。 -/
 instance cubicalDayTensorLeft_preservesColimits (K : CubicalSet.{u}) :

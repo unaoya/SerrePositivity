@@ -54,7 +54,7 @@ def rationalLoopProjection (X : OmegaSpectrum.{u}) :
 規約：零次数を含む。
 使われ方：BF 1978 §2、Goerss–Jardine I §7。逆方向の実際の射の構成条件。 -/
 theorem rationalLoopProjection_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((rationalLoopProjection X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((rationalLoopProjection X).app n).right :=
   KanSequence.filteredSpectrumMap_levelwise
     (D := rationalDiagram X ⋙ forgetToKan) (E := rawRationalDiagram X)
     (fun a ↦ ((rationalDiagram X).obj a).toKanSequence_omega)
@@ -74,7 +74,7 @@ def rationalizationProjection (X : OmegaSpectrum.{u}) :
 規約：零次数を含む。
 使われ方：Goerss–Jardine I §7。比較射の逆方向への BF 射。 -/
 theorem rationalizationProjection_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((rationalizationProjection X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((rationalizationProjection X).app n).right :=
   rationalLoopProjection_levelwise X (n + 1)
 
 /-- 概要：元の射から有理化対象間の実際の厳密な射を構成する。

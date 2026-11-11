@@ -80,7 +80,7 @@ lemma unit_anodyne (X : CosimplicialObject PointedSimplicialSet.{u}) (j : Simple
 使われ方：Goerss–Jardine VII §4。点つき Tot の係数の比較。 -/
 lemma unit_piIsomorphism (X : CosimplicialObject PointedSimplicialSet.{u})
     [∀ j, KanComplex (X.obj j).right] (j : SimplexCategory) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (X := (X.obj j).right) (Y := ((obj X).obj j).right)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (X := (X.obj j).right) (Y := ((obj X).obj j).right)
       ((unitApp X).app j).right :=
   kanPiIsomorphism_of_anodyne _ (unit_anodyne X j)
 

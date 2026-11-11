@@ -23,12 +23,12 @@ lemma perfectSemiorthogonalVerdierSequence_vertices :
       (perfectSemiorthogonalVerdierSequence d).rightVertex = b := by
   constructor
   · apply Subtype.ext
-    exact _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex_object a.val
+    exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex_object a.val
   constructor
   · apply Subtype.ext
-    exact _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex_object t.val
+    exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex_object t.val
   · apply Subtype.ext
-    exact _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex_object b.val
+    exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex_object b.val
 
 /-- 元の右包含を同じ不変量で写した、元の右値から中央値への実際の射の類。 -/
 def perfectSemiorthogonalValueSection (E : perfectStableInfinity.{u} ⟶ Sp.{u}) :
@@ -44,7 +44,7 @@ lemma perfectSemiorthogonalValueSection_section (E : perfectStableInfinity.{u} �
           (perfectSemiorthogonalVerdierSequence d).middle_complete
           (perfectSemiorthogonalVerdierSequence d).right_complete = 𝟙 _ := by
   have hp : (perfectSemiorthogonalVerdierSequence d).projection = d.projection :=
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (perfectSemiorthogonalVerdierSequence_projection d)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.ext (perfectSemiorthogonalVerdierSequence_projection d)
   change perfectInvariantHoArrow E d.rightInclusion
       (perfectStableObject_isIdempotentComplete b) (perfectStableObject_isIdempotentComplete t) ≫
     perfectInvariantHoArrow E (perfectSemiorthogonalVerdierSequence d).projection
@@ -87,7 +87,7 @@ lemma IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEquivalence_project
       SpectrumHo.hom (Binary.snd _ _) ≫
         (hE.perfectSplitRightFactorIso (perfectSemiorthogonalVerdierSequence d)).inv := by
   have hp : (perfectSemiorthogonalVerdierSequence d).projection = d.projection :=
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (perfectSemiorthogonalVerdierSequence_projection d)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.ext (perfectSemiorthogonalVerdierSequence_projection d)
   have h := hE.perfectSplitEquivalence_projection (perfectSemiorthogonalVerdierSequence d)
     (perfectSemiorthogonalValueSection d E) (perfectSemiorthogonalValueSection_section d E)
   rw [hp] at h

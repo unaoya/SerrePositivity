@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 方針：始域を正規化したテンソルから包含し、終域の両因子を PInfty で射影する。
 規約：KST Construction A.5、非被約な複体を保つ。任意の加群の宇宙で構成する。
 使われ方：二つの差の正規化全テンソルの消滅を使う比較。
+
+対応節は Kerodon 2.5（Tag 00ND）。
 -/
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

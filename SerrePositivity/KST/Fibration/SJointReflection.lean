@@ -22,9 +22,9 @@ lemma JointlyReflectsSData.sConstruction {P X A : StableModel.{u}}
   zero v hp hq := by
     have hp' := (gappedInclusion_preservesSConstructionData n X.carrier).1 _ hp
     have hq' := (gappedInclusion_preservesSConstructionData n A.carrier).1 _ hq
-    change IsZeroVertex ((sPostcompCofiber n p.val p.property ≫
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sPostcompCofiber n p.val p.property ≫
       (gappedSubcomplex n X.carrier).ι).app _ v) at hp'
-    change IsZeroVertex ((sPostcompCofiber n q.val q.property ≫
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sPostcompCofiber n q.val q.property ≫
       (gappedSubcomplex n A.carrier).ι).app _ v) at hq'
     rw [sPostcompCofiber_ι] at hp' hq'
     have hz := (h.ihom (arNerve n)).zero v.val hp' hq'
@@ -33,13 +33,13 @@ lemma JointlyReflectsSData.sConstruction {P X A : StableModel.{u}}
   pushout F hp hq := by
     have hp' := (gappedInclusion_preservesSConstructionData n X.carrier).2 _ hp
     have hq' := (gappedInclusion_preservesSConstructionData n A.carrier).2 _ hq
-    change IsPushoutSquare ((F ≫ sPostcompCofiber n p.val p.property) ≫
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare ((F ≫ sPostcompCofiber n p.val p.property) ≫
       (gappedSubcomplex n X.carrier).ι) at hp'
-    change IsPushoutSquare ((F ≫ sPostcompCofiber n q.val q.property) ≫
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare ((F ≫ sPostcompCofiber n q.val q.property) ≫
       (gappedSubcomplex n A.carrier).ι) at hq'
     rw [Category.assoc, sPostcompCofiber_ι, ← Category.assoc] at hp' hq'
     apply isPushoutSquare_fullSubcomplex_of_ambient
-      (fun v => IsGapped ((functorVertexEquiv (arNerve n) P.carrier).symm v))
+      (fun v => IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) P.carrier).symm v))
     exact (h.ihom (arNerve n)).pushout _ hp' hq'
 
 end SerrePositivity.KST.Fibration

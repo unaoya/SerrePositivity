@@ -11,21 +11,21 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の射の左端に k 個の入力保持を加える。 -/
-def cubeVertexLeftWhisker : (k : ℕ) → {n m : ℕ} → (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m) →
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (n + k) → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (m + k))
+def cubeVertexLeftWhisker : (k : ℕ) → {n m : ℕ} → (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m) →
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex (n + k) → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex (m + k))
   | 0, _, _, f => f
   | k + 1, _, _, f => cubeVertexLeftKeep (cubeVertexLeftWhisker k f)
 
 /-- 有限左端保持は元の生成条件を保つ。 -/
-lemma cubeMapGenerated_leftWhisker (k : ℕ) {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
-    (h : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (cubeVertexLeftWhisker k f) := by
+lemma cubeMapGenerated_leftWhisker (k : ℕ) {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m}
+    (h : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeMapGenerated f) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeMapGenerated (cubeVertexLeftWhisker k f) := by
   induction k with
   | zero => exact h
   | succ k ih => exact cubeMapGenerated_leftKeep ih
 
 /-- 有限左端保持は元の恒等写像を保つ。 -/
 lemma cubeVertexLeftWhisker_id (k n : ℕ) :
-    cubeVertexLeftWhisker k (_root_.id : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) = _root_.id := by
+    cubeVertexLeftWhisker k (_root_.id : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n) = _root_.id := by
   induction k with
   | zero => rfl
   | succ k ih =>
@@ -34,7 +34,7 @@ lemma cubeVertexLeftWhisker_id (k n : ℕ) :
 
 /-- 有限左端保持は元の写像合成を保つ。 -/
 lemma cubeVertexLeftWhisker_comp (k : ℕ) {n m l : ℕ}
-    (f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m) (g : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex l) :
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m) (g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex l) :
     cubeVertexLeftWhisker k (g ∘ f) =
       cubeVertexLeftWhisker k g ∘ cubeVertexLeftWhisker k f := by
   induction k with
@@ -45,18 +45,18 @@ lemma cubeVertexLeftWhisker_comp (k : ℕ) {n m l : ℕ}
     rfl
 
 /-- 元の具体的立方体圏での有限左端保持関手。 -/
-def concreteCubeLeftWhisker (k : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube ⥤ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube where
+def concreteCubeLeftWhisker (k : ℕ) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube ⥤ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube where
   obj X := ⟨X.dimension + k⟩
   map f := ⟨cubeVertexLeftWhisker k f.val, cubeMapGenerated_leftWhisker k f.property⟩
   map_id X := Subtype.ext (cubeVertexLeftWhisker_id k X.dimension)
   map_comp f g := Subtype.ext (cubeVertexLeftWhisker_comp k f.val g.val)
 
 /-- 零個の左端保持は元の具体的な射。 -/
-lemma concreteCubeLeftWhisker_zero_map {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
+lemma concreteCubeLeftWhisker_zero_map {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube} (f : X ⟶ Y) :
     (concreteCubeLeftWhisker 0).map f = f := rfl
 
 /-- 一個増やす更新は元の左端保持の後合成。 -/
-lemma concreteCubeLeftWhisker_succ_map (k : ℕ) {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
+lemma concreteCubeLeftWhisker_succ_map (k : ℕ) {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube} (f : X ⟶ Y) :
     (concreteCubeLeftWhisker (k + 1)).map f =
       concreteCubeLeftKeep.map ((concreteCubeLeftWhisker k).map f) := rfl
 
