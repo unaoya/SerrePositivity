@@ -133,3 +133,17 @@ D77 を含む main を取り込み（枝の merge は `f5e8bc39d`）、H1 の実
 **検証。** 対象8モジュールのビルドが成功（依存分を含む4,235ジョブ）。公開24宣言の `#check`・`#print axioms`・`#print sorries` が通り、sorry なし、依存公理は `propext`・`Classical.choice`・`Quot.sound` のみ。新規ファイルに KST の直接 import はない。
 
 H3・H4 は、指示書 §3 の⑤bの四モジュールの main への取り込み通知を待つ。⑤bの枝の直接 merge はしていない。HT 比較の写像の組み立てと Tot の比較は G10 の後に残す。
+
+## 8. 段3・H3 先行分（2026-11-11 夕、停止点3は未到達）
+
+指示書 §4 に従い main を `2af7f8377` まで取り込み、main にある部品だけで H3 の先行分を実装した。新規15モジュール・1,230行。既存の数学の宣言・drafts・入口・監査登録は変更していない。
+
+- `CategoryTheory/CechNerveData`：対象と射の宇宙を分けた通常の圏の Čech データ、標準頂点の余積から反対圏の積への構成、必要な有限冪を保つ関手による移送、弱始性から弱終性への反転。
+- `CechAlexanderPresentation/RingPresentation/Coproduct/Choice`：変数像の一意な δ 環射を site の射へ移し、余単体的対象・弱始性・標準頂点を脚とする余積・Čech データを構成した。二つの包絡の選択の比較は全単体射に自然な同型。一般の包絡と BigCech の site の可換条件は共通の `ofRingLift` で共有した。
+- `CechAlexanderEnvelopeData/Lift/Assembly/FreeDelta/EnvelopeMaps`：`HasEnvelopes` は drafts と同じ存在命題にした。J は原典どおり導来 p 完備化の H⁰ への核で、通常の閉包へ置き換えていない。`IsPrismaticEnvelope.of_closure` により生の評価核の普遍性を取り出す。任意の HasEnvelopes から実際の site の対象・余単体的構造・弱始性・標準余積を構成し、構造射が包絡の単位を介して完備自由 δ 環の構造射を延長することまで示した。
+- `BigCechSitePresentation/Alexander/Affine`・`CechAlexanderBounds`：main の `BigCechTerm`・`existsUnique_liftVariables`・`residueSection` と既存の有界な `affineBigCechTerm` を再利用した。各元を各頂点の変数にする場合の濃度を cutoff で抑え、有限完備多項式の `HasEnvelopes` を供給した。site の構造射の台環射は既存の `BigCechTerm.map` と一致するので、既存 `bigCechAlexander` の構造射を作り直していない。
+- `CechAlexanderComplex`：通常の A 加群の交代余面複体と、各 prism の mod d を取った交代余面複体を定義した。後者は A/d 上の代数を取って A に係数を制限する。導来極限・Tot・RΓ との比較は含めていない。
+
+**検証。** 全15モジュールの対象ビルドが成功。公開72宣言の `#check`・`#print axioms`・`#print sorries` が通り、sorry なし、依存公理は `propext`・`Classical.choice`・`Quot.sound` のみ。KST の直接 import、sorry、公理の新設はない。新しい鍵で整理券は常に一枚とし、鍵は対象ビルドと Lean の宣言監査の間だけ使用した。
+
+**残り。** 停止点3にはまだ達していない。⑤b の `AffineCechFrameLift`・`BigCechVertexFrame`・`AffineEnvelope*` を要する部分と H4 は、main への取り込み通知の後に進める。⑤b の枝の直接 merge はしていない。一般の包絡の存在を今回追加したという意味ではなく、一般は HasEnvelopes の下の構成、実在する族の供給は main の有限完備多項式の場合である。
