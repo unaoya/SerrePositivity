@@ -542,3 +542,71 @@ H=H_Cech^q(M;d)、αₙ:H_Cech^q(IⁿM;d)→H を包含から作り、Fₙ=range
 核では Kₙ=ker(αₙ) の成分ごとの直和を E の B 部分加群にする。今回の単項式の公式が閉性を与える。B の Noether 性と E の有限性で核も有限となり、有限生成元の各直和成分を集めて有限な斉次生成元に取り替える。その次数の上界を c とすると、l≥n+c で K_l→K_n が零になる：次数 j≤c の生成元への係数は I^(l-j) に入り、Iⁿ にも入るため、遷移は H_Cech^q(IʲM)→H_Cech^q(M) を経由して零となる。この零化と Čech 複体の短完全列の長完全列を合わせ、実際の核の評価と像の安定化を得る。
 
 完備化では、一様な核の評価と像の安定化を使って互換な剰余類を持ち上げ、既存の I 進完備化との同型を作る。条件付きのフィルトレーション評価だけを形式関数の完成とは呼ばない。これらの構成と、§9 の共通アフィン細分・底変換・閉厚化・Frobenius・filtered colimit の自然性が残る。**停止点 2e ではない**。最終出力・利用側の `AugmentedRingCechExact` と、選定済みの途中取り込み点 `a0c59bc4e` は変更しない。
+
+
+## 実際の Čech 像の Rees 加群と I 進評価（11-11）
+
+`2f6cf60a4`（新規 7 モジュールと直接 importer、753 行）に保存。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,233 jobs 成功**、別の共有鍵による公式監査は **6,005 宣言・標準三公理のみ**。ビルド・監査ごとに共有鍵を取り、終了時に返した。既存宣言の型・本文は変更していない。
+
+登録モジュールは `ReesAdicProjectiveTransition`、`ProjectiveNatGradedChartMapLaws`、`ReesAdicProjectiveCechTransition`、`ReesCechImageFiltration`、`ReesDirectSumLinearMap`、`ReesCechImageAssembly`、`ReesCechImageBounds`（すべて `SerrePositivity.AlgebraicGeometry` の下）。
+
+### 通った主張と残る同定
+
+αₙ:H_Cech^q(IⁿM;d)→H_Cech^q(M;d) を実際の包含から作った。Fₙ=range αₙ は減少する I フィルトレーションで、IⁿH⊆Fₙ を満たす。前節の **次数付き性を確認した同じ B 作用** の外部直和 E から Rees(F) への全射を構成し、単項式と各成分の式から B 線形性を示した。Noether 基底・多項式環上有限生成という既存の仮定の下で、Rees(F) は B 上有限生成となる。既存の条件付き評価へこの実際の全射を渡し、ある c について n≥c なら Fₙ⊆I^(n−c)H を得た。従って実際の Čech 像と I 進フィルトレーションは互いに共終である。
+
+これは閉厚化への写像の核との同定まで済ませたという主張ではない。0→IⁿM→M→M/IⁿM→0 の Čech 長完全列による同定と、ker αₙ の遷移の一様零化・像の安定化が次に残る。零化に必要な「係数 a∈Iⁿ の次数移動の後の遷移は αⱼ を経由する」という因子分解は、係数加群と Čech コホモロジーの両方で今回証明した。完備化の同型と §9 の五つの自然性も引き続き残る。**停止点 2e ではない**。
+
+最終出力・利用側の `AugmentedRingCechExact` と、選定済みの途中取り込み点 `a0c59bc4e` は変更しない。射影座標に有限な線形順序を選ぶことと加群の宇宙の扱いも前節のとおりで、BS17 の使い方を制限しない。
+
+### 宣言と主張（ローカルな型クラス設定を除く48件）
+
+| 宣言 | 主張 |
+|---|---|
+| `reesAdicProjectiveToModule` | 各 IⁿM から元の加群への包含。 |
+| `reesAdicProjectiveSubmodule_antitone` | I 進部分加群は、指数が大きいほど小さい。 |
+| `reesAdicProjectiveTransition` | IⁱM から IʲM への遷移（j≤i）。 |
+| `reesAdicProjectiveTransition_val` | 遷移の元の加群での値は変わらない。 |
+| `reesAdicProjectiveToModule_transition` | 遷移と元の加群への包含は可換。 |
+| `reesAdicProjectiveTransition_comp` | 遷移の合成は遷移に一致。 |
+| `reesAdicProjectiveToModule_degreeShift` | 次数移動後に元の加群へ含めると、基底係数のスカラー写像になる。 |
+| `reesAdicProjectiveCoefficientLift` | Iⁿ の係数の作用は、元の加群から IⁿM への写像を与える。 |
+| `reesAdicProjectiveToModule_coefficientLift` | 係数の持ち上げと包含の合成は、元の加群のスカラー作用。 |
+| `reesAdicProjectiveTransition_degreeShift_factor` | 係数が Iⁿ に入れば、次数移動からの遷移は元の加群を経由する。 |
+| `reesAdicProjectiveToModule_preservesPiece` | 元の加群への包含は Proj 次数を保つ。 |
+| `reesAdicProjectiveTransition_preservesPiece` | 遷移は Proj 次数を保つ。 |
+| `reesAdicProjectiveCoefficientLift_preservesPiece` | 係数の持ち上げは Proj 次数を保つ。 |
+| `projectiveNatGradedModuleChartMap_id` | 自然数次数の標準開への写像は恒等写像を保つ。 |
+| `projectiveNatGradedModuleChartMap_comp` | 自然数次数の標準開への写像は合成を保つ。 |
+| `projectiveNatGradedModuleCechHomologyMap_comp` | 自然数次数の Čech コホモロジーへの写像も合成を保つ。 |
+| `projectiveNatGradedModuleChartMap_baseScalar` | 自然数次数の標準開の図式では、基底係数の写像は恒等自然変換のスカラー倍。 |
+| `projectiveNatGradedModuleCechHomologyMap_baseScalar` | 自然数次数の Čech コホモロジーで、基底係数の写像は既存のスカラー作用。 |
+| `reesAdicProjectiveCechTarget` | 元の加群の、固定した Proj・Čech 次数のコホモロジーの対象。 |
+| `reesAdicProjectiveCechToModule` | 各 IⁿM の Čech コホモロジーから、元の加群の同じコホモロジーへの写像。 |
+| `reesAdicProjectiveCechTransition` | IⁱM→IʲM の遷移が誘導する Čech コホモロジーの写像。 |
+| `reesAdicProjectiveCechCoefficientLift` | Iⁿ の係数の持ち上げが誘導する、Čech コホモロジーの写像。 |
+| `reesAdicProjectiveCechToModule_transition` | Čech 遷移と元のコホモロジーへの包含は可換。 |
+| `reesAdicProjectiveCechTransition_comp` | Čech 遷移の合成は、指数の合成に一致。 |
+| `reesAdicProjectiveCechToModule_degreeShift` | Čech の次数移動を元のコホモロジーへ送ると、基底係数の作用になる。 |
+| `reesAdicProjectiveCechToModule_coefficientLift` | 係数の持ち上げと包含は、元の Čech コホモロジーのスカラー作用を与える。 |
+| `reesAdicProjectiveCechTransition_degreeShift_factor` | 十分 I 進的な係数による Čech 次数移動の遷移は、元のコホモロジーを経由。 |
+| `reesAdicProjectiveCechStage` | IⁿM の、固定した Proj・Čech 次数のコホモロジーの対象。 |
+| `reesAdicProjectiveCechImage` | 各 IⁿM の Čech コホモロジーからの包含の像。 |
+| `reesAdicProjectiveCechImage_antitone` | Čech コホモロジーの像は、I 進指数について減少する。 |
+| `reesAdicProjectiveCechImage_pow_smul_le` | Iⁱ と第 j 段の Čech 像の積は、第 i+j 段の像に入る。 |
+| `reesAdicProjectiveCechImage_contains_pow` | 通常の Iⁿ 倍は、第 n 段からの Čech 像に入る。 |
+| `reesAdicProjectiveCechImageFiltration` | 各 IⁿM の Čech 像からなる、元のコホモロジーの実際の I フィルトレーション。 |
+| `reesAdicProjectiveCechImageStageMap` | 各段の Čech コホモロジーを、その像へ制限した線形写像。 |
+| `reesAdicProjectiveCechImageStageMap_surjective` | 像へ制限した各段の Čech 写像は全射。 |
+| `reesDirectSumLinearMap_smul_of_monomial_lof` | 単項式と各直和成分で作用と可換なら、すべての Rees 元の作用と可換。 |
+| `reesDirectSumLinearMapOfMonomialLof` | 単項式と各成分での可換性から、同じ値の Rees 線形写像を作る。 |
+| `reesDirectSumLinearMapOfMonomialLof_apply` | Rees 線形にした写像の元への値は変わらない。 |
+| `reesDirectSumLinearMapOfMonomialLof_surjective` | Rees 線形にする前の写像が全射なら、そのまま全射。 |
+| `reesAdicProjectiveCechImageAssembleR` | 各段の Čech 像への写像を、像の Rees 加群への R 線形写像に組む。 |
+| `reesAdicProjectiveCechImageAssembleR_lof` | 一つの Čech 成分は、その像を係数とする Rees 単項式に写る。 |
+| `reesAdicProjectiveCechImageAssembleR_surjective` | 各段の像への全射を組んだ R 線形写像は全射。 |
+| `reesAdicProjectiveCechImageAssembleR_monomial_lof` | Čech 像への直和写像は、単項式と各成分で Rees 作用と可換。 |
+| `reesAdicProjectiveCechImageAssemble` | 各段の Čech 像への写像を組んだ Rees 線形写像。 |
+| `reesAdicProjectiveCechImageAssemble_surjective` | Čech コホモロジーの直和から、像の Rees 加群への Rees 線形写像は全射。 |
+| `reesAdicProjectiveCechImageRees_finite` | 各 IⁿM からの Čech 像の Rees 加群は有限生成。 |
+| `reesAdicProjectiveCechImage_bound` | Čech 版の実際の像の一様な I 進評価。 |
+| `reesAdicProjectiveCechImage_cofinal` | Čech 像のフィルトレーションと I 進フィルトレーションは互いに共終。 |
