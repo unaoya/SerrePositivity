@@ -57,3 +57,21 @@ Prisms の地図で「本体に部品」とされた項目のうち、∞ 圏（
 ⑤b の BS-D69 は P2 の停止点にまだ届いていない。待つ間、**H3 のうち main にある部品だけで作れる部分を先に進めてよい**：一般の `CategoryTheory/CechNerveData`、HasEnvelopes からの組み立て、`BigCechTerm`・`existsUnique_liftVariables`・`bigCechAlexander`（main）を使う弱始性・余積、交代余面複体。⑤b の枝にある `AffineCechFrameLift`・`BigCechVertexFrame`・`AffineEnvelope*` を要する部分と H4 は、⑤b の取り込みの後。
 
 重なりの注意：⑤b の枝の `HomologicalAlgebra/DerivedCompletion/CompleteCochainReduction`（完備な複体の Nakayama を冪の余核・剰余で述べる形）は、H2 の `CochainCompleteDetection` と近い。⑤b の取り込みの後に、どちらかに寄せる整理を調整役が決める。今は両方そのままでよい。
+
+## 5. 追記（2026-11-11 夜、調整役）：⑤b の途中の取り込みと、H5
+
+⑤b の BS-D69 P2 の途中の取り込み点（e79fa8e7c、報告 d19a6e362、89 モジュール）を main に取り込んだ。`AffineEnvelopeBaseChange`・`AffineEnvelopeCoefficients`・`AffineCechFrameLift`・`BigCechVertexFrame` が main にある。H3 の残りと H4 を始めてよい（main を取り込んでから。⑤b の枝は直接 merge しない）。
+
+**H5 を足す**：Prop 7.10（qrsp の場合の離散性）の古典的な部分。E3 が使うのは T・S′（根の商）の場合の始性と完全化との一致（Prisms の地図、a3-design §1）。drafts `A3/LciAndQuasiregular.lean` の `qrsp_isDiscretePrismatic`・`qrsp_completelyFaithfullyFlat` ほか（⑤c の持ち分）。K5・Lemma 7.7・7.8・K2・K4 を再利用し、Δ_R/A との同一視（G10）は drafts に残す。H3・H4 の後に、まず段 0（古典的か ∞ 側か、証明の筋、再利用、不足、規模、drafts の型と原典の強弱）を報告して止める。
+
+## 6. 追記（2026-11-11 夜、調整役）：停止点 3 の取り込みと、H5 の停止点 0 の承認
+
+停止点 3（22bd55917、H3・H4、24 モジュール）を main に取り込んだ。
+
+**H5 の承認**：段 0 の報告（`report-codex-w17.md` §11、8c234b7b4）の切り分け・型案・置き場所・順序（有限 T → S′ の完備余極限 → 完全化と Cor 7.3）でよい。実装に進んでよい。
+
+1. **始性の範囲**：原典の (R/A)_Δ の対象は有界 prism なので、公開する始性を「全有界試験 prism」とするのは原典どおり。p 正則な標的に狭めない、という報告の方針でよい。
+2. **完備化**：`rootBase`・`rootQuotient` の `completionRing`（実 H⁰ の主完備化）と古典的な p 完備化・未完備の商との一致は、証明する比較として置く。drafts の定義は変えない。
+3. **drafts の証明コメント**：`qrsp_completelyFaithfullyFlat` の「分裂 filtration」のコメントは一般形では不正確（mod p の平坦な余核による Fil₀ の純粋な包含が要る）。drafts のコメントをその旨に直してよい（型は変えない）。
+4. **生の余極限と完備余極限**を同一視しない、零環の枝を残す、根を全部殺すイデアルと S′ のイデアルを混同しない、の三点は報告のとおり。
+5. **規模と停止**：見込み 3,100〜6,000 行。6,000 行を超えそうなら止める。S′ の完備余極限（1,000〜1,800 行）が 2,500 行を超えそうなときも止める。区切りは、有限 T の終わりを停止点 4、S′ と完全化の終わりを停止点 5 とする。
