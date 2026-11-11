@@ -634,3 +634,27 @@ SerrePositivity.BhattScholze.Prismatic.CrystallineSiteZariski
 SerrePositivity.BhattScholze.Prismatic.CrystallineBaseRestriction
 SerrePositivity.CategoryTheory.ProCechNerveData
 ```
+
+
+### P3 続行 — 商の塔と多項式 span
+
+- `f76aaed51` の10本に続き、新規8本が対象ビルドを通過（`/private/tmp/d69-p3-build-6.log`〜`/private/tmp/d69-p3-build-8.log`）。追加後の一時監査は18モジュール・317宣言、標準三公理のみ（`/private/tmp/AuditD69P3Eighteen.lean`、`/private/tmp/d69-p3-audit-eighteen.log`）。
+- `CrystallinePDQuotientLift` は指定した p 冪を消す分冪射を有限冪商からの実際の厚化の射に降ろす。`CrystallinePDQuotientTower` はすべての遷移射の代表元の式と関手則、環・サイトの二つの向きの塔を与える。元の分冪環から任意の厚化への持ち上げがあれば、その塔が pro 弱終であることも示した。これを枠の分冪包へ適用する具体的な最後の宣言は引き続き検査中。
+- `CrystallineNilpotentComplete` は既存の `Adic.Complete.isAdicComplete_of_pow_le` を再利用し、任意の結晶厚化の p 完備性を示す。`CrystallineFrameLift` は任意の厚化へ枠の変数を選んで持ち上げ、完備分冪包の普遍性で分冪射を作る。持ち上げ・既存の増強・剰余構造射の正方形も環射の等式で証明した。
+- `CrystallineResidueAlgebra` は k/J 代数を基底環上で読む標準構造と核条件。`PDCechResidueEquivalence` は全射な枠の分冪包の剰余同型と、既存の増強との一致。`PDCechCrystallineQuotient` はこの同型の逆を構造射にして、各項の有限冪商を実際の結晶厚化にする。各項の濃度の上限は明示的に仮定する。
+- `CrystallinePolynomialSpan` は P1 の枠との同型を P2 の第0行への射影に合成して、実際の分冪 Čech 複体への射影と擬同型を得る。もう一方の脚は既存の `pdDeRhamTotalToCompletedForms` とその擬同型定理。草稿と同じく基底の p 完備性・p 正則性と分冪の p 上の条件を明示する。RΓ の形には組み立てていない。
+- 作成中に剰余同型の仮のファイル名が既存の D68 の `CrystallineCechResidue.lean` と一致したため、既存ファイルは HEAD の内容へ完全に戻し、新規分を `PDCechResidueEquivalence.lean` へ移した。最終差分では既存ファイルの変更は0。
+- 追加8本も新規ファイルのみで、sorry・独自公理0。Nakayama の二ファイル、公式の入口・監査は変更していない。P3 の停止点3にはまだ達していない。
+
+登録候補への追加（BS 8本）：
+
+```text
+SerrePositivity.BhattScholze.Prismatic.CrystallineFrameLift
+SerrePositivity.BhattScholze.Prismatic.CrystallineNilpotentComplete
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotientLift
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotientTower
+SerrePositivity.BhattScholze.Prismatic.CrystallinePolynomialSpan
+SerrePositivity.BhattScholze.Prismatic.CrystallineResidueAlgebra
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineQuotient
+SerrePositivity.BhattScholze.Prismatic.PDCechResidueEquivalence
+```
