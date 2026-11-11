@@ -423,3 +423,48 @@ P→B[X] の代数構造は、既存の `reesPolynomialCoefficientAlgebra` と�
 その後、像のフィルトレーションへの実際の B 線形全射を作り、既存の条件付き `cechFormalFunctions_filtration_bound_of_finiteReesImage` に渡す。核の直和を次数付き B 部分加群とし、有限斉次生成元の次数の上界から遷移の零化を得て、長完全列へ接続する。像の安定化と一様な核の評価の後、互換な剰余類の持ち上げから完備化の同型を構成する。
 
 残りの主要な群は、(1) 実際の Rees 次数作用との照合、(2) 実際の像・核の評価と像の安定化、(3) 完備化の同型、(4) §9 の共通アフィン細分・底変換・閉厚化・Frobenius・filtered colimit の自然性。**停止点 2e ではない**。最終出力と利用側の `AugmentedRingCechExact` の型は変更していない。宇宙についても、既存の `Module.Finite.small` と `Shrink.linearEquiv` による入口の方針を保つ。
+
+## 係数比較の射への自然性と直和の包含公式（11-11）
+
+`7a5b7573e`（新規 7 モジュールと直接 importer、608 行）に保存。対象モジュールと直接 importer のビルドは成功し、別の共有鍵による公式 AG 監査は **5,701 宣言・標準三公理のみ**。数学の宣言と主張の 18 件を以下に記す。今回も一回のビルド・一回の監査ごとに鍵を返し、待ちは一つにまとめた。
+
+登録モジュール：`ProjectiveScalarGradedMapNaturality`、`ProjectivePolynomialCoefficientMapNaturality`、`ProjectiveCoefficientGradingCongr`、`ProjectiveGradedTransportInclusion`、`ProjectiveCechDiagramInclusion`、`ProjectiveGradedChartDirectSumInclusion`、`ProjectiveNatChartDirectSumInclusion`（いずれも `SerrePositivity.AlgebraicGeometry` の下）。
+
+### 宣言と主張
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveModuleScalarGradedAwayLinearEquivOfEq_map` | 分母の同定を含む局所化の係数環比較は、分子を保つ加群写像に自然。 |
+| `projectiveGradedAwayScalarRestrictionLinearEquiv_map` | 斉次局所化の係数制限の比較も、同じ写像に自然。 |
+| `projectiveGradedPolynomialCoefficientChangeLinearEquiv_map` | 各 Proj 標準開の係数環比較は、次数を保つ B[X] 線形写像と可換。 |
+| `projectiveGradedPolynomialCoefficientChangeChartIso_naturality` | この可換式を標準開の係数図式間の自然変換の等式にまとめる。 |
+| `projectiveGradedPolynomialCoefficientChangeCechHomologyIso_naturality` | 多項式係数環比較の Čech コホモロジーの同型も、次数を保つ写像に自然。 |
+| `projectiveGradedTransportInclusion_mem` | 直和の加群同値と各成分の包含の合成は、分子の指定部分を保つ。 |
+| `projectiveGradedLocalizedDirectSumTransport_inclusion` | 斉次局所化の直和比較は、局所化した各成分の包含を直和の lof に送る。 |
+| `projectiveCechDirectSumDiagramInclusion` | 各係数図式から、その直和の図式への包含。 |
+| `projectiveCechDirectSumDiagramInclusion_complex` | 図式の包含が誘導する Čech 写像は、既存の項ごとの直和からの包含と一致。 |
+| `projectiveCechDirectSumDiagramInclusion_homology` | この図式の包含を Čech コホモロジーの直和比較に渡すと lof になる。 |
+| `projectiveGradedModuleChartInclusion_mem` | 直和同値と成分の包含の合成は、整数の Proj 次数を保つ。 |
+| `projectiveGradedModuleChartInclusion` | 上の合成が誘導する標準開の係数図式の包含。 |
+| `projectiveGradedModuleChartDirectSumIso_inclusion` | 標準開の直和比較は、元の包含を係数図式の直和の包含に送る。 |
+| `projectiveGradedModuleChartDirectSumCechHomologyIso_inclusion` | 同じ包含を Čech コホモロジーの直和比較に渡すと lof になる。 |
+| `projectivePolynomialCoefficientChartIsoOfGradeEq` | 基底環上の次数を等しい族で書いた、係数比較の同型。 |
+| `projectivePolynomialCoefficientChartIsoOfGradeEq_naturality` | 次数の族とその作用の証明を一緒に移すと、係数比較の射への自然性も保たれる。 |
+| `projectiveNatGradedModuleChartInclusion` | 自然数の Proj 次数で、直和同値と各成分の包含を標準開へ渡す。 |
+| `projectiveNatGradedModuleChartDirectSumCechHomologyIso_inclusion` | 自然数次数の Čech 直和比較も、各成分の包含を lof に送る。 |
+
+### Rees への適用時の次数の選び方
+
+自然数次数の係数比較の全体を、零延長と係数制限の関数の等式で移送する形は、カーネルの型検査で展開が大きくなる。この移送の自然性を試した 2 ファイルは未検証の下書きに戻し、本体にもコミットにも含めない。追加した計算量上限も本体には残していない。これは数学的な不足ではない。
+
+Rees への特殊化では、先に B 上で Proj 次数を整数へ延ばし、その整数次数の部分加群を R へ制限して R 側の次数とする。各 IⁿM 側では元の R 上の次数を整数へ延ばす。Rees の直和同値がこれらの整数次数を対応させることは、次数が非負かどうかに分けた所属の命題として示せる。この命題と検証済みの整数次数の chart/Čech 比較を使えば、図式全体を等式で移送する操作を避けて、射への自然性と直和の包含公式をそのまま適用できる。
+
+B 側の標準開図式は、既存の B 上の自然数次数の図式が使う整数次数への延長と同じ定義である。従って既存の Rees の Čech 有限性を使える。直和側も各 IⁿM の同じ Čech コホモロジーの直和であり、最終出力や利用側の型の変更は要らない。既存の比較の宣言と本文は変えず、この次数を選んだ自然な比較を追加して接続する。
+
+### Rees の作用への残る適用
+
+今回の API は、Rees の作用を追うための二つの入力（係数環比較の射への自然性、直和比較の包含との両立性）をそろえる。局所化の比較は分数の分子の写像で証明し、コホモロジーへの移送には既存の係数制限の自然性と直和比較を使う。新しく二重 Čech の議論を作っていない。
+
+次はこれらを、実際の Rees 加群と各 IⁿM の比較へ特殊化する。その際、標準開での基底係数 b の作用が b 倍の恒等係数写像に一致することを確認し、既存の `projectiveCechHomologyMap_smul_id` に渡す。今回の包含の公式と `reesExtendedModule_monomial_smul_single`・`reesAdicProjectiveDegreeShiftCechHomologyMap` を合成すると、移した作用が第 j 成分を第 i+j 成分へ送る式に帰着する。この特殊化と作用の一致はまだ未完であり、今回の一般 API だけを Rees の次数付き作用の完成とは呼ばない。
+
+その後の主要な群は、実際の像・核の評価と像の安定化、完備化の同型、§9 の五つの整合性。最終出力の `AugmentedRingCechExact` の型は変更せず、停止点 2e ではない。19:15 の依頼で選定した途中取り込み点 `a0c59bc4e` は変更しない。
