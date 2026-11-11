@@ -146,3 +146,7 @@
 - `LciEnvelopePresentation` は未完備の自由変数の δ 除算包を別の自由 δ 環に同定する。既存の `deltaAdjoinDivisionResidue_moduleFaithfullyFlat` を再利用して、置換の mod (p,d) の忠実平坦性を得た。`LciEnvelopeCoefficient` は初期変数と d の商を後続座標の多項式環に同定し、係数の正則性を移す。
 - `LciEnvelopeInvertP` は、連続な分裂と稠密性からの全射性、有限フィルトレーションの持ち上げ、有理代数での分冪の持ち上げ、指定した関係の類による余法加群の生成を証明する。自由分解の `D t̃ = f_i - d z_i` と一次の類の同定は残る。
 - 残りは、普遍置換の d 剰余での p 完全平坦性、正則列の Koszul 分解に沿う完備底変換との比較、一般の候補の正則性・有界性。原典 Ex 7.9 の R の有界 p 冪ねじれを使い、既存の `completedBaseChange_bounded_torsion_pure` へつなぐ。草稿 `exists_lciEnvelope` は有界性を仮定しないため、型を保ち、無有界の存在には追加の構成が必要なことを記録する。停止点 4 は未達。
+
+### D76 の反映（2026-11-11）
+
+- main `4c071e19c` を取り込み、A3 草稿の `exists_lciEnvelope` に `hR : BoundedPTorsion p (lciQuotient P f)` を追加した。docstring も R の有界性と普遍性の標的の条件を明記した。利用箇所は本体・草稿ともに 0 件。先の途中報告にあった無有界の存在の追加構成は、D76 により作業対象から外した。原典の有界な場合を進める。
