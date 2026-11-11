@@ -1,6 +1,6 @@
 number,kind,title,section,status,declarations,reason,confidence,lean_citations,plan_citations,kerodon,goal
-0.0.0.1,Definition,内角充填条件による ∞ 圏の定義,0,,,,,0,0,,-
-0.0.0.2,Remark,弱 Kan 複体と準圏の呼称,0,,,,,0,0,,-
+0.0.0.1,Definition,内角充填条件による ∞ 圏の定義,0,,,,,0,0,1.4.0.1,-
+0.0.0.2,Remark,弱 Kan 複体と準圏の呼称,0,,,,,0,0,1.3.4.2,-
 0.0.0.3,Remark,∞ 圏の文献,0,,,,,0,0,,-
 1.1.0.1,Remark,安定モデル圏と安定 ∞ 圏の文献,1.1,,,,,0,0,,-
 1.1.0.2,Remark,体上の dg 圏と安定 ∞ 圏の関係,1.1,,,,,0,0,,-
@@ -1253,7 +1253,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 4.7.3.2,Definition,The Barr-Beck Theorem (p. 684),4.7.3,,,,,0,0,,-
 4.7.3.3,Proposition,The Barr-Beck Theorem (p. 684),4.7.3,,,,,0,0,,-
 4.7.3.4,Definition,The Barr-Beck Theorem (p. 684),4.7.3,,,,,0,0,,-
-4.7.3.5,Theorem,∞-Categorical Barr-Beck Theorem,4.7.3,,,,,0,0,,-
+4.7.3.5,Theorem,∞-Categorical Barr-Beck Theorem,4.7.3,,,,,0,0,,E∞
 4.7.3.6,Remark,The Barr-Beck Theorem (p. 685),4.7.3,,,,,0,0,,-
 4.7.3.7,Remark,The Barr-Beck Theorem (p. 685),4.7.3,,,,,0,0,,-
 4.7.3.8,Remark,The Barr-Beck Theorem (p. 686),4.7.3,,,,,0,0,,-
@@ -1401,20 +1401,20 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 4.8.5.20,Corollary,Behavior of the Functor Θ (p. 754),4.8.5,,,,,0,0,,-
 4.8.5.21,Corollary,Behavior of the Functor Θ (p. 754),4.8.5,,,,,0,0,,-
 4.8.5.22,Corollary,Behavior of the Functor Θ (p. 755),4.8.5,,,,,0,0,,-
-5.1.0.1,Definition,Definitions and Basic Properties (p. 758),5.1,,,,,0,0,,-
+5.1.0.1,Definition,立方体の rectilinear embedding と Rect,5.1,,,,,0,0,,-
 5.1.0.2,Definition,Definitions and Basic Properties (p. 758),5.1,,,,,0,0,,-
-5.1.0.3,Proposition,Definitions and Basic Properties (p. 759),5.1,,,,,0,0,,-
-5.1.0.4,Definition,Definitions and Basic Properties (p. 759),5.1,,,,,0,0,,-
+5.1.0.3,Proposition,little cubes の射影の ∞ operad 性,5.1,,,,,0,0,,-
+5.1.0.4,Definition,little cubes ∞ operad Eₖ,5.1,,,,,0,0,,-
 5.1.0.5,Remark,Definitions and Basic Properties (p. 759),5.1,,,,,0,0,,-
 5.1.0.6,Example,Definitions and Basic Properties (p. 759),5.1,,,,,0,0,,-
 5.1.0.7,Example,Definitions and Basic Properties (p. 759),5.1,,,,,0,0,,-
-5.1.0.8,Theorem,May,5.1,,,,,0,0,,-
-5.1.1.1,Theorem,Little Cubes and Configuration Spaces (p. 761),5.1.1,,,,,0,0,,-
-5.1.1.2,Definition,Little Cubes and Configuration Spaces (p. 761),5.1.1,,,,,0,0,,-
+5.1.0.8,Theorem,群的 Eₖ 空間の反復ループ認識,5.1,,,,,0,0,,-
+5.1.1.1,Theorem,little cubes の coherence,5.1.1,,,,,0,0,,-
+5.1.1.2,Definition,有限配置空間 Conf,5.1.1,,,,,0,0,,-
 5.1.1.3,Lemma,Little Cubes and Configuration Spaces (p. 761),5.1.1,,,,,0,0,,-
 5.1.1.4,Proposition,Little Cubes and Configuration Spaces (p. 762),5.1.1,,,,,0,0,,-
-5.1.1.5,Corollary,Little Cubes and Configuration Spaces (p. 762),5.1.1,,,,,0,0,,-
-5.1.1.6,Notation,Little Cubes and Configuration Spaces (p. 763),5.1.1,,,,,0,0,,-
+5.1.1.5,Corollary,little cubes の余極限 Comm,5.1.1,,,,,0,0,,-
+5.1.1.6,Notation,E∞ と可換代数の塔,5.1.1,,,,,0,0,,-
 5.1.1.7,Corollary,Little Cubes and Configuration Spaces (p. 763),5.1.1,,,,,0,0,,-
 5.1.1.8,Notation,Little Cubes and Configuration Spaces (p. 763),5.1.1,,,,,0,0,,-
 5.1.1.9,Construction,Little Cubes and Configuration Spaces (p. 764),5.1.1,,,,,0,0,,-
@@ -1423,7 +1423,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.1.2.1,Construction,The Additivity Theorem (p. 768),5.1.2,,,,,0,0,,-
 5.1.2.2,Theorem,Dunn Additivity Theorem,5.1.2,,,,,0,0,,-
 5.1.2.3,Example,Baez-Dolan Stabilization Hypothesis,5.1.2,,,,,0,0,,-
-5.1.2.4,Example,Braided Monoidal Categories,5.1.2,,,,,0,0,,-
+5.1.2.4,Example,E₂ と通常の braided monoidal 圏,5.1.2,,,,,0,0,,-
 5.1.2.5,Remark,The Additivity Theorem (p. 770),5.1.2,,,,,0,0,,-
 5.1.2.6,Corollary,The Additivity Theorem (p. 770),5.1.2,,,,,0,0,,-
 5.1.2.7,Remark,The Additivity Theorem (p. 771),5.1.2,,,,,0,0,,-
@@ -1433,7 +1433,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.1.2.11,Proposition,The Additivity Theorem (p. 773),5.1.2,,,,,0,0,,-
 5.1.2.12,Corollary,The Additivity Theorem (p. 773),5.1.2,,,,,0,0,,-
 5.1.2.13,Proposition,The Additivity Theorem (p. 775),5.1.2,,,,,0,0,,-
-5.1.2.14,Notation,The Additivity Theorem (p. 775),5.1.2,,,,,0,0,,-
+5.1.2.14,Notation,位相的豊穣図式への Sing の適用,5.1.2,,,,,0,0,,-
 5.1.2.15,Construction,The Additivity Theorem (p. 776),5.1.2,,,,,0,0,,-
 5.1.2.16,Proposition,The Additivity Theorem (p. 777),5.1.2,,,,,0,0,,-
 5.1.2.17,Proposition,The Additivity Theorem (p. 777),5.1.2,,,,,0,0,,-
@@ -1463,18 +1463,18 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.1.4.9,Construction,Comparison of Tensor Products (p. 794),5.1.4,,,,,0,0,,-
 5.1.4.10,Theorem,Comparison of Tensor Products (p. 795),5.1.4,,,,,0,0,,-
 5.1.4.11,Corollary,Comparison of Tensor Products (p. 795),5.1.4,,,,,0,0,,-
-5.1.4.12,Lemma,Comparison of Tensor Products (p. 796),5.1.4,,,,,0,0,,-
-5.2.1.1,Construction,Twisted Arrow ∞-Categories (p. 804),5.2.1,,,,,0,0,,-
+5.1.4.12,Lemma,ordinal join Δ×Δ→Δ の right cofinal 性,5.1.4,,,,,0,0,,-
+5.2.1.1,Construction,twisted arrow ∞ 圏の構成,5.2.1,,,,,0,0,8.1.1.1,-
 5.2.1.2,Example,Twisted Arrow ∞-Categories (p. 804),5.2.1,,,,,0,0,,-
-5.2.1.3,Proposition,Twisted Arrow ∞-Categories (p. 805),5.2.1,,,,,0,0,,-
+5.2.1.3,Proposition,twisted arrow 射影の right fibration 性,5.2.1,,,,,0,0,8.1.1.11,-
 5.2.1.4,Remark,Twisted Arrow ∞-Categories (p. 806),5.2.1,,,,,0,0,,-
 5.2.1.5,Definition,Twisted Arrow ∞-Categories (p. 807),5.2.1,,,,,0,0,,-
 5.2.1.6,Remark,Twisted Arrow ∞-Categories (p. 807),5.2.1,,,,,0,0,,-
-5.2.1.7,Example,Twisted Arrow ∞-Categories (p. 807),5.2.1,,,,,0,0,,-
+5.2.1.7,Example,twisted arrow の pairing,5.2.1,,,,,0,0,8.1.1.11,-
 5.2.1.8,Definition,Twisted Arrow ∞-Categories (p. 807),5.2.1,,,,,0,0,,-
 5.2.1.9,Construction,Twisted Arrow ∞-Categories (p. 807),5.2.1,,,,,0,0,,-
-5.2.1.10,Proposition,Twisted Arrow ∞-Categories (p. 807),5.2.1,,,,,0,0,,-
-5.2.1.11,Proposition,Twisted Arrow ∞-Categories (p. 810),5.2.1,,,,,0,0,,-
+5.2.1.10,Proposition,pairing の universal 対象と同値射,5.2.1,,,,,0,0,8.1.2.1;8.1.2.23,-
+5.2.1.11,Proposition,twisted arrow の分類と Yoneda,5.2.1,,,,,0,0,8.3.3.1;8.3.3.9,-
 5.2.1.12,Remark,Twisted Arrow ∞-Categories (p. 810),5.2.1,,,,,0,0,,-
 5.2.1.13,Definition,Twisted Arrow ∞-Categories (p. 812),5.2.1,,,,,0,0,,-
 5.2.1.14,Construction,Twisted Arrow ∞-Categories (p. 813),5.2.1,,,,,0,0,,-
@@ -1486,7 +1486,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.1.20,Remark,Twisted Arrow ∞-Categories (p. 815),5.2.1,,,,,0,0,,-
 5.2.1.21,Remark,Twisted Arrow ∞-Categories (p. 815),5.2.1,,,,,0,0,,-
 5.2.1.22,Corollary,Twisted Arrow ∞-Categories (p. 816),5.2.1,,,,,0,0,,-
-5.2.1.23,Lemma,Twisted Arrow ∞-Categories (p. 817),5.2.1,,,,,0,0,,-
+5.2.1.23,Lemma,pairing の Hom 射影の Kan fibration 性,5.2.1,,,,,0,0,,-
 5.2.1.24,Construction,Twisted Arrow ∞-Categories (p. 819),5.2.1,,,,,0,0,,-
 5.2.1.25,Example,Twisted Arrow ∞-Categories (p. 819),5.2.1,,,,,0,0,,-
 5.2.1.26,Proposition,Twisted Arrow ∞-Categories (p. 820),5.2.1,,,,,0,0,,-
@@ -1500,7 +1500,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.2.5,Proposition,The Bar Construction for Associative Algebras (p. 822),5.2.2,,,,,0,0,,-
 5.2.2.6,Lemma,The Bar Construction for Associative Algebras (p. 822),5.2.2,,,,,0,0,,-
 5.2.2.7,Remark,The Bar Construction for Associative Algebras (p. 823),5.2.2,,,,,0,0,,-
-5.2.2.8,Remark,The Bar Construction for Associative Algebras (p. 823),5.2.2,,,,,0,0,,-
+5.2.2.8,Remark,増大代数の simplicial bar 表示,5.2.2,,,,,0,0,,-
 5.2.2.9,Remark,The Bar Construction for Associative Algebras (p. 823),5.2.2,,,,,0,0,,-
 5.2.2.10,Remark,The Bar Construction for Associative Algebras (p. 824),5.2.2,,,,,0,0,,-
 5.2.2.11,Construction,The Bar Construction for Associative Algebras (p. 824),5.2.2,,,,,0,0,,-
@@ -1531,7 +1531,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.2.36,Proposition,The Bar Construction for Associative Algebras (p. 835),5.2.2,,,,,0,0,,-
 5.2.2.37,Corollary,The Bar Construction for Associative Algebras (p. 836),5.2.2,,,,,0,0,,-
 5.2.2.38,Remark,The Bar Construction for Associative Algebras (p. 837),5.2.2,,,,,0,0,,-
-5.2.2.39,Corollary,The Bar Construction for Associative Algebras (p. 837),5.2.2,,,,,0,0,,-
+5.2.2.39,Corollary,right fibration の相対余極限の判定,5.2.2,,,,,0,0,,-
 5.2.2.40,Lemma,The Bar Construction for Associative Algebras (p. 837),5.2.2,,,,,0,0,,-
 5.2.2.41,Corollary,The Bar Construction for Associative Algebras (p. 838),5.2.2,,,,,0,0,,-
 5.2.3.1,Theorem,Iterated Bar Constructions (p. 839),5.2.3,,,,,0,0,,-
@@ -1548,9 +1548,9 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.3.12,Example,Iterated Bar Constructions (p. 844),5.2.3,,,,,0,0,,-
 5.2.3.13,Example,Iterated Bar Constructions (p. 845),5.2.3,,,,,0,0,,-
 5.2.3.14,Example,Iterated Bar Constructions (p. 846),5.2.3,,,,,0,0,,-
-5.2.3.15,Proposition,Iterated Bar Constructions (p. 847),5.2.3,,,,,0,0,,-
+5.2.3.15,Proposition,自由 Eₖ 代数と反復 Bar・懸垂,5.2.3,,,,,0,0,,-
 5.2.4.1,Definition,Reduced Pairings (p. 849),5.2.4,,,,,0,0,,-
-5.2.4.2,Remark,Reduced Pairings (p. 849),5.2.4,,,,,0,0,,-
+5.2.4.2,Remark,reduced pairing の単位 fiber の可縮性,5.2.4,,,,,0,0,,-
 5.2.4.3,Definition,Reduced Pairings (p. 849),5.2.4,,,,,0,0,,-
 5.2.4.4,Example,Reduced Pairings (p. 849),5.2.4,,,,,0,0,,-
 5.2.4.5,Remark,Reduced Pairings (p. 849),5.2.4,,,,,0,0,,-
@@ -1576,8 +1576,8 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.5.3,Remark,Koszul Duality for $E_{k}$-Algebras (p. 859),5.2.5,,,,,0,0,,-
 5.2.5.4,Warning,Koszul Duality for $E_{k}$-Algebras (p. 859),5.2.5,,,,,0,0,,-
 5.2.5.5,Definition,Koszul Duality for $E_{k}$-Algebras (p. 860),5.2.5,,,,,0,0,,-
-5.2.5.6,Remark,Koszul Duality for $E_{k}$-Algebras (p. 860),5.2.5,,,,,0,0,,-
-5.2.5.7,Remark,Koszul Duality for $E_{k}$-Algebras (p. 860),5.2.5,,,,,0,0,,-
+5.2.5.6,Remark,弱左双対・弱右双対の普遍性,5.2.5,,,,,0,0,,-
+5.2.5.7,Remark,実双対から弱双対へ,5.2.5,,,,,0,0,,-
 5.2.5.8,Remark,Koszul Duality for $E_{k}$-Algebras (p. 860),5.2.5,,,,,0,0,,-
 5.2.5.9,Construction,Koszul Duality for $E_{k}$-Algebras (p. 861),5.2.5,,,,,0,0,,-
 5.2.5.10,Remark,Koszul Duality for $E_{k}$-Algebras (p. 861),5.2.5,,,,,0,0,,-
@@ -1586,7 +1586,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.5.13,Remark,Koszul Duality for $E_{k}$-Algebras (p. 862),5.2.5,,,,,0,0,,-
 5.2.5.14,Proposition,Koszul Duality for $E_{k}$-Algebras (p. 862),5.2.5,,,,,0,0,,-
 5.2.5.15,Remark,Koszul Duality for $E_{k}$-Algebras (p. 862),5.2.5,,,,,0,0,,-
-5.2.5.16,Remark,Koszul Duality for $E_{k}$-Algebras (p. 862),5.2.5,,,,,0,0,,-
+5.2.5.16,Remark,Koszul 双対と単位加群の End,5.2.5,,,,,0,0,,-
 5.2.5.17,Remark,Koszul Duality for $E_{k}$-Algebras (p. 863),5.2.5,,,,,0,0,,-
 5.2.5.18,Construction,Koszul Duality for $E_{k}$-Algebras (p. 863),5.2.5,,,,,0,0,,-
 5.2.5.19,Remark,Koszul Duality for $E_{k}$-Algebras (p. 863),5.2.5,,,,,0,0,,-
@@ -1612,18 +1612,18 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.6.1,Remark,Iterated Loop Spaces (p. 872),5.2.6,,,,,0,0,,-
 5.2.6.2,Definition,Iterated Loop Spaces (p. 872),5.2.6,,,,,0,0,,-
 5.2.6.3,Example,Iterated Loop Spaces (p. 872),5.2.6,,,,,0,0,,-
-5.2.6.4,Example,Iterated Loop Spaces (p. 872),5.2.6,,,,,0,0,,-
+5.2.6.4,Example,空間の群的性と π₀ の群性,5.2.6,,,,,0,0,,-
 5.2.6.5,Remark,Iterated Loop Spaces (p. 872),5.2.6,,,,,0,0,,-
 5.2.6.6,Definition,Iterated Loop Spaces (p. 873),5.2.6,,,,,0,0,,-
 5.2.6.7,Remark,Iterated Loop Spaces (p. 873),5.2.6,,,,,0,0,,-
 5.2.6.8,Remark,Iterated Loop Spaces (p. 873),5.2.6,,,,,0,0,,-
-5.2.6.9,Remark,Iterated Loop Spaces (p. 873),5.2.6,,,,,0,0,,-
-5.2.6.10,Theorem,"Boardman-Vogt, May",5.2.6,,,,,0,0,,-
+5.2.6.9,Remark,群的 Eₖ 空間の余極限閉性,5.2.6,,,,,0,0,,-
+5.2.6.10,Theorem,反復ループ空間の認識定理,5.2.6,,,,,0,0,,-
 5.2.6.11,Notation,Iterated Loop Spaces (p. 874),5.2.6,,,,,0,0,,-
 5.2.6.12,Remark,Iterated Loop Spaces (p. 874),5.2.6,,,,,0,0,,-
 5.2.6.13,Example,Iterated Loop Spaces (p. 874),5.2.6,,,,,0,0,,-
-5.2.6.14,Example,Iterated Loop Spaces (p. 874),5.2.6,,,,,0,0,,-
-5.2.6.15,Theorem,Iterated Loop Spaces (p. 875),5.2.6,,,,,0,0,,-
+5.2.6.14,Example,離散群の Bar と分類空間 BG,5.2.6,,,,,0,0,,-
+5.2.6.15,Theorem,∞ トポスの群的 monoid と Cobar,5.2.6,,,,,0,0,,-
 5.2.6.16,Lemma,Iterated Loop Spaces (p. 875),5.2.6,,,,,0,0,,-
 5.2.6.17,Remark,Iterated Loop Spaces (p. 875),5.2.6,,,,,0,0,,-
 5.2.6.18,Corollary,Iterated Loop Spaces (p. 876),5.2.6,,,,,0,0,,-
@@ -1635,10 +1635,10 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.6.24,Remark,Iterated Loop Spaces (p. 877),5.2.6,,,,,0,0,,-
 5.2.6.25,Remark,Iterated Loop Spaces (p. 878),5.2.6,,,,,0,0,,-
 5.2.6.26,Remark,Iterated Loop Spaces (p. 879),5.2.6,,,,,0,0,,-
-5.2.6.27,Corollary,Iterated Loop Spaces (p. 879),5.2.6,,,,,0,0,,-
+5.2.6.27,Corollary,Ω∞ の保守性と sifted 余極限保存,5.2.6,,,,,0,0,,-
 5.2.6.28,Remark,Iterated Loop Spaces (p. 879),5.2.6,,,,,0,0,,-
 5.2.6.29,Remark,Iterated Loop Spaces (p. 880),5.2.6,,,,,0,0,,-
-5.3.1.1,Example,Centers and Centralizers (p. 882),5.3.1,,,,,0,0,,-
+5.3.1.1,Example,中心と自己作用の普遍性,5.3.1,,,,,0,0,,-
 5.3.1.2,Definition,Centers and Centralizers (p. 883),5.3.1,,,,,0,0,,-
 5.3.1.3,Remark,Centers and Centralizers (p. 883),5.3.1,,,,,0,0,,-
 5.3.1.4,Remark,Centers and Centralizers (p. 883),5.3.1,,,,,0,0,,-
@@ -1655,7 +1655,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.3.1.15,Corollary,Centers and Centralizers (p. 886),5.3.1,,,,,0,0,,-
 5.3.1.16,Corollary,Centers and Centralizers (p. 886),5.3.1,,,,,0,0,,-
 5.3.1.17,Corollary,Centers and Centralizers (p. 887),5.3.1,,,,,0,0,,-
-5.3.1.18,Example,The Drinfeld Center,5.3.1,,,,,0,0,,-
+5.3.1.18,Example,中心の Eₖ₊₁ 代数構造,5.3.1,,,,,0,0,,-
 5.3.1.19,Definition,Centers and Centralizers (p. 888),5.3.1,,,,,0,0,,-
 5.3.1.20,Remark,Centers and Centralizers (p. 888),5.3.1,,,,,0,0,,-
 5.3.1.21,Definition,Centers and Centralizers (p. 889),5.3.1,,,,,0,0,,-
@@ -1682,7 +1682,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.3.2.9,Lemma,The Adjoint Representation (p. 900),5.3.2,,,,,0,0,,-
 5.3.2.10,Remark,The Adjoint Representation (p. 900),5.3.2,,,,,0,0,,-
 5.3.2.11,Lemma,The Adjoint Representation (p. 901),5.3.2,,,,,0,0,,-
-5.3.2.12,Lemma,The Adjoint Representation (p. 902),5.3.2,,,,,0,0,,-
+5.3.2.12,Lemma,単位・テンソルと両立する compact 生成基数,5.3.2,,,,,0,0,,-
 5.3.2.13,Warning,The Adjoint Representation (p. 905),5.3.2,,,,,0,0,,-
 5.3.2.14,Remark,The Adjoint Representation (p. 905),5.3.2,,,,,0,0,,-
 5.3.3.1,Notation,Tensor Products of Free Algebras (p. 906),5.3.3,,,,,0,0,,-
@@ -1691,7 +1691,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.3.3.4,Remark,Tensor Products of Free Algebras (p. 907),5.3.3,,,,,0,0,,-
 5.3.3.5,Example,Tensor Products of Free Algebras (p. 908),5.3.3,,,,,0,0,,-
 5.3.3.6,Example,Tensor Products of Free Algebras (p. 908),5.3.3,,,,,0,0,,-
-5.3.3.7,Example,Tensor Products of Free Algebras (p. 908),5.3.3,,,,,0,0,,-
+5.3.3.7,Example,CAlg のテンソルと余積,5.3.3,,,,,0,0,,-
 5.3.3.8,Notation,Tensor Products of Free Algebras (p. 909),5.3.3,,,,,0,0,,-
 5.3.3.9,Notation,Tensor Products of Free Algebras (p. 910),5.3.3,,,,,0,0,,-
 5.3.3.10,Example,Tensor Products of Free Algebras (p. 910),5.3.3,,,,,0,0,,-
@@ -1719,8 +1719,8 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.3.3.32,Proposition,Tensor Products of Free Algebras (p. 920),5.3.3,,,,,0,0,,-
 5.3.3.33,Warning,Tensor Products of Free Algebras (p. 920),5.3.3,,,,,0,0,,-
 5.3.3.34,Remark,Tensor Products of Free Algebras (p. 920),5.3.3,,,,,0,0,,-
-5.4.0.1,Convention,Little Cubes and Manifold Topology (p. 922),5.4,,,,,0,0,,-
-5.4.1.1,Theorem,Brouwer,5.4.1,,,,,0,0,,-
+5.4.0.1,Convention,topological manifold の規約,5.4,,,,,0,0,,-
+5.4.1.1,Theorem,局所同相の fiber ごとの判定,5.4.1,,,,,0,0,,-
 5.4.1.2,Remark,Embeddings of Topological Manifolds (p. 923),5.4.1,,,,,0,0,,-
 5.4.1.3,Corollary,Embeddings of Topological Manifolds (p. 923),5.4.1,,,,,0,0,,-
 5.4.1.4,Remark,Embeddings of Topological Manifolds (p. 923),5.4.1,,,,,0,0,,-
@@ -1777,14 +1777,14 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.4.4.5,Theorem,Nonunital $E_{k}$-Algebras (p. 946),5.4.4,,,,,0,0,,-
 5.4.4.6,Remark,Nonunital $E_{k}$-Algebras (p. 947),5.4.4,,,,,0,0,,-
 5.4.4.7,Corollary,Nonunital $E_{k}$-Algebras (p. 947),5.4.4,,,,,0,0,,-
-5.4.4.8,Proposition,Nonunital $E_{k}$-Algebras (p. 948),5.4.4,,,,,0,0,,-
+5.4.4.8,Proposition,非単位代数の単位化,5.4.4,,,,,0,0,,-
 5.4.4.9,Definition,Nonunital $E_{k}$-Algebras (p. 948),5.4.4,,,,,0,0,,-
 5.4.4.10,Proposition,Nonunital $E_{k}$-Algebras (p. 948),5.4.4,,,,,0,0,,-
 5.4.4.11,Definition,Nonunital $E_{k}$-Algebras (p. 951),5.4.4,,,,,0,0,,-
 5.4.4.12,Remark,Nonunital $E_{k}$-Algebras (p. 952),5.4.4,,,,,0,0,,-
 5.4.4.13,Remark,Nonunital $E_{k}$-Algebras (p. 952),5.4.4,,,,,0,0,,-
 5.4.4.14,Lemma,Nonunital $E_{k}$-Algebras (p. 952),5.4.4,,,,,0,0,,-
-5.4.4.15,Lemma,Nonunital $E_{k}$-Algebras (p. 953),5.4.4,,,,,0,0,,-
+5.4.4.15,Lemma,Eₖ 代数の元の反転,5.4.4,,,,,0,0,,-
 5.4.4.16,Remark,Nonunital $E_{k}$-Algebras (p. 953),5.4.4,,,,,0,0,,-
 5.4.4.17,Example,Nonunital $E_{k}$-Algebras (p. 953),5.4.4,,,,,0,0,,-
 5.4.4.18,Lemma,Nonunital $E_{k}$-Algebras (p. 954),5.4.4,,,,,0,0,,-
@@ -1807,13 +1807,13 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.4.5.16,Definition,Little Cubes in a Manifold (p. 962),5.4.5,,,,,0,0,,-
 5.4.5.17,Remark,Little Cubes in a Manifold (p. 962),5.4.5,,,,,0,0,,-
 5.4.5.18,Proposition,Little Cubes in a Manifold (p. 963),5.4.5,,,,,0,0,,-
-5.5.0.1,Remark,Topological Chiral Homology (p. 964),5.5,,,,,0,0,,-
-5.5.1.1,Definition,The Ran Space (p. 964),5.5.1,,,,,0,0,,-
+5.5.0.1,Remark,多様体の規約と factorization homology,5.5,,,,,0,0,,-
+5.5.1.1,Definition,非空有限部分集合の Ran 空間,5.5.1,,,,,0,0,,-
 5.5.1.2,Definition,The Ran Space (p. 964),5.5.1,,,,,0,0,,-
 5.5.1.3,Remark,The Ran Space (p. 964),5.5.1,,,,,0,0,,-
 5.5.1.4,Remark,The Ran Space (p. 965),5.5.1,,,,,0,0,,-
 5.5.1.5,Remark,The Ran Space (p. 965),5.5.1,,,,,0,0,,-
-5.5.1.6,Theorem,Beilinson-Drinfeld,5.5.1,,,,,0,0,,-
+5.5.1.6,Theorem,Euclidean 空間の Ran の弱可縮性,5.5.1,,,,,0,0,,-
 5.5.1.7,Notation,The Ran Space (p. 965),5.5.1,,,,,0,0,,-
 5.5.1.8,Lemma,Beilinson-Drinfeld,5.5.1,,,,,0,0,,-
 5.5.1.9,Definition,The Ran Space (p. 966),5.5.1,,,,,0,0,,-
@@ -1822,7 +1822,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.5.1.12,Remark,The Ran Space (p. 967),5.5.1,,,,,0,0,,-
 5.5.1.13,Remark,The Ran Space (p. 967),5.5.1,,,,,0,0,,-
 5.5.1.14,Proposition,The Ran Space (p. 967),5.5.1,,,,,0,0,,-
-5.5.1.15,Proposition,The Ran Space (p. 969),5.5.1,,,,,0,0,,-
+5.5.1.15,Proposition,局所弱可縮な添字による hyperdescent,5.5.1,,,,,0,0,,-
 5.5.1.16,Lemma,The Ran Space (p. 969),5.5.1,,,,,0,0,,-
 5.5.2.1,Definition,Topological Chiral Homology (p. 971),5.5.2,,,,,0,0,,-
 5.5.2.2,Definition,Topological Chiral Homology (p. 972),5.5.2,,,,,0,0,,-
@@ -1852,10 +1852,10 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.5.3.9,Remark,Properties of Topological Chiral Homology (p. 981),5.5.3,,,,,0,0,,-
 5.5.3.10,Lemma,Properties of Topological Chiral Homology (p. 982),5.5.3,,,,,0,0,,-
 5.5.3.11,Theorem,Properties of Topological Chiral Homology (p. 982),5.5.3,,,,,0,0,,-
-5.5.3.12,Lemma,Properties of Topological Chiral Homology (p. 982),5.5.3,,,,,0,0,,-
+5.5.3.12,Lemma,sifted 圏の coslice 射影の cofinal 判定,5.5.3,,,,,0,0,9.1.4.16,-
 5.5.3.13,Remark,Properties of Topological Chiral Homology (p. 983),5.5.3,,,,,0,0,,-
 5.5.3.14,Example,Properties of Topological Chiral Homology (p. 983),5.5.3,,,,,0,0,,-
-5.5.4.1,Definition,Factorizable Cosheaves and Ran Integration (p. 983),5.5.4,,,,,0,0,,-
+5.5.4.1,Definition,余層と超余層,5.5.4,,,,,0,0,,-
 5.5.4.2,Remark,Factorizable Cosheaves and Ran Integration (p. 984),5.5.4,,,,,0,0,,-
 5.5.4.3,Definition,Factorizable Cosheaves and Ran Integration (p. 984),5.5.4,,,,,0,0,,-
 5.5.4.4,Definition,Factorizable Cosheaves and Ran Integration (p. 984),5.5.4,,,,,0,0,,-
@@ -1885,7 +1885,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.5.5.12,Corollary,Verdier Duality (p. 995),5.5.5,,,,,0,0,,-
 5.5.5.13,Corollary,Verdier Duality (p. 995),5.5.5,,,,,0,0,,-
 5.5.6.1,Remark,Nonabelian Poincare Duality (p. 999),5.5.6,,,,,0,0,,-
-5.5.6.2,Definition,Nonabelian Poincare Duality (p. 999),5.5.6,,,,,0,0,,-
+5.5.6.2,Definition,compact support を持つ section の単体集合,5.5.6,,,,,0,0,,-
 5.5.6.3,Remark,Nonabelian Poincare Duality (p. 999),5.5.6,,,,,0,0,,-
 5.5.6.4,Remark,Nonabelian Poincare Duality (p. 999),5.5.6,,,,,0,0,,-
 5.5.6.5,Remark,Nonabelian Poincare Duality (p. 999),5.5.6,,,,,0,0,,-
@@ -1893,39 +1893,39 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.5.6.7,Remark,Nonabelian Poincare Duality (p. 1000),5.5.6,,,,,0,0,,-
 5.5.6.8,Remark,Nonabelian Poincare Duality (p. 1000),5.5.6,,,,,0,0,,-
 5.5.6.9,Remark,Nonabelian Poincare Duality (p. 1000),5.5.6,,,,,0,0,,-
-5.5.6.10,Example,Nonabelian Poincare Duality (p. 1001),5.5.6,,,,,0,0,,-
+5.5.6.10,Example,Hochschild homology と自由ループ空間,5.5.6,,,,,0,0,,-
 5.5.6.11,Remark,Nonabelian Poincare Duality (p. 1001),5.5.6,,,,,0,0,,-
 5.5.6.12,Remark,Nonabelian Poincare Duality (p. 1002),5.5.6,,,,,0,0,,-
 5.5.6.13,Notation,Nonabelian Poincare Duality (p. 1003),5.5.6,,,,,0,0,,-
 5.5.6.14,Remark,Nonabelian Poincare Duality (p. 1003),5.5.6,,,,,0,0,,-
 5.5.6.15,Lemma,Nonabelian Poincare Duality (p. 1003),5.5.6,,,,,0,0,,-
 5.5.6.16,Proposition,Nonabelian Poincare Duality (p. 1006),5.5.6,,,,,0,0,,-
-5.5.6.17,Lemma,Nonabelian Poincare Duality (p. 1006),5.5.6,,,,,0,0,,-
+5.5.6.17,Lemma,∞ トポスの sifted 余極限と pullback,5.5.6,,,,,0,0,,-
 6.1.0.1,Question,The Calculus of Functors (p. 1012),6.1,,,,,0,0,,-
-6.1.0.2,Definition,The Calculus of Functors (p. 1012),6.1,,,,,0,0,,-
+6.1.0.2,Definition,smash 冪で生成する多項式スペクトル関手,6.1,,,,,0,0,,-
 6.1.0.3,Example,The Calculus of Functors (p. 1013),6.1,,,,,0,0,,-
 6.1.0.4,Remark,The Calculus of Functors (p. 1013),6.1,,,,,0,0,,-
 6.1.0.5,Remark,The Calculus of Functors (p. 1014),6.1,,,,,0,0,,-
-6.1.1.1,Notation,n-Excisive Functors (p. 1015),6.1.1,,,,,0,0,,-
-6.1.1.2,Definition,n-Excisive Functors (p. 1015),6.1.1,,,,,0,0,,-
-6.1.1.3,Definition,n-Excisive Functors (p. 1015),6.1.1,,,,,0,0,,-
+6.1.1.1,Notation,部分集合 poset と cube,6.1.1,,,,,0,0,,-
+6.1.1.2,Definition,Cartesian・strongly coCartesian cube,6.1.1,,,,,0,0,7.6.2.1,-
+6.1.1.3,Definition,n-excisive 関手,6.1.1,,,,,0,0,,-
 6.1.1.4,Example,n-Excisive Functors (p. 1015),6.1.1,,,,,0,0,,-
-6.1.1.5,Example,n-Excisive Functors (p. 1016),6.1.1,,,,,0,0,,-
-6.1.1.6,Definition,n-Excisive Functors (p. 1016),6.1.1,,,,,0,0,,-
-6.1.1.7,Example,n-Excisive Functors (p. 1016),6.1.1,,,,,0,0,,-
-6.1.1.8,Example,n-Excisive Functors (p. 1016),6.1.1,,,,,0,0,,-
-6.1.1.9,Example,n-Excisive Functors (p. 1016),6.1.1,,,,,0,0,,-
-6.1.1.10,Theorem,n-Excisive Functors (p. 1016),6.1.1,,,,,0,0,,-
+6.1.1.5,Example,一次切除と pushout の pullback への保存,6.1.1,,,,,0,0,,-
+6.1.1.6,Definition,differentiable ∞ 圏の定義,6.1.1,,,,,0,0,7.7.7.3,-
+6.1.1.7,Example,stable 圏の differentiability の判定,6.1.1,,,,,0,0,,-
+6.1.1.8,Example,∞ トポスの differentiability,6.1.1,,,,,0,0,7.7.7.3,-
+6.1.1.9,Example,compactly generated 圏と differentiability,6.1.1,,,,,0,0,,-
+6.1.1.10,Theorem,n-excisive 反射 Pn の存在と左完全性,6.1.1,,,,,0,0,,-
 6.1.1.11,Remark,Rezk,6.1.1,,,,,0,0,,-
 6.1.1.12,Definition,n-Excisive Functors (p. 1017),6.1.1,,,,,0,0,,-
 6.1.1.13,Proposition,n-Excisive Functors (p. 1017),6.1.1,,,,,0,0,,-
 6.1.1.14,Corollary,n-Excisive Functors (p. 1018),6.1.1,,,,,0,0,,-
 6.1.1.15,Proposition,n-Excisive Functors (p. 1018),6.1.1,,,,,0,0,,-
-6.1.1.16,Corollary,n-Excisive Functors (p. 1019),6.1.1,,,,,0,0,,-
+6.1.1.16,Corollary,stable 圏の cube の双対性,6.1.1,,,,,0,0,,-
 6.1.1.17,Corollary,n-Excisive Functors (p. 1019),6.1.1,,,,,0,0,,-
 6.1.1.18,Construction,n-Excisive Functors (p. 1019),6.1.1,,,,,0,0,,-
-6.1.1.19,Example,n-Excisive Functors (p. 1019),6.1.1,,,,,0,0,,-
-6.1.1.20,Remark,n-Excisive Functors (p. 1020),6.1.1,,,,,0,0,,-
+6.1.1.19,Example,二点の pointed cone と懸垂,6.1.1,,,,,0,0,,-
+6.1.1.20,Remark,有限 pointed cone と前合成の比較,6.1.1,,,,,0,0,,-
 6.1.1.21,Example,n-Excisive Functors (p. 1020),6.1.1,,,,,0,0,,-
 6.1.1.22,Construction,n-Excisive Functors (p. 1020),6.1.1,,,,,0,0,,-
 6.1.1.23,Example,n-Excisive Functors (p. 1020),6.1.1,,,,,0,0,,-
@@ -1979,7 +1979,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 6.1.3.22,Proposition,Functors of Many Variables (p. 1043),6.1.3,,,,,0,0,,-
 6.1.3.23,Remark,Functors of Many Variables (p. 1044),6.1.3,,,,,0,0,,-
 6.1.3.24,Proposition,Functors of Many Variables (p. 1044),6.1.3,,,,,0,0,,-
-6.1.4.1,Notation,Symmetric Functors (p. 1045),6.1.4,,,,,0,0,,-
+6.1.4.1,Notation,EG・extended power・対称多変数関手,6.1.4,,,,,0,0,,-
 6.1.4.2,Example,Symmetric Functors (p. 1046),6.1.4,,,,,0,0,,-
 6.1.4.3,Proposition,Symmetric Functors (p. 1046),6.1.4,,,,,0,0,,-
 6.1.4.4,Remark,Symmetric Functors (p. 1046),6.1.4,,,,,0,0,,-
@@ -1990,7 +1990,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 6.1.4.9,Lemma,Symmetric Functors (p. 1048),6.1.4,,,,,0,0,,-
 6.1.4.10,Proposition,Symmetric Functors (p. 1049),6.1.4,,,,,0,0,,-
 6.1.4.11,Corollary,Symmetric Functors (p. 1050),6.1.4,,,,,0,0,,-
-6.1.4.12,Lemma,Symmetric Functors (p. 1050),6.1.4,,,,,0,0,,-
+6.1.4.12,Lemma,一次切除関手による strongly coCartesian cube の保存,6.1.4,,,,,0,0,,-
 6.1.4.13,Proposition,Symmetric Functors (p. 1050),6.1.4,,,,,0,0,,-
 6.1.4.14,Proposition,Symmetric Functors (p. 1053),6.1.4,,,,,0,0,,-
 6.1.4.15,Corollary,Symmetric Functors (p. 1054),6.1.4,,,,,0,0,,-
@@ -2014,20 +2014,20 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 6.1.6.8,Construction,Norm Maps (p. 1064),6.1.6,,,,,0,0,,-
 6.1.6.9,Remark,Norm Maps (p. 1064),6.1.6,,,,,0,0,,-
 6.1.6.10,Remark,Norm Maps (p. 1064),6.1.6,,,,,0,0,,-
-6.1.6.11,Example,Norm Maps (p. 1065),6.1.6,,,,,0,0,,-
-6.1.6.12,Proposition,Norm Maps (p. 1065),6.1.6,,,,,0,0,,-
+6.1.6.11,Example,有限離散 fiber の norm の行列表示,6.1.6,,,,,0,0,,-
+6.1.6.12,Proposition,有限離散 norm の可逆性と有限双積の比較,6.1.6,,,,,0,0,,-
 6.1.6.13,Definition,Norm Maps (p. 1065),6.1.6,,,,,0,0,,-
-6.1.6.14,Remark,Norm Maps (p. 1065),6.1.6,,,,,0,0,,-
+6.1.6.14,Remark,semiadditive 圏の写像の和,6.1.6,,,,,0,0,,-
 6.1.6.15,Remark,Norm Maps (p. 1066),6.1.6,,,,,0,0,,-
-6.1.6.16,Example,Norm Maps (p. 1066),6.1.6,,,,,0,0,,-
-6.1.6.17,Example,Norm Maps (p. 1066),6.1.6,,,,,0,0,,-
+6.1.6.16,Example,通常の additive 圏の nerve の semiadditivity,6.1.6,,,,,0,0,,-
+6.1.6.17,Example,stable ∞ 圏の semiadditivity,6.1.6,,,,,0,0,,-
 6.1.6.18,Definition,Norm Maps (p. 1066),6.1.6,,,,,0,0,,-
 6.1.6.19,Construction,Norm Maps (p. 1066),6.1.6,,,,,0,0,,-
 6.1.6.20,Remark,Norm Maps (p. 1067),6.1.6,,,,,0,0,,-
 6.1.6.21,Remark,Norm Maps (p. 1067),6.1.6,,,,,0,0,,-
 6.1.6.22,Example,Norm Maps (p. 1067),6.1.6,,,,,0,0,,-
-6.1.6.23,Remark,Norm Maps (p. 1067),6.1.6,,,,,0,0,,-
-6.1.6.24,Definition,Norm Maps (p. 1068),6.1.6,,,,,0,0,,-
+6.1.6.23,Remark,有限群の norm と作用の和,6.1.6,,,,,0,0,,-
+6.1.6.24,Definition,norm の cofiber と Tate 構成,6.1.6,,,,,0,0,,-
 6.1.6.25,Remark,Norm Maps (p. 1068),6.1.6,,,,,0,0,,-
 6.1.6.26,Example,Norm Maps (p. 1068),6.1.6,,,,,0,0,,-
 6.1.6.27,Proposition,Norm Maps (p. 1069),6.1.6,,,,,0,0,,-
@@ -2072,8 +2072,8 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 6.2.2.11,Corollary,Stabilization of Differentiable Fibrations (p. 1085),6.2.2,,,,,0,0,,-
 6.2.2.12,Remark,Stabilization of Differentiable Fibrations (p. 1085),6.2.2,,,,,0,0,,-
 6.2.2.13,Proposition,Stabilization of Differentiable Fibrations (p. 1086),6.2.2,,,,,0,0,,-
-6.2.2.14,Corollary,Stabilization of Differentiable Fibrations (p. 1086),6.2.2,,,,,0,0,,E∞
-6.2.2.15,Proposition,Stabilization of Differentiable Fibrations (p. 1087),6.2.2,,,,,0,0,,-
+6.2.2.14,Corollary,相対安定化の局所 Cartesian 性・評価・微分,6.2.2,,,,,0,0,,E∞
+6.2.2.15,Proposition,微分可能圏の随伴と derivative の随伴,6.2.2,,,,,0,0,,-
 6.2.2.16,Corollary,Stabilization of Differentiable Fibrations (p. 1087),6.2.2,,,,,0,0,,-
 6.2.2.17,Corollary,Stabilization of Differentiable Fibrations (p. 1088),6.2.2,,,,,0,0,,-
 6.2.2.18,Definition,Stabilization of Differentiable Fibrations (p. 1088),6.2.2,,,,,0,0,,-
@@ -2206,7 +2206,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 6.3.2.2,Theorem,Composition of Correspondences (p. 1151),6.3.2,,,,,0,0,,-
 6.3.2.3,Theorem,Composition of Correspondences (p. 1151),6.3.2,,,,,0,0,,-
 6.3.2.4,Remark,Composition of Correspondences (p. 1151),6.3.2,,,,,0,0,,-
-6.3.2.5,Notation,Composition of Correspondences (p. 1152),6.3.2,,,,,0,0,,-
+6.3.2.5,Notation,両端固定の単体圏,6.3.2,,,,,0,0,,-
 6.3.2.6,Construction,Composition of Correspondences (p. 1152),6.3.2,,,,,0,0,,-
 6.3.2.7,Lemma,Composition of Correspondences (p. 1152),6.3.2,,,,,0,0,,-
 6.3.2.8,Definition,Composition of Correspondences (p. 1154),6.3.2,,,,,0,0,,-
@@ -2216,16 +2216,16 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 6.3.2.12,Definition,Composition of Correspondences (p. 1155),6.3.2,,,,,0,0,,-
 6.3.2.13,Remark,Composition of Correspondences (p. 1155),6.3.2,,,,,0,0,,-
 6.3.2.14,Remark,Composition of Correspondences (p. 1156),6.3.2,,,,,0,0,,-
-6.3.3.1,Definition,Derivatives of the Identity Functor (p. 1157),6.3.3,,,,,0,0,,-
+6.3.3.1,Definition,同値関係の poset と両端の除去,6.3.3,,,,,0,0,,-
 6.3.3.2,Notation,Derivatives of the Identity Functor (p. 1158),6.3.3,,,,,0,0,,-
 6.3.3.3,Theorem,Arone-Mahowald,6.3.3,,,,,0,0,,-
 6.3.3.4,Remark,Derivatives of the Identity Functor (p. 1158),6.3.3,,,,,0,0,,-
 6.3.3.5,Remark,Derivatives of the Identity Functor (p. 1158),6.3.3,,,,,0,0,,-
 6.3.3.6,Notation,Derivatives of the Identity Functor (p. 1158),6.3.3,,,,,0,0,,-
 6.3.3.7,Remark,Derivatives of the Identity Functor (p. 1158),6.3.3,,,,,0,0,,-
-6.3.3.8,Remark,Derivatives of the Identity Functor (p. 1159),6.3.3,,,,,0,0,,-
+6.3.3.8,Remark,左完全関手と total fiber の比較,6.3.3,,,,,0,0,,-
 6.3.3.9,Remark,Derivatives of the Identity Functor (p. 1159),6.3.3,,,,,0,0,,-
-6.3.3.10,Example,Derivatives of the Identity Functor (p. 1159),6.3.3,,,,,0,0,,-
+6.3.3.10,Example,一点添字の total fiber と通常の fiber,6.3.3,,,,,0,0,,-
 6.3.3.11,Example,Derivatives of the Identity Functor (p. 1159),6.3.3,,,,,0,0,,-
 6.3.3.12,Construction,Derivatives of the Identity Functor (p. 1159),6.3.3,,,,,0,0,,-
 6.3.3.13,Proposition,Derivatives of the Identity Functor (p. 1160),6.3.3,,,,,0,0,,-
@@ -2673,13 +2673,13 @@ A.1.8,Proposition,Locally Constant Sheaves (p. 1404),A.1,,,,,0,0,,-
 A.1.9,Proposition,Locally Constant Sheaves (p. 1404),A.1,,,,,0,0,,-
 A.1.10,Remark,Locally Constant Sheaves (p. 1405),A.1,,,,,0,0,,-
 A.1.11,Proposition,Locally Constant Sheaves (p. 1405),A.1,,,,,0,0,,-
-A.1.12,Definition,Locally Constant Sheaves (p. 1405),A.1,,,,,0,0,,-
+A.1.12,Definition,∞ トポスの constant・locally constant object,A.1,,,,,0,0,,-
 A.1.13,Remark,Locally Constant Sheaves (p. 1406),A.1,,,,,0,0,,-
 A.1.14,Remark,Locally Constant Sheaves (p. 1406),A.1,,,,,0,0,,-
 A.1.15,Theorem,Locally Constant Sheaves (p. 1406),A.1,,,,,0,0,,-
 A.1.16,Corollary,Locally Constant Sheaves (p. 1407),A.1,,,,,0,0,,-
 A.1.17,Corollary,Locally Constant Sheaves (p. 1407),A.1,,,,,0,0,,-
-A.2.1,Proposition,Homotopy Invariance (p. 1407),A.2,,,,,0,0,,-
+A.2.1,Proposition,区間上の局所定数層・定数層・counit,A.2,,,,,0,0,,-
 A.2.2,Lemma,Homotopy Invariance (p. 1408),A.2,,,,,0,0,,-
 A.2.3,Remark,Homotopy Invariance (p. 1409),A.2,,,,,0,0,,-
 A.2.4,Definition,Homotopy Invariance (p. 1409),A.2,,,,,0,0,,-
@@ -2694,10 +2694,10 @@ A.3.2,Proposition,The Seifert-van Kampen Theorem (p. 1413),A.3,,,,,0,0,,-
 A.3.3,Lemma,The Seifert-van Kampen Theorem (p. 1413),A.3,,,,,0,0,,-
 A.3.4,Lemma,The Seifert-van Kampen Theorem (p. 1413),A.3,,,,,0,0,,-
 A.3.5,Lemma,The Seifert-van Kampen Theorem (p. 1413),A.3,,,,,0,0,,-
-A.3.6,Notation,The Seifert-van Kampen Theorem (p. 1414),A.3,,,,,0,0,,-
+A.3.6,Notation,細分 functor とその mapping cylinder,A.3,,,,,0,0,,-
 A.3.7,Variant,The Seifert-van Kampen Theorem (p. 1416),A.3,,,,,0,0,,-
 A.3.8,Remark,The Seifert-van Kampen Theorem (p. 1416),A.3,,,,,0,0,,-
-A.3.9,Lemma,The Seifert-van Kampen Theorem (p. 1416),A.3,,,,,0,0,,-
+A.3.9,Lemma,空間値層の ∞-connectivity の stalk 判定,A.3,,,,,0,0,,-
 A.3.10,Lemma,The Seifert-van Kampen Theorem (p. 1417),A.3,,,,,0,0,,-
 A.4.1,Remark,Singular Shape (p. 1418),A.4,,,,,0,0,,-
 A.4.2,Definition,Singular Shape (p. 1418),A.4,,,,,0,0,,-
@@ -2715,17 +2715,17 @@ A.4.13,Remark,Singular Shape (p. 1419),A.4,,,,,0,0,,-
 A.4.14,Lemma,Singular Shape (p. 1419),A.4,,,,,0,0,,-
 A.4.15,Definition,Singular Shape (p. 1420),A.4,,,,,0,0,,-
 A.4.16,Remark,Singular Shape (p. 1420),A.4,,,,,0,0,,-
-A.4.17,Construction,Singular Shape (p. 1420),A.4,,,,,0,0,,-
+A.4.17,Construction,Sing 上の Kan fibration から層への Ψ,A.4,,,,,0,0,3.1.3.7,-
 A.4.18,Example,Singular Shape (p. 1420),A.4,,,,,0,0,,-
 A.4.19,Theorem,Singular Shape (p. 1421),A.4,,,,,0,0,,-
-A.5.1,Definition,Constructible Sheaves (p. 1421),A.5,,,,,0,0,,-
+A.5.1,Definition,upper-set 位相と poset による stratification,A.5,,,,,0,0,,-
 A.5.2,Definition,Constructible Sheaves (p. 1421),A.5,,,,,0,0,,-
 A.5.3,Definition,Constructible Sheaves (p. 1421),A.5,,,,,0,0,,-
 A.5.4,Remark,Constructible Sheaves (p. 1422),A.5,,,,,0,0,,-
 A.5.5,Definition,Constructible Sheaves (p. 1422),A.5,,,,,0,0,,-
 A.5.6,Remark,Constructible Sheaves (p. 1422),A.5,,,,,0,0,,-
-A.5.7,Definition,Constructible Sheaves (p. 1422),A.5,,,,,0,0,,-
-A.5.8,Remark,Constructible Sheaves (p. 1422),A.5,,,,,0,0,,-
+A.5.7,Definition,半順序集合の昇鎖条件,A.5,,,,,0,0,,-
+A.5.8,Remark,昇鎖条件と無限上昇列の非存在,A.5,,,,,0,0,,-
 A.5.9,Proposition,Constructible Sheaves (p. 1422),A.5,,,,,0,0,,-
 A.5.10,Lemma,Constructible Sheaves (p. 1422),A.5,,,,,0,0,,-
 A.5.11,Lemma,Constructible Sheaves (p. 1423),A.5,,,,,0,0,,-
@@ -2742,7 +2742,7 @@ A.6.2,Definition,∞-Categories of Exit Paths (p. 1428),A.6,,,,,0,0,,-
 A.6.3,Remark,∞-Categories of Exit Paths (p. 1428),A.6,,,,,0,0,,-
 A.6.4,Theorem,∞-Categories of Exit Paths (p. 1428),A.6,,,,,0,0,,-
 A.6.5,Remark,∞-Categories of Exit Paths (p. 1429),A.6,,,,,0,0,,-
-A.6.6,Definition,∞-Categories of Exit Paths (p. 1434),A.6,,,,,0,0,,-
+A.6.6,Definition,抽象単体複体・局所有限性・実現,A.6,,,,,0,0,,-
 A.6.7,Definition,∞-Categories of Exit Paths (p. 1435),A.6,,,,,0,0,,-
 A.6.8,Proposition,∞-Categories of Exit Paths (p. 1435),A.6,,,,,0,0,,-
 A.6.9,Corollary,∞-Categories of Exit Paths (p. 1435),A.6,,,,,0,0,,-
@@ -2750,8 +2750,8 @@ A.6.10,Theorem,∞-Categories of Exit Paths (p. 1435),A.6,,,,,0,0,,-
 A.6.11,Remark,∞-Categories of Exit Paths (p. 1436),A.6,,,,,0,0,,-
 A.7.1,Theorem,A Seifert-van Kampen Theorem for Exit Paths (p. 1436),A.7,,,,,0,0,,-
 A.7.2,Remark,A Seifert-van Kampen Theorem for Exit Paths (p. 1436),A.7,,,,,0,0,,-
-A.7.3,Definition,A Seifert-van Kampen Theorem for Exit Paths (p. 1436),A.7,,,,,0,0,,-
-A.7.4,Remark,A Seifert-van Kampen Theorem for Exit Paths (p. 1437),A.7,,,,,0,0,,-
+A.7.3,Definition,stratum chain を固定した exit-path 図式空間,A.7,,,,,0,0,3.1.3.7,-
+A.7.4,Remark,stratum chain を固定した図式空間の Kan 性,A.7,,,,,0,0,4.4.2.5,-
 A.7.5,Example,A Seifert-van Kampen Theorem for Exit Paths (p. 1437),A.7,,,,,0,0,,-
 A.7.6,Definition,A Seifert-van Kampen Theorem for Exit Paths (p. 1437),A.7,,,,,0,0,,-
 A.7.7,Lemma,A Seifert-van Kampen Theorem for Exit Paths (p. 1437),A.7,,,,,0,0,,-
@@ -2780,7 +2780,7 @@ A.8.18,Remark,Digression: Recollement (p. 1454),A.8,,,,,0,0,,-
 A.8.19,Remark,Digression: Recollement (p. 1455),A.8,,,,,0,0,,-
 A.8.20,Proposition,Digression: Recollement (p. 1455),A.8,,,,,0,0,,-
 A.9.1,Notation,Exit Paths and Constructible Sheaves (p. 1456),A.9,,,,,0,0,,-
-A.9.2,Construction,Exit Paths and Constructible Sheaves (p. 1457),A.9,,,,,0,0,,-
+A.9.2,Construction,exit path 上の left fibration から Ψ の構成,A.9,,,,,0,0,3.1.3.7;4.4.2.5,-
 A.9.3,Theorem,Exit Paths and Constructible Sheaves (p. 1457),A.9,,,,,0,0,,-
 A.9.4,Corollary,Exit Paths and Constructible Sheaves (p. 1457),A.9,,,,,0,0,,-
 A.9.5,Lemma,Exit Paths and Constructible Sheaves (p. 1458),A.9,,,,,0,0,,-
@@ -2813,7 +2813,7 @@ B.1.3,Example,$\mathfrak P$-Anodyne Morphisms (p. 1470),B.1,,,,,0,0,,-
 B.1.4,Example,$\mathfrak P$-Anodyne Morphisms (p. 1470),B.1,,,,,0,0,,-
 B.1.5,Remark,$\mathfrak P$-Anodyne Morphisms (p. 1471),B.1,,,,,0,0,,-
 B.1.6,Proposition,$\mathfrak P$-Anodyne Morphisms (p. 1471),B.1,,,,,0,0,,-
-B.1.7,Lemma,$\mathfrak P$-Anodyne Morphisms (p. 1471),B.1,,,,,0,0,,-
+B.1.7,Lemma,局所 coCartesian 辺による最初の外側 horn の充填,B.1,,,,,0,0,,-
 B.1.8,Definition,$\mathfrak P$-Anodyne Morphisms (p. 1475),B.1,,,,,0,0,,-
 B.1.9,Proposition,$\mathfrak P$-Anodyne Morphisms (p. 1475),B.1,,,,,0,0,,-
 B.1.10,Lemma,$\mathfrak P$-Anodyne Morphisms (p. 1475),B.1,,,,,0,0,,-
@@ -2824,7 +2824,7 @@ B.1.14,Proposition,$\mathfrak P$-Anodyne Morphisms (p. 1481),B.1,,,,,0,0,,-
 B.2.1,Definition,The Model Structure on $(\mathrm{Set}_{\Delta}^{+})_{/\mathfrak P}$ (p. 1482),B.2,,,,,0,0,,-
 B.2.2,Example,The Model Structure on $(\mathrm{Set}_{\Delta}^{+})_{/\mathfrak P}$ (p. 1482),B.2,,,,,0,0,,-
 B.2.3,Lemma,The Model Structure on $(\mathrm{Set}_{\Delta}^{+})_{/\mathfrak P}$ (p. 1482),B.2,,,,,0,0,,-
-B.2.4,Lemma,The Model Structure on $(\mathrm{Set}_{\Delta}^{+})_{/\mathfrak P}$ (p. 1483),B.2,,,,,0,0,,-
+B.2.4,Lemma,P 同値・homotopy 逆・fiber ごとの同値,B.2,,,,,0,0,5.1.6.1,-
 B.2.5,Remark,The Model Structure on $(\mathrm{Set}_{\Delta}^{+})_{/\mathfrak P}$ (p. 1487),B.2,,,,,0,0,,-
 B.2.6,Remark,The Model Structure on $(\mathrm{Set}_{\Delta}^{+})_{/\mathfrak P}$ (p. 1487),B.2,,,,,0,0,,-
 B.2.7,Proposition,The Model Structure on $(\mathrm{Set}_{\Delta}^{+})_{/\mathfrak P}$ (p. 1488),B.2,,,,,0,0,,-
@@ -2835,18 +2835,18 @@ B.2.11,Lemma,The Model Structure on $(\mathrm{Set}_{\Delta}^{+})_{/\mathfrak P}$
 B.3.1,Definition,Flat Inner Fibrations (p. 1494),B.3,,,,,0,0,,-
 B.3.2,Proposition,Flat Inner Fibrations (p. 1495),B.3,,,,,0,0,,-
 B.3.3,Remark,Flat Inner Fibrations (p. 1495),B.3,,,,,0,0,,-
-B.3.4,Example,Flat Inner Fibrations (p. 1495),B.3,,,,,0,0,,-
+B.3.4,Example,middle への coCartesian lift による flat 性,B.3,,,,,0,0,8.7.5.1,-
 B.3.5,Example,Flat Inner Fibrations (p. 1496),B.3,,,,,0,0,,-
 B.3.6,Lemma,Flat Inner Fibrations (p. 1496),B.3,,,,,0,0,,-
 B.3.7,Lemma,Flat Inner Fibrations (p. 1496),B.3,,,,,0,0,,-
 B.3.8,Definition,Flat Inner Fibrations (p. 1498),B.3,,,,,0,0,,-
 B.3.9,Remark,Flat Inner Fibrations (p. 1498),B.3,,,,,0,0,,-
 B.3.10,Example,Flat Inner Fibrations (p. 1498),B.3,,,,,0,0,,-
-B.3.11,Example,Flat Inner Fibrations (p. 1498),B.3,,,,,0,0,,-
+B.3.11,Example,coCartesian・Cartesian fibration の flat 性,B.3,,,,,0,0,,-
 B.3.12,Remark,Flat Inner Fibrations (p. 1499),B.3,,,,,0,0,,-
 B.3.13,Proposition,Flat Inner Fibrations (p. 1499),B.3,,,,,0,0,,-
-B.3.14,Proposition,Flat Inner Fibrations (p. 1499),B.3,,,,,0,0,,-
-B.3.15,Corollary,Flat Inner Fibrations (p. 1499),B.3,,,,,0,0,,-
+B.3.14,Proposition,flat 性と全 inner-anodyne 引き戻しの同値性,B.3,,,,,0,0,5.3.6.6,-
+B.3.15,Corollary,flat categorical fibration に沿う圏同値の引き戻し,B.3,,,,,0,0,4.5.3.33,-
 B.3.16,Corollary,Flat Inner Fibrations (p. 1500),B.3,,,,,0,0,,-
 B.3.17,Proposition,Flat Inner Fibrations (p. 1501),B.3,,,,,0,0,,-
 B.3.18,Lemma,Flat Inner Fibrations (p. 1504),B.3,,,,,0,0,,-
@@ -2856,8 +2856,8 @@ B.3.21,Lemma,Flat Inner Fibrations (p. 1505),B.3,,,,,0,0,,-
 B.4.1,Proposition,Functoriality (p. 1507),B.4,,,,,0,0,,-
 B.4.2,Theorem,Functoriality (p. 1508),B.4,,,,,0,0,,-
 B.4.3,Remark,Functoriality (p. 1509),B.4,,,,,0,0,,-
-B.4.4,Notation,Functoriality (p. 1509),B.4,,,,,0,0,,-
-B.4.5,Proposition,Functoriality (p. 1510),B.4,,,,,0,0,,-
+B.4.4,Notation,単体集合上の依存積の普遍性,B.4,,,,,0,0,,-
+B.4.5,Proposition,flat fibration の依存積の右 Quillen 性,B.4,,,,,0,0,5.3.6.9,-
 B.4.6,Example,Functoriality (p. 1510),B.4,,,,,0,0,,-
 B.4.7,Remark,Functoriality (p. 1510),B.4,,,,,0,0,,-
 B.4.8,Lemma,Functoriality (p. 1510),B.4,,,,,0,0,,-

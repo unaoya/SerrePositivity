@@ -56,8 +56,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Stable/Definition.lean",
-        "SerrePositivity/InfinityCategories/ModelBridge/ModelRelative.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/Definition.lean",
+          "sha256": "b35f199a9cb02744bc865f6445384aef3415528794d40dd30ef8bde1b1d18b65"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/ModelRelative.lean",
+          "sha256": "ff59fc31bef993ad4109e8148d3dda297b7c754145a7676dbb2fa22358f193f7"
+        }
       ],
       "reason": "この注記は安定モデル圏と Segal 圏の文献案内。モデル圏から準圏への比較と Segal 圏の模型を探し、安定準圏の定義と比較したが、文献案内に対応する数学的主張はない。"
     },
@@ -150,8 +156,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Stable/Triangulated.lean",
-        "Mathlib/CategoryTheory/Triangulated/Pretriangulated.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/Triangulated.lean",
+          "sha256": "61e1be32d96a059702151eb95cb84c17e7480a047316fa505a9694b37b7f8e7a"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/Pretriangulated.lean",
+          "sha256": "5c09aeae650eadba8543b5e243db956995fd4aef3d889d3488dadf595f28f11f"
+        }
       ],
       "reason": "HA は安定性未証明の点付き圏でも完全三角形という用語を使うと注記する。前加法性・シフトのみを仮定する比較を探したが、cofiberDistinguishedTriangles は IsStable を必要とし、Mathlib の distTriang は三角形の族を既存の構造として取る。"
     },
@@ -226,8 +238,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/KST/LocalizingInvariants/StableFunctorMaps.lean",
-        "SerrePositivity/InfinityCategories/Stable/Infinity/StableInfinity.lean"
+        {
+          "path": "SerrePositivity/KST/LocalizingInvariants/StableFunctorMaps.lean",
+          "sha256": "1c8a3c44f9080ceaabc9efd95ae321e89477952157c0f3ae80b325fa299d79bb"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/Infinity/StableInfinity.lean",
+          "sha256": "ed617f95d6ede6238faa14d6f36692d87f40d24bb853a8a3c9c899d08ea93bae"
+        }
       ],
       "reason": "余カルテジアン族の切断の安定性と、指定辺を余カルテシアンに送る切断の安定部分圏を探した。stableFunctorCategory は定数族に相当する関手圏であり、遷移関手つきの切断を分類しない。"
     },
@@ -287,9 +305,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Ind/UnconditionalStableCompactGeneration.lean",
-        "SerrePositivity/InfinityCategories/Stable/Infinity/StableInfinity.lean",
-        "SerrePositivity/InfinityCategories/Core/FilteredExchange/FilteredFiniteLimits.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Ind/UnconditionalStableCompactGeneration.lean",
+          "sha256": "4000ae8a2b9610b9820f1b2bdea98e50446f4a3f5a304ad3e7d1b1be204a73eb"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/Infinity/StableInfinity.lean",
+          "sha256": "ed617f95d6ede6238faa14d6f36692d87f40d24bb853a8a3c9c899d08ea93bae"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/FilteredExchange/FilteredFiniteLimits.lean",
+          "sha256": "8ba78a3c42b1789848300e5ba9f9947692d1e98b4f362c1a95f892c39220647f"
+        }
       ],
       "reason": "Ind の安定性と有限極限とのフィルター付き交換を確認したが、いずれも安定 ∞ 圏と完全関手の図式の Cat∞ における余極限および完全性の保存を表す型ではない。"
     },
@@ -359,9 +386,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
-        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean",
-        "Mathlib/CategoryTheory/Adjunction/Reflective.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
+          "sha256": "61423d44d1056c60b90985147c590568b5a1bdc168bd021d028fa5077a53310d"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean",
+          "sha256": "3c116438e2c7a51b94c7f6093d1bb590ee11ced855461816c148c456995a6055"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Adjunction/Reflective.lean",
+          "sha256": "f6ed3cedf976a74d14b7c72b6297c64e77c0c9504142c34e894a835e19ab93f7"
+        }
       ],
       "reason": "通常圏では Reflective の包含が右随伴になる。両側の t 切断への所属判定と合わせて確認したが、安定 ∞ 圏の t 構造から全ての極限・余極限に対する閉性を返す型は確認できなかった。"
     },
@@ -410,8 +446,14 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean",
-        "Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean",
+          "sha256": "3c116438e2c7a51b94c7f6093d1bb590ee11ced855461816c148c456995a6055"
+        },
+        {
+          "path": "Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean",
+          "sha256": "3ccbe27a9230418cde057b4e9cc4997de7993fe556a6a86cdbf7ab6c421dba86"
+        }
       ],
       "reason": "HA は写像空間の切断性と t 構造の切断の違いを注意する。SSet.truncation は単体次元を制限し、TStructure.truncGE はホモトピー圏の t 切断。安定 ∞ 圏の写像空間の切断性と両者の関係を与える型は確認できなかった。"
     },
@@ -480,8 +522,14 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
-        "Mathlib/CategoryTheory/Triangulated/TStructure/Heart.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
+          "sha256": "61423d44d1056c60b90985147c590568b5a1bdc168bd021d028fa5077a53310d"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/Heart.lean",
+          "sha256": "c54f17b81393dd4cf5264288308547d28cc2fba3e940b28c962d844e3296442c"
+        }
       ],
       "reason": "BBD と HA の添字の違いは TStructure.isGE_shift_iff と isLE_shift_iff の型で追える。HA が述べる添字規約間の翻訳と C♥ の同定をまとめて表す宣言は確認できなかった。"
     },
@@ -543,9 +591,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean",
-        "SerrePositivity/InfinityCategories/Stable/FunctorLoopEquivalence.lean",
-        "SerrePositivity/InfinityCategories/Stable/Definition.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean",
+          "sha256": "3c116438e2c7a51b94c7f6093d1bb590ee11ced855461816c148c456995a6055"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/FunctorLoopEquivalence.lean",
+          "sha256": "b9c024a0bd3d759567ccea0b72772ad4e602beec4ce53830f259b5d2a0787905"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/Definition.lean",
+          "sha256": "b35f199a9cb02744bc865f6445384aef3415528794d40dd30ef8bde1b1d18b65"
+        }
       ],
       "reason": "上下の切断関手と安定圏のループの塔を調べた。切断で定める塔のホモトピー極限に対し、安定性と t 構造、および元の圏からの完全関手を構成する型は確認できなかった。"
     },
@@ -609,8 +666,14 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
-        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLEGT.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
+          "sha256": "61423d44d1056c60b90985147c590568b5a1bdc168bd021d028fa5077a53310d"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLEGT.lean",
+          "sha256": "058cb91534526de31b5c061a92cb55e62cd7290a8db2e8558a20bc1031dbfc16"
+        }
       ],
       "reason": "TStructure.plus と minus は有界対象の述語を表す。左完備化の関手に制限して有界部分圏の同値を示す型を探したが、切断塔との比較は確認できなかった。"
     },
@@ -672,8 +735,14 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean",
-        "SerrePositivity/InfinityCategories/Stable/StableFiniteLimitsColimits.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean",
+          "sha256": "3c116438e2c7a51b94c7f6093d1bb590ee11ced855461816c148c456995a6055"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/StableFiniteLimitsColimits.lean",
+          "sha256": "b69ef3d21373b30e7f75e8a425711e8167db410b40587da04842ab9e56764648"
+        }
       ],
       "reason": "切断が零になる条件と可算積・塔の極限を調べた。t 構造が分離的である条件と左完備性を結び付ける型は確認できなかった。"
     },
@@ -744,8 +813,14 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLEGT.lean",
-        "SerrePositivity/InfinityCategories/Stable/StableOpposite.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLEGT.lean",
+          "sha256": "058cb91534526de31b5c061a92cb55e62cd7290a8db2e8558a20bc1031dbfc16"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/StableOpposite.lean",
+          "sha256": "2e6602efff692694202cb39330fb0c49fd5d2438e52db3207858337d291377f5"
+        }
       ],
       "reason": "反対圏の安定性と、通常圏の上下の t 切断を確認した。余極限で定める右完備化または左完備化との双対比較の型は確認できなかった。"
     },
@@ -794,8 +869,14 @@
         }
       },
       "sources_read": [
-        "Mathlib/Algebra/Homology/SpectralObject/SpectralSequence.lean",
-        "Mathlib/Algebra/Homology/HomotopyCategory/SpectralObject.lean"
+        {
+          "path": "Mathlib/Algebra/Homology/SpectralObject/SpectralSequence.lean",
+          "sha256": "c096e5f6bbcc1a5feb437eeb732c17b3debc1998d49d294e6dc12fee177489da"
+        },
+        {
+          "path": "Mathlib/Algebra/Homology/HomotopyCategory/SpectralObject.lean",
+          "sha256": "2f18f8301371428b65a14b2a1aa3dc4f74442e14569846fcb6a4f5be17dfddc7"
+        }
       ],
       "reason": "Mathlib はアーベル圏のスペクトル対象から系列を作る。通常のフィルター付き鎖複体の系列を HA の安定 ∞ 圏の構成に同定する比較を調べたが、この注記の特例を結ぶ型は確認できなかった。"
     },
@@ -852,8 +933,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Derived/StableHomotopyComparison.lean",
-        "SerrePositivity/KST/LocalizingInvariants/StableFunctorMaps.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/StableHomotopyComparison.lean",
+          "sha256": "a7faf875ea9ba0c7f0b022bd43c97085d6c7909b59feb6a193773b65cd06c406"
+        },
+        {
+          "path": "SerrePositivity/KST/LocalizingInvariants/StableFunctorMaps.lean",
+          "sha256": "1c8a3c44f9080ceaabc9efd95ae321e89477952157c0f3ae80b325fa299d79bb"
+        }
       ],
       "reason": "加群の導来 ∞ 圏のホモトピー圏との同値はある。整数添字のフィルター付き図式のホモトピー圏を、古典的フィルター付き鎖複体の導来圏に同定する比較を探したが確認できなかった。"
     },
@@ -928,9 +1015,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/TStructure/Heart.lean",
-        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
-        "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Basic.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/Heart.lean",
+          "sha256": "c54f17b81393dd4cf5264288308547d28cc2fba3e940b28c962d844e3296442c"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
+          "sha256": "344f78a34ff0ecf8dc670b03661142be12703832c6151dc7be4c448c359a4814"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Basic.lean",
+          "sha256": "02a1500080c38cd043fa685c7f7f9b50cfdb2ef4d2b2eb7173ef73562977638e"
+        }
       ],
       "reason": "アーベル圏で列の余極限の完全性を仮定する型と、導来圏の加群ハートの埋め込みを読んだ。任意の安定 ∞ 圏の t 構造との両立からハートの余極限や πₙ の保存、完全性を導く型は確認できなかった。"
     },
@@ -981,8 +1077,14 @@
         }
       },
       "sources_read": [
-        "Mathlib/Algebra/Homology/SpectralObject/SpectralSequence.lean",
-        "Mathlib/Algebra/Homology/SpectralSequence/Basic.lean"
+        {
+          "path": "Mathlib/Algebra/Homology/SpectralObject/SpectralSequence.lean",
+          "sha256": "c096e5f6bbcc1a5feb437eeb732c17b3debc1998d49d294e6dc12fee177489da"
+        },
+        {
+          "path": "Mathlib/Algebra/Homology/SpectralSequence/Basic.lean",
+          "sha256": "ea239f032fb0a57191274ea263b81060233248db0295da7a668cfdc5bfef3d36"
+        }
       ],
       "reason": "Mathlib のスペクトル系列の頁と次頁同型を確認し、有界フィルトレーションの場合の収束定理も探した。安定 ∞ 圏の列の余極限の π と E∞ 頁を比較する型は確認できなかった。"
     },
@@ -1046,8 +1148,14 @@
         }
       },
       "sources_read": [
-        "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
-        "Mathlib/AlgebraicTopology/SimplicialSet/Homology/Basic.lean"
+        {
+          "path": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+          "sha256": "8c547a376b99227a1296fc4e62f0b4b043fb5860c90ac1f3e8bcf1e860002c29"
+        },
+        {
+          "path": "Mathlib/AlgebraicTopology/SimplicialSet/Homology/Basic.lean",
+          "sha256": "d584a17acbe24824f2a112a1633df3b72a292ee63c74cdf656cc0bd741a3c43f"
+        }
       ],
       "reason": "単体の自由鎖複体と、自然数次数の Γ を確認した。単体的アーベル群で、標準単体を境界で割ったものと一つの次数に集中した複体の Γ を比較する型は確認できなかった。"
     },
@@ -1122,8 +1230,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/KST/ProExcision/NormalizedAlexanderWhitney.lean",
-        "Mathlib/AlgebraicTopology/DoldKan/EquivalencePseudoabelian.lean"
+        {
+          "path": "SerrePositivity/KST/ProExcision/NormalizedAlexanderWhitney.lean",
+          "sha256": "349d1520f950aa41247c8045c5292097a667f3dd35408979654d89eaee560d7b"
+        },
+        {
+          "path": "Mathlib/AlgebraicTopology/DoldKan/EquivalencePseudoabelian.lean",
+          "sha256": "ef3f0c88641721b076b29a762609fb890800eb6e6b9397c61b766eff81b753b6"
+        }
       ],
       "reason": "整数加群のテンソルと二変数の Alexander–Whitney はある。有限自由アーベル群の圏から任意の加法圏への作用と、反復した作用との可換図式の型を調べたが確認できなかった。"
     },
@@ -1178,8 +1292,14 @@
         }
       },
       "sources_read": [
-        "Mathlib/AlgebraicTopology/DoldKan/EquivalencePseudoabelian.lean",
-        "SerrePositivity/KST/LocalizingInvariants/StableFunctorMaps.lean"
+        {
+          "path": "Mathlib/AlgebraicTopology/DoldKan/EquivalencePseudoabelian.lean",
+          "sha256": "ef3f0c88641721b076b29a762609fb890800eb6e6b9397c61b766eff81b753b6"
+        },
+        {
+          "path": "SerrePositivity/KST/LocalizingInvariants/StableFunctorMaps.lean",
+          "sha256": "1c8a3c44f9080ceaabc9efd95ae321e89477952157c0f3ae80b325fa299d79bb"
+        }
       ],
       "reason": "Mathlib の Dold–Kan は単体的対象と非負鎖複体の通常圏の同値。安定 ∞ 圏に値を取る場合の、単体的対象と自然数で添字付けたフィルター付き対象の関手 ∞ 圏を比べる宣言は確認できなかった。"
     },
@@ -1247,8 +1367,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinderSkeletonColimit.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSimplicialCodes.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinderSkeletonColimit.lean",
+          "sha256": "de7c267a50cc94fedead05905a68e199edc37e8ce2b386706170fb2dbc910e95"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSimplicialCodes.lean",
+          "sha256": "7d56e8ea4a2361b5849aa5a0d9dd7cee1ebd222f51b94483628f969ec638d981"
+        }
       ],
       "reason": "単体集合の骨格の列とその通常圏での余極限はある。値域が安定 ∞ 圏である単体的図式に対し、骨格ごとの幾何学的実現を対応するフィルトレーションと同定する型は確認できなかった。"
     },
@@ -1316,8 +1442,14 @@
         }
       },
       "sources_read": [
-        "Mathlib/AlgebraicTopology/DoldKan/EquivalencePseudoabelian.lean",
-        "SerrePositivity/InfinityCategories/Stable/CofiberConnecting.lean"
+        {
+          "path": "Mathlib/AlgebraicTopology/DoldKan/EquivalencePseudoabelian.lean",
+          "sha256": "ef3f0c88641721b076b29a762609fb890800eb6e6b9397c61b766eff81b753b6"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/CofiberConnecting.lean",
+          "sha256": "beaf5c8208b7fa1fa11488dd4d046c0a3711b30557bde294a909afed15b0049b"
+        }
       ],
       "reason": "前加法圏に値を取る通常の正規化関手を調べたが、安定 ∞ 圏に値を取る単体的対象の latching 射と骨格フィルトレーションの境界から得られる二つの hC の複体を同定する型は確認できなかった。"
     },
@@ -1379,8 +1511,14 @@
         }
       },
       "sources_read": [
-        "Mathlib/Algebra/Homology/SpectralObject/SpectralSequence.lean",
-        "Mathlib/Algebra/Homology/SpectralSequence/Basic.lean"
+        {
+          "path": "Mathlib/Algebra/Homology/SpectralObject/SpectralSequence.lean",
+          "sha256": "c096e5f6bbcc1a5feb437eeb732c17b3debc1998d49d294e6dc12fee177489da"
+        },
+        {
+          "path": "Mathlib/Algebra/Homology/SpectralSequence/Basic.lean",
+          "sha256": "ea239f032fb0a57191274ea263b81060233248db0295da7a668cfdc5bfef3d36"
+        }
       ],
       "reason": "スペクトル系列の頁の零性判定はある。連結な単体的対象の実現について、第一象限と頁の安定、実現のホモトピーへの収束を同時に導く型は確認できなかった。"
     },
@@ -1440,8 +1578,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionStability.lean",
-        "Mathlib/AlgebraicTopology/DoldKan/FunctorGamma.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionStability.lean",
+          "sha256": "9ca8516ac369d5f7140abbc4615a57e89c9f6b5faf8e40ac778e8836cd543fd0"
+        },
+        {
+          "path": "Mathlib/AlgebraicTopology/DoldKan/FunctorGamma.lean",
+          "sha256": "4414c27f93e29ee8a929bfa2ebc00ee53baca5192e6139e91f0337414685ad58"
+        }
       ],
       "reason": "冪等完備化の安定性と通常の Dold–Kan の余積分解を読んだ。安定 ∞ 圏に値を取る単体的図式の各項をフィルトレーションのシフトした余ファイバーで分解する宣言は確認できなかった。"
     },
@@ -1513,8 +1657,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
-        "SerrePositivity/InfinityCategories/Derived/DGIdempotentCompleteGeneral.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+          "sha256": "4620d83b532ca145fb485b6b2e1ffa1f2ef46c24da1c4a7f22568f2b89a73074"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/DGIdempotentCompleteGeneral.lean",
+          "sha256": "d13af306d26f79829e03d423a2edd7f783e9fee14da0d359a300454e5e182b73"
+        }
       ],
       "reason": "CoherentIdempotent.endomorphism_idem は coherent 図式から hC の冪等射を得る向き。安定性を用いて hC の任意の冪等射から逆向きの coherent 図式を構成する型は確認できなかった。"
     },
@@ -1569,8 +1719,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/KST/Comparison/FreeDegeneracies.lean",
-        "Mathlib/Algebra/Homology/SpectralObject/FirstPage.lean"
+        {
+          "path": "SerrePositivity/KST/Comparison/FreeDegeneracies.lean",
+          "sha256": "7b195b483e433aa091efe2e6804df121b58f5e3e6f27fd53621890b05678c814"
+        },
+        {
+          "path": "Mathlib/Algebra/Homology/SpectralObject/FirstPage.lean",
+          "sha256": "c0d10c773eca202474b0c6fb6f4bed1871f4b80448386e330cde47fc06ea1c5c"
+        }
       ],
       "reason": "集合値で退化を自由に付加する模型とアーベル圏の系列の第 1 頁を確認した。安定 ∞ 圏の半単体的図式から余極限とスペクトル系列を得る比較を探したが確認できなかった。"
     },
@@ -1625,8 +1781,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
-        "Mathlib/AlgebraicTopology/AlternatingFaceMapComplex.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
+          "sha256": "344f78a34ff0ecf8dc670b03661142be12703832c6151dc7be4c448c359a4814"
+        },
+        {
+          "path": "Mathlib/AlgebraicTopology/AlternatingFaceMapComplex.lean",
+          "sha256": "c4eac6bab842f0fc623e432742970dd6fb287b44f7a919f4d55b64c8f1bbfa39"
+        }
       ],
       "reason": "加群ハートの埋め込みと交代面写像複体を読んだ。左完備な t 構造でハートの半単体的対象を実現し、そのホモトピー群を非正規化ホモロジーで計算する型は確認できなかった。"
     },
@@ -1681,8 +1843,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
-        "Mathlib/AlgebraicTopology/AlternatingFaceMapComplex.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
+          "sha256": "344f78a34ff0ecf8dc670b03661142be12703832c6151dc7be4c448c359a4814"
+        },
+        {
+          "path": "Mathlib/AlgebraicTopology/AlternatingFaceMapComplex.lean",
+          "sha256": "c4eac6bab842f0fc623e432742970dd6fb287b44f7a919f4d55b64c8f1bbfa39"
+        }
       ],
       "reason": "鎖複体のアシクリック性および半単体的図式の実現の特例を探した。πq によるアシクリック分解から左完備な ∞ 圏での実現の存在と各ホモトピー対象の計算を得る型は確認できなかった。"
     },
@@ -1750,8 +1918,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
-        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
+          "sha256": "344f78a34ff0ecf8dc670b03661142be12703832c6151dc7be4c448c359a4814"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean",
+          "sha256": "3c116438e2c7a51b94c7f6093d1bb590ee11ced855461816c148c456995a6055"
+        }
       ],
       "reason": "非負次数への切断と、鎖複体における分解を調べた。左右両完備な t 構造のもとで非負のホモトピー対象の分解から半単体的実現を構成する型は確認できなかった。"
     },
@@ -1806,8 +1980,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Stable/Shift.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSimplicialCodes.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/Shift.lean",
+          "sha256": "e0920e27787e8277d48812a708c4cc78c6e93af87cb4158eaa3ed3ab7815b20f"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSimplicialCodes.lean",
+          "sha256": "7d56e8ea4a2361b5849aa5a0d9dd7cee1ebd222f51b94483628f969ec638d981"
+        }
       ],
       "reason": "安定圏のシフトと切断単体集合の骨格を確認した。最高次数以外が零の切断単体的図式の余極限を最高項の n 重懸垂と同定する宣言は確認できなかった。"
     },
@@ -1877,8 +2057,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Stable/Bicartesian.lean",
-        "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinderSkeletonColimit.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/Bicartesian.lean",
+          "sha256": "82cc1d2b040aab42d19996d3ffbf8625726d3e9bac73ddadda591c3ac45fdb7f"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinderSkeletonColimit.lean",
+          "sha256": "de7c267a50cc94fedead05905a68e199edc37e8ce2b386706170fb2dbc910e95"
+        }
       ],
       "reason": "左・右 Kan 拡張の判定と安定 ∞ 圏の押し出し・引き戻しの同値を調べた。最高次数と増大次数をそれぞれ切り落とす二つの制限に対し、この同じ F の Kan 拡張条件を比較する型は確認できなかった。"
     },
@@ -1937,9 +2123,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Stable/Verdier/StableCategories.lean",
-        "Mathlib/Algebra/Homology/DerivedCategory/Basic.lean",
-        "SerrePositivity/InfinityCategories/DGNerve/HomotopyCategory.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/Verdier/StableCategories.lean",
+          "sha256": "541e27cf8090f49ecb655f380103ea7ef8086ad3f4d08f79c65f2e3f56b03ea7"
+        },
+        {
+          "path": "Mathlib/Algebra/Homology/DerivedCategory/Basic.lean",
+          "sha256": "fb849d911197dbcf364a20cfdc524cf8bbd9180d408bff7d8407d58e019d8cbc"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/DGNerve/HomotopyCategory.lean",
+          "sha256": "0e6a6e952395a58d59043ec914495f66b47d8285af166bda754f8bdcf45006d3"
+        }
       ],
       "reason": "導来圏の構成と Verdier 局所化の型を確認した。ここでの HA の主張は Verdier の学位論文への歴史的帰属と文献案内で、構成定理に対応する主張を含まない。"
     },
@@ -1994,8 +2189,14 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/DGNerve/Simplex.lean",
-        "SerrePositivity/DifferentialGraded/Category/Basic.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/DGNerve/Simplex.lean",
+          "sha256": "4c69e13f3e32c13c72f09cb6641539e2437bf2ffffa74a6dc544623b2d7e7fb6"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Category/Basic.lean",
+          "sha256": "b5326650516030a83e24d6095b72008ae8628601482c62ec1b41c6e580c7542c"
+        }
       ],
       "reason": "DGCategory と SimplexData.rhs は Leibniz 則と二項合成まで。高次積を入力する A∞ 圏およびそれに対応する nerve の方程式を探したが、該当する宣言は確認できなかった。"
     },
@@ -2071,9 +2272,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Preadditive/Projective/Basic.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean",
-        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Preadditive/Projective/Basic.lean",
+          "sha256": "a5d71333bc05cbced91fd166427870229550b1d9f461644ecbbacd0c040f3ddb"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean",
+          "sha256": "e54b4a35fa2d625c4ce81eed701fb3b2d0c7345534d265a6f1a40184390bbe02"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
+          "sha256": "344f78a34ff0ecf8dc670b03661142be12703832c6151dc7be4c448c359a4814"
+        }
       ],
       "reason": "通常のエピに対する Projective と、PΣ の sifted 余極限保存を調べた。アーベル圏の nerve 内で両方の射影性を同定する宣言は確認できなかった。"
     },
@@ -2141,9 +2351,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/AlgebraicTopology/MooreComplex.lean",
-        "SerrePositivity/InfinityCategories/DoldKanComparison/SimplicialCategory.lean",
-        "SerrePositivity/EInfinity/ComplexLimits/PullbackHomTargetTrivial.lean"
+        {
+          "path": "Mathlib/AlgebraicTopology/MooreComplex.lean",
+          "sha256": "4a058a76b031ff366914a23bd52d9cc11f8d0c8ddee3ee928c8280901f9f1b8e"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/DoldKanComparison/SimplicialCategory.lean",
+          "sha256": "544202fca048b5ba18852ca433323c35181f43588ac643a7450463947de33652"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/ComplexLimits/PullbackHomTargetTrivial.lean",
+          "sha256": "47134c9457c2335cd70bd89b159fe4c7088874918ac7e9f7912954864d135cef"
+        }
       ],
       "reason": "正規化 Moore 複体と複体の射影 fibration を確認した。単体アーベル群の一般の射について、正次数の正規化成分が全射であることと underlying Kan fibration を結ぶ型は確認できなかった。"
     },
@@ -2224,9 +2443,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/DoldKanComparison/HomSpace.lean",
-        "SerrePositivity/InfinityCategories/DoldKanComparison/SimplicialCategory.lean",
-        "SerrePositivity/EInfinity/ComplexLimits/PullbackHomTargetTrivial.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/DoldKanComparison/HomSpace.lean",
+          "sha256": "a1fb2640b7e6e755746b2ce0c0bdb3176bc28888c60ac0acccd7b197824151b6"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/DoldKanComparison/SimplicialCategory.lean",
+          "sha256": "544202fca048b5ba18852ca433323c35181f43588ac643a7450463947de33652"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/ComplexLimits/PullbackHomTargetTrivial.lean",
+          "sha256": "47134c9457c2335cd70bd89b159fe4c7088874918ac7e9f7912954864d135cef"
+        }
       ],
       "reason": "dg 圏の Dold–Kan 豊穣 Hom が Kan であることと、複体側の正規化テンソルから誘導する射の fibration を確認した。次数ごとの前合成の全射性を仮定する単体 Hom 射の判定は見つからなかった。"
     },
@@ -2291,9 +2519,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
-        "Mathlib/CategoryTheory/Abelian/LeftDerived.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
+          "sha256": "43503f1f7a9a3e59c24a9e0711c36cb44f7d859d9f527004bd874079774ad993"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Abelian/LeftDerived.lean",
+          "sha256": "427cca0d80a733eddabe71380be1adb16c606c6735c497ba245f0777f8f2962b"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean",
+          "sha256": "e54b4a35fa2d625c4ce81eed701fb3b2d0c7345534d265a6f1a40184390bbe02"
+        }
       ],
       "reason": "アーベル圏上で射影分解を用いて左導来を作る型と、PΣ の Yoneda 制限の普遍性を確認した。左完備な安定標的で右 t 完全関手を心の右完全関手で分類する型は見つからなかった。"
     },
@@ -2355,9 +2592,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Derived/InfinityCategory.lean",
-        "SerrePositivity/KST/Spectra/CoherentNerve.lean",
-        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/InfinityCategory.lean",
+          "sha256": "6f70c4dc93ab47a28ecf96129709bc6c45e2392b9cce57d89c29194d9ac34f1d"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/CoherentNerve.lean",
+          "sha256": "cf10bcfb47d03897bc41afe01e0df8bfe5b4a633c0899650a1591f8858b09647"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
+          "sha256": "344f78a34ff0ecf8dc670b03661142be12703832c6151dc7be4c448c359a4814"
+        }
       ],
       "reason": "D(ℤ) を含む加群の導来模型と Ω スペクトルの模型を確認した。アーベル群の複体を一般化 Eilenberg–Mac Lane スペクトルへ送る ∞ 関手は確認できなかった。"
     },
@@ -2424,9 +2670,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
-        "Mathlib/CategoryTheory/Abelian/LeftDerived.lean",
-        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
+          "sha256": "43503f1f7a9a3e59c24a9e0711c36cb44f7d859d9f527004bd874079774ad993"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Abelian/LeftDerived.lean",
+          "sha256": "427cca0d80a733eddabe71380be1adb16c606c6735c497ba245f0777f8f2962b"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
+          "sha256": "344f78a34ff0ecf8dc670b03661142be12703832c6151dc7be4c448c359a4814"
+        }
       ],
       "reason": "t 完全性の通常圏での型と H₀ で元の右完全関手を回復する型を確認した。左 t 完全性・心の保存・心での完全性の三条件の同値は見つからなかった。"
     },
@@ -2501,9 +2756,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Abelian/Projective/Resolution.lean",
-        "Mathlib/CategoryTheory/Abelian/LeftDerived.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Abelian/Projective/Resolution.lean",
+          "sha256": "5f53d6ba05ffb3908b7fc85e2b6bf10b88f86113b21de9f495cda3d4e16b644c"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Abelian/LeftDerived.lean",
+          "sha256": "427cca0d80a733eddabe71380be1adb16c606c6735c497ba245f0777f8f2962b"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean",
+          "sha256": "e54b4a35fa2d625c4ce81eed701fb3b2d0c7345534d265a6f1a40184390bbe02"
+        }
       ],
       "reason": "射影分解の持ち上げとその鎖ホモトピー、PΣ に対する制限同値を確認した。通常の圏で射影対象に制限し、余等化子から右完全拡張を逆構成する同値は見つからなかった。"
     },
@@ -2567,9 +2831,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
-        "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationPreservation.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
+          "sha256": "43503f1f7a9a3e59c24a9e0711c36cb44f7d859d9f527004bd874079774ad993"
+        },
+        {
+          "path": "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+          "sha256": "f5abf749c664a3ef173ac7e2ad101f776a03904e0dd62d714bb8ab23cc7ba33c"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationPreservation.lean",
+          "sha256": "dcf5e83f1d04d7abf07b3819aa1940adca742742b081fe2502337e9804cb9136"
+        }
       ],
       "reason": "通常の三角圏で t 完全性の型と、準圏の余積・幾何学的実現による余極限保存を確認した。connective 部分圏への制限同値および左完備性からその実現を構成する型は見つからなかった。"
     },
@@ -2633,9 +2906,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductsOnBase.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
+          "sha256": "43503f1f7a9a3e59c24a9e0711c36cb44f7d859d9f527004bd874079774ad993"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductsOnBase.lean",
+          "sha256": "7eee50fc20f41f2f18652f13af35f07468c160b7be0fc2081521d626de1f0898"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean",
+          "sha256": "e54b4a35fa2d625c4ce81eed701fb3b2d0c7345534d265a6f1a40184390bbe02"
+        }
       ],
       "reason": "PΣ では射影対象を代入できる Yoneda 制限を確認した。一般の左完備安定圏に対して右 t 完全な導来関手を connective 値の有限余積保存関手と比較する宣言は見つからなかった。"
     },
@@ -2710,9 +2992,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean",
-        "Mathlib/CategoryTheory/Abelian/Indization.lean",
-        "SerrePositivity/InfinityCategories/Derived/InfinityCategory.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean",
+          "sha256": "e54b4a35fa2d625c4ce81eed701fb3b2d0c7345534d265a6f1a40184390bbe02"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Abelian/Indization.lean",
+          "sha256": "c07443f541326ba644e6d40b0caeda3a993ca24c8247cc0280a35085022ab85c"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/InfinityCategory.lean",
+          "sha256": "6f70c4dc93ab47a28ecf96129709bc6c45e2392b9cce57d89c29194d9ac34f1d"
+        }
       ],
       "reason": "PΣ の構成と制限同値、通常の Ind 圏を確認した。A の Ind 圏の connective 有界導来 ∞ 圏を PΣ と同定する型は確認できなかった。"
     },
@@ -2787,9 +3078,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Limits/IndYoneda.lean",
-        "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
-        "SerrePositivity/InfinityCategories/Derived/StableHomotopyComparison.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Limits/IndYoneda.lean",
+          "sha256": "5612f260710e386f1fa59c87eb3cc2cf5f54d71d3798c4687450b385c2b53855"
+        },
+        {
+          "path": "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+          "sha256": "f5abf749c664a3ef173ac7e2ad101f776a03904e0dd62d714bb8ab23cc7ba33c"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/StableHomotopyComparison.lean",
+          "sha256": "a7faf875ea9ba0c7f0b022bd43c97085d6c7909b59feb6a193773b65cd06c406"
+        }
       ],
       "reason": "通常の Ind 圏への Yoneda 埋め込みと D⁻ の有界性を確認した。導来 ∞ 圏に持ち上げた埋め込みの像を全ホモロジーで特徴づける型は見つからなかった。"
     },
@@ -2864,9 +3164,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/HomotopyLimits/CoherentUnderlyingHo.lean",
-        "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean",
-        "SerrePositivity/InfinityCategories/Derived/NerveInclusion.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/HomotopyLimits/CoherentUnderlyingHo.lean",
+          "sha256": "17ce1607afe54d01d5f44402c3f145d2482216b4728c98e670d82bb886ec8d74"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean",
+          "sha256": "d5f8b5693f9ae6481d98481dae74b3198c494d110653071b6a4a61deff0622da"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/NerveInclusion.lean",
+          "sha256": "782921456a69038b48c7b138891509c60982c3e1d8e2c15d7ce6652b99211fdb"
+        }
       ],
       "reason": "hammock による局所化の普遍性と、単体豊穣圏の coherent nerve を確認した。指定 W に円柱の収縮が含まれるとき、通常の nerve から coherent nerve への標識弱同値を判定する型は見つからなかった。"
     },
@@ -2922,9 +3231,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean",
-        "SerrePositivity/InfinityCategories/F1/Coherent/RepresentableHomFunctor.lean",
-        "SerrePositivity/InfinityCategories/HomotopyLimits/GeneralOriginalCriterion.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean",
+          "sha256": "506374f787a7f8e64bb880f0f3d6ab288f6070839b604e965beb78ac1cefffa2"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Coherent/RepresentableHomFunctor.lean",
+          "sha256": "2f1f95e8175aedf49842803308cf5749e779e530dee8de91d9399949ce52d8b5"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/HomotopyLimits/GeneralOriginalCriterion.lean",
+          "sha256": "c5b05be8e71f44bde1970b1f640b536930500a9bbabdcec53c2ca3bf2996848f"
+        }
       ],
       "reason": "sifted な図式の点ごとの余極限と、単体豊穣圏の coherent nerve の Hom 比較を確認した。対象を固定した単体圏の homotopy colimit を各 Hom の homotopy colimit で検出する型は見つからなかった。"
     },
@@ -2999,9 +3317,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedFunctorCategory.lean",
-        "SerrePositivity/InfinityCategories/HomotopyLimits/StrictNerveMaps.lean",
-        "SerrePositivity/InfinityCategories/F1/Coherent/RepresentableHomFunctor.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedFunctorCategory.lean",
+          "sha256": "2a8c9e885a78608dd71d8fce9478503575f5dc71710a23a0a884c02549724342"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/HomotopyLimits/StrictNerveMaps.lean",
+          "sha256": "35dc4f71cc7fc50c17eb1e2f05047194bdb2639a915d7e20b2f76343271645fb"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Coherent/RepresentableHomFunctor.lean",
+          "sha256": "2f1f95e8175aedf49842803308cf5749e779e530dee8de91d9399949ce52d8b5"
+        }
       ],
       "reason": "単体豊穣関手圏と coherent nerve の単体の記述を確認した。各次数で通常の圏を作る C• と join の右随伴による T•C の図式を与える宣言は確認できなかった。"
     },
@@ -3076,9 +3403,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F1B/Cofinality/SliceWeakContractibility.lean",
-        "SerrePositivity/InfinityCategories/HomotopyLimits/StrictNerveMaps.lean",
-        "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedFunctorCategory.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Cofinality/SliceWeakContractibility.lean",
+          "sha256": "efa58983d0c801b6ba63a53efe5d756ed61b655eaee2b09c08b7332de2276e34"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/HomotopyLimits/StrictNerveMaps.lean",
+          "sha256": "35dc4f71cc7fc50c17eb1e2f05047194bdb2639a915d7e20b2f76343271645fb"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedFunctorCategory.lean",
+          "sha256": "2a8c9e885a78608dd71d8fce9478503575f5dc71710a23a0a884c02549724342"
+        }
       ],
       "reason": "準圏で各頂点下の coslice が弱可縮である型を確認した。任意の単体集合 X について Δ[m] 下の translation と X の m 単体の離散集合の比較同値は見つからなかった。"
     },
@@ -3153,9 +3489,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/HomotopyLimits/GeneralOriginalCriterion.lean",
-        "SerrePositivity/InfinityCategories/F1B/Cofinality/SliceWeakContractibility.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/HomotopyLimits/GeneralOriginalCriterion.lean",
+          "sha256": "c5b05be8e71f44bde1970b1f640b536930500a9bbabdcec53c2ca3bf2996848f"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Cofinality/SliceWeakContractibility.lean",
+          "sha256": "efa58983d0c801b6ba63a53efe5d756ed61b655eaee2b09c08b7332de2276e34"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+          "sha256": "aadf1c0305790d924135c4650560f510826884cc6e10749b33ed97420d9cdb32"
+        }
       ],
       "reason": "coherent な余錐の余極限判定を確認した。Δ[n] との join の右随伴からなる translation 図式が X を実現する比較は、Kan な X に限定しても見つからなかった。"
     },
@@ -3217,9 +3562,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedFunctorCategory.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
-        "SerrePositivity/InfinityCategories/HomotopyLimits/GeneralOriginalCriterion.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryEnrichedFunctorCategory.lean",
+          "sha256": "2a8c9e885a78608dd71d8fce9478503575f5dc71710a23a0a884c02549724342"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+          "sha256": "aadf1c0305790d924135c4650560f510826884cc6e10749b33ed97420d9cdb32"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/HomotopyLimits/GeneralOriginalCriterion.lean",
+          "sha256": "c5b05be8e71f44bde1970b1f640b536930500a9bbabdcec53c2ca3bf2996848f"
+        }
       ],
       "reason": "幾何学的実現と単体豊穣圏の関手圏を確認した。各次数の通常圏 Cₙ から作る単体図式 T•C について、弱同値と元の C の実現を結ぶ型は見つからなかった。"
     },
@@ -3281,9 +3635,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/HomotopicalAlgebra/Quillen/Brown.lean",
-        "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedComparison.lean",
-        "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean"
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Quillen/Brown.lean",
+          "sha256": "c8e02002bdd7a98cac676828c7a85ca7be66044051920e7eb13d8c2f2b750f3d"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedComparison.lean",
+          "sha256": "211bbbb0ba4baebc7e6aff6982767565ff998ba8992b9e2d57fe386e2840ae7d"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean",
+          "sha256": "d5f8b5693f9ae6481d98481dae74b3198c494d110653071b6a4a61deff0622da"
+        }
       ],
       "reason": "左 Quillen 関手が cofibrant 対象間の弱同値を保つ Brown の補題と、単体モデル間の導来随伴を確認した。Quillen 同値から標識 nerve の弱同値を得る型は見つからなかった。"
     },
@@ -3338,9 +3701,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean"
+        {
+          "path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean",
+          "sha256": "d5f8b5693f9ae6481d98481dae74b3198c494d110653071b6a4a61deff0622da"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+          "sha256": "e4e14cd6a543b3af929ec1c319d02c0d1d0555cdfee846bec608daff8208694f"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean",
+          "sha256": "69912253565854c024c0b829e301c567509e0a8248e702c35d4138c7cc447ebd"
+        }
       ],
       "reason": "モデル圏の hammock による局所化と、一般の可到達余完備準圏の presentability を確認した。組合せ的モデルの局所化に presentability を適用する橋渡しは見つからなかった。"
     },
@@ -3402,9 +3774,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/HomotopyLimits/StrictNerveMaps.lean",
-        "SerrePositivity/InfinityCategories/F1/Diagrams/LocalizationRelativeRestriction.lean",
-        "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/HomotopyLimits/StrictNerveMaps.lean",
+          "sha256": "35dc4f71cc7fc50c17eb1e2f05047194bdb2639a915d7e20b2f76343271645fb"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Diagrams/LocalizationRelativeRestriction.lean",
+          "sha256": "e89e097b91b08cf52370365b4f482c61fd8f59683d3414df8d50c82782b076d3"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean",
+          "sha256": "d5f8b5693f9ae6481d98481dae74b3198c494d110653071b6a4a61deff0622da"
+        }
       ],
       "reason": "単体豊穣圏からの厳密関手の nerve と、局所化に沿う相対関手の比較を確認した。射影・入射モデル構造の図式圏を局所化して ∞ 関手圏と同定する型は見つからなかった。"
     },
@@ -3479,9 +3860,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
-        "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/EnoughInjectives.lean",
-        "SerrePositivity/InfinityCategories/Derived/Presentable/DerivedCategory.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+          "sha256": "5d8f41fe7077e019f3b48d422179d327c2b559c56854e4b2be5837b125f2436a"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/EnoughInjectives.lean",
+          "sha256": "e2c8acd7499ef6ccc4710d8a7a9ca88633669d186214e19e767b6e90afb8b4e3"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/Presentable/DerivedCategory.lean",
+          "sha256": "ff29b3704630befc9314415f6e7a4f73e5f0674ddb23664c9e78733eaf6964ca"
+        }
       ],
       "reason": "Mathlib の Grothendieck アーベル圏の定義と十分な入射対象の定理を確認した。この注は Grothendieck による歴史的導入と文献を述べる。"
     },
@@ -3556,9 +3946,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/Algebra/Homology/GrothendieckAbelian.lean",
-        "Mathlib/Algebra/Homology/DerivedCategory/Basic.lean",
-        "SerrePositivity/InfinityCategories/Derived/DGModuleResolutionLocalization.lean"
+        {
+          "path": "Mathlib/Algebra/Homology/GrothendieckAbelian.lean",
+          "sha256": "e727ff27a43775b1395397bad2bde44a8b84b94213e77765361cf81fbf0e60e2"
+        },
+        {
+          "path": "Mathlib/Algebra/Homology/DerivedCategory/Basic.lean",
+          "sha256": "fb849d911197dbcf364a20cfdc524cf8bbd9180d408bff7d8407d58e019d8cbc"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/DGModuleResolutionLocalization.lean",
+          "sha256": "d6e93cc65b43b71145b9ac6befe4a4b85a8902c1b838bec1821765ba0f1b59ce"
+        }
       ],
       "reason": "Grothendieck 圏の複体の filtered 余極限の完全性と通常の準同型の定義を確認した。準同型そのものの filtered 余極限閉性を主張する宣言は確認できなかった。"
     },
@@ -3607,9 +4006,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
+          "sha256": "61423d44d1056c60b90985147c590568b5a1bdc168bd021d028fa5077a53310d"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean",
+          "sha256": "80af351efa48f7dab68e14a51aea99a567c7f6c04759bde43e412807272e49b9"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean",
+          "sha256": "506374f787a7f8e64bb880f0f3d6ab288f6070839b604e965beb78ac1cefffa2"
+        }
       ],
       "reason": "通常の t 構造と、部分圏が filtered 余極限で閉じるための定義を確認した。安定準圏の t 構造で coconnective 側の閉性をまとめる型は確認できなかった。"
     },
@@ -3658,9 +4066,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
-        "SerrePositivity/InfinityCategories/Derived/Presentable/DerivedCategory.lean",
-        "SerrePositivity/InfinityCategories/Derived/Stability.lean"
+        {
+          "path": "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+          "sha256": "f5abf749c664a3ef173ac7e2ad101f776a03904e0dd62d714bb8ab23cc7ba33c"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/Presentable/DerivedCategory.lean",
+          "sha256": "ff29b3704630befc9314415f6e7a4f73e5f0674ddb23664c9e78733eaf6964ca"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/Stability.lean",
+          "sha256": "433537b65f0e6e393456d05cb0196647ff0e4e44c00522ba8eca848887ade753"
+        }
       ],
       "reason": "通常の導来圏の t 構造と加群の導来 ∞ 圏の presentability を確認した。Grothendieck アーベル圏で左完備性が失敗する反例の形式化は見つからなかった。"
     },
@@ -3735,9 +4152,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
-        "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
-        "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
+          "sha256": "344f78a34ff0ecf8dc670b03661142be12703832c6151dc7be4c448c359a4814"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+          "sha256": "5d8f41fe7077e019f3b48d422179d327c2b559c56854e4b2be5837b125f2436a"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
+          "sha256": "43503f1f7a9a3e59c24a9e0711c36cb44f7d859d9f527004bd874079774ad993"
+        }
       ],
       "reason": "加群の導来模型で心の包含を、通常の圏で Grothendieck 性を確認した。filtered 余極限と両立する任意の accessible t 構造の心について Grothendieck 性と D⁺ からの t 完全な拡張を結ぶ型は見つからなかった。"
     },
@@ -3818,9 +4244,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Presentable/ReflectiveRepresentabilityDescent.lean",
-        "SerrePositivity/InfinityCategories/F2/Ind/UnconditionalStableCompactGeneration.lean",
-        "SerrePositivity/InfinityCategories/Stable/HomotopyBinaryBiproduct.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/ReflectiveRepresentabilityDescent.lean",
+          "sha256": "1abeec9a6aed600ccd43dd03b71f19aeaf94d6b39e5585dffdec8620100a3e92"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Ind/UnconditionalStableCompactGeneration.lean",
+          "sha256": "4000ae8a2b9610b9820f1b2bdea98e50446f4a3f5a304ad3e7d1b1be204a73eb"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/HomotopyBinaryBiproduct.lean",
+          "sha256": "b93bd21fa90bf6330d608df6563017146f19288c805678a875f896a68aa5985b"
+        }
       ],
       "reason": "反射部分圏の表現可能性の移送を確認したが、既に局所な表現対象を仮定する。コンパクトな余群生成族と余積・弱押し出し条件から表現対象を構成する Brown の型は見つからなかった。"
     },
@@ -3901,9 +4336,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/ReflectiveRepresentabilityDescent.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+          "sha256": "ad98ddfd1eaa8d30e3084cae8243791559bf9060d9a25021426315bfd61c09be"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+          "sha256": "6466ff49e18d0c241f5d463a72f72a843490b4a994c15a2e46879339ad84afa4"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/ReflectiveRepresentabilityDescent.lean",
+          "sha256": "1abeec9a6aed600ccd43dd03b71f19aeaf94d6b39e5585dffdec8620100a3e92"
+        }
       ],
       "reason": "点付き空間の coslice と有限空間のコンパクト生成候補を確認した。連結点付き空間を余群対象で生成し Brown の仮定を確かめる宣言は見つからなかった。"
     },
@@ -3971,9 +4415,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/ReflectiveRepresentabilityDescent.lean",
-        "SerrePositivity/InfinityCategories/Stable/SuspensionFiniteColimits.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+          "sha256": "ad98ddfd1eaa8d30e3084cae8243791559bf9060d9a25021426315bfd61c09be"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/ReflectiveRepresentabilityDescent.lean",
+          "sha256": "1abeec9a6aed600ccd43dd03b71f19aeaf94d6b39e5585dffdec8620100a3e92"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/SuspensionFiniteColimits.lean",
+          "sha256": "d255c8bb0c315b1860918b75752b6b20041fbbbd9d5963a403f5e1064b5721c8"
+        }
       ],
       "reason": "点付き空間の準圏と既存の表現対象を移送する定理を調べた。古典的な空間の Brown 表現定理への特殊化は確認できなかった。"
     },
@@ -4034,9 +4487,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Stable/SuspensionFiniteColimits.lean",
-        "SerrePositivity/InfinityCategories/Stable/HomotopyBinaryBiproduct.lean",
-        "Mathlib/CategoryTheory/Triangulated/HomologicalFunctor.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/SuspensionFiniteColimits.lean",
+          "sha256": "d255c8bb0c315b1860918b75752b6b20041fbbbd9d5963a403f5e1064b5721c8"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/HomotopyBinaryBiproduct.lean",
+          "sha256": "b93bd21fa90bf6330d608df6563017146f19288c805678a875f896a68aa5985b"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/HomologicalFunctor.lean",
+          "sha256": "c8e84f44c3190add787b5a2a8b3081c179d871f849f142ea186f07d9b5711799"
+        }
       ],
       "reason": "安定ホモトピー圏の加法構造を確認した。一般の点付き準圏で二重 suspension を可換余群として構成し、コホモロジー理論の各値に自然なアーベル群構造を入れる型は見つからなかった。"
     },
@@ -4107,9 +4569,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/HomologicalFunctor.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/ReflectiveRepresentabilityDescent.lean",
-        "SerrePositivity/InfinityCategories/Stable/CofiberConnecting.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/HomologicalFunctor.lean",
+          "sha256": "c8e84f44c3190add787b5a2a8b3081c179d871f849f142ea186f07d9b5711799"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/ReflectiveRepresentabilityDescent.lean",
+          "sha256": "1abeec9a6aed600ccd43dd03b71f19aeaf94d6b39e5585dffdec8620100a3e92"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/CofiberConnecting.lean",
+          "sha256": "beaf5c8208b7fa1fa11488dd4d046c0a3711b30557bde294a909afed15b0049b"
+        }
       ],
       "reason": "前三角圏のホモロジー関手の完全性と、表現対象を移送する定理を確認した。任意のコホモロジー理論が Brown の余積・弱押し出し条件を満たすという型は確認できなかった。"
     },
@@ -4190,9 +4661,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Ind/UnconditionalStableCompactGeneration.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/ReflectiveRepresentabilityDescent.lean",
-        "SerrePositivity/InfinityCategories/Stable/HomotopyBinaryBiproduct.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Ind/UnconditionalStableCompactGeneration.lean",
+          "sha256": "4000ae8a2b9610b9820f1b2bdea98e50446f4a3f5a304ad3e7d1b1be204a73eb"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/ReflectiveRepresentabilityDescent.lean",
+          "sha256": "1abeec9a6aed600ccd43dd03b71f19aeaf94d6b39e5585dffdec8620100a3e92"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/HomotopyBinaryBiproduct.lean",
+          "sha256": "b93bd21fa90bf6330d608df6563017146f19288c805678a875f896a68aa5985b"
+        }
       ],
       "reason": "コンパクト生成の安定 Ind と、表現対象を既に持つ場合の移送を確認した。コホモロジー理論の各次数に Brown を適用して表現対象を返す型は見つからなかった。"
     },
@@ -4260,9 +4740,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean",
-        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
-        "SerrePositivity/InfinityCategories/Stable/ExactFunctor.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean",
+          "sha256": "69912253565854c024c0b829e301c567509e0a8248e702c35d4138c7cc447ebd"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+          "sha256": "9ca5f38e0d1580558d740f397b98ed4d2f11575458c232acb9b0b614e3adbc72"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExactFunctor.lean",
+          "sha256": "b5d3aab240fc05c0a18447ac4cb6505521758f4b1e80e4d0baba92c98667a8f5"
+        }
       ],
       "reason": "反射部分圏の presentability は局所化が既に与えられたときの型。切除性や縮約性の局所化を生成する射の集合と、その可到達な反射は確認できなかった。"
     },
@@ -4330,9 +4819,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean",
-        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+          "sha256": "6466ff49e18d0c241f5d463a72f72a843490b4a994c15a2e46879339ad84afa4"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean",
+          "sha256": "e54b4a35fa2d625c4ce81eed701fb3b2d0c7345534d265a6f1a40184390bbe02"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+          "sha256": "9ca5f38e0d1580558d740f397b98ed4d2f11575458c232acb9b0b614e3adbc72"
+        }
       ],
       "reason": "有限単体集合の空間模型がコンパクトであることと、PΣ の sifted 余極限による普遍性を確認した。有限余極限完備な空間の部分圏からの右完全関手を一点評価で分類する宣言は見つからなかった。"
     },
@@ -4400,9 +4898,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Stable/FunctorFiniteLimits.lean",
-        "SerrePositivity/KST/Spectra/CoherentNerve.lean",
-        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/FunctorFiniteLimits.lean",
+          "sha256": "7db95e4512623b6c70e9f83d96968983a86820533383b5db2516085341925758"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/CoherentNerve.lean",
+          "sha256": "cf10bcfb47d03897bc41afe01e0df8bfe5b4a633c0899650a1591f8858b09647"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+          "sha256": "9ca5f38e0d1580558d740f397b98ed4d2f11575458c232acb9b0b614e3adbc72"
+        }
       ],
       "reason": "関手圏の有限極限を点ごとに計算する結果と、点付き空間の Ω スペクトル模型を確認した。関手圏に値を取るスペクトルを curry してスペクトル値関手と同定する型は確認できなかった。"
     },
@@ -4470,9 +4977,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Stable/FunctorFiniteLimits.lean",
-        "SerrePositivity/InfinityCategories/Stable/Exact/ExactFunctorCategory.lean",
-        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/FunctorFiniteLimits.lean",
+          "sha256": "7db95e4512623b6c70e9f83d96968983a86820533383b5db2516085341925758"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/Exact/ExactFunctorCategory.lean",
+          "sha256": "ed1f241604230f5bdd3a47781bb60e5baef557c9193f521917f4584d1103e9a4"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+          "sha256": "9ca5f38e0d1580558d740f397b98ed4d2f11575458c232acb9b0b614e3adbc72"
+        }
       ],
       "reason": "有限極限を持つ標的への関手圏全体の有限極限と、安定圏間の完全関手の充満部分圏は確認した。一般の標的で縮約切除関手の部分圏が零対象と有限極限を持つ宣言は見つからなかった。"
     },
@@ -4540,9 +5056,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
-        "SerrePositivity/InfinityCategories/Stable/Exact/ExactFunctorCategory.lean",
-        "SerrePositivity/KST/Spectra/D3TailStability.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+          "sha256": "9ca5f38e0d1580558d740f397b98ed4d2f11575458c232acb9b0b614e3adbc72"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/Exact/ExactFunctorCategory.lean",
+          "sha256": "ed1f241604230f5bdd3a47781bb60e5baef557c9193f521917f4584d1103e9a4"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/D3TailStability.lean",
+          "sha256": "98e9fb45cf9639fa49065758a19a594062b244741970b80f337e6c1d282a53be"
+        }
       ],
       "reason": "切除性を suspension 面で検出する定理は一つの関手の像を判定する。縮約切除関手全体の安定性を示す型は、完全関手の部分圏や具体的な Ω スペクトルの場合も含めて確認できなかった。"
     },
@@ -4613,9 +5138,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
-        "SerrePositivity/KST/Spectra/KanSequence.lean",
-        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+          "sha256": "ad98ddfd1eaa8d30e3084cae8243791559bf9060d9a25021426315bfd61c09be"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/KanSequence.lean",
+          "sha256": "f31be1f061aa7aea819af8278a659d041515d945dac66c6c305797c01c36802c"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+          "sha256": "9ca5f38e0d1580558d740f397b98ed4d2f11575458c232acb9b0b614e3adbc72"
+        }
       ],
       "reason": "空間の pointed coslice と Ω スペクトルの具体模型を確認した。一般の C について点を忘れる写像を Sp に移して同値とする宣言は見つからなかった。"
     },
@@ -4683,9 +5217,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
-        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
-        "SerrePositivity/KST/LocalizingInvariants/CofiberAdjunction.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+          "sha256": "ad98ddfd1eaa8d30e3084cae8243791559bf9060d9a25021426315bfd61c09be"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+          "sha256": "9ca5f38e0d1580558d740f397b98ed4d2f11575458c232acb9b0b614e3adbc72"
+        },
+        {
+          "path": "SerrePositivity/KST/LocalizingInvariants/CofiberAdjunction.lean",
+          "sha256": "409dc21d10c7df22ecfdd66638ea29cfca208f2eb0841770a863428bb51a3969"
+        }
       ],
       "reason": "点付き空間を coslice で表す構成と cofiber を取る図式を確認した。基点付加への前合成と cofiber 構成が切除関手の二部分圏を互いに逆にする型は見つからなかった。"
     },
@@ -4753,9 +5296,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Stable/LoopEquivalenceStability.lean",
-        "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean",
-        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/LoopEquivalenceStability.lean",
+          "sha256": "6a84f134f67198c846074d39231d88f7a189f776cb8df348798c07e335d51f90"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean",
+          "sha256": "9dc6b803a30c942659ee2cdb574aaf3cd9d634e2c8af59a75a22cdb4f95ff56c"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+          "sha256": "9ca5f38e0d1580558d740f397b98ed4d2f11575458c232acb9b0b614e3adbc72"
+        }
       ],
       "reason": "loop 自己同値による安定性の判定は C 内部のもの。スペクトルのレベル 0 の評価を確認したが、その評価が Sp(C) と C の同値になることによる判定は見つからなかった。"
     },
@@ -4823,9 +5375,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
-        "SerrePositivity/InfinityCategories/Stable/FunctorPullbackSquares.lean",
-        "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+          "sha256": "9ca5f38e0d1580558d740f397b98ed4d2f11575458c232acb9b0b614e3adbc72"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/FunctorPullbackSquares.lean",
+          "sha256": "d48efce9e10a025ab2662eeae2835d842dd221ded38163de6a5d0929c9aad4ea"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean",
+          "sha256": "9dc6b803a30c942659ee2cdb574aaf3cd9d634e2c8af59a75a22cdb4f95ff56c"
+        }
       ],
       "reason": "具体的なスペクトルのレベル評価と、切除性の判定を確認した。レベル評価との後合成で縮約切除関手を一意に持ち上げる型は見つからなかった。"
     },
@@ -4893,9 +5454,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/Stable/Exact/ExactFunctorCategory.lean",
-        "SerrePositivity/InfinityCategories/Stable/ExactFunctor.lean",
-        "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/Exact/ExactFunctorCategory.lean",
+          "sha256": "ed1f241604230f5bdd3a47781bb60e5baef557c9193f521917f4584d1103e9a4"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExactFunctor.lean",
+          "sha256": "b5d3aab240fc05c0a18447ac4cb6505521758f4b1e80e4d0baba92c98667a8f5"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean",
+          "sha256": "9dc6b803a30c942659ee2cdb574aaf3cd9d634e2c8af59a75a22cdb4f95ff56c"
+        }
       ],
       "reason": "安定圏間の完全関手の充満部分圏は構成されている。安定始域から一般の標的への左完全関手を Ω∞ に沿って持ち上げ、その関手圏を同値とする型は見つからなかった。"
     },
@@ -4973,9 +5543,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldReflection.lean",
-        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean",
+          "sha256": "69912253565854c024c0b829e301c567509e0a8248e702c35d4138c7cc447ebd"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldReflection.lean",
+          "sha256": "702c4fb550f370c5c7986296f5d697c56a560b9eefd395b35474bb6d7adbfafb"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+          "sha256": "9ca5f38e0d1580558d740f397b98ed4d2f11575458c232acb9b0b614e3adbc72"
+        }
       ],
       "reason": "前層の反射部分圏の presentability と Bousfield 局所対象の構成を確認した。始対象から終対象への一射で零対象における被約性を課し、その前層圏の普遍性と点付き性を合わせて与える型は見つからなかった。"
     },
@@ -5043,9 +5622,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/KST/Spectra/CoherentNerve.lean",
-        "SerrePositivity/Spectra/Stable/OmegaDetection.lean",
-        "SerrePositivity/KST/Spectra/D3TailStability.lean"
+        {
+          "path": "SerrePositivity/KST/Spectra/CoherentNerve.lean",
+          "sha256": "cf10bcfb47d03897bc41afe01e0df8bfe5b4a633c0899650a1591f8858b09647"
+        },
+        {
+          "path": "SerrePositivity/Spectra/Stable/OmegaDetection.lean",
+          "sha256": "8c8a46b0819c28b0d2ba3ff2b68c0d82df722cb3103dcbc9c75a4ced85831bc4"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/D3TailStability.lean",
+          "sha256": "98e9fb45cf9639fa49065758a19a594062b244741970b80f337e6c1d282a53be"
+        }
       ],
       "reason": "Ω スペクトルの coherent nerve と対称スペクトルの安定局所対象を調べた。両模型を介して hSp を古典的な安定ホモトピー圏と同定する型は確認できなかった。"
     },
@@ -5117,9 +5705,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/KST/Spectra/SpectrumLevelFunctor.lean",
-        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
-        "SerrePositivity/KST/Spectra/CoherentNerve.lean"
+        {
+          "path": "SerrePositivity/KST/Spectra/SpectrumLevelFunctor.lean",
+          "sha256": "dcff6b1ebafa90c89d099c453d764a4faeccc4cadc0cb8d4190bc0f169968d25"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+          "sha256": "9ca5f38e0d1580558d740f397b98ed4d2f11575458c232acb9b0b614e3adbc72"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/CoherentNerve.lean",
+          "sha256": "cf10bcfb47d03897bc41afe01e0df8bfe5b4a633c0899650a1591f8858b09647"
+        }
       ],
       "reason": "レベルのホモトピー群と suspension 面からの切除判定を確認した。有限空間対 X/X′ の評価から相対ホモロジー理論と Mayer–Vietoris を構成する宣言は確認できなかった。"
     },
@@ -5187,9 +5784,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean",
-        "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
-        "SerrePositivity/Spectra/Stable/Omega.lean"
+        {
+          "path": "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean",
+          "sha256": "9dc6b803a30c942659ee2cdb574aaf3cd9d634e2c8af59a75a22cdb4f95ff56c"
+        },
+        {
+          "path": "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+          "sha256": "f5abf749c664a3ef173ac7e2ad101f776a03904e0dd62d714bb8ab23cc7ba33c"
+        },
+        {
+          "path": "SerrePositivity/Spectra/Stable/Omega.lean",
+          "sha256": "e4284907b3e1295081e791fb4535709d5f2f8ce83b22f791b1511c34b1081c31"
+        }
       ],
       "reason": "具体的な Ω スペクトルのレベル評価と加群の導来圏の t 構造を確認した。一般の presentable C の Sp(C) で Ω∞ が終対象となる部分圏から accessible t 構造を作る型は見つからなかった。"
     },
@@ -5257,9 +5863,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/Spectra/Stable/LocalizingMaps.lean",
-        "SerrePositivity/KST/Spectra/CoherentNerve.lean",
-        "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean"
+        {
+          "path": "SerrePositivity/Spectra/Stable/LocalizingMaps.lean",
+          "sha256": "054ab20689b087aaf1cbdc0257b48ccd7d95bcab6bbc23c0127d9ea6dc5370c0"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/CoherentNerve.lean",
+          "sha256": "cf10bcfb47d03897bc41afe01e0df8bfe5b4a633c0899650a1591f8858b09647"
+        },
+        {
+          "path": "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+          "sha256": "f5abf749c664a3ef173ac7e2ad101f776a03904e0dd62d714bb8ab23cc7ba33c"
+        }
       ],
       "reason": "対称スペクトルの自由対象から作る局所化生成射を確認した。Σ∞₊ の像の拡大・余極限閉包が connective 部分であることを示す型は確認できなかった。"
     },
@@ -5339,9 +5954,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Ind/UnconditionalStableCompactGeneration.lean",
-        "SerrePositivity/KST/Spectra/CoherentNerve.lean",
-        "SerrePositivity/Spectra/Stable/LocalizingMaps.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Ind/UnconditionalStableCompactGeneration.lean",
+          "sha256": "4000ae8a2b9610b9820f1b2bdea98e50446f4a3f5a304ad3e7d1b1be204a73eb"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/CoherentNerve.lean",
+          "sha256": "cf10bcfb47d03897bc41afe01e0df8bfe5b4a633c0899650a1591f8858b09647"
+        },
+        {
+          "path": "SerrePositivity/Spectra/Stable/LocalizingMaps.lean",
+          "sha256": "054ab20689b087aaf1cbdc0257b48ccd7d95bcab6bbc23c0127d9ea6dc5370c0"
+        }
       ],
       "reason": "小さい安定圏の Ind がコンパクト生成される場合を調べた。一般のコンパクト生成 C から Sp(C) のコンパクト生成を移す型は、Ω スペクトルの具体模型でも確認できなかった。"
     },
@@ -5409,9 +6033,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean",
-        "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean",
-        "SerrePositivity/KST/Spectra/D3TailStability.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafSiftedColimits.lean",
+          "sha256": "506374f787a7f8e64bb880f0f3d6ab288f6070839b604e965beb78ac1cefffa2"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean",
+          "sha256": "9dc6b803a30c942659ee2cdb574aaf3cd9d634e2c8af59a75a22cdb4f95ff56c"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/D3TailStability.lean",
+          "sha256": "98e9fb45cf9639fa49065758a19a594062b244741970b80f337e6c1d282a53be"
+        }
       ],
       "reason": "PΣ の sifted 余極限の点ごとの計算と Ω スペクトルのレベル評価を確認した。connective スペクトルから空間への Ω∞ の sifted 余極限保存は見つからなかった。"
     },
@@ -5462,9 +6095,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Ind/UnconditionalStableCompactGeneration.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
-        "SerrePositivity/InfinityCategories/Stable/TriangulatedInstance.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Ind/UnconditionalStableCompactGeneration.lean",
+          "sha256": "4000ae8a2b9610b9820f1b2bdea98e50446f4a3f5a304ad3e7d1b1be204a73eb"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+          "sha256": "f13c2002d19f5f29286332d5ad434cdef683461c6f302af53e3c46e9861a3791"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/TriangulatedInstance.lean",
+          "sha256": "ba3d664de22d50ac1a8d538e3a3e27e0ebc3f1f098a7867c6204e93349ba1133"
+        }
       ],
       "reason": "安定 Ind の κ コンパクト生成とホモトピー圏の三角構造を確認した。コンパクト生成をホモトピー圏だけの条件と同定する型は見つからなかった。"
     },
@@ -5525,9 +6167,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Presentable/AdjointFunctorTheorem.lean",
-        "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean",
-        "SerrePositivity/Spectra/Stable/OmegaDetection.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/AdjointFunctorTheorem.lean",
+          "sha256": "f43e72c6eb0c5b0320d3a456bbc47cead64a843f185163e063762d628717fedb"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean",
+          "sha256": "9dc6b803a30c942659ee2cdb574aaf3cd9d634e2c8af59a75a22cdb4f95ff56c"
+        },
+        {
+          "path": "SerrePositivity/Spectra/Stable/OmegaDetection.lean",
+          "sha256": "8c8a46b0819c28b0d2ba3ff2b68c0d82df722cb3103dcbc9c75a4ced85831bc4"
+        }
       ],
       "reason": "presentable 圏の随伴関手判定と具体的な Ω スペクトルのレベル評価を確認した。一般の Sp(C) の presentability、Σ∞₊⊣Ω∞ および後合成による左随伴の検出は見つからなかった。"
     },
@@ -5583,9 +6234,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/KST/Spectra/CoherentNerve.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean",
-        "SerrePositivity/Spectra/Stable/LocalizingMaps.lean"
+        {
+          "path": "SerrePositivity/KST/Spectra/CoherentNerve.lean",
+          "sha256": "cf10bcfb47d03897bc41afe01e0df8bfe5b4a633c0899650a1591f8858b09647"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean",
+          "sha256": "e54b4a35fa2d625c4ce81eed701fb3b2d0c7345534d265a6f1a40184390bbe02"
+        },
+        {
+          "path": "SerrePositivity/Spectra/Stable/LocalizingMaps.lean",
+          "sha256": "054ab20689b087aaf1cbdc0257b48ccd7d95bcab6bbc23c0127d9ea6dc5370c0"
+        }
       ],
       "reason": "具体的な Ω スペクトルと PΣ への余極限保存延長の普遍性を確認した。一般の Σ∞₊ に沿う前合成が安定な標的への余極限保存関手を分類する型は見つからなかった。"
     },
@@ -5645,9 +6305,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/Spectra/Stable/LocalizingMaps.lean",
-        "SerrePositivity/KST/Spectra/CoherentNerve.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/PresheafPresentable.lean"
+        {
+          "path": "SerrePositivity/Spectra/Stable/LocalizingMaps.lean",
+          "sha256": "054ab20689b087aaf1cbdc0257b48ccd7d95bcab6bbc23c0127d9ea6dc5370c0"
+        },
+        {
+          "path": "SerrePositivity/KST/Spectra/CoherentNerve.lean",
+          "sha256": "cf10bcfb47d03897bc41afe01e0df8bfe5b4a633c0899650a1591f8858b09647"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafPresentable.lean",
+          "sha256": "7216404adb559bd64872d2c9aa9316c05fec0e7b9d7682a073dfa580fce0c2a2"
+        }
       ],
       "reason": "対称スペクトルの自由対象と具体的な Ω スペクトルを調べた。球スペクトルでの評価が安定 presentable 圏への余極限保存関手を分類する宣言は確認できなかった。"
     },
@@ -5703,9 +6372,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
-        "SerrePositivity/InfinityCategories/Stable/ExactFunctor.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldReflection.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+          "sha256": "4ae4ddcd34f784fda9cedab3486c2c82453a3b526abab93fff5d19b11f8eabb5"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExactFunctor.lean",
+          "sha256": "b5d3aab240fc05c0a18447ac4cb6505521758f4b1e80e4d0baba92c98667a8f5"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldReflection.lean",
+          "sha256": "702c4fb550f370c5c7986296f5d697c56a560b9eefd395b35474bb6d7adbfafb"
+        }
       ],
       "reason": "反射部分圏の局所化の普遍性と、すでに安定な両端の間での有限極限保存を確認した。左完全な reflector から標的の安定性を導く逆向きまで含む型は見つからなかった。"
     },
@@ -5761,9 +6439,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean",
-        "SerrePositivity/InfinityCategories/Core/FullyFaithfulCalculus.lean",
-        "SerrePositivity/InfinityCategories/Stable/ExactFunctor.lean"
+        {
+          "path": "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean",
+          "sha256": "9dc6b803a30c942659ee2cdb574aaf3cd9d634e2c8af59a75a22cdb4f95ff56c"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/FullyFaithfulCalculus.lean",
+          "sha256": "dd2e587599082146333117dec699fefe3d31674d6ef4311263f8ea83292eab91"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Stable/ExactFunctor.lean",
+          "sha256": "b5d3aab240fc05c0a18447ac4cb6505521758f4b1e80e4d0baba92c98667a8f5"
+        }
       ],
       "reason": "レベル評価の型と準圏の一般の充満忠実性の計算を確認した。完全なスペクトル値関手でレベル 0 の評価から充満忠実性を引き上げる型は見つからなかった。"
     },
@@ -5819,9 +6506,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Presentable/IndPresheafReflection.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean",
-        "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/IndPresheafReflection.lean",
+          "sha256": "a5b8390dc6bdd930ef6329550dee4cd0b7f633336c076de774e76bc6a2dd30a4"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean",
+          "sha256": "69912253565854c024c0b829e301c567509e0a8248e702c35d4138c7cc447ebd"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+          "sha256": "4ae4ddcd34f784fda9cedab3486c2c82453a3b526abab93fff5d19b11f8eabb5"
+        }
       ],
       "reason": "前層による presentability の反射模型はある。HA のこの箇所は Giraud と Gabriel–Popescu との類比や文献を述べ、追加の比較同値を主張しない。"
     },
@@ -5877,9 +6573,18 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/GeneratedSourcePresentable.lean",
-        "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/GeneratedSourcePresentable.lean",
+          "sha256": "59a3300aaa8865451d5bcac2246a109d012f5febc4ded7e5ccb90ff084453a4a"
+        },
+        {
+          "path": "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+          "sha256": "f5abf749c664a3ef173ac7e2ad101f776a03904e0dd62d714bb8ab23cc7ba33c"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean",
+          "sha256": "69912253565854c024c0b829e301c567509e0a8248e702c35d4138c7cc447ebd"
+        }
       ],
       "reason": "辺の強飽和閉包内の固定始域圏が presentable になる型を確認した。対象を余極限と拡大で閉じた部分圏の presentability と、そこから t 構造を構成する型は見つからなかった。"
     },
@@ -5922,9 +6627,18 @@
         }
       },
       "sources_read": [
-        "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean"
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
+          "sha256": "61423d44d1056c60b90985147c590568b5a1bdc168bd021d028fa5077a53310d"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+          "sha256": "e4e14cd6a543b3af929ec1c319d02c0d1d0555cdfee846bec608daff8208694f"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean",
+          "sha256": "5ae5e40f51f2c212a60d04fb29569c9b9b76dd3d1f728e78d2a2b14cb8e33731"
+        }
       ],
       "reason": "準圏の IsPresentable と三角圏の TStructure はある。安定準圏の t 構造に対し connective 部分の presentability を述べる型は見つからなかった。"
     },
@@ -5970,11 +6684,25 @@
         }
       },
       "sources_read": [
-        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean",
-        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean",
-        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLEGT.lean"
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean",
+          "sha256": "69912253565854c024c0b829e301c567509e0a8248e702c35d4138c7cc447ebd"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean",
+          "sha256": "5ae5e40f51f2c212a60d04fb29569c9b9b76dd3d1f728e78d2a2b14cb8e33731"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLEGT.lean",
+          "sha256": "058cb91534526de31b5c061a92cb55e62cd7290a8db2e8558a20bc1031dbfc16"
+        }
       ],
       "reason": "可到達な反射の像の presentability と通常の t 切断の存在を確認した。二つの切断関手の可到達性と両側部分圏の可到達性・presentability の六条件を比較する型は見つからなかった。"
     }
+  },
+  "source_hash_completion": {
+    "method": "SHA-256 of git show <recorded worktree_commit or mathlib_commit>:<recorded source path>",
+    "review_unchanged": true,
+    "note": "段4の全体監査で旧来のpath-only記録に当時のソースのハッシュを付した。検索・reasonは変更していない。"
   }
 }

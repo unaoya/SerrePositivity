@@ -288,13 +288,6 @@
         "SerrePositivity.KST.LocalizingInvariants.pullbackCategory",
         "SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory"
       ]
-    },
-    "1.1.4.4": {
-      "ha_page": 35,
-      "declarations": [
-        "SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity",
-        "SerrePositivity.KST.LocalizingInvariants.ordinaryPullback_isStable"
-      ]
     }
   },
   "declarations": {
@@ -1164,19 +1157,7 @@
         "Classical.choice",
         "Quot.sound"
       ]
-    },
-    "SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity": {
-      "name": "SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity",
-      "module": "SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity",
-      "path": "SerrePositivity/InfinityCategories/Stable/Infinity/StableInfinity.lean",
-      "line": 84,
-      "source_sha256": "ed617f95d6ede6238faa14d6f36692d87f40d24bb853a8a3c9c899d08ea93bae",
-      "type": "SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u_1} : SSet.{u_1 + 1}",
-      "axioms": [
-        "propext",
-        "Classical.choice",
-        "Quot.sound"
-      ]
     }
-  }
+  },
+  "review_update": "段4で旧partialを厳密基準に再分類。型検査自体の元の版は維持。"
 }

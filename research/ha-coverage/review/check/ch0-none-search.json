@@ -1,0 +1,82 @@
+{
+  "worktree_commit": "6bb2e5a42fe5829e4bf04ba94b028d6dd5b0719a",
+  "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
+  "items": {
+    "0.0.0.3": {
+      "ha_page": 11,
+      "detail": "Joyal.*notes;weak.*Kan;Quasicategory|Mathlib.AlgebraicTopology.Quasicategory.Basic,Mathlib.AlgebraicTopology.SingularSet",
+      "citation_scan": {
+        "exact": {
+          "prefix": "0.0.0.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "0.0.0",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "1.1.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Joyal.*notes|weak.*Kan|Quasicategory",
+          "files_with_matches": 5914,
+          "total_matching_lines": 23850,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/BousfieldKanTerminalAugmentation.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomEndpointTransport.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomPointComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomUnitComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomUnitValue.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitConstantPointValueTo.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitFirstPostLowerExchange.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitFirstPostTransportExchange.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelFiberTransport.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelFiveFactors.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelLowerCancellation.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelOuterCancellation.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Joyal.*notes|weak.*Kan|Quasicategory",
+          "files_with_matches": 12,
+          "total_matching_lines": 121,
+          "sample_paths": [
+            "Mathlib/AlgebraicTopology/Quasicategory/Basic.lean",
+            "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean",
+            "Mathlib/AlgebraicTopology/Quasicategory/Nerve.lean",
+            "Mathlib/AlgebraicTopology/Quasicategory/StrictBicategory.lean",
+            "Mathlib/AlgebraicTopology/Quasicategory/StrictSegal.lean",
+            "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+            "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncatedQuasicategory.lean",
+            "Mathlib/AlgebraicTopology/SimplicialNerve.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean",
+            "Mathlib/Order/Antichain.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/AlgebraicTopology/Quasicategory/Basic.lean",
+          "sha256": "fb1d3692ab7bb183877f5be55d49b1cd3dbb939249d922e625cf6a4a927e0bfe"
+        },
+        {
+          "path": "Mathlib/AlgebraicTopology/SingularSet.lean",
+          "sha256": "e1a0ccca6d02ed00ac9f065051b2b3c61dba0493618e45025cd6e640f17162ca"
+        }
+      ],
+      "reason": "Joyal の講義録等の文献案内と本書の前提知識を述べる項目に対応する宣言は見つからない。準圏や特異単体集合の定義はあるが、この引用と読書上の前提を主張していない。"
+    }
+  }
+}

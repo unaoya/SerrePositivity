@@ -1,0 +1,79 @@
+{
+  "items": 2866,
+  "counts": {
+    "0": {
+      "mathlib": 1,
+      "partial": 1,
+      "none": 1
+    },
+    "1": {
+      "none": 124,
+      "partial": 121,
+      "own": 32,
+      "mathlib": 23
+    },
+    "2": {
+      "none": 253,
+      "partial": 28
+    },
+    "3": {
+      "none": 154,
+      "partial": 12
+    },
+    "4": {
+      "partial": 151,
+      "mathlib": 4,
+      "none": 496,
+      "own": 1
+    },
+    "5": {
+      "none": 459,
+      "partial": 35,
+      "own": 3,
+      "mathlib": 3
+    },
+    "6": {
+      "none": 333,
+      "partial": 23
+    },
+    "7": {
+      "partial": 77,
+      "none": 321,
+      "own": 1,
+      "mathlib": 6
+    },
+    "A": {
+      "none": 123,
+      "partial": 10,
+      "mathlib": 2
+    },
+    "B": {
+      "none": 60,
+      "partial": 7,
+      "own": 1
+    }
+  },
+  "total": {
+    "mathlib": 39,
+    "partial": 465,
+    "none": 2324,
+    "own": 38
+  },
+  "unsure": 0,
+  "partial_kind": {
+    "component": 190,
+    "stronger-hyp": 70,
+    "special": 184,
+    "direction": 21
+  },
+  "typed_declaration_versions": 715,
+  "positive_items": 542,
+  "none_items": 2324,
+  "verified_source_hash_records": 1028,
+  "kerodon_items": 33,
+  "e_infinity_items": 16,
+  "missing_citations": {
+    "citations.csv": [],
+    "plan-citations.csv": []
+  }
+}
