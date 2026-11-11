@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "f31cbb7722e85f90a346a39141d89aa3c21cfd67",
+  "worktree_commit": "c85204a80859c4dce6b2f077449e525ed1d03592",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
@@ -33,9 +33,12 @@
       "search": {
         "SerrePositivity": {
           "pattern": "LocalizedMonoidal|monoidal.*localization|localization.*monoidal|IsLocalization|monoidalInfinity",
-          "files_with_matches": 473,
-          "total_matching_lines": 1737,
+          "files_with_matches": 515,
+          "total_matching_lines": 1915,
           "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/AffineCommonPrincipalOpen.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineEtaleBlowupRefinement.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineFiberComponentBaseChange.lean",
             "SerrePositivity/AlgebraicGeometry/AffineModelLocalization.lean",
             "SerrePositivity/AlgebraicGeometry/AffineOpenClosure.lean",
             "SerrePositivity/AlgebraicGeometry/AffineRegularLift.lean",
@@ -44,10 +47,7 @@
             "SerrePositivity/AlgebraicGeometry/BlowupLocalization.lean",
             "SerrePositivity/AlgebraicGeometry/BlowupUniversal.lean",
             "SerrePositivity/AlgebraicGeometry/BoundaryClopenSeparation.lean",
-            "SerrePositivity/AlgebraicGeometry/BoundaryFlatBaseChange.lean",
-            "SerrePositivity/AlgebraicGeometry/BoundaryFreeOpenLocality.lean",
-            "SerrePositivity/AlgebraicGeometry/BoundaryGenericRankBaseChange.lean",
-            "SerrePositivity/AlgebraicGeometry/BoundaryGenericRankLocalization.lean"
+            "SerrePositivity/AlgebraicGeometry/BoundaryFlatBaseChange.lean"
           ]
         },
         "Mathlib": {
@@ -1162,21 +1162,21 @@
       "search": {
         "SerrePositivity": {
           "pattern": "bifibrantHammock_isLocalization|alg.*localization|localization.*alg|rectification|strictification.*algebra",
-          "files_with_matches": 1037,
-          "total_matching_lines": 3474,
+          "files_with_matches": 1077,
+          "total_matching_lines": 3585,
           "sample_paths": [
             "SerrePositivity/AlgebraicGeometry.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineCommonPrincipalOpen.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineEtaleBlowupRefinement.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineFiberComponentBaseChange.lean",
             "SerrePositivity/AlgebraicGeometry/AffineModelLocalization.lean",
             "SerrePositivity/AlgebraicGeometry/AffineModelOpenImmersion.lean",
             "SerrePositivity/AlgebraicGeometry/AffineOpenClosure.lean",
             "SerrePositivity/AlgebraicGeometry/AffineRegularLift.lean",
             "SerrePositivity/AlgebraicGeometry/BasicOpenCoverLifts.lean",
+            "SerrePositivity/AlgebraicGeometry/BasicOpenFlatCenterGluing.lean",
             "SerrePositivity/AlgebraicGeometry/BlowupAway.lean",
-            "SerrePositivity/AlgebraicGeometry/BlowupDensity.lean",
-            "SerrePositivity/AlgebraicGeometry/BlowupLocalization.lean",
-            "SerrePositivity/AlgebraicGeometry/BlowupUniversal.lean",
-            "SerrePositivity/AlgebraicGeometry/BoundaryClopenSeparation.lean",
-            "SerrePositivity/AlgebraicGeometry/BoundaryFlatBaseChange.lean"
+            "SerrePositivity/AlgebraicGeometry/BlowupDensity.lean"
           ]
         },
         "Mathlib": {
@@ -3099,8 +3099,8 @@
       "search": {
         "SerrePositivity": {
           "pattern": "assocOperad|associativeOperad|vertexFiber|MonoidalCategory",
-          "files_with_matches": 11731,
-          "total_matching_lines": 28262,
+          "files_with_matches": 11732,
+          "total_matching_lines": 28263,
           "sample_paths": [
             "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGCellBoundaryOperator.lean",
             "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGCellBoundaryRecursion.lean",
@@ -3253,8 +3253,8 @@
       "search": {
         "SerrePositivity": {
           "pattern": "countable.*coproduct|free.*associative|TensorAlgebra",
-          "files_with_matches": 58,
-          "total_matching_lines": 729,
+          "files_with_matches": 64,
+          "total_matching_lines": 743,
           "sample_paths": [
             "SerrePositivity/AlgebraicGeometry.lean",
             "SerrePositivity/AlgebraicGeometry/BoundaryFlatBaseChange.lean",
@@ -3266,8 +3266,8 @@
             "SerrePositivity/AlgebraicGeometry/BoundaryGenericRankLocalization.lean",
             "SerrePositivity/AlgebraicGeometry/BoundaryHigherMinorVanishing.lean",
             "SerrePositivity/AlgebraicGeometry/BoundaryMinorCoefficientPower.lean",
-            "SerrePositivity/AlgebraicGeometry/FiniteTypeTensorPureTransformBaseChange.lean",
-            "SerrePositivity/AlgebraicGeometry/GenericPureFreeBaseLocalization.lean"
+            "SerrePositivity/AlgebraicGeometry/EtaleFlatCenterDescent.lean",
+            "SerrePositivity/AlgebraicGeometry/EtaleSourceBaseChangeFlat.lean"
           ]
         },
         "Mathlib": {
@@ -5356,9 +5356,10 @@
       "search": {
         "SerrePositivity": {
           "pattern": "fundamental.*cube|cube.*simplex|powerset.*simplex|Finset.*sort",
-          "files_with_matches": 111,
-          "total_matching_lines": 229,
+          "files_with_matches": 112,
+          "total_matching_lines": 230,
           "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/ResidueTensorUniversalInjectivity.lean",
             "SerrePositivity/CommutativeAlgebra/GeometricTransitivity.lean",
             "SerrePositivity/EInfinity/BarrattEccles/OrderedSubset.lean",
             "SerrePositivity/EInfinity/BarrattEccles/ShuffleSign.lean",
@@ -5369,8 +5370,7 @@
             "SerrePositivity/InfinityCategories/Coherent/Cube.lean",
             "SerrePositivity/InfinityCategories/Coherent/HollowCube.lean",
             "SerrePositivity/InfinityCategories/DGNerve/Bianchi.lean",
-            "SerrePositivity/InfinityCategories/DGNerve/BoundaryDecomposition.lean",
-            "SerrePositivity/InfinityCategories/DGNerve/HornComponents.lean"
+            "SerrePositivity/InfinityCategories/DGNerve/BoundaryDecomposition.lean"
           ]
         },
         "Mathlib": {
@@ -6330,8 +6330,8 @@
       "search": {
         "SerrePositivity": {
           "pattern": "associahedron|nonunital.*An|nullhomotop|relativeFunctorExtensionSpace",
-          "files_with_matches": 315,
-          "total_matching_lines": 1241,
+          "files_with_matches": 316,
+          "total_matching_lines": 1245,
           "sample_paths": [
             "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitRawFirstChoiceSpace.lean",
             "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitRawFirstChoiceVertices.lean",
@@ -6564,21 +6564,21 @@
       "search": {
         "SerrePositivity": {
           "pattern": "Massey.*product|nonunital.*An|nullhomotop|pathCubeBoundary_lift",
-          "files_with_matches": 181,
-          "total_matching_lines": 777,
+          "files_with_matches": 182,
+          "total_matching_lines": 781,
           "sample_paths": [
             "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CospanMonicFiberTransport.lean",
             "SerrePositivity/Asymptotic/RankQuotient.lean",
             "SerrePositivity/Asymptotic/SequenceHomology.lean",
             "SerrePositivity/BhattScholze/Prismatic/PDColumnCoordinateEvaluation.lean",
+            "SerrePositivity/BhattScholze/Prismatic/PDCompletedColumnContraction.lean",
             "SerrePositivity/CategoryTheory/LinearScalar.lean",
             "SerrePositivity/CategoryTheory/ScalarSupport.lean",
             "SerrePositivity/CommutativeAlgebra/DeRham/CartierCoordinateHomotopy.lean",
             "SerrePositivity/EInfinity/ComplexLimits/CofibrantKProjective.lean",
             "SerrePositivity/EInfinity/ComplexLimits/IdentityCoconeHom.lean",
             "SerrePositivity/EInfinity/ProjectiveHomotopyInverse.lean",
-            "SerrePositivity/HomologicalAlgebra/Complex/Truncation.lean",
-            "SerrePositivity/HomologicalAlgebra/DerivedCompletion/ComplexCompletion/Basic.lean"
+            "SerrePositivity/HomologicalAlgebra/Complex/Truncation.lean"
           ]
         },
         "Mathlib": {
@@ -9749,11 +9749,12 @@
       "search": {
         "SerrePositivity": {
           "pattern": "module.*cartesian|leftModuleOperad|restrictScalars|CartesianFibration",
-          "files_with_matches": 1000,
-          "total_matching_lines": 3781,
+          "files_with_matches": 1032,
+          "total_matching_lines": 3877,
           "sample_paths": [
             "SerrePositivity/AlgebraicGeometry/AdicCompletionSection.lean",
             "SerrePositivity/AlgebraicGeometry/AdicTensorRightComparison.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineCommonPrincipalOpen.lean",
             "SerrePositivity/AlgebraicGeometry/AffineOpenClosure.lean",
             "SerrePositivity/AlgebraicGeometry/BaseChangeChartCover.lean",
             "SerrePositivity/AlgebraicGeometry/Blowup.lean",
@@ -9762,8 +9763,7 @@
             "SerrePositivity/AlgebraicGeometry/CompletedFinsuppCoordinates.lean",
             "SerrePositivity/AlgebraicGeometry/CompletedFlatMittagLeffler.lean",
             "SerrePositivity/AlgebraicGeometry/CompletedFreeFiniteTensor.lean",
-            "SerrePositivity/AlgebraicGeometry/ExtendedIdealTensor.lean",
-            "SerrePositivity/AlgebraicGeometry/FiberSupportAnnihilator.lean"
+            "SerrePositivity/AlgebraicGeometry/DeterminantalCenterSplitDescent.lean"
           ]
         },
         "Mathlib": {
@@ -9972,8 +9972,8 @@
       "search": {
         "SerrePositivity": {
           "pattern": "free.*module|module.*adjunction|extendRestrictScalarsAdj|leftModuleOperad",
-          "files_with_matches": 494,
-          "total_matching_lines": 2242,
+          "files_with_matches": 501,
+          "total_matching_lines": 2250,
           "sample_paths": [
             "SerrePositivity/AlgebraicGeometry.lean",
             "SerrePositivity/AlgebraicGeometry/BaseChangedMinorFreeCriterion.lean",

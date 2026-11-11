@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "f31cbb7722e85f90a346a39141d89aa3c21cfd67",
+  "worktree_commit": "c85204a80859c4dce6b2f077449e525ed1d03592",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
@@ -416,11 +416,49 @@
         "SerrePositivity.InfinityCategories.markedCocartesianFunctorPredicate_vertex"
       ]
     },
+    "4.2.3.3": {
+      "ha_page": 527,
+      "declarations": [
+        "SerrePositivity.MonoidalModuleLimits.limitConeLiftsToLimit",
+        "SerrePositivity.MonoidalModuleLimits.forget_createsLimitsOfShape",
+        "ModuleCat.preservesLimit_restrictScalars"
+      ]
+    },
+    "4.2.3.5": {
+      "ha_page": 528,
+      "declarations": [
+        "SerrePositivity.MonoidalModuleColimits.colimitCoconeLiftsToColimit",
+        "ModuleCat.forget₂PreservesColimitsOfShape",
+        "ModuleCat.reflectsColimitsOfShape"
+      ]
+    },
+    "4.2.3.7": {
+      "ha_page": 529,
+      "declarations": [
+        "SerrePositivity.MonoidalModulePresentability.isLocallyPresentable",
+        "ModuleCat.preservesLimit_restrictScalars",
+        "ModuleCat.preservesColimit_restrictScalars"
+      ]
+    },
     "4.2.3.8": {
       "ha_page": 529,
       "declarations": [
         "ModuleCat.extendRestrictScalarsAdj",
         "ModuleCat.restrictCoextendScalarsAdj"
+      ]
+    },
+    "4.2.4.1": {
+      "ha_page": 530,
+      "declarations": [
+        "SerrePositivity.MonoidalFreeModule.generator_action"
+      ]
+    },
+    "4.2.4.2": {
+      "ha_page": 530,
+      "declarations": [
+        "SerrePositivity.MonoidalFreeModule.freeObj",
+        "SerrePositivity.MonoidalFreeModule.generator",
+        "SerrePositivity.MonoidalFreeModule.generator_action"
       ]
     },
     "4.2.4.3": {
@@ -429,10 +467,29 @@
         "CategoryTheory.Functor.CorepresentableBy.uniqueUpToIso"
       ]
     },
+    "4.2.4.5": {
+      "ha_page": 531,
+      "declarations": [
+        "SerrePositivity.MonoidalFreeModule.freeFunctor"
+      ]
+    },
+    "4.2.4.6": {
+      "ha_page": 531,
+      "declarations": [
+        "SerrePositivity.MonoidalFreeModule.freeHomEquiv"
+      ]
+    },
     "4.2.4.7": {
       "ha_page": 531,
       "declarations": [
         "LinearMap.ringLmapEquivSelf"
+      ]
+    },
+    "4.2.4.8": {
+      "ha_page": 531,
+      "declarations": [
+        "SerrePositivity.MonoidalFreeModule.freeFunctor",
+        "SerrePositivity.MonoidalFreeModule.freeForgetAdjunction"
       ]
     },
     "4.2.4.9": {
@@ -1266,6 +1323,110 @@
         "Quot.sound"
       ]
     },
+    "SerrePositivity.MonoidalModuleLimits.limitConeLiftsToLimit": {
+      "name": "SerrePositivity.MonoidalModuleLimits.limitConeLiftsToLimit",
+      "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.Limits",
+      "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Limits.lean",
+      "line": 134,
+      "source_sha256": "41cd58d13528966dffb63abe32df94f4a8520187b9ae61f888858b0ff7c0c7f8",
+      "type": "@SerrePositivity.MonoidalModuleLimits.limitConeLiftsToLimit.{u_1, u_2, u_3,\n    u_4} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      (M : C) →\n        [inst_2 : @CategoryTheory.MonObj.{u_1, u_2} C inst inst_1 M] →\n          {J : Type u_3} →\n            [inst_3 : CategoryTheory.Category.{u_4, u_3} J] →\n              (F :\n                  @CategoryTheory.Functor.{u_4, u_1, u_3, max u_2 u_1} J inst_3\n                    (@CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                      (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                    (@CategoryTheory.Mod.instCategory.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                      (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)) →\n                (c :\n                    @CategoryTheory.Limits.Cone.{u_4, u_1, u_3, u_2} J inst_3 C inst\n                      (@CategoryTheory.Functor.comp.{u_4, u_1, u_1, u_3, max u_2 u_1, u_2} J inst_3\n                        (@CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                          (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                        (@CategoryTheory.Mod.instCategory.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                          (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                        C inst F\n                        (@CategoryTheory.Mod.forget.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                          (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2))) →\n                  (hc :\n                      @CategoryTheory.Limits.IsLimit.{u_4, u_1, u_3, u_2} J inst_3 C inst\n                        (@CategoryTheory.Functor.comp.{u_4, u_1, u_1, u_3, max u_2 u_1, u_2} J inst_3\n                          (@CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                            (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                          (@CategoryTheory.Mod.instCategory.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                            (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                          C inst F\n                          (@CategoryTheory.Mod.forget.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                            (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2))\n                        c) →\n                    @CategoryTheory.LiftsToLimit.{u_4, u_3, u_1, u_1, max u_2 u_1, u_2}\n                      (@CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                        (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                      (@CategoryTheory.Mod.instCategory.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                        (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                      C inst J inst_3 F\n                      (@CategoryTheory.Mod.forget.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                        (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                      c hc",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.MonoidalModuleLimits.forget_createsLimitsOfShape": {
+      "name": "SerrePositivity.MonoidalModuleLimits.forget_createsLimitsOfShape",
+      "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.Limits",
+      "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Limits.lean",
+      "line": 142,
+      "source_sha256": "41cd58d13528966dffb63abe32df94f4a8520187b9ae61f888858b0ff7c0c7f8",
+      "type": "@SerrePositivity.MonoidalModuleLimits.forget_createsLimitsOfShape.{u_1, u_2, u_3,\n    u_4} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      (M : C) →\n        [inst_2 : @CategoryTheory.MonObj.{u_1, u_2} C inst inst_1 M] →\n          {J : Type u_3} →\n            [inst_3 : CategoryTheory.Category.{u_4, u_3} J] →\n              @CategoryTheory.CreatesLimitsOfShape.{u_4, u_3, u_1, u_1, max u_2 u_1, u_2}\n                (@CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                  (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                (@CategoryTheory.Mod.instCategory.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                  (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                C inst J inst_3\n                (@CategoryTheory.Mod.forget.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                  (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "ModuleCat.preservesLimit_restrictScalars": {
+      "name": "ModuleCat.preservesLimit_restrictScalars",
+      "module": "Mathlib.Algebra.Category.ModuleCat.ChangeOfRings",
+      "path": "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+      "line": 926,
+      "source_sha256": "9d01de37595d4ea19974e64229802c16e091eb747ec4e7ddf0c4b48b1f989413",
+      "type": "@ModuleCat.preservesLimit_restrictScalars.{u_1, u_2, u_3, u_4,\n    u_5} : ∀ {R : Type u_2} {S : Type u_3} [inst : Ring.{u_2} R] [inst_1 : Ring.{u_3} S]\n  (f :\n    @RingHom.{u_2, u_3} R S (@Semiring.toNonAssocSemiring.{u_2} R (@Ring.toSemiring.{u_2} R inst))\n      (@Semiring.toNonAssocSemiring.{u_3} S (@Ring.toSemiring.{u_3} S inst_1)))\n  {J : Type u_5} [inst_2 : CategoryTheory.Category.{u_4, u_5} J]\n  (F :\n    @CategoryTheory.Functor.{u_4, u_1, u_5, max (u_1 + 1) u_3} J inst_2 (@ModuleCat.{u_1, u_3} S inst_1)\n      (@ModuleCat.moduleCategory.{u_1, u_3} S inst_1))\n  [Small.{u_1, max u_5 u_1}\n      (@Set.Elem.{max u_5 u_1}\n        ((j : J) →\n          @CategoryTheory.Functor.obj.{u_4, u_1, u_5, u_1 + 1} J inst_2 (Type u_1) CategoryTheory.types.{u_1}\n            (@CategoryTheory.Functor.comp.{u_4, u_1, u_1, u_5, max u_3 (u_1 + 1), u_1 + 1} J inst_2\n              (@ModuleCat.{u_1, u_3} S inst_1) (@ModuleCat.moduleCategory.{u_1, u_3} S inst_1) (Type u_1)\n              CategoryTheory.types.{u_1} F\n              (@CategoryTheory.forget.{u_1, u_1, max u_3 (u_1 + 1), u_1} (@ModuleCat.{u_1, u_3} S inst_1)\n                (@ModuleCat.moduleCategory.{u_1, u_3} S inst_1)\n                (fun x1 x2 =>\n                  @LinearMap.{u_3, u_3, u_1, u_1} S S (@Ring.toSemiring.{u_3} S inst_1)\n                    (@Ring.toSemiring.{u_3} S inst_1)\n                    (@RingHom.id.{u_3} S (@Semiring.toNonAssocSemiring.{u_3} S (@Ring.toSemiring.{u_3} S inst_1)))\n                    (@ModuleCat.carrier.{u_1, u_3} S inst_1 x1) (@ModuleCat.carrier.{u_1, u_3} S inst_1 x2)\n                    (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_3} S inst_1 x1)\n                      (@ModuleCat.isAddCommGroup.{u_1, u_3} S inst_1 x1))\n                    (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_3} S inst_1 x2)\n                      (@ModuleCat.isAddCommGroup.{u_1, u_3} S inst_1 x2))\n                    (@ModuleCat.isModule.{u_1, u_3} S inst_1 x1) (@ModuleCat.isModule.{u_1, u_3} S inst_1 x2))\n                (@ModuleCat.carrier.{u_1, u_3} S inst_1)\n                (fun X Y =>\n                  @LinearMap.instFunLike.{u_3, u_3, u_1, u_1} S S (@ModuleCat.carrier.{u_1, u_3} S inst_1 X)\n                    (@ModuleCat.carrier.{u_1, u_3} S inst_1 Y) (@Ring.toSemiring.{u_3} S inst_1)\n                    (@Ring.toSemiring.{u_3} S inst_1)\n                    (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_3} S inst_1 X)\n                      (@ModuleCat.isAddCommGroup.{u_1, u_3} S inst_1 X))\n                    (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_3} S inst_1 Y)\n                      (@ModuleCat.isAddCommGroup.{u_1, u_3} S inst_1 Y))\n                    (@ModuleCat.isModule.{u_1, u_3} S inst_1 X) (@ModuleCat.isModule.{u_1, u_3} S inst_1 Y)\n                    (@RingHom.id.{u_3} S (@Semiring.toNonAssocSemiring.{u_3} S (@Ring.toSemiring.{u_3} S inst_1))))\n                (@ModuleCat.instConcreteCategoryLinearMapIdCarrier.{u_1, u_3} S inst_1)))\n            j)\n        (@CategoryTheory.Functor.sections.{u_4, u_1, u_5} J inst_2\n          (@CategoryTheory.Functor.comp.{u_4, u_1, u_1, u_5, max u_3 (u_1 + 1), u_1 + 1} J inst_2\n            (@ModuleCat.{u_1, u_3} S inst_1) (@ModuleCat.moduleCategory.{u_1, u_3} S inst_1) (Type u_1)\n            CategoryTheory.types.{u_1} F\n            (@CategoryTheory.forget.{u_1, u_1, max u_3 (u_1 + 1), u_1} (@ModuleCat.{u_1, u_3} S inst_1)\n              (@ModuleCat.moduleCategory.{u_1, u_3} S inst_1)\n              (fun x1 x2 =>\n                @LinearMap.{u_3, u_3, u_1, u_1} S S (@Ring.toSemiring.{u_3} S inst_1) (@Ring.toSemiring.{u_3} S inst_1)\n                  (@RingHom.id.{u_3} S (@Semiring.toNonAssocSemiring.{u_3} S (@Ring.toSemiring.{u_3} S inst_1)))\n                  (@ModuleCat.carrier.{u_1, u_3} S inst_1 x1) (@ModuleCat.carrier.{u_1, u_3} S inst_1 x2)\n                  (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_3} S inst_1 x1)\n                    (@ModuleCat.isAddCommGroup.{u_1, u_3} S inst_1 x1))\n                  (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_3} S inst_1 x2)\n                    (@ModuleCat.isAddCommGroup.{u_1, u_3} S inst_1 x2))\n                  (@ModuleCat.isModule.{u_1, u_3} S inst_1 x1) (@ModuleCat.isModule.{u_1, u_3} S inst_1 x2))\n              (@ModuleCat.carrier.{u_1, u_3} S inst_1)\n              (fun X Y =>\n                @LinearMap.instFunLike.{u_3, u_3, u_1, u_1} S S (@ModuleCat.carrier.{u_1, u_3} S inst_1 X)\n                  (@ModuleCat.carrier.{u_1, u_3} S inst_1 Y) (@Ring.toSemiring.{u_3} S inst_1)\n                  (@Ring.toSemiring.{u_3} S inst_1)\n                  (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_3} S inst_1 X)\n                    (@ModuleCat.isAddCommGroup.{u_1, u_3} S inst_1 X))\n                  (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_3} S inst_1 Y)\n                    (@ModuleCat.isAddCommGroup.{u_1, u_3} S inst_1 Y))\n                  (@ModuleCat.isModule.{u_1, u_3} S inst_1 X) (@ModuleCat.isModule.{u_1, u_3} S inst_1 Y)\n                  (@RingHom.id.{u_3} S (@Semiring.toNonAssocSemiring.{u_3} S (@Ring.toSemiring.{u_3} S inst_1))))\n              (@ModuleCat.instConcreteCategoryLinearMapIdCarrier.{u_1, u_3} S inst_1)))))],\n  @CategoryTheory.Limits.PreservesLimit.{u_4, u_5, u_1, u_1, max u_3 (u_1 + 1), max (u_1 + 1) u_2}\n    (@ModuleCat.{u_1, u_3} S inst_1) (@ModuleCat.moduleCategory.{u_1, u_3} S inst_1) (@ModuleCat.{u_1, u_2} R inst)\n    (@ModuleCat.moduleCategory.{u_1, u_2} R inst) J inst_2 F\n    (@ModuleCat.restrictScalars.{u_1, u_2, u_3} R S inst inst_1 f)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.MonoidalModuleColimits.colimitCoconeLiftsToColimit": {
+      "name": "SerrePositivity.MonoidalModuleColimits.colimitCoconeLiftsToColimit",
+      "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.Limits",
+      "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Limits.lean",
+      "line": 330,
+      "source_sha256": "41cd58d13528966dffb63abe32df94f4a8520187b9ae61f888858b0ff7c0c7f8",
+      "type": "@SerrePositivity.MonoidalModuleColimits.colimitCoconeLiftsToColimit.{u_1, u_2, u_3,\n    u_4} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      (M : C) →\n        [inst_2 : @CategoryTheory.MonObj.{u_1, u_2} C inst inst_1 M] →\n          {J : Type u_3} →\n            [inst_3 : CategoryTheory.Category.{u_4, u_3} J] →\n              [∀ (X : C),\n                    @CategoryTheory.Limits.PreservesColimitsOfShape.{u_4, u_3, u_1, u_1, u_2, u_2} C inst C inst J\n                      inst_3 (@CategoryTheory.MonoidalCategory.tensorLeft.{u_1, u_2} C inst inst_1 X)] →\n                (F :\n                    @CategoryTheory.Functor.{u_4, u_1, u_3, max u_2 u_1} J inst_3\n                      (@CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                        (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                      (@CategoryTheory.Mod.instCategory.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                        (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)) →\n                  (c :\n                      @CategoryTheory.Limits.Cocone.{u_4, u_1, u_3, u_2} J inst_3 C inst\n                        (@CategoryTheory.Functor.comp.{u_4, u_1, u_1, u_3, max u_2 u_1, u_2} J inst_3\n                          (@CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                            (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                          (@CategoryTheory.Mod.instCategory.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                            (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                          C inst F\n                          (@CategoryTheory.Mod.forget.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                            (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2))) →\n                    (hc :\n                        @CategoryTheory.Limits.IsColimit.{u_4, u_1, u_3, u_2} J inst_3 C inst\n                          (@CategoryTheory.Functor.comp.{u_4, u_1, u_1, u_3, max u_2 u_1, u_2} J inst_3\n                            (@CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                              (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                            (@CategoryTheory.Mod.instCategory.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                              (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                            C inst F\n                            (@CategoryTheory.Mod.forget.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                              (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2))\n                          c) →\n                      @CategoryTheory.LiftsToColimit.{u_4, u_3, u_1, u_1, max u_2 u_1, u_2}\n                        (@CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                          (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                        (@CategoryTheory.Mod.instCategory.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                          (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                        C inst J inst_3 F\n                        (@CategoryTheory.Mod.forget.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                          (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                        c hc",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "ModuleCat.forget₂PreservesColimitsOfShape": {
+      "name": "ModuleCat.forget₂PreservesColimitsOfShape",
+      "module": "Mathlib.Algebra.Category.ModuleCat.Colimits",
+      "path": "Mathlib/Algebra/Category/ModuleCat/Colimits.lean",
+      "line": 123,
+      "source_sha256": "7469147956c8cb18dad4285950363bb93cf3137cf3fa175a0e34bcd419ab2392",
+      "type": "ModuleCat.forget₂PreservesColimitsOfShape.{u_1, u_2, u_3,\n  u_4} : ∀ (R : Type u_2) [inst : Ring.{u_2} R] (J : Type u_3) [inst_1 : CategoryTheory.Category.{u_4, u_3} J]\n  [@CategoryTheory.Limits.HasColimitsOfShape.{u_4, u_3, u_1, u_1 + 1} J inst_1 AddCommGrpCat.{u_1}\n      AddCommGrpCat.instCategory.{u_1}],\n  @CategoryTheory.Limits.PreservesColimitsOfShape.{u_4, u_3, u_1, u_1, max u_2 (u_1 + 1), u_1 + 1}\n    (@ModuleCat.{u_1, u_2} R inst) (@ModuleCat.moduleCategory.{u_1, u_2} R inst) AddCommGrpCat.{u_1}\n    AddCommGrpCat.instCategory.{u_1} J inst_1\n    (@CategoryTheory.forget₂.{u_1, u_1, max (u_1 + 1) u_2, u_1, u_1, u_1 + 1, u_1} (@ModuleCat.{u_1, u_2} R inst)\n      (@ModuleCat.moduleCategory.{u_1, u_2} R inst)\n      (fun x1 x2 =>\n        @LinearMap.{u_2, u_2, u_1, u_1} R R (@Ring.toSemiring.{u_2} R inst) (@Ring.toSemiring.{u_2} R inst)\n          (@RingHom.id.{u_2} R (@Semiring.toNonAssocSemiring.{u_2} R (@Ring.toSemiring.{u_2} R inst)))\n          (@ModuleCat.carrier.{u_1, u_2} R inst x1) (@ModuleCat.carrier.{u_1, u_2} R inst x2)\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst x1)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst x1))\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst x2)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst x2))\n          (@ModuleCat.isModule.{u_1, u_2} R inst x1) (@ModuleCat.isModule.{u_1, u_2} R inst x2))\n      (@ModuleCat.carrier.{u_1, u_2} R inst)\n      (fun X Y =>\n        @LinearMap.instFunLike.{u_2, u_2, u_1, u_1} R R (@ModuleCat.carrier.{u_1, u_2} R inst X)\n          (@ModuleCat.carrier.{u_1, u_2} R inst Y) (@Ring.toSemiring.{u_2} R inst) (@Ring.toSemiring.{u_2} R inst)\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst X)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst X))\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst Y)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst Y))\n          (@ModuleCat.isModule.{u_1, u_2} R inst X) (@ModuleCat.isModule.{u_1, u_2} R inst Y)\n          (@RingHom.id.{u_2} R (@Semiring.toNonAssocSemiring.{u_2} R (@Ring.toSemiring.{u_2} R inst))))\n      (@ModuleCat.instConcreteCategoryLinearMapIdCarrier.{u_1, u_2} R inst) AddCommGrpCat.{u_1}\n      AddCommGrpCat.instCategory.{u_1}\n      (fun x1 x2 =>\n        @AddMonoidHom.{u_1, u_1} (↑x1) (↑x2)\n          (@AddZeroClass.toAddZero.{u_1} (↑x1)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑x1)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑x1)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑x1) (@AddCommGroup.toAddGroup.{u_1} (↑x1) x1.str)))))\n          (@AddZeroClass.toAddZero.{u_1} (↑x2)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑x2)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑x2)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑x2) (@AddCommGroup.toAddGroup.{u_1} (↑x2) x2.str))))))\n      AddCommGrpCat.carrier.{u_1}\n      (fun X Y =>\n        @AddMonoidHom.instFunLike.{u_1, u_1} (↑X) (↑Y)\n          (@AddZeroClass.toAddZero.{u_1} (↑X)\n            ((fun X =>\n                @AddMonoid.toAddZeroClass.{u_1} (↑X)\n                  (@SubNegMonoid.toAddMonoid.{u_1} (↑X)\n                    (@AddGroup.toSubNegMonoid.{u_1} (↑X) (@AddCommGroup.toAddGroup.{u_1} (↑X) X.str))))\n              X))\n          (@AddZeroClass.toAddZero.{u_1} (↑Y)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑Y)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑Y)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑Y) (@AddCommGroup.toAddGroup.{u_1} (↑Y) Y.str))))))\n      AddCommGrpCat.instConcreteCategoryAddMonoidHomCarrier.{u_1}\n      (@ModuleCat.hasForgetToAddCommGroup.{u_2, u_1} R inst))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "ModuleCat.reflectsColimitsOfShape": {
+      "name": "ModuleCat.reflectsColimitsOfShape",
+      "module": "Mathlib.Algebra.Category.ModuleCat.Colimits",
+      "path": "Mathlib/Algebra/Category/ModuleCat/Colimits.lean",
+      "line": 117,
+      "source_sha256": "7469147956c8cb18dad4285950363bb93cf3137cf3fa175a0e34bcd419ab2392",
+      "type": "ModuleCat.reflectsColimitsOfShape.{u_1, u_2, u_3,\n  u_4} : ∀ (R : Type u_2) [inst : Ring.{u_2} R] (J : Type u_3) [inst_1 : CategoryTheory.Category.{u_4, u_3} J]\n  [@CategoryTheory.Limits.HasColimitsOfShape.{u_4, u_3, u_1, u_1 + 1} J inst_1 AddCommGrpCat.{u_1}\n      AddCommGrpCat.instCategory.{u_1}],\n  @CategoryTheory.Limits.ReflectsColimitsOfShape.{u_4, u_3, u_1, u_1, max u_2 (u_1 + 1), u_1 + 1}\n    (@ModuleCat.{u_1, u_2} R inst) (@ModuleCat.moduleCategory.{u_1, u_2} R inst) AddCommGrpCat.{u_1}\n    AddCommGrpCat.instCategory.{u_1} J inst_1\n    (@CategoryTheory.forget₂.{u_1, u_1, max (u_1 + 1) u_2, u_1, u_1, u_1 + 1, u_1} (@ModuleCat.{u_1, u_2} R inst)\n      (@ModuleCat.moduleCategory.{u_1, u_2} R inst)\n      (fun x1 x2 =>\n        @LinearMap.{u_2, u_2, u_1, u_1} R R (@Ring.toSemiring.{u_2} R inst) (@Ring.toSemiring.{u_2} R inst)\n          (@RingHom.id.{u_2} R (@Semiring.toNonAssocSemiring.{u_2} R (@Ring.toSemiring.{u_2} R inst)))\n          (@ModuleCat.carrier.{u_1, u_2} R inst x1) (@ModuleCat.carrier.{u_1, u_2} R inst x2)\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst x1)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst x1))\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst x2)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst x2))\n          (@ModuleCat.isModule.{u_1, u_2} R inst x1) (@ModuleCat.isModule.{u_1, u_2} R inst x2))\n      (@ModuleCat.carrier.{u_1, u_2} R inst)\n      (fun X Y =>\n        @LinearMap.instFunLike.{u_2, u_2, u_1, u_1} R R (@ModuleCat.carrier.{u_1, u_2} R inst X)\n          (@ModuleCat.carrier.{u_1, u_2} R inst Y) (@Ring.toSemiring.{u_2} R inst) (@Ring.toSemiring.{u_2} R inst)\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst X)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst X))\n          (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_2} R inst Y)\n            (@ModuleCat.isAddCommGroup.{u_1, u_2} R inst Y))\n          (@ModuleCat.isModule.{u_1, u_2} R inst X) (@ModuleCat.isModule.{u_1, u_2} R inst Y)\n          (@RingHom.id.{u_2} R (@Semiring.toNonAssocSemiring.{u_2} R (@Ring.toSemiring.{u_2} R inst))))\n      (@ModuleCat.instConcreteCategoryLinearMapIdCarrier.{u_1, u_2} R inst) AddCommGrpCat.{u_1}\n      AddCommGrpCat.instCategory.{u_1}\n      (fun x1 x2 =>\n        @AddMonoidHom.{u_1, u_1} (↑x1) (↑x2)\n          (@AddZeroClass.toAddZero.{u_1} (↑x1)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑x1)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑x1)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑x1) (@AddCommGroup.toAddGroup.{u_1} (↑x1) x1.str)))))\n          (@AddZeroClass.toAddZero.{u_1} (↑x2)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑x2)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑x2)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑x2) (@AddCommGroup.toAddGroup.{u_1} (↑x2) x2.str))))))\n      AddCommGrpCat.carrier.{u_1}\n      (fun X Y =>\n        @AddMonoidHom.instFunLike.{u_1, u_1} (↑X) (↑Y)\n          (@AddZeroClass.toAddZero.{u_1} (↑X)\n            ((fun X =>\n                @AddMonoid.toAddZeroClass.{u_1} (↑X)\n                  (@SubNegMonoid.toAddMonoid.{u_1} (↑X)\n                    (@AddGroup.toSubNegMonoid.{u_1} (↑X) (@AddCommGroup.toAddGroup.{u_1} (↑X) X.str))))\n              X))\n          (@AddZeroClass.toAddZero.{u_1} (↑Y)\n            (@AddMonoid.toAddZeroClass.{u_1} (↑Y)\n              (@SubNegMonoid.toAddMonoid.{u_1} (↑Y)\n                (@AddGroup.toSubNegMonoid.{u_1} (↑Y) (@AddCommGroup.toAddGroup.{u_1} (↑Y) Y.str))))))\n      AddCommGrpCat.instConcreteCategoryAddMonoidHomCarrier.{u_1}\n      (@ModuleCat.hasForgetToAddCommGroup.{u_2, u_1} R inst))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.MonoidalModulePresentability.isLocallyPresentable": {
+      "name": "SerrePositivity.MonoidalModulePresentability.isLocallyPresentable",
+      "module": "SerrePositivity.HomotopicalAlgebra.Monoidal.ModulePresentability",
+      "path": "SerrePositivity/HomotopicalAlgebra/Monoidal/ModulePresentability.lean",
+      "line": 26,
+      "source_sha256": "c989ed4431f1fe8d1108fad7f2dee5d3bb8cbf9c924d64410193a6dbc8e02cfb",
+      "type": "@SerrePositivity.MonoidalModulePresentability.isLocallyPresentable.{u_1, u_2,\n    u_3} : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_2, u_3} C]\n  [inst_1 : @CategoryTheory.MonoidalCategory.{u_2, u_3} C inst]\n  [@CategoryTheory.IsLocallyPresentable.{u_1, u_2, u_3} C inst]\n  [∀ (X : C),\n      @CategoryTheory.Limits.PreservesColimitsOfSize.{u_1, u_1, u_2, u_2, u_3, u_3} C inst C inst\n        (@CategoryTheory.MonoidalCategory.tensorLeft.{u_2, u_3} C inst inst_1 X)]\n  (M : C) [inst_4 : @CategoryTheory.MonObj.{u_2, u_3} C inst inst_1 M],\n  @CategoryTheory.IsLocallyPresentable.{u_1, u_2, max u_3 u_2}\n    (@CategoryTheory.Mod.{u_2, u_2, u_3, u_3} C inst inst_1 C inst\n      (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_2, u_3} C inst inst_1) M inst_4)\n    (@CategoryTheory.Mod.instCategory.{u_2, u_2, u_3, u_3} C inst inst_1 C inst\n      (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_2, u_3} C inst inst_1) M inst_4)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "ModuleCat.preservesColimit_restrictScalars": {
+      "name": "ModuleCat.preservesColimit_restrictScalars",
+      "module": "Mathlib.Algebra.Category.ModuleCat.ChangeOfRings",
+      "path": "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+      "line": 934,
+      "source_sha256": "9d01de37595d4ea19974e64229802c16e091eb747ec4e7ddf0c4b48b1f989413",
+      "type": "@ModuleCat.preservesColimit_restrictScalars.{u_1, u_2, u_3, u_4,\n    u_5} : ∀ {R : Type u_2} {S : Type u_3} [inst : Ring.{u_2} R] [inst_1 : Ring.{u_3} S]\n  (f :\n    @RingHom.{u_2, u_3} R S (@Semiring.toNonAssocSemiring.{u_2} R (@Ring.toSemiring.{u_2} R inst))\n      (@Semiring.toNonAssocSemiring.{u_3} S (@Ring.toSemiring.{u_3} S inst_1)))\n  {J : Type u_5} [inst_2 : CategoryTheory.Category.{u_4, u_5} J]\n  (F :\n    @CategoryTheory.Functor.{u_4, u_1, u_5, max (u_1 + 1) u_3} J inst_2 (@ModuleCat.{u_1, u_3} S inst_1)\n      (@ModuleCat.moduleCategory.{u_1, u_3} S inst_1))\n  [@CategoryTheory.Limits.HasColimit.{u_4, u_5, u_1, u_1 + 1} J inst_2 AddCommGrpCat.{u_1}\n      AddCommGrpCat.instCategory.{u_1}\n      (@CategoryTheory.Functor.comp.{u_4, u_1, u_1, u_5, max u_3 (u_1 + 1), u_1 + 1} J inst_2\n        (@ModuleCat.{u_1, u_3} S inst_1) (@ModuleCat.moduleCategory.{u_1, u_3} S inst_1) AddCommGrpCat.{u_1}\n        AddCommGrpCat.instCategory.{u_1} F\n        (@CategoryTheory.forget₂.{u_1, u_1, max u_3 (u_1 + 1), u_1, u_1, u_1 + 1, u_1} (@ModuleCat.{u_1, u_3} S inst_1)\n          (@ModuleCat.moduleCategory.{u_1, u_3} S inst_1)\n          (fun x1 x2 =>\n            @LinearMap.{u_3, u_3, u_1, u_1} S S (@Ring.toSemiring.{u_3} S inst_1) (@Ring.toSemiring.{u_3} S inst_1)\n              (@RingHom.id.{u_3} S (@Semiring.toNonAssocSemiring.{u_3} S (@Ring.toSemiring.{u_3} S inst_1)))\n              (@ModuleCat.carrier.{u_1, u_3} S inst_1 x1) (@ModuleCat.carrier.{u_1, u_3} S inst_1 x2)\n              (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_3} S inst_1 x1)\n                (@ModuleCat.isAddCommGroup.{u_1, u_3} S inst_1 x1))\n              (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_3} S inst_1 x2)\n                (@ModuleCat.isAddCommGroup.{u_1, u_3} S inst_1 x2))\n              (@ModuleCat.isModule.{u_1, u_3} S inst_1 x1) (@ModuleCat.isModule.{u_1, u_3} S inst_1 x2))\n          (@ModuleCat.carrier.{u_1, u_3} S inst_1)\n          (fun X Y =>\n            @LinearMap.instFunLike.{u_3, u_3, u_1, u_1} S S (@ModuleCat.carrier.{u_1, u_3} S inst_1 X)\n              (@ModuleCat.carrier.{u_1, u_3} S inst_1 Y) (@Ring.toSemiring.{u_3} S inst_1)\n              (@Ring.toSemiring.{u_3} S inst_1)\n              (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_3} S inst_1 X)\n                (@ModuleCat.isAddCommGroup.{u_1, u_3} S inst_1 X))\n              (@AddCommGroup.toAddCommMonoid.{u_1} (@ModuleCat.carrier.{u_1, u_3} S inst_1 Y)\n                (@ModuleCat.isAddCommGroup.{u_1, u_3} S inst_1 Y))\n              (@ModuleCat.isModule.{u_1, u_3} S inst_1 X) (@ModuleCat.isModule.{u_1, u_3} S inst_1 Y)\n              (@RingHom.id.{u_3} S (@Semiring.toNonAssocSemiring.{u_3} S (@Ring.toSemiring.{u_3} S inst_1))))\n          (@ModuleCat.instConcreteCategoryLinearMapIdCarrier.{u_1, u_3} S inst_1) AddCommGrpCat.{u_1}\n          AddCommGrpCat.instCategory.{u_1}\n          (fun x1 x2 =>\n            @AddMonoidHom.{u_1, u_1} (↑x1) (↑x2)\n              (@AddZeroClass.toAddZero.{u_1} (↑x1)\n                (@AddMonoid.toAddZeroClass.{u_1} (↑x1)\n                  (@SubNegMonoid.toAddMonoid.{u_1} (↑x1)\n                    (@AddGroup.toSubNegMonoid.{u_1} (↑x1) (@AddCommGroup.toAddGroup.{u_1} (↑x1) x1.str)))))\n              (@AddZeroClass.toAddZero.{u_1} (↑x2)\n                (@AddMonoid.toAddZeroClass.{u_1} (↑x2)\n                  (@SubNegMonoid.toAddMonoid.{u_1} (↑x2)\n                    (@AddGroup.toSubNegMonoid.{u_1} (↑x2) (@AddCommGroup.toAddGroup.{u_1} (↑x2) x2.str))))))\n          AddCommGrpCat.carrier.{u_1}\n          (fun X Y =>\n            @AddMonoidHom.instFunLike.{u_1, u_1} (↑X) (↑Y)\n              (@AddZeroClass.toAddZero.{u_1} (↑X)\n                ((fun X =>\n                    @AddMonoid.toAddZeroClass.{u_1} (↑X)\n                      (@SubNegMonoid.toAddMonoid.{u_1} (↑X)\n                        (@AddGroup.toSubNegMonoid.{u_1} (↑X) (@AddCommGroup.toAddGroup.{u_1} (↑X) X.str))))\n                  X))\n              (@AddZeroClass.toAddZero.{u_1} (↑Y)\n                (@AddMonoid.toAddZeroClass.{u_1} (↑Y)\n                  (@SubNegMonoid.toAddMonoid.{u_1} (↑Y)\n                    (@AddGroup.toSubNegMonoid.{u_1} (↑Y) (@AddCommGroup.toAddGroup.{u_1} (↑Y) Y.str))))))\n          AddCommGrpCat.instConcreteCategoryAddMonoidHomCarrier.{u_1}\n          (@ModuleCat.hasForgetToAddCommGroup.{u_3, u_1} S inst_1)))],\n  @CategoryTheory.Limits.PreservesColimit.{u_4, u_5, u_1, u_1, max u_3 (u_1 + 1), max (u_1 + 1) u_2}\n    (@ModuleCat.{u_1, u_3} S inst_1) (@ModuleCat.moduleCategory.{u_1, u_3} S inst_1) (@ModuleCat.{u_1, u_2} R inst)\n    (@ModuleCat.moduleCategory.{u_1, u_2} R inst) J inst_2 F\n    (@ModuleCat.restrictScalars.{u_1, u_2, u_3} R S inst inst_1 f)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
     "ModuleCat.extendRestrictScalarsAdj": {
       "name": "ModuleCat.extendRestrictScalarsAdj",
       "module": "Mathlib.Algebra.Category.ModuleCat.ChangeOfRings",
@@ -1292,6 +1453,71 @@
         "Quot.sound"
       ]
     },
+    "SerrePositivity.MonoidalFreeModule.generator_action": {
+      "name": "SerrePositivity.MonoidalFreeModule.generator_action",
+      "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.Free",
+      "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+      "line": 89,
+      "source_sha256": "3bf57f7268658348fc2f72f222d05240010bfb762db79bd79ad2bdf85ea71347",
+      "type": "@SerrePositivity.MonoidalFreeModule.generator_action.{u_1,\n    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] (M : C)\n  [inst_2 : @CategoryTheory.MonObj.{u_1, u_2} C inst inst_1 M] (X : C),\n  @Eq.{u_1 + 1}\n    (@Quiver.Hom.{u_1, u_2} C\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n      (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_2} C inst\n        (@CategoryTheory.MonoidalCategory.toMonoidalCategoryStruct.{u_1, u_2} C inst inst_1) M X)\n      (@CategoryTheory.Mod.X.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n        (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2\n        (@SerrePositivity.MonoidalFreeModule.freeObj.{u_1, u_2} C inst inst_1 M inst_2 X)))\n    (@CategoryTheory.CategoryStruct.comp.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst)\n      (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_2} C inst\n        (@CategoryTheory.MonoidalCategory.toMonoidalCategoryStruct.{u_1, u_2} C inst inst_1) M X)\n      (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_2} C inst\n        (@CategoryTheory.MonoidalCategory.toMonoidalCategoryStruct.{u_1, u_2} C inst inst_1) M\n        (@CategoryTheory.Mod.X.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n          (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2\n          (@SerrePositivity.MonoidalFreeModule.freeObj.{u_1, u_2} C inst inst_1 M inst_2 X)))\n      (@CategoryTheory.Mod.X.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n        (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2\n        (@SerrePositivity.MonoidalFreeModule.freeObj.{u_1, u_2} C inst inst_1 M inst_2 X))\n      (@CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_2} C inst\n        (@CategoryTheory.MonoidalCategory.toMonoidalCategoryStruct.{u_1, u_2} C inst inst_1) M X\n        (@CategoryTheory.Mod.X.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n          (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2\n          (@SerrePositivity.MonoidalFreeModule.freeObj.{u_1, u_2} C inst inst_1 M inst_2 X))\n        (@SerrePositivity.MonoidalFreeModule.generator.{u_1, u_2} C inst inst_1 M inst_2 X))\n      (@CategoryTheory.ModObj.smul.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n        (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2\n        (@CategoryTheory.Mod.X.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n          (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2\n          (@SerrePositivity.MonoidalFreeModule.freeObj.{u_1, u_2} C inst inst_1 M inst_2 X))\n        (@CategoryTheory.Mod.mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n          (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2\n          (@SerrePositivity.MonoidalFreeModule.freeObj.{u_1, u_2} C inst inst_1 M inst_2 X))))\n    (@CategoryTheory.CategoryStruct.id.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst)\n      (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_2} C inst\n        (@CategoryTheory.MonoidalCategory.toMonoidalCategoryStruct.{u_1, u_2} C inst inst_1) M X))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.MonoidalFreeModule.freeObj": {
+      "name": "SerrePositivity.MonoidalFreeModule.freeObj",
+      "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.Free",
+      "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+      "line": 61,
+      "source_sha256": "3bf57f7268658348fc2f72f222d05240010bfb762db79bd79ad2bdf85ea71347",
+      "type": "@SerrePositivity.MonoidalFreeModule.freeObj.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      (M : C) →\n        [inst_2 : @CategoryTheory.MonObj.{u_1, u_2} C inst inst_1 M] →\n          C →\n            @CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n              (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.MonoidalFreeModule.generator": {
+      "name": "SerrePositivity.MonoidalFreeModule.generator",
+      "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.Free",
+      "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+      "line": 71,
+      "source_sha256": "3bf57f7268658348fc2f72f222d05240010bfb762db79bd79ad2bdf85ea71347",
+      "type": "@SerrePositivity.MonoidalFreeModule.generator.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      (M : C) →\n        [inst_2 : @CategoryTheory.MonObj.{u_1, u_2} C inst inst_1 M] →\n          (X : C) →\n            @Quiver.Hom.{u_1, u_2} C\n              (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n                (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n              X\n              (@CategoryTheory.Mod.X.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2\n                (@SerrePositivity.MonoidalFreeModule.freeObj.{u_1, u_2} C inst inst_1 M inst_2 X))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.MonoidalFreeModule.freeFunctor": {
+      "name": "SerrePositivity.MonoidalFreeModule.freeFunctor",
+      "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.Free",
+      "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+      "line": 112,
+      "source_sha256": "3bf57f7268658348fc2f72f222d05240010bfb762db79bd79ad2bdf85ea71347",
+      "type": "@SerrePositivity.MonoidalFreeModule.freeFunctor.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      (M : C) →\n        [inst_2 : @CategoryTheory.MonObj.{u_1, u_2} C inst inst_1 M] →\n          @CategoryTheory.Functor.{u_1, u_1, u_2, max u_2 u_1} C inst\n            (@CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n              (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n            (@CategoryTheory.Mod.instCategory.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n              (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.MonoidalFreeModule.freeHomEquiv": {
+      "name": "SerrePositivity.MonoidalFreeModule.freeHomEquiv",
+      "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.Free",
+      "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+      "line": 104,
+      "source_sha256": "3bf57f7268658348fc2f72f222d05240010bfb762db79bd79ad2bdf85ea71347",
+      "type": "@SerrePositivity.MonoidalFreeModule.freeHomEquiv.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      (M : C) →\n        [inst_2 : @CategoryTheory.MonObj.{u_1, u_2} C inst inst_1 M] →\n          (X : C) →\n            (E :\n                @CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                  (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2) →\n              Equiv.{u_1 + 1, u_1 + 1}\n                (@Quiver.Hom.{u_1, max u_2 u_1}\n                  (@CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                    (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                  (@CategoryTheory.CategoryStruct.toQuiver.{u_1, max u_2 u_1}\n                    (@CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                      (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                    (@CategoryTheory.Category.toCategoryStruct.{u_1, max u_2 u_1}\n                      (@CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                        (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n                      (@CategoryTheory.Mod.instCategory.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                        (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)))\n                  (@SerrePositivity.MonoidalFreeModule.freeObj.{u_1, u_2} C inst inst_1 M inst_2 X) E)\n                (@Quiver.Hom.{u_1, u_2} C\n                  (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n                    (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n                  X\n                  (@CategoryTheory.Mod.X.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n                    (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2 E))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
     "LinearMap.ringLmapEquivSelf": {
       "name": "LinearMap.ringLmapEquivSelf",
       "module": "Mathlib.Algebra.Module.Equiv.Basic",
@@ -1301,6 +1527,19 @@
       "type": "LinearMap.ringLmapEquivSelf.{u_1, u_2,\n  u_3} : (R : Type u_1) →\n  (S : Type u_2) →\n    (M : Type u_3) →\n      [inst : Semiring.{u_1} R] →\n        [inst_1 : Semiring.{u_2} S] →\n          [inst_2 : AddCommMonoid.{u_3} M] →\n            [inst_3 : @Module.{u_1, u_3} R M inst inst_2] →\n              [inst_4 : @Module.{u_2, u_3} S M inst_1 inst_2] →\n                [inst_5 :\n                    @SMulCommClass.{u_1, u_2, u_3} R S M\n                      (@SMulZeroClass.toSMul.{u_1, u_3} R M\n                        (@AddZero.toZero.{u_3} M\n                          (@AddZeroClass.toAddZero.{u_3} M\n                            (@AddMonoid.toAddZeroClass.{u_3} M (@AddCommMonoid.toAddMonoid.{u_3} M inst_2))))\n                        (@DistribSMul.toSMulZeroClass.{u_1, u_3} R M\n                          (@AddMonoid.toAddZeroClass.{u_3} M (@AddCommMonoid.toAddMonoid.{u_3} M inst_2))\n                          (@DistribMulAction.toDistribSMul.{u_1, u_3} R M (@Semiring.toMonoid.{u_1} R inst)\n                            (@AddCommMonoid.toAddMonoid.{u_3} M inst_2)\n                            (@Module.toDistribMulAction.{u_1, u_3} R M inst inst_2 inst_3))))\n                      (@SMulZeroClass.toSMul.{u_2, u_3} S M\n                        (@AddZero.toZero.{u_3} M\n                          (@AddZeroClass.toAddZero.{u_3} M\n                            (@AddMonoid.toAddZeroClass.{u_3} M (@AddCommMonoid.toAddMonoid.{u_3} M inst_2))))\n                        (@DistribSMul.toSMulZeroClass.{u_2, u_3} S M\n                          (@AddMonoid.toAddZeroClass.{u_3} M (@AddCommMonoid.toAddMonoid.{u_3} M inst_2))\n                          (@DistribMulAction.toDistribSMul.{u_2, u_3} S M (@Semiring.toMonoid.{u_2} S inst_1)\n                            (@AddCommMonoid.toAddMonoid.{u_3} M inst_2)\n                            (@Module.toDistribMulAction.{u_2, u_3} S M inst_1 inst_2 inst_4))))] →\n                  @LinearEquiv.{u_2, u_2, max u_3 u_1, u_3} S S inst_1 inst_1\n                    (@RingHom.id.{u_2} S (@Semiring.toNonAssocSemiring.{u_2} S inst_1))\n                    (@RingHom.id.{u_2} S (@Semiring.toNonAssocSemiring.{u_2} S inst_1)) ⋯ ⋯\n                    (@LinearMap.{u_1, u_1, u_1, u_3} R R inst inst\n                      (@RingHom.id.{u_1} R (@Semiring.toNonAssocSemiring.{u_1} R inst)) R M\n                      (@Semiring.toAddCommMonoid.{u_1} R inst) inst_2 (@Semiring.toModule.{u_1} R inst) inst_3)\n                    M\n                    (@LinearMap.addCommMonoid.{u_1, u_1, u_1, u_3} R R R M inst inst\n                      (@Semiring.toAddCommMonoid.{u_1} R inst) inst_2 (@Semiring.toModule.{u_1} R inst) inst_3\n                      (@RingHom.id.{u_1} R (@Semiring.toNonAssocSemiring.{u_1} R inst)))\n                    inst_2\n                    (@LinearMap.module.{u_1, u_1, u_2, u_1, u_3} R R S R M inst inst\n                      (@Semiring.toAddCommMonoid.{u_1} R inst) inst_2 (@Semiring.toModule.{u_1} R inst) inst_3\n                      (@RingHom.id.{u_1} R (@Semiring.toNonAssocSemiring.{u_1} R inst)) inst_1 inst_4 inst_5)\n                    inst_4",
       "axioms": [
         "propext",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.MonoidalFreeModule.freeForgetAdjunction": {
+      "name": "SerrePositivity.MonoidalFreeModule.freeForgetAdjunction",
+      "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.Free",
+      "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+      "line": 123,
+      "source_sha256": "3bf57f7268658348fc2f72f222d05240010bfb762db79bd79ad2bdf85ea71347",
+      "type": "@SerrePositivity.MonoidalFreeModule.freeForgetAdjunction.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      (M : C) →\n        [inst_2 : @CategoryTheory.MonObj.{u_1, u_2} C inst inst_1 M] →\n          @CategoryTheory.Adjunction.{u_1, u_1, u_2, max u_2 u_1} C inst\n            (@CategoryTheory.Mod.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n              (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n            (@CategoryTheory.Mod.instCategory.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n              (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)\n            (@SerrePositivity.MonoidalFreeModule.freeFunctor.{u_1, u_2} C inst inst_1 M inst_2)\n            (@CategoryTheory.Mod.forget.{u_1, u_1, u_2, u_2} C inst inst_1 C inst\n              (@CategoryTheory.MonoidalCategory.selfLeftAction.{u_1, u_2} C inst inst_1) M inst_2)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
         "Quot.sound"
       ]
     },
