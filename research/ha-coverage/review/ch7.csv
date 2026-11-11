@@ -75,4 +75,208 @@ number,status,declarations,reason,axioms,check,partial_kind
 7.1.4.19,none,,連結 E₁ 代数を単体環の位相的実現で回復する同値は見つからない。単体環の dg 正規化はあるが、位相的代数の実現関手と元の E₁ 代数を回復する比較を作っていない。,,not_found,
 7.1.4.20,none,,Q を含む環上の単体的可換代数の simplicial モデル構造と連結 E∞ 代数の同値は見つからない。単体環の非可換正規化と実 E 代数の構成は、その可換有理 rectification を与えない。,,not_found,
 7.1.4.21,none,,単体的可換環から連結 E∞ 代数への sifted 余極限保存延長と、非有理係数で一般に同値でないことの宣言は見つからない。実 E 代数と単体環の正規化はあるが、この延長関手と不一致の反例を構成していない。,,not_found,
+7.2.1.1,partial,SerrePositivity.Reedy.latchingEvaluation @ SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/Objects.lean:43 | SerrePositivity.Reedy.matchingEvaluation @ SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/Objects.lean:46,仮定：通常圏、Reedy 添字圏と必要な極限・余極限（Lean が強い：通常圏の場合）。結論：latching・matching の評価関手を定義する（通常圏の単体添字に特殊化すると HA の対象の定義に一致）。一般の可呈示 ∞ 圏の構成は含まれない。,,found,special
+7.2.1.2,none,,任意の対象族 S に関する S-free 単体対象と全写像空間による S-hypercovering の述語は見つからない。通常の Reedy latching とサイトの超被覆はあるが、この可呈示 ∞ 圏の対象族に対する二条件を束ねていない。,,not_found,
+7.2.1.3,partial,CategoryTheory.Abelian.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167,仮定：通常の R 加群のアーベル圏（HA と一致）。結論：単体的対象と非負鎖複体の Dold–Kan 同値を構成する（冒頭の同定に一致）。S-free と各正規化項の自由性、S-hypercovering と増大の完全性の判定は含まれない。,,found,component
+7.2.1.4,none,,任意の対象族 S からなる自由な S-hypercovering の存在は見つからない。通常の射影分解の選択はあるが、S を任意に指定した latching 分解と全写像空間での超被覆条件を構成していない。,,not_found,
+7.2.1.5,partial,CategoryTheory.ProjectiveResolution.lift @ Mathlib/CategoryTheory/Abelian/Projective/Resolution.lean:92,仮定：通常のアーベル圏の二つの射影分解と増大先の射（Lean が強い：両側とも射影分解である通常圏の鎖複体模型）。結論：指定した増大先の射を持ち上げる鎖写像を構成する（通常の自由分解の場合の比較射に一致）。一般の S-free 対象と S-hypercovering の間の ∞ 単体射は含まれない。,,found,stronger-hyp
+7.2.1.6,partial,CategoryTheory.SimplicialObject.Homotopy @ Mathlib/AlgebraicTopology/SimplicialObject/Homotopy.lean:51,仮定：通常圏の単体対象の二つの射（Lean が強い：通常圏の場合）。結論：面・退化との整合性を満たす単体的ホモトピーを成分で定義する（通常圏の組合せ的模型に一致）。一般の ∞ 関手圏の Δ/[1] による定義との比較は含まれない。,,found,special
+7.2.1.7,none,,一般の単体的ホモトピーが対称でも推移的でもないことを示す反例は見つからない。通常の Homotopy.refl はあるが、反例を構成しない。,,not_found,
+7.2.1.8,partial,CategoryTheory.ProjectiveResolution.liftHomotopy @ Mathlib/CategoryTheory/Abelian/Projective/Resolution.lean:162,仮定：通常のアーベル圏の射影分解間で同じ増大射を持ち上げる二つの鎖写像（Lean が強い：両側とも射影分解という鎖複体模型）。結論：二つの写像の鎖ホモトピーを構成する（通常の自由分解の比較のホモトピー部分に一致）。一般の S-hypercovering の単体的高次比較は含まれない。,,found,stronger-hyp
+7.2.1.9,none,,自由な超被覆間のホモトピーの高次ホモトピーまで含めた可縮な一意性は見つからない。通常の射影分解の比較鎖ホモトピーは二段階以降の全整合性を構成していない。,,not_found,
+7.2.1.10,mathlib,CategoryTheory.SimplicialObject.Homotopy.toChainHomotopy @ Mathlib/AlgebraicTopology/SimplicialObject/ChainHomotopy.lean:157 | CategoryTheory.SimplicialObject.Homotopy.map_homology_eq @ Mathlib/AlgebraicTopology/SimplicialObject/ChainHomotopy.lean:172,仮定：アーベル圏の単体対象の射と単体的ホモトピー（HA と一致。構成自体は前加法圏でも成立）。結論：交代面鎖複体の鎖ホモトピーを構成し、各ホモロジー上の写像の一致を示す（HA と一致）。,,found,
+7.2.1.11,none,,自由な S-hypercovering 上の任意のホモトピー不変関手を hC 全体に延長し一意性を与える定理は見つからない。通常の左導来関手は加法的な入力関手に特化し、任意の当該 F₀ の普遍性を備えていない。,,not_found,
+7.2.1.12,partial,CategoryTheory.Functor.leftDerived @ Mathlib/CategoryTheory/Abelian/LeftDerived.lean:106 | CategoryTheory.ProjectiveResolution.isoLeftDerivedObj @ Mathlib/CategoryTheory/Abelian/LeftDerived.lean:110,仮定：射影分解を持つ通常のアーベル圏と全対象上に定義された加法関手 F（Lean が強い：自由加群だけでなく全加群上に F を指定する）。結論：左導来関手 LₙF を構成し、任意の射影分解の項別 F のホモロジーと同定する（この仮定での HA の結論に一致）。自由加群だけで定義した F の延長一般は含まれない。,,found,stronger-hyp
+7.2.1.13,none,,右完全関手の D⁻ 上の左導来関手と零次埋め込みを通した LₙF の一般の ∞ 関手比較は見つからない。通常のホモトピー圏上の左導来はあるが、一般 F の有界上導来 ∞ 関手との同一視を与えない。,,not_found,
+7.2.1.14,partial,CategoryTheory.Tor @ Mathlib/CategoryTheory/Monoidal/Tor.lean:44,仮定：通常の可換環 R の加群圏（Lean が強い：可換環の場合。一般のアーベルモノイダル圏にも定義可能）。結論：片側テンソルを第二変数で左導来した Torₙ を定義する（HA と一致する通常の Tor の定義）。一般の非可換環の左右加群版は含まれない。,,found,special
+7.2.1.15,none,,全次数付き環と次数付き自由分解に基づく graded Tor の関手は見つからない。通常の ModuleCat の Tor と次数付き加群の型はあるが、次数を保つテンソルと当該圏の分解を合わせた導来関手がない。,,not_found,
+7.2.1.16,none,,環スペクトルの任意のシフト付き自由加群の余積を quasi-free とする部分 ∞ 圏は見つからない。dg 半自由 filtration は順次のセル付加を含むため、シフト付き自由加群の単なる直和という指定条件を表さない。,,not_found,
+7.2.1.17,none,,quasi-free な加群スペクトルについて graded Tor₀ と相対テンソルの π の標準射を同型とする結果は見つからない。通常の自由加群のテンソル計算には graded π の標準射との比較がない。,,not_found,
+7.2.1.18,none,,単体的自由超被覆から相対テンソルのスペクトル系列を作り E₂ 以後を分解独立にする構成は見つからない。一般のアーベル spectral object と通常の Tor の分解独立性は、指定した単体スペクトルを比較していない。,,not_found,
+7.2.1.19,none,,E₂ が graded Tor で加群スペクトルのテンソルの π に収束する一般のスペクトル系列は見つからない。通常の導来テンソルと Tor の同型は離散入力の計算であり、全次数付き環の当該系列を構成しない。,,not_found,
+7.2.1.20,none,,環・左右加群の三変数について Tor スペクトル系列全体の関手性は見つからない。通常の導来テンソルの Tor 比較の自然性はあるが、E₂ 以後の系列全体の射を作っていない。,,not_found,
+7.2.1.21,none,,左右それぞれの quasi-free 超被覆から作る二つのスペクトル系列の標準同型は見つからない。通常の balanced Tor の分解比較はホモロジーの同定であり、単体スペクトルの全系列を比較しない。,,not_found,
+7.2.1.22,partial,SerrePositivity.boundedAboveDerivedTensorModuleTorNatIso @ SerrePositivity/HomologicalAlgebra/DerivedTensorModuleComparison.lean:106,仮定：通常の可換環 R の離散な二つの加群（Lean が強い：可換環の通常の導来圏模型）。結論：その導来テンソルの H⁻ⁿ を Torₙ と自然に同定する（離散入力での HA の結論に一致する部分）。環スペクトルのテンソルとの比較は含まれない。,,found,special
+7.2.1.23,partial,SerrePositivity.boundedAboveDerivedTensorModuleH0NatIso @ SerrePositivity/HomologicalAlgebra/DerivedTensorModuleComparison.lean:99,仮定：通常の可換環 R の離散な二つの加群（Lean が強い：基底と入力がすべて離散な通常の導来圏模型）。結論：導来テンソルの H⁰ を通常テンソルに自然に同定する（結論 (2) のこの場合に一致）。一般の連結入力の連結性と環スペクトルへの比較は含まれない。,,found,component
+7.2.1.24,none,,全 π 次数付き Ext を E₂ とする加群スペクトルの MorR の収束スペクトル系列は見つからない。dg Hom の各ホモロジーと Ext の比較はあるが、指定した graded Ext 系列と収束仮定を与えない。,,not_found,
+7.2.2.1,partial,Module.Free @ Mathlib/LinearAlgebra/FreeModule/Basic.lean:44,仮定：通常の環 R と離散加群 M（Lean が強い：離散入力の場合）。結論：基底の存在による自由加群の述語を定義する（R の直和としての自由性の部分に一致）。連結加群スペクトルの π₀ 全射の定義は含まれない。,,found,component
+7.2.2.2,none,,環スペクトルの一般の自由生成 R⊗M₀ が R の余積とは限らないことを示す結果は見つからない。通常の自由加群の基底の定義は、非離散な M₀ を用いた二つの自由性の差を与えない。,,not_found,
+7.2.2.3,none,,連結 R 加群の π₀ 全射とファイバーの連結性の同値は見つからない。一般の安定圏のファイバーと通常の導来圏の t 構造はあるが、加群スペクトルのこの判定を結んでいない。,,not_found,
+7.2.2.4,none,,連結 R 加群の ∞ 圏で射影対象となることによる projective 述語は見つからない。通常の Module.Projective は通常加群の持ち上げ性を定義し、非離散な連結対象からの ∞ 写像空間の持ち上げ性を述べない。,,not_found,
+7.2.2.5,none,,安定な全加群 ∞ 圏が非零射影対象を持たないことは見つからない。通常の加群の射影性は連結部分の直観に対応し、全安定圏での零対象性を示していない。,,not_found,
+7.2.2.6,none,,左完備 t 構造の連結部分の射影性を Ext の全正次数消滅と同値にする五条件の判定は見つからない。通常の射影分解からの Ext 計算は heart の入力に限られ、任意の連結 Q への消滅との同値を備えていない。,,not_found,
+7.2.2.7,partial,Module.Projective.iff_split @ Mathlib/Algebra/Module/Projective.lean:234,仮定：通常の環 R の離散加群 P（Lean が強い：通常加群の場合）。結論：射影性と自由加群の線形な retract となることが同値となる（離散な通常加群の判定に一致）。連結環スペクトルの射影対象との比較は含まれない。,,found,special
+7.2.2.8,partial,Module.Finite.exists_comp_eq_id_of_projective @ Mathlib/RingTheory/Finiteness/Projective.lean:28,仮定：通常の環 R の有限生成射影加群 P（Lean が強い：離散入力の場合）。結論：有限自由加群 Rⁿ からの分裂全射と切断を構成する（有限生成な場合の自由加群の選択に一致）。一般の連結環スペクトルへの比較は含まれない。,,found,special
+7.2.2.9,partial,Module.Finite.exists_comp_eq_id_of_projective @ Mathlib/RingTheory/Finiteness/Projective.lean:28,仮定：通常の環 R の有限生成射影加群 P（Lean が強い：離散入力で条件 (1) を仮定する）。結論：P を有限自由加群の retract として構成する（(1)⇒(3) の通常加群の場合に一致）。compact projective 性を含む三条件全体の同値は含まれない。,,found,direction
 7.2.2.10,partial,SerrePositivity.BhattScholze.Prismatic.IsCompletelyRegularRel @ SerrePositivity/BhattScholze/Prismatic/RelativeCompleteRegularity.lean:149 | SerrePositivity.BhattScholze.Prismatic.relativeKoszulComparison @ SerrePositivity/BhattScholze/Prismatic/RelativeCompleteRegularity.lean:120,仮定：通常の可換環 A→B と二つの有限列から作る Koszul の標準射（Lean が強い：指定 Koszul 模型に限り、標的の各基底座標に関する導来完備性も要求する）。結論：零次の剰余環の平坦性と、全整数余鎖次数 q での標準射 H^q(基底)⊗H⁰(標的)→H^q(標的) の全単射を定義の条件とする（この指定射について HA の二条件に一致する部分）。テンソルの順序は可換環の対称性で交換する。一般の E₁ 環加群の flat 述語と Koszul の環スペクトル模型との比較は含まれない。高次ホモロジーの消滅を要求する定義ではない。,,found,stronger-hyp
+7.2.2.11,none,,非離散な連結環スペクトル上の flat 加群が連結となる結果は見つからない。指定 Koszul 射の相対完全正則性は全次数比較を課すが、一般の flat スペクトル加群の連結性を判定する述語を持たない。,,not_found,
+7.2.2.12,partial,SerrePositivity.derived_pure_flat_of_modelTensor_tests @ SerrePositivity/HomologicalAlgebra/ModelTensorFlatCriterion.lean:19 | SerrePositivity.moduleTensorCochain_model_homology_isZero_of_pure_flat @ SerrePositivity/HomologicalAlgebra/DerivedFlatModelTensor.lean:39,仮定：通常の可換環 R と有界上導来対象、指定した射影模型（Lean が強い：通常環のこの導来模型の場合）。結論：全離散係数との模型テンソルが零次以外で消える条件から対象の離散性と H⁰ の平坦性を示し、逆に離散かつ平坦な H⁰ から同じ模型での消滅を示す（離散環上の平坦性のテンソル検査の部分に一致）。一般の環スペクトルの flat 述語との比較は含まれない。,,found,special
+7.2.2.13,partial,SerrePositivity.flatDerivedBaseChangeHomologyNatIso @ SerrePositivity/HomologicalAlgebra/FaithfullyFlatDerivedHomology.lean:53,仮定：通常可換環の平坦な準同型 R→S と任意の通常の導来 R 加群（Lean が強い：平坦因子を離散可換 R 代数 S とする場合）。結論：平坦な導来スカラー拡大後の全 Hⁿ を Hⁿ の通常のスカラー拡大と自然に同定する（この平坦因子の場合の結論に一致）。任意の flat 環スペクトル加群とその π の比較は含まれない。,,found,stronger-hyp
+7.2.2.14,partial,Module.Flat.of_retract @ Mathlib/RingTheory/Flat/Basic.lean:173 | Module.Flat.directSum @ Mathlib/RingTheory/Flat/Basic.lean:218 | Module.Flat.of_projective @ Mathlib/RingTheory/Flat/Basic.lean:228,仮定：通常の可換環と離散加群（Lean が強い：離散入力の場合）。結論：平坦性が retract と直和で保たれ、射影加群が平坦となる（(1) の二閉性と (2) のこの場合に一致）。filtered 余極限の全体と非離散加群スペクトルの比較は含まれない。,,found,component
+7.2.2.15,partial,SerrePositivity.derived_pure_flat_of_modelTensor_tests @ SerrePositivity/HomologicalAlgebra/ModelTensorFlatCriterion.lean:19,仮定：通常可換環上の有界上導来対象と、その射影模型の全離散係数によるテンソルの零次集中（Lean が強い：この通常の導来模型の場合）。結論：対象が離散で H⁰ が平坦となる（(5)⇒(3) の離散環の場合に対応する部分に一致）。有限自由加群の filtered 余極限による Lazard 表示と五条件全体の同値は含まれない。,,found,direction
+7.2.2.16,partial,Module.Flat.baseChange @ Mathlib/RingTheory/Flat/Stability.lean:97 | Module.Flat.trans @ Mathlib/RingTheory/Flat/Stability.lean:59,仮定：通常の可換環 R→S と離散加群（Lean が強い：離散可換入力の場合）。結論：平坦な R 加群のスカラー拡大が S 上平坦となり、S が R 上平坦なら S 上平坦な加群の制限が R 上平坦となる（(1)・(2) の平坦性の部分に一致）。自由・射影版と非負 π 同型による flat 加群圏の同値は含まれない。,,found,component
+7.2.2.17,none,,一般の flat 環スペクトル加群の射の同値性を π₀ だけで判定する結果は見つからない。通常加群の線形写像の全単射判定はあるが、非零次数の π を flat の比較射で制御して当該同値を反映する宣言はない。,,not_found,
+7.2.2.18,none,,flat な連結加群スペクトルの射影性を π₀ の射影性と同値にする結果は見つからない。通常加群の自由 retract 判定はあるが、π₀ の切断を非離散な flat 加群に持ち上げる構成がない。,,not_found,
+7.2.2.19,none,,π₀ 同型の環スペクトルの射が射影加群のホモトピー圏を同値にする結果は見つからない。通常の環同型のスカラー制限同値はあるが、非離散な基底の π₀ のみの比較による射影対象の持ち上げを構成していない。,,not_found,
+7.2.2.20,partial,Module.Finite.exists_comp_eq_id_of_projective @ Mathlib/RingTheory/Finiteness/Projective.lean:28,仮定：通常の環 R の有限生成射影加群（Lean が強い：離散入力の場合）。結論：有限自由加群の直和因子として対象を表示する（π₀ が有限生成な場合の議論の離散版に一致）。非離散な射影環スペクトル加群への持ち上げは含まれない。,,found,special
+7.2.2.21,none,,Eₖ₊₁ 環上の flat 加群の部分 ∞ 圏の Eₖ モノイダル構造と flat 代数の圏は見つからない。通常加群の平坦性とテンソル積の閉性はあるが、この ∞ オペラッド上の部分圏を構成しない。,,not_found,
+7.2.2.22,none,,flat E∞ 代数と flat な環射の undercategory の全充満部分 ∞ 圏を同定する比較は見つからない。通常の可換代数と環の undercategory の同値はあるが、flat 環スペクトルの指定述語で切り出した二つの ∞ 圏を作っていない。,,not_found,
+7.2.2.23,none,,flat な Eₖ 代数が連結・離散な基底の連結性・離散性を引き継ぐ結果は見つからない。実 CAlg_R の離散性の判定はあるが、一般の flat Eₖ 代数の全 π 比較からこの条件を導いていない。,,not_found,
+7.2.2.24,none,,非負 π を保つ環射の flat Eₖ 代数圏のスカラー拡大同値は見つからない。通常の平坦性のスカラー拡大はあるが、代数全体の当該 ∞ 関手と逆はない。,,not_found,
+7.2.3.1,mathlib,OreLocalization.OreSet @ Mathlib/GroupTheory/OreLocalization/OreSet.lean:52 | OreLocalization.nonempty_oreSet_iff @ Mathlib/RingTheory/OreLocalization/OreSet.lean:49,仮定：通常の結合環 R と部分モノイド S（HA の (a) と一致）。結論：共通左分母と右の共通因子を左の共通因子に変える条件を OreSet として定義し、存在量化した条件と同値にする（HA の (b)・(c) と一致。環では差を取ることで零化条件と一般の右消去条件が同じになる）。証人の選択を持つ構造と Nonempty を区別している。,,found,
+7.2.3.2,partial,OreLocalization.oreSetComm @ Mathlib/GroupTheory/OreLocalization/OreSet.lean:121,仮定：通常の可換環と任意の部分モノイド（Lean が強い：環全体が可換な場合）。結論：左 Ore 条件の instance を構成する（HA の可換環の場合に一致）。非可換環の中心に含まれる場合の一般化は含まれない。,,found,special
+7.2.3.3,mathlib,OreLocalization.OreSet @ Mathlib/GroupTheory/OreLocalization/OreSet.lean:52,仮定：通常の結合環 R とその反対環の部分モノイド（HA と一致）。結論：反対環に OreSet を適用して共通右分母と左因子の消去条件を表す（HA の右 Ore 条件を左 Ore 条件の双対として定義する内容に一致）。,,found,
+7.2.3.4,mathlib,OreLocalization @ Mathlib/GroupTheory/OreLocalization/Basic.lean:92,仮定：通常の結合環、左 Ore な部分モノイドと左加群（HA と一致。構成自体はモノイドの作用にも適用できる）。結論：分母と分子の共通左倍数による同値関係の商を構成する（HA の左分数加群の台集合に一致）。対の並びは分子・分母の順である。,,found,
+7.2.3.5,partial,OreLocalization.universalHom @ Mathlib/RingTheory/OreLocalization/Ring.lean:133 | OreLocalization.universalHom_unique @ Mathlib/RingTheory/OreLocalization/Ring.lean:167 | OreLocalization.numerator_isUnit @ Mathlib/GroupTheory/OreLocalization/Basic.lean:478,仮定：通常の結合環 R、左 Ore な S と S の像が単元となる環準同型（HA と一致）。結論：Ore 局所化の環構造を用いて各分母の可逆性と環射の一意な延長を与える（結論 (4)–(6) の環の普遍性に一致）。一般の左加群の全ての線形普遍性と R 加群構造の一意性は含まれない。,,found,component
+7.2.3.6,none,,左右両方の Ore 条件から得る二つの分数環の標準環同型は見つからない。左分数環の普遍性はあるが、右分数環への比較と両合成の同定を束ねた同型は構成されていない。,,not_found,
+7.2.3.7,none,,次数付き環の斉次元だけの検査から全 Ore 条件と斉次な共通分子を得る結果は見つからない。通常の OreSet は次数付けのデータを持たず、この斉次性への還元を示さない。,,not_found,
+7.2.3.8,partial,Module.IsTorsion' @ Mathlib/Algebra/Module/Torsion/Basic.lean:218,仮定：通常環 R の離散加群と部分モノイド S（Lean が強い：離散入力の場合）。結論：各元が S のある元で零化される条件を定義する（離散な場合の S-nilpotent の条件に一致）。全 π 次数の加群スペクトルの述語は含まれない。,,found,special
+7.2.3.9,none,,S-nilpotent な加群スペクトルのファイバー列に関する三つのうち二つの判定は見つからない。通常の torsion 部分加群と一般の安定圏の長完全列の部品はあるが、全 π の S 零化条件を結んだ宣言はない。,,not_found,
+7.2.3.10,none,,S-nilpotent 加群の全小余極限で閉じる安定部分 ∞ 圏は見つからない。通常の torsion 部分加群はあるが、全 π の零化とシフト・余極限を備えた部分圏の構成がない。,,not_found,
+7.2.3.11,none,,Ore 条件と各 R/Rs の S-nilpotence の同値は見つからない。通常の Ore の条件とスカラー写像の錐はあるが、次数付き環スペクトルの π によるコファイバーの判定を与えない。,,not_found,
+7.2.3.12,none,,任意の S-nilpotent 加群へ R/Rs のシフトの余積から全 π で全射を作る構成は見つからない。dg 半自由分解の生成セルは一般の R/Rs のセルとは異なり、この零化条件での全射を構成しない。,,not_found,
+7.2.3.13,none,,S-nilpotent 加群を R/Rs のシフトの余積をファイバーとする列の余極限に表示する構成は見つからない。dg 半自由 filtration はあるが、指定した分母のスカラー錐だけでの生成と全体比較がない。,,not_found,
+7.2.3.14,none,,全 π での分母の可逆性、R/Rs のシフトからの写像空間の可縮性、全 S-nilpotent 対象からの可縮性の同値は見つからない。通常の分数加群の普遍性はこれら三つの導来直交条件を比較しない。,,not_found,
+7.2.3.15,none,,S-local・S-nilpotent な加群スペクトルの二つの充満部分 ∞ 圏は見つからない。通常の分数加群と torsion の述語はあるが、全 π と写像空間の同値条件で切り出した LModR の部分圏を定義しない。,,not_found,
+7.2.3.16,none,,S-local 加群の安定性と全余極限閉性、および torsion 側の生成と余随伴は見つからない。通常の分数加群の構成と一般の反射的局所化は、S に付随する安定部分圏と比較していない。,,not_found,
+7.2.3.17,none,,S-nilpotent と S-local を両側とする accessible t 構造は見つからない。通常の導来圏の標準 t 構造は次数によるもので、分母集合の torsion と local による当該 t 構造を与えない。,,not_found,
+7.2.3.18,none,,任意の加群スペクトルを torsion と S-local にファイバー分解する関手的構成と可縮な一意性は見つからない。通常の分数加群の線形普遍性はあるが、導来 torsion ファイバーと全 ∞ 関手の比較がない。,,not_found,
+7.2.3.19,none,,"斉次分母 s の次数をずらして πₙS⁻¹M の一意な分数を作る ψd,n は見つからない。通常の分数の構成は次数零に限られ、導来 S 局所化の π と比較されていない。",,not_found,
+7.2.3.20,partial,OreLocalization.oreDiv_eq_iff @ Mathlib/GroupTheory/OreLocalization/Basic.lean:131 | OreLocalization @ Mathlib/GroupTheory/OreLocalization/Basic.lean:92,仮定：通常の左 Ore 局所化と離散な加群（Lean が強い：通常の分数模型の次数零の場合）。結論：全元を分数の同値類として表し、二つの分数の一致を共通左倍数で判定する（離散な分数の表示と判定に一致）。全次数の π と導来 S 局所化との比較は含まれない。,,found,special
+7.2.3.21,none,,通常の分数加群と環スペクトルの S-localization の同一性を示す比較は見つからない。通常の Ore 分数は構成済みだが、LModR の導来局所化を当該模型と同定していない。,,not_found,
+7.2.3.22,partial,SerrePositivity.DerivedCompletion.IsComplete @ SerrePositivity/HomologicalAlgebra/DerivedCompletion/ModuleComplete/Basic.lean:64,仮定：通常の可換環 R と一元 a、通常の導来対象（Lean が強い：主元による局所化 R[1/a] の検査の場合）。結論：R[1/a][0] から全整数シフトの射が零となることを導来完備性として定義する（S-local な検査対象のこの部分に一致）。任意の全 S-local 対象への直交との同値はこの定義に含まれない。,,found,component
+7.2.3.23,partial,SerrePositivity.DerivedCompletion.completeReflectorAdjunction @ SerrePositivity/HomologicalAlgebra/DerivedCompletion/CompletionReflection.lean:235 | SerrePositivity.DerivedCompletion.completeReflector_isTriangulated @ SerrePositivity/HomologicalAlgebra/DerivedCompletion/CompletionReflection.lean:266,仮定：通常可換環 R と一元 a の全通常導来圏（Lean が強い：主元完備化の通常の導来模型）。結論：完備対象の充満部分圏への反映を左随伴として構成し、その完全三角形の保存を示す（反映の存在と完全性の部分に一致）。任意斉次 Ore 集合の ∞ t 構造、torsion との同値、指定ファイバー列全体は含まれない。,,found,component
+7.2.3.24,none,,連結 E∞ 環の S-nilpotent 部分での標準切断の閉性・両完備性と torsion 余随伴・局所化の左 t 完全性は見つからない。主元導来完備化の反映は別の射で、これらの S-torsion の切断を比較しない。,,not_found,
+7.2.3.25,partial,SerrePositivity.DerivedCompletion.isComplete_homology_isModuleComplete @ SerrePositivity/HomologicalAlgebra/DerivedCompletion/ComplexCompletion/Reconstruction.lean:297,仮定：通常可換環 R、一元 a と a 導来完備な通常の導来対象（Lean が強い：主元の通常導来模型）。結論：全次数の実ホモロジー加群が a 完備となる（原典 (1) の S-complete と印字された向きの主元版に一致）。逆向き、S-local と印字された後続の t 構造、局所化の t 完全性は含まれない。,,found,direction
+7.2.3.26,none,,環スペクトルの S 局所化に E₁ 環構造と元の環からの射を与える構成は見つからない。通常の Ore 分数環の乗法はあるが、スペクトルの局所化と乗法の比較がない。,,not_found,
+7.2.3.27,partial,OreLocalization.universalHom @ Mathlib/RingTheory/OreLocalization/Ring.lean:133 | OreLocalization.universalHom_unique @ Mathlib/RingTheory/OreLocalization/Ring.lean:167,仮定：通常の結合環 R と左 Ore な S、通常環 A への S を単元にする射（Lean が強い：通常環の離散入力の場合）。結論：左 Ore 分数環から A への延長が一意に存在する（離散な環射の普遍性に一致）。E₁ 環スペクトルの全写像 Kan 複体の全充満性と比較は含まれない。,,found,special
+7.2.4.1,partial,SerrePositivity.DifferentialGraded.modulePerfect @ SerrePositivity/DifferentialGraded/Perfect/Basic.lean:110 | SerrePositivity.DifferentialGraded.modulePerfect_le_iff_generators @ SerrePositivity/DifferentialGraded/Perfect/Basic.lean:545,仮定：可換環上の小さい dg 圏の通常の導来加群圏（Lean が強い：この dg 導来模型の場合）。結論：代表加群から有限セルと retract で生成される perfect 対象を定義し、生成元を含む最小の厚い部分圏として判定する（dg 代数の一対象圏の場合に HA の定義と一致する部分）。一般の環スペクトルの加群模型への比較は含まれない。,,found,special
+7.2.4.2,partial,SerrePositivity.DifferentialGraded.moduleCompact_iff_perfect @ SerrePositivity/DifferentialGraded/Perfect/Compact/FiniteGeneration.lean:1002 | SerrePositivity.DifferentialGraded.moduleCompactGenerators_compact @ SerrePositivity/DifferentialGraded/Perfect/Compact/Enhancement.lean:728 | SerrePositivity.DifferentialGraded.moduleCompactGenerators_detect_zero @ SerrePositivity/DifferentialGraded/Perfect/Compact/Enhancement.lean:732,仮定：可換環上の小さい dg 圏と全通常導来加群（Lean が強い：この dg 導来模型の場合）。結論：通常の三角圏の compact 性と perfect 性の同値、代表加群のシフトの compact 性と零対象の検出を示す（HA の compact・perfect と生成の通常の部分に一致）。∞ filtered 余極限による compact 性と環スペクトルへの比較は含まれない。,,found,component
+7.2.4.3,none,,加群スペクトルの相対テンソルによる全余極限保存 Sp 値関手の分類は見つからない。dg 核の導来作用はあるが、任意の当該関手を核から得る全充満性と本質像の定理がない。,,not_found,
+7.2.4.4,partial,SerrePositivity.DifferentialGraded.moduleCompact_iff_perfect @ SerrePositivity/DifferentialGraded/Perfect/Compact/FiniteGeneration.lean:1002,仮定：可換環上の小さい dg 圏の通常導来対象（Lean が強い：この dg 導来模型の場合）。結論：perfect 性と通常の compact 性を同値にする（(1) と (2) の通常の部分に一致）。M∨⊗R− による ∞ 写像空間の表現と双対の perfect 性は含まれない。,,found,component
+7.2.4.5,partial,SerrePositivity.DifferentialGraded.ringDerivedRetract_topHomology_finite_of_strictlyPerfect @ SerrePositivity/DifferentialGraded/Perfect/Ring/FiniteProjectiveComparison.lean:899,仮定：通常可換環上の有界有限射影複体 P、P の厳密な余鎖上限 n とその導来 retract X（Lean が強い：この模型の上端の次数を指定する）。結論：上端の Hⁿ(X) が有限生成となる（最低ホモトピー次数の有限表示性から従う有限生成の部分に一致）。有限表示性そのものと一般の連結環スペクトルでの下限の存在は含まれない。,,found,component
+7.2.4.6,none,,二変数の空間値関手について両側の Yoneda 本質像への全充満性を同値にする perfect pairing の判定は見つからない。通常の Yoneda と dg Hom の表現性はあるが、二つの ∞ 前層圏の全本質像の同値条件を比較しない。,,not_found,
+7.2.4.7,none,,左右 perfect 加群スペクトルのテンソルと Ω∞ が perfect pairing となる結果は見つからない。dg perfect 対象の compact 性と双加群のテンソルはあるが、両側の全写像空間の表現と本質像を比較していない。,,not_found,
+7.2.4.8,none,,全 n 切断圏での compact 性による almost compact の述語は見つからない。三角圏の compact 性と標準切断はあるが、切断された ∞ 圏内での compact 性を全 n で束ねていない。,,not_found,
+7.2.4.9,none,,compact 対象が almost compact となる一般の定理は見つからない。通常の dg 導来圏の compact 判定には、全 n 切断圏での compact 性への移送がない。,,not_found,
+7.2.4.10,none,,連結環スペクトル上の、下に有界で almost compact な almost perfect 加群の部分 ∞ 圏は見つからない。有限セルの perfect と通常の有界上導来圏はあるが、切断ごとの compact 性を指定していない。,,not_found,
+7.2.4.11,none,,almost perfect の安定性・retract 閉性・実現閉性と有限自由単体分解の五結論は見つからない。perfect の厚い閉性はあるが、無限に長い有限自由解消も含む almost perfect の定義と実現比較がない。,,not_found,
+7.2.4.12,none,,連結 almost perfect 加群上の実現保存関手を有限自由加群上の関手から回復する制限同値は見つからない。通常の射影分解の比較はあるが、この二つの ∞ 関手圏の制限と逆を構成しない。,,not_found,
+7.2.4.13,none,,任意の左結合環の有限生成左イデアルの有限表示性による coherent 述語は見つからない。Noetherian 環と有限表示加群の定義はあるが、有限生成イデアルだけに課す独立な coherent 条件を定義していない。,,not_found,
+7.2.4.14,partial,Module.finitePresentation_of_finite @ Mathlib/Algebra/Module/FinitePresentation.lean:119,仮定：通常の左 Noetherian 環と有限生成左加群（HA の Noetherian の場合と一致。対象はイデアルより一般）。結論：その加群が有限表示となる（Noetherian⇒coherent の有限生成イデアルへの結論に一致）。無限変数多項式環の coherent 性と非 Noetherian 性の例は含まれない。,,found,component
+7.2.4.15,partial,Module.finitePresentation_of_finite @ Mathlib/Algebra/Module/FinitePresentation.lean:119,仮定：通常の左 Noetherian 環と有限生成加群（Lean が強い：coherent より強い Noetherian 性を要求する）。結論：有限生成部分加群に有限表示性を与える（(1)・(2) のこの仮定での結論に一致）。coherent だけの場合と有限表示間の核・余核の三結論全体は含まれない。,,found,stronger-hyp
+7.2.4.16,none,,連結 E₁ 環の π₀ の左 coherent 性と全非負 π の有限表示性を束ねた述語は見つからない。通常の有限表示加群と Noetherian 性はあるが、環スペクトルの全 π に条件を課す型がない。,,not_found,
+7.2.4.17,none,,coherent 環スペクトル上の almost perfect 性と π の有界性・全有限表示性の同値は見つからない。perfect の有限セル表示はより強い条件で、無限長の有限表示解消も含む当該同値を与えない。,,not_found,
+7.2.4.18,none,,coherent 性と almost perfect の connective truncation 閉性、および t 構造の存在の同値は見つからない。通常の導来圏の標準 t 構造はあるが、almost perfect 部分の閉性を検査する型がない。,,not_found,
+7.2.4.19,none,,almost perfect 部分の右有界・左完備 t 構造と有限表示加群の heart の同値は見つからない。全導来圏の heart への通常加群の全充満性はあるが、有限表示部分への制限と塔の完備性を示していない。,,not_found,
+7.2.4.20,partial,Module.Flat.of_retract @ Mathlib/RingTheory/Flat/Basic.lean:173,仮定：通常可換環上の有限自由加群の retract M（Lean が強い：離散入力の場合）。結論：M の flat 性を得る（(1)⇒(2) の flat 性の部分に一致）。almost perfect 性とその通常の有限表示との比較、および一般の連結環スペクトルは含まれない。,,found,component
+7.2.4.21,none,,全離散右加群との導来テンソルの π 上限による Tor-amplitude の述語は見つからない。通常の Tor と有界射影分解はあるが、全連結環スペクトル加群に対するこの次数付き検査を定義していない。,,not_found,
+7.2.4.22,partial,SerrePositivity.derived_pure_flat_of_modelTensor_tests @ SerrePositivity/HomologicalAlgebra/ModelTensorFlatCriterion.lean:19,仮定：通常可換環の有界上導来対象と全離散係数との指定模型テンソルの零次集中（Lean が強い：この通常の導来模型の場合）。結論：対象が離散かつ H⁰ が平坦となる（amplitude 零のテンソル検査からの平坦性の方向に一致）。一般の連結環スペクトルにおける両方向の同値は含まれない。,,found,direction
+7.2.4.23,none,,Tor-amplitude のシフト・拡大・retract と almost perfect における有限 amplitude の perfect 判定は見つからない。有限射影複体のテンソルの有界性はあるが、almost perfect から有限セルへの逆向きと全連結係数での検査を与えない。,,not_found,
+7.2.4.24,partial,SerrePositivity.DifferentialGraded.modulePerfect_le_iff_generators @ SerrePositivity/DifferentialGraded/Perfect/Basic.lean:545,仮定：可換環上の小さい dg 圏の通常の導来加群圏と retract で閉じる三角部分圏（Lean が強い：この通常の dg 導来模型の場合）。結論：代表加群を含むことと全 perfect 対象を含むことを同値にする（有限生成元からの厚い生成の部分に一致）。有限生成射影だけからの安定閉包が retract 閉性を自動で持つという HA の強い主張は含まれない。,,found,stronger-hyp
+7.2.4.25,partial,SerrePositivity.DifferentialGraded.strictlyPerfectComplex_ringDerived_perfect @ SerrePositivity/DifferentialGraded/Perfect/Ring/FiniteProjectiveComparison.lean:457,仮定：通常可換環上の有界な有限生成射影複体（Lean が強い：この通常の dg 導来模型で有限射影表示を指定する）。結論：その導来像が perfect となる（有限射影複体から perfect への方向に一致）。原典は項の有限生成性のみを印字しているが、Lean は有限射影性を仮定する。一般の加群スペクトルの表示との同値は含まれない。,,found,stronger-hyp
+7.2.4.26,none,,連結 Eₖ 代数の有限自由・有限表示・局所有限表示・almost 有限表示の四条件の述語は見つからない。通常の Algebra.FinitePresentation と厳密 dg 自由代数はあるが、∞ 余極限閉包と切断ごとの compact 性を束ねていない。,,not_found,
+7.2.4.27,none,,連結 Eₖ 代数の projective・compact 生成、有限表示代数の Ind 表示、全切断での retract 判定は見つからない。通常の dg 自由代数と Ind の部品はあるが、局所化後の有限表示代数の compact 性との比較がない。,,not_found,
+7.2.4.28,none,,Eₖ 代数の自由・有限生成・有限表示・almost 有限表示をスカラー拡大が保つ全結果は見つからない。通常の有限表示代数の底変換はあるが、当該 ∞ 有限余極限閉包と全切断の compact 性を備えた関手の比較がない。,,not_found,
+7.2.4.29,none,,通常環の有限表示の推移性・制限の二方向はあるが、HA の局所有限表示は CAlg での compact 性であり、離散入力だけで通常の有限表示と同一視できない。Algebra.FinitePresentation の型はこの ∞ compact 性を述べないため、当該同値の直接の特殊化には数えない。,,not_found,
+7.2.4.30,partial,IsNoetherianRing @ Mathlib/RingTheory/Noetherian/Defs.lean:192 | Module.finitePresentation_of_finite @ Mathlib/Algebra/Module/FinitePresentation.lean:119,仮定：通常の可換環（Lean が強い：離散入力の場合）。結論：全イデアルの有限生成性による Noetherian 述語と、その下での有限生成加群の有限表示性を与える（π₀ に対する通常の Noetherian 条件と coherent 性を満たす部分に一致）。一般の全 π の有限表示性を束ねた環スペクトルの定義は含まれない。,,found,component
+7.2.4.31,none,,通常 Noetherian 環上の有限生成代数の有限表示性はあるが、almost 有限表示は CAlg の全有限切断での compact 性である。通常の有限表示の判定だけでは HA の左辺と (1)・(2) の同値のどちらの向きも直接得られず、高次 π の有限生成性を含む判定も見つからない。,,not_found,
+7.3.0.1,none,,E∞ 環の cotangent complex の π を topological André–Quillen homology と呼ぶ理論は見つからない。Mathlib の代数拡大の cotangentComplex は通常環の提示に付随する二項の射であり、スペクトルの当該不変量ではない。,,not_found,
+7.3.0.2,none,,通常環の André–Quillen 複体と環スペクトルの cotangent complex が有理係数以外では異なることの比較は見つからない。通常の Kähler 微分と拡大の cotangent の射はあるが、二つの導来理論と不一致の比較を備えていない。,,not_found,
+7.3.1.1,none,,可呈示 ∞ 圏への stable envelope を右随伴関手圏の普遍性で定義する述語と相対版は見つからない。具体的なスペクトル模型の安定性はあるが、可呈示性とこの関手圏の同値を備えていない。,,not_found,
+7.3.1.2,none,,一点上の stable envelope と通常版の定義の同値は見つからない。一般のファイブレーションと具体的スペクトル模型はあるが、stable envelope の普遍性の述語がない。,,not_found,
+7.3.1.3,none,,stable envelope の任意の底変換による保存は見つからない。Cartesian fibration の底変換はあるが、可呈示ファイバーごとの安定化と随伴関手圏の普遍性の保存を比較しない。,,not_found,
+7.3.1.4,none,,任意可呈示 C の Ω∞:Sp(C)→C が stable envelope となる普遍性は見つからない。特定の Ω スペクトルの安定性はあるが、任意 C の全右随伴関手からの因子化を構成していない。,,not_found,
+7.3.1.5,none,,可呈示ファイブレーションの安定化 St(p) の Ω∞ が相対 stable envelope となる結果は見つからない。通常のスペクトル対象と Cartesian fibration は、ファイバーを動かす安定化全空間を構成していない。,,not_found,
+7.3.1.6,none,,同じ底への二つの stable envelope 間の射が同値となる一意性は見つからない。通常の随伴と準圏同値の判定はあるが、stable envelope の関手圏普遍性からこの判定を導く宣言がない。,,not_found,
+7.3.1.7,none,,相対 stable envelope の存在、右随伴なファイバー関手の core 上の自明 Kan 性、他の envelope の同値因子化は見つからない。一般の相対関手空間はあるが、ファイバーの安定化による当該三結論を備えていない。,,not_found,
+7.3.1.8,none,,stable envelope への因子化の全右随伴関手 ∞ 圏上での自明 Kan 性は見つからない。一般の functor space のホーン持ち上げは、安定化の当該制限写像を扱わない。,,not_found,
+7.3.1.9,none,,target 評価の stable envelope としての tangent bundle TC は見つからない。Mathlib の多様体の接束は基礎 ∞ 圏のスライスのスペクトル対象の族とは異なる。一般の arrow 関手空間にはこの安定化の構造がない。,,not_found,
+7.3.1.10,none,,有限 pointed spaces 上の非被約 excisive 関手による tangent bundle とその評価の普遍性は見つからない。安定圏の excision の判定はあるが、全 excisive 関手の可呈示な部分 ∞ 圏と相対 stable envelope を構成しない。,,not_found,
+7.3.1.11,none,,可呈示 C の tangent bundle TC の可呈示性は見つからない。一般の IsPresentable はあるが、TC を構成してその仮定を満たす宣言がない。,,not_found,
+7.3.1.12,none,,TC の極限・余極限を相対図式と底 C の図式で判定する同値は見つからない。一般の相対関手空間と点ごとの極限は、tangent bundle の射影とその相対極限を備えていない。,,not_found,
+7.3.1.13,none,,全 pointed 有限空間上の関手の tangent localization 同値を終対象での値と相対微分で判定する結果は見つからない。一般の反射的局所化には、この excisive 反映と Goodwillie 微分の比較がない。,,not_found,
+7.3.1.14,none,,filtered 余極限保存関手が tangent localization 同値を保ち TC→TD を誘導する結果は見つからない。通常の関手空間の後合成はあるが、Goodwillie 微分の整合性によるこの制限を与えない。,,not_found,
+7.3.1.15,none,,各操作の逐次余極限保存から tangent bundle 上の Eₖ モノイダル構造を作る構成は見つからない。通常の functor category の点ごとのモノイダル構造は、excisive 反映と ∞ オペラッドの操作の比較を備えていない。,,not_found,
+7.3.2.1,none,,底 E に写した単位が同値である随伴を、底で厳密な恒等単位を持つ随伴へ直す同値条件は見つからない。通常の随伴の同型輸送はあるが、categorical fibration を使ったこの相対 strictification を行わない。,,not_found,
+7.3.2.2,none,,categorical fibration 上の随伴を底の単位条件で定義する relative left adjoint 述語は見つからない。相対始点境界からの全充満性はあるが、この底 E での随伴のデータを定義しない。,,not_found,
+7.3.2.3,none,,E 上で恒等となる単位が relative adjunction を与えることの命名に対応する定義は見つからない。通常の QCatAdjunction の単位はあるが、底への像の厳密な恒等条件を束ねた構造がない。,,not_found,
+7.3.2.4,none,,底 E についての右随伴と左随伴の相対条件の双対性は見つからない。通常の随伴の opposite はあるが、底での単位・余単位の同値性を結ぶ当該相対述語を備えていない。,,not_found,
+7.3.2.5,none,,relative adjunction の任意の底変換と各ファイバーへの制限が随伴となる結果は見つからない。通常の全充満な包含に沿う随伴制限はあるが、任意のファイブレーションの pullback に適用する相対単位を持たない。,,not_found,
+7.3.2.6,none,,局所 Cartesian 射の保存とファイバーごとの左随伴で相対左随伴を判定する定理は見つからない。一般の Cartesian 射と通常の随伴はあるが、ファイバーの選択を全体へ貼り合わせる構成がない。,,not_found,
+7.3.2.7,partial,CategoryTheory.Adjunction.rightAdjointLaxMonoidal @ Mathlib/CategoryTheory/Monoidal/Functor.lean:940,仮定：通常モノイダル圏間の随伴で左側が strong monoidal（Lean が強い：通常圏の Assoc 型の場合）。結論：右随伴に lax monoidal 構造を与える（O-代数の右随伴がオペラッドの射となる通常モノイダルの場合に一致）。任意 O と相対ファイブレーションの全体の随伴は含まれない。,,found,special
+7.3.2.8,none,,C 線型な左随伴から全 A の加群圏上の随伴を同時に持ち上げる構成は見つからない。通常の LeftLinear と自由忘却随伴はあるが、一般の C-作用先を動かす相対随伴の全族を構成しない。,,not_found,
+7.3.2.9,none,,線型随伴の projection formula が可逆なら右随伴と単位・余単位が線型となる結果は見つからない。通常のモノイダル随伴の lax 構造はあるが、任意の外部 C-作用についての当該比較を構成しない。,,not_found,
+7.3.2.10,none,,モナドが保つ部分 ∞ 圏への右随伴をモナド代数へ持ち上げる構成と忘却の比較は見つからない。通常の代数制限と全充満な随伴制限はあるが、部分圏上のモナド代数の全族と右随伴の作用を構成しない。,,not_found,
+7.3.2.11,none,,局所余 Cartesian 輸送とファイバーの左随伴の mate の可逆性による相対随伴の同値判定は見つからない。通常の mateEquiv はあるが、局所余 Cartesian な全体の随伴を貼り合わせる定理がない。,,not_found,
+7.3.2.12,partial,CategoryTheory.Adjunction.leftAdjointOplaxMonoidal @ Mathlib/CategoryTheory/Monoidal/Functor.lean:1057 | CategoryTheory.Functor.Monoidal.ofOplaxMonoidal @ Mathlib/CategoryTheory/Monoidal/Functor.lean:766,仮定：通常モノイダル圏の随伴、右随伴の lax 構造と左随伴に移した単位・テンソル比較の可逆性（Lean が強い：通常圏の Assoc 型の場合）。結論：左随伴に oplax 構造を与え、比較が可逆なら monoidal 構造を構成する（この場合の結論のモノイダル部分に一致）。任意 O のファイバーの相対左随伴を全体へ構成する定理は含まれない。,,found,component
+7.3.2.13,partial,CategoryTheory.Adjunction.mapMon @ Mathlib/CategoryTheory/Monoidal/Mon.lean:1060,仮定：通常モノイダル圏の monoidal な左随伴、lax な右随伴と monoidal adjunction（Lean が強い：通常圏の Assoc 型の場合）。結論：モノイド対象の圏への誘導関手の随伴を構成する（この場合の代数圏上の随伴に一致）。任意の ∞ オペラッドへの一般化は含まれない。,,found,special
+7.3.2.14,none,,相対安定化の左随伴と対角を合成して絶対 cotangent functor L:C→TC を作る定義は見つからない。通常の Kähler 微分の普遍導分はあるが、任意可呈示 C の tangent bundle を値としない。,,not_found,
+7.3.2.15,none,,絶対 cotangent functor が TC の始点への忘却の左随伴となる結果は見つからない。通常の微分の表現可能性はあるが、TC の相対安定化と対角の合成の随伴を構成していない。,,not_found,
+7.3.2.16,none,,絶対 cotangent functor と tangent bundle の選択が可縮となる一意性は見つからない。通常の随伴の同型による一意性は、未構成の相対安定化の全選択の空間を与えない。,,not_found,
+7.3.2.17,none,,TC の A 上のファイバーを Sp(C/A) とし LA を恒等射の suspension spectrum と同定する比較は見つからない。具体的なスペクトルの一点対象はあるが、全スライスにわたる安定化の族を構成しない。,,not_found,
+7.3.2.18,none,,絶対 cotangent functor の全小余極限保存と相対余極限保存は見つからない。一般の左随伴の余極限保存はあるが、cotangent functor と TC の射影が構成されていない。,,not_found,
+7.3.2.19,none,,任意可呈示 C の始対象 A の絶対 cotangent が Sp(C/A) の零対象となる結果は見つからない。通常環の ΩR/R=0 は相対 Kähler 微分であり、一般 C の絶対 tangent fiber に当該対象を作らない。,,not_found,
+7.3.3.1,none,,TC 内の相対 cofiber 列と、その自明 Kan 射の切断から相対 cotangent functor を作る定義は見つからない。安定 ∞ 圏の cofiber はあるが、tangent bundle の底に垂直な二射とこの全関手を構成しない。,,not_found,
+7.3.3.2,none,,f!LA→LB→LB/A の tangent fiber の cofiber 列は見つからない。通常環の Kähler 微分の右完全列は三項の通常加群であり、この全導来 cofiber 列と比較されていない。,,not_found,
+7.3.3.3,none,,始対象 A に対する絶対・相対 cotangent の同値は見つからない。通常環の相対 Kähler 微分はあるが、一般可呈示 C の LA と LB/A の比較を構成しない。,,not_found,
+7.3.3.4,none,,同値な射の相対 cotangent が零となる一般の定理は見つからない。通常環の ΩR/R=0 はあるが、全導来 cotangent と零次微分の比較を備えていない。,,not_found,
+7.3.3.5,none,,A→B→C の相対 cotangent の四角形が TC の押し出しとなる結果は見つからない。通常の微分の推移完全列は、tangent bundle の四つの導来対象と押し出しを構成しない。,,not_found,
+7.3.3.6,none,,f!LB/A→LC/A→LC/B の全導来推移 cofiber 列は見つからない。Kähler 微分の推移右完全列と提示の二項 cotangent はあるが、全高次を含む cofiber 列の比較がない。,,not_found,
+7.3.3.7,none,,任意可呈示 C の押し出しに沿う相対 cotangent の余 Cartesian な底変換は見つからない。通常環の Kähler 底変換はあるが、tangent bundle の全導来対象の比較を与えない。,,not_found,
+7.3.3.8,none,,coslice CA/ の tangent bundle を TC の底変換と同定する可呈示ファイブレーションの同値は見つからない。通常の Under と準圏の相対関手空間は、スライスの安定化全体を構成していない。,,not_found,
+7.3.3.9,none,,coslice の pointed objects とスペクトル対象を元の圏のものと同定する二つの ∞ 同値は見つからない。通常の Under 型の pointed objects と具体的スペクトルはあるが、任意 C の coslice からの全比較関手がない。,,not_found,
+7.3.3.10,none,,全自然性四角形が押し出しとなる ∞ 自然変換の coCartesian 述語は見つからない。個々の安定圏の押し出し判定はあるが、任意 ∞ 関手間の全射について当該条件を束ねていない。,,not_found,
+7.3.3.11,none,,coCartesian 自然変換の合成・前合成・押し出し保存後合成の三性質は見つからない。個々の押し出しの貼り合わせと関手の保存はあるが、当該全自然性述語の合成を扱う宣言がない。,,not_found,
+7.3.3.12,none,,左右随伴と mate の coCartesian 性による rectilinear square の述語は見つからない。通常の mateEquiv はあるが、全自然性四角形の押し出し条件を備えた比較構造がない。,,not_found,
+7.3.3.13,none,,rectilinear と left adjointable の関係の比較は見つからない。通常の随伴 mate はあるが、mate の可逆性と coCartesian 自然性を結ぶ当該二述語はない。,,not_found,
+7.3.3.14,none,,coslice の tangent bundle と忘却の四角形が rectilinear となる結果は見つからない。一般の Under の忘却と通常の随伴の制限はあるが、TC と TD および coCartesian な mate を構成しない。,,not_found,
+7.3.3.15,none,,coslice の絶対 cotangent と元の圏の相対 cotangent の比較、coCartesian 自然変換と押し出し関手図式は見つからない。通常環の相対微分はあるが、この二つの tangent bundle の全関手比較を与えない。,,not_found,
+7.3.3.16,none,,rectilinear square の縦合成の閉性は見つからない。通常の mates の合成公式はあるが、合成後の mate の全自然性四角形が押し出しとなる宣言はない。,,not_found,
+7.3.3.17,none,,任意の関手 p に対する始点評価の arrow 関手圏の四角形が rectilinear となる結果は見つからない。通常の arrow 圏と対角の随伴は部品となるが、指定 mate の coCartesian 性を示していない。,,not_found,
+7.3.3.18,none,,coslice から元の圏への tangent bundle と arrow 関手圏の四角形の rectilinearity は見つからない。相対関手空間はあるが、ファイバーごとの安定化の全体を持たない。,,not_found,
+7.3.3.19,none,,Δ² 図式の一辺が同値となる P∗(C) と、その pointed envelope のファイブレーションは見つからない。一般の三角図式と pointed object はあるが、この全充満部分 ∞ 圏と arrow 評価の普遍性を構成しない。,,not_found,
+7.3.3.20,none,,二つのホモトピー Cartesian 四角形と相対左随伴から上段の rectilinearity を導く定理は見つからない。通常の随伴の全充満制限と pullback は、一般の相対単位・余単位の底変換を備えていない。,,not_found,
+7.3.3.21,none,,coslice による pointed envelope と arrow 関手圏の四角形の rectilinearity は見つからない。通常の押し出しの貼り合わせはあるが、P∗ 全体の左随伴の mate の構成を与えない。,,not_found,
+7.3.4.1,none,,各 O ファイバーの安定性と操作の変数別完全性による stable O-monoidal ∞ 圏の述語は見つからない。通常 dg 圏の安定性とテンソルはあるが、任意 O の余 Cartesian 全空間にこの二条件を課していない。,,not_found,
+7.3.4.2,none,,stable O-monoidal ∞ 圏の全 section ∞ 圏が安定となる結果は見つからない。通常の安定値関手 ∞ 圏の安定性はあるが、任意 O 上のファイバーを持つ section の制限との比較がない。,,not_found,
+7.3.4.3,none,,任意 O の始代数への増大射と、底の安定 section のファイバーによる augmentation ideal functor は見つからない。通常の平方零拡大の射影と核はあるが、任意オペラッド代数の arrow 部分 ∞ 圏とファイバーの全関手を構成しない。,,not_found,
+7.3.4.4,none,,可呈示 O 族の section の可呈示性、評価の全極限・余極限保存と両随伴は見つからない。通常の functor category の評価はあるが、ファイバーを動かす相対 ∞ section の全結果を備えない。,,not_found,
+7.3.4.5,none,,自由増大 O 代数と augmentation ideal の随伴、および評価した GF の正次数 Sym 分解は見つからない。厳密 dg オペラッドの自由忘却随伴は底の全代数向けで、増大イデアルの右随伴と同じ関手ではない。,,not_found,
+7.3.4.6,none,,自由増大代数の augmentation ideal の単位を Sym¹ の正次数全体への包含と同定する比較は見つからない。厳密自由代数の生成元はあるが、増大イデアルの分解と当該随伴の単位がない。,,not_found,
+7.3.4.7,none,,増大 O 代数の安定化を底の安定 section に同値とする結果は見つからない。厳密な自由代数と具体的スペクトル模型は、augmentation ideal の微分が恒等となる安定化の比較を与えない。,,not_found,
+7.3.4.8,none,,pointed ∞ 関手の Goodwillie 微分が指定 K 余極限を保つ結果は見つからない。安定圏の excision 条件はあるが、微分 ∂ と excisive 反映の構成がない。,,not_found,
+7.3.4.9,none,,可呈示ファイブレーションの全 section が評価の左随伴の本質像から小余極限で生成される結果は見つからない。通常の関手圏の点ごとの極限は、当該相対 section と評価左随伴の生成を構成しない。,,not_found,
+7.3.4.10,none,,自由増大代数と augmentation ideal の合成 GF の微分が恒等と同値となる結果は見つからない。自由代数の明示的作用は、Goodwillie の一次近似と増大イデアルの比較を与えない。,,not_found,
+7.3.4.11,none,,安定 ∞ 圏のスライス間の引き戻しが保守的で弱可縮余極限を保つ定理は見つからない。通常の pullback functor と安定圏の双 Cartesian 判定はあるが、このスライス ∞ 関手について二結論を与える宣言がない。,,not_found,
+7.3.4.12,none,,安定な始域の随伴を誘導したスライスの右随伴の保守性と弱可縮余極限保存は見つからない。通常の随伴制限は全充満な包含のデータを要求し、当該スライスの相対構成を与えない。,,not_found,
+7.3.4.13,none,,coherent O 上の A に対する Sp(AlgO(C)/A) と O 加群 section の標準同値は見つからない。通常の内部加群と平方零拡大はあるが、全スペクトル対象を加群と比較する安定化同値がない。,,not_found,
+7.3.4.14,none,,E∞ 環の CAlg/A の安定化と全 A 加群スペクトルの同値は見つからない。実 CAlg_R と通常の平方零拡大はあるが、CAlg/A のスペクトル対象と ModA の比較関手・逆がない。,,not_found,
+7.3.4.15,none,,加群から Ω∞ を通す平方零拡大 A⊕M の functor と基礎 section の余積との同定は見つからない。厳密 dg 双加群からの分裂平方零積はあるが、Alg/A の安定化の Ω∞ による像との比較がない。,,not_found,
+7.3.4.16,partial,SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one @ SerrePositivity/InfinityCategories/Core/Quasicategory/SquareZeroMultiplication.lean:32 | SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll @ SerrePositivity/InfinityCategories/Core/Quasicategory/SquareZeroMultiplication.lean:40 | SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr @ SerrePositivity/InfinityCategories/Core/Quasicategory/SquareZeroMultiplication.lean:44 | SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl @ SerrePositivity/InfinityCategories/Core/Quasicategory/SquareZeroMultiplication.lean:48 | SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rr @ SerrePositivity/InfinityCategories/Core/Quasicategory/SquareZeroMultiplication.lean:52,仮定：前加法モノイダル通常圏、内部代数 A と A 双加群 M、二項直和（Lean が強い：厳密な dg 複体を含む通常圏模型の場合）。結論：A⊕M の単位と積の四成分を計算し、M⊗M 成分の積が零となる（HA の平方零積の公式の部分に一致）。Ω∞ によって得た HA の代数構造との比較と一般の安定 ∞ 圏は含まれない。,,found,component
+7.3.4.17,partial,TrivSqZeroExt @ Mathlib/Algebra/TrivSqZeroExt/Basic.lean:68 | TrivSqZeroExt.inr_mul_inr @ Mathlib/Algebra/TrivSqZeroExt/Basic.lean:453,仮定：通常可換環 A と離散 A 加群 M（Lean が強い：離散入力の場合）。結論：台が A×M の通常の自明平方零拡大と M 成分同士の積の零性を与える（原典末尾の古典平方零拡大の場合に一致）。全次数の符号付き π の積と環スペクトルの Ω∞ との比較は含まれない。,,found,special
+7.3.4.18,none,,全 O 代数の tangent bundle と代数・加群の全可変な族の可呈示ファイブレーション同値は見つからない。厳密な内部加群の各圏と平方零拡大はあるが、全 tangent fiber の同値を貼り合わせる構成がない。,,not_found,
+7.3.5.1,none,,Eₖ 代数の Free(1)→A→LA[k] の全導来 fiber 列は見つからない。通常の自由加群と平方零 derivation はあるが、Eₖ cotangent とシフト付き比較を構成していない。,,not_found,
+7.3.5.2,none,,Theorem 7.3.5.1 の文献版への参照を表す宣言は見つからない。通常の dg 平方零構成は当該 Eₖ cotangent の fiber 列を持たない。,,not_found,
+7.3.5.3,none,,Eₖ 加群を球 S^(k-1) に沿う chiral homology の作用と同定し、cotangent の普遍導分を球の基本類から作る結果は見つからない。通常の Kähler 導分は、この Eₖ の球パラメータの作用を構成していない。,,not_found,
+7.3.5.4,none,,cotangent の fiber 列の Rᵏ 自己同相群に関する同変性は見つからない。通常の対称群のオペラッド作用は、little cubes の全自己同相群とこの fiber 列を比較しない。,,not_found,
+7.3.5.5,none,,Free(1)→A→LA[k] の fiber 列を A について関手的に選ぶ構成は見つからない。厳密な自由 dg 代数の関手はあるが、未構成の LA とこの fiber 列の全射作用を持たない。,,not_found,
+7.3.5.6,none,,可換代数の Eₖ cotangent の filtered 余極限を可換 cotangent と同定し、Ω∞Σ∞ を反復ループ・懸垂の余極限として回復する結果は見つからない。具体的スペクトル模型はあるが、Eₖ の列と cotangent の比較がない。,,not_found,
+7.3.5.7,none,,増大 Eₖ 代数の Koszul 双対の augmentation ideal を cotangent の双対のシフトで表す fiber 列は見つからない。通常の Koszul 複体と dg Hom はあるが、Eₖ 中心の Koszul 双対とこの LA の比較を与えない。,,not_found,
+7.3.5.8,none,,E₁ 代数の compact 性から smooth 性を導き、smooth proper から代数としての compact 性を回復する定理は見つからない。perfect dg 加群の compact 性はあるが、AlgR の compact 性と対角双加群の smooth 性を結ぶものではない。,,not_found,
+7.3.5.9,none,,smooth proper と ModR・AlgR の両方での compact 性の同値は見つからない。通常の dg 加群の perfect 判定はあるが、代数の ∞ 圏の compact 性と smooth 双加群の判定がない。,,not_found,
+7.3.5.10,none,,有限余極限を持つ冪等完備 ∞ 圏の全体の Cat∞ への包含が filtered 余極限を保つ結果は見つからない。各圏の idempotent completion の安定性はあるが、Cat∞ での filtered 余極限に関する二つの閉性を同時に示していない。,,not_found,
+7.3.5.11,none,,compact ファイバー対象に制限した余 Cartesian 族が filtered 余極限保存の分類関手を持つ結果は見つからない。一般の余 Cartesian 性と dg compact 性は、可呈示ファイバーの compact 部分を貼り合わせる比較を構成しない。,,not_found,
+7.3.5.12,none,,A↦LModA の PrL 値分類関手が弱可縮余極限を保つ結果は見つからない。通常の固定代数の加群圏の余極限とモナド性は、代数を動かした加群圏自体の余極限を比較しない。,,not_found,
+7.3.5.13,none,,R↦Perf(R) の Cat∞ 値関手が filtered 余極限を保つ結果は見つからない。dg Morita の perfect 制限と compact 判定はあるが、基底環の filtered 余極限に沿った全 perfect 圏の比較がない。,,not_found,
+7.3.6.1,none,,cotangent functor の右随伴を分類する Cartesian な tangent correspondence は見つからない。通常の随伴の図式と Cartesian fibration はあるが、L と TC を入力とする当該全空間がない。,,not_found,
+7.3.6.2,partial,SerrePositivity.InfinityCategories.F2.pullbackMap_isQCatEquivalence_of_components @ SerrePositivity/InfinityCategories/F2/CatInfinity/PullbackMapComponentEquivalence.lean:32,仮定：Δ¹ 上の準圏 A・B、categorical equivalence A→B、両射影の EquivalenceLifting（Lean が強い：任意の単体集合と射影に対してこの持ち上げ性・準圏性を追加する）。結論：底ともう一脚を恒等、第二脚を端点 {1}→Δ¹ とすると同じ pullback.map が準圏同値となる（この仮定での端点ファイバーの結論に一致）。任意の A・B への一般化は含まれない。,,found,stronger-hyp
+7.3.6.3,none,,Δ¹ 上の correspondence の終点ファイバーを D′ で置き換える普遍構成と四結論は見つからない。一般の Cartesian fibration の底変換はあるが、非 Cartesian な correspondence 全体に対する指定の Hom 普遍性を構成しない。,,not_found,
+7.3.6.4,none,,Δ¹×A の三角部分 Ā と、それを表現する fundamental correspondence M⁰(C) は見つからない。通常の arrow 関手空間はあるが、任意の A→Δ¹ へのこの Hom 普遍性を表す全空間がない。,,not_found,
+7.3.6.5,none,,"M⁰(C) の二つの端点を C と Fun(Δ¹,C) に同定し q を恒等・終点評価とする比較は見つからない。通常の関手空間と評価はあるが、fundamental correspondence の両ファイバーへの同型を作っていない。",,not_found,
+7.3.6.6,none,,fundamental projection の categorical fibration 性、左右の分類関手と Cartesian 辺の五判定は見つからない。一般の fibration と随伴はあるが、M⁰(C) の当該三角部分による構成を持たない。,,not_found,
+7.3.6.7,none,,Ā 内の A×{0} と A₁×Δ¹ の押し出し部分の包含が categorical equivalence となる結果は見つからない。一般の内角 anodyne の貼り合わせは、この特定の三角部分を比較していない。,,not_found,
+7.3.6.8,none,,Δ¹ 上の categorical equivalence A→B から三角部分 Ā→B̄ の同値を得る結果は見つからない。EquivalenceLifting を仮定した通常の引き戻し同値はあるが、任意 A の三角部分とこの比較射を構成しない。,,not_found,
+7.3.6.9,none,,"fundamental correspondence と TC→Fun(Δ¹,C) から MT(C) を作る tangent correspondence の定義は見つからない。一般のファイブレーションはあるが、この二つの入力の構成を持たない。",,not_found,
+7.3.6.10,none,,明示的 tangent bundle を選ぶことで tangent correspondence の依存を解消する構成は見つからない。具体的なスペクトル対象はあるが、任意 C の TC と MT(C) の明示模型を備えない。,,not_found,
+7.3.6.11,none,,MT(C)→Δ¹×C の categorical fibration 性と、L およびその右随伴を分類する両 Cartesian 性は見つからない。一般の Cartesian fibration と随伴は、未構成の MT(C) と L に特殊化した当該三結論を与えない。,,not_found,
