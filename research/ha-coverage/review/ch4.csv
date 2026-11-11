@@ -438,3 +438,109 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.6.5.13,none,,smooth な Frobenius 代数上で基礎の双対対象に反対側の加群構造を持ち上げ、λ を通じて元の評価と比較する結果は見つからない。,,not_found,
 4.6.5.14,none,,可換 Frobenius 代数の内部加群の相対テンソルに関する双対評価が、λ との合成で基礎圏の双対評価になる結果は見つからない。通常の対称内部加群の構造はあるが Frobenius 評価の比較がない。,,not_found,
 4.6.5.15,none,,smooth な可換 Frobenius 代数上で基礎対象の双対性を加群の双対性へ持ち上げ、忘却と評価を整合させる結果は見つからない。dg 完全性と通常の Frobenius 方程式にはこの持ち上げがない。,,not_found,
+4.7.0.1,partial,CategoryTheory.Monad.monadMonEquiv @ Mathlib/CategoryTheory/Monad/EquivMon.lean:95 | CategoryTheory.Monad.Algebra @ Mathlib/CategoryTheory/Monad/Algebra.lean:43,仮定：通常圏 C（Lean が強い：通常圏に限る）。結論：C 上のモナドと合成を積とする自己関手圏のモノイドを圏同値で比較し、モナドの代数の圏を定義する（この仮定での HA の結論の一部に一致）。一般の ∞ 圏の結合代数とその左加群の比較は含まれない。,,found,special
+4.7.0.2,partial,CategoryTheory.Monad @ Mathlib/CategoryTheory/Monad/Basic.lean:42 | CategoryTheory.Monad.Algebra @ Mathlib/CategoryTheory/Monad/Algebra.lean:43,仮定：通常圏 C（Lean が強い：通常圏に限る）。結論：自己関手、単位、乗法と単位・結合恒等式を持つモナド、および作用射と整合条件を持つ代数を定義する（この仮定での HA の結論の一部に一致）。高次の coherent homotopy は含まれない。,,found,special
+4.7.0.3,partial,CategoryTheory.Monad.monadicOfHasPreservesReflexiveCoequalizersOfReflectsIsomorphisms @ Mathlib/CategoryTheory/Monad/Monadicity.lean:402 | CategoryTheory.Monad.comparisonForget @ Mathlib/CategoryTheory/Monad/Adjunction.lean:179,仮定：通常圏の随伴 F⊣G、G の同型の反映、D の反射的余等化子の存在と G による保存（Lean が強い：通常圏に限り、この余等化子の仮定を追加する）。結論：G がモナド的となり、比較関手とモナド代数からの忘却の合成が G と自然同型になる（この仮定での HA の結論の一部に一致）。幾何学的実現だけを仮定した一般の ∞ 圏の定理は含まれない。,,found,stronger-hyp
+4.7.0.4,partial,CategoryTheory.Adjunction.toMonad @ Mathlib/CategoryTheory/Monad/Adjunction.lean:49,仮定：通常圏の随伴 F⊣G（Lean が強い：通常圏の随伴の場合）。結論：誘導されるモナドの基礎自己関手は F⋙G、すなわち G∘F である（この仮定での HA の結論の一部に一致）。一般の ∞ 圏でのモナドの高次の一意性は含まれない。,,found,special
+4.7.1.1,none,,弱豊穣を与える射影の上の指定の span で豊穣射の ∞ 圏を作り、両端を固定した自己準同型 ∞ 圏を構成する宣言は見つからない。通常の豊穣 Hom 対象と dg 自己準同型圏は、この作用を備えた span の圏を与えない。,,not_found,
+4.7.1.2,none,,豊穣射と自己準同型の ∞ 圏が弱豊穣の選択に依存するという注意に対応する構成は見つからない。通常の EnrichedCategory は豊穣構造をパラメータに持つが、当該 span の圏の依存性を述べていない。,,not_found,
+4.7.1.3,none,,"自己準同型 ∞ 圏の対象を、左テンソルの場合に (C,C⊗M→M) と記述する結果は見つからない。通常圏の CostructuredArrow は対応するデータを表せるが、弱豊穣の span の圏との比較がない。",,not_found,
+4.7.1.4,none,,弱豊穣の全圏から planar オペラッドへの反射を作り、その単位を指定の慣性射とする結果は見つからない。通常の作用の自己関手圏への分類はこの包含の随伴を与えない。,,not_found,
+4.7.1.5,none,,区間の包含で順序づけた Po[n] と各区間を単体 [j−i] に送る関手は見つからない。単体の edgewise subdivision と一般の区間集合はあるが、指定の順序と関手の比較はない。,,not_found,
+4.7.1.6,none,,Po[n] の nerve からの関手に二つの慣性条件を課す豊穣 n-string の ∞ 圏は見つからない。KST の coherent string は dg 完全包絡の図式であり、任意の弱豊穣に対するこの関手圏を与えない。,,not_found,
+4.7.1.7,none,,豊穣 n-string の ∞ 圏が弱豊穣の選択にも依存するという注意に対応する構成は見つからない。通常の豊穣関手圏には Po[n] 上の慣性条件がない。,,not_found,
+4.7.1.8,none,,n=1 の string の条件が豊穣射の span の定義に一致する結果は見つからない。通常の豊穣関手と dg 自己準同型圏は、比較する二つの string の模型を構成していない。,,not_found,
+4.7.1.9,none,,"豊穣 n-string を対角の値 σ(i,i) の列へ送る忘却関手は見つからない。通常の関手の評価はあるが、指定の慣性条件を備える string の圏はない。",,not_found,
+4.7.1.10,none,,豊穣 0-string の ∞ 圏が基礎圏そのものとなる同型は見つからない。一般の一点添字の評価同値は、豊穣 string の慣性条件との比較を与えない。,,not_found,
+4.7.1.11,none,,順序写像が区間対を送る Po の写像と、慣性写像で Φ と可換となって豊穣 string の制限を誘導する結果は見つからない。単体圏の通常の面写像にはこの Po の制限がない。,,not_found,
+4.7.1.12,none,,凸な部分区間 S の上の豊穣 string と制限関手の定義は見つからない。有限順序集合の凸性と単体の制限は、当該豊穣関手圏を構成していない。,,not_found,
+4.7.1.13,none,,豊穣 n-string が隣り合う豊穣射と端点のホモトピー極限になる Segal 条件は見つからない。通常の豊穣結合則や KST の coherent string の合成は、この ∞ 関手圏の極限比較を与えない。,,not_found,
+4.7.1.14,none,,単体とその部分区間を対象、区間を包含先へ写す順序写像を射とする圏 Po と対角の全充満部分圏 Po⁰ は見つからない。単体圏と一般のファイバー圏はこの区間付き圏を定義していない。,,not_found,
+4.7.1.15,none,,Po→Δ のファイバーを Po[n] と同定し、余 Cartesian 射を区間の端点の像で判定する結果は見つからない。一般の nerve の余 Cartesian 判定には当該区間付き圏と射影がない。,,not_found,
+4.7.1.16,none,,全区間付き単体圏 Po から [j−i] を取る Φ を定義し、各ファイバーで Φ[n] に一致させる宣言は見つからない。edgewise subdivision の重み関手はこの区間関手を与えない。,,not_found,
+4.7.1.17,none,,Po と Po⁰ の nerve の相対関手圏を表現する全 string・豊穣 string の単体集合と射影は見つからない。一般の相対関手の pullback は、この Po と慣性条件の表現可能性を与えない。,,not_found,
+4.7.1.18,none,,全 string 射影の [n] 上のファイバーを Po[n] の関手圏や M の対象列と同定する同型は見つからない。一般の頂点ファイバーは当該 string 射影を備えていない。,,not_found,
+4.7.1.19,none,,豊穣構造を忘れた Str M が基礎 ∞ 圏 M だけに依存するという構成は見つからない。通常の豊穣の忘却はあるが、対角の区間圏による Str M との比較がない。,,not_found,
+4.7.1.20,none,,Str M の射影が余 Cartesian となり、その射を Po⁰ 上の各評価が同値になることで特徴づける結果は見つからない。一般の余 Cartesian ファイブレーションにはこの全空間と評価がない。,,not_found,
+4.7.1.21,none,,Str M の余 Cartesian 輸送を任意の順序写像に沿う対象列の前合成と同定する結果は見つからない。通常の関手の前合成には当該射影の輸送との比較がない。,,not_found,
+4.7.1.22,none,,慣性条件を課す前の豊穣関手全体の射影の圏的ファイブレーション性、慣性射の余 Cartesian 持ち上げとその判定、string 条件の移送は見つからない。一般のファイブレーションの底変換はこの六つの条件を与えない。,,not_found,
+4.7.1.23,none,,慣性条件を満たす豊穣 string の全空間の圏的ファイブレーション性と、区間ごとの値による余 Cartesian 射の判定は見つからない。KST の coherent string 図式はこの相対関手圏の判定を備えていない。,,not_found,
+4.7.1.24,none,,Po¹[n] 上の余 Cartesian な豊穣 string 図式が Po[n] 上で相対極限となる結果は見つからない。一般の相対 Kan 拡張の制限補題には当該区間図式とその極限性の証明がない。,,not_found,
+4.7.1.25,none,,対象列だけの Str M について Po¹[n] 上の余 Cartesian 図式が Po[n] 上の相対極限となる結果は見つからない。終対象付きの添字圏の一般の極限判定は、この区間図式の比較を与えない。,,not_found,
+4.7.1.26,none,,Str M の射を底の慣性と q₀-Cartesian 性の両条件で慣性と定義する宣言は見つからない。一般の Cartesian 射には Str M のこの射影がない。,,not_found,
+4.7.1.27,none,,豊穣 string から対象列への忘却の圏的ファイブレーション性、慣性・余 Cartesian 持ち上げの点ごとの判定、指定区間図式の相対極限性は見つからない。通常の豊穣の忘却はこの相対図式の条件を備えていない。,,not_found,
+4.7.1.28,none,,対象列を定値 M に固定した豊穣 string の引き戻しとして planar 自己準同型オペラッドを定義する宣言は見つからない。通常の End や dg 一対象自己準同型圏は、この作用を備えるオペラッドを与えない。,,not_found,
+4.7.1.29,none,,planar 自己準同型オペラッドの [1] 上のファイバーが豊穣射の自己 span 圏と同型になる結果は見つからない。二つの相対関手模型とその比較がない。,,not_found,
+4.7.1.30,none,,M での豊穣自己準同型の射影が planar ∞ オペラッドとなり、左テンソルの場合に A∞ モノイダルとなる結果は見つからない。通常の自己準同型モノイドは、この対象に作用する全オペラッドを構成していない。,,not_found,
+4.7.1.31,none,,"自己準同型オペラッドの単位上のファイバーを Map(M,M) と同定し、そこでの可逆対象を検出する結果は見つからない。通常の End のモノイドと isUnit_iff_isIso はあるが、このオペラッドのファイバーと比較していない。",,not_found,
+4.7.1.32,none,,豊穣 string の相対左 Kan 拡張を添えて C⁺[M] を作り、忘却を自明 Kan ファイブレーションとする構成は見つからない。一般の相対 Kan 拡張の制限は、ここで指定する string とその表現可能な全空間を与えない。,,not_found,
+4.7.1.33,none,,拡張付き C⁺[M] から豊穣の底の C への射影が圏的ファイブレーションかつ planar オペラッド写像となり、左テンソルの場合にモノイダルとなる結果は見つからない。通常の自己準同型 dg 圏の包含はこの底のオペラッドへの射影を与えない。,,not_found,
+4.7.1.34,none,,C⁺[M] の A∞ 代数と、基礎対象を M に固定した左加群との圏同値は見つからない。通常のモナド代数の圏や dg 自己準同型圏は、この弱豊穣による分類を構成していない。,,not_found,
+4.7.1.35,none,,C⁺[M] から C[M] への自明 Kan ファイブレーションの切断を経て、自己準同型オペラッドの代数と M への作用を分類する同値は見つからない。通常のモナドの代数にはこの二つのオペラッド模型の比較がない。,,not_found,
+4.7.1.36,none,,拡張付き C⁺[M] の arity 1 の忘却が右ファイブレーションとなる結果は見つからない。通常の dg 自己準同型圏は、この自己準同型作用全体の forgetful map を備えていない。,,not_found,
+4.7.1.37,none,,拡張付き C⁺[M] の各 arity のファイバーの全射が底の豊穣オペラッドへの射影に関して Cartesian となる結果は見つからない。一般の Cartesian 射の判定にはこの射影がない。,,not_found,
+4.7.1.38,none,,C⁺[M] の底への忘却が保守的となり、慣性射を反映する結果は見つからない。通常の豊穣の忘却には、この拡張付き自己準同型オペラッドとその底の比較がない。,,not_found,
+4.7.1.39,none,,C⁺[M] の A∞ 代数から底の A∞ 代数への忘却が右ファイブレーションとなる結果は見つからない。通常のモナド代数の忘却はこの自己準同型オペラッドの代数の比較を与えない。,,not_found,
+4.7.1.40,none,,豊穣自己準同型圏の終対象に一意な代数構造を入れ、その代数への写像で M のすべての左作用を分類する結果は見つからない。dg 自己準同型代数はあるが、この終対象の性質と作用の分類は証明されていない。,,not_found,
+4.7.1.41,none,,B から M の自己準同型を分類する代数 A への代数写像の空間と、固定 M の B-加群構造の空間を同定する宣言は見つからない。dg 自己準同型への関手はあるが、この任意の B の作用を分類する同値はない。,,not_found,
+4.7.1.42,none,,基礎対象を固定したすべての左加群構造から A∞ 代数への忘却が右ファイブレーションとなる結果は見つからない。通常のモナド代数の忘却は基礎対象固定のこの ∞ 群oid の族を構成していない。,,not_found,
+4.7.2.1,none,,有限順序集合に最小点 −∞ を加えそれを固定する写像の圏 Δ−∞ と、通常・増大単体圏の二つの包含は見つからない。通常の増大単体圏と prefix 関手は、−∞ にほかの点を送る射を持つ当該圏を定義していない。,,not_found,
+4.7.2.2,partial,CategoryTheory.SimplicialObject.Augmented.ExtraDegeneracy @ Mathlib/AlgebraicTopology/ExtraDegeneracy.lean:74,仮定：通常圏の増大単体的対象（Lean が強い：通常圏で明示的な追加退化を指定する場合）。結論：増大射の切断と各次数の追加退化、および面・退化との整合性をデータとして定義する（この仮定での HA の結論の一部に一致）。Δ−∞ への ∞ 関手の拡張との比較と G-split の定義は含まれない。,,found,special
+4.7.2.3,none,,split 増大単体的対象が余極限図式となる一般の宣言は見つからない。追加退化をもつ単体集合では増大射が局所化後に同型になるが、増大図式の ∞ 圏における余極限性との比較はない。,,not_found,
+4.7.2.4,partial,CategoryTheory.SimplicialObject.Augmented.ExtraDegeneracy.map @ Mathlib/AlgebraicTopology/ExtraDegeneracy.lean:97,仮定：通常圏の増大単体的対象に指定した追加退化と通常の関手 F（Lean が強い：通常圏で指定した追加退化の場合）。結論：F を各次数に作用させた増大対象にも追加退化を構成する（分裂のデータの移送の通常圏の場合）。一般の幾何学的実現の存在・保存は含まれない。,,found,component
+4.7.2.5,partial,ModuleCat.hasColimitsOfShape @ Mathlib/Algebra/Category/ModuleCat/Colimits.lean:114 | ModuleCat.forget₂PreservesColimitsOfShape @ Mathlib/Algebra/Category/ModuleCat/Colimits.lean:123,仮定：通常の環 A の加群の単体的図式（Lean が強い：モノイダル圏 Ab が通常圏 Ab に作用する場合に限る）。結論：通常の加群圏にこの余極限があり、アーベル群への忘却が保つ（この仮定での HA の結論の一部に一致）。忘却後の分裂を仮定する場合も含む。一般の ∞ 左テンソル圏とその幾何学的実現は含まれない。,,found,special
+4.7.2.6,none,,両側加群から基礎圏への忘却後に split となる単体図式の幾何学的実現が存在し、二つの忘却に保たれる結果は見つからない。通常の双加群の相対テンソル構成にはこの忘却の余極限の定理がない。,,not_found,
+4.7.2.7,none,,"Barₐ(A,M) の Δ−∞ への拡張を構成し、その幾何学的実現を M と同定する結果は見つからない。dg coherent bar は異なる添字の加群図式の余極限模型であり、ここで指定する二側 bar の分裂との比較がない。",,not_found,
+4.7.2.8,none,,増大単体圏と Δ−∞ の nerve を結ぶ指定の二単体と角の四角形が準圏模型のホモトピー押し出しになる結果は見つからない。一般の horn の内角 anodyne 性にはこの二つの圏の結合図式がない。,,not_found,
+4.7.2.9,partial,SerrePositivity.SimplicialModel.ExtraDegeneracyInterval.extra @ SerrePositivity/HomotopicalAlgebra/Simplicial/ExtraDegeneracyInterval.lean:49 | CategoryTheory.SimplicialObject.Augmented.ExtraDegeneracy.s_comp_δ₀ @ Mathlib/AlgebraicTopology/ExtraDegeneracy.lean:81,仮定：通常の集合値の増大単体的対象と追加退化（Lean が強い：集合値の増大単体的対象と指定した追加退化の場合）。結論：非負次数における shift への自然写像を構成し、追加退化と零番目の面との合成が恒等となる（分裂から section を得る向きの非負次数の成分）。増大対象全体の section との同値と逆向きは含まれない。,,found,component
+4.7.2.10,none,,Δ−∞ への拡張の ∞ 圏と、増大 shift の section および合成の恒等へのホモトピーのデータが同値となる結果は見つからない。通常の追加退化から shift への写像はあるが、このデータの圏全体の同値は構成されていない。,,not_found,
+4.7.2.11,none,,右ファイブレーションが split な単体図式を持ち上げるとき元の図式も split となる結果は見つからない。通常の追加退化の関手による順方向の移送は、この反映・持ち上げを与えない。,,not_found,
+4.7.2.12,partial,CategoryTheory.Abelian.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167 | CategoryTheory.SimplicialObject.Augmented.ExtraDegeneracy.homotopy @ Mathlib/AlgebraicTopology/ExtraDegeneracy.lean:175 | SerrePositivity.KST.ProExcision.extraDegeneracy_positive_boundary @ SerrePositivity/KST/ProExcision/ExtraDegeneracyContraction.lean:25,仮定：アーベル圏の単体的対象と、増大を持つ場合は指定した追加退化（Lean が強い：アーベル圏と指定した追加退化の場合）。結論：単体的対象と非負鎖複体の Dold–Kan 同値を与え、追加退化から増大への切断との合成を恒等に結ぶ単体的ホモトピー、および交代面微分の縮約式を与える（この仮定での HA の結論の一部に一致）。任意の鎖縮約から Δ−∞ への拡張を回復する逆向きは含まれない。,,found,component
+4.7.2.13,none,,split 増大単体的対象の全充満部分 ∞ 圏が retract で閉じる結果は見つからない。通常の追加退化の同型による移送は、任意の retract の分裂を与えない。,,not_found,
+4.7.2.14,partial,SerrePositivity.SimplexPrefix.functor @ SerrePositivity/CategoryTheory/Simplex/Prefix.lean:77,仮定：通常の単体圏（Lean が強い：増大なしの非負次数に限る）。結論：[n] を [0]⋆[n]=[n+1] に送る prefix 関手を構成する（shift の非負次数の部分に一致）。増大対象への因子化と ∞ 関手圏上の T は含まれない。,,found,component
+4.7.2.15,none,,増大単体的対象が split であることと、ある単体的対象の増大 shift の retract となることの同値は見つからない。通常の追加退化の shift への写像には任意の retract からの分裂の構成がない。,,not_found,
+4.7.3.1,partial,CategoryTheory.Adjunction.whiskerLeft @ Mathlib/CategoryTheory/Adjunction/Whiskering.lean:47 | CategoryTheory.Adjunction.homEquiv @ Mathlib/CategoryTheory/Adjunction/Basic.lean:159,"仮定：通常圏の随伴 F⊣G と自己関手 U（Lean が強い：通常圏の随伴の場合）。結論：前合成の随伴から Nat(U∘G,G) と Nat(U,G∘F) の全単射を与え、Gε との合成がその逆方向となる（この仮定での HA の結論の一部に一致）。一般の ∞ 自然変換の写像空間は含まれない。",,found,special
+4.7.3.2,none,,関手 G の自己準同型を分類する T の作用を指定した endomorphism monad の一般の定義は見つからない。通常の toMonad は任意の T と作用に対する分類条件の述語を構成していない。,,not_found,
+4.7.3.3,partial,CategoryTheory.Adjunction.toMonad @ Mathlib/CategoryTheory/Monad/Adjunction.lean:49 | CategoryTheory.Monad.comparison @ Mathlib/CategoryTheory/Monad/Adjunction.lean:162 | CategoryTheory.Adjunction.whiskerLeft @ Mathlib/CategoryTheory/Adjunction/Whiskering.lean:47,仮定：通常圏の随伴 F⊣G と単位（Lean が強い：通常圏の随伴の場合）。結論：G∘F のモナドと G への自然な作用を比較関手で構成し、前合成の随伴で自己準同型の表現性を得る（この仮定での HA の結論の一部に一致）。(1) の通常圏の場合に対応する。任意の T に対する (2) の判定は含まれない。,,found,special
+4.7.3.4,partial,CategoryTheory.MonadicRightAdjoint @ Mathlib/CategoryTheory/Monad/Adjunction.lean:255,仮定：通常圏の関手 G（Lean が強い：通常圏のモナド代数の場合）。結論：左随伴を指定し、その随伴のモナドへの比較関手が圏同値となることをモナド性として定義する（この仮定での HA の結論の一部に一致）。一般の ∞ 自己準同型モナドの模型は含まれない。,,found,special
+4.7.3.5,partial,CategoryTheory.Monad.monadicOfHasPreservesGSplitCoequalizersOfReflectsIsomorphisms @ Mathlib/CategoryTheory/Monad/Monadicity.lean:366 | CategoryTheory.Monad.createsGSplitCoequalizersOfMonadic @ Mathlib/CategoryTheory/Monad/Monadicity.lean:239,仮定：通常圏の随伴 F⊣G と同型の反映、G-split 対の余等化子の存在・保存（Lean が強い：通常圏に限り、余等化子の条件を追加する）。結論：G がモナド的となり、逆にモナド的な G は G-split 対の余等化子を生成する（この仮定での HA の結論の一部に一致）。G-split 単体図式による (a)・(b)・(c) 全体の同値は含まれない。,,found,stronger-hyp
+4.7.3.6,none,,古典的 Barr–Beck 定理の文献への案内であり、引用情報を表す宣言は見つからない。Mathlib には通常圏の G-split 余等化子によるモナド性定理がある。,,not_found,
+4.7.3.7,none,,保守性と G-split 単体図式の余極限保存を、G による増大図式の余極限性の保存・反映の一条件と同値にする結果は見つからない。G-split 余等化子の保存・反映のクラスは異なる添字の条件である。,,not_found,
+4.7.3.8,partial,CategoryTheory.Monad.algebraFunctorOfMonadHom @ Mathlib/CategoryTheory/Monad/Algebra.lean:199 | CategoryTheory.Monad.algebraFunctorOfMonadHomId @ Mathlib/CategoryTheory/Monad/Algebra.lean:213 | CategoryTheory.Monad.algebraFunctorOfMonadHomComp @ Mathlib/CategoryTheory/Monad/Algebra.lean:221,仮定：固定した通常圏 C 上のモナドとモナド射（Lean が強い：通常圏上の厳密なモナドとモナド射の場合）。結論：モナド射に沿う代数の制限関手を構成し、恒等と合成に関する自然同型を与える（この仮定での HA の結論の一部に一致）。反変な加群圏の族の成分に対応する。Cat∞/C への全充満性と本質像の判定は含まれない。,,found,special
+4.7.3.9,none,,双加群の忘却がモナド的となり基礎モナドを M↦A⊗M⊗B と同定する結果は見つからない。通常の双加群双圏や片側 dg 加群の随伴は、当該二つの作用のモナド性を与えない。,,not_found,
+4.7.3.10,none,,モナド的な関手をスペクトル対象に誘導したとき、左随伴があれば再びモナド的となる結果は見つからない。通常のモナドの極限生成定理にはスペクトル対象と分裂の反映の比較がない。,,not_found,
+4.7.3.11,partial,SerrePositivity.EInfinity.DGAlgebra.forgetMonadic @ SerrePositivity/EInfinity/DGAlgebra/Monadic.lean:87,仮定：可換環 R 上の通常の複体圏の厳密な結合 dg 代数（Lean が強い：通常の複体圏の厳密な dg 代数の場合）。結論：厳密な dg 代数から複体への忘却がモナド的となる（この仮定での HA の結論の一部に一致）。色を本質的全射に覆う一般の ∞ オペラッドの制限との比較は含まれない。,,found,special
+4.7.3.12,partial,ModuleCat.hasColimitsOfShape @ Mathlib/Algebra/Category/ModuleCat/Colimits.lean:114 | ModuleCat.forget₂PreservesColimitsOfShape @ Mathlib/Algebra/Category/ModuleCat/Colimits.lean:123,仮定：通常の環 A と A-加群の単体的図式（Lean が強い： Ab の通常の自己作用に限る）。結論：加群圏にこの余極限があり、アーベル群への忘却が保つ（この仮定での HA の結論の一部に一致）。忘却後に split となる図式も含む。一般の ∞ 左加群と幾何学的実現は含まれない。,,found,special
+4.7.3.13,partial,CategoryTheory.Monad.monadicOfHasPreservesGSplitCoequalizersOfReflectsIsomorphisms @ Mathlib/CategoryTheory/Monad/Monadicity.lean:366,仮定：通常圏の随伴 F⊣G と同型の反映、G-split 対の余等化子の存在・保存（Lean が強い：保守性と余等化子の条件を追加する）。結論：比較関手が圏同値となるので全充満な左随伴を持つ（この仮定での HA の結論の一部に一致）。保守性を仮定しない ∞ 圏での主張は含まれない。,,found,stronger-hyp
+4.7.3.14,none,,すべての対象を自由対象からなる G-split 単体図式の幾何学的実現として表す結果は見つからない。通常の Beck 余等化子は自由対象二項の余極限だが、指定の分裂した単体図式を構成していない。,,not_found,
+4.7.3.15,none,,自由対象からなる G-split 単体解消を対象に関して関手的に選ぶ構成は見つからない。通常の Beck 余等化子の写像と比較随伴は全単体的な選択を与えない。,,not_found,
+4.7.3.16,partial,CategoryTheory.isRightAdjoint_triangle_lift_monadic @ Mathlib/CategoryTheory/Adjunction/Lifting/Left.lean:202,仮定：通常圏の可換三角形 C→C′→D で C′→D がモナド的、C に反射的余等化子があり、合成 C→D が左随伴を持つ（Lean が強い：モナド性と通常の余等化子を追加する）。結論：C→C′ が左随伴を持つ（この仮定での HA の結論の一部に一致）。左随伴の全充満性と、C→D の保守性による同値の判定は含まれない。,,found,stronger-hyp
+4.7.3.17,partial,CategoryTheory.isIso_iff_of_reflects_iso @ Mathlib/CategoryTheory/Functor/ReflectsIso/Basic.lean:47,仮定：通常圏の保守的な関手 G′ と比較射 αD（Lean が強い：通常圏の保守的関手の場合）。結論：αD が同型であることと G′(αD) が同型であることが同値となる（この仮定での HA の結論の一部に一致）。一般の ∞ 圏の自然変換の比較は含まれない。,,found,special
+4.7.3.18,none,,projectively generated 性の移送、compact projective の自由対象の retract による判定、全 sifted 余極限の保存をまとめた結果は見つからない。厳密な dg 代数の sifted 余極限生成にはこの三結論の導出がない。,,not_found,
+4.7.3.19,none,,本質的に κ-small な unital オペラッドの代数が κ-small 弱可縮添字の余極限を持つ結果は見つからない。通常のモナド代数の余極限生成は基礎モナドの保存を仮定し、多色オペラッドの仮定からそれを生成していない。,,not_found,
+4.7.3.20,none,,可算弱可縮余極限をテンソルが別々に保つ仮定から、結合代数の可算弱可縮余極限を作る結果は見つからない。厳密な dg 代数の sifted 余極限生成は一般の可算弱可縮添字全体を扱っていない。,,not_found,
+4.7.3.21,none,,ファイバーで弱可縮余極限を保つモノイダル関手が O-代数の同じ余極限も保つ結果は見つからない。通常のモナド射の代数制限は底の多色モノイダル関手のこの保存を与えない。,,not_found,
+4.7.3.22,none,,合成のモナド性、外側の保守性、内側の左随伴の存在から内側のモナド性を導く結果は見つからない。通常の adjoint triangle と余等化子の定理にはこの三角形の余極限の比較がない。,,not_found,
+4.7.3.23,none,,モナド性の非推移性を示す反例の宣言は見つからない。通常のモナド性の判定は二つのモナド的な忘却の合成がモナド的とならない反例を与えない。,,not_found,
+4.7.4.1,none,,Cartesian と coCartesian の両条件を同時に持つ射の biCartesian fibration の定義は見つからない。両側の個別の判定はあるが、本文の二重に marked な圏の基礎となるこの構成は備えていない。,,not_found,
+4.7.4.2,none,,底 S 上の単体集合に独立な二つの辺 marking を持たせた圏と、S-bifibered 対象の定義は見つからない。一つの marking の Joyal 模型と一般の底変換は、この二つを保存する射の圏を与えない。,,not_found,
+4.7.4.3,none,,二重 marked 単体集合の底 S 上の圏を SSet で豊穣・テンソル・余テンソル化し、mapping space を相対関手圏の部分として定義する結果は見つからない。通常の SSet の閉構造には二重 marking がない。,,not_found,
+4.7.4.4,none,,S-bifibered な行き先への二つの marking を保存する写像の空間の Kan 性と、制限によるファイブレーションの記述は見つからない。一般の関手圏の lifting 補題は二重 marked の条件を扱っていない。,,not_found,
+4.7.4.5,none,,すべての S-bifibered 対象への mapping Kan complex で検査する biCartesian equivalence の定義は見つからない。通常の圏同値や一般の marked な弱同値は、この二重 marking の検査を与えない。,,not_found,
+4.7.4.6,none,,bifibered 対象間の biCartesian equivalence を相対ホモトピー逆、または各頂点のファイバーの圏同値で判定する結果は見つからない。個別のファイブレーションと同値の理論には二重 marked の mapping space との比較がない。,,not_found,
+4.7.4.7,none,,二重 marking の二つの忘却関手と、両像がそれぞれ Cartesian・coCartesian 模型で fibrant となることによる bifibered 性の判定は見つからない。個別のファイブレーションの述語は、この二重 marked 圏の忘却を構成していない。,,not_found,
+4.7.4.8,none,,filtered 余極限と可換な bifibered replacement と、そこへの biCartesian equivalence な単位は見つからない。一般の模型圏の fibrant replacement は当該具体的な二重 marked 圏の instance を備えていない。,,not_found,
+4.7.4.9,none,,biCartesian equivalence の類が perfect で、特に filtered 余極限で閉じる結果は見つからない。一般の圏同値の理論は、この二重 marked な mapping space による弱同値を構成していない。,,not_found,
+4.7.4.10,none,,底 S 上の二重 marked 単体集合に、単射を cofibration、biCartesian equivalence を弱同値とする組合的左 proper 模型構造を構成する結果は見つからない。個別の lifting 判定はこの具体的な模型圏の instance を与えない。,,not_found,
+4.7.4.11,none,,biCartesian 模型構造と SSet 豊穣の整合性は見つからない。通常の単体集合のモノイダル構造と一般の豊穣 Hom は二重 marked 圏の simplicial model category 条件を与えない。,,not_found,
+4.7.4.12,none,,二つの marking の忘却が simplicial right Quillen 関手となり、導来 ∞ 圏で極限を保つ包含を誘導する結果は見つからない。一般の右随伴の極限保存は、この具体的な模型構造と Quillen 関手を構成していない。,,not_found,
+4.7.4.13,partial,CategoryTheory.mateEquiv @ Mathlib/CategoryTheory/Adjunction/Mates.lean:84,仮定：通常圏の可換四角形と二つの水平随伴（Lean が強い：通常圏の四角形と指定した随伴の場合）。結論：単位と余単位を合成して左右の mate 変換を構成する（通常圏で adjointability を判定する変換に一致）。一般の ∞ 圏でその変換の同値性を課す部分圏は含まれない。,,found,component
+4.7.4.14,partial,CategoryTheory.iterated_mateEquiv_conjugateEquiv @ Mathlib/CategoryTheory/Adjunction/Mates.lean:463 | CategoryTheory.conjugateEquiv_of_iso @ Mathlib/CategoryTheory/Adjunction/Mates.lean:407 | CategoryTheory.conjugateEquiv_symm_of_iso @ Mathlib/CategoryTheory/Adjunction/Mates.lean:416,仮定：通常圏の四角形で四つの必要な随伴を指定する（Lean が強い：通常圏の四角形と四つの随伴を指定）。結論：二度の mate は元の変換の共役と等しく、共役で同型性が保存・反映されるので、転置した四角形の二つの Beck–Chevalley 条件が同値となる（この仮定での HA の結論の一部に一致）。一般の ∞ 圏の四角形は含まれない。,,found,special
+4.7.4.15,none,,古典的な名称 Beck–Chevalley condition の説明であり、この呼称を宣言に対応させる定義は見つからない。Mathlib には通常圏の mate 変換と、二重転置の同型性を比較する定理がある。,,not_found,
+4.7.4.16,none,,各辺の関手が左右の随伴を持ち、各自然変換の四角形が adjointable となる FunLAd・FunRAd の部分 ∞ 圏は見つからない。通常圏の mate の理論は、この図式 ∞ 圏の部分圏を構成していない。,,not_found,
+4.7.4.17,none,,biCartesian 模型の fibrant 対象の nerve を unstraightening により FunLAd・FunRAd と同値にする結果は見つからない。個別のファイブレーションと随伴の理論には、二重 marked 模型とこの本質像の比較がない。,,not_found,
+4.7.4.18,none,,FunLAd・FunRAd の可呈示性、全図式圏への包含の左随伴、および底の opposite を通じた両者の同値は見つからない。一般の準圏の可呈示性と普通の随伴の共役は、当該図式部分 ∞ 圏を構成していない。,,not_found,
+4.7.4.19,none,,四角形の right adjointability の仮定から PrL の S 方向の余極限と T 方向の極限を同時に拡張する定理は見つからない。通常圏の mate や Fubini 型の極限交換は、この可呈示 ∞ 圏を動かす混合拡張を与えない。,,not_found,
+4.7.5.1,none,,弱始対象 0 を持つ添字の Cat∞ 図式の極限から 0 成分への忘却が、左随伴を持つ仮定でモナド的となる結果は見つからない。通常のモナド性の判定はこの極限の split 単体図式の余極限を構成していない。,,not_found,
+4.7.5.2,none,,余単体 ∞ 圏のすべての d⁰ 四角形の left adjointability から、全体化の忘却の左随伴、d¹ と F(0) によるモナドの公式、およびモナド性を得る結果は見つからない。通常の mate とモナド性の定理にはこの全体化の構成がない。,,not_found,
+4.7.5.3,none,,増大余単体 ∞ 圏の adjointable な四角形と G-split 実現の保存から、全体化への比較に全充満な左随伴を作り、保守性で同値を検出する結果は見つからない。通常圏の descent data の余代数としての記述は、この任意の余単体図式を扱っていない。,,not_found,
