@@ -2280,38 +2280,38 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 7.1.1.14,Warning,$E_{1}$-Rings and Their Modules (p. 1204),7.1.1,,,,,0,0,,-
 7.1.1.15,Proposition,$E_{1}$-Rings and Their Modules (p. 1204),7.1.1,,,,,0,0,,-
 7.1.1.16,Remark,$E_{1}$-Rings and Their Modules (p. 1206),7.1.1,,,,,0,0,,-
-7.1.2.1,Theorem,Recognition Principles (p. 1206),7.1.2,,,,,0,0,,-
-7.1.2.2,Remark,Recognition Principles (p. 1207),7.1.2,,,,,0,0,,-
-7.1.2.3,Remark,Recognition Principles (p. 1207),7.1.2,,,,,0,0,,-
-7.1.2.4,Proposition,Recognition Principles (p. 1208),7.1.2,,,,,0,0,,-
-7.1.2.5,Notation,Recognition Principles (p. 1208),7.1.2,,,,,0,0,,-
-7.1.2.6,Proposition,Recognition Principles (p. 1208),7.1.2,,,,,0,0,,-
-7.1.2.7,Proposition,Recognition Principles (p. 1208),7.1.2,,,,,0,0,,-
-7.1.2.8,Proposition,Recognition Principles (p. 1209),7.1.2,,,,,0,0,,-
-7.1.2.9,Remark,Recognition Principles (p. 1211),7.1.2,,,,,0,0,,-
-7.1.2.10,Remark,Recognition Principles (p. 1211),7.1.2,,,,,0,0,,-
-7.1.2.11,Proposition,Recognition Principles (p. 1212),7.1.2,,,,,0,0,,-
-7.1.2.12,Remark,Recognition Principles (p. 1212),7.1.2,,,,,0,0,,-
-7.1.2.13,Theorem,Recognition Principles (p. 1212),7.1.2,,,,,0,0,,-
-7.1.3.1,Theorem,Change of Ring (p. 1213),7.1.3,,,,,0,0,,-
-7.1.3.2,Remark,Change of Ring (p. 1214),7.1.3,,,,,0,0,,-
-7.1.3.3,Proposition,Change of Ring (p. 1215),7.1.3,,,,,0,0,,-
-7.1.3.4,Corollary,Change of Ring (p. 1215),7.1.3,,,,,0,0,,-
-7.1.3.5,Definition,Change of Ring (p. 1215),7.1.3,,,,,0,0,,-
-7.1.3.6,Example,Change of Ring (p. 1216),7.1.3,,,,,0,0,,-
-7.1.3.7,Remark,Change of Ring (p. 1216),7.1.3,,,,,0,0,,-
-7.1.3.8,Variant,Change of Ring (p. 1216),7.1.3,,,,,0,0,,-
-7.1.3.9,Warning,Change of Ring (p. 1216),7.1.3,,,,,0,0,,-
-7.1.3.10,Lemma,Change of Ring (p. 1216),7.1.3,,,,,0,0,,-
-7.1.3.11,Definition,Change of Ring (p. 1217),7.1.3,,,,,0,0,,-
-7.1.3.12,Remark,Change of Ring (p. 1217),7.1.3,,,,,0,0,,-
-7.1.3.13,Proposition,Change of Ring (p. 1217),7.1.3,,,,,0,0,,-
-7.1.3.14,Proposition,Change of Ring (p. 1217),7.1.3,,,,,0,0,,-
-7.1.3.15,Proposition,連結 Eₖ 代数の切断と加群のモノイド構造,7.1.3,,,,,0,1,,BS
-7.1.3.16,Remark,Change of Ring (p. 1219),7.1.3,,,,,0,0,,-
-7.1.3.17,Definition,Change of Ring (p. 1219),7.1.3,,,,,0,0,,-
-7.1.3.18,Proposition,Change of Ring (p. 1219),7.1.3,,,,,0,0,,-
-7.1.3.19,Proposition,Change of Ring (p. 1219),7.1.3,,,,,0,0,,-
+7.1.2.1,Theorem,単一 compact generator による加群圏の認識,7.1.2,,,,,0,0,,-
+7.1.2.2,Remark,生成元の自己準同型環スペクトルと Ext の積,7.1.2,,,,,0,0,,-
+7.1.2.3,Remark,認識に用いる環と生成元の像,7.1.2,,,,,0,0,,-
+7.1.2.4,Proposition,加群圏間の余極限保存関手の双加群による分類,7.1.2,,,,,0,0,,-
+7.1.2.5,Notation,右加群圏への Eₖ₋₁ モノイダル構造,7.1.2,,,,,0,0,,-
+7.1.2.6,Proposition,生成単位を持つ Eₖ₋₁ 加群圏による認識,7.1.2,,,,,0,0,,-
+7.1.2.7,Proposition,対称モノイダル加群圏による E∞ 環の認識,7.1.2,,,,,0,0,,-
+7.1.2.8,Proposition,複体の射影モデル構造,7.1.2,,,,,0,0,,-
+7.1.2.9,Remark,射影・入射モデル構造からの導来 ∞ 圏の比較,7.1.2,,,,,0,0,,-
+7.1.2.10,Remark,斜体上の射影・入射モデル構造の一致,7.1.2,,,,,0,0,,-
+7.1.2.11,Proposition,射影モデル構造とテンソルの整合性,7.1.2,,,,,0,0,,-
+7.1.2.12,Remark,導来 ∞ 圏の対称モノイダル構造,7.1.2,,,,,0,0,,-
+7.1.2.13,Theorem,HR 加群と導来 ∞ 圏の対称モノイダル同値,7.1.2,,,,,0,0,,-
+7.1.3.1,Theorem,反復した内部代数の加群圏の忘却同値,7.1.3,,,,,0,0,,-
+7.1.3.2,Remark,一般のオペラッド族における反復加群の比較,7.1.3,,,,,0,0,,-
+7.1.3.3,Proposition,反復加群の忘却と相対テンソルの比較,7.1.3,,,,,0,0,,-
+7.1.3.4,Corollary,反復加群の Eₖ₋₁ モノイダル忘却同値,7.1.3,,,,,0,0,,-
+7.1.3.5,Definition,基底環上の Eₖ 代数の ∞ 圏,7.1.3,,,,,0,0,,-
+7.1.3.6,Example,球上の代数と Eₖ 環の同一視,7.1.3,,,,,0,0,,-
+7.1.3.7,Remark,基底環に依存しない加群圏と相対テンソル,7.1.3,,,,,0,0,,-
+7.1.3.8,Variant,E∞ 基底上の代数と undercategory,7.1.3,,,,,0,0,,-
+7.1.3.9,Warning,有限 k の基底構造と Eₖ 中心,7.1.3,,,,,0,0,,-
+7.1.3.10,Lemma,connective 加群の t 構造と Eₖ テンソル,7.1.3,,,,,0,0,,-
+7.1.3.11,Definition,代数の connective cover の普遍性,7.1.3,,,,,0,0,,-
+7.1.3.12,Remark,connective cover の対象の記法,7.1.3,,,,,0,0,,-
+7.1.3.13,Proposition,代数の connective cover の存在と右随伴,7.1.3,,,,,0,0,,-
+7.1.3.14,Proposition,代数・加群・基礎スペクトルの切断条件,7.1.3,,,,,0,0,,-
+7.1.3.15,Proposition,切断の Eₖ モノイダル整合性と代数の基礎加群,7.1.3,,,,,0,1,,BS
+7.1.3.16,Remark,離散加群の Eₖ テンソルと通常のテンソル,7.1.3,,,,,0,0,,-
+7.1.3.17,Definition,離散 Eₖ 代数の定義,7.1.3,,,,,0,0,,-
+7.1.3.18,Proposition,離散 Eₖ 代数と通常の結合・可換代数,7.1.3,,,,,0,0,,-
+7.1.3.19,Proposition,connective 代数の Postnikov 塔の収束,7.1.3,,,,,0,0,,-
 7.1.4.1,Definition,Algebras over Commutative Rings (p. 1220),7.1.4,,,,,0,0,,-
 7.1.4.2,Remark,Algebras over Commutative Rings (p. 1220),7.1.4,,,,,0,0,,-
 7.1.4.3,Proposition,Algebras over Commutative Rings (p. 1220),7.1.4,,,,,0,0,,-
@@ -2366,7 +2366,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 7.2.2.7,Proposition,Flat and Projective Modules (p. 1239),7.2.2,,,,,0,0,,-
 7.2.2.8,Remark,Flat and Projective Modules (p. 1239),7.2.2,,,,,0,0,,-
 7.2.2.9,Corollary,Flat and Projective Modules (p. 1239),7.2.2,,,,,0,0,,-
-7.2.2.10,Definition,環スペクトル上の平坦加群,7.2.2,,,,,0,5,,BS
+7.2.2.10,Definition,環スペクトル上の平坦加群の定義,7.2.2,,,,,0,5,,BS
 7.2.2.11,Remark,Flat and Projective Modules (p. 1240),7.2.2,,,,,0,0,,-
 7.2.2.12,Remark,Flat and Projective Modules (p. 1240),7.2.2,,,,,0,0,,-
 7.2.2.13,Proposition,Flat and Projective Modules (p. 1240),7.2.2,,,,,0,0,,-
