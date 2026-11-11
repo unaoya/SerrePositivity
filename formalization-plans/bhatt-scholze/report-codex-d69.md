@@ -267,3 +267,8 @@
 - `main` の取り込みと登録を含む `6e6a3f9a7` へ早送りした。夜間の枠の持ち上げ、混合頂点、prism 上の余鎖ホモトピー、有限 affine 枠への適用の対象ビルドが通った。大小の枠の比較の二つの合成と、標準比較への移送は引き続き検査中。
 - Witt の結晶の橋を有限枠に制限した座標計算、未完備分冪模型の代入、Jacobian と分冪偏微分の連鎖律、双複体の第 0 行・第 0 列への射影の自然性が対象ビルドを通った。連鎖律は自由分冪の生成元に階乗を掛けて通常の冪に直し、標的の p 正則性と p 完備性で階乗を消去して示した。
 - 今回ビルドと監査が通った追加は `AffineCechFrameLift`、`CechVertexHomotopy`、`PrismaticFrameHomotopy`、`AffineCechVertexFrame`、`WittBigBridgeAffineFrame`、`PDRawPolynomialSubstitution`、`PDDeRhamSubstitutionJacobian`、`PDDeRhamSubstitutionChainRule`、`SerrePositivity.HomologicalAlgebra.BicomplexProjectionNaturality` の9本。一時監査は夜前の33本を合わせた42本、1,352宣言で標準三公理のみ。
+
+- `BigCechVertexFrame` と `BigCechAffineFrameQuasiIso` が通った。共通の濃度上限に大小の標準枠を置けることを示し、二つの合成の余鎖ホモトピーを `affineCechAlexanderFrame_quasiIso` に移した。
+- `PDModelCompletionQuotient`、`PDRawBaseChangeQuotient` が通った。前者は有限冪商の平坦性と完備化単位との照合、後者は未完備項での底変換を係数のイデアルの商まで移した環同型。
+- `PDDeRhamCompletedSubstitution`、`PDCompletedSubstitutionNaturality`、`PDDeRhamSubstitutionForms` が通った。完備係数に連鎖律を移し、各余面・余退化と可換な代入の関手、および Jacobian の各外冪への延長を作った。外積と微分を保つことと、総複体の二射影との照合は検査を続けている。
+- 上の追加7本を含む49本の一時監査は1,516宣言で標準三公理のみ。Witt の二比較の導来 p 完備底変換後の擬同型と、完備 pd de Rham の厳密な自然性が残る。
