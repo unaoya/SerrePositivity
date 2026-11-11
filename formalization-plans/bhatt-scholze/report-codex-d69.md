@@ -340,3 +340,8 @@
 - この共通モジュールも登録候補に加える。96本の一時監査は2,520宣言で標準三公理のみ。一時監査とログは `/private/tmp/AuditD69P2MorningSixtyThree.lean` と `/private/tmp/d69-morning-audit-sixtythree.log`。
 - 作業木では `CrystallineSmallBridgeCoordinates`（各頂点変数の p 乗の式）と `CrystallineBridgeAlgebra`（既存の橋の ℤ_p 上の線形性）が個別検査を通った。`CrystallineWittCoefficients` は、既存の `arcPadicIntMap` とその一意性を使って Witt 基底への係数射を作る。これら3本は一つの整理券で対象ビルドを待っている。
 - 次の適用では、既存の `toModules` と `cohomologyEquivModuleHomology` で環のコホモロジーと基底線形な複体を合わせ、小さい橋の通常商の擬同型に完備複体の判定を適用する。その後、affine 包の完備底変換の比較と分冪側の係数変更を使い、Witt の有限枠の指定された橋との可換図式を閉じる。Witt 側から C 側の比較には既存の第 0 列の自由模型と二射影の係数変更の可換性を使う。P2 の停止点には引き続き未到達。
+
+- `CrystallineSmallBridgeCoordinates` の各頂点変数の p 乗の式と、`CrystallineBridgeAlgebra` の ℤ_p 上の厳密な線形性が鍵付きの対象ビルドを通った（`/private/tmp/d69-ticket-build-24.log`）。同じビルドの `CrystallineWittCoefficients` は証明だけに使う section 変数の明記で失敗したため、修正して個別検査を通した。基底の係数射は既存の `arcPadicIntMap` を使い、その一意性から Witt Frobenius と δ の両立を得る。Witt 係数射の再対象ビルドは次の束で行う。
+- ビルド済みの追加2本を含む98本の一時監査は2,554宣言、標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningSixtyFive.lean` と `/private/tmp/d69-morning-audit-sixtyfive.log`。登録候補に `CrystallineSmallBridgeCoordinates` と `CrystallineBridgeAlgebra` を加える。
+- 次の7本の対象ビルドを、一つの整理券、`--wait 3600`、鍵の使用1700秒以内で流している（`/private/tmp/d69-ticket-build-25.log`）。上の2本、`CrystallineWittCoefficients`、`CrystallineSmallBridgeComplex`、共通の `SerrePositivity.HomologicalAlgebra.Cosimplicial.ModuleMap`・`ScalarQuotient`、`SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarQuotient`。いずれも個別検査済み。
+- `ModuleMap` は既存の `toModules` を射に移し、環のコホモロジー同型から線形な交代余面複体の擬同型を得る。`ScalarQuotient` は実際の環の商射に対応する線形複体の短完全列。`CompleteScalarQuotient` は、商複体を短完全列で指定した形の完備複体の判定と、整数添字への零延長の両立を示す。`CrystallineSmallBridgeComplex` で小さい橋の始域・終域・線形な余鎖射を固定し、両複体の零延長の導来 p 完備性を示した。
