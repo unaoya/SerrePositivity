@@ -135,6 +135,79 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.1.8.13,none,,厳密な dg 代数のモデル構造と、通常圏の dg operad 代数の忘却が sifted 余極限を作る定理を確認した。局所化後の忘却が N(C) 型のホモトピー余極限を保存する型は見つからなかった。,,not_found,
 4.1.8.14,none,,通常圏のモノイド対象の忘却と右 Quillen の例を確認したが、対象が定める単体的モノイド図式への関手 G の左随伴、射影モデル構造に対する Quillen 随伴、右導来の本質像の判定は見つからなかった。,,not_found,
 4.1.8.15,none,,余ファイブラントな対象によるテンソルの左 Quillen 性を確認した。全対象が余ファイブラントな場合の左固有性・余ファイブラント対象間の射による生成と、Cartesian テンソルのモノイド公理をまとめる宣言は見つからなかった。,,not_found,
+4.2.1.1,none,,一色 dg operad と内部モノイド上の作用の型を確認した。代数色と加群色を持ち、加群出力では唯一の加群入力を末尾に置く colored operad LM の構成は見つからなかった。,,not_found,
+4.2.1.2,none,,内部モノイドとその内部加群を確認した。LM の代数色だけへの制限を、全順序を演算とする Assoc と同定する宣言は見つからなかった。,,not_found,
+4.2.1.3,partial,CategoryTheory.ModObj @ Mathlib/CategoryTheory/Monoidal/Mod.lean:59,仮定：通常のモノイダル圏のモノイド対象 A と左作用圏の対象 M（HA の対称モノイダル圏での自己作用を含む）。結論：A⊗M→M と単位律・結合律を持つ左加群を与える（左加群の構造に一致）。colored operad の写像の延長との同値は含まれない。,,found,component
+4.2.1.4,none,,内部モノイドと内部加群の型を確認した。LM からの写像を二色 a と m に評価する対応は見つからなかった。,,not_found,
+4.2.1.5,partial,CategoryTheory.ModObj.regular @ Mathlib/CategoryTheory/Monoidal/Mod.lean:102,仮定：通常のモノイダル圏の内部モノイド A（HA の通常の対称モノイダル圏を含む）。結論：A 自身に元の乗法で左 A-加群構造を与える（LM→Assoc を通じた正則加群の成分に一致）。全順序を忘れない colored operad の写像は含まれない。,,found,component
+4.2.1.6,none,,有限部分集合と順序ブロックの合成を確認した。Fin∗ と加群位置の部分集合を対象とし、各加群出力ファイバーの最大元を加群にする圏 LM⊗ は見つからなかった。,,not_found,
+4.2.1.7,none,,通常圏の神経と一色 dg operad を確認した。LM⊗ の神経を Fin∗ の神経へ送って ∞ operad とする構成は見つからなかった。,,not_found,
+4.2.1.8,none,,離散圏と一般の頂点ファイバーを確認した。LM⊗ の一色部分が二つの頂点の離散単体集合となる同定は見つからなかった。,,not_found,
+4.2.1.9,none,,一般の categorical fibration の持ち上げ判定を確認した。LM⊗→Assoc⊗ が ∞ operad のファイブレーションとなる宣言は見つからなかった。,,not_found,
+4.2.1.10,none,,頂点条件による充満部分複体を確認した。LM⊗ で加群位置集合が空の対象を取る充満部分を Assoc⊗ と同定する宣言は見つからなかった。,,not_found,
+4.2.1.11,none,,準圏の底変換と頂点ファイバーを確認した。LM⊗ 上の写像から Assoc への制限と二色のファイバーを取り出す型は見つからなかった。,,not_found,
+4.2.1.12,none,,通常のモノイダル作用と通常の豊穣圏を確認した。LM⊗ 上の operadic fibration に代数色・加群色の同型を添える weak enrichment の型は見つからなかった。,,not_found,
+4.2.1.13,partial,CategoryTheory.Mod @ Mathlib/CategoryTheory/Monoidal/Mod.lean:227,仮定：通常のモノイダル圏の内部モノイド A と左作用圏 D（Lean は HA の通常圏の場合に限る）。結論：左 A-加群と加群準同型の圏を与える（固定 A のファイバーに一致）。代数の可変な準圏とその射影の categorical fibration 性は含まれない。,,found,special
+4.2.1.14,none,,内部加群の型が通常の作用に依存することは確認した。基礎準圏が同じでも LM 上の operadic fibration によって LMod が変わるという比較は見つからなかった。,,not_found,
+4.2.1.15,partial,CategoryTheory.Mon @ Mathlib/CategoryTheory/Monoidal/Mon.lean:251 | CategoryTheory.Mod @ Mathlib/CategoryTheory/Monoidal/Mod.lean:227,仮定：通常のモノイダル圏と通常の左作用圏（Lean は HA の通常圏の場合に限る）。結論：内部モノイド A と A 上の内部加群 M を与える型がある（固定 A を含む対象データに一致）。組全体を LM 上の section の準圏として束ねる型は含まれない。,,found,special
+4.2.1.16,none,,通常のモノイダル圏が自分に作用する構成と一般の余デカルト底変換を確認した。LM⊗→Assoc⊗ の引き戻しが C の weak enrichment を与える結果は見つからなかった。,,not_found,
+4.2.1.17,partial,CategoryTheory.Mod.regular @ Mathlib/CategoryTheory/Monoidal/Mod.lean:336,仮定：通常のモノイダル圏の内部モノイド A（Lean は HA の通常圏の場合に限る）。結論：各 A に左 A-加群としての A を与える（切断の対象成分に一致）。代数写像を含む LM 上の section の切断は含まれない。,,found,special
+4.2.1.18,partial,CategoryTheory.ModObj @ Mathlib/CategoryTheory/Monoidal/Mod.lean:59,仮定：通常のモノイダル圏の内部モノイド A と対象 M（Lean は HA の通常圏の場合に限る）。結論：作用 A⊗M→M の結合律と単位律の四角形が可換となる（通常圏の場合に一致）。LM⊗ の全ての射に沿う高次の整合性は含まれない。,,found,special
+4.2.1.19,partial,CategoryTheory.MonoidalCategory.MonoidalLeftAction @ Mathlib/CategoryTheory/Monoidal/Action/Basic.lean:120,仮定：通常のモノイダル圏と通常圏（Lean は HA の通常圏の場合に限る）。結論：左テンソル作用と結合・単位の整合性を定める（通常圏の場合の左テンソル作用に一致）。LM⊗ への余デカルト operadic fibration は含まれない。,,found,special
+4.2.1.20,partial,SerrePositivity.InfinityCategories.cocartesianFibration_pullback_snd @ SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean:92,仮定：余デカルトファイブレーションと底変換写像（Lean では Assoc⊗→LM⊗ を明示する）。結論：引き戻した写像は余デカルトファイブレーションとなる（代数色への制限の余デカルト性に一致）。Assoc 上の operadic 構造は型に含まれない。,,found,component
+4.2.1.21,partial,CategoryTheory.MonoidalCategory.MonoidalLeftAction @ Mathlib/CategoryTheory/Monoidal/Action/Basic.lean:120,仮定：通常のモノイダル圏 C と C が作用する通常圏 M（Lean は HA の通常圏の場合に限る）。結論：作用 C×M→M の対象・射のデータと単位・結合の自然同型を持つ（通常の作用の成分に一致）。LM モノイドによる余デカルト射影の分類は含まれない。,,found,special
+4.2.1.22,none,,相対写像空間の頂点ファイバーの Kan 性を確認した。LM の標準順序の演算上のファイバーを多入力の加群写像空間として定義する型は見つからなかった。,,not_found,
+4.2.1.23,none,,準圏の pinched Hom と余スライスのファイバーの比較を確認した。LM の加群入力が一つで代数入力がない成分を m ファイバーの通常の写像空間と比較する型は見つからなかった。,,not_found,
+4.2.1.24,none,,余デカルト辺の相対余スライスによる判定を確認した。LM の多入力写像空間を、テンソル作用した対象からの通常の写像空間と同定する型は見つからなかった。,,not_found,
+4.2.1.25,none,,通常の左作用の結合子と余デカルト辺の比較を確認した。代数色のモノイダル性と、多入力 Hom が合成テンソルを通るときの同値を組にした pseudo-enrichment は見つからなかった。,,not_found,
+4.2.1.26,none,,一般の余デカルト辺の相対余スライスによる同値判定を確認した。LM 上の pseudo-enrichment と単一作用入力での表現性から全ての余デカルト持ち上げを得る基準は見つからなかった。,,not_found,
+4.2.1.27,none,,通常の左作用の対象を確認した。pseudo-enrichment の普遍射で指定した M′ を LM の余デカルト輸送から得る C⊗M と同定する宣言は見つからなかった。,,not_found,
+4.2.1.28,none,,通常の内部 Hom の随伴と豊穣構造を確認した。LM の多入力写像空間に対する Hom 対象と冪対象を、pseudo-enriched ∞ 圏の同じ枠で定義する型は見つからなかった。,,not_found,
+4.2.1.29,partial,CategoryTheory.Functor.RepresentableBy.uniqueUpToIso @ Mathlib/CategoryTheory/Yoneda.lean:343 | CategoryTheory.Functor.CorepresentableBy.uniqueUpToIso @ Mathlib/CategoryTheory/Yoneda.lean:351,仮定：通常の圏で同じ集合値前層または共変関手の二つの表現（Lean は HA の通常圏の場合に限る）。結論：表現対象の間に標準の同型を与える（Hom 対象と冪対象の通常圏での一意性に一致）。一般の空間値多入力関手は含まれない。,,found,special
+4.2.1.30,partial,CategoryTheory.Adjunction.homEquiv @ Mathlib/CategoryTheory/Adjunction/Basic.lean:159,"仮定：通常の圏で C⊗− が右随伴を持つ（Lean は HA の通常圏の場合に限り、随伴を既知とする）。結論：余単位との合成により Hom(M,C^N) と Hom(C⊗M,N) を同定する（冪対象が与える同値の成分に一致）。LM の多入力条件との同値は含まれない。",,found,special
+4.2.1.31,partial,CategoryTheory.ihom @ Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:76,"仮定：通常のモノイダル閉圏 C（Lean は HA の通常の自己作用の場合に限る）。結論：各 X に対し内部 Hom [X,−] を関手として得る（固定 X における冪の第2変数の関手性に一致）。任意の pseudo-enriched ∞ 圏での二変数関手は含まれない。",,found,special
+4.2.1.32,partial,CategoryTheory.ihom.adjunction @ Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:82,"仮定：通常の左閉モノイダル圏（Lean は HA の通常の自己作用の場合に限る）。結論：左テンソル作用 X⊗− の右随伴として冪対象 [X,−] を与える（左閉性から cotensored となる通常圏の成分に一致）。右閉性側と逆方向は含まれない。",,found,special
+4.2.1.33,none,,presentable 準圏の余極限保存関手に右随伴を与える型を確認した。LM の作用関手についてその随伴を多入力 Hom の普遍性を満たす冪・Hom 対象と同定する宣言は見つからなかった。,,not_found,
+4.2.1.34,none,,通常の自己豊穣圏と準圏の充満部分複体を確認した。LM による豊穣性を加群色の任意の充満部分準圏へ制限する宣言は見つからなかった。,,not_found,
+4.2.1.35,none,,"通常の豊穣圏と準圏の Cat∞ を確認した。Cat(∞,n−1) 上の豊穣 ∞ 圏から (∞,n) 圏を帰納的に与える型は見つからなかった。",,not_found,
+4.2.1.36,partial,CategoryTheory.MonoidalCategory.MonoidalRightAction @ Mathlib/CategoryTheory/Monoidal/Action/Basic.lean:434,仮定：通常のモノイダル圏と通常圏（Lean は HA の通常圏の場合に限る）。結論：右テンソル作用とその結合・単位の整合性を与える（右作用の通常圏の成分に一致）。RM⊗ の定義、operadic section、固定代数上のファイバーは含まれない。,,found,special
+4.2.1.37,none,,通常圏で左作用からテンソル逆の右作用を作る宣言と、dg 加群の反対側での Hom の比較を確認した。LM と RM による左・右加群準圏の対応を与える同値は見つからなかった。,,not_found,
+4.2.2.1,partial,SerrePositivity.KST.Comparison.regularActionCoordinateEquiv @ SerrePositivity/KST/Comparison/ActionBarCoordinates.lean:123 | SerrePositivity.KST.Comparison.monoidWordEquiv @ SerrePositivity/KST/Comparison/BarSegal.lean:93,仮定：通常のモノイド T の自分自身への正則作用（Lean は HA の X=T の場合に限る）。結論：作用圏の神経の n 単体を基底の n 単体と T の元の組に、基底の n 単体を n 個の T の元に同定する（n 単体の積座標に一致）。Lean は始点で座標を読み、HA の面・退化写像の式と一般の作用の特徴付けは含まれない。,,found,special
+4.2.2.2,none,,正則作用の bar の積座標と単体集合の strict Segal を確認した。任意の準圏で基底のモノイド図式と終頂点との積を要求する左作用対象の型は見つからなかった。,,not_found,
+4.2.2.3,none,,正則作用圏の射影と通常の内部左加群を確認した。一般の左作用 Segal 図式の次数 1 を積で表示し、反対側の端点評価として作用を取り出す型は見つからなかった。,,not_found,
+4.2.2.4,partial,SerrePositivity.KST.Comparison.regularActionProjection @ SerrePositivity/KST/Comparison/RegularBar.lean:56,仮定：通常のモノイド M（Lean は HA の集合の圏の場合に限る）。結論：M の正則左作用の圏から基底の単一対象圏への射影を与える（M の自己作用の成分に一致）。[n]↦[n+1] の移送による一般の左作用図式の構成は含まれない。,,found,special
+4.2.2.5,none,,正則作用圏から単一対象圏への射影と相対関手のファイバーを確認した。一般の LMon から Mon への写像と、固定モノイドのファイバー LMon_M は見つからなかった。,,not_found,
+4.2.2.6,none,,有限順序集合の部分区間と有限集合の整列を確認した。初期部分集合を並べ、逆像で移し、最後の元を加群色にする LCut 関手は見つからなかった。,,not_found,
+4.2.2.7,none,,有限集合の補集合と整列を確認した。空・全体を区別する LCut と同じ基点にまとめる Cut の比較は見つからなかった。,,not_found,
+4.2.2.8,none,,単体圏の部分区間と一般の余デカルト底変換を確認した。LCut の最後の加群色を基点へ送る自然変換 γ と、その operadic approximation は見つからなかった。,,not_found,
+4.2.2.9,none,,通常圏の左作用と正則作用の神経を確認した。有限積を持つ準圏で LM モノイドを γ に沿って左作用の Segal 図式に送る同値は見つからなかった。,,not_found,
+4.2.2.10,partial,SerrePositivity.InfinityCategories.markedCocartesianFunctorSpace @ SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean:38,仮定：共通の底への写像 q、γ と始域の指定辺（Lean では LM⊗、γ と三条件の辺を明示する）。結論：指定辺を余デカルト辺へ送る底上の関手の充満部分複体を与える（A∞ 加群の関手空間の成分に一致）。LM と固定 A のファイバーは含まれない。,,found,component
+4.2.2.11,none,,マークを保つ相対関手空間と一般のモデル圏の局所化を確認した。γ による preoperad の Quillen 同値と、fibrous 写像から得る planar weak enrichment の比較は見つからなかった。,,not_found,
+4.2.2.12,none,,一般のマーク付き相対関手の前合成が自明 Kan となる仮定を確認した。LM の代数と simplicial な A∞ 加群を γ に沿って同値とする宣言は見つからなかった。,,not_found,
+4.2.2.13,none,,マーク付き相対関手の前合成同値と categorical fibration の判定を確認した。γ が generalized ∞ operad のモデル構造の弱同値となる型は見つからなかった。,,not_found,
+4.2.2.14,none,,通常の左加群の圏とマーク付き相対関手を確認した。LM section と A∞ 図式を同じ加群準圏として扱う比較は見つからなかった。,,not_found,
+4.2.2.15,partial,SerrePositivity.InfinityCategories.markedCocartesianFunctorPre @ SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorPrecomposition.lean:27,仮定：共通の底の上でマークを保つ写像（Lean では終点面の包含とマークを明示する）。結論：マーク付き相対関手の前合成を構成する（A∞ 加群から A∞ 代数への忘却の成分に一致）。LM の表示と固定 A ファイバーは型に含まれない。,,found,component
+4.2.2.16,none,,相対関手の引き戻し比較と通常の固定代数の加群を確認した。γ の比較が指定代数 A とその像 A′ のファイバーで同値となる宣言は見つからなかった。,,not_found,
+4.2.2.17,none,,相対関手空間のカリー化とマーク条件を確認した。底 N(∆ᵒᵖ) の可変な K に対して、γ 上の K×∆¹ からの写像を表現する M と inert 辺の充満部分圏は見つからなかった。,,not_found,
+4.2.2.18,none,,余デカルト持ち上げの選択空間の可縮性を確認した。M̃ の始点評価が LCut の引き戻しへの自明 Kan となり、各 [n] のファイバーが M×Cⁿ になる型は見つからなかった。,,not_found,
+4.2.2.19,none,,マーク付き相対関手と categorical fibration の判定を確認した。M̃→C̃→N(∆ᵒᵖ) の categorical fibration 性と、終点を保つ inert 辺による A∞ section の判定は見つからなかった。,,not_found,
+4.2.2.20,none,,通常の余デカルトファイブレーションの底変換と直積の輸送を確認した。LM の余デカルト射影から得る M̃→C̃ の局所余デカルト性は見つからなかった。,,not_found,
+4.2.2.21,none,,一般の余デカルト輸送の持ち上げと通常圏の左作用を確認した。単体圏の射 α の終点より後ろに残る成分だけを作用させるという M の輸送公式は見つからなかった。,,not_found,
+4.2.2.22,none,,一般の余デカルト辺の合成を確認した。二辺が局所余デカルトという仮定から、終端部分の全単射条件を使って長辺の局所余デカルト性を示す宣言は見つからなかった。,,not_found,
+4.2.2.23,none,,通常の Cartesian・余デカルト辺の合成と底変換を確認した。単体の終点を保つ射と最初の区間への包含について、それぞれ局所性から全体の辺の性質を検出する型は見つからなかった。,,not_found,
+4.2.2.24,none,,余デカルト辺の相対余スライス判定と単体圏の区間を確認した。左テンソル LM から作る M̃ 上で、終点条件・標準包含条件に従い局所から大域の Cartesian・余デカルト性を示す型は見つからなかった。,,not_found,
+4.2.2.25,none,,Cat∞ と相対余デカルト関手空間を確認した。LM 上の余デカルト operadic fibration を M̃→C̃→N(∆ᵒᵖ) から復元する比較は見つからなかった。,,not_found,
+4.2.2.26,partial,SerrePositivity.InfinityCategories.markedCocartesianFunctorPredicate_vertex @ SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean:28,仮定：底上の関手と始域の指定辺 W（Lean では γ が inert に送る全ての辺を明示する）。結論：対応頂点の述語を各 W の辺の像が余デカルトという条件と同定する（マークの保存条件の成分に一致）。混合辺の分解で三条件と同値になる operadic 判定は含まれない。,,found,component
+4.2.3.1,none,,相対極限の定義と通常の固定環の加群極限を確認した。代数が円錐に沿って動くとき、基礎の極限を使い LMod→Alg の相対極限を延長し検出する宣言は見つからなかった。,,not_found,
+4.2.3.2,none,,通常のスカラー制限と一般の Cartesian ファイブレーションの定義はある。可変の左加群から代数への射影が Cartesian で、基礎の同値によってその辺を判定する型は見つからなかった。,,not_found,
+4.2.3.4,none,,小余極限を保つ関手と presentable 準圏の比較を確認した。小極限と矢印準圏で閉じる任意の部分圏 A に対し、固定代数の加群準圏とその射の所属を検出する結果は見つからなかった。,,not_found,
+4.2.3.6,none,,一般の相対余極限と通常の固定環の余極限を確認した。固定代数の加群ファイバーの余極限が LMod→Alg に関する相対余極限でもあるとする型は見つからなかった。,,not_found,
+4.2.3.8,partial,ModuleCat.extendRestrictScalarsAdj @ Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean:880 | ModuleCat.restrictCoextendScalarsAdj @ Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean:658,仮定：通常の可換環準同型 A→B（Lean は HA の通常の可換環・加群の場合に限る）。結論：B-加群から A-加群へのスカラー制限には、スカラー拡大を左随伴、余拡大を右随伴として与える（通常圏の場合に一致）。一般の左作用を持つ ∞ 圏は含まれない。,,found,special
+4.2.4.3,partial,CategoryTheory.Functor.CorepresentableBy.uniqueUpToIso @ Mathlib/CategoryTheory/Yoneda.lean:351,仮定：同じ集合値関手の二つの余表現（Lean は HA の通常圏で、二つの自由加群の普遍性を既知とする）。結論：二つの余表現対象の標準同型を得る（通常の自由加群の標準比較の成分に一致）。一般の ∞ 圏で指定した生成射との整合性を持つ同値は含まれない。,,found,special
+4.2.4.4,none,,固定した可換環準同型についてのスカラー拡大と制限の随伴を確認した。代数 A 自体も変化する忘却 LMod→Alg×M 全体への自由左随伴は見つからなかった。,,not_found,
+4.2.4.7,partial,LinearMap.ringLmapEquivSelf @ Mathlib/Algebra/Module/Equiv/Basic.lean:356,仮定：通常の環 A の左加群 M（Lean は HA の通常圏の場合に限り、補助スカラーは自然数に取れる）。結論：A→M の A-線形写像を 1 での評価によって M の元に同定する（単位に沿った前合成の通常のアーベル群の場合に一致）。一般のモノイダル ∞ 圏の写像空間は含まれない。,,found,special
+4.2.4.9,partial,ModuleCat.restrictScalars_isEquivalence_of_ringEquiv @ Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean:305,仮定：通常の環同型 R≃A（Lean は HA の通常圏で単位の環写像が同型となる場合に限る）。結論：スカラー制限が圏同値になる（この場合の固定代数の加群の忘却に一致）。一般の左テンソル ∞ 圏は含まれない。,,found,special
+4.2.4.10,none,,通常のテンソル代数の自由性とスカラー拡大を確認した。生成射から定まる二つの自由加群射の余等化子が増大を通じた単位加群になる宣言は見つからなかった。,,not_found,
 4.5.4.1,partial,CategoryTheory.MonoidalCategory.Arrow.pushoutProduct @ Mathlib/CategoryTheory/Monoidal/PushoutProduct.lean:71 | CategoryTheory.MonoidalCategory.Arrow.PushoutProduct.symmetricCategory @ Mathlib/CategoryTheory/Monoidal/Arrow.lean:158,仮定：押し出しを持つモノイダル圏（Lean は二項構成に対称性も全余極限も要求しない。矢印圏の対称構造は始対象を持つ Cartesian 閉の場合）。結論：HA の二項押し出し積と、特殊な場合の矢印圏の対称構造に一致。Σₙ 同変反復と余不変量の写像 σⁿ は型に含まれない。,,found,component
 4.5.4.2,partial,SerrePositivity.Quillen.HasMonoidAxiom @ SerrePositivity/HomotopicalAlgebra/Monoidal/MonoidAxiom.lean:66 | SerrePositivity.Quillen.tensorCells_retracts_le_weakEquivalences @ SerrePositivity/HomotopicalAlgebra/Monoidal/MonoidAxiom.lean:85,仮定：モノイダル圏とモデル構造（Lean は組合せ性と対称性を要求しない）。結論：指定宇宙のテンソル生成セルとそのレトラクトの弱同値性（F1 のモノイド公理の範囲に一致）。F2 の組と Σₙ 射影モデルでの F3 は型に含まれない。,,found,component
 4.5.4.3,partial,SerrePositivity.Quillen.pushoutProduct_cofibration @ SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean:74,仮定：モデル圏のテンソルが Quillen 二関手で、f が余ファイブレーション（HA の仮定の下で f を両入力とする）。結論：f□f が底で余ファイブレーション（n=2 で作用を忘れた主張に一致）。全ての n、自明性および Σₙ 射影余ファイブレーション性はこの型に含まれない。,,found,special
