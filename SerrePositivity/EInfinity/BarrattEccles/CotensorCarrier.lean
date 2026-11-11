@@ -22,7 +22,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory Limits Opposite
-open SerrePositivity.DifferentialGraded
+open SerrePositivity.DifferentialGraded SerrePositivity.HomotopyFunctionComplex
 
 variable (A : Type u) [CommRing A]
 

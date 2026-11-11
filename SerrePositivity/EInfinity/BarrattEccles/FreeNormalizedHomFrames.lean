@@ -17,7 +17,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
-
+open SerrePositivity.HomotopyFunctionComplex
 
 variable (A : Type u) [CommRing A]
 
