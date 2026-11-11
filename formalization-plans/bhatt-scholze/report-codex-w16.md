@@ -414,3 +414,184 @@ main `32959effc`（coord の優先・鍵の履歴・ビルド中だけ保持す�
 `CellStageDifferentialWeights` と `EraseAttachmentGenerators` は未検証であり、コミットせず作業木に残す。
 生成元の微分・実際の境界の照合、`hstage` と無条件の `baseChange_forget` は引き続き未完了。
 停止点 3 には達していない。
+
+
+## 11. 停止点 3　E3（M13）の八欄と Tot 以外の E4
+
+`main` の `32959effc` を取り込んだ `math/bs-impl` で検証した。
+残っていた cofibrant 代数の台の K 平坦性と、無条件の `baseChange_forget` が閉じた。
+E3 の八欄と、先に検証した Tot 以外の E4 の七欄が本体の宣言で供給できる。
+界面の型、main の既存の公開宣言、共通の入口と段階 II の監査への登録は変更していない。
+
+### E3 の欄
+
+| 欄 | 本体の宣言（`SerrePositivity.EInfinity.BarrattEccles`） |
+| --- | --- |
+| `restrict` | `barrattEcclesRestrict` |
+| `baseChange` | `barrattEcclesBaseChange` |
+| `baseChange_adjunction` | `barrattEcclesBaseChange_adjunction` |
+| `restrict_forget` | `barrattEcclesRestrict_forget` |
+| `baseChange_forget` | `barrattEcclesBaseChange_forget`（今回） |
+| `restrict_id` | `barrattEcclesRestrict_id` |
+| `restrict_comp` | `barrattEcclesRestrict_comp` |
+| `discrete_restrict` | `barrattEcclesDiscrete_restrict` |
+
+`barrattEcclesBaseChange_forget` は任意の環準同型 `f : S →+* T` に対する
+`FunctorIso (barrattEcclesBaseChange f ≫ cAlgForgetDerived T)
+(cAlgForgetDerived S ≫ derivedInfinityBaseChange f)`。
+頂点ごとの比較を与えるだけでなく、元の界面と同じ全関手の自然同型を与える。
+K 平坦性を引数に要求しない。
+
+### 最後の証明
+
+1. `EraseAttachmentGenerators` は、微分消去後のセル付加の自由生成元を、元の実際の付加生成元へ照合する。disk の指定分裂の下の次数の成分を使う。
+2. `CellStageFreeGenerators` と `CellStageGeneratorCompatibility` は、元の球複体の余積から作った自由表示が各セルの指定生成元を保ち、その生成元の像が実際の付加生成元を後続段へ送ったものであることを示す。
+3. `cellStageGeneratorValue_d`（`CellStageGeneratorDifferential`） は、その微分が実際の付加の境界を元の段から送ったものであることを、複体射の可換性と段の指定射の合成で示す。
+4. 全体で選んだセルの重み、境界の有限な基底展開、後続段への包含の重み保存から、生成元の微分の上限を得る。語の評価の Leibniz 則で全基底語の微分へ広げる。
+5. 重みが次数を支配し、微分で重みが増えないことから、`weightedSemifreeBasis` の自然数の高さが微分で下がる。これで実際の各セル段の `cellStageCarrierKFlat`、すなわち従前の `hstage` を供給する。
+6. `cofibrantCarrierKFlat`（`CAlgExtensionForgetKFlat`） は既存の小対象分解と retract の帰着にこれを適用する。同じ cofibrant DK 入力の台の K 平坦性を、証明済みの局所化源の全関手比較へ渡し、`barrattEcclesBaseChange_forget` を得る。
+
+今回最後に追加する六本は `CellStageDifferentialWeights`、`EraseAttachmentGenerators`、
+`CellStageFreeGenerators`、`CellStageGeneratorCompatibility`、`CellStageGeneratorDifferential`、
+`CAlgExtensionForgetKFlat`。いずれも `EInfinity/BarrattEccles/Theory/` の下。
+
+### 検証
+
+- 対象ビルド：`lake build SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgExtensionForgetKFlat` 成功。最後のセル段・生成元・境界と係数拡大の比較を依存込みで検査した。
+- 再帰的な公理監査：新設 **116 モジュール・1,567 宣言**、標準三公理 `propext`・`Classical.choice`・`Quot.sound` のみ。各モジュールで監査対象の宣言が一つ以上あることも検査した。本体の `sorry`・追加公理は 0。
+- 一回の対象ビルド、一回の監査ごとに `with_build_lock.sh --wait 3600` で取得・返却した。編集・証明の検討・報告の間は保持せず、常駐セッションは使っていない。
+- `git diff --check` 成功。最終の六本に 100 字超の行はない。
+
+### 取り込みと次の範囲
+
+入口と段階 II 監査への登録は調整役に依頼する。既存の §9・§10 の一覧を合わせた、今回の取り込み対象のモジュール全体は下記の 116 本。
+［一般∞］の移動候補は前掲の `LocalizedAdjunctionWhiskering`・`LocalizedAdjunctionTriangles`・
+`LocalizedAdjunctionAssembly`・`LocalizedNerveNatTrans`・`OrdinaryHoComposition`。
+KL-W1 の改名は先取りしていない。
+
+Tot 以外の E4 の `ofCdga`・`ofCdga_forget`・`ofCdga_discrete`・`pi0`・`pi0_forget`・
+`pi0_discrete`・`pi0_restrict` は §9 の検証済みの宣言を使う。
+W16 の残りは §4 の順で、E2 の余積とテンソルの比較、sifted の保存、Tot の群。
+Tot の G10 待ちと、範囲外の G12・P⁰ は従前の扱いを保つ。
+全界面の実例の組み立ては段 4 の作業として残る。
+
+### 登録する全モジュール
+
+```text
+SerrePositivity.EInfinity.BarrattEccles.Theory.AlgebraCoefficientExtension
+SerrePositivity.EInfinity.BarrattEccles.Theory.AlgebraCoefficientRestriction
+SerrePositivity.EInfinity.BarrattEccles.Theory.AlgebraRestrictionCoherence
+SerrePositivity.EInfinity.BarrattEccles.Theory.AlgebraTransport
+SerrePositivity.EInfinity.BarrattEccles.Theory.ArityCoinvariantColimit
+SerrePositivity.EInfinity.BarrattEccles.Theory.ArityFreeRepresentation
+SerrePositivity.EInfinity.BarrattEccles.Theory.ArityKFlat
+SerrePositivity.EInfinity.BarrattEccles.Theory.AttachCoproductCells
+SerrePositivity.EInfinity.BarrattEccles.Theory.BasedWeightMaps
+SerrePositivity.EInfinity.BarrattEccles.Theory.BasisWeightSpan
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgAdjunctionComparison
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgCdga
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgCoefficientExtension
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgCoefficientRestriction
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgCoefficientSourceComparison
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgDerivedAdjunction
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgDiscreteRestriction
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgExtensionForget
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgExtensionForgetKFlat
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgExtensionSourceComparison
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgFullLocalizationSource
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgHoLocalization
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgPiZero
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgPiZeroDiscrete
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgPiZeroForget
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgPiZeroRestriction
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgRestrictionCoherence
+SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgRestrictionForget
+SerrePositivity.EInfinity.BarrattEccles.Theory.CarrierScalarExtensionKFlat
+SerrePositivity.EInfinity.BarrattEccles.Theory.CellStageActionWeights
+SerrePositivity.EInfinity.BarrattEccles.Theory.CellStageDifferentialWeights
+SerrePositivity.EInfinity.BarrattEccles.Theory.CellStageFreeGenerators
+SerrePositivity.EInfinity.BarrattEccles.Theory.CellStageFreeNaturality
+SerrePositivity.EInfinity.BarrattEccles.Theory.CellStageGeneratorCompatibility
+SerrePositivity.EInfinity.BarrattEccles.Theory.CellStageGeneratorDifferential
+SerrePositivity.EInfinity.BarrattEccles.Theory.CellStageGradedBasis
+SerrePositivity.EInfinity.BarrattEccles.Theory.CellStageInclusionWeights
+SerrePositivity.EInfinity.BarrattEccles.Theory.CellStageWeights
+SerrePositivity.EInfinity.BarrattEccles.Theory.CellStageWordEvaluation
+SerrePositivity.EInfinity.BarrattEccles.Theory.CellularCarrierKFlat
+SerrePositivity.EInfinity.BarrattEccles.Theory.CellularGenerators
+SerrePositivity.EInfinity.BarrattEccles.Theory.CellularWeights
+SerrePositivity.EInfinity.BarrattEccles.Theory.CoefficientAugmentation
+SerrePositivity.EInfinity.BarrattEccles.Theory.CoefficientBraiding
+SerrePositivity.EInfinity.BarrattEccles.Theory.CoefficientChains
+SerrePositivity.EInfinity.BarrattEccles.Theory.CoefficientExtension
+SerrePositivity.EInfinity.BarrattEccles.Theory.CoefficientExtensionOperad
+SerrePositivity.EInfinity.BarrattEccles.Theory.CoefficientMonoidAction
+SerrePositivity.EInfinity.BarrattEccles.Theory.CoefficientOperad
+SerrePositivity.EInfinity.BarrattEccles.Theory.CoefficientRestrictionCoherence
+SerrePositivity.EInfinity.BarrattEccles.Theory.DerivedExtensionNerve
+SerrePositivity.EInfinity.BarrattEccles.Theory.DerivedExtensionSource
+SerrePositivity.EInfinity.BarrattEccles.Theory.DerivedRestrictionSource
+SerrePositivity.EInfinity.BarrattEccles.Theory.DiscreteCoefficientCarrier
+SerrePositivity.EInfinity.BarrattEccles.Theory.DiscreteCoefficientOperations
+SerrePositivity.EInfinity.BarrattEccles.Theory.EraseAlgebraAdjunction
+SerrePositivity.EInfinity.BarrattEccles.Theory.EraseAlgebraWordAction
+SerrePositivity.EInfinity.BarrattEccles.Theory.EraseAttachmentGenerators
+SerrePositivity.EInfinity.BarrattEccles.Theory.EraseCellAttachment
+SerrePositivity.EInfinity.BarrattEccles.Theory.EraseDifferential
+SerrePositivity.EInfinity.BarrattEccles.Theory.EraseDifferentialAdjunction
+SerrePositivity.EInfinity.BarrattEccles.Theory.EraseDifferentialBraiding
+SerrePositivity.EInfinity.BarrattEccles.Theory.EraseDifferentialGraded
+SerrePositivity.EInfinity.BarrattEccles.Theory.EraseDifferentialMonoidal
+SerrePositivity.EInfinity.BarrattEccles.Theory.EraseDisk
+SerrePositivity.EInfinity.BarrattEccles.Theory.EraseFreeGenerators
+SerrePositivity.EInfinity.BarrattEccles.Theory.EraseOperad
+SerrePositivity.EInfinity.BarrattEccles.Theory.ErasePowerComparison
+SerrePositivity.EInfinity.BarrattEccles.Theory.EraseWordEvaluation
+SerrePositivity.EInfinity.BarrattEccles.Theory.ErasedCellularAlgebra
+SerrePositivity.EInfinity.BarrattEccles.Theory.ErasedIsoWeightTransfer
+SerrePositivity.EInfinity.BarrattEccles.Theory.FreeWordEvaluation
+SerrePositivity.EInfinity.BarrattEccles.Theory.HomologyAlgebraFunctor
+SerrePositivity.EInfinity.BarrattEccles.Theory.HomologyRestrictionClasses
+SerrePositivity.EInfinity.BarrattEccles.Theory.HomologyRestrictionOperations
+SerrePositivity.EInfinity.BarrattEccles.Theory.LaxTensorComparison
+SerrePositivity.EInfinity.BarrattEccles.Theory.LaxTensorPower
+SerrePositivity.EInfinity.BarrattEccles.Theory.LocalizedAdjunctionAssembly
+SerrePositivity.EInfinity.BarrattEccles.Theory.LocalizedAdjunctionTriangles
+SerrePositivity.EInfinity.BarrattEccles.Theory.LocalizedAdjunctionWhiskering
+SerrePositivity.EInfinity.BarrattEccles.Theory.LocalizedNerveNatTrans
+SerrePositivity.EInfinity.BarrattEccles.Theory.OperadMonoidalImage
+SerrePositivity.EInfinity.BarrattEccles.Theory.OperadTensorComparison
+SerrePositivity.EInfinity.BarrattEccles.Theory.OperadTransportAdjunction
+SerrePositivity.EInfinity.BarrattEccles.Theory.OperadWordEvaluation
+SerrePositivity.EInfinity.BarrattEccles.Theory.OrdinaryHoComposition
+SerrePositivity.EInfinity.BarrattEccles.Theory.PowerWordEvaluation
+SerrePositivity.EInfinity.BarrattEccles.Theory.PowerWordNaturality
+SerrePositivity.EInfinity.BarrattEccles.Theory.SchurActionWeights
+SerrePositivity.EInfinity.BarrattEccles.Theory.SchurBasisImages
+SerrePositivity.EInfinity.BarrattEccles.Theory.SchurDegreeBasis
+SerrePositivity.EInfinity.BarrattEccles.Theory.SchurDegreeDecomposition
+SerrePositivity.EInfinity.BarrattEccles.Theory.SchurDegreeInclusions
+SerrePositivity.EInfinity.BarrattEccles.Theory.SchurGeneratorWeights
+SerrePositivity.EInfinity.BarrattEccles.Theory.SchurMapWeights
+SerrePositivity.EInfinity.BarrattEccles.Theory.SchurOperationWeights
+SerrePositivity.EInfinity.BarrattEccles.Theory.SchurPowerWordLift
+SerrePositivity.EInfinity.BarrattEccles.Theory.SchurUnitWeights
+SerrePositivity.EInfinity.BarrattEccles.Theory.SchurWeightedBasis
+SerrePositivity.EInfinity.BarrattEccles.Theory.SchurWordBasis
+SerrePositivity.EInfinity.BarrattEccles.Theory.SchurWordNormalForm
+SerrePositivity.EInfinity.BarrattEccles.Theory.SphereCoproductBasis
+SerrePositivity.EInfinity.BarrattEccles.Theory.SphereCoproductInclusions
+SerrePositivity.EInfinity.BarrattEccles.Theory.TensorAdjunctionMate
+SerrePositivity.EInfinity.BarrattEccles.Theory.TensorDegreeRepresentation
+SerrePositivity.EInfinity.BarrattEccles.Theory.TensorFamilyWeights
+SerrePositivity.EInfinity.BarrattEccles.Theory.TensorPowerDegreeBasis
+SerrePositivity.EInfinity.BarrattEccles.Theory.TensorPowerWordWeights
+SerrePositivity.EInfinity.BarrattEccles.Theory.TensorWordSymmetry
+SerrePositivity.EInfinity.BarrattEccles.Theory.TensorWordWeights
+SerrePositivity.EInfinity.BarrattEccles.Theory.TransfiniteCoproductCells
+SerrePositivity.EInfinity.BarrattEccles.Theory.UnitWordWeights
+SerrePositivity.EInfinity.BarrattEccles.Theory.WeightBasisEquiv
+SerrePositivity.EInfinity.BarrattEccles.Theory.WeightedBasisKFlat
+SerrePositivity.EInfinity.BarrattEccles.Theory.WeightedPowerMap
+SerrePositivity.EInfinity.BarrattEccles.Theory.WeightedTensorFamily
+```
