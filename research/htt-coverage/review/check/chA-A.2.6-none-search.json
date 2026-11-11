@@ -1,0 +1,1274 @@
+{
+  "A.2.6.3": {
+    "page": 819,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.5",
+        "A.2.6",
+        "A.2.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          "SerrePositivity"
+        ],
+        "file_count": 1642,
+        "line_count": 31504
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 114,
+        "line_count": 1238
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Existence.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def smithGenerators (hIW : I.rlp ≤ W) : MorphismProperty C := have := locallyPresentable_hasColimits (C := C) have := hasSmallObjectArgument I generatingTrivialCofibrations I W hIW"
+          },
+          {
+            "line": 35,
+            "head": "instance smithGenerators_isSmall (hIW : I.rlp ≤ W) : (smithGenerators I W hIW).IsSmall.{w}"
+          },
+          {
+            "line": 41,
+            "head": "lemma smithGenerators_le (hIW : I.rlp ≤ W) : smithGenerators I W hIW ≤ I.rlp.llp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Recognition.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma rlp_inf_le_of_square_factor (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : J.rlp ⊓ W ≤ I.rlp"
+          },
+          {
+            "line": 45,
+            "head": "lemma rlp_eq_of_square_factor (hJ : J ≤ I.rlp.llp) (hIW : I.rlp ≤ W) (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : I.rlp = J.rlp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClassInverseImage.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "lemma exists_accessible_rightClass_inverseImage {C : Type u₁} [Category.{v₁} C] [IsLocallyPresentable.{w} C] {E : Type u₂} [Category.{v₂} E] [IsLocallyPresentable.{w} E] (I : MorphismProperty E) [I.IsSmall.{w}] (F : C ⥤ Arrow E) [F.IsAccessible.{w}] : ∃ (ν : Cardinal.{w}) (_ : Fact ν.IsRegular), IsCardinalAccessibleCategory ((arrowProperty I.rlp).inverseImage F).FullSubcategory ν ∧ (((arrowProperty I.rlp).inverseImage F).ι).IsCardinalAccessible ν"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/WeakEquivalencesAccessible.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma exists_accessible_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          },
+          {
+            "line": 64,
+            "head": "lemma exists_accessible_model_and_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), ∃ _d : AccessibleModelFactorizations C κ, IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClass.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma exists_accessible_right_lifting_class {C : Type u} [Category.{v} C] [IsLocallyPresentable.{w} C] (I : MorphismProperty C) [I.IsSmall.{w}] : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty I.rlp).FullSubcategory κ ∧ (arrowInclusion I.rlp).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleLiftingClosure.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma rlp_of_isColimit {F : J ⥤ Arrow C} {c : Cocone F} (hc : IsColimit c) (hF : ∀ j, I.rlp (F.obj j).hom) : I.rlp c.pt.hom"
+          },
+          {
+            "line": 52,
+            "head": "lemma closedUnderColimitsOfShape : (arrowProperty I.rlp).IsClosedUnderColimitsOfShape J where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/HA/Basic.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "class CofibrantlyGenerated (I J : MorphismProperty C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/SharplyLT/Basic.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "is obtained in the lemma `Cardinal.SharplyLT.tfae`. In particular, using (ii),"
+          },
+          {
+            "line": 53,
+            "head": "public structure SharplyLT : Prop where"
+          },
+          {
+            "line": 60,
+            "head": "public lemma le (h : SharplyLT κ₁ κ₂) : κ₁ ≤ κ₂ := h.lt.le"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Uniformization.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma Cardinal.SharplyLT.exists_retract_of_isCardinalPresentable {κ₁ κ₂ : Cardinal.{w}} [Fact κ₁.IsRegular] [Fact κ₂.IsRegular] (hκ : κ₁.SharplyLT κ₂) {C : Type*} [Category* C] [IsCardinalAccessibleCategory C κ₁] (X : C) [IsCardinalPresentable X κ₂] : ∃ (Y : C) (_ : Retract X Y) (J : Type w) (_ : PartialOrder J), IsCardinalFiltered J κ₁ ∧ HasCardinalLT J κ₂ ∧ Nonempty ((isCardinalPresentable C κ₁).ColimitOfShape J Y)"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib Cardinal.SharplyLT は小さい部分集合の cofinal family による accessible category の比較で、strict inequality κ<τ を含む。原典の全 τ0<τ,κ0<κ に対する τ0^κ0<τ は κ=τ の inaccessible の場合も許すため、名前の類似だけで同じ述語としない。"
+  },
+  "A.2.6.4": {
+    "page": 819,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.5",
+        "A.2.6",
+        "A.2.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          "SerrePositivity"
+        ],
+        "file_count": 1642,
+        "line_count": 31504
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 114,
+        "line_count": 1238
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Existence.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def smithGenerators (hIW : I.rlp ≤ W) : MorphismProperty C := have := locallyPresentable_hasColimits (C := C) have := hasSmallObjectArgument I generatingTrivialCofibrations I W hIW"
+          },
+          {
+            "line": 35,
+            "head": "instance smithGenerators_isSmall (hIW : I.rlp ≤ W) : (smithGenerators I W hIW).IsSmall.{w}"
+          },
+          {
+            "line": 41,
+            "head": "lemma smithGenerators_le (hIW : I.rlp ≤ W) : smithGenerators I W hIW ≤ I.rlp.llp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Recognition.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma rlp_inf_le_of_square_factor (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : J.rlp ⊓ W ≤ I.rlp"
+          },
+          {
+            "line": 45,
+            "head": "lemma rlp_eq_of_square_factor (hJ : J ≤ I.rlp.llp) (hIW : I.rlp ≤ W) (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : I.rlp = J.rlp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClassInverseImage.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "lemma exists_accessible_rightClass_inverseImage {C : Type u₁} [Category.{v₁} C] [IsLocallyPresentable.{w} C] {E : Type u₂} [Category.{v₂} E] [IsLocallyPresentable.{w} E] (I : MorphismProperty E) [I.IsSmall.{w}] (F : C ⥤ Arrow E) [F.IsAccessible.{w}] : ∃ (ν : Cardinal.{w}) (_ : Fact ν.IsRegular), IsCardinalAccessibleCategory ((arrowProperty I.rlp).inverseImage F).FullSubcategory ν ∧ (((arrowProperty I.rlp).inverseImage F).ι).IsCardinalAccessible ν"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/WeakEquivalencesAccessible.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma exists_accessible_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          },
+          {
+            "line": 64,
+            "head": "lemma exists_accessible_model_and_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), ∃ _d : AccessibleModelFactorizations C κ, IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClass.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma exists_accessible_right_lifting_class {C : Type u} [Category.{v} C] [IsLocallyPresentable.{w} C] (I : MorphismProperty C) [I.IsSmall.{w}] : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty I.rlp).FullSubcategory κ ∧ (arrowInclusion I.rlp).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleLiftingClosure.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma rlp_of_isColimit {F : J ⥤ Arrow C} {c : Cocone F} (hc : IsColimit c) (hF : ∀ j, I.rlp (F.obj j).hom) : I.rlp c.pt.hom"
+          },
+          {
+            "line": 52,
+            "head": "lemma closedUnderColimitsOfShape : (arrowProperty I.rlp).IsClosedUnderColimitsOfShape J where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/HA/Basic.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "class CofibrantlyGenerated (I J : MorphismProperty C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/SharplyLT/Basic.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "is obtained in the lemma `Cardinal.SharplyLT.tfae`. In particular, using (ii),"
+          },
+          {
+            "line": 53,
+            "head": "public structure SharplyLT : Prop where"
+          },
+          {
+            "line": 60,
+            "head": "public lemma le (h : SharplyLT κ₁ κ₂) : κ₁ ≤ κ₂ := h.lt.le"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Uniformization.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma Cardinal.SharplyLT.exists_retract_of_isCardinalPresentable {κ₁ κ₂ : Cardinal.{w}} [Fact κ₁.IsRegular] [Fact κ₂.IsRegular] (hκ : κ₁.SharplyLT κ₂) {C : Type*} [Category* C] [IsCardinalAccessibleCategory C κ₁] (X : C) [IsCardinalPresentable X κ₂] : ∃ (Y : C) (_ : Retract X Y) (J : Type w) (_ : PartialOrder J), IsCardinalFiltered J κ₁ ∧ HasCardinalLT J κ₂ ∧ Nonempty ((isCardinalPresentable C κ₁).ColimitOfShape J Y)"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib SharplyLT の API は strict κ<τ を要求するので、原典の κ≪κ iff inaccessible という自己比較を表せない。IsStrongLimit の指数 bound は候補だが、原典の ≪ の特定の定義と正則性を組み合わせる同じ iff の宣言はない。"
+  },
+  "A.2.6.5": {
+    "page": 819,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.5",
+        "A.2.6",
+        "A.2.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          "SerrePositivity"
+        ],
+        "file_count": 1642,
+        "line_count": 31504
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 114,
+        "line_count": 1238
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Existence.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def smithGenerators (hIW : I.rlp ≤ W) : MorphismProperty C := have := locallyPresentable_hasColimits (C := C) have := hasSmallObjectArgument I generatingTrivialCofibrations I W hIW"
+          },
+          {
+            "line": 35,
+            "head": "instance smithGenerators_isSmall (hIW : I.rlp ≤ W) : (smithGenerators I W hIW).IsSmall.{w}"
+          },
+          {
+            "line": 41,
+            "head": "lemma smithGenerators_le (hIW : I.rlp ≤ W) : smithGenerators I W hIW ≤ I.rlp.llp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Recognition.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma rlp_inf_le_of_square_factor (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : J.rlp ⊓ W ≤ I.rlp"
+          },
+          {
+            "line": 45,
+            "head": "lemma rlp_eq_of_square_factor (hJ : J ≤ I.rlp.llp) (hIW : I.rlp ≤ W) (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : I.rlp = J.rlp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClassInverseImage.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "lemma exists_accessible_rightClass_inverseImage {C : Type u₁} [Category.{v₁} C] [IsLocallyPresentable.{w} C] {E : Type u₂} [Category.{v₂} E] [IsLocallyPresentable.{w} E] (I : MorphismProperty E) [I.IsSmall.{w}] (F : C ⥤ Arrow E) [F.IsAccessible.{w}] : ∃ (ν : Cardinal.{w}) (_ : Fact ν.IsRegular), IsCardinalAccessibleCategory ((arrowProperty I.rlp).inverseImage F).FullSubcategory ν ∧ (((arrowProperty I.rlp).inverseImage F).ι).IsCardinalAccessible ν"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/WeakEquivalencesAccessible.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma exists_accessible_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          },
+          {
+            "line": 64,
+            "head": "lemma exists_accessible_model_and_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), ∃ _d : AccessibleModelFactorizations C κ, IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClass.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma exists_accessible_right_lifting_class {C : Type u} [Category.{v} C] [IsLocallyPresentable.{w} C] (I : MorphismProperty C) [I.IsSmall.{w}] : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty I.rlp).FullSubcategory κ ∧ (arrowInclusion I.rlp).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleLiftingClosure.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma rlp_of_isColimit {F : J ⥤ Arrow C} {c : Cocone F} (hc : IsColimit c) (hF : ∀ j, I.rlp (F.obj j).hom) : I.rlp c.pt.hom"
+          },
+          {
+            "line": 52,
+            "head": "lemma closedUnderColimitsOfShape : (arrowProperty I.rlp).IsClosedUnderColimitsOfShape J where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/HA/Basic.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "class CofibrantlyGenerated (I J : MorphismProperty C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/SharplyLT/Basic.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "is obtained in the lemma `Cardinal.SharplyLT.tfae`. In particular, using (ii),"
+          },
+          {
+            "line": 53,
+            "head": "public structure SharplyLT : Prop where"
+          },
+          {
+            "line": 60,
+            "head": "public lemma le (h : SharplyLT κ₁ κ₂) : κ₁ ≤ κ₂ := h.lt.le"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Uniformization.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma Cardinal.SharplyLT.exists_retract_of_isCardinalPresentable {κ₁ κ₂ : Cardinal.{w}} [Fact κ₁.IsRegular] [Fact κ₂.IsRegular] (hκ : κ₁.SharplyLT κ₂) {C : Type*} [Category* C] [IsCardinalAccessibleCategory C κ₁] (X : C) [IsCardinalPresentable X κ₂] : ∃ (Y : C) (_ : Retract X Y) (J : Type w) (_ : PartialOrder J), IsCardinalFiltered J κ₁ ∧ HasCardinalLT J κ₂ ∧ Nonempty ((isCardinalPresentable C κ₁).ColimitOfShape J Y)"
+          }
+        ]
+      }
+    ],
+    "decision": "native LocalPresentableCover と Mathlib uniformization はあるが、原典の固定した τ-filtered poset A の全 τ-small C⊆A に対する τ-small κ-filtered B の存在と C0 の生成条件を結ぶ iff はない。別の chosen presentation を作る cover は同じ A 内の B と比較されない。"
+  },
+  "A.2.6.6": {
+    "page": 819,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.5",
+        "A.2.6",
+        "A.2.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          "SerrePositivity"
+        ],
+        "file_count": 1642,
+        "line_count": 31504
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 114,
+        "line_count": 1238
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Existence.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def smithGenerators (hIW : I.rlp ≤ W) : MorphismProperty C := have := locallyPresentable_hasColimits (C := C) have := hasSmallObjectArgument I generatingTrivialCofibrations I W hIW"
+          },
+          {
+            "line": 35,
+            "head": "instance smithGenerators_isSmall (hIW : I.rlp ≤ W) : (smithGenerators I W hIW).IsSmall.{w}"
+          },
+          {
+            "line": 41,
+            "head": "lemma smithGenerators_le (hIW : I.rlp ≤ W) : smithGenerators I W hIW ≤ I.rlp.llp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Recognition.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma rlp_inf_le_of_square_factor (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : J.rlp ⊓ W ≤ I.rlp"
+          },
+          {
+            "line": 45,
+            "head": "lemma rlp_eq_of_square_factor (hJ : J ≤ I.rlp.llp) (hIW : I.rlp ≤ W) (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : I.rlp = J.rlp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClassInverseImage.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "lemma exists_accessible_rightClass_inverseImage {C : Type u₁} [Category.{v₁} C] [IsLocallyPresentable.{w} C] {E : Type u₂} [Category.{v₂} E] [IsLocallyPresentable.{w} E] (I : MorphismProperty E) [I.IsSmall.{w}] (F : C ⥤ Arrow E) [F.IsAccessible.{w}] : ∃ (ν : Cardinal.{w}) (_ : Fact ν.IsRegular), IsCardinalAccessibleCategory ((arrowProperty I.rlp).inverseImage F).FullSubcategory ν ∧ (((arrowProperty I.rlp).inverseImage F).ι).IsCardinalAccessible ν"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/WeakEquivalencesAccessible.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma exists_accessible_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          },
+          {
+            "line": 64,
+            "head": "lemma exists_accessible_model_and_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), ∃ _d : AccessibleModelFactorizations C κ, IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClass.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma exists_accessible_right_lifting_class {C : Type u} [Category.{v} C] [IsLocallyPresentable.{w} C] (I : MorphismProperty C) [I.IsSmall.{w}] : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty I.rlp).FullSubcategory κ ∧ (arrowInclusion I.rlp).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleLiftingClosure.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma rlp_of_isColimit {F : J ⥤ Arrow C} {c : Cocone F} (hc : IsColimit c) (hF : ∀ j, I.rlp (F.obj j).hom) : I.rlp c.pt.hom"
+          },
+          {
+            "line": 52,
+            "head": "lemma closedUnderColimitsOfShape : (arrowProperty I.rlp).IsClosedUnderColimitsOfShape J where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/HA/Basic.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "class CofibrantlyGenerated (I J : MorphismProperty C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/SharplyLT/Basic.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "is obtained in the lemma `Cardinal.SharplyLT.tfae`. In particular, using (ii),"
+          },
+          {
+            "line": 53,
+            "head": "public structure SharplyLT : Prop where"
+          },
+          {
+            "line": 60,
+            "head": "public lemma le (h : SharplyLT κ₁ κ₂) : κ₁ ≤ κ₂ := h.lt.le"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Uniformization.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma Cardinal.SharplyLT.exists_retract_of_isCardinalPresentable {κ₁ κ₂ : Cardinal.{w}} [Fact κ₁.IsRegular] [Fact κ₂.IsRegular] (hκ : κ₁.SharplyLT κ₂) {C : Type*} [Category* C] [IsCardinalAccessibleCategory C κ₁] (X : C) [IsCardinalPresentable X κ₂] : ∃ (Y : C) (_ : Retract X Y) (J : Type w) (_ : PartialOrder J), IsCardinalFiltered J κ₁ ∧ HasCardinalLT J κ₂ ∧ Nonempty ((isCardinalPresentable C κ₁).ColimitOfShape J Y)"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib uniformization と presentable factorization はあるが、元の二つの posets A,B と指定 subsets A0,B0 を保つ小さい κ-filtered A′,B′ の colimit 同型を同時に作る型はない。common accessibility cardinal を選ぶ結果はこの二つの partial diagram の比較の部品に留まる。"
+  },
+  "A.2.6.12": {
+    "page": 825,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.5",
+        "A.2.6",
+        "A.2.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          "SerrePositivity"
+        ],
+        "file_count": 1642,
+        "line_count": 31504
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 114,
+        "line_count": 1238
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Existence.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def smithGenerators (hIW : I.rlp ≤ W) : MorphismProperty C := have := locallyPresentable_hasColimits (C := C) have := hasSmallObjectArgument I generatingTrivialCofibrations I W hIW"
+          },
+          {
+            "line": 35,
+            "head": "instance smithGenerators_isSmall (hIW : I.rlp ≤ W) : (smithGenerators I W hIW).IsSmall.{w}"
+          },
+          {
+            "line": 41,
+            "head": "lemma smithGenerators_le (hIW : I.rlp ≤ W) : smithGenerators I W hIW ≤ I.rlp.llp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Recognition.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma rlp_inf_le_of_square_factor (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : J.rlp ⊓ W ≤ I.rlp"
+          },
+          {
+            "line": 45,
+            "head": "lemma rlp_eq_of_square_factor (hJ : J ≤ I.rlp.llp) (hIW : I.rlp ≤ W) (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : I.rlp = J.rlp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClassInverseImage.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "lemma exists_accessible_rightClass_inverseImage {C : Type u₁} [Category.{v₁} C] [IsLocallyPresentable.{w} C] {E : Type u₂} [Category.{v₂} E] [IsLocallyPresentable.{w} E] (I : MorphismProperty E) [I.IsSmall.{w}] (F : C ⥤ Arrow E) [F.IsAccessible.{w}] : ∃ (ν : Cardinal.{w}) (_ : Fact ν.IsRegular), IsCardinalAccessibleCategory ((arrowProperty I.rlp).inverseImage F).FullSubcategory ν ∧ (((arrowProperty I.rlp).inverseImage F).ι).IsCardinalAccessible ν"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/WeakEquivalencesAccessible.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma exists_accessible_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          },
+          {
+            "line": 64,
+            "head": "lemma exists_accessible_model_and_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), ∃ _d : AccessibleModelFactorizations C κ, IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClass.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma exists_accessible_right_lifting_class {C : Type u} [Category.{v} C] [IsLocallyPresentable.{w} C] (I : MorphismProperty C) [I.IsSmall.{w}] : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty I.rlp).FullSubcategory κ ∧ (arrowInclusion I.rlp).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleLiftingClosure.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma rlp_of_isColimit {F : J ⥤ Arrow C} {c : Cocone F} (hc : IsColimit c) (hF : ∀ j, I.rlp (F.obj j).hom) : I.rlp c.pt.hom"
+          },
+          {
+            "line": 52,
+            "head": "lemma closedUnderColimitsOfShape : (arrowProperty I.rlp).IsClosedUnderColimitsOfShape J where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/HA/Basic.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "class CofibrantlyGenerated (I J : MorphismProperty C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/SharplyLT/Basic.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "is obtained in the lemma `Cardinal.SharplyLT.tfae`. In particular, using (ii),"
+          },
+          {
+            "line": 53,
+            "head": "public structure SharplyLT : Prop where"
+          },
+          {
+            "line": 60,
+            "head": "public lemma le (h : SharplyLT κ₁ κ₂) : κ₁ ≤ κ₂ := h.lt.le"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Uniformization.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma Cardinal.SharplyLT.exists_retract_of_isCardinalPresentable {κ₁ κ₂ : Cardinal.{w}} [Fact κ₁.IsRegular] [Fact κ₂.IsRegular] (hκ : κ₁.SharplyLT κ₂) {C : Type*} [Category* C] [IsCardinalAccessibleCategory C κ₁] (X : C) [IsCardinalPresentable X κ₂] : ∃ (Y : C) (_ : Retract X Y) (J : Type w) (_ : PartialOrder J), IsCardinalFiltered J κ₁ ∧ HasCardinalLT J κ₂ ∧ Nonempty ((isCardinalPresentable C κ₁).ColimitOfShape J Y)"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の二対三、isomorphism closure、filtered colimit closure、accessible full subcategory の別々の型はあるが、原典の全 filtered posets の閉性と small filtered generating family を持つ perfect class の同じ定義はない。ある大きい κ での accessibility だけでは条件 (3) の全 filtered colimit を満たさない。"
+  },
+  "A.2.6.13": {
+    "page": 825,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.5",
+        "A.2.6",
+        "A.2.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          "SerrePositivity"
+        ],
+        "file_count": 1642,
+        "line_count": 31504
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 114,
+        "line_count": 1238
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Existence.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def smithGenerators (hIW : I.rlp ≤ W) : MorphismProperty C := have := locallyPresentable_hasColimits (C := C) have := hasSmallObjectArgument I generatingTrivialCofibrations I W hIW"
+          },
+          {
+            "line": 35,
+            "head": "instance smithGenerators_isSmall (hIW : I.rlp ≤ W) : (smithGenerators I W hIW).IsSmall.{w}"
+          },
+          {
+            "line": 41,
+            "head": "lemma smithGenerators_le (hIW : I.rlp ≤ W) : smithGenerators I W hIW ≤ I.rlp.llp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Recognition.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma rlp_inf_le_of_square_factor (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : J.rlp ⊓ W ≤ I.rlp"
+          },
+          {
+            "line": 45,
+            "head": "lemma rlp_eq_of_square_factor (hJ : J ≤ I.rlp.llp) (hIW : I.rlp ≤ W) (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : I.rlp = J.rlp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClassInverseImage.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "lemma exists_accessible_rightClass_inverseImage {C : Type u₁} [Category.{v₁} C] [IsLocallyPresentable.{w} C] {E : Type u₂} [Category.{v₂} E] [IsLocallyPresentable.{w} E] (I : MorphismProperty E) [I.IsSmall.{w}] (F : C ⥤ Arrow E) [F.IsAccessible.{w}] : ∃ (ν : Cardinal.{w}) (_ : Fact ν.IsRegular), IsCardinalAccessibleCategory ((arrowProperty I.rlp).inverseImage F).FullSubcategory ν ∧ (((arrowProperty I.rlp).inverseImage F).ι).IsCardinalAccessible ν"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/WeakEquivalencesAccessible.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma exists_accessible_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          },
+          {
+            "line": 64,
+            "head": "lemma exists_accessible_model_and_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), ∃ _d : AccessibleModelFactorizations C κ, IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClass.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma exists_accessible_right_lifting_class {C : Type u} [Category.{v} C] [IsLocallyPresentable.{w} C] (I : MorphismProperty C) [I.IsSmall.{w}] : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty I.rlp).FullSubcategory κ ∧ (arrowInclusion I.rlp).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleLiftingClosure.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma rlp_of_isColimit {F : J ⥤ Arrow C} {c : Cocone F} (hc : IsColimit c) (hF : ∀ j, I.rlp (F.obj j).hom) : I.rlp c.pt.hom"
+          },
+          {
+            "line": 52,
+            "head": "lemma closedUnderColimitsOfShape : (arrowProperty I.rlp).IsClosedUnderColimitsOfShape J where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/HA/Basic.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "class CofibrantlyGenerated (I J : MorphismProperty C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/SharplyLT/Basic.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "is obtained in the lemma `Cardinal.SharplyLT.tfae`. In particular, using (ii),"
+          },
+          {
+            "line": 53,
+            "head": "public structure SharplyLT : Prop where"
+          },
+          {
+            "line": 60,
+            "head": "public lemma le (h : SharplyLT κ₁ κ₂) : κ₁ ≤ κ₂ := h.lt.le"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Uniformization.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma Cardinal.SharplyLT.exists_retract_of_isCardinalPresentable {κ₁ κ₂ : Cardinal.{w}} [Fact κ₁.IsRegular] [Fact κ₂.IsRegular] (hκ : κ₁.SharplyLT κ₂) {C : Type*} [Category* C] [IsCardinalAccessibleCategory C κ₁] (X : C) [IsCardinalPresentable X κ₂] : ∃ (Y : C) (_ : Retract X Y) (J : Type w) (_ : PartialOrder J), IsCardinalFiltered J κ₁ ∧ HasCardinalLT J κ₂ ∧ Nonempty ((isCardinalPresentable C κ₁).ColimitOfShape J Y)"
+          }
+        ]
+      }
+    ],
+    "decision": "同型は二対三と colimit の保存について閉じるが、原典の任意の presentable C における arrow subcategory の small filtered generating family を同時に供給する同じ perfectness theorem はない。通常の IsIso の colimit 安定性だけはその生成条件の存在に届かない。"
+  },
+  "A.2.6.14": {
+    "page": 825,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.5",
+        "A.2.6",
+        "A.2.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          "SerrePositivity"
+        ],
+        "file_count": 1642,
+        "line_count": 31504
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 114,
+        "line_count": 1238
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Existence.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def smithGenerators (hIW : I.rlp ≤ W) : MorphismProperty C := have := locallyPresentable_hasColimits (C := C) have := hasSmallObjectArgument I generatingTrivialCofibrations I W hIW"
+          },
+          {
+            "line": 35,
+            "head": "instance smithGenerators_isSmall (hIW : I.rlp ≤ W) : (smithGenerators I W hIW).IsSmall.{w}"
+          },
+          {
+            "line": 41,
+            "head": "lemma smithGenerators_le (hIW : I.rlp ≤ W) : smithGenerators I W hIW ≤ I.rlp.llp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Recognition.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma rlp_inf_le_of_square_factor (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : J.rlp ⊓ W ≤ I.rlp"
+          },
+          {
+            "line": 45,
+            "head": "lemma rlp_eq_of_square_factor (hJ : J ≤ I.rlp.llp) (hIW : I.rlp ≤ W) (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : I.rlp = J.rlp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClassInverseImage.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "lemma exists_accessible_rightClass_inverseImage {C : Type u₁} [Category.{v₁} C] [IsLocallyPresentable.{w} C] {E : Type u₂} [Category.{v₂} E] [IsLocallyPresentable.{w} E] (I : MorphismProperty E) [I.IsSmall.{w}] (F : C ⥤ Arrow E) [F.IsAccessible.{w}] : ∃ (ν : Cardinal.{w}) (_ : Fact ν.IsRegular), IsCardinalAccessibleCategory ((arrowProperty I.rlp).inverseImage F).FullSubcategory ν ∧ (((arrowProperty I.rlp).inverseImage F).ι).IsCardinalAccessible ν"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/WeakEquivalencesAccessible.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma exists_accessible_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          },
+          {
+            "line": 64,
+            "head": "lemma exists_accessible_model_and_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), ∃ _d : AccessibleModelFactorizations C κ, IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClass.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma exists_accessible_right_lifting_class {C : Type u} [Category.{v} C] [IsLocallyPresentable.{w} C] (I : MorphismProperty C) [I.IsSmall.{w}] : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty I.rlp).FullSubcategory κ ∧ (arrowInclusion I.rlp).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleLiftingClosure.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma rlp_of_isColimit {F : J ⥤ Arrow C} {c : Cocone F} (hc : IsColimit c) (hF : ∀ j, I.rlp (F.obj j).hom) : I.rlp c.pt.hom"
+          },
+          {
+            "line": 52,
+            "head": "lemma closedUnderColimitsOfShape : (arrowProperty I.rlp).IsClosedUnderColimitsOfShape J where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/HA/Basic.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "class CofibrantlyGenerated (I J : MorphismProperty C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/SharplyLT/Basic.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "is obtained in the lemma `Cardinal.SharplyLT.tfae`. In particular, using (ii),"
+          },
+          {
+            "line": 53,
+            "head": "public structure SharplyLT : Prop where"
+          },
+          {
+            "line": 60,
+            "head": "public lemma le (h : SharplyLT κ₁ κ₂) : κ₁ ≤ κ₂ := h.lt.le"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Uniformization.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma Cardinal.SharplyLT.exists_retract_of_isCardinalPresentable {κ₁ κ₂ : Cardinal.{w}} [Fact κ₁.IsRegular] [Fact κ₂.IsRegular] (hκ : κ₁.SharplyLT κ₂) {C : Type*} [Category* C] [IsCardinalAccessibleCategory C κ₁] (X : C) [IsCardinalPresentable X κ₂] : ∃ (Y : C) (_ : Retract X Y) (J : Type w) (_ : PartialOrder J), IsCardinalFiltered J κ₁ ∧ HasCardinalLT J κ₂ ∧ Nonempty ((isCardinalPresentable C κ₁).ColimitOfShape J Y)"
+          }
+        ]
+      }
+    ],
+    "decision": "native accessible right-class inverse image は right lifting class への特殊化で、得られる accessibility cardinal ν は一般に拡大される。原典の全 filtered colimits の閉性と小さい filtered generating family を保つ perfect class の inverse-image の型ではない。"
+  },
+  "A.2.6.16": {
+    "page": 827,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.5",
+        "A.2.6",
+        "A.2.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          "SerrePositivity"
+        ],
+        "file_count": 1642,
+        "line_count": 31504
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Smith|IsCardinalAccessibleCategory|SharplyLT|[Pp]erfect|smithGenerators|exists_accessible|CofibrantlyGenerated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 114,
+        "line_count": 1238
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Existence.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def smithGenerators (hIW : I.rlp ≤ W) : MorphismProperty C := have := locallyPresentable_hasColimits (C := C) have := hasSmallObjectArgument I generatingTrivialCofibrations I W hIW"
+          },
+          {
+            "line": 35,
+            "head": "instance smithGenerators_isSmall (hIW : I.rlp ≤ W) : (smithGenerators I W hIW).IsSmall.{w}"
+          },
+          {
+            "line": 41,
+            "head": "lemma smithGenerators_le (hIW : I.rlp ≤ W) : smithGenerators I W hIW ≤ I.rlp.llp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/Recognition.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma rlp_inf_le_of_square_factor (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : J.rlp ⊓ W ≤ I.rlp"
+          },
+          {
+            "line": 45,
+            "head": "lemma rlp_eq_of_square_factor (hJ : J ≤ I.rlp.llp) (hIW : I.rlp ≤ W) (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f, ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) : I.rlp = J.rlp ⊓ W"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClassInverseImage.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "lemma exists_accessible_rightClass_inverseImage {C : Type u₁} [Category.{v₁} C] [IsLocallyPresentable.{w} C] {E : Type u₂} [Category.{v₂} E] [IsLocallyPresentable.{w} E] (I : MorphismProperty E) [I.IsSmall.{w}] (F : C ⥤ Arrow E) [F.IsAccessible.{w}] : ∃ (ν : Cardinal.{w}) (_ : Fact ν.IsRegular), IsCardinalAccessibleCategory ((arrowProperty I.rlp).inverseImage F).FullSubcategory ν ∧ (((arrowProperty I.rlp).inverseImage F).ι).IsCardinalAccessible ν"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/WeakEquivalencesAccessible.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma exists_accessible_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          },
+          {
+            "line": 64,
+            "head": "lemma exists_accessible_model_and_weakEquivalences : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), ∃ _d : AccessibleModelFactorizations C κ, IsCardinalAccessibleCategory (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧ (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleRightClass.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma exists_accessible_right_lifting_class {C : Type u} [Category.{v} C] [IsLocallyPresentable.{w} C] (I : MorphismProperty C) [I.IsSmall.{w}] : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular), IsCardinalAccessibleCategory (arrowProperty I.rlp).FullSubcategory κ ∧ (arrowInclusion I.rlp).IsCardinalAccessible κ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleLiftingClosure.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma rlp_of_isColimit {F : J ⥤ Arrow C} {c : Cocone F} (hc : IsColimit c) (hF : ∀ j, I.rlp (F.obj j).hom) : I.rlp c.pt.hom"
+          },
+          {
+            "line": 52,
+            "head": "lemma closedUnderColimitsOfShape : (arrowProperty I.rlp).IsClosedUnderColimitsOfShape J where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/HA/Basic.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "class CofibrantlyGenerated (I J : MorphismProperty C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/SharplyLT/Basic.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "is obtained in the lemma `Cardinal.SharplyLT.tfae`. In particular, using (ii),"
+          },
+          {
+            "line": 53,
+            "head": "public structure SharplyLT : Prop where"
+          },
+          {
+            "line": 60,
+            "head": "public lemma le (h : SharplyLT κ₁ κ₂) : κ₁ ≤ κ₂ := h.lt.le"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/Uniformization.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma Cardinal.SharplyLT.exists_retract_of_isCardinalPresentable {κ₁ κ₂ : Cardinal.{w}} [Fact κ₁.IsRegular] [Fact κ₂.IsRegular] (hκ : κ₁.SharplyLT κ₂) {C : Type*} [Category* C] [IsCardinalAccessibleCategory C κ₁] (X : C) [IsCardinalPresentable X κ₂] : ∃ (Y : C) (_ : Retract X Y) (J : Type w) (_ : PartialOrder J), IsCardinalFiltered J κ₁ ∧ HasCardinalLT J κ₂ ∧ Nonempty ((isCardinalPresentable C κ₁).ColimitOfShape J Y)"
+          }
+        ]
+      }
+    ],
+    "decision": "native Smith recognition と大きい κ での W の filtered-colimit closure はあるが、原典の全 filtered colimits の安定性と perfect class による 15 の construction への iff はない。任意に大きい accessibility cardinal を一つ選べることを可算 filtered colimits の保存と混同しない。"
+  }
+}

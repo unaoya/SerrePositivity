@@ -1,0 +1,58 @@
+{
+  "base": "9efb8a9998726502c57852514c8f1ce62cea880d",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "items": {
+    "7.1.1.3": {
+      "page": 691,
+      "declarations": [
+        "perfectlyNormalSpace_iff_forall_isClosed_preimage_zero"
+      ]
+    },
+    "7.1.5.9": {
+      "page": 710,
+      "declarations": [
+        "ContinuousMap.curry",
+        "ContinuousMap.uncurry"
+      ]
+    }
+  },
+  "declarations": {
+    "ContinuousMap.curry": {
+      "declaration": "ContinuousMap.curry",
+      "source": "Mathlib/Topology/CompactOpen.lean",
+      "type": "@ContinuousMap.curry.{u_1, u_2,\n    u_3} : {X : Type u_1} →\n  {Y : Type u_2} →\n    {Z : Type u_3} →\n      [inst : TopologicalSpace.{u_1} X] →\n        [inst_1 : TopologicalSpace.{u_2} Y] →\n          [inst_2 : TopologicalSpace.{u_3} Z] →\n            @ContinuousMap.{max u_2 u_1, u_3} (Prod.{u_1, u_2} X Y) Z\n                (@instTopologicalSpaceProd.{u_1, u_2} X Y inst inst_1) inst_2 →\n              @ContinuousMap.{u_1, max u_3 u_2} X (@ContinuousMap.{u_2, u_3} Y Z inst_1 inst_2) inst\n                (@ContinuousMap.compactOpen.{u_2, u_3} Y Z inst_1 inst_2)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "ContinuousMap.uncurry": {
+      "declaration": "ContinuousMap.uncurry",
+      "source": "Mathlib/Topology/CompactOpen.lean",
+      "type": "@ContinuousMap.uncurry.{u_1, u_2,\n    u_3} : {X : Type u_1} →\n  {Y : Type u_2} →\n    {Z : Type u_3} →\n      [inst : TopologicalSpace.{u_1} X] →\n        [inst_1 : TopologicalSpace.{u_2} Y] →\n          [inst_2 : TopologicalSpace.{u_3} Z] →\n            [@LocallyCompactSpace.{u_2} Y inst_1] →\n              @ContinuousMap.{u_1, max u_3 u_2} X (@ContinuousMap.{u_2, u_3} Y Z inst_1 inst_2) inst\n                  (@ContinuousMap.compactOpen.{u_2, u_3} Y Z inst_1 inst_2) →\n                @ContinuousMap.{max u_2 u_1, u_3} (Prod.{u_1, u_2} X Y) Z\n                  (@instTopologicalSpaceProd.{u_1, u_2} X Y inst inst_1) inst_2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "perfectlyNormalSpace_iff_forall_isClosed_preimage_zero": {
+      "declaration": "perfectlyNormalSpace_iff_forall_isClosed_preimage_zero",
+      "source": "Mathlib/Topology/Separation/PerfectlyNormal.lean",
+      "type": "@perfectlyNormalSpace_iff_forall_isClosed_preimage_zero.{u_1} : ∀ {X : Type u_1} [inst : TopologicalSpace.{u_1} X],\n  Iff (@PerfectlyNormalSpace.{u_1} X inst)\n    (∀ (s : Set.{u_1} X),\n      @IsClosed.{u_1} X inst s →\n        ∃ f,\n          And\n            (@Eq.{u_1 + 1} (Set.{u_1} X) s\n              (@Set.preimage.{u_1, 0} X Real\n                (@DFunLike.coe.{u_1 + 1, u_1 + 1, 1}\n                  (@ContinuousMap.{u_1, 0} X Real inst\n                    (@UniformSpace.toTopologicalSpace.{0} Real\n                      (@PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)))\n                  X (fun x => Real)\n                  (@ContinuousMap.instFunLike.{u_1, 0} X Real inst\n                    (@UniformSpace.toTopologicalSpace.{0} Real\n                      (@PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)))\n                  f)\n                (@singleton.{0, 0} Real (Set.{0} Real) (@Set.instSingletonSet.{0} Real)\n                  (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)))))\n            (∀ (x : X),\n              @Membership.mem.{0, 0} Real (Set.{0} Real) (@Set.instMembership.{0} Real)\n                (@Set.Icc.{0} Real Real.instPreorder\n                  (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))\n                  (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne)))\n                (@DFunLike.coe.{u_1 + 1, u_1 + 1, 1}\n                  (@ContinuousMap.{u_1, 0} X Real inst\n                    (@UniformSpace.toTopologicalSpace.{0} Real\n                      (@PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)))\n                  X (fun x => Real)\n                  (@ContinuousMap.instFunLike.{u_1, 0} X Real inst\n                    (@UniformSpace.toTopologicalSpace.{0} Real\n                      (@PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)))\n                  f x)))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    }
+  }
+}

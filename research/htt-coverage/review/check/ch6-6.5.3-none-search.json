@@ -1,0 +1,1778 @@
+{
+  "6.5.3.2": {
+    "page": 675,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.2",
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 119,
+        "line_count": 214
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 1147
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 291,
+            "head": "protected abbrev Truncated.cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject.Truncated C n ⥤ SimplicialObject C := ran (SimplexCategory.Truncated.inclusion n).op"
+          },
+          {
+            "line": 302,
+            "head": "abbrev cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject C ⥤ SimplicialObject C := truncation n ⋙ Truncated.cosk n"
+          },
+          {
+            "line": 324,
+            "head": "noncomputable def coskAdj : truncation (C := C) n ⊣ Truncated.cosk n := ranAdjunction _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "noncomputable def IsCoskeletal.isUniversalOfIsRightKanExtension [X.IsCoskeletal n] : (rightExtensionInclusion X n).IsUniversal"
+          },
+          {
+            "line": 74,
+            "head": "theorem isCoskeletal_iff_isIso : X.IsCoskeletal n ↔ IsIso ((coskAdj n).unit.app X)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "structure SemiSimplexCategory : Type where"
+          },
+          {
+            "line": 45,
+            "head": "def Hom (n m : SemiSimplexCategory) := Fin (n.len + 1) ↪o Fin (m.len + 1)"
+          },
+          {
+            "line": 47,
+            "head": "instance smallCategory : SmallCategory.{0} SemiSimplexCategory where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 66,
+            "head": "lemma exists_oneHypercover [H.IsGenerating] {X : C} (S : Sieve X) (hS : S ∈ J X) : ∃ (E : J.OneHypercover X) (_ : H E), E.sieve₀ ≤ S := IsGenerating.le _ hS"
+          },
+          {
+            "line": 154,
+            "head": "abbrev IsGeneratedByOneHypercovers : Prop := OneHypercoverFamily.IsGenerating.{w} (J := J) ⊤"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/One.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "structure PreOneHypercover (S : C) extends PreZeroHypercover.{w} S where"
+          },
+          {
+            "line": 272,
+            "head": "def trivial (S : C) : PreOneHypercover.{w} S where"
+          },
+          {
+            "line": 290,
+            "head": "instance : Nonempty (PreOneHypercover.{w} S) := ⟨trivial S⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib OneHypercover は通常 site の degree 0,1 の被覆データである。原典の全 n の Un→(coskn−1U)n の native effective epi 条件とその geometric realization の終対象性の定義ではなく、全次数の比較はない。"
+  },
+  "6.5.3.3": {
+    "page": 675,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.2",
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 119,
+        "line_count": 214
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 1147
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 291,
+            "head": "protected abbrev Truncated.cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject.Truncated C n ⥤ SimplicialObject C := ran (SimplexCategory.Truncated.inclusion n).op"
+          },
+          {
+            "line": 302,
+            "head": "abbrev cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject C ⥤ SimplicialObject C := truncation n ⋙ Truncated.cosk n"
+          },
+          {
+            "line": 324,
+            "head": "noncomputable def coskAdj : truncation (C := C) n ⊣ Truncated.cosk n := ranAdjunction _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "noncomputable def IsCoskeletal.isUniversalOfIsRightKanExtension [X.IsCoskeletal n] : (rightExtensionInclusion X n).IsUniversal"
+          },
+          {
+            "line": 74,
+            "head": "theorem isCoskeletal_iff_isIso : X.IsCoskeletal n ↔ IsIso ((coskAdj n).unit.app X)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "structure SemiSimplexCategory : Type where"
+          },
+          {
+            "line": 45,
+            "head": "def Hom (n m : SemiSimplexCategory) := Fin (n.len + 1) ↪o Fin (m.len + 1)"
+          },
+          {
+            "line": 47,
+            "head": "instance smallCategory : SmallCategory.{0} SemiSimplexCategory where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 66,
+            "head": "lemma exists_oneHypercover [H.IsGenerating] {X : C} (S : Sieve X) (hS : S ∈ J X) : ∃ (E : J.OneHypercover X) (_ : H E), E.sieve₀ ≤ S := IsGenerating.le _ hS"
+          },
+          {
+            "line": 154,
+            "head": "abbrev IsGeneratedByOneHypercovers : Prop := OneHypercoverFamily.IsGenerating.{w} (J := J) ⊤"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/One.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "structure PreOneHypercover (S : C) extends PreZeroHypercover.{w} S where"
+          },
+          {
+            "line": 272,
+            "head": "def trivial (S : C) : PreOneHypercover.{w} S where"
+          },
+          {
+            "line": 290,
+            "head": "instance : Nonempty (PreOneHypercover.{w} S) := ⟨trivial S⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary OneHypercover の二段 matching data はあるが、native ∞ トポスで U0→1 と U1→U0×U0 等の effective epi 条件へ全 coskeleton 条件を展開する比較はない。通常 site の被覆を高次の有効全射と同定する入力もない。"
+  },
+  "6.5.3.4": {
+    "page": 676,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.2",
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 119,
+        "line_count": 214
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 1147
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 291,
+            "head": "protected abbrev Truncated.cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject.Truncated C n ⥤ SimplicialObject C := ran (SimplexCategory.Truncated.inclusion n).op"
+          },
+          {
+            "line": 302,
+            "head": "abbrev cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject C ⥤ SimplicialObject C := truncation n ⋙ Truncated.cosk n"
+          },
+          {
+            "line": 324,
+            "head": "noncomputable def coskAdj : truncation (C := C) n ⊣ Truncated.cosk n := ranAdjunction _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "noncomputable def IsCoskeletal.isUniversalOfIsRightKanExtension [X.IsCoskeletal n] : (rightExtensionInclusion X n).IsUniversal"
+          },
+          {
+            "line": 74,
+            "head": "theorem isCoskeletal_iff_isIso : X.IsCoskeletal n ↔ IsIso ((coskAdj n).unit.app X)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "structure SemiSimplexCategory : Type where"
+          },
+          {
+            "line": 45,
+            "head": "def Hom (n m : SemiSimplexCategory) := Fin (n.len + 1) ↪o Fin (m.len + 1)"
+          },
+          {
+            "line": 47,
+            "head": "instance smallCategory : SmallCategory.{0} SemiSimplexCategory where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 66,
+            "head": "lemma exists_oneHypercover [H.IsGenerating] {X : C} (S : Sieve X) (hS : S ∈ J X) : ∃ (E : J.OneHypercover X) (_ : H E), E.sieve₀ ≤ S := IsGenerating.le _ hS"
+          },
+          {
+            "line": 154,
+            "head": "abbrev IsGeneratedByOneHypercovers : Prop := OneHypercoverFamily.IsGenerating.{w} (J := J) ⊤"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/One.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "structure PreOneHypercover (S : C) extends PreZeroHypercover.{w} S where"
+          },
+          {
+            "line": 272,
+            "head": "def trivial (S : C) : PreOneHypercover.{w} S where"
+          },
+          {
+            "line": 290,
+            "head": "instance : Nonempty (PreOneHypercover.{w} S) := ⟨trivial S⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheafification は層の反射であるが、native hypercompletion の inverse image で同じ simplicial object が超被覆となる iff の型はない。generic localization の単なる colimit 保存では matching effective epi の反映は出ない。"
+  },
+  "6.5.3.5": {
+    "page": 676,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.2",
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 119,
+        "line_count": 214
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 1147
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 291,
+            "head": "protected abbrev Truncated.cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject.Truncated C n ⥤ SimplicialObject C := ran (SimplexCategory.Truncated.inclusion n).op"
+          },
+          {
+            "line": 302,
+            "head": "abbrev cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject C ⥤ SimplicialObject C := truncation n ⋙ Truncated.cosk n"
+          },
+          {
+            "line": 324,
+            "head": "noncomputable def coskAdj : truncation (C := C) n ⊣ Truncated.cosk n := ranAdjunction _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "noncomputable def IsCoskeletal.isUniversalOfIsRightKanExtension [X.IsCoskeletal n] : (rightExtensionInclusion X n).IsUniversal"
+          },
+          {
+            "line": 74,
+            "head": "theorem isCoskeletal_iff_isIso : X.IsCoskeletal n ↔ IsIso ((coskAdj n).unit.app X)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "structure SemiSimplexCategory : Type where"
+          },
+          {
+            "line": 45,
+            "head": "def Hom (n m : SemiSimplexCategory) := Fin (n.len + 1) ↪o Fin (m.len + 1)"
+          },
+          {
+            "line": 47,
+            "head": "instance smallCategory : SmallCategory.{0} SemiSimplexCategory where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 66,
+            "head": "lemma exists_oneHypercover [H.IsGenerating] {X : C} (S : Sieve X) (hS : S ∈ J X) : ∃ (E : J.OneHypercover X) (_ : H E), E.sieve₀ ≤ S := IsGenerating.le _ hS"
+          },
+          {
+            "line": 154,
+            "head": "abbrev IsGeneratedByOneHypercovers : Prop := OneHypercoverFamily.IsGenerating.{w} (J := J) ⊤"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/One.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "structure PreOneHypercover (S : C) extends PreZeroHypercover.{w} S where"
+          },
+          {
+            "line": 272,
+            "head": "def trivial (S : C) : PreOneHypercover.{w} S where"
+          },
+          {
+            "line": 290,
+            "head": "instance : Nonempty (PreOneHypercover.{w} S) := ⟨trivial S⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "native constant simplicial object は構成できるが、∞-connective object と各 matching map の effective epi 性を結ぶ比較がない。Kan の可縮性からの通常の constant diagram の性質は全 ∞ トポスの同じ hypercovering predicate ではない。"
+  },
+  "6.5.3.7": {
+    "page": 676,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.2",
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 119,
+        "line_count": 214
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 1147
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 291,
+            "head": "protected abbrev Truncated.cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject.Truncated C n ⥤ SimplicialObject C := ran (SimplexCategory.Truncated.inclusion n).op"
+          },
+          {
+            "line": 302,
+            "head": "abbrev cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject C ⥤ SimplicialObject C := truncation n ⋙ Truncated.cosk n"
+          },
+          {
+            "line": 324,
+            "head": "noncomputable def coskAdj : truncation (C := C) n ⊣ Truncated.cosk n := ranAdjunction _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "noncomputable def IsCoskeletal.isUniversalOfIsRightKanExtension [X.IsCoskeletal n] : (rightExtensionInclusion X n).IsUniversal"
+          },
+          {
+            "line": 74,
+            "head": "theorem isCoskeletal_iff_isIso : X.IsCoskeletal n ↔ IsIso ((coskAdj n).unit.app X)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "structure SemiSimplexCategory : Type where"
+          },
+          {
+            "line": 45,
+            "head": "def Hom (n m : SemiSimplexCategory) := Fin (n.len + 1) ↪o Fin (m.len + 1)"
+          },
+          {
+            "line": 47,
+            "head": "instance smallCategory : SmallCategory.{0} SemiSimplexCategory where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 66,
+            "head": "lemma exists_oneHypercover [H.IsGenerating] {X : C} (S : Sieve X) (hS : S ∈ J X) : ∃ (E : J.OneHypercover X) (_ : H E), E.sieve₀ ≤ S := IsGenerating.le _ hS"
+          },
+          {
+            "line": 154,
+            "head": "abbrev IsGeneratedByOneHypercovers : Prop := OneHypercoverFamily.IsGenerating.{w} (J := J) ⊤"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/One.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "structure PreOneHypercover (S : C) extends PreZeroHypercover.{w} S where"
+          },
+          {
+            "line": 272,
+            "head": "def trivial (S : C) : PreOneHypercover.{w} S where"
+          },
+          {
+            "line": 290,
+            "head": "instance : Nonempty (PreOneHypercover.{w} S) := ⟨trivial S⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "SemiSimplexCategory.toSimplexCategory は faithful な射を定義するが、その反対 functor の ordinary Final や nerve の IsRightCofinal の instance はない。全ての単体が退化像を持つという一般の分解だけを包含の comma category の可縮性とはしない。"
+  },
+  "6.5.3.8": {
+    "page": 677,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.2",
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 119,
+        "line_count": 214
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 1147
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 291,
+            "head": "protected abbrev Truncated.cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject.Truncated C n ⥤ SimplicialObject C := ran (SimplexCategory.Truncated.inclusion n).op"
+          },
+          {
+            "line": 302,
+            "head": "abbrev cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject C ⥤ SimplicialObject C := truncation n ⋙ Truncated.cosk n"
+          },
+          {
+            "line": 324,
+            "head": "noncomputable def coskAdj : truncation (C := C) n ⊣ Truncated.cosk n := ranAdjunction _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "noncomputable def IsCoskeletal.isUniversalOfIsRightKanExtension [X.IsCoskeletal n] : (rightExtensionInclusion X n).IsUniversal"
+          },
+          {
+            "line": 74,
+            "head": "theorem isCoskeletal_iff_isIso : X.IsCoskeletal n ↔ IsIso ((coskAdj n).unit.app X)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "structure SemiSimplexCategory : Type where"
+          },
+          {
+            "line": 45,
+            "head": "def Hom (n m : SemiSimplexCategory) := Fin (n.len + 1) ↪o Fin (m.len + 1)"
+          },
+          {
+            "line": 47,
+            "head": "instance smallCategory : SmallCategory.{0} SemiSimplexCategory where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 66,
+            "head": "lemma exists_oneHypercover [H.IsGenerating] {X : C} (S : Sieve X) (hS : S ∈ J X) : ∃ (E : J.OneHypercover X) (_ : H E), E.sieve₀ ≤ S := IsGenerating.le _ hS"
+          },
+          {
+            "line": 154,
+            "head": "abbrev IsGeneratedByOneHypercovers : Prop := OneHypercoverFamily.IsGenerating.{w} (J := J) ⊤"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/One.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "structure PreOneHypercover (S : C) extends PreZeroHypercover.{w} S where"
+          },
+          {
+            "line": 272,
+            "head": "def trivial (S : C) : PreOneHypercover.{w} S where"
+          },
+          {
+            "line": 290,
+            "head": "instance : Nonempty (PreOneHypercover.{w} S) := ⟨trivial S⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary SimplicialObject.IsCoskeletal は右 Kan 延長条件で、semisimplicial 制限に対する同じ条件との iff はない。truncation の coskAdj の unit の同型判定は全 Δ のみで、Δs の inclusion との比較を欠く。"
+  },
+  "6.5.3.9": {
+    "page": 677,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.2",
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 119,
+        "line_count": 214
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 1147
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 291,
+            "head": "protected abbrev Truncated.cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject.Truncated C n ⥤ SimplicialObject C := ran (SimplexCategory.Truncated.inclusion n).op"
+          },
+          {
+            "line": 302,
+            "head": "abbrev cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject C ⥤ SimplicialObject C := truncation n ⋙ Truncated.cosk n"
+          },
+          {
+            "line": 324,
+            "head": "noncomputable def coskAdj : truncation (C := C) n ⊣ Truncated.cosk n := ranAdjunction _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "noncomputable def IsCoskeletal.isUniversalOfIsRightKanExtension [X.IsCoskeletal n] : (rightExtensionInclusion X n).IsUniversal"
+          },
+          {
+            "line": 74,
+            "head": "theorem isCoskeletal_iff_isIso : X.IsCoskeletal n ↔ IsIso ((coskAdj n).unit.app X)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "structure SemiSimplexCategory : Type where"
+          },
+          {
+            "line": 45,
+            "head": "def Hom (n m : SemiSimplexCategory) := Fin (n.len + 1) ↪o Fin (m.len + 1)"
+          },
+          {
+            "line": 47,
+            "head": "instance smallCategory : SmallCategory.{0} SemiSimplexCategory where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 66,
+            "head": "lemma exists_oneHypercover [H.IsGenerating] {X : C} (S : Sieve X) (hS : S ∈ J X) : ∃ (E : J.OneHypercover X) (_ : H E), E.sieve₀ ≤ S := IsGenerating.le _ hS"
+          },
+          {
+            "line": 154,
+            "head": "abbrev IsGeneratedByOneHypercovers : Prop := OneHypercoverFamily.IsGenerating.{w} (J := J) ⊤"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/One.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "structure PreOneHypercover (S : C) extends PreZeroHypercover.{w} S where"
+          },
+          {
+            "line": 272,
+            "head": "def trivial (S : C) : PreOneHypercover.{w} S where"
+          },
+          {
+            "line": 290,
+            "head": "instance : Nonempty (PreOneHypercover.{w} S) := ⟨trivial S⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary OneHypercoverFamily.isSheaf_iff は matching multifork の limit による集合値層の判定である。native n-coskeletal hypercover の geometric realization が terminal という結論と比較されておらず、1-hypercover の部分データだけは原典のこの有効性ではない。"
+  },
+  "6.5.3.10": {
+    "page": 679,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.2",
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 119,
+        "line_count": 214
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 1147
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 291,
+            "head": "protected abbrev Truncated.cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject.Truncated C n ⥤ SimplicialObject C := ran (SimplexCategory.Truncated.inclusion n).op"
+          },
+          {
+            "line": 302,
+            "head": "abbrev cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject C ⥤ SimplicialObject C := truncation n ⋙ Truncated.cosk n"
+          },
+          {
+            "line": 324,
+            "head": "noncomputable def coskAdj : truncation (C := C) n ⊣ Truncated.cosk n := ranAdjunction _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "noncomputable def IsCoskeletal.isUniversalOfIsRightKanExtension [X.IsCoskeletal n] : (rightExtensionInclusion X n).IsUniversal"
+          },
+          {
+            "line": 74,
+            "head": "theorem isCoskeletal_iff_isIso : X.IsCoskeletal n ↔ IsIso ((coskAdj n).unit.app X)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "structure SemiSimplexCategory : Type where"
+          },
+          {
+            "line": 45,
+            "head": "def Hom (n m : SemiSimplexCategory) := Fin (n.len + 1) ↪o Fin (m.len + 1)"
+          },
+          {
+            "line": 47,
+            "head": "instance smallCategory : SmallCategory.{0} SemiSimplexCategory where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 66,
+            "head": "lemma exists_oneHypercover [H.IsGenerating] {X : C} (S : Sieve X) (hS : S ∈ J X) : ∃ (E : J.OneHypercover X) (_ : H E), E.sieve₀ ≤ S := IsGenerating.le _ hS"
+          },
+          {
+            "line": 154,
+            "head": "abbrev IsGeneratedByOneHypercovers : Prop := OneHypercoverFamily.IsGenerating.{w} (J := J) ⊤"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/One.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "structure PreOneHypercover (S : C) extends PreZeroHypercover.{w} S where"
+          },
+          {
+            "line": 272,
+            "head": "def trivial (S : C) : PreOneHypercover.{w} S where"
+          },
+          {
+            "line": 290,
+            "head": "instance : Nonempty (PreOneHypercover.{w} S) := ⟨trivial S⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "native geometric realization の colimit-preserving 性はあるが、k≤n の各 fk の equivalence だけから |f| が n-connective となる次数付き判定はない。全次数で同値を仮定した generic colimit の同値不変性は次数の改善を与えない。"
+  },
+  "6.5.3.11": {
+    "page": 680,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.2",
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 119,
+        "line_count": 214
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 1147
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 291,
+            "head": "protected abbrev Truncated.cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject.Truncated C n ⥤ SimplicialObject C := ran (SimplexCategory.Truncated.inclusion n).op"
+          },
+          {
+            "line": 302,
+            "head": "abbrev cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject C ⥤ SimplicialObject C := truncation n ⋙ Truncated.cosk n"
+          },
+          {
+            "line": 324,
+            "head": "noncomputable def coskAdj : truncation (C := C) n ⊣ Truncated.cosk n := ranAdjunction _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "noncomputable def IsCoskeletal.isUniversalOfIsRightKanExtension [X.IsCoskeletal n] : (rightExtensionInclusion X n).IsUniversal"
+          },
+          {
+            "line": 74,
+            "head": "theorem isCoskeletal_iff_isIso : X.IsCoskeletal n ↔ IsIso ((coskAdj n).unit.app X)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "structure SemiSimplexCategory : Type where"
+          },
+          {
+            "line": 45,
+            "head": "def Hom (n m : SemiSimplexCategory) := Fin (n.len + 1) ↪o Fin (m.len + 1)"
+          },
+          {
+            "line": 47,
+            "head": "instance smallCategory : SmallCategory.{0} SemiSimplexCategory where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 66,
+            "head": "lemma exists_oneHypercover [H.IsGenerating] {X : C} (S : Sieve X) (hS : S ∈ J X) : ∃ (E : J.OneHypercover X) (_ : H E), E.sieve₀ ≤ S := IsGenerating.le _ hS"
+          },
+          {
+            "line": 154,
+            "head": "abbrev IsGeneratedByOneHypercovers : Prop := OneHypercoverFamily.IsGenerating.{w} (J := J) ⊤"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/One.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "structure PreOneHypercover (S : C) extends PreZeroHypercover.{w} S where"
+          },
+          {
+            "line": 272,
+            "head": "def trivial (S : C) : PreOneHypercover.{w} S where"
+          },
+          {
+            "line": 290,
+            "head": "instance : Nonempty (PreOneHypercover.{w} S) := ⟨trivial S⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "native generic colimit と stronglySaturatedClosure はあるが、全 matching maps の effective epi 条件から実現 |U•| の全相対 homotopy sheaves の消滅を得る型はない。通常 site の multifork limit は同じ高次実現ではない。"
+  },
+  "6.5.3.12": {
+    "page": 680,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.2",
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 119,
+        "line_count": 214
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 1147
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 291,
+            "head": "protected abbrev Truncated.cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject.Truncated C n ⥤ SimplicialObject C := ran (SimplexCategory.Truncated.inclusion n).op"
+          },
+          {
+            "line": 302,
+            "head": "abbrev cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject C ⥤ SimplicialObject C := truncation n ⋙ Truncated.cosk n"
+          },
+          {
+            "line": 324,
+            "head": "noncomputable def coskAdj : truncation (C := C) n ⊣ Truncated.cosk n := ranAdjunction _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "noncomputable def IsCoskeletal.isUniversalOfIsRightKanExtension [X.IsCoskeletal n] : (rightExtensionInclusion X n).IsUniversal"
+          },
+          {
+            "line": 74,
+            "head": "theorem isCoskeletal_iff_isIso : X.IsCoskeletal n ↔ IsIso ((coskAdj n).unit.app X)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "structure SemiSimplexCategory : Type where"
+          },
+          {
+            "line": 45,
+            "head": "def Hom (n m : SemiSimplexCategory) := Fin (n.len + 1) ↪o Fin (m.len + 1)"
+          },
+          {
+            "line": 47,
+            "head": "instance smallCategory : SmallCategory.{0} SemiSimplexCategory where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 66,
+            "head": "lemma exists_oneHypercover [H.IsGenerating] {X : C} (S : Sieve X) (hS : S ∈ J X) : ∃ (E : J.OneHypercover X) (_ : H E), E.sieve₀ ≤ S := IsGenerating.le _ hS"
+          },
+          {
+            "line": 154,
+            "head": "abbrev IsGeneratedByOneHypercovers : Prop := OneHypercoverFamily.IsGenerating.{w} (J := J) ⊤"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/One.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "structure PreOneHypercover (S : C) extends PreZeroHypercover.{w} S where"
+          },
+          {
+            "line": 272,
+            "head": "def trivial (S : C) : PreOneHypercover.{w} S where"
+          },
+          {
+            "line": 290,
+            "head": "instance : Nonempty (PreOneHypercover.{w} S) := ⟨trivial S⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の 1-hypercover による ordinary sheaf 判定はあるが、native 全 slice の全 hypercover の effectiveness と全 ∞-connective morphism の反転との iff はない。ordinary limit diagram の sheaf 判定を高次 hyperdescent の同値と取り違えない。"
+  },
+  "6.5.3.13": {
+    "page": 680,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.2",
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 119,
+        "line_count": 214
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 1147
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 291,
+            "head": "protected abbrev Truncated.cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject.Truncated C n ⥤ SimplicialObject C := ran (SimplexCategory.Truncated.inclusion n).op"
+          },
+          {
+            "line": 302,
+            "head": "abbrev cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject C ⥤ SimplicialObject C := truncation n ⋙ Truncated.cosk n"
+          },
+          {
+            "line": 324,
+            "head": "noncomputable def coskAdj : truncation (C := C) n ⊣ Truncated.cosk n := ranAdjunction _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "noncomputable def IsCoskeletal.isUniversalOfIsRightKanExtension [X.IsCoskeletal n] : (rightExtensionInclusion X n).IsUniversal"
+          },
+          {
+            "line": 74,
+            "head": "theorem isCoskeletal_iff_isIso : X.IsCoskeletal n ↔ IsIso ((coskAdj n).unit.app X)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "structure SemiSimplexCategory : Type where"
+          },
+          {
+            "line": 45,
+            "head": "def Hom (n m : SemiSimplexCategory) := Fin (n.len + 1) ↪o Fin (m.len + 1)"
+          },
+          {
+            "line": 47,
+            "head": "instance smallCategory : SmallCategory.{0} SemiSimplexCategory where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 66,
+            "head": "lemma exists_oneHypercover [H.IsGenerating] {X : C} (S : Sieve X) (hS : S ∈ J X) : ∃ (E : J.OneHypercover X) (_ : H E), E.sieve₀ ≤ S := IsGenerating.le _ hS"
+          },
+          {
+            "line": 154,
+            "head": "abbrev IsGeneratedByOneHypercovers : Prop := OneHypercoverFamily.IsGenerating.{w} (J := J) ⊤"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/One.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "structure PreOneHypercover (S : C) extends PreZeroHypercover.{w} S where"
+          },
+          {
+            "line": 272,
+            "head": "def trivial (S : C) : PreOneHypercover.{w} S where"
+          },
+          {
+            "line": 290,
+            "head": "instance : Nonempty (PreOneHypercover.{w} S) := ⟨trivial S⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "native Bousfield reflection は指定された小辺族の局所化であり、全 slice の hypercover 実現の族 S と ∞-connective class の同定はない。ordinary sheafification はこの S に対する全 mapping-space local object との比較を持たない。"
+  },
+  "6.5.3.14": {
+    "page": 680,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.2",
+        "6.5.3",
+        "6.5.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          "SerrePositivity"
+        ],
+        "file_count": 119,
+        "line_count": 214
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercover|hypercover|SemiSimplex|cosk|IsCoskeletal|Hypercomplet|IsRightCofinal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 1147
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+        "signatures": [
+          {
+            "line": 291,
+            "head": "protected abbrev Truncated.cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject.Truncated C n ⥤ SimplicialObject C := ran (SimplexCategory.Truncated.inclusion n).op"
+          },
+          {
+            "line": 302,
+            "head": "abbrev cosk (n : ℕ) [∀ (F : (SimplexCategory.Truncated n)ᵒᵖ ⥤ C), (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] : SimplicialObject C ⥤ SimplicialObject C := truncation n ⋙ Truncated.cosk n"
+          },
+          {
+            "line": 324,
+            "head": "noncomputable def coskAdj : truncation (C := C) n ⊣ Truncated.cosk n := ranAdjunction _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "noncomputable def IsCoskeletal.isUniversalOfIsRightKanExtension [X.IsCoskeletal n] : (rightExtensionInclusion X n).IsUniversal"
+          },
+          {
+            "line": 74,
+            "head": "theorem isCoskeletal_iff_isIso : X.IsCoskeletal n ↔ IsIso ((coskAdj n).unit.app X)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "structure SemiSimplexCategory : Type where"
+          },
+          {
+            "line": 45,
+            "head": "def Hom (n m : SemiSimplexCategory) := Fin (n.len + 1) ↪o Fin (m.len + 1)"
+          },
+          {
+            "line": 47,
+            "head": "instance smallCategory : SmallCategory.{0} SemiSimplexCategory where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 66,
+            "head": "lemma exists_oneHypercover [H.IsGenerating] {X : C} (S : Sieve X) (hS : S ∈ J X) : ∃ (E : J.OneHypercover X) (_ : H E), E.sieve₀ ≤ S := IsGenerating.le _ hS"
+          },
+          {
+            "line": 154,
+            "head": "abbrev IsGeneratedByOneHypercovers : Prop := OneHypercoverFamily.IsGenerating.{w} (J := J) ⊤"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/One.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "structure PreOneHypercover (S : C) extends PreZeroHypercover.{w} S where"
+          },
+          {
+            "line": 272,
+            "head": "def trivial (S : C) : PreOneHypercover.{w} S where"
+          },
+          {
+            "line": 290,
+            "head": "instance : Nonempty (PreOneHypercover.{w} S) := ⟨trivial S⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "generic localization の universal property はあるが、L によって effective hypercover となる augmented simplicial objects 全体を inverted arrows の生成族とする比較はない。通常 site の covering sieves の local equivalence はこの全高次の generalized topology と異なる。"
+  }
+}

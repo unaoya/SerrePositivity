@@ -1,0 +1,1072 @@
+{
+  "6.3.4.1": {
+    "page": 610,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.3",
+        "6.3.4",
+        "6.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          "SerrePositivity"
+        ],
+        "file_count": 642,
+        "line_count": 1845
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 64,
+        "line_count": 136
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "lemma functor_isPresentable (K : SSet.{u}) [Quasicategory K] {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj C)"
+          }
+        ]
+      }
+    ],
+    "decision": "native spaceInfinity の presentability と free cocompletion はあるが、Fun*(S,X) 全体が可縮 Kan となる型はない。一般の functor space の存在・一点に制限した評価だけは左完全な左随伴全体の可縮性を与えない。"
+  },
+  "6.3.4.2": {
+    "page": 610,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.3",
+        "6.3.4",
+        "6.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          "SerrePositivity"
+        ],
+        "file_count": 642,
+        "line_count": 1845
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 64,
+        "line_count": 136
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "lemma functor_isPresentable (K : SSet.{u}) [Quasicategory K] {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj C)"
+          }
+        ]
+      }
+    ],
+    "decision": "native free presheaf cocompletion と small Bousfield localization はあるが、指定した κ-small cocone だけを余極限にする小さい D と全 E への κ-small-colimit-preserving 関手の普遍性はない。presentable な局所化は原典が要求する D の smallness を保つ型ではない。"
+  },
+  "6.3.4.3": {
+    "page": 611,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.3",
+        "6.3.4",
+        "6.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          "SerrePositivity"
+        ],
+        "file_count": 642,
+        "line_count": 1845
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 64,
+        "line_count": 136
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "lemma functor_isPresentable (K : SSet.{u}) [Quasicategory K] {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj C)"
+          }
+        ]
+      }
+    ],
+    "decision": "HasFiniteLimits は native の対象条件としてあるが、小さい有限極限圏を対象、有限極限保存関手を Hom とする全 Cat∞lex は構成されていない。PrL/PrR は対象の大きさと保存条件が違う。"
+  },
+  "6.3.4.4": {
+    "page": 611,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.3",
+        "6.3.4",
+        "6.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          "SerrePositivity"
+        ],
+        "file_count": 642,
+        "line_count": 1845
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 64,
+        "line_count": 136
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "lemma functor_isPresentable (K : SSet.{u}) [Quasicategory K] {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj C)"
+          }
+        ]
+      }
+    ],
+    "decision": "native HasFiniteLimits は各圏の性質であり、Cat∞lex の全小余極限とその普遍性を与えない。Cat∞ の通常の余極限だけでも有限極限の自由添加と比較する追加の構成が必要である。"
+  },
+  "6.3.4.5": {
+    "page": 612,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.3",
+        "6.3.4",
+        "6.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          "SerrePositivity"
+        ],
+        "file_count": 642,
+        "line_count": 1845
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 64,
+        "line_count": 136
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "lemma functor_isPresentable (K : SSet.{u}) [Quasicategory K] {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj C)"
+          }
+        ]
+      }
+    ],
+    "decision": "native accessible reflection は存在するが、任意の幾何学的射 X→P(C) を小さい有限極限圏 D による fully faithful geometric morphism と restriction に分解しない。generic localization の universal property はこの中間 site D を供給しない。"
+  },
+  "6.3.4.6": {
+    "page": 613,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.3",
+        "6.3.4",
+        "6.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          "SerrePositivity"
+        ],
+        "file_count": 642,
+        "line_count": 1845
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 64,
+        "line_count": 136
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "lemma functor_isPresentable (K : SSet.{u}) [Quasicategory K] {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj C)"
+          }
+        ]
+      }
+    ],
+    "decision": "presentablePullback は PrL 方向の strict pullback であり、RTop の right adjoint の pullback を ∞ トポスとして構成するものではない。左右随伴の対ごとの双対性だけは global RTop の limit 比較にならない。"
+  },
+  "6.3.4.7": {
+    "page": 614,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.3",
+        "6.3.4",
+        "6.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          "SerrePositivity"
+        ],
+        "file_count": 642,
+        "line_count": 1845
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 64,
+        "line_count": 136
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "lemma functor_isPresentable (K : SSet.{u}) [Quasicategory K] {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj C)"
+          }
+        ]
+      }
+    ],
+    "decision": "native PrR の定義はあるが RTop の小極限の型はない。ordinary sheaf 圏での limits の存在は同じ RTop 内の対象であるトポスの limits とは異なる。"
+  },
+  "6.3.4.8": {
+    "page": 614,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.3",
+        "6.3.4",
+        "6.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          "SerrePositivity"
+        ],
+        "file_count": 642,
+        "line_count": 1845
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 64,
+        "line_count": 136
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "lemma functor_isPresentable (K : SSet.{u}) [Quasicategory K] {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj C)"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheaf の対象ごとの積は存在するが、ここで後の節に送る RTop の積としてのトポスの具体構成ではない。native presentable 圏の積も LTop/RTop の向きを区別する必要があり、この注意の比較はない。"
+  },
+  "6.3.4.9": {
+    "page": 614,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.3",
+        "6.3.4",
+        "6.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          "SerrePositivity"
+        ],
+        "file_count": 642,
+        "line_count": 1845
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 64,
+        "line_count": 136
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "lemma functor_isPresentable (K : SSet.{u}) [Quasicategory K] {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj C)"
+          }
+        ]
+      }
+    ],
+    "decision": "native functor_isPresentable は Fun(C,X) の presentability を与えるが、Mor(C,X) の ∞ トポス性と全 Y での Fun* の同値による普遍性を含まない。全関手圏の exponential 法則だけは幾何学的射への制限に必要な比較を欠く。"
+  },
+  "6.3.4.10": {
+    "page": 615,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.3",
+        "6.3.4",
+        "6.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          "SerrePositivity"
+        ],
+        "file_count": 642,
+        "line_count": 1845
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|LTop|CatLex|HasFiniteLimits|MorTopos|functor_isPresentable|spaceInfinity|Bousfield",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 64,
+        "line_count": 136
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "lemma functor_isPresentable (K : SSet.{u}) [Quasicategory K] {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj C)"
+          }
+        ]
+      }
+    ],
+    "decision": "native pairwise adjoint duality は非可逆変換を含むが、global RTop 上の θX とその小極限保存の構成ではない。core の mapping space の極限だけで原典の全 Fun* 圏の極限とは同定できない。"
+  }
+}

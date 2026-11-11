@@ -1,0 +1,1773 @@
+{
+  "7.3.1.1": {
+    "page": 750,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.4",
+        "7.3.1",
+        "7.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 2489,
+        "line_count": 21686
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 670,
+        "line_count": 12494
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "instance [WeaklyLocallyCompactSpace X] [WeaklyLocallyCompactSpace Y] : WeaklyLocallyCompactSpace (X × Y) where"
+          },
+          {
+            "line": 36,
+            "head": "instance (priority := 100) [CompactSpace X] : WeaklyLocallyCompactSpace X where"
+          },
+          {
+            "line": 39,
+            "head": "protected theorem Topology.IsClosedEmbedding.weaklyLocallyCompactSpace [WeaklyLocallyCompactSpace Y] {f : X → Y} (hf : IsClosedEmbedding f) : WeaklyLocallyCompactSpace X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Separation/CompletelyRegular.lean",
+        "signatures": [
+          {
+            "line": 227,
+            "head": "class T35Space (X : Type u) [TopologicalSpace X] : Prop extends T0Space X, CompletelyRegularSpace X"
+          },
+          {
+            "line": 229,
+            "head": "instance T35Space.instT3space [T35Space X] : T3Space X where"
+          },
+          {
+            "line": 231,
+            "head": "instance T4Space.instT35Space [T4Space X] : T35Space X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/UniversallyClosed.lean",
+        "signatures": [
+          {
+            "line": 98,
+            "head": "theorem isProperMap_iff_universally_closed {X : Type u} {Y : Type v} [TopologicalSpace X] [TopologicalSpace Y] {f : X → Y} : IsProperMap f ↔ Continuous f ∧ ∀ (Z : Type u) [TopologicalSpace Z], IsClosedMap (Prod.map f id : X × Z → Y × Z)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Mates.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "def mateEquiv : TwoSquare G L₁ L₂ H ≃ TwoSquare R₁ H G R₂ where"
+          },
+          {
+            "line": 123,
+            "head": "theorem mateEquiv_counit (α : TwoSquare G L₁ L₂ H) (d : D) : L₂.map ((mateEquiv adj₁ adj₂ α).app _) ≫ adj₂.counit.app _ = α.app _ ≫ H.map (adj₁.counit.app d)"
+          },
+          {
+            "line": 128,
+            "head": "theorem mateEquiv_counit_symm (α : TwoSquare R₁ H G R₂) (d : D) : L₂.map (α.app _) ≫ adj₂.counit.app _ = ((mateEquiv adj₁ adj₂).symm α).app _ ≫ H.map (adj₁.counit.app d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/CompactOpen.lean",
+        "signatures": [
+          {
+            "line": 374,
+            "head": "theorem exists_tendsto_compactOpen_iff_forall [WeaklyLocallyCompactSpace X] [T2Space Y] {ι : Type*} {l : Filter ι} [Filter.NeBot l] (F : ι → C(X, Y)) : (∃ f, Filter.Tendsto F l (𝓝 f)) ↔ ∀ s : Set X, IsCompact s → ∃ f, Filter.Tendsto (fun i => (F i).restrict s) l (𝓝 f)"
+          },
+          {
+            "line": 450,
+            "head": "theorem continuous_curry [LocallyCompactSpace (X × Y)] : Continuous (curry : C(X × Y, Z) → C(X, C(Y, Z)))"
+          },
+          {
+            "line": 458,
+            "head": "theorem continuous_uncurry_of_continuous [LocallyCompactSpace Y] (f : C(X, C(Y, Z))) : Continuous (Function.uncurry fun x y => f x y) := continuous_eval.comp <| f.continuous.prodMap continuous_id"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib mateEquiv は元の単位・余単位を使う push-pull transformation を構成するが、両右関手の left adjoint の存在とその mate の可逆性を束ねる left-adjointable square の述語はない。mate そのものはこの条件の定義を導く証明の部品として扱う。"
+  },
+  "7.3.1.2": {
+    "page": 750,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.4",
+        "7.3.1",
+        "7.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 2489,
+        "line_count": 21686
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 670,
+        "line_count": 12494
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "instance [WeaklyLocallyCompactSpace X] [WeaklyLocallyCompactSpace Y] : WeaklyLocallyCompactSpace (X × Y) where"
+          },
+          {
+            "line": 36,
+            "head": "instance (priority := 100) [CompactSpace X] : WeaklyLocallyCompactSpace X where"
+          },
+          {
+            "line": 39,
+            "head": "protected theorem Topology.IsClosedEmbedding.weaklyLocallyCompactSpace [WeaklyLocallyCompactSpace Y] {f : X → Y} (hf : IsClosedEmbedding f) : WeaklyLocallyCompactSpace X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Separation/CompletelyRegular.lean",
+        "signatures": [
+          {
+            "line": 227,
+            "head": "class T35Space (X : Type u) [TopologicalSpace X] : Prop extends T0Space X, CompletelyRegularSpace X"
+          },
+          {
+            "line": 229,
+            "head": "instance T35Space.instT3space [T35Space X] : T3Space X where"
+          },
+          {
+            "line": 231,
+            "head": "instance T4Space.instT35Space [T4Space X] : T35Space X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/UniversallyClosed.lean",
+        "signatures": [
+          {
+            "line": 98,
+            "head": "theorem isProperMap_iff_universally_closed {X : Type u} {Y : Type v} [TopologicalSpace X] [TopologicalSpace Y] {f : X → Y} : IsProperMap f ↔ Continuous f ∧ ∀ (Z : Type u) [TopologicalSpace Z], IsClosedMap (Prod.map f id : X × Z → Y × Z)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Mates.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "def mateEquiv : TwoSquare G L₁ L₂ H ≃ TwoSquare R₁ H G R₂ where"
+          },
+          {
+            "line": 123,
+            "head": "theorem mateEquiv_counit (α : TwoSquare G L₁ L₂ H) (d : D) : L₂.map ((mateEquiv adj₁ adj₂ α).app _) ≫ adj₂.counit.app _ = α.app _ ≫ H.map (adj₁.counit.app d)"
+          },
+          {
+            "line": 128,
+            "head": "theorem mateEquiv_counit_symm (α : TwoSquare R₁ H G R₂) (d : D) : L₂.map (α.app _) ≫ adj₂.counit.app _ = ((mateEquiv adj₁ adj₂).symm α).app _ ≫ H.map (adj₁.counit.app d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/CompactOpen.lean",
+        "signatures": [
+          {
+            "line": 374,
+            "head": "theorem exists_tendsto_compactOpen_iff_forall [WeaklyLocallyCompactSpace X] [T2Space Y] {ι : Type*} {l : Filter ι} [Filter.NeBot l] (F : ι → C(X, Y)) : (∃ f, Filter.Tendsto F l (𝓝 f)) ↔ ∀ s : Set X, IsCompact s → ∃ f, Filter.Tendsto (fun i => (F i).restrict s) l (𝓝 f)"
+          },
+          {
+            "line": 450,
+            "head": "theorem continuous_curry [LocallyCompactSpace (X × Y)] : Continuous (curry : C(X × Y, Z) → C(X, C(Y, Z)))"
+          },
+          {
+            "line": 458,
+            "head": "theorem continuous_uncurry_of_continuous [LocallyCompactSpace Y] (f : C(X, C(Y, Z))) : Continuous (Function.uncurry fun x y => f x y) := continuous_eval.comp <| f.continuous.prodMap continuous_id"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "native adjunction と homotopy category はあるが、指定ホモトピーを持つ square に対して h-category の left adjointability を課す同じ述語はない。ordinary mates だけは準圏の指定ホモトピーの comparison を保持しない。"
+  },
+  "7.3.1.3": {
+    "page": 751,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.4",
+        "7.3.1",
+        "7.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 2489,
+        "line_count": 21686
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 670,
+        "line_count": 12494
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "instance [WeaklyLocallyCompactSpace X] [WeaklyLocallyCompactSpace Y] : WeaklyLocallyCompactSpace (X × Y) where"
+          },
+          {
+            "line": 36,
+            "head": "instance (priority := 100) [CompactSpace X] : WeaklyLocallyCompactSpace X where"
+          },
+          {
+            "line": 39,
+            "head": "protected theorem Topology.IsClosedEmbedding.weaklyLocallyCompactSpace [WeaklyLocallyCompactSpace Y] {f : X → Y} (hf : IsClosedEmbedding f) : WeaklyLocallyCompactSpace X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Separation/CompletelyRegular.lean",
+        "signatures": [
+          {
+            "line": 227,
+            "head": "class T35Space (X : Type u) [TopologicalSpace X] : Prop extends T0Space X, CompletelyRegularSpace X"
+          },
+          {
+            "line": 229,
+            "head": "instance T35Space.instT3space [T35Space X] : T3Space X where"
+          },
+          {
+            "line": 231,
+            "head": "instance T4Space.instT35Space [T4Space X] : T35Space X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/UniversallyClosed.lean",
+        "signatures": [
+          {
+            "line": 98,
+            "head": "theorem isProperMap_iff_universally_closed {X : Type u} {Y : Type v} [TopologicalSpace X] [TopologicalSpace Y] {f : X → Y} : IsProperMap f ↔ Continuous f ∧ ∀ (Z : Type u) [TopologicalSpace Z], IsClosedMap (Prod.map f id : X × Z → Y × Z)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Mates.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "def mateEquiv : TwoSquare G L₁ L₂ H ≃ TwoSquare R₁ H G R₂ where"
+          },
+          {
+            "line": 123,
+            "head": "theorem mateEquiv_counit (α : TwoSquare G L₁ L₂ H) (d : D) : L₂.map ((mateEquiv adj₁ adj₂ α).app _) ≫ adj₂.counit.app _ = α.app _ ≫ H.map (adj₁.counit.app d)"
+          },
+          {
+            "line": 128,
+            "head": "theorem mateEquiv_counit_symm (α : TwoSquare R₁ H G R₂) (d : D) : L₂.map (α.app _) ≫ adj₂.counit.app _ = ((mateEquiv adj₁ adj₂).symm α).app _ ≫ H.map (adj₁.counit.app d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/CompactOpen.lean",
+        "signatures": [
+          {
+            "line": 374,
+            "head": "theorem exists_tendsto_compactOpen_iff_forall [WeaklyLocallyCompactSpace X] [T2Space Y] {ι : Type*} {l : Filter ι} [Filter.NeBot l] (F : ι → C(X, Y)) : (∃ f, Filter.Tendsto F l (𝓝 f)) ↔ ∀ s : Set X, IsCompact s → ∃ f, Filter.Tendsto (fun i => (F i).restrict s) l (𝓝 f)"
+          },
+          {
+            "line": 450,
+            "head": "theorem continuous_curry [LocallyCompactSpace (X × Y)] : Continuous (curry : C(X × Y, Z) → C(X, C(Y, Z)))"
+          },
+          {
+            "line": 458,
+            "head": "theorem continuous_uncurry_of_continuous [LocallyCompactSpace Y] (f : C(X, C(Y, Z))) : Continuous (Function.uncurry fun x y => f x y) := continuous_eval.comp <| f.continuous.prodMap continuous_id"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "native cartesian/cocartesian correspondence と adjunction はあるが、原典の同じ P:M0→M の cocartesian-edge 保存と h-square の mate の各成分 θ の可逆性の iff を比較する宣言はない。個々の辺の invertible/cartesian 判定だけは指定 push-pull transformation を表さない。"
+  },
+  "7.3.1.4": {
+    "page": 751,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.4",
+        "7.3.1",
+        "7.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 2489,
+        "line_count": 21686
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 670,
+        "line_count": 12494
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "instance [WeaklyLocallyCompactSpace X] [WeaklyLocallyCompactSpace Y] : WeaklyLocallyCompactSpace (X × Y) where"
+          },
+          {
+            "line": 36,
+            "head": "instance (priority := 100) [CompactSpace X] : WeaklyLocallyCompactSpace X where"
+          },
+          {
+            "line": 39,
+            "head": "protected theorem Topology.IsClosedEmbedding.weaklyLocallyCompactSpace [WeaklyLocallyCompactSpace Y] {f : X → Y} (hf : IsClosedEmbedding f) : WeaklyLocallyCompactSpace X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Separation/CompletelyRegular.lean",
+        "signatures": [
+          {
+            "line": 227,
+            "head": "class T35Space (X : Type u) [TopologicalSpace X] : Prop extends T0Space X, CompletelyRegularSpace X"
+          },
+          {
+            "line": 229,
+            "head": "instance T35Space.instT3space [T35Space X] : T3Space X where"
+          },
+          {
+            "line": 231,
+            "head": "instance T4Space.instT35Space [T4Space X] : T35Space X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/UniversallyClosed.lean",
+        "signatures": [
+          {
+            "line": 98,
+            "head": "theorem isProperMap_iff_universally_closed {X : Type u} {Y : Type v} [TopologicalSpace X] [TopologicalSpace Y] {f : X → Y} : IsProperMap f ↔ Continuous f ∧ ∀ (Z : Type u) [TopologicalSpace Z], IsClosedMap (Prod.map f id : X × Z → Y × Z)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Mates.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "def mateEquiv : TwoSquare G L₁ L₂ H ≃ TwoSquare R₁ H G R₂ where"
+          },
+          {
+            "line": 123,
+            "head": "theorem mateEquiv_counit (α : TwoSquare G L₁ L₂ H) (d : D) : L₂.map ((mateEquiv adj₁ adj₂ α).app _) ≫ adj₂.counit.app _ = α.app _ ≫ H.map (adj₁.counit.app d)"
+          },
+          {
+            "line": 128,
+            "head": "theorem mateEquiv_counit_symm (α : TwoSquare R₁ H G R₂) (d : D) : L₂.map (α.app _) ≫ adj₂.counit.app _ = ((mateEquiv adj₁ adj₂).symm α).app _ ≫ H.map (adj₁.counit.app d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/CompactOpen.lean",
+        "signatures": [
+          {
+            "line": 374,
+            "head": "theorem exists_tendsto_compactOpen_iff_forall [WeaklyLocallyCompactSpace X] [T2Space Y] {ι : Type*} {l : Filter ι} [Filter.NeBot l] (F : ι → C(X, Y)) : (∃ f, Filter.Tendsto F l (𝓝 f)) ↔ ∀ s : Set X, IsCompact s → ∃ f, Filter.Tendsto (fun i => (F i).restrict s) l (𝓝 f)"
+          },
+          {
+            "line": 450,
+            "head": "theorem continuous_curry [LocallyCompactSpace (X × Y)] : Continuous (curry : C(X × Y, Z) → C(X, C(Y, Z)))"
+          },
+          {
+            "line": 458,
+            "head": "theorem continuous_uncurry_of_continuous [LocallyCompactSpace Y] (f : C(X, C(Y, Z))) : Continuous (Function.uncurry fun x y => f x y) := continuous_eval.comp <| f.continuous.prodMap continuous_id"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib IsProperMap は位相空間の写像の述語であり、任意の RTop pullback rectangle の左四角形が left adjointable となる幾何学射の述語ではない。ordinary sheaf pushforward をその高次の全基底変換条件と比較していない。"
+  },
+  "7.3.1.5": {
+    "page": 752,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.4",
+        "7.3.1",
+        "7.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 2489,
+        "line_count": 21686
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 670,
+        "line_count": 12494
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "instance [WeaklyLocallyCompactSpace X] [WeaklyLocallyCompactSpace Y] : WeaklyLocallyCompactSpace (X × Y) where"
+          },
+          {
+            "line": 36,
+            "head": "instance (priority := 100) [CompactSpace X] : WeaklyLocallyCompactSpace X where"
+          },
+          {
+            "line": 39,
+            "head": "protected theorem Topology.IsClosedEmbedding.weaklyLocallyCompactSpace [WeaklyLocallyCompactSpace Y] {f : X → Y} (hf : IsClosedEmbedding f) : WeaklyLocallyCompactSpace X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Separation/CompletelyRegular.lean",
+        "signatures": [
+          {
+            "line": 227,
+            "head": "class T35Space (X : Type u) [TopologicalSpace X] : Prop extends T0Space X, CompletelyRegularSpace X"
+          },
+          {
+            "line": 229,
+            "head": "instance T35Space.instT3space [T35Space X] : T3Space X where"
+          },
+          {
+            "line": 231,
+            "head": "instance T4Space.instT35Space [T4Space X] : T35Space X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/UniversallyClosed.lean",
+        "signatures": [
+          {
+            "line": 98,
+            "head": "theorem isProperMap_iff_universally_closed {X : Type u} {Y : Type v} [TopologicalSpace X] [TopologicalSpace Y] {f : X → Y} : IsProperMap f ↔ Continuous f ∧ ∀ (Z : Type u) [TopologicalSpace Z], IsClosedMap (Prod.map f id : X × Z → Y × Z)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Mates.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "def mateEquiv : TwoSquare G L₁ L₂ H ≃ TwoSquare R₁ H G R₂ where"
+          },
+          {
+            "line": 123,
+            "head": "theorem mateEquiv_counit (α : TwoSquare G L₁ L₂ H) (d : D) : L₂.map ((mateEquiv adj₁ adj₂ α).app _) ≫ adj₂.counit.app _ = α.app _ ≫ H.map (adj₁.counit.app d)"
+          },
+          {
+            "line": 128,
+            "head": "theorem mateEquiv_counit_symm (α : TwoSquare R₁ H G R₂) (d : D) : L₂.map (α.app _) ≫ adj₂.counit.app _ = ((mateEquiv adj₁ adj₂).symm α).app _ ≫ H.map (adj₁.counit.app d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/CompactOpen.lean",
+        "signatures": [
+          {
+            "line": 374,
+            "head": "theorem exists_tendsto_compactOpen_iff_forall [WeaklyLocallyCompactSpace X] [T2Space Y] {ι : Type*} {l : Filter ι} [Filter.NeBot l] (F : ι → C(X, Y)) : (∃ f, Filter.Tendsto F l (𝓝 f)) ↔ ∀ s : Set X, IsCompact s → ∃ f, Filter.Tendsto (fun i => (F i).restrict s) l (𝓝 f)"
+          },
+          {
+            "line": 450,
+            "head": "theorem continuous_curry [LocallyCompactSpace (X × Y)] : Continuous (curry : C(X × Y, Z) → C(X, C(Y, Z)))"
+          },
+          {
+            "line": 458,
+            "head": "theorem continuous_uncurry_of_continuous [LocallyCompactSpace Y] (f : C(X, C(Y, Z))) : Continuous (Function.uncurry fun x y => f x y) := continuous_eval.comp <| f.continuous.prodMap continuous_id"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "native filtered limit/colimit exchange はあるが、proper geometric morphism の述語と任意の Y-stack indexed colimits の保存を比較する型はない。ordinary filtered category の余極限保存だけを原典の relative stack を含む converse としない。"
+  },
+  "7.3.1.6": {
+    "page": 752,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.4",
+        "7.3.1",
+        "7.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 2489,
+        "line_count": 21686
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 670,
+        "line_count": 12494
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "instance [WeaklyLocallyCompactSpace X] [WeaklyLocallyCompactSpace Y] : WeaklyLocallyCompactSpace (X × Y) where"
+          },
+          {
+            "line": 36,
+            "head": "instance (priority := 100) [CompactSpace X] : WeaklyLocallyCompactSpace X where"
+          },
+          {
+            "line": 39,
+            "head": "protected theorem Topology.IsClosedEmbedding.weaklyLocallyCompactSpace [WeaklyLocallyCompactSpace Y] {f : X → Y} (hf : IsClosedEmbedding f) : WeaklyLocallyCompactSpace X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Separation/CompletelyRegular.lean",
+        "signatures": [
+          {
+            "line": 227,
+            "head": "class T35Space (X : Type u) [TopologicalSpace X] : Prop extends T0Space X, CompletelyRegularSpace X"
+          },
+          {
+            "line": 229,
+            "head": "instance T35Space.instT3space [T35Space X] : T3Space X where"
+          },
+          {
+            "line": 231,
+            "head": "instance T4Space.instT35Space [T4Space X] : T35Space X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/UniversallyClosed.lean",
+        "signatures": [
+          {
+            "line": 98,
+            "head": "theorem isProperMap_iff_universally_closed {X : Type u} {Y : Type v} [TopologicalSpace X] [TopologicalSpace Y] {f : X → Y} : IsProperMap f ↔ Continuous f ∧ ∀ (Z : Type u) [TopologicalSpace Z], IsClosedMap (Prod.map f id : X × Z → Y × Z)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Mates.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "def mateEquiv : TwoSquare G L₁ L₂ H ≃ TwoSquare R₁ H G R₂ where"
+          },
+          {
+            "line": 123,
+            "head": "theorem mateEquiv_counit (α : TwoSquare G L₁ L₂ H) (d : D) : L₂.map ((mateEquiv adj₁ adj₂ α).app _) ≫ adj₂.counit.app _ = α.app _ ≫ H.map (adj₁.counit.app d)"
+          },
+          {
+            "line": 128,
+            "head": "theorem mateEquiv_counit_symm (α : TwoSquare R₁ H G R₂) (d : D) : L₂.map (α.app _) ≫ adj₂.counit.app _ = ((mateEquiv adj₁ adj₂).symm α).app _ ≫ H.map (adj₁.counit.app d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/CompactOpen.lean",
+        "signatures": [
+          {
+            "line": 374,
+            "head": "theorem exists_tendsto_compactOpen_iff_forall [WeaklyLocallyCompactSpace X] [T2Space Y] {ι : Type*} {l : Filter ι} [Filter.NeBot l] (F : ι → C(X, Y)) : (∃ f, Filter.Tendsto F l (𝓝 f)) ↔ ∀ s : Set X, IsCompact s → ∃ f, Filter.Tendsto (fun i => (F i).restrict s) l (𝓝 f)"
+          },
+          {
+            "line": 450,
+            "head": "theorem continuous_curry [LocallyCompactSpace (X × Y)] : Continuous (curry : C(X × Y, Z) → C(X, C(Y, Z)))"
+          },
+          {
+            "line": 458,
+            "head": "theorem continuous_uncurry_of_continuous [LocallyCompactSpace Y] (f : C(X, C(Y, Z))) : Continuous (Function.uncurry fun x y => f x y) := continuous_eval.comp <| f.continuous.prodMap continuous_id"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "IsProperMap の同型・合成・base change 安定性はあるが、対象は位相空間である。幾何学射の properness の定義と Shv の比較なしに、それを RTop の四つの性質の特殊形としない。"
+  },
+  "7.3.1.11": {
+    "page": 753,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.4",
+        "7.3.1",
+        "7.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 2489,
+        "line_count": 21686
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 670,
+        "line_count": 12494
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "instance [WeaklyLocallyCompactSpace X] [WeaklyLocallyCompactSpace Y] : WeaklyLocallyCompactSpace (X × Y) where"
+          },
+          {
+            "line": 36,
+            "head": "instance (priority := 100) [CompactSpace X] : WeaklyLocallyCompactSpace X where"
+          },
+          {
+            "line": 39,
+            "head": "protected theorem Topology.IsClosedEmbedding.weaklyLocallyCompactSpace [WeaklyLocallyCompactSpace Y] {f : X → Y} (hf : IsClosedEmbedding f) : WeaklyLocallyCompactSpace X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Separation/CompletelyRegular.lean",
+        "signatures": [
+          {
+            "line": 227,
+            "head": "class T35Space (X : Type u) [TopologicalSpace X] : Prop extends T0Space X, CompletelyRegularSpace X"
+          },
+          {
+            "line": 229,
+            "head": "instance T35Space.instT3space [T35Space X] : T3Space X where"
+          },
+          {
+            "line": 231,
+            "head": "instance T4Space.instT35Space [T4Space X] : T35Space X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/UniversallyClosed.lean",
+        "signatures": [
+          {
+            "line": 98,
+            "head": "theorem isProperMap_iff_universally_closed {X : Type u} {Y : Type v} [TopologicalSpace X] [TopologicalSpace Y] {f : X → Y} : IsProperMap f ↔ Continuous f ∧ ∀ (Z : Type u) [TopologicalSpace Z], IsClosedMap (Prod.map f id : X × Z → Y × Z)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Mates.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "def mateEquiv : TwoSquare G L₁ L₂ H ≃ TwoSquare R₁ H G R₂ where"
+          },
+          {
+            "line": 123,
+            "head": "theorem mateEquiv_counit (α : TwoSquare G L₁ L₂ H) (d : D) : L₂.map ((mateEquiv adj₁ adj₂ α).app _) ≫ adj₂.counit.app _ = α.app _ ≫ H.map (adj₁.counit.app d)"
+          },
+          {
+            "line": 128,
+            "head": "theorem mateEquiv_counit_symm (α : TwoSquare R₁ H G R₂) (d : D) : L₂.map (α.app _) ≫ adj₂.counit.app _ = ((mateEquiv adj₁ adj₂).symm α).app _ ≫ H.map (adj₁.counit.app d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/CompactOpen.lean",
+        "signatures": [
+          {
+            "line": 374,
+            "head": "theorem exists_tendsto_compactOpen_iff_forall [WeaklyLocallyCompactSpace X] [T2Space Y] {ι : Type*} {l : Filter ι} [Filter.NeBot l] (F : ι → C(X, Y)) : (∃ f, Filter.Tendsto F l (𝓝 f)) ↔ ∀ s : Set X, IsCompact s → ∃ f, Filter.Tendsto (fun i => (F i).restrict s) l (𝓝 f)"
+          },
+          {
+            "line": 450,
+            "head": "theorem continuous_curry [LocallyCompactSpace (X × Y)] : Continuous (curry : C(X × Y, Z) → C(X, C(Y, Z)))"
+          },
+          {
+            "line": 458,
+            "head": "theorem continuous_uncurry_of_continuous [LocallyCompactSpace Y] (f : C(X, C(Y, Z))) : Continuous (Function.uncurry fun x y => f x y) := continuous_eval.comp <| f.continuous.prodMap continuous_id"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheaf on a product と TopCat の pullback はあるが、X locally compact のとき Shv(X×Y) が RTop の fiber product になる高次普遍性はない。set-valued sheaf の積位相との比較だけでは任意の source ∞-topos に対する写像空間を制御しない。"
+  },
+  "7.3.1.16": {
+    "page": 755,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.4",
+        "7.3.1",
+        "7.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 2489,
+        "line_count": 21686
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 670,
+        "line_count": 12494
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "instance [WeaklyLocallyCompactSpace X] [WeaklyLocallyCompactSpace Y] : WeaklyLocallyCompactSpace (X × Y) where"
+          },
+          {
+            "line": 36,
+            "head": "instance (priority := 100) [CompactSpace X] : WeaklyLocallyCompactSpace X where"
+          },
+          {
+            "line": 39,
+            "head": "protected theorem Topology.IsClosedEmbedding.weaklyLocallyCompactSpace [WeaklyLocallyCompactSpace Y] {f : X → Y} (hf : IsClosedEmbedding f) : WeaklyLocallyCompactSpace X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Separation/CompletelyRegular.lean",
+        "signatures": [
+          {
+            "line": 227,
+            "head": "class T35Space (X : Type u) [TopologicalSpace X] : Prop extends T0Space X, CompletelyRegularSpace X"
+          },
+          {
+            "line": 229,
+            "head": "instance T35Space.instT3space [T35Space X] : T3Space X where"
+          },
+          {
+            "line": 231,
+            "head": "instance T4Space.instT35Space [T4Space X] : T35Space X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/UniversallyClosed.lean",
+        "signatures": [
+          {
+            "line": 98,
+            "head": "theorem isProperMap_iff_universally_closed {X : Type u} {Y : Type v} [TopologicalSpace X] [TopologicalSpace Y] {f : X → Y} : IsProperMap f ↔ Continuous f ∧ ∀ (Z : Type u) [TopologicalSpace Z], IsClosedMap (Prod.map f id : X × Z → Y × Z)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Mates.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "def mateEquiv : TwoSquare G L₁ L₂ H ≃ TwoSquare R₁ H G R₂ where"
+          },
+          {
+            "line": 123,
+            "head": "theorem mateEquiv_counit (α : TwoSquare G L₁ L₂ H) (d : D) : L₂.map ((mateEquiv adj₁ adj₂ α).app _) ≫ adj₂.counit.app _ = α.app _ ≫ H.map (adj₁.counit.app d)"
+          },
+          {
+            "line": 128,
+            "head": "theorem mateEquiv_counit_symm (α : TwoSquare R₁ H G R₂) (d : D) : L₂.map (α.app _) ≫ adj₂.counit.app _ = ((mateEquiv adj₁ adj₂).symm α).app _ ≫ H.map (adj₁.counit.app d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/CompactOpen.lean",
+        "signatures": [
+          {
+            "line": 374,
+            "head": "theorem exists_tendsto_compactOpen_iff_forall [WeaklyLocallyCompactSpace X] [T2Space Y] {ι : Type*} {l : Filter ι} [Filter.NeBot l] (F : ι → C(X, Y)) : (∃ f, Filter.Tendsto F l (𝓝 f)) ↔ ∀ s : Set X, IsCompact s → ∃ f, Filter.Tendsto (fun i => (F i).restrict s) l (𝓝 f)"
+          },
+          {
+            "line": 450,
+            "head": "theorem continuous_curry [LocallyCompactSpace (X × Y)] : Continuous (curry : C(X × Y, Z) → C(X, C(Y, Z)))"
+          },
+          {
+            "line": 458,
+            "head": "theorem continuous_uncurry_of_continuous [LocallyCompactSpace Y] (f : C(X, C(Y, Z))) : Continuous (Function.uncurry fun x y => f x y) := continuous_eval.comp <| f.continuous.prodMap continuous_id"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib proper-map の位相的な判定はあるが、Shv(X)→Shv(Y) の幾何学射の universal left-adjointability と同じ比較はない。ordinary sheaf の直像だけは space-valued proper geometric morphism の述語を供給しない。"
+  },
+  "7.3.1.17": {
+    "page": 755,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.4",
+        "7.3.1",
+        "7.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 2489,
+        "line_count": 21686
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 670,
+        "line_count": 12494
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "instance [WeaklyLocallyCompactSpace X] [WeaklyLocallyCompactSpace Y] : WeaklyLocallyCompactSpace (X × Y) where"
+          },
+          {
+            "line": 36,
+            "head": "instance (priority := 100) [CompactSpace X] : WeaklyLocallyCompactSpace X where"
+          },
+          {
+            "line": 39,
+            "head": "protected theorem Topology.IsClosedEmbedding.weaklyLocallyCompactSpace [WeaklyLocallyCompactSpace Y] {f : X → Y} (hf : IsClosedEmbedding f) : WeaklyLocallyCompactSpace X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Separation/CompletelyRegular.lean",
+        "signatures": [
+          {
+            "line": 227,
+            "head": "class T35Space (X : Type u) [TopologicalSpace X] : Prop extends T0Space X, CompletelyRegularSpace X"
+          },
+          {
+            "line": 229,
+            "head": "instance T35Space.instT3space [T35Space X] : T3Space X where"
+          },
+          {
+            "line": 231,
+            "head": "instance T4Space.instT35Space [T4Space X] : T35Space X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/UniversallyClosed.lean",
+        "signatures": [
+          {
+            "line": 98,
+            "head": "theorem isProperMap_iff_universally_closed {X : Type u} {Y : Type v} [TopologicalSpace X] [TopologicalSpace Y] {f : X → Y} : IsProperMap f ↔ Continuous f ∧ ∀ (Z : Type u) [TopologicalSpace Z], IsClosedMap (Prod.map f id : X × Z → Y × Z)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Mates.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "def mateEquiv : TwoSquare G L₁ L₂ H ≃ TwoSquare R₁ H G R₂ where"
+          },
+          {
+            "line": 123,
+            "head": "theorem mateEquiv_counit (α : TwoSquare G L₁ L₂ H) (d : D) : L₂.map ((mateEquiv adj₁ adj₂ α).app _) ≫ adj₂.counit.app _ = α.app _ ≫ H.map (adj₁.counit.app d)"
+          },
+          {
+            "line": 128,
+            "head": "theorem mateEquiv_counit_symm (α : TwoSquare R₁ H G R₂) (d : D) : L₂.map (α.app _) ≫ adj₂.counit.app _ = ((mateEquiv adj₁ adj₂).symm α).app _ ≫ H.map (adj₁.counit.app d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/CompactOpen.lean",
+        "signatures": [
+          {
+            "line": 374,
+            "head": "theorem exists_tendsto_compactOpen_iff_forall [WeaklyLocallyCompactSpace X] [T2Space Y] {ι : Type*} {l : Filter ι} [Filter.NeBot l] (F : ι → C(X, Y)) : (∃ f, Filter.Tendsto F l (𝓝 f)) ↔ ∀ s : Set X, IsCompact s → ∃ f, Filter.Tendsto (fun i => (F i).restrict s) l (𝓝 f)"
+          },
+          {
+            "line": 450,
+            "head": "theorem continuous_curry [LocallyCompactSpace (X × Y)] : Continuous (curry : C(X × Y, Z) → C(X, C(Y, Z)))"
+          },
+          {
+            "line": 458,
+            "head": "theorem continuous_uncurry_of_continuous [LocallyCompactSpace Y] (f : C(X, C(Y, Z))) : Continuous (Function.uncurry fun x y => f x y) := continuous_eval.comp <| f.continuous.prodMap continuous_id"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "位相的 IsProperMap の fiber 判定と ordinary sheaf pushforward はあるが、原典の arbitrary space-valued proper geometric morphism から p の closed/compact fibers を復元する型はない。ordinary site の local data だけではその converse を述べない。"
+  },
+  "7.3.1.18": {
+    "page": 756,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.4",
+        "7.3.1",
+        "7.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 2489,
+        "line_count": 21686
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 670,
+        "line_count": 12494
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "instance [WeaklyLocallyCompactSpace X] [WeaklyLocallyCompactSpace Y] : WeaklyLocallyCompactSpace (X × Y) where"
+          },
+          {
+            "line": 36,
+            "head": "instance (priority := 100) [CompactSpace X] : WeaklyLocallyCompactSpace X where"
+          },
+          {
+            "line": 39,
+            "head": "protected theorem Topology.IsClosedEmbedding.weaklyLocallyCompactSpace [WeaklyLocallyCompactSpace Y] {f : X → Y} (hf : IsClosedEmbedding f) : WeaklyLocallyCompactSpace X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Separation/CompletelyRegular.lean",
+        "signatures": [
+          {
+            "line": 227,
+            "head": "class T35Space (X : Type u) [TopologicalSpace X] : Prop extends T0Space X, CompletelyRegularSpace X"
+          },
+          {
+            "line": 229,
+            "head": "instance T35Space.instT3space [T35Space X] : T3Space X where"
+          },
+          {
+            "line": 231,
+            "head": "instance T4Space.instT35Space [T4Space X] : T35Space X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/UniversallyClosed.lean",
+        "signatures": [
+          {
+            "line": 98,
+            "head": "theorem isProperMap_iff_universally_closed {X : Type u} {Y : Type v} [TopologicalSpace X] [TopologicalSpace Y] {f : X → Y} : IsProperMap f ↔ Continuous f ∧ ∀ (Z : Type u) [TopologicalSpace Z], IsClosedMap (Prod.map f id : X × Z → Y × Z)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Mates.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "def mateEquiv : TwoSquare G L₁ L₂ H ≃ TwoSquare R₁ H G R₂ where"
+          },
+          {
+            "line": 123,
+            "head": "theorem mateEquiv_counit (α : TwoSquare G L₁ L₂ H) (d : D) : L₂.map ((mateEquiv adj₁ adj₂ α).app _) ≫ adj₂.counit.app _ = α.app _ ≫ H.map (adj₁.counit.app d)"
+          },
+          {
+            "line": 128,
+            "head": "theorem mateEquiv_counit_symm (α : TwoSquare R₁ H G R₂) (d : D) : L₂.map (α.app _) ≫ adj₂.counit.app _ = ((mateEquiv adj₁ adj₂).symm α).app _ ≫ H.map (adj₁.counit.app d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/CompactOpen.lean",
+        "signatures": [
+          {
+            "line": 374,
+            "head": "theorem exists_tendsto_compactOpen_iff_forall [WeaklyLocallyCompactSpace X] [T2Space Y] {ι : Type*} {l : Filter ι} [Filter.NeBot l] (F : ι → C(X, Y)) : (∃ f, Filter.Tendsto F l (𝓝 f)) ↔ ∀ s : Set X, IsCompact s → ∃ f, Filter.Tendsto (fun i => (F i).restrict s) l (𝓝 f)"
+          },
+          {
+            "line": 450,
+            "head": "theorem continuous_curry [LocallyCompactSpace (X × Y)] : Continuous (curry : C(X × Y, Z) → C(X, C(Y, Z)))"
+          },
+          {
+            "line": 458,
+            "head": "theorem continuous_uncurry_of_continuous [LocallyCompactSpace Y] (f : C(X, C(Y, Z))) : Continuous (Function.uncurry fun x y => f x y) := continuous_eval.comp <| f.continuous.prodMap continuous_id"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary presheaf の base-change mates はあるが、locally compact Hausdorff の proper pullback square に対し space-valued Shv の mate を可逆とする型はない。Mathlib の位相的 properness と通常の restriction functor の別々の定義はこの theorem の成分にならない。"
+  },
+  "7.3.1.19": {
+    "page": 756,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.4",
+        "7.3.1",
+        "7.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 2489,
+        "line_count": 21686
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsProperMap|universally_closed|LocallyCompactSpace|T35Space|mateEquiv|[Bb]ase[Cc]hange|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 670,
+        "line_count": 12494
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "instance [WeaklyLocallyCompactSpace X] [WeaklyLocallyCompactSpace Y] : WeaklyLocallyCompactSpace (X × Y) where"
+          },
+          {
+            "line": 36,
+            "head": "instance (priority := 100) [CompactSpace X] : WeaklyLocallyCompactSpace X where"
+          },
+          {
+            "line": 39,
+            "head": "protected theorem Topology.IsClosedEmbedding.weaklyLocallyCompactSpace [WeaklyLocallyCompactSpace Y] {f : X → Y} (hf : IsClosedEmbedding f) : WeaklyLocallyCompactSpace X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Separation/CompletelyRegular.lean",
+        "signatures": [
+          {
+            "line": 227,
+            "head": "class T35Space (X : Type u) [TopologicalSpace X] : Prop extends T0Space X, CompletelyRegularSpace X"
+          },
+          {
+            "line": 229,
+            "head": "instance T35Space.instT3space [T35Space X] : T3Space X where"
+          },
+          {
+            "line": 231,
+            "head": "instance T4Space.instT35Space [T4Space X] : T35Space X where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/UniversallyClosed.lean",
+        "signatures": [
+          {
+            "line": 98,
+            "head": "theorem isProperMap_iff_universally_closed {X : Type u} {Y : Type v} [TopologicalSpace X] [TopologicalSpace Y] {f : X → Y} : IsProperMap f ↔ Continuous f ∧ ∀ (Z : Type u) [TopologicalSpace Z], IsClosedMap (Prod.map f id : X × Z → Y × Z)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Mates.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "def mateEquiv : TwoSquare G L₁ L₂ H ≃ TwoSquare R₁ H G R₂ where"
+          },
+          {
+            "line": 123,
+            "head": "theorem mateEquiv_counit (α : TwoSquare G L₁ L₂ H) (d : D) : L₂.map ((mateEquiv adj₁ adj₂ α).app _) ≫ adj₂.counit.app _ = α.app _ ≫ H.map (adj₁.counit.app d)"
+          },
+          {
+            "line": 128,
+            "head": "theorem mateEquiv_counit_symm (α : TwoSquare R₁ H G R₂) (d : D) : L₂.map (α.app _) ≫ adj₂.counit.app _ = ((mateEquiv adj₁ adj₂).symm α).app _ ≫ H.map (adj₁.counit.app d)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/CompactOpen.lean",
+        "signatures": [
+          {
+            "line": 374,
+            "head": "theorem exists_tendsto_compactOpen_iff_forall [WeaklyLocallyCompactSpace X] [T2Space Y] {ι : Type*} {l : Filter ι} [Filter.NeBot l] (F : ι → C(X, Y)) : (∃ f, Filter.Tendsto F l (𝓝 f)) ↔ ∀ s : Set X, IsCompact s → ∃ f, Filter.Tendsto (fun i => (F i).restrict s) l (𝓝 f)"
+          },
+          {
+            "line": 450,
+            "head": "theorem continuous_curry [LocallyCompactSpace (X × Y)] : Continuous (curry : C(X × Y, Z) → C(X, C(Y, Z)))"
+          },
+          {
+            "line": 458,
+            "head": "theorem continuous_uncurry_of_continuous [LocallyCompactSpace Y] (f : C(X, C(Y, Z))) : Continuous (Function.uncurry fun x y => f x y) := continuous_eval.comp <| f.continuous.prodMap continuous_id"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib sheaf derived category と abstract mates はあるが、原典の C-valued sheaf∞ の proper base change と hShv(Z;C) の D+(Z) への比較はない。通常の Ext の定義は bounded-below/unbounded derived push-pull square の可逆性ではない。"
+  }
+}

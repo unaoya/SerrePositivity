@@ -8,18 +8,11 @@
     "#print axioms <declaration>"
   ],
   "items": {
-    "1.4.1.1": {
-      "ha_page": 134,
-      "declarations": [
-        "SerrePositivity.InfinityCategories.suspensionFunctorOfFiniteColimits",
-        "SerrePositivity.InfinityCategories.hasBinaryBiproducts_ho"
-      ]
-    },
     "1.4.1.3": {
       "ha_page": 135,
       "declarations": [
-        "SerrePositivity.InfinityCategories.hasBinaryBiproducts_ho",
-        "SerrePositivity.InfinityCategories.F2.Ind.ind_stableCompactGeneration_unconditional"
+        "SerrePositivity.InfinityCategories.preadditive_ho",
+        "SerrePositivity.InfinityCategories.hasBinaryBiproducts_ho"
       ]
     },
     "1.4.1.6": {
@@ -131,21 +124,6 @@
         "SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor"
       ]
     },
-    "1.4.2.24": {
-      "ha_page": 147,
-      "declarations": [
-        "SerrePositivity.KST.Spectra.KanSequence.OmegaCondition",
-        "SerrePositivity.KST.Spectra.KanSequence.toOmegaSpectrum",
-        "SerrePositivity.KST.Spectra.OmegaSpectrum.toKanSequence_omega"
-      ]
-    },
-    "1.4.2.25": {
-      "ha_page": 147,
-      "declarations": [
-        "SerrePositivity.KST.Spectra.KanSequence.OmegaCondition",
-        "SerrePositivity.KST.Spectra.OmegaSpectrum.toKanSequence_omega"
-      ]
-    },
     "1.4.2.27": {
       "ha_page": 149,
       "declarations": [
@@ -185,13 +163,6 @@
       "declarations": [
         "SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.isLocallySmall",
         "SerrePositivity.InfinityCategories.F2.Presentable.isPresentable_iff_cocompleteIndEquivalence"
-      ]
-    },
-    "1.4.4.9": {
-      "ha_page": 159,
-      "declarations": [
-        "SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.exists_reflectiveIndModel",
-        "SerrePositivity.InfinityCategories.F2.Ind.ind_stable_with_fullyFaithful_exactYoneda_unconditional"
       ]
     }
   },
@@ -261,19 +232,6 @@
         "Quot.sound"
       ]
     },
-    "SerrePositivity.InfinityCategories.suspensionFunctorOfFiniteColimits": {
-      "name": "SerrePositivity.InfinityCategories.suspensionFunctorOfFiniteColimits",
-      "module": "SerrePositivity.InfinityCategories.Stable.SuspensionFiniteColimits",
-      "path": "SerrePositivity/InfinityCategories/Stable/SuspensionFiniteColimits.lean",
-      "line": 78,
-      "source_sha256": "d255c8bb0c315b1860918b75752b6b20041fbbbd9d5963a403f5e1064b5721c8",
-      "type": "SerrePositivity.InfinityCategories.suspensionFunctorOfFiniteColimits.{u_1} : (X : SSet.{u_1}) →\n  [X.Quasicategory] →\n    [SerrePositivity.InfinityCategories.HasZeroVertex.{u_1} X] →\n      [SerrePositivity.InfinityCategories.HasFiniteColimits.{u_1} X] →\n        @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})))\n          X X",
-      "axioms": [
-        "propext",
-        "Classical.choice",
-        "Quot.sound"
-      ]
-    },
     "SerrePositivity.InfinityCategories.hasBinaryBiproducts_ho": {
       "name": "SerrePositivity.InfinityCategories.hasBinaryBiproducts_ho",
       "module": "SerrePositivity.InfinityCategories.Stable.HomotopyBinaryBiproduct",
@@ -281,19 +239,6 @@
       "line": 89,
       "source_sha256": "b93bd21fa90bf6330d608df6563017146f19288c805678a875f896a68aa5985b",
       "type": "@SerrePositivity.InfinityCategories.hasBinaryBiproducts_ho.{u_1} : ∀ {X : SSet.{u_1}} [inst : X.Quasicategory]\n  [inst_1 : @SerrePositivity.InfinityCategories.IsStable.{u_1} X inst],\n  @CategoryTheory.Limits.HasBinaryBiproducts.{u_1, u_1}\n    (@CategoryTheory.Bundled.α.{u_1, u_1 + 1} CategoryTheory.Category.{u_1, u_1}\n      (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X))\n    (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X).str\n    (@SerrePositivity.InfinityCategories.hasZeroMorphisms_ho.{u_1} X inst ⋯)",
-      "axioms": [
-        "propext",
-        "Classical.choice",
-        "Quot.sound"
-      ]
-    },
-    "SerrePositivity.InfinityCategories.F2.Ind.ind_stableCompactGeneration_unconditional": {
-      "name": "SerrePositivity.InfinityCategories.F2.Ind.ind_stableCompactGeneration_unconditional",
-      "module": "SerrePositivity.InfinityCategories.F2.Ind.UnconditionalStableCompactGeneration",
-      "path": "SerrePositivity/InfinityCategories/F2/Ind/UnconditionalStableCompactGeneration.lean",
-      "line": 43,
-      "source_sha256": "4000ae8a2b9610b9820f1b2bdea98e50446f4a3f5a304ad3e7d1b1be204a73eb",
-      "type": "SerrePositivity.InfinityCategories.F2.Ind.ind_stableCompactGeneration_unconditional.{u_1} : (κ : Cardinal.{u_1}) →\n  [Fact κ.IsRegular] →\n    @LE.le.{u_1 + 1} Cardinal.{u_1} Cardinal.instLE.{u_1} Cardinal.aleph0.{u_1} κ →\n      (C : SSet.{u_1}) →\n        [inst : C.Quasicategory] →\n          [@SerrePositivity.InfinityCategories.IsStable.{u_1} C inst] →\n            SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete.{u_1} C →\n              @SerrePositivity.InfinityCategories.F2.Ind.StableCompactGeneration.{u_1} κ C inst",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -599,19 +544,6 @@
         "Quot.sound"
       ]
     },
-    "SerrePositivity.KST.Spectra.OmegaSpectrum.toKanSequence_omega": {
-      "name": "SerrePositivity.KST.Spectra.OmegaSpectrum.toKanSequence_omega",
-      "module": "SerrePositivity.KST.Spectra.KanSequence",
-      "path": "SerrePositivity/KST/Spectra/KanSequence.lean",
-      "line": 99,
-      "source_sha256": "f31be1f061aa7aea819af8278a659d041515d945dac66c6c305797c01c36802c",
-      "type": "SerrePositivity.KST.Spectra.OmegaSpectrum.toKanSequence_omega.{u_1} : ∀\n  (X : SerrePositivity.KST.Spectra.OmegaSpectrum.{u_1}), X.toKanSequence.OmegaCondition",
-      "axioms": [
-        "propext",
-        "Classical.choice",
-        "Quot.sound"
-      ]
-    },
     "SerrePositivity.InfinityCategories.suspensionFunctorOfLoopEquivalence_isQCatEquivalence": {
       "name": "SerrePositivity.InfinityCategories.suspensionFunctorOfLoopEquivalence_isQCatEquivalence",
       "module": "SerrePositivity.InfinityCategories.Stable.SuspensionEquivalenceOfLoopEquivalence",
@@ -703,31 +635,20 @@
         "Quot.sound"
       ]
     },
-    "SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.exists_reflectiveIndModel": {
-      "name": "SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.exists_reflectiveIndModel",
-      "module": "SerrePositivity.InfinityCategories.F2.Presentable.IndPresheafReflection",
-      "path": "SerrePositivity/InfinityCategories/F2/Presentable/IndPresheafReflection.lean",
-      "line": 47,
-      "source_sha256": "a5b8390dc6bdd930ef6329550dee4cd0b7f633336c076de774e76bc6a2dd30a4",
-      "type": "@SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.exists_reflectiveIndModel.{u_1} : ∀\n  {C : SSet.{u_1 + 1}} [inst : C.Quasicategory],\n  @SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.{u_1} C inst →\n    ∃ κ,\n      And κ.IsRegular\n        (∃ A,\n          ∃ (hA : A.Quasicategory),\n            have this := hA;\n            And\n              (Nonempty.{u_1 + 2}\n                (@SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1 + 1}\n                  (SerrePositivity.InfinityCategories.PresheafInfinity.{u_1} A) ⋯\n                  (@SerrePositivity.InfinityCategories.F2.Ind.IsIndVertex.{u_1} κ A this)))\n              (Nonempty.{u_1 + 2}\n                (@SerrePositivity.InfinityCategories.QCatEquivalence.{u_1 + 1}\n                  (@SerrePositivity.InfinityCategories.F2.Ind.IndInfinity.{u_1} κ A this) C ⋯ inst)))",
-      "axioms": [
-        "propext",
-        "Classical.choice",
-        "Quot.sound"
-      ]
-    },
-    "SerrePositivity.InfinityCategories.F2.Ind.ind_stable_with_fullyFaithful_exactYoneda_unconditional": {
-      "name": "SerrePositivity.InfinityCategories.F2.Ind.ind_stable_with_fullyFaithful_exactYoneda_unconditional",
-      "module": "SerrePositivity.InfinityCategories.F2.Ind.UnconditionalStableCompactGeneration",
-      "path": "SerrePositivity/InfinityCategories/F2/Ind/UnconditionalStableCompactGeneration.lean",
+    "SerrePositivity.InfinityCategories.preadditive_ho": {
+      "name": "SerrePositivity.InfinityCategories.preadditive_ho",
+      "module": "SerrePositivity.InfinityCategories.Stable.HomotopyPreadditive",
+      "path": "SerrePositivity/InfinityCategories/Stable/HomotopyPreadditive.lean",
       "line": 35,
-      "source_sha256": "4000ae8a2b9610b9820f1b2bdea98e50446f4a3f5a304ad3e7d1b1be204a73eb",
-      "type": "SerrePositivity.InfinityCategories.F2.Ind.ind_stable_with_fullyFaithful_exactYoneda_unconditional.{u_1} : ∀\n  (κ : Cardinal.{u_1}) [Fact κ.IsRegular],\n  @LE.le.{u_1 + 1} Cardinal.{u_1} Cardinal.instLE.{u_1} Cardinal.aleph0.{u_1} κ →\n    ∀ (C : SSet.{u_1}) [inst : C.Quasicategory] [@SerrePositivity.InfinityCategories.IsStable.{u_1} C inst],\n      And\n        (@SerrePositivity.InfinityCategories.IsStable.{u_1 + 1}\n          (@SerrePositivity.InfinityCategories.F2.Ind.IndInfinity.{u_1} κ C inst) ⋯)\n        (And\n          (@SerrePositivity.InfinityCategories.IsFullyFaithful.{u_1 + 1}\n            (@CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})\n              SSet.{u_1 + 1}\n              (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                (Type (u_1 + 1)) CategoryTheory.types.{u_1 + 1})\n              SSet.uliftFunctor.{u_1 + 1, u_1} C)\n            (@SerrePositivity.InfinityCategories.F2.Ind.IndInfinity.{u_1} κ C inst)\n            (@SerrePositivity.InfinityCategories.F2.Ind.indYoneda.{u_1} κ C inst))\n          (@SerrePositivity.InfinityCategories.IsExactFunctor.{u_1 + 1}\n            (@CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})\n              SSet.{u_1 + 1}\n              (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                (Type (u_1 + 1)) CategoryTheory.types.{u_1 + 1})\n              SSet.uliftFunctor.{u_1 + 1, u_1} C)\n            (@SerrePositivity.InfinityCategories.F2.Ind.IndInfinity.{u_1} κ C inst)\n            (@SerrePositivity.InfinityCategories.F2.Ind.indYoneda.{u_1} κ C inst)))",
+      "source_sha256": "740bd80a2b46e79a5efeffd10f8e34c3458fca9b0b6321359ded62d16a895f58",
+      "type": "@SerrePositivity.InfinityCategories.preadditive_ho.{u_1} : {X : SSet.{u_1}} →\n  [inst : X.Quasicategory] →\n    [@SerrePositivity.InfinityCategories.IsStable.{u_1} X inst] →\n      @CategoryTheory.Preadditive.{u_1, u_1}\n        (@CategoryTheory.Bundled.α.{u_1, u_1 + 1} CategoryTheory.Category.{u_1, u_1}\n          (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X))\n        (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            CategoryTheory.Cat.{u_1, u_1} CategoryTheory.Cat.category.{u_1, u_1} SSet.hoFunctor.{u_1} X).str",
       "axioms": [
         "propext",
         "Classical.choice",
         "Quot.sound"
       ]
     }
-  }
+  },
+  "evidence_reuse": "1.4.1.3のpreadditive_hoは同一コミットでのch1-1.1の型・公理検査から再利用。",
+  "review_update": "段4で旧partialを厳密基準に再分類。型検査自体の元の版は維持。"
 }

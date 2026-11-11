@@ -1,0 +1,622 @@
+{
+  "A.2.8.3": {
+    "page": 830,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.7",
+        "A.2.8",
+        "A.2.9"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Projective|Injective|objectwise|leftProper|postcompose|[Kk]anExtension|[Hh]omotopyLimit|legs_cofibrations",
+          "SerrePositivity"
+        ],
+        "file_count": 5245,
+        "line_count": 20649
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Projective|Injective|objectwise|leftProper|postcompose|[Kk]anExtension|[Hh]omotopyLimit|legs_cofibrations",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1760,
+        "line_count": 8982
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/Projective.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "abbrev objectwise (P : MorphismProperty C) := ModelGeneration.EvaluationFamily.detected (evaluation K) P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveQuillen.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma weakEquivalence_iff_objectwise {F G : K ⥤ C} (f : F ⟶ G) : let := modelCategory K I J WeakEquivalence f ↔ ∀ k, WeakEquivalence (f.app k)"
+          },
+          {
+            "line": 30,
+            "head": "lemma fibration_iff_objectwise {F G : K ⥤ C} (f : F ⟶ G) : let := modelCategory K I J Fibration f ↔ ∀ k, Fibration (f.app k)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveCofibrations.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "lemma cofibrations_le_objectwise : let := modelCategory K I J cofibrations (K ⥤ C) ≤ objectwise K (cofibrations C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveLeftProper.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma leftProper : let := modelCategory K I J (weakEquivalences (K ⥤ C)).IsStableUnderCobaseChangeAgainst (cofibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveSpan.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma legs_cofibrations (D : K ⥤ C) (hD : let := Projective.modelCategory K I J; IsCofibrant D) : cofibrations C (D.map (e.inverse.map WalkingSpan.Hom.fst)) ∧ cofibrations C (D.map (e.inverse.map WalkingSpan.Hom.snd))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/SpanCofibrations.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma fst_cofibration : cofibrations C (D.map WalkingSpan.Hom.fst)"
+          },
+          {
+            "line": 54,
+            "head": "lemma snd_cofibration : cofibrations C (D.map WalkingSpan.Hom.snd)"
+          }
+        ]
+      }
+    ],
+    "decision": "native Projective.generators は free/evaluation の生成射を作るが、その left class は projective cofibration であって任意の objectwise weakly saturated S の全射ではない。injective model 用の objectwise class を小さい集合で生成する定理はなく、projective の結果を取り違えない。"
+  },
+  "A.2.8.8": {
+    "page": 833,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.7",
+        "A.2.8",
+        "A.2.9"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Projective|Injective|objectwise|leftProper|postcompose|[Kk]anExtension|[Hh]omotopyLimit|legs_cofibrations",
+          "SerrePositivity"
+        ],
+        "file_count": 5245,
+        "line_count": 20649
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Projective|Injective|objectwise|leftProper|postcompose|[Kk]anExtension|[Hh]omotopyLimit|legs_cofibrations",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1760,
+        "line_count": 8982
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/Projective.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "abbrev objectwise (P : MorphismProperty C) := ModelGeneration.EvaluationFamily.detected (evaluation K) P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveQuillen.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma weakEquivalence_iff_objectwise {F G : K ⥤ C} (f : F ⟶ G) : let := modelCategory K I J WeakEquivalence f ↔ ∀ k, WeakEquivalence (f.app k)"
+          },
+          {
+            "line": 30,
+            "head": "lemma fibration_iff_objectwise {F G : K ⥤ C} (f : F ⟶ G) : let := modelCategory K I J Fibration f ↔ ∀ k, Fibration (f.app k)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveCofibrations.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "lemma cofibrations_le_objectwise : let := modelCategory K I J cofibrations (K ⥤ C) ≤ objectwise K (cofibrations C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveLeftProper.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma leftProper : let := modelCategory K I J (weakEquivalences (K ⥤ C)).IsStableUnderCobaseChangeAgainst (cofibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveSpan.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma legs_cofibrations (D : K ⥤ C) (hD : let := Projective.modelCategory K I J; IsCofibrant D) : cofibrations C (D.map (e.inverse.map WalkingSpan.Hom.fst)) ∧ cofibrations C (D.map (e.inverse.map WalkingSpan.Hom.snd))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/SpanCofibrations.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma fst_cofibration : cofibrations C (D.map WalkingSpan.Hom.fst)"
+          },
+          {
+            "line": 54,
+            "head": "lemma snd_cofibration : cofibrations C (D.map WalkingSpan.Hom.snd)"
+          }
+        ]
+      }
+    ],
+    "decision": "native HomotopyLimit は ModelCategory SSet と monoidal Quillen compatibility を明示的に仮定した weighted-cone construction で、具体的な SSet model instance はない。さらに任意 f の injectively fibrant F に対する f* の元の counit による right Kan extension の比較とは異なり、const に対する localized right adjoint だけをこの主張の成分としない。"
+  },
+  "A.2.8.9": {
+    "page": 834,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.7",
+        "A.2.8",
+        "A.2.9"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Projective|Injective|objectwise|leftProper|postcompose|[Kk]anExtension|[Hh]omotopyLimit|legs_cofibrations",
+          "SerrePositivity"
+        ],
+        "file_count": 5245,
+        "line_count": 20649
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Projective|Injective|objectwise|leftProper|postcompose|[Kk]anExtension|[Hh]omotopyLimit|legs_cofibrations",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1760,
+        "line_count": 8982
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/Projective.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "abbrev objectwise (P : MorphismProperty C) := ModelGeneration.EvaluationFamily.detected (evaluation K) P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveQuillen.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma weakEquivalence_iff_objectwise {F G : K ⥤ C} (f : F ⟶ G) : let := modelCategory K I J WeakEquivalence f ↔ ∀ k, WeakEquivalence (f.app k)"
+          },
+          {
+            "line": 30,
+            "head": "lemma fibration_iff_objectwise {F G : K ⥤ C} (f : F ⟶ G) : let := modelCategory K I J Fibration f ↔ ∀ k, Fibration (f.app k)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveCofibrations.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "lemma cofibrations_le_objectwise : let := modelCategory K I J cofibrations (K ⥤ C) ≤ objectwise K (cofibrations C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveLeftProper.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma leftProper : let := modelCategory K I J (weakEquivalences (K ⥤ C)).IsStableUnderCobaseChangeAgainst (cofibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveSpan.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma legs_cofibrations (D : K ⥤ C) (hD : let := Projective.modelCategory K I J; IsCofibrant D) : cofibrations C (D.map (e.inverse.map WalkingSpan.Hom.fst)) ∧ cofibrations C (D.map (e.inverse.map WalkingSpan.Hom.snd))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/SpanCofibrations.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma fst_cofibration : cofibrations C (D.map WalkingSpan.Hom.fst)"
+          },
+          {
+            "line": 54,
+            "head": "lemma snd_cofibration : cofibrations C (D.map WalkingSpan.Hom.snd)"
+          }
+        ]
+      }
+    ],
+    "decision": "native ordinary right Kan extension と homotopy limit の別構成はあるが、原典の injective diagram model の Rf* と C×D Dd/ 上の同じ derived-limit comparison の iff はない。通常の pointwise Kan formula だけでは weak equivalences を反転した比較を供給しない。"
+  },
+  "A.2.8.10": {
+    "page": 834,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.7",
+        "A.2.8",
+        "A.2.9"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Projective|Injective|objectwise|leftProper|postcompose|[Kk]anExtension|[Hh]omotopyLimit|legs_cofibrations",
+          "SerrePositivity"
+        ],
+        "file_count": 5245,
+        "line_count": 20649
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Projective|Injective|objectwise|leftProper|postcompose|[Kk]anExtension|[Hh]omotopyLimit|legs_cofibrations",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1760,
+        "line_count": 8982
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/Projective.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "abbrev objectwise (P : MorphismProperty C) := ModelGeneration.EvaluationFamily.detected (evaluation K) P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveQuillen.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma weakEquivalence_iff_objectwise {F G : K ⥤ C} (f : F ⟶ G) : let := modelCategory K I J WeakEquivalence f ↔ ∀ k, WeakEquivalence (f.app k)"
+          },
+          {
+            "line": 30,
+            "head": "lemma fibration_iff_objectwise {F G : K ⥤ C} (f : F ⟶ G) : let := modelCategory K I J Fibration f ↔ ∀ k, Fibration (f.app k)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveCofibrations.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "lemma cofibrations_le_objectwise : let := modelCategory K I J cofibrations (K ⥤ C) ≤ objectwise K (cofibrations C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveLeftProper.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma leftProper : let := modelCategory K I J (weakEquivalences (K ⥤ C)).IsStableUnderCobaseChangeAgainst (cofibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveSpan.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma legs_cofibrations (D : K ⥤ C) (hD : let := Projective.modelCategory K I J; IsCofibrant D) : cofibrations C (D.map (e.inverse.map WalkingSpan.Hom.fst)) ∧ cofibrations C (D.map (e.inverse.map WalkingSpan.Hom.snd))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/SpanCofibrations.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma fst_cofibration : cofibrations C (D.map WalkingSpan.Hom.fst)"
+          },
+          {
+            "line": 54,
+            "head": "lemma snd_cofibration : cofibrations C (D.map WalkingSpan.Hom.snd)"
+          }
+        ]
+      }
+    ],
+    "decision": "native ProjectiveReindexing.llp_map は同値 e:K≌L による lifting-class の保存であり、任意の cofibered-in-sets functor g の injective fibration 保存ではない。injective class との比較や discrete opfibration の Kan extension 計算を供給していない。"
+  }
+}

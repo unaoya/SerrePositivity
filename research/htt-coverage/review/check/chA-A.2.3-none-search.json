@@ -1,0 +1,87 @@
+{
+  "A.2.3.1": {
+    "page": 812,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.2",
+        "A.2.3",
+        "A.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "covering_homotopy|[Hh]omotopy.*[Ee]xtension|strictif|bijective_leftHomotopyClassToHom|[Ll]ift",
+          "SerrePositivity"
+        ],
+        "file_count": 10740,
+        "line_count": 68139
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "covering_homotopy|[Hh]omotopy.*[Ee]xtension|strictif|bijective_leftHomotopyClassToHom|[Ll]ift",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 2238,
+        "line_count": 21589
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/LeftHomotopy.lean",
+        "signatures": [
+          {
+            "line": 180,
+            "head": "lemma covering_homotopy {A E B : C} {P : Cylinder A} {f₀ f₁ : A ⟶ B} [IsCofibrant A] [P.IsGood] (h : P.LeftHomotopy f₀ f₁) (p : E ⟶ B) [Fibration p] (l₀ : A ⟶ E) (hl₀ : l₀ ≫ p = f₀"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/FundamentalLemma.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "lemma bijective_leftHomotopyClassToHom_iff_bijective_rightHomotopyClassToHom [IsCofibrant X] [IsFibrant Y] : Function.Bijective (leftHomotopyClassToHom L : LeftHomotopyClass X Y → _) ↔ Function.Bijective (rightHomotopyClassToHom L : RightHomotopyClass X Y → _)"
+          },
+          {
+            "line": 111,
+            "head": "lemma bijective_leftHomotopyClassToHom : Function.Bijective (leftHomotopyClassToHom L : LeftHomotopyClass X Y → _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/WhiteheadConverse.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma weakEquivalences_iff_of_leftHomotopy {X Y : C} {f g : X ⟶ Y} (h : LeftHomotopyRel f g) : weakEquivalences C f ↔ weakEquivalences C g"
+          },
+          {
+            "line": 30,
+            "head": "lemma section_of_leftHomotopyInverse {X Y : C} [IsCofibrant Y] (p : X ⟶ Y) [Fibration p] (g : Y ⟶ X) (hg : LeftHomotopyRel (g ≫ p) (𝟙 Y)) : ∃ s : Y ⟶ X, s ≫ p = 𝟙 Y ∧ LeftHomotopyRel g s"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib fundamental lemma は cofibrant-to-fibrant の Hom の quotient と局所化の全単射、covering_homotopy は fibration に沿う一変数ホモトピーの持上げである。原典の cofibration i:A→B と与えた hC の g を保って f を厳密に延長する同じ相対 homotopy-extension の宣言はない。両部品を合成する追加の argument をこの定理の部分として数えない。"
+  }
+}

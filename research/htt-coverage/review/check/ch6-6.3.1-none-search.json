@@ -1,0 +1,1410 @@
+{
+  "6.3.1.1": {
+    "page": 600,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.4",
+        "6.3.1",
+        "6.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          "SerrePositivity"
+        ],
+        "file_count": 2336,
+        "line_count": 10270
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 485
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 100,
+            "head": "lemma PreservesSmallLimits.comp {C D E : SSet.{u + 1}} {F : C ⟶ D} {G : D ⟶ E} (hF : PreservesSmallLimits F) (hG : PreservesSmallLimits G) : PreservesSmallLimits (F ≫ G)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.equivalencePathReplacementMap_trivialKanFibration {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : TrivialKanFibration (equivalencePathReplacementMap f) := he.isFullyFaithful.equivalencePathReplacementMap.trivialKanFibration_of_surjective he.choose.isEssentiallySurjective.equivalencePathReplacementMap_surjective"
+          },
+          {
+            "line": 34,
+            "head": "lemma isLimitCone_iff_of_diagram_eq {K X : SSet.{u}} {p q : K ⟶ X} {c : JoinCone p} {d : JoinCone q} (hp : p = q) (hc : c.val = d.val) : IsLimitCone c ↔ IsLimitCone d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class PreservesFiniteLimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 52,
+            "head": "instance (priority := 100) preservesLimitsOfShapeOfPreservesFiniteLimits (F : C ⥤ D) [PreservesFiniteLimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesLimitsOfShape J F"
+          }
+        ]
+      }
+    ],
+    "decision": "QCatAdjunction と普通の PreservesFiniteLimits は存在するが、native ∞ トポス二対象間の左完全な左随伴を持つ右関手という geometric morphism の述語はない。PrR は任意の presentable 圏の accessible right adjoint であり、左随伴の左完全性を要求しない。"
+  },
+  "6.3.1.3": {
+    "page": 600,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.4",
+        "6.3.1",
+        "6.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          "SerrePositivity"
+        ],
+        "file_count": 2336,
+        "line_count": 10270
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 485
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 100,
+            "head": "lemma PreservesSmallLimits.comp {C D E : SSet.{u + 1}} {F : C ⟶ D} {G : D ⟶ E} (hF : PreservesSmallLimits F) (hG : PreservesSmallLimits G) : PreservesSmallLimits (F ≫ G)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.equivalencePathReplacementMap_trivialKanFibration {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : TrivialKanFibration (equivalencePathReplacementMap f) := he.isFullyFaithful.equivalencePathReplacementMap.trivialKanFibration_of_surjective he.choose.isEssentiallySurjective.equivalencePathReplacementMap_surjective"
+          },
+          {
+            "line": 34,
+            "head": "lemma isLimitCone_iff_of_diagram_eq {K X : SSet.{u}} {p q : K ⟶ X} {c : JoinCone p} {d : JoinCone q} (hp : p = q) (hc : c.val = d.val) : IsLimitCone c ↔ IsLimitCone d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class PreservesFiniteLimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 52,
+            "head": "instance (priority := 100) preservesLimitsOfShapeOfPreservesFiniteLimits (F : C ⥤ D) [PreservesFiniteLimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesLimitsOfShape J F"
+          }
+        ]
+      }
+    ],
+    "decision": "native 同値は全極限を保存・反映し随伴の同型輸送もあるが、左完全な左随伴の存在という幾何学的射の述語にまとめた同値不変性はない。PrR の functor-equivalence 不変性だけは左随伴の有限極限保存を結論しない。"
+  },
+  "6.3.1.5": {
+    "page": 601,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.4",
+        "6.3.1",
+        "6.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          "SerrePositivity"
+        ],
+        "file_count": 2336,
+        "line_count": 10270
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 485
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 100,
+            "head": "lemma PreservesSmallLimits.comp {C D E : SSet.{u + 1}} {F : C ⟶ D} {G : D ⟶ E} (hF : PreservesSmallLimits F) (hG : PreservesSmallLimits G) : PreservesSmallLimits (F ≫ G)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.equivalencePathReplacementMap_trivialKanFibration {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : TrivialKanFibration (equivalencePathReplacementMap f) := he.isFullyFaithful.equivalencePathReplacementMap.trivialKanFibration_of_surjective he.choose.isEssentiallySurjective.equivalencePathReplacementMap_surjective"
+          },
+          {
+            "line": 34,
+            "head": "lemma isLimitCone_iff_of_diagram_eq {K X : SSet.{u}} {p q : K ⟶ X} {c : JoinCone p} {d : JoinCone q} (hp : p = q) (hc : c.val = d.val) : IsLimitCone c ↔ IsLimitCone d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class PreservesFiniteLimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 52,
+            "head": "instance (priority := 100) preservesLimitsOfShapeOfPreservesFiniteLimits (F : C ⥤ D) [PreservesFiniteLimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesLimitsOfShape J F"
+          }
+        ]
+      }
+    ],
+    "decision": "PrL/PrR の全高次の圏はあるが、その対象を ∞ トポス、左関手を finite-limit preserving に制限した LTop/RTop はない。対象だけの presentability による束縛をこの定義の代用にしない。"
+  },
+  "6.3.1.6": {
+    "page": 601,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.4",
+        "6.3.1",
+        "6.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          "SerrePositivity"
+        ],
+        "file_count": 2336,
+        "line_count": 10270
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 485
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 100,
+            "head": "lemma PreservesSmallLimits.comp {C D E : SSet.{u + 1}} {F : C ⟶ D} {G : D ⟶ E} (hF : PreservesSmallLimits F) (hG : PreservesSmallLimits G) : PreservesSmallLimits (F ≫ G)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.equivalencePathReplacementMap_trivialKanFibration {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : TrivialKanFibration (equivalencePathReplacementMap f) := he.isFullyFaithful.equivalencePathReplacementMap.trivialKanFibration_of_surjective he.choose.isEssentiallySurjective.equivalencePathReplacementMap_surjective"
+          },
+          {
+            "line": 34,
+            "head": "lemma isLimitCone_iff_of_diagram_eq {K X : SSet.{u}} {p q : K ⟶ X} {c : JoinCone p} {d : JoinCone q} (hp : p = q) (hc : c.val = d.val) : IsLimitCone c ↔ IsLimitCone d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class PreservesFiniteLimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 52,
+            "head": "instance (priority := 100) preservesLimitsOfShapeOfPreservesFiniteLimits (F : C ⥤ D) [PreservesFiniteLimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesLimitsOfShape J F"
+          }
+        ]
+      }
+    ],
+    "decision": "CartesianFibration と CocartesianFibration は実在するが、各 fiber の ∞ トポス性と各 transport の左完全性を組み合わせた述語はない。presentable fibration はこれら二条件を持たないので別の類である。"
+  },
+  "6.3.1.7": {
+    "page": 601,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.4",
+        "6.3.1",
+        "6.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          "SerrePositivity"
+        ],
+        "file_count": 2336,
+        "line_count": 10270
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 485
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 100,
+            "head": "lemma PreservesSmallLimits.comp {C D E : SSet.{u + 1}} {F : C ⟶ D} {G : D ⟶ E} (hF : PreservesSmallLimits F) (hG : PreservesSmallLimits G) : PreservesSmallLimits (F ≫ G)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.equivalencePathReplacementMap_trivialKanFibration {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : TrivialKanFibration (equivalencePathReplacementMap f) := he.isFullyFaithful.equivalencePathReplacementMap.trivialKanFibration_of_surjective he.choose.isEssentiallySurjective.equivalencePathReplacementMap_surjective"
+          },
+          {
+            "line": 34,
+            "head": "lemma isLimitCone_iff_of_diagram_eq {K X : SSet.{u}} {p q : K ⟶ X} {c : JoinCone p} {d : JoinCone q} (hp : p = q) (hc : c.val = d.val) : IsLimitCone c ↔ IsLimitCone d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class PreservesFiniteLimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 52,
+            "head": "instance (priority := 100) preservesLimitsOfShapeOfPreservesFiniteLimits (F : C ⥤ D) [PreservesFiniteLimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesLimitsOfShape J F"
+          }
+        ]
+      }
+    ],
+    "decision": "straightening による Cartesian/cocartesian 分類自体はあるが、分類関手の LTop/RTop への因子化を fiber の ∞ トポス性・左完全性と比較する型はない。PrL/PrR への分類は左完全性の条件を落とす。"
+  },
+  "6.3.1.8": {
+    "page": 601,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.4",
+        "6.3.1",
+        "6.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          "SerrePositivity"
+        ],
+        "file_count": 2336,
+        "line_count": 10270
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 485
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 100,
+            "head": "lemma PreservesSmallLimits.comp {C D E : SSet.{u + 1}} {F : C ⟶ D} {G : D ⟶ E} (hF : PreservesSmallLimits F) (hG : PreservesSmallLimits G) : PreservesSmallLimits (F ≫ G)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.equivalencePathReplacementMap_trivialKanFibration {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : TrivialKanFibration (equivalencePathReplacementMap f) := he.isFullyFaithful.equivalencePathReplacementMap.trivialKanFibration_of_surjective he.choose.isEssentiallySurjective.equivalencePathReplacementMap_surjective"
+          },
+          {
+            "line": 34,
+            "head": "lemma isLimitCone_iff_of_diagram_eq {K X : SSet.{u}} {p q : K ⟶ X} {c : JoinCone p} {d : JoinCone q} (hp : p = q) (hc : c.val = d.val) : IsLimitCone c ↔ IsLimitCone d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class PreservesFiniteLimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 52,
+            "head": "instance (priority := 100) preservesLimitsOfShapeOfPreservesFiniteLimits (F : C ⥤ D) [PreservesFiniteLimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesLimitsOfShape J F"
+          }
+        ]
+      }
+    ],
+    "decision": "native presentableAdjointFunctorEquivalence は固定二対象間の PrL/PrR の反同値であり、全 LTop/RTop の対象と全高次の合成を保つ反同値ではない。有限極限保存への制限との比較もなく、単なる随伴選択の双対性を数えない。"
+  },
+  "6.3.1.9": {
+    "page": 602,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.4",
+        "6.3.1",
+        "6.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          "SerrePositivity"
+        ],
+        "file_count": 2336,
+        "line_count": 10270
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 485
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 100,
+            "head": "lemma PreservesSmallLimits.comp {C D E : SSet.{u + 1}} {F : C ⟶ D} {G : D ⟶ E} (hF : PreservesSmallLimits F) (hG : PreservesSmallLimits G) : PreservesSmallLimits (F ≫ G)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.equivalencePathReplacementMap_trivialKanFibration {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : TrivialKanFibration (equivalencePathReplacementMap f) := he.isFullyFaithful.equivalencePathReplacementMap.trivialKanFibration_of_surjective he.choose.isEssentiallySurjective.equivalencePathReplacementMap_surjective"
+          },
+          {
+            "line": 34,
+            "head": "lemma isLimitCone_iff_of_diagram_eq {K X : SSet.{u}} {p q : K ⟶ X} {c : JoinCone p} {d : JoinCone q} (hp : p = q) (hc : c.val = d.val) : IsLimitCone c ↔ IsLimitCone d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class PreservesFiniteLimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 52,
+            "head": "instance (priority := 100) preservesLimitsOfShapeOfPreservesFiniteLimits (F : C ⥤ D) [PreservesFiniteLimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesLimitsOfShape J F"
+          }
+        ]
+      }
+    ],
+    "decision": "native 一般 k-truncated object/morphism とその reflector τ≤k の族がなく、左完全左随伴と右随伴による両側の保存や τ との可換性を与えない。全極限保存は右随伴についてあるが、k=−2 の終対象への特殊化もこの型には明示されず、一般の切断射の比較はない。"
+  },
+  "6.3.1.10": {
+    "page": 602,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.4",
+        "6.3.1",
+        "6.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          "SerrePositivity"
+        ],
+        "file_count": 2336,
+        "line_count": 10270
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 485
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 100,
+            "head": "lemma PreservesSmallLimits.comp {C D E : SSet.{u + 1}} {F : C ⟶ D} {G : D ⟶ E} (hF : PreservesSmallLimits F) (hG : PreservesSmallLimits G) : PreservesSmallLimits (F ≫ G)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.equivalencePathReplacementMap_trivialKanFibration {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : TrivialKanFibration (equivalencePathReplacementMap f) := he.isFullyFaithful.equivalencePathReplacementMap.trivialKanFibration_of_surjective he.choose.isEssentiallySurjective.equivalencePathReplacementMap_surjective"
+          },
+          {
+            "line": 34,
+            "head": "lemma isLimitCone_iff_of_diagram_eq {K X : SSet.{u}} {p q : K ⟶ X} {c : JoinCone p} {d : JoinCone q} (hp : p = q) (hc : c.val = d.val) : IsLimitCone c ↔ IsLimitCone d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class PreservesFiniteLimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 52,
+            "head": "instance (priority := 100) preservesLimitsOfShapeOfPreservesFiniteLimits (F : C ⥤ D) [PreservesFiniteLimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesLimitsOfShape J F"
+          }
+        ]
+      }
+    ],
+    "decision": "fullSubcomplexOnVertices や PrLFunctorSpace はあるが、幾何学的射を選ぶ左完全性の predicate と一体化した Fun* の全部分圏はない。全ての左随伴を選ぶ PrL は原典より真に大きい対象である。"
+  },
+  "6.3.1.11": {
+    "page": 602,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.4",
+        "6.3.1",
+        "6.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          "SerrePositivity"
+        ],
+        "file_count": 2336,
+        "line_count": 10270
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 485
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 100,
+            "head": "lemma PreservesSmallLimits.comp {C D E : SSet.{u + 1}} {F : C ⟶ D} {G : D ⟶ E} (hF : PreservesSmallLimits F) (hG : PreservesSmallLimits G) : PreservesSmallLimits (F ≫ G)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.equivalencePathReplacementMap_trivialKanFibration {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : TrivialKanFibration (equivalencePathReplacementMap f) := he.isFullyFaithful.equivalencePathReplacementMap.trivialKanFibration_of_surjective he.choose.isEssentiallySurjective.equivalencePathReplacementMap_surjective"
+          },
+          {
+            "line": 34,
+            "head": "lemma isLimitCone_iff_of_diagram_eq {K X : SSet.{u}} {p q : K ⟶ X} {c : JoinCone p} {d : JoinCone q} (hp : p = q) (hc : c.val = d.val) : IsLimitCone c ↔ IsLimitCone d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class PreservesFiniteLimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 52,
+            "head": "instance (priority := 100) preservesLimitsOfShapeOfPreservesFiniteLimits (F : C ⥤ D) [PreservesFiniteLimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesLimitsOfShape J F"
+          }
+        ]
+      }
+    ],
+    "decision": "presentableAdjointFunctorEquivalence は全 left/right adjoint の反同値であり、finite-limit-preserving 左随伴の full subcategory への制限を構成しない。元の同値に条件を制限する追加の構成を要するので、原典の幾何学的射圏の反同値の成分には数えない。"
+  },
+  "6.3.1.12": {
+    "page": 602,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.4",
+        "6.3.1",
+        "6.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          "SerrePositivity"
+        ],
+        "file_count": 2336,
+        "line_count": 10270
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 485
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 100,
+            "head": "lemma PreservesSmallLimits.comp {C D E : SSet.{u + 1}} {F : C ⟶ D} {G : D ⟶ E} (hF : PreservesSmallLimits F) (hG : PreservesSmallLimits G) : PreservesSmallLimits (F ≫ G)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.equivalencePathReplacementMap_trivialKanFibration {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : TrivialKanFibration (equivalencePathReplacementMap f) := he.isFullyFaithful.equivalencePathReplacementMap.trivialKanFibration_of_surjective he.choose.isEssentiallySurjective.equivalencePathReplacementMap_surjective"
+          },
+          {
+            "line": 34,
+            "head": "lemma isLimitCone_iff_of_diagram_eq {K X : SSet.{u}} {p q : K ⟶ X} {c : JoinCone p} {d : JoinCone q} (hp : p = q) (hc : c.val = d.val) : IsLimitCone c ↔ IsLimitCone d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class PreservesFiniteLimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 52,
+            "head": "instance (priority := 100) preservesLimitsOfShapeOfPreservesFiniteLimits (F : C ⥤ D) [PreservesFiniteLimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesLimitsOfShape J F"
+          }
+        ]
+      }
+    ],
+    "decision": "通常の AbelianGroup の圏はあるが、その圏を集合トポスからある分類トポス A への幾何学的射圏として実現する比較がない。ordinary 群の large 性だけは原典の Fun* が essentially small とは限らないという反例ではない。"
+  },
+  "6.3.1.13": {
+    "page": 602,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.4",
+        "6.3.1",
+        "6.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          "SerrePositivity"
+        ],
+        "file_count": 2336,
+        "line_count": 10270
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GeometricMorphism|ToposFibration|LTop|RTop|PreservesSmallLimits|QCatAdjunction|PrLFunctorSpace|Truncated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 26,
+        "line_count": 485
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 100,
+            "head": "lemma PreservesSmallLimits.comp {C D E : SSet.{u + 1}} {F : C ⟶ D} {G : D ⟶ E} (hF : PreservesSmallLimits F) (hG : PreservesSmallLimits G) : PreservesSmallLimits (F ≫ G)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.equivalencePathReplacementMap_trivialKanFibration {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : TrivialKanFibration (equivalencePathReplacementMap f) := he.isFullyFaithful.equivalencePathReplacementMap.trivialKanFibration_of_surjective he.choose.isEssentiallySurjective.equivalencePathReplacementMap_surjective"
+          },
+          {
+            "line": 34,
+            "head": "lemma isLimitCone_iff_of_diagram_eq {K X : SSet.{u}} {p q : K ⟶ X} {c : JoinCone p} {d : JoinCone q} (hp : p = q) (hc : c.val = d.val) : IsLimitCone c ↔ IsLimitCone d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "class PreservesFiniteLimits (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 52,
+            "head": "instance (priority := 100) preservesLimitsOfShapeOfPreservesFiniteLimits (F : C ⥤ D) [PreservesFiniteLimits F] (J : Type w) [SmallCategory J] [FinCategory J] : PreservesLimitsOfShape J F"
+          }
+        ]
+      }
+    ],
+    "decision": "native PrLFunctorSpace は実在するが、左完全関手の full subcategory が accessible となる型はない。全関手圏・全左随伴関手の accessibility のみを、さらに有限極限保存を課した同じ圏の定理には代用できない。"
+  }
+}

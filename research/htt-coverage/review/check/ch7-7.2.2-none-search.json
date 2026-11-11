@@ -1,0 +1,4439 @@
+{
+  "7.2.2.1": {
+    "page": 724,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "native PointedSpaceInfinity は Space の一点からの coslice であり、任意の X の terminal-source arrows の full subcategory X* ではない。通常の GrpObj も simplicial groupoid object の定義・Eilenberg–MacLane の n-truncated/n-connective 条件とは比較されない。"
+  },
+  "7.2.2.3": {
+    "page": 725,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary internal group の積と native limit の各点計算はあるが、任意の ∞-topos の n-connective/n-truncated objects の有限積保存を EMn の full subcategory に適用する型はない。group object の product だけは underlying EM object の connectivity を述べない。"
+  },
+  "7.2.2.4": {
+    "page": 725,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib internal group は multiplication/inversion の diagram axioms であるが、原典の任意の simplicial object の [n]=S∪S′ に対する product iff と同じ型はない。ordinary group nerve への比較なしに内部群の公理だけをその iff としない。"
+  },
+  "7.2.2.5": {
+    "page": 725,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib monoidal functor の internal group への作用は ordinary 圏の型であり、原典の simplicial group object に作用する準圏 functor と比較していない。ordinary finite-product functor の場合にも nerve/Segal の接続を要する。"
+  },
+  "7.2.2.6": {
+    "page": 725,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "native full subcomplex と積の保存はあるが、simplicial group objects の full subcategory と包含による群対象条件の iff はない。ordinary internal group の full subcategory 版だけは元の simplicial object と未比較。"
+  },
+  "7.2.2.8": {
+    "page": 725,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "native coslice と PointedSpaceInfinity はあるが、原典の可変な final source の arrow full subcategory X* と固定した 1X の coslice を結ぶ包含の同値はない。Space の定義を coslice と置いたことは任意の X* との比較にはならない。"
+  },
+  "7.2.2.9": {
+    "page": 726,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "native ZeroVertex と通常の Pointed type category はあるが、原典の可変 terminal-source arrows の X* の零対象と、X に零対象があるときの forgetful equivalence はない。通常の pointed sets の零対象は一般の X* への比較を欠く。"
+  },
+  "7.2.2.10": {
+    "page": 726,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary internal group の単位は選べるが、Grp(X*)→Grp(X) という任意の準圏の simplicial group object の忘却同値はない。単位射を underlying point にするだけでは高次群対象の全写像空間の同値を示さない。"
+  },
+  "7.2.2.11": {
+    "page": 727,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "Cech nerve と ordinary internal group はあるが、任意の ∞-topos の connected pointed objects の Cech-nerve functor の fully faithful/essential image と EMn への制限はない。通常の group の classifying category はこの相対的な delooping と未比較。"
+  },
+  "7.2.2.12": {
+    "page": 728,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib Dold–Kan は simplicial abelian objects と鎖複体の同値だが、原典の任意の ∞-topos の n=0,1,≥2 の EMn と pointed/group/abelian objects の三つの分類には接続しない。単独の abelian nerve の構成はこの分類全体の同じ対象の特殊形とも未比較。"
+  },
+  "7.2.2.13": {
+    "page": 729,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "Dold–Kan の additive equivalence はあるが、原典の A↦K(A,n) の functor と同じという比較はない。鎖複体の有限積保存だけを higher sheaf EM object の有限積保存としない。"
+  },
+  "7.2.2.14": {
+    "page": 729,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary abelian sheaf の Ext-based Sheaf.H はあるが、任意の ∞-topos の π0 Map(1,K(A,n)) と比較されていない。対象 K(A,n) が未供給のため、ordinary H だけを同じ定義の部分とは数えない。"
+  },
+  "7.2.2.15": {
+    "page": 729,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の PresheafOfGroups.OneCohomology は固定した family の cocycle quotient であり、site covering family 全体を取る global sheaf H1 は TODO である。原典の任意の ∞-topos の π0 Map(1,K(G,1)) や pointed H0 との比較はない。"
+  },
+  "7.2.2.16": {
+    "page": 729,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Sheaf.H の Ext 群構造はあるが、原典の EM functor の積保存と mapping space の π0 により定まる同じ群構造とは比較されない。Ext の additive structure はこの二つの定義を同定するまで別の対象である。"
+  },
+  "7.2.2.17": {
+    "page": 729,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Sheaf.H と Dold–Kan equivalence はあるが、injective resolution からの space-valued sheaf F が EM object であること、Map(1,F) の π0 と Ext の同定はない。これらは証明の部品であって、同じ cohomology の comparison component ではない。"
+  },
+  "7.2.2.18": {
+    "page": 730,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary abelian sheaf Ext の消滅条件は書けるが、任意の ∞-topos の EM-based Hk の消滅で定める述語はない。ordinary topos への特殊化にも H の二定義の比較が未供給。"
+  },
+  "7.2.2.19": {
+    "page": 730,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "固定 family の nonabelian cocycle はあるが、inner automorphism でのみ定まる coefficient system の消滅条件や n<2 の分類次元定理はない。ordinary H1 の cocycle quotient だけは gerbe の twisted coefficient と異なる。"
+  },
+  "7.2.2.20": {
+    "page": 730,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary site の groupoid や internal group はあるが、原典の任意の ∞-topos の n-connectiveかつn-truncated object という n-gerbe の述語はない。通常の torsor は一般の n-gerbe の higher truncation と比較されない。"
+  },
+  "7.2.2.21": {
+    "page": 731,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib nonabelian H1 は family 上の群 cocycle であり、低次 gerbe の basepoint-free な band と inner automorphism の商の議論を述べない。原典の [31] への参照も実装対象の宣言ではない。"
+  },
+  "7.2.2.22": {
+    "page": 731,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Grothendieck construction と slice の群対象は候補だが、原典の Disc(X/U) の pullback 群同型を持つ Band(X),BandA と Gerbn の指定 pullback square はない。通常の group-valued diagram はその高次 gerbe の分類と未比較。"
+  },
+  "7.2.2.23": {
+    "page": 731,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "native Cartesian fibrations の制限判定はあるが、原典の Gerbn(X) の対象と pullback-square morphism の subcategory、その band functor χ はない。一般の pullback-stable object class の補題だけはこの具体的な射影を構成しない。"
+  },
+  "7.2.2.24": {
+    "page": 732,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "native pinched mapping space と評価はあるが、原典の πn に指定した φ を誘導する summand Mapφ(K(A,n),X) と global sections への同じ評価 θφ の同値はない。通常の Yoneda の評価はこの gerbe band を制御しない。"
+  },
+  "7.2.2.25": {
+    "page": 733,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary trivial torsor の equivariant maps の型は候補だが、任意の n≥1 の band 付き高次 gerbe の mapping space と MapX(X,Ytilde) の同値ではない。Grp-valued cocycle からは指定の高次 source object を比較できない。"
+  },
+  "7.2.2.26": {
+    "page": 734,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "native right fibration の representability はあるが、GerbnA(X)→X の具体的な射影と K(A,n+1) の delooping はない。一般の representability の基準は、この gerbe の存在・fiber の同定を追加で要する。"
+  },
+  "7.2.2.27": {
+    "page": 735,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Sheaf.H と nonabelian cocycles はあるが、原典の n≥2 の A-banded n-gerbes の同値類と Hn+1(X;A) の指定全単射はない。ordinary torsor の低次分類も EM-based cohomology と未比較。"
+  },
+  "7.2.2.28": {
+    "page": 735,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary cocycle の coboundary 判定はあるが、原典の 7.2.2.27 の分類の下で n-gerbe の global section iff Hn+1 class=0 を述べない。別の fixed-cover H1 の zero class をこの特定の類としない。"
+  },
+  "7.2.2.29": {
+    "page": 735,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheaf Ext の消滅は候補だが、任意の ∞-topos の n-connective truncated object の global section との iff はない。injective resolutions の存在は gerbe の obstruction tower との比較を供給しない。"
+  },
+  "7.2.2.30": {
+    "page": 736,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "native connectivity と ordinary sheaf cohomology はあるが、homotopy dimension⇒cohomological dimension、および有限 homotopy dimension の逆向きの型はない。両次元の同じ ∞-topos 上の定義と Postnikov obstruction の比較が欠ける。"
+  },
+  "7.2.2.31": {
+    "page": 736,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.2.1",
+        "7.2.2",
+        "7.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1773,
+        "line_count": 8216
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrpObj|yonedaGrpObj|IsZeroVertex|PointedSpaceInfinity|[Ee]ilenberg|[Gg]erbe|Postnikov|[Cc]ohomology|DoldKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 103,
+        "line_count": 890
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Cartesian/Grp.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def GrpObj.ofRepresentableBy (F : Cᵒᵖ ⥤ GrpCat.{w}) (α : (F ⋙ forget _).RepresentableBy X) : GrpObj X where"
+          },
+          {
+            "line": 75,
+            "head": "def yonedaGrpObj : Cᵒᵖ ⥤ GrpCat.{v} where"
+          },
+          {
+            "line": 84,
+            "head": "def yonedaGrpObjRepresentableBy : (yonedaGrpObj G ⋙ forget _).RepresentableBy G := Functor.representableByEquiv.symm (.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "class AddGrpObj (X : C) extends AddMonObj X where"
+          },
+          {
+            "line": 43,
+            "head": "class GrpObj (X : C) extends MonObj X where"
+          },
+          {
+            "line": 63,
+            "head": "instance instTensorUnit : GrpObj (𝟙_ C) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Pointed.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def IsZeroVertex {X : SSet.{u}} (z : X _⦋0⦌) : Prop := IsInitialVertex z ∧ IsTerminalVertex z"
+          },
+          {
+            "line": 43,
+            "head": "lemma ZeroVertex.isZero {X : SSet.{u}} (z : ZeroVertex X) : IsZeroVertex z.vertex := ⟨z.isInitial, z.isTerminal⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          },
+          {
+            "line": 79,
+            "head": "abbrev cohomologyPresheaf (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) : Cᵒᵖ ⥤ AddCommGrpCat.{w'} := (cohomologyPresheafFunctor J n).obj F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/NonabelianCohomology/H1.lean",
+        "signatures": [
+          {
+            "line": 151,
+            "head": "def OneCohomologyRelation (γ₁ γ₂ : OneCochain G U) (α : ZeroCochain G U) : Prop := ∀ (i j : I) ⦃T : C⦄ (a : T ⟶ U i) (b : T ⟶ U j), G.map a.op (α i) * γ₁.ev i j a b = γ₂.ev i j a b * G.map b.op (α j)"
+          },
+          {
+            "line": 157,
+            "head": "lemma refl (γ : OneCochain G U) : OneCohomologyRelation γ γ 1 := fun _ _ _ _ _ ↦ by simp"
+          },
+          {
+            "line": 159,
+            "head": "lemma symm {γ₁ γ₂ : OneCochain G U} {α : ZeroCochain G U} (h : OneCohomologyRelation γ₁ γ₂ α) : OneCohomologyRelation γ₂ γ₁ α⁻¹ := fun i j T a b ↦ by rw [← mul_left_inj (G.map b.op (α j)), mul_assoc, ← h i j a b, mul_assoc, Cochain₀.inv_apply, map_inv, inv_mul_cancel_left, Cochain₀.inv_apply, map_inv, inv_mul_cancel, mul_one]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 154,
+            "head": "def comparisonN : (N : SimplicialObject A ⥤ _) ≅ Idempotents.DoldKan.N := calc N ≅ N ⋙ 𝟭 _ := Functor.leftUnitor N _ ≅ N ⋙ (toKaroubiEquivalence _).functor ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerLeft _ (toKaroubiEquivalence _).unitIso _ ≅ (N ⋙ (toKaroubiEquivalence _).functor) ⋙ (toKaroubiEquivalence _).inverse := Iso.refl _ _ ≅ N₁ ⋙ (toKaroubiEquivalence _).inverse := Functor.isoWhiskerRight (N₁_iso_normalizedMooreComplex_comp_toKaroubi A).symm _ _ ≅ Idempotents.DoldKan.N := Iso.refl _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "noncomputable def PointedSpaceInfinity : SSet.{u + 1} := sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u} := sliceUnderProjection (SSet.yonedaEquiv.symm pointSpaceVertex.{u})"
+          },
+          {
+            "line": 81,
+            "head": "instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} := quasicategory_of_innerFibration pointedSpaceProjection"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib p-adic integers と profinite groups はあるが、原典の Zp の finite quotient site の space-valued sheaf F,F′ と ∞-connective だが同値でない α の構成はない。ordinary continuous G-sets の存在だけは non-hypercomplete ∞-topos の反例にならない。"
+  }
+}

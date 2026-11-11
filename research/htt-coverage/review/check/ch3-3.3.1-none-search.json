@@ -1,0 +1,674 @@
+{
+  "3.3.1.1": {
+    "page": 204,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.5",
+        "3.3.1",
+        "3.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|EquivalenceLifting|pullback_snd_of_relativePath|leftFibration_isQCatEquivalence_iff_fibers|ModelCategory|homotopyCartesian",
+          "SerrePositivity"
+        ],
+        "file_count": 1332,
+        "line_count": 2949
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|EquivalenceLifting|pullback_snd_of_relativePath|leftFibration_isQCatEquivalence_iff_fibers|ModelCategory|homotopyCartesian",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 27,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationFiberReflection.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "lemma leftFibration_isQCatEquivalence_iff_fibers {E F B : SSet.{u}} [Quasicategory E] [Quasicategory F] [Quasicategory B] (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q] (f : E ⟶ F) (hf : f ≫ q = p) : IsQCatEquivalence f ↔ ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalencePullbackPathLifting.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma IsQCatEquivalence.pullback_snd_of_relativePath {E B F : SSet.{u}} [Quasicategory E] [Quasicategory B] [Quasicategory F] {e : E ⟶ B} (he : IsQCatEquivalence e) (p : F ⟶ B) [InnerFibration p] [TrivialKanFibration (relativeEquivalencePathMapAt p 1)] : IsQCatEquivalence (pullback.snd e p)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationEquivalenceLifting.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma leftFibration_invertibleTargetLifting {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [LeftFibration p] : F1B.InvertibleTargetLifting p"
+          },
+          {
+            "line": 43,
+            "head": "lemma leftFibration_equivalenceLifting {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [LeftFibration p] : F1B.EquivalenceLifting p := F1B.equivalenceLifting_of_innerFibration_of_targetLifting p (leftFibration_invertibleTargetLifting p)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          }
+        ]
+      }
+    ],
+    "decision": "native left fibration の base change の同値はあるが、SetΔ+ 上の p!⊣p* と Cartesian model の同じ Quillen adjunction ではない。Mathlib の抽象的な model base change も具体的な marked model instance と比較されない。"
+  },
+  "3.3.1.2": {
+    "page": 205,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.5",
+        "3.3.1",
+        "3.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|EquivalenceLifting|pullback_snd_of_relativePath|leftFibration_isQCatEquivalence_iff_fibers|ModelCategory|homotopyCartesian",
+          "SerrePositivity"
+        ],
+        "file_count": 1332,
+        "line_count": 2949
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|EquivalenceLifting|pullback_snd_of_relativePath|leftFibration_isQCatEquivalence_iff_fibers|ModelCategory|homotopyCartesian",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 27,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationFiberReflection.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "lemma leftFibration_isQCatEquivalence_iff_fibers {E F B : SSet.{u}} [Quasicategory E] [Quasicategory F] [Quasicategory B] (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q] (f : E ⟶ F) (hf : f ≫ q = p) : IsQCatEquivalence f ↔ ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalencePullbackPathLifting.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma IsQCatEquivalence.pullback_snd_of_relativePath {E B F : SSet.{u}} [Quasicategory E] [Quasicategory B] [Quasicategory F] {e : E ⟶ B} (he : IsQCatEquivalence e) (p : F ⟶ B) [InnerFibration p] [TrivialKanFibration (relativeEquivalencePathMapAt p 1)] : IsQCatEquivalence (pullback.snd e p)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationEquivalenceLifting.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma leftFibration_invertibleTargetLifting {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [LeftFibration p] : F1B.InvertibleTargetLifting p"
+          },
+          {
+            "line": 43,
+            "head": "lemma leftFibration_equivalenceLifting {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [LeftFibration p] : F1B.EquivalenceLifting p := F1B.equivalenceLifting_of_innerFibration_of_targetLifting p (leftFibration_invertibleTargetLifting p)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          }
+        ]
+      }
+    ],
+    "decision": "native left-fibration 分類は space-valued の場合だが、一般の Cat∞ 値の分類の延長と、その unstraightening の strict pullback への比較はない。任意の Cartesian p の辺の条件を保つ延長 Y を与える型ではない。"
+  },
+  "3.3.1.4": {
+    "page": 206,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.5",
+        "3.3.1",
+        "3.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|EquivalenceLifting|pullback_snd_of_relativePath|leftFibration_isQCatEquivalence_iff_fibers|ModelCategory|homotopyCartesian",
+          "SerrePositivity"
+        ],
+        "file_count": 1332,
+        "line_count": 2949
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|EquivalenceLifting|pullback_snd_of_relativePath|leftFibration_isQCatEquivalence_iff_fibers|ModelCategory|homotopyCartesian",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 27,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationFiberReflection.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "lemma leftFibration_isQCatEquivalence_iff_fibers {E F B : SSet.{u}} [Quasicategory E] [Quasicategory F] [Quasicategory B] (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q] (f : E ⟶ F) (hf : f ≫ q = p) : IsQCatEquivalence f ↔ ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalencePullbackPathLifting.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma IsQCatEquivalence.pullback_snd_of_relativePath {E B F : SSet.{u}} [Quasicategory E] [Quasicategory B] [Quasicategory F] {e : E ⟶ B} (he : IsQCatEquivalence e) (p : F ⟶ B) [InnerFibration p] [TrivialKanFibration (relativeEquivalencePathMapAt p 1)] : IsQCatEquivalence (pullback.snd e p)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationEquivalenceLifting.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma leftFibration_invertibleTargetLifting {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [LeftFibration p] : F1B.InvertibleTargetLifting p"
+          },
+          {
+            "line": 43,
+            "head": "lemma leftFibration_equivalenceLifting {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [LeftFibration p] : F1B.EquivalenceLifting p := F1B.equivalenceLifting_of_innerFibration_of_targetLifting p (leftFibration_invertibleTargetLifting p)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          }
+        ]
+      }
+    ],
+    "decision": "native equivalence pullback は追加の相対 path 充填仮定付きである。Mathlib の model category の homotopy pullback は具体的な Joyal instance を要求するが、本体にその instance はない。一般の Cartesian p′ に対する同じ Joyal homotopy Cartesian square の型は未供給。"
+  },
+  "3.3.1.5": {
+    "page": 207,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.5",
+        "3.3.1",
+        "3.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|EquivalenceLifting|pullback_snd_of_relativePath|leftFibration_isQCatEquivalence_iff_fibers|ModelCategory|homotopyCartesian",
+          "SerrePositivity"
+        ],
+        "file_count": 1332,
+        "line_count": 2949
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|EquivalenceLifting|pullback_snd_of_relativePath|leftFibration_isQCatEquivalence_iff_fibers|ModelCategory|homotopyCartesian",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 27,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationFiberReflection.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "lemma leftFibration_isQCatEquivalence_iff_fibers {E F B : SSet.{u}} [Quasicategory E] [Quasicategory F] [Quasicategory B] (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q] (f : E ⟶ F) (hf : f ≫ q = p) : IsQCatEquivalence f ↔ ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalencePullbackPathLifting.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma IsQCatEquivalence.pullback_snd_of_relativePath {E B F : SSet.{u}} [Quasicategory E] [Quasicategory B] [Quasicategory F] {e : E ⟶ B} (he : IsQCatEquivalence e) (p : F ⟶ B) [InnerFibration p] [TrivialKanFibration (relativeEquivalencePathMapAt p 1)] : IsQCatEquivalence (pullback.snd e p)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationEquivalenceLifting.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma leftFibration_invertibleTargetLifting {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [LeftFibration p] : F1B.InvertibleTargetLifting p"
+          },
+          {
+            "line": 43,
+            "head": "lemma leftFibration_equivalenceLifting {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [LeftFibration p] : F1B.EquivalenceLifting p := F1B.equivalenceLifting_of_innerFibration_of_targetLifting p (leftFibration_invertibleTargetLifting p)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          }
+        ]
+      }
+    ],
+    "decision": "left-fibration の total/fiber 同値判定はあるが、一般の Cartesian f と各 fiber、および X♮→Y♮ の Cartesian equivalence の三条件を結ぶ型ではない。right fibration への反転でも marked 第三条件との比較を欠き、異なる two-condition 判定を成分として転記しない。"
+  },
+  "3.3.1.6": {
+    "page": 208,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.5",
+        "3.3.1",
+        "3.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|EquivalenceLifting|pullback_snd_of_relativePath|leftFibration_isQCatEquivalence_iff_fibers|ModelCategory|homotopyCartesian",
+          "SerrePositivity"
+        ],
+        "file_count": 1332,
+        "line_count": 2949
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|EquivalenceLifting|pullback_snd_of_relativePath|leftFibration_isQCatEquivalence_iff_fibers|ModelCategory|homotopyCartesian",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 27,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationFiberReflection.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "lemma leftFibration_isQCatEquivalence_iff_fibers {E F B : SSet.{u}} [Quasicategory E] [Quasicategory F] [Quasicategory B] (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q] (f : E ⟶ F) (hf : f ≫ q = p) : IsQCatEquivalence f ↔ ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalencePullbackPathLifting.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma IsQCatEquivalence.pullback_snd_of_relativePath {E B F : SSet.{u}} [Quasicategory E] [Quasicategory B] [Quasicategory F] {e : E ⟶ B} (he : IsQCatEquivalence e) (p : F ⟶ B) [InnerFibration p] [TrivialKanFibration (relativeEquivalencePathMapAt p 1)] : IsQCatEquivalence (pullback.snd e p)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationEquivalenceLifting.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma leftFibration_invertibleTargetLifting {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [LeftFibration p] : F1B.InvertibleTargetLifting p"
+          },
+          {
+            "line": 43,
+            "head": "lemma leftFibration_equivalenceLifting {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [LeftFibration p] : F1B.EquivalenceLifting p := F1B.equivalenceLifting_of_innerFibration_of_targetLifting p (leftFibration_invertibleTargetLifting p)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          }
+        ]
+      }
+    ],
+    "decision": "right-fibration の pullback 安定性はあるが、原典の SetΔ/S の contravariant model における同じ square の homotopy Cartesian 性ではない。具体的な model instance がなく、通常の strict pullback をそのまま homotopy pullback とする宣言はない。"
+  },
+  "3.3.1.8": {
+    "page": 210,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.5",
+        "3.3.1",
+        "3.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|EquivalenceLifting|pullback_snd_of_relativePath|leftFibration_isQCatEquivalence_iff_fibers|ModelCategory|homotopyCartesian",
+          "SerrePositivity"
+        ],
+        "file_count": 1332,
+        "line_count": 2949
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CartesianFibration|EquivalenceLifting|pullback_snd_of_relativePath|leftFibration_isQCatEquivalence_iff_fibers|ModelCategory|homotopyCartesian",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 27,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallMarkedQuasicategoryHull.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def markedSeed : X.Subcomplex := A ⊔ inverseWitnessSeed s hs"
+          },
+          {
+            "line": 29,
+            "head": "instance small_markedSeed [∀ d, Small.{u} (A.obj d)] [Small.{u} ι] (d : SimplexCategoryᵒᵖ) : Small.{u} ((markedSeed A s hs).obj d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationFiberReflection.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "lemma leftFibration_isQCatEquivalence_iff_fibers {E F B : SSet.{u}} [Quasicategory E] [Quasicategory F] [Quasicategory B] (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q] (f : E ⟶ F) (hf : f ≫ q = p) : IsQCatEquivalence f ↔ ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalencePullbackPathLifting.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma IsQCatEquivalence.pullback_snd_of_relativePath {E B F : SSet.{u}} [Quasicategory E] [Quasicategory B] [Quasicategory F] {e : E ⟶ B} (he : IsQCatEquivalence e) (p : F ⟶ B) [InnerFibration p] [TrivialKanFibration (relativeEquivalencePathMapAt p 1)] : IsQCatEquivalence (pullback.snd e p)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationEquivalenceLifting.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma leftFibration_invertibleTargetLifting {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [LeftFibration p] : F1B.InvertibleTargetLifting p"
+          },
+          {
+            "line": 43,
+            "head": "lemma leftFibration_equivalenceLifting {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) [LeftFibration p] : F1B.EquivalenceLifting p := F1B.equivalenceLifting_of_innerFibration_of_targetLifting p (leftFibration_invertibleTargetLifting p)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          }
+        ]
+      }
+    ],
+    "decision": "invertible edge が Cartesian/cocartesian である型と right/left fibration の各含意はあるが、任意の inner/categorical fibration を Kan 基底から Cartesian/cocartesian にする存在の型はない。基底の辺の可逆性だけを使うには、指定端点への lift の存在と二つの fibrational condition の同値を追加で証明する必要がある。"
+  }
+}

@@ -7,7 +7,8 @@
 #       繰り上げ：待ちが impl・research 15 分、bulk 30 分を超えた整理券は先頭の組へ（飢えの防止）。
 #       ただし昼の bulk は繰り上げない（impl・research の整理券がないときだけ取る、11-11）。
 # 規約：--wait 0 は即時保留（終了 75）。既定無期限、再確認 2 秒。
-#       --class を省くと worktree 名から推定（kerodon-layout は bulk、*-review は research、他は impl）。
+#       --class を省くと worktree 名から推定（main の作業木は coord、kerodon-layout は bulk、*-review は research、他は impl）。
+#       coord（調整役の取り込み・登録）は昼夜とも常に先頭（11-11）。鍵の取得・返却は serre-lake-build.history.jsonl に追記。
 #       --status は持ち主と待ちの列を表示して終了する。
 #       owner.json の started は鍵を取った時刻、queued は待ち始めた時刻（11-11 に分けた）。
 # 使われ方：zsh scripts/refactor/with_build_lock.sh --wait 1800 -- lake build Module
@@ -27,7 +28,7 @@ import sys
 import time
 import uuid
 
-CLASSES=('impl','research','bulk')
+CLASSES=('coord','impl','research','bulk')
 JST=datetime.timezone(datetime.timedelta(hours=9))
 
 p=argparse.ArgumentParser(description='Serialize builds across worktrees with a fair ticket queue; busy timeout exits 75.')
@@ -45,10 +46,13 @@ queue=base/'serre-lake-build.queue'
 # Serialize owner publication/reaping, ticket publication and the acquire decision.
 # The small guard file stays; kernel flock is released even on SIGKILL.
 guard=base/'serre-lake-build.guard'
+# Append-only history of acquisitions and releases (11-11), for checking long holds afterwards.
+history=base/'serre-lake-build.history.jsonl'
 worktree=str(Path.cwd().resolve())
 
 def infer_class(path):
     name=Path(path).name
+    if name=='SerrePositivity': return 'coord'  # the main worktree: coordinator merges and registration
     if 'kerodon-layout' in name: return 'bulk'
     if name.endswith('-review') or '-review-' in name: return 'research'
     return 'impl'
@@ -127,6 +131,8 @@ for part in os.environ.get('SERRE_LOCK_AGING','').split(','):
 def order_key(t,hour,now=None):
     now=time.time() if now is None else now
     c=t.get('class','impl'); enq=float(t.get('enqueued',0))
+    # The coordinator's merge/registration builds always go first (11-11).
+    if c=='coord': return (-1,0,enq,str(t.get('token','')))
     promoted=now-enq>=AGING.get(c,900)
     # By day bulk is never promoted: it takes the lock only when no impl/research ticket waits (11-11).
     if c=='bulk' and 8<=hour<23: promoted=False
@@ -160,6 +166,14 @@ def status():
 
 if a.status:
     status();sys.exit(0)
+
+def log_event(event):
+    try:
+        with history.open('a') as h:
+            h.write(json.dumps({'event':event,'time':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                                'worktree':Path(worktree).name,'class':klass,'pid':os.getpid(),'token':token,
+                                'queued':queued_at,'command':' '.join(a.command)[:200]},ensure_ascii=False)+'\n')
+    except OSError: pass
 
 def remove_ticket():
     global ticketed
@@ -200,6 +214,7 @@ try:
                     erase();raise
                 acquired=True
                 remove_ticket()
+                log_event('acquire')
             if not acquired: previous=read_owner()
         if acquired: break
         now=time.monotonic()
@@ -224,5 +239,6 @@ finally:
         remove_ticket()
         if acquired:
             current=read_owner()
-            if current and current.get('token')==token: erase()
+            if current and current.get('token')==token:
+                erase();log_event('release')
 PY

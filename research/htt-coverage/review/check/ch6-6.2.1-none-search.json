@@ -1,0 +1,637 @@
+{
+  "6.2.1.1": {
+    "page": 571,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.1.6",
+        "6.2.1",
+        "6.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|WellPowered|localEquivalences|stronglySaturated|IsStableUnderBaseChange|LeftExact|PreservesFiniteLimits",
+          "SerrePositivity"
+        ],
+        "file_count": 246,
+        "line_count": 1001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|WellPowered|localEquivalences|stronglySaturated|IsStableUnderBaseChange|LeftExact|PreservesFiniteLimits",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 243,
+        "line_count": 1707
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+        "signatures": [
+          {
+            "line": 107,
+            "head": "class IsStableUnderBaseChange : Prop where"
+          },
+          {
+            "line": 111,
+            "head": "instance : P.pullbacks.IsStableUnderBaseChange where"
+          },
+          {
+            "line": 145,
+            "head": "class IsStableUnderBaseChangeAlong {X Y : C} (f : X ⟶ Y) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "def coneCompEvaluationOfConeCompDiagramFunctorCompEvaluation {X : C} {K : Type s} [SmallCategory K] {F : K ⥤ Cᵒᵖ ⥤ D} {W : J.Cover X} (i : W.Arrow) (E : Cone (F ⋙ J.diagramFunctor D X ⋙ (evaluation (J.Cover X)ᵒᵖ D).obj (op W))) : Cone (F ⋙ (evaluation _ _).obj (op i.Y)) where"
+          },
+          {
+            "line": 55,
+            "head": "def liftToDiagramLimitObjAux {X : C} {K : Type s} [SmallCategory K] [HasLimitsOfShape K D] {W : (J.Cover X)ᵒᵖ} (F : K ⥤ Cᵒᵖ ⥤ D) (E : Cone (F ⋙ J.diagramFunctor D X ⋙ (evaluation (J.Cover X)ᵒᵖ D).obj W)) (i : (unop W).Arrow) : E.pt ⟶ (limit F).obj (op i.Y) := (isLimitOfPreserves ((evaluation Cᵒᵖ D).obj (op i.Y)) (limit.isLimit F)).lift (coneCompEvaluationOfConeCompDiagramFunctorCompEvaluation i E)"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary PreservesFiniteLimits と MorphismProperty.IsStableUnderBaseChange はあるが、任意の reflective localization の inverted arrows の pullback 安定性から左完全性を得る iff はない。native localEquivalences と stronglySaturatedClosure の型にも finite limits とのこの比較はない。"
+  },
+  "6.2.1.2": {
+    "page": 571,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.1.6",
+        "6.2.1",
+        "6.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|WellPowered|localEquivalences|stronglySaturated|IsStableUnderBaseChange|LeftExact|PreservesFiniteLimits",
+          "SerrePositivity"
+        ],
+        "file_count": 246,
+        "line_count": 1001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|WellPowered|localEquivalences|stronglySaturated|IsStableUnderBaseChange|LeftExact|PreservesFiniteLimits",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 243,
+        "line_count": 1707
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+        "signatures": [
+          {
+            "line": 107,
+            "head": "class IsStableUnderBaseChange : Prop where"
+          },
+          {
+            "line": 111,
+            "head": "instance : P.pullbacks.IsStableUnderBaseChange where"
+          },
+          {
+            "line": 145,
+            "head": "class IsStableUnderBaseChangeAlong {X Y : C} (f : X ⟶ Y) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "def coneCompEvaluationOfConeCompDiagramFunctorCompEvaluation {X : C} {K : Type s} [SmallCategory K] {F : K ⥤ Cᵒᵖ ⥤ D} {W : J.Cover X} (i : W.Arrow) (E : Cone (F ⋙ J.diagramFunctor D X ⋙ (evaluation (J.Cover X)ᵒᵖ D).obj (op W))) : Cone (F ⋙ (evaluation _ _).obj (op i.Y)) where"
+          },
+          {
+            "line": 55,
+            "head": "def liftToDiagramLimitObjAux {X : C} {K : Type s} [SmallCategory K] [HasLimitsOfShape K D] {W : (J.Cover X)ᵒᵖ} (F : K ⥤ Cᵒᵖ ⥤ D) (E : Cone (F ⋙ J.diagramFunctor D X ⋙ (evaluation (J.Cover X)ᵒᵖ D).obj W)) (i : (unop W).Arrow) : E.pt ⟶ (limit F).obj (op i.Y) := (isLimitOfPreserves ((evaluation Cᵒᵖ D).obj (op i.Y)) (limit.isLimit F)).lift (coneCompEvaluationOfConeCompDiagramFunctorCompEvaluation i E)"
+          }
+        ]
+      }
+    ],
+    "decision": "stronglySaturatedClosure は指定辺集合の pushout・合成等による閉包であり、さらに全 pullback で閉じた類を同じ小集合で生成する主張ではない。ordinary pullbacks closure は小生成性を主張せず、filtered colimit と pullback の可換性だけは証明部品である。"
+  },
+  "6.2.1.4": {
+    "page": 576,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.1.6",
+        "6.2.1",
+        "6.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|WellPowered|localEquivalences|stronglySaturated|IsStableUnderBaseChange|LeftExact|PreservesFiniteLimits",
+          "SerrePositivity"
+        ],
+        "file_count": 246,
+        "line_count": 1001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|WellPowered|localEquivalences|stronglySaturated|IsStableUnderBaseChange|LeftExact|PreservesFiniteLimits",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 243,
+        "line_count": 1707
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+        "signatures": [
+          {
+            "line": 107,
+            "head": "class IsStableUnderBaseChange : Prop where"
+          },
+          {
+            "line": 111,
+            "head": "instance : P.pullbacks.IsStableUnderBaseChange where"
+          },
+          {
+            "line": 145,
+            "head": "class IsStableUnderBaseChangeAlong {X Y : C} (f : X ⟶ Y) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "def coneCompEvaluationOfConeCompDiagramFunctorCompEvaluation {X : C} {K : Type s} [SmallCategory K] {F : K ⥤ Cᵒᵖ ⥤ D} {W : J.Cover X} (i : W.Arrow) (E : Cone (F ⋙ J.diagramFunctor D X ⋙ (evaluation (J.Cover X)ᵒᵖ D).obj (op W))) : Cone (F ⋙ (evaluation _ _).obj (op i.Y)) where"
+          },
+          {
+            "line": 55,
+            "head": "def liftToDiagramLimitObjAux {X : C} {K : Type s} [SmallCategory K] [HasLimitsOfShape K D] {W : (J.Cover X)ᵒᵖ} (F : K ⥤ Cᵒᵖ ⥤ D) (E : Cone (F ⋙ J.diagramFunctor D X ⋙ (evaluation (J.Cover X)ᵒᵖ D).obj W)) (i : (unop W).Arrow) : E.pt ⟶ (limit F).obj (op i.Y) := (isLimitOfPreserves ((evaluation Cᵒᵖ D).obj (op i.Y)) (limit.isLimit F)).lift (coneCompEvaluationOfConeCompDiagramFunctorCompEvaluation i E)"
+          }
+        ]
+      }
+    ],
+    "decision": "native stronglySaturatedClosure と ordinary IsStableUnderBaseChange は別々の述語で、mono 生成かつ pullback 安定な同じ類 S の topological 性や局所化の定義を供給しない。GrothendieckTopology は被覆篩のデータでありこの飽和類の定義ではない。"
+  },
+  "6.2.1.5": {
+    "page": 576,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.1.6",
+        "6.2.1",
+        "6.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|WellPowered|localEquivalences|stronglySaturated|IsStableUnderBaseChange|LeftExact|PreservesFiniteLimits",
+          "SerrePositivity"
+        ],
+        "file_count": 246,
+        "line_count": 1001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|WellPowered|localEquivalences|stronglySaturated|IsStableUnderBaseChange|LeftExact|PreservesFiniteLimits",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 243,
+        "line_count": 1707
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+        "signatures": [
+          {
+            "line": 107,
+            "head": "class IsStableUnderBaseChange : Prop where"
+          },
+          {
+            "line": 111,
+            "head": "instance : P.pullbacks.IsStableUnderBaseChange where"
+          },
+          {
+            "line": 145,
+            "head": "class IsStableUnderBaseChangeAlong {X Y : C} (f : X ⟶ Y) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "def coneCompEvaluationOfConeCompDiagramFunctorCompEvaluation {X : C} {K : Type s} [SmallCategory K] {F : K ⥤ Cᵒᵖ ⥤ D} {W : J.Cover X} (i : W.Arrow) (E : Cone (F ⋙ J.diagramFunctor D X ⋙ (evaluation (J.Cover X)ᵒᵖ D).obj (op W))) : Cone (F ⋙ (evaluation _ _).obj (op i.Y)) where"
+          },
+          {
+            "line": 55,
+            "head": "def liftToDiagramLimitObjAux {X : C} {K : Type s} [SmallCategory K] [HasLimitsOfShape K D] {W : (J.Cover X)ᵒᵖ} (F : K ⥤ Cᵒᵖ ⥤ D) (E : Cone (F ⋙ J.diagramFunctor D X ⋙ (evaluation (J.Cover X)ᵒᵖ D).obj W)) (i : (unop W).Arrow) : E.pt ⟶ (limit F).obj (op i.Y) := (isLimitOfPreserves ((evaluation Cᵒᵖ D).obj (op i.Y)) (limit.isLimit F)).lift (coneCompEvaluationOfConeCompDiagramFunctorCompEvaluation i E)"
+          }
+        ]
+      }
+    ],
+    "decision": "native generic small-generated Bousfield reflection は生成族の小ささを初めから仮定する。原典の既に topological な強飽和類全体から小さい mono 族を抽出する定理ではなく、ordinary WellPowered だけでも強飽和生成との接続を欠く。"
+  },
+  "6.2.1.6": {
+    "page": 577,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.1.6",
+        "6.2.1",
+        "6.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|WellPowered|localEquivalences|stronglySaturated|IsStableUnderBaseChange|LeftExact|PreservesFiniteLimits",
+          "SerrePositivity"
+        ],
+        "file_count": 246,
+        "line_count": 1001
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|WellPowered|localEquivalences|stronglySaturated|IsStableUnderBaseChange|LeftExact|PreservesFiniteLimits",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 243,
+        "line_count": 1707
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+        "signatures": [
+          {
+            "line": 107,
+            "head": "class IsStableUnderBaseChange : Prop where"
+          },
+          {
+            "line": 111,
+            "head": "instance : P.pullbacks.IsStableUnderBaseChange where"
+          },
+          {
+            "line": 145,
+            "head": "class IsStableUnderBaseChangeAlong {X Y : C} (f : X ⟶ Y) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "def coneCompEvaluationOfConeCompDiagramFunctorCompEvaluation {X : C} {K : Type s} [SmallCategory K] {F : K ⥤ Cᵒᵖ ⥤ D} {W : J.Cover X} (i : W.Arrow) (E : Cone (F ⋙ J.diagramFunctor D X ⋙ (evaluation (J.Cover X)ᵒᵖ D).obj (op W))) : Cone (F ⋙ (evaluation _ _).obj (op i.Y)) where"
+          },
+          {
+            "line": 55,
+            "head": "def liftToDiagramLimitObjAux {X : C} {K : Type s} [SmallCategory K] [HasLimitsOfShape K D] {W : (J.Cover X)ᵒᵖ} (F : K ⥤ Cᵒᵖ ⥤ D) (E : Cone (F ⋙ J.diagramFunctor D X ⋙ (evaluation (J.Cover X)ᵒᵖ D).obj W)) (i : (unop W).Arrow) : E.pt ⟶ (limit F).obj (op i.Y) := (isLimitOfPreserves ((evaluation Cᵒᵖ D).obj (op i.Y)) (limit.isLimit F)).lift (coneCompEvaluationOfConeCompDiagramFunctorCompEvaluation i E)"
+          }
+        ]
+      }
+    ],
+    "decision": "generic Bousfield reflection の accessibility は明示的小辺族を仮定するが、topological localization の mono 生成・pullback 安定性からその仮定や左完全性を導かない。集合値 sheafification の finite-limit 保存は任意の native 位相的局所化の結論ではない。"
+  }
+}

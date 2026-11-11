@@ -1,0 +1,894 @@
+{
+  "5.2.7.1": {
+    "page": 365,
+    "citations": {
+      "item": 0,
+      "subsection": 2,
+      "neighboring_subsections": [
+        "5.2.6",
+        "5.2.7",
+        "5.2.8"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(reflective|localization|localisation|local.*initial|terminal.*section|cartesianEdge_map_of_comparison)",
+          "SerrePositivity"
+        ],
+        "file_count": 2721,
+        "line_count": 14079
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(reflective|localization|localisation|local.*initial|terminal.*section|cartesianEdge_map_of_comparison)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 457,
+        "line_count": 8478
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 43,
+            "head": "def localization : X ⟶ X := r.reflector ≫ (fullSubcomplexOnVertices X P).ι"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalObjects.lean",
+        "signatures": [
+          {
+            "line": 90,
+            "head": "lemma isLocal_localization (x : X _⦋0⦌) : r.IsLocal (r.localization.app (Opposite.op ⦋0⦌) x) := r.isLocal_inclusion (r.reflector.app (Opposite.op ⦋0⦌) x)"
+          },
+          {
+            "line": 110,
+            "head": "def localizationToLocalSubcomplex : X ⟶ (r.localSubcomplex : SSet.{u}) := fullSubcomplexLift r.IsLocal r.localization r.isLocal_localization"
+          },
+          {
+            "line": 116,
+            "head": "lemma localizationToLocalSubcomplex_ι : r.localizationToLocalSubcomplex ≫ r.localSubcomplex.ι = r.localization := fullSubcomplexLift_ι _ _ _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UniversalUnitComma.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitCommaVertexInFiber {X Y : SSet.{u}} (G : Y ⟶ X) (v : (unitComma G) _⦋0⦌) : (unitCommaFiber G ((unitCommaSource G).app (Opposite.op ⦋0⦌) v)) _⦋0⦌ := ⟨v, (pinchedConstant_zero _).symm⟩"
+          },
+          {
+            "line": 34,
+            "head": "def IsUniversalUnitCommaVertex {X Y : SSet.{u}} (G : Y ⟶ X) (v : (unitComma G) _⦋0⦌) : Prop := IsInitialVertex (unitCommaVertexInFiber G v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeTerminalAdjunction.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "lemma fullyFaithful_of_relativeTerminalSection (h : G ≫ F = 𝟙 Y) (hG : ∀ y, TerminalBoundaryLifting F (G.app (Opposite.op ⦋0⦌) y)) : IsFullyFaithful G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/CartesianPreservation.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma cartesianEdge_map_of_comparison {E F B C : SSet.{u}} [Quasicategory E] [Quasicategory F] [Quasicategory B] [Quasicategory C] (p : E ⟶ B) (q : F ⟶ C) [InnerFibration p] [InnerFibration q] (u : E ⟶ F) (e f : (Δ[1] : SSet.{u}) ⟶ E) (hb : e ≫ p = f ≫ p) (ht : stdSimplex.δ (0 : Fin 2) ≫ e = stdSimplex.δ (0 : Fin 2) ≫ f) (he : IsCartesianEdge p (SSet.yonedaEquiv e)) (hf : IsCartesianEdge p (SSet.yonedaEquiv f)) (hfu : IsCartesianEdge q (SSet.yonedaEquiv (f ≫ u))) : IsCartesianEdge q (SSet.yonedaEquiv (e ≫ u))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Reflective.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "class Reflective (R : D ⥤ C) extends R.Full, R.Faithful where"
+          },
+          {
+            "line": 48,
+            "head": "def reflector [Reflective i] : C ⥤ D := Reflective.L (R := i)"
+          },
+          {
+            "line": 51,
+            "head": "def reflectorAdjunction [Reflective i] : reflector i ⊣ i := Reflective.adj"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Algebra/Category/ModuleCat/Localization.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "local instance [Small.{v} R] (M : Type v) [AddCommGroup M] [Module R M] (S : Submonoid R) : Small.{v} (LocalizedModule S M) := small_of_surjective (IsLocalizedModule.mk'_surjective S (LocalizedModule.mkLinearMap S M))"
+          },
+          {
+            "line": 40,
+            "head": "noncomputable def localizedModule [Small.{v} R] (M : ModuleCat.{v} R) (S : Submonoid R) : ModuleCat.{v} (Localization S) := ModuleCat.of.{v} _ (Shrink.{v} (LocalizedModule S M))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "module structure is defined by `s • (s' ⊗ m) := (s * s') ⊗ m` and `R`-linear map `l : M ⟶ M'` is sent to `S`-linear map `s ⊗ m ↦ s ⊗ l m : S ⨂ M ⟶ S ⨂ M'`."
+          },
+          {
+            "line": 66,
+            "head": "def obj' : ModuleCat R := let _ := Module.compHom M f of R M"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "def localizationPrecomposition {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) (hF : InvertsEdges F W) (E : SSet.{u}) : (ihom D).obj E ⟶ (invertingFunctors X E W : SSet.{u}) := fullSubcomplexLift (IsInvertingFunctorVertex X E W) ((pre F).app E) (by intro v obtain ⟨H, rfl⟩ := (functorVertexEquiv D E).surjective v change InvertsEdges ((functorVertexEquiv X E).symm ((functorVertexEquiv X E) (F ≫ H))) W rw [Equiv.symm_apply_apply] exact hF.comp H)"
+          },
+          {
+            "line": 86,
+            "head": "lemma localizationPrecomposition_ι {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) (hF : InvertsEdges F W) (E : SSet.{u}) : localizationPrecomposition F W hF E ≫ (invertingFunctors X E W).ι = (pre F).app E := fullSubcomplexLift_ι _ _ _"
+          },
+          {
+            "line": 95,
+            "head": "def IsLocalization {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) : Prop := ∃ hF : InvertsEdges F W, ∀ (E : SSet.{u}) [Quasicategory E], IsQCatEquivalence (localizationPrecomposition F W hF E)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pairUnitComposition_vertex {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) (w : PrRFunctorSpace D C _⦋0⦌) : (pairUnitComposition C D).app (Opposite.op ⦋0⦌) (v, w) = functorVertex (leftVertexFunctor v ≫ rightVertexFunctor w)"
+          },
+          {
+            "line": 36,
+            "head": "def pairLeftFunctor {C D : PresentableInfinityObject.{u}} (x : PairRawUnitCorrespondence C D _⦋0⦌) : C.obj ⟶ D.obj := leftVertexFunctor ((pairRawUnitLeft C D).app (Opposite.op ⦋0⦌) x)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def pairUnitHomFamilyImageLift (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ Idempotent.fullEssentialImage (pairCovariantYoneda (PrRFunctorSpace D C)) := fullSubcomplexLift _ (pairUnitHomFamily C D) (pairUnitHomFamily_in_covariantYonedaImage C D)"
+          },
+          {
+            "line": 36,
+            "head": "def pairRightAdjointFunctorLifted (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrRFunctorSpace D C).op := pairUnitHomFamilyImageLift C D ≫ (Idempotent.essentialImageEquivalence (pairCovariantYoneda (PrRFunctorSpace D C)) (pairCovariantYoneda_isFullyFaithful _)).inv"
+          }
+        ]
+      }
+    ],
+    "decision": "核・余核が p 冪捩れの射を反転した AbGrp と、一意に p 可除な群の充満部分圏との同定、および M⊗ℤℤ[1/p] の公式。Mathlib の localizedModuleFunctor は一般の加群の局所化とその完全性、extendRestrictScalarsAdj は係数拡大の随伴を与えるが、この特定の射の類による局所化の全関手圏普遍性と p 可除群の本質像の同定は出力しない。一般のテンソル積・局所化加群の存在だけはこの例に対応させない。"
+  },
+  "5.2.7.7": {
+    "page": 367,
+    "citations": {
+      "item": 0,
+      "subsection": 2,
+      "neighboring_subsections": [
+        "5.2.6",
+        "5.2.7",
+        "5.2.8"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(reflective|localization|localisation|local.*initial|terminal.*section|cartesianEdge_map_of_comparison)",
+          "SerrePositivity"
+        ],
+        "file_count": 2721,
+        "line_count": 14079
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(reflective|localization|localisation|local.*initial|terminal.*section|cartesianEdge_map_of_comparison)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 457,
+        "line_count": 8478
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 43,
+            "head": "def localization : X ⟶ X := r.reflector ≫ (fullSubcomplexOnVertices X P).ι"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalObjects.lean",
+        "signatures": [
+          {
+            "line": 90,
+            "head": "lemma isLocal_localization (x : X _⦋0⦌) : r.IsLocal (r.localization.app (Opposite.op ⦋0⦌) x) := r.isLocal_inclusion (r.reflector.app (Opposite.op ⦋0⦌) x)"
+          },
+          {
+            "line": 110,
+            "head": "def localizationToLocalSubcomplex : X ⟶ (r.localSubcomplex : SSet.{u}) := fullSubcomplexLift r.IsLocal r.localization r.isLocal_localization"
+          },
+          {
+            "line": 116,
+            "head": "lemma localizationToLocalSubcomplex_ι : r.localizationToLocalSubcomplex ≫ r.localSubcomplex.ι = r.localization := fullSubcomplexLift_ι _ _ _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UniversalUnitComma.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitCommaVertexInFiber {X Y : SSet.{u}} (G : Y ⟶ X) (v : (unitComma G) _⦋0⦌) : (unitCommaFiber G ((unitCommaSource G).app (Opposite.op ⦋0⦌) v)) _⦋0⦌ := ⟨v, (pinchedConstant_zero _).symm⟩"
+          },
+          {
+            "line": 34,
+            "head": "def IsUniversalUnitCommaVertex {X Y : SSet.{u}} (G : Y ⟶ X) (v : (unitComma G) _⦋0⦌) : Prop := IsInitialVertex (unitCommaVertexInFiber G v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeTerminalAdjunction.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "lemma fullyFaithful_of_relativeTerminalSection (h : G ≫ F = 𝟙 Y) (hG : ∀ y, TerminalBoundaryLifting F (G.app (Opposite.op ⦋0⦌) y)) : IsFullyFaithful G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/CartesianPreservation.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma cartesianEdge_map_of_comparison {E F B C : SSet.{u}} [Quasicategory E] [Quasicategory F] [Quasicategory B] [Quasicategory C] (p : E ⟶ B) (q : F ⟶ C) [InnerFibration p] [InnerFibration q] (u : E ⟶ F) (e f : (Δ[1] : SSet.{u}) ⟶ E) (hb : e ≫ p = f ≫ p) (ht : stdSimplex.δ (0 : Fin 2) ≫ e = stdSimplex.δ (0 : Fin 2) ≫ f) (he : IsCartesianEdge p (SSet.yonedaEquiv e)) (hf : IsCartesianEdge p (SSet.yonedaEquiv f)) (hfu : IsCartesianEdge q (SSet.yonedaEquiv (f ≫ u))) : IsCartesianEdge q (SSet.yonedaEquiv (e ≫ u))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Reflective.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "class Reflective (R : D ⥤ C) extends R.Full, R.Faithful where"
+          },
+          {
+            "line": 48,
+            "head": "def reflector [Reflective i] : C ⥤ D := Reflective.L (R := i)"
+          },
+          {
+            "line": 51,
+            "head": "def reflectorAdjunction [Reflective i] : reflector i ⊣ i := Reflective.adj"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Algebra/Category/ModuleCat/Localization.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "local instance [Small.{v} R] (M : Type v) [AddCommGroup M] [Module R M] (S : Submonoid R) : Small.{v} (LocalizedModule S M) := small_of_surjective (IsLocalizedModule.mk'_surjective S (LocalizedModule.mkLinearMap S M))"
+          },
+          {
+            "line": 40,
+            "head": "noncomputable def localizedModule [Small.{v} R] (M : ModuleCat.{v} R) (S : Submonoid R) : ModuleCat.{v} (Localization S) := ModuleCat.of.{v} _ (Shrink.{v} (LocalizedModule S M))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "module structure is defined by `s • (s' ⊗ m) := (s * s') ⊗ m` and `R`-linear map `l : M ⟶ M'` is sent to `S`-linear map `s ⊗ m ↦ s ⊗ l m : S ⨂ M ⟶ S ⨂ M'`."
+          },
+          {
+            "line": 66,
+            "head": "def obj' : ModuleCat R := let _ := Module.compHom M f of R M"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "def localizationPrecomposition {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) (hF : InvertsEdges F W) (E : SSet.{u}) : (ihom D).obj E ⟶ (invertingFunctors X E W : SSet.{u}) := fullSubcomplexLift (IsInvertingFunctorVertex X E W) ((pre F).app E) (by intro v obtain ⟨H, rfl⟩ := (functorVertexEquiv D E).surjective v change InvertsEdges ((functorVertexEquiv X E).symm ((functorVertexEquiv X E) (F ≫ H))) W rw [Equiv.symm_apply_apply] exact hF.comp H)"
+          },
+          {
+            "line": 86,
+            "head": "lemma localizationPrecomposition_ι {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) (hF : InvertsEdges F W) (E : SSet.{u}) : localizationPrecomposition F W hF E ≫ (invertingFunctors X E W).ι = (pre F).app E := fullSubcomplexLift_ι _ _ _"
+          },
+          {
+            "line": 95,
+            "head": "def IsLocalization {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) : Prop := ∃ hF : InvertsEdges F W, ∀ (E : SSet.{u}) [Quasicategory E], IsQCatEquivalence (localizationPrecomposition F W hF E)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pairUnitComposition_vertex {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) (w : PrRFunctorSpace D C _⦋0⦌) : (pairUnitComposition C D).app (Opposite.op ⦋0⦌) (v, w) = functorVertex (leftVertexFunctor v ≫ rightVertexFunctor w)"
+          },
+          {
+            "line": 36,
+            "head": "def pairLeftFunctor {C D : PresentableInfinityObject.{u}} (x : PairRawUnitCorrespondence C D _⦋0⦌) : C.obj ⟶ D.obj := leftVertexFunctor ((pairRawUnitLeft C D).app (Opposite.op ⦋0⦌) x)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def pairUnitHomFamilyImageLift (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ Idempotent.fullEssentialImage (pairCovariantYoneda (PrRFunctorSpace D C)) := fullSubcomplexLift _ (pairUnitHomFamily C D) (pairUnitHomFamily_in_covariantYonedaImage C D)"
+          },
+          {
+            "line": 36,
+            "head": "def pairRightAdjointFunctorLifted (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrRFunctorSpace D C).op := pairUnitHomFamilyImageLift C D ≫ (Idempotent.essentialImageEquivalence (pairCovariantYoneda (PrRFunctorSpace D C)) (pairCovariantYoneda_isFullyFaithful _)).inv"
+          }
+        ]
+      }
+    ],
+    "decision": "個々の射 f:x→y が P に関する局所化射であることと、P×C Cx/ の始対象であることの同値、およびその一意性。UnitCommaInitialCondition は既に全自然変換 η を指定した単位の条件であり、任意の一本の f をこの充満部分余スライスの対象に同定する型ではない。reflectionMappingEquivalence は反射単位の普遍性で、任意の指定射に対する同値判定の一方向ではない。"
+  },
+  "5.2.7.10": {
+    "page": 368,
+    "citations": {
+      "item": 0,
+      "subsection": 2,
+      "neighboring_subsections": [
+        "5.2.6",
+        "5.2.7",
+        "5.2.8"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(reflective|localization|localisation|local.*initial|terminal.*section|cartesianEdge_map_of_comparison)",
+          "SerrePositivity"
+        ],
+        "file_count": 2721,
+        "line_count": 14079
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(reflective|localization|localisation|local.*initial|terminal.*section|cartesianEdge_map_of_comparison)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 457,
+        "line_count": 8478
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 43,
+            "head": "def localization : X ⟶ X := r.reflector ≫ (fullSubcomplexOnVertices X P).ι"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalObjects.lean",
+        "signatures": [
+          {
+            "line": 90,
+            "head": "lemma isLocal_localization (x : X _⦋0⦌) : r.IsLocal (r.localization.app (Opposite.op ⦋0⦌) x) := r.isLocal_inclusion (r.reflector.app (Opposite.op ⦋0⦌) x)"
+          },
+          {
+            "line": 110,
+            "head": "def localizationToLocalSubcomplex : X ⟶ (r.localSubcomplex : SSet.{u}) := fullSubcomplexLift r.IsLocal r.localization r.isLocal_localization"
+          },
+          {
+            "line": 116,
+            "head": "lemma localizationToLocalSubcomplex_ι : r.localizationToLocalSubcomplex ≫ r.localSubcomplex.ι = r.localization := fullSubcomplexLift_ι _ _ _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UniversalUnitComma.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitCommaVertexInFiber {X Y : SSet.{u}} (G : Y ⟶ X) (v : (unitComma G) _⦋0⦌) : (unitCommaFiber G ((unitCommaSource G).app (Opposite.op ⦋0⦌) v)) _⦋0⦌ := ⟨v, (pinchedConstant_zero _).symm⟩"
+          },
+          {
+            "line": 34,
+            "head": "def IsUniversalUnitCommaVertex {X Y : SSet.{u}} (G : Y ⟶ X) (v : (unitComma G) _⦋0⦌) : Prop := IsInitialVertex (unitCommaVertexInFiber G v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeTerminalAdjunction.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "lemma fullyFaithful_of_relativeTerminalSection (h : G ≫ F = 𝟙 Y) (hG : ∀ y, TerminalBoundaryLifting F (G.app (Opposite.op ⦋0⦌) y)) : IsFullyFaithful G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/CartesianPreservation.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma cartesianEdge_map_of_comparison {E F B C : SSet.{u}} [Quasicategory E] [Quasicategory F] [Quasicategory B] [Quasicategory C] (p : E ⟶ B) (q : F ⟶ C) [InnerFibration p] [InnerFibration q] (u : E ⟶ F) (e f : (Δ[1] : SSet.{u}) ⟶ E) (hb : e ≫ p = f ≫ p) (ht : stdSimplex.δ (0 : Fin 2) ≫ e = stdSimplex.δ (0 : Fin 2) ≫ f) (he : IsCartesianEdge p (SSet.yonedaEquiv e)) (hf : IsCartesianEdge p (SSet.yonedaEquiv f)) (hfu : IsCartesianEdge q (SSet.yonedaEquiv (f ≫ u))) : IsCartesianEdge q (SSet.yonedaEquiv (e ≫ u))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Reflective.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "class Reflective (R : D ⥤ C) extends R.Full, R.Faithful where"
+          },
+          {
+            "line": 48,
+            "head": "def reflector [Reflective i] : C ⥤ D := Reflective.L (R := i)"
+          },
+          {
+            "line": 51,
+            "head": "def reflectorAdjunction [Reflective i] : reflector i ⊣ i := Reflective.adj"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Algebra/Category/ModuleCat/Localization.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "local instance [Small.{v} R] (M : Type v) [AddCommGroup M] [Module R M] (S : Submonoid R) : Small.{v} (LocalizedModule S M) := small_of_surjective (IsLocalizedModule.mk'_surjective S (LocalizedModule.mkLinearMap S M))"
+          },
+          {
+            "line": 40,
+            "head": "noncomputable def localizedModule [Small.{v} R] (M : ModuleCat.{v} R) (S : Submonoid R) : ModuleCat.{v} (Localization S) := ModuleCat.of.{v} _ (Shrink.{v} (LocalizedModule S M))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "module structure is defined by `s • (s' ⊗ m) := (s * s') ⊗ m` and `R`-linear map `l : M ⟶ M'` is sent to `S`-linear map `s ⊗ m ↦ s ⊗ l m : S ⨂ M ⟶ S ⨂ M'`."
+          },
+          {
+            "line": 66,
+            "head": "def obj' : ModuleCat R := let _ := Module.compHom M f of R M"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "def localizationPrecomposition {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) (hF : InvertsEdges F W) (E : SSet.{u}) : (ihom D).obj E ⟶ (invertingFunctors X E W : SSet.{u}) := fullSubcomplexLift (IsInvertingFunctorVertex X E W) ((pre F).app E) (by intro v obtain ⟨H, rfl⟩ := (functorVertexEquiv D E).surjective v change InvertsEdges ((functorVertexEquiv X E).symm ((functorVertexEquiv X E) (F ≫ H))) W rw [Equiv.symm_apply_apply] exact hF.comp H)"
+          },
+          {
+            "line": 86,
+            "head": "lemma localizationPrecomposition_ι {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) (hF : InvertsEdges F W) (E : SSet.{u}) : localizationPrecomposition F W hF E ≫ (invertingFunctors X E W).ι = (pre F).app E := fullSubcomplexLift_ι _ _ _"
+          },
+          {
+            "line": 95,
+            "head": "def IsLocalization {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) : Prop := ∃ hF : InvertsEdges F W, ∀ (E : SSet.{u}) [Quasicategory E], IsQCatEquivalence (localizationPrecomposition F W hF E)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pairUnitComposition_vertex {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) (w : PrRFunctorSpace D C _⦋0⦌) : (pairUnitComposition C D).app (Opposite.op ⦋0⦌) (v, w) = functorVertex (leftVertexFunctor v ≫ rightVertexFunctor w)"
+          },
+          {
+            "line": 36,
+            "head": "def pairLeftFunctor {C D : PresentableInfinityObject.{u}} (x : PairRawUnitCorrespondence C D _⦋0⦌) : C.obj ⟶ D.obj := leftVertexFunctor ((pairRawUnitLeft C D).app (Opposite.op ⦋0⦌) x)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def pairUnitHomFamilyImageLift (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ Idempotent.fullEssentialImage (pairCovariantYoneda (PrRFunctorSpace D C)) := fullSubcomplexLift _ (pairUnitHomFamily C D) (pairUnitHomFamily_in_covariantYonedaImage C D)"
+          },
+          {
+            "line": 36,
+            "head": "def pairRightAdjointFunctorLifted (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrRFunctorSpace D C).op := pairUnitHomFamilyImageLift C D ≫ (Idempotent.essentialImageEquivalence (pairCovariantYoneda (PrRFunctorSpace D C)) (pairCovariantYoneda_isFullyFaithful _)).inv"
+          }
+        ]
+      }
+    ],
+    "decision": "終対象を持つ任意の準圏で、全終対象の張る充満部分圏の包含が左随伴を持つ。終対象の slice の自明性や反射を仮定した IsLocal の基本性質はあるが、この頂点条件の ReflectiveSubcategory を構成しない。relativeTerminalSection の補題も既に切断を入力した充満忠実性で、全終対象の部分圏への反射の存在とは別。"
+  },
+  "5.2.7.11": {
+    "page": 368,
+    "citations": {
+      "item": 0,
+      "subsection": 2,
+      "neighboring_subsections": [
+        "5.2.6",
+        "5.2.7",
+        "5.2.8"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(reflective|localization|localisation|local.*initial|terminal.*section|cartesianEdge_map_of_comparison)",
+          "SerrePositivity"
+        ],
+        "file_count": 2721,
+        "line_count": 14079
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(reflective|localization|localisation|local.*initial|terminal.*section|cartesianEdge_map_of_comparison)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 457,
+        "line_count": 8478
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 43,
+            "head": "def localization : X ⟶ X := r.reflector ≫ (fullSubcomplexOnVertices X P).ι"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalObjects.lean",
+        "signatures": [
+          {
+            "line": 90,
+            "head": "lemma isLocal_localization (x : X _⦋0⦌) : r.IsLocal (r.localization.app (Opposite.op ⦋0⦌) x) := r.isLocal_inclusion (r.reflector.app (Opposite.op ⦋0⦌) x)"
+          },
+          {
+            "line": 110,
+            "head": "def localizationToLocalSubcomplex : X ⟶ (r.localSubcomplex : SSet.{u}) := fullSubcomplexLift r.IsLocal r.localization r.isLocal_localization"
+          },
+          {
+            "line": 116,
+            "head": "lemma localizationToLocalSubcomplex_ι : r.localizationToLocalSubcomplex ≫ r.localSubcomplex.ι = r.localization := fullSubcomplexLift_ι _ _ _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UniversalUnitComma.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitCommaVertexInFiber {X Y : SSet.{u}} (G : Y ⟶ X) (v : (unitComma G) _⦋0⦌) : (unitCommaFiber G ((unitCommaSource G).app (Opposite.op ⦋0⦌) v)) _⦋0⦌ := ⟨v, (pinchedConstant_zero _).symm⟩"
+          },
+          {
+            "line": 34,
+            "head": "def IsUniversalUnitCommaVertex {X Y : SSet.{u}} (G : Y ⟶ X) (v : (unitComma G) _⦋0⦌) : Prop := IsInitialVertex (unitCommaVertexInFiber G v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeTerminalAdjunction.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "lemma fullyFaithful_of_relativeTerminalSection (h : G ≫ F = 𝟙 Y) (hG : ∀ y, TerminalBoundaryLifting F (G.app (Opposite.op ⦋0⦌) y)) : IsFullyFaithful G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/CartesianPreservation.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma cartesianEdge_map_of_comparison {E F B C : SSet.{u}} [Quasicategory E] [Quasicategory F] [Quasicategory B] [Quasicategory C] (p : E ⟶ B) (q : F ⟶ C) [InnerFibration p] [InnerFibration q] (u : E ⟶ F) (e f : (Δ[1] : SSet.{u}) ⟶ E) (hb : e ≫ p = f ≫ p) (ht : stdSimplex.δ (0 : Fin 2) ≫ e = stdSimplex.δ (0 : Fin 2) ≫ f) (he : IsCartesianEdge p (SSet.yonedaEquiv e)) (hf : IsCartesianEdge p (SSet.yonedaEquiv f)) (hfu : IsCartesianEdge q (SSet.yonedaEquiv (f ≫ u))) : IsCartesianEdge q (SSet.yonedaEquiv (e ≫ u))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Reflective.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "class Reflective (R : D ⥤ C) extends R.Full, R.Faithful where"
+          },
+          {
+            "line": 48,
+            "head": "def reflector [Reflective i] : C ⥤ D := Reflective.L (R := i)"
+          },
+          {
+            "line": 51,
+            "head": "def reflectorAdjunction [Reflective i] : reflector i ⊣ i := Reflective.adj"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Algebra/Category/ModuleCat/Localization.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "local instance [Small.{v} R] (M : Type v) [AddCommGroup M] [Module R M] (S : Submonoid R) : Small.{v} (LocalizedModule S M) := small_of_surjective (IsLocalizedModule.mk'_surjective S (LocalizedModule.mkLinearMap S M))"
+          },
+          {
+            "line": 40,
+            "head": "noncomputable def localizedModule [Small.{v} R] (M : ModuleCat.{v} R) (S : Submonoid R) : ModuleCat.{v} (Localization S) := ModuleCat.of.{v} _ (Shrink.{v} (LocalizedModule S M))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "module structure is defined by `s • (s' ⊗ m) := (s * s') ⊗ m` and `R`-linear map `l : M ⟶ M'` is sent to `S`-linear map `s ⊗ m ↦ s ⊗ l m : S ⨂ M ⟶ S ⨂ M'`."
+          },
+          {
+            "line": 66,
+            "head": "def obj' : ModuleCat R := let _ := Module.compHom M f of R M"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "def localizationPrecomposition {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) (hF : InvertsEdges F W) (E : SSet.{u}) : (ihom D).obj E ⟶ (invertingFunctors X E W : SSet.{u}) := fullSubcomplexLift (IsInvertingFunctorVertex X E W) ((pre F).app E) (by intro v obtain ⟨H, rfl⟩ := (functorVertexEquiv D E).surjective v change InvertsEdges ((functorVertexEquiv X E).symm ((functorVertexEquiv X E) (F ≫ H))) W rw [Equiv.symm_apply_apply] exact hF.comp H)"
+          },
+          {
+            "line": 86,
+            "head": "lemma localizationPrecomposition_ι {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) (hF : InvertsEdges F W) (E : SSet.{u}) : localizationPrecomposition F W hF E ≫ (invertingFunctors X E W).ι = (pre F).app E := fullSubcomplexLift_ι _ _ _"
+          },
+          {
+            "line": 95,
+            "head": "def IsLocalization {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) : Prop := ∃ hF : InvertsEdges F W, ∀ (E : SSet.{u}) [Quasicategory E], IsQCatEquivalence (localizationPrecomposition F W hF E)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pairUnitComposition_vertex {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) (w : PrRFunctorSpace D C _⦋0⦌) : (pairUnitComposition C D).app (Opposite.op ⦋0⦌) (v, w) = functorVertex (leftVertexFunctor v ≫ rightVertexFunctor w)"
+          },
+          {
+            "line": 36,
+            "head": "def pairLeftFunctor {C D : PresentableInfinityObject.{u}} (x : PairRawUnitCorrespondence C D _⦋0⦌) : C.obj ⟶ D.obj := leftVertexFunctor ((pairRawUnitLeft C D).app (Opposite.op ⦋0⦌) x)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def pairUnitHomFamilyImageLift (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ Idempotent.fullEssentialImage (pairCovariantYoneda (PrRFunctorSpace D C)) := fullSubcomplexLift _ (pairUnitHomFamily C D) (pairUnitHomFamily_in_covariantYonedaImage C D)"
+          },
+          {
+            "line": 36,
+            "head": "def pairRightAdjointFunctorLifted (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrRFunctorSpace D C).op := pairUnitHomFamilyImageLift C D ≫ (Idempotent.essentialImageEquivalence (pairCovariantYoneda (PrRFunctorSpace D C)) (pairCovariantYoneda_isFullyFaithful _)).inv"
+          }
+        ]
+      }
+    ],
+    "decision": "coCartesian p:C→D に沿って反射的な充満 D₀⊆D を引き戻すと C₀⊆C も反射的となる。cartesianEdge_map_of_comparison と輸送・反射の個別補題は調べたが、底の反射単位を coCartesian に持ち上げて C₀ への全反射を返す型はない。通常の部分圏や pullback の存在だけは反射性の結論に当たらない。"
+  }
+}

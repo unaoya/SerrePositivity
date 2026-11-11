@@ -1,0 +1,1692 @@
+{
+  "7.3.6.1": {
+    "page": 780,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 3207,
+        "line_count": 14344
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1254,
+        "line_count": 18307
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Irreducible.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def IsPreirreducible (s : Set X) : Prop := ∀ u v : Set X, IsOpen u → IsOpen v → (s ∩ u).Nonempty → (s ∩ v).Nonempty → (s ∩ (u ∩ v)).Nonempty"
+          },
+          {
+            "line": 49,
+            "head": "def IsIrreducible (s : Set X) : Prop := s.Nonempty ∧ IsPreirreducible s"
+          },
+          {
+            "line": 52,
+            "head": "theorem IsIrreducible.nonempty (h : IsIrreducible s) : s.Nonempty := h.1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/PointwiseUnitComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitIntervalMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) : intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y ⟶ intervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := intervalFunctorMap G (F.app (Opposite.op ⦋0⦌) x) y ≫ intervalPrecompose (G.app (Opposite.op ⦋0⦌) y) (qcatUnitComponent η x)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitIntervalMap_family {A X Y : SSet.{u}} [Quasicategory A] [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) (f : A ⟶ intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y) : intervalFamilyHom (f ≫ unitIntervalMap η x y) = constantUnitHomMap η A x y (intervalFamilyHom f)"
+          }
+        ]
+      }
+    ],
+    "decision": "native fully faithful functor と ordinary IsProperMap はあるが、原典の proper geometric morphism とその right adjoint の充満忠実性を束ねる同じ cell-like 述語はない。位相的な fiber contractibility だけを higher geometric morphism の条件とはしない。"
+  },
+  "7.3.6.2": {
+    "page": 781,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 3207,
+        "line_count": 14344
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1254,
+        "line_count": 18307
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Irreducible.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def IsPreirreducible (s : Set X) : Prop := ∀ u v : Set X, IsOpen u → IsOpen v → (s ∩ u).Nonempty → (s ∩ v).Nonempty → (s ∩ (u ∩ v)).Nonempty"
+          },
+          {
+            "line": 49,
+            "head": "def IsIrreducible (s : Set X) : Prop := s.Nonempty ∧ IsPreirreducible s"
+          },
+          {
+            "line": 52,
+            "head": "theorem IsIrreducible.nonempty (h : IsIrreducible s) : s.Nonempty := h.1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/PointwiseUnitComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitIntervalMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) : intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y ⟶ intervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := intervalFunctorMap G (F.app (Opposite.op ⦋0⦌) x) y ≫ intervalPrecompose (G.app (Opposite.op ⦋0⦌) y) (qcatUnitComponent η x)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitIntervalMap_family {A X Y : SSet.{u}} [Quasicategory A] [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) (f : A ⟶ intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y) : intervalFamilyHom (f ≫ unitIntervalMap η x y) = constantUnitHomMap η A x y (intervalFamilyHom f)"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib retract や homotopy equivalence はあるが、compact metric spaces の trivial-shape fibers による classical cell-like と Shv の cell-like の比較や反例はない。通常の fiber の可縮性は shape の自明性と未比較。"
+  },
+  "7.3.6.3": {
+    "page": 781,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 3207,
+        "line_count": 14344
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1254,
+        "line_count": 18307
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Irreducible.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def IsPreirreducible (s : Set X) : Prop := ∀ u v : Set X, IsOpen u → IsOpen v → (s ∩ u).Nonempty → (s ∩ v).Nonempty → (s ∩ (u ∩ v)).Nonempty"
+          },
+          {
+            "line": 49,
+            "head": "def IsIrreducible (s : Set X) : Prop := s.Nonempty ∧ IsPreirreducible s"
+          },
+          {
+            "line": 52,
+            "head": "theorem IsIrreducible.nonempty (h : IsIrreducible s) : s.Nonempty := h.1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/PointwiseUnitComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitIntervalMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) : intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y ⟶ intervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := intervalFunctorMap G (F.app (Opposite.op ⦋0⦌) x) y ≫ intervalPrecompose (G.app (Opposite.op ⦋0⦌) y) (qcatUnitComponent η x)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitIntervalMap_family {A X Y : SSet.{u}} [Quasicategory A] [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) (f : A ⟶ intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y) : intervalFamilyHom (f ≫ unitIntervalMap η x y) = constantUnitHomMap η A x y (intervalFamilyHom f)"
+          }
+        ]
+      }
+    ],
+    "decision": "native fully faithful adjunction の単位の同値はあるが、原典の cell-like geometric morphism の shape とその構造射の合成がない。general unit equivalence はこの指定 Sh(X)→Sh(Y) と比較されない。"
+  },
+  "7.3.6.4": {
+    "page": 781,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 3207,
+        "line_count": 14344
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1254,
+        "line_count": 18307
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Irreducible.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def IsPreirreducible (s : Set X) : Prop := ∀ u v : Set X, IsOpen u → IsOpen v → (s ∩ u).Nonempty → (s ∩ v).Nonempty → (s ∩ (u ∩ v)).Nonempty"
+          },
+          {
+            "line": 49,
+            "head": "def IsIrreducible (s : Set X) : Prop := s.Nonempty ∧ IsPreirreducible s"
+          },
+          {
+            "line": 52,
+            "head": "theorem IsIrreducible.nonempty (h : IsIrreducible s) : s.Nonempty := h.1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/PointwiseUnitComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitIntervalMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) : intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y ⟶ intervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := intervalFunctorMap G (F.app (Opposite.op ⦋0⦌) x) y ≫ intervalPrecompose (G.app (Opposite.op ⦋0⦌) y) (qcatUnitComponent η x)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitIntervalMap_family {A X Y : SSet.{u}} [Quasicategory A] [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) (f : A ⟶ intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y) : intervalFamilyHom (f ≫ unitIntervalMap η x y) = constantUnitHomMap η A x y (intervalFamilyHom f)"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary topological proper map の fiber criterion はあるが、enough points を持つ arbitrary higher topos の RTop fiber の trivial shape と cell-like の iff はない。Set-valued stalk の conservative 性は Pro(S) の shape の判定と異なる。"
+  },
+  "7.3.6.5": {
+    "page": 782,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 3207,
+        "line_count": 14344
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1254,
+        "line_count": 18307
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Irreducible.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def IsPreirreducible (s : Set X) : Prop := ∀ u v : Set X, IsOpen u → IsOpen v → (s ∩ u).Nonempty → (s ∩ v).Nonempty → (s ∩ (u ∩ v)).Nonempty"
+          },
+          {
+            "line": 49,
+            "head": "def IsIrreducible (s : Set X) : Prop := s.Nonempty ∧ IsPreirreducible s"
+          },
+          {
+            "line": 52,
+            "head": "theorem IsIrreducible.nonempty (h : IsIrreducible s) : s.Nonempty := h.1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/PointwiseUnitComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitIntervalMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) : intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y ⟶ intervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := intervalFunctorMap G (F.app (Opposite.op ⦋0⦌) x) y ≫ intervalPrecompose (G.app (Opposite.op ⦋0⦌) y) (qcatUnitComponent η x)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitIntervalMap_family {A X Y : SSet.{u}} [Quasicategory A] [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) (f : A ⟶ intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y) : intervalFamilyHom (f ≫ unitIntervalMap η x y) = constantUnitHomMap η A x y (intervalFamilyHom f)"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib proper maps と paracompact spaces はあるが、finite covering dimension と Shv の fully faithful inverse image を結ぶ同じ fiber-shape criterion はない。位相的 weak equivalence では non-CW fiber の shape を制御しない。"
+  },
+  "7.3.6.6": {
+    "page": 782,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 3207,
+        "line_count": 14344
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1254,
+        "line_count": 18307
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Irreducible.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def IsPreirreducible (s : Set X) : Prop := ∀ u v : Set X, IsOpen u → IsOpen v → (s ∩ u).Nonempty → (s ∩ v).Nonempty → (s ∩ (u ∩ v)).Nonempty"
+          },
+          {
+            "line": 49,
+            "head": "def IsIrreducible (s : Set X) : Prop := s.Nonempty ∧ IsPreirreducible s"
+          },
+          {
+            "line": 52,
+            "head": "theorem IsIrreducible.nonempty (h : IsIrreducible s) : s.Nonempty := h.1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/PointwiseUnitComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitIntervalMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) : intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y ⟶ intervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := intervalFunctorMap G (F.app (Opposite.op ⦋0⦌) x) y ≫ intervalPrecompose (G.app (Opposite.op ⦋0⦌) y) (qcatUnitComponent η x)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitIntervalMap_family {A X Y : SSet.{u}} [Quasicategory A] [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) (f : A ⟶ intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y) : intervalFamilyHom (f ≫ unitIntervalMap η x y) = constantUnitHomMap η A x y (intervalFamilyHom f)"
+          }
+        ]
+      }
+    ],
+    "decision": "通常の retract と homotopy equivalence はあるが、locally compact ANR 上の全開部分空間の restriction が homotopy equivalence となる条件、fiber の trivial shape、Shv の cell-like の三条件を結ぶ型はない。単一の deformation retract の構成はこの iff の特殊形と未比較。"
+  },
+  "7.3.6.7": {
+    "page": 783,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 3207,
+        "line_count": 14344
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1254,
+        "line_count": 18307
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Irreducible.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def IsPreirreducible (s : Set X) : Prop := ∀ u v : Set X, IsOpen u → IsOpen v → (s ∩ u).Nonempty → (s ∩ v).Nonempty → (s ∩ (u ∩ v)).Nonempty"
+          },
+          {
+            "line": 49,
+            "head": "def IsIrreducible (s : Set X) : Prop := s.Nonempty ∧ IsPreirreducible s"
+          },
+          {
+            "line": 52,
+            "head": "theorem IsIrreducible.nonempty (h : IsIrreducible s) : s.Nonempty := h.1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/PointwiseUnitComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitIntervalMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) : intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y ⟶ intervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := intervalFunctorMap G (F.app (Opposite.op ⦋0⦌) x) y ≫ intervalPrecompose (G.app (Opposite.op ⦋0⦌) y) (qcatUnitComponent η x)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitIntervalMap_family {A X Y : SSet.{u}} [Quasicategory A] [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) (f : A ⟶ intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y) : intervalFamilyHom (f ≫ unitIntervalMap η x y) = constantUnitHomMap η A x y (intervalFamilyHom f)"
+          }
+        ]
+      }
+    ],
+    "decision": "native slice と reflective localization はあるが、proper geometric morphism の全 X/p*U→Y/U が shape equivalence という iff はない。generic fully faithful functor の slice 比較だけではその higher shape の条件を供給しない。"
+  },
+  "7.3.6.8": {
+    "page": 783,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 3207,
+        "line_count": 14344
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1254,
+        "line_count": 18307
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Irreducible.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def IsPreirreducible (s : Set X) : Prop := ∀ u v : Set X, IsOpen u → IsOpen v → (s ∩ u).Nonempty → (s ∩ v).Nonempty → (s ∩ (u ∩ v)).Nonempty"
+          },
+          {
+            "line": 49,
+            "head": "def IsIrreducible (s : Set X) : Prop := s.Nonempty ∧ IsPreirreducible s"
+          },
+          {
+            "line": 52,
+            "head": "theorem IsIrreducible.nonempty (h : IsIrreducible s) : s.Nonempty := h.1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/PointwiseUnitComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitIntervalMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) : intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y ⟶ intervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := intervalFunctorMap G (F.app (Opposite.op ⦋0⦌) x) y ≫ intervalPrecompose (G.app (Opposite.op ⦋0⦌) y) (qcatUnitComponent η x)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitIntervalMap_family {A X Y : SSet.{u}} [Quasicategory A] [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) (f : A ⟶ intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y) : intervalFamilyHom (f ≫ unitIntervalMap η x y) = constantUnitHomMap η A x y (intervalFamilyHom f)"
+          }
+        ]
+      }
+    ],
+    "decision": "位相的 proper map の base change はあるが、arbitrary RTop の cell-like predicate を持たず、pullback 後の inverse image の fully faithful 性を示す型もない。通常の射の pullback 閉性は同じ geometric class の結論ではない。"
+  },
+  "7.3.6.9": {
+    "page": 783,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 3207,
+        "line_count": 14344
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1254,
+        "line_count": 18307
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Irreducible.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def IsPreirreducible (s : Set X) : Prop := ∀ u v : Set X, IsOpen u → IsOpen v → (s ∩ u).Nonempty → (s ∩ v).Nonempty → (s ∩ (u ∩ v)).Nonempty"
+          },
+          {
+            "line": 49,
+            "head": "def IsIrreducible (s : Set X) : Prop := s.Nonempty ∧ IsPreirreducible s"
+          },
+          {
+            "line": 52,
+            "head": "theorem IsIrreducible.nonempty (h : IsIrreducible s) : s.Nonempty := h.1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/PointwiseUnitComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitIntervalMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) : intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y ⟶ intervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := intervalFunctorMap G (F.app (Opposite.op ⦋0⦌) x) y ≫ intervalPrecompose (G.app (Opposite.op ⦋0⦌) y) (qcatUnitComponent η x)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitIntervalMap_family {A X Y : SSet.{u}} [Quasicategory A] [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) (f : A ⟶ intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y) : intervalFamilyHom (f ≫ unitIntervalMap η x y) = constantUnitHomMap η A x y (intervalFamilyHom f)"
+          }
+        ]
+      }
+    ],
+    "decision": "native terminal/mapping space と ordinary sheaf はあるが、cell-like geometric morphism と arbitrary n-connective objects の切断を使う次元の降下はない。一般の fully faithful functor は n-connectivity と global sections の比較を持たない。"
+  },
+  "7.3.6.10": {
+    "page": 784,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 3207,
+        "line_count": 14344
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1254,
+        "line_count": 18307
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Irreducible.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def IsPreirreducible (s : Set X) : Prop := ∀ u v : Set X, IsOpen u → IsOpen v → (s ∩ u).Nonempty → (s ∩ v).Nonempty → (s ∩ (u ∩ v)).Nonempty"
+          },
+          {
+            "line": 49,
+            "head": "def IsIrreducible (s : Set X) : Prop := s.Nonempty ∧ IsPreirreducible s"
+          },
+          {
+            "line": 52,
+            "head": "theorem IsIrreducible.nonempty (h : IsIrreducible s) : s.Nonempty := h.1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/PointwiseUnitComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitIntervalMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) : intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y ⟶ intervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := intervalFunctorMap G (F.app (Opposite.op ⦋0⦌) x) y ≫ intervalPrecompose (G.app (Opposite.op ⦋0⦌) y) (qcatUnitComponent η x)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitIntervalMap_family {A X Y : SSet.{u}} [Quasicategory A] [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) (f : A ⟶ intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y) : intervalFamilyHom (f ≫ unitIntervalMap η x y) = constantUnitHomMap η A x y (intervalFamilyHom f)"
+          }
+        ]
+      }
+    ],
+    "decision": "本体の完備非アルキメデス環・affinoid 関連の代数はあるが、原典の XZR,XB とその space-valued sheaf の geometric morphism の cell-like 性はない。ordinary spectrum の連続写像を剛体解析のこの二つの位相と同一視しない。"
+  },
+  "7.3.6.11": {
+    "page": 784,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 3207,
+        "line_count": 14344
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1254,
+        "line_count": 18307
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Irreducible.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def IsPreirreducible (s : Set X) : Prop := ∀ u v : Set X, IsOpen u → IsOpen v → (s ∩ u).Nonempty → (s ∩ v).Nonempty → (s ∩ (u ∩ v)).Nonempty"
+          },
+          {
+            "line": 49,
+            "head": "def IsIrreducible (s : Set X) : Prop := s.Nonempty ∧ IsPreirreducible s"
+          },
+          {
+            "line": 52,
+            "head": "theorem IsIrreducible.nonempty (h : IsIrreducible s) : s.Nonempty := h.1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/PointwiseUnitComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitIntervalMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) : intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y ⟶ intervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := intervalFunctorMap G (F.app (Opposite.op ⦋0⦌) x) y ≫ intervalPrecompose (G.app (Opposite.op ⦋0⦌) y) (qcatUnitComponent η x)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitIntervalMap_family {A X Y : SSet.{u}} [Quasicategory A] [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) (f : A ⟶ intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y) : intervalFamilyHom (f ≫ unitIntervalMap η x y) = constantUnitHomMap η A x y (intervalFamilyHom f)"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib irreducible space の有限開集合の非空交差はあるが、Shv(X) の shape が identity Space に同値になる比較はない。位相空間自体の irreducibility は singular homotopy の可縮性とは異なる。"
+  },
+  "7.3.6.12": {
+    "page": 786,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 3207,
+        "line_count": 14344
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1254,
+        "line_count": 18307
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Irreducible.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def IsPreirreducible (s : Set X) : Prop := ∀ u v : Set X, IsOpen u → IsOpen v → (s ∩ u).Nonempty → (s ∩ v).Nonempty → (s ∩ (u ∩ v)).Nonempty"
+          },
+          {
+            "line": 49,
+            "head": "def IsIrreducible (s : Set X) : Prop := s.Nonempty ∧ IsPreirreducible s"
+          },
+          {
+            "line": 52,
+            "head": "theorem IsIrreducible.nonempty (h : IsIrreducible s) : s.Nonempty := h.1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/PointwiseUnitComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitIntervalMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) : intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y ⟶ intervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := intervalFunctorMap G (F.app (Opposite.op ⦋0⦌) x) y ≫ intervalPrecompose (G.app (Opposite.op ⦋0⦌) y) (qcatUnitComponent η x)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitIntervalMap_family {A X Y : SSet.{u}} [Quasicategory A] [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) (f : A ⟶ intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y) : intervalFamilyHom (f ≫ unitIntervalMap η x y) = constantUnitHomMap η A x y (intervalFamilyHom f)"
+          }
+        ]
+      }
+    ],
+    "decision": "native reflective subcategory の essential image はあるが、原典の XZR→XB の left adjoint と overconvergent sheaf の classical terminology との比較はない。ordinary set-valued sheaf の一般的な逆像だけはこの指定 embedding を与えない。"
+  },
+  "7.3.6.13": {
+    "page": 786,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.5",
+        "7.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          "SerrePositivity"
+        ],
+        "file_count": 3207,
+        "line_count": 14344
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ellLike|cell_like|[Ss]hape|[Aa]ffinoid|[Ii]rreducible|IsProperMap|ReflectiveSubcategory|[Ss]heaf",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1254,
+        "line_count": 18307
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Maps/Proper/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "structure IsProperMap (f : X → Y) : Prop extends Continuous f where"
+          },
+          {
+            "line": 89,
+            "head": "lemma IsProperMap.continuous (h : IsProperMap f) : Continuous f := h.toContinuous"
+          },
+          {
+            "line": 92,
+            "head": "lemma IsProperMap.isClosedMap (h : IsProperMap f) : IsClosedMap f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Irreducible.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def IsPreirreducible (s : Set X) : Prop := ∀ u v : Set X, IsOpen u → IsOpen v → (s ∩ u).Nonempty → (s ∩ v).Nonempty → (s ∩ (u ∩ v)).Nonempty"
+          },
+          {
+            "line": 49,
+            "head": "def IsIrreducible (s : Set X) : Prop := s.Nonempty ∧ IsPreirreducible s"
+          },
+          {
+            "line": 52,
+            "head": "theorem IsIrreducible.nonempty (h : IsIrreducible s) : s.Nonempty := h.1"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/PointwiseUnitComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def unitIntervalMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) : intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y ⟶ intervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := intervalFunctorMap G (F.app (Opposite.op ⦋0⦌) x) y ≫ intervalPrecompose (G.app (Opposite.op ⦋0⦌) y) (qcatUnitComponent η x)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitIntervalMap_family {A X Y : SSet.{u}} [Quasicategory A] [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) (y : Y _⦋0⦌) (f : A ⟶ intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y) : intervalFamilyHom (f ≫ unitIntervalMap η x y) = constantUnitHomMap η A x y (intervalFamilyHom f)"
+          }
+        ]
+      }
+    ],
+    "decision": "原典は非 affinoid への一般化を読者に委ねる注意である。本体に XZR,XB の higher sheaf 比較と cell-like の述語はなく、affinoid algebra の局所化だけから同じ global extension は得られない。"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "6.5.0.1": {
+    "page": 658,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.0",
+        "6.5.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Jardine|LocalModel|Hypercomplete|hypercomplete|sheafification|ModelCategory",
+          "SerrePositivity"
+        ],
+        "file_count": 1722,
+        "line_count": 4413
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Jardine|LocalModel|Hypercomplete|hypercomplete|sheafification|ModelCategory",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 76,
+        "line_count": 395
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 80,
+            "head": "def sheafificationAdjunction [HasWeakSheafify J A] : presheafToSheaf J A ⊣ sheafToPresheaf J A := Adjunction.ofIsRightAdjoint _"
+          },
+          {
+            "line": 106,
+            "head": "theorem sheafificationAdjunction_unit_app (P : Cᵒᵖ ⥤ D) : (sheafificationAdjunction J D).unit.app P = toSheafify J P := rfl"
+          },
+          {
+            "line": 130,
+            "head": "noncomputable abbrev sheafification : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D := presheafToSheaf J D ⋙ sheafToPresheaf J D"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheafification と native 弱同値の局所化はあるが、Brown–Joyal–Jardine の local model structure の coherent nerve と Shv(X)∧ の比較はない。SSet の Kan–Quillen モデル圏だけは simplicial presheaf の local model instance でも空間値層化との比較でもない。"
+  }
+}

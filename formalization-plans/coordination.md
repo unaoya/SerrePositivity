@@ -11,14 +11,14 @@
 | --- | --- | --- | --- | --- | --- |
 | 調整役 | Claude Code | 暦・合図・取り込み、検収、BS の設計 | main | 計画・本書・`bhatt-scholze/design-status.md` | — |
 | Kerodon の確認 | Codex | 対応表の全項目の確認 | `SerrePositivity-kerodon-review-a`（枝 `research/kerodon-review-a2`）・`-b`・`-c` | `research/kerodon-coverage/codex-review.md` | 全 10 章のやり直しと抜き取りは main（11-10）。-a2・-b は閉じた（11-10）。-c が KL-W1 の段 3 の後に partial・none の一括見直し（§8.2 の 4） |
-| HA の確認 | Codex | HA の全項目の対応表（本全体、HA の形式化の検討の材料） | `SerrePositivity-ha-review`・`research/ha-review` | `research/ha-coverage/codex-review.md` | 開始（11-07 夜）、段 0 |
-| HTT の確認 | Codex | HTT の全項目の対応表（本全体、Kerodon の行を参照） | `SerrePositivity-htt-review`・`research/htt-review` | `research/htt-coverage/codex-review.md` | 開始（11-07 夜）、段 0 |
+| HA の確認 | Codex | HA の全項目の対応表（本全体、HA の形式化の検討の材料） | （閉じた） | `research/ha-coverage/codex-review.md` | **完了・閉じた**（11-11）：全 2,866 項目、`review/summary.md`。worktree と枝は削除 |
+| HTT の確認 | Codex | HTT の全項目の対応表（本全体、Kerodon の行を参照） | （閉じた） | `research/htt-coverage/codex-review.md` | **完了・閉じた**（11-11）：全 1,730 項目、`review/summary.md`。worktree と枝は削除 |
 | K の地図 | Codex | K の文献ごとの全項目の対応表（本論文 §3・§4、KST、Land–Tamme、Tamme、BGT） | （閉じた） | `research/k-coverage/codex-maps.md` | 完了・閉じた（11-11、f15ad120b）。全 17 文献 688 項目、要約 research/k-coverage/maps/summary.md。K の再開時に新しく開く |
 | KL-W1 | Codex | ∞ の配置を Kerodon に合わせる | `SerrePositivity-kerodon-layout`・`refactor/kerodon-layout` | `stage-ii/kerodon-layout-w1.md` | 段 1.5 は main。段 1.6（割り当ての見直し）→ 段 2・3（§8、11-10） |
 | ③ ∞ 供給 | Codex | G8 の四角形 → G14・G9・G10 | `SerrePositivity-inf-supply`・`math/inf-supply` | `stage-ii/inf-supply-w1.md` | KL-W1 の後 |
 | ⑤a BS 実装 | Codex | BS-DOC1 → BS-W11 → BS-W12（BM18 の経路 B） | `SerrePositivity-bs-impl`・`math/bs-impl` | `bhatt-scholze/bhatt-scholze-codex-w16.md` | BS-W14 は main（A1 の二本は ⑤b の停止点 3 の後）。BS-W16（実例の欄、G12・P⁰ を除く）段 0（11-10） |
 | ⑤b BS 実装 | Codex | D68 の直接証明（完了）→ D69 と結晶サイトの、∞ 圏に依らない部分 | `SerrePositivity-bs-d68`・`math/bs-d68` | `bhatt-scholze/bhatt-scholze-codex-d69.md` | BS-D68 は main（11-10、09047a87e）。BS-D69 段 0 |
-| ⑤c BS 実装 | Codex | §2・§3・§7 の古典的な残り（∞ 圏なし） | `SerrePositivity-bs-classical`・`math/bs-classical` | `bhatt-scholze/bhatt-scholze-codex-w15.md` | 開始（11-10）、段 0 |
+| ⑤c BS 実装 | Codex | W15（§2・§3・§7 の古典的な残り）完了 → W17（Thm 4.11 の帰着の古典的な部分、Constr 4.17、Rem 4.19） | `SerrePositivity-bs-classical`・`math/bs-classical` | `bhatt-scholze/bhatt-scholze-codex-w17.md` | W15 停止点 4 取り込み（11-11、acbf9fc5e）、W17 段 0 |
 | ⑥ スキーム論 | Codex | BS17 Thm 4.1 (i) の経路 | `SerrePositivity-scheme`・`math/scheme` | `stage-ii/scheme-w1.md`（§6 で BS17 に絞る） | 2a′（移動）・2b・2d の一部は main、2d 進行中（11-07） |
 | ① ∞ 中核 | Codex | Verdier 商（K の入口） | — | `stage-ii/inf-core-w1.md` | **止める**（K と一緒に後回し、11-07） |
 
@@ -41,6 +41,7 @@
 5. 土台（HomologicalAlgebra・CategoryTheory・HomotopicalAlgebra・DG の Complexes/Category/Module/Functor）に触る変更は、下流ほぼ全部（約 9,000〜20,000 本、単独で 3〜8 時間）を再ビルドする。これを起こす変更は窓ごとに一束。
 6. 実測（[verify-build-costs の記録](dg-cleanup-plan.md#5a-再ビルドの費用と規則2026-10-30dg-w1-の実測から)）：DG-W1 の土台 6 本の import 書き換えで 11,250 本・6 時間 57 分（3 セッション同時）、verify 1 時間 49 分。
 
+- **Codex の書き込み先（11-11）**：Codex のチャットは main の作業木で起動していて、隣の worktree への書き込みが毎回承認になる。`~/.codex/config.toml` の `writable_roots` はアプリのチャットに効かなかったので元に戻した。対策は未決（チャットの権限の切り替え、または worktree を開いた新しいチャット）。
 - **鍵の取り合い（11-10）**：調査のレーン（Kerodon・HA・HTT・K の地図）の `#check` の一括実行も同じ鍵を使う。調査のレーンは一回の鍵を 10 分以内に収める（モジュールの塊を小さく分け、塊ごとに鍵を取り直す）。実装のレーン（⑤a・⑤b・⑥）は `--wait 0` で諦めず、`--wait 1800` で待つ。
 
 - **昼と夜の分け方（11-10 夜、ユーザーの希望）**：時刻は日本時間。
@@ -54,6 +55,9 @@
   - 取り直しのループは害がなくなった（列の後ろに並び直すだけ）。ただし **一回の塊は 30 分以内**（bulk は昼も夜も）、research は 10 分以内のまま。
   - **繰り上げ（11-11 追加）**：待ちが impl・research は 15 分、bulk は 30 分を超えた整理券は、組に関係なく先頭へ繰り上がる（繰り上がったものどうしは待ち始めの順）。impl の小さなビルドが続いても、research・bulk が飢えない。
   - **昼の bulk は繰り上げない（11-11 11:10 追加）**：昼は bulk の整理券を繰り上げず、impl・research の整理券がないときだけ bulk が取る。昼の bulk の塊は一回 10 分以内（10:37〜11:06 に 29 分の束が impl 4 本と research 3 本を止めたため）。夜の繰り上げは従来どおり。
+  - **鍵はビルドの間だけ持つ（11-11 17:10 追加）**：一回のビルド（または一回の監査）ごとに鍵を取って放す。編集・証明の検討・報告書きの間は鍵を持たない。鍵の中で「ビルドの会話セッション」（要求が来たときだけビルドする常駐プロセス）を動かす形は禁止（16:45〜 ⑤a の build-session.py が 19 分持ち、その間ほとんどビルドしていなかった）。
+  - **coord の組（11-11 17:10 追加）**：調整役の取り込み・登録（main の作業木）は `coord` の組で、昼夜とも常に先頭（繰り上げより前）。worktree 名 `SerrePositivity` から推定する。
+  - **持ち主の履歴（11-11 17:10 追加）**：鍵の取得・返却は `$TMPDIR/serre-lake-build.history.jsonl` に一行ずつ追記される（時刻・worktree・組・コマンド）。長い持ち方は後からこれで確かめる。モニターも読んでよい（読むだけ）。
   - **`--wait` の目安（11-11 11:10 改定）**：impl・research・bulk とも `--wait 3600`（繰り上げまで最大 15〜30 分＋前の持ち主の最大 30 分）。同じ worktree から整理券を複数出さない（待ちは一つにまとめる）。
   - **夜の空き（11-11）**：11-10 の夜は 01:08〜06:07 の 5 時間、鍵が空いた。KL-W1 は夜の束が早く終わったら次の段に続ける。止まったときは報告し、空いた鍵は impl が使ってよい（整理券の列が自動で回す）。
   - 列を見る：`zsh scripts/refactor/with_build_lock.sh --status`。
@@ -67,6 +71,8 @@
 | --- | --- |
 | 11-07 | Kerodon の確認（段 1′）。⑤a・⑤b・⑥ 開始。取り込みのたびに調整役がルートのビルド（キャッシュで数分）と監査 |
 | 確認の完了後 | KL-W1（∞ の配置を Kerodon に合わせる、`stage-ii/kerodon-layout-w1.md`）。段 3 の後に下流ビルドと verify を一回（暦は段 1 の承認のときに書く）。①③は KL-W1 の取り込みの後に開始 |
+| KL-W1 の取り込みの直後（調整役） | 対応表の宣言の場所を書き直す（11-11、ユーザー承認）：HTT・HA・Prisms の表と Kerodon・K の地図の「名前 @ パス:行」を、(1) KL-W1 の改名表で名前を置き換え、(2) Lean の `findDeclarationRanges?` で今のモジュールと行を環境から引き直す。見つからない名前は一覧にして止める（黙って消さない）。道具は `scripts/` に置き、以後の移動でも使う。直したら地図を作り直す |
+| 宣言の場所の書き直しの後 | 文献の属性 `@[cite KEY "番号"]` の一括レーン（11-11、ユーザー決定。`stage-ii/citation-attributes.md`）：属性・照会のコマンド・略号表、対応表から属性を自動で付ける（夜の bulk）、地図を属性から作る |
 | ③の G8 の四角形の取り込み | BS に知らせる（S4 の生成辺）。④を開く |
 | 段 G の最初の区切り（目安 12 月上旬） | 保守の束：L1（F-2 の deprecated alias の一括削除）・L2（旧 G8 の削除）。BS・③・KST が新しい名前へ移ったのを確かめてから。担当は①か② |
 | ①の M1・M2・M7 の取り込み | L4（分数の一般版）を①の中で。K 理論レーン（B-3〜）を開く |

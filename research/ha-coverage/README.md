@@ -2,6 +2,8 @@
 
 作成：2026-11-07（段階 II の調整役）。Kerodon の対応表（`research/kerodon-coverage/`）と同じ形で、Lurie『Higher Algebra』（以下 HA）の項目を Lean の宣言に対応させる。実作業は Codex（`codex-review.md`）、検収と地図（HTML）は調整役。
 
+**完了（2026-11-11）**：全 2,866 項目（own 38・mathlib 39・partial 465・none 2,324・unsure 0）。要約は `review/summary.md`。レーンは閉じ、worktree と枝を削除した。
+
 ## 範囲
 
 **本全体**（11-07 夜、ユーザー：HA の形式化そのものを本格的に検討する）。全章の Section・Subsection の見出しと全項目（定義・定理・構成など番号つきの環境）を一行ずつ作り、全項目を照合する。照合の順は、使われている所と HA の形式化で最初に要る所から。

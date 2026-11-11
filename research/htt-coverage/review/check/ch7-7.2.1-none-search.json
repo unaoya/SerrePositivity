@@ -1,0 +1,2025 @@
+{
+  "7.2.1.1": {
+    "page": 717,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native Kan n-connectivity の型はあるが、任意の ∞-topos の n-connective objects 全ての global section による homotopy dimension の述語はない。ordinary topological dimension と単体的 horn dimension は対象も条件も異なる。"
+  },
+  "7.2.1.2": {
+    "page": 717,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native initial/terminal object の一意性はあるが、原典の homotopy dimension ≤−1 と ∞-topos が ∗ に同値との iff はない。空の位相空間上の ordinary sheaf の triviality だけは全ての ∞-topos の判定にならない。"
+  },
+  "7.2.1.3": {
+    "page": 717,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native Yoneda の極限保存と評価の各点 colimit はあるが、space-valued presheaf の effective epi の保存から global section を得る接続はない。Space の Kan 複体が非空であるという特殊な点の選択だけを presheaf トポスの次元の主張にしない。"
+  },
+  "7.2.1.4": {
+    "page": 718,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib CW complex の skeleton とホモトピーはあるが、Kan X の Space/X の homotopy dimension を CW retract の dimension と比較していない。単体集合の有限 skeleton はこの retract の存在や n≠2 の強化と未比較。"
+  },
+  "7.2.1.5": {
+    "page": 718,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native coproduct の普遍性はあるが、RTop の余積の global section と n-connectivity の componentwise 判定はない。ordinary sheaf category の積分解だけでは空間値の全対象に対する次元の iff を述べない。"
+  },
+  "7.2.1.6": {
+    "page": 719,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheaf pushforward はあるが、任意の ∞-topos の k-connective morphism を (k−n)-connective にする述語はない。通常の map の fiber connectivity と sheaf の相対 connectivity は未比較。"
+  },
+  "7.2.1.7": {
+    "page": 719,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native adjunction と terminal object はあるが、構造幾何学射 F*:X→Space の相対 dimension と n-connective object の global section を結ぶ iff はない。generic right adjoint の limit 保存だけでは connectivity の低下量を制御しない。"
+  },
+  "7.2.1.8": {
+    "page": 720,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native colimit generation の条件はあるが、各 slice X/Uα の homotopy dimension を指定した generating family に課す local dimension の述語はない。ordinary site の局所有限性はこの高次 slice dimension と異なる。"
+  },
+  "7.2.1.9": {
+    "page": 720,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native Yoneda density と representable slice の比較は候補だが、P(C)/j(C) の各 slice の homotopy dimension 0 を示す型はない。前層の colimit generation だけは必要な section の存在を供給しない。"
+  },
+  "7.2.1.10": {
+    "page": 720,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native truncated DG algebra の Postnikov tower はあるが、任意の ∞-topos の intrinsic truncations の tower と inverse limit の同値ではない。DG t-structure の convergence は Shv の局所 dimension との比較がない。"
+  },
+  "7.2.1.11": {
+    "page": 721,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native functor category はあるが、原典の presentable X の全 Postnikov towers の full subcategory と ∞ での評価の trivial fibration はない。DG algebra の具体的な truncation tower の存在は、この全準圏の trivial fibration の結論にならない。"
+  },
+  "7.2.1.12": {
+    "page": 722,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "reflective localization の単位の同値判定はあるが、原典の locally finite homotopy dimension から任意の ∞-connective map を反転する型はない。ordinary sheaf の完備性と高次 hypercompletion は異なる。"
+  },
+  "7.2.1.13": {
+    "page": 722,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native pullback functor と mapping space はあるが、(n+1)-connective X による X/X への逆像が τ≤n 上で fully faithful、τ≤n−1 上で equivalence となる比較はない。ordinary discrete slice は truncation/con-nectivity の全次数を含まない。"
+  },
+  "7.2.1.14": {
+    "page": 723,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib EffectiveEpi は通常圏の述語であり、任意の ∞-topos の φ と τ≤0φ の effective epi の iff を結ぶ準圏の Cech colimit の比較はない。ordinary effective epi の型を元の φ に適用するにはその接続が要る。"
+  },
+  "7.2.1.15": {
+    "page": 723,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native π0 の surjective 性と弱同値の各種判定はあるが、SpaceInfinity の Cech nerve の colimit としての effective epi との iff はない。Set の EffectiveEpi iff surjective は π0 を取ることの comparison を欠く。"
+  },
+  "7.2.1.16": {
+    "page": 723,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Grothendieck topology と sheafification はあるが、space-valued P(C) の topological localization と P(NhC) との同じ ∞-topos pullback square はない。ordinary site を homotopy category へ移すだけでは high descent の比較を供給しない。"
+  },
+  "7.2.1.17": {
+    "page": 724,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.1.6",
+        "7.2.1",
+        "7.2.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          "SerrePositivity"
+        ],
+        "file_count": 3598,
+        "line_count": 20013
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyDimension|homotopyDimension|Postnikov|EffectiveEpi|[Tt]runcat|[Ss]talk|[Cc]onnectiv",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 228,
+        "line_count": 3829
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 81,
+            "head": "def IsSeparated (P : Cᵒᵖ ⥤ A) {FA : A → A → Type*} {CA : A → Type*} [∀ X Y, FunLike (FA X Y) (CA X) (CA Y)] [ConcreteCategory A FA] : Prop := ∀ (X : C) (S : Sieve X) (_ : S ∈ J X) (x y : ToType (P.obj (op X))), (∀ (Y : C) (f : Y ⟶ X) (_ : S f), P.map f.op x = P.map f.op y) → x = y"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/SheafCohomology/Basic.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "abbrev H (n : ℕ) : Type w' := Ext ((constantSheaf J AddCommGrpCat.{w}).obj ↧(ULift ℤ)) F n"
+          },
+          {
+            "line": 70,
+            "head": "def cohomologyPresheafFunctor (n : ℕ) : Sheaf J AddCommGrpCat.{v} ⥤ Cᵒᵖ ⥤ AddCommGrpCat.{w'} := Functor.flip (Functor.op (yoneda ⋙ (Functor.whiskeringRight _ _ _).obj AddCommGrpCat.free ⋙ presheafToSheaf _ _) ⋙ extFunctor n)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp"
+          },
+          {
+            "line": 34,
+            "head": "class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib topological sheaf の stalk と enough-points 判定は通常の sheaf category の型である。任意の space-valued sheaf の同値を点で検出する higher enough-points と局所 homotopy dimension の接続はない。"
+  }
+}

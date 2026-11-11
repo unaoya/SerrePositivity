@@ -1,0 +1,1946 @@
+{
+  "7.3.4.1": {
+    "page": 768,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.3",
+        "7.3.4",
+        "7.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 1580,
+        "line_count": 8456
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 500,
+        "line_count": 12381
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "We provide the instance `CategoryTheory.Category (TopCat.Sheaf C X)` as the full subcategory of"
+          },
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem compact_basis_nhds [LocallyCompactSpace X] (x : X) : (𝓝 x).HasBasis (fun s => s ∈ 𝓝 x ∧ IsCompact s) fun s => s := hasBasis_self.2 <| by simpa only [and_comm] using LocallyCompactSpace.local_compact_nhds x"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sets/Compacts.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "structure Compacts (α : Type*) [TopologicalSpace α] where"
+          },
+          {
+            "line": 44,
+            "head": "instance : SetLike (Compacts α) α where"
+          },
+          {
+            "line": 48,
+            "head": "instance : PartialOrder (Compacts α) := .ofSetLike (Compacts α)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "class IsGrothendieckAbelian [Abelian C] : Prop where"
+          },
+          {
+            "line": 81,
+            "head": "theorem IsGrothendieckAbelian.of_equivalence [Abelian C] [Abelian D] [IsGrothendieckAbelian.{w} C] (α : C ≌ D) : IsGrothendieckAbelian.{w} D"
+          },
+          {
+            "line": 91,
+            "head": "instance ShrinkHoms.isGrothendieckAbelian [Abelian C] [IsGrothendieckAbelian.{w} C] : IsGrothendieckAbelian.{w, w} (ShrinkHoms C) := IsGrothendieckAbelian.of_equivalence <| ShrinkHoms.equivalence C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/CompactlyCoherentSpace.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class CompactlyCoherentSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 66,
+            "head": "lemma isOpen_iff [CompactlyCoherentSpace X] {A : Set X} : IsOpen A ↔ ∀ K, IsCompact K → IsOpen (K ↓∩ A) := IsCoherentWith.isOpen_iff isCoherentWith"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib Compacts と compact neighbourhood basis はあるが、原典の three K-sheaf conditions とその full functor subcategory の構成はない。ordinary compactly-coherent space は位相を回収する条件で、C-valued compact presheaf の continuity/gluing と異なる。"
+  },
+  "7.3.4.2": {
+    "page": 769,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.3",
+        "7.3.4",
+        "7.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 1580,
+        "line_count": 8456
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 500,
+        "line_count": 12381
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "We provide the instance `CategoryTheory.Category (TopCat.Sheaf C X)` as the full subcategory of"
+          },
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem compact_basis_nhds [LocallyCompactSpace X] (x : X) : (𝓝 x).HasBasis (fun s => s ∈ 𝓝 x ∧ IsCompact s) fun s => s := hasBasis_self.2 <| by simpa only [and_comm] using LocallyCompactSpace.local_compact_nhds x"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sets/Compacts.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "structure Compacts (α : Type*) [TopologicalSpace α] where"
+          },
+          {
+            "line": 44,
+            "head": "instance : SetLike (Compacts α) α where"
+          },
+          {
+            "line": 48,
+            "head": "instance : PartialOrder (Compacts α) := .ofSetLike (Compacts α)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "class IsGrothendieckAbelian [Abelian C] : Prop where"
+          },
+          {
+            "line": 81,
+            "head": "theorem IsGrothendieckAbelian.of_equivalence [Abelian C] [Abelian D] [IsGrothendieckAbelian.{w} C] (α : C ≌ D) : IsGrothendieckAbelian.{w} D"
+          },
+          {
+            "line": 91,
+            "head": "instance ShrinkHoms.isGrothendieckAbelian [Abelian C] [IsGrothendieckAbelian.{w} C] : IsGrothendieckAbelian.{w, w} (ShrinkHoms C) := IsGrothendieckAbelian.of_equivalence <| ShrinkHoms.equivalence C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/CompactlyCoherentSpace.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class CompactlyCoherentSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 66,
+            "head": "lemma isOpen_iff [CompactlyCoherentSpace X] {A : Set X} : IsOpen A ↔ ∀ K, IsCompact K → IsOpen (K ↓∩ A) := IsCoherentWith.isOpen_iff isCoherentWith"
+          }
+        ]
+      }
+    ],
+    "decision": "native finite limit preserving functor の型はあるが、任意の presentable C の全 filtered I の colimit functor に課す同じ class はない。SpaceInfinity の指定された smallSpaceColimitFunctor の保存は特殊な対象の定理で、一般の述語の定義ではない。"
+  },
+  "7.3.4.3": {
+    "page": 769,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.3",
+        "7.3.4",
+        "7.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 1580,
+        "line_count": 8456
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 500,
+        "line_count": 12381
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "We provide the instance `CategoryTheory.Category (TopCat.Sheaf C X)` as the full subcategory of"
+          },
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem compact_basis_nhds [LocallyCompactSpace X] (x : X) : (𝓝 x).HasBasis (fun s => s ∈ 𝓝 x ∧ IsCompact s) fun s => s := hasBasis_self.2 <| by simpa only [and_comm] using LocallyCompactSpace.local_compact_nhds x"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sets/Compacts.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "structure Compacts (α : Type*) [TopologicalSpace α] where"
+          },
+          {
+            "line": 44,
+            "head": "instance : SetLike (Compacts α) α where"
+          },
+          {
+            "line": 48,
+            "head": "instance : PartialOrder (Compacts α) := .ofSetLike (Compacts α)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "class IsGrothendieckAbelian [Abelian C] : Prop where"
+          },
+          {
+            "line": 81,
+            "head": "theorem IsGrothendieckAbelian.of_equivalence [Abelian C] [Abelian D] [IsGrothendieckAbelian.{w} C] (α : C ≌ D) : IsGrothendieckAbelian.{w} D"
+          },
+          {
+            "line": 91,
+            "head": "instance ShrinkHoms.isGrothendieckAbelian [Abelian C] [IsGrothendieckAbelian.{w} C] : IsGrothendieckAbelian.{w, w} (ShrinkHoms C) := IsGrothendieckAbelian.of_equivalence <| ShrinkHoms.equivalence C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/CompactlyCoherentSpace.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class CompactlyCoherentSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 66,
+            "head": "lemma isOpen_iff [CompactlyCoherentSpace X] {A : Set X} : IsOpen A ↔ ∀ K, IsCompact K → IsOpen (K ↓∩ A) := IsCoherentWith.isOpen_iff isCoherentWith"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib IsGrothendieckAbelian は AB5 と generator を持つ通常圏だが、その N(A) の native presentability と全 filtered infinity-shaped colimits の left exactness を示す比較はない。通常の AB5 は普通の添字の exact filtered colimits で、そのまま準圏版にはならない。"
+  },
+  "7.3.4.5": {
+    "page": 769,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.3",
+        "7.3.4",
+        "7.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 1580,
+        "line_count": 8456
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 500,
+        "line_count": 12381
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "We provide the instance `CategoryTheory.Category (TopCat.Sheaf C X)` as the full subcategory of"
+          },
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem compact_basis_nhds [LocallyCompactSpace X] (x : X) : (𝓝 x).HasBasis (fun s => s ∈ 𝓝 x ∧ IsCompact s) fun s => s := hasBasis_self.2 <| by simpa only [and_comm] using LocallyCompactSpace.local_compact_nhds x"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sets/Compacts.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "structure Compacts (α : Type*) [TopologicalSpace α] where"
+          },
+          {
+            "line": 44,
+            "head": "instance : SetLike (Compacts α) α where"
+          },
+          {
+            "line": 48,
+            "head": "instance : PartialOrder (Compacts α) := .ofSetLike (Compacts α)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "class IsGrothendieckAbelian [Abelian C] : Prop where"
+          },
+          {
+            "line": 81,
+            "head": "theorem IsGrothendieckAbelian.of_equivalence [Abelian C] [Abelian D] [IsGrothendieckAbelian.{w} C] (α : C ≌ D) : IsGrothendieckAbelian.{w} D"
+          },
+          {
+            "line": 91,
+            "head": "instance ShrinkHoms.isGrothendieckAbelian [Abelian C] [IsGrothendieckAbelian.{w} C] : IsGrothendieckAbelian.{w, w} (ShrinkHoms C) := IsGrothendieckAbelian.of_equivalence <| ShrinkHoms.equivalence C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/CompactlyCoherentSpace.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class CompactlyCoherentSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 66,
+            "head": "lemma isOpen_iff [CompactlyCoherentSpace X] {A : Set X} : IsOpen A ↔ ∀ K, IsCompact K → IsOpen (K ↓∩ A) := IsCoherentWith.isOpen_iff isCoherentWith"
+          }
+        ]
+      }
+    ],
+    "decision": "native pointwise colimit と finite limit はあるが、一般の presentable C の filtered-colimit left exactness を Fun(X,C) 全体へ運ぶ同じ preservation の型はない。ordinary functor category の pointwise theorem を使う場合にも coherent X-diagram の比較が必要。"
+  },
+  "7.3.4.6": {
+    "page": 769,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.3",
+        "7.3.4",
+        "7.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 1580,
+        "line_count": 8456
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 500,
+        "line_count": 12381
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "We provide the instance `CategoryTheory.Category (TopCat.Sheaf C X)` as the full subcategory of"
+          },
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem compact_basis_nhds [LocallyCompactSpace X] (x : X) : (𝓝 x).HasBasis (fun s => s ∈ 𝓝 x ∧ IsCompact s) fun s => s := hasBasis_self.2 <| by simpa only [and_comm] using LocallyCompactSpace.local_compact_nhds x"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sets/Compacts.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "structure Compacts (α : Type*) [TopologicalSpace α] where"
+          },
+          {
+            "line": 44,
+            "head": "instance : SetLike (Compacts α) α where"
+          },
+          {
+            "line": 48,
+            "head": "instance : PartialOrder (Compacts α) := .ofSetLike (Compacts α)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "class IsGrothendieckAbelian [Abelian C] : Prop where"
+          },
+          {
+            "line": 81,
+            "head": "theorem IsGrothendieckAbelian.of_equivalence [Abelian C] [Abelian D] [IsGrothendieckAbelian.{w} C] (α : C ≌ D) : IsGrothendieckAbelian.{w} D"
+          },
+          {
+            "line": 91,
+            "head": "instance ShrinkHoms.isGrothendieckAbelian [Abelian C] [IsGrothendieckAbelian.{w} C] : IsGrothendieckAbelian.{w, w} (ShrinkHoms C) := IsGrothendieckAbelian.of_equivalence <| ShrinkHoms.equivalence C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/CompactlyCoherentSpace.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class CompactlyCoherentSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 66,
+            "head": "lemma isOpen_iff [CompactlyCoherentSpace X] {A : Set X} : IsOpen A ↔ ∀ K, IsCompact K → IsOpen (K ↓∩ A) := IsCoherentWith.isOpen_iff isCoherentWith"
+          }
+        ]
+      }
+    ],
+    "decision": "native reflective localization と colimit-preserving reflector はあるが、原典の一般 C,D の accessible lex localization で filtered colimit functor の left exactness を移す型はない。三つの関手の形式的合成という証明の部品のみを元の局所化の主張として数えない。"
+  },
+  "7.3.4.7": {
+    "page": 770,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.3",
+        "7.3.4",
+        "7.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 1580,
+        "line_count": 8456
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 500,
+        "line_count": 12381
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "We provide the instance `CategoryTheory.Category (TopCat.Sheaf C X)` as the full subcategory of"
+          },
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem compact_basis_nhds [LocallyCompactSpace X] (x : X) : (𝓝 x).HasBasis (fun s => s ∈ 𝓝 x ∧ IsCompact s) fun s => s := hasBasis_self.2 <| by simpa only [and_comm] using LocallyCompactSpace.local_compact_nhds x"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sets/Compacts.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "structure Compacts (α : Type*) [TopologicalSpace α] where"
+          },
+          {
+            "line": 44,
+            "head": "instance : SetLike (Compacts α) α where"
+          },
+          {
+            "line": 48,
+            "head": "instance : PartialOrder (Compacts α) := .ofSetLike (Compacts α)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "class IsGrothendieckAbelian [Abelian C] : Prop where"
+          },
+          {
+            "line": 81,
+            "head": "theorem IsGrothendieckAbelian.of_equivalence [Abelian C] [Abelian D] [IsGrothendieckAbelian.{w} C] (α : C ≌ D) : IsGrothendieckAbelian.{w} D"
+          },
+          {
+            "line": 91,
+            "head": "instance ShrinkHoms.isGrothendieckAbelian [Abelian C] [IsGrothendieckAbelian.{w} C] : IsGrothendieckAbelian.{w, w} (ShrinkHoms C) := IsGrothendieckAbelian.of_equivalence <| ShrinkHoms.equivalence C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/CompactlyCoherentSpace.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class CompactlyCoherentSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 66,
+            "head": "lemma isOpen_iff [CompactlyCoherentSpace X] {A : Set X} : IsOpen A ↔ ∀ K, IsCompact K → IsOpen (K ↓∩ A) := IsCoherentWith.isOpen_iff isCoherentWith"
+          }
+        ]
+      }
+    ],
+    "decision": "SpaceInfinity の filtered/finite exchange はあるが、任意の n-topos の lex localization とその intrinsic filtered colimits への transport comparison はない。Set の filtered-colimit exactness だけは arbitrary higher sheaf の結論に届かない。"
+  },
+  "7.3.4.8": {
+    "page": 770,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.3",
+        "7.3.4",
+        "7.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 1580,
+        "line_count": 8456
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 500,
+        "line_count": 12381
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "We provide the instance `CategoryTheory.Category (TopCat.Sheaf C X)` as the full subcategory of"
+          },
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem compact_basis_nhds [LocallyCompactSpace X] (x : X) : (𝓝 x).HasBasis (fun s => s ∈ 𝓝 x ∧ IsCompact s) fun s => s := hasBasis_self.2 <| by simpa only [and_comm] using LocallyCompactSpace.local_compact_nhds x"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sets/Compacts.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "structure Compacts (α : Type*) [TopologicalSpace α] where"
+          },
+          {
+            "line": 44,
+            "head": "instance : SetLike (Compacts α) α where"
+          },
+          {
+            "line": 48,
+            "head": "instance : PartialOrder (Compacts α) := .ofSetLike (Compacts α)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "class IsGrothendieckAbelian [Abelian C] : Prop where"
+          },
+          {
+            "line": 81,
+            "head": "theorem IsGrothendieckAbelian.of_equivalence [Abelian C] [Abelian D] [IsGrothendieckAbelian.{w} C] (α : C ≌ D) : IsGrothendieckAbelian.{w} D"
+          },
+          {
+            "line": 91,
+            "head": "instance ShrinkHoms.isGrothendieckAbelian [Abelian C] [IsGrothendieckAbelian.{w} C] : IsGrothendieckAbelian.{w, w} (ShrinkHoms C) := IsGrothendieckAbelian.of_equivalence <| ShrinkHoms.equivalence C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/CompactlyCoherentSpace.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class CompactlyCoherentSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 66,
+            "head": "lemma isOpen_iff [CompactlyCoherentSpace X] {A : Set X} : IsOpen A ↔ ∀ K, IsCompact K → IsOpen (K ↓∩ A) := IsCoherentWith.isOpen_iff isCoherentWith"
+          }
+        ]
+      }
+    ],
+    "decision": "native right Kan extension の existence criterion はあるが、原典の K-sheaf の三公理から KW(X) に制限した F の同じ右 Kan 性を示す型はない。ordinary compact sets の有限 subcover はその C-valued limit の比較の部品に留まる。"
+  },
+  "7.3.4.9": {
+    "page": 771,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.3",
+        "7.3.4",
+        "7.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 1580,
+        "line_count": 8456
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 500,
+        "line_count": 12381
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "We provide the instance `CategoryTheory.Category (TopCat.Sheaf C X)` as the full subcategory of"
+          },
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem compact_basis_nhds [LocallyCompactSpace X] (x : X) : (𝓝 x).HasBasis (fun s => s ∈ 𝓝 x ∧ IsCompact s) fun s => s := hasBasis_self.2 <| by simpa only [and_comm] using LocallyCompactSpace.local_compact_nhds x"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sets/Compacts.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "structure Compacts (α : Type*) [TopologicalSpace α] where"
+          },
+          {
+            "line": 44,
+            "head": "instance : SetLike (Compacts α) α where"
+          },
+          {
+            "line": 48,
+            "head": "instance : PartialOrder (Compacts α) := .ofSetLike (Compacts α)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "class IsGrothendieckAbelian [Abelian C] : Prop where"
+          },
+          {
+            "line": 81,
+            "head": "theorem IsGrothendieckAbelian.of_equivalence [Abelian C] [Abelian D] [IsGrothendieckAbelian.{w} C] (α : C ≌ D) : IsGrothendieckAbelian.{w} D"
+          },
+          {
+            "line": 91,
+            "head": "instance ShrinkHoms.isGrothendieckAbelian [Abelian C] [IsGrothendieckAbelian.{w} C] : IsGrothendieckAbelian.{w, w} (ShrinkHoms C) := IsGrothendieckAbelian.of_equivalence <| ShrinkHoms.equivalence C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/CompactlyCoherentSpace.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class CompactlyCoherentSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 66,
+            "head": "lemma isOpen_iff [CompactlyCoherentSpace X] {A : Set X} : IsOpen A ↔ ∀ K, IsCompact K → IsOpen (K ↓∩ A) := IsCoherentWith.isOpen_iff isCoherentWith"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheaf condition はあるが、原典の K(X)∪U(X) 上の F の right/left Kan 拡張の二条件の iff はない。単なる compact-neighbourhood colimit と ordinary gluing は、この同じ functor の二つの Kan conditions と未比較。"
+  },
+  "7.3.4.10": {
+    "page": 773,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.3",
+        "7.3.4",
+        "7.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 1580,
+        "line_count": 8456
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 500,
+        "line_count": 12381
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "We provide the instance `CategoryTheory.Category (TopCat.Sheaf C X)` as the full subcategory of"
+          },
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem compact_basis_nhds [LocallyCompactSpace X] (x : X) : (𝓝 x).HasBasis (fun s => s ∈ 𝓝 x ∧ IsCompact s) fun s => s := hasBasis_self.2 <| by simpa only [and_comm] using LocallyCompactSpace.local_compact_nhds x"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sets/Compacts.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "structure Compacts (α : Type*) [TopologicalSpace α] where"
+          },
+          {
+            "line": 44,
+            "head": "instance : SetLike (Compacts α) α where"
+          },
+          {
+            "line": 48,
+            "head": "instance : PartialOrder (Compacts α) := .ofSetLike (Compacts α)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "class IsGrothendieckAbelian [Abelian C] : Prop where"
+          },
+          {
+            "line": 81,
+            "head": "theorem IsGrothendieckAbelian.of_equivalence [Abelian C] [Abelian D] [IsGrothendieckAbelian.{w} C] (α : C ≌ D) : IsGrothendieckAbelian.{w} D"
+          },
+          {
+            "line": 91,
+            "head": "instance ShrinkHoms.isGrothendieckAbelian [Abelian C] [IsGrothendieckAbelian.{w} C] : IsGrothendieckAbelian.{w, w} (ShrinkHoms C) := IsGrothendieckAbelian.of_equivalence <| ShrinkHoms.equivalence C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/CompactlyCoherentSpace.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class CompactlyCoherentSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 66,
+            "head": "lemma isOpen_iff [CompactlyCoherentSpace X] {A : Set X} : IsOpen A ↔ ∀ K, IsCompact K → IsOpen (K ↓∩ A) := IsCoherentWith.isOpen_iff isCoherentWith"
+          }
+        ]
+      }
+    ],
+    "decision": "generic fully faithful restriction と ordinary sheaf comparison はあるが、原典の ShvKU と ShvK の具体的な full subcategory を構成せず、二つの restriction equivalence はない。さらにこの系は locally compact のみを印刷しており、直前定理の Hausdorff を勝手に補わない。"
+  },
+  "7.3.4.11": {
+    "page": 774,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.3",
+        "7.3.4",
+        "7.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 1580,
+        "line_count": 8456
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 500,
+        "line_count": 12381
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "We provide the instance `CategoryTheory.Category (TopCat.Sheaf C X)` as the full subcategory of"
+          },
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem compact_basis_nhds [LocallyCompactSpace X] (x : X) : (𝓝 x).HasBasis (fun s => s ∈ 𝓝 x ∧ IsCompact s) fun s => s := hasBasis_self.2 <| by simpa only [and_comm] using LocallyCompactSpace.local_compact_nhds x"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sets/Compacts.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "structure Compacts (α : Type*) [TopologicalSpace α] where"
+          },
+          {
+            "line": 44,
+            "head": "instance : SetLike (Compacts α) α where"
+          },
+          {
+            "line": 48,
+            "head": "instance : PartialOrder (Compacts α) := .ofSetLike (Compacts α)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "class IsGrothendieckAbelian [Abelian C] : Prop where"
+          },
+          {
+            "line": 81,
+            "head": "theorem IsGrothendieckAbelian.of_equivalence [Abelian C] [Abelian D] [IsGrothendieckAbelian.{w} C] (α : C ≌ D) : IsGrothendieckAbelian.{w} D"
+          },
+          {
+            "line": 91,
+            "head": "instance ShrinkHoms.isGrothendieckAbelian [Abelian C] [IsGrothendieckAbelian.{w} C] : IsGrothendieckAbelian.{w, w} (ShrinkHoms C) := IsGrothendieckAbelian.of_equivalence <| ShrinkHoms.equivalence C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/CompactlyCoherentSpace.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class CompactlyCoherentSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 66,
+            "head": "lemma isOpen_iff [CompactlyCoherentSpace X] {A : Set X} : IsOpen A ↔ ∀ K, IsCompact K → IsOpen (K ↓∩ A) := IsCoherentWith.isOpen_iff isCoherentWith"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib compact-space projection の IsProperMap はあるが、space-valued Shv(X) の global sections の universal left-adjointable な properness と比較されない。位相的 X→* の固有性を同じ幾何学射の性質に転記しない。"
+  },
+  "7.3.4.12": {
+    "page": 776,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.3",
+        "7.3.4",
+        "7.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 1580,
+        "line_count": 8456
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 500,
+        "line_count": 12381
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "We provide the instance `CategoryTheory.Category (TopCat.Sheaf C X)` as the full subcategory of"
+          },
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem compact_basis_nhds [LocallyCompactSpace X] (x : X) : (𝓝 x).HasBasis (fun s => s ∈ 𝓝 x ∧ IsCompact s) fun s => s := hasBasis_self.2 <| by simpa only [and_comm] using LocallyCompactSpace.local_compact_nhds x"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sets/Compacts.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "structure Compacts (α : Type*) [TopologicalSpace α] where"
+          },
+          {
+            "line": 44,
+            "head": "instance : SetLike (Compacts α) α where"
+          },
+          {
+            "line": 48,
+            "head": "instance : PartialOrder (Compacts α) := .ofSetLike (Compacts α)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "class IsGrothendieckAbelian [Abelian C] : Prop where"
+          },
+          {
+            "line": 81,
+            "head": "theorem IsGrothendieckAbelian.of_equivalence [Abelian C] [Abelian D] [IsGrothendieckAbelian.{w} C] (α : C ≌ D) : IsGrothendieckAbelian.{w} D"
+          },
+          {
+            "line": 91,
+            "head": "instance ShrinkHoms.isGrothendieckAbelian [Abelian C] [IsGrothendieckAbelian.{w} C] : IsGrothendieckAbelian.{w, w} (ShrinkHoms C) := IsGrothendieckAbelian.of_equivalence <| ShrinkHoms.equivalence C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/CompactlyCoherentSpace.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class CompactlyCoherentSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 66,
+            "head": "lemma isOpen_iff [CompactlyCoherentSpace X] {A : Set X} : IsOpen A ↔ ∀ K, IsCompact K → IsOpen (K ↓∩ A) := IsCoherentWith.isOpen_iff isCoherentWith"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheaf の評価と filtered colimit の型はあるが、space-valued Shv(X) の Γ の filtered infinity-colimits 保存を示す比較はない。usual presheaf の pointwise colimit は sheafification を通す global sections の同値を供給しない。"
+  },
+  "7.3.4.13": {
+    "page": 777,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "7.3.3",
+        "7.3.4",
+        "7.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          "SerrePositivity"
+        ],
+        "file_count": 1580,
+        "line_count": 8456
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "KSheaf|[Ss]heaf|Compacts|compact_basis_nhds|smallSpaceFilteredColimit|IsGrothendieckAbelian|PreservesFiniteLimits|[Kk]anExtension",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 500,
+        "line_count": 12381
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 136,
+            "head": "theorem isLimit_iff_isSheafFor : Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) ↔ ∀ E : Aᵒᵖ, IsSheafFor (P ⋙ coyoneda.obj E) S.arrows"
+          },
+          {
+            "line": 179,
+            "head": "theorem isSheaf_iff_isLimit : IsSheaf J P ↔ ∀ ⦃X : C⦄ (S : Sieve X), S ∈ J X → Nonempty (IsLimit (P.mapCone S.arrows.cocone.op)) := ⟨fun h _ S hS => (isLimit_iff_isSheafFor P S).2 fun E => h E.unop S hS, fun h E _ S hS => (isLimit_iff_isSheafFor P S).1 (h S hS) (op E)⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sheaves/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "We provide the instance `CategoryTheory.Category (TopCat.Sheaf C X)` as the full subcategory of"
+          },
+          {
+            "line": 84,
+            "head": "nonrec def IsSheaf (F : Presheaf.{w, v, u} C X) : Prop := Presheaf.IsSheaf (Opens.grothendieckTopology X) F"
+          },
+          {
+            "line": 89,
+            "head": "theorem isSheaf_unit (F : Presheaf (CategoryTheory.Discrete Unit) X) : F.IsSheaf := fun x U S _ x _ => ⟨eqToHom (Subsingleton.elim _ _), by cat_disch, fun _ => by cat_disch⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem compact_basis_nhds [LocallyCompactSpace X] (x : X) : (𝓝 x).HasBasis (fun s => s ∈ 𝓝 x ∧ IsCompact s) fun s => s := hasBasis_self.2 <| by simpa only [and_comm] using LocallyCompactSpace.local_compact_nhds x"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Sets/Compacts.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "structure Compacts (α : Type*) [TopologicalSpace α] where"
+          },
+          {
+            "line": 44,
+            "head": "instance : SetLike (Compacts α) α where"
+          },
+          {
+            "line": 48,
+            "head": "instance : PartialOrder (Compacts α) := .ofSetLike (Compacts α)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "class IsGrothendieckAbelian [Abelian C] : Prop where"
+          },
+          {
+            "line": 81,
+            "head": "theorem IsGrothendieckAbelian.of_equivalence [Abelian C] [Abelian D] [IsGrothendieckAbelian.{w} C] (α : C ≌ D) : IsGrothendieckAbelian.{w} D"
+          },
+          {
+            "line": 91,
+            "head": "instance ShrinkHoms.isGrothendieckAbelian [Abelian C] [IsGrothendieckAbelian.{w} C] : IsGrothendieckAbelian.{w, w} (ShrinkHoms C) := IsGrothendieckAbelian.of_equivalence <| ShrinkHoms.equivalence C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Compactness/CompactlyCoherentSpace.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class CompactlyCoherentSpace (X : Type*) [TopologicalSpace X] : Prop where"
+          },
+          {
+            "line": 66,
+            "head": "lemma isOpen_iff [CompactlyCoherentSpace X] {A : Set X} : IsOpen A ↔ ∀ K, IsCompact K → IsOpen (K ↓∩ A) := IsCoherentWith.isOpen_iff isCoherentWith"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の relative TopCat model と SingX sheaf comparison はなく、原典の filtered colimit preservation から properness を得る別の方法は構成されていない。abstract mates の存在だけをこの指定の代替証明には対応させない。"
+  }
+}

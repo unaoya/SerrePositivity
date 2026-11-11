@@ -1,0 +1,2256 @@
+{
+  "6.2.2.4": {
+    "page": 579,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 30,
+        "line_count": 73
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 191,
+        "line_count": 2560
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          },
+          {
+            "line": 89,
+            "head": "instance : DFunLike (GrothendieckTopology C) C (fun X ↦ Set (Sieve X)) where"
+          },
+          {
+            "line": 102,
+            "head": "theorem ext {J₁ J₂ : GrothendieckTopology C} (h : (J₁ : ∀ X : C, Set (Sieve X)) = J₂) : J₁ = J₂ := DFunLike.coe_injective h"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Plus.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "def plusObj : Cᵒᵖ ⥤ D where"
+          },
+          {
+            "line": 150,
+            "head": "def plusMap {P Q : Cᵒᵖ ⥤ D} (η : P ⟶ Q) : J.plusObj P ⟶ J.plusObj Q where"
+          },
+          {
+            "line": 188,
+            "head": "def plusFunctor : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 192,
+            "head": "instance preservesLimitsOfShape_plusFunctor (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.plusFunctor D)"
+          },
+          {
+            "line": 219,
+            "head": "instance preservesFiniteLimits_plusFunctor [HasFiniteLimits D] [PreservesFiniteLimits (forget D)] [(forget D).ReflectsIsomorphisms] : PreservesFiniteLimits (J.plusFunctor D)"
+          },
+          {
+            "line": 227,
+            "head": "instance preservesLimitsOfShape_sheafification (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.sheafification D) := Limits.comp_preservesLimitsOfShape _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sieves/Presheaf.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def functor (S : Sieve X) : Cᵒᵖ ⥤ Type v₁ where"
+          },
+          {
+            "line": 53,
+            "head": "def natTransOfLe {S T : Sieve X} (h : S ≤ T) : S.functor ⟶ T.functor where"
+          },
+          {
+            "line": 58,
+            "head": "def functorInclusion (S : Sieve X) : S.functor ⟶ yoneda.obj X where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def setsToKan : Type u ⥤ KanObject.{u} where"
+          },
+          {
+            "line": 35,
+            "head": "abbrev discreteKanFunctor : Type u ⥤ KanObject.{u} := setsToKan"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 97,
+            "head": "def conesEquivSieveCompatibleFamily : (S.arrows.diagram.op ⋙ P).cones.obj E ≃ { x : FamilyOfElements (P ⋙ coyoneda.obj E) (S : Presieve X) // x.SieveCompatible } where"
+          },
+          {
+            "line": 119,
+            "head": "def _root_.CategoryTheory.Presieve.FamilyOfElements.SieveCompatible.cone : Cone (S.arrows.diagram.op ⋙ P) where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Sieve.functor は対象 c への射の篩を集合値 subpresheaf of yoneda にするが、原典は C 全体の篩と空間値前層の (−1)-truncated object の同値類を対応させる。対象の次元・篩の基底が異なり、native 空間値前層との比較もない。"
+  },
+  "6.2.2.5": {
+    "page": 579,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 30,
+        "line_count": 73
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 191,
+        "line_count": 2560
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          },
+          {
+            "line": 89,
+            "head": "instance : DFunLike (GrothendieckTopology C) C (fun X ↦ Set (Sieve X)) where"
+          },
+          {
+            "line": 102,
+            "head": "theorem ext {J₁ J₂ : GrothendieckTopology C} (h : (J₁ : ∀ X : C, Set (Sieve X)) = J₂) : J₁ = J₂ := DFunLike.coe_injective h"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Plus.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "def plusObj : Cᵒᵖ ⥤ D where"
+          },
+          {
+            "line": 150,
+            "head": "def plusMap {P Q : Cᵒᵖ ⥤ D} (η : P ⟶ Q) : J.plusObj P ⟶ J.plusObj Q where"
+          },
+          {
+            "line": 188,
+            "head": "def plusFunctor : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 192,
+            "head": "instance preservesLimitsOfShape_plusFunctor (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.plusFunctor D)"
+          },
+          {
+            "line": 219,
+            "head": "instance preservesFiniteLimits_plusFunctor [HasFiniteLimits D] [PreservesFiniteLimits (forget D)] [(forget D).ReflectsIsomorphisms] : PreservesFiniteLimits (J.plusFunctor D)"
+          },
+          {
+            "line": 227,
+            "head": "instance preservesLimitsOfShape_sheafification (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.sheafification D) := Limits.comp_preservesLimitsOfShape _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sieves/Presheaf.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def functor (S : Sieve X) : Cᵒᵖ ⥤ Type v₁ where"
+          },
+          {
+            "line": 53,
+            "head": "def natTransOfLe {S T : Sieve X} (h : S ≤ T) : S.functor ⟶ T.functor where"
+          },
+          {
+            "line": 58,
+            "head": "def functorInclusion (S : Sieve X) : S.functor ⟶ yoneda.obj X where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def setsToKan : Type u ⥤ KanObject.{u} where"
+          },
+          {
+            "line": 35,
+            "head": "abbrev discreteKanFunctor : Type u ⥤ KanObject.{u} := setsToKan"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 97,
+            "head": "def conesEquivSieveCompatibleFamily : (S.arrows.diagram.op ⋙ P).cones.obj E ≃ { x : FamilyOfElements (P ⋙ coyoneda.obj E) (S : Presieve X) // x.SieveCompatible } where"
+          },
+          {
+            "line": 119,
+            "head": "def _root_.CategoryTheory.Presieve.FamilyOfElements.SieveCompatible.cone : Cone (S.arrows.diagram.op ⋙ P) where"
+          }
+        ]
+      }
+    ],
+    "decision": "Sieve.functorInclusion_is_mono と sieveOfSubfunctor_functorInclusion は ordinary 集合値前層の一方の逆を示す（逆向きは同ファイルで TODO）。空間値 P(C) の Sub(j(c)) との同定を欠き、この一方の構成を高次の全単射の成分に数えない。"
+  },
+  "6.2.2.6": {
+    "page": 579,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 30,
+        "line_count": 73
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 191,
+        "line_count": 2560
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          },
+          {
+            "line": 89,
+            "head": "instance : DFunLike (GrothendieckTopology C) C (fun X ↦ Set (Sieve X)) where"
+          },
+          {
+            "line": 102,
+            "head": "theorem ext {J₁ J₂ : GrothendieckTopology C} (h : (J₁ : ∀ X : C, Set (Sieve X)) = J₂) : J₁ = J₂ := DFunLike.coe_injective h"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Plus.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "def plusObj : Cᵒᵖ ⥤ D where"
+          },
+          {
+            "line": 150,
+            "head": "def plusMap {P Q : Cᵒᵖ ⥤ D} (η : P ⟶ Q) : J.plusObj P ⟶ J.plusObj Q where"
+          },
+          {
+            "line": 188,
+            "head": "def plusFunctor : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 192,
+            "head": "instance preservesLimitsOfShape_plusFunctor (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.plusFunctor D)"
+          },
+          {
+            "line": 219,
+            "head": "instance preservesFiniteLimits_plusFunctor [HasFiniteLimits D] [PreservesFiniteLimits (forget D)] [(forget D).ReflectsIsomorphisms] : PreservesFiniteLimits (J.plusFunctor D)"
+          },
+          {
+            "line": 227,
+            "head": "instance preservesLimitsOfShape_sheafification (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.sheafification D) := Limits.comp_preservesLimitsOfShape _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sieves/Presheaf.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def functor (S : Sieve X) : Cᵒᵖ ⥤ Type v₁ where"
+          },
+          {
+            "line": 53,
+            "head": "def natTransOfLe {S T : Sieve X} (h : S ≤ T) : S.functor ⟶ T.functor where"
+          },
+          {
+            "line": 58,
+            "head": "def functorInclusion (S : Sieve X) : S.functor ⟶ yoneda.obj X where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def setsToKan : Type u ⥤ KanObject.{u} where"
+          },
+          {
+            "line": 35,
+            "head": "abbrev discreteKanFunctor : Type u ⥤ KanObject.{u} := setsToKan"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 97,
+            "head": "def conesEquivSieveCompatibleFamily : (S.arrows.diagram.op ⋙ P).cones.obj E ≃ { x : FamilyOfElements (P ⋙ coyoneda.obj E) (S : Presieve X) // x.SieveCompatible } where"
+          },
+          {
+            "line": 119,
+            "head": "def _root_.CategoryTheory.Presieve.FamilyOfElements.SieveCompatible.cone : Cone (S.arrows.diagram.op ⋙ P) where"
+          }
+        ]
+      }
+    ],
+    "decision": "原典は覆う部分前層 U→j(c) に対する P(C) の空間値局所対象と、その全高次単体を持つ Shv(C) を定義する。Mathlib Presheaf.IsSheaf は通常圏値の Hom 集合の matching family の一意貼合であり、native SpaceInfinity 値の局所対象との比較はない。設計の drafts/Sheaves/SheafCondition・SpaceValued の同名定義は本体に入っておらず、下書きには sorry と未供給の層化入力がある。"
+  },
+  "6.2.2.7": {
+    "page": 579,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 30,
+        "line_count": 73
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 191,
+        "line_count": 2560
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          },
+          {
+            "line": 89,
+            "head": "instance : DFunLike (GrothendieckTopology C) C (fun X ↦ Set (Sieve X)) where"
+          },
+          {
+            "line": 102,
+            "head": "theorem ext {J₁ J₂ : GrothendieckTopology C} (h : (J₁ : ∀ X : C, Set (Sieve X)) = J₂) : J₁ = J₂ := DFunLike.coe_injective h"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Plus.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "def plusObj : Cᵒᵖ ⥤ D where"
+          },
+          {
+            "line": 150,
+            "head": "def plusMap {P Q : Cᵒᵖ ⥤ D} (η : P ⟶ Q) : J.plusObj P ⟶ J.plusObj Q where"
+          },
+          {
+            "line": 188,
+            "head": "def plusFunctor : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 192,
+            "head": "instance preservesLimitsOfShape_plusFunctor (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.plusFunctor D)"
+          },
+          {
+            "line": 219,
+            "head": "instance preservesFiniteLimits_plusFunctor [HasFiniteLimits D] [PreservesFiniteLimits (forget D)] [(forget D).ReflectsIsomorphisms] : PreservesFiniteLimits (J.plusFunctor D)"
+          },
+          {
+            "line": 227,
+            "head": "instance preservesLimitsOfShape_sheafification (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.sheafification D) := Limits.comp_preservesLimitsOfShape _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sieves/Presheaf.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def functor (S : Sieve X) : Cᵒᵖ ⥤ Type v₁ where"
+          },
+          {
+            "line": 53,
+            "head": "def natTransOfLe {S T : Sieve X} (h : S ≤ T) : S.functor ⟶ T.functor where"
+          },
+          {
+            "line": 58,
+            "head": "def functorInclusion (S : Sieve X) : S.functor ⟶ yoneda.obj X where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def setsToKan : Type u ⥤ KanObject.{u} where"
+          },
+          {
+            "line": 35,
+            "head": "abbrev discreteKanFunctor : Type u ⥤ KanObject.{u} := setsToKan"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 97,
+            "head": "def conesEquivSieveCompatibleFamily : (S.arrows.diagram.op ⋙ P).cones.obj E ≃ { x : FamilyOfElements (P ⋙ coyoneda.obj E) (S : Presieve X) // x.SieveCompatible } where"
+          },
+          {
+            "line": 119,
+            "head": "def _root_.CategoryTheory.Presieve.FamilyOfElements.SieveCompatible.cone : Cone (S.arrows.diagram.op ⋙ P) where"
+          }
+        ]
+      }
+    ],
+    "decision": "任意の小さい高次 site の Shv(C) が P(C) の topological localization、従って ∞-topos となる主張。native Bousfield 反射は明示した小辺族に対してあるが、被覆篩からの元の生成辺、局所性＝層条件、引き戻し安定性と反射の左完全性への接続がない。Mathlib の集合値 sheafification の有限極限保存は別の反射であり、草稿の sheafification_exists_spaces を本体の定理に数えない。"
+  },
+  "6.2.2.9": {
+    "page": 580,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 30,
+        "line_count": 73
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 191,
+        "line_count": 2560
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          },
+          {
+            "line": 89,
+            "head": "instance : DFunLike (GrothendieckTopology C) C (fun X ↦ Set (Sieve X)) where"
+          },
+          {
+            "line": 102,
+            "head": "theorem ext {J₁ J₂ : GrothendieckTopology C} (h : (J₁ : ∀ X : C, Set (Sieve X)) = J₂) : J₁ = J₂ := DFunLike.coe_injective h"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Plus.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "def plusObj : Cᵒᵖ ⥤ D where"
+          },
+          {
+            "line": 150,
+            "head": "def plusMap {P Q : Cᵒᵖ ⥤ D} (η : P ⟶ Q) : J.plusObj P ⟶ J.plusObj Q where"
+          },
+          {
+            "line": 188,
+            "head": "def plusFunctor : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 192,
+            "head": "instance preservesLimitsOfShape_plusFunctor (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.plusFunctor D)"
+          },
+          {
+            "line": 219,
+            "head": "instance preservesFiniteLimits_plusFunctor [HasFiniteLimits D] [PreservesFiniteLimits (forget D)] [(forget D).ReflectsIsomorphisms] : PreservesFiniteLimits (J.plusFunctor D)"
+          },
+          {
+            "line": 227,
+            "head": "instance preservesLimitsOfShape_sheafification (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.sheafification D) := Limits.comp_preservesLimitsOfShape _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sieves/Presheaf.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def functor (S : Sieve X) : Cᵒᵖ ⥤ Type v₁ where"
+          },
+          {
+            "line": 53,
+            "head": "def natTransOfLe {S T : Sieve X} (h : S ≤ T) : S.functor ⟶ T.functor where"
+          },
+          {
+            "line": 58,
+            "head": "def functorInclusion (S : Sieve X) : S.functor ⟶ yoneda.obj X where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def setsToKan : Type u ⥤ KanObject.{u} where"
+          },
+          {
+            "line": 35,
+            "head": "abbrev discreteKanFunctor : Type u ⥤ KanObject.{u} := setsToKan"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 97,
+            "head": "def conesEquivSieveCompatibleFamily : (S.arrows.diagram.op ⋙ P).cones.obj E ≃ { x : FamilyOfElements (P ⋙ coyoneda.obj E) (S : Presieve X) // x.SieveCompatible } where"
+          },
+          {
+            "line": 119,
+            "head": "def _root_.CategoryTheory.Presieve.FamilyOfElements.SieveCompatible.cone : Cone (S.arrows.diagram.op ⋙ P) where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary plusFunctor は被覆 matching family の colimit であるが、native C+ と Cov(C) 上の e*、π*、ρ! の合成との比較はない。通常の plusObj は同じ対象の表示の宣言としては扱えず、generic Kan 延長の存在もその構成ではない。"
+  },
+  "6.2.2.10": {
+    "page": 580,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 30,
+        "line_count": 73
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 191,
+        "line_count": 2560
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          },
+          {
+            "line": 89,
+            "head": "instance : DFunLike (GrothendieckTopology C) C (fun X ↦ Set (Sieve X)) where"
+          },
+          {
+            "line": 102,
+            "head": "theorem ext {J₁ J₂ : GrothendieckTopology C} (h : (J₁ : ∀ X : C, Set (Sieve X)) = J₂) : J₁ = J₂ := DFunLike.coe_injective h"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Plus.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "def plusObj : Cᵒᵖ ⥤ D where"
+          },
+          {
+            "line": 150,
+            "head": "def plusMap {P Q : Cᵒᵖ ⥤ D} (η : P ⟶ Q) : J.plusObj P ⟶ J.plusObj Q where"
+          },
+          {
+            "line": 188,
+            "head": "def plusFunctor : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 192,
+            "head": "instance preservesLimitsOfShape_plusFunctor (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.plusFunctor D)"
+          },
+          {
+            "line": 219,
+            "head": "instance preservesFiniteLimits_plusFunctor [HasFiniteLimits D] [PreservesFiniteLimits (forget D)] [(forget D).ReflectsIsomorphisms] : PreservesFiniteLimits (J.plusFunctor D)"
+          },
+          {
+            "line": 227,
+            "head": "instance preservesLimitsOfShape_sheafification (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.sheafification D) := Limits.comp_preservesLimitsOfShape _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sieves/Presheaf.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def functor (S : Sieve X) : Cᵒᵖ ⥤ Type v₁ where"
+          },
+          {
+            "line": 53,
+            "head": "def natTransOfLe {S T : Sieve X} (h : S ≤ T) : S.functor ⟶ T.functor where"
+          },
+          {
+            "line": 58,
+            "head": "def functorInclusion (S : Sieve X) : S.functor ⟶ yoneda.obj X where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def setsToKan : Type u ⥤ KanObject.{u} where"
+          },
+          {
+            "line": 35,
+            "head": "abbrev discreteKanFunctor : Type u ⥤ KanObject.{u} := setsToKan"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 97,
+            "head": "def conesEquivSieveCompatibleFamily : (S.arrows.diagram.op ⋙ P).cones.obj E ≃ { x : FamilyOfElements (P ⋙ coyoneda.obj E) (S : Presieve X) // x.SieveCompatible } where"
+          },
+          {
+            "line": 119,
+            "head": "def _root_.CategoryTheory.Presieve.FamilyOfElements.SieveCompatible.cone : Cone (S.arrows.diagram.op ⋙ P) where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary GrothendieckTopology.diagram は sieve 上の multiequalizer を使う。原典の特定 π:C+→Cov(C) の cocartesian 性と fiber の cofinal 性を与えないので、generic pointwise right Kan 延長の公式からこの π* の同値を直接使えない。"
+  },
+  "6.2.2.11": {
+    "page": 581,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 30,
+        "line_count": 73
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 191,
+        "line_count": 2560
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          },
+          {
+            "line": 89,
+            "head": "instance : DFunLike (GrothendieckTopology C) C (fun X ↦ Set (Sieve X)) where"
+          },
+          {
+            "line": 102,
+            "head": "theorem ext {J₁ J₂ : GrothendieckTopology C} (h : (J₁ : ∀ X : C, Set (Sieve X)) = J₂) : J₁ = J₂ := DFunLike.coe_injective h"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Plus.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "def plusObj : Cᵒᵖ ⥤ D where"
+          },
+          {
+            "line": 150,
+            "head": "def plusMap {P Q : Cᵒᵖ ⥤ D} (η : P ⟶ Q) : J.plusObj P ⟶ J.plusObj Q where"
+          },
+          {
+            "line": 188,
+            "head": "def plusFunctor : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 192,
+            "head": "instance preservesLimitsOfShape_plusFunctor (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.plusFunctor D)"
+          },
+          {
+            "line": 219,
+            "head": "instance preservesFiniteLimits_plusFunctor [HasFiniteLimits D] [PreservesFiniteLimits (forget D)] [(forget D).ReflectsIsomorphisms] : PreservesFiniteLimits (J.plusFunctor D)"
+          },
+          {
+            "line": 227,
+            "head": "instance preservesLimitsOfShape_sheafification (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.sheafification D) := Limits.comp_preservesLimitsOfShape _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sieves/Presheaf.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def functor (S : Sieve X) : Cᵒᵖ ⥤ Type v₁ where"
+          },
+          {
+            "line": 53,
+            "head": "def natTransOfLe {S T : Sieve X} (h : S ≤ T) : S.functor ⟶ T.functor where"
+          },
+          {
+            "line": 58,
+            "head": "def functorInclusion (S : Sieve X) : S.functor ⟶ yoneda.obj X where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def setsToKan : Type u ⥤ KanObject.{u} where"
+          },
+          {
+            "line": 35,
+            "head": "abbrev discreteKanFunctor : Type u ⥤ KanObject.{u} := setsToKan"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 97,
+            "head": "def conesEquivSieveCompatibleFamily : (S.arrows.diagram.op ⋙ P).cones.obj E ≃ { x : FamilyOfElements (P ⋙ coyoneda.obj E) (S : Presieve X) // x.SieveCompatible } where"
+          },
+          {
+            "line": 119,
+            "head": "def _root_.CategoryTheory.Presieve.FamilyOfElements.SieveCompatible.cone : Cone (S.arrows.diagram.op ⋙ P) where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Cover の inf と plusFunctor の有限極限保存は実在するが、native ρ! とプラスを同じ関手にする比較がない。Mathlib の plusFunctor は集合値（または通常圏値）であり、空間値 F† の左完全性をそのまま成分とはしない。"
+  },
+  "6.2.2.12": {
+    "page": 581,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 30,
+        "line_count": 73
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 191,
+        "line_count": 2560
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          },
+          {
+            "line": 89,
+            "head": "instance : DFunLike (GrothendieckTopology C) C (fun X ↦ Set (Sieve X)) where"
+          },
+          {
+            "line": 102,
+            "head": "theorem ext {J₁ J₂ : GrothendieckTopology C} (h : (J₁ : ∀ X : C, Set (Sieve X)) = J₂) : J₁ = J₂ := DFunLike.coe_injective h"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Plus.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "def plusObj : Cᵒᵖ ⥤ D where"
+          },
+          {
+            "line": 150,
+            "head": "def plusMap {P Q : Cᵒᵖ ⥤ D} (η : P ⟶ Q) : J.plusObj P ⟶ J.plusObj Q where"
+          },
+          {
+            "line": 188,
+            "head": "def plusFunctor : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 192,
+            "head": "instance preservesLimitsOfShape_plusFunctor (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.plusFunctor D)"
+          },
+          {
+            "line": 219,
+            "head": "instance preservesFiniteLimits_plusFunctor [HasFiniteLimits D] [PreservesFiniteLimits (forget D)] [(forget D).ReflectsIsomorphisms] : PreservesFiniteLimits (J.plusFunctor D)"
+          },
+          {
+            "line": 227,
+            "head": "instance preservesLimitsOfShape_sheafification (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.sheafification D) := Limits.comp_preservesLimitsOfShape _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sieves/Presheaf.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def functor (S : Sieve X) : Cᵒᵖ ⥤ Type v₁ where"
+          },
+          {
+            "line": 53,
+            "head": "def natTransOfLe {S T : Sieve X} (h : S ≤ T) : S.functor ⟶ T.functor where"
+          },
+          {
+            "line": 58,
+            "head": "def functorInclusion (S : Sieve X) : S.functor ⟶ yoneda.obj X where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def setsToKan : Type u ⥤ KanObject.{u} where"
+          },
+          {
+            "line": 35,
+            "head": "abbrev discreteKanFunctor : Type u ⥤ KanObject.{u} := setsToKan"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 97,
+            "head": "def conesEquivSieveCompatibleFamily : (S.arrows.diagram.op ⋙ P).cones.obj E ≃ { x : FamilyOfElements (P ⋙ coyoneda.obj E) (S : Presieve X) // x.SieveCompatible } where"
+          },
+          {
+            "line": 119,
+            "head": "def _root_.CategoryTheory.Presieve.FamilyOfElements.SieveCompatible.cone : Cone (S.arrows.diagram.op ⋙ P) where"
+          }
+        ]
+      }
+    ],
+    "decision": "plusObj の colimit(multiequalizer) は ordinary matching family で、原典の空間値前層の holim を使う F† との比較を欠く。形の似た二重極限を同じ関手の公式には数えない。"
+  },
+  "6.2.2.13": {
+    "page": 581,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 30,
+        "line_count": 73
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 191,
+        "line_count": 2560
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          },
+          {
+            "line": 89,
+            "head": "instance : DFunLike (GrothendieckTopology C) C (fun X ↦ Set (Sieve X)) where"
+          },
+          {
+            "line": 102,
+            "head": "theorem ext {J₁ J₂ : GrothendieckTopology C} (h : (J₁ : ∀ X : C, Set (Sieve X)) = J₂) : J₁ = J₂ := DFunLike.coe_injective h"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Plus.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "def plusObj : Cᵒᵖ ⥤ D where"
+          },
+          {
+            "line": 150,
+            "head": "def plusMap {P Q : Cᵒᵖ ⥤ D} (η : P ⟶ Q) : J.plusObj P ⟶ J.plusObj Q where"
+          },
+          {
+            "line": 188,
+            "head": "def plusFunctor : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 192,
+            "head": "instance preservesLimitsOfShape_plusFunctor (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.plusFunctor D)"
+          },
+          {
+            "line": 219,
+            "head": "instance preservesFiniteLimits_plusFunctor [HasFiniteLimits D] [PreservesFiniteLimits (forget D)] [(forget D).ReflectsIsomorphisms] : PreservesFiniteLimits (J.plusFunctor D)"
+          },
+          {
+            "line": 227,
+            "head": "instance preservesLimitsOfShape_sheafification (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.sheafification D) := Limits.comp_preservesLimitsOfShape _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sieves/Presheaf.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def functor (S : Sieve X) : Cᵒᵖ ⥤ Type v₁ where"
+          },
+          {
+            "line": 53,
+            "head": "def natTransOfLe {S T : Sieve X} (h : S ≤ T) : S.functor ⟶ T.functor where"
+          },
+          {
+            "line": 58,
+            "head": "def functorInclusion (S : Sieve X) : S.functor ⟶ yoneda.obj X where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def setsToKan : Type u ⥤ KanObject.{u} where"
+          },
+          {
+            "line": 35,
+            "head": "abbrev discreteKanFunctor : Type u ⥤ KanObject.{u} := setsToKan"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 97,
+            "head": "def conesEquivSieveCompatibleFamily : (S.arrows.diagram.op ⋙ P).cones.obj E ≃ { x : FamilyOfElements (P ⋙ coyoneda.obj E) (S : Presieve X) // x.SieveCompatible } where"
+          },
+          {
+            "line": 119,
+            "head": "def _root_.CategoryTheory.Presieve.FamilyOfElements.SieveCompatible.cone : Cone (S.arrows.diagram.op ⋙ P) where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary toPlusNatTrans は P→P+ を与えるが、native の ρ の切断 s と π の fiber の終対象から定める F→F† に対応する宣言がない。通常の plus を高次 F† と同定する比較なしでは同じ単位の特殊化とは言えない。"
+  },
+  "6.2.2.14": {
+    "page": 581,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 30,
+        "line_count": 73
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 191,
+        "line_count": 2560
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          },
+          {
+            "line": 89,
+            "head": "instance : DFunLike (GrothendieckTopology C) C (fun X ↦ Set (Sieve X)) where"
+          },
+          {
+            "line": 102,
+            "head": "theorem ext {J₁ J₂ : GrothendieckTopology C} (h : (J₁ : ∀ X : C, Set (Sieve X)) = J₂) : J₁ = J₂ := DFunLike.coe_injective h"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Plus.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "def plusObj : Cᵒᵖ ⥤ D where"
+          },
+          {
+            "line": 150,
+            "head": "def plusMap {P Q : Cᵒᵖ ⥤ D} (η : P ⟶ Q) : J.plusObj P ⟶ J.plusObj Q where"
+          },
+          {
+            "line": 188,
+            "head": "def plusFunctor : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 192,
+            "head": "instance preservesLimitsOfShape_plusFunctor (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.plusFunctor D)"
+          },
+          {
+            "line": 219,
+            "head": "instance preservesFiniteLimits_plusFunctor [HasFiniteLimits D] [PreservesFiniteLimits (forget D)] [(forget D).ReflectsIsomorphisms] : PreservesFiniteLimits (J.plusFunctor D)"
+          },
+          {
+            "line": 227,
+            "head": "instance preservesLimitsOfShape_sheafification (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.sheafification D) := Limits.comp_preservesLimitsOfShape _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sieves/Presheaf.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def functor (S : Sieve X) : Cᵒᵖ ⥤ Type v₁ where"
+          },
+          {
+            "line": 53,
+            "head": "def natTransOfLe {S T : Sieve X} (h : S ≤ T) : S.functor ⟶ T.functor where"
+          },
+          {
+            "line": 58,
+            "head": "def functorInclusion (S : Sieve X) : S.functor ⟶ yoneda.obj X where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def setsToKan : Type u ⥤ KanObject.{u} where"
+          },
+          {
+            "line": 35,
+            "head": "abbrev discreteKanFunctor : Type u ⥤ KanObject.{u} := setsToKan"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 97,
+            "head": "def conesEquivSieveCompatibleFamily : (S.arrows.diagram.op ⋙ P).cones.obj E ≃ { x : FamilyOfElements (P ⋙ coyoneda.obj E) (S : Presieve X) // x.SieveCompatible } where"
+          },
+          {
+            "line": 119,
+            "head": "def _root_.CategoryTheory.Presieve.FamilyOfElements.SieveCompatible.cone : Cone (S.arrows.diagram.op ⋙ P) where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary plusLift と plus_hom_ext は層への Hom 集合の延長・一意性である。原典の空間値 F† と全高次 Map の同値との比較を欠き、generic localization の mapping equivalence もこの F† が unit という入力を供給しない。"
+  },
+  "6.2.2.15": {
+    "page": 582,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 30,
+        "line_count": 73
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 191,
+        "line_count": 2560
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          },
+          {
+            "line": 89,
+            "head": "instance : DFunLike (GrothendieckTopology C) C (fun X ↦ Set (Sieve X)) where"
+          },
+          {
+            "line": 102,
+            "head": "theorem ext {J₁ J₂ : GrothendieckTopology C} (h : (J₁ : ∀ X : C, Set (Sieve X)) = J₂) : J₁ = J₂ := DFunLike.coe_injective h"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Plus.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "def plusObj : Cᵒᵖ ⥤ D where"
+          },
+          {
+            "line": 150,
+            "head": "def plusMap {P Q : Cᵒᵖ ⥤ D} (η : P ⟶ Q) : J.plusObj P ⟶ J.plusObj Q where"
+          },
+          {
+            "line": 188,
+            "head": "def plusFunctor : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 192,
+            "head": "instance preservesLimitsOfShape_plusFunctor (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.plusFunctor D)"
+          },
+          {
+            "line": 219,
+            "head": "instance preservesFiniteLimits_plusFunctor [HasFiniteLimits D] [PreservesFiniteLimits (forget D)] [(forget D).ReflectsIsomorphisms] : PreservesFiniteLimits (J.plusFunctor D)"
+          },
+          {
+            "line": 227,
+            "head": "instance preservesLimitsOfShape_sheafification (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.sheafification D) := Limits.comp_preservesLimitsOfShape _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sieves/Presheaf.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def functor (S : Sieve X) : Cᵒᵖ ⥤ Type v₁ where"
+          },
+          {
+            "line": 53,
+            "head": "def natTransOfLe {S T : Sieve X} (h : S ≤ T) : S.functor ⟶ T.functor where"
+          },
+          {
+            "line": 58,
+            "head": "def functorInclusion (S : Sieve X) : S.functor ⟶ yoneda.obj X where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def setsToKan : Type u ⥤ KanObject.{u} where"
+          },
+          {
+            "line": 35,
+            "head": "abbrev discreteKanFunctor : Type u ⥤ KanObject.{u} := setsToKan"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 97,
+            "head": "def conesEquivSieveCompatibleFamily : (S.arrows.diagram.op ⋙ P).cones.obj E ≃ { x : FamilyOfElements (P ⋙ coyoneda.obj E) (S : Presieve X) // x.SieveCompatible } where"
+          },
+          {
+            "line": 119,
+            "head": "def _root_.CategoryTheory.Presieve.FamilyOfElements.SieveCompatible.cone : Cone (S.arrows.diagram.op ⋙ P) where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary diagramPullback は被覆 matching family の比較写像を作るが、任意の空間値 F の全 slice 上の F0 と F→F0→F† の定義を与えない。被覆を引き戻すだけの構成はこの中間前層ではない。"
+  },
+  "6.2.2.16": {
+    "page": 583,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 30,
+        "line_count": 73
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 191,
+        "line_count": 2560
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          },
+          {
+            "line": 89,
+            "head": "instance : DFunLike (GrothendieckTopology C) C (fun X ↦ Set (Sieve X)) where"
+          },
+          {
+            "line": 102,
+            "head": "theorem ext {J₁ J₂ : GrothendieckTopology C} (h : (J₁ : ∀ X : C, Set (Sieve X)) = J₂) : J₁ = J₂ := DFunLike.coe_injective h"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Plus.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "def plusObj : Cᵒᵖ ⥤ D where"
+          },
+          {
+            "line": 150,
+            "head": "def plusMap {P Q : Cᵒᵖ ⥤ D} (η : P ⟶ Q) : J.plusObj P ⟶ J.plusObj Q where"
+          },
+          {
+            "line": 188,
+            "head": "def plusFunctor : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 192,
+            "head": "instance preservesLimitsOfShape_plusFunctor (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.plusFunctor D)"
+          },
+          {
+            "line": 219,
+            "head": "instance preservesFiniteLimits_plusFunctor [HasFiniteLimits D] [PreservesFiniteLimits (forget D)] [(forget D).ReflectsIsomorphisms] : PreservesFiniteLimits (J.plusFunctor D)"
+          },
+          {
+            "line": 227,
+            "head": "instance preservesLimitsOfShape_sheafification (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.sheafification D) := Limits.comp_preservesLimitsOfShape _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sieves/Presheaf.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def functor (S : Sieve X) : Cᵒᵖ ⥤ Type v₁ where"
+          },
+          {
+            "line": 53,
+            "head": "def natTransOfLe {S T : Sieve X} (h : S ≤ T) : S.functor ⟶ T.functor where"
+          },
+          {
+            "line": 58,
+            "head": "def functorInclusion (S : Sieve X) : S.functor ⟶ yoneda.obj X where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def setsToKan : Type u ⥤ KanObject.{u} where"
+          },
+          {
+            "line": 35,
+            "head": "abbrev discreteKanFunctor : Type u ⥤ KanObject.{u} := setsToKan"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 97,
+            "head": "def conesEquivSieveCompatibleFamily : (S.arrows.diagram.op ⋙ P).cones.obj E ≃ { x : FamilyOfElements (P ⋙ coyoneda.obj E) (S : Presieve X) // x.SieveCompatible } where"
+          },
+          {
+            "line": 119,
+            "head": "def _root_.CategoryTheory.Presieve.FamilyOfElements.SieveCompatible.cone : Cone (S.arrows.diagram.op ⋙ P) where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheafification_reflective は既に層である対象の counit が同型という型で、任意の篩 i の反転と被覆性の iff ではない。native の covering mono の local object と通常層化の比較がないため、集合値の場合からこの判定を数えない。"
+  },
+  "6.2.2.17": {
+    "page": 584,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 30,
+        "line_count": 73
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 191,
+        "line_count": 2560
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          },
+          {
+            "line": 89,
+            "head": "instance : DFunLike (GrothendieckTopology C) C (fun X ↦ Set (Sieve X)) where"
+          },
+          {
+            "line": 102,
+            "head": "theorem ext {J₁ J₂ : GrothendieckTopology C} (h : (J₁ : ∀ X : C, Set (Sieve X)) = J₂) : J₁ = J₂ := DFunLike.coe_injective h"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Plus.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "def plusObj : Cᵒᵖ ⥤ D where"
+          },
+          {
+            "line": 150,
+            "head": "def plusMap {P Q : Cᵒᵖ ⥤ D} (η : P ⟶ Q) : J.plusObj P ⟶ J.plusObj Q where"
+          },
+          {
+            "line": 188,
+            "head": "def plusFunctor : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 192,
+            "head": "instance preservesLimitsOfShape_plusFunctor (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.plusFunctor D)"
+          },
+          {
+            "line": 219,
+            "head": "instance preservesFiniteLimits_plusFunctor [HasFiniteLimits D] [PreservesFiniteLimits (forget D)] [(forget D).ReflectsIsomorphisms] : PreservesFiniteLimits (J.plusFunctor D)"
+          },
+          {
+            "line": 227,
+            "head": "instance preservesLimitsOfShape_sheafification (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.sheafification D) := Limits.comp_preservesLimitsOfShape _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sieves/Presheaf.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def functor (S : Sieve X) : Cᵒᵖ ⥤ Type v₁ where"
+          },
+          {
+            "line": 53,
+            "head": "def natTransOfLe {S T : Sieve X} (h : S ≤ T) : S.functor ⟶ T.functor where"
+          },
+          {
+            "line": 58,
+            "head": "def functorInclusion (S : Sieve X) : S.functor ⟶ yoneda.obj X where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def setsToKan : Type u ⥤ KanObject.{u} where"
+          },
+          {
+            "line": 35,
+            "head": "abbrev discreteKanFunctor : Type u ⥤ KanObject.{u} := setsToKan"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 97,
+            "head": "def conesEquivSieveCompatibleFamily : (S.arrows.diagram.op ⋙ P).cones.obj E ≃ { x : FamilyOfElements (P ⋙ coyoneda.obj E) (S : Presieve X) // x.SieveCompatible } where"
+          },
+          {
+            "line": 119,
+            "head": "def _root_.CategoryTheory.Presieve.FamilyOfElements.SieveCompatible.cone : Cone (S.arrows.diagram.op ⋙ P) where"
+          }
+        ]
+      }
+    ],
+    "decision": "GrothendieckTopology の complete lattice は全位相の順序構造であり、空間値 P(C) の topological localization との全単射ではない。ordinary sheafification の存在も任意の局所化を回収する逆構成を含まない。"
+  },
+  "6.2.2.18": {
+    "page": 585,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 30,
+        "line_count": 73
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "GrothendieckTopology|Sieve|plusObj|plusFunctor|toPlus|sheafification|IsSheaf|topologicalLocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 191,
+        "line_count": 2560
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          },
+          {
+            "line": 89,
+            "head": "instance : DFunLike (GrothendieckTopology C) C (fun X ↦ Set (Sieve X)) where"
+          },
+          {
+            "line": 102,
+            "head": "theorem ext {J₁ J₂ : GrothendieckTopology C} (h : (J₁ : ∀ X : C, Set (Sieve X)) = J₂) : J₁ = J₂ := DFunLike.coe_injective h"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Plus.lean",
+        "signatures": [
+          {
+            "line": 110,
+            "head": "def plusObj : Cᵒᵖ ⥤ D where"
+          },
+          {
+            "line": 150,
+            "head": "def plusMap {P Q : Cᵒᵖ ⥤ D} (η : P ⟶ Q) : J.plusObj P ⟶ J.plusObj Q where"
+          },
+          {
+            "line": 188,
+            "head": "def plusFunctor : (Cᵒᵖ ⥤ D) ⥤ Cᵒᵖ ⥤ D where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 192,
+            "head": "instance preservesLimitsOfShape_plusFunctor (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.plusFunctor D)"
+          },
+          {
+            "line": 219,
+            "head": "instance preservesFiniteLimits_plusFunctor [HasFiniteLimits D] [PreservesFiniteLimits (forget D)] [(forget D).ReflectsIsomorphisms] : PreservesFiniteLimits (J.plusFunctor D)"
+          },
+          {
+            "line": 227,
+            "head": "instance preservesLimitsOfShape_sheafification (K : Type t) [SmallCategory K] [FinCategory K] [HasLimitsOfShape K D] [PreservesLimitsOfShape K (forget D)] [ReflectsLimitsOfShape K (forget D)] : PreservesLimitsOfShape K (J.sheafification D) := Limits.comp_preservesLimitsOfShape _ _"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sieves/Presheaf.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def functor (S : Sieve X) : Cᵒᵖ ⥤ Type v₁ where"
+          },
+          {
+            "line": 53,
+            "head": "def natTransOfLe {S T : Sieve X} (h : S ≤ T) : S.functor ⟶ T.functor where"
+          },
+          {
+            "line": 58,
+            "head": "def functorInclusion (S : Sieve X) : S.functor ⟶ yoneda.obj X where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def setsToKan : Type u ⥤ KanObject.{u} where"
+          },
+          {
+            "line": 35,
+            "head": "abbrev discreteKanFunctor : Type u ⥤ KanObject.{u} := setsToKan"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheaf.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "def IsSheaf (P : Cᵒᵖ ⥤ A) : Prop := ∀ E : A, Presieve.IsSheaf J (P ⋙ coyoneda.obj (op E))"
+          },
+          {
+            "line": 97,
+            "head": "def conesEquivSieveCompatibleFamily : (S.arrows.diagram.op ⋙ P).cones.obj E ≃ { x : FamilyOfElements (P ⋙ coyoneda.obj E) (S : Presieve X) // x.SieveCompatible } where"
+          },
+          {
+            "line": 119,
+            "head": "def _root_.CategoryTheory.Presieve.FamilyOfElements.SieveCompatible.cone : Cone (S.arrows.diagram.op ⋙ P) where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Sheaf の初対象や集合値評価はあるが、空被覆を許す c での contractible 空間とそれ以外での empty 空間という native 層の評価判定はない。空前層が全ての位相でそのまま層とは限らず、通常の初対象だけからは適用できない。"
+  }
+}
