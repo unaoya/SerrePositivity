@@ -990,3 +990,48 @@ JM+IⁿM が G の成分射影で保たれることを、和の代表と射影�
 `3345ac42a` で main `d9e596898` を `math/scheme` に取り込んだ。検証済み AG のローカル import 閉包・Lean/Lake 設定・公式監査スクリプトの **666 ファイルの SHA-256** を前後で比べ、不一致 **0**。従って上のビルドと最新 **6,434 宣言・標準三公理のみ**の監査は、取り込み後にも対応する。入力が同じ検証は繰り返していない。
 
 検証済みの本体はすべて枝にコミット済み。**停止点 2e ではない**。最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更しない。
+
+## 閉厚化の商環上の係数表示（11-12）
+
+`6dfb5e2bf` に新規 5 モジュールと直接 importer を保存（410 行）。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,282 jobs 成功**。終了後に共有鍵を取り直して行った公式監査は **6,483 宣言・標準三公理のみ**。
+
+登録モジュール（すべて `SerrePositivity.AlgebraicGeometry` の下）：
+
+- `ReesClosedCoefficientModule`
+- `ReesClosedCoefficientTower`
+- `ProjectiveHomogeneousCoefficientLift`
+- `ReesClosedCoefficientGrading`
+- `ReesClosedCoefficientCech`
+
+前の束は閉厚化 M/JM を R 加群として扱っていた。今回は型と元の R 作用を保ったまま、実際に R/J と (R/J)[X] の加群構造を与えた。J とその拡大イデアルが商加群を消すことを示し、Mathlib の `MvPolynomial.quotientEquivQuotientMvPolynomial` で多項式作用を移した。次数成分の台は元の商次数成分のままであり、R への係数制限で元の成分に戻る。
+
+全射な係数変更に沿って斉次多項式を同じ次数で持ち上げられることを、任意の持ち上げの斉次成分を取って示した。これで商係数の多項式作用が Proj 次数を保つことを証明し、既存の係数変更の比較を実際の閉厚化へ適用した。標準開の図式の同型は標準開間の制限射に自然で、全タプル Čech コホモロジーの比較同型を誘導する。Noether な R と多項式環上有限な M という従来の仮定から、商環上で表示した Čech コホモロジーの R/J 上の有限性も得た。
+
+宣言と主張（ローカルな型クラス設定を除く 18 件）：
+
+| 宣言 | 主張 |
+|---|---|
+| `reesClosedCoefficient_torsion` | J は実際の閉厚化 M/JM を消す。 |
+| `reesClosedCoefficientModule` | 同じ閉厚化に R/J 加群構造を与える。 |
+| `reesClosedCoefficient_mk_smul` | 商環の代表による作用は元の R 作用に一致する。 |
+| `reesClosedCoefficient_scalarTower` | R/J から R への係数制限は元の加群構造を回復する。 |
+| `reesClosedPolynomialCoefficient_torsion` | 拡大イデアル J[X] は元の多項式加群の閉厚化を消す。 |
+| `reesClosedPolynomialCoefficientModule` | 同じ閉厚化に (R/J)[X] 加群構造を与える。 |
+| `reesClosedPolynomialCoefficient_map_smul` | 多項式の係数を商へ写してからの作用は、元の作用と一致する。 |
+| `reesClosedPolynomialCoefficient_scalarTower` | R[X] と (R/J)[X] の作用は係数変更と両立する。 |
+| `reesClosedPolynomialCoefficient_base_scalarTower` | R と (R/J)[X] の作用は両立する。 |
+| `reesClosedPolynomialCoefficient_quotient_scalarTower` | R/J と (R/J)[X] の作用は両立する。 |
+| `projectiveHomogeneousComponent_map` | 多項式の次数成分を取る操作は、任意の係数変更と交換する。 |
+| `projectiveHomogeneousCoefficientLift` | 全射な係数変更に沿って、斉次多項式を同じ次数で持ち上げられる。 |
+| `reesClosedCoefficientPiece` | 閉厚化の Proj 次数成分を R/J 上の部分加群として表す。 |
+| `reesClosedCoefficientPiece_restrictScalars` | その係数制限は元の R 上の商次数成分と一致する。 |
+| `reesClosedCoefficientPieceGradedSMul` | 商係数の斉次多項式作用は、実際の閉厚化の Proj 次数を保つ。 |
+| `reesClosedCoefficientChartIso` | 元の R 上の標準開図式を、R/J 上の図式の係数制限と比較する同型。 |
+| `reesClosedCoefficientCechHomologyIso` | 実際の閉厚化の Čech コホモロジーを、商環上の同じ計算の係数制限と比較する同型。 |
+| `reesClosedCoefficientCechHomology_finite` | 商環上で表示した閉厚化の Čech コホモロジーは R/J 上有限生成。 |
+
+これは Stacks 30.19.2 の有限性と Stacks 30.20.5 の形式関数に使う **Čech 版**の係数比較である。分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、この比較は形式化していない。非平坦な閉厚化でコホモロジーとテンソル積が交換するという主張は使っていない。今回の商環上の表示自体にはテンソル積モデルを必要とせず、商多項式環から直接構成できた。
+
+**停止点 2e ではない。** この同型を加群の射に関する自然性と I 進遷移に接続し、既存の二重閉厚化・互換族・形式関数の可換式へ渡す作業は残る。標準開間の制限射に関する自然性だけを、§9 の射に自然な整合性の完成とは数えない。主要な残りは引き続き、共通アフィン細分、flat な底変換、実際の Čech Frobenius と p 倍の指数、filtered colimit の比較である。一般の固有射のコホモロジーの有限性・導来関手の Hⁱ との比較は範囲に加えていない。最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更していない。
+
+全ビルドと監査は `with_build_lock.sh --wait 3600` を経由し、一回ごとに鍵を返した。既存の宣言の型・本文は変えず、新規宣言に `sorry`・`admit`・追加公理・計算量上限の追加はない。宇宙の条件は従来どおりで、大きい型の入口は承認済みの `Module.Finite.small`・`Shrink.linearEquiv` による移送の方針を保つ。
