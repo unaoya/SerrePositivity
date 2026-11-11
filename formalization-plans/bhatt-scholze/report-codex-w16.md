@@ -643,3 +643,61 @@ native な錐への次の比較では、`binaryCoconeOfEdges` の指定脚、`Mo
 - `RightFrameCoproduct`
 
 新規の［一般∞］移動候補はない。`RightFrameCoproduct` の一般部分は通常の圏と simplicial Hom の補題で、今回は Barratt–Eccles の証明の隣に置いた。既報の［一般∞］五本は移動していない。
+
+## 13. §6 の再開と native な余積錐の見積もり（11-11 夜）
+
+main `892772144` の指示書 §6 を `c0c30cd30` で取り込んだ。`coproduct_tensor` を W16 の中で続ける。単独の目安は約 2,700 行、native な錐と合わせた停止上限は約 3,500 行。⑤b・⑤c・⑥ のファイルには触らず、新規の `Theory/HopfTensor*` などで進める。
+
+### 13.1 最初の区切り：native な錐の見積もり
+
+`coprodWith_cocone` は、関手の指定頂点を頂点とする `JoinCocone (binaryPointDiagram x y)` と `IsColimitCone` を供給する。`CAlgCoproductFunctor.barrattEcclesCoprodWith` の定義を保ち、同じ厳密な二つの包含から脚を作る。
+
+| 作業 | 規模の目安 |
+| --- | --- |
+| `CoproductModel`・`CAlgCoproductFunctor`・`RightFrameCoproduct`（前回の三本、証明済み） | 245 行 |
+| 同じ局所化源の包含を native な辺へ送り、`binaryCoconeOfEdges` の二脚と頂点を照合 | 70〜100 行 |
+| 二点図式の `coconeMappingSpace` を二つの Hom の積で計算し、指定脚による比較射を照合 | 80〜130 行 |
+| 共通の右 frame の Hom と CAlg の Hom の比較を指定包含の前合成に合わせる | 180〜250 行 |
+| `isColimitCone_of_pointHomFamily_comparison` への適用と、任意の頂点 x・y への輸送 | 40〜75 行 |
+| **計（前回の三本を含む）** | **615〜800 行** |
+
+使う候補は `binaryCoconeOfEdges` とその `_vertex`・`_leg_left`・`_leg_right`、`ModelRightFrameComparison.modelRightFramePinchedEquivalence`、同じ全標的の coherent 比較、`isColimitCone_of_pointHomFamily_comparison`。`ModelCategory SSet` を仮定する frame 比較は使わない。`hasColimit_binaryPointDiagram` の安定性を要求する版も CAlg には適用しない。
+
+この見込みでは、`coproduct_tensor` の 1,750〜2,700 行と合わせて **2,365〜3,500 行**。前回の 245 行を別に二重計上していない。源変数の指定前合成を保つ比較と二点の余錐空間の計算はまだ型検査前であり、この部分が見込みを超えると分かった時点で合計の上限を再点検する。
+
+### 13.2 二色比較で使う既存 API の確認
+
+`CategoryTheory.ProjectiveResolution.liftHomotopy` は、同じ増大を保つ指定された二射の間の鎖ホモトピーを供給する。`homotopyEquiv` 自体の順射は選ばれた持ち上げなので、二色の指定比較そのものを順射に保つ組み立てを `ResolutionAugmentationComparison` に書いた。逆射だけを恒等射の持ち上げにし、両合成を `liftHomotopy` で比較する形である。これは表現のアーベル圏でも使える。
+
+また Mathlib `RepresentationTheory.Coinduced` には、部分群への `Rep.resFunctor` の `PreservesProjectiveObjects` がある。したがって、現時点では等変なホモトピー逆を既存 API から組めないという停止条件には当たらない。ただし、`E(m+n)` の制限と `E(m) ⊗ E(n)` に射影解像度の構造を入れること、指定された二色比較が増大を保つことは別途証明が必要である。非同変な収縮を余不変に渡すだけで済ませない。
+
+### 13.3 最初の検証済みのまとまり（包含を除く）
+
+今回の新規十三本は計 **767 行**。前回の三本 245 行と合わせて十六本 1,012 行を検証した。今回のうち `ResolutionAugmentationComparison` と `TwoColorPermutation` の計 107 行は、二色比較の前置きに当たる。包含を含む残りを完成したとは扱わない。
+
+- `hopfTensorAction` の全 arity の作用、等変性、単位則、指定された先頭代入射の比較、`hopfTensorAction_comp_zero` を証明した。`hopfTensorAlgebra` は任意の Hopf オペラッドと任意の二代数を取り、台が元の複体のテンソルである実際の代数を返す。cofibrancy は構成に不要。
+- `hopfTensorMap`、二変数の `hopfTensorFunctor`、固定右因子の `hopfTensorWith` を定義した。自然性は全代数射の台の射の等式として証明している。
+- `resolutionHomotopyEquivOfAugmentation` は指定された増大保存射そのものを順射に保つ。二色の置換群の埋め込み `twoColorPermutationHom` とその単射性も証明した。実際の二色複体を射影解像度とする構成は残る。
+- `zeroArity_isZero_nonzero` と、次数集中下でホモトピーを射の等式へ戻す `eq_of_homotopy_concentrated` により、`zeroArity_augmentation_isIso` を証明した。これは零入力の増大が擬同型であるという既存の結論を、厳密な同型性へ強める新しい宣言である。
+
+**検証。** `lake build ...Theory.HopfTensorFunctor ...Theory.ZeroArity` が成功。ほかの二色の前置きも個別の対象ビルドに成功。前回の三本を含む十六本・**115 宣言**を再帰監査し、標準三公理のみだった。sorry・admit・新規公理・デバッグ出力は零。`ZeroArity` には、証明中の二つの `letI` を `let` にする提案の警告がある。宣言の型・既存の公開宣言・界面・入口・共有監査スクリプトは変えていない。ルートビルドは行っていない。鍵は一回の対象ビルドまたは一回の監査の間だけ取り、待ちは `--wait 3600`、整理券は一枚とした。監査の鍵は返却済み。
+
+**登録候補。** 前回の `CoproductModel`・`CAlgCoproductFunctor`・`RightFrameCoproduct` に、次の十三本を加えた十六本。すべて `SerrePositivity.EInfinity.BarrattEccles.Theory` の下。
+
+- `ConcentratedHomotopy`
+- `HopfTensorAlgebra`
+- `HopfTensorFirstBlock`
+- `HopfTensorFunctor`
+- `HopfTensorInsertion`
+- `HopfTensorNaturality`
+- `HopfTensorOperations`
+- `HopfTensorUnit`
+- `ResolutionAugmentationComparison`
+- `TensorActionAssembly`
+- `TensorFirstBlockCoherence`
+- `TwoColorPermutation`
+- `ZeroArity`
+
+新規の［一般∞］移動候補はない。一般のアーベル圏とモノイダル圏の補助は、この実装の隣に置いている。既報の［一般∞］五本は動かしていない。
+
+**続き。** 単位代数の始対象性と左右の単位同型、二つの包含と余積からの指定比較、実際の二色の解像度比較、セル対への移送、強い全関手版への降下が残る。作業木の `HopfTensorUnitObject`・`TensorUnitCoherence`・`HopfTensorUnitPowers`・`HopfTensorUnitors` は次に型検査する候補で、今回の監査・登録候補・コミットには含めない。承認待ちの停止ではなく、§6 の順に包含の証明を続ける。
