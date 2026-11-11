@@ -349,7 +349,7 @@ theorem qrsp_completelyFaithfullyFlat (hS : IsQuasiregularSemiperfectoid (p := p
     let C := discreteDeltaAlgebra P (ainfData R hR).bounded S
     letI := (qrspHTMap R hR S (qrsp_isDiscretePrismatic R hR S hS)).toAlgebra
     IsCompletelyFaithfullyFlat (Ideal.span {(p : S)}) (C.right ⧸ Ideal.span {C.hom.hom P.generator}) := by
-  sorry -- mod p で各 gr は平坦、Fil₀ は S/p。単位を含む分裂 filtration と完備余極限
+  sorry -- mod p で各 gr は平坦、Fil₀ は S/p。平坦な余核による Fil₀ の純粋な包含と完備余極限を使う
 
 /-- 任意個の根付き変数。A5 の rootPolynomialFamily と同じモノイド環を先に使う。 -/
 abbrev rootPolynomials (J : Type u) := AddMonoidAlgebra R (J →₀ Andre.powerRootExponentMonoid p (Fact.out : p.Prime).pos)
