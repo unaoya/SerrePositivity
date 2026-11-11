@@ -1,0 +1,782 @@
+{
+  "5.2.1.1": {
+    "page": 335,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.1.6",
+        "5.2.1",
+        "5.2.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(associated.*functor|functor.*associated|cartesian.*interval|interval.*cartesian|rightStraighteningInfinity|relativeFunctorConstFiber|cartesian.*comp|correspondence)",
+          "SerrePositivity"
+        ],
+        "file_count": 883,
+        "line_count": 4982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(associated.*functor|functor.*associated|cartesian.*interval|interval.*cartesian|rightStraighteningInfinity|relativeFunctorConstFiber|cartesian.*comp|correspondence)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 121,
+        "line_count": 207
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          },
+          {
+            "line": 90,
+            "head": "lemma IsCocartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCocartesianEdge p e) (hq : IsCocartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCocartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 17,
+            "head": "lemma cartesianFibration_interval_of_lift {E : SSet.{u}} (p : E ⟶ (Δ[1] : SSet.{u})) [Quasicategory E] [InnerFibration p] (h : ∀ x : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (1 : Fin 2) → ∃ l : (Δ[1] : SSet.{u}) ⟶ E, stdSimplex.δ 0 ≫ l = SSet.yonedaEquiv.symm x ∧ l ≫ p = 𝟙 Δ[1] ∧ IsCartesianEdge p (SSet.yonedaEquiv l)) : CartesianFibration p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/Support/RelativeFunctorConstFiberIso.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def relativeFunctorConstFiberIso {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) : relativeFunctorSpace p (SSet.const b : A ⟶ B) ≅ (ihom A).obj (vertexFiber p b)"
+          },
+          {
+            "line": 50,
+            "head": "lemma relativeFunctorConstFiberIso_hom {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) : (relativeFunctorConstFiberIso (A := A) p b).hom = relativeFunctorConstFiberHom p b := rfl"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/FiberedCategory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "abbrev domainCartesianLift : ∫ᶜ F := ⟨R, (F.map f.op.toLoc).toFunctor.obj a⟩"
+          },
+          {
+            "line": 42,
+            "head": "abbrev cartesianLift : domainCartesianLift a f ⟶ ⟨S, a⟩ := ⟨f, 𝟙 _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma unitIntervalMap_isQCatEquivalence_of_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitCommaInitialCondition η) (x : X _⦋0⦌) (y : Y _⦋0⦌) : IsQCatEquivalence (unitIntervalMap η x y)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitMappingSpaceCondition_of_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitCommaInitialCondition η) : UnitMappingSpaceCondition η"
+          }
+        ]
+      }
+    ],
+    "decision": "Cartesian な p:M→Δ¹ と両ファイバーの同値 h₀,h₁ を固定し、端点が h₀g,h₁ で各縦辺が p-Cartesian な D×Δ¹→M を要求する定義。CartesianEdge の外ホーン条件、CartesianFibration の持ち上げ、Cat∞ 値の非直線化はあるが、この指定端点付き関手との関係を表す宣言はない。単なる transport の選択では h₀,h₁ と整合した関手全体を表せない。"
+  },
+  "5.2.1.2": {
+    "page": 336,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.1.6",
+        "5.2.1",
+        "5.2.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(associated.*functor|functor.*associated|cartesian.*interval|interval.*cartesian|rightStraighteningInfinity|relativeFunctorConstFiber|cartesian.*comp|correspondence)",
+          "SerrePositivity"
+        ],
+        "file_count": 883,
+        "line_count": 4982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(associated.*functor|functor.*associated|cartesian.*interval|interval.*cartesian|rightStraighteningInfinity|relativeFunctorConstFiber|cartesian.*comp|correspondence)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 121,
+        "line_count": 207
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          },
+          {
+            "line": 90,
+            "head": "lemma IsCocartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCocartesianEdge p e) (hq : IsCocartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCocartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 17,
+            "head": "lemma cartesianFibration_interval_of_lift {E : SSet.{u}} (p : E ⟶ (Δ[1] : SSet.{u})) [Quasicategory E] [InnerFibration p] (h : ∀ x : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (1 : Fin 2) → ∃ l : (Δ[1] : SSet.{u}) ⟶ E, stdSimplex.δ 0 ≫ l = SSet.yonedaEquiv.symm x ∧ l ≫ p = 𝟙 Δ[1] ∧ IsCartesianEdge p (SSet.yonedaEquiv l)) : CartesianFibration p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/Support/RelativeFunctorConstFiberIso.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def relativeFunctorConstFiberIso {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) : relativeFunctorSpace p (SSet.const b : A ⟶ B) ≅ (ihom A).obj (vertexFiber p b)"
+          },
+          {
+            "line": 50,
+            "head": "lemma relativeFunctorConstFiberIso_hom {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) : (relativeFunctorConstFiberIso (A := A) p b).hom = relativeFunctorConstFiberHom p b := rfl"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/FiberedCategory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "abbrev domainCartesianLift : ∫ᶜ F := ⟨R, (F.map f.op.toLoc).toFunctor.obj a⟩"
+          },
+          {
+            "line": 42,
+            "head": "abbrev cartesianLift : domainCartesianLift a f ⟶ ⟨S, a⟩ := ⟨f, 𝟙 _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma unitIntervalMap_isQCatEquivalence_of_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitCommaInitialCondition η) (x : X _⦋0⦌) (y : Y _⦋0⦌) : IsQCatEquivalence (unitIntervalMap η x y)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitMappingSpaceCondition_of_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitCommaInitialCondition η) : UnitMappingSpaceCondition η"
+          }
+        ]
+      }
+    ],
+    "decision": "原典は g が p だけでなく二つのファイバー同値 h₀,h₁ にも依存するという注意。vertexFiber と輸送の底変更の型を読んだが、§5.2.1.1 の指定同値を含む associated 関係がなく、その依存性を表す宣言もない。一般のファイバー同型の宣言だけをこの注意に対応させない。"
+  },
+  "5.2.1.3": {
+    "page": 336,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.1.6",
+        "5.2.1",
+        "5.2.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(associated.*functor|functor.*associated|cartesian.*interval|interval.*cartesian|rightStraighteningInfinity|relativeFunctorConstFiber|cartesian.*comp|correspondence)",
+          "SerrePositivity"
+        ],
+        "file_count": 883,
+        "line_count": 4982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(associated.*functor|functor.*associated|cartesian.*interval|interval.*cartesian|rightStraighteningInfinity|relativeFunctorConstFiber|cartesian.*comp|correspondence)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 121,
+        "line_count": 207
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          },
+          {
+            "line": 90,
+            "head": "lemma IsCocartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCocartesianEdge p e) (hq : IsCocartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCocartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 17,
+            "head": "lemma cartesianFibration_interval_of_lift {E : SSet.{u}} (p : E ⟶ (Δ[1] : SSet.{u})) [Quasicategory E] [InnerFibration p] (h : ∀ x : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (1 : Fin 2) → ∃ l : (Δ[1] : SSet.{u}) ⟶ E, stdSimplex.δ 0 ≫ l = SSet.yonedaEquiv.symm x ∧ l ≫ p = 𝟙 Δ[1] ∧ IsCartesianEdge p (SSet.yonedaEquiv l)) : CartesianFibration p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/Support/RelativeFunctorConstFiberIso.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def relativeFunctorConstFiberIso {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) : relativeFunctorSpace p (SSet.const b : A ⟶ B) ≅ (ihom A).obj (vertexFiber p b)"
+          },
+          {
+            "line": 50,
+            "head": "lemma relativeFunctorConstFiberIso_hom {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) : (relativeFunctorConstFiberIso (A := A) p b).hom = relativeFunctorConstFiberHom p b := rfl"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/FiberedCategory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "abbrev domainCartesianLift : ∫ᶜ F := ⟨R, (F.map f.op.toLoc).toFunctor.obj a⟩"
+          },
+          {
+            "line": 42,
+            "head": "abbrev cartesianLift : domainCartesianLift a f ⟶ ⟨S, a⟩ := ⟨f, 𝟙 _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma unitIntervalMap_isQCatEquivalence_of_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitCommaInitialCondition η) (x : X _⦋0⦌) (y : Y _⦋0⦌) : IsQCatEquivalence (unitIntervalMap η x y)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitMappingSpaceCondition_of_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitCommaInitialCondition η) : UnitMappingSpaceCondition η"
+          }
+        ]
+      }
+    ],
+    "decision": "任意の準圏の関手 g に対する区間上 Cartesian 対応の存在、対応間の圏同値での付随性の不変性、第三の対応からの比較を要求する三つの主張。Cat∞ 値非直線化と rightStraighteningInfinityEquivalence（Kan 値）は調べたが、後者は対象が空間に限られ、前者から指定両端の同型と付随性・比較図式を得る宣言はない。非直線化の存在だけは結論の直接の一部でない。"
+  },
+  "5.2.1.4": {
+    "page": 338,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.1.6",
+        "5.2.1",
+        "5.2.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(associated.*functor|functor.*associated|cartesian.*interval|interval.*cartesian|rightStraighteningInfinity|relativeFunctorConstFiber|cartesian.*comp|correspondence)",
+          "SerrePositivity"
+        ],
+        "file_count": 883,
+        "line_count": 4982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(associated.*functor|functor.*associated|cartesian.*interval|interval.*cartesian|rightStraighteningInfinity|relativeFunctorConstFiber|cartesian.*comp|correspondence)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 121,
+        "line_count": 207
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          },
+          {
+            "line": 90,
+            "head": "lemma IsCocartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCocartesianEdge p e) (hq : IsCocartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCocartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 17,
+            "head": "lemma cartesianFibration_interval_of_lift {E : SSet.{u}} (p : E ⟶ (Δ[1] : SSet.{u})) [Quasicategory E] [InnerFibration p] (h : ∀ x : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (1 : Fin 2) → ∃ l : (Δ[1] : SSet.{u}) ⟶ E, stdSimplex.δ 0 ≫ l = SSet.yonedaEquiv.symm x ∧ l ≫ p = 𝟙 Δ[1] ∧ IsCartesianEdge p (SSet.yonedaEquiv l)) : CartesianFibration p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/Support/RelativeFunctorConstFiberIso.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def relativeFunctorConstFiberIso {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) : relativeFunctorSpace p (SSet.const b : A ⟶ B) ≅ (ihom A).obj (vertexFiber p b)"
+          },
+          {
+            "line": 50,
+            "head": "lemma relativeFunctorConstFiberIso_hom {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) : (relativeFunctorConstFiberIso (A := A) p b).hom = relativeFunctorConstFiberHom p b := rfl"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/FiberedCategory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "abbrev domainCartesianLift : ∫ᶜ F := ⟨R, (F.map f.op.toLoc).toFunctor.obj a⟩"
+          },
+          {
+            "line": 42,
+            "head": "abbrev cartesianLift : domainCartesianLift a f ⟶ ⟨S, a⟩ := ⟨f, 𝟙 _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma unitIntervalMap_isQCatEquivalence_of_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitCommaInitialCondition η) (x : X _⦋0⦌) (y : Y _⦋0⦌) : IsQCatEquivalence (unitIntervalMap η x y)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitMappingSpaceCondition_of_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitCommaInitialCondition η) : UnitMappingSpaceCondition η"
+          }
+        ]
+      }
+    ],
+    "decision": "Cartesian p:M→Δ¹ と準圏の任意のファイバー同値 h₀,h₁ に対し、付随関手の存在と Fun(D,C) で同値な関手全体が付随すること。relativeFunctorConstFiberIso は定値底のファイバーの同定、輸送の存在は Kan ファイバーの終点の選択であり、この指定同値を持つ準圏値の関手とその全同値類を比較しない。"
+  },
+  "5.2.1.5": {
+    "page": 339,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.1.6",
+        "5.2.1",
+        "5.2.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(associated.*functor|functor.*associated|cartesian.*interval|interval.*cartesian|rightStraighteningInfinity|relativeFunctorConstFiber|cartesian.*comp|correspondence)",
+          "SerrePositivity"
+        ],
+        "file_count": 883,
+        "line_count": 4982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(associated.*functor|functor.*associated|cartesian.*interval|interval.*cartesian|rightStraighteningInfinity|relativeFunctorConstFiber|cartesian.*comp|correspondence)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 121,
+        "line_count": 207
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          },
+          {
+            "line": 90,
+            "head": "lemma IsCocartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCocartesianEdge p e) (hq : IsCocartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCocartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 17,
+            "head": "lemma cartesianFibration_interval_of_lift {E : SSet.{u}} (p : E ⟶ (Δ[1] : SSet.{u})) [Quasicategory E] [InnerFibration p] (h : ∀ x : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (1 : Fin 2) → ∃ l : (Δ[1] : SSet.{u}) ⟶ E, stdSimplex.δ 0 ≫ l = SSet.yonedaEquiv.symm x ∧ l ≫ p = 𝟙 Δ[1] ∧ IsCartesianEdge p (SSet.yonedaEquiv l)) : CartesianFibration p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/Support/RelativeFunctorConstFiberIso.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def relativeFunctorConstFiberIso {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) : relativeFunctorSpace p (SSet.const b : A ⟶ B) ≅ (ihom A).obj (vertexFiber p b)"
+          },
+          {
+            "line": 50,
+            "head": "lemma relativeFunctorConstFiberIso_hom {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) : (relativeFunctorConstFiberIso (A := A) p b).hom = relativeFunctorConstFiberHom p b := rfl"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/FiberedCategory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "abbrev domainCartesianLift : ∫ᶜ F := ⟨R, (F.map f.op.toLoc).toFunctor.obj a⟩"
+          },
+          {
+            "line": 42,
+            "head": "abbrev cartesianLift : domainCartesianLift a f ⟶ ⟨S, a⟩ := ⟨f, 𝟙 _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma unitIntervalMap_isQCatEquivalence_of_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitCommaInitialCondition η) (x : X _⦋0⦌) (y : Y _⦋0⦌) : IsQCatEquivalence (unitIntervalMap η x y)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitMappingSpaceCondition_of_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitCommaInitialCondition η) : UnitMappingSpaceCondition η"
+          }
+        ]
+      }
+    ],
+    "decision": "Δ² 上 Cartesian p の二つの辺に付随する f,g の合成 fg が残る辺に付随するという主張。IsCartesianEdge.comp は二つの射影に関する同一辺の Cartesian 性で、基底三角形の三辺の関手の合成ではない。Kan 値 transport の合成も準圏ファイバーの付随関手との比較を持たず、異なる対象の類似にとどまる。"
+  },
+  "5.2.1.6": {
+    "page": 340,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.1.6",
+        "5.2.1",
+        "5.2.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(associated.*functor|functor.*associated|cartesian.*interval|interval.*cartesian|rightStraighteningInfinity|relativeFunctorConstFiber|cartesian.*comp|correspondence)",
+          "SerrePositivity"
+        ],
+        "file_count": 883,
+        "line_count": 4982
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(associated.*functor|functor.*associated|cartesian.*interval|interval.*cartesian|rightStraighteningInfinity|relativeFunctorConstFiber|cartesian.*comp|correspondence)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 121,
+        "line_count": 207
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "lemma IsCartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCartesianEdge p e) (hq : IsCartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCartesianEdge (p ≫ q) e"
+          },
+          {
+            "line": 90,
+            "head": "lemma IsCocartesianEdge.comp {X Y B : SSet.{u}} {p : X ⟶ Y} {q : Y ⟶ B} {e : X _⦋1⦌} (hp : IsCocartesianEdge p e) (hq : IsCocartesianEdge q (p.app (Opposite.op ⦋1⦌) e)) : IsCocartesianEdge (p ≫ q) e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          },
+          {
+            "line": 35,
+            "head": "lemma rightStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] : IsQCatEquivalence (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).comp (leftStraighteningInfinityMap_isQCatEquivalence B.op)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 17,
+            "head": "lemma cartesianFibration_interval_of_lift {E : SSet.{u}} (p : E ⟶ (Δ[1] : SSet.{u})) [Quasicategory E] [InnerFibration p] (h : ∀ x : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (1 : Fin 2) → ∃ l : (Δ[1] : SSet.{u}) ⟶ E, stdSimplex.δ 0 ≫ l = SSet.yonedaEquiv.symm x ∧ l ≫ p = 𝟙 Δ[1] ∧ IsCartesianEdge p (SSet.yonedaEquiv l)) : CartesianFibration p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/Support/RelativeFunctorConstFiberIso.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def relativeFunctorConstFiberIso {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) : relativeFunctorSpace p (SSet.const b : A ⟶ B) ≅ (ihom A).obj (vertexFiber p b)"
+          },
+          {
+            "line": 50,
+            "head": "lemma relativeFunctorConstFiberIso_hom {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) : (relativeFunctorConstFiberIso (A := A) p b).hom = relativeFunctorConstFiberHom p b := rfl"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/FiberedCategory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "abbrev domainCartesianLift : ∫ᶜ F := ⟨R, (F.map f.op.toLoc).toFunctor.obj a⟩"
+          },
+          {
+            "line": 42,
+            "head": "abbrev cartesianLift : domainCartesianLift a f ⟶ ⟨S, a⟩ := ⟨f, 𝟙 _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma unitIntervalMap_isQCatEquivalence_of_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitCommaInitialCondition η) (x : X _⦋0⦌) (y : Y _⦋0⦌) : IsQCatEquivalence (unitIntervalMap η x y)"
+          },
+          {
+            "line": 37,
+            "head": "lemma unitMappingSpaceCondition_of_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitCommaInitialCondition η) : UnitMappingSpaceCondition η"
+          }
+        ]
+      }
+    ],
+    "decision": "Fun(D,C) の関手の同値類と両ファイバー同値付き区間上 Cartesian 対応の同値類の全単射。rightStraighteningInfinityMap_isQCatEquivalence は Kan 値右ファイブレーションの圏の同値であり、ここでの任意準圏値 Cartesian 対応の同値類ではない。Cat∞ の分類をこの区間の指定両端付き全単射にする比較がない。"
+  }
+}

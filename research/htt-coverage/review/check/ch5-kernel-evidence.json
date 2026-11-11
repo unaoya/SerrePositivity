@@ -1,5 +1,5 @@
 {
-  "base": "97d365384aa39c415ef92760df5a82ff4d579ac7",
+  "base": "6258f53ea8196c7239492f432dd428af423a1b7c",
   "toolchain": "leanprover/lean4:v4.35.0-rc4",
   "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
   "items": {
