@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "c85204a80859c4dce6b2f077449e525ed1d03592",
+  "worktree_commit": "09c27b387506dc666afc7a33d58629a5cc3c8145",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
@@ -10081,6 +10081,2338 @@
         }
       ],
       "reason": "通常のテンソル代数の自由性とスカラー拡大を確認した。生成射から定まる二つの自由加群射の余等化子が増大を通じた単位加群になる宣言は見つからなかった。"
+    },
+    "4.3.1.1": {
+      "ha_page": 535,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.2.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|colored.*operad|operad.*BM|Bimod",
+          "files_with_matches": 1690,
+          "total_matching_lines": 21874,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|colored.*operad|operad.*BM|Bimod",
+          "files_with_matches": 9,
+          "total_matching_lines": 334,
+          "sample_paths": [
+            "Mathlib/Algebra/Azumaya/Defs.lean",
+            "Mathlib/Algebra/Module/Bimodule.lean",
+            "Mathlib/Algebra/TrivSqZeroExt/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+            "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+            "Mathlib/RingTheory/Derivation/Basic.lean",
+            "Mathlib/RingTheory/Morita/Basic.lean",
+            "Mathlib/Topology/Algebra/LinearTopology.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "一色 dg operad と通常の内部両側加群を確認した。左右の代数色と一つの加群色を持ち、加群位置の前後で色を指定する三色 operad BM は見つからなかった。"
+    },
+    "4.3.1.2": {
+      "ha_page": 536,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.2.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|leftModuleOperad|rightModuleOperad|Bimod",
+          "files_with_matches": 1690,
+          "total_matching_lines": 21874,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|leftModuleOperad|rightModuleOperad|Bimod",
+          "files_with_matches": 9,
+          "total_matching_lines": 334,
+          "sample_paths": [
+            "Mathlib/Algebra/Azumaya/Defs.lean",
+            "Mathlib/Algebra/Module/Bimodule.lean",
+            "Mathlib/Algebra/TrivSqZeroExt/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+            "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+            "Mathlib/RingTheory/Derivation/Basic.lean",
+            "Mathlib/RingTheory/Morita/Basic.lean",
+            "Mathlib/Topology/Algebra/LinearTopology.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "通常の内部両側加群と左・右作用を確認した。BM の二つの二色部分 operad を LM と RM に同定する宣言は見つからなかった。"
+    },
+    "4.3.1.5": {
+      "ha_page": 537,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.1.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.2.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|operad.*BM|FinPointed|blockEquiv_assoc",
+          "files_with_matches": 3,
+          "total_matching_lines": 3,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/Operad/BlockPermutationAssociativity.lean",
+            "SerrePositivity/EInfinity/Operad/TensorFamilyPermutationLast.lean",
+            "SerrePositivity/EInfinity/Operad/TensorFamilyPermutationTail.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|operad.*BM|FinPointed|blockEquiv_assoc",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Data/Finset/Sort.lean",
+          "sha256": "7406405adb644f84405b1bbbf7ec3c8cedf9a61901e0c8e0a75d5de701cb6eeb"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/BlockPermutationAssociativity.lean",
+          "sha256": "8e2c52afd6078f137461654e56ccc852a26771169d11edee15a0cc1f2b233005"
+        }
+      ],
+      "reason": "有限順序集合の整列と operad のブロック置換を確認した。基点付き有限集合に二つの色写像を与え、各順序付きファイバーで色の端を一致させる圏 BM⊗ は見つからなかった。"
+    },
+    "4.3.1.6": {
+      "ha_page": 537,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.1.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.2.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|operadicNerve|operad.*BM|FinPointed",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|operadicNerve|operad.*BM|FinPointed",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/AlgebraicTopology/SimplicialSet/Nerve.lean",
+          "sha256": "f4385a9d91a6a0617ae316c48891329df36922bf8fa73096d79efb052c7441da"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        }
+      ],
+      "reason": "通常圏の神経と一色 dg operad を確認した。BM⊗ の神経が Fin∗ 上で ∞ operad となる構成は見つからなかった。"
+    },
+    "4.3.1.7": {
+      "ha_page": 537,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.1.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.2.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|operad.*BM|vertexFiber|discrete.*nerve",
+          "files_with_matches": 2316,
+          "total_matching_lines": 11521,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/ChosenTransportSourceComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalFiberTransport.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomPointComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomUnitValue.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomUnitVertices.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalValueToEndpoints.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCoconeIntervalActionReflection.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCoconeIntervalTransportAction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCandidateLongValueCriterion.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCoefficientMap.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCoefficientValues.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCompositeThroughMiddle.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|operad.*BM|vertexFiber|discrete.*nerve",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/VertexFiber.lean",
+          "sha256": "446cb85d15d74581e3a55a38c161304a735d51a81e61227919a1549c96dc7fdd"
+        },
+        {
+          "path": "Mathlib/AlgebraicTopology/SimplicialSet/Nerve.lean",
+          "sha256": "f4385a9d91a6a0617ae316c48891329df36922bf8fa73096d79efb052c7441da"
+        }
+      ],
+      "reason": "通常の離散圏の神経と一般の頂点ファイバーを確認した。BM の一色部分を左右代数と加群の三頂点の離散単体集合と同定する型は見つからなかった。"
+    },
+    "4.3.1.8": {
+      "ha_page": 537,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.1.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.2.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|associativeOperad|operadic.*fibration|equivalenceLifting_iff",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1B/Fibrations/IsofibrationCriterion.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|associativeOperad|operadic.*fibration|equivalenceLifting_iff",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Fibrations/IsofibrationCriterion.lean",
+          "sha256": "1abbb184cc10869b66b09ad94f48f697469bb8fe704bb4247fdb6096d9f4fb09"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        }
+      ],
+      "reason": "categorical fibration の持ち上げ判定を確認した。色を忘れて BM⊗ を Assoc⊗ へ送る写像が operadic fibration になる型は見つからなかった。"
+    },
+    "4.3.1.9": {
+      "ha_page": 537,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.1.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.2.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|leftModuleOperad|rightModuleOperad|fullSubcomplexOnVertices",
+          "files_with_matches": 674,
+          "total_matching_lines": 2121,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Core/CocartesianCoslice.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianCosliceLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianHomotopyExtension.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathSpace.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePath.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathFinalLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathInnerFibration.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathMap.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathReplacement.lean",
+            "SerrePositivity/InfinityCategories/Core/FullSubcomplexEdgeLift.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|leftModuleOperad|rightModuleOperad|fullSubcomplexOnVertices",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/FullSubcomplexFibration.lean",
+          "sha256": "13971dc2a3e915fc118fdd580814211873c66d8efa8a43ec02c158077851628f"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        }
+      ],
+      "reason": "頂点条件で定めた充満部分複体を確認した。BM⊗ で左右どちらかの代数色を除いた充満部分を LM⊗ または RM⊗ と同定する宣言は見つからなかった。"
+    },
+    "4.3.1.10": {
+      "ha_page": 537,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.1.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.2.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|associativeOperad|operadic.*join|fullSubcomplexOnVertices",
+          "files_with_matches": 674,
+          "total_matching_lines": 2121,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Core/CocartesianCoslice.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianCosliceLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianHomotopyExtension.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathSpace.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePath.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathFinalLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathInnerFibration.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathMap.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathReplacement.lean",
+            "SerrePositivity/InfinityCategories/Core/FullSubcomplexEdgeLift.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|associativeOperad|operadic.*join|fullSubcomplexOnVertices",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/FullSubcomplexFibration.lean",
+          "sha256": "13971dc2a3e915fc118fdd580814211873c66d8efa8a43ec02c158077851628f"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        }
+      ],
+      "reason": "頂点条件の充満部分複体と一色 dg operad を確認した。二つの色写像が一致する部分を二つの Assoc の operadic 結合とする型は見つからなかった。"
+    },
+    "4.3.1.11": {
+      "ha_page": 538,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.1.11",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.2.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|weak.*enrich|vertexFiber|cocartesianFibration_pullback",
+          "files_with_matches": 2238,
+          "total_matching_lines": 11211,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/ChosenTransportSourceComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalFiberTransport.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomPointComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomUnitValue.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomUnitVertices.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalValueToEndpoints.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCoconeIntervalActionReflection.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCoconeIntervalTransportAction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCandidateLongValueCriterion.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCoefficientMap.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCoefficientValues.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCompositeThroughMiddle.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|weak.*enrich|vertexFiber|cocartesianFibration_pullback",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/VertexFiber.lean",
+          "sha256": "446cb85d15d74581e3a55a38c161304a735d51a81e61227919a1549c96dc7fdd"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        }
+      ],
+      "reason": "準圏の底変換と頂点ファイバーを確認した。BM⊗ から三つの色を取り出して加群色に左右の weak enrichment を与える構成は見つからなかった。"
+    },
+    "4.3.1.13": {
+      "ha_page": 538,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.1.13",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.2.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|operad.*BM|Bimod",
+          "files_with_matches": 1690,
+          "total_matching_lines": 21874,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|operad.*BM|Bimod",
+          "files_with_matches": 9,
+          "total_matching_lines": 334,
+          "sample_paths": [
+            "Mathlib/Algebra/Azumaya/Defs.lean",
+            "Mathlib/Algebra/Module/Bimodule.lean",
+            "Mathlib/Algebra/TrivSqZeroExt/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+            "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+            "Mathlib/RingTheory/Derivation/Basic.lean",
+            "Mathlib/RingTheory/Morita/Basic.lean",
+            "Mathlib/Topology/Algebra/LinearTopology.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        }
+      ],
+      "reason": "通常の両側加群の型が左右のモノイドに依存することを確認した。加群の基礎準圏を固定したまま BM 上の射影の違いを追う比較は見つからなかった。"
+    },
+    "4.3.1.15": {
+      "ha_page": 538,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.1.15",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.2.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|associativeOperad|operadic.*pullback|Bimod",
+          "files_with_matches": 1690,
+          "total_matching_lines": 21874,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|associativeOperad|operadic.*pullback|Bimod",
+          "files_with_matches": 9,
+          "total_matching_lines": 334,
+          "sample_paths": [
+            "Mathlib/Algebra/Azumaya/Defs.lean",
+            "Mathlib/Algebra/Module/Bimodule.lean",
+            "Mathlib/Algebra/TrivSqZeroExt/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+            "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+            "Mathlib/RingTheory/Derivation/Basic.lean",
+            "Mathlib/RingTheory/Morita/Basic.lean",
+            "Mathlib/Topology/Algebra/LinearTopology.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        }
+      ],
+      "reason": "通常のモノイダル圏の内部両側加群と余デカルト写像の底変換を確認した。BM⊗→Assoc⊗ の引き戻しで左右の代数色と加群色がすべて同じ C になる operadic 比較は見つからなかった。"
+    },
+    "4.3.1.17": {
+      "ha_page": 538,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.1.17",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.2.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bitensor|biaction|bimoduleOperad|MonoidalRightAction",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "bitensor|biaction|bimoduleOperad|MonoidalRightAction",
+          "files_with_matches": 4,
+          "total_matching_lines": 81,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Monoidal/Action/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/End.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/LinearFunctor.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/Opposites.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Action/Basic.lean",
+          "sha256": "a1172eb1b3425c7e75d33120b56a266bb77ad0be637d2e69f1855ef23ace5859"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+          "sha256": "4c09a1053eb632692498cab47bb69f466f9f0e1aa5dd4b64c2eebc5c911e92f2"
+        }
+      ],
+      "reason": "通常の左作用・右作用と一般の余デカルト写像の定義を確認した。BM⊗ 上の operadic fibration を使う bitensored ∞ 圏の型は見つからなかった。"
+    },
+    "4.3.2.1": {
+      "ha_page": 540,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.2.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|leftModuleOperad|rightModuleOperad|operad.*Pr",
+          "files_with_matches": 34,
+          "total_matching_lines": 130,
+          "sample_paths": [
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraReplacement.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/DiagramAcyclicity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/Fibrancy.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomSource.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FramedLimitProbeComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FramedLimitProbeLocalization.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeNormalizedCommonFrameProperties.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeNormalizedHomUnit.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeNormalizedProbeFrame.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeNormalizedProbeFrameProperties.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeElementColumnProperties.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|leftModuleOperad|rightModuleOperad|operad.*Pr",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Distributive/Monoidal.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        }
+      ],
+      "reason": "通常の両側加群と有限集合の積・部分集合を確認した。LM×RM の二つの色集合から所定の和集合を作り、両順序を共有する加群の位置で接ぐ Pr は見つからなかった。"
+    },
+    "4.3.2.2": {
+      "ha_page": 541,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.2.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|dependentProduct|operadic.*module|markedCocartesianFunctorSpace",
+          "files_with_matches": 30,
+          "total_matching_lines": 220,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/AnodyneScaffoldTarget.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/EmptyCocartesianNativeHom.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/HigherHornTargetComparison.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitFamily.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreVertexDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorFamilies.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorFamilyLaws.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|dependentProduct|operadic.*module|markedCocartesianFunctorSpace",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean",
+          "sha256": "c7578033a5de011fefd03364eeef8573f9cbf267287781d24f086d888b50de7d"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean",
+          "sha256": "e919e3ba4f6b4fd47870fa5738ba265c2bbe88b4c5f4f96dd82b6a3ebd285d05"
+        }
+      ],
+      "reason": "相対関手空間のカリー化と指定辺の保存を確認した。Pr 上の LM×K からの写像を表現し、RM の頂点ごとに inert 保存で絞る相対 LMod⊗ は見つからなかった。"
+    },
+    "4.3.2.3": {
+      "ha_page": 541,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.2.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|operadic.*module|markedCocartesianFunctorSpace|Bimod",
+          "files_with_matches": 1715,
+          "total_matching_lines": 21930,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|operadic.*module|markedCocartesianFunctorSpace|Bimod",
+          "files_with_matches": 9,
+          "total_matching_lines": 334,
+          "sample_paths": [
+            "Mathlib/Algebra/Azumaya/Defs.lean",
+            "Mathlib/Algebra/Module/Bimodule.lean",
+            "Mathlib/Algebra/TrivSqZeroExt/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+            "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+            "Mathlib/RingTheory/Derivation/Basic.lean",
+            "Mathlib/RingTheory/Morita/Basic.lean",
+            "Mathlib/Topology/Algebra/LinearTopology.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean",
+          "sha256": "e919e3ba4f6b4fd47870fa5738ba265c2bbe88b4c5f4f96dd82b6a3ebd285d05"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "通常の内部両側加群の型とマーク付き相対関手を確認した。LMod⊗ の BM 上の operadic fibration への依存を扱う構成は見つからなかった。"
+    },
+    "4.3.2.4": {
+      "ha_page": 541,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.2.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|leftModuleOperad|rightModuleOperad|relativeFunctorIsPullbackIso",
+          "files_with_matches": 9,
+          "total_matching_lines": 25,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/PullbackHomIso.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/SectionsPullbackIso.lean",
+            "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorIsPullbackIso.lean",
+            "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensityEvaluationFixedTarget.lean",
+            "SerrePositivity/InfinityCategories/F2/Ind/WeightedCoefficientGraph.lean",
+            "SerrePositivity/InfinityCategories/F2/Ind/WeightedCoefficientNativeFixedTarget.lean",
+            "SerrePositivity/InfinityCategories/F2/Ind/WeightedTwistedCoefficientComparison.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/PullbackConeClassificationRetraction.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|leftModuleOperad|rightModuleOperad|relativeFunctorIsPullbackIso",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorIsPullbackIso.lean",
+          "sha256": "9f14f172b35dcd6171ed71e618b499efb96f112ab1bc755e6a38f287ba2a3624"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/VertexFiber.lean",
+          "sha256": "446cb85d15d74581e3a55a38c161304a735d51a81e61227919a1549c96dc7fdd"
+        }
+      ],
+      "reason": "相対関手の引き戻し同型を確認した。Pr を RM の m に評価すると LM の包含になり、LMod⊗ のそのファイバーが LMod と同定される宣言は見つからなかった。"
+    },
+    "4.3.2.5": {
+      "ha_page": 542,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.2.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|operadic.*module|pointwise.*cocartesian|markedCocartesianFunctorSpace",
+          "files_with_matches": 28,
+          "total_matching_lines": 59,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/AnodyneScaffoldTarget.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/BaseChangeAssociativityDiagram.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/EmptyCocartesianNativeHom.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/HigherHornTargetComparison.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitFamily.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreVertexDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorFamilies.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|operadic.*module|pointwise.*cocartesian|markedCocartesianFunctorSpace",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean",
+          "sha256": "e919e3ba4f6b4fd47870fa5738ba265c2bbe88b4c5f4f96dd82b6a3ebd285d05"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+          "sha256": "4c09a1053eb632692498cab47bb69f466f9f0e1aa5dd4b64c2eebc5c911e92f2"
+        }
+      ],
+      "reason": "一般の余デカルト写像とマークを保つ相対関手の準圏を確認した。RM 上の LMod⊗ が operadic fibration となり、inert・余デカルト辺を LM の色ごとに判定する型は見つからなかった。"
+    },
+    "4.3.2.6": {
+      "ha_page": 542,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.2.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|rightModuleOperad|operadic.*module|kanRelativeRightKanRestriction_trivialKanFibration",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeRightRestrictionTheorem.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|rightModuleOperad|operadic.*module|kanRelativeRightKanRestriction_trivialKanFibration",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativePointFunctorIso.lean",
+          "sha256": "f04830ef590acc476568cdc01e092d31ccf105c1b3cc0757691724007f21895b"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeRightRestrictionTheorem.lean",
+          "sha256": "9bc5675beaa3d6fe1ecc1c228611dfacab3e171c646cc2d29664aacf70c31bae"
+        }
+      ],
+      "reason": "相対関手の一点での評価と右 Kan 延長制限の自明 Kan 性を確認した。RM の代数色で評価する LMod⊗→C₊⊗ が operadic な自明 Kan となる型は見つからなかった。"
+    },
+    "4.3.2.7": {
+      "ha_page": 545,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.2.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|right.*left.*module.*equiv|Bimod|relativeFunctorCurry",
+          "files_with_matches": 1809,
+          "total_matching_lines": 22110,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|right.*left.*module.*equiv|Bimod|relativeFunctorCurry",
+          "files_with_matches": 9,
+          "total_matching_lines": 334,
+          "sample_paths": [
+            "Mathlib/Algebra/Azumaya/Defs.lean",
+            "Mathlib/Algebra/Module/Bimodule.lean",
+            "Mathlib/Algebra/TrivSqZeroExt/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+            "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+            "Mathlib/RingTheory/Derivation/Basic.lean",
+            "Mathlib/RingTheory/Morita/Basic.lean",
+            "Mathlib/Topology/Algebra/LinearTopology.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean",
+          "sha256": "c7578033a5de011fefd03364eeef8573f9cbf267287781d24f086d888b50de7d"
+        }
+      ],
+      "reason": "通常圏の両側加群と相対関手のカリー化を確認した。Pr に沿う前合成が BM 加群と左加群の中の右加群の準圏の同値となる型は見つからなかった。"
+    },
+    "4.3.2.8": {
+      "ha_page": 548,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.2.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.3.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimodule.*unit.*equiv|bimoduleOperad|forgetRight|Bimod",
+          "files_with_matches": 1690,
+          "total_matching_lines": 21874,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimodule.*unit.*equiv|bimoduleOperad|forgetRight|Bimod",
+          "files_with_matches": 9,
+          "total_matching_lines": 334,
+          "sample_paths": [
+            "Mathlib/Algebra/Azumaya/Defs.lean",
+            "Mathlib/Algebra/Module/Bimodule.lean",
+            "Mathlib/Algebra/TrivSqZeroExt/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+            "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+            "Mathlib/RingTheory/Derivation/Basic.lean",
+            "Mathlib/RingTheory/Morita/Basic.lean",
+            "Mathlib/Topology/Algebra/LinearTopology.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Mod.lean",
+          "sha256": "b666f8d227279554d3131789c4940ae89ac1b97cad2684320f30cfb7adfcb45d"
+        }
+      ],
+      "reason": "通常の内部左加群と単位モノイドの作用、および通常の両側加群を確認した。右代数の単位が同値なら右作用を忘れる両側加群準圏の写像が同値となる宣言は見つからなかった。"
+    },
+    "4.3.3.1": {
+      "ha_page": 549,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimodule.*relative.*limit|bimoduleOperad|IsRelativeLimitCone|Bimod",
+          "files_with_matches": 1700,
+          "total_matching_lines": 21915,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimodule.*relative.*limit|bimoduleOperad|IsRelativeLimitCone|Bimod",
+          "files_with_matches": 9,
+          "total_matching_lines": 334,
+          "sample_paths": [
+            "Mathlib/Algebra/Azumaya/Defs.lean",
+            "Mathlib/Algebra/Module/Bimodule.lean",
+            "Mathlib/Algebra/TrivSqZeroExt/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+            "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+            "Mathlib/RingTheory/Derivation/Basic.lean",
+            "Mathlib/RingTheory/Morita/Basic.lean",
+            "Mathlib/Topology/Algebra/LinearTopology.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLimit.lean",
+          "sha256": "8a2d7e4a3206fcd3e71edda5296283654463f4dd66a4dcd29c0208e1b07efb00"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "通常の両側加群と一般の相対極限を確認した。左右の代数が動く BMod の射影に対し、基礎の極限から相対極限を延長し検出する型は見つからなかった。"
+    },
+    "4.3.3.2": {
+      "ha_page": 550,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimodule.*cartesian|bimoduleOperad|pairedRestrictionFunctor|CartesianFibration",
+          "files_with_matches": 703,
+          "total_matching_lines": 1968,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleSimultaneousRestriction.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/DiagonalRestriction.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Paired.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/LeftUnitRestriction.lean",
+            "SerrePositivity/InfinityCategories/Core.lean",
+            "SerrePositivity/InfinityCategories/Core/CartesianInitialBoundary.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianCoslice.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianEdgePullback.lean",
+            "SerrePositivity/InfinityCategories/Core/ConeRestrictionCocartesianEdge.lean",
+            "SerrePositivity/InfinityCategories/Core/Fibrations.lean",
+            "SerrePositivity/InfinityCategories/Core/FunctorPointwiseLimitCriterion.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimodule.*cartesian|bimoduleOperad|pairedRestrictionFunctor|CartesianFibration",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+          "sha256": "3d58f192d3941c4f819f22067187dad217bcdbc80744a476393a39ec76528321"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+          "sha256": "4c09a1053eb632692498cab47bb69f466f9f0e1aa5dd4b64c2eebc5c911e92f2"
+        }
+      ],
+      "reason": "dg 両側加群の左右制限と一般の Cartesian ファイブレーションを確認した。可変代数への BMod の射影が Cartesian であり、その辺を台の同値で特徴付ける型は見つからなかった。"
+    },
+    "4.3.3.3": {
+      "ha_page": 550,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimodule.*limit|Bimod.*HasLimits|pairedRestrictionFunctor|forget_createsLimitsOfShape",
+          "files_with_matches": 9,
+          "total_matching_lines": 45,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleSimultaneousRestriction.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/Limits.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/DiagonalRestriction.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Paired.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/LeftUnitRestriction.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraLimits.lean",
+            "SerrePositivity/KST/SConstruction/DGCellIdentityGraphYonedaNative.lean",
+            "SerrePositivity/KST/SConstruction/DGCellResolvedGraphArrow.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimodule.*limit|Bimod.*HasLimits|pairedRestrictionFunctor|forget_createsLimitsOfShape",
+          "files_with_matches": 2,
+          "total_matching_lines": 4,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/Grp/Limits.lean",
+            "Mathlib/Algebra/Category/MonCat/Limits.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Limits.lean",
+          "sha256": "41cd58d13528966dffb63abe32df94f4a8520187b9ae61f888858b0ff7c0c7f8"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+          "sha256": "3d58f192d3941c4f819f22067187dad217bcdbc80744a476393a39ec76528321"
+        }
+      ],
+      "reason": "通常の片側内部加群の極限と dg 両側加群の左右制限を確認した。固定 A-B 両側加群の極限が存在し、基礎で検出され、両側制限で保存される型は見つからなかった。"
+    },
+    "4.3.3.4": {
+      "ha_page": 550,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "rightModuleOperad|bimoduleOperad|operadic.*smash|markedCocartesianFunctorSpace",
+          "files_with_matches": 25,
+          "total_matching_lines": 56,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/AnodyneScaffoldTarget.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/EmptyCocartesianNativeHom.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/HigherHornTargetComparison.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitFamily.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreVertexDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorFamilies.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorFamilyLaws.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "rightModuleOperad|bimoduleOperad|operadic.*smash|markedCocartesianFunctorSpace",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean",
+          "sha256": "e919e3ba4f6b4fd47870fa5738ba265c2bbe88b4c5f4f96dd82b6a3ebd285d05"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        }
+      ],
+      "reason": "通常のテンソルと指定辺を保つ相対関手を確認した。RM から加群位置だけを取り出す τ、Assoc との smash、およびそれで引き戻す相対 Alg⊗ は見つからなかった。"
+    },
+    "4.3.3.5": {
+      "ha_page": 551,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "rightModuleOperad|operadic.*module|relativePointFunctorIso|vertexFiber",
+          "files_with_matches": 2230,
+          "total_matching_lines": 11215,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/ChosenTransportSourceComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalFiberTransport.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomPointComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomUnitValue.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomUnitVertices.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalValueToEndpoints.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCoconeIntervalActionReflection.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCoconeIntervalTransportAction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCandidateLongValueCriterion.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCoefficientMap.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCoefficientValues.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCompositeThroughMiddle.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "rightModuleOperad|operadic.*module|relativePointFunctorIso|vertexFiber",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativePointFunctorIso.lean",
+          "sha256": "f04830ef590acc476568cdc01e092d31ccf105c1b3cc0757691724007f21895b"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/VertexFiber.lean",
+          "sha256": "446cb85d15d74581e3a55a38c161304a735d51a81e61227919a1549c96dc7fdd"
+        }
+      ],
+      "reason": "相対関手の一点評価と頂点ファイバーを確認した。相対 Alg⊗ の代数色の自明 Kan 性と、m の評価による右加群から Alg への同値は見つからなかった。"
+    },
+    "4.3.3.6": {
+      "ha_page": 551,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "rightModuleOperad|leftModuleOperad|relativeFunctorIsPullbackIso|operadic.*module",
+          "files_with_matches": 9,
+          "total_matching_lines": 25,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/PullbackHomIso.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/SectionsPullbackIso.lean",
+            "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorIsPullbackIso.lean",
+            "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensityEvaluationFixedTarget.lean",
+            "SerrePositivity/InfinityCategories/F2/Ind/WeightedCoefficientGraph.lean",
+            "SerrePositivity/InfinityCategories/F2/Ind/WeightedCoefficientNativeFixedTarget.lean",
+            "SerrePositivity/InfinityCategories/F2/Ind/WeightedTwistedCoefficientComparison.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/PullbackConeClassificationRetraction.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "rightModuleOperad|leftModuleOperad|relativeFunctorIsPullbackIso|operadic.*module",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorIsPullbackIso.lean",
+          "sha256": "9f14f172b35dcd6171ed71e618b499efb96f112ab1bc755e6a38f287ba2a3624"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Mod.lean",
+          "sha256": "b666f8d227279554d3131789c4940ae89ac1b97cad2684320f30cfb7adfcb45d"
+        }
+      ],
+      "reason": "一般の相対関手の引き戻しと通常の固定モノイドの加群を確認した。A と τ から RM 上の切断 A′ を作り、LMod⊗ をその切断で引き戻す構成は見つからなかった。"
+    },
+    "4.3.3.7": {
+      "ha_page": 551,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|rightModuleOperad|weak.*enrich|cocartesianFibration_pullback",
+          "files_with_matches": 8,
+          "total_matching_lines": 9,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/SimplicialLocalization/HammockSourceFunctor.lean",
+            "SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonWeak.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/SimplicialMapComparison.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/FibrationBaseChange.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/RelativeOverAnodyneRestriction.lean",
+            "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+            "SerrePositivity/InfinityCategories/F1B/Fibrations/CocartesianInnerAnodynePullback.lean",
+            "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianEdges.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|rightModuleOperad|weak.*enrich|cocartesianFibration_pullback",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Action/Basic.lean",
+          "sha256": "a1172eb1b3425c7e75d33120b56a266bb77ad0be637d2e69f1855ef23ace5859"
+        }
+      ],
+      "reason": "通常の右作用と余デカルト写像の底変換を確認した。固定 A の左加群の右 weak enrichment と、右加群準圏が A 上のホモトピーファイバーとなる比較は見つからなかった。"
+    },
+    "4.3.3.8": {
+      "ha_page": 551,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimoduleOperad|right.*left.*module.*equiv|Bimod|relativeFunctorFiber",
+          "files_with_matches": 1726,
+          "total_matching_lines": 22011,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimoduleOperad|right.*left.*module.*equiv|Bimod|relativeFunctorFiber",
+          "files_with_matches": 9,
+          "total_matching_lines": 334,
+          "sample_paths": [
+            "Mathlib/Algebra/Azumaya/Defs.lean",
+            "Mathlib/Algebra/Module/Bimodule.lean",
+            "Mathlib/Algebra/TrivSqZeroExt/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+            "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+            "Mathlib/RingTheory/Derivation/Basic.lean",
+            "Mathlib/RingTheory/Morita/Basic.lean",
+            "Mathlib/Topology/Algebra/LinearTopology.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorFiberHom.lean",
+          "sha256": "23e7ab21265d0c2fb524aab1cf43507ce13c166f7a345e07dee55747b4395956"
+        }
+      ],
+      "reason": "通常の両側加群と相対関手のファイバーを確認した。A-B 両側加群と固定 A の左加群圏の右 B-加群を同定する型は見つからなかった。"
+    },
+    "4.3.3.9": {
+      "ha_page": 552,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimodule.*colimit|Bimod.*HasColimits|colimitCoconeLiftsToColimit",
+          "files_with_matches": 1,
+          "total_matching_lines": 2,
+          "sample_paths": [
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/Limits.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimodule.*colimit|Bimod.*HasColimits|colimitCoconeLiftsToColimit",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Limits.lean",
+          "sha256": "41cd58d13528966dffb63abe32df94f4a8520187b9ae61f888858b0ff7c0c7f8"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "片側内部加群の余極限を持ち上げる型を確認した。左右の作用に対して両側加群の余極限を持ち上げ、台で検出する型は見つからなかった。"
+    },
+    "4.3.3.10": {
+      "ha_page": 552,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimodule.*presentable|bimodule.*preservesLimit|bimodule.*preservesColimit|pairedRestrictionFunctor",
+          "files_with_matches": 14,
+          "total_matching_lines": 54,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleSimultaneousRestriction.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/DiagonalRestriction.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Paired.lean",
+            "SerrePositivity/DifferentialGraded/Module/ConeConstruction.lean",
+            "SerrePositivity/DifferentialGraded/SharedFunctoriality/DGFunctorGraphComposition.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/LeftUnitRestriction.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGFunctorRestrictedYoneda.lean",
+            "SerrePositivity/InfinityCategories/Derived/SmallPerfectRepresentableGenerator.lean",
+            "SerrePositivity/KST/SConstruction/DGCellIdentityGraphYonedaNative.lean",
+            "SerrePositivity/KST/SConstruction/DGCellResolvedGraphArrow.lean",
+            "SerrePositivity/KST/SConstruction/DGGluingAxesMixedHom.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimodule.*presentable|bimodule.*preservesLimit|bimodule.*preservesColimit|pairedRestrictionFunctor",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Monoidal/ModulePresentability.lean",
+          "sha256": "c989ed4431f1fe8d1108fad7f2dee5d3bb8cbf9c924d64410193a6dbc8e02cfb"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+          "sha256": "3d58f192d3941c4f819f22067187dad217bcdbc80744a476393a39ec76528321"
+        }
+      ],
+      "reason": "片側内部加群の局所可呈示性と dg 両側加群の左右制限を確認した。両側加群の presentable 性、両側制限の両極限保存、または可変 BMod の presentable fibration 性を与える型は見つからなかった。"
+    },
+    "4.3.3.11": {
+      "ha_page": 553,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.11",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "free.*bimodule|bimodule.*free|generator_action|Bimod",
+          "files_with_matches": 1704,
+          "total_matching_lines": 21862,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "free.*bimodule|bimodule.*free|generator_action|Bimod",
+          "files_with_matches": 9,
+          "total_matching_lines": 334,
+          "sample_paths": [
+            "Mathlib/Algebra/Azumaya/Defs.lean",
+            "Mathlib/Algebra/Module/Bimodule.lean",
+            "Mathlib/Algebra/TrivSqZeroExt/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+            "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+            "Mathlib/RingTheory/Derivation/Basic.lean",
+            "Mathlib/RingTheory/Morita/Basic.lean",
+            "Mathlib/Topology/Algebra/LinearTopology.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+          "sha256": "3bf57f7268658348fc2f72f222d05240010bfb762db79bd79ad2bdf85ea71347"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "片側自由内部加群の生成射と作用の恒等式を確認した。左右のテンソルと両作用から誘導する射の同値で自由両側加群を定める型は見つからなかった。"
+    },
+    "4.3.3.12": {
+      "ha_page": 553,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.12",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "free.*bimodule|bimodule.*free|freeHomEquiv|bimoduleCanonicalSemifreeResolution",
+          "files_with_matches": 74,
+          "total_matching_lines": 418,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleFullComparison.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleFunctorCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleIndependence.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/FreeTensor.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHomFree.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+            "SerrePositivity/DifferentialGraded/Checks/BimoduleKFlat.lean",
+            "SerrePositivity/DifferentialGraded/Checks/BimoduleSemifreeKFlat.lean",
+            "SerrePositivity/DifferentialGraded/Checks/BimoduleSemifreeResolution.lean",
+            "SerrePositivity/DifferentialGraded/Checks/DerivedBimoduleAssociatorIndependence.lean",
+            "SerrePositivity/DifferentialGraded/Checks/FreeAdjunction.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "free.*bimodule|bimodule.*free|freeHomEquiv|bimoduleCanonicalSemifreeResolution",
+          "files_with_matches": 7,
+          "total_matching_lines": 51,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/ModuleCat/Adjunctions.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Presheaf/Free.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Presheaf/Generator.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Sheaf/Free.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Sheaf/Generators.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Sheaf/LocallyFree.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Sheaf/Quasicoherent.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+          "sha256": "3bf57f7268658348fc2f72f222d05240010bfb762db79bd79ad2bdf85ea71347"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+          "sha256": "3d58f192d3941c4f819f22067187dad217bcdbc80744a476393a39ec76528321"
+        }
+      ],
+      "reason": "片側自由加群の Hom 全単射と dg 両側加群の半自由分解を確認した。生成対象から自由 A-B 両側加群を構成し、指定生成射で Hom を同定する型は見つからなかった。"
+    },
+    "4.3.3.13": {
+      "ha_page": 553,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.13",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "free.*bimodule|bimodule.*adjoint|freeForgetAdjunction|Bimod",
+          "files_with_matches": 1707,
+          "total_matching_lines": 21906,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorMiddleRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorRightRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "free.*bimodule|bimodule.*adjoint|freeForgetAdjunction|Bimod",
+          "files_with_matches": 15,
+          "total_matching_lines": 358,
+          "sample_paths": [
+            "Mathlib/Algebra/Azumaya/Defs.lean",
+            "Mathlib/Algebra/Module/Bimodule.lean",
+            "Mathlib/Algebra/TrivSqZeroExt/Basic.lean",
+            "Mathlib/CategoryTheory/Groupoid/FreeGroupoidOfCategory.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+            "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+            "Mathlib/Condensed/Light/Epi.lean",
+            "Mathlib/Condensed/Light/InternallyProjective.lean",
+            "Mathlib/Condensed/Light/Module.lean",
+            "Mathlib/Condensed/Light/Small.lean",
+            "Mathlib/Condensed/Module.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+          "sha256": "3bf57f7268658348fc2f72f222d05240010bfb762db79bd79ad2bdf85ea71347"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "内部片側加群の自由忘却随伴を確認した。固定 A-B の両側加群の忘却への左随伴は見つからなかった。"
+    },
+    "4.3.3.14": {
+      "ha_page": 554,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.14",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "free.*bimodule|bimodule.*adjoint|freeForgetAdjunction|bimoduleOperad",
+          "files_with_matches": 56,
+          "total_matching_lines": 132,
+          "sample_paths": [
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+            "SerrePositivity/DifferentialGraded/Checks/BimoduleSemifreeResolution.lean",
+            "SerrePositivity/DifferentialGraded/Derived/BimoduleMiddle/ModelIndependence.lean",
+            "SerrePositivity/DifferentialGraded/Derived/BimoduleTensor.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/Bimodule/KFlatness.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/AllColimits.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/Free.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/ModelCategory.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/Monadic.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/PathAcyclicity.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/SmallObject.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "free.*bimodule|bimodule.*adjoint|freeForgetAdjunction|bimoduleOperad",
+          "files_with_matches": 6,
+          "total_matching_lines": 24,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Groupoid/FreeGroupoidOfCategory.lean",
+            "Mathlib/Condensed/Light/Epi.lean",
+            "Mathlib/Condensed/Light/InternallyProjective.lean",
+            "Mathlib/Condensed/Light/Module.lean",
+            "Mathlib/Condensed/Light/Small.lean",
+            "Mathlib/Condensed/Module.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+          "sha256": "3bf57f7268658348fc2f72f222d05240010bfb762db79bd79ad2bdf85ea71347"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "片側自由加群の随伴と固定した内部両側加群を確認した。二つの代数と生成対象が可変な自由両側加群の左随伴は見つからなかった。"
+    },
+    "4.3.3.17": {
+      "ha_page": 555,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.3.3.17",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimodule.*rectifi|Bimodule.*localiz|dgKernelDerivedInfinity_cellModelIso|rightTransfer",
+          "files_with_matches": 37,
+          "total_matching_lines": 125,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleEquivalence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleFullComparison.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleIdentityFull.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleIndependence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleNaturality.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleResolutionEquivalence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleRightRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGRightKFlatIsoLiftComputation.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DerivedBimoduleComparison.lean",
+            "SerrePositivity/DifferentialGraded/Checks/DerivedBimoduleUnits.lean",
+            "SerrePositivity/DifferentialGraded/Derived/BimoduleComposition/Resolution.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimodule.*rectifi|Bimodule.*localiz|dgKernelDerivedInfinity_cellModelIso|rightTransfer",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean",
+          "sha256": "1992a4e61c70a6e862b4421e801a4864ef6bd7bb4dcc0b30c41603285b6e8def"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Derived/DGKernelCellModelComparison.lean",
+          "sha256": "77a5734c4a0c03e98249cd2423ccc96a277258a14c276c002d2da088164ad2d8"
+        }
+      ],
+      "reason": "モデル構造の右移送と dg 両側加群の局所化における細胞模型を確認した。余ファイブラント両側加群の局所化と、局所化したモノイダル ∞ 圏の両側加群準圏の rectification は見つからなかった。"
     }
   }
 }

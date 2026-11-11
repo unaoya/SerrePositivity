@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "c85204a80859c4dce6b2f077449e525ed1d03592",
+  "worktree_commit": "09c27b387506dc666afc7a33d58629a5cc3c8145",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
@@ -496,6 +496,66 @@
       "ha_page": 532,
       "declarations": [
         "ModuleCat.restrictScalars_isEquivalence_of_ringEquiv"
+      ]
+    },
+    "4.3.1.3": {
+      "ha_page": 536,
+      "declarations": [
+        "Bimod"
+      ]
+    },
+    "4.3.1.4": {
+      "ha_page": 537,
+      "declarations": [
+        "Bimod.regular"
+      ]
+    },
+    "4.3.1.12": {
+      "ha_page": 538,
+      "declarations": [
+        "Bimod"
+      ]
+    },
+    "4.3.1.14": {
+      "ha_page": 538,
+      "declarations": [
+        "CategoryTheory.Mon",
+        "Bimod"
+      ]
+    },
+    "4.3.1.16": {
+      "ha_page": 538,
+      "declarations": [
+        "Bimod.regular"
+      ]
+    },
+    "4.3.1.18": {
+      "ha_page": 538,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.cocartesianFibration_pullback_snd"
+      ]
+    },
+    "4.3.1.19": {
+      "ha_page": 539,
+      "declarations": [
+        "Bimod"
+      ]
+    },
+    "4.3.3.15": {
+      "ha_page": 554,
+      "declarations": [
+        "SerrePositivity.ModelGeneration.rightTransfer",
+        "SerrePositivity.ModelGeneration.rightTransfer_weakEquivalences",
+        "SerrePositivity.ModelGeneration.rightTransfer_fibrations",
+        "SerrePositivity.ModelGeneration.rightTransfer_isRightQuillen"
+      ]
+    },
+    "4.3.3.16": {
+      "ha_page": 555,
+      "declarations": [
+        "SerrePositivity.ModelGeneration.rightTransfer",
+        "SerrePositivity.ModelGeneration.rightTransfer_weakEquivalences",
+        "SerrePositivity.ModelGeneration.rightTransfer_fibrations"
       ]
     },
     "4.5.4.1": {
@@ -1550,6 +1610,79 @@
       "line": 305,
       "source_sha256": "9d01de37595d4ea19974e64229802c16e091eb747ec4e7ddf0c4b48b1f989413",
       "type": "@ModuleCat.restrictScalars_isEquivalence_of_ringEquiv.{u_1, u_2,\n    u_3} : ∀ {R : Type u_1} {S : Type u_2} [inst : Ring.{u_1} R] [inst_1 : Ring.{u_2} S]\n  (e :\n    @RingEquiv.{u_1, u_2} R S (@Distrib.toMul.{u_1} R (@instDistribOfSemiring.{u_1} R (@Ring.toSemiring.{u_1} R inst)))\n      (@Distrib.toMul.{u_2} S (@instDistribOfSemiring.{u_2} S (@Ring.toSemiring.{u_2} S inst_1)))\n      (@Distrib.toAdd.{u_1} R (@instDistribOfSemiring.{u_1} R (@Ring.toSemiring.{u_1} R inst)))\n      (@Distrib.toAdd.{u_2} S (@instDistribOfSemiring.{u_2} S (@Ring.toSemiring.{u_2} S inst_1)))),\n  @CategoryTheory.Functor.IsEquivalence.{u_3, u_3, max u_2 (u_3 + 1), max u_1 (u_3 + 1)}\n    (@ModuleCat.{u_3, u_2} S inst_1) (@ModuleCat.moduleCategory.{u_3, u_2} S inst_1) (@ModuleCat.{u_3, u_1} R inst)\n    (@ModuleCat.moduleCategory.{u_3, u_1} R inst)\n    (@ModuleCat.restrictScalars.{u_3, u_1, u_2} R S inst inst_1\n      (@RingEquiv.toRingHom.{u_1, u_2} R S (@Semiring.toNonAssocSemiring.{u_1} R (@Ring.toSemiring.{u_1} R inst))\n        (@Semiring.toNonAssocSemiring.{u_2} S (@Ring.toSemiring.{u_2} S inst_1)) e))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "Bimod": {
+      "name": "Bimod",
+      "module": "Mathlib.CategoryTheory.Monoidal.Bimod",
+      "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+      "line": 79,
+      "source_sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703",
+      "type": "@Bimod.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      @CategoryTheory.Mon.{u_1, u_2} C inst inst_1 → @CategoryTheory.Mon.{u_1, u_2} C inst inst_1 → Type (max u_2 u_1)",
+      "axioms": []
+    },
+    "Bimod.regular": {
+      "name": "Bimod.regular",
+      "module": "Mathlib.CategoryTheory.Monoidal.Bimod",
+      "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+      "line": 169,
+      "source_sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703",
+      "type": "@Bimod.regular.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      (A : @CategoryTheory.Mon.{u_1, u_2} C inst inst_1) → @Bimod.{u_1, u_2} C inst inst_1 A A",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.ModelGeneration.rightTransfer": {
+      "name": "SerrePositivity.ModelGeneration.rightTransfer",
+      "module": "SerrePositivity.HomotopicalAlgebra.Transfer.Right",
+      "path": "SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean",
+      "line": 61,
+      "source_sha256": "1992a4e61c70a6e862b4421e801a4864ef6bd7bb4dcc0b30c41603285b6e8def",
+      "type": "@SerrePositivity.ModelGeneration.rightTransfer.{u_1, u_2, u_3, u_4,\n    u_5} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_3, u_2} C] →\n    {D : Type u_4} →\n      [inst_1 : CategoryTheory.Category.{u_5, u_4} D] →\n        {L : @CategoryTheory.Functor.{u_3, u_5, u_2, u_4} C inst D inst_1} →\n          {R : @CategoryTheory.Functor.{u_5, u_3, u_4, u_2} D inst_1 C inst} →\n            [inst_2 : @HomotopicalAlgebra.ModelCategory.{u_3, u_2} C inst] →\n              (I J :\n                  @CategoryTheory.MorphismProperty.{u_3, u_2} C\n                    (@CategoryTheory.Category.toCategoryStruct.{u_3, u_2} C inst)) →\n                [@SerrePositivity.ModelGeneration.CofibrantlyGenerated.{u_1, u_2, u_3} C inst inst_2 I J] →\n                  [@CategoryTheory.Limits.HasFiniteLimits.{u_5, u_4} D inst_1] →\n                    [@CategoryTheory.Limits.HasFiniteColimits.{u_5, u_4} D inst_1] →\n                      [@CategoryTheory.MorphismProperty.HasSmallObjectArgument.{u_1, u_5, u_4} D inst_1\n                            (@CategoryTheory.MorphismProperty.strictMap.{u_3, u_2, u_5, u_4} C inst D inst_1 I L)] →\n                        [@CategoryTheory.MorphismProperty.HasSmallObjectArgument.{u_1, u_5, u_4} D inst_1\n                              (@CategoryTheory.MorphismProperty.strictMap.{u_3, u_2, u_5, u_4} C inst D inst_1 J L)] →\n                          @CategoryTheory.Adjunction.{u_3, u_5, u_2, u_4} C inst D inst_1 L R →\n                            @LE.le.{max u_4 u_5}\n                                (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n                                  (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n                                (@Preorder.toLE.{max u_4 u_5}\n                                  (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n                                    (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n                                  (@PartialOrder.toPreorder.{max u_4 u_5}\n                                    (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n                                      (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n                                    (@ChainCompletePartialOrder.toPartialOrder.{max u_4 u_5}\n                                      (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n                                        (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n                                      (@ChainCompletePartialOrder.instOfCompleteLattice.{max u_4 u_5}\n                                        (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n                                          (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n                                        (@CompleteBooleanAlgebra.toCompleteLattice.{max u_4 u_5}\n                                          (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n                                            (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n                                          (@CategoryTheory.MorphismProperty.instCompleteBooleanAlgebra.{u_5, u_4} D\n                                            (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1)))))))\n                                (@CategoryTheory.MorphismProperty.transfiniteCompositions.{u_1, u_5, u_4} D inst_1\n                                  (@CategoryTheory.MorphismProperty.pushouts.{u_5, u_4} D inst_1\n                                    (@CategoryTheory.MorphismProperty.coproducts.{u_1, u_5, u_4} D inst_1\n                                      (@CategoryTheory.MorphismProperty.strictMap.{u_3, u_2, u_5, u_4} C inst D inst_1 J\n                                        L))))\n                                (@CategoryTheory.MorphismProperty.inverseImage.{u_5, u_4, u_3, u_2} D inst_1 C inst\n                                  (@HomotopicalAlgebra.weakEquivalences.{u_3, u_2} C inst\n                                    (@HomotopicalAlgebra.ModelCategory.categoryWithWeakEquivalences.{u_3, u_2} C inst\n                                      inst_2))\n                                  R) →\n                              @HomotopicalAlgebra.ModelCategory.{u_5, u_4} D inst_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.ModelGeneration.rightTransfer_weakEquivalences": {
+      "name": "SerrePositivity.ModelGeneration.rightTransfer_weakEquivalences",
+      "module": "SerrePositivity.HomotopicalAlgebra.Transfer.Right",
+      "path": "SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean",
+      "line": 89,
+      "source_sha256": "1992a4e61c70a6e862b4421e801a4864ef6bd7bb4dcc0b30c41603285b6e8def",
+      "type": "@SerrePositivity.ModelGeneration.rightTransfer_weakEquivalences.{u_1, u_2, u_3, u_4,\n    u_5} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_3, u_2} C] {D : Type u_4}\n  [inst_1 : CategoryTheory.Category.{u_5, u_4} D] {L : @CategoryTheory.Functor.{u_3, u_5, u_2, u_4} C inst D inst_1}\n  {R : @CategoryTheory.Functor.{u_5, u_3, u_4, u_2} D inst_1 C inst}\n  [inst_2 : @HomotopicalAlgebra.ModelCategory.{u_3, u_2} C inst]\n  (I J : @CategoryTheory.MorphismProperty.{u_3, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_3, u_2} C inst))\n  [inst_3 : @SerrePositivity.ModelGeneration.CofibrantlyGenerated.{u_1, u_2, u_3} C inst inst_2 I J]\n  [inst_4 : @CategoryTheory.Limits.HasFiniteLimits.{u_5, u_4} D inst_1]\n  [inst_5 : @CategoryTheory.Limits.HasFiniteColimits.{u_5, u_4} D inst_1]\n  [inst_6 :\n    @CategoryTheory.MorphismProperty.HasSmallObjectArgument.{u_1, u_5, u_4} D inst_1\n      (@CategoryTheory.MorphismProperty.strictMap.{u_3, u_2, u_5, u_4} C inst D inst_1 I L)]\n  [inst_7 :\n    @CategoryTheory.MorphismProperty.HasSmallObjectArgument.{u_1, u_5, u_4} D inst_1\n      (@CategoryTheory.MorphismProperty.strictMap.{u_3, u_2, u_5, u_4} C inst D inst_1 J L)]\n  (adj : @CategoryTheory.Adjunction.{u_3, u_5, u_2, u_4} C inst D inst_1 L R)\n  (hacyclic :\n    @LE.le.{max u_4 u_5}\n      (@CategoryTheory.MorphismProperty.{u_5, u_4} D (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n      (@Preorder.toLE.{max u_4 u_5}\n        (@CategoryTheory.MorphismProperty.{u_5, u_4} D (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n        (@PartialOrder.toPreorder.{max u_4 u_5}\n          (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n            (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n          (@ChainCompletePartialOrder.toPartialOrder.{max u_4 u_5}\n            (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n              (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n            (@ChainCompletePartialOrder.instOfCompleteLattice.{max u_4 u_5}\n              (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n                (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n              (@CompleteBooleanAlgebra.toCompleteLattice.{max u_4 u_5}\n                (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n                  (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n                (@CategoryTheory.MorphismProperty.instCompleteBooleanAlgebra.{u_5, u_4} D\n                  (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1)))))))\n      (@CategoryTheory.MorphismProperty.transfiniteCompositions.{u_1, u_5, u_4} D inst_1\n        (@CategoryTheory.MorphismProperty.pushouts.{u_5, u_4} D inst_1\n          (@CategoryTheory.MorphismProperty.coproducts.{u_1, u_5, u_4} D inst_1\n            (@CategoryTheory.MorphismProperty.strictMap.{u_3, u_2, u_5, u_4} C inst D inst_1 J L))))\n      (@CategoryTheory.MorphismProperty.inverseImage.{u_5, u_4, u_3, u_2} D inst_1 C inst\n        (@HomotopicalAlgebra.weakEquivalences.{u_3, u_2} C inst\n          (@HomotopicalAlgebra.ModelCategory.categoryWithWeakEquivalences.{u_3, u_2} C inst inst_2))\n        R)),\n  @Eq.{max (u_4 + 1) (u_5 + 1)}\n    (@CategoryTheory.MorphismProperty.{u_5, u_4} D (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n    (@HomotopicalAlgebra.weakEquivalences.{u_5, u_4} D inst_1\n      (@HomotopicalAlgebra.ModelCategory.categoryWithWeakEquivalences.{u_5, u_4} D inst_1\n        (@SerrePositivity.ModelGeneration.rightTransfer.{u_1, u_2, u_3, u_4, u_5} C inst D inst_1 L R inst_2 I J inst_3\n          inst_4 inst_5 inst_6 inst_7 adj hacyclic)))\n    (@CategoryTheory.MorphismProperty.inverseImage.{u_5, u_4, u_3, u_2} D inst_1 C inst\n      (@HomotopicalAlgebra.weakEquivalences.{u_3, u_2} C inst\n        (@HomotopicalAlgebra.ModelCategory.categoryWithWeakEquivalences.{u_3, u_2} C inst inst_2))\n      R)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.ModelGeneration.rightTransfer_fibrations": {
+      "name": "SerrePositivity.ModelGeneration.rightTransfer_fibrations",
+      "module": "SerrePositivity.HomotopicalAlgebra.Transfer.Right",
+      "path": "SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean",
+      "line": 94,
+      "source_sha256": "1992a4e61c70a6e862b4421e801a4864ef6bd7bb4dcc0b30c41603285b6e8def",
+      "type": "@SerrePositivity.ModelGeneration.rightTransfer_fibrations.{u_1, u_2, u_3, u_4,\n    u_5} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_3, u_2} C] {D : Type u_4}\n  [inst_1 : CategoryTheory.Category.{u_5, u_4} D] {L : @CategoryTheory.Functor.{u_3, u_5, u_2, u_4} C inst D inst_1}\n  {R : @CategoryTheory.Functor.{u_5, u_3, u_4, u_2} D inst_1 C inst}\n  [inst_2 : @HomotopicalAlgebra.ModelCategory.{u_3, u_2} C inst]\n  (I J : @CategoryTheory.MorphismProperty.{u_3, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_3, u_2} C inst))\n  [inst_3 : @SerrePositivity.ModelGeneration.CofibrantlyGenerated.{u_1, u_2, u_3} C inst inst_2 I J]\n  [inst_4 : @CategoryTheory.Limits.HasFiniteLimits.{u_5, u_4} D inst_1]\n  [inst_5 : @CategoryTheory.Limits.HasFiniteColimits.{u_5, u_4} D inst_1]\n  [inst_6 :\n    @CategoryTheory.MorphismProperty.HasSmallObjectArgument.{u_1, u_5, u_4} D inst_1\n      (@CategoryTheory.MorphismProperty.strictMap.{u_3, u_2, u_5, u_4} C inst D inst_1 I L)]\n  [inst_7 :\n    @CategoryTheory.MorphismProperty.HasSmallObjectArgument.{u_1, u_5, u_4} D inst_1\n      (@CategoryTheory.MorphismProperty.strictMap.{u_3, u_2, u_5, u_4} C inst D inst_1 J L)]\n  (adj : @CategoryTheory.Adjunction.{u_3, u_5, u_2, u_4} C inst D inst_1 L R)\n  (hacyclic :\n    @LE.le.{max u_4 u_5}\n      (@CategoryTheory.MorphismProperty.{u_5, u_4} D (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n      (@Preorder.toLE.{max u_4 u_5}\n        (@CategoryTheory.MorphismProperty.{u_5, u_4} D (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n        (@PartialOrder.toPreorder.{max u_4 u_5}\n          (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n            (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n          (@ChainCompletePartialOrder.toPartialOrder.{max u_4 u_5}\n            (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n              (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n            (@ChainCompletePartialOrder.instOfCompleteLattice.{max u_4 u_5}\n              (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n                (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n              (@CompleteBooleanAlgebra.toCompleteLattice.{max u_4 u_5}\n                (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n                  (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n                (@CategoryTheory.MorphismProperty.instCompleteBooleanAlgebra.{u_5, u_4} D\n                  (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1)))))))\n      (@CategoryTheory.MorphismProperty.transfiniteCompositions.{u_1, u_5, u_4} D inst_1\n        (@CategoryTheory.MorphismProperty.pushouts.{u_5, u_4} D inst_1\n          (@CategoryTheory.MorphismProperty.coproducts.{u_1, u_5, u_4} D inst_1\n            (@CategoryTheory.MorphismProperty.strictMap.{u_3, u_2, u_5, u_4} C inst D inst_1 J L))))\n      (@CategoryTheory.MorphismProperty.inverseImage.{u_5, u_4, u_3, u_2} D inst_1 C inst\n        (@HomotopicalAlgebra.weakEquivalences.{u_3, u_2} C inst\n          (@HomotopicalAlgebra.ModelCategory.categoryWithWeakEquivalences.{u_3, u_2} C inst inst_2))\n        R)),\n  @Eq.{max (u_4 + 1) (u_5 + 1)}\n    (@CategoryTheory.MorphismProperty.{u_5, u_4} D (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n    (@HomotopicalAlgebra.fibrations.{u_5, u_4} D inst_1\n      (@HomotopicalAlgebra.ModelCategory.categoryWithFibrations.{u_5, u_4} D inst_1\n        (@SerrePositivity.ModelGeneration.rightTransfer.{u_1, u_2, u_3, u_4, u_5} C inst D inst_1 L R inst_2 I J inst_3\n          inst_4 inst_5 inst_6 inst_7 adj hacyclic)))\n    (@CategoryTheory.MorphismProperty.inverseImage.{u_5, u_4, u_3, u_2} D inst_1 C inst\n      (@HomotopicalAlgebra.fibrations.{u_3, u_2} C inst\n        (@HomotopicalAlgebra.ModelCategory.categoryWithFibrations.{u_3, u_2} C inst inst_2))\n      R)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.ModelGeneration.rightTransfer_isRightQuillen": {
+      "name": "SerrePositivity.ModelGeneration.rightTransfer_isRightQuillen",
+      "module": "SerrePositivity.HomotopicalAlgebra.Transfer.Right",
+      "path": "SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean",
+      "line": 111,
+      "source_sha256": "1992a4e61c70a6e862b4421e801a4864ef6bd7bb4dcc0b30c41603285b6e8def",
+      "type": "@SerrePositivity.ModelGeneration.rightTransfer_isRightQuillen.{u_1, u_2, u_3, u_4,\n    u_5} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_3, u_2} C] {D : Type u_4}\n  [inst_1 : CategoryTheory.Category.{u_5, u_4} D] {L : @CategoryTheory.Functor.{u_3, u_5, u_2, u_4} C inst D inst_1}\n  {R : @CategoryTheory.Functor.{u_5, u_3, u_4, u_2} D inst_1 C inst}\n  [inst_2 : @HomotopicalAlgebra.ModelCategory.{u_3, u_2} C inst]\n  (I J : @CategoryTheory.MorphismProperty.{u_3, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_3, u_2} C inst))\n  [inst_3 : @SerrePositivity.ModelGeneration.CofibrantlyGenerated.{u_1, u_2, u_3} C inst inst_2 I J]\n  [inst_4 : @CategoryTheory.Limits.HasFiniteLimits.{u_5, u_4} D inst_1]\n  [inst_5 : @CategoryTheory.Limits.HasFiniteColimits.{u_5, u_4} D inst_1]\n  [inst_6 :\n    @CategoryTheory.MorphismProperty.HasSmallObjectArgument.{u_1, u_5, u_4} D inst_1\n      (@CategoryTheory.MorphismProperty.strictMap.{u_3, u_2, u_5, u_4} C inst D inst_1 I L)]\n  [inst_7 :\n    @CategoryTheory.MorphismProperty.HasSmallObjectArgument.{u_1, u_5, u_4} D inst_1\n      (@CategoryTheory.MorphismProperty.strictMap.{u_3, u_2, u_5, u_4} C inst D inst_1 J L)]\n  (adj : @CategoryTheory.Adjunction.{u_3, u_5, u_2, u_4} C inst D inst_1 L R)\n  (hacyclic :\n    @LE.le.{max u_4 u_5}\n      (@CategoryTheory.MorphismProperty.{u_5, u_4} D (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n      (@Preorder.toLE.{max u_4 u_5}\n        (@CategoryTheory.MorphismProperty.{u_5, u_4} D (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n        (@PartialOrder.toPreorder.{max u_4 u_5}\n          (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n            (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n          (@ChainCompletePartialOrder.toPartialOrder.{max u_4 u_5}\n            (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n              (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n            (@ChainCompletePartialOrder.instOfCompleteLattice.{max u_4 u_5}\n              (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n                (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n              (@CompleteBooleanAlgebra.toCompleteLattice.{max u_4 u_5}\n                (@CategoryTheory.MorphismProperty.{u_5, u_4} D\n                  (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1))\n                (@CategoryTheory.MorphismProperty.instCompleteBooleanAlgebra.{u_5, u_4} D\n                  (@CategoryTheory.Category.toCategoryStruct.{u_5, u_4} D inst_1)))))))\n      (@CategoryTheory.MorphismProperty.transfiniteCompositions.{u_1, u_5, u_4} D inst_1\n        (@CategoryTheory.MorphismProperty.pushouts.{u_5, u_4} D inst_1\n          (@CategoryTheory.MorphismProperty.coproducts.{u_1, u_5, u_4} D inst_1\n            (@CategoryTheory.MorphismProperty.strictMap.{u_3, u_2, u_5, u_4} C inst D inst_1 J L))))\n      (@CategoryTheory.MorphismProperty.inverseImage.{u_5, u_4, u_3, u_2} D inst_1 C inst\n        (@HomotopicalAlgebra.weakEquivalences.{u_3, u_2} C inst\n          (@HomotopicalAlgebra.ModelCategory.categoryWithWeakEquivalences.{u_3, u_2} C inst inst_2))\n        R)),\n  have this :=\n    @SerrePositivity.ModelGeneration.rightTransfer.{u_1, u_2, u_3, u_4, u_5} C inst D inst_1 L R inst_2 I J inst_3\n      inst_4 inst_5 inst_6 inst_7 adj hacyclic;\n  @SerrePositivity.Quillen.IsRightQuillen.{u_2, u_3, u_4, u_5} C inst D inst_1\n    (@HomotopicalAlgebra.ModelCategory.categoryWithFibrations.{u_3, u_2} C inst inst_2)\n    (@HomotopicalAlgebra.ModelCategory.categoryWithWeakEquivalences.{u_3, u_2} C inst inst_2)\n    (@HomotopicalAlgebra.ModelCategory.categoryWithFibrations.{u_5, u_4} D inst_1 this)\n    (@HomotopicalAlgebra.ModelCategory.categoryWithWeakEquivalences.{u_5, u_4} D inst_1 this) R",
       "axioms": [
         "propext",
         "Classical.choice",

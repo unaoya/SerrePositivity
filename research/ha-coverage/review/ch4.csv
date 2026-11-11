@@ -216,6 +216,50 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.2.4.8,partial,SerrePositivity.MonoidalFreeModule.freeFunctor @ SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean:112 | SerrePositivity.MonoidalFreeModule.freeForgetAdjunction @ SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean:123,仮定：通常のモノイダル圏の内部モノイド A（Lean は通常圏の自己作用に限る）。結論：内部加群の忘却の左随伴があり、その基礎対象は A⊗M₀ となる（この場合に一致）。一般の左テンソル ∞ 圏は含まれない。,,found,special
 4.2.4.9,partial,ModuleCat.restrictScalars_isEquivalence_of_ringEquiv @ Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean:305,仮定：通常の環同型 R≃A（Lean は HA の通常圏で単位の環写像が同型となる場合に限る）。結論：スカラー制限が圏同値になる（この場合の固定代数の加群の忘却に一致）。一般の左テンソル ∞ 圏は含まれない。,,found,special
 4.2.4.10,none,,通常のテンソル代数の自由性とスカラー拡大を確認した。生成射から定まる二つの自由加群射の余等化子が増大を通じた単位加群になる宣言は見つからなかった。,,not_found,
+4.3.1.1,none,,一色 dg operad と通常の内部両側加群を確認した。左右の代数色と一つの加群色を持ち、加群位置の前後で色を指定する三色 operad BM は見つからなかった。,,not_found,
+4.3.1.2,none,,通常の内部両側加群と左・右作用を確認した。BM の二つの二色部分 operad を LM と RM に同定する宣言は見つからなかった。,,not_found,
+4.3.1.3,partial,Bimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:79,仮定：通常のモノイダル圏と二つの内部モノイド（HA の通常の対称モノイダル圏を含む）。結論：左・右の作用とその結合・単位・交換の公理を備えた両側加群を与える（通常の両側加群の構造に一致）。BM からの colored operad 写像との同値は含まれない。,,found,component
+4.3.1.4,partial,Bimod.regular @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:169,仮定：通常のモノイダル圏の内部モノイド A（HA の対称モノイダル圏を含む）。結論：A を元の乗法で左・右から作用させる正則両側加群を構成する（BM→Assoc に沿う自己両側加群の成分に一致）。その operad の写像は含まれない。,,found,component
+4.3.1.5,none,,有限順序集合の整列と operad のブロック置換を確認した。基点付き有限集合に二つの色写像を与え、各順序付きファイバーで色の端を一致させる圏 BM⊗ は見つからなかった。,,not_found,
+4.3.1.6,none,,通常圏の神経と一色 dg operad を確認した。BM⊗ の神経が Fin∗ 上で ∞ operad となる構成は見つからなかった。,,not_found,
+4.3.1.7,none,,通常の離散圏の神経と一般の頂点ファイバーを確認した。BM の一色部分を左右代数と加群の三頂点の離散単体集合と同定する型は見つからなかった。,,not_found,
+4.3.1.8,none,,categorical fibration の持ち上げ判定を確認した。色を忘れて BM⊗ を Assoc⊗ へ送る写像が operadic fibration になる型は見つからなかった。,,not_found,
+4.3.1.9,none,,頂点条件で定めた充満部分複体を確認した。BM⊗ で左右どちらかの代数色を除いた充満部分を LM⊗ または RM⊗ と同定する宣言は見つからなかった。,,not_found,
+4.3.1.10,none,,頂点条件の充満部分複体と一色 dg operad を確認した。二つの色写像が一致する部分を二つの Assoc の operadic 結合とする型は見つからなかった。,,not_found,
+4.3.1.11,none,,準圏の底変換と頂点ファイバーを確認した。BM⊗ から三つの色を取り出して加群色に左右の weak enrichment を与える構成は見つからなかった。,,not_found,
+4.3.1.12,partial,Bimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:79,"仮定：通常のモノイダル圏 C の内部モノイド A、B（Lean は HA の通常の自己作用の場合に限る）。結論：固定した二つのモノイドの両側加群とその準同型の圏を与える（固定 A,B のファイバーの通常圏の場合に一致）。両側の代数が可変な射影の categorical fibration 性は含まれない。",,found,special
+4.3.1.13,none,,通常の両側加群の型が左右のモノイドに依存することを確認した。加群の基礎準圏を固定したまま BM 上の射影の違いを追う比較は見つからなかった。,,not_found,
+4.3.1.14,partial,CategoryTheory.Mon @ Mathlib/CategoryTheory/Monoidal/Mon.lean:251 | Bimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:79,"仮定：通常のモノイダル圏 C（Lean は通常の自己作用の場合に限る）。結論：二つの内部モノイド A,B と A-B 両側加群 M のデータを与える型がある（対象の三つ組に一致）。三つ組を BM section の準圏として束ねる型は含まれない。",,found,special
+4.3.1.15,none,,通常のモノイダル圏の内部両側加群と余デカルト写像の底変換を確認した。BM⊗→Assoc⊗ の引き戻しで左右の代数色と加群色がすべて同じ C になる operadic 比較は見つからなかった。,,not_found,
+4.3.1.16,partial,Bimod.regular @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:169,仮定：通常のモノイダル圏の内部モノイド A（Lean は HA の通常圏の場合に限る）。結論：固定 A の正則 A-A 両側加群を与える（写像 s の対象への作用に一致）。A が可変な準圏の写像 s は含まれない。,,found,special
+4.3.1.17,none,,通常の左作用・右作用と一般の余デカルト写像の定義を確認した。BM⊗ 上の operadic fibration を使う bitensored ∞ 圏の型は見つからなかった。,,not_found,
+4.3.1.18,partial,SerrePositivity.InfinityCategories.cocartesianFibration_pullback_snd @ SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean:92,仮定：余デカルトファイブレーションとその底変換（Lean では BM⊗ への各包含を明示する）。結論：制限した射影が余デカルトになる（左右のテンソル構造を作る射影の成分に一致）。二つの作用が可換となる整合性は含まれない。,,found,component
+4.3.1.19,partial,Bimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:79,仮定：通常のモノイダル圏の二つの内部モノイド（Lean は HA の通常の自己作用の場合に限る）。結論：左・右の作用がそれぞれ結合的で、両作用が互いに可換という三つの図式を持つ（通常圏の場合の hM における図式に一致）。一般の bitensored ∞ 圏と BM section からの構成は含まれない。,,found,special
+4.3.2.1,none,,通常の両側加群と有限集合の積・部分集合を確認した。LM×RM の二つの色集合から所定の和集合を作り、両順序を共有する加群の位置で接ぐ Pr は見つからなかった。,,not_found,
+4.3.2.2,none,,相対関手空間のカリー化と指定辺の保存を確認した。Pr 上の LM×K からの写像を表現し、RM の頂点ごとに inert 保存で絞る相対 LMod⊗ は見つからなかった。,,not_found,
+4.3.2.3,none,,通常の内部両側加群の型とマーク付き相対関手を確認した。LMod⊗ の BM 上の operadic fibration への依存を扱う構成は見つからなかった。,,not_found,
+4.3.2.4,none,,相対関手の引き戻し同型を確認した。Pr を RM の m に評価すると LM の包含になり、LMod⊗ のそのファイバーが LMod と同定される宣言は見つからなかった。,,not_found,
+4.3.2.5,none,,一般の余デカルト写像とマークを保つ相対関手の準圏を確認した。RM 上の LMod⊗ が operadic fibration となり、inert・余デカルト辺を LM の色ごとに判定する型は見つからなかった。,,not_found,
+4.3.2.6,none,,相対関手の一点での評価と右 Kan 延長制限の自明 Kan 性を確認した。RM の代数色で評価する LMod⊗→C₊⊗ が operadic な自明 Kan となる型は見つからなかった。,,not_found,
+4.3.2.7,none,,通常圏の両側加群と相対関手のカリー化を確認した。Pr に沿う前合成が BM 加群と左加群の中の右加群の準圏の同値となる型は見つからなかった。,,not_found,
+4.3.2.8,none,,通常の内部左加群と単位モノイドの作用、および通常の両側加群を確認した。右代数の単位が同値なら右作用を忘れる両側加群準圏の写像が同値となる宣言は見つからなかった。,,not_found,
+4.3.3.1,none,,通常の両側加群と一般の相対極限を確認した。左右の代数が動く BMod の射影に対し、基礎の極限から相対極限を延長し検出する型は見つからなかった。,,not_found,
+4.3.3.2,none,,dg 両側加群の左右制限と一般の Cartesian ファイブレーションを確認した。可変代数への BMod の射影が Cartesian であり、その辺を台の同値で特徴付ける型は見つからなかった。,,not_found,
+4.3.3.3,none,,通常の片側内部加群の極限と dg 両側加群の左右制限を確認した。固定 A-B 両側加群の極限が存在し、基礎で検出され、両側制限で保存される型は見つからなかった。,,not_found,
+4.3.3.4,none,,通常のテンソルと指定辺を保つ相対関手を確認した。RM から加群位置だけを取り出す τ、Assoc との smash、およびそれで引き戻す相対 Alg⊗ は見つからなかった。,,not_found,
+4.3.3.5,none,,相対関手の一点評価と頂点ファイバーを確認した。相対 Alg⊗ の代数色の自明 Kan 性と、m の評価による右加群から Alg への同値は見つからなかった。,,not_found,
+4.3.3.6,none,,一般の相対関手の引き戻しと通常の固定モノイドの加群を確認した。A と τ から RM 上の切断 A′ を作り、LMod⊗ をその切断で引き戻す構成は見つからなかった。,,not_found,
+4.3.3.7,none,,通常の右作用と余デカルト写像の底変換を確認した。固定 A の左加群の右 weak enrichment と、右加群準圏が A 上のホモトピーファイバーとなる比較は見つからなかった。,,not_found,
+4.3.3.8,none,,通常の両側加群と相対関手のファイバーを確認した。A-B 両側加群と固定 A の左加群圏の右 B-加群を同定する型は見つからなかった。,,not_found,
+4.3.3.9,none,,片側内部加群の余極限を持ち上げる型を確認した。左右の作用に対して両側加群の余極限を持ち上げ、台で検出する型は見つからなかった。,,not_found,
+4.3.3.10,none,,片側内部加群の局所可呈示性と dg 両側加群の左右制限を確認した。両側加群の presentable 性、両側制限の両極限保存、または可変 BMod の presentable fibration 性を与える型は見つからなかった。,,not_found,
+4.3.3.11,none,,片側自由内部加群の生成射と作用の恒等式を確認した。左右のテンソルと両作用から誘導する射の同値で自由両側加群を定める型は見つからなかった。,,not_found,
+4.3.3.12,none,,片側自由加群の Hom 全単射と dg 両側加群の半自由分解を確認した。生成対象から自由 A-B 両側加群を構成し、指定生成射で Hom を同定する型は見つからなかった。,,not_found,
+4.3.3.13,none,,内部片側加群の自由忘却随伴を確認した。固定 A-B の両側加群の忘却への左随伴は見つからなかった。,,not_found,
+4.3.3.14,none,,片側自由加群の随伴と固定した内部両側加群を確認した。二つの代数と生成対象が可変な自由両側加群の左随伴は見つからなかった。,,not_found,
+4.3.3.15,partial,SerrePositivity.ModelGeneration.rightTransfer @ SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:61 | SerrePositivity.ModelGeneration.rightTransfer_weakEquivalences @ SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:89 | SerrePositivity.ModelGeneration.rightTransfer_fibrations @ SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:94 | SerrePositivity.ModelGeneration.rightTransfer_isRightQuillen @ SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:111,仮定：生成されたモデル圏、対象圏への随伴、有限極限・余極限、移送後の small-object 条件と acyclicity（Lean は両側加群の忘却にこれらの入力を要求する）。結論：右随伴で弱同値とファイブレーションを検出するモデル構造を与え、忘却を右 Quillen にする（この成分に一致）。両側加群の具体的 instance、左 Quillen 性と単体両立性は型に含まれない。,,found,stronger-hyp
+4.3.3.16,partial,SerrePositivity.ModelGeneration.rightTransfer @ SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:61 | SerrePositivity.ModelGeneration.rightTransfer_weakEquivalences @ SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:89 | SerrePositivity.ModelGeneration.rightTransfer_fibrations @ SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:94,仮定：生成されたモデル圏、随伴、対象圏の有限極限・余極限、移送後の small-object 条件と acyclicity（Lean はモナドの自由忘却随伴にこれらの入力を要求する）。結論：右随伴で弱同値とファイブレーションを検出するモデル構造を与える（条件付きで一致）。左 Quillen モナドから移送条件を満たす宣言は含まれない。,,found,stronger-hyp
+4.3.3.17,none,,モデル構造の右移送と dg 両側加群の局所化における細胞模型を確認した。余ファイブラント両側加群の局所化と、局所化したモノイダル ∞ 圏の両側加群準圏の rectification は見つからなかった。,,not_found,
 4.5.4.1,partial,CategoryTheory.MonoidalCategory.Arrow.pushoutProduct @ Mathlib/CategoryTheory/Monoidal/PushoutProduct.lean:71 | CategoryTheory.MonoidalCategory.Arrow.PushoutProduct.symmetricCategory @ Mathlib/CategoryTheory/Monoidal/Arrow.lean:158,仮定：押し出しを持つモノイダル圏（Lean は二項構成に対称性も全余極限も要求しない。矢印圏の対称構造は始対象を持つ Cartesian 閉の場合）。結論：HA の二項押し出し積と、特殊な場合の矢印圏の対称構造に一致。Σₙ 同変反復と余不変量の写像 σⁿ は型に含まれない。,,found,component
 4.5.4.2,partial,SerrePositivity.Quillen.HasMonoidAxiom @ SerrePositivity/HomotopicalAlgebra/Monoidal/MonoidAxiom.lean:66 | SerrePositivity.Quillen.tensorCells_retracts_le_weakEquivalences @ SerrePositivity/HomotopicalAlgebra/Monoidal/MonoidAxiom.lean:85,仮定：モノイダル圏とモデル構造（Lean は組合せ性と対称性を要求しない）。結論：指定宇宙のテンソル生成セルとそのレトラクトの弱同値性（F1 のモノイド公理の範囲に一致）。F2 の組と Σₙ 射影モデルでの F3 は型に含まれない。,,found,component
 4.5.4.3,partial,SerrePositivity.Quillen.pushoutProduct_cofibration @ SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean:74,仮定：モデル圏のテンソルが Quillen 二関手で、f が余ファイブレーション（HA の仮定の下で f を両入力とする）。結論：f□f が底で余ファイブレーション（n=2 で作用を忘れた主張に一致）。全ての n、自明性および Σₙ 射影余ファイブレーション性はこの型に含まれない。,,found,special
