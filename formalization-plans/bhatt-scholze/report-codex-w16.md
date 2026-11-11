@@ -1341,3 +1341,47 @@ c の厳密な式自体は `barrattEcclesCoproductTensorNat` と `coprod.inl_des
 二本の **50 宣言**の再帰監査も成功し、標準三公理のみ（`/tmp/bsw16/graded/audit-native-coproduct.log`）。本体の追加に sorry・admit・新規公理・デバッグ宣言・満たせない `[ModelCategory SSet]` の仮定はない。未検査の Lean ソースは残していない。
 
 今回の登録候補は §23.2 の二本だけ。前回の §22 の五本とは別で、合わせて未取り込みは七本。調整役の指示どおり、KL-W1 の取り込みと改名表への追従の後に取り込む。旧名を先取りして改名していない。他レーンのファイルとの重複は零。鍵は一回のビルド・監査ごとに `--wait 3600` で取得し、終了時に返却した。
+
+
+## 24. 11-12：b 完了 — 指定余積関手の native な余極限錐
+
+### 24.1 結論と規模
+
+§23 の後の指示（b を約 900 行、超過 3 割以内は報告して続行）に従って再開した。**`barrattEcclesCoprodWith_cocone` を、本体で無条件に構成した。** 型は界面の欄と同じく、各 x・y について `JoinCocone (binaryPointDiagram x y)`、その頂点が既存の `barrattEcclesCoprodWith A y` の x での値に等しいこと、そして `IsColimitCone` の組である。余極限性を引数に取る組み立てではない。
+
+b の最終差分は **九本・1,022 行**。§23 の実測のうち `NativeCoproductCocone` の 113 行も含む。900 行からの超過は 122 行（約 13.6%）で、今回承認された 3 割の範囲内で完了した。a・セル対・bar の実現・sifted 保存・Tot は進めていない。昼の §12 の判断（経路 B、a の残りと厳密 bar は共通部分の後、二脚の条件を界面に追加）も確認した。
+
+### 24.2 実装の内訳と前の見積もりとの差
+
+| モジュール（全て `SerrePositivity.EInfinity.BarrattEccles.Theory` の下） | 実測 | 内容 |
+| --- | --- | --- |
+| `NativeCoproductCocone` | 113 | §23 で作った指定包含・辺・頂点。DK 比較には同じ `cofibrantAlgebraDKCoprodInl/Inr` を使う |
+| `CoproductFrames` | 121 | 二つの余単体的分解の余積は Reedy cofibrant。余積の指定分解への比較が各次数で弱同値。二包含を厳密に保つ |
+| `CoproductFrameHom` | 94 | 余積 frame の全単体の Hom を、二包含の前合成による二項積へ厳密に分解 |
+| `AnodyneBinaryProducts` | 106 | 選ばれた圏論の積と単体集合のテンソル積を比較。anodyne 局所化の二項積保存、指定した組への射の自然性 |
+| `CoproductMappingSpace` | 141 | 始域 frame の比較と自然な終域置換を消去し、元の Map^h の二包含の積比較を局所化同型にする |
+| `CoproductDKHom` | 101 | ULift の積保存と `cAlgMappingSpaceComparisonIso_precompose` を使い、実際の Ex∞ Kan DK Hom の指定積比較を局所化同型にする |
+| `EnrichedPointPrecomposition` | 78 | 豊穣関手と点の前合成の自然性。実際の Kan Hom の前合成と、元の前合成の Ex∞ 像の局所化等式。反対圏の後合成との照合 |
+| `CoproductNativeUniversal` | 168 | 厳密二包含の普通の余錐に、離散図式の全 Hom の判定を適用して native な余極限性を証明 |
+| `NativeCoproduct` | 100 | 二点の形状同型で指定 `binaryPointDiagram` へ戻し、頂点を既存の関手の値に正規化。界面と同じ部分型を供給 |
+| **合計** | **1,022** | |
+
+§23 の残作業の表では、frame 120〜170 行、DK まで 80〜120 行、native な脚と全 Hom の照合 150〜220 行、界面の供給 40〜60 行と見込んでいた。実際には frame の Hom の積の構成と、単体集合のテンソル積・選ばれた圏論の積の区別、局所化自体の積保存、ULift と実際の点の前合成までの照合に追加が要った。これらを b の外に出して計上していない。
+
+一方、最後の native な余極限性は、既存の `strictCoherentCone_isLimit_of_discrete_representableComparison`、`strictNativeCocone_isColimit_iff`、`JoinCocone.reindexIso` を再利用できた。左 pinched Hom と二枝の coslice fiber の積分解から進む前の還元は不要となったため、**未取り込みで本体・他レーンから参照がない `BinaryCoconeSpace`（184 行）を最終差分から外した**。これは §23 の登録候補の取り消しでもある。ファイルが一度作られたことと、経路を変えて不要になったことをここに記録し、取り込み済みの実装を数から落とす操作はしていない。§23 のコミットには前の版が保存されている。
+
+### 24.3 指定射と全 Hom の照合
+
+`cAlgCoprodHomRestriction_isIso` は実際の Kan DK Hom から二つの Hom の積への**同じ二包含による射**についての結論である。対象ごとの任意の同値を取って自然性を推定していない。`kanStrictPrecompose_localized` は元の同じ `exInfinityUnit` と豊穣関手の合成則から、native な脚の実際の前合成とこの比較射を照合する。
+
+`cAlgBinaryCocone_isColimit` は二点の普通の余錐について、反対圏の離散図式の全 Hom の比較へ適用したもの。π₀ だけで普遍性を結論していない。`cAlgNativeCoprodCocone` はこの余極限錐を形状同型で戻した、実際に採用する余錐である。§23 の `cAlgCoprodCocone` 自体の余極限性を別途証明したという主張にはしていない。
+
+### 24.4 検証と登録候補
+
+最終対象ビルドは `/tmp/bsw16/graded/native-coproduct-06.log` で成功し、追加モジュールの Lean の警告は零。登録候補は §24.2 の九本。**`BinaryCoconeSpace` は登録しない。** §22 の五本は別に未取り込みのままなので、今回までで取り込み待ちの新規モジュールは合計十四本となる。
+
+九本の **116 宣言**の再帰監査は成功し、標準三公理のみ（`/tmp/bsw16/graded/audit-native-coproduct-complete.log`）。追加本体に sorry・admit・新規公理・デバッグ宣言・満たせない `[ModelCategory SSet]` の仮定はない。未検査の Lean ソースは残していない。
+
+［一般∞］の移動候補は `CoproductFrames`・`CoproductFrameHom`・`AnodyneBinaryProducts`・`EnrichedPointPrecomposition`。KL-W1 の前なので全て `EInfinity/` の下に置いた。ほかの五本は BE 固有の比較・錐の供給である。既存の公開宣言・drafts・共通入口・共有監査は変更していない。界面の新しい二脚の欄はこの b ではまだ足していない（次の c で型を整える）。他レーンのファイルとの重複は零。
+
+ビルドと監査は一回の実行ごとに `--wait 3600` で鍵を取り、終わったら返す形。KL-W1 の取り込みと改名表への追従までは main への取り込みを依頼しない。b の後は指示の順に c、新しい二脚の欄を含む組み立て関数へ進む。
