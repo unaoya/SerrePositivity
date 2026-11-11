@@ -5,6 +5,7 @@
 #       順位は（組の順位、待ち始めた時刻）。組は impl・research・bulk の三つで、
 #       昼（JST 8〜23 時）は impl → research → bulk、夜は bulk → impl → research。
 #       繰り上げ：待ちが impl・research 15 分、bulk 30 分を超えた整理券は先頭の組へ（飢えの防止）。
+#       ただし昼の bulk は繰り上げない（impl・research の整理券がないときだけ取る、11-11）。
 # 規約：--wait 0 は即時保留（終了 75）。既定無期限、再確認 2 秒。
 #       --class を省くと worktree 名から推定（kerodon-layout は bulk、*-review は research、他は impl）。
 #       --status は持ち主と待ちの列を表示して終了する。
@@ -127,6 +128,8 @@ def order_key(t,hour,now=None):
     now=time.time() if now is None else now
     c=t.get('class','impl'); enq=float(t.get('enqueued',0))
     promoted=now-enq>=AGING.get(c,900)
+    # By day bulk is never promoted: it takes the lock only when no impl/research ticket waits (11-11).
+    if c=='bulk' and 8<=hour<23: promoted=False
     return (0 if promoted else 1,0 if promoted else class_rank(c,hour),enq,str(t.get('token','')))
 
 def reap_lock():
