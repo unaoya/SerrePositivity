@@ -2502,6 +2502,12 @@ public import SerrePositivity.EInfinity.Interface.StrictInputs
 public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.EInfinity.BarrattEccles.Theory
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
+public import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorBicone
+public import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorBlocks
+public import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorColorAction
+public import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorColors
+public import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorNaturality
+public import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorWords
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.ArityProjectiveResolution
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.ArityRepresentationAugmentation
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.ArityRepresentationChain

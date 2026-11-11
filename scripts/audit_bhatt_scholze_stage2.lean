@@ -710,6 +710,12 @@ import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseProjectiveC
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalFiniteResidue
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientComparison
 import SerrePositivity.HomologicalAlgebra.KoszulRingEquiv
+import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorBicone
+import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorBlocks
+import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorColorAction
+import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorColors
+import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorNaturality
+import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorWords
 import Lean.Util.CollectAxioms
 
 /-!
@@ -722,6 +728,12 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorBicone,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorBlocks,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorColorAction,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorColors,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorNaturality,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorWords,
     `SerrePositivity.BhattScholze.Semiperfectoid.AinfClassical,
     `SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps,
     `SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFaithful,
