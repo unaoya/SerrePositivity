@@ -150,3 +150,14 @@
 ### D76 の反映（2026-11-11）
 
 - main `4c071e19c` を取り込み、A3 草稿の `exists_lciEnvelope` に `hR : BoundedPTorsion p (lciQuotient P f)` を追加した。docstring も R の有界性と普遍性の標的の条件を明記した。利用箇所は本体・草稿ともに 0 件。先の途中報告にあった無有界の存在の追加構成は、D76 により作業対象から外した。原典の有界な場合を進める。
+
+
+## 段 4・停止点 4（2026-11-11）
+
+- **完了**。本体 `1a3f6acdd`（先の 12 本）と `7cfeba165`（追加 16 本・1,967 行）。段 4 全体は新規 28 モジュール・公開 82 宣言。D76 の草稿変更は `c4ddb023b`。main `7a689544b` まで取り込み済み。
+- **Lemma 7.7・7.8**。`DiscreteDelta`・`DiscretePrism` の離散 δ 構造、`PrismRetract` の冪等分裂、`InitialOfRetraction` の始性を再検証した。
+- **Ex 7.9**。`LciEnvelopeExistence.lean` の `exists_bounded_lciRelationEnvelope` は、草稿と同じ負次数 Koszul ホモロジーの消滅と R = A/(d,f) の有界 p 冪ねじれから、有界な包絡を返す。自由変数包絡の d 剰余の p 完全平坦性、正則列の商の導来比較、`completedBaseChange_bounded_torsion_pure`、通常完備テンソル積の H⁰ 比較、因子交換、普遍性を接続した。普遍性は任意の有界 prism 上の対象に成立する。濃度上限からの site の始性は `LciEnvelopeInitial` で得る。
+- **再利用と型**。K1 の `isKoszulResolution_of_ringEquiv`、既存のモニック関係の Koszul 分解、普遍除算の Witt 正規化、主元完備化の完全忠実平坦性を再利用した。`IsFiniteLciRelationEnvelope` を新設し、`Fin r` の宇宙を台環と独立にした。条件は草稿の `IsLciEnvelope` と同じイデアル `(d,f)` の包絡。分類源には `ULift (Fin r)` を使う。
+- **G-A3-7 の古典的な切り出し**。`Koszul/Generators`・`LciEnvelopeConormal` で実際の写像錐模型の `D t̃_i = f_i - d z_i`、d 剰余の余法類、形式的な除算座標から余法加群への一次比較と全射性を示した。`LciEnvelopeInvertP`・`LciEnvelopeInvertPGenerators` は有理分冪の像、有限段の持ち上げ、連続な分裂と稠密性からの全射判定を与える。A3 の評価・フィルトレーションへの古典的な入力がそろった。
+- **検証**。整理券は一つ、`source ~/.zshenv` の後に `with_build_lock.sh --wait 3600 -- gtimeout --foreground 1700s …` で実行。最終対象ビルド成功。追加 49 宣言と先の 33 宣言を `#print axioms`・`#print sorries` で検査し、82 宣言すべて sorry 0・標準三公理のみを確認した。ログは `/tmp/serre-w15-k5/discrete.log`、`audit-new.log`、`audit-core-final.log`。
+- **依存と登録**。28 本の本体 import 閉包は 389 モジュール、∞ 圏・EInfinity・E3 依存 0。新規 BS ファイルの KST 直接 import 0、本体の既存宣言の変更 0。入口・監査への登録対象は段 4 の 28 本。停止点 4 として調整役へ引き渡す。
