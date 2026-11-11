@@ -257,3 +257,17 @@ main は `0ec3d99b0` まで取り込み済み（停止点3の登録 `f3ff89155` 
 検証：22 新規モジュール、1,803行、87個の名前付き公開宣言。有限 T の包絡まで `lake build ...RootRelationEnvelope`（4,705 jobs）と添字変更の個別ビルドが成功。全22本を import した `#check`・`#print axioms`・`#print sorries` は87件すべて成功、sorryなし・標準三公理のみ。ログ：`/tmp/serre-w17/h5/finite/build-28.log`、`audit-1.log`。入口・全体監査への登録は行っていない。
 
 次は、普遍除算の実 mod (p,d) の忠実平坦性を、関係商への底変換と実完備化へ移す。途中の一般完備テンソル H⁰ 比較は `HomologicalAlgebra/DerivedCompletion/` の新規ファイルに置く。現在の合計規模は上限内で、S′ の生の余極限と完備余極限の比較はまだ実装していない。
+
+## 13. H5 有限 T の途中：指定した単位の完全忠実平坦性
+
+§12 の途中コミットは `bf03c92b1`。**まだ停止点4ではない**。
+
+- `exists_bounded_lciRelationEnvelope_faithful` は K5 の存在を強め、同じ関係イデアルの有界な実包絡と、その標準剰余単位による **関係商上の p 完全忠実平坦性**を返す。関係商の有界性は D76 の形のまま使う。
+- `exists_perfectoidRelationEnvelope_faithful`・`exists_rootRelationEnvelope_faithful` により、有限 T の標準単位の忠実平坦性と、全有界試験 prism への始性を同時に得た。元の係数射を保つ単位の式を結論に含めた。
+- 忠実性は `exists_deltaDivision_freeVariable_residue_faithfullyFlat` の実 mod (p,d) を再利用し、自由変数包絡の p 完備化、関係商への完備底変換へ移した。一般 qrsp の Fil₀ の分裂は仮定していない。
+- `CompletedBaseChangePrincipalH0`・`PrincipalFiniteResidue`・`CompletedTensorFlat`・`CompletedTensorFaithful` は通常テンソル環の実 H⁰ 完備化を扱う。完全平坦性は既存の導来完全平坦性と G9 の離散性、有界な係数のねじれを使用。忠実性は元の代表元を保つ mod p の環同型から得る。
+- `TensorProduct/QuotientFactor`・`CompletedTensorRelationResidue`・`CompletedTensorRelationFaithful` は、そこで消える関係を基底・係数から除いたテンソルと包絡の生成元剰余との比較で、標準単位を保つ。既存の完備化の定義を変更していない。
+
+追加14モジュール・1,289行・17個の名前付き公開宣言。ビルド `...RootRelationEnvelopeFaithful`（4,719 jobs）成功。追加14本の `#check`・`#print axioms`・`#print sorries` は17件すべて成功、sorryなし・標準三公理のみ。ログ：`/tmp/serre-w17/h5/finite/build-45.log`、`audit-faithful.log`。§12 と合わせて36新規モジュール・3,092行・104宣言。入口と全体監査への登録は未実施。
+
+残りの有限 T：ULift 添字・その全初期関係の商・実 H⁰ 完備化までの具体比較と、固定した A_inf の θ・δ・剰余表示の照合。前者を編集中。S′ の実装はまだ始めていない。6,000行の上限は引き続き確認する。
