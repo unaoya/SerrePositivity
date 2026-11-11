@@ -608,3 +608,29 @@ SerrePositivity.HomologicalAlgebra.DerivedCompletion.TensorCompletionUnit
 ```
 
 段階IIの監査には上記26本を追加する。一時監査には非公開の補助宣言も含めた。P3 の紙の整理と朝に回す順序は、この報告の先の段0相当の節を引き継ぐ。
+
+
+## P3 続行（2026-11-11 夜、停止点2の取り込み後）
+
+- 調整役の指示に従い main `cba436208` へ fast-forward した。夜間二鍵のスクリプトを反映済み。Nakayama の `CompleteCochainReduction`・`CochainCompleteDetection` は変更していない。
+- 対象ビルド済みの新規10本は下記（BS 9本・共通1本）。`/private/tmp/d69-p3-build-4.log` と `/private/tmp/d69-p3-build-5.log` が成功。鍵は `--wait 3600`、一回30分未満で、ビルドの間だけ保持した。
+- 基本部品は big affine 結晶厚化の対象・射・圏、基底の下の台環関手、剰余環への誘導射、剰余代数に沿う引き戻しと厳密な関手則、分冪基底の制限を含む。有限主開局所化による Zariski 被覆族と生成位相を定義し、二つの制限関手が被覆族を保つことを示した。
+- `CrystallineTransport` は代数同型に沿う分冪厚化の移送と厚化の同型。`CrystallineSiteSmall` は κ の代表型の部分集合に構造を移して、濃度 ≤ κ の厚化の圏の本質的小ささを証明した。この本質的小ささだけなら cutoff の下限は不要。`CrystallineSmallSiteTopology` で、小さい模型のサイト・生成位相・構造環の前層・引き戻しの圏の関手を定めた。構造環の層性はまだ主張していない。
+- `CrystallinePDQuotient` は p^{e+2} による商を実際の結晶厚化にする。指数を2から取る理由を docstring に記録した。共通の `ProCechNerveData` は通常の圏での塔・pro 弱終性・各段の有限冪・二重添字関手と、圏同値による pro 弱終性の移送を与える。∞ の極限には触れない。
+- 一時監査は10モジュール・217宣言、標準三公理のみ（`/private/tmp/AuditD69P3Ten.lean`、`/private/tmp/d69-p3-audit-ten.log`）。新規ファイルのみ、sorry・独自公理0、既存宣言と公式の入口・監査への変更は0。
+- P3 の残り：分冪包の有限冪商の塔・余積・pro 弱終性、主開局所化の分冪構造と構造環の層性、サイトの引き戻しと位相・構造環との照合、多項式 Poincaré の複体比較を実際の塔に接続する。以下は途中記録で、停止点3ではない。
+
+登録候補（10本、未登録）：
+
+```text
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotient
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallSiteTopology
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteSmall
+SerrePositivity.BhattScholze.Prismatic.CrystallineTransport
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteBasic
+SerrePositivity.BhattScholze.Prismatic.CrystallineSitePullback
+SerrePositivity.BhattScholze.Prismatic.CrystallineResidue
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteZariski
+SerrePositivity.BhattScholze.Prismatic.CrystallineBaseRestriction
+SerrePositivity.CategoryTheory.ProCechNerveData
+```
