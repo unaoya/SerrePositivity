@@ -16,7 +16,7 @@ public import SerrePositivity.EInfinity.Hammock.DoubleSimplicialWeak
 noncomputable section
 universe u w
 namespace SerrePositivity.EInfinity.Hammock.FixedObjectDiagram
-open CategoryTheory SimplicialLocalization SerrePositivity.InfinityCategories DoubleSimplicial
+open CategoryTheory SerrePositivity.InfinityCategories DoubleSimplicial
 variable (D : SimplexCategoryᵒᵖ ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {O : Type w}
   (p : (i : SimplexCategoryᵒᵖ) → O → (D.obj i).category)
   (hp : ∀ {i j : SimplexCategoryᵒᵖ} (θ : i ⟶ j) (X : O),

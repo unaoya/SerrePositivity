@@ -19,7 +19,7 @@ lemma simplexData_ext_of_components {n : ℕ} (s t : _root_.SerrePositivity.Infi
   cases s with
   | mk so sh =>
     cases t with
-    | _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.mk tobj th =>
+    | mk tobj th =>
       dsimp only at ho' hh ⊢
       cases ho'
       have he : sh = th := by

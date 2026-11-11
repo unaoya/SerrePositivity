@@ -35,11 +35,11 @@ lemma freeWordDiagonalAugmentation_weak (C : _root_.SerrePositivity.InfinityCate
         have he := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.eq_empty_of_length_zero v hv
         subst v
         cases d with
-        | _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction.forward =>
+        | forward =>
           exact Eq.mpr (congrArg (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
             ((freeWordDiagonalAugmentation C X Y).app a)) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons_empty .forward))
               (freeWordDiagonalAugmentation_forward_weak C X Y)
-        | _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction.backward =>
+        | backward =>
           exact Eq.mpr (congrArg (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
             ((freeWordDiagonalAugmentation C X Y).app a)) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons_empty .backward))
               (freeWordDiagonalAugmentation_backward_weak C X Y)
@@ -47,20 +47,20 @@ lemma freeWordDiagonalAugmentation_weak (C : _root_.SerrePositivity.InfinityCate
         obtain ⟨e, t, ht⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.exists_cons_of_length_succ v n hv
         subst v
         cases d with
-        | _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction.forward =>
+        | forward =>
           cases e with
-          | _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction.forward =>
+          | forward =>
             exact freeWordDiagonalAugmentation_cons_forwardForward_weak C t X Y
               (fun Z => ih Z Y)
-          | _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction.backward =>
+          | backward =>
             exact freeWordDiagonalAugmentation_cons_forwardBackward_weak C t X Y
               (fun Z => ih Z Y)
-        | _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction.backward =>
+        | backward =>
           cases e with
-          | _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction.forward =>
+          | forward =>
             exact freeWordDiagonalAugmentation_cons_backwardForward_weak C t X Y
               (fun Z => ih Z Y)
-          | _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction.backward =>
+          | backward =>
             exact freeWordDiagonalAugmentation_cons_backwardBackward_weak C t X Y
               (fun Z => ih Z Y)
   exact h w X Y

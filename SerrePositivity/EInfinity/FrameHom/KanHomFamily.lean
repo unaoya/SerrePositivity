@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotop
 universe u v w
 namespace SerrePositivity.EInfinity.FrameHom
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
+open SerrePositivity.InfinityCategories
 variable {C : Type u} [Category.{v} C]
 
 /-- 概要：元の単体集合値の全図式を同じ Ex∞ の Kan 値図式にする。

@@ -17,7 +17,7 @@ public import SerrePositivity.EInfinity.Hammock.ReducedColimit
 universe u
 noncomputable section
 namespace SerrePositivity.EInfinity.SimplicialLocalization
-open CategoryTheory Hammock.DoubleSimplicial
+open CategoryTheory
 
 def freeHammockDiagonal (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) : SSet.{u} :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (freeHammockResolution C X Y)

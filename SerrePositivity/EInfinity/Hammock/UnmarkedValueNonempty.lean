@@ -27,12 +27,12 @@ variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
 lemma edge_column (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths w X Y) (i : Fin w.length) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.edge (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) S i = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W S i := by
   cases hi : w.direction i with
-  | _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction.forward =>
+  | forward =>
     rw [edge_forward W S i hi]
     change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.erase W (eqToHom _ ≫ S.arrow i ≫ eqToHom _) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.erase W (S.arrow i)
     exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.erase_transport W _ _ (S.arrow i)
-  | _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction.backward => rw [edge_backward W S i hi, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column_backward W S i hi]
+  | backward => rw [edge_backward W S i hi, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column_backward W S i hi]
 
 lemma path_adjacent_column (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths w X Y) (i : Fin w.length) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.path (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) S).map'

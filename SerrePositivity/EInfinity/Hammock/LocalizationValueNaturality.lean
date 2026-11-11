@@ -19,7 +19,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C D : Type u} [Category.{u} C] [Category.{u} D]
   {W : MorphismProperty C} [W.IsMultiplicative] {V : MorphismProperty D} [V.IsMultiplicative]

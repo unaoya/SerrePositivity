@@ -24,7 +24,7 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 
 open CategoryTheory MonoidalCategory
-open SerrePositivity.KST.Comparison
+
 
 /-- 概要：相対関手は Kan 化した局所化の豊穣関手を与える（Dwyer–Kan）。
 方針：同じ Ex∞ の関手則と tensorator の自然性を使う。

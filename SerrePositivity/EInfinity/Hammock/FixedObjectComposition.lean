@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u uI vI uO
 namespace SerrePositivity.EInfinity.Hammock.FixedObjectDiagram
-open CategoryTheory CategoryTheory.Limits SimplicialLocalization MonoidalCategory
+open CategoryTheory CategoryTheory.Limits MonoidalCategory
 variable {I : Type uI} [Category.{vI} I] (D : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
   {O : Type uO} (p : (i : I) → O → (D.obj i).category)
   (hp : ∀ {i j : I} (θ : i ⟶ j) (X : O), (D.map θ).functor.obj (p i X) = p j X)
