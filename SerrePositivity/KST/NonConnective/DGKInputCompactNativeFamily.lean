@@ -18,7 +18,7 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
-open F2 F2.Ind
+
 
 variable (R : Type u) [CommRing R] (A B : PerfDGInput.{u, v} R)
 

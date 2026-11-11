@@ -15,7 +15,7 @@ universe u v
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
-open F2 F2.Ind
+
 variable (R : Type u) [CommRing R] (A : PerfDGInput.{u, max (u + 1) v} R)
   {κ : Cardinal.{u}} (I : DGKappaConeInput R A κ) (P : DGKappaPerfectInput R A I)
 local notation "B" => dgKappaResolvedKernelKInput R A I

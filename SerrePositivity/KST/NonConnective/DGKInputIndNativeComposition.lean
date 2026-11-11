@@ -16,7 +16,7 @@ open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.NonConnective
-open F2 F2.Ind
+
 variable (R : Type u) [CommRing R] {A B C : PerfDGInput.{u, v} R}
 
 /-- 元の全 native 族の指定頂点の Ind 作用は、同じ固定 ν 射へ Yoneda 上で比較される。 -/

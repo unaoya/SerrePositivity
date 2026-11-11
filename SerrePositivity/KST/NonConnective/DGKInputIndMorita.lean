@@ -19,7 +19,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 open SerrePositivity.DifferentialGraded
 namespace SerrePositivity.KST.NonConnective
-open F2 F2.Ind
+
 variable (R : Type u) [CommRing R] (A B : PerfDGInput.{u, v} R)
 
 /-- 同じ全 native 族の dg 頂点は、元の固定 ν 射の指定 Ind 延長そのもの。 -/

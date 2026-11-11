@@ -15,7 +15,7 @@ universe u v
 open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
-open F2 F2.Ind
+
 variable (R : Type u) [CommRing R] (A B : PerfDGInput.{u, v} R)
 
 /-- 同じ全 native Ind 作用は、元の compact 包含と全関手同型で可換。 -/

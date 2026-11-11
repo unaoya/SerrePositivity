@@ -17,7 +17,7 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
-open F2 F2.Ind
+
 local instance indNativeRegular : Fact (Cardinal.aleph0.{w}).IsRegular :=
   Cardinal.fact_isRegular_aleph0
 variable (R : Type u) [CommRing R] (A B : PerfDGInput.{u, v} R)
