@@ -288,3 +288,36 @@
 - この追加8本は鍵付きの対象ビルドを通った。69本の一時監査は1,977宣言で標準三公理のみ。残りの Witt の二比較では、有限冪商から列の完備底変換を計算する部分と、K4 の比較を余単体構造に移して一般の結晶の橋を適用する部分を続ける。
 
 - `WittAffineBaseChange` で、標準の有限 affine 項を ψ に沿って完備テンソルした環を、Witt 係数の完備自由 δ 環に同定した。⑤c の `exists_completedFreeDelta_baseChange_equiv` をそのまま使い、左の係数脚と自由座標上の等式を残した。余単体射と橋への移送は続けて検査する。対象ビルドは成功し、70本の一時監査は1,996宣言で標準三公理のみ。
+
+
+## 段 2（P2）途中（11 月 11 日昼）
+
+- `main` の `7a689544b` を `5b9030cd3` で取り込んだ。共有鍵の待ちは以後 `--wait 3600` とし、この作業木から並べる整理券は一つにまとめる。昼の bulk を繰り上げない版のスクリプトを使っている。
+- `PDTermReductionLinear` と `PDTermCompletionEquivalence` で、実際の完備化単位が有限冪商で誘導する線形同型を示した。共通の `ScalarCokernelTensor` でスカラー作用の余核の同型を任意の加群とのテンソルに移す。`PDColumnCompletionEquivalence` でこれを列の各項に適用し、自由な未完備列の単位が導来 p 完備化後で擬同型になることを示した。
+- `PDRawColumnBaseChange` と `PDRawColumnBoundedModel` で、第 0 列の有界自由模型と通常の底変換同型を作った。`PDColumnCompletedBaseChange` で、両基底が p 正則であれば、完備第 0 列の導来 p 完備底変換を標的の完備第 0 列で計算できる。係数の環射の平坦性を追加する必要はない。自由模型からの実際の射は `pdColumnZeroBaseChangeFreeMap` で指定し、完備化単位との照合には共通の `completedBaseChangeModelIso_hom_comm` を使う。
+- `PDColumnCoefficientUnit` で、実際の半線形な係数変更と自由模型の完備化単位の可換性を示した。`PDDeRhamDerivedSpan` と `PDDeRhamCompletedBaseChange` で、総複体から出る二射影を使って第 0 列の底変換同型を総複体と第 0 行へ移した。Witt の指定された比較射への適用は続けて検査する。
+- `CompletedFreeDeltaScale`、`AffineEnvelopeBaseChange`、`AffineEnvelopeCoefficients`、`AffineEnvelopeBaseChangeCoefficients` で、K4 の項ごとの自由 δ 環の同型を affine 包の頂点座標を保つ形に直した。prism の生成元の像の単元倍を、差の分母座標の逆単元倍で補正する。右脚との合成は δ 射になり、包の一意性で指定された係数変更に一致する。この係数変更は余単体射と厳密に可換。
+
+### 検収と残り
+
+今回の追加15本は `with_build_lock.sh --wait 3600` を通した対象ビルドが成功した。追加を含む85本の一時監査は2,302宣言で標準三公理のみ。新規ソース中の `sorry` と独自公理は0で、既存宣言の変更もない。検査ログは `/private/tmp/d69-ticket-build-14.log` と `/private/tmp/d69-morning-audit-fiftytwo.log`、一時監査は `/private/tmp/AuditD69P2MorningFiftyTwo.lean`。Witt の二比較の擬同型の最終宣言は引き続き残る。第 0 列の計算と二射影の自然性を第 0 Witt 成分による係数変更へ適用し、もう一方では affine 底変換の比較と一般の結晶の橋を合わせる。
+
+今回の登録候補は次のとおり。共通の一本を除き `SerrePositivity.BhattScholze.Prismatic` の下に置いた。
+
+- `PDTermReductionLinear`
+- `PDTermCompletionEquivalence`
+- `PDColumnCompletionEquivalence`
+- `PDRawColumnBaseChange`
+- `PDRawColumnBoundedModel`
+- `PDColumnCompletedBaseChange`
+- `PDColumnCoefficientUnit`
+- `PDDeRhamDerivedSpan`
+- `PDDeRhamCompletedBaseChange`
+- `CompletedFreeDeltaScale`
+- `AffineEnvelopeBaseChange`
+- `AffineEnvelopeCoefficients`
+- `AffineEnvelopeBaseChangeCoefficients`
+- `SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarCokernelTensor`
+- `PDEnvelopeCrystalline`
+
+- `PDEnvelopeCrystalline` は既存の `exists_deltaStructure_of_pdPolynomial` を一般の結晶基底に適用する。Frobenius が基底の分冪イデアルを (p) に送ることを仮定し、包の生成元、基底の δ 両立、各枠変数の δ が零であることを残した。Witt に限らない小さい結晶模型への適用を続ける。
