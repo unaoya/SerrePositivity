@@ -1,5 +1,5 @@
 {
-  "base": "688345e95efb5a280d0cc612a03a5d9cb0264c63",
+  "base": "a4833a252cc913f95217a21a5aac7774a9263d44",
   "toolchain": "leanprover/lean4:v4.35.0-rc4",
   "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
   "items": {
@@ -225,7 +225,9 @@
         "SerrePositivity.InfinityCategories.F2.Presentable.presheaf_isKappaAccessible_aleph0",
         "SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_smallCompactModel",
         "SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.compactModel_isKappaCompactGenerating",
-        "SerrePositivity.InfinityCategories.F2.Presentable.indComparison_isQCatEquivalence"
+        "SerrePositivity.InfinityCategories.F2.Presentable.indComparison_isQCatEquivalence",
+        "SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.of_cardinalChangeBound",
+        "SerrePositivity.InfinityCategories.F2.Presentable.cardinalChangeBound_aleph0"
       ]
     },
     "5.3.5.14": {
@@ -862,6 +864,30 @@
       ],
       "evidence": "research/htt-coverage/review/check/runs/ch5-53-54-second",
       "checked_at": "688345e95efb5a280d0cc612a03a5d9cb0264c63"
+    },
+    "SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.of_cardinalChangeBound": {
+      "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.of_cardinalChangeBound",
+      "source": "SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean",
+      "type": "@SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.of_cardinalChangeBound.{u_1} : ∀\n  {κ μ : Cardinal.{u_1}} {C : SSet.{u_1 + 1}} [inst : SSet.Quasicategory.{u_1 + 1} C],\n  SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.{u_1} κ C →\n    ∀ [Fact (Cardinal.IsRegular.{u_1} μ)],\n      SerrePositivity.InfinityCategories.F2.Presentable.IsCardinalChangeBound.{u_1} κ μ →\n        SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.{u_1} μ C",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.F2.Presentable.cardinalChangeBound_aleph0": {
+      "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.cardinalChangeBound_aleph0",
+      "source": "SerrePositivity/InfinityCategories/F2/Presentable/Aleph0CardinalChangeBound.lean",
+      "type": "@SerrePositivity.InfinityCategories.F2.Presentable.cardinalChangeBound_aleph0.{u_1} : ∀ {κ : Cardinal.{u_1}},\n  @LT.lt.{u_1 + 1} Cardinal.{u_1}\n      (@Preorder.toLT.{u_1 + 1} Cardinal.{u_1}\n        (@PartialOrder.toPreorder.{u_1 + 1} Cardinal.{u_1} Cardinal.partialOrder.{u_1}))\n      Cardinal.aleph0.{u_1} κ →\n    SerrePositivity.InfinityCategories.F2.Presentable.IsCardinalChangeBound.{u_1} Cardinal.aleph0.{u_1} κ",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch5-third-retry",
+      "checked_at": "a4833a252cc913f95217a21a5aac7774a9263d44"
     },
     "SerrePositivity.InfinityCategories.F2.Presentable.indComparison_isFullyFaithful_of_compact": {
       "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.indComparison_isFullyFaithful_of_compact",

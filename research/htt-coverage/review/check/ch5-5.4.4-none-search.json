@@ -1,0 +1,276 @@
+{
+  "5.4.4.1": {
+    "page": 431,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.3",
+        "5.4.4",
+        "5.4.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(section.*filtered|filtered.*section|cocone.*lift|RelativeCoconeLifting|FinitePosetDiagram|functor_isPresentable|functor.*accessible|Grothendieck)",
+          "SerrePositivity"
+        ],
+        "file_count": 763,
+        "line_count": 2698
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(section.*filtered|filtered.*section|cocone.*lift|RelativeCoconeLifting|FinitePosetDiagram|functor_isPresentable|functor.*accessible|Grothendieck)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 264,
+        "line_count": 1878
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cones/CoconeApexTransport.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma exists_kanCoconeLift_apexInvertible (K X : SSet.{u}) [Quasicategory X] (v : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌) (b : ((ihom K).obj X) _⦋0⦌) (a : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X)) b ((coconeRestriction K X).app (Opposite.op ⦋0⦌) v)) : ∃ (w : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌) (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom (join K (Δ[0] : SSet.{u}))).obj X)) w v), (coconeRestriction K X).app (Opposite.op ⦋1⦌) e.edge = a.edge ∧ IsInvertibleEdge (e.map ((truncation 2).map (coconeApexEvaluation K X)))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeCriterion.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "lemma kanRelativeCoconeLifting_of_isRelativeColimitCone {K D E : SSet.{u}} [Quasicategory D] [Quasicategory E] (U : D ⟶ E) [InnerFibration U] {p : K ⟶ D} (c : JoinCocone p) (hc : IsRelativeColimitCone U c) : KanRelativeCoconeLifting U c"
+          },
+          {
+            "line": 72,
+            "head": "lemma kanRelativeCoconeLifting_iff_isRelativeColimitCone {K D E : SSet.{u}} [Quasicategory D] [Quasicategory E] (U : D ⟶ E) [InnerFibration U] {p : K ⟶ D} (c : JoinCocone p) : KanRelativeCoconeLifting U c ↔ IsRelativeColimitCone U c := ⟨kanIsRelativeColimitCone_of_lifting U c, kanRelativeCoconeLifting_of_isRelativeColimitCone U c⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FinitePosetDiagramFiltered.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma nonempty_finitePosetDiagramComma_cocone {A : SSet.{u}} (hA : IsKappaSmall κ A) (q : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ diagramComma κ D) : Nonempty (JoinCocone q)"
+          },
+          {
+            "line": 43,
+            "head": "lemma smallFinitePosetDiagramComma_isKappaFiltered : IsKappaFiltered κ (smallDiagramComma κ D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FinitePosetDiagramPresentation.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma smallFinitePosetDiagramCommaCocone_isColimit : IsColimitCone (smallDiagramCommaCocone κ D) := smallDiagramCommaCocone_isColimit_of_evaluation_cofinal κ D (smallDiagramCommaEvaluation_finitePoset_isRightCofinal κ D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 67,
+            "head": "lemma functor_isPresentable (K : SSet.{u}) [Quasicategory K] {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FunctorCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "theorem limit.lift_π_app (H : J ⥤ K ⥤ C) [HasLimit H] (c : Cone H) (j : J) (k : K) : (limit.lift H c).app k ≫ (limit.π H j).app k = (c.π.app j).app k := congr_app (limit.lift_π c j) k"
+          },
+          {
+            "line": 44,
+            "head": "theorem colimit.ι_desc_app (H : J ⥤ K ⥤ C) [HasColimit H] (c : Cocone H) (j : J) (k : K) : (colimit.ι H j).app k ≫ (colimit.desc H c).app k = (c.ι.app j).app k := congr_app (colimit.ι_desc c j) k"
+          }
+        ]
+      }
+    ],
+    "decision": "coCartesian fibration q:Y→X の全ファイバーが τ-filtered なら、任意の τ-small K の K⊆K▷ に対する相対持ち上げを与える。exists_kanCoconeLift_apexInvertible は同値な頂点の輸送を扱い、任意の底余錐の終点での filtered 余錐を構成しない。kanRelativeCoconeLifting は relative colimit の条件であって、このファイバー条件からの構成ではない。"
+  },
+  "5.4.4.2": {
+    "page": 432,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.3",
+        "5.4.4",
+        "5.4.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(section.*filtered|filtered.*section|cocone.*lift|RelativeCoconeLifting|FinitePosetDiagram|functor_isPresentable|functor.*accessible|Grothendieck)",
+          "SerrePositivity"
+        ],
+        "file_count": 763,
+        "line_count": 2698
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(section.*filtered|filtered.*section|cocone.*lift|RelativeCoconeLifting|FinitePosetDiagram|functor_isPresentable|functor.*accessible|Grothendieck)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 264,
+        "line_count": 1878
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cones/CoconeApexTransport.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma exists_kanCoconeLift_apexInvertible (K X : SSet.{u}) [Quasicategory X] (v : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌) (b : ((ihom K).obj X) _⦋0⦌) (a : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X)) b ((coconeRestriction K X).app (Opposite.op ⦋0⦌) v)) : ∃ (w : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌) (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom (join K (Δ[0] : SSet.{u}))).obj X)) w v), (coconeRestriction K X).app (Opposite.op ⦋1⦌) e.edge = a.edge ∧ IsInvertibleEdge (e.map ((truncation 2).map (coconeApexEvaluation K X)))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeCriterion.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "lemma kanRelativeCoconeLifting_of_isRelativeColimitCone {K D E : SSet.{u}} [Quasicategory D] [Quasicategory E] (U : D ⟶ E) [InnerFibration U] {p : K ⟶ D} (c : JoinCocone p) (hc : IsRelativeColimitCone U c) : KanRelativeCoconeLifting U c"
+          },
+          {
+            "line": 72,
+            "head": "lemma kanRelativeCoconeLifting_iff_isRelativeColimitCone {K D E : SSet.{u}} [Quasicategory D] [Quasicategory E] (U : D ⟶ E) [InnerFibration U] {p : K ⟶ D} (c : JoinCocone p) : KanRelativeCoconeLifting U c ↔ IsRelativeColimitCone U c := ⟨kanIsRelativeColimitCone_of_lifting U c, kanRelativeCoconeLifting_of_isRelativeColimitCone U c⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FinitePosetDiagramFiltered.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma nonempty_finitePosetDiagramComma_cocone {A : SSet.{u}} (hA : IsKappaSmall κ A) (q : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ diagramComma κ D) : Nonempty (JoinCocone q)"
+          },
+          {
+            "line": 43,
+            "head": "lemma smallFinitePosetDiagramComma_isKappaFiltered : IsKappaFiltered κ (smallDiagramComma κ D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FinitePosetDiagramPresentation.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma smallFinitePosetDiagramCommaCocone_isColimit : IsColimitCone (smallDiagramCommaCocone κ D) := smallDiagramCommaCocone_isColimit_of_evaluation_cofinal κ D (smallDiagramCommaEvaluation_finitePoset_isRightCofinal κ D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 67,
+            "head": "lemma functor_isPresentable (K : SSet.{u}) [Quasicategory K] {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FunctorCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "theorem limit.lift_π_app (H : J ⥤ K ⥤ C) [HasLimit H] (c : Cone H) (j : J) (k : K) : (limit.lift H c).app k ≫ (limit.π H j).app k = (c.π.app j).app k := congr_app (limit.lift_π c j) k"
+          },
+          {
+            "line": 44,
+            "head": "theorem colimit.ι_desc_app (H : J ⥤ K ⥤ C) [HasColimit H] (c : Cocone H) (j : J) (k : K) : (colimit.ι H j).app k ≫ (colimit.desc H c).app k = (c.ι.app j).app k := congr_app (colimit.ι_desc c j) k"
+          }
+        ]
+      }
+    ],
+    "decision": "小基底の coCartesian fibration のファイバーの τ-filtered 性と κ-filtered 余極限を使い、全切断が τ-filtered で全頂点評価が cofinal となる。FinitePosetDiagramFiltered は C→Indκ(C) の実表示 comma という特定の図式で、任意の q の全切断への比較がない。通常の Grothendieck 圏の section と functor category の点ごとの余極限も、この評価の cofinal 性を述べない。"
+  }
+}
