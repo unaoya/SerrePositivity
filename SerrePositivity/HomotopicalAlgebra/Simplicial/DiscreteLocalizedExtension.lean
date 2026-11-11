@@ -40,7 +40,7 @@ set_option backward.isDefEq.respectTransparency false
 open CategoryTheory
 
 namespace SerrePositivity.SimplicialModel.DiscreteLocalizedExtension
-open PiZeroConstant
+
 variable {A B : SSet.{w}} (i : A ⟶ B)
   (hi : IsIso (AnodyneHomotopy.anodyneQ.map i)) {T : Type w}
 
