@@ -45,7 +45,7 @@ open CategoryTheory CategoryTheory.MonoidalCategory
 namespace SerrePositivity.HomotopyFunctionComplex.OrdinaryBarFreeResolutionMixedFaces
 open FreeGeneratorCategories FreeGeneratorMixedOperators OrdinaryBarFreeDiagramExtension
 open OrdinaryBarChoiceBoundaryGluing OrdinaryBarFreeResolutionDegeneracyValues
-open SerrePositivity.SimplicialModel.ReversedSimplexParameters
+
 variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   [HomotopicalAlgebra.ModelCategory SSet.{v}]
   (hcof : HomotopicalAlgebra.cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
