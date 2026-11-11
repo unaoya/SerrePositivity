@@ -34,7 +34,7 @@ def mappingExchange (A K : PointedSimplicialSet.{u}) (X : KanSequence.{u}) :
         (ihom K).map (X.sigma n))) ≫
       (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A K (X.level (n + 1)).space).hom
     simp only [Functor.map_comp, Category.assoc]
-    rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.mapping_strength_assoc, ← _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeTarget.natural_post]
+    rw [← _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.mapping_strength_assoc, ← _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeTarget.natural_post]
 
 /-- 二重 mapping 列の交換は、同じ標的の列射について厳密に自然。 -/
 lemma mappingExchange_natural (A K : PointedSimplicialSet.{u})

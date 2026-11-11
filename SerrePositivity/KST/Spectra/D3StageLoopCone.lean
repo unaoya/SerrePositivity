@@ -33,8 +33,8 @@ lemma d3FiberCone_stage_isLimit {E B : OmegaSpectrum.{u}} (p : E ⟶ B)
     (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c) (n : ℕ) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (c.postcomp (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3StageKanEnriched n))) := by
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.isLimitCone_postcomp_of_one_limitCone _
-    (spectrumPullbackInfinityCone p (fromPoint B))
-    (spectrumPullbackInfinityCone_isLimit p (fromPoint B)) _ c hc
+    (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackInfinityCone p (fromPoint B))
+    (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackInfinityCone_isLimit p (fromPoint B)) _ c hc
   exact d3StagePullbackInfinityCone_isLimit p (fromPoint B) n
 
 /-- 同じ実錐の図式 cast は、実際の後合成と可換。 -/
@@ -64,7 +64,7 @@ lemma d3BasedLoopCone_stage_isLimit (Y : OmegaSpectrum.{u}) (n : ℕ) :
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentConeCast_isLimit_iff _ _).2
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentConeRestrict_isLimit_iff _ CospanShape.strictCospanHornIso.inv).1
   exact d3FiberCone_stage_isLimit (basedPathProjection Y) _
-    (spectrumPullbackInfinityCone_isLimit (basedPathProjection Y) (fromPoint Y)) n
+    (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackInfinityCone_isLimit (basedPathProjection Y) (fromPoint Y)) n
 
 /-- 同じ元の固定 cospan 上の任意の実極限錐も、同じ段評価で極限になる。 -/
 lemma d3BasedLoopDiagramCone_stage_isLimit (Y : OmegaSpectrum.{u})

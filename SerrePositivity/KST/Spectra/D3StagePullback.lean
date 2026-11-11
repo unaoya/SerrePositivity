@@ -96,7 +96,7 @@ lemma d3StagePullbackCone_isLimit (n : ℕ) :
 
 /-- 結論の錐は、元の全 coherent BF 錐を同じ実段関手で後合成した錐そのもの。 -/
 lemma d3StagePullbackInfinityCone_isLimit (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone ((spectrumPullbackInfinityCone p q).postcomp
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone ((_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackInfinityCone p q).postcomp
       (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3StageKanEnriched n))) := by
   have h := d3StagePullbackCone_isLimit p q n
   change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone

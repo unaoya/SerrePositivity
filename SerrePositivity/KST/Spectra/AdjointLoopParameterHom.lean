@@ -53,7 +53,7 @@ def adjointLoopMappingExchange (A : PointedSimplicialSet.{u}) (X : KanSequence.{
             (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
               (X.level (n + 1)).space).hom
       simp only [CategoryTheory.Functor.map_comp, Category.assoc]
-      rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post_assoc PointedSimplicialSet.circle.{u} A
+      rw [← _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeTarget.natural_post_assoc PointedSimplicialSet.circle.{u} A
         (ordinaryStructureAdjoint X n)]
       simp only [_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.hom_eq_inv A PointedSimplicialSet.circle.{u}]
       simp only [Iso.hom_inv_id, Category.comp_id]
