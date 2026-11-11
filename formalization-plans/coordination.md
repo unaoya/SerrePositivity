@@ -17,8 +17,8 @@
 | KL-W1 | Codex | ∞ の配置を Kerodon に合わせる | `SerrePositivity-kerodon-layout`・`refactor/kerodon-layout` | `stage-ii/kerodon-layout-w1.md` | 段 1.5 は main。段 1.6（割り当ての見直し）→ 段 2・3（§8、11-10） |
 | ③ ∞ 供給 | Codex | G8 の四角形 → G14・G9・G10 | `SerrePositivity-inf-supply`・`math/inf-supply` | `stage-ii/inf-supply-w1.md` | KL-W1 の後 |
 | ⑤a BS 実装 | Codex | BS-DOC1 → BS-W11 → BS-W12（BM18 の経路 B） | `SerrePositivity-bs-impl`・`math/bs-impl` | `bhatt-scholze/bhatt-scholze-codex-w16.md` | BS-W14 は main（A1 の二本は ⑤b の停止点 3 の後）。BS-W16（実例の欄、G12・P⁰ を除く）段 0（11-10） |
-| ⑤b BS 実装 | Codex | D68 の直接証明（完了）→ D69 と結晶サイトの、∞ 圏に依らない部分 | `SerrePositivity-bs-d68`・`math/bs-d68` | `bhatt-scholze/bhatt-scholze-codex-d69.md` | BS-D68 は main（11-10、09047a87e）。BS-D69 段 0 |
-| ⑤c BS 実装 | Codex | W15（§2・§3・§7 の古典的な残り）完了 → W17（Thm 4.11 の帰着の古典的な部分、Constr 4.17、Rem 4.19） | `SerrePositivity-bs-classical`・`math/bs-classical` | `bhatt-scholze/bhatt-scholze-codex-w17.md` | W17 停止点 1・2 取り込み（11-11）、H3 の main だけで作れる部分 |
+| ⑤b BS 実装 → ③-b ∞ 供給 b | Codex | BS-D69（停止点 3 で区切り、11-12）→ Δ・Δᵒᵖ の橋（G10、幾何学的実現） | `SerrePositivity-bs-d68`・`math/bs-d68` → `math/inf-supply-b` | `stage-ii/inf-supply-w2.md` | D69 停止点 3 は KL-W1 の後に取り込み。IS-W2 は追従の後に段 0 |
+| ⑤c BS 実装 → ③-a ∞ 供給 a | Codex | BS-W17（停止点 5 で区切り、11-12）→ G8 の四角形・G14・G9 | `SerrePositivity-bs-classical`・`math/bs-classical` → `math/inf-supply` | `stage-ii/inf-supply-w1.md` | W17 停止点 5 は KL-W1 の後に取り込み。IS-W1 は追従の後に段 0 |
 | ⑥ スキーム論 | Codex | BS17 Thm 4.1 (i) の経路 | `SerrePositivity-scheme`・`math/scheme` | `stage-ii/scheme-w1.md`（§6 で BS17 に絞る） | 2a′（移動）・2b・2d の一部は main、2d 進行中（11-07） |
 | ① ∞ 中核 | Codex | Verdier 商（K の入口） | — | `stage-ii/inf-core-w1.md` | **止める**（K と一緒に後回し、11-07） |
 
