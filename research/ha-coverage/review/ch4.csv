@@ -260,6 +260,72 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.3.3.15,partial,SerrePositivity.ModelGeneration.rightTransfer @ SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:61 | SerrePositivity.ModelGeneration.rightTransfer_weakEquivalences @ SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:89 | SerrePositivity.ModelGeneration.rightTransfer_fibrations @ SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:94 | SerrePositivity.ModelGeneration.rightTransfer_isRightQuillen @ SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:111,仮定：生成されたモデル圏、対象圏への随伴、有限極限・余極限、移送後の small-object 条件と acyclicity（Lean は両側加群の忘却にこれらの入力を要求する）。結論：右随伴で弱同値とファイブレーションを検出するモデル構造を与え、忘却を右 Quillen にする（この成分に一致）。両側加群の具体的 instance、左 Quillen 性と単体両立性は型に含まれない。,,found,stronger-hyp
 4.3.3.16,partial,SerrePositivity.ModelGeneration.rightTransfer @ SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:61 | SerrePositivity.ModelGeneration.rightTransfer_weakEquivalences @ SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:89 | SerrePositivity.ModelGeneration.rightTransfer_fibrations @ SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:94,仮定：生成されたモデル圏、随伴、対象圏の有限極限・余極限、移送後の small-object 条件と acyclicity（Lean はモナドの自由忘却随伴にこれらの入力を要求する）。結論：右随伴で弱同値とファイブレーションを検出するモデル構造を与える（条件付きで一致）。左 Quillen モナドから移送条件を満たす宣言は含まれない。,,found,stronger-hyp
 4.3.3.17,none,,モデル構造の右移送と dg 両側加群の局所化における細胞模型を確認した。余ファイブラント両側加群の局所化と、局所化したモノイダル ∞ 圏の両側加群準圏の rectification は見つからなかった。,,not_found,
+4.4.1.1,none,,有限順序ブロックの合成と通常の内部両側加群を確認した。各色を同じ整数または隣接整数の対とし、Assoc の順序付き逆像に沿って接ぐ圏 Tens⊗ は見つからなかった。,,not_found,
+4.4.1.2,none,,一般の categorical fibration と一色 dg operad を確認した。Tens⊗ が N(∆ᵒᵖ) 上の ∞ operad の族となる宣言は見つからなかった。,,not_found,
+4.4.1.3,none,,categorical fibration の持ち上げ判定を確認した。Tens⊗→N(∆ᵒᵖ)×Assoc⊗ を generalized ∞ operad のファイブレーションとする型は見つからなかった。,,not_found,
+4.4.1.4,none,,指定辺に対する余デカルト条件を確認した。Tens の inert 辺を Assoc の inert 射と単体圏の同型で特徴付ける型は見つからなかった。,,not_found,
+4.4.1.5,none,,一般の頂点ファイバーと余デカルト底変換を確認した。Tens の各 [k] ファイバーを Assoc 上の ∞ operad のファイブレーションとして取る型は見つからなかった。,,not_found,
+4.4.1.6,none,,一色 dg operad と一般の頂点ファイバーを確認した。Tens の [0] ファイバーが Assoc⊗ と同型となる型は見つからなかった。,,not_found,
+4.4.1.7,none,,通常の内部両側加群と準圏の頂点ファイバーを確認した。Tens の [1] ファイバーが BM⊗ と同型となる型は見つからなかった。,,not_found,
+4.4.1.8,none,,頂点条件による充満部分複体を確認した。Tens の全色が i の部分を Assoc と同定し、切断 εᵢ を与える型は見つからなかった。,,not_found,
+4.4.1.9,none,,"通常の内部モノイドと両側加群の対象データを確認した。Tens の一色対象を代数 aᵢ と隣接両側加群 mᵢ,ᵢ₊₁ に分類する型は見つからなかった。",,not_found,
+4.4.1.10,none,,単体圏の部分区間と余デカルト底変換を確認した。凸像を持つ単体射の Tens 対応が operad 写像から来ること、および区間の Tens が指定充満部分となる型は見つからなかった。,,not_found,
+4.4.1.11,none,,通常の神経の strict Segal とマーク付き関手の押し出し降下を確認した。隣接する BM を Assoc に沿って貼り、Op∞ で Tens[k] を得る余極限は見つからなかった。,,not_found,
+4.4.1.12,none,,単体圏の順序写像と部分区間を確認した。値の差が高々 1 の写像を対象とする矢印圏の充満部分 Step と、隣接値を色にする Φ は見つからなかった。,,not_found,
+4.4.1.13,none,,相対関手のマーク条件を確認した。Φ で Tens の inert 辺に送られる Step の辺を定める型は見つからなかった。,,not_found,
+4.4.1.14,none,,単体圏の連続部分区間の包含を確認した。Step の可換四角形の inert 性を、標的辺の同型と始域辺の連続包含で判定する型は見つからなかった。,,not_found,
+4.4.1.15,partial,SerrePositivity.InfinityCategories.markedCocartesianFunctorSpace @ SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean:38,仮定：共通の底への写像と指定辺（Lean では S 上の Step、Tens と inert 辺を明示する）。結論：底上で指定辺を余デカルト辺に送る関手の充満部分複体を与える（Alg_S の関手空間の成分に一致）。Tens の S-族と inert 辺は含まれない。,,found,component
+4.4.1.16,partial,SerrePositivity.InfinityCategories.markedCocartesianFunctorSpace @ SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean:38,仮定：共通の底への写像と指定辺（Lean では Assoc⊗ への Step の写像とマークを明示する）。結論：指定辺の保存を課した相対関手の充満部分複体を得る（HA の最後の表示に一致）。C_S の operad 族とその比較は含まれない。,,found,component
+4.4.1.17,none,,相対関手の前合成同値からマーク付きの制限を比較する型を確認した。Tens と Step の指定写像 Φ が Alg/Tens_S→Alg_S を同値にする結果は見つからなかった。,,not_found,
+4.4.1.18,none,,相対関手の一点評価とマーク付き前合成を確認した。S を [0] にした Step の比較が A∞ 代数と Assoc 代数の比較になる型は見つからなかった。,,not_found,
+4.4.1.19,none,,相対関手空間のカリー化とマーク付き部分複体を確認した。Tens または Step と K の可変な底変換からの関手を表現する Bim と Bim′ の型は見つからなかった。,,not_found,
+4.4.1.20,none,,categorical fibration の持ち上げ判定とマーク付き関手の準圏性を確認した。Bim の二模型の N(∆ᵒᵖ) 上の categorical fibration 性と Φ による同値は見つからなかった。,,not_found,
+4.4.1.21,none,,相対関手の頂点ファイバーと通常のモノイド・両側加群を確認した。Bim の [0]、[1] が Alg、BMod に、Step 模型の [0] が AlgA∞ になる同定は見つからなかった。,,not_found,
+4.4.1.22,none,,単体圏の定値写像と頂点条件の充満部分複体を確認した。Step の定値写像を対象とする充満部分圏 Step₀ は見つからなかった。,,not_found,
+4.4.1.23,none,,通常の Cartesian ファイブレーションの定義と単体圏の定値写像を確認した。Step₀ の射影が Cartesian で、[k] ファイバーが k+1 個の単体圏の神経に分かれる型は見つからなかった。,,not_found,
+4.4.1.24,none,,固定添字のマーク付き相対関手とカリー化を確認した。可変な Step₀ の底変換に対する表現対象 Bim″ とその inert 保存部分は見つからなかった。,,not_found,
+4.4.1.25,none,,余デカルト写像の底変換と有限積円錐を確認した。Bim″ の射影の余デカルト性と [k] ファイバーが代数準圏の k+1 乗になる比較は見つからなかった。,,not_found,
+4.4.1.26,none,,一般の相対関手の底ファイバー評価と有限積を確認した。Step₀ の二成分の評価から Bim″ を作り、そのファイバーの比較を対角写像と同定する型は見つからなかった。,,not_found,
+4.4.1.27,none,,相対関手の前合成と指定辺の保存を確認した。Cut が Step を semi-inert の矢印へ送り、Mod から Bim′ への写像と Bim″ への合成を与える型は見つからなかった。,,not_found,
+4.4.1.28,none,,相対関手の引き戻し同型と dg 両側加群の模型を確認した。一般の Assoc 加群を Bim′ と代数の対角のホモトピー引き戻しで表す指定の比較は見つからなかった。,,not_found,
+4.4.2.1,none,,単体圏の区間辺と一般の底変換を確認した。[1]→[2] の両端の包含に沿う Tens の引き戻しは見つからなかった。,,not_found,
+4.4.2.2,none,,通常の合成可能な内部両側加群と一般の頂点ファイバーを確認した。Tens の両端のファイバーを Tens[2] と BM とする ∞ operad の対応は見つからなかった。,,not_found,
+4.4.2.3,none,,通常の両側加群テンソルは釣合条件の余等化子で定義される。Tens の対応を operadic 余極限にする条件としての相対テンソルの定義は見つからなかった。,,not_found,
+4.4.2.4,none,,単体圏の順序写像と拡大単体図式を確認した。[n+2] を両端で 0、2、内部で 1 に送る Step の添字 U とその増大 U⁺ は見つからなかった。,,not_found,
+4.4.2.5,none,,相対余極限の定義と準圏の余終性判定を確認した。Tens の延長を左右代数の余極限と U⁺ に沿う operadic 余極限の三条件で特徴付ける型は見つからなかった。,,not_found,
+4.4.2.6,none,,通常の相対余極限と余デカルト辺の底変換を確認した。Tens の二つの代数の底での同値から、その operadic 延長条件が代数対象間の同値に簡約される宣言は見つからなかった。,,not_found,
+4.4.2.7,none,,単体モデルの bar の増大と dg 加群図式の正規化 bar 余錐を確認した。合成可能な二つの両側加群から U 上の図式を余デカルト輸送し、M⊗B^⊗n⊗N の二側 bar を作る宣言は見つからなかった。,,not_found,
+4.4.2.8,none,,通常の両側加群の釣合テンソルと dg 加群図式の正規化 bar の余極限を確認した。前者の余等化子を指定の二側 bar の幾何学的実現と比較し、Tens の延長を相対テンソルと判定する宣言は見つからなかった。計画文の animated algebra の押し出しはこの比較の別の応用として記載されている。,,not_found,
+4.4.2.9,none,,正則両側加群を相対テンソルの単位とする同型を確認した。中間代数自体が自明な場合に二側 bar が定値となり、通常のテンソルと相対テンソルが一致する型は見つからなかった。,,not_found,
+4.4.2.10,partial,SerrePositivity.DifferentialGraded.BimoduleTensor.composeFunctor @ SerrePositivity/DifferentialGraded/Tensor/Bimodule/Actions.lean:814,仮定：通常の dg 両側加群の圏と固定した三つの dg 圏（Lean は dg の厳密な相対テンソルの模型に限る）。結論：中間の dg 圏で釣合テンソルを取る合成双関手を与える（固定端点での相対テンソル関手の成分に一致）。operadic 左 Kan 延長による一般の ∞ 圏での定義は含まれない。,,found,special
+4.4.2.11,partial,SerrePositivity.DifferentialGraded.BimoduleTensor.composeFunctor @ SerrePositivity/DifferentialGraded/Tensor/Bimodule/Actions.lean:814 | Bimod.tensorBimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:343,"仮定：固定した三つの dg 圏、または余等化子と必要なテンソル保存を持つ通常モノイダル圏の内部モノイド（Lean は通常の固定端点の場合に限る）。結論：中間で釣合テンソルを取り外側の両作用を持つ両側加群を与え、dg 模型では双関手となる（固定 A,B,C の成分に一致）。全代数が変動する ∞ 圏の関手は含まれない。",,found,special
+4.4.2.12,partial,SerrePositivity.DifferentialGraded.BimoduleTensor.composeFunctor @ SerrePositivity/DifferentialGraded/Tensor/Bimodule/Actions.lean:814,仮定：固定した三つの dg 圏（Lean は三つの作用圏を同じ dg 模型に取る場合に限る）。結論：二つの両側加群を中間でテンソルし、左と右の外端を持つ両側加群を与える（固定端点の関手の成分に一致）。異なる bitensored ∞ 圏と Tens の退縮は含まれない。,,found,special
+4.4.2.13,partial,SerrePositivity.DifferentialGraded.BimoduleTensor.composeFunctor @ SerrePositivity/DifferentialGraded/Tensor/Bimodule/Actions.lean:814,仮定：固定した三つの dg 圏（Lean は左右の作用圏が同じ dg 模型の場合に限る）。結論：右に置いた両側加群との相対テンソルを双関手として与える（同じ作用圏にした成分に一致）。異なる作用圏と逆側の Tens の退縮は含まれない。,,found,special
+4.4.2.14,partial,SerrePositivity.DifferentialGraded.BalancedTensor.rightTensorFunctor_preservesColimits @ SerrePositivity/DifferentialGraded/Tensor/Enriched.lean:467 | SerrePositivity.DifferentialGraded.BalancedTensor.leftTensorFunctor_preservesColimits @ SerrePositivity/DifferentialGraded/Tensor/Enriched.lean:1259,仮定：dg 圏上の片側 dg 加群と通常圏の余極限（Lean は外側の代数を単位にした、複体値の釣合テンソルの場合に限る）。結論：左・右を固定した釣合テンソルがそれぞれ通常の余極限を保つ（この場合の各変数の保存に一致）。operadic 輸送と任意の両側加群は含まれない。,,found,special
+4.4.2.15,partial,SerrePositivity.DifferentialGraded.BalancedTensor.rightTensorFunctor_preservesColimits @ SerrePositivity/DifferentialGraded/Tensor/Enriched.lean:467 | SerrePositivity.DifferentialGraded.BalancedTensor.leftTensorFunctor_preservesColimits @ SerrePositivity/DifferentialGraded/Tensor/Enriched.lean:1259,仮定：dg 圏上の左右の dg 加群（Lean は外側が単位で、通常の余極限を取る場合に限る）。結論：複体値の釣合テンソルが各変数で通常の余極限を保つ（この場合に一致）。一般のモノイダル ∞ 圏の両側加群での保存は含まれない。,,found,special
+4.4.2.16,partial,SerrePositivity.DifferentialGraded.BalancedTensor.rightTensorFunctor_preservesColimits @ SerrePositivity/DifferentialGraded/Tensor/Enriched.lean:467 | SerrePositivity.DifferentialGraded.BalancedTensor.leftTensorFunctor_preservesColimits @ SerrePositivity/DifferentialGraded/Tensor/Enriched.lean:1259,仮定：dg 圏上の左右の dg 加群（Lean は作用圏を同じ dg 模型に取り、外側の代数を単位にした場合に限る）。結論：釣合テンソルが左右それぞれに関して通常の余極限を保つ（複体値の場合に一致）。異なる作用圏での ∞ 圏の余極限は含まれない。,,found,special
+4.4.3.1,none,,単体の辺上に相対テンソルを符号化する一般化 ∞ オペラッド Tens と、射影の flat categorical fibration 性は見つからない。余 Cartesian 射に関する引き戻し補題はこの射影を与えない。,,not_found,
+4.4.3.2,none,,Tens の各辺のオペラッド左 Kan 拡張から断面の余 Cartesian ファイブレーションを得て、余 Cartesian 辺を特徴づける結果は見つからない。相対左 Kan 拡張の制限定理はこの分類を与えない。,,not_found,
+4.4.3.3,none,,指定した順序写像の辺に沿う Tens の引き戻しと、両端の代数・双加群の色の指定は見つからない。一般の底変換や頂点ファイバーにはこの色の対応がない。,,not_found,
+4.4.3.4,none,,凸な順序写像から得る Tens の Cartesian ファイブレーション、その分類関手 vα および能動スライスの終対象は見つからない。,,not_found,
+4.4.3.5,none,,凸な α に対するオペラッド左 Kan 拡張の存在と性質を各色の一辺のオペラッド余極限で判定する定理は見つからない。既知の終添字に関する相対余極限の判定には Tens の比較がない。,,not_found,
+4.4.3.6,none,,凸な α で底の写像が vα を経由するとき、vα による前合成をオペラッド左 Kan 拡張とする結果は見つからない。,,not_found,
+4.4.3.7,partial,SimplexCategory.δ @ Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean:233 | SimplexCategory.coe_δ @ Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean:606,仮定：有限順序集合 [m] と省く添字 i（Lean は単体圏の部分に限る）。結論：i を飛ばす単調単射を i 番目の面写像として構成する（αᵢ の成分に一致）。Tens 間の ξ は含まれない。,,found,component
+4.4.3.8,none,,面写像に沿うオペラッド左 Kan 拡張を、残る代数・双加群の各色の余極限と内側の相対テンソルの拡張で判定する結果は見つからない。,,not_found,
+4.4.3.9,none,,Tens の断面の射影が余 Cartesian となり、凸写像と内側の面の輸送をそれぞれ制限と相対テンソルで記述する結果は見つからない。通常の双圏はこの射影と輸送の比較を与えない。,,not_found,
+4.4.3.10,none,,指定の余 Cartesian 射影の全空間としての単体集合 BMod(C) は見つからない。通常の双加群双圏は全空間の単体集合を構成していない。,,not_found,
+4.4.3.11,partial,Bimod.monBicategory @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:990,仮定：通常のモノイダル圏に必要な余等化子があり左右のテンソルがそれを保つ（Lean は通常圏に限る）。結論：内部モノイドを対象、双加群を 1-射、双加群準同型を 2-射、相対テンソルを合成とする双圏を構成する。Segal 射影とファイバーの同値は含まれない。,,found,special
+4.4.3.12,partial,Bimod.monBicategory @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:990 | CategoryTheory.EndMonoidal @ Mathlib/CategoryTheory/Bicategory/End.lean:24 | SerrePositivity.MonoidalBalancedTensor.monoidalCategory @ SerrePositivity/CategoryTheory/Monoidal/Mod/Monoidal.lean:876,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏（内部左加群の構成には組紐と可換モノイドも仮定）。結論：双圏の A の自己射圏は相対テンソルを積とするモノイダル圏となる。可換な場合は内部加群の平衡テンソルによる構造も構成済み。∞ オペラッドの比較は含まれない。,,found,special
+4.4.3.13,partial,SerrePositivity.MonoidalModuleInternalHom.tensorInternalHomAdjunction @ SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHom.lean:412 | SerrePositivity.MonoidalBalancedTensor.symmetricCategory @ SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean:289 | CategoryTheory.BraidedCategory.tensorLeftIsoTensorRight @ Mathlib/CategoryTheory/Monoidal/Braided/Basic.lean:144 | CategoryTheory.Adjunction.leftAdjoint_preservesColimits @ Mathlib/CategoryTheory/Adjunction/Limits.lean:90 | CategoryTheory.Limits.preservesColimits_of_natIso @ Mathlib/CategoryTheory/Limits/Preserves/Basic.lean:340,仮定：通常の対称閉モノイダル圏の可換内部モノイドと、内部 Hom と平衡テンソルを作る等化子・余等化子および保存条件。結論：平衡テンソルは内部 Hom の左随伴なので通常圏の余極限を保存し、組紐によってもう一方の変数でも保存する。一般の幾何学的実現は含まれない。,,found,special
+4.4.3.14,partial,Bimod.associatorBimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:720 | SerrePositivity.DifferentialGraded.BimoduleTensor.derivedAssociatorIso @ SerrePositivity/DifferentialGraded/Derived/BimoduleTensor.lean:1046,仮定：通常のモノイダル圏に必要な余等化子があり左右のテンソルがそれを保つ。または小さい dg 圏と後二つが右相対 K-flat な dg 双加群。結論：相対テンソルの二つの括り方を結ぶ同型を構成し、通常の導来圏の版では第一変数に関して自然な同型を得る。一般の ∞ 双加群圏は含まれない。,,found,special
+4.4.3.15,partial,Bimod.pentagon_bimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:924,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏の合成可能な四つの双加群。結論：相対テンソルの結合子の五角形の二経路が等しい。一般の高次ホモトピーは含まれない。,,found,special
+4.4.3.16,partial,Bimod.leftUnitorBimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:730 | Bimod.rightUnitorBimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:739,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏の A-B 双加群 M。結論：A⊗ₐM と M⊗ᵦB を M と同一視する二つの双加群同型を構成する。一般の ∞ 関手の同値は含まれない。,,found,special
+4.4.3.17,partial,Bimod.triangle_bimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:966,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏の合成可能な二つの双加群。結論：中央に正則双加群を挿入した場合の単位三角が可換となる。両端の図式と一般の高次ホモトピーは含まれない。,,found,component
+4.4.3.18,partial,CategoryTheory.Bicategory.unitors_equal @ Mathlib/CategoryTheory/Bicategory/Basic.lean:451 | Bimod.monBicategory @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:990,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏の内部モノイド A。結論：双圏の恒等 1-射で左右の単位子の射が等しいので、正則 A-A 双加群の左右の単位写像が一致する。一般の高次ホモトピーは含まれない。,,found,special
+4.4.3.19,none,,T が空でないとき S への全射を含む指定の順序付きスパンの圏の nerve の弱可縮性は見つからない。一般の Quillen A にはこの圏とファイバーの可縮性の証明がない。,,not_found,
+4.4.3.20,none,,指定の単射と写像を延長する順序付き可換四角形の圏の nerve の弱可縮性は見つからない。,,not_found,
+4.4.3.21,none,,段状写像の圏 Step の N(Δ)ᵒᵖ への射影が flat categorical fibration となる結果は見つからない。,,not_found,
+4.4.3.22,none,,Tens の射を順序付きファイバーに値をとる指定の単射で分類する記述は見つからない。置換オペラッドのブロック合成は同じ射の分類を与えない。,,not_found,
 4.5.4.1,partial,CategoryTheory.MonoidalCategory.Arrow.pushoutProduct @ Mathlib/CategoryTheory/Monoidal/PushoutProduct.lean:71 | CategoryTheory.MonoidalCategory.Arrow.PushoutProduct.symmetricCategory @ Mathlib/CategoryTheory/Monoidal/Arrow.lean:158,仮定：押し出しを持つモノイダル圏（Lean は二項構成に対称性も全余極限も要求しない。矢印圏の対称構造は始対象を持つ Cartesian 閉の場合）。結論：HA の二項押し出し積と、特殊な場合の矢印圏の対称構造に一致。Σₙ 同変反復と余不変量の写像 σⁿ は型に含まれない。,,found,component
 4.5.4.2,partial,SerrePositivity.Quillen.HasMonoidAxiom @ SerrePositivity/HomotopicalAlgebra/Monoidal/MonoidAxiom.lean:66 | SerrePositivity.Quillen.tensorCells_retracts_le_weakEquivalences @ SerrePositivity/HomotopicalAlgebra/Monoidal/MonoidAxiom.lean:85,仮定：モノイダル圏とモデル構造（Lean は組合せ性と対称性を要求しない）。結論：指定宇宙のテンソル生成セルとそのレトラクトの弱同値性（F1 のモノイド公理の範囲に一致）。F2 の組と Σₙ 射影モデルでの F3 は型に含まれない。,,found,component
 4.5.4.3,partial,SerrePositivity.Quillen.pushoutProduct_cofibration @ SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean:74,仮定：モデル圏のテンソルが Quillen 二関手で、f が余ファイブレーション（HA の仮定の下で f を両入力とする）。結論：f□f が底で余ファイブレーション（n=2 で作用を忘れた主張に一致）。全ての n、自明性および Σₙ 射影余ファイブレーション性はこの型に含まれない。,,found,special
