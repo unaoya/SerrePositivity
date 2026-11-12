@@ -1918,3 +1918,61 @@ thick ⊗-ideal・指数と安定性 **900〜1,500 行**、Amitsur の塔・降�
 調整役の型の検収を待つ間も独立の紙の作業は可能だが、verify 終了の連絡までは検証しない。
 終了の連絡後は、§27 の作業木に残っている自由比較の六本の型検査と監査から再開する。
 bar の実装は a の区切りの後、③-b を要する実現・Tot はその取り込みの後という順序を保つ。
+
+## 32. verify 待機中の Lean 下書き（11-12 10 時の依頼）
+
+D78 により §28 の `coproduct_tensor_legs` の型が承認された。
+二点離散の図式なので二脚のホモトピー圏での可換式を維持し、欄を coherent な三角形の選択へ強めない。
+指示書 §13 の錐の移送は一般補題として、指定の将来のパスに下書きを置いた。
+**この節の新しい三本は未検証・未コミットであり、証明の完成・監査成功とは数えない。**
+
+### 32.1 二点余錐の一般の移送
+
+下書きの場所：
+`SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/BinaryCoconeApexTransport.lean`（72 行）。
+KL-W1 枝にも同名のファイルがないことを読取りで確認し、既存ファイルは変更していない。
+名前空間も `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits` とした。
+
+`p : Δ[0] ⨿ Δ[0] ⟶ X`、`c d : JoinCocone p` を固定する。
+`binaryCoconeVertexIso_of_apexIso` は、`e : VertexIso c.vertex d.vertex` と
+`[c.left] ≫ e.hom = [d.left]`・`[c.right] ≫ e.hom = [d.right]` から、
+**同じ p 上の coslice の頂点同型**を作る。
+`isColimitCone_iff_binaryCocone_apexIso` と
+`IsColimitCone.of_binaryCocone_apexIso` はその同型で指定余錐の余極限性を移す。
+安定性、模型、テンソル構造、辺の三角形の追加仮定は置かない。
+
+既存の `exists_binaryCoconeEdgeLift_of_comm` を再利用し、頂点の同型を代表する辺を持ち上げ、
+`leftFibration_reflects_invertibleEdge` と `isColimitCone_iff_of_vertexIso` を使う証明を書いた。
+現在の枝の import と旧公開名を使っており、KL-W1 の改名表への追従後に検証する。
+配置表では `BinaryCoconeEdgeLift` が一般的な型のまま HA/StableInfinityCategories 側へ移る予定なので、
+取込み後の一般補題の依存先の配置も確認対象とする。関連する共有ファイルには手を入れていない。
+
+### 32.2 厳密な bar と BE への適用
+
+- `SerrePositivity/EInfinity/StrictAdjunctionBar.lean`：236 行。
+  `powerMap` と面・退化・増大の自然性を用い、既存の Comonad 分解を
+  `diagramFunctor`・`augmentedFunctor` に束ねる。
+  任意の厳密な随伴 `h : F ⊣ U` の `h.toComonad` へ適用し、
+  `underlyingAugmented`・`underlyingExtraDegeneracy`、切断、増大との合成、追加退化の自然性まで書いた。
+  追加退化の五つの条件には、既存の面・退化の式、右三角恒等式、単位の自然性を使用する。
+- `SerrePositivity/EInfinity/BarrattEccles/Theory/StrictBar.lean`：58 行。
+  実際の `(operad A).freeAlgebraAdjunction` を代入する。
+  bar・増大の全関手、忘却後の分裂、零次の増大と評価射の一致、零次の切断と Schur 単位の一致を公開する下書き。
+
+**合計 294 行**で、上限約 800 行以内。一般部分はモデル構造を仮定せず、
+代数圏内の追加退化、実現の保存、局所化との同定、bar の入力の cofibrant 性は主張していない。
+一般圏の補助は専用の `EInfinity/StrictAdjunctionBar.lean` に置き、移動候補と印を付けた。
+
+### 32.3 A2 のコメントと再開順
+
+`drafts/A2/BaseChangeAndTensor.lean` の `derivedPrismaticCohomology_tensor` の証明手順のコメントを、
+§28.2 の指定比較辺 → `coproduct_tensor` → `coproduct_tensor_legs` →
+多項式 Künneth と sifted 表示 → 保存的な忘却 → 一般の二点余錐の移送、という順に直した。
+宣言の型と既存の sorry は保った。コメントと空白を除いた Lean の文字列が変更前と同じことだけを
+軽いテキスト比較で確認した。これは Lean の型検査ではない。
+
+今回、ビルド・監査・鍵の要求は一切行っていない。
+三本には sorry・admit・axiom を書いていないが、型検査していないため監査の宣言数は未記入。
+A2 のコメントとこの報告だけをコミットし、新規三本は自由比較の六本と同じく作業木に残す。
+verify 終了の連絡後は、**自由比較六本 → 一般の二点余錐の移送 → 厳密な bar の二本**の順で検証し、
+成功した区切りで監査とコードのコミットを行う。KL-W1 の取り込み・改名表への追従が必要なものは先に行う。

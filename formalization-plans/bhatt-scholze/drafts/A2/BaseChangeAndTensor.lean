@@ -147,7 +147,19 @@ theorem prismaticCohomologyPoly_tensor (n m : ℕ) :
 theorem derivedPrismaticCohomology_tensor (X Y : (AnimatedAlgebra (A ⧸ P.ideal)) _⦋0⦌)
     (c : JoinCocone (binaryPointDiagram X Y)) (hc : IsColimitCone c) :
     IsColimitCone (mapJoinCocone (derivedPrismaticCohomology (E := E) P hP) c) := by
-  sorry -- 各変数の多項式 sifted 表示に prismaticCohomologyPoly_tensor を適用して余極限を交換
+  -- 証明の手順（D78、BS-W16 §28.2）：
+  -- 1. 出力の E.coprodWith_cocone A (Δ X) (Δ Y) の普遍性で、同じ二脚を持つ
+  --    Δ c.vertex への比較辺 q を作る。頂点ごとの任意の同型を選び直さない。
+  -- 2. E.coproduct_tensor A (Δ Y) で U(q) の始域を導来テンソルへ移し、
+  --    E.coproduct_tensor_legs A (Δ X) (Δ Y) で二脚を標準テンソル射へ同定する。
+  -- 3. 多項式の場合は、その同じ射を HT の gr と微分形式の Künneth で検出する
+  --    prismaticCohomologyPoly_tensor を使う。全関手版の比較の自然性と各変数の
+  --    多項式 sifted 表示で余極限を交換し、一般の X, Y の U(q) も同値と示す。
+  -- 4. E.forget_conservative で q が可逆と戻す。二点離散図式の余錐についての
+  --    一般の移送補題（頂点の同値とホモトピー圏での二脚の一致）で、
+  --    指定余積錐から mapJoinCocone Δ c へ余極限性を移す。
+  -- 注意：忘却後のテンソルと二脚が、D(A) の加法的余積錐だとは主張しない。
+  sorry
 
 /-- 空の余積も保つ。二項テンソルと合わせて有限余積の保存になる。 -/
 theorem derivedPrismaticCohomology_initial {X : (AnimatedAlgebra (A ⧸ P.ideal)) _⦋0⦌}
