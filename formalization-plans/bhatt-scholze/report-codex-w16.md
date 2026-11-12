@@ -3178,3 +3178,72 @@ sorry・追加公理はない。すべて終了を回収し、鍵を返した。
 
 登録待ちに `SerrePositivity.EInfinity.BarrattEccles.Theory.CoinvariantQuotientNaturality` を追加する。
 一覧は七本。共通入口・共通監査は変更していない。
+
+
+## 55. 誘導表示の指定包含の照合と、完成見込みによる中間停止
+
+### 55.1 今回閉じた範囲
+
+`InducedQuotientCompatibility`（53 行）に
+`inducedCoinvariantTotalIso_inv_inclusion` を証明した。
+任意の部分群 H、入力の表現複体 V、元の群上の複体 W・B と指定包含
+`ι : V ⟶ res W` について、双次数の元 x・y の余不変類を、誘導表示の全複体の逆比較と
+`finiteInductionCochainInclusion` に通すと、指定包含の値 `ι(x)` と y の余不変類になる。
+等式は元の複体の各次数での厳密な等式であり、ホモトピー圏を使っていない。
+入力の cofibrancy も仮定していない。
+
+独立した包含射の等式を先に型付けする案では、全複体の展開時に 800,000 heartbeats に達した。
+最終版はその案を残さず、既存の `HomologicalComplex₂.ιTotal_map` から生成元の等式を直接取り出し、
+`ι_mapBifunctorMap` と誘導表現の単位生成元の計算を使った。
+最終版に `maxHeartbeats` の引上げはない。未使用の simp 引数の警告も除去した。
+既存の公開宣言と界面の型は変更していない。
+
+最終対象ビルド成功：`/tmp/bsw16/induced-quotient-10.log`。
+別の鍵で最終監査成功：`/tmp/bsw16/audit-induced-quotient-final.log`。
+登録待ち八モジュール・83 宣言、標準三公理のみ。sorry・追加公理はない。
+鍵は `--wait 3600` で一コマンドずつ取得し、すべての終了を回収して返した。
+新規モジュールなので直接の importer はまだない。共通入口と共通監査は編集していない。
+
+### 55.2 残る接続を含む見込みと停止理由
+
+a の検証済み実測は **3,900 + 53 = 3,953 行**。承認上限 4,200 行に対する残枠は 247 行。
+今回の補題だけでは、標準語から元の Schur 複体の比較への式はまだ得られない。
+`schurArityOrbitIso`・`orbitStandardCoefficientIso`・`schurBinaryOrbitIso` の実際の定義に沿い、
+残りを次のように分けて数え直した。
+
+| 未証明の接続 | 使う既存の宣言と、残る式 | 追加見込み |
+| --- | --- | ---: |
+| 群変更と指定全複体商 | `coinvariantTotalGroupChangeIso` に対する指定商の式。作用商の群変更の補題から運ぶ | 25〜40 |
+| 入力射と指定全複体商 | 係数方向の自然性は済み。入力方向の自然性を、今回の誘導包含の式と接続する | 30〜45 |
+| 標準語の同定 | `twoColorOrbitStandardInputIso`・`twoColorStandardSeparatedIso` を、同じ指定商と標準語包含の式に適用する | 20〜35 |
+| 軌道直和から全 Schur 比較 | `schurArityOrbitIso` の各包含、`sigmaSigmaIso` と `Sigma.reindex` の指定包含を追い、§54 のテンソル側の式へ接続する | 35〜50 |
+| 厳密な Hopf 射の標準語上の式 | 既存の零入力消去・左右の単位挿入と分離を使い、`freeStandardSource_hopfComparison_arity` を同じ指定係数射の式へ戻す | 95〜135 |
+| 全射の一致と擬同型への復帰 | `freeStandardSource_hom_ext` と既存の自由余積比較への移送 | 15〜25 |
+| **残り** | | **220〜330** |
+
+完成見込みは **4,173〜4,283 行**。これは未実装部分の見積りであり、行数の下限の証明ではない。
+上端が承認上限を 83 行超える見込みなので、新しい証明の追加はここで止め、
+今回検証に通った分をコミットして報告する。一般補助へ分けた行数も a に含めている。
+
+以前の「始域側の接続」の見積りでは、誘導表示の生成元の計算と、群変更・入力射の自然性・
+直和の指定包含の照合を一つの短い接続として扱っていた。今回の 53 行が閉じるのは前者であり、
+後者を定義的等しさとして省くことはできない。新しい経路の追加やセル対への変更ではない。
+§51 の 3,722 行からの増分は 231 行で、残りを含めると同時点から 451〜561 行となる。
+同時点の残り 235〜350 行という見積りを超えていることも明記する。
+
+### 55.3 未完了の主張・日程・登録
+
+`J ≫ freeSchurCoefficientHomotopyEquiv.hom = M` と
+`J ≫ freeHopfComparison.hom = M` の全体は未証明。
+したがって指定された自由 Hopf 比較の擬同型性の完了は宣言しない。
+§20.2・§40.2 の各行の最終実測比較は、a が閉じた時点の報告として依然残る。
+今回の表は途中の見積り更新であり、その完了報告の代用ではない。
+
+**11 月 13 日夕方までに閉じられるとは、現時点では確約できない。**
+今回の停止条件に加え、二つの指定射の全体の証明はまだ検証されていないため、
+凍結の一晩の確実な前提には置かない。厳密な一致の方針は維持する。
+bar・sifted・Tot には進んでいない。
+
+登録待ちに `SerrePositivity.EInfinity.BarrattEccles.Theory.InducedQuotientCompatibility` を追加した。
+全八本の一覧は `klw1-followup/registration-modules.json`。
+この節は規模の見込みによる中間停止の報告であり、a または W16 全体の完了報告ではない。

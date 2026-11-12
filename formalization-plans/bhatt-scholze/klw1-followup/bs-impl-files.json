@@ -56,5 +56,6 @@
   "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeCoefficientCompatibility.lean",
   "SerrePositivity/EInfinity/BarrattEccles/Theory/ProductQuotientCompatibility.lean",
   "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorTargetCompatibility.lean",
-  "SerrePositivity/EInfinity/BarrattEccles/Theory/CoinvariantQuotientNaturality.lean"
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/CoinvariantQuotientNaturality.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/InducedQuotientCompatibility.lean"
 ]

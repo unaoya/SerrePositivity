@@ -5,5 +5,6 @@
   "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeCoefficientCompatibility",
   "SerrePositivity.EInfinity.BarrattEccles.Theory.ProductQuotientCompatibility",
   "SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorTargetCompatibility",
-  "SerrePositivity.EInfinity.BarrattEccles.Theory.CoinvariantQuotientNaturality"
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.CoinvariantQuotientNaturality",
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.InducedQuotientCompatibility"
 ]
