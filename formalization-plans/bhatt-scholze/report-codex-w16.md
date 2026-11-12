@@ -3247,3 +3247,305 @@ bar・sifted・Tot には進んでいない。
 登録待ちに `SerrePositivity.EInfinity.BarrattEccles.Theory.InducedQuotientCompatibility` を追加した。
 全八本の一覧は `klw1-followup/registration-modules.json`。
 この節は規模の見込みによる中間停止の報告であり、a または W16 全体の完了報告ではない。
+
+## 56. §20：残る照合の型の一覧（実装前に固定）
+
+main `f0ae62e99` の §20 を取り込んだ。以下を実装前の一覧とする。
+記載した型は紙の型案であり、まだ新しい Lean ファイルとして検証したとは扱わない。
+既存宣言の型はソースで確認した。以下の新規主張を番号順に証明する。
+一覧にない数学的な補助主張が必要と判明したら、局所 `have` に隠して続けず、その型と漏れた理由を報告して止める。
+結合律・同型の消去・関手性・要素での ext・定義の展開そのものは既存 API の使用とする。
+「全体の等式を証明するために必要な任意の補題」のような予備枠は設けない。
+
+### 56.1 共通の記法と始域側（L01〜L09）
+
+一般の部分は namespace `SerrePositivity.EInfinity`、次の文脈を使う。
+
+```lean
+open CategoryTheory MonoidalCategory HomologicalComplex Limits
+open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers
+universe u
+variable {R G H : Type u} [CommRing R] [Group G] [Group H]
+variable {K K' L : Complex R}
+```
+
+**L01：群変更と指定全複体商。** `coinvariantTotalQuotient_comparison` と
+`coinvariantGroupChangeComplexIso_quotient` を、`coinvariantTotalGroupChangeIso` の定義へ適用する。
+
+```lean
+lemma coinvariantTotalGroupChangeIso_quotient
+    (e : H ≃* G) (ρ : G →* End K) (σ : G →* End L) :
+    coinvariantTotalQuotient (ρ.comp e.toMonoidHom) (σ.comp e.toMonoidHom) ≫
+      (coinvariantTotalGroupChangeIso e ρ σ).hom = coinvariantTotalQuotient ρ σ
+```
+
+**L02：入力方向の自然性。** 係数方向の既存
+`coinvariantTotalQuotient_naturality_right` と同じ双次数の指定商の計算。
+`coinvariantTotalQuotient_ι`、`ι_mapBifunctorMap`、`TensorProduct.ext` を使う。
+
+```lean
+lemma coinvariantTotalQuotient_naturality_left
+    (ρ : G →* End K) (τ : G →* End K') (σ : G →* End L)
+    (f : K ⟶ K') (hf : ∀ g, (ρ g).asHom ≫ f = f ≫ (τ g).asHom) :
+    coinvariantTotalQuotient ρ σ ≫
+      (inputCoinvariantTotalFunctor (representationCochainComplex σ)).map
+        (representationCochainMap ρ τ f hf) =
+    (f ▷ L) ≫ coinvariantTotalQuotient τ σ
+```
+
+**L03：入力作用の等式による運搬。** `h` を消去し、関手の `map_id` を使う。
+
+```lean
+lemma coinvariantTotalQuotient_transport_left
+    (ρ τ : G →* End K) (σ : G →* End L) (h : ρ = τ) :
+    coinvariantTotalQuotient ρ σ ≫
+      (inputCoinvariantTotalFunctor (representationCochainComplex σ)).map
+        (eqToIso (congrArg representationCochainComplex h)).hom =
+    coinvariantTotalQuotient τ σ
+```
+
+以下は namespace `SerrePositivity.EInfinity.BarrattEccles` で、
+`(R : Type u) [CommRing R] (X Y : Complex R)` を変数とする。
+紙の式を短くするため、次の略記を固定する（新しい数学的仮定はない）。
+
+```lean
+local notation "C" => (operad R).arity
+local notation "F" => (operad R).freeAlgebra
+local notation "A₀" => fun Z r =>
+  arityCoinvariantComplex (schurDiagram R (sequence R) Z) r
+local notation "q₀" => fun Z r =>
+  arityCoinvariantComplexQuotient (schurDiagram R (sequence R) Z) r
+local notation "ρw" => fun r (k : ULift.{u} (Fin (r + 1))) =>
+  binaryTensorWordFixedAction X Y r (binaryTensorCountPattern r k.down)
+    ((MulEquiv.ulift : ULift.{u} (Equiv.Perm (Fin r)) ≃*
+      Equiv.Perm (Fin r)).toMonoidHom.comp (binaryTensorPatternSubgroup r k).subtype)
+    (fun g => g.property)
+local notation "σw" => fun r (k : ULift.{u} (Fin (r + 1))) =>
+  (arityComplexAction R r).comp (binaryTensorPatternSubgroup r k).subtype
+local notation "qW" => fun r k => coinvariantTotalQuotient (ρw r k) (σw r k)
+local notation "qS" => fun m n => coinvariantTotalQuotient
+  (tensorComplexAction (twoColorLeftInputAction X m n) (twoColorRightInputAction Y m n))
+  (twoColorSourceComplexAction R m n)
+local notation "qStd" => fun m n =>
+  (β_ (C (m + n)) (power X m ⊗ power Y n)).hom ≫ qS m n
+local notation "S" => fun m n =>
+  eqToHom (congrArg (binaryTensorWordObj X Y (m + n)) (binaryTensorCountPattern_add m n)) ≫
+    (binaryTensorStandardPowersIso X Y m n).hom
+```
+
+**L04：実際の固定 arity の軌道直和の指定包含。**
+`schurArityInputCoefficientIso_quotient`、L03、
+`binaryTensorOrbitComplexIso_ι`、`PreservesCoproduct.iso` の包含の式、
+`inducedCoinvariantTotalIso_inv_inclusion`（§55）を使う。
+必要なら同型の逆を後合成して検出し、`mapBifunctor.hom_ext` と生成元で確認する。
+
+```lean
+lemma schurArityOrbitIso_word_quotient (r : ℕ) (k : ULift.{u} (Fin (r + 1))) :
+    (C r ◁ binaryTensorWordInclusion X Y r (binaryTensorCountPattern r k.down)) ≫
+      q₀ (X ⊞ Y) r ≫ (schurArityOrbitIso X Y r).hom =
+    (β_ (C r) (binaryTensorWordObj X Y r (binaryTensorCountPattern r k.down))).hom ≫
+      qW r k ≫ Sigma.ι (orbitCoefficientComplex X Y r) k
+```
+
+**L05：標準語の群と分離同型が指定商を保つ。**
+L01・L02・L03、`binaryTensorFixedRepresentationCongr` の定義（語の等式の消去）、
+`twoColorStandardSeparatedIso_hom_f` を使用する。
+
+```lean
+lemma orbitStandardCoefficientIso_quotient (m n : ℕ) :
+    qW (m + n) (ULift.up ⟨m, by omega⟩) ≫
+      (orbitStandardCoefficientIso X Y m n).hom =
+    (S m n ▷ C (m + n)) ≫ qS m n
+```
+
+**L06：標準語から arity の直和への式。** L04・L05、braiding の自然性、
+`binaryTensorCountPattern_add` の等式による運搬と同型の消去。
+
+```lean
+lemma schurArityOrbitIso_standard_quotient (m n : ℕ) :
+    (C (m + n) ◁ ((binaryTensorStandardPowersIso X Y m n).inv ≫
+      binaryTensorWordInclusion X Y (m + n) (binaryTensorStandardPattern m n))) ≫
+      q₀ (X ⊞ Y) (m + n) ≫ (schurArityOrbitIso X Y (m + n)).hom =
+    qStd m n ≫ (orbitStandardCoefficientIso X Y m n).inv ≫
+      Sigma.ι (orbitCoefficientComplex X Y (m + n)) (ULift.up ⟨m, by omega⟩)
+```
+
+**L07：全 arity を二添字へ移した包含の式。** L06、
+`arityCoinvariantComplexIso_ι`、`Sigma.map`・`sigmaSigmaIso`・`Sigma.reindex` の包含の式。
+
+```lean
+lemma freeStandardSource_binaryOrbit (m n : ℕ) :
+    freeStandardSource R X Y m n ≫ (schurBinaryOrbitIso X Y).hom =
+    qStd m n ≫ (orbitStandardCoefficientIso X Y m n).inv ≫
+      Sigma.ι (fun p : ℕ × ℕ => orbitCoefficientComplex X Y (p.1 + p.2)
+        (ULift.up ⟨p.1, by omega⟩)) (m, n)
+```
+
+**L08：二色係数側の直和への接続。** L07、既存
+`twoColorCoefficientTarget_schurQuotient`、`schurTensorArityIso_generators` を使う。
+これは二つの全体式の第一の式であり、途中の図式で代用しない。
+
+```lean
+lemma freeStandardSource_coefficientComparison (m n : ℕ) :
+    freeStandardSource R X Y m n ≫ (freeSchurCoefficientHomotopyEquiv X Y).hom =
+      freeStandardTarget R X Y m n
+```
+
+**L09：標準ブロックの包含（新証明不要）。** 既存の
+`binaryTensorStandardPowersIso_inclusion` を逆同型で前合成するだけで次の型を得る。
+
+```lean
+lemma standardWord_inclusion_append (m n : ℕ) :
+    (binaryTensorStandardPowersIso X Y m n).inv ≫
+      binaryTensorWordInclusion X Y (m + n) (binaryTensorStandardPattern m n) =
+    (TensorPowers.map (biprod.inl : X ⟶ X ⊞ Y) m ⊗ₘ
+      TensorPowers.map (biprod.inr : Y ⟶ X ⊞ Y) n) ≫ (appendIso (X ⊞ Y) m n).hom
+```
+
+### 56.2 Hopf 射側（L10〜L18）
+
+L10〜L12 は一般の複体について namespace `SerrePositivity.EInfinity` で述べる。
+
+**L10：一定族の分離と冪の分離。** 二つの分離の定義に沿う帰納法。
+各後続段は同じ `tensorμ` で、`tensorFamily_const_succ_hom` を用いる。
+
+```lean
+lemma tensorFamilyTensorIso_const (K L : Complex R) (r : ℕ) :
+    eqToHom (tensorFamily_const (K ⊗ L) r) ≫ (tensorPowerSeparation K L r).hom =
+    (tensorFamilyTensorIso r (fun _ => K) (fun _ => L)).hom ≫
+      (eqToHom (tensorFamily_const K r) ⊗ₘ eqToHom (tensorFamily_const L r))
+```
+
+一定族の射の比較は新補題不要：`tensorFamilyGenerator_asMap` と
+`tensorFamilyGenerator_constant` が
+`tensorFamilyMap r (fun _ => f) ≫ eqToHom (tensorFamily_const L r) =
+ eqToHom (tensorFamily_const K r) ≫ TensorPowers.map f r`
+を与える。
+
+**L11：左単位の挿入と分離。** 右側の型は既存 `tensorFamilyTensorIso_insert_right`。
+左側は `tensorFamilyTensorIso_unit_left` に逆同型を合成して得る。
+
+```lean
+lemma tensorFamilyTensorIso_insert_left (r : ℕ) (V : Fin r → Complex R) :
+    tensorFamilyMap r (fun j => (λ_ (V j)).inv) ≫
+      (tensorFamilyTensorIso r (fun _ => 𝟙_ (Complex R)) V).hom =
+    (λ_ (tensorFamily r V)).inv ≫
+      ((tensorUnitFamilyIso R r).inv ⊗ₘ 𝟙 (tensorFamily r V))
+```
+
+**L12a・L12b：単位射を一方へ入れた冪の分離。** 以下の `unitPow` は式の略記。
+L10・L11・既存の右単位版、`tensorFamilyTensorIso_naturality`、一定族の射の比較を使う。
+
+```lean
+local notation "unitPow" => fun {K : Complex R} (u : 𝟙_ (Complex R) ⟶ K) r =>
+  (tensorUnitFamilyIso R r).inv ≫ tensorFamilyMap r (fun _ => u) ≫
+    eqToHom (tensorFamily_const K r)
+lemma tensorPowerSeparation_insert_right {Z K L : Complex R}
+    (f : Z ⟶ K) (u : 𝟙_ (Complex R) ⟶ L) (r : ℕ) :
+    TensorPowers.map ((ρ_ Z).inv ≫ (f ⊗ₘ u)) r ≫ (tensorPowerSeparation K L r).hom =
+    (ρ_ (power Z r)).inv ≫ (TensorPowers.map f r ⊗ₘ unitPow u r)
+lemma tensorPowerSeparation_insert_left {Z K L : Complex R}
+    (u : 𝟙_ (Complex R) ⟶ K) (f : Z ⟶ L) (r : ℕ) :
+    TensorPowers.map ((λ_ Z).inv ≫ (u ⊗ₘ f)) r ≫ (tensorPowerSeparation K L r).hom =
+    (λ_ (power Z r)).inv ≫ (unitPow u r ⊗ₘ TensorPowers.map f r)
+```
+
+以下は再び BarrattEccles、R・X・Y・C・F は §56.1 と同じ。
+指定単位族を末尾／先頭へ挿入する二つの射を、次の式で略記する。
+（実装で定義名を設けても、この二式の略記に限る。）
+
+```lean
+local notation "eL" => fun m n =>
+  (ρ_ (power X m)).inv ≫
+    (TensorPowers.map ((operad R).schurUnit X) m ⊗ₘ nullaryUnitPower R (F X) n) ≫
+    (appendIso (F X).carrier m n).hom
+local notation "eR" => fun m n =>
+  (λ_ (power Y n)).inv ≫
+    (nullaryUnitPower R (F Y) m ⊗ₘ TensorPowers.map ((operad R).schurUnit Y) n) ≫
+    (appendIso (F Y).carrier m n).hom
+```
+
+**L13：実際の Hopf 入力の分離。** L09・L12、`appendIso_naturality`、
+`tensorPowerSeparation_append`、`nullaryUnitPower_eq`、
+`freeHopfComparisonInput`・`hopfTensorInl`・`hopfTensorInr` の定義。
+残る四因子の配置は `tensorμ` と単位子の自然性・monoidal coherence。
+
+```lean
+lemma freeHopfComparisonInput_standard_separation (m n : ℕ)
+    (h0 : IsIso ((hopf R).counit.map.app (FiniteBijection.of 0))) :
+    (binaryTensorStandardPowersIso X Y m n).inv ≫
+      binaryTensorWordInclusion X Y (m + n) (binaryTensorStandardPattern m n) ≫
+      TensorPowers.map (freeHopfComparisonInput (hopf R) h0 X Y) (m + n) ≫
+      (tensorPowerSeparation (F X).carrier (F Y).carrier (m + n)).hom =
+    eL m n ⊗ₘ eR m n
+```
+
+**L14：末尾の零入力の作用。** 前半を消す既存 `nullaryPrefixDelete_action` の左右交換版。
+`twoColorLeftCoefficient`、`appendIso_blockSwap`、代数の equivariance を用いる。
+
+```lean
+lemma twoColorLeftCoefficient_action (Z : (operad R).Algebra) (m n : ℕ) :
+    (twoColorLeftCoefficient R m n ▷ power Z.carrier m) ≫ Z.action m =
+    (C (m + n) ◁ ((ρ_ (power Z.carrier m)).inv ≫
+      (power Z.carrier m ◁ nullaryUnitPower R Z n) ≫
+      (appendIso Z.carrier m n).hom)) ≫ Z.action (m + n)
+```
+
+**L15a・L15b：自由生成元への作用。** L14 と既存 `nullaryPrefixDelete_action` を
+入力冪の射で前合成し、`Operad.schurAction_generators` を使う。
+
+```lean
+lemma freeLeftUnitExtension_action (m n : ℕ) :
+    (C (m + n) ◁ eL m n) ≫ (F X).action (m + n) =
+    (twoColorLeftCoefficient R m n ▷ power X m) ≫ schurι R (sequence R) X m
+lemma freeRightUnitExtension_action (m n : ℕ) :
+    (C (m + n) ◁ eR m n) ≫ (F Y).action (m + n) =
+    (twoColorRightCoefficient R m n ▷ power Y n) ≫ schurι R (sequence R) Y n
+```
+
+**L16：第二の全体式。** 既存 `freeStandardSource_hopfComparison_arity` に L13・L15 を適用。
+`hopfTensorAction` と `twoColorCoefficientComparison` を展開し、`tensorμ` の自然性で接続。
+
+```lean
+lemma freeStandardSource_hopfComparison (m n : ℕ)
+    (h0 : IsIso ((hopf R).counit.map.app (FiniteBijection.of 0))) :
+    freeStandardSource R X Y m n ≫ (freeHopfComparison (hopf R) h0 X Y).hom =
+    freeStandardTarget R X Y m n
+```
+
+**L17：自由代数全体での指定射の一致。** L08・L16 と既存 `freeStandardSource_hom_ext`。
+
+```lean
+lemma freeHopfComparison_eq_coefficientComparison
+    (h0 : IsIso ((hopf R).counit.map.app (FiniteBijection.of 0))) :
+    (freeHopfComparison (hopf R) h0 X Y).hom =
+      (freeSchurCoefficientHomotopyEquiv X Y).hom
+```
+
+**L18：指定射の擬同型性。** L17 と鎖ホモトピー同値の既存の擬同型性のインスタンス。
+任意の X・Y で主張するので、任意の cofibrant な入力も含む。
+
+```lean
+lemma freeHopfComparison_quasiIso
+    (h0 : IsIso ((hopf R).counit.map.app (FiniteBijection.of 0))) :
+    QuasiIso (freeHopfComparison (hopf R) h0 X Y).hom
+```
+
+その後の元の厳密な自由余積比較への復帰は既存
+`hopfCoproductComparison_quasiIso_of_free` を用いる（新しい移送補題は要らない）。
+
+### 56.3 §55.2 の行との対応と実装時の停止規則
+
+| §55.2 の行 | 今回の型 |
+| --- | --- |
+| 群変更と指定全複体商 | L01 |
+| 入力射と指定全複体商 | L02・L03、既存の §55 の誘導包含の補題 |
+| 標準語の同定 | L05、L06 の語の等式の運搬 |
+| 軌道直和から全 Schur 比較 | L04・L06・L07・L08 |
+| 厳密な Hopf 射の標準語上の式 | L09〜L16（L09 は既存宣言の系） |
+| 全射の一致と擬同型への復帰 | L17・L18、既存の自由余積への移送 |
+
+外枠は約 4,600 行。今後は途中の残行数の見込みだけで止めない。
+上の一覧外の補題が必要になった場合に、その型と漏れた理由を記録して止める。
+局所補題も対象とし、未証明の仮定を加えることや同型を別の射へ取り替えることで穴を隠さない。
+§20.2・§40.2・§55.2 の見込みと最終実測の比較は、L18 まで閉じてから提出する。
