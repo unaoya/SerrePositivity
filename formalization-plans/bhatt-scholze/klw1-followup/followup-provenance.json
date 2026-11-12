@@ -15,7 +15,7 @@
   "merge_commit_pending": false,
   "rewrite_directory": "/tmp/bsw16/klw1-followup-d07-preview",
   "collected_body_files": 49,
-  "combined_body_files": 59,
+  "combined_body_files": 60,
   "build_targets": 56,
   "audited_modules": 50,
   "audited_declarations": 963,
@@ -23,15 +23,12 @@
   "merged_a_commit": "3f26491d1",
   "post_followup_module": "SerrePositivity.EInfinity.BarrattEccles.Theory.HopfNullaryUnitMap",
   "post_followup_audited_declarations": 4,
-  "a_lines": 3953,
+  "a_lines": 4030,
   "a_complete": false,
-  "a_stop": "forecast exceeds 4200 lines; report section 55",
-  "a_cap": 4200,
-  "a_forecast": [
-    4173,
-    4283
-  ],
-  "resumed_after_main": "f5baa8763",
+  "a_stop": "unlisted concrete input-action equality needed at L04; report section 57",
+  "a_cap": 4600,
+  "a_forecast": null,
+  "resumed_after_main": "f0ae62e99",
   "resumed_modules": [
     "SerrePositivity.EInfinity.BarrattEccles.Theory.NullaryEvaluation",
     "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardCoefficients",
@@ -40,11 +37,18 @@
     "SerrePositivity.EInfinity.BarrattEccles.Theory.ProductQuotientCompatibility",
     "SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorTargetCompatibility",
     "SerrePositivity.EInfinity.BarrattEccles.Theory.CoinvariantQuotientNaturality",
-    "SerrePositivity.EInfinity.BarrattEccles.Theory.InducedQuotientCompatibility"
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.InducedQuotientCompatibility",
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.SourceQuotientNaturality"
   ],
   "resumed_build_targets": 1,
-  "resumed_audited_declarations": 83,
+  "resumed_audited_declarations": 87,
   "resumed_standard_axioms_only": true,
-  "resumed_build_log": "/tmp/bsw16/induced-quotient-10.log",
-  "resumed_audit_log": "/tmp/bsw16/audit-induced-quotient-final.log"
+  "resumed_build_log": "/tmp/bsw16/source-naturality-02.log",
+  "resumed_audit_log": "/tmp/bsw16/audit-source-naturality.log",
+  "a_typed_checklist_commit": "876d5f357",
+  "a_typed_checklist_proved": [
+    "L01",
+    "L02",
+    "L03"
+  ]
 }

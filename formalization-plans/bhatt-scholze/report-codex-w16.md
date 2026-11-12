@@ -3549,3 +3549,71 @@ lemma freeHopfComparison_quasiIso
 上の一覧外の補題が必要になった場合に、その型と漏れた理由を記録して止める。
 局所補題も対象とし、未証明の仮定を加えることや同型を別の射へ取り替えることで穴を隠さない。
 §20.2・§40.2・§55.2 の見込みと最終実測の比較は、L18 まで閉じてから提出する。
+
+
+## 57. 型一覧 L01〜L03 の検証と、L04 で判明した一覧外の主張による停止
+
+### 57.1 検証済みの部分
+
+§56 の型一覧を `876d5f357` で先にコミットし、承認待ちを挟まず実装に入った。
+`SourceQuotientNaturality`（77 行）で次の三つを、一覧の型のまま証明した。
+
+- L01 `coinvariantTotalGroupChangeIso_quotient`：群変更と指定全複体商。
+- L02 `coinvariantTotalQuotient_naturality_left`：入力方向の自然性。
+- L03 `coinvariantTotalQuotient_transport_left`：入力作用の等式による運搬。
+
+対象ビルド成功：`/tmp/bsw16/source-naturality-02.log`。
+別の鍵で監査成功：`/tmp/bsw16/audit-source-naturality.log`。
+登録待ち九モジュール・87 宣言、標準三公理のみ。sorry・追加公理・新規の長い行はない。
+鍵は `--wait 3600` で各ビルド・監査に限って持ち、全プロセスの終了を回収した。
+実測は **3,953 + 77 = 4,030 行**。今回の停止は 4,600 行の外枠によるものではない。
+
+### 57.2 一覧から漏れた具体的な入力作用の等式
+
+L04 で `schurArityOrbitIso` の逆を後合成し、直和の比較を指定誘導包含まで戻した。
+続いて `schurArityInputCoefficientIso_quotient` を適用し、
+`binaryTensorFullInputSequenceIso` に沿う商の運搬を L03 で処理する箇所に来た。
+ここで L03 の引数 `h` に渡す、以下の具体的な主張が型一覧に記載されていなかった。
+
+```lean
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory Limits
+open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers
+universe u
+lemma binaryTensorInputAction_eq (R : Type u) [CommRing R]
+    (X Y : Complex R) (r : ℕ) :
+    finiteBijectionComplexAction (bijectionFunctor (X ⊞ Y)) r =
+      binaryTensorPowerAction X Y r
+        (MulEquiv.ulift : ULift.{u} (Equiv.Perm (Fin r)) ≃*
+          Equiv.Perm (Fin r)).toMonoidHom
+end SerrePositivity.EInfinity.BarrattEccles
+```
+
+これは新しい数学的構成を要する主張ではない。
+既存 `binaryTensorFullInputSequenceIso` の定義は、内部で `MonoidHom.ext`・`End.ext`・
+`bijectionFunctor_map_permutation (X ⊞ Y) r g.down` を使い、この等式を表現複体の同型へ運んでいる。
+ただし公開されている宣言の結論は複体の **同型** であり、上の **作用の等式** そのものではない。
+L03 はその等式を仮定として受け取るので、L03 を証明しただけでは具体的な引数は供給されない。
+
+§56 の L04 の説明で「L03 と既存の同型の定義を使う」とまとめ、
+この具体的な引数を Lean の主張の型に落とすのを省いたのが漏れた理由である。
+局所 `have` として同じ等式を証明して進めることも、今回の一覧外の補題の追加に当たるため行っていない。
+上の型を新たな一覧項目として扱う必要がある、と判断して §20 の停止条件を適用した。
+
+なお、同型を展開して L03 を直接書き換えに使う下書きは、
+`/tmp/bsw16/orbit-quotient-04.log` のとおり型照合で 800,000 heartbeats に達した。
+この計算上限自体を、新しい数学的補題が不可欠であることの証明とはしない。
+停止理由は、具体的な作用の等式を一覧に含めずに L03 の適用を予定していたという一覧の漏れである。
+既存の公開宣言を変更する必要があると主張しているわけでもない。
+
+### 57.3 下書き・未完了部分・登録
+
+L04 の未検証下書きは `/tmp/bsw16/OrbitQuotientCompatibility-L04-unverified.lean` に保管した。
+本体の未検証モジュールとしては残さず、コミットにも含めない。
+L04 は未証明、L05 以降は未実装で、二つの指定射全体の一致と a は未完了。
+§20.2・§40.2・§55.2 の最終実測比較は、a が閉じた後の作業として残る。
+
+今回の登録対象は `SerrePositivity.EInfinity.BarrattEccles.Theory.SourceQuotientNaturality`。
+全九本の登録待ち一覧は `klw1-followup/registration-modules.json` に更新した。
+共通入口と共通監査への登録は行っていない。
+ここで一覧外の補題についての判断を待ち、bar・sifted・Tot には進まない。
