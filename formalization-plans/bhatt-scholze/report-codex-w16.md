@@ -4421,3 +4421,19 @@ drafts の sorry を新しい証明として数えていない。
 登録候補は今回の四本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
 §65.1 と合わせ七本。共通入口と共通監査は調整役の取り込み時の登録に委ねる。
 夜の規則に従い検証済みの四本をコミットし、次の構造射の構成へ進む。
+
+### 65.3 鎖のシフト遷移と有限単体による Γ の積
+
+検証済みの追加三本は `EilenbergMacLaneShiftTransition`（72 行）、
+`EilenbergMacLaneProbePair`（57 行）、`EilenbergMacLaneGammaPair`（56 行）。
+smart 切断のシフトからの指定射・自然性・負次数の準同型性、
+有限標準単体の AW 対角を用いた評価、実 Γ の二項積を供給した。
+AW を大きい宇宙の Γ の台へ直接適用せず、小さい標準単体で評価している。
+
+ビルドは `/tmp/bsw16/em-transition-04.log` と
+`/tmp/bsw16/em-gamma-pair-05.log` で成功。監査
+`/tmp/bsw16/audit-em-pairs.log` は十本・121 宣言・標準三公理のみ。
+追加 185 行、(ii) の検証済み実測は計 504 行。新規警告・sorry・追加公理なし。
+登録候補は上記三本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
+スペクトル構造射・Ω 条件・置換の全自然性・native V はまだ未供給。
+次は Γ の零元の照合を閉じて基点付き構造射へ接続する。
