@@ -1442,3 +1442,40 @@ c の上限約 400 行以内。一般の二脚の補助は Interface の中へ�
 作業用全実例 `drafts/Shared/BarrattEcclesTheory.lean` も、新欄を加えた状態で型検査が成功（`/tmp/bsw16/graded/draft-theory-tensor-legs.log`）。このファイルの既存・追加の sorry の警告は drafts の未供給欄であり、本体の監査には含めていない。鍵は各ビルド・監査・drafts の型検査の終了時に返却した。
 
 登録候補は上表の新規五モジュール。既存の `Interface.Theory` は新欄が加わったため、その監査も今回行う。b の九本と §22 の五本を含め、取り込み待ちの新規モジュールは合計十九本。KL-W1 の後の改名表に追従してから取り込む。c の後は、`coproduct_tensor_legs` を含む未供給の欄だけを引数に取る組み立て関数へ進む。
+
+
+## 26. 段 4：既証明欄を固定した全界面の組み立て
+
+### 26.1 結論
+
+本体の `EInfinity/BarrattEccles/Theory/Assembly.lean` に **`barrattEcclesTheoryOfRemaining`** を置いた。既存の作業用の名前 `barrattEcclesTheory` と衝突させず、既証明欄を固定して全 `EInfinityTheory` を返す関数である。未供給の欄の型を推論して結論だけを仮定するのではなく、構造体の各既証明欄へ実際の本体の証明を代入して型検査している。
+
+引数は次の **十八欄だけ**。同じテンソルの全関手版の同型を、新しい二脚の適合条件の型にも使っている。
+
+| 群 | 引数 |
+| --- | --- |
+| 保存・存在 | `forget_preservesSifted`、`presentable` |
+| テンソル | `coproduct_tensor`、`coproduct_tensor_legs` |
+| 通常の cosimplicial Tot | `ofCosimplicial`、`ofCosimplicial_forget`、`ofCosimplicial_cone`、`ofCosimplicial_restrict` |
+| cdga の Tot | `ofCosimplicialCdga`、`ofCosimplicialCdga_cone`、`ofCosimplicialCdga_discrete`、`ofCosimplicialCdga_evalZero`、`ofCosimplicialCdga_evalZero_leg` |
+| 冪作用 | `powerOp0`、`powerOp0_zero`、`powerOp0_pos`、`powerOp0_discrete`、`powerOp0_tot` |
+
+中核、忘却の保存性の既証明部分・保存的性質、指定余積関手と native な余極限錐、離散基底環の始対象性、M13 の係数変更・比較・ホモロジー比較、π₀ の四欄、厳密な複体のホモロジー比較、`ofCdga` の三欄は本体の既存証明で供給する。特に `baseChange_forget` は `barrattEcclesBaseChange_forget` を使い、K 平坦性を外部の追加仮定に戻していない。
+
+この関数は未供給の十八欄を仮定にする、承認された条件付きの組み立てである。G12・M14・G10 や経路 B の全関手版の比較まで無条件に証明したという主張ではない。
+
+### 26.2 作業用実例と規模
+
+`drafts/Shared/BarrattEcclesTheory.lean` の既存の名前 `barrattEcclesTheory` を保ち、新しい組み立て関数への適用に書き換えた。**証明済みの欄の sorry はこのファイルから外し、残る十八欄だけを名前付き引数の sorry として残した。** 他の BS の drafts には変更を加えていない。
+
+本体の組み立ては **89 行**、作業用全実例は整理後 **49 行**。両方の現行のファイル全体を足しても 138 行で、組み立ての上限約 300 行以内である。共通入口・共有監査スクリプトには登録していない。
+
+### 26.3 検証と次の順序
+
+対象ビルドは `/tmp/bsw16/graded/barratt-eccles-theory-assembly-01.log` で成功。新しい組み立てモジュールの **16 宣言**の再帰監査も標準三公理のみ（`/tmp/bsw16/graded/audit-theory-assembly.log`）。同じ検査で関数の型の最上位の引数を列挙し、上表の十八欄だけであることを確かめた。本体に sorry・admit・新規公理・追加の `[ModelCategory SSet]` 仮定はない。
+
+作業用実例を接続した後の型検査も成功（`/tmp/bsw16/graded/draft-theory-assembly.log`）。その sorry の警告は未供給欄の drafts に限る。ビルド・監査・drafts の検査はそれぞれ別に `--wait 3600` で鍵を取り、終了時に返却した。
+
+登録候補は **`SerrePositivity.EInfinity.BarrattEccles.Theory.Assembly`**。§22 の五本・b の九本・c の五本と合わせ、取り込み待ちの新規モジュールは二十本。`BinaryCoconeSpace` の取り消しは変わらない。KL-W1 の後の改名への追従は取り込み前に行う。
+
+これで b → c → 組み立ての共通部分を区切った。承認待ちにはせず、指示書 §12 の順に **a の自由代数の比較の残り（上限約 2,100 行、3 割以内の超過は報告して続行）**へ戻る。その後は厳密な bar 図式・増大・U の下の分裂（上限約 800 行）。セル対は行わず、bar の ∞ 図式への移送・実現の同定・全関手版・sifted の残り・Tot は③-b の橋の後に残す。
