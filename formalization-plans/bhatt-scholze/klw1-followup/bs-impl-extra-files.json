@@ -1,0 +1,12 @@
+[
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorSeparatedInput.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/BinaryTensorOrbitComplex.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorInducedComplexInputs.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/SchurComplexArity.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/CoinvariantTensorComplex.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorOrbitArity.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/ProductCoinvariants.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/SchurArityTotalComparison.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/ProductCoinvariantComplex.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorOrbitTransport.lean"
+]
