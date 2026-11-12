@@ -181,3 +181,7 @@ E3 の sorry 0 には要らない。レーンが待ちで空いたときの仕�
 | §3・§4 | 後回し：Lemma 3.1 (3)、Lemma 3.7 (3) を圏の同一視として、Lemma 3.9 の付随の主張（BR28 の残り）、Thm 3.10 の perfectoid の定義の差、Cor 3.12 の絶対版 | 小〜中 | 使う場所が出たとき |
 | §3・§4 | 入れない：Def 3.2 の一般の Cartier 因子、Lemma 3.7 (4)、Rem 3.11、Ex 3.14 の一般形、Prop 3.13 の一般形（D21）、Def 4.1 の形式スキーム版、Rem 4.3・4.7・4.13〜4.15、Construction 4.4、Lemma 4.21、Lemma 4.8 の一般の標的、Thm 4.11 の smooth な一般の R | — | E3 に要らない、大きな基盤がない |
 | §4 | 計画済み（⑤∞）：Notation 4.16、Construction 4.18「Δ を計算」と Ō 版、Rem 4.19 の Tot、Lemma 4.20・4.22（5∞-2）、Thm 4.11 の一般の基底と Cor 4.12（5∞-3） | — | — |
+
+## 9. 追記（2026-11-12 夜）：D79 で界面が KST を import した
+
+D79 (i)（615ceab26）で、E∞ の界面 `EInfinity/Interface/Theory.lean` が `KST.LocalizingInvariants.SpectrumHomotopyFunctor`（Ω スペクトルの準圏 `KST.Spectra.Sp` と `SpectrumHo.piFunctor`）を import するようになった。BS の主定理の閉包に KST のディレクトリが入る。中身は ∞ の一般論（R83 と同じ問題）なので、**R83 の一部として、`KST/Spectra` の Sp と `SpectrumHo` を InfinityCategories（Kerodon か HA の安定 ∞ 圏の節）へ移す**。KL-W1 の改名表は KST/Spectra を含まないので、新しい改名表を作る。時期：B3 に入れられれば B3、無理なら保守の先頭（BS の閉包を直すので優先）。
