@@ -1868,3 +1868,23 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.D
 ```
 
 約7,900行の中間報告の実測を **7,951行、残枠2,049行**に更新する。残る四まとまりと上限内完了のリスクは§57.1のとおり。全単体 Hom／切断比較、native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族は未完であり、停止点2にはまだ達していない。
+
+## 59. 3b-2 続行：図式 EZ の二射と指定 AW・shuffle の同定
+
+コード `0d3c7567d`、新規2本113行。累計 **128本8,064行**。
+
+- `DiagramComparison.CoefficientDiagramMaps`（45行）：係数 AW・shuffle の全図式射を構成し、既存係数図式同値の hom・inv との等式を証明した。
+- `DiagramComparison.FreeProductDiagramMaps`（68行）：元の自由積図式の指定 AW・shuffle を構成し、自由積図式同値の両方向と同定した。図式交換・零延長比較の自然性で中間同型を相殺する。§58で残した照合を、各点だけでなく全図式射の等式として閉じた。
+
+第一のまとまりの同定・自然性の内部。全単体 Hom 比較や native 極限性を、今回の等式だけから結論してはいない。
+
+鍵付き対象ビルド **2,272 jobs**、累計128本 **1,457宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-59.log`、監査 `/private/tmp/AuditISW2G10HundredTwentyEight.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredtwentyeight-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientDiagramMaps
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramMaps
+```
+
+残枠 **1,936行**。全単体 Hom／切断比較、native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族は残り、停止点2は未完。次のパラメータ方向の自然性は個別検査中であり、このコミットには含めない。B3凍結の予告に従い検証済みだけを保存した。凍結確定後は枝へのコミットを控える。
