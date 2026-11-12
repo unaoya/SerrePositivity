@@ -4733,3 +4733,53 @@ loop Γ の実射影 fibration と準同型の保存も証明した。
 監査 `/tmp/bsw16/audit-em-cone-properties.log` は **45 本・420 宣言・標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却を回収済み。
 夜の規則に従い、報告後も持ち上げ性と接続写像の比較へ続行する。
+
+
+## 69. D79(ii)：指定構造射の Ω 条件の次数移動
+
+| 追加モジュール（`PowerOperation/`） | 行数 |
+| --- | ---: |
+| ConeFiberHomotopyComparison | 58 |
+| ContractibleTotalConnecting | 46 |
+| EilenbergMacLaneConeContractibility | 48 |
+| EilenbergMacLaneLoopTrivialFibration | 48 |
+| EilenbergMacLaneOmegaDimensionShift | 50 |
+| EilenbergMacLanePointedConeFiber | 57 |
+| EilenbergMacLaneTrivialFibration | 70 |
+| PointedConnectingComparison | 42 |
+| PointedContractibleConnecting | 81 |
+| PointedHomotopyIso | 34 |
+| TerminalKanHomotopy | 48 |
+
+追加 **582 行**、(ii) の検証済み累計 **3150 行**。
+表の十一本が登録候補（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
+`ContractibleTotalConnecting`、`PointedConnectingComparison`、
+`PointedContractibleConnecting`、`PointedHomotopyIso`、`TerminalKanHomotopy` は
+**［一般∞］移動候補**。
+
+### 69.1 実際に閉じた主張
+
+`gammaMap_monomorphisms_rlp` は実射影 trivial fibration を同じ Γ の
+全単射 RLP へ移す。正規化標準単体の Reedy cofibration を使い、SSet の
+モデル構造は仮定しない。loop Γ にも同じ持ち上げ性を移した。
+恒等 cone の Γ・loop Γ の全基点・全次数のホモトピー類は一元であり、
+終対象射に全境界の充填がある。
+
+`pointedConeFiberIso` は元の回転 cone の kernel と指定点付き fiber の厳密な同型。
+その二つの脚と自然変換に対する自然性も元の圏で照合した。
+零次数を含む接続同値と自然性を既存の接続写像そのもので束ね、
+`gammaAdjointSuspension_bijective_iff_shift` を証明した：指定構造射の M における
+π_n の全単射性と、M[1] における π_{n+1} の全単射性が同値になる。
+
+これは **Ω 条件の完成ではない**。全複体での零次数の比較と任意の基点への移送、
+その後の native な V の降下・自然な π/H 比較が残る。
+(i) の界面の型は変更していない。
+
+### 69.2 検証
+
+対象ビルド `em-pointed-cone-fiber-02.log`、`em-cone-contractible-02.log`、
+`em-loop-trivial-fibration-01.log`、`em-pointed-connecting-03.log`、
+`em-omega-dimension-shift-01.log` は成功（最終版に警告なし）。
+監査 `/tmp/bsw16/audit-em-omega-dimension.log` は **56 本・463 宣言・標準三公理のみ**。
+sorry・追加公理なし。鍵返却を回収済み。共有入口・共有監査は未変更。
+夜の規則どおり止まらず、零次数への帰着と指定基本円の比較を続ける。
