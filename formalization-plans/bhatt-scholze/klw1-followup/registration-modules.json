@@ -47,5 +47,6 @@
   "SerrePositivity.EInfinity.BarrattEccles.Theory.ComplexCoproductHomotopy",
   "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeSchurComparison",
   "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeHopfComparison",
-  "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeHopfCoproduct"
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeHopfCoproduct",
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.HopfNullaryUnitMap"
 ]

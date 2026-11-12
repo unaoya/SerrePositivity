@@ -48,5 +48,6 @@
   "SerrePositivity/EInfinity/BarrattEccles/Theory/ComplexCoproductHomotopy.lean",
   "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeSchurComparison.lean",
   "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeHopfComparison.lean",
-  "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeHopfCoproduct.lean"
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeHopfCoproduct.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/HopfNullaryUnitMap.lean"
 ]
