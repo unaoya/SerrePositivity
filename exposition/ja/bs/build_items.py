@@ -239,7 +239,9 @@ def label_items(text: str, rows) -> str:
     def one(m):
         head = VTAG_RE.sub("", m.group(1)).rstrip()
         body = m.group(2)
-        nums = [n for n in NUM_RE.findall(re.sub(r"<[^>]+>", "", head)) if n in status]
+        plain = re.sub(r"<[^>]+>", "", head)
+        # 「Lemma 3.7 の後の段落」のような項目は、その番号の状態でなく Lean の囲みで判定する
+        nums = [] if "段落" in plain else [n for n in NUM_RE.findall(plain) if n in status]
         if nums:
             st = [status[n] for n in nums]
             best = min(st, key=lambda s: order.index(s) if s in order else len(order))

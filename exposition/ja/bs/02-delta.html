@@ -931,7 +931,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p>原典の「\(\mathrm{Kos}(A;a)\to\mathrm{Kos}(B;a,x)\) が平坦」（単体的可換環の射の平坦性）を、連結な環の射の平坦性の判定（\(\pi_0\) の平坦性と、全次数の \(\pi_i\) の底変換同型）でホモロジーに書いたもの（D20）。高次ホモロジーの消滅で定義すると、基底の \(H_1\) が零でない結晶 prism \((\mathbb Z_p,(p))\) で原典と食い違う。</p>
 </div>
 
-<h4 class="item">注意 2.6.2（原典 Def 2.42 の直前の段落） <span class="vtag v-part">一部 Lean で確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<h4 class="item">注意 2.6.2（原典 Def 2.42 の直前の段落） <span class="vtag v-no">未確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
 <div class="box claim">
 <p class="label">主張</p>
 <p>定義 2.6.1 の設定で、\(B\) が \(A\) 上 \(I\) 完全平坦であることと、\(\mathrm{Kos}(A;f_1,\dots,f_n)\to\mathrm{Kos}(B;f_1,\dots,f_n)\) が単体的可換環の平坦な射であることは同値。つまり定義 2.6.1 の \(r=0\) の場合が \(I\) 完全平坦性で、定義 2.6.1 はそこに列 \(x\) を付け加えた変種である。</p>
@@ -945,7 +945,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p>\(R=\mathrm{Kos}(A;f)\) とおくと \(\mathrm{Kos}(B;f)=R\otimes^L_AB\) で、\(\pi_0(R)=\pi_0(A)/I\)。\(R\) 上の加群 \(N=R\otimes^L_AB\) が平坦であることは、\(\pi_0(R)\otimes^L_RN=\pi_0(A)/I\otimes^L_AB\) が離散で \(\pi_0(A)/I\) 上平坦であることと同値（単体的可換環上の平坦性の標準的な判定）。右辺が \(I\) 完全平坦性の定義そのもの。</p>
 </div>
 
-<h4 class="item">注意 2.6.3（原典 Def 2.42 の後の段落） <span class="vtag v-part">一部 Lean で確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<h4 class="item">注意 2.6.3（原典 Def 2.42 の後の段落） <span class="vtag v-no">未確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
 <div class="box claim">
 <p class="label">主張</p>
 <p>(1) \(I\) 完全平坦性と相対的 \(I\) 完全正則性は、\(A\) の \(I\) 完備な底変換で保たれる：\(A\to A'\) に対し \(B'=(B\otimes^L_AA')^\wedge_I\) とおくと、\(x\) が \(A\) 上相対的に \(I\) 完全正則なら、その像は \(A'\) 上相対的に \(I\) 完全正則。</p>
@@ -1000,7 +1000,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 </div>
 <div class="box lean">
 <p class="label">Lean</p>
-<p>主張は本体にない（単体的可換 δ 環の押し出しも本体にない）。部品：(1) の Frobenius の \(p\) 完全忠実平坦性は \(\mathbb Z\) 上の自由 δ 環で <code>freeDeltaFrobenius_isCompletelyFaithfullyFlat</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusFlat.lean">Delta/Free/FreeDeltaFrobeniusFlat:339</a>）。(4) の Cor 2.39 は有限の列について <code>frobeniusDivisionDPEnvelopeEquiv</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/DividedPower/FrobeniusDivisionRegularSequence.lean">Delta/DividedPower/FrobeniusDivisionRegularSequence:280</a>）、その \(p\) 完備化 <code>frobeniusDivisionPDCompletionEquiv</code>（:325）。古典的な環の押し出しとしての生の包 \(B\{x/d\}=B\{z\}/(dz-x)_\delta\) は <code>DeltaAdjoinDivision</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Division/Basic.lean">Delta/Division/Basic:50</a>、\(d=p\) が \(C\) の古典版）。Prop 3.13 での使われ方については、本体は変数の場合の envelope（第 3 章の命題 3.9）を Cor 2.44 を経由せずに出す：完備自由 δ 環の \((p,d)\) 完全平坦性 <code>completedFreeDelta_completelyFlat</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CompletedFreeDeltaFlat.lean">Prismatic/CompletedFreeDeltaFlat:83</a>）と変数の置換による存在 <code>exists_prismaticEnvelope_of_variables</code>（:125）（D21）。</p>
+<p>主張は本体にない（単体的可換 δ 環の押し出しも本体にない）。部品：(1) の Frobenius の \(p\) 完全忠実平坦性は \(\mathbb Z\) 上の自由 δ 環で <code>freeDeltaFrobenius_isCompletelyFaithfullyFlat</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusFlat.lean">Delta/Free/FreeDeltaFrobeniusFlat:339</a>）。(4) の Cor 2.39 は有限の列について <code>frobeniusDivisionDPEnvelopeEquiv</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/DividedPower/FrobeniusDivisionRegularSequence.lean">Delta/DividedPower/FrobeniusDivisionRegularSequence:280</a>）、その \(p\) 完備化 <code>frobeniusDivisionPDCompletionEquiv</code>（:325）。古典的な環の押し出しとしての生の包 \(B\{x/d\}=B\{z\}/(dz-x)_\delta\) は <code>DeltaAdjoinDivision</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Division/Basic.lean">Delta/Division/Basic:50</a>、\(d=p\) が \(C\) の古典版）。Prop 3.13 での使われ方については、本体は変数の場合の envelope（第 3 章の命題 3.5.1）を Cor 2.44 を経由せずに出す：完備自由 δ 環の \((p,d)\) 完全平坦性 <code>completedFreeDelta_completelyFlat</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CompletedFreeDeltaFlat.lean">Prismatic/CompletedFreeDeltaFlat:83</a>）と変数の置換による存在 <code>exists_prismaticEnvelope_of_variables</code>（:125）（D21）。</p>
 </div>
 <div class="box proof" data-supplemented>
 <p class="label">証明</p>
